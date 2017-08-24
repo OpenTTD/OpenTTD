@@ -23,6 +23,9 @@ bundles/*
 docs/aidocs/*
 docs/gamedocs/*
 docs/source/*
+.kdev4
+.kdev4/*
+*.kdev4
 media/openttd.desktop
 media/openttd.desktop.install
 objs/*

@@ -13,6 +13,9 @@ config.pwd
 docs/aidocs/*
 docs/gamedocs/*
 docs/source/*
+.kdev4
+.kdev4/*
+*.kdev4
 Makefile
 Makefile.am
 Makefile.bundle
