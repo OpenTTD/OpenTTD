@@ -147,6 +147,7 @@ static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Veh
 
 static VehicleCellSize _base_block_sizes_depot[VEH_COMPANY_END];    ///< Cell size for vehicle images in the depot view.
 static VehicleCellSize _base_block_sizes_purchase[VEH_COMPANY_END]; ///< Cell size for vehicle images in the purchase list.
+static uint _consistent_train_width;                                ///< Whether trains of all lengths are consistently scaled. Either TRAININFO_DEFAULT_VEHICLE_WIDTH, VEHICLEINFO_FULL_VEHICLE_WIDTH, or 0.
 
 /**
  * Get the GUI cell size for a vehicle image.
@@ -218,6 +219,34 @@ void InitDepotWindowBlockSizes()
 	for (VehicleType vt = VEH_BEGIN; vt < VEH_COMPANY_END; vt++) {
 		InitBlocksizeForVehicles(vt, EIT_IN_DEPOT);
 		InitBlocksizeForVehicles(vt, EIT_PURCHASE);
+	}
+
+	_consistent_train_width = TRAININFO_DEFAULT_VEHICLE_WIDTH;
+	bool first = true;
+	const Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+		if (!e->IsEnabled()) continue;
+
+		uint w = TRAININFO_DEFAULT_VEHICLE_WIDTH;
+		if (e->GetGRF() != NULL && is_custom_sprite(e->u.rail.image_index)) {
+			w = e->GetGRF()->traininfo_vehicle_width;
+			if (w != VEHICLEINFO_FULL_VEHICLE_WIDTH) {
+				/* Hopeless.
+				 * This is a NewGRF vehicle that uses TRAININFO_DEFAULT_VEHICLE_WIDTH.
+				 * If the vehicles are shorter than 8/8 we have fractional lengths, which are not consistent after rounding.
+				 */
+				_consistent_train_width = 0;
+				break;
+			}
+		}
+
+		if (first) {
+			_consistent_train_width = w;
+			first = false;
+		} else if (w != _consistent_train_width) {
+			_consistent_train_width = 0;
+			break;
+		}
 	}
 }
 
@@ -292,7 +321,10 @@ struct DepotWindow : Window {
 				const Train *u = Train::From(v);
 				free_wagon = u->IsFreeWagon();
 
-				uint x_space = free_wagon ? ScaleGUITrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) : 0;
+				uint x_space = free_wagon ?
+						ScaleGUITrad(_consistent_train_width != 0 ? _consistent_train_width : TRAININFO_DEFAULT_VEHICLE_WIDTH) :
+						0;
+
 				DrawTrainImage(u, image_left + (rtl ? 0 : x_space), image_right - (rtl ? x_space : 0), sprite_y - 1,
 						this->sel, EIT_IN_DEPOT, free_wagon ? 0 : this->hscroll->GetPosition(), this->vehicle_over);
 
@@ -340,6 +372,28 @@ struct DepotWindow : Window {
 
 		/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
 		const NWidgetCore *wid = this->GetWidget<NWidgetCore>(WID_D_MATRIX);
+
+		/* Draw vertical separators at whole tiles.
+		 * This only works in two cases:
+		 *  - All vehicles use VEHICLEINFO_FULL_VEHICLE_WIDTH as reference width.
+		 *  - All vehicles are 8/8. This cannot be checked for NewGRF, so instead we check for "all vehicles are original vehicles".
+		 */
+		if (this->type == VEH_TRAIN && _consistent_train_width != 0) {
+			int w = ScaleGUITrad(2 * _consistent_train_width);
+			int col = _colour_gradient[wid->colour][4];
+			int image_left  = rtl ? r.left  + this->count_width  : r.left  + this->header_width;
+			int image_right = rtl ? r.right - this->header_width : r.right - this->count_width;
+			if (rtl) {
+				for (int x = image_right - w; x > image_left; x -= w) {
+					GfxDrawLine(x, r.top, x, r.bottom, col, 1, 3);
+				}
+			} else {
+				for (int x = image_left + w; x < image_right; x += w) {
+					GfxDrawLine(x, r.top, x, r.bottom, col, 1, 3);
+				}
+			}
+		}
+
 		uint16 rows_in_display = wid->current_y / wid->resize_y;
 
 		uint16 num = this->vscroll->GetPosition() * this->num_columns;
