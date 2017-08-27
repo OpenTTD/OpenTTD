@@ -1264,17 +1264,17 @@ static inline bool IsVitalWindow(const Window *w)
  * Get the z-priority for a given window. This is used in comparison with other z-priority values;
  * a window with a given z-priority will appear above other windows with a lower value, and below
  * those with a higher one (the ordering within z-priorities is arbitrary).
- * @param w The window to get the z-priority for
- * @pre w->window_class != WC_INVALID
+ * @param wc The window class of window to get the z-priority for
+ * @pre wc != WC_INVALID
  * @return The window's z-priority
  */
-static uint GetWindowZPriority(const Window *w)
+static uint GetWindowZPriority(WindowClass wc)
 {
-	assert(w->window_class != WC_INVALID);
+	assert(wc != WC_INVALID);
 
 	uint z_priority = 0;
 
-	switch (w->window_class) {
+	switch (wc) {
 		case WC_ENDSCREEN:
 			++z_priority;
 			FALLTHROUGH;
@@ -1358,11 +1358,11 @@ static void AddWindowToZOrdering(Window *w)
 		/* Search down the z-ordering for its location. */
 		Window *v = _z_front_window;
 		uint last_z_priority = UINT_MAX;
-		while (v != NULL && (v->window_class == WC_INVALID || GetWindowZPriority(v) > GetWindowZPriority(w))) {
+		while (v != NULL && (v->window_class == WC_INVALID || GetWindowZPriority(v->window_class) > GetWindowZPriority(w->window_class))) {
 			if (v->window_class != WC_INVALID) {
 				/* Sanity check z-ordering, while we're at it. */
-				assert(last_z_priority >= GetWindowZPriority(v));
-				last_z_priority = GetWindowZPriority(v);
+				assert(last_z_priority >= GetWindowZPriority(v->window_class));
+				last_z_priority = GetWindowZPriority(v->window_class);
 			}
 
 			v = v->z_back;
