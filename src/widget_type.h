@@ -779,13 +779,13 @@ public:
 	static void InvalidateDimensionCache();
 
 	static Dimension dropdown_dimension;  ///< Cached size of a dropdown widget.
+	static Dimension resizebox_dimension; ///< Cached size of a resizebox widget.
+	static Dimension closebox_dimension;  ///< Cached size of a closebox widget.
 private:
 	static Dimension shadebox_dimension;  ///< Cached size of a shadebox widget.
 	static Dimension debugbox_dimension;  ///< Cached size of a debugbox widget.
 	static Dimension defsizebox_dimension; ///< Cached size of a defsizebox widget.
 	static Dimension stickybox_dimension; ///< Cached size of a stickybox widget.
-	static Dimension resizebox_dimension; ///< Cached size of a resizebox widget.
-	static Dimension closebox_dimension;  ///< Cached size of a closebox widget.
 };
 
 /**
