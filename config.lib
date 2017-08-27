@@ -172,7 +172,7 @@ set_default() {
 		with_grfcodec
 		with_nforenum
 		with_sse
-	CC CXX CFLAGS CXXFLAGS LDFLAGS CFLAGS_BUILD CXXFLAGS_BUILD LDFLAGS_BUILD"
+	CC CXX CFLAGS CXXFLAGS LDFLAGS CFLAGS_BUILD CXXFLAGS_BUILD LDFLAGS_BUILD PKG_CONFIG_PATH PKG_CONFIG_LIBDIR"
 }
 
 detect_params() {
@@ -473,6 +473,8 @@ detect_params() {
 			CFLAGS_BUILD=* | --CFLAGS_BUILD=* | --CFLAGS-BUILD=*)     CFLAGS_BUILD="$optarg";;
 			CXXFLAGS_BUILD=* | --CXXFLAGS_BUILD=* | --CXXFLAGS-BUILD=*) CXXFLAGS_BUILD="$optarg";;
 			LDFLAGS_BUILD=* | --LDFLAGS_BUILD=* | --LDFLAGS-BUILD=*)   LDFLAGS_BUILD="$optarg";;
+			PKG_CONFIG_PATH=* | --PKG_CONFIG_PATH=* | --PKG-CONFIG-PATH=*) PKG_CONFIG_PATH="$optarg";;
+			PKG_CONFIG_LIBDIR=* | --PKG_CONFIG_LIBDIR=* | --PKG-CONFIG-LIBDIR=*) PKG_CONFIG_LIBDIR="$optarg";;
 
 			--ignore-extra-parameters)    ignore_extra_parameters="1";;
 
@@ -517,6 +519,20 @@ save_params() {
 	echo "" >> $config_log
 }
 
+# Export a variable so tools like pkg-config can see it when invoked.
+# If the variable contains an empty string then unset it.
+# $1 - name of the variable to export or unset
+export_or_unset() {
+	eval local value=\$$1
+	if [ -n "$value" ]; then
+		export $1;
+		log 2 "using $1=$value";
+	else
+		unset $1;
+		log 2 "not using $1";
+	fi
+}
+
 check_params() {
 	# Some params want to be in full uppercase, else they might not work as
 	# expected.. fix that here
@@ -524,6 +540,16 @@ check_params() {
 	endian=`echo $endian | tr '[a-z]' '[A-Z]'`
 	os=`echo $os | tr '[a-z]' '[A-Z]'`
 	cpu_type=`echo $cpu_type | tr '[a-z]' '[A-Z]'`
+
+	# Export some variables to be used by pkg-config
+	#
+	# PKG_CONFIG_LIBDIR variable musn't be set if we are not willing to
+	# override the default pkg-config search path, it musn't be an empty
+	# string. If the variable is empty (e.g. when an empty string comes
+	# from config.cache) then unset it. This way the "don't override" state
+	# will be properly preserved when (re)configuring.
+	export_or_unset PKG_CONFIG_PATH
+	export_or_unset PKG_CONFIG_LIBDIR
 
 	# Check if all params have valid values
 
@@ -3562,6 +3588,8 @@ showhelp() {
 	echo "  CFLAGS_BUILD                   C compiler flags for build time tool generation"
 	echo "  CXXFLAGS_BUILD                 C++ compiler flags for build time tool generation"
 	echo "  LDFLAGS_BUILD                  linker flags for build time tool generation"
+	echo "  PKG_CONFIG_PATH                additional library search paths (see \"man pkg-config\")"
+	echo "  PKG_CONFIG_LIBDIR              replace the default library search path (see \"man pkg-config\")"
 	echo ""
 	echo "Use these variables to override the choices made by 'configure' or to help"
 	echo "it to find libraries and programs with nonstandard names/locations."
