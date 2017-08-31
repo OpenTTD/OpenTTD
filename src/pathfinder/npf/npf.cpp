@@ -1031,12 +1031,8 @@ static NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdi
 
 	start1.tile = tile1;
 	start2.tile = tile2;
-	/* We set this in case the target is also the start tile, we will just
-	 * return a not found then */
-	start1.user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
 	start1.direction = trackdir1;
 	start2.direction = trackdir2;
-	start2.user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
 
 	return NPFRouteInternal(&start1, ignore_start_tile1, (IsValidTile(tile2) ? &start2 : NULL), ignore_start_tile2, target, NPFFindStationOrTile, NPFCalcStationOrTileHeuristic, user, 0);
 }
@@ -1063,12 +1059,8 @@ static NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Tra
 
 	start1.tile = tile1;
 	start2.tile = tile2;
-	/* We set this in case the target is also the start tile, we will just
-	 * return a not found then */
-	start1.user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
 	start1.direction = trackdir1;
 	start2.direction = trackdir2;
-	start2.user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
 
 	/* perform a breadth first search. Target is NULL,
 	 * since we are just looking for any depot...*/
@@ -1233,12 +1225,15 @@ bool NPFTrainFindNearestSafeTile(const Train *v, TileIndex tile, Trackdir trackd
 
 	AyStarNode start1;
 	start1.tile = tile;
-	/* We set this in case the target is also the start tile, we will just
-	 * return a not found then */
-	start1.user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
-	start1.user_data[NPF_NODE_FLAGS] = 0;
 	start1.direction = trackdir;
-	NPFSetFlag(&start1, NPF_FLAG_IGNORE_RESERVED, true);
+	/* FIXME: NPFRouteInternal is wiping out any flags on startup, also the
+	 * NPF_FLAG_IGNORE_RESERVED flag that was intended to be set on this line.
+	 * The flag was never set properly, since introdued in r13948. Now the line
+	 * is commented out to silence compiler warnings (using uninitialized 'flags').
+	 * Currently the NPF_FLAG_IGNORE_RESERVED is nowhere used. It has to be
+	 * decided what to do with this flag.
+	 *
+	 * NPFSetFlag(&start1, NPF_FLAG_IGNORE_RESERVED, true); */
 
 	RailTypes railtypes = v->compatible_railtypes;
 	if (override_railtype) railtypes |= GetRailTypeInfo(v->railtype)->compatible_railtypes;
