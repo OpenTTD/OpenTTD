@@ -7915,6 +7915,7 @@ static void ResetCustomAirports()
 					}
 					free(as->table);
 					free(as->depot_table);
+					free(as->rotation);
 
 					free(as);
 				}
