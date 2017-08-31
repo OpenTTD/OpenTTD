@@ -27,7 +27,7 @@
  * @param delta_z Height of the airport above the land.
  */
 #define AIRPORT_GENERIC(name, terminals, num_helipads, flags, delta_z) \
-	static AirportFTAClass _airportfta_ ## name(_airport_moving_data_ ## name, terminals, \
+	static const AirportFTAClass _airportfta_ ## name(_airport_moving_data_ ## name, terminals, \
 			num_helipads, _airport_entries_ ## name, flags, _airport_fta_ ## name, delta_z);
 
 /**

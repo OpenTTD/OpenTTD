@@ -28,7 +28,7 @@
 #define MKEND {{-0x80, 0}, 0}
 
 /** Tiles for Country Airfield (small) */
-static AirportTileTable _tile_table_country_0[] = {
+static const AirportTileTable _tile_table_country_0[] = {
 	MK(0, 0, APT_SMALL_BUILDING_1),
 	MK(1, 0, APT_SMALL_BUILDING_2),
 	MK(2, 0, APT_SMALL_BUILDING_3),
@@ -44,12 +44,12 @@ static AirportTileTable _tile_table_country_0[] = {
 	MKEND
 };
 
-static AirportTileTable *_tile_table_country[] = {
+static const AirportTileTable * const _tile_table_country[] = {
 	_tile_table_country_0,
 };
 
 /** Tiles for Commuter Airfield (small) */
-static AirportTileTable _tile_table_commuter_0[] = {
+static const AirportTileTable _tile_table_commuter_0[] = {
 	MK(0, 0, APT_TOWER),
 	MK(1, 0, APT_BUILDING_3),
 	MK(2, 0, APT_HELIPAD_2_FENCE_NW),
@@ -73,12 +73,12 @@ static AirportTileTable _tile_table_commuter_0[] = {
 	MKEND
 };
 
-static AirportTileTable *_tile_table_commuter[] = {
+static const AirportTileTable * const _tile_table_commuter[] = {
 	_tile_table_commuter_0,
 };
 
 /** Tiles for City Airport (large) */
-static AirportTileTable _tile_table_city_0[] = {
+static const AirportTileTable _tile_table_city_0[] = {
 	MK(0, 0, APT_BUILDING_1),
 	MK(1, 0, APT_APRON_FENCE_NW),
 	MK(2, 0, APT_STAND_1),
@@ -118,12 +118,12 @@ static AirportTileTable _tile_table_city_0[] = {
 	MKEND
 };
 
-static AirportTileTable *_tile_table_city[] = {
+static const AirportTileTable * const _tile_table_city[] = {
 	_tile_table_city_0,
 };
 
 /** Tiles for Metropolitain Airport (large) - 2 runways */
-static AirportTileTable _tile_table_metropolitan_0[] = {
+static const AirportTileTable _tile_table_metropolitan_0[] = {
 	MK(0, 0, APT_BUILDING_1),
 	MK(1, 0, APT_APRON_FENCE_NW),
 	MK(2, 0, APT_STAND_1),
@@ -163,12 +163,12 @@ static AirportTileTable _tile_table_metropolitan_0[] = {
 	MKEND
 };
 
-static AirportTileTable *_tile_table_metropolitan[] = {
+static const AirportTileTable * const _tile_table_metropolitan[] = {
 	_tile_table_metropolitan_0,
 };
 
 /** Tiles for International Airport (large) - 2 runways */
-static AirportTileTable _tile_table_international_0[] = {
+static const AirportTileTable _tile_table_international_0[] = {
 	MK(0, 0, APT_RUNWAY_END_FENCE_NW),
 	MK(1, 0, APT_RUNWAY_FENCE_NW),
 	MK(2, 0, APT_RUNWAY_FENCE_NW),
@@ -221,12 +221,12 @@ static AirportTileTable _tile_table_international_0[] = {
 	MKEND
 };
 
-static AirportTileTable *_tile_table_international[] = {
+static const AirportTileTable * const _tile_table_international[] = {
 	_tile_table_international_0,
 };
 
 /** Tiles for International Airport (large) - 2 runways */
-static AirportTileTable _tile_table_intercontinental_0[] = {
+static const AirportTileTable _tile_table_intercontinental_0[] = {
 	MK(0, 0, APT_RADAR_FENCE_NE),
 	MK(1, 0, APT_RUNWAY_END_FENCE_NE_NW),
 	MK(2, 0, APT_RUNWAY_FENCE_NW),
@@ -329,22 +329,22 @@ static AirportTileTable _tile_table_intercontinental_0[] = {
 	MKEND
 };
 
-static AirportTileTable *_tile_table_intercontinental[] = {
+static const AirportTileTable * const _tile_table_intercontinental[] = {
 	_tile_table_intercontinental_0,
 };
 
 /** Tiles for Heliport */
-static AirportTileTable _tile_table_heliport_0[] = {
+static const AirportTileTable _tile_table_heliport_0[] = {
 	MK(0, 0, APT_HELIPORT),
 	MKEND
 };
 
-static AirportTileTable *_tile_table_heliport[] = {
+static const AirportTileTable * const _tile_table_heliport[] = {
 	_tile_table_heliport_0,
 };
 
 /** Tiles for Helidepot */
-static AirportTileTable _tile_table_helidepot_0[] = {
+static const AirportTileTable _tile_table_helidepot_0[] = {
 	MK(0, 0, APT_LOW_BUILDING_FENCE_N),
 	MK(1, 0, APT_DEPOT_SE),
 	MK(0, 1, APT_HELIPAD_2_FENCE_NE_SE),
@@ -352,12 +352,12 @@ static AirportTileTable _tile_table_helidepot_0[] = {
 	MKEND
 };
 
-static AirportTileTable *_tile_table_helidepot[] = {
+static const AirportTileTable * const _tile_table_helidepot[] = {
 	_tile_table_helidepot_0,
 };
 
 /** Tiles for Helistation */
-static AirportTileTable _tile_table_helistation_0[] = {
+static const AirportTileTable _tile_table_helistation_0[] = {
 	MK(0, 0, APT_DEPOT_SE),
 	MK(1, 0, APT_LOW_BUILDING_FENCE_NW),
 	MK(2, 0, APT_HELIPAD_3_FENCE_NW),
@@ -369,11 +369,11 @@ static AirportTileTable _tile_table_helistation_0[] = {
 	MKEND
 };
 
-static AirportTileTable *_tile_table_helistation[] = {
+static const AirportTileTable * const _tile_table_helistation[] = {
 	_tile_table_helistation_0,
 };
 
-static Direction _default_airports_rotation[] = {
+static const Direction _default_airports_rotation[] = {
 	DIR_N,
 };
 
@@ -410,7 +410,7 @@ extern const AirportSpec _origin_airport_specs[] = {
 
 assert_compile(NEW_AIRPORT_OFFSET == lengthof(_origin_airport_specs));
 
-AirportSpec AirportSpec::dummy = AS_GENERIC(&_airportfta_dummy, NULL, _default_airports_rotation, 0, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, 0, ATP_TTDP_LARGE, APC_BEGIN, STR_NULL, 0, false);
+const AirportSpec AirportSpec::dummy = AS_GENERIC(&_airportfta_dummy, NULL, _default_airports_rotation, 0, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, 0, ATP_TTDP_LARGE, APC_BEGIN, STR_NULL, 0, false);
 
 #undef AS
 #undef AS_ND

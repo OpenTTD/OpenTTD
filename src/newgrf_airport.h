@@ -100,7 +100,7 @@ struct HangarTileTable {
 struct AirportSpec {
 	const struct AirportFTAClass *fsm;     ///< the finite statemachine for the default airports
 	const AirportTileTable * const *table; ///< list of the tiles composing the airport
-	Direction *rotation;                   ///< the rotation of each tiletable
+	const Direction *rotation;             ///< the rotation of each tiletable
 	byte num_table;                        ///< number of elements in the table
 	const HangarTileTable *depot_table;    ///< gives the position of the depots on the airports
 	byte nof_depots;                       ///< the number of hangar tiles in this airport
@@ -133,7 +133,7 @@ struct AirportSpec {
 		return (byte)(this - specs);
 	}
 
-	static AirportSpec dummy; ///< The dummy airport.
+	static const AirportSpec dummy; ///< The dummy airport.
 
 private:
 	static AirportSpec specs[NUM_AIRPORTS]; ///< Specs of the airports.
