@@ -985,8 +985,8 @@ STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Elegir el tamaño de los elementos de la interfaz
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Tamaño doble
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Tamaño cuádruple
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Doble
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Cuádruple
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Elegir los gráficos base
@@ -1305,7 +1305,7 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Nivel de inicio
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :En los mapas de clima Subártico, la elevación a la cual la nieve comienza. La nieve también afecta a la generación de industrias y a los requisitos de crecimiento de los pueblos
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregularidad del terreno: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Solo TerraGenesis) Cantidad de colinas: los terrenos más planos tienen menos colinas, aunque suelen ser más extensas. Los terrenos más accidentados tienen múltiples colinas, lo cual puede resultar repetitivo
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy Suave
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rugoso
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muy rugoso
@@ -1759,7 +1759,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elegir m
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Mostrar las opciones de juego
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostrar tabla de puntuaciones
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Mostrar configuración
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Muestra configuración de NewGRF
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostrar configuración de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Revisar si hay nuevos contenidos actualizados para descargar
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostrar configuración de scripts
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Salir de 'OpenTTD'
