@@ -168,7 +168,7 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}TOD
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA}{NBSP}pasajero{P "" s}
 STR_BAGS                                                        :{COMMA}{NBSP}bolsa{P "" s}
-STR_TONS                                                        :{COMMA}{NBSP}tonelada{P "" s}
+STR_TONS                                                        :{G=f}{COMMA}{NBSP}tonelada{P "" s}
 STR_LITERS                                                      :{COMMA}{NBSP}litro{P "" s}
 STR_ITEMS                                                       :{COMMA}{NBSP}artículo{P "" s}
 STR_CRATES                                                      :{COMMA}{NBSP}caja{P "" s}
@@ -204,8 +204,8 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}tonelada{P "" s}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}tonelada{P "" s}
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{G=f}{COMMA}{NBSP}tonelada{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{G=f}{COMMA}{NBSP}tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
@@ -683,7 +683,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clic en 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clic en la pista de música para quitarla del programa actual (solo Personal 1 y 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Lista de empresas que han alcanzado {NUM}
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Lista de empresas que han llegado a {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabla de clasificación de empresas en {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Hombre de negocios
@@ -1065,7 +1065,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personalizado (
 
 STR_RIVERS_NONE                                                 :Ninguno
 STR_RIVERS_FEW                                                  :Muy pocos
-STR_RIVERS_MODERATE                                             :Regular
+STR_RIVERS_MODERATE                                             :Algunos
 STR_RIVERS_LOT                                                  :Muchos
 
 STR_DISASTER_NONE                                               :Ninguno
@@ -2317,12 +2317,12 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcción d
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir tramo de vías férreas en una orientación. Ctrl quita o coloca vías. Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir tramo de vías férreas con orientación automática. Ctrl quita o coloca vías. Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito de trenes (para comprar y dar mantenimiento a trenes). Mayús muestra una estimación del precio
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir puesto guía sobre vías férreas. Ctrl activa la unión de puestos guías. Mayús muestra una estimación del precio
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir punto guía sobre vías férreas. Ctrl activa la unión de puntos guías. Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estación de ferrocarril. Ctrl activa la ampliación de estaciones. Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Instalar señales de ferrocarril. Ctrl cambia entre señales mecánicas y eléctricas{}Al arrastrar sobre las vías se instalan señales a lo largo de un tramo recto elegido. Ctrl instala señales hasta el siguiente desvío u otra señal{}Ctrl+Clic cambia a la herramienta de selección de señales. Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir puente de ferrocarril. Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel de ferrocarril. Mayús muestra una estimación del precio
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Quitar vías férreas, señales, estaciones y puestos guías. Al mantener pulsado Ctrl se quitan también las vías al retirar estaciones o puestos guías
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Quitar vías férreas, señales, estaciones y puntos guías. Al mantener pulsado Ctrl se quitan también las vías al retirar estaciones o puntos guías
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir o actualizar tipos de vías férreas. Mayús muestra una estimación del precio
 
 STR_RAIL_NAME_RAILROAD                                          :Ferrocarril
@@ -3857,7 +3857,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 STR_ORDER_IMPLICIT                                              :(Implícito)
 
-STR_ORDER_FULL_LOAD                                             :(Llenar)
+STR_ORDER_FULL_LOAD                                             :(Llenar todo)
 STR_ORDER_FULL_LOAD_ANY                                         :(Llenar cualquiera)
 STR_ORDER_NO_LOAD                                               :(No cargar)
 STR_ORDER_UNLOAD                                                :(Descargar y cargar)
@@ -4495,7 +4495,7 @@ STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Edificio de ofi
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Conjunto habitacional pequeño
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Iglesia
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Complejo de oficinas
-STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Casas del pueblo
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Casas de pueblo
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hotel
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Estatua
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Fuente
@@ -4876,7 +4876,7 @@ STR_FORMAT_COMPANY_NUM                                          :(Empresa {COMMA
 STR_FORMAT_GROUP_NAME                                           :Grupo {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING}, {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Punto guía, {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Puesto guía #{1:COMMA}, {0:TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Punto guía #{1:COMMA}, {0:TOWN}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depósito de trenes, {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Depósito de trenes #{1:COMMA}, {0:TOWN}
