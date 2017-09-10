@@ -562,20 +562,25 @@ DEF_CONSOLE_CMD(ConUnBan)
 
 	if (argc != 2) return false;
 
-	uint index = (strchr(argv[1], '.') == NULL) ? atoi(argv[1]) : 0;
-	index--;
-	uint i = 0;
-
-	for (char **iter = _network_ban_list.Begin(); iter != _network_ban_list.End(); iter++, i++) {
-		if (strcmp(_network_ban_list[i], argv[1]) == 0 || index == i) {
-			free(_network_ban_list[i]);
-			_network_ban_list.Erase(iter);
-			IConsolePrint(CC_DEFAULT, "IP unbanned.");
-			return true;
-		}
+	/* Try by IP. */
+	uint index;
+	for (index = 0; index < _network_ban_list.Length(); index++) {
+		if (strcmp(_network_ban_list[index], argv[1]) == 0) break;
 	}
 
-	IConsolePrint(CC_DEFAULT, "IP not in ban-list.");
+	/* Try by index. */
+	if (index >= _network_ban_list.Length()) {
+		index = atoi(argv[1]) - 1U; // let it wrap
+	}
+
+	if (index < _network_ban_list.Length()) {
+		free(_network_ban_list[index]);
+		_network_ban_list.Erase(_network_ban_list.Get(index));
+		IConsolePrint(CC_DEFAULT, "IP unbanned.");
+	} else {
+		IConsolePrint(CC_DEFAULT, "IP not in ban-list.");
+	}
+
 	return true;
 }
 
