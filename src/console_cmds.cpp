@@ -553,9 +553,8 @@ DEF_CONSOLE_CMD(ConBan)
 
 DEF_CONSOLE_CMD(ConUnBan)
 {
-
 	if (argc == 0) {
-		IConsoleHelp("Unban a client from a network game. Usage: 'unban <ip | client-id>'");
+		IConsoleHelp("Unban a client from a network game. Usage: 'unban <ip | banlist-index>'");
 		IConsoleHelp("For a list of banned IP's, see the command 'banlist'");
 		return true;
 	}
@@ -574,11 +573,14 @@ DEF_CONSOLE_CMD(ConUnBan)
 	}
 
 	if (index < _network_ban_list.Length()) {
+		char msg[64];
+		seprintf(msg, lastof(msg), "Unbanned %s", _network_ban_list[index]);
+		IConsolePrint(CC_DEFAULT, msg);
 		free(_network_ban_list[index]);
 		_network_ban_list.Erase(_network_ban_list.Get(index));
-		IConsolePrint(CC_DEFAULT, "IP unbanned.");
 	} else {
-		IConsolePrint(CC_DEFAULT, "IP not in ban-list.");
+		IConsolePrint(CC_DEFAULT, "Invalid list index or IP not in ban-list.");
+		IConsolePrint(CC_DEFAULT, "For a list of banned IP's, see the command 'banlist'");
 	}
 
 	return true;
