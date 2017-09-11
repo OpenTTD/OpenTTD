@@ -75,6 +75,7 @@
 //
 // The real data of the GRF is acquired from several subfiles.
 //
+#include "chars_orig_extra.nfo"
 #include "shore.nfo"
 #include "fix_graphics.nfo"
 #include "canals_extra.nfo"
