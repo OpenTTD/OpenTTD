@@ -383,7 +383,7 @@ typedef unsigned char byte;
 /* Compile time assertions. Prefer c++0x static_assert().
  * Older compilers cannot evaluate some expressions at compile time,
  * typically when templates are involved, try assert_tcompile() in those cases. */
-#if defined(__STDCXX_VERSION__) || defined(__GXX_EXPERIMENTAL_CXX0X__) || defined(__GXX_EXPERIMENTAL_CPP0X__) || defined(static_assert)
+#if defined(__STDCXX_VERSION__) || defined(__GXX_EXPERIMENTAL_CXX0X__) || defined(__GXX_EXPERIMENTAL_CPP0X__) || defined(static_assert) || (defined(_MSC_VER) && _MSC_VER >= 1600)
 	/* __STDCXX_VERSION__ is c++0x feature macro, __GXX_EXPERIMENTAL_CXX0X__ is used by gcc, __GXX_EXPERIMENTAL_CPP0X__ by icc */
 	#define assert_compile(expr) static_assert(expr, #expr )
 	#define assert_tcompile(expr) assert_compile(expr)

@@ -37,7 +37,7 @@ struct ParentSpriteToDraw {
 	int32 left;                     ///< minimal screen X coordinate of sprite (= x + sprite->x_offs), reference point for child sprites
 	int32 top;                      ///< minimal screen Y coordinate of sprite (= y + sprite->y_offs), reference point for child sprites
 
-	int first_child;                ///< the first child to draw.
+	int32 first_child;              ///< the first child to draw.
 	bool comparison_done;           ///< Used during sprite sorting: true if sprite has been compared with all other sprites
 };
 
