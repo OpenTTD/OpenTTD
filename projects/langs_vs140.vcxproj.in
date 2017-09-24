@@ -50,7 +50,7 @@
 !!FILES!!
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="strgen_vs100.vcxproj">
+    <ProjectReference Include="strgen_vs140.vcxproj">
       <Project>{a133a442-bd0a-4ade-b117-ad7545e4bdd1}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
