@@ -10,6 +10,15 @@ Option Explicit
 Dim FSO
 Set FSO = CreateObject("Scripting.FileSystemObject")
 
+' openttd_vs150.sln             is for MSVC 2017
+' openttd_vs150.vcxproj         is for MSVC 2017
+' openttd_vs150.vcxproj.filters is for MSVC 2017
+' langs_vs150.vcxproj           is for MSVC 2017
+' strgen_vs150.vcxproj          is for MSVC 2017
+' strgen_vs150.vcxproj.filters  is for MSVC 2017
+' generate_vs150.vcxproj        is for MSVC 2017
+' version_vs150.vcxproj         is for MSVC 2017
+
 ' openttd_vs140.sln             is for MSVC 2015
 ' openttd_vs140.vcxproj         is for MSVC 2015
 ' openttd_vs140.vcxproj.filters is for MSVC 2015
@@ -380,6 +389,8 @@ generate openttdvcxproj, ROOT_DIR & "/projects/openttd_vs100.vcxproj", Null
 generate openttdfiles, ROOT_DIR & "/projects/openttd_vs100.vcxproj.filters", openttdfilters
 generate openttdvcxproj, ROOT_DIR & "/projects/openttd_vs140.vcxproj", Null
 generate openttdfiles, ROOT_DIR & "/projects/openttd_vs140.vcxproj.filters", openttdfilters
+generate openttdvcxproj, ROOT_DIR & "/projects/openttd_vs150.vcxproj", Null
+generate openttdfiles, ROOT_DIR & "/projects/openttd_vs150.vcxproj.filters", openttdfilters
 
 Dim lang, langvcxproj, langfiles
 lang = load_lang_data(ROOT_DIR & "/src/lang", langvcxproj, langfiles)
@@ -389,6 +400,8 @@ generate langvcxproj, ROOT_DIR & "/projects/langs_vs100.vcxproj", Null
 generate langfiles, ROOT_DIR & "/projects/langs_vs100.vcxproj.filters", Null
 generate langvcxproj, ROOT_DIR & "/projects/langs_vs140.vcxproj", Null
 generate langfiles, ROOT_DIR & "/projects/langs_vs140.vcxproj.filters", Null
+generate langvcxproj, ROOT_DIR & "/projects/langs_vs150.vcxproj", Null
+generate langfiles, ROOT_DIR & "/projects/langs_vs150.vcxproj.filters", Null
 
 Dim settings, settingsvcxproj, settingscommand, settingsfiles
 settings = load_settings_data(ROOT_DIR & "/src/table", settingsvcxproj, settingscommand, settingsfiles)
@@ -398,3 +411,5 @@ generate settingsvcxproj, ROOT_DIR & "/projects/settings_vs100.vcxproj", setting
 generate settingsfiles, ROOT_DIR & "/projects/settings_vs100.vcxproj.filters", Null
 generate settingsvcxproj, ROOT_DIR & "/projects/settings_vs140.vcxproj", settingscommand
 generate settingsfiles, ROOT_DIR & "/projects/settings_vs140.vcxproj.filters", Null
+generate settingsvcxproj, ROOT_DIR & "/projects/settings_vs150.vcxproj", settingscommand
+generate settingsfiles, ROOT_DIR & "/projects/settings_vs150.vcxproj.filters", Null

@@ -22,6 +22,15 @@ then
 	exit 1
 fi
 
+# openttd_vs150.sln             is for MSVC 2017
+# openttd_vs150.vcxproj         is for MSVC 2017
+# openttd_vs150.vcxproj.filters is for MSVC 2017
+# langs_vs150.vcxproj           is for MSVC 2017
+# strgen_vs150.vcxproj          is for MSVC 2017
+# strgen_vs150.vcxproj.filters  is for MSVC 2017
+# generate_vs150.vcxproj        is for MSVC 2017
+# version_vs150.vcxproj         is for MSVC 2017
+
 # openttd_vs140.sln             is for MSVC 2015
 # openttd_vs140.vcxproj         is for MSVC 2015
 # openttd_vs140.vcxproj.filters is for MSVC 2015
@@ -317,15 +326,21 @@ generate "$openttdvcxproj" "openttd_vs100.vcxproj"
 generate "$openttdfiles" "openttd_vs100.vcxproj.filters" "$openttdfilters"
 generate "$openttdvcxproj" "openttd_vs140.vcxproj"
 generate "$openttdfiles" "openttd_vs140.vcxproj.filters" "$openttdfilters"
+generate "$openttdvcxproj" "openttd_vs150.vcxproj"
+generate "$openttdfiles" "openttd_vs150.vcxproj.filters" "$openttdfilters"
 generate "$lang" "langs_vs80.vcproj"
 generate "$lang" "langs_vs90.vcproj"
 generate "$langvcxproj" "langs_vs100.vcxproj"
 generate "$langfiles" "langs_vs100.vcxproj.filters"
 generate "$langvcxproj" "langs_vs140.vcxproj"
 generate "$langfiles" "langs_vs140.vcxproj.filters"
+generate "$langvcxproj" "langs_vs150.vcxproj"
+generate "$langfiles" "langs_vs150.vcxproj.filters"
 generate "$settings" "settings_vs80.vcproj" "$settingscommand"
 generate "$settings" "settings_vs90.vcproj" "$settingscommand"
 generate "$settingsvcxproj" "settings_vs100.vcxproj" "$settingscommand"
 generate "$settingsfiles" "settings_vs100.vcxproj.filters"
 generate "$settingsvcxproj" "settings_vs140.vcxproj" "$settingscommand"
 generate "$settingsfiles" "settings_vs140.vcxproj.filters"
+generate "$settingsvcxproj" "settings_vs150.vcxproj" "$settingscommand"
+generate "$settingsfiles" "settings_vs150.vcxproj.filters"
