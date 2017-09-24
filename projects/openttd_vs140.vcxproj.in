@@ -327,15 +327,15 @@
     <None Include="..\readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="langs_vs100.vcxproj">
+    <ProjectReference Include="langs_vs140.vcxproj">
       <Project>{0f066b23-18df-4284-8265-f4a5e7e3b966}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="strgen_vs100.vcxproj">
+    <ProjectReference Include="strgen_vs140.vcxproj">
       <Project>{a133a442-bd0a-4ade-b117-ad7545e4bdd1}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="version_vs100.vcxproj">
+    <ProjectReference Include="version_vs140.vcxproj">
       <Project>{1a2b3c5e-1c23-41a5-9c9b-acba2aa75fec}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
