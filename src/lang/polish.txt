@@ -757,7 +757,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ustawienia NewG
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcje przeźroczystości
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Wyświetlanie nazw miast
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Wyświetlanie nazw stacji
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wyświetlanie nazw pkt. orientacyjnych
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wyświetlanie nazw posterunków
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Wyświetlanie napisów
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Znaki konkurentów i nazwy są wyświetlane
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Pełna animacja
@@ -1009,7 +1009,7 @@ STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Ilość 
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Ilość zarobionych pieniędzy w kwartale z największym zyskiem z ostatnich 12 kwartałów
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Ilość ładunku przewiezionego w poprzednich 4 kwartałach
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Ilość różnych typów ładunku przewiezionych w ostatnim kwartale
-STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ilość pieniędzy w ręku
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ilość dostępnych środków pieniężnych
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Wielkość pożyczki wziętej przez firmę
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Suma przyznanych punktów
 
@@ -1781,7 +1781,7 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :W tabelach czas
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Pokazuj przyjazdy i odjazdy w rozkładach: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Wyświetlanie przewidywanego przyjazdu i odjazdu w rozkładach
 STR_CONFIG_SETTING_QUICKGOTO                                    :Szybkie tworzenie poleceń pojazdu: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Po wybraniu stacji docelowej automatycznie włącz ponownie narzędzie 'idź do'
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Po wybraniu stacji docelowej automatycznie włącz ponownie narzędzie 'jedź do'
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Domyślny typ torów: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Rodzaj torów wybierany przy rozpoczęciu lub załadowaniu gry. 'Pierwszy dostępny' wybiera najstarszy rodzaj torów, 'najnowszy' wybiera najnowszy rodzaj torów, a 'najczęściej używany' wybiera ten, który jest używany najczęściej
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :pierwszy dostępny
@@ -2696,12 +2696,12 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Konstrukcja lin
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Budowa torów kolejowych. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Zbuduj tory kolejowe za pomocą trybu Autotory. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Budowa warsztatów (do kupowania i serwisowania pociągów). Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Zamiana torów na pkt. orientacyjny. Ctrl umożliwia łączenie pkt. orientacyjnych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Zamiana torów na posterunek. Ctrl umożliwia łączenie posterunków. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Zbuduj stację kolejową. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zbuduj sygnały kolejowe. Ctrl przełącza semafory/sygnały świetlne{}Przeciągnięcie pozwala na budowę sygnałów wzdłuż prostej linii torów. Ctrl pozwala na budowę sygnałów do następnego skrzyżowania{}Ctrl+klik przełącza do okna wyboru sygnałów. Shift przełącza pomiędzy budowaniem a szacowaniem kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zbuduj most kolejowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zbuduj tunel kolejowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Przełącz buduj/usuń dla torów kolejowych, sygnałów, pkt. orientacyjnych i stacji. Przetrzymanie Ctrl usuwa także tory kolejowe z pkt. orientacyjnych i stacji
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Przełącz buduj/usuń dla torów kolejowych, sygnałów, posterunków i stacji. Przetrzymanie Ctrl usuwa także tory kolejowe z posterunków i stacji
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Zamiana typu torów. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 
 STR_RAIL_NAME_RAILROAD                                          :Kolej
@@ -2714,8 +2714,8 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Ukierunk
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Wybierz ukierunkowanie warsztatów
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{WHITE}Pkt. orientacyjny
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Wybierz typ pkt. orientacyjnego
+STR_WAYPOINT_CAPTION                                            :{WHITE}Posterunek
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Wybierz typ posterunku
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Wybór stacji
@@ -2732,7 +2732,7 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Wybierz 
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Wybierz typ stacji do zbudowania
 
 STR_STATION_CLASS_DFLT                                          :Typowa stacja
-STR_STATION_CLASS_WAYP                                          :Pkt. orientacyjne
+STR_STATION_CLASS_WAYP                                          :Posterunki
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Wybór sygnałów
@@ -3553,8 +3553,8 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nie zezw
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centruj główny widok na pkt. orientacyjnym. Ctrl+klik otwiera nowy podgląd na lokacji pkt. orientacyjnego
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmień nazwę pkt. orientacyjnego
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centruj główny widok na posterunku. Ctrl+klik otwiera nowy podgląd na lokacji posterunku
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmień nazwę posterunku
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centruj główny widok na pozycji boi. Ctrl+klik otwiera nowy podgląd na lokacji boi
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Zmień nazwę boji
 
@@ -4144,10 +4144,10 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koniec wsp�
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
-STR_ORDER_GO_TO                                                 :Idź do
-STR_ORDER_GO_NON_STOP_TO                                        :Idź bez przerwy do
-STR_ORDER_GO_VIA                                                :Idź przez
-STR_ORDER_GO_NON_STOP_VIA                                       :Idź bez przerwy przez
+STR_ORDER_GO_TO                                                 :Jedź do
+STR_ORDER_GO_NON_STOP_TO                                        :Jedź bez przerwy do
+STR_ORDER_GO_VIA                                                :Jedź przez
+STR_ORDER_GO_NON_STOP_VIA                                       :Jedź bez przerwy przez
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmień sposób przejazdu w podświetlonym poleceniu
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pełny załadunek któregoś z towarów
@@ -4158,9 +4158,9 @@ STR_ORDER_DROP_NO_LOADING                                       :Nie ładować
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Zmień sposób załadunku w podświetlonym poleceniu
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Rozładuj i załaduj
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Wyładuj jeśli akceptowane
-STR_ORDER_DROP_UNLOAD                                           :Rozładuj i załaduj
-STR_ORDER_DROP_TRANSFER                                         :Przeładunek
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Rozładuj jeśli akceptowane
+STR_ORDER_DROP_UNLOAD                                           :Rozładuj wszystko
+STR_ORDER_DROP_TRANSFER                                         :Pozostaw do przeładunku
 STR_ORDER_DROP_NO_UNLOADING                                     :Nie rozładowuj
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Zmień sposób wyładunku w podświetlonym poleceniu
 
@@ -4210,8 +4210,8 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Usuń ws
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Przestań dzielić
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Przestań dzielić listę poleceń. Ctrl+Klik dodatkowo usuwa wszystkie polecenia tego pojazdu
 
-STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idź do
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idź do najbliższego serwisu
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Jedź do
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Jedź do najbliższego serwisu
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Leć do najbliższego hangaru
 STR_ORDER_CONDITIONAL                                           :Warunkowy skok poleceń
 STR_ORDER_SHARE                                                 :Współdzielenie poleceń
@@ -4220,8 +4220,8 @@ STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw no
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Pokaż wszystkie pojazdy współdzielące te polecenia
 
 # String parts to build the order string
-STR_ORDER_GO_TO_WAYPOINT                                        :Idź przez {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Idź bez zatrzymywania przez {WAYPOINT}
+STR_ORDER_GO_TO_WAYPOINT                                        :Jedź przez {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Jedź bez zatrzymywania przez {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Serwisuj w
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Serwisuj non-stop w
@@ -4240,7 +4240,7 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Sugerujący)
+STR_ORDER_IMPLICIT                                              :(zasugerowany)
 
 STR_ORDER_FULL_LOAD                                             :(Pełny załadunek)
 STR_ORDER_FULL_LOAD_ANY                                         :(Pełny załadunek dowolnego towaru)
