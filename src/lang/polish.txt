@@ -790,7 +790,7 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsydia
 ############ range ends here
 
 ############ range for graph menu starts
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Wykres obrotu
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Wykres dochodów
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Wykres przychodów
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Wykres przewożonego ładunku
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Ocena działalności firmy
@@ -1520,7 +1520,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :wyśrodkowany
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :z prawej strony
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksymalna wysokość początkowej pożyczki: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksymalna wysokość pożyczki jaką firma może zaciągnąć (nie uwzględnia inflacji)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksymalna wysokość pożyczki, jaką firma może zaciągnąć (bez uwzględnienia inflacji)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Oprocentowanie: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Oprocentowanie pożyczki; kontroluje też inflację, jeśli jest włączona
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Koszty amortyzacji: {STRING}
@@ -1858,7 +1858,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Wyłącz serwis
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Kiedy włączone, pojazdy nie są serwisowane, jeśli nie mogą się popsuć
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Włącz limity prędkości wagonów: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiedy włączone, użyj także ograniczenia prędkości dla wagonów do obliczenia maksymalnej prędkości pociągu
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Zabroń korzystania z kolei elektrycznych: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Tylko jeden rodzaj torów: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Włączając to ustawienie, nie jest już wymagane elektryfikowanie torów, aby elektrowozy mogły po nich jeździć
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Przybycie pierwszego pojazdu do stacji gracza: {STRING}
@@ -2004,7 +2004,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymetrycznie"
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Dokładność dystrybucji: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Im wyżej ustawisz, tym wiecej czasu zajmie procesorowi obliczenie wykresu. Jeśli zajmuje zbyt dużo czasu, może pojawić sie lag. Natomiast zbyt mała ilość powoduje niedokładną dystrybucję, co można zauważyć gdy towar nie jest wysyłany do miejsc do których się spodziewasz aby dotarł.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Wpływ odległości na dystrybucję: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Jeśli ustawisz tę wartość na więcej niż 0, to dystans pomiędzy stacją początkową A jakiegoś towaru a prawdopodobną stacją docelową B będzie miało wpływ na ilość towaru wysłanego z A do B. Im dalej z A do B, tym mniej towaru zostanie wysłane. Im wększa wartość, tym mniej towaru będzie wysłane do dalekich stacji, a więcej towaru będzie wysłane do bliższych stacji.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Jeśli ładunki z jednej stacji trafiają na kilka różnych stacji, na ich dystrybucję wpływ ma odległość. Im wyższą wartość ustawisz, tym bliższe stacje będą preferowane. Zerowa wartość ustawienia sprawi, że odległość nie będzie wpływała na podział dystrybucji.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Ilość powracającego ładunku dla trybu symetrycznego: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Ustawiając to na mniej niż 100% powoduje, że symetryczna dystrybucja zachowuje się podobnie do asymetrycznej. Mniej towaru będzie zwróconego jeśli pewna ilość zostanie wysłana do stacji. Jeśli ustawisz to na 0%, to symetryczna dystrybucja zachowuje się jak asymetryczna.
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Zapełnienie krótkich tras przed wybraniem tras o dużej przepustowości: {STRING}
@@ -2684,8 +2684,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Zasoby: 
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Połącz stację
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Zbuduj oddzielną stację
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Połącz pkt. orientacyjne
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Zbuduj oddzielny pkt. orientacyjny
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Połącz posterunki
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Zbuduj oddzielny posterunek
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Konstrukcja linii kolejowej
@@ -3030,7 +3030,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Stacja załadun
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Przystanek
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Port
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boja
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Pkt. orientacyjny
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Posterunek
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Woda
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kanał
@@ -4640,15 +4640,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Należy 
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Należy najpierw usunąć lotnisko
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Przylega do więcej niż jednego istniejącego pkt. orientacyjnego
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Zbyt blisko innego pkt. orientacyjnego
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Przylega do więcej niż jednego istniejącego posterunku
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Zbyt blisko innego posterunku
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Nie można budować tutaj punktu orientacyjnego...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nie można tutaj ustawić boi...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nie można zmienić nazwy pkt. orientacyjnego...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nie można zmienić nazwy posterunku...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nie można usunąć stąd kolejowego punktu orientacyjnego...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Musisz usunąć najpierw punkt nawigacyjny
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nie można usunąć stąd posterunku kolejowego...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Musisz usunąć najpierw posterunek kolejowy
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boja na drodze
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boja w użyciu przez inna firmę!
 
