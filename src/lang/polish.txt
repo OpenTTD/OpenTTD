@@ -1781,7 +1781,7 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :W tabelach czas
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Pokazuj przyjazdy i odjazdy w rozkładach: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Wyświetlanie przewidywanego przyjazdu i odjazdu w rozkładach
 STR_CONFIG_SETTING_QUICKGOTO                                    :Szybkie tworzenie poleceń pojazdu: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Po wybraniu stacji docelowej automatycznie włącz ponownie narzędzie 'jedź do'
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Po wybraniu stacji docelowej automatycznie włącz ponownie narzędzie 'idź do'
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Domyślny typ torów: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Rodzaj torów wybierany przy rozpoczęciu lub załadowaniu gry. 'Pierwszy dostępny' wybiera najstarszy rodzaj torów, 'najnowszy' wybiera najnowszy rodzaj torów, a 'najczęściej używany' wybiera ten, który jest używany najczęściej
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :pierwszy dostępny
@@ -1859,7 +1859,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Kiedy włączon
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Włącz limity prędkości wagonów: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiedy włączone, użyj także ograniczenia prędkości dla wagonów do obliczenia maksymalnej prędkości pociągu
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Tylko jeden rodzaj torów: {STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Włączając to ustawienie, nie jest już wymagane elektryfikowanie torów, aby elektrowozy mogły po nich jeździć
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Przy włączonym ustawieniu nie jest już wymagane elektryfikowanie torów, aby elektrowozy mogły po nich jeździć
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Przybycie pierwszego pojazdu do stacji gracza: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Wyświetl wiadomość w gazecie kiedy pierwszy pojazd dojedzie do stacji gracza
@@ -1903,8 +1903,8 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Pozwól na łag
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Kiedy włączone, produkcja zakładów zmienia się częściej, ale mniejszymi krokami. To ustawienie zazwyczaj nie daje żadnego efektu, jeśli typy zakładów są pobierane z NewGRFów
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Pozwól kupować udziały w innych firmach: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Kiedy włączone, pozwala na kupowanie i sprzedawanie udziałów w firmie. Udziały będą dostępne tylko dla firm z odpowiednim stażem
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Udział w zyskach w przypadku częściowego transportu (przeładunku): {STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Udział procentowy dochodu pośrednika otrzymywany za transfer towaru. Umożliwia kontrolę nad całościowym dochodem za dowóz towarów w łańcuchu dowozowym
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Podział przychodów w przypadku przeładunków: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Manipulowanie zrównoważeniem podziałów w łańcuchu dowozowym: przy 0% przychód zostanie zaksięgowany na konto wyłącznie ostatniego pojazdu w łańcuchu, wyższa wartość zwiększa zrównoważenie podziału
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Podczas przeciągania ustaw semafor co: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Ustaw dystans, na jakim semafory będą budowane przy torach aż do następnej przeszkody (semafor, zwrotnica), przy przeciąganiu
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} p{P ole ola ól}
@@ -2413,7 +2413,7 @@ STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nazwa f
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Inauguracja: {WHITE}{NUM}
 STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Wartość firmy: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Bieżący bilans: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Przychód w ostatnim roku: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Dochód w ostatnim roku: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Wydajność: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Pojazdy: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -2424,7 +2424,7 @@ STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nowa fir
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Rozpoczęcie działalności nowej firmy
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Obserwuj grę
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Oglądaj grę jako widz
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Połącz z firmą
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Dołącz do firmy
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Pomóż zarządzać tą firmą
 
 # Network connecting window
@@ -4144,10 +4144,10 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koniec wsp�
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
-STR_ORDER_GO_TO                                                 :Jedź do
-STR_ORDER_GO_NON_STOP_TO                                        :Jedź bez przerwy do
-STR_ORDER_GO_VIA                                                :Jedź przez
-STR_ORDER_GO_NON_STOP_VIA                                       :Jedź bez przerwy przez
+STR_ORDER_GO_TO                                                 :Idź do
+STR_ORDER_GO_NON_STOP_TO                                        :Idź bezpośrednio do
+STR_ORDER_GO_VIA                                                :Idź przez
+STR_ORDER_GO_NON_STOP_VIA                                       :Idź bezpośrednio poprzez
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmień sposób przejazdu w podświetlonym poleceniu
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pełny załadunek któregoś z towarów
@@ -4210,8 +4210,8 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Usuń ws
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Przestań dzielić
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Przestań dzielić listę poleceń. Ctrl+Klik dodatkowo usuwa wszystkie polecenia tego pojazdu
 
-STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Jedź do
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Jedź do najbliższego serwisu
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idź do
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idź do najbliższego serwisu
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Leć do najbliższego hangaru
 STR_ORDER_CONDITIONAL                                           :Warunkowy skok poleceń
 STR_ORDER_SHARE                                                 :Współdzielenie poleceń
@@ -4220,8 +4220,8 @@ STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw no
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Pokaż wszystkie pojazdy współdzielące te polecenia
 
 # String parts to build the order string
-STR_ORDER_GO_TO_WAYPOINT                                        :Jedź przez {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Jedź bez zatrzymywania przez {WAYPOINT}
+STR_ORDER_GO_TO_WAYPOINT                                        :Idź przez {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Idź bezpośrednio poprzez {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Serwisuj w
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Serwisuj non-stop w
@@ -4240,7 +4240,7 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(zasugerowany)
+STR_ORDER_IMPLICIT                                              :(sugerowany)
 
 STR_ORDER_FULL_LOAD                                             :(Pełny załadunek)
 STR_ORDER_FULL_LOAD_ANY                                         :(Pełny załadunek dowolnego towaru)
