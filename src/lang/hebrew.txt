@@ -1387,6 +1387,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :כבוי
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :גלילה בלחיצה שמאלית: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :אפשר גלילת המפה באמצעות גרירתה עם כפתור העכבר השמאלי. אפשרות זו שימושית במיוחד בעת שימוש במסך מגע לצורך גלילה
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :סגירת חלון בכפתור ימני: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :סוגר חלון על-ידי לחיצה ימנית בתוכו. מבטל הצגת מידע בלחיצה ימנית!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :שמירה אוטומטית: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :בחר פרק זמן בין שמירות אוטומטיות
@@ -3308,6 +3309,9 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{YELLOW}{3:STRI
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{YELLOW}{5:STRING}{4:STRING},{3:STRING}{2:STRING},{1:STRING}{0:STRING}{BLACK} :דורש
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}דורש
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{CARGO_LONG} {BLACK}ממתין
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{YELLOW}{1:STRING}{0:STRING}{BLACK} :מייצר
@@ -3377,6 +3381,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :הסר את כ�
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}שנה שם קבוצה
 
 STR_GROUP_PROFIT_LAST_YEAR                                      :רווח שנה שעברה:
+STR_GROUP_OCCUPANCY                                             :שימוש נוכחי:
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :רכבות חדשות
