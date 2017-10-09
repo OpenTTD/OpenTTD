@@ -202,6 +202,7 @@ STR_UNITS_POWER_SI                                              :{COMMA}kW
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}tan{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tan
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
@@ -1218,6 +1219,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Beri amaran jik
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kenderaan tidak akan tamat tempohnya: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Gunakan pembaharuan automatik apabila kenderaan usang : {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Wang minimum yang diperlukan untuk pembaharuan automatik: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Jangkamasa mesej ralat: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Tunjukkan jumlah penduduk dalam label nama bandar: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Ketebalan garisan di dalam graf: {STRING}
 
@@ -1325,6 +1327,7 @@ STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Sederhana
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Sukar
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Benarkan Kepintaran Tiruan dalam permainan pemain berbilang: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Benarkan AI komputer menyertai permainan berbilang pemain
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes sebelum skrip adalah digantung: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Tempoh waktu servis dalam peratusan: {STRING}
@@ -2003,6 +2006,7 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ghaibkan
 # Linkgraph legend window
 
 # Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}tepu
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Serlahan kawasan liputan
@@ -2802,6 +2806,7 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Menerima
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Penarafan
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Tunjukkan penarafan stesen
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Bekalan bulanan dan penarafan tempatan:
 
 
 
