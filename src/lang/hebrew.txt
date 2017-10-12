@@ -1755,7 +1755,7 @@ STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}הגדר
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}(NewGRF)הגדרות שדרוג גראפי
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK} בדוק תוכן מקוון
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}הגדרות סקריפטים של משחק/שחקני מחשב
-STR_INTRO_QUIT                                                  :{BLACK}צא
+STR_INTRO_QUIT                                                  :{BLACK}יציאה
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}התחל משחק חדש. Ctrl+לחיצה מדלג על תצורת מפה
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}טען משחק שמור
@@ -1777,6 +1777,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} חפש 
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK} הצג הגדרות סקריפטים של משחק/שחקני מחשב
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}צא מ-'OpenTTD'
 
+STR_INTRO_BASESET                                               :{BLACK}חסרים {NUM} ספרייט עבור גרפיקות הבסיס שנבחרו. אנא בדוק עדכונים לערכה זו.
 STR_INTRO_TRANSLATION                                           :{BLACK}בתרגום זה חסרים {P 0 "מחרוזת " ""}{NUM}{P "" " מחרוזות"}. אנא עזור לשפר את OpenTTD ע"י הצטרפות כמתרגם. קרא בקובץ readme.txt לפרטים.
 
 # Quit window
@@ -2618,29 +2619,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :שדות
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :אדמה מכוסה בשלג
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :מדבר
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :מסילת ברזל מסילה
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :מסילת ברזל מסילה עם רמזורים חוסמים
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :מסילת ברזל מסילה עם רמזורים מקדימים
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :מסילת ברזל
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :מסילת ברזל עם רמזורים חוסמים
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :מסילת ברזל עם רמזורים מקדימים
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :מסילת ברזל מסילה עם רמזורי יציאה
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :מסילת ברזל מסילה עם רמזורים משולבים
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :מסילת ברזל מסילה עם רמזורי נתיב
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :מסילת ברזל מסילה עם רמזורי נתיב חד-סטריים
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :מסילת ברזל עם רמזורים משולבים
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :מסילת ברזל עם רמזורי נתיב
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :מסילת ברזל עם רמזורי נתיב חד-סטריים
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :מסילת ברזל מסילה עם רמזורים חוסמים ומקדימים
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :מסילת ברזל מסילה עם רמזורים חוסמים ורמזורי יציאה
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :מסילת ברזל מסילה עם רמזורים חוסמים ורמזורים משולבים
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :מסילת ברזל מסילה עם רמזורים חוסמים ורמזורי נתיב
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :מסילת ברזל מסילה עם רמזורים חוסמים ורמזורי נתיב חד-סטריים
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :מסילת ברזל מסילה עם רמזורים מקדימים ורמזורי יציאה
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :מסילת ברזל מסילה עם רמזורים מקדימים ורמזורים משולבים
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :מסילת ברזל עם רמזורים חוסמים ורמזורי יציאה
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :מסילת ברזל עם רמזורים חוסמים ורמזורים משולבים
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :מסילת ברזל עם רמזורים חוסמים ורמזורי נתיב
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :מסילת ברזל עם רמזורים חוסמים ורמזורי נתיב חד-סטריים
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :מסילת ברזל עם רמזורים מקדימים ורמזורי יציאה
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :מסילת ברזל עם רמזורים מקדימים ורמזורים משולבים
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :מסילת ברזל מסילה עם רמזורים מקדימים ורמזורי נתיב
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :מסילת ברזל מסילה עם רמזורים מקדימים ורמזורי נתיב חד-סטריים
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :מסילת ברזל מסילה עם רמזורי יציאה ורמזורים משולבים
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :מסילת ברזל מסילה עם רמזורי יציאה ורמזורי נתיב
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :מסילת ברזל מסילה עם רמזורי יציאה ורמזורי נתיב חד-סטריים
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :מסילת ברזל מסילה עם רמזורים משולבים ורמזורי נתיב
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :מסילת ברזל מסילה עם רמזורים משולבים ורמזורי נתיב חד-סטריים
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :מסילת ברזל מסילה עם רמזורי נתיב ורמזורי נתיב חד-סטריים
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :מסילת ברזל מוסך רכבות
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :מסילת ברזל עם רמזורים מקדימים ורמזורי נתיב חד-סטריים
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :מסילת ברזל עם רמזורי יציאה ורמזורים משולבים
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :מסילת ברזל עם רמזורי יציאה ורמזורי נתיב
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :מסילת ברזל עם רמזורי יציאה ורמזורי נתיב חד-סטריים
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :מסילת ברזל עם רמזורים משולבים ורמזורי נתיב
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :מסילת ברזל עם רמזורים משולבים ורמזורי נתיב חד-סטריים
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :מסילת ברזל עם רמזורי נתיב ורמזורי נתיב חד-סטריים
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :מוסך רכבות
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :כביש
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :כביש עם תאורת רחוב
@@ -2702,7 +2703,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :שטח בבעל
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD אודות
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}כל הזכויות שמורות , {COPYRIGHT}1995 כריס סויר - {NBSP}זכויות יוצרים מקוריות
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}כל הזכויות שמורות , {COPYRIGHT}1995 כריס סויר - זכויות יוצרים מקוריות
 STR_ABOUT_VERSION                                               :{BLACK}{REV} גירסה , OpenTTD
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2017 The OpenTTD team
 
@@ -3312,6 +3313,8 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{YELLOW}{5:STRI
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}דורש
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{CARGO_LONG} {BLACK}ממתין
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_TEXT                             :{YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_TEXT                      :{YELLOW}{CARGO_LONG}{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{YELLOW}{1:STRING}{0:STRING}{BLACK} :מייצר
@@ -3380,8 +3383,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :הסר את כ�
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}שנה שם קבוצה
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :רווח בשנה זו:
 STR_GROUP_PROFIT_LAST_YEAR                                      :רווח שנה שעברה:
 STR_GROUP_OCCUPANCY                                             :שימוש נוכחי:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :רכבות חדשות
@@ -3549,6 +3554,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :קטר פס מ�
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}{1:WEIGHT_SHORT} :משקל  {NBSP}{0:CURRENCY_LONG}  :מחיר{}  {NBSP}{3:POWER} :עצמת מנוע   {NBSP}{2:VELOCITY} :מהירות {NBSP}{}{5:CARGO_LONG} : קיבולת {NBSP} לשנה  {NBSP}{4:CURRENCY_LONG} :עלות תפעולית
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}עלות: {CURRENCY_LONG} משקל: {WEIGHT_SHORT}{}מהירות: {VELOCITY}  הספק: {POWER}  מקסימלי T.E.: {6:FORCE}{}עלות תפעולית: {4:CURRENCY_LONG}/לשנה{}קיבולת: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}עלות: {CURRENCY_LONG} מהירות מקסימלית: {VELOCITY}{}קיבולת: {CARGO_LONG}{}הוצאה שוטפת: {CURRENCY_LONG}/לשנה
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}עלות: {CURRENCY_LONG} מהירות מקסימלית: {VELOCITY}{}סוג כלי טיס: {STRING}{}קיבולת: {CARGO_LONG}, {CARGO_LONG}{}עלות תפעולית: {CURRENCY_LONG}/שנה
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}עלות: {CURRENCY_LONG} מהירות מקסימלית: {VELOCITY}{}סוג כלי טיס: {STRING}{}קיבולת: {CARGO_LONG}{}עלות תפעולית: {CURRENCY_LONG}/שנה
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}עלות: {CURRENCY_LONG} מהירות מקסימלית: {VELOCITY}{}סוג כלי טיס: {STRING} טווח: {COMMA} משבצות{}קיבולת: {CARGO_LONG}, {CARGO_LONG}{}עלות תפעולית: {CURRENCY_LONG}/שנה
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}עלות: {CURRENCY_LONG} מהירות מקסימלית: {VELOCITY}{}סוג כלי טיס: {STRING} טווח: {COMMA} משבצות{}קיבולת: {CARGO_LONG}{}עלות תפעולית: {CURRENCY_LONG}/שנה
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}החלף {STRING} - {STRING}
@@ -3578,6 +3587,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}לחץ �
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}החלף בין חלונות החלפת קרון וקטר
 STR_REPLACE_ENGINES                                             :מנועים/קטרים
 STR_REPLACE_WAGONS                                              :קרונות
+STR_REPLACE_ALL_RAILTYPE                                        :כלל הרכבות
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}בחר את סוג המסילה עבורה ברצונך להחליף קטרים
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK} מציג אילו קטרים מוחלפים זה בזה
@@ -3670,6 +3680,8 @@ STR_VEHICLE_INFO_AGE                                            :({1:COMMA}) ש�
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}({1:COMMA}) שנים {NBSP}{0:COMMA}
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}מהירות מקסימלית: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}מהירות מקס.: {LTBLUE}{VELOCITY} {BLACK}סוג כלי טיס: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}מהירות מקסימלית: {LTBLUE}{VELOCITY} {BLACK}סוג כלי טיס: {LTBLUE}{STRING} {BLACK}טווח: {LTBLUE}{COMMA} משבצות
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}משקל: {LTBLUE}{WEIGHT_SHORT} {BLACK}הספק: {LTBLUE}{POWER}{BLACK} מהירות מקסימלית: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}משקל: {LTBLUE}{WEIGHT_SHORT} {BLACK}הספק: {LTBLUE}{POWER}{BLACK} מהירות מקסימלית: {LTBLUE}{VELOCITY} {BLACK}T.E. מקסימלי: {LTBLUE}{FORCE}
 

@@ -702,7 +702,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Wyświet
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Wyświetl listę stacji firmy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Wyświetl informacje finansowe firmy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Wyświetl informacje ogólne firmy
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Pokaż okno opowieści
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Pokaż dziennik
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Pokaż listę celów
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Wyświetl wykresy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Wyświetl ranking firm
@@ -3416,7 +3416,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kup roc
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Daj łapówkę lokalnym władzom, powiększ swoją ocenę, ryzykując poważne kary w razie złapania.{}Koszt: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Cele
+STR_GOALS_CAPTION                                               :{WHITE}Cele firmy {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Cele globalne
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Cele globalne:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
@@ -3464,8 +3464,8 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik na usłudze żeby wyśrodkować widok na fabrykę/miasto. Ctrl+klik otwiera nowy podgląd na pozycji fabryki/miasta
 
 # Story book window
-STR_STORY_BOOK_CAPTION                                          :{WHITE}Album Historii Firmy {COMPANY}
-STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globalne okno opowieści
+STR_STORY_BOOK_CAPTION                                          :{WHITE}Dziennik Historii Firmy {COMPANY}
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Ogólny przewodnik
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Strona {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Skocz na właściwą stronę wybierając ją z listy.
@@ -4196,7 +4196,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :mniejszy lub r�
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :większy niż
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :większy lub równy
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :prawda
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :fałsz
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :nie prawda
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Wartość do porównania z danymi pojazdu
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Podaj wartość do porównania
@@ -4226,10 +4226,10 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Idź bezpośred
 STR_ORDER_SERVICE_AT                                            :Serwisuj w
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Serwisuj non-stop w
 
-STR_ORDER_NEAREST_DEPOT                                         :najbliższych
-STR_ORDER_NEAREST_HANGAR                                        :najbliższy hangar
-STR_ORDER_TRAIN_DEPOT                                           :Warsztatów
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Zajezdni samochodowej
+STR_ORDER_NEAREST_DEPOT                                         :najbliższego
+STR_ORDER_NEAREST_HANGAR                                        :najbliższego hangaru
+STR_ORDER_TRAIN_DEPOT                                           :serwisu w warsztatach
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :serwisu w zajezdni
 STR_ORDER_SHIP_DEPOT                                            :Doku
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
@@ -4281,7 +4281,7 @@ STR_ORDER_OUT_OF_RANGE                                          :{RED} (Kolejny 
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Skocz do rozkazu {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Skocz do rozkazu {COMMA} kiedy {STRING} {STRING} {COMMA}
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Skocz do rozkazu {COMMA} kiedy {STRING} {STRING}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Skocz do rozkazu {0:COMMA} kiedy {2:STRING} że {1:STRING}
 
 STR_INVALID_ORDER                                               :{RED} (Błędne polecenie)
 
@@ -5302,8 +5302,8 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Post. {TOWN} #{
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Warsztaty {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Warsztaty {TOWN} #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Zajezdnia samochodowa {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Zajezdnia samochodowa {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Zajezdnia {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Zajezdnia {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Stocznia {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Stocznia {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar {STATION}
