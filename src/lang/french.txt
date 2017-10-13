@@ -1373,6 +1373,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Désactivé
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Défilement par clic gauche{NBSP}: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Active le défilement de la carte en la glissant avec le bouton gauche de la souris. C'est surtout utile pour les écrans tactiles
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fermer une fenêtre en cliquant droit{NBSP}: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fermer une fenêtre en cliquant droit à l’intérieur de celle-ci. Désactive l'infobulle sur clic droit{NBSP}!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Sauvegarde automatique{NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Sélectionner l'intervalle de temps entre les sauvegardes automatiques
@@ -3368,6 +3370,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Retirer tous le
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renommer un groupe
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Profit cette année{NBSP}:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Profit l'année précédente{NBSP}:
+STR_GROUP_OCCUPANCY                                             :Utilisation actuelle{NBSP}:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nouveaux véhicules ferroviaires
