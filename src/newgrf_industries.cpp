@@ -380,7 +380,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 
 /* virtual */ uint32 IndustriesScopeResolver::GetTriggers() const
 {
-	return this->industry != NULL ? this->industry->random_triggers : 0;
+	return 0;
 }
 
 /* virtual */ void IndustriesScopeResolver::StorePSA(uint pos, int32 value)
