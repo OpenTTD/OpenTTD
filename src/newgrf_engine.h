@@ -33,7 +33,6 @@ struct VehicleScopeResolver : public ScopeResolver {
 	/* virtual */ uint32 GetRandomBits() const;
 	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
 	/* virtual */ uint32 GetTriggers() const;
-	/* virtual */ void SetTriggers(int triggers) const;
 };
 
 /** Resolver for a vehicle (chain) */

@@ -169,12 +169,6 @@ void DecreaseBuildingCount(Town *t, HouseID house_id)
 	return this->not_yet_constructed ? 0 : GetHouseTriggers(this->tile);
 }
 
-/* virtual */ void HouseScopeResolver::SetTriggers(int triggers) const
-{
-	assert(!this->not_yet_constructed && IsValidTile(this->tile) && IsTileType(this->tile, MP_HOUSE));
-	SetHouseTriggers(this->tile, triggers);
-}
-
 static uint32 GetNumHouses(HouseID house_id, const Town *town)
 {
 	uint8 map_id_count, town_id_count, map_class_count, town_class_count;
@@ -613,14 +607,19 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_rando
 	if (hs->grf_prop.spritegroup[0] == NULL) return;
 
 	HouseResolverObject object(hid, tile, Town::GetByTile(tile), CBID_RANDOM_TRIGGER);
-	object.trigger = trigger;
+	object.waiting_triggers = GetHouseTriggers(tile) | trigger;
+	SetHouseTriggers(tile, object.waiting_triggers); // store now for var 5F
 
 	const SpriteGroup *group = object.Resolve();
 	if (group == NULL) return;
 
+	/* Store remaining triggers. */
+	SetHouseTriggers(tile, object.GetRemainingTriggers());
+
+	/* Rerandomise bits. Scopes other than SELF are invalid for houses. For bug-to-bug-compatibility with TTDP we ignore the scope. */
 	byte new_random_bits = Random();
 	byte random_bits = GetHouseRandomBits(tile);
-	uint32 reseed = object.GetReseedSum(); // The scope only affects triggers, not the reseeding
+	uint32 reseed = object.GetReseedSum();
 	random_bits &= ~reseed;
 	random_bits |= (first ? new_random_bits : base_random) & reseed;
 	SetHouseRandomBits(tile, random_bits);

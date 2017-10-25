@@ -293,7 +293,6 @@ struct ScopeResolver {
 
 	virtual uint32 GetRandomBits() const;
 	virtual uint32 GetTriggers() const;
-	virtual void SetTriggers(int triggers) const;
 
 	virtual uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
 	virtual void StorePSA(uint reg, int32 value);
@@ -315,9 +314,10 @@ struct ResolverObject {
 	uint32 callback_param1;     ///< First parameter (var 10) of the callback.
 	uint32 callback_param2;     ///< Second parameter (var 18) of the callback.
 
-	byte trigger;
-
 	uint32 last_value;          ///< Result of most recent DeterministicSpriteGroup (including procedure calls)
+
+	uint32 waiting_triggers;    ///< Waiting triggers to be used by any rerandomisation. (scope independent)
+	uint32 used_triggers;       ///< Subset of cur_triggers, which actually triggered some rerandomisation. (scope independent)
 	uint32 reseed[VSG_END];     ///< Collects bits to rerandomise while triggering triggers.
 
 	const GRFFile *grffile;     ///< GRFFile the resolved SpriteGroup belongs to
@@ -347,6 +347,14 @@ struct ResolverObject {
 	virtual ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0);
 
 	/**
+	 * Returns the waiting triggers that did not trigger any rerandomisation.
+	 */
+	uint32 GetRemainingTriggers() const
+	{
+		return this->waiting_triggers & ~this->used_triggers;
+	}
+
+	/**
 	 * Returns the OR-sum of all bits that need reseeding
 	 * independent of the scope they were accessed with.
 	 * @return OR-sum of the bits.
@@ -367,7 +375,8 @@ struct ResolverObject {
 	void ResetState()
 	{
 		this->last_value = 0;
-		this->trigger    = 0;
+		this->waiting_triggers = 0;
+		this->used_triggers = 0;
 		memset(this->reseed, 0, sizeof(this->reseed));
 	}
 };
