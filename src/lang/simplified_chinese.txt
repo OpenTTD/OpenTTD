@@ -3363,6 +3363,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有车
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}重命名分组
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :今年利润：
 STR_GROUP_PROFIT_LAST_YEAR                                      :去年利润
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -3562,6 +3563,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}点击�
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}可以切换 机车/挂车 替换项目
 STR_REPLACE_ENGINES                                             :机车
 STR_REPLACE_WAGONS                                              :挂车
+STR_REPLACE_ALL_RAILTYPE                                        :所有铁路车辆
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}选择要更新的车辆对应的铁路类型
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}显示用来替换左侧被选定车辆的新车辆
