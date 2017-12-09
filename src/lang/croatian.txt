@@ -572,7 +572,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zumirano do kra
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Standardno zumiranje slike zaslona
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Slika zaslona cijele karte
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Poravnjanje sprite-a
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Poravnanje spritea
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Odaberi granične okvire
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Mijenjaj boju blatnih blokova
 ############ range ends here
@@ -778,7 +778,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikni n
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikni na glazbenu traku kako bi ju uklonio iz trenutnog programa (samo Proizvoljno 1 ili Proizvoljno 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Najbolje tvrtke koje su dosigle razinu {NUM}
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Najbolje tvrtke do {NUM}. godine
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tablica tvrtki u {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Privrednik
@@ -962,13 +962,13 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} od sada prihvaća {STRING.aku}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} od sada prihvaća {STRING.aku} i {STRING.aku}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Istekla je ponuda subvencije:{}{}prijevoz {STRING.gen} od {STRING} do {STRING} više neće biti subvencioniran
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Istekla je ponuda za poticaje:{}{}prijevoz {STRING.gen} od {STRING} do {STRING} više neće biti potican
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvencija je povučena:{}{}prijevoz {STRING.gen} od {STRING} do {STRING} više nije subvencioniran
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Ponuđena je subvencija:{}{}Prvi koji preveze {STRING.aku} od {STRING} do {STRING} primat će jednogodišnju subvenciju od lokalne samouprave!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Ponuđen je poticaj:{}{}Prvi koji preveze {STRING.aku} od {STRING} do {STRING} primat će jednogodišnji poticaj lokalne samouprave!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvencija je dodijeljena tvrtki {STRING}!{}{}Prijevoz {STRING.gen} od postaje {STRING} do postaje {STRING} plaćat će se 50% više sljedećih godinu dana!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvencija je dodijeljena tvrtki {STRING}!{}{}Prijevoz {STRING.gen} od postaje {STRING} do postaje {STRING} plaćat će se dvostruko sljedećih godinu dana!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvencija je dodijeljena tvrtki {STRING}!{}{}Prijevoz {STRING.gen} od postaje {STRING} do postaje {STRING} plaćat će se trostruko sljedećih godinu dana!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvencija je dodijeljena tvrtki {STRING}!{}{}Prijevoz {STRING.gen} od postaje {STRING} do postaje {STRING} plaćat će se četverostruko sljedećih godinu dana!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Poticaj je dodijeljen tvrtki {STRING}!{}{}Prijevoz {STRING.gen} od postaje {STRING} do postaje {STRING} plaćat će se trostruko sljedećih godinu dana!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Poticaj je dodijeljen tvrtki {STRING}!{}{}Prijevoz {STRING.gen} od postaje {STRING} do postaje {STRING} plaćat će se četverostruko sljedećih godinu dana!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Grad {TOWN} zahvatio je prometni kaos!{}{}Program rekonstrukcije cesta koji financira tvrtka {STRING} sljedećih će 6 mjeseci zadavati glavobolje motoriziranima!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopol transporta!
@@ -1245,7 +1245,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Brzina gradnje:
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitiraj količinu građevinskih akcija za UI-je
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Kvarovi vozila: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Kontroliraj kako često se mogu pokvariti loše servisirana vozila
-STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Množitelj za subvencije: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Množitelj za poticaje: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Postavi koliko se plaća za subvencionirane veze
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Građevinski troškovi: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Postavi razinu građevinskih troškova i troškova kupnje
@@ -1385,9 +1385,9 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Debljina linija
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Debljina linije u grafikonima. Tanja linija je preciznija za čitanje, deblja linija je lakša za vidjeti i boje su lakše za razabrati
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Krajolik: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Tereni definiraju osnovne scenarije za igru sa različitim teretima i preduvjetima za rast gradova. NewGRF-ovi i Skripte Igre dozvoljavaju detaljnije kontrole i postavke.
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Tereni određuju osnovne scenarije za igru s različitim teretima i preduvjetima za rast gradova. NewGRF-ovi i Skripte Igre omogućavaju detaljnije kontrole i postavke.
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generator zemlje: {STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Originalni generator ovisi o baznom grafičkom setu i stvara fiksne oblike u terenu. TerraGenesis je generator baziran na Perlinu sa detaljnijim kontrolama i postavkama.
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Izvorni generator ovisi o osnovnom grafičkom setu i stvara fiksne oblike terena. TerraGenesis je generator temeljen na Perlinovom šumu s detaljnijim kontrolama i postavkama.
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Izvorni
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Vrsta terena: {STRING}
@@ -1580,17 +1580,17 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Uključivanjem 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Dolazak prvog vozila na postaju igrača: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Prikaži novine kada prvo vozilo dođe na stanicu novog igrača
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Dolazak prvog vozila na postaju suparnika: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Prikaži novine kada prvo vozilo dođe na suparnikovu stanicu
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Prikaži novosti kada prvo vozilo dođe na protivničku postaju
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Nesreće / katastrofe: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Prikaži novine kod nesreća ili katastrofa
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Podaci vezani za tvrtku: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Prikaži novine kada se pojavi nova tvrtka ili kada tvrtke riskiraju bankrot
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Prikaži novosti kada se pojavi nova tvrtka ili kada tvrtke riskiraju bankrot
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Otvaranje industrije: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Prikaži novine kada se nove industrije otvaraju
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zatvaranje industrije: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Prikaži novine kada se industrije zatvaraju
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Promjene u gospodarstvu: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Prikaži novine vezano za globalne promjene u ekonomiji
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Prikaži novosti kada se industrije zatvaraju
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Gospodarske promjene: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Prikaži novosti vezane za globalne gospodarske promjene
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Promjene u proizvodnji industrija koje opslužuje tvrtka: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Prikaži novine kod promjene proizvodnih razina industrija koje tvrtka opslužuje
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Promjene u proizvodnji industrija koje opslužuju suparnici: {STRING}
@@ -1602,11 +1602,11 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Prikaži poruke
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nova vozila: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Prikaži novine kada neki novi tip vozila postane dostupan
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Promjene u prihvaćanju tereta: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Prikaži poruke o stanicama koje mijenjaju prihvaćanje nekih tereta
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Prikaži poruke o postajama koje mijenjaju prihvaćanje nekih tereta
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencije: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Prikaži novine vezano za događaje o subvencijama
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Prikaži novosti vezane za poticaje
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Opće informacije: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Prikaži novine vezano za opće događaje kao za kupnju ekskluzivnih prava ili financiranje rekonstrukcije cesta
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Prikaži novosti vezane za opće događaje kao što su kupnja ekskluzivnih prava ili financiranje rekonstrukcije cesta
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Isključeno
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sažetak
@@ -1615,7 +1615,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Sve
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Vijesti u boji pojavljuju se: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Godina u kojoj će se novine početi izdavati u boji. Prije ove godine, koriste se crno/bijele novine
 STR_CONFIG_SETTING_STARTING_YEAR                                :Početna godina: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Uključi tečnu ekonomiju (više manjih izazova): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Uključi stabilno gospodarstvo (više manjih izazova): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Kada je uključeno, promjene u industrijskoj proizvodnji su češće ali u manjim rasponima. Ova postavka obično nema efekta ukoliko su industrije postavljene iz nekog NewGRF-a
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Dopusti kupovanje udjela u drugim tvrtkama: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Kada je uključeno, dopušta se kupnja i prodaja dionica tvrtki. Dionice će postati dostupne samo za tvrtke određene starosti
@@ -1651,11 +1651,11 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Nasumično
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Gradovi mogu graditi ceste: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Dopusti gradovima građenje cesta u svrhu rasta. Isključi za sprečavanje gradskih vlasti u samostalnoj gradnji cesta
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Gradovi smiju graditi pružne prijelaze: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Uključivanje ove postavke dozvoljava se gradovima da grade cestovno-pružne prijelaze
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Uključivanje ove postavke dopušta gradovima izgradnju cestovno-pružnih prijelaza
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Omogući određivanje razine buke za zračne luke od strane gradova: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kada je ova postavka isključena, mogu postojati dvije zračne luke u svakom gradu. Kada je ova postavka uključena, broj zračnih luka u nekom gradu je ograničen količinom dopuštene buke u gradu, koja ovisi o broju stanovnika i udaljenosti i veličini zračne luke
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Osnivanje gradova tijekom igre: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Uklučivanje ove postavke dozvoljava igračima osnivanje novih gradova tijekom igre
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Uklučivanje ove postavke dopušta igračima osnivanje novih gradova tijekom igre
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Zabranjeno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Dopušteno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Dopušteno, proizvoljan raspored grada
@@ -1882,8 +1882,8 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Napusti igru
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Jesi li siguran da želiš napustiti ovu igru?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Jesi li siguran da želiš napustiti ovaj scenarij?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Doista želiš napustiti ovu igru?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Doista želiš napustiti ovaj scenarij?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Varanje
@@ -2377,7 +2377,7 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Namjesti
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Učini objekte nevidljivima umjesto prozirnima
 
 # Linkgraph legend window
-STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda protoka tereta
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Kazalo protoka tereta
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Sve
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Ništa
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Odaberi tvrtke koje će se prikazati
@@ -2452,13 +2452,13 @@ STR_STATION_CLASS_WAYP                                          :Čvorišta
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Izbornik signala
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardni signal (semafor){}Ovo je najosnovnija vrsta signala, dozvoljava istovremeno samo jedan vlak u bloku
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardni signal (semafor){}Ovo je najosnovnija vrsta signala, dopušta istovremeno samo jedan vlak u bloku
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ulazni signal (semafor){}Zeleno sve dok je jedan ili više zelenih izlaznih signala na sljedećem dijelu pruge. U protivnom pokazuje crveno
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Izlazni signal (semafor){}Ponaša se na isti način kao i normalni signali, ali je nužno pogoditi točnu boju na ulaznim i kombo pred-signalima
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombo signal (semafor){}Kombo signal jednostavno radi kao ulazni i izlazni signal. Ovo omogućava izgradnju velike "mreže" pred-signala.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Putni signal (semafor){}Putni signal omogućava da više od jednog vlaka uđe istovremeno u signalni blok, ako vlak može rezervirati putanju do sigurnog zaustavnog mjesta. Standardne putne signale moguće je proći iz suprotnog smjera.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Jednosmjerni putni signal (semafor){}Putni signal omogućava da više od jednog vlaka uđe istovremeno u signalni blok, ako vlak može rezervirati putanju do sigurnog zaustavnog mjesta. Jednosmjerne putne signale nije moguće proći iz suprotnog smjera
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standardni signal (električni){}Ovo je najosnovnija vrsta signala, dozvoljava istovremeno samo jedan vlak u bloku
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standardni signal (električni){}Ovo je najosnovnija vrsta signala, istovremeno dopušta samo jedan vlak u bloku
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ulazni signal (električni){}Zeleno sve dok je jedan ili više zelenih izlaznih signala na sljedećem dijelu pruge. U protivnom pokazuje crveno
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Izlazni signal (električni){}Ponaša se na isti način kao i normalni signali, ali je nužno pogoditi točnu boju na ulaznim i kombo pred-signalima.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombo signal (električni){}Kombo signal jednostavno radi kao ulazni i izlazni signal. Ovo omogućava izgradnju velike "mreže" pred-signala.
@@ -2572,7 +2572,7 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Proizved
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Uređivanje krajolika
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Snizi jedan kut zemlje. Povlačenje snižava prvi odabrani kut i poravnava selektirano područje na novu visinu prvog kuta. Ctrl selektira područje dijagonalno. Shift mijenja prikaz građenje/procjena troškova.
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Podigni jedan kut zemlje. Povlačenje podiže prvi odabrani kut i poravnava selektirano područje na novu visinu prvog kuta. Ctrl selektira područje dijagonalno. Shift mijenja prikaz građenje/procjena troškova.
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Poravnaj područje zemlje na visinu prvog odabranog kuta. Ctrl selektira područje dijagonalno. Shift mijenja prikaz građenje/procjena troškova.
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Izravnaj zemlju na visinu prvog odabranog kuta. Ctrl odabire područje dijagonalno. Shift mijenja prikaz građenje/procjena troškova.
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupi zemlju za buduću uporabu. Shift mijenja prikaz građenje/procjena troškova.
 
 # Object construction window

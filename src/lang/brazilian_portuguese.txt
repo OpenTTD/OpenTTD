@@ -1286,8 +1286,8 @@ STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Aguardar {COMMA
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Botão direito
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Exibir população da cidade na janela da cidade: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Exibe a população das cidades nos nomes, no mapa
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grossura das linhas nos gráficos: {STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grossura da linha nos gráficos. Linhas finas são mais precisas, enquanto linhas grossas são mais fáceis de distinguir.
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Espessura das linhas nos gráficos: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Espessura da linha nos gráficos. Linhas finas são mais precisas, enquanto linhas grossas são mais fáceis de distinguir.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Terreno: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :O terreno define a jogabilidade básica com diferentes cargas e requerimentos para o crescimento das cidades. NewGRF's e Scripts de Jogo permitem um controle mais fino
@@ -1373,6 +1373,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Mover a tela com o botão esquerdo: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Ativa rolamento do mapa por clique e arraste com o botão esquerdo. Especialmente útil ao usar um touchscreen para o rolamento
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fechar janela com botão direito do mouse: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fecha uma janela ao clicar com o botão direito do mouse nela. Desativa o tooltip com o botão direito!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Auto-salvar: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Selecione intervalo entre jogos salvos automaticamente
@@ -1536,12 +1538,12 @@ STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Exibe uma janel
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipo de sinal a ser construído: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipo padrão de sinal a se utilizar
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normal
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Avançado
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Avançado de mão única
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :De trajeto
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :De trajeto de mão única
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Tipo de sinal a ser exibido: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Seleciona quais tipos de sinal a exibir, quando Ctrl+Clicar em Construir Sinais com a ferramenta Sinal
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Normal apenas
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Avançados apenas
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :De trajeto apenas
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Disposição de ruas para novas cidades: {STRING}
@@ -1762,6 +1764,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Checar p
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Exibe configurações de IA e script do jogo
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair do 'OpenTTD'
 
+STR_INTRO_BASESET                                               :{BLACK}Faltam {NUM} "sprite{P "" s}" no conjunto de gráficos base selecionado. Por favor verifique se há atualizações para ele.
 STR_INTRO_TRANSLATION                                           :{BLACK}Faltam {NUM} string{P "" s} nessa tradução. Por favor faça o OpenTTD melhor se inscrevendo como tradutor. Leia Readme.txt para mais detalhes.
 
 # Quit window
@@ -2358,14 +2361,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinais p
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de Entrada (semáforo){}Verde enquanto haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, mostra vermelho
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de saída (semáforo){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de pré-sinais combo ou de entrada
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal combo (semáforo){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal avançado(Semáforo){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal avançado de mão única(Semáforo){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo, porém não permite a passagem na via contrária
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal de trajeto(Semáforo){}Um sinal de trajeto permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal de trajeto já permite a passada do próximo
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal de trajeto de mão única(Semáforo){}Um sinal de trajeto permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal de trajeto já permite a passada do próximo, porém não permite a passagem na via contrária
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal Padrão (elétrico){}Sinais são necessários para impedir que trens batam em redes de ferrovias com mais de uma máquina
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de Entrada (elétrico){}Verde enquanto haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, mostra vermelho
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de saída(elétrico){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de pré-sinais combo ou de entrada
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal Combo (elétrico){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações de pré-sinais
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal de trajeto(Elétrico){}Um sinal de trajeto permite mais de um trem entrar em um bloco de sinal ao mesmo tempo, se o trem puder reservar um trajeto para um ponto seguro de parada. Sinais de trajeto padrões podem ser passados pelo lado de trás
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal avançado de mão única(Elétrico){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo, porém não permite a passagem na via contrária
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal de trajeto (Elétrico){}Um sinal de trajeto permite mais de um trem entrar em um bloco de sinal ao mesmo tempo, se o trem puder reservar um trajeto para um ponto seguro de parada. Sinais de trajeto padrões podem ser passados pelo lado de trás
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal avançado de mão única(Elétrico){}Um sinal de trajeto permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal de trajeto já permite a passada do próximo, porém não permite a passagem na via contrária
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Quando selecionado, clicar num sinal existente converte-o para o tipo selecionado e suas variantes. Ctrl+Clique muda a variante atual. Shift+Clique mostra o preço estimado da conversão
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densidade dos sinais ao clicar e arrastar
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Diminuir a densidade dos sinais
@@ -2590,6 +2593,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nome da 
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carga aceita: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tipo de ferrovia: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Velocidade limite do trilho: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Limite de velocidade da rua: {LTBLUE}{VELOCITY}
 
@@ -2602,29 +2606,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campos
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Neve
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deserto
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Trilho de Ferrovia
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Trilho de Ferrovia com sinais normais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Trilho de Ferrovia com pré-sinais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Trilho de Ferrovia com sinais de saída
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Trilho de Ferrovia com sinais-combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Trilho de Ferrovia com sinais avançados
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Trilhos de Ferrovia com sinais avançados de mão única
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Trilho de Ferrovia com sinais normais e pré-sinais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Trilho de Ferrovia com sinais normais e pré-sinais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Trilho de Ferrovia com sinais normais e sinais-combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Trilho de Ferrovia com sinais normais e avançados
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Trilho de Ferrovia com sinais normais e avançados de mão única
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Trilho de Ferrovia com pré-sinais e de saída
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Trilho de Ferrovia com pré-sinais e sinais-combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Trilho de Ferrovia com pré-sinais e sinais avançados
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Trilho de Ferrovia com pré-sinais e avançados de mão única
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Trilho de Ferrovia com sinais de saída e sinais-combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Trilho de Ferrovia com sinais de saída e avançados
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Trilho de Ferrovia com sinais de saída e avançados de mão única
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Trilho de Ferrovia com sinais-combo e avançados
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Trilho de Ferrovia com sinais-combo e avançados de mão única
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Trilho de Ferrovia com sinais avançados e avançados de mão única
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depósito de Ferrovia
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Trilho de ferrovia
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Trilho de ferrovia com sinais normais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Trilho de ferrovia com pré-sinais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Trilho de ferrovia com sinais de saída
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Trilho de ferrovia com sinais-combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Trilho de ferrovia com sinais de trajeto
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Trilhos de Ferrovia com sinais de trajeto de mão única
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Trilho de ferrovia com sinais normais e pré-sinais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Trilho de ferrovia com sinais normais e pré-sinais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Trilho de ferrovia com sinais normais e sinais-combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Trilho de ferrovia com sinais normais e de trajeto
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Trilho de ferrovia com sinais normais e de trajeto de mão única
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Trilho de ferrovia com pré-sinais e de saída
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Trilho de ferrovia com pré-sinais e sinais-combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Trilho de ferrovia com pré-sinais e sinais de trajeto
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Trilho de ferrovia com pré-sinais de trajeto e de mão única
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Trilho de ferrovia com sinais de saída e sinais-combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Trilho de ferrovia com sinais de saída e de trajeto
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Trilho de ferrovia com sinais de saída de trajeto e de mão única
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Trilho de ferrovia com sinais-combo e de trajeto
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Trilho de ferrovia com sinais-combo de trajeto e de mão única
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Trilho de ferrovia com sinais de trajeto normais e de mão única
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depósito de ferrovia
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Rodovia
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Rodovia iluminada
@@ -3293,6 +3297,11 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Requer: 
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Requer: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necessita
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{CARGO_LONG} {BLACK}aguardando
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_TEXT                             :{YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_TEXT                      :{YELLOW}{CARGO_LONG}{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produz: {YELLOW}{STRING}{STRING}
@@ -3361,6 +3370,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos o
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear um grupo
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Lucros deste ano:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Lucros do ano passado:
+STR_GROUP_OCCUPANCY                                             :Uso atual:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Novos Veículos Ferroviários
@@ -3393,6 +3406,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Todos as cargas
 STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Tração máx : {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} quadrados
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo de aeronave: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de trens - clique num trem para informações. Cltr+Clique para alterar a visibilidade do tipo de trem
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de automóveis - clique num automóvel para informações. Cltr+Clique para alterar a visibilidade do tipo de automóvel
@@ -3527,6 +3541,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotiva magl
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Preço: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade: {VELOCITY}  Potência: {POWER}{}Custo de manutenção: {CURRENCY_LONG}/ano{}Capacidade: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Preço: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Vel.: {VELOCITY}  Potência: {POWER}  Tração Máx: {6:FORCE}{}Custo de manutenção: {4:CURRENCY_LONG}/yr{}Capacidade: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Preço: {CURRENCY_LONG} Vel. Max.: {VELOCITY}{}Capacidade: {CARGO_LONG}{}Custo de manuteção: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Custo: {CURRENCY_LONG} Vel Máx.: {VELOCITY}{}Tipo de aeronave: {STRING}{}Capacidade: {CARGO_LONG}, {CARGO_LONG}{}Custo de oper.: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Custo: {CURRENCY_LONG} Vel Máx.: {VELOCITY}{}Tipo de aeronave: {STRING}{}Capacidade: {CARGO_LONG}{}Custo de oper.: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Custo: {CURRENCY_LONG} Vel. Máx.: {VELOCITY}{}Tipo de aeronave: {STRING} Alcance: {COMMA} quadrados{}Capacidade: {CARGO_LONG}, {CARGO_LONG}{}Custo de oper.: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Custo: {CURRENCY_LONG} Vel. Máx.: {VELOCITY}{}Tipo de aeronave: {STRING} Alcance: {COMMA} quadrados{}Capacidade: {CARGO_LONG}{}Custo de oper.: {CURRENCY_LONG}/ano
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING} - {STRING}
@@ -3556,6 +3574,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pression
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Troca entre substituir máquinas e substituir vagões
 STR_REPLACE_ENGINES                                             :Motores
 STR_REPLACE_WAGONS                                              :Vagões
+STR_REPLACE_ALL_RAILTYPE                                        :Todos os veículos ferroviários
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Escolha o tipo de ferrovia para o qual deseja efetuar a substituição dos motores
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o tipo de motor que substituirá o que está selecionado à esquerda, se algum
@@ -3648,6 +3667,8 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidade Max: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Vel. Máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de aeronave: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Vel. Máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de aeronave: {LTBLUE}{STRING} {BLACK}Alcance: {LTBLUE}{COMMA} quadrados
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Força: {LTBLUE}{POWER}{BLACK} Velocidade Max: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Força: {LTBLUE}{POWER}{BLACK} Velocidade Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
@@ -3778,7 +3799,7 @@ STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percentual carr
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Confiabilidade
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidade máxima
 STR_ORDER_CONDITIONAL_AGE                                       :Idade (anos)
-STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Necessia de manutenção
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Necessita de manutenção
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tempo de vida restante (anos)
 
