@@ -34,6 +34,10 @@
 #define MAPVK_VK_TO_CHAR    (2)
 #endif
 
+#ifndef PM_QS_INPUT
+#define PM_QS_INPUT 0x20000
+#endif
+
 static struct {
 	HWND main_wnd;
 	HBITMAP dib_sect;
@@ -737,7 +741,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		case WM_MOUSEMOVE: {
 			int x = (int16)LOWORD(lParam);
 			int y = (int16)HIWORD(lParam);
-			POINT pt;
 
 			/* If the mouse was not in the window and it has moved it means it has
 			 * come into the window, so start drawing the mouse. Also start
@@ -747,7 +750,18 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 				SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
 			}
 
-			if (_cursor.UpdateCursorPosition(x, y, true)) {
+			if (_cursor.fix_at) {
+				/* Get all queued mouse events now in case we have to warp the cursor. In the
+				 * end, we only care about the current mouse position and not bygone events. */
+				MSG m;
+				while (PeekMessage(&m, hwnd, WM_MOUSEMOVE, WM_MOUSEMOVE, PM_REMOVE | PM_NOYIELD | PM_QS_INPUT)) {
+					x = (int16)LOWORD(m.lParam);
+					y = (int16)HIWORD(m.lParam);
+				}
+			}
+
+			if (_cursor.UpdateCursorPosition(x, y, false)) {
+				POINT pt;
 				pt.x = _cursor.pos.x;
 				pt.y = _cursor.pos.y;
 				ClientToScreen(hwnd, &pt);
