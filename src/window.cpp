@@ -1682,7 +1682,7 @@ static Point GetAutoPlacePosition(int width, int height)
 	 * of the closebox
 	 */
 	int left = rtl ? _screen.width - width : 0, top = toolbar_y;
-	int offset_x = rtl ? -NWidgetLeaf::closebox_dimension.width : NWidgetLeaf::closebox_dimension.width;
+	int offset_x = rtl ? -(int)NWidgetLeaf::closebox_dimension.width : (int)NWidgetLeaf::closebox_dimension.width;
 	int offset_y = max<int>(NWidgetLeaf::closebox_dimension.height, FONT_HEIGHT_NORMAL + WD_CAPTIONTEXT_TOP + WD_CAPTIONTEXT_BOTTOM);
 
 restart:
