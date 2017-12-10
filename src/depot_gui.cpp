@@ -383,12 +383,13 @@ struct DepotWindow : Window {
 			int col = _colour_gradient[wid->colour][4];
 			int image_left  = rtl ? r.left  + this->count_width  : r.left  + this->header_width;
 			int image_right = rtl ? r.right - this->header_width : r.right - this->count_width;
+			int first_line = w + (-this->hscroll->GetPosition()) % w;
 			if (rtl) {
-				for (int x = image_right - w; x >= image_left; x -= w) {
+				for (int x = image_right - first_line; x >= image_left; x -= w) {
 					GfxDrawLine(x, r.top, x, r.bottom, col, 1, 3);
 				}
 			} else {
-				for (int x = image_left + w; x <= image_right; x += w) {
+				for (int x = image_left + first_line; x <= image_right; x += w) {
 					GfxDrawLine(x, r.top, x, r.bottom, col, 1, 3);
 				}
 			}
