@@ -384,11 +384,11 @@ struct DepotWindow : Window {
 			int image_left  = rtl ? r.left  + this->count_width  : r.left  + this->header_width;
 			int image_right = rtl ? r.right - this->header_width : r.right - this->count_width;
 			if (rtl) {
-				for (int x = image_right - w; x > image_left; x -= w) {
+				for (int x = image_right - w; x >= image_left; x -= w) {
 					GfxDrawLine(x, r.top, x, r.bottom, col, 1, 3);
 				}
 			} else {
-				for (int x = image_left + w; x < image_right; x += w) {
+				for (int x = image_left + w; x <= image_right; x += w) {
 					GfxDrawLine(x, r.top, x, r.bottom, col, 1, 3);
 				}
 			}
@@ -734,7 +734,8 @@ struct DepotWindow : Window {
 			}
 			/* Always have 1 empty row, so people can change the setting of the train */
 			this->vscroll->SetCount(this->vehicle_list.Length() + this->wagon_list.Length() + 1);
-			this->hscroll->SetCount(max_width);
+			/* Always make it longer than the longest train, so you can attach vehicles at the end, and also see the next vertical tile separator line */
+			this->hscroll->SetCount(max_width + ScaleGUITrad(2 * VEHICLEINFO_FULL_VEHICLE_WIDTH + 1));
 		} else {
 			this->vscroll->SetCount(CeilDiv(this->vehicle_list.Length(), this->num_columns));
 		}
