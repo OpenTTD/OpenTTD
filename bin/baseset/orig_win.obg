@@ -76,7 +76,7 @@ TRGIR.GRF         = 0c2484ff6be49fc63a83be6ab5c38f32
 TRGCR.GRF         = 3668f410c761a050b5e7095a2b14879b
 TRGHR.GRF         = 06bf2b7a31766f048baac2ebe43457b1
 TRGTR.GRF         = de53650517fe661ceaa3138c6edb0eb8
-ORIG_EXTRA.GRF    = 73b921a42814c47a84945b7e9add5d9f
+ORIG_EXTRA.GRF    = 0b10a95c0adee710ecca9c3d676be4f3
 
 [origin]
 default           = You can find it on your Transport Tycoon Deluxe CD-ROM.

@@ -679,7 +679,8 @@ struct DepotWindow : Window {
 			}
 			/* Always have 1 empty row, so people can change the setting of the train */
 			this->vscroll->SetCount(this->vehicle_list.Length() + this->wagon_list.Length() + 1);
-			this->hscroll->SetCount(max_width);
+			/* Always make it longer than the longest train, so you can attach vehicles at the end */
+			this->hscroll->SetCount(max_width + ScaleGUITrad(2 * VEHICLEINFO_FULL_VEHICLE_WIDTH + 1));
 		} else {
 			this->vscroll->SetCount(CeilDiv(this->vehicle_list.Length(), this->num_columns));
 		}
