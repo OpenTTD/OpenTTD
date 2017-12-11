@@ -479,7 +479,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :스크린샷 �
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'에 대해서
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :스프라이트 정렬도구
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :박스 경계선 보기 전환
-STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :더러운 블록 색상 전환
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :시각적 업데이트 블록 표시 전환
 ############ range ends here
 
 ############ range for ordinal numbers used for the place in the highscore window
@@ -2583,8 +2583,8 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}지역 �
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :없음
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}좌표: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}건설날짜: {LTBLUE}{DATE_LONG}
-STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}정거장 등급: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}정거장 종류: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}역 분류: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}역 종류: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}공항 등급: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}공항 이름: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}공항 칸 이름: {LTBLUE}{STRING}

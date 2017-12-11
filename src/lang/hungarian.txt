@@ -1825,6 +1825,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Új és 
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}MI és játékszkript beállítások megjelenítése
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Kilépés az OpenTTD-ből
 
+STR_INTRO_BASESET                                               :{BLACK}A jelenleg kiválasztott grafikus alapcsomagból {NUM} sprite hiányzik. Frissítsd a grafikus alapcsomagot!
 STR_INTRO_TRANSLATION                                           :{BLACK}Ebből a fordításból {NUM} sor hiányzik. Segíts Te is jobbá tenni az OpenTTD-t és jelentkezz fordítónak! További részletekért lásd a readme.txt-t.
 
 # Quit window
@@ -2653,6 +2654,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Repülő
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Elfogad: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Vasút típusa: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Vasúti pályasebesség: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Közúti sebességkorlátozás: {LTBLUE}{VELOCITY}
 
@@ -2665,29 +2667,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Szántóföld
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Havas föld
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Sivatag
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vasút vasúti pálya
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Vasút vasúti pálya normál jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Vasút vasúti pálya előjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Vasút vasúti pálya kijárati jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Vasút vasúti pálya kombinált jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Vasút vasúti pálya irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Vasút vasúti pálya egyirányú irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Vasút vasúti pálya normál- és előjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Vasút vasúti pálya normál- és kijárati jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Vasút vasúti pálya normál- és kombinált jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Vasút vasúti pálya normál- és irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Vasút vasúti pálya normál- és egyirányú irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Vasút vasúti pálya elő- és kijárati jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Vasút vasúti pálya elő- és kombinált jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Vasút vasúti pálya elő- és irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Vasút vasúti pálya elő- és egyirányú irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Vasút vasúti pálya kijárati- és kombinált jelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Vasút vasúti pálya kijárati- és irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Vasút vasúti pálya kijárati- és egyirányú irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Vasút vasúti pálya kombinált- és irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Vasút vasúti pálya kombinált- és egyirányú irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Vasút vasúti pálya irány- és egyirányú irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Vasút járműtelep
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vasúti pálya
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Vasúti pálya normál jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Vasúti pálya előjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Vasúti pálya kijárati jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Vasúti pálya kombinált jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Vasúti pálya irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Vasúti pálya egyirányú irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Vasúti pálya normál- és előjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Vasúti pálya normál- és kijárati jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Vasúti pálya normál- és kombinált jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Vasúti pálya normál- és irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Vasúti pálya normál- és egyirányú irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Vasúti pálya elő- és kijárati jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Vasúti pálya elő- és kombinált jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Vasúti pálya elő- és irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Vasúti pálya elő- és egyirányú irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Vasúti pálya kijárati- és kombinált jelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Vasúti pálya kijárati- és irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Vasúti pálya kijárati- és egyirányú irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Vasúti pálya kombinált- és irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Vasúti pálya kombinált- és egyirányú irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Vasúti pálya irány- és egyirányú irányjelzőkkel
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Vasúti járműtelep
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Út
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Út közvilágítással
@@ -3356,6 +3358,11 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Felhaszn
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Felhasznál: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Elfogad:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{CARGO_LONG} {BLACK}várakozik
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_TEXT                             :{YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_TEXT                      :{YELLOW}{CARGO_LONG}{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Gyárt: {YELLOW}{STRING}{STRING}
@@ -3621,6 +3628,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Nyomd me
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Váltás a mozdony és a vagoncserélő ablak között
 STR_REPLACE_ENGINES                                             :Mozdonyok
 STR_REPLACE_WAGONS                                              :Vagonok
+STR_REPLACE_ALL_RAILTYPE                                        :Minden vasúti jármű
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Cserélendő egységek vasúttípusának kiválasztása
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Megmutatja, hogy melyik bal oldali egységet akarod kicserélni

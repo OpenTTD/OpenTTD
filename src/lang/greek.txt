@@ -31,8 +31,7 @@ STR_JUST_NOTHING                                                :Τίποτα
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :{G=m}Επιβάτες
 STR_CARGO_PLURAL_PASSENGERS.geniki                              :Επιβάτη
-STR_CARGO_PLURAL_COAL                                           :{G=m}Άνθρακάς
-STR_CARGO_PLURAL_COAL.geniki                                    :Άνθρακων
+STR_CARGO_PLURAL_COAL                                           :{G=m}Άνθρακας
 STR_CARGO_PLURAL_MAIL                                           :{G=f}Αλληλογραφία
 STR_CARGO_PLURAL_MAIL.geniki                                    :Αλληλογραφίας
 STR_CARGO_PLURAL_OIL                                            :{G=n}Πετρέλαιo
@@ -97,7 +96,6 @@ STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Επιβάτης
 STR_CARGO_SINGULAR_PASSENGER.subs                               :Επιβάτες
 STR_CARGO_SINGULAR_COAL                                         :{G=m}Άνθρακας
-STR_CARGO_SINGULAR_COAL.subs                                    :Άνθρακες
 STR_CARGO_SINGULAR_MAIL                                         :{G=f}Αλληλογραφία
 STR_CARGO_SINGULAR_MAIL.subs                                    :Αλληλογραφία
 STR_CARGO_SINGULAR_OIL                                          :{G=n}Πετρέλαιο
@@ -348,7 +346,7 @@ STR_SORT_BY_TYPE                                                :Τύπος
 STR_SORT_BY_TRANSPORTED                                         :Μεταφέρθηκαν
 STR_SORT_BY_NUMBER                                              :Αριθμός
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Κέρδος προηγούμενου χρόνου
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Κέρδος αυτού του χρόνου
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Κέρδος τρέχοντος έτους
 STR_SORT_BY_AGE                                                 :Ηλικία
 STR_SORT_BY_RELIABILITY                                         :Αξιοπιστία
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Συνολική χωρητικότητα ανά τύπο φορτίου

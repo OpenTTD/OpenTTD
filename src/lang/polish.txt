@@ -702,10 +702,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Wyświet
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Wyświetl listę stacji firmy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Wyświetl informacje finansowe firmy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Wyświetl informacje ogólne firmy
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Pokaż okno opowieści
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Pokaż dziennik
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Pokaż listę celów
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Wyświetl wykresy
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Wyświetl tabele firm
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Wyświetl ranking firm
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ufunduj budowę nowego przedsiębiorstwa
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Wyświetl listę pociągów firmy. Ctrl+klik otwiera listę grup/pojazdów
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Wyświetl listę pojazdów firmy. Ctrl+klik otwiera listę grup/pojazdów
@@ -757,7 +757,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ustawienia NewG
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcje przeźroczystości
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Wyświetlanie nazw miast
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Wyświetlanie nazw stacji
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wyświetlanie nazw pkt. orientacyjnych
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wyświetlanie nazw posterunków
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Wyświetlanie napisów
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Znaki konkurentów i nazwy są wyświetlane
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Pełna animacja
@@ -790,7 +790,7 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsydia
 ############ range ends here
 
 ############ range for graph menu starts
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Wykres obrotu
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Wykres dochodów
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Wykres przychodów
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Wykres przewożonego ładunku
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Ocena działalności firmy
@@ -799,7 +799,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Stawki za ładu
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Wykres Ligi Firm
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Ranking Firm
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Szczegółowa tabela efektywności
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabela wyników
 ############ range ends here
@@ -971,7 +971,7 @@ STR_GRAPH_KEY_CAPTION                                           :{WHITE}Legenda 
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Kliknij tutaj aby wł./wył. wyświetlanie danych firmy na wykresie
 
 # Company league window
-STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tabela Ligi Firm
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Ranking Firm
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Inżynier
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Administrator Ruchu
@@ -1009,7 +1009,7 @@ STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Ilość 
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Ilość zarobionych pieniędzy w kwartale z największym zyskiem z ostatnich 12 kwartałów
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Ilość ładunku przewiezionego w poprzednich 4 kwartałach
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Ilość różnych typów ładunku przewiezionych w ostatnim kwartale
-STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ilość pieniędzy w ręku
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ilość dostępnych środków pieniężnych
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Wielkość pożyczki wziętej przez firmę
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Suma przyznanych punktów
 
@@ -1062,7 +1062,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliknij 
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Ranking firm, które osiągnęły rok {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabela Ligi Firm w {NUM}
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Ranking Firm w {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Biznesmen
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Przedsiębiorca
@@ -1520,7 +1520,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :wyśrodkowany
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :z prawej strony
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksymalna wysokość początkowej pożyczki: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksymalna wysokość pożyczki jaką firma może zaciągnąć (nie uwzględnia inflacji)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksymalna wysokość pożyczki, jaką firma może zaciągnąć (bez uwzględnienia inflacji)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Oprocentowanie: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Oprocentowanie pożyczki; kontroluje też inflację, jeśli jest włączona
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Koszty amortyzacji: {STRING}
@@ -1856,8 +1856,8 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Wyłącz serwis
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Kiedy włączone, pojazdy nie są serwisowane, jeśli nie mogą się popsuć
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Włącz limity prędkości wagonów: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiedy włączone, użyj także ograniczenia prędkości dla wagonów do obliczenia maksymalnej prędkości pociągu
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Zabroń korzystania z kolei elektrycznych: {STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Włączając to ustawienie, nie jest już wymagane elektryfikowanie torów, aby elektrowozy mogły po nich jeździć
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Tylko jeden rodzaj torów: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Przy włączonym ustawieniu nie jest już wymagane elektryfikowanie torów, aby elektrowozy mogły po nich jeździć
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Przybycie pierwszego pojazdu do stacji gracza: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Wyświetl wiadomość w gazecie kiedy pierwszy pojazd dojedzie do stacji gracza
@@ -1901,8 +1901,8 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Pozwól na łag
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Kiedy włączone, produkcja zakładów zmienia się częściej, ale mniejszymi krokami. To ustawienie zazwyczaj nie daje żadnego efektu, jeśli typy zakładów są pobierane z NewGRFów
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Pozwól kupować udziały w innych firmach: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Kiedy włączone, pozwala na kupowanie i sprzedawanie udziałów w firmie. Udziały będą dostępne tylko dla firm z odpowiednim stażem
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Udział w zyskach w przypadku częściowego transportu (przeładunku): {STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Udział procentowy dochodu pośrednika otrzymywany za transfer towaru. Umożliwia kontrolę nad całościowym dochodem za dowóz towarów w łańcuchu dowozowym
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Podział przychodów w przypadku przeładunków: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Manipulowanie zrównoważeniem podziałów w łańcuchu dowozowym: przy 0% przychód zostanie zaksięgowany na konto wyłącznie ostatniego pojazdu w łańcuchu, wyższa wartość zwiększa zrównoważenie podziału
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Podczas przeciągania ustaw semafor co: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Ustaw dystans, na jakim semafory będą budowane przy torach aż do następnej przeszkody (semafor, zwrotnica), przy przeciąganiu
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} p{P ole ola ól}
@@ -2002,7 +2002,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymetrycznie"
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Dokładność dystrybucji: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Im wyżej ustawisz, tym wiecej czasu zajmie procesorowi obliczenie wykresu. Jeśli zajmuje zbyt dużo czasu, może pojawić sie lag. Natomiast zbyt mała ilość powoduje niedokładną dystrybucję, co można zauważyć gdy towar nie jest wysyłany do miejsc do których się spodziewasz aby dotarł.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Wpływ odległości na dystrybucję: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Jeśli ustawisz tę wartość na więcej niż 0, to dystans pomiędzy stacją początkową A jakiegoś towaru a prawdopodobną stacją docelową B będzie miało wpływ na ilość towaru wysłanego z A do B. Im dalej z A do B, tym mniej towaru zostanie wysłane. Im wększa wartość, tym mniej towaru będzie wysłane do dalekich stacji, a więcej towaru będzie wysłane do bliższych stacji.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Jeśli ładunki z jednej stacji trafiają na kilka różnych stacji, na ich dystrybucję wpływ ma odległość. Im wyższą wartość ustawisz, tym bliższe stacje będą preferowane. Zerowa wartość ustawienia sprawi, że odległość nie będzie wpływała na podział dystrybucji.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Ilość powracającego ładunku dla trybu symetrycznego: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Ustawiając to na mniej niż 100% powoduje, że symetryczna dystrybucja zachowuje się podobnie do asymetrycznej. Mniej towaru będzie zwróconego jeśli pewna ilość zostanie wysłana do stacji. Jeśli ustawisz to na 0%, to symetryczna dystrybucja zachowuje się jak asymetryczna.
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Zapełnienie krótkich tras przed wybraniem tras o dużej przepustowości: {STRING}
@@ -2411,7 +2411,7 @@ STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nazwa f
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Inauguracja: {WHITE}{NUM}
 STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Wartość firmy: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Bieżący bilans: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Przychód w ostatnim roku: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Dochód w ostatnim roku: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Wydajność: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Pojazdy: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -2422,7 +2422,7 @@ STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nowa fir
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Rozpoczęcie działalności nowej firmy
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Obserwuj grę
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Oglądaj grę jako widz
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Połącz z firmą
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Dołącz do firmy
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Pomóż zarządzać tą firmą
 
 # Network connecting window
@@ -2682,8 +2682,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Zasoby: 
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Połącz stację
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Zbuduj oddzielną stację
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Połącz pkt. orientacyjne
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Zbuduj oddzielny pkt. orientacyjny
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Połącz posterunki
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Zbuduj oddzielny posterunek
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Konstrukcja linii kolejowej
@@ -2694,12 +2694,12 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Konstrukcja lin
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Budowa torów kolejowych. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Zbuduj tory kolejowe za pomocą trybu Autotory. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Budowa warsztatów (do kupowania i serwisowania pociągów). Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Zamiana torów na pkt. orientacyjny. Ctrl umożliwia łączenie pkt. orientacyjnych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Zamiana torów na posterunek. Ctrl umożliwia łączenie posterunków. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Zbuduj stację kolejową. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zbuduj sygnały kolejowe. Ctrl przełącza semafory/sygnały świetlne{}Przeciągnięcie pozwala na budowę sygnałów wzdłuż prostej linii torów. Ctrl pozwala na budowę sygnałów do następnego skrzyżowania{}Ctrl+klik przełącza do okna wyboru sygnałów. Shift przełącza pomiędzy budowaniem a szacowaniem kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zbuduj most kolejowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zbuduj tunel kolejowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Przełącz buduj/usuń dla torów kolejowych, sygnałów, pkt. orientacyjnych i stacji. Przetrzymanie Ctrl usuwa także tory kolejowe z pkt. orientacyjnych i stacji
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Przełącz buduj/usuń dla torów kolejowych, sygnałów, posterunków i stacji. Przetrzymanie Ctrl usuwa także tory kolejowe z posterunków i stacji
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Zamiana typu torów. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 
 STR_RAIL_NAME_RAILROAD                                          :Kolej
@@ -2712,8 +2712,8 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Ukierunk
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Wybierz ukierunkowanie warsztatów
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{WHITE}Pkt. orientacyjny
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Wybierz typ pkt. orientacyjnego
+STR_WAYPOINT_CAPTION                                            :{WHITE}Posterunek
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Wybierz typ posterunku
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Wybór stacji
@@ -2730,7 +2730,7 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Wybierz 
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Wybierz typ stacji do zbudowania
 
 STR_STATION_CLASS_DFLT                                          :Typowa stacja
-STR_STATION_CLASS_WAYP                                          :Pkt. orientacyjne
+STR_STATION_CLASS_WAYP                                          :Posterunki
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Wybór sygnałów
@@ -3028,7 +3028,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Stacja załadun
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Przystanek
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Port
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boja
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Pkt. orientacyjny
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Posterunek
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Woda
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kanał
@@ -3414,7 +3414,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kup roc
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Daj łapówkę lokalnym władzom, powiększ swoją ocenę, ryzykując poważne kary w razie złapania.{}Koszt: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Cele
+STR_GOALS_CAPTION                                               :{WHITE}Cele firmy {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Cele globalne
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Cele globalne:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
@@ -3462,8 +3462,8 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik na usłudze żeby wyśrodkować widok na fabrykę/miasto. Ctrl+klik otwiera nowy podgląd na pozycji fabryki/miasta
 
 # Story book window
-STR_STORY_BOOK_CAPTION                                          :{WHITE}Album Historii Firmy {COMPANY}
-STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globalne okno opowieści
+STR_STORY_BOOK_CAPTION                                          :{WHITE}Dziennik Historii Firmy {COMPANY}
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Ogólny przewodnik
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Strona {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Skocz na właściwą stronę wybierając ją z listy.
@@ -3551,8 +3551,8 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nie zezw
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centruj główny widok na pkt. orientacyjnym. Ctrl+klik otwiera nowy podgląd na lokacji pkt. orientacyjnego
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmień nazwę pkt. orientacyjnego
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centruj główny widok na posterunku. Ctrl+klik otwiera nowy podgląd na lokacji posterunku
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmień nazwę posterunku
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centruj główny widok na pozycji boi. Ctrl+klik otwiera nowy podgląd na lokacji boi
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Zmień nazwę boji
 
@@ -3674,6 +3674,11 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Wymaga: 
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Wymaga: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Potrzebuje
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{CARGO_LONG} {BLACK}oczekuje
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_TEXT                             :{YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_TEXT                      :{YELLOW}{CARGO_LONG}{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produkuje: {YELLOW}{STRING}{STRING}
@@ -4130,9 +4135,9 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koniec wsp�
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
 STR_ORDER_GO_TO                                                 :Idź do
-STR_ORDER_GO_NON_STOP_TO                                        :Idź bez przerwy do
+STR_ORDER_GO_NON_STOP_TO                                        :Idź bezpośrednio do
 STR_ORDER_GO_VIA                                                :Idź przez
-STR_ORDER_GO_NON_STOP_VIA                                       :Idź bez przerwy przez
+STR_ORDER_GO_NON_STOP_VIA                                       :Idź bezpośrednio poprzez
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmień sposób przejazdu w podświetlonym poleceniu
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pełny załadunek któregoś z towarów
@@ -4143,9 +4148,9 @@ STR_ORDER_DROP_NO_LOADING                                       :Nie ładować
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Zmień sposób załadunku w podświetlonym poleceniu
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Rozładuj i załaduj
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Wyładuj jeśli akceptowane
-STR_ORDER_DROP_UNLOAD                                           :Rozładuj i załaduj
-STR_ORDER_DROP_TRANSFER                                         :Przeładunek
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Rozładuj jeśli akceptowane
+STR_ORDER_DROP_UNLOAD                                           :Rozładuj wszystko
+STR_ORDER_DROP_TRANSFER                                         :Pozostaw do przeładunku
 STR_ORDER_DROP_NO_UNLOADING                                     :Nie rozładowuj
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Zmień sposób wyładunku w podświetlonym poleceniu
 
@@ -4181,7 +4186,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :mniejszy lub r�
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :większy niż
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :większy lub równy
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :prawda
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :fałsz
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :nie prawda
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Wartość do porównania z danymi pojazdu
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Podaj wartość do porównania
@@ -4206,15 +4211,15 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Pokaż w
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Idź przez {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Idź bez zatrzymywania przez {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Idź bezpośrednio poprzez {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Serwisuj w
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Serwisuj non-stop w
 
-STR_ORDER_NEAREST_DEPOT                                         :najbliższych
-STR_ORDER_NEAREST_HANGAR                                        :najbliższy hangar
-STR_ORDER_TRAIN_DEPOT                                           :Warsztatów
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Zajezdni samochodowej
+STR_ORDER_NEAREST_DEPOT                                         :najbliższego
+STR_ORDER_NEAREST_HANGAR                                        :najbliższego hangaru
+STR_ORDER_TRAIN_DEPOT                                           :serwisu w warsztatach
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :serwisu w zajezdni
 STR_ORDER_SHIP_DEPOT                                            :Doku
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
@@ -4225,7 +4230,7 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Sugerujący)
+STR_ORDER_IMPLICIT                                              :(sugerowany)
 
 STR_ORDER_FULL_LOAD                                             :(Pełny załadunek)
 STR_ORDER_FULL_LOAD_ANY                                         :(Pełny załadunek dowolnego towaru)
@@ -4266,7 +4271,7 @@ STR_ORDER_OUT_OF_RANGE                                          :{RED} (Kolejny 
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Skocz do rozkazu {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Skocz do rozkazu {COMMA} kiedy {STRING} {STRING} {COMMA}
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Skocz do rozkazu {COMMA} kiedy {STRING} {STRING}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Skocz do rozkazu {0:COMMA} kiedy {2:STRING} że {1:STRING}
 
 STR_INVALID_ORDER                                               :{RED} (Błędne polecenie)
 
@@ -4625,15 +4630,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Należy 
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Należy najpierw usunąć lotnisko
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Przylega do więcej niż jednego istniejącego pkt. orientacyjnego
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Zbyt blisko innego pkt. orientacyjnego
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Przylega do więcej niż jednego istniejącego posterunku
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Zbyt blisko innego posterunku
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Nie można budować tutaj punktu orientacyjnego...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nie można tutaj ustawić boi...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nie można zmienić nazwy pkt. orientacyjnego...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nie można zmienić nazwy posterunku...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nie można usunąć stąd kolejowego punktu orientacyjnego...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Musisz usunąć najpierw punkt nawigacyjny
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nie można usunąć stąd posterunku kolejowego...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Musisz usunąć najpierw posterunek kolejowy
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boja na drodze
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boja w użyciu przez inna firmę!
 
@@ -5287,8 +5292,8 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Post. {TOWN} #{
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Warsztaty {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Warsztaty {TOWN} #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Zajezdnia samochodowa {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Zajezdnia samochodowa {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Zajezdnia {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Zajezdnia {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Stocznia {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Stocznia {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar {STATION}
