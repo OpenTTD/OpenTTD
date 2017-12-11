@@ -15,7 +15,7 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
- * \b 1.7.0 - 1.7.1
+ * \b 1.7.0 - 1.7.2
  *
  * No changes
  *

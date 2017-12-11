@@ -1,3 +1,17 @@
+1.7.2-RC1 (2017-12-11)
+------------------------------------------------------------------------
+- Change: When train depots have a horizontal scrollbar, allow scrolling 1 tile beyond the longest train, so you can actually attach a wagon at the end (r27937)
+- Fix: When moving wagons in the depot, the drag highlight did not exactly match the length of the dragged wagon chain (r27936)
+- Fix: [Win32] Right mouse scrolling didn't work properly with the Windows 10 Fall Creators Update [FS#6629] (r27935)
+- Fix: Forest, candyfloss forest and battery farm skipped the first animation frame [FS#6639] (r27932)
+- Fix: Glyphs in range U+0020 to U+00FF may only be defined in orig_extra.grf, not in openttd.grf [FS#6620] (r27915)
+- Fix: 'unban' console command was not handling IPv6 adresses properly (r27914, r27913)
+- Fix: Keep the 'link' between industry chain and smallmap windows whenever possible [FS#6585] (r27905)
+- Fix: When the last vehicle is removed from a shared orders group, hide the 'Stop sharing' button in the vehicle orders window [FS#6593] (r27904)
+- Fix: Tooltip of 'increase service interval' said 'decrease' [FS#6606] (r27895)
+- Fix: Console command parser passed invalid strings to the debug output, if command lines had many parameters [FS#6576] (r27884, r27883)
+
+
 1.7.1 (2017-06-13)
 ------------------------------------------------------------------------
 (None)
