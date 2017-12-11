@@ -82,6 +82,7 @@ protected:
 	uint8 refresh;   ///< Refresh counter, zeroed every FORCE_REFRESH_PERIOD ticks.
 	LinkGraphOverlay *overlay;
 
+	static void BreakIndustryChainLink();
 	Point SmallmapRemapCoords(int x, int y) const;
 
 	/**
@@ -173,7 +174,7 @@ public:
 	friend class NWidgetSmallmapDisplay;
 
 	SmallMapWindow(WindowDesc *desc, int window_number);
-	virtual ~SmallMapWindow() { delete this->overlay; }
+	virtual ~SmallMapWindow();
 
 	void SmallMapCenterOnCurrentPos();
 	Point GetStationMiddle(const Station *st) const;

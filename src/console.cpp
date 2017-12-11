@@ -434,7 +434,10 @@ void IConsoleCmdExec(const char *cmdstr)
 	 * enclosed in "" are taken as one token. We can only go as far as the amount
 	 * of characters in our stream or the max amount of tokens we can handle */
 	for (cmdptr = cmdstr, t_index = 0, tstream_i = 0; *cmdptr != '\0'; cmdptr++) {
-		if (t_index >= lengthof(tokens) || tstream_i >= lengthof(tokenstream)) break;
+		if (tstream_i >= lengthof(tokenstream)) {
+			IConsoleError("command line too long");
+			return;
+		}
 
 		switch (*cmdptr) {
 		case ' ': // Token separator
@@ -452,6 +455,10 @@ void IConsoleCmdExec(const char *cmdstr)
 		case '"': // Tokens enclosed in "" are one token
 			longtoken = !longtoken;
 			if (!foundtoken) {
+				if (t_index >= lengthof(tokens)) {
+					IConsoleError("command line too long");
+					return;
+				}
 				tokens[t_index++] = &tokenstream[tstream_i];
 				foundtoken = true;
 			}
@@ -466,6 +473,10 @@ void IConsoleCmdExec(const char *cmdstr)
 			tokenstream[tstream_i++] = *cmdptr;
 
 			if (!foundtoken) {
+				if (t_index >= lengthof(tokens)) {
+					IConsoleError("command line too long");
+					return;
+				}
 				tokens[t_index++] = &tokenstream[tstream_i - 1];
 				foundtoken = true;
 			}
@@ -473,7 +484,7 @@ void IConsoleCmdExec(const char *cmdstr)
 		}
 	}
 
-	for (uint i = 0; tokens[i] != NULL; i++) {
+	for (uint i = 0; i < lengthof(tokens) && tokens[i] != NULL; i++) {
 		DEBUG(console, 8, "Token %d is: '%s'", i, tokens[i]);
 	}
 
