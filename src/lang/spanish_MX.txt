@@ -1134,7 +1134,7 @@ STR_CONFIG_SETTING_COMPANIES_ALL                                :Todas las empre
 
 STR_CONFIG_SETTING_NONE                                         :Ninguno
 STR_CONFIG_SETTING_ORIGINAL                                     :Original
-STR_CONFIG_SETTING_REALISTIC                                    :Simulado
+STR_CONFIG_SETTING_REALISTIC                                    :Realista
 
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Izquierda
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
