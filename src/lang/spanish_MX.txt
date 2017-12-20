@@ -3949,8 +3949,8 @@ STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Borrar e
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar retrasos
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniciar el contador del retraso para que el vehículo vaya a tiempo
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Rellenar automáticamente
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellenar la tabla de itinerarios automáticamente con los valores del siguiente recorrido (Ctrl+Clic para intentar mantener los tiempos de espera)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Llenar automáticamente
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Llenar la tabla de itinerarios automáticamente con los valores del siguiente recorrido (Ctrl+Clic para intentar mantener los tiempos de espera)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado
@@ -4584,7 +4584,7 @@ STR_SV_STNAME_TRANSFER                                          :Transferencia {
 STR_SV_STNAME_HALT                                              :Parada {STRING}
 STR_SV_STNAME_VALLEY                                            :Valle de {STRING}
 STR_SV_STNAME_HEIGHTS                                           :Altos de {STRING}
-STR_SV_STNAME_WOODS                                             :Alameda de {STRING}
+STR_SV_STNAME_WOODS                                             :Bosques de {STRING}
 STR_SV_STNAME_LAKESIDE                                          :Lago de {STRING}
 STR_SV_STNAME_EXCHANGE                                          :Intercambio {STRING}
 STR_SV_STNAME_AIRPORT                                           :Aeropuerto de {STRING}
