@@ -3271,7 +3271,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tranvía
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Casillas de agua:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canales
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Estaciones:
-STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Casillas de estación
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Casillas de estaciones
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aeropuertos
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/año
 
