@@ -3097,7 +3097,7 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Ir a la 
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referencia a objetivos no válida
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nombres de estación: Clic en un nombre para centrar la vista principal en la estación. Ctrl+Clic abre una ventana de vista en dicha ubicación
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nombres de estaciones: Clic en un nombre para centrar la vista principal en la estación. Ctrl+Clic abre una ventana de vista en dicha ubicación
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantener pulsado Ctrl para seleccionar más de un elemento
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY}: {COMMA} estaci{P ón ones}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
