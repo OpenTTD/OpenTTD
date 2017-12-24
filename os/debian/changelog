@@ -1,3 +1,39 @@
+openttd (1.7.2-0) unstable; urgency=low
+
+  * New upstream release 1.7.2
+
+ -- OpenTTD <info@openttd.org>  Sun, 24 Dec 2017 14:00:00 +0100
+
+openttd (1.7.2~RC1-0) unstable; urgency=low
+
+  * New upstream release 1.7.2-RC1
+
+ -- OpenTTD <info@openttd.org>  Mon, 11 Dec 2017 21:30:00 +0100
+
+openttd (1.7.1-0) unstable; urgency=low
+
+  * New upstream release 1.7.1
+
+ -- OpenTTD <info@openttd.org>  Tue, 13 Jun 2017 21:00:00 +0200
+
+openttd (1.7.1~RC1-0) unstable; urgency=low
+
+  * New upstream release 1.7.1-RC1
+
+ -- OpenTTD <info@openttd.org>  Thu, 04 Mai 2017 21:00:00 +0200
+
+openttd (1.7.0-0) unstable; urgency=low
+
+  * New upstream release 1.7.0
+
+ -- OpenTTD <info@openttd.org>  Sat, 01 Apr 2017 19:00:00 +0200
+
+openttd (1.7.0~RC1-0) unstable; urgency=low
+
+  * New upstream release 1.7.0-RC1
+
+ -- OpenTTD <info@openttd.org>  Sat, 11 Mar 2017 22:30:00 +0100
+
 openttd (1.6.1-0) unstable; urgency=low
 
   * New upstream release 1.6.1

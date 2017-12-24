@@ -1,3 +1,94 @@
+1.7.2 (2017-12-24)
+------------------------------------------------------------------------
+(None)
+
+
+1.7.2-RC1 (2017-12-11)
+------------------------------------------------------------------------
+- Change: When train depots have a horizontal scrollbar, allow scrolling 1 tile beyond the longest train, so you can actually attach a wagon at the end (r27937)
+- Fix: When moving wagons in the depot, the drag highlight did not exactly match the length of the dragged wagon chain (r27936)
+- Fix: [Win32] Right mouse scrolling didn't work properly with the Windows 10 Fall Creators Update [FS#6629] (r27935)
+- Fix: Forest, candyfloss forest and battery farm skipped the first animation frame [FS#6639] (r27932)
+- Fix: Glyphs in range U+0020 to U+00FF may only be defined in orig_extra.grf, not in openttd.grf [FS#6620] (r27915)
+- Fix: 'unban' console command was not handling IPv6 adresses properly (r27914, r27913)
+- Fix: Keep the 'link' between industry chain and smallmap windows whenever possible [FS#6585] (r27905)
+- Fix: When the last vehicle is removed from a shared orders group, hide the 'Stop sharing' button in the vehicle orders window [FS#6593] (r27904)
+- Fix: Tooltip of 'increase service interval' said 'decrease' [FS#6606] (r27895)
+- Fix: Console command parser passed invalid strings to the debug output, if command lines had many parameters [FS#6576] (r27884, r27883)
+
+
+1.7.1 (2017-06-13)
+------------------------------------------------------------------------
+(None)
+
+
+1.7.1-RC1 (2017-05-04)
+------------------------------------------------------------------------
+- Fix: Add missing game script event for ships arriving at a station [FS#6560] (r27859, r27858)
+- Fix: StringID truncation to 16 bits broke string remapping test [FS#6555] (r27851)
+- Fix: Infinite loop in pathfinder when checking safe waiting position from a waypoint [FS#5926] (r27846)
+- Fix: [YAPF] Consider depot as destination before reversing path and applying penalty (r27843)
+- Fix: Don't consider locks or ship depots as clear water when placing industries (r27841)
+- Fix: Small news window's fake caption was not sized to fit its text (r27838)
+- Fix: Black remap did nothing in 8bpp-simple blitter (r27837)
+- Fix: Misaligned resize icon due to widget bounds being inclusive (r27831)
+- Fix: Update viewport sign dimensions when changing GUI zoom level (r27827, r27819)
+- Fix: Vehicle viewport is not user scrollable so flag window as such (r27823)
+- Fix: Allow dropdown to be drawn above origin widget even with scrollbar (r27820)
+- Fix: 32bpp-anim blitters assumed that pitch and width of the screen were equal [FS#6545] (r27796)
+- Fix: Chat text background overflowed due to missing padding [FS#6526] (r27794)
+- Fix: Failed to load lzo compressed savegames sometimes [FS#6450] (r27793)
+- Fix: [Win32] Mark OpenTTD as DPI-aware to avoid OS window scaling that breaks mouse input [FS#6366] (r27791, r27790)
+- Fix: [NewGRF] Get vehicle load amount after executing new cargo trigger [FS#6536] (r27788)
+- Fix: AI configuration changed incorrect parameter when some parameters are hidden [FS#6479] (r27787, r27786)
+- Fix: Buoys not always drawn after being placed depending on zoom level [FS#6508] (r27785)
+- Fix: Allow rail conversion even if ship is on tile [FS#6505] (r27784)
+
+
+1.7.0 (2017-04-01)
+------------------------------------------------------------------------
+(None)
+
+
+1.7.0-RC1 (2017-03-11)
+------------------------------------------------------------------------
+- Feature: [NewGRF] Extend the DCxx range to D800-DFFF (r27769)
+- Feature: [NewGRF, script] Increase the maximum number of GameScript texts to 64k, and NewGRF texts to 512k (r27758)
+- Feature: [NewGRF] CB 37 results 0x0401 and 0x0800-0BFF for improved control of display of input cargos in the industry GUI (r27751)
+- Feature: Sprites missing in outdated basesets are now provided by openttd.grf (r27732, r27731, r27730)
+- Feature: [NewGRF] String command 9A 1E to print the name of a cargo type (r27707, r27706)
+- Feature: [Debug] Assign descriptive names to threads [FS#6471] (r27674, r27673, r27670)
+- Feature: [NewGRF] Allow composing vehicles from multiple sprites (r27668)
+- Change: Enable realistic train and road vehicle acceleration by default (r27760)
+- Change: Hide the drive-in stops from the tram station picker (r27734)
+- Change: Do not count static NewGRF when checking for the maximum number of NewGRFs in a game (r27729)
+- Change: Limit waypoint area by maximum station spread during dragging (r27710)
+- Change: [Build] Re-enable Wnarrowing for gcc 4.9+ [FS#6532] (r27709, r27703)
+- Change: List railtype of rail tiles explicitly in the tile info window (r27686)
+- Change: Re-arrange the autoreplace GUI for trains, and do not filter it by railtype by default (r27683)
+- Change: Various performance improvements to CargoDist and LinkGraphs (r27682, r27681, r27614, r27613, r27612, r27611)
+- Change: Improve randomisation of rough land appearance (r27657)
+- Change: [Build] Enable C++11 for clang 3.3 (r27654)
+- Fix: Insufficient thread synchronisation when switching blitters lead to crashes [FS#6510] (r27775)
+- Fix: Enabling palette animation for 32bpp blitters while paused skipped initialisation of the palette and resulted in black windows [FS#5889] (r27774)
+- Fix: Intro games other than the traditional nightly one would cause townname NewGRFs to not get activated in the game options [FS#5819] (r27772)
+- Fix: Some variables were not reset between loading old savegames, which made loading them fail [FS#6540] (r27770)
+- Fix: Removing secondary roadtypes from bridges was factor 2 too cheap [FS#6538] (r27746)
+- Fix: Extra viewports did not center on the selected tile [FS#6537] (r27743)
+- Fix: [Build] Building on newer OSX versions with newer SDKs [FS#6295, FS#6502] (r27727, r27675)
+- Fix: Improve error message when trying to build rail track over a depot  (r27726)
+- Fix: Rescanning NewGRF in-game could break the loaded NewGRF, if very many NewGRF were in use (r27721)
+- Fix: Text could overflow various GUI elements [FS#6527] (r27713)
+- Fix: Memory leak when reloading NewGRF (r27690, r27688, r27687)
+- Fix: When removing objects of bankrupt companies the tiles may revert to canal. In that case also check the ownership of the canal [FS#6511] (r27656)
+- Fix: Make the console file commands operate independent of the save/load GUI (r27645)
+- Fix: When dragging vehicles in group or depot GUI, draw the complete articulated vehicle (r27632)
+- Fix: When dragging multiple vehicles in the depot, make the destination gap as long as the chain instead of just considering the first vehicle (r27629)
+- Fix: [Build] Change the GCC version detection so that it works with two-digit and truncated versions [FS#6487] (r27623, r27616)
+- Fix: Do not hide filtered and highlighted industries by overlapping tiles in the zoomed-out smallmap (r27622, r27621, r27620)
+- Fix: [Script] Kill scripts, when a non-suspendable valuator call takes way too long [FS#6473] (r27594)
+
+
 1.6.1 (2016-07-01)
 ------------------------------------------------------------------------
 - Fix: Compilation and optimisation issues with GCC6 (r27606, r27605, r27595)

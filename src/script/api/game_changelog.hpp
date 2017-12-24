@@ -19,7 +19,7 @@
  *
  * 1.8.0 is not yet released. The following changes are not set in stone yet.
  *
- * \b 1.7.0
+ * \b 1.7.0 - 1.7.2
  *
  * No changes
  *
