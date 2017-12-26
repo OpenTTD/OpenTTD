@@ -3131,11 +3131,11 @@ STR_STATION_VIEW_WAITING_AMOUNT                                 :Cantidad: Esper
 STR_STATION_VIEW_PLANNED_STATION                                :Estación: Planeado
 STR_STATION_VIEW_PLANNED_AMOUNT                                 :Cantidad: Planeado
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} desde {STATION}
-STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} por {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} pasando por {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} a {STATION}
 STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} desde estación desconocida
 STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} a cualquier estación
-STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} por cualquier estación
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} pasando por cualquier estación
 STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} con salida desde esta estación
 STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} se detendrá en esta estación
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} a esta estación
@@ -3835,8 +3835,8 @@ STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añadir 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Ver todos los vehículos que comparten el mismo itinerario
 
 # String parts to build the order string
-STR_ORDER_GO_TO_WAYPOINT                                        :Ir por {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ir sin paradas por {WAYPOINT}
+STR_ORDER_GO_TO_WAYPOINT                                        :Ir pasando por {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ir sin paradas pasando por {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Mantenimiento en
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Mantenimiento sin paradas en
@@ -3916,9 +3916,9 @@ STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar durante 
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (durante {STRING}, no programado)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (durante {STRING}, no programado) a {VELOCITY} como máximo
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(esperar {STRING}, no programado)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar por {STRING}, no programado)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar {STRING}, no programado)
 STR_TIMETABLE_STAY_FOR                                          :y esperar {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar por {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}día{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick{P "" s}
 
