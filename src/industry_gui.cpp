@@ -777,37 +777,30 @@ public:
 				y += FONT_HEIGHT_NORMAL;
 				first = false;
 			}
+			SetDParam(0, CargoSpec::Get(i->accepts_cargo[j])->name);
+			SetDParam(1, i->accepts_cargo[j]);
+			SetDParam(2, i->incoming_cargo_waiting[j]);
+			SetDParamStr(3, "");
+			StringID str = STR_NULL;
 			switch (cargo_suffix[j].display) {
-				case CSD_CARGO_AMOUNT:
-					if (stockpiling) {
-						SetDParam(0, i->accepts_cargo[j]);
-						SetDParam(1, i->incoming_cargo_waiting[j]);
-						DrawString(left_side, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT);
-						break;
-					}
+				case CSD_CARGO_AMOUNT_TEXT:
+					SetDParamStr(3, cargo_suffix[j].text);
 					FALLTHROUGH;
-
-				case CSD_CARGO:
-					SetDParam(0, CargoSpec::Get(i->accepts_cargo[j])->name);
-					DrawString(left_side, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_ACCEPT_CARGO);
+				case CSD_CARGO_AMOUNT:
+					str = stockpiling ? STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT : STR_INDUSTRY_VIEW_ACCEPT_CARGO;
 					break;
 
 				case CSD_CARGO_TEXT:
-					SetDParam(0, CargoSpec::Get(i->accepts_cargo[j])->name);
-					SetDParamStr(1, cargo_suffix[j].text);
-					DrawString(left_side, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_ACCEPT_CARGO_TEXT);
-					break;
-
-				case CSD_CARGO_AMOUNT_TEXT:
-					SetDParam(0, i->accepts_cargo[j]);
-					SetDParam(1, i->incoming_cargo_waiting[j]);
-					SetDParamStr(2, cargo_suffix[j].text);
-					DrawString(left_side, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_TEXT);
+					SetDParamStr(3, cargo_suffix[j].text);
+					FALLTHROUGH;
+				case CSD_CARGO:
+					str = STR_INDUSTRY_VIEW_ACCEPT_CARGO;
 					break;
 
 				default:
 					NOT_REACHED();
 			}
+			DrawString(left_side, right - WD_FRAMERECT_RIGHT, y, str);
 			y += FONT_HEIGHT_NORMAL;
 		}
 
