@@ -585,32 +585,6 @@ bool AppendPathSeparator(char *buf, const char *last)
 }
 
 /**
- * Allocates and files a variable with the full path
- * based on the given directory.
- * @param dir the directory to base the path on
- * @return the malloced full path
- */
-char *BuildWithFullPath(const char *dir)
-{
-	char *dest = MallocT<char>(MAX_PATH);
-	char *last = dest + MAX_PATH - 1;
-	strecpy(dest, dir, last);
-
-	/* Check if absolute or relative path */
-	const char *s = strchr(dest, PATHSEPCHAR);
-
-	/* Add absolute path */
-	if (s == NULL || dest != s) {
-		if (getcwd(dest, MAX_PATH) == NULL) *dest = '\0';
-		AppendPathSeparator(dest, last);
-		strecat(dest, dir, last);
-	}
-	AppendPathSeparator(dest, last);
-
-	return dest;
-}
-
-/**
  * Find the first directory in a tar archive.
  * @param tarname the name of the tar archive to look in.
  * @param subdir  the subdirectory to look in.
