@@ -3293,8 +3293,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}必要�
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}必要資源: {YELLOW}{STRING}{STRING}、{STRING}{STRING}、{STRING}{STRING}
 ############ range for requires ends
 
-STR_INDUSTRY_VIEW_REQUIRES                                      : {BLACK}必要物資
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_TEXT                      : {YELLOW}{CARGO_LONG}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES                                      : {BLACK}必要物資:
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}生産品: {YELLOW}{STRING}{STRING}
