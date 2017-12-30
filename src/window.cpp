@@ -3174,7 +3174,7 @@ void Window::InvalidateData(int data, bool gui_scope)
 	this->SetDirty();
 	if (!gui_scope) {
 		/* Schedule GUI-scope invalidation for next redraw. */
-		*this->scheduled_invalidation_data.Append() = data;
+		this->scheduled_invalidation_data.push_back(data);
 	}
 	this->OnInvalidateData(data, gui_scope);
 }
@@ -3184,10 +3184,11 @@ void Window::InvalidateData(int data, bool gui_scope)
  */
 void Window::ProcessScheduledInvalidations()
 {
-	for (int *data = this->scheduled_invalidation_data.Begin(); this->window_class != WC_INVALID && data != this->scheduled_invalidation_data.End(); data++) {
-		this->OnInvalidateData(*data, true);
+	for (auto &data : this->scheduled_invalidation_data) {
+		if (WC_INVALID == this->window_class) break;
+		this->OnInvalidateData(data, true);
 	}
-	this->scheduled_invalidation_data.Clear();
+	this->scheduled_invalidation_data.clear();
 }
 
 /**
