@@ -113,7 +113,7 @@ public:
 	 */
 	inline FiosItem *Append()
 	{
-		return this->files.Append();
+		return &*Extend(this->files, 1);
 	}
 
 	/**
@@ -122,7 +122,7 @@ public:
 	 */
 	inline uint Length() const
 	{
-		return this->files.Length();
+		return this->files.size();
 	}
 
 	/**
@@ -131,7 +131,7 @@ public:
 	 */
 	inline const FiosItem *Begin() const
 	{
-		return this->files.Begin();
+		return this->files.data();
 	}
 
 	/**
@@ -140,7 +140,7 @@ public:
 	 */
 	inline const FiosItem *End() const
 	{
-		return this->files.End();
+		return this->Begin() + this->Length();
 	}
 
 	/**
@@ -149,7 +149,7 @@ public:
 	 */
 	inline const FiosItem *Get(uint index) const
 	{
-		return this->files.Get(index);
+		return this->files.data() + index;
 	}
 
 	/**
@@ -158,7 +158,7 @@ public:
 	 */
 	inline FiosItem *Get(uint index)
 	{
-		return this->files.Get(index);
+		return this->files.data() + index;
 	}
 
 	inline const FiosItem &operator[](uint index) const
@@ -178,19 +178,19 @@ public:
 	/** Remove all items from the list. */
 	inline void Clear()
 	{
-		this->files.Clear();
+		this->files.clear();
 	}
 
 	/** Compact the list down to the smallest block size boundary. */
 	inline void Compact()
 	{
-		this->files.Compact();
+		this->files.shrink_to_fit();
 	}
 
 	void BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperation fop);
 	const FiosItem *FindItem(const char *file);
 
-	SmallVector<FiosItem, 32> files; ///< The list of files.
+	std::vector<FiosItem> files; ///< The list of files.
 };
 
 enum SortingBits {
