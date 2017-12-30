@@ -202,7 +202,7 @@ const char *SaveKeycodes(const Hotkey *hotkey)
 {
 	static char buf[128];
 	buf[0] = '\0';
-	for (uint i = 0; i < hotkey->keycodes.Length(); i++) {
+	for (uint i = 0; i < hotkey->keycodes.size(); i++) {
 		const char *str = KeycodeToString(hotkey->keycodes[i]);
 		if (i > 0) strecat(buf, ",", lastof(buf));
 		strecat(buf, str, lastof(buf));
@@ -247,7 +247,7 @@ Hotkey::Hotkey(const uint16 *default_keycodes, const char *name, int num) :
  */
 void Hotkey::AddKeycode(uint16 keycode)
 {
-	this->keycodes.Include(keycode);
+	Include(this->keycodes, keycode);
 }
 
 HotkeyList::HotkeyList(const char *ini_group, Hotkey *items, GlobalHotkeyHandlerFunc global_hotkey_handler) :
@@ -272,7 +272,7 @@ void HotkeyList::Load(IniFile *ini)
 	for (Hotkey *hotkey = this->items; hotkey->name != NULL; ++hotkey) {
 		IniItem *item = group->GetItem(hotkey->name, false);
 		if (item != NULL) {
-			hotkey->keycodes.Clear();
+			hotkey->keycodes.clear();
 			if (item->value != NULL) ParseHotkeys(hotkey, item->value);
 		}
 	}
@@ -300,7 +300,7 @@ void HotkeyList::Save(IniFile *ini) const
 int HotkeyList::CheckMatch(uint16 keycode, bool global_only) const
 {
 	for (const Hotkey *list = this->items; list->name != NULL; ++list) {
-		if (list->keycodes.Contains(keycode | WKC_GLOBAL_HOTKEY) || (!global_only && list->keycodes.Contains(keycode))) {
+		if (Contains(list->keycodes, static_cast<uint16>(keycode | WKC_GLOBAL_HOTKEY)) || (!global_only && Contains(list->keycodes, keycode))) {
 			return list->num;
 		}
 	}

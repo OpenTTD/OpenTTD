@@ -29,7 +29,7 @@ struct Hotkey {
 
 	const char *name;
 	int num;
-	SmallVector<uint16, 1> keycodes;
+	std::vector<uint16> keycodes;
 };
 
 #define HOTKEY_LIST_END Hotkey((uint16)0, NULL, -1)
