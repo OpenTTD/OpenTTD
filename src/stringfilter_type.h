@@ -39,7 +39,7 @@ private:
 	};
 
 	const char *filter_buffer;                     ///< Parsed filter string. Words separated by 0.
-	SmallVector<WordState, 4> word_index;          ///< Word index and filter state.
+	std::vector<WordState> word_index;          ///< Word index and filter state.
 	uint word_matches;                             ///< Summary of filter state: Number of words matched.
 
 	const bool *case_sensitive;                    ///< Match case-sensitively (usually a static variable).
@@ -58,7 +58,7 @@ public:
 	 * Check whether any filter words were entered.
 	 * @return true if no words were entered.
 	 */
-	bool IsEmpty() const { return this->word_index.Length() == 0; }
+	bool IsEmpty() const { return this->word_index.empty(); }
 
 	void ResetState();
 	void AddLine(const char *str);
@@ -68,7 +68,7 @@ public:
 	 * Get the matching state of the current item.
 	 * @return true if matched.
 	 */
-	bool GetState() const { return this->word_matches == this->word_index.Length(); }
+	bool GetState() const { return this->word_matches == this->word_index.size(); }
 };
 
 #endif /* STRINGFILTER_TYPE_H */
