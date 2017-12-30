@@ -233,17 +233,17 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_t
 	v_for = v_for->GetFirstEnginePart();
 
 	/* Create a list of subtypes used by the various parts of v_for */
-	static SmallVector<StringID, 4> subtypes;
-	subtypes.Clear();
+	static std::vector<StringID> subtypes;
+	subtypes.clear();
 	for (; v_from != NULL; v_from = v_from->HasArticulatedPart() ? v_from->GetNextArticulatedPart() : NULL) {
 		const Engine *e_from = v_from->GetEngine();
 		if (!e_from->CanCarryCargo() || !HasBit(e_from->info.callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) continue;
-		subtypes.Include(GetCargoSubtypeText(v_from));
+		Include(subtypes, GetCargoSubtypeText(v_from));
 	}
 
 	byte ret_refit_cyc = 0;
 	bool success = false;
-	if (subtypes.Length() > 0) {
+	if (not subtypes.empty()) {
 		/* Check whether any articulated part is refittable to 'dest_cargo_type' with a subtype listed in 'subtypes' */
 		for (Vehicle *v = v_for; v != NULL; v = v->HasArticulatedPart() ? v->GetNextArticulatedPart() : NULL) {
 			const Engine *e = v->GetEngine();
@@ -267,7 +267,7 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_t
 				StringID subtype = GetCargoSubtypeText(v);
 				if (subtype == STR_EMPTY) break;
 
-				if (!subtypes.Contains(subtype)) continue;
+				if (not Contains(subtypes, subtype)) continue;
 
 				/* We found something matching. */
 				ret_refit_cyc = refit_cyc;
