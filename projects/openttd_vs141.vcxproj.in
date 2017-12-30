@@ -152,6 +152,7 @@
       <MinimumRequiredVersion>5.01</MinimumRequiredVersion>
     </Link>
     <Manifest>
+      <AdditionalManifestFiles>os_versions.manifest</AdditionalManifestFiles>
       <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
     </Manifest>
   </ItemDefinitionGroup>
@@ -202,6 +203,7 @@
       <MinimumRequiredVersion>5.01</MinimumRequiredVersion>
     </Link>
     <Manifest>
+      <AdditionalManifestFiles>os_versions.manifest</AdditionalManifestFiles>
       <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
     </Manifest>
   </ItemDefinitionGroup>
@@ -264,6 +266,7 @@
       <MinimumRequiredVersion>5.02</MinimumRequiredVersion>
     </Link>
     <Manifest>
+      <AdditionalManifestFiles>os_versions.manifest</AdditionalManifestFiles>
       <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
     </Manifest>
   </ItemDefinitionGroup>
@@ -316,6 +319,7 @@
       <MinimumRequiredVersion>5.02</MinimumRequiredVersion>
     </Link>
     <Manifest>
+      <AdditionalManifestFiles>os_versions.manifest</AdditionalManifestFiles>
       <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
     </Manifest>
   </ItemDefinitionGroup>
