@@ -317,7 +317,7 @@ struct RefitOption {
 	}
 };
 
-typedef SmallVector<RefitOption, 32> SubtypeList; ///< List of refit subtypes associated to a cargo.
+using SubtypeList = std::vector<RefitOption> ; ///< List of refit subtypes associated to a cargo.
 
 /**
  * Draw the list of available refit options for a consist and highlight the selected refit option (if any).
@@ -347,7 +347,7 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], const int 
 
 	/* Draw the list of subtypes for each cargo, and find the selected refit option (by its position). */
 	for (uint i = 0; current < pos + rows && i < NUM_CARGO; i++) {
-		for (uint j = 0; current < pos + rows && j < list[i].Length(); j++) {
+		for (uint j = 0; current < pos + rows && j < list[i].size(); j++) {
 			const RefitOption &refit = list[i][j];
 
 			/* Hide subtypes if sel[0] does not match */
@@ -359,11 +359,11 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], const int 
 				continue;
 			}
 
-			if (list[i].Length() > 1) {
+			if (list[i].size() > 1) {
 				if (refit.subtype != 0xFF) {
 					/* Draw tree lines */
 					int ycenter = y + FONT_HEIGHT_NORMAL / 2;
-					GfxDrawLine(iconcenter, y - WD_MATRIX_TOP, iconcenter, j == list[i].Length() - 1 ? ycenter : y - WD_MATRIX_TOP + delta - 1, linecolour);
+					GfxDrawLine(iconcenter, y - WD_MATRIX_TOP, iconcenter, j == list[i].size() - 1 ? ycenter : y - WD_MATRIX_TOP + delta - 1, linecolour);
 					GfxDrawLine(iconcenter, ycenter, iconinner, ycenter, linecolour);
 				} else {
 					/* Draw expand/collapse icon */
@@ -406,7 +406,7 @@ struct RefitWindow : public Window {
 	 */
 	void BuildRefitList()
 	{
-		for (uint i = 0; i < NUM_CARGO; i++) this->list[i].Clear();
+		for (uint i = 0; i < NUM_CARGO; i++) this->list[i].clear();
 		Vehicle *v = Vehicle::Get(this->window_number);
 
 		/* Check only the selected vehicles. */
@@ -435,10 +435,10 @@ struct RefitWindow : public Window {
 					continue;
 				}
 
-				bool first_vehicle = this->list[current_index].Length() == 0;
+				bool first_vehicle = this->list[current_index].empty();
 				if (first_vehicle) {
 					/* Keeping the current subtype is always an option. It also serves as the option in case of no subtypes */
-					RefitOption *option = this->list[current_index].Append();
+					auto option = Extend(this->list[current_index], 1);
 					option->cargo   = cid;
 					option->subtype = 0xFF;
 					option->string  = STR_EMPTY;
@@ -473,16 +473,16 @@ struct RefitWindow : public Window {
 							option.cargo   = cid;
 							option.subtype = refit_cyc;
 							option.string  = subtype;
-							this->list[current_index].Include(option);
+							Include(this->list[current_index], option);
 						} else {
 							/* Intersect the subtypes of earlier vehicles with the subtypes of this vehicle */
 							if (subtype == STR_EMPTY) {
 								/* No more subtypes for this vehicle, delete all subtypes >= refit_cyc */
 								SubtypeList &l = this->list[current_index];
 								/* 0xFF item is in front, other subtypes are sorted. So just truncate the list in the right spot */
-								for (uint i = 1; i < l.Length(); i++) {
+								for (uint i = 1; i < l.size(); i++) {
 									if (l[i].subtype >= refit_cyc) {
-										l.Resize(i);
+										l.resize(i);
 										break;
 									}
 								}
@@ -491,10 +491,10 @@ struct RefitWindow : public Window {
 								/* Check whether the subtype matches with the subtype of earlier vehicles. */
 								uint pos = 1;
 								SubtypeList &l = this->list[current_index];
-								while (pos < l.Length() && l[pos].subtype != refit_cyc) pos++;
-								if (pos < l.Length() && l[pos].string != subtype) {
+								while (pos < l.size() && l[pos].subtype != refit_cyc) pos++;
+								if (pos < l.size() && l[pos].string != subtype) {
 									/* String mismatch, remove item keeping the order */
-									l.ErasePreservingOrder(pos);
+									l.erase(l.begin() + pos);
 								}
 							}
 						}
@@ -522,7 +522,7 @@ struct RefitWindow : public Window {
 		uint row = 0;
 
 		for (uint i = 0; i < NUM_CARGO; i++) {
-			for (uint j = 0; j < this->list[i].Length(); j++) {
+			for (uint j = 0; j < this->list[i].size(); j++) {
 				const RefitOption &refit = this->list[i][j];
 
 				/* Hide subtypes if sel[0] does not match */
@@ -547,7 +547,7 @@ struct RefitWindow : public Window {
 		uint row = 0;
 
 		for (uint i = 0; i < NUM_CARGO; i++) {
-			for (uint j = 0; j < this->list[i].Length(); j++) {
+			for (uint j = 0; j < this->list[i].size(); j++) {
 				const RefitOption &refit = this->list[i][j];
 
 				/* Hide subtypes if sel[0] does not match */
@@ -576,7 +576,7 @@ struct RefitWindow : public Window {
 		if (this->sel[0] < 0) return NULL;
 
 		SubtypeList &l = this->list[this->sel[0]];
-		if ((uint)this->sel[1] >= l.Length()) return NULL;
+		if ((uint)this->sel[1] >= l.size()) return NULL;
 
 		return &l[this->sel[1]];
 	}
@@ -617,7 +617,7 @@ struct RefitWindow : public Window {
 			this->sel[1] = 0;
 			this->cargo = NULL;
 			for (uint i = 0; this->cargo == NULL && i < NUM_CARGO; i++) {
-				for (uint j = 0; j < list[i].Length(); j++) {
+				for (uint j = 0; j < list[i].size(); j++) {
 					if (list[i][j] == current_refit_option) {
 						this->sel[0] = i;
 						this->sel[1] = j;
@@ -830,8 +830,8 @@ struct RefitWindow : public Window {
 
 				/* Check the width of all cargo information strings. */
 				for (uint i = 0; i < NUM_CARGO; i++) {
-					for (uint j = 0; j < this->list[i].Length(); j++) {
-						StringID string = this->GetCapacityString(&list[i][j]);
+					for (auto &elem : this->list[i]) {
+						StringID string = this->GetCapacityString(&elem);
 						if (string != INVALID_STRING_ID) {
 							Dimension dim = GetStringBoundingBox(string);
 							max_width = max(dim.width, max_width);
