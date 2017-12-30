@@ -596,8 +596,8 @@ class IcuStringIterator : public StringIterator
 	icu::BreakIterator *char_itr; ///< ICU iterator for characters.
 	icu::BreakIterator *word_itr; ///< ICU iterator for words.
 
-	SmallVector<UChar, 32> utf16_str;      ///< UTF-16 copy of the string.
-	SmallVector<size_t, 32> utf16_to_utf8; ///< Mapping from UTF-16 code point position to index in the UTF-8 source string.
+	std::vector<UChar> utf16_str;      ///< UTF-16 copy of the string.
+	std::vector<size_t> utf16_to_utf8; ///< Mapping from UTF-16 code point position to index in the UTF-8 source string.
 
 public:
 	IcuStringIterator() : char_itr(NULL), word_itr(NULL)
@@ -606,8 +606,8 @@ public:
 		this->char_itr = icu::BreakIterator::createCharacterInstance(icu::Locale(_current_language != NULL ? _current_language->isocode : "en"), status);
 		this->word_itr = icu::BreakIterator::createWordInstance(icu::Locale(_current_language != NULL ? _current_language->isocode : "en"), status);
 
-		*this->utf16_str.Append() = '\0';
-		*this->utf16_to_utf8.Append() = 0;
+		this->utf16_str.push_back('\0');
+		this->utf16_to_utf8.push_back(0);
 	}
 
 	virtual ~IcuStringIterator()
@@ -624,29 +624,29 @@ public:
 		 * for word break iterators (especially for CJK languages) in combination
 		 * with UTF-8 input. As a work around we have to convert the input to
 		 * UTF-16 and create a mapping back to UTF-8 character indices. */
-		this->utf16_str.Clear();
-		this->utf16_to_utf8.Clear();
+		this->utf16_str.clear();
+		this->utf16_to_utf8.clear();
 
 		while (*s != '\0') {
 			size_t idx = s - string_base;
 
 			WChar c = Utf8Consume(&s);
 			if (c < 0x10000) {
-				*this->utf16_str.Append() = (UChar)c;
+				this->utf16_str.emplace_back(c);
 			} else {
 				/* Make a surrogate pair. */
-				*this->utf16_str.Append() = (UChar)(0xD800 + ((c - 0x10000) >> 10));
-				*this->utf16_str.Append() = (UChar)(0xDC00 + ((c - 0x10000) & 0x3FF));
-				*this->utf16_to_utf8.Append() = idx;
+				this->utf16_str.emplace_back(0xD800 + ((c - 0x10000) >> 10));
+				this->utf16_str.emplace_back(0xDC00 + ((c - 0x10000) & 0x3FF));
+				this->utf16_to_utf8.push_back(idx);
 			}
-			*this->utf16_to_utf8.Append() = idx;
+			this->utf16_to_utf8.push_back(idx);
 		}
-		*this->utf16_str.Append() = '\0';
-		*this->utf16_to_utf8.Append() = s - string_base;
+		this->utf16_str.push_back('\0');
+		this->utf16_to_utf8.push_back(s - string_base);
 
 		UText text = UTEXT_INITIALIZER;
 		UErrorCode status = U_ZERO_ERROR;
-		utext_openUChars(&text, this->utf16_str.Begin(), this->utf16_str.Length() - 1, &status);
+		utext_openUChars(&text, this->utf16_str.data(), this->utf16_str.size() - 1, &status);
 		this->char_itr->setText(&text, status);
 		this->word_itr->setText(&text, status);
 		this->char_itr->first();
@@ -656,13 +656,7 @@ public:
 	virtual size_t SetCurPosition(size_t pos)
 	{
 		/* Convert incoming position to an UTF-16 string index. */
-		uint utf16_pos = 0;
-		for (uint i = 0; i < this->utf16_to_utf8.Length(); i++) {
-			if (this->utf16_to_utf8[i] == pos) {
-				utf16_pos = i;
-				break;
-			}
-		}
+		uint utf16_pos = FindIndex(this->utf16_to_utf8, pos);
 
 		/* isBoundary has the documented side-effect of setting the current
 		 * position to the first valid boundary equal to or greater than
