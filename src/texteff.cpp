@@ -36,39 +36,40 @@ struct TextEffect : public ViewportSign {
 	}
 };
 
-static SmallVector<struct TextEffect, 32> _text_effects; ///< Text effects are stored there
+static std::vector<struct TextEffect> _text_effects; ///< Text effects are stored there
 
 /* Text Effects */
 TextEffectID AddTextEffect(StringID msg, int center, int y, uint8 duration, TextEffectMode mode)
 {
 	if (_game_mode == GM_MENU) return INVALID_TE_ID;
 
-	TextEffectID i;
-	for (i = 0; i < _text_effects.Length(); i++) {
-		if (_text_effects[i].string_id == INVALID_STRING_ID) break;
+	auto it = _text_effects.begin();
+	for (; it < _text_effects.end(); ++it) {
+		if (it->string_id == INVALID_STRING_ID) break;
 	}
-	if (i == _text_effects.Length()) _text_effects.Append();
-
-	TextEffect *te = _text_effects.Get(i);
+	if (_text_effects.end() == it) {
+		_text_effects.emplace_back();
+		it = std::prev(_text_effects.end());
+	}
 
 	/* Start defining this object */
-	te->string_id = msg;
-	te->duration = duration;
-	te->params_1 = GetDParam(0);
-	te->params_2 = GetDParam(1);
-	te->mode = mode;
+	it->string_id = msg;
+	it->duration = duration;
+	it->params_1 = GetDParam(0);
+	it->params_2 = GetDParam(1);
+	it->mode = mode;
 
 	/* Make sure we only dirty the new area */
-	te->width_normal = 0;
-	te->UpdatePosition(center, y, msg);
+	it->width_normal = 0;
+	it->UpdatePosition(center, y, msg);
 
-	return i;
+	return std::distance(_text_effects.begin(), it);
 }
 
 void UpdateTextEffect(TextEffectID te_id, StringID msg)
 {
 	/* Update details */
-	TextEffect *te = _text_effects.Get(te_id);
+	auto te = _text_effects.begin() + te_id;
 	if (msg == te->string_id && GetDParam(0) == te->params_1) return;
 	te->string_id = msg;
 	te->params_1 = GetDParam(0);
@@ -84,25 +85,24 @@ void RemoveTextEffect(TextEffectID te_id)
 
 void MoveAllTextEffects()
 {
-	const TextEffect *end = _text_effects.End();
-	for (TextEffect *te = _text_effects.Begin(); te != end; te++) {
-		if (te->string_id == INVALID_STRING_ID) continue;
-		if (te->mode != TE_RISING) continue;
+	for (auto &te : _text_effects) {
+		if (te.string_id == INVALID_STRING_ID) continue;
+		if (te.mode != TE_RISING) continue;
 
-		if (te->duration-- == 0) {
-			te->Reset();
+		if (te.duration-- == 0) {
+			te.Reset();
 			continue;
 		}
 
-		te->MarkDirty(ZOOM_LVL_OUT_8X);
-		te->top -= ZOOM_LVL_BASE;
-		te->MarkDirty(ZOOM_LVL_OUT_8X);
+		te.MarkDirty(ZOOM_LVL_OUT_8X);
+		te.top -= ZOOM_LVL_BASE;
+		te.MarkDirty(ZOOM_LVL_OUT_8X);
 	}
 }
 
 void InitTextEffects()
 {
-	_text_effects.Reset();
+	Reset(_text_effects);
 }
 
 void DrawTextEffects(DrawPixelInfo *dpi)
@@ -110,11 +110,10 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 	/* Don't draw the text effects when zoomed out a lot */
 	if (dpi->zoom > ZOOM_LVL_OUT_8X) return;
 
-	const TextEffect *end = _text_effects.End();
-	for (TextEffect *te = _text_effects.Begin(); te != end; te++) {
-		if (te->string_id == INVALID_STRING_ID) continue;
-		if (te->mode == TE_RISING || (_settings_client.gui.loading_indicators && !IsTransparencySet(TO_LOADING))) {
-			ViewportAddString(dpi, ZOOM_LVL_OUT_8X, te, te->string_id, te->string_id - 1, STR_NULL, te->params_1, te->params_2);
+	for (auto &te : _text_effects) {
+		if (te.string_id == INVALID_STRING_ID) continue;
+		if (te.mode == TE_RISING || (_settings_client.gui.loading_indicators && !IsTransparencySet(TO_LOADING))) {
+			ViewportAddString(dpi, ZOOM_LVL_OUT_8X, &te, te.string_id, te.string_id - 1, STR_NULL, te.params_1, te.params_2);
 		}
 	}
 }
