@@ -77,7 +77,7 @@ static inline int32 BigMulS(const int32 a, const int32 b, const uint8 shift)
 	return (int32)((int64)a * (int64)b >> shift);
 }
 
-typedef SmallVector<Industry *, 16> SmallIndustryList;
+using SmallIndustryList = std::vector<Industry *> ;
 
 /**
  * Score info, values used for computing the detailed performance rating.
@@ -1057,7 +1057,7 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 		if (IndustryTemporarilyRefusesCargo(ind, cargo_type)) continue;
 
 		/* Insert the industry into _cargo_delivery_destinations, if not yet contained */
-		_cargo_delivery_destinations.Include(ind);
+		Include(_cargo_delivery_destinations, ind);
 
 		uint amount = min(num_pieces, 0xFFFFU - ind->incoming_cargo_waiting[cargo_index]);
 		ind->incoming_cargo_waiting[cargo_index] += amount;
@@ -1930,11 +1930,8 @@ void LoadUnloadStation(Station *st)
 	}
 
 	/* Call the production machinery of industries */
-	const Industry * const *isend = _cargo_delivery_destinations.End();
-	for (Industry **iid = _cargo_delivery_destinations.Begin(); iid != isend; iid++) {
-		TriggerIndustryProduction(*iid);
-	}
-	_cargo_delivery_destinations.Clear();
+	for (const auto &iid : _cargo_delivery_destinations) TriggerIndustryProduction(iid);
+	_cargo_delivery_destinations.clear();
 }
 
 /**
