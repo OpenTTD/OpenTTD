@@ -7,13 +7,130 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file smallvec_type.hpp Simple vector class that allows allocating an item without the need to copy this->data needlessly. */
+/** @file smallvec_type.hpp Simple vector class that allows allocating an item without the need to copy this->data needlessly.
+ * @note The std::vector adapter functions are _temporary_ substitutions for methods of SmallVector
+ */
 
 #ifndef SMALLVEC_TYPE_HPP
 #define SMALLVEC_TYPE_HPP
 
 #include "alloc_func.hpp"
 #include "mem_func.hpp"
+
+#include <vector>
+#include <algorithm>
+
+/** Get a const iterator to a matching element in the vector.
+ * @param vec the vector to be searched
+ * @param elem the element to search fo
+ * @tparam T the contained type of the vector
+ */
+template <typename T>
+typename std::vector<T>::const_iterator Find(const std::vector<T>& vec, const T& elem) {
+	return std::find(vec.begin(), vec.end(), elem);
+}
+
+/** Get a non-const iterator to a matching element in the vector.
+ * @param vec the vector to be searched
+ * @param elem the element to search for
+ * @tparam T the contained type of the vector
+ */
+template <typename T>
+typename std::vector<T>::iterator Find(std::vector<T>& vec, const T& elem) {
+	return std::find(vec.begin(), vec.end(), elem);
+}
+
+/** Get the index of the first matching element.
+ * @param vec the vector to be searched
+ * @param elem the element to search for
+ * @tparam T the contained type of the vector
+ */
+template <typename T>
+int FindIndex(const std::vector<T>& vec, const T& elem) {
+	auto it = Find(vec, elem);
+	if (vec.end() == it) return -1;
+	return std::distance(vec.begin(), it);
+}
+
+/** Check whether an element exists.
+ * @param vec the vector to be searched
+ * @param elem the element to search for
+ * @tparam T the contained type of the vector
+ */
+template <typename T>
+bool Contains(const std::vector<T>& vec, const T& elem) {
+	return Find(vec, elem) != vec.end();
+}
+
+/** Count instances of an element.
+ * @param vec the vector to be searched
+ * @param elem the element to count instances of
+ * @tparam T the contained type of the vector
+ */
+template <typename T>
+size_t Count(const std::vector<T>& vec, const T& elem) {
+	return std::count(vec.begin(), vec.end(), elem);
+}
+
+/** Append an element if it does not already exist in the vector.
+ * @param vec the vector to be modified
+ * @param elem the element to add for and remove if missing
+ * @tparam T the contained type of the vector
+ * @tparam U the universal reference type for perfect forwarding
+ */
+template <typename T, typename U>
+bool Include(std::vector<T>& vec, U&& elem) {
+	auto missing = not Contains(vec, elem);
+	if (missing) vec.push_back(std::forward<U>(elem));
+	return missing;
+}
+
+/** Remove an element referenced in the vector and move the last element to take its place.
+ * @param vec the vector to be modified
+ * @param it the element to remove
+ * @tparam T the contained type of the vector
+ */
+template <typename T>
+typename std::vector<T>::iterator Erase(std::vector<T>& vec, typename std::vector<T>::iterator it) {
+	assert(vec.begin() <= it and vec.end() > it);
+	if (std::prev(vec.end()) != it) std::swap(vec.back(), *it);
+	vec.pop_back();
+	return it;
+}
+
+/** Remove an element if it exists in the vector and move the last element to take its place.
+ * @param vec the vector to be modified
+ * @param elem the element to search for and remove if found
+ * @tparam T the contained type of the vector
+ */
+template <typename T>
+bool Exclude(std::vector<T>& vec, const T& elem) {
+	auto it = Find(vec, elem);
+	if (vec.end() == it) return false;
+	Erase(vec, it);
+	return true;
+}
+
+/** Clear a vector and then force it to reduce its capacity.
+ * @param vec the vector to be modified
+ * @tparam T the contained type of the vector
+ */
+template <typename T>
+void Reset(std::vector<T>& vec) {
+	vec.clear();
+	vec.shrink_to_fit();
+}
+
+/** Extend a vector by an amount and return an iterator to the new elements.
+ * @param vec the vector to be modified
+ * @param num the number of elements to add
+ * @tparam T the contained type of the vector
+ */
+template <typename T>
+typename std::vector<T>::iterator Extend(std::vector<T>& vec, size_t num) {
+	vec.resize(vec.size() + num);
+	return vec.end() - num;
+}
 
 /**
  * Simple vector template class.
