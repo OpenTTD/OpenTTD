@@ -118,7 +118,7 @@ private:
 	uint tiny_step_height; ///< Step height for the group list
 	Scrollbar *group_sb;
 
-	SmallVector<int, 16> indents; ///< Indentation levels
+	std::vector<int> indents; ///< Indentation levels
 
 	Dimension column_size[VGC_END]; ///< Size of the columns in the group list.
 
@@ -127,7 +127,7 @@ private:
 		for (const Group **g = source->Begin(); g != source->End(); g++) {
 			if ((*g)->parent == parent) {
 				*this->groups.Append() = *g;
-				*this->indents.Append() = indent;
+				this->indents.push_back(indent);
 				AddParents(source, (*g)->index, indent + 1);
 			}
 		}
@@ -166,7 +166,7 @@ private:
 		if (!this->groups.NeedRebuild()) return;
 
 		this->groups.Clear();
-		this->indents.Clear();
+		this->indents.clear();
 
 		GUIGroupList list;
 
