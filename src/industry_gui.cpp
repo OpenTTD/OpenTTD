@@ -2096,7 +2096,7 @@ next_cargo: ;
 struct IndustryCargoesWindow : public Window {
 	static const int HOR_TEXT_PADDING, VERT_TEXT_PADDING;
 
-	typedef SmallVector<CargoesRow, 4> Fields;
+	using Fields = std::vector<CargoesRow>;
 
 	Fields fields;  ///< Fields to display in the #WID_IC_PANEL.
 	uint ind_cargo; ///< If less than #NUM_INDUSTRYTYPES, an industry type, else a cargo id + NUM_INDUSTRYTYPES.
@@ -2348,15 +2348,15 @@ struct IndustryCargoesWindow : public Window {
 		this->ind_cargo = it;
 		_displayed_industries.reset();
 		_displayed_industries.set(it);
-
-		this->fields.Clear();
-		CargoesRow *row = this->fields.Append();
-		row->columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
-		row->columns[1].MakeEmpty(CFT_SMALL_EMPTY);
-		row->columns[2].MakeEmpty(CFT_SMALL_EMPTY);
-		row->columns[3].MakeEmpty(CFT_SMALL_EMPTY);
-		row->columns[4].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
-
+		{
+			this->fields.clear();
+			auto row = Extend(this->fields, 1);
+			row->columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
+			row->columns[1].MakeEmpty(CFT_SMALL_EMPTY);
+			row->columns[2].MakeEmpty(CFT_SMALL_EMPTY);
+			row->columns[3].MakeEmpty(CFT_SMALL_EMPTY);
+			row->columns[4].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
+		}
 		const IndustrySpec *central_sp = GetIndustrySpec(it);
 		bool houses_supply = HousesCanSupply(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo));
 		bool houses_accept = HousesCanAccept(central_sp->produced_cargo, lengthof(central_sp->produced_cargo));
@@ -2365,7 +2365,7 @@ struct IndustryCargoesWindow : public Window {
 		int num_cust = CountMatchingAcceptingIndustries(central_sp->produced_cargo, lengthof(central_sp->produced_cargo)) + houses_accept;
 		int num_indrows = max(3, max(num_supp, num_cust)); // One is needed for the 'it' industry, and 2 for the cargo labels.
 		for (int i = 0; i < num_indrows; i++) {
-			CargoesRow *row = this->fields.Append();
+			auto row = Extend(this->fields, 1);
 			row->columns[0].MakeEmpty(CFT_EMPTY);
 			row->columns[1].MakeCargo(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo));
 			row->columns[2].MakeEmpty(CFT_EMPTY);
@@ -2426,22 +2426,22 @@ struct IndustryCargoesWindow : public Window {
 		this->GetWidget<NWidgetCore>(WID_IC_CAPTION)->widget_data = STR_INDUSTRY_CARGOES_CARGO_CAPTION;
 		this->ind_cargo = cid + NUM_INDUSTRYTYPES;
 		_displayed_industries.reset();
-
-		this->fields.Clear();
-		CargoesRow *row = this->fields.Append();
-		row->columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
-		row->columns[1].MakeEmpty(CFT_SMALL_EMPTY);
-		row->columns[2].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
-		row->columns[3].MakeEmpty(CFT_SMALL_EMPTY);
-		row->columns[4].MakeEmpty(CFT_SMALL_EMPTY);
-
+		{
+			this->fields.clear();
+			auto row = Extend(this->fields, 1);
+			row->columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
+			row->columns[1].MakeEmpty(CFT_SMALL_EMPTY);
+			row->columns[2].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
+			row->columns[3].MakeEmpty(CFT_SMALL_EMPTY);
+			row->columns[4].MakeEmpty(CFT_SMALL_EMPTY);
+		}
 		bool houses_supply = HousesCanSupply(&cid, 1);
 		bool houses_accept = HousesCanAccept(&cid, 1);
 		int num_supp = CountMatchingProducingIndustries(&cid, 1) + houses_supply + 1; // Ensure room for the cargo label.
 		int num_cust = CountMatchingAcceptingIndustries(&cid, 1) + houses_accept;
 		int num_indrows = max(num_supp, num_cust);
 		for (int i = 0; i < num_indrows; i++) {
-			CargoesRow *row = this->fields.Append();
+			auto row = Extend(this->fields, 1);
 			row->columns[0].MakeEmpty(CFT_EMPTY);
 			row->columns[1].MakeCargo(&cid, 1);
 			row->columns[2].MakeEmpty(CFT_EMPTY);
@@ -2524,7 +2524,7 @@ struct IndustryCargoesWindow : public Window {
 
 		const NWidgetBase *nwp = this->GetWidget<NWidgetBase>(WID_IC_PANEL);
 		int vpos = -this->vscroll->GetPosition() * nwp->resize_y;
-		for (uint i = 0; i < this->fields.Length(); i++) {
+		for (uint i = 0; i < this->fields.size(); i++) {
 			int row_height = (i == 0) ? CargoesField::small_height : CargoesField::normal_height;
 			if (vpos + row_height >= 0) {
 				int xpos = left_pos;
@@ -2566,7 +2566,7 @@ struct IndustryCargoesWindow : public Window {
 		if (pt.y < vpos) return false;
 
 		int row = (pt.y - vpos) / CargoesField::normal_height; // row is relative to row 1.
-		if (row + 1 >= (int)this->fields.Length()) return false;
+		if (row + 1 >= (int)this->fields.size()) return false;
 		vpos = pt.y - vpos - row * CargoesField::normal_height; // Position in the row + 1 field
 		row++; // rebase row to match index of this->fields.
 
