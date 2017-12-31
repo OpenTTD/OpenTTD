@@ -151,9 +151,7 @@ public:
 		NetworkAddressList addresses;
 		GetBindAddresses(&addresses, port);
 
-		for (NetworkAddress *address = addresses.Begin(); address != addresses.End(); address++) {
-			address->Listen(SOCK_STREAM, &sockets);
-		}
+		for (auto &a : addresses) a.Listen(SOCK_STREAM, &sockets);
 
 		if (sockets.Length() == 0) {
 			DEBUG(net, 0, "[server] could not start network: could not create listening socket");

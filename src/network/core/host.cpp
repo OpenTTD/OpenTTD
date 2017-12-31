@@ -102,7 +102,18 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // GE
 		if (ifa->ifa_broadaddr->sa_family != AF_INET) continue;
 
 		NetworkAddress addr(ifa->ifa_broadaddr, sizeof(sockaddr));
-		if (!broadcast->Contains(addr)) *broadcast->Append() = addr;
+		//if (!broadcast->Contains(addr)) *broadcast->Append() = addr;
+		//Include(*broadcast, addr);
+		//if (broadcast->end() == Find(*broadcast, addr)) broadcast->push_back(addr);
+		bool found = false;
+		for (const auto& elem : *broadcast) {
+			if (elem == addr) {
+				found = true;
+				break;
+			}
+		}
+		if (not found) broadcast->push_back(addr);
+		// missing operator ==(const&r)const {can't use Include()}
 	}
 	freeifaddrs(ifap);
 }
@@ -202,9 +213,9 @@ void NetworkFindBroadcastIPs(NetworkAddressList *broadcast)
 	/* Now display to the debug all the detected ips */
 	DEBUG(net, 3, "Detected broadcast addresses:");
 	int i = 0;
-	for (NetworkAddress *addr = broadcast->Begin(); addr != broadcast->End(); addr++) {
-		addr->SetPort(NETWORK_DEFAULT_PORT);
-		DEBUG(net, 3, "%d) %s", i++, addr->GetHostname());
+	for (auto &addr : *broadcast) {
+		addr.SetPort(NETWORK_DEFAULT_PORT);
+		DEBUG(net, 3, "%d) %s", i++, addr.GetHostname());
 	}
 }
 

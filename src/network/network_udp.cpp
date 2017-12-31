@@ -497,12 +497,12 @@ void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFCo
 /** Broadcast to all ips */
 static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 {
-	for (NetworkAddress *addr = _broadcast_list.Begin(); addr != _broadcast_list.End(); addr++) {
+	for (auto &addr : _broadcast_list) {
 		Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
 
-		DEBUG(net, 4, "[udp] broadcasting to %s", addr->GetHostname());
+		DEBUG(net, 4, "[udp] broadcasting to %s", addr.GetHostname());
 
-		socket->SendPacket(&p, addr, true, true);
+		socket->SendPacket(&p, &addr, true, true);
 	}
 }
 
@@ -670,7 +670,7 @@ void NetworkUDPInitialize()
 	GetBindAddresses(&server, _settings_client.network.server_port);
 	_udp_server_socket = new ServerNetworkUDPSocketHandler(&server);
 
-	server.Clear();
+	server.clear();
 	GetBindAddresses(&server, 0);
 	_udp_master_socket = new MasterNetworkUDPSocketHandler(&server);
 

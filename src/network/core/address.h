@@ -20,7 +20,7 @@
 #ifdef ENABLE_NETWORK
 
 class NetworkAddress;
-typedef SmallVector<NetworkAddress, 4> NetworkAddressList; ///< Type for a list of addresses.
+using NetworkAddressList = std::vector<NetworkAddress>; ///< Type for a list of addresses.
 typedef SmallMap<NetworkAddress, SOCKET, 4> SocketList;    ///< Type for a mapping between address and socket.
 
 /**

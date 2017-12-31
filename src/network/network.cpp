@@ -635,13 +635,11 @@ void NetworkAddServer(const char *b)
 void GetBindAddresses(NetworkAddressList *addresses, uint16 port)
 {
 	for (char **iter = _network_bind_list.Begin(); iter != _network_bind_list.End(); iter++) {
-		*addresses->Append() = NetworkAddress(*iter, port);
+		addresses->emplace_back(*iter, port);
 	}
 
 	/* No address, so bind to everything. */
-	if (addresses->Length() == 0) {
-		*addresses->Append() = NetworkAddress("", port);
-	}
+	if (addresses->empty()) addresses->emplace_back("", port);
 }
 
 /* Generates the list of manually added hosts from NetworkGameList and
