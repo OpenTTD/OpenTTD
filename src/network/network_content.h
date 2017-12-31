@@ -18,14 +18,14 @@
 #if defined(ENABLE_NETWORK)
 
 /** Vector with content info */
-typedef SmallVector<ContentInfo *, 16> ContentVector;
+using ContentVector = std::vector<ContentInfo *>;
 /** Vector with constant content info */
-typedef SmallVector<const ContentInfo *, 16> ConstContentVector;
+using ConstContentVector = std::vector<const ContentInfo *> ;
 
 /** Iterator for the content vector */
-typedef ContentInfo **ContentIterator;
+using ContentIterator = ContentVector::iterator;
 /** Iterator for the constant content vector */
-typedef const ContentInfo * const * ConstContentIterator;
+using ConstContentIterator = ContentVector::const_iterator;
 
 /** Callbacks for notifying others about incoming data */
 struct ContentCallback {
@@ -131,13 +131,13 @@ public:
 	void CheckDependencyState(ContentInfo *ci);
 
 	/** Get the number of content items we know locally. */
-	uint Length() const { return this->infos.Length(); }
+	uint Length() const { return this->infos.size(); }
 	/** Get the begin of the content inf iterator. */
-	ConstContentIterator Begin() const { return this->infos.Begin(); }
+	ConstContentIterator Begin() const { return this->infos.begin(); }
 	/** Get the nth position of the content inf iterator. */
-	ConstContentIterator Get(uint32 index) const { return this->infos.Get(index); }
+	ConstContentIterator Get(uint32 index) const { return this->Begin() + index; }
 	/** Get the end of the content inf iterator. */
-	ConstContentIterator End() const { return this->infos.End(); }
+	ConstContentIterator End() const { return this->infos.end(); }
 
 	void Clear();
 

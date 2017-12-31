@@ -1564,9 +1564,9 @@ void ShowMissingContentWindow(const GRFConfig *list)
 		strecpy(ci->name, c->GetName(), lastof(ci->name));
 		ci->unique_id = BSWAP32(c->ident.grfid);
 		memcpy(ci->md5sum, HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum, sizeof(ci->md5sum));
-		*cv.Append() = ci;
+		cv.push_back(ci);
 	}
-	ShowNetworkContentListWindow(cv.Length() == 0 ? NULL : &cv, CONTENT_TYPE_NEWGRF);
+	ShowNetworkContentListWindow(cv.empty() ? NULL : &cv, CONTENT_TYPE_NEWGRF);
 }
 #endif
 

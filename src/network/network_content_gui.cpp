@@ -334,7 +334,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 			pos = strecpy(pos, "do=searchgrfid&q=", last);
 
 			bool first = true;
-			for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
+			for (auto iter = this->content.Begin(); iter != this->content.End(); iter++) {
 				const ContentInfo *ci = *iter;
 				if (ci->state != ContentInfo::DOES_NOT_EXIST) continue;
 
@@ -436,7 +436,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	{
 		if (!this->content.Sort()) return;
 
-		for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
+		for (auto iter = this->content.Begin(); iter != this->content.End(); iter++) {
 			if (*iter == this->selected) {
 				this->list_pos = iter - this->content.Begin();
 				break;
@@ -479,7 +479,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		if (!changed) return;
 
 		/* update list position */
-		for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
+		for (auto iter = this->content.Begin(); iter != this->content.End(); iter++) {
 			if (*iter == this->selected) {
 				this->list_pos = iter - this->content.Begin();
 				return;
@@ -642,7 +642,7 @@ public:
 		int text_y_offset = WD_MATRIX_TOP + (line_height - FONT_HEIGHT_NORMAL) / 2;
 		uint y = r.top;
 		int cnt = 0;
-		for (ConstContentIterator iter = this->content.Get(this->vscroll->GetPosition()); iter != this->content.End() && cnt < this->vscroll->GetCapacity(); iter++, cnt++) {
+		for (auto iter = this->content.Get(this->vscroll->GetPosition()); iter != this->content.End() && cnt < this->vscroll->GetCapacity(); iter++, cnt++) {
 			const ContentInfo *ci = *iter;
 
 			if (ci == this->selected) GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->resize.step_height - 1, PC_GREY);
@@ -767,8 +767,7 @@ public:
 
 			char buf[DRAW_STRING_BUFFER] = "";
 			char *p = buf;
-			for (ConstContentIterator iter = tree.Begin(); iter != tree.End(); iter++) {
-				const ContentInfo *ci = *iter;
+			for (auto &ci : tree) {
 				if (ci == this->selected || ci->state != ContentInfo::SELECTED) continue;
 
 				p += seprintf(p, lastof(buf), buf == p ? "%s" : ", %s", ci->name);
@@ -991,7 +990,7 @@ public:
 		this->filesize_sum = 0;
 		bool show_select_all = false;
 		bool show_select_upgrade = false;
-		for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
+		for (auto iter = this->content.Begin(); iter != this->content.End(); iter++) {
 			const ContentInfo *ci = *iter;
 			switch (ci->state) {
 				case ContentInfo::SELECTED:
