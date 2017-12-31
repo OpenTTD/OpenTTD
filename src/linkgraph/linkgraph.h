@@ -435,7 +435,7 @@ public:
 		void RemoveEdge(NodeID to);
 	};
 
-	typedef SmallVector<BaseNode, 16> NodeVector;
+	using NodeVector = std::vector<BaseNode>;
 	typedef SmallMatrix<BaseEdge> EdgeMatrix;
 
 	/** Minimum effective distance for timeout calculation. */
@@ -496,7 +496,7 @@ public:
 	 * Get the current size of the component.
 	 * @return Size.
 	 */
-	inline uint Size() const { return this->nodes.Length(); }
+	inline uint Size() const { return this->nodes.size(); }
 
 	/**
 	 * Get date of last compression.
