@@ -50,7 +50,7 @@ private:
 		void Init(uint supply);
 	};
 
-	typedef SmallVector<NodeAnnotation, 16> NodeAnnotationVector;
+	using NodeAnnotationVector = std::vector<NodeAnnotation>;
 	typedef SmallMatrix<EdgeAnnotation> EdgeAnnotationMatrix;
 
 	friend const SaveLoad *GetLinkGraphJobDesc();
