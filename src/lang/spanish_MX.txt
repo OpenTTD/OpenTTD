@@ -4098,7 +4098,7 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... no h
 STR_ERROR_PNGMAP                                                :{WHITE}No se puede cargar mapa desde PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... archivo no encontrado
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... no se pudo convertir el tipo de imagen. Se requieren imágenes PNG de 8 o 24 bits
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... algo salió mal (quizá el archivo esté tenga errores)
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... algo salió mal (quizá el archivo está dañado)
 
 STR_ERROR_BMPMAP                                                :{WHITE}No se pudo cargar mapa desde BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... no se pudo convertir el tipo de imagen
@@ -4131,7 +4131,7 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Tierra i
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}No se puede hacer eso...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Primero se debe demoler el edificio
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}No se puede despejar esta zona...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... lugar no apropiado
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... lugar no apto
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ya construido
 STR_ERROR_OWNED_BY                                              :{WHITE}... propiedad de {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... otra empresa es dueña de esta área
@@ -4172,7 +4172,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}No se pu
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}No se puede construir la sede de la empresa...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}No se puede comprar el 25% de acciones...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}No se puede vender el 25% de acciones...
-STR_ERROR_PROTECTED                                             :{WHITE}Esta empresa es aún muy reciente para comerciar con acciones...
+STR_ERROR_PROTECTED                                             :{WHITE}Esta empresa es muy reciente para comerciar con acciones...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}No se puede crear ningún pueblo
@@ -4183,10 +4183,10 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... dema
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... demasiado cerca de otro pueblo
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... demasiados pueblos
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ya no hay espacio en el mapa
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}El pueblo no construirá carreteras. La función de construcción de carreteras puede activarse Configuración->Ambiente->Pueblos
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}El pueblo no construirá carreteras. La función de construcción de carreteras puede activarse en Configuración->Ambiente->Pueblos
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obras de carretera en progreso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede eliminar este pueblo...{}Quedan estaciones o depósitos relacionados con él, o una propiedad suya no puede ser retirada
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no hay lugar apropiado para una estatua en el centro de esta pueblo
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no hay ningún lugar apto para una estatua en el centro de este pueblo
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... demasiadas industrias
@@ -4207,8 +4207,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... los 
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... solo se puede construir por encima del nivel de nieve
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... solo se puede construir por debajo del nivel de nieve
 
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}No hubo sitios apropiados para industrias '{STRING}'
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Cambia los parámetros de generación para obtener un mejor mapa
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}No hubo espacio para industrias de tipo "{STRING}"
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Cambia las opciones de generación para crear un mejor mapa
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}No se puede construir la estación de tren aquí...
@@ -4225,7 +4225,7 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Demasiad
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Demasiadas partes de estación de tren
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paradas de autobuses
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Demasiadas estaciones de camiones
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Demasiado cerca de otra estación de pasajeros o carga
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Demasiado cerca de otra estación o zona de carga
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Demasiado cerca de otro muelle
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Demasiado cerca de otro aeropuerto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}No se puede cambiar nombre de la estación...
@@ -4278,14 +4278,14 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... pued
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... puede que esté detenido dentro de un astillero
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... puede que esté detenido dentro de un hangar
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Los trenes únicamente pueden modificarse si están detenidos dentro de un depósito
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Los trenes pueden modificarse solo si están detenidos dentro de un depósito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren demasiado largo
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}No se puede cambiar dirección del vehículo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... vehículo compuesto por múltiples unidades
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Los tipos de vías férreas no son compatibles
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}No se puede mover vehículo...
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}El motor posterior debe seguir siempre al delantero
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}La locomotora trasera debe conectarse a la delantera
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}No se puede encontrar ruta al depósito
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}No se puede encontrar depósito
 
@@ -4357,14 +4357,14 @@ STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}No se pu
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Lugar no apto para entrada de túnel
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Primero se debe demoler el túnel
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Otro túnel obstaculiza
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}El túnel terminaría fuera del mapa
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}El túnel se extendería más allá del mapa
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}No se puede excavar la tierra al otro lado del túnel
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... túnel demasiado largo
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... demasiados objetos
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}No se puede colocar objeto...
-STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Otro objeto obstaculiza
+STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Otro objeto estorba
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... la sede de la empresa obstaculiza
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}No es posible adquirir este terreno...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... ¡ya fue adquirido por el jugador!
@@ -4379,9 +4379,9 @@ STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}No se pu
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}No se pueden añadir vehículos compartidos al grupo...
 
 # Generic vehicle errors
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Tren obstaculiza
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Vehículo de carretera obstaculiza
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Barco obstaculiza
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Tren estorba
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Vehículo de carretera estorba
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Barco estorba
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Aeronave obstaculiza
 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}No se puede reequipar tren...
@@ -4465,7 +4465,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... la a
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}No se pueden asignar itinerarios al vehículo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Los vehículos solo pueden esperar en estaciones
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este vehículo se detendrá en esta estación
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este vehículo no se detendrá en esta estación
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... demasiados carteles
