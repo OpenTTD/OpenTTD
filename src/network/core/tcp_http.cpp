@@ -23,7 +23,7 @@
 #include "../../safeguards.h"
 
 /** List of open HTTP connections. */
-static SmallVector<NetworkHTTPSocketHandler *, 1> _http_connections;
+static std::vector<NetworkHTTPSocketHandler *> _http_connections;
 
 /**
  * Start the querying
@@ -65,7 +65,7 @@ NetworkHTTPSocketHandler::NetworkHTTPSocketHandler(SOCKET s,
 		return;
 	}
 
-	*_http_connections.Append() = this;
+	_http_connections.push_back(this);
 }
 
 /** Free whatever needs to be freed. */
@@ -299,15 +299,13 @@ int NetworkHTTPSocketHandler::Receive()
 /* static */ void NetworkHTTPSocketHandler::HTTPReceive()
 {
 	/* No connections, just bail out. */
-	if (_http_connections.Length() == 0) return;
+	if (_http_connections.empty()) return;
 
 	fd_set read_fd;
 	struct timeval tv;
 
 	FD_ZERO(&read_fd);
-	for (NetworkHTTPSocketHandler **iter = _http_connections.Begin(); iter < _http_connections.End(); iter++) {
-		FD_SET((*iter)->sock, &read_fd);
-	}
+	for (auto &c : _http_connections) FD_SET(c->sock, &read_fd);
 
 	tv.tv_sec = tv.tv_usec = 0; // don't block at all.
 #if !defined(__MORPHOS__) && !defined(__AMIGA__)
@@ -317,7 +315,7 @@ int NetworkHTTPSocketHandler::Receive()
 #endif
 	if (n == -1) return;
 
-	for (NetworkHTTPSocketHandler **iter = _http_connections.Begin(); iter < _http_connections.End(); /* nothing */) {
+	for (auto iter = _http_connections.begin(); iter < _http_connections.end(); /* nothing */) {
 		NetworkHTTPSocketHandler *cur = *iter;
 
 		if (FD_ISSET(cur->sock, &read_fd)) {
@@ -327,7 +325,7 @@ int NetworkHTTPSocketHandler::Receive()
 			if (ret <= 0) {
 				/* Then... the connection can be closed */
 				cur->CloseConnection();
-				_http_connections.Erase(iter);
+				Erase(_http_connections, iter);
 				delete cur;
 				continue;
 			}
