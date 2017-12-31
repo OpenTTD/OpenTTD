@@ -273,7 +273,7 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_LANG_DROPDOWN: { // Setup interface language dropdown
 				list = new DropDownList();
-				for (uint i = 0; i < _languages.Length(); i++) {
+				for (uint i = 0; i < _languages.size(); i++) {
 					if (&_languages[i] == _current_language) *selected_index = i;
 					*list->Append() = new DropDownListStringItem(SPECSTR_LANGUAGE_START + i, i, false);
 				}

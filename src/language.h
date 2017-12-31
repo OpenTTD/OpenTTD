@@ -96,7 +96,7 @@ struct LanguageMetadata : public LanguagePackHeader {
 };
 
 /** Type for the list of language meta data. */
-typedef SmallVector<LanguageMetadata, 4> LanguageList;
+using LanguageList = std::vector<LanguageMetadata>;
 
 /** The actual list of language meta data. */
 extern LanguageList _languages;
