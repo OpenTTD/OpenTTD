@@ -281,33 +281,30 @@ CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	if (timetable_all && !v->orders.list->IsCompleteTimetable()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		SmallVector<Vehicle *, 8> vehs;
+		std::vector<Vehicle *> vehs;
 
 		if (timetable_all) {
 			for (Vehicle *w = v->orders.list->GetFirstSharedVehicle(); w != NULL; w = w->NextShared()) {
-				*vehs.Append() = w;
+				vehs.push_back(w);
 			}
 		} else {
-			*vehs.Append() = v;
+			vehs.push_back(v);
 		}
 
 		int total_duration = v->orders.list->GetTimetableTotalDuration();
-		int num_vehs = vehs.Length();
+		int num_vehs = vehs.size();
 
 		if (num_vehs >= 2) {
-			QSortT(vehs.Begin(), vehs.Length(), &VehicleTimetableSorter);
+			QSortT(vehs.data(), vehs.size(), &VehicleTimetableSorter);
 		}
 
-		int base = vehs.FindIndex(v);
+		int idx = -FindIndex(vehs, v);
 
-		for (Vehicle **viter = vehs.Begin(); viter != vehs.End(); viter++) {
-			int idx = (viter - vehs.Begin()) - base;
-			Vehicle *w = *viter;
-
+		for (auto &w : vehs) {
 			w->lateness_counter = 0;
 			ClrBit(w->vehicle_flags, VF_TIMETABLE_STARTED);
 			/* Do multiplication, then division to reduce rounding errors. */
-			w->timetable_start = start_date + idx * total_duration / num_vehs / DAY_TICKS;
+			w->timetable_start = start_date + idx++ * total_duration / num_vehs / DAY_TICKS;
 			SetWindowDirty(WC_VEHICLE_TIMETABLE, w->index);
 		}
 
