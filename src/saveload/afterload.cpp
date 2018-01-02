@@ -2901,10 +2901,10 @@ bool AfterLoadGame()
 		 * So, make articulated parts catch up. */
 		RoadVehicle *v;
 		bool roadside = _settings_game.vehicle.road_side == 1;
-		SmallVector<uint, 16> skip_frames;
+		std::vector<uint> skip_frames;
 		FOR_ALL_ROADVEHICLES(v) {
 			if (!v->IsFrontEngine()) continue;
-			skip_frames.Clear();
+			skip_frames.clear();
 			TileIndex prev_tile = v->tile;
 			uint prev_tile_skip = 0;
 			uint cur_skip = 0;
@@ -2916,24 +2916,23 @@ bool AfterLoadGame()
 					cur_skip = prev_tile_skip;
 				}
 
-				uint *this_skip = skip_frames.Append();
-				*this_skip = prev_tile_skip;
+				skip_frames.push_back(prev_tile_skip);
 
 				/* The following 3 curves now take longer than before */
 				switch (u->state) {
 					case 2:
 						cur_skip++;
-						if (u->frame <= (roadside ? 9 : 5)) *this_skip = cur_skip;
+						if (u->frame <= (roadside ? 9 : 5)) skip_frames.back() = cur_skip;
 						break;
 
 					case 4:
 						cur_skip++;
-						if (u->frame <= (roadside ? 5 : 9)) *this_skip = cur_skip;
+						if (u->frame <= (roadside ? 5 : 9)) skip_frames.back() = cur_skip;
 						break;
 
 					case 5:
 						cur_skip++;
-						if (u->frame <= (roadside ? 4 : 2)) *this_skip = cur_skip;
+						if (u->frame <= (roadside ? 4 : 2)) skip_frames.back() = cur_skip;
 						break;
 
 					default:
@@ -2943,9 +2942,11 @@ bool AfterLoadGame()
 			while (cur_skip > skip_frames[0]) {
 				RoadVehicle *u = v;
 				RoadVehicle *prev = NULL;
-				for (uint *it = skip_frames.Begin(); it != skip_frames.End(); ++it, prev = u, u = u->Next()) {
+				for (auto &f : skip_frames) {
 					extern bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev);
-					if (*it >= cur_skip) IndividualRoadVehicleController(u, prev);
+					if (f >= cur_skip) IndividualRoadVehicleController(u, prev);
+					prev = u;
+					u = u->Next();
 				}
 				cur_skip--;
 			}
