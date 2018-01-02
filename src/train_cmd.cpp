@@ -834,7 +834,7 @@ static Train *FindGoodVehiclePos(const Train *src)
 }
 
 /** Helper type for lists/vectors of trains */
-typedef SmallVector<Train *, 16> TrainList;
+using TrainList = std::vector<Train *>;
 
 /**
  * Make a backup of a train into a train list.
@@ -843,7 +843,7 @@ typedef SmallVector<Train *, 16> TrainList;
  */
 static void MakeTrainBackup(TrainList &list, Train *t)
 {
-	for (; t != NULL; t = t->Next()) *list.Append() = t;
+	for (; t != NULL; t = t->Next()) list.push_back(t);
 }
 
 /**
@@ -853,12 +853,11 @@ static void MakeTrainBackup(TrainList &list, Train *t)
 static void RestoreTrainBackup(TrainList &list)
 {
 	/* No train, nothing to do. */
-	if (list.Length() == 0) return;
+	if (list.empty()) return;
 
 	Train *prev = NULL;
 	/* Iterate over the list and rebuild it. */
-	for (Train **iter = list.Begin(); iter != list.End(); iter++) {
-		Train *t = *iter;
+	for (auto &t : list) {
 		if (prev != NULL) {
 			prev->SetNext(t);
 		} else if (t->Previous() != NULL) {
