@@ -2118,8 +2118,8 @@ struct TileAndStation {
 	StationID station; ///< StationID
 };
 
-static SmallVector<TileAndStation, 8> _deleted_stations_nearby;
-static SmallVector<StationID, 8> _stations_nearby_list;
+static std::vector<TileAndStation> _deleted_stations_nearby;
+static std::vector<StationID> _stations_nearby_list;
 
 /**
  * Add station on this tile to _stations_nearby_list if it's fully within the
@@ -2134,13 +2134,12 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
 	TileArea *ctx = (TileArea *)user_data;
 
 	/* First check if there were deleted stations here */
-	for (uint i = 0; i < _deleted_stations_nearby.Length(); i++) {
-		TileAndStation *ts = _deleted_stations_nearby.Get(i);
+	for (auto ts = _deleted_stations_nearby.begin(); ts < _deleted_stations_nearby.end(); /**/) {
 		if (ts->tile == tile) {
-			*_stations_nearby_list.Append() = _deleted_stations_nearby[i].station;
-			_deleted_stations_nearby.Erase(ts);
-			i--;
+			_stations_nearby_list.push_back(ts->station);
+			ts = Erase(_deleted_stations_nearby, ts);
 		}
+		else ++ts;
 	}
 
 	/* Check if own station and if we stay within station spread */
@@ -2152,10 +2151,10 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
 	if (!T::IsValidID(sid)) return false;
 
 	T *st = T::Get(sid);
-	if (st->owner != _local_company || _stations_nearby_list.Contains(sid)) return false;
+	if (st->owner != _local_company || Contains(_stations_nearby_list, sid)) return false;
 
 	if (st->rect.BeforeAddRect(ctx->tile, ctx->w, ctx->h, StationRect::ADD_TEST).Succeeded()) {
-		*_stations_nearby_list.Append() = sid;
+		_stations_nearby_list.push_back(sid);
 	}
 
 	return false; // We want to include *all* nearby stations
@@ -2175,8 +2174,8 @@ static const T *FindStationsNearby(TileArea ta, bool distant_join)
 {
 	TileArea ctx = ta;
 
-	_stations_nearby_list.Clear();
-	_deleted_stations_nearby.Clear();
+	_stations_nearby_list.clear();
+	_deleted_stations_nearby.clear();
 
 	/* Check the inside, to return, if we sit on another station */
 	TILE_AREA_LOOP(t, ta) {
@@ -2189,9 +2188,9 @@ static const T *FindStationsNearby(TileArea ta, bool distant_join)
 		if (T::IsExpected(st) && !st->IsInUse() && st->owner == _local_company) {
 			/* Include only within station spread (yes, it is strictly less than) */
 			if (max(DistanceMax(ta.tile, st->xy), DistanceMax(TILE_ADDXY(ta.tile, ta.w - 1, ta.h - 1), st->xy)) < _settings_game.station.station_spread) {
-				TileAndStation *ts = _deleted_stations_nearby.Append();
-				ts->tile = st->xy;
-				ts->station = st->index;
+				_deleted_stations_nearby.emplace_back();
+				_deleted_stations_nearby.back().tile = st->xy;
+				_deleted_stations_nearby.back().station = st->index;
 
 				/* Add the station when it's within where we're going to build */
 				if (IsInsideBS(TileX(st->xy), TileX(ctx.tile), ctx.w) &&
@@ -2257,8 +2256,8 @@ struct SelectStationWindow : Window {
 
 		/* Determine the widest string */
 		Dimension d = GetStringBoundingBox(T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT : STR_JOIN_STATION_CREATE_SPLITTED_STATION);
-		for (uint i = 0; i < _stations_nearby_list.Length(); i++) {
-			const T *st = T::Get(_stations_nearby_list[i]);
+		for (auto &nearby : _stations_nearby_list) {
+			const T *st = T::Get(nearby);
 			SetDParam(0, st->index);
 			SetDParam(1, st->facilities);
 			d = maxdim(d, GetStringBoundingBox(T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_STATION_LIST_WAYPOINT : STR_STATION_LIST_STATION));
@@ -2281,7 +2280,7 @@ struct SelectStationWindow : Window {
 			y += this->resize.step_height;
 		}
 
-		for (uint i = max<uint>(1, this->vscroll->GetPosition()); i <= _stations_nearby_list.Length(); ++i, y += this->resize.step_height) {
+		for (uint i = max<uint>(1, this->vscroll->GetPosition()); i <= _stations_nearby_list.size(); ++i, y += this->resize.step_height) {
 			/* Don't draw anything if it extends past the end of the window. */
 			if (i - this->vscroll->GetPosition() >= this->vscroll->GetCapacity()) break;
 
@@ -2300,7 +2299,7 @@ struct SelectStationWindow : Window {
 		bool distant_join = (st_index > 0);
 		if (distant_join) st_index--;
 
-		if (distant_join && st_index >= _stations_nearby_list.Length()) return;
+		if (distant_join && st_index >= _stations_nearby_list.size()) return;
 
 		/* Insert station to be joined into stored command */
 		SB(this->select_station_cmd.p2, 16, 16,
@@ -2335,7 +2334,7 @@ struct SelectStationWindow : Window {
 	{
 		if (!gui_scope) return;
 		FindStationsNearby<T>(this->area, true);
-		this->vscroll->SetCount(_stations_nearby_list.Length() + 1);
+		this->vscroll->SetCount(_stations_nearby_list.size() + 1);
 		this->SetDirty();
 	}
 };
@@ -2380,7 +2379,7 @@ static bool StationJoinerNeeded(const CommandContainer &cmd, TileArea ta)
 	 * If adjacent-stations is disabled and we are building next to a station, do not show the selection window.
 	 * but join the other station immediately. */
 	const T *st = FindStationsNearby<T>(ta, false);
-	return st == NULL && (_settings_game.station.adjacent_stations || _stations_nearby_list.Length() == 0);
+	return st == NULL && (_settings_game.station.adjacent_stations || _stations_nearby_list.empty());
 }
 
 /**
