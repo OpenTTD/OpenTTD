@@ -55,7 +55,7 @@ STR_CARGO_PLURAL_CANDY                                          :{G=m}Dulces
 STR_CARGO_PLURAL_COLA                                           :{G=f}Bebida de cola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=m}Algodón de azúcar
 STR_CARGO_PLURAL_BUBBLES                                        :{G=f}Burbujas
-STR_CARGO_PLURAL_TOFFEE                                         :{G=m}Jamoncillos
+STR_CARGO_PLURAL_TOFFEE                                         :{G=m}Caramelos suaves
 STR_CARGO_PLURAL_BATTERIES                                      :{G=f}Pilas
 STR_CARGO_PLURAL_PLASTIC                                        :{G=m}Plástico
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=m}Refrescos
@@ -89,7 +89,7 @@ STR_CARGO_SINGULAR_CANDY                                        :{G=m}Dulce
 STR_CARGO_SINGULAR_COLA                                         :{G=f}Bebida de cola
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=m}Algodón de azúcar
 STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Burbuja
-STR_CARGO_SINGULAR_TOFFEE                                       :{G=m}Jamoncillo
+STR_CARGO_SINGULAR_TOFFEE                                       :{G=m}Caramelo suave
 STR_CARGO_SINGULAR_BATTERY                                      :{G=f}Pila
 STR_CARGO_SINGULAR_PLASTIC                                      :{G=m}Plástico
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=m}Refresco
@@ -123,7 +123,7 @@ STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}bo
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de algo{P dón dones} de azúcar
 STR_QUANTITY_BUBBLES                                            :{COMMA} burbuja{P "" s}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de jamoncillo{P "" s}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de caramelo suave
 STR_QUANTITY_BATTERIES                                          :{COMMA} pila{P "" s}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} de plásticos
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} refresco{P "" s}
