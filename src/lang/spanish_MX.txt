@@ -131,38 +131,38 @@ STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PJ
-STR_ABBREV_COAL                                                 :{TINY_FONT}CB
-STR_ABBREV_MAIL                                                 :{TINY_FONT}CR
-STR_ABBREV_OIL                                                  :{TINY_FONT}PT
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}GN
-STR_ABBREV_GOODS                                                :{TINY_FONT}MC
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
+STR_ABBREV_COAL                                                 :{TINY_FONT}CA
+STR_ABBREV_MAIL                                                 :{TINY_FONT}CO
+STR_ABBREV_OIL                                                  :{TINY_FONT}PE
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}GA
+STR_ABBREV_GOODS                                                :{TINY_FONT}ME
 STR_ABBREV_GRAIN                                                :{TINY_FONT}GR
-STR_ABBREV_WOOD                                                 :{TINY_FONT}MD
-STR_ABBREV_IRON_ORE                                             :{TINY_FONT}MH
+STR_ABBREV_WOOD                                                 :{TINY_FONT}MA
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}HI
 STR_ABBREV_STEEL                                                :{TINY_FONT}AC
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}VA
-STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}MC
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}OV
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}CB
 STR_ABBREV_MAIZE                                                :{TINY_FONT}MZ
-STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
-STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
+STR_ABBREV_FRUIT                                                :{TINY_FONT}FR
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DI
 STR_ABBREV_FOOD                                                 :{TINY_FONT}AL
-STR_ABBREV_PAPER                                                :{TINY_FONT}PP
+STR_ABBREV_PAPER                                                :{TINY_FONT}PA
 STR_ABBREV_GOLD                                                 :{TINY_FONT}OR
 STR_ABBREV_WATER                                                :{TINY_FONT}AG
-STR_ABBREV_WHEAT                                                :{TINY_FONT}TG
-STR_ABBREV_RUBBER                                               :{TINY_FONT}GA
+STR_ABBREV_WHEAT                                                :{TINY_FONT}TR
+STR_ABBREV_RUBBER                                               :{TINY_FONT}CH
 STR_ABBREV_SUGAR                                                :{TINY_FONT}AZ
-STR_ABBREV_TOYS                                                 :{TINY_FONT}JG
-STR_ABBREV_SWEETS                                               :{TINY_FONT}DC
+STR_ABBREV_TOYS                                                 :{TINY_FONT}JU
+STR_ABBREV_SWEETS                                               :{TINY_FONT}DU
 STR_ABBREV_COLA                                                 :{TINY_FONT}CL
 STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}AA
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}BU
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}JM
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}CS
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}PI
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}RF
-STR_ABBREV_NONE                                                 :{TINY_FONT}NO
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}RE
+STR_ABBREV_NONE                                                 :{TINY_FONT}NI
 STR_ABBREV_ALL                                                  :{TINY_FONT}TOD
 
 # 'Mode' of transport for cargoes
@@ -212,7 +212,7 @@ STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}ga
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gal{P ón ones}
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP} gal{P ón ones}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}litro{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
@@ -247,7 +247,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Arrastra
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Cambiar entre tamaño de ventana grande o pequeño
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplazamiento (mueve la lista arriba o abajo)
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplazamiento (mueve la lista izquierda o derecha)
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demoler edificios, etc. en un área de terreno. Ctrl permite trazar una diagonal para seleccionar un área cuadrada. Mayús muestra una estimación del precio
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demoler edificios, etc. en un área de terreno. Ctrl para seleccionar un área en diagonal. Mayús muestra una estimación del precio
 
 # Show engines button
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Mostrar ocultos
@@ -271,7 +271,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :°!"#$%&/()=?¡
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Longitud: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Área: {NUM} x {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Área: {NUM} × {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Longitud: {NUM}{}Diferencia altura: {HEIGHT}
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Área: {NUM}×{NUM}{}Diferencia altura: {HEIGHT}
 
@@ -2475,9 +2475,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Ruido ge
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modificación de terreno
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Disminuir una esquina del terreno. Al arrastrar el ratón se reduce la primera esquina elegida y se nivela el resto del terreno seleccionado a dicha altura. Ctrl permite trazar una diagonal para seleccionar un área cuadrada.
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar una esquina del terreno. Al arrastrar el ratón se eleva la primera esquina elegida y se nivela el resto del terreno seleccionado a dicha altura. Ctrl permite trazar una diagonal para seleccionar un área cuadrada. Mayús muestra una estimación del precio
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivela un área de terreno a la altura de la primera esquina seleccionada. Ctrl permite trazar una diagonal para seleccionar un área cuadrada. Mayús muestra una estimación del precio
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Disminuir una esquina del terreno. Al arrastrar el ratón se reduce la primera esquina elegida y se nivela el resto del terreno seleccionado a dicha altura. Ctrl para seleccionar un área en diagonal.
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar una esquina del terreno. Al arrastrar el ratón se eleva la primera esquina elegida y se nivela el resto del terreno seleccionado a dicha altura. Ctrl para seleccionar un área en diagonal. Mayús muestra una estimación del precio
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivela un área de terreno a la altura de la primera esquina seleccionada. Ctrl para seleccionar un área en diagonal. Mayús muestra una estimación del precio
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para usos futuros. Mayús muestra una estimación del precio
 
 # Object construction window
