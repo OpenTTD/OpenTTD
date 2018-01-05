@@ -163,7 +163,7 @@ STR_ABBREV_BATTERIES                                            :{TINY_FONT}PI
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}RE
 STR_ABBREV_NONE                                                 :{TINY_FONT}NI
-STR_ABBREV_ALL                                                  :{TINY_FONT}TOD
+STR_ABBREV_ALL                                                  :{TINY_FONT}TODO
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA}{NBSP}pasajero{P "" s}
@@ -598,8 +598,8 @@ STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPAN
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingeniero
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Director de Tráfico
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordinador de Transporte
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor de Ruta
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Directivo
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor de Rutas
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Jefe
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Subdirector
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Director
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presidente
@@ -804,7 +804,7 @@ STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLAC
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}¡Empresa de transporte en problemas!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}¡{STRING} será vendida o declarada en bancarrota de no incrementar su desempeño pronto!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}¡Fusión de empresa de transportes!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}¡Fusión de empresas de transportes!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}¡{STRING} fue vendida a {STRING} por {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}¡En bancarrota!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}¡{STRING} fue cerrada por sus acreedores y todos sus activos fueron vendidos!
@@ -844,15 +844,15 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} tiene muy pocas órdenes en la lista
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} tiene una orden vacía
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} tiene órdenes duplicadas
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} tiene en la lista una estación no válida
-STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} tiene en la lista un aeropuerto con una pista muy corta
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} tiene una estación no válida en la lista
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} tiene un aeropuerto con una pista muy corta en la lista
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} se está haciendo viejo
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} se está haciendo muy viejo
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} se está haciendo muy viejo y requiere renovación urgente
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} no encuentra una ruta para continuar
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} se perdió
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}La utilidad del año pasado del {VEHICLE} fue de {CURRENCY_LONG}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}La utilidad de {VEHICLE} el año pasado fue de {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} no puede llegar al siguiente destino porque no está a su alcance
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} no avanza porque no pudo reequipar su carga
@@ -1792,7 +1792,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Está
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trucos
-STR_CHEATS_TOOLTIP                                              :{BLACK}Las casillas verificadas indican que ya se usó este truco
+STR_CHEATS_TOOLTIP                                              :{BLACK}Las casillas marcadas indican que ya se usó este truco
 STR_CHEATS_WARNING                                              :{BLACK}¡Atención! Estás a punto de traicionar a tus competidores. Recuerda que siempre se recordará tal deshonra
 STR_CHEAT_MONEY                                                 :{LTBLUE}Recibir {CURRENCY_LONG} de dinero
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jugar como la empresa: {ORANGE}{COMMA}
