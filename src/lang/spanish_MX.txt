@@ -162,7 +162,7 @@ STR_ABBREV_TOFFEE                                               :{TINY_FONT}CS
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}PI
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}RE
-STR_ABBREV_NONE                                                 :{TINY_FONT}NI
+STR_ABBREV_NONE                                                 :{TINY_FONT}NADA
 STR_ABBREV_ALL                                                  :{TINY_FONT}TODO
 
 # 'Mode' of transport for cargoes
@@ -4125,7 +4125,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Mensaje
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fuera del borde del mapa
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Demasiado cerca del borde del mapa
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}No hay suficiente dinero: se requieren {CURRENCY_LONG}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}No alcanza el dinero: se necesitan {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Se requiere terreno plano
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Tierra inclinada en dirección errónea
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}No se puede hacer eso...
