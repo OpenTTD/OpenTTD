@@ -122,7 +122,7 @@ public:
 	 * @param width Line width.
 	 * @param dash Length of dashes for dashed lines. 0 means solid line.
 	 */
-	virtual void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width, int dash = 0);
+	virtual void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width, int dash = 0) = 0;
 
 	/**
 	 * Copy from a buffer to the screen.
@@ -203,6 +203,8 @@ public:
 	virtual void PostResize() { };
 
 	virtual ~Blitter() { }
+
+	template <typename SetPixelT> void DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, int screen_height, int width, int dash, SetPixelT set_pixel);
 };
 
 #endif /* BLITTER_BASE_HPP */
