@@ -1810,18 +1810,18 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambiar 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir cambiar los valores de producción: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Diseño de colores corporativos
+STR_LIVERY_CAPTION                                              :{WHITE}Nueva cromática
 
-STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Mostrar diseño general de colores
-STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostrar diseño general de colores para trenes
-STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Mostrar diseño general de colores para vehículos de carretera
-STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Mostrar diseño general de colores de colores para barcos
-STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Mostrar diseño general de colores de colores para aeronaves
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Elegir el color principal para el diseño seleccionado. Ctrl+Clic para establecerlo como diseño general
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Elegir el color secundario para el diseño seleccionado. Ctrl+Clic para establecerlo como diseño general
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Elegir un solo diseño de colores, o Ctrl+Clic para elegir varios. Verificar cada una casilla para establecer diferentes combinaciones según el tipo de vehículo
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Mostrar cromática general
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostrar cromáticas para trenes
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Mostrar cromáticas para vehículos de carretera
+STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Mostrar cromáticas para barcos
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Mostrar cromáticas para aeronaves
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Elegir el color principal para la cromática elegida. Ctrl+Clic para establecerlo como cromática general
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Elegir el color secundario para el diseño seleccionado. Ctrl+Clic para establecerlo como cromática general
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Elegir un solo tipo de cromática, o Ctrl+Clic para elegir varios. Marcar las casillas para establecer diferentes combinaciones según el tipo de vehículo
 
-STR_LIVERY_DEFAULT                                              :Diseño de colores estándar
+STR_LIVERY_DEFAULT                                              :Cromática estándar
 STR_LIVERY_STEAM                                                :Locomotora a vapor
 STR_LIVERY_DIESEL                                               :Locomotora de diésel
 STR_LIVERY_ELECTRIC                                             :Locomotora eléctrica
