@@ -50,11 +50,11 @@ void Blitter::DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, in
 		/* compute frac_diff = width * sqrt(dx*dx + dy*dy)
 		 * Start interval:
 		 *    max(dx, dy) <= sqrt(dx*dx + dy*dy) <= sqrt(2) * max(dx, dy) <= 3/2 * max(dx, dy) */
-		int frac_sq = width * width * (dx * dx + dy * dy);
+		int64 frac_sq = ((int64) width) * ((int64) width) * (((int64) dx) * ((int64) dx) + ((int64) dy) * ((int64) dy));
 		int frac_max = 3 * frac_diff / 2;
 		while (frac_diff < frac_max) {
 			int frac_test = (frac_diff + frac_max) / 2;
-			if (frac_test * frac_test < frac_sq) {
+			if (((int64) frac_test) * ((int64) frac_test) < frac_sq) {
 				frac_diff = frac_test + 1;
 			} else {
 				frac_max = frac_test - 1;
