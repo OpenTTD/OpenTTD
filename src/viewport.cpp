@@ -202,7 +202,7 @@ void DeleteWindowViewport(Window *w)
 
 	_viewport_window_cache->erase(std::remove(_viewport_window_cache->begin(), _viewport_window_cache->end(), w->viewport), _viewport_window_cache->end());
 	delete w->viewport->overlay;
-	free(w->viewport);
+	delete w->viewport;
 	w->viewport = nullptr;
 }
 
@@ -223,8 +223,9 @@ void InitializeWindowViewport(Window *w, int x, int y,
 {
 	assert(w->viewport == nullptr);
 
-	ViewportData *vp = CallocT<ViewportData>(1);
+	ViewportData *vp = new ViewportData();
 
+	vp->overlay = nullptr;
 	vp->left = x + w->left;
 	vp->top = y + w->top;
 	vp->width = width;
@@ -259,8 +260,6 @@ void InitializeWindowViewport(Window *w, int x, int y,
 	vp->overlay = nullptr;
 
 	w->viewport = vp;
-	vp->virtual_left = 0; // pt.x;
-	vp->virtual_top = 0;  // pt.y;
 	_viewport_window_cache.push_back(vp);
 }
 
