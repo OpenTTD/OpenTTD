@@ -855,7 +855,7 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}La utilidad de {VEHICLE} el año pasado fue de {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} no puede llegar al siguiente destino porque no está a su alcance
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} no avanza porque no pudo reequipar su carga
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} no avanza porque no pudo reformarse
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Renovación automática fallida para {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}¡Nuev{G o a} {STRING} ahora disponible!
@@ -2938,7 +2938,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Archivos q
 STR_NEWGRF_BROKEN                                               :{WHITE}Es posible que el funcionamiento del NewGRF '{0:STRING}' cause desincronizaciones o errores
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Cambió el estado 'vagón con motor' para '{1:ENGINE}' cuando no estaba dentro de un depósito
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}cambió la longitud del vehículo para '{1:ENGINE}' cuando no estaba dentro de un depósito
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Cambió la capacidad del vehículo para '{1:ENGINE}' cuando no estaba dentro de un depósito o mientras no se estaba reequipando
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Cambió la capacidad del vehículo para '{1:ENGINE}' cuando no estaba dentro de un depósito o mientras no se estaba reformando
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud no válida. Puede ser debido a problemas con los NewGRF. El juego puede fallar
 
 STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' da información incorrecta
@@ -3399,7 +3399,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Costo: {GOLD}{CURRENCY_LONG}{BLACK} Velocidad: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidad: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones con motor: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reequipamiento: {GOLD}{STRING}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reforma: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todo tipo de carga
 STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Máx. fuerza de tracción: {GOLD}{FORCE}
@@ -3604,10 +3604,10 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Esto com
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forzar al tren a proceder sin esperar a que la señal le ceda vía libre
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Reequipar tren para transportar otro tipo de cargamento
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Reequipar vehículo de carretera para transportar otro tipo de cargamento
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Reequipar barco para que transporte otro tipo de cargamento
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Reequipar aeronave para llevar otro tipo de cargamento
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Reformar tren para transportar otro tipo de cargamento
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Reformar vehículo de carretera para transportar otro tipo de cargamento
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Reformar barco para que transporte otro tipo de cargamento
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Reformar aeronave para llevar otro tipo de cargamento
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Cambiar dirección del tren
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forzar al vehículo a girar en sentido opuesto
@@ -3720,28 +3720,28 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Mostrar 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacidad: {LTBLUE}
 
 # Vehicle refit
-STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (reequipar)
+STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (reformar)
 STR_REFIT_TITLE                                                 :{GOLD}Elegir el nuevo tipo de cargamento:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}{}{BLACK}Costo por reequipar: {RED}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}{}{BLACK}Ingreso al reequipar: {GREEN}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costo por reequipar: {RED}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Ingreso al reequipar: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Elegir los vehículos de ferrocarril a reequipar. Arrastrar con el ratón para elegir más de un vehículo. Clic en un espacio vacío para elegir el tren completo. Ctrl+Clic para elegir una unidad del tren y los vagones subsecuentes
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}{}{BLACK}Costo por reformar: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}{}{BLACK}Ingreso al reformar: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costo por reformar: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Ingreso al reformar: {GREEN}{CURRENCY_LONG}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Elegir los vehículos de ferrocarril a reformar. Arrastrar con el ratón para elegir más de un vehículo. Clic en un espacio vacío para elegir el tren completo. Ctrl+Clic para elegir una unidad del tren y los vagones subsecuentes
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elegir el tipo de cargamento para el tren
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Elegir el tipo de cargamento para el vehículo de carretera
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Elegir el tipo de cargamento para el barco
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Elegir el tipo de cargamento para la aeronave
 
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Reequipar tren
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Reequipar vehículo de carretera
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Reequipar barco
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Reequipar aeronave
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Reformar tren
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Reformar vehículo de carretera
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Reformar barco
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Reformar aeronave
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Reequipar el tren para transportar el cargamento elegido
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Reequipar el vehículo de carretera para transportar el cargamento elegido
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Reequipar el barco para transportar el cargamento elegido
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Reequipar la aeronave para transportar el cargamento elegido
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Reformar el tren para transportar el cargamento elegido
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Reformar el vehículo de carretera para transportar el cargamento elegido
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Reformar el barco para transportar el cargamento elegido
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Reformar la aeronave para transportar el cargamento elegido
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Órdenes)
@@ -3777,10 +3777,10 @@ STR_ORDER_DROP_TRANSFER                                         :Transferir
 STR_ORDER_DROP_NO_UNLOADING                                     :No descargar
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Cambiar el comportamiento de descarga en la orden elegida
 
-STR_ORDER_REFIT                                                 :{BLACK}Reequipar
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Elegir el tipo de cargamento a reequipar en esta orden. Ctrl+Clic para eliminar la orden
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Reequipar en estación
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Elegir el tipo de cargamento a reequipar en esta orden. Ctrl+Clic para eliminar la orden. Reequipar solo es posible si el vehículo lo permite
+STR_ORDER_REFIT                                                 :{BLACK}Reformar
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Elegir el tipo de cargamento a reformar en esta orden. Ctrl+Clic para eliminar la orden
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Reformar en estación
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Elegir el tipo de cargamento a reformar en esta orden. Ctrl+Clic para eliminar la orden. Reformar solo es posible si el vehículo lo permite
 STR_ORDER_DROP_REFIT_AUTO                                       :Cargamento fijo
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Cargamento disponible
 
@@ -3847,8 +3847,8 @@ STR_ORDER_SHIP_DEPOT                                            :astillero de ba
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Reequipar a {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Reequipar a {STRING} y detenerse)
+STR_ORDER_REFIT_ORDER                                           :(Reformar a {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :(Reformar a {STRING} y detenerse)
 STR_ORDER_STOP_ORDER                                            :(Detenerse)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -3871,18 +3871,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No descargar y
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No descargar y llenar cualquiera)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(No descargar ni cargar)
 
-STR_ORDER_AUTO_REFIT                                            :(Reequipar a {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Reequipar a {STRING} y llenar)
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Reequipar a {STRING} y llenar cualquiera)
-STR_ORDER_UNLOAD_REFIT                                          :(Descargar y cargar con reequipamiento a {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Descargar y llenar con reequipamiento a {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descargar y llenar cualquiera con reequipamiento a {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Transferir y cargar con reequipamiento a {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferir y llenar con reequipamiento a {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferir y llenar cualquiera con reequipamiento a {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(No descargar y cargar con reequipamiento a {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(No descargar y llenar con reequipamiento a {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No descargar y llenar cualquiera con reequipamiento a {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Reformar a {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Llenar todo y reformar a{STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Llenar cualquiera y reformar a {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Descargar y cargar con reforma a {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Descargar y llenar todo con reforma a {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descargar y llenar cualquiera con reforma a {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Transferir y cargar con reforma a {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferir y llenar con reforma a {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferir y llenar cualquiera con reforma a {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(No descargar y cargar con reforma a {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(No descargar y llenar todo con reforma a {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No descargar y llenar cualquiera con reforma a {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :cargamento disponible
 
@@ -4384,10 +4384,10 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Vehícul
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Barco estorba
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Aeronave obstaculiza
 
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}No se puede reequipar tren...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}No se puede reequipar  vehículo de carretera...
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}No se puede reequipar  barco...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}No se puede reequipar  aeronave...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}No se puede reformar tren...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}No se puede reformar vehículo de carretera...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}No se puede reformar barco...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}No se puede reformar aeronave...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}No se puede cambiar nombre del tren...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}No se puede cambiar nombre del vehículo...
