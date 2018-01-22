@@ -1373,6 +1373,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Deslocar com botão esquerdo: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Activar deslocamento do mapa através de arrastamento com o botão esquerdo do rato. Esta opção é particularmente útil quando é usado um ecran de toque para deslocamento
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fechar janelas ao fazer clique direito: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fecha uma janela ao fazer clique direito dentro dela. Desactiva os textos de ajuda ao fazer clique direito!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Guardar automaticamente: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Seleccione o intervalo entre gravações automáticas
@@ -1402,7 +1404,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostrar horári
 STR_CONFIG_SETTING_QUICKGOTO                                    :Criação rápida de ordens de veículos: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pré-seleccionar o 'cursor Ir Para' ao abrir a janela de ordens
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo padrão de ferrovia (ao criar ou abrir jogo): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo de carrir seleccionado após o início ou carregamento de um jogo. 'primeiro disponível' selecciona o tipo mais antigo de carril, 'último disponível' selecciona o tipo mais recente de carril e 'mais utilizado' selecciona o tipo mais utilizado actualmente
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo de carril seleccionado após o início ou carregamento de um jogo. 'primeiro disponível' selecciona o tipo mais antigo de carril, 'último disponível' selecciona o tipo mais recente de carril e 'mais utilizado' selecciona o tipo mais utilizado actualmente
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro disponível
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
@@ -2591,6 +2593,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nome do 
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carga aceite: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tipo de carril: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Limite de velocidade da linha: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Limite de velocidade da estrada: {LTBLUE}{VELOCITY}
 
@@ -2603,29 +2606,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campos
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Neve
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deserto
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Caminhos-de-ferro linha
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Caminhos-de-ferro linha com sinais de bloqueio
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Caminhos-de-ferro linha com pre-sinais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Caminhos-de-ferro linha com sinais de saída
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Caminhos-de-ferro linha com sinais combinados
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Caminhos-de-ferro linha com sinais de caminho
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Caminhos-de-ferro linha com sinais de sentido único
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Caminhos-de-ferro linha com bloqueio e pré-sinais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Caminhos-de-ferro linha com bloqueio e sinais de saida
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Caminhos-de-ferro linha com bloqueio e sinais combinados
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Caminhos-de-ferro linha com bloqueio e sinais de rota
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Caminhos-de-ferro linha com bloqueio e sinais de sentido único
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Caminhos-de-ferro linha com pré-sinais e sinais de saida
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Caminhos-de-ferro linha com pré-sinais e sinais combinados
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Caminhos-de-ferro linha com pré-sinais e sinais de rota
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Caminhos-de-ferro linha com pré-sinais e sinais de sentido único
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Caminhos-de-ferro linha com sinais de saida e sinais combinados
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Caminhos-de-ferro linha com sinais de saida e sinais de rota
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Caminhos-de-ferro linha com sinais de saida e de sentido único
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Caminhos-de-ferro linha com sinais combinados e sinais de rota
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Caminhos-de-ferro linha com sinais combinados e sentido unico
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Caminhos-de-ferro linha com sinais de rota e de sentido unico
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Caminhos-de-ferro depósito de comboios
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Linha de caminhos-de-ferro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Linha de caminhos-de-ferro com sinais de bloqueio
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Linha de caminhos-de-ferro com pre-sinais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Linha de caminhos-de-ferro com sinais de saída
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Linha de caminhos-de-ferro com sinais combinados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Linha de caminhos-de-ferro com sinais de rota
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Linha de caminhos-de-ferro com sinais de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Linha de caminhos-de-ferro com sinais de bloqueio e pré-sinais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Linha de caminhos-de-ferro com sinais de bloqueio e de saida
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Linha de caminhos-de-ferro com sinais de bloqueio e combinados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Linha de caminhos-de-ferro com sinais de bloqueio e de rota
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Linha de caminhos-de-ferro com sinais de bloqueio e de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Linha de caminhos-de-ferro com pré-sinais e sinais de saida
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Linha de caminhos-de-ferro com pré-sinais e sinais combinados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Linha de caminhos-de-ferro com pré-sinais e sinais de rota
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Linha de caminhos-de-ferro com pré-sinais e sinais de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Linha de caminhos-de-ferro com sinais de saida e combinados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Linha de caminhos-de-ferro com sinais de saida e de rota
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Linha de caminhos-de-ferro com sinais de saida e de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Linha de caminhos-de-ferro com sinais combinados e de rota
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Linha de caminhos-de-ferro com sinais combinados e de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Linha de caminhos-de-ferro com sinais de rota e de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depósito de comboios de caminhos-de-ferro
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Estrada
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Estrada com iluminação
@@ -3294,6 +3297,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Necessá
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Necessário: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Requer:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} a aguardar{STRING}
 
@@ -3364,8 +3368,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos o
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear um grupo
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Lucro deste ano:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Lucro no último ano:
 STR_GROUP_OCCUPANCY                                             :Utilização actual:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Novos Veículos Ferroviários
@@ -3398,6 +3404,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Todos os tipos 
 STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Máx. Força de Tracção: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} quadrados
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo de aeronave: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de veículos ferroviários - clique num veículo para informações
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de veículos rodoviários - clique num veículo para informações
@@ -3529,10 +3536,13 @@ STR_ENGINE_PREVIEW_SHIP                                         :barco
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotiva monocarril
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotiva maglev
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade: {VELOCITY}  Potência: {POWER}{}Custo de circulação: {CURRENCY_LONG}/ano{}Capacidade: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade: {VELOCITY}  Potência: {POWER}  Máx. F.T.: {6:FORCE}{}Custo de circulação: {4:CURRENCY_LONG}/ano{}Capacidade: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Custo: {CURRENCY_LONG} Máx. Velocidade: {VELOCITY}{}Capacidade: {CARGO_LONG}{}Custo de circulação: {CURRENCY_LONG}/ano
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Custo: {CURRENCY_LONG} Vel. Máxima: {VELOCITY}{}Tipo de Aeronave: {STRING} Alcance: {COMMA}{}Capacity: {CARGO_LONG}, {CARGO_LONG}{}Custo de circulação: {CURRENCY_LONG}/yr
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade Máx.: {VELOCITY}  Potência: {POWER}{}Custo de Circulação: {CURRENCY_LONG}/ano{}Capacidade: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade Máx.: {VELOCITY}  Potência: {POWER}  F.T. Máx.: {6:FORCE}{}Custo de Circulação: {4:CURRENCY_LONG}/ano{}Capacidade: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Custo: {CURRENCY_LONG} Velocidade Máx.: {VELOCITY}{}Capacidade: {CARGO_LONG}{}Custo de Circulação: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Custo: {CURRENCY_LONG} Velocidade Máx.: {VELOCITY}{}Tipo de Aeronave: {STRING}{}Capacidade: {CARGO_LONG}, {CARGO_LONG}{}Custo de Circulação: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Custo: {CURRENCY_LONG} Velocidade Máx.: {VELOCITY}{}Tipo de Aeronave: {STRING}{}Capacidade: {CARGO_LONG}{}Custo de Circulação: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Custo: {CURRENCY_LONG} Velocidade Máx.: {VELOCITY}{}Tipo de Aeronave: {STRING} Alcance: {COMMA} quadrados{}Capacidade: {CARGO_LONG}, {CARGO_LONG}{}Custo de Circulação: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Custo: {CURRENCY_LONG} Velocidade Máx.: {VELOCITY}{}Tipo de Aeronave: {STRING} Alcance: {COMMA} quadrados{}Capacidade: {CARGO_LONG}{}Custo de Circulação: {CURRENCY_LONG}/ano
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING} - {STRING}
@@ -3562,6 +3572,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pression
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Alternar entre a janela de substituição de locomotivas e a janela de substituição de vagões
 STR_REPLACE_ENGINES                                             :Locomotivas
 STR_REPLACE_WAGONS                                              :Vagões
+STR_REPLACE_ALL_RAILTYPE                                        :Todos os veículos ferroviários
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccione o tipo de carril para o qual deseja efectuar a substituição dos motores
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o tipo de motor que substituirá o que está seleccionado à esquerda, se algum
@@ -3655,6 +3666,7 @@ STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} an
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Máx. velocidade: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Vel. máxima: {LTBLUE}{VELOCITY} {BLACK}Tipo de Aeronave: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Velocidade Máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de Aeronave: {LTBLUE}{STRING} {BLACK}Alcance: {LTBLUE}{COMMA} quadrados
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Max. velocidade: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Máx. velocidade: {LTBLUE}{VELOCITY} {BLACK}Máx. E.T.: {LTBLUE}{FORCE}
 
@@ -4025,7 +4037,7 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de Jogo
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Repor
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Número de dias para iniciar esta IA depois da anterior (tomar ou lorgar): {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Número de dias para iniciar esta IA depois da anterior (aproximadamente): {ORANGE}{STRING}
 
 
 # Textfile window
