@@ -1199,9 +1199,9 @@ STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Altura máxima 
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Tamanho máximo de túneis: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Tamanho máximo para construção de túneis
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método de financiamento de indústrias primárias: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Método de financiar uma indústria pirmária. 'nenhum' significa que não é possível financiar nenhuma, 'prospecção' significa que é possível financiar, mas a construção é feita num local arbitrário no mapa e até pode falhar, 'como outras indústrias' significa que as indústrias de matérias primas podem ser construídas por companhias como indústrias de processamento em qualquer sítio que elas escolham
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Método de financiar uma indústria primária. 'nenhum' significa que não é possível financiar nenhuma, 'prospecção' significa que é possível financiar, mas a construção é feita num local arbitrário no mapa e até pode falhar, 'como as outras' significa que as indústrias de matérias primas podem ser construídas em qualquer sítio pelas empresas, como se fossem indústrias de processamento
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Nenhum
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Mesmo método
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Como as outras
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospecção
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Área plana à volta das industrias: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Quantidade de terreno plano á volta de uma industria. Isto garante que terreno vazio esteja disponível para construir linhas, etc
