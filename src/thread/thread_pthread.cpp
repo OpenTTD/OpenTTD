@@ -14,6 +14,10 @@
 #include <pthread.h>
 #include <errno.h>
 
+#if defined(__APPLE__)
+#include "../os/macosx/macos.h"
+#endif
+
 #include "../safeguards.h"
 
 /**
@@ -69,6 +73,9 @@ private:
 			pthread_setname_np(pthread_self(), self->name);
 		}
 #endif
+#endif
+#if defined(__APPLE__)
+		MacOSSetThreadName(self->name);
 #endif
 		self->ThreadProc();
 		pthread_exit(NULL);

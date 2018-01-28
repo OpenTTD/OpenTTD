@@ -14,6 +14,7 @@
 #include "../../rev.h"
 #include "macos.h"
 #include "../../string_func.h"
+#include <pthread.h>
 
 #define Rect  OTTDRect
 #define Point OTTDPoint
@@ -232,4 +233,22 @@ bool IsMonospaceFont(CFStringRef name)
 	NSFont *font = [ NSFont fontWithName:(__bridge NSString *)name size:0.0f ];
 
 	return font != NULL ? [ font isFixedPitch ] : false;
+}
+
+/**
+ * Set the name of the current thread for the debugger.
+ * @param name The new name of the current thread.
+ */
+void MacOSSetThreadName(const char *name)
+{
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
+	if (MacOSVersionIsAtLeast(10, 6, 0)) {
+		pthread_setname_np(name);
+	}
+#endif
+
+	NSThread *cur = [ NSThread currentThread ];
+	if (cur != NULL && [ cur respondsToSelector:@selector(setName:) ]) {
+		[ cur performSelector:@selector(setName:) withObject:[ NSString stringWithUTF8String:name ] ];
+	}
 }
