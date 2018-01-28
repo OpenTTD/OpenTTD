@@ -609,7 +609,22 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		return;
 	}
 
-	NSRunAlertPanel([ NSString stringWithUTF8String:title ], [ NSString stringWithUTF8String:message ], [ NSString stringWithUTF8String:buttonLabel ], nil, nil);
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3)
+	if (MacOSVersionIsAtLeast(10, 3, 0)) {
+		NSAlert *alert = [ [ NSAlert alloc ] init ];
+		[ alert setAlertStyle: NSCriticalAlertStyle ];
+		[ alert setMessageText:[ NSString stringWithUTF8String:title ] ];
+		[ alert setInformativeText:[ NSString stringWithUTF8String:message ] ];
+		[ alert addButtonWithTitle: [ NSString stringWithUTF8String:buttonLabel ] ];
+		[ alert runModal ];
+		[ alert release ];
+	} else
+#endif
+	{
+#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_3)
+		NSRunAlertPanel([ NSString stringWithUTF8String:title ], [ NSString stringWithUTF8String:message ], [ NSString stringWithUTF8String:buttonLabel ], nil, nil);
+#endif
+	}
 
 	if (!wasstarted && VideoDriver::GetInstance() != NULL) VideoDriver::GetInstance()->Stop();
 
