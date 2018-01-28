@@ -48,6 +48,9 @@
 
 
 @interface OTTDMain : NSObject
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6
+	<NSApplicationDelegate>
+#endif
 @end
 
 
@@ -212,8 +215,7 @@ static void setupApplication()
 #endif
 
 	/* Become the front process, important when start from the command line. */
-	OSErr err = SetFrontProcess(&psn);
-	if (err != 0) DEBUG(driver, 0, "Could not bring the application to front. Error %d", (int)err);
+	[ [ NSApplication sharedApplication ] activateIgnoringOtherApps:YES ];
 
 	/* Set up the menubar */
 	[ NSApp setMainMenu:[ [ NSMenu alloc ] init ] ];
@@ -575,9 +577,12 @@ void VideoDriver_Cocoa::EditBoxLostFocus()
 	if (_cocoa_subdriver != NULL) {
 		if ([ _cocoa_subdriver->cocoaview respondsToSelector:@selector(inputContext) ] && [ [ _cocoa_subdriver->cocoaview performSelector:@selector(inputContext) ] respondsToSelector:@selector(discardMarkedText) ]) {
 			[ [ _cocoa_subdriver->cocoaview performSelector:@selector(inputContext) ] performSelector:@selector(discardMarkedText) ];
-		} else {
+		}
+#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_6)
+		else {
 			[ [ NSInputManager currentInputManager ] markedTextAbandoned:_cocoa_subdriver->cocoaview ];
 		}
+#endif
 	}
 	/* Clear any marked string from the current edit box. */
 	HandleTextInput(NULL, true);
@@ -1032,7 +1037,17 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 {
 	if (!EditBoxInGlobalFocus()) return NSNotFound;
 
-	NSPoint view_pt = [ self convertPoint:[ [ self window ] convertScreenToBase:thePoint ] fromView:nil ];
+	NSPoint view_pt = NSZeroPoint;
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7)
+	if ([ [ self window ] respondsToSelector:@selector(convertRectFromScreen:) ]) {
+		view_pt = [ self convertRect:[ [ self window ] convertRectFromScreen:NSMakeRect(thePoint.x, thePoint.y, 0, 0) ] fromView:nil ].origin;
+	} else
+#endif
+	{
+#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_7)
+		view_pt = [ self convertPoint:[ [ self window ] convertScreenToBase:thePoint ] fromView:nil ];
+#endif
+	}
 
 	Point pt = { (int)view_pt.x, (int)[ self frame ].size.height - (int)view_pt.y };
 
@@ -1061,9 +1076,13 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	}
 #endif
 
+#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_7
 	NSRect window_rect = [ self convertRect:view_rect toView:nil ];
 	NSPoint origin = [ [ self window ] convertBaseToScreen:window_rect.origin ];
 	return NSMakeRect(origin.x, origin.y, window_rect.size.width, window_rect.size.height);
+#else
+	return NSMakeRect(0, 0, 0, 0);;
+#endif
 }
 
 /** Get the bounding rect for the given range. */

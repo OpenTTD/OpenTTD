@@ -21,6 +21,10 @@
 #undef Rect
 #undef Point
 
+#ifndef __clang__
+#define __bridge
+#endif
+
 /*
  * This file contains objective C
  * Apple uses objective C instead of plain C to interact with OS specific/native functions
@@ -182,7 +186,7 @@ uint GetCPUCoreCount()
 	uint count = 1;
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 	if (MacOSVersionIsAtLeast(10, 5, 0)) {
-		count = [ [ NSProcessInfo processInfo ] activeProcessorCount ];
+		count = (uint)[ [ NSProcessInfo processInfo ] activeProcessorCount ];
 	} else
 #endif
 	{
@@ -201,7 +205,7 @@ uint GetCPUCoreCount()
  */
 bool IsMonospaceFont(CFStringRef name)
 {
-	NSFont *font = [ NSFont fontWithName:(NSString *)name size:0.0f ];
+	NSFont *font = [ NSFont fontWithName:(__bridge NSString *)name size:0.0f ];
 
 	return font != NULL ? [ font isFixedPitch ] : false;
 }

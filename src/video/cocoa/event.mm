@@ -100,10 +100,10 @@ static void QZ_WarpCursor(int x, int y)
 	NSPoint p = NSMakePoint(x, y);
 	CGPoint cgp = _cocoa_subdriver->PrivateLocalToCG(&p);
 
-	/* this is the magic call that fixes cursor "freezing" after warp */
-	CGSetLocalEventsSuppressionInterval(0.0);
 	/* Do the actual warp */
 	CGWarpMouseCursorPosition(cgp);
+	/* this is the magic call that fixes cursor "freezing" after warp */
+	CGAssociateMouseAndMouseCursorPosition(true);
 }
 
 

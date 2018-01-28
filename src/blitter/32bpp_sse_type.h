@@ -27,6 +27,8 @@
 #define MARGIN_NORMAL_THRESHOLD (zoom == ZOOM_LVL_OUT_32X ? 8 : 4) ///< Minimum width to use margins with BM_NORMAL.
 #define MARGIN_REMAP_THRESHOLD 4 ///< Minimum width to use margins with BM_COLOUR_REMAP.
 
+#undef ALIGN
+
 #ifdef _MSC_VER
 	#define ALIGN(n) __declspec(align(n))
 #else
