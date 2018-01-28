@@ -259,7 +259,11 @@ uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_i
 @end
 
 /** Delegate for our NSWindow to send ask for quit on close */
-@interface OTTD_CocoaWindowDelegate : NSObject {
+@interface OTTD_CocoaWindowDelegate : NSObject
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6
+	<NSWindowDelegate>
+#endif
+{
 	CocoaSubdriver *driver;
 }
 
