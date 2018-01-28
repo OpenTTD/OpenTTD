@@ -31,6 +31,16 @@
  */
 
 
+#if (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_10)
+typedef struct {
+	NSInteger majorVersion;
+	NSInteger minorVersion;
+	NSInteger patchVersion;
+} OTTDOperatingSystemVersion;
+
+#define NSOperatingSystemVersion OTTDOperatingSystemVersion
+#endif
+
 /**
  * Get the version of the MacOS we are running under. Code adopted
  * from http://www.cocoadev.com/index.pl?DeterminingOSVersion
@@ -44,6 +54,19 @@ void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
 	*return_major = -1;
 	*return_minor = -1;
 	*return_bugfix = -1;
+
+	if ([[ NSProcessInfo processInfo] respondsToSelector:@selector(operatingSystemVersion) ]) {
+		IMP sel = [ [ NSProcessInfo processInfo] methodForSelector:@selector(operatingSystemVersion) ];
+		NSOperatingSystemVersion ver = ((NSOperatingSystemVersion (*)(id, SEL))sel)([ NSProcessInfo processInfo], @selector(operatingSystemVersion));
+
+		*return_major = (int)ver.majorVersion;
+		*return_minor = (int)ver.minorVersion;
+		*return_bugfix = (int)ver.patchVersion;
+
+		return;
+	}
+
+#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_10)
 	SInt32 systemVersion, version_major, version_minor, version_bugfix;
 	if (Gestalt(gestaltSystemVersion, &systemVersion) == noErr) {
 		if (systemVersion >= 0x1040) {
@@ -56,6 +79,7 @@ void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
 			*return_bugfix = (int)GB(systemVersion, 0, 4);
 		}
 	}
+#endif
 }
 
 #ifdef WITH_SDL
