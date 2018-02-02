@@ -26,6 +26,7 @@ struct CargoPayment : CargoPaymentPool::PoolItem<&_cargo_payment_pool> {
 	Money route_profit;    ///< The amount of money to add/remove from the bank account
 	Money visual_profit;   ///< The visual profit to show
 	Money visual_transfer; ///< The transfer credits to be shown
+	OverflowSafeInt32 cargo_distance; ///< cargo units * distance delivered
 
 	/* Unsaved variables */
 	Company *owner;            ///< The owner of the vehicle

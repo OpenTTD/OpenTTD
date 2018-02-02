@@ -521,11 +521,8 @@ static void HelicopterTickHandler(Aircraft *v)
  */
 void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 {
-	v->x_pos = x;
-	v->y_pos = y;
 	v->z_pos = z;
-
-	v->UpdatePosition();
+	v->Travel(x, y);
 	v->UpdateViewport(true, false);
 	if (v->subtype == AIR_HELICOPTER) {
 		GetRotorImage(v, EIT_ON_MAP, &v->Next()->Next()->sprite_seq);

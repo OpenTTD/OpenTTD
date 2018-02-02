@@ -709,6 +709,12 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(Vehicle, current_order_time,    SLE_UINT32,                  SLV_67, SL_MAX_VERSION),
 		 SLE_CONDVAR(Vehicle, lateness_counter,      SLE_INT32,                   SLV_67, SL_MAX_VERSION),
 
+		 SLE_CONDVAR(Vehicle, delivered_cargotiles_this_year, SLE_INT32,         SLV_VEHICLE_CARGOTILES, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, delivered_cargotiles_last_year, SLE_INT32,         SLV_VEHICLE_CARGOTILES, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, potential_cargotiles_this_year, SLE_INT32,         SLV_VEHICLE_CARGOTILES, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, potential_cargotiles_last_year, SLE_INT32,         SLV_VEHICLE_CARGOTILES, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, cd_distance,                    SLE_UINT16,        SLV_VEHICLE_CARGOTILES, SL_MAX_VERSION),
+
 		SLE_CONDNULL(10,                                                           SLV_2, SLV_144), // old reserved space
 
 		     SLE_END()

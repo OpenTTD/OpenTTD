@@ -493,6 +493,7 @@ struct EconomySettings {
 	uint16 town_noise_population[3];         ///< population to base decision on noise evaluation (@see town_council_tolerance)
 	bool   allow_town_level_crossings;       ///< towns are allowed to build level crossings
 	bool   infrastructure_maintenance;       ///< enable monthly maintenance fee for owner infrastructure
+	uint8  idle_loading_ct_penalty;          ///< cargotiles penalty factor (in 1/4 steps) for vehicles loading and not receiving goods
 };
 
 struct LinkGraphSettings {
