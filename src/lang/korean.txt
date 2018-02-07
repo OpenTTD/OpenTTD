@@ -2385,7 +2385,7 @@ STR_BRIDGE_NAME_GIRDER_STEEL                                    :강철 거더�
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :강철 캔틸레버교
 STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :콘크리트 현수교
 STR_BRIDGE_NAME_WOODEN                                          :나무 다리
-STR_BRIDGE_NAME_CONCRETE                                        :콘트리트교
+STR_BRIDGE_NAME_CONCRETE                                        :콘크리트교
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :강철 원통형 다리
 STR_BRIDGE_TUBULAR_SILICON                                      :실리콘 원통형 다리
 
