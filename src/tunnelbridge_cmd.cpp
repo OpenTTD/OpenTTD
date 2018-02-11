@@ -12,6 +12,7 @@
  */
 
 #include "stdafx.h"
+#include <cmath>
 #include "newgrf_object.h"
 #include "viewport_func.h"
 #include "command_func.h"
@@ -100,23 +101,18 @@ void ResetBridges()
 
 /**
  * Calculate the price factor for building a long bridge.
- * Basically the cost delta is 1,1, 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5, 6,6,6,6,6,6,  7,7,7,7,7,7,7,  8,8,8,8,8,8,8,8,
+ * The bridge heads (each costs 1) are trimmed (and later added back).
+ * The cost for main tiles of the bridge follow https://oeis.org/A002024 ,
+ * the sum of which is https://oeis.org/A060432 .
  * @param length Length of the bridge.
  * @return Price factor for the bridge.
  */
 int CalcBridgeLenCostFactor(int length)
 {
 	if (length < 2) return length;
-
-	length -= 2;
-	int sum = 2;
-	for (int delta = 1;; delta++) {
-		for (int count = 0; count < delta; count++) {
-			if (length == 0) return sum;
-			sum += delta;
-			length--;
-		}
-	}
+	length -= 2; /* ignore bridge heads */
+	int r = sqrt(2 * length) + 0.5;
+	return 2 + ((6 * length + 1) * r - r * r * r) / 6;
 }
 
 /**
