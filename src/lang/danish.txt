@@ -1372,6 +1372,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Fra
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Venstreklik-scrolling: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Aktiver rulle kortet ved at trække den med venstre museknap. Dette er især nyttigt, når du bruger en touch-screen til at rulle
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Luk vindue ved højre-klik: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Lukker vinduet ved at højreklikke inde i det. Deaktiverer værktøjstip ved at højreklikke!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Auto gem: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vælg interval mellem automatisk gemte spil
@@ -1761,6 +1763,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tjek for
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vis computerspiller/spilscript indstillinger
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Afslut 'OpenTTD'
 
+STR_INTRO_BASESET                                               :{BLACK} Det aktuelt valgte base grafiksæt mangler {NUM} sprite {P "" s}. Se venligst efter opdateringer til basesættet.
 STR_INTRO_TRANSLATION                                           :{BLACK}Denne oversættelse mangler {NUM} streng{P "" e}. Hjælp venligst med at gøre OpenTTD bedre ved at tilmelde dig som oversætter. Se readme.txt for detaljer.
 
 # Quit window
@@ -2589,6 +2592,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Lufthavn
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Accepteret last: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tog type: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Togspors hastighedsgrænse: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Vej hastighedsbegrænsning: {LTBLUE}{VELOCITY}
 
@@ -2604,13 +2608,13 @@ STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Ørken
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Jernbane spor
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Jernbane spor med bloksignaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Jernbane spor med with pre-signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Jernbane spor med udgangssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Jernbane spor med udgangs-signaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Jernbane spor med kombinerede signaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Jernbane spor med rute-signaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Jernbane spor med en-vejs-signaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Jernbane spor med blok- og pre-signaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Jernbane spor med blok- og udgangs-signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Jernbane spor med blok og kombinerede signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Jernbane spor med blok- og kombinerede signaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Jernbane spor med blok- og rute-signaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Jernbane spor med blok og en-vejs rute-signaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Jernbane spor med pre- og udgangs-signaler
@@ -2621,7 +2625,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Jernbane spor m
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Jernbane spor med udgangs- og rute-signaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Jernbane spor med udgangs- og en-vejs rute-signaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Jernbane spor med kombinerede og rute-signaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Jernbane spor med kombinerede og en-vejs rute-signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Jernbane spor med kombinationede- og en-vejs rute-signaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Jernbane spor med rute- og en-vejs rute-signaler
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Jernbane togdepot
 
@@ -3292,6 +3296,9 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Kræver:
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Kræver: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Kræver:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} venter{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Producerer: {YELLOW}{STRING}{STRING}
@@ -3360,6 +3367,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle kør
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Omdøb en gruppe
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Afkast i år:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Afkast sidste år:
+STR_GROUP_OCCUPANCY                                             :Nuværende brug:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nye jernbanekøretøjer
@@ -3392,6 +3403,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Alle lasttyper
 STR_PURCHASE_INFO_ALL_BUT                                       :Alle undtagen {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. trækkraft: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rækkevidde: {GOLD}{COMMA} felter
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Fly type: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Togvalgsliste - klik på et køretøj for mere information
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Liste over køretøjstyper - klik på køretøj for information
@@ -3526,6 +3538,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magnetskinnelok
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Pris: {CURRENCY_LONG} Vægt: {WEIGHT_SHORT}{}Hastighed: {VELOCITY}  Styrke: {POWER}{}Driftsomkostninger: {CURRENCY_LONG}/år{}Kapacitet: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Pris: {CURRENCY_LONG} Vægt: {WEIGHT_SHORT}{}Hastighed: {VELOCITY}  Hestekræfter: {POWER}  Maks. Trækkraft: {6:FORCE}{}Driftsomkostning: {4:CURRENCY_LONG}/år{}Kapacitet: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Pris: {CURRENCY_LONG} Maks. hast.: {VELOCITY}{}Kapacitet: {CARGO_LONG}{}Driftsomkostninger: {CURRENCY_LONG}/år
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Pris: {CURRENCY_LONG} Max. Hastighed: {VELOCITY}{}Aircraft type: {STRING}{}Kapacitet: {CARGO_LONG}, {CARGO_LONG}{}Omkostninger: {CURRENCY_LONG}/år
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Pris: {CURRENCY_LONG} Max. Hastighed: {VELOCITY}{}Fly type: {STRING}{}Kapacitet: {CARGO_LONG}{}Omkostninger: {CURRENCY_LONG}/år
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Pris: {CURRENCY_LONG} Max. Hastighed: {VELOCITY}{}Fly type: {STRING} Rækkevidde: {COMMA} felter{}Kapacitet: {CARGO_LONG}, {CARGO_LONG}{}Omkostninger: {CURRENCY_LONG}/år
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Pris: {CURRENCY_LONG} Max. Hastighed{VELOCITY}{}Fly type: {STRING} Rækkevidde: {COMMA} felter{}Kapacitet: {CARGO_LONG}{}Omkostninger: {CURRENCY_LONG}/år
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Udskift {STRING} - {STRING}
@@ -3555,6 +3571,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tryk for
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skift imellem lokomotiv- og vognudskiftningsvindue
 STR_REPLACE_ENGINES                                             :Lokomotiver
 STR_REPLACE_WAGONS                                              :Vogne
+STR_REPLACE_ALL_RAILTYPE                                        :Alle jernbanevogne
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vælg den skinne type, du ønsker at udskifte lokomotiver til
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Viser hvilket køretøj det valgte køretøj til venstre bliver udskiftet med, hvis det udskiftes
@@ -3647,6 +3664,8 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} år ({C
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} år ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. hast.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Max. hastighed: {LTBLUE}{VELOCITY} {BLACK}Fly type: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Max. hastighed: {LTBLUE}{VELOCITY} {BLACK}Fly type: {LTBLUE}{STRING} {BLACK}Rækkevidde: {LTBLUE}{COMMA} felter
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vægt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Effekt: {LTBLUE}{POWER}{BLACK} Maks. hast.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vægt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Effekt: {LTBLUE}{POWER}{BLACK} Maks. hast.: {LTBLUE}{VELOCITY} {BLACK}Maks. trækkraft: {LTBLUE}{FORCE}
 
