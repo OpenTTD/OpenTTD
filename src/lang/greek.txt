@@ -1479,6 +1479,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Απενεργ�
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Μετάβαση με αριστερό κλικ: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Ενεργοποίηση της κύλισης του χάρτη σύροντας τον με το αριστερό κουμπί του ποντικιού. Αυτό είναι ιδιαίτερα χρήσιμο για την κύλιση όταν χρησιμοποιείται οθόνη αφής
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Κλείσιμο παραθύρου με δεξί-κλικ: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Κλείνει το παράθυρο με δεξί πάτημα μέσα του. Απενεργοποιεί την ανάδυση επεξηγήσεων με το δεξί κουμπί!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Αυτόματο σώσιμο: {STRING}
