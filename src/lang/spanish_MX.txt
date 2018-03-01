@@ -1857,7 +1857,7 @@ STR_FACE_FEMALE_BUTTON                                          :{BLACK}Mujer
 STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Elegir cara femenina
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nueva cara
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Generar cara al azar
-STR_FACE_ADVANCED                                               :{BLACK}Avanzada
+STR_FACE_ADVANCED                                               :{BLACK}Avanzado
 STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Selección avanzada de caras
 STR_FACE_SIMPLE                                                 :{BLACK}Simple
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selección simple de caras
@@ -4493,7 +4493,7 @@ STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Edificio de ofi
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Conjunto habitacional pequeño
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Iglesia
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Complejo de oficinas
-STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Casas de pueblo
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Casas adosadas
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hotel
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Estatua
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Fuente
