@@ -186,7 +186,12 @@ void MusicDriver_DMusic::Stop()
 {
 	seeking = false;
 
-	if (performance != NULL) performance->Stop(NULL, NULL, 0, 0);
+	if (performance != NULL) {
+		performance->Stop(NULL, NULL, 0, 0);
+		/* necessary to sleep, otherwise note-off messages aren't always sent to the output device
+		 * and can leave notes hanging on external synths, in particular during game shutdown */
+		Sleep(100);
+	}
 
 	if (segment != NULL) {
 		segment->SetParam(GUID_Unload, 0xFFFFFFFF, 0, 0, performance);
