@@ -209,10 +209,6 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 	while (_midi.current_block < _midi.current_file.blocks.size()) {
 		MidiFile::DataBlock &block = _midi.current_file.blocks[_midi.current_block];
 
-		/* check that block is not in the future */
-		if (block.realtime / 1000 > playback_time) {
-			break;
-		}
 		/* check that block isn't at end-of-song override */
 		if (_midi.current_segment.end > 0 && block.ticktime >= _midi.current_segment.end) {
 			if (_midi.current_segment.loop) {
@@ -221,6 +217,10 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 			} else {
 				_midi.do_stop = true;
 			}
+			break;
+		}
+		/* check that block is not in the future */
+		if (block.realtime / 1000 > playback_time) {
 			break;
 		}
 
@@ -315,8 +315,8 @@ void MusicDriver_Win32::PlaySong(const MusicSongInfo &song)
 		return;
 	}
 
-	_midi.next_segment.start = 0;
-	_midi.next_segment.end = 0;
+	_midi.next_segment.start = song.override_start;
+	_midi.next_segment.end = song.override_end;
 	_midi.next_segment.loop = false;
 
 	DEBUG(driver, 2, "Win32-MIDI: PlaySong: setting flag");

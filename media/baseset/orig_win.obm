@@ -90,5 +90,17 @@ GM_TT19.GM = Funk Central
 GM_TT20.GM = Jammit
 GM_TT21.GM = Movin' On
 
+; MIDI timecodes where the playback should attemp to start and stop short.
+; This is to allow fixing undesired silences in original MIDI files.
+; However not all music drivers may support this.
+[timingtrim]
+; Theme has two beats silence at the beginning which prevents clean looping.
+GM_TT00.GM = 768:53760
+; Can't Get There From Here from the Windows version has a long silence at the end,
+; followed by a solo repeat. This isn't in the original DOS version music and is likely
+; unintentional from the people who converted the music from the DOS version.
+; Actual song ends after measure 152.
+GM_TT10.GM = 0:235008
+
 [origin]
 default      = You can find it on your Transport Tycoon Deluxe CD-ROM.

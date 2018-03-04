@@ -723,14 +723,6 @@ static void MidiThreadProc(void *)
 			while (current_block < current_file.blocks.size()) {
 				MidiFile::DataBlock &block = current_file.blocks[current_block];
 
-				/* check that block is not in the future */
-				REFERENCE_TIME playback_time = current_time - playback_start_time;
-				if (block.realtime * MIDITIME_TO_REFTIME > playback_time +  3 *_playback.preload_time * MS_TO_REFTIME) {
-					/* Stop the thread loop until we are at the preload time of the next block. */
-					next_timeout = Clamp(((int64)block.realtime * MIDITIME_TO_REFTIME - playback_time) / MS_TO_REFTIME - _playback.preload_time, 0, 1000);
-					DEBUG(driver, 9, "DMusic thread: Next event in %u ms (music %u, ref %lld)", next_timeout, block.realtime * MIDITIME_TO_REFTIME, playback_time);
-					break;
-				}
 				/* check that block isn't at end-of-song override */
 				if (current_segment.end > 0 && block.ticktime >= current_segment.end) {
 					if (current_segment.loop) {
@@ -741,6 +733,14 @@ static void MidiThreadProc(void *)
 						_playback.do_stop = true;
 					}
 					next_timeout = 0;
+					break;
+				}
+				/* check that block is not in the future */
+				REFERENCE_TIME playback_time = current_time - playback_start_time;
+				if (block.realtime * MIDITIME_TO_REFTIME > playback_time +  3 *_playback.preload_time * MS_TO_REFTIME) {
+					/* Stop the thread loop until we are at the preload time of the next block. */
+					next_timeout = Clamp(((int64)block.realtime * MIDITIME_TO_REFTIME - playback_time) / MS_TO_REFTIME - _playback.preload_time, 0, 1000);
+					DEBUG(driver, 9, "DMusic thread: Next event in %u ms (music %u, ref %lld)", next_timeout, block.realtime * MIDITIME_TO_REFTIME, playback_time);
 					break;
 				}
 
@@ -1232,8 +1232,8 @@ void MusicDriver_DMusic::PlaySong(const MusicSongInfo &song)
 
 	if (!_playback.next_file.LoadSong(song)) return;
 
-	_playback.next_segment.start = 0;
-	_playback.next_segment.end = 0;
+	_playback.next_segment.start = song.override_start;
+	_playback.next_segment.end = song.override_end;
 	_playback.next_segment.loop = false;
 
 	_playback.do_start = true;
