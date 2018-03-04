@@ -145,7 +145,7 @@ void MusicDriver_Cocoa::Stop()
  *
  * @param filename Path to a MIDI file.
  */
-void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
+void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song, bool loop)
 {
 	char *filename = MidiFile::GetSMFFile(song);
 

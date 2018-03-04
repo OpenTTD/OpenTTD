@@ -59,7 +59,7 @@ void MusicDriver_Allegro::Stop()
 	if (--_allegro_instance_count == 0) allegro_exit();
 }
 
-void MusicDriver_Allegro::PlaySong(const MusicSongInfo &song)
+void MusicDriver_Allegro::PlaySong(const MusicSongInfo &song, bool loop)
 {
 	char *filename = MidiFile::GetSMFFile(song);
 

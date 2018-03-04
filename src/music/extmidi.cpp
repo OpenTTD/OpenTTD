@@ -85,7 +85,7 @@ void MusicDriver_ExtMidi::Stop()
 	this->DoStop();
 }
 
-void MusicDriver_ExtMidi::PlaySong(const MusicSongInfo &song)
+void MusicDriver_ExtMidi::PlaySong(const MusicSongInfo &song, bool loop)
 {
 	char *filename = MidiFile::GetSMFFile(song);
 	if (filename != NULL) {

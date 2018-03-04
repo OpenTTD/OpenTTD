@@ -20,7 +20,7 @@ public:
 
 	/* virtual */ void Stop();
 
-	/* virtual */ void PlaySong(const MusicSongInfo &song);
+	/* virtual */ void PlaySong(const MusicSongInfo &song, bool loop = false);
 
 	/* virtual */ void StopSong();
 

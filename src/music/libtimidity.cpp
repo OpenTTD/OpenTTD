@@ -75,7 +75,7 @@ void MusicDriver_LibTimidity::Stop()
 	mid_exit();
 }
 
-void MusicDriver_LibTimidity::PlaySong(const MusicSongInfo &song)
+void MusicDriver_LibTimidity::PlaySong(const MusicSongInfo &song, bool loop)
 {
 	char *filename = MidiFile::GetSMFFile(song);
 

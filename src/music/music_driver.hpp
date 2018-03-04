@@ -23,7 +23,7 @@ public:
 	 * Play a particular song.
 	 * @param filename The name of file with the song to play.
 	 */
-	virtual void PlaySong(const MusicSongInfo &song) = 0;
+	virtual void PlaySong(const MusicSongInfo &song, bool loop = false) = 0;
 
 	/**
 	 * Stop playing the current song.

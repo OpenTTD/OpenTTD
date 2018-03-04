@@ -36,7 +36,7 @@ void MusicDriver_BeMidi::Stop()
 	midiSynthFile.UnloadFile();
 }
 
-void MusicDriver_BeMidi::PlaySong(const MusicSongInfo &song)
+void MusicDriver_BeMidi::PlaySong(const MusicSongInfo &song, bool loop)
 {
 	char *filename = MidiFile::GetSMFFile(song);
 

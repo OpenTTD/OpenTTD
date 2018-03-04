@@ -284,7 +284,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 	}
 }
 
-void MusicDriver_Win32::PlaySong(const MusicSongInfo &song)
+void MusicDriver_Win32::PlaySong(const MusicSongInfo &song, bool loop)
 {
 	DEBUG(driver, 2, "Win32-MIDI: PlaySong: entry");
 	EnterCriticalSection(&_midi.lock);
@@ -301,9 +301,9 @@ void MusicDriver_Win32::PlaySong(const MusicSongInfo &song)
 		NOT_REACHED();
 	}
 
-	_midi.next_segment.start = 0;
-	_midi.next_segment.end = 0;
-	_midi.next_segment.loop = false;
+	_midi.next_segment.start = song.override_start;
+	_midi.next_segment.end = song.override_end;
+	_midi.next_segment.loop = loop;
 
 	DEBUG(driver, 2, "Win32-MIDI: PlaySong: setting flag");
 	_midi.do_stop = _midi.playing;

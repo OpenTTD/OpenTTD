@@ -260,7 +260,7 @@ void MusicDriver_QtMidi::Stop()
  *
  * @param filename Path to a MIDI file.
  */
-void MusicDriver_QtMidi::PlaySong(const MusicSongInfo &song)
+void MusicDriver_QtMidi::PlaySong(const MusicSongInfo &song, bool loop)
 {
 	if (!_quicktime_started) return;
 

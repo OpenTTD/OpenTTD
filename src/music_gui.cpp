@@ -187,12 +187,18 @@ static void MusicVolumeChanged(byte new_vol)
 static void DoPlaySong()
 {
 	char filename[MAX_PATH];
-	MusicSongInfo songinfo = BaseMusic::GetUsedSet()->songinfo[_music_wnd_cursong - 1]; // copy
-	if (FioFindFullPath(filename, lastof(filename), BASESET_DIR, songinfo.filename) == NULL) {
-		FioFindFullPath(filename, lastof(filename), OLD_GM_DIR, songinfo.filename);
+	int songid = _music_wnd_cursong - 1;
+	const MusicSet &set = *BaseMusic::GetUsedSet();
+	if (FioFindFullPath(filename, lastof(filename), BASESET_DIR, set.files[songid].filename) == NULL) {
+		FioFindFullPath(filename, lastof(filename), OLD_GM_DIR, set.files[songid].filename);
 	}
+	bool loop = false;
+	if (_music_wnd_cursong == 1 && _game_mode == GM_MENU) {
+		loop = true;
+	}
+	MusicSongInfo songinfo = set.songinfo[songid]; // copy
 	songinfo.filename = filename; // non-owned pointer
-	MusicDriver::GetInstance()->PlaySong(songinfo);
+	MusicDriver::GetInstance()->PlaySong(songinfo, loop);
 	SetWindowDirty(WC_MUSIC_WINDOW, 0);
 }
 
