@@ -301,6 +301,8 @@ struct MusicSongInfo {
 	const char *filename;
 	MusicTrackType filetype;
 	int cat_index;
+	int override_start;
+	int override_end;
 };
 
 /** All data of a music set. */

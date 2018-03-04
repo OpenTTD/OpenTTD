@@ -286,8 +286,6 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 
 void MusicDriver_Win32::PlaySong(const MusicSongInfo &song)
 {
-	if (song.filetype != MTT_STANDARDMIDI) return;
-
 	DEBUG(driver, 2, "Win32-MIDI: PlaySong: entry");
 	EnterCriticalSection(&_midi.lock);
 
