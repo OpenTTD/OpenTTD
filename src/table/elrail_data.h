@@ -310,10 +310,10 @@ enum WireSpriteOffset {
 	WSO_X_NE_UP,
 	WSO_Y_NW_DOWN,
 
-	WSO_ENTRANCE_NE,
-	WSO_ENTRANCE_SE,
 	WSO_ENTRANCE_SW,
 	WSO_ENTRANCE_NW,
+	WSO_ENTRANCE_NE,
+	WSO_ENTRANCE_SE,
 };
 
 struct SortableSpriteStruct {
@@ -400,10 +400,10 @@ static const SortableSpriteStruct RailCatenarySpriteData_Depot[] = {
 };
 
 static const SortableSpriteStruct RailCatenarySpriteData_Tunnel[] = {
-	{ WSO_ENTRANCE_NE,   0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for NE tunnel exit
-	{ WSO_ENTRANCE_SE,   7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //! Wire for SE tunnel exit
-	{ WSO_ENTRANCE_SW,   0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for SW tunnel exit
-	{ WSO_ENTRANCE_NW,   7,  0,  1, 15,  1, ELRAIL_ELEVATION }  //! Wire for NW tunnel exit
+	{ WSO_ENTRANCE_SW,   0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for NE tunnel (SW facing exit)
+	{ WSO_ENTRANCE_NW,   7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //! Wire for SE tunnel (NW facing exit)
+	{ WSO_ENTRANCE_NE,   0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for SW tunnel (NE facing exit)
+	{ WSO_ENTRANCE_SE,   7,  0,  1, 15,  1, ELRAIL_ELEVATION }  //! Wire for NW tunnel (SE facing exit)
 };
 
 
