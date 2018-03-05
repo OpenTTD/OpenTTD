@@ -308,6 +308,7 @@ struct MusicSet : BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false> {
 	/** The name of the different songs. */
 	MusicSongInfo songinfo[NUM_SONGS_AVAILABLE];
 	byte num_available;
+	bool has_theme;
 
 	bool FillSetDetails(struct IniFile *ini, const char *path, const char *full_filename);
 };

@@ -123,6 +123,8 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 	bool ret = this->BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false>::FillSetDetails(ini, path, full_filename);
 	if (ret) {
 		this->num_available = 0;
+		this->has_theme = !StrEmpty(this->files[0].filename);
+
 		IniGroup *names = ini->GetGroup("names");
 		IniGroup *catindex = ini->GetGroup("catindex");
 		for (uint i = 0, j = 1; i < lengthof(this->songinfo); i++) {

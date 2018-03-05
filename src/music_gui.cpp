@@ -251,6 +251,16 @@ static void StopMusic()
 /** Begin playing the next song on the playlist */
 static void PlayPlaylistSong()
 {
+	if (_game_mode == GM_MENU && BaseMusic::GetUsedSet()->has_theme) {
+		/* force first song (theme) on the main menu.
+		 * this is guaranteed to exist, otherwise
+		 * has_theme would not be set. */
+		_music_wnd_cursong = 1;
+		DoPlaySong();
+		_song_is_active = true;
+		return;
+	}
+
 	if (_cur_playlist[0] == 0) {
 		ResetPlaylist();
 		/* if there is not songs in the playlist, it may indicate
@@ -282,6 +292,13 @@ void ResetMusic()
  */
 void MusicLoop()
 {
+	static GameMode _last_game_mode = GM_BOOTSTRAP;
+	bool force_restart = false;
+	if (_game_mode != _last_game_mode) {
+		force_restart = true;
+		_last_game_mode = _game_mode;
+	}
+
 	if (!_settings_client.music.playing && _song_is_active) {
 		StopMusic();
 	} else if (_settings_client.music.playing && !_song_is_active) {
@@ -290,13 +307,13 @@ void MusicLoop()
 
 	if (!_song_is_active) return;
 
-	if (!MusicDriver::GetInstance()->IsSongPlaying()) {
-		if (_game_mode != GM_MENU) {
+	if (force_restart || !MusicDriver::GetInstance()->IsSongPlaying()) {
+		if (_game_mode == GM_MENU && BaseMusic::GetUsedSet()->has_theme) {
+			ResetMusic();
+		} else {
 			StopMusic();
 			SkipToNextSong();
 			PlayPlaylistSong();
-		} else {
-			ResetMusic();
 		}
 	}
 }
