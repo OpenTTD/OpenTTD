@@ -113,6 +113,7 @@ void InitializeMusic()
 	uint j = 0;
 	for (uint i = 0; i < NUM_SONGS_AVAILABLE; i++) {
 		if (StrEmpty(GetSongName(i))) continue;
+		if (i == 0 && BaseMusic::GetUsedSet()->has_theme) continue;
 		_playlist_all[j++] = i + 1;
 	}
 	/* Terminate the list */

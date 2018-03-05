@@ -125,9 +125,11 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 		this->num_available = 0;
 		this->has_theme = !StrEmpty(this->files[0].filename);
 
+		uint next_track_nr = 1;
+
 		IniGroup *names = ini->GetGroup("names");
 		IniGroup *catindex = ini->GetGroup("catindex");
-		for (uint i = 0, j = 1; i < lengthof(this->songinfo); i++) {
+		for (uint i = 0; i < lengthof(this->songinfo); i++) {
 			const char *filename = this->files[i].filename;
 			if (names == NULL || StrEmpty(filename)) {
 				this->songinfo[i].songname[0] = '\0';
@@ -174,7 +176,7 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 			}
 			this->num_available++;
 
-			this->songinfo[i].tracknr = j++;
+			this->songinfo[i].tracknr = (i==0 && this->has_theme) ? 0 : next_track_nr++;
 		}
 	}
 	return ret;
