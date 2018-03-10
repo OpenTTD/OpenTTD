@@ -1460,6 +1460,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\music\midi.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\music\midifile.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\music\null_m.h"
 				>
 			</File>
@@ -4453,6 +4461,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\music\null_m.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\music\midifile.cpp"
 				>
 			</File>
 			<File
