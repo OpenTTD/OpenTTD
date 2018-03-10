@@ -864,6 +864,9 @@
     <ClInclude Include="..\src\news_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\music\midifile.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\music\null_m.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -3025,6 +3028,9 @@
       <Filter>Music</Filter>
     </ClCompile>
     <ClCompile Include="..\src\music\null_m.cpp">
+      <Filter>Music</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\music\midifile.cpp">
       <Filter>Music</Filter>
     </ClCompile>
     <ClCompile Include="..\src\music\win32_m.cpp">

@@ -281,6 +281,7 @@ newgrf_townname.h
 news_func.h
 news_gui.h
 news_type.h
+music/midifile.hpp
 music/null_m.h
 sound/null_s.h
 video/null_v.h
@@ -1098,6 +1099,7 @@ video/null_v.cpp
 #end
 #end
 music/null_m.cpp
+music/midifile.cpp
 #if DEDICATED
 #else
 #if WIN32

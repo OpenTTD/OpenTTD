@@ -569,6 +569,7 @@
     <ClInclude Include="..\src\news_func.h" />
     <ClInclude Include="..\src\news_gui.h" />
     <ClInclude Include="..\src\news_type.h" />
+    <ClInclude Include="..\src\music\midifile.hpp" />
     <ClInclude Include="..\src\music\null_m.h" />
     <ClInclude Include="..\src\sound\null_s.h" />
     <ClInclude Include="..\src\video\null_v.h" />
@@ -1290,6 +1291,7 @@
     <ClCompile Include="..\src\video\win32_v.cpp" />
     <ClCompile Include="..\src\music\dmusic.cpp" />
     <ClCompile Include="..\src\music\null_m.cpp" />
+    <ClCompile Include="..\src\music\midifile.cpp" />
     <ClCompile Include="..\src\music\win32_m.cpp" />
     <ClCompile Include="..\src\sound\null_s.cpp" />
     <ClCompile Include="..\src\sound\sdl_s.cpp" />
