@@ -29,6 +29,7 @@ docs/source/*
 media/openttd.desktop
 media/openttd.desktop.install
 objs/*
+projects/.vs
 projects/Debug
 projects/Release
 projects/*.ncb
