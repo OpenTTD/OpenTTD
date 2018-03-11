@@ -18,8 +18,8 @@ static const uint TILE_PIXELS         = 32;                    ///< Pixel distan
 static const uint TILE_HEIGHT         =  8;                    ///< Height of a height level in world coordinate AND in pixels in #ZOOM_LVL_BASE.
 
 static const uint MAX_BUILDING_PIXELS = 200;                   ///< Maximum height of a building in pixels in #ZOOM_LVL_BASE. (Also applies to "bridge buildings" on the bridge floor.)
-static const int MAX_VEHICLE_PIXEL_X  = 70;                    ///< Maximum width of a vehicle in pixels in #ZOOM_LVL_BASE.
-static const int MAX_VEHICLE_PIXEL_Y  = 70;                    ///< Maximum height of a vehicle in pixels in #ZOOM_LVL_BASE.
+static const int MAX_VEHICLE_PIXEL_X  = 192;                   ///< Maximum width of a vehicle in pixels in #ZOOM_LVL_BASE.
+static const int MAX_VEHICLE_PIXEL_Y  = 96;                    ///< Maximum height of a vehicle in pixels in #ZOOM_LVL_BASE.
 
 static const uint MAX_TILE_HEIGHT     = 255;                   ///< Maximum allowed tile height
 
