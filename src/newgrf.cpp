@@ -4698,6 +4698,8 @@ static void NewSpriteGroup(ByteReader *buf)
 
 			group->default_group = GetGroupFromGroupID(setid, type, buf->ReadWord());
 			group->error_group = ranges.size() > 0 ? ranges[0].group : group->default_group;
+			/* nvar == 0 is a special case -- we turn our value into a callback result */
+			group->calculated_result = ranges.size() == 0;
 
 			/* Sort ranges ascending. When ranges overlap, this may required clamping or splitting them */
 			std::vector<uint32> bounds;
@@ -4711,10 +4713,11 @@ static void NewSpriteGroup(ByteReader *buf)
 			std::vector<const SpriteGroup *> target;
 			for (uint j = 0; j < bounds.size(); ++j) {
 				uint32 v = bounds[j];
-				const SpriteGroup *t = NULL;
+				const SpriteGroup *t = group->default_group;
 				for (uint i = 0; i < ranges.size(); i++) {
 					if (ranges[i].low <= v && v <= ranges[i].high) {
 						t = ranges[i].group;
+						break;
 					}
 				}
 				target.push_back(t);
@@ -4723,7 +4726,7 @@ static void NewSpriteGroup(ByteReader *buf)
 
 			std::vector<DeterministicSpriteGroupRange> optimised;
 			for (uint j = 0; j < bounds.size(); ) {
-				if (target[j]) {
+				if (target[j] != group->default_group) {
 					DeterministicSpriteGroupRange r;
 					r.group = target[j];
 					r.low = bounds[j];

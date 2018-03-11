@@ -174,7 +174,8 @@ struct DeterministicSpriteGroup : SpriteGroup {
 	VarSpriteGroupScope var_scope;
 	DeterministicSpriteGroupSize size;
 	uint num_adjusts;
-	byte num_ranges;
+	uint num_ranges;
+	bool calculated_result;
 	DeterministicSpriteGroupAdjust *adjusts;
 	DeterministicSpriteGroupRange *ranges; // Dynamically allocated
 
