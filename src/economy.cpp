@@ -654,12 +654,16 @@ static void CompanyCheckBankrupt(Company *c)
  */
 static void CompaniesGenStatistics()
 {
-	Station *st;
+	/* Check for bankruptcy each month */
+	Company *c;
+	FOR_ALL_COMPANIES(c) {
+		CompanyCheckBankrupt(c);
+	}
 
 	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
-	Company *c;
 
 	if (!_settings_game.economy.infrastructure_maintenance) {
+		Station *st;
 		FOR_ALL_STATIONS(st) {
 			cur_company.Change(st->owner);
 			CommandCost cost(EXPENSES_PROPERTY, _price[PR_STATION_VALUE] >> 1);
@@ -687,11 +691,6 @@ static void CompaniesGenStatistics()
 		}
 	}
 	cur_company.Restore();
-
-	/* Check for bankruptcy each month */
-	FOR_ALL_COMPANIES(c) {
-		CompanyCheckBankrupt(c);
-	}
 
 	/* Only run the economic statics and update company stats every 3rd month (1st of quarter). */
 	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, _cur_month)) return;
