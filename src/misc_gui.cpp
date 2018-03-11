@@ -397,6 +397,7 @@ static const char * const _credits[] = {
 	"Original graphics by Simon Foster",
 	"",
 	"The OpenTTD team (in alphabetical order):",
+	"  Grzegorz Duczy\xC5\x84ski (adf88) - General coding (since 1.7.2)",
 	"  Albert Hofkamp (Alberth) - GUI expert (since 0.7)",
 	"  Matthijs Kooijman (blathijs) - Pathfinder-guru, Debian port (since 0.3)",
 	"  Ulf Hermann (fonsinchen) - Cargo Distribution (since 1.3)",

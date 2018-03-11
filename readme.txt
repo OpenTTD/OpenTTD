@@ -680,6 +680,7 @@ http://homer.rice.edu/~sandmann/cwsdpmi/csdpmi5s.zip
 X.X) Credits
 ---- -------
 The OpenTTD team (in alphabetical order):
+  Grzegorz Duczyński (adf88)      - General coding (since 1.7.2)
   Albert Hofkamp (Alberth)        - GUI expert (since 0.7)
   Matthijs Kooijman (blathijs)    - Pathfinder-guru, Debian port (since 0.3)
   Ulf Hermann (fonsinchen)        - Cargo Distribution (since 1.3)
