@@ -78,6 +78,7 @@
 #include "chars_orig_extra.nfo"
 #include "shore.nfo"
 #include "fix_graphics.nfo"
+#include "airports_orig_extra.nfo"
 #include "canals_extra.nfo"
 #include "rivers/rapids.nfo"
 #include "rivers/temperate.nfo"
