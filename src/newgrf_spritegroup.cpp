@@ -60,11 +60,7 @@ RandomizedSpriteGroup::~RandomizedSpriteGroup()
 
 static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *scope, byte variable, uint32 parameter, bool *available)
 {
-	/* First handle variables common with Action7/9/D */
 	uint32 value;
-	if (GetGlobalVariable(variable, &value, object.grffile)) return value;
-
-	/* Non-common variable */
 	switch (variable) {
 		case 0x0C: return object.callback;
 		case 0x10: return object.callback_param1;
@@ -79,8 +75,11 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
 			if (object.grffile == NULL) return 0;
 			return object.grffile->GetParam(parameter);
 
-		/* Not a common variable, so evaluate the feature specific variables */
-		default: return scope->GetVariable(variable, parameter, available);
+		default:
+			/* First handle variables common with Action7/9/D */
+			if (variable < 0x40 && GetGlobalVariable(variable, &value, object.grffile)) return value;
+			/* Not a common variable, so evaluate the feature specific variables */
+			return scope->GetVariable(variable, parameter, available);
 	}
 }
 
