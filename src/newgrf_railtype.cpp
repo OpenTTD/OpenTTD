@@ -68,18 +68,6 @@
 }
 
 /**
- * Constructor of the railtype scope resolvers.
- * @param ro Surrounding resolver.
- * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
- * @param context Are we resolving sprites for the upper halftile, or on a bridge?
- */
-RailTypeScopeResolver::RailTypeScopeResolver(ResolverObject &ro, TileIndex tile, TileContext context) : ScopeResolver(ro)
-{
-	this->tile = tile;
-	this->context = context;
-}
-
-/**
  * Resolver object for rail types.
  * @param rti Railtype. NULL in NewGRF Inspect window.
  * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.

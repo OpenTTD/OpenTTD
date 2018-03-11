@@ -17,6 +17,7 @@
 #include "newgrf_animation_type.h"
 #include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
+#include "station_base.h"
 
 /** Scope resolver for handling the tiles of an airport. */
 struct AirportTileScopeResolver : public ScopeResolver {
@@ -24,7 +25,18 @@ struct AirportTileScopeResolver : public ScopeResolver {
 	byte airport_id;     ///< Type of airport for which the callback is run.
 	TileIndex tile;      ///< Tile for the callback, only valid for airporttile callbacks.
 
-	AirportTileScopeResolver(ResolverObject &ro, const AirportTileSpec *ats, TileIndex tile, Station *st);
+	/**
+	 * Constructor of the scope resolver specific for airport tiles.
+	 * @param ats Specification of the airport tiles.
+	 * @param tile %Tile for the callback, only valid for airporttile callbacks.
+	 * @param st Station of the airport for which the callback is run, or \c NULL for build gui.
+	 */
+	AirportTileScopeResolver(ResolverObject &ro, const AirportTileSpec *ats, TileIndex tile, Station *st)
+		: ScopeResolver(ro), st(st), tile(tile)
+	{
+		assert(st != NULL);
+		this->airport_id = st->airport.type;
+	}
 
 	/* virtual */ uint32 GetRandomBits() const;
 	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;

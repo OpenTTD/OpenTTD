@@ -146,18 +146,6 @@ IndustryTileResolverObject::IndustryTileResolverObject(IndustryGfx gfx, TileInde
 	this->root_spritegroup = GetIndustryTileSpec(gfx)->grf_prop.spritegroup[0];
 }
 
-/**
- * Constructor of the scope resolver for the industry tile.
- * @param ro Surrounding resolver.
- * @param industry %Industry owning the tile.
- * @param tile %Tile of the industry.
- */
-IndustryTileScopeResolver::IndustryTileScopeResolver(ResolverObject &ro, Industry *industry, TileIndex tile) : ScopeResolver(ro)
-{
-	this->industry = industry;
-	this->tile = tile;
-}
-
 static void IndustryDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte rnd_colour, byte stage, IndustryGfx gfx)
 {
 	const DrawTileSprites *dts = group->ProcessRegisters(&stage);

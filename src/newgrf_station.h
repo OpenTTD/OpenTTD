@@ -30,7 +30,17 @@ struct StationScopeResolver : public ScopeResolver {
 	CargoID cargo_type;                 ///< Type of cargo of the station.
 	Axis axis;                          ///< Station axis, used only for the slope check callback.
 
-	StationScopeResolver(ResolverObject &ro, const StationSpec *statspec, BaseStation *st, TileIndex tile);
+	/**
+	 * Constructor for station scopes.
+	 * @param ro Surrounding resolver.
+	 * @param statspec Station (type) specification.
+	 * @param st Instance of the station.
+	 * @param tile %Tile of the station.
+	 */
+	StationScopeResolver(ResolverObject &ro, const StationSpec *statspec, BaseStation *st, TileIndex tile)
+		: ScopeResolver(ro), tile(tile), st(st), statspec(statspec), cargo_type(CT_INVALID), axis(INVALID_AXIS)
+	{
+	}
 
 	/* virtual */ uint32 GetRandomBits() const;
 	/* virtual */ uint32 GetTriggers() const;

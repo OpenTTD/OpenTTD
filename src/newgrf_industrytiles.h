@@ -21,7 +21,16 @@ struct IndustryTileScopeResolver : public ScopeResolver {
 	Industry *industry; ///< Industry owning the tiles.
 	TileIndex tile;     ///< %Tile being resolved.
 
-	IndustryTileScopeResolver(ResolverObject &ro, Industry *industry, TileIndex tile);
+	/**
+	 * Constructor of the scope resolver for the industry tile.
+	 * @param ro Surrounding resolver.
+	 * @param industry %Industry owning the tile.
+	 * @param tile %Tile of the industry.
+	 */
+	IndustryTileScopeResolver(ResolverObject &ro, Industry *industry, TileIndex tile)
+		: ScopeResolver(ro), industry(industry), tile(tile)
+	{
+	}
 
 	/* virtual */ uint32 GetRandomBits() const;
 	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;

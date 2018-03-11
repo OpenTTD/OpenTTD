@@ -21,7 +21,18 @@ struct IndustriesScopeResolver : public ScopeResolver {
 	IndustryType type;  ///< Type of the industry.
 	uint32 random_bits; ///< Random bits of the new industry.
 
-	IndustriesScopeResolver(ResolverObject &ro, TileIndex tile, Industry *industry, IndustryType type, uint32 random_bits = 0);
+	/**
+	 * Scope resolver for industries.
+	 * @param ro Surrounding resolver.
+	 * @param tile %Tile owned by the industry.
+	 * @param industry %Industry being resolved.
+	 * @param type Type of the industry.
+	 * @param random_bits Random bits of the new industry.
+	 */
+	IndustriesScopeResolver(ResolverObject &ro, TileIndex tile, Industry *industry, IndustryType type, uint32 random_bits = 0)
+		: ScopeResolver(ro), tile(tile), industry(industry), type(type), random_bits(random_bits)
+	{
+	}
 
 	/* virtual */ uint32 GetRandomBits() const;
 	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;

@@ -31,7 +31,16 @@ struct GenericScopeResolver : public ScopeResolver {
 	uint8 count;
 	uint8 station_size;
 
-	GenericScopeResolver(ResolverObject &ro, bool ai_callback);
+	/**
+	 * Generic scope resolver.
+	 * @param ro Surrounding resolver.
+	 * @param ai_callback Callback comes from the AI.
+	 */
+	GenericScopeResolver(ResolverObject &ro, bool ai_callback)
+		: ScopeResolver(ro), cargo_type(0), default_selection(0), src_industry(0), dst_industry(0), distance(0),
+		event(), count(0), station_size(0), ai_callback(ai_callback)
+	{
+	}
 
 	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
 
@@ -143,24 +152,6 @@ void AddGenericCallback(uint8 feature, const GRFFile *file, const SpriteGroup *g
  */
 GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callback) : ResolverObject(NULL, callback), generic_scope(*this, ai_callback)
 {
-}
-
-/**
- * Generic scope resolver.
- * @param ro Surrounding resolver.
- * @param ai_callback Callback comes from the AI.
- */
-GenericScopeResolver::GenericScopeResolver(ResolverObject &ro, bool ai_callback) : ScopeResolver(ro)
-{
-	this->cargo_type = 0;
-	this->default_selection = 0;
-	this->src_industry = 0;
-	this->dst_industry = 0;
-	this->distance = 0;
-	this->event = (AIConstructionEvent)0;
-	this->count = 0;
-	this->station_size = 0;
-	this->ai_callback = ai_callback;
 }
 
 

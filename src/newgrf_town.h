@@ -25,7 +25,16 @@ struct TownScopeResolver : public ScopeResolver {
 	Town *t;       ///< %Town of the scope.
 	bool readonly; ///< When set, persistent storage of the town is read-only,
 
-	TownScopeResolver(ResolverObject &ro, Town *t, bool readonly);
+	/**
+	 * Resolver of a town scope.
+	 * @param ro Surrounding resolver.
+	 * @param t %Town of the scope.
+	 * @param readonly Scope may change persistent storage of the town.
+	 */
+	TownScopeResolver(ResolverObject &ro, Town *t, bool readonly)
+		: ScopeResolver(ro), t(t), readonly(readonly)
+	{
+	}
 
 	virtual uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
 	virtual void StorePSA(uint reg, int32 value);

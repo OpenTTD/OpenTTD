@@ -579,23 +579,6 @@ StationResolverObject::~StationResolverObject()
 }
 
 /**
- * Constructor for station scopes.
- * @param ro Surrounding resolver.
- * @param statspec Station (type) specification.
- * @param st Instance of the station.
- * @param tile %Tile of the station.
- */
-StationScopeResolver::StationScopeResolver(ResolverObject &ro, const StationSpec *statspec, BaseStation *st, TileIndex tile)
-	: ScopeResolver(ro)
-{
-	this->tile = tile;
-	this->st = st;
-	this->statspec = statspec;
-	this->cargo_type = CT_INVALID;
-	this->axis = INVALID_AXIS;
-}
-
-/**
  * Resolve sprites for drawing a station tile.
  * @param statspec Station spec
  * @param st Station (NULL in GUI)

@@ -27,8 +27,22 @@ struct HouseScopeResolver : public ScopeResolver {
 	uint16 initial_random_bits;    ///< Random bits during construction checks.
 	uint32 watched_cargo_triggers; ///< Cargo types that triggered the watched cargo callback.
 
+	/**
+	 * Constructor of a house scope resolver.
+	 * @param ro Surrounding resolver.
+	 * @param house_id House type being queried.
+	 * @param tile %Tile containing the house.
+	 * @param town %Town containing the house.
+	 * @param not_yet_constructed House is still under construction.
+	 * @param initial_random_bits Random bits during construction checks.
+	 * @param watched_cargo_triggers Cargo types that triggered the watched cargo callback.
+	 */
 	HouseScopeResolver(ResolverObject &ro, HouseID house_id, TileIndex tile, Town *town,
-			bool not_yet_constructed, uint8 initial_random_bits, uint32 watched_cargo_triggers);
+			bool not_yet_constructed, uint8 initial_random_bits, uint32 watched_cargo_triggers)
+		: ScopeResolver(ro), house_id(house_id), tile(tile), town(town), not_yet_constructed(not_yet_constructed),
+		initial_random_bits(initial_random_bits), watched_cargo_triggers(watched_cargo_triggers)
+	{
+	}
 
 	/* virtual */ uint32 GetRandomBits() const;
 	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;

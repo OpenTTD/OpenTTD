@@ -83,13 +83,6 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
 	}
 }
 
-ScopeResolver::ScopeResolver(ResolverObject &ro)
-		: ro(ro)
-{
-}
-
-ScopeResolver::~ScopeResolver() {}
-
 /**
  * Get a few random bits. Default implementation has no random bits.
  * @return Random bits.
@@ -128,27 +121,6 @@ ScopeResolver::~ScopeResolver() {}
  * @param value Value to store.
  */
 /* virtual */ void ScopeResolver::StorePSA(uint reg, int32 value) {}
-
-/**
- * Resolver constructor.
- * @param grffile NewGRF file associated with the object (or \c NULL if none).
- * @param callback Callback code being resolved (default value is #CBID_NO_CALLBACK).
- * @param callback_param1 First parameter (var 10) of the callback (only used when \a callback is also set).
- * @param callback_param2 Second parameter (var 18) of the callback (only used when \a callback is also set).
- */
-ResolverObject::ResolverObject(const GRFFile *grffile, CallbackID callback, uint32 callback_param1, uint32 callback_param2)
-		: default_scope(*this)
-{
-	this->callback = callback;
-	this->callback_param1 = callback_param1;
-	this->callback_param2 = callback_param2;
-	this->ResetState();
-
-	this->grffile = grffile;
-	this->root_spritegroup = NULL;
-}
-
-ResolverObject::~ResolverObject() {}
 
 /**
  * Get the real sprites of the grf.

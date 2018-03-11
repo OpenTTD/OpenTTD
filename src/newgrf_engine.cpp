@@ -938,21 +938,6 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 }
 
 /**
- * Scope resolver of a single vehicle.
- * @param ro Surrounding resolver.
- * @param engine_type Engine type
- * @param v %Vehicle being resolved.
- * @param info_view Indicates if the item is being drawn in an info window.
- */
-VehicleScopeResolver::VehicleScopeResolver(ResolverObject &ro, EngineID engine_type, const Vehicle *v, bool info_view)
-		: ScopeResolver(ro)
-{
-	this->v = v;
-	this->self_type = engine_type;
-	this->info_view = info_view;
-}
-
-/**
  * Get the grf file associated with an engine type.
  * @param engine_type Engine to query.
  * @return grf file associated with the engine.

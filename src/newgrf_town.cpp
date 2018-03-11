@@ -16,18 +16,6 @@
 
 #include "safeguards.h"
 
-/**
- * Resolver of a town scope.
- * @param ro Surrounding resolver.
- * @param t %Town of the scope.
- * @param readonly Scope may change persistent storage of the town.
- */
-TownScopeResolver::TownScopeResolver(ResolverObject &ro, Town *t, bool readonly) : ScopeResolver(ro)
-{
-	this->t = t;
-	this->readonly = readonly;
-}
-
 /* virtual */ uint32 TownScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
 {
 	switch (variable) {

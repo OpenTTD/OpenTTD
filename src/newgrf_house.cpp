@@ -32,28 +32,6 @@ static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];
 HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, NUM_HOUSES, INVALID_HOUSE_ID);
 
 /**
- * Constructor of a house scope resolver.
- * @param ro Surrounding resolver.
- * @param house_id House type being queried.
- * @param tile %Tile containing the house.
- * @param town %Town containing the house.
- * @param not_yet_constructed House is still under construction.
- * @param initial_random_bits Random bits during construction checks.
- * @param watched_cargo_triggers Cargo types that triggered the watched cargo callback.
- */
-HouseScopeResolver::HouseScopeResolver(ResolverObject &ro, HouseID house_id, TileIndex tile, Town *town,
-			bool not_yet_constructed, uint8 initial_random_bits, uint32 watched_cargo_triggers)
-		: ScopeResolver(ro)
-{
-	this->house_id = house_id;
-	this->tile = tile;
-	this->town = town;
-	this->not_yet_constructed = not_yet_constructed;
-	this->initial_random_bits = initial_random_bits;
-	this->watched_cargo_triggers = watched_cargo_triggers;
-}
-
-/**
  * Retrieve the grf file associated with a house.
  * @param house_id House to query.
  * @return The associated GRF file (may be \c NULL).

@@ -458,23 +458,6 @@ TownScopeResolver *IndustriesResolverObject::GetTown()
 }
 
 /**
- * Scope resolver for industries.
- * @param ro Surrounding resolver.
- * @param tile %Tile owned by the industry.
- * @param industry %Industry being resolved.
- * @param type Type of the industry.
- * @param random_bits Random bits of the new industry.
- */
-IndustriesScopeResolver::IndustriesScopeResolver(ResolverObject &ro, TileIndex tile, Industry *industry, IndustryType type, uint32 random_bits)
-	: ScopeResolver(ro)
-{
-	this->tile = tile;
-	this->industry = industry;
-	this->type = type;
-	this->random_bits = random_bits;
-}
-
-/**
  * Perform an industry callback.
  * @param callback The callback to perform.
  * @param param1 The first parameter.
