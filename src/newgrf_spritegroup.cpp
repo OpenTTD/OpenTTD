@@ -10,6 +10,7 @@
 /** @file newgrf_spritegroup.cpp Handling of primarily NewGRF action 2. */
 
 #include "stdafx.h"
+#include <algorithm>
 #include "debug.h"
 #include "newgrf_spritegroup.h"
 #include "core/pool_func.hpp"
@@ -201,6 +202,11 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ScopeResolver
 }
 
 
+static bool RangeHighComparator(const DeterministicSpriteGroupRange& range, uint32 value)
+{
+	return range.high < value;
+}
+
 const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) const
 {
 	uint32 last_value = 0;
@@ -232,7 +238,7 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 		if (!available) {
 			/* Unsupported variable: skip further processing and return either
 			 * the group from the first range or the default group. */
-			return SpriteGroup::Resolve(this->num_ranges > 0 ? this->ranges[0].group : this->default_group, object, false);
+			return SpriteGroup::Resolve(this->error_group, object, false);
 		}
 
 		switch (this->size) {
@@ -254,9 +260,17 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 		return &nvarzero;
 	}
 
-	for (i = 0; i < this->num_ranges; i++) {
-		if (this->ranges[i].low <= value && value <= this->ranges[i].high) {
-			return SpriteGroup::Resolve(this->ranges[i].group, object, false);
+	if (this->num_ranges > 4) {
+		DeterministicSpriteGroupRange *lower = std::lower_bound(this->ranges + 0, this->ranges + this->num_ranges, value, RangeHighComparator);
+		if (lower != this->ranges + this->num_ranges && lower->low <= value) {
+			assert(lower->low <= value && value <= lower->high);
+			return SpriteGroup::Resolve(lower->group, object, false);
+		}
+	} else {
+		for (i = 0; i < this->num_ranges; i++) {
+			if (this->ranges[i].low <= value && value <= this->ranges[i].high) {
+				return SpriteGroup::Resolve(this->ranges[i].group, object, false);
+			}
 		}
 	}
 

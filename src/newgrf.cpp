@@ -12,6 +12,7 @@
 #include "stdafx.h"
 
 #include <stdarg.h>
+#include <algorithm>
 
 #include "debug.h"
 #include "fileio_func.h"
@@ -4687,16 +4688,60 @@ static void NewSpriteGroup(ByteReader *buf)
 			group->adjusts = MallocT<DeterministicSpriteGroupAdjust>(group->num_adjusts);
 			MemCpyT(group->adjusts, adjusts.Begin(), group->num_adjusts);
 
-			group->num_ranges = buf->ReadByte();
-			if (group->num_ranges > 0) group->ranges = CallocT<DeterministicSpriteGroupRange>(group->num_ranges);
-
-			for (uint i = 0; i < group->num_ranges; i++) {
-				group->ranges[i].group = GetGroupFromGroupID(setid, type, buf->ReadWord());
-				group->ranges[i].low   = buf->ReadVarSize(varsize);
-				group->ranges[i].high  = buf->ReadVarSize(varsize);
+			std::vector<DeterministicSpriteGroupRange> ranges;
+			ranges.resize(buf->ReadByte());
+			for (uint i = 0; i < ranges.size(); i++) {
+				ranges[i].group = GetGroupFromGroupID(setid, type, buf->ReadWord());
+				ranges[i].low   = buf->ReadVarSize(varsize);
+				ranges[i].high  = buf->ReadVarSize(varsize);
 			}
 
 			group->default_group = GetGroupFromGroupID(setid, type, buf->ReadWord());
+			group->error_group = ranges.size() > 0 ? ranges[0].group : group->default_group;
+
+			/* Sort ranges ascending. When ranges overlap, this may required clamping or splitting them */
+			std::vector<uint32> bounds;
+			for (uint i = 0; i < ranges.size(); i++) {
+				bounds.push_back(ranges[i].low);
+				if (ranges[i].high != UINT32_MAX) bounds.push_back(ranges[i].high + 1);
+			}
+			std::sort(bounds.begin(), bounds.end());
+			bounds.erase(std::unique(bounds.begin(), bounds.end()), bounds.end());
+
+			std::vector<const SpriteGroup *> target;
+			for (uint j = 0; j < bounds.size(); ++j) {
+				uint32 v = bounds[j];
+				const SpriteGroup *t = NULL;
+				for (uint i = 0; i < ranges.size(); i++) {
+					if (ranges[i].low <= v && v <= ranges[i].high) {
+						t = ranges[i].group;
+					}
+				}
+				target.push_back(t);
+			}
+			assert(target.size() == bounds.size());
+
+			std::vector<DeterministicSpriteGroupRange> optimised;
+			for (uint j = 0; j < bounds.size(); ) {
+				if (target[j]) {
+					DeterministicSpriteGroupRange r;
+					r.group = target[j];
+					r.low = bounds[j];
+					while (j < bounds.size() && target[j] == r.group) {
+						j++;
+					}
+					r.high = j < bounds.size() ? bounds[j] - 1 : UINT32_MAX;
+					optimised.push_back(r);
+				} else {
+					j++;
+				}
+			}
+
+			group->num_ranges = optimised.size();
+			if (group->num_ranges > 0) {
+				group->ranges = MallocT<DeterministicSpriteGroupRange>(group->num_ranges);
+				MemCpyT(group->ranges, &optimised.front(), group->num_ranges);
+			}
 			break;
 		}
 

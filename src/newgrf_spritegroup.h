@@ -181,6 +181,8 @@ struct DeterministicSpriteGroup : SpriteGroup {
 	/* Dynamically allocated, this is the sole owner */
 	const SpriteGroup *default_group;
 
+	const SpriteGroup *error_group; // was first range, before sorting ranges
+
 protected:
 	const SpriteGroup *Resolve(ResolverObject &object) const;
 };
