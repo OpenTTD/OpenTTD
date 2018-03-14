@@ -12,12 +12,14 @@
 #include "midifile.hpp"
 #include "../fileio_func.h"
 #include "../fileio_type.h"
+#include "../string_func.h"
 #include "../core/endian_func.hpp"
+#include "../base_media_base.h"
 #include "midi.h"
 #include <algorithm>
 
 
-/* implementation based on description at: http://www.somascape.org/midi/tech/mfile.html */
+/* SMF reader based on description at: http://www.somascape.org/midi/tech/mfile.html */
 
 
 /**
@@ -158,7 +160,7 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 		return false;
 	}
 
-	/* read chunk length and then the whole chunk */
+	/* Read chunk length and then the whole chunk */
 	uint32 chunk_length;
 	if (fread(&chunk_length, 1, 4, file) != 4) {
 		return false;
@@ -176,7 +178,7 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 	byte last_status = 0;
 	bool running_sysex = false;
 	while (!chunk.IsEnd()) {
-		/* read deltatime for event, start new block */
+		/* Read deltatime for event, start new block */
 		uint32 deltatime = 0;
 		if (!chunk.ReadVariableLength(deltatime)) {
 			return false;
@@ -186,14 +188,14 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 			block = &target.blocks.back();
 		}
 
-		/* read status byte */
+		/* Read status byte */
 		byte status;
 		if (!chunk.ReadByte(status)) {
 			return false;
 		}
 
 		if ((status & 0x80) == 0) {
-			/* high bit not set means running status message, status is same as last
+			/* High bit not set means running status message, status is same as last
 			 * convert to explicit status */
 			chunk.Rewind(1);
 			status = last_status;
@@ -266,7 +268,7 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 				return false;
 			}
 			if (data[length] != 0xF7) {
-				/* engage Casio weirdo mode - convert to normal sysex */
+				/* Engage Casio weirdo mode - convert to normal sysex */
 				running_sysex = true;
 				*block->data.Append() = 0xF7;
 			} else {
@@ -312,18 +314,20 @@ static bool FixupMidiData(MidiFile &target)
 	std::sort(target.blocks.begin(), target.blocks.end(), TicktimeAscending<MidiFile::DataBlock>);
 
 	if (target.tempos.size() == 0) {
-		/* no tempo information, assume 120 bpm (500,000 microseconds per beat */
+		/* No tempo information, assume 120 bpm (500,000 microseconds per beat */
 		target.tempos.push_back(MidiFile::TempoChange(0, 500000));
 	}
-	/* add sentinel tempo at end */
+	/* Add sentinel tempo at end */
 	target.tempos.push_back(MidiFile::TempoChange(UINT32_MAX, 0));
 
-	/* merge blocks with identical tick times */
+	/* Merge blocks with identical tick times */
 	std::vector<MidiFile::DataBlock> merged_blocks;
 	uint32 last_ticktime = 0;
 	for (size_t i = 0; i < target.blocks.size(); i++) {
 		MidiFile::DataBlock &block = target.blocks[i];
-		if (block.ticktime > last_ticktime || merged_blocks.size() == 0) {
+		if (block.data.Length() == 0) {
+			continue;
+		} else if (block.ticktime > last_ticktime || merged_blocks.size() == 0) {
 			merged_blocks.push_back(block);
 			last_ticktime = block.ticktime;
 		} else {
@@ -333,7 +337,7 @@ static bool FixupMidiData(MidiFile &target)
 	}
 	std::swap(merged_blocks, target.blocks);
 
-	/* annotate blocks with real time */
+	/* Annotate blocks with real time */
 	last_ticktime = 0;
 	uint32 last_realtime = 0;
 	size_t cur_tempo = 0, cur_block = 0;
@@ -390,13 +394,13 @@ bool MidiFile::ReadSMFHeader(FILE *file, SMFHeader &header)
 		return false;
 	}
 
-	/* check magic, 'MThd' followed by 4 byte length indicator (always = 6 in SMF) */
+	/* Check magic, 'MThd' followed by 4 byte length indicator (always = 6 in SMF) */
 	const byte magic[] = { 'M', 'T', 'h', 'd', 0x00, 0x00, 0x00, 0x06 };
 	if (MemCmpT(buffer, magic, sizeof(magic)) != 0) {
 		return false;
 	}
 
-	/* read the parameters of the file */
+	/* Read the parameters of the file */
 	header.format = (buffer[8] << 8) | buffer[9];
 	header.tracks = (buffer[10] << 8) | buffer[11];
 	header.tickdiv = (buffer[12] << 8) | buffer[13];
@@ -416,6 +420,7 @@ bool MidiFile::LoadFile(const char *filename)
 
 	bool success = false;
 	FILE *file = FioFOpenFile(filename, "rb", Subdirectory::BASESET_DIR);
+	if (file == NULL) return false;
 
 	SMFHeader header;
 	if (!ReadSMFHeader(file, header)) goto cleanup;
@@ -440,6 +445,381 @@ cleanup:
 	return success;
 }
 
+
+/**
+ * Decoder for "MPS MIDI" format data.
+ * This format for MIDI music is also used in a few other Microprose games contemporary with Transport Tycoon.
+ *
+ * The song data are usually packed inside a CAT file, with one CAT chunk per song. The song titles are used as names for the CAT chunks.
+ *
+ * Unlike the Standard MIDI File format, which is based on the IFF structure, the MPS MIDI format is best described as two linked lists of sub-tracks,
+ * the first list contains a number of reusable "segments", and the second list contains the "master tracks". Each list is prefixed with a byte
+ * giving the number of elements in the list, and the actual list is just a byte count (BE16 format) for the segment/track followed by the actual data,
+ * there is no index as such, so the entire data must be seeked through to build an index.
+ *
+ * The actual MIDI data inside each track is almost standard MIDI, prefixing every event with a delay, encoded using the same variable-length format
+ * used in SMF. A few status codes have changed meaning in MPS MIDI: 0xFE changes control from master track to a segment, 0xFD returns from a segment
+ * to the master track, and 0xFF is used to end the song. (In Standard MIDI all those values must only occur in real-time data.)
+ *
+ * As implemented in the original decoder, there is no support for recursively calling segments from segments, i.e. code 0xFE must only occur in
+ * a master track, and code 0xFD must only occur in a segment. There are no checks made for this, it's assumed that the only input data will ever
+ * be the original game music, not music from other games, or new productions.
+ *
+ * Additionally, some program change and controller events are given special meaning, see comments in the code.
+ */
+struct MpsMachine {
+	/** Starting parameter and playback status for one channel/track */
+	struct Channel {
+		byte cur_program;    ///< program selected, used for velocity scaling (lookup into programvelocities array)
+		byte running_status; ///< last midi status code seen
+		uint16 delay;        ///< frames until next command
+		uint32 playpos;      ///< next byte to play this channel from
+		uint32 startpos;     ///< start position of master track
+		uint32 returnpos;    ///< next return position after playing a segment
+		Channel() : cur_program(0xFF), running_status(0), delay(0), playpos(0), startpos(0), returnpos(0) { }
+	};
+	Channel channels[16];         ///< playback status for each MIDI channel
+	std::vector<uint32> segments; ///< pointers into songdata to repeatable data segments
+	int16 tempo_ticks;            ///< ticker that increments when playing a frame, decrements before playing a frame
+	int16 current_tempo;         ///< threshold for actually playing a frame
+	int16 initial_tempo;         ///< starting tempo of song
+	bool shouldplayflag;          ///< not-end-of-song flag
+
+	static const int TEMPO_RATE;
+	static const byte programvelocities[128];
+
+	const byte *songdata; ///< raw data array
+	size_t songdatalen;   ///< length of song data
+	MidiFile &target;     ///< recipient of data
+
+	/** Overridden MIDI status codes used in the data format */
+	enum MpsMidiStatus {
+		MPSMIDIST_SEGMENT_RETURN = 0xFD, ///< resume playing master track from stored position
+		MPSMIDIST_SEGMENT_CALL   = 0xFE, ///< store current position of master track playback, and begin playback of a segment
+		MPSMIDIST_ENDSONG        = 0xFF, ///< immediately end the song
+	};
+
+	static void AddMidiData(MidiFile::DataBlock &block, byte b1, byte b2)
+	{
+		*block.data.Append() = b1;
+		*block.data.Append() = b2;
+	}
+	static void AddMidiData(MidiFile::DataBlock &block, byte b1, byte b2, byte b3)
+	{
+		*block.data.Append() = b1;
+		*block.data.Append() = b2;
+		*block.data.Append() = b3;
+	}
+
+	/**
+	 * Construct a TTD DOS music format decoder.
+	 * @param songdata Buffer of song data from CAT file, ownership remains with caller
+	 * @param songdatalen Length of the data buffer in bytes
+	 * @param target MidiFile object to add decoded data to
+	 */
+	MpsMachine(const byte *data, size_t length, MidiFile &target)
+		: songdata(data), songdatalen(length), target(target)
+	{
+		uint32 pos = 0;
+		int loopmax;
+		int loopidx;
+
+		/* First byte is the initial "tempo" */
+		this->initial_tempo = this->songdata[pos++];
+
+		/* Next byte is a count of callable segments */
+		loopmax = this->songdata[pos++];
+		for (loopidx = 0; loopidx < loopmax; loopidx++) {
+			/* Segments form a linked list in the stream,
+			 * first two bytes in each is an offset to the next.
+			 * Two bytes between offset to next and start of data
+			 * are unaccounted for. */
+			this->segments.push_back(pos + 4);
+			pos += FROM_LE16(*(const int16 *)(this->songdata + pos));
+		}
+
+		/* After segments follows list of master tracks for each channel,
+		 * also prefixed with a byte counting actual tracks. */
+		loopmax = this->songdata[pos++];
+		for (loopidx = 0; loopidx < loopmax; loopidx++) {
+			/* Similar structure to segments list, but also has
+			 * the MIDI channel number as a byte before the offset
+			 * to next track. */
+			byte ch = this->songdata[pos++];
+			this->channels[ch].startpos = pos + 4;
+			pos += FROM_LE16(*(const int16 *)(this->songdata + pos));
+		}
+	}
+
+	/**
+	 * Read an SMF-style variable length value (note duration) from songdata.
+	 * @param pos Position to read from, updated to point to next byte after the value read
+	 * @return Value read from data stream
+	 */
+	uint16 ReadVariableLength(uint32 &pos)
+	{
+		byte b = 0;
+		uint16 res = 0;
+		do {
+			b = this->songdata[pos++];
+			res = (res << 7) + (b & 0x7F);
+		} while (b & 0x80);
+		return res;
+	}
+
+	/**
+	 * Prepare for playback from the beginning. Resets the song pointer for every track to the beginning.
+	 */
+	void RestartSong()
+	{
+		for (int ch = 0; ch < 16; ch++) {
+			Channel &chandata = this->channels[ch];
+			if (chandata.startpos != 0) {
+				/* Active track, set position to beginning */
+				chandata.playpos = chandata.startpos;
+				chandata.delay = this->ReadVariableLength(chandata.playpos);
+			} else {
+				/* Inactive track, mark as such */
+				chandata.playpos = 0;
+				chandata.delay = 0;
+			}
+		}
+	}
+
+	/**
+	 * Play one frame of data from one channel
+	 */
+	uint16 PlayChannelFrame(MidiFile::DataBlock &outblock, int channel)
+	{
+		uint16 newdelay = 0;
+		byte b1, b2;
+		Channel &chandata = this->channels[channel];
+
+		do {
+			/* Read command/status byte */
+			b1 = this->songdata[chandata.playpos++];
+
+			/* Command 0xFE, call segment from master track */
+			if (b1 == MPSMIDIST_SEGMENT_CALL) {
+				b1 = this->songdata[chandata.playpos++];
+				chandata.returnpos = chandata.playpos;
+				chandata.playpos = this->segments[b1];
+				newdelay = this->ReadVariableLength(chandata.playpos);
+				if (newdelay == 0) {
+					continue;
+				}
+				return newdelay;
+			}
+
+			/* Command 0xFD, return from segment to master track */
+			if (b1 == MPSMIDIST_SEGMENT_RETURN) {
+				chandata.playpos = chandata.returnpos;
+				chandata.returnpos = 0;
+				newdelay = this->ReadVariableLength(chandata.playpos);
+				if (newdelay == 0) {
+					continue;
+				}
+				return newdelay;
+			}
+
+			/* Command 0xFF, end of song */
+			if (b1 == MPSMIDIST_ENDSONG) {
+				this->shouldplayflag = false;
+				return 0;
+			}
+
+			/* Regular MIDI channel message status byte */
+			if (b1 >= 0x80) {
+				/* Save the status byte as running status for the channel
+				 * and read another byte for first parameter to command */
+				chandata.running_status = b1;
+				b1 = this->songdata[chandata.playpos++];
+			}
+
+			switch (chandata.running_status & 0xF0) {
+				case MIDIST_NOTEOFF:
+				case MIDIST_NOTEON:
+					b2 = this->songdata[chandata.playpos++];
+					if (b2 != 0) {
+						/* Note on, read velocity and scale according to rules */
+						int16 velocity;
+						if (channel == 9) {
+							/* Percussion channel, fixed velocity scaling not in the table */
+							velocity = (int16)b2 * 0x50;
+						} else {
+							/* Regular channel, use scaling from table */
+							velocity = b2 * programvelocities[chandata.cur_program];
+						}
+						b2 = (velocity / 128) & 0x00FF;
+						AddMidiData(outblock, MIDIST_NOTEON + channel, b1, b2);
+					} else {
+						/* Note off */
+						AddMidiData(outblock, MIDIST_NOTEON + channel, b1, 0);
+					}
+					break;
+				case MIDIST_CONTROLLER:
+					b2 = this->songdata[chandata.playpos++];
+					if (b1 == MIDICT_MODE_MONO) {
+						/* Unknown what the purpose of this is.
+						 * Occurs in "Can't get There from Here" and in "Aliens Ate my Railway" a few times each.
+						 * Possibly intended to give hints to other (non-GM) music drivers decoding the song.
+						 */
+						break;
+					} else if (b1 == 0) {
+						/* Standard MIDI controller 0 is "bank select", override meaning to change tempo.
+						 * This is not actually used in any of the original songs. */
+						if (b2 != 0) {
+							this->current_tempo = ((int)b2) * 48 / 60;
+						}
+						break;
+					} else if (b1 == MIDICT_EFFECTS1) {
+						/* Override value of this controller, default mapping is Reverb Send Level according to MMA RP-023.
+						 * Unknown what the purpose of this particular value is. */
+						b2 = 30;
+					}
+					AddMidiData(outblock, MIDIST_CONTROLLER + channel, b1, b2);
+					break;
+				case MIDIST_PROGCHG:
+					if (b1 == 0x7E) {
+						/* Program change to "Applause" is originally used
+						 * to cause the song to loop, but that gets handled
+						 * separately in the output driver here.
+						 * Just end the song. */
+						this->shouldplayflag = false;
+						break;
+					}
+					/* Used for note velocity scaling lookup */
+					chandata.cur_program = b1;
+					/* Two programs translated to a third, this is likely to
+					 * provide three different velocity scalings of "brass". */
+					if (b1 == 0x57 || b1 == 0x3F) {
+						b1 = 0x3E;
+					}
+					AddMidiData(outblock, MIDIST_PROGCHG + channel, b1);
+					break;
+				case MIDIST_PITCHBEND:
+					b2 = this->songdata[chandata.playpos++];
+					AddMidiData(outblock, MIDIST_PITCHBEND + channel, b1, b2);
+					break;
+				default:
+					break;
+			}
+
+			newdelay = this->ReadVariableLength(chandata.playpos);
+		} while (newdelay == 0);
+
+		return newdelay;
+	}
+
+	/**
+	 * Play one frame of data into a block.
+	 */
+	bool PlayFrame(MidiFile::DataBlock &block)
+	{
+		/* Update tempo/ticks counter */
+		this->tempo_ticks -= this->current_tempo;
+		if (this->tempo_ticks > 0) {
+			return true;
+		}
+		this->tempo_ticks += TEMPO_RATE;
+
+		/* Look over all channels, play those active */
+		for (int ch = 0; ch < 16; ch++) {
+			Channel &chandata = this->channels[ch];
+			if (chandata.playpos != 0) {
+				if (chandata.delay == 0) {
+					chandata.delay = this->PlayChannelFrame(block, ch);
+				}
+				chandata.delay--;
+			}
+		}
+
+		return this->shouldplayflag;
+	}
+
+	/**
+	 * Perform playback of whole song.
+	 */
+	bool PlayInto()
+	{
+		/* Tempo seems to be handled as TEMPO_RATE = 148 ticks per second.
+		 * Use this as the tickdiv, and define the tempo to be one second (1M microseconds) per tickdiv.
+		 * MIDI software loading exported files will show a bogus tempo, but playback will be correct. */
+		this->target.tickdiv = TEMPO_RATE;
+		this->target.tempos.push_back(MidiFile::TempoChange(0, 1000000));
+
+		/* Initialize playback simulation */
+		this->RestartSong();
+		this->shouldplayflag = true;
+		this->current_tempo = (int32)this->initial_tempo * 24 / 60;
+		this->tempo_ticks = this->current_tempo;
+
+		/* Always reset percussion channel to program 0 */
+		this->target.blocks.push_back(MidiFile::DataBlock());
+		AddMidiData(this->target.blocks.back(), MIDIST_PROGCHG+9, 0x00);
+
+		/* Technically should be an endless loop, but having
+		 * a maximum (about 10 minutes) avoids getting stuck,
+		 * in case of corrupted data. */
+		for (uint32 tick = 0; tick < 100000; tick+=1) {
+			this->target.blocks.push_back(MidiFile::DataBlock());
+			auto &block = this->target.blocks.back();
+			block.ticktime = tick;
+			if (!this->PlayFrame(block)) {
+				break;
+			}
+		}
+		return true;
+	}
+};
+/** Frames/ticks per second for music playback */
+const int MpsMachine::TEMPO_RATE = 148;
+/** Base note velocities for various GM programs */
+const byte MpsMachine::programvelocities[128] = {
+	100, 100, 100, 100, 100,  90, 100, 100, 100, 100, 100,  90, 100, 100, 100, 100,
+	100, 100,  85, 100, 100, 100, 100, 100, 100, 100, 100, 100,  90,  90, 110,  80,
+	100, 100, 100,  90,  70, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+	100, 100,  90, 100, 100, 100, 100, 100, 100, 120, 100, 100, 100, 120, 100, 127,
+	100, 100,  90, 100, 100, 100, 100, 100, 100,  95, 100, 100, 100, 100, 100, 100,
+	100, 100, 100, 100, 100, 100, 100, 115, 100, 100, 100, 100, 100, 100, 100, 100,
+	100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+	100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+};
+
+/**
+ * Create MIDI data from song data for the original Microprose music drivers.
+ * @param data pointer to block of data
+ * @param length size of data in bytes
+ * @return true if the data could be loaded
+ */
+bool MidiFile::LoadMpsData(const byte *data, size_t length)
+{
+	MpsMachine machine(data, length, *this);
+	return machine.PlayInto() && FixupMidiData(*this);
+}
+
+bool MidiFile::LoadSong(const MusicSongInfo &song)
+{
+	switch (song.filetype) {
+		case MTT_STANDARDMIDI:
+			return this->LoadFile(song.filename);
+		case MTT_MPSMIDI:
+		{
+			size_t songdatalen = 0;
+			byte *songdata = GetMusicCatEntryData(song.filename, song.cat_index, songdatalen);
+			if (songdata != NULL) {
+				bool result = this->LoadMpsData(songdata, songdatalen);
+				free(songdata);
+				return result;
+			} else {
+				return false;
+			}
+		}
+		default:
+			NOT_REACHED();
+	}
+}
+
 /**
  * Move data from other to this, and clears other.
  * @param other object containing loaded data to take over
@@ -454,4 +834,3 @@ void MidiFile::MoveFrom(MidiFile &other)
 	other.tempos.clear();
 	other.tickdiv = 0;
 }
-
