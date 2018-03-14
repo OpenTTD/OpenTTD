@@ -1,0 +1,71 @@
+; $Id$
+;
+; This represents the original music as on the Transport
+; Tycoon (with World Editor) for DOS CD.
+;
+[metadata]
+name              = original_tto
+shortname         = TTOD
+version           = 1
+description       = Original Transport Tycoon (Original/World Editor) music.
+
+[files]
+theme = gm-tto.cat
+old_0 = gm-tto.cat
+old_1 = gm-tto.cat
+old_2 = gm-tto.cat
+old_3 = gm-tto.cat
+old_4 = gm-tto.cat
+old_5 = gm-tto.cat
+old_6 = gm-tto.cat
+old_7 = gm-tto.cat
+old_8 =
+old_9 =
+new_0 = gm-tto.cat
+new_1 = gm-tto.cat
+new_2 = gm-tto.cat
+new_3 = gm-tto.cat
+new_4 = gm-tto.cat
+new_5 = gm-tto.cat
+new_6 = gm-tto.cat
+new_7 = gm-tto.cat
+new_8 =
+new_9 =
+ezy_0 =
+ezy_1 =
+ezy_2 =
+ezy_3 =
+ezy_4 =
+ezy_5 =
+ezy_6 =
+ezy_7 =
+ezy_8 =
+ezy_9 =
+
+[catindex]
+theme = 0
+old_0 = 1
+old_1 = 6
+old_2 = 2
+old_3 = 7
+old_4 = 11
+old_5 = 12
+old_6 = 15
+old_7 = 10
+new_0 = 4
+new_1 = 5
+new_2 = 9
+new_3 = 8
+new_4 = 13
+new_5 = 16
+new_6 = 14
+new_7 = 3
+
+[md5s]
+gm-tto.cat = 26e85ff84b0063aa5da05dd4698fc76e
+
+[names]
+; Names get read from the CAT file
+
+[origin]
+default      = You can find it on your Transport Tycoon CD-ROM.

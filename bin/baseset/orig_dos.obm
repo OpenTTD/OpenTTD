@@ -1,0 +1,76 @@
+; $Id$
+;
+; This represents the original music as on the Transport
+; Tycoon Deluxe for DOS CD.
+;
+[metadata]
+name              = original_dos
+shortname         = TTDD
+version           = 1
+description       = Original Transport Tycoon Deluxe DOS edition music.
+
+[files]
+theme = gm.cat
+old_0 = gm.cat
+old_1 = gm.cat
+old_2 = gm.cat
+old_3 = gm.cat
+old_4 = gm.cat
+old_5 = gm.cat
+old_6 = gm.cat
+old_7 = gm.cat
+old_8 =
+old_9 =
+new_0 = gm.cat
+new_1 = gm.cat
+new_2 = gm.cat
+new_3 = gm.cat
+new_4 = gm.cat
+new_5 = gm.cat
+new_6 = gm.cat
+new_7 =
+new_8 =
+new_9 =
+ezy_0 = gm.cat
+ezy_1 = gm.cat
+ezy_2 = gm.cat
+ezy_3 = gm.cat
+ezy_4 = gm.cat
+ezy_5 = gm.cat
+ezy_6 =
+ezy_7 =
+ezy_8 =
+ezy_9 =
+
+[md5s]
+gm.cat = 7a29d2d0c4f7d2e03091ffa9b2bdfffb
+
+[catindex]
+theme = 0
+old_0 = 1
+old_1 = 8
+old_2 = 2
+old_3 = 9
+old_4 = 14
+old_5 = 15
+old_6 = 19
+old_7 = 13
+new_0 = 6
+new_1 = 11
+new_2 = 10
+new_3 = 17
+new_4 = 21
+new_5 = 18
+new_6 = 5
+ezy_0 = 12
+ezy_1 = 7
+ezy_2 = 16
+ezy_3 = 3
+ezy_4 = 20
+ezy_5 = 4
+
+[names]
+; Names get read from the CAT file
+
+[origin]
+default      = You can find it on your Transport Tycoon Deluxe CD-ROM.
