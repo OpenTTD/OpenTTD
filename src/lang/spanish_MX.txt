@@ -1108,7 +1108,7 @@ STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Mostrar lista con opciones predeterminadas
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Básico (mostrar solo las opciones más esenciales)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avanzado (mostrar la mayoría de las opciones)
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Experto (mostrar todas las opciones, hasta las más extrañas)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Experto (mostrar todas las opciones, incluso las avanzadas)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Opciones con un valor diferente al predeterminado
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Opciones con un valor diferente a las opciones de partida nueva
 
