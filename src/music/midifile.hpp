@@ -36,6 +36,7 @@ struct MidiFile {
 	uint16 tickdiv;                  ///< ticks per quarter note
 
 	bool LoadFile(const char *filename);
+	bool LoadMpsData(const byte *data, size_t length);
 	void MoveFrom(MidiFile &other);
 
 	static bool ReadSMFHeader(const char *filename, SMFHeader &header);

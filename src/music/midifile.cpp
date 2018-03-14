@@ -12,12 +12,73 @@
 #include "midifile.hpp"
 #include "../fileio_func.h"
 #include "../fileio_type.h"
+#include "../string_func.h"
 #include "../core/endian_func.hpp"
+#include "../base_media_base.h"
 #include <algorithm>
 
 
-/* implementation based on description at: http://www.somascape.org/midi/tech/mfile.html */
+/* SMF reader based on description at: http://www.somascape.org/midi/tech/mfile.html */
 
+
+enum MidiStatus {
+	// These take a channel number in the lower nibble
+	MIDIST_NOTEOFF    = 0x80,
+	MIDIST_NOTEON     = 0x90,
+	MIDIST_POLYPRESS  = 0xA0,
+	MIDIST_CONTROLLER = 0xB0,
+	MIDIST_PROGCHG    = 0xC0,
+	MIDIST_CHANPRESS  = 0xD0,
+	MIDIST_PITCHBEND  = 0xE0,
+	// These are full byte status codes
+	MIDIST_SYSEX      = 0xF0,
+	MIDIST_ENDSYSEX   = 0xF7, ///< only occurs in realtime data
+	MIDIST_SMF_ESCAPE = 0xF7, ///< only occurs in SMF data
+	MIDIST_TC_QFRAME  = 0xF1,
+	MIDIST_SONGPOSPTR = 0xF2,
+	MIDIST_SONGSEL    = 0xF3,
+	MIDIST_TUNEREQ    = 0xF6,
+	MIDIST_RT_CLOCK   = 0xF8,
+	MIDIST_SYSRESET   = 0xFF, ///< only occurs in realtime data
+	MIDIST_SMF_META   = 0xFF, ///< only occurs in SMF data
+};
+enum MidiController {
+	// Controller number for MSB of high-res controllers
+	MIDICT_BANKSELECT = 0,
+	MIDICT_MODWHEEL,
+	MIDICT_BREATH,
+	MIDICT_FOOT,
+	MIDICT_PORTAMENTO,
+	MIDICT_DATAENTRY,
+	MIDICT_CHANVOLUME,
+	MIDICT_BALANCE,
+	MIDICT_PAN,
+	MIDICT_EXPRESSION,
+	MIDICT_EFFECT1,
+	MIDICT_EFFECT2,
+	MIDICT_GENERAL1,
+	MIDICT_GENERAL2,
+	MIDICT_GENERAL3,
+	MIDICT_GENERAL4,
+	// Offset to add to MSB controller number to get LSB controller number
+	MIDICTOFS_HIGHRES = 32,
+	// Switch controllers
+	MIDICT_SUSTAINSW = 64,
+	MIDICT_PORTAMENTOSW,
+	MIDICT_SOSTENUTOSW,
+	MIDICT_SOFTPEDALSW,
+	MIDICT_LEGATOSW,
+	MIDICT_HOLD2SW,
+	// Channel mode messages
+	MIDICT_MODE_ALLSOUNDOFF = 120,
+	MIDICT_MODE_RESETALLCTRL,
+	MIDICT_MODE_LOCALCTL,
+	MIDICT_MODE_ALLNOTESOFF,
+	MIDICT_MODE_OMNI_OFF,
+	MIDICT_MODE_OMNI_ON,
+	MIDICT_MODE_MONO,
+	MIDICT_MODE_POLY,
+};
 
 /**
  * Owning byte buffer readable as a stream.
@@ -157,7 +218,7 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 		return false;
 	}
 
-	/* read chunk length and then the whole chunk */
+	/* Read chunk length and then the whole chunk */
 	uint32 chunk_length;
 	if (fread(&chunk_length, 1, 4, file) != 4) {
 		return false;
@@ -176,7 +237,7 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 	byte last_status = 0;
 	bool running_sysex = false;
 	while (!chunk.IsEnd()) {
-		/* read deltatime for event, start new block */
+		/* Read deltatime for event, start new block */
 		uint32 deltatime = 0;
 		if (!chunk.ReadVariableLength(deltatime)) {
 			return false;
@@ -186,14 +247,14 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 			block = &target.blocks.back();
 		}
 
-		/* read status byte */
+		/* Read status byte */
 		byte status;
 		if (!chunk.ReadByte(status)) {
 			return false;
 		}
 
 		if ((status & 0x80) == 0) {
-			/* high bit not set means running status message, status is same as last
+			/* High bit not set means running status message, status is same as last
 			 * convert to explicit status */
 			chunk.Rewind(1);
 			status = last_status;
@@ -204,9 +265,11 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 		running_status:
 			byte *data;
 			switch (status & 0xF0) {
-			case 0x80: case 0x90:
-			case 0xA0: case 0xB0:
-			case 0xE0:
+			case MIDIST_NOTEOFF:
+			case MIDIST_NOTEON:
+			case MIDIST_POLYPRESS:
+			case MIDIST_CONTROLLER:
+			case MIDIST_PITCHBEND:
 				/* 3 byte messages */
 				data = block->data.Append(3);
 				data[0] = status;
@@ -214,7 +277,8 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 					return false;
 				}
 				break;
-			case 0xC0: case 0xD0:
+			case MIDIST_PROGCHG:
+			case MIDIST_CHANPRESS:
 				/* 2 byte messages */
 				data = block->data.Append(2);
 				data[0] = status;
@@ -225,7 +289,7 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 			default:
 				NOT_REACHED();
 			}
-		} else if (status == 0xFF) {
+		} else if (status == MIDIST_SMF_META) {
 			/* Meta event, read event type byte and data length */
 			if (!chunk.ReadByte(buf[0])) {
 				return false;
@@ -236,26 +300,26 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 			}
 			switch (buf[0]) {
 			case 0x2F:
-				/* end of track, no more data */
+				/* End of track, no more data */
 				if (length != 0)
 					return false;
 				else
 					return true;
 			case 0x51:
-				/* tempo change */
+				/* Tempo change */
 				if (length != 3)
 					return false;
 				if (!chunk.ReadBuffer(buf, 3)) return false;
 				target.tempos.push_back(MidiFile::TempoChange(block->ticktime, buf[0] << 16 | buf[1] << 8 | buf[2]));
 				break;
 			default:
-				/* unimportant meta event, skip over it */
+				/* Unimportant meta event, skip over it */
 				if (!chunk.Skip(length)) {
 					return false;
 				}
 				break;
 			}
-		} else if (status == 0xF0 || (status == 0xF7 && running_sysex)) {
+		} else if (status == MIDIST_SYSEX || (status == MIDIST_SMF_ESCAPE && running_sysex)) {
 			/* System exclusive message */
 			uint32 length = 0;
 			if (!chunk.ReadVariableLength(length)) return false;
@@ -263,13 +327,13 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 			data[0] = 0xF0;
 			if (!chunk.ReadBuffer(data + 1, length)) return false;
 			if (data[length] != 0xF7) {
-				/* engage Casio weirdo mode - convert to normal sysex */
+				/* Engage Casio weirdo mode - convert to normal sysex */
 				running_sysex = true;
 				*block->data.Append() = 0xF7;
 			} else {
 				running_sysex = false;
 			}
-		} else if (status == 0xF7) {
+		} else if (status == MIDIST_SMF_ESCAPE) {
 			/* Escape sequence */
 			uint32 length = 0;
 			if (!chunk.ReadVariableLength(length)) return false;
@@ -305,18 +369,20 @@ static bool FixupMidiData(MidiFile &target)
 	std::sort(target.blocks.begin(), target.blocks.end(), TicktimeAscending<MidiFile::DataBlock>);
 
 	if (target.tempos.size() == 0) {
-		/* no tempo information, assume 120 bpm (500,000 microseconds per beat */
+		/* No tempo information, assume 120 bpm (500,000 microseconds per beat */
 		target.tempos.push_back(MidiFile::TempoChange(0, 500000));
 	}
-	/* add sentinel tempo at end */
+	/* Add sentinel tempo at end */
 	target.tempos.push_back(MidiFile::TempoChange(UINT32_MAX, 0));
 
-	/* merge blocks with identical tick times */
+	/* Merge blocks with identical tick times */
 	std::vector<MidiFile::DataBlock> merged_blocks;
 	uint32 last_ticktime = 0;
 	for (size_t i = 0; i < target.blocks.size(); i++) {
 		MidiFile::DataBlock &block = target.blocks[i];
-		if (block.ticktime > last_ticktime || merged_blocks.size() == 0) {
+		if (block.data.Length() == 0) {
+			continue;
+		} else if (block.ticktime > last_ticktime || merged_blocks.size() == 0) {
 			merged_blocks.push_back(block);
 			last_ticktime = block.ticktime;
 		} else {
@@ -326,7 +392,7 @@ static bool FixupMidiData(MidiFile &target)
 	}
 	std::swap(merged_blocks, target.blocks);
 
-	/* annotate blocks with real time */
+	/* Annotate blocks with real time */
 	last_ticktime = 0;
 	uint32 last_realtime = 0;
 	size_t cur_tempo = 0, cur_block = 0;
@@ -382,12 +448,12 @@ bool MidiFile::ReadSMFHeader(FILE *file, SMFHeader &header)
 	if (fread(buffer, sizeof(buffer), 1, file) != 1)
 		return false;
 
-	/* check magic, 'MThd' followed by 4 byte length indicator (always = 6 in SMF) */
+	/* Check magic, 'MThd' followed by 4 byte length indicator (always = 6 in SMF) */
 	const byte magic[] = { 'M', 'T', 'h', 'd', 0x00, 0x00, 0x00, 0x06 };
 	if (MemCmpT(buffer, magic, sizeof(magic)) != 0)
 		return false;
 
-	/* read the parameters of the file */
+	/* Read the parameters of the file */
 	header.format = (buffer[8] << 8) | buffer[9];
 	header.tracks = (buffer[10] << 8) | buffer[11];
 	header.tickdiv = (buffer[12] << 8) | buffer[13];
@@ -407,6 +473,7 @@ bool MidiFile::LoadFile(const char *filename)
 
 	bool success = false;
 	FILE *file = FioFOpenFile(filename, "rb", Subdirectory::BASESET_DIR);
+	if (file == NULL) return false;
 
 	SMFHeader header;
 	if (!ReadSMFHeader(file, header)) goto cleanup;
@@ -429,6 +496,336 @@ bool MidiFile::LoadFile(const char *filename)
 cleanup:
 	FioFCloseFile(file);
 	return success;
+}
+
+
+struct MpsMachine {
+	struct Channel {
+		byte cur_program;    ///< program selected, used for velocity scaling (lookup into programvelocities array)
+		byte running_status; ///< last midi status code seen
+		uint16 delay;        ///< frames until next command
+		uint32 playpos;      ///< next byte to play this channel from
+		uint32 startpos;     ///< start position of master track
+		uint32 returnpos;    ///< next return position after playing a segment
+		Channel() : cur_program(0xFF), running_status(0), delay(0), playpos(0), startpos(0), returnpos(0) { }
+	};
+	Channel channels[16];
+	std::vector<uint32> segments; ///< pointers into songdata to repeatable data segments
+	int16 tempo_ticks;            ///< ticker that increments when playing a frame, decrements before playing a frame
+	uint16 song_tempo;            ///< threshold for actually playing a frame
+	bool shouldplayflag;          ///< not-end-of-song
+
+	static const byte programvelocities[128];
+	static int glitch[2];
+
+	const byte *songdata; ///< raw data array
+	size_t songdatalen;   ///< length of song data
+	MidiFile &target;     ///< recipient of data
+
+	static void AddMidiData(MidiFile::DataBlock &block, byte b1, byte b2)
+	{
+		*block.data.Append() = b1;
+		*block.data.Append() = b2;
+	}
+	static void AddMidiData(MidiFile::DataBlock &block, byte b1, byte b2, byte b3)
+	{
+		*block.data.Append() = b1;
+		*block.data.Append() = b2;
+		*block.data.Append() = b3;
+	}
+
+	/**
+	 * Construct a TTD DOS music format decoder.
+	 * @param songdata Buffer of song data from CAT file, ownership remains with caller
+	 * @param songdatalen Length of the data buffer in bytes
+	 * @param target MidiFile object to add decoded data to
+	 */
+	MpsMachine(const byte *data, size_t length, MidiFile &target)
+		: songdata(data), songdatalen(length), target(target)
+	{
+		uint32 pos = 0;
+		int loopmax;
+		int loopidx;
+
+		/* First byte is the initial "tempo" */
+		this->song_tempo = this->songdata[pos++];
+
+		/* Next byte is a count of callable segments */
+		loopmax = this->songdata[pos++];
+		for (loopidx = 0; loopidx < loopmax; loopidx++) {
+			/* Segments form a linked list in the stream,
+			 * first two bytes in each is an offset to the next.
+			 * Two bytes between offset to next and start of data
+			 * are unaccounted for. */
+			this->segments.push_back(pos + 4);
+			pos += FROM_LE16(*(const int16 *)(this->songdata + pos));
+		}
+
+		/* After segments follows list of master tracks for each channel,
+		 * also prefixed with a byte counting actual tracks. */
+		loopmax = this->songdata[pos++];
+		for (loopidx = 0; loopidx < loopmax; loopidx++) {
+			/* Similar structure to segments list, but also has
+			 * the MIDI channel number as a byte before the offset
+			 * to next track. */
+			byte ch = this->songdata[pos++];
+			this->channels[ch].startpos = pos + 4;
+			pos += FROM_LE16(*(const int16 *)(this->songdata + pos));
+		}
+	}
+
+	/**
+	 * Read an SMF-style variable length value (note duration) from songdata.
+	 * @param pos Position to read from, updated to point to next byte after the value read
+	 * @return Value read from data stream
+	 */
+	uint16 ReadVariableLength(uint32 &pos)
+	{
+		byte b = 0;
+		uint16 res = 0;
+		do {
+			b = this->songdata[pos++];
+			res = (res << 7) + (b & 0x7F);
+		} while (b & 0x80);
+		return res;
+	}
+
+	/**
+	 * Prepare for playback from the beginning. Resets the song pointer for every track to the beginning.
+	 */
+	void RestartSong()
+	{
+		for (int ch = 0; ch < 16; ch++) {
+			Channel &chandata = this->channels[ch];
+			if (chandata.startpos != 0) {
+				/* Active track, set position to beginning */
+				chandata.playpos = chandata.startpos;
+				chandata.delay = this->ReadVariableLength(chandata.playpos);
+			} else {
+				/* Inactive track, mark as such */
+				chandata.playpos = 0;
+				chandata.delay = 0;
+			}
+		}
+	}
+
+	/**
+	 * Play one frame of data from one channel
+	 */
+	uint16 PlayChannelFrame(MidiFile::DataBlock &outblock, int channel)
+	{
+		uint16 newdelay = 0;
+		byte b1, b2;
+		Channel &chandata = this->channels[channel];
+
+		do {
+			/* Read command/status byte */
+			b1 = this->songdata[chandata.playpos++];
+
+			/* Command 0xFE, call segment from master track */
+			if (b1 == 0xFE) {
+				b1 = this->songdata[chandata.playpos++];
+				chandata.returnpos = chandata.playpos;
+				/* "glitch" values can cause intentional misplaying, try it :) */
+				chandata.playpos = this->segments[(b1 * glitch[1] + glitch[0]) % this->segments.size()];
+				newdelay = this->ReadVariableLength(chandata.playpos);
+				if (newdelay == 0) {
+					continue;
+				}
+				return newdelay;
+			}
+
+			/* Command 0xFD, return from segment to master track */
+			if (b1 == 0xFD) {
+				chandata.playpos = chandata.returnpos;
+				chandata.returnpos = 0;
+				newdelay = this->ReadVariableLength(chandata.playpos);
+				if (newdelay == 0) {
+					continue;
+				}
+				return newdelay;
+			}
+
+			/* Command 0xFF, end of song */
+			if (b1 == 0xFF) {
+				this->shouldplayflag = false;
+				return 0;
+			}
+
+			/* Regular MIDI channel message status byte */
+			if (b1 >= 0x80) {
+				/* Save the status byte as running status for the channel
+				 * and read another byte for first parameter to command */
+				chandata.running_status = b1;
+				b1 = this->songdata[chandata.playpos++];
+			}
+
+			switch (chandata.running_status & 0xF0) {
+			case MIDIST_NOTEOFF:
+			case MIDIST_NOTEON:
+				b2 = this->songdata[chandata.playpos++];
+				if (b2 != 0) {
+					/* Note on, read velocity and scale according to rules */
+					int16 velocity;
+					if (channel == 9) {
+						/* Percussion */
+						velocity = (int16)b2 * 0x50;
+					} else {
+						/* Regular channel */
+						velocity = b2 * programvelocities[chandata.cur_program];
+					}
+					b2 = (velocity / 128) & 0x00FF;
+					AddMidiData(outblock, MIDIST_NOTEON + channel, b1, b2);
+				} else {
+					/* Note off */
+					AddMidiData(outblock, MIDIST_NOTEON + channel, b1, 0);
+				}
+				break;
+			case MIDIST_CONTROLLER:
+				b2 = this->songdata[chandata.playpos++];
+				if (b1 == 0x7E) {
+					/* Unknown what the purpose of this is.
+					 * Occurs in "Can't get There from Here" and
+					 * in "Aliens Ate my Railway" a few times each.
+					 * General MIDI controller 0x7E is "Mono mode on"
+					 * so maybe intended for more limited synths.
+					 */
+					break;
+				} else if (b1 == 0) {
+					/* Special case for tempo change, usually
+					 * controller 0 is "Bank select". */
+					if (b2 != 0) {
+						this->song_tempo = ((int)b2) * 48 / 60;
+					}
+					break;
+				} else if (b1 == 0x5B) {
+					/* Controller 0x5B is "Reverb send level",
+					 * this just enables reverb to a fixed level. */
+					b2 = 0x1E;
+				}
+				AddMidiData(outblock, MIDIST_CONTROLLER + channel, b1, b2);
+				break;
+			case MIDIST_PROGCHG:
+				if (b1 == 0x7E) {
+					/* Program change to "Applause" is originally used
+					 * to cause the song to loop, but that gets handled
+					 * separately in the output driver here.
+					 * Just end the song. */
+					this->shouldplayflag = false;
+					break;
+				}
+				/* Used for note velocity scaling lookup */
+				chandata.cur_program = b1;
+				/* Two programs translated to a third, this is likely to
+				 * provide three different velocity scalings of "brass". */
+				if (b1 == 0x57 || b1 == 0x3F) {
+					b1 = 0x3E;
+				}
+				AddMidiData(outblock, MIDIST_PROGCHG + channel, b1);
+				break;
+			case MIDIST_PITCHBEND:
+				b2 = this->songdata[chandata.playpos++];
+				AddMidiData(outblock, MIDIST_PITCHBEND + channel, b1, b2);
+				break;
+			default:
+				break;
+			}
+
+			newdelay = this->ReadVariableLength(chandata.playpos);
+		} while (newdelay == 0);
+
+		return newdelay;
+	}
+
+	/**
+	 * Play one frame of data into a block.
+	 */
+	bool PlayFrame(MidiFile::DataBlock &block)
+	{
+		/* Update tempo/ticks counter */
+		this->tempo_ticks -= this->song_tempo;
+		if (this->tempo_ticks > 0) {
+			return true;
+		}
+		this->tempo_ticks += 148;
+
+		/* Look over all channels, play those active */
+		for (int ch = 0; ch < 16; ch++) {
+			Channel &chandata = this->channels[ch];
+			if (chandata.playpos != 0) {
+				if (chandata.delay == 0) {
+					chandata.delay = this->PlayChannelFrame(block, ch);
+				}
+				chandata.delay--;
+			}
+		}
+
+		return this->shouldplayflag;
+	}
+
+	/**
+	 * Perform playback of whole song.
+	 */
+	bool PlayInto()
+	{
+		/* Guessed values based on what sounds right.
+		 * A tickdiv of 96 is common, and 6.5 ms per tick
+		 * leads to an initial musical tempo of ~96 bpm.
+		 * However this has very little relation to the actual
+		 * tempo of the music, since that gets controlled by
+		 * the "other" tempo values read from the data. How
+		 * those values relate to actual musical tempo has
+		 * yet to be discovered. */
+		this->target.tickdiv = 96;
+		this->target.tempos.push_back(MidiFile::TempoChange(0, 6500*this->target.tickdiv));
+
+		/* Initialize playback simulation */
+		this->RestartSong();
+		this->shouldplayflag = true;
+		this->song_tempo = (int32)this->song_tempo * 24 / 60;
+		this->tempo_ticks = this->song_tempo;
+
+		/* Always reset percussion channel to program 0 */
+		this->target.blocks.push_back(MidiFile::DataBlock());
+		AddMidiData(this->target.blocks.back(), MIDIST_PROGCHG+9, 0x00);
+
+		/* Technically should be an endless loop, but having
+		 * a maximum (about 10 minutes) avoids getting stuck,
+		 * in case of corrupted data. */
+		for (uint32 tick = 0; tick < 100000; tick+=1) {
+			this->target.blocks.push_back(MidiFile::DataBlock());
+			auto &block = this->target.blocks.back();
+			block.ticktime = tick;
+			if (!this->PlayFrame(block)) {
+				break;
+			}
+		}
+		return true;
+	}
+};
+/* Base note velocities for various GM programs */
+const byte MpsMachine::programvelocities[128] = {
+	100,100,100,100,100, 90,100,100,100,100,100, 90,100,100,100,100,
+	100,100, 85,100,100,100,100,100,100,100,100,100, 90, 90,110, 80,
+	100,100,100, 90, 70,100,100,100,100,100,100,100,100,100,100,100,
+	100,100, 90,100,100,100,100,100,100,120,100,100,100,120,100,127,
+	100,100, 90,100,100,100,100,100,100, 95,100,100,100,100,100,100,
+	100,100,100,100,100,100,100,115,100,100,100,100,100,100,100,100,
+	100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,
+	100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,
+};
+int MpsMachine::glitch[2] = { 0, 1 };
+
+/**
+ * Create MIDI data from song data for the original Microprose music drivers.
+ * @param data pointer to block of data
+ * @param length size of data in bytes
+ * @return true if the data could be loaded
+ */
+bool MidiFile::LoadMpsData(const byte *data, size_t length)
+{
+	MpsMachine machine(data, length, *this);
+	return machine.PlayInto() && FixupMidiData(*this);
 }
 
 /**

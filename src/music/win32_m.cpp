@@ -291,7 +291,18 @@ void MusicDriver_Win32::PlaySong(const MusicSongInfo &song)
 	DEBUG(driver, 2, "Win32-MIDI: PlaySong: entry");
 	EnterCriticalSection(&_midi.lock);
 
-	_midi.next_file.LoadFile(song.filename);
+	if (song.filetype == MTT_STANDARDMIDI) {
+		_midi.next_file.LoadFile(song.filename);
+	} else if (song.filetype == MTT_MPSMIDI) {
+		size_t songdatalen = 0;
+		byte *songdata = GetMusicCatEntryData(song.filename, song.cat_index, songdatalen);
+		if (songdata == NULL) return; // fail in a more noisy way?
+		_midi.next_file.LoadMpsData(songdata, songdatalen);
+		free(songdata);
+	} else {
+		NOT_REACHED();
+	}
+
 	_midi.next_segment.start = 0;
 	_midi.next_segment.end = 0;
 	_midi.next_segment.loop = false;
