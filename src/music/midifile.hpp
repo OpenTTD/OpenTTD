@@ -36,10 +36,15 @@ struct MidiFile {
 	std::vector<TempoChange> tempos; ///< list of tempo changes in file
 	uint16 tickdiv;                  ///< ticks per quarter note
 
+	MidiFile();
+	~MidiFile();
+
 	bool LoadFile(const char *filename);
 	bool LoadMpsData(const byte *data, size_t length);
 	bool LoadSong(const MusicSongInfo &song);
 	void MoveFrom(MidiFile &other);
+
+	bool WriteSMF(const char *filename);
 
 	static bool ReadSMFHeader(const char *filename, SMFHeader &header);
 	static bool ReadSMFHeader(FILE *file, SMFHeader &header);
