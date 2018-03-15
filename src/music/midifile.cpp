@@ -17,9 +17,14 @@
 #include "../base_media_base.h"
 #include <algorithm>
 
+#include "../console_func.h"
+#include "../console_internal.h"
+
 
 /* SMF reader based on description at: http://www.somascape.org/midi/tech/mfile.html */
 
+
+MidiFile *_midifile_instance = NULL;
 
 enum MidiStatus {
 	// These take a channel number in the lower nibble
@@ -467,6 +472,8 @@ bool MidiFile::ReadSMFHeader(FILE *file, SMFHeader &header)
  */
 bool MidiFile::LoadFile(const char *filename)
 {
+	_midifile_instance = this;
+
 	this->blocks.clear();
 	this->tempos.clear();
 	this->tickdiv = 0;
@@ -824,6 +831,8 @@ int MpsMachine::glitch[2] = { 0, 1 };
  */
 bool MidiFile::LoadMpsData(const byte *data, size_t length)
 {
+	_midifile_instance = this;
+
 	MpsMachine machine(data, length, *this);
 	return machine.PlayInto() && FixupMidiData(*this);
 }
@@ -838,8 +847,240 @@ void MidiFile::MoveFrom(MidiFile &other)
 	std::swap(this->tempos, other.tempos);
 	this->tickdiv = other.tickdiv;
 
+	_midifile_instance = this;
+
 	other.blocks.clear();
 	other.tempos.clear();
 	other.tickdiv = 0;
+}
+
+static void WriteVariableLen(FILE *f, uint32 value)
+{
+	if (value < 0x7F) {
+		byte tb = value;
+		fwrite(&tb, 1, 1, f);
+	} else if (value < 0x3FFF) {
+		byte tb[2];
+		tb[1] =  value & 0x7F;         value >>= 7;
+		tb[0] = (value & 0x7F) | 0x80; value >>= 7;
+		fwrite(tb, 1, sizeof(tb), f);
+	} else if (value < 0x1FFFFF) {
+		byte tb[3];
+		tb[2] =  value & 0x7F;         value >>= 7;
+		tb[1] = (value & 0x7F) | 0x80; value >>= 7;
+		tb[0] = (value & 0x7F) | 0x80; value >>= 7;
+		fwrite(tb, 1, sizeof(tb), f);
+	} else if (value < 0x0FFFFFFF) {
+		byte tb[4];
+		tb[3] =  value & 0x7F;         value >>= 7;
+		tb[2] = (value & 0x7F) | 0x80; value >>= 7;
+		tb[1] = (value & 0x7F) | 0x80; value >>= 7;
+		tb[0] = (value & 0x7F) | 0x80; value >>= 7;
+		fwrite(tb, 1, sizeof(tb), f);
+	}
+}
+
+/**
+ * Write a Standard MIDI File containing the decoded music.
+ * @param filename Name of file to write to
+ * @return True if the file was written to completion
+ */
+bool MidiFile::WriteSMF(const char *filename)
+{
+	FILE *f = FioFOpenFile(filename, "wb", Subdirectory::NO_DIRECTORY);
+	if (!f) {
+		return false;
+	}
+
+	uint16 u16;
+	byte bb;
+
+	/* SMF header */
+	const byte filemagic[] = { 'M', 'T', 'h', 'd', 0x00, 0x00, 0x00, 0x06 };
+	fwrite(filemagic, sizeof(filemagic), 1, f);
+	fwrite(&(u16 = 0), sizeof(u16), 1, f);
+	fwrite(&(u16 = TO_BE16(1)), sizeof(u16), 1, f);
+	fwrite(&(u16 = TO_BE16(this->tickdiv)), sizeof(u16), 1, f);
+
+	/* Track header, block length is written after everything
+	 * else has already been written and length is known. */
+	const byte trackmagic[] = { 'M', 'T', 'r', 'k', 0, 0, 0, 0 };
+	fwrite(trackmagic, sizeof(trackmagic), 1, f);
+	size_t tracksizepos = ftell(f) - 4;
+
+	/* Write blocks in sequence */
+	uint32 lasttime = 0;
+	size_t nexttempoindex = 0;
+	for (size_t bi = 0; bi < this->blocks.size(); bi++) {
+	redoblock:
+		DataBlock &block = this->blocks[bi];
+		TempoChange &nexttempo = this->tempos[nexttempoindex];
+
+		uint32 timediff = block.ticktime - lasttime;
+
+		/* Check if there is a tempo change before this block */
+		if (nexttempo.ticktime < block.ticktime) {
+			timediff = nexttempo.ticktime - lasttime;
+		}
+
+		/* Write delta time for block */
+		lasttime += timediff;
+		bool needtime = false;
+		WriteVariableLen(f, timediff);
+
+		/* Write tempo change if there is one */
+		if (nexttempo.ticktime <= block.ticktime) {
+			byte tempobuf[6] = { MIDIST_SMF_META, 0x51, 0x03, 0, 0, 0 };
+			tempobuf[3] = (nexttempo.tempo & 0x00FF0000) >> 16;
+			tempobuf[4] = (nexttempo.tempo & 0x0000FF00) >>  8;
+			tempobuf[5] = (nexttempo.tempo & 0x000000FF);
+			fwrite(tempobuf, 1, 6, f);
+			nexttempoindex++;
+			needtime = true;
+		}
+		/* If a tempo change occurred between two blocks, rather than
+		 * at start of this one, start over with delta time for the block. */
+		if (nexttempo.ticktime < block.ticktime) {
+			goto redoblock;
+		}
+
+		/* Write each block data command */
+		byte *dp = block.data.Begin();
+		while (dp < block.data.End()) {
+			/* Always zero delta time inside blocks */
+			if (needtime) {
+				fwrite(&(bb = 0), 1, 1, f);
+			}
+			needtime = true;
+
+			/* Check message type and write appropriate number of bytes */
+			switch (*dp & 0xF0) {
+			case MIDIST_NOTEOFF:
+			case MIDIST_NOTEON:
+			case MIDIST_POLYPRESS:
+			case MIDIST_CONTROLLER:
+			case MIDIST_PITCHBEND:
+				fwrite(dp, 1, 3, f);
+				dp += 3;
+				continue;
+			case MIDIST_PROGCHG:
+			case MIDIST_CHANPRESS:
+				fwrite(dp, 1, 2, f);
+				dp += 2;
+				continue;
+			}
+
+			/* Sysex needs to measure length and write that as well */
+			if (*dp == MIDIST_SYSEX) {
+				fwrite(dp, 1, 1, f);
+				dp++;
+				byte *sysexend = dp;
+				while (*sysexend++ != MIDIST_ENDSYSEX);
+				ptrdiff_t sysexlen = sysexend - dp;
+				WriteVariableLen(f, sysexlen);
+				fwrite(dp, 1, sysexend - dp, f);
+				dp = sysexend;
+				continue;
+			}
+
+			/* Fail for any other commands */
+			fclose(f);
+			return false;
+		}
+	}
+
+	/* End of track marker */
+	fwrite(&(bb = 0x00), 1, 1, f);
+	fwrite(&(bb = MIDIST_SMF_META), 1, 1, f);
+	fwrite(&(bb = 0x2F), 1, 1, f);
+	fwrite(&(bb = 0x00), 1, 1, f);
+
+	/* Fill out the RIFF block length */
+	size_t trackendpos = ftell(f);
+	fseek(f, tracksizepos, SEEK_SET);
+	uint32 tracksize = trackendpos - tracksizepos - 4;
+	tracksize = TO_BE32(tracksize);
+	fwrite(&tracksize, 4, 1, f);
+
+	fclose(f);
+	return true;
+}
+
+
+static bool CmdGlitchMusic(byte argc, char *argv[])
+{
+	if (argc < 2) {
+		IConsolePrint(CC_WARNING, "Make music from the DOS version glitchy. Usage: 'glitchmusic <num1> [<num2>]'");
+		IConsolePrint(CC_WARNING, "If the first number is 0, glitching is disabled. Otherwise both must be positive integers.");
+		return true;
+	}
+	int arg1 = 0, arg2 = 1;
+	arg1 = atoi(argv[1]);
+	if (argc >= 3 && arg1 != 0) {
+		arg2 = atoi(argv[2]);
+	}
+
+	if (arg1 < 0) {
+		IConsolePrint(CC_ERROR, "First argument must be 0 or greater");
+		return false;
+	}
+	if (arg2 < 1) {
+		IConsolePrint(CC_ERROR, "Second argument must be 1 or greater");
+		return false;
+	}
+
+	MpsMachine::glitch[0] = arg1;
+	MpsMachine::glitch[1] = arg2;
+	return true;
+}
+
+static bool CmdDumpSMF(byte argc, char *argv[])
+{
+	if (argc == 0) {
+		IConsolePrint(CC_WARNING, "Write the current song to a Standard MIDI File. Usage: 'dumpsmf <filename>'");
+		return true;
+	}
+	if (argc != 2) {
+		IConsolePrint(CC_WARNING, "You must specify a filename to write MIDI data to.");
+		return false;
+	}
+
+	if (_midifile_instance == NULL) {
+		IConsolePrint(CC_ERROR, "There is no MIDI file loaded currently, make sure music is playing, and you're using a driver that works with raw MIDI.");
+		return false;
+	}
+
+	char fnbuf[MAX_PATH] = { 0 };
+	FioGetFullPath(fnbuf, lastof(fnbuf), Searchpath::SP_PERSONAL_DIR, Subdirectory::SCREENSHOT_DIR, argv[1]);
+	IConsolePrintF(CC_INFO, "Dumping MIDI to: %s", fnbuf);
+
+	if (_midifile_instance->WriteSMF(fnbuf)) {
+		IConsolePrint(CC_INFO, "File written successfully.");
+		return true;
+	} else {
+		IConsolePrint(CC_ERROR, "An error occurred writing MIDI file.");
+		return false;
+	}
+}
+
+static void RegisterConsoleMidiCommands()
+{
+	static bool registered = false;
+	if (!registered) {
+		IConsoleCmdRegister("dumpsmf", CmdDumpSMF);
+		IConsoleCmdRegister("glitchmusic", CmdGlitchMusic);
+		registered = true;
+	}
+}
+
+MidiFile::MidiFile()
+{
+	RegisterConsoleMidiCommands();
+}
+
+MidiFile::~MidiFile()
+{
+	if (_midifile_instance == this)
+		_midifile_instance = NULL;
 }
 
