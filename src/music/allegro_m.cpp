@@ -58,10 +58,12 @@ void MusicDriver_Allegro::Stop()
 	if (--_allegro_instance_count == 0) allegro_exit();
 }
 
-void MusicDriver_Allegro::PlaySong(const char *filename)
+void MusicDriver_Allegro::PlaySong(const MusicSongInfo &song)
 {
+	if (song.filetype != MTT_STANDARDMIDI) return;
+
 	if (_midi != NULL) destroy_midi(_midi);
-	_midi = load_midi(filename);
+	_midi = load_midi(song.filename);
 	play_midi(_midi, false);
 }
 

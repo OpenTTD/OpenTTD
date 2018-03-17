@@ -31,6 +31,7 @@
 #include "../stdafx.h"
 #include "qtmidi.h"
 #include "../debug.h"
+#include "../base_media_base.h"
 
 #define Rect  OTTDRect
 #define Point OTTDPoint
@@ -258,8 +259,9 @@ void MusicDriver_QtMidi::Stop()
  *
  * @param filename Path to a MIDI file.
  */
-void MusicDriver_QtMidi::PlaySong(const char *filename)
+void MusicDriver_QtMidi::PlaySong(const MusicSongInfo &song)
 {
+	if (song.filetype != MTT_STANDARDMIDI) return;
 	if (!_quicktime_started) return;
 
 	DEBUG(driver, 2, "qtmidi: trying to play '%s'", filename);
@@ -276,7 +278,7 @@ void MusicDriver_QtMidi::PlaySong(const char *filename)
 			FALLTHROUGH;
 
 		case QT_STATE_IDLE:
-			LoadMovieForMIDIFile(filename, &_quicktime_movie);
+			LoadMovieForMIDIFile(song.filename, &_quicktime_movie);
 			SetMovieVolume(_quicktime_movie, VOLUME);
 			StartMovie(_quicktime_movie);
 			_quicktime_state = QT_STATE_PLAY;

@@ -42,7 +42,7 @@
  */
 static const char *GetSongName(int index)
 {
-	return BaseMusic::GetUsedSet()->song_name[index];
+	return BaseMusic::GetUsedSet()->songinfo[index].songname;
 }
 
 /**
@@ -52,7 +52,7 @@ static const char *GetSongName(int index)
  */
 static int GetTrackNumber(int index)
 {
-	return BaseMusic::GetUsedSet()->track_nr[index];
+	return BaseMusic::GetUsedSet()->songinfo[index].tracknr;
 }
 
 /** The currently played song */
@@ -186,10 +186,12 @@ static void MusicVolumeChanged(byte new_vol)
 static void DoPlaySong()
 {
 	char filename[MAX_PATH];
-	if (FioFindFullPath(filename, lastof(filename), BASESET_DIR, BaseMusic::GetUsedSet()->files[_music_wnd_cursong - 1].filename) == NULL) {
-		FioFindFullPath(filename, lastof(filename), OLD_GM_DIR, BaseMusic::GetUsedSet()->files[_music_wnd_cursong - 1].filename);
+	MusicSongInfo songinfo = BaseMusic::GetUsedSet()->songinfo[_music_wnd_cursong - 1]; // copy
+	if (FioFindFullPath(filename, lastof(filename), BASESET_DIR, songinfo.filename) == NULL) {
+		FioFindFullPath(filename, lastof(filename), OLD_GM_DIR, songinfo.filename);
 	}
-	MusicDriver::GetInstance()->PlaySong(filename);
+	songinfo.filename = filename; // non-owned pointer
+	MusicDriver::GetInstance()->PlaySong(songinfo);
 	SetWindowDirty(WC_MUSIC_WINDOW, 0);
 }
 

@@ -17,6 +17,7 @@
 #include "../video/video_driver.hpp"
 #include "../gfx_func.h"
 #include "extmidi.h"
+#include "../base_media_base.h"
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -83,9 +84,11 @@ void MusicDriver_ExtMidi::Stop()
 	this->DoStop();
 }
 
-void MusicDriver_ExtMidi::PlaySong(const char *filename)
+void MusicDriver_ExtMidi::PlaySong(const MusicSongInfo &song)
 {
-	strecpy(this->song, filename, lastof(this->song));
+	if (song.filetype != MTT_STANDARDMIDI) return;
+
+	strecpy(this->song, song.filename, lastof(this->song));
 	this->DoStop();
 }
 
