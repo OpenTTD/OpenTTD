@@ -546,9 +546,6 @@
     <ClInclude Include="..\src\disaster_vehicle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\music\dmusic.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\driver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -3026,9 +3023,6 @@
     </ClCompile>
     <ClCompile Include="..\src\video\win32_v.cpp">
       <Filter>Video</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\music\dmusic.cpp">
-      <Filter>Music</Filter>
     </ClCompile>
     <ClCompile Include="..\src\music\null_m.cpp">
       <Filter>Music</Filter>
