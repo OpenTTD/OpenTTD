@@ -18,6 +18,7 @@
 #include "../debug.h"
 #include "midifile.hpp"
 #include "midi.h"
+#include "../base_media_base.h"
 
 #include "../safeguards.h"
 
@@ -304,12 +305,14 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 	}
 }
 
-void MusicDriver_Win32::PlaySong(const char *filename)
+void MusicDriver_Win32::PlaySong(const MusicSongInfo &song)
 {
+	if (song.filetype != MTT_STANDARDMIDI) return;
+
 	DEBUG(driver, 2, "Win32-MIDI: PlaySong: entry");
 	EnterCriticalSection(&_midi.lock);
 
-	_midi.next_file.LoadFile(filename);
+	_midi.next_file.LoadFile(song.filename);
 	_midi.next_segment.start = 0;
 	_midi.next_segment.end = 0;
 	_midi.next_segment.loop = false;

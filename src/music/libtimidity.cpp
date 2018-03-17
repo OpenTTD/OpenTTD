@@ -14,6 +14,7 @@
 #include "../sound_type.h"
 #include "../debug.h"
 #include "libtimidity.h"
+#include "../base_media_base.h"
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -73,11 +74,13 @@ void MusicDriver_LibTimidity::Stop()
 	mid_exit();
 }
 
-void MusicDriver_LibTimidity::PlaySong(const char *filename)
+void MusicDriver_LibTimidity::PlaySong(const MusicSongInfo &song)
 {
+	if (song.filetype != MTT_STANDARDMIDI) return;
+
 	this->StopSong();
 
-	_midi.stream = mid_istream_open_file(filename);
+	_midi.stream = mid_istream_open_file(song.filename);
 	if (_midi.stream == NULL) {
 		DEBUG(driver, 0, "Could not open music file");
 		return;
