@@ -20,6 +20,7 @@
 #include "../os/windows/win32.h"
 #include "../core/mem_func.hpp"
 #include "dmusic.h"
+#include "../base_media_base.h"
 
 #include <windows.h>
 #undef FACILITY_DIRECTMUSIC // Needed for newer Windows SDK version.
@@ -214,7 +215,7 @@ void MusicDriver_DMusic::Stop()
 }
 
 
-void MusicDriver_DMusic::PlaySong(const char *filename)
+void MusicDriver_DMusic::PlaySong(const MusicSongInfo &song)
 {
 	/* set up the loader object info */
 	DMUS_OBJECTDESC obj_desc;
@@ -224,7 +225,7 @@ void MusicDriver_DMusic::PlaySong(const char *filename)
 	obj_desc.dwValidData = DMUS_OBJ_CLASS | DMUS_OBJ_FILENAME | DMUS_OBJ_FULLPATH;
 	MultiByteToWideChar(
 		CP_ACP, MB_PRECOMPOSED,
-		filename, -1,
+		song.filename, -1,
 		obj_desc.wszFileName, lengthof(obj_desc.wszFileName)
 	);
 

@@ -285,11 +285,22 @@ static const uint NUM_SONGS_AVAILABLE = 1 + NUM_SONG_CLASSES * NUM_SONGS_CLASS;
 /** Maximum number of songs in the (custom) playlist */
 static const uint NUM_SONGS_PLAYLIST  = 32;
 
+enum MusicTrackType {
+	MTT_STANDARDMIDI, // Standard MIDI file
+};
+
+/** Metadata about a music track */
+struct MusicSongInfo {
+	char songname[32];
+	byte tracknr;
+	const char *filename;
+	MusicTrackType filetype;
+};
+
 /** All data of a music set. */
 struct MusicSet : BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false> {
 	/** The name of the different songs. */
-	char song_name[NUM_SONGS_AVAILABLE][32];
-	byte track_nr[NUM_SONGS_AVAILABLE];
+	MusicSongInfo songinfo[NUM_SONGS_AVAILABLE];
 	byte num_available;
 
 	bool FillSetDetails(struct IniFile *ini, const char *path, const char *full_filename);

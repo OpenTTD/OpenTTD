@@ -19,6 +19,7 @@
 #include "../os/macosx/macos.h"
 #include "cocoa_m.h"
 #include "../debug.h"
+#include "../base_media_base.h"
 
 #define Rect        OTTDRect
 #define Point       OTTDPoint
@@ -143,8 +144,10 @@ void MusicDriver_Cocoa::Stop()
  *
  * @param filename Path to a MIDI file.
  */
-void MusicDriver_Cocoa::PlaySong(const char *filename)
+void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 {
+	if (song.filetype != MTT_STANDARDMIDI) return;
+
 	DEBUG(driver, 2, "cocoa_m: trying to play '%s'", filename);
 
 	this->StopSong();
@@ -158,7 +161,7 @@ void MusicDriver_Cocoa::PlaySong(const char *filename)
 		return;
 	}
 
-	const char *os_file = OTTD2FS(filename);
+	const char *os_file = OTTD2FS(song.filename);
 	CFURLRef url = CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, (const UInt8*)os_file, strlen(os_file), false);
 
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)

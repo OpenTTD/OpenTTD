@@ -21,7 +21,7 @@ public:
 
 	/* virtual */ void Stop() { }
 
-	/* virtual */ void PlaySong(const char *filename) { }
+	/* virtual */ void PlaySong(const MusicSongInfo &song) { }
 
 	/* virtual */ void StopSong() { }
 

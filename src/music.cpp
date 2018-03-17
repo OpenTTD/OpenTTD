@@ -66,12 +66,15 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 	if (ret) {
 		this->num_available = 0;
 		IniGroup *names = ini->GetGroup("names");
-		for (uint i = 0, j = 1; i < lengthof(this->song_name); i++) {
+		for (uint i = 0, j = 1; i < lengthof(this->songinfo); i++) {
 			const char *filename = this->files[i].filename;
 			if (names == NULL || StrEmpty(filename)) {
-				this->song_name[i][0] = '\0';
+				this->songinfo[i].songname[0] = '\0';
 				continue;
 			}
+
+			this->songinfo[i].filename = filename; // non-owned pointer
+			this->songinfo[i].filetype = MTT_STANDARDMIDI;
 
 			IniItem *item = NULL;
 			/* As we possibly add a path to the filename and we compare
@@ -91,8 +94,8 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 				return false;
 			}
 
-			strecpy(this->song_name[i], item->value, lastof(this->song_name[i]));
-			this->track_nr[i] = j++;
+			strecpy(this->songinfo[i].songname, item->value, lastof(this->songinfo[i].songname));
+			this->songinfo[i].tracknr = j++;
 			this->num_available++;
 		}
 	}
