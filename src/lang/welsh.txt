@@ -3361,6 +3361,8 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Dileu pob cerby
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ailenwi grŵp
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Elw eleni:
+STR_GROUP_OCCUPANCY                                             :Defnydd presennol:
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Cerbydau Rheilffordd Newydd
