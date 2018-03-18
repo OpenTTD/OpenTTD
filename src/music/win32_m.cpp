@@ -362,6 +362,10 @@ const char *MusicDriver_Win32::Start(const char * const *parm)
 	static byte gm_enable_sysex[] = { 0xF0, 0x7E, 0x00, 0x09, 0x01, 0xF7 };
 	TransmitSysexConst(&gm_enable_sysex[0], sizeof(gm_enable_sysex));
 
+	/* Roland-specific reverb room control, used by the original game */
+	static byte roland_reverb_sysex[] = { 0xF0, 0x41, 0x10, 0x42, 0x12, 0x40, 0x01, 0x30, 0x02, 0x04, 0x00, 0x40, 0x40, 0x00, 0x00, 0x09, 0xF7 };
+	TransmitSysexConst(&roland_reverb_sysex[0], sizeof(roland_reverb_sysex));
+
 	/* prepare multimedia timer */
 	TIMECAPS timecaps;
 	if (timeGetDevCaps(&timecaps, sizeof(timecaps)) == MMSYSERR_NOERROR) {
