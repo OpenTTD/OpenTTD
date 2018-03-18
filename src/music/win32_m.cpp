@@ -339,10 +339,14 @@ const char *MusicDriver_Win32::Start(const char * const *parm)
 	midiOutReset(_midi.midi_out);
 
 	{
+		/* Standard "Enable General MIDI" message */
 		static byte gm_enable_sysex[] = { 0xF0, 0x7E, 0x00, 0x09, 0x01, 0xF7 };
-		byte *ptr = gm_enable_sysex;
-		size_t len = sizeof(gm_enable_sysex);
-		TransmitSysex(ptr, len);
+		/* Roland-specific reverb room control, used by the original game */
+		static byte roland_reverb_sysex[] = { 0xF0, 0x41, 0x10, 0x42, 0x12, 0x40, 0x01, 0x30, 0x02, 0x04, 0x00, 0x40, 0x40, 0x00, 0x00, 0x09, 0xF7 };
+		byte *ptr;
+		size_t len;
+		TransmitSysex((ptr = gm_enable_sysex), (len = sizeof(gm_enable_sysex)));
+		TransmitSysex((ptr = roland_reverb_sysex), (len = sizeof(roland_reverb_sysex)));
 	}
 
 	TIMECAPS timecaps;
