@@ -126,6 +126,19 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 			DEBUG(driver, 2, "Win32-MIDI: timer: do_start is set");
 			if (_midi.playing) {
 				midiOutReset(_midi.midi_out);
+				/* Some songs change the "Pitch bend range" registered
+				 * parameter. If this doesn't get reset, everything else
+				 * will start sounding wrong. */
+				for (int ch = 0; ch < 16; ch++) {
+					/* Running status, only need status for first message */
+					/* Select RPN 00.00, set value to 02.00, and unselect again */
+					TransmitChannelMsg(MIDIST_CONTROLLER | ch, MIDICT_RPN_SELECT_LO, 0x00);
+					TransmitChannelMsg(MIDICT_RPN_SELECT_HI, 0x00);
+					TransmitChannelMsg(MIDICT_DATAENTRY,     0x02);
+					TransmitChannelMsg(MIDICT_DATAENTRY_LO,  0x00);
+					TransmitChannelMsg(MIDICT_RPN_SELECT_LO, 0x7F);
+					TransmitChannelMsg(MIDICT_RPN_SELECT_HI, 0x7F);
+				}
 			}
 			_midi.current_file.MoveFrom(_midi.next_file);
 			std::swap(_midi.next_segment, _midi.current_segment);
