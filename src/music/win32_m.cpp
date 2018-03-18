@@ -113,6 +113,17 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 			DEBUG(driver, 2, "Win32-MIDI: timer: do_start is set");
 			if (_midi.playing) {
 				midiOutReset(_midi.midi_out);
+				/* Some songs change the "Pitch bend range" registered
+				 * parameter. If this doesn't get reset, everything else
+				 * will start sounding wrong. */
+				for (int ch = 0; ch < 16; ch++) {
+					TransmitChannelMsg(0xB0 | ch, 0x64, 0x00); // select RPN 00.00 "Pitch bend range"
+					TransmitChannelMsg(0xB0 | ch, 0x65, 0x00);
+					TransmitChannelMsg(0xB0 | ch, 0x06, 0x02); // set parameter to 02.00 (2 semitones, the default)
+					TransmitChannelMsg(0xB0 | ch, 0x26, 0x00);
+					TransmitChannelMsg(0xB0 | ch, 0x64, 0x7F); // unselect RPN
+					TransmitChannelMsg(0xB0 | ch, 0x65, 0x7F);
+				}
 			}
 			_midi.current_file.MoveFrom(_midi.next_file);
 			std::swap(_midi.next_segment, _midi.current_segment);
