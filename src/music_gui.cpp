@@ -478,17 +478,19 @@ struct MusicTrackSelectionWindow : public Window {
 	{
 		switch (widget) {
 			case WID_MTS_LIST_LEFT: { // add to playlist
-				int y = this->GetRowFromWidget(pt.y, widget, 0, FONT_HEIGHT_SMALL);
+				int row = this->GetRowFromWidget(pt.y, widget, WD_FRAMERECT_TOP, FONT_HEIGHT_SMALL);
 
 				if (_settings_client.music.playlist < 4) return;
-				if (!IsInsideMM(y, 0, BaseMusic::GetUsedSet()->num_available)) return;
+				if (!IsInsideMM(row, 0, BaseMusic::GetUsedSet()->num_available)) return;
+
+				if (!BaseMusic::GetUsedSet()->has_theme) row += 1; // with theme, track number is counted from 0
 
 				byte *p = _playlists[_settings_client.music.playlist];
 				for (uint i = 0; i != NUM_SONGS_PLAYLIST - 1; i++) {
 					if (p[i] == 0) {
 						/* Find the actual song number */
 						for (uint j = 0; j < NUM_SONGS_AVAILABLE; j++) {
-							if (GetTrackNumber(j) == y + 1) {
+							if (GetTrackNumber(j) == row) {
 								p[i] = j + 1;
 								break;
 							}
@@ -503,13 +505,13 @@ struct MusicTrackSelectionWindow : public Window {
 			}
 
 			case WID_MTS_LIST_RIGHT: { // remove from playlist
-				int y = this->GetRowFromWidget(pt.y, widget, 0, FONT_HEIGHT_SMALL);
+				int row = this->GetRowFromWidget(pt.y, widget, WD_FRAMERECT_TOP, FONT_HEIGHT_SMALL);
 
 				if (_settings_client.music.playlist < 4) return;
-				if (!IsInsideMM(y, 0, NUM_SONGS_PLAYLIST)) return;
+				if (!IsInsideMM(row, 0, NUM_SONGS_PLAYLIST)) return;
 
 				byte *p = _playlists[_settings_client.music.playlist];
-				for (uint i = y; i != NUM_SONGS_PLAYLIST - 1; i++) {
+				for (uint i = row; i != NUM_SONGS_PLAYLIST - 1; i++) {
 					p[i] = p[i + 1];
 				}
 
