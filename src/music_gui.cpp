@@ -528,6 +528,20 @@ struct MusicWindow : public Window {
 		this->InitNested(number);
 		this->LowerWidget(_settings_client.music.playlist + WID_M_ALL);
 		this->SetWidgetLoweredState(WID_M_SHUFFLE, _settings_client.music.shuffle);
+
+		UpdateDisabledButtons();
+	}
+
+	void UpdateDisabledButtons()
+	{
+		/* Disable music control widgets if there is no music
+		 * -- except Programme button! So you can still select a music set. */
+		this->SetWidgetsDisabledState(
+			BaseMusic::GetUsedSet()->num_available == 0,
+			WID_M_PREV, WID_M_NEXT, WID_M_STOP, WID_M_PLAY, WID_M_SHUFFLE,
+			WID_M_ALL, WID_M_OLD, WID_M_NEW, WID_M_EZY, WID_M_CUSTOM1, WID_M_CUSTOM2,
+			WIDGET_LIST_END
+			);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -624,6 +638,9 @@ struct MusicWindow : public Window {
 		for (int i = 0; i < 6; i++) {
 			this->SetWidgetLoweredState(WID_M_ALL + i, i == _settings_client.music.playlist);
 		}
+
+		UpdateDisabledButtons();
+
 		this->SetDirty();
 	}
 
