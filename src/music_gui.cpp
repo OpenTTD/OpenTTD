@@ -299,11 +299,11 @@ void ResetMusic()
  */
 void MusicLoop()
 {
+	/* Make sure music restarts when going from/to main menu */
 	static GameMode _last_game_mode = GM_BOOTSTRAP;
-	bool force_restart = false;
 	if (_game_mode != _last_game_mode) {
-		force_restart = true;
 		_last_game_mode = _game_mode;
+		StopMusic();
 	}
 
 	if (!_settings_client.music.playing && _song_is_active) {
@@ -314,7 +314,7 @@ void MusicLoop()
 
 	if (!_song_is_active) return;
 
-	if (force_restart || !MusicDriver::GetInstance()->IsSongPlaying()) {
+	if (!MusicDriver::GetInstance()->IsSongPlaying()) {
 		if (_game_mode == GM_MENU && BaseMusic::GetUsedSet()->has_theme) {
 			ResetMusic();
 		} else {
