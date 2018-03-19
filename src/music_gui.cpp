@@ -591,6 +591,9 @@ struct MusicWindow : public Window {
 		switch (widget) {
 			case WID_M_TRACK_NR: {
 				GfxFillRect(r.left + 1, r.top + 1, r.right, r.bottom, PC_BLACK);
+				if (BaseMusic::GetUsedSet()->num_available == 0) {
+					break;
+				}
 				StringID str = STR_MUSIC_TRACK_NONE;
 				if (_song_is_active != 0 && _music_wnd_cursong != 0) {
 					SetDParam(0, GetTrackNumber(_music_wnd_cursong - 1));
@@ -604,7 +607,9 @@ struct MusicWindow : public Window {
 			case WID_M_TRACK_NAME: {
 				GfxFillRect(r.left, r.top + 1, r.right - 1, r.bottom, PC_BLACK);
 				StringID str = STR_MUSIC_TITLE_NONE;
-				if (_song_is_active != 0 && _music_wnd_cursong != 0) {
+				if (BaseMusic::GetUsedSet()->num_available == 0) {
+					str = STR_MUSIC_TITLE_NOMUSIC;
+				} else if (_song_is_active != 0 && _music_wnd_cursong != 0) {
 					str = STR_MUSIC_TITLE_NAME;
 					SetDParamStr(0, GetSongName(_music_wnd_cursong - 1));
 				}
@@ -799,6 +804,5 @@ static WindowDesc _music_window_desc(
 
 void ShowMusicWindow()
 {
-	if (BaseMusic::GetUsedSet()->num_available == 0) ShowErrorMessage(STR_ERROR_NO_SONGS, INVALID_STRING_ID, WL_WARNING);
 	AllocateWindowDescFront<MusicWindow>(&_music_window_desc, 0);
 }
