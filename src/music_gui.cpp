@@ -18,6 +18,7 @@
 #include "window_func.h"
 #include "sound_func.h"
 #include "gfx_func.h"
+#include "zoom_func.h"
 #include "core/random_func.hpp"
 #include "error.h"
 #include "core/geometry_func.hpp"
@@ -618,15 +619,13 @@ struct MusicWindow : public Window {
 			}
 
 			case WID_M_MUSIC_VOL: case WID_M_EFFECT_VOL: {
-				DrawFrameRect(r.left, r.top + 2, r.right, r.bottom - 2, COLOUR_GREY, FR_LOWERED);
+				int sw = ScaleGUITrad(slider_width);
+				int hsw = sw / 2;
+				DrawFrameRect(r.left + hsw, r.top + 2, r.right - hsw, r.bottom - 2, COLOUR_GREY, FR_LOWERED);
 				byte volume = (widget == WID_M_MUSIC_VOL) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
-				int x = (volume * (r.right - r.left) / 127);
-				if (_current_text_dir == TD_RTL) {
-					x = r.right - x;
-				} else {
-					x += r.left;
-				}
-				DrawFrameRect(x, r.top, x + slider_width, r.bottom, COLOUR_GREY, FR_NONE);
+				if (_current_text_dir == TD_RTL) volume = 127 - volume;
+				int x = r.left + (volume * (r.right - r.left - sw) / 127);
+				DrawFrameRect(x, r.top, x + sw, r.bottom, COLOUR_GREY, FR_NONE);
 				break;
 			}
 		}
@@ -679,6 +678,9 @@ struct MusicWindow : public Window {
 
 				byte new_vol = x * 127 / this->GetWidget<NWidgetBase>(widget)->current_x;
 				if (_current_text_dir == TD_RTL) new_vol = 127 - new_vol;
+				/* Clamp to make sure min and max are properly settable */
+				if (new_vol > 124) new_vol = 127;
+				if (new_vol < 3) new_vol = 0;
 				if (new_vol != *vol) {
 					*vol = new_vol;
 					if (widget == WID_M_MUSIC_VOL) MusicVolumeChanged(new_vol);
