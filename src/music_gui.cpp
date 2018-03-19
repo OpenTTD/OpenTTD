@@ -103,7 +103,7 @@ void ValidatePlaylist(byte *playlist, byte *last)
 	*last = 0;
 }
 
-/** Initialize the playlists */
+/** Prepare the playlists */
 void InitializeMusic()
 {
 	uint j = 0;
@@ -195,7 +195,8 @@ static void DoStopMusic()
 	SetWindowDirty(WC_MUSIC_WINDOW, 0);
 }
 
-static void SelectSongToPlay()
+/** Reload the active playlist data from playlist selection and shuffle setting */
+static void ResetPlaylist()
 {
 	uint i = 0;
 	uint j = 0;
@@ -241,10 +242,11 @@ static void StopMusic()
 	SetWindowWidgetDirty(WC_MUSIC_WINDOW, 0, 9);
 }
 
+/** Begin playing the next song on the playlist */
 static void PlayPlaylistSong()
 {
 	if (_cur_playlist[0] == 0) {
-		SelectSongToPlay();
+		ResetPlaylist();
 		/* if there is not songs in the playlist, it may indicate
 		 * no file on the gm folder, or even no gm folder.
 		 * Stop the playback, then */
@@ -268,6 +270,10 @@ void ResetMusic()
 	DoPlaySong();
 }
 
+/**
+ * Check music playback status and start/stop/song-finished.
+ * Called from main loop.
+ */
 void MusicLoop()
 {
 	if (!_settings_client.music.playing && _song_is_active) {
@@ -426,7 +432,7 @@ struct MusicTrackSelectionWindow : public Window {
 						}
 						p[i + 1] = 0;
 						this->SetDirty();
-						SelectSongToPlay();
+						ResetPlaylist();
 						break;
 					}
 				}
@@ -445,7 +451,7 @@ struct MusicTrackSelectionWindow : public Window {
 				}
 
 				this->SetDirty();
-				SelectSongToPlay();
+				ResetPlaylist();
 				break;
 			}
 
@@ -453,14 +459,14 @@ struct MusicTrackSelectionWindow : public Window {
 				for (uint i = 0; _playlists[_settings_client.music.playlist][i] != 0; i++) _playlists[_settings_client.music.playlist][i] = 0;
 				this->SetDirty();
 				StopMusic();
-				SelectSongToPlay();
+				ResetPlaylist();
 				break;
 
 			case WID_MTS_ALL: case WID_MTS_OLD: case WID_MTS_NEW:
 			case WID_MTS_EZY: case WID_MTS_CUSTOM1: case WID_MTS_CUSTOM2: // set playlist
 				SelectPlaylist(widget - WID_MTS_ALL);
 				StopMusic();
-				SelectSongToPlay();
+				ResetPlaylist();
 				break;
 		}
 	}
@@ -666,7 +672,7 @@ struct MusicWindow : public Window {
 				this->SetWidgetLoweredState(WID_M_SHUFFLE, _settings_client.music.shuffle);
 				this->SetWidgetDirty(WID_M_SHUFFLE);
 				StopMusic();
-				SelectSongToPlay();
+				ResetPlaylist();
 				this->SetDirty();
 				break;
 
@@ -678,7 +684,7 @@ struct MusicWindow : public Window {
 			case WID_M_EZY: case WID_M_CUSTOM1: case WID_M_CUSTOM2: // playlist
 				SelectPlaylist(widget - WID_M_ALL);
 				StopMusic();
-				SelectSongToPlay();
+				ResetPlaylist();
 				this->SetDirty();
 				break;
 		}
