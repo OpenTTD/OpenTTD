@@ -650,6 +650,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}No music available
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{RAW_STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Track
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Title
