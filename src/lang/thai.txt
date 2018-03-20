@@ -661,10 +661,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}เล�
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}เปิด/ปิด Toggle programme shuffle on/off
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}แสดงหน้าต่างเลือกรายการเพลง
 
-STR_ERROR_NO_SONGS                                              :{WHITE}ชุดเพลงประกอบนี้ไม่มีการเลือกเพลงไว้
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}รายการเลือกโปรแกรมเพลง
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}รายการเพลง
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}โปรแกรม - '{STRING}'

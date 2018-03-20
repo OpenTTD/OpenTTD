@@ -732,10 +732,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}A 'Sajá
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Véletlen sorrendű lejátszás be/ki
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}A számkiválasztó ablak megjelenítése
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Egy zeneszámokat nem tartalmazó zenei alapcsomag lett kiválasztva. A játékban nem lesz zene
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Zenei műsor kiválasztása
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Számlista
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}"{STRING}" Műsora

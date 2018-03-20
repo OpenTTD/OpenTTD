@@ -669,10 +669,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}選擇�
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}開關播放清單亂序播放
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}於選擇視窗顯示樂軌
 
-STR_ERROR_NO_SONGS                                              :{WHITE}已選擇不含音樂的音樂集，不會播放任何音樂
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}背景音樂播放清單選擇
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM}「{STRING}」
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}音軌索引
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}播放清單 - 「{STRING}」

@@ -647,10 +647,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Velja 'S
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Kveikja/slökkva á stokkun
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Sýna lagalista
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Tómur lagalisti hefur verið valinn. Engin lög verða spiluð
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Lagalistar
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Laganúmer
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Listi - '{STRING}'

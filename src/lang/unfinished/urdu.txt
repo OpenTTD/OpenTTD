@@ -649,10 +649,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'اپن�
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}پروگرام ہلانے کی تدویم کیجئیے
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}گانا چننے کا اختیار دینے والی ونڈو دکھائیں
 
-STR_ERROR_NO_SONGS                                              :{WHITE}کوئی گانا دستیاب نہیں ہے
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}موسیقی کے پروگرام کا انتخاب کریں
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}گانوں کی فہرست
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}پروگرام - '{STRING}'

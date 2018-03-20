@@ -669,10 +669,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Välj sp
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Växla slumpning av/på
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Visa fönstret för val av musikspår
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Ett musikpaket utan låtar har valts. Ingen musik kommer att spelas
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Konstruera spellista
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Spårindex
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Spellista - '{STRING}'

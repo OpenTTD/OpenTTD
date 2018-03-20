@@ -669,10 +669,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Roghnaig
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Scoránaigh ord randamach clár air/as
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Taispeáin an fhuinneogh chun rianta ceoil a roghnú
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Roghnaíodh sraith ceoil gan aon amhrán ann. Ní sheinnfear aon amhrán
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Clár Ceoil a Roghnú
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Innéacs na Rianta
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Clár - '{STRING}'

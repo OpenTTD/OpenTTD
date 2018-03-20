@@ -644,10 +644,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}اختي
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}تشغيل / ايقاف العشوائي
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}اظهار اطار اختيار الموسيقى
 
-STR_ERROR_NO_SONGS                                              :{WHITE}لا تحتوى قاعده الموسيقى المُختاره على اى اغانى. لن تُعزَف اى اغانى
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}برنامج اختيار الموسيقى
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}قائمة المعزوفات
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}برنامج - '{STRING}'
