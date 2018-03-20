@@ -797,10 +797,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Вибр
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Вкл./відкл. випадкову програму
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Показує вікно вибору музичної програми
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Був обраний музичний набір без пісень. Пісні не будуть програватись
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Вибір музичної програми
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Назва доріжки
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Програма - '{STRING}'

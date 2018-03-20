@@ -647,10 +647,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Vel 'Sj�
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Tendra/sløkk bland av skránni
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Vís tónleika spor úrvals glugga
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Eitt tónleika sett uttan sangir er valt. Engir sangir vera spældir
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Úrval av tónleika skráðum
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Spor yvirlit
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Skrá - '{STRING}'

@@ -628,10 +628,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'कस�
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}कार्यक्रम चुळबूळ - प्रारंभ / बंद
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}संगीत ट्रॅक निवड दाखवा
 
-STR_ERROR_NO_SONGS                                              :{WHITE}संगीत न संगीत संच निवडले गेले आहे. एकही गाणी खेळला जाईल.
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}संगीत कार्यक्रम निवड.
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}गाणे क्रमांक
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}कार्यक्रम - '{STRING}'

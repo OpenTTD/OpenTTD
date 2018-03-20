@@ -663,10 +663,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Elektu l
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Miksu/ne miksu
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Montru muziker-elektan fenestron
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Senkanta muzikaro estas elektita. Neniu kanto ludos.
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Elekto de Muzikprogramo
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Numera Indekso
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programo - '{STRING}'

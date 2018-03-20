@@ -670,10 +670,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'사용�
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}프로그램을 무작위 재생합니다.
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}배경 음악 트랙을 선택할 수 있는 창을 엽니다.
 
-STR_ERROR_NO_SONGS                                              :{WHITE}선택된 배경 음악 목록에 노래가 없습니다. 배경 음악이 재생 되지 않을 것입니다.
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}배경 음악 프로그램 선택
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}음악 목록
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}프로그램 - '{STRING}'

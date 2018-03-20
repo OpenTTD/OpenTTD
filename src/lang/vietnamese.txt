@@ -669,10 +669,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Chọn k
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Bật/tắt chơi nhạc ngẫu nhiên
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Hiện cửa số chọn bài nhạc
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Đã chọn gói nhạc chuẩn nhưng không có bài nào. Không có bài nào để chơi
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Chọn Kiểu Chơi Nhạc
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Bảng Bài Nhạc
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Chương Trình - '{STRING}'
