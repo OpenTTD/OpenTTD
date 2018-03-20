@@ -674,11 +674,14 @@ STR_ERROR_NO_SONGS                                              :{WHITE}A music 
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Music Programme Selection
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Music Programme - '{RAW_STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{RAW_STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Track Index
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programme - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Clear
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Change set
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Clear current programme (Custom1 or Custom2 only)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Change music selection to another installed set
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click on music track to add to current programme (Custom1 or Custom2 only)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Click on music track to remove it from current programme (Custom1 or Custom2 only)
 
