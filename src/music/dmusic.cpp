@@ -1228,11 +1228,10 @@ void MusicDriver_DMusic::Stop()
 
 void MusicDriver_DMusic::PlaySong(const MusicSongInfo &song)
 {
-	if (song.filetype != MTT_STANDARDMIDI) return;
-
 	ThreadMutexLocker lock(_thread_mutex);
 
-	_playback.next_file.LoadFile(song.filename);
+	if (!_playback.next_file.LoadSong(song)) return;
+
 	_playback.next_segment.start = 0;
 	_playback.next_segment.end = 0;
 	_playback.next_segment.loop = false;

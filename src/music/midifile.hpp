@@ -16,6 +16,7 @@
 #include "../core/smallvec_type.hpp"
 #include "midi.h"
 #include <vector>
+#include <string>
 
 struct MusicSongInfo;
 
@@ -46,6 +47,7 @@ struct MidiFile {
 
 	bool WriteSMF(const char *filename);
 
+	static std::string GetSMFFile(const MusicSongInfo &song);
 	static bool ReadSMFHeader(const char *filename, SMFHeader &header);
 	static bool ReadSMFHeader(FILE *file, SMFHeader &header);
 };

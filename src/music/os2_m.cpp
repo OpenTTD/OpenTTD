@@ -12,6 +12,7 @@
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "os2_m.h"
+#include "midifile.hpp"
 #include "../base_media_base.h"
 
 #define INCL_DOS
@@ -52,11 +53,12 @@ static FMusicDriver_OS2 iFMusicDriver_OS2;
 
 void MusicDriver_OS2::PlaySong(const MusicSongInfo &song)
 {
-	if (song.filetype != MTT_STANDARDMIDI) return;
+	std::string filename = MidiFile::GetSMFFile(song);
 
 	MidiSendCommand("close all");
+	if (filename.empty()) return;
 
-	if (MidiSendCommand("open %s type sequencer alias song", song.filename) != 0) {
+	if (MidiSendCommand("open %s type sequencer alias song", filename.c_str()) != 0) {
 		return;
 	}
 
