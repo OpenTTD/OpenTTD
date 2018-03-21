@@ -13,6 +13,8 @@
 #include "../core/smallvec_type.hpp"
 #include <vector>
 
+struct MusicSongInfo;
+
 struct MidiFile {
 	struct DataBlock {
 		uint32 ticktime;           ///< tick number since start of file this block should be triggered at
@@ -44,6 +46,7 @@ struct MidiFile {
 
 	bool WriteSMF(const char *filename);
 
+	static char *GetSMFFile(const MusicSongInfo &song);
 	static bool ReadSMFHeader(const char *filename, SMFHeader &header);
 	static bool ReadSMFHeader(FILE *file, SMFHeader &header);
 };

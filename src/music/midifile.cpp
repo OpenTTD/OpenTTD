@@ -1006,6 +1006,70 @@ bool MidiFile::WriteSMF(const char *filename)
 	return true;
 }
 
+/**
+ * Get the name of a Standard MIDI File for a given song.
+ * For songs already in SMF format, just returns the original.
+ * Otherwise the song is converted and a temporary file written,
+ * and the temporary file's name returned.
+ * @note Caller is responsible for freeing the returned string.
+ * @param song Song definition to query
+ * @return Full filename string, NULL if failed
+ */
+char *MidiFile::GetSMFFile(const MusicSongInfo &song)
+{
+	if (song.filetype == MTT_STANDARDMIDI) {
+		return stredup(song.filename);
+	}
+
+	if (song.filetype != MTT_MPSMIDI) return NULL;
+
+	const char *lastpathsep = strrchr(song.filename, PATHSEPCHAR);
+	if (lastpathsep == NULL) {
+		lastpathsep = song.filename;
+	}
+
+	char basename[MAX_PATH];
+	{
+		/* Remove all '.' characters from filename */
+		char *wp = basename;
+		for (const char *rp = lastpathsep + 1; *rp != '\0'; rp++) {
+			if (*rp != '.') *wp++ = *rp;
+		}
+		*wp++ = '\0';
+	}
+
+	char tempdirname[MAX_PATH];
+	FioGetFullPath(tempdirname, lastof(tempdirname), Searchpath::SP_AUTODOWNLOAD_DIR, Subdirectory::BASESET_DIR, basename);
+	if (AppendPathSeparator(tempdirname, lastof(tempdirname)) == false) return NULL;
+	FioCreateDirectory(tempdirname);
+
+	char output_filename[MAX_PATH];
+	seprintf(output_filename, lastof(output_filename), "%s%d.mid", tempdirname, song.cat_index);
+
+	if (FileExists(output_filename)) {
+		/* If the file already exists, assume it's the correct decoded data */
+		return stredup(output_filename);
+	}
+
+	byte *data;
+	size_t datalen;
+	data = GetMusicCatEntryData(song.filename, song.cat_index, datalen);
+	if (data == NULL) return NULL;
+
+	MidiFile midifile;
+	if (!midifile.LoadMpsData(data, datalen)) {
+		free(data);
+		return NULL;
+	}
+	free(data);
+
+	if (midifile.WriteSMF(output_filename)) {
+		return stredup(output_filename);
+	} else {
+		return NULL;
+	}
+}
+
 
 static bool CmdGlitchMusic(byte argc, char *argv[])
 {

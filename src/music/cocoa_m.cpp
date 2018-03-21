@@ -18,6 +18,7 @@
 #include "../stdafx.h"
 #include "../os/macosx/macos.h"
 #include "cocoa_m.h"
+#include "midifile.hpp"
 #include "../debug.h"
 #include "../base_media_base.h"
 
@@ -146,7 +147,7 @@ void MusicDriver_Cocoa::Stop()
  */
 void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 {
-	if (song.filetype != MTT_STANDARDMIDI) return;
+	char *filename = MidiFile::GetSMFFile(song);
 
 	DEBUG(driver, 2, "cocoa_m: trying to play '%s'", filename);
 
@@ -156,13 +157,17 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 		_sequence = NULL;
 	}
 
+	if (filename == NULL) return;
+
 	if (NewMusicSequence(&_sequence) != noErr) {
 		DEBUG(driver, 0, "cocoa_m: Failed to create music sequence");
+		free(filename);
 		return;
 	}
 
-	const char *os_file = OTTD2FS(song.filename);
+	const char *os_file = OTTD2FS(filename);
 	CFURLRef url = CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, (const UInt8*)os_file, strlen(os_file), false);
+	free(filename);
 
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 	if (MacOSVersionIsAtLeast(10, 5, 0)) {

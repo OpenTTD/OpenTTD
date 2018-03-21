@@ -30,6 +30,7 @@
 
 #include "../stdafx.h"
 #include "qtmidi.h"
+#include "midifile.hpp"
 #include "../debug.h"
 #include "../base_media_base.h"
 
@@ -261,8 +262,10 @@ void MusicDriver_QtMidi::Stop()
  */
 void MusicDriver_QtMidi::PlaySong(const MusicSongInfo &song)
 {
-	if (song.filetype != MTT_STANDARDMIDI) return;
 	if (!_quicktime_started) return;
+
+	char *filename = MidiFile::GetSMFFile(song);
+	if (filename == NULL) return;
 
 	DEBUG(driver, 2, "qtmidi: trying to play '%s'", filename);
 	switch (_quicktime_state) {
@@ -278,7 +281,8 @@ void MusicDriver_QtMidi::PlaySong(const MusicSongInfo &song)
 			FALLTHROUGH;
 
 		case QT_STATE_IDLE:
-			LoadMovieForMIDIFile(song.filename, &_quicktime_movie);
+			LoadMovieForMIDIFile(filename, &_quicktime_movie);
+			free(filename);
 			SetMovieVolume(_quicktime_movie, VOLUME);
 			StartMovie(_quicktime_movie);
 			_quicktime_state = QT_STATE_PLAY;
