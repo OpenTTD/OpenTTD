@@ -45,12 +45,15 @@ description.en_US = howdie
 ; The file names are case sensitive.
 ; You can have empty file names; in that case no song will be loaded
 ; for that 'entry'.
+; If you want to load music from the MPS DOS music driver "cat" format,
+; specify just the name of the .cat file the song is located in, then
+; fill out the "catindex" section.
 [files]
 ; The theme song for OpenTTD
 theme = THEME_SONG.GM
 ; The songs in the 'old style' category
-old_0 =
-old_1 =
+old_0 = GM.CAT
+old_1 = GM.CAT
 old_2 =
 old_3 =
 old_4 =
@@ -86,8 +89,16 @@ ezy_9 =
 ; Note that the list of files is case sensitive. Each file listed in the
 ; files section must be listed here with it's song name, otherwise you
 ; will get a lot of warnings when starting OpenTTD.
+; You don't need to fill this out for "cat" format music, the song names
+; are loaded directly from the file in that case.
 [names]
 THEME_SONG.GM = Tycoon DELUXE Theme
+
+; If you are loading music from the DOS version "cat" format, specify
+; which index into the file the song has.
+[catindex]
+old_0 = 1
+old_1 = 3
 
 ; The md5s section lists the MD5 checksum for the files that replace them.
 ; Note that the list of files is case sensitive. Each file listed in the
@@ -95,6 +106,13 @@ THEME_SONG.GM = Tycoon DELUXE Theme
 ; will get a lot of warnings when starting OpenTTD.
 [md5s]
 THEME_SONG.GM = 45cfec1b9d8c7a0ad45e755833cbf221
+
+; If a song needs to have parts of the start or end cut off to avoid long
+; silences, you can specify MIDI tick codes for start:end of the actual
+; music part for each file here.
+; Not all music drivers might support this feature.
+[timingtrim]
+THEME_SONG.GM = 768:53760
 
 ; The origin section provides the possibility to put and extra line into
 ; the warning that a file is missing/corrupt. This can be used to tell
