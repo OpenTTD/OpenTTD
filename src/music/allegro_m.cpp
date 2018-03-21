@@ -14,6 +14,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "allegro_m.h"
+#include "midifile.hpp"
 #include <allegro.h>
 
 #include "../safeguards.h"
@@ -60,11 +61,15 @@ void MusicDriver_Allegro::Stop()
 
 void MusicDriver_Allegro::PlaySong(const MusicSongInfo &song)
 {
-	if (song.filetype != MTT_STANDARDMIDI) return;
+	std::string filename = MidiFile::GetSMFFile(song);
 
 	if (_midi != NULL) destroy_midi(_midi);
-	_midi = load_midi(song.filename);
-	play_midi(_midi, false);
+	if (!filename.empty()) {
+		_midi = load_midi(filename.c_str());
+		play_midi(_midi, false);
+	} else {
+		_midi = NULL;
+	}
 }
 
 void MusicDriver_Allegro::StopSong()

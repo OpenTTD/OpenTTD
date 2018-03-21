@@ -13,6 +13,7 @@
 #include "../openttd.h"
 #include "bemidi.h"
 #include "../base_media_base.h"
+#include "midifile.hpp"
 
 /* BeOS System Includes */
 #include <MidiSynthFile.h>
@@ -37,13 +38,15 @@ void MusicDriver_BeMidi::Stop()
 
 void MusicDriver_BeMidi::PlaySong(const MusicSongInfo &song)
 {
-	if (song.filetype != MTT_STANDARDMIDI) return;
+	std::string filename = MidiFile::GetSMFFile(song);
 
 	this->Stop();
-	entry_ref midiRef;
-	get_ref_for_path(song.filename, &midiRef);
-	midiSynthFile.LoadFile(&midiRef);
-	midiSynthFile.Start();
+	if (!filename.empty()) {
+		entry_ref midiRef;
+		get_ref_for_path(filename.c_str(), &midiRef);
+		midiSynthFile.LoadFile(&midiRef);
+		midiSynthFile.Start();
+	}
 }
 
 void MusicDriver_BeMidi::StopSong()
