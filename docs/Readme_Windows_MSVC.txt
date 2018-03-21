@@ -1,27 +1,24 @@
 Compiling OpenTTD using Microsoft Visual C++
-Last updated: 2010-01-03
+Last updated: 2018-03-21
 --------------------------------------------
 PLEASE READ THE ENTIRE DOCUMENT BEFORE DOING ANY ACTUAL CHANGES!!
 
 
 SUPPORTED MSVC COMPILERS
 ------------------------
-OpenTTD includes projects for MSVC 2005.NET and MSVC 2008.NET. Both will
-compile out of the box, providing you have the required libraries/headers;
-which ones, see below. There is no support for VS6 or MSVC 2002, or
-MSVC 2003.NET. You are therefore strongly encouraged to either upgrade to
-MSVC 2008 Express (free) or use GCC.
+OpenTTD includes projects for Microsoft Visual Studio 2005 and later.
+This is the earliest compiler supported, Visual C++ 2003, Visual C++ 6.0,
+or earlier, will not compile OpenTTD.
+You can download the free Visual Studio Community Edition from Microsoft.
 
 
 1) REQUIRED FILES
 -----------------
 You might already have some of the files already installed, so check before
-downloading; mostly because the DirectX SDK and Platform SDK are about
-500MB each.
+downloading; mostly because the Platform SDK is about 500MB.
 Download the following files:
 
 	* openttd-useful.zip (http://binaries.openttd.org/extra/openttd-useful/)
-	* DirectX 8.1 SDK (http://neuron.tuke.sk/~mizanin/eng/Dx81sdk-include-lib.rar) (or alternatively the latest DirectX SDK from Microsoft)
 	* MS Windows Platform SDK (http://www.microsoft.com/downloads/details.aspx?FamilyId=A55B6B43-E24F-4EA3-A93E-40C0EC4F68E5&displaylang=en)
 	* afxres.h (http://www-d0.fnal.gov/d0dist/dist/packages/d0ve/devel/windows/AFXRES.H)
 
@@ -81,12 +78,16 @@ See section 4.1 of README.md for the required 3rdparty files and how to install 
 
 4) COMPILING
 ------------
-Open trunk/openttd_vs[89]0.sln
+Open the appropriate "sln" (Solution) file for your version of Visual Studio:
+ - VS 2005: projects/openttd_vs80.sln
+ - VS 2008: projects/openttd_vs90.sln
+ - VS 2010: projects/openttd_vs100.sln
+ - VS 2015: projects/openttd_vs140.sln
 Set the build mode to 'Release' in
 Build > Configuration manager > Active solution configuration > select "Release"
 Compile...
 
-If everything works well the binary should be in trunk/objs/Win[32|64]/Release/openttd.exe
+If everything works well the binary should be in objs/Win[32|64]/Release/openttd.exe
 
 
 5) EDITING, CHANGING SOURCE CODE

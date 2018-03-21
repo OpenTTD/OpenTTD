@@ -224,21 +224,20 @@ have to copy the data files from the CD-ROM into the baseset/ directory. It
 does not matter whether you copy them from the DOS or Windows version of
 Transport Tycoon Deluxe. The Windows install can optionally copy these files.
 You need to copy the following files:
-
-- sample.cat
-- trg1r.grf or TRG1.GRF
-- trgcr.grf or TRGC.GRF
-- trghr.grf or TRGH.GRF
-- trgir.grf or TRGI.GRF
-- trgtr.grf or TRGT.GRF
+ - sample.cat
+ - trg1r.grf or TRG1.GRF
+ - trgcr.grf or TRGC.GRF
+ - trghr.grf or TRGH.GRF
+ - trgir.grf or TRGI.GRF
+ - trgtr.grf or TRGT.GRF
 
 #### 4.1.3) Original Transport Tycoon Deluxe music
 
-If you want the Transport Tycoon Deluxe music, copy the files from the gm/
-folder from the Windows version of Transport Tycoon Deluxe to the baseset
-folder in your OpenTTD folder (also explained in the following sections).
-The music from the DOS version as well as the original Transport Tycoon does
-not work.
+If you want the Transport Tycoon Deluxe music, copy the appropriate files from
+the original game into the baseset folder.
+ - TTD for Windows: All files in the gm/ folder (gm_tt00.gm up to gm_tt21.gm)
+ - TTD for DOS: The GM.CAT file
+ - Transport Tycoon Original: The GM.CAT file, but rename it to GM-TTO.CAT
 
 #### 4.1.4) AIs
 
