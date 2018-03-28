@@ -473,9 +473,9 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Напълно увеличен в кадъра.
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Увеличение по подразбиране
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Огромен Screenshot
-STR_ABOUT_MENU_ABOUT_OPENTTD                                    :За 'OpenTTD'
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Относно 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Подравнител на спрайтове
-STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Превключва слепване на прозците
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Активиране слепване на прозорците
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Превключва оцветяване на замърсените блокове
 ############ range ends here
 
@@ -755,6 +755,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Пока
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Показване/скриване на височинна карта
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Скриване на собствеността на компанията от картата
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Показване на цялата собственост на компанията на картата
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Покажи всички товари на картата
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Покажи последното съобщение или отчет на новините
@@ -1282,6 +1283,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Показва 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Дебелина на линиите в графиките: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Дебелина на линиите в графиките. Тънките линии са по-лесни за разчитане, но по-дебелите се забелязват и разграничават по-лесно.
 
+STR_CONFIG_SETTING_LANDSCAPE                                    :Пейзаж: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Генератор на земя: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :оригинален
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :тера-генезис
@@ -1293,6 +1295,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :много по
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :полегат
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :стръмен
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :много стръмен
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Количество на реките: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER                                  :Алгоритъм за поставяне на дървета: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :без дървета
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :оригинален
@@ -1584,6 +1587,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Без
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Множител за големината на града: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Относителен размер на мегаполисите в сравнение с градовете в началото на играта
 
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Количество на връщания товар при симетричнен режим: {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Единици за скорост: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Всеки път при показване на скорости, да бъдат изписвани в избраните мерни единици
@@ -1624,9 +1628,11 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Позициониране
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звукови ефекти
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Интерфейс
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Основни
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Строене
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Автомобили
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрутизация
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Права
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Градове
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Индустрии
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Съперници
@@ -2530,6 +2536,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Приет товар: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Ограничение на скоростта на линията: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Макс. скорост на пътя: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Скали
@@ -3010,6 +3017,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Натисни върху услугата за да се фокусира върху индустрията/града. Ctrl отваря нов изглед към индустрията/града
 
 # Story book window
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Прескочи до определена страница чрез избирането й в дроп-даун листата.
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Следваща
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Отиди на следващата страница
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Невалидна цел
@@ -3214,6 +3222,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Нужд
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Нуждае се от: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} чакащ{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Произвежда: {YELLOW}{STRING}{STRING}
@@ -3274,12 +3283,16 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Изтр
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Преименувай избраната група
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Щракни да защитиш тази група от глобална автоматична замяна
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Изтрий група
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Сигурен ли си, че искаш да изтриеш тази група и нейните производни?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Добави споделени превозни средства
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Премахни всички превозни средсва
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Преименовай група
 
+STR_GROUP_OCCUPANCY                                             :Използва се за:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Нови Машини за Двурелсов път
@@ -3446,6 +3459,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :локомот�
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цена: {CURRENCY_LONG} Тегло: {WEIGHT_SHORT}{}Скорост: {VELOCITY}  Мощност: {POWER}{}Разход: {CURRENCY_LONG}/г.{}Капацитет: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цена: {CURRENCY_LONG} Тегло: {WEIGHT_SHORT}{}Скорост: {VELOCITY}  Мощност: {POWER}  Макс. Т.С.: {6:FORCE}{}Експлоатационни разходи: {4:CURRENCY_LONG}/год.{}Вместимост: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Цена: {CURRENCY_LONG} Макс. Скорост: {VELOCITY}{}Вместимост: {CARGO_LONG}{}Експлоатационни разходи: {CURRENCY_LONG}/год.
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Цена: {CURRENCY_LONG} Макс.скорост: {VELOCITY}{}Тип самолет: {STRING}{}Вместимост: {CARGO_LONG}{}Оперативни разходи: {CURRENCY_LONG}/yr
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замяна {STRING} - {STRING}
@@ -3475,6 +3489,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Нати
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Превключване между замяна на локомотиви и вагони
 STR_REPLACE_ENGINES                                             :Двигатели
 STR_REPLACE_WAGONS                                              :Вагони
+STR_REPLACE_ALL_RAILTYPE                                        :Всички ЖП композиции
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Избор на ЖП линия с която да се заменят локомотивите
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Показване с кой двигател се заменя ляво избрания, ако има
@@ -4268,6 +4283,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... ви
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Групата неможе да бъде създадена...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Тази група неможе да бъде изтрита...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Групата неможе да бъде преименована...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Не може да избере горна група....
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Всички превозни средства немогат да бъдат премахнати от тази група...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Превозното средство неможе да се добави към тази група...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Поделени превозни средсва немогат да бъдат добавени към групата...
