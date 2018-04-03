@@ -237,22 +237,39 @@ static int CDECL ModeSorter(const OTTD_Point *p1, const OTTD_Point *p2)
 	return 0;
 }
 
-uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int device_depth)
+static void QZ_GetDisplayModeInfo(CFArrayRef modes, CFIndex i, int &bpp, uint16 &width, uint16 &height)
 {
-	CFArrayRef mode_list  = CGDisplayAvailableModes(display_id);
-	CFIndex    num_modes = CFArrayGetCount(mode_list);
+	bpp = 0;
+	width = 0;
+	height = 0;
 
-	/* Build list of modes with the requested bpp */
-	uint count = 0;
-	for (CFIndex i = 0; i < num_modes && count < max_modes; i++) {
-		int intvalue, bpp;
-		uint16 width, height;
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
+	if (MacOSVersionIsAtLeast(10, 6, 0)) {
+		CGDisplayModeRef mode = (CGDisplayModeRef)CFArrayGetValueAtIndex(modes, i);
 
-		CFDictionaryRef onemode = (const __CFDictionary*)CFArrayGetValueAtIndex(mode_list, i);
+		width = (uint16)CGDisplayModeGetWidth(mode);
+		height = (uint16)CGDisplayModeGetHeight(mode);
+
+#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_11)
+		/* Extract bit depth from mode string. */
+		CFStringRef pixEnc = CGDisplayModeCopyPixelEncoding(mode);
+		if (CFStringCompare(pixEnc, CFSTR(IO32BitDirectPixels), kCFCompareCaseInsensitive) == kCFCompareEqualTo) bpp = 32;
+		if (CFStringCompare(pixEnc, CFSTR(IO16BitDirectPixels), kCFCompareCaseInsensitive) == kCFCompareEqualTo) bpp = 16;
+		if (CFStringCompare(pixEnc, CFSTR(IO8BitIndexedPixels), kCFCompareCaseInsensitive) == kCFCompareEqualTo) bpp = 8;
+		CFRelease(pixEnc);
+#else
+		/* CGDisplayModeCopyPixelEncoding is deprecated on OSX 10.11+, but there are no 8 bpp modes anyway... */
+		bpp = 32;
+#endif
+	} else
+#endif
+	{
+		int intvalue;
+
+		CFDictionaryRef onemode = (const __CFDictionary*)CFArrayGetValueAtIndex(modes, i);
 		CFNumberRef number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayBitsPerPixel);
-		CFNumberGetValue(number, kCFNumberSInt32Type, &bpp);
-
-		if (bpp != device_depth) continue;
+		CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
+		bpp = intvalue;
 
 		number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayWidth);
 		CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
@@ -261,6 +278,29 @@ uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_i
 		number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayHeight);
 		CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
 		height = (uint16)intvalue;
+	}
+}
+
+uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int device_depth)
+{
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6) && (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_6)
+	CFArrayRef mode_list = MacOSVersionIsAtLeast(10, 6, 0) ? CGDisplayCopyAllDisplayModes(display_id, NULL) : CGDisplayAvailableModes(display_id);
+#elif (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
+	CFArrayRef mode_list = CGDisplayCopyAllDisplayModes(display_id, NULL);
+#else
+	CFArrayRef mode_list = CGDisplayAvailableModes(display_id);
+#endif
+	CFIndex    num_modes = CFArrayGetCount(mode_list);
+
+	/* Build list of modes with the requested bpp */
+	uint count = 0;
+	for (CFIndex i = 0; i < num_modes && count < max_modes; i++) {
+		int bpp;
+		uint16 width, height;
+
+		QZ_GetDisplayModeInfo(mode_list, i, bpp, width, height);
+
+		if (bpp != device_depth) continue;
 
 		/* Check if mode is already in the list */
 		bool hasMode = false;
@@ -281,6 +321,10 @@ uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_i
 
 	/* Sort list smallest to largest */
 	QSortT(modes, count, &ModeSorter);
+
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
+	if (MacOSVersionIsAtLeast(10, 6, 0)) CFRelease(mode_list);
+#endif
 
 	return count;
 }
