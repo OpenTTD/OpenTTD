@@ -1372,6 +1372,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Non-aktifkan
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Geser dgn klik-kiri: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Aktifkan penggeseran peta dengan menyeret menggunakan tombol kiri mouse. Hal ini sangat berguna apabila menggunakan layar sentuh.
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Tutup jendela dengan klik kanan: {STRING}
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Simpan otomatis: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Memilih jarak waktu antara menyimpan data game
@@ -2589,6 +2590,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nama are
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Muatan diterima: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tipe Rel: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Batasan kecepatan rel: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Batasan kecepatan jalan: {LTBLUE}{VELOCITY}
 
@@ -3356,6 +3358,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Jual semua
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ubah nama kelompok
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Keuntungan tahun ini:
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Kereta Baru
@@ -3643,6 +3646,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} tahun (
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} tahun ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Kec. Max: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Kecepatan Maks.: {LTBLUE}{VELOCITY} {BLACK}Jenis pesawat: {LTBLUE}{STRING}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
