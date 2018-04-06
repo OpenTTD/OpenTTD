@@ -1685,6 +1685,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :выключа�
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Скролінг па кліку левай кнопкай мышы: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Уключыць пракручваньне мапы цягненьнем з націснутай левай кнопкай мышы. Гэта асабліва зручна пры выкарыстоўваньні сэнсарнага экрана.
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Зачыняць вокны пстрычкай ПКМ: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Зачыняць акно пстрычкай правай кнопкай мышы ў яго межах. Пры гэтым адключаецца з'яўленне падказак па правай кнопцы.
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Аўтазахаваньні: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Азначце інтэрвал паміж аўтаматычнымі захаваньнямі
@@ -2074,6 +2076,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Прав
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Зьмяніць наладкі ШІ ды гульнёвага скрыпту
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйсьці з OpenTTD
 
+STR_INTRO_BASESET                                               :{BLACK}У абраным наборы базавай графікі адсутнічае {NUM} спрайт{P "" а аў}. Калі ласка, абнавіце набор графікі.
 STR_INTRO_TRANSLATION                                           :{BLACK}На гэту мову не перакладзен{P 0 ы ы а} {NUM} рад{P ок кі коў}. Вы можаце дапамагчы праекту, калi зарэґіструецеся як перакладчык. Інструкцыі ў файле readme.txt.
 
 # Quit window
@@ -2922,6 +2925,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Зона
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Прымае: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Тып чыгуначнага палатна: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Макс. хуткасьць чыгункi: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Макс. хуткасьць аўтамабіляў: {LTBLUE}{VELOCITY}
 
@@ -2934,29 +2938,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Палi
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Засьнежаная зямля
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустэльня
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Чыгунка рэйкi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Чыгунка рэйкi са звычайнымі сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Чыгунка рэйкi з уваходнымі прэсыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Чыгунка рэйкi з выхаднымi сыґналамi (прэсыґналамі)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Чыгунка рэйкi з камбiнаванымi сыґналамi (прэсыґналамі)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Чыгунка рэйкi з маршрутнымi (PMS) сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Чыгунка рэйкi з аднабаковымi маршрутнымi (PMS) сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Чыгунка рэйкi са звычайнымi й уваходнымі прэсыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Чыгунка рэйкi са звычайнымi й выхаднымi сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Чыгунка рэйкi са звычайнымi й камбiнаванымi сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Чыгунка рэйкi са звычайнымi й маршрутнымi (PMS) сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Чыгунка рэйкi са звычайнымi й аднабаковымi маршрутнымi (PMS) сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Чыгунка рэйкi з уваходнымi (прэcыгналамi) ды выхаднымi сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Чыгунка рэйкi з уваходнымi (прэсыґналамi) ды камбiнаванымi сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Чыгунка рэйкi з уваходнымi (прэсыґналамi) ды маршрутнымi (PMS) сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Чыгунка рэйкi з уваходнымi (прэсыґналамi) ды аднабаковымi маршрутнымi (PMS) сыґналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Чыгунка рэйкi з выхаднымi й камбінаванымі прэсыґналамі
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Чыгунка рэйкі з выхаднымі (прэсыґналамі) ды маршрутнымі (PMS) сыґналамі
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Чыгунка рэйкі з выхаднымі (прэсыґналамі) ды аднабаковымі маршрутнымі (PMS) сыґналамі
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Чыгунка рэйкі з камбінаванымі (прэсыґналамі) ды маршрутнымі (PMS) сыґналамі
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Чыгунка рэйкі з камбінаванымі (прэсыґналамі) ды аднабаковымі маршрутнымі (PMS) сыґналамі
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Чыгунка рэйкі з маршрутнымі (PMS) ды аднабаковымі маршрутнымі сыґналамі
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Чыгунка чыгуначнае дэпо
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Чыгуначны пуць
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Чыгуначны пуць з сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Чыгуначны пуць з уваходнымі сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Чыгуначны пуць з выходнымі сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Чыгуначны пуць з камбінаванымі сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Чыгуначны пуць з маршрутнымі сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Чыгуначны пуць з аднабаковымі маршрутнымі сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Чыгуначны пуць са звычайным і ўваходным сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Чыгуначны пуць са звычайным і выходным сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Чыгуначны пуць са звычайнымі й камбінаванымі сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Чыгуначны пуць са звычайнымі і маршрутнымі сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Чыгуначны пуць са звычайным і аднабаковым маршрутным сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Чыгуначны пуць з уваходным і выходным сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Чыгуначны пуць з уваходным і камбінаваным сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Чыгуначны пуць з выходным і маршрутным сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Чыгуначны пуць з уваходным і аднабаковым маршрутным сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Чыгуначны пуць з выходнымі й камбінаванымі сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Чыгуначны пуць з выходным і маршрутным сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Чыгуначны пуць з выходным і аднабаковым маршрутным сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Чыгуначны пуць з камбінаваным і маршрутным сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Чыгуначны пуць з камбінаваным і аднабаковым маршрутным сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Чыгуначны пуць з маршрутным і аднабаковым маршрутным сігналамі
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Чыгуначнае дэпо
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Дарога
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Дарога з вулічным асьвятленьнем
@@ -3625,6 +3629,9 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Патр
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Патрабуецца: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Патрабуецца:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} чакае{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Вырабляе: {YELLOW}{STRING}{STRING}
@@ -3693,6 +3700,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Выдаліц�
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Перайменаваць групу
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Прыбытак сёлета:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Прыбытак летась:
+STR_GROUP_OCCUPANCY                                             :Сярэдняя загрузка ТС:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Новы цягнік
@@ -3725,6 +3736,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Усе тыпы
 STR_PURCHASE_INFO_ALL_BUT                                       :Усё, акрамя {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. цягавае намаганьне: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Далёкасьць: {GOLD}{COMMA} клет{P ка кi ак}
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Тып паветр. судна: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Сьпіс лакаматываў і вагонаў - пстрыкніце для атрыманьня інфармацыі. Ctrl+пстрычка схавае/пакажа ТС.
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Сьпіс аўтатранспарту - пстрыкніце для атрыманьня інфармацыі. Ctrl+пстрычка схавае/пакажа выбраны аўтамабіль.
@@ -3871,6 +3883,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.acc                        :магніта�
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Кошт: {CURRENCY_LONG} Вага: {WEIGHT_SHORT}{}Хуткасьць: {VELOCITY}  Магутнасьць: {POWER}{}Кошт абслуг.: {CURRENCY_LONG}/год{}Ёмістасьць: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Кошт: {CURRENCY_LONG} Вага: {WEIGHT_SHORT}{}Хуткасьць: {VELOCITY}  Магутнасьць: {POWER}  Макс. ЦН: {6:FORCE}{}Кошт абслуг.: {4:CURRENCY_LONG}/год{}Ёмістасьць: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасьць: {VELOCITY}{}Ёмістасьць: {CARGO_LONG}{}Кошт абслуг.: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасць: {VELOCITY}{}Тып: {STRING}{}Ёмістасць: {CARGO_LONG}, {CARGO_LONG}{}Кошт абслуг.: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасць: {VELOCITY}{}Тып: {STRING}{}Ёмістасць: {CARGO_LONG}{}Кошт абслуг.: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасць: {VELOCITY}{}Тып: {STRING} Далёкасць: {COMMA} клетак{}Ёмістасць: {CARGO_LONG}, {CARGO_LONG}{}Кошт абслуг.: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасць: {VELOCITY}{}Тып: {STRING} Далёкасць: {COMMA} клетак{}Ёмістасць: {CARGO_LONG}{}Кошт абслуг.: {CURRENCY_LONG}/год
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen} — {STRING}
@@ -3908,6 +3924,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Спын
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Пераключэньне паміж вокнамі замены лякаматываў і ваґонаў
 STR_REPLACE_ENGINES                                             :Лякаматывы
 STR_REPLACE_WAGONS                                              :Ваґоны
+STR_REPLACE_ALL_RAILTYPE                                        :Увесь чыгуначны транспарт
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Выберыце тып чыгуначнага транспарту, цягнікі якога жадаеце замяніць
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}На які транспарт адбываецца замена
@@ -4000,6 +4017,8 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} г{P о
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} г{P од ады адоў} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. хуткасьць: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Макс. хуткасць: {LTBLUE}{VELOCITY} {BLACK}Тып паветр. судна: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Макс. хуткасць: {LTBLUE}{VELOCITY} {BLACK}Тып: {LTBLUE}{STRING} {BLACK}Далёкасць: {LTBLUE}{COMMA} клетак
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Магутнасьць: {LTBLUE}{POWER}{BLACK} Макс. хуткасьць: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Магутнасьць: {LTBLUE}{POWER}{BLACK} Макс. хуткасьць: {LTBLUE}{VELOCITY} {BLACK}Макс. ЦН: {LTBLUE}{FORCE}
 
