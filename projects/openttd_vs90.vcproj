@@ -1920,6 +1920,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\sound\xaudio2_s.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\zoom_func.h"
 				>
 			</File>
@@ -4485,6 +4489,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\sound\win32_s.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\sound\xaudio2_s.cpp"
 				>
 			</File>
 		</Filter>

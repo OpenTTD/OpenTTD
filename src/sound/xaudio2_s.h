@@ -7,27 +7,27 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file win32_s.h Base for Windows sound handling. */
+/** @file xaudio2_s.h Base for XAudio2 sound handling. */
 
-#ifndef SOUND_WIN32_H
-#define SOUND_WIN32_H
+#ifndef SOUND_XAUDIO2_H
+#define SOUND_XAUDIO2_H
 
 #include "sound_driver.hpp"
 
-/** Implementation of the sound driver for Windows. */
-class SoundDriver_Win32 : public SoundDriver {
+/** Implementation of the XAudio2 sound driver. */
+class SoundDriver_XAudio2 : public SoundDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();
-	/* virtual */ const char *GetName() const { return "win32"; }
+	/* virtual */ const char *GetName() const { return "xaudio2"; }
 };
 
-/** Factory for the sound driver for Windows. */
-class FSoundDriver_Win32 : public DriverFactoryBase {
+/** Factory for the XAudio2 sound driver. */
+class FSoundDriver_XAudio2 : public DriverFactoryBase {
 public:
-	FSoundDriver_Win32() : DriverFactoryBase(Driver::DT_SOUND, 9, "win32", "Win32 WaveOut Sound Driver") {}
-	/* virtual */ Driver *CreateInstance() const { return new SoundDriver_Win32(); }
+	FSoundDriver_XAudio2() : DriverFactoryBase(Driver::DT_SOUND, 10, "xaudio2", "XAudio2 Sound Driver") {}
+	/* virtual */ Driver *CreateInstance() const { return new SoundDriver_XAudio2(); }
 };
 
-#endif /* SOUND_WIN32_H */
+#endif /* SOUND_XAUDIO2_H */
