@@ -1209,6 +1209,9 @@
     <ClInclude Include="..\src\window_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\sound\xaudio2_s.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\zoom_func.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -3046,6 +3049,9 @@
       <Filter>Sound</Filter>
     </ClCompile>
     <ClCompile Include="..\src\sound\win32_s.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sound\xaudio2_s.cpp">
       <Filter>Sound</Filter>
     </ClCompile>
     <ClCompile Include="..\src\os\windows\crashlog_win.cpp">
