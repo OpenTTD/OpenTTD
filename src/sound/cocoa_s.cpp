@@ -18,6 +18,7 @@
 #ifdef WITH_COCOA
 
 #include "../stdafx.h"
+#include "../os/macosx/macos.h"
 #include "../debug.h"
 #include "../driver.h"
 #include "../mixer.h"
@@ -47,8 +48,6 @@ static OSStatus audioCallback(void *inRefCon, AudioUnitRenderActionFlags *inActi
 
 const char *SoundDriver_Cocoa::Start(const char * const *parm)
 {
-	Component comp;
-	ComponentDescription desc;
 	struct AURenderCallbackStruct callback;
 	AudioStreamBasicDescription requestedDesc;
 
@@ -71,21 +70,49 @@ const char *SoundDriver_Cocoa::Start(const char * const *parm)
 
 	MxInitialize((uint)requestedDesc.mSampleRate);
 
-	/* Locate the default output audio unit */
-	desc.componentType = kAudioUnitType_Output;
-	desc.componentSubType = kAudioUnitSubType_HALOutput;
-	desc.componentManufacturer = kAudioUnitManufacturer_Apple;
-	desc.componentFlags = 0;
-	desc.componentFlagsMask = 0;
+#if defined(__AUDIOCOMPONENT_H__) || defined(HAVE_OSX_107_SDK)
+	if (MacOSVersionIsAtLeast(10, 6, 0)) {
+		/* Locate the default output audio unit */
+		AudioComponentDescription desc;
+		desc.componentType = kAudioUnitType_Output;
+		desc.componentSubType = kAudioUnitSubType_HALOutput;
+		desc.componentManufacturer = kAudioUnitManufacturer_Apple;
+		desc.componentFlags = 0;
+		desc.componentFlagsMask = 0;
 
-	comp = FindNextComponent (NULL, &desc);
-	if (comp == NULL) {
-		return "cocoa_s: Failed to start CoreAudio: FindNextComponent returned NULL";
-	}
+		AudioComponent comp = AudioComponentFindNext (NULL, &desc);
+		if (comp == NULL) {
+			return "cocoa_s: Failed to start CoreAudio: AudioComponentFindNext returned NULL";
+		}
 
-	/* Open & initialize the default output audio unit */
-	if (OpenAComponent(comp, &_outputAudioUnit) != noErr) {
-		return "cocoa_s: Failed to start CoreAudio: OpenAComponent";
+		/* Open & initialize the default output audio unit */
+		if (AudioComponentInstanceNew(comp, &_outputAudioUnit) != noErr) {
+			return "cocoa_s: Failed to start CoreAudio: AudioComponentInstanceNew";
+		}
+	} else
+#endif
+	{
+#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_6)
+		/* Locate the default output audio unit */
+		ComponentDescription desc;
+		desc.componentType = kAudioUnitType_Output;
+		desc.componentSubType = kAudioUnitSubType_HALOutput;
+		desc.componentManufacturer = kAudioUnitManufacturer_Apple;
+		desc.componentFlags = 0;
+		desc.componentFlagsMask = 0;
+
+		Component comp = FindNextComponent (NULL, &desc);
+		if (comp == NULL) {
+			return "cocoa_s: Failed to start CoreAudio: FindNextComponent returned NULL";
+		}
+
+		/* Open & initialize the default output audio unit */
+		if (OpenAComponent(comp, &_outputAudioUnit) != noErr) {
+			return "cocoa_s: Failed to start CoreAudio: OpenAComponent";
+		}
+#else
+		return "cocoa_s: Not supported on this OS X version";
+#endif
 	}
 
 	if (AudioUnitInitialize(_outputAudioUnit) != noErr) {
@@ -132,9 +159,21 @@ void SoundDriver_Cocoa::Stop()
 		return;
 	}
 
-	if (CloseComponent(_outputAudioUnit) != noErr) {
-		DEBUG(driver, 0, "cocoa_s: Core_CloseAudio: CloseComponent failed");
-		return;
+#if defined(__AUDIOCOMPONENT_H__) || defined(HAVE_OSX_107_SDK)
+	if (MacOSVersionIsAtLeast(10, 6, 0)) {
+		if (AudioComponentInstanceDispose(_outputAudioUnit) != noErr) {
+			DEBUG(driver, 0, "cocoa_s: Core_CloseAudio: AudioComponentInstanceDispose failed");
+			return;
+		}
+	} else
+#endif
+	{
+#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_6)
+		if (CloseComponent(_outputAudioUnit) != noErr) {
+			DEBUG(driver, 0, "cocoa_s: Core_CloseAudio: CloseComponent failed");
+			return;
+		}
+#endif
 	}
 }
 
