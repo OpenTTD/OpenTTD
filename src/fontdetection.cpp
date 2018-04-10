@@ -382,38 +382,67 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	FT_Error err = FT_Err_Cannot_Open_Resource;
 
 	/* Get font reference from name. */
-	CFStringRef name = CFStringCreateWithCString(kCFAllocatorDefault, font_name, kCFStringEncodingUTF8);
-	ATSFontRef font = ATSFontFindFromName(name, kATSOptionFlagsDefault);
-	CFRelease(name);
-	if (font == kInvalidFont) return err;
-
-	/* Get a file system reference for the font. */
-	FSRef ref;
+	UInt8 file_path[PATH_MAX];
 	OSStatus os_err = -1;
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-	if (MacOSVersionIsAtLeast(10, 5, 0)) {
-		os_err = ATSFontGetFileReference(font, &ref);
+	CFStringRef name = CFStringCreateWithCString(kCFAllocatorDefault, font_name, kCFStringEncodingUTF8);
+
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
+	if (MacOSVersionIsAtLeast(10, 6, 0)) {
+		/* Simply creating the font using CTFontCreateWithNameAndSize will *always* return
+		 * something, no matter the name. As such, we can't use it to check for existance.
+		 * We instead query the list of all font descriptors that match the given name which
+		 * does not do this stupid name fallback. */
+		CTFontDescriptorRef name_desc = CTFontDescriptorCreateWithNameAndSize(name, 0.0);
+		CFSetRef mandatory_attribs = CFSetCreate(kCFAllocatorDefault, (const void **)&kCTFontNameAttribute, 1, &kCFTypeSetCallBacks);
+		CFArrayRef descs = CTFontDescriptorCreateMatchingFontDescriptors(name_desc, mandatory_attribs);
+		CFRelease(mandatory_attribs);
+		CFRelease(name_desc);
+		CFRelease(name);
+
+		/* Loop over all matches until we can get a path for one of them. */
+		for (CFIndex i = 0; descs != NULL && i < CFArrayGetCount(descs) && os_err != noErr; i++) {
+			CTFontRef font = CTFontCreateWithFontDescriptor((CTFontDescriptorRef)CFArrayGetValueAtIndex(descs, i), 0.0, NULL);
+			CFURLRef fontURL = (CFURLRef)CTFontCopyAttribute(font, kCTFontURLAttribute);
+			if (CFURLGetFileSystemRepresentation(fontURL, true, file_path, lengthof(file_path))) os_err = noErr;
+			CFRelease(font);
+			CFRelease(fontURL);
+		}
+		if (descs != NULL) CFRelease(descs);
 	} else
 #endif
 	{
-#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5) && !defined(__LP64__)
-		/* This type was introduced with the 10.5 SDK. */
-#if (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_5)
-	#define ATSFSSpec FSSpec
+#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_6)
+		ATSFontRef font = ATSFontFindFromName(name, kATSOptionFlagsDefault);
+		CFRelease(name);
+		if (font == kInvalidFont) return err;
+
+		/* Get a file system reference for the font. */
+		FSRef ref;
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+		if (MacOSVersionIsAtLeast(10, 5, 0)) {
+			os_err = ATSFontGetFileReference(font, &ref);
+		} else
 #endif
-		FSSpec spec;
-		os_err = ATSFontGetFileSpecification(font, (ATSFSSpec *)&spec);
-		if (os_err == noErr) os_err = FSpMakeFSRef(&spec, &ref);
+		{
+#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5) && !defined(__LP64__)
+			/* This type was introduced with the 10.5 SDK. */
+#if (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_5)
+#define ATSFSSpec FSSpec
+#endif
+			FSSpec spec;
+			os_err = ATSFontGetFileSpecification(font, (ATSFSSpec *)&spec);
+			if (os_err == noErr) os_err = FSpMakeFSRef(&spec, &ref);
+#endif
+		}
+
+		/* Get unix path for file. */
+		if (os_err == noErr) os_err = FSRefMakePath(&ref, file_path, sizeof(file_path));
 #endif
 	}
 
 	if (os_err == noErr) {
-		/* Get unix path for file. */
-		UInt8 file_path[PATH_MAX];
-		if (FSRefMakePath(&ref, file_path, sizeof(file_path)) == noErr) {
-			DEBUG(freetype, 3, "Font path for %s: %s", font_name, file_path);
-			err = FT_New_Face(_library, (const char *)file_path, 0, face);
-		}
+		DEBUG(freetype, 3, "Font path for %s: %s", font_name, file_path);
+		err = FT_New_Face(_library, (const char *)file_path, 0, face);
 	}
 
 	return err;
@@ -496,6 +525,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 	} else
 #endif
 	{
+#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_6)
 		/* Create a font iterator and iterate over all fonts that
 		 * are available to the application. */
 		ATSFontIterator itr;
@@ -529,6 +559,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 			}
 		}
 		ATSFontIteratorRelease(&itr);
+#endif
 	}
 
 	if (!result) {
