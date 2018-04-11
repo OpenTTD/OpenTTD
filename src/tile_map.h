@@ -44,7 +44,7 @@ uint TileHeightOutsideMap(int x, int y);
  * @param tile The tile to change the height
  * @param height The new height value of the tile
  * @pre tile < MapSize()
- * @pre heigth <= MAX_TILE_HEIGHT
+ * @pre height <= MAX_TILE_HEIGHT
  */
 static inline void SetTileHeight(TileIndex tile, uint height)
 {
