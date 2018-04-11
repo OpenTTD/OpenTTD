@@ -2076,26 +2076,13 @@ check_compiler() {
 }
 
 check_build() {
-	if [ "$os" = "FREEBSD" ]; then
-		# FreeBSD's C compiler does not support dump machine.
-		# However, removing C support is not possible because PSP must be linked with the C compiler.
-		check_compiler "build system type" "cc_build" "$build" "$cc_build" "$CXX" "g++" "c++" "0" "-dumpmachine"
-	else
-		check_compiler "build system type" "cc_build" "$build" "$cc_build" "$CC" "gcc" "cc" "0" "-dumpmachine"
-	fi
+	check_compiler "build system type" "cc_build" "$build" "$cc_build" "$CC" "gcc" "cc" "0" "-dumpmachine"
 }
 
 check_host() {
 	# By default the host is the build
 	if [ -z "$host" ]; then host="$build"; fi
-
-	if [ "$os" = "FREEBSD" ]; then
-		# FreeBSD's C compiler does not support dump machine.
-		# However, removing C support is not possible because PSP must be linked with the C compiler.
-		check_compiler "host system type" "cc_host" "$host" "$cc_host" "$CXX" "g++" "c++" "0" "-dumpmachine"
-	else
-		check_compiler "host system type" "cc_host" "$host" "$cc_host" "$CC" "gcc" "cc" "0" "-dumpmachine"
-	fi
+	check_compiler "host system type" "cc_host" "$host" "$cc_host" "$CC" "gcc" "cc" "0" "-dumpmachine"
 }
 
 check_cxx_build() {
