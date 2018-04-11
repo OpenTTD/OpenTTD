@@ -124,7 +124,9 @@ public:
 
 #ifndef NO_DEBUG_MESSAGES
 		CPerformanceTimer perf;
-		perf.Start();
+		if (_debug_yapf_level >= 2) {
+			perf.Start();
+		}
 #endif /* !NO_DEBUG_MESSAGES */
 
 		Yapf().PfSetStartupNodes();
@@ -155,8 +157,9 @@ public:
 		bDestFound &= (m_pBestDestNode != NULL);
 
 #ifndef NO_DEBUG_MESSAGES
-		perf.Stop();
 		if (_debug_yapf_level >= 2) {
+			perf.Stop();
+
 			int t = perf.Get(1000000);
 			_total_pf_time_us += t;
 
