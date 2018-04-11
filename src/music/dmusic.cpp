@@ -99,7 +99,6 @@ const char *MusicDriver_DMusic::Start(const char * const *parm)
 
 	int port = GetDriverParamInt(parm, "port", -1);
 
-#ifndef NO_DEBUG_MESSAGES
 	if (_debug_driver_level > 0) {
 		/* Print all valid output ports. */
 		char desc[DMUS_MAX_DESCRIPTION];
@@ -116,7 +115,6 @@ const char *MusicDriver_DMusic::Start(const char * const *parm)
 			}
 		}
 	}
-#endif
 
 	IDirectMusicPort *music_port = NULL; // NULL means 'use default port'.
 

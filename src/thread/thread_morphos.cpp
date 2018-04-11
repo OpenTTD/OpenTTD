@@ -50,14 +50,10 @@ struct OTTDThreadStartupMessage {
  *  Default OpenTTD STDIO/ERR debug output is not very useful for this, so we
  *  utilize serial/ramdebug instead.
  */
-#ifndef NO_DEBUG_MESSAGES
 void KPutStr(CONST_STRPTR format)
 {
 	RawDoFmt(format, NULL, (void (*)())RAWFMTFUNC_SERIAL, NULL);
 }
-#else
-#define KPutStr(x)
-#endif
 
 
 /**
