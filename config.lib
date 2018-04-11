@@ -1210,7 +1210,12 @@ make_compiler_cflags() {
 	# $4 - name of the ldflags variable
 	# $5 - name of the features variable
 
-	compiler="`realpath \`which $1\``" # resolve symlinks
+	# Resolve symlinks, if your OS even does them
+	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "DOS" ]; then
+		compiler="$1"
+	else
+		compiler="`realpath \`which $1\``"
+	fi
 
 	eval eval "flags=\\\$$2"
 	eval eval "cxxflags=\\\$$3"
