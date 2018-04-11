@@ -6,3 +6,4 @@ trim_trailing_whitespace = true
 
 [*.{c,cpp,h,hpp}]
 indent_style = tab
+charset = utf-8
