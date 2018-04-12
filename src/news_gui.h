@@ -12,7 +12,11 @@
 #ifndef NEWS_GUI_H
 #define NEWS_GUI_H
 
+#include "news_type.h"
+
 void ShowLastNewsMessage();
 void ShowMessageHistory();
+
+extern NewsItem *_oldest_news;
 
 #endif /* NEWS_GUI_H */
