@@ -1202,6 +1202,10 @@ check_params() {
 	fi
 }
 
+if ! which realpath; then
+	realpath() { readlink -f -- "$@"; }
+fi
+
 make_compiler_cflags() {
 	# Params:
 	# $1 - compiler
@@ -1211,11 +1215,7 @@ make_compiler_cflags() {
 	# $5 - name of the features variable
 
 	# Resolve symlinks, if your OS even does them
-	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "DOS" ]; then
-		compiler="$1"
-	else
-		compiler="`realpath \`which $1\``"
-	fi
+	compiler="`realpath \`which $1\``"
 
 	eval eval "flags=\\\$$2"
 	eval eval "cxxflags=\\\$$3"
