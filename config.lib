@@ -1210,14 +1210,21 @@ make_compiler_cflags() {
 	# $4 - name of the ldflags variable
 	# $5 - name of the features variable
 
+	# Resolve symlinks, if your OS even does them
+	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "DOS" ]; then
+		compiler="$1"
+	else
+		compiler="`realpath \`which $1\``"
+	fi
+
 	eval eval "flags=\\\$$2"
 	eval eval "cxxflags=\\\$$3"
 	eval eval "ldflags=\\\$$4"
 	eval eval "features=\\\$$5"
 
-	if [ `basename $1 | cut -c 1-3` = "icc" ]; then
+	if [ `basename $compiler | cut -c 1-3` = "icc" ]; then
 		# Enable some things only for certain ICC versions
-		cc_version=`$1 -dumpversion | cut -c 1-4 | sed s@\\\.@@g`
+		cc_version=`$compiler -dumpversion | cut -c 1-4 | sed s@\\\.@@g`
 
 		flags="$flags -rdynamic"
 		ldflags="$ldflags -rdynamic"
@@ -1295,16 +1302,16 @@ make_compiler_cflags() {
 		fi
 
 		if [ "$enable_lto" != "0" ]; then
-			has_ipo=`$1 -help ipo | grep '\-ipo'`
+			has_ipo=`$compiler -help ipo | grep '\-ipo'`
 			if [ -n "$has_ipo" ]; then
 				# Use IPO (only if we see IPO exists and is requested)
 				flags="$flags -ipo"
 				features="$features lto"
 			fi
 		fi
-	elif [ `basename $1 | grep 'clang'` ]; then
+	elif [ `basename $compiler | grep 'clang'` ]; then
 		# Enable some things only for certain clang versions
-		cc_version="`$1 -v 2>&1 | head -n 1 | sed s@[^0-9]@@g | cut -c 1-2`"
+		cc_version="`$compiler -v 2>&1 | head -n 1 | sed s@[^0-9]@@g | cut -c 1-2`"
 
 		# aliasing rules are not held in openttd code
 		flags="$flags -fno-strict-aliasing"
@@ -1363,7 +1370,7 @@ make_compiler_cflags() {
 		# Enable some things only for certain GCC versions
 		# cc_version = major_version * 100 + minor_version
 		# For example: "3.3" -> 303, "4.9.2" -> 409, "6" -> 600, "23.5" -> 2305
-		cc_version=`$1 -dumpversion | $awk -F . '{printf "%d%02d", $1, $2}'`
+		cc_version=`$compiler -dumpversion | $awk -F . '{printf "%d%02d", $1, $2}'`
 
 		if [ $cc_version -lt 303 ]; then
 			log 1 "configure: error: gcc older than 3.3 can't compile OpenTTD because of its poor template support"
@@ -1445,7 +1452,7 @@ make_compiler_cflags() {
 
 		if [ "$enable_lto" != "0" ]; then
 			# GCC 4.5 outputs '%{flto}', GCC 4.6 outputs '%{flto*}'
-			has_lto=`$1 -dumpspecs | grep '\%{flto'`
+			has_lto=`$compiler -dumpspecs | grep '\%{flto'`
 			if [ -n "$has_lto" ]; then
 				# Use LTO only if we see LTO exists and is requested
 				if [ $cc_version -lt 406 ]; then
@@ -1458,7 +1465,7 @@ make_compiler_cflags() {
 			fi
 		fi
 
-		has_rdynamic=`$1 -dumpspecs | grep rdynamic`
+		has_rdynamic=`$compiler -dumpspecs | grep rdynamic`
 		if [ -n "$has_rdynamic" ]; then
 			# rdynamic is used to get useful stack traces from crash reports.
 			flags="$flags -rdynamic"
@@ -2076,26 +2083,13 @@ check_compiler() {
 }
 
 check_build() {
-	if [ "$os" = "FREEBSD" ]; then
-		# FreeBSD's C compiler does not support dump machine.
-		# However, removing C support is not possible because PSP must be linked with the C compiler.
-		check_compiler "build system type" "cc_build" "$build" "$cc_build" "$CXX" "g++" "c++" "0" "-dumpmachine"
-	else
-		check_compiler "build system type" "cc_build" "$build" "$cc_build" "$CC" "gcc" "cc" "0" "-dumpmachine"
-	fi
+	check_compiler "build system type" "cc_build" "$build" "$cc_build" "$CC" "gcc" "cc" "0" "-dumpmachine"
 }
 
 check_host() {
 	# By default the host is the build
 	if [ -z "$host" ]; then host="$build"; fi
-
-	if [ "$os" = "FREEBSD" ]; then
-		# FreeBSD's C compiler does not support dump machine.
-		# However, removing C support is not possible because PSP must be linked with the C compiler.
-		check_compiler "host system type" "cc_host" "$host" "$cc_host" "$CXX" "g++" "c++" "0" "-dumpmachine"
-	else
-		check_compiler "host system type" "cc_host" "$host" "$cc_host" "$CC" "gcc" "cc" "0" "-dumpmachine"
-	fi
+	check_compiler "host system type" "cc_host" "$host" "$cc_host" "$CC" "gcc" "cc" "0" "-dumpmachine"
 }
 
 check_cxx_build() {

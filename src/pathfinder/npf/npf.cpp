@@ -275,7 +275,6 @@ static uint NPFReservedTrackCost(AyStarNode *current)
  */
 static void NPFMarkTile(TileIndex tile)
 {
-#ifndef NO_DEBUG_MESSAGES
 	if (_debug_npf_level < 1 || _networking) return;
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
@@ -296,7 +295,6 @@ static void NPFMarkTile(TileIndex tile)
 		default:
 			break;
 	}
-#endif
 }
 
 static int32 NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
