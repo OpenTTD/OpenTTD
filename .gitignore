@@ -18,6 +18,7 @@ bin/scripts/*
 !bin/scripts/*.example
 !bin/scripts/readme.txt
 
+*.aps
 bundle/*
 bundles/*
 docs/aidocs/*
