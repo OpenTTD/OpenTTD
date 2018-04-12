@@ -94,15 +94,15 @@ VERSIONS := $(shell AWK="$(AWK)" "$(ROOT_DIR)/findversion.sh")
 MODIFIED := $(shell echo "$(VERSIONS)" | cut -f 3 -d'	')
 
 # Use autodetected revisions
-REV      := $(shell echo "$(VERSIONS)" | cut -f 1 -d'	')
-REV_NR   := $(shell echo "$(VERSIONS)" | cut -f 2 -d'	')
+VERSION  := $(shell echo "$(VERSIONS)" | cut -f 1 -d'	')
+ISODATE  := $(shell echo "$(VERSIONS)" | cut -f 2 -d'	')
 
-# Make sure we have something in REV and REV_NR
-ifeq ($(REV),)
-REV := norev000
+# Make sure we have something in VERSION and ISODATE
+ifeq ($(VERSION),)
+VERSION := norev000
 endif
-ifeq ($(REV_NR),)
-REV_NR := 0
+ifeq ($(ISODATE),)
+ISODATE := 00000000
 endif
 
 # This helps to recompile if flags change
@@ -113,7 +113,7 @@ RES := $(shell if [ "`cat $(CONFIG_CACHE_ENDIAN) 2>/dev/null`" != "$(ENDIAN_FORC
 # If there is a change in the source-file-list, make sure we recheck the deps
 RES := $(shell if [ "`cat $(CONFIG_CACHE_SOURCE) 2>/dev/null`" != "$(SRCS)" ]; then echo "$(SRCS)" > $(CONFIG_CACHE_SOURCE); fi )
 # If there is a change in the revision, make sure we recompile rev.cpp
-RES := $(shell if [ "`cat $(CONFIG_CACHE_VERSION) 2>/dev/null`" != "$(REV) $(MODIFIED)" ]; then echo "$(REV) $(MODIFIED)" > $(CONFIG_CACHE_VERSION); fi )
+RES := $(shell if [ "`cat $(CONFIG_CACHE_VERSION) 2>/dev/null`" != "$(VERSION) $(MODIFIED)" ]; then echo "$(VERSION) $(MODIFIED)" > $(CONFIG_CACHE_VERSION); fi )
 
 ifndef MAKEDEPEND
 # The slow, but always correct, dep-check
@@ -293,10 +293,10 @@ $(ENDIAN_CHECK): $(SRC_DIR)/endian_check.cpp
 # Revision files
 
 $(SRC_DIR)/rev.cpp: $(CONFIG_CACHE_VERSION) $(SRC_DIR)/rev.cpp.in
-	$(Q)cat $(SRC_DIR)/rev.cpp.in      | sed "s@\!\!REVISION\!\!@$(REV_NR)@g;s@!!VERSION!!@$(REV)@g;s@!!MODIFIED!!@$(MODIFIED)@g;s@!!DATE!!@`date +%d.%m.%y`@g" > $(SRC_DIR)/rev.cpp
+	$(Q)cat $(SRC_DIR)/rev.cpp.in      | sed "s@\!\!ISODATE\!\!@$(ISODATE)@g;s@!!VERSION!!@$(VERSION)@g;s@!!MODIFIED!!@$(MODIFIED)@g;s@!!DATE!!@`date +%d.%m.%y`@g" > $(SRC_DIR)/rev.cpp
 
 $(SRC_DIR)/os/windows/ottdres.rc: $(CONFIG_CACHE_VERSION) $(SRC_DIR)/os/windows/ottdres.rc.in
-	$(Q)cat $(SRC_DIR)/os/windows/ottdres.rc.in | sed "s@\!\!REVISION\!\!@$(REV_NR)@g;s@!!VERSION!!@$(REV)@g;s@!!DATE!!@`date +%d.%m.%y`@g" > $(SRC_DIR)/os/windows/ottdres.rc
+	$(Q)cat $(SRC_DIR)/os/windows/ottdres.rc.in | sed "s@\!\!ISODATE\!\!@$(ISODATE)@g;s@!!VERSION!!@$(VERSION)@g;s@!!DATE!!@`date +%d.%m.%y`@g" > $(SRC_DIR)/os/windows/ottdres.rc
 
 FORCE:
 
