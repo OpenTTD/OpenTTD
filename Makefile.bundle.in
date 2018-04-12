@@ -12,15 +12,15 @@
 # The revision is needed for the bundle name and creating an OSX application bundle.
 # Detect the revision
 VERSIONS := $(shell AWK="$(AWK)" "$(ROOT_DIR)/findversion.sh")
-REV      := $(shell echo "$(VERSIONS)" | cut -f 1 -d'	')
+VERSION  := $(shell echo "$(VERSIONS)" | cut -f 1 -d'	')
 
-# Make sure we have something in REV
-ifeq ($(REV),)
-REV := norev000
+# Make sure we have something in VERSION
+ifeq ($(VERSION),)
+VERSION := norev000
 endif
 
 ifndef BUNDLE_NAME
-BUNDLE_NAME = openttd-custom-$(REV)-$(OS)
+BUNDLE_NAME = openttd-custom-$(VERSION)-$(OS)
 endif
 
 # An OSX application bundle needs the data files, lang files and openttd executable in a different location.

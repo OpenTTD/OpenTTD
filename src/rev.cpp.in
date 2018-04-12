@@ -26,18 +26,16 @@ bool IsReleasedVersion()
 
 /**
  * The text version of OpenTTD's revision.
- * This will be either "<major>.<minor>.<build>[-RC<rc>]",
- * "r<revision number>[M][-<branch>]" or "norev000".
+ * This will be either
+ * - "<tag>", like "<major>.<minor>.<build>[-RC<rc>]",
+ * - "<commitdate>-g<shorthash><modified>" in "master",
+ * - "<commitdate>-<branch>-g<shorthash><modified>" in other branches, or
+ * - "norev000", if the version is unknown.
  *
  * The major, minor and build are the numbers that describe releases of
  * OpenTTD (like 0.5.3). "-RC" is used to flag release candidates.
  *
- * The revision number is fairly straight forward. The M is to show that
- * the binary is made from modified source code. The branch shows the
- * branch the revision is of and will not be there when it is trunk.
- *
- * norev000 is for non-releases that are made on systems without
- * subversion or sources that are not a checkout of subversion.
+ * <modified> shows a "M", if the binary is made from modified source code.
  */
 const char _openttd_revision[] = "!!VERSION!!";
 
