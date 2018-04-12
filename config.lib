@@ -1202,6 +1202,10 @@ check_params() {
 	fi
 }
 
+if ! which realpath; then
+	realpath() { readlink -f -- "$@"; }
+fi
+
 make_compiler_cflags() {
 	# Params:
 	# $1 - compiler
