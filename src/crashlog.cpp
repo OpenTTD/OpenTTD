@@ -27,6 +27,7 @@
 #include "network/network.h"
 #include "language.h"
 #include "fontcache.h"
+#include "news_gui.h"
 
 #include "ai/ai_info.hpp"
 #include "game/game.hpp"
@@ -309,6 +310,27 @@ char *CrashLog::LogGamelog(char *buffer, const char *last) const
 }
 
 /**
+ * Writes any recent news messages to the buffer.
+ * @param buffer The begin where to write at.
+ * @param last   The last position in the buffer to write to.
+ * @return the position of the \c '\0' character after the buffer.
+ */
+char *CrashLog::LogRecentNews(char *buffer, const char *last) const
+{
+	buffer += seprintf(buffer, last, "Recent news messages:\n");
+
+	for (NewsItem *news = _oldest_news; news != NULL; news = news->next) {
+		YearMonthDay ymd;
+		ConvertDateToYMD(news->date, &ymd);
+		buffer += seprintf(buffer, last, "(%i-%02i-%02i) StringID: %u, Type: %u, Ref1: %u, %u, Ref2: %u, %u\n",
+		                   ymd.year, ymd.month + 1, ymd.day, news->string_id, news->type,
+		                   news->reftype1, news->ref1, news->reftype2, news->ref2);
+	}
+	buffer += seprintf(buffer, last, "\n");
+	return buffer;
+}
+
+/**
  * Fill the crash log buffer with all data of a crash log.
  * @param buffer The begin where to write at.
  * @param last   The last position in the buffer to write to.
@@ -334,6 +356,7 @@ char *CrashLog::FillCrashLog(char *buffer, const char *last) const
 	buffer = this->LogLibraries(buffer, last);
 	buffer = this->LogModules(buffer, last);
 	buffer = this->LogGamelog(buffer, last);
+	buffer = this->LogRecentNews(buffer, last);
 
 	buffer += seprintf(buffer, last, "*** End of OpenTTD Crash Report ***\n");
 	return buffer;

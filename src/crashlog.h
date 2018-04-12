@@ -85,6 +85,7 @@ protected:
 	char *LogConfiguration(char *buffer, const char *last) const;
 	char *LogLibraries(char *buffer, const char *last) const;
 	char *LogGamelog(char *buffer, const char *last) const;
+	char *LogRecentNews(char *buffer, const char *list) const;
 
 public:
 	/** Stub destructor to silence some compilers. */
