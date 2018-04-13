@@ -254,11 +254,10 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 	/* type of bridge */
 	switch (transport_type) {
-		case TRANSPORT_ROAD: {
+		case TRANSPORT_ROAD:
 			if (!rtid.UnpackIfValid(GB(p2, 8, 5))) return CMD_ERROR;
 			if (!ValParamRoadType(rtid)) return CMD_ERROR;
 			break;
-		}
 
 		case TRANSPORT_RAIL:
 			railtype = Extract<RailType, 8, 4>(p2);
@@ -528,7 +527,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 				Owner owner_road = HasBit(prev_roadtypes, ROADTYPE_ROAD) ? GetRoadOwner(tile_start, ROADTYPE_ROAD) : company;
 				Owner owner_tram = HasBit(prev_roadtypes, ROADTYPE_TRAM) ? GetRoadOwner(tile_start, ROADTYPE_TRAM) : company;
 				MakeRoadBridgeRamp(tile_start, owner, owner_road, owner_tram, bridge_type, dir, rtids);
-				MakeRoadBridgeRamp(tile_end, owner, owner_road, owner_tram, bridge_type, ReverseDiagDir(dir), rtids);
+				MakeRoadBridgeRamp(tile_end,   owner, owner_road, owner_tram, bridge_type, ReverseDiagDir(dir), rtids);
 				break;
 			}
 
@@ -612,11 +611,10 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 			if (!ValParamRailtype(railtype)) return CMD_ERROR;
 			break;
 
-		case TRANSPORT_ROAD: {
+		case TRANSPORT_ROAD:
 			if (!rtid.UnpackIfValid(GB(p1, 0, 5))) return CMD_ERROR;
 			if (!ValParamRoadType(rtid)) return CMD_ERROR;
 			break;
-		}
 
 		default: return CMD_ERROR;
 	}

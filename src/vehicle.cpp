@@ -1770,11 +1770,12 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 	/* We should be able to build infrastructure when we have the actual vehicle type */
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == type && v->owner == _local_company) return true;
+		if (v->owner == _local_company && v->type == type) return true;
 	}
 
 	return false;
 }
+
 
 /**
  * Determines the #LiveryScheme for a vehicle.
