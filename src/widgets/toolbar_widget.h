@@ -70,10 +70,9 @@ enum ToolbarEditorWidgets {
 	WID_TE_TREES,         ///< Tree building toolbar.
 	WID_TE_SIGNS,         ///< Sign building.
 	WID_TE_DATE_PANEL,    ///< Container for the date widgets.
-	/* The following three need to have the same actual widget number as the normal toolbar due to shared code. */
-	WID_TE_MUSIC_SOUND = WID_TN_MUSIC_SOUND, ///< Music/sound configuration menu.
-	WID_TE_HELP        = WID_TN_HELP,        ///< Help menu.
-	WID_TE_SWITCH_BAR  = WID_TN_SWITCH_BAR,  ///< Only available when toolbar has been split to switch between different subsets.
+	WID_TE_MUSIC_SOUND,   ///< Music/sound configuration menu.
+	WID_TE_HELP,          ///< Help menu.
+	WID_TE_SWITCH_BAR,    ///< Only available when toolbar has been split to switch between different subsets.
 };
 
 #endif /* WIDGETS_TOOLBAR_WIDGET_H */

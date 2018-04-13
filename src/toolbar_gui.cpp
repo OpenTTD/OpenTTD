@@ -1002,7 +1002,7 @@ static CallBackFunction MenuClickForest(int index)
 
 static CallBackFunction ToolbarMusicClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_MUSIC_SOUND, STR_TOOLBAR_SOUND_MUSIC, 1);
+	PopupMainToolbMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_MUSIC_SOUND : (int)WID_TN_MUSIC_SOUND, STR_TOOLBAR_SOUND_MUSIC, 1);
 	return CBF_NONE;
 }
 
@@ -1057,7 +1057,7 @@ static CallBackFunction PlaceLandBlockInfo()
 
 static CallBackFunction ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 13 : 10);
+	PopupMainToolbMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_HELP : (int)WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 13 : 10);
 	return CBF_NONE;
 }
 
@@ -1179,7 +1179,7 @@ static CallBackFunction ToolbarSwitchClick(Window *w)
 	}
 
 	w->ReInit();
-	w->SetWidgetLoweredState(WID_TN_SWITCH_BAR, _toolbar_mode == TB_LOWER);
+	w->SetWidgetLoweredState(_game_mode == GM_EDITOR ? (uint)WID_TE_SWITCH_BAR : (uint)WID_TN_SWITCH_BAR, _toolbar_mode == TB_LOWER);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -1249,7 +1249,7 @@ static CallBackFunction ToolbarScenGenIndustry(Window *w)
 	return CBF_NONE;
 }
 
-static CallBackFunction ToolbarScenBuildRoad(Window *w)
+static CallBackFunction ToolbarScenBuildRoadClick(Window *w)
 {
 	w->HandleButtonClick(WID_TE_ROADS);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
@@ -1874,10 +1874,12 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 			WID_TE_SETTINGS,
 			WID_TE_SAVE,
 			WID_TE_DATE_PANEL,
+			WID_TE_SMALL_MAP,
 			WID_TE_ZOOM_IN,
 			WID_TE_ZOOM_OUT,
 			WID_TE_MUSIC_SOUND,
-			WID_TE_HELP, WID_TE_SWITCH_BAR,
+			WID_TE_HELP,
+			WID_TE_SWITCH_BAR,
 		};
 
 		/* If we can place all buttons *and* the panels, show them. */
@@ -2265,6 +2267,31 @@ static WindowDesc _toolb_normal_desc(
 
 /* --- Toolbar handling for the scenario editor */
 
+static MenuClickedProc * const _scen_toolbar_dropdown_procs[] = {
+	nullptr,              // 0
+	nullptr,              // 1
+	MenuClickSettings,    // 2
+	MenuClickSaveLoad,    // 3
+	nullptr,              // 4
+	nullptr,              // 5
+	nullptr,              // 6
+	nullptr,              // 7
+	MenuClickMap,         // 8
+	nullptr,              // 9
+	nullptr,              // 10
+	nullptr,              // 11
+	nullptr,              // 12
+	nullptr,              // 13
+	nullptr,              // 14
+	nullptr,              // 15
+	nullptr,              // 16
+	nullptr,              // 17
+	nullptr,              // 18
+	MenuClickMusicWindow, // 19
+	MenuClickHelp,        // 20
+	nullptr,              // 21
+};
+
 static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarPauseClick,
 	ToolbarFastForwardClick,
@@ -2280,20 +2307,12 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarScenGenLand,
 	ToolbarScenGenTown,
 	ToolbarScenGenIndustry,
-	ToolbarScenBuildRoad,
+	ToolbarScenBuildRoadClick,
 	ToolbarScenBuildDocks,
 	ToolbarScenPlantTrees,
 	ToolbarScenPlaceSign,
 	ToolbarBtn_NULL,
-	nullptr,
-	nullptr,
-	nullptr,
-	nullptr,
-	nullptr,
-	nullptr,
-	nullptr,
 	ToolbarMusicClick,
-	nullptr,
 	ToolbarHelpClick,
 	ToolbarSwitchClick,
 };
@@ -2396,10 +2415,7 @@ struct ScenarioEditorToolbarWindow : Window {
 
 	void OnDropdownSelect(int widget, int index) override
 	{
-		/* The map button is in a different location on the scenario
-		 * editor toolbar, so we need to adjust for it. */
-		if (widget == WID_TE_SMALL_MAP) widget = WID_TN_SMALL_MAP;
-		CallBackFunction cbf = _menu_clicked_procs[widget](index);
+		CallBackFunction cbf = _scen_toolbar_dropdown_procs[widget](index);
 		if (cbf != CBF_NONE) _last_started_action = cbf;
 		if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	}
@@ -2415,7 +2431,7 @@ struct ScenarioEditorToolbarWindow : Window {
 			case MTEHK_GENLAND:                ToolbarScenGenLand(this); break;
 			case MTEHK_GENTOWN:                ToolbarScenGenTown(this); break;
 			case MTEHK_GENINDUSTRY:            ToolbarScenGenIndustry(this); break;
-			case MTEHK_BUILD_ROAD:             ToolbarScenBuildRoad(this); break;
+			case MTEHK_BUILD_ROAD:             ToolbarScenBuildRoadClick(this); break;
 			case MTEHK_BUILD_DOCKS:            ToolbarScenBuildDocks(this); break;
 			case MTEHK_BUILD_TREES:            ToolbarScenPlantTrees(this); break;
 			case MTEHK_SIGN:                   cbf = ToolbarScenPlaceSign(this); break;
