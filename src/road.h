@@ -244,7 +244,9 @@ static inline Money RoadConvertCost(RoadTypeIdentifier from, RoadTypeIdentifier 
 }
 
 /**
- * 
+ * Test if road disallows level crossings
+ * @param rtid The roadtype we are testing
+ * @return True iff the roadtype disallows level crossings
  */
 static inline bool RoadNoLevelCrossing(RoadTypeIdentifier rtid)
 {
