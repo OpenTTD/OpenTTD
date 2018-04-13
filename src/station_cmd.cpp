@@ -2971,7 +2971,7 @@ draw_default_foundation:
 					DrawGroundSprite(SPR_TRAMWAY_TRAM + sprite_offset, PAL_NONE);
 				}
 			}
-	
+
 			/* Draw road overlay */
 			if (road_rti != NULL) {
 				if (road_rti->UsesOverlay()) {
@@ -2979,7 +2979,7 @@ draw_default_foundation:
 					if (ground) DrawGroundSprite(ground + sprite_offset, PAL_NONE);
 				}
 			}
-	
+
 			/* Draw tram overlay */
 			if (tram_rti != NULL) {
 				if (tram_rti->UsesOverlay()) {
