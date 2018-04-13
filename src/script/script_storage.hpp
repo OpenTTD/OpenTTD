@@ -55,7 +55,7 @@ private:
 
 	std::vector<int> callback_value; ///< The values which need to survive a callback.
 
-	RoadType road_type;              ///< The current roadtype we build.
+	RoadTypeIdentifier rtid;         ///< The current roadtype we build.
 	RailType rail_type;              ///< The current railtype we build.
 
 	void *event_data;                ///< Pointer to the event data storage.
@@ -80,7 +80,7 @@ public:
 		new_story_page_id (0),
 		new_story_page_element_id(0),
 		/* calback_value (can't be set) */
-		road_type         (INVALID_ROADTYPE),
+		rtid              (),
 		rail_type         (INVALID_RAILTYPE),
 		event_data        (NULL),
 		log_data          (NULL)

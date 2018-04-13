@@ -509,9 +509,15 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 				if (GetDisallowedRoadDirections(tile) != DRD_NONE) return_cmd_error(STR_ERROR_CROSSING_ON_ONEWAY_ROAD);
 
-				if (RailNoLevelCrossings(railtype)) return_cmd_error(STR_ERROR_CROSSING_DISALLOWED);
+				if (RailNoLevelCrossings(railtype)) return_cmd_error(STR_ERROR_CROSSING_DISALLOWED_RAIL);
 
-				RoadTypes roadtypes = GetRoadTypes(tile);
+				RoadTypeIdentifier rtid;
+				RoadTypeIdentifiers rtids = RoadTypeIdentifiers::FromTile(tile);
+
+				FOR_EACH_SET_ROADTYPEIDENTIFIER(rtid, rtids) {
+					if (RoadNoLevelCrossing(rtid)) return_cmd_error(STR_ERROR_CROSSING_DISALLOWED_ROAD);
+				}
+
 				RoadBits road = GetRoadBits(tile, ROADTYPE_ROAD);
 				RoadBits tram = GetRoadBits(tile, ROADTYPE_TRAM);
 				if ((track == TRACK_X && ((road | tram) & ROAD_X) == 0) ||
@@ -524,26 +530,28 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 						CommandCost ret = CheckOwnership(tram_owner);
 						if (ret.Failed()) return ret;
 					}
-					/* Crossings must always have a road... */
-					uint num_new_road_pieces = 2 - CountBits(road);
-					if (road == ROAD_NONE) road_owner = _current_company;
-					roadtypes |= ROADTYPES_ROAD;
-					/* ...but tram is not required. */
-					uint num_new_tram_pieces = (tram != ROAD_NONE) ? 2 - CountBits(tram) : 0;
 
-					cost.AddCost((num_new_road_pieces + num_new_tram_pieces) * _price[PR_BUILD_ROAD]);
+					uint num_new_road_pieces = (road != ROAD_NONE) ? 2 - CountBits(road) : 0;
+					if (num_new_road_pieces > 0) {
+						cost.AddCost(num_new_road_pieces * RoadBuildCost(rtids.road_identifier));
+					}
+
+					uint num_new_tram_pieces = (tram != ROAD_NONE) ? 2 - CountBits(tram) : 0;
+					if (num_new_tram_pieces > 0) {
+						cost.AddCost(num_new_tram_pieces * RoadBuildCost(rtids.tram_identifier));
+					}
 
 					if (flags & DC_EXEC) {
-						MakeRoadCrossing(tile, road_owner, tram_owner, _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, roadtypes, GetTownIndex(tile));
+						MakeRoadCrossing(tile, road_owner, tram_owner, _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, rtids, GetTownIndex(tile));
 						UpdateLevelCrossing(tile, false);
 						Company::Get(_current_company)->infrastructure.rail[railtype] += LEVELCROSSING_TRACKBIT_FACTOR;
 						DirtyCompanyInfrastructureWindows(_current_company);
 						if (num_new_road_pieces > 0 && Company::IsValidID(road_owner)) {
-							Company::Get(road_owner)->infrastructure.road[ROADTYPE_ROAD] += num_new_road_pieces;
+							Company::Get(road_owner)->infrastructure.road[ROADTYPE_ROAD][rtids.road_identifier.subtype] += num_new_road_pieces;
 							DirtyCompanyInfrastructureWindows(road_owner);
 						}
 						if (num_new_tram_pieces > 0 && Company::IsValidID(tram_owner)) {
-							Company::Get(tram_owner)->infrastructure.road[ROADTYPE_TRAM] += num_new_tram_pieces;
+							Company::Get(tram_owner)->infrastructure.road[ROADTYPE_TRAM][rtids.tram_identifier.subtype] += num_new_tram_pieces;
 							DirtyCompanyInfrastructureWindows(tram_owner);
 						}
 					}
@@ -644,7 +652,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 				owner = GetTileOwner(tile);
 				Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= LEVELCROSSING_TRACKBIT_FACTOR;
 				DirtyCompanyInfrastructureWindows(owner);
-				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypes(tile), GetTownIndex(tile), GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM));
+				MakeRoadNormal(tile, GetCrossingRoadBits(tile), RoadTypeIdentifiers::FromTile(tile), GetTownIndex(tile), GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM));
 				DeleteNewGRFInspectWindow(GSF_RAILTYPES, tile);
 			}
 			break;
@@ -1574,7 +1582,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			case MP_ROAD:
 				if (!IsLevelCrossing(tile)) continue;
 				if (RailNoLevelCrossings(totype)) {
-					error.MakeError(STR_ERROR_CROSSING_DISALLOWED);
+					error.MakeError(STR_ERROR_CROSSING_DISALLOWED_RAIL);
 					continue;
 				}
 				break;

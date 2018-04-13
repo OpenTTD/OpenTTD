@@ -13,19 +13,9 @@
 #define ROAD_FUNC_H
 
 #include "core/bitmath_func.hpp"
-#include "road_type.h"
+#include "road.h"
 #include "economy_func.h"
-
-/**
- * Iterate through each set RoadType in a RoadTypes value.
- * For more informations see FOR_EACH_SET_BIT_EX.
- *
- * @param var Loop index variable that stores fallowing set road type. Must be of type RoadType.
- * @param road_types The value to iterate through (any expression).
- *
- * @see FOR_EACH_SET_BIT_EX
- */
-#define FOR_EACH_SET_ROADTYPE(var, road_types) FOR_EACH_SET_BIT_EX(RoadType, var, RoadTypes, road_types)
+#include "transparency.h"
 
 /**
  * Whether the given roadtype is valid.
@@ -165,19 +155,40 @@ static inline RoadBits AxisToRoadBits(Axis a)
 
 /**
  * Calculates the maintenance cost of a number of road bits.
- * @param roadtype Road type to get the cost for.
+ * @param rtid Road type to get the cost for.
  * @param num Number of road bits.
+ * @param total_num Total number of road bits of all road/tram-types.
  * @return Total cost.
  */
-static inline Money RoadMaintenanceCost(RoadType roadtype, uint32 num)
+static inline Money RoadMaintenanceCost(RoadTypeIdentifier rtid, uint32 num, uint32 total_num)
 {
-	assert(IsValidRoadType(roadtype));
-	return (_price[PR_INFRASTRUCTURE_ROAD] * (roadtype == ROADTYPE_TRAM ? 3 : 2) * num * (1 + IntSqrt(num))) >> 9; // 2 bits fraction for the multiplier and 7 bits scaling.
+	assert(rtid.IsValid());
+	return (_price[PR_INFRASTRUCTURE_ROAD] * GetRoadTypeInfo(rtid)->maintenance_multiplier * num * (1 + IntSqrt(total_num))) >> 12;
 }
 
-bool HasRoadTypesAvail(const CompanyID company, const RoadTypes rts);
-bool ValParamRoadType(const RoadType rt);
-RoadTypes GetCompanyRoadtypes(const CompanyID company);
+/**
+ * Test if a road type has catenary
+ * @param rti Road type to test
+ */
+static inline bool HasRoadCatenary(RoadTypeIdentifier rti)
+{
+	assert(IsValidRoadType(rti.basetype));
+	return HasBit(GetRoadTypeInfo(rti)->flags, ROTF_CATENARY);
+}
+
+/**
+ * Test if we should draw road catenary
+ * @param rti Road type to test
+ */
+static inline bool HasRoadCatenaryDrawn(RoadTypeIdentifier rti)
+{
+	return HasRoadCatenary(rti) && !IsInvisibilitySet(TO_CATENARY);
+}
+
+bool HasRoadTypeAvail(CompanyID company, RoadTypeIdentifier rtid);
+bool ValParamRoadType(RoadTypeIdentifier rtid);
+RoadSubTypes GetCompanyRoadtypes(CompanyID company, RoadType rt);
+RoadSubTypes AddDateIntroducedRoadTypes(RoadType rt, RoadSubTypes current, Date date);
 
 void UpdateLevelCrossing(TileIndex tile, bool sound = true);
 

@@ -408,8 +408,8 @@ void AddArticulatedParts(Vehicle *first)
 				gcache->cached_veh_length = VEHICLE_LENGTH; // Callback is called when the consist is finished
 				rv->state = RVSB_IN_DEPOT;
 
-				rv->roadtype = front->roadtype;
-				rv->compatible_roadtypes = front->compatible_roadtypes;
+				rv->rtid = front->rtid;
+				rv->compatible_subtypes = front->compatible_subtypes;
 
 				rv->spritenum = e_artic->u.road.image_index;
 				if (e_artic->CanCarryCargo()) {

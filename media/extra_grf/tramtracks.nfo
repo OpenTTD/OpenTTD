@@ -7,7 +7,7 @@
 // See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 //
    -1 * 0	 0C "Tram track graphics by PikkaBird"
-   -1 * 3	 05 0B 71
+   -1 * 3	 05 0B 77
    -1 sprites/tramtracks.png 8bpp  18    8  20  13   0   4 normal
    -1 sprites/tramtracks.png 8bpp  50    8  20  13   0   4 normal
    -1 sprites/tramtracks.png 8bpp  82    8  64  36 -18  -8 normal
@@ -121,3 +121,9 @@
    -1 sprites/tramtracks.png 8bpp 722  696  64  23 -31   0 normal
    -1 sprites/tramtracks.png 8bpp   2  776  64  23 -31   0 normal
    -1 sprites/tramtracks.png 8bpp  82  776  64  39 -31  -8 normal
+   -1 sprites/tramtracks.png 8bpp 162  776  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 242  776  62  64   2 -49 normal
+   -1 sprites/tramtracks.png 8bpp 320  776  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 400  776  62  64 -62 -49 normal
+   -1 sprites/tramtracks.png 8bpp 480  776  62  64 -62 -49 normal
+   -1 sprites/tramtracks.png 8bpp 560  776  62  64   2 -49 normal

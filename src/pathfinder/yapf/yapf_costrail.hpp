@@ -496,7 +496,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			if (!tf_local.Follow(cur.tile, cur.td)) {
 				assert(tf_local.m_err != TrackFollower::EC_NONE);
 				/* Can't move to the next tile (EOL?). */
-				if (tf_local.m_err == TrackFollower::EC_RAIL_TYPE) {
+				if (tf_local.m_err == TrackFollower::EC_RAIL_ROAD_TYPE) {
 					end_segment_reason |= ESRB_RAIL_TYPE;
 				} else {
 					end_segment_reason |= ESRB_DEAD_END;

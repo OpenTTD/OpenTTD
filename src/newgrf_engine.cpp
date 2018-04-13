@@ -23,6 +23,7 @@
 #include "station_base.h"
 #include "company_base.h"
 #include "newgrf_railtype.h"
+#include "newgrf_roadtype.h"
 #include "ship.h"
 
 #include "safeguards.h"
@@ -606,11 +607,21 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 		case 0x48: return v->GetEngine()->flags; // Vehicle Type Info
 		case 0x49: return v->build_year;
 
-		case 0x4A: {
-			if (v->type != VEH_TRAIN) return 0;
-			RailType rt = GetTileRailType(v->tile);
-			return (HasPowerOnRail(Train::From(v)->railtype, rt) ? 0x100 : 0) | GetReverseRailTypeTranslation(rt, object->ro.grffile);
-		}
+		case 0x4A:
+			switch (v->type) {
+				case VEH_TRAIN: {
+					RailType rt = GetTileRailType(v->tile);
+					return (HasPowerOnRail(Train::From(v)->railtype, rt) ? 0x100 : 0) | GetReverseRailTypeTranslation(rt, object->ro.grffile);
+				}
+
+				case VEH_ROAD: {
+					RoadTypeIdentifier rtid = GetRoadType(v->tile, RoadVehicle::From(v)->rtid.basetype);
+					return 0x100 | GetReverseRoadTypeTranslation(rtid, object->ro.grffile);
+				}
+
+				default:
+					return 0;
+			}
 
 		case 0x4B: // Long date of last service
 			return v->date_of_last_service;

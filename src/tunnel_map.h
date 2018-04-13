@@ -48,7 +48,7 @@ bool IsTunnelInWayDir(TileIndex tile, int z, DiagDirection dir);
  * @param d the direction facing out of the tunnel
  * @param r the road type used in the tunnel
  */
-static inline void MakeRoadTunnel(TileIndex t, Owner o, DiagDirection d, RoadTypes r)
+static inline void MakeRoadTunnel(TileIndex t, Owner o, DiagDirection d, RoadTypeIdentifiers r)
 {
 	SetTileType(t, MP_TUNNELBRIDGE);
 	SetTileOwner(t, o);

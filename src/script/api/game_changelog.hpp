@@ -31,6 +31,9 @@
  *
  * No changes
  *
+ * API additions:
+ * \li GSRoad::ERR_ROADTYPE_DISALLOWS_CROSSING
+ *
  * \b 1.7.0 - 1.7.2
  *
  * No changes

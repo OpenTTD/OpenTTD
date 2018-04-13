@@ -19,6 +19,7 @@
 #include "vehicle_func.h"
 #include "company_func.h"
 #include "rail.h"
+#include "road.h"
 #include "settings_type.h"
 #include "train.h"
 #include "roadveh.h"
@@ -41,7 +42,8 @@ StringID GetEngineCategoryName(EngineID engine)
 	const Engine *e = Engine::Get(engine);
 	switch (e->type) {
 		default: NOT_REACHED();
-		case VEH_ROAD:              return STR_ENGINE_PREVIEW_ROAD_VEHICLE;
+		case VEH_ROAD:
+			return GetRoadTypeInfo(e->GetRoadType())->strings.new_engine;
 		case VEH_AIRCRAFT:          return STR_ENGINE_PREVIEW_AIRCRAFT;
 		case VEH_SHIP:              return STR_ENGINE_PREVIEW_SHIP;
 		case VEH_TRAIN:
