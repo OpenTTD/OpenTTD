@@ -69,7 +69,7 @@ if [ -d "$ROOT_DIR/.git" ]; then
 	HASH=`LC_ALL=C git rev-parse --verify HEAD 2>/dev/null`
 	SHORTHASH=`echo ${HASH} | cut -c1-8`
 	ISODATE=`LC_ALL=C git show -s --pretty='format:%ci' HEAD | "$AWK" '{ gsub("-", "", $1); print $1 }'`
-	BRANCH="`git symbolic-ref -q HEAD 2>/dev/null | sed 's@.*/@@;s@^master$@@'`"
+	BRANCH="`git symbolic-ref -q HEAD 2>/dev/null | sed 's@.*/@@'`"
 	TAG="`git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null | sed 's@\^0$@@'`"
 
 	if [ -n "$TAG" ]; then
