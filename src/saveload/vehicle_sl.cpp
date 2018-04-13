@@ -391,6 +391,14 @@ void AfterLoadVehicles(bool part_of_load)
 				RoadVehicle *rv = RoadVehicle::From(v);
 				if (rv->IsFrontEngine()) {
 					rv->gcache.last_speed = rv->cur_speed; // update displayed road vehicle speed
+
+					rv->rtid = Engine::Get(rv->engine_type)->GetRoadType();
+					rv->compatible_subtypes = GetRoadTypeInfo(rv->rtid)->powered_roadtypes;
+					for (RoadVehicle *u = rv; u != NULL; u = u->Next()) {
+						u->rtid = rv->rtid;
+						u->compatible_subtypes = rv->compatible_subtypes;
+					}
+
 					RoadVehUpdateCache(rv);
 					if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
 						rv->CargoChanged();
@@ -429,13 +437,7 @@ void AfterLoadVehicles(bool part_of_load)
 
 	FOR_ALL_VEHICLES(v) {
 		switch (v->type) {
-			case VEH_ROAD: {
-				RoadVehicle *rv = RoadVehicle::From(v);
-				rv->roadtype = HasBit(EngInfo(v->First()->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
-				rv->compatible_roadtypes = RoadTypeToRoadTypes(rv->roadtype);
-				FALLTHROUGH;
-			}
-
+			case VEH_ROAD:
 			case VEH_TRAIN:
 			case VEH_SHIP:
 				v->GetImage(v->direction, EIT_ON_MAP, &v->sprite_seq);

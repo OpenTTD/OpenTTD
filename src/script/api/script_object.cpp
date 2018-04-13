@@ -118,14 +118,14 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->last_cost;
 }
 
-/* static */ void ScriptObject::SetRoadType(RoadType road_type)
+/* static */ void ScriptObject::SetRoadType(RoadTypeIdentifier rtid)
 {
-	GetStorage()->road_type = road_type;
+	GetStorage()->rtid = rtid;
 }
 
-/* static */ RoadType ScriptObject::GetRoadType()
+/* static */ RoadTypeIdentifier ScriptObject::GetRoadType()
 {
-	return GetStorage()->road_type;
+	return GetStorage()->rtid;
 }
 
 /* static */ void ScriptObject::SetRailType(RailType rail_type)

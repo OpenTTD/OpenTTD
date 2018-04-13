@@ -477,6 +477,23 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 
 		const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
 		return ApplyMask(cs->default_colour, &andor);
+	} else if (t == MP_ROAD) {
+		RoadTypeIdentifiers rtids = RoadTypeIdentifiers::FromTile(tile);
+		const RoadtypeInfo *rti = NULL;
+		if (rtids.HasRoad()) {
+			rti = GetRoadTypeInfo(rtids.road_identifier);
+		} else if (rtids.HasTram()) {
+			rti = GetRoadTypeInfo(rtids.tram_identifier);
+		}
+		if (rti != NULL) {
+			AndOr andor = {
+				MKCOLOUR_0XX0(rti->map_colour),
+				_smallmap_contours_andor[t].mand
+			};
+
+			const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+			return ApplyMask(cs->default_colour, &andor);
+		}
 	}
 
 	/* Ground colour */

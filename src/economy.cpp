@@ -681,7 +681,10 @@ static void CompaniesGenStatistics()
 			}
 			cost.AddCost(SignalMaintenanceCost(c->infrastructure.signal));
 			for (RoadType rt = ROADTYPE_BEGIN; rt < ROADTYPE_END; rt++) {
-				if (c->infrastructure.road[rt] != 0) cost.AddCost(RoadMaintenanceCost(rt, c->infrastructure.road[rt]));
+				uint32 road_total = c->infrastructure.GetRoadTotal(rt);
+				for (RoadSubType rst = ROADSUBTYPE_BEGIN; rst < ROADSUBTYPE_END; rst++) {
+					if (c->infrastructure.road[rt][rst] != 0) cost.AddCost(RoadMaintenanceCost(RoadTypeIdentifier(rt, rst), c->infrastructure.road[rt][rst], road_total));
+				}
 			}
 			cost.AddCost(CanalMaintenanceCost(c->infrastructure.water));
 			cost.AddCost(StationMaintenanceCost(c->infrastructure.station));

@@ -201,7 +201,12 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, UINT32_MAX)) != TRACKDIR_BIT_NONE;
+	if (transport_type == TRANSPORT_ROAD) {
+		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, ROADTYPE_ROAD)) != TRACKDIR_BIT_NONE ||
+				::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, ROADTYPE_TRAM)) != TRACKDIR_BIT_NONE;
+	} else {
+		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 0)) != TRACKDIR_BIT_NONE;
+	}
 }
 
 /* static */ int32 ScriptTile::GetCargoAcceptance(TileIndex tile, CargoID cargo_type, int width, int height, int radius)

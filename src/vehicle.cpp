@@ -1742,6 +1742,7 @@ UnitID GetFreeUnitNumber(VehicleType type)
  */
 bool CanBuildVehicleInfrastructure(VehicleType type)
 {
+	assert(type != VEH_ROAD);
 	assert(IsCompanyBuildableVehicleType(type));
 
 	if (!Company::IsValidID(_local_company)) return false;
@@ -1750,9 +1751,9 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 	UnitID max;
 	switch (type) {
 		case VEH_TRAIN:    max = _settings_game.vehicle.max_trains; break;
-		case VEH_ROAD:     max = _settings_game.vehicle.max_roadveh; break;
 		case VEH_SHIP:     max = _settings_game.vehicle.max_ships; break;
 		case VEH_AIRCRAFT: max = _settings_game.vehicle.max_aircraft; break;
+		/* VEH_ROAD is not handled here, see CanBuildRoadTypeInfrastructure() */
 		default: NOT_REACHED();
 	}
 
@@ -1769,12 +1770,11 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 	/* We should be able to build infrastructure when we have the actual vehicle type */
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->owner == _local_company && v->type == type) return true;
+		if (v->type == type && v->owner == _local_company) return true;
 	}
 
 	return false;
 }
-
 
 /**
  * Determines the #LiveryScheme for a vehicle.

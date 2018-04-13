@@ -18,6 +18,7 @@
 #include "vehicle_type.h"
 #include "economy_func.h"
 #include "rail.h"
+#include "road.h"
 #include "linkgraph/linkgraph_type.h"
 
 void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius);
@@ -33,7 +34,7 @@ CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, Cargo
 void UpdateStationAcceptance(Station *st, bool show_msg);
 
 const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx);
-void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image);
+void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadTypeIdentifier rtid, int image);
 
 bool HasStationInUse(StationID station, bool include_company, CompanyID company);
 
