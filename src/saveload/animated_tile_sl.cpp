@@ -12,22 +12,21 @@
 #include "../stdafx.h"
 #include "../tile_type.h"
 #include "../core/alloc_func.hpp"
+#include "../core/smallvec_type.hpp"
 
 #include "saveload.h"
 
 #include "../safeguards.h"
 
-extern TileIndex *_animated_tile_list;
-extern uint _animated_tile_count;
-extern uint _animated_tile_allocated;
+extern SmallVector<TileIndex, 256> _animated_tiles;
 
 /**
  * Save the ANIT chunk.
  */
 static void Save_ANIT()
 {
-	SlSetLength(_animated_tile_count * sizeof(*_animated_tile_list));
-	SlArray(_animated_tile_list, _animated_tile_count, SLE_UINT32);
+	SlSetLength(_animated_tiles.Length() * sizeof(*_animated_tiles.Begin()));
+	SlArray(_animated_tiles.Begin(), _animated_tiles.Length(), SLE_UINT32);
 }
 
 /**
@@ -38,22 +37,20 @@ static void Load_ANIT()
 	/* Before version 80 we did NOT have a variable length animated tile table */
 	if (IsSavegameVersionBefore(80)) {
 		/* In pre version 6, we has 16bit per tile, now we have 32bit per tile, convert it ;) */
-		SlArray(_animated_tile_list, 256, IsSavegameVersionBefore(6) ? (SLE_FILE_U16 | SLE_VAR_U32) : SLE_UINT32);
+		TileIndex anim_list[256];
+		SlArray(anim_list, 256, IsSavegameVersionBefore(6) ? (SLE_FILE_U16 | SLE_VAR_U32) : SLE_UINT32);
 
-		for (_animated_tile_count = 0; _animated_tile_count < 256; _animated_tile_count++) {
-			if (_animated_tile_list[_animated_tile_count] == 0) break;
+		for (int i = 0; i < 256; i++) {
+			if (anim_list[i] == 0) break;
+			*_animated_tiles.Append() = anim_list[i];
 		}
 		return;
 	}
 
-	_animated_tile_count = (uint)SlGetFieldLength() / sizeof(*_animated_tile_list);
-
-	/* Determine a nice rounded size for the amount of allocated tiles */
-	_animated_tile_allocated = 256;
-	while (_animated_tile_allocated < _animated_tile_count) _animated_tile_allocated *= 2;
-
-	_animated_tile_list = ReallocT<TileIndex>(_animated_tile_list, _animated_tile_allocated);
-	SlArray(_animated_tile_list, _animated_tile_count, SLE_UINT32);
+	uint count = (uint)SlGetFieldLength() / sizeof(*_animated_tiles.Begin());
+	_animated_tiles.Clear();
+	_animated_tiles.Append(count);
+	SlArray(_animated_tiles.Begin(), count, SLE_UINT32);
 }
 
 /**
