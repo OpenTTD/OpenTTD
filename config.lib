@@ -1202,7 +1202,7 @@ check_params() {
 	fi
 }
 
-if ! which realpath; then
+if [ -z `which realpath 2>/dev/null` ]; then
 	realpath() { readlink -f -- "$@"; }
 fi
 
