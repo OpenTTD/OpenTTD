@@ -150,15 +150,15 @@ OpenTTD has been ported to several platforms and operating systems. It should
 not be very difficult to port it to a new platform. The currently working
 platforms are:
 
-    BeOS                 - SDL or Allegro
-    DOS                  - Allegro
-    FreeBSD              - SDL
-    Linux                - SDL or Allegro
-    MacOS X (universal)  - Cocoa video and sound drivers
-    MorphOS              - SDL
-    OpenBSD              - SDL
-    OS/2                 - SDL
-    Windows              - Win32 GDI (faster) or SDL or Allegro
+- BeOS (SDL or Allegro)
+- DOS (Allegro)
+- FreeBSD (SDL)
+- Linux (SDL or Allegro)
+- MacOS X (universal) (Cocoa video and sound drivers)
+- MorphOS (SDL)
+- OpenBSD (SDL)
+- OS/2 (SDL)
+- Windows (Win32 GDI (faster) or SDL or Allegro)
 
 ## 4.0) Installing and running OpenTTD
 
