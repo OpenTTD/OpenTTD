@@ -1452,8 +1452,8 @@ void DrawRoadTypeCatenary(const TileInfo *ti, RoadTypeIdentifier rtid, RoadBits 
  */
 void DrawRoadCatenary(const TileInfo *ti)
 {
-	RoadBits road;
-	RoadBits tram;
+	RoadBits road = ROAD_NONE;
+	RoadBits tram = ROAD_NONE;
 
 	if (IsTileType(ti->tile, MP_ROAD)) {
 		if (IsNormalRoad(ti->tile)) {
