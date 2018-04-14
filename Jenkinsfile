@@ -16,13 +16,23 @@ def ci_builds_stages = ci_builds_targets.collectEntries {
 
 def generateCI(display_name, image_name) {
     return {
-        dir("${display_name}") {
-            unstash "source"
+        githubNotify context: 'openttd/' + display_name, description: 'This commit is being built', status: 'PENDING'
 
-            docker.image("${image_name}").withRun("--volumes-from ${hostname} --workdir " + pwd()) { c->
-                sh "docker logs --follow ${c.id}"
-                sh "exit `docker wait ${c.id}`"
+        try {
+            dir("${display_name}") {
+                unstash "source"
+
+                docker.image("${image_name}").withRun("--volumes-from ${hostname} --workdir " + pwd()) { c->
+                    sh "docker logs --follow ${c.id}"
+                    sh "exit `docker wait ${c.id}`"
+                }
             }
+
+            githubNotify context: 'openttd/' + display_name, description: 'The commit looks good', status: 'SUCCESS'
+        }
+        catch (error) {
+            githubNotify context: 'openttd/' + display_name, description: 'The commit cannot be built', status: 'FAILURE'
+            throw error
         }
     }
 }
