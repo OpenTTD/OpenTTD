@@ -1,4 +1,4 @@
-# Readme
+# OpenTTD
 
 ## Meta
 
