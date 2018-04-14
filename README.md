@@ -44,7 +44,7 @@ on irc.oftc.net).
 
 The OpenTTD homepage is [http://www.openttd.org/](http://www.openttd.org/).
 
-You can also find the OpenTTD forums at [http://forum.openttd.org/](http://forum.openttd.org/)
+You can also find the OpenTTD forums at [http://forum.openttd.org/](http://forum.openttd.org/).
 
 ### 2.1) Reporting bugs
 
@@ -82,7 +82,7 @@ following information in your bug report:
    you compiled OpenTTD yourself.
 - The processor architecture of your OS (32 bits Windows, 64 bits Windows,
    Linux on an ARM, Mac OS X on a PowerPC, …)
-- Attach a saved game *and* a screenshot if possible
+- Attach a saved game **and** a screenshot if possible
 - If this bug only occurred recently please note the last version without
    the bug and the first version including the bug. That way we can fix it
    quicker by looking at the changes made.
