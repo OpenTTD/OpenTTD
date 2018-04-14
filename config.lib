@@ -1963,7 +1963,22 @@ check_compiler() {
 	# $8 - "0" gcc, "1" g++, "2" windres, "3" strip, "4" lipo
 	# $9 - What the command is to check for
 
-	if [ -n "$3" ]; then
+	if [ -n "$4" ]; then
+		# Check for manual compiler
+		machine=`$4 $9 2>/dev/null`
+		ret=$?
+		eval "$2=\"$4\""
+
+		log 2 "executing $4 $9"
+		log 2 "  returned $machine"
+		log 2 "  exit code $ret"
+
+		if ( [ -z "$machine" ] && [ "$8" != "3" ] ) || [ "$ret" != "0" ]; then
+			log 1 "checking $1... $4 not found"
+			log 1 "the selected binary doesn't seem to be a $6 binary"
+			exit 1
+		fi
+	elif [ -n "$3" ]; then
 		# Check for system
 		if [ -z "$6" ]; then
 			compiler="$3"
@@ -2004,21 +2019,6 @@ check_compiler() {
 		if [ "$machine" != "$3" ] && ( [ "$8" = "0" ] || [ "$8" = "1" ] ); then
 			log 1 "checking $1... expected $3, found $machine"
 			log 1 "the compiler suggests it doesn't build code for the machine you specified"
-			exit 1
-		fi
-	elif [ -n "$4" ]; then
-		# Check for manual compiler
-		machine=`$4 $9 2>/dev/null`
-		ret=$?
-		eval "$2=\"$4\""
-
-		log 2 "executing $4 $9"
-		log 2 "  returned $machine"
-		log 2 "  exit code $ret"
-
-		if ( [ -z "$machine" ] && [ "$8" != "3" ] ) || [ "$ret" != "0" ]; then
-			log 1 "checking $1... $4 not found"
-			log 1 "the selected binary doesn't seem to be a $6 binary"
 			exit 1
 		fi
 	else
