@@ -11,17 +11,14 @@
 
 #include "stdafx.h"
 #include "core/alloc_func.hpp"
+#include "core/smallvec_type.hpp"
 #include "tile_cmd.h"
 #include "viewport_func.h"
 
 #include "safeguards.h"
 
 /** The table/list with animated tiles. */
-TileIndex *_animated_tile_list = NULL;
-/** The number of animated tiles in the current state. */
-uint _animated_tile_count = 0;
-/** The number of slots for animated tiles allocated currently. */
-uint _animated_tile_allocated = 0;
+SmallVector<TileIndex, 256> _animated_tiles;
 
 /**
  * Removes the given tile from the animated tile table.
@@ -29,17 +26,11 @@ uint _animated_tile_allocated = 0;
  */
 void DeleteAnimatedTile(TileIndex tile)
 {
-	for (TileIndex *ti = _animated_tile_list; ti < _animated_tile_list + _animated_tile_count; ti++) {
-		if (tile == *ti) {
-			/* Remove the hole
-			 * The order of the remaining elements must stay the same, otherwise the animation loop
-			 * may miss a tile; that's why we must use memmove instead of just moving the last element.
-			 */
-			memmove(ti, ti + 1, (_animated_tile_list + _animated_tile_count - (ti + 1)) * sizeof(*ti));
-			_animated_tile_count--;
-			MarkTileDirtyByTile(tile);
-			return;
-		}
+	TileIndex *to_remove = _animated_tiles.Find(tile);
+	if (to_remove != _animated_tiles.End()) {
+		/* The order of the remaining elements must stay the same, otherwise the animation loop may miss a tile. */
+		_animated_tiles.ErasePreservingOrder(to_remove);
+		MarkTileDirtyByTile(tile);
 	}
 }
 
@@ -51,19 +42,7 @@ void DeleteAnimatedTile(TileIndex tile)
 void AddAnimatedTile(TileIndex tile)
 {
 	MarkTileDirtyByTile(tile);
-
-	for (const TileIndex *ti = _animated_tile_list; ti < _animated_tile_list + _animated_tile_count; ti++) {
-		if (tile == *ti) return;
-	}
-
-	/* Table not large enough, so make it larger */
-	if (_animated_tile_count == _animated_tile_allocated) {
-		_animated_tile_allocated *= 2;
-		_animated_tile_list = ReallocT<TileIndex>(_animated_tile_list, _animated_tile_allocated);
-	}
-
-	_animated_tile_list[_animated_tile_count] = tile;
-	_animated_tile_count++;
+	_animated_tiles.Include(tile);
 }
 
 /**
@@ -71,8 +50,8 @@ void AddAnimatedTile(TileIndex tile)
  */
 void AnimateAnimatedTiles()
 {
-	const TileIndex *ti = _animated_tile_list;
-	while (ti < _animated_tile_list + _animated_tile_count) {
+	const TileIndex *ti = _animated_tiles.Begin();
+	while (ti < _animated_tiles.End()) {
 		const TileIndex curr = *ti;
 		AnimateTile(curr);
 		/* During the AnimateTile call, DeleteAnimatedTile could have been called,
@@ -93,7 +72,5 @@ void AnimateAnimatedTiles()
  */
 void InitializeAnimatedTiles()
 {
-	_animated_tile_list = ReallocT<TileIndex>(_animated_tile_list, 256);
-	_animated_tile_count = 0;
-	_animated_tile_allocated = 256;
+	_animated_tiles.Clear();
 }

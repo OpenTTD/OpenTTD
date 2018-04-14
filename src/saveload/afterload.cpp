@@ -2157,22 +2157,21 @@ bool AfterLoadGame()
 		/* Animated tiles would sometimes not be actually animated or
 		 * in case of old savegames duplicate. */
 
-		extern TileIndex *_animated_tile_list;
-		extern uint _animated_tile_count;
+		extern SmallVector<TileIndex, 256> _animated_tiles;
 
-		for (uint i = 0; i < _animated_tile_count; /* Nothing */) {
+		for (TileIndex *tile = _animated_tiles.Begin(); tile < _animated_tiles.End(); /* Nothing */) {
 			/* Remove if tile is not animated */
-			bool remove = _tile_type_procs[GetTileType(_animated_tile_list[i])]->animate_tile_proc == NULL;
+			bool remove = _tile_type_procs[GetTileType(*tile)]->animate_tile_proc == NULL;
 
 			/* and remove if duplicate */
-			for (uint j = 0; !remove && j < i; j++) {
-				remove = _animated_tile_list[i] == _animated_tile_list[j];
+			for (TileIndex *j = _animated_tiles.Begin(); !remove && j < tile; j++) {
+				remove = *tile == *j;
 			}
 
 			if (remove) {
-				DeleteAnimatedTile(_animated_tile_list[i]);
+				DeleteAnimatedTile(*tile);
 			} else {
-				i++;
+				tile++;
 			}
 		}
 	}
