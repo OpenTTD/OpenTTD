@@ -159,6 +159,23 @@ public:
 	}
 
 	/**
+	 * Insert a new item at a specific position into the vector, moving all following items.
+	 * @param item Position at which the new item should be inserted
+	 * @return pointer to the new item
+	 */
+	inline T *Insert(T *item)
+	{
+		assert(item >= this->Begin() && item <= this->End());
+
+		size_t to_move = this->End() - item;
+		size_t start = item - this->Begin();
+
+		this->Append();
+		if (to_move > 0) MemMoveT(this->Begin() + start + 1, this->Begin() + start, to_move);
+		return this->Begin() + start;
+	}
+
+	/**
 	 * Search for the first occurrence of an item.
 	 * The '!=' operator of T is used for comparison.
 	 * @param item Item to search for
@@ -233,12 +250,23 @@ public:
 	 */
 	void ErasePreservingOrder(uint pos, uint count = 1)
 	{
+		ErasePreservingOrder(this->data + pos, count);
+	}
+
+	/**
+	 * Remove items from the vector while preserving the order of other items.
+	 * @param item First item to remove.
+	 * @param count Number of consecutive items to remove.
+	 */
+	inline void ErasePreservingOrder(T *item, uint count = 1)
+	{
 		if (count == 0) return;
-		assert(pos < this->items);
-		assert(pos + count <= this->items);
+		assert(item >= this->Begin());
+		assert(item + count <= this->End());
+
 		this->items -= count;
-		uint to_move = this->items - pos;
-		if (to_move > 0) MemMoveT(this->data + pos, this->data + pos + count, to_move);
+		ptrdiff_t to_move = this->End() - item;
+		if (to_move > 0) MemMoveT(item, item + count, to_move);
 	}
 
 	/**
