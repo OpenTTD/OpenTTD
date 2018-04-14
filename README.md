@@ -487,12 +487,12 @@ first. Note that you need the MorphOS SDK, latest libnix updates (else C++
 parts of OpenTTD will not build) and the powersdl.library SDK. Optionally libz,
 libpng and freetype2 developer files.
 
-OS/2:
+### OS/2:
 
 A comprehensive GNU build environment is required to build the OS/2 version.
 See the docs/Readme_OS2.txt file for more information.
 
-DOS:
+### DOS:
 
 A build environment with DJGPP is needed as well as libraries such as
 Allegro, zlib and libpng, which all can be downloaded from the DJGPP
