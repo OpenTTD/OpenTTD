@@ -21,13 +21,13 @@ restrictions:
 * Please **do not** use the issue tracker for personal support requests. FORUMS??
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
-  respect the opinions of others.
+respect the opinions of others.
 
 * Please **do not** post comments consisting solely of "+1" or ":thumbsup:".
-  Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments)
-  instead. We reserve the right to delete comments which violate this rule.
+Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments)
+instead. We reserve the right to delete comments which violate this rule.
 
-* Please **do not** open issues or pull requests regarding add-on content in NewGRF, GameScripts, AIS, etc
+* Please **do not** open issues or pull requests regarding add-on content in NewGRF, GameScripts, AIs, etc
 
 ## Bug reports
 
@@ -39,14 +39,14 @@ Guidelines for bug reports:
 0. Don't report issues with games where you changed NewGRFs.  Don't report issues with Patchpacks.
 
 1. **Use the GitHub issue search** &mdash; check if the issue has already been
-   reported.
+reported.
 
 2. **Check if the issue has been fixed** &mdash; try to reproduce it using the
-   latest `nightly` build of OpenTTD, available from https://www.openttd.org/en/
+latest `nightly` build of OpenTTD, available from https://www.openttd.org/en/
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
-   case](https://css-tricks.com/reduced-test-cases/) (< THIS IS NICE BUT NOT ABOUT OPENTTD EH) in a savegame with screenshots.  
-   Try to use few or no NewGRFs, AIs etc if possible.
+case](https://css-tricks.com/reduced-test-cases/) (< THIS IS NICE BUT NOT ABOUT OPENTTD EH) in a savegame with screenshots.
+Try to use few or no NewGRFs, AIs etc if possible.
 
 A good bug report shouldn't leave others needing to chase you up for more
 information. Please try to be as detailed as possible in your report. What is
@@ -112,50 +112,50 @@ Adhering to the following process is the best way to get your work
 included in the project:
 
 1. [Fork](https://help.github.com/fork-a-repo/) the project, clone your fork,
-   and configure the remotes:
+and configure the remotes:
 
-   ```bash
-    git clone https://github.com/<your-username>/OpenTTD.git openttd
-    git clone https://github.com/OpenTTD/OpenTTD-git-hooks.git openttd_hooks
-    cd openttd
-    git remote add upstream https://github.com/OpenTTD/OpenTTD.git
-    cd .git/hooks
-    ln -s -t . ../../../openttd_hooks/hooks/*
-   ```
+```bash
+git clone https://github.com/<your-username>/OpenTTD.git openttd
+git clone https://github.com/OpenTTD/OpenTTD-git-hooks.git openttd_hooks
+cd openttd
+git remote add upstream https://github.com/OpenTTD/OpenTTD.git
+cd .git/hooks
+ln -s -t . ../../../openttd_hooks/hooks/*
+```
 
 2. If you cloned a while ago, get the latest changes from upstream:
 
-   ```bash
-   git pull upstream
-   ```
+```bash
+git pull upstream
+```
 
 3. Create a new topic branch (off the main project development branch) to
-   contain your feature, change, or fix:
+contain your feature, change, or fix:
 
-   ```bash
-   git checkout -b <topic-branch-name>
-   ```
+```bash
+git checkout -b <topic-branch-name>
+```
 
 4. Commit your changes in logical chunks. Please adhere to these [git commit
-   message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
-   or your code is unlikely to be merged into the main project. Use Git's
-   [interactive rebase](https://help.github.com/articles/interactive-rebase)
-   feature to tidy up your commits before making them public.
+message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+or your code is unlikely to be merged into the main project. Use Git's
+[interactive rebase](https://help.github.com/articles/interactive-rebase)
+feature to tidy up your commits before making them public.
 
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
 
-   ```bash
-   git pull [--rebase] upstream v4-dev
-   ```
+```bash
+git pull [--rebase] upstream v4-dev
+```
 
 6. Push your topic branch up to your fork:
 
-   ```bash
-   git push origin <topic-branch-name>
-   ```
+```bash
+git push origin <topic-branch-name>
+```
 
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
-    with a clear title and description against the `v4-dev` branch.
+with a clear title and description against the `v4-dev` branch.
 
 REWRITE FOR GPL
 
@@ -187,3 +187,4 @@ REWRITE TO GPL
 
 By contributing your code, you agree to license your contribution under the [MIT License](LICENSE).
 By contributing to the documentation, you agree to license your contribution under the [Creative Commons Attribution 3.0 Unported License](docs/LICENSE).
+
