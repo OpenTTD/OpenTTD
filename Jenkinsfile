@@ -1,19 +1,24 @@
 #!/usr/bin/env groovy
 
-def ci_checkers_targets = [
-    ["commit-checker", "openttd/compile-farm-ci:commit-checker"],
-]
-def ci_builds_targets = [
-    ["linux-amd64-clang-3.8", "openttd/compile-farm-ci:linux-amd64-clang-3.8"],
-    ["linux-amd64-gcc-6", "openttd/compile-farm-ci:linux-amd64-gcc-6"],
-    ["linux-i386-gcc-6", "openttd/compile-farm-ci:linux-i386-gcc-6"],
+// The stages we run one by one
+// Please don't add more than 2 items in a single stage; this hurts performance
+def ci_stages = [
+    "Checkers": [
+        "commit-checker": "openttd/compile-farm-ci:commit-checker",
+    ],
+    "Compilers": [
+        "linux-amd64-gcc-6": "openttd/compile-farm-ci:linux-amd64-gcc-6",
+        "linux-amd64-clang-3.8": "openttd/compile-farm-ci:linux-amd64-clang-3.8",
+    ],
+    "Archs": [
+        "linux-i386-gcc-6": "openttd/compile-farm-ci:linux-i386-gcc-6",
+    ],
 ]
 
-def ci_checkers_stages = ci_checkers_targets.collectEntries {
-    ["${it[0]}" : generateCI(it[0], it[1])]
-}
-def ci_builds_stages = ci_builds_targets.collectEntries {
-    ["${it[0]}" : generateCI(it[0], it[1])]
+def generateStage(targets) {
+    return targets.collectEntries{ key, target ->
+        ["${key}": generateCI(key, target)]
+    }
 }
 
 def generateCI(display_name, image_name) {
@@ -24,7 +29,7 @@ def generateCI(display_name, image_name) {
             dir("${display_name}") {
                 unstash "source"
 
-                docker.image("${image_name}").withRun("--volumes-from ${hostname} --workdir " + pwd()) { c->
+                docker.image("${image_name}").withRun("--volumes-from ${hostname} --workdir " + pwd()) { c ->
                     sh "docker logs --follow ${c.id}"
                     sh "exit `docker wait ${c.id}`"
                 }
@@ -50,12 +55,10 @@ node {
             stash name: "source", useDefaultExcludes: false
         }
 
-        stage("Checkers") {
-            parallel ci_checkers_stages
-        }
-
-        stage("Builds") {
-           parallel ci_builds_stages
+        ci_stages.each { ci_stage ->
+            stage(ci_stage.key) {
+                parallel generateStage(ci_stage.value)
+            }
         }
     }
 }
