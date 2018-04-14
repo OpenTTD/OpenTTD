@@ -40,21 +40,23 @@ def generateCI(display_name, image_name) {
 }
 
 node {
-    stage("Checkout") {
-        checkout scm
+    ansiColor('xterm') {
+        stage("Checkout") {
+            checkout scm
 
-        // Ensure we also have origin/master available
-        sh "git fetch --no-tags origin master:refs/remotes/origin/master"
+            // Ensure we also have origin/master available
+            sh "git fetch --no-tags origin master:refs/remotes/origin/master"
 
-        stash name: "source", useDefaultExcludes: false
-    }
+            stash name: "source", useDefaultExcludes: false
+        }
 
-    stage("Checkers") {
-        parallel ci_checkers_stages
-    }
+        stage("Checkers") {
+            parallel ci_checkers_stages
+        }
 
-    stage("Builds") {
-        parallel ci_builds_stages
+        stage("Builds") {
+           parallel ci_builds_stages
+        }
     }
 }
 
