@@ -78,10 +78,10 @@ following information in your bug report:
 
 - OpenTTD version (PLEASE test the latest SVN/nightly build)
 - Bug details, including instructions how to reproduce it
-- Platform (Windows, Linux, FreeBSD, ...) and compiler (including version) if
+- Platform (Windows, Linux, FreeBSD, …) and compiler (including version) if
    you compiled OpenTTD yourself.
 - The processor architecture of your OS (32 bits Windows, 64 bits Windows,
-   Linux on an ARM, Mac OS X on a PowerPC, ...)
+   Linux on an ARM, Mac OS X on a PowerPC, …)
 - Attach a saved game *and* a screenshot if possible
 - If this bug only occurred recently please note the last version without
    the bug and the first version including the bug. That way we can fix it
@@ -127,7 +127,7 @@ a bug report with the following files attached:
 - commands-out.log as it contains all the commands that were done
 - the last saved savegame (search for the last line beginning with
    'save: dmp_cmds_' in commands-out.log). We use this savegame to check
-   whether we can quickly reproduce the desync. Otherwise we will need...
+   whether we can quickly reproduce the desync. Otherwise we will need …
 - the first saved savegame (search for the first line beginning with 'save'
    where the first part, up to the last underscore '_', is the same). We need
    this savegame to be able to reproduce the bug when the last savegame is not
