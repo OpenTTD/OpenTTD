@@ -52,8 +52,8 @@ First of all, check whether the bug is not already known. Do this by looking
 through the file called 'known-bugs.txt' which is distributed with OpenTTD
 like this readme.
 
-For tracking our bugs we are using a bug tracker called Flyspray. You can find
-the tracker at http://bugs.openttd.org/. Before actually reporting take a look
+For tracking our bugs we are using Githubs issue tracker. You can find
+the tracker at [https://github.com/OpenTTD/OpenTTD/issues](https://github.com/OpenTTD/OpenTTD/issues). Before actually reporting take a look
 through the already reported bugs there to see if the bug is already known.
 The 'known-bugs.txt' file might be a bit outdated at the moment you are
 reading it as only bugs known before the release are documented there. Also
