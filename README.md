@@ -396,10 +396,10 @@ Several important non-standard controls:
 - Ctrl modifies many commands and makes them more powerful. For example Ctrl
   clicking on signals with the build signal tool changes their behaviour, holding
   Ctrl while the track build tool is activated changes it to the track removal
-  tool, and so on. See http://wiki.openttd.org/Hidden_features for a non-
-  comprehensive list or look at the tooltips.
+  tool, and so on. See [http://wiki.openttd.org/Hidden_features](http://wiki.openttd.org/Hidden_features)
+  for a non-comprehensive list or look at the tooltips.
 - Ingame console. More information at
-  http://wiki.openttd.org/index.php/Console
+  [http://wiki.openttd.org/index.php/Console](http://wiki.openttd.org/index.php/Console)
 - Hovering over a GUI element shows tooltips. This can be changed to right click
   via the advanced settings.
 
@@ -451,7 +451,7 @@ you need to add WITH_SDL to the project settings.
 
 PNG (WITH_PNG) and ZLIB (WITH_ZLIB) support is enabled by default. For these
 to work you need their development files. For best results, download the
-openttd-useful.zip file from http://www.openttd.org/download-openttd-useful
+openttd-useful.zip file from [http://www.openttd.org/download-openttd-useful](http://www.openttd.org/download-openttd-useful)
 Put the header files into your compiler's include/ directory and the
 library (.lib) files into the lib/ directory.
 For more help with VS see docs/Readme_Windows_MSVC.txt.
@@ -560,7 +560,7 @@ Patches to support more compilers are welcome.
 
 To recompile the extra graphics needed to play with the original Transport
 Tycoon Deluxe graphics you need GRFCodec (which includes NFORenum) as well.
-GRFCodec can be found at: http://www.openttd.org/download-grfcodec
+GRFCodec can be found at: [http://www.openttd.org/download-grfcodec](http://www.openttd.org/download-grfcodec)
 The compilation of these extra graphics does generally not happen, unless
 you remove the graphics file using '`make maintainer-clean`'.
 
@@ -635,7 +635,7 @@ If the game is acting strange and you feel adventurous you can try the
 debugging output. The 'name' variable can help you to display only some type of
 debugging messages. This is mostly undocumented so best is to look in the
 source code file debug.c for the various debugging types. For more information
-look at http://wiki.openttd.org/index.php/Command_line.
+look at [http://wiki.openttd.org/index.php/Command_line](http://wiki.openttd.org/index.php/Command_line).
 
 The most frequent problem is missing data files. Please install OpenGFX and
 possibly OpenSFX and OpenMSX. See section 4.1.1 for more information.
