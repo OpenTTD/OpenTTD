@@ -2,29 +2,29 @@
 
 ## Table of contents
 
-- 1.0) About
-- 2.0) Contacting
-    - 2.1) Reporting bugs
-    - 2.2) Reporting desyncs
-- 3.0) Supported platforms
-- 4.0) Installing and running OpenTTD
-    - 4.1) (Required) 3rd party files
-    - 4.2) OpenTTD directories
-    - 4.3) Portable installations (portable media)
-    - 4.4) Files in tar (archives)
-- 5.0) OpenTTD features
-    - 5.1) Logging of potentially dangerous actions
-- 6.0) Configuration file
-- 7.0) Compiling
-    - 7.1) Required/optional libraries
-    - 7.2) Supported compilers
-    - 7.3) Compilation of base sets
-- 8.0) Translating
-    - 8.1) Translation
-    - 8.2) Previewing
-- 9.0) Troubleshooting
-- 10.0) Licensing
-- X.X) Credits
+- 1.0) [About](#10-about)
+- 2.0) [Contacting](#20-contacting)
+    - 2.1) [Reporting bugs](#21-reporting-bugs)
+    - 2.2) [Reporting desyncs](#22-reporting-desyncs)
+- 3.0) [Supported platforms](#30-supported-platforms)
+- 4.0) [Installing and running OpenTTD](#40-installing-and-running-openttd)
+    - 4.1) [(Required) 3rd party files](#41-required-3rd-party-files)
+    - 4.2) [OpenTTD directories](#42-openttd-directories)
+    - 4.3) [Portable installations (portable media)](#43-portable-installations-portable-media)
+    - 4.4) [Files in tar (archives)](#44-files-in-tar-archives)
+- 5.0) [OpenTTD features](#50-openttd-features)
+    - 5.1) [Logging of potentially dangerous actions](#51-logging-of-potentially-dangerous-actions)
+- 6.0) [Configuration file](#60-configuration-file)
+- 7.0) [Compiling](#70-compiling)
+    - 7.1) [Required/optional libraries](#71-requiredoptional-libraries)
+    - 7.2) [Supported compilers](#72-supported-compilers)
+    - 7.3) [Compilation of base sets](#73-compilation-of-base-sets)
+- 8.0) [Translating](#80-translating)
+    - 8.1) [Translation](#81-translation)
+    - 8.2) [Previewing](#82-previewing)
+- 9.0) [Troubleshooting](#90-troubleshooting)
+- 10.0) [Licensing](#100-licensing)
+- X.X) [Credits](#xx-credits)
 
 ## 1.0) About
 
