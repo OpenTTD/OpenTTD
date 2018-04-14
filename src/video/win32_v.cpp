@@ -338,14 +338,14 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 		showstyle = SW_SHOWNORMAL;
 		_wnd.fullscreen = full_screen;
 		_wnd.borderless = borderless_window;
+		if (_window_maximize) showstyle = SW_SHOWMAXIMIZED;
 		if (_wnd.fullscreen || _wnd.borderless) {
 			style = WS_POPUP;
 			SetRect(&r, 0, 0, _wnd.width_org, _wnd.height_org);
 		} else {
 			style = WS_OVERLAPPEDWINDOW;
 			/* On window creation, check if we were in maximize mode before */
-			if (_window_maximize) showstyle = SW_SHOWMAXIMIZED;
-			SetRect(&r, 0, 0, _wnd.width, _wnd.height);
+			SetRect(&r, 0, 0, _bck_resolution.width, _bck_resolution.height);
 		}
 
 		AdjustWindowRect(&r, style, FALSE);
@@ -889,6 +889,9 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 				case VK_RETURN:
 				case 'F': // Full Screen on ALT + ENTER/F
 					ToggleFullScreen(!(_wnd.fullscreen || _wnd.borderless));
+					if (!(_wnd.fullscreen || _wnd.borderless)) {
+						_bck_resolution = _cur_resolution;
+					}
 					return 0;
 
 				case VK_MENU: // Just ALT
@@ -909,7 +912,9 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 				/* Set maximized flag when we maximize (obviously), but also when we
 				 * switched to fullscreen from a maximized state */
 				_window_maximize = (wParam == SIZE_MAXIMIZED || (_window_maximize && _wnd.fullscreen));
-				if (_window_maximize || _wnd.fullscreen) _bck_resolution = _cur_resolution;
+				if (wParam == SIZE_RESTORED) {
+					_bck_resolution = _cur_resolution;
+				}
 				ClientSizeChanged(LOWORD(lParam), HIWORD(lParam));
 			}
 			return 0;
@@ -1071,6 +1076,10 @@ static bool AllocateDibSection(int w, int h, bool force)
 
 	bi->bmiHeader.biWidth = _wnd.width = w;
 	bi->bmiHeader.biHeight = -(_wnd.height = h);
+	if (_bck_resolution.width == 0 && _bck_resolution.height == 0) {
+		_bck_resolution.width = w;
+		_bck_resolution.height = h;
+	}
 
 	bi->bmiHeader.biPlanes = 1;
 	bi->bmiHeader.biBitCount = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
@@ -1330,6 +1339,7 @@ bool VideoDriver_Win32::ChangeResolution(int w, int h)
 	if (_draw_mutex != NULL) _draw_mutex->BeginCritical(true);
 	if (_window_maximize) ShowWindow(_wnd.main_wnd, SW_SHOWNORMAL);
 
+	_bck_resolution = _cur_resolution;
 	_wnd.width = _wnd.width_org = w;
 	_wnd.height = _wnd.height_org = h;
 
