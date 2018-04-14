@@ -52,6 +52,9 @@ node {
             // Ensure we also have origin/master available
             sh "git fetch --no-tags origin master:refs/remotes/origin/master"
 
+            // Try to rebase to origin/master; if this fails, fail the CI
+            sh "git rebase origin/master"
+
             stash name: "source", useDefaultExcludes: false
         }
 
