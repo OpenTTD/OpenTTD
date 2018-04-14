@@ -14,9 +14,7 @@ patches and features.
 ## Using the issue tracker
 
 The [issue tracker](https://github.com/OpenTTD/OpenTTD/issues) is
-the preferred channel for [bug reports](#bug-reports), [features requests](#feature-requests)
-and [submitting pull requests](#pull-requests), but please respect the following
-restrictions:
+the preferred channel for [bug reports](#bug-reports) and [submitting pull requests](#pull-requests), but please respect the following restrictions:
 
 * Please **do not** use the issue tracker for personal support requests. FORUMS??
 
