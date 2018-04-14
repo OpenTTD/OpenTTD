@@ -453,3 +453,12 @@ Some houses and industries are not affected by transparency [FS#5817]:
 	This is a bug of the original graphics, and unfortunately cannot be
 	fixed with OpenGFX for the sake of maintaining compatibility with the
 	original graphics.
+
+Involuntary cargo exchange with cargodist via neutral station [FS#6114]:
+	When two players serve a neutral station at an industry, a cross-company
+	chain for cargo flow can and will be established which can only be
+	interrupted if one of the players stops competing for the ressources of
+	that industry. There is an easy fix for this: If you are loading at the
+	shared station make the order "no unload" and if you're unloading make
+	it "no load". Cargodist will then figure out that it should not create
+	such a route.
