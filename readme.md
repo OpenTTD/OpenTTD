@@ -1,10 +1,5 @@
 # OpenTTD
 
-## Meta
-
-- Last updated: 2016-07-01
-- Release version: 1.6.1
-
 ## Table of contents
 
 - 1.0) About
