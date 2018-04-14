@@ -100,8 +100,8 @@ this directory. Furthermore the log file 'commands-out.log' will be created
 and all actions will be written to there.
 
 To enable the desync debugging you need to set the debug level for 'desync'
-to at least 1. You do this by starting OpenTTD with '-d desync=<level>' as
-parameter or by typing 'debug_level desync=<level>' in OpenTTD's internal
+to at least 1. You do this by starting OpenTTD with '`-d desync=<level>`' as
+parameter or by typing '`debug_level desync=<level>`' in OpenTTD's internal
 console.
 The desync debug levels are:
 
@@ -461,30 +461,30 @@ Please read the Makefile for more information.
 
 ### Solaris, FreeBSD, OpenBSD:
 
-Use 'gmake', but do a './configure' before the first build.
+Use '`gmake`', but do a '`./configure`' before the first build.
 
 ### Linux/Unix:
 
-OpenTTD can be built with GNU 'make'. On non-GNU systems it is called 'gmake'.
-However, for the first build one has to do a './configure' first.
+OpenTTD can be built with GNU '`make`'. On non-GNU systems it is called '`gmake`'.
+However, for the first build one has to do a '`./configure`' first.
 
 ### MacOS X:
 
-Use 'make' or Xcode (which will then call make for you)
+Use '`make`' or Xcode (which will then call make for you)
 This will give you a binary for your CPU type (PPC/Intel)
-However, for the first build one has to do a './configure' first.
-To make a universal binary type './configure --enabled-universal'
-instead of './configure'.
+However, for the first build one has to do a '`./configure`' first.
+To make a universal binary type '`./configure --enabled-universal`'
+instead of '`./configure`'.
 
 ### BeOS:
 
-Use 'make', but do a './configure' before the first build.
+Use '`make`', but do a '`./configure`' before the first build.
 
 ### MorphOS:
 
-Use 'make'. However, for the first build one has to do a './configure' first.
-Note that you need the MorphOS SDK, latest libnix updates (else C++ parts of
-OpenTTD will not build) and the powersdl.library SDK. Optionally libz,
+Use '`make`'. However, for the first build one has to do a '`./configure`' 
+first. Note that you need the MorphOS SDK, latest libnix updates (else C++
+parts of OpenTTD will not build) and the powersdl.library SDK. Optionally libz,
 libpng and freetype2 developer files.
 
 OS/2:
@@ -496,7 +496,7 @@ DOS:
 
 A build environment with DJGPP is needed as well as libraries such as
 Allegro, zlib and libpng, which all can be downloaded from the DJGPP
-website. Compilation is straight forward: use make, but do a './configure'
+website. Compilation is straight forward: use '`make`', but do a '`./configure`'
 before the first build. The build binary will need cwsdpmi.exe to be in
 the same directory as the openttd executable. cwsdpmi.exe can be found in
 the os/dos/cwsdpmi subdirectory. If you compile with stripping turned on a
@@ -562,13 +562,13 @@ To recompile the extra graphics needed to play with the original Transport
 Tycoon Deluxe graphics you need GRFCodec (which includes NFORenum) as well.
 GRFCodec can be found at: http://www.openttd.org/download-grfcodec
 The compilation of these extra graphics does generally not happen, unless
-you remove the graphics file using 'make maintainer-clean'.
+you remove the graphics file using '`make maintainer-clean`'.
 
-Re-compilation of the base sets, thus also use of --maintainer-clean can
+Re-compilation of the base sets, thus also use of '`--maintainer-clean`' can
 leave the repository in a modified state as different grfcodec versions can
 cause binary differences in the resulting grf. Also translations might have
 been added for the base sets which are not yet included in the base set
-information files. Use the configure option --without-grfcodec to avoid
+information files. Use the configure option '`--without-grfcodec`' to avoid
 modification of the base set files by the build process.
 
 ## 8.0) Translating
@@ -628,10 +628,10 @@ That is all! You should now be able to select the language in the game options.
 ## 9.0) Troubleshooting
 
 To see all startup options available to you, start OpenTTD with the
-'./openttd -h' option. This might help you tweak some of the settings.
+'`./openttd -h`' option. This might help you tweak some of the settings.
 
 If the game is acting strange and you feel adventurous you can try the
-'-d [[<name>=]<level>]' flag, where the higher levels will give you more
+'`-d [[<name>=]<level>]`' flag, where the higher levels will give you more
 debugging output. The 'name' variable can help you to display only some type of
 debugging messages. This is mostly undocumented so best is to look in the
 source code file debug.c for the various debugging types. For more information
