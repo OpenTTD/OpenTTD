@@ -1,4 +1,4 @@
-# Contributing to OpenTTD
+# Contributing to OpenTTd
 
 Looking to contribute something to OpenTTD? **Here's how you can help.**
 
@@ -29,27 +29,6 @@ restrictions:
 
 * Please **do not** open issues or pull requests regarding add-on content in NewGRF, GameScripts, AIS, etc
 
-## Issues and labels
-
-Our bug tracker utilizes several labels to help organize and identify issues. Here's what they represent and how we use them:
-
-DO WE NEED TO LIST OUR LABELS?  SEEMS IT WILL JUST ROT? BUT RATIONALE MIGHT BE USEFUL FOR THOSE OF US WORKING ON IT?
-
-- `browser bug` - Issues that are reported to us, but actually are the result of a browser-specific bug. These are diagnosed with reduced test cases and result in an issue opened on that browser's own bug tracker.
-- `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in OpenTTD.
-- `css` - Issues stemming from our compiled CSS or source Less/Sass files.
-- `customizer` - Issues with our web-based Customizer.
-- `docs` - Issues for improving or updating our documentation.
-- `examples` - Issues involving the example templates included in our docs.
-- `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v3.0.0` to `v3.1.0`).
-- `grunt` - Issues with our included JavaScript-based Gruntfile, which is used to run all our tests, concatenate and compile source files, and more.
-- `help wanted` - Issues we need or would love help from the community to resolve.
-- `js` - Issues stemming from our compiled or source JavaScript files.
-- `meta` - Issues with the project itself or our GitHub repository.
-
-For a complete look at our labels, see the [project labels page](https://github.com/twbs/bootstrap/labels).
-
-
 ## Bug reports
 
 A bug is a _demonstrable problem_ that is caused by the code in the repository.
@@ -63,10 +42,10 @@ Guidelines for bug reports:
    reported.
 
 2. **Check if the issue has been fixed** &mdash; try to reproduce it using the
-   latest `master` or development branch in the repository.
+   latest `nightly` build of OpenTTD, available from https://www.openttd.org/en/
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
-   case](https://css-tricks.com/reduced-test-cases/) in a savegame with screenshots.  
+   case](https://css-tricks.com/reduced-test-cases/) (< THIS IS NICE BUT NOT ABOUT OPENTTD EH) in a savegame with screenshots.  
    Try to use few or no NewGRFs, AIs etc if possible.
 
 A good bug report shouldn't leave others needing to chase you up for more
@@ -99,6 +78,8 @@ Example:
 
 
 FEATURE REQUESTS ARE MOST LIKELY TO BE CLOSED, I WILL WRITE HOW AND WHY.
+
+We also use a new policy in regards to closing issues; keeping issues around with "a good idea" or "not really a bug but we should maybe fix it" turns out to have the reversed effect: nobody looks at it anymore. Although we really appreciate feedback and ideas, we will close enhancement requests that we don't expect to fulfill in the next year. Also bugs that are not really bugs but feature requests, are much more likely to be closed with the message: "we are going to pass on this one; thank you though". Many of those ideas etc do have a place on the forums; and if enough people like it, someone will stand up and make it :) We just don't want the Issue Tracker to become a huge sinkhole of endless ideas nobody is going to do anything with.
 
 ¿¿ LIST OF KNOWN FEATURES THAT IDEALLY WOULD BE BETTER (RV OVERTAKING ETC) ??
 
@@ -134,19 +115,18 @@ included in the project:
    and configure the remotes:
 
    ```bash
-   # Clone your fork of the repo into the current directory
-   git clone https://github.com/<your-username>/bootstrap.git
-   # Navigate to the newly cloned directory
-   cd bootstrap
-   # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/twbs/bootstrap.git
+    git clone https://github.com/<your-username>/OpenTTD.git openttd
+    git clone https://github.com/OpenTTD/OpenTTD-git-hooks.git openttd_hooks
+    cd openttd
+    git remote add upstream https://github.com/OpenTTD/OpenTTD.git
+    cd .git/hooks
+    ln -s -t . ../../../openttd_hooks/hooks/*
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
 
    ```bash
-   git checkout v4-dev
-   git pull upstream v4-dev
+   git pull upstream
    ```
 
 3. Create a new topic branch (off the main project development branch) to
@@ -207,5 +187,3 @@ REWRITE TO GPL
 
 By contributing your code, you agree to license your contribution under the [MIT License](LICENSE).
 By contributing to the documentation, you agree to license your contribution under the [Creative Commons Attribution 3.0 Unported License](docs/LICENSE).
-
-THIS CONTRIBUTING.md ADAPTED FROM BOOTSTRAP https://github.com/twbs/bootstrap
