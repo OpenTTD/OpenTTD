@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 def ci_checkers_targets = [
     ["commit-checker", "openttd/compile-farm-ci:commit-checker"],
 ]
