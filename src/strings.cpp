@@ -2014,10 +2014,9 @@ bool MissingGlyphSearcher::FindMissingGlyphs(const char **str)
 		FontSize size = this->DefaultSize();
 		if (str != NULL) *str = text;
 		for (WChar c = Utf8Consume(&text); c != '\0'; c = Utf8Consume(&text)) {
-			if (c == SCC_TINYFONT) {
-				size = FS_SMALL;
-			} else if (c == SCC_BIGFONT) {
-				size = FS_LARGE;
+
+			if (c >= SCC_NORMALFONT && c <= SCC_MONOFONT) {
+				size = (FontSize)(c - SCC_NORMALFONT);
 			} else if (!IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END) && IsPrintable(c) && !IsTextDirectionChar(c) && c != '?' && GetGlyph(size, c) == question_mark[size]) {
 				/* The character is printable, but not in the normal font. This is the case we were testing for. */
 				return true;

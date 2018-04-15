@@ -596,10 +596,8 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, const char *&str, 
 			state.SetColour((TextColour)(c - SCC_BLUE));
 		} else if (c == SCC_PREVIOUS_COLOUR) { // Revert to the previous colour.
 			state.SetPreviousColour();
-		} else if (c == SCC_TINYFONT) {
-			state.SetFontSize(FS_SMALL);
-		} else if (c == SCC_BIGFONT) {
-			state.SetFontSize(FS_LARGE);
+		} else if (c >= SCC_NORMALFONT && c <= SCC_MONOFONT) {
+			state.SetFontSize((FontSize)(c - SCC_NORMALFONT));
 		} else {
 			/* Filter out text direction characters that shouldn't be drawn, and
 			 * will not be handled in the fallback non ICU case because they are
