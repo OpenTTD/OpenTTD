@@ -49,6 +49,10 @@ node {
         stage("Checkout") {
             checkout scm
 
+            // Ensure user.email and user.name is set, otherwise rebase cannot work
+            sh "git config user.email 'info@openttd.org'"
+            sh "git config user.name 'OpenTTD CI'"
+
             // Ensure we also have origin/master available
             sh "git fetch --no-tags origin master:refs/remotes/origin/master"
 
