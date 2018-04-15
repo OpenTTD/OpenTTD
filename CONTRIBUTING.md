@@ -14,7 +14,7 @@ patches and features.
 ## Using the issue tracker
 
 The [issue tracker](https://github.com/OpenTTD/OpenTTD/issues) is
-the preferred channel for [bug reports](#bug-reports) and [submitting pull requests](#pull-requests), but please respect the following restrictions:
+the preferred channel for [bug reports](#bug-reports), but please respect the following restrictions:
 
 * Please **do not** use the issue tracker for personal support requests. FORUMS??
 
@@ -42,14 +42,13 @@ reported.
 2. **Check if the issue has been fixed** &mdash; try to reproduce it using the
 latest `nightly` build of OpenTTD, available from https://www.openttd.org/en/
 
-3. **Isolate the problem** &mdash; ideally create a [reduced test
-case](https://css-tricks.com/reduced-test-cases/) (< THIS IS NICE BUT NOT ABOUT OPENTTD EH) in a savegame with screenshots.
+3. **Isolate the problem** &mdash; ideally create reproduceable steps with an attached savegame and screenshots.
 Try to use few or no NewGRFs, AIs etc if possible.
 
 A good bug report shouldn't leave others needing to chase you up for more
 information. Please try to be as detailed as possible in your report. What is
-your environment? What steps will reproduce the issue? What browser(s) and OS
-experience the problem? Do other browsers show the bug differently? What
+your environment? What steps will reproduce the issue? What OS
+experience the problem? What
 would you expect to be the outcome? All these details will help people to fix
 any potential bugs.
 
@@ -57,7 +56,7 @@ Example:
 
 > Short and descriptive example bug report title
 >
-> A summary of the issue and the browser/OS environment in which it occurs. If
+> A summary of the issue and the OS environment in which it occurs. If
 > suitable, include the steps required to reproduce the bug.
 >
 > 1. This is the first step
@@ -74,19 +73,24 @@ Example:
 
 ## Feature requests
 
+Before opening a feature request, please take a moment to find out whether your idea fits with the scope and aims of the project.
+It's up to *you* to make a strong case to convince the project's developers of the merits of this feature.
+Please provide as much detail and context as possible.
+This means don't request for a solution, but describe the problem you see and how/why you think it should be fixed.
 
 FEATURE REQUESTS ARE MOST LIKELY TO BE CLOSED, I WILL WRITE HOW AND WHY.
 
-We also use a new policy in regards to closing issues; keeping issues around with "a good idea" or "not really a bug but we should maybe fix it" turns out to have the reversed effect: nobody looks at it anymore. Although we really appreciate feedback and ideas, we will close enhancement requests that we don't expect to fulfill in the next year. Also bugs that are not really bugs but feature requests, are much more likely to be closed with the message: "we are going to pass on this one; thank you though". Many of those ideas etc do have a place on the forums; and if enough people like it, someone will stand up and make it :) We just don't want the Issue Tracker to become a huge sinkhole of endless ideas nobody is going to do anything with.
+LEAVE SOME TEXT ABOUT SMALL TRIVIAL STUFF OR SOMETHING; JUST NOTHING HUGE AND BIG
+
+For feature request we have a strict policy.
+Keeping issues around with "a good idea" or "not really a bug but we should maybe fix it" turns out to have the reversed effect: nobody looks at it anymore.
+Although we really appreciate feedback and ideas, we will close feature requests that we don't expect to fulfill in the next year.
+Many of those ideas etc do have a place on the [forums](https://www.tt-forums.net); and if enough people like it, someone will stand up and make it.
 
 ¿¿ LIST OF KNOWN FEATURES THAT IDEALLY WOULD BE BETTER (RV OVERTAKING ETC) ??
 
-Before opening a feature request, please take a moment to find out whether your idea
-fits with the scope and aims of the project. It's up to *you* to make a strong
-case to convince the project's developers of the merits of this feature. Please
-provide as much detail and context as possible.
-
 IRC IS BEST EH?
+YES AND NO. FEATURE REQUESTS WITH CLEAR USECASES ARE SUPER WELCOME
 
 
 ## Pull requests
@@ -124,14 +128,14 @@ ln -s -t . ../../../openttd_hooks/hooks/*
 2. If you cloned a while ago, get the latest changes from upstream:
 
 ```bash
-git pull upstream
+git fetch upstream
 ```
 
 3. Create a new topic branch (off the main project development branch) to
 contain your feature, change, or fix:
 
 ```bash
-git checkout -b <topic-branch-name>
+git checkout upstream/master -b <topic-branch-name>
 ```
 
 4. Commit your changes in logical chunks. Please adhere to these [git commit
@@ -143,17 +147,24 @@ feature to tidy up your commits before making them public.
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
 
 ```bash
-git pull [--rebase] upstream v4-dev
+git fetch upstream
+git rebase upstream/master
 ```
 
-6. Push your topic branch up to your fork:
+6. Push your topic branch up to your fork the first time:
 
 ```bash
-git push origin <topic-branch-name>
+git push --set-upstream origin <topic-branch-name>
+```
+
+And any time after that:
+
+```bash
+git push
 ```
 
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
-with a clear title and description against the `v4-dev` branch.
+with a clear title and description against the `master` branch.
 
 REWRITE FOR GPL
 
@@ -163,17 +174,9 @@ includes code changes) and under the terms of the
 [Creative Commons Attribution 3.0 Unported License](docs/LICENSE)
 (if it includes documentation changes).
 
-### Pull request bots
+### Pull request validation
 
-DO WE HAVE BOTS?
-
-[@twbs-rorschach](https://github.com/twbs-rorschach) is a OpenTTD bot that hangs out in our GitHub issue tracker and automatically checks all pull requests for a few simple common mistakes. It's possible that Rorschach might leave a comment on your pull request and then close it. If that happens, simply fix the problem(s) mentioned in the comment (there should be link(s) in the comment explaining the problem(s) in detail) and then either:
-
-* Push the revised version to your pull request's branch and post a comment on the pull request saying that you've fixed the problem(s). One of the OpenTTD Core Team members will then come along and reopen your pull request.
-* Or you can just open a new pull request for your revised version.
-
-[@twbs-savage](https://github.com/twbs-savage) is a OpenTTD bot that automatically runs cross-browser tests (via [Sauce](https://saucelabs.com) and Travis CI) on JavaScript pull requests. Savage will leave a comment on pull requests stating whether cross-browser JS tests passed or failed, with a link to the full Travis build details. If your pull request fails, check the Travis log to see which browser + OS combinations failed. Each browser test in the Travis log includes a link to a Sauce page with details about the test. On those details pages, you can watch a screencast of the test run to see exactly which unit tests failed.
-
+WRITE ABOUT CI HERE
 
 ## Code guidelines
 
@@ -186,3 +189,4 @@ REWRITE TO GPL
 By contributing your code, you agree to license your contribution under the [MIT License](LICENSE).
 By contributing to the documentation, you agree to license your contribution under the [Creative Commons Attribution 3.0 Unported License](docs/LICENSE).
 
+TELL THAT YOU TOOK MOST OF THIS FROM BOOTSTRAP. CREDITS WHERE CREDITS IS DUE
