@@ -150,7 +150,11 @@ git push
 
 ### Pull request validation
 
-WRITE ABOUT CI HERE
+Continuous integration (CI) tools monitor pull requests, and help us identify build and code quality issues.
+
+The results of the CI tests will show on your pull request.
+
+By clicking on Details you can further zoom in; in case of a failure it will show you why it failed. In case of success it will report how awesome you were.
 
 ## Code guidelines
 
