@@ -1971,12 +1971,12 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					if (length == 0 || number == 0) break;
 
 					if (length > statspec->lengths) {
+						byte diff_length = length - statspec->lengths;
 						statspec->platforms = ReallocT(statspec->platforms, length);
-						memset(statspec->platforms + statspec->lengths, 0, length - statspec->lengths);
+						memset(statspec->platforms + statspec->lengths, 0, diff_length);
 
 						statspec->layouts = ReallocT(statspec->layouts, length);
-						memset(statspec->layouts + statspec->lengths, 0,
-						       (length - statspec->lengths) * sizeof(*statspec->layouts));
+						memset(statspec->layouts + statspec->lengths, 0, diff_length * sizeof(*statspec->layouts));
 
 						statspec->lengths = length;
 					}
