@@ -301,7 +301,7 @@ STR_SORT_BY_WAITING_TOTAL                                       :Cargamento tota
 STR_SORT_BY_WAITING_AVAILABLE                                   :Cargamento disponible en espera
 STR_SORT_BY_RATING_MAX                                          :Valoración más alta de cargamento
 STR_SORT_BY_RATING_MIN                                          :Valoración más baja de cargamento
-STR_SORT_BY_ENGINE_ID                                           :EngineID (classic sort)Id. locomotora (orden clásico)
+STR_SORT_BY_ENGINE_ID                                           :Id. locomotora (orden clásico)
 STR_SORT_BY_COST                                                :Costo
 STR_SORT_BY_POWER                                               :Potencia
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Fuerza de tracción
@@ -1344,8 +1344,8 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desplazamiento 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Forma en la que la vista principal se mueve a una ubicación específica al hacer clic en el minimapa o tras una orden de moverse a un objeto determinado del mapa. Si se activa, la vista se mueve de forma suave. Si se desactiva, la vista se mueve instantáneamente al sitio indicado
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar información de medidas al usar las herramientas de construcción: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostrar distancias en número de casillas y las diferencias de altura cuando se realicen labores de construcción
-STR_CONFIG_SETTING_LIVERIES                                     :Mostrar diseño de colores según el tipo de vehículo: {STRING}
-STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controlar el uso de diseños de colores específicos para vehículos en lugar de los específicos de cada empresa
+STR_CONFIG_SETTING_LIVERIES                                     :Mostrar cromáticas por tipo de vehículo: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controlar el uso de cromáticas por vehículo y no por empresa
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ninguno
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Mi empresa
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Todas las empresas
@@ -3216,7 +3216,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Presidente)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurada: {WHITE}{NUM}
-STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Diseño de colores:
+STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Cromática:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehículos:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tren{P "" es}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} vehículo{P "" s} de carretera
@@ -3244,8 +3244,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver info
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nueva cara
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Elegir nueva cara para el presidente
-STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Diseño de colores
-STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Cambiar el diseño de colores corporativos de la empresa
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Cromática
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Cambiar la cromática (colores corporativos) de los vehículos
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nombre empresa
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Cambiar el nombre de la empresa
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nombre presidente
