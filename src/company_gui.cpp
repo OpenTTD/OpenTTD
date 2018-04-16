@@ -522,7 +522,7 @@ public:
 
 	StringID String() const
 	{
-		return _colour_dropdown[this->result];
+		return this->result >= COLOUR_END ? STR_COLOUR_DEFAULT : _colour_dropdown[this->result];
 	}
 
 	uint Height(uint width) const
@@ -541,7 +541,7 @@ public:
 		int height = bottom - top;
 		int icon_y_offset = height / 2;
 		int text_y_offset = (height - FONT_HEIGHT_NORMAL) / 2 + 1;
-		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + this->result,
+		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + (this->result % COLOUR_END),
 				rtl ? right - 2 - ScaleGUITrad(14) : left + ScaleGUITrad(14) + 2,
 				top + icon_y_offset);
 		DrawString(rtl ? left + 2 : left + ScaleGUITrad(28) + 4,
@@ -556,36 +556,43 @@ private:
 	uint32 sel;
 	LiveryClass livery_class;
 	Dimension square;
-	Dimension box;
 	uint line_height;
 
 	void ShowColourDropDownMenu(uint32 widget)
 	{
 		uint32 used_colours = 0;
+		const Company *c;
 		const Livery *livery;
 		LiveryScheme scheme;
+		bool primary = widget == WID_SCL_PRI_COL_DROPDOWN;
 
 		/* Disallow other company colours for the primary colour */
-		if (HasBit(this->sel, LS_DEFAULT) && widget == WID_SCL_PRI_COL_DROPDOWN) {
-			const Company *c;
+		if (HasBit(this->sel, LS_DEFAULT) && primary) {
 			FOR_ALL_COMPANIES(c) {
 				if (c->index != _local_company) SetBit(used_colours, c->colour);
 			}
 		}
+
+		c = Company::Get((CompanyID)this->window_number);
 
 		/* Get the first selected livery to use as the default dropdown item */
 		for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
 			if (HasBit(this->sel, scheme)) break;
 		}
 		if (scheme == LS_END) scheme = LS_DEFAULT;
-		livery = &Company::Get((CompanyID)this->window_number)->livery[scheme];
+		livery = &c->livery[scheme];
 
 		DropDownList *list = new DropDownList();
+		if (scheme != LS_DEFAULT) {
+			/* Add COLOUR_END to put the colour out of range, but also allow us to show what the default is */
+			*list->Append() = new DropDownListColourItem((primary ? c->livery[LS_DEFAULT].colour1 : c->livery[LS_DEFAULT].colour2) + COLOUR_END, false);
+		}
 		for (uint i = 0; i < lengthof(_colour_dropdown); i++) {
 			*list->Append() = new DropDownListColourItem(i, HasBit(used_colours, i));
 		}
 
-		ShowDropDownList(this, list, widget == WID_SCL_PRI_COL_DROPDOWN ? livery->colour1 : livery->colour2, widget);
+		byte sel = (scheme == LS_DEFAULT || HasBit(livery->in_use, primary ? 0 : 1)) ? (primary ? livery->colour1 : livery->colour2) : (byte)INVALID_COLOUR;
+		ShowDropDownList(this, list, sel, widget);
 	}
 
 public:
@@ -595,8 +602,7 @@ public:
 		this->sel = 1;
 
 		this->square = GetSpriteSize(SPR_SQUARE);
-		this->box    = maxdim(GetSpriteSize(SPR_BOX_CHECKED), GetSpriteSize(SPR_BOX_EMPTY));
-		this->line_height = max(max(this->square.height, this->box.height), (uint)FONT_HEIGHT_NORMAL) + 4;
+		this->line_height = max(this->square.height, (uint)FONT_HEIGHT_NORMAL) + 4;
 
 		this->InitNested(company);
 		this->owner = company;
@@ -613,7 +619,7 @@ public:
 				for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 					d = maxdim(d, GetStringBoundingBox(STR_LIVERY_DEFAULT + scheme));
 				}
-				size->width = max(size->width, 5 + this->box.width + d.width + WD_FRAMERECT_RIGHT);
+				size->width = max(size->width, 5 + d.width + WD_FRAMERECT_RIGHT);
 				break;
 			}
 
@@ -675,7 +681,8 @@ public:
 					}
 					if (scheme == LS_END) scheme = LS_DEFAULT;
 				}
-				SetDParam(0, STR_COLOUR_DARK_BLUE + ((widget == WID_SCL_PRI_COL_DROPDOWN) ? c->livery[scheme].colour1 : c->livery[scheme].colour2));
+				bool primary = widget == WID_SCL_PRI_COL_DROPDOWN;
+				SetDParam(0, (scheme == LS_DEFAULT || HasBit(c->livery[scheme].in_use, primary ? 0 : 1)) ? STR_COLOUR_DARK_BLUE + (primary ? c->livery[scheme].colour1 : c->livery[scheme].colour2) : STR_COLOUR_DEFAULT);
 				break;
 			}
 		}
@@ -700,10 +707,9 @@ public:
 		int sec_left = nwi->pos_x;
 		int sec_right = sec_left + nwi->current_x - 1;
 
-		int text_left  = (rtl ? (uint)WD_FRAMERECT_LEFT : (this->box.width + 5));
-		int text_right = (rtl ? (this->box.width + 5) : (uint)WD_FRAMERECT_RIGHT);
+		int text_left  = (rtl ? (uint)WD_FRAMERECT_LEFT : (this->square.width + 5));
+		int text_right = (rtl ? (this->square.width + 5) : (uint)WD_FRAMERECT_RIGHT);
 
-		int box_offs    = (this->line_height - this->box.height) / 2;
 		int square_offs = (this->line_height - this->square.height) / 2 + 1;
 		int text_offs   = (this->line_height - FONT_HEIGHT_NORMAL) / 2 + 1;
 
@@ -713,20 +719,16 @@ public:
 			if (_livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
 				bool sel = HasBit(this->sel, scheme) != 0;
 
-				/* Optional check box + scheme name. */
-				if (scheme != LS_DEFAULT) {
-					DrawSprite(c->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, (rtl ? sch_right - (this->box.width + 5) + WD_FRAMERECT_RIGHT : sch_left) + WD_FRAMERECT_LEFT, y + box_offs);
-				}
-				DrawString(sch_left + text_left, sch_right - text_right, y + text_offs, STR_LIVERY_DEFAULT + scheme, sel ? TC_WHITE : TC_BLACK);
+				DrawString(sch_left + WD_FRAMERECT_LEFT, sch_right - WD_FRAMERECT_RIGHT, y + text_offs, STR_LIVERY_DEFAULT + scheme, sel ? TC_WHITE : TC_BLACK);
 
 				/* Text below the first dropdown. */
-				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour1), (rtl ? pri_right - (this->box.width + 5) + WD_FRAMERECT_RIGHT : pri_left) + WD_FRAMERECT_LEFT, y + square_offs);
-				DrawString(pri_left + text_left, pri_right - text_right, y + text_offs, STR_COLOUR_DARK_BLUE + c->livery[scheme].colour1, sel ? TC_WHITE : TC_GOLD);
+				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour1), (rtl ? pri_right - (this->square.width + 5) + WD_FRAMERECT_RIGHT : pri_left) + WD_FRAMERECT_LEFT, y + square_offs);
+				DrawString(pri_left + text_left, pri_right - text_right, y + text_offs, (scheme == LS_DEFAULT || HasBit(c->livery[scheme].in_use, 0)) ? STR_COLOUR_DARK_BLUE + c->livery[scheme].colour1 : STR_COLOUR_DEFAULT, sel ? TC_WHITE : TC_GOLD);
 
 				/* Text below the second dropdown. */
 				if (sec_right > sec_left) { // Second dropdown has non-zero size.
-					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour2), (rtl ? sec_right - (this->box.width + 5) + WD_FRAMERECT_RIGHT : sec_left) + WD_FRAMERECT_LEFT, y + square_offs);
-					DrawString(sec_left + text_left, sec_right - text_right, y + text_offs, STR_COLOUR_DARK_BLUE + c->livery[scheme].colour2, sel ? TC_WHITE : TC_GOLD);
+					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour2), (rtl ? sec_right - (this->square.width + 5) + WD_FRAMERECT_RIGHT : sec_left) + WD_FRAMERECT_LEFT, y + square_offs);
+					DrawString(sec_left + text_left, sec_right - text_right, y + text_offs, (scheme == LS_DEFAULT || HasBit(c->livery[scheme].in_use, 1)) ? STR_COLOUR_DARK_BLUE + c->livery[scheme].colour2 : STR_COLOUR_DEFAULT, sel ? TC_WHITE : TC_GOLD);
 				}
 
 				y += this->line_height;
@@ -777,11 +779,6 @@ public:
 				}
 				if (j >= LS_END) return;
 
-				/* If clicking on the left edge, toggle using the livery */
-				if (_current_text_dir == TD_RTL ? pt.x - wid->pos_x > wid->current_x - (this->box.width + 5) : pt.x - wid->pos_x < (this->box.width + 5)) {
-					DoCommandP(0, j | (2 << 8), !Company::Get((CompanyID)this->window_number)->livery[j].in_use, CMD_SET_COMPANY_COLOUR);
-				}
-
 				if (_ctrl_pressed) {
 					ToggleBit(this->sel, j);
 				} else {
@@ -798,6 +795,7 @@ public:
 		bool local = (CompanyID)this->window_number == _local_company;
 		if (!local) return;
 
+		if (index >= COLOUR_END) index = INVALID_COLOUR;
 		for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 			/* Changed colour for the selected scheme, or all visible schemes if CTRL is pressed. */
 			if (HasBit(this->sel, scheme) || (_ctrl_pressed && _livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme))) {

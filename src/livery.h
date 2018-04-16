@@ -74,7 +74,7 @@ enum LiveryClass {
 
 /** Information about a particular livery. */
 struct Livery {
-	bool in_use;  ///< Set if this livery should be used instead of the default livery.
+	byte in_use;  ///< Bit 0 set if this livery should override the default livery first colour, Bit 1 for the second colour.
 	byte colour1; ///< First colour, for all vehicles.
 	byte colour2; ///< Second colour, for vehicles with 2CC support.
 };
