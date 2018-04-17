@@ -3327,6 +3327,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\script\api\script_client.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_clientlist.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\script\api\script_company.hpp"
 				>
 			</File>
@@ -3588,6 +3596,14 @@
 			</File>
 			<File
 				RelativePath=".\..\src\script\api\script_cargomonitor.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_client.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_clientlist.cpp"
 				>
 			</File>
 			<File
