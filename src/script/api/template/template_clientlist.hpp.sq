@@ -1,0 +1,30 @@
+/* $Id$ */
+
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_clientlist.hpp"
+
+namespace SQConvert {
+	/* Allow ScriptClientList to be used as Squirrel parameter */
+	template <> inline ScriptClientList *GetParam(ForceType<ScriptClientList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptClientList *)instance; }
+	template <> inline ScriptClientList &GetParam(ForceType<ScriptClientList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptClientList *)instance; }
+	template <> inline const ScriptClientList *GetParam(ForceType<const ScriptClientList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptClientList *)instance; }
+	template <> inline const ScriptClientList &GetParam(ForceType<const ScriptClientList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptClientList *)instance; }
+	template <> inline int Return<ScriptClientList *>(HSQUIRRELVM vm, ScriptClientList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "ClientList", res, NULL, DefSQDestructorCallback<ScriptClientList>, true); return 1; }
+} // namespace SQConvert
+
+namespace SQConvert {
+	/* Allow ScriptClientList_Company to be used as Squirrel parameter */
+	template <> inline ScriptClientList_Company *GetParam(ForceType<ScriptClientList_Company *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptClientList_Company *)instance; }
+	template <> inline ScriptClientList_Company &GetParam(ForceType<ScriptClientList_Company &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptClientList_Company *)instance; }
+	template <> inline const ScriptClientList_Company *GetParam(ForceType<const ScriptClientList_Company *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptClientList_Company *)instance; }
+	template <> inline const ScriptClientList_Company &GetParam(ForceType<const ScriptClientList_Company &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptClientList_Company *)instance; }
+	template <> inline int Return<ScriptClientList_Company *>(HSQUIRRELVM vm, ScriptClientList_Company *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "ClientList_Company", res, NULL, DefSQDestructorCallback<ScriptClientList_Company>, true); return 1; }
+} // namespace SQConvert

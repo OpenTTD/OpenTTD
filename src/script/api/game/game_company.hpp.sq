@@ -27,6 +27,7 @@ void SQGSCompany_Register(Squirrel *engine)
 	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_LAST,          "COMPANY_LAST");
 	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_INVALID,       "COMPANY_INVALID");
 	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_SELF,          "COMPANY_SELF");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_SPECTATOR,     "COMPANY_SPECTATOR");
 	SQGSCompany.DefSQConst(engine, ScriptCompany::GENDER_MALE,           "GENDER_MALE");
 	SQGSCompany.DefSQConst(engine, ScriptCompany::GENDER_FEMALE,         "GENDER_FEMALE");
 	SQGSCompany.DefSQConst(engine, ScriptCompany::GENDER_INVALID,        "GENDER_INVALID");

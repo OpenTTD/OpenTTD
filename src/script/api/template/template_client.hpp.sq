@@ -1,0 +1,25 @@
+/* $Id$ */
+
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_client.hpp"
+
+namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> inline ScriptClient::ClientID GetParam(ForceType<ScriptClient::ClientID>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptClient::ClientID)tmp; }
+	template <> inline int Return<ScriptClient::ClientID>(HSQUIRRELVM vm, ScriptClient::ClientID res) { sq_pushinteger(vm, (int32)res); return 1; }
+
+	/* Allow ScriptClient to be used as Squirrel parameter */
+	template <> inline ScriptClient *GetParam(ForceType<ScriptClient *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptClient *)instance; }
+	template <> inline ScriptClient &GetParam(ForceType<ScriptClient &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptClient *)instance; }
+	template <> inline const ScriptClient *GetParam(ForceType<const ScriptClient *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptClient *)instance; }
+	template <> inline const ScriptClient &GetParam(ForceType<const ScriptClient &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptClient *)instance; }
+	template <> inline int Return<ScriptClient *>(HSQUIRRELVM vm, ScriptClient *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Client", res, NULL, DefSQDestructorCallback<ScriptClient>, true); return 1; }
+} // namespace SQConvert
