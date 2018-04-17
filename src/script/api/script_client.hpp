@@ -27,9 +27,9 @@ public:
 
 	/** Different constants related to ClientID. */
 	enum ClientID {
-		CLIENT_INVALID = 0,  ///< c1
-		CLIENT_SERVER  = 1,  ///< c2
-		CLIENT_FIRST   = 2,  ///< c3
+		CLIENT_INVALID = 0,  ///< Client is not part of anything
+		CLIENT_SERVER  = 1,  ///< Servers always have this ID
+		CLIENT_FIRST   = 2,  ///< The first client ID
 	};
 
 	/**
