@@ -37,8 +37,10 @@ extern void EmitGender(Buffer *buffer, char *buf, int value);
 
 static const CmdStruct _cmd_structs[] = {
 	/* Font size */
+	{"NORMAL_FONT",       EmitSingleChar, SCC_NORMALFONT,         0, -1, C_NONE},
 	{"TINY_FONT",         EmitSingleChar, SCC_TINYFONT,           0, -1, C_NONE},
 	{"BIG_FONT",          EmitSingleChar, SCC_BIGFONT,            0, -1, C_NONE},
+	{"MONO_FONT",         EmitSingleChar, SCC_MONOFONT,           0, -1, C_NONE},
 
 	/* Colours */
 	{"BLUE",              EmitSingleChar, SCC_BLUE,               0, -1, C_DONTCOUNT},
