@@ -55,8 +55,7 @@ struct FontState {
 	 */
 	inline void PopColour()
 	{
-		if (colour_stack.empty())
-			return;
+		if (colour_stack.empty()) return;
 		SetColour(colour_stack.top());
 		colour_stack.pop();
 	}
