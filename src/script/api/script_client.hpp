@@ -63,7 +63,7 @@ public:
 	 * @pre ResolveClientID(client) != CLIENT_INVALID.
 	 * @return The date when client has joined.
 	 */
-	static ScriptDate::Date GetJoinedDate(ClientID client);
+	static ScriptDate::Date GetJoinDate(ClientID client);
 };
 
 

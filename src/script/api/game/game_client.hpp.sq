@@ -28,7 +28,7 @@ void SQGSClient_Register(Squirrel *engine)
 	SQGSClient.DefSQStaticMethod(engine, &ScriptClient::ResolveClientID, "ResolveClientID", 2, ".i");
 	SQGSClient.DefSQStaticMethod(engine, &ScriptClient::GetName,         "GetName",         2, ".i");
 	SQGSClient.DefSQStaticMethod(engine, &ScriptClient::GetCompany,      "GetCompany",      2, ".i");
-	SQGSClient.DefSQStaticMethod(engine, &ScriptClient::GetJoinedDate,   "GetJoinedDate",   2, ".i");
+	SQGSClient.DefSQStaticMethod(engine, &ScriptClient::GetJoinDate,     "GetJoinDate",     2, ".i");
 
 	SQGSClient.PostRegister(engine);
 }

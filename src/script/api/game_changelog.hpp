@@ -23,7 +23,7 @@
  * \li GSClient::ResolveClientID
  * \li GSClient::GetName
  * \li GSClient::GetCompany
- * \li GSClient::GetJoinedDate
+ * \li GSClient::GetJoinDate
  *
  * \b 1.8.0
  *

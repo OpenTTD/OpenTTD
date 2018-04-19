@@ -62,7 +62,7 @@ static NetworkClientInfo *FindClientInfo(ScriptClient::ClientID client)
 #endif
 }
 
-/* static */ ScriptDate::Date ScriptClient::GetJoinedDate(ScriptClient::ClientID client)
+/* static */ ScriptDate::Date ScriptClient::GetJoinDate(ScriptClient::ClientID client)
 {
 #ifdef ENABLE_NETWORK
 	NetworkClientInfo *ci = FindClientInfo(client);
