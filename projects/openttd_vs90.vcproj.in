@@ -434,7 +434,7 @@
 			>
 		</File>
 		<File
-			RelativePath=".\..\readme.txt"
+			RelativePath=".\..\README.md"
 			>
 		</File>
 	</Files>

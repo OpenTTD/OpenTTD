@@ -264,6 +264,6 @@ bool HandleBootstrap()
 
 	/* Failure to get enough working to get a graphics set. */
 failure:
-	usererror("Failed to find a graphics set. Please acquire a graphics set for OpenTTD. See section 4.1 of readme.txt.");
+	usererror("Failed to find a graphics set. Please acquire a graphics set for OpenTTD. See section 4.1 of README.md.");
 	return false;
 }
