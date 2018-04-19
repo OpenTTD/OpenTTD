@@ -58,10 +58,10 @@ public:
 	static ScriptCompany::CompanyID GetCompany(ClientID client);
 
 	/**
-	* Get the game date when the given client has joined.
-	* @param client The client to get joining date for.
-	* @pre ResolveClientID(client) != CLIENT_INVALID.
-	* @return The date when client has joined.
+	 * Get the game date when the given client has joined.
+	 * @param client The client to get joining date for.
+	 * @pre ResolveClientID(client) != CLIENT_INVALID.
+	 * @return The date when client has joined.
 	 */
 	static ScriptDate::Date GetJoinedDate(ClientID client);
 };

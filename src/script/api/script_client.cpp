@@ -17,6 +17,12 @@
 #include "../../safeguards.h"
 
 #ifdef ENABLE_NETWORK
+/**
+ * Finds NetworkClientInfo given client-identifier,
+ *  is used by other methods to resolve client-identifier.
+ * @param client The client to get info structure for
+ * @return A pointer to corresponding CI struct or NULL when not found.
+ */
 static NetworkClientInfo *FindClientInfo(ScriptClient::ClientID client)
 {
 	if (client == ScriptClient::CLIENT_INVALID) return NULL;
