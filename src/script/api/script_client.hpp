@@ -53,7 +53,7 @@ public:
 	 * Get the company in which the given client is playing.
 	 * @param client The client to get company for.
 	 * @pre ResolveClientID(client) != CLIENT_INVALID.
-	 * @return The company in which client is playing.
+	 * @return The company in which client is playing or COMPANY_SPECTATOR.
 	 */
 	static ScriptCompany::CompanyID GetCompany(ClientID client);
 

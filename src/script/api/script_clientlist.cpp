@@ -10,6 +10,7 @@
 /** @file script_clientlist.cpp Implementation of ScriptClientList and friends. */
 
 #include "../../stdafx.h"
+#include "script_company.hpp"
 #include "script_clientlist.hpp"
 #include "../../network/network.h"
 #include "../../network/network_base.h"
@@ -31,8 +32,14 @@ ScriptClientList_Company::ScriptClientList_Company(ScriptCompany::CompanyID comp
 {
 #ifdef ENABLE_NETWORK
 	if (!_networking) return;
-	CompanyID c = (CompanyID)company;
-	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
+	CompanyID c;
+	if (company == ScriptCompany::COMPANY_SPECTATOR) {
+		c = ::COMPANY_SPECTATOR;
+	} else {
+		company = ScriptCompany::ResolveCompanyID(company);
+		if (company == ScriptCompany::COMPANY_INVALID) return;
+		c = (CompanyID)company;
+	}
 
 	NetworkClientInfo *ci;
 	FOR_ALL_CLIENT_INFOS(ci) {
