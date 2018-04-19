@@ -16,38 +16,53 @@
 
 #include "../../safeguards.h"
 
-/* static */ NetworkClientInfo *ScriptClient::FindClientInfo(ScriptClient::ClientID client)
+#ifdef ENABLE_NETWORK
+static NetworkClientInfo *FindClientInfo(ScriptClient::ClientID client)
 {
-	if (client == CLIENT_INVALID) return NULL;
+	if (client == ScriptClient::CLIENT_INVALID) return NULL;
 	if (!_networking) return NULL;
 	return NetworkClientInfo::GetByClientID((::ClientID)client);
 }
+#endif
 
 /* static */ ScriptClient::ClientID ScriptClient::ResolveClientID(ScriptClient::ClientID client)
 {
-	return (FindClientInfo(client) == NULL ? client : CLIENT_INVALID);
+#ifdef ENABLE_NETWORK
+	return (FindClientInfo(client) == NULL ? ScriptClient::CLIENT_INVALID : client);
+#else
+	return CLIENT_INVALID;
+#endif
 }
 
 /* static */ char *ScriptClient::GetName(ScriptClient::ClientID client)
 {
+#ifdef ENABLE_NETWORK
 	NetworkClientInfo *ci = FindClientInfo(client);
 	if (ci == NULL) return NULL;
-
 	return stredup(ci->client_name);
+#else
+	return NULL;
+#endif
 }
 
 /* static */ ScriptCompany::CompanyID ScriptClient::GetCompany(ScriptClient::ClientID client)
 {
+#ifdef ENABLE_NETWORK
 	NetworkClientInfo *ci = FindClientInfo(client);
 	if (ci == NULL) return ScriptCompany::COMPANY_INVALID;
-
 	return (ScriptCompany::CompanyID)ci->client_playas;
+#else
+	return ScriptCompany::COMPANY_INVALID;
+#endif
 }
 
 /* static */ ScriptDate::Date ScriptClient::GetJoinedDate(ScriptClient::ClientID client)
 {
+#ifdef ENABLE_NETWORK
 	NetworkClientInfo *ci = FindClientInfo(client);
 	if (ci == NULL) return ScriptDate::DATE_INVALID;
-
 	return (ScriptDate::Date)ci->join_date;
+#else
+	return ScriptDate::DATE_INVALID;
+#endif
 }
