@@ -13,6 +13,9 @@ def ci_stages = [
     "Archs": [
         "linux-i386-gcc-6": "openttd/compile-farm-ci:linux-i386-gcc-6",
     ],
+    "OS": [
+        "osx-10.9": "openttd/compile-farm-ci:osx-10.9",
+    ],
 ]
 
 def generateStage(targets) {
