@@ -1349,7 +1349,12 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	NSPoint loc = [ driver->cocoaview convertPoint:[ [ aNotification object ] mouseLocationOutsideOfEventStream ] fromView:nil ];
 	BOOL inside = ([ driver->cocoaview hitTest:loc ] == driver->cocoaview);
 
-	if (inside) [ driver->cocoaview mouseEntered:NULL ];
+	if (inside) {
+		/* We don't care about the event, but the compiler does. */
+		NSEvent *e = [ [ NSEvent alloc ] init ];
+		[ driver->cocoaview mouseEntered:e ];
+		[ e release ];
+	}
 }
 
 @end
