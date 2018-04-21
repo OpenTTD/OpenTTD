@@ -219,6 +219,11 @@ public:
 	static bool HasSet(const ContentInfo *ci, bool md5sum);
 };
 
+template <class Tbase_set> /* static */ const char *BaseMedia<Tbase_set>::ini_set;
+template <class Tbase_set> /* static */ const Tbase_set *BaseMedia<Tbase_set>::used_set;
+template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::available_sets;
+template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::duplicate_sets;
+
 /**
  * Check whether there's a base set matching some information.
  * @param ci The content info to compare it to.
