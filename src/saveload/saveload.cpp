@@ -274,7 +274,7 @@
  *  202   #6867   Increase industry cargo slots to 16 in, 16 out
  *  203   #7072   Add path cache for ships
  *  204   #7065   Add extra rotation stages for ships.
- *  205   #....   Livery storage change and group liveries.
+ *  205   #7108   Livery storage change and group liveries.
  */
 extern const uint16 SAVEGAME_VERSION = 205; ///< Current savegame version of OpenTTD.
 

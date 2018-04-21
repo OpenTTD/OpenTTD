@@ -1886,11 +1886,24 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 	const Company *c = Company::Get(company);
 	LiveryScheme scheme = LS_DEFAULT;
 
-	/* The default livery is always available for use, but its in_use flag determines
-	 * whether any _other_ liveries are in use. */
-	if (c->livery[LS_DEFAULT].in_use != 0 && (livery_setting == LIT_ALL || (livery_setting == LIT_COMPANY && company == _local_company))) {
-		/* Determine the livery scheme to use */
-		scheme = GetEngineLiveryScheme(engine_type, parent_engine_type, v);
+	if (livery_setting == LIT_ALL || (livery_setting == LIT_COMPANY && company == _local_company)) {
+		if (v != NULL) {
+			const Group *g = Group::GetIfValid(v->First()->group_id);
+			if (g != NULL) {
+				/* Traverse parents until we find a livery or reach the top */
+				while (g->livery.in_use == 0 && g->parent != INVALID_GROUP) {
+					g = Group::Get(g->parent);
+				}
+				if (g->livery.in_use != 0) return &g->livery;
+			}
+		}
+
+		/* The default livery is always available for use, but its in_use flag determines
+		 * whether any _other_ liveries are in use. */
+		if (c->livery[LS_DEFAULT].in_use != 0) {
+			/* Determine the livery scheme to use */
+			scheme = GetEngineLiveryScheme(engine_type, parent_engine_type, v);
+		}
 	}
 
 	return &c->livery[scheme];

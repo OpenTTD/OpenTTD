@@ -56,7 +56,7 @@ static const SpriteID SPR_LARGE_SMALL_WINDOW = 682;
 
 /** Extra graphic spritenumbers */
 static const SpriteID SPR_OPENTTD_BASE   = 4896;
-static const uint16 OPENTTD_SPRITE_COUNT = 175;
+static const uint16 OPENTTD_SPRITE_COUNT = 179;
 
 /* Halftile-selection sprites */
 static const SpriteID SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE;
@@ -148,6 +148,11 @@ static const SpriteID SPR_GROUP_REPLACE_OFF_TRAIN    = SPR_OPENTTD_BASE + 130;
 static const SpriteID SPR_GROUP_REPLACE_OFF_ROADVEH  = SPR_OPENTTD_BASE + 131;
 static const SpriteID SPR_GROUP_REPLACE_OFF_SHIP     = SPR_OPENTTD_BASE + 132;
 static const SpriteID SPR_GROUP_REPLACE_OFF_AIRCRAFT = SPR_OPENTTD_BASE + 133;
+
+static const SpriteID SPR_GROUP_LIVERY_TRAIN         = SPR_OPENTTD_BASE + 175;
+static const SpriteID SPR_GROUP_LIVERY_ROADVEH       = SPR_OPENTTD_BASE + 176;
+static const SpriteID SPR_GROUP_LIVERY_SHIP          = SPR_OPENTTD_BASE + 177;
+static const SpriteID SPR_GROUP_LIVERY_AIRCRAFT      = SPR_OPENTTD_BASE + 178;
 
 static const SpriteID SPR_TOWN_RATING_NA             = SPR_OPENTTD_BASE + 162;
 static const SpriteID SPR_TOWN_RATING_APALLING       = SPR_OPENTTD_BASE + 163;

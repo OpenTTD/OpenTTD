@@ -11,6 +11,7 @@
 
 #include "../stdafx.h"
 #include "../group.h"
+#include "../company_base.h"
 
 #include "saveload.h"
 
@@ -23,6 +24,9 @@ static const SaveLoad _group_desc[] = {
 	     SLE_VAR(Group, owner,              SLE_UINT8),
 	     SLE_VAR(Group, vehicle_type,       SLE_UINT8),
 	     SLE_VAR(Group, replace_protection, SLE_BOOL),
+	 SLE_CONDVAR(Group, livery.in_use,      SLE_UINT8,                     205, SL_MAX_VERSION),
+	 SLE_CONDVAR(Group, livery.colour1,     SLE_UINT8,                     205, SL_MAX_VERSION),
+	 SLE_CONDVAR(Group, livery.colour2,     SLE_UINT8,                     205, SL_MAX_VERSION),
 	 SLE_CONDVAR(Group, parent,             SLE_UINT16,                    189, SL_MAX_VERSION),
 	     SLE_END()
 };
@@ -47,6 +51,12 @@ static void Load_GRPS()
 		SlObject(g, _group_desc);
 
 		if (IsSavegameVersionBefore(189)) g->parent = INVALID_GROUP;
+
+		if (IsSavegameVersionBefore(205)) {
+	                const Company *c = Company::Get(g->owner);
+	                g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
+	                g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
+		}
 	}
 }
 
