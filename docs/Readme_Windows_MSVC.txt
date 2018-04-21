@@ -76,7 +76,7 @@ list, above all others, otherwise compilation will most likely fail!!
 
 3) TTD GRAPHICS FILES
 ---------------------
-See section 4.1 of readme.txt for the required 3rdparty files and how to install them.
+See section 4.1 of README.md for the required 3rdparty files and how to install them.
 
 
 4) COMPILING
