@@ -32,6 +32,7 @@ def generateCI(display_name, image_name) {
             dir("${display_name}") {
                 unstash "source"
 
+                docker.image("${image_name}").pull()
                 docker.image("${image_name}").withRun("--volumes-from ${hostname} --workdir " + pwd()) { c ->
                     sh "docker logs --follow ${c.id}"
                     sh "exit `docker wait ${c.id}`"
