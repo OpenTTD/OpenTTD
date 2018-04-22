@@ -18,12 +18,10 @@
  * \b 1.9.0
  *
  * 1.9.0 is not yet released. The following changes are not set in stone yet.
+ * API additions:
+ * \li GSClient
  * \li GSClientList
  * \li GSClientList_Company
- * \li GSClient::ResolveClientID
- * \li GSClient::GetName
- * \li GSClient::GetCompany
- * \li GSClient::GetJoinDate
  *
  * \b 1.8.0
  *
