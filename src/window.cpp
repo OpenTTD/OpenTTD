@@ -3061,6 +3061,9 @@ void InputLoop()
 	HandleAutoscroll();
 }
 
+#define TICK_15_INTERVAL (15 * MILLISECONDS_PER_TICK)
+#define TICK_100_INTERVAL (100 * MILLISECONDS_PER_TICK)
+
 /**
  * Update the continuously changing contents of the windows, such as the viewports
  */
@@ -3068,9 +3071,10 @@ void UpdateWindows()
 {
 	Window *w;
 
-	static int highlight_timer = 1;
-	if (--highlight_timer == 0) {
-		highlight_timer = 15;
+	static int next_highlight_time = _realtime_tick + TICK_15_INTERVAL;
+	if (_realtime_tick >= next_highlight_time)
+	{
+		next_highlight_time = _realtime_tick + TICK_15_INTERVAL;
 		_window_highlight_colour = !_window_highlight_colour;
 	}
 
@@ -3083,16 +3087,13 @@ void UpdateWindows()
 	 * But still empty the invalidation queues above. */
 	if (_network_dedicated) return;
 
-	static int we4_timer = 0;
-	int t = we4_timer + 1;
-
-	if (t >= 100) {
+	static int we4_next_time = _realtime_tick + TICK_100_INTERVAL;
+	if (_realtime_tick >= we4_next_time) {
 		FOR_ALL_WINDOWS_FROM_FRONT(w) {
 			w->OnHundredthTick();
 		}
-		t = 0;
+		we4_next_time = _realtime_tick + TICK_100_INTERVAL;
 	}
-	we4_timer = t;
 
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
 		if ((w->flags & WF_WHITE_BORDER) && --w->white_border_timer == 0) {
