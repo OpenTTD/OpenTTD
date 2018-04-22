@@ -754,7 +754,6 @@ void VideoDriver_SDL::MainLoop()
 
 			if (_draw_mutex != NULL) _draw_mutex->BeginCritical();
 
-			UpdateWindows();
 			_local_palette = _cur_palette;
 		} else {
 			/* Release the thread while sleeping */
@@ -765,6 +764,8 @@ void VideoDriver_SDL::MainLoop()
 			NetworkDrawChatMessage();
 			DrawMouseCursor();
 		}
+
+		UpdateWindows();
 
 		/* End of the critical part. */
 		if (_draw_mutex != NULL && !HasModalProgress()) {
