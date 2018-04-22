@@ -3267,7 +3267,7 @@ CommandCost CmdScrollViewport(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	ViewportScrollTarget target = (ViewportScrollTarget)p1;
-	switch(target) {
+	switch (target) {
 		case VST_EVERYONE:
 			break;
 		case VST_COMPANY:
@@ -3276,14 +3276,17 @@ CommandCost CmdScrollViewport(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		case VST_CLIENT:
 #ifdef ENABLE_NETWORK
 			if (_network_own_client_id != (ClientID)p2) return CommandCost();
+			break;
 #else
 			return CommandCost();
 #endif
-			break;
 		default:
 			return CMD_ERROR;
 	}
 
-	if (flags & DC_EXEC) ScrollMainWindowToTile(tile);
+	if (flags & DC_EXEC) {
+		ResetObjectToPlace();
+		ScrollMainWindowToTile(tile);
+	}
 	return CommandCost();
 }
