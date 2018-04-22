@@ -1010,6 +1010,8 @@
     <ClInclude Include="..\src\script\api\script_cargo.hpp" />
     <ClInclude Include="..\src\script\api\script_cargolist.hpp" />
     <ClInclude Include="..\src\script\api\script_cargomonitor.hpp" />
+    <ClInclude Include="..\src\script\api\script_client.hpp" />
+    <ClInclude Include="..\src\script\api\script_clientlist.hpp" />
     <ClInclude Include="..\src\script\api\script_company.hpp" />
     <ClInclude Include="..\src\script\api\script_companymode.hpp" />
     <ClInclude Include="..\src\script\api\script_controller.hpp" />
@@ -1075,6 +1077,8 @@
     <ClCompile Include="..\src\script\api\script_cargo.cpp" />
     <ClCompile Include="..\src\script\api\script_cargolist.cpp" />
     <ClCompile Include="..\src\script\api\script_cargomonitor.cpp" />
+    <ClCompile Include="..\src\script\api\script_client.cpp" />
+    <ClCompile Include="..\src\script\api\script_clientlist.cpp" />
     <ClCompile Include="..\src\script\api\script_company.cpp" />
     <ClCompile Include="..\src\script\api\script_companymode.cpp" />
     <ClCompile Include="..\src\script\api\script_controller.cpp" />
