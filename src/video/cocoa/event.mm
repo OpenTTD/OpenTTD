@@ -698,6 +698,7 @@ void QZ_GameLoop()
 			DrawMouseCursor();
 			_cocoa_subdriver->Draw();
 		}
+		DrawWindows();
 	}
 
 #ifdef _DEBUG

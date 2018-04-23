@@ -3061,8 +3061,8 @@ void InputLoop()
 	HandleAutoscroll();
 }
 
-#define TICK_15_INTERVAL (15 * MILLISECONDS_PER_TICK)
-#define TICK_100_INTERVAL (100 * MILLISECONDS_PER_TICK)
+static const uint TICK_15_INTERVAL = 15 * MILLISECONDS_PER_TICK;
+static const uint TICK_100_INTERVAL = 100 * MILLISECONDS_PER_TICK;
 
 /**
  * Update the continuously changing contents of the windows, such as the viewports
@@ -3071,7 +3071,7 @@ void UpdateWindows()
 {
 	Window *w;
 
-	static int next_highlight_time = _realtime_tick + TICK_15_INTERVAL;
+	static uint32 next_highlight_time = _realtime_tick + TICK_15_INTERVAL;
 	if (_realtime_tick >= next_highlight_time)
 	{
 		next_highlight_time = _realtime_tick + TICK_15_INTERVAL;
@@ -3082,12 +3082,17 @@ void UpdateWindows()
 		w->ProcessScheduledInvalidations();
 		w->ProcessHighlightedInvalidations();
 	}
+}
+
+void DrawWindows()
+{
+	Window *w;
 
 	/* Skip the actual drawing on dedicated servers without screen.
 	 * But still empty the invalidation queues above. */
 	if (_network_dedicated) return;
 
-	static int we4_next_time = _realtime_tick + TICK_100_INTERVAL;
+	static uint32 we4_next_time = _realtime_tick + TICK_100_INTERVAL;
 	if (_realtime_tick >= we4_next_time) {
 		FOR_ALL_WINDOWS_FROM_FRONT(w) {
 			w->OnHundredthTick();

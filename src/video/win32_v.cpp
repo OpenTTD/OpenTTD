@@ -1308,6 +1308,7 @@ void VideoDriver_Win32::MainLoop()
 
 			if (_force_full_redraw) MarkWholeScreenDirty();
 
+			UpdateWindows();
 			CheckPaletteAnim();
 		} else {
 #if !defined(WINCE)
@@ -1324,7 +1325,7 @@ void VideoDriver_Win32::MainLoop()
 			DrawMouseCursor();
 		}
 
-		UpdateWindows();
+		DrawWindows();
 	}
 
 	if (_draw_threaded) {

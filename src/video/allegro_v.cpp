@@ -526,6 +526,7 @@ void VideoDriver_Allegro::MainLoop()
 
 			GameLoop();
 
+			UpdateWindows();
 			CheckPaletteAnim();
 			DrawSurfaceToScreen();
 		} else {
@@ -534,7 +535,7 @@ void VideoDriver_Allegro::MainLoop()
 			DrawMouseCursor();
 			DrawSurfaceToScreen();
 		}
-		UpdateWindows();
+		DrawWindows();
 	}
 }
 
