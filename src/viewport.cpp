@@ -84,6 +84,9 @@
 #include "linkgraph/linkgraph_gui.h"
 #include "viewport_sprite_sorter.h"
 #include "bridge_map.h"
+#include "company_base.h"
+#include "command_func.h"
+#include "network/network_func.h"
 
 #include <map>
 
@@ -3249,4 +3252,41 @@ void InitializeSpriteSorter()
 		}
 	}
 	assert(_vp_sprite_sorter != NULL);
+}
+
+/**
+ * Scroll players main viewport.
+ * @param tile tile to center viewport on
+ * @param flags type of operation
+ * @param p1 ViewportScrollTarget of scroll target
+ * @param p2 company or client id depending on the target
+ * @param text unused
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdScrollViewport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
+	ViewportScrollTarget target = (ViewportScrollTarget)p1;
+	switch (target) {
+		case VST_EVERYONE:
+			break;
+		case VST_COMPANY:
+			if (_local_company != (CompanyID)p2) return CommandCost();
+			break;
+		case VST_CLIENT:
+#ifdef ENABLE_NETWORK
+			if (_network_own_client_id != (ClientID)p2) return CommandCost();
+			break;
+#else
+			return CommandCost();
+#endif
+		default:
+			return CMD_ERROR;
+	}
+
+	if (flags & DC_EXEC) {
+		ResetObjectToPlace();
+		ScrollMainWindowToTile(tile);
+	}
+	return CommandCost();
 }

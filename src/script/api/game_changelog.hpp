@@ -22,6 +22,9 @@
  * \li GSClient
  * \li GSClientList
  * \li GSClientList_Company
+ * \li GSViewport::ScrollEveryoneTo
+ * \li GSViewport::ScrollCompanyClientsTo
+ * \li GSViewport::ScrollClientTo
  *
  * \b 1.8.0
  *

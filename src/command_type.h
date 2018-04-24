@@ -293,6 +293,8 @@ enum Commands {
 	CMD_SHOW_STORY_PAGE,              ///< show a story page
 	CMD_REMOVE_STORY_PAGE,            ///< remove a story page
 	CMD_REMOVE_STORY_PAGE_ELEMENT,    ///< remove a story page element
+	CMD_SCROLL_VIEWPORT,              ///< scroll main viewport of players
+
 	CMD_LEVEL_LAND,                   ///< level land
 
 	CMD_BUILD_LOCK,                   ///< build a lock
