@@ -25,6 +25,7 @@
  * \li GSViewport::ScrollEveryoneTo
  * \li GSViewport::ScrollCompanyClientsTo
  * \li GSViewport::ScrollClientTo
+ * \li GSGoal::QuestionClient
  *
  * \b 1.8.0
  *

@@ -51,15 +51,16 @@ void SQGSGoal_Register(Squirrel *engine)
 	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_SURRENDER, "BUTTON_SURRENDER");
 	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_CLOSE,     "BUTTON_CLOSE");
 
-	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::IsValidGoal,   "IsValidGoal",   2, ".i");
-	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::New,           "New",           5, ".i.ii");
-	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::Remove,        "Remove",        2, ".i");
-	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::SetText,       "SetText",       3, ".i.");
-	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::SetProgress,   "SetProgress",   3, ".i.");
-	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::SetCompleted,  "SetCompleted",  3, ".ib");
-	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::IsCompleted,   "IsCompleted",   2, ".i");
-	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::Question,      "Question",      6, ".ii.ii");
-	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::CloseQuestion, "CloseQuestion", 2, ".i");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::IsValidGoal,    "IsValidGoal",    2, ".i");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::New,            "New",            5, ".i.ii");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::Remove,         "Remove",         2, ".i");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::SetText,        "SetText",        3, ".i.");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::SetProgress,    "SetProgress",    3, ".i.");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::SetCompleted,   "SetCompleted",   3, ".ib");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::IsCompleted,    "IsCompleted",    2, ".i");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::Question,       "Question",       6, ".ii.ii");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::QuestionClient, "QuestionClient", 6, ".ii.ii");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::CloseQuestion,  "CloseQuestion",  2, ".i");
 
 	SQGSGoal.PostRegister(engine);
 }
