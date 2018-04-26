@@ -118,6 +118,7 @@ public:
 		BT_CLEAR_ROCKY,  ///< Clear a tile with rocks
 		BT_CLEAR_FIELDS, ///< Clear a tile with farm fields
 		BT_CLEAR_HOUSE,  ///< Clear a tile with a house
+		BT_CLEAR_RIVER,  ///< Clear a tile with a river
 	};
 
 	/**

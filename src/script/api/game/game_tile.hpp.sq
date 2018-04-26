@@ -66,6 +66,7 @@ void SQGSTile_Register(Squirrel *engine)
 	SQGSTile.DefSQConst(engine, ScriptTile::BT_CLEAR_ROCKY,              "BT_CLEAR_ROCKY");
 	SQGSTile.DefSQConst(engine, ScriptTile::BT_CLEAR_FIELDS,             "BT_CLEAR_FIELDS");
 	SQGSTile.DefSQConst(engine, ScriptTile::BT_CLEAR_HOUSE,              "BT_CLEAR_HOUSE");
+	SQGSTile.DefSQConst(engine, ScriptTile::BT_CLEAR_RIVER,              "BT_CLEAR_RIVER");
 	SQGSTile.DefSQConst(engine, ScriptTile::TERRAIN_NORMAL,              "TERRAIN_NORMAL");
 	SQGSTile.DefSQConst(engine, ScriptTile::TERRAIN_DESERT,              "TERRAIN_DESERT");
 	SQGSTile.DefSQConst(engine, ScriptTile::TERRAIN_RAINFOREST,          "TERRAIN_RAINFOREST");
