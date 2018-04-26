@@ -1320,9 +1320,6 @@ void VideoDriver_Win32::MainLoop()
 			if (_draw_threaded) _draw_mutex->EndCritical();
 			Sleep(1);
 			if (_draw_threaded) _draw_mutex->BeginCritical();
-
-			NetworkDrawChatMessage();
-			DrawMouseCursor();
 		}
 
 		DrawWindows();

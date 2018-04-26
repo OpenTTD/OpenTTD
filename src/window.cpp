@@ -3088,10 +3088,6 @@ void DrawWindows()
 {
 	Window *w;
 
-	/* Skip the actual drawing on dedicated servers without screen.
-	 * But still empty the invalidation queues above. */
-	if (_network_dedicated) return;
-
 	static uint32 we4_next_time = _realtime_tick + TICK_100_INTERVAL;
 	if (_realtime_tick >= we4_next_time) {
 		FOR_ALL_WINDOWS_FROM_FRONT(w) {
