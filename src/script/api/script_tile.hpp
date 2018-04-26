@@ -118,6 +118,7 @@ public:
 		BT_CLEAR_ROCKY,  ///< Clear a tile with rocks
 		BT_CLEAR_FIELDS, ///< Clear a tile with farm fields
 		BT_CLEAR_HOUSE,  ///< Clear a tile with a house
+		BT_CLEAR_RIVER,  ///< Clear a tile with a river
 	};
 
 	/**
@@ -164,6 +165,14 @@ public:
 	 * @return True if and only if the tile is a water tile.
 	 */
 	static bool IsWaterTile(TileIndex tile);
+
+	/**
+	 * Checks whether the given tile is actually a river tile.
+	 * @param tile The tile to check on.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @return True if and only if the tile is a river tile.
+	 */
+	static bool IsRiverTile(TileIndex tile);
 
 	/**
 	 * Checks whether the given tile is actually a coast tile.

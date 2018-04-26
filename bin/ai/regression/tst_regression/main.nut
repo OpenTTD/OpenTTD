@@ -552,6 +552,7 @@ function Regression::Prices()
 	print("  BT_CLEAR_ROCKY:  " + AITile.GetBuildCost(AITile.BT_CLEAR_ROCKY));
 	print("  BT_CLEAR_FIELDS: " + AITile.GetBuildCost(AITile.BT_CLEAR_FIELDS));
 	print("  BT_CLEAR_HOUSE:  " + AITile.GetBuildCost(AITile.BT_CLEAR_HOUSE));
+	print("  BT_CLEAR_RIVER:  " + AITile.GetBuildCost(AITile.BT_CLEAR_RIVER));
 }
 
 function cost_callback(old_path, new_tile, new_direction, self) { if (old_path == null) return 0; return old_path.GetCost() + 1; }

@@ -67,6 +67,13 @@
 	return ::IsTileType(tile, MP_WATER) && !::IsCoast(tile);
 }
 
+/* static */ bool ScriptTile::IsRiverTile(TileIndex tile)
+{
+	if (!::IsValidTile(tile)) return false;
+
+	return ::IsTileType(tile, MP_WATER) && ::IsRiver(tile);
+}
+
 /* static */ bool ScriptTile::IsCoastTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
@@ -318,6 +325,7 @@
 		case BT_CLEAR_ROCKY:  return ::GetPrice(PR_CLEAR_ROCKS, 1, NULL);
 		case BT_CLEAR_FIELDS: return ::GetPrice(PR_CLEAR_FIELDS, 1, NULL);
 		case BT_CLEAR_HOUSE:  return ::GetPrice(PR_CLEAR_HOUSE, 1, NULL);
+		case BT_CLEAR_RIVER:  return ::GetPrice(PR_CLEAR_WATER, 1, NULL);
 		default: return -1;
 	}
 }

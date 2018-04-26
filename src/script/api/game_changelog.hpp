@@ -25,6 +25,7 @@
  * \li GSViewport::ScrollEveryoneTo
  * \li GSViewport::ScrollCompanyClientsTo
  * \li GSViewport::ScrollClientTo
+ * \li GSTile::IsRiverTile
  *
  * \b 1.8.0
  *

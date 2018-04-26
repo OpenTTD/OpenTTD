@@ -7323,6 +7323,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   BT_CLEAR_ROCKY:  150
   BT_CLEAR_FIELDS: 375
   BT_CLEAR_HOUSE:  1200
+  BT_CLEAR_RIVER:  7500
 
 --Rail--
     IsRailTile():                  false
