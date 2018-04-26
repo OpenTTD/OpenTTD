@@ -166,6 +166,14 @@ public:
 	static bool IsWaterTile(TileIndex tile);
 
 	/**
+	 * Checks whether the given tile is actually a river tile.
+	 * @param tile The tile to check on.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @return True if and only if the tile is a river tile.
+	 */
+	static bool IsRiverTile(TileIndex tile);
+
+	/**
 	 * Checks whether the given tile is actually a coast tile.
 	 * @param tile The tile to check.
 	 * @pre ScriptMap::IsValidTile(tile).

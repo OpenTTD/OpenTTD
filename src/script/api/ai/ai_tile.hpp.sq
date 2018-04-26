@@ -84,6 +84,7 @@ void SQAITile_Register(Squirrel *engine)
 	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsBuildable,                "IsBuildable",                2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsBuildableRectangle,       "IsBuildableRectangle",       4, ".iii");
 	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsWaterTile,                "IsWaterTile",                2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsRiverTile,                "IsRiverTile",                2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsCoastTile,                "IsCoastTile",                2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsStationTile,              "IsStationTile",              2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsSteepSlope,               "IsSteepSlope",               2, ".i");

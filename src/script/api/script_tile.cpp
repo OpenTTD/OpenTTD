@@ -67,6 +67,13 @@
 	return ::IsTileType(tile, MP_WATER) && !::IsCoast(tile);
 }
 
+/* static */ bool ScriptTile::IsRiverTile(TileIndex tile)
+{
+	if (!::IsValidTile(tile)) return false;
+
+	return ::IsTileType(tile, MP_WATER) && ::IsRiver(tile);
+}
+
 /* static */ bool ScriptTile::IsCoastTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
