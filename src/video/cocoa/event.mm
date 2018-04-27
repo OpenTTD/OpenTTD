@@ -587,12 +587,12 @@ static bool QZ_PollEvent()
 
 			while (_current_magnification >= 1.0f) {
 				_current_magnification -= 1.0f;
-				_cursor.wheel++;
+				_cursor.wheel--;
 				HandleMouseEvents();
 			}
 			while (_current_magnification <= -1.0f) {
 				_current_magnification += 1.0f;
-				_cursor.wheel--;
+				_cursor.wheel++;
 				HandleMouseEvents();
 			}
 			break;
