@@ -237,7 +237,7 @@ CommandCost CmdSetGoalCompleted(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0 - 15) - Unique ID to use for this question.
  * - p1 = (bit 16 - 23) - Company or client for which this question is.
- * - p1 = (bit 24 - 26) - Question type.
+ * - p1 = (bit 24 - 25) - Question type.
  * - p1 = (bit 31) - Question target: 0 - company, 1 - client.
  * @param p2 Buttons of the question.
  * @param text Text of the question.
@@ -251,13 +251,15 @@ CommandCost CmdGoalQuestion(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	ClientIndex client = (ClientIndex)GB(p1, 16, 8);
 #endif
 	byte type = GB(p1, 24, 2);
-	bool is_client = (p1 >> 31);
+	bool is_client = HasBit(p1, 31);
 
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (StrEmpty(text)) return CMD_ERROR;
 	if (is_client) {
 #ifdef ENABLE_NETWORK
 		if (!NetworkClientInfo::IsValidID(client)) return CMD_ERROR;
+#else
+		return CMD_ERROR;
 #endif
 	} else {
 		if (company != INVALID_COMPANY && !Company::IsValidID(company)) return CMD_ERROR;
