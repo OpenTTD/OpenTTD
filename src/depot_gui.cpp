@@ -908,9 +908,8 @@ struct DepotWindow : Window {
 	 */
 	virtual bool OnVehicleSelect(const Vehicle *v)
 	{
-		if (DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_TRAIN + v->type), CcCloneVehicle)) {
-			ResetObjectToPlace();
-		}
+		DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_TRAIN + v->type), CcCloneVehicle);
+
 		return true;
 	}
 
