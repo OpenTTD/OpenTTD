@@ -138,7 +138,7 @@ public:
 
 	virtual void OnMouseWheel(int wheel)
 	{
-		if (_settings_client.gui.scrollwheel_scrolling == 0) {
+		if (_settings_client.gui.scrollwheel_scrolling != 2) {
 			ZoomInOrOutToCursorWindow(wheel < 0, this);
 		}
 	}
