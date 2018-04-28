@@ -28,6 +28,7 @@
 #include "../../crashlog.h"
 #include <errno.h>
 #include <sys/stat.h>
+#include "../../language.h"
 
 /* Due to TCHAR, strncat and strncpy have to remain (for a while). */
 #include "../../safeguards.h"
@@ -737,6 +738,70 @@ uint GetCPUCoreCount()
 
 	GetSystemInfo(&info);
 	return info.dwNumberOfProcessors;
+}
+
+
+static WCHAR _cur_iso_locale[16] = L"";
+
+void Win32SetCurrentLocaleName(const char *iso_code)
+{
+	/* Convert the iso code into the format that windows expects. */
+	char iso[16];
+	if (strcmp(iso_code, "zh_TW") == 0) {
+		strecpy(iso, "zh-Hant", lastof(iso));
+	} else if (strcmp(iso_code, "zh_CN") == 0) {
+		strecpy(iso, "zh-Hans", lastof(iso));
+	} else {
+		/* Windows expects a '-' between language and country code, but we use a '_'. */
+		strecpy(iso, iso_code, lastof(iso));
+		for (char *c = iso; *c != '\0'; c++) {
+			if (*c == '_') *c = '-';
+		}
+	}
+
+	MultiByteToWideChar(CP_UTF8, 0, iso, -1, _cur_iso_locale, lengthof(_cur_iso_locale));
+}
+
+int OTTDStringCompare(const char *s1, const char *s2)
+{
+	typedef int (WINAPI *PFNCOMPARESTRINGEX)(LPCWSTR, DWORD, LPCWCH, int, LPCWCH, int, LPVOID, LPVOID, LPARAM);
+	static PFNCOMPARESTRINGEX _CompareStringEx = NULL;
+	static bool first_time = true;
+
+#ifndef SORT_DIGITSASNUMBERS
+#	define SORT_DIGITSASNUMBERS 0x00000008  // use digits as numbers sort method
+#endif
+#ifndef LINGUISTIC_IGNORECASE
+#	define LINGUISTIC_IGNORECASE 0x00000010 // linguistically appropriate 'ignore case'
+#endif
+
+	if (first_time) {
+		_CompareStringEx = (PFNCOMPARESTRINGEX)GetProcAddress(GetModuleHandle(_T("Kernel32")), "CompareStringEx");
+		first_time = false;
+	}
+
+	if (_CompareStringEx != NULL) {
+		/* CompareStringEx takes UTF-16 strings, even in ANSI-builds. */
+		int len_s1 = MultiByteToWideChar(CP_UTF8, 0, s1, -1, NULL, 0);
+		int len_s2 = MultiByteToWideChar(CP_UTF8, 0, s2, -1, NULL, 0);
+
+		if (len_s1 != 0 && len_s2 != 0) {
+			LPWSTR str_s1 = AllocaM(WCHAR, len_s1);
+			LPWSTR str_s2 = AllocaM(WCHAR, len_s2);
+
+			MultiByteToWideChar(CP_UTF8, 0, s1, -1, str_s1, len_s1);
+			MultiByteToWideChar(CP_UTF8, 0, s2, -1, str_s2, len_s2);
+
+			int result = _CompareStringEx(_cur_iso_locale, LINGUISTIC_IGNORECASE | SORT_DIGITSASNUMBERS, str_s1, -1, str_s2, -1, NULL, NULL, 0);
+			if (result != 0) return result;
+		}
+	}
+
+	TCHAR s1_buf[512], s2_buf[512];
+	convert_to_fs(s1, s1_buf, lengthof(s1_buf));
+	convert_to_fs(s2, s2_buf, lengthof(s2_buf));
+
+	return CompareString(MAKELCID(_current_language->winlangid, SORT_DEFAULT), NORM_IGNORECASE, s1_buf, -1, s2_buf, -1);
 }
 
 #ifdef _MSC_VER

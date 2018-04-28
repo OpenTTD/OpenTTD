@@ -45,4 +45,7 @@ void SetWin32ThreadName(DWORD dwThreadID, const char* threadName);
 static inline void SetWin32ThreadName(DWORD dwThreadID, const char* threadName) {}
 #endif
 
+void Win32SetCurrentLocaleName(const char *iso_code);
+int OTTDStringCompare(const char *s1, const char *s2);
+
 #endif /* WIN32_H */

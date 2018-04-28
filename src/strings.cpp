@@ -1788,6 +1788,11 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 	strecpy(_config_language_file, c_file, lastof(_config_language_file));
 	SetCurrentGrfLangID(_current_language->newgrflangid);
 
+#ifdef WIN32
+	extern void Win32SetCurrentLocaleName(const char *iso_code);
+	Win32SetCurrentLocaleName(_current_language->isocode);
+#endif
+
 #ifdef WITH_ICU_SORT
 	/* Delete previous collator. */
 	if (_current_collator != NULL) {
