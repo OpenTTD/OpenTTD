@@ -1337,10 +1337,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Colour of the t
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Green
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dark green
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Reverse scroll direction: {STRING2}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Behaviour when scrolling the map with the right mouse button. When disabled, the mouse moves the camera. When enabled, the mouse moves the map
-STR_CONFIG_SETTING_FREE_SCROLLING                               :Free mouse scrolling: {STRING2}
-STR_CONFIG_SETTING_FREE_SCROLLING_HELPTEXT                      :Behaviour when scrolling the map with the right mouse button. When disabled, the mouse pointer is fixed in position. When enabled, the mouse pointer moves freely. Reverse scroll direction is ignored when enabled
+STR_CONFIG_SETTING_SCROLLMODE                                   :Viewport scroll behaviour: {STRING2}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Behaviour when scrolling the map
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Move viewport with RMB, mouse position locked
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Move map with RMB, mouse position locked
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Move map with RMB
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Move map with LMB
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Smooth viewport scrolling: {STRING2}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Control how the main view scrolls to a specific position when clicking on the smallmap or when issuing a command to scroll to a specific object on the map. If enabled, the viewport scrolls smoothly, if disabled it jumps directly to the targeted spot
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Show a measurement tooltip when using various build-tools: {STRING2}
@@ -1372,8 +1374,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Off
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Left-click scrolling: {STRING2}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Enable scrolling the map by dragging it with the left mouse button. This is especially useful when using a touch-screen for scrolling
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Close window on right-click: {STRING2}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Closes a window by right-clicking inside it. Disables the tooltip on right-click!
 

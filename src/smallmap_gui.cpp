@@ -1628,7 +1628,7 @@ void SmallMapWindow::SetNewScroll(int sx, int sy, int sub)
 
 /* virtual */ void SmallMapWindow::OnScroll(Point delta)
 {
-	if (!_settings_client.gui.free_scroll) _cursor.fix_at = true;
+	if (_settings_client.gui.scroll_mode == VSM_VIEWPORT_RMB_FIXED || _settings_client.gui.scroll_mode == VSM_MAP_RMB_FIXED) _cursor.fix_at = true;
 
 	/* While tile is at (delta.x, delta.y)? */
 	int sub;
