@@ -1311,7 +1311,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Farge på terre
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grøn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mørkegrøn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fiolett
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Snu rulleretninga: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Jamn rulling i tilleggsvindauge: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Syne eit målingverktøytips når ymse byggjeverktøy brukast: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :Syne firmaovertakingar: {STRING}
@@ -1338,7 +1337,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando+klikk
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :CTRL+klikk
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Venstreknapps-rulling: {STRING}
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Autolaging: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vel intervall for automatisk lagring av spel

@@ -1539,8 +1539,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Dath na crutha-
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Uaine
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dorch-uaine
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Purpaidh
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Comhair sgrolaidh chontrarra: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Giùlan nuair a thèid am mapa a sgroladh le putan deas na luchaige. Nuair a bhios seo air, gluaisidh an luchag am mapa
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Sgroladh mìn nam port-seallaidh: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Tagh mar a ghluaiseas am prìomh-shealladh gu ionad sònraichte. Ma tha seo dheth, thèid leum dhan ionad a chaidh a thaghadh sa bhad
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Seall gliocasan-sgrìn tomhais le innealan togail: {STRING}
@@ -1572,8 +1570,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Briogad
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Briogadh
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Dheth
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Sgroladh le briogadh clì: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Cuir an comas gun tèid am mapa a sgroladh le slaodadh le putan clì na luchaige. Tha seo feumail gu h-àraidh nuair a chleachdas tu sgrìn-shuathaidh airson sgroladh
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Dùin an uinneag le briogadh deas: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Dùinidh seo uinneag le briogadh deas ’na broinn. Cuiridh e à comas an gliocas-sgrìn le briogadh deas!
 

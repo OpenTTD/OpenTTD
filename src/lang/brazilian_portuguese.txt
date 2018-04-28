@@ -1338,8 +1338,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Cor do terreno 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde escuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Rolar a tela no sentido oposto ao movimento do mouse: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Comportamento quando rolar o mapa com o botão direito. Quando desativado, o mouse move a câmera. Ativado, o mouse move o mapa.
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Suavizar rolamento da janela: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a janela principal rola para uma posição específica quando clicado no minimapa ou após localizar um objeto. Ativado torna o rolamento suave. Desativado torna o rolamento instanâneo
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Exibe distâncias quando usar ferramentas de construção: {STRING}
@@ -1371,8 +1369,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Clique de coman
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Clique de controle
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Mover a tela com o botão esquerdo: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Ativa rolamento do mapa por clique e arraste com o botão esquerdo. Especialmente útil ao usar um touchscreen para o rolamento
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fechar janela com botão direito do mouse: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fecha uma janela ao clicar com o botão direito do mouse nela. Desativa o tooltip com o botão direito!
 

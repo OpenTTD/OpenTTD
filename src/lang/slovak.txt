@@ -1405,8 +1405,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Farby terénu n
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Zelená
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tmavozelená
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fialová
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Posúvať mapu opačným smerom: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Chovanie sa mapy keď je posúvaná pravým tlačítkom myši. Ak je vypnuté posúva sa kamera, ak je zapnuté posúva sa mapa.
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Plynulé posúvanie pohľadu: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Nastaví ako bude reagovať posúvanie na špecifickú pozíciu po kliknutí na minimapu, alebo po zadaní príkazu na presun na zadaný objekt. Ak je zapnuté, pohľad sa presúva plynulo. Ak je vypnuté, pohľad skočí priamo na zadané miesto/objekt.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Zobraziť údaje o rozmeroch pri výstavbe: {STRING}
@@ -1438,8 +1436,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Príkaz + klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :CTRL + klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Žiadna
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Posúvať pohľad ľavým tlačidlom myši: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Povolí posúvanie mapy ĽAVÝM tlačítkom myši. Toto je obzvlášť užitočné pri použití dotykového displeja.
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Automatické ukladanie: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vyberte interval pre automatické ukladanie hry

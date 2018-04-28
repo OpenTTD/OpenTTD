@@ -1337,8 +1337,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :ミニマップ
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :緑
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :濃緑
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :青紫
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :スクロール方面を反転: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :マウス右ボタンで地図をスクロールする時の挙動を設定します。無効にした場合はマウスはカメラを動かします(マウスの移動方向に移動します)。有効にした場合は地図を動かします(マウスの移動方向と逆に移動します)
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :画面のスムーズスクロール: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :ミニマップでの移動や「現在位置に移動」などのコマンドを使用した際にメイン画面がどのように移動するかを設定します。有効にした場合はスムーズにスクロールして移動します。無効の場合は目的地に直接ジャンプします
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :測定ツールチップ表示: {STRING}
@@ -1370,8 +1368,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :コマンド+�
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+クリック (Win)
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :切
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :左ドラッグスクロール: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :有効にすると左ドラッグでマップのスクロールができるようになります。特にタッチスクリーンを利用しているときに便利です
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :オートセーブ: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :オートセーブの間隔を設定します

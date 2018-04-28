@@ -1199,7 +1199,6 @@ STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ligu landaspekt
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verda
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Malhele verda
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Viola
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Inversigu skroldirekton: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Glata rulumado de vidujo: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Montru mezuran konsilbalonon ĉe uzo de konstruiloj: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :Montru veturiltipe specifajn liverojn: {STRING}
@@ -1223,7 +1222,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komando+Klako
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klako
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Ne
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Maldekstr-klak-rulumado: {STRING}
 
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Uzu la {STRING} datformon por nomoj de konservludoj.

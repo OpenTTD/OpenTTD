@@ -1508,9 +1508,8 @@ static SettingsContainer &GetSettingsTree()
 			SettingsPage *viewports = interface->Add(new SettingsPage(STR_CONFIG_SETTING_INTERFACE_VIEWPORTS));
 			{
 				viewports->Add(new SettingEntry("gui.auto_scrolling"));
-				viewports->Add(new SettingEntry("gui.reverse_scroll"));
+				viewports->Add(new SettingEntry("gui.scroll_mode"));
 				viewports->Add(new SettingEntry("gui.smooth_scroll"));
-				viewports->Add(new SettingEntry("gui.left_mouse_btn_scrolling"));
 				/* While the horizontal scrollwheel scrolling is written as general code, only
 				 *  the cocoa (OSX) driver generates input for it.
 				 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */

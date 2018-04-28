@@ -1394,8 +1394,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Maa värv väik
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Roheline
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tumeroheline
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violetne
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Vaade liigub vastassuunas: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Vaate liigutamine parema hiireklahviga. Kui see on välja lülitatud, siis hiireosuti juhib vaatepunkti. Kui sisse, siis kaarti
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Vaade keskendatakse sujuvalt: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Vaateakna asukohale keskendamise viis, kui vajutatakse väikesele kaardile, või kui vaade keskendatakse mõnele rekvisiidile. Sisse lülitades on liikumine sujuv, välja lülitades läheb vaade kohe sihtpunkti
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Ehitamisel mõõtude arvesti näitamine: {STRING}
@@ -1427,8 +1425,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+klõps
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klõps
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Väljas
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Vaate liigutamine vasaku hiireklahviga: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Lubab kaardi liigutamise vasaku hiireklahvi abil. See lihtsustab mängimist puutetundlikul ekraanil
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Automaatne salvestamine: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vali automaatse salvestamise intervall

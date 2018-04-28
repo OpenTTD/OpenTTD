@@ -1337,8 +1337,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Maaston väri k
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Vihreä
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tummanvihreä
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violetti
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Käänteinen vierityssuunta: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Käyttäytyminen siirrettäessä näkymää oikealla hiiren näppäimellä. Mikäli pois käytöstä, hiiri liikuttaa kameraa. Mikäli käytössä, hiiri liikuttaa karttaa
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Näkymän tasainen vieritys: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Hallitse miten päänäkymä siirtyy valittuun paikkaan karttaa klikattaessa tai käytettäessä komentoa joka muuttaa näkymän sijaintia. Mikäli käytössä, päänäkymä siirtyy uuteen sijaintiin pehmeäesti, muutoin se hyppää suoraan valittuun sijaintiin
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Näytä mittauksen työkaluvihje, kun käytetään rakennustyökaluja: {STRING}
@@ -1370,8 +1368,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Pois
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Vasemmalla hiiren painikkeella liikkuminen: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Salli näkymän siirtäminen vetämällä hiiren vasemmalla näppäimellä. Hyödyllinen erityisesti kosketusnäyttöä käytettäessä
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Sulje ikkuna hiiren oikealla painikkeella napsauttamalla: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Ikkunat sulkeutuvat, kun niitä napsautetaan hiiren oikealla painikkeella. Tämä korvaa tavallisesti näkyvän työkaluvihjeen!
 

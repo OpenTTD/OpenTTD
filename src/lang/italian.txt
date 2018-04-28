@@ -1361,8 +1361,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Colore del terr
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde scuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Viola
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Inverti direzione di scorrimento della mappa: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Comportamento dello scorrimento della mappa con il tasto destro del mouse. Se disabilitata, il mouse muove l'inquadratura. Se abilitata, il mouse muove la mappa
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Scorrimento morbido delle visuali: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controlla il modo in cui la visuale principale scorre verso una specifica posizione quando si fa clic sulla minimappa o si ordina di visualizzare un oggetto specifico sulla mappa. Se abilitata, la visuale scorre in modo morbido. Se disabilitata, salta direttamente al punto prescelto
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostra un tooltip di misura durante la costruzione: {STRING}
@@ -1394,8 +1392,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :COMANDO+clic
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :CTRL+clic
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Nessuna
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Scorrimento con clic sinistro: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Abilita lo scorrimento della mappa trascinandola con il pulsante sinistro del mouse. Questa impostazione è utile quando si utilizza un touch-screen
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Chiudi finestra con clic destro: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Consente di chiudere una finestra facendo clic col pulsante destro al suo interno. Disabilita i suggerimenti attivati al clic col pulsante destro!
 

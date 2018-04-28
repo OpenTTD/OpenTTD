@@ -1717,8 +1717,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Kolor terenu na
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :zielony
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :ciemnozielony
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :fioletowy
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Przewijaj obraz myszką w przeciwnym kierunku: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Zachowanie podczas przewijania mapy za pomocą prawego przycisku myszy. W przypadku wyłączenia mysz porusza kamerą. Po włączeniu mysz przesuwa mapę
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Wygładź przesuwanie widoku: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Zdecyduj, jak główny widok przesuwa się do konkretnej lokacji, gdy klikasz na mini-mapie lub gdy używasz komendy do przesunięcia do danego obiektu na mapie. Kiedy włączone, widok przesuwa się płynnie, kiedy wyłączone, następuje skok bezpośrednio do wybranego miejsca
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Pokaż dymek z pomiarem podczas używania różnych narzędzi: {STRING}
@@ -1750,8 +1748,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Wyłączona
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Przewijanie lewym przyciskiem myszy: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Włącz przewijanie mapy przeciąganiem lewym przyciskiem myszki. Jest to przydatne podczas używania ekranu dotykowego do przewijania
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Zamknij okno prawym przyciskiem: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Zamyka okno poprzez kliknięcie prawym przyciskiem. Wyłącza pomoc kontekstową!
 

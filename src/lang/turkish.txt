@@ -1338,8 +1338,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Küçük harita
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Yeşil
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Koyu yeşil
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Mor
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Fareyle kaydırma hareketini ters çevir: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Haritayı sağ fare tuşuyla kaydırırken davranış biçimi. Etkisiz kılındığında, fare kamerayı hareket ettirir. Etkinleştirildiğinde ise fare haritayı hareket ettirir.
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Düzgün viewport kaydırması: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Küçük haritaya tıklandığında veya harita üzerindeki belli bir nesneye gidilmesi için komut verildiğinde ana görüntünün nasıl kaydırılacağını kontrol eder. Etkinleştirildiğinde harita kayarak ilerler, kapatıldığında ise doğrudan hedeflenen noktaya atlama yapar.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :İnşa araçları kullanılırken ölçüm ipucu göster: {STRING}
@@ -1371,8 +1369,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komut-tıklama
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontrol-tıklama
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Kapalı
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Sol tık ile ekran kaydır: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Sol fare tuşuyla sürükleyerek harita kaydırma özelliğini etkinleştir. Özellikle dokunmatik-ekran kullanırken kaydırma yapmak için kullanılabilir.
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Sağ tıklama ile pencereyi kapat: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :İçerisinde sağ tıklandığında pencereyi kapatır. Sağ tıklandığında ipuçları gösterimini devre dışı bırakır!
 

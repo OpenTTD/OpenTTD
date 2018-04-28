@@ -1227,7 +1227,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :رنگ استف
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :سبز
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :سبز تیره
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفش
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :برعکس کردن جهت حرکت کردن صفحه: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :تصویر صاف در نمای اضافه: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :نمایش متن کمکی وقتی از چندین ابزار استفاده می شود: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :نمایش طراحی مخصوص وسیله نقلیه : {STRING}
@@ -1247,7 +1246,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :دستور+کل
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :کنترل+کلیک
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :خاموش
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :حرکت در نقشه با کلیک چپ:: {STRING}
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :ذخیره خودکار: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :انتخاب فاصله زمانی بین ذخیره کردن های خودکار

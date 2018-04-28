@@ -1525,8 +1525,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color terrae in
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Viridis
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Viridis Obscurus
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Purpureus
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Revertere cursum vagationis: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Quomodo tabula vagatur globulo dextri presso. Neglecta, mus conspectum movet. Electa, mus tabulam movet
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Vagari conspectum leniter: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Quomodo conspectus vagatur ad quemdam locum globulo sinistro in tabula premendi aut cum iubetur vagari ad quamdam rem in tabula. Electa, conspectus leniter vagatur. Neglecta, statim salit ad locum
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Ostendere nuntium adiuvans apud varia ferramenta construendi: {STRING}
@@ -1558,8 +1556,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Cmd+Premere
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Premere
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Neglecta
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Vagatio globuli sinistri: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Annuere tabulam vagari trahendo globuli sinistri. Magnopere utilis est cum tangendo navigas in scrinio
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Claudere fenestras globulo muris dextro: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Facit ut globulus muris dexter fenestras claudat. Cave: hac electa, non apparent nuntia adiuvantia globulo dextro.
 
