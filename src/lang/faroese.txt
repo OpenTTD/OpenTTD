@@ -1273,8 +1273,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Liturin av lend
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grønt
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Myrka grønt
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Blákollulitur
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Umvend skrull ætt: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Atburður tá tú skrullar korti við høgra músa knøtti. Um ógilda flytir músin kamerai. Um gilda flytir músin korti.
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Mjúka sýnisglugga skrulling: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Stýr hvussu høvuðs sýni skrullar til eitt ávíst stað tá tú trýstir á lítlakorti ella tú tú gevur eini boð um at skrulla til ein ávísan lut á kortinum. Um gilda, skrullar sýni mjúgdliga, um ógilda leypur sýni beint til staði
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Vís eina mátingar vegleiðing tá tú brúkar ymisku byggji amboðini: {STRING}
@@ -1306,8 +1304,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+trýst
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+trýst
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Sløkt
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Vinstra-trýst skrulling: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Gilda skrulling av kortinum við at toga ta við vinstra músa knøtti. Hetta er serstakliga hent um tú nýtur ein fingraskugga at skrulla vi
 
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Nýt {STRING} dato sniði til nøvnini á goymdum spølum

@@ -1650,8 +1650,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Колер ля
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :зялёны
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :цёмна-зялёны
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фіялетавы
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Перавярнуць напрамак зрушэньня прагляду мышшу: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Паводзіны пры пракручваньні мапы правай кнопкай мышы. Калі адключана, мыш перамяшчае кропку позірку. Калі ўключана, мыш перамяшчае мапу.
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Павольная пракрутка ў вакне прагляду: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Кантралюе, што адбудзецца ў галоўным вакне, калі пстрыкнуць у малым вакне прагляду па нейкай кропцы. Калі ўключана, позірк будзе павольна перамяшчацца па мапе ў галоўным вакне. Калі выключана — экран адразу прыгне ў вызначанае месца.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Паказваць замеры пры будаўніцтве: {STRING}
@@ -1683,8 +1681,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :каманда+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+клік
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :выключана
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Скролінг па кліку левай кнопкай мышы: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Уключыць пракручваньне мапы цягненьнем з націснутай левай кнопкай мышы. Гэта асабліва зручна пры выкарыстоўваньні сэнсарнага экрана.
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Зачыняць вокны пстрычкай ПКМ: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Зачыняць акно пстрычкай правай кнопкай мышы ў яго межах. Пры гэтым адключаецца з'яўленне падказак па правай кнопцы.
 

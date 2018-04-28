@@ -1231,7 +1231,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :சிறுப
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :பச்சை
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :கரும் பச்சை
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :ஊதா
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :திருப்பப்பட்ட பக்கமுருட்டி திசை : {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :பார்படத்தின் இலகுவான பக்கமுருட்டல்: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :நிறுவன livery களைக் காட்டு: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :ஒன்றுமில்லை

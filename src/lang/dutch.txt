@@ -1337,8 +1337,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Kleur van het t
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Groen
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donker groen
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Omgekeerde scrollrichting: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Gedrag wanneer gescrolld wordt door de map met de rechter muisknop. Indien uitgeschakeld bestuurd de muis de camera. Indien ingeschakeld bestuurd de muis de kaart.
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Vloeiend scrollen kijkvenster: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Bepalen hoe de hoofdweergave schuift naar een specifieke positie bij het klikken op de minikaart of bij de afgifte van een opdracht om naar een specifiek object op de kaart. Indien ingeschakeld, de viewport scrollt soepel, als deze uitgeschakeld gaat u rechtstreeks naar de beoogde plek
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Toon dimensie-informatie bij het gebruik van diverse bouwgereedschappen: {STRING}
@@ -1370,8 +1368,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Uit
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Scrollen met linkermuisknop: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Schakel scrollen met de linkermuisknop in door te slepen. Dit is vooral handig bij het gebruik van een touchscreen voor scrollen
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Sluit window met rechts-klik: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Sluit een venster door met de rechtermuisknop erin te klikken. Schakelt de tooltip uit met de rechtermuisknop!
 
