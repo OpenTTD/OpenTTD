@@ -87,6 +87,7 @@ struct GUISettings {
 	bool   link_terraform_toolbar;           ///< display terraform toolbar when displaying rail, road, water and airport toolbars
 	uint8  smallmap_land_colour;             ///< colour used for land and heightmap at the smallmap
 	bool   reverse_scroll;                   ///< right-Click-Scrolling scrolls in the opposite direction
+	bool   free_scroll;                      ///< don't lock mouse position when scrolling
 	bool   smooth_scroll;                    ///< smooth scroll viewports
 	bool   measure_tooltip;                  ///< show a permanent tooltip when dragging tools
 	byte   liveries;                         ///< options for displaying company liveries, 0=none, 1=self, 2=all

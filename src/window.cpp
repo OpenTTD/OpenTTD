@@ -2457,7 +2457,7 @@ static EventState HandleViewportScroll()
 	}
 
 	Point delta;
-	if (_settings_client.gui.reverse_scroll || (_settings_client.gui.left_mouse_btn_scrolling && _left_button_down)) {
+	if (_settings_client.gui.reverse_scroll || _settings_client.gui.free_scroll || (_settings_client.gui.left_mouse_btn_scrolling && _left_button_down)) {
 		delta.x = -_cursor.delta.x;
 		delta.y = -_cursor.delta.y;
 	} else {
@@ -2882,7 +2882,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 			case MC_RIGHT:
 				if (!(w->flags & WF_DISABLE_VP_SCROLL)) {
 					_scrolling_viewport = true;
-					_cursor.fix_at = true;
+					_cursor.fix_at = !_settings_client.gui.free_scroll;
 
 					/* clear 2D scrolling caches before we start a 2D scroll */
 					_cursor.h_wheel = 0;
