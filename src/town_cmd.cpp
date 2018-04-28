@@ -1233,8 +1233,12 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 		if (cur_rb & target_rb) {
 			/* If it's a road turn possibly build a house in a corner.
-			 * Use intersection of turn with straight road (always 1 bit)
-			 * as an indicator that we randomed corner house position */
+			 * Use intersection with straight road as an indicator
+			 * that we randomed corner house position.
+			 * A turn (and we check for that later) always has only
+			 * one common bit with a straight road so it has the same
+			 * chance to be chosen as the house on the side of a road.
+			 */
 			if ((cur_rb & ROAD_X) != target_rb) return;
 
 			/* Check whether it is a turn and if so determine
