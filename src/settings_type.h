@@ -71,12 +71,12 @@ struct DifficultySettings {
 	byte   town_council_tolerance;           ///< minimum required town ratings to be allowed to demolish stuff
 };
 
-/** Settings relating to viewport/smallmap scrolling */
+/** Settings relating to viewport/smallmap scrolling. */
 enum ViewportScrollMode {
-	VSM_VIEWPORT_RMB_FIXED, ///< Viewport moves with mouse movement on holding right mouse button, cursor position is fixed
-	VSM_MAP_RMB_FIXED,      ///< Map moves with mouse movement on holding right mouse button, cursor position is fixed
-	VSM_MAP_RMB,            ///< Map moves with mouse movement on holding right mouse button, cursor moves
-	VSM_MAP_LMB,            ///< Map moves with mouse movement on holding left mouse button, cursor moves
+	VSM_VIEWPORT_RMB_FIXED, ///< Viewport moves with mouse movement on holding right mouse button, cursor position is fixed.
+	VSM_MAP_RMB_FIXED,      ///< Map moves with mouse movement on holding right mouse button, cursor position is fixed.
+	VSM_MAP_RMB,            ///< Map moves with mouse movement on holding right mouse button, cursor moves.
+	VSM_MAP_LMB,            ///< Map moves with mouse movement on holding left mouse button, cursor moves.
 	VSM_END,                ///< Number of scroll mode settings.
 };
 
