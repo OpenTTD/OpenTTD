@@ -10,6 +10,7 @@
 /** @file script_goal.cpp Implementation of ScriptGoal. */
 
 #include "../../stdafx.h"
+#include "script_game.hpp"
 #include "script_goal.hpp"
 #include "script_error.hpp"
 #include "script_industry.hpp"
@@ -19,6 +20,7 @@
 #include "../script_instance.hpp"
 #include "../../goal_base.h"
 #include "../../string_func.h"
+#include "../../network/network_base.h"
 
 #include "../../safeguards.h"
 
@@ -107,7 +109,7 @@
 	return g != NULL && g->completed;
 }
 
-/* static */ bool ScriptGoal::Question(uint16 uniqueid, ScriptCompany::CompanyID company, Text *question, QuestionType type, int buttons)
+/* static */ bool ScriptGoal::DoQuestion(uint16 uniqueid, uint8 target, bool is_client, Text *question, QuestionType type, int buttons)
 {
 	CCountedPtr<Text> counter(question);
 
@@ -115,15 +117,32 @@
 	EnforcePrecondition(false, question != NULL);
 	const char *text = question->GetEncodedText();
 	EnforcePreconditionEncodedText(false, text);
-	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 	EnforcePrecondition(false, CountBits(buttons) >= 1 && CountBits(buttons) <= 3);
 	EnforcePrecondition(false, buttons < (1 << ::GOAL_QUESTION_BUTTON_COUNT));
 	EnforcePrecondition(false, (int)type < ::GOAL_QUESTION_TYPE_COUNT);
 
+	return ScriptObject::DoCommand(0, uniqueid | (target << 16) | (type << 24) | (is_client ? (1 << 31) : 0), buttons, CMD_GOAL_QUESTION, text);
+}
+
+/* static */ bool ScriptGoal::Question(uint16 uniqueid, ScriptCompany::CompanyID company, Text *question, QuestionType type, int buttons)
+{
+	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 	uint8 c = company;
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
 
-	return ScriptObject::DoCommand(0, uniqueid | (c << 16) | (type << 24), buttons, CMD_GOAL_QUESTION, text);
+	return DoQuestion(uniqueid, c, false, question, type, buttons);
+}
+
+/* static */ bool ScriptGoal::QuestionClient(uint16 uniqueid, ScriptClient::ClientID client, Text *question, QuestionType type, int buttons)
+{
+	EnforcePrecondition(false, ScriptGame::IsMultiplayer());
+	EnforcePrecondition(false, ScriptClient::ResolveClientID(client) != ScriptClient::CLIENT_INVALID);
+#ifdef ENABLE_NETWORK
+	ClientIndex c = NetworkClientInfo::GetByClientID((::ClientID)client)->index;
+	return DoQuestion(uniqueid, c, true, question, type, buttons);
+#else
+	return false;
+#endif
 }
 
 /* static */ bool ScriptGoal::CloseQuestion(uint16 uniqueid)
