@@ -2457,20 +2457,20 @@ static EventState HandleViewportScroll()
 	}
 
 	Point delta;
-	if (_settings_client.gui.scroll_mode != VSM_VIEWPORT_RMB_FIXED) {
-		delta.x = -_cursor.delta.x;
-		delta.y = -_cursor.delta.y;
-	} else {
-		delta.x = _cursor.delta.x;
-		delta.y = _cursor.delta.y;
-	}
-
 	if (scrollwheel_scrolling) {
 		/* We are using scrollwheels for scrolling */
 		delta.x = _cursor.h_wheel;
 		delta.y = _cursor.v_wheel;
 		_cursor.v_wheel = 0;
 		_cursor.h_wheel = 0;
+	} else {
+		if (_settings_client.gui.scroll_mode != VSM_VIEWPORT_RMB_FIXED) {
+			delta.x = -_cursor.delta.x;
+			delta.y = -_cursor.delta.y;
+		} else {
+			delta.x = _cursor.delta.x;
+			delta.y = _cursor.delta.y;
+		}
 	}
 
 	/* Create a scroll-event and send it to the window */
