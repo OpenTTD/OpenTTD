@@ -1228,17 +1228,48 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		/* Possibly extend the road in a direction.
 		 * Randomize a direction and if it has a road, bail out. */
 		target_dir = RandomDiagDir();
-		if (cur_rb & DiagDirToRoadBits(target_dir)) return;
+		RoadBits target_rb = DiagDirToRoadBits(target_dir);
+		TileIndex house_tile; // position of a possible house
 
-		/* This is the tile we will reach if we extend to this direction. */
-		TileIndex house_tile = TileAddByDiagDir(tile, target_dir); // position of a possible house
+		if (cur_rb & target_rb) {
+			/* If it's a road turn possibly build a house in a corner.
+			 * Use intersection with straight road as an indicator
+			 * that we randomed corner house position.
+			 * A turn (and we check for that later) always has only
+			 * one common bit with a straight road so it has the same
+			 * chance to be chosen as the house on the side of a road.
+			 */
+			if ((cur_rb & ROAD_X) != target_rb) return;
+
+			/* Check whether it is a turn and if so determine
+			 * position of the corner tile */
+			switch (cur_rb) {
+				case ROAD_N:
+					house_tile = TileAddByDir(tile, DIR_S);
+					break;
+				case ROAD_S:
+					house_tile = TileAddByDir(tile, DIR_N);
+					break;
+				case ROAD_E:
+					house_tile = TileAddByDir(tile, DIR_W);
+					break;
+				case ROAD_W:
+					house_tile = TileAddByDir(tile, DIR_E);
+					break;
+				default:
+					return;  // not a turn
+			}
+			target_dir = DIAGDIR_END;
+		} else {
+			house_tile = TileAddByDiagDir(tile, target_dir);
+		}
 
 		/* Don't walk into water. */
 		if (HasTileWaterGround(house_tile)) return;
 
 		if (!IsValidTile(house_tile)) return;
 
-		if (_settings_game.economy.allow_town_roads || _generating_world) {
+		if (target_dir != DIAGDIR_END && (_settings_game.economy.allow_town_roads || _generating_world)) {
 			switch (t1->layout) {
 				default: NOT_REACHED();
 
@@ -1248,7 +1279,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 				case TL_2X2_GRID:
 					rcmd = GetTownRoadGridElement(t1, tile, target_dir);
-					allow_house = (rcmd & DiagDirToRoadBits(target_dir)) == ROAD_NONE;
+					allow_house = (rcmd & target_rb) == ROAD_NONE;
 					break;
 
 				case TL_BETTER_ROADS: // Use original afterwards!
@@ -1258,7 +1289,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 				case TL_ORIGINAL:
 					/* Allow a house at the edge. 60% chance or
 					 * always ok if no road allowed. */
-					rcmd = DiagDirToRoadBits(target_dir);
+					rcmd = target_rb;
 					allow_house = (!IsRoadAllowedHere(t1, house_tile, target_dir) || Chance16(6, 10));
 					break;
 			}
