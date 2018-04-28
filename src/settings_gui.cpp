@@ -1509,6 +1509,7 @@ static SettingsContainer &GetSettingsTree()
 			{
 				viewports->Add(new SettingEntry("gui.auto_scrolling"));
 				viewports->Add(new SettingEntry("gui.scroll_mode"));
+				viewports->Add(new SettingEntry("gui.smooth_scroll"));
 				/* While the horizontal scrollwheel scrolling is written as general code, only
 				 *  the cocoa (OSX) driver generates input for it.
 				 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */
