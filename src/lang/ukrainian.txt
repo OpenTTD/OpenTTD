@@ -1493,6 +1493,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+клац мишою
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :не емулювати
 
+
 STR_CONFIG_SETTING_AUTOSAVE                                     :Автозбереження: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Оберіть проміжок між автоматичними збереженнями гри
 

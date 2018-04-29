@@ -1335,6 +1335,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Couleur du terr
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Vert
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Vert foncé
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
+STR_CONFIG_SETTING_SCROLLMODE                                   :Défilement de la vue{NBSP}: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportement lors du défilement de la carte
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Défilement de la vue par clic droit, position de la souris verrouillée
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Défilement de la carte par clic droit, position de la souris verrouillée
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Défilement de la carte par clic droit
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Défilement de la carte par clic gauche
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Défilement régulier de la vue{NBSP}: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Contrôle comment la vue principale défile jusqu'à une position spécifique lors d'un clic sur la mini-carte ou pour atteindre un objet précis sur la carte. Si activé, la vue défile doucement, si désactivé elle saute directement à la cible
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Montrer une infobulle de mesure lors de l'utilisation de divers outils de construction{NBSP}: {STRING}

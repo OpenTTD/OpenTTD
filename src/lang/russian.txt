@@ -1486,7 +1486,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Цвет лан
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :зелёный
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :тёмно-зелёный
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фиолетовый
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавное смещение обзора: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE                                   :Перемещение обзора: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Способ перемещения по игровому полю
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Перемещать с помощью ПКМ, зафиксировав курсор
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Перемещать с помощью ПКМ, зафиксировав курсор
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Перемещать с помощью ПКМ
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Перемещать с помощью ЛКМ
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавное перемещение: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Настройка перемещения обзора в основном окне при щелчке по миникарте или по команде обзора какого-нибудь объекта. Если включено, то обзор смещается плавно; если отключено - то мгновенно.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Показывать замеры при строительстве: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Показывать расстояния и разницу высот при строительстве
@@ -1495,8 +1501,8 @@ STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Включит�
 STR_CONFIG_SETTING_LIVERIES_NONE                                :нет
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :только для своей компании
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :для всех компаний
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Открывать командный чат при нажатии Enter: {STRING}
-STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Настроить внутрикорпоративный чат на клавишу «Enter», а общий - на «Ctrl+Enter»
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Использовать Enter для командного чата: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Использовать «Enter» для командного чата, а «Ctrl+Enter» - для общего
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Использовать колесо прокрутки: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Можно настроить смещение обзора с помощью качающегося колеса прокрутки
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :для масштабирования

@@ -1358,6 +1358,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Colore del terr
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde scuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Viola
+STR_CONFIG_SETTING_SCROLLMODE                                   :Scorrimento delle visuali: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento dello scorrimento della mappa
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Muovi visuale col pulsante destro, puntatore bloccato
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Muovi mappa col pulsante destro, puntatore bloccato
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Muovi mappa col pulsante destro
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Muovi mappa col pulsante sinistro
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Scorrimento morbido delle visuali: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controlla il modo in cui la visuale principale scorre verso una specifica posizione quando si fa clic sulla minimappa o si ordina di visualizzare un oggetto specifico sulla mappa. Se abilitata, la visuale scorre in modo morbido. Se disabilitata, salta direttamente al punto prescelto
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostra un tooltip di misura durante la costruzione: {STRING}
