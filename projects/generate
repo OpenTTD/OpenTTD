@@ -190,7 +190,7 @@ load_main_data() {
 
 load_lang_data() {
 	RES=""
-	for i in `ls $1`
+	for i in `ls $1 | sort -d`
 	do
 		i=`basename $i | sed s~.txt$~~g`
 		if [ "$i" == "english" ]
