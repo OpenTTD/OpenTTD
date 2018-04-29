@@ -786,7 +786,7 @@ static void TownTickHandler(Town *t)
 				i = t->growth_rate;
 			} else {
 				/* If growth failed wait TOWN_GROWTH_TICKS before retrying */
-				t->grow_counter = TOWN_GROWTH_TICKS - 1;
+				i = TOWN_GROWTH_TICKS - 1;
 			}
 		}
 		t->grow_counter = i;
