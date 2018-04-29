@@ -142,10 +142,10 @@
     <CustomBuild Include="..\src\lang\slovenian.txt">
       <Filter>Translations</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\src\lang\spanish_MX.txt">
+    <CustomBuild Include="..\src\lang\spanish.txt">
       <Filter>Translations</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\src\lang\spanish.txt">
+    <CustomBuild Include="..\src\lang\spanish_MX.txt">
       <Filter>Translations</Filter>
     </CustomBuild>
     <CustomBuild Include="..\src\lang\swedish.txt">
