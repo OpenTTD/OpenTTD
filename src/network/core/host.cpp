@@ -24,7 +24,7 @@
  */
 static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast);
 
-#if defined(BEOS_NET_SERVER) || defined(__HAIKU__) /* doesn't have neither getifaddrs or net/if.h */
+#if defined(__HAIKU__) /* doesn't have neither getifaddrs or net/if.h */
 /* Based on Andrew Bachmann's netstat+.c. Big thanks to him! */
 extern "C" int _netstat(int fd, char **output, int verbose);
 
@@ -38,7 +38,7 @@ int seek_past_header(char **pos, const char *header)
 	return B_OK;
 }
 
-static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // BEOS implementation
+static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast)
 {
 	int sock = socket(AF_INET, SOCK_DGRAM, 0);
 

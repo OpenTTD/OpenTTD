@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file bemidi.cpp Support for BeOS midi. */
+/** @file bemidi.cpp Support for BeOS/haiku midi. */
 
 #include "../stdafx.h"
 #include "../openttd.h"

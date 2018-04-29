@@ -308,9 +308,7 @@ bool GetClipboardContents(char *buffer, const char *last)
 
 void CSleep(int milliseconds)
 {
-	#if defined(__BEOS__)
-		snooze(milliseconds * 1000);
-	#elif defined(__AMIGA__)
+	#if defined(__AMIGA__)
 	{
 		ULONG signals;
 		ULONG TimerSigBit = 1 << TimerPort->mp_SigBit;

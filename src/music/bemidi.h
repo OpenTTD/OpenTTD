@@ -34,7 +34,7 @@ public:
 /** Factory for the BeOS midi player. */
 class FMusicDriver_BeMidi : public DriverFactoryBase {
 public:
-	FMusicDriver_BeMidi() : DriverFactoryBase(Driver::DT_MUSIC, 10, "bemidi", "BeOS MIDI Driver") {}
+	FMusicDriver_BeMidi() : DriverFactoryBase(Driver::DT_MUSIC, 10, "bemidi", "BeOS/Haiku MIDI Driver") {}
 	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_BeMidi(); }
 };
 
