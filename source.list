@@ -1111,14 +1111,11 @@ music/null_m.cpp
 #else
 	#if WINCE
 	#else
-		#if PSP
+		#if DOS
 		#else
-			#if DOS
+			#if MORPHOS
 			#else
-				#if MORPHOS
-				#else
-					music/extmidi.cpp
-				#end
+				music/extmidi.cpp
 			#end
 		#end
 	#end

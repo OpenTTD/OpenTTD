@@ -308,9 +308,7 @@ bool GetClipboardContents(char *buffer, const char *last)
 
 void CSleep(int milliseconds)
 {
-	#if defined(PSP)
-		sceKernelDelayThread(milliseconds * 1000);
-	#elif defined(__BEOS__)
+	#if defined(__BEOS__)
 		snooze(milliseconds * 1000);
 	#elif defined(__AMIGA__)
 	{

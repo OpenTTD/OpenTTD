@@ -88,7 +88,6 @@ set_default() {
 	with_icu_layout="1"
 	with_icu_sort="1"
 	static_icu="0"
-	with_psp_config="1"
 	with_threads="1"
 	with_distcc="1"
 	with_ccache="1"
@@ -165,7 +164,6 @@ set_default() {
 		with_icu_layout
 		with_icu_sort
 		static_icu
-		with_psp_config
 		with_threads
 		with_distcc
 		with_ccache
@@ -406,10 +404,6 @@ detect_params() {
 			--static-libicu)              static_icu="1";;
 			--static-libicu=*)            static_icu="$optarg";;
 
-			--with-psp-config)            with_psp_config="2";;
-			--without-psp-config)         with_psp_config="0";;
-			--with-psp-config=*)          with_psp_config="$optarg";;
-
 			--disable-builtin-depend)     enable_builtin_depend="0";;
 			--enable-builtin-depend)      enable_builtin_depend="2";;
 			--enable-builtin-depend=*)    enable_builtin_depend="$optarg";;
@@ -564,10 +558,10 @@ check_params() {
 		log 1 " PREPROCESSOR is only available for OSX"
 		exit 1
 	fi
-	# OS only allows DETECT, UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, MORPHOS, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, DOS, WINCE, and PSP
-	if [ -z "`echo $os | egrep '^(DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|MORPHOS|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS|WINCE|PSP)$'`" ]; then
+	# OS only allows DETECT, UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, MORPHOS, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, DOS, and WINCE
+	if [ -z "`echo $os | egrep '^(DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|MORPHOS|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS|WINCE)$'`" ]; then
 		log 1 "configure: error: invalid option --os=$os"
-		log 1 " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|MORPHOS|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS|WINCE|PSP]"
+		log 1 " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|MORPHOS|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS|WINCE]"
 		exit 1
 	fi
 	# cpu_type can be either 32 or 64
@@ -878,7 +872,6 @@ check_params() {
 	detect_fontconfig
 	detect_icu_layout
 	detect_icu_sort
-	detect_pspconfig
 	detect_libtimidity
 
 	if [ "$with_direct_music" != "0" ]; then
@@ -1528,9 +1521,6 @@ make_cflags_and_ldflags() {
 		# Each debug level reduces the optimization by a bit
 		if [ $enable_debug -ge 1 ]; then
 			CFLAGS="$CFLAGS -g -D_DEBUG"
-			if [ "$os" = "PSP" ]; then
-				CFLAGS="$CFLAGS -G0"
-			fi
 		fi
 		if [ $enable_debug -ge 2 ]; then
 			CFLAGS="$CFLAGS -fno-inline"
@@ -1604,7 +1594,7 @@ make_cflags_and_ldflags() {
 		fi
 	fi
 
-	if [ "$os" != "CYGWIN" ] && [ "$os" != "HAIKU" ] && [ "$os" != "OPENBSD" ] && [ "$os" != "MINGW" ] && [ "$os" != "MORPHOS" ] && [ "$os" != "OSX" ] && [ "$os" != "DOS" ] && [ "$os" != "WINCE" ] && [ "$os" != "PSP" ] && [ "$os" != "OS2" ]; then
+	if [ "$os" != "CYGWIN" ] && [ "$os" != "HAIKU" ] && [ "$os" != "OPENBSD" ] && [ "$os" != "MINGW" ] && [ "$os" != "MORPHOS" ] && [ "$os" != "OSX" ] && [ "$os" != "DOS" ] && [ "$os" != "WINCE" ] && [ "$os" != "OS2" ]; then
 		LIBS="$LIBS -lpthread"
 	fi
 
@@ -1613,13 +1603,6 @@ make_cflags_and_ldflags() {
 	fi
 	if [ "$os" = "WINCE" ]; then
 		LIBS="$LIBS -lcoredll -lcorelibc -laygshell -lws2 -e WinMainCRTStartup"
-	fi
-	if [ "$os" = "PSP" ]; then
-		CFLAGS="$CFLAGS -I`$psp_config -p`/include"
-		LDFLAGS="$LDFLAGS -L`$psp_config -p`/lib"
-
-		CFLAGS="$CFLAGS -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150"
-		LIBS="$LIBS -D_PSP_FW_VERSION=150 -lpspdebug -lpspdisplay -lpspge -lpspctrl -lpspsdk -lpspnet -lpspnet_inet -lpspnet_apctl -lpspnet_resolver -lpsputility -lpspuser -lpspkernel -lm"
 	fi
 
 	if [ "$os" = "MORPHOS" ]; then
@@ -2321,7 +2304,7 @@ detect_awk() {
 
 detect_os() {
 	if [ "$os" = "DETECT" ]; then
-		# Detect UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, HPUX, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, DOS, WINCE, and PSP
+		# Detect UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, HPUX, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, DOS, and WINCE
 
 		# Try first via dumpmachine, then via uname
 		os=`echo "$host" | tr '[A-Z]' '[a-z]' | $awk '
@@ -2342,7 +2325,6 @@ detect_os() {
 					/os2/          { print "OS2";       exit}
 					/dos/          { print "DOS";       exit}
 					/wince/        { print "WINCE";     exit}
-					/psp/          { print "PSP";       exit}
 		'`
 
 		if [ -z "$os" ]; then
@@ -2368,7 +2350,7 @@ detect_os() {
 		if [ -z "$os" ]; then
 			log 1 "detecting OS... none detected"
 			log 1 "I couldn't detect your OS. Please use --os=OS to force one"
-			log 1 "Allowed values are: UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, MORPHOS, HPUX, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, DOS, WINCE, and PSP"
+			log 1 "Allowed values are: UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, MORPHOS, HPUX, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, DOS, and WINCE"
 			exit 1
 		fi
 
@@ -2832,55 +2814,6 @@ detect_icu_layout() {
 
 detect_icu_sort() {
 	detect_pkg_config "$with_icu_sort" "icu-i18n" "icu_sort_config" "4.8" "1"
-}
-
-detect_pspconfig() {
-	# 0 means no, 1 is auto-detect, 2 is force
-	if [ "$with_psp_config" = "0" ]; then
-		log 1 "checking psp-config... disabled"
-
-		psp_config=""
-		return 0
-	fi
-
-	if [ "$with_psp_config" = "1" ] && [ "$os" != "PSP" ]; then
-		log 1 "checking psp-config... not PSP, skipping"
-
-		psp_config="";
-		return 0
-	fi
-
-	if [ "$os" != "PSP" ]; then
-		log 1 "checking psp-config... not PSP"
-
-		log 1 "configure: error: psp-config is only supported for PSP"
-		exit 1
-	fi
-
-	if [ "$with_psp_config" = "1" ] || [ "$with_psp_config" = "" ] || [ "$with_psp_config" = "2" ]; then
-		psp_config="psp-config"
-	else
-		psp_config="$with_psp_config"
-	fi
-
-	version=`$psp_config -p 2>/dev/null`
-	ret=$?
-	log 2 "executing $psp_config -p"
-	log 2 "  returned $version"
-	log 2 "  exit code $ret"
-
-	if [ -z "$version" ] || [ "$ret" != "0" ]; then
-		log 1 "checking psp-config... not found"
-		log 1 "configure: error: psp-config couldn't be found"
-
-		# It was forced, so it should be found.
-		if [ "$with_psp_config" != "1" ]; then
-			log 1 "configure: error: you supplied '$with_psp_config', but it seems invalid"
-		fi
-		exit 1
-	fi
-
-	log 1 "checking psp-config... found"
 }
 
 detect_iconv() {
@@ -3476,7 +3409,7 @@ showhelp() {
 	echo "  --os=OS                        the OS we are compiling for [DETECT]"
 	echo "                                 DETECT/UNIX/OSX/FREEBSD/DRAGONFLY/OPENBSD/"
 	echo "                                 NETBSD/MORPHOS/HPUX/BEOS/SUNOS/CYGWIN/"
-	echo "                                 MINGW/OS2/DOS/WINCE/PSP/HAIKU"
+	echo "                                 MINGW/OS2/DOS/WINCE/HAIKU"
 	echo "  --endian=ENDIAN                set the endian of the HOST (AUTO/LE/BE)"
 	echo ""
 	echo "Paths:"
@@ -3573,7 +3506,6 @@ showhelp() {
 	echo "  --static-icu                   try to link statically (libsicu instead of"
 	echo "                                 libicu; can fail as the new name is guessed)"
 	echo "  --with-iconv[=iconv-path]      enables iconv support"
-	echo "  --with-psp-config[=psp-config] enables psp-config support (PSP ONLY)"
 	echo "  --disable-builtin-depend       disable use of builtin deps finder"
 	echo "  --with-makedepend[=makedepend] enables makedepend support"
 	echo "  --with-ccache                  enables ccache support"

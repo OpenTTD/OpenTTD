@@ -458,7 +458,7 @@ void VideoDriver_Allegro::Stop()
 	if (--_allegro_instance_count == 0) allegro_exit();
 }
 
-#if defined(UNIX) || defined(__OS2__) || defined(PSP) || defined(DOS)
+#if defined(UNIX) || defined(__OS2__) || defined(DOS)
 # include <sys/time.h> /* gettimeofday */
 
 static uint32 GetTime()
