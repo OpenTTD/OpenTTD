@@ -6,7 +6,6 @@
 # See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 
 SETTINGSGEN      = !!SETTINGSGEN!!
-ENDIAN_CHECK     = !!ENDIAN_CHECK!!
 SRC_DIR          = !!SRC_DIR!!
 CXX_BUILD        = !!CXX_BUILD!!
 CFLAGS_BUILD     = !!CFLAGS_BUILD!!
@@ -14,8 +13,6 @@ CXXFLAGS_BUILD   = !!CXXFLAGS_BUILD!!
 LDFLAGS_BUILD    = !!LDFLAGS_BUILD!!
 STAGE            = !!STAGE!!
 SETTING_OBJS_DIR = !!SETTING_OBJS_DIR!!
-
-ENDIAN_TARGETS := endian_host.h endian_target.h $(ENDIAN_CHECK)
 
 # Check if we want to show what we are doing
 ifdef VERBOSE
@@ -32,7 +29,7 @@ settingsgen.o: $(SRC_DIR)/settingsgen/settingsgen.cpp $(SRC_DIR)/string_func.h $
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
-alloc_func.o: $(SRC_DIR)/core/alloc_func.cpp endian_host.h $(SRC_DIR)/safeguards.h
+alloc_func.o: $(SRC_DIR)/core/alloc_func.cpp $(SRC_DIR)/safeguards.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
@@ -40,7 +37,7 @@ getoptdata.o: $(SRC_DIR)/misc/getoptdata.cpp $(SRC_DIR)/misc/getoptdata.h $(SRC_
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/misc/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
-string.o: $(SRC_DIR)/string.cpp endian_host.h $(SRC_DIR)/safeguards.h
+string.o: $(SRC_DIR)/string.cpp $(SRC_DIR)/safeguards.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
@@ -57,21 +54,11 @@ table/settings.h: $(SETTINGSGEN) $(SRC_DIR)/table/settings.h.preamble $(SRC_DIR)
 	@mkdir -p table
 	$(Q)./$(SETTINGSGEN) -o table/settings.h -b $(SRC_DIR)/table/settings.h.preamble -a $(SRC_DIR)/table/settings.h.postamble $(SRC_DIR)/table/*.ini
 
-# The targets to compile the endian-code
-
-endian_host.h: $(ENDIAN_CHECK)
-	$(E) '$(STAGE) Testing endianness for host'
-	$(Q)./$(ENDIAN_CHECK) > $@
-
-$(ENDIAN_CHECK): $(SRC_DIR)/endian_check.cpp
-	$(E) '$(STAGE) Compiling and Linking $@'
-	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) $(LDFLAGS_BUILD) $< -o $@
-
 depend:
 
 clean:
 	$(E) '$(STAGE) Cleaning up settings files'
-	$(Q)rm -f settingsgen.o alloc_func.o getoptdata.o ini_load.o $(SETTINGSGEN) $(ENDIAN_TARGETS) table/settings.h
+	$(Q)rm -f settingsgen.o alloc_func.o getoptdata.o ini_load.o $(SETTINGSGEN) table/settings.h
 
 mrproper: clean
 

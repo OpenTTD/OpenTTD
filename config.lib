@@ -31,7 +31,6 @@ set_default() {
 	awk="awk"
 	pkg_config="pkg-config"
 	os="DETECT"
-	endian="AUTO"
 	cpu_type="DETECT"
 	config_log="config.log"
 	prefix_dir="/usr/local"
@@ -108,7 +107,6 @@ set_default() {
 		awk
 		pkg_config
 		os
-		endian
 		cpu_type
 		config_log
 		prefix_dir
@@ -221,9 +219,6 @@ detect_params() {
 			--strip=*)                    strip="$optarg";;
 			--lipo)                       prev_p="lipo";;
 			--lipo=*)                     lipo="$optarg";;
-
-			--endian)                     prev_p="endian";;
-			--endian=*)                   endian="$optarg";;
 
 
 
@@ -531,7 +526,6 @@ check_params() {
 	# Some params want to be in full uppercase, else they might not work as
 	# expected.. fix that here
 
-	endian=`echo $endian | tr '[a-z]' '[A-Z]'`
 	os=`echo $os | tr '[a-z]' '[A-Z]'`
 	cpu_type=`echo $cpu_type | tr '[a-z]' '[A-Z]'`
 
@@ -547,17 +541,6 @@ check_params() {
 
 	# Check if all params have valid values
 
-	# Endian only allows AUTO, LE and, BE
-	if [ -z "`echo $endian | egrep '^(AUTO|LE|BE|PREPROCESSOR)$'`" ]; then
-		log 1 "configure: error: invalid option --endian=$endian"
-		log 1 " Available options are: --endian=[AUTO|LE|BE]"
-		exit 1
-	fi
-	if [ "$endian" = "PREPROCESSOR" ] && [ "$os" != "OSX" ]; then
-		log 1 "configure: error: invalid option --endian=$endian"
-		log 1 " PREPROCESSOR is only available for OSX"
-		exit 1
-	fi
 	# OS only allows DETECT, UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, MORPHOS, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, and DOS
 	if [ -z "`echo $os | egrep '^(DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|MORPHOS|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS)$'`" ]; then
 		log 1 "configure: error: invalid option --os=$os"
@@ -889,12 +872,6 @@ check_params() {
 	fi
 
 	detect_sort
-
-	if [ "$os" = "OSX" ] && [ "$endian" = "AUTO" ]; then
-		endian="PREPROCESSOR"
-	fi
-
-	log 1 "checking endianness... $endian"
 
 	# Suppress language errors when there is a version defined, indicating a release
 	#  It just isn't pretty if any release produces warnings in the languages.
@@ -3161,17 +3138,14 @@ make_sed() {
 		s@!!INSTALL_DIR!!@$install_dir@g;
 		s@!!BINARY_NAME!!@$binary_name@g;
 		s@!!STRGEN!!@$STRGEN@g;
-		s@!!ENDIAN_CHECK!!@$ENDIAN_CHECK@g;
 		s@!!DEPEND!!@$DEPEND@g;
 		s@!!SETTINGSGEN!!@$SETTINGSGEN@g;
-		s@!!ENDIAN_FORCE!!@$endian@g;
 		s@!!STAGE!!@$STAGE@g;
 		s@!!MAKEDEPEND!!@$makedepend@g;
 		s@!!CFLAGS_MAKEDEP!!@$cflags_makedep@g;
 		s@!!SORT!!@$sort@g;
 		s@!!CONFIG_CACHE_COMPILER!!@config.cache.compiler@g;
 		s@!!CONFIG_CACHE_LINKER!!@config.cache.linker@g;
-		s@!!CONFIG_CACHE_ENDIAN!!@config.cache.endian@g;
 		s@!!CONFIG_CACHE_SOURCE!!@config.cache.source@g;
 		s@!!CONFIG_CACHE_VERSION!!@config.cache.version@g;
 		s@!!CONFIG_CACHE_SOURCE_LIST!!@config.cache.source.list@g;
@@ -3406,7 +3380,6 @@ showhelp() {
 	echo "                                 DETECT/UNIX/OSX/FREEBSD/DRAGONFLY/OPENBSD/"
 	echo "                                 NETBSD/MORPHOS/HPUX/BEOS/SUNOS/CYGWIN/"
 	echo "                                 MINGW/OS2/DOS/HAIKU"
-	echo "  --endian=ENDIAN                set the endian of the HOST (AUTO/LE/BE)"
 	echo ""
 	echo "Paths:"
 	echo "  --prefix-dir=dir               specifies the prefix for all installed"

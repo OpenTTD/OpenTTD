@@ -81,7 +81,6 @@ fi
 
 TTD="openttd$EXE"
 STRGEN="strgen$EXE"
-ENDIAN_CHECK="endian_check$EXE"
 DEPEND="depend$EXE"
 SETTINGSGEN="settings_gen$EXE"
 
