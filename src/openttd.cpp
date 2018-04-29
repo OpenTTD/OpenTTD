@@ -1407,11 +1407,6 @@ static void DoAutosave()
 {
 	char buf[MAX_PATH];
 
-#if defined(PSP)
-	/* Autosaving in networking is too time expensive for the PSP */
-	if (_networking) return;
-#endif /* PSP */
-
 	if (_settings_client.gui.keep_all_autosave) {
 		GenerateDefaultSaveName(buf, lastof(buf));
 		strecat(buf, ".sav", lastof(buf));

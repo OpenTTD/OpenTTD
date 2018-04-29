@@ -100,12 +100,6 @@
 	#define strcasecmp stricmp
 #endif
 
-#if defined(PSP)
-	#include <psptypes.h>
-	#include <pspdebug.h>
-	#include <pspthreadman.h>
-#endif
-
 #if defined(SUNOS) || defined(HPUX)
 	#include <alloca.h>
 #endif
@@ -133,14 +127,6 @@
 	 *  (mismatch linkage of C++ and C between this include and unistd.h). */
 	#define CLIB_USERGROUP_PROTOS_H
 #endif /* __MORPHOS__ */
-
-#if defined(PSP)
-	/* PSP can only have 10 file-descriptors open at any given time, but this
-	 *  switch only limits reads via the Fio system. So keep 2 fds free for things
-	 *  like saving a game. */
-	#define LIMITED_FDS 8
-	#define printf pspDebugScreenPrintf
-#endif /* PSP */
 
 /* Stuff for GCC */
 #if defined(__GNUC__)
