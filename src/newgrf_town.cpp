@@ -50,7 +50,7 @@
 		case 0x81: return GB(this->t->xy, 8, 8);
 		case 0x82: return ClampToU16(this->t->cache.population);
 		case 0x83: return GB(ClampToU16(this->t->cache.population), 8, 8);
-		case 0x8A: return this->t->grow_counter;
+		case 0x8A: return this->t->grow_counter / TOWN_GROWTH_TICKS;
 		case 0x92: return this->t->flags;  // In original game, 0x92 and 0x93 are really one word. Since flags is a byte, this is to adjust
 		case 0x93: return 0;
 		case 0x94: return ClampToU16(this->t->cache.squared_town_zone_radius[0]);
@@ -82,7 +82,7 @@
 		case 0xAE: return this->t->have_ratings;
 		case 0xB2: return this->t->statues;
 		case 0xB6: return ClampToU16(this->t->cache.num_houses);
-		case 0xB9: return this->t->growth_rate & (~TOWN_GROW_RATE_CUSTOM);
+		case 0xB9: return this->t->growth_rate / TOWN_GROWTH_TICKS;
 		case 0xBA: return ClampToU16(this->t->supplied[CT_PASSENGERS].new_max);
 		case 0xBB: return GB(ClampToU16(this->t->supplied[CT_PASSENGERS].new_max), 8, 8);
 		case 0xBC: return ClampToU16(this->t->supplied[CT_MAIL].new_max);

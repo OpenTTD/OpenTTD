@@ -159,24 +159,24 @@
 /* static */ bool ScriptTown::SetGrowthRate(TownID town_id, uint32 days_between_town_growth)
 {
 	EnforcePrecondition(false, IsValidTown(town_id));
-
+	uint16 growth_rate;
 	switch (days_between_town_growth) {
 		case TOWN_GROWTH_NORMAL:
-			days_between_town_growth = 0;
+			growth_rate = 0;
 			break;
 
 		case TOWN_GROWTH_NONE:
-			days_between_town_growth = TOWN_GROW_RATE_CUSTOM_NONE;
+			growth_rate = TOWN_GROWTH_RATE_NONE;
 			break;
 
 		default:
-			days_between_town_growth = days_between_town_growth * DAY_TICKS / TOWN_GROWTH_TICKS;
-			EnforcePrecondition(false, days_between_town_growth < TOWN_GROW_RATE_CUSTOM);
-			if (days_between_town_growth == 0) days_between_town_growth = 1; // as fast as possible
+			EnforcePrecondition(false, days_between_town_growth <= MAX_TOWN_GROWTH_TICKS);
+			/* Don't use growth_rate 0 as it means GROWTH_NORMAL */
+			growth_rate = max(days_between_town_growth * DAY_TICKS, 2u) - 1;
 			break;
 	}
 
-	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, days_between_town_growth, CMD_TOWN_GROWTH_RATE);
+	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, growth_rate, CMD_TOWN_GROWTH_RATE);
 }
 
 /* static */ int32 ScriptTown::GetGrowthRate(TownID town_id)
@@ -185,9 +185,9 @@
 
 	const Town *t = ::Town::Get(town_id);
 
-	if (t->growth_rate == TOWN_GROW_RATE_CUSTOM_NONE) return TOWN_GROWTH_NONE;
+	if (t->growth_rate == TOWN_GROWTH_RATE_NONE) return TOWN_GROWTH_NONE;
 
-	return ((t->growth_rate & ~TOWN_GROW_RATE_CUSTOM) * TOWN_GROWTH_TICKS + DAY_TICKS) / DAY_TICKS;
+	return RoundDivSU(t->growth_rate + 1, DAY_TICKS);
 }
 
 /* static */ int32 ScriptTown::GetDistanceManhattanToTile(TownID town_id, TileIndex tile)
