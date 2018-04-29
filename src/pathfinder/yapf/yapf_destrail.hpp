@@ -166,16 +166,13 @@ public:
 	/** Called by YAPF to detect if node ends in the desired destination */
 	inline bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
-		bool bDest;
 		if (m_dest_station_id != INVALID_STATION) {
-			bDest = HasStationTileRail(tile)
+			return HasStationTileRail(tile)
 				&& (GetStationIndex(tile) == m_dest_station_id)
 				&& (GetRailStationTrack(tile) == TrackdirToTrack(td));
-		} else {
-			bDest = (tile == m_destTile)
-				&& ((m_destTrackdirs & TrackdirToTrackdirBits(td)) != TRACKDIR_BIT_NONE);
 		}
-		return bDest;
+
+		return (tile == m_destTile) && ((m_destTrackdirs & TrackdirToTrackdirBits(td)) != TRACKDIR_BIT_NONE);
 	}
 
 	/**

@@ -183,9 +183,14 @@ bad:;
 }
 
 /**
- * returns the track to choose on the next tile, or -1 when it's better to
- * reverse. The tile given is the tile we are about to enter, enterdir is the
- * direction in which we are entering the tile
+ * Finds the best track to choose on the next tile and
+ * returns INVALID_TRACK when it is better to reverse.
+ * @param v The ship.
+ * @param tile The tile we are about to enter.
+ * @param enterdir The direction entering the tile.
+ * @param tracks The tracks available on new tile.
+ * @param[out] path_found Whether a path has been found.
+ * @return Best track on next tile or INVALID_TRACK when better to reverse.
  */
 Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found)
 {
@@ -195,13 +200,15 @@ Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 	Track track;
 
 	/* Let's find out how far it would be if we would reverse first */
-	Trackdir trackdir = v->GetVehicleTrackdir();
-	TrackBits b = TrackStatusToTrackBits(GetTileTrackStatus(tile2, TRANSPORT_WATER, 0)) & DiagdirReachesTracks(ReverseDiagDir(enterdir)) & TrackdirBitsToTrackBits(TrackdirToTrackdirBits(trackdir));
+	uint rev_dist = UINT_MAX; // distance if we reverse
+	Track cur_track = TrackdirToTrack(v->GetVehicleTrackdir()); // track on the current tile
+	DiagDirection rev_enterdir = ReverseDiagDir(enterdir);
+	TrackBits rev_tracks = TrackStatusToTrackBits(GetTileTrackStatus(tile2, TRANSPORT_WATER, 0)) &
+			DiagdirReachesTracks(rev_enterdir);
 
-	uint distr = UINT_MAX; // distance if we reversed
-	if (b != 0) {
-		distr = FindShipTrack(v, tile2, ReverseDiagDir(enterdir), b, tile, &track);
-		if (distr != UINT_MAX) distr++; // penalty for reversing
+	if ((rev_tracks & TrackToTrackBits(cur_track) != TRACK_BIT_NONE) {
+		rev_dist = FindShipTrack(v, tile2, rev_enterdir, TrackToTrackBits(cur_track), tile, &track);
+		if (rev_dist != UINT_MAX) rev_dist++; // penalty for reversing
 	}
 
 	/* And if we would not reverse? */
@@ -209,6 +216,6 @@ Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 
 	/* Due to the way this pathfinder works we cannot determine whether we're lost or not. */
 	path_found = true;
-	if (dist <= distr) return track;
+	if (dist <= rev_dist) return track;
 	return INVALID_TRACK; // We could better reverse
 }
