@@ -551,6 +551,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_DELETE_GROUP,                       "WID_GL_DELETE_GROUP");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_RENAME_GROUP,                       "WID_GL_RENAME_GROUP");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_REPLACE_PROTECTION,                 "WID_GL_REPLACE_PROTECTION");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_INFO,                               "WID_GL_INFO");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_H_BACKGROUND,                          "WID_H_BACKGROUND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_DPI_MATRIX_WIDGET,                     "WID_DPI_MATRIX_WIDGET");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_DPI_SCROLLBAR,                         "WID_DPI_SCROLLBAR");
@@ -626,9 +627,11 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TF_BACKGROUND,                         "WID_TF_BACKGROUND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TF_VSCROLLBAR,                         "WID_TF_VSCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TF_HSCROLLBAR,                         "WID_TF_HSCROLLBAR");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MTS_CAPTION,                           "WID_MTS_CAPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MTS_LIST_LEFT,                         "WID_MTS_LIST_LEFT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MTS_PLAYLIST,                          "WID_MTS_PLAYLIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MTS_LIST_RIGHT,                        "WID_MTS_LIST_RIGHT");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MTS_MUSICSET,                          "WID_MTS_MUSICSET");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MTS_ALL,                               "WID_MTS_ALL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MTS_OLD,                               "WID_MTS_OLD");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MTS_NEW,                               "WID_MTS_NEW");

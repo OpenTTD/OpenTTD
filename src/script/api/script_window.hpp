@@ -1439,6 +1439,7 @@ public:
 		WID_GL_DELETE_GROUP                          = ::WID_GL_DELETE_GROUP,                          ///< Delete group button.
 		WID_GL_RENAME_GROUP                          = ::WID_GL_RENAME_GROUP,                          ///< Rename group button.
 		WID_GL_REPLACE_PROTECTION                    = ::WID_GL_REPLACE_PROTECTION,                    ///< Replace protection button.
+		WID_GL_INFO                                  = ::WID_GL_INFO,                                  ///< Group info.
 	};
 
 	/* automatically generated from ../../widgets/highscore_widget.h */
@@ -1581,9 +1582,11 @@ public:
 	/* automatically generated from ../../widgets/music_widget.h */
 	/** Widgets of the #MusicTrackSelectionWindow class. */
 	enum MusicTrackSelectionWidgets {
+		WID_MTS_CAPTION                              = ::WID_MTS_CAPTION,                              ///< Window caption.
 		WID_MTS_LIST_LEFT                            = ::WID_MTS_LIST_LEFT,                            ///< Left button.
 		WID_MTS_PLAYLIST                             = ::WID_MTS_PLAYLIST,                             ///< Playlist.
 		WID_MTS_LIST_RIGHT                           = ::WID_MTS_LIST_RIGHT,                           ///< Right button.
+		WID_MTS_MUSICSET                             = ::WID_MTS_MUSICSET,                             ///< Music set selection.
 		WID_MTS_ALL                                  = ::WID_MTS_ALL,                                  ///< All button.
 		WID_MTS_OLD                                  = ::WID_MTS_OLD,                                  ///< Old button.
 		WID_MTS_NEW                                  = ::WID_MTS_NEW,                                  ///< New button.
