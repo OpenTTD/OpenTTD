@@ -77,6 +77,7 @@ void HandleCtrlChanged();
 void HandleMouseEvents();
 void CSleep(int milliseconds);
 void UpdateWindows();
+void DrawWindows();
 
 void DrawMouseCursor();
 void ScreenSizeChanged();

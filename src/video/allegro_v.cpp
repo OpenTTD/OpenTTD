@@ -528,13 +528,11 @@ void VideoDriver_Allegro::MainLoop()
 
 			UpdateWindows();
 			CheckPaletteAnim();
-			DrawSurfaceToScreen();
 		} else {
 			CSleep(1);
-			NetworkDrawChatMessage();
-			DrawMouseCursor();
-			DrawSurfaceToScreen();
 		}
+		DrawWindows();
+		DrawSurfaceToScreen();
 	}
 }
 

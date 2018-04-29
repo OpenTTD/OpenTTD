@@ -685,7 +685,6 @@ void QZ_GameLoop()
 
 			UpdateWindows();
 			QZ_CheckPaletteAnim();
-			_cocoa_subdriver->Draw();
 		} else {
 #ifdef _DEBUG
 			uint32 st0 = GetTick();
@@ -694,10 +693,9 @@ void QZ_GameLoop()
 #ifdef _DEBUG
 			st += GetTick() - st0;
 #endif
-			NetworkDrawChatMessage();
-			DrawMouseCursor();
-			_cocoa_subdriver->Draw();
 		}
+		DrawWindows();
+		_cocoa_subdriver->Draw();
 	}
 
 #ifdef _DEBUG

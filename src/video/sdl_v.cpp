@@ -761,10 +761,9 @@ void VideoDriver_SDL::MainLoop()
 			if (_draw_mutex != NULL) _draw_mutex->EndCritical();
 			CSleep(1);
 			if (_draw_mutex != NULL) _draw_mutex->BeginCritical();
-
-			NetworkDrawChatMessage();
-			DrawMouseCursor();
 		}
+
+		DrawWindows();
 
 		/* End of the critical part. */
 		if (_draw_mutex != NULL && !HasModalProgress()) {
