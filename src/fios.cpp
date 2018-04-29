@@ -153,9 +153,7 @@ const char *FiosBrowseTo(const FiosItem *item)
 {
 	switch (item->type) {
 		case FIOS_TYPE_DRIVE:
-#if defined(WINCE)
-			seprintf(_fios_path, _fios_path_last, PATHSEP "");
-#elif defined(WIN32) || defined(__OS2__)
+#if defined(WIN32) || defined(__OS2__)
 			seprintf(_fios_path, _fios_path_last, "%c:" PATHSEP, item->title[0]);
 #endif
 			break;

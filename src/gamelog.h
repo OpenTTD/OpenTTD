@@ -38,7 +38,7 @@ void GamelogReset();
  * @param s The string to print.
  */
 typedef void GamelogPrintProc(const char *s);
-void GamelogPrint(GamelogPrintProc *proc); // needed for WIN32 / WINCE crash.log
+void GamelogPrint(GamelogPrintProc *proc); // needed for WIN32 crash.log
 
 void GamelogPrintDebug(int level);
 void GamelogPrintConsole();

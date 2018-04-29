@@ -75,7 +75,7 @@ save_params
 make_cflags_and_ldflags
 
 EXE=""
-if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "OS2" ] || [ "$os" = "DOS" ] || [ "$os" = "WINCE" ]; then
+if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "OS2" ] || [ "$os" = "DOS" ]; then
 	EXE=".exe"
 fi
 
@@ -123,7 +123,6 @@ AWKCOMMAND='
 		if ($0 == "WIN32"       && "'$os'" != "MINGW" &&
 		                 "'$os'" != "CYGWIN" && "'$os'" != "MSVC") { next; }
 		if ($0 == "MORPHOS"     && "'$os'" != "MORPHOS")           { next; }
-		if ($0 == "WINCE"       && "'$os'" != "WINCE")             { next; }
 		if ($0 == "MSVC"        && "'$os'" != "MSVC")              { next; }
 		if ($0 == "DIRECTMUSIC" && "'$with_direct_music'" == "0")  { next; }
 		if ($0 == "LIBTIMIDITY" && "'$libtimidity'" == "" )        { next; }
