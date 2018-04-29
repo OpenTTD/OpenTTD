@@ -135,9 +135,7 @@ static void debug_print(const char *dbg, const char *buf)
 	} else {
 		char buffer[512];
 		seprintf(buffer, lastof(buffer), "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
-#if defined(WINCE)
-		NKDbgPrintfW(OTTD2FS(buffer));
-#elif defined(WIN32) || defined(WIN64)
+#if defined(WIN32) || defined(WIN64)
 		_fputts(OTTD2FS(buffer, true), stderr);
 #else
 		fputs(buffer, stderr);

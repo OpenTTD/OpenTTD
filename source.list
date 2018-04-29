@@ -95,22 +95,19 @@ tilearea.cpp
 townname.cpp
 #if WIN32
 #else
-	#if WINCE
+	#if OS2
+		os/os2/os2.cpp
+		3rdparty/os2/getaddrinfo.c
+		3rdparty/os2/getaddrinfo.h
+		3rdparty/os2/getnameinfo.c
+		3rdparty/os2/getnameinfo.h
 	#else
-		#if OS2
-			os/os2/os2.cpp
-			3rdparty/os2/getaddrinfo.c
-			3rdparty/os2/getaddrinfo.h
-			3rdparty/os2/getnameinfo.c
-			3rdparty/os2/getnameinfo.h
+		#if OSX
+			os/macosx/crashlog_osx.cpp
 		#else
-			#if OSX
-				os/macosx/crashlog_osx.cpp
-			#else
-				os/unix/crashlog_unix.cpp
-			#end
-			os/unix/unix.cpp
+			os/unix/crashlog_unix.cpp
 		#end
+		os/unix/unix.cpp
 	#end
 #end
 vehicle.cpp
@@ -1088,9 +1085,6 @@ video/null_v.cpp
 #if WIN32
 	video/win32_v.cpp
 #end
-#if WINCE
-	video/win32_v.cpp
-#end
 #end
 
 # Music
@@ -1109,14 +1103,11 @@ music/null_m.cpp
 #if WIN32
 	music/win32_m.cpp
 #else
-	#if WINCE
+	#if DOS
 	#else
-		#if DOS
+		#if MORPHOS
 		#else
-			#if MORPHOS
-			#else
-				music/extmidi.cpp
-			#end
+			music/extmidi.cpp
 		#end
 	#end
 #end
@@ -1167,10 +1158,6 @@ sound/null_s.cpp
 # Windows files
 #if WIN32
 	os/windows/crashlog_win.cpp
-	os/windows/ottdres.rc
-	os/windows/win32.cpp
-#end
-#if WINCE
 	os/windows/ottdres.rc
 	os/windows/win32.cpp
 #end

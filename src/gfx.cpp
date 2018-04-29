@@ -1214,11 +1214,6 @@ void UndrawMouseCursor()
 
 void DrawMouseCursor()
 {
-#if defined(WINCE)
-	/* Don't ever draw the mouse for WinCE, as we work with a stylus */
-	return;
-#endif
-
 	/* Don't draw the mouse cursor if the screen is not ready */
 	if (_screen.dst_ptr == NULL) return;
 

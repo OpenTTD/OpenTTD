@@ -75,9 +75,7 @@ static void DedicatedSignalHandler(int sig)
 
 #if defined(WIN32)
 # include <windows.h> /* GetTickCount */
-# if !defined(WINCE)
-#  include <conio.h>
-# endif
+# include <conio.h>
 # include <time.h>
 # include <tchar.h>
 # include "../os/windows/win32.h"
@@ -88,10 +86,6 @@ static char _win_console_thread_buffer[200];
 /* Windows Console thread. Just loop and signal when input has been received */
 static void WINAPI CheckForConsoleInput()
 {
-#if defined(WINCE)
-	/* WinCE doesn't support console stuff */
-	return;
-#else
 	SetWin32ThreadName(-1, "ottd:win-console");
 
 	DWORD nb;
@@ -106,7 +100,6 @@ static void WINAPI CheckForConsoleInput()
 		SetEvent(_hInputReady);
 		WaitForSingleObject(_hWaitForInputHandling, INFINITE);
 	}
-#endif
 }
 
 static void CreateWindowsConsoleThread()
@@ -157,9 +150,7 @@ const char *VideoDriver_Dedicated::Start(const char * const *parm)
 	ScreenSizeChanged();
 	BlitterFactory::GetCurrentBlitter()->PostResize();
 
-#if defined(WINCE)
-	/* WinCE doesn't support console stuff */
-#elif defined(WIN32)
+#if defined(WIN32)
 	/* For win32 we need to allocate a console (debug mode does the same) */
 	CreateConsole();
 	CreateWindowsConsoleThread();
