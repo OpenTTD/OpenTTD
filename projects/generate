@@ -190,9 +190,11 @@ load_main_data() {
 
 load_lang_data() {
 	RES=""
-	for i in `ls $1`
+	# Windows Folder sort and Linux Folder sort are slightly different.
+	# By removing the extension and sorting it on Linux, they are the same.
+	for i in `ls $1 | sed s~.txt$~~g | sort`
 	do
-		i=`basename $i | sed s~.txt$~~g`
+		i=`basename $i`
 		if [ "$i" == "english" ]
 		then
 			continue
