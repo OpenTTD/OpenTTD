@@ -55,6 +55,7 @@ char *FioGetFullPath(char *buf, const char *last, Searchpath sp, Subdirectory su
 char *FioFindFullPath(char *buf, const char *last, Subdirectory subdir, const char *filename);
 char *FioAppendDirectory(char *buf, const char *last, Searchpath sp, Subdirectory subdir);
 char *FioGetDirectory(char *buf, const char *last, Subdirectory subdir);
+void FioCreateDirectory(const char *name);
 
 const char *FiosGetScreenshotDir();
 
