@@ -69,7 +69,7 @@ public:
 		}
 
 		/* move back to the old tile/trackdir (where ship is coming from) */
-		TileIndex src_tile = TILE_ADD(tile, TileOffsByDiagDir(ReverseDiagDir(enterdir)));
+		TileIndex src_tile = TileAddByDiagDir(tile, ReverseDiagDir(enterdir));
 		Trackdir trackdir = v->GetVehicleTrackdir();
 		assert(IsValidTrackdir(trackdir));
 

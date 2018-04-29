@@ -1449,7 +1449,7 @@ again:
 			/* Vehicle has arrived at a bay in a road stop */
 
 			if (IsDriveThroughStopTile(v->tile)) {
-				TileIndex next_tile = TILE_ADD(v->tile, TileOffsByDir(v->direction));
+				TileIndex next_tile = TileAddByDir(v->tile, v->direction);
 
 				/* Check if next inline bay is free and has compatible road. */
 				if (RoadStop::IsDriveThroughRoadStopContinuation(v->tile, next_tile) && (GetRoadTypes(next_tile) & v->compatible_roadtypes) != 0) {

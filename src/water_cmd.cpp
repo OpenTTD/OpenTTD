@@ -1218,7 +1218,7 @@ void ConvertGroundTilesIntoWaterTiles()
 				default:
 					uint dir;
 					FOR_EACH_SET_BIT(dir, _flood_from_dirs[slope & ~SLOPE_STEEP]) {
-						TileIndex dest = TILE_ADD(tile, TileOffsByDir((Direction)dir));
+						TileIndex dest = TileAddByDir(tile, (Direction)dir);
 						Slope slope_dest = GetTileSlope(dest) & ~SLOPE_STEEP;
 						if (slope_dest == SLOPE_FLAT || IsSlopeWithOneCornerRaised(slope_dest)) {
 							MakeShore(tile);
