@@ -104,7 +104,7 @@ public:
 		assert(IsValidTrackdir(td2));
 		int cost = 0;
 		if (TrackFollower::Allow90degTurns()
-				&& ((TrackdirToTrackdirBits(td2) & (TrackdirBits)TrackdirCrossesTrackdirs(td1)) != 0)) {
+				&& ((TrackdirToTrackdirBits(td2) & TrackdirCrossesTrackdirs(td1)) != TRACKDIR_BIT_NONE)) {
 			/* 90-deg curve penalty */
 			cost += Yapf().PfGetSettings().rail_curve90_penalty;
 		} else if (td2 != NextTrackdir(td1)) {

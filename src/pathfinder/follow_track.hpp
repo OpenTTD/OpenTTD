@@ -239,7 +239,7 @@ protected:
 		} else {
 			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), IsRoadTT() ? RoadVehicle::From(m_veh)->compatible_roadtypes : 0));
 
-			if (IsTram() && m_new_td_bits == 0) {
+			if (IsTram() && m_new_td_bits == TRACKDIR_BIT_NONE) {
 				/* GetTileTrackStatus() returns 0 for single tram bits.
 				 * As we cannot change it there (easily) without breaking something, change it here */
 				switch (GetSingleTramBit(m_new_tile)) {

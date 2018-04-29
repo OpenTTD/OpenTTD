@@ -185,8 +185,7 @@ public:
 	/** Called by YAPF to detect if node ends in the desired destination */
 	inline bool PfDetectDestination(Node &n)
 	{
-		bool bDest = IsRoadDepotTile(n.m_segment_last_tile);
-		return bDest;
+		return IsRoadDepotTile(n.m_segment_last_tile);
 	}
 
 	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
