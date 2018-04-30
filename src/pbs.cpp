@@ -81,7 +81,7 @@ void SetRailStationPlatformReservation(TileIndex start, DiagDirection dir, bool 
  */
 bool TryReserveRailTrack(TileIndex tile, Track t, bool trigger_stations)
 {
-	assert((GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & TrackToTrackBits(t)) != 0);
+	assert(HasTrack(TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0)), t));
 
 	if (_settings_client.gui.show_track_reservation) {
 		/* show the reserved rail if needed */
@@ -142,7 +142,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t, bool trigger_stations)
  */
 void UnreserveRailTrack(TileIndex tile, Track t)
 {
-	assert((GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & TrackToTrackBits(t)) != 0);
+	assert(HasTrack(TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0)), t));
 
 	if (_settings_client.gui.show_track_reservation) {
 		if (IsBridgeTile(tile)) {
