@@ -746,6 +746,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Nema dostupne muzike
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Traka
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Naslov
@@ -766,11 +767,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Uključi
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Pokaži prozor za izbor glazbenih traka
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Program muzike - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Popis traka
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program- '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Obriši
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Promijeni set
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Obriši aktivni program (samo Proizvoljno 1 ili Proizvoljno 2)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Promijeni odabir muzike na neki drugi instalirani set
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikni na glazbenu traku za dodavanje u aktivni program (samo Proizvoljno 1 ili Proizvoljno 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikni na glazbenu traku kako bi ju uklonio iz trenutnog programa (samo Proizvoljno 1 ili Proizvoljno 2)
 
@@ -1430,6 +1434,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Boja terena na 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :{G=female}Zelena
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :{G=female}Tamno zelena
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :{G=female}Ljubičasta
+STR_CONFIG_SETTING_SCROLLMODE                                   :Ponašanje klizanja kroz mini pogled: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Ponašanje kod klizanja kroz mapu
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Pomiči mini pogled sa desnom tipkom miša, pozicija miša zaključana
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Pomiči mapu sa desnom tipkom miša, pozicija miša zaključana
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Pomiči mapu sa desnom tipkom miša
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Pomiči mapu sa lijevom tipkom miša
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Glatko klizanje kroz mini pogled: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Odredi kako se glavni prikaz pomiče na određeno mjesto kada se klikne na malu kartu ili kada se izda naredba za pomicanje na određeni objekt na karti. Ako je uključeno, prikaz se pomiče glatko, ako je isključeno, prikaz izravno skače na ciljnu lokaciju
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Pokaži mjerni naputak prilikom korištenja raznih alata za izgradnju: {STRING}
