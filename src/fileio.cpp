@@ -532,7 +532,7 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
  * Create a directory with the given name
  * @param name the new name of the directory
  */
-static void FioCreateDirectory(const char *name)
+void FioCreateDirectory(const char *name)
 {
 	/* Ignore directory creation errors; they'll surface later on, and most
 	 * of the time they are 'directory already exists' errors anyhow. */

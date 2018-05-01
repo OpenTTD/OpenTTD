@@ -17,6 +17,8 @@
 #include "../video/video_driver.hpp"
 #include "../gfx_func.h"
 #include "extmidi.h"
+#include "../base_media_base.h"
+#include "midifile.hpp"
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -83,10 +85,14 @@ void MusicDriver_ExtMidi::Stop()
 	this->DoStop();
 }
 
-void MusicDriver_ExtMidi::PlaySong(const char *filename)
+void MusicDriver_ExtMidi::PlaySong(const MusicSongInfo &song, bool loop)
 {
-	strecpy(this->song, filename, lastof(this->song));
-	this->DoStop();
+	char *filename = MidiFile::GetSMFFile(song);
+	if (filename != NULL) {
+		strecpy(this->song, filename, lastof(this->song));
+		free(filename);
+		this->DoStop();
+	}
 }
 
 void MusicDriver_ExtMidi::StopSong()

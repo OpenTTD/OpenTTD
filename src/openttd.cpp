@@ -320,6 +320,7 @@ static void ShutdownGame()
 static void LoadIntroGame(bool load_newgrfs = true)
 {
 	_game_mode = GM_MENU;
+	MusicLoop();
 
 	if (load_newgrfs) ResetGRFConfig(false);
 
@@ -340,9 +341,6 @@ static void LoadIntroGame(bool load_newgrfs = true)
 	_cursor.fix_at = false;
 
 	CheckForMissingGlyphs();
-
-	/* Play main theme */
-	if (MusicDriver::GetInstance()->IsSongPlaying()) ResetMusic();
 }
 
 void MakeNewgameSettingsLive()

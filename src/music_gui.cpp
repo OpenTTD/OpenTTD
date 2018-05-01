@@ -42,7 +42,7 @@
  */
 static const char *GetSongName(int index)
 {
-	return BaseMusic::GetUsedSet()->song_name[index];
+	return BaseMusic::GetUsedSet()->songinfo[index].songname;
 }
 
 /**
@@ -52,7 +52,7 @@ static const char *GetSongName(int index)
  */
 static int GetTrackNumber(int index)
 {
-	return BaseMusic::GetUsedSet()->track_nr[index];
+	return BaseMusic::GetUsedSet()->songinfo[index].tracknr;
 }
 
 /** The currently played song */
@@ -113,6 +113,7 @@ void InitializeMusic()
 	uint j = 0;
 	for (uint i = 0; i < NUM_SONGS_AVAILABLE; i++) {
 		if (StrEmpty(GetSongName(i))) continue;
+		if (i == 0 && BaseMusic::GetUsedSet()->has_theme) continue;
 		_playlist_all[j++] = i + 1;
 	}
 	/* Terminate the list */
@@ -186,10 +187,18 @@ static void MusicVolumeChanged(byte new_vol)
 static void DoPlaySong()
 {
 	char filename[MAX_PATH];
-	if (FioFindFullPath(filename, lastof(filename), BASESET_DIR, BaseMusic::GetUsedSet()->files[_music_wnd_cursong - 1].filename) == NULL) {
-		FioFindFullPath(filename, lastof(filename), OLD_GM_DIR, BaseMusic::GetUsedSet()->files[_music_wnd_cursong - 1].filename);
+	int songid = _music_wnd_cursong - 1;
+	const MusicSet &set = *BaseMusic::GetUsedSet();
+	if (FioFindFullPath(filename, lastof(filename), BASESET_DIR, set.files[songid].filename) == NULL) {
+		FioFindFullPath(filename, lastof(filename), OLD_GM_DIR, set.files[songid].filename);
 	}
-	MusicDriver::GetInstance()->PlaySong(filename);
+	bool loop = false;
+	if (_music_wnd_cursong == 1 && _game_mode == GM_MENU) {
+		loop = true;
+	}
+	MusicSongInfo songinfo = set.songinfo[songid]; // copy
+	songinfo.filename = filename; // non-owned pointer
+	MusicDriver::GetInstance()->PlaySong(songinfo, loop);
 	SetWindowDirty(WC_MUSIC_WINDOW, 0);
 }
 
@@ -249,6 +258,16 @@ static void StopMusic()
 /** Begin playing the next song on the playlist */
 static void PlayPlaylistSong()
 {
+	if (_game_mode == GM_MENU && BaseMusic::GetUsedSet()->has_theme) {
+		/* force first song (theme) on the main menu.
+		 * this is guaranteed to exist, otherwise
+		 * has_theme would not be set. */
+		_music_wnd_cursong = 1;
+		DoPlaySong();
+		_song_is_active = true;
+		return;
+	}
+
 	if (_cur_playlist[0] == 0) {
 		ResetPlaylist();
 		/* if there is not songs in the playlist, it may indicate
@@ -280,6 +299,13 @@ void ResetMusic()
  */
 void MusicLoop()
 {
+	/* Make sure music restarts when going from/to main menu */
+	static GameMode _last_game_mode = GM_BOOTSTRAP;
+	if (_game_mode != _last_game_mode) {
+		_last_game_mode = _game_mode;
+		StopMusic();
+	}
+
 	if (!_settings_client.music.playing && _song_is_active) {
 		StopMusic();
 	} else if (_settings_client.music.playing && !_song_is_active) {
@@ -289,12 +315,12 @@ void MusicLoop()
 	if (!_song_is_active) return;
 
 	if (!MusicDriver::GetInstance()->IsSongPlaying()) {
-		if (_game_mode != GM_MENU) {
+		if (_game_mode == GM_MENU && BaseMusic::GetUsedSet()->has_theme) {
+			ResetMusic();
+		} else {
 			StopMusic();
 			SkipToNextSong();
 			PlayPlaylistSong();
-		} else {
-			ResetMusic();
 		}
 	}
 }
@@ -452,17 +478,19 @@ struct MusicTrackSelectionWindow : public Window {
 	{
 		switch (widget) {
 			case WID_MTS_LIST_LEFT: { // add to playlist
-				int y = this->GetRowFromWidget(pt.y, widget, 0, FONT_HEIGHT_SMALL);
+				int row = this->GetRowFromWidget(pt.y, widget, WD_FRAMERECT_TOP, FONT_HEIGHT_SMALL);
 
 				if (_settings_client.music.playlist < 4) return;
-				if (!IsInsideMM(y, 0, BaseMusic::GetUsedSet()->num_available)) return;
+				if (!IsInsideMM(row, 0, BaseMusic::GetUsedSet()->num_available)) return;
+
+				if (!BaseMusic::GetUsedSet()->has_theme) row += 1; // with theme, track number is counted from 0
 
 				byte *p = _playlists[_settings_client.music.playlist];
 				for (uint i = 0; i != NUM_SONGS_PLAYLIST - 1; i++) {
 					if (p[i] == 0) {
 						/* Find the actual song number */
 						for (uint j = 0; j < NUM_SONGS_AVAILABLE; j++) {
-							if (GetTrackNumber(j) == y + 1) {
+							if (GetTrackNumber(j) == row) {
 								p[i] = j + 1;
 								break;
 							}
@@ -477,13 +505,13 @@ struct MusicTrackSelectionWindow : public Window {
 			}
 
 			case WID_MTS_LIST_RIGHT: { // remove from playlist
-				int y = this->GetRowFromWidget(pt.y, widget, 0, FONT_HEIGHT_SMALL);
+				int row = this->GetRowFromWidget(pt.y, widget, WD_FRAMERECT_TOP, FONT_HEIGHT_SMALL);
 
 				if (_settings_client.music.playlist < 4) return;
-				if (!IsInsideMM(y, 0, NUM_SONGS_PLAYLIST)) return;
+				if (!IsInsideMM(row, 0, NUM_SONGS_PLAYLIST)) return;
 
 				byte *p = _playlists[_settings_client.music.playlist];
-				for (uint i = y; i != NUM_SONGS_PLAYLIST - 1; i++) {
+				for (uint i = row; i != NUM_SONGS_PLAYLIST - 1; i++) {
 					p[i] = p[i + 1];
 				}
 

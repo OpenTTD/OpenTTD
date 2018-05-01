@@ -12,6 +12,8 @@
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "bemidi.h"
+#include "../base_media_base.h"
+#include "midifile.hpp"
 
 /* BeOS System Includes */
 #include <MidiSynthFile.h>
@@ -34,13 +36,18 @@ void MusicDriver_BeMidi::Stop()
 	midiSynthFile.UnloadFile();
 }
 
-void MusicDriver_BeMidi::PlaySong(const char *filename)
+void MusicDriver_BeMidi::PlaySong(const MusicSongInfo &song, bool loop)
 {
+	char *filename = MidiFile::GetSMFFile(song);
+
 	this->Stop();
-	entry_ref midiRef;
-	get_ref_for_path(filename, &midiRef);
-	midiSynthFile.LoadFile(&midiRef);
-	midiSynthFile.Start();
+	if (filename != NULL) {
+		entry_ref midiRef;
+		get_ref_for_path(filename, &midiRef);
+		midiSynthFile.LoadFile(&midiRef);
+		free(filename);
+		midiSynthFile.Start();
+	}
 }
 
 void MusicDriver_BeMidi::StopSong()

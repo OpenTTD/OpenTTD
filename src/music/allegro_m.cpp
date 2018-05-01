@@ -14,6 +14,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "allegro_m.h"
+#include "midifile.hpp"
 #include <allegro.h>
 
 #include "../safeguards.h"
@@ -58,11 +59,18 @@ void MusicDriver_Allegro::Stop()
 	if (--_allegro_instance_count == 0) allegro_exit();
 }
 
-void MusicDriver_Allegro::PlaySong(const char *filename)
+void MusicDriver_Allegro::PlaySong(const MusicSongInfo &song, bool loop)
 {
+	char *filename = MidiFile::GetSMFFile(song);
+
 	if (_midi != NULL) destroy_midi(_midi);
-	_midi = load_midi(filename);
-	play_midi(_midi, false);
+	if (filename != NULL) {
+		_midi = load_midi(filename);
+		play_midi(_midi, false);
+		free(filename);
+	} else {
+		_midi = NULL;
+	}
 }
 
 void MusicDriver_Allegro::StopSong()

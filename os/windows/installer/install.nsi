@@ -304,6 +304,7 @@ Section /o "Copy data from Transport Tycoon Deluxe CD-ROM" Section2
 	; Let's copy the files with size approximation
 	SetOutPath "$INSTDIR\baseset"
 	CopyFiles "$CDDRIVE\gm\*.gm" "$INSTDIR\baseset\" 1028
+	CopyFiles "$CDDRIVE\gm.cat" "$INSTDIR\baseset\gm.cat" 415
 	CopyFiles "$CDDRIVE\sample.cat" "$INSTDIR\baseset\sample.cat" 1566
 	; Copy Windows files
 	CopyFiles "$CDDRIVE\trg1r.grf" "$INSTDIR\baseset\trg1r.grf" 2365
@@ -426,6 +427,8 @@ Section "Uninstall"
 	Delete "$INSTDIR\baseset\trgt.grf"
 	Delete "$INSTDIR\baseset\trgc.grf"
 	Delete "$INSTDIR\baseset\trgi.grf"
+	Delete "$INSTDIR\baseset\gm.cat"
+	Delete "$INSTDIR\baseset\gm-tto.cat"
 	Delete "$INSTDIR\baseset\*.gm"
 
 	Delete "$INSTDIR\data\sample.cat"
@@ -467,8 +470,10 @@ Section "Uninstall"
 
 	; Base sets for music
 	Delete "$INSTDIR\gm\orig_win.obm"
+	Delete "$INSTDIR\gm\orig_dos.obm"
 	Delete "$INSTDIR\gm\no_music.obm"
 	Delete "$INSTDIR\baseset\orig_win.obm"
+	Delete "$INSTDIR\baseset\orig_dos.obm"
 	Delete "$INSTDIR\baseset\no_music.obm"
 
 	; Remove remaining directories

@@ -12,6 +12,8 @@
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "os2_m.h"
+#include "midifile.hpp"
+#include "../base_media_base.h"
 
 #define INCL_DOS
 #define INCL_OS2MM
@@ -49,13 +51,18 @@ static long CDECL MidiSendCommand(const char *cmd, ...)
 /** OS/2's music player's factory. */
 static FMusicDriver_OS2 iFMusicDriver_OS2;
 
-void MusicDriver_OS2::PlaySong(const char *filename)
+void MusicDriver_OS2::PlaySong(const MusicSongInfo &song, bool loop)
 {
+	char *filename = MidiFile::GetSMFFile(song);
+
 	MidiSendCommand("close all");
+	if (filename == NULL) return;
 
 	if (MidiSendCommand("open %s type sequencer alias song", filename) != 0) {
+		free(filename);
 		return;
 	}
+	free(filename);
 
 	MidiSendCommand("play song from 0");
 }

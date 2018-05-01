@@ -285,12 +285,32 @@ static const uint NUM_SONGS_AVAILABLE = 1 + NUM_SONG_CLASSES * NUM_SONGS_CLASS;
 /** Maximum number of songs in the (custom) playlist */
 static const uint NUM_SONGS_PLAYLIST  = 32;
 
+/* Functions to read DOS music CAT files, similar to but not quite the same as sound effect CAT files */
+char *GetMusicCatEntryName(const char *filename, size_t entrynum);
+byte *GetMusicCatEntryData(const char *filename, size_t entrynum, size_t &entrylen);
+
+enum MusicTrackType {
+	MTT_STANDARDMIDI, // Standard MIDI file
+	MTT_MPSMIDI,      // MPS GM driver MIDI format (contained in a CAT file)
+};
+
+/** Metadata about a music track */
+struct MusicSongInfo {
+	char songname[32];
+	byte tracknr;
+	const char *filename;
+	MusicTrackType filetype;
+	int cat_index;
+	int override_start;
+	int override_end;
+};
+
 /** All data of a music set. */
 struct MusicSet : BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false> {
 	/** The name of the different songs. */
-	char song_name[NUM_SONGS_AVAILABLE][32];
-	byte track_nr[NUM_SONGS_AVAILABLE];
+	MusicSongInfo songinfo[NUM_SONGS_AVAILABLE];
 	byte num_available;
+	bool has_theme;
 
 	bool FillSetDetails(struct IniFile *ini, const char *path, const char *full_filename);
 };
