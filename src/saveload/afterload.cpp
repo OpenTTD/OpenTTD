@@ -2978,8 +2978,8 @@ bool AfterLoadGame()
 			if (t->growth_rate != TOWN_GROWTH_RATE_NONE) {
 				t->growth_rate = TownTicksToGameTicks(t->growth_rate & ~0x8000);
 			}
-			/* Offset t->grow_counter by t->index to emulate original behaviour of spreading tick calls. */
-			t->grow_counter = TownTicksToGameTicks(t->grow_counter) + ((uint32)_tick_counter + t->index) % TOWN_GROWTH_TICKS;
+			/* Add t->index % TOWN_GROWTH_TICKS to spread growth across ticks. */
+			t->grow_counter = TownTicksToGameTicks(t->grow_counter) + t->index % TOWN_GROWTH_TICKS;
 		}
 	}
 

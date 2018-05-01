@@ -785,8 +785,8 @@ static void TownTickHandler(Town *t)
 			if (GrowTown(t)) {
 				i = t->growth_rate;
 			} else {
-				/* If growth failed wait TOWN_GROWTH_TICKS before retrying */
-				i = TOWN_GROWTH_TICKS - 1;
+				/* If growth failed wait a bit before retrying */
+				i = min(t->growth_rate, TOWN_GROWTH_TICKS - 1);
 			}
 		}
 		t->grow_counter = i;
@@ -1564,8 +1564,8 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->flags = 0;
 	t->cache.population = 0;
 	/* Spread growth across ticks so even if there are many
-	 * similar towns they're unlikely to grow all at once */
-	t->grow_counter = ((uint32)_tick_counter + t->index) % TOWN_GROWTH_TICKS;
+	 * similar towns they're unlikely to grow all in one tick */
+	t->grow_counter = t->index % TOWN_GROWTH_TICKS;
 	t->growth_rate = TownTicksToGameTicks(250);
 
 	/* Set the default cargo requirement for town growth */
