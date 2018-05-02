@@ -651,6 +651,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}No hay música disponible
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Pista
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Título
@@ -671,11 +672,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Encender
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostrar ventana de selección de pistas musicales
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Programa musical - "{STRING}"
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Lista de reproducción
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programa: '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Eliminar
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Cambiar lista musical
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Eliminar programa actual (solo Personal 1 y Personal 2)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Cambiar la selección musical a otra lista instalada
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clic en la pista de música para añadirla al programa actual (solo Personal 1 y 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clic en la pista de música para quitarla del programa actual (solo Personal 1 y 2)
 
@@ -1335,6 +1339,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color para el t
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde oscuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
+STR_CONFIG_SETTING_SCROLLMODE                                   :Desplazamiento de vista: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Modo de recorrer la vista sobre el mapa
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Desplazar la vista con clic derecho, ratón en posición fija
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Recorrer mapa con clic derecho, ratón en posición fija
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Recorrer mapa con clic derecho
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Recorrer mapa con clic izquierdo
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desplazamiento de vista suavizado: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Forma en la que la vista principal se mueve a una ubicación específica al hacer clic en el minimapa o tras una orden de moverse a un objeto determinado del mapa. Si se activa, la vista se mueve de forma suave. Si se desactiva, la vista se mueve instantáneamente al sitio indicado
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar información de medidas al usar las herramientas de construcción: {STRING}

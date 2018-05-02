@@ -963,6 +963,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Музычнае афармленне недаступна
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}«{STRING}»
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Трэк
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Назва
@@ -983,11 +984,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Уклю
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Паказаць вакно выбару трэкаў
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Музычная праграма - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} «{STRING}»
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Сьпіс трэкаў
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programme — «{STRING}»
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Ачысьціць
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Зьмяніць набор
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Ачысьціць сьпіс уласнай праґрамы
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Змяніць выбар музычнага афармлення на іншы ўсталяваны набор
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Клікніце па назьве трэка, каб дадаць яго ва ўласную праґраму
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клікніце па назьве трэка, каб выдаліць яго з уласнай праґрамы
 
@@ -1647,6 +1651,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Колер ля
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :зялёны
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :цёмна-зялёны
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фіялетавы
+STR_CONFIG_SETTING_SCROLLMODE                                   :Перамяшчэнне агляду: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Спосаб перамяшчэння па гульнёваму полю
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Перамяшчаць з дапамогай ПКМ, зафіксаваўшы курсор
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Перамяшчаць з дапамогай ПКМ, зафіксаваўшы курсор
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Перамяшчаць з дапамогай ПКМ
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Перамяшчаць з дапамогай ЛКМ
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Павольная пракрутка ў вакне прагляду: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Кантралюе, што адбудзецца ў галоўным вакне, калі пстрыкнуць у малым вакне прагляду па нейкай кропцы. Калі ўключана, позірк будзе павольна перамяшчацца па мапе ў галоўным вакне. Калі выключана — экран адразу прыгне ў вызначанае месца.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Паказваць замеры пры будаўніцтве: {STRING}

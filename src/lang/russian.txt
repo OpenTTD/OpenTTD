@@ -788,8 +788,9 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Музыкальное оформление недоступно
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}«{STRING}»
-STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Дорожка
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Трек
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Название
 STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Случ. выбор
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Программа
@@ -808,13 +809,16 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Вкл./
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Показать окно выбора музыкальных треков
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Музыкальная программа - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} «{STRING}»
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Номер трека
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Программа - «{STRING}»
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Очистить
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Изменить набор
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Очистка пользовательской программы
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Сменить выбор музыкального оформления на другой установленный набор
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Щёлкните по названию трека для добавления в пользовательскую программу
-STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Выберите дорожку для удаления из пользовательского списка
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Выберите трек для удаления из пользовательского списка
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Крупнейшие компании, достигшие {NUM} года
