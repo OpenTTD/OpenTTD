@@ -780,12 +780,13 @@ static bool GrowTown(Town *t);
 static void TownTickHandler(Town *t)
 {
 	if (HasBit(t->flags, TOWN_IS_GROWING)) {
-		int i = t->grow_counter - 1;
+		int i = (int)t->grow_counter - 1;
 		if (i < 0) {
 			if (GrowTown(t)) {
-				i = t->growth_rate & (~TOWN_GROW_RATE_CUSTOM);
+				i = t->growth_rate;
 			} else {
-				i = 0;
+				/* If growth failed wait a bit before retrying */
+				i = min(t->growth_rate, TOWN_GROWTH_TICKS - 1);
 			}
 		}
 		t->grow_counter = i;
@@ -798,10 +799,7 @@ void OnTick_Town()
 
 	Town *t;
 	FOR_ALL_TOWNS(t) {
-		/* Run town tick at regular intervals, but not all at once. */
-		if ((_tick_counter + t->index) % TOWN_GROWTH_TICKS == 0) {
-			TownTickHandler(t);
-		}
+		TownTickHandler(t);
 	}
 }
 
@@ -1596,8 +1594,10 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	UpdateTownRadius(t);
 	t->flags = 0;
 	t->cache.population = 0;
-	t->grow_counter = 0;
-	t->growth_rate = 250;
+	/* Spread growth across ticks so even if there are many
+	 * similar towns they're unlikely to grow all in one tick */
+	t->grow_counter = t->index % TOWN_GROWTH_TICKS;
+	t->growth_rate = TownTicksToGameTicks(250);
 
 	/* Set the default cargo requirement for town growth */
 	switch (_settings_game.game_creation.landscape) {
@@ -2613,14 +2613,13 @@ CommandCost CmdTownSetText(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  * @param tile Unused.
  * @param flags Type of operation.
  * @param p1 Town ID to cargo game of.
- * @param p2 Amount of days between growth, or TOWN_GROW_RATE_CUSTOM_NONE, or 0 to reset custom growth rate.
+ * @param p2 Amount of days between growth, or TOWN_GROWTH_RATE_NONE, or 0 to reset custom growth rate.
  * @param text Unused.
  * @return Empty cost or an error.
  */
 CommandCost CmdTownGrowthRate(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
-	if ((p2 & TOWN_GROW_RATE_CUSTOM) != 0 && p2 != TOWN_GROW_RATE_CUSTOM_NONE) return CMD_ERROR;
 	if (GB(p2, 16, 16) != 0) return CMD_ERROR;
 
 	Town *t = Town::GetIfValid(p1);
@@ -2628,10 +2627,10 @@ CommandCost CmdTownGrowthRate(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	if (flags & DC_EXEC) {
 		if (p2 == 0) {
-			/* Clear TOWN_GROW_RATE_CUSTOM, UpdateTownGrowRate will determine a proper value */
-			t->growth_rate = 0;
+			/* Just clear the flag, UpdateTownGrowRate will determine a proper growth rate */
+			ClrBit(t->flags, TOWN_CUSTOM_GROWTH);
 		} else {
-			uint old_rate = t->growth_rate & ~TOWN_GROW_RATE_CUSTOM;
+			uint old_rate = t->growth_rate;
 			if (t->grow_counter >= old_rate) {
 				/* This also catches old_rate == 0 */
 				t->grow_counter = p2;
@@ -2639,7 +2638,8 @@ CommandCost CmdTownGrowthRate(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 				/* Scale grow_counter, so half finished houses stay half finished */
 				t->grow_counter = t->grow_counter * p2 / old_rate;
 			}
-			t->growth_rate = p2 | TOWN_GROW_RATE_CUSTOM;
+			t->growth_rate = p2;
+			SetBit(t->flags, TOWN_CUSTOM_GROWTH);
 		}
 		UpdateTownGrowRate(t);
 		InvalidateWindowData(WC_TOWN_VIEW, p1);
@@ -2924,13 +2924,21 @@ static CommandCost TownActionFundBuildings(Town *t, DoCommandFlag flags)
 	if (!_settings_game.economy.fund_buildings) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		/* Build next tick */
-		t->grow_counter = 1;
 		/* And grow for 3 months */
 		t->fund_buildings_months = 3;
 
 		/* Enable growth (also checking GameScript's opinion) */
 		UpdateTownGrowRate(t);
+
+		/* Build a new house, but add a small delay to make sure
+		 * that spamming funding doesn't let town grow any faster
+		 * than 1 house per 2 * TOWN_GROWTH_TICKS ticks.
+		 * Also emulate original behaviour when town was only growing in
+		 * TOWN_GROWTH_TICKS intervals, to make sure that it's not too
+		 * tick-perfect and gives player some time window where he can
+		 * spam funding with the exact same effeciency.
+		 */
+		t->grow_counter = min(t->grow_counter, 2 * TOWN_GROWTH_TICKS - (t->growth_rate - t->grow_counter) % TOWN_GROWTH_TICKS);
 
 		SetWindowDirty(WC_TOWN_VIEW, t->index);
 	}
@@ -3148,8 +3156,8 @@ static void UpdateTownGrowRate(Town *t)
 		}
 	}
 
-	if ((t->growth_rate & TOWN_GROW_RATE_CUSTOM) != 0) {
-		if (t->growth_rate != TOWN_GROW_RATE_CUSTOM_NONE) SetBit(t->flags, TOWN_IS_GROWING);
+	if (HasBit(t->flags, TOWN_CUSTOM_GROWTH)) {
+		if (t->growth_rate != TOWN_GROWTH_RATE_NONE) SetBit(t->flags, TOWN_IS_GROWING);
 		SetWindowDirty(WC_TOWN_VIEW, t->index);
 		return;
 	}
@@ -3190,7 +3198,7 @@ static void UpdateTownGrowRate(Town *t)
 	m >>= growth_multiplier;
 	if (t->larger_town) m /= 2;
 
-	t->growth_rate = m / (t->cache.num_houses / 50 + 1);
+	t->growth_rate = TownTicksToGameTicks(m / (t->cache.num_houses / 50 + 1));
 	t->grow_counter = min(t->growth_rate, t->grow_counter);
 
 	SetBit(t->flags, TOWN_IS_GROWING);
