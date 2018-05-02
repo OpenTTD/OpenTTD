@@ -52,7 +52,7 @@ First of all, check whether the bug is not already known. Do this by looking
 through the file called 'known-bugs.txt' which is distributed with OpenTTD
 like this readme.
 
-For tracking our bugs we are using Githubs issue tracker. You can find
+For tracking our bugs we are using GitHub's issue tracker. You can find
 the tracker at [https://github.com/OpenTTD/OpenTTD/issues](https://github.com/OpenTTD/OpenTTD/issues). Before actually reporting take a look
 through the already reported bugs there to see if the bug is already known.
 The 'known-bugs.txt' file might be a bit outdated at the moment you are
@@ -278,9 +278,10 @@ The main OpenTTD directories can be found in various locations, depending on
 your operating system:
 
 1. The current working directory (from where you started OpenTTD)
-		For non-Windows operating systems OpenTTD will not scan for files in this
-		directory if it is your personal directory, i.e. '~/', or when it is the
-		root directory, i.e. '/'.
+
+	For non-Windows operating systems OpenTTD will not scan for files in this
+	directory if it is your personal directory, i.e. '~/', or when it is the
+	root directory, i.e. '/'.
 2. Your personal directory
     - Windows:
         - `C:\My Documents\OpenTTD` (95, 98, ME)
@@ -301,8 +302,9 @@ your operating system:
 5. The installation directory (Linux only)
     - Linux: `/usr/share/games/openttd`
 6. The application bundle (Mac OSX only)
-		It includes the OpenTTD files (grf+lng) and it will work as long as they
-		are not touched
+
+	It includes the OpenTTD files (grf+lng) and it will work as long as they
+	are not touched
 
 Different types of data or extensions go into different subdirectories of the
 chosen main OpenTTD directory:
