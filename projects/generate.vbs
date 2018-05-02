@@ -189,7 +189,6 @@ Function load_main_data(filename, ByRef vcxproj, ByRef filters, ByRef files)
 						line = "PNG" Or _
 						line = "WIN32" Or _
 						line = "MSVC" Or _
-						line = "DIRECTMUSIC" Or _
 						line = "AI" Or _
 						line = "SSE" Or _
 						line = "HAVE_THREAD" _
