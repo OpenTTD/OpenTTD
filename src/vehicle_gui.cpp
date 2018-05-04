@@ -1676,7 +1676,7 @@ public:
 		this->SetDirty();
 	}
 
-	virtual void OnTick()
+	virtual void OnGameTick()
 	{
 		if (_pause_mode != PM_UNPAUSED) return;
 		if (this->vehicles.NeedResort()) {
@@ -2733,7 +2733,7 @@ public:
 		}
 	}
 
-	virtual void OnTick()
+	virtual void OnGameTick()
 	{
 		const Vehicle *v = Vehicle::Get(this->window_number);
 		bool veh_stopped = v->IsStoppedInDepot();

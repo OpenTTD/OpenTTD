@@ -454,15 +454,16 @@ static const char * const _credits[] = {
 
 struct AboutWindow : public Window {
 	int text_position;                       ///< The top of the scrolling text
-	byte counter;                            ///< Used to scroll the text every 5 ticks
 	int line_height;                         ///< The height of a single line
 	static const int num_visible_lines = 19; ///< The number of lines visible simultaneously
+
+	static const uint TIMER_INTERVAL = 150;  ///< Scrolling interval in ms
+	uint timer;
 
 	AboutWindow() : Window(&_about_desc)
 	{
 		this->InitNested(WN_GAME_OPTIONS_ABOUT);
 
-		this->counter = 5;
 		this->text_position = this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;
 	}
 
@@ -502,11 +503,11 @@ struct AboutWindow : public Window {
 		}
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
-		if (--this->counter == 0) {
-			this->counter = 5;
-			this->text_position--;
+		uint count = CountIntervalElapsed(this->timer, delta_ms, TIMER_INTERVAL);
+		if (count > 0) {
+			this->text_position -= count;
 			/* If the last text has scrolled start a new from the start */
 			if (this->text_position < (int)(this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y - lengthof(_credits) * this->line_height)) {
 				this->text_position = this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;

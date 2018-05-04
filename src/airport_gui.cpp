@@ -543,7 +543,7 @@ public:
 		this->SelectFirstAvailableAirport(false);
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
 		CheckRedrawStationCoverage(this);
 	}

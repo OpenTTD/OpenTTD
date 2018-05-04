@@ -235,10 +235,11 @@ enum {
 
 struct MainWindow : Window
 {
-	uint refresh;
+	int refresh;
 
-	static const uint LINKGRAPH_REFRESH_PERIOD = 0xff;
-	static const uint LINKGRAPH_DELAY = 0xf;
+	/* Refresh times in milliseconds */
+	static const uint LINKGRAPH_REFRESH_PERIOD = 7650;
+	static const uint LINKGRAPH_DELAY = 450;
 
 	MainWindow(WindowDesc *desc) : Window(desc)
 	{
@@ -253,9 +254,9 @@ struct MainWindow : Window
 		this->refresh = LINKGRAPH_DELAY;
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
-		if (--this->refresh > 0) return;
+		if (!TimerElapsed(this->refresh, delta_ms)) return;
 
 		this->refresh = LINKGRAPH_REFRESH_PERIOD;
 

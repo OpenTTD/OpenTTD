@@ -539,7 +539,7 @@ public:
 		if (widget == WID_CV_KEY_BUTTON) ShowGraphLegend();
 	}
 
-	virtual void OnTick()
+	virtual void OnGameTick()
 	{
 		this->UpdateStatistics(false);
 	}
@@ -998,9 +998,9 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		}
 	}
 
-	virtual void OnTick()
+	virtual void OnGameTick()
 	{
-		/* Override default OnTick */
+		/* Override default OnGameTick */
 	}
 
 	/**
@@ -1239,7 +1239,7 @@ public:
 	}
 
 
-	virtual void OnTick()
+	virtual void OnGameTick()
 	{
 		if (this->companies.NeedResort()) {
 			this->SetDirty();
@@ -1472,7 +1472,7 @@ struct PerformanceRatingDetailWindow : Window {
 		}
 	}
 
-	virtual void OnTick()
+	virtual void OnGameTick()
 	{
 		if (_pause_mode != PM_UNPAUSED) return;
 

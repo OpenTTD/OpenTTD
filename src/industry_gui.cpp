@@ -647,7 +647,7 @@ public:
 		if (success && !_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	}
 
-	virtual void OnTick()
+	virtual void OnGameTick()
 	{
 		if (_pause_mode != PM_UNPAUSED) return;
 		if (!this->timer_enabled) return;

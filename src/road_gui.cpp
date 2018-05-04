@@ -1053,7 +1053,7 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 		}
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
 		CheckRedrawStationCoverage(this);
 	}

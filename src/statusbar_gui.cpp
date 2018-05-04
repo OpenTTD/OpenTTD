@@ -79,10 +79,11 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left
 struct StatusBarWindow : Window {
 	bool saving;
 	int ticker_scroll;
+	uint ticker_timer;
 	int reminder_timeout;
 
 	static const int TICKER_STOP    = 1640; ///< scrolling is finished when counter reaches this value
-	static const int REMINDER_START =   91; ///< initial value of the reminder counter (right dot on the right)
+	static const int REMINDER_START = 1350; ///< time in ms for reminder notification (red dot on the right) to stay
 	static const int REMINDER_STOP  =    0; ///< reminder disappears when counter reaches this value
 	static const int COUNTER_STEP   =    2; ///< this is subtracted from active counters every tick
 
@@ -203,6 +204,7 @@ struct StatusBarWindow : Window {
 			case SBI_SHOW_REMINDER:   this->reminder_timeout = REMINDER_START; break;
 			case SBI_NEWS_DELETED:
 				this->ticker_scroll    =   TICKER_STOP; // reset ticker ...
+				this->ticker_timer     = 0;
 				this->reminder_timeout = REMINDER_STOP; // ... and reminder
 				break;
 		}
@@ -217,19 +219,20 @@ struct StatusBarWindow : Window {
 		}
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
 		if (_pause_mode != PM_UNPAUSED) return;
 
 		if (this->ticker_scroll < TICKER_STOP) { // Scrolling text
-			this->ticker_scroll += COUNTER_STEP;
-			this->SetWidgetDirty(WID_S_MIDDLE);
+			uint count = CountIntervalElapsed(this->ticker_timer, delta_ms, 15);
+			if (count > 0) {
+				this->ticker_scroll += count;
+				this->SetWidgetDirty(WID_S_MIDDLE);
+			}
 		}
 
-		if (this->reminder_timeout > REMINDER_STOP) { // Red blot to show there are new unread newsmessages
-			this->reminder_timeout -= COUNTER_STEP;
-		} else if (this->reminder_timeout < REMINDER_STOP) {
-			this->reminder_timeout = REMINDER_STOP;
+		// Red blot to show there are new unread newsmessages
+		if (TimerElapsed(this->reminder_timeout, delta_ms)) {
 			this->SetWidgetDirty(WID_S_MIDDLE);
 		}
 	}

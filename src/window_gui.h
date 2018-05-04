@@ -678,12 +678,17 @@ public:
 	/**
 	 * Called once per (game) tick.
 	 */
-	virtual void OnTick() {}
+	virtual void OnGameTick() {}
 
 	/**
 	 * Called once every 100 (game) ticks.
 	 */
 	virtual void OnHundredthTick() {}
+
+	/**
+	 * Called periodically.
+	 */
+	virtual void OnRealtimeTick(uint delta_ms) {}
 
 	/**
 	 * Called when this window's timeout has been reached.
