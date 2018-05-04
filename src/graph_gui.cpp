@@ -1474,8 +1474,6 @@ struct PerformanceRatingDetailWindow : Window {
 
 	virtual void OnGameTick()
 	{
-		if (_pause_mode != PM_UNPAUSED) return;
-
 		/* Update the company score every 5 days */
 		if (--this->timeout == 0) {
 			this->UpdateCompanyStats();

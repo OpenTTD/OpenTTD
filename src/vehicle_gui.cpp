@@ -1678,7 +1678,6 @@ public:
 
 	virtual void OnGameTick()
 	{
-		if (_pause_mode != PM_UNPAUSED) return;
 		if (this->vehicles.NeedResort()) {
 			StationID station = (this->vli.type == VL_STATION_LIST) ? this->vli.index : INVALID_STATION;
 
