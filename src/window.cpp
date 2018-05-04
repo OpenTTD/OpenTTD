@@ -3075,12 +3075,31 @@ void InputLoop()
 }
 
 /**
+ * Dispatch OnRealtimeTick event over all windows
+ */
+void CallWindowRealtimeTickEvent(uint delta_ms)
+{
+	Window *w;
+	FOR_ALL_WINDOWS_FROM_FRONT(w) {
+		w->OnRealtimeTick(delta_ms);
+	}
+}
+
+/**
  * Update the continuously changing contents of the windows, such as the viewports
  */
 void UpdateWindows()
 {
+	static uint32 last_realtime_tick = _realtime_tick;
+	uint delta_ms = _realtime_tick - last_realtime_tick;
+	last_realtime_tick = _realtime_tick;
+
+	if (delta_ms == 0) return;
+
 	PerformanceMeasurer framerate(PFE_DRAWING);
 	PerformanceAccumulator::Reset(PFE_DRAWWORLD);
+
+	CallWindowRealtimeTickEvent(delta_ms);
 
 	Window *w;
 
@@ -3263,13 +3282,13 @@ void InvalidateWindowClassesData(WindowClass cls, int data, bool gui_scope)
 }
 
 /**
- * Dispatch WE_TICK event over all windows
+ * Dispatch OnTick event over all windows
  */
-void CallWindowTickEvent()
+void CallWindowGameTickEvent()
 {
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
-		w->OnTick();
+		w->OnGameTick();
 	}
 }
 

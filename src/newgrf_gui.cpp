@@ -403,7 +403,7 @@ struct NewGRFParametersWindow : public Window {
 						par_info->SetValue(this->grf_config, val);
 
 						this->clicked_button = num;
-						this->timeout = 5;
+						this->timeout = 150;
 					}
 				} else if (par_info->type == PTYPE_UINT_ENUM && !par_info->complete_labels && click_count >= 2) {
 					/* Display a query box so users can enter a custom value. */
@@ -483,9 +483,9 @@ struct NewGRFParametersWindow : public Window {
 		}
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
-		if (--this->timeout == 0) {
+		if (TimerElapsed(this->timeout, delta_ms)) {
 			this->clicked_button = UINT_MAX;
 			this->SetDirty();
 		}

@@ -1570,10 +1570,10 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 	}
 }
 
-/* virtual */ void SmallMapWindow::OnTick()
+/* virtual */ void SmallMapWindow::OnRealtimeTick(uint delta_ms)
 {
 	/* Update the window every now and then */
-	if (--this->refresh != 0) return;
+	if (!TimerElapsed(this->refresh, delta_ms)) return;
 
 	if (this->map_type == SMT_LINKSTATS) {
 		uint32 company_mask = this->GetOverlayCompanyMask();

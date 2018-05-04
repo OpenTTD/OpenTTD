@@ -858,7 +858,7 @@ public:
 		this->SetDirty();
 	}
 
-	virtual void OnTick()
+	virtual void OnGameTick()
 	{
 		if (_pause_mode != PM_UNPAUSED) return;
 		if (this->groups.NeedResort() || this->vehicles.NeedResort()) {

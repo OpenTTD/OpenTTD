@@ -76,7 +76,7 @@ void IncreaseDate();
 void DoPaletteAnimations();
 void MusicLoop();
 void ResetMusic();
-void CallWindowTickEvent();
+void CallWindowGameTickEvent();
 bool HandleBootstrap();
 
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
@@ -1355,7 +1355,6 @@ void StateGameLoop()
 #ifndef DEBUG_DUMP_COMMANDS
 		Game::GameLoop();
 #endif
-		CallWindowTickEvent();
 		return;
 	}
 
@@ -1373,7 +1372,7 @@ void StateGameLoop()
 		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);
 		UpdateLandscapingLimits();
 
-		CallWindowTickEvent();
+		CallWindowGameTickEvent();
 		NewsLoop();
 	} else {
 		if (_debug_desync_level > 2 && _date_fract == 0 && (_date & 0x1F) == 0) {
@@ -1403,7 +1402,7 @@ void StateGameLoop()
 #endif
 		UpdateLandscapingLimits();
 
-		CallWindowTickEvent();
+		CallWindowGameTickEvent();
 		NewsLoop();
 		cur_company.Restore();
 	}
