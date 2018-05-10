@@ -1473,10 +1473,6 @@ void GameLoop()
 	IncreaseSpriteLRU();
 	InteractiveRandom();
 
-	extern int _caret_timer;
-	_caret_timer += 3;
-	CursorTick();
-
 #ifdef ENABLE_NETWORK
 	/* Check for UDP stuff */
 	if (_network_available) NetworkBackgroundLoop();
@@ -1492,13 +1488,6 @@ void GameLoop()
 		}
 		/* Singleplayer */
 		StateGameLoop();
-	}
-
-	/* Check chat messages roughly once a second. */
-	static uint check_message = 0;
-	if (++check_message > 1000 / MILLISECONDS_PER_TICK) {
-		check_message = 0;
-		NetworkChatMessageLoop();
 	}
 #else
 	StateGameLoop();

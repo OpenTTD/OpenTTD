@@ -37,6 +37,7 @@
 #include "game/game.hpp"
 #include "video/video_driver.hpp"
 #include "framerate_type.h"
+#include "network/network_func.h"
 
 #include "safeguards.h"
 
@@ -1919,6 +1920,8 @@ void ResetWindowSystem()
 
 static void DecreaseWindowCounters()
 {
+	if (_scroller_click_timeout != 0) _scroller_click_timeout--;
+
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
 		if (_scroller_click_timeout == 0) {
@@ -3046,7 +3049,6 @@ void InputLoop()
 	assert(HasModalProgress() || IsLocalCompany());
 
 	CheckSoftLimit();
-	HandleKeyScrolling();
 
 	/* Do the actual free of the deleted windows. */
 	for (Window *v = _z_front_window; v != NULL; /* nothing */) {
@@ -3059,9 +3061,6 @@ void InputLoop()
 		free(w);
 	}
 
-	if (_scroller_click_timeout != 0) _scroller_click_timeout--;
-	DecreaseWindowCounters();
-
 	if (_input_events_this_tick != 0) {
 		/* The input loop is called only once per GameLoop() - so we can clear the counter here */
 		_input_events_this_tick = 0;
@@ -3071,7 +3070,6 @@ void InputLoop()
 
 	/* HandleMouseEvents was already called for this tick */
 	HandleMouseEvents();
-	HandleAutoscroll();
 }
 
 /**
@@ -3101,11 +3099,30 @@ void UpdateWindows()
 
 	CallWindowRealtimeTickEvent(delta_ms);
 
+	static int network_message_timer = 1;
+	if (TimerElapsed(network_message_timer, delta_ms)) {
+		network_message_timer = 1000;
+		NetworkChatMessageLoop();
+	}
+
 	Window *w;
 
+	static int window_timer = 1;
+	if (TimerElapsed(window_timer, delta_ms)) {
+		window_timer = MILLISECONDS_PER_TICK;
+
+		extern int _caret_timer;
+		_caret_timer += 3;
+		CursorTick();
+
+		HandleKeyScrolling();
+		HandleAutoscroll();
+		DecreaseWindowCounters();
+	}
+
 	static int highlight_timer = 1;
-	if (--highlight_timer == 0) {
-		highlight_timer = 15;
+	if (TimerElapsed(highlight_timer, delta_ms)) {
+		highlight_timer = 450;
 		_window_highlight_colour = !_window_highlight_colour;
 	}
 
@@ -3118,25 +3135,25 @@ void UpdateWindows()
 	 * But still empty the invalidation queues above. */
 	if (_network_dedicated) return;
 
-	static int we4_timer = 0;
-	int t = we4_timer + 1;
+	static int hundredth_timer = 1;
+	if (TimerElapsed(hundredth_timer, delta_ms)) {
+		hundredth_timer = 3000; // Historical reason: 100 * MILLISECONDS_PER_TICK
 
-	if (t >= 100) {
 		FOR_ALL_WINDOWS_FROM_FRONT(w) {
 			w->OnHundredthTick();
 		}
-		t = 0;
 	}
-	we4_timer = t;
 
-	FOR_ALL_WINDOWS_FROM_FRONT(w) {
-		if ((w->flags & WF_WHITE_BORDER) && --w->white_border_timer == 0) {
-			CLRBITS(w->flags, WF_WHITE_BORDER);
-			w->SetDirty();
+	if (window_timer == MILLISECONDS_PER_TICK) { // window_timer has elapsed this call
+		FOR_ALL_WINDOWS_FROM_FRONT(w) {
+			if ((w->flags & WF_WHITE_BORDER) && --w->white_border_timer == 0) {
+				CLRBITS(w->flags, WF_WHITE_BORDER);
+				w->SetDirty();
+			}
 		}
-	}
 
-	DrawDirtyBlocks();
+		DrawDirtyBlocks();
+	}
 
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		/* Update viewport only if window is not shaded. */
