@@ -1229,14 +1229,14 @@ make_compiler_cflags() {
 	# $5 - name of the features variable
 
 	# Get the compiler to tell us who it is
-	compiler="`$1 --version | head -n1 | cut -d' ' -f1`"
+	version_line="`$1 --version | head -n1`"
 
 	eval eval "flags=\\\$$2"
 	eval eval "cxxflags=\\\$$3"
 	eval eval "ldflags=\\\$$4"
 	eval eval "features=\\\$$5"
 
-	if [ "$compiler" = "icc" ]; then
+	if [ `echo "$version_line" | cut -d' ' -f1` = "icc" ]; then
 		# Enable some things only for certain ICC versions
 		cc_version=`$1 -dumpversion | cut -c 1-4 | sed s@\\\.@@g`
 
@@ -1323,7 +1323,7 @@ make_compiler_cflags() {
 				features="$features lto"
 			fi
 		fi
-	elif [ "$compiler" = "clang" ]; then
+	elif echo "$version_line" | grep -q "clang"; then
 		# Enable some things only for certain clang versions
 		cc_version="`$1 -v 2>&1 | head -n 1 | sed s@[^0-9]@@g | cut -c 1-2`"
 
