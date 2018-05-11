@@ -16,6 +16,7 @@
 #include "core/smallvec_type.hpp"
 #include "viewport_func.h"
 #include "settings_type.h"
+#include "window_func.h"
 
 #include "safeguards.h"
 
@@ -82,20 +83,25 @@ void RemoveTextEffect(TextEffectID te_id)
 	_text_effects[te_id].Reset();
 }
 
-void MoveAllTextEffects()
+void MoveAllTextEffects(uint delta_ms)
 {
+	static uint texteffecttimer = 0;
+	uint count = CountIntervalElapsed(texteffecttimer, delta_ms, MILLISECONDS_PER_TICK);
+	if (count == 0) return;
+
 	const TextEffect *end = _text_effects.End();
 	for (TextEffect *te = _text_effects.Begin(); te != end; te++) {
 		if (te->string_id == INVALID_STRING_ID) continue;
 		if (te->mode != TE_RISING) continue;
 
-		if (te->duration-- == 0) {
+		if (te->duration < count) {
 			te->Reset();
 			continue;
 		}
 
 		te->MarkDirty(ZOOM_LVL_OUT_8X);
-		te->top -= ZOOM_LVL_BASE;
+		te->duration -= count;
+		te->top -= count * ZOOM_LVL_BASE;
 		te->MarkDirty(ZOOM_LVL_OUT_8X);
 	}
 }

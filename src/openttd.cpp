@@ -1487,8 +1487,6 @@ void GameLoop()
 
 	if (!_pause_mode && HasBit(_display_opt, DO_FULL_ANIMATION)) DoPaletteAnimations();
 
-	if (!_pause_mode || _game_mode == GM_EDITOR || _settings_game.construction.command_pause_level > CMDPL_NO_CONSTRUCTION) MoveAllTextEffects();
-
 	InputLoop();
 
 	SoundDriver::GetInstance()->MainLoop();
