@@ -1144,7 +1144,7 @@ STR_CONFIG_SETTING_RUNNING_COSTS                                :Onderhoudskoste
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Het niveau van onderhoud en bedrijfskosten van voertuigen en infrastuctuur
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Bouwsnelheid: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Beperk de hoeveelheid bouwactiviteiten voor computerspeler
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Voertuig storingen: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Voertuigstoringen: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controle hoe vaak onvoldoende onderhouden voertuigen kapot kunnen gaan
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidie indicator: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Instellen hoeveel wordt betaald voor gesubsidieerde verbindingen
