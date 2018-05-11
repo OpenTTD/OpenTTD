@@ -3126,6 +3126,8 @@ void UpdateWindows()
 		_window_highlight_colour = !_window_highlight_colour;
 	}
 
+	if (!_pause_mode || _game_mode == GM_EDITOR || _settings_game.construction.command_pause_level > CMDPL_NO_CONSTRUCTION) MoveAllTextEffects(delta_ms);
+
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
 		w->ProcessScheduledInvalidations();
 		w->ProcessHighlightedInvalidations();
