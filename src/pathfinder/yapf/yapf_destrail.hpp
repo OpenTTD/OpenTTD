@@ -172,7 +172,7 @@ public:
 				&& (GetRailStationTrack(tile) == TrackdirToTrack(td));
 		}
 
-		return (tile == m_destTile) && ((m_destTrackdirs & TrackdirToTrackdirBits(td)) != TRACKDIR_BIT_NONE);
+		return (tile == m_destTile) && HasTrackdir(m_destTrackdirs, td);
 	}
 
 	/**

@@ -332,6 +332,28 @@ static inline TrackdirBits TrackBitsToTrackdirBits(TrackBits bits)
 }
 
 /**
+ * Checks whether a TrackBits has a given Track.
+ * @param tracks The track bits.
+ * @param track The track to check.
+ */
+static inline bool HasTrack(TrackBits tracks, Track track)
+{
+	assert(IsValidTrack(track));
+	return HasBit(tracks, track);
+}
+
+/**
+ * Checks whether a TrackdirBits has a given Trackdir.
+ * @param trackdirs The trackdir bits.
+ * @param trackdir The trackdir to check.
+ */
+static inline bool HasTrackdir(TrackdirBits trackdirs, Trackdir trackdir)
+{
+	assert(IsValidTrackdir(trackdir));
+	return HasBit(trackdirs, trackdir);
+}
+
+/**
  * Returns the present-trackdir-information of a TrackStatus.
  *
  * @param ts The TrackStatus returned by GetTileTrackStatus()

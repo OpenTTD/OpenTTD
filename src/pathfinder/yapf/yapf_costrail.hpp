@@ -104,7 +104,7 @@ public:
 		assert(IsValidTrackdir(td2));
 		int cost = 0;
 		if (TrackFollower::Allow90degTurns()
-				&& ((TrackdirToTrackdirBits(td2) & TrackdirCrossesTrackdirs(td1)) != TRACKDIR_BIT_NONE)) {
+				&& HasTrackdir(TrackdirCrossesTrackdirs(td1), td2)) {
 			/* 90-deg curve penalty */
 			cost += Yapf().PfGetSettings().rail_curve90_penalty;
 		} else if (td2 != NextTrackdir(td1)) {
@@ -280,7 +280,7 @@ public:
 	{
 		assert(!n.flags_u.flags_s.m_targed_seen);
 		assert(tf->m_new_tile == n.m_key.m_tile);
-		assert((TrackdirToTrackdirBits(n.m_key.m_td) & tf->m_new_td_bits) != TRACKDIR_BIT_NONE);
+		assert((HasTrackdir(tf->m_new_td_bits, n.m_key.m_td)));
 
 		CPerfStart perf_cost(Yapf().m_perf_cost);
 

@@ -206,7 +206,7 @@ Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 	TrackBits rev_tracks = TrackStatusToTrackBits(GetTileTrackStatus(tile2, TRANSPORT_WATER, 0)) &
 			DiagdirReachesTracks(rev_enterdir);
 
-	if ((rev_tracks & TrackToTrackBits(cur_track) != TRACK_BIT_NONE) {
+	if (HasTrack(rev_tracks, cur_track)) {
 		rev_dist = FindShipTrack(v, tile2, rev_enterdir, TrackToTrackBits(cur_track), tile, &track);
 		if (rev_dist != UINT_MAX) rev_dist++; // penalty for reversing
 	}
