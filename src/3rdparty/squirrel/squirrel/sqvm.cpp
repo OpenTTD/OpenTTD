@@ -378,8 +378,7 @@ bool SQVM::StartCall(SQClosure *closure,SQInteger target,SQInteger args,SQIntege
 	}
 
 	if (!tailcall) {
-		CallInfo lc;
-		memset(&lc, 0, sizeof(lc));
+		CallInfo lc = {};
 		lc._generator = NULL;
 		lc._etraps = 0;
 		lc._prevstkbase = (SQInt32) ( stackbase - _stackbase );
@@ -1159,8 +1158,7 @@ bool SQVM::CallNative(SQNativeClosure *nclosure,SQInteger nargs,SQInteger stackb
 	SQInteger oldtop = _top;
 	SQInteger oldstackbase = _stackbase;
 	_top = stackbase + nargs;
-	CallInfo lci;
-	memset(&lci, 0, sizeof(lci));
+	CallInfo lci = {};
 	lci._closure = nclosure;
 	lci._generator = NULL;
 	lci._etraps = 0;

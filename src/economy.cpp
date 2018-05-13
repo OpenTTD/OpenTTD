@@ -696,9 +696,10 @@ static void CompaniesGenStatistics()
 	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, _cur_month)) return;
 
 	FOR_ALL_COMPANIES(c) {
-		memmove(&c->old_economy[1], &c->old_economy[0], sizeof(c->old_economy) - sizeof(c->old_economy[0]));
+		/* Drop the oldest history off the end */
+		std::copy_backward(c->old_economy, c->old_economy + MAX_HISTORY_QUARTERS - 1, c->old_economy + MAX_HISTORY_QUARTERS);
 		c->old_economy[0] = c->cur_economy;
-		memset(&c->cur_economy, 0, sizeof(c->cur_economy));
+		c->cur_economy = {};
 
 		if (c->num_valid_stat_ent != MAX_HISTORY_QUARTERS) c->num_valid_stat_ent++;
 

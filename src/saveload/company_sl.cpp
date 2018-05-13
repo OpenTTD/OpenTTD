@@ -498,7 +498,6 @@ static void Check_PLYR()
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		CompanyProperties *cprops = new CompanyProperties();
-		memset(cprops, 0, sizeof(*cprops));
 		SaveLoad_PLYR_common(NULL, cprops);
 
 		/* We do not load old custom names */

@@ -361,7 +361,7 @@ void Blitter_32bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 		Colour *dst_pal = dst;
 		uint16 *anim_pal = anim_line;
 
-		memcpy(dst, usrc, width * sizeof(uint32));
+		memcpy(static_cast<void *>(dst), usrc, width * sizeof(uint32));
 		usrc += width;
 		dst += _screen.pitch;
 		/* Copy back the anim-buffer */

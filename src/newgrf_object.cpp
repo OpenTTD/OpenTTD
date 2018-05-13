@@ -96,7 +96,9 @@ uint ObjectSpec::Index() const
 void ResetObjects()
 {
 	/* Clean the pool. */
-	MemSetT(_object_specs, 0, lengthof(_object_specs));
+	for (uint16 i = 0; i < NUM_OBJECTS; i++) {
+		_object_specs[i] = {};
+	}
 
 	/* And add our originals. */
 	MemCpyT(_object_specs, _original_objects, lengthof(_original_objects));
