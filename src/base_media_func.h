@@ -40,8 +40,6 @@
 template <class T, size_t Tnum_files, bool Tsearch_in_tars>
 bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const char *path, const char *full_filename, bool allow_empty_filename)
 {
-	memset(this, 0, sizeof(*this));
-
 	IniGroup *metadata = ini->GetGroup("metadata");
 	IniItem *item;
 

@@ -90,7 +90,7 @@ public:
 	{
 		_vals[idx].~T();
 		if(idx < (_size - 1)) {
-			memmove(&_vals[idx], &_vals[idx+1], sizeof(T) * (_size - (size_t)idx - 1));
+			memmove(static_cast<void *>(&_vals[idx]), &_vals[idx+1], sizeof(T) * (_size - (size_t)idx - 1));
 		}
 		_size--;
 	}

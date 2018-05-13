@@ -125,7 +125,7 @@ static inline T *ReallocT(T *t_ptr, size_t num_elements)
 	/* Ensure the size does not overflow. */
 	CheckAllocationConstraints<T>(num_elements);
 
-	t_ptr = (T*)realloc(t_ptr, num_elements * sizeof(T));
+	t_ptr = (T*)realloc(static_cast<void *>(t_ptr), num_elements * sizeof(T));
 	if (t_ptr == NULL) ReallocError(num_elements * sizeof(T));
 	return t_ptr;
 }
