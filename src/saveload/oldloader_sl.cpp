@@ -946,7 +946,7 @@ static const OldChunks _company_chunk[] = {
 
 	OCL_SVAR(  OC_UINT8, Company, block_preview ),
 	OCL_CNULL( OC_TTD, 1 ),           // Old AI
-	OCL_SVAR( OC_TTD | OC_UINT8, Company, avail_railtypes ),
+	OCL_CNULL( OC_TTD, 1 ), // avail_railtypes
 	OCL_SVAR(   OC_TILE, Company, location_of_HQ ),
 	OCL_SVAR( OC_TTD | OC_UINT8, Company, share_owners[0] ),
 	OCL_SVAR( OC_TTD | OC_UINT8, Company, share_owners[1] ),
