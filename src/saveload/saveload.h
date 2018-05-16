@@ -436,7 +436,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
  */
-#define SLEG_STR(variable, type) SLEG_CONDSTR(variable, type, lengthof(variable), 0, SL_MAX_VERSION)
+#define SLEG_STR(variable, type) SLEG_CONDSTR(variable, type, sizeof(variable), 0, SL_MAX_VERSION)
 
 /**
  * Storage of a global list in every savegame version.
