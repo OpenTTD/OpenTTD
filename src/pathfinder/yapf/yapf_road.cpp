@@ -501,11 +501,11 @@ Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDi
 {
 	/* default is YAPF type 2 */
 	typedef Trackdir (*PfnChooseRoadTrack)(const RoadVehicle*, TileIndex, DiagDirection, bool &path_found);
-	PfnChooseRoadTrack pfnChooseRoadTrack = &CYapfRoad2::stChooseRoadTrack; // default: ExitDir, allow 90-deg
+	PfnChooseRoadTrack pfnChooseRoadTrack = &CYapfRoad2::stChooseRoadTrack; // default: ExitDir
 
 	/* check if non-default YAPF type should be used */
 	if (_settings_game.pf.yapf.disable_node_optimization) {
-		pfnChooseRoadTrack = &CYapfRoad1::stChooseRoadTrack; // Trackdir, allow 90-deg
+		pfnChooseRoadTrack = &CYapfRoad1::stChooseRoadTrack; // Trackdir
 	}
 
 	Trackdir td_ret = pfnChooseRoadTrack(v, tile, enterdir, path_found);
@@ -526,7 +526,7 @@ FindDepotData YapfRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_dist
 
 	/* check if non-default YAPF type should be used */
 	if (_settings_game.pf.yapf.disable_node_optimization) {
-		pfnFindNearestDepot = &CYapfRoadAnyDepot1::stFindNearestDepot; // Trackdir, allow 90-deg
+		pfnFindNearestDepot = &CYapfRoadAnyDepot1::stFindNearestDepot; // Trackdir
 	}
 
 	return pfnFindNearestDepot(v, tile, trackdir, max_distance);
