@@ -474,8 +474,6 @@ typedef CFollowTrackT<TRANSPORT_WATER, Ship,        true > CFollowTrackWater;
 typedef CFollowTrackT<TRANSPORT_ROAD,  RoadVehicle, true > CFollowTrackRoad;
 typedef CFollowTrackT<TRANSPORT_RAIL,  Train,       true > CFollowTrackRail;
 
-typedef CFollowTrackT<TRANSPORT_WATER, Ship,        false> CFollowTrackWaterNo90;
-typedef CFollowTrackT<TRANSPORT_ROAD,  RoadVehicle, false> CFollowTrackRoadNo90;
 typedef CFollowTrackT<TRANSPORT_RAIL,  Train,       false> CFollowTrackRailNo90;
 
 typedef CFollowTrackT<TRANSPORT_RAIL, Train, true,  true > CFollowTrackFreeRail;

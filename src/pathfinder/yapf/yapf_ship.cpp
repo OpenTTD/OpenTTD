@@ -224,25 +224,21 @@ struct CYapfShip_TypesT
 	typedef CYapfCostShipT<Types>             PfCost;        // cost provider
 };
 
-/* YAPF type 1 - uses TileIndex/Trackdir as Node key, allows 90-deg turns */
+/* YAPF type 1 - uses TileIndex/Trackdir as Node key */
 struct CYapfShip1 : CYapfT<CYapfShip_TypesT<CYapfShip1, CFollowTrackWater    , CShipNodeListTrackDir> > {};
-/* YAPF type 2 - uses TileIndex/DiagDirection as Node key, allows 90-deg turns */
+/* YAPF type 2 - uses TileIndex/DiagDirection as Node key */
 struct CYapfShip2 : CYapfT<CYapfShip_TypesT<CYapfShip2, CFollowTrackWater    , CShipNodeListExitDir > > {};
-/* YAPF type 3 - uses TileIndex/Trackdir as Node key, forbids 90-deg turns */
-struct CYapfShip3 : CYapfT<CYapfShip_TypesT<CYapfShip3, CFollowTrackWaterNo90, CShipNodeListTrackDir> > {};
 
 /** Ship controller helper - path finder invoker */
 Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, ShipPathCache &path_cache)
 {
 	/* default is YAPF type 2 */
 	typedef Trackdir (*PfnChooseShipTrack)(const Ship*, TileIndex, DiagDirection, TrackBits, bool &path_found, ShipPathCache &path_cache);
-	PfnChooseShipTrack pfnChooseShipTrack = CYapfShip2::ChooseShipTrack; // default: ExitDir, allow 90-deg
+	PfnChooseShipTrack pfnChooseShipTrack = CYapfShip2::ChooseShipTrack; // default: ExitDir
 
 	/* check if non-default YAPF type needed */
-	if (_settings_game.pf.forbid_90_deg) {
-		pfnChooseShipTrack = &CYapfShip3::ChooseShipTrack; // Trackdir, forbid 90-deg
-	} else if (_settings_game.pf.yapf.disable_node_optimization) {
-		pfnChooseShipTrack = &CYapfShip1::ChooseShipTrack; // Trackdir, allow 90-deg
+	if (_settings_game.pf.yapf.disable_node_optimization) {
+		pfnChooseShipTrack = &CYapfShip1::ChooseShipTrack; // Trackdir
 	}
 
 	Trackdir td_ret = pfnChooseShipTrack(v, tile, enterdir, tracks, path_found, path_cache);
@@ -256,13 +252,11 @@ bool YapfShipCheckReverse(const Ship *v)
 	TileIndex tile = v->tile;
 
 	typedef bool (*PfnCheckReverseShip)(const Ship*, TileIndex, Trackdir, Trackdir);
-	PfnCheckReverseShip pfnCheckReverseShip = CYapfShip2::CheckShipReverse; // default: ExitDir, allow 90-deg
+	PfnCheckReverseShip pfnCheckReverseShip = CYapfShip2::CheckShipReverse; // default: ExitDir
 
 	/* check if non-default YAPF type needed */
-	if (_settings_game.pf.forbid_90_deg) {
-		pfnCheckReverseShip = &CYapfShip3::CheckShipReverse; // Trackdir, forbid 90-deg
-	} else if (_settings_game.pf.yapf.disable_node_optimization) {
-		pfnCheckReverseShip = &CYapfShip1::CheckShipReverse; // Trackdir, allow 90-deg
+	if (_settings_game.pf.yapf.disable_node_optimization) {
+		pfnCheckReverseShip = &CYapfShip1::CheckShipReverse; // Trackdir
 	}
 
 	bool reverse = pfnCheckReverseShip(v, tile, td, td_rev);
