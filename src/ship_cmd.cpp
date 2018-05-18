@@ -330,6 +330,9 @@ static bool CheckShipLeaveDepot(Ship *v)
 		return true;
 	}
 
+	/* Don't leave depot if no destination set */
+	if (v->dest_tile == 0) return true;
+
 	TileIndex tile = v->tile;
 	Axis axis = GetShipDepotAxis(tile);
 
