@@ -446,11 +446,38 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, Tr
 
 	bool path_found = true;
 	Track track;
-	switch (_settings_game.pf.pathfinder_for_ships) {
-		case VPF_OPF: track = OPFShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
-		case VPF_NPF: track = NPFShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
-		case VPF_YAPF: track = YapfShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
-		default: NOT_REACHED();
+
+	if (v->dest_tile == 0 || DistanceManhattan(tile, v->dest_tile) > 130) {
+		/* No destination or destination too far, don't invoke pathfinder. */
+		static const TrackBits direction_to_trackbits[DIR_END] = {
+			TRACK_BIT_LEFT  | TRACK_BIT_RIGHT, // DIR_N
+			TRACK_BIT_X,                       // DIR_NE
+			TRACK_BIT_UPPER | TRACK_BIT_LOWER, // DIR_E
+			TRACK_BIT_Y,                       // DIR_SE
+			TRACK_BIT_LEFT  | TRACK_BIT_RIGHT, // DIR_S
+			TRACK_BIT_X,                       // DIR_SW
+			TRACK_BIT_UPPER | TRACK_BIT_LOWER, // DIR_W
+			TRACK_BIT_Y,                       // DIR_NW
+		};
+
+		TrackBits next_tracks = direction_to_trackbits[v->direction] & tracks;
+		if (next_tracks != TRACK_BIT_NONE) {
+			/* Continue in same direction when possible. */
+			track = (Track)FindFirstBit(next_tracks);
+		} else {
+			/* Pick a random track. */
+			do {
+				track = (Track)RandomRange(TRACK_END);
+			} while ((TrackToTrackBits(track) & tracks) == TRACK_BIT_NONE);
+		}
+		path_found = false;
+	} else {
+		switch (_settings_game.pf.pathfinder_for_ships) {
+			case VPF_OPF: track = OPFShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
+			case VPF_NPF: track = NPFShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
+			case VPF_YAPF: track = YapfShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
+			default: NOT_REACHED();
+		}
 	}
 
 	v->HandlePathfindingResult(path_found);
