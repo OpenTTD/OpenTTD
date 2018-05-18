@@ -319,6 +319,14 @@ void Ship::UpdateDeltaXY()
 	this->z_extent      = 6;
 }
 
+/**
+ * Test-procedure for HasVehicleOnPos to check for a ship.
+ */
+static Vehicle *EnsureNoVisibleShipProc(Vehicle *v, void *data)
+{
+	return v->type == VEH_SHIP && (v->vehstatus & VS_HIDDEN) == 0 ? v : NULL;
+}
+
 static bool CheckShipLeaveDepot(Ship *v)
 {
 	if (!v->IsChainInDepot()) return false;
@@ -332,6 +340,10 @@ static bool CheckShipLeaveDepot(Ship *v)
 
 	/* Don't leave depot if no destination set */
 	if (v->dest_tile == 0) return true;
+
+	/* Don't leave depot if another vehicle is already entering/leaving */
+	/* This helps avoid CPU load if many ships are set to start at the same time */
+	if (HasVehicleOnPos(v->tile, NULL, &EnsureNoVisibleShipProc)) return true;
 
 	TileIndex tile = v->tile;
 	Axis axis = GetShipDepotAxis(tile);
