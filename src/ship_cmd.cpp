@@ -541,6 +541,56 @@ static const byte _ship_subcoord[4][6][3] = {
 	}
 };
 
+/**
+ * Test if a ship is in the centre of a lock and should move up or down.
+ * @param v Ship being tested.
+ * @return 0 if ship is not moving in lock, or -1 to move down, 1 to move up.
+ */
+static int ShipTestUpDownOnLock(const Ship *v)
+{
+	/* Suitable tile? */
+	if (!IsTileType(v->tile, MP_WATER) || !IsLock(v->tile) || GetLockPart(v->tile) != LOCK_PART_MIDDLE) return 0;
+
+	/* Must be at the centre of the lock */
+	if ((v->x_pos & 0xF) != 8 || (v->y_pos & 0xF) != 8) return 0;
+
+	DiagDirection diagdir = GetInclinedSlopeDirection(GetTileSlope(v->tile));
+	assert(IsValidDiagDirection(diagdir));
+
+	if (DirToDiagDir(v->direction) == diagdir) {
+		/* Move up */
+		return (v->z_pos < GetTileMaxZ(v->tile) * (int)TILE_HEIGHT) ? 1 : 0;
+	} else {
+		/* Move down */
+		return (v->z_pos > GetTileZ(v->tile) * (int)TILE_HEIGHT) ? -1 : 0;
+	}
+}
+
+/**
+ * Test and move a ship up or down in a lock.
+ * @param v Ship to move.
+ * @return true iff ship is moving up or down in a lock.
+ */
+static bool ShipMoveUpDownOnLock(Ship *v)
+{
+	/* Moving up/down through lock */
+	int dz = ShipTestUpDownOnLock(v);
+	if (dz == 0) return false;
+
+	if (v->cur_speed != 0) {
+		v->cur_speed = 0;
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+	}
+
+	if ((v->tick_counter & 7) == 0) {
+		v->z_pos += dz;
+		v->UpdatePosition();
+		v->UpdateViewport(true, true);
+	}
+
+	return true;
+}
+
 static void ShipController(Ship *v)
 {
 	uint32 r;
@@ -573,6 +623,8 @@ static void ShipController(Ship *v)
 		}
 		return;
 	}
+
+	if (ShipMoveUpDownOnLock(v)) return;
 
 	if (!ShipAccelerate(v)) return;
 
@@ -695,7 +747,6 @@ static void ShipController(Ship *v)
 	/* update image of ship, as well as delta XY */
 	v->x_pos = gp.x;
 	v->y_pos = gp.y;
-	v->z_pos = GetSlopePixelZ(gp.x, gp.y);
 
 getout:
 	v->UpdatePosition();
