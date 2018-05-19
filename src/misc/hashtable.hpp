@@ -161,12 +161,10 @@ protected:
 	/** static helper - return hash for the given key modulo number of slots */
 	inline static int CalcHash(const Tkey &key)
 	{
-		int32 hash = key.CalcHash();
-		if ((8 * Thash_bits) < 32) hash ^= hash >> (min(8 * Thash_bits, 31));
-		if ((4 * Thash_bits) < 32) hash ^= hash >> (min(4 * Thash_bits, 31));
-		if ((2 * Thash_bits) < 32) hash ^= hash >> (min(2 * Thash_bits, 31));
-		if ((1 * Thash_bits) < 32) hash ^= hash >> (min(1 * Thash_bits, 31));
-		hash &= (1 << Thash_bits) - 1;
+		uint32 hash = key.CalcHash();
+		hash -= (hash >> 17);          // hash * 131071 / 131072
+		hash -= (hash >> 5);           //   * 31 / 32
+		hash &= (1 << Thash_bits) - 1; //   modulo slots
 		return hash;
 	}
 
