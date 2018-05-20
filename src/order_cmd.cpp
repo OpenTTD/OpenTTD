@@ -23,6 +23,7 @@
 #include "core/random_func.hpp"
 #include "aircraft.h"
 #include "roadveh.h"
+#include "ship.h"
 #include "station_base.h"
 #include "waypoint_base.h"
 #include "company_base.h"
@@ -929,7 +930,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				dist = GetOrderDistance(prev, &new_order, v);
 			}
 
-			if (dist >= 130) {
+			if (dist >= SHIP_MAX_ORDER_DISTANCE) {
 				return_cmd_error(STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION);
 			}
 		}

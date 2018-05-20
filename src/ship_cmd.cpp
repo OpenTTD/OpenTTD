@@ -459,7 +459,7 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, Tr
 	bool path_found = true;
 	Track track;
 
-	if (v->dest_tile == 0 || DistanceManhattan(tile, v->dest_tile) > 130) {
+	if (v->dest_tile == 0 || DistanceManhattan(tile, v->dest_tile) > SHIP_MAX_ORDER_DISTANCE + 5) {
 		/* No destination or destination too far, don't invoke pathfinder. */
 		static const TrackBits direction_to_trackbits[DIR_END] = {
 			TRACK_BIT_LEFT  | TRACK_BIT_RIGHT, // DIR_N
