@@ -1946,26 +1946,27 @@ static const NWidgetPart _nested_company_widgets[] = {
 							NWidget(NWID_SPACER), SetFill(0, 1),
 						EndContainer(),
 					EndContainer(),
-
-
-					NWidget(NWID_VERTICAL), SetPIP(4, 2, 4),
-
-					// Give Money Widget
 					NWidget(NWID_SPACER), SetFill(1, 0),
 					NWidget(NWID_SELECTION, INVALID_COLOUR, WID_C_SELECT_GIVE_MONEY),
-					NWidget(NWID_VERTICAL),
-					NWidget(NWID_SPACER), SetFill(0, 1), SetMinimalSize(90, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_GIVE_MONEY), SetDataTip(STR_COMPANY_VIEW_GIVE_MONEY_BUTTON, STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP),
+						NWidget(NWID_VERTICAL),
+							NWidget(NWID_SPACER), SetFill(0, 1), SetMinimalSize(90, 0),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_GIVE_MONEY), SetDataTip(STR_COMPANY_VIEW_GIVE_MONEY_BUTTON, STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP),
+						EndContainer(),
 					EndContainer(),
-					EndContainer(),
-					//
-						NWidget(NWID_SPACER), SetMinimalSize(90, 0), SetFill(0, 1),
-						/* Multi player buttons. */
-						NWidget(NWID_HORIZONTAL),
+				EndContainer(),
+				/* Multi player buttons. */
+				NWidget(NWID_HORIZONTAL),
+					NWidget(NWID_SPACER), SetFill(1, 0),
+					NWidget(NWID_VERTICAL), SetPIP(4, 2, 4),
+						NWidget(NWID_SPACER), SetMinimalSize(95, 0), SetFill(0, 1),
+						NWidget(NWID_HORIZONTAL), SetPIP(0, 5, 0),
 							NWidget(WWT_EMPTY, COLOUR_GREY, WID_C_HAS_PASSWORD),
-							NWidget(NWID_SELECTION, INVALID_COLOUR, WID_C_SELECT_MULTIPLAYER),
-								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_COMPANY_PASSWORD), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_COMPANY_VIEW_PASSWORD_TOOLTIP),
-								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_COMPANY_JOIN), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_JOIN, STR_COMPANY_VIEW_JOIN_TOOLTIP),
+							NWidget(NWID_VERTICAL),
+								NWidget(NWID_SPACER), SetMinimalSize(90, 0), SetFill(0, 1),
+								NWidget(NWID_SELECTION, INVALID_COLOUR, WID_C_SELECT_MULTIPLAYER),
+									NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_COMPANY_PASSWORD), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_COMPANY_VIEW_PASSWORD_TOOLTIP),
+									NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_COMPANY_JOIN), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_JOIN, STR_COMPANY_VIEW_JOIN_TOOLTIP),
+								EndContainer(),
 							EndContainer(),
 						EndContainer(),
 					EndContainer(),
@@ -2086,9 +2087,9 @@ struct CompanyWindow : Window
 			}
 
 			/* Enable/disable 'Give money' button. */
-			plane = ((local || (_local_company == COMPANY_SPECTATOR)) ? SZSP_NONE : 0);
+			plane = ((local || (_local_company == COMPANY_SPECTATOR) || !_networking ) ? SZSP_NONE : 0);
 			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_GIVE_MONEY);
-			if (plane != wi->shown_plane) {
+			if (plane != wi->shown_plane || false) {
 				wi->SetDisplayedPlane(plane);
 				reinit = true;
 			}
@@ -2364,10 +2365,10 @@ struct CompanyWindow : Window
 				ShowCompanyInfrastructure((CompanyID)this->window_number);
 				break;
 
-		case WID_C_GIVE_MONEY:
-			this->query_widget = WID_C_GIVE_MONEY;
-			ShowQueryString(STR_EMPTY, STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION, 30, this, CS_NUMERAL, QSF_NONE);
-			break;
+			case WID_C_GIVE_MONEY:
+				this->query_widget = WID_C_GIVE_MONEY;
+				ShowQueryString(STR_EMPTY, STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION, 30, this, CS_NUMERAL, QSF_NONE);
+				break;
 
 			case WID_C_BUY_SHARE:
 				DoCommandP(0, this->window_number, 0, CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS));
