@@ -521,6 +521,7 @@
     <ClInclude Include="..\src\group_gui.h" />
     <ClInclude Include="..\src\group_type.h" />
     <ClInclude Include="..\src\gui.h" />
+    <ClInclude Include="..\src\guitimer_func.h" />
     <ClInclude Include="..\src\heightmap.h" />
     <ClInclude Include="..\src\highscore.h" />
     <ClInclude Include="..\src\hotkeys.h" />

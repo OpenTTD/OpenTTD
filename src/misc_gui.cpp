@@ -26,6 +26,7 @@
 #include "core/geometry_func.hpp"
 #include "newgrf_debug.h"
 #include "zoom_func.h"
+#include "guitimer_func.h"
 
 #include "widgets/misc_widget.h"
 
@@ -458,13 +459,14 @@ struct AboutWindow : public Window {
 	static const int num_visible_lines = 19; ///< The number of lines visible simultaneously
 
 	static const uint TIMER_INTERVAL = 150;  ///< Scrolling interval in ms
-	uint timer;
+	GUITimer timer;
 
 	AboutWindow() : Window(&_about_desc)
 	{
 		this->InitNested(WN_GAME_OPTIONS_ABOUT);
 
 		this->text_position = this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;
+		this->timer.SetInterval(TIMER_INTERVAL);
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -505,7 +507,7 @@ struct AboutWindow : public Window {
 
 	virtual void OnRealtimeTick(uint delta_ms)
 	{
-		uint count = CountIntervalElapsed(this->timer, delta_ms, TIMER_INTERVAL);
+		uint count = this->timer.CountElapsed(delta_ms);
 		if (count > 0) {
 			this->text_position -= count;
 			/* If the last text has scrolled start a new from the start */

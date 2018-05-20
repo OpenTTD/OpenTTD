@@ -56,36 +56,4 @@ void DeleteWindowByClass(WindowClass cls);
 bool EditBoxInGlobalFocus();
 Point GetCaretPosition();
 
-/**
- * Count how many times the interval has elapsed, and update the timer.
- * Use to ensure a specific amount of events happen within a timeframe, e.g. for animation.
- * The timer value does not need to be initialised.
- * @param timer Timer to test. Value will be increased.
- * @param delta Time since last test.
- * @param interval Timing interval.
- * @return Number of times the interval has elapsed.
- */
-static inline uint CountIntervalElapsed(uint &timer, uint delta, uint interval)
-{
-	uint count = delta / interval;
-	if (timer + (delta % interval) >= interval) count++;
-	timer = (timer + delta) % interval;
-	return count;
-}
-
-/**
- * Test if a timer has elapsed, and update the timer.
- * Use to ensure an event happens only once within a timeframe, e.g. for window updates.
- * The timer value must be initialised in order for the timer to elapsed.
- * @param timer Timer to test. Value will be decreased.
- * @param delta Time since last test.
- * @return True iff the timer has elapsed.
- */
-static inline bool TimerElapsed(int &timer, uint delta)
-{
-	if (timer <= 0) return false;
-	timer -= delta;
-	return timer <= 0;
-}
-
 #endif /* WINDOW_FUNC_H */

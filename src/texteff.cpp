@@ -16,7 +16,7 @@
 #include "core/smallvec_type.hpp"
 #include "viewport_func.h"
 #include "settings_type.h"
-#include "window_func.h"
+#include "guitimer_func.h"
 
 #include "safeguards.h"
 
@@ -85,8 +85,8 @@ void RemoveTextEffect(TextEffectID te_id)
 
 void MoveAllTextEffects(uint delta_ms)
 {
-	static uint texteffecttimer = 0;
-	uint count = CountIntervalElapsed(texteffecttimer, delta_ms, MILLISECONDS_PER_TICK);
+	static GUITimer texteffecttimer = GUITimer(MILLISECONDS_PER_TICK);
+	uint count = texteffecttimer.CountElapsed(delta_ms);
 	if (count == 0) return;
 
 	const TextEffect *end = _text_effects.End();

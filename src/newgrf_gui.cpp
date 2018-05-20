@@ -30,6 +30,7 @@
 #include "textfile_gui.h"
 #include "tilehighlight_func.h"
 #include "fios.h"
+#include "guitimer_func.h"
 
 #include "widgets/newgrf_widget.h"
 #include "widgets/misc_widget.h"
@@ -150,7 +151,7 @@ struct NewGRFParametersWindow : public Window {
 	bool clicked_increase; ///< True if the increase button was clicked, false for the decrease button.
 	bool clicked_dropdown; ///< Whether the dropdown is open.
 	bool closing_dropdown; ///< True, if the dropdown list is currently closing.
-	int timeout;           ///< How long before we unpress the last-pressed button?
+	GUITimer timeout;      ///< How long before we unpress the last-pressed button?
 	uint clicked_row;      ///< The selected parameter
 	int line_height;       ///< Height of a row in the matrix widget.
 	Scrollbar *vscroll;
@@ -162,7 +163,6 @@ struct NewGRFParametersWindow : public Window {
 		clicked_button(UINT_MAX),
 		clicked_dropdown(false),
 		closing_dropdown(false),
-		timeout(0),
 		clicked_row(UINT_MAX),
 		editable(editable)
 	{
@@ -403,7 +403,7 @@ struct NewGRFParametersWindow : public Window {
 						par_info->SetValue(this->grf_config, val);
 
 						this->clicked_button = num;
-						this->timeout = 150;
+						this->timeout.SetInterval(150);
 					}
 				} else if (par_info->type == PTYPE_UINT_ENUM && !par_info->complete_labels && click_count >= 2) {
 					/* Display a query box so users can enter a custom value. */
@@ -485,7 +485,7 @@ struct NewGRFParametersWindow : public Window {
 
 	virtual void OnRealtimeTick(uint delta_ms)
 	{
-		if (TimerElapsed(this->timeout, delta_ms)) {
+		if (timeout.Elapsed(delta_ms)) {
 			this->clicked_button = UINT_MAX;
 			this->SetDirty();
 		}

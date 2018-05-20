@@ -23,6 +23,7 @@
 #include "sound_func.h"
 #include "window_func.h"
 #include "company_base.h"
+#include "guitimer_func.h"
 
 #include "smallmap_gui.h"
 
@@ -1055,7 +1056,7 @@ void SmallMapWindow::SetupWidgetData()
 	this->GetWidget<NWidgetStacked>(WID_SM_SELECT_BUTTONS)->SetDisplayedPlane(plane);
 }
 
-SmallMapWindow::SmallMapWindow(WindowDesc *desc, int window_number) : Window(desc), refresh(FORCE_REFRESH_PERIOD)
+SmallMapWindow::SmallMapWindow(WindowDesc *desc, int window_number) : Window(desc), refresh(GUITimer(FORCE_REFRESH_PERIOD))
 {
 	_smallmap_industry_highlight = INVALID_INDUSTRYTYPE;
 	this->overlay = new LinkGraphOverlay(this, WID_SM_MAP, 0, this->GetOverlayCompanyMask(), 1);
@@ -1390,7 +1391,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 	}
 	if (new_highlight != _smallmap_industry_highlight) {
 		_smallmap_industry_highlight = new_highlight;
-		this->refresh = _smallmap_industry_highlight != INVALID_INDUSTRYTYPE ? BLINK_PERIOD : FORCE_REFRESH_PERIOD;
+		this->refresh.SetInterval(_smallmap_industry_highlight != INVALID_INDUSTRYTYPE ? BLINK_PERIOD : FORCE_REFRESH_PERIOD);
 		_smallmap_industry_highlight_state = true;
 		this->SetDirty();
 	}
@@ -1573,7 +1574,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 /* virtual */ void SmallMapWindow::OnRealtimeTick(uint delta_ms)
 {
 	/* Update the window every now and then */
-	if (!TimerElapsed(this->refresh, delta_ms)) return;
+	if (!this->refresh.Elapsed(delta_ms)) return;
 
 	if (this->map_type == SMT_LINKSTATS) {
 		uint32 company_mask = this->GetOverlayCompanyMask();
@@ -1585,7 +1586,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 	}
 	_smallmap_industry_highlight_state = !_smallmap_industry_highlight_state;
 
-	this->refresh = _smallmap_industry_highlight != INVALID_INDUSTRYTYPE ? BLINK_PERIOD : FORCE_REFRESH_PERIOD;
+	this->refresh.SetInterval(_smallmap_industry_highlight != INVALID_INDUSTRYTYPE ? BLINK_PERIOD : FORCE_REFRESH_PERIOD);
 	this->SetDirty();
 }
 
