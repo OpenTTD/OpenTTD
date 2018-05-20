@@ -2090,7 +2090,6 @@ STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spectators
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Enter the amount of money you want to give
 STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spectator
 
 # Network set password
@@ -3243,6 +3242,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Relocate
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rebuild company headquarters elsewhere for 1% cost of company value. Shift+Click shows estimated cost without relocating HQ
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Details
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}View detailed infrastructure counts
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Give money
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Transfer money to a different company
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}New Face
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Select new face for manager
@@ -3260,6 +3261,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sell 25%
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Company Name
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Manager's Name
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Enter the amount of money you want to give
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}We are looking for a transport company to take-over our company.{}{}Do you want to purchase {COMPANY} for {CURRENCY_LONG}?
 

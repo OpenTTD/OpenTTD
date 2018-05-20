@@ -71,19 +71,6 @@ void CcGiveMoney(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
 void HandleOnEditText(const char *str)
 {
 	switch (_rename_what) {
-#ifdef ENABLE_NETWORK
-	case 3: { // Give money, you can only give money in excess of loan
-		const Company *c = Company::GetIfValid(_local_company);
-		if (c == NULL) break;
-		Money money = min(c->money - c->current_loan, (Money)(atoi(str) / _currency->rate));
-
-		uint32 money_c = Clamp(ClampToI32(money), 0, 20000000); // Clamp between 20 million and 0
-
-		/* Give 'id' the money, and subtract it from ourself */
-		DoCommandP(0, money_c, _rename_id, CMD_GIVE_MONEY | CMD_MSG(STR_ERROR_INSUFFICIENT_FUNDS), CcGiveMoney, str);
-		break;
-	}
-#endif /* ENABLE_NETWORK */
 		default: NOT_REACHED();
 	}
 
@@ -122,15 +109,6 @@ void CcPlaySound_EXPLOSION(const CommandCost &result, TileIndex tile, uint32 p1,
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_12_EXPLOSION, tile);
 }
-
-#ifdef ENABLE_NETWORK
-void ShowNetworkGiveMoneyWindow(CompanyID company)
-{
-	_rename_id = company;
-	_rename_what = 3;
-	ShowQueryString(STR_EMPTY, STR_NETWORK_GIVE_MONEY_CAPTION, 30, NULL, CS_NUMERAL, QSF_NONE);
-}
-#endif /* ENABLE_NETWORK */
 
 
 /**
