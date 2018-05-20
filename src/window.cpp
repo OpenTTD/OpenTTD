@@ -3156,9 +3156,9 @@ void UpdateWindows()
 				w->SetDirty();
 			}
 		}
-
-		DrawDirtyBlocks();
 	}
+
+	DrawDirtyBlocks();
 
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		/* Update viewport only if window is not shaded. */
