@@ -96,7 +96,13 @@ struct CompanyProperties {
 	CompanyEconomyEntry old_economy[MAX_HISTORY_QUARTERS]; ///< Economic data of the company of the last #MAX_HISTORY_QUARTERS quarters.
 	byte num_valid_stat_ent;                               ///< Number of valid statistical entries in #old_economy.
 
-	CompanyProperties() : name(NULL), president_name(NULL) {}
+	// TODO: Change some of these member variables to use relevant INVALID_xxx constants
+	CompanyProperties()
+		: name_2(0), name_1(0), name(NULL), president_name_1(0), president_name_2(0), president_name(NULL),
+		  face(0), money(0), money_fraction(0), current_loan(0), colour(0), block_preview(0),
+		  location_of_HQ(0), last_build_coordinate(0), share_owners(), inaugurated_year(0),
+		  months_of_bankruptcy(0), bankrupt_asked(0), bankrupt_timeout(0), bankrupt_value(0),
+		  terraform_limit(0), clear_limit(0), tree_limit(0), is_ai(false) {}
 
 	~CompanyProperties()
 	{
