@@ -91,14 +91,8 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)..\objs\$(Platform)\$(Configuration)\</OutDir>
     <LocalDebuggerWorkingDirectory>$(ProjectDir)..\bin</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>A:\OpenTTD Sourcecode\OpenTTD essentials\win64\include;A:\OpenTTD Sourcecode\OpenTTD essentials\shared\include;$(IncludePath)</IncludePath>
-    <LibraryPath>A:\OpenTTD Sourcecode\OpenTTD essentials\win64\library;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>A:\OpenTTD Sourcecode\OpenTTD essentials\win64\include;A:\OpenTTD Sourcecode\OpenTTD essentials\shared\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <LibraryPath>A:\OpenTTD Sourcecode\OpenTTD essentials\win64\library;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
       <TypeLibraryName>.\Release/openttd.tlb</TypeLibraryName>
