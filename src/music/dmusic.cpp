@@ -20,22 +20,102 @@
 #include "../os/windows/win32.h"
 #include "../core/mem_func.hpp"
 #include "../thread/thread.h"
+#include "../fileio_func.h"
 #include "dmusic.h"
 #include "midifile.hpp"
 #include "midi.h"
 
 #include <windows.h>
-#undef FACILITY_DIRECTMUSIC // Needed for newer Windows SDK version.
 #include <dmksctrl.h>
-#include <dmusici.h>
 #include <dmusicc.h>
 
 #include "../safeguards.h"
+
+#pragma comment(lib, "ole32.lib")
 
 
 static const int MS_TO_REFTIME = 1000 * 10; ///< DirectMusic time base is 100 ns.
 static const int MIDITIME_TO_REFTIME = 10;  ///< Time base of the midi file reader is 1 us.
 
+
+#define FOURCC_INFO  mmioFOURCC('I','N','F','O')
+#define FOURCC_fmt   mmioFOURCC('f','m','t',' ')
+#define FOURCC_data  mmioFOURCC('d','a','t','a')
+
+/** A DLS file. */
+struct DLSFile {
+	/** An instrument region maps a note range to wave data. */
+	struct DLSRegion {
+		RGNHEADER hdr;
+		WAVELINK wave;
+		WSMPL wave_sample;
+
+		std::vector<WLOOP> wave_loops;
+		std::vector<CONNECTION> articulators;
+	};
+
+	/** Instrument definition read from a DLS file. */
+	struct DLSInstrument {
+		INSTHEADER hdr;
+
+		std::vector<CONNECTION> articulators;
+		std::vector<DLSRegion> regions;
+	};
+
+	/** Wave data definition from a DLS file. */
+	struct DLSWave {
+		long file_offset;
+
+		PCMWAVEFORMAT fmt;
+		std::vector<BYTE> data;
+
+		WSMPL wave_sample;
+		std::vector<WLOOP> wave_loops;
+
+		bool operator ==(long offset) const {
+			return this->file_offset == offset;
+		}
+	};
+
+	std::vector<DLSInstrument> instruments;
+	std::vector<POOLCUE> pool_cues;
+	std::vector<DLSWave> waves;
+
+	/** Try loading a DLS file into memory. */
+	bool LoadFile(const TCHAR *file);
+
+private:
+	/** Load an articulation structure from a DLS file. */
+	bool ReadDLSArticulation(FILE *f, DWORD list_length, std::vector<CONNECTION> &out);
+	/** Load a list of regions from a DLS file. */
+	bool ReadDLSRegionList(FILE *f, DWORD list_length, DLSInstrument &instrument);
+	/** Load a single region from a DLS file. */
+	bool ReadDLSRegion(FILE *f, DWORD list_length, std::vector<DLSRegion> &out);
+	/** Load a list of instruments from a DLS file. */
+	bool ReadDLSInstrumentList(FILE *f, DWORD list_length);
+	/** Load a single instrument from a DLS file. */
+	bool ReadDLSInstrument(FILE *f, DWORD list_length);
+	/** Load a list of waves from a DLS file. */
+	bool ReadDLSWaveList(FILE *f, DWORD list_length);
+	/** Load a single wave from a DLS file. */
+	bool ReadDLSWave(FILE *f, DWORD list_length, long offset);
+};
+
+#pragma pack(2)
+/** A RIFF chunk header. */
+struct ChunkHeader {
+	FOURCC type;  ///< Chunk type.
+	DWORD length; ///< Length of the chunk, not including the chunk header itself.
+};
+
+/** Buffer format for a DLS wave download. */
+struct WAVE_DOWNLOAD {
+	DMUS_DOWNLOADINFO   dlInfo;
+	ULONG               ulOffsetTable[2];
+	DMUS_WAVE           dmWave;
+	DMUS_WAVEDATA       dmWaveData;
+};
+#pragma pack()
 
 struct PlaybackSegment {
 	uint32 start, end;
@@ -70,12 +150,375 @@ static IDirectMusicPort *_port = NULL;
 /** The buffer object collects the data to sent. */
 static IDirectMusicBuffer *_buffer = NULL;
 /** List of downloaded DLS instruments. */
-static std::vector<IDirectMusicDownloadedInstrument *> _loaded_instruments;
+static std::vector<IDirectMusicDownload *> _dls_downloads;
 
 
 static FMusicDriver_DMusic iFMusicDriver_DMusic;
 
 
+bool DLSFile::ReadDLSArticulation(FILE *f, DWORD list_length, std::vector<CONNECTION> &out)
+{
+	while (list_length > 0) {
+		ChunkHeader chunk;
+		if (fread(&chunk, sizeof(chunk), 1, f) != 1) return false;
+		list_length -= chunk.length + sizeof(chunk);
+
+		if (chunk.type == FOURCC_ART1) {
+			CONNECTIONLIST conns;
+			if (fread(&conns, sizeof(conns), 1, f) != 1) return false;
+			fseek(f, conns.cbSize - sizeof(conns), SEEK_CUR);
+
+			/* Read all defined articulations. */
+			for (ULONG i = 0; i < conns.cConnections; i++) {
+				CONNECTION con;
+				if (fread(&con, sizeof(con), 1, f) != 1) return false;
+				out.push_back(con);
+			}
+		} else {
+			fseek(f, chunk.length, SEEK_CUR);
+		}
+	}
+
+	return true;
+}
+
+bool DLSFile::ReadDLSRegion(FILE *f, DWORD list_length, std::vector<DLSRegion> &out)
+{
+	out.push_back(DLSRegion());
+	DLSRegion &region = out.back();
+
+	/* Set default values. */
+	region.wave_sample.cbSize = 0;
+
+	while (list_length > 0) {
+		ChunkHeader chunk;
+		if (fread(&chunk, sizeof(chunk), 1, f) != 1) return false;
+		list_length -= chunk.length + sizeof(chunk);
+
+		if (chunk.type == FOURCC_LIST) {
+			/* Unwrap list header. */
+			if (fread(&chunk.type, sizeof(chunk.type), 1, f) != 1) return false;
+			chunk.length -= sizeof(chunk.type);
+		}
+
+		switch (chunk.type) {
+			case FOURCC_RGNH:
+				if (fread(&region.hdr, sizeof(region.hdr), 1, f) != 1) return false;
+				break;
+
+			case FOURCC_WSMP:
+				if (fread(&region.wave_sample, sizeof(region.wave_sample), 1, f) != 1) return false;
+				fseek(f, region.wave_sample.cbSize - sizeof(region.wave_sample), SEEK_CUR);
+
+				/* Read all defined sample loops. */
+				for (ULONG i = 0; i < region.wave_sample.cSampleLoops; i++) {
+					WLOOP loop;
+					if (fread(&loop, sizeof(loop), 1, f) != 1) return false;
+					region.wave_loops.push_back(loop);
+				}
+				break;
+
+			case FOURCC_WLNK:
+				if (fread(&region.wave, sizeof(region.wave), 1, f) != 1) return false;
+				break;
+
+			case FOURCC_LART: // List chunk
+				if (!this->ReadDLSArticulation(f, chunk.length, region.articulators)) return false;
+				break;
+
+			case FOURCC_INFO:
+				/* We don't care about info stuff. */
+				fseek(f, chunk.length, SEEK_CUR);
+				break;
+
+			default:
+				DEBUG(driver, 7, "DLS: Ignoring unkown chunk %c%c%c%c", chunk.type & 0xFF, (chunk.type >> 8) & 0xFF, (chunk.type >> 16) & 0xFF, (chunk.type >> 24) & 0xFF);
+				fseek(f, chunk.length, SEEK_CUR);
+				break;
+		}
+	}
+
+	return true;
+}
+
+bool DLSFile::ReadDLSRegionList(FILE *f, DWORD list_length, DLSInstrument &instrument)
+{
+	while (list_length > 0) {
+		ChunkHeader chunk;
+		if (fread(&chunk, sizeof(chunk), 1, f) != 1) return false;
+		list_length -= chunk.length + sizeof(chunk);
+
+		if (chunk.type == FOURCC_LIST) {
+			FOURCC list_type;
+			if (fread(&list_type, sizeof(list_type), 1, f) != 1) return false;
+
+			if (list_type == FOURCC_RGN) {
+				this->ReadDLSRegion(f, chunk.length - sizeof(list_type), instrument.regions);
+			} else {
+				DEBUG(driver, 7, "DLS: Ignoring unkown list chunk of type %c%c%c%c", list_type & 0xFF, (list_type >> 8) & 0xFF, (list_type >> 16) & 0xFF, (list_type >> 24) & 0xFF);
+				fseek(f, chunk.length - sizeof(list_type), SEEK_CUR);
+			}
+		} else {
+			DEBUG(driver, 7, "DLS: Ignoring chunk %c%c%c%c", chunk.type & 0xFF, (chunk.type >> 8) & 0xFF, (chunk.type >> 16) & 0xFF, (chunk.type >> 24) & 0xFF);
+			fseek(f, chunk.length, SEEK_CUR);
+		}
+	}
+
+	return true;
+}
+
+bool DLSFile::ReadDLSInstrument(FILE *f, DWORD list_length)
+{
+	this->instruments.push_back(DLSInstrument());
+	DLSInstrument &instrument = this->instruments.back();
+
+	while (list_length > 0) {
+		ChunkHeader chunk;
+		if (fread(&chunk, sizeof(chunk), 1, f) != 1) return false;
+		list_length -= chunk.length + sizeof(chunk);
+
+		if (chunk.type == FOURCC_LIST) {
+			/* Unwrap list header. */
+			if (fread(&chunk.type, sizeof(chunk.type), 1, f) != 1) return false;
+			chunk.length -= sizeof(chunk.type);
+		}
+
+		switch (chunk.type) {
+			case FOURCC_INSH:
+				if (fread(&instrument.hdr, sizeof(instrument.hdr), 1, f) != 1) return false;
+				break;
+
+			case FOURCC_LART: // List chunk
+				if (!this->ReadDLSArticulation(f, chunk.length, instrument.articulators)) return false;
+				break;
+
+			case FOURCC_LRGN: // List chunk
+				if (!this->ReadDLSRegionList(f, chunk.length, instrument)) return false;
+				break;
+
+			case FOURCC_INFO:
+				/* We don't care about info stuff. */
+				fseek(f, chunk.length, SEEK_CUR);
+				break;
+
+			default:
+				DEBUG(driver, 7, "DLS: Ignoring unkown chunk %c%c%c%c", chunk.type & 0xFF, (chunk.type >> 8) & 0xFF, (chunk.type >> 16) & 0xFF, (chunk.type >> 24) & 0xFF);
+				fseek(f, chunk.length, SEEK_CUR);
+				break;
+		}
+	}
+
+	return true;
+}
+
+bool DLSFile::ReadDLSInstrumentList(FILE *f, DWORD list_length)
+{
+	while (list_length > 0) {
+		ChunkHeader chunk;
+		if (fread(&chunk, sizeof(chunk), 1, f) != 1) return false;
+		list_length -= chunk.length + sizeof(chunk);
+
+		if (chunk.type == FOURCC_LIST) {
+			FOURCC list_type;
+			if (fread(&list_type, sizeof(list_type), 1, f) != 1) return false;
+
+			if (list_type == FOURCC_INS) {
+				DEBUG(driver, 6, "DLS: Reading instrument %d", (int)instruments.size());
+
+				if (!this->ReadDLSInstrument(f, chunk.length - sizeof(list_type))) return false;
+			} else {
+				DEBUG(driver, 7, "DLS: Ignoring unkown list chunk of type %c%c%c%c", list_type & 0xFF, (list_type >> 8) & 0xFF, (list_type >> 16) & 0xFF, (list_type >> 24) & 0xFF);
+				fseek(f, chunk.length - sizeof(list_type), SEEK_CUR);
+			}
+		} else {
+			DEBUG(driver, 7, "DLS: Ignoring chunk %c%c%c%c", chunk.type & 0xFF, (chunk.type >> 8) & 0xFF, (chunk.type >> 16) & 0xFF, (chunk.type >> 24) & 0xFF);
+			fseek(f, chunk.length, SEEK_CUR);
+		}
+	}
+
+	return true;
+}
+
+bool DLSFile::ReadDLSWave(FILE *f, DWORD list_length, long offset)
+{
+	this->waves.push_back(DLSWave());
+	DLSWave &wave = this->waves.back();
+
+	/* Set default values. */
+	MemSetT(&wave.wave_sample, 0);
+	wave.wave_sample.cbSize = sizeof(WSMPL);
+	wave.wave_sample.usUnityNote = 60;
+	wave.file_offset = offset; // Store file offset so we can resolve the wave pool table later on.
+
+	while (list_length > 0) {
+		ChunkHeader chunk;
+		if (fread(&chunk, sizeof(chunk), 1, f) != 1) return false;
+		list_length -= chunk.length + sizeof(chunk);
+
+		if (chunk.type == FOURCC_LIST) {
+			/* Unwrap list header. */
+			if (fread(&chunk.type, sizeof(chunk.type), 1, f) != 1) return false;
+			chunk.length -= sizeof(chunk.type);
+		}
+
+		switch (chunk.type) {
+			case FOURCC_fmt:
+				if (fread(&wave.fmt, sizeof(wave.fmt), 1, f) != 1) return false;
+				if (chunk.length > sizeof(wave.fmt)) fseek(f, chunk.length - sizeof(wave.fmt), SEEK_CUR);
+				break;
+
+			case FOURCC_WSMP:
+				if (fread(&wave.wave_sample, sizeof(wave.wave_sample), 1, f) != 1) return false;
+				fseek(f, wave.wave_sample.cbSize - sizeof(wave.wave_sample), SEEK_CUR);
+
+				/* Read all defined sample loops. */
+				for (ULONG i = 0; i < wave.wave_sample.cSampleLoops; i++) {
+					WLOOP loop;
+					if (fread(&loop, sizeof(loop), 1, f) != 1) return false;
+					wave.wave_loops.push_back(loop);
+				}
+				break;
+
+			case FOURCC_data:
+				wave.data.resize(chunk.length);
+				if (fread(&wave.data[0], sizeof(BYTE), wave.data.size(), f) != wave.data.size()) return false;
+				break;
+
+			case FOURCC_INFO:
+				/* We don't care about info stuff. */
+				fseek(f, chunk.length, SEEK_CUR);
+				break;
+
+			default:
+				DEBUG(driver, 7, "DLS: Ignoring unkown chunk %c%c%c%c", chunk.type & 0xFF, (chunk.type >> 8) & 0xFF, (chunk.type >> 16) & 0xFF, (chunk.type >> 24) & 0xFF);
+				fseek(f, chunk.length, SEEK_CUR);
+				break;
+		}
+	}
+
+	return true;
+}
+
+bool DLSFile::ReadDLSWaveList(FILE *f, DWORD list_length)
+{
+	long base_offset = ftell(f);
+
+	while (list_length > 0) {
+		long chunk_offset = ftell(f);
+
+		ChunkHeader chunk;
+		if (fread(&chunk, sizeof(chunk), 1, f) != 1) return false;
+		list_length -= chunk.length + sizeof(chunk);
+
+		if (chunk.type == FOURCC_LIST) {
+			FOURCC list_type;
+			if (fread(&list_type, sizeof(list_type), 1, f) != 1) return false;
+
+			if (list_type == FOURCC_wave) {
+				DEBUG(driver, 6, "DLS: Reading wave %d", (int)waves.size());
+
+				if (!this->ReadDLSWave(f, chunk.length - sizeof(list_type), chunk_offset - base_offset)) return false;
+			} else {
+				DEBUG(driver, 7, "DLS: Ignoring unkown list chunk of type %c%c%c%c", list_type & 0xFF, (list_type >> 8) & 0xFF, (list_type >> 16) & 0xFF, (list_type >> 24) & 0xFF);
+				fseek(f, chunk.length - sizeof(list_type), SEEK_CUR);
+			}
+		} else {
+			DEBUG(driver, 7, "DLS: Ignoring chunk %c%c%c%c", chunk.type & 0xFF, (chunk.type >> 8) & 0xFF, (chunk.type >> 16) & 0xFF, (chunk.type >> 24) & 0xFF);
+			fseek(f, chunk.length, SEEK_CUR);
+		}
+	}
+
+	return true;
+}
+
+bool DLSFile::LoadFile(const TCHAR *file)
+{
+	DEBUG(driver, 2, "DMusic: Try to load DLS file %s", FS2OTTD(file));
+
+	FILE *f = _tfopen(file, _T("rb"));
+	if (f == NULL) return false;
+
+	FileCloser f_scope(f);
+
+	/* Check DLS file header. */
+	ChunkHeader hdr;
+	FOURCC dls_type;
+	if (fread(&hdr, sizeof(hdr), 1, f) != 1) return false;
+	if (fread(&dls_type, sizeof(dls_type), 1, f) != 1) return false;
+	if (hdr.type != FOURCC_RIFF || dls_type != FOURCC_DLS) return false;
+
+	hdr.length -= sizeof(FOURCC);
+
+	DEBUG(driver, 2, "DMusic: Parsing DLS file");
+
+	DLSHEADER header;
+	MemSetT(&header, 0);
+
+	/* Iterate over all chunks in the file. */
+	while (hdr.length > 0) {
+		ChunkHeader chunk;
+		if (fread(&chunk, sizeof(chunk), 1, f) != 1) return false;
+		hdr.length -= chunk.length + sizeof(chunk);
+
+		if (chunk.type == FOURCC_LIST) {
+			/* Unwrap list header. */
+			if (fread(&chunk.type, sizeof(chunk.type), 1, f) != 1) return false;
+			chunk.length -= sizeof(chunk.type);
+		}
+
+		switch (chunk.type) {
+			case FOURCC_COLH:
+				if (fread(&header, sizeof(header), 1, f) != 1) return false;
+				break;
+
+			case FOURCC_LINS: // List chunk
+				if (!this->ReadDLSInstrumentList(f, chunk.length)) return false;
+				break;
+
+			case FOURCC_WVPL: // List chunk
+				if (!this->ReadDLSWaveList(f, chunk.length)) return false;
+				break;
+
+			case FOURCC_PTBL:
+				POOLTABLE ptbl;
+				if (fread(&ptbl, sizeof(ptbl), 1, f) != 1) return false;
+				fseek(f, ptbl.cbSize - sizeof(ptbl), SEEK_CUR);
+
+				/* Read all defined cues. */
+				for (ULONG i = 0; i < ptbl.cCues; i++) {
+					POOLCUE cue;
+					if (fread(&cue, sizeof(cue), 1, f) != 1) return false;
+					this->pool_cues.push_back(cue);
+				}
+				break;
+
+			case FOURCC_INFO:
+				/* We don't care about info stuff. */
+				fseek(f, chunk.length, SEEK_CUR);
+				break;
+
+			default:
+				DEBUG(driver, 7, "DLS: Ignoring unkown chunk %c%c%c%c", chunk.type & 0xFF, (chunk.type >> 8) & 0xFF, (chunk.type >> 16) & 0xFF, (chunk.type >> 24) & 0xFF);
+				fseek(f, chunk.length, SEEK_CUR);
+				break;
+		}
+	}
+
+	/* Have we read as many instruments as indicated? */
+	if (header.cInstruments != this->instruments.size()) return false;
+
+	/* Resolve wave pool table. */
+	for (std::vector<POOLCUE>::iterator cue = this->pool_cues.begin(); cue != this->pool_cues.end(); cue++) {
+		std::vector<DLSWave>::iterator w = std::find(this->waves.begin(), this->waves.end(), cue->ulOffset);
+		if (w != this->waves.end()) {
+			cue->ulOffset = (ULONG)(w - this->waves.begin());
+		} else {
+			cue->ulOffset = 0;
+		}
+	}
+
+	return true;
+}
 
 
 static byte ScaleVolume(byte original, byte scale)
@@ -405,48 +848,236 @@ static void MidiThreadProc(void *)
 	clock->Release();
 }
 
-static const char *LoadDefaultDLSFile()
+static void * DownloadArticulationData(int base_offset, void *data, const std::vector<CONNECTION> &artic)
+{
+	DMUS_ARTICULATION2 *art = (DMUS_ARTICULATION2 *)data;
+	art->ulArtIdx = base_offset + 1;
+	art->ulFirstExtCkIdx = 0;
+	art->ulNextArtIdx = 0;
+
+	CONNECTIONLIST *con_list = (CONNECTIONLIST *)(art + 1);
+	con_list->cbSize = sizeof(CONNECTIONLIST);
+	con_list->cConnections = (ULONG)artic.size();
+	MemCpyT((CONNECTION *)(con_list + 1), &artic.front(), artic.size());
+
+	return (CONNECTION *)(con_list + 1) + artic.size();
+}
+
+static const char *LoadDefaultDLSFile(const char *user_dls)
 {
 	DMUS_PORTCAPS caps;
 	MemSetT(&caps, 0);
 	caps.dwSize = sizeof(DMUS_PORTCAPS);
 	_port->GetCaps(&caps);
 
+	/* Nothing to unless it is a synth with instrument download that doesn't come with GM voices by default. */
 	if ((caps.dwFlags & (DMUS_PC_DLS | DMUS_PC_DLS2)) != 0 && (caps.dwFlags & DMUS_PC_GMINHARDWARE) == 0) {
-		/* DLS synthesizer and no built-in GM sound set, need to download one. */
-		IDirectMusicLoader *loader = NULL;
-		proc.CoCreateInstance(CLSID_DirectMusicLoader, NULL, CLSCTX_INPROC, IID_IDirectMusicLoader, (LPVOID *)&loader);
-		if (loader == NULL) return "Can't create DLS loader";
+		DLSFile dls_file;
 
-		DMUS_OBJECTDESC desc;
-		MemSetT(&desc, 0);
-		desc.dwSize = sizeof(DMUS_OBJECTDESC);
-		desc.guidClass = CLSID_DirectMusicCollection;
-		desc.guidObject = GUID_DefaultGMCollection;
-		desc.dwValidData = (DMUS_OBJ_CLASS | DMUS_OBJ_OBJECT);
+		if (user_dls == NULL) {
+			/* Try loading the default GM DLS file stored in the registry. */
+			HKEY hkDM;
+			if (SUCCEEDED(RegOpenKeyEx(HKEY_LOCAL_MACHINE, _T("Software\\Microsoft\\DirectMusic"), 0, KEY_READ, &hkDM))) {
+				TCHAR dls_path[MAX_PATH];
+				DWORD buf_size = sizeof(dls_path); // Buffer size as to be given in bytes!
+				if (SUCCEEDED(RegQueryValueEx(hkDM, _T("GMFilePath"), NULL, NULL, (LPBYTE)dls_path, &buf_size))) {
+					TCHAR expand_path[MAX_PATH * 2];
+					ExpandEnvironmentStrings(dls_path, expand_path, lengthof(expand_path));
+					if (!dls_file.LoadFile(expand_path)) DEBUG(driver, 1, "Failed to load default GM DLS file from registry");
+				}
+				RegCloseKey(hkDM);
+			}
 
-		IDirectMusicCollection *collection = NULL;
-		if (FAILED(loader->GetObjectW(&desc, IID_IDirectMusicCollection, (LPVOID *)&collection))) {
-			loader->Release();
-			return "Can't load GM DLS collection";
+			/* If we couldn't load the file from the registry, try again at the default install path of the GM DLS file. */
+			if (dls_file.instruments.size() == 0) {
+				static const TCHAR *DLS_GM_FILE = _T("%windir%\\System32\\drivers\\gm.dls");
+				TCHAR path[MAX_PATH];
+				ExpandEnvironmentStrings(DLS_GM_FILE, path, lengthof(path));
+
+				if (!dls_file.LoadFile(path)) return "Can't load GM DLS collection";
+			}
+		} else {
+			if (!dls_file.LoadFile(OTTD2FS(user_dls))) return "Can't load GM DLS collection";
 		}
 
-		/* Download instruments to synthesizer. */
-		DWORD idx = 0;
-		DWORD patch = 0;
-		while (collection->EnumInstrument(idx++, &patch, NULL, 0) == S_OK) {
-			IDirectMusicInstrument *instrument = NULL;
-			if (SUCCEEDED(collection->GetInstrument(patch, &instrument))) {
-				IDirectMusicDownloadedInstrument *loaded = NULL;
-				if (SUCCEEDED(_port->DownloadInstrument(instrument, &loaded, NULL, 0))) {
-					_loaded_instruments.push_back(loaded);
-				}
-				instrument->Release();
+		/* Get download port and allocate download IDs. */
+		IDirectMusicPortDownload *download_port = NULL;
+		if (FAILED(_port->QueryInterface(IID_IDirectMusicPortDownload, (LPVOID *)&download_port))) return "Can't get download port";
+
+		DWORD dlid_wave = 0, dlid_inst = 0;
+		if (FAILED(download_port->GetDLId(&dlid_wave, (DWORD)dls_file.waves.size())) || FAILED(download_port->GetDLId(&dlid_inst, (DWORD)dls_file.instruments.size()))) {
+			download_port->Release();
+			return "Can't get enough DLS ids";
+		}
+
+		DWORD dwAppend = 0;
+		download_port->GetAppend(&dwAppend);
+
+		/* Download wave data. */
+		for (DWORD i = 0; i < dls_file.waves.size(); i++) {
+			IDirectMusicDownload *dl_wave = NULL;
+			if (FAILED(download_port->AllocateBuffer((DWORD)(sizeof(WAVE_DOWNLOAD) + dwAppend * dls_file.waves[i].fmt.wf.nBlockAlign + dls_file.waves[i].data.size()), &dl_wave))) {
+				download_port->Release();
+				return "Can't allocate wave download buffer";
+			}
+
+			WAVE_DOWNLOAD *wave;
+			DWORD wave_size = 0;
+			if (FAILED(dl_wave->GetBuffer((LPVOID *)&wave, &wave_size))) {
+				dl_wave->Release();
+				download_port->Release();
+				return "Can't get wave download buffer";
+			}
+
+			/* Fill download data. */
+			MemSetT(wave, 0);
+			wave->dlInfo.dwDLType = DMUS_DOWNLOADINFO_WAVE;
+			wave->dlInfo.cbSize = wave_size;
+			wave->dlInfo.dwDLId = dlid_wave + i;
+			wave->dlInfo.dwNumOffsetTableEntries = 2;
+			wave->ulOffsetTable[0] = offsetof(WAVE_DOWNLOAD, dmWave);
+			wave->ulOffsetTable[1] = offsetof(WAVE_DOWNLOAD, dmWaveData);
+			wave->dmWave.ulWaveDataIdx = 1;
+			MemCpyT((PCMWAVEFORMAT *)&wave->dmWave.WaveformatEx, &dls_file.waves[i].fmt, 1);
+			wave->dmWaveData.cbSize = (DWORD)dls_file.waves[i].data.size();
+			MemCpyT(wave->dmWaveData.byData, &dls_file.waves[i].data[0], dls_file.waves[i].data.size());
+
+			_dls_downloads.push_back(dl_wave);
+			if (FAILED(download_port->Download(dl_wave))) {
+				download_port->Release();
+				return "Downloading DLS wave failed";
 			}
 		}
 
-		collection->Release();
-		loader->Release();
+		/* Download instrument data. */
+		for (DWORD i = 0; i < dls_file.instruments.size(); i++) {
+			DWORD offsets = 1 + (DWORD)dls_file.instruments[i].regions.size();
+
+			/* Calculate download size for the instrument. */
+			size_t i_size = sizeof(DMUS_DOWNLOADINFO) + sizeof(DMUS_INSTRUMENT);
+			if (dls_file.instruments[i].articulators.size() > 0) {
+				/* Articulations are stored as two chunks, one containing meta data and one with the actual articulation data. */
+				offsets += 2;
+				i_size += sizeof(DMUS_ARTICULATION2) + sizeof(CONNECTIONLIST) + sizeof(CONNECTION) * dls_file.instruments[i].articulators.size();
+			}
+
+			for (std::vector<DLSFile::DLSRegion>::iterator rgn = dls_file.instruments[i].regions.begin(); rgn != dls_file.instruments[i].regions.end(); rgn++) {
+				if (rgn->articulators.size() > 0) {
+					offsets += 2;
+					i_size += sizeof(DMUS_ARTICULATION2) + sizeof(CONNECTIONLIST) + sizeof(CONNECTION) * rgn->articulators.size();
+				}
+
+				/* Region size depends on the number of wave loops. The size of the
+				 * declared structure already accounts for one loop. */
+				if (rgn->wave_sample.cbSize != 0) {
+					i_size += sizeof(DMUS_REGION) - sizeof(DMUS_REGION::WLOOP) + sizeof(WLOOP) * rgn->wave_loops.size();
+				} else {
+					i_size += sizeof(DMUS_REGION) - sizeof(DMUS_REGION::WLOOP) + sizeof(WLOOP) * dls_file.waves[dls_file.pool_cues[rgn->wave.ulTableIndex].ulOffset].wave_loops.size();
+				}
+			}
+
+			i_size += offsets * sizeof(ULONG);
+
+			/* Allocate download buffer. */
+			IDirectMusicDownload *dl_inst = NULL;
+			if (FAILED(download_port->AllocateBuffer((DWORD)i_size, &dl_inst))) {
+				download_port->Release();
+				return "Can't allocate instrument download buffer";
+			}
+
+			void *instrument;
+			DWORD inst_size = 0;
+			if (FAILED(dl_inst->GetBuffer((LPVOID *)&instrument, &inst_size))) {
+				dl_inst->Release();
+				download_port->Release();
+				return "Can't get instrument download buffer";
+			}
+			char *inst_base = (char *)instrument;
+
+			/* Fill download header. */
+			DMUS_DOWNLOADINFO *d_info = (DMUS_DOWNLOADINFO *)instrument;
+			d_info->dwDLType = DMUS_DOWNLOADINFO_INSTRUMENT2;
+			d_info->cbSize = inst_size;
+			d_info->dwDLId = dlid_inst + i;
+			d_info->dwNumOffsetTableEntries = offsets;
+			instrument = d_info + 1;
+
+			/* Download offset table; contains the offsets of all chunks relative to the buffer start. */
+			ULONG *offset_table = (ULONG *)instrument;
+			instrument = offset_table + offsets;
+			int last_offset = 0;
+
+			/* Instrument header. */
+			DMUS_INSTRUMENT *inst_data = (DMUS_INSTRUMENT *)instrument;
+			MemSetT(inst_data, 0);
+			offset_table[last_offset++] = (char *)inst_data - inst_base;
+			inst_data->ulPatch = dls_file.instruments[i].hdr.Locale.ulBank & F_INSTRUMENT_DRUMS | ((dls_file.instruments[i].hdr.Locale.ulBank & 0x7F7F) << 8) | dls_file.instruments[i].hdr.Locale.ulInstrument & 0x7F;
+			instrument = inst_data + 1;
+
+			/* Write global articulations. */
+			if (dls_file.instruments[i].articulators.size() > 0) {
+				inst_data->ulGlobalArtIdx = last_offset;
+				offset_table[last_offset++] = (char *)instrument - inst_base;
+				offset_table[last_offset++] = (char *)instrument + sizeof(DMUS_ARTICULATION2) - inst_base;
+
+				instrument = DownloadArticulationData(inst_data->ulGlobalArtIdx, instrument, dls_file.instruments[i].articulators);
+				assert((char *)instrument - inst_base <= (ptrdiff_t)inst_size);
+			}
+
+			/* Write out regions. */
+			inst_data->ulFirstRegionIdx = last_offset;
+			for (uint j = 0; j < dls_file.instruments[i].regions.size(); j++) {
+				DLSFile::DLSRegion &rgn = dls_file.instruments[i].regions[j];
+
+				DMUS_REGION *inst_region = (DMUS_REGION *)instrument;
+				offset_table[last_offset++] = (char *)inst_region - inst_base;
+				inst_region->RangeKey = rgn.hdr.RangeKey;
+				inst_region->RangeVelocity = rgn.hdr.RangeVelocity;
+				inst_region->fusOptions = rgn.hdr.fusOptions;
+				inst_region->usKeyGroup = rgn.hdr.usKeyGroup;
+				inst_region->ulFirstExtCkIdx = 0;
+
+				ULONG wave_id = dls_file.pool_cues[rgn.wave.ulTableIndex].ulOffset;
+				inst_region->WaveLink = rgn.wave;
+				inst_region->WaveLink.ulTableIndex = wave_id + dlid_wave;
+
+				/* The wave sample data will be taken from the region, if defined, otherwise from the wave itself. */
+				if (rgn.wave_sample.cbSize != 0) {
+					inst_region->WSMP = rgn.wave_sample;
+					if (rgn.wave_loops.size() > 0) MemCpyT(inst_region->WLOOP, &rgn.wave_loops.front(), rgn.wave_loops.size());
+
+					instrument = (char *)(inst_region + 1) - sizeof(DMUS_REGION::WLOOP) + sizeof(WLOOP) * rgn.wave_loops.size();
+				} else {
+					inst_region->WSMP = rgn.wave_sample;
+					if (dls_file.waves[wave_id].wave_loops.size() > 0) MemCpyT(inst_region->WLOOP, &dls_file.waves[wave_id].wave_loops.front(), dls_file.waves[wave_id].wave_loops.size());
+
+					instrument = (char *)(inst_region + 1) - sizeof(DMUS_REGION::WLOOP) + sizeof(WLOOP) * dls_file.waves[wave_id].wave_loops.size();
+				}
+
+				/* Write local articulator data. */
+				if (rgn.articulators.size() > 0) {
+					inst_region->ulRegionArtIdx = last_offset;
+					offset_table[last_offset++] = (char *)instrument - inst_base;
+					offset_table[last_offset++] = (char *)instrument + sizeof(DMUS_ARTICULATION2) - inst_base;
+
+					instrument = DownloadArticulationData(inst_region->ulRegionArtIdx, instrument, rgn.articulators);
+				} else {
+					inst_region->ulRegionArtIdx = 0;
+				}
+				assert((char *)instrument - inst_base <= (ptrdiff_t)inst_size);
+
+				/* Link to the next region unless this was the last one.*/
+				inst_region->ulNextRegionIdx = j < dls_file.instruments[i].regions.size() - 1 ? last_offset : 0;
+			}
+
+			_dls_downloads.push_back(dl_inst);
+			if (FAILED(download_port->Download(dl_inst))) {
+				download_port->Release();
+				return "Downloading DLS instrument failed";
+			}
+		}
+
+		download_port->Release();
 	}
 
 	return NULL;
@@ -525,7 +1156,8 @@ const char *MusicDriver_DMusic::Start(const char * const *parm)
 	desc.cbBuffer = 1024;
 	if (FAILED(_music->CreateMusicBuffer(&desc, &_buffer, NULL))) return "Failed to create music buffer";
 
-	const char *dls = LoadDefaultDLSFile();
+	/* On soft-synths (e.g. the default DirectMusic one), we might need to load a wavetable set to get music. */
+	const char *dls = LoadDefaultDLSFile(GetDriverParam(parm, "dls"));
 	if (dls != NULL) return dls;
 
 	/* Create playback thread and synchronization primitives. */
@@ -555,11 +1187,20 @@ void MusicDriver_DMusic::Stop()
 	}
 
 	/* Unloaded any instruments we loaded. */
-	for (std::vector<IDirectMusicDownloadedInstrument *>::iterator i = _loaded_instruments.begin(); i != _loaded_instruments.end(); i++) {
-		_port->UnloadInstrument(*i);
-		(*i)->Release();
+	if (_dls_downloads.size() > 0) {
+		IDirectMusicPortDownload *download_port = NULL;
+		_port->QueryInterface(IID_IDirectMusicPortDownload, (LPVOID *)&download_port);
+
+		/* Instruments refer to waves. As the waves are at the beginning of the download list,
+		 * do the unload from the back so that references are cleared properly. */
+		for (std::vector<IDirectMusicDownload *>::reverse_iterator i = _dls_downloads.rbegin(); download_port != NULL && i != _dls_downloads.rend(); i++) {
+			download_port->Unload(*i);
+			(*i)->Release();
+		}
+		_dls_downloads.clear();
+
+		if (download_port != NULL) download_port->Release();
 	}
-	_loaded_instruments.clear();
 
 	if (_buffer != NULL) {
 		_buffer->Release();
