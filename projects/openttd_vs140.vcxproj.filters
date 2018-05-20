@@ -651,6 +651,9 @@
     <ClInclude Include="..\src\gui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\guitimer_func.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\heightmap.h">
       <Filter>Header Files</Filter>
     </ClInclude>

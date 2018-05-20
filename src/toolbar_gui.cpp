@@ -48,6 +48,7 @@
 #include "story_base.h"
 #include "toolbar_gui.h"
 #include "framerate_type.h"
+#include "guitimer_func.h"
 
 #include "widgets/toolbar_widget.h"
 
@@ -1978,7 +1979,7 @@ enum MainToolbarHotkeys {
 
 /** Main toolbar. */
 struct MainToolbarWindow : Window {
-	int timer;
+	GUITimer timer;
 
 	MainToolbarWindow(WindowDesc *desc) : Window(desc)
 	{
@@ -1991,7 +1992,7 @@ struct MainToolbarWindow : Window {
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
 
-		this->timer = MILLISECONDS_PER_TICK;
+		this->timer.SetInterval(MILLISECONDS_PER_TICK);
 	}
 
 	virtual void FindWindowPlacementAndResize(int def_width, int def_height)
@@ -2098,8 +2099,8 @@ struct MainToolbarWindow : Window {
 
 	virtual void OnRealtimeTick(uint delta_ms)
 	{
-		if (!TimerElapsed(this->timer, delta_ms)) return;
-		this->timer = MILLISECONDS_PER_TICK;
+		if (!this->timer.Elapsed(delta_ms)) return;
+		this->timer.SetInterval(MILLISECONDS_PER_TICK);
 
 		if (this->IsWidgetLowered(WID_TN_PAUSE) != !!_pause_mode) {
 			this->ToggleWidgetLoweredState(WID_TN_PAUSE);
@@ -2317,7 +2318,7 @@ enum MainToolbarEditorHotkeys {
 };
 
 struct ScenarioEditorToolbarWindow : Window {
-	int timer;
+	GUITimer timer;
 
 	ScenarioEditorToolbarWindow(WindowDesc *desc) : Window(desc)
 	{
@@ -2328,7 +2329,7 @@ struct ScenarioEditorToolbarWindow : Window {
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
 
-		this->timer = MILLISECONDS_PER_TICK;
+		this->timer.SetInterval(MILLISECONDS_PER_TICK);
 	}
 
 	virtual void FindWindowPlacementAndResize(int def_width, int def_height)
@@ -2458,8 +2459,8 @@ struct ScenarioEditorToolbarWindow : Window {
 
 	virtual void OnRealtimeTick(uint delta_ms)
 	{
-		if (!TimerElapsed(this->timer, delta_ms)) return;
-		this->timer = MILLISECONDS_PER_TICK;
+		if (!this->timer.Elapsed(delta_ms)) return;
+		this->timer.SetInterval(MILLISECONDS_PER_TICK);
 
 		if (this->IsWidgetLowered(WID_TE_PAUSE) != !!_pause_mode) {
 			this->ToggleWidgetLoweredState(WID_TE_PAUSE);

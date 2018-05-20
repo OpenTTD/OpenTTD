@@ -38,6 +38,7 @@
 #include "video/video_driver.hpp"
 #include "framerate_type.h"
 #include "network/network_func.h"
+#include "guitimer_func.h"
 
 #include "safeguards.h"
 
@@ -3099,17 +3100,17 @@ void UpdateWindows()
 
 	CallWindowRealtimeTickEvent(delta_ms);
 
-	static int network_message_timer = 1;
-	if (TimerElapsed(network_message_timer, delta_ms)) {
-		network_message_timer = 1000;
+	static GUITimer network_message_timer = GUITimer(1);
+	if (network_message_timer.Elapsed(delta_ms)) {
+		network_message_timer.SetInterval(1000);
 		NetworkChatMessageLoop();
 	}
 
 	Window *w;
 
-	static int window_timer = 1;
-	if (TimerElapsed(window_timer, delta_ms)) {
-		window_timer = MILLISECONDS_PER_TICK;
+	static GUITimer window_timer = GUITimer(1);
+	if (window_timer.Elapsed(delta_ms)) {
+		if (_network_dedicated) window_timer.SetInterval(MILLISECONDS_PER_TICK);
 
 		extern int _caret_timer;
 		_caret_timer += 3;
@@ -3120,9 +3121,9 @@ void UpdateWindows()
 		DecreaseWindowCounters();
 	}
 
-	static int highlight_timer = 1;
-	if (TimerElapsed(highlight_timer, delta_ms)) {
-		highlight_timer = 450;
+	static GUITimer highlight_timer = GUITimer(1);
+	if (highlight_timer.Elapsed(delta_ms)) {
+		highlight_timer.SetInterval(450);
 		_window_highlight_colour = !_window_highlight_colour;
 	}
 
@@ -3137,16 +3138,18 @@ void UpdateWindows()
 	 * But still empty the invalidation queues above. */
 	if (_network_dedicated) return;
 
-	static int hundredth_timer = 1;
-	if (TimerElapsed(hundredth_timer, delta_ms)) {
-		hundredth_timer = 3000; // Historical reason: 100 * MILLISECONDS_PER_TICK
+	static GUITimer hundredth_timer = GUITimer(1);
+	if (hundredth_timer.Elapsed(delta_ms)) {
+		hundredth_timer.SetInterval(3000); // Historical reason: 100 * MILLISECONDS_PER_TICK
 
 		FOR_ALL_WINDOWS_FROM_FRONT(w) {
 			w->OnHundredthTick();
 		}
 	}
 
-	if (window_timer == MILLISECONDS_PER_TICK) { // window_timer has elapsed this call
+	if (window_timer.HasElapsed()) {
+		window_timer.SetInterval(MILLISECONDS_PER_TICK);
+
 		FOR_ALL_WINDOWS_FROM_FRONT(w) {
 			if ((w->flags & WF_WHITE_BORDER) && --w->white_border_timer == 0) {
 				CLRBITS(w->flags, WF_WHITE_BORDER);

@@ -19,6 +19,7 @@
 #include "blitter/factory.hpp"
 #include "linkgraph/linkgraph_gui.h"
 #include "widgets/smallmap_widget.h"
+#include "guitimer_func.h"
 
 /* set up the cargos to be displayed in the smallmap's route legend */
 void BuildLinkStatsLegend();
@@ -79,7 +80,7 @@ protected:
 	int32 subscroll; ///< Number of pixels (0..3) between the right end of the base tile and the pixel at the top-left corner of the smallmap display.
 	int zoom;        ///< Zoom level. Bigger number means more zoom-out (further away).
 
-	int refresh;     ///< Refresh timer, in millseconds.
+	GUITimer refresh; ///< Refresh timer.
 	LinkGraphOverlay *overlay;
 
 	static void BreakIndustryChainLink();

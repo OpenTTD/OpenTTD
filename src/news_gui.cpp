@@ -33,6 +33,7 @@
 #include "command_func.h"
 #include "company_base.h"
 #include "settings_internal.h"
+#include "guitimer_func.h"
 
 #include "widgets/news_widget.h"
 
@@ -262,7 +263,7 @@ struct NewsWindow : Window {
 	const NewsItem *ni;   ///< News item to display.
 	static int duration;  ///< Remaining time for showing the current news message (may only be access while a news item is displayed).
 
-	uint timer;
+	GUITimer timer;
 
 	NewsWindow(WindowDesc *desc, const NewsItem *ni) : Window(desc), ni(ni)
 	{
@@ -272,6 +273,8 @@ struct NewsWindow : Window {
 		this->status_height = FindWindowById(WC_STATUS_BAR, 0)->height;
 
 		this->flags |= WF_DISABLE_VP_SCROLL;
+
+		this->timer.SetInterval(15);
 
 		this->CreateNestedTree();
 
@@ -489,7 +492,7 @@ struct NewsWindow : Window {
 
 	virtual void OnRealtimeTick(uint delta_ms)
 	{
-		int count = CountIntervalElapsed(this->timer, delta_ms, 15);
+		int count = this->timer.CountElapsed(delta_ms);
 		if (count > 0) {
 			/* Scroll up newsmessages from the bottom */
 			int newtop = max(this->top - 2 * count, _screen.height - this->height - this->status_height - this->chat_height);

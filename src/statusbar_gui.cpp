@@ -26,6 +26,7 @@
 #include "statusbar_gui.h"
 #include "toolbar_gui.h"
 #include "core/geometry_func.hpp"
+#include "guitimer_func.h"
 
 #include "widgets/statusbar_widget.h"
 
@@ -79,8 +80,8 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left
 struct StatusBarWindow : Window {
 	bool saving;
 	int ticker_scroll;
-	uint ticker_timer;
-	int reminder_timeout;
+	GUITimer ticker_timer;
+	GUITimer reminder_timeout;
 
 	static const int TICKER_STOP    = 1640; ///< scrolling is finished when counter reaches this value
 	static const int REMINDER_START = 1350; ///< time in ms for reminder notification (red dot on the right) to stay
@@ -89,8 +90,9 @@ struct StatusBarWindow : Window {
 
 	StatusBarWindow(WindowDesc *desc) : Window(desc)
 	{
-		this->ticker_scroll    =   TICKER_STOP;
-		this->reminder_timeout = REMINDER_STOP;
+		this->ticker_scroll = TICKER_STOP;
+		this->ticker_timer.SetInterval(15);
+		this->reminder_timeout.SetInterval(REMINDER_STOP);
 
 		this->InitNested();
 		CLRBITS(this->flags, WF_WHITE_BORDER);
@@ -180,7 +182,7 @@ struct StatusBarWindow : Window {
 					}
 				}
 
-				if (this->reminder_timeout > 0) {
+				if (!this->reminder_timeout.HasElapsed()) {
 					Dimension icon_size = GetSpriteSize(SPR_UNREAD_NEWS);
 					DrawSprite(SPR_UNREAD_NEWS, PAL_NONE, r.right - WD_FRAMERECT_RIGHT - icon_size.width, r.top + WD_FRAMERECT_TOP + (int)(FONT_HEIGHT_NORMAL - icon_size.height) / 2);
 				}
@@ -201,11 +203,10 @@ struct StatusBarWindow : Window {
 			case SBI_SAVELOAD_START:  this->saving = true;  break;
 			case SBI_SAVELOAD_FINISH: this->saving = false; break;
 			case SBI_SHOW_TICKER:     this->ticker_scroll = 0; break;
-			case SBI_SHOW_REMINDER:   this->reminder_timeout = REMINDER_START; break;
+			case SBI_SHOW_REMINDER:   this->reminder_timeout.SetInterval(REMINDER_START); break;
 			case SBI_NEWS_DELETED:
 				this->ticker_scroll    =   TICKER_STOP; // reset ticker ...
-				this->ticker_timer     = 0;
-				this->reminder_timeout = REMINDER_STOP; // ... and reminder
+				this->reminder_timeout.SetInterval(REMINDER_STOP); // ... and reminder
 				break;
 		}
 	}
@@ -224,7 +225,7 @@ struct StatusBarWindow : Window {
 		if (_pause_mode != PM_UNPAUSED) return;
 
 		if (this->ticker_scroll < TICKER_STOP) { // Scrolling text
-			uint count = CountIntervalElapsed(this->ticker_timer, delta_ms, 15);
+			uint count = this->ticker_timer.CountElapsed(delta_ms);
 			if (count > 0) {
 				this->ticker_scroll += count;
 				this->SetWidgetDirty(WID_S_MIDDLE);
@@ -232,7 +233,7 @@ struct StatusBarWindow : Window {
 		}
 
 		// Red blot to show there are new unread newsmessages
-		if (TimerElapsed(this->reminder_timeout, delta_ms)) {
+		if (this->reminder_timeout.Elapsed(delta_ms)) {
 			this->SetWidgetDirty(WID_S_MIDDLE);
 		}
 	}
