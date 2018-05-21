@@ -46,7 +46,7 @@
 		 * station */
 		Station *st;
 		FOR_ALL_STATIONS(st) {
-			for (CargoID c = 0; c < NUM_CARGO; c++) {
+			for (CargoID c = 0; c < 32; c++) {
 				GoodsEntry *ge = &st->goods[c];
 
 				const StationCargoPacketMap *packets = ge->cargo.Packets();

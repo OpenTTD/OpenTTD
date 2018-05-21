@@ -63,14 +63,14 @@ enum CargoType {
 	CT_PLASTIC      = 10,
 	CT_FIZZY_DRINKS = 11,
 
-	NUM_CARGO       = 32,   ///< Maximal number of cargo types in a game.
+	NUM_CARGO       = 64,   ///< Maximal number of cargo types in a game.
 
 	CT_AUTO_REFIT   = 0xFD, ///< Automatically choose cargo type when doing auto refitting.
 	CT_NO_REFIT     = 0xFE, ///< Do not refit cargo of a vehicle (used in vehicle orders and auto-replace/auto-new).
 	CT_INVALID      = 0xFF, ///< Invalid cargo type.
 };
 
-typedef uint32 CargoTypes;
+typedef uint64 CargoTypes;
 
 static const CargoTypes ALL_CARGOTYPES = (CargoTypes)UINT32_MAX;
 

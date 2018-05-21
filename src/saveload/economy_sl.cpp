@@ -29,7 +29,7 @@ static void Load_PRIC()
 /** Cargo payment rates in pre 126 savegames */
 static void Load_CAPR()
 {
-	uint num_cargo = IsSavegameVersionBefore(55) ? 12 : NUM_CARGO;
+	uint num_cargo = IsSavegameVersionBefore(55) ? 12 : IsSavegameVersionBefore(199) ? 32 : NUM_CARGO;
 	int vt = IsSavegameVersionBefore(65) ? SLE_FILE_I32 : SLE_FILE_I64;
 	SlArray(NULL, num_cargo, vt | SLE_VAR_NULL);
 	SlArray(NULL, num_cargo, SLE_FILE_U16 | SLE_VAR_NULL);
