@@ -56,7 +56,7 @@ static const GRFFile *GetHouseSpecGrf(HouseID house_id)
  */
 HouseResolverObject::HouseResolverObject(HouseID house_id, TileIndex tile, Town *town,
 		CallbackID callback, uint32 param1, uint32 param2,
-		bool not_yet_constructed, uint8 initial_random_bits, uint32 watched_cargo_triggers)
+		bool not_yet_constructed, uint8 initial_random_bits, CargoTypes watched_cargo_triggers)
 	: ResolverObject(GetHouseSpecGrf(house_id), callback, param1, param2),
 	house_scope(*this, house_id, tile, town, not_yet_constructed, initial_random_bits, watched_cargo_triggers),
 	town_scope(*this, town, not_yet_constructed) // Don't access StorePSA if house is not yet constructed.
@@ -409,7 +409,7 @@ static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, HouseI
 }
 
 uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile,
-		bool not_yet_constructed, uint8 initial_random_bits, uint32 watched_cargo_triggers)
+		bool not_yet_constructed, uint8 initial_random_bits, CargoTypes watched_cargo_triggers)
 {
 	assert(IsValidTile(tile) && (not_yet_constructed || IsTileType(tile, MP_HOUSE)));
 
@@ -472,13 +472,13 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 }
 
 /* Simple wrapper for GetHouseCallback to keep the animation unified. */
-uint16 GetSimpleHouseCallback(CallbackID callback, uint32 param1, uint32 param2, const HouseSpec *spec, Town *town, TileIndex tile, uint32 extra_data)
+uint16 GetSimpleHouseCallback(CallbackID callback, uint32 param1, uint32 param2, const HouseSpec *spec, Town *town, TileIndex tile, CargoTypes extra_data)
 {
 	return GetHouseCallback(callback, param1, param2, spec - HouseSpec::Get(0), town, tile, false, 0, extra_data);
 }
 
 /** Helper class for animation control. */
-struct HouseAnimationBase : public AnimationBase<HouseAnimationBase, HouseSpec, Town, uint32, GetSimpleHouseCallback> {
+struct HouseAnimationBase : public AnimationBase<HouseAnimationBase, HouseSpec, Town, CargoTypes, GetSimpleHouseCallback> {
 	static const CallbackID cb_animation_speed      = CBID_HOUSE_ANIMATION_SPEED;
 	static const CallbackID cb_animation_next_frame = CBID_HOUSE_ANIMATION_NEXT_FRAME;
 
@@ -633,7 +633,7 @@ void TriggerHouse(TileIndex t, HouseTrigger trigger)
  * @param trigger_cargoes Cargo types that triggered the callback.
  * @param random Random bits.
  */
-void DoWatchedCargoCallback(TileIndex tile, TileIndex origin, uint32 trigger_cargoes, uint16 random)
+void DoWatchedCargoCallback(TileIndex tile, TileIndex origin, CargoTypes trigger_cargoes, uint16 random)
 {
 	TileIndexDiffC diff = TileIndexToTileIndexDiffC(origin, tile);
 	uint32 cb_info = random << 16 | (uint8)diff.y << 8 | (uint8)diff.x;
@@ -646,7 +646,7 @@ void DoWatchedCargoCallback(TileIndex tile, TileIndex origin, uint32 trigger_car
  * @param trigger_cargoes Triggering cargo types.
  * @pre IsTileType(t, MP_HOUSE)
  */
-void WatchedCargoCallback(TileIndex tile, uint32 trigger_cargoes)
+void WatchedCargoCallback(TileIndex tile, CargoTypes trigger_cargoes)
 {
 	assert(IsTileType(tile, MP_HOUSE));
 	HouseID id = GetHouseType(tile);

@@ -22,7 +22,7 @@
 typedef byte CargoID;
 
 /** Available types of cargo */
-enum CargoTypes {
+enum CargoType {
 	/* Temperate */
 	CT_PASSENGERS   =  0,
 	CT_COAL         =  1,
@@ -69,6 +69,10 @@ enum CargoTypes {
 	CT_NO_REFIT     = 0xFE, ///< Do not refit cargo of a vehicle (used in vehicle orders and auto-replace/auto-new).
 	CT_INVALID      = 0xFF, ///< Invalid cargo type.
 };
+
+typedef uint32 CargoTypes;
+
+static const CargoTypes ALL_CARGOTYPES = (CargoTypes)UINT32_MAX;
 
 /** Class for storing amounts of cargo */
 struct CargoArray {

@@ -334,7 +334,7 @@ bool FindSubsidyTownCargoRoute()
 	/* Select a random town. */
 	const Town *src_town = Town::GetRandom();
 
-	uint32 town_cargo_produced = src_town->cargo_produced;
+	CargoTypes town_cargo_produced = src_town->cargo_produced;
 
 	/* Passenger subsidies are not handled here. */
 	ClrBit(town_cargo_produced, CT_PASSENGERS);

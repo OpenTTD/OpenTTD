@@ -81,7 +81,7 @@ typedef CommandCost ClearTileProc(TileIndex tile, DoCommandFlag flags);
  * @param acceptance      Storage destination of the cargo acceptance in 1/8
  * @param always_accepted Bitmask of always accepted cargo types
  */
-typedef void AddAcceptedCargoProc(TileIndex tile, CargoArray &acceptance, uint32 *always_accepted);
+typedef void AddAcceptedCargoProc(TileIndex tile, CargoArray &acceptance, CargoTypes *always_accepted);
 
 /**
  * Tile callback function signature for obtaining a tile description
@@ -165,11 +165,11 @@ VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y
 void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner);
 void GetTileDesc(TileIndex tile, TileDesc *td);
 
-static inline void AddAcceptedCargo(TileIndex tile, CargoArray &acceptance, uint32 *always_accepted)
+static inline void AddAcceptedCargo(TileIndex tile, CargoArray &acceptance, CargoTypes *always_accepted)
 {
 	AddAcceptedCargoProc *proc = _tile_type_procs[GetTileType(tile)]->add_accepted_cargo_proc;
 	if (proc == NULL) return;
-	uint32 dummy = 0; // use dummy bitmask so there don't need to be several 'always_accepted != NULL' checks
+	CargoTypes dummy = 0; // use dummy bitmask so there don't need to be several 'always_accepted != NULL' checks
 	proc(tile, acceptance, always_accepted == NULL ? &dummy : always_accepted);
 }
 

@@ -129,8 +129,8 @@ private:
 	friend void SetupCargoForClimate(LandscapeID l);
 };
 
-extern uint32 _cargo_mask;
-extern uint32 _standard_cargo_mask;
+extern CargoTypes _cargo_mask;
+extern CargoTypes _standard_cargo_mask;
 
 void SetupCargoForClimate(LandscapeID l);
 CargoID GetCargoIDByLabel(CargoLabel cl);
@@ -156,7 +156,7 @@ static inline bool IsCargoInClass(CargoID c, CargoClass cc)
 		if ((var = CargoSpec::Get(cargospec_index))->IsValid())
 #define FOR_ALL_CARGOSPECS(var) FOR_ALL_CARGOSPECS_FROM(var, 0)
 
-#define FOR_EACH_SET_CARGO_ID(var, cargo_bits) FOR_EACH_SET_BIT_EX(CargoID, var, uint, cargo_bits)
+#define FOR_EACH_SET_CARGO_ID(var, cargo_bits) FOR_EACH_SET_BIT_EX(CargoID, var, CargoTypes, cargo_bits)
 
 /**
  * Loop header for iterating over cargoes, sorted by name. This includes phony cargoes like regearing cargoes.
