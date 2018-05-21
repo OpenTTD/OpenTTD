@@ -403,7 +403,7 @@ void RoadVehicle::MarkDirty()
 	this->CargoChanged();
 }
 
-void RoadVehicle::UpdateDeltaXY(Direction direction)
+void RoadVehicle::UpdateDeltaXY()
 {
 	static const int8 _delta_xy_table[8][10] = {
 		/* y_extent, x_extent, y_offs, x_offs, y_bb_offs, x_bb_offs, y_extent_shorten, x_extent_shorten, y_bb_offs_shorten, x_bb_offs_shorten */
@@ -418,9 +418,9 @@ void RoadVehicle::UpdateDeltaXY(Direction direction)
 	};
 
 	int shorten = VEHICLE_LENGTH - this->gcache.cached_veh_length;
-	if (!IsDiagonalDirection(direction)) shorten >>= 1;
+	if (!IsDiagonalDirection(this->direction)) shorten >>= 1;
 
-	const int8 *bb = _delta_xy_table[direction];
+	const int8 *bb = _delta_xy_table[this->direction];
 	this->x_bb_offs     = bb[5] + bb[9] * shorten;
 	this->y_bb_offs     = bb[4] + bb[8] * shorten;;
 	this->x_offs        = bb[3];

@@ -296,7 +296,7 @@ TileIndex Ship::GetOrderStationLocation(StationID station)
 	}
 }
 
-void Ship::UpdateDeltaXY(Direction direction)
+void Ship::UpdateDeltaXY()
 {
 	static const int8 _delta_xy_table[8][4] = {
 		/* y_extent, x_extent, y_offs, x_offs */
@@ -310,7 +310,7 @@ void Ship::UpdateDeltaXY(Direction direction)
 		{32,  6, -16,  -3}, // NW
 	};
 
-	const int8 *bb = _delta_xy_table[direction];
+	const int8 *bb = _delta_xy_table[this->direction];
 	this->x_offs        = bb[3];
 	this->y_offs        = bb[2];
 	this->x_extent      = bb[1];
@@ -670,7 +670,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, const Engine *e, u
 		v->y_pos = y;
 		v->z_pos = GetSlopePixelZ(x, y);
 
-		v->UpdateDeltaXY(v->direction);
+		v->UpdateDeltaXY();
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 
 		v->spritenum = svi->image_index;

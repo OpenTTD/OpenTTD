@@ -32,7 +32,7 @@ struct EffectVehicle FINAL : public SpecializedVehicle<EffectVehicle, VEH_EFFECT
 	/** We want to 'destruct' the right class. */
 	virtual ~EffectVehicle() {}
 
-	void UpdateDeltaXY(Direction direction);
+	void UpdateDeltaXY();
 	bool Tick();
 	TransparencyOption GetTransparencyOption() const;
 };

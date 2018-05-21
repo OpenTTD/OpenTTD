@@ -90,7 +90,7 @@ struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	virtual ~Aircraft() { this->PreDestructor(); }
 
 	void MarkDirty();
-	void UpdateDeltaXY(Direction direction);
+	void UpdateDeltaXY();
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_AIRCRAFT_INC : EXPENSES_AIRCRAFT_RUN; }
 	bool IsPrimaryVehicle() const                  { return this->IsNormalAircraft(); }
 	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const;

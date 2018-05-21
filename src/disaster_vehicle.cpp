@@ -164,7 +164,7 @@ DisasterVehicle::DisasterVehicle(int x, int y, Direction direction, DisasterSubT
 	this->direction = direction;
 	this->tile = TileVirtXY(x, y);
 	this->subtype = subtype;
-	this->UpdateDeltaXY(INVALID_DIR);
+	this->UpdateDeltaXY();
 	this->owner = OWNER_NONE;
 	this->image_override = 0;
 	this->current_order.Free();
@@ -973,7 +973,7 @@ void ReleaseDisastersTargetingVehicle(VehicleID vehicle)
 	}
 }
 
-void DisasterVehicle::UpdateDeltaXY(Direction direction)
+void DisasterVehicle::UpdateDeltaXY()
 {
 	this->x_offs        = -1;
 	this->y_offs        = -1;

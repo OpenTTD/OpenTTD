@@ -461,7 +461,7 @@ void AfterLoadVehicles(bool part_of_load)
 			default: break;
 		}
 
-		v->UpdateDeltaXY(v->direction);
+		v->UpdateDeltaXY();
 		v->coord.left = INVALID_COORD;
 		v->UpdatePosition();
 		v->UpdateViewport(false);
