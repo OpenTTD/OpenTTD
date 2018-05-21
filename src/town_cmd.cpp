@@ -53,7 +53,7 @@
 #include "safeguards.h"
 
 TownID _new_town_id;
-uint32 _town_cargoes_accepted; ///< Bitmap of all cargoes accepted by houses.
+CargoTypes _town_cargoes_accepted; ///< Bitmap of all cargoes accepted by houses.
 
 /* Initialize the town-pool */
 TownPool _town_pool("Town");
@@ -601,14 +601,14 @@ static void AddProducedCargo_Town(TileIndex tile, CargoArray &produced)
 	}
 }
 
-static inline void AddAcceptedCargoSetMask(CargoID cargo, uint amount, CargoArray &acceptance, uint32 *always_accepted)
+static inline void AddAcceptedCargoSetMask(CargoID cargo, uint amount, CargoArray &acceptance, CargoTypes *always_accepted)
 {
 	if (cargo == CT_INVALID || amount == 0) return;
 	acceptance[cargo] += amount;
 	SetBit(*always_accepted, cargo);
 }
 
-static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, uint32 *always_accepted)
+static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, CargoTypes *always_accepted)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 	CargoID accepts[3];
@@ -719,7 +719,7 @@ void UpdateTownCargoTotal(Town *t)
 static void UpdateTownCargoes(Town *t, TileIndex start, bool update_total = true)
 {
 	CargoArray accepted, produced;
-	uint32 dummy;
+	CargoTypes dummy;
 
 	/* Gather acceptance for all houses in an area around the start tile.
 	 * The area is composed of the square the tile is in, extended one square in all
@@ -733,7 +733,7 @@ static void UpdateTownCargoes(Town *t, TileIndex start, bool update_total = true
 	}
 
 	/* Create bitmap of produced and accepted cargoes. */
-	uint32 acc = 0;
+	CargoTypes acc = 0;
 	for (uint cid = 0; cid < NUM_CARGO; cid++) {
 		if (accepted[cid] >= 8) SetBit(acc, cid);
 		if (produced[cid] > 0) SetBit(t->cargo_produced, cid);

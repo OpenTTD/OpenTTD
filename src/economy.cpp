@@ -1366,14 +1366,14 @@ struct IsEmptyAction
 struct PrepareRefitAction
 {
 	CargoArray &consist_capleft; ///< Capacities left in the consist.
-	uint32 &refit_mask;          ///< Bitmask of possible refit cargoes.
+	CargoTypes &refit_mask;          ///< Bitmask of possible refit cargoes.
 
 	/**
 	 * Create a refit preparation action.
 	 * @param consist_capleft Capacities left in consist, to be updated here.
 	 * @param refit_mask Refit mask to be constructed from refit information of vehicles.
 	 */
-	PrepareRefitAction(CargoArray &consist_capleft, uint32 &refit_mask) :
+	PrepareRefitAction(CargoArray &consist_capleft, CargoTypes &refit_mask) :
 		consist_capleft(consist_capleft), refit_mask(refit_mask) {}
 
 	/**
@@ -1469,7 +1469,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 
 	Backup<CompanyByte> cur_company(_current_company, v->owner, FILE_LINE);
 
-	uint32 refit_mask = v->GetEngine()->info.refit_mask;
+	CargoTypes refit_mask = v->GetEngine()->info.refit_mask;
 
 	/* Remove old capacity from consist capacity and collect refit mask. */
 	IterateVehicleParts(v_start, PrepareRefitAction(consist_capleft, refit_mask));
@@ -1627,10 +1627,10 @@ static void LoadUnloadVehicle(Vehicle *front)
 	bool completely_emptied = true;
 	bool anything_unloaded  = false;
 	bool anything_loaded    = false;
-	uint32 full_load_amount = 0;
-	uint32 cargo_not_full   = 0;
-	uint32 cargo_full       = 0;
-	uint32 reservation_left = 0;
+	CargoTypes full_load_amount = 0;
+	CargoTypes cargo_not_full   = 0;
+	CargoTypes cargo_full       = 0;
+	CargoTypes reservation_left = 0;
 
 	front->cur_speed = 0;
 
@@ -1838,7 +1838,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 				/* if the aircraft carries passengers and is NOT full, then
 				 * continue loading, no matter how much mail is in */
 				if ((front->type == VEH_AIRCRAFT && IsCargoInClass(front->cargo_type, CC_PASSENGERS) && front->cargo_cap > front->cargo.StoredCount()) ||
-						(cargo_not_full && (cargo_full & ~cargo_not_full) == 0)) { // There are still non-full cargoes
+						(cargo_not_full != 0 && (cargo_full & ~cargo_not_full) == 0)) { // There are still non-full cargoes
 					finished_loading = false;
 				}
 			} else if (cargo_not_full != 0) {

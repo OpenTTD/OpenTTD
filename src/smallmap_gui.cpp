@@ -1351,7 +1351,7 @@ void SmallMapWindow::SelectLegendItem(int click_pos, LegendAndColour *legend, in
  */
 void SmallMapWindow::SetOverlayCargoMask()
 {
-	uint32 cargo_mask = 0;
+	CargoTypes cargo_mask = 0;
 	for (int i = 0; i != _smallmap_cargo_count; ++i) {
 		if (_legend_linkstats[i].show_on_map) SetBit(cargo_mask, _legend_linkstats[i].type);
 	}

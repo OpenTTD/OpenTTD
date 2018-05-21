@@ -752,7 +752,7 @@ static CompanyID GetPreviewCompany(Engine *e)
 	CompanyID best_company = INVALID_COMPANY;
 
 	/* For trains the cargomask has no useful meaning, since you can attach other wagons */
-	uint32 cargomask = e->type != VEH_TRAIN ? GetUnionOfArticulatedRefitMasks(e->index, true) : (uint32)-1;
+	CargoTypes cargomask = e->type != VEH_TRAIN ? GetUnionOfArticulatedRefitMasks(e->index, true) : ALL_CARGOTYPES;
 
 	int32 best_hist = -1;
 	const Company *c;
@@ -1117,7 +1117,9 @@ bool IsEngineRefittable(EngineID engine)
 
 	/* Is there any cargo except the default cargo? */
 	CargoID default_cargo = e->GetDefaultCargoType();
-	return default_cargo != CT_INVALID && ei->refit_mask != 1U << default_cargo;
+	CargoTypes default_cargo_mask = 0;
+	SetBit(default_cargo_mask, default_cargo);
+	return default_cargo != CT_INVALID && ei->refit_mask != default_cargo_mask;
 }
 
 /**

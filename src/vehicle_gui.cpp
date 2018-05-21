@@ -416,7 +416,7 @@ struct RefitWindow : public Window {
 		do {
 			if (v->type == VEH_TRAIN && !vehicles_to_refit.Contains(v->index)) continue;
 			const Engine *e = v->GetEngine();
-			uint32 cmask = e->info.refit_mask;
+			CargoTypes cmask = e->info.refit_mask;
 			byte callback_mask = e->info.callback_mask;
 
 			/* Skip this engine if it does not carry anything */
@@ -1043,9 +1043,9 @@ void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *pare
 uint ShowRefitOptionsList(int left, int right, int y, EngineID engine)
 {
 	/* List of cargo types of this engine */
-	uint32 cmask = GetUnionOfArticulatedRefitMasks(engine, false);
+	CargoTypes cmask = GetUnionOfArticulatedRefitMasks(engine, false);
 	/* List of cargo types available in this climate */
-	uint32 lmask = _cargo_mask;
+	CargoTypes lmask = _cargo_mask;
 
 	/* Draw nothing if the engine is not refittable */
 	if (HasAtMostOneBit(cmask)) return y;

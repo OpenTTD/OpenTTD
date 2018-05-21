@@ -25,7 +25,7 @@ struct HouseScopeResolver : public ScopeResolver {
 	Town *town;                    ///< Town of this house.
 	bool not_yet_constructed;      ///< True for construction check.
 	uint16 initial_random_bits;    ///< Random bits during construction checks.
-	uint32 watched_cargo_triggers; ///< Cargo types that triggered the watched cargo callback.
+	CargoTypes watched_cargo_triggers; ///< Cargo types that triggered the watched cargo callback.
 
 	/**
 	 * Constructor of a house scope resolver.
@@ -38,7 +38,7 @@ struct HouseScopeResolver : public ScopeResolver {
 	 * @param watched_cargo_triggers Cargo types that triggered the watched cargo callback.
 	 */
 	HouseScopeResolver(ResolverObject &ro, HouseID house_id, TileIndex tile, Town *town,
-			bool not_yet_constructed, uint8 initial_random_bits, uint32 watched_cargo_triggers)
+			bool not_yet_constructed, uint8 initial_random_bits, CargoTypes watched_cargo_triggers)
 		: ScopeResolver(ro), house_id(house_id), tile(tile), town(town), not_yet_constructed(not_yet_constructed),
 		initial_random_bits(initial_random_bits), watched_cargo_triggers(watched_cargo_triggers)
 	{
@@ -56,7 +56,7 @@ struct HouseResolverObject : public ResolverObject {
 
 	HouseResolverObject(HouseID house_id, TileIndex tile, Town *town,
 			CallbackID callback = CBID_NO_CALLBACK, uint32 param1 = 0, uint32 param2 = 0,
-			bool not_yet_constructed = false, uint8 initial_random_bits = 0, uint32 watched_cargo_triggers = 0);
+			bool not_yet_constructed = false, uint8 initial_random_bits = 0, CargoTypes watched_cargo_triggers = 0);
 
 	/* virtual */ ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0)
 	{
@@ -97,8 +97,8 @@ void AnimateNewHouseTile(TileIndex tile);
 void AnimateNewHouseConstruction(TileIndex tile);
 
 uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile,
-		bool not_yet_constructed = false, uint8 initial_random_bits = 0, uint32 watched_cargo_triggers = 0);
-void WatchedCargoCallback(TileIndex tile, uint32 trigger_cargoes);
+		bool not_yet_constructed = false, uint8 initial_random_bits = 0, CargoTypes watched_cargo_triggers = 0);
+void WatchedCargoCallback(TileIndex tile, CargoTypes trigger_cargoes);
 
 bool CanDeleteHouse(TileIndex tile);
 

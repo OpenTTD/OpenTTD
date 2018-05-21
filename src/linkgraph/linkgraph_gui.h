@@ -51,17 +51,17 @@ public:
 	 * @param company_mask Bitmask of companies to be shown.
 	 * @param scale Desired thickness of lines and size of station dots.
 	 */
-	LinkGraphOverlay(const Window *w, uint wid, uint32 cargo_mask, uint32 company_mask, uint scale) :
+	LinkGraphOverlay(const Window *w, uint wid, CargoTypes cargo_mask, uint32 company_mask, uint scale) :
 			window(w), widget_id(wid), cargo_mask(cargo_mask), company_mask(company_mask), scale(scale)
 	{}
 
 	void RebuildCache();
 	void Draw(const DrawPixelInfo *dpi) const;
-	void SetCargoMask(uint32 cargo_mask);
+	void SetCargoMask(CargoTypes cargo_mask);
 	void SetCompanyMask(uint32 company_mask);
 
 	/** Get a bitmask of the currently shown cargoes. */
-	uint32 GetCargoMask() { return this->cargo_mask; }
+	CargoTypes GetCargoMask() { return this->cargo_mask; }
 
 	/** Get a bitmask of the currently shown companies. */
 	uint32 GetCompanyMask() { return this->company_mask; }
@@ -69,7 +69,7 @@ public:
 protected:
 	const Window *window;              ///< Window to be drawn into.
 	const uint widget_id;              ///< ID of Widget in Window to be drawn to.
-	uint32 cargo_mask;                 ///< Bitmask of cargos to be displayed.
+	CargoTypes cargo_mask;             ///< Bitmask of cargos to be displayed.
 	uint32 company_mask;               ///< Bitmask of companies to be displayed.
 	LinkMap cached_links;              ///< Cache for links to reduce recalculation.
 	StationSupplyList cached_stations; ///< Cache for stations to be drawn.

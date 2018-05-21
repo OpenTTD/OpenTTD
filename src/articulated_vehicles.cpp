@@ -119,12 +119,12 @@ static inline uint16 GetVehicleDefaultCapacity(EngineID engine, CargoID *cargo_t
  * @param include_initial_cargo_type if true the default cargo type of the vehicle is included; if false only the refit_mask
  * @return bit set of CargoIDs
  */
-static inline uint32 GetAvailableVehicleCargoTypes(EngineID engine, bool include_initial_cargo_type)
+static inline CargoTypes GetAvailableVehicleCargoTypes(EngineID engine, bool include_initial_cargo_type)
 {
 	const Engine *e = Engine::Get(engine);
 	if (!e->CanCarryCargo()) return 0;
 
-	uint32 cargoes = e->info.refit_mask;
+	CargoTypes cargoes = e->info.refit_mask;
 
 	if (include_initial_cargo_type) {
 		SetBit(cargoes, e->GetDefaultCargoType());
@@ -169,7 +169,7 @@ CargoArray GetCapacityOfArticulatedParts(EngineID engine)
  * @param[out] cargoes Total amount of units that can be transported, summed by cargo.
  * @param[out] refits Whether a (possibly partial) refit for each cargo is possible.
  */
-void GetArticulatedVehicleCargoesAndRefits(EngineID engine, CargoArray *cargoes, uint32 *refits)
+void GetArticulatedVehicleCargoesAndRefits(EngineID engine, CargoArray *cargoes, CargoTypes *refits)
 {
 	cargoes->Clear();
 	*refits = 0;
@@ -228,12 +228,12 @@ bool IsArticulatedVehicleRefittable(EngineID engine)
  * @param union_mask returns bit mask of CargoIDs which are a refit option for at least one articulated part
  * @param intersection_mask returns bit mask of CargoIDs which are a refit option for every articulated part (with default capacity > 0)
  */
-void GetArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type, uint32 *union_mask, uint32 *intersection_mask)
+void GetArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type, CargoTypes *union_mask, CargoTypes *intersection_mask)
 {
 	const Engine *e = Engine::Get(engine);
-	uint32 veh_cargoes = GetAvailableVehicleCargoTypes(engine, include_initial_cargo_type);
+	CargoTypes veh_cargoes = GetAvailableVehicleCargoTypes(engine, include_initial_cargo_type);
 	*union_mask = veh_cargoes;
-	*intersection_mask = (veh_cargoes != 0) ? veh_cargoes : UINT32_MAX;
+	*intersection_mask = (veh_cargoes != 0) ? veh_cargoes : ALL_CARGOTYPES;
 
 	if (!e->IsGroundVehicle()) return;
 	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return;
@@ -254,9 +254,9 @@ void GetArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type, 
  * @param include_initial_cargo_type if true the default cargo type of the vehicle is included; if false only the refit_mask
  * @return bit mask of CargoIDs which are a refit option for at least one articulated part
  */
-uint32 GetUnionOfArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type)
+CargoTypes GetUnionOfArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type)
 {
-	uint32 union_mask, intersection_mask;
+	CargoTypes union_mask, intersection_mask;
 	GetArticulatedRefitMasks(engine, include_initial_cargo_type, &union_mask, &intersection_mask);
 	return union_mask;
 }
@@ -267,9 +267,9 @@ uint32 GetUnionOfArticulatedRefitMasks(EngineID engine, bool include_initial_car
  * @param include_initial_cargo_type if true the default cargo type of the vehicle is included; if false only the refit_mask
  * @return bit mask of CargoIDs which are a refit option for every articulated part (with default capacity > 0)
  */
-uint32 GetIntersectionOfArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type)
+CargoTypes GetIntersectionOfArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type)
 {
-	uint32 union_mask, intersection_mask;
+	CargoTypes union_mask, intersection_mask;
 	GetArticulatedRefitMasks(engine, include_initial_cargo_type, &union_mask, &intersection_mask);
 	return intersection_mask;
 }
@@ -314,16 +314,16 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 {
 	const Engine *engine = v->GetEngine();
 
-	uint32 purchase_refit_union, purchase_refit_intersection;
+	CargoTypes purchase_refit_union, purchase_refit_intersection;
 	GetArticulatedRefitMasks(v->engine_type, true, &purchase_refit_union, &purchase_refit_intersection);
 	CargoArray purchase_default_capacity = GetCapacityOfArticulatedParts(v->engine_type);
 
-	uint32 real_refit_union = 0;
-	uint32 real_refit_intersection = UINT_MAX;
+	CargoTypes real_refit_union = 0;
+	CargoTypes real_refit_intersection = ALL_CARGOTYPES;
 	CargoArray real_default_capacity;
 
 	do {
-		uint32 refit_mask = GetAvailableVehicleCargoTypes(v->engine_type, true);
+		CargoTypes refit_mask = GetAvailableVehicleCargoTypes(v->engine_type, true);
 		real_refit_union |= refit_mask;
 		if (refit_mask != 0) real_refit_intersection &= refit_mask;
 

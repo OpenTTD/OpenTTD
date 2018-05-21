@@ -313,8 +313,8 @@ struct GRFTempEngineData {
 	Refittability refittability;     ///< Did the newgrf set any refittability property? If not, default refittability will be applied.
 	bool prop27_set;         ///< Did the NewGRF set property 27 (misc flags)?
 	uint8 rv_max_speed;      ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
-	uint32 ctt_include_mask; ///< Cargo types always included in the refit mask.
-	uint32 ctt_exclude_mask; ///< Cargo types always excluded from the refit mask.
+	CargoTypes ctt_include_mask; ///< Cargo types always included in the refit mask.
+	CargoTypes ctt_exclude_mask; ///< Cargo types always excluded from the refit mask.
 
 	/**
 	 * Update the summary refittability on setting a refittability property.
@@ -943,11 +943,11 @@ static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, bool us
 }
 
 /**
- * Translate the refit mask.
+ * Translate the refit mask. refit_mask is uint32 as it has not been mapped to CargoTypes.
  */
-static uint32 TranslateRefitMask(uint32 refit_mask)
+static CargoTypes TranslateRefitMask(uint32 refit_mask)
 {
-	uint32 result = 0;
+	CargoTypes result = 0;
 	uint8 bit;
 	FOR_EACH_SET_BIT(bit, refit_mask) {
 		CargoID cargo = GetCargoTranslation(bit, _cur.grffile, true);
@@ -1310,7 +1310,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				uint8 count = buf->ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x2C && count != 0);
 				if (prop == 0x2C) _gted[e->index].defaultcargo_grf = _cur.grffile;
-				uint32 &ctt = prop == 0x2C ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
+				CargoTypes &ctt = prop == 0x2C ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
 				ctt = 0;
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
@@ -1498,7 +1498,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				uint8 count = buf->ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x24 && count != 0);
 				if (prop == 0x24) _gted[e->index].defaultcargo_grf = _cur.grffile;
-				uint32 &ctt = prop == 0x24 ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
+				CargoTypes &ctt = prop == 0x24 ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
 				ctt = 0;
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
@@ -1670,7 +1670,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				uint8 count = buf->ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x1E && count != 0);
 				if (prop == 0x1E) _gted[e->index].defaultcargo_grf = _cur.grffile;
-				uint32 &ctt = prop == 0x1E ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
+				CargoTypes &ctt = prop == 0x1E ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
 				ctt = 0;
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
@@ -1820,7 +1820,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				uint8 count = buf->ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x1D && count != 0);
 				if (prop == 0x1D) _gted[e->index].defaultcargo_grf = _cur.grffile;
-				uint32 &ctt = prop == 0x1D ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
+				CargoTypes &ctt = prop == 0x1D ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
 				ctt = 0;
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
@@ -2036,9 +2036,10 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				break;
 
 			case 0x12: // Cargo types for random triggers
-				statspec->cargo_triggers = buf->ReadDWord();
 				if (_cur.grffile->grf_version >= 7) {
-					statspec->cargo_triggers = TranslateRefitMask(statspec->cargo_triggers);
+					statspec->cargo_triggers = TranslateRefitMask(buf->ReadDWord());
+				} else {
+					statspec->cargo_triggers = (CargoTypes)buf->ReadDWord();
 				}
 				break;
 
@@ -8305,9 +8306,9 @@ static void CalculateRefitMasks()
 
 		/* Did the newgrf specify any refitting? If not, use defaults. */
 		if (_gted[engine].refittability != GRFTempEngineData::UNSET) {
-			uint32 mask = 0;
-			uint32 not_mask = 0;
-			uint32 xor_mask = ei->refit_mask;
+			CargoTypes mask = 0;
+			CargoTypes not_mask = 0;
+			CargoTypes xor_mask = ei->refit_mask;
 
 			/* If the original masks set by the grf are zero, the vehicle shall only carry the default cargo.
 			 * Note: After applying the translations, the vehicle may end up carrying no defined cargo. It becomes unavailable in that case. */
@@ -8328,7 +8329,7 @@ static void CalculateRefitMasks()
 			ei->refit_mask |= _gted[engine].ctt_include_mask;
 			ei->refit_mask &= ~_gted[engine].ctt_exclude_mask;
 		} else {
-			uint32 xor_mask = 0;
+			CargoTypes xor_mask = 0;
 
 			/* Don't apply default refit mask to wagons nor engines with no capacity */
 			if (e->type != VEH_TRAIN || (e->u.rail.capacity != 0 && e->u.rail.railveh_type != RAILVEH_WAGON)) {
