@@ -75,7 +75,7 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 							/* Always connective */
 							connective = true;
 						} else {
-							const RoadBits neighbor_rb = GetAnyRoadBits(neighbor_tile, ROADTYPE_ROAD) | GetAnyRoadBits(neighbor_tile, ROADTYPE_TRAM); // TODO
+							const RoadBits neighbor_rb = GetAnyRoadBits(neighbor_tile, ROADTYPE_ROAD) | GetAnyRoadBits(neighbor_tile, ROADTYPE_TRAM); // TODO: check the entire RoadTypeIdentifier
 
 							/* Accept only connective tiles */
 							connective = (neighbor_rb & mirrored_rb) != ROAD_NONE;
@@ -113,7 +113,7 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 bool HasRoadTypeAvail(const CompanyID company, RoadTypeIdentifier rtid)
 {
 	if (company == OWNER_DEITY || company == OWNER_TOWN || _game_mode == GM_EDITOR || _generating_world) {
-		return true; // TODO
+		return true; // TODO: should there be a proper check?
 	} else {
 		Company *c = Company::GetIfValid(company);
 		if (c == NULL) return false;
@@ -176,7 +176,7 @@ RoadSubTypes GetCompanyRoadtypes(CompanyID company, RoadType rt)
 {
 	RoadSubTypes rst = ROADSUBTYPES_NONE;
 
-	if (rt == ROADTYPE_ROAD) rst |= ROADSUBTYPES_NORMAL; // Road is always available. // TODO
+	if (rt == ROADTYPE_ROAD) rst |= ROADSUBTYPES_NORMAL; // Road is always available. // TODO: check if the loaded grfs don't remove all the ROAD compatible types
 
 	Engine *e;
 	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
@@ -270,7 +270,7 @@ RoadSubTypes ExistingRoadSubTypesForRoadType(RoadType rt, CompanyID c)
 	RoadSubTypes known_roadsubtypes = ROADSUBTYPES_NONE;
 
 	/* Road is always visible and available. */
-	if (rt == ROADTYPE_ROAD) known_roadsubtypes |= ROADSUBTYPES_NORMAL; // TODO
+	if (rt == ROADTYPE_ROAD) known_roadsubtypes |= ROADSUBTYPES_NORMAL; // TODO: check if the loaded grfs don't remove all the ROAD compatible types
 
 	/* Find used roadtypes */
 	Engine *e;
