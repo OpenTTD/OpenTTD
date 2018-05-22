@@ -1029,6 +1029,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Brak dostępnej muzyki
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Ścieżka
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Tytuł
@@ -1053,6 +1054,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTB
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Wykaz ścieżek
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programuj - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Wyczyść
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Zmień zestaw
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Wyczyść obecny program (tylko Wlasny1 lub Wlasny2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik na ścieżce aby dodać do obecnego programu (Wlasny1 i Wlasny2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliknij na ścieżce muzycznej aby usunąć ją z wybranego programu (Wlasny1 lub Wlasny2)
@@ -1714,6 +1716,9 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Kolor terenu na
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :zielony
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :ciemnozielony
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :fioletowy
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Zachowanie podczas przeciągania mapy
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Przeciągnij mapę prawym przyciskiem myszy
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Przeciągnij mapę lewym przyciskiem myszy
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Wygładź przesuwanie widoku: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Zdecyduj, jak główny widok przesuwa się do konkretnej lokacji, gdy klikasz na mini-mapie lub gdy używasz komendy do przesunięcia do danego obiektu na mapie. Kiedy włączone, widok przesuwa się płynnie, kiedy wyłączone, następuje skok bezpośrednio do wybranego miejsca
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Pokaż dymek z pomiarem podczas używania różnych narzędzi: {STRING}
