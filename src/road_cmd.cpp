@@ -1045,9 +1045,9 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 		/* Determine which road parts should be built. */
 		if (!is_ai && start_tile != end_tile) {
 			/* Only build the first and last roadbit if they can connect to something. */
-			if (tile == end_tile && !CanConnectToRoad(tile, rtid.basetype, dir)) { // TODO
+			if (tile == end_tile && !CanConnectToRoad(tile, rtid.basetype, dir)) { // TODO: check the entire RoadTypeIdentifier
 				bits = DiagDirToRoadBits(ReverseDiagDir(dir));
-			} else if (tile == start_tile && !CanConnectToRoad(tile, rtid.basetype, ReverseDiagDir(dir))) { // TODO
+			} else if (tile == start_tile && !CanConnectToRoad(tile, rtid.basetype, ReverseDiagDir(dir))) { // TODO: check the entire RoadTypeIdentifier
 				bits = DiagDirToRoadBits(dir);
 			}
 		} else {
@@ -2367,7 +2367,7 @@ CommandCost CmdConvertRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			default: continue;
 		}
 
-		/* Trying to convert other's road */ // TODO allow upgrade?
+		/* Trying to convert other's road */
 		Owner owner = GetRoadOwner(tile, to_type.basetype);
 		if (!CanConvertRoadType(owner, to_type.basetype)) {
 			CommandCost ret = CheckOwnership(owner, tile);
