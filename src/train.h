@@ -110,7 +110,7 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 	friend struct GroundVehicle<Train, VEH_TRAIN>; // GroundVehicle needs to use the acceleration functions defined at Train.
 
 	void MarkDirty();
-	void UpdateDeltaXY(Direction direction);
+	void UpdateDeltaXY();
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_TRAIN_INC : EXPENSES_TRAIN_RUN; }
 	void PlayLeaveStationSound() const;
 	bool IsPrimaryVehicle() const { return this->IsFrontEngine(); }

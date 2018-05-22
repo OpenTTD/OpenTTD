@@ -1442,7 +1442,7 @@ CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, uint16 data, uint3
 	return cost;
 }
 
-void Train::UpdateDeltaXY(Direction direction)
+void Train::UpdateDeltaXY()
 {
 	/* Set common defaults. */
 	this->x_offs    = -1;
@@ -1453,7 +1453,7 @@ void Train::UpdateDeltaXY(Direction direction)
 	this->x_bb_offs =  0;
 	this->y_bb_offs =  0;
 
-	if (!IsDiagonalDirection(direction)) {
+	if (!IsDiagonalDirection(this->direction)) {
 		static const int _sign_table[] =
 		{
 			/* x, y */
@@ -1466,12 +1466,12 @@ void Train::UpdateDeltaXY(Direction direction)
 		int half_shorten = (VEHICLE_LENGTH - this->gcache.cached_veh_length) / 2;
 
 		/* For all straight directions, move the bound box to the centre of the vehicle, but keep the size. */
-		this->x_offs -= half_shorten * _sign_table[direction];
-		this->y_offs -= half_shorten * _sign_table[direction + 1];
+		this->x_offs -= half_shorten * _sign_table[this->direction];
+		this->y_offs -= half_shorten * _sign_table[this->direction + 1];
 		this->x_extent += this->x_bb_offs = half_shorten * _sign_table[direction];
 		this->y_extent += this->y_bb_offs = half_shorten * _sign_table[direction + 1];
 	} else {
-		switch (direction) {
+		switch (this->direction) {
 				/* Shorten southern corner of the bounding box according the vehicle length
 				 * and center the bounding box on the vehicle. */
 			case DIR_NE:
@@ -3361,7 +3361,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 		}
 
 		/* update image of train, as well as delta XY */
-		v->UpdateDeltaXY(v->direction);
+		v->UpdateDeltaXY();
 
 		v->x_pos = gp.x;
 		v->y_pos = gp.y;
