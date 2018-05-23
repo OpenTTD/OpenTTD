@@ -1149,6 +1149,8 @@
     <ClCompile Include="..\src\script\api\script_window.cpp" />
     <ClCompile Include="..\src\blitter\32bpp_anim.cpp" />
     <ClInclude Include="..\src\blitter\32bpp_anim.hpp" />
+    <ClCompile Include="..\src\blitter\32bpp_anim_sse2.cpp" />
+    <ClInclude Include="..\src\blitter\32bpp_anim_sse2.hpp" />
     <ClCompile Include="..\src\blitter\32bpp_anim_sse4.cpp" />
     <ClInclude Include="..\src\blitter\32bpp_anim_sse4.hpp" />
     <ClCompile Include="..\src\blitter\32bpp_base.cpp" />
