@@ -272,6 +272,30 @@ static void Save_MAP7()
 	}
 }
 
+static void Load_MAP8()
+{
+	SmallStackSafeStackAlloc<uint16, MAP_SL_BUF_SIZE> buf;
+	TileIndex size = MapSize();
+
+	for (TileIndex i = 0; i != size;) {
+		SlArray(buf, MAP_SL_BUF_SIZE, SLE_UINT16);
+		for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) _me[i++].m8 = buf[j];
+	}
+}
+
+static void Save_MAP8()
+{
+	SmallStackSafeStackAlloc<uint16, MAP_SL_BUF_SIZE> buf;
+	TileIndex size = MapSize();
+
+	SlSetLength(size * sizeof(uint16));
+	for (TileIndex i = 0; i != size;) {
+		for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = _me[i++].m8;
+		SlArray(buf, MAP_SL_BUF_SIZE, SLE_UINT16);
+	}
+}
+
+
 extern const ChunkHandler _map_chunk_handlers[] = {
 	{ 'MAPS', Save_MAPS, Load_MAPS, NULL, Check_MAPS, CH_RIFF },
 	{ 'MAPT', Save_MAPT, Load_MAPT, NULL, NULL,       CH_RIFF },
@@ -282,5 +306,6 @@ extern const ChunkHandler _map_chunk_handlers[] = {
 	{ 'M3HI', Save_MAP4, Load_MAP4, NULL, NULL,       CH_RIFF },
 	{ 'MAP5', Save_MAP5, Load_MAP5, NULL, NULL,       CH_RIFF },
 	{ 'MAPE', Save_MAP6, Load_MAP6, NULL, NULL,       CH_RIFF },
-	{ 'MAP7', Save_MAP7, Load_MAP7, NULL, NULL,       CH_RIFF | CH_LAST },
+	{ 'MAP7', Save_MAP7, Load_MAP7, NULL, NULL,       CH_RIFF },
+	{ 'MAP8', Save_MAP8, Load_MAP8, NULL, NULL,       CH_RIFF | CH_LAST },
 };
