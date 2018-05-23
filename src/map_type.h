@@ -33,8 +33,9 @@ assert_compile(sizeof(Tile) == 8);
  * Look at docs/landscape.html for the exact meaning of the members.
  */
 struct TileExtended {
-	byte m6; ///< General purpose
-	byte m7; ///< Primarily used for newgrf support
+	byte m6;   ///< General purpose
+	byte m7;   ///< Primarily used for newgrf support
+	uint16 m8; ///< General purpose
 };
 
 /**
