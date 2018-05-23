@@ -461,23 +461,10 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, Tr
 
 	if (v->dest_tile == 0 || DistanceManhattan(tile, v->dest_tile) > SHIP_MAX_ORDER_DISTANCE + 5) {
 		/* No destination or destination too far, don't invoke pathfinder. */
-		static const TrackBits direction_to_trackbits[DIR_END] = {
-			TRACK_BIT_LEFT  | TRACK_BIT_RIGHT, // DIR_N
-			TRACK_BIT_X,                       // DIR_NE
-			TRACK_BIT_UPPER | TRACK_BIT_LOWER, // DIR_E
-			TRACK_BIT_Y,                       // DIR_SE
-			TRACK_BIT_LEFT  | TRACK_BIT_RIGHT, // DIR_S
-			TRACK_BIT_X,                       // DIR_SW
-			TRACK_BIT_UPPER | TRACK_BIT_LOWER, // DIR_W
-			TRACK_BIT_Y,                       // DIR_NW
-		};
-
-		TrackBits next_tracks = direction_to_trackbits[v->direction] & tracks;
-		if (next_tracks != TRACK_BIT_NONE) {
-			/* Continue in same direction when possible. */
-			track = (Track)FindFirstBit(next_tracks);
-		} else {
-			/* Pick a random track. */
+		track = TrackBitsToTrack(v->state);
+		if (track != TRACK_X && track != TRACK_Y) track = TrackToOppositeTrack(track);
+		if (!HasBit(tracks, track)) {
+			/* Can't continue in same direction so pick a random available track. */
 			do {
 				track = (Track)RandomRange(TRACK_END);
 			} while ((TrackToTrackBits(track) & tracks) == TRACK_BIT_NONE);
