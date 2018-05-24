@@ -120,6 +120,19 @@ struct PacketReader : LoadFilter {
 
 
 /**
+ * Create an emergency savegame when the network connection is lost.
+ */
+void ClientNetworkEmergencySave()
+{
+	if (!_settings_client.gui.autosave_on_network_disconnect) return;
+
+	const char *filename = "netsave.sav";
+	DEBUG(net, 0, "Client: Performing emergency save (%s)", filename);
+	SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR, false);
+}
+
+
+/**
  * Create a new socket for the client side of the game connection.
  * @param s The socket to connect with.
  */
@@ -670,6 +683,9 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p
 
 	ShowErrorMessage(err, INVALID_STRING_ID, WL_CRITICAL);
 
+	/* Perform an emergency save if we had already entered the game */
+	if (this->status == STATUS_ACTIVE) ClientNetworkEmergencySave();
+
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
@@ -1051,6 +1067,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_SHUTDOWN(Packet
 		ShowErrorMessage(STR_NETWORK_MESSAGE_SERVER_SHUTDOWN, INVALID_STRING_ID, WL_CRITICAL);
 	}
 
+	if (this->status == STATUS_ACTIVE) ClientNetworkEmergencySave();
+
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
 }
 
@@ -1065,6 +1083,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEWGAME(Packet 
 		_network_reconnect = _network_own_client_id % 16;
 		ShowErrorMessage(STR_NETWORK_MESSAGE_SERVER_REBOOT, INVALID_STRING_ID, WL_CRITICAL);
 	}
+
+	if (this->status == STATUS_ACTIVE) ClientNetworkEmergencySave();
 
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
 }
@@ -1153,6 +1173,7 @@ void ClientNetworkGameSocketHandler::CheckConnection()
 	if (lag > 20) {
 		this->NetworkGameSocketHandler::CloseConnection();
 		ShowErrorMessage(STR_NETWORK_ERROR_LOSTCONNECTION, INVALID_STRING_ID, WL_CRITICAL);
+		ClientNetworkEmergencySave();
 		return;
 	}
 
