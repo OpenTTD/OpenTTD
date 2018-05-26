@@ -692,4 +692,25 @@ static inline bool IsUphillTrackdir(Slope slope, Trackdir dir)
 	return HasBit(_uphill_trackdirs[RemoveHalftileSlope(slope)], dir);
 }
 
+/**
+ * Determine the side in which the vehicle will leave the tile
+ *
+ * @param direction vehicle direction
+ * @param track vehicle track bits
+ * @return side of tile the vehicle will leave
+ */
+static inline DiagDirection VehicleExitDir(Direction direction, TrackBits track)
+{
+	static const TrackBits state_dir_table[DIAGDIR_END] = { TRACK_BIT_RIGHT, TRACK_BIT_LOWER, TRACK_BIT_LEFT, TRACK_BIT_UPPER };
+
+	DiagDirection diagdir = DirToDiagDir(direction);
+
+	/* Determine the diagonal direction in which we will exit this tile */
+	if (!HasBit(direction, 0) && track != state_dir_table[diagdir]) {
+		diagdir = ChangeDiagDir(diagdir, DIAGDIRDIFF_90LEFT);
+	}
+
+	return diagdir;
+}
+
 #endif /* TRACK_FUNC_H */

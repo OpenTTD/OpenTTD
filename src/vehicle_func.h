@@ -180,6 +180,4 @@ void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8 num_vehicles);
 
 void CheckCargoCapacity(Vehicle *v);
 
-DiagDirection VehicleExitDir(Direction direction, TrackBits track);
-
 #endif /* VEHICLE_FUNC_H */
