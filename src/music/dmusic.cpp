@@ -66,6 +66,173 @@ struct ProcPtrs {
 static ProcPtrs proc;
 
 
+/**
+ * Adjust the volume of a playing MIDI file
+ */
+class VolumeControlTool : public IDirectMusicTool {
+public:
+	/* IUnknown */
+	STDMETHOD(QueryInterface) (THIS_ REFIID iid, LPVOID FAR *outptr)
+	{
+		if (iid == IID_IUnknown) {
+			*outptr = (IUnknown*)this;
+		} else if (iid == IID_IDirectMusicTool) {
+			*outptr = (IDirectMusicTool*)this;
+		} else {
+			*outptr = NULL;
+		}
+		if (*outptr == NULL) {
+			return E_NOINTERFACE;
+		} else {
+			return S_OK;
+		}
+	}
+
+	STDMETHOD_(ULONG, AddRef) (THIS)
+	{
+		/* class is only used as a single static instance, doesn't need refcounting */
+		return 1;
+	}
+
+	STDMETHOD_(ULONG, Release) (THIS)
+	{
+		/* class is only used as a single static instance, doesn't need refcounting */
+		return 1;
+	}
+
+	/*  IDirectMusicTool */
+	STDMETHOD(Init) (THIS_ IDirectMusicGraph* pGraph)
+	{
+		return S_OK;
+	}
+	STDMETHOD(GetMsgDeliveryType) (THIS_ DWORD* pdwDeliveryType)
+	{
+		*pdwDeliveryType = DMUS_PMSGF_TOOL_QUEUE;
+		return S_OK;
+	}
+
+	STDMETHOD(GetMediaTypeArraySize) (THIS_ DWORD* pdwNumElements)
+	{
+		*pdwNumElements = 1;
+		return S_OK;
+	}
+
+	STDMETHOD(GetMediaTypes) (THIS_ DWORD** padwMediaTypes, DWORD dwNumElements)
+	{
+		if (dwNumElements < 1) return S_FALSE;
+		*padwMediaTypes[0] = DMUS_PMSGT_MIDI;
+		return S_OK;
+	}
+
+	STDMETHOD(ProcessPMsg) (THIS_ IDirectMusicPerformance* pPerf, DMUS_PMSG* pPMSG)
+	{
+		pPMSG->pGraph->StampPMsg(pPMSG);
+		if (pPMSG->dwType == DMUS_PMSGT_MIDI) {
+			DMUS_MIDI_PMSG *msg = (DMUS_MIDI_PMSG*)pPMSG;
+			if ((msg->bStatus & 0xF0) == 0xB0) {
+				/* controller change message */
+				byte channel = msg->dwPChannel & 0x0F; /* technically wrong, but seems to hold for standard midi files */
+				if (msg->bByte1 == 0x07) {
+					/* main volume for channel */
+					if (msg->punkUser == this) {
+						/* if the user pointer is set to 'this', it's a sentinel message for user volume control change.
+						 * in that case don't store, but just send the actual current adjusted channel volume  */
+						msg->punkUser = NULL;
+					} else {
+						this->current_controllers[channel] = msg->bByte2;
+						this->CalculateAdjustedControllers();
+						DEBUG(driver, 2, "DirectMusic: song volume adjust ch=%2d  before=%3d  after=%3d  (pch=%08x)", (int)channel, (int)msg->bByte2, (int)this->adjusted_controllers[channel], msg->dwPChannel);
+					}
+					msg->bByte2 = this->adjusted_controllers[channel];
+				} else if (msg->bByte1 == 0x79) {
+					/* reset all controllers */
+					this->current_controllers[channel] = 127;
+					this->adjusted_controllers[channel] = this->current_volume;
+				}
+			}
+		}
+		return DMUS_S_REQUEUE;
+	}
+
+	STDMETHOD(Flush) (THIS_ IDirectMusicPerformance* pPerf, DMUS_PMSG* pPMSG, REFERENCE_TIME rtTime)
+	{
+		return DMUS_S_REQUEUE;
+	}
+
+private:
+	byte current_volume;
+	byte current_controllers[16];
+	byte adjusted_controllers[16];
+
+	void CalculateAdjustedControllers()
+	{
+		for (int ch = 0; ch < 16; ch++) {
+			this->adjusted_controllers[ch] = this->current_controllers[ch] * this->current_volume / 127;
+		}
+	}
+
+public:
+	static VolumeControlTool instance;
+
+	VolumeControlTool()
+	{
+		this->current_volume = 127;
+		for (int ch = 0; ch < 16; ch++) {
+			this->current_controllers[ch] = 127;
+			this->adjusted_controllers[ch] = 127;
+		}
+	}
+
+	void SetVolume(byte new_volume)
+	{
+		/* update volume values */
+		this->current_volume = new_volume;
+		this->CalculateAdjustedControllers();
+
+		if (performance == NULL) return;
+
+		DEBUG(driver, 2, "DirectMusic: user adjust volume, new adjusted values = %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x",
+			this->adjusted_controllers[ 0], this->adjusted_controllers[ 1], this->adjusted_controllers[ 2], this->adjusted_controllers[ 3],
+			this->adjusted_controllers[ 4], this->adjusted_controllers[ 5], this->adjusted_controllers[ 6], this->adjusted_controllers[ 7],
+			this->adjusted_controllers[ 8], this->adjusted_controllers[ 9], this->adjusted_controllers[10], this->adjusted_controllers[11],
+			this->adjusted_controllers[12], this->adjusted_controllers[13], this->adjusted_controllers[14], this->adjusted_controllers[15]
+			);
+
+		/* send volume change messages to all channels for instant update */
+		IDirectMusicGraph *graph = NULL;
+		if (FAILED(performance->QueryInterface(IID_IDirectMusicGraph, (LPVOID*)&graph))) return;
+
+		MUSIC_TIME time = 0;
+		performance->GetTime(NULL, &time);
+
+		for (int ch = 0; ch < 16; ch++) {
+			DMUS_MIDI_PMSG *msg = NULL;
+			if (SUCCEEDED(performance->AllocPMsg(sizeof(*msg), (DMUS_PMSG**)&msg))) {
+				memset(msg, 0, sizeof(*msg));
+				msg->dwSize = sizeof(*msg);
+				msg->dwType = DMUS_PMSGT_MIDI;
+				msg->punkUser = this; /* sentinel to indicate this message is to update playback volume, not part of the original song */
+				msg->dwFlags = DMUS_PMSGF_MUSICTIME;
+				msg->dwPChannel = ch; /* technically wrong, but DirectMusic doesn't have a way to obtain PChannel number given a MIDI channel, you just have to know it */
+				msg->mtTime = time;
+				msg->bStatus = 0xB0 | ch; /* controller change for channel ch */
+				msg->bByte1 = 0x07; /* channel volume controller */
+				msg->bByte2 = this->adjusted_controllers[ch];
+				graph->StampPMsg((DMUS_PMSG*)msg);
+				if (FAILED(performance->SendPMsg((DMUS_PMSG*)msg))) {
+					performance->FreePMsg((DMUS_PMSG*)msg);
+				}
+			}
+		}
+
+		graph->Release();
+	}
+};
+
+/** Static instance of the volume control tool */
+VolumeControlTool VolumeControlTool::instance;
+
+
 const char *MusicDriver_DMusic::Start(const char * const *parm)
 {
 	if (performance != NULL) return NULL;
@@ -150,6 +317,20 @@ const char *MusicDriver_DMusic::Start(const char * const *parm)
 		return "AddPort failed";
 	}
 
+	IDirectMusicGraph *graph = NULL;
+	if (FAILED(proc.CoCreateInstance(
+				CLSID_DirectMusicGraph,
+				NULL,
+				CLSCTX_INPROC,
+				IID_IDirectMusicGraph,
+				(LPVOID*)&graph
+		))) {
+		return "Failed to create the graph object";
+	}
+	graph->InsertTool(&VolumeControlTool::instance, NULL, 0, 0);
+	performance->SetGraph(graph);
+	graph->Release();
+
 	/* Assign a performance channel block to the performance if we added
 	 * a custom port to the performance. */
 	if (music_port != NULL) {
@@ -186,7 +367,12 @@ void MusicDriver_DMusic::Stop()
 {
 	seeking = false;
 
-	if (performance != NULL) performance->Stop(NULL, NULL, 0, 0);
+	if (performance != NULL) {
+		performance->Stop(NULL, NULL, 0, 0);
+		/* necessary to sleep, otherwise note-off messages aren't always sent to the output device
+		 * and can leave notes hanging on external synths, in particular during game shutdown */
+		Sleep(100);
+	}
 
 	if (segment != NULL) {
 		segment->SetParam(GUID_Unload, 0xFFFFFFFF, 0, 0, performance);
@@ -290,8 +476,7 @@ bool MusicDriver_DMusic::IsSongPlaying()
 
 void MusicDriver_DMusic::SetVolume(byte vol)
 {
-	long db = vol * 2000 / 127 - 2000; ///< 0 - 127 -> -2000 - 0
-	performance->SetGlobalParam(GUID_PerfMasterVolume, &db, sizeof(db));
+	VolumeControlTool::instance.SetVolume(vol);
 }
 
 
