@@ -16,6 +16,7 @@
 #include "string_uniscribe.h"
 #include "../../language.h"
 #include "../../strings_func.h"
+#include "../../string_func.h"
 #include "../../table/control_codes.h"
 #include "win32.h"
 #include <vector>
@@ -503,6 +504,107 @@ const int *UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCharMap() con
 	}
 
 	return this->glyph_to_char;
+}
+
+
+/* virtual */ void UniscribeStringIterator::SetString(const char *s)
+{
+	const char *string_base = s;
+
+	this->utf16_to_utf8.clear();
+	this->str_info.clear();
+	this->cur_pos = 0;
+
+	/* Uniscribe operates on UTF-16, thus we have to convert the input string.
+	 * To be able to return proper offsets, we have to create a mapping at the same time. */
+	std::vector<wchar_t> utf16_str;     ///< UTF-16 copy of the string.
+	while (*s != '\0') {
+		size_t idx = s - string_base;
+
+		WChar c = Utf8Consume(&s);
+		if (c < 0x10000) {
+			utf16_str.push_back((wchar_t)c);
+		} else {
+			/* Make a surrogate pair. */
+			utf16_str.push_back((wchar_t)(0xD800 + ((c - 0x10000) >> 10)));
+			utf16_str.push_back((wchar_t)(0xDC00 + ((c - 0x10000) & 0x3FF)));
+			this->utf16_to_utf8.push_back(idx);
+		}
+		this->utf16_to_utf8.push_back(idx);
+	}
+	this->utf16_to_utf8.push_back(s - string_base);
+
+	/* Query Uniscribe for word and cluster break information. */
+	this->str_info.resize(utf16_to_utf8.size());
+
+	if (utf16_str.size() > 0) {
+		/* Itemize string into language runs. */
+		std::vector<SCRIPT_ITEM> runs = UniscribeItemizeString(&utf16_str[0], (int32)utf16_str.size());
+
+		for (std::vector<SCRIPT_ITEM>::const_iterator run = runs.begin(); runs.size() > 0 && run != runs.end() - 1; run++) {
+			/* Get information on valid word and character break.s */
+			int len = (run + 1)->iCharPos - run->iCharPos;
+			std::vector<SCRIPT_LOGATTR> attr(len);
+			ScriptBreak(&utf16_str[run->iCharPos], len, &run->a, &attr[0]);
+
+			/* Extract the information we're interested in. */
+			for (size_t c = 0; c < attr.size(); c++) {
+				/* First character of a run is always a valid word break. */
+				this->str_info[c + run->iCharPos].word_stop = attr[c].fWordStop || c == 0;
+				this->str_info[c + run->iCharPos].char_stop = attr[c].fCharStop;
+			}
+		}
+	}
+
+	/* End-of-string is always a valid stopping point. */
+	this->str_info.back().char_stop = true;
+	this->str_info.back().word_stop = true;
+}
+
+/* virtual */ size_t UniscribeStringIterator::SetCurPosition(size_t pos)
+{
+	/* Convert incoming position to an UTF-16 string index. */
+	size_t utf16_pos = 0;
+	for (size_t i = 0; i < this->utf16_to_utf8.size(); i++) {
+		if (this->utf16_to_utf8[i] == pos) {
+			utf16_pos = i;
+			break;
+		}
+	}
+
+	/* Sanitize in case we get a position inside a grapheme cluster. */
+	while (utf16_pos > 0 && !this->str_info[utf16_pos].char_stop) utf16_pos--;
+	this->cur_pos = utf16_pos;
+
+	return this->utf16_to_utf8[this->cur_pos];
+}
+
+/* virtual */ size_t UniscribeStringIterator::Next(IterType what)
+{
+	assert(this->cur_pos <= this->utf16_to_utf8.size());
+	assert(what == StringIterator::ITER_CHARACTER || what == StringIterator::ITER_WORD);
+
+	if (this->cur_pos == this->utf16_to_utf8.size()) return END;
+
+	do {
+		this->cur_pos++;
+	} while (this->cur_pos < this->utf16_to_utf8.size() && (what  == ITER_WORD ? !this->str_info[this->cur_pos].word_stop : !this->str_info[this->cur_pos].char_stop));
+
+	return this->cur_pos == this->utf16_to_utf8.size() ? END : this->utf16_to_utf8[this->cur_pos];
+}
+
+/*virtual */ size_t UniscribeStringIterator::Prev(IterType what)
+{
+	assert(this->cur_pos <= this->utf16_to_utf8.size());
+	assert(what == StringIterator::ITER_CHARACTER || what == StringIterator::ITER_WORD);
+
+	if (this->cur_pos == 0) return END;
+
+	do {
+		this->cur_pos--;
+	} while (this->cur_pos > 0 && (what == ITER_WORD ? !this->str_info[this->cur_pos].word_stop : !this->str_info[this->cur_pos].char_stop));
+
+	return this->utf16_to_utf8[this->cur_pos];
 }
 
 #endif /* defined(WITH_UNISCRIBE) */

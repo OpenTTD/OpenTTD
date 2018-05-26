@@ -15,6 +15,8 @@
 #if defined(WITH_UNISCRIBE)
 
 #include "../../gfx_layout.h"
+#include "../../string_base.h"
+#include <vector>
 
 
 void UniscribeResetScriptCache(FontSize size);
@@ -63,6 +65,26 @@ public:
 			return 1;
 		}
 	}
+};
+
+/** String iterator using Uniscribe as a backend. */
+class UniscribeStringIterator : public StringIterator {
+	/** */
+	struct CharInfo {
+		bool word_stop : 1; ///< Code point is suitable as a word break.
+		bool char_stop : 1; ///< Code point is the start of a grapheme cluster, i.e. a "character".
+	};
+
+	std::vector<CharInfo> str_info;      ///< Break information for each code point.
+	std::vector<size_t>   utf16_to_utf8; ///< Mapping from UTF-16 code point position to index in the UTF-8 source string.
+
+	size_t cur_pos; ///< Current iteration position.
+
+public:
+	virtual void SetString(const char *s);
+	virtual size_t SetCurPosition(size_t pos);
+	virtual size_t Next(IterType what);
+	virtual size_t Prev(IterType what);
 };
 
 #endif /* defined(WITH_UNISCRIBE) */

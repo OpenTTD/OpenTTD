@@ -29,6 +29,10 @@
 #include "os/windows/win32.h"
 #endif
 
+#ifdef WITH_UNISCRIBE
+#include "os/windows/string_uniscribe.h"
+#endif
+
 #ifdef WITH_ICU_SORT
 /* Required by strnatcmp. */
 #include <unicode/ustring.h>
@@ -594,7 +598,14 @@ int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
 	return strcasecmp(s1, s2);
 }
 
-#ifdef WITH_ICU_SORT
+#ifdef WITH_UNISCRIBE
+
+/* static */ StringIterator *StringIterator::Create()
+{
+	return new UniscribeStringIterator();
+}
+
+#elif defined(WITH_ICU_SORT)
 
 #include <unicode/utext.h>
 #include <unicode/brkiter.h>
