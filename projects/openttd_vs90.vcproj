@@ -1708,6 +1708,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\os\windows\string_uniscribe.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\stringfilter_type.h"
 				>
 			</File>
@@ -4513,6 +4517,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\os\windows\ottdres.rc"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\os\windows\string_uniscribe.cpp"
 				>
 			</File>
 			<File

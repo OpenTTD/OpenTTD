@@ -21,6 +21,10 @@
 #include <unicode/ustring.h>
 #endif /* WITH_ICU_LAYOUT */
 
+#ifdef WITH_UNISCRIBE
+#include "os/windows/string_uniscribe.h"
+#endif /* WITH_UNISCRIBE */
+
 #include "safeguards.h"
 
 
@@ -665,10 +669,10 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 			line.layout->Reflow();
 		} else {
 			/* Line is new, layout it */
-#ifdef WITH_ICU_LAYOUT
 			FontState old_state = state;
 			const char *old_str = str;
 
+#ifdef WITH_ICU_LAYOUT
 			GetLayouter<ICUParagraphLayoutFactory>(line, str, state);
 			if (line.layout == NULL) {
 				static bool warned = false;
@@ -679,11 +683,22 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 
 				state = old_state;
 				str = old_str;
+			}
+#endif
+
+#ifdef WITH_UNISCRIBE
+			if (line.layout == NULL) {
+				GetLayouter<UniscribeParagraphLayoutFactory>(line, str, state);
+				if (line.layout == NULL) {
+					state = old_state;
+					str = old_str;
+				}
+			}
+#endif
+
+			if (line.layout == NULL) {
 				GetLayouter<FallbackParagraphLayoutFactory>(line, str, state);
 			}
-#else
-			GetLayouter<FallbackParagraphLayoutFactory>(line, str, state);
-#endif
 		}
 
 		/* Copy all lines into a local cache so we can reuse them later on more easily. */
@@ -820,6 +835,10 @@ void Layouter::ResetFontCache(FontSize size)
 
 	/* We must reset the linecache since it references the just freed fonts */
 	ResetLineCache();
+
+#if defined(WITH_UNISCRIBE)
+	UniscribeResetScriptCache(size);
+#endif
 }
 
 /**
