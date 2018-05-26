@@ -343,6 +343,7 @@ strgen/strgen.h
 string_base.h
 string_func.h
 string_type.h
+os/windows/string_uniscribe.h
 stringfilter_type.h
 strings_func.h
 strings_type.h
@@ -1166,6 +1167,7 @@ sound/null_s.cpp
 #if WIN32
 	os/windows/crashlog_win.cpp
 	os/windows/ottdres.rc
+	os/windows/string_uniscribe.cpp
 	os/windows/win32.cpp
 #end
 
