@@ -2903,7 +2903,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 			case MC_LEFT:
 			case MC_DOUBLE_LEFT:
 				DispatchLeftClickEvent(w, x - w->left, y - w->top, click == MC_DOUBLE_LEFT ? 2 : 1);
-				break;
+				return;
 
 			default:
 				if (!scrollwheel_scrolling || w == NULL || w->window_class != WC_SMALLMAP) break;
@@ -2911,11 +2911,19 @@ static void MouseLoop(MouseClick click, int mousewheel)
 				 * Simulate a right button click so we can get started. */
 				FALLTHROUGH;
 
-			case MC_RIGHT: DispatchRightClickEvent(w, x - w->left, y - w->top); break;
+			case MC_RIGHT:
+				DispatchRightClickEvent(w, x - w->left, y - w->top);
+				return;
 
-			case MC_HOVER: DispatchHoverEvent(w, x - w->left, y - w->top); break;
+			case MC_HOVER:
+				DispatchHoverEvent(w, x - w->left, y - w->top);
+				break;
 		}
 	}
+
+	/* We're not doing anything with 2D scrolling, so reset the value.  */
+	_cursor.h_wheel = 0;
+	_cursor.v_wheel = 0;
 }
 
 /**
