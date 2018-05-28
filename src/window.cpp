@@ -2885,10 +2885,6 @@ static void MouseLoop(MouseClick click, int mousewheel)
 					_scrolling_viewport = true;
 					_cursor.fix_at = (_settings_client.gui.scroll_mode == VSM_VIEWPORT_RMB_FIXED ||
 							_settings_client.gui.scroll_mode == VSM_MAP_RMB_FIXED);
-
-					/* clear 2D scrolling caches before we start a 2D scroll */
-					_cursor.h_wheel = 0;
-					_cursor.v_wheel = 0;
 					return;
 				}
 				break;
