@@ -337,13 +337,15 @@ public:
 		SetDParam(1, this->town->cache.num_houses);
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y, STR_TOWN_VIEW_POPULATION_HOUSES);
 
-		SetDParam(0, this->town->supplied[CT_PASSENGERS].old_act);
-		SetDParam(1, this->town->supplied[CT_PASSENGERS].old_max);
-		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX);
+		SetDParam(0, 1 << CT_PASSENGERS);
+		SetDParam(1, this->town->supplied[CT_PASSENGERS].old_act);
+		SetDParam(2, this->town->supplied[CT_PASSENGERS].old_max);
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX);
 
-		SetDParam(0, this->town->supplied[CT_MAIL].old_act);
-		SetDParam(1, this->town->supplied[CT_MAIL].old_max);
-		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX);
+		SetDParam(0, 1 << CT_MAIL);
+		SetDParam(1, this->town->supplied[CT_MAIL].old_act);
+		SetDParam(2, this->town->supplied[CT_MAIL].old_max);
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX);
 
 		bool first = true;
 		for (int i = TE_BEGIN; i < TE_END; i++) {
