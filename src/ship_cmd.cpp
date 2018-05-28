@@ -464,10 +464,8 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, Tr
 		track = TrackBitsToTrack(v->state);
 		if (track != TRACK_X && track != TRACK_Y) track = TrackToOppositeTrack(track);
 		if (!HasBit(tracks, track)) {
-			/* Can't continue in same direction so pick a random available track. */
-			do {
-				track = (Track)RandomRange(TRACK_END);
-			} while ((TrackToTrackBits(track) & tracks) == TRACK_BIT_NONE);
+			/* Can't continue in same direction so pick first available track. */
+			track = FindFirstTrack(tracks);
 		}
 		path_found = false;
 	} else {
