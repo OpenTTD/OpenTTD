@@ -2866,7 +2866,12 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	}
 
 	if (vp != NULL) {
-		if (scrollwheel_scrolling) click = MC_RIGHT; // we are using the scrollwheel in a viewport, so we emulate right mouse button
+		if (scrollwheel_scrolling && !(w->flags & WF_DISABLE_VP_SCROLL)) {
+			_scrolling_viewport = true;
+			_cursor.fix_at = true;
+			return;
+		}
+
 		switch (click) {
 			case MC_DOUBLE_LEFT:
 			case MC_LEFT:
