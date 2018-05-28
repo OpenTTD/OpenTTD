@@ -2978,8 +2978,6 @@ STR_TOWN_POPULATION                                             :{BLACK}Poblaci�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Ciudad)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Habitantes: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Pasajeros último mes: {ORANGE}{COMMA}{BLACK}  Máx.: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Correo último mes: {ORANGE}{COMMA}{BLACK}  Máx.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necesaria para crecimiento del municipio:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requeridos
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requerido en invierno

@@ -2973,8 +2973,6 @@ STR_TOWN_POPULATION                                             :{BLACK}Daonra d
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Cathair)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Daonra: {ORANGE}{COMMA}{BLACK}  Tithe: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Paisinéirí an mhí seo caite: {ORANGE}{COMMA}{BLACK}  Uasmhéid: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post an mhí seo caite: {ORANGE}{COMMA}{BLACK}  uasmhéid: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Lastas atá ag teastáil le go bhfásfaidh an baile:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} ag teastáil
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} ag teastáil sa Gheimhreadh

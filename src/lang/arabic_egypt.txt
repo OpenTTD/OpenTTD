@@ -2589,8 +2589,6 @@ STR_TOWN_POPULATION                                             :{BLACK}سكان
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} - مدينة -
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}السكان:  {ORANGE}{COMMA}{BLACK}   المنازل:     {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}الركاب الشهر الماضي: {ORANGE}{COMMA}{BLACK}  الأقصى: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}طرود البريد الشهر الماضي: {ORANGE}{COMMA}{BLACK}  الأقصى: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK} نمو المدينة يتطلب بضائع
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} مطلوب
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK}مطلوب في الشتاء

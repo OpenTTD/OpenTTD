@@ -2981,8 +2981,6 @@ STR_TOWN_POPULATION                                             :{BLACK}Verdensb
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (By)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Innbyggertall: {ORANGE}{COMMA}{BLACK}  Antall hus: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passasjerer forrige måned: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post forrige måned: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Varebehov for byvekst:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} påkrevd
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} nødvendig om vinteren

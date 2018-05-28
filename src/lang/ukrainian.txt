@@ -3104,8 +3104,6 @@ STR_TOWN_POPULATION                                             :{BLACK}Насе
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (місто)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Населення: {ORANGE}{COMMA}{BLACK}  Будинки: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Пасажирів за місяць: {ORANGE}{COMMA}{BLACK} найбільше: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Пошти за місяць: {ORANGE}{COMMA}{BLACK} найбільше: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Вантаж, потрібний для зростання міста:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} потрібно
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} потрібно взимку

@@ -2509,8 +2509,6 @@ STR_TOWN_POPULATION                                             :{BLACK}Monda en
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Urbo)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Enloĝantoj: {ORANGE}{COMMA}{BLACK}  Domoj: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Pasaĝeroj lastmonate: {ORANGE}{COMMA}{BLACK}  maksimume: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Poŝto lastmonate: {ORANGE}{COMMA}{BLACK}  maksimume: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kargo bezonata por kreskigi urbon:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} bezonatas
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} bezonatas en vintro

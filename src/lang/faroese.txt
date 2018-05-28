@@ -2643,8 +2643,6 @@ STR_TOWN_POPULATION                                             :{BLACK}Heims f�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Býur)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Fólkatal: {ORANGE}{COMMA}{BLACK}  Hús: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Ferðafólk síðsta mánað: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Postur síðsta mánað: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Farmur ið tørvast fyri bygda menning:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} krevst
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} krevst um veturin

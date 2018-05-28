@@ -3092,8 +3092,6 @@ STR_TOWN_POPULATION                                             :{BLACK}Παγκ
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Πόλη)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Πληθυσμός: {ORANGE}{COMMA}{BLACK}  Σπίτια: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Επιβάτες τον προηγούμενο μήνα: {ORANGE}{COMMA}{BLACK}  μεγ: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Αλληλογραφία τον προηγούμενο μήνα: {ORANGE}{COMMA}{BLACK}  μεγ: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Εμπορεύματα που χρειάζονται για την επέκταση της πόλης:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} απαιτείται
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} απαιτείται τον χειμώνα

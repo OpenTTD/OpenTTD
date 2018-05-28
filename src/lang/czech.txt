@@ -3070,8 +3070,6 @@ STR_TOWN_POPULATION                                             :{BLACK}Populace
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (velkoměsto)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Populace: {ORANGE}{COMMA}{BLACK} Domů: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Cestujících minulý měsíc: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Pošta za minulý měsíc: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Množství doručeného nákladu potřebného pro rozvoj města:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}Je potřeba {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} vyžadováno v zimě

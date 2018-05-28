@@ -2977,8 +2977,6 @@ STR_TOWN_POPULATION                                             :{BLACK}Dân s�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Thành Phố)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Dân số: {ORANGE}{COMMA}{BLACK}  Toà nhà: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Du khách tháng trước: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Bưu kiện tháng trước: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Hàng hoá cần để đô thị tăng trưởng:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} được yêu cầu
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} Yêu cầu trong mùa đông

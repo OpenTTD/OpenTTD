@@ -2908,8 +2908,6 @@ STR_TOWN_POPULATION                                             :{BLACK}Pasaules
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (lielpilsēta)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Iedzīvotāji: {ORANGE}{COMMA}{BLACK}  Mājas: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Pasažieri pagājušajā mēnesī: {ORANGE}{COMMA}{BLACK}  maksimāli: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Pasts pagājušajā mēnesī: {ORANGE}{COMMA}{BLACK}  maksimāli: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Krava nepieciešama pilsētas attīstībai:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} nepieciešams
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} nepieciešams ziemā

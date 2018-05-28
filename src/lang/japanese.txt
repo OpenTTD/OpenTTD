@@ -2974,8 +2974,6 @@ STR_TOWN_POPULATION                                             :{BLACK}地域�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN}(市)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}人口: {ORANGE}{COMMA}人{BLACK}　建物: {ORANGE}{COMMA}戸
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}旅客数(先月): {ORANGE}{COMMA}人{BLACK}　最大: {ORANGE}{COMMA}人
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}郵便袋(先月): {ORANGE}{COMMA}袋{BLACK}　最大: {ORANGE}{COMMA}袋
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}街の成長に必要な物資:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}が{RED}必要です
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}が{BLACK}冬に必要です
