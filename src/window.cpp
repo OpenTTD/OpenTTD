@@ -2457,20 +2457,20 @@ static EventState HandleViewportScroll()
 	}
 
 	Point delta;
-	if (_settings_client.gui.scroll_mode != VSM_VIEWPORT_RMB_FIXED) {
-		delta.x = -_cursor.delta.x;
-		delta.y = -_cursor.delta.y;
-	} else {
-		delta.x = _cursor.delta.x;
-		delta.y = _cursor.delta.y;
-	}
-
 	if (scrollwheel_scrolling) {
 		/* We are using scrollwheels for scrolling */
 		delta.x = _cursor.h_wheel;
 		delta.y = _cursor.v_wheel;
 		_cursor.v_wheel = 0;
 		_cursor.h_wheel = 0;
+	} else {
+		if (_settings_client.gui.scroll_mode != VSM_VIEWPORT_RMB_FIXED) {
+			delta.x = -_cursor.delta.x;
+			delta.y = -_cursor.delta.y;
+		} else {
+			delta.x = _cursor.delta.x;
+			delta.y = _cursor.delta.y;
+		}
 	}
 
 	/* Create a scroll-event and send it to the window */
@@ -2866,7 +2866,12 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	}
 
 	if (vp != NULL) {
-		if (scrollwheel_scrolling) click = MC_RIGHT; // we are using the scrollwheel in a viewport, so we emulate right mouse button
+		if (scrollwheel_scrolling && !(w->flags & WF_DISABLE_VP_SCROLL)) {
+			_scrolling_viewport = true;
+			_cursor.fix_at = true;
+			return;
+		}
+
 		switch (click) {
 			case MC_DOUBLE_LEFT:
 			case MC_LEFT:
@@ -2885,10 +2890,6 @@ static void MouseLoop(MouseClick click, int mousewheel)
 					_scrolling_viewport = true;
 					_cursor.fix_at = (_settings_client.gui.scroll_mode == VSM_VIEWPORT_RMB_FIXED ||
 							_settings_client.gui.scroll_mode == VSM_MAP_RMB_FIXED);
-
-					/* clear 2D scrolling caches before we start a 2D scroll */
-					_cursor.h_wheel = 0;
-					_cursor.v_wheel = 0;
 					return;
 				}
 				break;
@@ -2903,7 +2904,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 			case MC_LEFT:
 			case MC_DOUBLE_LEFT:
 				DispatchLeftClickEvent(w, x - w->left, y - w->top, click == MC_DOUBLE_LEFT ? 2 : 1);
-				break;
+				return;
 
 			default:
 				if (!scrollwheel_scrolling || w == NULL || w->window_class != WC_SMALLMAP) break;
@@ -2911,11 +2912,19 @@ static void MouseLoop(MouseClick click, int mousewheel)
 				 * Simulate a right button click so we can get started. */
 				FALLTHROUGH;
 
-			case MC_RIGHT: DispatchRightClickEvent(w, x - w->left, y - w->top); break;
+			case MC_RIGHT:
+				DispatchRightClickEvent(w, x - w->left, y - w->top);
+				return;
 
-			case MC_HOVER: DispatchHoverEvent(w, x - w->left, y - w->top); break;
+			case MC_HOVER:
+				DispatchHoverEvent(w, x - w->left, y - w->top);
+				break;
 		}
 	}
+
+	/* We're not doing anything with 2D scrolling, so reset the value.  */
+	_cursor.h_wheel = 0;
+	_cursor.v_wheel = 0;
 }
 
 /**
