@@ -963,7 +963,7 @@ void TriggerStationRandomisation(Station *st, TileIndex tile, StationRandomTrigg
 	uint32 whole_reseed = 0;
 	ETileArea area = ETileArea(st, tile, tas[trigger]);
 
-	uint32 empty_mask = 0;
+	CargoTypes empty_mask = 0;
 	if (trigger == SRT_CARGO_TAKEN) {
 		/* Create a bitmask of completely empty cargo types to be matched */
 		for (CargoID i = 0; i < NUM_CARGO; i++) {

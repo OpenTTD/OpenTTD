@@ -42,7 +42,7 @@
 
 #include "safeguards.h"
 
-void Aircraft::UpdateDeltaXY(Direction direction)
+void Aircraft::UpdateDeltaXY()
 {
 	this->x_offs = -1;
 	this->y_offs = -1;
@@ -303,10 +303,10 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *
 		u->engine_type = e->index;
 
 		v->subtype = (avi->subtype & AIR_CTOL ? AIR_AIRCRAFT : AIR_HELICOPTER);
-		v->UpdateDeltaXY(INVALID_DIR);
+		v->UpdateDeltaXY();
 
 		u->subtype = AIR_SHADOW;
-		u->UpdateDeltaXY(INVALID_DIR);
+		u->UpdateDeltaXY();
 
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
@@ -363,7 +363,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *
 			w->random_bits = VehicleRandomBits();
 			/* Use rotor's air.state to store the rotor animation frame */
 			w->state = HRS_ROTOR_STOPPED;
-			w->UpdateDeltaXY(INVALID_DIR);
+			w->UpdateDeltaXY();
 
 			u->SetNext(w);
 			w->UpdatePosition();
@@ -749,7 +749,7 @@ int GetAircraftFlightLevel(T *v, bool takeoff)
 	GetAircraftFlightLevelBounds(v, &aircraft_min_altitude, &aircraft_max_altitude);
 	int aircraft_middle_altitude = (aircraft_min_altitude + aircraft_max_altitude) / 2;
 
-	/* If those assumptions would be violated, aircrafts would behave fairly strange. */
+	/* If those assumptions would be violated, aircraft would behave fairly strange. */
 	assert(aircraft_min_altitude < aircraft_middle_altitude);
 	assert(aircraft_middle_altitude < aircraft_max_altitude);
 
@@ -1361,7 +1361,7 @@ static void AircraftEntersTerminal(Aircraft *v)
  */
 static void AircraftLandAirplane(Aircraft *v)
 {
-	v->UpdateDeltaXY(INVALID_DIR);
+	v->UpdateDeltaXY();
 
 	if (!PlayVehicleSound(v, VSE_TOUCHDOWN)) {
 		SndPlayVehicleFx(SND_17_SKID_PLANE, v);
@@ -1553,7 +1553,7 @@ static void AircraftEventHandler_TakeOff(Aircraft *v, const AirportFTAClass *apc
 static void AircraftEventHandler_StartTakeOff(Aircraft *v, const AirportFTAClass *apc)
 {
 	v->state = ENDTAKEOFF;
-	v->UpdateDeltaXY(INVALID_DIR);
+	v->UpdateDeltaXY();
 }
 
 static void AircraftEventHandler_EndTakeOff(Aircraft *v, const AirportFTAClass *apc)
@@ -1566,7 +1566,7 @@ static void AircraftEventHandler_EndTakeOff(Aircraft *v, const AirportFTAClass *
 static void AircraftEventHandler_HeliTakeOff(Aircraft *v, const AirportFTAClass *apc)
 {
 	v->state = FLYING;
-	v->UpdateDeltaXY(INVALID_DIR);
+	v->UpdateDeltaXY();
 
 	/* get the next position to go to, differs per airport */
 	AircraftNextAirportPos_and_Order(v);
@@ -1632,7 +1632,7 @@ static void AircraftEventHandler_Landing(Aircraft *v, const AirportFTAClass *apc
 static void AircraftEventHandler_HeliLanding(Aircraft *v, const AirportFTAClass *apc)
 {
 	v->state = HELIENDLANDING;
-	v->UpdateDeltaXY(INVALID_DIR);
+	v->UpdateDeltaXY();
 }
 
 static void AircraftEventHandler_EndLanding(Aircraft *v, const AirportFTAClass *apc)

@@ -23,6 +23,8 @@
 #include "string_func.h"
 #include "gui.h"
 #include "network/network.h"
+#include "network/network_base.h"
+#include "network/network_func.h"
 
 #include "safeguards.h"
 
@@ -234,7 +236,9 @@ CommandCost CmdSetGoalCompleted(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * @param flags type of operation
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0 - 15) - Unique ID to use for this question.
- * - p1 = (bit 16 - 23) - Company for which this question is.
+ * - p1 = (bit 16 - 23) - Company or client for which this question is.
+ * - p1 = (bit 24 - 25) - Question type.
+ * - p1 = (bit 31) - Question target: 0 - company, 1 - client.
  * @param p2 Buttons of the question.
  * @param text Text of the question.
  * @return the cost of this operation or an error
@@ -243,17 +247,37 @@ CommandCost CmdGoalQuestion(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 {
 	uint16 uniqueid = (GoalType)GB(p1, 0, 16);
 	CompanyID company = (CompanyID)GB(p1, 16, 8);
-	byte type = GB(p1, 24, 8);
+#ifdef ENABLE_NETWORK
+	ClientIndex client = (ClientIndex)GB(p1, 16, 8);
+#endif
+	byte type = GB(p1, 24, 2);
+	bool is_client = HasBit(p1, 31);
 
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (StrEmpty(text)) return CMD_ERROR;
-	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return CMD_ERROR;
+	if (is_client) {
+#ifdef ENABLE_NETWORK
+		if (!NetworkClientInfo::IsValidID(client)) return CMD_ERROR;
+#else
+		return CMD_ERROR;
+#endif
+	} else {
+		if (company != INVALID_COMPANY && !Company::IsValidID(company)) return CMD_ERROR;
+	}
 	if (CountBits(p2) < 1 || CountBits(p2) > 3) return CMD_ERROR;
 	if (p2 >= (1 << GOAL_QUESTION_BUTTON_COUNT)) return CMD_ERROR;
 	if (type >= GOAL_QUESTION_TYPE_COUNT) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if ((company != INVALID_COMPANY && company == _local_company) || (company == INVALID_COMPANY && Company::IsValidID(_local_company))) ShowGoalQuestion(uniqueid, type, p2, text);
+		if (is_client) {
+#ifdef ENABLE_NETWORK
+			if (NetworkClientInfo::Get(client)->client_id != _network_own_client_id) return CommandCost();
+#endif
+		} else {
+			if (company == INVALID_COMPANY && !Company::IsValidID(_local_company)) return CommandCost();
+			if (company != INVALID_COMPANY && company != _local_company) return CommandCost();
+		}
+		ShowGoalQuestion(uniqueid, type, p2, text);
 	}
 
 	return CommandCost();

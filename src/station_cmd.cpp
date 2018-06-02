@@ -440,12 +440,12 @@ void UpdateAllStationVirtCoords()
  * @param st Station to query
  * @return the expected mask
  */
-static uint GetAcceptanceMask(const Station *st)
+static CargoTypes GetAcceptanceMask(const Station *st)
 {
-	uint mask = 0;
+	CargoTypes mask = 0;
 
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		if (HasBit(st->goods[i].status, GoodsEntry::GES_ACCEPTANCE)) mask |= 1 << i;
+		if (HasBit(st->goods[i].status, GoodsEntry::GES_ACCEPTANCE)) SetBit(mask, i);
 	}
 	return mask;
 }
@@ -524,7 +524,7 @@ CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad)
  * @param rad Search radius in addition to given area
  * @param always_accepted bitmask of cargo accepted by houses and headquarters; can be NULL
  */
-CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, uint32 *always_accepted)
+CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, CargoTypes *always_accepted)
 {
 	CargoArray acceptance;
 	if (always_accepted != NULL) *always_accepted = 0;
@@ -562,7 +562,7 @@ CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, uint3
 void UpdateStationAcceptance(Station *st, bool show_msg)
 {
 	/* old accepted goods types */
-	uint old_acc = GetAcceptanceMask(st);
+	CargoTypes old_acc = GetAcceptanceMask(st);
 
 	/* And retrieve the acceptance. */
 	CargoArray acceptance;
@@ -595,7 +595,7 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 	}
 
 	/* Only show a message in case the acceptance was actually changed. */
-	uint new_acc = GetAcceptanceMask(st);
+	CargoTypes new_acc = GetAcceptanceMask(st);
 	if (old_acc == new_acc) return;
 
 	/* show a message to report that the acceptance was changed? */
@@ -3186,7 +3186,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 void TriggerWatchedCargoCallbacks(Station *st)
 {
 	/* Collect cargoes accepted since the last big tick. */
-	uint cargoes = 0;
+	CargoTypes cargoes = 0;
 	for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
 		if (HasBit(st->goods[cid].status, GoodsEntry::GES_ACCEPTED_BIGTICK)) SetBit(cargoes, cid);
 	}

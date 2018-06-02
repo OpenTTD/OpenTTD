@@ -403,7 +403,6 @@ STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKG
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Кӗвӗ
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Ят
 
-
 # Playlist window
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Тасат

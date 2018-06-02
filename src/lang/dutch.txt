@@ -476,7 +476,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ingezoomd scree
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Screenshot met standaard zoom
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot van hele kaart
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Over 'OpenTTD'
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite uitlijner
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-uitlijner
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Schakel selectiekaders
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Schakel kleuren van braakliggende grond aan/uit
 ############ range ends here
@@ -669,10 +669,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selectee
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Programmashuffle aan/uit
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Toon nummerkeuzescherm
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Er is een muziek set zonder liedjes gekozen. Er zal geen muziek worden gespeeld
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Muziekprogrammakeuze
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Nummerindex
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programma - '{STRING}'
@@ -1147,7 +1144,7 @@ STR_CONFIG_SETTING_RUNNING_COSTS                                :Onderhoudskoste
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Het niveau van onderhoud en bedrijfskosten van voertuigen en infrastuctuur
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Bouwsnelheid: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Beperk de hoeveelheid bouwactiviteiten voor computerspeler
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Voertuig storingen: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Voertuigstoringen: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controle hoe vaak onvoldoende onderhouden voertuigen kapot kunnen gaan
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidie indicator: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Instellen hoeveel wordt betaald voor gesubsidieerde verbindingen
@@ -1337,8 +1334,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Kleur van het t
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Groen
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donker groen
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Omgekeerde scrollrichting: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Gedrag wanneer gescrolld wordt door de map met de rechter muisknop. Indien uitgeschakeld bestuurd de muis de camera. Indien ingeschakeld bestuurd de muis de kaart.
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Vloeiend scrollen kijkvenster: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Bepalen hoe de hoofdweergave schuift naar een specifieke positie bij het klikken op de minikaart of bij de afgifte van een opdracht om naar een specifiek object op de kaart. Indien ingeschakeld, de viewport scrollt soepel, als deze uitgeschakeld gaat u rechtstreeks naar de beoogde plek
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Toon dimensie-informatie bij het gebruik van diverse bouwgereedschappen: {STRING}
@@ -1370,8 +1365,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Uit
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Scrollen met linkermuisknop: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Schakel scrollen met de linkermuisknop in door te slepen. Dit is vooral handig bij het gebruik van een touchscreen voor scrollen
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Sluit window met rechts-klik: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Sluit een venster door met de rechtermuisknop erin te klikken. Schakelt de tooltip uit met de rechtermuisknop!
 

@@ -739,21 +739,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\src\lang\spanish_MX.txt"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Generating spanish_MX language file"
-						CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
-						AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
-						Outputs="..\bin\lang\spanish_MX.lng"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath="..\src\lang\spanish.txt"
 				>
 				<FileConfiguration
@@ -765,6 +750,21 @@
 						CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
 						AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 						Outputs="..\bin\lang\spanish.lng"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\src\lang\spanish_MX.txt"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Generating spanish_MX language file"
+						CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+						AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
+						Outputs="..\bin\lang\spanish_MX.lng"
 					/>
 				</FileConfiguration>
 			</File>

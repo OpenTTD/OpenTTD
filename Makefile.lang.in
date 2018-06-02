@@ -6,7 +6,6 @@
 # See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 
 STRGEN        = !!STRGEN!!
-ENDIAN_CHECK  = !!ENDIAN_CHECK!!
 SRC_DIR       = !!SRC_DIR!!
 LANG_DIR      = !!LANG_DIR!!
 BIN_DIR       = !!BIN_DIR!!
@@ -25,11 +24,6 @@ ifeq ($(LANG_SUPPRESS), yes)
 LANG_ERRORS = >/dev/null 2>&1
 endif
 
-# Make sure endian_host.h is reachable as if it was in the src/ dir
-CFLAGS_BUILD += -I $(LANG_OBJS_DIR)
-
-ENDIAN_TARGETS := endian_host.h endian_target.h $(ENDIAN_CHECK)
-
 # Check if we want to show what we are doing
 ifdef VERBOSE
 	Q =
@@ -43,19 +37,19 @@ RES := $(shell mkdir -p $(BIN_DIR)/lang )
 
 all: table/strings.h $(LANGS)
 
-strgen_base.o: $(SRC_DIR)/strgen/strgen_base.cpp $(SRC_DIR)/strgen/strgen.h endian_host.h $(SRC_DIR)/table/control_codes.h $(SRC_DIR)/table/strgen_tables.h $(SRC_DIR)/safeguards.h
+strgen_base.o: $(SRC_DIR)/strgen/strgen_base.cpp $(SRC_DIR)/strgen/strgen.h $(SRC_DIR)/table/control_codes.h $(SRC_DIR)/table/strgen_tables.h $(SRC_DIR)/safeguards.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSTRGEN -c -o $@ $<
 
-strgen.o: $(SRC_DIR)/strgen/strgen.cpp $(SRC_DIR)/strgen/strgen.h endian_host.h $(SRC_DIR)/table/control_codes.h $(SRC_DIR)/table/strgen_tables.h $(SRC_DIR)/safeguards.h
+strgen.o: $(SRC_DIR)/strgen/strgen.cpp $(SRC_DIR)/strgen/strgen.h $(SRC_DIR)/table/control_codes.h $(SRC_DIR)/table/strgen_tables.h $(SRC_DIR)/safeguards.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSTRGEN -c -o $@ $<
 
-string.o: $(SRC_DIR)/string.cpp endian_host.h $(SRC_DIR)/safeguards.h
+string.o: $(SRC_DIR)/string.cpp $(SRC_DIR)/safeguards.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSTRGEN -c -o $@ $<
 
-alloc_func.o: $(SRC_DIR)/core/alloc_func.cpp endian_host.h $(SRC_DIR)/safeguards.h
+alloc_func.o: $(SRC_DIR)/core/alloc_func.cpp $(SRC_DIR)/safeguards.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSTRGEN -c -o $@ $<
 
@@ -80,21 +74,11 @@ $(LANGS): %.lng: $(LANG_DIR)/%.txt $(STRGEN) lang/english.txt
 	$(E) '$(STAGE) Compiling language $(*F)'
 	$(Q)./$(STRGEN) $(STRGEN_FLAGS) -s $(LANG_DIR) -d $(LANG_OBJS_DIR) $< $(LANG_ERRORS) && cp $@ $(BIN_DIR)/lang || true # Do not fail all languages when one fails
 
-# The targets to compile the endian-code
-
-endian_host.h: $(ENDIAN_CHECK)
-	$(E) '$(STAGE) Testing endianness for host'
-	$(Q)./$(ENDIAN_CHECK) > $@
-
-$(ENDIAN_CHECK): $(SRC_DIR)/endian_check.cpp
-	$(E) '$(STAGE) Compiling and Linking $@'
-	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) $(LDFLAGS_BUILD) $< -o $@
-
 depend:
 
 clean:
 	$(E) '$(STAGE) Cleaning up language files'
-	$(Q)rm -f strgen.o string.o alloc_func.o getoptdata.o table/strings.h $(STRGEN) $(LANGS) $(LANGS:%=$(BIN_DIR)/lang/%) lang/english.* $(ENDIAN_TARGETS)
+	$(Q)rm -f strgen.o string.o alloc_func.o getoptdata.o table/strings.h $(STRGEN) $(LANGS) $(LANGS:%=$(BIN_DIR)/lang/%) lang/english.*
 
 mrproper: clean
 	$(Q)rm -rf $(BIN_DIR)/lang

@@ -17,6 +17,10 @@
 #include "fileio_func.h"
 #include "settings_type.h"
 
+#if defined(WIN32) || defined(WIN64)
+#include "os/windows/win32.h"
+#endif
+
 #include <time.h>
 
 #if defined(ENABLE_NETWORK)
@@ -135,10 +139,10 @@ static void debug_print(const char *dbg, const char *buf)
 	} else {
 		char buffer[512];
 		seprintf(buffer, lastof(buffer), "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
-#if defined(WINCE)
-		NKDbgPrintfW(OTTD2FS(buffer));
-#elif defined(WIN32) || defined(WIN64)
-		_fputts(OTTD2FS(buffer, true), stderr);
+#if defined(WIN32) || defined(WIN64)
+		TCHAR system_buf[512];
+		convert_to_fs(buffer, system_buf, lengthof(system_buf), true);
+		_fputts(system_buf, stderr);
 #else
 		fputs(buffer, stderr);
 #endif

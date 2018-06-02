@@ -67,11 +67,7 @@ bool LoadLibraryList(Function proc[], const char *dll)
 
 			while (*dll++ != '\0') { /* Nothing */ }
 			if (*dll == '\0') break;
-#if defined(WINCE)
-			p = GetProcAddress(lib, MB_TO_WIDE(dll));
-#else
 			p = GetProcAddress(lib, dll);
-#endif
 			if (p == NULL) return false;
 			*proc++ = (Function)p;
 		}
@@ -210,14 +206,6 @@ bool FiosIsRoot(const char *file)
 
 void FiosGetDrives(FileList &file_list)
 {
-#if defined(WINCE)
-	/* WinCE only knows one drive: / */
-	FiosItem *fios = file_list.Append();
-	fios->type = FIOS_TYPE_DRIVE;
-	fios->mtime = 0;
-	seprintf(fios->name, lastof(fios->name), PATHSEP "");
-	strecpy(fios->title, fios->name, lastof(fios->title));
-#else
 	TCHAR drives[256];
 	const TCHAR *s;
 
@@ -230,7 +218,6 @@ void FiosGetDrives(FileList &file_list)
 		strecpy(fios->title, fios->name, lastof(fios->title));
 		while (*s++ != '\0') { /* Nothing */ }
 	}
-#endif
 }
 
 bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb)
@@ -306,9 +293,6 @@ static int ParseCommandLine(char *line, char **argv, int max_argc)
 
 void CreateConsole()
 {
-#if defined(WINCE)
-	/* WinCE doesn't support console stuff */
-#else
 	HANDLE hand;
 	CONSOLE_SCREEN_BUFFER_INFO coninfo;
 
@@ -358,7 +342,6 @@ void CreateConsole()
 	setvbuf(stdin, NULL, _IONBF, 0);
 	setvbuf(stdout, NULL, _IONBF, 0);
 	setvbuf(stderr, NULL, _IONBF, 0);
-#endif
 }
 
 /** Temporary pointer to get the help message to the window */
@@ -426,18 +409,14 @@ void ShowInfo(const char *str)
 	}
 }
 
-#if defined(WINCE)
-int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
-#else
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
-#endif
 {
 	int argc;
 	char *argv[64]; // max 64 command line arguments
 
 	CrashLog::InitialiseCrashLog();
 
-#if defined(UNICODE) && !defined(WINCE)
+#if defined(UNICODE)
 	/* Check if a win9x user started the win32 version */
 	if (HasBit(GetVersion(), 31)) usererror("This version of OpenTTD doesn't run on windows 95/98/ME.\nPlease download the win9x binary and try again.");
 #endif
@@ -451,9 +430,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	CreateConsole();
 #endif
 
-#if !defined(WINCE)
 	_set_error_mode(_OUT_TO_MSGBOX); // force assertion output to messagebox
-#endif
 
 	/* setup random seed to something quite random */
 	SetRandomSeed(GetTickCount());
@@ -468,35 +445,11 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	return 0;
 }
 
-#if defined(WINCE)
-void GetCurrentDirectoryW(int length, wchar_t *path)
-{
-	/* Get the name of this module */
-	GetModuleFileName(NULL, path, length);
-
-	/* Remove the executable name, this we call CurrentDir */
-	wchar_t *pDest = wcsrchr(path, '\\');
-	if (pDest != NULL) {
-		int result = pDest - path + 1;
-		path[result] = '\0';
-	}
-}
-#endif
-
 char *getcwd(char *buf, size_t size)
 {
-#if defined(WINCE)
-	TCHAR path[MAX_PATH];
-	GetModuleFileName(NULL, path, MAX_PATH);
-	convert_from_fs(path, buf, size);
-	/* GetModuleFileName returns dir with file, so remove everything behind latest '\\' */
-	char *p = strrchr(buf, '\\');
-	if (p != NULL) *p = '\0';
-#else
 	TCHAR path[MAX_PATH];
 	GetCurrentDirectory(MAX_PATH - 1, path);
 	convert_from_fs(path, buf, size);
-#endif
 	return buf;
 }
 

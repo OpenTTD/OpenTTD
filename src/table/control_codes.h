@@ -115,7 +115,8 @@ enum StringControlCode {
 	SCC_GRAY,
 	SCC_DKBLUE,
 	SCC_BLACK,
-	SCC_PREVIOUS_COLOUR,
+	SCC_PUSH_COLOUR,
+	SCC_POP_COLOUR,
 
 	/**
 	 * The next variables are part of a NewGRF subsystem for creating text strings.

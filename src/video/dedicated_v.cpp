@@ -57,16 +57,12 @@ static void OS2_SwitchToConsoleMode()
 }
 #endif
 
-#if defined(UNIX) || defined(PSP)
+#if defined(UNIX)
 #	include <sys/time.h> /* gettimeofday */
 #	include <sys/types.h>
 #	include <unistd.h>
 #	include <signal.h>
 #	define STDIN 0  /* file descriptor for standard input */
-#	if defined(PSP)
-#		include <sys/fd_set.h>
-#		include <sys/select.h>
-#	endif /* PSP */
 
 /* Signal handlers */
 static void DedicatedSignalHandler(int sig)
@@ -79,9 +75,7 @@ static void DedicatedSignalHandler(int sig)
 
 #if defined(WIN32)
 # include <windows.h> /* GetTickCount */
-# if !defined(WINCE)
-#  include <conio.h>
-# endif
+# include <conio.h>
 # include <time.h>
 # include <tchar.h>
 # include "../os/windows/win32.h"
@@ -92,10 +86,6 @@ static char _win_console_thread_buffer[200];
 /* Windows Console thread. Just loop and signal when input has been received */
 static void WINAPI CheckForConsoleInput()
 {
-#if defined(WINCE)
-	/* WinCE doesn't support console stuff */
-	return;
-#else
 	SetWin32ThreadName(-1, "ottd:win-console");
 
 	DWORD nb;
@@ -110,7 +100,6 @@ static void WINAPI CheckForConsoleInput()
 		SetEvent(_hInputReady);
 		WaitForSingleObject(_hWaitForInputHandling, INFINITE);
 	}
-#endif
 }
 
 static void CreateWindowsConsoleThread()
@@ -161,9 +150,7 @@ const char *VideoDriver_Dedicated::Start(const char * const *parm)
 	ScreenSizeChanged();
 	BlitterFactory::GetCurrentBlitter()->PostResize();
 
-#if defined(WINCE)
-	/* WinCE doesn't support console stuff */
-#elif defined(WIN32)
+#if defined(WIN32)
 	/* For win32 we need to allocate a console (debug mode does the same) */
 	CreateConsole();
 	CreateWindowsConsoleThread();
@@ -196,7 +183,7 @@ void VideoDriver_Dedicated::MakeDirty(int left, int top, int width, int height) 
 bool VideoDriver_Dedicated::ChangeResolution(int w, int h) { return false; }
 bool VideoDriver_Dedicated::ToggleFullscreen(bool fs) { return false; }
 
-#if defined(UNIX) || defined(__OS2__) || defined(PSP)
+#if defined(UNIX) || defined(__OS2__)
 static bool InputWaiting()
 {
 	struct timeval tv;
@@ -242,7 +229,7 @@ static void DedicatedHandleKeyInput()
 
 	if (_exit_game) return;
 
-#if defined(UNIX) || defined(__OS2__) || defined(PSP)
+#if defined(UNIX) || defined(__OS2__)
 	if (fgets(input_line, lengthof(input_line), stdin) == NULL) return;
 #else
 	/* Handle console input, and signal console thread, it can accept input again */
@@ -269,7 +256,7 @@ void VideoDriver_Dedicated::MainLoop()
 	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
 
 	/* Signal handlers */
-#if defined(UNIX) || defined(PSP)
+#if defined(UNIX)
 	signal(SIGTERM, DedicatedSignalHandler);
 	signal(SIGINT, DedicatedSignalHandler);
 	signal(SIGQUIT, DedicatedSignalHandler);

@@ -30,7 +30,7 @@ struct Ship FINAL : public SpecializedVehicle<Ship, VEH_SHIP> {
 	virtual ~Ship() { this->PreDestructor(); }
 
 	void MarkDirty();
-	void UpdateDeltaXY(Direction direction);
+	void UpdateDeltaXY();
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_SHIP_INC : EXPENSES_SHIP_RUN; }
 	void PlayLeaveStationSound() const;
 	bool IsPrimaryVehicle() const { return true; }

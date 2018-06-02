@@ -669,10 +669,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}選擇�
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}開關播放清單亂序播放
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}於選擇視窗顯示樂軌
 
-STR_ERROR_NO_SONGS                                              :{WHITE}已選擇不含音樂的音樂集，不會播放任何音樂
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}背景音樂播放清單選擇
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM}「{STRING}」
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}音軌索引
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}播放清單 - 「{STRING}」
@@ -1337,8 +1334,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :設定在小地
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :綠
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :暗綠
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :紫
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :反轉捲軸方向：{STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :設定在右撳拖曳滑鼠時的系統反應。如停用此選項，移動滑鼠時會移動顯示範圍 (即影像的移動方向與滑鼠的移動方向相反)。如啟用此選項，移動滑鼠時會移動顯示地圖 (即影像的移動方向與滑鼠的移動方向相同)
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :視野平滑移動：{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :設定在小地圖中點選一個位置時，主視野的顯示反應。如啟用此選項，影像會移動直至到達點選的位置；否則影像會直接跳到點選的位置
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :使用某些建設工具時顯示度量提示：{STRING}
@@ -1370,8 +1365,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command 鍵
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control 鍵
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :無
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :滑鼠左鍵捲動：{STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :容許以左撳並拖曳滑鼠捲動地圖。此選項對使用觸控螢幕進行捲動動作很有幫助
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :自動儲存: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :選擇自動存檔的週期

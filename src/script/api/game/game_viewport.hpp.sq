@@ -21,7 +21,10 @@ void SQGSViewport_Register(Squirrel *engine)
 	SQGSViewport.PreRegister(engine);
 	SQGSViewport.AddConstructor<void (ScriptViewport::*)(), 1>(engine, "x");
 
-	SQGSViewport.DefSQStaticMethod(engine, &ScriptViewport::ScrollTo, "ScrollTo", 2, ".i");
+	SQGSViewport.DefSQStaticMethod(engine, &ScriptViewport::ScrollTo,               "ScrollTo",               2, ".i");
+	SQGSViewport.DefSQStaticMethod(engine, &ScriptViewport::ScrollEveryoneTo,       "ScrollEveryoneTo",       2, ".i");
+	SQGSViewport.DefSQStaticMethod(engine, &ScriptViewport::ScrollCompanyClientsTo, "ScrollCompanyClientsTo", 3, ".ii");
+	SQGSViewport.DefSQStaticMethod(engine, &ScriptViewport::ScrollClientTo,         "ScrollClientTo",         3, ".ii");
 
 	SQGSViewport.PostRegister(engine);
 }

@@ -594,8 +594,10 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, const char *&str, 
 			break;
 		} else if (c >= SCC_BLUE && c <= SCC_BLACK) {
 			state.SetColour((TextColour)(c - SCC_BLUE));
-		} else if (c == SCC_PREVIOUS_COLOUR) { // Revert to the previous colour.
-			state.SetPreviousColour();
+		} else if (c == SCC_PUSH_COLOUR) {
+			state.PushColour();
+		} else if (c == SCC_POP_COLOUR) {
+			state.PopColour();
 		} else if (c >= SCC_FIRST_FONT && c <= SCC_LAST_FONT) {
 			state.SetFontSize((FontSize)(c - SCC_FIRST_FONT));
 		} else {

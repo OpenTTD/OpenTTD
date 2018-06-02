@@ -12,6 +12,7 @@
 #ifndef SCRIPT_GOAL_HPP
 #define SCRIPT_GOAL_HPP
 
+#include "script_client.hpp"
 #include "script_company.hpp"
 #include "../../goal_type.h"
 
@@ -160,7 +161,7 @@ public:
 	static bool IsCompleted(GoalID goal_id);
 
 	/**
-	 * Ask a question.
+	 * Ask a question of all players in a company.
 	 * @param uniqueid Your unique id to distinguish results of multiple questions in the returning event.
 	 * @param company The company to ask the question, or ScriptCompany::COMPANY_INVALID for all.
 	 * @param question The question to ask (can be either a raw string, or a ScriptText object).
@@ -177,6 +178,24 @@ public:
 	static bool Question(uint16 uniqueid, ScriptCompany::CompanyID company, Text *question, QuestionType type, int buttons);
 
 	/**
+	 * Ask client a question.
+	 * @param uniqueid Your unique id to distinguish results of multiple questions in the returning event.
+	 * @param client The client to ask the question.
+	 * @param question The question to ask (can be either a raw string, or a ScriptText object).
+	 * @param type The type of question that is being asked.
+	 * @param buttons Any combinations (at least 1, up to 3) of buttons defined in QuestionButton. Like BUTTON_YES + BUTTON_NO.
+	 * @return True if the action succeeded.
+	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptGame::IsMultiplayer()
+	 * @pre question != NULL && len(question) != 0.
+	 * @pre ResolveClientID(client) != CLIENT_INVALID.
+	 * @pre CountBits(buttons) >= 1 && CountBits(buttons) <= 3.
+	 * @note Replies to the question are given by you via the event ScriptEvent_GoalQuestionAnswer.
+	 * @note There is no guarantee you ever get a reply on your question.
+	 */
+	static bool QuestionClient(uint16 uniqueid, ScriptClient::ClientID client, Text *question, QuestionType type, int buttons);
+
+	/**
 	 * Close the question on all clients.
 	 * @param uniqueid The uniqueid of the question you want to close.
 	 * @return True if the action succeeded.
@@ -187,6 +206,12 @@ public:
 	 *   companies, but you are only interested in the reply of the first.
 	 */
 	static bool CloseQuestion(uint16 uniqueid);
+
+protected:
+	/**
+	 * Does common checks and asks the question.
+	 */
+	static bool DoQuestion(uint16 uniqueid, uint8 target, bool is_client, Text *question, QuestionType type, int buttons);
 };
 
 #endif /* SCRIPT_GOAL_HPP */

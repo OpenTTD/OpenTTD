@@ -669,10 +669,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}选择�
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}开启/关闭 随机播放列表中的曲目
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}打开音乐选单窗口
 
-STR_ERROR_NO_SONGS                                              :{WHITE}选择了没有歌曲的音乐组。不会播放歌曲。
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}音乐选单
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}全部音轨列表
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}当前选用'{STRING}'列表
@@ -1337,8 +1334,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :设置缩略地
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :绿色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :深绿色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :紫色
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :拖动方向与屏幕移动方向相反：{STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :设置按下鼠标右键拖动时地图移动的方向，“关闭”鼠标拖动摄像机，“打开”时鼠标拖动地图。
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :平滑视角滚动： {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :设置在缩略图上点击或者发出转到特定目标的命令时主视角的转换方式，如果“打开”本选项，视角平缓滚动，“关闭”时直接跳转到目标位置
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :建设时显示测量数据：{STRING}
@@ -1370,8 +1365,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :按住Command�
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :按住Ctrl键 点击
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :关闭
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :左击滚动： {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :可用按住鼠标左键再拖拉的方法来进行屏幕滚动. 这对于触摸屏设备特别有用
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :自动保存: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :选择自动存档时间间隔

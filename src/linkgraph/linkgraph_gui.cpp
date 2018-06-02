@@ -298,7 +298,7 @@ Point LinkGraphOverlay::GetStationMiddle(const Station *st) const
  * Set a new cargo mask and rebuild the cache.
  * @param cargo_mask New cargo mask.
  */
-void LinkGraphOverlay::SetCargoMask(uint32 cargo_mask)
+void LinkGraphOverlay::SetCargoMask(CargoTypes cargo_mask)
 {
 	this->cargo_mask = cargo_mask;
 	this->RebuildCache();
@@ -435,7 +435,7 @@ void LinkGraphLegendWindow::SetOverlay(LinkGraphOverlay *overlay) {
 			this->SetWidgetLoweredState(WID_LGL_COMPANY_FIRST + c, HasBit(companies, c));
 		}
 	}
-	uint32 cargoes = this->overlay->GetCargoMask();
+	CargoTypes cargoes = this->overlay->GetCargoMask();
 	for (uint c = 0; c < NUM_CARGO; c++) {
 		if (!this->IsWidgetDisabled(WID_LGL_CARGO_FIRST + c)) {
 			this->SetWidgetLoweredState(WID_LGL_CARGO_FIRST + c, HasBit(cargoes, c));
@@ -519,7 +519,7 @@ void LinkGraphLegendWindow::UpdateOverlayCompanies()
  */
 void LinkGraphLegendWindow::UpdateOverlayCargoes()
 {
-	uint32 mask = 0;
+	CargoTypes mask = 0;
 	for (uint c = 0; c < NUM_CARGO; c++) {
 		if (this->IsWidgetDisabled(c + WID_LGL_CARGO_FIRST)) continue;
 		if (!this->IsWidgetLowered(c + WID_LGL_CARGO_FIRST)) continue;

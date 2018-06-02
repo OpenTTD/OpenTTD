@@ -195,10 +195,10 @@ public:
 	inline void Push(const Titem &item)
 	{
 		if (this->value != Tinvalid) {
-			ThreadMutexLocker lock(_pool.GetMutex());
-			Tindex new_item = _pool.Create();
+			ThreadMutexLocker lock(SmallStack::GetPool().GetMutex());
+			Tindex new_item = SmallStack::GetPool().Create();
 			if (new_item != Tmax_size) {
-				PooledSmallStack &pushed = _pool.Get(new_item);
+				PooledSmallStack &pushed = SmallStack::GetPool().Get(new_item);
 				pushed.value = this->value;
 				pushed.next = this->next;
 				pushed.branch_count = 0;
@@ -218,16 +218,16 @@ public:
 		if (this->next == Tmax_size) {
 			this->value = Tinvalid;
 		} else {
-			ThreadMutexLocker lock(_pool.GetMutex());
-			PooledSmallStack &popped = _pool.Get(this->next);
+			ThreadMutexLocker lock(SmallStack::GetPool().GetMutex());
+			PooledSmallStack &popped = SmallStack::GetPool().Get(this->next);
 			this->value = popped.value;
 			if (popped.branch_count == 0) {
-				_pool.Destroy(this->next);
+				SmallStack::GetPool().Destroy(this->next);
 			} else {
 				--popped.branch_count;
 				/* We can't use Branch() here as we already have the mutex.*/
 				if (popped.next != Tmax_size) {
-					++(_pool.Get(popped.next).branch_count);
+					++(SmallStack::GetPool().Get(popped.next).branch_count);
 				}
 			}
 			/* Accessing popped here is no problem as the pool will only set
@@ -257,11 +257,11 @@ public:
 	{
 		if (item == Tinvalid || item == this->value) return true;
 		if (this->next != Tmax_size) {
-			ThreadMutexLocker lock(_pool.GetMutex());
+			ThreadMutexLocker lock(SmallStack::GetPool().GetMutex());
 			const SmallStack *in_list = this;
 			do {
 				in_list = static_cast<const SmallStack *>(
-						static_cast<const Item *>(&_pool.Get(in_list->next)));
+						static_cast<const Item *>(&SmallStack::GetPool().Get(in_list->next)));
 				if (in_list->value == item) return true;
 			} while (in_list->next != Tmax_size);
 		}
@@ -269,7 +269,11 @@ public:
 	}
 
 protected:
-	static SmallStackPool _pool;
+	static SmallStackPool &GetPool()
+	{
+		static SmallStackPool pool;
+		return pool;
+	}
 
 	/**
 	 * Create a branch in the pool if necessary.
@@ -277,8 +281,8 @@ protected:
 	inline void Branch()
 	{
 		if (this->next != Tmax_size) {
-			ThreadMutexLocker lock(_pool.GetMutex());
-			++(_pool.Get(this->next).branch_count);
+			ThreadMutexLocker lock(SmallStack::GetPool().GetMutex());
+			++(SmallStack::GetPool().Get(this->next).branch_count);
 		}
 	}
 };

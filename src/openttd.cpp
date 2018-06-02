@@ -692,11 +692,6 @@ int openttd_main(int argc, char *argv[])
 		goto exit_noshutdown;
 	}
 
-#if defined(WINCE) && defined(_DEBUG)
-	/* Switch on debug lvl 4 for WinCE if Debug release, as you can't give params, and you most likely do want this information */
-	SetDebugString("4");
-#endif
-
 	DeterminePaths(argv[0]);
 	TarScanner::DoScan(TarScanner::BASESET);
 
@@ -815,7 +810,7 @@ int openttd_main(int argc, char *argv[])
 	if (sounds_set == NULL && BaseSounds::ini_set != NULL) sounds_set = stredup(BaseSounds::ini_set);
 	if (!BaseSounds::SetSet(sounds_set)) {
 		if (StrEmpty(sounds_set) || !BaseSounds::SetSet(NULL)) {
-			usererror("Failed to find a sounds set. Please acquire a sounds set for OpenTTD. See section 4.1 of readme.txt.");
+			usererror("Failed to find a sounds set. Please acquire a sounds set for OpenTTD. See section 4.1 of README.md.");
 		} else {
 			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND);
 			msg.SetDParamStr(0, sounds_set);
@@ -828,7 +823,7 @@ int openttd_main(int argc, char *argv[])
 	if (music_set == NULL && BaseMusic::ini_set != NULL) music_set = stredup(BaseMusic::ini_set);
 	if (!BaseMusic::SetSet(music_set)) {
 		if (StrEmpty(music_set) || !BaseMusic::SetSet(NULL)) {
-			usererror("Failed to find a music set. Please acquire a music set for OpenTTD. See section 4.1 of readme.txt.");
+			usererror("Failed to find a music set. Please acquire a music set for OpenTTD. See section 4.1 of README.md.");
 		} else {
 			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND);
 			msg.SetDParamStr(0, music_set);
@@ -1406,11 +1401,6 @@ void StateGameLoop()
 static void DoAutosave()
 {
 	char buf[MAX_PATH];
-
-#if defined(PSP)
-	/* Autosaving in networking is too time expensive for the PSP */
-	if (_networking) return;
-#endif /* PSP */
 
 	if (_settings_client.gui.keep_all_autosave) {
 		GenerateDefaultSaveName(buf, lastof(buf));

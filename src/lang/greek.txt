@@ -757,6 +757,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Δεν υπάρχει διαθέσιμη μουσική
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}«{STRING}»
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Κομμάτι
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Τίτλος
@@ -776,15 +777,14 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Επιλ
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Εναλλαγή τυχαίας αναπαραγωγής on/off στο πρόγραμμα
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Εμφάνιση παραθύρου επιλογής μουσικού κομματιού
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Επιλέχτηκε σετ μουσικής χωρίς τραγούδια. Κανένα τραγούδι δεν θα παιχτεί
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Επιλογή Μουσικού Προγράμματος
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} «{STRING}»
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Λίστα σιδηροτροχιών
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Πρόγραμμα - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Καθαρισμός
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Αλλαγή σετ
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Καθαρισμός τρέχοντος προγράμματος (μόνο Προσαρμοσμένο 1 ή Προσαρμοσμένο 2)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Αλλαγή μουσικής επιλογής σε άλλο εγκατεστημένο σετ
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Πατήστε στο μουσικό κομμάτι για προσθήκη στο τρέχον πρόγραμμα (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Πατήστε στο τραγούδι για να το αφαιρέσετε από το πρόγραμμα (Προσαρμοσμένο 1 ή 2 μόνο)
 
@@ -1444,8 +1444,11 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Χρώμα εδ
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Πράσινο
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Σκούρο πράσινο
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Βιολετί
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Ανάποδη μετακίνηση οθόνης: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Συμπεριφορά όταν κυλίεται ο χάρτης με το δεξί κουμπί του ποντικιού. Όταν είναι απενεργοποιημένη, το ποντίκι μετακινεί την κάμερα. Όταν είναι ενεργοποιημένη, το ποντίκι μετακινεί τον χάρτη
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Συμπεριφορά κατά την κύλιση του χάρτη
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Μετακίνηση μικρού χάρτη με ΔΠΠ, θέση ποντικιού κλειδωμένη
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Μετακίνηση χάρτη με ΔΠΠ, θέση ποντικιού κλειδωμένη
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Μετακίνηση χάρτη με ΔΠΠ
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Μετακίνηση χάρτη με ΑΠΠ
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Ομαλή μετάβαση οθόνης: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ελέγξτε τον τρόπο με τον οποίο η κύρια προβολή κυλίεται σε μια συγκεκριμένη θέση όταν πατάτε πάνω στον μικρό χάρτη ή όταν δίνετε εντολή για μετάβαση σε ένα συγκεκριμένο αντικείμενο στον χάρτη. Όταν είναι ενεργοποιημένη, η κύλιση γίνεται ομαλά, και όταν είναι απενεργοποιημένη μεταβαίνει απ' ευθείας στο επιλεγμένο σημείο
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Εμφάνιση εργαλείου μετρήσεως όταν χρησιμοποιούνται διάφορα εργαλεία: {STRING}
@@ -1477,8 +1480,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Κλι�
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control+Κλικ
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Απενεργοποιημένος
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Μετάβαση με αριστερό κλικ: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Ενεργοποίηση της κύλισης του χάρτη σύροντας τον με το αριστερό κουμπί του ποντικιού. Αυτό είναι ιδιαίτερα χρήσιμο για την κύλιση όταν χρησιμοποιείται οθόνη αφής
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Κλείσιμο παραθύρου με δεξί-κλικ: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Κλείνει το παράθυρο με δεξί πάτημα μέσα του. Απενεργοποιεί την ανάδυση επεξηγήσεων με το δεξί κουμπί!
 

@@ -18,11 +18,15 @@
 #include "window_func.h"
 #include "sound_func.h"
 #include "gfx_func.h"
+#include "zoom_func.h"
 #include "core/random_func.hpp"
 #include "error.h"
 #include "core/geometry_func.hpp"
 #include "string_func.h"
 #include "settings_type.h"
+#include "settings_gui.h"
+#include "widgets/dropdown_func.h"
+#include "widgets/dropdown_type.h"
 
 #include "widgets/music_widget.h"
 
@@ -103,7 +107,7 @@ void ValidatePlaylist(byte *playlist, byte *last)
 	*last = 0;
 }
 
-/** Initialize the playlists */
+/** Prepare the playlists */
 void InitializeMusic()
 {
 	uint j = 0;
@@ -195,7 +199,8 @@ static void DoStopMusic()
 	SetWindowDirty(WC_MUSIC_WINDOW, 0);
 }
 
-static void SelectSongToPlay()
+/** Reload the active playlist data from playlist selection and shuffle setting */
+static void ResetPlaylist()
 {
 	uint i = 0;
 	uint j = 0;
@@ -241,10 +246,11 @@ static void StopMusic()
 	SetWindowWidgetDirty(WC_MUSIC_WINDOW, 0, 9);
 }
 
+/** Begin playing the next song on the playlist */
 static void PlayPlaylistSong()
 {
 	if (_cur_playlist[0] == 0) {
-		SelectSongToPlay();
+		ResetPlaylist();
 		/* if there is not songs in the playlist, it may indicate
 		 * no file on the gm folder, or even no gm folder.
 		 * Stop the playback, then */
@@ -268,6 +274,10 @@ void ResetMusic()
 	DoPlaySong();
 }
 
+/**
+ * Check music playback status and start/stop/song-finished.
+ * Called from main loop.
+ */
 void MusicLoop()
 {
 	if (!_settings_client.music.playing && _song_is_active) {
@@ -296,6 +306,36 @@ static void SelectPlaylist(byte list)
 	InvalidateWindowData(WC_MUSIC_WINDOW, 0);
 }
 
+/**
+ * Change the configured music set and reset playback
+ * @param index Index of music set to switch to
+ */
+void ChangeMusicSet(int index)
+{
+	if (BaseMusic::GetIndexOfUsedSet() == index) return;
+
+	/* Resume playback after switching?
+	 * Always if music is already playing, and also if the user is switching
+	 * away from an empty music set.
+	 * If the user switches away from an empty set, assume it's because they
+	 * want to hear music now. */
+	bool shouldplay = _song_is_active || (BaseMusic::GetUsedSet()->num_available == 0);
+	StopMusic();
+
+	const char *name = BaseMusic::GetSet(index)->name;
+	BaseMusic::SetSet(name);
+	free(BaseMusic::ini_set);
+	BaseMusic::ini_set = stredup(name);
+
+	InitializeMusic();
+	ResetPlaylist();
+	_settings_client.music.playing = shouldplay;
+
+	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0);
+	InvalidateWindowData(WC_MUSIC_WINDOW, 0);
+	InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GAME_OPTIONS, 0, true);
+}
+
 struct MusicTrackSelectionWindow : public Window {
 	MusicTrackSelectionWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
@@ -311,6 +351,9 @@ struct MusicTrackSelectionWindow : public Window {
 		switch (widget) {
 			case WID_MTS_PLAYLIST:
 				SetDParam(0, STR_MUSIC_PLAYLIST_ALL + _settings_client.music.playlist);
+				break;
+			case WID_MTS_CAPTION:
+				SetDParamStr(0, BaseMusic::GetUsedSet()->name);
 				break;
 		}
 	}
@@ -426,7 +469,7 @@ struct MusicTrackSelectionWindow : public Window {
 						}
 						p[i + 1] = 0;
 						this->SetDirty();
-						SelectSongToPlay();
+						ResetPlaylist();
 						break;
 					}
 				}
@@ -445,7 +488,14 @@ struct MusicTrackSelectionWindow : public Window {
 				}
 
 				this->SetDirty();
-				SelectSongToPlay();
+				ResetPlaylist();
+				break;
+			}
+
+			case WID_MTS_MUSICSET: {
+				int selected = 0;
+				DropDownList *dropdown = BuildMusicSetDropDownList(&selected);
+				ShowDropDownList(this, dropdown, selected, widget, 0, true, false);
 				break;
 			}
 
@@ -453,14 +503,26 @@ struct MusicTrackSelectionWindow : public Window {
 				for (uint i = 0; _playlists[_settings_client.music.playlist][i] != 0; i++) _playlists[_settings_client.music.playlist][i] = 0;
 				this->SetDirty();
 				StopMusic();
-				SelectSongToPlay();
+				ResetPlaylist();
 				break;
 
 			case WID_MTS_ALL: case WID_MTS_OLD: case WID_MTS_NEW:
 			case WID_MTS_EZY: case WID_MTS_CUSTOM1: case WID_MTS_CUSTOM2: // set playlist
 				SelectPlaylist(widget - WID_MTS_ALL);
 				StopMusic();
-				SelectSongToPlay();
+				ResetPlaylist();
+				break;
+		}
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		switch (widget) {
+			case WID_MTS_MUSICSET:
+				ChangeMusicSet(index);
+				break;
+			default:
+				NOT_REACHED();
 				break;
 		}
 	}
@@ -469,7 +531,8 @@ struct MusicTrackSelectionWindow : public Window {
 static const NWidgetPart _nested_music_track_selection_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_PLAYLIST_MUSIC_PROGRAM_SELECTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_MTS_CAPTION), SetDataTip(STR_PLAYLIST_MUSIC_SELECTION_SETNAME, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_MTS_MUSICSET), SetDataTip(STR_PLAYLIST_CHANGE_SET, STR_PLAYLIST_TOOLTIP_CHANGE_SET),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
@@ -522,6 +585,20 @@ struct MusicWindow : public Window {
 		this->InitNested(number);
 		this->LowerWidget(_settings_client.music.playlist + WID_M_ALL);
 		this->SetWidgetLoweredState(WID_M_SHUFFLE, _settings_client.music.shuffle);
+
+		UpdateDisabledButtons();
+	}
+
+	void UpdateDisabledButtons()
+	{
+		/* Disable music control widgets if there is no music
+		 * -- except Programme button! So you can still select a music set. */
+		this->SetWidgetsDisabledState(
+			BaseMusic::GetUsedSet()->num_available == 0,
+			WID_M_PREV, WID_M_NEXT, WID_M_STOP, WID_M_PLAY, WID_M_SHUFFLE,
+			WID_M_ALL, WID_M_OLD, WID_M_NEW, WID_M_EZY, WID_M_CUSTOM1, WID_M_CUSTOM2,
+			WIDGET_LIST_END
+			);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -571,6 +648,9 @@ struct MusicWindow : public Window {
 		switch (widget) {
 			case WID_M_TRACK_NR: {
 				GfxFillRect(r.left + 1, r.top + 1, r.right, r.bottom, PC_BLACK);
+				if (BaseMusic::GetUsedSet()->num_available == 0) {
+					break;
+				}
 				StringID str = STR_MUSIC_TRACK_NONE;
 				if (_song_is_active != 0 && _music_wnd_cursong != 0) {
 					SetDParam(0, GetTrackNumber(_music_wnd_cursong - 1));
@@ -584,7 +664,9 @@ struct MusicWindow : public Window {
 			case WID_M_TRACK_NAME: {
 				GfxFillRect(r.left, r.top + 1, r.right - 1, r.bottom, PC_BLACK);
 				StringID str = STR_MUSIC_TITLE_NONE;
-				if (_song_is_active != 0 && _music_wnd_cursong != 0) {
+				if (BaseMusic::GetUsedSet()->num_available == 0) {
+					str = STR_MUSIC_TITLE_NOMUSIC;
+				} else if (_song_is_active != 0 && _music_wnd_cursong != 0) {
 					str = STR_MUSIC_TITLE_NAME;
 					SetDParamStr(0, GetSongName(_music_wnd_cursong - 1));
 				}
@@ -593,15 +675,13 @@ struct MusicWindow : public Window {
 			}
 
 			case WID_M_MUSIC_VOL: case WID_M_EFFECT_VOL: {
-				DrawFrameRect(r.left, r.top + 2, r.right, r.bottom - 2, COLOUR_GREY, FR_LOWERED);
+				int sw = ScaleGUITrad(slider_width);
+				int hsw = sw / 2;
+				DrawFrameRect(r.left + hsw, r.top + 2, r.right - hsw, r.bottom - 2, COLOUR_GREY, FR_LOWERED);
 				byte volume = (widget == WID_M_MUSIC_VOL) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
-				int x = (volume * (r.right - r.left) / 127);
-				if (_current_text_dir == TD_RTL) {
-					x = r.right - x;
-				} else {
-					x += r.left;
-				}
-				DrawFrameRect(x, r.top, x + slider_width, r.bottom, COLOUR_GREY, FR_NONE);
+				if (_current_text_dir == TD_RTL) volume = 127 - volume;
+				int x = r.left + (volume * (r.right - r.left - sw) / 127);
+				DrawFrameRect(x, r.top, x + sw, r.bottom, COLOUR_GREY, FR_NONE);
 				break;
 			}
 		}
@@ -618,6 +698,9 @@ struct MusicWindow : public Window {
 		for (int i = 0; i < 6; i++) {
 			this->SetWidgetLoweredState(WID_M_ALL + i, i == _settings_client.music.playlist);
 		}
+
+		UpdateDisabledButtons();
+
 		this->SetDirty();
 	}
 
@@ -651,6 +734,9 @@ struct MusicWindow : public Window {
 
 				byte new_vol = x * 127 / this->GetWidget<NWidgetBase>(widget)->current_x;
 				if (_current_text_dir == TD_RTL) new_vol = 127 - new_vol;
+				/* Clamp to make sure min and max are properly settable */
+				if (new_vol > 124) new_vol = 127;
+				if (new_vol < 3) new_vol = 0;
 				if (new_vol != *vol) {
 					*vol = new_vol;
 					if (widget == WID_M_MUSIC_VOL) MusicVolumeChanged(new_vol);
@@ -666,7 +752,7 @@ struct MusicWindow : public Window {
 				this->SetWidgetLoweredState(WID_M_SHUFFLE, _settings_client.music.shuffle);
 				this->SetWidgetDirty(WID_M_SHUFFLE);
 				StopMusic();
-				SelectSongToPlay();
+				ResetPlaylist();
 				this->SetDirty();
 				break;
 
@@ -678,7 +764,7 @@ struct MusicWindow : public Window {
 			case WID_M_EZY: case WID_M_CUSTOM1: case WID_M_CUSTOM2: // playlist
 				SelectPlaylist(widget - WID_M_ALL);
 				StopMusic();
-				SelectSongToPlay();
+				ResetPlaylist();
 				this->SetDirty();
 				break;
 		}
@@ -776,6 +862,5 @@ static WindowDesc _music_window_desc(
 
 void ShowMusicWindow()
 {
-	if (BaseMusic::GetUsedSet()->num_available == 0) ShowErrorMessage(STR_ERROR_NO_SONGS, INVALID_STRING_ID, WL_WARNING);
 	AllocateWindowDescFront<MusicWindow>(&_music_window_desc, 0);
 }

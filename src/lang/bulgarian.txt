@@ -667,10 +667,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Избе
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Активирай/деактивирай разместване на парчетата
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Покажи прозореца за избор на музикални парчета
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Музикален пакет без песни е избран. Няма да се пускат песни.
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Избор на музикалната програма
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Номер на песен
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Програма - '{STRING}'
@@ -1320,8 +1317,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Цвят на �
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Зелен
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Тъмно зелен
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Виолетов
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Обърната посока на преместване: {STRING.n}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Когато опцията бъде активирана, когато "скролвате" картата с десния бутон на мишката ще местите картата, когато опцията не е активирана, мишката ще мести камерата
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавно местене на камера: {STRING.n}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ако опцията е активирана, когато натиснете на малката карта камерата ще се придвижи до там плавно, ако не е активирана камерата ще отиде там директно
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Подсказка за разстояние при строене: {STRING.f}
@@ -1353,8 +1348,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда-
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Контрол-щракане
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Изключен
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Скролиране с ляв бутон: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Позволява да "скролнете" картата, чрез влачене на левия бутон на мишката. Това и изключително полезно ако ползвате тъч-скрийн
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Автоматично запазване: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Изберете интервал между автоматично запаметяване на играта

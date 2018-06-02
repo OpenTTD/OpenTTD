@@ -323,7 +323,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 		want_hwpalette = _use_hwpalette;
 	}
 
-	if (want_hwpalette) DEBUG(driver, 1, "SDL: requesting hardware palete");
+	if (want_hwpalette) DEBUG(driver, 1, "SDL: requesting hardware palette");
 
 	/* Free any previously allocated shadow surface */
 	if (_sdl_screen != NULL && _sdl_screen != _sdl_realscreen) SDL_CALL SDL_FreeSurface(_sdl_screen);

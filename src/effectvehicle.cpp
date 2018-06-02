@@ -603,7 +603,7 @@ EffectVehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type)
 	v->y_pos = y;
 	v->z_pos = z;
 	v->tile = 0;
-	v->UpdateDeltaXY(INVALID_DIR);
+	v->UpdateDeltaXY();
 	v->vehstatus = VS_UNCLICKABLE;
 
 	_effect_init_procs[type](v);
@@ -647,7 +647,7 @@ bool EffectVehicle::Tick()
 	return _effect_tick_procs[this->subtype](this);
 }
 
-void EffectVehicle::UpdateDeltaXY(Direction direction)
+void EffectVehicle::UpdateDeltaXY()
 {
 	this->x_offs        = 0;
 	this->y_offs        = 0;

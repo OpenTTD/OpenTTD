@@ -214,6 +214,12 @@ static void setupApplication()
 	}
 #endif
 
+	/* Disable the system-wide tab feature as we only have one window. */
+	if ([ NSWindow respondsToSelector:@selector(setAllowsAutomaticWindowTabbing:) ]) {
+		/* We use nil instead of NO as withObject requires an id. */
+		[ NSWindow performSelector:@selector(setAllowsAutomaticWindowTabbing:) withObject:nil];
+	}
+
 	/* Become the front process, important when start from the command line. */
 	[ [ NSApplication sharedApplication ] activateIgnoringOtherApps:YES ];
 
@@ -1349,7 +1355,12 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	NSPoint loc = [ driver->cocoaview convertPoint:[ [ aNotification object ] mouseLocationOutsideOfEventStream ] fromView:nil ];
 	BOOL inside = ([ driver->cocoaview hitTest:loc ] == driver->cocoaview);
 
-	if (inside) [ driver->cocoaview mouseEntered:NULL ];
+	if (inside) {
+		/* We don't care about the event, but the compiler does. */
+		NSEvent *e = [ [ NSEvent alloc ] init ];
+		[ driver->cocoaview mouseEntered:e ];
+		[ e release ];
+	}
 }
 
 @end

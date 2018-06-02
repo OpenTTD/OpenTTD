@@ -68,8 +68,8 @@ struct StationResolverObject : public ResolverObject {
 			case VSG_SCOPE_PARENT: {
 				TownScopeResolver *tsr = this->GetTown();
 				if (tsr != NULL) return tsr;
+				FALLTHROUGH;
 			}
-			FALLTHROUGH;
 
 			default:
 				return ResolverObject::GetScope(scope, relative);
@@ -153,7 +153,7 @@ struct StationSpec {
 	 */
 	uint16 cargo_threshold;
 
-	uint32 cargo_triggers; ///< Bitmask of cargo types which cause trigger re-randomizing
+	CargoTypes cargo_triggers; ///< Bitmask of cargo types which cause trigger re-randomizing
 
 	byte callback_mask; ///< Bitmask of station callbacks that have to be called
 

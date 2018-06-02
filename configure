@@ -75,13 +75,12 @@ save_params
 make_cflags_and_ldflags
 
 EXE=""
-if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "OS2" ] || [ "$os" = "DOS" ] || [ "$os" = "WINCE" ]; then
+if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "OS2" ] || [ "$os" = "DOS" ]; then
 	EXE=".exe"
 fi
 
 TTD="openttd$EXE"
 STRGEN="strgen$EXE"
-ENDIAN_CHECK="endian_check$EXE"
 DEPEND="depend$EXE"
 SETTINGSGEN="settings_gen$EXE"
 
@@ -114,7 +113,6 @@ AWKCOMMAND='
 		if ($0 == "PNG"         && "'$png_config'" == "")          { next; }
 		if ($0 == "OSX"         && "'$os'" != "OSX")               { next; }
 		if ($0 == "OS2"         && "'$os'" != "OS2")               { next; }
-		if ($0 == "PSP"         && "'$os'" != "PSP")               { next; }
 		if ($0 == "DEDICATED"   && "'$enable_dedicated'" != "1")   { next; }
 		if ($0 == "AI"          && "'$enable_ai'" == "0")          { next; }
 		if ($0 == "COCOA"       && "'$with_cocoa'" == "0")         { next; }
@@ -124,7 +122,6 @@ AWKCOMMAND='
 		if ($0 == "WIN32"       && "'$os'" != "MINGW" &&
 		                 "'$os'" != "CYGWIN" && "'$os'" != "MSVC") { next; }
 		if ($0 == "MORPHOS"     && "'$os'" != "MORPHOS")           { next; }
-		if ($0 == "WINCE"       && "'$os'" != "WINCE")             { next; }
 		if ($0 == "MSVC"        && "'$os'" != "MSVC")              { next; }
 		if ($0 == "DIRECTMUSIC" && "'$with_direct_music'" == "0")  { next; }
 		if ($0 == "LIBTIMIDITY" && "'$libtimidity'" == "" )        { next; }

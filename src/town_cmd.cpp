@@ -53,7 +53,7 @@
 #include "safeguards.h"
 
 TownID _new_town_id;
-uint32 _town_cargoes_accepted; ///< Bitmap of all cargoes accepted by houses.
+CargoTypes _town_cargoes_accepted; ///< Bitmap of all cargoes accepted by houses.
 
 /* Initialize the town-pool */
 TownPool _town_pool("Town");
@@ -601,14 +601,14 @@ static void AddProducedCargo_Town(TileIndex tile, CargoArray &produced)
 	}
 }
 
-static inline void AddAcceptedCargoSetMask(CargoID cargo, uint amount, CargoArray &acceptance, uint32 *always_accepted)
+static inline void AddAcceptedCargoSetMask(CargoID cargo, uint amount, CargoArray &acceptance, CargoTypes *always_accepted)
 {
 	if (cargo == CT_INVALID || amount == 0) return;
 	acceptance[cargo] += amount;
 	SetBit(*always_accepted, cargo);
 }
 
-static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, uint32 *always_accepted)
+static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, CargoTypes *always_accepted)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 	CargoID accepts[3];
@@ -719,7 +719,7 @@ void UpdateTownCargoTotal(Town *t)
 static void UpdateTownCargoes(Town *t, TileIndex start, bool update_total = true)
 {
 	CargoArray accepted, produced;
-	uint32 dummy;
+	CargoTypes dummy;
 
 	/* Gather acceptance for all houses in an area around the start tile.
 	 * The area is composed of the square the tile is in, extended one square in all
@@ -733,7 +733,7 @@ static void UpdateTownCargoes(Town *t, TileIndex start, bool update_total = true
 	}
 
 	/* Create bitmap of produced and accepted cargoes. */
-	uint32 acc = 0;
+	CargoTypes acc = 0;
 	for (uint cid = 0; cid < NUM_CARGO; cid++) {
 		if (accepted[cid] >= 8) SetBit(acc, cid);
 		if (produced[cid] > 0) SetBit(t->cargo_produced, cid);
@@ -780,12 +780,13 @@ static bool GrowTown(Town *t);
 static void TownTickHandler(Town *t)
 {
 	if (HasBit(t->flags, TOWN_IS_GROWING)) {
-		int i = t->grow_counter - 1;
+		int i = (int)t->grow_counter - 1;
 		if (i < 0) {
 			if (GrowTown(t)) {
-				i = t->growth_rate & (~TOWN_GROW_RATE_CUSTOM);
+				i = t->growth_rate;
 			} else {
-				i = 0;
+				/* If growth failed wait a bit before retrying */
+				i = min(t->growth_rate, TOWN_GROWTH_TICKS - 1);
 			}
 		}
 		t->grow_counter = i;
@@ -798,10 +799,7 @@ void OnTick_Town()
 
 	Town *t;
 	FOR_ALL_TOWNS(t) {
-		/* Run town tick at regular intervals, but not all at once. */
-		if ((_tick_counter + t->index) % TOWN_GROWTH_TICKS == 0) {
-			TownTickHandler(t);
-		}
+		TownTickHandler(t);
 	}
 }
 
@@ -1228,17 +1226,48 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		/* Possibly extend the road in a direction.
 		 * Randomize a direction and if it has a road, bail out. */
 		target_dir = RandomDiagDir();
-		if (cur_rb & DiagDirToRoadBits(target_dir)) return;
+		RoadBits target_rb = DiagDirToRoadBits(target_dir);
+		TileIndex house_tile; // position of a possible house
 
-		/* This is the tile we will reach if we extend to this direction. */
-		TileIndex house_tile = TileAddByDiagDir(tile, target_dir); // position of a possible house
+		if (cur_rb & target_rb) {
+			/* If it's a road turn possibly build a house in a corner.
+			 * Use intersection with straight road as an indicator
+			 * that we randomed corner house position.
+			 * A turn (and we check for that later) always has only
+			 * one common bit with a straight road so it has the same
+			 * chance to be chosen as the house on the side of a road.
+			 */
+			if ((cur_rb & ROAD_X) != target_rb) return;
+
+			/* Check whether it is a turn and if so determine
+			 * position of the corner tile */
+			switch (cur_rb) {
+				case ROAD_N:
+					house_tile = TileAddByDir(tile, DIR_S);
+					break;
+				case ROAD_S:
+					house_tile = TileAddByDir(tile, DIR_N);
+					break;
+				case ROAD_E:
+					house_tile = TileAddByDir(tile, DIR_W);
+					break;
+				case ROAD_W:
+					house_tile = TileAddByDir(tile, DIR_E);
+					break;
+				default:
+					return;  // not a turn
+			}
+			target_dir = DIAGDIR_END;
+		} else {
+			house_tile = TileAddByDiagDir(tile, target_dir);
+		}
 
 		/* Don't walk into water. */
 		if (HasTileWaterGround(house_tile)) return;
 
 		if (!IsValidTile(house_tile)) return;
 
-		if (_settings_game.economy.allow_town_roads || _generating_world) {
+		if (target_dir != DIAGDIR_END && (_settings_game.economy.allow_town_roads || _generating_world)) {
 			switch (t1->layout) {
 				default: NOT_REACHED();
 
@@ -1248,7 +1277,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 				case TL_2X2_GRID:
 					rcmd = GetTownRoadGridElement(t1, tile, target_dir);
-					allow_house = (rcmd & DiagDirToRoadBits(target_dir)) == ROAD_NONE;
+					allow_house = (rcmd & target_rb) == ROAD_NONE;
 					break;
 
 				case TL_BETTER_ROADS: // Use original afterwards!
@@ -1258,7 +1287,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 				case TL_ORIGINAL:
 					/* Allow a house at the edge. 60% chance or
 					 * always ok if no road allowed. */
-					rcmd = DiagDirToRoadBits(target_dir);
+					rcmd = target_rb;
 					allow_house = (!IsRoadAllowedHere(t1, house_tile, target_dir) || Chance16(6, 10));
 					break;
 			}
@@ -1565,8 +1594,10 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	UpdateTownRadius(t);
 	t->flags = 0;
 	t->cache.population = 0;
-	t->grow_counter = 0;
-	t->growth_rate = 250;
+	/* Spread growth across ticks so even if there are many
+	 * similar towns they're unlikely to grow all in one tick */
+	t->grow_counter = t->index % TOWN_GROWTH_TICKS;
+	t->growth_rate = TownTicksToGameTicks(250);
 
 	/* Set the default cargo requirement for town growth */
 	switch (_settings_game.game_creation.landscape) {
@@ -2582,14 +2613,13 @@ CommandCost CmdTownSetText(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  * @param tile Unused.
  * @param flags Type of operation.
  * @param p1 Town ID to cargo game of.
- * @param p2 Amount of days between growth, or TOWN_GROW_RATE_CUSTOM_NONE, or 0 to reset custom growth rate.
+ * @param p2 Amount of days between growth, or TOWN_GROWTH_RATE_NONE, or 0 to reset custom growth rate.
  * @param text Unused.
  * @return Empty cost or an error.
  */
 CommandCost CmdTownGrowthRate(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
-	if ((p2 & TOWN_GROW_RATE_CUSTOM) != 0 && p2 != TOWN_GROW_RATE_CUSTOM_NONE) return CMD_ERROR;
 	if (GB(p2, 16, 16) != 0) return CMD_ERROR;
 
 	Town *t = Town::GetIfValid(p1);
@@ -2597,10 +2627,10 @@ CommandCost CmdTownGrowthRate(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	if (flags & DC_EXEC) {
 		if (p2 == 0) {
-			/* Clear TOWN_GROW_RATE_CUSTOM, UpdateTownGrowRate will determine a proper value */
-			t->growth_rate = 0;
+			/* Just clear the flag, UpdateTownGrowRate will determine a proper growth rate */
+			ClrBit(t->flags, TOWN_CUSTOM_GROWTH);
 		} else {
-			uint old_rate = t->growth_rate & ~TOWN_GROW_RATE_CUSTOM;
+			uint old_rate = t->growth_rate;
 			if (t->grow_counter >= old_rate) {
 				/* This also catches old_rate == 0 */
 				t->grow_counter = p2;
@@ -2608,7 +2638,8 @@ CommandCost CmdTownGrowthRate(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 				/* Scale grow_counter, so half finished houses stay half finished */
 				t->grow_counter = t->grow_counter * p2 / old_rate;
 			}
-			t->growth_rate = p2 | TOWN_GROW_RATE_CUSTOM;
+			t->growth_rate = p2;
+			SetBit(t->flags, TOWN_CUSTOM_GROWTH);
 		}
 		UpdateTownGrowRate(t);
 		InvalidateWindowData(WC_TOWN_VIEW, p1);
@@ -2893,13 +2924,21 @@ static CommandCost TownActionFundBuildings(Town *t, DoCommandFlag flags)
 	if (!_settings_game.economy.fund_buildings) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		/* Build next tick */
-		t->grow_counter = 1;
 		/* And grow for 3 months */
 		t->fund_buildings_months = 3;
 
 		/* Enable growth (also checking GameScript's opinion) */
 		UpdateTownGrowRate(t);
+
+		/* Build a new house, but add a small delay to make sure
+		 * that spamming funding doesn't let town grow any faster
+		 * than 1 house per 2 * TOWN_GROWTH_TICKS ticks.
+		 * Also emulate original behaviour when town was only growing in
+		 * TOWN_GROWTH_TICKS intervals, to make sure that it's not too
+		 * tick-perfect and gives player some time window where he can
+		 * spam funding with the exact same effeciency.
+		 */
+		t->grow_counter = min(t->grow_counter, 2 * TOWN_GROWTH_TICKS - (t->growth_rate - t->grow_counter) % TOWN_GROWTH_TICKS);
 
 		SetWindowDirty(WC_TOWN_VIEW, t->index);
 	}
@@ -3117,8 +3156,8 @@ static void UpdateTownGrowRate(Town *t)
 		}
 	}
 
-	if ((t->growth_rate & TOWN_GROW_RATE_CUSTOM) != 0) {
-		if (t->growth_rate != TOWN_GROW_RATE_CUSTOM_NONE) SetBit(t->flags, TOWN_IS_GROWING);
+	if (HasBit(t->flags, TOWN_CUSTOM_GROWTH)) {
+		if (t->growth_rate != TOWN_GROWTH_RATE_NONE) SetBit(t->flags, TOWN_IS_GROWING);
 		SetWindowDirty(WC_TOWN_VIEW, t->index);
 		return;
 	}
@@ -3159,7 +3198,7 @@ static void UpdateTownGrowRate(Town *t)
 	m >>= growth_multiplier;
 	if (t->larger_town) m /= 2;
 
-	t->growth_rate = m / (t->cache.num_houses / 50 + 1);
+	t->growth_rate = TownTicksToGameTicks(m / (t->cache.num_houses / 50 + 1));
 	t->grow_counter = min(t->growth_rate, t->grow_counter);
 
 	SetBit(t->flags, TOWN_IS_GROWING);

@@ -377,7 +377,6 @@ STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKG
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 
-
 # Playlist window
 
 # Highscore window

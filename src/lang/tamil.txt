@@ -659,10 +659,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'பய�
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'பயனரால் மாற்றியமைக்கப்பட்ட 2' பிரோகிராமினைத் தேர்ந்தெடுக்கவும்
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}இசைத் த்டத்தினைத் தேர்ந்தெடுக்கும் திரையினைக் காட்டு
 
-STR_ERROR_NO_SONGS                                              :{WHITE}இசைத்தடமே இல்லாதப் பட்டியல் தேர்ந்தெடுக்கப்பட்டுள்ளது. எந்த பாட்டும் ஒலிக்காது
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}இசை பிரோகிராம் தேர்ந்தெடுத்தல்
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}இசைத்தடம் வரிசை
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}பிரோகிராம் - '{STRING}'
@@ -1231,7 +1228,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :சிறுப
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :பச்சை
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :கரும் பச்சை
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :ஊதா
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :திருப்பப்பட்ட பக்கமுருட்டி திசை : {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :பார்படத்தின் இலகுவான பக்கமுருட்டல்: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :நிறுவன livery களைக் காட்டு: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :ஒன்றுமில்லை

@@ -24,12 +24,7 @@
  */
 static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast);
 
-#if defined(PSP)
-static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // PSP implementation
-{
-}
-
-#elif defined(BEOS_NET_SERVER) || defined(__HAIKU__) /* doesn't have neither getifaddrs or net/if.h */
+#if defined(BEOS_NET_SERVER) || defined(__HAIKU__) /* doesn't have neither getifaddrs or net/if.h */
 /* Based on Andrew Bachmann's netstat+.c. Big thanks to him! */
 extern "C" int _netstat(int fd, char **output, int verbose);
 

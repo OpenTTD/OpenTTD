@@ -15,170 +15,397 @@
 #include <windows.h>
 #include <mmsystem.h>
 #include "../os/windows/win32.h"
+#include "../debug.h"
+#include "midifile.hpp"
+#include "midi.h"
 
 #include "../safeguards.h"
 
+struct PlaybackSegment {
+	uint32 start, end;
+	size_t start_block;
+	bool loop;
+};
+
 static struct {
-	bool stop_song;
-	bool terminate;
-	bool playing;
-	int new_vol;
-	HANDLE wait_obj;
-	HANDLE thread;
-	UINT_PTR devid;
-	char start_song[MAX_PATH];
+	UINT time_period;      ///< obtained timer precision value
+	HMIDIOUT midi_out;     ///< handle to open midiOut
+	UINT timer_id;         ///< ID of active multimedia timer
+	CRITICAL_SECTION lock; ///< synchronization for playback status fields
+
+	bool playing;        ///< flag indicating that playback is active
+	bool do_start;       ///< flag for starting playback of next_file at next opportunity
+	bool do_stop;        ///< flag for stopping playback at next opportunity
+	byte current_volume; ///< current effective volume setting
+	byte new_volume;     ///< volume setting to change to
+
+	MidiFile current_file;           ///< file currently being played from
+	PlaybackSegment current_segment; ///< segment info for current playback
+	DWORD playback_start_time;       ///< timestamp current file began playback
+	size_t current_block;            ///< next block index to send
+	MidiFile next_file;              ///< upcoming file to play
+	PlaybackSegment next_segment;    ///< segment info for upcoming file
+
+	byte channel_volumes[16]; ///< last seen volume controller values in raw data
 } _midi;
 
 static FMusicDriver_Win32 iFMusicDriver_Win32;
 
+
+static byte ScaleVolume(byte original, byte scale)
+{
+	return original * scale / 127;
+}
+
+
+void CALLBACK MidiOutProc(HMIDIOUT hmo, UINT wMsg, DWORD_PTR dwInstance, DWORD_PTR dwParam1, DWORD_PTR dwParam2)
+{
+	if (wMsg == MOM_DONE) {
+		MIDIHDR *hdr = (LPMIDIHDR)dwParam1;
+		midiOutUnprepareHeader(hmo, hdr, sizeof(*hdr));
+		free(hdr);
+	}
+}
+
+static void TransmitChannelMsg(byte status, byte p1, byte p2 = 0)
+{
+	midiOutShortMsg(_midi.midi_out, status | (p1 << 8) | (p2 << 16));
+}
+
+static void TransmitSysex(byte *&msg_start, size_t &remaining)
+{
+	/* find end of message */
+	byte *msg_end = msg_start;
+	while (*msg_end != MIDIST_ENDSYSEX) msg_end++;
+	msg_end++; /* also include sysex end byte */
+
+	/* prepare header */
+	MIDIHDR *hdr = CallocT<MIDIHDR>(1);
+	hdr->lpData = (LPSTR)msg_start;
+	hdr->dwBufferLength = msg_end - msg_start;
+	if (midiOutPrepareHeader(_midi.midi_out, hdr, sizeof(*hdr)) == MMSYSERR_NOERROR) {
+		/* transmit - just point directly into the data buffer */
+		hdr->dwBytesRecorded = hdr->dwBufferLength;
+		midiOutLongMsg(_midi.midi_out, hdr, sizeof(*hdr));
+	} else {
+		free(hdr);
+	}
+
+	/* update position in buffer */
+	remaining -= msg_end - msg_start;
+	msg_start = msg_end;
+}
+
+static void TransmitSysexConst(byte *msg_start, size_t length)
+{
+	TransmitSysex(msg_start, length);
+}
+
+/**
+ * Realtime MIDI playback service routine.
+ * This is called by the multimedia timer.
+ */
+void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DWORD_PTR)
+{
+	/* Try to check playback status changes.
+	 * If _midi is already locked, skip checking for this cycle and try again
+	 * next cycle, instead of waiting for locks in the realtime callback. */
+	if (TryEnterCriticalSection(&_midi.lock)) {
+		/* check for stop */
+		if (_midi.do_stop) {
+			DEBUG(driver, 2, "Win32-MIDI: timer: do_stop is set");
+			midiOutReset(_midi.midi_out);
+			_midi.playing = false;
+			_midi.do_stop = false;
+			LeaveCriticalSection(&_midi.lock);
+			return;
+		}
+
+		/* check for start/restart/change song */
+		if (_midi.do_start) {
+			DEBUG(driver, 2, "Win32-MIDI: timer: do_start is set");
+			if (_midi.playing) {
+				midiOutReset(_midi.midi_out);
+				/* Some songs change the "Pitch bend range" registered
+				 * parameter. If this doesn't get reset, everything else
+				 * will start sounding wrong. */
+				for (int ch = 0; ch < 16; ch++) {
+					/* Running status, only need status for first message */
+					/* Select RPN 00.00, set value to 02.00, and unselect again */
+					TransmitChannelMsg(MIDIST_CONTROLLER | ch, MIDICT_RPN_SELECT_LO, 0x00);
+					TransmitChannelMsg(MIDICT_RPN_SELECT_HI, 0x00);
+					TransmitChannelMsg(MIDICT_DATAENTRY,     0x02);
+					TransmitChannelMsg(MIDICT_DATAENTRY_LO,  0x00);
+					TransmitChannelMsg(MIDICT_RPN_SELECT_LO, 0x7F);
+					TransmitChannelMsg(MIDICT_RPN_SELECT_HI, 0x7F);
+				}
+			}
+			_midi.current_file.MoveFrom(_midi.next_file);
+			std::swap(_midi.next_segment, _midi.current_segment);
+			_midi.current_segment.start_block = 0;
+			_midi.playback_start_time = timeGetTime();
+			_midi.playing = true;
+			_midi.do_start = false;
+			_midi.current_block = 0;
+
+			MemSetT<byte>(_midi.channel_volumes, 127, lengthof(_midi.channel_volumes));
+		} else if (!_midi.playing) {
+			/* not playing, stop the timer */
+			DEBUG(driver, 2, "Win32-MIDI: timer: not playing, stopping timer");
+			timeKillEvent(uTimerID);
+			_midi.timer_id = 0;
+			LeaveCriticalSection(&_midi.lock);
+			return;
+		}
+
+		/* check for volume change */
+		static int volume_throttle = 0;
+		if (_midi.current_volume != _midi.new_volume) {
+			if (volume_throttle == 0) {
+				DEBUG(driver, 2, "Win32-MIDI: timer: volume change");
+				_midi.current_volume = _midi.new_volume;
+				volume_throttle = 20 / _midi.time_period;
+				for (int ch = 0; ch < 16; ch++) {
+					int vol = ScaleVolume(_midi.channel_volumes[ch], _midi.current_volume);
+					TransmitChannelMsg(MIDIST_CONTROLLER | ch, MIDICT_CHANVOLUME, vol);
+				}
+			}
+			else {
+				volume_throttle--;
+			}
+		}
+
+		LeaveCriticalSection(&_midi.lock);
+	}
+
+	/* skip beginning of file? */
+	if (_midi.current_segment.start > 0 && _midi.current_block == 0 && _midi.current_segment.start_block == 0) {
+		/* find first block after start time and pretend playback started earlier
+		* this is to allow all blocks prior to the actual start to still affect playback,
+		* as they may contain important controller and program changes */
+		size_t preload_bytes = 0;
+		for (size_t bl = 0; bl < _midi.current_file.blocks.size(); bl++) {
+			MidiFile::DataBlock &block = _midi.current_file.blocks[bl];
+			preload_bytes += block.data.Length();
+			if (block.ticktime >= _midi.current_segment.start) {
+				if (_midi.current_segment.loop) {
+					DEBUG(driver, 2, "Win32-MIDI: timer: loop from block %d (ticktime %d, realtime %.3f, bytes %d)", (int)bl, (int)block.ticktime, ((int)block.realtime)/1000.0, (int)preload_bytes);
+					_midi.current_segment.start_block = bl;
+					break;
+				} else {
+					DEBUG(driver, 2, "Win32-MIDI: timer: start from block %d (ticktime %d, realtime %.3f, bytes %d)", (int)bl, (int)block.ticktime, ((int)block.realtime) / 1000.0, (int)preload_bytes);
+					_midi.playback_start_time -= block.realtime / 1000;
+					break;
+				}
+			}
+		}
+	}
+
+
+	/* play pending blocks */
+	DWORD current_time = timeGetTime();
+	DWORD playback_time = current_time - _midi.playback_start_time;
+	while (_midi.current_block < _midi.current_file.blocks.size()) {
+		MidiFile::DataBlock &block = _midi.current_file.blocks[_midi.current_block];
+
+		/* check that block is not in the future */
+		if (block.realtime / 1000 > playback_time) {
+			break;
+		}
+		/* check that block isn't at end-of-song override */
+		if (_midi.current_segment.end > 0 && block.ticktime >= _midi.current_segment.end) {
+			if (_midi.current_segment.loop) {
+				_midi.current_block = _midi.current_segment.start_block;
+				_midi.playback_start_time = timeGetTime() - _midi.current_file.blocks[_midi.current_block].realtime / 1000;
+			} else {
+				_midi.do_stop = true;
+			}
+			break;
+		}
+
+		byte *data = block.data.Begin();
+		size_t remaining = block.data.Length();
+		byte last_status = 0;
+		while (remaining > 0) {
+			/* MidiFile ought to have converted everything out of running status,
+			 * but handle it anyway just to be safe */
+			byte status = data[0];
+			if (status & 0x80) {
+				last_status = status;
+				data++;
+				remaining--;
+			} else {
+				status = last_status;
+			}
+			switch (status & 0xF0) {
+				case MIDIST_PROGCHG:
+				case MIDIST_CHANPRESS:
+					/* 2 byte channel messages */
+					TransmitChannelMsg(status, data[0]);
+					data++;
+					remaining--;
+					break;
+				case MIDIST_NOTEOFF:
+				case MIDIST_NOTEON:
+				case MIDIST_POLYPRESS:
+				case MIDIST_PITCHBEND:
+					/* 3 byte channel messages */
+					TransmitChannelMsg(status, data[0], data[1]);
+					data += 2;
+					remaining -= 2;
+					break;
+				case MIDIST_CONTROLLER:
+					/* controller change */
+					if (data[0] == MIDICT_CHANVOLUME) {
+						/* volume controller, adjust for user volume */
+						_midi.channel_volumes[status & 0x0F] = data[1];
+						int vol = ScaleVolume(data[1], _midi.current_volume);
+						TransmitChannelMsg(status, data[0], vol);
+					} else {
+						/* handle other controllers normally */
+						TransmitChannelMsg(status, data[0], data[1]);
+					}
+					data += 2;
+					remaining -= 2;
+					break;
+				case 0xF0:
+					/* system messages */
+					switch (status) {
+						case MIDIST_SYSEX: /* system exclusive */
+							TransmitSysex(data, remaining);
+							break;
+						case MIDIST_TC_QFRAME: /* time code quarter frame */
+						case MIDIST_SONGSEL: /* song select */
+							data++;
+							remaining--;
+							break;
+						case MIDIST_SONGPOSPTR: /* song position pointer */
+							data += 2;
+							remaining -= 2;
+							break;
+						default: /* remaining have no data bytes */
+							break;
+					}
+					break;
+			}
+		}
+
+		_midi.current_block++;
+	}
+
+	/* end? */
+	if (_midi.current_block == _midi.current_file.blocks.size()) {
+		if (_midi.current_segment.loop) {
+			_midi.current_block = 0;
+			_midi.playback_start_time = timeGetTime();
+		} else {
+			_midi.do_stop = true;
+		}
+	}
+}
+
 void MusicDriver_Win32::PlaySong(const char *filename)
 {
-	assert(filename != NULL);
-	strecpy(_midi.start_song, filename, lastof(_midi.start_song));
-	_midi.playing = true;
-	_midi.stop_song = false;
-	SetEvent(_midi.wait_obj);
+	DEBUG(driver, 2, "Win32-MIDI: PlaySong: entry");
+	EnterCriticalSection(&_midi.lock);
+
+	_midi.next_file.LoadFile(filename);
+	_midi.next_segment.start = 0;
+	_midi.next_segment.end = 0;
+	_midi.next_segment.loop = false;
+
+	DEBUG(driver, 2, "Win32-MIDI: PlaySong: setting flag");
+	_midi.do_stop = _midi.playing;
+	_midi.do_start = true;
+
+	if (_midi.timer_id == 0) {
+		DEBUG(driver, 2, "Win32-MIDI: PlaySong: starting timer");
+		_midi.timer_id = timeSetEvent(_midi.time_period, _midi.time_period, TimerCallback, (DWORD_PTR)this, TIME_PERIODIC | TIME_CALLBACK_FUNCTION);
+	}
+
+	LeaveCriticalSection(&_midi.lock);
 }
 
 void MusicDriver_Win32::StopSong()
 {
-	if (_midi.playing) {
-		_midi.stop_song = true;
-		_midi.start_song[0] = '\0';
-		SetEvent(_midi.wait_obj);
-	}
+	DEBUG(driver, 2, "Win32-MIDI: StopSong: entry");
+	EnterCriticalSection(&_midi.lock);
+	DEBUG(driver, 2, "Win32-MIDI: StopSong: setting flag");
+	_midi.do_stop = true;
+	LeaveCriticalSection(&_midi.lock);
 }
 
 bool MusicDriver_Win32::IsSongPlaying()
 {
-	return _midi.playing;
+	return _midi.playing || _midi.do_start;
 }
 
 void MusicDriver_Win32::SetVolume(byte vol)
 {
-	_midi.new_vol = vol;
-	SetEvent(_midi.wait_obj);
-}
-
-static MCIERROR CDECL MidiSendCommand(const TCHAR *cmd, ...)
-{
-	va_list va;
-	TCHAR buf[512];
-
-	va_start(va, cmd);
-	_vsntprintf(buf, lengthof(buf), cmd, va);
-	va_end(va);
-	return mciSendString(buf, NULL, 0, 0);
-}
-
-static bool MidiIntPlaySong(const char *filename)
-{
-	MidiSendCommand(_T("close all"));
-
-	if (MidiSendCommand(_T("open \"%s\" type sequencer alias song"), OTTD2FS(filename)) != 0) {
-		/* Let's try the "short name" */
-		TCHAR buf[MAX_PATH];
-		if (GetShortPathName(OTTD2FS(filename), buf, MAX_PATH) == 0) return false;
-		if (MidiSendCommand(_T("open \"%s\" type sequencer alias song"), buf) != 0) return false;
-	}
-
-	MidiSendCommand(_T("seek song to start wait"));
-	return MidiSendCommand(_T("play song")) == 0;
-}
-
-static void MidiIntStopSong()
-{
-	MidiSendCommand(_T("close all"));
-}
-
-static void MidiIntSetVolume(int vol)
-{
-	DWORD v = (vol * 65535 / 127);
-	midiOutSetVolume((HMIDIOUT)_midi.devid, v + (v << 16));
-}
-
-static bool MidiIntIsSongPlaying()
-{
-	char buf[16];
-	mciSendStringA("status song mode", buf, sizeof(buf), 0);
-	return strcmp(buf, "playing") == 0 || strcmp(buf, "seeking") == 0;
-}
-
-static DWORD WINAPI MidiThread(LPVOID arg)
-{
-	SetWin32ThreadName(-1, "ottd:win-midi");
-
-	do {
-		char *s;
-		int vol;
-
-		vol = _midi.new_vol;
-		if (vol != -1) {
-			_midi.new_vol = -1;
-			MidiIntSetVolume(vol);
-		}
-
-		s = _midi.start_song;
-		if (s[0] != '\0') {
-			_midi.playing = MidiIntPlaySong(s);
-			s[0] = '\0';
-
-			/* Delay somewhat in case we don't manage to play. */
-			if (!_midi.playing) WaitForMultipleObjects(1, &_midi.wait_obj, FALSE, 5000);
-		}
-
-		if (_midi.stop_song && _midi.playing) {
-			_midi.stop_song = false;
-			_midi.playing = false;
-			MidiIntStopSong();
-		}
-
-		if (_midi.playing && !MidiIntIsSongPlaying()) _midi.playing = false;
-
-		WaitForMultipleObjects(1, &_midi.wait_obj, FALSE, 1000);
-	} while (!_midi.terminate);
-
-	MidiIntStopSong();
-	return 0;
+	EnterCriticalSection(&_midi.lock);
+	_midi.new_volume = vol;
+	LeaveCriticalSection(&_midi.lock);
 }
 
 const char *MusicDriver_Win32::Start(const char * const *parm)
 {
-	MIDIOUTCAPS midicaps;
-	UINT nbdev;
-	UINT_PTR dev;
-	char buf[16];
+	DEBUG(driver, 2, "Win32-MIDI: Start: initializing");
 
-	mciSendStringA("capability sequencer has audio", buf, lengthof(buf), 0);
-	if (strcmp(buf, "true") != 0) return "MCI sequencer can't play audio";
+	InitializeCriticalSection(&_midi.lock);
 
-	memset(&_midi, 0, sizeof(_midi));
-	_midi.new_vol = -1;
+	int resolution = GetDriverParamInt(parm, "resolution", 5);
+	int port = GetDriverParamInt(parm, "port", -1);
 
-	/* Get midi device */
-	_midi.devid = MIDI_MAPPER;
-	for (dev = 0, nbdev = midiOutGetNumDevs(); dev < nbdev; dev++) {
-		if (midiOutGetDevCaps(dev, &midicaps, sizeof(midicaps)) == 0 && (midicaps.dwSupport & MIDICAPS_VOLUME)) {
-			_midi.devid = dev;
-			break;
-		}
+	UINT devid;
+	if (port < 0) {
+		devid = MIDI_MAPPER;
+	} else {
+		devid = (UINT)port;
 	}
 
-	if (NULL == (_midi.wait_obj = CreateEvent(NULL, FALSE, FALSE, NULL))) return "Failed to create event";
+	resolution = Clamp(resolution, 1, 20);
 
-	/* The lpThreadId parameter of CreateThread (the last parameter)
-	 * may NOT be NULL on Windows 95, 98 and ME. */
-	DWORD threadId;
-	if (NULL == (_midi.thread = CreateThread(NULL, 8192, MidiThread, 0, 0, &threadId))) return "Failed to create thread";
+	if (midiOutOpen(&_midi.midi_out, devid, (DWORD_PTR)&MidiOutProc, (DWORD_PTR)this, CALLBACK_FUNCTION) != MMSYSERR_NOERROR) {
+		return "could not open midi device";
+	}
 
-	return NULL;
+	midiOutReset(_midi.midi_out);
+
+	/* Standard "Enable General MIDI" message */
+	static byte gm_enable_sysex[] = { 0xF0, 0x7E, 0x00, 0x09, 0x01, 0xF7 };
+	TransmitSysexConst(&gm_enable_sysex[0], sizeof(gm_enable_sysex));
+
+	/* Roland-specific reverb room control, used by the original game */
+	static byte roland_reverb_sysex[] = { 0xF0, 0x41, 0x10, 0x42, 0x12, 0x40, 0x01, 0x30, 0x02, 0x04, 0x00, 0x40, 0x40, 0x00, 0x00, 0x09, 0xF7 };
+	TransmitSysexConst(&roland_reverb_sysex[0], sizeof(roland_reverb_sysex));
+
+	/* prepare multimedia timer */
+	TIMECAPS timecaps;
+	if (timeGetDevCaps(&timecaps, sizeof(timecaps)) == MMSYSERR_NOERROR) {
+		_midi.time_period = min(max((UINT)resolution, timecaps.wPeriodMin), timecaps.wPeriodMax);
+		if (timeBeginPeriod(_midi.time_period) == MMSYSERR_NOERROR) {
+			/* success */
+			DEBUG(driver, 2, "Win32-MIDI: Start: timer resolution is %d", (int)_midi.time_period);
+			return NULL;
+		}
+	}
+	midiOutClose(_midi.midi_out);
+	return "could not set timer resolution";
 }
 
 void MusicDriver_Win32::Stop()
 {
-	_midi.terminate = true;
-	SetEvent(_midi.wait_obj);
-	WaitForMultipleObjects(1, &_midi.thread, true, INFINITE);
-	CloseHandle(_midi.wait_obj);
-	CloseHandle(_midi.thread);
+	EnterCriticalSection(&_midi.lock);
+
+	if (_midi.timer_id) {
+		timeKillEvent(_midi.timer_id);
+		_midi.timer_id = 0;
+	}
+
+	timeEndPeriod(_midi.time_period);
+	midiOutReset(_midi.midi_out);
+	midiOutClose(_midi.midi_out);
+
+	LeaveCriticalSection(&_midi.lock);
+	DeleteCriticalSection(&_midi.lock);
 }

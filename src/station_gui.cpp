@@ -56,7 +56,7 @@
 int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageType sct, int rad, bool supplies)
 {
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
-	uint32 cargo_mask = 0;
+	CargoTypes cargo_mask = 0;
 	if (_thd.drawstyle == HT_RECT && tile < MapSize()) {
 		CargoArray cargoes;
 		if (supplies) {
@@ -156,8 +156,8 @@ protected:
 	static Listing last_sorting;
 	static byte facilities;               // types of stations of interest
 	static bool include_empty;            // whether we should include stations without waiting cargo
-	static const uint32 cargo_filter_max;
-	static uint32 cargo_filter;           // bitmap of cargo types to include
+	static const CargoTypes cargo_filter_max;
+	static CargoTypes cargo_filter;           // bitmap of cargo types to include
 	static const Station *last_station;
 
 	/* Constants for sorting stations */
@@ -654,8 +654,8 @@ public:
 Listing CompanyStationsWindow::last_sorting = {false, 0};
 byte CompanyStationsWindow::facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
 bool CompanyStationsWindow::include_empty = true;
-const uint32 CompanyStationsWindow::cargo_filter_max = UINT32_MAX;
-uint32 CompanyStationsWindow::cargo_filter = UINT32_MAX;
+const CargoTypes CompanyStationsWindow::cargo_filter_max = ALL_CARGOTYPES;
+CargoTypes CompanyStationsWindow::cargo_filter = ALL_CARGOTYPES;
 const Station *CompanyStationsWindow::last_station = NULL;
 
 /* Availible station sorting functions */
@@ -1799,7 +1799,7 @@ struct StationViewWindow : public Window {
 	{
 		const Station *st = Station::Get(this->window_number);
 
-		uint32 cargo_mask = 0;
+		CargoTypes cargo_mask = 0;
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (HasBit(st->goods[i].status, GoodsEntry::GES_ACCEPTANCE)) SetBit(cargo_mask, i);
 		}
@@ -2208,7 +2208,7 @@ static const T *FindStationsNearby(TileArea ta, bool distant_join)
 	if (distant_join && min(ta.w, ta.h) >= _settings_game.station.station_spread) return NULL;
 	uint max_dist = distant_join ? _settings_game.station.station_spread - min(ta.w, ta.h) : 1;
 
-	TileIndex tile = TILE_ADD(ctx.tile, TileOffsByDir(DIR_N));
+	TileIndex tile = TileAddByDir(ctx.tile, DIR_N);
 	CircularTileSearch(&tile, max_dist, ta.w, ta.h, AddNearbyStation<T>, &ctx);
 
 	return NULL;

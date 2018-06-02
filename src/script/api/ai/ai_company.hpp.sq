@@ -21,15 +21,16 @@ void SQAICompany_Register(Squirrel *engine)
 	SQAICompany.PreRegister(engine);
 	SQAICompany.AddConstructor<void (ScriptCompany::*)(), 1>(engine, "x");
 
-	SQAICompany.DefSQConst(engine, ScriptCompany::CURRENT_QUARTER,  "CURRENT_QUARTER");
-	SQAICompany.DefSQConst(engine, ScriptCompany::EARLIEST_QUARTER, "EARLIEST_QUARTER");
-	SQAICompany.DefSQConst(engine, ScriptCompany::COMPANY_FIRST,    "COMPANY_FIRST");
-	SQAICompany.DefSQConst(engine, ScriptCompany::COMPANY_LAST,     "COMPANY_LAST");
-	SQAICompany.DefSQConst(engine, ScriptCompany::COMPANY_INVALID,  "COMPANY_INVALID");
-	SQAICompany.DefSQConst(engine, ScriptCompany::COMPANY_SELF,     "COMPANY_SELF");
-	SQAICompany.DefSQConst(engine, ScriptCompany::GENDER_MALE,      "GENDER_MALE");
-	SQAICompany.DefSQConst(engine, ScriptCompany::GENDER_FEMALE,    "GENDER_FEMALE");
-	SQAICompany.DefSQConst(engine, ScriptCompany::GENDER_INVALID,   "GENDER_INVALID");
+	SQAICompany.DefSQConst(engine, ScriptCompany::CURRENT_QUARTER,   "CURRENT_QUARTER");
+	SQAICompany.DefSQConst(engine, ScriptCompany::EARLIEST_QUARTER,  "EARLIEST_QUARTER");
+	SQAICompany.DefSQConst(engine, ScriptCompany::COMPANY_FIRST,     "COMPANY_FIRST");
+	SQAICompany.DefSQConst(engine, ScriptCompany::COMPANY_LAST,      "COMPANY_LAST");
+	SQAICompany.DefSQConst(engine, ScriptCompany::COMPANY_INVALID,   "COMPANY_INVALID");
+	SQAICompany.DefSQConst(engine, ScriptCompany::COMPANY_SELF,      "COMPANY_SELF");
+	SQAICompany.DefSQConst(engine, ScriptCompany::COMPANY_SPECTATOR, "COMPANY_SPECTATOR");
+	SQAICompany.DefSQConst(engine, ScriptCompany::GENDER_MALE,       "GENDER_MALE");
+	SQAICompany.DefSQConst(engine, ScriptCompany::GENDER_FEMALE,     "GENDER_FEMALE");
+	SQAICompany.DefSQConst(engine, ScriptCompany::GENDER_INVALID,    "GENDER_INVALID");
 
 	SQAICompany.DefSQStaticMethod(engine, &ScriptCompany::ResolveCompanyID,              "ResolveCompanyID",              2, ".i");
 	SQAICompany.DefSQStaticMethod(engine, &ScriptCompany::IsMine,                        "IsMine",                        2, ".i");

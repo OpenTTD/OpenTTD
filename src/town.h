@@ -26,7 +26,7 @@ struct BuildingCounts {
 	T class_count[HOUSE_CLASS_MAX];
 };
 
-typedef TileMatrix<uint32, 4> AcceptanceMatrix;
+typedef TileMatrix<CargoTypes, 4> AcceptanceMatrix;
 
 static const uint CUSTOM_TOWN_NUMBER_DIFFICULTY  = 4; ///< value for custom town number in difficulty settings
 static const uint CUSTOM_TOWN_MAX_NUMBER = 5000;  ///< this is the maximum number of towns a user can specify in customisation
@@ -35,8 +35,8 @@ static const uint INVALID_TOWN = 0xFFFF;
 
 static const uint TOWN_GROWTH_WINTER = 0xFFFFFFFE; ///< The town only needs this cargo in the winter (any amount)
 static const uint TOWN_GROWTH_DESERT = 0xFFFFFFFF; ///< The town needs the cargo for growth when on desert (any amount)
-static const uint16 TOWN_GROW_RATE_CUSTOM      = 0x8000; ///< If this mask is applied to Town::growth_rate, the grow_counter will not be calculated by the system (but assumed to be set by scripts)
-static const uint16 TOWN_GROW_RATE_CUSTOM_NONE = 0xFFFF; ///< Special value for Town::growth_rate to disable town growth.
+static const uint16 TOWN_GROWTH_RATE_NONE = 0xFFFF; ///< Special value for Town::growth_rate to disable town growth.
+static const uint16 MAX_TOWN_GROWTH_TICKS = 930; ///< Max amount of original town ticks that still fit into uint16, about equal to UINT16_MAX / TOWN_GROWTH_TICKS but sligtly less to simplify calculations
 
 typedef Pool<Town, TownID, 64, 64000> TownPool;
 extern TownPool _town_pool;
@@ -85,9 +85,9 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	inline byte GetPercentTransported(CargoID cid) const { return this->supplied[cid].old_act * 256 / (this->supplied[cid].old_max + 1); }
 
 	/* Cargo production and acceptance stats. */
-	uint32 cargo_produced;           ///< Bitmap of all cargoes produced by houses in this town.
+	CargoTypes cargo_produced;       ///< Bitmap of all cargoes produced by houses in this town.
 	AcceptanceMatrix cargo_accepted; ///< Bitmap of cargoes accepted by houses for each 4*4 map square of the town.
-	uint32 cargo_accepted_total;     ///< NOSAVE: Bitmap of all cargoes accepted by houses in this town.
+	CargoTypes cargo_accepted_total; ///< NOSAVE: Bitmap of all cargoes accepted by houses in this town.
 
 	uint16 time_until_rebuild;     ///< time until we rebuild a house
 
@@ -165,6 +165,7 @@ enum TownFlags {
 	TOWN_IS_GROWING     = 0,   ///< Conditions for town growth are met. Grow according to Town::growth_rate.
 	TOWN_HAS_CHURCH     = 1,   ///< There can be only one church by town.
 	TOWN_HAS_STADIUM    = 2,   ///< There can be only one stadium by town.
+	TOWN_CUSTOM_GROWTH  = 3,   ///< Growth rate is controlled by GS.
 };
 
 CommandCost CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type);
@@ -193,7 +194,6 @@ void SetTownRatingTestMode(bool mode);
 uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t);
 bool GenerateTowns(TownLayout layout);
 const CargoSpec *FindFirstCargoWithTownEffect(TownEffect effect);
-
 
 /** Town actions of a company. */
 enum TownActions {
@@ -284,6 +284,15 @@ void MakeDefaultName(T *obj)
 	obj->town_cn = (uint16)next; // set index...
 }
 
-extern uint32 _town_cargoes_accepted;
+/*
+ * Converts original town ticks counters to plain game ticks. Note that
+ * tick 0 is a valid tick so actual amount is one more than the counter value.
+ */
+static inline uint16 TownTicksToGameTicks(uint16 ticks) {
+	return (min(ticks, MAX_TOWN_GROWTH_TICKS) + 1) * TOWN_GROWTH_TICKS - 1;
+}
+
+
+extern CargoTypes _town_cargoes_accepted;
 
 #endif /* TOWN_H */

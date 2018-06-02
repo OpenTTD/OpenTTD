@@ -219,8 +219,7 @@ protected:
 		}
 
 		/* normal or station tile, do one step */
-		TileIndexDiff diff = TileOffsByDiagDir(m_exitdir);
-		m_new_tile = TILE_ADD(m_old_tile, diff);
+		m_new_tile = TileAddByDiagDir(m_old_tile, m_exitdir);
 
 		/* special handling for stations */
 		if (IsRailTT() && HasStationTileRail(m_new_tile)) {
