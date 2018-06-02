@@ -194,29 +194,6 @@ static inline void OTTDfreeaddrinfo(struct addrinfo *ai)
 	#define IPV6_V6ONLY 27
 #endif
 
-#if defined(PSP)
-#	include <sys/socket.h>
-#	include <netinet/in.h>
-#	include <arpa/inet.h>
-#	include <pspnet.h>
-#	include <pspnet_inet.h>
-#	include <pspnet_apctl.h>
-#	include <pspnet_resolver.h>
-#	include <errno.h>
-#	include <unistd.h>
-#	include <sys/select.h>
-#	include <sys/time.h>
-#	include <sys/fd_set.h>
-
-#	define TCP_NODELAY 1
-#	define SO_NONBLOCK 0x1009
-#	define SOCKET int
-#	define INVALID_SOCKET -1
-#	define INADDR_NONE 0xffffffff
-#	define closesocket close
-#	define GET_LAST_ERROR() sceNetInetGetErrno()
-#endif /* PSP */
-
 /* OS/2 stuff */
 #if defined(__OS2__)
 #	define SOCKET int
@@ -318,7 +295,7 @@ static inline bool SetNonBlocking(SOCKET d)
 #else
 	int nonblocking = 1;
 #endif
-#if (defined(__BEOS__) && defined(BEOS_NET_SERVER)) || defined(PSP)
+#if (defined(__BEOS__) && defined(BEOS_NET_SERVER))
 	return setsockopt(d, SOL_SOCKET, SO_NONBLOCK, &nonblocking, sizeof(nonblocking)) == 0;
 #else
 	return ioctlsocket(d, FIONBIO, &nonblocking) == 0;

@@ -71,6 +71,15 @@ struct DifficultySettings {
 	byte   town_council_tolerance;           ///< minimum required town ratings to be allowed to demolish stuff
 };
 
+/** Settings relating to viewport/smallmap scrolling. */
+enum ViewportScrollMode {
+	VSM_VIEWPORT_RMB_FIXED, ///< Viewport moves with mouse movement on holding right mouse button, cursor position is fixed.
+	VSM_MAP_RMB_FIXED,      ///< Map moves with mouse movement on holding right mouse button, cursor position is fixed.
+	VSM_MAP_RMB,            ///< Map moves with mouse movement on holding right mouse button, cursor moves.
+	VSM_MAP_LMB,            ///< Map moves with mouse movement on holding left mouse button, cursor moves.
+	VSM_END,                ///< Number of scroll mode settings.
+};
+
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */
 struct GUISettings {
 	bool   sg_full_load_any;                 ///< new full load calculation, any cargo must be full read from pre v93 savegames
@@ -86,7 +95,7 @@ struct GUISettings {
 	uint16 hover_delay_ms;                   ///< time required to activate a hover event, in milliseconds
 	bool   link_terraform_toolbar;           ///< display terraform toolbar when displaying rail, road, water and airport toolbars
 	uint8  smallmap_land_colour;             ///< colour used for land and heightmap at the smallmap
-	bool   reverse_scroll;                   ///< right-Click-Scrolling scrolls in the opposite direction
+	uint8  scroll_mode;                      ///< viewport scroll mode
 	bool   smooth_scroll;                    ///< smooth scroll viewports
 	bool   measure_tooltip;                  ///< show a permanent tooltip when dragging tools
 	byte   liveries;                         ///< options for displaying company liveries, 0=none, 1=self, 2=all
@@ -112,7 +121,6 @@ struct GUISettings {
 	uint8  scrollwheel_scrolling;            ///< scrolling using the scroll wheel?
 	uint8  scrollwheel_multiplier;           ///< how much 'wheel' per incoming event from the OS?
 	bool   timetable_arrival_departure;      ///< show arrivals and departures in vehicle timetables
-	bool   left_mouse_btn_scrolling;         ///< left mouse button scroll
 	bool   right_mouse_wnd_close;            ///< close window with right click
 	bool   pause_on_newgame;                 ///< whether to start new games paused or not
 	bool   enable_signal_gui;                ///< show the signal GUI when the signal button is pressed

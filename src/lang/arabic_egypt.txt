@@ -644,10 +644,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}اختي
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}تشغيل / ايقاف العشوائي
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}اظهار اطار اختيار الموسيقى
 
-STR_ERROR_NO_SONGS                                              :{WHITE}لا تحتوى قاعده الموسيقى المُختاره على اى اغانى. لن تُعزَف اى اغانى
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}برنامج اختيار الموسيقى
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}قائمة المعزوفات
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}برنامج - '{STRING}'
@@ -1177,7 +1174,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :لون الار
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :اخضر
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :اخضر غامق
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفسجي
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :عكس تحريك الشاشة : {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :تحريك سلس في نوافذ المشاهدة: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :عرض المقاسات عند استخدام ادوات البناء المختلفة: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :عرض لون و شعار الشركة: {STRING}
@@ -1196,7 +1192,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :الأوامر
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :للتحكم
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :عدم استخدام
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :تصفح بالزر الايسر: {STRING}
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :حفظ تلقائي : {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :اختر الوقت بين كل عملية حفظ اتوماتيكية
@@ -3744,7 +3739,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}يجب �
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}... مسار السكة الحديدية غير مناسب
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}يجب إزاله السكه الحديديه اولاً
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}الطريق باتجاه واحد او ربما يكون مسدوداً
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}التقاطع المتعدد غير متاح لهذا النوع من السكك
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}التقاطع المتعدد غير متاح لهذا النوع من السكك
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}تعذر بناء اﻹشارات هنا...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}تعذر بناء السكه الحديديه هنا...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}تعذر إزاله السكه الحديديه من هنا...

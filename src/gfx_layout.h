@@ -18,6 +18,7 @@
 
 #include <map>
 #include <string>
+#include <stack>
 
 #ifdef WITH_ICU_LAYOUT
 #include "layout/ParagraphLayout.h"
@@ -33,10 +34,11 @@
 struct FontState {
 	FontSize fontsize;       ///< Current font size.
 	TextColour cur_colour;   ///< Current text colour.
-	TextColour prev_colour;  ///< Text colour from before the last colour switch.
 
-	FontState() : fontsize(FS_END), cur_colour(TC_INVALID), prev_colour(TC_INVALID) {}
-	FontState(TextColour colour, FontSize fontsize) : fontsize(fontsize), cur_colour(colour), prev_colour(colour) {}
+	std::stack<TextColour> colour_stack; ///< Stack of colours to assist with colour switching.
+
+	FontState() : fontsize(FS_END), cur_colour(TC_INVALID) {}
+	FontState(TextColour colour, FontSize fontsize) : fontsize(fontsize), cur_colour(colour) {}
 
 	/**
 	 * Switch to new colour \a c.
@@ -45,14 +47,25 @@ struct FontState {
 	inline void SetColour(TextColour c)
 	{
 		assert(c >= TC_BLUE && c <= TC_BLACK);
-		this->prev_colour = this->cur_colour;
 		this->cur_colour = c;
 	}
 
-	/** Switch to previous colour. */
-	inline void SetPreviousColour()
+	/**
+	 * Switch to and pop the last saved colour on the stack.
+	 */
+	inline void PopColour()
 	{
-		Swap(this->cur_colour, this->prev_colour);
+		if (colour_stack.empty()) return;
+		SetColour(colour_stack.top());
+		colour_stack.pop();
+	}
+
+	/**
+	 * Push the current colour on to the stack.
+	 */
+	inline void PushColour()
+	{
+		colour_stack.push(this->cur_colour);
 	}
 
 	/**
@@ -149,7 +162,7 @@ class Layouter : public AutoDeleteSmallVector<const ParagraphLayouter::Line *, 4
 		{
 			if (this->state_before.fontsize != other.state_before.fontsize) return this->state_before.fontsize < other.state_before.fontsize;
 			if (this->state_before.cur_colour != other.state_before.cur_colour) return this->state_before.cur_colour < other.state_before.cur_colour;
-			if (this->state_before.prev_colour != other.state_before.prev_colour) return this->state_before.prev_colour < other.state_before.prev_colour;
+			if (this->state_before.colour_stack != other.state_before.colour_stack) return this->state_before.colour_stack < other.state_before.colour_stack;
 			return this->str < other.str;
 		}
 	};

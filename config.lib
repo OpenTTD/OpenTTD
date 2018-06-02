@@ -31,7 +31,6 @@ set_default() {
 	awk="awk"
 	pkg_config="pkg-config"
 	os="DETECT"
-	endian="AUTO"
 	cpu_type="DETECT"
 	config_log="config.log"
 	prefix_dir="/usr/local"
@@ -78,6 +77,7 @@ set_default() {
 	enable_builtin_depend="1"
 	with_makedepend="0"
 	with_direct_music="1"
+	with_xaudio2="1"
 	with_sort="1"
 	with_iconv="1"
 	with_midi=""
@@ -88,7 +88,6 @@ set_default() {
 	with_icu_layout="1"
 	with_icu_sort="1"
 	static_icu="0"
-	with_psp_config="1"
 	with_threads="1"
 	with_distcc="1"
 	with_ccache="1"
@@ -109,7 +108,6 @@ set_default() {
 		awk
 		pkg_config
 		os
-		endian
 		cpu_type
 		config_log
 		prefix_dir
@@ -155,6 +153,7 @@ set_default() {
 		enable_builtin_depend
 		with_makedepend
 		with_direct_music
+		with_xaudio2
 		with_sort
 		with_iconv
 		with_midi
@@ -165,7 +164,6 @@ set_default() {
 		with_icu_layout
 		with_icu_sort
 		static_icu
-		with_psp_config
 		with_threads
 		with_distcc
 		with_ccache
@@ -223,9 +221,6 @@ detect_params() {
 			--strip=*)                    strip="$optarg";;
 			--lipo)                       prev_p="lipo";;
 			--lipo=*)                     lipo="$optarg";;
-
-			--endian)                     prev_p="endian";;
-			--endian=*)                   endian="$optarg";;
 
 
 
@@ -406,10 +401,6 @@ detect_params() {
 			--static-libicu)              static_icu="1";;
 			--static-libicu=*)            static_icu="$optarg";;
 
-			--with-psp-config)            with_psp_config="2";;
-			--without-psp-config)         with_psp_config="0";;
-			--with-psp-config=*)          with_psp_config="$optarg";;
-
 			--disable-builtin-depend)     enable_builtin_depend="0";;
 			--enable-builtin-depend)      enable_builtin_depend="2";;
 			--enable-builtin-depend=*)    enable_builtin_depend="$optarg";;
@@ -421,6 +412,10 @@ detect_params() {
 			--with-direct-music)          with_direct_music="2";;
 			--without-direct-music)       with_direct_music="0";;
 			--with-direct-music=*)        with_direct_music="$optarg";;
+
+			--with-xaudio2)               with_xaudio2="2";;
+			--without-xaudio2)            with_xaudio2="0";;
+			--with-xaudio2=*)             with_xaudio2="$optarg";;
 
 			--with-sort)                  with_sort="2";;
 			--without-sort)               with_sort="0";;
@@ -537,7 +532,6 @@ check_params() {
 	# Some params want to be in full uppercase, else they might not work as
 	# expected.. fix that here
 
-	endian=`echo $endian | tr '[a-z]' '[A-Z]'`
 	os=`echo $os | tr '[a-z]' '[A-Z]'`
 	cpu_type=`echo $cpu_type | tr '[a-z]' '[A-Z]'`
 
@@ -553,21 +547,10 @@ check_params() {
 
 	# Check if all params have valid values
 
-	# Endian only allows AUTO, LE and, BE
-	if [ -z "`echo $endian | egrep '^(AUTO|LE|BE|PREPROCESSOR)$'`" ]; then
-		log 1 "configure: error: invalid option --endian=$endian"
-		log 1 " Available options are: --endian=[AUTO|LE|BE]"
-		exit 1
-	fi
-	if [ "$endian" = "PREPROCESSOR" ] && [ "$os" != "OSX" ]; then
-		log 1 "configure: error: invalid option --endian=$endian"
-		log 1 " PREPROCESSOR is only available for OSX"
-		exit 1
-	fi
-	# OS only allows DETECT, UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, MORPHOS, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, DOS, WINCE, and PSP
-	if [ -z "`echo $os | egrep '^(DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|MORPHOS|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS|WINCE|PSP)$'`" ]; then
+	# OS only allows DETECT, UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, MORPHOS, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, and DOS
+	if [ -z "`echo $os | egrep '^(DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|MORPHOS|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS)$'`" ]; then
 		log 1 "configure: error: invalid option --os=$os"
-		log 1 " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|MORPHOS|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS|WINCE|PSP]"
+		log 1 " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|MORPHOS|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS]"
 		exit 1
 	fi
 	# cpu_type can be either 32 or 64
@@ -766,13 +749,13 @@ check_params() {
 			exit 1
 		fi
 	else
-		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ]; then
+		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]; then
 			log 1 "checking GDI video driver... found"
 		else
 			log 1 "checking GDI video driver... not Windows, skipping"
 		fi
 
-		if [ -z "$allegro_config" ] && [ -z "$sdl_config" ] && [ "$with_cocoa" = 0 ] && [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ] && [ "$os" != "WINCE" ]; then
+		if [ -z "$allegro_config" ] && [ -z "$sdl_config" ] && [ "$with_cocoa" = 0 ] && [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ]; then
 			log 1 "configure: error: no video driver development files found"
 			log 1 " If you want a dedicated server use --enable-dedicated as parameter"
 			exit 1
@@ -878,7 +861,6 @@ check_params() {
 	detect_fontconfig
 	detect_icu_layout
 	detect_icu_sort
-	detect_pspconfig
 	detect_libtimidity
 
 	if [ "$with_direct_music" != "0" ]; then
@@ -895,13 +877,21 @@ check_params() {
 		fi
 	fi
 
-	detect_sort
+	if [ "$with_xaudio2" != "0" ]; then
+		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ]; then
+			if [ "$with_xaudio2" != "1" ]; then
+				log 1 "configure: error: xaudio2 is only supported on Win32 targets"
+				exit 1
+			fi
+			with_xaudio2="0"
 
-	if [ "$os" = "OSX" ] && [ "$endian" = "AUTO" ]; then
-		endian="PREPROCESSOR"
+			log 1 "checking xaudio2... not Windows, skipping"
+		else
+			check_xaudio2
+		fi
 	fi
 
-	log 1 "checking endianness... $endian"
+	detect_sort
 
 	# Suppress language errors when there is a version defined, indicating a release
 	#  It just isn't pretty if any release produces warnings in the languages.
@@ -1113,7 +1103,7 @@ check_params() {
 	fi
 
 	if [ "$personal_dir" = "1" ]; then
-		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ] || [ "$os" = "DOS" ] || [ "$os" = "HAIKU" ]; then
+		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "DOS" ] || [ "$os" = "HAIKU" ]; then
 			personal_dir="OpenTTD"
 		elif [ "$os" = "OSX" ]; then
 			personal_dir="Documents/OpenTTD"
@@ -1528,9 +1518,6 @@ make_cflags_and_ldflags() {
 		# Each debug level reduces the optimization by a bit
 		if [ $enable_debug -ge 1 ]; then
 			CFLAGS="$CFLAGS -g -D_DEBUG"
-			if [ "$os" = "PSP" ]; then
-				CFLAGS="$CFLAGS -G0"
-			fi
 		fi
 		if [ $enable_debug -ge 2 ]; then
 			CFLAGS="$CFLAGS -fno-inline"
@@ -1604,22 +1591,12 @@ make_cflags_and_ldflags() {
 		fi
 	fi
 
-	if [ "$os" != "CYGWIN" ] && [ "$os" != "HAIKU" ] && [ "$os" != "OPENBSD" ] && [ "$os" != "MINGW" ] && [ "$os" != "MORPHOS" ] && [ "$os" != "OSX" ] && [ "$os" != "DOS" ] && [ "$os" != "WINCE" ] && [ "$os" != "PSP" ] && [ "$os" != "OS2" ]; then
+	if [ "$os" != "CYGWIN" ] && [ "$os" != "HAIKU" ] && [ "$os" != "OPENBSD" ] && [ "$os" != "MINGW" ] && [ "$os" != "MORPHOS" ] && [ "$os" != "OSX" ] && [ "$os" != "DOS" ] && [ "$os" != "OS2" ]; then
 		LIBS="$LIBS -lpthread"
 	fi
 
-	if [ "$os" != "CYGWIN" ] && [ "$os" != "HAIKU" ] && [ "$os" != "MINGW" ] && [ "$os" != "DOS" ] && [ "$os" != "WINCE" ]; then
+	if [ "$os" != "CYGWIN" ] && [ "$os" != "HAIKU" ] && [ "$os" != "MINGW" ] && [ "$os" != "DOS" ]; then
 		LIBS="$LIBS -lc"
-	fi
-	if [ "$os" = "WINCE" ]; then
-		LIBS="$LIBS -lcoredll -lcorelibc -laygshell -lws2 -e WinMainCRTStartup"
-	fi
-	if [ "$os" = "PSP" ]; then
-		CFLAGS="$CFLAGS -I`$psp_config -p`/include"
-		LDFLAGS="$LDFLAGS -L`$psp_config -p`/lib"
-
-		CFLAGS="$CFLAGS -fno-exceptions -fno-rtti -D_PSP_FW_VERSION=150"
-		LIBS="$LIBS -D_PSP_FW_VERSION=150 -lpspdebug -lpspdisplay -lpspge -lpspctrl -lpspsdk -lpspnet -lpspnet_inet -lpspnet_apctl -lpspnet_resolver -lpsputility -lpspuser -lpspkernel -lm"
 	fi
 
 	if [ "$os" = "MORPHOS" ]; then
@@ -1659,14 +1636,14 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -DUNIX"
 	fi
 	# And others like Windows
-	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ]; then
+	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]; then
 		CFLAGS="$CFLAGS -DWIN"
 	fi
 
 	if [ -n "$allegro_config" ]; then
 		CFLAGS="$CFLAGS -DWITH_ALLEGRO"
 		CFLAGS="$CFLAGS `$allegro_config --cflags`"
-		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ] && [ "$os" != "WINCE" ]; then
+		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ]; then
 			if [ "$enable_static" != "0" ]; then
 				LIBS="$LIBS `$allegro_config --static --libs`"
 			else
@@ -1679,7 +1656,7 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -DWITH_SDL"
 		# SDL must not add _GNU_SOURCE as it breaks many platforms
 		CFLAGS="$CFLAGS `$sdl_config --cflags | sed 's@-D_GNU_SOURCE[^ ]*@@'`"
-		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ] && [ "$os" != "WINCE" ]; then
+		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ]; then
 			if [ "$enable_static" != "0" ]; then
 				LIBS="$LIBS `$sdl_config --static-libs`"
 			else
@@ -1813,6 +1790,10 @@ make_cflags_and_ldflags() {
 		if [ $cc_version -ge 400 ]; then
 			CFLAGS="$CFLAGS -Wno-non-virtual-dtor"
 		fi
+	fi
+
+	if [ "$with_xaudio2" != "0" ]; then
+		CFLAGS="$CFLAGS -DWITH_XAUDIO2"
 	fi
 
 	if [ -n "$libtimidity_config" ]; then
@@ -2115,7 +2096,7 @@ check_cxx_host() {
 }
 
 check_windres() {
-	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ]; then
+	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]; then
 		check_compiler "host windres" "windres" "$host" "$windres" "$WINDRES" "windres" "windres" "2" "-V"
 	fi
 }
@@ -2200,6 +2181,35 @@ check_direct_music() {
 		log 1 "checking direct-music... not found"
 	else
 		log 1 "checking direct-music... found"
+	fi
+}
+
+check_xaudio2() {
+	echo "
+		#include <windows.h>
+
+		#undef NTDDI_VERSION
+		#undef _WIN32_WINNT
+
+		#define NTDDI_VERSION    NTDDI_WIN8
+		#define _WIN32_WINNT	 _WIN32_WINNT_WIN8
+
+		#include <xaudio2.h>
+		int main(int argc, char *argv[]) { }" > xaudio2.test.c
+	$cxx_host $CFLAGS xaudio2.test.c -o xaudio2.test 2> /dev/null
+	res=$?
+	rm -f xaudio2.test.c xaudio2.test
+
+	if [ "$res" != "0" ]; then
+		if [ "$with_xaudio2" != "1" ]; then
+			log 1 "configure: error: xaudio2 is not available on this system"
+			exit 1
+		fi
+		with_xaudio2="0"
+
+		log 1 "checking xaudio2... not found"
+	else
+		log 1 "checking xaudio2... found"
 	fi
 }
 
@@ -2321,7 +2331,7 @@ detect_awk() {
 
 detect_os() {
 	if [ "$os" = "DETECT" ]; then
-		# Detect UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, HPUX, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, DOS, WINCE, and PSP
+		# Detect UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, HPUX, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, and DOS
 
 		# Try first via dumpmachine, then via uname
 		os=`echo "$host" | tr '[A-Z]' '[a-z]' | $awk '
@@ -2341,8 +2351,6 @@ detect_os() {
 					/mingw/        { print "MINGW";     exit}
 					/os2/          { print "OS2";       exit}
 					/dos/          { print "DOS";       exit}
-					/wince/        { print "WINCE";     exit}
-					/psp/          { print "PSP";       exit}
 		'`
 
 		if [ -z "$os" ]; then
@@ -2368,7 +2376,7 @@ detect_os() {
 		if [ -z "$os" ]; then
 			log 1 "detecting OS... none detected"
 			log 1 "I couldn't detect your OS. Please use --os=OS to force one"
-			log 1 "Allowed values are: UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, MORPHOS, HPUX, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, DOS, WINCE, and PSP"
+			log 1 "Allowed values are: UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, MORPHOS, HPUX, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, and DOS"
 			exit 1
 		fi
 
@@ -2811,7 +2819,7 @@ detect_fontconfig() {
 		fontconfig_config=""
 		return 0
 	fi
-	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ]; then
+	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]; then
 		log 1 "checking libfontconfig... WIN32, skipping"
 		fontconfig_config=""
 		return 0
@@ -2832,55 +2840,6 @@ detect_icu_layout() {
 
 detect_icu_sort() {
 	detect_pkg_config "$with_icu_sort" "icu-i18n" "icu_sort_config" "4.8" "1"
-}
-
-detect_pspconfig() {
-	# 0 means no, 1 is auto-detect, 2 is force
-	if [ "$with_psp_config" = "0" ]; then
-		log 1 "checking psp-config... disabled"
-
-		psp_config=""
-		return 0
-	fi
-
-	if [ "$with_psp_config" = "1" ] && [ "$os" != "PSP" ]; then
-		log 1 "checking psp-config... not PSP, skipping"
-
-		psp_config="";
-		return 0
-	fi
-
-	if [ "$os" != "PSP" ]; then
-		log 1 "checking psp-config... not PSP"
-
-		log 1 "configure: error: psp-config is only supported for PSP"
-		exit 1
-	fi
-
-	if [ "$with_psp_config" = "1" ] || [ "$with_psp_config" = "" ] || [ "$with_psp_config" = "2" ]; then
-		psp_config="psp-config"
-	else
-		psp_config="$with_psp_config"
-	fi
-
-	version=`$psp_config -p 2>/dev/null`
-	ret=$?
-	log 2 "executing $psp_config -p"
-	log 2 "  returned $version"
-	log 2 "  exit code $ret"
-
-	if [ -z "$version" ] || [ "$ret" != "0" ]; then
-		log 1 "checking psp-config... not found"
-		log 1 "configure: error: psp-config couldn't be found"
-
-		# It was forced, so it should be found.
-		if [ "$with_psp_config" != "1" ]; then
-			log 1 "configure: error: you supplied '$with_psp_config', but it seems invalid"
-		fi
-		exit 1
-	fi
-
-	log 1 "checking psp-config... found"
 }
 
 detect_iconv() {
@@ -3232,17 +3191,14 @@ make_sed() {
 		s@!!INSTALL_DIR!!@$install_dir@g;
 		s@!!BINARY_NAME!!@$binary_name@g;
 		s@!!STRGEN!!@$STRGEN@g;
-		s@!!ENDIAN_CHECK!!@$ENDIAN_CHECK@g;
 		s@!!DEPEND!!@$DEPEND@g;
 		s@!!SETTINGSGEN!!@$SETTINGSGEN@g;
-		s@!!ENDIAN_FORCE!!@$endian@g;
 		s@!!STAGE!!@$STAGE@g;
 		s@!!MAKEDEPEND!!@$makedepend@g;
 		s@!!CFLAGS_MAKEDEP!!@$cflags_makedep@g;
 		s@!!SORT!!@$sort@g;
 		s@!!CONFIG_CACHE_COMPILER!!@config.cache.compiler@g;
 		s@!!CONFIG_CACHE_LINKER!!@config.cache.linker@g;
-		s@!!CONFIG_CACHE_ENDIAN!!@config.cache.endian@g;
 		s@!!CONFIG_CACHE_SOURCE!!@config.cache.source@g;
 		s@!!CONFIG_CACHE_VERSION!!@config.cache.version@g;
 		s@!!CONFIG_CACHE_SOURCE_LIST!!@config.cache.source.list@g;
@@ -3476,8 +3432,7 @@ showhelp() {
 	echo "  --os=OS                        the OS we are compiling for [DETECT]"
 	echo "                                 DETECT/UNIX/OSX/FREEBSD/DRAGONFLY/OPENBSD/"
 	echo "                                 NETBSD/MORPHOS/HPUX/BEOS/SUNOS/CYGWIN/"
-	echo "                                 MINGW/OS2/DOS/WINCE/PSP/HAIKU"
-	echo "  --endian=ENDIAN                set the endian of the HOST (AUTO/LE/BE)"
+	echo "                                 MINGW/OS2/DOS/HAIKU"
 	echo ""
 	echo "Paths:"
 	echo "  --prefix-dir=dir               specifies the prefix for all installed"
@@ -3573,7 +3528,6 @@ showhelp() {
 	echo "  --static-icu                   try to link statically (libsicu instead of"
 	echo "                                 libicu; can fail as the new name is guessed)"
 	echo "  --with-iconv[=iconv-path]      enables iconv support"
-	echo "  --with-psp-config[=psp-config] enables psp-config support (PSP ONLY)"
 	echo "  --disable-builtin-depend       disable use of builtin deps finder"
 	echo "  --with-makedepend[=makedepend] enables makedepend support"
 	echo "  --with-ccache                  enables ccache support"

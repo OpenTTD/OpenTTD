@@ -122,6 +122,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				Description=""
+				CommandLine="copy &quot;$(OutDir)$(TargetName)$(TargetExt)&quot; &quot;$(SolutionDir)..\bin\$(TargetName)$(TargetExt)&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -217,6 +219,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				Description=""
+				CommandLine="copy &quot;$(OutDir)$(TargetName)$(TargetExt)&quot; &quot;$(SolutionDir)..\bin\$(TargetName)$(TargetExt)&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -327,6 +331,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				Description=""
+				CommandLine="copy &quot;$(OutDir)$(TargetName)$(TargetExt)&quot; &quot;$(SolutionDir)..\bin\$(TargetName)$(TargetExt)&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -425,6 +431,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				Description=""
+				CommandLine="copy &quot;$(OutDir)$(TargetName)$(TargetExt)&quot; &quot;$(SolutionDir)..\bin\$(TargetName)$(TargetExt)&quot;"
 			/>
 		</Configuration>
 	</Configurations>
@@ -1415,6 +1423,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\newgrf_roadtype.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\newgrf_sound.h"
 				>
 			</File>
@@ -1452,6 +1464,14 @@
 			</File>
 			<File
 				RelativePath=".\..\src\news_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\music\midi.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\music\midifile.hpp"
 				>
 			</File>
 			<File
@@ -1524,6 +1544,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\rev.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\road.h"
 				>
 			</File>
 			<File
@@ -1904,6 +1928,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\window_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\sound\xaudio2_s.h"
 				>
 			</File>
 			<File
@@ -2875,6 +2903,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\table\roadtypes.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\..\objs\settings\table\settings.h"
 				>
 			</File>
@@ -3327,6 +3359,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\script\api\script_client.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_clientlist.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\script\api\script_company.hpp"
 				>
 			</File>
@@ -3588,6 +3628,14 @@
 			</File>
 			<File
 				RelativePath=".\..\src\script\api\script_cargomonitor.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_client.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_clientlist.cpp"
 				>
 			</File>
 			<File
@@ -4015,6 +4063,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\newgrf_roadtype.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\newgrf_sound.cpp"
 				>
 			</File>
@@ -4435,6 +4487,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\music\midifile.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\music\win32_m.cpp"
 				>
 			</File>
@@ -4452,6 +4508,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\sound\win32_s.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\sound\xaudio2_s.cpp"
 				>
 			</File>
 		</Filter>
@@ -4488,7 +4548,7 @@
 			>
 		</File>
 		<File
-			RelativePath=".\..\readme.txt"
+			RelativePath=".\..\README.md"
 			>
 		</File>
 	</Files>

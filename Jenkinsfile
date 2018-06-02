@@ -13,6 +13,9 @@ def ci_stages = [
     "Archs": [
         "linux-i386-gcc-6": "openttd/compile-farm-ci:linux-i386-gcc-6",
     ],
+    "OS": [
+        "osx-10.9": "openttd/compile-farm-ci:osx-10.9",
+    ],
 ]
 
 def generateStage(targets) {
@@ -29,9 +32,9 @@ def generateCI(display_name, image_name) {
             dir("${display_name}") {
                 unstash "source"
 
+                docker.image("${image_name}").pull()
                 docker.image("${image_name}").withRun("--volumes-from ${hostname} --workdir " + pwd()) { c ->
-                    sh "docker logs --follow ${c.id}"
-                    sh "exit `docker wait ${c.id}`"
+                    sh "docker logs --follow ${c.id}; exit `docker wait ${c.id}`"
                 }
             }
 

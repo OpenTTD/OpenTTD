@@ -663,10 +663,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'Pertson
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Programa zorizko moduan jarri/kendu
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Erakutsi kanten selekzio leihoa
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Kantarik gabeko musika paketea aukeratua. Ez dago kantarik entzuteko
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musika Programen Selekzioa
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Pistaren Indizea
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programatu - '{STRING}'
@@ -1301,8 +1298,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Mapa txikiaren 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Berdea
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Berde iluna
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Bioleta
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Leihoa mapan zehar mugitzeko sagua mugitzeko era aldrebes jarri: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Mapan zehar saguaren eskuineko botoiarekin mugitzerakoan izango duen portaera. Desgaitua badago, saguak kamera mugituko du. Gaitua dagoenean, saguak mapa mugituko du
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Mapan zehar mugitzerakoan, abiadura moteltzea: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolatu nola mugituko den ikuspegia lehio nagusitik zehar, puntu jakin batera joateko mapa txikian sakatzen denean edo objektu zehatz batera joateko agintzen denean
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Eraikitze tresna ezberdinak erabiltzerakoan neurtresna erakutsi: {STRING}
@@ -1334,8 +1329,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komandoa+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Itzalita
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Saguaren ezkerreko botoiarekin mapan zehar mugitzea: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Gaitu mapatik zehar mugitzea saguaren ezkerreko botoia mapan arrastratzerakoan. Oso erabilgarria da ukipen pantailak erabiltzerakoan
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Auto-gordea: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Partida gordetze automatikoaren bitartea aukeratu
@@ -3147,8 +3140,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Trenbide sailak:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Seinaleak
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Errepide sailak:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Errepidea
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tranbia sailak
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Urbide sailak:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanalak
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Geltokiak:
@@ -4152,7 +4143,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Lehendab
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ez dago trenbide egokirik
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Lehendabizi trenbidea ezabatu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Errepidea norabide bakarrekoa da edo blokeatua dago
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Ezin dira maila bereko pasaguneak egin trenbide mota honetan
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Ezin dira maila bereko pasaguneak egin trenbide mota honetan
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Ezin da seinalerik hemen eraiki...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Ezin da trenbiderik hemen eraiki...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Ezin da hemengo trenbidea ezabatu...

@@ -122,6 +122,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				Description=""
+				CommandLine="copy &quot;$(OutDir)$(TargetName)$(TargetExt)&quot; &quot;$(SolutionDir)..\bin\$(TargetName)$(TargetExt)&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -217,6 +219,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				Description=""
+				CommandLine="copy &quot;$(OutDir)$(TargetName)$(TargetExt)&quot; &quot;$(SolutionDir)..\bin\$(TargetName)$(TargetExt)&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -327,6 +331,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				Description=""
+				CommandLine="copy &quot;$(OutDir)$(TargetName)$(TargetExt)&quot; &quot;$(SolutionDir)..\bin\$(TargetName)$(TargetExt)&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -425,6 +431,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				Description=""
+				CommandLine="copy &quot;$(OutDir)$(TargetName)$(TargetExt)&quot; &quot;$(SolutionDir)..\bin\$(TargetName)$(TargetExt)&quot;"
 			/>
 		</Configuration>
 	</Configurations>
@@ -437,7 +445,7 @@
 			>
 		</File>
 		<File
-			RelativePath=".\..\readme.txt"
+			RelativePath=".\..\README.md"
 			>
 		</File>
 	</Files>

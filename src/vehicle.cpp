@@ -219,7 +219,7 @@ bool Vehicle::NeedsServicing() const
 		if (replace_when_old && !v->NeedsAutorenewing(c, false)) continue;
 
 		/* Check refittability */
-		uint32 available_cargo_types, union_mask;
+		CargoTypes available_cargo_types, union_mask;
 		GetArticulatedRefitMasks(new_engine, true, &union_mask, &available_cargo_types);
 		/* Is there anything to refit? */
 		if (union_mask != 0) {
@@ -1742,6 +1742,7 @@ UnitID GetFreeUnitNumber(VehicleType type)
  */
 bool CanBuildVehicleInfrastructure(VehicleType type)
 {
+	assert(type != VEH_ROAD);
 	assert(IsCompanyBuildableVehicleType(type));
 
 	if (!Company::IsValidID(_local_company)) return false;
@@ -1750,9 +1751,9 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 	UnitID max;
 	switch (type) {
 		case VEH_TRAIN:    max = _settings_game.vehicle.max_trains; break;
-		case VEH_ROAD:     max = _settings_game.vehicle.max_roadveh; break;
 		case VEH_SHIP:     max = _settings_game.vehicle.max_ships; break;
 		case VEH_AIRCRAFT: max = _settings_game.vehicle.max_aircraft; break;
+		/* VEH_ROAD is not handled here, see CanBuildRoadTypeInfrastructure() */
 		default: NOT_REACHED();
 	}
 

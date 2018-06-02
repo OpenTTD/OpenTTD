@@ -683,10 +683,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}(בחר 
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}עירבוב תוכניות פועל/כבוי
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}הצג את חלון בחירת המנגינה
 
-STR_ERROR_NO_SONGS                                              :{WHITE}נבחרה ערכת מוזיקה ללא שירים. לא יושמעו שירים
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}בחירת תכנית מנגינה
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}רשימת רצועות
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}תוכנית- '{STRING}'
@@ -1351,8 +1348,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :צבע פני �
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :ירוק
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :ירוק כהה
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :סגול
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{STRING} :היפוך כיוון הגלילה של התצוגה
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :התנהגות בעת גלילת המפה באמצעות כפתור העכבר האמצעי. כאשר מבוטל, העכבר מזיז את המצלמה. כאשר מאופשר, העכבר מזיז את המפה
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{STRING} :גלילה חלקה של התצוגה המשנית
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :שלוט כיצד התצוגה הראשית נגללת למיקום מסוים כאשר מקליקים על המפה הקטנה אן כאשר נותנים הוראה לגלול לעצם מסוים על גבי המפה. אם מאופשר, חלון התצוגה נגלל באופן חלק, אם מבוטל הוא מוקפץ ישירות אל נקודת המטרה
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{STRING} :'הצג מידות בעת בניית כבישים/מסילות וכיוב
@@ -1384,8 +1379,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :כבוי
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :גלילה בלחיצה שמאלית: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :אפשר גלילת המפה באמצעות גרירתה עם כפתור העכבר השמאלי. אפשרות זו שימושית במיוחד בעת שימוש במסך מגע לצורך גלילה
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :סגירת חלון בכפתור ימני: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :סוגר חלון על-ידי לחיצה ימנית בתוכו. מבטל הצגת מידע בלחיצה ימנית!
 
@@ -3279,8 +3272,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}תתיו
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}חלקי מסילה:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}רמזורים
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}חלקי כביש:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}כביש
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}מסילת רכבת קלה
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}משבצות מים:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}תעלות
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}תחנות:
@@ -4315,7 +4306,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}יש ל�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}אין מסילת רכבת מתאימה
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}יש להסיר את המסילה הקיימת תחילה
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}כביש חד סיטרי או חסום
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}מפגשי כביש/מסילה אין אפשריים עבור סוג מסילה זה
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}מפגשי כביש/מסילה אין אפשריים עבור סוג מסילה זה
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}לא ניתן למקם רמזורים כאן...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}לא ניתן להניח פסי רכבת כאן...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}לא ניתן להסיר פסי רכבת ממשבצת זו...

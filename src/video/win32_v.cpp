@@ -60,9 +60,7 @@ bool _force_full_redraw;
 bool _window_maximize;
 uint _display_hz;
 static Dimension _bck_resolution;
-#if !defined(WINCE) || _WIN32_WCE >= 0x400
 DWORD _imm_props;
-#endif
 
 /** Whether the drawing is/may be done in a separate thread. */
 static bool _draw_threaded;
@@ -272,9 +270,6 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 		_wnd.main_wnd = 0;
 	}
 
-#if defined(WINCE)
-	/* WinCE is always fullscreen */
-#else
 	if (full_screen) {
 		DEVMODE settings;
 
@@ -318,7 +313,6 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 		_wnd.width = _bck_resolution.width;
 		_wnd.height = _bck_resolution.height;
 	}
-#endif
 
 	{
 		RECT r;
@@ -337,9 +331,7 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 			SetRect(&r, 0, 0, _wnd.width, _wnd.height);
 		}
 
-#if !defined(WINCE)
 		AdjustWindowRect(&r, style, FALSE);
-#endif
 		w = r.right - r.left;
 		h = r.bottom - r.top;
 
@@ -497,7 +489,6 @@ static LRESULT HandleCharMsg(uint keycode, WChar charcode)
 	return 0;
 }
 
-#if !defined(WINCE) || _WIN32_WCE >= 0x400
 /** Should we draw the composition string ourself, i.e is this a normal IME? */
 static bool DrawIMECompositionString()
 {
@@ -634,15 +625,6 @@ static void CancelIMEComposition(HWND hwnd)
 	HandleTextInput(NULL, true);
 }
 
-#else
-
-static bool DrawIMECompositionString() { return false; }
-static void SetCompositionPos(HWND hwnd) {}
-static void SetCandidatePos(HWND hwnd) {}
-static void CancelIMEComposition(HWND hwnd) {}
-
-#endif /* !defined(WINCE) || _WIN32_WCE >= 0x400 */
-
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	static uint32 keycode = 0;
@@ -653,9 +635,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		case WM_CREATE:
 			SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
 			SetCompositionPos(hwnd);
-#if !defined(WINCE) || _WIN32_WCE >= 0x400
 			_imm_props = ImmGetProperty(GetKeyboardLayout(0), IGP_PROPERTY);
-#endif
 			break;
 
 		case WM_ENTERSIZEMOVE:
@@ -784,7 +764,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			return 0;
 		}
 
-#if !defined(WINCE) || _WIN32_WCE >= 0x400
 		case WM_INPUTLANGCHANGE:
 			_imm_props = ImmGetProperty(GetKeyboardLayout(0), IGP_PROPERTY);
 			break;
@@ -820,7 +799,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			}
 			HandleCharMsg(0, GB(wParam, 0, 8));
 			return 0;
-#endif
 #endif
 
 		case WM_DEADCHAR:
@@ -914,7 +892,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			}
 			return 0;
 
-#if !defined(WINCE)
 		case WM_SIZING: {
 			RECT *r = (RECT*)lParam;
 			RECT r2;
@@ -972,7 +949,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			}
 			return TRUE;
 		}
-#endif
 
 /* needed for wheel */
 #if !defined(WM_MOUSEWHEEL)
@@ -1003,7 +979,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			_wnd.has_focus = false;
 			break;
 
-#if !defined(WINCE)
 		case WM_ACTIVATE: {
 			/* Don't do anything if we are closing openttd */
 			if (_exit_game) break;
@@ -1023,7 +998,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			}
 			break;
 		}
-#endif
 	}
 
 	return DefWindowProc(hwnd, msg, wParam, lParam);
@@ -1112,10 +1086,6 @@ static const Dimension default_resolutions[] = {
 static void FindResolutions()
 {
 	uint n = 0;
-#if defined(WINCE)
-	/* EnumDisplaySettingsW is only supported in CE 4.2+
-	 * XXX -- One might argue that we assume 4.2+ on every system. Then we can use this function safely */
-#else
 	uint i;
 	DEVMODEA dm;
 
@@ -1145,7 +1115,6 @@ static void FindResolutions()
 			}
 		}
 	}
-#endif
 
 	/* We have found no resolutions, show the default list */
 	if (n == 0) {
@@ -1191,9 +1160,7 @@ void VideoDriver_Win32::Stop()
 	DeleteObject(_wnd.dib_sect);
 	DestroyWindow(_wnd.main_wnd);
 
-#if !defined(WINCE)
 	if (_wnd.fullscreen) ChangeDisplaySettings(NULL, 0);
-#endif
 	MyShowCursor(true);
 }
 
@@ -1295,10 +1262,8 @@ void VideoDriver_Win32::MainLoop()
 
 			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
-#if !defined(WINCE)
 			/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
 			GdiFlush();
-#endif
 
 			/* The game loop is the part that can run asynchronously.
 			 * The rest except sleeping can't. */
@@ -1311,10 +1276,8 @@ void VideoDriver_Win32::MainLoop()
 			UpdateWindows();
 			CheckPaletteAnim();
 		} else {
-#if !defined(WINCE)
 			/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
 			GdiFlush();
-#endif
 
 			/* Release the thread while sleeping */
 			if (_draw_threaded) _draw_mutex->EndCritical();

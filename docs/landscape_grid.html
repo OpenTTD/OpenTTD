@@ -32,11 +32,11 @@ the array so you can quickly see what is used and what is not.
   <li><span style="font-weight: bold;">height</span> - 8 bits in size, stores tile height</li>
   <li><span style="font-weight: bold;">m1</span> - 8 bits in size, used to identify the owner of that tile (eg piece of rail, bridge, etc.)</li>
   <li><span style="font-weight: bold;">m2</span> - 16 bits in size, used to identify the index of the given tile (object) in the (object-)array</li>
-  <li><span style="font-weight: bold;">m3</span> - 8 bits in size, is used for general storage</li>
-  <li><span style="font-weight: bold;">m4</span> - 8 bits in size, is used for general storage</li>
+  <li><span style="font-weight: bold;">m3</span> - 8 bits in size, is used for general storage; often used for the RailType</li>
+  <li><span style="font-weight: bold;">m4</span> - 8 bits in size, is used for general storage; often used for the Road-(Sub-)Types</li>
   <li><span style="font-weight: bold;">m5</span> - 8 bits in size, is used for general storage</li>
   <li><span style="font-weight: bold;">m6</span> - 8 bits in size, is used for general storage</li>
-  <li><span style="font-weight: bold;">m7</span> - 8 bits in size, is used for general storage</li>
+  <li><span style="font-weight: bold;">m7</span> - 8 bits in size, is used for general storage; often used for NewGRF animation</li>
 </ul>
 
 <table align=center border="1" cellpadding="2" cellspacing="2">
@@ -135,10 +135,10 @@ the array so you can quickly see what is used and what is not.
       <td class="bits"><span class="free">OOO</span>X XXXX</td>
       <td class="bits">XXXX XXXX XXXX XXXX</td>
       <td class="bits">XXXX XXXX</td>
-      <td class="bits"><span class="free">OOOO OOOO</span></td>
+      <td class="bits">XXXX XXXX</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits"><span class="free">OO</span>XX X<span class="free">OOO</span></td>
-      <td class="bits">XXX<span class="free">O</span> XXXX</td>
+      <td class="bits"><span class="free">OO</span>X<span class="free">O</span> XXXX</td>
     </tr>
     <tr>
       <td class="caption">level crossing</td>
@@ -150,7 +150,7 @@ the array so you can quickly see what is used and what is not.
       <td class="bits">-inherit-</td>
       <td class="bits">XXXX<span class="free"> OOO</span>X</td>
       <td class="bits"><span class="free">OO</span>XX X<span class="free">OOO</span></td>
-      <td class="bits">XXXX XXXX</td>
+      <td class="bits"><span class="free">OO</span>XX XXXX</td>
     </tr>
     <tr>
       <td class="caption">road depot</td>
@@ -159,10 +159,10 @@ the array so you can quickly see what is used and what is not.
       <td class="bits">-inherit-</td>
       <td class="bits">-inherit-</td>
       <td class="bits">XXXX <span class="free">OOOO</span></td>
-      <td class="bits"><span class="free">OOOO OOOO</span></td>
+      <td class="bits">-inherit-</td>
       <td class="bits">XX<span class="free">OO OO</span>XX</td>
       <td class="bits"><span class="free">OOOO OOOO</span></td>
-      <td class="bits">XXX<span class="free">O</span> XXXX</td>
+      <td class="bits"><span class="free">OO</span>X<span class="free">O</span> XXXX</td>
     </tr>
     <tr>
       <td>3</td>
@@ -222,10 +222,10 @@ the array so you can quickly see what is used and what is not.
       <td class="bits">-inherit-</td>
       <td class="bits">-inherit-</td>
       <td class="bits">XXXX <span class="free">OOOO</span></td>
-      <td class="bits"><span class="free">OOOO OOOO</span></td>
+      <td class="bits">XXXX XXXX</td>
       <td class="bits"><span class="option">~~~~ ~</span>XXX</td>
       <td class="bits"><span class="free">OO</span>XX X<span class="free">OOO</span></td>
-      <td class="bits">XX<span class="free">O</span>X XXXX</td>
+      <td class="bits"><span class="free">OOO</span>X XXXX</td>
     </tr>
     <tr>
       <td class="caption">dock</td>
@@ -333,10 +333,10 @@ the array so you can quickly see what is used and what is not.
       <td class="bits"><span class="free">OOO</span>X XXXX</td>
       <td class="bits"><span class="free">OOOO OOOO OOOO OOOO</span></td>
       <td class="bits">XXXX XXXX</td>
-      <td class="bits"><span class="free">OOOO OOOO</span></td>
+      <td class="bits">XXXX XXXX</td>
       <td class="bits">X<span class="free">OO</span>X XXXX</td>
       <td class="bits"><span class="free">OOOO OOOO</span></td>
-      <td class="bits">XXXX XXXX</td>
+      <td class="bits"><span class="free">OO</span>XX XXXX</td>
     </tr>
     <tr>
       <td>bridge ramp</td>

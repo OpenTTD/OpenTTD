@@ -941,9 +941,11 @@ public:
 		WID_RV_INFO_TAB                              = ::WID_RV_INFO_TAB,                              ///< Info tab.
 		WID_RV_STOP_REPLACE                          = ::WID_RV_STOP_REPLACE,                          ///< Stop Replacing button.
 
+		/* Train/road only widgets */
+		WID_RV_RAIL_ROAD_TYPE_DROPDOWN               = ::WID_RV_RAIL_ROAD_TYPE_DROPDOWN,               ///< Dropdown menu about the rail/roadtype.
+
 		/* Train only widgets. */
 		WID_RV_TRAIN_ENGINEWAGON_DROPDOWN            = ::WID_RV_TRAIN_ENGINEWAGON_DROPDOWN,            ///< Dropdown to select engines and/or wagons.
-		WID_RV_TRAIN_RAILTYPE_DROPDOWN               = ::WID_RV_TRAIN_RAILTYPE_DROPDOWN,               ///< Dropdown menu about the railtype.
 		WID_RV_TRAIN_WAGONREMOVE_TOGGLE              = ::WID_RV_TRAIN_WAGONREMOVE_TOGGLE,              ///< Button to toggle removing wagons.
 	};
 
@@ -1152,6 +1154,8 @@ public:
 		WID_CI_RAIL_COUNT                            = ::WID_CI_RAIL_COUNT,                            ///< Count of rail.
 		WID_CI_ROAD_DESC                             = ::WID_CI_ROAD_DESC,                             ///< Description of road.
 		WID_CI_ROAD_COUNT                            = ::WID_CI_ROAD_COUNT,                            ///< Count of road.
+		WID_CI_TRAM_DESC                             = ::WID_CI_TRAM_DESC,                             ///< Description of tram.
+		WID_CI_TRAM_COUNT                            = ::WID_CI_TRAM_COUNT,                            ///< Count of tram.
 		WID_CI_WATER_DESC                            = ::WID_CI_WATER_DESC,                            ///< Description of water.
 		WID_CI_WATER_COUNT                           = ::WID_CI_WATER_COUNT,                           ///< Count of water.
 		WID_CI_STATION_DESC                          = ::WID_CI_STATION_DESC,                          ///< Description of station.
@@ -1439,6 +1443,7 @@ public:
 		WID_GL_DELETE_GROUP                          = ::WID_GL_DELETE_GROUP,                          ///< Delete group button.
 		WID_GL_RENAME_GROUP                          = ::WID_GL_RENAME_GROUP,                          ///< Rename group button.
 		WID_GL_REPLACE_PROTECTION                    = ::WID_GL_REPLACE_PROTECTION,                    ///< Replace protection button.
+		WID_GL_INFO                                  = ::WID_GL_INFO,                                  ///< Group info.
 	};
 
 	/* automatically generated from ../../widgets/highscore_widget.h */
@@ -1581,9 +1586,11 @@ public:
 	/* automatically generated from ../../widgets/music_widget.h */
 	/** Widgets of the #MusicTrackSelectionWindow class. */
 	enum MusicTrackSelectionWidgets {
+		WID_MTS_CAPTION                              = ::WID_MTS_CAPTION,                              ///< Window caption.
 		WID_MTS_LIST_LEFT                            = ::WID_MTS_LIST_LEFT,                            ///< Left button.
 		WID_MTS_PLAYLIST                             = ::WID_MTS_PLAYLIST,                             ///< Playlist.
 		WID_MTS_LIST_RIGHT                           = ::WID_MTS_LIST_RIGHT,                           ///< Right button.
+		WID_MTS_MUSICSET                             = ::WID_MTS_MUSICSET,                             ///< Music set selection.
 		WID_MTS_ALL                                  = ::WID_MTS_ALL,                                  ///< All button.
 		WID_MTS_OLD                                  = ::WID_MTS_OLD,                                  ///< Old button.
 		WID_MTS_NEW                                  = ::WID_MTS_NEW,                                  ///< New button.
@@ -2079,6 +2086,7 @@ public:
 	/** Widgets of the #BuildRoadToolbarWindow class. */
 	enum RoadToolbarWidgets {
 		/* Name starts with RO instead of R, because of collision with RailToolbarWidgets */
+		WID_ROT_CAPTION                              = ::WID_ROT_CAPTION,                              ///< Caption of the window
 		WID_ROT_ROAD_X                               = ::WID_ROT_ROAD_X,                               ///< Build road in x-direction.
 		WID_ROT_ROAD_Y                               = ::WID_ROT_ROAD_Y,                               ///< Build road in y-direction.
 		WID_ROT_AUTOROAD                             = ::WID_ROT_AUTOROAD,                             ///< Autorail.
@@ -2381,12 +2389,13 @@ public:
 		WID_TN_TRAINS                                = ::WID_TN_TRAINS,                                ///< Train menu.
 		WID_TN_ROADVEHS                              = ::WID_TN_ROADVEHS,                              ///< Road vehicle menu.
 		WID_TN_SHIPS                                 = ::WID_TN_SHIPS,                                 ///< Ship menu.
-		WID_TN_AIRCRAFTS                             = ::WID_TN_AIRCRAFTS,                             ///< Aircraft menu.
+		WID_TN_AIRCRAFT                              = ::WID_TN_AIRCRAFT,                              ///< Aircraft menu.
 		WID_TN_ZOOM_IN                               = ::WID_TN_ZOOM_IN,                               ///< Zoom in the main viewport.
 		WID_TN_ZOOM_OUT                              = ::WID_TN_ZOOM_OUT,                              ///< Zoom out the main viewport.
 		WID_TN_BUILDING_TOOLS_START                  = ::WID_TN_BUILDING_TOOLS_START,                  ///< Helper for the offset of the building tools
 		WID_TN_RAILS                                 = ::WID_TN_RAILS,                                 ///< Rail building menu.
 		WID_TN_ROADS                                 = ::WID_TN_ROADS,                                 ///< Road building menu.
+		WID_TN_TRAMS                                 = ::WID_TN_TRAMS,                                 ///< Tram building menu.
 		WID_TN_WATER                                 = ::WID_TN_WATER,                                 ///< Water building toolbar.
 		WID_TN_AIR                                   = ::WID_TN_AIR,                                   ///< Airport building toolbar.
 		WID_TN_LANDSCAPE                             = ::WID_TN_LANDSCAPE,                             ///< Landscaping toolbar.
@@ -2418,7 +2427,6 @@ public:
 		WID_TE_TREES                                 = ::WID_TE_TREES,                                 ///< Tree building toolbar.
 		WID_TE_SIGNS                                 = ::WID_TE_SIGNS,                                 ///< Sign building.
 		WID_TE_DATE_PANEL                            = ::WID_TE_DATE_PANEL,                            ///< Container for the date widgets.
-		/* The following three need to have the same actual widget number as the normal toolbar due to shared code. */
 		WID_TE_MUSIC_SOUND                           = ::WID_TE_MUSIC_SOUND,                           ///< Music/sound configuration menu.
 		WID_TE_HELP                                  = ::WID_TE_HELP,                                  ///< Help menu.
 		WID_TE_SWITCH_BAR                            = ::WID_TE_SWITCH_BAR,                            ///< Only available when toolbar has been split to switch between different subsets.

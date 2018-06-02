@@ -26,7 +26,7 @@ public:
 /** Factory for the sound driver for Windows. */
 class FSoundDriver_Win32 : public DriverFactoryBase {
 public:
-	FSoundDriver_Win32() : DriverFactoryBase(Driver::DT_SOUND, 10, "win32", "Win32 WaveOut Sound Driver") {}
+	FSoundDriver_Win32() : DriverFactoryBase(Driver::DT_SOUND, 9, "win32", "Win32 WaveOut Sound Driver") {}
 	/* virtual */ Driver *CreateInstance() const { return new SoundDriver_Win32(); }
 };
 

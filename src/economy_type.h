@@ -152,12 +152,12 @@ enum ExpensesType {
 	EXPENSES_NEW_VEHICLES,        ///< New vehicles.
 	EXPENSES_TRAIN_RUN,           ///< Running costs trains.
 	EXPENSES_ROADVEH_RUN,         ///< Running costs road vehicles.
-	EXPENSES_AIRCRAFT_RUN,        ///< Running costs aircrafts.
+	EXPENSES_AIRCRAFT_RUN,        ///< Running costs aircraft.
 	EXPENSES_SHIP_RUN,            ///< Running costs ships.
 	EXPENSES_PROPERTY,            ///< Property costs.
 	EXPENSES_TRAIN_INC,           ///< Income from trains.
 	EXPENSES_ROADVEH_INC,         ///< Income from road vehicles.
-	EXPENSES_AIRCRAFT_INC,        ///< Income from aircrafts.
+	EXPENSES_AIRCRAFT_INC,        ///< Income from aircraft.
 	EXPENSES_SHIP_INC,            ///< Income from ships.
 	EXPENSES_LOAN_INT,            ///< Interest payments over the loan.
 	EXPENSES_OTHER,               ///< Other expenses.

@@ -55,7 +55,7 @@ public:
 
 	/**
 	 * Resume execution of the Game Script. This function will not actually execute
-	 * the script, but set a flag so that the script is executed my the usual
+	 * the script, but set a flag so that the script is executed by the usual
 	 * mechanism that executes the script.
 	 */
 	static void Unpause();

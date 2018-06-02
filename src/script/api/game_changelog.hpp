@@ -18,10 +18,21 @@
  * \b 1.9.0
  *
  * 1.9.0 is not yet released. The following changes are not set in stone yet.
+ * API additions:
+ * \li GSClient
+ * \li GSClientList
+ * \li GSClientList_Company
+ * \li GSViewport::ScrollEveryoneTo
+ * \li GSViewport::ScrollCompanyClientsTo
+ * \li GSViewport::ScrollClientTo
+ * \li GSGoal::QuestionClient
  *
  * \b 1.8.0
  *
- * 1.8.0 is not yet released. The following changes are not set in stone yet.
+ * No changes
+ *
+ * API additions:
+ * \li GSRoad::ERR_ROADTYPE_DISALLOWS_CROSSING
  *
  * \b 1.7.0 - 1.7.2
  *

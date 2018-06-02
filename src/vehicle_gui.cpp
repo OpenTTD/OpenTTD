@@ -416,7 +416,7 @@ struct RefitWindow : public Window {
 		do {
 			if (v->type == VEH_TRAIN && !vehicles_to_refit.Contains(v->index)) continue;
 			const Engine *e = v->GetEngine();
-			uint32 cmask = e->info.refit_mask;
+			CargoTypes cmask = e->info.refit_mask;
 			byte callback_mask = e->info.callback_mask;
 
 			/* Skip this engine if it does not carry anything */
@@ -817,8 +817,8 @@ struct RefitWindow : public Window {
 				Vehicle *v = Vehicle::Get(this->window_number);
 				this->selected_vehicle = v->index;
 				this->num_vehicles = UINT8_MAX;
+				FALLTHROUGH;
 			}
-			FALLTHROUGH;
 
 			case 2: { // The vehicle selection has changed; rebuild the entire list.
 				if (!gui_scope) break;
@@ -843,8 +843,8 @@ struct RefitWindow : public Window {
 					this->information_width = max_width;
 					this->ReInit();
 				}
+				FALLTHROUGH;
 			}
-			FALLTHROUGH;
 
 			case 1: // A new cargo has been selected.
 				if (!gui_scope) break;
@@ -905,8 +905,8 @@ struct RefitWindow : public Window {
 					if (_ctrl_pressed) this->num_vehicles = UINT8_MAX;
 					break;
 				}
+				FALLTHROUGH;
 			}
-			FALLTHROUGH;
 
 			default:
 				/* Clear the selection. */
@@ -940,8 +940,8 @@ struct RefitWindow : public Window {
 				this->InvalidateData(1);
 
 				if (click_count == 1) break;
+				FALLTHROUGH;
 			}
-			FALLTHROUGH;
 
 			case WID_VR_REFIT: // refit button
 				if (this->cargo != NULL) {
@@ -1043,9 +1043,9 @@ void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *pare
 uint ShowRefitOptionsList(int left, int right, int y, EngineID engine)
 {
 	/* List of cargo types of this engine */
-	uint32 cmask = GetUnionOfArticulatedRefitMasks(engine, false);
+	CargoTypes cmask = GetUnionOfArticulatedRefitMasks(engine, false);
 	/* List of cargo types available in this climate */
-	uint32 lmask = _cargo_mask;
+	CargoTypes lmask = _cargo_mask;
 
 	/* Draw nothing if the engine is not refittable */
 	if (HasAtMostOneBit(cmask)) return y;
@@ -2370,7 +2370,7 @@ static const uint32 _vehicle_command_translation_table[][4] = {
 		CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN),
 		CMD_TURN_ROADVEH            | CMD_MSG(STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN),
 		0xffffffff, // invalid for ships
-		0xffffffff  // invalid for aircrafts
+		0xffffffff  // invalid for aircraft
 	},
 };
 

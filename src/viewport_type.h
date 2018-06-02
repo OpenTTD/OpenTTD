@@ -121,6 +121,17 @@ enum ViewportDragDropSelectionProcess {
 	DDSP_BUILD_TRUCKSTOP,      ///< Road stop placement (trucks)
 	DDSP_REMOVE_BUSSTOP,       ///< Road stop removal (buses)
 	DDSP_REMOVE_TRUCKSTOP,     ///< Road stop removal (trucks)
+	DDSP_CONVERT_ROAD,         ///< Road conversion
+};
+
+
+/**
+ * Target of the viewport scrolling GS method
+ */
+enum ViewportScrollTarget {
+	VST_EVERYONE, ///< All players
+	VST_COMPANY,  ///< All players in specific company
+	VST_CLIENT,   ///< Single player
 };
 
 #endif /* VIEWPORT_TYPE_H */

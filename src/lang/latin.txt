@@ -857,10 +857,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Eligere 
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Incipere desinereve admixtionem carminum
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Monstrare fenestram electionis carminum
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Compositio sine carminibus electa est. Nulla carmina canentur
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Electio Compositionis Musicae
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Index Carminum
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Compositio - '{STRING}'
@@ -1525,8 +1522,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color terrae in
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Viridis
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Viridis Obscurus
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Purpureus
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Revertere cursum vagationis: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Quomodo tabula vagatur globulo dextri presso. Neglecta, mus conspectum movet. Electa, mus tabulam movet
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Vagari conspectum leniter: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Quomodo conspectus vagatur ad quemdam locum globulo sinistro in tabula premendi aut cum iubetur vagari ad quamdam rem in tabula. Electa, conspectus leniter vagatur. Neglecta, statim salit ad locum
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Ostendere nuntium adiuvans apud varia ferramenta construendi: {STRING}
@@ -1558,8 +1553,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Cmd+Premere
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Premere
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Neglecta
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Vagatio globuli sinistri: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Annuere tabulam vagari trahendo globuli sinistri. Magnopere utilis est cum tangendo navigas in scrinio
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Claudere fenestras globulo muris dextro: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Facit ut globulus muris dexter fenestras claudat. Cave: hac electa, non apparent nuntia adiuvantia globulo dextro.
 
@@ -3467,8 +3460,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastr
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Partes ferriviariae:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signalia
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Partes viariae:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Viariae
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Ferriviae stratariae
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Tegulae aquariae:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canales
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stationes:
@@ -4505,7 +4496,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Necesse 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nulla astaria idonea
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Necesse est ferriviam removere
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Via est monodromus vel obstructa
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Non licet huic typo ferriviae habere transitus
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Non licet huic typo ferriviae habere transitus
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Non licet signalia hic struere...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Non licet ferriviam hic struere...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Non licet ferriviam removere hic...

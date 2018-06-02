@@ -540,7 +540,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 	return cost;
 }
 
-static void AddAcceptedCargo_Object(TileIndex tile, CargoArray &acceptance, uint32 *always_accepted)
+static void AddAcceptedCargo_Object(TileIndex tile, CargoArray &acceptance, CargoTypes *always_accepted)
 {
 	if (!IsObjectType(tile, OBJECT_HQ)) return;
 

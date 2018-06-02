@@ -14,6 +14,7 @@
 
 #include "economy_type.h"
 #include "rail_type.h"
+#include "road_type.h"
 #include "cargo_type.h"
 #include "date_type.h"
 #include "sound_type.h"
@@ -22,6 +23,7 @@
 typedef uint16 EngineID; ///< Unique identification number of an engine.
 
 struct Engine;
+struct RoadTypeIdentifier;
 
 /** Available types of rail vehicles. */
 enum RailVehicleTypes {
@@ -123,6 +125,7 @@ struct RoadVehicleInfo {
 	uint8 air_drag;          ///< Coefficient of air drag
 	byte visual_effect;      ///< Bitstuffed NewGRF visual effect data
 	byte shorten_factor;     ///< length on main map for this type is 8 - shorten_factor
+	RoadSubType roadsubtype;
 };
 
 /**
@@ -137,7 +140,7 @@ struct EngineInfo {
 	byte load_amount;
 	byte climates;      ///< Climates supported by the engine.
 	CargoID cargo_type;
-	uint32 refit_mask;
+	CargoTypes refit_mask;
 	byte refit_cost;
 	byte misc_flags;    ///< Miscellaneous flags. @see EngineMiscFlags
 	byte callback_mask; ///< Bitmask of vehicle callbacks that have to be called

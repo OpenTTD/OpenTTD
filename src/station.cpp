@@ -35,9 +35,6 @@
 StationPool _station_pool("Station");
 INSTANTIATE_POOL_METHODS(Station)
 
-typedef StationIDStack::SmallStackPool StationIDStackPool;
-template<> StationIDStackPool StationIDStack::_pool = StationIDStackPool();
-
 BaseStation::~BaseStation()
 {
 	free(this->name);
@@ -169,7 +166,7 @@ RoadStop *Station::GetPrimaryRoadStop(const RoadVehicle *v) const
 
 	for (; rs != NULL; rs = rs->next) {
 		/* The vehicle cannot go to this roadstop (different roadtype) */
-		if ((GetRoadTypes(rs->xy) & v->compatible_roadtypes) == ROADTYPES_NONE) continue;
+		if (!HasTileAnyRoadSubType(rs->xy, v->rtid.basetype, v->compatible_subtypes)) continue;
 		/* The vehicle is articulated and can therefore not go to a standard road stop. */
 		if (IsStandardRoadStopTile(rs->xy) && v->HasArticulatedPart()) continue;
 

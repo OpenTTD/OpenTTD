@@ -30,12 +30,13 @@ public:
 	/** Different constants related to CompanyID. */
 	enum CompanyID {
 		/* Note: these values represent part of the in-game Owner enum */
-		COMPANY_FIRST   = ::COMPANY_FIRST,   ///< The first available company.
-		COMPANY_LAST    = ::MAX_COMPANIES,   ///< The last available company.
+		COMPANY_FIRST     = ::COMPANY_FIRST,   ///< The first available company.
+		COMPANY_LAST      = ::MAX_COMPANIES,   ///< The last available company.
 
 		/* Custom added value, only valid for this API */
-		COMPANY_INVALID = -1,                ///< An invalid company.
-		COMPANY_SELF    = 254,               ///< Constant that gets resolved to the correct company index for your company.
+		COMPANY_INVALID   = -1,                ///< An invalid company.
+		COMPANY_SELF      = 254,               ///< Constant that gets resolved to the correct company index for your company.
+		COMPANY_SPECTATOR = 255,               ///< Constant indicating that player is spectating (gets resolved to COMPANY_INVALID)
 	};
 
 	/** Possible genders for company presidents. */
@@ -54,12 +55,12 @@ public:
 		EXPENSES_NEW_VEHICLES = ::EXPENSES_NEW_VEHICLES, ///< New vehicles.
 		EXPENSES_TRAIN_RUN    = ::EXPENSES_TRAIN_RUN,    ///< Running costs trains.
 		EXPENSES_ROADVEH_RUN  = ::EXPENSES_ROADVEH_RUN,  ///< Running costs road vehicles.
-		EXPENSES_AIRCRAFT_RUN = ::EXPENSES_AIRCRAFT_RUN, ///< Running costs aircrafts.
+		EXPENSES_AIRCRAFT_RUN = ::EXPENSES_AIRCRAFT_RUN, ///< Running costs aircraft.
 		EXPENSES_SHIP_RUN     = ::EXPENSES_SHIP_RUN,     ///< Running costs ships.
 		EXPENSES_PROPERTY     = ::EXPENSES_PROPERTY,     ///< Property costs.
 		EXPENSES_TRAIN_INC    = ::EXPENSES_TRAIN_INC,    ///< Income from trains.
 		EXPENSES_ROADVEH_INC  = ::EXPENSES_ROADVEH_INC,  ///< Income from road vehicles.
-		EXPENSES_AIRCRAFT_INC = ::EXPENSES_AIRCRAFT_INC, ///< Income from aircrafts.
+		EXPENSES_AIRCRAFT_INC = ::EXPENSES_AIRCRAFT_INC, ///< Income from aircraft.
 		EXPENSES_SHIP_INC     = ::EXPENSES_SHIP_INC,     ///< Income from ships.
 		EXPENSES_LOAN_INT     = ::EXPENSES_LOAN_INT,     ///< Interest payments over the loan.
 		EXPENSES_OTHER        = ::EXPENSES_OTHER,        ///< Other expenses.

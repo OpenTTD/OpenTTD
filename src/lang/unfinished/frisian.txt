@@ -669,10 +669,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selektea
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Set musyk mjokselje oan/út
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Lit musykseleksjeskerm sjen.
 
-STR_ERROR_NO_SONGS                                              :{WHITE}In musykset sûnder nûmers is selektearre. Gjin nûmers sille spile wurden
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musykprogramseleksje
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Nûmeryndeks
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
@@ -1329,8 +1326,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Kleur fan it l�
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grien
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donker grien
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fiolet
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Draai scrollrjochtig om: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :By útskeakeljen beweecht de mûs de kamera. By ynskeakeljen beweecht de mûs de kaart
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Loaitsfinster floeiend scrolle : {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Bepaalt hoe it haadfinster scrollt. By ynskeakeljen sil dit floeiend wêze. By útskeakeljen ljept it byld direktst nei de selektearre lokaasje
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Under it gebrûk fan de ferskate bou-arken diminsjes sjen litte: {STRING}
@@ -1362,8 +1357,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Ut
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Scrolle mei lofter mûsknop: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Skeakel scrollen mei de lofter mûsknop oan. Dit is brûksum foar scollen op oanreitsskermen
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Automatysk bewarje: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Selektearje de tiid tusken automatysk bewarje fan it spul
@@ -3015,8 +3008,6 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Wy sykje
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Ynfrastruktuer fan {COMPANY}
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Seinen
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Stikjes dyk:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Dyk
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tramwei
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stasjons:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stasjontegels
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Fleanfjilden
@@ -3835,7 +3826,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Stopljoc
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Spoar is net geskikt
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Spoar moat der earst wei
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Dyk is in ienrjochtingsdyk of blokearre
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}In oergong is net tastien foar dit type spoar
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}In oergong is net tastien foar dit type spoar
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kin hjir gjin stopljochten boue...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kin hjir gjin spoarwei boue
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kin hjir gjin spoar fuorthelje...

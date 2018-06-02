@@ -598,7 +598,7 @@ STR_SORT_BY_TYPE                                                :Тып
 STR_SORT_BY_TRANSPORTED                                         :Вывезена
 STR_SORT_BY_NUMBER                                              :Нумар
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Прыбытак летась
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Прыбытак у бягучым годзе
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Прыбытак сёлета
 STR_SORT_BY_AGE                                                 :Узрост
 STR_SORT_BY_RELIABILITY                                         :Надзейнасьць
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Умяшчальнасьць грузу
@@ -963,6 +963,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Музычнае афармленне недаступна
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}«{STRING}»
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Трэк
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Назва
@@ -982,15 +983,15 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Выбр
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Уключыць/выключыць выпадковы выбар трэкаў
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Паказаць вакно выбару трэкаў
 
-STR_ERROR_NO_SONGS                                              :{WHITE}У выбранай праґраме адсутнічае музыка
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Выбар музычнай праґрамы
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Музычная праграма - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} «{STRING}»
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Сьпіс трэкаў
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programme — «{STRING}»
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Ачысьціць
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Зьмяніць набор
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Ачысьціць сьпіс уласнай праґрамы
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Змяніць выбар музычнага афармлення на іншы ўсталяваны набор
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Клікніце па назьве трэка, каб дадаць яго ва ўласную праґраму
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клікніце па назьве трэка, каб выдаліць яго з уласнай праґрамы
 
@@ -1650,8 +1651,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Колер ля
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :зялёны
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :цёмна-зялёны
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фіялетавы
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Перавярнуць напрамак зрушэньня прагляду мышшу: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Паводзіны пры пракручваньні мапы правай кнопкай мышы. Калі адключана, мыш перамяшчае кропку позірку. Калі ўключана, мыш перамяшчае мапу.
+STR_CONFIG_SETTING_SCROLLMODE                                   :Перамяшчэнне агляду: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Спосаб перамяшчэння па гульнёваму полю
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Перамяшчаць з дапамогай ПКМ, зафіксаваўшы курсор
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Перамяшчаць з дапамогай ПКМ, зафіксаваўшы курсор
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Перамяшчаць з дапамогай ПКМ
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Перамяшчаць з дапамогай ЛКМ
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Павольная пракрутка ў вакне прагляду: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Кантралюе, што адбудзецца ў галоўным вакне, калі пстрыкнуць у малым вакне прагляду па нейкай кропцы. Калі ўключана, позірк будзе павольна перамяшчацца па мапе ў галоўным вакне. Калі выключана — экран адразу прыгне ў вызначанае месца.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Паказваць замеры пры будаўніцтве: {STRING}
@@ -1683,8 +1688,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :каманда+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+клік
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :выключана
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Скролінг па кліку левай кнопкай мышы: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Уключыць пракручваньне мапы цягненьнем з націснутай левай кнопкай мышы. Гэта асабліва зручна пры выкарыстоўваньні сэнсарнага экрана.
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Зачыняць вокны пстрычкай ПКМ: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Зачыняць акно пстрычкай правай кнопкай мышы ў яго межах. Пры гэтым адключаецца з'яўленне падказак па правай кнопцы.
 
@@ -3598,8 +3601,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Iнфр�
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Чыгуначныя элемэнты:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Сыґналы
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Дарожныя элемэнты:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Дарогi
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Трамваi
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Водныя клеткi:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Каналы
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Станцыi:
@@ -3652,7 +3653,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Аўта
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Караблi: клікніце для атрыманьня даведкі
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Самалёты: клікніце для атрыманьня даведкі
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прыбытак у гэтым годзе: {CURRENCY_LONG} (летась: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прыбытак сёлета: {CURRENCY_LONG} (летась: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Даступныя цягнiкi
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Даступныя аўтамабiлi
@@ -4022,7 +4023,7 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Макс
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Магутнасьць: {LTBLUE}{POWER}{BLACK} Макс. хуткасьць: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Магутнасьць: {LTBLUE}{POWER}{BLACK} Макс. хуткасьць: {LTBLUE}{VELOCITY} {BLACK}Макс. ЦН: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Прыбытак ў гэтым годзе: {LTBLUE}{CURRENCY_LONG} (летась: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Прыбытак сёлета: {LTBLUE}{CURRENCY_LONG} (летась: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надзейнасьць: {LTBLUE}{COMMA}%  {BLACK}Паломак з апошняга агляду: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Пабудаваны ў: {LTBLUE}{NUM} г.{BLACK} Кошт: {LTBLUE}{CURRENCY_LONG}
@@ -4654,7 +4655,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Спач
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Няма прыдатных рэйкаў
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Спачатку выдаліце чыгунку
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дарога аднабаковая або блякаваная
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Праз гэты від рэйкаў забаронена будаваць пераезды
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Праз гэты від рэйкаў забаронена будаваць пераезды
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Тут немагчыма паставіць сьветлафор...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Тут немагчыма пракласьцi рэйкі...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Не атрымалася выдаліць чыгунку...

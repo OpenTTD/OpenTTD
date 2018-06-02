@@ -19,6 +19,7 @@
 #include "autoreplace_gui.h"
 #include "articulated_vehicles.h"
 #include "core/random_func.hpp"
+#include "road.h"
 
 #include "table/strings.h"
 
@@ -37,8 +38,8 @@ extern void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index);
  */
 static bool EnginesHaveCargoInCommon(EngineID engine_a, EngineID engine_b)
 {
-	uint32 available_cargoes_a = GetUnionOfArticulatedRefitMasks(engine_a, true);
-	uint32 available_cargoes_b = GetUnionOfArticulatedRefitMasks(engine_b, true);
+	CargoTypes available_cargoes_a = GetUnionOfArticulatedRefitMasks(engine_a, true);
+	CargoTypes available_cargoes_b = GetUnionOfArticulatedRefitMasks(engine_b, true);
 	return (available_cargoes_a == 0 || available_cargoes_b == 0 || (available_cargoes_a & available_cargoes_b) != 0);
 }
 
@@ -76,6 +77,9 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 		case VEH_ROAD:
 			/* make sure that we do not replace a tram with a normal road vehicles or vice versa */
 			if (HasBit(e_from->info.misc_flags, EF_ROAD_TRAM) != HasBit(e_to->info.misc_flags, EF_ROAD_TRAM)) return false;
+
+			/* make sure the roadtypes are compatible */
+			if ((GetRoadTypeInfo(e_from->GetRoadType())->powered_roadtypes & GetRoadTypeInfo(e_to->GetRoadType())->powered_roadtypes) == 0) return false;
 			break;
 
 		case VEH_AIRCRAFT:
@@ -173,9 +177,8 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
  */
 static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, EngineID engine_type)
 {
-
-	uint32 union_refit_mask_a = GetUnionOfArticulatedRefitMasks(v->engine_type, false);
-	uint32 union_refit_mask_b = GetUnionOfArticulatedRefitMasks(engine_type, false);
+	CargoTypes union_refit_mask_a = GetUnionOfArticulatedRefitMasks(v->engine_type, false);
+	CargoTypes union_refit_mask_b = GetUnionOfArticulatedRefitMasks(engine_type, false);
 
 	const Order *o;
 	const Vehicle *u = (v->type == VEH_TRAIN) ? v->First() : v;
@@ -201,7 +204,7 @@ static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, EngineID engine_ty
  */
 static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool part_of_chain)
 {
-	uint32 available_cargo_types, union_mask;
+	CargoTypes available_cargo_types, union_mask;
 	GetArticulatedRefitMasks(engine_type, true, &union_mask, &available_cargo_types);
 
 	if (union_mask == 0) return CT_NO_REFIT; // Don't try to refit an engine with no cargo capacity

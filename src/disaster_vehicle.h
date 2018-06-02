@@ -48,7 +48,7 @@ struct DisasterVehicle FINAL : public SpecializedVehicle<DisasterVehicle, VEH_DI
 	virtual ~DisasterVehicle() {}
 
 	void UpdatePosition(int x, int y, int z);
-	void UpdateDeltaXY(Direction direction);
+	void UpdateDeltaXY();
 	void UpdateImage();
 	bool Tick();
 };

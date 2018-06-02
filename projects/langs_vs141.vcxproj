@@ -317,17 +317,17 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\src\lang\english.txt;..\objs\strgen\strgen.exe;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\lang\slovenian.lng;%(Outputs)</Outputs>
     </CustomBuild>
-    <CustomBuild Include="..\src\lang\spanish_MX.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating spanish_MX language file</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang "%(FullPath)"</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\src\lang\english.txt;..\objs\strgen\strgen.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\lang\spanish_MX.lng;%(Outputs)</Outputs>
-    </CustomBuild>
     <CustomBuild Include="..\src\lang\spanish.txt">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating spanish language file</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang "%(FullPath)"</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\src\lang\english.txt;..\objs\strgen\strgen.exe;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\lang\spanish.lng;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\src\lang\spanish_MX.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating spanish_MX language file</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\src\lang\english.txt;..\objs\strgen\strgen.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\lang\spanish_MX.lng;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\lang\swedish.txt">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating swedish language file</Message>

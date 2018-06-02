@@ -33,7 +33,7 @@
 	company = ScriptCompany::ResolveCompanyID(company);
 	if (company == ScriptCompany::COMPANY_INVALID || (::RoadType)roadtype >= ROADTYPE_END) return 0;
 
-	return ::Company::Get((::CompanyID)company)->infrastructure.road[roadtype];
+	return ::Company::Get((::CompanyID)company)->infrastructure.GetRoadTotal((::RoadType)roadtype); // TODO
 }
 
 /* static */ uint32 ScriptInfrastructure::GetInfrastructurePieceCount(ScriptCompany::CompanyID company, Infrastructure infra_type)
@@ -57,7 +57,7 @@
 		case INFRASTRUCTURE_ROAD: {
 			uint32 count = 0;
 			for (::RoadType rt = ::ROADTYPE_BEGIN; rt != ::ROADTYPE_END; rt++) {
-				count += c->infrastructure.road[rt];
+				count += c->infrastructure.GetRoadTotal(rt);
 			}
 			return count;
 		}
@@ -90,7 +90,16 @@
 	company = ScriptCompany::ResolveCompanyID(company);
 	if (company == ScriptCompany::COMPANY_INVALID || (::RoadType)roadtype >= ROADTYPE_END || !_settings_game.economy.infrastructure_maintenance) return 0;
 
-	return ::RoadMaintenanceCost((::RoadType)roadtype, ::Company::Get((::CompanyID)company)->infrastructure.road[roadtype]);
+	const ::Company *c = ::Company::Get((::CompanyID)company);
+	uint32 total_count = c->infrastructure.GetRoadTotal((::RoadType)roadtype);
+	Money cost;
+	for (RoadSubType rst = ROADSUBTYPE_BEGIN; rst < ROADSUBTYPE_END; rst++) {
+		if (c->infrastructure.road[(::RoadType)roadtype][rst] != 0) {
+			cost += RoadMaintenanceCost(RoadTypeIdentifier((::RoadType)roadtype, rst), c->infrastructure.road[(::RoadType)roadtype][rst], total_count);
+		}
+	}
+
+	return cost;
 }
 
 /* static */ Money ScriptInfrastructure::GetMonthlyInfrastructureCosts(ScriptCompany::CompanyID company, Infrastructure infra_type)
@@ -115,7 +124,12 @@
 		case INFRASTRUCTURE_ROAD: {
 			Money cost;
 			for (::RoadType rt = ::ROADTYPE_BEGIN; rt != ::ROADTYPE_END; rt++) {
-				cost += RoadMaintenanceCost(rt, c->infrastructure.road[rt]);
+				uint32 total_count = c->infrastructure.GetRoadTotal(rt);
+				for (RoadSubType rst = ROADSUBTYPE_BEGIN; rst < ROADSUBTYPE_END; rst++) {
+					if (c->infrastructure.road[rt][rst] != 0) {
+						cost += RoadMaintenanceCost(RoadTypeIdentifier(rt, rst), c->infrastructure.road[rt][rst], total_count);
+					}
+				}
 			}
 			return cost;
 		}

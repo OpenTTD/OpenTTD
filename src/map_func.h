@@ -147,7 +147,7 @@ static inline uint ScaleByMapSize1D(uint n)
  * An offset value between to tiles.
  *
  * This value is used for the difference between
- * to tiles. It can be added to a tileindex to get
+ * two tiles. It can be added to a tileindex to get
  * the resulting tileindex of the start tile applied
  * with this saved difference.
  *
@@ -360,6 +360,18 @@ static inline TileIndexDiff TileOffsByDir(Direction dir)
 
 	assert(IsValidDirection(dir));
 	return ToTileIndexDiff(_tileoffs_by_dir[dir]);
+}
+
+/**
+ * Adds a Direction to a tile.
+ *
+ * @param tile The current tile
+ * @param dir The direction in which we want to step
+ * @return the moved tile
+ */
+static inline TileIndex TileAddByDir(TileIndex tile, Direction dir)
+{
+	return TILE_ADD(tile, TileOffsByDir(dir));
 }
 
 /**

@@ -797,10 +797,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Вибр
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Вкл./відкл. випадкову програму
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Показує вікно вибору музичної програми
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Був обраний музичний набір без пісень. Пісні не будуть програватись
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Вибір музичної програми
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Назва доріжки
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Програма - '{STRING}'
@@ -1465,8 +1462,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Колір по
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :зелений
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :темнозелений
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фіолетовий
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Змінити напрямок прокрутки: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Налаштування переміщення по карті правою кнопкою миші. При включенні переміщується карта. При виключенні - камера.
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавна прокрутка у вікні: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Налаштування способу прокрутки основного екрану при клацанні мишою по зменшенній карті, або інших діях, що призводять до переміщення по карті (кнопки "Оглянути", тощо). При включенні опції переміщення карти відбувається плавно. При виключенні - відбувається моментальне переміщення в необхідну точку
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Показувати підказки про розміри під час будівництва: {STRING}
@@ -1498,8 +1493,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+клац мишою
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :не емулювати
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Прокрутка по лівому клацу миші: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Дозволяє "тягати" карту утримуючи ліву кнопку миші, що дає можливість використовувати сенсорні екрани природнім способом..
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Автозбереження: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Оберіть проміжок між автоматичними збереженнями гри
@@ -3392,8 +3385,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Інфр
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Залізничні ділянки:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}З сигналами
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Дорожні ділянки:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Автомобільні
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Трамвайні
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Судноплавні ділянки:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Канали
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Станції:
@@ -4413,7 +4404,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Споч
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Невідповідний тип колії
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Спочатку приберіть колію
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дорога з одностороннім рухом або блокована
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Переїзди для такого виду колії є забороненими
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Переїзди для такого виду колії є забороненими
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Неможливо будувати сигнали тут...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Неможливо будувати колію тут...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Неможливо прибрати колію звідси...

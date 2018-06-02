@@ -834,6 +834,9 @@
     <ClInclude Include="..\src\newgrf_railtype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\newgrf_roadtype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\newgrf_sound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -862,6 +865,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\news_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\music\midi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\music\midifile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\music\null_m.h">
@@ -916,6 +925,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\rev.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\road.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\road_cmd.h">
@@ -1201,6 +1213,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\window_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sound\xaudio2_s.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\zoom_func.h">
@@ -1911,6 +1926,9 @@
     <ClInclude Include="..\src\table\roadveh_movement.h">
       <Filter>Tables</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\table\roadtypes.h">
+      <Filter>Tables</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\..\objs\settings\table\settings.h">
       <Filter>Tables</Filter>
     </ClInclude>
@@ -2223,6 +2241,12 @@
     <ClInclude Include="..\src\script\api\script_cargomonitor.hpp">
       <Filter>Script API</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\script\api\script_client.hpp">
+      <Filter>Script API</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\script\api\script_clientlist.hpp">
+      <Filter>Script API</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\script\api\script_company.hpp">
       <Filter>Script API</Filter>
     </ClInclude>
@@ -2416,6 +2440,12 @@
       <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_cargomonitor.cpp">
+      <Filter>Script API Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\script\api\script_client.cpp">
+      <Filter>Script API Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\script\api\script_clientlist.cpp">
       <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_company.cpp">
@@ -2724,6 +2754,9 @@
     <ClCompile Include="..\src\newgrf_railtype.cpp">
       <Filter>NewGRF</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\newgrf_roadtype.cpp">
+      <Filter>NewGRF</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\newgrf_sound.cpp">
       <Filter>NewGRF</Filter>
     </ClCompile>
@@ -3015,6 +3048,9 @@
     <ClCompile Include="..\src\music\null_m.cpp">
       <Filter>Music</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\music\midifile.cpp">
+      <Filter>Music</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\music\win32_m.cpp">
       <Filter>Music</Filter>
     </ClCompile>
@@ -3025,6 +3061,9 @@
       <Filter>Sound</Filter>
     </ClCompile>
     <ClCompile Include="..\src\sound\win32_s.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sound\xaudio2_s.cpp">
       <Filter>Sound</Filter>
     </ClCompile>
     <ClCompile Include="..\src\os\windows\crashlog_win.cpp">
@@ -3045,6 +3084,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\media\openttd.ico" />
-    <None Include="..\readme.txt" />
+    <None Include="..\README.md" />
   </ItemGroup>
 </Project>

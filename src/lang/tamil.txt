@@ -659,10 +659,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'பய�
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'பயனரால் மாற்றியமைக்கப்பட்ட 2' பிரோகிராமினைத் தேர்ந்தெடுக்கவும்
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}இசைத் த்டத்தினைத் தேர்ந்தெடுக்கும் திரையினைக் காட்டு
 
-STR_ERROR_NO_SONGS                                              :{WHITE}இசைத்தடமே இல்லாதப் பட்டியல் தேர்ந்தெடுக்கப்பட்டுள்ளது. எந்த பாட்டும் ஒலிக்காது
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}இசை பிரோகிராம் தேர்ந்தெடுத்தல்
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}இசைத்தடம் வரிசை
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}பிரோகிராம் - '{STRING}'
@@ -1231,7 +1228,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :சிறுப
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :பச்சை
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :கரும் பச்சை
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :ஊதா
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :திருப்பப்பட்ட பக்கமுருட்டி திசை : {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :பார்படத்தின் இலகுவான பக்கமுருட்டல்: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :நிறுவன livery களைக் காட்டு: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :ஒன்றுமில்லை
@@ -2883,8 +2879,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}இரயில் பாகங்கள்:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}சிக்னல்கள்
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}சாலை பாகங்கள்:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}சாலை
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}ட்ராம்வே
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}தண்ணீர் வட்டங்கள்:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}கால்வாய்கள்
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}நிலையங்கள்:
@@ -3833,7 +3827,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}மு�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}தக்க இரயில் தடம் ஏதும் இல்லை
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}முதலில் இரயில்வே தடத்தினை எடுக்க வேண்டும்
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}சாலை ஒருவழிப்பாதை அல்லது மறிக்கப்பட்டுள்ளது
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}இந்த வகையிலான இரயில்களுக்கு இருப்புப்பாதை சந்திக் கடவுகள் கிடையாது
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}இந்த வகையிலான இரயில்களுக்கு இருப்புப்பாதை சந்திக் கடவுகள் கிடையாது
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}இங்கே சிக்னல்களை நிறுவ இயலாது...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}இங்கே இரயில்வே தடங்களை பதிய முடியாது...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}இங்கிருந்து இரயில்வே தடங்களை அகற்ற முடியாது...

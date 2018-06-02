@@ -669,10 +669,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Valitse 
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Sekoittaminen päälle/pois
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Näytä musiikkiraitojen valintaikkuna
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Musiikkipaketti jossa ei ole kappaleita on valittu. Musiikkia ei soiteta
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Soittolistan valinta
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Raita
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Soittolista - '{STRING}'
@@ -1337,8 +1334,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Maaston väri k
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Vihreä
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tummanvihreä
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violetti
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Käänteinen vierityssuunta: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Käyttäytyminen siirrettäessä näkymää oikealla hiiren näppäimellä. Mikäli pois käytöstä, hiiri liikuttaa kameraa. Mikäli käytössä, hiiri liikuttaa karttaa
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Näkymän tasainen vieritys: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Hallitse miten päänäkymä siirtyy valittuun paikkaan karttaa klikattaessa tai käytettäessä komentoa joka muuttaa näkymän sijaintia. Mikäli käytössä, päänäkymä siirtyy uuteen sijaintiin pehmeäesti, muutoin se hyppää suoraan valittuun sijaintiin
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Näytä mittauksen työkaluvihje, kun käytetään rakennustyökaluja: {STRING}
@@ -1370,8 +1365,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Pois
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Vasemmalla hiiren painikkeella liikkuminen: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Salli näkymän siirtäminen vetämällä hiiren vasemmalla näppäimellä. Hyödyllinen erityisesti kosketusnäyttöä käytettäessä
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Sulje ikkuna hiiren oikealla painikkeella napsauttamalla: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Ikkunat sulkeutuvat, kun niitä napsautetaan hiiren oikealla painikkeella. Tämä korvaa tavallisesti näkyvän työkaluvihjeen!
 
@@ -3265,8 +3258,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Yhtiön 
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Rautatiepalat:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Opastimet
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Teiden palat:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Tie
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Raitiotie
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vesiruudut:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanavat
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Asemat:
@@ -4300,7 +4291,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Opastime
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ei kelvollista rautatietä.
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Rautatie pitää poistaa ensin.
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Tie on yksisuuntainen tai suljettu
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Tasoristeykset eivät ole sallittu tälle raidetyypille
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Tasoristeykset eivät ole sallittu tälle raidetyypille
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Opastinta ei voi rakentaa.
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Rautatietä ei voi rakentaa.
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Rautatietä ei voi poistaa.

@@ -477,6 +477,23 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 
 		const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
 		return ApplyMask(cs->default_colour, &andor);
+	} else if (t == MP_ROAD) {
+		RoadTypeIdentifiers rtids = RoadTypeIdentifiers::FromTile(tile);
+		const RoadtypeInfo *rti = NULL;
+		if (rtids.HasRoad()) {
+			rti = GetRoadTypeInfo(rtids.road_identifier);
+		} else if (rtids.HasTram()) {
+			rti = GetRoadTypeInfo(rtids.tram_identifier);
+		}
+		if (rti != NULL) {
+			AndOr andor = {
+				MKCOLOUR_0XX0(rti->map_colour),
+				_smallmap_contours_andor[t].mand
+			};
+
+			const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+			return ApplyMask(cs->default_colour, &andor);
+		}
 	}
 
 	/* Ground colour */
@@ -1351,7 +1368,7 @@ void SmallMapWindow::SelectLegendItem(int click_pos, LegendAndColour *legend, in
  */
 void SmallMapWindow::SetOverlayCargoMask()
 {
-	uint32 cargo_mask = 0;
+	CargoTypes cargo_mask = 0;
 	for (int i = 0; i != _smallmap_cargo_count; ++i) {
 		if (_legend_linkstats[i].show_on_map) SetBit(cargo_mask, _legend_linkstats[i].type);
 	}
@@ -1628,7 +1645,7 @@ void SmallMapWindow::SetNewScroll(int sx, int sy, int sub)
 
 /* virtual */ void SmallMapWindow::OnScroll(Point delta)
 {
-	_cursor.fix_at = true;
+	if (_settings_client.gui.scroll_mode == VSM_VIEWPORT_RMB_FIXED || _settings_client.gui.scroll_mode == VSM_MAP_RMB_FIXED) _cursor.fix_at = true;
 
 	/* While tile is at (delta.x, delta.y)? */
 	int sub;

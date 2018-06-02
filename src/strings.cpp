@@ -449,6 +449,8 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 
 	/* convert from negative */
 	if (number < 0) {
+		if (buff + Utf8CharLen(SCC_PUSH_COLOUR) > last) return buff;
+		buff += Utf8Encode(buff, SCC_PUSH_COLOUR);
 		if (buff + Utf8CharLen(SCC_RED) > last) return buff;
 		buff += Utf8Encode(buff, SCC_RED);
 		buff = strecpy(buff, "-", last);
@@ -485,8 +487,8 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 	if (spec->symbol_pos != 0) buff = strecpy(buff, spec->suffix, last);
 
 	if (negative) {
-		if (buff + Utf8CharLen(SCC_PREVIOUS_COLOUR) > last) return buff;
-		buff += Utf8Encode(buff, SCC_PREVIOUS_COLOUR);
+		if (buff + Utf8CharLen(SCC_POP_COLOUR) > last) return buff;
+		buff += Utf8Encode(buff, SCC_POP_COLOUR);
 		*buff = '\0';
 	}
 
@@ -1145,7 +1147,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_CARGO_LIST: { // {CARGO_LIST}
-				uint32 cmask = args->GetInt32(SCC_CARGO_LIST);
+				CargoTypes cmask = args->GetInt32(SCC_CARGO_LIST);
 				bool first = true;
 
 				const CargoSpec *cs;

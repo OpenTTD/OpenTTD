@@ -661,10 +661,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}เล�
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}เปิด/ปิด Toggle programme shuffle on/off
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}แสดงหน้าต่างเลือกรายการเพลง
 
-STR_ERROR_NO_SONGS                                              :{WHITE}ชุดเพลงประกอบนี้ไม่มีการเลือกเพลงไว้
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}รายการเลือกโปรแกรมเพลง
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}รายการเพลง
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}โปรแกรม - '{STRING}'
@@ -1300,8 +1297,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :สีของ
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :สีเขียว
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :สีเขียวแก่
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :สีม่วง
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :กลับทิศการเลื่อนหน้าจอ: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :เลือกลักษณะการเลื่อนแผนที่ เมื่อใช้ปุ่มคลิ๊กเมาส์ขวา หากเปิดการใช้งาน หน้าจอจะเคลื่อนที่ไปในทิศตรงกันข้ามกับการคลิ๊กเมาส์ค้างแล้วลากเมาส์ไป
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :เลื่อนอย่างนิ่มนวลบนจอภาพ: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :ควบคุมการเคลื่อนที่ของจอภาพ เวลาคลิ๊กเลือกตำแหน่งในแผนที่ย่อ หากไม่เปิดใช้งาน ตำแหน่งของจอจะย้ายไปที่ตำแหน่งที่เลือกทันที แต่หากเปิดใช้งาน จะเคลื่อนที่ไปยังตำแหน่งอย่างนุ่มนวล
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :แสดงบอลลูนข้อความแสดงระยะทางหรือข้อมูลอื่นๆ เมื่อใช่เครื่องมือสร้าง: {STRING}
@@ -1333,8 +1328,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+คล�
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :ปิด
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :เลื่อนหน้าจอด้วยการคลิ๊กเมาส์ซ้าย: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :เปิดใช้งานเพื่อให้สามารถใช้การคลิ๊กเมาส์ซ้ายในการเลื่อนภาพหน้าจอได้
 
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :ใช้รูปแบบวันที่ {STRING} เป็นชื่อเซฟของเกม
@@ -3193,8 +3186,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}โค�
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}ชิ้นส่วนทางรถไฟ:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}เสาอาณัติสัญญาณ
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}ชิ้นส่วนถนน:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}ถนน
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}ทางรถราง
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}คลอง:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}คลอง
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}สถานี:
@@ -4195,7 +4186,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}ต้�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}ไม่มีรางรถไฟที่เหมาะสม
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}ต้องทำลายทางรถไฟทิ้งเสียก่อน
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}ถนนเป็นทางเดียวหรือถูกปิดกั้น
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}ทางตัดเสมอระดับทางไม่อนุญาตให้ตัดผ่านทางประเภทนี้
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}ทางตัดเสมอระดับทางไม่อนุญาตให้ตัดผ่านทางประเภทนี้
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}ไม่สามารถสร้างเสาอาณัติสัญญาณได้...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}บริเวณนี้ไม่สามารถสร้างรางรถไฟได้...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}ตรงนี้ไม่สามารถลบรางรถไฟออกไปได้

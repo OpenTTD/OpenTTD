@@ -669,10 +669,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Chọn k
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Bật/tắt chơi nhạc ngẫu nhiên
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Hiện cửa số chọn bài nhạc
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Đã chọn gói nhạc chuẩn nhưng không có bài nào. Không có bài nào để chơi
-
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Chọn Kiểu Chơi Nhạc
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Bảng Bài Nhạc
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Chương Trình - '{STRING}'
@@ -1337,8 +1334,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Màu sắc củ
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Lục
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Lục tối
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Tím
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Đảo ngược hướng cuộn: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Phản ứng khi cuộn bản đồ bằng nút chuột phải. Nếu tắt, thì chuột di chuyển theo vùng nhìn. Nếu bật thì chuột di chuyển theo bản đồ
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Cuộn uyển chuyển cửa sổ: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Điều khiển cách màn hình chính cuộn tới vị trí cụ thể khi nháy chuột vào bản đồ nhỏ hoặc khi gõ lệnh cuộn tới đối tượng trên bản đồ. Nếu bật, thì sẽ cuộn trượt, nếu tắt thì nhảy thẳng tới vị trí đó.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Hiện bảng chú giải đo lường khi dùng các công cụ xây dựng: {STRING}
@@ -1370,8 +1365,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Tắt
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Cuộn chuột trái: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Cho phép cuộn bản đồ bằng cách kéo với nút trái chuột. Tùy chọn này sẽ hữu ích khi dùng màn hình cảm ứng
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Đóng cửa số khi click chuột phải: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Đóng cửa sổ bằng cách bấm chuột phải vào đó. Ngăn tooltip bằng cách bấm phải!
 
@@ -3265,8 +3258,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Hạ t�
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Ô đường ray:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Tín hiệu
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Ô đường bộ:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Đường bộ
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Xe điện
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Ô là nước:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kênh đào
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Ga, bến:
@@ -4301,7 +4292,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Phải b
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Không có đường ray thích hợp
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Phải phá bỏ đường ray trước
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Đường một chiều hoặc bị chặn
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Đường giao nhau không cho phép với loại ray này
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Đường giao nhau không cho phép với loại ray này
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Không thể xây đèn hiệu ở đây...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Không thể xây đường ray ở đây...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Không thể phá bỏ đường ray ở đây...

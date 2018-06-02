@@ -202,6 +202,7 @@ enum Commands {
 	CMD_REMOVE_LONG_ROAD,             ///< remove a complete road (not a "half" one)
 	CMD_BUILD_ROAD,                   ///< build a "half" road
 	CMD_BUILD_ROAD_DEPOT,             ///< build a road depot
+	CMD_CONVERT_ROAD,                 ///< convert a road type
 
 	CMD_BUILD_AIRPORT,                ///< build an airport
 
@@ -293,6 +294,8 @@ enum Commands {
 	CMD_SHOW_STORY_PAGE,              ///< show a story page
 	CMD_REMOVE_STORY_PAGE,            ///< remove a story page
 	CMD_REMOVE_STORY_PAGE_ELEMENT,    ///< remove a story page element
+	CMD_SCROLL_VIEWPORT,              ///< scroll main viewport of players
+
 	CMD_LEVEL_LAND,                   ///< level land
 
 	CMD_BUILD_LOCK,                   ///< build a lock
