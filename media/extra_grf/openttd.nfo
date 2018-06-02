@@ -80,6 +80,7 @@
 //
 // The real data of the GRF is acquired from several subfiles.
 //
+//@@WARNING DISABLE 60
 #include "2ccmap.nfo"
 #include "signals.nfo"
 #include "elrails.nfo"

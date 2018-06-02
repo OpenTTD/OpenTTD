@@ -23,6 +23,9 @@
  *
  * 1.8.0 is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li AIRoad::ERR_ROADTYPE_DISALLOWS_CROSSING
+ *
  * \b 1.7.0 - 1.7.2
  *
  * No changes

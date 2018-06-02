@@ -378,7 +378,7 @@
 	if (!IsValidVehicle(vehicle_id)) return ScriptRoad::ROADTYPE_INVALID;
 	if (GetVehicleType(vehicle_id) != VT_ROAD) return ScriptRoad::ROADTYPE_INVALID;
 
-	return (ScriptRoad::RoadType)(::RoadVehicle::Get(vehicle_id))->roadtype;
+	return (ScriptRoad::RoadType)(::RoadVehicle::Get(vehicle_id))->rtid.basetype; // TODO
 }
 
 /* static */ int32 ScriptVehicle::GetCapacity(VehicleID vehicle_id, CargoID cargo)

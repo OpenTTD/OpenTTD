@@ -28,6 +28,7 @@
 #include "date_func.h"
 #include "sound_func.h"
 #include "rail.h"
+#include "road.h"
 #include "core/pool_func.hpp"
 #include "settings_func.h"
 #include "vehicle_base.h"
@@ -555,7 +556,8 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	c->share_owners[0] = c->share_owners[1] = c->share_owners[2] = c->share_owners[3] = INVALID_OWNER;
 
 	c->avail_railtypes = GetCompanyRailtypes(c->index);
-	c->avail_roadtypes = GetCompanyRoadtypes(c->index);
+	c->avail_roadtypes[ROADTYPE_ROAD] = GetCompanyRoadtypes(c->index, ROADTYPE_ROAD);
+	c->avail_roadtypes[ROADTYPE_TRAM] = GetCompanyRoadtypes(c->index, ROADTYPE_TRAM);
 	c->inaugurated_year = _cur_year;
 	RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false, false); // create a random company manager face
 

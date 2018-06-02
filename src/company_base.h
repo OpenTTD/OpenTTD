@@ -29,7 +29,7 @@ struct CompanyEconomyEntry {
 };
 
 struct CompanyInfrastructure {
-	uint32 road[ROADTYPE_END]; ///< Count of company owned track bits for each road type.
+	uint32 road[ROADTYPE_END][ROADSUBTYPE_END]; ///< Count of company owned track bits for each road type.
 	uint32 signal;             ///< Count of company owned signals.
 	uint32 rail[RAILTYPE_END]; ///< Count of company owned track bits for each rail type.
 	uint32 water;              ///< Count of company owned track bits for canals.
@@ -41,6 +41,14 @@ struct CompanyInfrastructure {
 	{
 		uint32 total = 0;
 		for (RailType rt =  RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) total += this->rail[rt];
+		return total;
+	}
+
+	/** Get total sum of all owned road/tram bits. */
+	uint32 GetRoadTotal(RoadType rt) const
+	{
+		uint32 total = 0;
+		for (RoadSubType rst = ROADSUBTYPE_BEGIN; rst < ROADSUBTYPE_END; rst++) total += this->road[rt][rst];
 		return total;
 	}
 };
@@ -110,8 +118,8 @@ struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {
 	~Company();
 
 	Livery livery[LS_END];
-	RailTypes avail_railtypes;         ///< Rail types available to this company.
-	RoadTypes avail_roadtypes;         ///< Road types available to this company.
+	RailTypes avail_railtypes;                       ///< NOSAVE: Rail types available to this company.
+	RoadSubTypes avail_roadtypes[ROADTYPE_END];      ///< NOSAVE: Road types available to this company.
 
 	class AIInstance *ai_instance;
 	class AIInfo *ai_info;

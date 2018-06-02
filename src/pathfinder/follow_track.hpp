@@ -32,7 +32,7 @@ struct CFollowTrackT
 	enum ErrorCode {
 		EC_NONE,
 		EC_OWNER,
-		EC_RAIL_TYPE,
+		EC_RAIL_ROAD_TYPE,
 		EC_90DEG,
 		EC_NO_WAY,
 		EC_RESERVED,
@@ -53,6 +53,12 @@ struct CFollowTrackT
 	CPerformanceTimer  *m_pPerf;
 	RailTypes           m_railtypes;
 
+	/**
+	 * Constructor.
+	 * @param v Vehicle to follow track for.
+	 * @param railtype_override Override the railtype information from the vehicle. This is used, because something we want to treat compatibility and poweredness differently.
+	 *                          Since roadtypes do not distinguish compatibility and poweredness, this is not needed for roadtypes.
+	 */
 	inline CFollowTrackT(const VehicleType *v = NULL, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = NULL)
 	{
 		Init(v, railtype_override, pPerf);
@@ -60,6 +66,7 @@ struct CFollowTrackT
 
 	inline CFollowTrackT(Owner o, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = NULL)
 	{
+		assert(IsRailTT());
 		m_veh = NULL;
 		Init(o, railtype_override, pPerf);
 	}
@@ -91,7 +98,7 @@ struct CFollowTrackT
 	inline static TransportType TT() { return Ttr_type_; }
 	inline static bool IsWaterTT() { return TT() == TRANSPORT_WATER; }
 	inline static bool IsRailTT() { return TT() == TRANSPORT_RAIL; }
-	inline bool IsTram() { return IsRoadTT() && HasBit(RoadVehicle::From(m_veh)->compatible_roadtypes, ROADTYPE_TRAM); }
+	inline bool IsTram() { return IsRoadTT() && RoadVehicle::From(m_veh)->rtid.IsTram(); }
 	inline static bool IsRoadTT() { return TT() == TRANSPORT_ROAD; }
 	inline static bool Allow90degTurns() { return T90deg_turns_allowed_; }
 	inline static bool DoTrackMasking() { return Tmask_reserved_tracks; }
@@ -123,7 +130,7 @@ struct CFollowTrackT
 		m_old_tile = old_tile;
 		m_old_td = old_td;
 		m_err = EC_NONE;
-		assert(((TrackStatusToTrackdirBits(GetTileTrackStatus(m_old_tile, TT(), IsRoadTT() ? RoadVehicle::From(m_veh)->compatible_roadtypes : 0)) & TrackdirToTrackdirBits(m_old_td)) != 0) ||
+		assert(((TrackStatusToTrackdirBits(GetTileTrackStatus(m_old_tile, TT(), IsRoadTT() ? RoadVehicle::From(m_veh)->rtid.basetype : 0)) & TrackdirToTrackdirBits(m_old_td)) != 0) ||
 		       (IsTram() && GetSingleTramBit(m_old_tile) != INVALID_DIAGDIR)); // Disable the assertion for single tram bits
 		m_exitdir = TrackdirToExitdir(m_old_td);
 		if (ForcedReverse()) return true;
@@ -146,7 +153,7 @@ struct CFollowTrackT
 			if (IsRoadTT() && !IsTram() && TryReverse()) return true;
 
 			/* CanEnterNewTile already set a reason.
-			 * Do NOT overwrite it (important for example for EC_RAIL_TYPE).
+			 * Do NOT overwrite it (important for example for EC_RAIL_ROAD_TYPE).
 			 * Only set a reason if CanEnterNewTile was not called */
 			if (m_new_td_bits == TRACKDIR_BIT_NONE) m_err = EC_NO_WAY;
 
@@ -238,7 +245,7 @@ protected:
 		if (IsRailTT() && IsPlainRailTile(m_new_tile)) {
 			m_new_td_bits = (TrackdirBits)(GetTrackBits(m_new_tile) * 0x101);
 		} else {
-			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), IsRoadTT() ? RoadVehicle::From(m_veh)->compatible_roadtypes : 0));
+			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), IsRoadTT() ? RoadVehicle::From(m_veh)->rtid.basetype : 0));
 
 			if (IsTram() && m_new_td_bits == 0) {
 				/* GetTileTrackStatus() returns 0 for single tram bits.
@@ -347,7 +354,18 @@ protected:
 			RailType rail_type = GetTileRailType(m_new_tile);
 			if (!HasBit(m_railtypes, rail_type)) {
 				/* incompatible rail type */
-				m_err = EC_RAIL_TYPE;
+				m_err = EC_RAIL_ROAD_TYPE;
+				return false;
+			}
+		}
+
+		/* road transport is possibly only on compatible road types */
+		if (IsRoadTT()) {
+			const RoadVehicle *v = RoadVehicle::From(m_veh);
+			RoadSubType subtype = GetRoadSubType(m_new_tile, v->rtid.basetype);
+			if (!HasBit(v->compatible_subtypes, subtype)) {
+				/* incompatible road type */
+				m_err = EC_RAIL_ROAD_TYPE;
 				return false;
 			}
 		}
