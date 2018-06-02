@@ -284,6 +284,9 @@ static bool SwitchNewGRFBlitter()
 #endif
 		{ "8bpp-optimized",  2,  8,  8,  8,  8 },
 		{ "32bpp-optimized", 0,  8, 32,  8, 32 },
+#ifdef WITH_SSE
+		{ "32bpp-sse2-anim", 1,  8, 32,  8, 32 },
+#endif
 		{ "32bpp-anim",      1,  8, 32,  8, 32 },
 	};
 
