@@ -107,7 +107,7 @@ git clone https://github.com/OpenTTD/OpenTTD-git-hooks.git openttd_hooks
 cd openttd
 git remote add upstream https://github.com/OpenTTD/OpenTTD.git
 cd .git/hooks
-ln -s -t . ../../../openttd_hooks/hooks/*
+ln -s ../../../openttd_hooks/hooks/* .
 ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
