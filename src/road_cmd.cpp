@@ -1438,8 +1438,8 @@ void DrawRoadTypeCatenary(const TileInfo *ti, RoadTypeIdentifier rtid, RoadBits 
 		front = SPR_TRAMWAY_BASE + _road_frontwire_sprites_1[rb];
 	}
 
-    /* Catenary uses 1st company colour to help identify owner.
-     * For tiles with OWNER_TOWN or OWNER_NONE, recolour CC to grey as a neutral colour. */
+	/* Catenary uses 1st company colour to help identify owner.
+	 * For tiles with OWNER_TOWN or OWNER_NONE, recolour CC to grey as a neutral colour. */
 	Owner owner = GetRoadOwner(ti->tile, rtid.basetype);
 	PaletteID pal = (owner == OWNER_NONE || owner == OWNER_TOWN ? GENERAL_SPRITE_COLOUR(COLOUR_GREY) : COMPANY_SPRITE_COLOUR(owner));
 	if (back != 0) AddSortableSpriteToDraw(back,  pal, ti->x, ti->y, 16, 16, TILE_HEIGHT + BB_HEIGHT_UNDER_BRIDGE, ti->z, IsTransparencySet(TO_CATENARY));

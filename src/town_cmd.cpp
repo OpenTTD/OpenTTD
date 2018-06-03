@@ -1146,7 +1146,7 @@ static inline bool RoadTypesAllowHouseHere(TileIndex t)
 		}
 	}
 
-	/* If no road was found surrounding the tile we can allow building the house since there is 
+	/* If no road was found surrounding the tile we can allow building the house since there is
 	 * nothing which forbids it, if a road was found but the execution reached this point, then
 	 * all the found roads don't allow houses to be built */
 	return !allow;
