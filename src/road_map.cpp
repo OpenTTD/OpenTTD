@@ -34,7 +34,7 @@
  */
 RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt, bool straight_tunnel_bridge_entrance)
 {
-	if (!HasTileRoadType(tile, rt)) return ROAD_NONE;
+	if (!MayHaveRoad(tile) || !HasTileRoadType(tile, rt)) return ROAD_NONE;
 
 	switch (GetTileType(tile)) {
 		case MP_ROAD:

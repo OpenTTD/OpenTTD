@@ -36,9 +36,11 @@ public:
 		/** Drive through roads can't be build on town owned roads */
 		ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD,           // [STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD]
 
-
 		/** One way roads can't have junctions */
 		ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS, // [STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION]
+
+		/** This roadtype cannot have crossings */
+		ERR_ROADTYPE_DISALLOWS_CROSSING,              // [STR_ERROR_CROSSING_DISALLOWED_ROAD]
 	};
 
 	/**

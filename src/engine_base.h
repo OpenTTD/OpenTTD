@@ -67,6 +67,8 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	~Engine();
 	bool IsEnabled() const;
 
+	RoadTypeIdentifier GetRoadType() const;
+
 	/**
 	 * Determines the default cargo type of an engine.
 	 *

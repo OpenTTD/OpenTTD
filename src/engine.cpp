@@ -155,6 +155,16 @@ bool Engine::IsEnabled() const
 }
 
 /**
+ * Determine the roadtype of a road vehicle.
+ * @return roadtype identifier
+ */
+RoadTypeIdentifier Engine::GetRoadType() const
+{
+	assert(this->type == VEH_ROAD);
+	return RoadTypeIdentifier(HasBit(this->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD, this->u.road.roadsubtype);
+}
+
+/**
  * Retrieve the GRF ID of the NewGRF the engine is tied to.
  * This is the GRF providing the Action 3.
  * @return GRF ID of the associated NewGRF.
@@ -699,7 +709,8 @@ void StartupEngines()
 	Company *c;
 	FOR_ALL_COMPANIES(c) {
 		c->avail_railtypes = GetCompanyRailtypes(c->index);
-		c->avail_roadtypes = GetCompanyRoadtypes(c->index);
+		c->avail_roadtypes[ROADTYPE_ROAD] = GetCompanyRoadtypes(c->index, ROADTYPE_ROAD);
+		c->avail_roadtypes[ROADTYPE_TRAM] = GetCompanyRoadtypes(c->index, ROADTYPE_TRAM);
 	}
 
 	/* Invalidate any open purchase lists */
@@ -721,7 +732,8 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company)
 		assert(e->u.rail.railtype < RAILTYPE_END);
 		c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes | GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes, _date);
 	} else if (e->type == VEH_ROAD) {
-		SetBit(c->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+		RoadTypeIdentifier rtid = e->GetRoadType();
+		c->avail_roadtypes[rtid.basetype] = AddDateIntroducedRoadTypes(rtid.basetype, c->avail_roadtypes[rtid.basetype] | GetRoadTypeInfo(rtid)->introduces_roadtypes, _date);
 	}
 
 	e->preview_company = INVALID_COMPANY;
@@ -801,6 +813,8 @@ void EnginesDailyLoop()
 	Company *c;
 	FOR_ALL_COMPANIES(c) {
 		c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes, _date);
+		c->avail_roadtypes[ROADTYPE_ROAD] = AddDateIntroducedRoadTypes(ROADTYPE_ROAD, c->avail_roadtypes[ROADTYPE_ROAD], _date);
+		c->avail_roadtypes[ROADTYPE_TRAM] = AddDateIntroducedRoadTypes(ROADTYPE_TRAM, c->avail_roadtypes[ROADTYPE_TRAM], _date);
 	}
 
 	if (_cur_year >= _year_engine_aging_stops) return;
@@ -942,7 +956,10 @@ static void NewVehicleAvailable(Engine *e)
 		FOR_ALL_COMPANIES(c) c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes | GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes, _date);
 	} else if (e->type == VEH_ROAD) {
 		/* maybe make another road type available */
-		FOR_ALL_COMPANIES(c) SetBit(c->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+		FOR_ALL_COMPANIES(c) {
+			RoadTypeIdentifier rtid = e->GetRoadType();
+			c->avail_roadtypes[rtid.basetype] = AddDateIntroducedRoadTypes(rtid.basetype, c->avail_roadtypes[rtid.basetype] | GetRoadTypeInfo(rtid)->introduces_roadtypes, _date);
+		}
 	}
 
 	/* Only broadcast event if AIs are able to build this vehicle type. */
@@ -1088,6 +1105,12 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 		/* Check if the rail type is available to this company */
 		const Company *c = Company::Get(company);
 		if (((GetRailTypeInfo(e->u.rail.railtype))->compatible_railtypes & c->avail_railtypes) == 0) return false;
+	}
+	if (type == VEH_ROAD && company != OWNER_DEITY) {
+		/* Check if the road type is available to this company */
+		const Company *c = Company::Get(company);
+		RoadTypeIdentifier rtid = e->GetRoadType();
+		if (((GetRoadTypeInfo(rtid))->powered_roadtypes & c->avail_roadtypes[rtid.basetype]) == 0) return false;
 	}
 
 	return true;

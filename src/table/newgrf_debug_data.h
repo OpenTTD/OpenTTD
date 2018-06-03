@@ -11,6 +11,7 @@
 
 #include "../newgrf_house.h"
 #include "../newgrf_engine.h"
+#include "../newgrf_roadtype.h"
 
 /* Helper for filling property tables */
 #define NIP(prop, base, variable, type, name) { name, (ptrdiff_t)cpp_offsetof(base, variable), cpp_sizeof(base, variable), prop, type }
@@ -58,7 +59,7 @@ static const NIVariable _niv_vehicles[] = {
 	NIV(0x47, "vehicle cargo info"),
 	NIV(0x48, "vehicle type info"),
 	NIV(0x49, "year of construction"),
-	NIV(0x4A, "current rail type info"),
+	NIV(0x4A, "current rail/road type info"),
 	NIV(0x4B, "long date of last service"),
 	NIV(0x4C, "current max speed"),
 	NIV(0x4D, "position in articulated vehicle"),
@@ -527,6 +528,48 @@ static const NIFeature _nif_town = {
 	new NIHTown(),
 };
 
+/*** NewGRF road types ***/
+
+static const NIVariable _niv_roadtypes[] = {
+	NIV(0x40, "terrain type"),
+	NIV(0x41, "enhanced tunnels"),
+	NIV(0x42, "level crossing status"),
+	NIV(0x43, "construction date"),
+	NIV(0x44, "town zone"),
+	NIV_END()
+};
+
+class NIHRoadType : public NIHelper {
+	bool IsInspectable(uint index) const { return true; }
+	uint GetParent(uint index) const { return UINT32_MAX; }
+	const void *GetInstance(uint index)const { return NULL; }
+	const void *GetSpec(uint index) const { return NULL; }
+	void SetStringParameters(uint index) const { this->SetObjectAtStringParameters(STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE, INVALID_STRING_ID, index); }
+	uint32 GetGRFID(uint index) const { return 0; }
+
+	/* virtual */ uint Resolve(uint index, uint var, uint param, bool *avail) const
+	{
+		/* There is no unique GRFFile for the tile. Multiple GRFs can define different parts of the railtype.
+		 * However, currently the NewGRF Debug GUI does not display variables depending on the GRF (like 0x7F) anyway. */
+		RoadTypeResolverObject ro(NULL, index, TCX_NORMAL, ROTSG_END);
+		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+	}
+};
+
+static const NIFeature _nif_roadtype = {
+	NULL,
+	NULL,
+	_niv_roadtypes,
+	new NIHRoadType(),
+};
+
+static const NIFeature _nif_tramtype = {
+	NULL,
+	NULL,
+	_niv_roadtypes,
+	new NIHRoadType(),
+};
+
 /** Table with all NIFeatures. */
 static const NIFeature * const _nifeatures[] = {
 	&_nif_vehicle,      // GSF_TRAINS
@@ -547,6 +590,8 @@ static const NIFeature * const _nifeatures[] = {
 	&_nif_object,       // GSF_OBJECTS
 	&_nif_railtype,     // GSF_RAILTYPES
 	&_nif_airporttile,  // GSF_AIRPORTTILES
+	&_nif_roadtype,     // GSF_ROADTYPES
+	&_nif_tramtype,     // GSF_TRAMTYPES
 	&_nif_town,         // GSF_FAKE_TOWNS
 };
 assert_compile(lengthof(_nifeatures) == GSF_FAKE_END);

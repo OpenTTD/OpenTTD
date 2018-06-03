@@ -26,6 +26,7 @@ void SQAIRoad_Register(Squirrel *engine)
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION,       "ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD,           "ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS, "ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS");
+	SQAIRoad.DefSQConst(engine, ScriptRoad::ERR_ROADTYPE_DISALLOWS_CROSSING,              "ERR_ROADTYPE_DISALLOWS_CROSSING");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ROADTYPE_ROAD,                                "ROADTYPE_ROAD");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ROADTYPE_TRAM,                                "ROADTYPE_TRAM");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ROADTYPE_INVALID,                             "ROADTYPE_INVALID");
@@ -40,11 +41,13 @@ void SQAIRoad_Register(Squirrel *engine)
 	ScriptError::RegisterErrorMap(STR_ERROR_DRIVE_THROUGH_DIRECTION,          ScriptRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION);
 	ScriptError::RegisterErrorMap(STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD,       ScriptRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD);
 	ScriptError::RegisterErrorMap(STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION, ScriptRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS);
+	ScriptError::RegisterErrorMap(STR_ERROR_CROSSING_DISALLOWED_ROAD,         ScriptRoad::ERR_ROADTYPE_DISALLOWS_CROSSING);
 
 	ScriptError::RegisterErrorMapString(ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS,                   "ERR_ROAD_WORKS_IN_PROGRESS");
 	ScriptError::RegisterErrorMapString(ScriptRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION,       "ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION");
 	ScriptError::RegisterErrorMapString(ScriptRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD,           "ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD");
 	ScriptError::RegisterErrorMapString(ScriptRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS, "ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS");
+	ScriptError::RegisterErrorMapString(ScriptRoad::ERR_ROADTYPE_DISALLOWS_CROSSING,              "ERR_ROADTYPE_DISALLOWS_CROSSING");
 
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::GetRoadVehicleTypeForCargo,     "GetRoadVehicleTypeForCargo",     2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::IsRoadTile,                     "IsRoadTile",                     2, ".i");

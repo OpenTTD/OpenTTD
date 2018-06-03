@@ -90,7 +90,7 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance *instance)
 	uint type = 0;
 	if (vehicle_type == ScriptVehicle::VT_ROAD) {
 		type |= (TRANSPORT_ROAD << 8);
-		type |= ::RoadTypeToRoadTypes((::RoadType)ScriptObject::GetRoadType());
+		type |= ScriptObject::GetRoadType().Pack();
 	} else {
 		type |= (TRANSPORT_RAIL << 8);
 		type |= ScriptRail::GetCurrentRailType();
@@ -114,7 +114,7 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance *instance)
 	DiagDirection dir_1 = ::DiagdirBetweenTiles(end, start);
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	return ScriptObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (ScriptObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD, NULL, &::_DoCommandReturnBuildTunnel2);
+	return ScriptObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (ScriptObject::GetRoadType().Pack() << 4), 0, CMD_BUILD_ROAD, NULL, &::_DoCommandReturnBuildTunnel2);
 }
 
 /* static */ bool ScriptTunnel::_BuildTunnelRoad2()
@@ -126,7 +126,7 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance *instance)
 	DiagDirection dir_1 = ::DiagdirBetweenTiles(end, start);
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	return ScriptObject::DoCommand(end + ::TileOffsByDiagDir(dir_2), ::DiagDirToRoadBits(dir_1) | (ScriptObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD);
+	return ScriptObject::DoCommand(end + ::TileOffsByDiagDir(dir_2), ::DiagDirToRoadBits(dir_1) | (ScriptObject::GetRoadType().Pack() << 4), 0, CMD_BUILD_ROAD);
 }
 
 /* static */ bool ScriptTunnel::RemoveTunnel(TileIndex tile)

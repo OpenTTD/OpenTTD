@@ -98,6 +98,26 @@
     </li>
    </ul>
   </li>
+  <li><span style="font-weight: bold;">m3:</span><br>
+   <ul>
+    <li>
+     <a name="RailType"></a>
+     Bits 3..0: Railtype. Used for all tiles with rail (road, rail, station, tunnelbridge).
+    </li>
+   </ul>
+  </li>
+  <li><span style="font-weight: bold;">m4:</span><br>
+   <a name="RoadType"></a>
+   Road-(sub-)types. Used for all tiles with road (road, station, tunnelbridge).
+   <ul>
+    <li>
+     Bits 7..4: Tram sub type, 0xF for no tram.
+    </li>
+    <li>
+     Bits 3..0: Road sub type, 0xF for no road.
+    </li>
+   </ul>
+  </li>
   <li><span style="font-weight: bold;">m7:</span><br>
    Animation frame/state. Used for houses, industries, objects and stations.
   </li>
@@ -226,29 +246,7 @@
      <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> of the tile</li>
      <li>m2: see signals</li>
      <li>m3 bits 7..4: see signals</li>
-     <li>m3 bits 3..0 = <a name="TrackType">track type</a>:
-      <table>
-       <tr>
-        <td><tt>0</tt>&nbsp; </td>
-        <td>conventional railway</td>
-       </tr>
-
-       <tr>
-        <td><tt>1</tt>&nbsp; </td>
-        <td>electrified railway</td>
-       </tr>
-
-       <tr>
-        <td><tt>2</tt>&nbsp; </td>
-        <td>monorail</td>
-       </tr>
-
-       <tr>
-        <td><tt>3</tt>&nbsp; </td>
-        <td>maglev</td>
-       </tr>
-      </table>
-     </li>
+     <li>m3 bits 3..0 = <a href="#RailType">track type</a></li>
      <li>m4 bits 7..4: see signals</li>
      <li>m4 bits 3..0: Ground type (values with fences are not valid for depots and checkpoints)
       <table>
@@ -535,21 +533,9 @@
    <td>
     <ul>
      <li>m2: Index into the array of towns (owning town for town roads; closest town otherwise, INVALID_TOWN if there is no town or we are creating a town)</li>
-     <li>m7 bit 5 set = on snow or desert</li>
-     <li>m7 bits 7..6: present road types
-      <table>
-       <tr>
-        <td>bit 0&nbsp; </td>
-        <td>normal road</td>
-       </tr>
-
-       <tr>
-        <td>bit 1&nbsp; </td>
-        <td>tram</td>
-       </tr>
-      </table>
-     </li>
      <li>m3 bits 7..4: <a href="#OwnershipInfo">owner</a> of road type 1 (tram); OWNER_NONE (<tt>10</tt>) is stored as OWNER_TOWN (<tt>0F</tt>)
+     <li>m4: <a href="#RoadType">Road-(sub-)types</a></li>
+     <li>m7 bit 5 set = on snow or desert</li>
      <li>m5 bits 7 clear: road or level-crossing
       <ul>
        <li>m6 bits 5..3:
@@ -626,7 +612,7 @@
        <li>m5 bit 6 set: level crossing
         <ul>
          <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> of the railway track</li>
-         <li>m3 bits 3..0: <a href="#TrackType">railway track type</a></li>
+         <li>m3 bits 3..0: <a href="#RailType">railway track type</a></li>
          <li>m5 bit 0: direction
           <table>
            <tr>
@@ -860,8 +846,9 @@
      <li>m2: index into the array of stations</li>
      <li>m3 bits 7..4: persistent random data for railway stations/waypoints and airports)</li>
      <li>m3 bits 7..4: <a href="#OwnershipInfo">owner</a> of tram tracks (road stop)</li>
-     <li>m3 bits 3..0: <a href="#TrackType">track type</a> for railway stations/waypoints</li>
+     <li>m3 bits 3..0: <a href="#RailType">track type</a> for railway stations/waypoints</li>
      <li>m4: custom station id; 0 means standard graphics</li>
+     <li>m4: <a href="#RoadType">Road-(sub-)types</a> for road stops</li>
      <li>m5: graphics index (range from 0..255 for each station type):
       <table>
        <tr>
@@ -977,7 +964,6 @@
      <li>m6 bit 2: pbs reservation state for railway stations/waypoints</li>
 
      <li>m7 bits 4..0: <a href="#OwnershipInfo">owner</a> of road (road stops)</li>
-     <li>m7 bits 7..6: present road types (road stops)</li>
      <li>m7: animation frame (railway stations/waypoints, airports)</li>
     </ul>
    </td>
@@ -1444,7 +1430,8 @@
     <ul>
      <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a></li>
      <li>m3 bits 7..4: <a href="#OwnershipInfo">owner</a> of tram</li>
-     <li>m3 bits 3..0: <a href="#TrackType">track type</a> for railway</li>
+     <li>m3 bits 3..0: <a href="#RailType">track type</a> for railway</li>
+     <li>m4: <a href="#RoadType">Road-(sub-)types</a></li>
      <li>m5 bit 4: pbs reservation state for railway</li>
      <li>m5 bits 7 clear: tunnel entrance/exit</li>
      <li>m5 bit 7 set: bridge ramp
@@ -1581,7 +1568,6 @@
      </li>
      <li>m7 bits 4..0: <a href="#OwnershipInfo">owner</a> of road</li>
      <li>m7 bit 5 set = on snow or desert</li>
-     <li>m7 bits 7..6: present road types for road</li>
     </ul>
    </td>
   </tr>

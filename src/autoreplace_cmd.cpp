@@ -19,6 +19,7 @@
 #include "autoreplace_gui.h"
 #include "articulated_vehicles.h"
 #include "core/random_func.hpp"
+#include "road.h"
 
 #include "table/strings.h"
 
@@ -76,6 +77,9 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 		case VEH_ROAD:
 			/* make sure that we do not replace a tram with a normal road vehicles or vice versa */
 			if (HasBit(e_from->info.misc_flags, EF_ROAD_TRAM) != HasBit(e_to->info.misc_flags, EF_ROAD_TRAM)) return false;
+
+			/* make sure the roadtypes are compatible */
+			if ((GetRoadTypeInfo(e_from->GetRoadType())->powered_roadtypes & GetRoadTypeInfo(e_to->GetRoadType())->powered_roadtypes) == 0) return false;
 			break;
 
 		case VEH_AIRCRAFT:
