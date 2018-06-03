@@ -313,10 +313,7 @@ public:
 		for (CargoID i = 0; i < NUM_CARGO; ++i) {
 			if (acceptance[i] > 0) {
 				/* Add a comma between each item. */
-				if (found) {
-					*strp++ = ',';
-					*strp++ = ' ';
-				}
+				if (found) strp = strecpy(strp, ", ", lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
 				found = true;
 
 				/* If the accepted value is less than 8, show it in 1/8:ths */
