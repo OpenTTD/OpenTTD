@@ -2613,6 +2613,12 @@
     <ClInclude Include="..\src\blitter\32bpp_anim.hpp">
       <Filter>Blitters</Filter>
     </ClInclude>
+    <ClCompile Include="..\src\blitter\32bpp_anim_sse2.cpp">
+      <Filter>Blitters</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\blitter\32bpp_anim_sse2.hpp">
+      <Filter>Blitters</Filter>
+    </ClInclude>
     <ClCompile Include="..\src\blitter\32bpp_anim_sse4.cpp">
       <Filter>Blitters</Filter>
     </ClCompile>

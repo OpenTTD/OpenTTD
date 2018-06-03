@@ -149,4 +149,17 @@ static inline DIR *ttd_opendir(const char *path)
 	return opendir(OTTD2FS(path));
 }
 
+
+/** Auto-close a file upon scope exit. */
+class FileCloser {
+	FILE *f;
+
+public:
+	FileCloser(FILE *_f) : f(_f) {}
+	~FileCloser()
+	{
+		fclose(f);
+	}
+};
+
 #endif /* FILEIO_FUNC_H */

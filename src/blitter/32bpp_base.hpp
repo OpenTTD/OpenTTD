@@ -146,30 +146,14 @@ public:
 
 	static const int DEFAULT_BRIGHTNESS = 128;
 
+	static Colour ReallyAdjustBrightness(Colour colour, uint8 brightness);
+
 	static inline Colour AdjustBrightness(Colour colour, uint8 brightness)
 	{
 		/* Shortcut for normal brightness */
 		if (brightness == DEFAULT_BRIGHTNESS) return colour;
 
-		uint16 ob = 0;
-		uint16 r = colour.r * brightness / DEFAULT_BRIGHTNESS;
-		uint16 g = colour.g * brightness / DEFAULT_BRIGHTNESS;
-		uint16 b = colour.b * brightness / DEFAULT_BRIGHTNESS;
-
-		/* Sum overbright */
-		if (r > 255) ob += r - 255;
-		if (g > 255) ob += g - 255;
-		if (b > 255) ob += b - 255;
-
-		if (ob == 0) return Colour(r, g, b, colour.a);
-
-		/* Reduce overbright strength */
-		ob /= 2;
-		return Colour(
-		                     r >= 255 ? 255 : min(r + ob * (255 - r) / 256, 255),
-		                     g >= 255 ? 255 : min(g + ob * (255 - g) / 256, 255),
-		                     b >= 255 ? 255 : min(b + ob * (255 - b) / 256, 255),
-		                     colour.a);
+		return ReallyAdjustBrightness(colour, brightness);
 	}
 };
 

@@ -214,6 +214,12 @@ static void setupApplication()
 	}
 #endif
 
+	/* Disable the system-wide tab feature as we only have one window. */
+	if ([ NSWindow respondsToSelector:@selector(setAllowsAutomaticWindowTabbing:) ]) {
+		/* We use nil instead of NO as withObject requires an id. */
+		[ NSWindow performSelector:@selector(setAllowsAutomaticWindowTabbing:) withObject:nil];
+	}
+
 	/* Become the front process, important when start from the command line. */
 	[ [ NSApplication sharedApplication ] activateIgnoringOtherApps:YES ];
 

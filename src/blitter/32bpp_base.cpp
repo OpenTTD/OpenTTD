@@ -143,6 +143,36 @@ void Blitter_32bppBase::PaletteAnimate(const Palette &palette)
 	/* By default, 32bpp doesn't have palette animation */
 }
 
+Colour Blitter_32bppBase::ReallyAdjustBrightness(Colour colour, uint8 brightness)
+{
+	assert(DEFAULT_BRIGHTNESS == 1 << 7);
+
+	uint64 combined = (((uint64) colour.r) << 32) | (((uint64) colour.g) << 16) | ((uint64) colour.b);
+	combined *= brightness;
+
+	uint16 r = GB(combined, 39, 9);
+	uint16 g = GB(combined, 23, 9);
+	uint16 b = GB(combined, 7, 9);
+
+	if ((combined & 0x800080008000L) == 0L) {
+		return Colour(r, g, b, colour.a);
+	}
+
+	uint16 ob = 0;
+	/* Sum overbright */
+	if (r > 255) ob += r - 255;
+	if (g > 255) ob += g - 255;
+	if (b > 255) ob += b - 255;
+
+	/* Reduce overbright strength */
+	ob /= 2;
+	return Colour(
+		r >= 255 ? 255 : min(r + ob * (255 - r) / 256, 255),
+		g >= 255 ? 255 : min(g + ob * (255 - g) / 256, 255),
+		b >= 255 ? 255 : min(b + ob * (255 - b) / 256, 255),
+		colour.a);
+}
+
 Blitter::PaletteAnimation Blitter_32bppBase::UsePaletteAnimation()
 {
 	return Blitter::PALETTE_ANIMATION_NONE;
