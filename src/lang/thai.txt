@@ -2905,8 +2905,6 @@ STR_TOWN_POPULATION                                             :{BLACK}ปร�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}นคร {TOWN}
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}จำนวนประชากร: {ORANGE}{COMMA}{BLACK}  จำนวนอาคาร: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}ผู้โดยสารเมื่อเดือนที่แล้ว: {ORANGE}{COMMA}{BLACK}  จำนวนสูงสุด: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}ไปรษณีย์ภัณฑ์เมื่อเดือนที่แล้ว: {ORANGE}{COMMA}{BLACK}  จำนวนสูงสุด: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}ความต้องการสินค้าสำหรับการขยายตัวของเมือง:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} required
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} ต้องการหิมะ

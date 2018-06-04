@@ -3218,8 +3218,6 @@ STR_TOWN_POPULATION                                             :{BLACK}Sluagh a
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Mòr-bhaile)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Sluagh: {ORANGE}{COMMA}{BLACK}  Taighean: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Taistealaich am mìos mu dheireadh: {ORANGE}{COMMA}{BLACK}  as motha: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post am mìos mu dheireadh: {ORANGE}{COMMA}{BLACK}  as motha: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carago a tha a dhìth ach am fàs am baile:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}Feum air {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{BLACK}Feum air {ORANGE}{STRING}{BLACK} sa gheamhradh

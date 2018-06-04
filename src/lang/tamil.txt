@@ -2620,8 +2620,6 @@ STR_TOWN_POPULATION                                             :{BLACK}உல�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (மாநகரம்)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}மக்கள்தொகை: {ORANGE}{COMMA}{BLACK}  வீடுகள்: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}சென்ற மாத பயணிகள்: {ORANGE}{COMMA}{BLACK}  அதிகம்: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}சென்ற மாத அஞ்சல்கள்: {ORANGE}{COMMA}{BLACK}  அதிகம்: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}நகரத்தின் வளர்ச்சியிற்கு தேவையான சரக்குகள்:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} தேவை
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} குளிர்காலத்தில் தேவை

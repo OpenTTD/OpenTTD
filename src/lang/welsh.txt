@@ -2977,8 +2977,6 @@ STR_TOWN_POPULATION                                             :{BLACK}Poblogae
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Dinas)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Poblogaeth: {ORANGE}{COMMA}{BLACK}  Tai: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Teithwyr mis diwethaf: {ORANGE}{COMMA}{BLACK}  uchafswm: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post mis diwethaf: {ORANGE}{COMMA}{BLACK}  uchafswm: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Nwyddau angenrheidiol ar gyfer tyfiant y dref:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}Angen {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} ei angen yn y gaeaf

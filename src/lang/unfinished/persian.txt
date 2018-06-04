@@ -2658,8 +2658,6 @@ STR_TOWN_POPULATION                                             :{BLACK}جمعی
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (شهر)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}جمعیت: {ORANGE}{COMMA}{BLACK}  خانه ها: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}مسافران در ماه گذشته: {ORANGE}{COMMA}{BLACK}  حداکثر: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}نامه ها در ماه گذشته: {ORANGE}{COMMA}{BLACK}  حداکثر: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}نوع بار برای رشد شهر:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} ضروری
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} در زمستان ضروری است

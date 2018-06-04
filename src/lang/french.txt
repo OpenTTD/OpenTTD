@@ -2988,8 +2988,6 @@ STR_TOWN_POPULATION                                             :{BLACK}Populati
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Métropole)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Population{NBSP}: {ORANGE}{COMMA}{BLACK} − Maisons{NBSP}: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passagers le mois dernier{NBSP}: {ORANGE}{COMMA}{BLACK} − max.{NBSP}: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Courrier le mois dernier{NBSP}: {ORANGE}{COMMA}{BLACK} − max.{NBSP}: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Cargaison nécessaire à la croissance de la ville{NBSP}:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requis
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requis en hiver

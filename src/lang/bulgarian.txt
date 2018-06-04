@@ -2911,8 +2911,6 @@ STR_TOWN_POPULATION                                             :{BLACK}Обща
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Град)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Население: {ORANGE}{COMMA}{BLACK}  Жилища: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Пътници през последния месец: {ORANGE}{COMMA}{BLACK}  максимум: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Поща през последния месец: {ORANGE}{COMMA}{BLACK}  максимум: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Товар нужен за растеж на града:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} необходим
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} необходим през зимата
