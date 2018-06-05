@@ -3017,6 +3017,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Popolazi
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Metropoli)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Popolazione: {ORANGE}{COMMA}{BLACK}  Case: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} il mese scorso: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carichi richiesti per la crescita della città:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} richiest{G 0 o o a}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} richiest{G 0 o o a} in inverno
