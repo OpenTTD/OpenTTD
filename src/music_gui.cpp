@@ -191,6 +191,7 @@ static void DoPlaySong()
 		FioFindFullPath(filename, lastof(filename), OLD_GM_DIR, songinfo.filename);
 	}
 	songinfo.filename = filename; // non-owned pointer
+	songinfo.loop = (_game_mode == GM_MENU) && (_music_wnd_cursong == 1);
 	MusicDriver::GetInstance()->PlaySong(songinfo);
 	SetWindowDirty(WC_MUSIC_WINDOW, 0);
 }
