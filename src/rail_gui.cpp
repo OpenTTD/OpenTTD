@@ -1908,7 +1908,7 @@ static void SetDefaultRailGui()
 	RailType rt = (RailType)(_settings_client.gui.default_rail_type + RAILTYPE_END);
 	if (rt == DEF_RAILTYPE_MOST_USED) {
 		/* Find the most used rail type */
-		RailType count[RAILTYPE_END];
+		uint count[RAILTYPE_END];
 		memset(count, 0, sizeof(count));
 		for (TileIndex t = 0; t < MapSize(); t++) {
 			if (IsTileType(t, MP_RAILWAY) || IsLevelCrossingTile(t) || HasStationTileRail(t) ||
