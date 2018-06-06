@@ -656,7 +656,7 @@ struct TooltipsWindow : public Window
 		this->string_id = str;
 		assert_compile(sizeof(this->params[0]) == sizeof(params[0]));
 		assert(paramcount <= lengthof(this->params));
-		memcpy(this->params, params, sizeof(this->params[0]) * paramcount);
+		if (paramcount > 0) memcpy(this->params, params, sizeof(this->params[0]) * paramcount);
 		this->paramcount = paramcount;
 		this->close_cond = close_tooltip;
 
