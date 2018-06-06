@@ -693,6 +693,9 @@ static void MidiThreadProc(void *)
 							current_segment.start_block = bl;
 							break;
 						} else {
+							/* Skip the transmission delay compensation performed in the Win32 MIDI driver.
+							 * The DMusic driver will most likely be used with the MS softsynth, which is not subject to transmission delays.
+							 */
 							DEBUG(driver, 2, "DMusic: timer: start from block %d (ticktime %d, realtime %.3f, bytes %d)", (int)bl, (int)block.ticktime, ((int)block.realtime) / 1000.0, (int)preload_bytes);
 							playback_start_time -= block.realtime * MIDITIME_TO_REFTIME;
 							break;

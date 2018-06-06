@@ -184,7 +184,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 		/* find first block after start time and pretend playback started earlier
 		* this is to allow all blocks prior to the actual start to still affect playback,
 		* as they may contain important controller and program changes */
-		size_t preload_bytes = 0;
+		uint preload_bytes = 0;
 		for (size_t bl = 0; bl < _midi.current_file.blocks.size(); bl++) {
 			MidiFile::DataBlock &block = _midi.current_file.blocks[bl];
 			preload_bytes += block.data.Length();
@@ -194,8 +194,13 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 					_midi.current_segment.start_block = bl;
 					break;
 				} else {
+					/* Calculate offset start time for playback.
+					 * The preload_bytes are used to compensate for delay in transmission over traditional serial MIDI interfaces,
+					 * which have a bitrate of 31,250 bits/sec, and transmit 1+8+1 start/data/stop bits per byte.
+					 * The delay compensation is needed to avoid time-compression of following messages.
+					 */
 					DEBUG(driver, 2, "Win32-MIDI: timer: start from block %d (ticktime %d, realtime %.3f, bytes %d)", (int)bl, (int)block.ticktime, ((int)block.realtime) / 1000.0, (int)preload_bytes);
-					_midi.playback_start_time -= block.realtime / 1000;
+					_midi.playback_start_time -= block.realtime / 1000 - preload_bytes * 1000 / 3125;
 					break;
 				}
 			}
