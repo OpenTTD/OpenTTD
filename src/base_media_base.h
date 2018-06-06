@@ -301,6 +301,7 @@ struct MusicSongInfo {
 	const char *filename;    ///< file on disk containing song (when used in MusicSet class, this pointer is owned by MD5File object for the file)
 	MusicTrackType filetype; ///< decoder required for song file
 	int cat_index;           ///< entry index in CAT file, for filetype==MTT_MPSMIDI
+	bool loop;               ///< song should play in a tight loop if possible, never ending
 	int override_start;      ///< MIDI ticks to skip over in beginning
 	int override_end;        ///< MIDI tick to end the song at (0 if no override)
 };

@@ -832,8 +832,8 @@ static void MidiThreadProc(void *)
 			/* end? */
 			if (current_block == current_file.blocks.size()) {
 				if (current_segment.loop) {
-					current_block = 0;
-					clock->GetTime(&playback_start_time);
+					current_block = current_segment.start_block;
+					playback_start_time = block_time - current_file.blocks[current_block].realtime * MIDITIME_TO_REFTIME;
 				} else {
 					_playback.do_stop = true;
 				}
@@ -1237,7 +1237,7 @@ void MusicDriver_DMusic::PlaySong(const MusicSongInfo &song)
 
 	_playback.next_segment.start = song.override_start;
 	_playback.next_segment.end = song.override_end;
-	_playback.next_segment.loop = false;
+	_playback.next_segment.loop = song.loop;
 
 	_playback.do_start = true;
 	SetEvent(_thread_event);
