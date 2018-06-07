@@ -25,6 +25,14 @@
 #include <errno.h> // required by vsnprintf implementation for MSVC
 #endif
 
+#ifdef WIN32
+#include "os/windows/win32.h"
+#endif
+
+#ifdef WITH_UNISCRIBE
+#include "os/windows/string_uniscribe.h"
+#endif
+
 #ifdef WITH_ICU_SORT
 /* Required by strnatcmp. */
 #include <unicode/ustring.h>
@@ -572,20 +580,32 @@ int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
 		s1 = SkipGarbage(s1);
 		s2 = SkipGarbage(s2);
 	}
+
 #ifdef WITH_ICU_SORT
 	if (_current_collator != NULL) {
 		UErrorCode status = U_ZERO_ERROR;
 		int result = _current_collator->compareUTF8(s1, s2, status);
 		if (U_SUCCESS(status)) return result;
 	}
-
 #endif /* WITH_ICU_SORT */
+
+#if defined(WIN32) && !defined(STRGEN) && !defined(SETTINGSGEN)
+	int res = OTTDStringCompare(s1, s2);
+	if (res != 0) return res - 2; // Convert to normal C return values.
+#endif
 
 	/* Do a normal comparison if ICU is missing or if we cannot create a collator. */
 	return strcasecmp(s1, s2);
 }
 
-#ifdef WITH_ICU_SORT
+#ifdef WITH_UNISCRIBE
+
+/* static */ StringIterator *StringIterator::Create()
+{
+	return new UniscribeStringIterator();
+}
+
+#elif defined(WITH_ICU_SORT)
 
 #include <unicode/utext.h>
 #include <unicode/brkiter.h>

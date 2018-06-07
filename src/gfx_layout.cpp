@@ -21,6 +21,10 @@
 #include <unicode/ustring.h>
 #endif /* WITH_ICU_LAYOUT */
 
+#ifdef WITH_UNISCRIBE
+#include "os/windows/string_uniscribe.h"
+#endif /* WITH_UNISCRIBE */
+
 #include "safeguards.h"
 
 
@@ -113,26 +117,12 @@ le_bool Font::getGlyphPoint(LEGlyphID glyph, le_int32 pointNumber, LEPoint &poin
 	return FALSE;
 }
 
-static size_t AppendToBuffer(UChar *buff, const UChar *buffer_last, WChar c)
-{
-	/* Transform from UTF-32 to internal ICU format of UTF-16. */
-	int32 length = 0;
-	UErrorCode err = U_ZERO_ERROR;
-	u_strFromUTF32(buff, buffer_last - buff, &length, (UChar32*)&c, 1, &err);
-	return length;
-}
-
 /**
  * Wrapper for doing layouts with ICU.
  */
 class ICUParagraphLayout : public AutoDeleteSmallVector<ParagraphLayouter::Line *, 4>, public ParagraphLayouter {
 	ParagraphLayout *p; ///< The actual ICU paragraph layout.
 public:
-	/** Helper for GetLayouter, to get the right type. */
-	typedef UChar CharType;
-	/** Helper for GetLayouter, to get whether the layouter supports RTL. */
-	static const bool SUPPORTS_RTL = true;
-
 	/** Visual run contains data about the bit of text with the same font. */
 	class ICUVisualRun : public ParagraphLayouter::VisualRun {
 		const ParagraphLayout::VisualRun *vr; ///< The actual ICU vr.
@@ -184,35 +174,54 @@ public:
 	}
 };
 
-static ParagraphLayouter *GetParagraphLayout(UChar *buff, UChar *buff_end, FontMap &fontMapping)
-{
-	int32 length = buff_end - buff;
+/**
+ * Helper class to construct a new #ICUParagraphLayout.
+ */
+class ICUParagraphLayoutFactory {
+public:
+	/** Helper for GetLayouter, to get the right type. */
+	typedef UChar CharType;
+	/** Helper for GetLayouter, to get whether the layouter supports RTL. */
+	static const bool SUPPORTS_RTL = true;
 
-	if (length == 0) {
-		/* ICU's ParagraphLayout cannot handle empty strings, so fake one. */
-		buff[0] = ' ';
-		length = 1;
-		fontMapping.End()[-1].first++;
+	static ParagraphLayouter *GetParagraphLayout(UChar *buff, UChar *buff_end, FontMap &fontMapping)
+	{
+		int32 length = buff_end - buff;
+
+		if (length == 0) {
+			/* ICU's ParagraphLayout cannot handle empty strings, so fake one. */
+			buff[0] = ' ';
+			length = 1;
+			fontMapping.End()[-1].first++;
+		}
+
+		/* Fill ICU's FontRuns with the right data. */
+		FontRuns runs(fontMapping.Length());
+		for (FontMap::iterator iter = fontMapping.Begin(); iter != fontMapping.End(); iter++) {
+			runs.add(iter->second, iter->first);
+		}
+
+		LEErrorCode status = LE_NO_ERROR;
+		/* ParagraphLayout does not copy "buff", so it must stay valid.
+		 * "runs" is copied according to the ICU source, but the documentation does not specify anything, so this might break somewhen. */
+		ParagraphLayout *p = new ParagraphLayout(buff, length, &runs, NULL, NULL, NULL, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, false, status);
+		if (status != LE_NO_ERROR) {
+			delete p;
+			return NULL;
+		}
+
+		return new ICUParagraphLayout(p);
 	}
 
-	/* Fill ICU's FontRuns with the right data. */
-	FontRuns runs(fontMapping.Length());
-	for (FontMap::iterator iter = fontMapping.Begin(); iter != fontMapping.End(); iter++) {
-		runs.add(iter->second, iter->first);
+	static size_t AppendToBuffer(UChar *buff, const UChar *buffer_last, WChar c)
+	{
+		/* Transform from UTF-32 to internal ICU format of UTF-16. */
+		int32 length = 0;
+		UErrorCode err = U_ZERO_ERROR;
+		u_strFromUTF32(buff, buffer_last - buff, &length, (UChar32*)&c, 1, &err);
+		return length;
 	}
-
-	LEErrorCode status = LE_NO_ERROR;
-	/* ParagraphLayout does not copy "buff", so it must stay valid.
-	 * "runs" is copied according to the ICU source, but the documentation does not specify anything, so this might break somewhen. */
-	ParagraphLayout *p = new ParagraphLayout(buff, length, &runs, NULL, NULL, NULL, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, false, status);
-	if (status != LE_NO_ERROR) {
-		delete p;
-		return NULL;
-	}
-
-	return new ICUParagraphLayout(p);
-}
-
+};
 #endif /* WITH_ICU_LAYOUT */
 
 /*** Paragraph layout ***/
@@ -236,11 +245,6 @@ static ParagraphLayouter *GetParagraphLayout(UChar *buff, UChar *buff_end, FontM
  */
 class FallbackParagraphLayout : public ParagraphLayouter {
 public:
-	/** Helper for GetLayouter, to get the right type. */
-	typedef WChar CharType;
-	/** Helper for GetLayouter, to get whether the layouter supports RTL. */
-	static const bool SUPPORTS_RTL = false;
-
 	/** Visual run contains data about the bit of text with the same font. */
 	class FallbackVisualRun : public ParagraphLayouter::VisualRun {
 		Font *font;       ///< The font used to layout these.
@@ -278,6 +282,42 @@ public:
 	FallbackParagraphLayout(WChar *buffer, int length, FontMap &runs);
 	void Reflow();
 	const ParagraphLayouter::Line *NextLine(int max_width);
+};
+
+/**
+ * Helper class to construct a new #FallbackParagraphLayout.
+ */
+class FallbackParagraphLayoutFactory {
+public:
+	/** Helper for GetLayouter, to get the right type. */
+	typedef WChar CharType;
+	/** Helper for GetLayouter, to get whether the layouter supports RTL. */
+	static const bool SUPPORTS_RTL = false;
+
+	/**
+	 * Get the actual ParagraphLayout for the given buffer.
+	 * @param buff The begin of the buffer.
+	 * @param buff_end The location after the last element in the buffer.
+	 * @param fontMapping THe mapping of the fonts.
+	 * @return The ParagraphLayout instance.
+	 */
+	static ParagraphLayouter *GetParagraphLayout(WChar *buff, WChar *buff_end, FontMap &fontMapping)
+	{
+		return new FallbackParagraphLayout(buff, buff_end - buff, fontMapping);
+	}
+
+	/**
+	 * Append a wide character to the internal buffer.
+	 * @param buff        The buffer to append to.
+	 * @param buffer_last The end of the buffer.
+	 * @param c           The character to add.
+	 * @return The number of buffer spaces that were used.
+	 */
+	static size_t AppendToBuffer(WChar *buff, const WChar *buffer_last, WChar c)
+	{
+		*buff = c;
+		return 1;
+	}
 };
 
 /**
@@ -537,31 +577,6 @@ const ParagraphLayouter::Line *FallbackParagraphLayout::NextLine(int max_width)
 }
 
 /**
- * Appand a wide character to the internal buffer.
- * @param buff        The buffer to append to.
- * @param buffer_last The end of the buffer.
- * @param c           The character to add.
- * @return The number of buffer spaces that were used.
- */
-static size_t AppendToBuffer(WChar *buff, const WChar *buffer_last, WChar c)
-{
-	*buff = c;
-	return 1;
-}
-
-/**
- * Get the actual ParagraphLayout for the given buffer.
- * @param buff The begin of the buffer.
- * @param buff_end The location after the last element in the buffer.
- * @param fontMapping THe mapping of the fonts.
- * @return The ParagraphLayout instance.
- */
-static FallbackParagraphLayout *GetParagraphLayout(WChar *buff, WChar *buff_end, FontMap &fontMapping)
-{
-	return new FallbackParagraphLayout(buff, buff_end - buff, fontMapping);
-}
-
-/**
  * Helper for getting a ParagraphLayouter of the given type.
  *
  * @note In case no ParagraphLayouter could be constructed, line.layout will be NULL.
@@ -605,7 +620,7 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, const char *&str, 
 			 * will not be handled in the fallback non ICU case because they are
 			 * mostly needed for RTL languages which need more ICU support. */
 			if (!T::SUPPORTS_RTL && IsTextDirectionChar(c)) continue;
-			buff += AppendToBuffer(buff, buffer_last, c);
+			buff += T::AppendToBuffer(buff, buffer_last, c);
 			continue;
 		}
 
@@ -621,7 +636,7 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, const char *&str, 
 	if (!fontMapping.Contains(buff - buff_begin)) {
 		fontMapping.Insert(buff - buff_begin, f);
 	}
-	line.layout = GetParagraphLayout(buff_begin, buff, fontMapping);
+	line.layout = T::GetParagraphLayout(buff_begin, buff, fontMapping);
 	line.state_after = state;
 }
 
@@ -654,11 +669,11 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 			line.layout->Reflow();
 		} else {
 			/* Line is new, layout it */
-#ifdef WITH_ICU_LAYOUT
 			FontState old_state = state;
 			const char *old_str = str;
 
-			GetLayouter<ICUParagraphLayout>(line, str, state);
+#ifdef WITH_ICU_LAYOUT
+			GetLayouter<ICUParagraphLayoutFactory>(line, str, state);
 			if (line.layout == NULL) {
 				static bool warned = false;
 				if (!warned) {
@@ -668,11 +683,22 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 
 				state = old_state;
 				str = old_str;
-				GetLayouter<FallbackParagraphLayout>(line, str, state);
 			}
-#else
-			GetLayouter<FallbackParagraphLayout>(line, str, state);
 #endif
+
+#ifdef WITH_UNISCRIBE
+			if (line.layout == NULL) {
+				GetLayouter<UniscribeParagraphLayoutFactory>(line, str, state);
+				if (line.layout == NULL) {
+					state = old_state;
+					str = old_str;
+				}
+			}
+#endif
+
+			if (line.layout == NULL) {
+				GetLayouter<FallbackParagraphLayoutFactory>(line, str, state);
+			}
 		}
 
 		/* Copy all lines into a local cache so we can reuse them later on more easily. */
@@ -809,6 +835,10 @@ void Layouter::ResetFontCache(FontSize size)
 
 	/* We must reset the linecache since it references the just freed fonts */
 	ResetLineCache();
+
+#if defined(WITH_UNISCRIBE)
+	UniscribeResetScriptCache(size);
+#endif
 }
 
 /**
