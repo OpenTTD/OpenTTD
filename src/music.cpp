@@ -128,7 +128,7 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 		IniGroup *timingtrim = ini->GetGroup("timingtrim");
 		for (uint i = 0, j = 1; i < lengthof(this->songinfo); i++) {
 			const char *filename = this->files[i].filename;
-			if (names == NULL || StrEmpty(filename)) {
+			if (names == NULL || StrEmpty(filename) || this->files[i].check_result == MD5File::CR_NO_FILE) {
 				this->songinfo[i].songname[0] = '\0';
 				continue;
 			}
@@ -143,7 +143,8 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 				char *songname = GetMusicCatEntryName(filename, this->songinfo[i].cat_index);
 				if (songname == NULL) {
 					DEBUG(grf, 0, "Base music set song missing from CAT file: %s/%d", filename, this->songinfo[i].cat_index);
-					return false;
+					this->songinfo[i].songname[0] = '\0';
+					continue;
 				}
 				strecpy(this->songinfo[i].songname, songname, lastof(this->songinfo[i].songname));
 				free(songname);
