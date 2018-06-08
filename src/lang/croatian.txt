@@ -3083,6 +3083,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Svjetsko
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Metropola)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Stanovništvo: {ORANGE}{COMMA}{BLACK}  Kuće: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} prošli mjesec: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Potrebno tereta za rast grada:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} potrebno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} potrebno zimi
@@ -4329,6 +4330,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ovo 
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... cesta je orijentirana u krivom smjeru
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... prolazne postaje ne mogu imati zavoje
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... prolazne postaje ne mogu imati raskrižja
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... cesta je jednosmjerna ili je blokirana
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nije moguće ukloniti dio postaje...
@@ -4580,6 +4582,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originalni zvuk
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originalni zvukovi za Transport Tycoon Deluxe Windows izdanje.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Zvučni paket bez ikakvih zvukova.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originalna glazba za Transport Tycoon Deluxe Windows izdanje.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Originalna glazba za Transport Tycoon Deluxe DOS izdanje.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Originalna glazba za Transport Tycoon (original/editor svijeta) DOS izdanje.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Glazbeni paket bez ikakve glazbe.
 
 ##id 0x2000

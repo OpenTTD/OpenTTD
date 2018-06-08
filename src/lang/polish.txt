@@ -3362,6 +3362,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Populacj
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Miasto)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Populacja: {ORANGE}{COMMA}{BLACK}  Domów: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} w ostatnim miesiącu: {ORANGE}{COMMA}{BLACK}  najwięcej: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Towar potrzebny do rozwoju miasta:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}Wymagana {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} wymagane zimą
@@ -4614,6 +4615,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ta d
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... droga jest zorientowana w złym kierunku
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... przystanki przelotowe nie mogą mieć zakrętów
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... przystanki przelotowe nie mogą mieć skrzyżowań
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... droga jest jednokierunkowa lub zablokowana
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nie można usunąć części stacji...

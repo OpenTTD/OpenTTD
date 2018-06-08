@@ -4235,6 +4235,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... cett
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... mauvaise orientation de la route
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... les arrêts ne peuvent pas avoir de virages
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... les arrêts ne peuvent pas avoir de jonctions
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... la route est à sens unique ou bloquée
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Impossible de supprimer une partie de la gare...
@@ -4486,6 +4487,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Sons originaux 
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Sons originaux de Transport Tycoon Deluxe (version Windows).
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Un pack de sons sans sons.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Musiques originales de Transport Tycoon Deluxe (version Windows).
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Musiques originales de Transport Tycoon Deluxe (version DOS).
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Musiques originales de Transport Tycoon (version Originale/World Editor).
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Un pack de musiques sans musiques.
 
 ##id 0x2000
