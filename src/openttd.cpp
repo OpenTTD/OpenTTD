@@ -1111,11 +1111,11 @@ void SwitchToMode(SwitchMode new_mode)
 #endif /* ENABLE_NETWORK */
 
 				/* Change Human companies to AI */
-				Company *c;
-				FOR_ALL_COMPANIES(c) {
-					if (Company::Get(_local_company) != c && !c->is_ai) {
-						c->is_ai = true;
-						if (!_networking || _network_server) {
+				if (!_networking || _network_server) {
+					Company *c;
+					FOR_ALL_COMPANIES(c) {
+						if (Company::Get(_local_company) != c && !c->is_ai) {
+							c->is_ai = true;
 							AI::StartNew(c->index);
 							AI::BroadcastNewEvent(new ScriptEventCompanyNew(c->index), c->index);
 							Game::NewEvent(new ScriptEventCompanyNew(c->index));
