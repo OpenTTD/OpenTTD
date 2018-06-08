@@ -701,6 +701,10 @@ licensing terms can be found in os/dos/cwsdpmi/cwsdpmi.txt. The sources
 for these files can be downloaded at its author site, at:
 [http://homer.rice.edu/~sandmann/cwsdpmi/csdpmi5s.zip](http://homer.rice.edu/~sandmann/cwsdpmi/csdpmi5s.zip)
 
+CONTRIBUTING.md is adapted from [Bootstrap](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md)
+under the [Creative Commons Attribution 3.0 Unported License](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE)
+terms for Bootstrap documentation.
+
 ## X.X) Credits
 
 ### The OpenTTD team (in alphabetical order):
