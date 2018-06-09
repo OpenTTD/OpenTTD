@@ -63,6 +63,7 @@
 #include "subsidy_func.h"
 #include "gfx_layout.h"
 #include "viewport_sprite_sorter.h"
+#include "framerate_type.h"
 
 #include "linkgraph/linkgraphschedule.h"
 
@@ -1422,6 +1423,8 @@ static void DoAutosave()
 
 void GameLoop()
 {
+	FramerateMeasurer framerate(FRAMERATE_GAMELOOP);
+
 	if (_game_mode == GM_BOOTSTRAP) {
 #ifdef ENABLE_NETWORK
 		/* Check for UDP stuff */

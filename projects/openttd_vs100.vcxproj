@@ -481,6 +481,7 @@
     <ClInclude Include="..\src\fios.h" />
     <ClInclude Include="..\src\fontcache.h" />
     <ClInclude Include="..\src\fontdetection.h" />
+    <ClInclude Include="..\src\framerate_type.h" />
     <ClInclude Include="..\src\base_consist.h" />
     <ClInclude Include="..\src\gamelog.h" />
     <ClInclude Include="..\src\gamelog_internal.h" />
@@ -731,6 +732,7 @@
     <ClCompile Include="..\src\engine_gui.cpp" />
     <ClCompile Include="..\src\error_gui.cpp" />
     <ClCompile Include="..\src\fios_gui.cpp" />
+    <ClCompile Include="..\src\framerate_gui.cpp" />
     <ClCompile Include="..\src\genworld_gui.cpp" />
     <ClCompile Include="..\src\goal_gui.cpp" />
     <ClCompile Include="..\src\graph_gui.cpp" />

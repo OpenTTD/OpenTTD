@@ -2696,6 +2696,20 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 The OpenTTD team
 
+# Framerate display window
+STR_FRAMERATE_DISPLAY_CAPTION                                   :{WHITE}Frame rate
+STR_FRAMERATE_VALUE_GOOD                                        :{LTBLUE}{DECIMAL}{WHITE}
+STR_FRAMERATE_VALUE_WARN                                        :{YELLOW}{DECIMAL}{WHITE}
+STR_FRAMERATE_VALUE_BAD                                         :{RED}{DECIMAL}{WHITE}
+STR_FRAMERATE_DISPLAY_CURRENT_FPS                               :{WHITE}Current: {STRING2} frames/sec
+STR_FRAMERATE_DISPLAY_CURRENT_FPS_TOOLTIP                       :{BLACK}How many times a second the game loop is called to process world state
+STR_FRAMERATE_DISPLAY_TIMES_GAMELOOP                            :{WHITE}Game loop time: {STRING2} milliseconds
+STR_FRAMERATE_DISPLAY_TIMES_GAMELOOP_TOOLTIP                    :{BLACK}Time spent per tick to calculate economy, move vehicles, etc.
+STR_FRAMERATE_DISPLAY_TIMES_DRAWING                             :{WHITE}Screen drawing time: {STRING2} milliseconds
+STR_FRAMERATE_DISPLAY_TIMES_DRAWING_TOOLTIP                     :{BLACK}Time spent per frame on compositing game graphics
+STR_FRAMERATE_DISPLAY_TIMES_VIDEO                               :{WHITE}Video output time: {STRING2} milliseconds
+STR_FRAMERATE_DISPLAY_TIMES_VIDEO_TOOLTIP                       :{BLACK}Time spent per frame to send finished graphics to screen
+
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Save Game
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Load Game

@@ -1111,6 +1111,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\framerate_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\base_consist.h"
 				>
 			</File>
@@ -2116,6 +2120,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\fios_gui.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\framerate_gui.cpp"
 				>
 			</File>
 			<File

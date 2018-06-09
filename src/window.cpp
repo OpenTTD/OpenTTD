@@ -36,6 +36,7 @@
 #include "error.h"
 #include "game/game.hpp"
 #include "video/video_driver.hpp"
+#include "framerate_type.h"
 
 #include "safeguards.h"
 
@@ -3077,6 +3078,8 @@ void InputLoop()
  */
 void UpdateWindows()
 {
+	FramerateMeasurer framerate(FRAMERATE_DRAWING);
+
 	Window *w;
 
 	static int highlight_timer = 1;

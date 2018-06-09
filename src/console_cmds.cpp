@@ -1894,6 +1894,18 @@ static void IConsoleDebugLibRegister()
 	IConsoleAliasRegister("dbg_echo2",      "echo %!");
 }
 #endif
+DEF_CONSOLE_CMD(ConFramerate)
+{
+	extern void DoShowFramerate(); // framerate_gui.cpp
+
+	if (argc == 0) {
+		IConsoleHelp("Show framerate and game speed information");
+		return true;
+	}
+
+	DoShowFramerate();
+	return true;
+}
 
 /*******************************
  * console command registration
@@ -2025,6 +2037,7 @@ void IConsoleStdLibRegister()
 #ifdef _DEBUG
 	IConsoleDebugLibRegister();
 #endif
+	IConsoleCmdRegister("fps", ConFramerate);
 
 	/* NewGRF development stuff */
 	IConsoleCmdRegister("reload_newgrfs",  ConNewGRFReload, ConHookNewGRFDeveloperTool);

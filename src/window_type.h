@@ -681,6 +681,12 @@ enum WindowClass {
 	 */
 	WC_SAVE_PRESET,
 
+	/**
+	 * Framerate display; %Window numbers:
+	 *   - 0 = #FramerateDisplayWidgets
+	 */
+	WC_FRAMERATE_DISPLAY,
+
 	WC_INVALID = 0xFFFF, ///< Invalid window.
 };
 
