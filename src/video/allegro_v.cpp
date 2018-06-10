@@ -24,6 +24,7 @@
 #include "../network/network.h"
 #include "../core/random_func.hpp"
 #include "../core/math_func.hpp"
+#include "../framerate_type.h"
 #include "allegro_v.h"
 #include <allegro.h>
 
@@ -56,6 +57,8 @@ void VideoDriver_Allegro::MakeDirty(int left, int top, int width, int height)
 
 static void DrawSurfaceToScreen()
 {
+	FramerateMeasurer framerate(FRAMERATE_VIDEO);
+
 	int n = _num_dirty_rects;
 	if (n == 0) return;
 
@@ -461,7 +464,10 @@ void VideoDriver_Allegro::Stop()
 #if defined(UNIX) || defined(__OS2__) || defined(DOS)
 # include <sys/time.h> /* gettimeofday */
 
-static uint32 GetTime()
+# ifndef DOS /* GetTime() needs to be exported on DOS, only place it's implemented there */
+static
+# endif
+uint32 GetTime()
 {
 	struct timeval tim;
 
