@@ -2698,17 +2698,19 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Framerate display window
 STR_FRAMERATE_DISPLAY_CAPTION                                   :{WHITE}Frame rate
-STR_FRAMERATE_VALUE_GOOD                                        :{LTBLUE}{DECIMAL}{WHITE}
-STR_FRAMERATE_VALUE_WARN                                        :{YELLOW}{DECIMAL}{WHITE}
-STR_FRAMERATE_VALUE_BAD                                         :{RED}{DECIMAL}{WHITE}
-STR_FRAMERATE_DISPLAY_CURRENT_FPS                               :{WHITE}Current: {STRING2} frames/sec
-STR_FRAMERATE_DISPLAY_CURRENT_FPS_TOOLTIP                       :{BLACK}How many times a second the game loop is called to process world state
-STR_FRAMERATE_DISPLAY_TIMES_GAMELOOP                            :{WHITE}Game loop time: {STRING2} milliseconds
-STR_FRAMERATE_DISPLAY_TIMES_GAMELOOP_TOOLTIP                    :{BLACK}Time spent per tick to calculate economy, move vehicles, etc.
-STR_FRAMERATE_DISPLAY_TIMES_DRAWING                             :{WHITE}Screen drawing time: {STRING2} milliseconds
-STR_FRAMERATE_DISPLAY_TIMES_DRAWING_TOOLTIP                     :{BLACK}Time spent per frame on compositing game graphics
-STR_FRAMERATE_DISPLAY_TIMES_VIDEO                               :{WHITE}Video output time: {STRING2} milliseconds
-STR_FRAMERATE_DISPLAY_TIMES_VIDEO_TOOLTIP                       :{BLACK}Time spent per frame to send finished graphics to screen
+STR_FRAMERATE_DISPLAY_GAMELOOP                                  :{WHITE}Game loop:
+STR_FRAMERATE_DISPLAY_GAMELOOP_TOOLTIP                          :{BLACK}Time spent per tick to calculate economy, move vehicles, etc.
+STR_FRAMERATE_DISPLAY_DRAWING                                   :{WHITE}Screen drawing:
+STR_FRAMERATE_DISPLAY_DRAWING_TOOLTIP                           :{BLACK}Time spent per frame on compositing game graphics
+STR_FRAMERATE_DISPLAY_VIDEO                                     :{WHITE}Video output:
+STR_FRAMERATE_DISPLAY_VIDEO_TOOLTIP                             :{BLACK}Time spent per frame to send finished graphics to screen
+STR_FRAMERATE_DISPLAY_VALUE                                     :{STRING2}
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} frames/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} frames/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} frames/s
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Save Game

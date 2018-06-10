@@ -22,44 +22,43 @@ namespace {
 
 	const int NUM_FRAMERATE_POINTS = 128;
 
-	static uint32 _framerate_measurements[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
-	static int _framerate_next_measurement_point[FRAMERATE_MAX] = {};
+	uint32 _framerate_durations[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
+	uint32 _framerate_timestamps[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
+	int _framerate_next_measurement_point[FRAMERATE_MAX] = {};
 
-	void StoreMeasurement(FramerateElement elem, uint32 value)
+	void StoreMeasurement(FramerateElement elem, uint32 start_time, uint32 end_time)
 	{
-		_framerate_measurements[elem][_framerate_next_measurement_point[elem]] = value;
+		_framerate_durations[elem][_framerate_next_measurement_point[elem]] = end_time - start_time;
+		_framerate_timestamps[elem][_framerate_next_measurement_point[elem]] = start_time;
 		_framerate_next_measurement_point[elem] += 1;
 		_framerate_next_measurement_point[elem] %= NUM_FRAMERATE_POINTS;
 	}
 
-	template <int Points>
-	double GetAverageMeasurement(FramerateElement elem)
+	double GetAverageDuration(FramerateElement elem, int points)
 	{
-		assert(elem > FRAMERATE_OVERALL); // overall is absolute times, not difference times
 		assert(elem < FRAMERATE_MAX);
 
-		int first_point = _framerate_next_measurement_point[elem] - Points - 1;
+		int first_point = _framerate_next_measurement_point[elem] - points - 1;
 		while (first_point < 0) first_point += NUM_FRAMERATE_POINTS;
 
 		double sumtime = 0;
-		for (int i = first_point; i < first_point + Points; i++) {
-			sumtime += _framerate_measurements[elem][i % NUM_FRAMERATE_POINTS];
+		for (int i = first_point; i < first_point + points; i++) {
+			sumtime += _framerate_durations[elem][i % NUM_FRAMERATE_POINTS];
 		}
 
-		return sumtime / Points;
+		return sumtime / points;
 	}
 
-	template <int Points>
-	uint32 GetOverallAverage()
+	uint32 GetAverageTimestep(FramerateElement elem, int points)
 	{
-		int first, last;
+		assert(elem < FRAMERATE_MAX);
 
-		first = _framerate_next_measurement_point[FRAMERATE_OVERALL] - Points;
-		last = _framerate_next_measurement_point[FRAMERATE_OVERALL] - 1;
+		int first = _framerate_next_measurement_point[elem] - points;
+		int last = _framerate_next_measurement_point[elem] - 1;
 		if (first < 0) first += NUM_FRAMERATE_POINTS;
 		if (last < 0) last += NUM_FRAMERATE_POINTS;
 
-		return (_framerate_measurements[FRAMERATE_OVERALL][last] - _framerate_measurements[FRAMERATE_OVERALL][first]) / Points;
+		return (_framerate_timestamps[elem][last] - _framerate_timestamps[elem][first]) / points;
 	}
 
 	double MillisecondsToFps(uint32 ms)
@@ -72,29 +71,26 @@ namespace {
 
 FramerateMeasurer::FramerateMeasurer(FramerateElement elem)
 {
-	assert(elem > FRAMERATE_OVERALL); // not allowed to measure "overall", happens automatically with gameloop
 	assert(elem < FRAMERATE_MAX);
+
 	this->elem = elem;
-
 	this->start_time = GetTime();
-
-	if (elem == FRAMERATE_GAMELOOP) {
-		StoreMeasurement(FRAMERATE_OVERALL, this->start_time);
-	}
 }
 
 FramerateMeasurer::~FramerateMeasurer()
 {
-	StoreMeasurement(this->elem, GetTime() - this->start_time);
+	StoreMeasurement(this->elem, this->start_time, GetTime());
 }
 
 
 enum FramerateWindowWidgets {
 	WID_FRW_CAPTION,
-	WID_FRW_CURRENT_FPS,
 	WID_FRW_TIMES_GAMELOOP,
 	WID_FRW_TIMES_DRAWING,
 	WID_FRW_TIMES_VIDEO,
+	WID_FRW_FPS_GAMELOOP,
+	WID_FRW_FPS_DRAWING,
+	WID_FRW_FPS_VIDEO,
 };
 
 struct FramerateWindow : Window {
@@ -115,24 +111,32 @@ struct FramerateWindow : Window {
 		this->InvalidateData();
 	}
 
-	static void SetDParmGoodWarnBadSmall(double value, double threshold_good, double threshold_bad)
+	static void SetDParmGoodWarnBadDuration(double value)
 	{
+		const double threshold_good = MILLISECONDS_PER_TICK / 3;
+		const double threshold_bad = MILLISECONDS_PER_TICK;
+
 		uint tpl;
-		if (value < threshold_good) tpl = STR_FRAMERATE_VALUE_GOOD;
-		else if (value > threshold_bad) tpl = STR_FRAMERATE_VALUE_BAD;
-		else tpl = STR_FRAMERATE_VALUE_WARN;
+		if (value < threshold_good) tpl = STR_FRAMERATE_MS_GOOD;
+		else if (value > threshold_bad) tpl = STR_FRAMERATE_MS_BAD;
+		else tpl = STR_FRAMERATE_MS_WARN;
+
 		value = min(9999.99, value);
 		SetDParam(0, tpl);
 		SetDParam(1, (int)(value * 100));
 		SetDParam(2, 2);
 	}
 
-	static void SetDParmGoodWarnBadLarge(double value, double threshold_good, double threshold_bad)
+	static void SetDParmGoodWarnBadRate(double value)
 	{
+		const double threshold_good = 1000 / MILLISECONDS_PER_TICK - 2;
+		const double threshold_bad = 500 / MILLISECONDS_PER_TICK;
+
 		uint tpl;
-		if (value > threshold_good) tpl = STR_FRAMERATE_VALUE_GOOD;
-		else if (value < threshold_bad) tpl = STR_FRAMERATE_VALUE_BAD;
-		else tpl = STR_FRAMERATE_VALUE_WARN;
+		if (value > threshold_good) tpl = STR_FRAMERATE_FPS_GOOD;
+		else if (value < threshold_bad) tpl = STR_FRAMERATE_FPS_BAD;
+		else tpl = STR_FRAMERATE_FPS_WARN;
+
 		value = min(9999.99, value);
 		SetDParam(0, tpl);
 		SetDParam(1, (int)(value * 100));
@@ -145,21 +149,30 @@ struct FramerateWindow : Window {
 		double value;
 
 		switch (widget) {
-			case WID_FRW_CURRENT_FPS:
-				value = MillisecondsToFps(GetOverallAverage<NUM_FRAMERATE_POINTS>());
-				SetDParmGoodWarnBadLarge(value, 20, 32); // "target" framerate is 33.33, anything less indicates a performance problem
-				break;
 			case WID_FRW_TIMES_GAMELOOP:
-				value = GetAverageMeasurement<NUM_FRAMERATE_POINTS>(FRAMERATE_GAMELOOP);
-				SetDParmGoodWarnBadSmall(value, MILLISECONDS_PER_TICK / 3, MILLISECONDS_PER_TICK);
+				value = GetAverageDuration(FRAMERATE_GAMELOOP, NUM_FRAMERATE_POINTS);
+				SetDParmGoodWarnBadDuration(value);
 				break;
 			case WID_FRW_TIMES_DRAWING:
-				value = GetAverageMeasurement<NUM_FRAMERATE_POINTS>(FRAMERATE_DRAWING);
-				SetDParmGoodWarnBadSmall(value, MILLISECONDS_PER_TICK / 3, MILLISECONDS_PER_TICK);
+				value = GetAverageDuration(FRAMERATE_DRAWING, NUM_FRAMERATE_POINTS);
+				SetDParmGoodWarnBadDuration(value);
 				break;
 			case WID_FRW_TIMES_VIDEO:
-				value = GetAverageMeasurement<NUM_FRAMERATE_POINTS>(FRAMERATE_VIDEO);
-				SetDParmGoodWarnBadSmall(value, MILLISECONDS_PER_TICK / 3, MILLISECONDS_PER_TICK);
+				value = GetAverageDuration(FRAMERATE_VIDEO, NUM_FRAMERATE_POINTS);
+				SetDParmGoodWarnBadDuration(value);
+				break;
+
+			case WID_FRW_FPS_GAMELOOP:
+				value = MillisecondsToFps(GetAverageTimestep(FRAMERATE_GAMELOOP, NUM_FRAMERATE_POINTS));
+				SetDParmGoodWarnBadRate(value);
+				break;
+			case WID_FRW_FPS_DRAWING:
+				value = MillisecondsToFps(GetAverageTimestep(FRAMERATE_DRAWING, NUM_FRAMERATE_POINTS));
+				SetDParmGoodWarnBadRate(value);
+				break;
+			case WID_FRW_FPS_VIDEO:
+				value = MillisecondsToFps(GetAverageTimestep(FRAMERATE_VIDEO, NUM_FRAMERATE_POINTS));
+				SetDParmGoodWarnBadRate(value);
 				break;
 		}
 	}
@@ -167,24 +180,18 @@ struct FramerateWindow : Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case WID_FRW_CURRENT_FPS:
-				SetDParmGoodWarnBadLarge(9999.99, MILLISECONDS_PER_TICK / 3, MILLISECONDS_PER_TICK);
-				*size = GetStringBoundingBox(STR_FRAMERATE_DISPLAY_CURRENT_FPS);
-				break;
-
 			case WID_FRW_TIMES_GAMELOOP:
-				SetDParmGoodWarnBadSmall(9999.99, MILLISECONDS_PER_TICK / 3, MILLISECONDS_PER_TICK);
-				*size = GetStringBoundingBox(STR_FRAMERATE_DISPLAY_TIMES_GAMELOOP);
-				break;
-
 			case WID_FRW_TIMES_DRAWING:
-				SetDParmGoodWarnBadSmall(9999.99, MILLISECONDS_PER_TICK / 3, MILLISECONDS_PER_TICK);
-				*size = GetStringBoundingBox(STR_FRAMERATE_DISPLAY_TIMES_DRAWING);
+			case WID_FRW_TIMES_VIDEO:
+				SetDParmGoodWarnBadDuration(9999.99);
+				*size = GetStringBoundingBox(STR_FRAMERATE_DISPLAY_VALUE);
 				break;
 
-			case WID_FRW_TIMES_VIDEO:
-				SetDParmGoodWarnBadSmall(9999.99, MILLISECONDS_PER_TICK / 3, MILLISECONDS_PER_TICK);
-				*size = GetStringBoundingBox(STR_FRAMERATE_DISPLAY_TIMES_VIDEO);
+			case WID_FRW_FPS_GAMELOOP:
+			case WID_FRW_FPS_DRAWING:
+			case WID_FRW_FPS_VIDEO:
+				SetDParmGoodWarnBadRate(9999.99);
+				*size = GetStringBoundingBox(STR_FRAMERATE_DISPLAY_VALUE);
 				break;
 
 			default:
@@ -201,11 +208,22 @@ static const NWidgetPart _framerate_window_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(NWID_VERTICAL), SetPIP(0, 3, 0), SetPadding(3, 3, 3, 3),
-			NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_CURRENT_FPS),    SetDataTip(STR_FRAMERATE_DISPLAY_CURRENT_FPS,    STR_FRAMERATE_DISPLAY_CURRENT_FPS_TOOLTIP),
-			NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_TIMES_GAMELOOP), SetDataTip(STR_FRAMERATE_DISPLAY_TIMES_GAMELOOP, STR_FRAMERATE_DISPLAY_TIMES_GAMELOOP_TOOLTIP),
-			NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_TIMES_DRAWING),  SetDataTip(STR_FRAMERATE_DISPLAY_TIMES_DRAWING,  STR_FRAMERATE_DISPLAY_TIMES_DRAWING_TOOLTIP),
-			NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_TIMES_VIDEO),    SetDataTip(STR_FRAMERATE_DISPLAY_TIMES_VIDEO,    STR_FRAMERATE_DISPLAY_TIMES_VIDEO_TOOLTIP),
+		NWidget(NWID_HORIZONTAL),  SetPIP(6, 3, 6),
+			NWidget(NWID_VERTICAL), SetPIP(6, 6, 6),
+				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FRAMERATE_DISPLAY_GAMELOOP, STR_FRAMERATE_DISPLAY_GAMELOOP_TOOLTIP),
+				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FRAMERATE_DISPLAY_DRAWING,  STR_FRAMERATE_DISPLAY_DRAWING_TOOLTIP),
+				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FRAMERATE_DISPLAY_VIDEO,    STR_FRAMERATE_DISPLAY_VIDEO_TOOLTIP),
+			EndContainer(),
+			NWidget(NWID_VERTICAL), SetPIP(6, 6, 6),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_TIMES_GAMELOOP), SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_GAMELOOP_TOOLTIP),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_TIMES_DRAWING),  SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_DRAWING_TOOLTIP),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_TIMES_VIDEO),    SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_VIDEO_TOOLTIP),
+				EndContainer(),
+			NWidget(NWID_VERTICAL), SetPIP(6, 6, 6),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_FPS_GAMELOOP),   SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_GAMELOOP_TOOLTIP),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_FPS_DRAWING),    SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_DRAWING_TOOLTIP),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_FPS_VIDEO),      SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_VIDEO_TOOLTIP),
+			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 };
@@ -226,25 +244,26 @@ void DoShowFramerate()
 
 	IConsolePrintF(TC_SILVER, "Based on num. data points: %d %d %d", count1, count2, count3);
 
-	IConsolePrintF(TC_LIGHT_BLUE, "Overall framerate: %.2ffps  %.2ffps  %.2ffps",
-		MillisecondsToFps(GetOverallAverage<count1>()),
-		MillisecondsToFps(GetOverallAverage<count2>()),
-		MillisecondsToFps(GetOverallAverage<count3>()));
-
 	static char *MEASUREMENT_NAMES[FRAMERATE_MAX] = {
-		"Overall",
-		"Gameloop",
+		"Game loop",
 		"Drawing",
 		"Video output",
 	};
 
-	for (FramerateElement e = FRAMERATE_OVERALL; e < FRAMERATE_MAX; e = (FramerateElement)(e + 1)) {
-		if (e == FRAMERATE_OVERALL) continue;
+	for (FramerateElement e = FRAMERATE_FIRST; e < FRAMERATE_MAX; e = (FramerateElement)(e + 1)) {
+		IConsolePrintF(TC_GREEN, "%s rate: %.2ffps  %.2ffps  %.2ffps",
+			MEASUREMENT_NAMES[e],
+			MillisecondsToFps(GetAverageTimestep(e, count1)),
+			MillisecondsToFps(GetAverageTimestep(e, count2)),
+			MillisecondsToFps(GetAverageTimestep(e, count3)));
+	}
+
+	for (FramerateElement e = FRAMERATE_FIRST; e < FRAMERATE_MAX; e = (FramerateElement)(e + 1)) {
 		IConsolePrintF(TC_LIGHT_BLUE, "%s times: %.2fms  %.2fms  %.2fms",
 			MEASUREMENT_NAMES[e],
-			GetAverageMeasurement<count1>(e),
-			GetAverageMeasurement<count2>(e),
-			GetAverageMeasurement<count3>(e));
+			GetAverageDuration(e, count1),
+			GetAverageDuration(e, count2),
+			GetAverageDuration(e, count3));
 	}
 
 	AllocateWindowDescFront<FramerateWindow>(&_framerate_display_desc, 0);
