@@ -4741,7 +4741,7 @@ static void NewSpriteGroup(ByteReader *buf)
 				}
 			}
 
-			group->num_ranges = optimised.size();
+			group->num_ranges = (uint)optimised.size(); // cast is safe, there should never be 2**31 elements here
 			if (group->num_ranges > 0) {
 				group->ranges = MallocT<DeterministicSpriteGroupRange>(group->num_ranges);
 				MemCpyT(group->ranges, &optimised.front(), group->num_ranges);

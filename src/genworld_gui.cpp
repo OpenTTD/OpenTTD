@@ -288,7 +288,7 @@ static DropDownList *BuildMapsizeDropDown()
 
 	for (uint i = MIN_MAP_SIZE_BITS; i <= MAX_MAP_SIZE_BITS; i++) {
 		DropDownListParamStringItem *item = new DropDownListParamStringItem(STR_JUST_INT, i, false);
-		item->SetParam(0, 1 << i);
+		item->SetParam(0, 1LL << i);
 		*list->Append() = item;
 	}
 
@@ -336,8 +336,8 @@ struct GenerateLandscapeWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GL_START_DATE_TEXT:      SetDParam(0, ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1)); break;
-			case WID_GL_MAPSIZE_X_PULLDOWN:   SetDParam(0, 1 << _settings_newgame.game_creation.map_x); break;
-			case WID_GL_MAPSIZE_Y_PULLDOWN:   SetDParam(0, 1 << _settings_newgame.game_creation.map_y); break;
+			case WID_GL_MAPSIZE_X_PULLDOWN:   SetDParam(0, 1LL << _settings_newgame.game_creation.map_x); break;
+			case WID_GL_MAPSIZE_Y_PULLDOWN:   SetDParam(0, 1LL << _settings_newgame.game_creation.map_y); break;
 			case WID_GL_MAX_HEIGHTLEVEL_TEXT: SetDParam(0, _settings_newgame.construction.max_heightlevel); break;
 			case WID_GL_SNOW_LEVEL_TEXT:      SetDParam(0, _settings_newgame.game_creation.snow_line_height); break;
 
@@ -896,11 +896,11 @@ struct CreateScenarioWindow : public Window
 				break;
 
 			case WID_CS_MAPSIZE_X_PULLDOWN:
-				SetDParam(0, 1 << _settings_newgame.game_creation.map_x);
+				SetDParam(0, 1LL << _settings_newgame.game_creation.map_x);
 				break;
 
 			case WID_CS_MAPSIZE_Y_PULLDOWN:
-				SetDParam(0, 1 << _settings_newgame.game_creation.map_y);
+				SetDParam(0, 1LL << _settings_newgame.game_creation.map_y);
 				break;
 
 			case WID_CS_FLAT_LAND_HEIGHT_TEXT:
