@@ -24,6 +24,12 @@ namespace {
 
 	uint32 _framerate_durations[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
 	uint32 _framerate_timestamps[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
+	double _framerate_expected_rate[FRAMERATE_MAX] = {
+		1000.0 / MILLISECONDS_PER_TICK, // FRAMERATE_GAMELOOP
+		1000.0 / MILLISECONDS_PER_TICK, // FRAMERATE_DRAWING
+		60.0,                           // FRAMERATE_VIDEO
+		1000.0 * 8192 / 44100,          // FRAMERATE_SOUND
+	};
 	int _framerate_next_measurement_point[FRAMERATE_MAX] = {};
 
 	void StoreMeasurement(FramerateElement elem, uint32 start_time, uint32 end_time)
@@ -82,15 +88,22 @@ FramerateMeasurer::~FramerateMeasurer()
 	StoreMeasurement(this->elem, this->start_time, GetTime());
 }
 
+void FramerateMeasurer::SetExpectedRate(double rate)
+{
+	_framerate_expected_rate[this->elem] = rate;
+}
+
 
 enum FramerateWindowWidgets {
 	WID_FRW_CAPTION,
 	WID_FRW_TIMES_GAMELOOP,
 	WID_FRW_TIMES_DRAWING,
 	WID_FRW_TIMES_VIDEO,
+	WID_FRW_TIMES_SOUND,
 	WID_FRW_FPS_GAMELOOP,
 	WID_FRW_FPS_DRAWING,
 	WID_FRW_FPS_VIDEO,
+	WID_FRW_FPS_SOUND,
 };
 
 struct FramerateWindow : Window {
@@ -127,10 +140,10 @@ struct FramerateWindow : Window {
 		SetDParam(2, 2);
 	}
 
-	static void SetDParmGoodWarnBadRate(double value)
+	static void SetDParmGoodWarnBadRate(double value, FramerateElement elem)
 	{
-		const double threshold_good = 1000 / MILLISECONDS_PER_TICK - 2;
-		const double threshold_bad = 500 / MILLISECONDS_PER_TICK;
+		const double threshold_good = _framerate_expected_rate[elem] * 0.95;
+		const double threshold_bad = _framerate_expected_rate[elem] * 2 / 3;
 
 		uint tpl;
 		if (value > threshold_good) tpl = STR_FRAMERATE_FPS_GOOD;
@@ -161,18 +174,26 @@ struct FramerateWindow : Window {
 				value = GetAverageDuration(FRAMERATE_VIDEO, NUM_FRAMERATE_POINTS);
 				SetDParmGoodWarnBadDuration(value);
 				break;
+			case WID_FRW_TIMES_SOUND:
+				value = GetAverageDuration(FRAMERATE_SOUND, NUM_FRAMERATE_POINTS);
+				SetDParmGoodWarnBadDuration(value);
+				break;
 
 			case WID_FRW_FPS_GAMELOOP:
 				value = MillisecondsToFps(GetAverageTimestep(FRAMERATE_GAMELOOP, NUM_FRAMERATE_POINTS));
-				SetDParmGoodWarnBadRate(value);
+				SetDParmGoodWarnBadRate(value, FRAMERATE_GAMELOOP);
 				break;
 			case WID_FRW_FPS_DRAWING:
 				value = MillisecondsToFps(GetAverageTimestep(FRAMERATE_DRAWING, NUM_FRAMERATE_POINTS));
-				SetDParmGoodWarnBadRate(value);
+				SetDParmGoodWarnBadRate(value, FRAMERATE_DRAWING);
 				break;
 			case WID_FRW_FPS_VIDEO:
 				value = MillisecondsToFps(GetAverageTimestep(FRAMERATE_VIDEO, NUM_FRAMERATE_POINTS));
-				SetDParmGoodWarnBadRate(value);
+				SetDParmGoodWarnBadRate(value, FRAMERATE_VIDEO);
+				break;
+			case WID_FRW_FPS_SOUND:
+				value = MillisecondsToFps(GetAverageTimestep(FRAMERATE_SOUND, NUM_FRAMERATE_POINTS));
+				SetDParmGoodWarnBadRate(value, FRAMERATE_SOUND);
 				break;
 		}
 	}
@@ -183,6 +204,7 @@ struct FramerateWindow : Window {
 			case WID_FRW_TIMES_GAMELOOP:
 			case WID_FRW_TIMES_DRAWING:
 			case WID_FRW_TIMES_VIDEO:
+			case WID_FRW_TIMES_SOUND:
 				SetDParmGoodWarnBadDuration(9999.99);
 				*size = GetStringBoundingBox(STR_FRAMERATE_DISPLAY_VALUE);
 				break;
@@ -190,7 +212,8 @@ struct FramerateWindow : Window {
 			case WID_FRW_FPS_GAMELOOP:
 			case WID_FRW_FPS_DRAWING:
 			case WID_FRW_FPS_VIDEO:
-				SetDParmGoodWarnBadRate(9999.99);
+			case WID_FRW_FPS_SOUND:
+				SetDParmGoodWarnBadRate(9999.99, FRAMERATE_GAMELOOP);
 				*size = GetStringBoundingBox(STR_FRAMERATE_DISPLAY_VALUE);
 				break;
 
@@ -213,16 +236,19 @@ static const NWidgetPart _framerate_window_widgets[] = {
 				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FRAMERATE_DISPLAY_GAMELOOP, STR_FRAMERATE_DISPLAY_GAMELOOP_TOOLTIP),
 				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FRAMERATE_DISPLAY_DRAWING,  STR_FRAMERATE_DISPLAY_DRAWING_TOOLTIP),
 				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FRAMERATE_DISPLAY_VIDEO,    STR_FRAMERATE_DISPLAY_VIDEO_TOOLTIP),
+				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FRAMERATE_DISPLAY_SOUND,    STR_FRAMERATE_DISPLAY_SOUND_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_VERTICAL), SetPIP(6, 6, 6),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_TIMES_GAMELOOP), SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_GAMELOOP_TOOLTIP),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_TIMES_DRAWING),  SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_DRAWING_TOOLTIP),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_TIMES_VIDEO),    SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_VIDEO_TOOLTIP),
-				EndContainer(),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_TIMES_SOUND),    SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_SOUND_TOOLTIP),
+			EndContainer(),
 			NWidget(NWID_VERTICAL), SetPIP(6, 6, 6),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_FPS_GAMELOOP),   SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_GAMELOOP_TOOLTIP),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_FPS_DRAWING),    SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_DRAWING_TOOLTIP),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_FPS_VIDEO),      SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_VIDEO_TOOLTIP),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_FPS_SOUND),      SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_SOUND_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -248,14 +274,16 @@ void DoShowFramerate()
 		"Game loop",
 		"Drawing",
 		"Video output",
+		"Sound mixing",
 	};
 
 	for (FramerateElement e = FRAMERATE_FIRST; e < FRAMERATE_MAX; e = (FramerateElement)(e + 1)) {
-		IConsolePrintF(TC_GREEN, "%s rate: %.2ffps  %.2ffps  %.2ffps",
+		IConsolePrintF(TC_GREEN, "%s rate: %.2ffps  %.2ffps  %.2ffps  (expected: %.2ffps)",
 			MEASUREMENT_NAMES[e],
 			MillisecondsToFps(GetAverageTimestep(e, count1)),
 			MillisecondsToFps(GetAverageTimestep(e, count2)),
-			MillisecondsToFps(GetAverageTimestep(e, count3)));
+			MillisecondsToFps(GetAverageTimestep(e, count3)),
+			_framerate_expected_rate[e]);
 	}
 
 	for (FramerateElement e = FRAMERATE_FIRST; e < FRAMERATE_MAX; e = (FramerateElement)(e + 1)) {

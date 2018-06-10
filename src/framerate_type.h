@@ -17,6 +17,7 @@ enum FramerateElement {
 	FRAMERATE_FIRST = FRAMERATE_GAMELOOP,
 	FRAMERATE_DRAWING,  ///< Speed of drawing world and GUI.
 	FRAMERATE_VIDEO,    ///< Speed of painting drawn video buffer.
+	FRAMERATE_SOUND,    ///< Speed of mixing audio samples
 	FRAMERATE_MAX,      ///< End of enum, must be last.
 };
 
@@ -31,6 +32,7 @@ class FramerateMeasurer {
 public:
 	FramerateMeasurer(FramerateElement elem);
 	~FramerateMeasurer();
+	void SetExpectedRate(double rate);
 };
 
 #endif /* FRAMERATE_GUI_H */

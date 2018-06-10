@@ -2704,6 +2704,8 @@ STR_FRAMERATE_DISPLAY_DRAWING                                   :{WHITE}Screen d
 STR_FRAMERATE_DISPLAY_DRAWING_TOOLTIP                           :{BLACK}Time spent per frame on compositing game graphics
 STR_FRAMERATE_DISPLAY_VIDEO                                     :{WHITE}Video output:
 STR_FRAMERATE_DISPLAY_VIDEO_TOOLTIP                             :{BLACK}Time spent per frame to send finished graphics to screen
+STR_FRAMERATE_DISPLAY_SOUND                                     :{WHITE}Sound mixing:
+STR_FRAMERATE_DISPLAY_SOUND_TOOLTIP                             :{BLACK}Time spent per buffer to mix audio samples
 STR_FRAMERATE_DISPLAY_VALUE                                     :{STRING2}
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
