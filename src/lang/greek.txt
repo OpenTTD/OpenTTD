@@ -3092,6 +3092,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Παγκ
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Πόλη)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Πληθυσμός: {ORANGE}{COMMA}{BLACK}  Σπίτια: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} προηγούμενος μήνας: {ORANGE}{COMMA}{BLACK}  μέγιστο: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Εμπορεύματα που χρειάζονται για την επέκταση της πόλης:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} απαιτείται
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} απαιτείται τον χειμώνα
@@ -4344,6 +4345,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... αυ
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... ο δρόμος βλέπει σε λάθος κατεύθυνση
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... οι μη τερματικοί σταθμοί δε μπορούν να έχουν στροφές
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... οι μη τερματικοί σταθμοί δε μπορούν να έχουν διασταυρώσεις
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... ο δρόμος είναι μονόδρομος η μπλοκαρισμένος
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Δεν μπορεί να αφαιρεθεί μέρος του σταθμού...
@@ -4595,6 +4597,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Αρχικοί 
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Αρχικοί ήχοι από το Transport Tycoon Deluxe έκδοση Windows.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Ένα πάκετο ήχων χώρις ήχους.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Αρχική μουσική από το Transport Tycoon Deluxe έκδοση Windows.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Αρχική μουσική από το Transport Tycoon Deluxe έκδοση DOS.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Αρχική μουσική από το Transport Tycoon (Αρχικός Επεξεργαστής Κόσμου) έκδοση DOS.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Ένα πάκετο μουσικής χωρίς πραγματική μουσική.
 
 ##id 0x2000

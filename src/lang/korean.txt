@@ -651,6 +651,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}사용 가능한 음악 없음
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}트랙
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}제목
@@ -671,11 +672,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}프로�
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}배경 음악 트랙을 선택할 수 있는 창을 엽니다.
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}음악 프로그램 - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}음악 목록
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}프로그램 - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}초기화
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}세트 변경
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}현재 배경 음악 프로그램을 초기화합니다. (사용자1, 사용자2에서만 선택 가능)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}배경 음악 세트를 이미 설치된 다른 세트로 변경합니다.
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}배경 음악 목록에 음악을 추가하려면 클릭하세요. (사용자1, 사용자2에서만 사용 가능)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}배경 음악 목록에서 음악을 제거하려면 클릭하세요. (사용자1, 사용자2에서만 사용 가능)
 
@@ -1335,6 +1339,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :소형지도 �
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :녹색
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :어두운 녹색
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :보라색
+STR_CONFIG_SETTING_SCROLLMODE                                   :외부 화면 스크롤 행동: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :지도를 스크롤 할 때의 행동을 선택합니다.
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :마우스 오른쪽 클릭으로 외부 화면 이동 (마우스 위치는 고정)
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :마우스 오른쪽 클릭으로 지도 이동 (마우스 위치는 고정)
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :마우스 오른쪽 클릭으로 지도 이동
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :마우스 왼쪽 클릭으로 지도 이동
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :게임 화면을 이동시킬 때 부드럽게 이동: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :소형 지도를 클릭하여 특정 지역으로 스크롤되거나 지도 상의 특정 장소로 이동하는 경우에 주 화면이 어떻게 스크롤 되는지를 설정합니다. 이 설정을 켜면, 화면이 목표 지점까지 부드럽게 이동하고, 설정을 끄면 목표 지점으로 곧바로 넘어가게 됩니다.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :건설도구 사용시 거리 도움말 표시: {STRING}
@@ -1347,7 +1357,7 @@ STR_CONFIG_SETTING_LIVERIES_ALL                                 :모든 회사
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :엔터(ENTER) 키로 같은 팀끼리 채팅: {STRING}
 STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :이 설정을 켜면, 멀티 플레이시 같은 회사 간의 채팅을 <CTRL+ENTER> 키 대신 <ENTER> 키로 할 수 있게 됩니다.
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :마우스 휠 동작: {STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :상하좌우로 회전 가능한 마우스 휠(2차원 마우스휠)로 지도를 스크롤할 수 있게 허용합니다.
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :상하좌우로 회전 가능한 마우스 휠(2차원 마우스 휠)로 지도를 스크롤할 수 있게 허용합니다.
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :화면 확대/축소
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :지도 스크롤
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :끄기
@@ -2978,6 +2988,7 @@ STR_TOWN_POPULATION                                             :{BLACK}총 인�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (대도시)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}인구: {ORANGE}{COMMA}{BLACK}  가구수: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} 지난 달: {ORANGE}{COMMA}{BLACK}  최대: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}도시가 성장하기 위해 필요한 화물:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED}{G 0 "이" "가"} 필요함
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :겨울에는 {ORANGE}{STRING}{BLACK}{G 0 "이" "가"} 필요함
@@ -4224,6 +4235,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... 여�
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... 도로의 방향과 일치하지 않습니다.
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... 도로 통과 정류장은 곡선도로에 건설할 수 없습니다.
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... 도로 통과 정류장은 교차로에 건설할 수 없습니다.
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... 도로가 일방통행이거나 막혔습니다
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}역의 일부를 제거할 수 없습니다...
@@ -4475,6 +4487,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :오리지널 �
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :오리지널 트랜스포트 타이쿤 디럭스 윈도 에디션의 효과음입니다.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :아무런 효과음도 없는 효과음 팩입니다.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :오리지널 트랜스포트 타이쿤 디럭스 윈도 에디션의 음악입니다.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :오리지널 트랜스포트 타이쿤 디럭스 DOS 에디션의 음악입니다.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :오리지널 트랜스포트 타이쿤 (오리지널/월드 에디터) DOS 에디션의 음악입니다.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :실제 음악이 없는 음악 목록입니다.
 
 ##id 0x2000
