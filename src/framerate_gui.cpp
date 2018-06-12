@@ -262,7 +262,12 @@ static WindowDesc _framerate_display_desc(
 );
 
 
-void DoShowFramerate()
+void ShowFramerateWindow()
+{
+	AllocateWindowDescFront<FramerateWindow>(&_framerate_display_desc, 0);
+}
+
+void ConPrintFramerate()
 {
 	const int count1 = NUM_FRAMERATE_POINTS / 1;
 	const int count2 = NUM_FRAMERATE_POINTS / 4;
@@ -293,6 +298,4 @@ void DoShowFramerate()
 			GetAverageDuration(e, count2),
 			GetAverageDuration(e, count3));
 	}
-
-	AllocateWindowDescFront<FramerateWindow>(&_framerate_display_desc, 0);
 }

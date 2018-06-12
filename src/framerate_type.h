@@ -35,4 +35,6 @@ public:
 	void SetExpectedRate(double rate);
 };
 
+void ShowFramerateWindow();
+
 #endif /* FRAMERATE_GUI_H */

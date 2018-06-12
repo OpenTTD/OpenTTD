@@ -1896,14 +1896,14 @@ static void IConsoleDebugLibRegister()
 #endif
 DEF_CONSOLE_CMD(ConFramerate)
 {
-	extern void DoShowFramerate(); // framerate_gui.cpp
+	extern void ConPrintFramerate(); // framerate_gui.cpp
 
 	if (argc == 0) {
 		IConsoleHelp("Show framerate and game speed information");
 		return true;
 	}
 
-	DoShowFramerate();
+	ConPrintFramerate();
 	return true;
 }
 
