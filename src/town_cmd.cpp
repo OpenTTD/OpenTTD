@@ -3173,6 +3173,7 @@ static int CountActiveStations(Town *t)
 
 /**
  * Calculates town growth rate in normal conditions (custom growth rate not set).
+ * If town growth speed is set to None(0) returns the same rate as if it was Normal(2).
  * @param town The town to calculate growth rate for
  * @returns Calculated growth rate
  */
@@ -3186,8 +3187,6 @@ static uint GetNormalGrowthRate(Town *t)
 	int n = CountActiveStations(t);
 	uint16 m = _grow_count_values[t->fund_buildings_months != 0 ? 0 : 1][min(n, 5)];
 
-	/* Use the normal growth rate values if new buildings have been funded in
-	 * this town and the growth rate is set to none. */
 	uint growth_multiplier = _settings_game.economy.town_growth_rate != 0 ? _settings_game.economy.town_growth_rate - 1 : 1;
 
 	m >>= growth_multiplier;
