@@ -57,27 +57,6 @@ bool IsValidImageIndex<VEH_TRAIN>(uint8 image_index)
 	return image_index < lengthof(_engine_sprite_base);
 }
 
-/**
- * Determine the side in which the train will leave the tile
- *
- * @param direction vehicle direction
- * @param track vehicle track bits
- * @return side of tile the train will leave
- */
-static inline DiagDirection TrainExitDir(Direction direction, TrackBits track)
-{
-	static const TrackBits state_dir_table[DIAGDIR_END] = { TRACK_BIT_RIGHT, TRACK_BIT_LOWER, TRACK_BIT_LEFT, TRACK_BIT_UPPER };
-
-	DiagDirection diagdir = DirToDiagDir(direction);
-
-	/* Determine the diagonal direction in which we will exit this tile */
-	if (!HasBit(direction, 0) && track != state_dir_table[diagdir]) {
-		diagdir = ChangeDiagDir(diagdir, DIAGDIRDIFF_90LEFT);
-	}
-
-	return diagdir;
-}
-
 
 /**
  * Return the cargo weight multiplier to use for a rail vehicle
@@ -1872,9 +1851,9 @@ void ReverseTrainDirection(Train *v)
 		return;
 	}
 
-	/* TrainExitDir does not always produce the desired dir for depots and
+	/* VehicleExitDir does not always produce the desired dir for depots and
 	 * tunnels/bridges that is needed for UpdateSignalsOnSegment. */
-	DiagDirection dir = TrainExitDir(v->direction, v->track);
+	DiagDirection dir = VehicleExitDir(v->direction, v->track);
 	if (IsRailDepotTile(v->tile) || IsTileType(v->tile, MP_TUNNELBRIDGE)) dir = INVALID_DIAGDIR;
 
 	if (UpdateSignalsOnSegment(v->tile, dir, v->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
@@ -3098,7 +3077,7 @@ static Vehicle *CheckTrainAtSignal(Vehicle *v, void *data)
 	/* not front engine of a train, inside wormhole or depot, crashed */
 	if (!t->IsFrontEngine() || !(t->track & TRACK_BIT_MASK)) return NULL;
 
-	if (t->cur_speed > 5 || TrainExitDir(t->direction, t->track) != exitdir) return NULL;
+	if (t->cur_speed > 5 || VehicleExitDir(t->direction, t->track) != exitdir) return NULL;
 
 	return t;
 }
@@ -3681,7 +3660,7 @@ static TileIndex TrainApproachingCrossingTile(const Train *v)
 
 	if (!TrainCanLeaveTile(v)) return INVALID_TILE;
 
-	DiagDirection dir = TrainExitDir(v->direction, v->track);
+	DiagDirection dir = VehicleExitDir(v->direction, v->track);
 	TileIndex tile = v->tile + TileOffsByDiagDir(dir);
 
 	/* not a crossing || wrong axis || unusable rail (wrong type or owner) */
@@ -3718,7 +3697,7 @@ static bool TrainCheckIfLineEnds(Train *v, bool reverse)
 	if (!TrainCanLeaveTile(v)) return true;
 
 	/* Determine the non-diagonal direction in which we will exit this tile */
-	DiagDirection dir = TrainExitDir(v->direction, v->track);
+	DiagDirection dir = VehicleExitDir(v->direction, v->track);
 	/* Calculate next tile */
 	TileIndex tile = v->tile + TileOffsByDiagDir(dir);
 
@@ -3786,7 +3765,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 		/* Try to reserve a path when leaving the station as we
 		 * might not be marked as wanting a reservation, e.g.
 		 * when an overlength train gets turned around in a station. */
-		DiagDirection dir = TrainExitDir(v->direction, v->track);
+		DiagDirection dir = VehicleExitDir(v->direction, v->track);
 		if (IsRailDepotTile(v->tile) || IsTileType(v->tile, MP_TUNNELBRIDGE)) dir = INVALID_DIAGDIR;
 
 		if (UpdateSignalsOnSegment(v->tile, dir, v->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
