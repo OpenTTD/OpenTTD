@@ -3167,6 +3167,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Насе
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Мегаполис)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Население: {ORANGE}{COMMA}{BLACK} Зданий: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} в прошлом месяце: {ORANGE}{COMMA}{BLACK} Макс.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Груз, необходимый для роста города:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} требу{G 0 е е е ю}тся
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} требу{G 0 е е е ю}тся зимой
@@ -4423,6 +4424,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... эт
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... неверное направление дороги
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... на проходных остановках нельзя делать повороты
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... на проходных остановках нельзя делать перекрёстки
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... дорога односторонняя или заблокирована
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Невозможно удалить часть станции...
@@ -4491,7 +4493,7 @@ STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Недо
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Сначала удалите сигналы
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Нет подходящих рельсов
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Сначала удалите рельсы
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дорога односторонняя или блокирована
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дорога односторонняя или заблокирована
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Через этот вид рельсов запрещено строить переезды
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Здесь невозможно поставить сигнал...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Здесь невозможно проложить рельсы...
@@ -4667,13 +4669,15 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не у�
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Экономический симулятор на основе игры «Transport Tycoon Deluxe»
 
 # Translatable descriptions in media/baseset/*.ob* files
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Оригинальная графика из Transport Tycoon Deluxe для DOS.
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Оригинальная графика из немецкой версии Transport Tycoon Deluxe для DOS.
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Оригинальная графика из Transport Tycoon Deluxe для Windows.
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :Оригинальный набор звукового оформления из игры Transport Tycoon Deluxe для DOS.
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :Оригинальный набор звукового оформления из игры Transport Tycoon Deluxe для Windows.
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Графика из Transport Tycoon Deluxe для DOS.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Графика из немецкой версии Transport Tycoon Deluxe для DOS.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Графика из Transport Tycoon Deluxe для Windows.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Набор звукового оформления из игры Transport Tycoon Deluxe для DOS.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Набор звукового оформления из игры Transport Tycoon Deluxe для Windows.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :"Пустой" набор звукового оформления, не содержащий никаких звуков.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Оригинальный набор музыкального оформления из игры Transport Tycoon Deluxe для Windows.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Набор музыкального оформления из игры Transport Tycoon Deluxe для Windows.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Набор музыкального оформления из игры Transport Tycoon Deluxe для DOS.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Набор музыкального оформления из игры Transport Tycoon Deluxe для DOS.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :"Пустой" набор музыкального оформления, не содержащий никакой музыки.
 
 ##id 0x2000
