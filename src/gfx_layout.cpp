@@ -597,6 +597,7 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, const char *&str, 
 	Font *f = Layouter::GetFont(state.fontsize, state.cur_colour);
 
 	line.buffer = buff_begin;
+	fontMapping.Clear();
 
 	/*
 	 * Go through the whole string while adding Font instances to the font map
