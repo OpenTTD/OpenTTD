@@ -674,7 +674,9 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTB
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}全部音轨列表
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}当前选用'{STRING}'列表
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}清除
+STR_PLAYLIST_CHANGE_SET                                         :更改设置
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}清除当前列表中曲目{}（仅限自定义1或自定义2）
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}选择另一种已安装的音乐
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}点击音乐曲目以加入当前播放列表{}(仅限自定义1或自定义2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}点击音乐曲目以从当前播放列表中删除{}(仅限自定义1或自定义2)
 
@@ -1334,6 +1336,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :设置缩略地
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :绿色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :深绿色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :紫色
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :鼠标右键移动地图
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :平滑视角滚动： {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :设置在缩略图上点击或者发出转到特定目标的命令时主视角的转换方式，如果“打开”本选项，视角平缓滚动，“关闭”时直接跳转到目标位置
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :建设时显示测量数据：{STRING}
@@ -3647,6 +3650,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} 年 ({C
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} 年 ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最大速度：{LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}最高速度： {LTBLUE}{VELOCITY} {BLACK}飞机种类： {LTBLUE}{STRING}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最大速度：{LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最大速度：{LTBLUE}{VELOCITY} {BLACK}最大牵引力：{LTBLUE}{FORCE}
 
@@ -4464,6 +4468,7 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :运输大亨DOS
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Transport Tycoon Deluxe Windows (运输大亨Windows豪华版)的原版音效包.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :一个空的音效包.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Transport Tycoon Deluxe（运输大亨Windows豪华版）的原版音乐包
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :运输大亨DOS豪华版原版音乐。
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :一个没有实际内容的音乐包.
 
 ##id 0x2000
