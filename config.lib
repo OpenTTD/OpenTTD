@@ -2667,6 +2667,11 @@ detect_library() {
 		eval "res=\$$2"
 		if [ -z "$res" ]; then
 			log 2 "  trying /mingw/include/$4$5... no"
+			eval "$2=`ls -1 /mingw$cpu_type/include/$4*.h 2>/dev/null | egrep \"\/$5\$\"`"
+		fi
+		eval "res=\$$2"
+		if [ -z "$res" ]; then
+			log 2 "  trying /mingw$cpu_type/include/$4$5... no"
 			eval "$2=`ls -1 /opt/local/include/$4*.h 2>/dev/null | egrep \"\/$5\$\"`"
 		fi
 		eval "res=\$$2"
@@ -2715,6 +2720,11 @@ detect_library() {
 			eval "res=\$$2"
 			if [ -z "$res" ]; then
 				log 2 "  trying /mingw/lib/$3... no"
+				eval "$2=`ls /mingw$cpu_type/lib/*.a 2>/dev/null | egrep \"\/$3\$\"`"
+			fi
+			eval "res=\$$2"
+			if [ -z "$res" ]; then
+				log 2 "  trying /mingw$cpu_type/lib/$3... no"
 				log 1 "configure: error: $2 couldn't be found"
 				log 1 "configure: error: you requested a static link, but I can't find $3"
 
