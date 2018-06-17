@@ -12,6 +12,7 @@
 #include "framerate_type.h"
 #include "gfx_func.h"
 #include "window_gui.h"
+#include "table/sprites.h"
 #include "strings_func.h"
 #include "debug.h"
 #include "console_func.h"
@@ -31,6 +32,7 @@ namespace {
 		1000.0 * 8192 / 44100,          // FRAMERATE_SOUND
 	};
 	int _framerate_next_measurement_point[FRAMERATE_MAX] = {};
+	int _framerate_num_measurements[FRAMERATE_MAX] = {};
 
 	void StoreMeasurement(FramerateElement elem, uint32 start_time, uint32 end_time)
 	{
@@ -38,11 +40,13 @@ namespace {
 		_framerate_timestamps[elem][_framerate_next_measurement_point[elem]] = start_time;
 		_framerate_next_measurement_point[elem] += 1;
 		_framerate_next_measurement_point[elem] %= NUM_FRAMERATE_POINTS;
+		_framerate_num_measurements[elem] = min(NUM_FRAMERATE_POINTS, _framerate_num_measurements[elem] + 1);
 	}
 
 	double GetAverageDuration(FramerateElement elem, int points)
 	{
 		assert(elem < FRAMERATE_MAX);
+		points = min(points, _framerate_num_measurements[elem]);
 
 		int first_point = _framerate_next_measurement_point[elem] - points - 1;
 		while (first_point < 0) first_point += NUM_FRAMERATE_POINTS;
@@ -58,6 +62,7 @@ namespace {
 	uint32 GetAverageTimestep(FramerateElement elem, int points)
 	{
 		assert(elem < FRAMERATE_MAX);
+		points = min(points, _framerate_num_measurements[elem]);
 
 		int first = _framerate_next_measurement_point[elem] - points;
 		int last = _framerate_next_measurement_point[elem] - 1;
@@ -70,6 +75,11 @@ namespace {
 	double MillisecondsToFps(uint32 ms)
 	{
 		return 1000.0 / ms;
+	}
+
+	double GetFramerate(FramerateElement elem)
+	{
+		return MillisecondsToFps(GetAverageTimestep(elem, NUM_FRAMERATE_POINTS));
 	}
 
 }
@@ -96,21 +106,65 @@ void FramerateMeasurer::SetExpectedRate(double rate)
 
 enum FramerateWindowWidgets {
 	WID_FRW_CAPTION,
-	WID_FRW_TIMES_GAMELOOP,
-	WID_FRW_TIMES_DRAWING,
-	WID_FRW_TIMES_VIDEO,
-	WID_FRW_TIMES_SOUND,
-	WID_FRW_FPS_GAMELOOP,
-	WID_FRW_FPS_DRAWING,
-	WID_FRW_FPS_VIDEO,
-	WID_FRW_FPS_SOUND,
+	WID_FRW_TOGGLE_SIZE,
+	WID_FRW_DETAILSPANEL,
+	WID_FRW_RATE_GAMELOOP,
+	WID_FRW_RATE_BLITTER,
+	WID_FRW_INFO_DATA_POINTS,
+	WID_FRW_TIMES_NAMES,
+	WID_FRW_TIMES_CURRENT,
+	WID_FRW_TIMES_AVERAGE,
+	WID_FRW_TIMES_WORST,
+};
+
+static const NWidgetPart _framerate_window_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_FRAMERATE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, WID_FRW_TOGGLE_SIZE), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(NWID_VERTICAL), SetPadding(6), SetPIP(0, 3, 0),
+			NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_RATE_GAMELOOP), SetDataTip(STR_FRAMERATE_RATE_GAMELOOP, STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP),
+			NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_RATE_BLITTER),  SetDataTip(STR_FRAMERATE_RATE_BLITTER,  STR_FRAMERATE_RATE_BLITTER_TOOLTIP),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_FRW_DETAILSPANEL),
+		NWidget(WWT_PANEL, COLOUR_GREY),
+			NWidget(NWID_VERTICAL), SetPadding(6), SetPIP(0, 3, 0),
+				NWidget(NWID_HORIZONTAL), SetPIP(0, 6, 0),
+					NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_NAMES),
+					NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_CURRENT),
+					NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_AVERAGE),
+					NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_WORST),
+				EndContainer(),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_INFO_DATA_POINTS), SetDataTip(STR_FRAMERATE_DATA_POINTS, 0x0),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
 };
 
 struct FramerateWindow : Window {
+	bool small;
+	uint32 last_update;
+
+	static const int VSPACING = 3;
+	static const uint32 UPDATE_INTERVAL = 200;
 
 	FramerateWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
+		this->last_update = 0;
 		this->InitNested(number);
+		this->SetSmall(true);
+	}
+
+	void SetSmall(bool small)
+	{
+		this->small = small;
+		int plane = this->small ? SZSP_NONE : 0;
+		this->GetWidget<NWidgetStacked>(WID_FRW_DETAILSPANEL)->SetDisplayedPlane(plane);
+		this->ReInit();
 	}
 
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
@@ -121,10 +175,14 @@ struct FramerateWindow : Window {
 
 	virtual void OnTick()
 	{
-		this->InvalidateData();
+		uint32 now = GetTime();
+		if (now - this->last_update >= UPDATE_INTERVAL) {
+			this->last_update = now;
+			this->InvalidateData();
+		}
 	}
 
-	static void SetDParmGoodWarnBadDuration(double value)
+	static void SetDParamGoodWarnBadDuration(double value)
 	{
 		const double threshold_good = MILLISECONDS_PER_TICK / 3;
 		const double threshold_bad = MILLISECONDS_PER_TICK;
@@ -140,7 +198,7 @@ struct FramerateWindow : Window {
 		SetDParam(2, 2);
 	}
 
-	static void SetDParmGoodWarnBadRate(double value, FramerateElement elem)
+	static void SetDParamGoodWarnBadRate(double value, FramerateElement elem)
 	{
 		const double threshold_good = _framerate_expected_rate[elem] * 0.95;
 		const double threshold_bad = _framerate_expected_rate[elem] * 2 / 3;
@@ -158,42 +216,19 @@ struct FramerateWindow : Window {
 
 	virtual void SetStringParameters(int widget) const
 	{
-		static char text_value[FRAMERATE_MAX][32];
 		double value;
 
 		switch (widget) {
-			case WID_FRW_TIMES_GAMELOOP:
-				value = GetAverageDuration(FRAMERATE_GAMELOOP, NUM_FRAMERATE_POINTS);
-				SetDParmGoodWarnBadDuration(value);
+			case WID_FRW_RATE_GAMELOOP:
+				value = GetFramerate(FRAMERATE_GAMELOOP);
+				SetDParamGoodWarnBadRate(value, FRAMERATE_GAMELOOP);
 				break;
-			case WID_FRW_TIMES_DRAWING:
-				value = GetAverageDuration(FRAMERATE_DRAWING, NUM_FRAMERATE_POINTS);
-				SetDParmGoodWarnBadDuration(value);
+			case WID_FRW_RATE_BLITTER:
+				value = GetFramerate(FRAMERATE_DRAWING);
+				SetDParamGoodWarnBadRate(value, FRAMERATE_DRAWING);
 				break;
-			case WID_FRW_TIMES_VIDEO:
-				value = GetAverageDuration(FRAMERATE_VIDEO, NUM_FRAMERATE_POINTS);
-				SetDParmGoodWarnBadDuration(value);
-				break;
-			case WID_FRW_TIMES_SOUND:
-				value = GetAverageDuration(FRAMERATE_SOUND, NUM_FRAMERATE_POINTS);
-				SetDParmGoodWarnBadDuration(value);
-				break;
-
-			case WID_FRW_FPS_GAMELOOP:
-				value = MillisecondsToFps(GetAverageTimestep(FRAMERATE_GAMELOOP, NUM_FRAMERATE_POINTS));
-				SetDParmGoodWarnBadRate(value, FRAMERATE_GAMELOOP);
-				break;
-			case WID_FRW_FPS_DRAWING:
-				value = MillisecondsToFps(GetAverageTimestep(FRAMERATE_DRAWING, NUM_FRAMERATE_POINTS));
-				SetDParmGoodWarnBadRate(value, FRAMERATE_DRAWING);
-				break;
-			case WID_FRW_FPS_VIDEO:
-				value = MillisecondsToFps(GetAverageTimestep(FRAMERATE_VIDEO, NUM_FRAMERATE_POINTS));
-				SetDParmGoodWarnBadRate(value, FRAMERATE_VIDEO);
-				break;
-			case WID_FRW_FPS_SOUND:
-				value = MillisecondsToFps(GetAverageTimestep(FRAMERATE_SOUND, NUM_FRAMERATE_POINTS));
-				SetDParmGoodWarnBadRate(value, FRAMERATE_SOUND);
+			case WID_FRW_INFO_DATA_POINTS:
+				SetDParam(0, NUM_FRAMERATE_POINTS);
 				break;
 		}
 	}
@@ -201,57 +236,101 @@ struct FramerateWindow : Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case WID_FRW_TIMES_GAMELOOP:
-			case WID_FRW_TIMES_DRAWING:
-			case WID_FRW_TIMES_VIDEO:
-			case WID_FRW_TIMES_SOUND:
-				SetDParmGoodWarnBadDuration(9999.99);
-				*size = GetStringBoundingBox(STR_FRAMERATE_DISPLAY_VALUE);
+			case WID_FRW_RATE_GAMELOOP:
+				SetDParamGoodWarnBadRate(9999.99, FRAMERATE_GAMELOOP);
+				*size = GetStringBoundingBox(STR_FRAMERATE_RATE_GAMELOOP);
+				break;
+			case WID_FRW_RATE_BLITTER:
+				SetDParamGoodWarnBadRate(9999.99, FRAMERATE_DRAWING);
+				*size = GetStringBoundingBox(STR_FRAMERATE_RATE_BLITTER);
 				break;
 
-			case WID_FRW_FPS_GAMELOOP:
-			case WID_FRW_FPS_DRAWING:
-			case WID_FRW_FPS_VIDEO:
-			case WID_FRW_FPS_SOUND:
-				SetDParmGoodWarnBadRate(9999.99, FRAMERATE_GAMELOOP);
-				*size = GetStringBoundingBox(STR_FRAMERATE_DISPLAY_VALUE);
+			case WID_FRW_TIMES_NAMES: {
+				int linecount = FRAMERATE_MAX - FRAMERATE_FIRST;
+				size->width = 0;
+				size->height = FONT_HEIGHT_NORMAL * (linecount + 1) + VSPACING;
+				for (int line = 0; line < linecount; line++) {
+					auto line_size = GetStringBoundingBox(STR_FRAMERATE_GAMELOOP + line);
+					size->width = max(size->width, line_size.width);
+				}
 				break;
+			}
+
+			case WID_FRW_TIMES_CURRENT:
+			case WID_FRW_TIMES_AVERAGE:
+			case WID_FRW_TIMES_WORST: {
+				int linecount = FRAMERATE_MAX - FRAMERATE_FIRST;
+				*size = GetStringBoundingBox(STR_FRAMERATE_CURRENT + (widget - WID_FRW_TIMES_CURRENT));
+				SetDParamGoodWarnBadDuration(9999.99);
+				auto item_size = GetStringBoundingBox(STR_FRAMERATE_VALUE);
+				size->width = max(size->width, item_size.width);
+				size->height += FONT_HEIGHT_NORMAL * linecount + VSPACING;
+				break;
+			}
 
 			default:
 				Window::UpdateWidgetSize(widget, size, padding, fill, resize);
 				break;
 		}
 	}
-};
 
-static const NWidgetPart _framerate_window_widgets[] = {
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_FRAMERATE_DISPLAY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY),
-	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(NWID_HORIZONTAL),  SetPIP(6, 3, 6),
-			NWidget(NWID_VERTICAL), SetPIP(6, 6, 6),
-				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FRAMERATE_DISPLAY_GAMELOOP, STR_FRAMERATE_DISPLAY_GAMELOOP_TOOLTIP),
-				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FRAMERATE_DISPLAY_DRAWING,  STR_FRAMERATE_DISPLAY_DRAWING_TOOLTIP),
-				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FRAMERATE_DISPLAY_VIDEO,    STR_FRAMERATE_DISPLAY_VIDEO_TOOLTIP),
-				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FRAMERATE_DISPLAY_SOUND,    STR_FRAMERATE_DISPLAY_SOUND_TOOLTIP),
-			EndContainer(),
-			NWidget(NWID_VERTICAL), SetPIP(6, 6, 6),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_TIMES_GAMELOOP), SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_GAMELOOP_TOOLTIP),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_TIMES_DRAWING),  SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_DRAWING_TOOLTIP),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_TIMES_VIDEO),    SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_VIDEO_TOOLTIP),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_TIMES_SOUND),    SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_SOUND_TOOLTIP),
-			EndContainer(),
-			NWidget(NWID_VERTICAL), SetPIP(6, 6, 6),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_FPS_GAMELOOP),   SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_GAMELOOP_TOOLTIP),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_FPS_DRAWING),    SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_DRAWING_TOOLTIP),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_FPS_VIDEO),      SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_VIDEO_TOOLTIP),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_FPS_SOUND),      SetDataTip(STR_FRAMERATE_DISPLAY_VALUE, STR_FRAMERATE_DISPLAY_SOUND_TOOLTIP),
-			EndContainer(),
-		EndContainer(),
-	EndContainer(),
+	typedef double (ElementValueExtractor)(FramerateElement elem);
+	void DrawElementTimesColumn(const Rect &r, int heading_str, ElementValueExtractor get_value_func) const
+	{
+		int y = r.top;
+		DrawString(r.left, r.right, y, heading_str, TC_FROMSTRING, SA_CENTER);
+		y += FONT_HEIGHT_NORMAL + VSPACING;
+
+		for (FramerateElement e = FRAMERATE_FIRST; e < FRAMERATE_MAX; e = (FramerateElement)(e + 1)) {
+			double value = get_value_func(e);
+			SetDParamGoodWarnBadDuration(value);
+			DrawString(r.left, r.right, y, STR_FRAMERATE_VALUE, TC_FROMSTRING, SA_RIGHT);
+			y += FONT_HEIGHT_NORMAL;
+		}
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case WID_FRW_TIMES_NAMES: {
+				int linecount = FRAMERATE_MAX - FRAMERATE_FIRST;
+				int y = r.top + FONT_HEIGHT_NORMAL + VSPACING;
+				for (int i = 0; i < linecount; i++) {
+					DrawString(r.left, r.right, y, STR_FRAMERATE_GAMELOOP + i, TC_FROMSTRING, SA_LEFT);
+					y += FONT_HEIGHT_NORMAL;
+				}
+				break;
+			}
+			case WID_FRW_TIMES_CURRENT:
+				DrawElementTimesColumn(r, STR_FRAMERATE_CURRENT, [](FramerateElement elem) {
+					return GetAverageDuration(elem, 8);
+				});
+				break;
+			case WID_FRW_TIMES_AVERAGE:
+				DrawElementTimesColumn(r, STR_FRAMERATE_AVERAGE, [](FramerateElement elem) {
+					return GetAverageDuration(elem, NUM_FRAMERATE_POINTS);
+				});
+				break;
+			case WID_FRW_TIMES_WORST:
+				DrawElementTimesColumn(r, STR_FRAMERATE_WORST, [](FramerateElement elem) {
+					uint32 worst = 0;
+					for (int i = 0; i < NUM_FRAMERATE_POINTS; i++) {
+						worst = max(worst, _framerate_durations[elem][i]);
+					}
+					return (double)worst;
+				});
+				break;
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget, int click_count)
+	{
+		switch (widget) {
+			case WID_FRW_TOGGLE_SIZE:
+				this->SetSmall(!this->small);
+				break;
+		}
+	}
 };
 
 static WindowDesc _framerate_display_desc(
