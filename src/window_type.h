@@ -687,6 +687,12 @@ enum WindowClass {
 	 */
 	WC_FRAMERATE_DISPLAY,
 
+	/**
+	 * Frame time graph; %Window numbers:
+	 *   - 0 = #FramerateDisplayWidgets
+	 */
+	WC_FRAMETIME_GRAPH,
+
 	WC_INVALID = 0xFFFF, ///< Invalid window.
 };
 

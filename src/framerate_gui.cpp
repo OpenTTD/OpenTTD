@@ -69,6 +69,9 @@ namespace {
 		if (first < 0) first += NUM_FRAMERATE_POINTS;
 		if (last < 0) last += NUM_FRAMERATE_POINTS;
 
+		points -= 1;
+		if (points < 1) return 1000;
+
 		return (_framerate_timestamps[elem][last] - _framerate_timestamps[elem][first]) / points;
 	}
 
@@ -83,6 +86,21 @@ namespace {
 	}
 
 }
+
+
+#ifdef WIN32
+#include <windows.h>
+static uint32 GetTime()
+{
+	LARGE_INTEGER pfc, pfq;
+	if (QueryPerformanceFrequency(&pfq) && QueryPerformanceCounter(&pfc)) {
+		pfq.QuadPart /= 1000;
+		return pfc.QuadPart / pfq.QuadPart;
+	} else {
+		return GetTickCount();
+	}
+}
+#endif
 
 
 FramerateMeasurer::FramerateMeasurer(FramerateElement elem)
@@ -102,6 +120,9 @@ void FramerateMeasurer::SetExpectedRate(double rate)
 {
 	_framerate_expected_rate[this->elem] = rate;
 }
+
+
+void ShowFrametimeGraphWindow(FramerateElement elem);
 
 
 enum FramerateWindowWidgets {
@@ -329,6 +350,15 @@ struct FramerateWindow : Window {
 			case WID_FRW_TOGGLE_SIZE:
 				this->SetSmall(!this->small);
 				break;
+
+			case WID_FRW_TIMES_NAMES: {
+				int line = this->GetRowFromWidget(pt.y, widget, VSPACING, FONT_HEIGHT_NORMAL);
+				if (line > 0) {
+					line -= 1;
+					ShowFrametimeGraphWindow((FramerateElement)line);
+				}
+				break;
+			}
 		}
 	}
 };
@@ -341,9 +371,85 @@ static WindowDesc _framerate_display_desc(
 );
 
 
+enum FrametimeGraphWindowWidgets {
+	WID_FGW_CAPTION,
+	WID_FGW_GRAPH,
+};
+
+static const NWidgetPart _frametime_graph_window_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_FGW_CAPTION), SetDataTip(STR_WHITE_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(NWID_VERTICAL), SetPadding(6),
+			NWidget(WWT_EMPTY, COLOUR_GREY, WID_FGW_GRAPH),
+		EndContainer(),
+	EndContainer(),
+};
+
+struct FrametimeGraphWindow : Window {
+	FramerateElement element;
+
+	FrametimeGraphWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
+	{
+		this->element = (FramerateElement)number;
+		this->InitNested(number);
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case WID_FGW_CAPTION:
+				SetDParam(0, STR_FRAMETIME_CAPTION_GAMELOOP + this->element);
+				break;
+		}
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		if (widget == WID_FGW_GRAPH) {
+			size->width = NUM_FRAMERATE_POINTS;
+			size->height = 100;
+		}
+	}
+
+	virtual void OnTick()
+	{
+		this->SetDirty();
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget == WID_FGW_GRAPH) {
+			for (int i = 0; i < NUM_FRAMERATE_POINTS; i++) {
+				int point = _framerate_next_measurement_point[this->element] + i;
+				uint32 value = _framerate_durations[this->element][point % NUM_FRAMERATE_POINTS];
+				GfxDrawLine(r.left + i, r.bottom - value, r.left + i, r.bottom, 0);
+			}
+		}
+	}
+};
+
+static WindowDesc _frametime_graph_window_desc(
+	WDP_AUTO, "frametime_graph", 140, 90,
+	WC_FRAMETIME_GRAPH, WC_FRAMERATE_DISPLAY,
+	0,
+	_frametime_graph_window_widgets, lengthof(_frametime_graph_window_widgets)
+);
+
+
+
 void ShowFramerateWindow()
 {
 	AllocateWindowDescFront<FramerateWindow>(&_framerate_display_desc, 0);
+}
+
+void ShowFrametimeGraphWindow(FramerateElement elem)
+{
+	if (elem < FRAMERATE_FIRST || elem >= FRAMERATE_MAX) return; // maybe warn?
+	AllocateWindowDescFront<FrametimeGraphWindow>(&_frametime_graph_window_desc, elem, true);
 }
 
 void ConPrintFramerate()

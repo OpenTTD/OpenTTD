@@ -13,12 +13,12 @@
 #include "stdafx.h"
 
 enum FramerateElement {
-	FRAMERATE_GAMELOOP, ///< Speed of gameloop processing.
+	FRAMERATE_GAMELOOP,       ///< Speed of gameloop processing.
 	FRAMERATE_FIRST = FRAMERATE_GAMELOOP,
-	FRAMERATE_DRAWING,  ///< Speed of drawing world and GUI.
-	FRAMERATE_VIDEO,    ///< Speed of painting drawn video buffer.
-	FRAMERATE_SOUND,    ///< Speed of mixing audio samples
-	FRAMERATE_MAX,      ///< End of enum, must be last.
+	FRAMERATE_DRAWING,        ///< Speed of drawing world and GUI.
+	FRAMERATE_VIDEO,          ///< Speed of painting drawn video buffer.
+	FRAMERATE_SOUND,          ///< Speed of mixing audio samples
+	FRAMERATE_MAX,            ///< End of enum, must be last.
 };
 
 /**
