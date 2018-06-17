@@ -149,6 +149,16 @@ git push
 
 **IMPORTANT**: By submitting a patch, you agree to the [License](#license).
 
+### Privacy Notice
+
+We would like to make you aware that contributing to OpenTTD via git will permanently store the name and email address you provide as well as the actual changes and the time and date you made it inside git's version history.
+
+This is inevitable, because it is a main feature of git. If you are concerned about your privacy, we strongly recommend to use "Anonymous &lt;anonymous@openttd.org&gt;" as the git commit author. We might refuse anonymous contributions if malicious intent is suspected.
+
+Please note that the contributor identity, once given, is used for copyright verification and to provide proof should a malicious commit be made. As such, the [EU GDPR](https://www.eugdpr.org/key-changes.html) "right to be forgotten" does not apply, as this is an overriding legitimate interest.
+
+Please also note that your commit is public and as such will potentially be processed by many third-parties. Git's distributed nature makes it impossible to track where exactly your commit, and thus your personal data, will be stored and be processed. If you would not like to accept this risk, please do either commit anonymously or refrain from contributing to the OpenTTD project.
+
 ### Pull request validation
 
 Continuous integration (CI) tools monitor pull requests, and help us identify build and code quality issues.
@@ -168,3 +178,4 @@ By contributing your code, you agree to license your contribution under the [GPL
 ### Attribution of this Contributing Guide
 
 This contributing guide is adapted from [Bootstrap](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md) under the [Creative Commons Attribution 3.0 Unported License](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE) terms for Bootstrap documentation.
+The GDPR notice is adapted from [rsyslog](https://github.com/rsyslog/rsyslog/blob/master/CONTRIBUTING.md) under the [GNU General Public License](https://github.com/rsyslog/rsyslog/blob/master/COPYING).
