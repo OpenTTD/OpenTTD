@@ -805,16 +805,15 @@ int OTTDStringCompare(const char *s1, const char *s2)
 }
 
 #ifdef _MSC_VER
-/* Code from MSDN: https://msdn.microsoft.com/en-us/library/xcb2z8hs.aspx */
+/* Based on code from MSDN: https://msdn.microsoft.com/en-us/library/xcb2z8hs.aspx */
 const DWORD MS_VC_EXCEPTION = 0x406D1388;
-#pragma pack(push,8)
-typedef struct {
+
+PACK_N(struct THREADNAME_INFO {
 	DWORD dwType;     ///< Must be 0x1000.
 	LPCSTR szName;    ///< Pointer to name (in user addr space).
 	DWORD dwThreadID; ///< Thread ID (-1=caller thread).
 	DWORD dwFlags;    ///< Reserved for future use, must be zero.
-} THREADNAME_INFO;
-#pragma pack(pop)
+}, 8);
 
 /**
  * Signal thread name to any attached debuggers.
