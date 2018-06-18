@@ -2714,6 +2714,8 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} frames/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} frames/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} frames/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} second{P "" s}
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GAMELOOP                                          :{WHITE}Game loop total:
 STR_FRAMERATE_DRAWING                                           :{WHITE}Graphics rendering:

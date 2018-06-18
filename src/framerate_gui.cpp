@@ -21,7 +21,7 @@
 
 namespace {
 
-	const int NUM_FRAMERATE_POINTS = 128;
+	const int NUM_FRAMERATE_POINTS = 512;
 
 	uint32 _framerate_durations[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
 	uint32 _framerate_timestamps[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
@@ -80,9 +80,9 @@ namespace {
 		return 1000.0 / ms;
 	}
 
-	double GetFramerate(FramerateElement elem)
+	double GetFramerate(FramerateElement elem, int points = NUM_FRAMERATE_POINTS)
 	{
-		return MillisecondsToFps(GetAverageTimestep(elem, NUM_FRAMERATE_POINTS));
+		return MillisecondsToFps(GetAverageTimestep(elem, points));
 	}
 
 }
@@ -241,11 +241,11 @@ struct FramerateWindow : Window {
 
 		switch (widget) {
 			case WID_FRW_RATE_GAMELOOP:
-				value = GetFramerate(FRAMERATE_GAMELOOP);
+				value = GetFramerate(FRAMERATE_GAMELOOP, 8);
 				SetDParamGoodWarnBadRate(value, FRAMERATE_GAMELOOP);
 				break;
 			case WID_FRW_RATE_BLITTER:
-				value = GetFramerate(FRAMERATE_DRAWING);
+				value = GetFramerate(FRAMERATE_DRAWING, 8);
 				SetDParamGoodWarnBadRate(value, FRAMERATE_DRAWING);
 				break;
 			case WID_FRW_INFO_DATA_POINTS:
@@ -351,7 +351,10 @@ struct FramerateWindow : Window {
 				this->SetSmall(!this->small);
 				break;
 
-			case WID_FRW_TIMES_NAMES: {
+			case WID_FRW_TIMES_NAMES:
+			case WID_FRW_TIMES_CURRENT:
+			case WID_FRW_TIMES_AVERAGE:
+			case WID_FRW_TIMES_WORST: {
 				int line = this->GetRowFromWidget(pt.y, widget, VSPACING, FONT_HEIGHT_NORMAL);
 				if (line > 0) {
 					line -= 1;
@@ -390,6 +393,10 @@ static const NWidgetPart _frametime_graph_window_widgets[] = {
 };
 
 struct FrametimeGraphWindow : Window {
+	static const int MS_PER_PIXEL = 10;
+	static const int WIDTH = 200;
+	static const int HEIGHT = 100;
+
 	FramerateElement element;
 
 	FrametimeGraphWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
@@ -410,8 +417,16 @@ struct FrametimeGraphWindow : Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		if (widget == WID_FGW_GRAPH) {
-			size->width = NUM_FRAMERATE_POINTS;
-			size->height = 100;
+			size->width = WIDTH;
+			size->height = HEIGHT;
+
+			SetDParam(0, HEIGHT);
+			auto size_ms_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_MILLISECONDS);
+			SetDParam(0, WIDTH*MS_PER_PIXEL / 1000);
+			auto size_s_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_SECONDS);
+
+			size->width += size_ms_label.width + 2;
+			size->height += size_s_label.height + 2;
 		}
 	}
 
@@ -423,10 +438,52 @@ struct FrametimeGraphWindow : Window {
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget == WID_FGW_GRAPH) {
+			auto &durations = _framerate_durations[this->element];
+			auto &timestamps = _framerate_timestamps[this->element];
+			int point = _framerate_next_measurement_point[this->element] - 1;
+			if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
+
+			int x_zero = r.right - WIDTH;
+			int x_max = r.right;
+			int y_zero = r.top + HEIGHT;
+			int y_max = r.top;
+			int c_grid = PC_DARK_GREY;
+			int c_lines = PC_BLACK;
+
+			bool draw_label = true;
+			for (int y = y_zero; y > r.top; y -= 10) {
+				GfxDrawLine(x_zero, y, x_max, y, c_grid);
+				if (draw_label) {
+					SetDParam(0, y_zero - y);
+					DrawString(r.left, x_zero - 2, y - FONT_HEIGHT_SMALL, STR_FRAMERATE_GRAPH_MILLISECONDS, TC_GREY, SA_RIGHT, false, FS_SMALL);
+				}
+				draw_label = !draw_label;
+			}
+			draw_label = true;
+			for (int x = x_zero; x < x_max; x += 500 / MS_PER_PIXEL) {
+				GfxDrawLine(x, y_max, x, y_zero, c_grid);
+				if (draw_label) {
+					SetDParam(0, WIDTH * MS_PER_PIXEL / 1000 -  (x - x_zero) * MS_PER_PIXEL / 1000);
+					DrawString(x, x + 500 / MS_PER_PIXEL, y_zero + 2, STR_FRAMERATE_GRAPH_SECONDS, TC_GREY, SA_LEFT, false, FS_SMALL);
+				}
+				draw_label = !draw_label;
+			}
+
+			Point lastpoint{ x_max, y_zero - (int)durations[point] };
+			uint32 firsttime = timestamps[point];
+
 			for (int i = 0; i < NUM_FRAMERATE_POINTS; i++) {
-				int point = _framerate_next_measurement_point[this->element] + i;
-				uint32 value = _framerate_durations[this->element][point % NUM_FRAMERATE_POINTS];
-				GfxDrawLine(r.left + i, r.bottom - value, r.left + i, r.bottom, 0);
+				point--;
+				if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
+
+				uint32 value = durations[point];
+				uint32 time = timestamps[point];
+				uint32 timediff = firsttime - time;
+				if (timediff > WIDTH * MS_PER_PIXEL) break;
+
+				Point newpoint{ x_max - (int)timediff / MS_PER_PIXEL, y_zero - (int)value };
+				GfxDrawLine(lastpoint.x, lastpoint.y, newpoint.x, newpoint.y, c_lines);
+				lastpoint = newpoint;
 			}
 		}
 	}
@@ -434,7 +491,7 @@ struct FrametimeGraphWindow : Window {
 
 static WindowDesc _frametime_graph_window_desc(
 	WDP_AUTO, "frametime_graph", 140, 90,
-	WC_FRAMETIME_GRAPH, WC_FRAMERATE_DISPLAY,
+	WC_FRAMETIME_GRAPH, WC_NONE,
 	0,
 	_frametime_graph_window_widgets, lengthof(_frametime_graph_window_widgets)
 );
@@ -470,9 +527,9 @@ void ConPrintFramerate()
 	for (FramerateElement e = FRAMERATE_FIRST; e < FRAMERATE_MAX; e = (FramerateElement)(e + 1)) {
 		IConsolePrintF(TC_GREEN, "%s rate: %.2ffps  %.2ffps  %.2ffps  (expected: %.2ffps)",
 			MEASUREMENT_NAMES[e],
-			MillisecondsToFps(GetAverageTimestep(e, count1)),
-			MillisecondsToFps(GetAverageTimestep(e, count2)),
-			MillisecondsToFps(GetAverageTimestep(e, count3)),
+			GetFramerate(e, count1),
+			GetFramerate(e, count2),
+			GetFramerate(e, count3),
 			_framerate_expected_rate[e]);
 	}
 
