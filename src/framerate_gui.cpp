@@ -393,11 +393,11 @@ static const NWidgetPart _frametime_graph_window_widgets[] = {
 };
 
 struct FrametimeGraphWindow : Window {
-	static const int MS_PER_PIXEL = 10;
-	static const int WIDTH = 200;
-	static const int HEIGHT = 100;
+	static const int WIDTH_SECONDS = 2;
+	static const int HEIGHT_MS = 100;
 
 	FramerateElement element;
+	Dimension graph_size;
 
 	FrametimeGraphWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
@@ -417,13 +417,14 @@ struct FrametimeGraphWindow : Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		if (widget == WID_FGW_GRAPH) {
-			size->width = WIDTH;
-			size->height = HEIGHT;
-
-			SetDParam(0, HEIGHT);
+			SetDParam(0, HEIGHT_MS);
 			auto size_ms_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_MILLISECONDS);
-			SetDParam(0, WIDTH*MS_PER_PIXEL / 1000);
+			SetDParam(0, WIDTH_SECONDS);
 			auto size_s_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_SECONDS);
+
+			graph_size.width = WIDTH_SECONDS * max<uint>(100, size_s_label.width + 10);
+			graph_size.height = max<uint>(HEIGHT_MS, 10 * (size_ms_label.height + 1));
+			*size = graph_size;
 
 			size->width += size_ms_label.width + 2;
 			size->height += size_s_label.height + 2;
@@ -435,6 +436,14 @@ struct FrametimeGraphWindow : Window {
 		this->SetDirty();
 	}
 
+	/** Scale and interpolate a value from a source range into a destination range */
+	static inline int Scinterlate(int dst_min, int dst_max, int src_min, int src_max, int value)
+	{
+		int dst_diff = dst_max - dst_min;
+		int src_diff = src_max - src_min;
+		return (value - src_min) * dst_diff / src_diff + dst_min;
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget == WID_FGW_GRAPH) {
@@ -443,33 +452,34 @@ struct FrametimeGraphWindow : Window {
 			int point = _framerate_next_measurement_point[this->element] - 1;
 			if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
 
-			int x_zero = r.right - WIDTH;
+			int x_zero = r.right - this->graph_size.width;
 			int x_max = r.right;
-			int y_zero = r.top + HEIGHT;
+			int y_zero = r.top + this->graph_size.height;
 			int y_max = r.top;
 			int c_grid = PC_DARK_GREY;
 			int c_lines = PC_BLACK;
 
-			bool draw_label = true;
-			for (int y = y_zero; y > r.top; y -= 10) {
+			for (int division = 0; division < HEIGHT_MS / 10; division++) {
+				int y = Scinterlate(y_zero, y_max, 0, HEIGHT_MS, division * 10);
 				GfxDrawLine(x_zero, y, x_max, y, c_grid);
-				if (draw_label) {
-					SetDParam(0, y_zero - y);
-					DrawString(r.left, x_zero - 2, y - FONT_HEIGHT_SMALL, STR_FRAMERATE_GRAPH_MILLISECONDS, TC_GREY, SA_RIGHT, false, FS_SMALL);
+				if (division % 2 == 0) {
+					SetDParam(0, division * 10);
+					DrawString(r.left, x_zero - 2, y - FONT_HEIGHT_SMALL, STR_FRAMERATE_GRAPH_MILLISECONDS, TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 				}
-				draw_label = !draw_label;
 			}
-			draw_label = true;
-			for (int x = x_zero; x < x_max; x += 500 / MS_PER_PIXEL) {
+			for (int division = WIDTH_SECONDS * 2; division > 0; division--) {
+				int x = Scinterlate(x_zero, x_max, 0, WIDTH_SECONDS * 2, WIDTH_SECONDS * 2 - division);
 				GfxDrawLine(x, y_max, x, y_zero, c_grid);
-				if (draw_label) {
-					SetDParam(0, WIDTH * MS_PER_PIXEL / 1000 -  (x - x_zero) * MS_PER_PIXEL / 1000);
-					DrawString(x, x + 500 / MS_PER_PIXEL, y_zero + 2, STR_FRAMERATE_GRAPH_SECONDS, TC_GREY, SA_LEFT, false, FS_SMALL);
+				if (division % 2 == 0) {
+					SetDParam(0, division / 2);
+					DrawString(x, x_max, y_zero + 2, STR_FRAMERATE_GRAPH_SECONDS, TC_GREY, SA_LEFT | SA_FORCE, false, FS_SMALL);
 				}
-				draw_label = !draw_label;
 			}
 
-			Point lastpoint{ x_max, y_zero - (int)durations[point] };
+			Point lastpoint{
+				x_max,
+				Scinterlate(y_zero, y_max, 0, HEIGHT_MS, (int)durations[point])
+			};
 			uint32 firsttime = timestamps[point];
 
 			for (int i = 0; i < NUM_FRAMERATE_POINTS; i++) {
@@ -477,11 +487,13 @@ struct FrametimeGraphWindow : Window {
 				if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
 
 				uint32 value = durations[point];
-				uint32 time = timestamps[point];
-				uint32 timediff = firsttime - time;
-				if (timediff > WIDTH * MS_PER_PIXEL) break;
+				uint32 timediff = firsttime - timestamps[point];
+				if (timediff > WIDTH_SECONDS*1000) break;
 
-				Point newpoint{ x_max - (int)timediff / MS_PER_PIXEL, y_zero - (int)value };
+				Point newpoint{
+					Scinterlate(x_zero, x_max, 0, WIDTH_SECONDS * 1000, WIDTH_SECONDS * 1000 - timediff),
+					Scinterlate(y_zero, y_max, 0, HEIGHT_MS, (int)value)
+				};
 				GfxDrawLine(lastpoint.x, lastpoint.y, newpoint.x, newpoint.y, c_lines);
 				lastpoint = newpoint;
 			}
