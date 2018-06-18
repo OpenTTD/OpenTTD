@@ -133,7 +133,6 @@
 	#define NORETURN __attribute__ ((noreturn))
 	#define CDECL
 	#define __int64 long long
-	#define GCC_PACK __attribute__((packed))
 	/* Warn about functions using 'printf' format syntax. First argument determines which parameter
 	 * is the format string, second argument is start of values passed to printf. */
 	#define WARN_FORMAT(string, args) __attribute__ ((format (printf, string, args)))
@@ -158,7 +157,6 @@
 #if defined(__WATCOMC__)
 	#define NORETURN
 	#define CDECL
-	#define GCC_PACK
 	#define WARN_FORMAT(string, args)
 	#define FINAL
 	#define FALLTHROUGH
@@ -224,7 +222,6 @@
 	#endif
 
 	#define CDECL _cdecl
-	#define GCC_PACK
 	#define WARN_FORMAT(string, args)
 	#define FINAL sealed
 
@@ -302,6 +299,16 @@
 	#define PATHSEP "/"
 	#define PATHSEPCHAR '/'
 #endif
+
+#if defined(_MSC_VER) || defined(__WATCOMC__)
+#	define PACK_N(type_dec, n) __pragma(pack(push, n)) type_dec; __pragma(pack(pop))
+#elif defined(__MINGW32__)
+#	define PRAGMA(x) _Pragma(#x)
+#	define PACK_N(type_dec, n) PRAGMA(pack(push, n)) type_dec; PRAGMA(pack(pop))
+#else
+#	define PACK_N(type_dec, n) type_dec __attribute__((__packed__, aligned(n)))
+#endif
+#define PACK(type_dec) PACK_N(type_dec, 1)
 
 /* MSVCRT of course has to have a different syntax for long long *sigh* */
 #if defined(_MSC_VER) || defined(__MINGW32__)

@@ -71,22 +71,15 @@ struct ScreenshotFormat {
 /*************************************************
  **** SCREENSHOT CODE FOR WINDOWS BITMAP (.BMP)
  *************************************************/
-#if defined(_MSC_VER) || defined(__WATCOMC__)
-#pragma pack(push, 1)
-#endif
 
 /** BMP File Header (stored in little endian) */
-struct BitmapFileHeader {
+PACK(struct BitmapFileHeader {
 	uint16 type;
 	uint32 size;
 	uint32 reserved;
 	uint32 off_bits;
-} GCC_PACK;
+});
 assert_compile(sizeof(BitmapFileHeader) == 14);
-
-#if defined(_MSC_VER) || defined(__WATCOMC__)
-#pragma pack(pop)
-#endif
 
 /** BMP Info Header (stored in little endian) */
 struct BitmapInfoHeader {

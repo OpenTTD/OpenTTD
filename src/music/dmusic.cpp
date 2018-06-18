@@ -102,21 +102,19 @@ private:
 	bool ReadDLSWave(FILE *f, DWORD list_length, long offset);
 };
 
-#pragma pack(2)
 /** A RIFF chunk header. */
-struct ChunkHeader {
+PACK_N(struct ChunkHeader {
 	FOURCC type;  ///< Chunk type.
 	DWORD length; ///< Length of the chunk, not including the chunk header itself.
-};
+}, 2);
 
 /** Buffer format for a DLS wave download. */
-struct WAVE_DOWNLOAD {
+PACK_N(struct WAVE_DOWNLOAD {
 	DMUS_DOWNLOADINFO   dlInfo;
 	ULONG               ulOffsetTable[2];
 	DMUS_WAVE           dmWave;
 	DMUS_WAVEDATA       dmWaveData;
-};
-#pragma pack()
+}, 2);
 
 struct PlaybackSegment {
 	uint32 start, end;
