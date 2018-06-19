@@ -76,7 +76,6 @@ void HandleTextInput(const char *str, bool marked = false, const char *caret = N
 void HandleCtrlChanged();
 void HandleMouseEvents();
 void CSleep(int milliseconds);
-uint32 GetTime(); ///< Get a timestamp in milliseconds
 void UpdateWindows();
 
 void DrawMouseCursor();

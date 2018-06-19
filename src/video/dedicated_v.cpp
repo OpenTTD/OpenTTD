@@ -199,7 +199,7 @@ static bool InputWaiting()
 	return select(STDIN + 1, &readfds, NULL, NULL, &tv) > 0;
 }
 
-uint32 GetTime()
+static uint32 GetTime()
 {
 	struct timeval tim;
 
@@ -207,21 +207,17 @@ uint32 GetTime()
 	return tim.tv_usec / 1000 + tim.tv_sec * 1000;
 }
 
-#elif defined(WIN32)
+#else
 
 static bool InputWaiting()
 {
 	return WaitForSingleObject(_hInputReady, 1) == WAIT_OBJECT_0;
 }
 
-uint32 GetTime()
+static uint32 GetTime()
 {
 	return GetTickCount();
 }
-
-#else
-
-#error Unsupported platform, needs implementation of InputWaiting() and GetTime()
 
 #endif
 
