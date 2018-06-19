@@ -128,6 +128,7 @@ enum FramerateWindowWidgets {
 	WID_FRW_DETAILSPANEL,
 	WID_FRW_RATE_GAMELOOP,
 	WID_FRW_RATE_BLITTER,
+	WID_FRW_RATE_FACTOR,
 	WID_FRW_INFO_DATA_POINTS,
 	WID_FRW_TIMES_NAMES,
 	WID_FRW_TIMES_CURRENT,
@@ -145,6 +146,7 @@ static const NWidgetPart _framerate_window_widgets[] = {
 		NWidget(NWID_VERTICAL), SetPadding(6), SetPIP(0, 3, 0),
 			NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_RATE_GAMELOOP), SetDataTip(STR_FRAMERATE_RATE_GAMELOOP, STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP),
 			NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_RATE_BLITTER),  SetDataTip(STR_FRAMERATE_RATE_BLITTER,  STR_FRAMERATE_RATE_BLITTER_TOOLTIP),
+			NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_RATE_FACTOR),   SetDataTip(STR_FRAMERATE_SPEED_FACTOR,  STR_FRAMERATE_SPEED_FACTOR_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_FRW_DETAILSPANEL),
@@ -230,6 +232,12 @@ struct FramerateWindow : Window {
 				value = GetFramerate(FRAMERATE_DRAWING, 8);
 				SetDParamGoodWarnBadRate(value, FRAMERATE_DRAWING);
 				break;
+			case WID_FRW_RATE_FACTOR:
+				value = GetFramerate(FRAMERATE_GAMELOOP, 8);
+				value /= _framerate_expected_rate[FRAMERATE_GAMELOOP];
+				SetDParam(0, (int)(value * 100));
+				SetDParam(1, 2);
+				break;
 			case WID_FRW_INFO_DATA_POINTS:
 				SetDParam(0, NUM_FRAMERATE_POINTS);
 				break;
@@ -246,6 +254,11 @@ struct FramerateWindow : Window {
 			case WID_FRW_RATE_BLITTER:
 				SetDParamGoodWarnBadRate(9999.99, FRAMERATE_DRAWING);
 				*size = GetStringBoundingBox(STR_FRAMERATE_RATE_BLITTER);
+				break;
+			case WID_FRW_RATE_FACTOR:
+				SetDParam(0, 99999);
+				SetDParam(1, 2);
+				*size = GetStringBoundingBox(STR_FRAMERATE_SPEED_FACTOR);
 				break;
 
 			case WID_FRW_TIMES_NAMES: {

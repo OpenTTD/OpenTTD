@@ -2703,6 +2703,8 @@ STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Simulati
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Number of game ticks simulated per second.
 STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Graphics frame rate: {STRING2}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Number of video frames rendered per second.
+STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Current game speed factor: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}How fast the game is currently running, compared to the expected speed at normal simulation rate.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Current
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Average
 STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Data based on {COMMA} measurements
