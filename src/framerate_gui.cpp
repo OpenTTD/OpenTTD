@@ -135,7 +135,6 @@ enum FramerateWindowWidgets {
 	WID_FRW_TIMES_NAMES,
 	WID_FRW_TIMES_CURRENT,
 	WID_FRW_TIMES_AVERAGE,
-	WID_FRW_TIMES_WORST,
 };
 
 static const NWidgetPart _framerate_window_widgets[] = {
@@ -158,7 +157,6 @@ static const NWidgetPart _framerate_window_widgets[] = {
 					NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_NAMES),
 					NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_CURRENT),
 					NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_AVERAGE),
-					NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_WORST),
 				EndContainer(),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_INFO_DATA_POINTS), SetDataTip(STR_FRAMERATE_DATA_POINTS, 0x0),
 			EndContainer(),
@@ -267,8 +265,7 @@ struct FramerateWindow : Window {
 			}
 
 			case WID_FRW_TIMES_CURRENT:
-			case WID_FRW_TIMES_AVERAGE:
-			case WID_FRW_TIMES_WORST: {
+			case WID_FRW_TIMES_AVERAGE: {
 				int linecount = FRAMERATE_MAX - FRAMERATE_FIRST;
 				*size = GetStringBoundingBox(STR_FRAMERATE_CURRENT + (widget - WID_FRW_TIMES_CURRENT));
 				SetDParamGoodWarnBadDuration(9999.99);
@@ -321,15 +318,6 @@ struct FramerateWindow : Window {
 					return GetAverageDuration(elem, NUM_FRAMERATE_POINTS);
 				});
 				break;
-			case WID_FRW_TIMES_WORST:
-				DrawElementTimesColumn(r, STR_FRAMERATE_WORST, [](FramerateElement elem) {
-					uint32 worst = 0;
-					for (int i = 0; i < NUM_FRAMERATE_POINTS; i++) {
-						worst = max(worst, _framerate_durations[elem][i]);
-					}
-					return (double)worst;
-				});
-				break;
 		}
 	}
 
@@ -342,8 +330,7 @@ struct FramerateWindow : Window {
 
 			case WID_FRW_TIMES_NAMES:
 			case WID_FRW_TIMES_CURRENT:
-			case WID_FRW_TIMES_AVERAGE:
-			case WID_FRW_TIMES_WORST: {
+			case WID_FRW_TIMES_AVERAGE: {
 				int line = this->GetRowFromWidget(pt.y, widget, VSPACING, FONT_HEIGHT_NORMAL);
 				if (line > 0) {
 					line -= 1;
@@ -450,17 +437,26 @@ struct FrametimeGraphWindow : Window {
 			int y_max = r.top;
 			int c_grid = PC_DARK_GREY;
 			int c_lines = PC_BLACK;
+			int c_peak = PC_DARK_RED;
+
+			int draw_horz_scale = this->horizontal_scale;
+			if (this->vertical_scale >= 1000) draw_horz_scale *= 5;
 
 			for (int division = 0; division < 10; division++) {
 				int y = Scinterlate(y_zero, y_max, 0, 10, division);
 				GfxDrawLine(x_zero, y, x_max, y, c_grid);
 				if (division % 2 == 0) {
-					SetDParam(0, this->vertical_scale * division / 10);
-					DrawString(r.left, x_zero - 2, y - FONT_HEIGHT_SMALL, STR_FRAMERATE_GRAPH_MILLISECONDS, TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+					if (this->vertical_scale > 1000) {
+						SetDParam(0, this->vertical_scale * division / 10 / 1000);
+						DrawString(r.left, x_zero - 2, y - FONT_HEIGHT_SMALL, STR_FRAMERATE_GRAPH_SECONDS, TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+					} else {
+						SetDParam(0, this->vertical_scale * division / 10);
+						DrawString(r.left, x_zero - 2, y - FONT_HEIGHT_SMALL, STR_FRAMERATE_GRAPH_MILLISECONDS, TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+					}
 				}
 			}
-			for (int division = this->horizontal_scale; division > 0; division--) {
-				int x = Scinterlate(x_zero, x_max, 0, this->horizontal_scale, this->horizontal_scale - division);
+			for (int division = draw_horz_scale; division > 0; division--) {
+				int x = Scinterlate(x_zero, x_max, 0, draw_horz_scale, draw_horz_scale - division);
 				GfxDrawLine(x, y_max, x, y_zero, c_grid);
 				if (division % 2 == 0) {
 					SetDParam(0, division / 2);
@@ -474,7 +470,10 @@ struct FrametimeGraphWindow : Window {
 			};
 			uint32 firsttime = timestamps[point];
 
-			uint32 max_seen = 0;
+			uint32 peak_value = 0;
+			Point peak_point;
+			uint32 value_sum = 0;
+			int points_drawn = 0;
 
 			for (int i = 0; i < NUM_FRAMERATE_POINTS; i++) {
 				point--;
@@ -482,23 +481,41 @@ struct FrametimeGraphWindow : Window {
 
 				uint32 value = durations[point];
 				uint32 timediff = firsttime - timestamps[point];
-				if (timediff > this->horizontal_scale*500) break;
-				max_seen = max(max_seen, value);
+				if ((int)timediff > draw_horz_scale * 500) break;
 
 				Point newpoint{
-					Scinterlate(x_zero, x_max, 0, this->horizontal_scale * 500, this->horizontal_scale * 500 - timediff),
+					Scinterlate(x_zero, x_max, 0, draw_horz_scale * 500, draw_horz_scale * 500 - timediff),
 					Scinterlate(y_zero, y_max, 0, this->vertical_scale, (int)value)
 				};
 				GfxDrawLine(lastpoint.x, lastpoint.y, newpoint.x, newpoint.y, c_lines);
 				lastpoint = newpoint;
+
+				value_sum += value;
+				points_drawn++;
+				if (value > peak_value) {
+					peak_value = value;
+					peak_point = newpoint;
+				}
 			}
 
-			if (max_seen < 20) this->vertical_scale = 20;
-			else if (max_seen < 100) this->vertical_scale = 100;
-			else if (max_seen < 200) this->vertical_scale = 200;
-			else if (max_seen < 500) this->vertical_scale = 500;
-			else if (max_seen < 1000) this->vertical_scale = 1000;
-			else if (max_seen < 5000) this->vertical_scale = 5000;
+			if (points_drawn > 0 && peak_value > 10 && 2 * peak_value > 3 * value_sum / points_drawn) {
+				TextColour tc_peak = (TextColour)(TC_IS_PALETTE_COLOUR | c_peak);
+				GfxFillRect(peak_point.x - 1, peak_point.y - 1, peak_point.x + 1, peak_point.y + 1, c_peak);
+				SetDParam(0, peak_value);
+				int label_y = max(y_max, peak_point.y - FONT_HEIGHT_SMALL);
+				if (peak_point.x - x_zero > (int)this->graph_size.width / 2) {
+					DrawString(x_zero, peak_point.x - 2, label_y, STR_FRAMERATE_GRAPH_MILLISECONDS, tc_peak, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+				} else {
+					DrawString(peak_point.x + 2, x_max, label_y, STR_FRAMERATE_GRAPH_MILLISECONDS, tc_peak, SA_LEFT | SA_FORCE, false, FS_SMALL);
+				}
+			}
+
+			if (peak_value < 20) this->vertical_scale = 20;
+			else if (peak_value < 100) this->vertical_scale = 100;
+			else if (peak_value < 200) this->vertical_scale = 200;
+			else if (peak_value < 500) this->vertical_scale = 500;
+			else if (peak_value < 1000) this->vertical_scale = 1000;
+			else if (peak_value < 5000) this->vertical_scale = 5000;
 			else this->vertical_scale = 10000;
 		}
 	}
