@@ -10,6 +10,7 @@
 /** @file framerate_gui.cpp GUI for displaying framerate/game speed information. */
 
 #include "framerate_type.h"
+#include <chrono>
 #include "gfx_func.h"
 #include "window_gui.h"
 #include "table/sprites.h"
@@ -91,23 +92,12 @@ namespace {
 }
 
 
-#ifdef WIN32
-#include <windows.h>
+static std::chrono::high_resolution_clock _hr_clock;
 static TimingMeasurement GetPerformanceTimer()
 {
-	LARGE_INTEGER pfc, pfq;
-	if (QueryPerformanceFrequency(&pfq) && QueryPerformanceCounter(&pfc)) {
-		return pfc.QuadPart * TIMESTAMP_PRECISION / pfq.QuadPart;
-	} else {
-		return GetTickCount() * 1000;
-	}
+	auto usec = std::chrono::time_point_cast<std::chrono::microseconds>(_hr_clock.now());
+	return usec.time_since_epoch().count();
 }
-#else
-static TimingMeasurement GetPerformanceTimer()
-{
-	return GetTime() * 1000;
-}
-#endif
 
 
 FramerateMeasurer::FramerateMeasurer(FramerateElement elem)
