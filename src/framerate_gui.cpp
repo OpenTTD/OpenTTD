@@ -171,7 +171,6 @@ struct FramerateWindow : Window {
 	uint32 last_update;
 
 	static const int VSPACING = 3;
-	static const uint32 UPDATE_INTERVAL = 200;
 
 	FramerateWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
@@ -188,19 +187,9 @@ struct FramerateWindow : Window {
 		this->ReInit();
 	}
 
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
-	{
-		if (!gui_scope) return;
-		this->SetDirty();
-	}
-
 	virtual void OnTick()
 	{
-		uint32 now = GetTime();
-		if (now - this->last_update >= UPDATE_INTERVAL) {
-			this->last_update = now;
-			this->InvalidateData();
-		}
+		this->SetDirty();
 	}
 
 	static void SetDParamGoodWarnBadDuration(double value)
@@ -393,8 +382,8 @@ static const NWidgetPart _frametime_graph_window_widgets[] = {
 };
 
 struct FrametimeGraphWindow : Window {
-	static const int WIDTH_SECONDS = 2;
-	static const int HEIGHT_MS = 100;
+	mutable int vertical_scale;   ///< number of one-millisecond units vertically
+	int horizontal_scale; ///< number of half-second units horizontally
 
 	FramerateElement element;
 	Dimension graph_size;
@@ -402,6 +391,9 @@ struct FrametimeGraphWindow : Window {
 	FrametimeGraphWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
 		this->element = (FramerateElement)number;
+		this->horizontal_scale = 4;
+		this->vertical_scale = 100;
+
 		this->InitNested(number);
 	}
 
@@ -417,13 +409,13 @@ struct FrametimeGraphWindow : Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		if (widget == WID_FGW_GRAPH) {
-			SetDParam(0, HEIGHT_MS);
+			SetDParam(0, this->vertical_scale);
 			auto size_ms_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_MILLISECONDS);
-			SetDParam(0, WIDTH_SECONDS);
+			SetDParam(0, this->horizontal_scale / 2);
 			auto size_s_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_SECONDS);
 
-			graph_size.width = WIDTH_SECONDS * max<uint>(100, size_s_label.width + 10);
-			graph_size.height = max<uint>(HEIGHT_MS, 10 * (size_ms_label.height + 1));
+			graph_size.width = this->horizontal_scale * max<uint>(100, size_s_label.width + 10) / 2;
+			graph_size.height = max<uint>(100, 10 * (size_ms_label.height + 1));
 			*size = graph_size;
 
 			size->width += size_ms_label.width + 2;
@@ -459,16 +451,16 @@ struct FrametimeGraphWindow : Window {
 			int c_grid = PC_DARK_GREY;
 			int c_lines = PC_BLACK;
 
-			for (int division = 0; division < HEIGHT_MS / 10; division++) {
-				int y = Scinterlate(y_zero, y_max, 0, HEIGHT_MS, division * 10);
+			for (int division = 0; division < 10; division++) {
+				int y = Scinterlate(y_zero, y_max, 0, 10, division);
 				GfxDrawLine(x_zero, y, x_max, y, c_grid);
 				if (division % 2 == 0) {
-					SetDParam(0, division * 10);
+					SetDParam(0, this->vertical_scale * division / 10);
 					DrawString(r.left, x_zero - 2, y - FONT_HEIGHT_SMALL, STR_FRAMERATE_GRAPH_MILLISECONDS, TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 				}
 			}
-			for (int division = WIDTH_SECONDS * 2; division > 0; division--) {
-				int x = Scinterlate(x_zero, x_max, 0, WIDTH_SECONDS * 2, WIDTH_SECONDS * 2 - division);
+			for (int division = this->horizontal_scale; division > 0; division--) {
+				int x = Scinterlate(x_zero, x_max, 0, this->horizontal_scale, this->horizontal_scale - division);
 				GfxDrawLine(x, y_max, x, y_zero, c_grid);
 				if (division % 2 == 0) {
 					SetDParam(0, division / 2);
@@ -478,9 +470,11 @@ struct FrametimeGraphWindow : Window {
 
 			Point lastpoint{
 				x_max,
-				Scinterlate(y_zero, y_max, 0, HEIGHT_MS, (int)durations[point])
+				Scinterlate(y_zero, y_max, 0, this->vertical_scale, (int)durations[point])
 			};
 			uint32 firsttime = timestamps[point];
+
+			uint32 max_seen = 0;
 
 			for (int i = 0; i < NUM_FRAMERATE_POINTS; i++) {
 				point--;
@@ -488,15 +482,24 @@ struct FrametimeGraphWindow : Window {
 
 				uint32 value = durations[point];
 				uint32 timediff = firsttime - timestamps[point];
-				if (timediff > WIDTH_SECONDS*1000) break;
+				if (timediff > this->horizontal_scale*500) break;
+				max_seen = max(max_seen, value);
 
 				Point newpoint{
-					Scinterlate(x_zero, x_max, 0, WIDTH_SECONDS * 1000, WIDTH_SECONDS * 1000 - timediff),
-					Scinterlate(y_zero, y_max, 0, HEIGHT_MS, (int)value)
+					Scinterlate(x_zero, x_max, 0, this->horizontal_scale * 500, this->horizontal_scale * 500 - timediff),
+					Scinterlate(y_zero, y_max, 0, this->vertical_scale, (int)value)
 				};
 				GfxDrawLine(lastpoint.x, lastpoint.y, newpoint.x, newpoint.y, c_lines);
 				lastpoint = newpoint;
 			}
+
+			if (max_seen < 20) this->vertical_scale = 20;
+			else if (max_seen < 100) this->vertical_scale = 100;
+			else if (max_seen < 200) this->vertical_scale = 200;
+			else if (max_seen < 500) this->vertical_scale = 500;
+			else if (max_seen < 1000) this->vertical_scale = 1000;
+			else if (max_seen < 5000) this->vertical_scale = 5000;
+			else this->vertical_scale = 10000;
 		}
 	}
 };
@@ -523,9 +526,9 @@ void ShowFrametimeGraphWindow(FramerateElement elem)
 
 void ConPrintFramerate()
 {
-	const int count1 = NUM_FRAMERATE_POINTS / 1;
+	const int count1 = NUM_FRAMERATE_POINTS / 8;
 	const int count2 = NUM_FRAMERATE_POINTS / 4;
-	const int count3 = NUM_FRAMERATE_POINTS / 8;
+	const int count3 = NUM_FRAMERATE_POINTS / 1;
 
 	IConsolePrintF(TC_SILVER, "Based on num. data points: %d %d %d", count1, count2, count3);
 
