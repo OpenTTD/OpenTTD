@@ -21,6 +21,8 @@ enum FramerateElement {
 	FRAMERATE_MAX,            ///< End of enum, must be last.
 };
 
+typedef uint32 TimingMeasurement;
+
 /**
  * RAII class for measuring elements of framerate.
  * Construct an object with the appropriate element parameter when processing begins,
@@ -28,7 +30,7 @@ enum FramerateElement {
  */
 class FramerateMeasurer {
 	FramerateElement elem;
-	uint32 start_time;
+	TimingMeasurement start_time;
 public:
 	FramerateMeasurer(FramerateElement elem);
 	~FramerateMeasurer();

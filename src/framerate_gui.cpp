@@ -21,10 +21,13 @@
 
 namespace {
 
+	/** Number of data points to keep in buffer for each performance measurement */
 	const int NUM_FRAMERATE_POINTS = 512;
+	/** Units a second is divided into in performance measurements */
+	const int TIMESTAMP_PRECISION = 1000;
 
-	uint32 _framerate_durations[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
-	uint32 _framerate_timestamps[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
+	TimingMeasurement _framerate_durations[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
+	TimingMeasurement _framerate_timestamps[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
 	double _framerate_expected_rate[FRAMERATE_MAX] = {
 		1000.0 / MILLISECONDS_PER_TICK, // FRAMERATE_GAMELOOP
 		1000.0 / MILLISECONDS_PER_TICK, // FRAMERATE_DRAWING
@@ -34,7 +37,7 @@ namespace {
 	int _framerate_next_measurement_point[FRAMERATE_MAX] = {};
 	int _framerate_num_measurements[FRAMERATE_MAX] = {};
 
-	void StoreMeasurement(FramerateElement elem, uint32 start_time, uint32 end_time)
+	void StoreMeasurement(FramerateElement elem, TimingMeasurement start_time, TimingMeasurement end_time)
 	{
 		_framerate_durations[elem][_framerate_next_measurement_point[elem]] = end_time - start_time;
 		_framerate_timestamps[elem][_framerate_next_measurement_point[elem]] = start_time;
@@ -56,10 +59,10 @@ namespace {
 			sumtime += _framerate_durations[elem][i % NUM_FRAMERATE_POINTS];
 		}
 
-		return sumtime / points;
+		return sumtime * 1000 / points / TIMESTAMP_PRECISION;
 	}
 
-	uint32 GetAverageTimestep(FramerateElement elem, int points)
+	TimingMeasurement GetAverageTimestep(FramerateElement elem, int points)
 	{
 		assert(elem < FRAMERATE_MAX);
 		points = min(points, _framerate_num_measurements[elem]);
@@ -70,14 +73,14 @@ namespace {
 		if (last < 0) last += NUM_FRAMERATE_POINTS;
 
 		points -= 1;
-		if (points < 1) return 1000;
+		if (points < 1) return TIMESTAMP_PRECISION;
 
 		return (_framerate_timestamps[elem][last] - _framerate_timestamps[elem][first]) / points;
 	}
 
-	double MillisecondsToFps(uint32 ms)
+	double MillisecondsToFps(TimingMeasurement ms)
 	{
-		return 1000.0 / ms;
+		return (double)TIMESTAMP_PRECISION / ms;
 	}
 
 	double GetFramerate(FramerateElement elem, int points = NUM_FRAMERATE_POINTS)
@@ -90,7 +93,7 @@ namespace {
 
 #ifdef WIN32
 #include <windows.h>
-static uint32 GetTime()
+static TimingMeasurement GetTime()
 {
 	LARGE_INTEGER pfc, pfq;
 	if (QueryPerformanceFrequency(&pfq) && QueryPerformanceCounter(&pfc)) {
@@ -166,13 +169,11 @@ static const NWidgetPart _framerate_window_widgets[] = {
 
 struct FramerateWindow : Window {
 	bool small;
-	uint32 last_update;
 
 	static const int VSPACING = 3;
 
 	FramerateWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
-		this->last_update = 0;
 		this->InitNested(number);
 		this->SetSmall(true);
 	}
@@ -466,21 +467,21 @@ struct FrametimeGraphWindow : Window {
 
 			Point lastpoint{
 				x_max,
-				Scinterlate(y_zero, y_max, 0, this->vertical_scale, (int)durations[point])
+				Scinterlate(y_zero, y_max, 0, this->vertical_scale, (int)durations[point] * 1000 / TIMESTAMP_PRECISION)
 			};
-			uint32 firsttime = timestamps[point];
+			TimingMeasurement firsttime = timestamps[point];
 
-			uint32 peak_value = 0;
+			TimingMeasurement peak_value = 0;
 			Point peak_point;
-			uint32 value_sum = 0;
+			TimingMeasurement value_sum = 0;
 			int points_drawn = 0;
 
 			for (int i = 0; i < NUM_FRAMERATE_POINTS; i++) {
 				point--;
 				if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
 
-				uint32 value = durations[point];
-				uint32 timediff = firsttime - timestamps[point];
+				TimingMeasurement value = durations[point] * 1000 / TIMESTAMP_PRECISION;
+				TimingMeasurement timediff = (firsttime - timestamps[point]) * 1000 / TIMESTAMP_PRECISION;
 				if ((int)timediff > draw_horz_scale * 500) break;
 
 				Point newpoint{
