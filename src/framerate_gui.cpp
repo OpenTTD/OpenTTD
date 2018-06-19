@@ -24,7 +24,7 @@ namespace {
 	/** Number of data points to keep in buffer for each performance measurement */
 	const int NUM_FRAMERATE_POINTS = 512;
 	/** Units a second is divided into in performance measurements */
-	const int TIMESTAMP_PRECISION = 1000;
+	const int TIMESTAMP_PRECISION = 1000000;
 
 	TimingMeasurement _framerate_durations[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
 	TimingMeasurement _framerate_timestamps[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
@@ -93,15 +93,19 @@ namespace {
 
 #ifdef WIN32
 #include <windows.h>
-static TimingMeasurement GetTime()
+static TimingMeasurement GetPerformanceTimer()
 {
 	LARGE_INTEGER pfc, pfq;
 	if (QueryPerformanceFrequency(&pfq) && QueryPerformanceCounter(&pfc)) {
-		pfq.QuadPart /= 1000;
-		return pfc.QuadPart / pfq.QuadPart;
+		return pfc.QuadPart * TIMESTAMP_PRECISION / pfq.QuadPart;
 	} else {
-		return GetTickCount();
+		return GetTickCount() * 1000;
 	}
+}
+#else
+static TimingMeasurement GetPerformanceTimer()
+{
+	return GetTime() * 1000;
 }
 #endif
 
@@ -111,12 +115,12 @@ FramerateMeasurer::FramerateMeasurer(FramerateElement elem)
 	assert(elem < FRAMERATE_MAX);
 
 	this->elem = elem;
-	this->start_time = GetTime();
+	this->start_time = GetPerformanceTimer();
 }
 
 FramerateMeasurer::~FramerateMeasurer()
 {
-	StoreMeasurement(this->elem, this->start_time, GetTime());
+	StoreMeasurement(this->elem, this->start_time, GetPerformanceTimer());
 }
 
 void FramerateMeasurer::SetExpectedRate(double rate)
@@ -370,8 +374,8 @@ static const NWidgetPart _frametime_graph_window_widgets[] = {
 };
 
 struct FrametimeGraphWindow : Window {
-	mutable int vertical_scale;   ///< number of one-millisecond units vertically
-	int horizontal_scale; ///< number of half-second units horizontally
+	mutable int vertical_scale;   ///< number of TIMESTAMP_PRECISION units vertically
+	int horizontal_scale;         ///< number of half-second units horizontally
 
 	FramerateElement element;
 	Dimension graph_size;
@@ -380,7 +384,7 @@ struct FrametimeGraphWindow : Window {
 	{
 		this->element = (FramerateElement)number;
 		this->horizontal_scale = 4;
-		this->vertical_scale = 100;
+		this->vertical_scale = TIMESTAMP_PRECISION / 10;
 
 		this->InitNested(number);
 	}
@@ -441,17 +445,17 @@ struct FrametimeGraphWindow : Window {
 			int c_peak = PC_DARK_RED;
 
 			int draw_horz_scale = this->horizontal_scale;
-			if (this->vertical_scale >= 1000) draw_horz_scale *= 5;
+			if (this->vertical_scale >= TIMESTAMP_PRECISION) draw_horz_scale *= 5;
 
 			for (int division = 0; division < 10; division++) {
 				int y = Scinterlate(y_zero, y_max, 0, 10, division);
 				GfxDrawLine(x_zero, y, x_max, y, c_grid);
 				if (division % 2 == 0) {
-					if (this->vertical_scale > 1000) {
-						SetDParam(0, this->vertical_scale * division / 10 / 1000);
+					if (this->vertical_scale > TIMESTAMP_PRECISION) {
+						SetDParam(0, this->vertical_scale * division / 10 / TIMESTAMP_PRECISION);
 						DrawString(r.left, x_zero - 2, y - FONT_HEIGHT_SMALL, STR_FRAMERATE_GRAPH_SECONDS, TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 					} else {
-						SetDParam(0, this->vertical_scale * division / 10);
+						SetDParam(0, this->vertical_scale * division / 10 * 1000 / TIMESTAMP_PRECISION);
 						DrawString(r.left, x_zero - 2, y - FONT_HEIGHT_SMALL, STR_FRAMERATE_GRAPH_MILLISECONDS, TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 					}
 				}
@@ -467,7 +471,7 @@ struct FrametimeGraphWindow : Window {
 
 			Point lastpoint{
 				x_max,
-				Scinterlate(y_zero, y_max, 0, this->vertical_scale, (int)durations[point] * 1000 / TIMESTAMP_PRECISION)
+				Scinterlate(y_zero, y_max, 0, this->vertical_scale, (int)durations[point])
 			};
 			TimingMeasurement firsttime = timestamps[point];
 
@@ -476,11 +480,11 @@ struct FrametimeGraphWindow : Window {
 			TimingMeasurement value_sum = 0;
 			int points_drawn = 0;
 
-			for (int i = 0; i < NUM_FRAMERATE_POINTS; i++) {
+			for (int i = 1; i < NUM_FRAMERATE_POINTS; i++) {
 				point--;
 				if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
 
-				TimingMeasurement value = durations[point] * 1000 / TIMESTAMP_PRECISION;
+				TimingMeasurement value = durations[point];
 				TimingMeasurement timediff = (firsttime - timestamps[point]) * 1000 / TIMESTAMP_PRECISION;
 				if ((int)timediff > draw_horz_scale * 500) break;
 
@@ -488,6 +492,7 @@ struct FrametimeGraphWindow : Window {
 					Scinterlate(x_zero, x_max, 0, draw_horz_scale * 500, draw_horz_scale * 500 - timediff),
 					Scinterlate(y_zero, y_max, 0, this->vertical_scale, (int)value)
 				};
+				assert(newpoint.x <= lastpoint.x);
 				GfxDrawLine(lastpoint.x, lastpoint.y, newpoint.x, newpoint.y, c_lines);
 				lastpoint = newpoint;
 
@@ -499,10 +504,10 @@ struct FrametimeGraphWindow : Window {
 				}
 			}
 
-			if (points_drawn > 0 && peak_value > 10 && 2 * peak_value > 3 * value_sum / points_drawn) {
+			if (points_drawn > 0 && peak_value > TIMESTAMP_PRECISION / 100 && 2 * peak_value > 3 * value_sum / points_drawn) {
 				TextColour tc_peak = (TextColour)(TC_IS_PALETTE_COLOUR | c_peak);
 				GfxFillRect(peak_point.x - 1, peak_point.y - 1, peak_point.x + 1, peak_point.y + 1, c_peak);
-				SetDParam(0, peak_value);
+				SetDParam(0, peak_value * 1000 / TIMESTAMP_PRECISION);
 				int label_y = max(y_max, peak_point.y - FONT_HEIGHT_SMALL);
 				if (peak_point.x - x_zero > (int)this->graph_size.width / 2) {
 					DrawString(x_zero, peak_point.x - 2, label_y, STR_FRAMERATE_GRAPH_MILLISECONDS, tc_peak, SA_RIGHT | SA_FORCE, false, FS_SMALL);
@@ -511,13 +516,13 @@ struct FrametimeGraphWindow : Window {
 				}
 			}
 
-			if (peak_value < 20) this->vertical_scale = 20;
-			else if (peak_value < 100) this->vertical_scale = 100;
-			else if (peak_value < 200) this->vertical_scale = 200;
-			else if (peak_value < 500) this->vertical_scale = 500;
-			else if (peak_value < 1000) this->vertical_scale = 1000;
-			else if (peak_value < 5000) this->vertical_scale = 5000;
-			else this->vertical_scale = 10000;
+			if (peak_value < TIMESTAMP_PRECISION / 50) this->vertical_scale = TIMESTAMP_PRECISION / 50;
+			else if (peak_value < TIMESTAMP_PRECISION / 10) this->vertical_scale = TIMESTAMP_PRECISION / 10;
+			else if (peak_value < TIMESTAMP_PRECISION / 5) this->vertical_scale = TIMESTAMP_PRECISION / 5;
+			else if (peak_value < TIMESTAMP_PRECISION / 2) this->vertical_scale = TIMESTAMP_PRECISION / 2;
+			else if (peak_value < TIMESTAMP_PRECISION) this->vertical_scale = TIMESTAMP_PRECISION;
+			else if (peak_value < TIMESTAMP_PRECISION * 5) this->vertical_scale = TIMESTAMP_PRECISION * 5;
+			else this->vertical_scale = TIMESTAMP_PRECISION * 10;
 		}
 	}
 };
