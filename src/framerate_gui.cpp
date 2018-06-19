@@ -63,30 +63,43 @@ namespace {
 		return sumtime * 1000 / points / TIMESTAMP_PRECISION;
 	}
 
-	TimingMeasurement GetAverageTimestep(FramerateElement elem, int points)
+	/** Get current rate of a performance element, based on a fixed number of data points */
+	double GetFramerate(FramerateElement elem, int count)
 	{
 		assert(elem < FRAMERATE_MAX);
-		points = min(points, _framerate_num_measurements[elem]);
+		count = Clamp(count, 2, _framerate_num_measurements[elem]);
 
-		int first = _framerate_next_measurement_point[elem] - points;
+		int first = _framerate_next_measurement_point[elem] - count;
 		int last = _framerate_next_measurement_point[elem] - 1;
 		if (first < 0) first += NUM_FRAMERATE_POINTS;
 		if (last < 0) last += NUM_FRAMERATE_POINTS;
 
-		points -= 1;
-		if (points < 1) return TIMESTAMP_PRECISION;
+		auto diff = _framerate_timestamps[elem][last] - _framerate_timestamps[elem][first];
 
-		return (_framerate_timestamps[elem][last] - _framerate_timestamps[elem][first]) / points;
+		return (double)count * TIMESTAMP_PRECISION / diff;
 	}
 
-	double MillisecondsToFps(TimingMeasurement ms)
+	/** Get current rate of a performance element, based on approximately the past one second of data */
+	double GetFramerate(FramerateElement elem)
 	{
-		return (double)TIMESTAMP_PRECISION / ms;
-	}
+		int point = _framerate_next_measurement_point[elem] - 1;
+		int last_point = _framerate_next_measurement_point[elem] - _framerate_num_measurements[elem];
+		if (point < 0) point += NUM_FRAMERATE_POINTS;
+		if (last_point < 0) last_point += NUM_FRAMERATE_POINTS;
 
-	double GetFramerate(FramerateElement elem, int points = NUM_FRAMERATE_POINTS)
-	{
-		return MillisecondsToFps(GetAverageTimestep(elem, points));
+		int count = 0;
+		auto now = _framerate_timestamps[elem][point];
+
+		while (point != last_point) {
+			if (now - _framerate_timestamps[elem][point] >= TIMESTAMP_PRECISION) break;
+			point--;
+			count++;
+			if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
+		}
+
+		auto diff = now - _framerate_timestamps[elem][point];
+
+		return (double)count * TIMESTAMP_PRECISION / diff;
 	}
 
 }
@@ -225,15 +238,15 @@ struct FramerateWindow : Window {
 
 		switch (widget) {
 			case WID_FRW_RATE_GAMELOOP:
-				value = GetFramerate(FRAMERATE_GAMELOOP, 8);
+				value = GetFramerate(FRAMERATE_GAMELOOP);
 				SetDParamGoodWarnBadRate(value, FRAMERATE_GAMELOOP);
 				break;
 			case WID_FRW_RATE_BLITTER:
-				value = GetFramerate(FRAMERATE_DRAWING, 8);
+				value = GetFramerate(FRAMERATE_DRAWING);
 				SetDParamGoodWarnBadRate(value, FRAMERATE_DRAWING);
 				break;
 			case WID_FRW_RATE_FACTOR:
-				value = GetFramerate(FRAMERATE_GAMELOOP, 8);
+				value = GetFramerate(FRAMERATE_GAMELOOP);
 				value /= _framerate_expected_rate[FRAMERATE_GAMELOOP];
 				SetDParam(0, (int)(value * 100));
 				SetDParam(1, 2);
