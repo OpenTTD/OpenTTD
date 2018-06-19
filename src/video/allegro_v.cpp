@@ -464,10 +464,7 @@ void VideoDriver_Allegro::Stop()
 #if defined(UNIX) || defined(__OS2__) || defined(DOS)
 # include <sys/time.h> /* gettimeofday */
 
-# ifndef DOS /* GetTime() needs to be exported on DOS, only place it's implemented there */
-static
-# endif
-uint32 GetTime()
+static uint32 GetTime()
 {
 	struct timeval tim;
 
