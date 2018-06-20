@@ -89,25 +89,25 @@ bool IsHangar(TileIndex t)
 }
 
 /**
- * Look for a station around the given tile area.
+ * Look for a station owned by the given company around the given tile area.
  * @param ta the area to search over
- * @param closest_station the closest station found so far
+ * @param closest_station the closest owned station found so far
+ * @param company the company whose stations to look for
  * @param st to 'return' the found station
  * @return Succeeded command (if zero or one station found) or failed command (for two or more stations found).
  */
 template <class T>
-CommandCost GetStationAround(TileArea ta, StationID closest_station, T **st)
+CommandCost GetStationAround(TileArea ta, StationID closest_station, CompanyID company, T **st)
 {
 	ta.tile -= TileDiffXY(1, 1);
 	ta.w    += 2;
 	ta.h    += 2;
 
-	/* check around to see if there's any stations there */
+	/* check around to see if there are any stations there owned by the company */
 	TILE_AREA_LOOP(tile_cur, ta) {
 		if (IsTileType(tile_cur, MP_STATION)) {
 			StationID t = GetStationIndex(tile_cur);
-			if (!T::IsValidID(t)) continue;
-
+			if (!T::IsValidID(t) || Station::Get(t)->owner != company) continue;
 			if (closest_station == INVALID_STATION) {
 				closest_station = t;
 			} else if (closest_station != t) {
@@ -676,7 +676,7 @@ static CommandCost BuildStationPart(Station **st, DoCommandFlag flags, bool reus
 
 	if (*st != NULL) {
 		if ((*st)->owner != _current_company) {
-			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
+			return_cmd_error(CMD_ERROR);
 		}
 
 		CommandCost ret = (*st)->rect.BeforeAddRect(area.tile, area.w, area.h, StationRect::ADD_TEST);
@@ -1105,8 +1105,8 @@ CommandCost FindJoiningBaseStation(StationID existing_station, StationID station
 	}
 
 	if (check_surrounding) {
-		/* Make sure there are no similar stations around us. */
-		CommandCost ret = GetStationAround(ta, existing_station, st);
+		/* Make sure there is no more than one other station around us that is owned by us. */
+		CommandCost ret = GetStationAround(ta, existing_station, _current_company, st);
 		if (ret.Failed()) return ret;
 	}
 
