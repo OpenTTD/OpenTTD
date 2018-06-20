@@ -674,11 +674,7 @@ static CommandCost BuildStationPart(Station **st, DoCommandFlag flags, bool reus
 	/* Find a deleted station close to us */
 	if (*st == NULL && reuse) *st = GetClosestDeletedStation(area.tile);
 
-	if (*st != NULL) {
-		if ((*st)->owner != _current_company) {
-			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
-		}
-
+	if (*st != NULL && (*st)->owner == _current_company) {
 		CommandCost ret = (*st)->rect.BeforeAddRect(area.tile, area.w, area.h, StationRect::ADD_TEST);
 		if (ret.Failed()) return ret;
 	} else {
