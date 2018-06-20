@@ -140,13 +140,9 @@ void ShowFrametimeGraphWindow(FramerateElement elem);
 
 
 enum FramerateWindowWidgets {
-	WID_FRW_CAPTION_SMALL,
-	WID_FRW_TOGGLE_SIZE1,
-	WID_FRW_TOGGLE_SIZE2,
-	WID_FRW_SEL_NORMAL,
-	WID_FRW_SEL_SMALL,
+	WID_FRW_CAPTION,
 	WID_FRW_RATE_GAMELOOP,
-	WID_FRW_RATE_BLITTER,
+	WID_FRW_RATE_DRAWING,
 	WID_FRW_RATE_FACTOR,
 	WID_FRW_INFO_DATA_POINTS,
 	WID_FRW_TIMES_NAMES,
@@ -155,39 +151,29 @@ enum FramerateWindowWidgets {
 };
 
 static const NWidgetPart _framerate_window_widgets[] = {
-	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_FRW_SEL_SMALL),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-			NWidget(WWT_CAPTION, COLOUR_GREY, WID_FRW_CAPTION_SMALL), SetDataTip(STR_FRAMERATE_CAPTION_SMALL, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_FRW_TOGGLE_SIZE1), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW),
-			NWidget(WWT_STICKYBOX, COLOUR_GREY),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_FRW_CAPTION), SetDataTip(STR_FRAMERATE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, COLOUR_GREY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(NWID_VERTICAL), SetPadding(6), SetPIP(0, 3, 0),
+			NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_RATE_GAMELOOP), SetDataTip(STR_FRAMERATE_RATE_GAMELOOP, STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP),
+			NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_RATE_DRAWING),  SetDataTip(STR_FRAMERATE_RATE_BLITTER,  STR_FRAMERATE_RATE_BLITTER_TOOLTIP),
+			NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_RATE_FACTOR),   SetDataTip(STR_FRAMERATE_SPEED_FACTOR,  STR_FRAMERATE_SPEED_FACTOR_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
-	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_FRW_SEL_NORMAL), NWidget(NWID_VERTICAL),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-			NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_FRAMERATE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_FRW_TOGGLE_SIZE2), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW),
-			NWidget(WWT_STICKYBOX, COLOUR_GREY),
-		EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_GREY),
-			NWidget(NWID_VERTICAL), SetPadding(6), SetPIP(0, 3, 0),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_RATE_GAMELOOP), SetDataTip(STR_FRAMERATE_RATE_GAMELOOP, STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_RATE_BLITTER),  SetDataTip(STR_FRAMERATE_RATE_BLITTER,  STR_FRAMERATE_RATE_BLITTER_TOOLTIP),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_RATE_FACTOR),   SetDataTip(STR_FRAMERATE_SPEED_FACTOR,  STR_FRAMERATE_SPEED_FACTOR_TOOLTIP),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(NWID_VERTICAL), SetPadding(6), SetPIP(0, 3, 0),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, 6, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_NAMES),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_CURRENT),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_AVERAGE),
 			EndContainer(),
+			NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_INFO_DATA_POINTS), SetDataTip(STR_FRAMERATE_DATA_POINTS, 0x0),
 		EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_GREY),
-			NWidget(NWID_VERTICAL), SetPadding(6), SetPIP(0, 3, 0),
-				NWidget(NWID_HORIZONTAL), SetPIP(0, 6, 0),
-					NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_NAMES),
-					NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_CURRENT),
-					NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_AVERAGE),
-				EndContainer(),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_INFO_DATA_POINTS), SetDataTip(STR_FRAMERATE_DATA_POINTS, 0x0),
-			EndContainer(),
-		EndContainer(),
-	EndContainer(), EndContainer(),
+	EndContainer(),
 };
 
 struct FramerateWindow : Window {
@@ -198,19 +184,21 @@ struct FramerateWindow : Window {
 	FramerateWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
 		this->InitNested(number);
-		this->SetSmall(false);
-	}
-
-	void SetSmall(bool small)
-	{
-		this->small = small;
-		this->GetWidget<NWidgetStacked>(WID_FRW_SEL_NORMAL)->SetDisplayedPlane(this->small ? SZSP_NONE : 0);
-		this->GetWidget<NWidgetStacked>(WID_FRW_SEL_SMALL)->SetDisplayedPlane(this->small ? 0 : SZSP_NONE);
-		this->ReInit();
+		this->small = this->IsShaded();
 	}
 
 	virtual void OnTick()
 	{
+		if (this->small != this->IsShaded()) {
+			this->small = this->IsShaded();
+			auto caption = this->GetWidget<NWidgetLeaf>(WID_FRW_CAPTION);
+			if (this->small) {
+				caption->SetDataTip(STR_FRAMERATE_CAPTION_SMALL, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
+			} else {
+				caption->SetDataTip(STR_FRAMERATE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
+			}
+		}
+
 		this->SetDirty();
 	}
 
@@ -251,7 +239,8 @@ struct FramerateWindow : Window {
 		double value;
 
 		switch (widget) {
-			case WID_FRW_CAPTION_SMALL:
+			case WID_FRW_CAPTION:
+				if (!this->small) break;
 				value = _pf_data[FRAMERATE_GAMELOOP].GetRate();
 				SetDParamGoodWarnBadRate(value, FRAMERATE_GAMELOOP);
 				value /= _pf_data[FRAMERATE_GAMELOOP].expected_rate;
@@ -263,7 +252,7 @@ struct FramerateWindow : Window {
 				value = _pf_data[FRAMERATE_GAMELOOP].GetRate();
 				SetDParamGoodWarnBadRate(value, FRAMERATE_GAMELOOP);
 				break;
-			case WID_FRW_RATE_BLITTER:
+			case WID_FRW_RATE_DRAWING:
 				value = _pf_data[FRAMERATE_DRAWING].GetRate();
 				SetDParamGoodWarnBadRate(value, FRAMERATE_DRAWING);
 				break;
@@ -282,20 +271,11 @@ struct FramerateWindow : Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case WID_FRW_CAPTION_SMALL:
-				SetDParam(0, STR_FRAMERATE_FPS_GOOD);
-				SetDParam(1, 999999);
-				SetDParam(2, 2);
-				SetDParam(3, 999999);
-				SetDParam(4, 2);
-				*size = GetStringBoundingBox(STR_FRAMERATE_CAPTION_SMALL);
-				break;
-
 			case WID_FRW_RATE_GAMELOOP:
 				SetDParamGoodWarnBadRate(9999.99, FRAMERATE_GAMELOOP);
 				*size = GetStringBoundingBox(STR_FRAMERATE_RATE_GAMELOOP);
 				break;
-			case WID_FRW_RATE_BLITTER:
+			case WID_FRW_RATE_DRAWING:
 				SetDParamGoodWarnBadRate(9999.99, FRAMERATE_DRAWING);
 				*size = GetStringBoundingBox(STR_FRAMERATE_RATE_BLITTER);
 				break;
@@ -376,11 +356,6 @@ struct FramerateWindow : Window {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case WID_FRW_TOGGLE_SIZE1:
-			case WID_FRW_TOGGLE_SIZE2:
-				this->SetSmall(!this->small);
-				break;
-
 			case WID_FRW_TIMES_NAMES:
 			case WID_FRW_TIMES_CURRENT:
 			case WID_FRW_TIMES_AVERAGE: {
