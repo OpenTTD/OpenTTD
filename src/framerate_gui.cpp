@@ -27,80 +27,84 @@ namespace {
 	/** Units a second is divided into in performance measurements */
 	const int TIMESTAMP_PRECISION = 1000000;
 
-	TimingMeasurement _framerate_durations[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
-	TimingMeasurement _framerate_timestamps[FRAMERATE_MAX][NUM_FRAMERATE_POINTS] = {};
-	double _framerate_expected_rate[FRAMERATE_MAX] = {
-		1000.0 / MILLISECONDS_PER_TICK, // FRAMERATE_GAMELOOP
-		1000.0 / MILLISECONDS_PER_TICK, // FRAMERATE_DRAWING
-		60.0,                           // FRAMERATE_VIDEO
-		1000.0 * 8192 / 44100,          // FRAMERATE_SOUND
+	struct PerformanceData {
+		TimingMeasurement durations[NUM_FRAMERATE_POINTS];
+		TimingMeasurement timestamps[NUM_FRAMERATE_POINTS];
+		double expected_rate;
+		int next_index;
+		int num_valid;
+
+		explicit PerformanceData(double expected_rate) : expected_rate(expected_rate), next_index(0), num_valid(0) { }
+
+		void Add(TimingMeasurement start_time, TimingMeasurement end_time)
+		{
+			this->durations[this->next_index] = end_time - start_time;
+			this->timestamps[this->next_index] = start_time;
+			this->next_index += 1;
+			if (this->next_index >= NUM_FRAMERATE_POINTS) this->next_index = 0;
+			this->num_valid = min(NUM_FRAMERATE_POINTS, this->num_valid + 1);
+		}
+
+		double GetAverageDurationMilliseconds(int count)
+		{
+			count = min(count, this->num_valid);
+
+			int first_point = this->next_index - count - 1;
+			while (first_point < 0) first_point += NUM_FRAMERATE_POINTS;
+
+			double sumtime = 0;
+			for (int i = first_point; i < first_point + count; i++) {
+				sumtime += this->durations[i % NUM_FRAMERATE_POINTS];
+			}
+
+			return sumtime * 1000 / count / TIMESTAMP_PRECISION;
+		}
+
+		/** Get current rate of a performance element, based on a fixed number of data points */
+		double GetRate(int count)
+		{
+			count = Clamp(count, 2, this->num_valid);
+
+			int first = this->next_index - count;
+			int last = this->next_index - 1;
+			if (first < 0) first += NUM_FRAMERATE_POINTS;
+			if (last < 0) last += NUM_FRAMERATE_POINTS;
+
+			auto diff = this->timestamps[last] - this->timestamps[first];
+
+			return (double)count * TIMESTAMP_PRECISION / diff;
+		}
+
+		/** Get current rate of a performance element, based on approximately the past one second of data */
+		double GetRate()
+		{
+			int point = this->next_index - 1;
+			int last_point = this->next_index - this->num_valid;
+			if (point < 0) point += NUM_FRAMERATE_POINTS;
+			if (last_point < 0) last_point += NUM_FRAMERATE_POINTS;
+
+			int count = 0;
+			auto now = this->timestamps[point];
+
+			while (point != last_point) {
+				if (now - this->timestamps[point] >= TIMESTAMP_PRECISION) break;
+				point--;
+				count++;
+				if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
+			}
+
+			auto diff = now - this->timestamps[point];
+
+			return (double)count * TIMESTAMP_PRECISION / diff;
+		}
 	};
-	int _framerate_next_measurement_point[FRAMERATE_MAX] = {};
-	int _framerate_num_measurements[FRAMERATE_MAX] = {};
 
-	void StoreMeasurement(FramerateElement elem, TimingMeasurement start_time, TimingMeasurement end_time)
-	{
-		_framerate_durations[elem][_framerate_next_measurement_point[elem]] = end_time - start_time;
-		_framerate_timestamps[elem][_framerate_next_measurement_point[elem]] = start_time;
-		_framerate_next_measurement_point[elem] += 1;
-		_framerate_next_measurement_point[elem] %= NUM_FRAMERATE_POINTS;
-		_framerate_num_measurements[elem] = min(NUM_FRAMERATE_POINTS, _framerate_num_measurements[elem] + 1);
-	}
-
-	double GetAverageDuration(FramerateElement elem, int points)
-	{
-		assert(elem < FRAMERATE_MAX);
-		points = min(points, _framerate_num_measurements[elem]);
-
-		int first_point = _framerate_next_measurement_point[elem] - points - 1;
-		while (first_point < 0) first_point += NUM_FRAMERATE_POINTS;
-
-		double sumtime = 0;
-		for (int i = first_point; i < first_point + points; i++) {
-			sumtime += _framerate_durations[elem][i % NUM_FRAMERATE_POINTS];
-		}
-
-		return sumtime * 1000 / points / TIMESTAMP_PRECISION;
-	}
-
-	/** Get current rate of a performance element, based on a fixed number of data points */
-	double GetFramerate(FramerateElement elem, int count)
-	{
-		assert(elem < FRAMERATE_MAX);
-		count = Clamp(count, 2, _framerate_num_measurements[elem]);
-
-		int first = _framerate_next_measurement_point[elem] - count;
-		int last = _framerate_next_measurement_point[elem] - 1;
-		if (first < 0) first += NUM_FRAMERATE_POINTS;
-		if (last < 0) last += NUM_FRAMERATE_POINTS;
-
-		auto diff = _framerate_timestamps[elem][last] - _framerate_timestamps[elem][first];
-
-		return (double)count * TIMESTAMP_PRECISION / diff;
-	}
-
-	/** Get current rate of a performance element, based on approximately the past one second of data */
-	double GetFramerate(FramerateElement elem)
-	{
-		int point = _framerate_next_measurement_point[elem] - 1;
-		int last_point = _framerate_next_measurement_point[elem] - _framerate_num_measurements[elem];
-		if (point < 0) point += NUM_FRAMERATE_POINTS;
-		if (last_point < 0) last_point += NUM_FRAMERATE_POINTS;
-
-		int count = 0;
-		auto now = _framerate_timestamps[elem][point];
-
-		while (point != last_point) {
-			if (now - _framerate_timestamps[elem][point] >= TIMESTAMP_PRECISION) break;
-			point--;
-			count++;
-			if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
-		}
-
-		auto diff = now - _framerate_timestamps[elem][point];
-
-		return (double)count * TIMESTAMP_PRECISION / diff;
-	}
+	PerformanceData _pf_data[FRAMERATE_MAX] = {
+		PerformanceData(1000.0 / MILLISECONDS_PER_TICK), // FRAMERATE_GAMELOOP
+		PerformanceData(1000.0 / MILLISECONDS_PER_TICK), // FRAMERATE_DRAWING
+		PerformanceData(60.0),                           // FRAMERATE_VIDEO
+		PerformanceData(1000.0 * 8192 / 44100),          // FRAMERATE_SOUND
+	};
 
 }
 
@@ -123,12 +127,12 @@ FramerateMeasurer::FramerateMeasurer(FramerateElement elem)
 
 FramerateMeasurer::~FramerateMeasurer()
 {
-	StoreMeasurement(this->elem, this->start_time, GetPerformanceTimer());
+	_pf_data[this->elem].Add(this->start_time, GetPerformanceTimer());
 }
 
 void FramerateMeasurer::SetExpectedRate(double rate)
 {
-	_framerate_expected_rate[this->elem] = rate;
+	_pf_data[elem].expected_rate = rate;
 }
 
 
@@ -228,8 +232,8 @@ struct FramerateWindow : Window {
 
 	static void SetDParamGoodWarnBadRate(double value, FramerateElement elem)
 	{
-		const double threshold_good = _framerate_expected_rate[elem] * 0.95;
-		const double threshold_bad = _framerate_expected_rate[elem] * 2 / 3;
+		const double threshold_good = _pf_data[elem].expected_rate * 0.95;
+		const double threshold_bad = _pf_data[elem].expected_rate * 2 / 3;
 
 		uint tpl;
 		if (value > threshold_good) tpl = STR_FRAMERATE_FPS_GOOD;
@@ -248,24 +252,24 @@ struct FramerateWindow : Window {
 
 		switch (widget) {
 			case WID_FRW_CAPTION_SMALL:
-				value = GetFramerate(FRAMERATE_GAMELOOP);
+				value = _pf_data[FRAMERATE_GAMELOOP].GetRate();
 				SetDParamGoodWarnBadRate(value, FRAMERATE_GAMELOOP);
-				value /= _framerate_expected_rate[FRAMERATE_GAMELOOP];
+				value /= _pf_data[FRAMERATE_GAMELOOP].expected_rate;
 				SetDParam(3, (int)(value * 100));
 				SetDParam(4, 2);
 				break;
 
 			case WID_FRW_RATE_GAMELOOP:
-				value = GetFramerate(FRAMERATE_GAMELOOP);
+				value = _pf_data[FRAMERATE_GAMELOOP].GetRate();
 				SetDParamGoodWarnBadRate(value, FRAMERATE_GAMELOOP);
 				break;
 			case WID_FRW_RATE_BLITTER:
-				value = GetFramerate(FRAMERATE_DRAWING);
+				value = _pf_data[FRAMERATE_DRAWING].GetRate();
 				SetDParamGoodWarnBadRate(value, FRAMERATE_DRAWING);
 				break;
 			case WID_FRW_RATE_FACTOR:
-				value = GetFramerate(FRAMERATE_GAMELOOP);
-				value /= _framerate_expected_rate[FRAMERATE_GAMELOOP];
+				value = _pf_data[FRAMERATE_GAMELOOP].GetRate();
+				value /= _pf_data[FRAMERATE_GAMELOOP].expected_rate;
 				SetDParam(0, (int)(value * 100));
 				SetDParam(1, 2);
 				break;
@@ -358,12 +362,12 @@ struct FramerateWindow : Window {
 			}
 			case WID_FRW_TIMES_CURRENT:
 				DrawElementTimesColumn(r, STR_FRAMERATE_CURRENT, [](FramerateElement elem) {
-					return GetAverageDuration(elem, 8);
+					return _pf_data[elem].GetAverageDurationMilliseconds(8);
 				});
 				break;
 			case WID_FRW_TIMES_AVERAGE:
 				DrawElementTimesColumn(r, STR_FRAMERATE_AVERAGE, [](FramerateElement elem) {
-					return GetAverageDuration(elem, NUM_FRAMERATE_POINTS);
+					return _pf_data[elem].GetAverageDurationMilliseconds(NUM_FRAMERATE_POINTS);
 				});
 				break;
 		}
@@ -475,9 +479,9 @@ struct FrametimeGraphWindow : Window {
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget == WID_FGW_GRAPH) {
-			auto &durations = _framerate_durations[this->element];
-			auto &timestamps = _framerate_timestamps[this->element];
-			int point = _framerate_next_measurement_point[this->element] - 1;
+			auto &durations = _pf_data[this->element].durations;
+			auto &timestamps = _pf_data[this->element].timestamps;
+			int point = _pf_data[this->element].next_index - 1;
 			if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
 
 			int x_zero = r.right - this->graph_size.width;
@@ -607,19 +611,21 @@ void ConPrintFramerate()
 	};
 
 	for (FramerateElement e = FRAMERATE_FIRST; e < FRAMERATE_MAX; e = (FramerateElement)(e + 1)) {
+		auto &pf = _pf_data[e];
 		IConsolePrintF(TC_GREEN, "%s rate: %.2ffps  %.2ffps  %.2ffps  (expected: %.2ffps)",
 			MEASUREMENT_NAMES[e],
-			GetFramerate(e, count1),
-			GetFramerate(e, count2),
-			GetFramerate(e, count3),
-			_framerate_expected_rate[e]);
+			pf.GetRate(count1),
+			pf.GetRate(count2),
+			pf.GetRate(count3),
+			pf.expected_rate);
 	}
 
 	for (FramerateElement e = FRAMERATE_FIRST; e < FRAMERATE_MAX; e = (FramerateElement)(e + 1)) {
+		auto &pf = _pf_data[e];
 		IConsolePrintF(TC_LIGHT_BLUE, "%s times: %.2fms  %.2fms  %.2fms",
 			MEASUREMENT_NAMES[e],
-			GetAverageDuration(e, count1),
-			GetAverageDuration(e, count2),
-			GetAverageDuration(e, count3));
+			pf.GetAverageDurationMilliseconds(count1),
+			pf.GetAverageDurationMilliseconds(count2),
+			pf.GetAverageDurationMilliseconds(count3));
 	}
 }
