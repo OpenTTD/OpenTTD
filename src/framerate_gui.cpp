@@ -429,8 +429,8 @@ struct FrametimeGraphWindow : Window {
 			SetDParam(0, this->horizontal_scale / 2);
 			auto size_s_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_SECONDS);
 
-			graph_size.width = this->horizontal_scale * max<uint>(100, size_s_label.width + 10) / 2;
 			graph_size.height = max<uint>(100, 10 * (size_ms_label.height + 1));
+			graph_size.width = max<uint>(2 * graph_size.height, this->horizontal_scale *  (size_s_label.width + 10) / 2 );
 			*size = graph_size;
 
 			size->width += size_ms_label.width + 2;
