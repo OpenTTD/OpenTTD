@@ -621,33 +621,45 @@ void ConPrintFramerate()
 
 	static char *MEASUREMENT_NAMES[PFE_MAX] = {
 		"Game loop",
-		"GL station ticks",
-		"GL train ticks",
-		"GL road vehicle ticks",
-		"GL ship ticks",
-		"GL aircraft ticks",
+		"  GL station ticks",
+		"  GL train ticks",
+		"  GL road vehicle ticks",
+		"  GL ship ticks",
+		"  GL aircraft ticks",
 		"Drawing",
-		"Viewport drawing",
+		"  Viewport drawing",
 		"Video output",
 		"Sound mixing",
 	};
 
-	for (auto e = PFE_FIRST; e < PFE_MAX; e = (PerformanceElement)(e + 1)) {
+	static const PerformanceElement rate_elements[] = { PFE_GAMELOOP, PFE_DRAWING, PFE_VIDEO };
+
+	bool printed_anything = false;
+
+	for (auto e : rate_elements) {
 		auto &pf = _pf_data[e];
+		if (pf.num_valid == 0) continue;
 		IConsolePrintF(TC_GREEN, "%s rate: %.2ffps  %.2ffps  %.2ffps  (expected: %.2ffps)",
 			MEASUREMENT_NAMES[e],
 			pf.GetRate(count1),
 			pf.GetRate(count2),
 			pf.GetRate(count3),
 			pf.expected_rate);
+		printed_anything = true;
 	}
 
 	for (auto e = PFE_FIRST; e < PFE_MAX; e = (PerformanceElement)(e + 1)) {
 		auto &pf = _pf_data[e];
+		if (pf.num_valid == 0) continue;
 		IConsolePrintF(TC_LIGHT_BLUE, "%s times: %.2fms  %.2fms  %.2fms",
 			MEASUREMENT_NAMES[e],
 			pf.GetAverageDurationMilliseconds(count1),
 			pf.GetAverageDurationMilliseconds(count2),
 			pf.GetAverageDurationMilliseconds(count3));
+		printed_anything = true;
+	}
+
+	if (!printed_anything) {
+		IConsoleWarning("No performance measurements have been taken yet");
 	}
 }
