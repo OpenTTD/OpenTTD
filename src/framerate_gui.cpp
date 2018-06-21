@@ -99,11 +99,11 @@ namespace {
 		}
 	};
 
-	PerformanceData _pf_data[FRAMERATE_MAX] = {
-		PerformanceData(1000.0 / MILLISECONDS_PER_TICK), // FRAMERATE_GAMELOOP
-		PerformanceData(1000.0 / MILLISECONDS_PER_TICK), // FRAMERATE_DRAWING
-		PerformanceData(60.0),                           // FRAMERATE_VIDEO
-		PerformanceData(1000.0 * 8192 / 44100),          // FRAMERATE_SOUND
+	PerformanceData _pf_data[PFE_MAX] = {
+		PerformanceData(1000.0 / MILLISECONDS_PER_TICK), // PFE_GAMELOOP
+		PerformanceData(1000.0 / MILLISECONDS_PER_TICK), // PFE_DRAWING
+		PerformanceData(60.0),                           // PFE_VIDEO
+		PerformanceData(1000.0 * 8192 / 44100),          // PFE_SOUND
 	};
 
 }
@@ -117,26 +117,26 @@ static TimingMeasurement GetPerformanceTimer()
 }
 
 
-FramerateMeasurer::FramerateMeasurer(FramerateElement elem)
+PerformanceMeasurer::PerformanceMeasurer(PerformanceElement elem)
 {
-	assert(elem < FRAMERATE_MAX);
+	assert(elem < PFE_MAX);
 
 	this->elem = elem;
 	this->start_time = GetPerformanceTimer();
 }
 
-FramerateMeasurer::~FramerateMeasurer()
+PerformanceMeasurer::~PerformanceMeasurer()
 {
 	_pf_data[this->elem].Add(this->start_time, GetPerformanceTimer());
 }
 
-void FramerateMeasurer::SetExpectedRate(double rate)
+void PerformanceMeasurer::SetExpectedRate(double rate)
 {
 	_pf_data[elem].expected_rate = rate;
 }
 
 
-void ShowFrametimeGraphWindow(FramerateElement elem);
+void ShowFrametimeGraphWindow(PerformanceElement elem);
 
 
 enum FramerateWindowWidgets {
@@ -218,7 +218,7 @@ struct FramerateWindow : Window {
 		SetDParam(2, 2);
 	}
 
-	static void SetDParamGoodWarnBadRate(double value, FramerateElement elem)
+	static void SetDParamGoodWarnBadRate(double value, PerformanceElement elem)
 	{
 		const double threshold_good = _pf_data[elem].expected_rate * 0.95;
 		const double threshold_bad = _pf_data[elem].expected_rate * 2 / 3;
@@ -241,24 +241,24 @@ struct FramerateWindow : Window {
 		switch (widget) {
 			case WID_FRW_CAPTION:
 				if (!this->small) break;
-				value = _pf_data[FRAMERATE_GAMELOOP].GetRate();
-				SetDParamGoodWarnBadRate(value, FRAMERATE_GAMELOOP);
-				value /= _pf_data[FRAMERATE_GAMELOOP].expected_rate;
+				value = _pf_data[PFE_GAMELOOP].GetRate();
+				SetDParamGoodWarnBadRate(value, PFE_GAMELOOP);
+				value /= _pf_data[PFE_GAMELOOP].expected_rate;
 				SetDParam(3, (int)(value * 100));
 				SetDParam(4, 2);
 				break;
 
 			case WID_FRW_RATE_GAMELOOP:
-				value = _pf_data[FRAMERATE_GAMELOOP].GetRate();
-				SetDParamGoodWarnBadRate(value, FRAMERATE_GAMELOOP);
+				value = _pf_data[PFE_GAMELOOP].GetRate();
+				SetDParamGoodWarnBadRate(value, PFE_GAMELOOP);
 				break;
 			case WID_FRW_RATE_DRAWING:
-				value = _pf_data[FRAMERATE_DRAWING].GetRate();
-				SetDParamGoodWarnBadRate(value, FRAMERATE_DRAWING);
+				value = _pf_data[PFE_DRAWING].GetRate();
+				SetDParamGoodWarnBadRate(value, PFE_DRAWING);
 				break;
 			case WID_FRW_RATE_FACTOR:
-				value = _pf_data[FRAMERATE_GAMELOOP].GetRate();
-				value /= _pf_data[FRAMERATE_GAMELOOP].expected_rate;
+				value = _pf_data[PFE_GAMELOOP].GetRate();
+				value /= _pf_data[PFE_GAMELOOP].expected_rate;
 				SetDParam(0, (int)(value * 100));
 				SetDParam(1, 2);
 				break;
@@ -272,11 +272,11 @@ struct FramerateWindow : Window {
 	{
 		switch (widget) {
 			case WID_FRW_RATE_GAMELOOP:
-				SetDParamGoodWarnBadRate(9999.99, FRAMERATE_GAMELOOP);
+				SetDParamGoodWarnBadRate(9999.99, PFE_GAMELOOP);
 				*size = GetStringBoundingBox(STR_FRAMERATE_RATE_GAMELOOP);
 				break;
 			case WID_FRW_RATE_DRAWING:
-				SetDParamGoodWarnBadRate(9999.99, FRAMERATE_DRAWING);
+				SetDParamGoodWarnBadRate(9999.99, PFE_DRAWING);
 				*size = GetStringBoundingBox(STR_FRAMERATE_RATE_BLITTER);
 				break;
 			case WID_FRW_RATE_FACTOR:
@@ -286,7 +286,7 @@ struct FramerateWindow : Window {
 				break;
 
 			case WID_FRW_TIMES_NAMES: {
-				int linecount = FRAMERATE_MAX - FRAMERATE_FIRST;
+				int linecount = PFE_MAX - PFE_FIRST;
 				size->width = 0;
 				size->height = FONT_HEIGHT_NORMAL * (linecount + 1) + VSPACING;
 				for (int line = 0; line < linecount; line++) {
@@ -298,7 +298,7 @@ struct FramerateWindow : Window {
 
 			case WID_FRW_TIMES_CURRENT:
 			case WID_FRW_TIMES_AVERAGE: {
-				int linecount = FRAMERATE_MAX - FRAMERATE_FIRST;
+				int linecount = PFE_MAX - PFE_FIRST;
 				*size = GetStringBoundingBox(STR_FRAMERATE_CURRENT + (widget - WID_FRW_TIMES_CURRENT));
 				SetDParamGoodWarnBadDuration(9999.99);
 				auto item_size = GetStringBoundingBox(STR_FRAMERATE_VALUE);
@@ -313,14 +313,14 @@ struct FramerateWindow : Window {
 		}
 	}
 
-	typedef double (ElementValueExtractor)(FramerateElement elem);
+	typedef double (ElementValueExtractor)(PerformanceElement elem);
 	void DrawElementTimesColumn(const Rect &r, int heading_str, ElementValueExtractor get_value_func) const
 	{
 		int y = r.top;
 		DrawString(r.left, r.right, y, heading_str, TC_FROMSTRING, SA_CENTER);
 		y += FONT_HEIGHT_NORMAL + VSPACING;
 
-		for (FramerateElement e = FRAMERATE_FIRST; e < FRAMERATE_MAX; e = (FramerateElement)(e + 1)) {
+		for (auto e = PFE_FIRST; e < PFE_MAX; e = (PerformanceElement)(e + 1)) {
 			double value = get_value_func(e);
 			SetDParamGoodWarnBadDuration(value);
 			DrawString(r.left, r.right, y, STR_FRAMERATE_VALUE, TC_FROMSTRING, SA_RIGHT);
@@ -332,7 +332,7 @@ struct FramerateWindow : Window {
 	{
 		switch (widget) {
 			case WID_FRW_TIMES_NAMES: {
-				int linecount = FRAMERATE_MAX - FRAMERATE_FIRST;
+				int linecount = PFE_MAX - PFE_FIRST;
 				int y = r.top + FONT_HEIGHT_NORMAL + VSPACING;
 				for (int i = 0; i < linecount; i++) {
 					DrawString(r.left, r.right, y, STR_FRAMERATE_GAMELOOP + i, TC_FROMSTRING, SA_LEFT);
@@ -341,12 +341,12 @@ struct FramerateWindow : Window {
 				break;
 			}
 			case WID_FRW_TIMES_CURRENT:
-				DrawElementTimesColumn(r, STR_FRAMERATE_CURRENT, [](FramerateElement elem) {
+				DrawElementTimesColumn(r, STR_FRAMERATE_CURRENT, [](PerformanceElement elem) {
 					return _pf_data[elem].GetAverageDurationMilliseconds(8);
 				});
 				break;
 			case WID_FRW_TIMES_AVERAGE:
-				DrawElementTimesColumn(r, STR_FRAMERATE_AVERAGE, [](FramerateElement elem) {
+				DrawElementTimesColumn(r, STR_FRAMERATE_AVERAGE, [](PerformanceElement elem) {
 					return _pf_data[elem].GetAverageDurationMilliseconds(NUM_FRAMERATE_POINTS);
 				});
 				break;
@@ -362,7 +362,7 @@ struct FramerateWindow : Window {
 				int line = this->GetRowFromWidget(pt.y, widget, VSPACING, FONT_HEIGHT_NORMAL);
 				if (line > 0) {
 					line -= 1;
-					ShowFrametimeGraphWindow((FramerateElement)line);
+					ShowFrametimeGraphWindow((PerformanceElement)line);
 				}
 				break;
 			}
@@ -400,12 +400,12 @@ struct FrametimeGraphWindow : Window {
 	mutable int vertical_scale;   ///< number of TIMESTAMP_PRECISION units vertically
 	int horizontal_scale;         ///< number of half-second units horizontally
 
-	FramerateElement element;
+	PerformanceElement element;
 	Dimension graph_size;
 
 	FrametimeGraphWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
-		this->element = (FramerateElement)number;
+		this->element = (PerformanceElement)number;
 		this->horizontal_scale = 4;
 		this->vertical_scale = TIMESTAMP_PRECISION / 10;
 
@@ -564,9 +564,9 @@ void ShowFramerateWindow()
 	AllocateWindowDescFront<FramerateWindow>(&_framerate_display_desc, 0);
 }
 
-void ShowFrametimeGraphWindow(FramerateElement elem)
+void ShowFrametimeGraphWindow(PerformanceElement elem)
 {
-	if (elem < FRAMERATE_FIRST || elem >= FRAMERATE_MAX) return; // maybe warn?
+	if (elem < PFE_FIRST || elem >= PFE_MAX) return; // maybe warn?
 	AllocateWindowDescFront<FrametimeGraphWindow>(&_frametime_graph_window_desc, elem, true);
 }
 
@@ -578,14 +578,14 @@ void ConPrintFramerate()
 
 	IConsolePrintF(TC_SILVER, "Based on num. data points: %d %d %d", count1, count2, count3);
 
-	static char *MEASUREMENT_NAMES[FRAMERATE_MAX] = {
+	static char *MEASUREMENT_NAMES[PFE_MAX] = {
 		"Game loop",
 		"Drawing",
 		"Video output",
 		"Sound mixing",
 	};
 
-	for (FramerateElement e = FRAMERATE_FIRST; e < FRAMERATE_MAX; e = (FramerateElement)(e + 1)) {
+	for (auto e = PFE_FIRST; e < PFE_MAX; e = (PerformanceElement)(e + 1)) {
 		auto &pf = _pf_data[e];
 		IConsolePrintF(TC_GREEN, "%s rate: %.2ffps  %.2ffps  %.2ffps  (expected: %.2ffps)",
 			MEASUREMENT_NAMES[e],
@@ -595,7 +595,7 @@ void ConPrintFramerate()
 			pf.expected_rate);
 	}
 
-	for (FramerateElement e = FRAMERATE_FIRST; e < FRAMERATE_MAX; e = (FramerateElement)(e + 1)) {
+	for (auto e = PFE_FIRST; e < PFE_MAX; e = (PerformanceElement)(e + 1)) {
 		auto &pf = _pf_data[e];
 		IConsolePrintF(TC_LIGHT_BLUE, "%s times: %.2fms  %.2fms  %.2fms",
 			MEASUREMENT_NAMES[e],

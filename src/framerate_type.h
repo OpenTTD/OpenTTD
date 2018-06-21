@@ -12,28 +12,28 @@
 
 #include "stdafx.h"
 
-enum FramerateElement {
-	FRAMERATE_GAMELOOP,       ///< Speed of gameloop processing.
-	FRAMERATE_FIRST = FRAMERATE_GAMELOOP,
-	FRAMERATE_DRAWING,        ///< Speed of drawing world and GUI.
-	FRAMERATE_VIDEO,          ///< Speed of painting drawn video buffer.
-	FRAMERATE_SOUND,          ///< Speed of mixing audio samples
-	FRAMERATE_MAX,            ///< End of enum, must be last.
+enum PerformanceElement {
+	PFE_GAMELOOP,       ///< Speed of gameloop processing.
+	PFE_FIRST = PFE_GAMELOOP,
+	PFE_DRAWING,        ///< Speed of drawing world and GUI.
+	PFE_VIDEO,          ///< Speed of painting drawn video buffer.
+	PFE_SOUND,          ///< Speed of mixing audio samples
+	PFE_MAX,            ///< End of enum, must be last.
 };
 
 typedef uint64 TimingMeasurement;
 
 /**
- * RAII class for measuring elements of framerate.
+ * RAII class for measuring elements of performance.
  * Construct an object with the appropriate element parameter when processing begins,
  * time is automatically taken when the object goes out of scope again.
  */
-class FramerateMeasurer {
-	FramerateElement elem;
+class PerformanceMeasurer {
+	PerformanceElement elem;
 	TimingMeasurement start_time;
 public:
-	FramerateMeasurer(FramerateElement elem);
-	~FramerateMeasurer();
+	PerformanceMeasurer(PerformanceElement elem);
+	~PerformanceMeasurer();
 	void SetExpectedRate(double rate);
 };
 

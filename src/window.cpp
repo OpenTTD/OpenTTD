@@ -3078,7 +3078,7 @@ void InputLoop()
  */
 void UpdateWindows()
 {
-	FramerateMeasurer framerate(FRAMERATE_DRAWING);
+	PerformanceMeasurer framerate(PFE_DRAWING);
 
 	Window *w;
 

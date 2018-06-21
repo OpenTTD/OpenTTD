@@ -1423,7 +1423,7 @@ static void DoAutosave()
 
 void GameLoop()
 {
-	FramerateMeasurer framerate(FRAMERATE_GAMELOOP);
+	PerformanceMeasurer framerate(PFE_GAMELOOP);
 
 	if (_game_mode == GM_BOOTSTRAP) {
 #ifdef ENABLE_NETWORK

@@ -361,7 +361,7 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 /** Do palette animation and blit to the window. */
 static void PaintWindow(HDC dc)
 {
-	FramerateMeasurer framerate(FRAMERATE_VIDEO);
+	PerformanceMeasurer framerate(PFE_VIDEO);
 
 	HDC dc2 = CreateCompatibleDC(dc);
 	HBITMAP old_bmp = (HBITMAP)SelectObject(dc2, _wnd.dib_sect);
