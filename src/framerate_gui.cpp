@@ -438,8 +438,9 @@ static const NWidgetPart _frametime_graph_window_widgets[] = {
 };
 
 struct FrametimeGraphWindow : Window {
-	mutable int vertical_scale;   ///< number of TIMESTAMP_PRECISION units vertically
-	int horizontal_scale;         ///< number of half-second units horizontally
+	int vertical_scale;     ///< number of TIMESTAMP_PRECISION units vertically
+	int horizontal_scale;   ///< number of half-second units horizontally
+	int scale_update_timer; ///< ticks left before next scale update
 
 	PerformanceElement element;
 	Dimension graph_size;
@@ -449,6 +450,7 @@ struct FrametimeGraphWindow : Window {
 		this->element = (PerformanceElement)number;
 		this->horizontal_scale = 4;
 		this->vertical_scale = TIMESTAMP_PRECISION / 10;
+		this->scale_update_timer = 0;
 
 		this->InitNested(number);
 	}
@@ -479,9 +481,65 @@ struct FrametimeGraphWindow : Window {
 		}
 	}
 
+	void UpdateScale()
+	{
+		auto &durations = _pf_data[this->element].durations;
+		auto &timestamps = _pf_data[this->element].timestamps;
+		auto num_valid = _pf_data[this->element].num_valid;
+		int point = _pf_data[this->element].next_index - 1;
+		if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
+
+		TimingMeasurement firsttime = timestamps[point];
+		TimingMeasurement peak_value = 0;
+
+		for (int i = 1; i < num_valid; i++) {
+			point--;
+			if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
+
+			TimingMeasurement value = durations[point];
+			if (value > peak_value) peak_value = value;
+
+			TimingMeasurement diff = firsttime - timestamps[point];
+
+			/* Determine horizontal scale based on duration covered by 60 points
+			 * (slightly less than 2 seconds at full game speed) */
+			if (i == 60) {
+				TimingMeasurement seconds = diff / TIMESTAMP_PRECISION;
+				if (seconds < 3) this->horizontal_scale = 4;
+				else if (seconds < 5) this->horizontal_scale = 10;
+				else if (seconds < 10) this->horizontal_scale = 20;
+				else this->horizontal_scale = 60;
+			}
+
+			if (i >= 60 && diff >= (this->horizontal_scale + 2) * TIMESTAMP_PRECISION / 2) break;
+		}
+
+		/* Determine vertical scale based on peak value */
+		static const TimingMeasurement vscales[] = {
+			TIMESTAMP_PRECISION * 100,
+			TIMESTAMP_PRECISION * 10,
+			TIMESTAMP_PRECISION * 5,
+			TIMESTAMP_PRECISION,
+			TIMESTAMP_PRECISION / 2,
+			TIMESTAMP_PRECISION / 5,
+			TIMESTAMP_PRECISION / 10,
+			TIMESTAMP_PRECISION / 50,
+		};
+		for (auto sc : vscales) {
+			if (peak_value < sc) this->vertical_scale = sc;
+		}
+	}
+
 	virtual void OnTick()
 	{
 		this->SetDirty();
+
+		if (this->scale_update_timer > 0) {
+			this->scale_update_timer--;
+		} else {
+			this->scale_update_timer = 10;
+			this->UpdateScale();
+		}
 	}
 
 	/** Scale and interpolate a value from a source range into a destination range */
@@ -495,24 +553,28 @@ struct FrametimeGraphWindow : Window {
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget == WID_FGW_GRAPH) {
-			auto &durations = _pf_data[this->element].durations;
-			auto &timestamps = _pf_data[this->element].timestamps;
+			const auto &durations = _pf_data[this->element].durations;
+			const auto &timestamps = _pf_data[this->element].timestamps;
 			int point = _pf_data[this->element].next_index - 1;
 			if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
 
-			int x_zero = r.right - this->graph_size.width;
-			int x_max = r.right;
-			int y_zero = r.top + this->graph_size.height;
-			int y_max = r.top;
-			int c_grid = PC_DARK_GREY;
-			int c_lines = PC_BLACK;
-			int c_peak = PC_DARK_RED;
+			const int x_zero = r.right - this->graph_size.width;
+			const int x_max = r.right;
+			const int y_zero = r.top + this->graph_size.height;
+			const int y_max = r.top;
+			const int c_grid = PC_DARK_GREY;
+			const int c_lines = PC_BLACK;
+			const int c_peak = PC_DARK_RED;
 
-			int draw_horz_scale = this->horizontal_scale;
-			if (this->vertical_scale >= TIMESTAMP_PRECISION) draw_horz_scale *= 5;
+			const int draw_horz_scale = this->horizontal_scale;
+			const int draw_vert_scale = this->vertical_scale;
 
-			for (int division = 0; division < 10; division++) {
-				int y = Scinterlate(y_zero, y_max, 0, 10, division);
+			const int horz_div_scl = (this->horizontal_scale <= 20) ? 1 : 10;
+			const int horz_divisions = this->horizontal_scale / horz_div_scl;
+			const int vert_divisions = 10;
+
+			for (int division = 0; division < vert_divisions; division++) {
+				int y = Scinterlate(y_zero, y_max, 0, vert_divisions, division);
 				GfxDrawLine(x_zero, y, x_max, y, c_grid);
 				if (division % 2 == 0) {
 					if (this->vertical_scale > TIMESTAMP_PRECISION) {
@@ -524,11 +586,11 @@ struct FrametimeGraphWindow : Window {
 					}
 				}
 			}
-			for (int division = draw_horz_scale; division > 0; division--) {
-				int x = Scinterlate(x_zero, x_max, 0, draw_horz_scale, draw_horz_scale - division);
+			for (int division = horz_divisions; division > 0; division--) {
+				int x = Scinterlate(x_zero, x_max, 0, horz_divisions, horz_divisions - division);
 				GfxDrawLine(x, y_max, x, y_zero, c_grid);
 				if (division % 2 == 0) {
-					SetDParam(0, division / 2);
+					SetDParam(0, division * horz_div_scl / 2);
 					DrawString(x, x_max, y_zero + 2, STR_FRAMERATE_GRAPH_SECONDS, TC_GREY, SA_LEFT | SA_FORCE, false, FS_SMALL);
 				}
 			}
@@ -579,14 +641,6 @@ struct FrametimeGraphWindow : Window {
 					DrawString(peak_point.x + 2, x_max, label_y, STR_FRAMERATE_GRAPH_MILLISECONDS, tc_peak, SA_LEFT | SA_FORCE, false, FS_SMALL);
 				}
 			}
-
-			if (peak_value < TIMESTAMP_PRECISION / 50) this->vertical_scale = TIMESTAMP_PRECISION / 50;
-			else if (peak_value < TIMESTAMP_PRECISION / 10) this->vertical_scale = TIMESTAMP_PRECISION / 10;
-			else if (peak_value < TIMESTAMP_PRECISION / 5) this->vertical_scale = TIMESTAMP_PRECISION / 5;
-			else if (peak_value < TIMESTAMP_PRECISION / 2) this->vertical_scale = TIMESTAMP_PRECISION / 2;
-			else if (peak_value < TIMESTAMP_PRECISION) this->vertical_scale = TIMESTAMP_PRECISION;
-			else if (peak_value < TIMESTAMP_PRECISION * 5) this->vertical_scale = TIMESTAMP_PRECISION * 5;
-			else this->vertical_scale = TIMESTAMP_PRECISION * 10;
 		}
 	}
 };
