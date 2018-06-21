@@ -45,6 +45,20 @@ namespace {
 			this->num_valid = min(NUM_FRAMERATE_POINTS, this->num_valid + 1);
 		}
 
+		void BeginAccumulate(TimingMeasurement start_time)
+		{
+			this->next_index += 1;
+			if (this->next_index >= NUM_FRAMERATE_POINTS) this->next_index = 0;
+			this->timestamps[this->next_index] = start_time;
+			this->durations[this->next_index] = 0;
+			this->num_valid = min(NUM_FRAMERATE_POINTS, this->num_valid + 1);
+		}
+
+		void AddAccumulate(TimingMeasurement duration)
+		{
+			this->durations[this->next_index] += duration;
+		}
+
 		double GetAverageDurationMilliseconds(int count)
 		{
 			count = min(count, this->num_valid);
@@ -133,6 +147,25 @@ PerformanceMeasurer::~PerformanceMeasurer()
 void PerformanceMeasurer::SetExpectedRate(double rate)
 {
 	_pf_data[elem].expected_rate = rate;
+}
+
+
+PerformanceAccumulator::PerformanceAccumulator(PerformanceElement elem)
+{
+	assert(elem < PFE_MAX);
+
+	this->elem = elem;
+	this->start_time = GetPerformanceTimer();
+}
+
+PerformanceAccumulator::~PerformanceAccumulator()
+{
+	_pf_data[this->elem].AddAccumulate(GetPerformanceTimer() - this->start_time);
+}
+
+void PerformanceAccumulator::Reset(PerformanceElement elem)
+{
+	_pf_data[elem].BeginAccumulate(GetPerformanceTimer());
 }
 
 

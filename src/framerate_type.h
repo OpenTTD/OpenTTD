@@ -24,7 +24,7 @@ enum PerformanceElement {
 typedef uint64 TimingMeasurement;
 
 /**
- * RAII class for measuring elements of performance.
+ * RAII class for measuring simple elements of performance.
  * Construct an object with the appropriate element parameter when processing begins,
  * time is automatically taken when the object goes out of scope again.
  */
@@ -35,6 +35,20 @@ public:
 	PerformanceMeasurer(PerformanceElement elem);
 	~PerformanceMeasurer();
 	void SetExpectedRate(double rate);
+};
+
+/**
+ * RAII class for measuring multi-step elements of performance.
+ * At the beginning of a frame, call Reset on the element, then construct an object in the scope where
+ * each processing cycle happens. The measurements are summed between resets.
+ */
+class PerformanceAccumulator {
+	PerformanceElement elem;
+	TimingMeasurement start_time;
+public:
+	PerformanceAccumulator(PerformanceElement elem);
+	~PerformanceAccumulator();
+	static void Reset(PerformanceElement elem);
 };
 
 void ShowFramerateWindow();
