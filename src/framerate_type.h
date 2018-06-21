@@ -41,6 +41,7 @@ public:
 	PerformanceMeasurer(PerformanceElement elem);
 	~PerformanceMeasurer();
 	void SetExpectedRate(double rate);
+	static void Paused(PerformanceElement elem);
 };
 
 /**

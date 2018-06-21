@@ -1338,6 +1338,13 @@ void StateGameLoop()
 {
 	/* don't execute the state loop during pause */
 	if (_pause_mode != PM_UNPAUSED) {
+		PerformanceMeasurer::Paused(PFE_GAMELOOP);
+		PerformanceMeasurer::Paused(PFE_ACC_GL_ECONOMY);
+		PerformanceMeasurer::Paused(PFE_ACC_GL_TRAINS);
+		PerformanceMeasurer::Paused(PFE_ACC_GL_ROADVEHS);
+		PerformanceMeasurer::Paused(PFE_ACC_GL_SHIPS);
+		PerformanceMeasurer::Paused(PFE_ACC_GL_AIRCRAFT);
+
 		UpdateLandscapingLimits();
 #ifndef DEBUG_DUMP_COMMANDS
 		Game::GameLoop();
@@ -1345,6 +1352,8 @@ void StateGameLoop()
 		CallWindowTickEvent();
 		return;
 	}
+
+	PerformanceMeasurer framerate(PFE_GAMELOOP);
 	if (HasModalProgress()) return;
 
 	Layouter::ReduceLineCache();
@@ -1423,8 +1432,6 @@ static void DoAutosave()
 
 void GameLoop()
 {
-	PerformanceMeasurer framerate(PFE_GAMELOOP);
-
 	if (_game_mode == GM_BOOTSTRAP) {
 #ifdef ENABLE_NETWORK
 		/* Check for UDP stuff */

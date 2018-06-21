@@ -28,18 +28,22 @@ namespace {
 	const int TIMESTAMP_PRECISION = 1000000;
 
 	struct PerformanceData {
+		static const TimingMeasurement INVALID_DURATION = UINT64_MAX;
+
 		TimingMeasurement durations[NUM_FRAMERATE_POINTS];
 		TimingMeasurement timestamps[NUM_FRAMERATE_POINTS];
 		double expected_rate;
 		int next_index;
+		int prev_index;
 		int num_valid;
 
-		explicit PerformanceData(double expected_rate) : expected_rate(expected_rate), next_index(0), num_valid(0) { }
+		explicit PerformanceData(double expected_rate) : expected_rate(expected_rate), next_index(0), prev_index(0), num_valid(0) { }
 
 		void Add(TimingMeasurement start_time, TimingMeasurement end_time)
 		{
 			this->durations[this->next_index] = end_time - start_time;
 			this->timestamps[this->next_index] = start_time;
+			this->prev_index = this->next_index;
 			this->next_index += 1;
 			if (this->next_index >= NUM_FRAMERATE_POINTS) this->next_index = 0;
 			this->num_valid = min(NUM_FRAMERATE_POINTS, this->num_valid + 1);
@@ -47,69 +51,82 @@ namespace {
 
 		void BeginAccumulate(TimingMeasurement start_time)
 		{
-			this->next_index += 1;
-			if (this->next_index >= NUM_FRAMERATE_POINTS) this->next_index = 0;
 			this->timestamps[this->next_index] = start_time;
 			this->durations[this->next_index] = 0;
+			this->prev_index = this->next_index;
+			this->next_index += 1;
+			if (this->next_index >= NUM_FRAMERATE_POINTS) this->next_index = 0;
 			this->num_valid = min(NUM_FRAMERATE_POINTS, this->num_valid + 1);
 		}
 
 		void AddAccumulate(TimingMeasurement duration)
 		{
-			this->durations[this->next_index] += duration;
+			this->durations[this->prev_index] += duration;
+		}
+
+		void AddPause(TimingMeasurement start_time)
+		{
+			if (this->durations[this->prev_index] != INVALID_DURATION) {
+				this->timestamps[this->next_index] = start_time;
+				this->durations[this->next_index] = INVALID_DURATION;
+				this->prev_index = this->next_index;
+				this->next_index += 1;
+				if (this->next_index >= NUM_FRAMERATE_POINTS) this->next_index = 0;
+				this->num_valid += 1;
+			}
 		}
 
 		double GetAverageDurationMilliseconds(int count)
 		{
 			count = min(count, this->num_valid);
 
-			int first_point = this->next_index - count - 1;
-			while (first_point < 0) first_point += NUM_FRAMERATE_POINTS;
+			int first_point = this->prev_index - count;
+			if (first_point < 0) first_point += NUM_FRAMERATE_POINTS;
 
 			double sumtime = 0;
 			for (int i = first_point; i < first_point + count; i++) {
-				sumtime += this->durations[i % NUM_FRAMERATE_POINTS];
+				auto d = this->durations[i % NUM_FRAMERATE_POINTS];
+				if (d != INVALID_DURATION) {
+					sumtime += d;
+				} else {
+					count--;
+				}
 			}
 
-			return sumtime * 1000 / count / TIMESTAMP_PRECISION;
-		}
-
-		/** Get current rate of a performance element, based on a fixed number of data points */
-		double GetRate(int count)
-		{
-			count = Clamp(count, 2, this->num_valid);
-
-			int first = this->next_index - count;
-			int last = this->next_index - 1;
-			if (first < 0) first += NUM_FRAMERATE_POINTS;
-			if (last < 0) last += NUM_FRAMERATE_POINTS;
-
-			auto diff = this->timestamps[last] - this->timestamps[first];
-
-			return (double)count * TIMESTAMP_PRECISION / diff;
+			if (count > 0) {
+				return sumtime * 1000 / count / TIMESTAMP_PRECISION;
+			} else {
+				return 0;
+			}
 		}
 
 		/** Get current rate of a performance element, based on approximately the past one second of data */
 		double GetRate()
 		{
-			int point = this->next_index - 1;
+			int point = this->prev_index;
 			int last_point = this->next_index - this->num_valid;
-			if (point < 0) point += NUM_FRAMERATE_POINTS;
 			if (last_point < 0) last_point += NUM_FRAMERATE_POINTS;
 
 			int count = 0;
-			auto now = this->timestamps[point];
+			auto last = this->timestamps[point];
+			TimingMeasurement total = 0;
 
 			while (point != last_point) {
-				if (now - this->timestamps[point] >= TIMESTAMP_PRECISION) break;
+				if (this->durations[point] != INVALID_DURATION) {
+					total += last - this->timestamps[point];
+				}
+				last = this->timestamps[point];
+				if (total >= TIMESTAMP_PRECISION) break;
 				point--;
 				count++;
 				if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
 			}
 
-			auto diff = now - this->timestamps[point];
-
-			return (double)count * TIMESTAMP_PRECISION / diff;
+			if (total > 0 && count > 0) {
+				return (double)count * TIMESTAMP_PRECISION / total;
+			} else {
+				return 0;
+			}
 		}
 	};
 
@@ -117,13 +134,13 @@ namespace {
 
 	PerformanceData _pf_data[PFE_MAX] = {
 		PerformanceData(GL_RATE),               // PFE_GAMELOOP
-		PerformanceData(GL_RATE),               // PFE_ACC_GL_ECONOMY
-		PerformanceData(GL_RATE),               // PFE_ACC_GL_TRAINS
-		PerformanceData(GL_RATE),               // PFE_ACC_GL_ROADVEHS
-		PerformanceData(GL_RATE),               // PFE_ACC_GL_SHIPS
-		PerformanceData(GL_RATE),               // PFE_ACC_GL_AIRCRAFT
+		PerformanceData(1),                     // PFE_ACC_GL_ECONOMY
+		PerformanceData(1),                     // PFE_ACC_GL_TRAINS
+		PerformanceData(1),                     // PFE_ACC_GL_ROADVEHS
+		PerformanceData(1),                     // PFE_ACC_GL_SHIPS
+		PerformanceData(1),                     // PFE_ACC_GL_AIRCRAFT
 		PerformanceData(GL_RATE),               // PFE_DRAWING
-		PerformanceData(GL_RATE),               // PFE_ACC_DRAWWORLD
+		PerformanceData(1),                     // PFE_ACC_DRAWWORLD
 		PerformanceData(60.0),                  // PFE_VIDEO
 		PerformanceData(1000.0 * 8192 / 44100), // PFE_SOUND
 	};
@@ -154,7 +171,12 @@ PerformanceMeasurer::~PerformanceMeasurer()
 
 void PerformanceMeasurer::SetExpectedRate(double rate)
 {
-	_pf_data[elem].expected_rate = rate;
+	_pf_data[this->elem].expected_rate = rate;
+}
+
+void PerformanceMeasurer::Paused(PerformanceElement elem)
+{
+	_pf_data[elem].AddPause(GetPerformanceTimer());
 }
 
 
@@ -467,13 +489,13 @@ struct FrametimeGraphWindow : Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		if (widget == WID_FGW_GRAPH) {
-			SetDParam(0, this->vertical_scale);
+			SetDParam(0, 100);
 			auto size_ms_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_MILLISECONDS);
-			SetDParam(0, this->horizontal_scale / 2);
+			SetDParam(0, 100);
 			auto size_s_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_SECONDS);
 
 			graph_size.height = max<uint>(100, 10 * (size_ms_label.height + 1));
-			graph_size.width = max<uint>(2 * graph_size.height, this->horizontal_scale *  (size_s_label.width + 10) / 2 );
+			graph_size.width = 2 * graph_size.height;
 			*size = graph_size;
 
 			size->width += size_ms_label.width + 2;
@@ -486,32 +508,39 @@ struct FrametimeGraphWindow : Window {
 		auto &durations = _pf_data[this->element].durations;
 		auto &timestamps = _pf_data[this->element].timestamps;
 		auto num_valid = _pf_data[this->element].num_valid;
-		int point = _pf_data[this->element].next_index - 1;
-		if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
+		int point = _pf_data[this->element].prev_index;
 
-		TimingMeasurement firsttime = timestamps[point];
+		TimingMeasurement lastts = timestamps[point];
+		TimingMeasurement time_sum = 0;
 		TimingMeasurement peak_value = 0;
+		int count = 0;
 
 		for (int i = 1; i < num_valid; i++) {
 			point--;
 			if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
 
 			TimingMeasurement value = durations[point];
+			if (value == PerformanceData::INVALID_DURATION) {
+				lastts = timestamps[point];
+				continue;
+			}
 			if (value > peak_value) peak_value = value;
+			count++;
 
-			TimingMeasurement diff = firsttime - timestamps[point];
+			time_sum += lastts - timestamps[point];
+			lastts = timestamps[point];
 
 			/* Determine horizontal scale based on duration covered by 60 points
 			 * (slightly less than 2 seconds at full game speed) */
-			if (i == 60) {
-				TimingMeasurement seconds = diff / TIMESTAMP_PRECISION;
+			if (count == 60) {
+				TimingMeasurement seconds = time_sum / TIMESTAMP_PRECISION;
 				if (seconds < 3) this->horizontal_scale = 4;
 				else if (seconds < 5) this->horizontal_scale = 10;
 				else if (seconds < 10) this->horizontal_scale = 20;
 				else this->horizontal_scale = 60;
 			}
 
-			if (i >= 60 && diff >= (this->horizontal_scale + 2) * TIMESTAMP_PRECISION / 2) break;
+			if (count >= 60 && time_sum >= (this->horizontal_scale + 2) * TIMESTAMP_PRECISION / 2) break;
 		}
 
 		/* Determine vertical scale based on peak value */
@@ -555,8 +584,7 @@ struct FrametimeGraphWindow : Window {
 		if (widget == WID_FGW_GRAPH) {
 			const auto &durations = _pf_data[this->element].durations;
 			const auto &timestamps = _pf_data[this->element].timestamps;
-			int point = _pf_data[this->element].next_index - 1;
-			if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
+			int point = _pf_data[this->element].prev_index;
 
 			const int x_zero = r.right - this->graph_size.width;
 			const int x_max = r.right;
@@ -566,8 +594,8 @@ struct FrametimeGraphWindow : Window {
 			const int c_lines = PC_BLACK;
 			const int c_peak = PC_DARK_RED;
 
-			const int draw_horz_scale = this->horizontal_scale;
-			const int draw_vert_scale = this->vertical_scale;
+			const TimingMeasurement draw_horz_scale = this->horizontal_scale * TIMESTAMP_PRECISION / 2;
+			const TimingMeasurement draw_vert_scale = this->vertical_scale;
 
 			const int horz_div_scl = (this->horizontal_scale <= 20) ? 1 : 10;
 			const int horz_divisions = this->horizontal_scale / horz_div_scl;
@@ -599,11 +627,12 @@ struct FrametimeGraphWindow : Window {
 				x_max,
 				Scinterlate(y_zero, y_max, 0, this->vertical_scale, (int)durations[point])
 			};
-			TimingMeasurement firsttime = timestamps[point];
+			TimingMeasurement lastts = timestamps[point];
 
 			TimingMeasurement peak_value = 0;
 			Point peak_point;
 			TimingMeasurement value_sum = 0;
+			TimingMeasurement time_sum = 0;
 			int points_drawn = 0;
 
 			for (int i = 1; i < NUM_FRAMERATE_POINTS; i++) {
@@ -611,12 +640,18 @@ struct FrametimeGraphWindow : Window {
 				if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
 
 				TimingMeasurement value = durations[point];
-				TimingMeasurement timediff = (firsttime - timestamps[point]) * 1000 / TIMESTAMP_PRECISION;
-				if ((int)timediff > draw_horz_scale * 500) break;
+				if (value == PerformanceData::INVALID_DURATION) {
+					lastts = timestamps[point];
+					continue;
+				}
+
+				time_sum += lastts - timestamps[point];
+				lastts = timestamps[point];
+				if (time_sum > draw_horz_scale) break;
 
 				Point newpoint{
-					Scinterlate(x_zero, x_max, 0, draw_horz_scale * 500, draw_horz_scale * 500 - timediff),
-					Scinterlate(y_zero, y_max, 0, this->vertical_scale, (int)value)
+					Scinterlate(x_zero, x_max, 0, draw_horz_scale, draw_horz_scale - time_sum),
+					Scinterlate(y_zero, y_max, 0, draw_vert_scale, (int)value)
 				};
 				assert(newpoint.x <= lastpoint.x);
 				GfxDrawLine(lastpoint.x, lastpoint.y, newpoint.x, newpoint.y, c_lines);
@@ -693,11 +728,9 @@ void ConPrintFramerate()
 	for (auto e : rate_elements) {
 		auto &pf = _pf_data[e];
 		if (pf.num_valid == 0) continue;
-		IConsolePrintF(TC_GREEN, "%s rate: %.2ffps  %.2ffps  %.2ffps  (expected: %.2ffps)",
+		IConsolePrintF(TC_GREEN, "%s rate: %.2ffps  (expected: %.2ffps)",
 			MEASUREMENT_NAMES[e],
-			pf.GetRate(count1),
-			pf.GetRate(count2),
-			pf.GetRate(count3),
+			pf.GetRate(),
 			pf.expected_rate);
 		printed_anything = true;
 	}
