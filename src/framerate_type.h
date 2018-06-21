@@ -16,6 +16,7 @@ enum PerformanceElement {
 	PFE_GAMELOOP,       ///< Speed of gameloop processing.
 	PFE_FIRST = PFE_GAMELOOP,
 	PFE_DRAWING,        ///< Speed of drawing world and GUI.
+	PFE_ACC_DRAWWORLD,  ///< Time spent drawing world viewports in GUI
 	PFE_VIDEO,          ///< Speed of painting drawn video buffer.
 	PFE_SOUND,          ///< Speed of mixing audio samples
 	PFE_MAX,            ///< End of enum, must be last.

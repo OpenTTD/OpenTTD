@@ -116,6 +116,7 @@ namespace {
 	PerformanceData _pf_data[PFE_MAX] = {
 		PerformanceData(1000.0 / MILLISECONDS_PER_TICK), // PFE_GAMELOOP
 		PerformanceData(1000.0 / MILLISECONDS_PER_TICK), // PFE_DRAWING
+		PerformanceData(1000.0 / MILLISECONDS_PER_TICK), // PFE_ACC_DRAWWORLD
 		PerformanceData(60.0),                           // PFE_VIDEO
 		PerformanceData(1000.0 * 8192 / 44100),          // PFE_SOUND
 	};
@@ -614,6 +615,7 @@ void ConPrintFramerate()
 	static char *MEASUREMENT_NAMES[PFE_MAX] = {
 		"Game loop",
 		"Drawing",
+		"Viewport drawing",
 		"Video output",
 		"Sound mixing",
 	};

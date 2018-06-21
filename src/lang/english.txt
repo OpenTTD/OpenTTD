@@ -2721,12 +2721,14 @@ STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COM
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GAMELOOP                                          :{WHITE}Game loop total:
 STR_FRAMERATE_DRAWING                                           :{WHITE}Graphics rendering:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE}  World viewports:
 STR_FRAMERATE_VIDEO                                             :{WHITE}Video output:
 STR_FRAMERATE_SOUND                                             :{WHITE}Sound mixing:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Game loop
 STR_FRAMETIME_CAPTION_DRAWING                                   :Graphics rendering
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :World viewport rendering
 STR_FRAMETIME_CAPTION_VIDEO                                     :Video output
 STR_FRAMETIME_CAPTION_SOUND                                     :Sound mixing
 ############ End of leave-in-this-order
