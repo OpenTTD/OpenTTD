@@ -113,12 +113,19 @@ namespace {
 		}
 	};
 
+	static const double GL_RATE = 1000.0 / MILLISECONDS_PER_TICK;
+
 	PerformanceData _pf_data[PFE_MAX] = {
-		PerformanceData(1000.0 / MILLISECONDS_PER_TICK), // PFE_GAMELOOP
-		PerformanceData(1000.0 / MILLISECONDS_PER_TICK), // PFE_DRAWING
-		PerformanceData(1000.0 / MILLISECONDS_PER_TICK), // PFE_ACC_DRAWWORLD
-		PerformanceData(60.0),                           // PFE_VIDEO
-		PerformanceData(1000.0 * 8192 / 44100),          // PFE_SOUND
+		PerformanceData(GL_RATE),               // PFE_GAMELOOP
+		PerformanceData(GL_RATE),               // PFE_ACC_GL_ECONOMY
+		PerformanceData(GL_RATE),               // PFE_ACC_GL_TRAINS
+		PerformanceData(GL_RATE),               // PFE_ACC_GL_ROADVEHS
+		PerformanceData(GL_RATE),               // PFE_ACC_GL_SHIPS
+		PerformanceData(GL_RATE),               // PFE_ACC_GL_AIRCRAFT
+		PerformanceData(GL_RATE),               // PFE_DRAWING
+		PerformanceData(GL_RATE),               // PFE_ACC_DRAWWORLD
+		PerformanceData(60.0),                  // PFE_VIDEO
+		PerformanceData(1000.0 * 8192 / 44100), // PFE_SOUND
 	};
 
 }
@@ -614,6 +621,11 @@ void ConPrintFramerate()
 
 	static char *MEASUREMENT_NAMES[PFE_MAX] = {
 		"Game loop",
+		"GL station ticks",
+		"GL train ticks",
+		"GL road vehicle ticks",
+		"GL ship ticks",
+		"GL aircraft ticks",
 		"Drawing",
 		"Viewport drawing",
 		"Video output",

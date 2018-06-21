@@ -2720,6 +2720,11 @@ STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COM
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GAMELOOP                                          :{WHITE}Game loop total:
+STR_FRAMERATE_GL_ECONOMY                                        :{WHITE}  Cargo handling:
+STR_FRAMERATE_GL_TRAINS                                         :{WHITE}  Train ticks:
+STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  Road vehicle ticks:
+STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  Ship ticks:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE}  Aircraft ticks:
 STR_FRAMERATE_DRAWING                                           :{WHITE}Graphics rendering:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE}  World viewports:
 STR_FRAMERATE_VIDEO                                             :{WHITE}Video output:
@@ -2727,6 +2732,11 @@ STR_FRAMERATE_SOUND                                             :{WHITE}Sound mi
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Game loop
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Cargo handling
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Train ticks
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Road vehicle ticks
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ship ticks
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Aircraft ticks
 STR_FRAMETIME_CAPTION_DRAWING                                   :Graphics rendering
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :World viewport rendering
 STR_FRAMETIME_CAPTION_VIDEO                                     :Video output

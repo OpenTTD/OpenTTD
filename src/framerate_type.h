@@ -13,13 +13,18 @@
 #include "stdafx.h"
 
 enum PerformanceElement {
-	PFE_GAMELOOP,       ///< Speed of gameloop processing.
+	PFE_GAMELOOP,        ///< Speed of gameloop processing.
 	PFE_FIRST = PFE_GAMELOOP,
-	PFE_DRAWING,        ///< Speed of drawing world and GUI.
-	PFE_ACC_DRAWWORLD,  ///< Time spent drawing world viewports in GUI
-	PFE_VIDEO,          ///< Speed of painting drawn video buffer.
-	PFE_SOUND,          ///< Speed of mixing audio samples
-	PFE_MAX,            ///< End of enum, must be last.
+	PFE_ACC_GL_ECONOMY,  ///< Time spent processing cargo movement
+	PFE_ACC_GL_TRAINS,   ///< Time spent processing trains
+	PFE_ACC_GL_ROADVEHS, ///< Time spend processing road vehicles
+	PFE_ACC_GL_SHIPS,    ///< Time spent processing ships
+	PFE_ACC_GL_AIRCRAFT, ///< Time spent processing aircraft
+	PFE_DRAWING,         ///< Speed of drawing world and GUI.
+	PFE_ACC_DRAWWORLD,   ///< Time spent drawing world viewports in GUI
+	PFE_VIDEO,           ///< Speed of painting drawn video buffer.
+	PFE_SOUND,           ///< Speed of mixing audio samples
+	PFE_MAX,             ///< End of enum, must be last.
 };
 
 typedef uint64 TimingMeasurement;
