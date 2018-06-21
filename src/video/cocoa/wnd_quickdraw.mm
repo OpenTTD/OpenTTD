@@ -362,7 +362,7 @@ WindowQuickdrawSubdriver::~WindowQuickdrawSubdriver()
 
 void WindowQuickdrawSubdriver::Draw(bool force_update)
 {
-	FramerateMeasurer framerate(FRAMERATE_VIDEO);
+	PerformanceMeasurer framerate(PFE_VIDEO);
 
 	/* Check if we need to do anything */
 	if (this->num_dirty_rects == 0 || [ this->window isMiniaturized ]) return;

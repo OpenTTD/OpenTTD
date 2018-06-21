@@ -149,7 +149,7 @@ static void CheckPaletteAnim()
 
 static void DrawSurfaceToScreen()
 {
-	FramerateMeasurer framerate(FRAMERATE_VIDEO);
+	PerformanceMeasurer framerate(PFE_VIDEO);
 
 	int n = _num_dirty_rects;
 	if (n == 0) return;
