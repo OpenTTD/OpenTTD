@@ -639,7 +639,7 @@ struct FrametimeGraphWindow : Window {
 				int y = Scinterlate(y_zero, y_max, 0, (int)vert_divisions, (int)division);
 				GfxDrawLine(x_zero, y, x_max, y, c_grid);
 				if (division % 2 == 0) {
-					if (this->vertical_scale > TIMESTAMP_PRECISION) {
+					if ((TimingMeasurement)this->vertical_scale > TIMESTAMP_PRECISION) {
 						SetDParam(0, this->vertical_scale * division / 10 / TIMESTAMP_PRECISION);
 						DrawString(r.left, x_zero - 2, y - FONT_HEIGHT_SMALL, STR_FRAMERATE_GRAPH_SECONDS, TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 					} else {
