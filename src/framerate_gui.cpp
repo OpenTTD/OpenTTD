@@ -93,11 +93,8 @@ namespace {
 				}
 			}
 
-			if (count > 0) {
-				return sumtime * 1000 / count / TIMESTAMP_PRECISION;
-			} else {
-				return 0;
-			}
+			if (count == 0) return 0;
+			return sumtime * 1000 / count / TIMESTAMP_PRECISION;
 		}
 
 		/** Get current rate of a performance element, based on approximately the past one second of data */
@@ -108,7 +105,7 @@ namespace {
 			if (last_point < 0) last_point += NUM_FRAMERATE_POINTS;
 
 			int count = 0;
-			auto last = this->timestamps[point];
+			TimingMeasurement last = this->timestamps[point];
 			TimingMeasurement total = 0;
 
 			while (point != last_point) {
@@ -122,14 +119,12 @@ namespace {
 				if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
 			}
 
-			if (total > 0 && count > 0) {
-				return (double)count * TIMESTAMP_PRECISION / total;
-			} else {
-				return 0;
-			}
+			if (total == 0 || count == 0) return 0;
+			return (double)count * TIMESTAMP_PRECISION / total;
 		}
 	};
 
+	/** Game loop rate, cycles per second */
 	static const double GL_RATE = 1000.0 / MILLISECONDS_PER_TICK;
 
 	PerformanceData _pf_data[PFE_MAX] = {
@@ -148,14 +143,20 @@ namespace {
 }
 
 
-static std::chrono::high_resolution_clock _hr_clock;
+/**
+ * Return a timestamp with \c TIMESTAMP_PRECISION ticks per second precision.
+ * The basis of the timestamp is implementation defined, but the value should be steady,
+ * so differences can be taken to reliably measure intervals.
+ */
 static TimingMeasurement GetPerformanceTimer()
 {
-	auto usec = std::chrono::time_point_cast<std::chrono::microseconds>(_hr_clock.now());
+	using clock = std::chrono::high_resolution_clock;
+	auto usec = std::chrono::time_point_cast<std::chrono::microseconds>(clock::now());
 	return usec.time_since_epoch().count();
 }
 
 
+/** Begin a cycle of a measured element. */
 PerformanceMeasurer::PerformanceMeasurer(PerformanceElement elem)
 {
 	assert(elem < PFE_MAX);
@@ -164,22 +165,26 @@ PerformanceMeasurer::PerformanceMeasurer(PerformanceElement elem)
 	this->start_time = GetPerformanceTimer();
 }
 
+/** Finish a cycle of a measured element and store the measurement taken. */
 PerformanceMeasurer::~PerformanceMeasurer()
 {
 	_pf_data[this->elem].Add(this->start_time, GetPerformanceTimer());
 }
 
+/** Set the rate of expected cycles per second of a performance element. */
 void PerformanceMeasurer::SetExpectedRate(double rate)
 {
 	_pf_data[this->elem].expected_rate = rate;
 }
 
+/** Indicate that a cycle of "pause" where no processing occurs. */
 void PerformanceMeasurer::Paused(PerformanceElement elem)
 {
 	_pf_data[elem].AddPause(GetPerformanceTimer());
 }
 
 
+/** Begin measuring one block of the accumulating value. */
 PerformanceAccumulator::PerformanceAccumulator(PerformanceElement elem)
 {
 	assert(elem < PFE_MAX);
@@ -188,11 +193,13 @@ PerformanceAccumulator::PerformanceAccumulator(PerformanceElement elem)
 	this->start_time = GetPerformanceTimer();
 }
 
+/** Finish and add one block of the accumulating value. */
 PerformanceAccumulator::~PerformanceAccumulator()
 {
 	_pf_data[this->elem].AddAccumulate(GetPerformanceTimer() - this->start_time);
 }
 
+/** Store the previous accumulator value and reset for a new cycle of accumulating measurements. */
 void PerformanceAccumulator::Reset(PerformanceElement elem)
 {
 	_pf_data[elem].BeginAccumulate(GetPerformanceTimer());
@@ -254,12 +261,7 @@ struct FramerateWindow : Window {
 	{
 		if (this->small != this->IsShaded()) {
 			this->small = this->IsShaded();
-			auto caption = this->GetWidget<NWidgetLeaf>(WID_FRW_CAPTION);
-			if (this->small) {
-				caption->SetDataTip(STR_FRAMERATE_CAPTION_SMALL, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
-			} else {
-				caption->SetDataTip(STR_FRAMERATE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
-			}
+			this->GetWidget<NWidgetLeaf>(WID_FRW_CAPTION)->SetDataTip(this->small ? STR_FRAMERATE_CAPTION_SMALL : STR_FRAMERATE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
 		}
 
 		this->SetDirty();
@@ -353,7 +355,7 @@ struct FramerateWindow : Window {
 				size->width = 0;
 				size->height = FONT_HEIGHT_NORMAL * (linecount + 1) + VSPACING;
 				for (int line = 0; line < linecount; line++) {
-					auto line_size = GetStringBoundingBox(STR_FRAMERATE_GAMELOOP + line);
+					Dimension line_size = GetStringBoundingBox(STR_FRAMERATE_GAMELOOP + line);
 					size->width = max(size->width, line_size.width);
 				}
 				break;
@@ -364,7 +366,7 @@ struct FramerateWindow : Window {
 				int linecount = PFE_MAX - PFE_FIRST;
 				*size = GetStringBoundingBox(STR_FRAMERATE_CURRENT + (widget - WID_FRW_TIMES_CURRENT));
 				SetDParamGoodWarnBadDuration(9999.99);
-				auto item_size = GetStringBoundingBox(STR_FRAMERATE_VALUE);
+				Dimension item_size = GetStringBoundingBox(STR_FRAMERATE_VALUE);
 				size->width = max(size->width, item_size.width);
 				size->height += FONT_HEIGHT_NORMAL * linecount + VSPACING;
 				break;
@@ -490,9 +492,9 @@ struct FrametimeGraphWindow : Window {
 	{
 		if (widget == WID_FGW_GRAPH) {
 			SetDParam(0, 100);
-			auto size_ms_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_MILLISECONDS);
+			Dimension size_ms_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_MILLISECONDS);
 			SetDParam(0, 100);
-			auto size_s_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_SECONDS);
+			Dimension size_s_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_SECONDS);
 
 			graph_size.height = max<uint>(100, 10 * (size_ms_label.height + 1));
 			graph_size.width = 2 * graph_size.height;
