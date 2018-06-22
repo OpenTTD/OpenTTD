@@ -28,13 +28,20 @@ namespace {
 	const int TIMESTAMP_PRECISION = 1000000;
 
 	struct PerformanceData {
+		/** Duration value indicating the value is not valid should be considered a gap in measurements */
 		static const TimingMeasurement INVALID_DURATION = UINT64_MAX;
 
+		/** Time spent processing each cycle of the performance element, circular buffer */
 		TimingMeasurement durations[NUM_FRAMERATE_POINTS];
+		/** Start time of each cycle of the performance element, circular buffer */
 		TimingMeasurement timestamps[NUM_FRAMERATE_POINTS];
+		/** Expected number of cycles per second when the system is running without slowdowns */
 		double expected_rate;
+		/** Next index to write to in \c durations and \c timestamps */
 		int next_index;
+		/** Last index written to in \c durations and \c timestamps */
 		int prev_index;
+		/** Number of data points recorded, clamped to \c NUM_FRAMERATE_POINTS */
 		int num_valid;
 
 		explicit PerformanceData(double expected_rate) : expected_rate(expected_rate), next_index(0), prev_index(0), num_valid(0) { }
@@ -76,6 +83,7 @@ namespace {
 			}
 		}
 
+		/** Get average cycle processing time over a number of data points */
 		double GetAverageDurationMilliseconds(int count)
 		{
 			count = min(count, this->num_valid);
@@ -83,39 +91,46 @@ namespace {
 			int first_point = this->prev_index - count;
 			if (first_point < 0) first_point += NUM_FRAMERATE_POINTS;
 
+			/* Sum durations, skipping invalid points */
 			double sumtime = 0;
 			for (int i = first_point; i < first_point + count; i++) {
 				auto d = this->durations[i % NUM_FRAMERATE_POINTS];
 				if (d != INVALID_DURATION) {
 					sumtime += d;
 				} else {
+					/* Don't count the invalid durations */
 					count--;
 				}
 			}
 
-			if (count == 0) return 0;
+			if (count == 0) return 0; // avoid div by zero
 			return sumtime * 1000 / count / TIMESTAMP_PRECISION;
 		}
 
 		/** Get current rate of a performance element, based on approximately the past one second of data */
 		double GetRate()
 		{
+			/* Start at last recorded point, end at latest when reaching the earliest recorded point */
 			int point = this->prev_index;
 			int last_point = this->next_index - this->num_valid;
 			if (last_point < 0) last_point += NUM_FRAMERATE_POINTS;
 
+			/** Number of data points collected */
 			int count = 0;
+			/** Time of previous data point */
 			TimingMeasurement last = this->timestamps[point];
+			/** Total duration covered by collected points */
 			TimingMeasurement total = 0;
 
 			while (point != last_point) {
+				/* Only record valid data points, but pretend the gaps in measurements aren't there */
 				if (this->durations[point] != INVALID_DURATION) {
 					total += last - this->timestamps[point];
+					count++;
 				}
 				last = this->timestamps[point];
-				if (total >= TIMESTAMP_PRECISION) break;
+				if (total >= TIMESTAMP_PRECISION) break; // end after 1 second has been collected
 				point--;
-				count++;
 				if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
 			}
 
@@ -249,7 +264,7 @@ static const NWidgetPart _framerate_window_widgets[] = {
 struct FramerateWindow : Window {
 	bool small;
 
-	static const int VSPACING = 3;
+	static const int VSPACING = 3; ///< space between column heading and values
 
 	FramerateWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
@@ -259,6 +274,7 @@ struct FramerateWindow : Window {
 
 	virtual void OnTick()
 	{
+		/* Check if the shaded state has changed, switch caption text if it has */
 		if (this->small != this->IsShaded()) {
 			this->small = this->IsShaded();
 			this->GetWidget<NWidgetLeaf>(WID_FRW_CAPTION)->SetDataTip(this->small ? STR_FRAMERATE_CAPTION_SMALL : STR_FRAMERATE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
@@ -267,6 +283,7 @@ struct FramerateWindow : Window {
 		this->SetDirty();
 	}
 
+	/** Set DParam 0, 1, 2 for a duration value string insert */
 	static void SetDParamGoodWarnBadDuration(double value)
 	{
 		const double threshold_good = MILLISECONDS_PER_TICK / 3;
@@ -283,6 +300,7 @@ struct FramerateWindow : Window {
 		SetDParam(2, 2);
 	}
 
+	/** Set DParam 0, 1, 2 for a rate value string insert */
 	static void SetDParamGoodWarnBadRate(double value, PerformanceElement elem)
 	{
 		const double threshold_good = _pf_data[elem].expected_rate * 0.95;
@@ -305,6 +323,7 @@ struct FramerateWindow : Window {
 
 		switch (widget) {
 			case WID_FRW_CAPTION:
+				/* When the window is shaded, the caption shows game loop rate and speed factor */
 				if (!this->small) break;
 				value = _pf_data[PFE_GAMELOOP].GetRate();
 				SetDParamGoodWarnBadRate(value, PFE_GAMELOOP);
@@ -371,14 +390,12 @@ struct FramerateWindow : Window {
 				size->height += FONT_HEIGHT_NORMAL * linecount + VSPACING;
 				break;
 			}
-
-			default:
-				Window::UpdateWidgetSize(widget, size, padding, fill, resize);
-				break;
 		}
 	}
 
+	/** Type of a function that returns a milliseconds value given a performance element */
 	typedef double (ElementValueExtractor)(PerformanceElement elem);
+	/** Render a column of formatted time values in a control, given a function that returns the values */
 	void DrawElementTimesColumn(const Rect &r, int heading_str, ElementValueExtractor get_value_func) const
 	{
 		int y = r.top;
@@ -397,8 +414,9 @@ struct FramerateWindow : Window {
 	{
 		switch (widget) {
 			case WID_FRW_TIMES_NAMES: {
+				/* Render a column of titles for performance element names */
 				int linecount = PFE_MAX - PFE_FIRST;
-				int y = r.top + FONT_HEIGHT_NORMAL + VSPACING;
+				int y = r.top + FONT_HEIGHT_NORMAL + VSPACING; // first line contains headings in the value columns
 				for (int i = 0; i < linecount; i++) {
 					DrawString(r.left, r.right, y, STR_FRAMERATE_GAMELOOP + i, TC_FROMSTRING, SA_LEFT);
 					y += FONT_HEIGHT_NORMAL;
@@ -406,11 +424,13 @@ struct FramerateWindow : Window {
 				break;
 			}
 			case WID_FRW_TIMES_CURRENT:
+				/* Render short-term average values */
 				DrawElementTimesColumn(r, STR_FRAMERATE_CURRENT, [](PerformanceElement elem) {
 					return _pf_data[elem].GetAverageDurationMilliseconds(8);
 				});
 				break;
 			case WID_FRW_TIMES_AVERAGE:
+				/* Render averages of all recorded values */
 				DrawElementTimesColumn(r, STR_FRAMERATE_AVERAGE, [](PerformanceElement elem) {
 					return _pf_data[elem].GetAverageDurationMilliseconds(NUM_FRAMERATE_POINTS);
 				});
@@ -424,6 +444,7 @@ struct FramerateWindow : Window {
 			case WID_FRW_TIMES_NAMES:
 			case WID_FRW_TIMES_CURRENT:
 			case WID_FRW_TIMES_AVERAGE: {
+				/* Open time graph windows when clicking detail measurement lines */
 				int line = this->GetRowFromWidget(pt.y, widget, VSPACING, FONT_HEIGHT_NORMAL);
 				if (line > 0) {
 					line -= 1;
@@ -466,8 +487,8 @@ struct FrametimeGraphWindow : Window {
 	int horizontal_scale;   ///< number of half-second units horizontally
 	int scale_update_timer; ///< ticks left before next scale update
 
-	PerformanceElement element;
-	Dimension graph_size;
+	PerformanceElement element; ///< what element this window renders graph for
+	Dimension graph_size;       ///< size of the main graph area (excluding axis labels)
 
 	FrametimeGraphWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
@@ -496,7 +517,9 @@ struct FrametimeGraphWindow : Window {
 			SetDParam(0, 100);
 			Dimension size_s_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_SECONDS);
 
+			/* Size graph in height to fit at least 10 vertical labels with space between, or at least 100 pixels */
 			graph_size.height = max<uint>(100, 10 * (size_ms_label.height + 1));
+			/* Always 2:1 graph area */
 			graph_size.width = 2 * graph_size.height;
 			*size = graph_size;
 
@@ -505,6 +528,7 @@ struct FrametimeGraphWindow : Window {
 		}
 	}
 
+	/** Recalculate the graph scaling factors based on current recorded data */
 	void UpdateScale()
 	{
 		auto &durations = _pf_data[this->element].durations;
@@ -523,16 +547,18 @@ struct FrametimeGraphWindow : Window {
 
 			TimingMeasurement value = durations[point];
 			if (value == PerformanceData::INVALID_DURATION) {
+				/* Skip gaps in data by pretending time is continuous across them */
 				lastts = timestamps[point];
 				continue;
 			}
 			if (value > peak_value) peak_value = value;
 			count++;
 
+			/* Accumulate period of time covered by data */
 			time_sum += lastts - timestamps[point];
 			lastts = timestamps[point];
 
-			/* Determine horizontal scale based on duration covered by 60 points
+			/* Determine horizontal scale based on period covered by 60 points
 			 * (slightly less than 2 seconds at full game speed) */
 			if (count == 60) {
 				TimingMeasurement seconds = time_sum / TIMESTAMP_PRECISION;
@@ -542,10 +568,11 @@ struct FrametimeGraphWindow : Window {
 				else this->horizontal_scale = 60;
 			}
 
+			/* End when enough points have been collected and the horizontal scale has been exceeded */
 			if (count >= 60 && time_sum >= (this->horizontal_scale + 2) * TIMESTAMP_PRECISION / 2) break;
 		}
 
-		/* Determine vertical scale based on peak value */
+		/* Determine vertical scale based on peak value (within the horizontal scale + a bit) */
 		static const TimingMeasurement vscales[] = {
 			TIMESTAMP_PRECISION * 100,
 			TIMESTAMP_PRECISION * 10,
@@ -599,10 +626,14 @@ struct FrametimeGraphWindow : Window {
 			const TimingMeasurement draw_horz_scale = this->horizontal_scale * TIMESTAMP_PRECISION / 2;
 			const TimingMeasurement draw_vert_scale = this->vertical_scale;
 
+			/* Number of \c horizontal_scale units in each horizontal division */
 			const int horz_div_scl = (this->horizontal_scale <= 20) ? 1 : 10;
+			/* Number of divisions of the horizontal axis */
 			const int horz_divisions = this->horizontal_scale / horz_div_scl;
+			/* Number of divisions of the vertical axis */
 			const int vert_divisions = 10;
 
+			/* Draw division lines and labels for the vertical axis */
 			for (int division = 0; division < vert_divisions; division++) {
 				int y = Scinterlate(y_zero, y_max, 0, vert_divisions, division);
 				GfxDrawLine(x_zero, y, x_max, y, c_grid);
@@ -616,6 +647,7 @@ struct FrametimeGraphWindow : Window {
 					}
 				}
 			}
+			/* Draw divison lines and labels for the horizontal axis */
 			for (int division = horz_divisions; division > 0; division--) {
 				int x = Scinterlate(x_zero, x_max, 0, horz_divisions, horz_divisions - division);
 				GfxDrawLine(x, y_max, x, y_zero, c_grid);
@@ -625,10 +657,12 @@ struct FrametimeGraphWindow : Window {
 				}
 			}
 
+			/* Position of last rendered data point */
 			Point lastpoint{
 				x_max,
 				Scinterlate(y_zero, y_max, 0, this->vertical_scale, (int)durations[point])
 			};
+			/* Timestamp of last rendered data point */
 			TimingMeasurement lastts = timestamps[point];
 
 			TimingMeasurement peak_value = 0;
@@ -643,14 +677,18 @@ struct FrametimeGraphWindow : Window {
 
 				TimingMeasurement value = durations[point];
 				if (value == PerformanceData::INVALID_DURATION) {
+					/* Skip gaps in measurements, pretend the data points on each side are continuous */
 					lastts = timestamps[point];
 					continue;
 				}
 
+				/* Use total time period covered for value along horizontal axis */
 				time_sum += lastts - timestamps[point];
 				lastts = timestamps[point];
+				/* Stop if past the width of the graph */
 				if (time_sum > draw_horz_scale) break;
 
+				/* Draw line from previous point to new point */
 				Point newpoint{
 					Scinterlate(x_zero, x_max, 0, draw_horz_scale, draw_horz_scale - time_sum),
 					Scinterlate(y_zero, y_max, 0, draw_vert_scale, (int)value)
@@ -659,6 +697,7 @@ struct FrametimeGraphWindow : Window {
 				GfxDrawLine(lastpoint.x, lastpoint.y, newpoint.x, newpoint.y, c_lines);
 				lastpoint = newpoint;
 
+				/* Record peak and average value across graphed data */
 				value_sum += value;
 				points_drawn++;
 				if (value > peak_value) {
@@ -667,6 +706,7 @@ struct FrametimeGraphWindow : Window {
 				}
 			}
 
+			/* If the peak value is significantly larger than the average, mark and label it */
 			if (points_drawn > 0 && peak_value > TIMESTAMP_PRECISION / 100 && 2 * peak_value > 3 * value_sum / points_drawn) {
 				TextColour tc_peak = (TextColour)(TC_IS_PALETTE_COLOUR | c_peak);
 				GfxFillRect(peak_point.x - 1, peak_point.y - 1, peak_point.x + 1, peak_point.y + 1, c_peak);
