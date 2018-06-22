@@ -601,10 +601,11 @@ struct FrametimeGraphWindow : Window {
 	}
 
 	/** Scale and interpolate a value from a source range into a destination range */
-	static inline int Scinterlate(int dst_min, int dst_max, int src_min, int src_max, int value)
+	template<typename T>
+	static inline T Scinterlate(T dst_min, T dst_max, T src_min, T src_max, T value)
 	{
-		int dst_diff = dst_max - dst_min;
-		int src_diff = src_max - src_min;
+		T dst_diff = dst_max - dst_min;
+		T src_diff = src_max - src_min;
 		return (value - src_min) * dst_diff / src_diff + dst_min;
 	}
 
@@ -660,7 +661,7 @@ struct FrametimeGraphWindow : Window {
 			/* Position of last rendered data point */
 			Point lastpoint{
 				x_max,
-				Scinterlate(y_zero, y_max, 0, this->vertical_scale, (int)durations[point])
+				(int)Scinterlate<int64>(y_zero, y_max, 0, this->vertical_scale, (int)durations[point])
 			};
 			/* Timestamp of last rendered data point */
 			TimingMeasurement lastts = timestamps[point];
@@ -690,8 +691,8 @@ struct FrametimeGraphWindow : Window {
 
 				/* Draw line from previous point to new point */
 				Point newpoint{
-					Scinterlate(x_zero, x_max, 0, draw_horz_scale, draw_horz_scale - time_sum),
-					Scinterlate(y_zero, y_max, 0, draw_vert_scale, (int)value)
+					(int)Scinterlate<int64>(x_zero, x_max, 0, draw_horz_scale, draw_horz_scale - time_sum),
+					(int)Scinterlate<int64>(y_zero, y_max, 0, draw_vert_scale, value)
 				};
 				assert(newpoint.x <= lastpoint.x);
 				GfxDrawLine(lastpoint.x, lastpoint.y, newpoint.x, newpoint.y, c_lines);
