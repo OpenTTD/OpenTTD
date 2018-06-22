@@ -25,7 +25,7 @@ namespace {
 	/** Number of data points to keep in buffer for each performance measurement */
 	const int NUM_FRAMERATE_POINTS = 512;
 	/** Units a second is divided into in performance measurements */
-	const int TIMESTAMP_PRECISION = 1000000;
+	const TimingMeasurement TIMESTAMP_PRECISION = 1000000;
 
 	struct PerformanceData {
 		/** Duration value indicating the value is not valid should be considered a gap in measurements */
@@ -167,7 +167,7 @@ static TimingMeasurement GetPerformanceTimer()
 {
 	using clock = std::chrono::high_resolution_clock;
 	auto usec = std::chrono::time_point_cast<std::chrono::microseconds>(clock::now());
-	return usec.time_since_epoch().count();
+	return (TimingMeasurement)usec.time_since_epoch().count();
 }
 
 
@@ -296,7 +296,7 @@ struct FramerateWindow : Window {
 
 		value = min(9999.99, value);
 		SetDParam(0, tpl);
-		SetDParam(1, (int)(value * 100));
+		SetDParam(1, (uint64)(value * 100));
 		SetDParam(2, 2);
 	}
 
@@ -313,7 +313,7 @@ struct FramerateWindow : Window {
 
 		value = min(9999.99, value);
 		SetDParam(0, tpl);
-		SetDParam(1, (int)(value * 100));
+		SetDParam(1, (uint64)(value * 100));
 		SetDParam(2, 2);
 	}
 
@@ -328,7 +328,7 @@ struct FramerateWindow : Window {
 				value = _pf_data[PFE_GAMELOOP].GetRate();
 				SetDParamGoodWarnBadRate(value, PFE_GAMELOOP);
 				value /= _pf_data[PFE_GAMELOOP].expected_rate;
-				SetDParam(3, (int)(value * 100));
+				SetDParam(3, (uint64)(value * 100));
 				SetDParam(4, 2);
 				break;
 
@@ -343,7 +343,7 @@ struct FramerateWindow : Window {
 			case WID_FRW_RATE_FACTOR:
 				value = _pf_data[PFE_GAMELOOP].GetRate();
 				value /= _pf_data[PFE_GAMELOOP].expected_rate;
-				SetDParam(0, (int)(value * 100));
+				SetDParam(0, (uint64)(value * 100));
 				SetDParam(1, 2);
 				break;
 			case WID_FRW_INFO_DATA_POINTS:
@@ -396,7 +396,7 @@ struct FramerateWindow : Window {
 	/** Type of a function that returns a milliseconds value given a performance element */
 	typedef double (ElementValueExtractor)(PerformanceElement elem);
 	/** Render a column of formatted time values in a control, given a function that returns the values */
-	void DrawElementTimesColumn(const Rect &r, int heading_str, ElementValueExtractor get_value_func) const
+	void DrawElementTimesColumn(const Rect &r, StringID heading_str, ElementValueExtractor get_value_func) const
 	{
 		int y = r.top;
 		DrawString(r.left, r.right, y, heading_str, TC_FROMSTRING, SA_CENTER);
@@ -584,7 +584,7 @@ struct FrametimeGraphWindow : Window {
 			TIMESTAMP_PRECISION / 50,
 		};
 		for (auto sc : vscales) {
-			if (peak_value < sc) this->vertical_scale = sc;
+			if (peak_value < sc) this->vertical_scale = (int)sc;
 		}
 	}
 
@@ -616,27 +616,27 @@ struct FrametimeGraphWindow : Window {
 			const auto &timestamps = _pf_data[this->element].timestamps;
 			int point = _pf_data[this->element].prev_index;
 
-			const int x_zero = r.right - this->graph_size.width;
+			const int x_zero = r.right - (int)this->graph_size.width;
 			const int x_max = r.right;
-			const int y_zero = r.top + this->graph_size.height;
+			const int y_zero = r.top + (int)this->graph_size.height;
 			const int y_max = r.top;
 			const int c_grid = PC_DARK_GREY;
 			const int c_lines = PC_BLACK;
 			const int c_peak = PC_DARK_RED;
 
-			const TimingMeasurement draw_horz_scale = this->horizontal_scale * TIMESTAMP_PRECISION / 2;
-			const TimingMeasurement draw_vert_scale = this->vertical_scale;
+			const TimingMeasurement draw_horz_scale = (TimingMeasurement)this->horizontal_scale * TIMESTAMP_PRECISION / 2;
+			const TimingMeasurement draw_vert_scale = (TimingMeasurement)this->vertical_scale;
 
 			/* Number of \c horizontal_scale units in each horizontal division */
-			const int horz_div_scl = (this->horizontal_scale <= 20) ? 1 : 10;
+			const uint horz_div_scl = (this->horizontal_scale <= 20) ? 1 : 10;
 			/* Number of divisions of the horizontal axis */
-			const int horz_divisions = this->horizontal_scale / horz_div_scl;
+			const uint horz_divisions = this->horizontal_scale / horz_div_scl;
 			/* Number of divisions of the vertical axis */
-			const int vert_divisions = 10;
+			const uint vert_divisions = 10;
 
 			/* Draw division lines and labels for the vertical axis */
-			for (int division = 0; division < vert_divisions; division++) {
-				int y = Scinterlate(y_zero, y_max, 0, vert_divisions, division);
+			for (uint division = 0; division < vert_divisions; division++) {
+				int y = Scinterlate(y_zero, y_max, 0, (int)vert_divisions, (int)division);
 				GfxDrawLine(x_zero, y, x_max, y, c_grid);
 				if (division % 2 == 0) {
 					if (this->vertical_scale > TIMESTAMP_PRECISION) {
@@ -649,8 +649,8 @@ struct FrametimeGraphWindow : Window {
 				}
 			}
 			/* Draw divison lines and labels for the horizontal axis */
-			for (int division = horz_divisions; division > 0; division--) {
-				int x = Scinterlate(x_zero, x_max, 0, horz_divisions, horz_divisions - division);
+			for (uint division = horz_divisions; division > 0; division--) {
+				int x = Scinterlate(x_zero, x_max, 0, (int)horz_divisions, (int)horz_divisions - (int)division);
 				GfxDrawLine(x, y_max, x, y_zero, c_grid);
 				if (division % 2 == 0) {
 					SetDParam(0, division * horz_div_scl / 2);
@@ -667,7 +667,7 @@ struct FrametimeGraphWindow : Window {
 			TimingMeasurement lastts = timestamps[point];
 
 			TimingMeasurement peak_value = 0;
-			Point peak_point;
+			Point peak_point{ 0, 0 };
 			TimingMeasurement value_sum = 0;
 			TimingMeasurement time_sum = 0;
 			int points_drawn = 0;
@@ -691,8 +691,8 @@ struct FrametimeGraphWindow : Window {
 
 				/* Draw line from previous point to new point */
 				Point newpoint{
-					(int)Scinterlate<int64>(x_zero, x_max, 0, draw_horz_scale, draw_horz_scale - time_sum),
-					(int)Scinterlate<int64>(y_zero, y_max, 0, draw_vert_scale, value)
+					(int)Scinterlate<int64>(x_zero, x_max, 0, (int64)draw_horz_scale, (int64)draw_horz_scale - (int64)time_sum),
+					(int)Scinterlate<int64>(y_zero, y_max, 0, (int64)draw_vert_scale, (int64)value)
 				};
 				assert(newpoint.x <= lastpoint.x);
 				GfxDrawLine(lastpoint.x, lastpoint.y, newpoint.x, newpoint.y, c_lines);
@@ -751,7 +751,7 @@ void ConPrintFramerate()
 
 	IConsolePrintF(TC_SILVER, "Based on num. data points: %d %d %d", count1, count2, count3);
 
-	static char *MEASUREMENT_NAMES[PFE_MAX] = {
+	static const char *MEASUREMENT_NAMES[PFE_MAX] = {
 		"Game loop",
 		"  GL station ticks",
 		"  GL train ticks",
