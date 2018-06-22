@@ -383,7 +383,7 @@ struct FramerateWindow : Window {
 		DrawString(r.left, r.right, y, heading_str, TC_FROMSTRING, SA_CENTER);
 		y += FONT_HEIGHT_NORMAL + VSPACING;
 
-		for (auto e = PFE_FIRST; e < PFE_MAX; e = (PerformanceElement)(e + 1)) {
+		for (auto e = PFE_FIRST; e < PFE_MAX; e++) {
 			double value = get_value_func(e);
 			SetDParamGoodWarnBadDuration(value);
 			DrawString(r.left, r.right, y, STR_FRAMERATE_VALUE, TC_FROMSTRING, SA_RIGHT);
@@ -735,7 +735,7 @@ void ConPrintFramerate()
 		printed_anything = true;
 	}
 
-	for (auto e = PFE_FIRST; e < PFE_MAX; e = (PerformanceElement)(e + 1)) {
+	for (auto e = PFE_FIRST; e < PFE_MAX; e++) {
 		auto &pf = _pf_data[e];
 		if (pf.num_valid == 0) continue;
 		IConsolePrintF(TC_LIGHT_BLUE, "%s times: %.2fms  %.2fms  %.2fms",

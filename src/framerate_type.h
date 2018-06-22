@@ -11,6 +11,7 @@
 #define FRAMERATE_GUI_H
 
 #include "stdafx.h"
+#include "core/enum_type.hpp"
 
 enum PerformanceElement {
 	PFE_GAMELOOP,        ///< Speed of gameloop processing.
@@ -26,6 +27,7 @@ enum PerformanceElement {
 	PFE_SOUND,           ///< Speed of mixing audio samples
 	PFE_MAX,             ///< End of enum, must be last.
 };
+DECLARE_POSTFIX_INCREMENT(PerformanceElement)
 
 typedef uint64 TimingMeasurement;
 
