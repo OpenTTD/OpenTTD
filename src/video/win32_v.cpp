@@ -26,7 +26,6 @@
 #include "../framerate_type.h"
 #include "win32_v.h"
 #include <windows.h>
-#include <mmsystem.h>
 #include <imm.h>
 
 #include "../safeguards.h"
@@ -1148,8 +1147,6 @@ const char *VideoDriver_Win32::Start(const char * const *parm)
 	_wnd.width_org  = _cur_resolution.width;
 	_wnd.height_org = _cur_resolution.height;
 
-	timeBeginPeriod(MILLISECONDS_PER_TICK);
-
 	AllocateDibSection(_cur_resolution.width, _cur_resolution.height);
 	this->MakeWindow(_fullscreen);
 
@@ -1162,8 +1159,6 @@ const char *VideoDriver_Win32::Start(const char * const *parm)
 
 void VideoDriver_Win32::Stop()
 {
-	timeEndPeriod(MILLISECONDS_PER_TICK);
-
 	DeleteObject(_wnd.gdi_palette);
 	DeleteObject(_wnd.dib_sect);
 	DestroyWindow(_wnd.main_wnd);
@@ -1190,7 +1185,7 @@ static void CheckPaletteAnim()
 void VideoDriver_Win32::MainLoop()
 {
 	MSG mesg;
-	uint32 cur_ticks = timeGetTime();
+	uint32 cur_ticks = GetTickCount();
 	uint32 last_cur_ticks = cur_ticks;
 	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
 
@@ -1246,7 +1241,7 @@ void VideoDriver_Win32::MainLoop()
 			_fast_forward = 0;
 		}
 
-		cur_ticks = timeGetTime();
+		cur_ticks = GetTickCount();
 		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode) || cur_ticks < prev_cur_ticks) {
 			_realtime_tick += cur_ticks - last_cur_ticks;
 			last_cur_ticks = cur_ticks;
