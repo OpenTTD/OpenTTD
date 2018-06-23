@@ -747,6 +747,16 @@ public:
 		}
 	}
 
+	/**
+	 * Get the string to draw the town name.
+	 * @param t Town to draw.
+	 * @return The string to use.
+	 */
+	static StringID GetTownString(const Town *t)
+	{
+		return t->larger_town ? STR_TOWN_DIRECTORY_CITY : STR_TOWN_DIRECTORY_TOWN;
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
@@ -785,7 +795,7 @@ public:
 
 					SetDParam(0, t->index);
 					SetDParam(1, t->cache.population);
-					DrawString(text_left, text_right, y + (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2, STR_TOWN_DIRECTORY_TOWN);
+					DrawString(text_left, text_right, y + (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2, GetTownString(t));
 
 					y += this->resize.step_height;
 					if (++n == this->vscroll->GetCapacity()) break; // max number of towns in 1 window
@@ -824,7 +834,7 @@ public:
 
 					SetDParam(0, t->index);
 					SetDParamMaxDigits(1, 8);
-					d = maxdim(d, GetStringBoundingBox(STR_TOWN_DIRECTORY_TOWN));
+					d = maxdim(d, GetStringBoundingBox(GetTownString(t)));
 				}
 				Dimension icon_size = GetSpriteSize(SPR_TOWN_RATING_GOOD);
 				d.width += icon_size.width + 2;
