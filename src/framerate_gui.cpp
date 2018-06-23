@@ -44,6 +44,11 @@ namespace {
 		/** Number of data points recorded, clamped to \c NUM_FRAMERATE_POINTS */
 		int num_valid;
 
+		/** Current accumulated duration */
+		TimingMeasurement acc_duration;
+		/** Start time for current accumulation cycle */
+		TimingMeasurement acc_timestamp;
+
 		explicit PerformanceData(double expected_rate) : expected_rate(expected_rate), next_index(0), prev_index(0), num_valid(0) { }
 
 		void Add(TimingMeasurement start_time, TimingMeasurement end_time)
@@ -58,17 +63,20 @@ namespace {
 
 		void BeginAccumulate(TimingMeasurement start_time)
 		{
-			this->timestamps[this->next_index] = start_time;
-			this->durations[this->next_index] = 0;
+			this->timestamps[this->next_index] = this->acc_timestamp;
+			this->durations[this->next_index] = this->acc_duration;
 			this->prev_index = this->next_index;
 			this->next_index += 1;
 			if (this->next_index >= NUM_FRAMERATE_POINTS) this->next_index = 0;
 			this->num_valid = min(NUM_FRAMERATE_POINTS, this->num_valid + 1);
+
+			this->acc_duration = 0;
+			this->acc_timestamp = start_time;
 		}
 
 		void AddAccumulate(TimingMeasurement duration)
 		{
-			this->durations[this->prev_index] += duration;
+			this->acc_duration += duration;
 		}
 
 		void AddPause(TimingMeasurement start_time)
@@ -663,7 +671,7 @@ struct FrametimeGraphWindow : Window {
 			/* Position of last rendered data point */
 			Point lastpoint{
 				x_max,
-				(int)Scinterlate<int64>(y_zero, y_max, 0, this->vertical_scale, (int)durations[point])
+				(int)Scinterlate<int64>(y_zero, y_max, 0, this->vertical_scale, durations[point])
 			};
 			/* Timestamp of last rendered data point */
 			TimingMeasurement lastts = timestamps[point];
