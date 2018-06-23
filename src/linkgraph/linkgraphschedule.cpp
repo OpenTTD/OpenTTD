@@ -15,6 +15,7 @@
 #include "demands.h"
 #include "mcf.h"
 #include "flowmapper.h"
+#include "../framerate_type.h"
 
 #include "../safeguards.h"
 
@@ -151,6 +152,7 @@ void OnTick_LinkGraph()
 	if (offset == 0) {
 		LinkGraphSchedule::instance.SpawnNext();
 	} else if (offset == _settings_game.linkgraph.recalc_interval / 2) {
+		PerformanceMeasurer framerate(PFE_GL_LINKGRAPH);
 		LinkGraphSchedule::instance.JoinNext();
 	}
 }

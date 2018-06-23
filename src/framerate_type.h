@@ -21,6 +21,8 @@ enum PerformanceElement {
 	PFE_ACC_GL_ROADVEHS, ///< Time spend processing road vehicles
 	PFE_ACC_GL_SHIPS,    ///< Time spent processing ships
 	PFE_ACC_GL_AIRCRAFT, ///< Time spent processing aircraft
+	PFE_GL_LANDSCAPE,    ///< Time spent processing other world features
+	PFE_GL_LINKGRAPH,    ///< Time spent waiting for link graph background jobs
 	PFE_DRAWING,         ///< Speed of drawing world and GUI.
 	PFE_ACC_DRAWWORLD,   ///< Time spent drawing world viewports in GUI
 	PFE_VIDEO,           ///< Speed of painting drawn video buffer.

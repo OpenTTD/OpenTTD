@@ -149,6 +149,8 @@ namespace {
 		PerformanceData(1),                     // PFE_ACC_GL_ROADVEHS
 		PerformanceData(1),                     // PFE_ACC_GL_SHIPS
 		PerformanceData(1),                     // PFE_ACC_GL_AIRCRAFT
+		PerformanceData(1),                     // PFE_GL_LANDSCAPE
+		PerformanceData(1),                     // PFE_GL_LINKGRAPH
 		PerformanceData(GL_RATE),               // PFE_DRAWING
 		PerformanceData(1),                     // PFE_ACC_DRAWWORLD
 		PerformanceData(60.0),                  // PFE_VIDEO
@@ -758,6 +760,8 @@ void ConPrintFramerate()
 		"  GL road vehicle ticks",
 		"  GL ship ticks",
 		"  GL aircraft ticks",
+		"  GL landscape ticks",
+		"  GL link graph delays",
 		"Drawing",
 		"  Viewport drawing",
 		"Video output",

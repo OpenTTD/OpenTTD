@@ -1354,6 +1354,7 @@ void StateGameLoop()
 	}
 
 	PerformanceMeasurer framerate(PFE_GAMELOOP);
+	PerformanceAccumulator::Reset(PFE_GL_LANDSCAPE);
 	if (HasModalProgress()) return;
 
 	Layouter::ReduceLineCache();

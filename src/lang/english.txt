@@ -2725,6 +2725,8 @@ STR_FRAMERATE_GL_TRAINS                                         :{WHITE}  Train 
 STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  Road vehicle ticks:
 STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  Ship ticks:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE}  Aircraft ticks:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE}  World ticks:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE}  Link graph delay:
 STR_FRAMERATE_DRAWING                                           :{WHITE}Graphics rendering:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE}  World viewports:
 STR_FRAMERATE_VIDEO                                             :{WHITE}Video output:
@@ -2737,6 +2739,8 @@ STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Train ticks
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Road vehicle ticks
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ship ticks
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Aircraft ticks
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :World ticks
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Link graph delay
 STR_FRAMETIME_CAPTION_DRAWING                                   :Graphics rendering
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :World viewport rendering
 STR_FRAMETIME_CAPTION_VIDEO                                     :Video output

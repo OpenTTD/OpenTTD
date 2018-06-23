@@ -14,6 +14,7 @@
 #include "core/smallvec_type.hpp"
 #include "tile_cmd.h"
 #include "viewport_func.h"
+#include "framerate_type.h"
 
 #include "safeguards.h"
 
@@ -50,6 +51,8 @@ void AddAnimatedTile(TileIndex tile)
  */
 void AnimateAnimatedTiles()
 {
+	PerformanceAccumulator framerate(PFE_GL_LANDSCAPE);
+
 	const TileIndex *ti = _animated_tiles.Begin();
 	while (ti < _animated_tiles.End()) {
 		const TileIndex curr = *ti;
