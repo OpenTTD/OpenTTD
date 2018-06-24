@@ -40,9 +40,9 @@
 struct MusicSystem {
 	struct PlaylistEntry : MusicSongInfo {
 		const MusicSet *set;  ///< music set the song comes from
-		int set_index;        ///< index of song in set
+		uint set_index;        ///< index of song in set
 
-		PlaylistEntry(const MusicSet *set, int set_index) : MusicSongInfo(set->songinfo[set_index]), set(set), set_index(set_index) { }
+		PlaylistEntry(const MusicSet *set, uint set_index) : MusicSongInfo(set->songinfo[set_index]), set(set), set_index(set_index) { }
 		bool IsValid() const { return !StrEmpty(this->songname); }
 	};
 	using Playlist = std::vector<PlaylistEntry>;
@@ -67,7 +67,7 @@ struct MusicSystem {
 	void BuildPlaylists();
 
 	void ChangePlaylist(PlaylistChoices pl);
-	void ChangeMusicSet(const std::string &set_name);
+	void ChangeMusicSet(const char *set_name);
 	void Shuffle();
 	void Unshuffle();
 
@@ -102,14 +102,13 @@ MusicSystem _music;
 void MusicSystem::BuildPlaylists()
 {
 	const MusicSet *set = BaseMusic::GetUsedSet();
-	int themenum = 0;
 
 	/* Clear current playlists */
 	for (auto &pl : this->standard_playlists) pl.clear();
 	this->music_set.clear();
 
 	/* Build standard playlists, and a list of available music */
-	for (int i = 0; i < NUM_SONGS_AVAILABLE; i++) {
+	for (uint i = 0; i < NUM_SONGS_AVAILABLE; i++) {
 		PlaylistEntry entry(set, i);
 		if (!entry.IsValid()) continue;
 
@@ -121,14 +120,14 @@ void MusicSystem::BuildPlaylists()
 		/* Don't add the theme song to standard playlists */
 		if (i > 0) {
 			this->standard_playlists[PLCH_ALLMUSIC].push_back(entry);
-			int theme = (i - 1) / NUM_SONGS_CLASS;
+			uint theme = (i - 1) / NUM_SONGS_CLASS;
 			this->standard_playlists[PLCH_OLDSTYLE + theme].push_back(entry);
 		}
 	}
 
 	/* Load custom playlists
 	 * Song index offsets are 1-based, zero indicates invalid/end-of-list value */
-	for (int i = 0; i < NUM_SONGS_PLAYLIST; i++) {
+	for (uint i = 0; i < NUM_SONGS_PLAYLIST; i++) {
 		if (_settings_client.music.custom_1[i] > 0) {
 			PlaylistEntry entry(set, _settings_client.music.custom_1[i] - 1);
 			if (entry.IsValid()) this->standard_playlists[PLCH_CUSTOM1].push_back(entry);
@@ -166,9 +165,9 @@ void MusicSystem::ChangePlaylist(PlaylistChoices pl)
  * Change to named music set, and reset playback.
  * @param set_name Name of music set to select
  */
-void MusicSystem::ChangeMusicSet(const std::string &set_name)
+void MusicSystem::ChangeMusicSet(const char *set_name)
 {
-	BaseMusic::SetSet(set_name.c_str());
+	BaseMusic::SetSet(set_name);
 
 	this->BuildPlaylists();
 	this->ChangePlaylist(this->selected_playlist);
@@ -318,7 +317,7 @@ void MusicSystem::PlaylistAdd(size_t song_index)
 		size_t newpos = InteractiveRandom() % maxpos;
 		this->active_playlist.insert(this->active_playlist.begin() + newpos, entry);
 		/* Make sure to shift up the current playback position if the song was inserted before it */
-		if (newpos <= this->playlist_position) this->playlist_position++;
+		if ((int)newpos <= this->playlist_position) this->playlist_position++;
 	} else {
 		this->active_playlist.push_back(entry);
 	}
@@ -350,7 +349,7 @@ void MusicSystem::PlaylistRemove(size_t song_index)
 		auto s2 = this->active_playlist.begin() + i;
 		if (s2->filename == song.filename && s2->cat_index == song.cat_index) {
 			this->active_playlist.erase(s2);
-			if (i == this->playlist_position && this->IsPlaying()) this->Play();
+			if ((int)i == this->playlist_position && this->IsPlaying()) this->Play();
 			break;
 		}
 	}
