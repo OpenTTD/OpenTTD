@@ -3010,6 +3010,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Inserire
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Città
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nessuna -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Metropoli){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomi delle città - fare clic su un nome per centrare la visuale principale sulla città. CTRL+clic la mostra in una mini visuale.
 STR_TOWN_POPULATION                                             :{BLACK}Popolazione mondiale: {COMMA}
 
