@@ -45,7 +45,7 @@ struct MusicSystem {
 		PlaylistEntry(const MusicSet *set, uint set_index) : MusicSongInfo(set->songinfo[set_index]), set(set), set_index(set_index) { }
 		bool IsValid() const { return !StrEmpty(this->songname); }
 	};
-	using Playlist = std::vector<PlaylistEntry>;
+	typedef std::vector<PlaylistEntry> Playlist;
 
 	enum PlaylistChoices {
 		PLCH_ALLMUSIC,
@@ -104,7 +104,7 @@ void MusicSystem::BuildPlaylists()
 	const MusicSet *set = BaseMusic::GetUsedSet();
 
 	/* Clear current playlists */
-	for (auto &pl : this->standard_playlists) pl.clear();
+	for (size_t i = 0; i < lengthof(this->standard_playlists); ++i) this->standard_playlists[i].clear();
 	this->music_set.clear();
 
 	/* Build standard playlists, and a list of available music */
@@ -187,9 +187,7 @@ void MusicSystem::Shuffle()
 	this->active_playlist = this->displayed_playlist;
 	for (size_t i = 0; i < this->active_playlist.size(); i++) {
 		size_t shuffle_index = InteractiveRandom() % (this->active_playlist.size() - i);
-		auto &a = this->active_playlist[i];
-		auto &b = this->active_playlist[i + shuffle_index];
-		std::swap(a, b);
+		std::swap(this->active_playlist[i], this->active_playlist[i + shuffle_index]);
 	}
 
 	if (_settings_client.music.playing) this->Play();
@@ -339,7 +337,7 @@ void MusicSystem::PlaylistRemove(size_t song_index)
 {
 	if (!this->IsCustomPlaylist()) return;
 
-	auto &pl = this->standard_playlists[this->selected_playlist];
+	Playlist &pl = this->standard_playlists[this->selected_playlist];
 	if (song_index >= pl.size()) return;
 
 	/* Remove from "simple" playlists */
@@ -350,7 +348,7 @@ void MusicSystem::PlaylistRemove(size_t song_index)
 	/* Find in actual active playlist (may be shuffled) and remove,
 	 * if it's the current song restart playback */
 	for (size_t i = 0; i < this->active_playlist.size(); i++) {
-		auto s2 = this->active_playlist.begin() + i;
+		Playlist::iterator s2 = this->active_playlist.begin() + i;
 		if (s2->filename == song.filename && s2->cat_index == song.cat_index) {
 			this->active_playlist.erase(s2);
 			if ((int)i == this->playlist_position && this->IsPlaying()) this->Play();
@@ -411,9 +409,9 @@ void MusicSystem::SaveCustomPlaylist(PlaylistChoices pl)
 	size_t num = 0;
 	MemSetT(settings_pl, 0, NUM_SONGS_PLAYLIST);
 
-	for (const auto &song : this->standard_playlists[pl]) {
+	for (Playlist::const_iterator song = this->standard_playlists[pl].begin(); song != this->standard_playlists[pl].end(); ++song) {
 		/* Music set indices in the settings playlist are 1-based, 0 means unused slot */
-		settings_pl[num++] = (byte)song.set_index + 1;
+		settings_pl[num++] = (byte)song->set_index + 1;
 	}
 }
 
@@ -504,10 +502,10 @@ struct MusicTrackSelectionWindow : public Window {
 			case WID_MTS_LIST_LEFT: case WID_MTS_LIST_RIGHT: {
 				Dimension d = {0, 0};
 
-				for (const auto &song : _music.music_set) {
-					SetDParam(0, song.tracknr);
+				for (MusicSystem::Playlist::const_iterator song = _music.music_set.begin(); song != _music.music_set.end(); ++song) {
+					SetDParam(0, song->tracknr);
 					SetDParam(1, 2);
-					SetDParamStr(2, song.songname);
+					SetDParamStr(2, song->songname);
 					Dimension d2 = GetStringBoundingBox(STR_PLAYLIST_TRACK_NAME);
 					d.width = max(d.width, d2.width);
 					d.height += d2.height;
@@ -527,10 +525,10 @@ struct MusicTrackSelectionWindow : public Window {
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK);
 
 				int y = r.top + WD_FRAMERECT_TOP;
-				for (const auto &song : _music.music_set) {
-					SetDParam(0, song.tracknr);
+				for (MusicSystem::Playlist::const_iterator song = _music.music_set.begin(); song != _music.music_set.end(); ++song) {
+					SetDParam(0, song->tracknr);
 					SetDParam(1, 2);
-					SetDParamStr(2, song.songname);
+					SetDParamStr(2, song->songname);
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_PLAYLIST_TRACK_NAME);
 					y += FONT_HEIGHT_SMALL;
 				}
@@ -541,10 +539,10 @@ struct MusicTrackSelectionWindow : public Window {
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK);
 
 				int y = r.top + WD_FRAMERECT_TOP;
-				for (const auto &song : _music.displayed_playlist) {
-					SetDParam(0, song.tracknr);
+				for (MusicSystem::Playlist::const_iterator song = _music.music_set.begin(); song != _music.music_set.end(); ++song) {
+					SetDParam(0, song->tracknr);
 					SetDParam(1, 2);
-					SetDParamStr(2, song.songname);
+					SetDParamStr(2, song->songname);
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_PLAYLIST_TRACK_NAME);
 					y += FONT_HEIGHT_SMALL;
 				}
@@ -696,8 +694,8 @@ struct MusicWindow : public Window {
 
 			case WID_M_TRACK_NAME: {
 				Dimension d = GetStringBoundingBox(STR_MUSIC_TITLE_NONE);
-				for (const auto &song : _music.music_set) {
-					SetDParamStr(0, song.songname);
+				for (MusicSystem::Playlist::const_iterator song = _music.music_set.begin(); song != _music.music_set.end(); ++song) {
+					SetDParamStr(0, song->songname);
 					d = maxdim(d, GetStringBoundingBox(STR_MUSIC_TITLE_NAME));
 				}
 				d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
