@@ -177,8 +177,11 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 			this->num_available++;
 
 			/* Number the theme song (if any) track 0, rest are normal */
-			if (i == 0) this->songinfo[i].tracknr = 0;
-			else this->songinfo[i].tracknr = tracknr++;
+			if (i == 0) {
+				this->songinfo[i].tracknr = 0;
+			} else {
+				this->songinfo[i].tracknr = tracknr++;
+			}
 
 			item = timingtrim->GetItem(trimmed_filename, false);
 			if (item != NULL && !StrEmpty(item->value)) {

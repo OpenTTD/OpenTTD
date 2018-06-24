@@ -154,8 +154,12 @@ void MusicSystem::ChangePlaylist(PlaylistChoices pl)
 
 	if (this->selected_playlist != PLCH_THEMEONLY) _settings_client.music.playlist = this->selected_playlist;
 
-	if (_settings_client.music.shuffle) this->Shuffle();
-	else if (_settings_client.music.playing) this->Play(); // Shuffle() will also Play() if necessary, only start once
+	if (_settings_client.music.shuffle) {
+		this->Shuffle();
+		/* Shuffle() will also Play() if necessary, only start once */
+	} else if (_settings_client.music.playing) {
+		this->Play();
+	}
 
 	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0);
 	InvalidateWindowData(WC_MUSIC_WINDOW, 0);
@@ -210,6 +214,7 @@ void MusicSystem::Play()
 	/* Always set the playing flag, even if there is no music */
 	_settings_client.music.playing = true;
 	MusicDriver::GetInstance()->StopSong();
+	/* Make sure playlist_position is a valid index, if playlist has changed etc. */
 	this->ChangePlaylistPosition(0);
 
 	/* If there is no music, don't try to play it */
@@ -257,13 +262,14 @@ void MusicSystem::CheckStatus()
 		this->ChangePlaylist((_game_mode == GM_MENU) ? PLCH_THEMEONLY : (PlaylistChoices)_settings_client.music.playlist);
 	}
 	if (this->active_playlist.empty()) return;
+	/* If we were supposed to be playing, but music has stopped, move to next song */
 	if (this->IsPlaying() && !MusicDriver::GetInstance()->IsSongPlaying()) this->Next();
 }
 
 /** Is the player getting music right now? */
 bool MusicSystem::IsPlaying() const
 {
-	return _settings_client.music.playing && this->active_playlist.size() > 0;
+	return _settings_client.music.playing && !this->active_playlist.empty();
 }
 
 /** Is shuffle mode enabled? */
@@ -282,9 +288,7 @@ MusicSystem::PlaylistEntry MusicSystem::GetCurrentSong() const
 /** Is one of the custom playlists selected? */
 bool MusicSystem::IsCustomPlaylist() const
 {
-	if (this->selected_playlist == PLCH_CUSTOM1) return true;
-	if (this->selected_playlist == PLCH_CUSTOM2) return true;
-	return false;
+	return (this->selected_playlist == PLCH_CUSTOM1) || (this->selected_playlist == PLCH_CUSTOM2);
 }
 
 /**
@@ -396,14 +400,18 @@ void MusicSystem::ChangePlaylistPosition(int ofs)
 void MusicSystem::SaveCustomPlaylist(PlaylistChoices pl)
 {
 	byte *settings_pl;
-	if (pl == PLCH_CUSTOM1) settings_pl = _settings_client.music.custom_1;
-	else if (pl == PLCH_CUSTOM2) settings_pl = _settings_client.music.custom_2;
-	else return;
+	if (pl == PLCH_CUSTOM1) {
+		settings_pl = _settings_client.music.custom_1;
+	} else if (pl == PLCH_CUSTOM2) {
+		settings_pl = _settings_client.music.custom_2;
+	} else {
+		return;
+	}
 
 	size_t num = 0;
 	MemSetT(settings_pl, 0, NUM_SONGS_PLAYLIST);
 
-	for (auto &song : this->standard_playlists[pl]) {
+	for (const auto &song : this->standard_playlists[pl]) {
 		/* Music set indices in the settings playlist are 1-based, 0 means unused slot */
 		settings_pl[num++] = (byte)song.set_index + 1;
 	}
@@ -430,6 +438,10 @@ void ChangeMusicSet(int index)
 	_music.ChangeMusicSet(name);
 }
 
+/**
+ * Prepare the music system for use.
+ * Called from \c InitializeGame
+ */
 void InitializeMusic()
 {
 	_music.BuildPlaylists();
@@ -492,7 +504,7 @@ struct MusicTrackSelectionWindow : public Window {
 			case WID_MTS_LIST_LEFT: case WID_MTS_LIST_RIGHT: {
 				Dimension d = {0, 0};
 
-				for (auto &song : _music.music_set) {
+				for (const auto &song : _music.music_set) {
 					SetDParam(0, song.tracknr);
 					SetDParam(1, 2);
 					SetDParamStr(2, song.songname);
@@ -515,7 +527,7 @@ struct MusicTrackSelectionWindow : public Window {
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK);
 
 				int y = r.top + WD_FRAMERECT_TOP;
-				for (auto &song : _music.music_set) {
+				for (const auto &song : _music.music_set) {
 					SetDParam(0, song.tracknr);
 					SetDParam(1, 2);
 					SetDParamStr(2, song.songname);
@@ -529,7 +541,7 @@ struct MusicTrackSelectionWindow : public Window {
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK);
 
 				int y = r.top + WD_FRAMERECT_TOP;
-				for (auto &song : _music.displayed_playlist) {
+				for (const auto &song : _music.displayed_playlist) {
 					SetDParam(0, song.tracknr);
 					SetDParam(1, 2);
 					SetDParamStr(2, song.songname);
@@ -684,7 +696,7 @@ struct MusicWindow : public Window {
 
 			case WID_M_TRACK_NAME: {
 				Dimension d = GetStringBoundingBox(STR_MUSIC_TITLE_NONE);
-				for (auto &song : _music.music_set) {
+				for (const auto &song : _music.music_set) {
 					SetDParamStr(0, song.songname);
 					d = maxdim(d, GetStringBoundingBox(STR_MUSIC_TITLE_NAME));
 				}
@@ -803,8 +815,11 @@ struct MusicWindow : public Window {
 			}
 
 			case WID_M_SHUFFLE: // toggle shuffle
-				if (_music.IsShuffle()) _music.Unshuffle();
-				else _music.Shuffle();
+				if (_music.IsShuffle()) {
+					_music.Unshuffle();
+				} else {
+					_music.Shuffle();
+				}
 				this->SetWidgetLoweredState(WID_M_SHUFFLE, _music.IsShuffle());
 				this->SetWidgetDirty(WID_M_SHUFFLE);
 				break;
