@@ -319,7 +319,7 @@ void LinkGraphOverlay::SetCompanyMask(uint32 company_mask)
 /** Make a number of rows with buttons for each company for the linkgraph legend window. */
 NWidgetBase *MakeCompanyButtonRowsLinkGraphGUI(int *biggest_index)
 {
-	return MakeCompanyButtonRows(biggest_index, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST, 3, STR_LINKGRAPH_LEGEND_SELECT_COMPANIES);
+	return MakeCompanyButtonRows(biggest_index, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST, 3, STR_NULL);
 }
 
 NWidgetBase *MakeSaturationLegendLinkGraphGUI(int *biggest_index)
@@ -498,6 +498,44 @@ void LinkGraphLegendWindow::DrawWidget(const Rect &r, int widget) const
 		GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, cargo->legend_colour);
 		DrawString(r.left, r.right, (r.top + r.bottom + 1 - FONT_HEIGHT_SMALL) / 2, cargo->abbrev, GetContrastColour(cargo->legend_colour, 73), SA_HOR_CENTER);
 	}
+}
+
+bool LinkGraphLegendWindow::OnHoverCommon(Point pt, int widget, TooltipCloseCondition close_cond)
+{
+	if (IsInsideMM(widget, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST + 1)) {
+		if (this->IsWidgetDisabled(widget)) {
+			GuiShowTooltips(this, STR_LINKGRAPH_LEGEND_SELECT_COMPANIES, 0, NULL, close_cond);
+		} else {
+			uint64 params[2];
+			CompanyID cid = (CompanyID)(widget - WID_LGL_COMPANY_FIRST);
+			params[0] = STR_LINKGRAPH_LEGEND_SELECT_COMPANIES;
+			params[1] = cid;
+			GuiShowTooltips(this, STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP, 2, params, close_cond);
+		}
+		return true;
+	}
+	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
+		if (this->IsWidgetDisabled(widget)) return false;
+		CargoSpec *cargo = CargoSpec::Get(widget - WID_LGL_CARGO_FIRST);
+		uint64 params[1];
+		params[0] = cargo->name;
+		GuiShowTooltips(this, STR_BLACK_STRING, 1, params, close_cond);
+		return true;
+	}
+	return false;
+}
+
+void LinkGraphLegendWindow::OnHover(Point pt, int widget)
+{
+	this->OnHoverCommon(pt, widget, TCC_HOVER);
+}
+
+bool LinkGraphLegendWindow::OnRightClick(Point pt, int widget)
+{
+	if (_settings_client.gui.hover_delay_ms == 0) {
+		return this->OnHoverCommon(pt, widget, TCC_RIGHT_CLICK);
+	}
+	return false;
 }
 
 /**
