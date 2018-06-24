@@ -1575,6 +1575,9 @@ void UpdateTownMaxPass(Town *t)
 	t->supplied[CT_MAIL].old_max = t->cache.population >> 4;
 }
 
+static void UpdateTownGrowthRate(Town *t);
+static void UpdateTownGrowth(Town *t);
+
 /**
  * Does the actual town creation.
  *
@@ -1654,6 +1657,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 
 	t->cache.num_houses -= x;
 	UpdateTownRadius(t);
+	UpdateTownGrowthRate(t);
 	UpdateTownMaxPass(t);
 	UpdateAirportsNoise();
 }
@@ -2412,6 +2416,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 
 		MakeTownHouse(tile, t, construction_counter, construction_stage, house, random_bits);
 		UpdateTownRadius(t);
+		UpdateTownGrowthRate(t);
 		UpdateTownCargoes(t, tile);
 
 		return true;
@@ -2547,8 +2552,6 @@ const CargoSpec *FindFirstCargoWithTownEffect(TownEffect effect)
 	return NULL;
 }
 
-static void UpdateTownGrowRate(Town *t);
-
 /**
  * Change the cargo goal of a town.
  * @param tile Unused.
@@ -2577,7 +2580,7 @@ CommandCost CmdTownCargoGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if (flags & DC_EXEC) {
 		t->goal[te] = p2;
-		UpdateTownGrowRate(t);
+		UpdateTownGrowth(t);
 		InvalidateWindowData(WC_TOWN_VIEW, index);
 	}
 
@@ -2627,7 +2630,7 @@ CommandCost CmdTownGrowthRate(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	if (flags & DC_EXEC) {
 		if (p2 == 0) {
-			/* Just clear the flag, UpdateTownGrowRate will determine a proper growth rate */
+			/* Just clear the flag, UpdateTownGrowth will determine a proper growth rate */
 			ClrBit(t->flags, TOWN_CUSTOM_GROWTH);
 		} else {
 			uint old_rate = t->growth_rate;
@@ -2641,7 +2644,7 @@ CommandCost CmdTownGrowthRate(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 			t->growth_rate = p2;
 			SetBit(t->flags, TOWN_CUSTOM_GROWTH);
 		}
-		UpdateTownGrowRate(t);
+		UpdateTownGrowth(t);
 		InvalidateWindowData(WC_TOWN_VIEW, p1);
 	}
 
@@ -2928,7 +2931,7 @@ static CommandCost TownActionFundBuildings(Town *t, DoCommandFlag flags)
 		t->fund_buildings_months = 3;
 
 		/* Enable growth (also checking GameScript's opinion) */
-		UpdateTownGrowRate(t);
+		UpdateTownGrowth(t);
 
 		/* Build a new house, but add a small delay to make sure
 		 * that spamming funding doesn't let town grow any faster
@@ -3132,8 +3135,87 @@ static void UpdateTownRating(Town *t)
 	SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
 }
 
-static void UpdateTownGrowRate(Town *t)
+
+/**
+ * Updates town grow counter after growth rate change.
+ * Preserves relative house builting progress whenever it can.
+ * @param town The town to calculate grow counter for
+ * @param prev_growth_rate Town growth rate before it changed (one that was used with grow counter to be updated)
+ */
+static void UpdateTownGrowCounter(Town *t, uint16 prev_growth_rate)
 {
+	if (t->growth_rate == TOWN_GROWTH_RATE_NONE) return;
+	if (prev_growth_rate == TOWN_GROWTH_RATE_NONE) {
+		t->grow_counter = min(t->growth_rate, t->grow_counter);
+		return;
+	}
+	t->grow_counter = RoundDivSU((uint32)t->grow_counter * (t->growth_rate + 1), prev_growth_rate + 1);
+}
+
+/**
+ * Calculates amount of active stations in the range of town (HZB_TOWN_EDGE).
+ * @param town The town to calculate stations for
+ * @returns Amount of active stations
+ */
+static int CountActiveStations(Town *t)
+{
+	int n = 0;
+	const Station *st;
+	FOR_ALL_STATIONS(st) {
+		if (DistanceSquare(st->xy, t->xy) <= t->cache.squared_town_zone_radius[0]) {
+			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
+				n++;
+			}
+		}
+	}
+	return n;
+}
+
+/**
+ * Calculates town growth rate in normal conditions (custom growth rate not set).
+ * If town growth speed is set to None(0) returns the same rate as if it was Normal(2).
+ * @param town The town to calculate growth rate for
+ * @returns Calculated growth rate
+ */
+static uint GetNormalGrowthRate(Town *t)
+{
+	static const uint16 _grow_count_values[2][6] = {
+		{ 120, 120, 120, 100,  80,  60 }, // Fund new buildings has been activated
+		{ 320, 420, 300, 220, 160, 100 }  // Normal values
+	};
+
+	int n = CountActiveStations(t);
+	uint16 m = _grow_count_values[t->fund_buildings_months != 0 ? 0 : 1][min(n, 5)];
+
+	uint growth_multiplier = _settings_game.economy.town_growth_rate != 0 ? _settings_game.economy.town_growth_rate - 1 : 1;
+
+	m >>= growth_multiplier;
+	if (t->larger_town) m /= 2;
+
+	return TownTicksToGameTicks(m / (t->cache.num_houses / 50 + 1));
+}
+
+/**
+ * Updates town growth rate.
+ * @param town The town to update growth rate for
+ */
+static void UpdateTownGrowthRate(Town *t)
+{
+	if (HasBit(t->flags, TOWN_CUSTOM_GROWTH)) return;
+	uint old_rate = t->growth_rate;
+	t->growth_rate = GetNormalGrowthRate(t);
+	UpdateTownGrowCounter(t, old_rate);
+	SetWindowDirty(WC_TOWN_VIEW, t->index);
+}
+
+/**
+ * Updates town growth state (whether it is growing or not).
+ * @param town The town to update growth for
+ */
+static void UpdateTownGrowth(Town *t)
+{
+	UpdateTownGrowthRate(t);
+
 	ClrBit(t->flags, TOWN_IS_GROWING);
 	SetWindowDirty(WC_TOWN_VIEW, t->index);
 
@@ -3162,44 +3244,7 @@ static void UpdateTownGrowRate(Town *t)
 		return;
 	}
 
-	/**
-	 * Towns are processed every TOWN_GROWTH_TICKS ticks, and this is the
-	 * number of times towns are processed before a new building is built.
-	 */
-	static const uint16 _grow_count_values[2][6] = {
-		{ 120, 120, 120, 100,  80,  60 }, // Fund new buildings has been activated
-		{ 320, 420, 300, 220, 160, 100 }  // Normal values
-	};
-
-	int n = 0;
-
-	const Station *st;
-	FOR_ALL_STATIONS(st) {
-		if (DistanceSquare(st->xy, t->xy) <= t->cache.squared_town_zone_radius[0]) {
-			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
-				n++;
-			}
-		}
-	}
-
-	uint16 m;
-
-	if (t->fund_buildings_months != 0) {
-		m = _grow_count_values[0][min(n, 5)];
-	} else {
-		m = _grow_count_values[1][min(n, 5)];
-		if (n == 0 && !Chance16(1, 12)) return;
-	}
-
-	/* Use the normal growth rate values if new buildings have been funded in
-	 * this town and the growth rate is set to none. */
-	uint growth_multiplier = _settings_game.economy.town_growth_rate != 0 ? _settings_game.economy.town_growth_rate - 1 : 1;
-
-	m >>= growth_multiplier;
-	if (t->larger_town) m /= 2;
-
-	t->growth_rate = TownTicksToGameTicks(m / (t->cache.num_houses / 50 + 1));
-	t->grow_counter = min(t->growth_rate, t->grow_counter);
+	if (t->fund_buildings_months == 0 && CountActiveStations(t) == 0 && !Chance16(1, 12)) return;
 
 	SetBit(t->flags, TOWN_IS_GROWING);
 	SetWindowDirty(WC_TOWN_VIEW, t->index);
@@ -3433,8 +3478,8 @@ void TownsMonthlyLoop()
 		}
 
 		UpdateTownAmounts(t);
+		UpdateTownGrowth(t);
 		UpdateTownRating(t);
-		UpdateTownGrowRate(t);
 		UpdateTownUnwanted(t);
 		UpdateTownCargoes(t);
 	}
