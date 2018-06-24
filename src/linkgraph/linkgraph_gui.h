@@ -15,6 +15,7 @@
 #include "../company_func.h"
 #include "../station_base.h"
 #include "../widget_type.h"
+#include "../window_gui.h"
 #include "linkgraph_base.h"
 #include <map>
 #include <vector>
@@ -101,6 +102,8 @@ public:
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize);
 	virtual void DrawWidget(const Rect &r, int widget) const;
+	virtual void OnHover(Point pt, int widget);
+	virtual bool OnRightClick(Point pt, int widget);
 	virtual void OnClick(Point pt, int widget, int click_count);
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true);
 
@@ -109,6 +112,7 @@ private:
 
 	void UpdateOverlayCompanies();
 	void UpdateOverlayCargoes();
+	bool OnHoverCommon(Point pt, int widget, TooltipCloseCondition close_cond);
 };
 
 #endif /* LINKGRAPH_GUI_H */
