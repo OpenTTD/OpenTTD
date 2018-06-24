@@ -496,7 +496,7 @@ void LinkGraphLegendWindow::DrawWidget(const Rect &r, int widget) const
 		if (this->IsWidgetDisabled(widget)) return;
 		CargoSpec *cargo = CargoSpec::Get(widget - WID_LGL_CARGO_FIRST);
 		GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, cargo->legend_colour);
-		DrawString(r.left, r.right, (r.top + r.bottom + 1 - FONT_HEIGHT_SMALL) / 2, cargo->abbrev, TC_BLACK, SA_HOR_CENTER);
+		DrawString(r.left, r.right, (r.top + r.bottom + 1 - FONT_HEIGHT_SMALL) / 2, cargo->abbrev, GetContrastColour(cargo->legend_colour, 73), SA_HOR_CENTER);
 	}
 }
 

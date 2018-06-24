@@ -187,7 +187,7 @@ int GetCharacterHeight(FontSize size);
 
 extern DrawPixelInfo *_cur_dpi;
 
-TextColour GetContrastColour(uint8 background);
+TextColour GetContrastColour(uint8 background, uint8 threshold = 128);
 
 /**
  * All 16 colour gradients

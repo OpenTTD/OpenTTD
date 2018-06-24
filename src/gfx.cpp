@@ -1111,16 +1111,17 @@ void DoPaletteAnimations()
 /**
  * Determine a contrasty text colour for a coloured background.
  * @param background Background colour.
+ * @param threshold Background colour brightness threshold below which the background is considered dark and TC_WHITE is returned, range: 0 - 255, default 128.
  * @return TC_BLACK or TC_WHITE depending on what gives a better contrast.
  */
-TextColour GetContrastColour(uint8 background)
+TextColour GetContrastColour(uint8 background, uint8 threshold)
 {
 	Colour c = _cur_palette.palette[background];
 	/* Compute brightness according to http://www.w3.org/TR/AERT#color-contrast.
 	 * The following formula computes 1000 * brightness^2, with brightness being in range 0 to 255. */
 	uint sq1000_brightness = c.r * c.r * 299 + c.g * c.g * 587 + c.b * c.b * 114;
-	/* Compare with threshold brightness 128 (50%) */
-	return sq1000_brightness < 128 * 128 * 1000 ? TC_WHITE : TC_BLACK;
+	/* Compare with threshold brightness which defaults to 128 (50%) */
+	return sq1000_brightness < ((uint) threshold) * ((uint) threshold) * 1000 ? TC_WHITE : TC_BLACK;
 }
 
 /**
