@@ -539,7 +539,7 @@ struct MusicTrackSelectionWindow : public Window {
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK);
 
 				int y = r.top + WD_FRAMERECT_TOP;
-				for (MusicSystem::Playlist::const_iterator song = _music.music_set.begin(); song != _music.music_set.end(); ++song) {
+				for (MusicSystem::Playlist::const_iterator song = _music.active_playlist.begin(); song != _music.active_playlist.end(); ++song) {
 					SetDParam(0, song->tracknr);
 					SetDParam(1, 2);
 					SetDParamStr(2, song->songname);
