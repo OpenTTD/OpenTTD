@@ -126,7 +126,8 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 		IniGroup *names = ini->GetGroup("names");
 		IniGroup *catindex = ini->GetGroup("catindex");
 		IniGroup *timingtrim = ini->GetGroup("timingtrim");
-		for (uint i = 0, j = 1; i < lengthof(this->songinfo); i++) {
+		uint tracknr = 1;
+		for (uint i = 0; i < lengthof(this->songinfo); i++) {
 			const char *filename = this->files[i].filename;
 			if (names == NULL || StrEmpty(filename) || this->files[i].check_result == MD5File::CR_NO_FILE) {
 				this->songinfo[i].songname[0] = '\0';
@@ -175,7 +176,12 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 			}
 			this->num_available++;
 
-			this->songinfo[i].tracknr = j++;
+			/* Number the theme song (if any) track 0, rest are normal */
+			if (i == 0) {
+				this->songinfo[i].tracknr = 0;
+			} else {
+				this->songinfo[i].tracknr = tracknr++;
+			}
 
 			item = timingtrim->GetItem(trimmed_filename, false);
 			if (item != NULL && !StrEmpty(item->value)) {
