@@ -175,9 +175,8 @@ namespace {
  */
 static TimingMeasurement GetPerformanceTimer()
 {
-	using clock = std::chrono::high_resolution_clock;
-	auto usec = std::chrono::time_point_cast<std::chrono::microseconds>(clock::now());
-	return (TimingMeasurement)usec.time_since_epoch().count();
+	using namespace std::chrono;
+	return (TimingMeasurement)time_point_cast<microseconds>(high_resolution_clock::now()).time_since_epoch().count();
 }
 
 
@@ -299,10 +298,7 @@ struct FramerateWindow : Window {
 		const double threshold_good = MILLISECONDS_PER_TICK / 3;
 		const double threshold_bad = MILLISECONDS_PER_TICK;
 
-		uint tpl;
-		if (value < threshold_good) tpl = STR_FRAMERATE_MS_GOOD;
-		else if (value > threshold_bad) tpl = STR_FRAMERATE_MS_BAD;
-		else tpl = STR_FRAMERATE_MS_WARN;
+		uint tpl = (value < threshold_good) ? STR_FRAMERATE_MS_GOOD : (value > threshold_bad) ? STR_FRAMERATE_MS_BAD : STR_FRAMERATE_MS_WARN;
 
 		value = min(9999.99, value);
 		SetDParam(0, tpl);
@@ -316,10 +312,7 @@ struct FramerateWindow : Window {
 		const double threshold_good = _pf_data[elem].expected_rate * 0.95;
 		const double threshold_bad = _pf_data[elem].expected_rate * 2 / 3;
 
-		uint tpl;
-		if (value > threshold_good) tpl = STR_FRAMERATE_FPS_GOOD;
-		else if (value < threshold_bad) tpl = STR_FRAMERATE_FPS_BAD;
-		else tpl = STR_FRAMERATE_FPS_WARN;
+		uint tpl = (value > threshold_good) ? STR_FRAMERATE_FPS_GOOD : (value < threshold_bad) ? STR_FRAMERATE_FPS_BAD : STR_FRAMERATE_FPS_WARN;
 
 		value = min(9999.99, value);
 		SetDParam(0, tpl);
@@ -403,17 +396,15 @@ struct FramerateWindow : Window {
 		}
 	}
 
-	/** Type of a function that returns a milliseconds value given a performance element */
-	typedef double (ElementValueExtractor)(PerformanceElement elem);
-	/** Render a column of formatted time values in a control, given a function that returns the values */
-	void DrawElementTimesColumn(const Rect &r, StringID heading_str, ElementValueExtractor get_value_func) const
+	/** Render a column of formatted average durations */
+	void DrawElementTimesColumn(const Rect &r, StringID heading_str, int num_points) const
 	{
 		int y = r.top;
 		DrawString(r.left, r.right, y, heading_str, TC_FROMSTRING, SA_CENTER);
 		y += FONT_HEIGHT_NORMAL + VSPACING;
 
-		for (auto e = PFE_FIRST; e < PFE_MAX; e++) {
-			double value = get_value_func(e);
+		for (PerformanceElement e = PFE_FIRST; e < PFE_MAX; e++) {
+			double value = _pf_data[e].GetAverageDurationMilliseconds(num_points);
 			SetDParamGoodWarnBadDuration(value);
 			DrawString(r.left, r.right, y, STR_FRAMERATE_VALUE, TC_FROMSTRING, SA_RIGHT);
 			y += FONT_HEIGHT_NORMAL;
@@ -435,15 +426,11 @@ struct FramerateWindow : Window {
 			}
 			case WID_FRW_TIMES_CURRENT:
 				/* Render short-term average values */
-				DrawElementTimesColumn(r, STR_FRAMERATE_CURRENT, [](PerformanceElement elem) {
-					return _pf_data[elem].GetAverageDurationMilliseconds(8);
-				});
+				DrawElementTimesColumn(r, STR_FRAMERATE_CURRENT, 8);
 				break;
 			case WID_FRW_TIMES_AVERAGE:
 				/* Render averages of all recorded values */
-				DrawElementTimesColumn(r, STR_FRAMERATE_AVERAGE, [](PerformanceElement elem) {
-					return _pf_data[elem].GetAverageDurationMilliseconds(NUM_FRAMERATE_POINTS);
-				});
+				DrawElementTimesColumn(r, STR_FRAMERATE_AVERAGE, NUM_FRAMERATE_POINTS);
 				break;
 		}
 	}
@@ -538,18 +525,57 @@ struct FrametimeGraphWindow : Window {
 		}
 	}
 
+	void SelectHorizontalScale(TimingMeasurement range)
+	{
+		/* Determine horizontal scale based on period covered by 60 points
+		* (slightly less than 2 seconds at full game speed) */
+		struct ScaleDef { TimingMeasurement range; int scale; };
+		static const ScaleDef hscales[] = {
+			{ 120, 60 },
+			{  10, 20 },
+			{   5, 10 },
+			{   3,  4 },
+			{   1,  2 },
+		};
+		for (const ScaleDef *sc = hscales; sc < hscales + lengthof(hscales); sc++) {
+			if (range < sc->range) this->horizontal_scale = sc->scale;
+		}
+	}
+
+	void SelectVerticalScale(TimingMeasurement range)
+	{
+		/* Determine vertical scale based on peak value (within the horizontal scale + a bit) */
+		static const TimingMeasurement vscales[] = {
+			TIMESTAMP_PRECISION * 100,
+			TIMESTAMP_PRECISION * 10,
+			TIMESTAMP_PRECISION * 5,
+			TIMESTAMP_PRECISION,
+			TIMESTAMP_PRECISION / 2,
+			TIMESTAMP_PRECISION / 5,
+			TIMESTAMP_PRECISION / 10,
+			TIMESTAMP_PRECISION / 50,
+			TIMESTAMP_PRECISION / 200,
+		};
+		for (const TimingMeasurement *sc = vscales; sc < vscales + lengthof(vscales); sc++) {
+			if (range < *sc) this->vertical_scale = (int)*sc;
+		}
+	}
+
 	/** Recalculate the graph scaling factors based on current recorded data */
 	void UpdateScale()
 	{
-		auto &durations = _pf_data[this->element].durations;
-		auto &timestamps = _pf_data[this->element].timestamps;
-		auto num_valid = _pf_data[this->element].num_valid;
+		const TimingMeasurement *durations = _pf_data[this->element].durations;
+		const TimingMeasurement *timestamps = _pf_data[this->element].timestamps;
+		int num_valid = _pf_data[this->element].num_valid;
 		int point = _pf_data[this->element].prev_index;
 
 		TimingMeasurement lastts = timestamps[point];
 		TimingMeasurement time_sum = 0;
 		TimingMeasurement peak_value = 0;
 		int count = 0;
+
+		/* Sensible default for when too few measurements are available */
+		this->horizontal_scale = 4;
 
 		for (int i = 1; i < num_valid; i++) {
 			point--;
@@ -568,34 +594,14 @@ struct FrametimeGraphWindow : Window {
 			time_sum += lastts - timestamps[point];
 			lastts = timestamps[point];
 
-			/* Determine horizontal scale based on period covered by 60 points
-			 * (slightly less than 2 seconds at full game speed) */
-			if (count == 60) {
-				TimingMeasurement seconds = time_sum / TIMESTAMP_PRECISION;
-				if (seconds < 3) this->horizontal_scale = 4;
-				else if (seconds < 5) this->horizontal_scale = 10;
-				else if (seconds < 10) this->horizontal_scale = 20;
-				else this->horizontal_scale = 60;
-			}
+			/* Enough data to select a range and get decent data density */
+			if (count == 60) this->SelectHorizontalScale(time_sum / TIMESTAMP_PRECISION);
 
 			/* End when enough points have been collected and the horizontal scale has been exceeded */
 			if (count >= 60 && time_sum >= (this->horizontal_scale + 2) * TIMESTAMP_PRECISION / 2) break;
 		}
 
-		/* Determine vertical scale based on peak value (within the horizontal scale + a bit) */
-		static const TimingMeasurement vscales[] = {
-			TIMESTAMP_PRECISION * 100,
-			TIMESTAMP_PRECISION * 10,
-			TIMESTAMP_PRECISION * 5,
-			TIMESTAMP_PRECISION,
-			TIMESTAMP_PRECISION / 2,
-			TIMESTAMP_PRECISION / 5,
-			TIMESTAMP_PRECISION / 10,
-			TIMESTAMP_PRECISION / 50,
-		};
-		for (auto sc : vscales) {
-			if (peak_value < sc) this->vertical_scale = (int)sc;
-		}
+		this->SelectVerticalScale(peak_value);
 	}
 
 	virtual void OnTick()
@@ -622,8 +628,8 @@ struct FrametimeGraphWindow : Window {
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget == WID_FGW_GRAPH) {
-			const auto &durations = _pf_data[this->element].durations;
-			const auto &timestamps = _pf_data[this->element].timestamps;
+			const TimingMeasurement *durations  = _pf_data[this->element].durations;
+			const TimingMeasurement *timestamps = _pf_data[this->element].timestamps;
 			int point = _pf_data[this->element].prev_index;
 
 			const int x_zero = r.right - (int)this->graph_size.width;
@@ -669,7 +675,7 @@ struct FrametimeGraphWindow : Window {
 			}
 
 			/* Position of last rendered data point */
-			Point lastpoint{
+			Point lastpoint = {
 				x_max,
 				(int)Scinterlate<int64>(y_zero, y_max, 0, this->vertical_scale, durations[point])
 			};
@@ -700,7 +706,7 @@ struct FrametimeGraphWindow : Window {
 				if (time_sum > draw_horz_scale) break;
 
 				/* Draw line from previous point to new point */
-				Point newpoint{
+				Point newpoint = {
 					(int)Scinterlate<int64>(x_zero, x_max, 0, (int64)draw_horz_scale, (int64)draw_horz_scale - (int64)time_sum),
 					(int)Scinterlate<int64>(y_zero, y_max, 0, (int64)draw_vert_scale, (int64)value)
 				};
@@ -780,17 +786,17 @@ void ConPrintFramerate()
 
 	bool printed_anything = false;
 
-	for (auto e : rate_elements) {
-		auto &pf = _pf_data[e];
+	for (const PerformanceElement *e = rate_elements; e < rate_elements + lengthof(rate_elements); e++) {
+		auto &pf = _pf_data[*e];
 		if (pf.num_valid == 0) continue;
 		IConsolePrintF(TC_GREEN, "%s rate: %.2ffps  (expected: %.2ffps)",
-			MEASUREMENT_NAMES[e],
+			MEASUREMENT_NAMES[*e],
 			pf.GetRate(),
 			pf.expected_rate);
 		printed_anything = true;
 	}
 
-	for (auto e = PFE_FIRST; e < PFE_MAX; e++) {
+	for (PerformanceElement e = PFE_FIRST; e < PFE_MAX; e++) {
 		auto &pf = _pf_data[e];
 		if (pf.num_valid == 0) continue;
 		IConsolePrintF(TC_LIGHT_BLUE, "%s times: %.2fms  %.2fms  %.2fms",
