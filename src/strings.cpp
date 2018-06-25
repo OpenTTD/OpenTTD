@@ -1147,7 +1147,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_CARGO_LIST: { // {CARGO_LIST}
-				CargoTypes cmask = args->GetInt32(SCC_CARGO_LIST);
+				CargoTypes cmask = args->GetInt64(SCC_CARGO_LIST);
 				bool first = true;
 
 				const CargoSpec *cs;
