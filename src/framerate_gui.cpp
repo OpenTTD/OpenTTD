@@ -272,6 +272,42 @@ static const NWidgetPart _framerate_window_widgets[] = {
 
 struct FramerateWindow : Window {
 	bool small;
+	uint32 next_update;
+
+	struct CachedDecimal {
+		StringID strid;
+		uint32 value;
+
+		inline void SetRate(double value, double target)
+		{
+			const double threshold_good = target * 0.95;
+			const double threshold_bad = target * 2 / 3;
+			value = min(9999.99, value);
+			this->value = (uint32)(value * 100);
+			this->strid = (value > threshold_good) ? STR_FRAMERATE_FPS_GOOD : (value < threshold_bad) ? STR_FRAMERATE_FPS_BAD : STR_FRAMERATE_FPS_WARN;
+		}
+
+		inline void SetTime(double value, double target)
+		{
+			const double threshold_good = target / 3;
+			const double threshold_bad = target;
+			value = min(9999.99, value);
+			this->value = (uint32)(value * 100);
+			this->strid = (value < threshold_good) ? STR_FRAMERATE_MS_GOOD : (value > threshold_bad) ? STR_FRAMERATE_MS_BAD : STR_FRAMERATE_MS_WARN;
+		}
+
+		inline void InsertDParams(uint n) const
+		{
+			SetDParam(n, this->value);
+			SetDParam(n + 1, 2);
+		}
+	};
+
+	CachedDecimal rate_gameloop;            ///< cached game loop tick rate
+	CachedDecimal rate_drawing;             ///< cached drawing frame rate
+	CachedDecimal speed_gameloop;           ///< cached game loop speed factor
+	CachedDecimal times_shortterm[PFE_MAX]; ///< cached short term average times
+	CachedDecimal times_longterm[PFE_MAX];  ///< cached long term average times
 
 	static const int VSPACING = 3; ///< space between column heading and values
 
@@ -279,6 +315,7 @@ struct FramerateWindow : Window {
 	{
 		this->InitNested(number);
 		this->small = this->IsShaded();
+		this->UpdateData();
 	}
 
 	virtual void OnTick()
@@ -287,67 +324,52 @@ struct FramerateWindow : Window {
 		if (this->small != this->IsShaded()) {
 			this->small = this->IsShaded();
 			this->GetWidget<NWidgetLeaf>(WID_FRW_CAPTION)->SetDataTip(this->small ? STR_FRAMERATE_CAPTION_SMALL : STR_FRAMERATE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
+			this->next_update = 0;
 		}
 
-		this->SetDirty();
+		if (_realtime_tick >= this->next_update) {
+			this->UpdateData();
+			this->SetDirty();
+			this->next_update = _realtime_tick + 100;
+		}
 	}
 
-	/** Set DParam 0, 1, 2 for a duration value string insert */
-	static void SetDParamGoodWarnBadDuration(double value)
+	void UpdateData()
 	{
-		const double threshold_good = MILLISECONDS_PER_TICK / 3;
-		const double threshold_bad = MILLISECONDS_PER_TICK;
+		double gl_rate = _pf_data[PFE_GAMELOOP].GetRate();
+		this->rate_gameloop.SetRate(gl_rate, _pf_data[PFE_GAMELOOP].expected_rate);
+		this->speed_gameloop.SetRate(gl_rate / _pf_data[PFE_GAMELOOP].expected_rate, 1.0);
+		if (this->small) return; // in small mode, this is everything needed
 
-		uint tpl = (value < threshold_good) ? STR_FRAMERATE_MS_GOOD : (value > threshold_bad) ? STR_FRAMERATE_MS_BAD : STR_FRAMERATE_MS_WARN;
+		this->rate_drawing.SetRate(_pf_data[PFE_DRAWING].GetRate(), _pf_data[PFE_DRAWING].expected_rate);
 
-		value = min(9999.99, value);
-		SetDParam(0, tpl);
-		SetDParam(1, (uint64)(value * 100));
-		SetDParam(2, 2);
-	}
-
-	/** Set DParam 0, 1, 2 for a rate value string insert */
-	static void SetDParamGoodWarnBadRate(double value, PerformanceElement elem)
-	{
-		const double threshold_good = _pf_data[elem].expected_rate * 0.95;
-		const double threshold_bad = _pf_data[elem].expected_rate * 2 / 3;
-
-		uint tpl = (value > threshold_good) ? STR_FRAMERATE_FPS_GOOD : (value < threshold_bad) ? STR_FRAMERATE_FPS_BAD : STR_FRAMERATE_FPS_WARN;
-
-		value = min(9999.99, value);
-		SetDParam(0, tpl);
-		SetDParam(1, (uint64)(value * 100));
-		SetDParam(2, 2);
+		for (PerformanceElement e = PFE_FIRST; e < PFE_MAX; e++) {
+			this->times_shortterm[e].SetTime(_pf_data[e].GetAverageDurationMilliseconds(8), MILLISECONDS_PER_TICK);
+			this->times_longterm[e].SetTime(_pf_data[e].GetAverageDurationMilliseconds(NUM_FRAMERATE_POINTS), MILLISECONDS_PER_TICK);
+		}
 	}
 
 	virtual void SetStringParameters(int widget) const
 	{
-		double value;
-
 		switch (widget) {
 			case WID_FRW_CAPTION:
 				/* When the window is shaded, the caption shows game loop rate and speed factor */
 				if (!this->small) break;
-				value = _pf_data[PFE_GAMELOOP].GetRate();
-				SetDParamGoodWarnBadRate(value, PFE_GAMELOOP);
-				value /= _pf_data[PFE_GAMELOOP].expected_rate;
-				SetDParam(3, (uint64)(value * 100));
-				SetDParam(4, 2);
+				SetDParam(0, this->rate_gameloop.strid);
+				this->rate_gameloop.InsertDParams(1);
+				this->speed_gameloop.InsertDParams(3);
 				break;
 
 			case WID_FRW_RATE_GAMELOOP:
-				value = _pf_data[PFE_GAMELOOP].GetRate();
-				SetDParamGoodWarnBadRate(value, PFE_GAMELOOP);
+				SetDParam(0, this->rate_gameloop.strid);
+				this->rate_gameloop.InsertDParams(1);
 				break;
 			case WID_FRW_RATE_DRAWING:
-				value = _pf_data[PFE_DRAWING].GetRate();
-				SetDParamGoodWarnBadRate(value, PFE_DRAWING);
+				SetDParam(0, this->rate_drawing.strid);
+				this->rate_drawing.InsertDParams(1);
 				break;
 			case WID_FRW_RATE_FACTOR:
-				value = _pf_data[PFE_GAMELOOP].GetRate();
-				value /= _pf_data[PFE_GAMELOOP].expected_rate;
-				SetDParam(0, (uint64)(value * 100));
-				SetDParam(1, 2);
+				this->speed_gameloop.InsertDParams(0);
 				break;
 			case WID_FRW_INFO_DATA_POINTS:
 				SetDParam(0, NUM_FRAMERATE_POINTS);
@@ -359,11 +381,15 @@ struct FramerateWindow : Window {
 	{
 		switch (widget) {
 			case WID_FRW_RATE_GAMELOOP:
-				SetDParamGoodWarnBadRate(9999.99, PFE_GAMELOOP);
+				SetDParam(0, STR_FRAMERATE_FPS_GOOD);
+				SetDParam(1, 999999);
+				SetDParam(2, 2);
 				*size = GetStringBoundingBox(STR_FRAMERATE_RATE_GAMELOOP);
 				break;
 			case WID_FRW_RATE_DRAWING:
-				SetDParamGoodWarnBadRate(9999.99, PFE_DRAWING);
+				SetDParam(0, STR_FRAMERATE_FPS_GOOD);
+				SetDParam(1, 999999);
+				SetDParam(2, 2);
 				*size = GetStringBoundingBox(STR_FRAMERATE_RATE_BLITTER);
 				break;
 			case WID_FRW_RATE_FACTOR:
@@ -387,8 +413,9 @@ struct FramerateWindow : Window {
 			case WID_FRW_TIMES_AVERAGE: {
 				int linecount = PFE_MAX - PFE_FIRST;
 				*size = GetStringBoundingBox(STR_FRAMERATE_CURRENT + (widget - WID_FRW_TIMES_CURRENT));
-				SetDParamGoodWarnBadDuration(9999.99);
-				Dimension item_size = GetStringBoundingBox(STR_FRAMERATE_VALUE);
+				SetDParam(0, 999999);
+				SetDParam(1, 2);
+				Dimension item_size = GetStringBoundingBox(STR_FRAMERATE_MS_GOOD);
 				size->width = max(size->width, item_size.width);
 				size->height += FONT_HEIGHT_NORMAL * linecount + VSPACING;
 				break;
@@ -397,16 +424,15 @@ struct FramerateWindow : Window {
 	}
 
 	/** Render a column of formatted average durations */
-	void DrawElementTimesColumn(const Rect &r, StringID heading_str, int num_points) const
+	void DrawElementTimesColumn(const Rect &r, StringID heading_str, const CachedDecimal *values) const
 	{
 		int y = r.top;
 		DrawString(r.left, r.right, y, heading_str, TC_FROMSTRING, SA_CENTER);
 		y += FONT_HEIGHT_NORMAL + VSPACING;
 
 		for (PerformanceElement e = PFE_FIRST; e < PFE_MAX; e++) {
-			double value = _pf_data[e].GetAverageDurationMilliseconds(num_points);
-			SetDParamGoodWarnBadDuration(value);
-			DrawString(r.left, r.right, y, STR_FRAMERATE_VALUE, TC_FROMSTRING, SA_RIGHT);
+			values[e].InsertDParams(0);
+			DrawString(r.left, r.right, y, values[e].strid, TC_FROMSTRING, SA_RIGHT);
 			y += FONT_HEIGHT_NORMAL;
 		}
 	}
@@ -426,11 +452,11 @@ struct FramerateWindow : Window {
 			}
 			case WID_FRW_TIMES_CURRENT:
 				/* Render short-term average values */
-				DrawElementTimesColumn(r, STR_FRAMERATE_CURRENT, 8);
+				DrawElementTimesColumn(r, STR_FRAMERATE_CURRENT, this->times_shortterm);
 				break;
 			case WID_FRW_TIMES_AVERAGE:
 				/* Render averages of all recorded values */
-				DrawElementTimesColumn(r, STR_FRAMERATE_AVERAGE, NUM_FRAMERATE_POINTS);
+				DrawElementTimesColumn(r, STR_FRAMERATE_AVERAGE, this->times_longterm);
 				break;
 		}
 	}
@@ -683,7 +709,7 @@ struct FrametimeGraphWindow : Window {
 			TimingMeasurement lastts = timestamps[point];
 
 			TimingMeasurement peak_value = 0;
-			Point peak_point{ 0, 0 };
+			Point peak_point = { 0, 0 };
 			TimingMeasurement value_sum = 0;
 			TimingMeasurement time_sum = 0;
 			int points_drawn = 0;

@@ -2709,7 +2709,6 @@ STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}How fast
 STR_FRAMERATE_CURRENT                                           :{WHITE}Current
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Average
 STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Data based on {COMMA} measurements
-STR_FRAMERATE_VALUE                                             :{STRING2}
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
