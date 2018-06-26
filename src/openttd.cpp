@@ -1339,11 +1339,11 @@ void StateGameLoop()
 	/* don't execute the state loop during pause */
 	if (_pause_mode != PM_UNPAUSED) {
 		PerformanceMeasurer::Paused(PFE_GAMELOOP);
-		PerformanceMeasurer::Paused(PFE_ACC_GL_ECONOMY);
-		PerformanceMeasurer::Paused(PFE_ACC_GL_TRAINS);
-		PerformanceMeasurer::Paused(PFE_ACC_GL_ROADVEHS);
-		PerformanceMeasurer::Paused(PFE_ACC_GL_SHIPS);
-		PerformanceMeasurer::Paused(PFE_ACC_GL_AIRCRAFT);
+		PerformanceMeasurer::Paused(PFE_GL_ECONOMY);
+		PerformanceMeasurer::Paused(PFE_GL_TRAINS);
+		PerformanceMeasurer::Paused(PFE_GL_ROADVEHS);
+		PerformanceMeasurer::Paused(PFE_GL_SHIPS);
+		PerformanceMeasurer::Paused(PFE_GL_AIRCRAFT);
 		PerformanceMeasurer::Paused(PFE_GL_LANDSCAPE);
 
 		UpdateLandscapingLimits();

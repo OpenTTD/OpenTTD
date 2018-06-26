@@ -947,14 +947,14 @@ void CallVehicleTicks()
 	RunVehicleDayProc();
 
 	{
-		PerformanceMeasurer framerate(PFE_ACC_GL_ECONOMY);
+		PerformanceMeasurer framerate(PFE_GL_ECONOMY);
 		Station *st;
 		FOR_ALL_STATIONS(st) LoadUnloadStation(st);
 	}
-	PerformanceAccumulator::Reset(PFE_ACC_GL_TRAINS);
-	PerformanceAccumulator::Reset(PFE_ACC_GL_ROADVEHS);
-	PerformanceAccumulator::Reset(PFE_ACC_GL_SHIPS);
-	PerformanceAccumulator::Reset(PFE_ACC_GL_AIRCRAFT);
+	PerformanceAccumulator::Reset(PFE_GL_TRAINS);
+	PerformanceAccumulator::Reset(PFE_GL_ROADVEHS);
+	PerformanceAccumulator::Reset(PFE_GL_SHIPS);
+	PerformanceAccumulator::Reset(PFE_GL_AIRCRAFT);
 
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {

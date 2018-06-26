@@ -3079,7 +3079,7 @@ void InputLoop()
 void UpdateWindows()
 {
 	PerformanceMeasurer framerate(PFE_DRAWING);
-	PerformanceAccumulator::Reset(PFE_ACC_DRAWWORLD);
+	PerformanceAccumulator::Reset(PFE_DRAWWORLD);
 
 	Window *w;
 

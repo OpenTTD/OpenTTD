@@ -1588,7 +1588,7 @@ Money RoadVehicle::GetRunningCost() const
 
 bool RoadVehicle::Tick()
 {
-	PerformanceAccumulator framerate(PFE_ACC_GL_ROADVEHS);
+	PerformanceAccumulator framerate(PFE_GL_ROADVEHS);
 
 	this->tick_counter++;
 

@@ -639,7 +639,7 @@ reverse_direction:
 
 bool Ship::Tick()
 {
-	PerformanceAccumulator framerate(PFE_ACC_GL_SHIPS);
+	PerformanceAccumulator framerate(PFE_GL_SHIPS);
 
 	if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
 

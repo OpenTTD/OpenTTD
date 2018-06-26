@@ -3903,7 +3903,7 @@ Money Train::GetRunningCost() const
  */
 bool Train::Tick()
 {
-	PerformanceAccumulator framerate(PFE_ACC_GL_TRAINS);
+	PerformanceAccumulator framerate(PFE_GL_TRAINS);
 
 	this->tick_counter++;
 

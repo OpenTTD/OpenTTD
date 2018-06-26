@@ -2039,7 +2039,7 @@ bool Aircraft::Tick()
 {
 	if (!this->IsNormalAircraft()) return true;
 
-	PerformanceAccumulator framerate(PFE_ACC_GL_AIRCRAFT);
+	PerformanceAccumulator framerate(PFE_GL_AIRCRAFT);
 
 	this->tick_counter++;
 
