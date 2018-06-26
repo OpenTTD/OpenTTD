@@ -14,6 +14,7 @@
     - 4.4) [Files in tar (archives)](#44-files-in-tar-archives)
 - 5.0) [OpenTTD features](#50-openttd-features)
     - 5.1) [Logging of potentially dangerous actions](#51-logging-of-potentially-dangerous-actions)
+    - 5.2) [Frame rate and performance metrics](#52-frame-rate-and-performance-metrics)
 - 6.0) [Configuration file](#60-configuration-file)
 - 7.0) [Compiling](#70-compiling)
     - 7.1) [Required/optional libraries](#71-requiredoptional-libraries)
@@ -439,14 +440,30 @@ The Help menu in-game has a function to open the Frame rate window. This
 window shows various real-time performance statistics, measuring what parts
 of the game require the most processing power currently.
 
-Clicking a line in the lower part of the window (showing 'ms' measurements)
-opens a graph window, giving detailed readings on each tick simulated by the
-game.
-
 A summary of the statistics can also be retrieved from the console with the
 `fps` command. This is especially useful on dedicated servers, where the
 administrator might want to determine what's limiting performance in a slow
 game.
+
+The frame rate is given as two figures, the simulation rate and the graphics
+frame rate. Usually these are identical, as the screen is rendered exactly
+once per simulated tick, but in the future there might be support for graphics
+and simulation running at different rates. When the game is paused, the
+simulation rate drops to zero.
+
+In addition to the simulation rate, a game speed factor is also calculated.
+This is based on the target simulation speed, which is 30 milliseconds per
+game tick. At that speed, the expected frame rate is 33.33 frames/second, and
+the game speed factor is how close to that target the actual rate is. When
+the game is in fast forward mode, the game speed factor shows how much
+speed up is achieved.
+
+The lower part of the window shows timing statistics for individual parts of
+the game. The times shown are short-term and long-term averages of how long
+it takes to process one tick of game time, all figures are in milliseconds.
+
+Clicking a line in the lower part of the window opens a graph window, giving
+detailed readings on each tick simulated by the game.
 
 The following is an explanation of the different statistics:
 
@@ -477,19 +494,6 @@ The following is an explanation of the different statistics:
 - *Sound mixing* - Speed of mixing active audio samples together. Usually
   this should be very fast (in the range of 0-3 ms), if it is slow, consider
   switching to the NoSound set.
-
-The frame rate is given as two figures, the simulation rate and the graphics
-frame rate. Usually these are identical, as the screen is rendered exactly
-once per simulated tick, but in the future there might be support for graphics
-and simulation running at different rates. When the game is paused, the
-simulation rate drops to zero.
-
-In addition to the simulation rate, a game speed factor is also calculated.
-This is based on the idea simulation speed, which is 30 milliseconds per game
-tick. At that speed, the expected frame rate is 33.33 frames/second, and the
-game speed factor is how close to that ideal the actual rate is. When the game
-is in fast forward mode, the game speed factor shows how much speed up is
-achieved.
 
 If the frame rate window is shaded, the title bar will instead show just the
 current simulation rate and the game speed factor.
