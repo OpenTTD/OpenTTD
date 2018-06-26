@@ -33,8 +33,8 @@
 #include "safeguards.h"
 
 /* Bitmasks of company and cargo indices that shouldn't be drawn. */
-static uint _legend_excluded_companies;
-static uint _legend_excluded_cargo;
+static CompanyMask _legend_excluded_companies;
+static CargoTypes _legend_excluded_cargo;
 
 /* Apparently these don't play well with enums. */
 static const OverflowSafeInt64 INVALID_DATAPOINT(INT64_MAX); // Value used for a datapoint that shouldn't be drawn.
@@ -166,14 +166,14 @@ struct ValuesInterval {
 
 struct BaseGraphWindow : Window {
 protected:
-	static const int GRAPH_MAX_DATASETS     =  32;
+	static const int GRAPH_MAX_DATASETS     =  64;
 	static const int GRAPH_AXIS_LINE_COLOUR = PC_BLACK;
 	static const int GRAPH_NUM_MONTHS       =  24; ///< Number of months displayed in the graph.
 
 	static const int MIN_GRAPH_NUM_LINES_Y  =   9; ///< Minimal number of horizontal lines to draw.
 	static const int MIN_GRID_PIXEL_SIZE    =  20; ///< Minimum distance between graph lines.
 
-	uint excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
+	uint64 excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
 	byte num_dataset;
 	byte num_on_x_axis;
 	byte num_vert_lines;
@@ -561,7 +561,7 @@ public:
 	 */
 	void UpdateStatistics(bool initialize)
 	{
-		uint excluded_companies = _legend_excluded_companies;
+		CompanyMask excluded_companies = _legend_excluded_companies;
 
 		/* Exclude the companies which aren't valid */
 		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {

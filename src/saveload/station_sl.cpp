@@ -329,6 +329,7 @@ static void Load_STNS()
 	_cargo_days = 0;
 	_cargo_feeder_share = 0;
 
+	uint num_cargo = IsSavegameVersionBefore(55) ? 12 : IsSavegameVersionBefore(199) ? 32 : NUM_CARGO;
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		Station *st = new (index) Station();
@@ -337,7 +338,6 @@ static void Load_STNS()
 
 		_waiting_acceptance = 0;
 
-		uint num_cargo = IsSavegameVersionBefore(55) ? 12 : NUM_CARGO;
 		for (CargoID i = 0; i < num_cargo; i++) {
 			GoodsEntry *ge = &st->goods[i];
 			SlObject(ge, GetGoodsDesc());
@@ -377,10 +377,11 @@ static void Ptrs_STNS()
 	/* Don't run when savegame version is higher than or equal to 123. */
 	if (!IsSavegameVersionBefore(123)) return;
 
+	uint num_cargo = IsSavegameVersionBefore(199) ? 32 : NUM_CARGO;
 	Station *st;
 	FOR_ALL_STATIONS(st) {
 		if (!IsSavegameVersionBefore(68)) {
-			for (CargoID i = 0; i < NUM_CARGO; i++) {
+			for (CargoID i = 0; i < num_cargo; i++) {
 				GoodsEntry *ge = &st->goods[i];
 				SwapPackets(ge);
 				SlObject(ge, GetGoodsDesc());
@@ -440,7 +441,8 @@ static const SaveLoad _station_desc[] = {
 	      SLE_VAR(Station, last_vehicle_type,          SLE_UINT8),
 	      SLE_VAR(Station, had_vehicle_of_type,        SLE_UINT8),
 	      SLE_LST(Station, loading_vehicles,           REF_VEHICLE),
-	  SLE_CONDVAR(Station, always_accepted,            SLE_UINT32, 127, SL_MAX_VERSION),
+	  SLE_CONDVAR(Station, always_accepted,            SLE_FILE_U32 | SLE_VAR_U64, 127, 198),
+	  SLE_CONDVAR(Station, always_accepted,            SLE_UINT64,                 199, SL_MAX_VERSION),
 
 	      SLE_END()
 };
@@ -520,6 +522,7 @@ static void Load_STNN()
 {
 	_num_flows = 0;
 
+	uint num_cargo = IsSavegameVersionBefore(199) ? 32 : NUM_CARGO;
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		bool waypoint = (SlReadByte() & FACIL_WAYPOINT) != 0;
@@ -538,7 +541,7 @@ static void Load_STNN()
 				memcpy(st->airport.psa->storage, _old_st_persistent_storage.storage, sizeof(st->airport.psa->storage));
 			}
 
-			for (CargoID i = 0; i < NUM_CARGO; i++) {
+			for (CargoID i = 0; i < num_cargo; i++) {
 				SlObject(&st->goods[i], GetGoodsDesc());
 				FlowSaveLoad flow;
 				FlowStat *fs = NULL;
@@ -580,9 +583,10 @@ static void Ptrs_STNN()
 	/* Don't run when savegame version lower than 123. */
 	if (IsSavegameVersionBefore(123)) return;
 
+	uint num_cargo = IsSavegameVersionBefore(199) ? 32 : NUM_CARGO;
 	Station *st;
 	FOR_ALL_STATIONS(st) {
-		for (CargoID i = 0; i < NUM_CARGO; i++) {
+		for (CargoID i = 0; i < num_cargo; i++) {
 			GoodsEntry *ge = &st->goods[i];
 			if (IsSavegameVersionBefore(183)) {
 				SwapPackets(ge);

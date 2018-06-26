@@ -266,8 +266,9 @@
  *  196   27778   1.7.x
  *  197   27978   1.8.x
  *  198
+ *  199
  */
-extern const uint16 SAVEGAME_VERSION = 198; ///< Current savegame version of OpenTTD.
+extern const uint16 SAVEGAME_VERSION = 199; ///< Current savegame version of OpenTTD.
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 FileToSaveLoad _file_to_saveload; ///< File to save or load in the openttd loop.
