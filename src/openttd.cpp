@@ -1344,6 +1344,7 @@ void StateGameLoop()
 		PerformanceMeasurer::Paused(PFE_ACC_GL_ROADVEHS);
 		PerformanceMeasurer::Paused(PFE_ACC_GL_SHIPS);
 		PerformanceMeasurer::Paused(PFE_ACC_GL_AIRCRAFT);
+		PerformanceMeasurer::Paused(PFE_GL_LANDSCAPE);
 
 		UpdateLandscapingLimits();
 #ifndef DEBUG_DUMP_COMMANDS

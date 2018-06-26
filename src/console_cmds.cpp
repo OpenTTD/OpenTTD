@@ -1894,16 +1894,35 @@ static void IConsoleDebugLibRegister()
 	IConsoleAliasRegister("dbg_echo2",      "echo %!");
 }
 #endif
+
 DEF_CONSOLE_CMD(ConFramerate)
 {
 	extern void ConPrintFramerate(); // framerate_gui.cpp
 
 	if (argc == 0) {
-		IConsoleHelp("Show framerate and game speed information");
+		IConsoleHelp("Show frame rate and game speed information");
 		return true;
 	}
 
 	ConPrintFramerate();
+	return true;
+}
+
+DEF_CONSOLE_CMD(ConFramerateWindow)
+{
+	extern void ShowFramerateWindow();
+
+	if (argc == 0) {
+		IConsoleHelp("Open the frame rate window");
+		return true;
+	}
+
+	if (_network_dedicated) {
+		IConsoleError("Can not open frame rate window on a dedicated server");
+		return false;
+	}
+
+	ShowFramerateWindow();
 	return true;
 }
 
@@ -2037,7 +2056,8 @@ void IConsoleStdLibRegister()
 #ifdef _DEBUG
 	IConsoleDebugLibRegister();
 #endif
-	IConsoleCmdRegister("fps", ConFramerate);
+	IConsoleCmdRegister("fps",     ConFramerate);
+	IConsoleCmdRegister("fps_wnd", ConFramerateWindow);
 
 	/* NewGRF development stuff */
 	IConsoleCmdRegister("reload_newgrfs",  ConNewGRFReload, ConHookNewGRFDeveloperTool);
