@@ -506,9 +506,9 @@ static const NWidgetPart _frametime_graph_window_widgets[] = {
 };
 
 struct FrametimeGraphWindow : Window {
-	int vertical_scale;     ///< number of TIMESTAMP_PRECISION units vertically
-	int horizontal_scale;   ///< number of half-second units horizontally
-	int scale_update_timer; ///< ticks left before next scale update
+	int vertical_scale;       ///< number of TIMESTAMP_PRECISION units vertically
+	int horizontal_scale;     ///< number of half-second units horizontally
+	uint32 next_scale_update; ///< realtime tick for next scale update
 
 	PerformanceElement element; ///< what element this window renders graph for
 	Dimension graph_size;       ///< size of the main graph area (excluding axis labels)
@@ -518,7 +518,7 @@ struct FrametimeGraphWindow : Window {
 		this->element = (PerformanceElement)number;
 		this->horizontal_scale = 4;
 		this->vertical_scale = TIMESTAMP_PRECISION / 10;
-		this->scale_update_timer = 0;
+		this->next_scale_update = 0;
 
 		this->InitNested(number);
 	}
@@ -634,10 +634,8 @@ struct FrametimeGraphWindow : Window {
 	{
 		this->SetDirty();
 
-		if (this->scale_update_timer > 0) {
-			this->scale_update_timer--;
-		} else {
-			this->scale_update_timer = 10;
+		if (this->next_scale_update < _realtime_tick) {
+			this->next_scale_update = _realtime_tick + 500;
 			this->UpdateScale();
 		}
 	}
