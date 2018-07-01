@@ -64,13 +64,13 @@ const byte _openttd_revision_modified = !!MODIFIED!!;
  * 24-27 minor version
  * 20-23 build
  *    19 1 if it is a release, 0 if it is not.
- *  0-18 used to be the SVN revision, currently unused
+ *  0-18 used to be the SVN revision, now just last revision before switch to git
  *
  * The 19th bit is there so the development/betas/alpha, etc. leading to a
  * final release will always have a lower version number than the released
  * version, thus making comparisons on specific revisions easy.
  */
-const uint32 _openttd_newgrf_version = 1 << 28 | 9 << 24 | 0 << 20 | 0 << 19;
+const uint32 _openttd_newgrf_version = 1 << 28 | 9 << 24 | 0 << 20 | 0 << 19 | 28004;
 
 #ifdef __MORPHOS__
 /**
