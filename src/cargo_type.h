@@ -72,7 +72,7 @@ enum CargoType {
 
 typedef uint64 CargoTypes;
 
-static const CargoTypes ALL_CARGOTYPES = (CargoTypes)UINT32_MAX;
+static const CargoTypes ALL_CARGOTYPES = (CargoTypes)UINT64_MAX;
 
 /** Class for storing amounts of cargo */
 struct CargoArray {
