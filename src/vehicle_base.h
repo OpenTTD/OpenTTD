@@ -717,7 +717,7 @@ public:
 
 		this->current_order = src->current_order;
 		this->dest_tile  = src->dest_tile;
-		
+
 		this->last_station_visited = src->last_station_visited;
 
 		this->profit_this_year = src->profit_this_year;
