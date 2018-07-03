@@ -444,6 +444,9 @@ int Train::GetDisplayImageWidth(Point *offset) const
 
 	if (offset != NULL) {
 		offset->x = ScaleGUITrad(reference_width) / 2;
+		if (HasBit(this->flags, VRF_REVERSE_DIRECTION)) {
+			offset->x -= (VEHICLE_LENGTH - this->gcache.cached_veh_length) * reference_width / VEHICLE_LENGTH;
+		}
 		offset->y = ScaleGUITrad(vehicle_pitch);
 	}
 	return ScaleGUITrad(this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH);
@@ -1423,6 +1426,8 @@ CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, uint16 data, uint3
 
 void Train::UpdateDeltaXY()
 {
+	Direction direction = HasBit(this->flags, VRF_REVERSE_DIRECTION) ? ReverseDir(this->direction) : this->direction;
+
 	/* Set common defaults. */
 	this->x_offs    = -1;
 	this->y_offs    = -1;
@@ -1432,7 +1437,7 @@ void Train::UpdateDeltaXY()
 	this->x_bb_offs =  0;
 	this->y_bb_offs =  0;
 
-	if (!IsDiagonalDirection(this->direction)) {
+	if (!IsDiagonalDirection(direction)) {
 		static const int _sign_table[] =
 		{
 			/* x, y */
@@ -1445,12 +1450,12 @@ void Train::UpdateDeltaXY()
 		int half_shorten = (VEHICLE_LENGTH - this->gcache.cached_veh_length) / 2;
 
 		/* For all straight directions, move the bound box to the centre of the vehicle, but keep the size. */
-		this->x_offs -= half_shorten * _sign_table[this->direction];
-		this->y_offs -= half_shorten * _sign_table[this->direction + 1];
+		this->x_offs -= half_shorten * _sign_table[direction];
+		this->y_offs -= half_shorten * _sign_table[direction + 1];
 		this->x_extent += this->x_bb_offs = half_shorten * _sign_table[direction];
 		this->y_extent += this->y_bb_offs = half_shorten * _sign_table[direction + 1];
 	} else {
-		switch (this->direction) {
+		switch (direction) {
 				/* Shorten southern corner of the bounding box according the vehicle length
 				 * and center the bounding box on the vehicle. */
 			case DIR_NE:
@@ -1904,7 +1909,6 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 		if (v->IsMultiheaded() || HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) {
 			return_cmd_error(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS);
 		}
-		if (!HasBit(EngInfo(v->engine_type)->misc_flags, EF_RAIL_FLIPS)) return CMD_ERROR;
 
 		Train *front = v->First();
 		/* make sure the vehicle is stopped in the depot */
