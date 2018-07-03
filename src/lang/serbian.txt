@@ -862,7 +862,9 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTB
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Indeks numera
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Obriši
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Promeni set
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Obriši tekući program (samo korisnički-definisani programi)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Promenite izbor muzike na drugi instalirani skup
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik na numeru je dodaje u tekući program (samo za korisnički-definisane programe)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Pritisnite na muzičku numeru kako biste je uklonili sa trenutnog rasporeda (samo za Custom1 ili Custom2)
 
@@ -1529,6 +1531,10 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Boja terena na 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Zelena
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tamno zelena
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Ljubičasta
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Ponašanje prilikom skrolovanje mape
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Pomerite pogled sa desnim tasterom miša, položaj miša zaključan
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Pomerite mapu sa desnim tasterom miša, zaključajte položaj miša
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Pomerite mapu pomoću desne tipke miša
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Ravnomeran prelaz prozora: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Odredi kako se glavni prikaz pomiče na određeno mesto kada se klikne na malu kartu ili kada se daje naredba za pomicanje na određeni objekat na karti. Ako je omogućeno, prikaz se pomiče glatko, ako je onemogućeno, prikaz izravno skače na ciljano mesto
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Prikazivati mere dok se koriste alati za gradnju: {STRING}
@@ -1560,6 +1566,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Nikakvo
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Zatvara prozor tako što klikne desnim klikom unutar nje. Onemogućava dodir sa desnim tasterom miša!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Autočuvanje: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Izbor vremenskog intervala između dve automatski sačuvane pozicije
@@ -2470,6 +2477,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda 
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Sve
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Nema
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Odaberite preduzeća koja želite da se prikažu
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}neiskorišćen
@@ -3161,6 +3169,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Unos naz
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Naselja
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Prazno -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (City){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Imena naselja - klikom na ime se centrira glavni pogled na to naselje. Ctrl+Klik otvara novi pogled na lokaciju naselja
 STR_TOWN_POPULATION                                             :{BLACK}Svetska populacija: {COMMA}
 
@@ -3168,6 +3177,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Svetska 
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Grad)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Populacija: {ORANGE}{COMMA}{BLACK}  Zgrada: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} u poslednjem mesecu: {ORANGE}{COMMA}{BLACK} max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Tovar potreban za razvoj naselja:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} potrebno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} potrebno zimi
@@ -3478,6 +3488,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Potražu
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Potražuje: {YELLOW}{STRING.aku}{STRING}, {STRING.aku}{STRING}, {STRING.aku}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK} Zahteva:
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Proizvodi: {YELLOW}{STRING}{STRING}
@@ -3546,6 +3557,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ukloni sva vozi
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Preimenuj grupu
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Dobit ove godine:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Dobit prošle godine:
+STR_GROUP_OCCUPANCY                                             :Trenutna upotreba:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nova Železnička Vozila
@@ -3578,6 +3593,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Sve vrste teret
 STR_PURCHASE_INFO_ALL_BUT                                       :Sve sem {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Najveća vučna snaga: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Domet: {GOLD}{COMMA} pločica
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK} Tip aviona: {GOLD} {STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Spisak probranih šinskih vozila - kliknite na vozilo za više podataka
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Spisak probranih drumskih vozila - kliknite na vozilo za više podataka
@@ -3718,6 +3734,9 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.aku                        :magnetnog žel.
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Težina: {WEIGHT_SHORT}{}Brzina: {VELOCITY}  Snaga: {POWER}{}Cena Održavanja: {CURRENCY_LONG}/god.{}Nosivost: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Težina: {WEIGHT_SHORT}{}Brzina: {VELOCITY}  Snaga: {POWER}  Najveća vučna snaga: {6:FORCE}{}Cena Održavanja: {4:CURRENCY_LONG}/god{}Nosivost: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cena: {CURRENCY_LONG} Najveća Brzina: {VELOCITY}{}Nosivost: {CARGO_LONG}{}Cena Održavanja: {CURRENCY_LONG}/god.
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :BLACK} Cena: {CURRENCY_LONG} Maks. Brzina: {VELOCITY}{} Tip aviona: {STRING}{} Kapacitet: {CARGO_LONG}, {CARGO_LONG}{}Pokretna cena: {CURRENCY_LONG}/godine.
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK} Cena: {CURRENCY_LONG} Maks. Brzina: {VELOCITY}{} Tip aviona: {STRING} Domet: {COMMA} pločice{}Kapacitet: {CARGO_LONG}, {CARGO_LONG}{} Pokretni trošak: {CURRENCY_LONG} /god.
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :BLACK}Cena: {CURRENCY_LONG} Maks. Brzina: {VELOCITY}{}Tip aviona: {STRING} Opseg: {COMMA} pločice{}Kapacitet: {CARGO_LONG}{}Pokretni trošak: {CURRENCY_LONG}/god.
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zameni {STRING} - {STRING}
@@ -3849,6 +3868,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} godin{P
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} godin{P a e a} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Najveća brzina: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :BLACK} Maks. brzina: {LTBLUE} {VELOCITY} {BLACK} Tip aviona: {LTBLUE} {STRING} {BLACK} Opseg: {LTBLUE} {COMMA} pločice
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY} {BLACK} Najveća vučna snaga: {LTBLUE}{FORCE}
 
@@ -4415,6 +4435,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ova 
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... ulica je okrenuta u drugom pravcu
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... stajalište ne može biti na krivini
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... stajalište ne može biti na raskrsnici
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}...  put je jednosmeran ili blokiran.
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Deo stanice se ne može ukloniti...
@@ -4666,6 +4687,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originalni skup
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originalni skup zvukova Transport Tycoon Deluxe Windows izdanja.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Prazan skup zvukova.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originalni skup muzičkih numera Transport Tycoon Deluxe Windows izdanja.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Originalna muzika za TTD za DOS izdanje.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Originalna muzika TTD (Original / World Editor) DOS izdanja.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Prazan skup muzičkih numera.
 
 ##id 0x2000

@@ -2456,6 +2456,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Схем
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Все
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Нет
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Выберите компании для отображения
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}неиспольз.

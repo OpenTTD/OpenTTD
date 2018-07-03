@@ -650,6 +650,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Ingen musik tilgængelig
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Nummer
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Titel
@@ -675,6 +676,7 @@ STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLA
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Ryd
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Ryd det valgte program (Gælder kun Custom1/Custom2)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Ændre musik listen til et anden installeret sæt
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik på et musiknummer for at tilføje det til programlisten (kun for Custom1/Custom2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik på et musiknummer for at fjerne det fra programlisten (kun for Custom1/Custom2)
 
@@ -1334,6 +1336,10 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Land farve brug
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grøn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mørkegrøn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Bevæg syns vinduet med højre mussetast, musse position låst
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Bevæg kortet med højre mussetast, musse position låst
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Bevæg kortet med højre musseknap
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Bevæg kortet med venstre musseknap
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Jævn scrolling af udsnit: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontroller hvordan de vigtigste visning ruller til en bestemt position, når du klikker på det lille kort eller når de udsteder en kommando til at rulle til en bestemt genstand på kortet. Hvis aktiveret, ruller udsigtspunktet jævnt, hvis deaktiveret springer den direkte til det valgte punkt
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Vis måleværktøjstip ved brug af div. bygge-værktøjer: {STRING}
@@ -4223,6 +4229,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... denn
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vejen peger i den forkerte retning
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... drive-through stops kan ikke have hjørner
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... drive-through stops kan ikke have kryds
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}vejen er ensrettet eller blokeret
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan ikke fjerne en del af en station...

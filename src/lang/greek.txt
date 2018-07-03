@@ -778,6 +778,7 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Εναλ
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Εμφάνιση παραθύρου επιλογής μουσικού κομματιού
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Πρόγραμμα μουσικής - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} «{STRING}»
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Λίστα σιδηροτροχιών
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Πρόγραμμα - '{STRING}'
@@ -987,9 +988,9 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Εμφάνιση {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Αντιγραφή στην εμφάνιση
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Αντιγραφή στο παράθυρο εμφάνισης
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Αντιγραφή της τοποθεσίας της κύριας προβολής σε αυτό το παράθυρο εμφάνισης
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Επικόλληση από εμφάνιση
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Επικόλληση από παράθυρο εμφάνισης
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Επικόλληση της τοποθεσίας αυτού του παραθύρου εμφάνισης στην κύρια προβολή
 
 # Game options window
@@ -1444,6 +1445,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Χρώμα εδ
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Πράσινο
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Σκούρο πράσινο
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Βιολετί
+STR_CONFIG_SETTING_SCROLLMODE                                   :Συμπεριφορά κύλισης του παραθύρου εμφάνισης: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Συμπεριφορά κατά την κύλιση του χάρτη
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Μετακίνηση μικρού χάρτη με ΔΠΠ, θέση ποντικιού κλειδωμένη
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Μετακίνηση χάρτη με ΔΠΠ, θέση ποντικιού κλειδωμένη
@@ -2393,6 +2395,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Υπόμ
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Όλες
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Καμία
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Επιλογή εταιριών για να εμφανιστούν
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}μη χρησιμοποιημένο
@@ -3085,6 +3088,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Δώστ
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Πόλεις
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Τίποτα -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Πόλη){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Ονόματα πόλεων - πατήστε στο όνομα για να κεντράρετε την εικόνα στην πόλη. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία της πόλης
 STR_TOWN_POPULATION                                             :{BLACK}Παγκόσμιος πληθυσμός: {COMMA}
 

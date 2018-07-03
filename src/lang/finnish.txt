@@ -475,7 +475,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Kuvakaappaus
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Täysin lähennetty kuvakaappaus
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Kuvakaappaus oletuslähennystasolla
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Koko kartan kuvakaappaus
-STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tietoja 'OpenTTD':stä
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tietoja OpenTTD:stä
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-kohdistaja
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Reunat päälle/pois
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Likaisten ruutujen värjäys päälle/pois
@@ -777,12 +777,12 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Viesti
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}Ensimmäinen juna saapuu asemalle {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}Ensimmäinen linja-auto saapuu asemalle {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}Ensimmäinen kuorma-auto saapuu asemalle {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}Ensimmäinen raitiovaunu saapuu asemalle {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}Ensimmäinen rahtiraitiovaunu saapuu asemalle {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}Ensimmäinen laiva saapuu asemalle {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}Ensimmäinen lentokone saapuu asemalle {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen linja-auton!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen kuorma-auton!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen raitiovaunun!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen rahtiraitiovaunun!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen laivan!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen lentokoneen!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Junaonnettomuus!{}{COMMA} kuolee törmäyksen jälkeisessä tulipallossa.
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Tasoristeysturma!{}Kuljettaja kuolee junan ja auton törmäyksen jälkeisessä tulipallossa
@@ -924,10 +924,10 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian lari (
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranin rial (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Ajoneuvot
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kulkuneuvot
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Valitse kummalla puolella tietä ajetaan.
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasemmalla kaistalla
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Oikealla kaistalla
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasemmanpuolinen liikenne
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Oikeanpuolinen liikenne
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Kaupunkien nimet
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Valitse kaupunkien nimien tyyli.
@@ -1093,11 +1093,11 @@ STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sulje ka
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(selitystä ei saatavilla)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Oletusarvo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Asetuksen tyyppi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :Yleinen asetus (ei tallenneta tallenteisiin; vaikuttaa kaikkiin peleihin)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Yleinen asetus (ei tallenneta tallennuksiin; vaikuttaa kaikkiin peleihin)
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Pelin asetus (tallennetaan tallenteisiin; vaikuttaa vain uusiin peleihin)
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Pelin asetus (tallennetaan tallenteeseen; vaikuttaa vain nykyiseen peliin)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Yhtiön asetus (tallennetaan tallenteisiin; vaikuttaa vain uusiin peleihin)
-STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Yhtiön asetus (tallennetaan tallenteeseen; vaikuttaa vain nykyiseen yhtiöön)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Yhtiön asetus (tallennetaan tallennukseen; vaikuttaa vain nykyiseen yhtiöön)
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tyyppi:
@@ -2716,9 +2716,9 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Maailman
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kartan koko:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Valitse kartan koko ruutuina. Saatavilla olevien ruutujen määrä on hieman alhaisempi
 STR_MAPGEN_BY                                                   :{BLACK}×
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Kaupungit:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Kaupunkien määrä:
 STR_MAPGEN_DATE                                                 :{BLACK}Päivämäärä:
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Teollisuus:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Teollisuuden määrä:
 STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Suurin sallittu kartan korkeus:
 STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Kasvata suurinta sallittua vuorten korkeutta yhdellä
 STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Vähennä suurinta sallittua vuorten korkeutta yhdellä
@@ -3195,8 +3195,8 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Tilin sa
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Laina
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Laina enimmillään: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Ota lainaa {CURRENCY_LONG}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Ota lisää lainaa. Ctrl+Klik lisää lainaa niin paljon kuin mahdollista
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Nosta lainaa {CURRENCY_LONG}
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Ota lisää lainaa. Ctrl+Klik nostaa lainaa niin paljon kuin mahdollista
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Lyhennä lainaa {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Lyhennä lainaa. Ctrl+Klik lyhentää lainaa niin paljon kuin mahdollista
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastruktuuri
@@ -3227,7 +3227,7 @@ STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Rakenna 
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Rakenna yhtiön päämaja
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Näytä päämaja
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Näytä yhtiön päämaja
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Sijoita päämaja
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Siirrä päämaja
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rakenna yhtiön päärakennus muualle, kustannus 1{NBSP}% yhtiön arvosta. Shift+Klik näyttää kustannearvion sijoittamatta päärakennusta uudelleen
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Yksityiskohdat
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Näytä tarkka infrastruktuurin määrä
@@ -3252,7 +3252,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Pääjohtajan n
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Etsimme kuljetusyhtiötä, joka ottaisi haltuunsa yhtiömme{}{}Haluatko ostaa yhtiön {COMPANY} hintaan {CURRENCY_LONG}?
 
 # Company infrastructure window
-STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Yhtiön {COMPANY} infrastruktuuri
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY}: Infrastruktuuri
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Rautatiepalat:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Opastimet
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Teiden palat:
@@ -4250,7 +4250,7 @@ STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Poijua e
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Reittipisteen nimeä ei voi muuttaa...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Junien reittipistettä ei voi poistaa...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Junaradan reittipiste täytyy poistaa ensin
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Rautatien reittipiste täytyy poistaa ensin
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... poiju on tiellä
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... poiju on toisen yhtiön käytössä!
 
@@ -4473,6 +4473,7 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Alkuperäiset T
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Alkuperäiset Transport Tycoon Deluxen Windows-version äänet.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Äänipaketti, jossa ei ole ääniä.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Alkuperäinen Transport Tycoon Deluxen Windows-version musiikki.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Alkuperäinen Transport Tycoon Deluxen DOS-version musiikki.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Musiikkipaketti, jossa ei ole musiikkia.
 
 ##id 0x2000
@@ -4846,7 +4847,7 @@ STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :Ploddyphut 500
 STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Flashbang X1
 STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Juggerplane M1
 STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizzer
-STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Tricario -helikopteri
+STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Tricario-helikopteri
 STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Guru X2 -helikopteri
 STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut-helikopteri
 
