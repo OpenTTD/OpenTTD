@@ -41,6 +41,7 @@ enum TreePlacer {
 	TP_NONE,     ///< No tree placer algorithm
 	TP_ORIGINAL, ///< The original algorithm
 	TP_IMPROVED, ///< A 'improved' algorithm
+	TP_FOREST,   ///< An algorithm trying to make only forests
 };
 
 /** Where to place trees while in-game? */
@@ -78,6 +79,30 @@ static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 
 		default: return false;
 	}
+}
+
+/**
+* Tests if a tile is near an already existing forest.
+* Trees won't spread if not placed near some other trees.
+*
+* @param tile the tile of interest
+* @return true if the tile is near a forest
+*/
+static bool IsNearbyForest(TileIndex tile)
+{
+	uint planted_tile_count = 0;
+
+	for (int x = -2; x <= 2; x++) {
+		for (int y = -2; y <= 2; y++) {
+			TileIndex vincity = TileAddWrap(tile, x, y);
+			if (vincity != INVALID_TILE &&
+					IsTileType(vincity, MP_TREES)) {
+				planted_tile_count++;
+			}
+		}
+	}
+
+	return (planted_tile_count >= 6);
 }
 
 /**
@@ -257,7 +282,10 @@ void PlaceTreesRandomly()
 
 		if (CanPlantTreesOnTile(tile, true)) {
 			PlaceTree(tile, r);
-			if (_settings_game.game_creation.tree_placer != TP_IMPROVED) continue;
+			if (_settings_game.game_creation.tree_placer != TP_IMPROVED &&
+					_settings_game.game_creation.tree_placer != TP_FOREST) {
+				continue;
+			}
 
 			/* Place a number of trees based on the tile height.
 			 *  This gives a cool effect of multiple trees close together.
@@ -358,6 +386,7 @@ void GenerateTrees()
 
 	switch (_settings_game.game_creation.tree_placer) {
 		case TP_ORIGINAL: i = _settings_game.game_creation.landscape == LT_ARCTIC ? 15 : 6; break;
+		case TP_FOREST: /* FALL THROUGH */
 		case TP_IMPROVED: i = _settings_game.game_creation.landscape == LT_ARCTIC ?  4 : 2; break;
 		default: NOT_REACHED();
 	}
@@ -370,6 +399,8 @@ void GenerateTrees()
 	SetGeneratingWorldProgress(GWP_TREE, total);
 
 	if (num_groups != 0) PlaceTreeGroups(num_groups);
+
+	if (_settings_game.game_creation.tree_placer == TP_FOREST) return;
 
 	for (; i != 0; i--) {
 		PlaceTreesRandomly();
@@ -758,6 +789,9 @@ static void TileLoop_Trees(TileIndex tile)
 						/* Don't plant trees, if ground was freshly cleared */
 						if (IsTileType(tile, MP_CLEAR) && GetClearGround(tile) == CLEAR_GRASS && GetClearDensity(tile) != 3) return;
 
+						/* Plants trees only near existing forests */
+						if (_settings_game.game_creation.tree_placer == TP_FOREST && !IsNearbyForest(tile)) return;
+
 						PlantTreesOnTile(tile, treetype, 0, 0);
 
 						break;
@@ -859,6 +893,9 @@ void OnTick_Trees()
 	r = Random();
 	tile = RandomTileSeed(r);
 	if (CanPlantTreesOnTile(tile, false) && (tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
+		/* Plants trees only near existing forests */
+		if (_settings_game.game_creation.tree_placer == TP_FOREST && !IsNearbyForest(tile)) return;
+
 		PlantTreesOnTile(tile, tree, 0, 0);
 	}
 }
