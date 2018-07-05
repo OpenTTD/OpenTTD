@@ -453,7 +453,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Papar atau pada
 STR_ABOUT_MENU_AI_DEBUG                                         :Al/Skrip pepijat permainan
 STR_ABOUT_MENU_SCREENSHOT                                       :Tangkapan skrin (Ctrl+S)
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zum sepenuhnya di pembidik skrin
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Tangkapan skrin dizoom asal
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Tangkapan skrin di zum asal
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tangkap gambar skrin besar (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Penjajar peperi
@@ -850,10 +850,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT} {BLA
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Tetingkap Pemandangan {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Salin ke tetingkap pemandangan
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Ubah tetingkap paparan
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Salin lokasi pemandangan global kepada tetingkap pemandangan ini
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Tampal daripada tetingkap pemandangan
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Salin lokasi tetingkap pemandangan ini kepada pemandangan utama
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Ubah paparan utama
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Salin lokasi tetingkap paparan ini ke paparan utama
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pilihan Permainan
@@ -1262,6 +1262,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Membesarkan pet
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Skrol peta
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Matikan
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Kelajuan roda skrol pada peta: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kawal kesensitifan skrol roda tetikus
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Papan kekunci di skrin: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Pilih kaedah untuk membuka papan kekunci pada skrin untuk memasukkan teks ke dalam kotak edit hanya menggunakan petunjuk peranti. Ini bertujuan untuk peranti kecil yang tiada papan kekunci sebenar
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Dinyah-upayakan
@@ -1300,6 +1301,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Yang tersedia s
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Yang selalu digunakan
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Tunjukkan landasan yang ditempah: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Alat binaan tetap aktif selepas digunakan: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Simpan alat pembinaan untuk jambatan, terowong, dll. buka selepas guna
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Perbelanjaan kumpulan dalam tetingkap kewangan syarikat: {STRING}
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Pembinaan: {STRING}
@@ -1327,7 +1329,9 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes sebelu
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Tempoh waktu servis dalam peratusan: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Pilih sama ada selenggara kenderaan dimulakan sejak tempoh masa dari servis terakhir atau apabila peratusan kebolehupayaan kenderaan berkurang kepada peratusan tertentu.
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}hari{P 0 "" s}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Dilumpuhkan
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Tetapkan selang masa servis untuk pesawat baru kepada tetapan asal, jika tiada selang masa servis yang jelas ditetapkan untuk pesawat tersebut
 STR_CONFIG_SETTING_NOSERVICE                                    :Servis tidak diperlukan apabila kerosakan kenderaan ditetapkan kepada tiada: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Benarkan had kelajuan untuk gerabak: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Tiada landasan elektrik: {STRING}
@@ -1339,6 +1343,7 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Maklumat syarik
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Paparkan surat khabar mengenai pembukaan syarikat baru, atau apabila syarikat dalam risiko untuk muflis
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Pembukaan industri: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Penutupan industri: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Paparkan keratan akhbar apabila ada industri yang ditutup
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Perubahan ekonomi: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Perubahan pengeluaran industri-industri yang diservis oleh syarikat: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Perubahan pengeluaran industri-industri yang diservis oleh pesaing: {STRING}
@@ -1410,11 +1415,16 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pengganda awal 
 
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Sistem Imperial (kuasa kuda/hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Sistem metrik (kuasa kuda/hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :Unit SI (kW)
+
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :Unit SI (m³)
 
 
 
-
-
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Bunyi
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Antaramuka (Interface)
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Pembinaan
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kenderaan
@@ -1515,8 +1525,8 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Tinggalkan Permainan
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Pastikah anda mahu keluar permainan ini?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Pastikah anda untuk keluar senario ini?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Pastikah anda mahu keluar dari permainan ini?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Pastikah anda untuk keluar dari senario ini?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Penipuan (Cheats)
@@ -2304,6 +2314,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nama pet
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Kargo yang diterima: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Jenis landasan: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Had kelajuan landasan: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
@@ -2316,28 +2327,28 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tanah diliputi 
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Padang pasir
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Landasan keretapi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Keretapi landasan dengan isyarat sekatan
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Keretapi landasan dengan pra-isyarat
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Landasan kereta api dengan isyarat sekatan
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Landasan kereta api dengan pra-isyarat
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Landasan keretapi dengan isyarat keluar
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Landasan keretapi dengan isyarat kombo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Keretapi landasan dengan isyarat laluan
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Landasan kereta api dengan isyarat laluan
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Landasan keretapi dengan isyarat satu hala
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Keretapi landasan dengan isyarat sekatan dan pra-isyarat
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Landasan kereta api dengan isyarat sekatan dan pra-isyarat
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Landasan keretapi dengan isyarat sekatan dan keluar
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Landasan keretapi dengan isyarat sekatan dan kombo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Keretapi landasan dengan isyarat sekatan dan laluan
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Landasan kereta api dengan isyarat sekatan dan laluan
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Landasan keretapi dengan isyarat sekatan dan satu hala
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Keretapi landasan dengan isyarat pra- dan keluar
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Keretapi landasan dengan isyarat pra- dan kombo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Keretapi landasan dengan isyarat pra- dan laluan
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Keretapi landasan dengan isyarat pra- dan satu hala
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Landasan kereta api dengan pra-isyarat dan isyarat keluar
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Landasan kereta api dengan pra-isyarat dan isyarat kombo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Landasan kereta api dengan pra-isyarat dan isyarat laluan
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Landasan kereta api dengan pra-isyarat dan isyarat laluan satu hala
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Landasan keretapi dengan isyarat keluar dan kombo.
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Landasan keretapi dengan isyarat keluar dan laluan
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Landasan keretapi dengan isyarat keluar dan satu hala
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Landasan keretapi dengan isyarat kombo dan signal laluan
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Landasan keretapi dengan isyarat kombo dan satu hala
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Keretapi landasan dengan isyarat laluan dan satu hala
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Keretapi depoh keretapi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Landasan kereta api dengan isyarat laluan dan isyarat laluan satu hala
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depoh penyelenggaraan kereta api
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Jalanraya
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Jalan raya berlampu
@@ -2581,7 +2592,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Pergi ke
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Peperi sebelumnya
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Teruskan ke peperi dahulu yang biasa, melangkau sebarang peperi pseudo/warna kembali/fon dan memusing balik semula
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Perwakilan peperi yang terpilih. Penjajaran tidak diendahkan apabila sedang melukiskan peperi.
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Alih peperi, mengubahkan ofset X dan Y
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Alihkan "sprite" ke lokasi lain lantas mengubah ofset X dan Y. "Ctrl+Click" untuk ubah lokasi "sprite" lapan unit pada satu-satu masa
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Pilih peperi
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Pilih peperi di mana-mana sahaja dari skrin
 
@@ -2801,6 +2812,8 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Penarafa
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Tunjukkan penarafan stesen
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Bekalan bulanan dan penarafan tempatan:
 
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} melalui {STATION}
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} sedang berhenti di stesen ini
 
 
 ############ range for rating starts
@@ -2818,7 +2831,7 @@ STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Pusatkan
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Tukarkan nama stesen
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Tunjukkan semua keretapi yang mengandungi stesen ini dalam jadual mereka
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Tunjukkan semua kenderaan jalanraya yang mengandungi stesen ini dalam jadual mereka
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Tunjukkan semua kenderaan darat yang mempunyai stesen ini di dalam jadual mereka
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Tunjukkan semua pesawat yang mengandungi lapangan terbang ini dalam jadual mereka
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Tunjukkan semua kapal yang mengandungi stesen ini dalam jadual mereka
 
@@ -3297,6 +3310,8 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} tahun (
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} tahun ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Kelajuan Maks.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Kelajuan maksima: {LTBLUE}{VELOCITY} {BLACK}Jenis pesawat: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Kelajuan maksima: {LTBLUE}{VELOCITY} {BLACK}Jenis pesawat: {LTBLUE}{STRING} {BLACK}Lingkungan: {LTBLUE}{COMMA} petak
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kuasa: {LTBLUE}{POWER}{BLACK} Kelajuan Maks.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kuasa: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY} {BLACK}T.E. Maks.: {LTBLUE}{FORCE}
 
@@ -3455,7 +3470,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Pergi ke depoh 
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Pergi ke hangar paling hampir
 STR_ORDER_CONDITIONAL                                           :Lompatan arahan bersyarat
 STR_ORDER_SHARE                                                 :Kongsi arahan
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Masukkan arahan baru ke atas arahan yang terpilih. Ctrl membuatkan arahan stesen 'muatan penuh sebarang kargo', arahan halutuju 'tanpa henti', dan arahn depoh 'penyenggelaraan'. 'Arahan berkongsi' atau Ctrl membenarkan kenderaan ini berkongsi arahan dengan kenderaan terpilih
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Masukkan arahan baru ke dalam susunan senarai yang terpilih, atau tambah pada penghujung senarai. "Ctrl" mengubah arahan stesen kepada 'muatan penuh untuk apa-apa kargo', arahan halutuju 'tanpa henti', dan arahan depoh 'penyenggelaraan'. 'Arahan berkongsi' atau "Ctrl" membenarkan kenderaan ini berkongsi arahan dengan kenderaan terpilih
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Tunjukkan semua kenderaan yang berkongsi jadual yang sama
 
@@ -4072,7 +4087,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... pesa
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kenderaan tidak boleh dijadualkan...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Kenderaan hanya boleh menunggu di stesen
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Kenderaan ini tidak akan berhenti di stesen ini
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Kenderaan ini tidak akan berhenti di stesen berikut
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... papan tanda terlalu banyak
@@ -4085,6 +4100,7 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :Sebuah permaina
 
 # Translatable descriptions in media/baseset/*.ob* files
 STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Grafik asal Transport Tycoon Deluxe DOS edition.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Grafik asal Transport Tycoon DOS (German) edition
 STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Grafik asal Transport Tycoon Deluxe edisi Windows.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Muzik asal Transport Tycoon Deluxe edisi Windows.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Pek muzik tanpa muzik sebenar.
