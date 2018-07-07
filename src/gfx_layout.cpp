@@ -671,7 +671,9 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 		} else {
 			/* Line is new, layout it */
 			FontState old_state = state;
+#if defined(WITH_ICU_LAYOUT) || defined(WITH_UNISCRIBE)
 			const char *old_str = str;
+#endif
 
 #ifdef WITH_ICU_LAYOUT
 			GetLayouter<ICUParagraphLayoutFactory>(line, str, state);
