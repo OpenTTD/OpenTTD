@@ -386,7 +386,8 @@ void GenerateTrees()
 
 	switch (_settings_game.game_creation.tree_placer) {
 		case TP_ORIGINAL: i = _settings_game.game_creation.landscape == LT_ARCTIC ? 15 : 6; break;
-		case TP_FOREST: /* FALL THROUGH */
+		case TP_FOREST:
+			FALLTHROUGH;
 		case TP_IMPROVED: i = _settings_game.game_creation.landscape == LT_ARCTIC ?  4 : 2; break;
 		default: NOT_REACHED();
 	}
