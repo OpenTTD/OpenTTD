@@ -1196,7 +1196,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Вакно прагляду {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Капіяваць у вакно прагляду
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Скапіяваць бягучую пазыцыю ў вакно прагляду
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Уставіць з вакна прагляду
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}У асноўнае акно
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Перайсьці да гэтага месца ў асноўным вакне
 
 # Game options window
@@ -2617,6 +2617,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Схем
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Усе
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Няма
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Выберыце кампаніі для адлюстраваньня
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}нявыкарыст.
@@ -3313,6 +3314,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Увяд
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Гарады
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Няма -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Мегаполіс){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Сьпіс гарадоў: клiк па назьве паказвае горад у асноўным вакне. Ctrl+клiк паказвае ў дадатковым вакне.
 STR_TOWN_POPULATION                                             :{BLACK}Насельніцтва: {COMMA}
 
@@ -3320,6 +3322,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Насе
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Мэґаполіс)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Насельніцтва: {ORANGE}{COMMA}{BLACK}  Будынкаў: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} у мінулым месяцы: {ORANGE}{COMMA}{BLACK} Макс.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Груз, неабходны для росту горада:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} патрабу{G 0 е e e ю}цца
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} патрабу{G 0 е e e ю}цца ўзімку
@@ -4586,6 +4589,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... гэ
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... няправільны кірунак дарогі
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... на прахадных прыпынках нельга рабіць павароты
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... на прахадных прыпынках нельга рабіць скрыжаваньнi
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... дарога аднабаковая ці заблакавана
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Немагчыма выдаліць частку станцыi...
@@ -4837,6 +4841,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Арыґіна�
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Арыґінальны набор гукавога афармленьня з гульні Transport Tycoon Deluxe для Windows.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :"Пусты" набор гукавога афармленьня, які не зьмяшчае ніякіх гукаў.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Арыґінальны набор музычнага афармленьня з гульні Transport Tycoon Deluxe для Windows.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Набор музычнага афармленьня з гульні Transport Tycoon Deluxe для DOS.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Набор музычнага афармлення з гульні Transport Tycoon (Original/World Editor) для DOS.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :"Пусты" набор музычнага афармлення, які не зьмяшчае ніякай музыкі.
 
 ##id 0x2000
