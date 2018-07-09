@@ -1351,6 +1351,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Pengubaran peng
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Nasihat / maklumat tentang kenderaan syarikat: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Kenderaan baru: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Penukaran pada penerimaan kargo: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Tunjukkan mesej berkenaan perubahan kebolehterimaan sesetengah kargo di stesen terlibat
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidi: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Maklumat umum: {STRING}
 
@@ -1427,6 +1428,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :Unit SI (m³)
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Bunyi
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Antaramuka (Interface)
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Pembinaan
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Berita / Penasihat
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kenderaan
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Laluan
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Kecelakaan / Kemalangan
@@ -2561,6 +2563,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Tidak sera
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Simpan pratetapan
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Masukkan nama untuk pratetapan
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}Batal
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Simpan
 
 # NewGRF parameters window
@@ -2786,6 +2789,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik di 
 
 # Story book window
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Seterusnya
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nama stesen - klik pada nama untuk memusatkan pemandangan ke stesen. Ctrl+Klik membuka tetingkap pemandangan di lokasi stesen
@@ -2837,6 +2841,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Tunjukka
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Namakan semula stesen/ruang punggahan
 
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Halang pesawat daripada mendarat di lapangan terbang ini
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3018,11 +3023,11 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Kenderaan jalan
 STR_GROUP_DEFAULT_SHIPS                                         :Kapal yang belum berkumpulan
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Pesawat yang belum berkumpulan
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Kumpulan - klik sebuah kumpulan untuk menaraikan semua kenderaan di dalam kumpulan
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Kumpulan - klik sebuah kumpulan untuk menyenaraikan semua kenderaan di dalam kumpulan tersebut. Tarik dan lepaskan kumpulan untuk menyusun kumpulan mengikut heirarki
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik untuk mewujudkan kumpulan
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Padamkan kumpulan yang telah dipilih
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Tukar nama kumpulan yang terpilih
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik untuk menghalang daripada kumpulan ini digantikan secara automatik
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik untuk menghalang kumpulan ini daripada digantikan secara automatik
 
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Tambah kenderaan berkongsi
@@ -3331,6 +3336,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Tempoh P
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tambah 10 tempoh penyenggelaraan. Ctrl+Klik untuk tambah 5 tempoh penyenggelaraan
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kurangkan 10 tempoh penyenggelaraan. Ctrl+Klik untuk kurangkan 5 tempoh penyenggelaraan
 
+STR_VEHICLE_DETAILS_DAYS                                        :Hari
 STR_VEHICLE_DETAILS_PERCENT                                     :Peratusan
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nama keretapi
@@ -4102,6 +4108,7 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :Sebuah permaina
 STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Grafik asal Transport Tycoon Deluxe DOS edition.
 STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Grafik asal Transport Tycoon DOS (German) edition
 STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Grafik asal Transport Tycoon Deluxe edisi Windows.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Sebuah pek suara tanpa apa-apa suara
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Muzik asal Transport Tycoon Deluxe edisi Windows.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Pek muzik tanpa muzik sebenar.
 
