@@ -610,7 +610,7 @@ STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Jumlah w
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Jumlah wang keuntungan dalam suku tahun dengan keuntungan tertinggi dalam 12 suku tahun yang lepas
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unit-unit kargo yang dihantar dalam 4 suku tahun yang lepas
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Jumlah jenis kargo yang dihantar dalam suku tahun yang lepas
-STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Jumlah wang syarikat ini mempunyai dalam bank
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Jumlah wang syarikat di dalam bank
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Jumlah wang syarikat ini yang telah dipinjam
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Jumlah markah daripada markah yang boleh diperolehi
 
@@ -1294,6 +1294,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gunakan senarai
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Gunakan penunjuk muatan: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Tunjukkan jadual menggunakan tanda rait dan bukan hari: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Tunjukkan ketibaan dan pelepasan dalam jadual: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Tunjukkan jangkaan waktu ketibaan dan pelepasan dalam jadual
 STR_CONFIG_SETTING_QUICKGOTO                                    :Pewujudan pantas arahan kenderaan: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Landasan keretapi lazim (apabila memulakan permainan baru/buka permainan: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Yang tersedia terawal
@@ -1309,6 +1310,7 @@ STR_CONFIG_SETTING_SOUND_CONFIRM                                :Pembinaan: {STR
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Nyahaktif infrastruktur bangunan apabila tiada kenderaan yang sesuai: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Amaun maksimum kereta api setiap syarikat: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Amaun maksimum kenderaan jalanraya setiap syarikat: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Jumlah maksimum kenderaan darat sesebuah syarikat
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Amaun maksimum pesawat setiap syarikat: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Amaun maksimum kapal setiap syarikat: {STRING}
 
@@ -1347,6 +1349,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Paparkan kerata
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Perubahan ekonomi: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Perubahan pengeluaran industri-industri yang diservis oleh syarikat: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Perubahan pengeluaran industri-industri yang diservis oleh pesaing: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Paparkan keratan akhbar apabila berlaku perubahan tahap pengeluaran industri yang diservis oleh pesaing
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Pengubaran pengeluaran industri lain: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Nasihat / maklumat tentang kenderaan syarikat: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Kenderaan baru: {STRING}
@@ -1509,7 +1512,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Terjemah
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Keluar
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Pastikah anda untuk keluar dari OpenTTD dan kembali ke {STRING}?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Adakah anda pasti untuk keluar dari OpenTTD dan kembali ke {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Ya
 STR_QUIT_NO                                                     :{BLACK}Tidak
 
@@ -1703,6 +1706,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nama per
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Tetapkan kata laluan
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Lindungi permainan anda dengan kata laluan jika anda tidak mahu ianya diakses awam
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Tidak
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} pelanggan
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Amaun maksimum pemain:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Tentukan bilangan klien maks. Tidak perlu semua slot diisi
@@ -1941,6 +1945,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pilih pe
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Tandakan semua kandungan sedia ada yang telah ditingkatkan untuk dimuat turun
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nyahpilihkan semua
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Tandakan semua kandungan supaya jangan dimuat turun
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Anda sedang meninggalkan OpenTTD!
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Saringan tag/nama:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Lawati halaman
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Lawati halaman untuk kandungan ini
@@ -2816,6 +2821,7 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Penarafa
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Tunjukkan penarafan stesen
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Bekalan bulanan dan penarafan tempatan:
 
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Jumlah: Telah dirancang
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} melalui {STATION}
 STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} sedang berhenti di stesen ini
 
@@ -4108,8 +4114,10 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :Sebuah permaina
 STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Grafik asal Transport Tycoon Deluxe DOS edition.
 STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Grafik asal Transport Tycoon DOS (German) edition
 STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Grafik asal Transport Tycoon Deluxe edisi Windows.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Bunyi asal Transport Tycoon Deluxe edisi Windows
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Sebuah pek suara tanpa apa-apa suara
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Muzik asal Transport Tycoon Deluxe edisi Windows.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Muzik asal Transport Tycoon Deluxe edisi DOS
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Pek muzik tanpa muzik sebenar.
 
 ##id 0x2000

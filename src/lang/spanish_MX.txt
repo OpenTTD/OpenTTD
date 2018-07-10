@@ -882,10 +882,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar ventana de vista
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Cambiar ventana de vista
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar la vista principal a esta ventana de vista
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Pegar ventana de vista
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Pegar esta ventana de vista en la principal
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Cambiar vista principal
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copiar ubicación en esta vista a la principal
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opciones de juego
@@ -2289,6 +2289,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Leyenda 
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Todas
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Ninguna
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Elegir las empresas a mostrar
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}sin uso
@@ -2981,6 +2982,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Indicar 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Pueblos
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ninguno -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (ciudad){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de pueblos. Clic en un nombre para centrar la vista principal en el pueblo. Ctrl+Clic abre una ventana de vista en dicha ubicación
 STR_TOWN_POPULATION                                             :{BLACK}Población mundial: {COMMA}
 
@@ -2988,6 +2990,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Poblaci�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (ciudad)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Habitantes: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} mes pasado: {ORANGE}{COMMA}{BLACK}  máx.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Cargamento necesario para crecimiento:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requeridos
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requerido en invierno
@@ -4234,6 +4237,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... esta
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... carretera en el sentido incorrecto
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... las estaciones y paradas intermedias no pueden ponerse sobre esquinas
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... las estaciones y paradas intermedias no pueden ponerse sobre intersecciones
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... la carretera está bloqueada o es de un solo sentido
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}No se puede quitar parte de la estación...
@@ -4485,6 +4489,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Sonidos origina
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Sonidos originales de Transport Tycoon Deluxe para Windows.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Paquete de sonidos vacío
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Música original de Transport Tycoon Deluxe para Windows.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Música original de Transport Tycoon Deluxe para DOS.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Música original de Transport Tycoon versión World Editor para DOS.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Paquete de música vacío
 
 ##id 0x2000
