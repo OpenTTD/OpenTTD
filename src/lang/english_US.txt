@@ -650,6 +650,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}No music available
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Track
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Title
@@ -670,11 +671,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Toggle p
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Show music track selection window
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Music Program - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Track Index
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Clear
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Change set
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Clear current program (Custom1 or Custom2 only)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Change music selection to another installed set
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click on music track to add to current program (Custom1 or Custom2 only)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Click on music track to remove it from current program (Custom1 or Custom2 only)
 
@@ -877,10 +881,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Viewport {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copy to viewport
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Change viewport
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copy the location of the main view to this viewport
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Paste from viewport
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Paste the location of this viewport to the main view
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Change main view
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copy the location of this viewport to the main view
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Game Options
@@ -1334,6 +1338,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color of the te
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Green
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dark green
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Purple
+STR_CONFIG_SETTING_SCROLLMODE                                   :Viewport scroll behaviour: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Behavior when scrolling the map
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Move viewport with RMB, mouse position locked
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Move map with RMB, mouse position locked
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Move map with RMB
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Move map with LMB
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Smooth viewport scrolling: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Control how the main view scrolls to a specific position when clicking on the smallmap or when issuing a command to scroll to a specific object on the map. If enabled, the viewport scrolls smoothly, if disabled it jumps directly to the targeted spot
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Show a measurement tooltip when using various build-tools: {STRING}
@@ -2278,6 +2288,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Cargo Fl
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}All
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}None
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Select companies to be displayed
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}unused
@@ -2970,6 +2981,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Enter a 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Towns
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- None -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (City){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Town names - click on name to center main view on town. Ctrl+Click opens a new viewport on town location
 STR_TOWN_POPULATION                                             :{BLACK}World population: {COMMA}
 
@@ -2977,6 +2989,7 @@ STR_TOWN_POPULATION                                             :{BLACK}World po
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (City)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Population: {ORANGE}{COMMA}{BLACK}  Houses: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} last month: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Cargo needed for town growth:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} required
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} required in winter
@@ -4223,6 +4236,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... this
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... road facing in the wrong direction
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... drive through stops can't have corners
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... drive through stops can't have junctions
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... road is one way or blocked
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Can't remove part of station...
@@ -4474,6 +4488,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Original Transp
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Original Transport Tycoon Deluxe Windows edition sounds.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :A sound pack without any sounds.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Original Transport Tycoon Deluxe Windows edition music.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Original Transport Tycoon Deluxe DOS edition music.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Original Transport Tycoon (Original/World Editor) DOS edition music.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :A music pack without actual music.
 
 ##id 0x2000

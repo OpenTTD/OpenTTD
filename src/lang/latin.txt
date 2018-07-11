@@ -838,6 +838,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Nulla musica parata
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Carmen
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Titulus
@@ -858,11 +859,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Incipere
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Monstrare fenestram electionis carminum
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Compositio Musicae - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Index Carminum
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Compositio - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Vacuefacere
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Mutare gregem
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Vacuefacere compositionem (modo Propriam I aut Propriam II)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Mutare gregem musicam
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Preme in carmen ut compositioni addantur (modo Propriae I aut Propriae II)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Preme in carmen ut ex compositione removeatur (modo Propria I aut Propria II)
 
@@ -1065,10 +1069,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Fenestra conspectus {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Transcribere ad fenestram conspectus
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Mutare conspectum
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Transcribere locum primarium ad hanc fenestram conspectus
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Glutinare ex fenestra conspectus
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Glutinare locum ex hac fenestra ad conspectum primarium
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Mutare conspectum primum
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Transcribere locum ex hac fenestra ad conspectum primarium
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludi optiones
@@ -1522,7 +1526,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color terrae in
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Viridis
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Viridis Obscurus
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Purpureus
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Vagari conspectum leniter: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE                                   :Modus conspectum movendi: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Quomodo tabula geographica vagatur
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Conspectus movetur globulo dextro, loco muris fixo
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Tabula movetur globulo dextro, loco muris fixo
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Tabula movetur globulo muris dextro
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Tabula movetur globulo muris sinistro
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Movere conspectum leniter: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Quomodo conspectus vagatur ad quemdam locum globulo sinistro in tabula premendi aut cum iubetur vagari ad quamdam rem in tabula. Electa, conspectus leniter vagatur. Neglecta, statim salit ad locum
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Ostendere nuntium adiuvans apud varia ferramenta construendi: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Ostendere spatium atque altitudinem inter tegulas dum mus trahitur in construendo
@@ -2476,6 +2486,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Formula 
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Omnia
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Nulla
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Eligere societates monstrandas
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}non usus
@@ -3172,6 +3183,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Inscribe
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Oppida
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nulla -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Urbs){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomina oppidorum - preme in nomen ut conspectus supra oppidum locetur. Ctrl+Preme ut novam fenestram conspectus supra oppidum aperiatur
 STR_TOWN_POPULATION                                             :{BLACK}Incolae mundi: {COMMA}
 
@@ -4427,6 +4439,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... via 
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... viae directio non convenit
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... stationi perviae non licet esse curva
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... stationi perviae non licet compita habere
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... via est monodromus vel obstructa
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Non licet partem stationis removere...
@@ -4678,6 +4691,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Soni ex edition
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Soni ex editione originale Transport Tycoon Deluxe Windows.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Sarcina sonorum sine ullis sonis.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Musica ex editione originale Transport Tycoon Deluxe Windows.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Musica ex editione originale Transport Tycoon Deluxe DOS.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Musica ex editione originale Transport Tycoon (Originale/World Editor) DOS.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Sarcina musicae sine ulla musica.
 
 ##id 0x2000
