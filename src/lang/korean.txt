@@ -882,7 +882,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}외부 화면 {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}외부 화면에 복사
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}외부 화면으로 복사
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}현재 장소를 외부 화면에 복사합니다.
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}이 장소로 이동
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}외부 화면에 저장된 장소로 이동합니다.
@@ -2289,6 +2289,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}화물 �
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}모두
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}없음
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}표시할 회사를 선택하십시오
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}이용 없음
@@ -2981,6 +2982,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}팻말 �
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}도시 목록
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}(없음)
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (대도시){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}도시 이름 - 이 도시로 시점을 변경하려면 클릭하세요. CTRL+클릭하면 이 도시 위치를 기준으로 새로운 외부 화면을 엽니다.
 STR_TOWN_POPULATION                                             :{BLACK}총 인구 수: {COMMA}
 
