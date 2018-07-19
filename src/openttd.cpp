@@ -1108,6 +1108,20 @@ void SwitchToMode(SwitchMode new_mode)
 					seprintf(_network_game_info.map_name, lastof(_network_game_info.map_name), "%s (Loaded game)", _file_to_saveload.title);
 				}
 #endif /* ENABLE_NETWORK */
+
+				/* Change Human companies to AI */
+				if (!_networking || _network_server) {
+					Company *c;
+					FOR_ALL_COMPANIES(c) {
+						if (Company::Get(_local_company) != c && !c->is_ai) {
+							c->is_ai = true;
+							AI::StartNew(c->index);
+							AI::BroadcastNewEvent(new ScriptEventCompanyNew(c->index), c->index);
+							Game::NewEvent(new ScriptEventCompanyNew(c->index));
+						}
+					}
+				}
+
 			}
 			break;
 		}
