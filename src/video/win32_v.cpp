@@ -52,6 +52,7 @@ static struct {
 	int width_org;
 	int height_org;
 	bool fullscreen;
+	bool borderless;
 	bool has_focus;
 	bool running;
 } _wnd;
@@ -255,6 +256,12 @@ static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT event, DWORD 
 	}
 }
 
+static bool IsNativeDisplayResolution(int w, int h) {
+	/* In a multi-display setup, this only checks the resolution of the primary display,
+	 * which is what OpenTTD uses for its window anyway. */
+	return (GetSystemMetrics(SM_CXSCREEN) == w && GetSystemMetrics(SM_CYSCREEN) == h);
+}
+
 /**
  * Instantiate a new window.
  * @param full_screen Whether to make a full screen window or not.
@@ -262,10 +269,19 @@ static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT event, DWORD 
  */
 bool VideoDriver_Win32::MakeWindow(bool full_screen)
 {
-	_fullscreen = full_screen;
+	bool borderless_window = false;
+
+	/* If fullscreen was requested and this is the display's native resolution, use a borderless window instead */
+	if (full_screen && IsNativeDisplayResolution(_wnd.width_org, _wnd.height_org)) {
+		full_screen = false;
+		borderless_window = true;
+	}
+
+	_fullscreen = (full_screen || borderless_window);
 
 	/* recreate window? */
-	if ((full_screen || _wnd.fullscreen) && _wnd.main_wnd) {
+	/* TODO: recreating the window when toggling between windowed and borderless shouldn't be neccessary */
+	if ((full_screen || borderless_window || _wnd.fullscreen || _wnd.borderless) && _wnd.main_wnd) {
 		DestroyWindow(_wnd.main_wnd);
 		_wnd.main_wnd = 0;
 	}
@@ -321,14 +337,15 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 
 		showstyle = SW_SHOWNORMAL;
 		_wnd.fullscreen = full_screen;
-		if (_wnd.fullscreen) {
+		_wnd.borderless = borderless_window;
+		if (_window_maximize) showstyle = SW_SHOWMAXIMIZED;
+		if (_wnd.fullscreen || _wnd.borderless) {
 			style = WS_POPUP;
 			SetRect(&r, 0, 0, _wnd.width_org, _wnd.height_org);
 		} else {
 			style = WS_OVERLAPPEDWINDOW;
 			/* On window creation, check if we were in maximize mode before */
-			if (_window_maximize) showstyle = SW_SHOWMAXIMIZED;
-			SetRect(&r, 0, 0, _wnd.width, _wnd.height);
+			SetRect(&r, 0, 0, _bck_resolution.width, _bck_resolution.height);
 		}
 
 		AdjustWindowRect(&r, style, FALSE);
@@ -346,6 +363,11 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 
 			_wnd.main_wnd = CreateWindow(_T("OTTD"), MB_TO_WIDE(window_title), style, x, y, w, h, 0, 0, GetModuleHandle(NULL), 0);
 			if (_wnd.main_wnd == NULL) usererror("CreateWindow failed");
+
+			if (_wnd.borderless) {
+				SetWindowPos(_wnd.main_wnd, HWND_TOP, 0, 0, w, h, SWP_NOOWNERZORDER | SWP_FRAMECHANGED);
+			}
+
 			ShowWindow(_wnd.main_wnd, showstyle);
 		}
 	}
@@ -866,7 +888,10 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			switch (wParam) {
 				case VK_RETURN:
 				case 'F': // Full Screen on ALT + ENTER/F
-					ToggleFullScreen(!_wnd.fullscreen);
+					ToggleFullScreen(!(_wnd.fullscreen || _wnd.borderless));
+					if (!(_wnd.fullscreen || _wnd.borderless)) {
+						_bck_resolution = _cur_resolution;
+					}
 					return 0;
 
 				case VK_MENU: // Just ALT
@@ -886,8 +911,10 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			if (wParam != SIZE_MINIMIZED) {
 				/* Set maximized flag when we maximize (obviously), but also when we
 				 * switched to fullscreen from a maximized state */
-				_window_maximize = (wParam == SIZE_MAXIMIZED || (_window_maximize && _fullscreen));
-				if (_window_maximize || _fullscreen) _bck_resolution = _cur_resolution;
+				_window_maximize = (wParam == SIZE_MAXIMIZED || (_window_maximize && _wnd.fullscreen));
+				if (wParam == SIZE_RESTORED) {
+					_bck_resolution = _cur_resolution;
+				}
 				ClientSizeChanged(LOWORD(lParam), HIWORD(lParam));
 			}
 			return 0;
@@ -1049,6 +1076,10 @@ static bool AllocateDibSection(int w, int h, bool force)
 
 	bi->bmiHeader.biWidth = _wnd.width = w;
 	bi->bmiHeader.biHeight = -(_wnd.height = h);
+	if (_bck_resolution.width == 0 && _bck_resolution.height == 0) {
+		_bck_resolution.width = w;
+		_bck_resolution.height = h;
+	}
 
 	bi->bmiHeader.biPlanes = 1;
 	bi->bmiHeader.biBitCount = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
@@ -1308,6 +1339,7 @@ bool VideoDriver_Win32::ChangeResolution(int w, int h)
 	if (_draw_mutex != NULL) _draw_mutex->BeginCritical(true);
 	if (_window_maximize) ShowWindow(_wnd.main_wnd, SW_SHOWNORMAL);
 
+	_bck_resolution = _cur_resolution;
 	_wnd.width = _wnd.width_org = w;
 	_wnd.height = _wnd.height_org = h;
 
