@@ -34,6 +34,7 @@
 #include "company_base.h"
 #include "tunnelbridge_map.h"
 #include "zoom_func.h"
+#include "framerate_type.h"
 
 #include "table/strings.h"
 
@@ -638,6 +639,8 @@ reverse_direction:
 
 bool Ship::Tick()
 {
+	PerformanceAccumulator framerate(PFE_GL_SHIPS);
+
 	if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
 
 	ShipController(this);

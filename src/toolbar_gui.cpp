@@ -47,6 +47,7 @@
 #include "goal_base.h"
 #include "story_base.h"
 #include "toolbar_gui.h"
+#include "framerate_type.h"
 
 #include "widgets/toolbar_widget.h"
 
@@ -1045,7 +1046,7 @@ static CallBackFunction PlaceLandBlockInfo()
 
 static CallBackFunction ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 12 : 9);
+	PopupMainToolbMenu(w, WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 13 : 10);
 	return CBF_NONE;
 }
 
@@ -1147,10 +1148,11 @@ static CallBackFunction MenuClickHelp(int index)
 		case  5: MenuClickLargeWorldScreenshot(SC_ZOOMEDIN);    break;
 		case  6: MenuClickLargeWorldScreenshot(SC_DEFAULTZOOM); break;
 		case  7: MenuClickLargeWorldScreenshot(SC_WORLD);       break;
-		case  8: ShowAboutWindow();                break;
-		case  9: ShowSpriteAlignerWindow();        break;
-		case 10: ToggleBoundingBoxes();            break;
-		case 11: ToggleDirtyBlocks();              break;
+		case  8: ShowFramerateWindow();            break;
+		case  9: ShowAboutWindow();                break;
+		case 10: ShowSpriteAlignerWindow();        break;
+		case 11: ToggleBoundingBoxes();            break;
+		case 12: ToggleDirtyBlocks();              break;
 	}
 	return CBF_NONE;
 }

@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include <math.h>
 #include "core/math_func.hpp"
+#include "framerate_type.h"
 
 #include "safeguards.h"
 
@@ -138,6 +139,13 @@ static void MxCloseChannel(MixerChannel *mc)
 
 void MxMixSamples(void *buffer, uint samples)
 {
+	PerformanceMeasurer framerate(PFE_SOUND);
+	static uint last_samples = 0;
+	if (samples != last_samples) {
+		framerate.SetExpectedRate((double)_play_rate / samples);
+		last_samples = samples;
+	}
+
 	MixerChannel *mc;
 
 	/* Clear the buffer */

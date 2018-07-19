@@ -23,6 +23,7 @@
 #include "../core/random_func.hpp"
 #include "../core/math_func.hpp"
 #include "../fileio_func.h"
+#include "../framerate_type.h"
 #include "sdl_v.h"
 #include <SDL.h>
 
@@ -148,6 +149,8 @@ static void CheckPaletteAnim()
 
 static void DrawSurfaceToScreen()
 {
+	PerformanceMeasurer framerate(PFE_VIDEO);
+
 	int n = _num_dirty_rects;
 	if (n == 0) return;
 

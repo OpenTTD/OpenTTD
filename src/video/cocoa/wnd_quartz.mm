@@ -33,6 +33,7 @@
 #include "cocoa_v.h"
 #include "../../core/math_func.hpp"
 #include "../../gfx_func.h"
+#include "../../framerate_type.h"
 
 /* On some old versions of MAC OS this may not be defined.
  * Those versions generally only produce code for PPC. So it should be safe to
@@ -431,6 +432,8 @@ WindowQuartzSubdriver::~WindowQuartzSubdriver()
 
 void WindowQuartzSubdriver::Draw(bool force_update)
 {
+	PerformanceMeasurer framerate(PFE_VIDEO);
+
 	/* Check if we need to do anything */
 	if (this->num_dirty_rects == 0 || [ this->window isMiniaturized ]) return;
 

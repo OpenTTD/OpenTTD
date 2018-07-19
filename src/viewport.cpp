@@ -87,6 +87,7 @@
 #include "company_base.h"
 #include "command_func.h"
 #include "network/network_func.h"
+#include "framerate_type.h"
 
 #include <map>
 
@@ -1654,6 +1655,8 @@ static inline void ViewportDraw(const ViewPort *vp, int left, int top, int right
  */
 void Window::DrawViewport() const
 {
+	PerformanceAccumulator framerate(PFE_DRAWWORLD);
+
 	DrawPixelInfo *dpi = _cur_dpi;
 
 	dpi->left += this->left;

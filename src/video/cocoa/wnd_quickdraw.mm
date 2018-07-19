@@ -32,6 +32,7 @@
 #include "cocoa_v.h"
 #include "../../core/math_func.hpp"
 #include "../../gfx_func.h"
+#include "../../framerate_type.h"
 
 /**
  * Important notice regarding all modifications!!!!!!!
@@ -361,6 +362,8 @@ WindowQuickdrawSubdriver::~WindowQuickdrawSubdriver()
 
 void WindowQuickdrawSubdriver::Draw(bool force_update)
 {
+	PerformanceMeasurer framerate(PFE_VIDEO);
+
 	/* Check if we need to do anything */
 	if (this->num_dirty_rects == 0 || [ this->window isMiniaturized ]) return;
 

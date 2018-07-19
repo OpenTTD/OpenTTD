@@ -32,6 +32,7 @@
 #include "company_func.h"
 #include "pathfinder/npf/aystar.h"
 #include "saveload/saveload.h"
+#include "framerate_type.h"
 #include <list>
 #include <set>
 
@@ -720,6 +721,8 @@ TileIndex _cur_tileloop_tile;
  */
 void RunTileLoop()
 {
+	PerformanceAccumulator framerate(PFE_GL_LANDSCAPE);
+
 	/* The pseudorandom sequence of tiles is generated using a Galois linear feedback
 	 * shift register (LFSR). This allows a deterministic pseudorandom ordering, but
 	 * still with minimal state and fast iteration. */
@@ -1303,10 +1306,14 @@ void OnTick_LinkGraph();
 
 void CallLandscapeTick()
 {
-	OnTick_Town();
-	OnTick_Trees();
-	OnTick_Station();
-	OnTick_Industry();
+	{
+		PerformanceAccumulator framerate(PFE_GL_LANDSCAPE);
+
+		OnTick_Town();
+		OnTick_Trees();
+		OnTick_Station();
+		OnTick_Industry();
+	}
 
 	OnTick_Companies();
 	OnTick_LinkGraph();
