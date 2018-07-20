@@ -4216,7 +4216,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}역이 �
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}철도역 조각이 너무 많습니다
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}버스 정류장이 너무 많습니다
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}트럭 적하장이 너무 많습니다
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}다른 역과 너무 가깝습니다!
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}다른 항구와 너무 가깝습니다!
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}다른 공항과 너무 가깝습니다!
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}역 이름을 바꿀 수 없습니다...
