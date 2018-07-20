@@ -731,7 +731,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Δάνε
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Σύνολο:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Απαρίθμηση των οχημάτων που απέφεραν κέρδος πέρσι. Περιλαμβανομένων των επιγείων οχημάτων, τρένων, πλοίων και αεροσκαφών.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός των πρόσφατα επισκευασμένων σταθμών. Σταθμοί τραίνων, στάσεις λεωφορείων, αεροδρόμια, κ.ο.κ. προσμετρώνται ξεχωριστά, ακόμα κι αν ανήκουν στον ίδιο σταθμό.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός των πρόσφατα επισκευασμένων σταθμών. Σταθμοί τρένων, στάσεις λεωφορείων, αεροδρόμια, κ.ο.κ. προσμετρώνται ξεχωριστά, ακόμα κι αν ανήκουν στον ίδιο σταθμό.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Το κέρδος του οχήματος με το μικρότερο εισόδημα (μόνο οχήματα παλιότερα των 2 ετών θα λαμβάνονται υπόψην)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν σε ένα τρίμηνο με το μικρότερο κέρδος των τελευταίων 12 τριμήνων
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν σε ένα τρίμηνο με το μεγαλύτερο κέρδος των τελευταίων 12 τριμήνων
@@ -1279,22 +1279,22 @@ STR_CONFIG_SETTING_CATCHMENT                                    :Επιτρέπ�
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Διαφορετικοί σταθμοί και αεροδρόμια έχουν περιοχές κάλυψης διαφορετικού μεγέθους
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Επιτρέπεται η αφαίρεση περισσότερων ιδιοκτησιών των πολέων: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Είναι ευκολότερη η αφαίρεση υποδομών και κτιρίων που κατέχονται από την πόλη
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Μέγιστο μήκος τραίνων: {STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Ορίστε το μέγιστο μήκος των τραίνων
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Μέγιστο μήκος τρένων: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Ορίστε το μέγιστο μήκος των τρένων
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} τετραγωνίδι{P 0 ο α}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Ποσότητα καπνού/σπινθύρων οχήματος: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Ορίστε τον όγκο του καπνού ή τον αριθμό των σπιθών που παράγονται από τα οχήματα
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Μοντέλο επιτάχυνσης τρένων: {STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Επιλέξτε το μοντέλο φυσικής για την επιτάχυνση των τραίνων. Με το «αρχικό» μοντέλο οι κλίσεις επιβαρύνουν το ίδιο όλα τα οχήματα. Με το «ρεαλιστικό» μοντέλο οι κλίσεις και οι στροφές τα επιβαρύνουν ανάλογα με διάφορες ιδιότητες όπως το μήκος και το ελκτικό φορτίο
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Επιλέξτε το μοντέλο φυσικής για την επιτάχυνση των τρένων. Με το «αρχικό» μοντέλο οι κλίσεις επιβαρύνουν το ίδιο όλα τα οχήματα. Με το «ρεαλιστικό» μοντέλο οι κλίσεις και οι στροφές τα επιβαρύνουν ανάλογα με διάφορες ιδιότητες όπως το μήκος και το ελκτικό φορτίο
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Μοντέλο επιτάχυνσης οχημάτων δρόμου: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Επιλέξτε το μοντέλο φυσικής για την επιτάχυνση των οχημάτων. Με το «αρχικό» μοντέλο οι κλίσεις επιβαρύνουν το ίδιο όλα τα οχήματα. Με το «ρεαλιστικό» μοντέλο οι κλίσεις και οι στροφές τα επιβαρύνουν ανάλογα με διάφορες ιδιότητες όπως το μήκος και το ελκτικό φορτίο
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Κλίση εδάφους για τα τραίνα: {STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Η κλίση ενός κεκλιμένου τετραγωνίδιου για τα τραίνα. Μεγαλύτερες τιμές καθιστούν δυσκολότερο το ανέβασμα λόφων
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Κλίση εδάφους για τα τρένα: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Η κλίση ενός κεκλιμένου τετραγωνίδιου για τα τρένα. Μεγαλύτερες τιμές καθιστούν δυσκολότερο το ανέβασμα λόφων
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Κλίση εδάφους για τα οδικά οχήματα: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Η κλίση ενός κεκλιμένου τετραγωνίδιου για τα οδικά οχήματα. Μεγαλύτερες τιμές καθιστούν δυσκολότερο το ανέβασμα λόφων
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Απαγόρευση στα τρένα και πλοία να κάνουν στροφές 90°: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Στροφές 90 μοιρών προκύπτουν όταν μια οριζόντια σιδηροτροχιά ακολουθείται από μια κάθετη στο επόμενο τετραγωνίδιο, κάνοντας το τραίνο να στρίψει κατά 90 μοίρες όταν αλλάζει τετραγωνίδιο, αντί για τις συνηθισμένες 45 μοίρες σε άλλους συνδυασμούς σιδηροτροχιών. Αυτό έχει επίσης εφαρμογή στην ακτίνα στροφής των πλοίων
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Στροφές 90 μοιρών προκύπτουν όταν μια οριζόντια σιδηροτροχιά ακολουθείται από μια κάθετη στο επόμενο τετραγωνίδιο, κάνοντας το τρένο να στρίψει κατά 90 μοίρες όταν αλλάζει τετραγωνίδιο, αντί για τις συνηθισμένες 45 μοίρες σε άλλους συνδυασμούς σιδηροτροχιών. Αυτό έχει επίσης εφαρμογή στην ακτίνα στροφής των πλοίων
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Να επιτρέπεται η συνένωση μη παρακείμενων σταθμών: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Επιτρέπεται η προσθήκη τμημάτων σε σταθμό χωρίς αυτά να αγγίζουν τα ήδη υπάρχοντα τμήματα. Χρειάζεται Ctrl+Κλικ κατά την τοποθέτηση των νέων τμημάτων
 STR_CONFIG_SETTING_INFLATION                                    :Πληθωρισμός: {STRING}
@@ -1324,7 +1324,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Όταν ενε
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Οι νέες οδηγίες είναι «χωρίς στάση» από προεπιλογή: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Κανονικά, τα οχήματα σταματούν σε κάθε σταθμό που περνούν. Ενεργοποιώντας αυτήν τη ρύθμιση, δεν θα σταματούν σε κανένα σταθμό που θα βρει στη διαδρομή τους προς τον τελικό προορισμό. Σημείωστε πως αυτή η ρύθμιση ορίζει μόνο μια καθορισμένη τιμή για νέες εντολές. Ειδικές εντολές μπορούν να δοθούν για οποιαδήποτε συμπεριφορά, άσχετα από την προκαθορισμένη
 STR_CONFIG_SETTING_STOP_LOCATION                                :Οι εντόλες νέων τρένων διορίζουν ότι σταματάνε εξ ορισμού στο {STRING} της πλατφόρμας
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Το προεπιλεγμένο σημείο όπου θα σταματούν τα τραίνα στην πλατφόρμα . Το «κοντινό άκρο» σημαίνει κοντά στο σημείο εισόδου, «Μέση» σημαίνει στο μέσο της πλατφόρμας και «μακρινό άκρο» σημαίνει στο άλλο άκρο από το σημείο εισόδου. Σημειώστε ότι αυτή η ρύθμιση ορίζει μόνο την προκαθορισμένη τιμή για νέες εντολές. Παρ' όλα αυτά, είναι δυνατό να δοθούν διαφορετικές εντολές για οποιαδήποτε συμπεριφορά.
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Το προεπιλεγμένο σημείο όπου θα σταματούν τα τρένα στην πλατφόρμα . Το «κοντινό άκρο» σημαίνει κοντά στο σημείο εισόδου, «Μέση» σημαίνει στο μέσο της πλατφόρμας και «μακρινό άκρο» σημαίνει στο άλλο άκρο από το σημείο εισόδου. Σημειώστε ότι αυτή η ρύθμιση ορίζει μόνο την προκαθορισμένη τιμή για νέες εντολές. Παρ' όλα αυτά, είναι δυνατό να δοθούν διαφορετικές εντολές για οποιαδήποτε συμπεριφορά.
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :κοντινό άκρο
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :στη μέση
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :μακρινό άκρο
@@ -1345,7 +1345,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Επιτρέπ�
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Επιτρέπεται η αποστολή χρημάτων σε άλλες εταιρίες: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Επιτρέπεται η μεταφορά χρημάτων μεταξύ των εταιρειών σε παιχνίδια πολλαπλών παικτών
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Πολλαπλασιαστής βάρους σε φορτία για εξομοίωση βαρέων τρένων: {STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Ορίζεται ο αντίκτυπος της μεταφοράς φορτίων στα τραίνα. Υψηλότερη τιμή κάνει τη μεταφορά φορτίων πιο απαιτητική για τραίνα, ιδιαίτερα στους λόφους
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Ορίζεται ο αντίκτυπος της μεταφοράς φορτίων στα τρένα. Υψηλότερη τιμή κάνει τη μεταφορά φορτίων πιο απαιτητική για τρένα, ιδιαίτερα στους λόφους
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Παράγοντας ταχύτητας αεροπλάνων: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Ορίζεται η σχετική ταχύτητα των αεροπλάνων συγκριτικά με τους άλλους τύπους οχημάτων, ώστε να μειώνεται το ποσό του εισοδήματος από μεταφορές με αεροσκάφη
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
@@ -1507,7 +1507,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ενεργοπ�
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Χρήση δεικτών φόρτωσης: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Επιλέξτε εάν οι δείκτες φόρτωσης εμφανίζονται πάνω από τα οχήματα που φορτώνουν ή ξεφορτώνουν
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Εμφάνιση δρομολογίων σε στιγμές αντί για ημέρες: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Εμφάνιση χρόνων ταξιδιού στα χρονοδιαγράμματα σε χρόνο παιχνιδιού αντί σε ημέρες
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Εμφάνιση χρόνων ταξιδιού στα χρονοδιαγράμματα σε στιγμές αντί σε ημέρες
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Εμφάνιση αφίξεων και αναχωρήσεων στα δρομολόγια: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Εμφάνιση αναμενόμενης ώρας άφιξης και αναχώρησης στα χρονοδιαγράμματα
 STR_CONFIG_SETTING_QUICKGOTO                                    :Γρήγορη δημιουργία εντολών για τα οχήματα: {STRING}
@@ -1517,8 +1517,8 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Επιλογή 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Πρώτος διαθέσιμος
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Τελευταίος διαθέσιμος
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Περισσότερο χρησιμοποιούμενος
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Εμφάνιση δεσμέυσεων διαδρομών για γραμμές τραίνου: {STRING}
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Δίνεται ένα διαφορετικό χρώμα στις κατειλημμένες ράγες για να σας βοηθήσουν με προβλήματα όταν τα τραίνα αρνούνται να εισέλθουν σε τμήματα με βάση τροχιές
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Εμφάνιση δεσμέυσεων διαδρομών για γραμμές τρένου: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Δίνεται ένα διαφορετικό χρώμα στις κατειλημμένες ράγες για να σας βοηθήσουν με προβλήματα όταν τα τρένα αρνούνται να εισέλθουν σε τμήματα με βάση τροχιές
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Διατήρηση των οικοδομικών εργαλείων ενεργών μετά από χρήση τους: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Διατήρηση ανοικτών των εργαλείων για γέφυρες, σήραγγες, κλπ μετά από τη χρήση
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ομαδοποίηση εξόδων στο παράθυρο οικονομικών της εταιρίας: {STRING}
@@ -1544,7 +1544,7 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Παίζει τ
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Απενεργοποίηση των υποδομών για τα οχήματα που δεν είναι διαθέσιμα: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Όταν είναι ενεργοποιημένο, οι υποδομές είναι διαθέσιμες μόνο όταν υπάρχουν διαθέσιμα οχήματα, αποτρέποντας σπατάλη χρόνου και χρημάτων σε μη χρησιμοποιήσιμες υποδομές
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Μέγιστος αριθμός τρένων ανά εταιρία: {STRING}
-STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Μέγιστος αριθμός τραίνων που μπορεί να έχει μια εταιρεία
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Μέγιστος αριθμός τρένων που μπορεί να έχει μια εταιρεία
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Μέγιστος αριθμός οχημάτων δρόμου ανά εταιρία: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Μέγιστος αριθμός οδικών οχημάτων που μπορεί να έχει μια εταιρεία
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Μέγιστος αριθμός αεροσκαφών ανά εταιρία: {STRING}
@@ -1553,7 +1553,7 @@ STR_CONFIG_SETTING_MAX_SHIPS                                    :Μέγιστο�
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Μέγιστος αριθμός πλοίων που μπορεί να έχει μια εταιρεία
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Απενεργοποίηση τρένων για τον υπολογιστή: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Ενεργοποιώντας αυτήν τη ρύθμιση κάνει αδύνατη την κατασκευή τραίνων από παίκτη του υπολογιστή
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Ενεργοποιώντας αυτήν τη ρύθμιση κάνει αδύνατη την κατασκευή τρένων από παίκτη του υπολογιστή
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Απενεργοποίηση οχημάτων υπολογιστή: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Ενεργοποιώντας αυτήν τη ρύθμιση κάνει αδύνατη την κατασκευή οδικών οχημάτων από παίκτη του υπολογιστή
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Απενεργοποίηση αεροσκαφών υπολογιστή: {STRING}
@@ -1574,8 +1574,8 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Μέγιστο�
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Τα διαστήματα μεταξύ συντήρησης είναι σε ποσοστά: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Επιλέξτε εάν η επισκευή των οχημάτων εξαρτάται από τον χρόνο που πέρασε από την τελευταία επισκευή ή από την μείωση της αξιοπιστίας κατά ένα συγκεκριμένο ποσοστό της μέγιστης αξιοπιστίας
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :Προκαθορισμένο διάστημα μεταξύ επισκευών για τα τραίνα: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Ορίστε το προκαθορισμένο διάστημα μεταξύ συντηρήσεων για τα νέα οχήματα τραίνων, όταν δεν δίνεται άλλο διάστημα για το όχημα
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Προκαθορισμένο διάστημα μεταξύ επισκευών για τα τρένα: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Ορίστε το προκαθορισμένο διάστημα μεταξύ συντηρήσεων για τα νέα οχήματα τρένων, όταν δεν δίνεται άλλο διάστημα για το όχημα
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}ημέρ{P 0 α ες}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Απενεργοποιημένο
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Προκαθορισμένο διάστημα μεταξύ συντηρήσεων για οδικά οχήματα: {STRING}
@@ -1587,7 +1587,7 @@ STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Ορίστε τ
 STR_CONFIG_SETTING_NOSERVICE                                    :Απενεργοποίηση επισκευών όταν οι καταρρεύσεις είναι απενεργοποιημένες: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Όταν είναι ενεργοποιημένη, τα οχήματα δεν συντηρούνται όταν δεν είναι δυνατό να χαλάσουν
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ενεργοποίηση ορίων ταχύτητας βαγονιών: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Όταν είναι ενεργοποιημένο, χρησιμοποιούνται και τα όρια ταχύτητας των βαγονιών όταν αποφασίζεται η μέγιστη ταχύτητα ενός τραίνου
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Όταν είναι ενεργοποιημένο, χρησιμοποιούνται και τα όρια ταχύτητας των βαγονιών όταν αποφασίζεται η μέγιστη ταχύτητα ενός τρένου
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Απενεργοποίηση ηλεκτρικών σιδηροτροχιών: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ενεργοποιώντας αυτήν την ρύθμιση απενεργοποιείται η ανάγκη ηλεκτροδότησης των σιδηροτροχιών για να μπορέσουν σε αυτές να λειτουργήσουν οι ηλεκτρικές μηχανές
 
@@ -1805,13 +1805,13 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Συνίσταται)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Μέθοδος δρομολόγησης για τρένα: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Μέθοδος διαπίστωσης διαδρομής που χρησιμοποιείται για τα τραίνα
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Μέθοδος διαπίστωσης διαδρομής που χρησιμοποιείται για τα τρένα
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Μέθοδος δρομολόγησης για οχήματα δρόμου: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Μέθοδος διαπίστωσης διαδρομής που χρησιμοποιείται για τα οδικά οχήματα
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Μέθοδος δρομολόγησης για πλοία: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Μέθοδος διαπίστωσης διαδρομής που χρησιμοποιείται για τα πλοία
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Αυτόματη αναστροφή σε σηματοδότες: {STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Επιτρέπεται στα τραίνα να αντιστραφούν σε σήμα, εάν περιμένουν εκεί για πολύ ώρα
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Επιτρέπεται στα τρένα να αντιστραφούν σε σήμα, εάν περιμένουν εκεί για πολύ ώρα
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Αλλαγή τιμής ρύθμισης
 
@@ -2804,6 +2804,37 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Αρχι
 STR_ABOUT_VERSION                                               :{BLACK}Έκδοση OpenTTD{REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Η ομάδα του OpenTTD
 
+# Framerate display window
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Αριθμός στιγμών παιχνιδιού που προσομοιώνεται ανά δευτερόλεπτο.
+STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Παράγοντας ταχύτητας τρέχοντος παιχνιδιού: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Πόσο γρήγορα εκτελείται το παιχνίδι αυτήν τη στιγμή, σε σύγκριση με την αναμενόμενη ταχύτητα στον κανονικό ρυθμό εξομοίωσης.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Τρέχον
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Μέσο
+STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Τα δεδομένα βασίζονται σε μετρήσεις {COMMA}
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
+############ Leave those lines in this order!!
+STR_FRAMERATE_GL_ECONOMY                                        :{WHITE} Διαχείριση φορτίου:
+STR_FRAMERATE_GL_TRAINS                                         :Στιγμές τρένων:
+STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE} Στιγμές οχημάτων δρόμου:
+STR_FRAMERATE_GL_SHIPS                                          :Στιγμές πλοίων:
+STR_FRAMERATE_GL_AIRCRAFT                                       :Στιγμές αεροσκαφών:
+STR_FRAMERATE_GL_LANDSCAPE                                      :Στιγμές κόσμου:
+STR_FRAMERATE_VIDEO                                             :{WHITE}Έξοδος βίντεο:
+STR_FRAMERATE_SOUND                                             :{WHITE}Μίξη ήχου:
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Διαχείριση φορτίου
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Στιγμές τρένων
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Στιγμές οχημάτων δρόμου
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Στιγμές πλοίων
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Στιγμές αεροσκαφών
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Στιγμές κόσμου
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Καθυστέρηση γραφήματος συνδέσμου
+STR_FRAMETIME_CAPTION_VIDEO                                     :Έξοδος βίντεο
+STR_FRAMETIME_CAPTION_SOUND                                     :Μίξη ήχου
+############ End of leave-in-this-order
+
+
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Αποθήκευση Παιχνιδιού
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Φόρτωση Παιχνιδιού
@@ -3297,7 +3328,7 @@ STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Έξοδ
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Κατασκευές
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Νέα Οχήματα
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Λειτουργικά Έξοδα Τραίνων
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Λειτουργικά Έξοδα Τρένων
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Λειτουργικά Έξοδα Οχημάτων
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Λειτουργικά Έξοδα Αεροσκαφών
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Λειτουργικά Έξοδα Πλοίων
@@ -3609,7 +3640,7 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Κλων
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Κλωνοποίηση Πλοίου
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Κλωνοποίηση Αεροσκάφους
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τρένου μαζί με τα όλα τα βαγόνια. Πατήστε αυτό το κουμπί και μετά σε κάποιο τραίνο μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τρένου μαζί με τα όλα τα βαγόνια. Πατήστε αυτό το κουμπί και μετά σε κάποιο τρένο μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του οχήματος. Πατήστε αυτό το κουμπί και μετά σε κάποιο όχημα μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του πλοίου. Πατήστε αυτό το κουμπί και μετά σε κάποιο πλοίο μέσα ή έξω από το ναυπηγείο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροσκάφους. Πατήστε αυτό το κουμπί και μετά σε κάποιο αεροσκάφος μέσα στο ή έξω από το υπόστεγο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
@@ -4554,7 +4585,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Ξεκι
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Δεν μπορεί το τρένο να περάσει σήμα με κίνδυνο...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Δεν αντιστρέφεται η κατεύθυνση του τρένου...
-STR_ERROR_TRAIN_START_NO_POWER                                  :Το τραίνο δεν έχει ενέργεια
+STR_ERROR_TRAIN_START_NO_POWER                                  :Το τρένο δεν έχει ενέργεια
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Δεν γίνεται να αλλάξει πορεία το όχημα...
 

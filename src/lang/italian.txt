@@ -477,6 +477,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Screenshot con zoom massimo
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Screenshot con zoom predefinito
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot intera mappa
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Mostra frame rate
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Informazioni su 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Strumento allineamento sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Attiva/disattiva bounding box
@@ -2726,6 +2727,56 @@ STR_ABOUT_OPENTTD                                               :{WHITE}Informaz
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright originale {COPYRIGHT} 1995 Chris Sawyer, Tutti i diritti riservati
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versione {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Il team OpenTTD
+
+# Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Frame rate
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Velocità simulazione: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Numero di cicli di simulazione della partita in un secondo
+STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Frame rate grafica: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Numero di fotogrammi video renderizzati in un secondo
+STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Fattore di velocità corrente della partita: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Prestazioni correnti della partita, confrontate con le prestazioni attese alla velocità di giorno normale.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Corrente
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Media
+STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Dati basati su {COMMA} misurazioni
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} frame/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} frame/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} frame/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
+############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{WHITE}Totale ciclo simulazione:
+STR_FRAMERATE_GL_ECONOMY                                        :{WHITE}  Gestione carichi:
+STR_FRAMERATE_GL_TRAINS                                         :{WHITE}  Aggiornamento treni:
+STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  Aggiornamento automezzi:
+STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  Aggiornamento navi:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE}  Aggiornamento aeromobili:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE}  Aggiornamento mondo:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE}  Ritardo grafo di distribuzione:
+STR_FRAMERATE_DRAWING                                           :{WHITE}Renderizzazione grafica:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE}  Visuali mondo:
+STR_FRAMERATE_VIDEO                                             :{WHITE}Output video:
+STR_FRAMERATE_SOUND                                             :{WHITE}Missaggio suoni:
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Ciclo simulazione
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Gestione carichi
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Aggiornamento treni
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Aggiornamento automezzi
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Aggiornamento navi
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Aggiornamento aeromobili
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Aggiornamento mondo
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Ritardo grafo di distribuzione
+STR_FRAMETIME_CAPTION_DRAWING                                   :Renderizzazione grafica
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Renderizzazione visuali mondo
+STR_FRAMETIME_CAPTION_VIDEO                                     :Output video
+STR_FRAMETIME_CAPTION_SOUND                                     :Missaggio suoni
+############ End of leave-in-this-order
+
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Salva partita

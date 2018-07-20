@@ -970,6 +970,13 @@ STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Маяк
 # About OpenTTD window
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD верси {REV}
 
+# Framerate display window
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
 # Save/load game/scenario
 
 

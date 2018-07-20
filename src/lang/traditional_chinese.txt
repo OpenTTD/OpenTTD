@@ -2682,6 +2682,13 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}原著�
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 版本 {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD 開發小組
 
+# Framerate display window
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}儲存遊戲
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}載入遊戲

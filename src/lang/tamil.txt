@@ -2376,6 +2376,13 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}அச�
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD பதிப்பு {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD குழுமம்
 
+# Framerate display window
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}ஆட்டத்தை பதிவு செய்
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}பதிவு செய்த ஆட்டத்தை தொடரு

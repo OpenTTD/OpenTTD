@@ -1107,6 +1107,13 @@ STR_LAI_WATER_DESCRIPTION_RIVER                                 :नदी
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}ओपेन टीटीडी बद्दल
 
+# Framerate display window
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
 # Save/load game/scenario
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} मोकळ
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}

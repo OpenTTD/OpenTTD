@@ -2470,6 +2470,13 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Orizjine
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-ferzje {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 It OpenTTD team
 
+# Framerate display window
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Spul Opslaan
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Spul Lade

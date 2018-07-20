@@ -2690,6 +2690,13 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Opprinne
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versjon {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD-teamet
 
+# Framerate display window
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Lagre spill
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Last inn spill

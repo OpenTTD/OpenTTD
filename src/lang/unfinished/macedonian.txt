@@ -1201,6 +1201,13 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Ориг
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD верзија {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 OpenTTD тимот
 
+# Framerate display window
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
 # Save/load game/scenario
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Оптоварување
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Оптоварување на избраната игра

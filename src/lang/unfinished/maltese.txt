@@ -682,6 +682,13 @@ STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Aghzel i
 
 # About OpenTTD window
 
+# Framerate display window
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
 # Save/load game/scenario
 
 
