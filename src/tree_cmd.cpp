@@ -220,7 +220,7 @@ static void PlaceTreeGroups(uint num_groups)
 			int x = GB(r, 0, 5) - 16;
 			int y = GB(r, 8, 5) - 16;
 			uint dist = abs(x) + abs(y);
-			uint max_dist = (_settings_newgame.game_creation.tree_placer == TP_IMPROVED) ? GB(r, 0, 3) + 8 : MAX_DISTANCE_FROM_CENTER;
+			uint max_dist = (_settings_newgame.game_creation.tree_placer == TP_IMPROVED) ? GB(r, 16, 3) + 8 : MAX_DISTANCE_FROM_CENTER;
 
 			if (dist > max_dist)
 				continue;
