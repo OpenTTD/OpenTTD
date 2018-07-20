@@ -40,7 +40,6 @@ enum TreePlacer {
 	TP_NONE,     ///< No tree placer algorithm
 	TP_ORIGINAL, ///< The original algorithm
 	TP_IMPROVED, ///< A 'improved' algorithm
-	TP_FOREST,   ///< An algorithm trying to make only forests
 };
 
 /** Where to place trees while in-game? */
@@ -56,6 +55,7 @@ byte _trees_tick_ctr;
 static const uint16 DEFAULT_TREE_STEPS = 1000;             ///< Default number of attempts for placing trees.
 static const uint16 DEFAULT_RAINFOREST_TREE_STEPS = 15000; ///< Default number of attempts for placing extra trees at rainforest in tropic.
 static const uint16 EDITOR_TREE_DIV = 5;                   ///< Game editor tree generation divisor factor.
+static const uint16 IMPROVED_TREES_DIV = 16;               ///< Improved generation divisor factor for alone trees.
 
 /**
  * Tests if a tile can be converted to MP_TREES
@@ -94,7 +94,7 @@ static bool IsNearbyForest(TileIndex tile)
 		for (int y = -2; y <= 2; y++) {
 			TileIndex vincity = TileAddWrap(tile, x, y);
 			if (vincity != INVALID_TILE &&
-					IsTileType(vincity, MP_TREES)) {
+				IsTileType(vincity, MP_TREES)) {
 				planted_tile_count++;
 			}
 		}
@@ -210,6 +210,8 @@ static void PlaceTree(TileIndex tile, uint32 r)
  */
 static void PlaceTreeGroups(uint num_groups)
 {
+	const uint MAX_DISTANCE_FROM_CENTER = 13;
+
 	do {
 		TileIndex center_tile = RandomTile();
 
@@ -218,11 +220,16 @@ static void PlaceTreeGroups(uint num_groups)
 			int x = GB(r, 0, 5) - 16;
 			int y = GB(r, 8, 5) - 16;
 			uint dist = abs(x) + abs(y);
+			uint max_dist = (_settings_newgame.game_creation.tree_placer == TP_IMPROVED) ? GB(r, 0, 3) + 8 : MAX_DISTANCE_FROM_CENTER;
+
+			if (dist > max_dist)
+				continue;
+
 			TileIndex cur_tile = TileAddWrap(center_tile, x, y);
 
 			IncreaseGeneratingWorldProgress(GWP_TREE);
 
-			if (cur_tile != INVALID_TILE && dist <= 13 && CanPlantTreesOnTile(cur_tile, true)) {
+			if (cur_tile != INVALID_TILE && CanPlantTreesOnTile(cur_tile, true)) {
 				PlaceTree(cur_tile, r);
 			}
 		}
@@ -274,6 +281,7 @@ void PlaceTreesRandomly()
 
 	i = ScaleByMapSize(DEFAULT_TREE_STEPS);
 	if (_game_mode == GM_EDITOR) i /= EDITOR_TREE_DIV;
+	if (_settings_game.game_creation.tree_placer == TP_IMPROVED) i /= IMPROVED_TREES_DIV;
 	do {
 		uint32 r = Random();
 		TileIndex tile = RandomTileSeed(r);
@@ -282,8 +290,7 @@ void PlaceTreesRandomly()
 
 		if (CanPlantTreesOnTile(tile, true)) {
 			PlaceTree(tile, r);
-			if (_settings_game.game_creation.tree_placer != TP_IMPROVED &&
-					_settings_game.game_creation.tree_placer != TP_FOREST) {
+			if (_settings_game.game_creation.tree_placer != TP_IMPROVED) {
 				continue;
 			}
 
@@ -333,8 +340,6 @@ void GenerateTrees()
 
 	switch (_settings_game.game_creation.tree_placer) {
 		case TP_ORIGINAL: i = _settings_game.game_creation.landscape == LT_ARCTIC ? 15 : 6; break;
-		case TP_FOREST:
-			FALLTHROUGH;
 		case TP_IMPROVED: i = _settings_game.game_creation.landscape == LT_ARCTIC ?  4 : 2; break;
 		default: NOT_REACHED();
 	}
@@ -347,8 +352,6 @@ void GenerateTrees()
 	SetGeneratingWorldProgress(GWP_TREE, total);
 
 	if (num_groups != 0) PlaceTreeGroups(num_groups);
-
-	if (_settings_game.game_creation.tree_placer == TP_FOREST) return;
 
 	for (; i != 0; i--) {
 		PlaceTreesRandomly();
@@ -734,7 +737,7 @@ static void TileLoop_Trees(TileIndex tile)
 						if (IsTileType(tile, MP_CLEAR) && GetClearGround(tile) == CLEAR_GRASS && GetClearDensity(tile) != 3) return;
 
 						/* Plants trees only near existing forests */
-						if (_settings_game.game_creation.tree_placer == TP_FOREST && !IsNearbyForest(tile)) return;
+						if (_settings_game.game_creation.tree_placer == TP_IMPROVED && !IsNearbyForest(tile)) return;
 
 						PlantTreesOnTile(tile, treetype, 0, 0);
 
@@ -810,7 +813,7 @@ void OnTick_Trees()
 	tile = RandomTileSeed(r);
 	if (CanPlantTreesOnTile(tile, false) && (tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
 		/* Plants trees only near existing forests */
-		if (_settings_game.game_creation.tree_placer == TP_FOREST && !IsNearbyForest(tile)) return;
+		if (_settings_game.game_creation.tree_placer == TP_IMPROVED && !IsNearbyForest(tile)) return;
 
 		PlantTreesOnTile(tile, tree, 0, 0);
 	}
