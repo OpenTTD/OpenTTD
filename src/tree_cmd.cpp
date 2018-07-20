@@ -41,7 +41,6 @@ enum TreePlacer {
 	TP_NONE,     ///< No tree placer algorithm
 	TP_ORIGINAL, ///< The original algorithm
 	TP_IMPROVED, ///< A 'improved' algorithm
-	TP_FOREST,   ///< An algorithm trying to make only forests
 };
 
 /** Where to place trees while in-game? */
@@ -96,7 +95,7 @@ static bool IsNearbyForest(TileIndex tile)
 		for (int y = -2; y <= 2; y++) {
 			TileIndex vincity = TileAddWrap(tile, x, y);
 			if (vincity != INVALID_TILE &&
-					IsTileType(vincity, MP_TREES)) {
+				IsTileType(vincity, MP_TREES)) {
 				planted_tile_count++;
 			}
 		}
@@ -282,8 +281,7 @@ void PlaceTreesRandomly()
 
 		if (CanPlantTreesOnTile(tile, true)) {
 			PlaceTree(tile, r);
-			if (_settings_game.game_creation.tree_placer != TP_IMPROVED &&
-					_settings_game.game_creation.tree_placer != TP_FOREST) {
+			if (_settings_game.game_creation.tree_placer != TP_IMPROVED) {
 				continue;
 			}
 
@@ -386,8 +384,6 @@ void GenerateTrees()
 
 	switch (_settings_game.game_creation.tree_placer) {
 		case TP_ORIGINAL: i = _settings_game.game_creation.landscape == LT_ARCTIC ? 15 : 6; break;
-		case TP_FOREST:
-			FALLTHROUGH;
 		case TP_IMPROVED: i = _settings_game.game_creation.landscape == LT_ARCTIC ?  4 : 2; break;
 		default: NOT_REACHED();
 	}
@@ -400,8 +396,6 @@ void GenerateTrees()
 	SetGeneratingWorldProgress(GWP_TREE, total);
 
 	if (num_groups != 0) PlaceTreeGroups(num_groups);
-
-	if (_settings_game.game_creation.tree_placer == TP_FOREST) return;
 
 	for (; i != 0; i--) {
 		PlaceTreesRandomly();
@@ -791,7 +785,7 @@ static void TileLoop_Trees(TileIndex tile)
 						if (IsTileType(tile, MP_CLEAR) && GetClearGround(tile) == CLEAR_GRASS && GetClearDensity(tile) != 3) return;
 
 						/* Plants trees only near existing forests */
-						if (_settings_game.game_creation.tree_placer == TP_FOREST && !IsNearbyForest(tile)) return;
+						if (_settings_game.game_creation.tree_placer == TP_IMPROVED && !IsNearbyForest(tile)) return;
 
 						PlantTreesOnTile(tile, treetype, 0, 0);
 
@@ -895,7 +889,7 @@ void OnTick_Trees()
 	tile = RandomTileSeed(r);
 	if (CanPlantTreesOnTile(tile, false) && (tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
 		/* Plants trees only near existing forests */
-		if (_settings_game.game_creation.tree_placer == TP_FOREST && !IsNearbyForest(tile)) return;
+		if (_settings_game.game_creation.tree_placer == TP_IMPROVED && !IsNearbyForest(tile)) return;
 
 		PlantTreesOnTile(tile, tree, 0, 0);
 	}
