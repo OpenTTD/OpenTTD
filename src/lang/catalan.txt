@@ -476,6 +476,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pant
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura de pantalla amb el zoom màxim
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Captura de pantalla amb el zoom predeterminat
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de pantalla de tot el mapa
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Mostra els fotogrames per segon
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Quant a l'OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador de sprites
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Commuta les caixes delimitadores
@@ -651,6 +652,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}No hi ha peces musicals disponibles
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}«{STRING}»
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Pista
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Títol
@@ -671,11 +673,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Habilita
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostra la finestra de selecció de pistes
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Programació de pistes - «{STRING}»
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} «{STRING}»
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Índex de pistes
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Llista «{STRING}»
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Esborra
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Canvia conjunt
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Esborra la llista actual (només les llistes personalitzables)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Canvia la selecció musical a un altre conjunt instal·lat.
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clica la pista de música per afegir-la a la llista actual (només en les llistes personalitzables)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clica la pista de música per treure-la de la llista actual (només en llistes personalitzables)
 
@@ -878,10 +883,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copia a la vista
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Canvia la vista extra
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Mou aquesta vista on està la vista principal
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Vés a la vista
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Mou la vista principal on està aquesta vista
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Canvia vista principal
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copia el lloc d'aquesta vista extra a la vista principal.
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opcions de la partida
@@ -1335,6 +1340,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color del terre
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verd
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verd fosc
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violat
+STR_CONFIG_SETTING_SCROLLMODE                                   :Desplaçament del mapa: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportament quan es desplaça el mapa.
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Mou la vista amb el botó dret del ratolí amb la posició del ratolí fixada
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mou el mapa amb el botó dret del ratolí amb la posició del ratolí fixada
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Mou el mapa amb el botó dret del ratolí
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Mou el mapa amb el botó esquerre del ratolí
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desplaçament suau de la vista: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla com la vista principal es desplaça a una posició específica quan es clica al mapa petit o quan s'envia una ordre de desplaçar-se a un objecte específic al mapa. Si està activat, la vista es desplaça suaument; si està desactivat, salta directament al punt assenyalat
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostra un cartell de mesura quan estiguis utilitzant vàries eines de construcció: {STRING}
@@ -2279,6 +2290,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Llegenda
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Tot
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Cap
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Selecciona les companyies que seran mostrades
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{G=Masculin}{TINY_FONT}{BLACK}no utilitzat
@@ -2688,9 +2700,52 @@ STR_ABOUT_VERSION                                               :{BLACK}Versió 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 L'equip de l'OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Fotogrames per segon
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} (x{DECIMAL})
+STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Velocitat de simulació: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Nombre de tics del joc per segon.
+STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Fotogrames per segon:{NBSP}{STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Nombre de fotogrames renderitzats per segon.
+STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Factor de velocitat actual: x{DECIMAL}
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Quant ràpid va la partida actual, comparant-ho amb l'estimació de la velocitat normal.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Actual
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Mitjana
+STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Dades basades en {COMMA} mesures.
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE}{NBSP}ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE}{NBSP}ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE}{NBSP}ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} fps
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE}{NBSP}fps
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE}{NBSP}fps
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA}{NBSP}ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA}{NBSP}s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{WHITE}Total del bucle:
+STR_FRAMERATE_GL_ECONOMY                                        :{WHITE}  Tractament de la càrrega:
+STR_FRAMERATE_GL_TRAINS                                         :{WHITE}  Tics de tren:
+STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  Tics de vehicles de carretera:
+STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  Tics de vaixell:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE}  Tics d'aeronau:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE}  Tics del mapa:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE}  Retard del graf de distribució:
+STR_FRAMERATE_DRAWING                                           :{WHITE}Renderitzat de gràfics:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE}  Vistes del mapa:
+STR_FRAMERATE_VIDEO                                             :{WHITE}Sortida de vídeo:
+STR_FRAMERATE_SOUND                                             :{WHITE}Mescla de so:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Bucle
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Tractament de la càrrega
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Tics de tren
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Tics de vehicle de carretera
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Tics de vaixell
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Tics d'aeronau
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Tics del mapa
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Retard del graf de distribució
+STR_FRAMETIME_CAPTION_DRAWING                                   :Renderitzat de gràfics
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Renderitzat de la vista del mapa
+STR_FRAMETIME_CAPTION_VIDEO                                     :Sortida de vídeo
+STR_FRAMETIME_CAPTION_SOUND                                     :Mescla de so
 ############ End of leave-in-this-order
 
 
@@ -2978,6 +3033,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Posa un 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Poblacions
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Cap -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA} -{YELLOW} ciutat{BLACK})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Noms de Població - clica al nom per centrar la vista principal a la població. Ctrl+Clic obre una nova vista al lloc de la població
 STR_TOWN_POPULATION                                             :{BLACK}Població mundial: {COMMA}
 
@@ -2985,6 +3041,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Poblaci�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Ciutat)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Població: {ORANGE}{COMMA}{BLACK}  Cases: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} l'últim mes: {ORANGE}{COMMA}{BLACK}  (màx. {ORANGE}{COMMA}{BLACK})
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Càrrega requerida per tal que la població creixi:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requerides
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requerit a l'hivern
@@ -4231,6 +4288,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... aque
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... sentit de la carretera en la direcció incorrecta
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... les estacions d'autobús de pas no poden tenir cantonades
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... les estacions d'autobús de pas no poden tenir interseccions
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... la carretera és d'un sol sentit o està blocada.
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}No es pot treure part de la estació...
@@ -4482,6 +4540,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Sons originals 
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Sons originals del Transport Tycoon Deluxe pel Windows.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Una llista de sons buida.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Música original del Transport Tycoon Deluxe pel Windows.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Música original del Transport Tycoon Deluxe pel DOS.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Música original del Transport Tycoon Deluxe (original/editor d'escenaris) pel DOS.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Una llista de música sense cap peça.
 
 ##id 0x2000
