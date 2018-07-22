@@ -55,7 +55,7 @@ typedef GUIList<BuildBridgeData> GUIBridgeList; ///< List of bridges, used in #B
  * @param p1 packed start tile coords (~ dx)
  * @param p2 various bitstuffed elements
  * - p2 = (bit  0- 7) - bridge type (hi bh)
- * - p2 = (bit  8-11) - rail type or road types.
+ * - p2 = (bit  8-13) - rail type or road types.
  * - p2 = (bit 15-16) - transport type.
  */
 void CcBuildBridge(const CommandCost &result, TileIndex end_tile, uint32 p1, uint32 p2)
