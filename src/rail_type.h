@@ -32,7 +32,7 @@ enum RailType {
 	RAILTYPE_ELECTRIC = 1,          ///< Electric rails
 	RAILTYPE_MONO     = 2,          ///< Monorail
 	RAILTYPE_MAGLEV   = 3,          ///< Maglev
-	RAILTYPE_END      = 16,         ///< Used for iterations
+	RAILTYPE_END      = 64,         ///< Used for iterations
 	INVALID_RAILTYPE  = 0xFF,       ///< Flag for invalid railtype
 
 	DEF_RAILTYPE_FIRST = RAILTYPE_END, ///< Default railtype: first available
@@ -43,7 +43,7 @@ enum RailType {
 /** Allow incrementing of Track variables */
 DECLARE_POSTFIX_INCREMENT(RailType)
 /** Define basic enum properties */
-template <> struct EnumPropsT<RailType> : MakeEnumPropsT<RailType, byte, RAILTYPE_BEGIN, RAILTYPE_END, INVALID_RAILTYPE, 4> {};
+template <> struct EnumPropsT<RailType> : MakeEnumPropsT<RailType, byte, RAILTYPE_BEGIN, RAILTYPE_END, INVALID_RAILTYPE, 6> {};
 typedef TinyEnumT<RailType> RailTypeByte;
 
 /**
@@ -55,7 +55,7 @@ enum RailTypes {
 	RAILTYPES_ELECTRIC = 1 << RAILTYPE_ELECTRIC, ///< Electrified rails
 	RAILTYPES_MONO     = 1 << RAILTYPE_MONO,     ///< Monorail!
 	RAILTYPES_MAGLEV   = 1 << RAILTYPE_MAGLEV,   ///< Ever fast maglev
-	INVALID_RAILTYPES  = UINT_MAX,               ///< Invalid railtypes
+	INVALID_RAILTYPES  = UINT64_MAX,             ///< Invalid railtypes
 };
 DECLARE_ENUM_AS_BIT_SET(RailTypes)
 

@@ -115,7 +115,7 @@ static inline bool IsRailDepotTile(TileIndex t)
  */
 static inline RailType GetRailType(TileIndex t)
 {
-	return (RailType)GB(_me[t].m8, 0, 4);
+	return (RailType)GB(_me[t].m8, 0, 6);
 }
 
 /**
@@ -125,7 +125,7 @@ static inline RailType GetRailType(TileIndex t)
  */
 static inline void SetRailType(TileIndex t, RailType r)
 {
-	SB(_me[t].m8, 0, 4, r);
+	SB(_me[t].m8, 0, 6, r);
 }
 
 
