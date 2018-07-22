@@ -223,11 +223,11 @@ static void PlaceTreeGroups(uint num_groups)
 
 			uint max_dist = MAX_DISTANCE_FROM_CENTER;
 
-			if (_settings_newgame.game_creation.tree_placer == TP_IMPROVED)
+			if (_settings_newgame.game_creation.tree_placer == TP_IMPROVED) {
 				max_dist = GB(r, 16, 3) + 8;
+			}
 
-			if (dist > max_dist)
-				continue;
+			if (dist > max_dist) continue;
 
 			TileIndex cur_tile = TileAddWrap(center_tile, x, y);
 
