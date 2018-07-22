@@ -2704,7 +2704,7 @@ STR_FRAMERATE_CAPTION                                           :{WHITE}Fotogram
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} (x{DECIMAL})
 STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Velocitat de simulació: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Nombre de tics del joc per segon.
-STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Fotogrames per segon:{NBSP}{STRING}
+STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Fotogrames per segon: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Nombre de fotogrames renderitzats per segon.
 STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Factor de velocitat actual: x{DECIMAL}
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Quant ràpid va la partida actual, comparant-ho amb l'estimació de la velocitat normal.
@@ -2714,7 +2714,7 @@ STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Dades ba
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE}{NBSP}ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE}{NBSP}ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE}{NBSP}ms
-STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} fps
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE}{NBSP}fps
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE}{NBSP}fps
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE}{NBSP}fps
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA}{NBSP}ms

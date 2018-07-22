@@ -2878,6 +2878,15 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Команда разработчиков OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} мс
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} мс
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} мс
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} кадр{P "" а ов}/с
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} кадр{P "" а ов}/с
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} кадр{P "" а ов}/с
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} мс
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} с
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
