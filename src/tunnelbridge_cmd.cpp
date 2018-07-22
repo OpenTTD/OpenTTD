@@ -701,8 +701,22 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 		/* Hide the tile from the terraforming command */
 		TileIndex old_first_tile = coa->first_tile;
 		coa->first_tile = INVALID_TILE;
+
+		/* CMD_TERRAFORM_LAND may append further items to _cleared_object_areas,
+		 * however it will never erase or re-order existing items.
+		 * _cleared_object_areas is a value-type SmallVector, therefore appending items
+		 * may result in a backing-store re-allocation, which would invalidate the coa pointer.
+		 * The index of the coa pointer into the _cleared_object_areas vector remains valid,
+		 * and can be used safely after the CMD_TERRAFORM_LAND operation.
+		 * Deliberately clear the coa pointer to avoid leaving dangling pointers which could
+		 * inadvertently be dereferenced.
+		 */
+		assert(coa >= _cleared_object_areas.Begin() && coa < _cleared_object_areas.End());
+		size_t coa_index = coa - _cleared_object_areas.Begin();
+		coa = NULL;
+
 		ret = DoCommand(end_tile, end_tileh & start_tileh, 0, flags, CMD_TERRAFORM_LAND);
-		coa->first_tile = old_first_tile;
+		_cleared_object_areas[coa_index].first_tile = old_first_tile;
 		if (ret.Failed()) return_cmd_error(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
 		cost.AddCost(ret);
 	}
