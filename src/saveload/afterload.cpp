@@ -1214,6 +1214,38 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Railtype moved from m3 to m8 in version 200. */
+	if (IsSavegameVersionBefore(200)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			switch (GetTileType(t)) {
+				case MP_RAILWAY:
+					SetRailType(t, (RailType)GB(_m[t].m3, 0, 4));
+					break;
+
+				case MP_ROAD:
+					if (IsLevelCrossing(t)) {
+						SetRailType(t, (RailType)GB(_m[t].m3, 0, 4));
+					}
+					break;
+
+				case MP_STATION:
+					if (HasStationRail(t)) {
+						SetRailType(t, (RailType)GB(_m[t].m3, 0, 4));
+					}
+					break;
+
+				case MP_TUNNELBRIDGE:
+					if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
+						SetRailType(t, (RailType)GB(_m[t].m3, 0, 4));
+					}
+					break;
+
+				default:
+					break;
+			}
+		}
+	}
+
 	/* Elrails got added in rev 24 */
 	if (IsSavegameVersionBefore(24)) {
 		RailType min_rail = RAILTYPE_ELECTRIC;

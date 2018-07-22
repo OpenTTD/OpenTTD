@@ -131,11 +131,12 @@ static inline void MakeBridgeRamp(TileIndex t, Owner o, BridgeType bridgetype, D
 	SetTileType(t, MP_TUNNELBRIDGE);
 	SetTileOwner(t, o);
 	_m[t].m2 = 0;
-	_m[t].m3 = rt;
+	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = 1 << 7 | tt << 2 | d;
 	SB(_me[t].m6, 2, 4, bridgetype);
 	_me[t].m7 = 0;
+	_me[t].m8 = rt;
 }
 
 /**
