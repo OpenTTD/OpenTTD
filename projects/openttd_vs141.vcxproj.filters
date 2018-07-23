@@ -1539,6 +1539,9 @@
     <ClInclude Include="..\src\widgets\fios_widget.h">
       <Filter>Widgets</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\widgets\framerate_widget.h">
+      <Filter>Widgets</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\widgets\genworld_widget.h">
       <Filter>Widgets</Filter>
     </ClInclude>

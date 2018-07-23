@@ -794,6 +794,7 @@
     <ClInclude Include="..\src\widgets\engine_widget.h" />
     <ClInclude Include="..\src\widgets\error_widget.h" />
     <ClInclude Include="..\src\widgets\fios_widget.h" />
+    <ClInclude Include="..\src\widgets\framerate_widget.h" />
     <ClInclude Include="..\src\widgets\genworld_widget.h" />
     <ClInclude Include="..\src\widgets\goal_widget.h" />
     <ClInclude Include="..\src\widgets\graph_widget.h" />
