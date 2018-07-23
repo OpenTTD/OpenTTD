@@ -138,6 +138,8 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_SPRITE_ALIGNER,                         "WC_SPRITE_ALIGNER");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_LINKGRAPH_LEGEND,                       "WC_LINKGRAPH_LEGEND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_SAVE_PRESET,                            "WC_SAVE_PRESET");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_FRAMERATE_DISPLAY,                      "WC_FRAMERATE_DISPLAY");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_FRAMETIME_GRAPH,                        "WC_FRAMETIME_GRAPH");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_INVALID,                                "WC_INVALID");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::TC_BLUE,                                   "TC_BLUE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::TC_SILVER,                                 "TC_SILVER");
@@ -450,6 +452,16 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SL_NEWGRF_INFO,                        "WID_SL_NEWGRF_INFO");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SL_LOAD_BUTTON,                        "WID_SL_LOAD_BUTTON");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SL_MISSING_NEWGRFS,                    "WID_SL_MISSING_NEWGRFS");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_CAPTION,                           "WID_FRW_CAPTION");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_RATE_GAMELOOP,                     "WID_FRW_RATE_GAMELOOP");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_RATE_DRAWING,                      "WID_FRW_RATE_DRAWING");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_RATE_FACTOR,                       "WID_FRW_RATE_FACTOR");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_INFO_DATA_POINTS,                  "WID_FRW_INFO_DATA_POINTS");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_TIMES_NAMES,                       "WID_FRW_TIMES_NAMES");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_TIMES_CURRENT,                     "WID_FRW_TIMES_CURRENT");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_TIMES_AVERAGE,                     "WID_FRW_TIMES_AVERAGE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FGW_CAPTION,                           "WID_FGW_CAPTION");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FGW_GRAPH,                             "WID_FGW_GRAPH");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_TEMPERATE,                          "WID_GL_TEMPERATE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_ARCTIC,                             "WID_GL_ARCTIC");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_TROPICAL,                           "WID_GL_TROPICAL");

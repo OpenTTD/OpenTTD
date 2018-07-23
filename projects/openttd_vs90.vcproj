@@ -2372,6 +2372,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\widgets\framerate_widget.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\widgets\genworld_widget.h"
 				>
 			</File>

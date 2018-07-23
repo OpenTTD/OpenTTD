@@ -689,7 +689,7 @@ enum WindowClass {
 
 	/**
 	 * Frame time graph; %Window numbers:
-	 *   - 0 = #FramerateDisplayWidgets
+	 *   - 0 = #FrametimeGraphWindowWidgets
 	 */
 	WC_FRAMETIME_GRAPH,
 

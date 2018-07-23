@@ -32,6 +32,7 @@
 #include "../../widgets/engine_widget.h"
 #include "../../widgets/error_widget.h"
 #include "../../widgets/fios_widget.h"
+#include "../../widgets/framerate_widget.h"
 #include "../../widgets/genworld_widget.h"
 #include "../../widgets/goal_widget.h"
 #include "../../widgets/graph_widget.h"
@@ -764,6 +765,18 @@ public:
 		 */
 		WC_SAVE_PRESET                               = ::WC_SAVE_PRESET,
 
+		/**
+		 * Framerate display; %Window numbers:
+		 *   - 0 = #FramerateDisplayWidgets
+		 */
+		WC_FRAMERATE_DISPLAY                         = ::WC_FRAMERATE_DISPLAY,
+
+		/**
+		 * Frame time graph; %Window numbers:
+		 *   - 0 = #FrametimeGraphWindowWidgets
+		 */
+		WC_FRAMETIME_GRAPH                           = ::WC_FRAMETIME_GRAPH,
+
 		WC_INVALID                                   = ::WC_INVALID,                                   ///< Invalid window.
 	};
 
@@ -1273,6 +1286,25 @@ public:
 		WID_SL_NEWGRF_INFO                           = ::WID_SL_NEWGRF_INFO,                           ///< Button to open NewGgrf configuration.
 		WID_SL_LOAD_BUTTON                           = ::WID_SL_LOAD_BUTTON,                           ///< Button to load game/scenario.
 		WID_SL_MISSING_NEWGRFS                       = ::WID_SL_MISSING_NEWGRFS,                       ///< Button to find missing NewGRFs online.
+	};
+
+	/* automatically generated from ../../widgets/framerate_widget.h */
+	/** Widgets of the #FramerateWindow class. */
+	enum FramerateWindowWidgets {
+		WID_FRW_CAPTION                              = ::WID_FRW_CAPTION,
+		WID_FRW_RATE_GAMELOOP                        = ::WID_FRW_RATE_GAMELOOP,
+		WID_FRW_RATE_DRAWING                         = ::WID_FRW_RATE_DRAWING,
+		WID_FRW_RATE_FACTOR                          = ::WID_FRW_RATE_FACTOR,
+		WID_FRW_INFO_DATA_POINTS                     = ::WID_FRW_INFO_DATA_POINTS,
+		WID_FRW_TIMES_NAMES                          = ::WID_FRW_TIMES_NAMES,
+		WID_FRW_TIMES_CURRENT                        = ::WID_FRW_TIMES_CURRENT,
+		WID_FRW_TIMES_AVERAGE                        = ::WID_FRW_TIMES_AVERAGE,
+	};
+
+	/** Widgets of the #FrametimeGraphWindow class. */
+	enum FrametimeGraphWindowWidgets {
+		WID_FGW_CAPTION                              = ::WID_FGW_CAPTION,
+		WID_FGW_GRAPH                                = ::WID_FGW_GRAPH,
 	};
 
 	/* automatically generated from ../../widgets/genworld_widget.h */

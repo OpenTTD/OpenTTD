@@ -19,6 +19,8 @@
 #include "console_func.h"
 #include "console_type.h"
 
+#include "widgets/framerate_widget.h"
+
 
 namespace {
 
@@ -232,17 +234,6 @@ void PerformanceAccumulator::Reset(PerformanceElement elem)
 
 void ShowFrametimeGraphWindow(PerformanceElement elem);
 
-
-enum FramerateWindowWidgets {
-	WID_FRW_CAPTION,
-	WID_FRW_RATE_GAMELOOP,
-	WID_FRW_RATE_DRAWING,
-	WID_FRW_RATE_FACTOR,
-	WID_FRW_INFO_DATA_POINTS,
-	WID_FRW_TIMES_NAMES,
-	WID_FRW_TIMES_CURRENT,
-	WID_FRW_TIMES_AVERAGE,
-};
 
 static const NWidgetPart _framerate_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -486,11 +477,6 @@ static WindowDesc _framerate_display_desc(
 	_framerate_window_widgets, lengthof(_framerate_window_widgets)
 );
 
-
-enum FrametimeGraphWindowWidgets {
-	WID_FGW_CAPTION,
-	WID_FGW_GRAPH,
-};
 
 static const NWidgetPart _frametime_graph_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),

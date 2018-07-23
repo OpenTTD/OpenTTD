@@ -527,6 +527,7 @@ widgets/dropdown_widget.h
 widgets/engine_widget.h
 widgets/error_widget.h
 widgets/fios_widget.h
+widgets/framerate_widget.h
 widgets/genworld_widget.h
 widgets/goal_widget.h
 widgets/graph_widget.h
