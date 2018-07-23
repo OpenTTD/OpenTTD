@@ -476,6 +476,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pant
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura con acercamiento completo
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Captura con acercamiento predeterminado
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de mapa completo
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Mostrar FPS
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Acerca de 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador de sprites
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Activar cajas delimitadoras
@@ -2699,7 +2700,25 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018, el equipo de OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}FPS
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_CURRENT                                           :{WHITE}Actual
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Promedio
+STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Información de {COMMA} mediciones
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} cuadros/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} cuadros/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} cuadros/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{WHITE}Bucles de juego totales:
+STR_FRAMERATE_DRAWING                                           :{WHITE}Presentación de gráficos:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE} Ventanas de vista generales:
+STR_FRAMERATE_VIDEO                                             :{WHITE}Salida de video:
+STR_FRAMERATE_SOUND                                             :{WHITE}Mezcla de sonido:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
