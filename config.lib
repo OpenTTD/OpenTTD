@@ -2195,9 +2195,7 @@ check_direct_music() {
 	echo "
 		#include <windows.h>
 		#include <dmksctrl.h>
-		#include <dmusici.h>
 		#include <dmusicc.h>
-		#include <dmusicf.h>
 		int main(int argc, char *argv[]) { }" > direct_music.test.c
 	$cxx_host $CFLAGS direct_music.test.c -o direct_music.test 2> /dev/null
 	res=$?
