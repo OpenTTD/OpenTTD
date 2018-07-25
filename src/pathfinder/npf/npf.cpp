@@ -1169,7 +1169,7 @@ Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 	 * we did not find our target, but ftd.best_trackdir contains the direction leading
 	 * to the tile closest to our target. */
 	path_found = (ftd.best_bird_dist == 0);
-	if (ftd.best_trackdir == 0xff) return INVALID_TRACK;
+	if (ftd.best_trackdir == INVALID_TRACKDIR) return INVALID_TRACK;
 	return TrackdirToTrack(ftd.best_trackdir);
 }
 
