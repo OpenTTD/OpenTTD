@@ -2702,6 +2702,12 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}FPS
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Simulación: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Número de ticks simulados por segundo.
+STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}FPS de gráficos: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Número de cuadros por segundo.
+STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Factor de velocidad de juego actual: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Rapidez actual del juego comparada con la esperada durante una simulación normal.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Actual
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Promedio
 STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Información de {COMMA} mediciones
@@ -2715,12 +2721,31 @@ STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COM
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GAMELOOP                                          :{WHITE}Bucles de juego totales:
+STR_FRAMERATE_GL_ECONOMY                                        :{WHITE} Manejo de cargamento:
+STR_FRAMERATE_GL_TRAINS                                         :{WHITE} Ticks de trenes:
+STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE} Ticks de vehículos de carretera:
+STR_FRAMERATE_GL_SHIPS                                          :{WHITE} Ticks de barcos:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE} Ticks de aeronaves:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE} Ticks de mapa:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE} Retraro en gráfica de distribución:
 STR_FRAMERATE_DRAWING                                           :{WHITE}Presentación de gráficos:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE} Ventanas de vista generales:
 STR_FRAMERATE_VIDEO                                             :{WHITE}Salida de video:
 STR_FRAMERATE_SOUND                                             :{WHITE}Mezcla de sonido:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Bucle de juego
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manejo de cargamento
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Ticks de trenes
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Ticks de vehículos de carretera
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ticks de barcos
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ticks de areonaves
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Ticks de mapa
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Retraro en gráfica de distribución
+STR_FRAMETIME_CAPTION_DRAWING                                   :Presentación de gráficos
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Presentación de ventanas de vista generales
+STR_FRAMETIME_CAPTION_VIDEO                                     :Salida de video
+STR_FRAMETIME_CAPTION_SOUND                                     :Mezcla de sonido
 ############ End of leave-in-this-order
 
 
