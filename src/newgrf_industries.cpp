@@ -602,7 +602,12 @@ void IndustryProductionCallback(Industry *ind, int reason)
  */
 bool IndustryTemporarilyRefusesCargo(Industry *ind, CargoID cargo_type)
 {
-	assert(cargo_type == ind->accepts_cargo[0] || cargo_type == ind->accepts_cargo[1] || cargo_type == ind->accepts_cargo[2]);
+	assert(
+		cargo_type == ind->accepts_cargo[0] || cargo_type == ind->accepts_cargo[1] || cargo_type == ind->accepts_cargo[2] || cargo_type == ind->accepts_cargo[3] ||
+		cargo_type == ind->accepts_cargo[4] || cargo_type == ind->accepts_cargo[5] || cargo_type == ind->accepts_cargo[6] || cargo_type == ind->accepts_cargo[7] ||
+		cargo_type == ind->accepts_cargo[8] || cargo_type == ind->accepts_cargo[9] || cargo_type == ind->accepts_cargo[10] || cargo_type == ind->accepts_cargo[11] ||
+		cargo_type == ind->accepts_cargo[12] || cargo_type == ind->accepts_cargo[13] || cargo_type == ind->accepts_cargo[14] || cargo_type == ind->accepts_cargo[15]
+	);
 
 	const IndustrySpec *indspec = GetIndustrySpec(ind->type);
 	if (HasBit(indspec->callback_mask, CBM_IND_REFUSE_CARGO)) {

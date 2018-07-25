@@ -1195,8 +1195,12 @@ enum IndustryTypes {
 
 #define MI(tbl, sndc, snd, d, pc, ai1, ai2, ai3, ai4, ag1, ag2, ag3, ag4, col, \
 			c1, c2, c3, proc, p1, r1, p2, r2, m, a1, im1, a2, im2, a3, im3, pr, clim, bev, in, intx, s1, s2, s3) \
-		{tbl, lengthof(tbl), d, 0, pc, {c1, c2, c3}, proc, {p1, p2}, {r1, r2}, m, \
-		{a1, a2, a3}, {{im1, 0}, {im2, 0}, {im3, 0}}, pr, clim, bev, col, in, intx, s1, s2, s3, STR_UNDEFINED, {ai1, ai2, ai3, ai4}, {ag1, ag2, ag3, ag4}, \
+		{tbl, lengthof(tbl), d, 0, pc, {c1, c2, c3}, proc, \
+		{p1, p2, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID}, \
+		{r1, r2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, m, \
+		{a1, a2, a3, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID}, \
+		{{im1, 0}, {im2, 0}, {im3, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}}, \
+		pr, clim, bev, col, in, intx, s1, s2, s3, STR_UNDEFINED, {ai1, ai2, ai3, ai4}, {ag1, ag2, ag3, ag4}, \
 		sndc, snd, 0, 0, true, GRFFileProps(INVALID_INDUSTRYTYPE)}
 	/* Format:
 	   tile table                              count and sounds table
@@ -1594,7 +1598,7 @@ static const IndustrySpec _origin_industry_specs[NEW_INDUSTRYOFFSET] = {
  * @param a2  next frame of animation
  * @param a3  chooses between animation or construction state
  */
-#define MT(ca1, c1, ca2, c2, ca3, c3, sl, a1, a2, a3) {{c1, c2, c3}, {ca1, ca2, ca3}, sl, a1, a2, a3, 0, {0, ANIM_STATUS_NO_ANIMATION, 2, 0}, INDTILE_SPECIAL_NONE, true, GRFFileProps(INVALID_INDUSTRYTILE)}
+#define MT(ca1, c1, ca2, c2, ca3, c3, sl, a1, a2, a3) {{c1, c2, c3, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID}, {ca1, ca2, ca3}, sl, a1, a2, a3, 0, {0, ANIM_STATUS_NO_ANIMATION, 2, 0}, INDTILE_SPECIAL_NONE, true, GRFFileProps(INVALID_INDUSTRYTILE)}
 static const IndustryTileSpec _origin_industry_tile_specs[NEW_INDUSTRYTILEOFFSET] = {
 	/* Coal Mine */
 	MT(0, CT_INVALID,      0, CT_INVALID,      0, CT_INVALID,     SLOPE_STEEP, INDUSTRYTILE_NOANIM, INDUSTRYTILE_NOANIM, false),

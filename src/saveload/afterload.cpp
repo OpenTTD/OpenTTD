@@ -3015,6 +3015,27 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(202)) {
+		/* Make sure added industry cargo slots are cleared */
+		Industry *i;
+		FOR_ALL_INDUSTRIES(i) {
+			for (size_t ci = 2; ci < lengthof(i->produced_cargo); ci++) {
+				i->produced_cargo[ci] = CT_INVALID;
+				i->produced_cargo_waiting[ci] = 0;
+				i->production_rate[ci] = 0;
+				i->last_month_production[ci] = 0;
+				i->last_month_transported[ci] = 0;
+				i->last_month_pct_transported[ci] = 0;
+				i->this_month_production[ci] = 0;
+				i->this_month_transported[ci] = 0;
+			}
+			for (size_t ci = 3; ci < lengthof(i->accepts_cargo); ci++) {
+				i->accepts_cargo[ci] = CT_INVALID;
+				i->incoming_cargo_waiting[ci] = 0;
+			}
+		}
+	}
+
 	/* Station acceptance is some kind of cache */
 	if (IsSavegameVersionBefore(127)) {
 		Station *st;
