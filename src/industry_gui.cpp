@@ -358,7 +358,7 @@ public:
 
 					const IndustrySpec *indsp = GetIndustrySpec(this->index[i]);
 
-					CargoSuffix cargo_suffix[3];
+					CargoSuffix cargo_suffix[lengthof(indsp->accepts_cargo)];
 					GetAllCargoSuffixes(0, CST_FUND, NULL, this->index[i], indsp, indsp->accepts_cargo, cargo_suffix);
 					StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
 					byte p = 0;
@@ -477,7 +477,7 @@ public:
 				}
 
 				/* Draw the accepted cargoes, if any. Otherwise, will print "Nothing". */
-				CargoSuffix cargo_suffix[3];
+				CargoSuffix cargo_suffix[lengthof(indsp->accepts_cargo)];
 				GetAllCargoSuffixes(0, CST_FUND, NULL, this->selected_type, indsp, indsp->accepts_cargo, cargo_suffix);
 				StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
 				byte p = 0;
@@ -683,8 +683,15 @@ static void UpdateIndustryProduction(Industry *i);
 static inline bool IsProductionAlterable(const Industry *i)
 {
 	const IndustrySpec *is = GetIndustrySpec(i->type);
+	bool has_prod = false;
+	for (size_t j = 0; j < lengthof(is->production_rate); j++) {
+		if (is->production_rate[j] != 0) {
+			has_prod = true;
+			break;
+		}
+	}
 	return ((_game_mode == GM_EDITOR || _cheats.setup_prod.value) &&
-			(is->production_rate[0] != 0 || is->production_rate[1] != 0 || is->IsRawIndustry()) &&
+			(has_prod || is->IsRawIndustry()) &&
 			!_networking);
 }
 
@@ -763,7 +770,7 @@ public:
 			y += 2 * FONT_HEIGHT_NORMAL;
 		}
 
-		CargoSuffix cargo_suffix[3];
+		CargoSuffix cargo_suffix[lengthof(i->accepts_cargo)];
 		GetAllCargoSuffixes(0, CST_VIEW, i, i->type, ind, i->accepts_cargo, cargo_suffix);
 		bool stockpiling = HasBit(ind->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_mask, CBM_IND_PRODUCTION_256_TICKS);
 
@@ -1514,7 +1521,7 @@ enum CargoesFieldType {
 	CFT_HEADER,      ///< Header text.
 };
 
-static const uint MAX_CARGOES = 3; ///< Maximum number of cargoes carried in a #CFT_CARGO field in #CargoesField.
+static const uint MAX_CARGOES = 16; ///< Maximum number of cargoes carried in a #CFT_CARGO field in #CargoesField.
 
 /** Data about a single field in the #IndustryCargoesWindow panel. */
 struct CargoesField {

@@ -383,15 +383,21 @@ bool FindSubsidyIndustryCargoRoute()
 	CargoID cid;
 
 	/* Randomize cargo type */
-	if (src_ind->produced_cargo[1] != CT_INVALID && HasBit(Random(), 0)) {
-		cid = src_ind->produced_cargo[1];
-		trans = src_ind->last_month_pct_transported[1];
-		total = src_ind->last_month_production[1];
-	} else {
-		cid = src_ind->produced_cargo[0];
-		trans = src_ind->last_month_pct_transported[0];
-		total = src_ind->last_month_production[0];
+	int num_cargos = 0;
+	for (size_t ci = 0; ci < lengthof(src_ind->produced_cargo); ci++) {
+		if (src_ind->produced_cargo[ci] != CT_INVALID) num_cargos++;
 	}
+	if (num_cargos == 0) return false; // industry produces nothing
+	int cargo_num = RandomRange(num_cargos) + 1;
+	int cargo_index;
+	for (cargo_index = 0; cargo_index < lengthof(src_ind->produced_cargo); cargo_index++) {
+		if (src_ind->produced_cargo[cargo_index] != CT_INVALID) cargo_num--;
+		if (cargo_num == 0) break;
+	}
+	assert(cargo_num == 0); // indicates loop didn't break as intended
+	cid = src_ind->produced_cargo[cargo_index];
+	trans = src_ind->last_month_pct_transported[cargo_index];
+	total = src_ind->last_month_production[cargo_index];
 
 	/* Quit if no production in this industry
 	 * or if the pct transported is already large enough
@@ -435,14 +441,11 @@ bool FindSubsidyCargoDestination(CargoID cid, SourceType src_type, SourceID src)
 		case ST_INDUSTRY: {
 			/* Select a random industry. */
 			const Industry *dst_ind = Industry::GetRandom();
+			if (dst_ind == NULL) return false;
 
 			/* The industry must accept the cargo */
-			if (dst_ind == NULL ||
-					(cid != dst_ind->accepts_cargo[0] &&
-					 cid != dst_ind->accepts_cargo[1] &&
-					 cid != dst_ind->accepts_cargo[2])) {
-				return false;
-			}
+			bool valid = std::find(dst_ind->accepts_cargo, endof(dst_ind->accepts_cargo), cid) != endof(dst_ind->accepts_cargo);
+			if (!valid) return false;
 
 			dst = dst_ind->index;
 			break;

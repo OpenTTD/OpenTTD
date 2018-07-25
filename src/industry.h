@@ -15,6 +15,7 @@
 #include "newgrf_storage.h"
 #include "subsidy_type.h"
 #include "industry_map.h"
+#include "industrytype.h"
 #include "tilearea_type.h"
 
 
@@ -37,20 +38,20 @@ enum ProductionLevels {
  * Defines the internal data of a functional industry.
  */
 struct Industry : IndustryPool::PoolItem<&_industry_pool> {
-	TileArea location;                  ///< Location of the industry
-	Town *town;                         ///< Nearest town
-	CargoID produced_cargo[2];          ///< 2 production cargo slots
-	uint16 produced_cargo_waiting[2];   ///< amount of cargo produced per cargo
-	uint16 incoming_cargo_waiting[3];   ///< incoming cargo waiting to be processed
-	byte production_rate[2];            ///< production rate for each cargo
-	byte prod_level;                    ///< general production level
-	CargoID accepts_cargo[3];           ///< 3 input cargo slots
-	uint16 this_month_production[2];    ///< stats of this month's production per cargo
-	uint16 this_month_transported[2];   ///< stats of this month's transport per cargo
-	byte last_month_pct_transported[2]; ///< percentage transported per cargo in the last full month
-	uint16 last_month_production[2];    ///< total units produced per cargo in the last full month
-	uint16 last_month_transported[2];   ///< total units transported per cargo in the last full month
-	uint16 counter;                     ///< used for animation and/or production (if available cargo)
+	TileArea location;                                     ///< Location of the industry
+	Town *town;                                            ///< Nearest town
+	CargoID produced_cargo[INDUSTRY_NUM_OUTPUTS];          ///< 16 production cargo slots
+	uint16 produced_cargo_waiting[INDUSTRY_NUM_OUTPUTS];   ///< amount of cargo produced per cargo
+	uint16 incoming_cargo_waiting[INDUSTRY_NUM_INPUTS];    ///< incoming cargo waiting to be processed
+	byte production_rate[INDUSTRY_NUM_OUTPUTS];            ///< production rate for each cargo
+	byte prod_level;                                       ///< general production level
+	CargoID accepts_cargo[INDUSTRY_NUM_INPUTS];            ///< 16 input cargo slots
+	uint16 this_month_production[INDUSTRY_NUM_OUTPUTS];    ///< stats of this month's production per cargo
+	uint16 this_month_transported[INDUSTRY_NUM_OUTPUTS];   ///< stats of this month's transport per cargo
+	byte last_month_pct_transported[INDUSTRY_NUM_OUTPUTS]; ///< percentage transported per cargo in the last full month
+	uint16 last_month_production[INDUSTRY_NUM_OUTPUTS];    ///< total units produced per cargo in the last full month
+	uint16 last_month_transported[INDUSTRY_NUM_OUTPUTS];   ///< total units transported per cargo in the last full month
+	uint16 counter;                                        ///< used for animation and/or production (if available cargo)
 
 	IndustryType type;                  ///< type of industry.
 	OwnerByte owner;                    ///< owner of the industry.  Which SHOULD always be (imho) OWNER_NONE

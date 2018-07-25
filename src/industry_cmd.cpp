@@ -1118,8 +1118,9 @@ static void ProduceIndustryGoods(Industry *i)
 		if (HasBit(indsp->callback_mask, CBM_IND_PRODUCTION_256_TICKS)) IndustryProductionCallback(i, 1);
 
 		IndustryBehaviour indbehav = indsp->behaviour;
-		i->produced_cargo_waiting[0] = min(0xffff, i->produced_cargo_waiting[0] + i->production_rate[0]);
-		i->produced_cargo_waiting[1] = min(0xffff, i->produced_cargo_waiting[1] + i->production_rate[1]);
+		for (size_t j = 0; j < lengthof(i->produced_cargo_waiting); j++) {
+			i->produced_cargo_waiting[j] = min(0xffff, i->produced_cargo_waiting[j] + i->production_rate[j]);
+		}
 
 		if ((indbehav & INDUSTRYBEH_PLANT_FIELDS) != 0) {
 			uint16 cb_res = CALLBACK_FAILED;
@@ -1648,18 +1649,22 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->type = type;
 	Industry::IncIndustryTypeCount(type);
 
-	i->produced_cargo[0] = indspec->produced_cargo[0];
-	i->produced_cargo[1] = indspec->produced_cargo[1];
-	i->accepts_cargo[0] = indspec->accepts_cargo[0];
-	i->accepts_cargo[1] = indspec->accepts_cargo[1];
-	i->accepts_cargo[2] = indspec->accepts_cargo[2];
-	i->production_rate[0] = indspec->production_rate[0];
-	i->production_rate[1] = indspec->production_rate[1];
+	MemCpyT(i->produced_cargo,  indspec->produced_cargo,  lengthof(i->produced_cargo));
+	MemCpyT(i->production_rate, indspec->production_rate, lengthof(i->production_rate));
+	MemCpyT(i->accepts_cargo,   indspec->accepts_cargo,   lengthof(i->accepts_cargo));
+
+	MemSetT(i->produced_cargo_waiting,     0, lengthof(i->produced_cargo_waiting));
+	MemSetT(i->this_month_production,      0, lengthof(i->this_month_production));
+	MemSetT(i->this_month_transported,     0, lengthof(i->this_month_transported));
+	MemSetT(i->last_month_pct_transported, 0, lengthof(i->last_month_pct_transported));
+	MemSetT(i->last_month_transported,     0, lengthof(i->last_month_transported));
+	MemSetT(i->incoming_cargo_waiting,     0, lengthof(i->incoming_cargo_waiting));
 
 	/* don't use smooth economy for industries using production related callbacks */
 	if (indspec->UsesSmoothEconomy()) {
-		i->production_rate[0] = min((RandomRange(256) + 128) * i->production_rate[0] >> 8, 255);
-		i->production_rate[1] = min((RandomRange(256) + 128) * i->production_rate[1] >> 8, 255);
+		for (size_t ci = 0; ci < lengthof(i->production_rate); ci++) {
+			i->production_rate[ci] = min((RandomRange(256) + 128) * i->production_rate[ci] >> 8, 255);
+		}
 	}
 
 	i->town = t;
@@ -1669,19 +1674,6 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->random_colour = GB(r, 0, 4);
 	i->counter = GB(r, 4, 12);
 	i->random = initial_random_bits;
-	i->produced_cargo_waiting[0] = 0;
-	i->produced_cargo_waiting[1] = 0;
-	i->incoming_cargo_waiting[0] = 0;
-	i->incoming_cargo_waiting[1] = 0;
-	i->incoming_cargo_waiting[2] = 0;
-	i->this_month_production[0] = 0;
-	i->this_month_production[1] = 0;
-	i->this_month_transported[0] = 0;
-	i->this_month_transported[1] = 0;
-	i->last_month_pct_transported[0] = 0;
-	i->last_month_pct_transported[1] = 0;
-	i->last_month_transported[0] = 0;
-	i->last_month_transported[1] = 0;
 	i->was_cargo_delivered = false;
 	i->last_prod_year = _cur_year;
 	i->founder = founder;
@@ -1712,10 +1704,9 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	}
 
 	if (_generating_world) {
-		i->last_month_production[0] = i->production_rate[0] * 8;
-		i->last_month_production[1] = i->production_rate[1] * 8;
-	} else {
-		i->last_month_production[0] = i->last_month_production[1] = 0;
+		for (size_t ci = 0; ci < lengthof(i->last_month_production); ci++) {
+			i->last_month_production[ci] = i->production_rate[ci] * 8;
+		}
 	}
 
 	if (HasBit(indspec->callback_mask, CBM_IND_DECIDE_COLOUR)) {
@@ -2194,8 +2185,9 @@ void Industry::RecomputeProductionMultipliers()
 	assert(!indspec->UsesSmoothEconomy());
 
 	/* Rates are rounded up, so e.g. oilrig always produces some passengers */
-	this->production_rate[0] = min(CeilDiv(indspec->production_rate[0] * this->prod_level, PRODLEVEL_DEFAULT), 0xFF);
-	this->production_rate[1] = min(CeilDiv(indspec->production_rate[1] * this->prod_level, PRODLEVEL_DEFAULT), 0xFF);
+	for (size_t i = 0; i < lengthof(this->production_rate); i++) {
+		this->production_rate[i] = min(CeilDiv(indspec->production_rate[i] * this->prod_level, PRODLEVEL_DEFAULT), 0xFF);
+	}
 }
 
 
