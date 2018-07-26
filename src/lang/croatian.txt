@@ -571,6 +571,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Slika zaslona
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zumirano do kraja na slici zaslona
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Standardno zumiranje slike zaslona
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Slika zaslona cijele karte
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Prikaži broj sličica u sekundi
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Poravnanje spritea
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Odaberi granične okvire
@@ -2794,9 +2795,52 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD tim
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Broj sličica
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Stopa simulacije: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Broj otkucaja igre simuliranih u sekundi.
+STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Broj sličica u sekundi: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Broj sličica videa prikayanih u sekundi.
+STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Trenutni faktor brzine igre: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Koliko brzo se igra izvodi trenutno u usporedbi sa očekivanom brzinom u uobičajenoj simulaciji.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Trenutno
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Prosječno
+STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Podaci bazirani na {COMMA} mjerama
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} sličica/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} sličica/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} sličica/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{WHITE}Zbroj petlji igre:
+STR_FRAMERATE_GL_ECONOMY                                        :{WHITE}  Korištenje tereta:
+STR_FRAMERATE_GL_TRAINS                                         :{WHITE} Otkucaji vlakova:
+STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  Otkucaji cestovnih vozila:
+STR_FRAMERATE_GL_SHIPS                                          :{WHITE} Otkucaji brodova:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE}  Otkucaji aviona:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE}  Otkucaji svijeta:
+STR_FRAMERATE_GL_LINKGRAPH                                      :Odmak linka grafikona
+STR_FRAMERATE_DRAWING                                           :{WHITE}Prikaz grafike:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE}  Prikazi svijeta:
+STR_FRAMERATE_VIDEO                                             :{WHITE}Video izlaz:
+STR_FRAMERATE_SOUND                                             :{WHITE}Miksanje zvukova:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Petlja igre
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Korištenje tereta
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Otkucaji vlakova
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Otkucaji cestovnih vozila
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Otkucaji brodova
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Otkucaji aviona
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Otkucaji svijeta
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Odmak linka grafikona
+STR_FRAMETIME_CAPTION_DRAWING                                   :Prikaz grafike
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Prikazi svijeta
+STR_FRAMETIME_CAPTION_VIDEO                                     :Video izlaz
+STR_FRAMETIME_CAPTION_SOUND                                     :Miksanje zvukova
 ############ End of leave-in-this-order
 
 

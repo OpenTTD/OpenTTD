@@ -3072,9 +3072,13 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 Zespół OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CURRENT                                           :{WHITE}Obecny
 ############ Leave those lines in this order!!
+STR_FRAMERATE_VIDEO                                             :{WHITE}Wyjście video:
+STR_FRAMERATE_SOUND                                             :{WHITE}Miksowanie dźwięku:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_VIDEO                                     :Wyjście wideo
 ############ End of leave-in-this-order
 
 
@@ -4874,6 +4878,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Oryginalna edyc
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Oryginalna edycja dźwięków dla Transport Tycoon Deluxe Windows.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Zestaw dźwięków nie zawierający żadnych dźwięków.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Oryginalna edycja utworów muzycznych w Transport Tycoon Deluxe Windows.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Oryginalna edycja utworów muzycznych dla Transport Tycoon Deluxe DOS.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Oryginalna edycja utworów muzycznych dla Transport Tycoon DOS.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Zestaw utworów muzycznych nie zawierający żadnej muzyki.
 
 ##id 0x2000
