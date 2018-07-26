@@ -3033,6 +3033,15 @@ bool AfterLoadGame()
 				i->accepts_cargo[ci] = CT_INVALID;
 				i->incoming_cargo_waiting[ci] = 0;
 			}
+			/* Make sure last_cargo_accepted_at is copied to elements for every valid input cargo.
+			 * The loading routine should put the original singular value into the first array element. */
+			for (size_t ci = 0; ci < lengthof(i->accepts_cargo); ci++) {
+				if (i->accepts_cargo[ci] != CT_INVALID) {
+					i->last_cargo_accepted_at[ci] = i->last_cargo_accepted_at[0];
+				} else {
+					i->last_cargo_accepted_at[ci] = 0;
+				}
+			}
 		}
 	}
 

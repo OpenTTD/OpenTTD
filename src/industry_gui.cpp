@@ -74,12 +74,7 @@ static void ShowIndustryCargoesWindow(IndustryType id);
 
 /**
  * Gets the string to display after the cargo name (using callback 37)
- * @param cargo the cargo for which the suffix is requested
- * - 00 - first accepted cargo type
- * - 01 - second accepted cargo type
- * - 02 - third accepted cargo type
- * - 03 - first produced cargo type
- * - 04 - second produced cargo type
+ * @param cargo the cargo for which the suffix is requested, meaning depends on presence of flag 18 in prop 1A
  * @param cst the cargo suffix type (for which window is it requested). @see CargoSuffixType
  * @param ind the industry (NULL if in fund window)
  * @param ind_type the industry type
@@ -134,9 +129,14 @@ static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind,
 	}
 }
 
+enum CargoSuffixInOut {
+	CARGOSUFFIX_OUT = 0,
+	CARGOSUFFIX_IN  = 1,
+};
+
 /**
  * Gets all strings to display after the cargoes of industries (using callback 37)
- * @param cb_offset The offset for the cargo used in cb37, 0 for accepted cargoes, 3 for produced cargoes
+ * @param use_input get suffixes for output cargoes or input cargoes?
  * @param cst the cargo suffix type (for which window is it requested). @see CargoSuffixType
  * @param ind the industry (NULL if in fund window)
  * @param ind_type the industry type
@@ -145,14 +145,40 @@ static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind,
  * @param suffixes is filled with the suffixes
  */
 template <typename TC, typename TS>
-static inline void GetAllCargoSuffixes(uint cb_offset, CargoSuffixType cst, const Industry *ind, IndustryType ind_type, const IndustrySpec *indspec, const TC &cargoes, TS &suffixes)
+static inline void GetAllCargoSuffixes(CargoSuffixInOut use_input, CargoSuffixType cst, const Industry *ind, IndustryType ind_type, const IndustrySpec *indspec, const TC &cargoes, TS &suffixes)
 {
 	assert_compile(lengthof(cargoes) <= lengthof(suffixes));
-	for (uint j = 0; j < lengthof(cargoes); j++) {
-		if (cargoes[j] != CT_INVALID) {
-			GetCargoSuffix(cb_offset + j, cst, ind, ind_type, indspec, suffixes[j]);
-		} else {
+
+	if (indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED) {
+		/* Reworked behaviour with new many-in-many-out scheme */
+		for (uint j = 0; j < lengthof(suffixes); j++) {
+			if (cargoes[j] != CT_INVALID) {
+				byte local_id = indspec->grf_prop.grffile->cargo_map[cargoes[j]]; // should we check the value for valid?
+				uint cargotype = local_id << 16 | use_input;
+				GetCargoSuffix(cargotype, cst, ind, ind_type, indspec, suffixes[j]);
+			} else {
+				suffixes[j].text[0] = '\0';
+				suffixes[j].display = CSD_CARGO;
+			}
+		}
+	} else {
+		/* Compatible behaviour with old 3-in-2-out scheme */
+		for (uint j = 0; j < lengthof(suffixes); j++) {
 			suffixes[j].text[0] = '\0';
+			suffixes[j].display = CSD_CARGO;
+		}
+		switch (use_input) {
+			case CARGOSUFFIX_OUT:
+				if (cargoes[0] != CT_INVALID) GetCargoSuffix(3, cst, ind, ind_type, indspec, suffixes[0]);
+				if (cargoes[1] != CT_INVALID) GetCargoSuffix(4, cst, ind, ind_type, indspec, suffixes[1]);
+				break;
+			case CARGOSUFFIX_IN:
+				if (cargoes[0] != CT_INVALID) GetCargoSuffix(0, cst, ind, ind_type, indspec, suffixes[0]);
+				if (cargoes[1] != CT_INVALID) GetCargoSuffix(1, cst, ind, ind_type, indspec, suffixes[1]);
+				if (cargoes[2] != CT_INVALID) GetCargoSuffix(2, cst, ind, ind_type, indspec, suffixes[2]);
+				break;
+			default:
+				NOT_REACHED();
 		}
 	}
 }
@@ -359,7 +385,7 @@ public:
 					const IndustrySpec *indsp = GetIndustrySpec(this->index[i]);
 
 					CargoSuffix cargo_suffix[lengthof(indsp->accepts_cargo)];
-					GetAllCargoSuffixes(0, CST_FUND, NULL, this->index[i], indsp, indsp->accepts_cargo, cargo_suffix);
+					GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_FUND, NULL, this->index[i], indsp, indsp->accepts_cargo, cargo_suffix);
 					StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
 					byte p = 0;
 					SetDParam(0, STR_JUST_NOTHING);
@@ -373,7 +399,7 @@ public:
 					d = maxdim(d, GetStringBoundingBox(str));
 
 					/* Draw the produced cargoes, if any. Otherwise, will print "Nothing". */
-					GetAllCargoSuffixes(3, CST_FUND, NULL, this->index[i], indsp, indsp->produced_cargo, cargo_suffix);
+					GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_FUND, NULL, this->index[i], indsp, indsp->produced_cargo, cargo_suffix);
 					str = STR_INDUSTRY_VIEW_PRODUCES_CARGO;
 					p = 0;
 					SetDParam(0, STR_JUST_NOTHING);
@@ -478,7 +504,7 @@ public:
 
 				/* Draw the accepted cargoes, if any. Otherwise, will print "Nothing". */
 				CargoSuffix cargo_suffix[lengthof(indsp->accepts_cargo)];
-				GetAllCargoSuffixes(0, CST_FUND, NULL, this->selected_type, indsp, indsp->accepts_cargo, cargo_suffix);
+				GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_FUND, NULL, this->selected_type, indsp, indsp->accepts_cargo, cargo_suffix);
 				StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
 				byte p = 0;
 				SetDParam(0, STR_JUST_NOTHING);
@@ -493,7 +519,7 @@ public:
 				y += FONT_HEIGHT_NORMAL;
 
 				/* Draw the produced cargoes, if any. Otherwise, will print "Nothing". */
-				GetAllCargoSuffixes(3, CST_FUND, NULL, this->selected_type, indsp, indsp->produced_cargo, cargo_suffix);
+				GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_FUND, NULL, this->selected_type, indsp, indsp->produced_cargo, cargo_suffix);
 				str = STR_INDUSTRY_VIEW_PRODUCES_CARGO;
 				p = 0;
 				SetDParam(0, STR_JUST_NOTHING);
@@ -771,7 +797,7 @@ public:
 		}
 
 		CargoSuffix cargo_suffix[lengthof(i->accepts_cargo)];
-		GetAllCargoSuffixes(0, CST_VIEW, i, i->type, ind, i->accepts_cargo, cargo_suffix);
+		GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_VIEW, i, i->type, ind, i->accepts_cargo, cargo_suffix);
 		bool stockpiling = HasBit(ind->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_mask, CBM_IND_PRODUCTION_256_TICKS);
 
 		uint left_side = left + WD_FRAMERECT_LEFT * 4; // Indent accepted cargoes.
@@ -810,7 +836,7 @@ public:
 			y += FONT_HEIGHT_NORMAL;
 		}
 
-		GetAllCargoSuffixes(3, CST_VIEW, i, i->type, ind, i->produced_cargo, cargo_suffix);
+		GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_VIEW, i, i->type, ind, i->produced_cargo, cargo_suffix);
 		first = true;
 		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
 			if (i->produced_cargo[j] == CT_INVALID) continue;
@@ -1262,7 +1288,7 @@ protected:
 		SetDParam(p++, i->index);
 
 		static CargoSuffix cargo_suffix[lengthof(i->produced_cargo)];
-		GetAllCargoSuffixes(3, CST_DIR, i, i->type, indsp, i->produced_cargo, cargo_suffix);
+		GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_DIR, i, i->type, indsp, i->produced_cargo, cargo_suffix);
 
 		/* Industry productions */
 		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {

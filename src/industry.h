@@ -12,6 +12,7 @@
 #ifndef INDUSTRY_H
 #define INDUSTRY_H
 
+#include <algorithm>
 #include "newgrf_storage.h"
 #include "subsidy_type.h"
 #include "industry_map.h"
@@ -64,7 +65,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	OwnerByte founder;                  ///< Founder of the industry
 	Date construction_date;             ///< Date of the construction of the industry
 	uint8 construction_type;            ///< Way the industry was constructed (@see IndustryConstructionType)
-	Date last_cargo_accepted_at;        ///< Last day cargo was accepted by this industry
+	Date last_cargo_accepted_at[INDUSTRY_NUM_INPUTS]; ///< Last day each cargo type was accepted by this industry
 	byte selected_layout;               ///< Which tile layout was used when creating the industry
 
 	uint16 random;                      ///< Random value used for randomisation of all kinds of things
@@ -84,6 +85,22 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	inline bool TileBelongsToIndustry(TileIndex tile) const
 	{
 		return IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == this->index;
+	}
+
+	inline int GetCargoProducedIndex(CargoID cargo) const
+	{
+		if (cargo == CT_INVALID) return -1;
+		const CargoID *pos = std::find(this->produced_cargo, endof(this->produced_cargo), cargo);
+		if (pos == endof(this->produced_cargo)) return -1;
+		return pos - this->produced_cargo;
+	}
+
+	inline int GetCargoAcceptedIndex(CargoID cargo) const
+	{
+		if (cargo == CT_INVALID) return -1;
+		const CargoID *pos = std::find(this->accepts_cargo, endof(this->accepts_cargo), cargo);
+		if (pos == endof(this->accepts_cargo)) return -1;
+		return pos - this->accepts_cargo;
 	}
 
 	/**
