@@ -394,35 +394,49 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 {
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
+	const Industry *ind = Industry::GetByTile(tile);
 
-	/* When we have to use a callback, we put our data in the next two variables */
-	CargoID raw_accepts_cargo[lengthof(itspec->accepts_cargo)];
-	uint8 raw_cargo_acceptance[lengthof(itspec->acceptance)];
+	/* Starting point for acceptance */
+	CargoID accepts_cargo[lengthof(itspec->accepts_cargo)];
+	int8 cargo_acceptance[lengthof(itspec->acceptance)];
+	MemCpyT(accepts_cargo, itspec->accepts_cargo, lengthof(accepts_cargo));
+	MemCpyT(cargo_acceptance, itspec->acceptance, lengthof(cargo_acceptance));
 
-	/* And then these will always point to a same sized array with the required data */
-	const CargoID *accepts_cargo = itspec->accepts_cargo;
-	const uint8 *cargo_acceptance = itspec->acceptance;
+	if (itspec->special_flags & INDTILE_SPECIAL_ACCEPTS_ALL_CARGO) {
+		/* Copy all accepted cargoes from industry itself */
+		for (uint i = 0; i < lengthof(ind->accepts_cargo); i++) {
+			CargoID *pos = std::find(accepts_cargo, endof(accepts_cargo), ind->accepts_cargo[i]);
+			if (pos == endof(accepts_cargo)) {
+				/* Not found, insert */
+				pos = std::find(accepts_cargo, endof(accepts_cargo), CT_INVALID);
+				if (pos == endof(accepts_cargo)) continue; // nowhere to place, give up on this one
+				*pos = ind->accepts_cargo[i];
+			}
+			cargo_acceptance[pos - accepts_cargo] += 8;
+		}
+	}
 
 	if (HasBit(itspec->callback_mask, CBM_INDT_ACCEPT_CARGO)) {
+		/* Try callback for accepts list, if success override all existing accepts */
 		uint16 res = GetIndustryTileCallback(CBID_INDTILE_ACCEPT_CARGO, 0, 0, gfx, Industry::GetByTile(tile), tile);
 		if (res != CALLBACK_FAILED) {
-			accepts_cargo = raw_accepts_cargo;
-			for (uint i = 0; i < lengthof(itspec->accepts_cargo); i++) raw_accepts_cargo[i] = GetCargoTranslation(GB(res, i * 5, 5), itspec->grf_prop.grffile);
+			MemSetT(accepts_cargo, CT_INVALID, lengthof(accepts_cargo));
+			for (uint i = 0; i < 3; i++) accepts_cargo[i] = GetCargoTranslation(GB(res, i * 5, 5), itspec->grf_prop.grffile);
 		}
 	}
 
 	if (HasBit(itspec->callback_mask, CBM_INDT_CARGO_ACCEPTANCE)) {
+		/* Try callback for acceptance list, if success override all existing acceptance */
 		uint16 res = GetIndustryTileCallback(CBID_INDTILE_CARGO_ACCEPTANCE, 0, 0, gfx, Industry::GetByTile(tile), tile);
 		if (res != CALLBACK_FAILED) {
-			cargo_acceptance = raw_cargo_acceptance;
-			for (uint i = 0; i < lengthof(itspec->accepts_cargo); i++) raw_cargo_acceptance[i] = GB(res, i * 4, 4);
+			MemSetT(cargo_acceptance, 0, lengthof(cargo_acceptance));
+			for (uint i = 0; i < 3; i++) cargo_acceptance[i] = GB(res, i * 4, 4);
 		}
 	}
 
-	const Industry *ind = Industry::GetByTile(tile);
 	for (byte i = 0; i < lengthof(itspec->accepts_cargo); i++) {
 		CargoID a = accepts_cargo[i];
-		if (a == CT_INVALID || cargo_acceptance[i] == 0) continue; // work only with valid cargoes
+		if (a == CT_INVALID || cargo_acceptance[i] <= 0) continue; // work only with valid cargoes
 
 		/* Add accepted cargo */
 		acceptance[a] += cargo_acceptance[i];
@@ -1659,6 +1673,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	MemSetT(i->last_month_pct_transported, 0, lengthof(i->last_month_pct_transported));
 	MemSetT(i->last_month_transported,     0, lengthof(i->last_month_transported));
 	MemSetT(i->incoming_cargo_waiting,     0, lengthof(i->incoming_cargo_waiting));
+	MemSetT(i->last_cargo_accepted_at,     0, lengthof(i->last_cargo_accepted_at));
 
 	/* don't use smooth economy for industries using production related callbacks */
 	if (indspec->UsesSmoothEconomy()) {
@@ -1718,28 +1733,56 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	}
 
 	if (HasBit(indspec->callback_mask, CBM_IND_INPUT_CARGO_TYPES)) {
+		/* Clear all input cargo types */
 		for (uint j = 0; j < lengthof(i->accepts_cargo); j++) i->accepts_cargo[j] = CT_INVALID;
-		for (uint j = 0; j < lengthof(i->accepts_cargo); j++) {
+		/* Query actual types */
+		uint maxcargoes = (indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED) ? lengthof(i->accepts_cargo) : 3;
+		for (uint j = 0; j < maxcargoes; j++) {
 			uint16 res = GetIndustryCallback(CBID_INDUSTRY_INPUT_CARGO_TYPES, j, 0, i, type, INVALID_TILE);
 			if (res == CALLBACK_FAILED || GB(res, 0, 8) == CT_INVALID) break;
 			if (indspec->grf_prop.grffile->grf_version >= 8 && res >= 0x100) {
 				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_INPUT_CARGO_TYPES, res);
 				break;
 			}
-			i->accepts_cargo[j] = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
+			CargoID cargo = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
+			if (std::find(indspec->accepts_cargo, endof(indspec->accepts_cargo), cargo) == endof(indspec->accepts_cargo)) {
+				/* Cargo not in spec, error in NewGRF */
+				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_INPUT_CARGO_TYPES, res);
+				break;
+			}
+			if (std::find(i->accepts_cargo, i->accepts_cargo + j, cargo) != i->accepts_cargo + j) {
+				/* Duplicate cargo */
+				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_INPUT_CARGO_TYPES, res);
+				break;
+			}
+			i->accepts_cargo[j] = cargo;
 		}
 	}
 
 	if (HasBit(indspec->callback_mask, CBM_IND_OUTPUT_CARGO_TYPES)) {
+		/* Clear all output cargo types */
 		for (uint j = 0; j < lengthof(i->produced_cargo); j++) i->produced_cargo[j] = CT_INVALID;
-		for (uint j = 0; j < lengthof(i->produced_cargo); j++) {
+		/* Query actual types */
+		uint maxcargoes = (indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED) ? lengthof(i->produced_cargo) : 2;
+		for (uint j = 0; j < maxcargoes; j++) {
 			uint16 res = GetIndustryCallback(CBID_INDUSTRY_OUTPUT_CARGO_TYPES, j, 0, i, type, INVALID_TILE);
 			if (res == CALLBACK_FAILED || GB(res, 0, 8) == CT_INVALID) break;
 			if (indspec->grf_prop.grffile->grf_version >= 8 && res >= 0x100) {
 				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_OUTPUT_CARGO_TYPES, res);
 				break;
 			}
-			i->produced_cargo[j] = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
+			CargoID cargo = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
+			if (std::find(indspec->produced_cargo, endof(indspec->produced_cargo), cargo) == endof(indspec->produced_cargo)) {
+				/* Cargo not in spec, error in NewGRF */
+				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_OUTPUT_CARGO_TYPES, res);
+				break;
+			}
+			if (std::find(i->produced_cargo, i->produced_cargo + j, cargo) != i->produced_cargo + j) {
+				/* Duplicate cargo */
+				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_OUTPUT_CARGO_TYPES, res);
+				break;
+			}
+			i->produced_cargo[j] = cargo;
 		}
 	}
 

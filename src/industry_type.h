@@ -37,6 +37,10 @@ static const IndustryGfx  INVALID_INDUSTRYTILE   = NUM_INDUSTRYTILES; ///< one a
 
 static const int INDUSTRY_COMPLETED = 3; ///< final stage of industry construction.
 
+static const int INDUSTRY_NUM_INPUTS = 16;  ///< Number of cargo types an industry can accept
+static const int INDUSTRY_NUM_OUTPUTS = 16; ///< Number of cargo types an industry can produce
+
+
 void CheckIndustries();
 
 #endif /* INDUSTRY_TYPE_H */

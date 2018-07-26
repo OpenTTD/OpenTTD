@@ -3083,6 +3083,10 @@ static ChangeInfoResult IgnoreIndustryTileProperty(int prop, ByteReader *buf)
 			buf->ReadWord();
 			break;
 
+		case 0x13:
+			buf->Skip(buf->ReadByte() * 2);
+			break;
+
 		default:
 			ret = CIR_UNKNOWN;
 			break;
@@ -3172,7 +3176,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 			case 0x0C: {
 				uint16 acctp = buf->ReadWord();
 				tsp->accepts_cargo[prop - 0x0A] = GetCargoTranslation(GB(acctp, 0, 8), _cur.grffile);
-				tsp->acceptance[prop - 0x0A] = GB(acctp, 8, 8);
+				tsp->acceptance[prop - 0x0A] = Clamp(GB(acctp, 8, 8), 0, 16);
 				break;
 			}
 
@@ -3200,6 +3204,26 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 			case 0x12: // Special flags
 				tsp->special_flags = (IndustryTileSpecialFlags)buf->ReadByte();
 				break;
+
+			case 0x13: { // variable length cargo acceptance
+				byte num_cargoes = buf->ReadByte();
+				if (num_cargoes > lengthof(tsp->acceptance)) {
+					GRFError *error = DisableGrf(STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG);
+					error->param_value[1] = prop;
+					return CIR_DISABLED;
+				}
+				for (uint i = 0; i < lengthof(tsp->acceptance); i++) {
+					if (i < num_cargoes) {
+						tsp->accepts_cargo[i] = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
+						/* Tile acceptance can be negative to counteract the INDTILE_SPECIAL_ACCEPTS_ALL_CARGO flag */
+						tsp->acceptance[i] = (int8)buf->ReadByte();
+					} else {
+						tsp->accepts_cargo[i] = CT_INVALID;
+						tsp->acceptance[i] = 0;
+					}
+				}
+				break;
+			}
 
 			default:
 				ret = CIR_UNKNOWN;
@@ -3280,11 +3304,17 @@ static ChangeInfoResult IgnoreIndustryProperty(int prop, ByteReader *buf)
 			for (byte j = 0; j < 3; j++) buf->ReadByte();
 			break;
 
-		case 0x15: {
-			byte number_of_sounds = buf->ReadByte();
-			for (uint8 j = 0; j < number_of_sounds; j++) {
-				buf->ReadByte();
-			}
+		case 0x15:
+		case 0x25:
+		case 0x26:
+		case 0x27:
+			buf->Skip(buf->ReadByte());
+			break;
+
+		case 0x28: {
+			int num_inputs = buf->ReadByte();
+			int num_outputs = buf->ReadByte();
+			buf->Skip(num_inputs * num_outputs * 2);
 			break;
 		}
 
@@ -3638,6 +3668,77 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 					indsp->station_name = STR_NULL;
 				} else {
 					AddStringForMapping(str, &indsp->station_name);
+				}
+				break;
+			}
+
+			case 0x25: { // variable length produced cargoes
+				byte num_cargoes = buf->ReadByte();
+				if (num_cargoes > lengthof(indsp->produced_cargo)) {
+					GRFError *error = DisableGrf(STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG);
+					error->param_value[1] = prop;
+					return CIR_DISABLED;
+				}
+				for (uint i = 0; i < lengthof(indsp->produced_cargo); i++) {
+					if (i < num_cargoes) {
+						CargoID cargo = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
+						indsp->produced_cargo[i] = cargo;
+					} else {
+						indsp->produced_cargo[i] = CT_INVALID;
+					}
+				}
+				break;
+			}
+
+			case 0x26: { // variable length accepted cargoes
+				byte num_cargoes = buf->ReadByte();
+				if (num_cargoes > lengthof(indsp->accepts_cargo)) {
+					GRFError *error = DisableGrf(STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG);
+					error->param_value[1] = prop;
+					return CIR_DISABLED;
+				}
+				for (uint i = 0; i < lengthof(indsp->accepts_cargo); i++) {
+					if (i < num_cargoes) {
+						CargoID cargo = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
+						indsp->accepts_cargo[i] = cargo;
+					} else {
+						indsp->accepts_cargo[i] = CT_INVALID;
+					}
+				}
+				break;
+			}
+
+			case 0x27: { // variable length production rates
+				byte num_cargoes = buf->ReadByte();
+				if (num_cargoes > lengthof(indsp->production_rate)) {
+					GRFError *error = DisableGrf(STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG);
+					error->param_value[1] = prop;
+					return CIR_DISABLED;
+				}
+				for (uint i = 0; i < lengthof(indsp->production_rate); i++) {
+					if (i < num_cargoes) {
+						indsp->production_rate[i] = buf->ReadByte();
+					} else {
+						indsp->production_rate[i] = 0;
+					}
+				}
+				break;
+			}
+
+			case 0x28: { // variable size input/output production multiplier table
+				byte num_inputs = buf->ReadByte();
+				byte num_outputs = buf->ReadByte();
+				if (num_inputs > lengthof(indsp->accepts_cargo) || num_outputs > lengthof(indsp->produced_cargo)) {
+					GRFError *error = DisableGrf(STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG);
+					error->param_value[1] = prop;
+					return CIR_DISABLED;
+				}
+				for (uint i = 0; i < lengthof(indsp->accepts_cargo); i++) {
+					for (uint j = 0; j < lengthof(indsp->produced_cargo); j++) {
+						uint16 mult = 0;
+						if (i < num_inputs && j < num_outputs) mult = buf->ReadWord();
+						indsp->input_cargo_multiplier[i][j] = mult;
+					}
 				}
 				break;
 			}
@@ -4839,7 +4940,7 @@ static void NewSpriteGroup(ByteReader *buf)
 				}
 
 				case GSF_INDUSTRIES: {
-					if (type > 1) {
+					if (type > 2) {
 						grfmsg(1, "NewSpriteGroup: Unsupported industry production version %d, skipping", type);
 						break;
 					}
@@ -4849,21 +4950,63 @@ static void NewSpriteGroup(ByteReader *buf)
 					act_group = group;
 					group->version = type;
 					if (type == 0) {
+						group->num_input = 3;
 						for (uint i = 0; i < 3; i++) {
 							group->subtract_input[i] = (int16)buf->ReadWord(); // signed
 						}
+						group->num_output = 2;
 						for (uint i = 0; i < 2; i++) {
 							group->add_output[i] = buf->ReadWord(); // unsigned
 						}
 						group->again = buf->ReadByte();
-					} else {
+					} else if (type == 1) {
+						group->num_input = 3;
 						for (uint i = 0; i < 3; i++) {
 							group->subtract_input[i] = buf->ReadByte();
 						}
+						group->num_output = 2;
 						for (uint i = 0; i < 2; i++) {
 							group->add_output[i] = buf->ReadByte();
 						}
 						group->again = buf->ReadByte();
+					} else if (type == 2) {
+						group->num_input = buf->ReadByte();
+						if (group->num_input > lengthof(group->subtract_input)) {
+							GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
+							error->data = stredup("too many inputs (max 16)");
+							return;
+						}
+						for (uint i = 0; i < group->num_input; i++) {
+							byte rawcargo = buf->ReadByte();
+							CargoID cargo = GetCargoTranslation(rawcargo, _cur.grffile);
+							if (std::find(group->cargo_input, group->cargo_input + i, cargo) != group->cargo_input + i) {
+								GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
+								error->data = stredup("duplicate input cargo");
+								return;
+							}
+							group->cargo_input[i] = cargo;
+							group->subtract_input[i] = buf->ReadByte();
+						}
+						group->num_output = buf->ReadByte();
+						if (group->num_output > lengthof(group->add_output)) {
+							GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
+							error->data = stredup("too many outputs (max 16)");
+							return;
+						}
+						for (uint i = 0; i < group->num_output; i++) {
+							byte rawcargo = buf->ReadByte();
+							CargoID cargo = GetCargoTranslation(rawcargo, _cur.grffile);
+							if (std::find(group->cargo_output, group->cargo_output + i, cargo) != group->cargo_output + i) {
+								GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
+								error->data = stredup("duplicate output cargo");
+								return;
+							}
+							group->cargo_output[i] = cargo;
+							group->add_output[i] = buf->ReadByte();
+						}
+						group->again = buf->ReadByte();
+					} else {
+						NOT_REACHED();
 					}
 					break;
 				}

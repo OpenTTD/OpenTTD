@@ -80,6 +80,7 @@ enum IndustryBehaviour {
 	INDUSTRYBEH_PRODCALLBACK_RANDOM   = 1 << 15, ///< Production callback needs random bits in var 10
 	INDUSTRYBEH_NOBUILT_MAPCREATION   = 1 << 16, ///< Do not force one instance of this type to appear on map generation
 	INDUSTRYBEH_CANCLOSE_LASTINSTANCE = 1 << 17, ///< Allow closing down the last instance of this type
+	INDUSTRYBEH_CARGOTYPES_UNLIMITED  = 1 << 18, ///< Allow produced/accepted cargoes callbacks to supply more than 2 and 3 types
 };
 DECLARE_ENUM_AS_BIT_SET(IndustryBehaviour)
 
@@ -87,6 +88,7 @@ DECLARE_ENUM_AS_BIT_SET(IndustryBehaviour)
 enum IndustryTileSpecialFlags {
 	INDTILE_SPECIAL_NONE                  = 0,
 	INDTILE_SPECIAL_NEXTFRAME_RANDOMBITS  = 1 << 0, ///< Callback 0x26 needs random bits
+	INDTILE_SPECIAL_ACCEPTS_ALL_CARGO     = 1 << 1, ///< Tile always accepts all cargoes the associated industry accepts
 };
 DECLARE_ENUM_AS_BIT_SET(IndustryTileSpecialFlags)
 
@@ -94,9 +96,6 @@ struct IndustryTileTable {
 	TileIndexDiffC ti;
 	IndustryGfx gfx;
 };
-
-const int INDUSTRY_NUM_INPUTS = 16;  ///< Number of cargo types an industry can accept
-const int INDUSTRY_NUM_OUTPUTS = 16; ///< Number of cargo types an industry can produce
 
 /**
  * Defines the data structure for constructing industry.
@@ -150,8 +149,8 @@ struct IndustrySpec {
  * @note A tile can at most accept 3 types of cargo, even if an industry as a whole can accept more types.
  */
 struct IndustryTileSpec {
-	CargoID accepts_cargo[3];             ///< Cargo accepted by this tile
-	uint8 acceptance[3];                  ///< Level of acceptance per cargo type
+	CargoID accepts_cargo[INDUSTRY_NUM_INPUTS]; ///< Cargo accepted by this tile
+	int8 acceptance[INDUSTRY_NUM_INPUTS]; ///< Level of acceptance per cargo type (signed, may be negative!)
 	Slope slopes_refused;                 ///< slope pattern on which this tile cannot be built
 	byte anim_production;                 ///< Animation frame to start when goods are produced
 	byte anim_next;                       ///< Next frame in an animation

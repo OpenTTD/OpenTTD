@@ -384,12 +384,12 @@ bool FindSubsidyIndustryCargoRoute()
 
 	/* Randomize cargo type */
 	int num_cargos = 0;
-	for (size_t ci = 0; ci < lengthof(src_ind->produced_cargo); ci++) {
-		if (src_ind->produced_cargo[ci] != CT_INVALID) num_cargos++;
+	uint cargo_index;
+	for (cargo_index = 0; cargo_index < lengthof(src_ind->produced_cargo); cargo_index++) {
+		if (src_ind->produced_cargo[cargo_index] != CT_INVALID) num_cargos++;
 	}
 	if (num_cargos == 0) return false; // industry produces nothing
 	int cargo_num = RandomRange(num_cargos) + 1;
-	int cargo_index;
 	for (cargo_index = 0; cargo_index < lengthof(src_ind->produced_cargo); cargo_index++) {
 		if (src_ind->produced_cargo[cargo_index] != CT_INVALID) cargo_num--;
 		if (cargo_num == 0) break;
