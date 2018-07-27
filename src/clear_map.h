@@ -269,6 +269,7 @@ static inline void MakeClear(TileIndex t, ClearGround g, uint density)
 	SetClearGroundDensity(t, g, density); // Sets m5
 	_me[t].m6 = 0;
 	_me[t].m7 = 0;
+	_me[t].m8 = 0;
 }
 
 
@@ -289,6 +290,7 @@ static inline void MakeField(TileIndex t, uint field_type, IndustryID industry)
 	SetClearGroundDensity(t, CLEAR_FIELDS, 3);
 	SB(_me[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
+	_me[t].m8 = 0;
 }
 
 /**
