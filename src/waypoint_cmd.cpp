@@ -148,7 +148,8 @@ extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta,
  * @param start_tile northern most tile where waypoint will be built
  * @param flags type of operation
  * @param p1 various bitstuffed elements
- * - p1 = (bit  4)    - orientation (Axis)
+ * - p1 = (bit  0- 5) - railtype (not used)
+ * - p1 = (bit  6)    - orientation (Axis)
  * - p1 = (bit  8-15) - width of waypoint
  * - p1 = (bit 16-23) - height of waypoint
  * - p1 = (bit 24)    - allow waypoints directly adjacent to other waypoints.
@@ -161,7 +162,7 @@ extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta,
 CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Unpack parameters */
-	Axis axis      = Extract<Axis, 4, 1>(p1);
+	Axis axis      = Extract<Axis, 6, 1>(p1);
 	byte width     = GB(p1,  8, 8);
 	byte height    = GB(p1, 16, 8);
 	bool adjacent  = HasBit(p1, 24);
