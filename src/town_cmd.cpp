@@ -611,7 +611,7 @@ static inline void AddAcceptedCargoSetMask(CargoID cargo, uint amount, CargoArra
 static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, CargoTypes *always_accepted)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
-	CargoID accepts[3];
+	CargoID accepts[lengthof(hs->accepts_cargo)];
 
 	/* Set the initial accepted cargo types */
 	for (uint8 i = 0; i < lengthof(accepts); i++) {
