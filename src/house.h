@@ -120,7 +120,7 @@ struct HouseSpec {
 	AnimationInfo animation;           ///< information about the animation.
 	byte processing_time;              ///< Periodic refresh multiplier
 	byte minimum_life;                 ///< The minimum number of years this house will survive before the town rebuilds it
-	uint32 watched_cargoes;            ///< Cargo types watched for acceptance.
+	CargoTypes watched_cargoes;        ///< Cargo types watched for acceptance.
 
 	Money GetRemovalCost() const;
 
