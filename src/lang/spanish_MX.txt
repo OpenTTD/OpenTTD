@@ -2727,7 +2727,7 @@ STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE} Ticks d
 STR_FRAMERATE_GL_SHIPS                                          :{WHITE} Ticks de barcos:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE} Ticks de aeronaves:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE} Ticks de mapa:
-STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE} Retraro en gráfica de distribución:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE} Retraso en gráfica de distribución:
 STR_FRAMERATE_DRAWING                                           :{WHITE}Presentación de gráficos:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE} Ventanas de vista generales:
 STR_FRAMERATE_VIDEO                                             :{WHITE}Salida de video:
