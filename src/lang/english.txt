@@ -927,6 +927,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :South African R
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Custom...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranian Rial (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :New Russian Ruble (RUB)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Road vehicles
