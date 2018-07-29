@@ -58,6 +58,7 @@ enum Currencies {
 	CURRENCY_CUSTOM,    ///< Custom currency
 	CURRENCY_GEL,       ///< Georgian Lari
 	CURRENCY_IRR,       ///< Iranian Rial
+	CURRENCY_RUB,       ///< New Russian Ruble
 	CURRENCY_END,       ///< always the last item
 };
 
