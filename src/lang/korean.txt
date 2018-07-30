@@ -476,6 +476,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :스크린샷 �
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :스크린샷 찍기 (지금 보고 있는 영역)
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :스크린샷 찍기 (창을 제외한 게임 화면만)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :스크린샷 찍기 (지도 전체)
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :프레임레이트 보기
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'에 대해서
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :스프라이트 정렬도구
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :박스 경계선 보기 전환
@@ -2699,9 +2700,52 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD 개발팀
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}프레임레이트
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}시뮬레이션 비율: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}1초에 시뮬레이션하는 게임 틱 수입니다.
+STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}그래픽 프레임레이트: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}1초에 표현하는 비디오 프레임 수입니다.
+STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}현재 게임 속력 계수: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}현재 게임이 일반적인 시뮬레이션 비율 속도에 비해 얼마나 빠르게 구동되고 있는지를 보여줍니다.
+STR_FRAMERATE_CURRENT                                           :{WHITE}현재
+STR_FRAMERATE_AVERAGE                                           :{WHITE}평균
+STR_FRAMERATE_DATA_POINTS                                       :{WHITE}{COMMA}개의 값을 기반으로 측정한 데이터
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} 프레임/초
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} 프레임/초
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} 프레임/초
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA}초
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{WHITE}총 게임 루프:
+STR_FRAMERATE_GL_ECONOMY                                        :{WHITE}  화물 처리:
+STR_FRAMERATE_GL_TRAINS                                         :{WHITE}  열차 틱:
+STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  자동차 틱:
+STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  선박 틱:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE}  항공기 틱:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE}  세계 틱:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE}  연결 그래프 지연:
+STR_FRAMERATE_DRAWING                                           :{WHITE}그래픽 렌더링:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE}  세계 화면:
+STR_FRAMERATE_VIDEO                                             :{WHITE}비디오 출력:
+STR_FRAMERATE_SOUND                                             :{WHITE}사운드 합성:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :게임 루프
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :화물 처리
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :열차 틱
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :자동차 틱
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :선박 틱
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :항공기 틱
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :세계 틱
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :연결 그래프 지연
+STR_FRAMETIME_CAPTION_DRAWING                                   :그래픽 렌더링
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :세계 화면 렌더링
+STR_FRAMETIME_CAPTION_VIDEO                                     :비디오 출력
+STR_FRAMETIME_CAPTION_SOUND                                     :사운드 합성
 ############ End of leave-in-this-order
 
 
