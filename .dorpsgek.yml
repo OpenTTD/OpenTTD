@@ -1,0 +1,5 @@
+notifications:
+  push:
+    irc:
+      - openttd
+      - openttd.notice
