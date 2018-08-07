@@ -476,6 +476,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Copie d'écran
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Copie d'écran au zoom maximum
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Copie d'écran au zoom par défaut
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Copie d'écran de la carte entière
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Afficher la fréquence d'images
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :À propos d'OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alignement de sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Afficher/Cacher les boites de dimensions maximum
@@ -927,6 +928,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand sud-africa
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personnalisée...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Géorgien (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iranien (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nouveau rouble russe (RUB)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Véhicules routiers
@@ -2699,9 +2701,52 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 L'équipe OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Fréquence d'images
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Fréquence de simulation{NBSP}: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Nombre de ticks simulés par seconde.
+STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Fréquence des graphismes{NBSP}: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Nombre d'images rendues par seconde.
+STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Facteur de vitesse actuel{NBSP}: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}À quelle vitesse le jeu tourne actuellement, comparé à la vitesse attendue pour la simulation normale.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Actuel
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Moyen
+STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Données basées sur {COMMA} mesures
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} images/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} images/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} images/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{WHITE}Total de la boucle de jeu{NBSP}:
+STR_FRAMERATE_GL_ECONOMY                                        :{WHITE}  Traitement des marchandises{NBSP}:
+STR_FRAMERATE_GL_TRAINS                                         :{WHITE}  Ticks des trains{NBSP}:
+STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  Ticks des véhicules routiers{NBSP}:
+STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  Ticks des navires{NBSP}:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE}  Ticks des aéroplanes{NBSP}:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE}  Ticks du monde{NBSP}:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE}  Délai du flux des marchandises{NBSP}:
+STR_FRAMERATE_DRAWING                                           :{WHITE}Rendu des graphismes{NBSP}:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE}  Vues{NBSP}:
+STR_FRAMERATE_VIDEO                                             :{WHITE}Sortie vidéo{NBSP}:
+STR_FRAMERATE_SOUND                                             :{WHITE}Mixage sonore{NBSP}:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Boucle de jeu
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Traitement des marchandises
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Ticks des trains
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Ticks des véhicules routiers
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ticks des navires
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ticks des aéroplanes
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Ticks du monde
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Délai du flux des marchandises
+STR_FRAMETIME_CAPTION_DRAWING                                   :Rendu des graphismes
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Rendu des vues
+STR_FRAMETIME_CAPTION_VIDEO                                     :Sortie vidéo
+STR_FRAMETIME_CAPTION_SOUND                                     :Mixage sonore
 ############ End of leave-in-this-order
 
 
