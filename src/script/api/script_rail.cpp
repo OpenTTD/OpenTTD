@@ -204,7 +204,7 @@
 	EnforcePrecondition(false, GetRailTracks(tile) == RAILTRACK_NE_SW || GetRailTracks(tile) == RAILTRACK_NW_SE);
 	EnforcePrecondition(false, IsRailTypeAvailable(GetCurrentRailType()));
 
-	return ScriptObject::DoCommand(tile, GetCurrentRailType() | (GetRailTracks(tile) == RAILTRACK_NE_SW ? AXIS_X : AXIS_Y) << 4 | 1 << 8 | 1 << 16, STAT_CLASS_WAYP | INVALID_STATION << 16, CMD_BUILD_RAIL_WAYPOINT);
+	return ScriptObject::DoCommand(tile, GetCurrentRailType() | (GetRailTracks(tile) == RAILTRACK_NE_SW ? AXIS_X : AXIS_Y) << 6 | 1 << 8 | 1 << 16, STAT_CLASS_WAYP | INVALID_STATION << 16, CMD_BUILD_RAIL_WAYPOINT);
 }
 
 /* static */ bool ScriptRail::RemoveRailWaypointTileRectangle(TileIndex tile, TileIndex tile2, bool keep_rail)
@@ -288,16 +288,16 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 	int diag_offset = abs(abs((int)::TileX(*to) - (int)::TileX(tile)) - abs((int)::TileY(*to) - (int)::TileY(tile)));
 	uint32 p2 = 0;
 	if (::TileY(from) == ::TileY(*to)) {
-		p2 |= (TRACK_X << 4);
+		p2 |= (TRACK_X << 6);
 		*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
 	} else if (::TileX(from) == ::TileX(*to)) {
-		p2 |= (TRACK_Y << 4);
+		p2 |= (TRACK_Y << 6);
 		*to -= ::MapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
 	} else if (::TileY(from) < ::TileY(tile)) {
 		if (::TileX(*to) < ::TileX(tile)) {
-			p2 |= (TRACK_UPPER << 4);
+			p2 |= (TRACK_UPPER << 6);
 		} else {
-			p2 |= (TRACK_LEFT << 4);
+			p2 |= (TRACK_LEFT << 6);
 		}
 		if (diag_offset != 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
@@ -306,9 +306,9 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		}
 	} else if (::TileY(from) > ::TileY(tile)) {
 		if (::TileX(*to) < ::TileX(tile)) {
-			p2 |= (TRACK_RIGHT << 4);
+			p2 |= (TRACK_RIGHT << 6);
 		} else {
-			p2 |= (TRACK_LOWER << 4);
+			p2 |= (TRACK_LOWER << 6);
 		}
 		if (diag_offset != 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
@@ -317,9 +317,9 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		}
 	} else if (::TileX(from) < ::TileX(tile)) {
 		if (::TileY(*to) < ::TileY(tile)) {
-			p2 |= (TRACK_UPPER << 4);
+			p2 |= (TRACK_UPPER << 6);
 		} else {
-			p2 |= (TRACK_RIGHT << 4);
+			p2 |= (TRACK_RIGHT << 6);
 		}
 		if (diag_offset == 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
@@ -328,9 +328,9 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		}
 	} else if (::TileX(from) > ::TileX(tile)) {
 		if (::TileY(*to) < ::TileY(tile)) {
-			p2 |= (TRACK_LEFT << 4);
+			p2 |= (TRACK_LEFT << 6);
 		} else {
-			p2 |= (TRACK_LOWER << 4);
+			p2 |= (TRACK_LOWER << 6);
 		}
 		if (diag_offset == 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
