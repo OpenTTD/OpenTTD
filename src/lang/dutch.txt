@@ -224,7 +224,7 @@ STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filter tekst:
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtertekst:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Voer filtertekst in
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Geef een woord waarop gefilterd kan worden in de lijst
 
@@ -440,7 +440,7 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Bouw magneetzwe
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Bouw wegen
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Bouw tramwegen
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Bouw tramsporen
 ############ range ends here
 
 ############ range for waterways construction menu starts
@@ -475,6 +475,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ingezoomd screenshot
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Screenshot met standaard zoom
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot van hele kaart
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Toon frame rate
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Over 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-uitlijner
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Schakel selectiekaders
@@ -650,6 +651,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Geen muziek beschikbaar
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Nummer
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Titel
@@ -670,11 +672,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Programm
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Toon nummerkeuzescherm
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Muziekprogramma - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Nummerindex
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programma - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Maak leeg
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Verander set
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Maak huidig programma leeg (alleen Aangepast1 en Aangepast2)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Verander muziekselectie naar een andere geïnstalleerde set
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik op het nummer om deze aan het programma toe te voegen (alleen Aangepast1 en Aangepast2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik op het nummer om deze uit het programma te verwijderen (alleen Aangepast1 en Aangepast2)
 
@@ -877,10 +882,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Kijkvenster {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopieer naar kijkvenster
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Verander kijkvenster
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopieer de locatie van het algemene scherm naar dit kijkvenster
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Plak van kijkvenster
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Plak de locatie van dit kijkvenster naar het algemene scherm
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Verander algemeen scherm
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopieer de locatie van dit kijkvenster naar het algemene scherm
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spelopties
@@ -922,6 +927,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Zuid-Afrikaanse
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Aangepast...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgische Lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iraanse Rial (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nieuwe Russische Roebel (RUB)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Wegvoertuigen
@@ -1334,8 +1340,14 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Kleur van het t
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Groen
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donker groen
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
+STR_CONFIG_SETTING_SCROLLMODE                                   :Bekijk scrollgedrag: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Gedrag tijdens het scrollen van de kaart
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Verplaats kijkvenster met RMB, muispositie staat vast
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Verplaats kaart met RMB, muispositie staat vast
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Verplaats kaart met RMB
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Verplaats kaart met LMB
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Vloeiend scrollen kijkvenster: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Bepalen hoe de hoofdweergave schuift naar een specifieke positie bij het klikken op de minikaart of bij de afgifte van een opdracht om naar een specifiek object op de kaart. Indien ingeschakeld, de viewport scrollt soepel, als deze uitgeschakeld gaat u rechtstreeks naar de beoogde plek
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Bepalen hoe de hoofdweergave naar een specifieke positie schuift bij het klikken op de minikaart of bij het uitvoeren van een commando om naar een specifiek object op de kaart te scrollen. Indien ingeschakeld, dan scrollt het kijkvenster soepel, als deze uitgeschakeld gaat u rechtstreeks naar de beoogde plek
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Toon dimensie-informatie bij het gebruik van diverse bouwgereedschappen: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Geef tegelafstanden en hoogteverschillen weer bij het slepen tijdens het bouwen
 STR_CONFIG_SETTING_LIVERIES                                     :Laat alle voertuigkleuren zien: {STRING}
@@ -2274,10 +2286,11 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Schakel 
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Maak objecten onzichtbaar in plaats van transparant
 
 # Linkgraph legend window
-STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Vracht Stroom Legenda
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Vrachtstroomlegende
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Alle
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Geen
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Selecteer weer te geven bedrijven
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}ongebruikt
@@ -2374,7 +2387,7 @@ STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hangend, Staal
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Koker, Staal
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cantilever, Staal
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Vrijdragend, Staal
 STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Hangend, Beton
 STR_BRIDGE_NAME_WOODEN                                          :Hout
 STR_BRIDGE_NAME_CONCRETE                                        :Beton
@@ -2384,7 +2397,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Buis, Silicium
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Bouw wegen
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Bouw tramwegen
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Bouw tramsporen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bouw weg. Ctrl schakelt tussen bouwen/verwijderen van de weg. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bouw tramrails. Ctrl schakelt tussen bouwen/verwijderen van tramrails. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bouw weg met de Autoroad-methode. Ctrl schakelt tussen bouwen/verwijderen van de weg. Shift schakelt tussen bouwen/inschatting van de kosten
@@ -2450,7 +2463,7 @@ STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Layout {
 
 STR_AIRPORT_SMALL                                               :Klein
 STR_AIRPORT_CITY                                                :Stad
-STR_AIRPORT_METRO                                               :Hoofdstedelijk
+STR_AIRPORT_METRO                                               :Grootstedelijk
 STR_AIRPORT_INTERNATIONAL                                       :Internationaal vliegveld
 STR_AIRPORT_COMMUTER                                            :Pendel
 STR_AIRPORT_INTERCONTINENTAL                                    :Intercontinentaal
@@ -2572,21 +2585,21 @@ STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Geen
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Eigenaar: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Eigenaar van weg: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Eigenaar van tramrails: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Spoorweg eigenaar: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Eigenaar van spoorweg: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Gemeente: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Geen
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coördinaten: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Bouwjaar: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stationsklasse: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stationstype: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Vliegveld klasse: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Vliegveld naam: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Vliegveld tegel naam: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Vliegveldklasse: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Vliegveldnaam: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Vliegveldtegelnaam: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Geaccepteerde vracht: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
-STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Rail type: {LTBLUE}{STRING}
-STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Spoor snelheidslimiet: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Spoortype: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Spoorsnelheidslimiet: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Snelheidslimiet weg: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
@@ -2598,35 +2611,35 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Akkers
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Sneeuw
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Woestijn
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Spoorweg spoor
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Spoorweg spoor met blokseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Spoorweg spoor met voorseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Spoorweg spoor met exitseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Spoorweg spoor met combo-seinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Spoorweg spoor met routeseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Spoorweg spoor met eenrichtingsseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Spoorweg spoor met blok en voorseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Spoorweg spoor met blok en exitseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Spoorweg spoor met blok en combo-seinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Spoorweg spoor met blok en routeseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Spoorweg spoor met blok en eenrichtingsseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Spoorweg spoor met voor- en exitseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Spoorweg spoor met voor- en combo-seinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Spoorweg spoor met voor- en routeseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Spoorweg spoor met voor- en eenrichtingsseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Spoorweg spoor met exit- en combo-seinen
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Spoor
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Spoor met blokseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Spoor met voorseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Spoor met uitgangsseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Spoor met combinatieseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Spoor met routeseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Spoor met eenrichtingsseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Spoor met blok- en voorseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Spoor met blok- en uitgangsseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Spoor met blok- en combinatieseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Spoor met blok- en routeseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Spoor met blok- en eenrichtingsseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Spoor met voor- en uitgangsseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Spoor met voor- en combinatieseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Spoor met voor- en routeseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Spoor met voor- en eenrichtingsseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Spoor met uitgangs- en combinatieseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Spoorweg spoor met exit- en routeseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Spoorweg spoor met exit- en eenrichtingsseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Spoorweg spoor met combo- en routeseinen
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Spoorweg Spoor met combo- en eenrichtingssein
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Spoorweg spoor met route en eenrichtingssein
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Spoorweg trein depot
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Spoor met uitgangs- en eenrichtingsseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Spoor met combinatie- en routeseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Spoor met combinatie- en eenrichtingsseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Spoor met route- en eenrichtingsseinen
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Spoorwegtreindepot
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Weg
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Weg met straatlantaarns
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Weg met bomenrij
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Garage
-STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Gelijkvloerse overweg
+STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Gelijkvloerse kruising met weg/spoor
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Tramrails
 
 # Houses come directly from their building names
@@ -2657,21 +2670,21 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Dok
 STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Spoortunnel
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Wegtunnel
 
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stalen hangbrug (spoor)
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Stalen kokerbrug (spoor)
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stalen cantileverbrug (spoor)
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Hangbrug van gewapend beton (spoor)
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Houten brug (spoor)
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Betonnen brug (spoor)
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Buisvormige brug (spoor)
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stalen hangende spoorbrug
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Spoorbrug met stalen koker
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stalen vrijdragende spoorbrug
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Hangende spoorbrug van gewapend beton
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Houten spoorbrug
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Betonnen spoorbrug
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Buisvormige spoorbrug
 
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Stalen hangbrug (weg)
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Stalen kokerbrug (weg)
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Stalen cantileverbrug (weg)
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Hangbrug van gewapend beton (weg)
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Houten brug (weg)
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Betonnen brug (weg)
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Buisvormige brug (weg)
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Stalen hangende wegbrug
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Wegbrug met stalen koker
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Stalen vrijdragende wegbrug
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Hangende wegbrug van gewapend beton
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Houten wegbrug
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Betonnen wegbrug
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Buisvormige wegbrug
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Aquaduct
 
@@ -2683,13 +2696,56 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terrein in bedr
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Over OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Originele copyright {COPYRIGHT} 1995 Chris Sawyer, alle rechten voorbehouden
-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versie {REV}
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-versie {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Het OpenTTD-team
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Frame rate
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Simulatiesnelheid: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Aantal gesimuleerde gameticks per seconde.
+STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Graphics frame rate: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Aantal videoframes die weergegeven worden per seconde.
+STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Huidige spelsnelheidsfactor: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hoe snel het spel momenteel draait, vergeleken met de verwachte snelheid bij een normale simulatiesnelheid.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Huidig
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Gemiddelde
+STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Gegevens gebaseerd op {COMMA} metingen
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} frames/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} frames/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} frames/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{WHITE}Gamelooptotaal:
+STR_FRAMERATE_GL_ECONOMY                                        :{WHITE} Cargoafhandeling:
+STR_FRAMERATE_GL_TRAINS                                         :{WHITE} Treinticks:
+STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE} Wegvoertuigticks:
+STR_FRAMERATE_GL_SHIPS                                          :{WHITE} Schipticks:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE} Vliegtuigticks:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE} Wereldticks:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE} Link grafiekvertraging:
+STR_FRAMERATE_DRAWING                                           :{WHITE}Graphics weergeven:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE} Wereldkijkvensters:
+STR_FRAMERATE_VIDEO                                             :{WHITE}Video-output:
+STR_FRAMERATE_SOUND                                             :{WHITE}Geluid mixen:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Gameloop
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Cargoafhandeling
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Treinticks
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Wegvoertuigticks
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Schipticks
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Vliegtuigticks
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Wereldticks
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Link grafiekvertraging
+STR_FRAMETIME_CAPTION_DRAWING                                   :Graphics weergeven
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Wereldkijkvenster weergeven
+STR_FRAMETIME_CAPTION_VIDEO                                     :Video-output
+STR_FRAMETIME_CAPTION_SOUND                                     :Geluid mixen
 ############ End of leave-in-this-order
 
 
@@ -2977,6 +3033,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Geef een
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Steden
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE} Geen
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Groeistad){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Plaatsnamen - klik op naam om het scherm te centreren op de stad. Ctrl+klik opent een nieuw kijkvenster op de locatie van de stad
 STR_TOWN_POPULATION                                             :{BLACK}Wereldbevolking: {COMMA}
 
@@ -2984,6 +3041,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Wereldbe
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Groeistad)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Bevolking: {ORANGE}{COMMA}{BLACK}  Huizen: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} vorige maand: {ORANGE}{COMMA}{BLACK} max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Vracht nodig voor groei van stad:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} noodzakelijk
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} noodzakelijk in de winter
@@ -4230,6 +4288,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... deze
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... weg is in de verkeerde richting
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... doorrij haltes kunnen geen bochten hebben
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... doorrij haltes kunnen geen kruisingen hebben
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... weg is eenrichtingsverkeer of geblokkeerd
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan deel van station niet weghalen...
@@ -4481,6 +4540,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originele gelui
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originele geluiden van de Transport Tycoon Deluxe Windows-versie.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Een geluidset zonder geluid.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originele muziek van de Transport Tycoon Deluxe Windows-versie.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Originele Transport Tycoon Deluxe DOS-editiemuziek.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Originele Transport Tycoon (Original/World Editor) DOS-editiemuziek.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Een muziekset zonder muziek.
 
 ##id 0x2000
