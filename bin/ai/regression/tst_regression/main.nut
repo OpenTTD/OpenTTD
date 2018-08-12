@@ -1018,7 +1018,36 @@ function Regression::Rail()
 	print("    BuildRail():                   " + AIRail.BuildRail(10002, 10003, 10006));
 	print("    HasTransportType():            " + AITile.HasTransportType(10005, AITile.TRANSPORT_RAIL));
 	print("    HasTransportType():            " + AITile.HasTransportType(10006, AITile.TRANSPORT_RAIL));
-	print("    RemoveRail():                  " + AIRail.RemoveRail(10005, 10004, 10001));
+	print("    RemoveRail():                  " + AIRail.RemoveRail(10006, 10005, 10002));
+	print("    HasTransportType():            " + AITile.HasTransportType(10004, AITile.TRANSPORT_RAIL));
+	print("    HasTransportType():            " + AITile.HasTransportType(10005, AITile.TRANSPORT_RAIL));
+	print("    BuildRailTrack():              " + AIRail.BuildRailTrack(6200, AIRail.RAILTRACK_NE_SW));
+	print("    RemoveRailTrack():             " + AIRail.RemoveRailTrack(6200, AIRail.RAILTRACK_NW_NE));
+	print("    RemoveRailTrack():             " + AIRail.RemoveRailTrack(6200, AIRail.RAILTRACK_NE_SW));
+	print("    BuildRail():                   " + AIRail.BuildRail(6200, 6200 + 256, 6200 + (256 * 4)));
+	print("    HasTransportType():            " + AITile.HasTransportType(6200 + (256 * 3), AITile.TRANSPORT_RAIL));
+	print("    HasTransportType():            " + AITile.HasTransportType(6200 + (256 * 4), AITile.TRANSPORT_RAIL));
+	print("    RemoveRail():                  " + AIRail.RemoveRail(6200 + (256 * 3), 6200 + (256 * 2), 6200 - 256));
+	print("    HasTransportType():            " + AITile.HasTransportType(6200 + (256 * 3), AITile.TRANSPORT_RAIL));
+	print("    HasTransportType():            " + AITile.HasTransportType(6200 + (256 * 4), AITile.TRANSPORT_RAIL));
+	print("    BuildRailTrack():              " + AIRail.BuildRail(14706, 14705, 12907));
+	print("    HasTransportType():            " + AITile.HasTransportType(13421, AITile.TRANSPORT_RAIL));
+	print("    HasTransportType():            " + AITile.HasTransportType(14191, AITile.TRANSPORT_RAIL));
+	print("    RemoveRail():                  " + AIRail.RemoveRail(12907, 13163, 14706));
+	print("    HasTransportType():            " + AITile.HasTransportType(13421, AITile.TRANSPORT_RAIL));
+	print("    HasTransportType():            " + AITile.HasTransportType(14191, AITile.TRANSPORT_RAIL));
+	print("    BuildRailTrack():              " + AIRail.BuildRailTrack(61533, AIRail.RAILTRACK_NW_SW));
+	print("    BuildRailTrack():              " + AIRail.BuildRailTrack(61533, AIRail.RAILTRACK_NE_SE));
+	print("    BuildRailTrack():              " + AIRail.BuildRailTrack(61533, AIRail.RAILTRACK_NW_NE));
+	print("    BuildRailTrack():              " + AIRail.BuildRailTrack(61533, AIRail.RAILTRACK_SW_SE));
+	print("    BuildRailTrack():              " + AIRail.BuildRailTrack(61533, AIRail.RAILTRACK_NE_SW));
+	print("    DemolishTile():                " + AITile.DemolishTile(61533));
+	print("    BuildRailTrack():              " + AIRail.BuildRailTrack(61533, AIRail.RAILTRACK_NE_SW));
+	print("    BuildRailTrack():              " + AIRail.BuildRailTrack(61533, AIRail.RAILTRACK_NW_SE));
+	print("    BuildRailTrack():              " + AIRail.BuildRailTrack(61533, AIRail.RAILTRACK_NW_NE));
+	print("    BuildRailTrack():              " + AIRail.BuildRailTrack(61533, AIRail.RAILTRACK_SW_SE));
+	print("    DemolishTile():                " + AITile.DemolishTile(61533));
+	print("    BuildRailTrack():              " + AIRail.BuildRailTrack(61533, AIRail.RAILTRACK_NW_SE));
 
 	print("  Depot");
 	print("    IsRailTile():                  " + AIRail.IsRailTile(33411));
@@ -1053,6 +1082,31 @@ function Regression::Rail()
 	print("    IsRailStationTile():           " + AIRail.IsRailStationTile(7957));
 	print("    IsRailStationTile():           " + AIRail.IsRailStationTile(7958));
 	print("    IsRailStationTile():           " + AIRail.IsRailStationTile(7959));
+
+	print("  Waypoint");
+	print("    BuildRailTrack():              " + AIRail.BuildRailTrack(12646, AIRail.RAILTRACK_NW_SE));
+	print("    BuildRailTrack():              " + AIRail.BuildRailTrack(12648, AIRail.RAILTRACK_NE_SW));
+	print("    BuildRailTrack():              " + AIRail.BuildRailTrack(12650, AIRail.RAILTRACK_NW_NE));
+	print("    BuildRailWaypoint():           " + AIRail.BuildRailWaypoint(12644));
+	print("    BuildRailWaypoint():           " + AIRail.BuildRailWaypoint(12646));
+	print("    BuildRailWaypoint():           " + AIRail.BuildRailWaypoint(12648));
+	print("    BuildRailWaypoint():           " + AIRail.BuildRailWaypoint(12650));
+	print("    IsRailWaypointTile():          " + AIRail.IsRailWaypointTile(12644));
+	print("    IsRailWaypointTile():          " + AIRail.IsRailWaypointTile(12646));
+	print("    IsRailWaypointTile():          " + AIRail.IsRailWaypointTile(12648));
+	print("    IsRailWaypointTile():          " + AIRail.IsRailWaypointTile(12650));
+	print("    RemoveRailWaypointTileRectangle():" + AIRail.RemoveRailWaypointTileRectangle(12644, 12646, false));
+	print("    RemoveRailWaypointTileRectangle():" + AIRail.RemoveRailWaypointTileRectangle(12648, 12650, true));
+	print("    IsRailWaypointTile():          " + AIRail.IsRailWaypointTile(12644));
+	print("    IsRailWaypointTile():          " + AIRail.IsRailWaypointTile(12646));
+	print("    IsRailWaypointTile():          " + AIRail.IsRailWaypointTile(12648));
+	print("    IsRailWaypointTile():          " + AIRail.IsRailWaypointTile(12650));
+	print("    HasTransportType():            " + AITile.HasTransportType(12644, AITile.TRANSPORT_RAIL));
+	print("    HasTransportType():            " + AITile.HasTransportType(12646, AITile.TRANSPORT_RAIL));
+	print("    HasTransportType():            " + AITile.HasTransportType(12648, AITile.TRANSPORT_RAIL));
+	print("    HasTransportType():            " + AITile.HasTransportType(12650, AITile.TRANSPORT_RAIL));
+	print("    DemolishTile():                " + AITile.DemolishTile(12648));
+	print("    DemolishTile():                " + AITile.DemolishTile(12650));
 }
 
 function Regression::Road()
@@ -1441,7 +1495,7 @@ function Regression::TileList()
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
-	list = AITileList_StationType(4, AIStation.STATION_BUS_STOP);
+	list = AITileList_StationType(6, AIStation.STATION_BUS_STOP);
 	print("");
 	print("--TileList_StationType--");
 	print("  Count():             " + list.Count());

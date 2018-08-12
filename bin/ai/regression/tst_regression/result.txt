@@ -7334,6 +7334,35 @@ ERROR: IsEnd() is invalid as Begin() is never called
     HasTransportType():            true
     HasTransportType():            false
     RemoveRail():                  true
+    HasTransportType():            false
+    HasTransportType():            false
+    BuildRailTrack():              true
+    RemoveRailTrack():             false
+    RemoveRailTrack():             true
+    BuildRail():                   true
+    HasTransportType():            true
+    HasTransportType():            false
+    RemoveRail():                  true
+    HasTransportType():            true
+    HasTransportType():            false
+    BuildRailTrack():              true
+    HasTransportType():            true
+    HasTransportType():            true
+    RemoveRail():                  true
+    HasTransportType():            false
+    HasTransportType():            false
+    BuildRailTrack():              false
+    BuildRailTrack():              false
+    BuildRailTrack():              true
+    BuildRailTrack():              true
+    BuildRailTrack():              false
+    DemolishTile():                true
+    BuildRailTrack():              true
+    BuildRailTrack():              false
+    BuildRailTrack():              false
+    BuildRailTrack():              false
+    DemolishTile():                true
+    BuildRailTrack():              true
   Depot
     IsRailTile():                  false
     BuildRailDepot():              false
@@ -7362,6 +7391,30 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsRailStationTile():           false
     IsRailStationTile():           false
     IsRailStationTile():           false
+  Waypoint
+    BuildRailTrack():              true
+    BuildRailTrack():              true
+    BuildRailTrack():              true
+    BuildRailWaypoint():           false
+    BuildRailWaypoint():           true
+    BuildRailWaypoint():           true
+    BuildRailWaypoint():           false
+    IsRailWaypointTile():          false
+    IsRailWaypointTile():          true
+    IsRailWaypointTile():          true
+    IsRailWaypointTile():          false
+    RemoveRailWaypointTileRectangle():true
+    RemoveRailWaypointTileRectangle():true
+    IsRailWaypointTile():          false
+    IsRailWaypointTile():          false
+    IsRailWaypointTile():          false
+    IsRailWaypointTile():          false
+    HasTransportType():            false
+    HasTransportType():            false
+    HasTransportType():            true
+    HasTransportType():            true
+    DemolishTile():                true
+    DemolishTile():                true
 
 --RailTypeList--
   Count():             1
@@ -7485,9 +7538,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetName(0):               Look, a station
   GetLocation(1):           29253
   GetLocation(1000):        -1
-  GetStationID(33411):      4
+  GetStationID(33411):      6
   GetStationID(34411):      65535
-  GetStationID(33411):      4
+  GetStationID(33411):      6
   HasRoadType(3, TRAM):     false
   HasRoadType(3, ROAD):     false
   HasRoadType(33411, TRAM): false
