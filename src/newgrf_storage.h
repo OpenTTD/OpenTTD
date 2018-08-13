@@ -220,7 +220,7 @@ extern PersistentStoragePool _persistent_storage_pool;
 /**
  * Class for pooled persistent storage of data.
  */
-struct PersistentStorage : PersistentStorageArray<int32, 16>, PersistentStoragePool::PoolItem<&_persistent_storage_pool> {
+struct PersistentStorage : PersistentStorageArray<int32, 256>, PersistentStoragePool::PoolItem<&_persistent_storage_pool> {
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	PersistentStorage(const uint32 new_grfid, byte feature, TileIndex tile)
 	{
@@ -230,7 +230,7 @@ struct PersistentStorage : PersistentStorageArray<int32, 16>, PersistentStorageP
 	}
 };
 
-assert_compile(cpp_lengthof(OldPersistentStorage, storage) == cpp_lengthof(PersistentStorage, storage));
+assert_compile(cpp_lengthof(OldPersistentStorage, storage) <= cpp_lengthof(PersistentStorage, storage));
 
 #define FOR_ALL_STORAGES_FROM(var, start) FOR_ALL_ITEMS_FROM(PersistentStorage, storage_index, var, start)
 #define FOR_ALL_STORAGES(var) FOR_ALL_STORAGES_FROM(var, 0)

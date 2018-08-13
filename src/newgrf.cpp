@@ -7898,6 +7898,8 @@ static void InitializeGRFSpecial()
 	                   |       ((_settings_game.vehicle.dynamic_engines ? 1 : 0) << 0x18)  // dynamic engines
 	                   |                                                      (1 << 0x1E)  // variablerunningcosts
 	                   |                                                      (1 << 0x1F); // any switch is on
+
+	_ttdpatch_flags[4] =                                                      (1 << 0x00); // larger persistent storage
 }
 
 /** Reset and clear all NewGRF stations */
