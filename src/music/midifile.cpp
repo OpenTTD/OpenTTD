@@ -1010,7 +1010,12 @@ bool MidiFile::WriteSMF(const char *filename)
 std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 {
 	if (song.filetype == MTT_STANDARDMIDI) {
-		return std::string(song.filename);
+		char filename[MAX_PATH];
+		if (FioFindFullPath(filename, lastof(filename), Subdirectory::BASESET_DIR, song.filename)) {
+			return std::string(filename);
+		} else {
+			return std::string();
+		}
 	}
 
 	if (song.filetype != MTT_MPSMIDI) return std::string();
