@@ -1020,16 +1020,18 @@ std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 
 	if (song.filetype != MTT_MPSMIDI) return std::string();
 
-	const char *lastpathsep = strrchr(song.filename, PATHSEPCHAR);
-	if (lastpathsep == NULL) {
-		lastpathsep = song.filename;
-	}
-
 	char basename[MAX_PATH];
 	{
+		const char *fnstart = strrchr(song.filename, PATHSEPCHAR);
+		if (fnstart == NULL) {
+			fnstart = song.filename;
+		} else {
+			fnstart++;
+		}
+
 		/* Remove all '.' characters from filename */
 		char *wp = basename;
-		for (const char *rp = lastpathsep + 1; *rp != '\0'; rp++) {
+		for (const char *rp = fnstart; *rp != '\0'; rp++) {
 			if (*rp != '.') *wp++ = *rp;
 		}
 		*wp++ = '\0';
