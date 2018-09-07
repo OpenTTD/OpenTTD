@@ -869,7 +869,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Leihoa {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Leihora kopiatu
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK} Leiho nagusian ikusten dena leiho honetara kopiatu
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Leihotik kpiatutakoa itsatsi
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Aldatu ikuspen nagusia
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Leiho honetan ikusten dena leiho nagusian itsasi
 
 # Game options window
@@ -2589,6 +2589,8 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Framerate display window
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_TRAINS                                         :{WHITE}  Trenen tick-ak:
+STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  Itsasontzien tick-ak:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -3009,6 +3011,7 @@ STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}
 STR_STATION_VIEW_GROUP                                          :{BLACK}Taldekatu
 STR_STATION_VIEW_WAITING_STATION                                :Geltokia: Itxaroten
 STR_STATION_VIEW_WAITING_AMOUNT                                 :Kopurua: Itxoiten
+STR_STATION_VIEW_PLANNED_STATION                                :Geltokia: Antolatua
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} {STATION}-tik
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT}{STATION}-tik
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT}{STATION}-ra
