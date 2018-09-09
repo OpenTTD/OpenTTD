@@ -206,7 +206,7 @@ public:
 	 * Get the monthly maintenance cost of an airport type.
 	 * @param type The airport type to get the monthly maintenance cost of.
 	 * @pre IsAirportInformationAvailable(type)
-	 * @return Monthly maintenance cost factor of the airport type.
+	 * @return Monthly maintenance cost of the airport type.
 	 */
 	static Money GetMonthlyMaintenanceCost(AirportType type);
 };
