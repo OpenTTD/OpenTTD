@@ -83,6 +83,7 @@ set_default() {
 	with_midi=""
 	with_midi_arg=""
 	with_libtimidity="1"
+	with_fluidsynth="1"
 	with_freetype="1"
 	with_fontconfig="1"
 	with_icu_layout="1"
@@ -160,6 +161,7 @@ set_default() {
 		with_midi
 		with_midi_arg
 		with_libtimidity
+		with_fluidsynth
 		with_freetype
 		with_fontconfig
 		with_icu_layout
@@ -371,6 +373,9 @@ detect_params() {
 			--with-libtimidity)           with_libtimidity="2";;
 			--without-libtimidity)        with_libtimidity="0";;
 			--with-libtimidity=*)         with_libtimidity="$optarg";;
+
+			--with-fluidsynth)            with_fluidsynth="2";;
+			--without-fluidsynth)         with_fluidsynth="0";;
 
 			--with-freetype)              with_freetype="2";;
 			--without-freetype)           with_freetype="0";;
@@ -890,6 +895,7 @@ check_params() {
 	detect_icu_layout
 	detect_icu_sort
 	detect_libtimidity
+	detect_fluidsynth
 
 	if [ "$with_direct_music" != "0" ]; then
 		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ]; then
@@ -1839,6 +1845,11 @@ make_cflags_and_ldflags() {
 		fi
 	fi
 
+	if [ -n "$fluidsynth" ]; then
+		LIBS="$LIBS -lfluidsynth"
+		CFLAGS="$CFLAGS -DFLUIDSYNTH"
+	fi
+
 	if [ "$with_iconv" != "0" ]; then
 		CFLAGS="$CFLAGS -DWITH_ICONV"
 		if [ "$link_to_iconv" = "yes" ]; then
@@ -2775,6 +2786,10 @@ detect_libtimidity() {
 	detect_pkg_config "$with_libtimidity" "libtimidity" "libtimidity_config" "0.1" "1"
 }
 
+detect_fluidsynth() {
+	detect_library "$with_fluidsynth" "fluidsynth" "" "" "fluidsynth.h"
+}
+
 detect_pkg_config() {
 	# $1 - config-param ($with_lzma value)
 	# $2 - package name ('liblzma')
@@ -3543,6 +3558,7 @@ showhelp() {
 	echo "                                 midi-player"
 	echo "  --with-libtimidity[=\"pkg-config libtimidity\"]"
 	echo "                                 enables libtimidity support"
+	echo "  --with-fluidsynth              enables fluidsynth support"
 	echo "  --with-allegro[=\"pkg-config allegro\"]"
 	echo "                                 enables Allegro video driver support"
 	echo "  --with-cocoa                   enables COCOA video driver (OSX ONLY)"
