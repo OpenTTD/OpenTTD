@@ -1013,6 +1013,8 @@ std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 		char filename[MAX_PATH];
 		if (FioFindFullPath(filename, lastof(filename), Subdirectory::BASESET_DIR, song.filename)) {
 			return std::string(filename);
+		} else if (FioFindFullPath(filename, lastof(filename), Subdirectory::OLD_GM_DIR, song.filename)) {
+			return std::string(filename);
 		} else {
 			return std::string();
 		}
