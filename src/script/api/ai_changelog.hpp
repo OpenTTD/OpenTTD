@@ -18,6 +18,8 @@
  * \b 1.9.0
  *
  * 1.9.0 is not yet released. The following changes are not set in stone yet.
+ * API additions:
+ * \li AIAirport::GetMonthlyMaintenanceCost
  *
  * \b 1.8.0
  *
