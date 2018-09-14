@@ -52,6 +52,7 @@ void SQGSAirport_Register(Squirrel *engine)
 	SQGSAirport.DefSQStaticMethod(engine, &ScriptAirport::GetNoiseLevelIncrease,         "GetNoiseLevelIncrease",         3, ".ii");
 	SQGSAirport.DefSQStaticMethod(engine, &ScriptAirport::GetNearestTown,                "GetNearestTown",                3, ".ii");
 	SQGSAirport.DefSQStaticMethod(engine, &ScriptAirport::GetMaintenanceCostFactor,      "GetMaintenanceCostFactor",      2, ".i");
+	SQGSAirport.DefSQStaticMethod(engine, &ScriptAirport::GetMonthlyMaintenanceCost,     "GetMonthlyMaintenanceCost",     2, ".i");
 
 	SQGSAirport.PostRegister(engine);
 }
