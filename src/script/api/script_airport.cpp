@@ -163,3 +163,10 @@
 
 	return AirportSpec::Get(type)->maintenance_cost;
 }
+
+/* static */ Money ScriptAirport::GetMonthlyMaintenanceCost(AirportType type)
+{
+	if (!IsAirportInformationAvailable(type)) return -1;
+
+	return (int64)GetMaintenanceCostFactor(type) * _price[PR_INFRASTRUCTURE_AIRPORT] >> 3;
+}
