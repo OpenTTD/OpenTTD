@@ -41,6 +41,7 @@ static const KeycodeNames _keycode_to_name[] = {
 	{"GLOBAL", WKC_GLOBAL_HOTKEY},
 	{"ESC", WKC_ESC},
 	{"DEL", WKC_DELETE},
+	{"BACKSPACE", WKC_BACKSPACE},
 	{"RETURN", WKC_RETURN},
 	{"BACKQUOTE", WKC_BACKQUOTE},
 	{"F1", WKC_F1},
