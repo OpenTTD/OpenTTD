@@ -815,6 +815,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Manager)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{RAW_STRING} sponsored construction of new town {TOWN}!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}A new town called {TOWN} has been constructed!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}New {STRING} under construction near {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}New {STRING} being planted near {TOWN}!
