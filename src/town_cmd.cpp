@@ -1798,15 +1798,21 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		if (_game_mode != GM_EDITOR) {
 			/* 't' can't be NULL since 'random' is false outside scenedit */
 			assert(!random);
-			char company_name[MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH];
-			SetDParam(0, _current_company);
-			GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
 
-			char *cn = stredup(company_name);
-			SetDParamStr(0, cn);
-			SetDParam(1, t->index);
+			if (_current_company == OWNER_DEITY) {
+				SetDParam(0, t->index);
+				AddTileNewsItem(STR_NEWS_NEW_TOWN_UNSPONSORED, NT_INDUSTRY_OPEN, tile);
+			} else {
+				char company_name[MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH];
+				SetDParam(0, _current_company);
+				GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
 
-			AddTileNewsItem(STR_NEWS_NEW_TOWN, NT_INDUSTRY_OPEN, tile, cn);
+				char *cn = stredup(company_name);
+				SetDParamStr(0, cn);
+				SetDParam(1, t->index);
+
+				AddTileNewsItem(STR_NEWS_NEW_TOWN, NT_INDUSTRY_OPEN, tile, cn);
+			}
 			AI::BroadcastNewEvent(new ScriptEventTownFounded(t->index));
 			Game::NewEvent(new ScriptEventTownFounded(t->index));
 		}
