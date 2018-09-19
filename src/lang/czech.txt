@@ -550,6 +550,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Screenshot v plném přiblížení
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Screenshot ve výchozím přiblížení
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot celé mapy
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Zobrazit počet snímků za sekundu
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Zarovnávání spritů
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Přepnout ohraničení
@@ -737,6 +738,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Hudba nedostupná
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Skladba
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Název
@@ -762,6 +764,7 @@ STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLA
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Vymazat
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Vyprázdnit současný program (jen u Voleb 1 a 2)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Změnit výběr hudby na jinou nainstalovanou sadu.
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Skladba se přidá do zvoleného programu (Volba 1 nebo 2) klepnutím na její název
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Hudební stopu odstraníš ze současného programu (pouze u vlastního) kliknutím na ni
 
@@ -897,6 +900,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Prezident)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}Společnost {STRING} zaplatila výstavbu nového města {TOWN}!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Nové město {TOWN} bylo vystavěno!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Nov{G ý á é í é é á} {STRING.small} se staví poblíž města {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Nov{G ý á é í é é á} {STRING.small} se vysazuj{G 0 e e e í í í í} poblíž města {TOWN}!
@@ -966,7 +970,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohled {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Nastavit jako pohled
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Nastavit současné zorné pole jako pohled
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Přejít na pohled
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Změnit hlavní pohled
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Nastavit pohled do zorného pole
 
 # Game options window
@@ -1009,6 +1013,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Jihoafrický ra
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Vlastní...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgijské Lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íránský Riál (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ruský rubl (RUB)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Silniční vozidla jezdí
@@ -2365,6 +2370,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda 
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Všechny
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Žádný
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Vybrat firmy, které mají být zobrazeny
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nepoužívaný
@@ -2780,9 +2786,24 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Tým OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Počet snímků za sekundu
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Počet snímků videa vykreslovaných za sekundu.
+STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Aktuální činitel rychlosti hry: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Rychlost, kterou hra právě běží, v porovnání s očekávanou rychlostí při běžné rychlosti simulace.
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Průměr
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} sním{P "ek" "ky" "ků"}/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} sním{P "ek" "ky" "ků"}/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_ECONOMY                                        :{WHITE}  Manipulace s nákladem:
+STR_FRAMERATE_DRAWING                                           :{WHITE}Vykreslování grafiky:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manipulace s nákladem
+STR_FRAMETIME_CAPTION_DRAWING                                   :Vykreslování grafiky
+STR_FRAMETIME_CAPTION_SOUND                                     :Míchání zvuků
 ############ End of leave-in-this-order
 
 
@@ -3070,6 +3091,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Zadej n�
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Města
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nic -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (velkoměsto){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Jména měst - pohled na město zaměříš kliknutím na jeho jméno. Při stisknutém Ctrl otevřeš nový pohled
 STR_TOWN_POPULATION                                             :{BLACK}Populace světa: {COMMA}
 
@@ -3077,6 +3099,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Populace
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (velkoměsto)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Populace: {ORANGE}{COMMA}{BLACK} Domů: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} minulý měsíc: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Množství doručeného nákladu potřebného pro rozvoj města:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}Je potřeba {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} vyžadováno v zimě
@@ -4326,6 +4349,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... tato
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... silnice je otočena jiným směrem
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... průjezdné zastávky nemohou být v zatáčce
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... průjezdné zastávky nemohou být na křižovatce
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... silnice je jednosměrná nebo uzavřená.
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nelze odstranit část stanice...
@@ -4584,6 +4608,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Původní sada 
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Původní sada zvuků Transport Tycoon Deluxe (verze pro Windows).
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Prázdná sada zvuků.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Původní hudba Transport Tycoon Deluxe (verze pro Windows).
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Původní hudba Transport Tycoon Deluxe (verze pro DOS).
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Původní hudba Transport Tycoon (verze pro DOS).
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Prázná hudební sada.
 
 ##id 0x2000
