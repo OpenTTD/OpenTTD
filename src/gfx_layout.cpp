@@ -121,14 +121,14 @@ le_bool Font::getGlyphPoint(LEGlyphID glyph, le_int32 pointNumber, LEPoint &poin
  * Wrapper for doing layouts with ICU.
  */
 class ICUParagraphLayout : public AutoDeleteSmallVector<ParagraphLayouter::Line *, 4>, public ParagraphLayouter {
-	ParagraphLayout *p; ///< The actual ICU paragraph layout.
+	icu::ParagraphLayout *p; ///< The actual ICU paragraph layout.
 public:
 	/** Visual run contains data about the bit of text with the same font. */
 	class ICUVisualRun : public ParagraphLayouter::VisualRun {
-		const ParagraphLayout::VisualRun *vr; ///< The actual ICU vr.
+		const icu::ParagraphLayout::VisualRun *vr; ///< The actual ICU vr.
 
 	public:
-		ICUVisualRun(const ParagraphLayout::VisualRun *vr) : vr(vr) { }
+		ICUVisualRun(const icu::ParagraphLayout::VisualRun *vr) : vr(vr) { }
 
 		const Font *GetFont() const          { return (const Font*)vr->getFont(); }
 		int GetGlyphCount() const            { return vr->getGlyphCount(); }
@@ -140,10 +140,10 @@ public:
 
 	/** A single line worth of VisualRuns. */
 	class ICULine : public AutoDeleteSmallVector<ICUVisualRun *, 4>, public ParagraphLayouter::Line {
-		ParagraphLayout::Line *l; ///< The actual ICU line.
+		icu::ParagraphLayout::Line *l; ///< The actual ICU line.
 
 	public:
-		ICULine(ParagraphLayout::Line *l) : l(l)
+		ICULine(icu::ParagraphLayout::Line *l) : l(l)
 		{
 			for (int i = 0; i < l->countRuns(); i++) {
 				*this->Append() = new ICUVisualRun(l->getVisualRun(i));
@@ -163,13 +163,13 @@ public:
 		}
 	};
 
-	ICUParagraphLayout(ParagraphLayout *p) : p(p) { }
+	ICUParagraphLayout(icu::ParagraphLayout *p) : p(p) { }
 	~ICUParagraphLayout() { delete p; }
 	void Reflow() { p->reflow(); }
 
 	ParagraphLayouter::Line *NextLine(int max_width)
 	{
-		ParagraphLayout::Line *l = p->nextLine(max_width);
+		icu::ParagraphLayout::Line *l = p->nextLine(max_width);
 		return l == NULL ? NULL : new ICULine(l);
 	}
 };
@@ -196,7 +196,7 @@ public:
 		}
 
 		/* Fill ICU's FontRuns with the right data. */
-		FontRuns runs(fontMapping.Length());
+		icu::FontRuns runs(fontMapping.Length());
 		for (FontMap::iterator iter = fontMapping.Begin(); iter != fontMapping.End(); iter++) {
 			runs.add(iter->second, iter->first);
 		}
@@ -204,7 +204,7 @@ public:
 		LEErrorCode status = LE_NO_ERROR;
 		/* ParagraphLayout does not copy "buff", so it must stay valid.
 		 * "runs" is copied according to the ICU source, but the documentation does not specify anything, so this might break somewhen. */
-		ParagraphLayout *p = new ParagraphLayout(buff, length, &runs, NULL, NULL, NULL, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, false, status);
+		icu::ParagraphLayout *p = new icu::ParagraphLayout(buff, length, &runs, NULL, NULL, NULL, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, false, status);
 		if (status != LE_NO_ERROR) {
 			delete p;
 			return NULL;

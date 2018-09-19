@@ -22,7 +22,7 @@
 
 #ifdef WITH_ICU_LAYOUT
 #include "layout/ParagraphLayout.h"
-#define ICU_FONTINSTANCE : public LEFontInstance
+#define ICU_FONTINSTANCE : public icu::LEFontInstance
 #else /* WITH_ICU_LAYOUT */
 #define ICU_FONTINSTANCE
 #endif /* WITH_ICU_LAYOUT */
