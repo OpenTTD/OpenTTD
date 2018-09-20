@@ -32,7 +32,7 @@ namespace SQConvert {
 	struct SQAutoFreePointers : SmallVector<void *, 1> {
 		~SQAutoFreePointers()
 		{
-			for (uint i = 0; i < this->items; i++) free(this->data[i]);
+			for (uint i = 0; i < std::vector<void *>::size(); i++) free(std::vector<void *>::operator[](i));
 		}
 	};
 

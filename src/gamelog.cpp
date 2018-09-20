@@ -178,6 +178,7 @@ struct GRFPresence{
 	bool was_missing;     ///< Grf was missing during some gameload in the past
 
 	GRFPresence(const GRFConfig *gc) : gc(gc), was_missing(false) {}
+	GRFPresence() = default;
 };
 typedef SmallMap<uint32, GRFPresence> GrfIDMapping;
 

@@ -14,6 +14,8 @@
 
 #include "alloc_func.hpp"
 #include "mem_func.hpp"
+#include <vector>
+#include <algorithm>
 
 /**
  * Simple vector template class.
@@ -26,43 +28,30 @@
  * @tparam S The steps of allocation
  */
 template <typename T, uint S>
-class SmallVector {
-protected:
-	T *data;       ///< The pointer to the first item
-	uint items;    ///< The number of items stored
-	uint capacity; ///< The available space for storing items
-
+class SmallVector : public std::vector<T> {
 public:
-	SmallVector() : data(NULL), items(0), capacity(0) { }
+	SmallVector() = default;
 
 	/**
 	 * Copy constructor.
 	 * @param other The other vector to copy.
 	 */
-	SmallVector(const SmallVector &other) : data(NULL), items(0), capacity(0)
-	{
-		this->Assign(other);
-	}
+	SmallVector(const SmallVector &other) = default;
 
 	/**
 	 * Generic copy constructor.
 	 * @param other The other vector to copy.
 	 */
 	template <uint X>
-	SmallVector(const SmallVector<T, X> &other) : data(NULL), items(0), capacity(0)
+	SmallVector(const SmallVector<T, X> &other) : std::vector<T>(other)
 	{
-		this->Assign(other);
 	}
 
 	/**
 	 * Assignment.
 	 * @param other The other vector to assign.
 	 */
-	SmallVector &operator=(const SmallVector &other)
-	{
-		this->Assign(other);
-		return *this;
-	}
+	SmallVector &operator=(const SmallVector &other) = default;
 
 	/**
 	 * Generic assignment.
@@ -75,10 +64,7 @@ public:
 		return *this;
 	}
 
-	~SmallVector()
-	{
-		free(this->data);
-	}
+	~SmallVector() = default;
 
 	/**
 	 * Assign items from other vector.
@@ -88,8 +74,7 @@ public:
 	{
 		if ((const void *)&other == (void *)this) return;
 
-		this->Clear();
-		if (other.Length() > 0) MemCpyT<T>(this->Append(other.Length()), other.Begin(), other.Length());
+		std::vector<T>::operator=(other);
 	}
 
 	/**
@@ -97,10 +82,7 @@ public:
 	 */
 	inline void Clear()
 	{
-		/* In fact we just reset the item counter avoiding the need to
-		 * probably reallocate the same amount of memory the list was
-		 * previously using. */
-		this->items = 0;
+		std::vector<T>::clear();
 	}
 
 	/**
@@ -108,10 +90,8 @@ public:
 	 */
 	inline void Reset()
 	{
-		this->items = 0;
-		this->capacity = 0;
-		free(data);
-		data = NULL;
+		std::vector<T>::clear();
+		std::vector<T>::shrink_to_fit();
 	}
 
 	/**
@@ -119,11 +99,7 @@ public:
 	 */
 	inline void Compact()
 	{
-		uint capacity = Align(this->items, S);
-		if (capacity >= this->capacity) return;
-
-		this->capacity = capacity;
-		this->data = ReallocT(this->data, this->capacity);
+		std::vector<T>::shrink_to_fit();
 	}
 
 	/**
@@ -133,15 +109,8 @@ public:
 	 */
 	inline T *Append(uint to_add = 1)
 	{
-		uint begin = this->items;
-		this->items += to_add;
-
-		if (this->items > this->capacity) {
-			this->capacity = Align(this->items, S);
-			this->data = ReallocT(this->data, this->capacity);
-		}
-
-		return &this->data[begin];
+		std::vector<T>::resize(std::vector<T>::size() + to_add);
+		return this->End() - to_add;
 	}
 
 	/**
@@ -150,12 +119,7 @@ public:
 	 */
 	inline void Resize(uint num_items)
 	{
-		this->items = num_items;
-
-		if (this->items > this->capacity) {
-			this->capacity = Align(this->items, S);
-			this->data = ReallocT(this->data, this->capacity);
-		}
+		std::vector<T>::resize(num_items);
 	}
 
 	/**
@@ -167,11 +131,8 @@ public:
 	{
 		assert(item >= this->Begin() && item <= this->End());
 
-		size_t to_move = this->End() - item;
 		size_t start = item - this->Begin();
-
-		this->Append();
-		if (to_move > 0) MemMoveT(this->Begin() + start + 1, this->Begin() + start, to_move);
+		std::vector<T>::insert(std::vector<T>::begin() + start);
 		return this->Begin() + start;
 	}
 
@@ -211,14 +172,8 @@ public:
 	 */
 	inline int FindIndex(const T &item) const
 	{
-		int index = 0;
-		const T *pos = this->Begin();
-		const T *end = this->End();
-		while (pos != end && *pos != item) {
-			pos++;
-			index++;
-		}
-		return pos == end ? -1 : index;
+		auto const it = this->Find(item);
+		return it == this->End() ? -1 : it - this->Begin();
 	}
 
 	/**
@@ -240,7 +195,8 @@ public:
 	inline void Erase(T *item)
 	{
 		assert(item >= this->Begin() && item < this->End());
-		*item = this->data[--this->items];
+		*item = std::vector<T>::back();
+		std::vector<T>::pop_back();
 	}
 
 	/**
@@ -250,7 +206,8 @@ public:
 	 */
 	void ErasePreservingOrder(uint pos, uint count = 1)
 	{
-		ErasePreservingOrder(this->data + pos, count);
+		auto const it = std::vector<T>::begin() + pos;
+		std::vector<T>::erase(it, it + count);
 	}
 
 	/**
@@ -260,13 +217,7 @@ public:
 	 */
 	inline void ErasePreservingOrder(T *item, uint count = 1)
 	{
-		if (count == 0) return;
-		assert(item >= this->Begin());
-		assert(item + count <= this->End());
-
-		this->items -= count;
-		ptrdiff_t to_move = this->End() - item;
-		if (to_move > 0) MemMoveT(item, item + count, to_move);
+		this->ErasePreservingOrder(item - this->Begin(), count);
 	}
 
 	/**
@@ -289,7 +240,7 @@ public:
 	 */
 	inline uint Length() const
 	{
-		return this->items;
+		return std::vector<T>::size();
 	}
 
 	/**
@@ -299,7 +250,7 @@ public:
 	 */
 	inline const T *Begin() const
 	{
-		return this->data;
+		return std::vector<T>::data();
 	}
 
 	/**
@@ -309,7 +260,7 @@ public:
 	 */
 	inline T *Begin()
 	{
-		return this->data;
+		return std::vector<T>::data();
 	}
 
 	/**
@@ -319,7 +270,7 @@ public:
 	 */
 	inline const T *End() const
 	{
-		return &this->data[this->items];
+		return std::vector<T>::data() + std::vector<T>::size();
 	}
 
 	/**
@@ -329,7 +280,7 @@ public:
 	 */
 	inline T *End()
 	{
-		return &this->data[this->items];
+		return std::vector<T>::data() + std::vector<T>::size();
 	}
 
 	/**
@@ -341,8 +292,8 @@ public:
 	inline const T *Get(uint index) const
 	{
 		/* Allow access to the 'first invalid' item */
-		assert(index <= this->items);
-		return &this->data[index];
+		assert(index <= std::vector<T>::size());
+		return this->Begin() + index;
 	}
 
 	/**
@@ -354,8 +305,8 @@ public:
 	inline T *Get(uint index)
 	{
 		/* Allow access to the 'first invalid' item */
-		assert(index <= this->items);
-		return &this->data[index];
+		assert(index <= std::vector<T>::size());
+		return this->Begin() + index;
 	}
 
 	/**
@@ -366,8 +317,8 @@ public:
 	 */
 	inline const T &operator[](uint index) const
 	{
-		assert(index < this->items);
-		return this->data[index];
+		assert(index < std::vector<T>::size());
+		return std::vector<T>::operator[](index);
 	}
 
 	/**
@@ -378,8 +329,8 @@ public:
 	 */
 	inline T &operator[](uint index)
 	{
-		assert(index < this->items);
-		return this->data[index];
+		assert(index < std::vector<T>::size());
+		return std::vector<T>::operator[](index);
 	}
 };
 
@@ -407,11 +358,11 @@ public:
 	 */
 	inline void Clear()
 	{
-		for (uint i = 0; i < this->items; i++) {
-			free(this->data[i]);
+		for (uint i = 0; i < std::vector<T>::size(); i++) {
+			free(std::vector<T>::operator[](i));
 		}
 
-		this->items = 0;
+		std::vector<T>::clear();
 	}
 };
 
@@ -438,11 +389,11 @@ public:
 	 */
 	inline void Clear()
 	{
-		for (uint i = 0; i < this->items; i++) {
-			delete this->data[i];
+		for (uint i = 0; i < std::vector<T>::size(); i++) {
+			delete std::vector<T>::operator[](i);
 		}
 
-		this->items = 0;
+		std::vector<T>::clear();
 	}
 };
 

@@ -27,6 +27,7 @@ struct SmallPair {
 
 	/** Initializes this Pair with data */
 	inline SmallPair(const T &first, const U &second) : first(first), second(second) { }
+	SmallPair() = default;
 };
 
 /**
@@ -56,8 +57,8 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 */
 	inline const Pair *Find(const T &key) const
 	{
-		for (uint i = 0; i < this->items; i++) {
-			if (key == this->data[i].first) return &this->data[i];
+		for (uint i = 0; i < std::vector<Pair>::size(); i++) {
+			if (key == std::vector<Pair>::operator[](i).first) return &std::vector<Pair>::operator[](i);
 		}
 		return this->End();
 	}
@@ -69,11 +70,22 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 */
 	inline Pair *Find(const T &key)
 	{
-		for (uint i = 0; i < this->items; i++) {
-			if (key == this->data[i].first) return &this->data[i];
+		for (uint i = 0; i < std::vector<Pair>::size(); i++) {
+			if (key == std::vector<Pair>::operator[](i).first) return &std::vector<Pair>::operator[](i);
 		}
 		return this->End();
 	}
+
+	inline const Pair *End() const
+	{
+		return &*std::vector<Pair>::end();
+	}
+
+	inline Pair *End()
+	{
+		return &*std::vector<Pair>::end();
+	}
+
 
 	/**
 	 * Tests whether a key is assigned in this map.
@@ -86,6 +98,16 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	}
 
 	/**
+	 * Tests whether a key is assigned in this map.
+	 * @param key key to test
+	 * @return true iff the item is present
+	 */
+	inline bool Contains(const T &key)
+	{
+		return this->Find(key) != this->End();
+	}
+
+	/**
 	 * Removes given pair from this map
 	 * @param pair pair to remove
 	 * @note it has to be pointer to pair in this map. It is overwritten by the last item.
@@ -93,7 +115,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	inline void Erase(Pair *pair)
 	{
 		assert(pair >= this->Begin() && pair < this->End());
-		*pair = this->data[--this->items];
+		SmallVector<Pair, S>::Erase(pair);
 	}
 
 	/**
@@ -104,13 +126,12 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 */
 	inline bool Erase(const T &key)
 	{
-		for (uint i = 0; i < this->items; i++) {
-			if (key == this->data[i].first) {
-				this->data[i] = this->data[--this->items];
-				return true;
-			}
-		}
-		return false;
+		Pair *pair = this->Find(key);
+		if (pair == this->End())
+			return false;
+
+		SmallVector<Pair, S>::Erase(pair);
+		return true;
 	}
 
 	/**
@@ -136,8 +157,8 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 */
 	inline U &operator[](const T &key)
 	{
-		for (uint i = 0; i < this->items; i++) {
-			if (key == this->data[i].first) return this->data[i].second;
+		for (uint i = 0; i < std::vector<Pair>::size(); i++) {
+			if (key == std::vector<Pair>::operator[](i).first) return std::vector<Pair>::operator[](i).second;
 		}
 		Pair *n = this->Append();
 		n->first = key;
@@ -146,7 +167,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 
 	inline void SortByKey()
 	{
-		QSortT(this->Begin(), this->items, KeySorter);
+		QSortT(this->Begin(), std::vector<Pair>::size(), KeySorter);
 	}
 
 	static int CDECL KeySorter(const Pair *a, const Pair *b)

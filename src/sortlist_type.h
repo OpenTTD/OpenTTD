@@ -67,7 +67,7 @@ protected:
 	 */
 	bool IsSortable() const
 	{
-		return (this->data != NULL && this->items >= 2);
+		return std::vector<T>::size() >= 2;
 	}
 
 	/**
@@ -240,7 +240,7 @@ public:
 	{
 		this->flags ^= VL_DESC;
 
-		if (this->IsSortable()) MemReverseT(this->data, this->items);
+		if (this->IsSortable()) MemReverseT(std::vector<T>::data(), std::vector<T>::size());
 	}
 
 	/**
@@ -270,11 +270,11 @@ public:
 		if (this->flags & VL_FIRST_SORT) {
 			CLRBITS(this->flags, VL_FIRST_SORT);
 
-			QSortT(this->data, this->items, compare, desc);
+			QSortT(std::vector<T>::data(), std::vector<T>::size(), compare, desc);
 			return true;
 		}
 
-		GSortT(this->data, this->items, compare, desc);
+		GSortT(std::vector<T>::data(), std::vector<T>::size(), compare, desc);
 		return true;
 	}
 
@@ -337,8 +337,8 @@ public:
 		if (!(this->flags & VL_FILTER)) return false;
 
 		bool changed = false;
-		for (uint iter = 0; iter < this->items;) {
-			T *item = &this->data[iter];
+		for (uint iter = 0; iter < std::vector<T>::size();) {
+			T *item = &std::vector<T>::operator[](iter);
 			if (!decide(item, filter_data)) {
 				this->Erase(item);
 				changed = true;
