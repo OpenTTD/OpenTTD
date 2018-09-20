@@ -279,7 +279,7 @@ private:
 
 	StringFilter string_filter; ///< Filter for available games.
 	QueryString filter_editbox; ///< Filter editbox;
-	SmallVector<bool, 32> fios_items_shown; ///< Map of the filtered out fios items
+	std::vector<bool> fios_items_shown; ///< Map of the filtered out fios items
 
 	static void SaveGameConfirmationCallback(Window *w, bool confirmed)
 	{
@@ -824,7 +824,7 @@ public:
 
 			case SLIWD_FILTER_CHANGES:
 				/* Filter changes */
-				this->fios_items_shown.Resize(this->fios_items.Length());
+				this->fios_items_shown.resize(this->fios_items.Length());
 				uint items_shown_count = 0; ///< The number of items shown in the list
 				/* We pass through every fios item */
 				for (uint i = 0; i < this->fios_items.Length(); i++) {

@@ -106,6 +106,7 @@ struct SmallStackItem {
 	 */
 	inline SmallStackItem(const Titem &value, Tindex next) :
 		next(next), value(value) {}
+	SmallStackItem() = default;
 };
 
 /**
