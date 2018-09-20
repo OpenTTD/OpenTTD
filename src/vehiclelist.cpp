@@ -70,8 +70,8 @@ bool VehicleListIdentifier::UnpackIfValid(uint32 data)
  */
 void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engines, VehicleList *wagons, bool individual_wagons)
 {
-	engines->Clear();
-	if (wagons != NULL && wagons != engines) wagons->Clear();
+	engines->clear();
+	if (wagons != NULL && wagons != engines) wagons->clear();
 
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
@@ -115,7 +115,7 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engine
  */
 bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli)
 {
-	list->Clear();
+	list->clear();
 
 	const Vehicle *v;
 

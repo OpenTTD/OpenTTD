@@ -103,7 +103,7 @@ public:
 	/** Clear the temporary storage. */
 	void Clear()
 	{
-		this->output_buffer.Clear();
+		this->output_buffer.clear();
 	}
 
 	/**

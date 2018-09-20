@@ -652,8 +652,8 @@ public:
 		 * for word break iterators (especially for CJK languages) in combination
 		 * with UTF-8 input. As a work around we have to convert the input to
 		 * UTF-16 and create a mapping back to UTF-8 character indices. */
-		this->utf16_str.Clear();
-		this->utf16_to_utf8.Clear();
+		this->utf16_str.clear();
+		this->utf16_to_utf8.clear();
 
 		while (*s != '\0') {
 			size_t idx = s - string_base;

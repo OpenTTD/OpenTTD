@@ -1136,7 +1136,7 @@ private:
 	{
 		if (!this->companies.NeedRebuild()) return;
 
-		this->companies.Clear();
+		this->companies.clear();
 
 		const Company *c;
 		FOR_ALL_COMPANIES(c) {

@@ -172,7 +172,7 @@ static const SaveLoad _old_waypoint_desc[] = {
 static void Load_WAYP()
 {
 	/* Precaution for when loading failed and it didn't get cleared */
-	_old_waypoints.Clear();
+	_old_waypoints.clear();
 
 	int index;
 
@@ -201,7 +201,7 @@ static void Ptrs_WAYP()
 				 * whether we're in the NULL or "normal" Ptrs proc. So just clear the list
 				 * of old waypoints we constructed and then this waypoint (and the other
 				 * possibly corrupt ones) will not be queried in the NULL Ptrs proc run. */
-				_old_waypoints.Clear();
+				_old_waypoints.clear();
 				SlErrorCorrupt("Referencing invalid Town");
 			}
 			wp->town = Town::Get(wp->town_index);

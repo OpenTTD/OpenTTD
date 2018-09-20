@@ -319,7 +319,7 @@ static void Xunzip(byte **bufp, size_t *sizep)
 {
 	if (textfile == NULL) return;
 
-	this->lines.Clear();
+	this->lines.clear();
 
 	/* Get text from file */
 	size_t filesize;

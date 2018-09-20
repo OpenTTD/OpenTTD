@@ -942,7 +942,7 @@ static void RunVehicleDayProc()
 
 void CallVehicleTicks()
 {
-	_vehicles_to_autoreplace.Clear();
+	_vehicles_to_autoreplace.clear();
 
 	RunVehicleDayProc();
 

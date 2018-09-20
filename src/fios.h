@@ -185,7 +185,7 @@ public:
 	/** Remove all items from the list. */
 	inline void Clear()
 	{
-		this->files.Clear();
+		this->files.clear();
 	}
 
 	/** Compact the list down to the smallest block size boundary. */

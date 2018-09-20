@@ -61,7 +61,7 @@ void LoadCheckData::Clear()
 	for (CompanyPropertiesMap::iterator it = this->companies.Begin(); it != end; it++) {
 		delete it->second;
 	}
-	companies.Clear();
+	companies.clear();
 
 	GamelogFree(this->gamelog_action, this->gamelog_actions);
 	this->gamelog_action = NULL;

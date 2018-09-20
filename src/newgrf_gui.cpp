@@ -1456,7 +1456,7 @@ private:
 	{
 		if (!this->avails.NeedRebuild()) return;
 
-		this->avails.Clear();
+		this->avails.clear();
 
 		for (const GRFConfig *c = _all_grfs; c != NULL; c = c->next) {
 			bool found = false;

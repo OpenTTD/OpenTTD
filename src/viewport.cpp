@@ -1620,11 +1620,11 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 
 	_cur_dpi = old_dpi;
 
-	_vd.string_sprites_to_draw.Clear();
-	_vd.tile_sprites_to_draw.Clear();
-	_vd.parent_sprites_to_draw.Clear();
-	_vd.parent_sprites_to_sort.Clear();
-	_vd.child_screen_sprites_to_draw.Clear();
+	_vd.string_sprites_to_draw.clear();
+	_vd.tile_sprites_to_draw.clear();
+	_vd.parent_sprites_to_draw.clear();
+	_vd.parent_sprites_to_sort.clear();
+	_vd.child_screen_sprites_to_draw.clear();
 }
 
 /**

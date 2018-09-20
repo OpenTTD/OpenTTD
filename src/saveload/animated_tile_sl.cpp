@@ -48,7 +48,7 @@ static void Load_ANIT()
 	}
 
 	uint count = (uint)SlGetFieldLength() / sizeof(*_animated_tiles.Begin());
-	_animated_tiles.Clear();
+	_animated_tiles.clear();
 	_animated_tiles.Append(count);
 	SlArray(_animated_tiles.Begin(), count, SLE_UINT32);
 }

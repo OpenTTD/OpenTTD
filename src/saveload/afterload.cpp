@@ -2942,7 +2942,7 @@ bool AfterLoadGame()
 		SmallVector<uint, 16> skip_frames;
 		FOR_ALL_ROADVEHICLES(v) {
 			if (!v->IsFrontEngine()) continue;
-			skip_frames.Clear();
+			skip_frames.clear();
 			TileIndex prev_tile = v->tile;
 			uint prev_tile_skip = 0;
 			uint cur_skip = 0;

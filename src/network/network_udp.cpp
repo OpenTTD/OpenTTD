@@ -668,7 +668,7 @@ void NetworkUDPInitialize()
 	GetBindAddresses(&server, _settings_client.network.server_port);
 	_udp_server_socket = new ServerNetworkUDPSocketHandler(&server);
 
-	server.Clear();
+	server.clear();
 	GetBindAddresses(&server, 0);
 	_udp_master_socket = new MasterNetworkUDPSocketHandler(&server);
 

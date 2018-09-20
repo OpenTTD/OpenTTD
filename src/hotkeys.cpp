@@ -273,7 +273,7 @@ void HotkeyList::Load(IniFile *ini)
 	for (Hotkey *hotkey = this->items; hotkey->name != NULL; ++hotkey) {
 		IniItem *item = group->GetItem(hotkey->name, false);
 		if (item != NULL) {
-			hotkey->keycodes.Clear();
+			hotkey->keycodes.clear();
 			if (item->value != NULL) ParseHotkeys(hotkey, item->value);
 		}
 	}

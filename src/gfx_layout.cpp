@@ -600,7 +600,7 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, const char *&str, 
 	Font *f = Layouter::GetFont(state.fontsize, state.cur_colour);
 
 	line.buffer = buff_begin;
-	fontMapping.Clear();
+	fontMapping.clear();
 
 	/*
 	 * Go through the whole string while adding Font instances to the font map
@@ -847,7 +847,7 @@ void Layouter::ResetFontCache(FontSize size)
 	for (FontColourMap::iterator it = fonts[size].Begin(); it != fonts[size].End(); ++it) {
 		delete it->second;
 	}
-	fonts[size].Clear();
+	fonts[size].clear();
 
 	/* We must reset the linecache since it references the just freed fonts */
 	ResetLineCache();

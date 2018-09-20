@@ -234,7 +234,7 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_t
 
 	/* Create a list of subtypes used by the various parts of v_for */
 	static SmallVector<StringID, 4> subtypes;
-	subtypes.Clear();
+	subtypes.clear();
 	for (; v_from != NULL; v_from = v_from->HasArticulatedPart() ? v_from->GetNextArticulatedPart() : NULL) {
 		const Engine *e_from = v_from->GetEngine();
 		if (!e_from->CanCarryCargo() || !HasBit(e_from->info.callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) continue;
@@ -406,7 +406,7 @@ struct RefitWindow : public Window {
 	 */
 	void BuildRefitList()
 	{
-		for (uint i = 0; i < NUM_CARGO; i++) this->list[i].Clear();
+		for (uint i = 0; i < NUM_CARGO; i++) this->list[i].clear();
 		Vehicle *v = Vehicle::Get(this->window_number);
 
 		/* Check only the selected vehicles. */

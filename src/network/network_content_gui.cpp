@@ -385,7 +385,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		if (!this->content.NeedRebuild()) return;
 
 		/* Create temporary array of games to use for listing */
-		this->content.Clear();
+		this->content.clear();
 
 		bool all_available = true;
 

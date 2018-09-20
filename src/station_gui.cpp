@@ -178,7 +178,7 @@ protected:
 
 		DEBUG(misc, 3, "Building station list for company %d", owner);
 
-		this->stations.Clear();
+		this->stations.clear();
 
 		const Station *st;
 		FOR_ALL_STATIONS(st) {
@@ -2173,8 +2173,8 @@ static const T *FindStationsNearby(TileArea ta, bool distant_join)
 {
 	TileArea ctx = ta;
 
-	_stations_nearby_list.Clear();
-	_deleted_stations_nearby.Clear();
+	_stations_nearby_list.clear();
+	_deleted_stations_nearby.clear();
 
 	/* Check the inside, to return, if we sit on another station */
 	TILE_AREA_LOOP(t, ta) {

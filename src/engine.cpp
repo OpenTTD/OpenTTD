@@ -487,7 +487,7 @@ StringID Engine::GetAircraftTypeText() const
  */
 void EngineOverrideManager::ResetToDefaultMapping()
 {
-	this->Clear();
+	this->clear();
 	for (VehicleType type = VEH_TRAIN; type <= VEH_AIRCRAFT; type++) {
 		for (uint internal_id = 0; internal_id < _engine_counts[type]; internal_id++) {
 			EngineIDMapping *eid = this->Append();

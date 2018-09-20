@@ -3024,7 +3024,7 @@ void HandleMouseEvents()
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 		_newgrf_debug_sprite_picker.clicked_pixel = blitter->MoveTo(_screen.dst_ptr, _cursor.pos.x, _cursor.pos.y);
 		_newgrf_debug_sprite_picker.click_time = _realtime_tick;
-		_newgrf_debug_sprite_picker.sprites.Clear();
+		_newgrf_debug_sprite_picker.sprites.clear();
 		_newgrf_debug_sprite_picker.mode = SPM_REDRAW;
 		MarkWholeScreenDirty();
 	} else {
@@ -3255,7 +3255,7 @@ void Window::ProcessScheduledInvalidations()
 	for (int *data = this->scheduled_invalidation_data.Begin(); this->window_class != WC_INVALID && data != this->scheduled_invalidation_data.End(); data++) {
 		this->OnInvalidateData(*data, true);
 	}
-	this->scheduled_invalidation_data.Clear();
+	this->scheduled_invalidation_data.clear();
 }
 
 /**
