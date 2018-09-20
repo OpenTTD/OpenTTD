@@ -36,7 +36,7 @@ void ScriptConfig::Change(const char *name, int version, bool force_exact_match,
 		 *  for the Script that have the random flag to a random value. */
 		for (ScriptConfigItemList::const_iterator it = this->info->GetConfigList()->begin(); it != this->info->GetConfigList()->end(); it++) {
 			if ((*it).flags & SCRIPTCONFIG_RANDOM) {
-				this->SetSetting((*it).name, InteractiveRandomRange((*it).max_value - (*it).min_value) + (*it).min_value);
+				this->SetSetting((*it).name, InteractiveRandomRange((*it).max_value + 1 - (*it).min_value) + (*it).min_value);
 			}
 		}
 		this->AddRandomDeviation();
