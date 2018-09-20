@@ -81,7 +81,7 @@ void AfterLoadLabelMaps()
 		}
 	}
 
-	_railtype_list.Clear();
+	_railtype_list.clear();
 }
 
 /** Container for a label for SaveLoad system */
@@ -108,7 +108,7 @@ static void Save_RAIL()
 
 static void Load_RAIL()
 {
-	_railtype_list.Clear();
+	_railtype_list.clear();
 
 	LabelObject lo;
 

@@ -75,5 +75,5 @@ void AnimateAnimatedTiles()
  */
 void InitializeAnimatedTiles()
 {
-	_animated_tiles.Clear();
+	_animated_tiles.clear();
 }

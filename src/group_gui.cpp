@@ -167,8 +167,8 @@ private:
 	{
 		if (!this->groups.NeedRebuild()) return;
 
-		this->groups.Clear();
-		this->indents.Clear();
+		this->groups.clear();
+		this->indents.clear();
 
 		GUIGroupList list;
 

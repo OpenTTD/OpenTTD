@@ -1949,7 +1949,7 @@ void LoadUnloadStation(Station *st)
 	for (Industry **iid = _cargo_delivery_destinations.Begin(); iid != isend; iid++) {
 		TriggerIndustryProduction(*iid);
 	}
-	_cargo_delivery_destinations.Clear();
+	_cargo_delivery_destinations.clear();
 }
 
 /**

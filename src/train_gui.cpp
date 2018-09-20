@@ -263,7 +263,7 @@ static void TrainDetailsCapacityTab(const CargoSummaryItem *item, int left, int 
  */
 static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary *summary)
 {
-	summary->Clear();
+	summary->clear();
 	do {
 		if (!v->GetEngine()->CanCarryCargo()) continue;
 

@@ -60,7 +60,7 @@ struct SignList {
 
 		DEBUG(misc, 3, "Building sign list");
 
-		this->signs.Clear();
+		this->signs.clear();
 
 		const Sign *si;
 		FOR_ALL_SIGNS(si) *this->signs.Append() = si;

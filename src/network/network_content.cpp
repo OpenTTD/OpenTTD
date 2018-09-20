@@ -981,7 +981,7 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 		if (c->state != ContentInfo::AUTOSELECTED) continue;
 
 		/* Only unselect when WE are the only parent. */
-		parents.Clear();
+		parents.clear();
 		this->ReverseLookupDependency(parents, c);
 
 		/* First check whether anything depends on us */
@@ -1000,7 +1000,7 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 		if (force_selection) continue;
 
 		/* "Flood" search to find all items in the dependency graph*/
-		parents.Clear();
+		parents.clear();
 		this->ReverseLookupTreeDependency(parents, c);
 
 		/* Is there anything that is "force" selected?, if so... we're done. */
@@ -1033,8 +1033,8 @@ void ClientNetworkContentSocketHandler::Clear()
 {
 	for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) delete *iter;
 
-	this->infos.Clear();
-	this->requested.Clear();
+	this->infos.clear();
+	this->requested.clear();
 }
 
 /*** CALLBACK ***/

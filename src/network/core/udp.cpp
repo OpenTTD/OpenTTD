@@ -62,7 +62,7 @@ void NetworkUDPSocketHandler::Close()
 	for (SocketList::iterator s = this->sockets.Begin(); s != this->sockets.End(); s++) {
 		closesocket(s->second);
 	}
-	this->sockets.Clear();
+	this->sockets.clear();
 }
 
 NetworkRecvStatus NetworkUDPSocketHandler::CloseConnection(bool error)

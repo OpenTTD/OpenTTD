@@ -347,7 +347,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 	}
 
 	static SmallVector<RefitResult, 16> refit_result;
-	refit_result.Clear();
+	refit_result.clear();
 
 	v->InvalidateNewGRFCacheOfChain();
 	byte actual_subtype = new_subtype;
@@ -442,7 +442,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		}
 	}
 
-	refit_result.Clear();
+	refit_result.clear();
 	_returned_refit_capacity = total_capacity;
 	_returned_mail_refit_capacity = total_mail_capacity;
 	return cost;

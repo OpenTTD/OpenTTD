@@ -40,7 +40,7 @@ SoundEntry *AllocateSound(uint num)
 
 void InitializeSoundPool()
 {
-	_sounds.Clear();
+	_sounds.clear();
 
 	/* Copy original sound data to the pool */
 	SndCopyToPool();

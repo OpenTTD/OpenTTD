@@ -250,7 +250,7 @@ protected:
 		if (!this->servers.NeedRebuild()) return;
 
 		/* Create temporary array of games to use for listing */
-		this->servers.Clear();
+		this->servers.clear();
 
 		for (NetworkGameList *ngl = _network_game_list; ngl != NULL; ngl = ngl->next) {
 			*this->servers.Append() = ngl;

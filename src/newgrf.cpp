@@ -1906,7 +1906,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					if (_cur.skip_sprites < 0) return CIR_DISABLED;
 
 					static SmallVector<DrawTileSeqStruct, 8> tmp_layout;
-					tmp_layout.Clear();
+					tmp_layout.clear();
 					for (;;) {
 						/* no relative bounding box support */
 						DrawTileSeqStruct *dtss = tmp_layout.Append();
@@ -2591,7 +2591,7 @@ static ChangeInfoResult LoadTranslationTable(uint gvid, int numinfo, ByteReader 
 		return CIR_INVALID_ID;
 	}
 
-	translation_table.Clear();
+	translation_table.clear();
 	for (int i = 0; i < numinfo; i++) {
 		uint32 item = buf->ReadDWord();
 		*translation_table.Append() = BSWAP32(item);
@@ -4791,7 +4791,7 @@ static void NewSpriteGroup(ByteReader *buf)
 			}
 
 			static SmallVector<DeterministicSpriteGroupAdjust, 16> adjusts;
-			adjusts.Clear();
+			adjusts.clear();
 
 			/* Loop through the var adjusts. Unfortunately we don't know how many we have
 			 * from the outset, so we shall have to keep reallocing. */
@@ -8246,7 +8246,7 @@ static void ResetNewGRF()
 		delete *file;
 	}
 
-	_grf_files.Clear();
+	_grf_files.clear();
 	_cur.grffile   = NULL;
 }
 
@@ -9332,7 +9332,7 @@ static void AfterLoadGRFs()
 	for (StringIDMapping *it = _string_to_grf_mapping.Begin(); it != _string_to_grf_mapping.End(); it++) {
 		*it->target = MapGRFStringID(it->grfid, it->source);
 	}
-	_string_to_grf_mapping.Clear();
+	_string_to_grf_mapping.clear();
 
 	/* Free the action 6 override sprites. */
 	for (GRFLineToSpriteOverride::iterator it = _grf_line_to_action6_sprite_override.begin(); it != _grf_line_to_action6_sprite_override.end(); it++) {

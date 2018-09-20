@@ -52,7 +52,7 @@ protected:
 	void BuildStoryPageList()
 	{
 		if (this->story_pages.NeedRebuild()) {
-			this->story_pages.Clear();
+			this->story_pages.clear();
 
 			const StoryPage *p;
 			FOR_ALL_STORY_PAGES(p) {
@@ -78,7 +78,7 @@ protected:
 	void BuildStoryPageElementList()
 	{
 		if (this->story_page_elements.NeedRebuild()) {
-			this->story_page_elements.Clear();
+			this->story_page_elements.clear();
 
 			const StoryPage *p = GetSelPage();
 			if (p != NULL) {

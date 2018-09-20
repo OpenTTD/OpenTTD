@@ -167,7 +167,7 @@ RailType AllocateRailType(RailTypeLabel label)
 			/* Set up new rail type */
 			*rti = _original_railtypes[RAILTYPE_RAIL];
 			rti->label = label;
-			rti->alternate_labels.Clear();
+			rti->alternate_labels.clear();
 
 			/* Make us compatible with ourself. */
 			rti->powered_railtypes    = (RailTypes)(1LL << rt);

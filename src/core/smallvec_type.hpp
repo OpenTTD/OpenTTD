@@ -78,14 +78,6 @@ public:
 	}
 
 	/**
-	 * Remove all items from the list.
-	 */
-	inline void Clear()
-	{
-		std::vector<T>::clear();
-	}
-
-	/**
 	 * Remove all items from the list and free allocated memory.
 	 */
 	inline void Reset()

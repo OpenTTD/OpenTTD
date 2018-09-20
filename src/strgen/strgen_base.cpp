@@ -1046,7 +1046,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 
 			this->WriteLength(buffer.Length());
 			this->Write(buffer.Begin(), buffer.Length());
-			buffer.Clear();
+			buffer.clear();
 		}
 	}
 }

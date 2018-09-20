@@ -650,7 +650,7 @@ private:
 	void BuildSortTownList()
 	{
 		if (this->towns.NeedRebuild()) {
-			this->towns.Clear();
+			this->towns.clear();
 
 			const Town *t;
 			FOR_ALL_TOWNS(t) {

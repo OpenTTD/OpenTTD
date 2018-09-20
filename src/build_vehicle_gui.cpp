@@ -1228,7 +1228,7 @@ struct BuildVehicleWindow : Window {
 
 		this->filter.railtype = (this->listview_mode) ? RAILTYPE_END : GetRailType(this->window_number);
 
-		this->eng_list.Clear();
+		this->eng_list.clear();
 
 		/* Make list of all available train engines and wagons.
 		 * Also check to see if the previously selected engine is still available,
@@ -1276,7 +1276,7 @@ struct BuildVehicleWindow : Window {
 	{
 		EngineID sel_id = INVALID_ENGINE;
 
-		this->eng_list.Clear();
+		this->eng_list.clear();
 
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
@@ -1295,7 +1295,7 @@ struct BuildVehicleWindow : Window {
 	void GenerateBuildShipList()
 	{
 		EngineID sel_id = INVALID_ENGINE;
-		this->eng_list.Clear();
+		this->eng_list.clear();
 
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_SHIP) {
@@ -1314,7 +1314,7 @@ struct BuildVehicleWindow : Window {
 	{
 		EngineID sel_id = INVALID_ENGINE;
 
-		this->eng_list.Clear();
+		this->eng_list.clear();
 
 		const Station *st = this->listview_mode ? NULL : Station::GetByTile(this->window_number);
 

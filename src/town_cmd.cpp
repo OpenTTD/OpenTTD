@@ -3469,7 +3469,7 @@ void SetTownRatingTestMode(bool mode)
 	static int ref_count = 0; // Number of times test-mode is switched on.
 	if (mode) {
 		if (ref_count == 0) {
-			_town_test_ratings.Clear();
+			_town_test_ratings.clear();
 		}
 		ref_count++;
 	} else {

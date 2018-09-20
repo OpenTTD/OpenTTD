@@ -164,7 +164,7 @@ public:
 		for (SocketList::iterator s = sockets.Begin(); s != sockets.End(); s++) {
 			closesocket(s->second);
 		}
-		sockets.Clear();
+		sockets.clear();
 		DEBUG(net, 1, "[%s] closed listeners", Tsocket::GetName());
 	}
 };

@@ -1202,7 +1202,7 @@ protected:
 	void BuildSortIndustriesList()
 	{
 		if (this->industries.NeedRebuild()) {
-			this->industries.Clear();
+			this->industries.clear();
 
 			const Industry *i;
 			FOR_ALL_INDUSTRIES(i) {
@@ -2414,7 +2414,7 @@ struct IndustryCargoesWindow : public Window {
 		_displayed_industries.reset();
 		_displayed_industries.set(it);
 
-		this->fields.Clear();
+		this->fields.clear();
 		CargoesRow *row = this->fields.Append();
 		row->columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
 		row->columns[1].MakeEmpty(CFT_SMALL_EMPTY);
@@ -2492,7 +2492,7 @@ struct IndustryCargoesWindow : public Window {
 		this->ind_cargo = cid + NUM_INDUSTRYTYPES;
 		_displayed_industries.reset();
 
-		this->fields.Clear();
+		this->fields.clear();
 		CargoesRow *row = this->fields.Append();
 		row->columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
 		row->columns[1].MakeEmpty(CFT_SMALL_EMPTY);

@@ -187,7 +187,7 @@ static void Save_EIDS()
 
 static void Load_EIDS()
 {
-	_engine_mngr.Clear();
+	_engine_mngr.clear();
 
 	while (SlIterateArray() != -1) {
 		EngineIDMapping *eid = _engine_mngr.Append();

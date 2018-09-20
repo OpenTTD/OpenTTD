@@ -661,7 +661,7 @@ void NewGRFSpriteLayout::AllocateRegisters()
  */
 uint32 NewGRFSpriteLayout::PrepareLayout(uint32 orig_offset, uint32 newgrf_ground_offset, uint32 newgrf_offset, uint constr_stage, bool separate_ground) const
 {
-	result_seq.Clear();
+	result_seq.clear();
 	uint32 var10_values = 0;
 
 	/* Create a copy of the spritelayout, so we can modify some values.
