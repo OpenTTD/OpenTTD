@@ -292,30 +292,6 @@ public:
 		assert(index <= std::vector<T>::size());
 		return this->Begin() + index;
 	}
-
-	/**
-	 * Get item "number" (const)
-	 *
-	 * @param index the position of the item
-	 * @return the item
-	 */
-	inline const T &operator[](uint index) const
-	{
-		assert(index < std::vector<T>::size());
-		return std::vector<T>::operator[](index);
-	}
-
-	/**
-	 * Get item "number"
-	 *
-	 * @param index the position of the item
-	 * @return the item
-	 */
-	inline T &operator[](uint index)
-	{
-		assert(index < std::vector<T>::size());
-		return std::vector<T>::operator[](index);
-	}
 };
 
 
