@@ -67,7 +67,7 @@ struct SignList {
 
 		this->signs.SetFilterState(true);
 		this->FilterSignList();
-		this->signs.Compact();
+		this->signs.shrink_to_fit();
 		this->signs.RebuildDone();
 	}
 

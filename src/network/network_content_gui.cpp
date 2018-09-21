@@ -397,7 +397,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		this->SetWidgetDisabledState(WID_NCL_SEARCH_EXTERNAL, this->auto_select && all_available);
 
 		this->FilterContentList();
-		this->content.Compact();
+		this->content.shrink_to_fit();
 		this->content.RebuildDone();
 		this->SortContentList();
 

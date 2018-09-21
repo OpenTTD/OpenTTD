@@ -1209,7 +1209,7 @@ protected:
 				*this->industries.Append() = i;
 			}
 
-			this->industries.Compact();
+			this->industries.shrink_to_fit();
 			this->industries.RebuildDone();
 			this->vscroll->SetCount(this->industries.Length()); // Update scrollbar as well.
 		}

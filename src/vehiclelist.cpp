@@ -103,8 +103,8 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engine
 
 	/* Ensure the lists are not wasting too much space. If the lists are fresh
 	 * (i.e. built within a command) then this will actually do nothing. */
-	engines->Compact();
-	if (wagons != NULL && wagons != engines) wagons->Compact();
+	engines->shrink_to_fit();
+	if (wagons != NULL && wagons != engines) wagons->shrink_to_fit();
 }
 
 /**
@@ -184,6 +184,6 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 		default: return false;
 	}
 
-	list->Compact();
+	list->shrink_to_fit();
 	return true;
 }

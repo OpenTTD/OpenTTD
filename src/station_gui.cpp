@@ -202,7 +202,7 @@ protected:
 			}
 		}
 
-		this->stations.Compact();
+		this->stations.shrink_to_fit();
 		this->stations.RebuildDone();
 
 		this->vscroll->SetCount(this->stations.Length()); // Update the scrollbar
