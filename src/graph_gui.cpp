@@ -1143,7 +1143,7 @@ private:
 			*this->companies.Append() = c;
 		}
 
-		this->companies.Compact();
+		this->companies.shrink_to_fit();
 		this->companies.RebuildDone();
 	}
 

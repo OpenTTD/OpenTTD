@@ -87,14 +87,6 @@ public:
 	}
 
 	/**
-	 * Compact the list down to the smallest block size boundary.
-	 */
-	inline void Compact()
-	{
-		std::vector<T>::shrink_to_fit();
-	}
-
-	/**
 	 * Append an item and return it.
 	 * @param to_add the number of items to append
 	 * @return pointer to newly allocated item

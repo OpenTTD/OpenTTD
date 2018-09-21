@@ -267,7 +267,7 @@ protected:
 			this->servers.SetFilterState(false);
 		}
 
-		this->servers.Compact();
+		this->servers.shrink_to_fit();
 		this->servers.RebuildDone();
 		this->vscroll->SetCount(this->servers.Length());
 

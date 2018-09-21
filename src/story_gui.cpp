@@ -61,7 +61,7 @@ protected:
 				}
 			}
 
-			this->story_pages.Compact();
+			this->story_pages.shrink_to_fit();
 			this->story_pages.RebuildDone();
 		}
 
@@ -90,7 +90,7 @@ protected:
 				}
 			}
 
-			this->story_page_elements.Compact();
+			this->story_page_elements.shrink_to_fit();
 			this->story_page_elements.RebuildDone();
 		}
 

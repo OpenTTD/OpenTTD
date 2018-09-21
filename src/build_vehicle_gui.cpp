@@ -1345,7 +1345,7 @@ struct BuildVehicleWindow : Window {
 			default: NOT_REACHED();
 			case VEH_TRAIN:
 				this->GenerateBuildTrainList();
-				this->eng_list.Compact();
+				this->eng_list.shrink_to_fit();
 				this->eng_list.RebuildDone();
 				return; // trains should not reach the last sorting
 			case VEH_ROAD:
@@ -1364,7 +1364,7 @@ struct BuildVehicleWindow : Window {
 		_engine_sort_direction = this->descending_sort_order;
 		EngList_Sort(&this->eng_list, _engine_sort_functions[this->vehicle_type][this->sort_criteria]);
 
-		this->eng_list.Compact();
+		this->eng_list.shrink_to_fit();
 		this->eng_list.RebuildDone();
 	}
 

@@ -657,7 +657,7 @@ private:
 				*this->towns.Append() = t;
 			}
 
-			this->towns.Compact();
+			this->towns.shrink_to_fit();
 			this->towns.RebuildDone();
 			this->vscroll->SetCount(this->towns.Length()); // Update scrollbar as well.
 		}

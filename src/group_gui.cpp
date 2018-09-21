@@ -184,7 +184,7 @@ private:
 
 		AddChildren(&list, INVALID_GROUP, 0);
 
-		this->groups.Compact();
+		this->groups.shrink_to_fit();
 		this->groups.RebuildDone();
 	}
 

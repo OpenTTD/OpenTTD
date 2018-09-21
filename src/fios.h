@@ -191,7 +191,7 @@ public:
 	/** Compact the list down to the smallest block size boundary. */
 	inline void Compact()
 	{
-		this->files.Compact();
+		this->files.shrink_to_fit();
 	}
 
 	void BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperation fop);
