@@ -179,7 +179,7 @@ LinkGraphJob::~LinkGraphJob()
 void LinkGraphJob::Init()
 {
 	uint size = this->Size();
-	this->nodes.Resize(size);
+	this->nodes.resize(size);
 	this->edges.Resize(size, size);
 	for (uint i = 0; i < size; ++i) {
 		this->nodes[i].Init(this->link_graph[i].Supply());
