@@ -106,26 +106,12 @@ public:
 	 * Search for the first occurrence of an item.
 	 * The '!=' operator of T is used for comparison.
 	 * @param item Item to search for
-	 * @return The position of the item, or End() when not present
-	 */
-	inline const T *Find(const T &item) const
-	{
-		const T *pos = this->Begin();
-		const T *end = this->End();
-		while (pos != end && *pos != item) pos++;
-		return pos;
-	}
-
-	/**
-	 * Search for the first occurrence of an item.
-	 * The '!=' operator of T is used for comparison.
-	 * @param item Item to search for
 	 * @return The position of the item, or -1 when not present
 	 */
 	inline int FindIndex(const T &item) const
 	{
-		auto const it = this->Find(item);
-		return it == this->End() ? -1 : it - this->Begin();
+		auto const it = std::find(std::vector<T>::begin(), std::vector<T>::end(), item);
+		return it == std::vector<T>::end() ? -1 : it - std::vector<T>::begin();
 	}
 
 	/**
@@ -136,7 +122,7 @@ public:
 	 */
 	inline bool Contains(const T &item) const
 	{
-		return this->Find(item) != this->End();
+		return std::find(std::vector<T>::begin(), std::vector<T>::end(), item) != std::vector<T>::end();
 	}
 
 	/**
