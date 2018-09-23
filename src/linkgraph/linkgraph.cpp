@@ -281,7 +281,7 @@ void LinkGraph::Init(uint size)
 {
 	assert(this->Size() == 0);
 	this->edges.Resize(size, size);
-	this->nodes.Resize(size);
+	this->nodes.resize(size);
 
 	for (uint i = 0; i < size; ++i) {
 		this->nodes[i].Init();

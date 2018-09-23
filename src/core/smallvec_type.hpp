@@ -98,15 +98,6 @@ public:
 	}
 
 	/**
-	 * Set the size of the vector, effectively truncating items from the end or appending uninitialised ones.
-	 * @param num_items Target size.
-	 */
-	inline void Resize(uint num_items)
-	{
-		std::vector<T>::resize(num_items);
-	}
-
-	/**
 	 * Insert a new item at a specific position into the vector, moving all following items.
 	 * @param item Position at which the new item should be inserted
 	 * @return pointer to the new item

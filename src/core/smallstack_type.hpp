@@ -74,7 +74,7 @@ private:
 		}
 
 		if (index >= this->data.size() && index < Tmax_size) {
-			this->data.Resize(index + 1);
+			this->data.resize(index + 1);
 		}
 		return index;
 	}

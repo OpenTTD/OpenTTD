@@ -482,7 +482,7 @@ struct RefitWindow : public Window {
 								/* 0xFF item is in front, other subtypes are sorted. So just truncate the list in the right spot */
 								for (uint i = 1; i < l.size(); i++) {
 									if (l[i].subtype >= refit_cyc) {
-										l.Resize(i);
+										l.resize(i);
 										break;
 									}
 								}
