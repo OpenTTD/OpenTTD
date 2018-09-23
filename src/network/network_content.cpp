@@ -555,7 +555,8 @@ void ClientNetworkContentSocketHandler::OnFailure()
 	uint files, bytes;
 	this->DownloadSelectedContent(files, bytes, true);
 
-	this->http_response.Reset();
+	this->http_response.clear();
+	this->http_response.shrink_to_fit();
 	this->http_response_index = -2;
 
 	if (this->curFile != NULL) {

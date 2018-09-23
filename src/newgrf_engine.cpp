@@ -1272,7 +1272,8 @@ void CommitVehicleListOrderChanges()
 	}
 
 	/* Clear out the queue */
-	_list_order_changes.Reset();
+	_list_order_changes.clear();
+	_list_order_changes.shrink_to_fit();
 }
 
 /**

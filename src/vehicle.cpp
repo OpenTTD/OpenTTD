@@ -693,7 +693,8 @@ static AutoreplaceMap _vehicles_to_autoreplace;
 
 void InitializeVehicles()
 {
-	_vehicles_to_autoreplace.Reset();
+	_vehicles_to_autoreplace.clear();
+	_vehicles_to_autoreplace.shrink_to_fit();
 	ResetVehicleHash();
 }
 

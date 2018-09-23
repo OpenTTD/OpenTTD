@@ -108,7 +108,8 @@ void MoveAllTextEffects(uint delta_ms)
 
 void InitTextEffects()
 {
-	_text_effects.Reset();
+	_text_effects.clear();
+	_text_effects.shrink_to_fit();
 }
 
 void DrawTextEffects(DrawPixelInfo *dpi)
