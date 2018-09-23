@@ -21,7 +21,7 @@
 /* virtual */ PoolBase::~PoolBase()
 {
 	PoolVector *pools = PoolBase::GetPools();
-	pools->Erase(pools->Find(this));
+	pools->erase(std::find(pools->begin(), pools->end(), this));
 	if (pools->size() == 0) delete pools;
 }
 

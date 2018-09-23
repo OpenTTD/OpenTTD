@@ -142,7 +142,7 @@ public:
 	/** Add a callback to this class */
 	void AddCallback(ContentCallback *cb) { this->callbacks.Include(cb); }
 	/** Remove a callback */
-	void RemoveCallback(ContentCallback *cb) { this->callbacks.Erase(this->callbacks.Find(cb)); }
+	void RemoveCallback(ContentCallback *cb) { this->callbacks.erase(std::find(this->callbacks.begin(), this->callbacks.end(), cb)); }
 };
 
 extern ClientNetworkContentSocketHandler _network_content_client;
