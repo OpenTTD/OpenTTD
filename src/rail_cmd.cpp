@@ -1747,7 +1747,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				break;
 		}
 
-		for (uint i = 0; i < vehicles_affected.Length(); ++i) {
+		for (uint i = 0; i < vehicles_affected.size(); ++i) {
 			TryPathReserve(vehicles_affected[i], true);
 		}
 	}

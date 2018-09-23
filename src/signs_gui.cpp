@@ -246,7 +246,7 @@ struct SignListWindow : Window, SignList {
 			}
 
 			case WID_SIL_FILTER_ENTER_BTN:
-				if (this->signs.Length() >= 1) {
+				if (this->signs.size() >= 1) {
 					const Sign *si = this->signs[0];
 					ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
 				}
@@ -310,7 +310,7 @@ struct SignListWindow : Window, SignList {
 	{
 		if (this->signs.NeedRebuild()) {
 			this->BuildSignsList();
-			this->vscroll->SetCount(this->signs.Length());
+			this->vscroll->SetCount(this->signs.size());
 			this->SetWidgetDirty(WID_SIL_CAPTION);
 		}
 		this->SortSignsList();
@@ -471,7 +471,7 @@ struct SignWindow : Window, SignList {
 		/* Search through the list for the current sign, excluding
 		 * - the first sign if we want the previous sign or
 		 * - the last sign if we want the next sign */
-		uint end = this->signs.Length() - (next ? 1 : 0);
+		uint end = this->signs.size() - (next ? 1 : 0);
 		for (uint i = next ? 0 : 1; i < end; i++) {
 			if (this->cur_sign == this->signs[i]->index) {
 				/* We've found the current sign, so return the sign before/after it */
@@ -479,7 +479,7 @@ struct SignWindow : Window, SignList {
 			}
 		}
 		/* If we haven't found the current sign by now, return the last/first sign */
-		return this->signs[next ? 0 : this->signs.Length() - 1];
+		return next ? this->signs.front() : this->signs.back();
 	}
 
 	void SetStringParameters(int widget) const override

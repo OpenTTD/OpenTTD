@@ -22,7 +22,7 @@
 {
 	PoolVector *pools = PoolBase::GetPools();
 	pools->Erase(pools->Find(this));
-	if (pools->Length() == 0) delete pools;
+	if (pools->size() == 0) delete pools;
 }
 
 /**

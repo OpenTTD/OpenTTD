@@ -637,7 +637,7 @@ void GetBindAddresses(NetworkAddressList *addresses, uint16 port)
 	}
 
 	/* No address, so bind to everything. */
-	if (addresses->Length() == 0) {
+	if (addresses->size() == 0) {
 		*addresses->Append() = NetworkAddress("", port);
 	}
 }

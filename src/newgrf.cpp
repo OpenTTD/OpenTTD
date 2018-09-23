@@ -658,7 +658,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 	e->grf_prop.grffile = file;
 
 	/* Reserve the engine slot */
-	assert(_engine_mngr.Length() == e->index);
+	assert(_engine_mngr.size() == e->index);
 	EngineIDMapping *eid = _engine_mngr.Append();
 	eid->type            = type;
 	eid->grfid           = scope_grfid; // Note: this is INVALID_GRFID if dynamic_engines is disabled, so no reservation
@@ -1058,7 +1058,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x05: { // Track type
 				uint8 tracktype = buf->ReadByte();
 
-				if (tracktype < _cur.grffile->railtype_list.Length()) {
+				if (tracktype < _cur.grffile->railtype_list.size()) {
 					_gted[e->index].railtypelabel = _cur.grffile->railtype_list[tracktype];
 					break;
 				}
@@ -1200,7 +1200,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 					break;
 				}
 
-				if (_cur.grffile->railtype_list.Length() == 0) {
+				if (_cur.grffile->railtype_list.size() == 0) {
 					/* Use traction type to select between normal and electrified
 					 * rail only when no translation list is in place. */
 					if (_gted[e->index].railtypelabel == RAILTYPE_RAIL_LABEL     && engclass >= EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_ELECTRIC_LABEL;
@@ -4799,7 +4799,7 @@ static void NewSpriteGroup(ByteReader *buf)
 				DeterministicSpriteGroupAdjust *adjust = adjusts.Append();
 
 				/* The first var adjust doesn't have an operation specified, so we set it to add. */
-				adjust->operation = adjusts.Length() == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)buf->ReadByte();
+				adjust->operation = adjusts.size() == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)buf->ReadByte();
 				adjust->variable  = buf->ReadByte();
 				if (adjust->variable == 0x7E) {
 					/* Link subroutine group */
@@ -4824,7 +4824,7 @@ static void NewSpriteGroup(ByteReader *buf)
 				/* Continue reading var adjusts while bit 5 is set. */
 			} while (HasBit(varadjust, 5));
 
-			group->num_adjusts = adjusts.Length();
+			group->num_adjusts = adjusts.size();
 			group->adjusts = MallocT<DeterministicSpriteGroupAdjust>(group->num_adjusts);
 			MemCpyT(group->adjusts, adjusts.Begin(), group->num_adjusts);
 
@@ -5085,7 +5085,7 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 	if (feature == GSF_STATIONS && ctype == 0xFE) return CT_DEFAULT_NA;
 	if (ctype == 0xFF) return CT_PURCHASE;
 
-	if (_cur.grffile->cargo_list.Length() == 0) {
+	if (_cur.grffile->cargo_list.size() == 0) {
 		/* No cargo table, so use bitnum values */
 		if (ctype >= 32) {
 			grfmsg(1, "TranslateCargo: Cargo bitnum %d out of range (max 31), skipping.", ctype);
@@ -5105,8 +5105,8 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 	}
 
 	/* Check if the cargo type is out of bounds of the cargo translation table */
-	if (ctype >= _cur.grffile->cargo_list.Length()) {
-		grfmsg(1, "TranslateCargo: Cargo type %d out of range (max %d), skipping.", ctype, _cur.grffile->cargo_list.Length() - 1);
+	if (ctype >= _cur.grffile->cargo_list.size()) {
+		grfmsg(1, "TranslateCargo: Cargo type %d out of range (max %d), skipping.", ctype, (unsigned int)_cur.grffile->cargo_list.size() - 1);
 		return CT_INVALID;
 	}
 
@@ -7850,8 +7850,8 @@ static bool HandleParameterInfo(ByteReader *buf)
 			continue;
 		}
 
-		if (id >= _cur.grfconfig->param_info.Length()) {
-			uint num_to_add = id - _cur.grfconfig->param_info.Length() + 1;
+		if (id >= _cur.grfconfig->param_info.size()) {
+			uint num_to_add = id - _cur.grfconfig->param_info.size() + 1;
 			GRFParameterInfo **newdata = _cur.grfconfig->param_info.Append(num_to_add);
 			MemSetT<GRFParameterInfo *>(newdata, 0, num_to_add);
 		}
@@ -8380,7 +8380,7 @@ static void BuildCargoTranslationMap()
 		const CargoSpec *cs = CargoSpec::Get(c);
 		if (!cs->IsValid()) continue;
 
-		if (_cur.grffile->cargo_list.Length() == 0) {
+		if (_cur.grffile->cargo_list.size() == 0) {
 			/* Default translation table, so just a straight mapping to bitnum */
 			_cur.grffile->cargo_map[c] = cs->bitnum;
 		} else {
@@ -8560,7 +8560,7 @@ static void CalculateRefitMasks()
 			{
 				const GRFFile *file = _gted[engine].defaultcargo_grf;
 				if (file == NULL) file = e->GetGRF();
-				if (file != NULL && file->grf_version >= 8 && file->cargo_list.Length() != 0) {
+				if (file != NULL && file->grf_version >= 8 && file->cargo_list.size() != 0) {
 					cargo_map_for_first_refittable = file->cargo_map;
 				}
 			}
@@ -9216,7 +9216,7 @@ static void FinalisePriceBaseMultipliers()
 	static const uint32 override_features = (1 << GSF_TRAINS) | (1 << GSF_ROADVEHICLES) | (1 << GSF_SHIPS) | (1 << GSF_AIRCRAFT);
 
 	/* Evaluate grf overrides */
-	int num_grfs = _grf_files.Length();
+	int num_grfs = _grf_files.size();
 	int *grf_overrides = AllocaM(int, num_grfs);
 	for (int i = 0; i < num_grfs; i++) {
 		grf_overrides[i] = -1;

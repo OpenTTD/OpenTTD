@@ -686,7 +686,7 @@ static void MidiThreadProc(void *)
 				size_t preload_bytes = 0;
 				for (size_t bl = 0; bl < current_file.blocks.size(); bl++) {
 					MidiFile::DataBlock &block = current_file.blocks[bl];
-					preload_bytes += block.data.Length();
+					preload_bytes += block.data.size();
 					if (block.ticktime >= current_segment.start) {
 						if (current_segment.loop) {
 							DEBUG(driver, 2, "DMusic: timer: loop from block %d (ticktime %d, realtime %.3f, bytes %d)", (int)bl, (int)block.ticktime, ((int)block.realtime) / 1000.0, (int)preload_bytes);
@@ -752,7 +752,7 @@ static void MidiThreadProc(void *)
 				DEBUG(driver, 9, "DMusic thread: Streaming block " PRINTF_SIZE " (cur=" OTTD_PRINTF64 ", block=" OTTD_PRINTF64 ")", current_block, (long long)(current_time / MS_TO_REFTIME), (long long)(block_time / MS_TO_REFTIME));
 
 				byte *data = block.data.Begin();
-				size_t remaining = block.data.Length();
+				size_t remaining = block.data.size();
 				byte last_status = 0;
 				while (remaining > 0) {
 					/* MidiFile ought to have converted everything out of running status,

@@ -212,7 +212,7 @@ struct StringNameWriter : HeaderWriter {
 
 	void WriteStringID(const char *name, int stringid)
 	{
-		if (stringid == (int)this->strings->Length()) *this->strings->Append() = stredup(name);
+		if (stringid == (int)this->strings->size()) *this->strings->Append() = stredup(name);
 	}
 
 	void Finalise(const StringData &data)
@@ -340,7 +340,7 @@ GameStrings *_current_data = NULL;
  */
 const char *GetGameStringPtr(uint id)
 {
-	if (id >= _current_data->cur_language->lines.Length()) return GetStringPtr(STR_UNDEFINED);
+	if (id >= _current_data->cur_language->lines.size()) return GetStringPtr(STR_UNDEFINED);
 	return _current_data->cur_language->lines[id];
 }
 

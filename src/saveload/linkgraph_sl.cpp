@@ -55,7 +55,7 @@ const SaveLoad *GetLinkGraphJobDesc()
 	static const char *prefix = "linkgraph.";
 
 	/* Build the SaveLoad array on first call and don't touch it later on */
-	if (saveloads.Length() == 0) {
+	if (saveloads.size() == 0) {
 		size_t offset_gamesettings = cpp_offsetof(GameSettings, linkgraph);
 		size_t offset_component = cpp_offsetof(LinkGraphJob, settings);
 
@@ -83,7 +83,7 @@ const SaveLoad *GetLinkGraphJobDesc()
 		int i = 0;
 		do {
 			*(saveloads.Append()) = job_desc[i++];
-		} while (saveloads[saveloads.Length() - 1].cmd != SL_END);
+		} while (saveloads[saveloads.size() - 1].cmd != SL_END);
 	}
 
 	return &saveloads[0];

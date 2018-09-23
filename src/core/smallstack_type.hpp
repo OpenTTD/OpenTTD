@@ -73,7 +73,7 @@ private:
 			if (!this->data[index].valid) return index;
 		}
 
-		if (index >= this->data.Length() && index < Tmax_size) {
+		if (index >= this->data.size() && index < Tmax_size) {
 			this->data.Resize(index + 1);
 		}
 		return index;

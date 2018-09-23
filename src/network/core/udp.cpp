@@ -51,7 +51,7 @@ bool NetworkUDPSocketHandler::Listen()
 		addr->Listen(SOCK_DGRAM, &this->sockets);
 	}
 
-	return this->sockets.Length() != 0;
+	return this->sockets.size() != 0;
 }
 
 /**
@@ -80,7 +80,7 @@ NetworkRecvStatus NetworkUDPSocketHandler::CloseConnection(bool error)
  */
 void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv, bool all, bool broadcast)
 {
-	if (this->sockets.Length() == 0) this->Listen();
+	if (this->sockets.size() == 0) this->Listen();
 
 	for (SocketList::iterator s = this->sockets.Begin(); s != this->sockets.End(); s++) {
 		/* Make a local copy because if we resolve it we cannot

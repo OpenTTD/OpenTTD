@@ -140,7 +140,7 @@ public:
 	 */
 	static bool Listen(uint16 port)
 	{
-		assert(sockets.Length() == 0);
+		assert(sockets.size() == 0);
 
 		NetworkAddressList addresses;
 		GetBindAddresses(&addresses, port);
@@ -149,7 +149,7 @@ public:
 			address->Listen(SOCK_STREAM, &sockets);
 		}
 
-		if (sockets.Length() == 0) {
+		if (sockets.size() == 0) {
 			DEBUG(net, 0, "[server] could not start network: could not create listening socket");
 			NetworkError(STR_NETWORK_ERROR_SERVER_START);
 			return false;

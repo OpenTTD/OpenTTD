@@ -45,10 +45,10 @@ TextEffectID AddTextEffect(StringID msg, int center, int y, uint8 duration, Text
 	if (_game_mode == GM_MENU) return INVALID_TE_ID;
 
 	TextEffectID i;
-	for (i = 0; i < _text_effects.Length(); i++) {
+	for (i = 0; i < _text_effects.size(); i++) {
 		if (_text_effects[i].string_id == INVALID_STRING_ID) break;
 	}
-	if (i == _text_effects.Length()) _text_effects.Append();
+	if (i == _text_effects.size()) _text_effects.Append();
 
 	TextEffect *te = _text_effects.Get(i);
 

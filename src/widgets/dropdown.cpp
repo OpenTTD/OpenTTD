@@ -151,7 +151,7 @@ struct DropdownWindow : Window {
 	DropdownWindow(Window *parent, const DropDownList *list, int selected, int button, bool instant_close, const Point &position, const Dimension &size, Colours wi_colour, bool scroll)
 			: Window(&_dropdown_desc)
 	{
-		assert(list->Length() > 0);
+		assert(list->size() > 0);
 
 		this->position = position;
 
@@ -180,8 +180,8 @@ struct DropdownWindow : Window {
 		}
 
 		/* Capacity is the average number of items visible */
-		this->vscroll->SetCapacity(size.height * (uint16)list->Length() / list_height);
-		this->vscroll->SetCount((uint16)list->Length());
+		this->vscroll->SetCapacity(size.height * (uint16)list->size() / list_height);
+		this->vscroll->SetCount((uint16)list->size());
 
 		this->parent_wnd_class = parent->window_class;
 		this->parent_wnd_num   = parent->window_number;
@@ -418,7 +418,7 @@ void ShowDropDownListAt(Window *w, const DropDownList *list, int selected, int b
 		/* If the dropdown doesn't fully fit, we need a dropdown. */
 		if (height > available_height) {
 			scroll = true;
-			uint avg_height = height / list->Length();
+			uint avg_height = height / list->size();
 
 			/* Check at least there is space for one item. */
 			assert(available_height >= avg_height);
@@ -514,7 +514,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	}
 
 	/* No entries in the list? */
-	if (list->Length() == 0) {
+	if (list->size() == 0) {
 		delete list;
 		return;
 	}

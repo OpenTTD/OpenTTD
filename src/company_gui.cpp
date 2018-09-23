@@ -686,7 +686,7 @@ private:
 				}
 			}
 		} else {
-			this->rows = this->groups.Length();
+			this->rows = this->groups.size();
 		}
 
 		this->vscroll->SetCount(this->rows);
@@ -902,7 +902,7 @@ public:
 				}
 			}
 		} else {
-			uint max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->groups.Length());
+			uint max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->groups.size());
 			for (uint i = this->vscroll->GetPosition(); i < max; ++i) {
 				const Group *g = this->groups[i];
 				SetDParam(0, g->index);
@@ -942,7 +942,7 @@ public:
 					this->groups.ForceRebuild();
 					this->BuildGroupList((CompanyID)this->window_number);
 
-					if (this->groups.Length() > 0) {
+					if (this->groups.size() > 0) {
 						this->sel = this->groups[0]->index;
 					}
 				}
@@ -1029,7 +1029,7 @@ public:
 
 				if (!Group::IsValidID(this->sel)) {
 					this->sel = INVALID_GROUP;
-					if (this->groups.Length() > 0) this->sel = this->groups[0]->index;
+					if (this->groups.size() > 0) this->sel = this->groups[0]->index;
 				}
 
 				this->SetDirty();

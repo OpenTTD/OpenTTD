@@ -297,7 +297,7 @@ int NetworkHTTPSocketHandler::Receive()
 /* static */ void NetworkHTTPSocketHandler::HTTPReceive()
 {
 	/* No connections, just bail out. */
-	if (_http_connections.Length() == 0) return;
+	if (_http_connections.size() == 0) return;
 
 	fd_set read_fd;
 	struct timeval tv;

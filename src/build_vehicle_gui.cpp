@@ -940,7 +940,7 @@ void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *
 	static const int sprite_y_offsets[] = { -1, -1, -2, -2 };
 
 	/* Obligatory sanity checks! */
-	assert(max <= eng_list->Length());
+	assert(max <= eng_list->size());
 
 	bool rtl = _current_text_dir == TD_RTL;
 	int step_size = GetEngineListHeight(type);
@@ -1110,7 +1110,7 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.ForceRebuild();
 		this->GenerateBuildList(); // generate the list, since we need it in the next line
 		/* Select the first engine in the list as default when opening the window */
-		if (this->eng_list.Length() > 0) {
+		if (this->eng_list.size() > 0) {
 			this->SelectEngine(this->eng_list[0]);
 		} else {
 			this->SelectEngine(INVALID_ENGINE);
@@ -1205,7 +1205,7 @@ struct BuildVehicleWindow : Window {
 	void FilterEngineList()
 	{
 		this->eng_list.Filter(this->cargo_filter[this->cargo_filter_criteria]);
-		if (0 == this->eng_list.Length()) { // no engine passed through the filter, invalidate the previously selected engine
+		if (0 == this->eng_list.size()) { // no engine passed through the filter, invalidate the previously selected engine
 			this->SelectEngine(INVALID_ENGINE);
 		} else if (!this->eng_list.Contains(this->sel_engine)) { // previously selected engine didn't pass the filter, select the first engine of the list
 			this->SelectEngine(this->eng_list[0]);
@@ -1388,7 +1388,7 @@ struct BuildVehicleWindow : Window {
 
 			case WID_BV_LIST: {
 				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_BV_LIST);
-				size_t num_items = this->eng_list.Length();
+				size_t num_items = this->eng_list.size();
 				this->SelectEngine((i < num_items) ? this->eng_list[i] : INVALID_ENGINE);
 				this->SetDirty();
 				if (_ctrl_pressed) {
@@ -1529,7 +1529,7 @@ struct BuildVehicleWindow : Window {
 	{
 		switch (widget) {
 			case WID_BV_LIST:
-				DrawEngineList(this->vehicle_type, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, &this->eng_list, this->vscroll->GetPosition(), min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->eng_list.Length()), this->sel_engine, false, DEFAULT_GROUP);
+				DrawEngineList(this->vehicle_type, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, &this->eng_list, this->vscroll->GetPosition(), min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->eng_list.size()), this->sel_engine, false, DEFAULT_GROUP);
 				break;
 
 			case WID_BV_SORT_ASCENDING_DESCENDING:
@@ -1541,7 +1541,7 @@ struct BuildVehicleWindow : Window {
 	void OnPaint() override
 	{
 		this->GenerateBuildList();
-		this->vscroll->SetCount(this->eng_list.Length());
+		this->vscroll->SetCount(this->eng_list.size());
 
 		this->SetWidgetsDisabledState(this->sel_engine == INVALID_ENGINE, WID_BV_SHOW_HIDE, WID_BV_BUILD, WID_BV_RENAME, WIDGET_LIST_END);
 

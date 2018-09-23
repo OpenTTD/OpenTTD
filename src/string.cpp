@@ -674,7 +674,7 @@ public:
 
 		UText text = UTEXT_INITIALIZER;
 		UErrorCode status = U_ZERO_ERROR;
-		utext_openUChars(&text, this->utf16_str.Begin(), this->utf16_str.Length() - 1, &status);
+		utext_openUChars(&text, this->utf16_str.Begin(), this->utf16_str.size() - 1, &status);
 		this->char_itr->setText(&text, status);
 		this->word_itr->setText(&text, status);
 		this->char_itr->first();
@@ -685,7 +685,7 @@ public:
 	{
 		/* Convert incoming position to an UTF-16 string index. */
 		uint utf16_pos = 0;
-		for (uint i = 0; i < this->utf16_to_utf8.Length(); i++) {
+		for (uint i = 0; i < this->utf16_to_utf8.size(); i++) {
 			if (this->utf16_to_utf8[i] == pos) {
 				utf16_pos = i;
 				break;

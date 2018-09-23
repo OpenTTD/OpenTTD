@@ -85,7 +85,7 @@ public:
 
 		virtual int GetLeading() const;
 		virtual int GetWidth() const;
-		virtual int CountRuns() const { return this->Length();  }
+		virtual int CountRuns() const { return this->size();  }
 		virtual const VisualRun *GetVisualRun(int run) const { return *this->Get(run);  }
 
 		int GetInternalCharLength(WChar c) const
@@ -256,7 +256,7 @@ int CoreTextParagraphLayout::CoreTextLine::GetLeading() const
  */
 int CoreTextParagraphLayout::CoreTextLine::GetWidth() const
 {
-	if (this->Length() == 0) return 0;
+	if (this->size() == 0) return 0;
 
 	int total_width = 0;
 	for (const CoreTextVisualRun * const *run = this->Begin(); run != this->End(); run++) {

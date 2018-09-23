@@ -129,7 +129,7 @@ public:
 	void CheckDependencyState(ContentInfo *ci);
 
 	/** Get the number of content items we know locally. */
-	uint Length() const { return this->infos.Length(); }
+	uint Length() const { return this->infos.size(); }
 	/** Get the begin of the content inf iterator. */
 	ConstContentIterator Begin() const { return this->infos.Begin(); }
 	/** Get the nth position of the content inf iterator. */

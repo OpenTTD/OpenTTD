@@ -833,7 +833,7 @@ static void MakeTrainBackup(TrainList &list, Train *t)
 static void RestoreTrainBackup(TrainList &list)
 {
 	/* No train, nothing to do. */
-	if (list.Length() == 0) return;
+	if (list.size() == 0) return;
 
 	Train *prev = NULL;
 	/* Iterate over the list and rebuild it. */

@@ -159,7 +159,7 @@ protected:
 		/* Verify that the selected page exist. */
 		if (!_story_page_pool.IsValidID(this->selected_page_id)) return false;
 
-		if (this->story_pages.Length() <= 1) return true;
+		if (this->story_pages.size() <= 1) return true;
 		const StoryPage *last = *(this->story_pages.End() - 1);
 		return last->index == this->selected_page_id;
 	}
@@ -253,7 +253,7 @@ protected:
 		}
 
 		/* Check if list is empty. */
-		if (list->Length() == 0) {
+		if (list->size() == 0) {
 			delete list;
 			list = NULL;
 		}
@@ -444,8 +444,8 @@ public:
 	 */
 	void UpdatePrevNextDisabledState()
 	{
-		this->SetWidgetDisabledState(WID_SB_PREV_PAGE, story_pages.Length() == 0 || this->IsFirstPageSelected());
-		this->SetWidgetDisabledState(WID_SB_NEXT_PAGE, story_pages.Length() == 0 || this->IsLastPageSelected());
+		this->SetWidgetDisabledState(WID_SB_PREV_PAGE, story_pages.size() == 0 || this->IsFirstPageSelected());
+		this->SetWidgetDisabledState(WID_SB_NEXT_PAGE, story_pages.size() == 0 || this->IsLastPageSelected());
 		this->SetWidgetDirty(WID_SB_PREV_PAGE);
 		this->SetWidgetDirty(WID_SB_NEXT_PAGE);
 	}
@@ -575,7 +575,7 @@ public:
 			case WID_SB_SEL_PAGE: {
 
 				/* Get max title width. */
-				for (uint16 i = 0; i < this->story_pages.Length(); i++) {
+				for (uint16 i = 0; i < this->story_pages.size(); i++) {
 					const StoryPage *s = this->story_pages[i];
 
 					if (s->title != NULL) {
@@ -620,7 +620,7 @@ public:
 				if (list != NULL) {
 					/* Get the index of selected page. */
 					int selected = 0;
-					for (uint16 i = 0; i < this->story_pages.Length(); i++) {
+					for (uint16 i = 0; i < this->story_pages.size(); i++) {
 						const StoryPage *p = this->story_pages[i];
 						if (p->index == this->selected_page_id) break;
 						selected++;
@@ -694,7 +694,7 @@ public:
 			this->BuildStoryPageList();
 
 			/* Was the last page removed? */
-			if (this->story_pages.Length() == 0) {
+			if (this->story_pages.size() == 0) {
 				this->selected_generic_title[0] = '\0';
 			}
 
@@ -702,14 +702,14 @@ public:
 			if (!_story_page_pool.IsValidID(this->selected_page_id)) {
 				this->selected_page_id = INVALID_STORY_PAGE;
 			}
-			if (this->selected_page_id == INVALID_STORY_PAGE && this->story_pages.Length() > 0) {
+			if (this->selected_page_id == INVALID_STORY_PAGE && this->story_pages.size() > 0) {
 				/* No page is selected, but there exist at least one available.
 				 * => Select first page.
 				 */
 				this->SetSelectedPage(this->story_pages[0]->index);
 			}
 
-			this->SetWidgetDisabledState(WID_SB_SEL_PAGE, this->story_pages.Length() == 0);
+			this->SetWidgetDisabledState(WID_SB_SEL_PAGE, this->story_pages.size() == 0);
 			this->SetWidgetDirty(WID_SB_SEL_PAGE);
 			this->UpdatePrevNextDisabledState();
 		} else if (data >= 0 && this->selected_page_id == data) {

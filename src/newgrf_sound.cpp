@@ -49,14 +49,14 @@ void InitializeSoundPool()
 
 SoundEntry *GetSound(SoundID index)
 {
-	if (index >= _sounds.Length()) return NULL;
+	if (index >= _sounds.size()) return NULL;
 	return &_sounds[index];
 }
 
 
 uint GetNumSounds()
 {
-	return _sounds.Length();
+	return _sounds.size();
 }
 
 

@@ -332,7 +332,7 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 	} else {
 		for (const Train *v = Train::Get(veh_id); v != NULL; v = v->GetNextVehicle()) {
 			GetCargoSummaryOfArticulatedVehicle(v, &_cargo_summary);
-			num += max(1u, _cargo_summary.Length());
+			num += max(1u, (unsigned)_cargo_summary.size());
 
 			uint length = GetLengthOfArticulatedVehicle(v);
 			if (length > TRAIN_DETAILS_MAX_INDENT) num++;
@@ -400,7 +400,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 				dx = 0;
 			}
 
-			uint num_lines = max(1u, _cargo_summary.Length());
+			uint num_lines = max(1u, (unsigned)_cargo_summary.size());
 			for (uint i = 0; i < num_lines; i++) {
 				int sprite_width = max<int>(dx, ScaleGUITrad(TRAIN_DETAILS_MIN_INDENT)) + 3;
 				int data_left  = left + (rtl ? 0 : sprite_width);
@@ -412,7 +412,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 					}
 					switch (det_tab) {
 						case TDW_TAB_CARGO:
-							if (i < _cargo_summary.Length()) {
+							if (i < _cargo_summary.size()) {
 								TrainDetailsCargoTab(&_cargo_summary[i], data_left, data_right, py);
 							} else {
 								DrawString(data_left, data_right, py, STR_QUANTITY_N_A, TC_LIGHT_BLUE);
@@ -424,7 +424,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 							break;
 
 						case TDW_TAB_CAPACITY:
-							if (i < _cargo_summary.Length()) {
+							if (i < _cargo_summary.size()) {
 								TrainDetailsCapacityTab(&_cargo_summary[i], data_left, data_right, py);
 							} else {
 								SetDParam(0, STR_EMPTY);

@@ -325,7 +325,7 @@ void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID eng
  */
 void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare)
 {
-	uint size = el->Length();
+	uint size = el->size();
 	/* out-of-bounds access at the next line for size == 0 (even with operator[] at some systems)
 	 * generally, do not sort if there are less than 2 items */
 	if (size < 2) return;
@@ -342,8 +342,8 @@ void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare)
 void EngList_SortPartial(GUIEngineList *el, EngList_SortTypeFunction compare, uint begin, uint num_items)
 {
 	if (num_items < 2) return;
-	assert(begin < el->Length());
-	assert(begin + num_items <= el->Length());
+	assert(begin < el->size());
+	assert(begin + num_items <= el->size());
 	QSortT(el->Get(begin), num_items, compare);
 }
 

@@ -153,7 +153,7 @@ public:
 		this->bridges->NeedResort();
 		this->SortBridgeList();
 
-		this->vscroll->SetCount(bl->Length());
+		this->vscroll->SetCount(bl->size());
 	}
 
 	~BuildBridgeWindow()
@@ -186,7 +186,7 @@ public:
 			case WID_BBS_BRIDGE_LIST: {
 				Dimension sprite_dim = {0, 0}; // Biggest bridge sprite dimension
 				Dimension text_dim   = {0, 0}; // Biggest text dimension
-				for (int i = 0; i < (int)this->bridges->Length(); i++) {
+				for (int i = 0; i < (int)this->bridges->size(); i++) {
 					const BridgeSpec *b = this->bridges->Get(i)->spec;
 					sprite_dim = maxdim(sprite_dim, GetSpriteSize(b->sprite));
 
@@ -226,7 +226,7 @@ public:
 
 			case WID_BBS_BRIDGE_LIST: {
 				uint y = r.top;
-				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < (int)this->bridges->Length(); i++) {
+				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < (int)this->bridges->size(); i++) {
 					const BridgeSpec *b = this->bridges->Get(i)->spec;
 
 					SetDParam(2, this->bridges->Get(i)->cost);
@@ -246,7 +246,7 @@ public:
 	EventState OnKeyPress(WChar key, uint16 keycode) override
 	{
 		const uint8 i = keycode - '1';
-		if (i < 9 && i < this->bridges->Length()) {
+		if (i < 9 && i < this->bridges->size()) {
 			/* Build the requested bridge */
 			this->BuildBridge(i);
 			delete this;
@@ -261,7 +261,7 @@ public:
 			default: break;
 			case WID_BBS_BRIDGE_LIST: {
 				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_BBS_BRIDGE_LIST);
-				if (i < this->bridges->Length()) {
+				if (i < this->bridges->size()) {
 					this->BuildBridge(i);
 					delete this;
 				}
@@ -426,7 +426,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 		}
 	}
 
-	if (bl != NULL && bl->Length() != 0) {
+	if (bl != NULL && bl->size() != 0) {
 		new BuildBridgeWindow(&_build_bridge_desc, start, end, type, bl);
 	} else {
 		delete bl;

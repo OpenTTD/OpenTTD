@@ -547,7 +547,7 @@ void SetupEngines()
 	DeleteWindowByClass(WC_ENGINE_PREVIEW);
 	_engine_pool.CleanPool();
 
-	assert(_engine_mngr.Length() >= _engine_mngr.NUM_DEFAULT_ENGINES);
+	assert(_engine_mngr.size() >= _engine_mngr.NUM_DEFAULT_ENGINES);
 	const EngineIDMapping *end = _engine_mngr.End();
 	uint index = 0;
 	for (const EngineIDMapping *eid = _engine_mngr.Begin(); eid != end; eid++, index++) {

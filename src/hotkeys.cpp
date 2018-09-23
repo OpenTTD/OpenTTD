@@ -203,7 +203,7 @@ const char *SaveKeycodes(const Hotkey *hotkey)
 {
 	static char buf[128];
 	buf[0] = '\0';
-	for (uint i = 0; i < hotkey->keycodes.Length(); i++) {
+	for (uint i = 0; i < hotkey->keycodes.size(); i++) {
 		const char *str = KeycodeToString(hotkey->keycodes[i]);
 		if (i > 0) strecat(buf, ",", lastof(buf));
 		strecat(buf, str, lastof(buf));
