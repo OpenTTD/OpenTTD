@@ -895,7 +895,7 @@ struct SpriteAlignerWindow : Window {
 				int step_size = nwid->resize_y;
 
 				SmallVector<SpriteID, 256> &list = _newgrf_debug_sprite_picker.sprites;
-				int max = min<int>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), list.Length());
+				int max = min<int>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), list.size());
 
 				int y = r.top + WD_FRAMERECT_TOP;
 				for (int i = this->vscroll->GetPosition(); i < max; i++) {
@@ -940,7 +940,7 @@ struct SpriteAlignerWindow : Window {
 				int step_size = nwid->resize_y;
 
 				uint i = this->vscroll->GetPosition() + (pt.y - nwid->pos_y) / step_size;
-				if (i < _newgrf_debug_sprite_picker.sprites.Length()) {
+				if (i < _newgrf_debug_sprite_picker.sprites.size()) {
 					SpriteID spr = _newgrf_debug_sprite_picker.sprites[i];
 					if (GetSpriteType(spr) == ST_NORMAL) this->current_sprite = spr;
 				}
@@ -1015,7 +1015,7 @@ struct SpriteAlignerWindow : Window {
 		if (data == 1) {
 			/* Sprite picker finished */
 			this->RaiseWidget(WID_SA_PICKER);
-			this->vscroll->SetCount(_newgrf_debug_sprite_picker.sprites.Length());
+			this->vscroll->SetCount(_newgrf_debug_sprite_picker.sprites.size());
 		}
 	}
 

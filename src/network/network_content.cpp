@@ -246,12 +246,12 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 
 	this->Connect();
 
-	assert(cv->Length() < 255);
-	assert(cv->Length() < (SEND_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint8)) /
+	assert(cv->size() < 255);
+	assert(cv->size() < (SEND_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint8)) /
 			(sizeof(uint8) + sizeof(uint32) + (send_md5sum ? /*sizeof(ContentInfo::md5sum)*/16 : 0)));
 
 	Packet *p = new Packet(send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID);
-	p->Send_uint8(cv->Length());
+	p->Send_uint8(cv->size());
 
 	for (ContentIterator iter = cv->Begin(); iter != cv->End(); iter++) {
 		const ContentInfo *ci = *iter;
@@ -304,7 +304,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 		bytes += ci->filesize;
 	}
 
-	files = content.Length();
+	files = content.size();
 
 	/* If there's nothing to download, do nothing. */
 	if (files == 0) return;
@@ -322,7 +322,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
  */
 void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const ContentIDList &content)
 {
-	uint count = content.Length();
+	uint count = content.size();
 
 	/* Allocate memory for the whole request.
 	 * Requests are "id\nid\n..." (as strings), so assume the maximum ID,
@@ -350,7 +350,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const Conten
  */
 void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const ContentIDList &content)
 {
-	uint count = content.Length();
+	uint count = content.size();
 	const ContentID *content_ids = content.Begin();
 	this->Connect();
 
@@ -607,7 +607,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 		this->AfterDownload();
 	}
 
-	if ((uint)this->http_response_index >= this->http_response.Length()) {
+	if ((uint)this->http_response_index >= this->http_response.size()) {
 		/* It's not a real failure, but if there's
 		 * nothing more to download it helps with
 		 * cleaning up the stuff we allocated. */
@@ -653,7 +653,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 		str = p + 1;
 		/* Is it a fallback URL? If so, just continue with the next one. */
 		if (strncmp(str, "ottd", 4) == 0) {
-			if ((uint)this->http_response_index >= this->http_response.Length()) {
+			if ((uint)this->http_response_index >= this->http_response.size()) {
 				/* Have we gone through all lines? */
 				this->OnFailure();
 				return;
@@ -925,7 +925,7 @@ void ClientNetworkContentSocketHandler::ReverseLookupTreeDependency(ConstContent
 	 * we are including stuff into the vector and as such the vector's data
 	 * store can be reallocated (and thus move), which means out iterating
 	 * pointer gets invalid. So fall back to the indices. */
-	for (uint i = 0; i < tree.Length(); i++) {
+	for (uint i = 0; i < tree.size(); i++) {
 		ConstContentVector parents;
 		this->ReverseLookupDependency(parents, tree[i]);
 

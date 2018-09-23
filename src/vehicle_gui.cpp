@@ -133,7 +133,7 @@ void BaseVehicleListWindow::BuildVehicleList()
 	this->unitnumber_digits = GetUnitNumberDigits(this->vehicles);
 
 	this->vehicles.RebuildDone();
-	this->vscroll->SetCount(this->vehicles.Length());
+	this->vscroll->SetCount(this->vehicles.size());
 }
 
 /**
@@ -193,8 +193,8 @@ void BaseVehicleListWindow::SortVehicleList()
 
 void DepotSortList(VehicleList *list)
 {
-	if (list->Length() < 2) return;
-	QSortT(list->Begin(), list->Length(), &VehicleNumberSorter);
+	if (list->size() < 2) return;
+	QSortT(list->Begin(), list->size(), &VehicleNumberSorter);
 }
 
 /** draw the vehicle profit button in the vehicle list window. */
@@ -243,7 +243,7 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_t
 
 	byte ret_refit_cyc = 0;
 	bool success = false;
-	if (subtypes.Length() > 0) {
+	if (subtypes.size() > 0) {
 		/* Check whether any articulated part is refittable to 'dest_cargo_type' with a subtype listed in 'subtypes' */
 		for (Vehicle *v = v_for; v != NULL; v = v->HasArticulatedPart() ? v->GetNextArticulatedPart() : NULL) {
 			const Engine *e = v->GetEngine();
@@ -347,7 +347,7 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], const int 
 
 	/* Draw the list of subtypes for each cargo, and find the selected refit option (by its position). */
 	for (uint i = 0; current < pos + rows && i < NUM_CARGO; i++) {
-		for (uint j = 0; current < pos + rows && j < list[i].Length(); j++) {
+		for (uint j = 0; current < pos + rows && j < list[i].size(); j++) {
 			const RefitOption &refit = list[i][j];
 
 			/* Hide subtypes if sel[0] does not match */
@@ -359,11 +359,11 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], const int 
 				continue;
 			}
 
-			if (list[i].Length() > 1) {
+			if (list[i].size() > 1) {
 				if (refit.subtype != 0xFF) {
 					/* Draw tree lines */
 					int ycenter = y + FONT_HEIGHT_NORMAL / 2;
-					GfxDrawLine(iconcenter, y - WD_MATRIX_TOP, iconcenter, j == list[i].Length() - 1 ? ycenter : y - WD_MATRIX_TOP + delta - 1, linecolour);
+					GfxDrawLine(iconcenter, y - WD_MATRIX_TOP, iconcenter, j == list[i].size() - 1 ? ycenter : y - WD_MATRIX_TOP + delta - 1, linecolour);
 					GfxDrawLine(iconcenter, ycenter, iconinner, ycenter, linecolour);
 				} else {
 					/* Draw expand/collapse icon */
@@ -435,7 +435,7 @@ struct RefitWindow : public Window {
 					continue;
 				}
 
-				bool first_vehicle = this->list[current_index].Length() == 0;
+				bool first_vehicle = this->list[current_index].size() == 0;
 				if (first_vehicle) {
 					/* Keeping the current subtype is always an option. It also serves as the option in case of no subtypes */
 					RefitOption *option = this->list[current_index].Append();
@@ -480,7 +480,7 @@ struct RefitWindow : public Window {
 								/* No more subtypes for this vehicle, delete all subtypes >= refit_cyc */
 								SubtypeList &l = this->list[current_index];
 								/* 0xFF item is in front, other subtypes are sorted. So just truncate the list in the right spot */
-								for (uint i = 1; i < l.Length(); i++) {
+								for (uint i = 1; i < l.size(); i++) {
 									if (l[i].subtype >= refit_cyc) {
 										l.Resize(i);
 										break;
@@ -491,8 +491,8 @@ struct RefitWindow : public Window {
 								/* Check whether the subtype matches with the subtype of earlier vehicles. */
 								uint pos = 1;
 								SubtypeList &l = this->list[current_index];
-								while (pos < l.Length() && l[pos].subtype != refit_cyc) pos++;
-								if (pos < l.Length() && l[pos].string != subtype) {
+								while (pos < l.size() && l[pos].subtype != refit_cyc) pos++;
+								if (pos < l.size() && l[pos].string != subtype) {
 									/* String mismatch, remove item keeping the order */
 									l.ErasePreservingOrder(pos);
 								}
@@ -522,7 +522,7 @@ struct RefitWindow : public Window {
 		uint row = 0;
 
 		for (uint i = 0; i < NUM_CARGO; i++) {
-			for (uint j = 0; j < this->list[i].Length(); j++) {
+			for (uint j = 0; j < this->list[i].size(); j++) {
 				const RefitOption &refit = this->list[i][j];
 
 				/* Hide subtypes if sel[0] does not match */
@@ -547,7 +547,7 @@ struct RefitWindow : public Window {
 		uint row = 0;
 
 		for (uint i = 0; i < NUM_CARGO; i++) {
-			for (uint j = 0; j < this->list[i].Length(); j++) {
+			for (uint j = 0; j < this->list[i].size(); j++) {
 				const RefitOption &refit = this->list[i][j];
 
 				/* Hide subtypes if sel[0] does not match */
@@ -576,7 +576,7 @@ struct RefitWindow : public Window {
 		if (this->sel[0] < 0) return NULL;
 
 		SubtypeList &l = this->list[this->sel[0]];
-		if ((uint)this->sel[1] >= l.Length()) return NULL;
+		if ((uint)this->sel[1] >= l.size()) return NULL;
 
 		return &l[this->sel[1]];
 	}
@@ -617,7 +617,7 @@ struct RefitWindow : public Window {
 			this->sel[1] = 0;
 			this->cargo = NULL;
 			for (uint i = 0; this->cargo == NULL && i < NUM_CARGO; i++) {
-				for (uint j = 0; j < list[i].Length(); j++) {
+				for (uint j = 0; j < list[i].size(); j++) {
 					if (list[i][j] == current_refit_option) {
 						this->sel[0] = i;
 						this->sel[1] = j;
@@ -830,7 +830,7 @@ struct RefitWindow : public Window {
 
 				/* Check the width of all cargo information strings. */
 				for (uint i = 0; i < NUM_CARGO; i++) {
-					for (uint j = 0; j < this->list[i].Length(); j++) {
+					for (uint j = 0; j < this->list[i].size(); j++) {
 						StringID string = this->GetCapacityString(&list[i][j]);
 						if (string != INVALID_STRING_ID) {
 							Dimension dim = GetStringBoundingBox(string);
@@ -1388,7 +1388,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 	int vehicle_button_x = rtl ? right - GetSpriteSize(SPR_PROFIT_LOT).width : left;
 
 	int y = r.top;
-	uint max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->vehicles.Length());
+	uint max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->vehicles.size());
 	for (uint i = this->vscroll->GetPosition(); i < max; ++i) {
 		const Vehicle *v = this->vehicles[i];
 		StringID str;
@@ -1532,7 +1532,7 @@ public:
 			case WID_VL_CAPTION: {
 				switch (this->vli.type) {
 					case VL_SHARED_ORDERS: // Shared Orders
-						if (this->vehicles.Length() == 0) {
+						if (this->vehicles.size() == 0) {
 							/* We can't open this window without vehicles using this order
 							 * and we should close the window when deleting the order. */
 							NOT_REACHED();
@@ -1584,7 +1584,7 @@ public:
 		this->BuildVehicleList();
 		this->SortVehicleList();
 
-		if (this->vehicles.Length() == 0 && this->IsWidgetLowered(WID_VL_MANAGE_VEHICLES_DROPDOWN)) {
+		if (this->vehicles.size() == 0 && this->IsWidgetLowered(WID_VL_MANAGE_VEHICLES_DROPDOWN)) {
 			HideDropDownMenu(this);
 		}
 
@@ -1598,7 +1598,7 @@ public:
 		}
 		if (this->owner == _local_company) {
 			this->SetWidgetDisabledState(WID_VL_AVAILABLE_VEHICLES, this->vli.type != VL_STANDARD);
-			this->SetWidgetsDisabledState(this->vehicles.Length() == 0,
+			this->SetWidgetsDisabledState(this->vehicles.size() == 0,
 				WID_VL_MANAGE_VEHICLES_DROPDOWN,
 				WID_VL_STOP_ALL,
 				WID_VL_START_ALL,
@@ -1626,7 +1626,7 @@ public:
 
 			case WID_VL_LIST: { // Matrix to show vehicles
 				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_VL_LIST);
-				if (id_v >= this->vehicles.Length()) return; // click out of list bound
+				if (id_v >= this->vehicles.size()) return; // click out of list bound
 
 				const Vehicle *v = this->vehicles[id_v];
 				if (!VehicleClicked(v)) ShowVehicleViewWindow(v);
@@ -1657,7 +1657,7 @@ public:
 				this->vehicles.SetSortType(index);
 				break;
 			case WID_VL_MANAGE_VEHICLES_DROPDOWN:
-				assert(this->vehicles.Length() != 0);
+				assert(this->vehicles.size() != 0);
 
 				switch (index) {
 					case ADI_REPLACE: // Replace window

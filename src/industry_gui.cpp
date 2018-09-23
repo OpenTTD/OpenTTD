@@ -1211,7 +1211,7 @@ protected:
 
 			this->industries.shrink_to_fit();
 			this->industries.RebuildDone();
-			this->vscroll->SetCount(this->industries.Length()); // Update scrollbar as well.
+			this->vscroll->SetCount(this->industries.size()); // Update scrollbar as well.
 		}
 
 		if (!this->industries.Sort()) return;
@@ -1372,11 +1372,11 @@ public:
 			case WID_ID_INDUSTRY_LIST: {
 				int n = 0;
 				int y = r.top + WD_FRAMERECT_TOP;
-				if (this->industries.Length() == 0) {
+				if (this->industries.size() == 0) {
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_DIRECTORY_NONE);
 					break;
 				}
-				for (uint i = this->vscroll->GetPosition(); i < this->industries.Length(); i++) {
+				for (uint i = this->vscroll->GetPosition(); i < this->industries.size(); i++) {
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, this->GetIndustryString(this->industries[i]));
 
 					y += this->resize.step_height;
@@ -1411,7 +1411,7 @@ public:
 
 			case WID_ID_INDUSTRY_LIST: {
 				Dimension d = GetStringBoundingBox(STR_INDUSTRY_DIRECTORY_NONE);
-				for (uint i = 0; i < this->industries.Length(); i++) {
+				for (uint i = 0; i < this->industries.size(); i++) {
 					d = maxdim(d, GetStringBoundingBox(this->GetIndustryString(this->industries[i])));
 				}
 				resize->height = d.height;
@@ -1439,7 +1439,7 @@ public:
 
 			case WID_ID_INDUSTRY_LIST: {
 				uint p = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_ID_INDUSTRY_LIST, WD_FRAMERECT_TOP);
-				if (p < this->industries.Length()) {
+				if (p < this->industries.size()) {
 					if (_ctrl_pressed) {
 						ShowExtraViewPortWindow(this->industries[p]->location.tile);
 					} else {
@@ -2589,7 +2589,7 @@ struct IndustryCargoesWindow : public Window {
 
 		const NWidgetBase *nwp = this->GetWidget<NWidgetBase>(WID_IC_PANEL);
 		int vpos = -this->vscroll->GetPosition() * nwp->resize_y;
-		for (uint i = 0; i < this->fields.Length(); i++) {
+		for (uint i = 0; i < this->fields.size(); i++) {
 			int row_height = (i == 0) ? CargoesField::small_height : CargoesField::normal_height;
 			if (vpos + row_height >= 0) {
 				int xpos = left_pos;
@@ -2631,7 +2631,7 @@ struct IndustryCargoesWindow : public Window {
 		if (pt.y < vpos) return false;
 
 		int row = (pt.y - vpos) / CargoesField::normal_height; // row is relative to row 1.
-		if (row + 1 >= (int)this->fields.Length()) return false;
+		if (row + 1 >= (int)this->fields.size()) return false;
 		vpos = pt.y - vpos - row * CargoesField::normal_height; // Position in the row + 1 field
 		row++; // rebase row to match index of this->fields.
 
@@ -2710,7 +2710,7 @@ struct IndustryCargoesWindow : public Window {
 				FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
 					*lst->Append() = new DropDownListStringItem(cs->name, cs->Index(), false);
 				}
-				if (lst->Length() == 0) {
+				if (lst->size() == 0) {
 					delete lst;
 					break;
 				}
@@ -2727,7 +2727,7 @@ struct IndustryCargoesWindow : public Window {
 					if (!indsp->enabled) continue;
 					*lst->Append() = new DropDownListStringItem(indsp->name, ind, false);
 				}
-				if (lst->Length() == 0) {
+				if (lst->size() == 0) {
 					delete lst;
 					break;
 				}

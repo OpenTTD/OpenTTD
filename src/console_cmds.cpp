@@ -552,16 +552,16 @@ DEF_CONSOLE_CMD(ConUnBan)
 
 	/* Try by IP. */
 	uint index;
-	for (index = 0; index < _network_ban_list.Length(); index++) {
+	for (index = 0; index < _network_ban_list.size(); index++) {
 		if (strcmp(_network_ban_list[index], argv[1]) == 0) break;
 	}
 
 	/* Try by index. */
-	if (index >= _network_ban_list.Length()) {
+	if (index >= _network_ban_list.size()) {
 		index = atoi(argv[1]) - 1U; // let it wrap
 	}
 
-	if (index < _network_ban_list.Length()) {
+	if (index < _network_ban_list.size()) {
 		char msg[64];
 		seprintf(msg, lastof(msg), "Unbanned %s", _network_ban_list[index]);
 		IConsolePrint(CC_DEFAULT, msg);

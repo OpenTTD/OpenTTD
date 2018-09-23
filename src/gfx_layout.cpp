@@ -200,7 +200,7 @@ public:
 		}
 
 		/* Fill ICU's FontRuns with the right data. */
-		icu::FontRuns runs(fontMapping.Length());
+		icu::FontRuns runs(fontMapping.size());
 		for (FontMap::iterator iter = fontMapping.Begin(); iter != fontMapping.End(); iter++) {
 			runs.add(iter->second, iter->first);
 		}
@@ -432,7 +432,7 @@ int FallbackParagraphLayout::FallbackLine::GetLeading() const
  */
 int FallbackParagraphLayout::FallbackLine::GetWidth() const
 {
-	if (this->Length() == 0) return 0;
+	if (this->size() == 0) return 0;
 
 	/*
 	 * The last X position of a run contains is the end of that run.
@@ -449,7 +449,7 @@ int FallbackParagraphLayout::FallbackLine::GetWidth() const
  */
 int FallbackParagraphLayout::FallbackLine::CountRuns() const
 {
-	return this->Length();
+	return this->size();
 }
 
 /**
@@ -572,7 +572,7 @@ const ParagraphLayouter::Line *FallbackParagraphLayout::NextLine(int max_width)
 		this->buffer++;
 	}
 
-	if (l->Length() == 0 || last_char - begin != 0) {
+	if (l->size() == 0 || last_char - begin != 0) {
 		int w = l->GetWidth();
 		*l->Append() = new FallbackVisualRun(iter->second, begin, last_char - begin, w);
 	}

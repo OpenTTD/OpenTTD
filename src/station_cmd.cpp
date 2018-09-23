@@ -1436,7 +1436,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 			tile_track += tile_delta ^ TileDiffXY(1, 1); // perpendicular to tile_delta
 		} while (--numtracks);
 
-		for (uint i = 0; i < affected_vehicles.Length(); ++i) {
+		for (uint i = 0; i < affected_vehicles.size(); ++i) {
 			/* Restore reservations of trains. */
 			RestoreTrainReservation(affected_vehicles[i]);
 		}

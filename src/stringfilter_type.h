@@ -58,7 +58,7 @@ public:
 	 * Check whether any filter words were entered.
 	 * @return true if no words were entered.
 	 */
-	bool IsEmpty() const { return this->word_index.Length() == 0; }
+	bool IsEmpty() const { return this->word_index.size() == 0; }
 
 	void ResetState();
 	void AddLine(const char *str);
@@ -68,7 +68,7 @@ public:
 	 * Get the matching state of the current item.
 	 * @return true if matched.
 	 */
-	bool GetState() const { return this->word_matches == this->word_index.Length(); }
+	bool GetState() const { return this->word_matches == this->word_index.size(); }
 };
 
 #endif /* STRINGFILTER_TYPE_H */

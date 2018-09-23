@@ -1952,7 +1952,7 @@ void InitializeLanguagePacks()
 		FioAppendDirectory(path, lastof(path), sp, LANG_DIR);
 		GetLanguageList(path);
 	}
-	if (_languages.Length() == 0) usererror("No available language packs (invalid versions?)");
+	if (_languages.size() == 0) usererror("No available language packs (invalid versions?)");
 
 	/* Acquire the locale of the current system */
 	const char *lang = GetCurrentLocale("LC_MESSAGES");

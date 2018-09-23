@@ -116,7 +116,7 @@ public:
 		if (length == 0) length = strlen(text);
 
 		if (length > 0 && this->BufferHasRoom()) {
-			int stored_size = this->output_buffer[this->output_buffer.Length() - 1].Add(text, length);
+			int stored_size = this->output_buffer[this->output_buffer.size() - 1].Add(text, length);
 			length -= stored_size;
 			text += stored_size;
 		}
@@ -147,7 +147,7 @@ private:
 	 */
 	bool BufferHasRoom() const
 	{
-		uint num_blocks = this->output_buffer.Length();
+		uint num_blocks = this->output_buffer.size();
 		return num_blocks > 0 && this->output_buffer[num_blocks - 1].HasRoom();
 	}
 

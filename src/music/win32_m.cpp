@@ -187,7 +187,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 		uint preload_bytes = 0;
 		for (size_t bl = 0; bl < _midi.current_file.blocks.size(); bl++) {
 			MidiFile::DataBlock &block = _midi.current_file.blocks[bl];
-			preload_bytes += block.data.Length();
+			preload_bytes += block.data.size();
 			if (block.ticktime >= _midi.current_segment.start) {
 				if (_midi.current_segment.loop) {
 					DEBUG(driver, 2, "Win32-MIDI: timer: loop from block %d (ticktime %d, realtime %.3f, bytes %d)", (int)bl, (int)block.ticktime, ((int)block.realtime)/1000.0, (int)preload_bytes);
@@ -230,7 +230,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 		}
 
 		byte *data = block.data.Begin();
-		size_t remaining = block.data.Length();
+		size_t remaining = block.data.size();
 		byte last_status = 0;
 		while (remaining > 0) {
 			/* MidiFile ought to have converted everything out of running status,

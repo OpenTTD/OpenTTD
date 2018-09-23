@@ -269,7 +269,7 @@ protected:
 
 		this->servers.shrink_to_fit();
 		this->servers.RebuildDone();
-		this->vscroll->SetCount(this->servers.Length());
+		this->vscroll->SetCount(this->servers.size());
 
 		/* Sort the list of network games as requested. */
 		this->servers.Sort();
@@ -354,7 +354,7 @@ protected:
 	void UpdateListPos()
 	{
 		this->list_pos = SLP_INVALID;
-		for (uint i = 0; i != this->servers.Length(); i++) {
+		for (uint i = 0; i != this->servers.size(); i++) {
 			if (this->servers[i] == this->server) {
 				this->list_pos = i;
 				break;
@@ -564,7 +564,7 @@ public:
 			case WID_NG_MATRIX: {
 				uint16 y = r.top;
 
-				const int max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), (int)this->servers.Length());
+				const int max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), (int)this->servers.size());
 
 				for (int i = this->vscroll->GetPosition(); i < max; ++i) {
 					const NetworkGameList *ngl = this->servers[i];
@@ -710,7 +710,7 @@ public:
 			case WID_NG_INFO:    // Connectivity (green dot)
 				if (this->servers.SortType() == widget - WID_NG_NAME) {
 					this->servers.ToggleSortOrder();
-					if (this->list_pos != SLP_INVALID) this->list_pos = this->servers.Length() - this->list_pos - 1;
+					if (this->list_pos != SLP_INVALID) this->list_pos = this->servers.size() - this->list_pos - 1;
 				} else {
 					this->servers.SetSortType(widget - WID_NG_NAME);
 					this->servers.ForceResort();
@@ -722,7 +722,7 @@ public:
 
 			case WID_NG_MATRIX: { // Show available network games
 				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NG_MATRIX);
-				this->server = (id_v < this->servers.Length()) ? this->servers[id_v] : NULL;
+				this->server = (id_v < this->servers.size()) ? this->servers[id_v] : NULL;
 				this->list_pos = (server == NULL) ? SLP_INVALID : id_v;
 				this->SetDirty();
 
@@ -819,7 +819,7 @@ public:
 
 		/* handle up, down, pageup, pagedown, home and end */
 		if (keycode == WKC_UP || keycode == WKC_DOWN || keycode == WKC_PAGEUP || keycode == WKC_PAGEDOWN || keycode == WKC_HOME || keycode == WKC_END) {
-			if (this->servers.Length() == 0) return ES_HANDLED;
+			if (this->servers.size() == 0) return ES_HANDLED;
 			switch (keycode) {
 				case WKC_UP:
 					/* scroll up by one */
@@ -829,7 +829,7 @@ public:
 				case WKC_DOWN:
 					/* scroll down by one */
 					if (this->list_pos == SLP_INVALID) return ES_HANDLED;
-					if (this->list_pos < this->servers.Length() - 1) this->list_pos++;
+					if (this->list_pos < this->servers.size() - 1) this->list_pos++;
 					break;
 				case WKC_PAGEUP:
 					/* scroll up a page */
@@ -839,7 +839,7 @@ public:
 				case WKC_PAGEDOWN:
 					/* scroll down a page */
 					if (this->list_pos == SLP_INVALID) return ES_HANDLED;
-					this->list_pos = min(this->list_pos + this->vscroll->GetCapacity(), (int)this->servers.Length() - 1);
+					this->list_pos = min(this->list_pos + this->vscroll->GetCapacity(), (int)this->servers.size() - 1);
 					break;
 				case WKC_HOME:
 					/* jump to beginning */
@@ -847,7 +847,7 @@ public:
 					break;
 				case WKC_END:
 					/* jump to end */
-					this->list_pos = this->servers.Length() - 1;
+					this->list_pos = this->servers.size() - 1;
 					break;
 				default: NOT_REACHED();
 			}
@@ -1789,7 +1789,7 @@ struct NetworkClientListPopupWindow : Window {
 			d = maxdim(GetStringBoundingBox(action->name), d);
 		}
 
-		d.height *= this->actions.Length();
+		d.height *= this->actions.size();
 		d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 		d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 		*size = d;
@@ -1819,12 +1819,12 @@ struct NetworkClientListPopupWindow : Window {
 		uint index = (_cursor.pos.y - this->top - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL;
 
 		if (_left_button_down) {
-			if (index == this->sel_index || index >= this->actions.Length()) return;
+			if (index == this->sel_index || index >= this->actions.size()) return;
 
 			this->sel_index = index;
 			this->SetDirty();
 		} else {
-			if (index < this->actions.Length() && _cursor.pos.y >= this->top) {
+			if (index < this->actions.size() && _cursor.pos.y >= this->top) {
 				const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(this->client_id);
 				if (ci != NULL) this->actions[index].proc(ci);
 			}

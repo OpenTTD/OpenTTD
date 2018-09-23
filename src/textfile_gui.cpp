@@ -86,7 +86,7 @@ uint TextfileWindow::GetContentHeight()
 	int max_width = this->GetWidget<NWidgetCore>(WID_TF_BACKGROUND)->current_x - WD_FRAMETEXT_LEFT - WD_FRAMERECT_RIGHT;
 
 	uint height = 0;
-	for (uint i = 0; i < this->lines.Length(); i++) {
+	for (uint i = 0; i < this->lines.size(); i++) {
 		height += GetStringHeight(this->lines[i], max_width, FS_MONO);
 	}
 
@@ -113,10 +113,10 @@ void TextfileWindow::SetupScrollbars()
 		this->hscroll->SetCount(0);
 	} else {
 		uint max_length = 0;
-		for (uint i = 0; i < this->lines.Length(); i++) {
+		for (uint i = 0; i < this->lines.size(); i++) {
 			max_length = max(max_length, GetStringBoundingBox(this->lines[i], FS_MONO).width);
 		}
-		this->vscroll->SetCount(this->lines.Length() * FONT_HEIGHT_MONO);
+		this->vscroll->SetCount(this->lines.size() * FONT_HEIGHT_MONO);
 		this->hscroll->SetCount(max_length + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
 	}
 
@@ -152,7 +152,7 @@ void TextfileWindow::SetupScrollbars()
 	int line_height = FONT_HEIGHT_MONO;
 	int y_offset = -this->vscroll->GetPosition();
 
-	for (uint i = 0; i < this->lines.Length(); i++) {
+	for (uint i = 0; i < this->lines.size(); i++) {
 		if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
 			y_offset = DrawStringMultiLine(0, right - x, y_offset, bottom - y, this->lines[i], TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
 		} else {
@@ -184,7 +184,7 @@ void TextfileWindow::SetupScrollbars()
 
 /* virtual */ const char *TextfileWindow::NextString()
 {
-	if (this->search_iterator >= this->lines.Length()) return NULL;
+	if (this->search_iterator >= this->lines.size()) return NULL;
 
 	return this->lines[this->search_iterator++];
 }

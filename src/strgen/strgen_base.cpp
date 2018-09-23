@@ -1029,14 +1029,14 @@ void LanguageWriter::WriteLang(const StringData &data)
 				for (c = casep; c != NULL; c = c->next) {
 					buffer.AppendByte(c->caseidx);
 					/* Make some space for the 16-bit length */
-					uint pos = buffer.Length();
+					uint pos = buffer.size();
 					buffer.AppendByte(0);
 					buffer.AppendByte(0);
 					/* Write string */
 					PutCommandString(&buffer, c->string);
 					buffer.AppendByte(0); // terminate with a zero
 					/* Fill in the length */
-					uint size = buffer.Length() - (pos + 2);
+					uint size = buffer.size() - (pos + 2);
 					buffer[pos + 0] = GB(size, 8, 8);
 					buffer[pos + 1] = GB(size, 0, 8);
 				}
@@ -1044,8 +1044,8 @@ void LanguageWriter::WriteLang(const StringData &data)
 
 			if (cmdp != NULL) PutCommandString(&buffer, cmdp);
 
-			this->WriteLength(buffer.Length());
-			this->Write(buffer.Begin(), buffer.Length());
+			this->WriteLength(buffer.size());
+			this->Write(buffer.Begin(), buffer.size());
 			buffer.clear();
 		}
 	}

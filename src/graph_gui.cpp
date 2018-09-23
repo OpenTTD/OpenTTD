@@ -1183,7 +1183,7 @@ public:
 		uint text_left     = rtl ? r.left + WD_FRAMERECT_LEFT : r.right - WD_FRAMERECT_LEFT - this->text_width;
 		uint text_right    = rtl ? r.left + WD_FRAMERECT_LEFT + this->text_width : r.right - WD_FRAMERECT_LEFT;
 
-		for (uint i = 0; i != this->companies.Length(); i++) {
+		for (uint i = 0; i != this->companies.size(); i++) {
 			const Company *c = this->companies[i];
 			DrawString(ordinal_left, ordinal_right, y, i + STR_ORDINAL_NUMBER_1ST, i == 0 ? TC_WHITE : TC_YELLOW);
 

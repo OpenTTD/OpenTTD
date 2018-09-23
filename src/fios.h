@@ -129,7 +129,7 @@ public:
 	 */
 	inline uint Length() const
 	{
-		return this->files.Length();
+		return this->files.size();
 	}
 
 	/**

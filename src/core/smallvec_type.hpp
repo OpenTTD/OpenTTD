@@ -218,16 +218,6 @@ public:
 	}
 
 	/**
-	 * Get the number of items in the list.
-	 *
-	 * @return The number of items in the list.
-	 */
-	inline uint Length() const
-	{
-		return std::vector<T>::size();
-	}
-
-	/**
 	 * Get the pointer to the first item (const)
 	 *
 	 * @return the pointer to the first item

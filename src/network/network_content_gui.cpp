@@ -401,7 +401,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		this->content.RebuildDone();
 		this->SortContentList();
 
-		this->vscroll->SetCount(this->content.Length()); // Update the scrollbar
+		this->vscroll->SetCount(this->content.size()); // Update the scrollbar
 		this->ScrollToSelected();
 	}
 
@@ -791,7 +791,7 @@ public:
 		switch (widget) {
 			case WID_NCL_MATRIX: {
 				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NCL_MATRIX);
-				if (id_v >= this->content.Length()) return; // click out of bounds
+				if (id_v >= this->content.size()) return; // click out of bounds
 
 				this->selected = *this->content.Get(id_v);
 				this->list_pos = id_v;
@@ -815,7 +815,7 @@ public:
 			case WID_NCL_NAME:
 				if (this->content.SortType() == widget - WID_NCL_CHECKBOX) {
 					this->content.ToggleSortOrder();
-					if (this->content.Length() > 0) this->list_pos = this->content.Length() - this->list_pos - 1;
+					if (this->content.size() > 0) this->list_pos = this->content.size() - this->list_pos - 1;
 				} else {
 					this->content.SetSortType(widget - WID_NCL_CHECKBOX);
 					this->content.ForceResort();
@@ -874,7 +874,7 @@ public:
 				break;
 			case WKC_DOWN:
 				/* scroll down by one */
-				if (this->list_pos < (int)this->content.Length() - 1) this->list_pos++;
+				if (this->list_pos < (int)this->content.size() - 1) this->list_pos++;
 				break;
 			case WKC_PAGEUP:
 				/* scroll up a page */
@@ -882,7 +882,7 @@ public:
 				break;
 			case WKC_PAGEDOWN:
 				/* scroll down a page */
-				this->list_pos = min(this->list_pos + this->vscroll->GetCapacity(), (int)this->content.Length() - 1);
+				this->list_pos = min(this->list_pos + this->vscroll->GetCapacity(), (int)this->content.size() - 1);
 				break;
 			case WKC_HOME:
 				/* jump to beginning */
@@ -890,7 +890,7 @@ public:
 				break;
 			case WKC_END:
 				/* jump to end */
-				this->list_pos = this->content.Length() - 1;
+				this->list_pos = this->content.size() - 1;
 				break;
 
 			case WKC_SPACE:
@@ -914,7 +914,7 @@ public:
 				return ES_NOT_HANDLED;
 		}
 
-		if (this->content.Length() == 0) {
+		if (this->content.size() == 0) {
 			this->list_pos = 0; // above stuff may result in "-1".
 			if (this->UpdateFilterState()) {
 				this->content.ForceRebuild();

@@ -380,7 +380,7 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 	{
 		SortingBits order = _savegame_sort_order;
 		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
-		QSortT(file_list.files.Begin(), file_list.files.Length(), CompareFiosItems);
+		QSortT(file_list.files.Begin(), file_list.files.size(), CompareFiosItems);
 		_savegame_sort_order = order;
 	}
 

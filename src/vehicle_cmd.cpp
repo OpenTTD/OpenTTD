@@ -652,7 +652,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 		BuildDepotVehicleList(vli.vtype, tile, &list, NULL);
 	}
 
-	for (uint i = 0; i < list.Length(); i++) {
+	for (uint i = 0; i < list.size(); i++) {
 		const Vehicle *v = list[i];
 
 		if (!!(v->vehstatus & VS_STOPPED) != do_start) continue;
@@ -691,7 +691,7 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 
 
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
-	for (uint i = 0; i < list.Length(); i++) {
+	for (uint i = 0; i < list.size(); i++) {
 		CommandCost ret = DoCommand(tile, list[i]->index | (1 << 20), 0, flags, sell_command);
 		if (ret.Succeeded()) {
 			cost.AddCost(ret);
@@ -725,7 +725,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &list, &list, true);
 
-	for (uint i = 0; i < list.Length(); i++) {
+	for (uint i = 0; i < list.size(); i++) {
 		const Vehicle *v = list[i];
 
 		/* Ensure that the vehicle completely in the depot */
@@ -1003,7 +1003,7 @@ static CommandCost SendAllVehiclesToDepot(DoCommandFlag flags, bool service, con
 
 	/* Send all the vehicles to a depot */
 	bool had_success = false;
-	for (uint i = 0; i < list.Length(); i++) {
+	for (uint i = 0; i < list.size(); i++) {
 		const Vehicle *v = list[i];
 		CommandCost ret = DoCommand(v->tile, v->index | (service ? DEPOT_SERVICE : 0U) | DEPOT_DONT_CANCEL, 0, flags, GetCmdSendToDepot(vli.vtype));
 

@@ -598,7 +598,7 @@ void OffsetGroundSprite(int x, int y)
 	}
 
 	/* _vd.last_child == NULL if foundation sprite was clipped by the viewport bounds */
-	if (_vd.last_child != NULL) _vd.foundation[_vd.foundation_part] = _vd.parent_sprites_to_draw.Length() - 1;
+	if (_vd.last_child != NULL) _vd.foundation[_vd.foundation_part] = _vd.parent_sprites_to_draw.size() - 1;
 
 	_vd.foundation_offset[_vd.foundation_part].x = x * ZOOM_LVL_BASE;
 	_vd.foundation_offset[_vd.foundation_part].y = y * ZOOM_LVL_BASE;
@@ -824,7 +824,7 @@ void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool tran
 		pal = PALETTE_TO_TRANSPARENT;
 	}
 
-	*_vd.last_child = _vd.child_screen_sprites_to_draw.Length();
+	*_vd.last_child = _vd.child_screen_sprites_to_draw.size();
 
 	ChildScreenSpriteToDraw *cs = _vd.child_screen_sprites_to_draw.Append();
 	cs->image = image;
@@ -1584,7 +1584,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 
 	DrawTextEffects(&_vd.dpi);
 
-	if (_vd.tile_sprites_to_draw.Length() != 0) ViewportDrawTileSprites(&_vd.tile_sprites_to_draw);
+	if (_vd.tile_sprites_to_draw.size() != 0) ViewportDrawTileSprites(&_vd.tile_sprites_to_draw);
 
 	ParentSpriteToDraw *psd_end = _vd.parent_sprites_to_draw.End();
 	for (ParentSpriteToDraw *it = _vd.parent_sprites_to_draw.Begin(); it != psd_end; it++) {
@@ -1611,7 +1611,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 		vp->overlay->Draw(&dp);
 	}
 
-	if (_vd.string_sprites_to_draw.Length() != 0) {
+	if (_vd.string_sprites_to_draw.size() != 0) {
 		/* translate to world coordinates */
 		dp.left = UnScaleByZoom(_vd.dpi.left, zoom);
 		dp.top = UnScaleByZoom(_vd.dpi.top, zoom);

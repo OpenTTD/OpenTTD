@@ -659,7 +659,7 @@ private:
 
 			this->towns.shrink_to_fit();
 			this->towns.RebuildDone();
-			this->vscroll->SetCount(this->towns.Length()); // Update scrollbar as well.
+			this->vscroll->SetCount(this->towns.size()); // Update scrollbar as well.
 		}
 		/* Always sort the towns. */
 		this->last_town = NULL;
@@ -766,7 +766,7 @@ public:
 			case WID_TD_LIST: {
 				int n = 0;
 				int y = r.top + WD_FRAMERECT_TOP;
-				if (this->towns.Length() == 0) { // No towns available.
+				if (this->towns.size() == 0) { // No towns available.
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right, y, STR_TOWN_DIRECTORY_NONE);
 					break;
 				}
@@ -778,7 +778,7 @@ public:
 				int text_right = r.right - WD_FRAMERECT_RIGHT - (rtl ? icon_size.width + 2 : 0);
 				int icon_x = rtl ? r.right - WD_FRAMERECT_RIGHT - icon_size.width : r.left + WD_FRAMERECT_LEFT;
 
-				for (uint i = this->vscroll->GetPosition(); i < this->towns.Length(); i++) {
+				for (uint i = this->vscroll->GetPosition(); i < this->towns.size(); i++) {
 					const Town *t = this->towns[i];
 					assert(t->xy != INVALID_TILE);
 
@@ -826,7 +826,7 @@ public:
 			}
 			case WID_TD_LIST: {
 				Dimension d = GetStringBoundingBox(STR_TOWN_DIRECTORY_NONE);
-				for (uint i = 0; i < this->towns.Length(); i++) {
+				for (uint i = 0; i < this->towns.size(); i++) {
 					const Town *t = this->towns[i];
 
 					assert(t != NULL);
@@ -879,7 +879,7 @@ public:
 
 			case WID_TD_LIST: { // Click on Town Matrix
 				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_TD_LIST, WD_FRAMERECT_TOP);
-				if (id_v >= this->towns.Length()) return; // click out of town bounds
+				if (id_v >= this->towns.size()) return; // click out of town bounds
 
 				const Town *t = this->towns[id_v];
 				assert(t != NULL);

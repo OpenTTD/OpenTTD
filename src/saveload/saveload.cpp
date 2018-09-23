@@ -175,7 +175,7 @@ struct MemoryDumper {
 	 */
 	size_t GetSize() const
 	{
-		return this->blocks.Length() * MEMORY_CHUNK_SIZE - (this->bufe - this->buf);
+		return this->blocks.size() * MEMORY_CHUNK_SIZE - (this->bufe - this->buf);
 	}
 };
 

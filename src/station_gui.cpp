@@ -205,7 +205,7 @@ protected:
 		this->stations.shrink_to_fit();
 		this->stations.RebuildDone();
 
-		this->vscroll->SetCount(this->stations.Length()); // Update the scrollbar
+		this->vscroll->SetCount(this->stations.size()); // Update the scrollbar
 	}
 
 	/** Sort stations by their name */
@@ -411,7 +411,7 @@ public:
 
 			case WID_STL_LIST: {
 				bool rtl = _current_text_dir == TD_RTL;
-				int max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->stations.Length());
+				int max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->stations.size());
 				int y = r.top + WD_FRAMERECT_TOP;
 				for (int i = this->vscroll->GetPosition(); i < max; ++i) { // do until max number of stations of owner
 					const Station *st = this->stations[i];
@@ -498,7 +498,7 @@ public:
 		switch (widget) {
 			case WID_STL_LIST: {
 				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_STL_LIST, 0, FONT_HEIGHT_NORMAL);
-				if (id_v >= this->stations.Length()) return; // click out of list bound
+				if (id_v >= this->stations.size()) return; // click out of list bound
 
 				const Station *st = this->stations[id_v];
 				/* do not check HasStationInUse - it is slow and may be invalid */
@@ -2132,7 +2132,7 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
 	TileArea *ctx = (TileArea *)user_data;
 
 	/* First check if there were deleted stations here */
-	for (uint i = 0; i < _deleted_stations_nearby.Length(); i++) {
+	for (uint i = 0; i < _deleted_stations_nearby.size(); i++) {
 		TileAndStation *ts = _deleted_stations_nearby.Get(i);
 		if (ts->tile == tile) {
 			*_stations_nearby_list.Append() = _deleted_stations_nearby[i].station;
@@ -2255,7 +2255,7 @@ struct SelectStationWindow : Window {
 
 		/* Determine the widest string */
 		Dimension d = GetStringBoundingBox(T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT : STR_JOIN_STATION_CREATE_SPLITTED_STATION);
-		for (uint i = 0; i < _stations_nearby_list.Length(); i++) {
+		for (uint i = 0; i < _stations_nearby_list.size(); i++) {
 			const T *st = T::Get(_stations_nearby_list[i]);
 			SetDParam(0, st->index);
 			SetDParam(1, st->facilities);
@@ -2279,7 +2279,7 @@ struct SelectStationWindow : Window {
 			y += this->resize.step_height;
 		}
 
-		for (uint i = max<uint>(1, this->vscroll->GetPosition()); i <= _stations_nearby_list.Length(); ++i, y += this->resize.step_height) {
+		for (uint i = max<uint>(1, this->vscroll->GetPosition()); i <= _stations_nearby_list.size(); ++i, y += this->resize.step_height) {
 			/* Don't draw anything if it extends past the end of the window. */
 			if (i - this->vscroll->GetPosition() >= this->vscroll->GetCapacity()) break;
 
@@ -2298,7 +2298,7 @@ struct SelectStationWindow : Window {
 		bool distant_join = (st_index > 0);
 		if (distant_join) st_index--;
 
-		if (distant_join && st_index >= _stations_nearby_list.Length()) return;
+		if (distant_join && st_index >= _stations_nearby_list.size()) return;
 
 		/* Insert station to be joined into stored command */
 		SB(this->select_station_cmd.p2, 16, 16,
@@ -2333,7 +2333,7 @@ struct SelectStationWindow : Window {
 	{
 		if (!gui_scope) return;
 		FindStationsNearby<T>(this->area, true);
-		this->vscroll->SetCount(_stations_nearby_list.Length() + 1);
+		this->vscroll->SetCount(_stations_nearby_list.size() + 1);
 		this->SetDirty();
 	}
 };
@@ -2378,7 +2378,7 @@ static bool StationJoinerNeeded(const CommandContainer &cmd, TileArea ta)
 	 * If adjacent-stations is disabled and we are building next to a station, do not show the selection window.
 	 * but join the other station immediately. */
 	const T *st = FindStationsNearby<T>(ta, false);
-	return st == NULL && (_settings_game.station.adjacent_stations || _stations_nearby_list.Length() == 0);
+	return st == NULL && (_settings_game.station.adjacent_stations || _stations_nearby_list.size() == 0);
 }
 
 /**

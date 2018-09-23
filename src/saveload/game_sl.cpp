@@ -132,7 +132,7 @@ static const SaveLoad _game_language_string[] = {
 static void SaveReal_GSTR(LanguageStrings *ls)
 {
 	_game_saveload_string  = ls->language;
-	_game_saveload_strings = ls->lines.Length();
+	_game_saveload_strings = ls->lines.size();
 
 	SlObject(NULL, _game_language_header);
 	for (uint i = 0; i < _game_saveload_strings; i++) {
@@ -160,7 +160,7 @@ static void Load_GSTR()
 	}
 
 	/* If there were no strings in the savegame, set GameStrings to NULL */
-	if (_current_data->raw_strings.Length() == 0) {
+	if (_current_data->raw_strings.size() == 0) {
 		delete _current_data;
 		_current_data = NULL;
 		return;
@@ -174,7 +174,7 @@ static void Save_GSTR()
 {
 	if (_current_data == NULL) return;
 
-	for (uint i = 0; i < _current_data->raw_strings.Length(); i++) {
+	for (uint i = 0; i < _current_data->raw_strings.size(); i++) {
 		SlSetArrayIndex(i);
 		SlAutolength((AutolengthProc *)SaveReal_GSTR, _current_data->raw_strings[i]);
 	}

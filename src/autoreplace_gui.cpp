@@ -160,8 +160,8 @@ class ReplaceVehicleWindow : public Window {
 		if (this->engines[0].NeedRebuild()) {
 			/* We need to rebuild the left engines list */
 			this->GenerateReplaceVehList(true);
-			this->vscroll[0]->SetCount(this->engines[0].Length());
-			if (this->reset_sel_engine && this->sel_engine[0] == INVALID_ENGINE && this->engines[0].Length() != 0) {
+			this->vscroll[0]->SetCount(this->engines[0].size());
+			if (this->reset_sel_engine && this->sel_engine[0] == INVALID_ENGINE && this->engines[0].size() != 0) {
 				this->sel_engine[0] = this->engines[0][0];
 			}
 		}
@@ -180,7 +180,7 @@ class ReplaceVehicleWindow : public Window {
 				}
 				/* Regenerate the list on the right. Note: This resets sel_engine[1] to INVALID_ENGINE, if it is no longer available. */
 				this->GenerateReplaceVehList(false);
-				this->vscroll[1]->SetCount(this->engines[1].Length());
+				this->vscroll[1]->SetCount(this->engines[1].size());
 				if (this->reset_sel_engine && this->sel_engine[1] != INVALID_ENGINE) {
 					int position = 0;
 					for (EngineID *it = this->engines[1].Begin(); it != this->engines[1].End(); ++it) {
@@ -384,7 +384,7 @@ public:
 			case WID_RV_RIGHT_MATRIX: {
 				int side = (widget == WID_RV_LEFT_MATRIX) ? 0 : 1;
 				EngineID start  = this->vscroll[side]->GetPosition(); // what is the offset for the start (scrolling)
-				EngineID end    = min(this->vscroll[side]->GetCapacity() + start, this->engines[side].Length());
+				EngineID end    = min(this->vscroll[side]->GetCapacity() + start, this->engines[side].size());
 
 				/* Do the actual drawing */
 				DrawEngineList((VehicleType)this->window_number, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP,
@@ -508,7 +508,7 @@ public:
 					click_side = 1;
 				}
 				uint i = this->vscroll[click_side]->GetScrolledRowFromWidget(pt.y, this, widget);
-				size_t engine_count = this->engines[click_side].Length();
+				size_t engine_count = this->engines[click_side].size();
 
 				EngineID e = engine_count > i ? this->engines[click_side][i] : INVALID_ENGINE;
 				if (e == this->sel_engine[click_side]) break; // we clicked the one we already selected

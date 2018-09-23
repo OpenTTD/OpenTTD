@@ -166,7 +166,7 @@ static int CDECL DescSorter(WindowDesc * const *a, WindowDesc * const *b)
 void WindowDesc::SaveToConfig()
 {
 	/* Sort the stuff to get a nice ini file on first write */
-	QSortT(_window_descs->Begin(), _window_descs->Length(), DescSorter);
+	QSortT(_window_descs->Begin(), _window_descs->size(), DescSorter);
 
 	IniFile *ini = new IniFile();
 	ini->LoadFromDisk(_windows_file, NO_DIRECTORY);

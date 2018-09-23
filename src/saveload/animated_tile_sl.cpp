@@ -25,8 +25,8 @@ extern SmallVector<TileIndex, 256> _animated_tiles;
  */
 static void Save_ANIT()
 {
-	SlSetLength(_animated_tiles.Length() * sizeof(*_animated_tiles.Begin()));
-	SlArray(_animated_tiles.Begin(), _animated_tiles.Length(), SLE_UINT32);
+	SlSetLength(_animated_tiles.size() * sizeof(*_animated_tiles.Begin()));
+	SlArray(_animated_tiles.Begin(), _animated_tiles.size(), SLE_UINT32);
 }
 
 /**

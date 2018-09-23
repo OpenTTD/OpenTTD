@@ -330,14 +330,14 @@ static bool FixupMidiData(MidiFile &target)
 	uint32 last_ticktime = 0;
 	for (size_t i = 0; i < target.blocks.size(); i++) {
 		MidiFile::DataBlock &block = target.blocks[i];
-		if (block.data.Length() == 0) {
+		if (block.data.size() == 0) {
 			continue;
 		} else if (block.ticktime > last_ticktime || merged_blocks.size() == 0) {
 			merged_blocks.push_back(block);
 			last_ticktime = block.ticktime;
 		} else {
-			byte *datadest = merged_blocks.back().data.Append(block.data.Length());
-			memcpy(datadest, block.data.Begin(), block.data.Length());
+			byte *datadest = merged_blocks.back().data.Append(block.data.size());
+			memcpy(datadest, block.data.Begin(), block.data.size());
 		}
 	}
 	std::swap(merged_blocks, target.blocks);
