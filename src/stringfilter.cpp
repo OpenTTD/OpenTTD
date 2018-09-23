@@ -28,7 +28,8 @@ static const WChar STATE_QUOTE2 = '"';
  */
 void StringFilter::SetFilterTerm(const char *str)
 {
-	this->word_index.Reset();
+	this->word_index.clear();
+	this->word_index.shrink_to_fit();
 	this->word_matches = 0;
 	free(this->filter_buffer);
 

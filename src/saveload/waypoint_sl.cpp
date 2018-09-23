@@ -146,7 +146,8 @@ void MoveWaypointsToBaseStations()
 		UpdateWaypointOrder(&v->current_order);
 	}
 
-	_old_waypoints.Reset();
+	_old_waypoints.clear();
+	_old_waypoints.shrink_to_fit();
 }
 
 static const SaveLoad _old_waypoint_desc[] = {

@@ -78,15 +78,6 @@ public:
 	}
 
 	/**
-	 * Remove all items from the list and free allocated memory.
-	 */
-	inline void Reset()
-	{
-		std::vector<T>::clear();
-		std::vector<T>::shrink_to_fit();
-	}
-
-	/**
 	 * Append an item and return it.
 	 * @param to_add the number of items to append
 	 * @return pointer to newly allocated item
