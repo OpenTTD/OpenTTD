@@ -1791,6 +1791,11 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 	Win32SetCurrentLocaleName(_current_language->isocode);
 #endif
 
+#ifdef WITH_COCOA
+	extern void MacOSSetCurrentLocaleName(const char *iso_code);
+	MacOSSetCurrentLocaleName(_current_language->isocode);
+#endif
+
 #ifdef WITH_ICU_SORT
 	/* Delete previous collator. */
 	if (_current_collator != NULL) {
