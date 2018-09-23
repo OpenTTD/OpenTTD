@@ -174,6 +174,12 @@ struct CargoSummaryItem {
 	{
 		return this->cargo != other.cargo || this->subtype != other.subtype;
 	}
+
+	/** Used by std::find() and similar functions */
+	inline bool operator == (const CargoSummaryItem &other) const
+	{
+		return !(this->cargo != other.cargo);
+	}
 };
 
 static const uint TRAIN_DETAILS_MIN_INDENT = 32; ///< Minimum indent level in the train details window
@@ -272,7 +278,7 @@ static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary *su
 		new_item.subtype = GetCargoSubtypeText(v);
 		if (new_item.cargo == INVALID_CARGO && new_item.subtype == STR_EMPTY) continue;
 
-		CargoSummaryItem *item = summary->Find(new_item);
+		CargoSummaryItem *item = &*std::find(summary->begin(), summary->end(), new_item);
 		if (item == summary->End()) {
 			item = summary->Append();
 			item->cargo = new_item.cargo;

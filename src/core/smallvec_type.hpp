@@ -120,20 +120,6 @@ public:
 	 * Search for the first occurrence of an item.
 	 * The '!=' operator of T is used for comparison.
 	 * @param item Item to search for
-	 * @return The position of the item, or End() when not present
-	 */
-	inline T *Find(const T &item)
-	{
-		T *pos = this->Begin();
-		const T *end = this->End();
-		while (pos != end && *pos != item) pos++;
-		return pos;
-	}
-
-	/**
-	 * Search for the first occurrence of an item.
-	 * The '!=' operator of T is used for comparison.
-	 * @param item Item to search for
 	 * @return The position of the item, or -1 when not present
 	 */
 	inline int FindIndex(const T &item) const

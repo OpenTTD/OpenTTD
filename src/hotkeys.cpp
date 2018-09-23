@@ -260,7 +260,7 @@ HotkeyList::HotkeyList(const char *ini_group, Hotkey *items, GlobalHotkeyHandler
 
 HotkeyList::~HotkeyList()
 {
-	_hotkey_lists->Erase(_hotkey_lists->Find(this));
+	_hotkey_lists->erase(std::find(_hotkey_lists->begin(), _hotkey_lists->end(), this));
 }
 
 /**
