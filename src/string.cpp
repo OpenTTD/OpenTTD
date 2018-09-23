@@ -33,6 +33,10 @@
 #include "os/windows/string_uniscribe.h"
 #endif
 
+#if defined(WITH_COCOA)
+#include "os/macosx/string_osx.h"
+#endif
+
 #ifdef WITH_ICU_SORT
 /* Required by strnatcmp. */
 #include <unicode/ustring.h>
@@ -590,6 +594,11 @@ int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
 
 #if defined(WIN32) && !defined(STRGEN) && !defined(SETTINGSGEN)
 	int res = OTTDStringCompare(s1, s2);
+	if (res != 0) return res - 2; // Convert to normal C return values.
+#endif
+
+#if defined(WITH_COCOA) && !defined(STRGEN) && !defined(SETTINGSGEN)
+	int res = MacOSStringCompare(s1, s2);
 	if (res != 0) return res - 2; // Convert to normal C return values.
 #endif
 

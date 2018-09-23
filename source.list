@@ -413,6 +413,7 @@ music/qtmidi.h
 os/macosx/macos.h
 os/macosx/osx_stdafx.h
 os/macosx/splash.h
+os/macosx/string_osx.h
 sound/cocoa_s.h
 video/cocoa/cocoa_keys.h
 video/cocoa/cocoa_v.h
@@ -1167,6 +1168,7 @@ sound/null_s.cpp
 		music/cocoa_m.cpp
 		sound/cocoa_s.cpp
 		os/macosx/splash.cpp
+		os/macosx/string_osx.cpp
 	#end
 #end
 
