@@ -1331,7 +1331,8 @@ make_compiler_cflags() {
 		fi
 	elif echo "$version_line" | grep -q "clang"; then
 		# Enable some things only for certain clang versions
-		cc_version="`$1 -v 2>&1 | head -n 1 | sed s@[^0-9]@@g | cut -c 1-2`"
+		# Need to try really hard to get the version line, because OSX clang likes to hide its true version
+		cc_version="`$1 -v 2>&1 | grep -i version | head -n 1 | sed s@[^0-9]@@g | cut -c 1-2`"
 
 		# aliasing rules are not held in openttd code
 		flags="$flags -fno-strict-aliasing"
