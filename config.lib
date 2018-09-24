@@ -2927,10 +2927,16 @@ detect_iconv() {
 	# Try to find iconv.h, seems to only thing to detect iconv with
 
 	if [ "$with_iconv" = "1" ] || [ "$with_iconv" = "" ] || [ "$with_iconv" = "2" ]; then
-		iconv=`ls -1 /usr/include 2>/dev/null | grep "iconv.h"`
-		if [ -z "$iconv" ]; then
-			iconv=`ls -1 /usr/local/include 2>/dev/null | grep "iconv.h"`
-		fi
+		# Iterate over search paths
+		iconv=""
+		search_paths=`LC_ALL=C $cxx_host $OSX_SYSROOT $CFLAGS -E - -v </dev/null 2>&1 | \
+		              $awk '/#include <...> search starts here:/{flag=1;next}/End of search list./{flag=0}flag'`
+		for path in $search_paths; do
+			iconv=`ls -1 $path 2>/dev/null | grep "iconv.h"`
+			if [ -n "$iconv" ]; then
+				break
+			fi
+		done
 	else
 		# Make sure it exists
 		iconv=`ls $with_iconv/include/iconv.h 2>/dev/null`
