@@ -149,16 +149,6 @@ public:
 	}
 
 	/**
-	 * Remove items from the vector while preserving the order of other items.
-	 * @param item First item to remove.
-	 * @param count Number of consecutive items to remove.
-	 */
-	inline void ErasePreservingOrder(T *item, uint count = 1)
-	{
-		this->ErasePreservingOrder(item - this->Begin(), count);
-	}
-
-	/**
 	 * Tests whether a item is present in the vector, and appends it to the end if not.
 	 * The '!=' operator of T is used for comparison.
 	 * @param item Item to test for

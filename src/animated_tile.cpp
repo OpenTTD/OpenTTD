@@ -27,10 +27,10 @@ SmallVector<TileIndex, 256> _animated_tiles;
  */
 void DeleteAnimatedTile(TileIndex tile)
 {
-	TileIndex *to_remove = &*std::find(_animated_tiles.begin(), _animated_tiles.end(), tile);
-	if (to_remove != _animated_tiles.End()) {
+	auto to_remove = std::find(_animated_tiles.begin(), _animated_tiles.end(), tile);
+	if (to_remove != _animated_tiles.end()) {
 		/* The order of the remaining elements must stay the same, otherwise the animation loop may miss a tile. */
-		_animated_tiles.ErasePreservingOrder(to_remove);
+		_animated_tiles.erase(to_remove);
 		MarkTileDirtyByTile(tile);
 	}
 }
