@@ -494,7 +494,7 @@ struct RefitWindow : public Window {
 								while (pos < l.size() && l[pos].subtype != refit_cyc) pos++;
 								if (pos < l.size() && l[pos].string != subtype) {
 									/* String mismatch, remove item keeping the order */
-									l.ErasePreservingOrder(pos);
+									l.erase(l.begin() + pos);
 								}
 							}
 						}

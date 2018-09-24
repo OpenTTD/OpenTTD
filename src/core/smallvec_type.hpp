@@ -138,17 +138,6 @@ public:
 	}
 
 	/**
-	 * Remove items from the vector while preserving the order of other items.
-	 * @param pos First item to remove.
-	 * @param count Number of consecutive items to remove.
-	 */
-	void ErasePreservingOrder(uint pos, uint count = 1)
-	{
-		auto const it = std::vector<T>::begin() + pos;
-		std::vector<T>::erase(it, it + count);
-	}
-
-	/**
 	 * Tests whether a item is present in the vector, and appends it to the end if not.
 	 * The '!=' operator of T is used for comparison.
 	 * @param item Item to test for
