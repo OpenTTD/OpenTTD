@@ -2133,10 +2133,10 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
 
 	/* First check if there were deleted stations here */
 	for (uint i = 0; i < _deleted_stations_nearby.size(); i++) {
-		TileAndStation *ts = _deleted_stations_nearby.data() + i;
+		auto ts = _deleted_stations_nearby.begin() + i;
 		if (ts->tile == tile) {
 			*_stations_nearby_list.Append() = _deleted_stations_nearby[i].station;
-			_deleted_stations_nearby.Erase(ts);
+			_deleted_stations_nearby.erase(ts);
 			i--;
 		}
 	}

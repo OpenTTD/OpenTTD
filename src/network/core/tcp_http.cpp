@@ -311,7 +311,7 @@ int NetworkHTTPSocketHandler::Receive()
 	int n = select(FD_SETSIZE, &read_fd, NULL, NULL, &tv);
 	if (n == -1) return;
 
-	for (NetworkHTTPSocketHandler **iter = _http_connections.Begin(); iter < _http_connections.End(); /* nothing */) {
+	for (auto iter = _http_connections.begin(); iter < _http_connections.end(); /* nothing */) {
 		NetworkHTTPSocketHandler *cur = *iter;
 
 		if (FD_ISSET(cur->sock, &read_fd)) {
@@ -321,7 +321,7 @@ int NetworkHTTPSocketHandler::Receive()
 			if (ret <= 0) {
 				/* Then... the connection can be closed */
 				cur->CloseConnection();
-				_http_connections.Erase(iter);
+				iter = _http_connections.erase(iter);
 				delete cur;
 				continue;
 			}

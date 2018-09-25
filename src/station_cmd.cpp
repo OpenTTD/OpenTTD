@@ -3541,8 +3541,8 @@ void DeleteStaleLinks(Station *from)
 						*(vehicles.Append()) = l->GetFirstSharedVehicle();
 					}
 
-					Vehicle **iter = vehicles.Begin();
-					while (iter != vehicles.End()) {
+					auto iter = vehicles.begin();
+					while (iter != vehicles.end()) {
 						Vehicle *v = *iter;
 
 						LinkRefresher::Run(v, false); // Don't allow merging. Otherwise lg might get deleted.
@@ -3556,10 +3556,10 @@ void DeleteStaleLinks(Station *from)
 							*iter = next_shared;
 							++iter;
 						} else {
-							vehicles.Erase(iter);
+							iter = vehicles.erase(iter);
 						}
 
-						if (iter == vehicles.End()) iter = vehicles.Begin();
+						if (iter == vehicles.end()) iter = vehicles.begin();
 					}
 				}
 

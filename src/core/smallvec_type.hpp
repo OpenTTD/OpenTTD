@@ -104,18 +104,6 @@ public:
 	}
 
 	/**
-	 * Removes given item from this vector
-	 * @param item item to remove
-	 * @note it has to be pointer to item in this map. It is overwritten by the last item.
-	 */
-	inline void Erase(T *item)
-	{
-		assert(item >= this->Begin() && item < this->End());
-		*item = std::vector<T>::back();
-		std::vector<T>::pop_back();
-	}
-
-	/**
 	 * Tests whether a item is present in the vector, and appends it to the end if not.
 	 * The '!=' operator of T is used for comparison.
 	 * @param item Item to test for

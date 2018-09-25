@@ -986,7 +986,7 @@ struct SpriteAlignerWindow : Window {
 
 			case WID_SA_RESET_REL:
 				/* Reset the starting offsets for the current sprite. */
-				this->offs_start_map.Erase(this->current_sprite);
+				this->offs_start_map.erase(this->offs_start_map.begin() + this->current_sprite);
 				this->SetDirty();
 				break;
 		}
