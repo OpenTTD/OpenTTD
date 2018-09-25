@@ -641,7 +641,7 @@ public:
 		int text_y_offset = WD_MATRIX_TOP + (line_height - FONT_HEIGHT_NORMAL) / 2;
 		uint y = r.top;
 		int cnt = 0;
-		for (ConstContentIterator iter = this->content.Get(this->vscroll->GetPosition()); iter != this->content.End() && cnt < this->vscroll->GetCapacity(); iter++, cnt++) {
+		for (ConstContentIterator iter = this->content.data() + this->vscroll->GetPosition(); iter != this->content.End() && cnt < this->vscroll->GetCapacity(); iter++, cnt++) {
 			const ContentInfo *ci = *iter;
 
 			if (ci == this->selected) GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->resize.step_height - 1, PC_GREY);
@@ -793,7 +793,7 @@ public:
 				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NCL_MATRIX);
 				if (id_v >= this->content.size()) return; // click out of bounds
 
-				this->selected = *this->content.Get(id_v);
+				this->selected = this->content[id_v];
 				this->list_pos = id_v;
 
 				const NWidgetBase *checkbox = this->GetWidget<NWidgetBase>(WID_NCL_CHECKBOX);
@@ -923,7 +923,7 @@ public:
 			return ES_HANDLED;
 		}
 
-		this->selected = *this->content.Get(this->list_pos);
+		this->selected = this->content[this->list_pos];
 
 		if (this->UpdateFilterState()) {
 			this->content.ForceRebuild();

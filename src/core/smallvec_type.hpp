@@ -167,19 +167,6 @@ public:
 	{
 		return std::vector<T>::data() + std::vector<T>::size();
 	}
-
-	/**
-	 * Get the pointer to item "number" (const)
-	 *
-	 * @param index the position of the item
-	 * @return the pointer to the item
-	 */
-	inline const T *Get(uint index) const
-	{
-		/* Allow access to the 'first invalid' item */
-		assert(index <= std::vector<T>::size());
-		return this->Begin() + index;
-	}
 };
 
 

@@ -113,11 +113,11 @@ private:
 	void BuildBridge(uint8 i)
 	{
 		switch ((TransportType)(this->type >> 15)) {
-			case TRANSPORT_RAIL: _last_railbridge_type = this->bridges->Get(i)->index; break;
-			case TRANSPORT_ROAD: _last_roadbridge_type = this->bridges->Get(i)->index; break;
+			case TRANSPORT_RAIL: _last_railbridge_type = this->bridges->at(i).index; break;
+			case TRANSPORT_ROAD: _last_roadbridge_type = this->bridges->at(i).index; break;
 			default: break;
 		}
-		DoCommandP(this->end_tile, this->start_tile, this->type | this->bridges->Get(i)->index,
+		DoCommandP(this->end_tile, this->start_tile, this->type | this->bridges->at(i).index,
 					CMD_BUILD_BRIDGE | CMD_MSG(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE), CcBuildBridge);
 	}
 
@@ -187,10 +187,10 @@ public:
 				Dimension sprite_dim = {0, 0}; // Biggest bridge sprite dimension
 				Dimension text_dim   = {0, 0}; // Biggest text dimension
 				for (int i = 0; i < (int)this->bridges->size(); i++) {
-					const BridgeSpec *b = this->bridges->Get(i)->spec;
+					const BridgeSpec *b = this->bridges->at(i).spec;
 					sprite_dim = maxdim(sprite_dim, GetSpriteSize(b->sprite));
 
-					SetDParam(2, this->bridges->Get(i)->cost);
+					SetDParam(2, this->bridges->at(i).cost);
 					SetDParam(1, b->speed);
 					SetDParam(0, b->material);
 					text_dim = maxdim(text_dim, GetStringBoundingBox(_game_mode == GM_EDITOR ? STR_SELECT_BRIDGE_SCENEDIT_INFO : STR_SELECT_BRIDGE_INFO));
@@ -227,9 +227,9 @@ public:
 			case WID_BBS_BRIDGE_LIST: {
 				uint y = r.top;
 				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < (int)this->bridges->size(); i++) {
-					const BridgeSpec *b = this->bridges->Get(i)->spec;
+					const BridgeSpec *b = this->bridges->at(i).spec;
 
-					SetDParam(2, this->bridges->Get(i)->cost);
+					SetDParam(2, this->bridges->at(i).cost);
 					SetDParam(1, b->speed);
 					SetDParam(0, b->material);
 
