@@ -566,7 +566,7 @@ DEF_CONSOLE_CMD(ConUnBan)
 		seprintf(msg, lastof(msg), "Unbanned %s", _network_ban_list[index]);
 		IConsolePrint(CC_DEFAULT, msg);
 		free(_network_ban_list[index]);
-		_network_ban_list.Erase(_network_ban_list.Get(index));
+		_network_ban_list.erase(_network_ban_list.begin() + index);
 	} else {
 		IConsolePrint(CC_DEFAULT, "Invalid list index or IP not in ban-list.");
 		IConsolePrint(CC_DEFAULT, "For a list of banned IP's, see the command 'banlist'");

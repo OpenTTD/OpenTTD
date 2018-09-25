@@ -637,7 +637,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 
 		/* Reserve the engine slot */
 		if (!static_access) {
-			EngineIDMapping *eid = _engine_mngr.Get(engine);
+			EngineIDMapping *eid = _engine_mngr.data() + engine;
 			eid->grfid           = scope_grfid; // Note: this is INVALID_GRFID if dynamic_engines is disabled, so no reservation
 		}
 

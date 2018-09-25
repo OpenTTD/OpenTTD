@@ -344,6 +344,6 @@ void EngList_SortPartial(GUIEngineList *el, EngList_SortTypeFunction compare, ui
 	if (num_items < 2) return;
 	assert(begin < el->size());
 	assert(begin + num_items <= el->size());
-	QSortT(el->Get(begin), num_items, compare);
+	QSortT(el->data() + begin, num_items, compare);
 }
 

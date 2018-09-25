@@ -165,7 +165,7 @@ public:
 	 */
 	inline FiosItem *Get(uint index)
 	{
-		return this->files.Get(index);
+		return this->files.data() + index;
 	}
 
 	inline const FiosItem &operator[](uint index) const
