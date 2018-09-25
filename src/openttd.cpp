@@ -1186,7 +1186,7 @@ static void CheckCaches()
 
 	uint i = 0;
 	FOR_ALL_TOWNS(t) {
-		if (MemCmpT(old_town_caches.Get(i), &t->cache) != 0) {
+		if (MemCmpT(old_town_caches.data() + i, &t->cache) != 0) {
 			DEBUG(desync, 2, "town cache mismatch: town %i", (int)t->index);
 		}
 		i++;
@@ -1202,7 +1202,7 @@ static void CheckCaches()
 
 	i = 0;
 	FOR_ALL_COMPANIES(c) {
-		if (MemCmpT(old_infrastructure.Get(i), &c->infrastructure) != 0) {
+		if (MemCmpT(old_infrastructure.data() + i, &c->infrastructure) != 0) {
 			DEBUG(desync, 2, "infrastructure cache mismatch: company %i", (int)c->index);
 		}
 		i++;

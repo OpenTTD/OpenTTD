@@ -156,7 +156,7 @@ public:
 	 */
 	inline const FiosItem *Get(uint index) const
 	{
-		return this->files.Get(index);
+		return this->files.data() + index;
 	}
 
 	/**

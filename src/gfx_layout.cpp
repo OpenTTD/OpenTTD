@@ -158,7 +158,7 @@ public:
 		int GetLeading() const { return l->getLeading(); }
 		int GetWidth() const   { return l->getWidth(); }
 		int CountRuns() const  { return l->countRuns(); }
-		const ParagraphLayouter::VisualRun *GetVisualRun(int run) const { return *this->Get(run); }
+		const ParagraphLayouter::VisualRun *GetVisualRun(int run) const { return this->at(run); }
 
 		int GetInternalCharLength(WChar c) const
 		{
@@ -458,7 +458,7 @@ int FallbackParagraphLayout::FallbackLine::CountRuns() const
  */
 const ParagraphLayouter::VisualRun *FallbackParagraphLayout::FallbackLine::GetVisualRun(int run) const
 {
-	return *this->Get(run);
+	return this->at(run);
 }
 
 /**

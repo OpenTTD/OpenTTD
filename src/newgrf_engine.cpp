@@ -1209,17 +1209,17 @@ void AlterVehicleListOrder(EngineID engine, uint target)
  */
 static int CDECL EnginePreSort(const EngineID *a, const EngineID *b)
 {
-	const EngineIDMapping *id_a = _engine_mngr.Get(*a);
-	const EngineIDMapping *id_b = _engine_mngr.Get(*b);
+	const EngineIDMapping &id_a = _engine_mngr.at(*a);
+	const EngineIDMapping &id_b = _engine_mngr.at(*b);
 
 	/* 1. Sort by engine type */
-	if (id_a->type != id_b->type) return (int)id_a->type - (int)id_b->type;
+	if (id_a.type != id_b.type) return (int)id_a.type - (int)id_b.type;
 
 	/* 2. Sort by scope-GRFID */
-	if (id_a->grfid != id_b->grfid) return id_a->grfid < id_b->grfid ? -1 : 1;
+	if (id_a.grfid != id_b.grfid) return id_a.grfid < id_b.grfid ? -1 : 1;
 
 	/* 3. Sort by local ID */
-	return (int)id_a->internal_id - (int)id_b->internal_id;
+	return (int)id_a.internal_id - (int)id_b.internal_id;
 }
 
 /**
@@ -1241,7 +1241,7 @@ void CommitVehicleListOrderChanges()
 		EngineID source = it->engine;
 		uint local_target = it->target;
 
-		const EngineIDMapping *id_source = _engine_mngr.Get(source);
+		const EngineIDMapping *id_source = _engine_mngr.data() + source;
 		if (id_source->internal_id == local_target) continue;
 
 		EngineID target = _engine_mngr.GetID(id_source->type, local_target, id_source->grfid);
