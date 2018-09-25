@@ -60,22 +60,11 @@ public:
 	template <uint X>
 	SmallVector &operator=(const SmallVector<T, X> &other)
 	{
-		this->Assign(other);
+		std::vector<T>::operator=(other);
 		return *this;
 	}
 
 	~SmallVector() = default;
-
-	/**
-	 * Assign items from other vector.
-	 */
-	template <uint X>
-	inline void Assign(const SmallVector<T, X> &other)
-	{
-		if ((const void *)&other == (void *)this) return;
-
-		std::vector<T>::operator=(other);
-	}
 
 	/**
 	 * Append an item and return it.
