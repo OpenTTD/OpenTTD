@@ -180,19 +180,6 @@ public:
 		assert(index <= std::vector<T>::size());
 		return this->Begin() + index;
 	}
-
-	/**
-	 * Get the pointer to item "number"
-	 *
-	 * @param index the position of the item
-	 * @return the pointer to the item
-	 */
-	inline T *Get(uint index)
-	{
-		/* Allow access to the 'first invalid' item */
-		assert(index <= std::vector<T>::size());
-		return this->Begin() + index;
-	}
 };
 
 

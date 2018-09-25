@@ -50,7 +50,7 @@ TextEffectID AddTextEffect(StringID msg, int center, int y, uint8 duration, Text
 	}
 	if (i == _text_effects.size()) _text_effects.Append();
 
-	TextEffect *te = _text_effects.Get(i);
+	TextEffect *te = _text_effects.data() + i;
 
 	/* Start defining this object */
 	te->string_id = msg;
@@ -69,7 +69,7 @@ TextEffectID AddTextEffect(StringID msg, int center, int y, uint8 duration, Text
 void UpdateTextEffect(TextEffectID te_id, StringID msg)
 {
 	/* Update details */
-	TextEffect *te = _text_effects.Get(te_id);
+	TextEffect *te = _text_effects.data() + te_id;
 	if (msg == te->string_id && GetDParam(0) == te->params_1) return;
 	te->string_id = msg;
 	te->params_1 = GetDParam(0);
