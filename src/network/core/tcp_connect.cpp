@@ -66,22 +66,22 @@ void TCPConnecter::Connect()
  */
 /* static */ void TCPConnecter::CheckCallbacks()
 {
-	for (TCPConnecter **iter = _tcp_connecters.Begin(); iter < _tcp_connecters.End(); /* nothing */) {
+	for (auto iter = _tcp_connecters.begin(); iter < _tcp_connecters.end(); /* nothing */) {
 		TCPConnecter *cur = *iter;
 		if ((cur->connected || cur->aborted) && cur->killed) {
-			_tcp_connecters.Erase(iter);
+			iter = _tcp_connecters.erase(iter);
 			if (cur->sock != INVALID_SOCKET) closesocket(cur->sock);
 			delete cur;
 			continue;
 		}
 		if (cur->connected) {
-			_tcp_connecters.Erase(iter);
+			iter = _tcp_connecters.erase(iter);
 			cur->OnConnect(cur->sock);
 			delete cur;
 			continue;
 		}
 		if (cur->aborted) {
-			_tcp_connecters.Erase(iter);
+			iter = _tcp_connecters.erase(iter);
 			cur->OnFailure();
 			delete cur;
 			continue;

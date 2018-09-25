@@ -115,7 +115,8 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	inline void Erase(Pair *pair)
 	{
 		assert(pair >= this->Begin() && pair < this->End());
-		SmallVector<Pair, S>::Erase(pair);
+		auto distance = pair - std::vector<Pair>::data();
+		std::vector<Pair>::erase(std::vector<Pair>::begin() + distance);
 	}
 
 	/**
@@ -126,11 +127,10 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 */
 	inline bool Erase(const T &key)
 	{
-		Pair *pair = this->Find(key);
-		if (pair == this->End())
-			return false;
+		auto pair = std::find(this->begin(), this->end(), key);
+		if (pair == this->end()) return false;
 
-		SmallVector<Pair, S>::Erase(pair);
+		std::vector<Pair>::erase(pair);
 		return true;
 	}
 

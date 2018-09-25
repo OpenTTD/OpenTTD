@@ -337,13 +337,12 @@ public:
 		if (!(this->flags & VL_FILTER)) return false;
 
 		bool changed = false;
-		for (uint iter = 0; iter < std::vector<T>::size();) {
-			T *item = &std::vector<T>::operator[](iter);
-			if (!decide(item, filter_data)) {
-				this->Erase(item);
+		for (auto it = std::vector<T>::begin(); it != std::vector<T>::end(); /* Nothing */) {
+			if (!decide(&*it, filter_data)) {
+				it = std::vector<T>::erase(it);
 				changed = true;
 			} else {
-				iter++;
+				it++;
 			}
 		}
 
