@@ -1292,7 +1292,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRunningCost():   820
     GetPower():         300
     GetWeight():        47
-    GetMaxTractiveEffort(): 139
+    GetMaxTractiveEffort(): 136
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1436,7 +1436,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRunningCost():   1968
     GetPower():         1000
     GetWeight():        131
-    GetMaxTractiveEffort(): 388
+    GetMaxTractiveEffort(): 381
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1
@@ -1454,7 +1454,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRunningCost():   2296
     GetPower():         1200
     GetWeight():        162
-    GetMaxTractiveEffort(): 480
+    GetMaxTractiveEffort(): 471
     GetVehicleType():   0
     GetRailType():      0
     GetRoadType():      -1

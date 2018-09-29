@@ -431,9 +431,9 @@ uint Engine::GetDisplayMaxTractiveEffort() const
 	/* Only trains and road vehicles have 'tractive effort'. */
 	switch (this->type) {
 		case VEH_TRAIN:
-			return (10 * this->GetDisplayWeight() * GetEngineProperty(this->index, PROP_TRAIN_TRACTIVE_EFFORT, this->u.rail.tractive_effort)) / 256;
+			return (GROUND_ACCELERATION * this->GetDisplayWeight() * GetEngineProperty(this->index, PROP_TRAIN_TRACTIVE_EFFORT, this->u.rail.tractive_effort)) / 256 / 1000;
 		case VEH_ROAD:
-			return (10 * this->GetDisplayWeight() * GetEngineProperty(this->index, PROP_ROADVEH_TRACTIVE_EFFORT, this->u.road.tractive_effort)) / 256;
+			return (GROUND_ACCELERATION * this->GetDisplayWeight() * GetEngineProperty(this->index, PROP_ROADVEH_TRACTIVE_EFFORT, this->u.road.tractive_effort)) / 256 / 1000;
 
 		default: NOT_REACHED();
 	}
