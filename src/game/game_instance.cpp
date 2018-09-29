@@ -236,7 +236,7 @@ void GameInstance::Died()
 {
 	ScriptInstance::Died();
 
-	ShowAIDebugWindow(OWNER_DEITY);
+	ShowAIDebugWindowIfAIError(OWNER_DEITY);
 
 	const GameInfo *info = Game::GetInfo();
 	if (info != NULL) {

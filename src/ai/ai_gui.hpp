@@ -16,7 +16,7 @@
 
 Window* ShowAIDebugWindow(CompanyID show_company = INVALID_COMPANY);
 void ShowAIConfigWindow();
-void ShowAIDebugWindowIfAIError();
+void ShowAIDebugWindowIfAIError(Owner owner = INVALID_OWNER);
 void InitializeAIGui();
 
 #endif /* AI_GUI_HPP */

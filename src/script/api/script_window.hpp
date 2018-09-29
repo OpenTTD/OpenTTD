@@ -874,18 +874,18 @@ public:
 
 	/** Widgets of the #AIConfigWindow class. */
 	enum AIConfigWidgets {
+		WID_AIC_CAPTION                              = ::WID_AIC_CAPTION,                              ///< Caption of the window.
 		WID_AIC_BACKGROUND                           = ::WID_AIC_BACKGROUND,                           ///< Window background.
 		WID_AIC_DECREASE                             = ::WID_AIC_DECREASE,                             ///< Decrease the number of AIs.
 		WID_AIC_INCREASE                             = ::WID_AIC_INCREASE,                             ///< Increase the number of AIs.
 		WID_AIC_NUMBER                               = ::WID_AIC_NUMBER,                               ///< Number of AIs.
 		WID_AIC_GAMELIST                             = ::WID_AIC_GAMELIST,                             ///< List with current selected GameScript.
 		WID_AIC_LIST                                 = ::WID_AIC_LIST,                                 ///< List with currently selected AIs.
-		WID_AIC_SCROLLBAR                            = ::WID_AIC_SCROLLBAR,                            ///< Scrollbar to scroll through the selected AIs.
 		WID_AIC_MOVE_UP                              = ::WID_AIC_MOVE_UP,                              ///< Move up button.
 		WID_AIC_MOVE_DOWN                            = ::WID_AIC_MOVE_DOWN,                            ///< Move down button.
 		WID_AIC_CHANGE                               = ::WID_AIC_CHANGE,                               ///< Select another AI button.
 		WID_AIC_CONFIGURE                            = ::WID_AIC_CONFIGURE,                            ///< Change AI settings button.
-		WID_AIC_CLOSE                                = ::WID_AIC_CLOSE,                                ///< Close window button.
+		WID_AIC_START_STOP_TOGGLE                    = ::WID_AIC_START_STOP_TOGGLE,                    ///< Start AI or Stop AI button.
 		WID_AIC_TEXTFILE                             = ::WID_AIC_TEXTFILE,                             ///< Open AI readme, changelog (+1) or license (+2).
 		WID_AIC_CONTENT_DOWNLOAD                     = ::WID_AIC_CONTENT_DOWNLOAD,                     ///< Download content button.
 	};
@@ -894,6 +894,7 @@ public:
 	enum AIDebugWidgets {
 		WID_AID_VIEW                                 = ::WID_AID_VIEW,                                 ///< The row of company buttons.
 		WID_AID_NAME_TEXT                            = ::WID_AID_NAME_TEXT,                            ///< Name of the current selected.
+		WID_AID_SETTINGS_RELOAD_WIDGETS              = ::WID_AID_SETTINGS_RELOAD_WIDGETS,              ///< The panel to handle Settings and Reload AI buttons.
 		WID_AID_SETTINGS                             = ::WID_AID_SETTINGS,                             ///< Settings button.
 		WID_AID_SCRIPT_GAME                          = ::WID_AID_SCRIPT_GAME,                          ///< Game Script button.
 		WID_AID_RELOAD_TOGGLE                        = ::WID_AID_RELOAD_TOGGLE,                        ///< Reload button.

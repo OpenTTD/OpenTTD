@@ -55,6 +55,45 @@ static ScriptConfig *GetConfig(CompanyID slot)
 }
 
 /**
+ * Build a list of visible settings and return it. AI or GS settings with the flag
+ * SCRIPTCONFIG_DEVELOPER set will only be visible if the client setting
+ * gui.ai_developer_tools is enabled.
+ */
+typedef std::vector<const ScriptConfigItem *> VisibleSettingsList;
+static VisibleSettingsList GetVisibleSettingsList(CompanyID slot)
+{
+	VisibleSettingsList visible_settings;
+	ScriptConfig *config_list = GetConfig(slot);
+
+	ScriptConfigItemList::const_iterator it = config_list->GetConfigList()->begin();
+	for (; it != config_list->GetConfigList()->end(); it++) {
+		bool no_hide = (it->flags & SCRIPTCONFIG_DEVELOPER) == 0;
+		if (no_hide || _settings_client.gui.ai_developer_tools) {
+			visible_settings.push_back(&(*it));
+		}
+	}
+
+	return visible_settings;
+}
+
+/**
+ * Check whether a script, be it AI or GS, is considered dead in this slot.
+ * @note Also returns true for AI slots which are currently occupied
+ *       by Human Companies or when the AI didn't start.
+ * @note Also returns true when no GS was set up.
+ * @param slot The slot that is checked.
+ * @return true if the slot that is checked is dead.
+ */
+static bool IsConsideredDead(CompanyID slot)
+{
+	if (slot == OWNER_DEITY) {
+		return Game::GetInstance() == NULL || Game::GetInstance()->IsDead();
+	} else {
+		return !Company::IsValidAiID(slot) || Company::Get(slot)->ai_instance == NULL || Company::Get(slot)->ai_instance->IsDead();
+	}
+}
+
+/**
  * Window that let you choose an available AI.
  */
 struct AIListWindow : public Window {
@@ -110,7 +149,7 @@ struct AIListWindow : public Window {
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget == WID_AIL_LIST) {
-			this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+			this->line_height = max((uint)FONT_HEIGHT_NORMAL, GetSpriteSize(SPR_AICONFIG_RANDOM).height) + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 
 			resize->width = 1;
 			resize->height = this->line_height;
@@ -124,15 +163,25 @@ struct AIListWindow : public Window {
 			case WID_AIL_LIST: {
 				/* Draw a list of all available AIs. */
 				int y = this->GetWidget<NWidgetBase>(WID_AIL_LIST)->pos_y;
+				Dimension rai = GetSpriteSize(SPR_AICONFIG_RANDOM);
+				uint rai_y_offset = (line_height - rai.height) / 2;
+				bool rtl = _current_text_dir == TD_RTL;
+				uint rai_left = rtl ? r.right - WD_MATRIX_RIGHT - rai.width : r.left + WD_MATRIX_LEFT;
+				uint text_left = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + rai.width + 10;
+				uint text_right = rtl ? r.right - rai.width - 10 : r.right - WD_FRAMERECT_RIGHT;
 				/* First AI in the list is hardcoded to random */
 				if (this->vscroll->IsVisible(0)) {
-					DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_LEFT, y + WD_MATRIX_TOP, this->slot == OWNER_DEITY ? STR_AI_CONFIG_NONE : STR_AI_CONFIG_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_ORANGE);
+					StringID text = STR_AI_CONFIG_RANDOM_AI;
+					if (this->slot == OWNER_DEITY) text = STR_AI_CONFIG_NONE;
+					DrawString(text_left, text_right, y + WD_MATRIX_TOP, text, this->selected == -1 ? TC_WHITE : TC_ORANGE);
 					y += this->line_height;
 				}
 				ScriptInfoList::const_iterator it = this->info_list->begin();
 				for (int i = 1; it != this->info_list->end(); i++, it++) {
 					if (this->vscroll->IsVisible(i)) {
-						DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, (*it).second->GetName(), (this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
+						SetDParamStr(0, (*it).second->GetName());
+						if (this->slot != OWNER_DEITY && static_cast<AIInfo *>((*it).second)->UseAsRandomAI()) DrawSprite(SPR_AICONFIG_RANDOM, PAL_NONE, rai_left, y + rai_y_offset);
+						DrawString(text_left, text_right, y + WD_MATRIX_TOP, (*it).second->GetName(), (this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
 						y += this->line_height;
 					}
 				}
@@ -171,6 +220,7 @@ struct AIListWindow : public Window {
 	 */
 	void ChangeAI()
 	{
+		if ((this->slot == OWNER_DEITY && Game::GetInstance() != NULL) || Company::IsValidAiID(this->slot)) return;
 		if (this->selected == -1) {
 			GetConfig(slot)->Change(NULL);
 		} else {
@@ -179,8 +229,8 @@ struct AIListWindow : public Window {
 			GetConfig(slot)->Change((*it).second->GetName(), (*it).second->GetVersion());
 		}
 		InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_AI);
-		InvalidateWindowClassesData(WC_AI_SETTINGS);
-		DeleteWindowByClass(WC_QUERY_STRING);
+		InvalidateWindowData(WC_AI_SETTINGS, slot);
+		InvalidateWindowClassesData(WC_TEXTFILE);
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
@@ -223,7 +273,7 @@ struct AIListWindow : public Window {
 	 */
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
-		if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot)) {
+		if (_game_mode == GM_NORMAL && Company::IsValidAiID(this->slot)) {
 			delete this;
 			return;
 		}
@@ -291,7 +341,6 @@ struct AISettingsWindow : public Window {
 	int clicked_row;                      ///< The clicked row of settings.
 	int line_height;                      ///< Height of a row in the matrix widget.
 	Scrollbar *vscroll;                   ///< Cache of the vertical scrollbar.
-	typedef std::vector<const ScriptConfigItem *> VisibleSettingsList;
 	VisibleSettingsList visible_settings; ///< List of visible AI settings
 
 	/**
@@ -312,7 +361,7 @@ struct AISettingsWindow : public Window {
 		this->vscroll = this->GetScrollbar(WID_AIS_SCROLLBAR);
 		this->FinishInitNested(slot);  // Initializes 'this->line_height' as side effect.
 
-		this->SetWidgetDisabledState(WID_AIS_RESET, _game_mode != GM_MENU && Company::IsValidID(this->slot));
+		this->SetWidgetDisabledState(WID_AIS_RESET, _game_mode == GM_EDITOR && !IsConsideredDead(this->slot));
 
 		this->RebuildVisibleSettings();
 	}
@@ -322,26 +371,31 @@ struct AISettingsWindow : public Window {
 		switch (widget) {
 			case WID_AIS_CAPTION:
 				SetDParam(0, (this->slot == OWNER_DEITY) ? STR_AI_SETTINGS_CAPTION_GAMESCRIPT : STR_AI_SETTINGS_CAPTION_AI);
-				break;
+
+				StringID text;
+				if (GetConfig(this->slot)->GetInfo() != NULL) {
+					SetDParamStr(2, GetConfig(this->slot)->GetInfo()->GetName());
+					text = STR_JUST_RAW_STRING;
+				} else {
+					text = (this->slot == OWNER_DEITY) ? STR_AI_CONFIG_NONE : STR_AI_CONFIG_RANDOM_AI;
+				}
+				SetDParam(1, text);
+
+				if (this->slot != OWNER_DEITY) {
+					SetDParam(3, STR_FORMAT_COMPANY_NUM);
+					SetDParam(4, this->slot + 1);
+				} else {
+					SetDParam(3, STR_EMPTY);
+				}
 		}
 	}
 
-	/**
-	 * Rebuilds the list of visible settings. AI settings with the flag
-	 * AICONFIG_AI_DEVELOPER set will only be visible if the game setting
-	 * gui.ai_developer_tools is enabled.
-	 */
 	void RebuildVisibleSettings()
 	{
+		this->ai_config = GetConfig(slot);
 		visible_settings.clear();
-
-		ScriptConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
-		for (; it != this->ai_config->GetConfigList()->end(); it++) {
-			bool no_hide = (it->flags & SCRIPTCONFIG_DEVELOPER) == 0;
-			if (no_hide || _settings_client.gui.ai_developer_tools) {
-				visible_settings.push_back(&(*it));
-			}
-		}
+		visible_settings = GetVisibleSettingsList(slot);
+		if (visible_settings.empty()) delete this;
 
 		this->vscroll->SetCount((int)this->visible_settings.size());
 	}
@@ -384,7 +438,7 @@ struct AISettingsWindow : public Window {
 			TextColour colour;
 			uint idx = 0;
 			if (StrEmpty(config_item.description)) {
-				if (!strcmp(config_item.name, "start_date")) {
+				if (!strcmp(config_item.name, "start_date") && this->slot != OWNER_DEITY) {
 					/* Build-in translation */
 					str = STR_AI_SETTINGS_START_DELAY;
 					colour = TC_LIGHT_BLUE;
@@ -522,8 +576,8 @@ struct AISettingsWindow : public Window {
 				break;
 
 			case WID_AIS_RESET:
-				if (_game_mode == GM_MENU || !Company::IsValidID(this->slot)) {
-					this->ai_config->ResetSettings();
+				if (_game_mode != GM_EDITOR || IsConsideredDead(this->slot)) {
+					this->ai_config->ResetEditableSettings(IsConsideredDead(this->slot));
 					this->SetDirty();
 				}
 				break;
@@ -536,7 +590,7 @@ struct AISettingsWindow : public Window {
 		VisibleSettingsList::const_iterator it = this->visible_settings.begin();
 		for (int i = 0; i < this->clicked_row; i++) it++;
 		const ScriptConfigItem config_item = **it;
-		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
+		if (_game_mode != GM_MENU && !IsConsideredDead(this->slot) && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
 		int32 value = atoi(str);
 		this->ai_config->SetSetting(config_item.name, value);
 		this->SetDirty();
@@ -548,7 +602,7 @@ struct AISettingsWindow : public Window {
 		VisibleSettingsList::const_iterator it = this->visible_settings.begin();
 		for (int i = 0; i < this->clicked_row; i++) it++;
 		const ScriptConfigItem config_item = **it;
-		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
+		if (_game_mode != GM_MENU && !IsConsideredDead(this->slot) && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
 		this->ai_config->SetSetting(config_item.name, index);
 		this->SetDirty();
 	}
@@ -592,7 +646,22 @@ struct AISettingsWindow : public Window {
 private:
 	bool IsEditableItem(const ScriptConfigItem config_item) const
 	{
-		return _game_mode == GM_MENU || ((this->slot != OWNER_DEITY) && !Company::IsValidID(this->slot)) || (config_item.flags & SCRIPTCONFIG_INGAME) != 0;
+		if (_game_mode == GM_MENU) return true;
+
+		if (_game_mode == GM_NORMAL) {
+			if (IsConsideredDead(slot)) return true;
+			if (config_item.flags & SCRIPTCONFIG_INGAME) return true;
+		}
+
+		if (IsConsideredDead(slot)) {
+			if (slot == OWNER_DEITY) {
+				if (Game::GetInstance() == NULL) return true;
+			}
+			if (!Company::IsValidAiID(slot)) return true;
+			if (Company::Get(slot)->ai_instance == NULL) return true;
+		}
+
+		return false;
 	}
 };
 
@@ -630,8 +699,7 @@ static WindowDesc _ai_settings_desc(
  */
 static void ShowAISettingsWindow(CompanyID slot)
 {
-	DeleteWindowByClass(WC_AI_LIST);
-	DeleteWindowByClass(WC_AI_SETTINGS);
+	DeleteWindowById(WC_AI_SETTINGS, slot);
 	new AISettingsWindow(&_ai_settings_desc, slot);
 }
 
@@ -642,16 +710,31 @@ struct ScriptTextfileWindow : public TextfileWindow {
 
 	ScriptTextfileWindow(TextfileType file_type, CompanyID slot) : TextfileWindow(file_type), slot(slot)
 	{
-		const char *textfile = GetConfig(slot)->GetTextfile(file_type, slot);
-		this->LoadTextfile(textfile, (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR);
+		this->OnInvalidateData();
 	}
 
 	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_TF_CAPTION) {
 			SetDParam(0, (slot == OWNER_DEITY) ? STR_CONTENT_TYPE_GAME_SCRIPT : STR_CONTENT_TYPE_AI);
-			SetDParamStr(1, GetConfig(slot)->GetName());
+
+			if (GetConfig(slot)->GetInfo() != NULL) {
+				SetDParamStr(1, GetConfig(slot)->GetInfo()->GetName());
+			} else {
+				char name[1024];
+				GetString(name, (slot == OWNER_DEITY) ? STR_AI_CONFIG_NONE : STR_AI_CONFIG_RANDOM_AI, lastof(name));
+				const char *script_name = stredup(name);
+				SetDParamStr(1, script_name);
+			}
 		}
+	}
+
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	{
+		const char *textfile = GetConfig(slot)->GetTextfile(file_type, slot);
+		if (textfile == NULL) delete this;
+		this->LoadTextfile(textfile, (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR);
+		this->SetStringParameters(WID_TF_CAPTION);
 	}
 };
 
@@ -671,7 +754,7 @@ void ShowScriptTextfileWindow(TextfileType file_type, CompanyID slot)
 static const NWidgetPart _nested_ai_config_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_AI_CONFIG_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_AIC_CAPTION), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE, WID_AIC_BACKGROUND),
 		NWidget(NWID_VERTICAL), SetPIP(4, 4, 4),
@@ -688,8 +771,7 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 		EndContainer(),
 		NWidget(WWT_FRAME, COLOUR_MAUVE), SetDataTip(STR_AI_CONFIG_AI, STR_NULL), SetPadding(0, 5, 0, 5),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_AIC_LIST), SetMinimalSize(288, 112), SetFill(1, 0), SetMatrixDataTip(1, 8, STR_AI_CONFIG_AILIST_TOOLTIP), SetScrollbar(WID_AIC_SCROLLBAR),
-				NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_AIC_SCROLLBAR),
+				NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_AIC_LIST), SetMinimalSize(288, 210), SetFill(1, 0), SetMatrixDataTip(1, 15, STR_AI_CONFIG_AILIST_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 9),
@@ -699,7 +781,7 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(7, 0, 7),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CHANGE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_CONFIG_CHANGE, STR_AI_CONFIG_CHANGE_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CONFIGURE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_CONFIG_CONFIGURE, STR_AI_CONFIG_CONFIGURE_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CLOSE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_SETTINGS_CLOSE, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_START_STOP_TOGGLE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_CONFIG_START, STR_AI_CONFIG_START_TOOLTIP),
 			EndContainer(),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(7, 0, 7),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_README, STR_NULL),
@@ -724,28 +806,26 @@ static WindowDesc _ai_config_desc(
 struct AIConfigWindow : public Window {
 	CompanyID selected_slot; ///< The currently selected AI slot or \c INVALID_COMPANY.
 	int line_height;         ///< Height of a single AI-name line.
-	Scrollbar *vscroll;      ///< Cache of the vertical scrollbar.
 
 	AIConfigWindow() : Window(&_ai_config_desc)
 	{
 		this->InitNested(WN_GAME_OPTIONS_AI); // Initializes 'this->line_height' as a side effect.
-		this->vscroll = this->GetScrollbar(WID_AIC_SCROLLBAR);
 		this->selected_slot = INVALID_COMPANY;
-		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_AIC_LIST);
-		this->vscroll->SetCapacity(nwi->current_y / this->line_height);
-		this->vscroll->SetCount(MAX_COMPANIES);
 		this->OnInvalidateData(0);
 	}
 
 	~AIConfigWindow()
 	{
 		DeleteWindowByClass(WC_AI_LIST);
-		DeleteWindowByClass(WC_AI_SETTINGS);
+		if (_game_mode == GM_MENU) DeleteWindowByClass(WC_AI_SETTINGS);
 	}
 
 	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
+			case WID_AIC_CAPTION:
+				SetDParam(0, (_game_mode == GM_MENU) ? STR_AI_CONFIG_CAPTION : STR_AI_CONFIG_CAPTION_INGAME);
+				break;
 			case WID_AIC_NUMBER:
 				SetDParam(0, GetGameSettings().difficulty.max_no_competitors);
 				break;
@@ -770,15 +850,27 @@ struct AIConfigWindow : public Window {
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
-			case WID_AIC_GAMELIST:
-				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+			case WID_AIC_GAMELIST: {
+				uint highest_icon = 0;
+				static const SpriteID icons[] = { SPR_AICONFIG_DEAD, SPR_AICONFIG_ELIGIBLE, SPR_AICONFIG_ALIVE, SPR_AICONFIG_HUMAN, SPR_AICONFIG_RANDOM };
+				for (uint i = 0; i < lengthof(icons); i++) {
+					highest_icon = max(highest_icon, GetSpriteSize(icons[i]).height);
+				}
+				this->line_height = max((uint)FONT_HEIGHT_NORMAL, highest_icon) + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 				size->height = 1 * this->line_height;
 				break;
+			}
 
-			case WID_AIC_LIST:
-				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
-				size->height = 8 * this->line_height;
+			case WID_AIC_LIST: {
+				uint highest_icon = 0;
+				static const SpriteID icons[] = { SPR_AICONFIG_DEAD, SPR_AICONFIG_ELIGIBLE, SPR_AICONFIG_ALIVE, SPR_AICONFIG_HUMAN, SPR_AICONFIG_RANDOM };
+				for (uint i = 0; i < lengthof(icons); i++) {
+					highest_icon = max(highest_icon, GetSpriteSize(icons[i]).height);
+				}
+				this->line_height = max((uint)FONT_HEIGHT_NORMAL, highest_icon) + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				size->height = 15 * this->line_height;
 				break;
+			}
 
 			case WID_AIC_CHANGE: {
 				SetDParam(0, STR_AI_CONFIG_CHANGE_GAMESCRIPT);
@@ -795,67 +887,197 @@ struct AIConfigWindow : public Window {
 				*size = maxdim(*size, dim);
 				break;
 			}
+
+			case WID_AIC_CONFIGURE: {
+				Dimension dim = GetStringBoundingBox(STR_AI_CONFIG_CONFIGURE);
+				dim = maxdim(dim, GetStringBoundingBox(STR_AI_DEBUG_SETTINGS));
+
+				dim.width += padding.width;
+				dim.height += padding.height;
+				*size = maxdim(*size, dim);
+				break;
+			}
+
+			case WID_AIC_START_STOP_TOGGLE: {
+				Dimension dim = GetStringBoundingBox(STR_AI_CONFIG_START);
+				dim = maxdim(dim, GetStringBoundingBox(STR_AI_CONFIG_STOP));
+
+				dim.width += padding.width;
+				dim.height += padding.height;
+				*size = maxdim(*size, dim);
+				break;
+			}
 		}
 	}
 
 	/**
-	 * Can the AI config in the given company slot be edited?
+	 * Can the AI or GS config in the given slot be selected?
 	 * @param slot The slot to query.
-	 * @return True if and only if the given AI Config slot can e edited.
+	 * @return True if and only if the given AI or GS Config of this slot can be selected.
 	 */
-	static bool IsEditable(CompanyID slot)
+	static bool IsSelectable(CompanyID slot)
 	{
-		if (slot == OWNER_DEITY) return _game_mode != GM_NORMAL || Game::GetInstance() != NULL;
+		return (slot >= COMPANY_FIRST && slot < MAX_COMPANIES) || slot == OWNER_DEITY;
+	}
 
-		if (_game_mode != GM_NORMAL) {
-			return slot > 0 && slot <= GetGameSettings().difficulty.max_no_competitors;
+	/**
+	 * Get the current total number of valid AI owned Companies, dead and alive.
+	 */
+	static int GetCurrentNoAIs()
+	{
+		int current_no_ais = 0;
+		for (CompanyID cid = COMPANY_FIRST; cid < MAX_COMPANIES; cid++) {
+			if (Company::IsValidAiID(cid)) current_no_ais++;
 		}
-		if (Company::IsValidID(slot) || slot < 0) return false;
+		return current_no_ais;
+	}
 
-		int max_slot = GetGameSettings().difficulty.max_no_competitors;
-		for (CompanyID cid = COMPANY_FIRST; cid < (CompanyID)max_slot && cid < MAX_COMPANIES; cid++) {
-			if (Company::IsValidHumanID(cid)) max_slot++;
+	/**
+	 * Is the AI or GS config in the given slot eligible to start?
+	 * @param slot The slot to query.
+	 * @return True if and only if the given AI or GS Config of this slot can start.
+	 */
+	static bool IsEligible(CompanyID slot)
+	{
+		if (slot == OWNER_DEITY) return _game_mode != GM_NORMAL && GameConfig::GetConfig()->GetInfo() != NULL && (Game::GetInstance() == NULL || _game_mode == GM_MENU);
+
+		if (Company::IsValidID(slot) || slot < COMPANY_FIRST) return false;
+
+		int empty_slots = 0;
+		CompanyID max_slot;
+		for (max_slot = COMPANY_FIRST; max_slot < MAX_COMPANIES && GetGameSettings().difficulty.max_no_competitors - GetCurrentNoAIs() > empty_slots; max_slot++) {
+			if (!Company::IsValidID(max_slot)) empty_slots++;
 		}
 		return slot < max_slot;
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
 	{
+		uint widest_icon = 0;
+		static const SpriteID icons[] = { SPR_AICONFIG_DEAD, SPR_AICONFIG_ELIGIBLE, SPR_AICONFIG_ALIVE, SPR_AICONFIG_HUMAN, SPR_AICONFIG_RANDOM };
+		for (uint i = 0; i < lengthof(icons); i++) {
+			widest_icon = max(widest_icon, GetSpriteSize(icons[i]).width);
+		}
+		uint dead_x_offset = (widest_icon - GetSpriteSize(SPR_AICONFIG_DEAD).width) / 2;
+		uint eligible_x_offset = (widest_icon - GetSpriteSize(SPR_AICONFIG_ELIGIBLE).width) / 2;
+		uint alive_x_offset = (widest_icon - GetSpriteSize(SPR_AICONFIG_ALIVE).width) / 2;
+		uint human_x_offset = (widest_icon - GetSpriteSize(SPR_AICONFIG_HUMAN).width) / 2;
+
+		uint dead_y_offset = (line_height - GetSpriteSize(SPR_AICONFIG_DEAD).height) / 2;
+		uint eligible_y_offset = (line_height - GetSpriteSize(SPR_AICONFIG_ELIGIBLE).height) / 2;
+		uint alive_y_offset = (line_height - GetSpriteSize(SPR_AICONFIG_ALIVE).height) / 2;
+		uint human_y_offset = (line_height - GetSpriteSize(SPR_AICONFIG_HUMAN).height) / 2;
+
+		Dimension rai = GetSpriteSize(SPR_AICONFIG_RANDOM);
+		uint rai_y_offset = (line_height - rai.height) / 2;
+
+		SetDParamMaxValue(0, MAX_COMPANIES);
+		uint widest_cid = GetStringBoundingBox(STR_JUST_COMMA).width;
+
+		bool rtl = _current_text_dir == TD_RTL;
+		uint icon_left = rtl ? r.right - WD_MATRIX_RIGHT - widest_icon : r.left + WD_MATRIX_LEFT;
+		uint rai_left = rtl ? icon_left - 1 - rai.width : icon_left + widest_icon + 1;
+		uint cid_left = rtl ? rai_left - 10 - widest_cid : rai_left + rai.width + 10;
+		uint cid_right = cid_left + widest_cid;
+
 		switch (widget) {
 			case WID_AIC_GAMELIST: {
-				StringID text = STR_AI_CONFIG_NONE;
+				if (IsEligible(OWNER_DEITY)) {
+					DrawSprite(SPR_AICONFIG_ELIGIBLE, PAL_NONE, icon_left + eligible_x_offset, r.top + eligible_y_offset);
+				} else {
+					if (Game::GetInstance() != NULL) {
+						if (!IsConsideredDead(OWNER_DEITY)) {
+							DrawSprite(SPR_AICONFIG_ALIVE, PAL_NONE, icon_left + alive_x_offset, r.top + alive_y_offset);
+						} else {
+							DrawSprite(SPR_AICONFIG_DEAD, PAL_NONE, icon_left + dead_x_offset, r.top + dead_y_offset);
+						}
+					}
+				}
 
+				StringID text = STR_AI_CONFIG_NONE;
 				if (GameConfig::GetConfig()->GetInfo() != NULL) {
 					SetDParamStr(0, GameConfig::GetConfig()->GetInfo()->GetName());
 					text = STR_JUST_RAW_STRING;
 				}
 
-				DrawString(r.left + 10, r.right - 10, r.top + WD_MATRIX_TOP, text,
-						(this->selected_slot == OWNER_DEITY) ? TC_WHITE : (IsEditable(OWNER_DEITY) ? TC_ORANGE : TC_SILVER));
-
+				uint text_left = rtl ? r.left + WD_MATRIX_LEFT : cid_right + 10;
+				uint text_right = rtl ? cid_left - 10 : r.right - WD_MATRIX_RIGHT;
+				DrawString(text_left, text_right, r.top + WD_MATRIX_TOP, text, this->selected_slot == OWNER_DEITY ? TC_WHITE : TC_ORANGE);
 				break;
 			}
 
 			case WID_AIC_LIST: {
 				int y = r.top;
-				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < MAX_COMPANIES; i++) {
-					StringID text;
+				for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
+					if (IsEligible((CompanyID)i)) {
+						DrawSprite(SPR_AICONFIG_ELIGIBLE, PAL_NONE, icon_left + eligible_x_offset, y + eligible_y_offset);
+					} else {
+						if (Company::IsValidHumanID(i)) {
+							DrawSprite(SPR_AICONFIG_HUMAN, PAL_NONE, icon_left + human_x_offset, y + human_y_offset);
+						} else {
+							if (Company::IsValidAiID(i)) {
+								if (!IsConsideredDead((CompanyID)i)) {
+									DrawSprite(SPR_AICONFIG_ALIVE, PAL_NONE, icon_left + alive_x_offset, y + alive_y_offset);
+								} else {
+									DrawSprite(SPR_AICONFIG_DEAD, PAL_NONE, icon_left + dead_x_offset, y + dead_y_offset);
+								}
+							}
+						}
+					}
 
-					if ((_game_mode != GM_NORMAL && i == 0) || (_game_mode == GM_NORMAL && Company::IsValidHumanID(i))) {
-						text = STR_AI_CONFIG_HUMAN_PLAYER;
-					} else if (AIConfig::GetConfig((CompanyID)i)->GetInfo() != NULL) {
+					if (AIConfig::GetConfig((CompanyID)i)->GetInfo() != NULL && AIConfig::GetConfig((CompanyID)i)->IsRandom()) {
+						DrawSprite(SPR_AICONFIG_RANDOM, PAL_NONE, rai_left, y + rai_y_offset);
+					}
+
+					SetDParam(0, i + 1);
+					DrawString(cid_left, cid_right, y + WD_MATRIX_TOP, STR_JUST_INT, TC_LIGHT_BLUE);
+
+					StringID text;
+					if (AIConfig::GetConfig((CompanyID)i)->GetInfo() != NULL) {
 						SetDParamStr(0, AIConfig::GetConfig((CompanyID)i)->GetInfo()->GetName());
 						text = STR_JUST_RAW_STRING;
 					} else {
 						text = STR_AI_CONFIG_RANDOM_AI;
 					}
-					DrawString(r.left + 10, r.right - 10, y + WD_MATRIX_TOP, text,
-							(this->selected_slot == i) ? TC_WHITE : (IsEditable((CompanyID)i) ? TC_ORANGE : TC_SILVER));
+
+					uint text_left = rtl ? r.left + WD_MATRIX_LEFT : cid_right + 10;
+					uint text_right = rtl ? cid_left - 10 : r.right - WD_MATRIX_RIGHT;
+					DrawString(text_left, text_right, y + WD_MATRIX_TOP, text, this->selected_slot == i ? TC_WHITE : TC_ORANGE);
+
 					y += this->line_height;
 				}
 				break;
 			}
 		}
+	}
+
+	/**
+	 * Given the current selected Company slot and a direction to search,
+	 * get the first non-AI Company slot that is found.
+	 * @note Returns INVALID_COMPANY if none was found.
+	 * @note A direction must be specified.
+	 * @param slot The currently selected Company slot
+	 * @param dir The direction to search (-1 to search above, +1 to search below)
+	 * @pre (dir == -1 || dir == +1)
+	 * @return the first non-AI CompanyID that is found from the given direction
+	 */
+	static CompanyID GetFreeSlot(CompanyID slot, int dir = 0)
+	{
+		assert(dir == -1 || dir == +1);
+		if (dir == -1) {
+			slot--;
+			for (; slot >= COMPANY_FIRST; slot--) {
+				if (!Company::IsValidAiID(slot)) return slot;
+			}
+		} else {
+			if (dir == +1) {
+				slot++;
+				for (; slot < MAX_COMPANIES; slot++) {
+					if (!Company::IsValidAiID(slot)) return slot;
+				}
+			}
+		}
+		return slot = INVALID_COMPANY;
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
@@ -874,43 +1096,57 @@ struct AIConfigWindow : public Window {
 				if (widget == WID_AIC_DECREASE) {
 					new_value = max(0, GetGameSettings().difficulty.max_no_competitors - 1);
 				} else {
-					new_value = min(MAX_COMPANIES - 1, GetGameSettings().difficulty.max_no_competitors + 1);
+					new_value = min(MAX_COMPANIES, GetGameSettings().difficulty.max_no_competitors + 1);
 				}
 				IConsoleSetSetting("difficulty.max_no_competitors", new_value);
+				break;
+			}
+
+			case WID_AIC_MOVE_UP: {
+				CompanyID slot_above = GetFreeSlot(this->selected_slot, -1);
+				if (IsSelectable(this->selected_slot) && !Company::IsValidAiID(this->selected_slot) && IsSelectable(slot_above)) {
+					Swap(GetGameSettings().ai_config[this->selected_slot], GetGameSettings().ai_config[slot_above]);
+					this->selected_slot = slot_above;
+					this->InvalidateData();
+				}
+				break;
+			}
+
+			case WID_AIC_MOVE_DOWN: {
+				CompanyID slot_below = GetFreeSlot(this->selected_slot, +1);
+				if (IsSelectable(this->selected_slot) && !Company::IsValidAiID(this->selected_slot) && IsSelectable(slot_below)) {
+					Swap(GetGameSettings().ai_config[this->selected_slot], GetGameSettings().ai_config[slot_below]);
+					this->selected_slot = slot_below;
+					this->InvalidateData();
+				}
+				break;
+			}
+
+			case WID_AIC_LIST: { // Select a slot
+				this->selected_slot = (CompanyID)this->GetRowFromWidget(pt.y, widget, 0, this->line_height);
+				this->InvalidateData();
+				if (click_count > 1 && this->selected_slot != INVALID_COMPANY) {
+					if (!Company::IsValidAiID(this->selected_slot)) {
+						ShowAIListWindow((CompanyID)this->selected_slot);
+					} else {
+						if (!GetVisibleSettingsList(this->selected_slot).empty()) ShowAISettingsWindow((CompanyID)this->selected_slot);
+					}
+				}
 				break;
 			}
 
 			case WID_AIC_GAMELIST: {
 				this->selected_slot = OWNER_DEITY;
 				this->InvalidateData();
-				if (click_count > 1 && this->selected_slot != INVALID_COMPANY && _game_mode != GM_NORMAL) ShowAIListWindow((CompanyID)this->selected_slot);
-				break;
-			}
-
-			case WID_AIC_LIST: { // Select a slot
-				this->selected_slot = (CompanyID)this->vscroll->GetScrolledRowFromWidget(pt.y, this, widget, 0, this->line_height);
-				this->InvalidateData();
-				if (click_count > 1 && this->selected_slot != INVALID_COMPANY) ShowAIListWindow((CompanyID)this->selected_slot);
-				break;
-			}
-
-			case WID_AIC_MOVE_UP:
-				if (IsEditable(this->selected_slot) && IsEditable((CompanyID)(this->selected_slot - 1))) {
-					Swap(GetGameSettings().ai_config[this->selected_slot], GetGameSettings().ai_config[this->selected_slot - 1]);
-					this->selected_slot--;
-					this->vscroll->ScrollTowards(this->selected_slot);
-					this->InvalidateData();
+				if (click_count > 1 && this->selected_slot != INVALID_COMPANY) {
+					if (_game_mode != GM_NORMAL) {
+						if (Game::GetInstance() == NULL || _game_mode == GM_MENU) ShowAIListWindow((CompanyID)this->selected_slot);
+					} else {
+						if (Game::GetInstance() != NULL && !GetVisibleSettingsList(this->selected_slot).empty() && _game_mode != GM_EDITOR) ShowAISettingsWindow((CompanyID)this->selected_slot);
+					}
 				}
 				break;
-
-			case WID_AIC_MOVE_DOWN:
-				if (IsEditable(this->selected_slot) && IsEditable((CompanyID)(this->selected_slot + 1))) {
-					Swap(GetGameSettings().ai_config[this->selected_slot], GetGameSettings().ai_config[this->selected_slot + 1]);
-					this->selected_slot++;
-					this->vscroll->ScrollTowards(this->selected_slot);
-					this->InvalidateData();
-				}
-				break;
+			}
 
 			case WID_AIC_CHANGE:  // choose other AI
 				ShowAIListWindow((CompanyID)this->selected_slot);
@@ -920,8 +1156,20 @@ struct AIConfigWindow : public Window {
 				ShowAISettingsWindow((CompanyID)this->selected_slot);
 				break;
 
-			case WID_AIC_CLOSE:
-				delete this;
+			case WID_AIC_START_STOP_TOGGLE: // start or stop an AI
+				if (_game_mode == GM_NORMAL && this->selected_slot != OWNER_DEITY && !Company::IsValidHumanID(this->selected_slot)) {
+					if (Company::IsValidAiID(this->selected_slot)) { // clicking 'Stop AI'
+						DoCommandP(0, CCA_DELETE | this->selected_slot << 16, CRR_MANUAL, CMD_COMPANY_CTRL); // to stop an AI, remove company with AI
+					} else { // clicking 'Start AI'
+						if (GetCurrentNoAIs() < GetGameSettings().difficulty.max_no_competitors) {
+							if (AI::CanStartNew()) {
+								DoCommandP(0, CCA_NEW_AI | this->selected_slot << 16, 0, CMD_COMPANY_CTRL); // start company for AI
+							} else {
+								ShowErrorMessage(STR_ERROR_AI_CAN_T_START, STR_ERROR_AI_ALLOW_IN_MULTIPLAYER, WL_INFO);
+							}
+						}
+					}
+				}
 				break;
 
 			case WID_AIC_CONTENT_DOWNLOAD:
@@ -941,18 +1189,36 @@ struct AIConfigWindow : public Window {
 	 */
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
-		if (!IsEditable(this->selected_slot)) {
+		if (!IsSelectable(this->selected_slot)) {
 			this->selected_slot = INVALID_COMPANY;
 		}
 
 		if (!gui_scope) return;
 
 		this->SetWidgetDisabledState(WID_AIC_DECREASE, GetGameSettings().difficulty.max_no_competitors == 0);
-		this->SetWidgetDisabledState(WID_AIC_INCREASE, GetGameSettings().difficulty.max_no_competitors == MAX_COMPANIES - 1);
-		this->SetWidgetDisabledState(WID_AIC_CHANGE, (this->selected_slot == OWNER_DEITY && _game_mode == GM_NORMAL) || this->selected_slot == INVALID_COMPANY);
-		this->SetWidgetDisabledState(WID_AIC_CONFIGURE, this->selected_slot == INVALID_COMPANY || GetConfig(this->selected_slot)->GetConfigList()->size() == 0);
-		this->SetWidgetDisabledState(WID_AIC_MOVE_UP, this->selected_slot == OWNER_DEITY || this->selected_slot == INVALID_COMPANY || !IsEditable((CompanyID)(this->selected_slot - 1)));
-		this->SetWidgetDisabledState(WID_AIC_MOVE_DOWN, this->selected_slot == OWNER_DEITY || this->selected_slot == INVALID_COMPANY || !IsEditable((CompanyID)(this->selected_slot + 1)));
+		this->SetWidgetDisabledState(WID_AIC_INCREASE, GetGameSettings().difficulty.max_no_competitors == MAX_COMPANIES);
+		this->SetWidgetDisabledState(WID_AIC_MOVE_UP, this->selected_slot == INVALID_COMPANY || this->selected_slot == OWNER_DEITY || Company::IsValidAiID(this->selected_slot) || GetFreeSlot(this->selected_slot, -1) == INVALID_COMPANY);
+		this->SetWidgetDisabledState(WID_AIC_MOVE_DOWN, this->selected_slot == INVALID_COMPANY || this->selected_slot == OWNER_DEITY || Company::IsValidAiID(this->selected_slot) || GetFreeSlot(this->selected_slot, +1) == INVALID_COMPANY);
+		this->SetWidgetDisabledState(WID_AIC_CHANGE, this->selected_slot == INVALID_COMPANY || (this->selected_slot == OWNER_DEITY && (_game_mode == GM_NORMAL || (_game_mode == GM_EDITOR && Game::GetInstance() != NULL))) || Company::IsValidAiID(this->selected_slot));
+		this->SetWidgetDisabledState(WID_AIC_CONFIGURE, this->selected_slot == INVALID_COMPANY || GetVisibleSettingsList(this->selected_slot).empty());
+
+		/* Display either Settings or Configure button */
+		NWidgetCore *configure_button = this->GetWidget<NWidgetCore>(WID_AIC_CONFIGURE);
+		if (this->selected_slot != INVALID_COMPANY && !IsConsideredDead(this->selected_slot)) {
+			configure_button->SetDataTip(STR_AI_DEBUG_SETTINGS, STR_AI_DEBUG_SETTINGS_TOOLTIP);
+		} else {
+			configure_button->SetDataTip(STR_AI_CONFIG_CONFIGURE, STR_AI_CONFIG_CONFIGURE_TOOLTIP);
+		}
+
+		this->SetWidgetDisabledState(WID_AIC_START_STOP_TOGGLE, _game_mode != GM_NORMAL || this->selected_slot == INVALID_COMPANY || this->selected_slot == OWNER_DEITY || Company::IsValidHumanID(this->selected_slot) || (GetCurrentNoAIs() >= GetGameSettings().difficulty.max_no_competitors && !Company::IsValidID(this->selected_slot)));
+
+		/* Display either Start AI or Stop AI button */
+		NWidgetCore *toggle_button = this->GetWidget<NWidgetCore>(WID_AIC_START_STOP_TOGGLE);
+		if (this->selected_slot == INVALID_COMPANY || this->selected_slot == OWNER_DEITY || Company::IsValidHumanID(this->selected_slot) || !Company::IsValidAiID(this->selected_slot)) {
+			toggle_button->SetDataTip(STR_AI_CONFIG_START, STR_AI_CONFIG_START_TOOLTIP);
+		} else {
+			toggle_button->SetDataTip(STR_AI_CONFIG_STOP, STR_AI_CONFIG_STOP_TOOLTIP);
+		}
 
 		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
 			this->SetWidgetDisabledState(WID_AIC_TEXTFILE + tft, this->selected_slot == INVALID_COMPANY || (GetConfig(this->selected_slot)->GetTextfile(tft, this->selected_slot) == NULL));
@@ -1001,7 +1267,7 @@ struct AIDebugWindow : public Window {
 	int redraw_timer;                                      ///< Timer for redrawing the window, otherwise it'll happen every tick.
 	int last_vscroll_pos;                                  ///< Last position of the scrolling.
 	bool autoscroll;                                       ///< Whether automatically scrolling should be enabled or not.
-	bool show_break_box;                                   ///< Whether the break/debug box is visible.
+	bool show_ai_dev_tools;                                ///< Whether the break/debug and the settings/reload boxes are visible.
 	static bool break_check_enabled;                       ///< Stop an AI when it prints a matching string
 	static char break_string[MAX_BREAK_STR_STRING_LENGTH]; ///< The string to match to the AI output
 	QueryString break_editbox;                             ///< Break editbox
@@ -1014,19 +1280,6 @@ struct AIDebugWindow : public Window {
 	{
 		if (ai_debug_company == OWNER_DEITY) return (ScriptLog::LogData *)Game::GetInstance()->GetLogPointer();
 		return (ScriptLog::LogData *)Company::Get(ai_debug_company)->ai_instance->GetLogPointer();
-	}
-
-	/**
-	 * Check whether the currently selected AI/GS is dead.
-	 * @return true if dead.
-	 */
-	bool IsDead() const
-	{
-		if (ai_debug_company == OWNER_DEITY) {
-			GameInstance *game = Game::GetInstance();
-			return game == NULL || game->IsDead();
-		}
-		return !Company::IsValidAiID(ai_debug_company) || Company::Get(ai_debug_company)->ai_instance->IsDead();
 	}
 
 	/**
@@ -1075,11 +1328,12 @@ struct AIDebugWindow : public Window {
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_AID_SCROLLBAR);
-		this->show_break_box = _settings_client.gui.ai_developer_tools;
-		this->GetWidget<NWidgetStacked>(WID_AID_BREAK_STRING_WIDGETS)->SetDisplayedPlane(this->show_break_box ? 0 : SZSP_HORIZONTAL);
+		this->show_ai_dev_tools = _settings_client.gui.ai_developer_tools;
+		this->GetWidget<NWidgetStacked>(WID_AID_BREAK_STRING_WIDGETS)->SetDisplayedPlane(this->show_ai_dev_tools ? 0 : SZSP_HORIZONTAL);
+		this->GetWidget<NWidgetStacked>(WID_AID_SETTINGS_RELOAD_WIDGETS)->SetDisplayedPlane(this->show_ai_dev_tools ? 0 : SZSP_VERTICAL);
 		this->FinishInitNested(number);
 
-		if (!this->show_break_box) break_check_enabled = false;
+		if (!this->show_ai_dev_tools) break_check_enabled = false;
 
 		this->last_vscroll_pos = 0;
 		this->autoscroll = true;
@@ -1087,7 +1341,7 @@ struct AIDebugWindow : public Window {
 
 		this->querystrings[WID_AID_BREAK_STR_EDIT_BOX] = &this->break_editbox;
 
-		SetWidgetsDisabledState(!this->show_break_box, WID_AID_BREAK_STR_ON_OFF_BTN, WID_AID_BREAK_STR_EDIT_BOX, WID_AID_MATCH_CASE_BTN, WIDGET_LIST_END);
+		SetWidgetsDisabledState(!this->show_ai_dev_tools, WID_AID_SETTINGS, WID_AID_RELOAD_TOGGLE, WID_AID_BREAK_STR_ON_OFF_BTN, WID_AID_BREAK_STR_EDIT_BOX, WID_AID_MATCH_CASE_BTN, WIDGET_LIST_END);
 
 		/* Restore the break string value from static variable */
 		this->break_editbox.text.Assign(this->break_string);
@@ -1255,9 +1509,6 @@ struct AIDebugWindow : public Window {
 
 		this->highlight_row = -1; // The highlight of one AI make little sense for another AI.
 
-		/* Close AI settings window to prevent confusion */
-		DeleteWindowByClass(WC_AI_SETTINGS);
-
 		this->InvalidateData(-1);
 
 		this->autoscroll = true;
@@ -1280,14 +1531,16 @@ struct AIDebugWindow : public Window {
 				break;
 
 			case WID_AID_RELOAD_TOGGLE:
-				if (ai_debug_company == OWNER_DEITY) break;
-				/* First kill the company of the AI, then start a new one. This should start the current AI again */
-				DoCommandP(0, CCA_DELETE | ai_debug_company << 16, CRR_MANUAL, CMD_COMPANY_CTRL);
-				DoCommandP(0, CCA_NEW_AI | ai_debug_company << 16, 0, CMD_COMPANY_CTRL);
+				if (this->show_ai_dev_tools && _game_mode == GM_NORMAL) {
+					if (ai_debug_company == OWNER_DEITY) break;
+					/* First kill the company of the AI, then start a new one. This should start the current AI again */
+					DoCommandP(0, CCA_DELETE | ai_debug_company << 16, CRR_MANUAL, CMD_COMPANY_CTRL);
+					DoCommandP(0, CCA_NEW_AI | ai_debug_company << 16, 0, CMD_COMPANY_CTRL);
+				}
 				break;
 
 			case WID_AID_SETTINGS:
-				ShowAISettingsWindow(ai_debug_company);
+				if (this->show_ai_dev_tools) ShowAISettingsWindow(ai_debug_company);
 				break;
 
 			case WID_AID_BREAK_STR_ON_OFF_BTN:
@@ -1302,7 +1555,7 @@ struct AIDebugWindow : public Window {
 
 			case WID_AID_CONTINUE_BTN:
 				/* Unpause current AI / game script and mark the corresponding script button dirty. */
-				if (!this->IsDead()) {
+				if (!IsConsideredDead(this->ai_debug_company)) {
 					if (ai_debug_company == OWNER_DEITY) {
 						Game::Unpause();
 					} else {
@@ -1362,7 +1615,7 @@ struct AIDebugWindow : public Window {
 				this->break_string_filter.AddLine(log->lines[log->pos]);
 				if (this->break_string_filter.GetState()) {
 					/* Pause execution of script. */
-					if (!this->IsDead()) {
+					if (!IsConsideredDead(this->ai_debug_company)) {
 						if (ai_debug_company == OWNER_DEITY) {
 							Game::Pause();
 						} else {
@@ -1400,8 +1653,17 @@ struct AIDebugWindow : public Window {
 		this->SetWidgetLoweredState(WID_AID_BREAK_STR_ON_OFF_BTN, this->break_check_enabled);
 		this->SetWidgetLoweredState(WID_AID_MATCH_CASE_BTN, this->case_sensitive_break_check);
 
-		this->SetWidgetDisabledState(WID_AID_SETTINGS, ai_debug_company == INVALID_COMPANY);
-		this->SetWidgetDisabledState(WID_AID_RELOAD_TOGGLE, ai_debug_company == INVALID_COMPANY || ai_debug_company == OWNER_DEITY);
+		this->SetWidgetDisabledState(WID_AID_SETTINGS, ai_debug_company == INVALID_COMPANY || GetVisibleSettingsList(ai_debug_company).empty());
+
+		/* Display either Settings or Configure button */
+		NWidgetCore *settings_button = this->GetWidget<NWidgetCore>(WID_AID_SETTINGS);
+		if (ai_debug_company == INVALID_COMPANY || !IsConsideredDead(this->ai_debug_company)) {
+			settings_button->SetDataTip(STR_AI_DEBUG_SETTINGS, STR_AI_DEBUG_SETTINGS_TOOLTIP);
+		} else {
+			settings_button->SetDataTip(STR_AI_CONFIG_CONFIGURE, STR_AI_CONFIG_CONFIGURE_TOOLTIP);
+		}
+
+		this->SetWidgetDisabledState(WID_AID_RELOAD_TOGGLE, _game_mode != GM_NORMAL || ai_debug_company == INVALID_COMPANY || ai_debug_company == OWNER_DEITY);
 		this->SetWidgetDisabledState(WID_AID_CONTINUE_BTN, ai_debug_company == INVALID_COMPANY ||
 				(ai_debug_company == OWNER_DEITY ? !Game::IsPaused() : !AI::IsPaused(ai_debug_company)));
 	}
@@ -1483,8 +1745,12 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_AID_SCRIPT_GAME), SetMinimalSize(100, 20), SetResize(1, 0), SetDataTip(STR_AI_GAME_SCRIPT, STR_AI_GAME_SCRIPT_TOOLTIP),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_AID_NAME_TEXT), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_JUST_STRING, STR_AI_DEBUG_NAME_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_AID_SETTINGS), SetMinimalSize(100, 20), SetDataTip(STR_AI_DEBUG_SETTINGS, STR_AI_DEBUG_SETTINGS_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_AID_RELOAD_TOGGLE), SetMinimalSize(100, 20), SetDataTip(STR_AI_DEBUG_RELOAD, STR_AI_DEBUG_RELOAD_TOOLTIP),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_AID_SETTINGS_RELOAD_WIDGETS),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_AID_SETTINGS), SetMinimalSize(100, 20), SetDataTip(STR_AI_DEBUG_SETTINGS, STR_AI_DEBUG_SETTINGS_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_AID_RELOAD_TOGGLE), SetMinimalSize(100, 20), SetDataTip(STR_AI_DEBUG_RELOAD, STR_AI_DEBUG_RELOAD_TOOLTIP),
+			EndContainer(),
+		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
@@ -1549,21 +1815,31 @@ void InitializeAIGui()
 }
 
 /** Open the AI debug window if one of the AI scripts has crashed. */
-void ShowAIDebugWindowIfAIError()
+void ShowAIDebugWindowIfAIError(Owner owner)
 {
+	if (_game_mode != GM_NORMAL) return;
+
 	/* Network clients can't debug AIs. */
 	if (_networking && !_network_server) return;
 
-	Company *c;
-	FOR_ALL_COMPANIES(c) {
-		if (c->is_ai && c->ai_instance->IsDead()) {
-			ShowAIDebugWindow(c->index);
-			break;
+	if (owner == INVALID_OWNER) {
+		Company *c;
+		FOR_ALL_COMPANIES(c) {
+			if (c->is_ai && c->ai_instance->IsDead()) {
+				owner = c->index;
+				break;
+			}
+		}
+
+		GameInstance *g = Game::GetGameInstance();
+		if (g != NULL && g->IsDead()) {
+			owner = OWNER_DEITY;
 		}
 	}
 
-	GameInstance *g = Game::GetGameInstance();
-	if (g != NULL && g->IsDead()) {
-		ShowAIDebugWindow(OWNER_DEITY);
+	if (owner != INVALID_OWNER) {
+		ShowAIDebugWindow(owner);
+		InvalidateWindowData(WC_AI_SETTINGS, owner);
+		InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_AI);
 	}
 }

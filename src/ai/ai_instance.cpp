@@ -213,7 +213,7 @@ void AIInstance::Died()
 {
 	ScriptInstance::Died();
 
-	ShowAIDebugWindow(_current_company);
+	ShowAIDebugWindowIfAIError(_current_company);
 
 	const AIInfo *info = AIConfig::GetConfig(_current_company, AIConfig::SSS_FORCE_GAME)->GetInfo();
 	if (info != NULL) {

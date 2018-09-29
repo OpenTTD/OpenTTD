@@ -1765,7 +1765,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Highscor
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Settings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Settings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Check Online Content
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Game Script Settings
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Game Script Configuration
 STR_INTRO_QUIT                                                  :{BLACK}Exit
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start a new game. Ctrl+Click skips map configuration
@@ -1785,7 +1785,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Display 
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Display settings
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Display NewGRF settings
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check for new and updated content to download
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Display AI/Game script settings
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Display AI/Game script configuration
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Exit 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}The currently selected base graphics set is missing {NUM} sprite{P "" s}. Please check for updates for the baseset.
@@ -4092,10 +4092,11 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/Game
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Game Script Configuration
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}The Game Script that will be loaded in the next game
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}The AIs that will be loaded in the next game
+STR_AI_CONFIG_CAPTION_INGAME                                    :{WHITE}AI/Game Script Settings
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}The Game Script that is loaded or will be loaded in the next game
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}The AIs that are currently loaded or will be loaded next time they start on these Company IDs while in a game
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Human player
-STR_AI_CONFIG_RANDOM_AI                                         :Random AI
+STR_AI_CONFIG_RANDOM_AI                                         :(random)
 STR_AI_CONFIG_NONE                                              :(none)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Move Up
@@ -4112,7 +4113,14 @@ STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Game Script
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Load another script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configure
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configure the parameters of the Script
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configure the parameters of the script
+STR_AI_CONFIG_START                                             :{BLACK}Start AI
+STR_AI_CONFIG_START_TOOLTIP                                     :{BLACK}Load the selected script, and start an AI Company in the selected Company ID
+STR_AI_CONFIG_STOP                                              :{BLACK}Stop AI
+STR_AI_CONFIG_STOP_TOOLTIP                                      :{BLACK}Kill the selected AI, and remove its Company
+
+STR_ERROR_AI_CAN_T_START                                        :{WHITE}Can't start AI...
+STR_ERROR_AI_ALLOW_IN_MULTIPLAYER                               :Make sure to allow AI computer players to participate in multiplayer games first.
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Available {STRING}
@@ -4130,7 +4138,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Cancel
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Don't change the script
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameters of {STRING1} {STRING1}
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Close
