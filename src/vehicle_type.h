@@ -17,6 +17,8 @@
 /** The type all our vehicle IDs have. */
 typedef uint32 VehicleID;
 
+static const int GROUND_ACCELERATION = 9800; ///< Acceleration due to gravity, 9.8 m/s^2
+
 /** Available vehicle types. */
 enum VehicleType {
 	VEH_BEGIN,
