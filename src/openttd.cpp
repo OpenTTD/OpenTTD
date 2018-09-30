@@ -365,6 +365,9 @@ void MakeNewgameSettingsLive()
 		_settings_game.ai_config[c] = NULL;
 		if (_settings_newgame.ai_config[c] != NULL) {
 			_settings_game.ai_config[c] = new AIConfig(_settings_newgame.ai_config[c]);
+			if (!AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->HasScript()) {
+				AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->Change(NULL);
+			}
 		}
 	}
 	_settings_game.game_config = NULL;
