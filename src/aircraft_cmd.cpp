@@ -1539,7 +1539,7 @@ static void AircraftEventHandler_AtTerminal(Aircraft *v, const AirportFTAClass *
 			go_to_hangar = Station::Get(v->targetairport)->airport.HasHangar();
 	}
 
-	if (go_to_hangar) {
+	if (go_to_hangar && Station::Get(v->targetairport)->airport.HasHangar()) {
 		v->state = HANGAR;
 	} else {
 		/* airplane goto state takeoff, helicopter to helitakeoff */
