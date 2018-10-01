@@ -63,4 +63,7 @@ void AllocateWaterRegions();
 
 void PrintWaterRegionDebugInfo(TileIndex tile);
 
+using TTestTileIndexCallBack = std::function<bool(const TileIndex)>;
+TileIndex GetTileInWaterRegionPatch(const WaterRegionPatchDesc &water_region_patch, TTestTileIndexCallBack &callback);
+
 #endif /* WATER_REGIONS_H */
