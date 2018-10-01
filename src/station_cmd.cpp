@@ -2449,6 +2449,53 @@ bool HasStationInUse(StationID station, bool include_company, CompanyID company)
 	return false;
 }
 
+/**
+ * Ensure this tile is not a target for ships to get to a nearby dock.
+ * @note Also takes into account Oil Rigs, even those under construction.
+ * @param tile Tile to query
+ * @param diagdir Optional diagonal direction to look for axis compatibility.
+ * @return Succeeded if the tile is not a ship docking area of a nearby dock,
+ *         or an error message if the tile is a ship docking area of a nearby
+ *         dock.
+ * @note If the axis of a provided diagdir is equal to the axis of a nearby
+ *       docking area, it returns Succeeded. If diagdir is not provided, only
+ *       the docking area location is ensured.
+ */
+static CommandCost EnsureNoDockingTile(TileIndex tile, DiagDirection diagdir = INVALID_DIAGDIR)
+{
+	Axis axis = diagdir == INVALID_DIAGDIR ? INVALID_AXIS : DiagDirToAxis(diagdir);
+
+	for (DiagDirection rot = DIAGDIR_BEGIN; rot < DIAGDIR_END; rot++) {
+		TileIndex tc = TileAddByDiagDir(tile, rot);
+		TileIndexDiff diff = TileDiffXY(-1, 0);
+		TileIndex td;
+		if ((IsTileType(tc, MP_STATION) && IsDock(tc) && (td = tc)) || (IsTileType(tc + diff, MP_STATION) && IsOilRig(tc + diff) && (td = tc + diff))) {
+			Station *dock = Station::GetByTile(td);
+			TileIndex docking_location = TILE_ADD(dock->dock_tile, ToTileIndexDiff(GetDockOffset(dock->dock_tile)));
+			if (axis == INVALID_AXIS) {
+				return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK);
+			} else {
+				if (tile == docking_location) {
+					Axis axis_tc = DiagDirToAxis(rot);
+					if (axis != axis_tc) {
+						return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK);
+					}
+				}
+			}
+		}
+
+		if (axis != AXIS_X && DiagDirToAxis(rot) == AXIS_X) {
+			if (IsTileType(tc + diff, MP_INDUSTRY) && GetIndustryGfx(tc + diff) == GFX_OILRIG_1 &&
+					IsTileType (tc + TileDiffXY(-1, 1), MP_INDUSTRY) && GetIndustryGfx(tc + TileDiffXY(-1, 1)) == GFX_OILRIG_1 &&
+					GetIndustryIndex(tc + diff) == GetIndustryIndex(tc + TileDiffXY(-1, 1))) {
+				return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+			}
+		}
+	}
+
+	return CommandCost();
+}
+
 static const TileIndexDiffC _dock_tileoffs_chkaround[] = {
 	{-1,  0},
 	{ 0,  0},
@@ -2498,6 +2545,10 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	}
 
 	if (IsBridgeAbove(tile_cur)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+
+	/* Make sure there are no adjacent or incompatible ship docking areas */
+	ret = EnsureNoDockingTile(tile_cur, direction);
+	if (ret.Failed()) return ret;
 
 	/* Get the water class of the water tile before it is cleared.*/
 	WaterClass wc = GetWaterClass(tile_cur);
