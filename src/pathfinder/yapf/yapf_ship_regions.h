@@ -18,4 +18,9 @@ struct Ship;
 
 std::vector<WaterRegionPatchDesc> YapfShipFindWaterRegionPath(const Ship *v, TileIndex start_tile, int max_returned_path_length);
 
+/* Components of a HighNode (current, cost). */
+typedef std::tuple<WaterRegionPatchDesc, int> HighNode;
+
+std::vector<HighNode> YapfFindShipDepotRegionPath(const Ship *v, int max_penalty);
+
 #endif /* YAPF_SHIP_REGIONS_H */

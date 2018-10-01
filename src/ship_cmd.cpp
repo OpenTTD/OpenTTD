@@ -14,11 +14,10 @@
 #include "news_func.h"
 #include "company_func.h"
 #include "pathfinder/npf/npf_func.h"
-#include "depot_base.h"
+#include "depot_map.h"
 #include "station_base.h"
 #include "newgrf_engine.h"
 #include "pathfinder/yapf/yapf.h"
-#include "pathfinder/yapf/yapf_ship_regions.h"
 #include "newgrf_sound.h"
 #include "spritecache.h"
 #include "strings_func.h"
@@ -40,12 +39,7 @@
 
 #include "table/strings.h"
 
-#include <unordered_set>
-
 #include "safeguards.h"
-
-/** Max distance in tiles (as the crow flies) to search for depots when user clicks "go to depot". */
-constexpr int MAX_SHIP_DEPOT_SEARCH_DISTANCE = 80;
 
 /**
  * Determine the effective #WaterClass for a ship travelling on a tile.
@@ -149,57 +143,16 @@ void Ship::GetImage(Direction direction, EngineImageType image_type, VehicleSpri
 	result->Set(_ship_sprites[spritenum] + direction);
 }
 
-static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
+static FindDepotData FindClosestShipDepot(const Ship *v, int max_distance)
 {
-	const int max_region_distance = (max_distance / WATER_REGION_EDGE_LENGTH) + 1;
+	if (IsShipDepotTile(v->tile) && GetShipDepotPart(v->tile) == DEPOT_PART_NORTH && IsTileOwner(v->tile, v->owner)) return FindDepotData(v->tile, 0);
 
-	static std::unordered_set<int> visited_patch_hashes;
-	static std::deque<WaterRegionPatchDesc> patches_to_search;
-	visited_patch_hashes.clear();
-	patches_to_search.clear();
+	switch (_settings_game.pf.pathfinder_for_ships) {
+		case VPF_NPF: return NPFShipFindNearestDepot(v, max_distance);
+		case VPF_YAPF: return YapfShipFindNearestDepot(v, max_distance);
 
-	/* Step 1: find a set of reachable Water Region Patches using BFS. */
-	const WaterRegionPatchDesc start_patch = GetWaterRegionPatchInfo(v->tile);
-	patches_to_search.push_back(start_patch);
-	visited_patch_hashes.insert(CalculateWaterRegionPatchHash(start_patch));
-
-	while (!patches_to_search.empty()) {
-		/* Remove first patch from the queue and make it the current patch. */
-		const WaterRegionPatchDesc current_node = patches_to_search.front();
-		patches_to_search.pop_front();
-
-		/* Add neighbors of the current patch to the search queue. */
-		TVisitWaterRegionPatchCallBack visitFunc = [&](const WaterRegionPatchDesc &water_region_patch) {
-			/* Note that we check the max distance per axis, not the total distance. */
-			if (std::abs(water_region_patch.x - start_patch.x) > max_region_distance ||
-					std::abs(water_region_patch.y - start_patch.y) > max_region_distance) return;
-
-			const int hash = CalculateWaterRegionPatchHash(water_region_patch);
-			if (visited_patch_hashes.count(hash) == 0) {
-				visited_patch_hashes.insert(hash);
-				patches_to_search.push_back(water_region_patch);
-			}
-		};
-
-		VisitWaterRegionPatchNeighbors(current_node, visitFunc);
+		default: NOT_REACHED();
 	}
-
-	/* Step 2: Find the closest depot within the reachable Water Region Patches. */
-	const Depot *best_depot = nullptr;
-	uint best_dist_sq = std::numeric_limits<uint>::max();
-	for (const Depot *depot : Depot::Iterate()) {
-		const TileIndex tile = depot->xy;
-		if (IsShipDepotTile(tile) && IsTileOwner(tile, v->owner)) {
-			const uint dist_sq = DistanceSquare(tile, v->tile);
-			if (dist_sq < best_dist_sq && dist_sq <= max_distance * max_distance &&
-					visited_patch_hashes.count(CalculateWaterRegionPatchHash(GetWaterRegionPatchInfo(tile))) > 0) {
-				best_dist_sq = dist_sq;
-				best_depot = depot;
-			}
-		}
-	}
-
-	return best_depot;
 }
 
 static void CheckIfShipNeedsService(Vehicle *v)
@@ -210,16 +163,16 @@ static void CheckIfShipNeedsService(Vehicle *v)
 		return;
 	}
 
-	uint max_distance;
+	uint max_penalty;
 	switch (_settings_game.pf.pathfinder_for_ships) {
-		case VPF_NPF:  max_distance = _settings_game.pf.npf.maximum_go_to_depot_penalty  / NPF_TILE_LENGTH;  break;
-		case VPF_YAPF: max_distance = _settings_game.pf.yapf.maximum_go_to_depot_penalty / YAPF_TILE_LENGTH; break;
+		case VPF_NPF:  max_penalty = _settings_game.pf.npf.maximum_go_to_depot_penalty;  break;
+		case VPF_YAPF: max_penalty = _settings_game.pf.yapf.maximum_go_to_depot_penalty; break;
 		default: NOT_REACHED();
 	}
 
-	const Depot *depot = FindClosestShipDepot(v, max_distance);
+	const FindDepotData sfdd = FindClosestShipDepot(Ship::From(v), max_penalty);
 
-	if (depot == nullptr) {
+	if (sfdd.best_length == UINT_MAX || sfdd.best_length > max_penalty) {
 		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 			v->current_order.MakeDummy();
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
@@ -227,8 +180,8 @@ static void CheckIfShipNeedsService(Vehicle *v)
 		return;
 	}
 
-	v->current_order.MakeGoToDepot(depot->index, ODTFB_SERVICE);
-	v->SetDestTile(depot->xy);
+	v->current_order.MakeGoToDepot(GetDepotIndex(sfdd.tile), ODTFB_SERVICE);
+	v->SetDestTile(sfdd.tile);
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
 
@@ -974,8 +927,8 @@ CommandCost CmdBuildShip(DoCommandFlag flags, TileIndex tile, const Engine *e, V
 
 ClosestDepot Ship::FindClosestDepot()
 {
-	const Depot *depot = FindClosestShipDepot(this, MAX_SHIP_DEPOT_SEARCH_DISTANCE);
-	if (depot == nullptr) return ClosestDepot();
+	const FindDepotData sfdd = FindClosestShipDepot(this, 0);
+	if (sfdd.best_length == UINT_MAX) return ClosestDepot();
 
-	return ClosestDepot(depot->xy, depot->index);
+	return ClosestDepot(sfdd.tile, GetDepotIndex(sfdd.tile), sfdd.reverse);
 }

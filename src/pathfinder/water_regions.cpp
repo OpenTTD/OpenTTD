@@ -408,3 +408,24 @@ void PrintWaterRegionDebugInfo(TileIndex tile)
 {
 	GetUpdatedWaterRegion(tile).PrintDebugInfo();
 }
+
+/**
+ * Tests the provided callback function on all tiles of the current water patch of the region
+ *  and as soon as it finds a ship depot, returns the tile.
+ * @param callback The test function that will be called for the water patch.
+ * @param current_water_region_patch Water patch within the water region to test the callback.
+ * @return closest tile which passed the callback test, or INVALID_TILE if the callback failed.
+ */
+TileIndex GetShipDepotInWaterRegionPatch(IsShipDepotRegionCallBack &callback, const WaterRegionPatchDesc &current_water_region_patch)
+{
+	const WaterRegion &region = GetUpdatedWaterRegion(current_water_region_patch.x, current_water_region_patch.y);
+
+	/* Check if the current region has a tile which passes the callback test. */
+	for (const TileIndex tile : region) {
+		if (region.GetLabel(tile) != current_water_region_patch.label || !callback(tile)) continue;
+
+		return tile;
+	}
+
+	return INVALID_TILE;
+}

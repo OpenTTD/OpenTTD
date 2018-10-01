@@ -67,4 +67,7 @@ void AllocateWaterRegions();
 
 void PrintWaterRegionDebugInfo(TileIndex tile);
 
+using IsShipDepotRegionCallBack = std::function<bool(const TileIndex)>;
+TileIndex GetShipDepotInWaterRegionPatch(IsShipDepotRegionCallBack &callback, const WaterRegionPatchDesc &current_water_region_patch);
+
 #endif /* WATER_REGIONS_H */
