@@ -29,7 +29,7 @@ struct BuildingCounts {
 typedef TileMatrix<CargoTypes, 4> AcceptanceMatrix;
 
 static const uint CUSTOM_TOWN_NUMBER_DIFFICULTY  = 4; ///< value for custom town number in difficulty settings
-static const uint CUSTOM_TOWN_MAX_NUMBER = 5000;  ///< this is the maximum number of towns a user can specify in customisation
+static const uint CUSTOM_TOWN_MAX_NUMBER = 20000;  ///< this is the maximum number of towns a user can specify in customisation
 
 static const uint INVALID_TOWN = 0xFFFF;
 

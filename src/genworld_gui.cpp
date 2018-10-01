@@ -737,7 +737,7 @@ struct GenerateLandscapeWindow : public Window {
 				if ((uint)index == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
 					this->widget_id = widget;
 					SetDParam(0, _settings_newgame.game_creation.custom_town_number);
-					ShowQueryString(STR_JUST_INT, STR_MAPGEN_NUMBER_OF_TOWNS, 5, this, CS_NUMERAL, QSF_NONE);
+					ShowQueryString(STR_JUST_INT, STR_MAPGEN_NUMBER_OF_TOWNS, 6, this, CS_NUMERAL, QSF_NONE);
 				}
 				_settings_newgame.difficulty.number_towns = index;
 				break;
