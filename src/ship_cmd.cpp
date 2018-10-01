@@ -140,7 +140,7 @@ void Ship::GetImage(Direction direction, EngineImageType image_type, VehicleSpri
 	result->Set(_ship_sprites[spritenum] + direction);
 }
 
-static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
+static FindDepotData FindClosestShipDepot(const Ship *v, uint max_distance)
 {
 	/* Find the closest depot */
 	const Depot *depot;
@@ -163,7 +163,25 @@ static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
 		}
 	}
 
-	return best_depot;
+	FindDepotData fdd;
+	if (best_depot != NULL) {
+		fdd.best_length = best_dist;
+		fdd.tile = best_depot->xy;
+	}
+	return fdd;
+}
+
+static FindDepotData FindClosestReachableShipDepot(const Ship *v, int max_distance)
+{
+	if ((IsShipDepotTile(v->tile) && GetShipDepotPart(v->tile) == DEPOT_PART_NORTH) && IsTileOwner(v->tile, v->owner)) return FindDepotData(v->tile, 0);
+
+	switch (_settings_game.pf.pathfinder_for_ships) {
+		case VPF_OPF: return OPFShipFindNearestDepot(v, max_distance);
+		case VPF_NPF: return NPFShipFindNearestDepot(v, max_distance);
+		case VPF_YAPF: return YapfShipFindNearestDepot(v, max_distance);
+
+	default: NOT_REACHED();
+	}
 }
 
 static void CheckIfShipNeedsService(Vehicle *v)
@@ -176,15 +194,15 @@ static void CheckIfShipNeedsService(Vehicle *v)
 
 	uint max_distance;
 	switch (_settings_game.pf.pathfinder_for_ships) {
-		case VPF_OPF:  max_distance = 12; break;
-		case VPF_NPF:  max_distance = _settings_game.pf.npf.maximum_go_to_depot_penalty  / NPF_TILE_LENGTH;  break;
-		case VPF_YAPF: max_distance = _settings_game.pf.yapf.maximum_go_to_depot_penalty / YAPF_TILE_LENGTH; break;
+		case VPF_OPF:  max_distance = 20; break;
+		case VPF_NPF:  max_distance = _settings_game.pf.npf.maximum_go_to_depot_penalty;  break;
+		case VPF_YAPF: max_distance = _settings_game.pf.yapf.maximum_go_to_depot_penalty; break;
 		default: NOT_REACHED();
 	}
 
-	const Depot *depot = FindClosestShipDepot(v, max_distance);
+	const FindDepotData sfdd = FindClosestReachableShipDepot(Ship::From(v), max_distance);
 
-	if (depot == NULL) {
+	if (sfdd.best_length == UINT_MAX) {
 		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 			v->current_order.MakeDummy();
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
@@ -192,8 +210,8 @@ static void CheckIfShipNeedsService(Vehicle *v)
 		return;
 	}
 
-	v->current_order.MakeGoToDepot(depot->index, ODTFB_SERVICE);
-	v->SetDestTile(depot->xy);
+	v->current_order.MakeGoToDepot(GetDepotIndex(sfdd.tile), ODTFB_SERVICE);
+	v->SetDestTile(sfdd.tile);
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
 
@@ -774,12 +792,15 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, const Engine *e, u
 
 bool Ship::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
 {
-	const Depot *depot = FindClosestShipDepot(this, 0);
+	FindDepotData sfdd = FindClosestReachableShipDepot(this, 0);
+	if (sfdd.best_length == UINT_MAX) {
+		sfdd = FindClosestShipDepot(this, 0);
+		if (sfdd.best_length == UINT_MAX) return false;
+	}
 
-	if (depot == NULL) return false;
-
-	if (location    != NULL) *location    = depot->xy;
-	if (destination != NULL) *destination = depot->index;
+	if (location    != NULL) *location = sfdd.tile;
+	if (destination != NULL) *destination = GetDepotIndex(sfdd.tile);
+	if (reverse     != NULL) *reverse = sfdd.reverse;
 
 	return true;
 }

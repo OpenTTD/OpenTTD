@@ -28,4 +28,14 @@
  */
 Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found);
 
+/**
+ * Used when user sends ship to the nearest depot or if ship needs servicing using OPF.
+ * @param v            vehicle that needs to go to some depot
+ * @param max_distance max distance (in pathfinder penalty) from the current ship position
+ *                     (used also as optimization - the pathfinder can stop path finding if max_penalty
+ *                     was reached and no depot was seen)
+ * @return             the data about the depot
+ */
+FindDepotData OPFShipFindNearestDepot(const Ship *v, int max_distance);
+
 #endif /* OPF_SHIP_H */

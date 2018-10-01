@@ -39,6 +39,16 @@ FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penal
 Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool &path_found);
 
 /**
+ * Used when user sends ship to the nearest depot or if ship needs servicing using NPF
+ * @param v            ship that needs to go to some depot
+ * @param max_penalty  max distance (in pathfinder penalty) from the current ship position
+ *                     (used also as optimization - the pathfinder can stop path finding if max_penalty
+ *                     was reached and no depot was seen)
+ * @return             the data about the depot
+ */
+FindDepotData NPFShipFindNearestDepot(const Ship *v, int max_penalty);
+
+/**
  * Finds the best path for given ship using NPF.
  * @param v        the ship that needs to find a path
  * @param tile     the tile to find the path from (should be next tile the ship is about to enter)
