@@ -2562,9 +2562,9 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (ret.Failed()) return ret;
 
 	tile_cur += TileOffsByDiagDir(direction);
-	if (!IsTileType(tile_cur, MP_WATER) || !IsTileFlat(tile_cur)) {
-		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
-	}
+
+	/* Ensure the location where ships dock, has water tracks. */
+	if (TrackStatusToTrackBits(GetTileTrackStatus(tile_cur, TRANSPORT_WATER, 0)) == TRACK_BIT_NONE) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 
 	TileArea dock_area = TileArea(tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
 			_dock_w_chk[direction], _dock_h_chk[direction]);
