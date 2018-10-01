@@ -429,3 +429,24 @@ void PrintWaterRegionDebugInfo(TileIndex tile)
 {
 	GetUpdatedWaterRegion(tile).PrintDebugInfo();
 }
+
+/**
+ * Tests the provided callback function on all tiles of the water patch of the region
+ * and returns the first tile that passes the callback test.
+ * @param callback The test function that will be called for the water patch.
+ * @param water_region_patch Water patch within the water region to test the callback.
+ * @return the first tile which passed the callback test, or INVALID_TILE if the callback failed.
+ */
+TileIndex GetTileInWaterRegionPatch(const WaterRegionPatchDesc &water_region_patch, TestTileIndexCallBack &callback)
+{
+	const WaterRegion region = GetUpdatedWaterRegion(water_region_patch.x, water_region_patch.y);
+
+	/* Check if the region has a tile which passes the callback test. */
+	for (const TileIndex tile : region) {
+		if (region.GetLabel(tile) != water_region_patch.label || !callback(tile)) continue;
+
+		return tile;
+	}
+
+	return INVALID_TILE;
+}
