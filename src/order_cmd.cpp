@@ -2093,6 +2093,13 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 			} else {
 				if (v->type != VEH_AIRCRAFT) {
 					v->SetDestTile(Depot::Get(order->GetDestination())->xy);
+				} else {
+					Aircraft *a = Aircraft::From(v);
+					DestinationID destination = a->current_order.GetDestination();
+					if (a->targetairport != destination) {
+						/* The aircraft is now heading for a different hangar than the next in the orders */
+						a->SetDestTile(a->GetOrderStationLocation(destination));
+					}
 				}
 				return true;
 			}
