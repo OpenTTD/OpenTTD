@@ -2104,7 +2104,19 @@ void UpdateAirplanesOnNewStation(const Station *st)
 	FOR_ALL_AIRCRAFT(v) {
 		if (!v->IsNormalAircraft() || v->targetairport != st->index) continue;
 		assert(v->state == FLYING);
+
+		Order *o = &v->current_order;
+		/* The aircraft is heading to a hangar, but the new station doesn't have one,
+		 * or the aircraft can't land on the new station. Cancel current order. */
+		if (o->IsType(OT_GOTO_DEPOT) && !(o->GetDepotOrderType() & ODTFB_PART_OF_ORDERS) && o->GetDestination() == st->index &&
+				(!st->airport.HasHangar() || !CanVehicleUseStation(v, st))) {
+			o->MakeDummy();
+			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+		}
 		v->pos = v->previous_pos = AircraftGetEntryPoint(v, ap, rotation);
 		UpdateAircraftCache(v);
 	}
+
+	/* Heliports don't have a hangar. Invalidate all go to hangar orders from all aircraft. */
+	if (!st->airport.HasHangar()) RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, st->index, true);
 }

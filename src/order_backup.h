@@ -63,7 +63,7 @@ public:
 
 	static void ClearGroup(GroupID group);
 	static void ClearVehicle(const Vehicle *v);
-	static void RemoveOrder(OrderType type, DestinationID destination);
+	static void RemoveOrder(OrderType type, DestinationID destination, bool hangar);
 };
 
 /**
