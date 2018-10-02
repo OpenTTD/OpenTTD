@@ -727,6 +727,8 @@ public:
 
 	bool NeedsAutorenewing(const Company *c, bool use_renew_setting = true) const;
 
+	bool HasPendingReplace() const;
+
 	bool NeedsServicing() const;
 	bool NeedsAutomaticServicing() const;
 
