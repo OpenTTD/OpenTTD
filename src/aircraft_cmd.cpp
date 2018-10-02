@@ -438,7 +438,9 @@ static void CheckIfAircraftNeedsService(Aircraft *v)
 		FOR_VEHICLE_ORDERS(v, o) {
 			if (o->IsType(OT_GOTO_STATION)) {
 				const Station *ost = Station::Get(o->GetDestination());
-				if (CanVehicleUseStation(v, ost) && ost->airport.HasHangar()) {
+				if (CanVehicleUseStation(v, ost) && (ost->airport.HasHangar() ||
+						/* Helicopters can be serviced at helipads as long as there is no pending replace and serviceathelipad is enabled */
+						(v->subtype == AIR_HELICOPTER && !v->HasPendingReplace() && _settings_game.order.serviceathelipad && ost->airport.GetFTA()->num_helipads))) {
 					hangar_in_o = true;
 					break;
 				}
@@ -1568,6 +1570,14 @@ static void AircraftEventHandler_AtTerminal(Aircraft *v, const AirportFTAClass *
 	/* airport-road is free. We either have to go to another airport, or to the hangar
 	 * ---> start moving */
 
+	if (Station::Get(v->targetairport)->airport.HasHangar()) {
+		if (v->NeedsAutomaticServicing() || (v->subtype == AIR_HELICOPTER && v->HasPendingReplace() && _settings_game.order.serviceathelipad &&
+				(!v->HasDepotOrder() || !(v->current_order.IsType(OT_GOTO_DEPOT) && v->current_order.GetDepotOrderType() != ODTFB_SERVICE)))) {
+			v->current_order.MakeGoToDepot(v->targetairport, ODTFB_SERVICE);
+			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+		}
+	}
+
 	bool go_to_hangar = false;
 	switch (v->current_order.GetType()) {
 		case OT_GOTO_STATION: // ready to fly to another airport
@@ -1626,11 +1636,17 @@ static void AircraftEventHandler_HeliTakeOff(Aircraft *v, const AirportFTAClass 
 	/* get the next position to go to, differs per airport */
 	AircraftNextAirportPos_and_Order(v);
 
-	/* Send the helicopter to a hangar if needed for replacement */
-	if (v->NeedsAutomaticServicing()) {
-		Backup<CompanyByte> cur_company(_current_company, v->owner, FILE_LINE);
-		DoCommand(v->tile, v->index | DEPOT_SERVICE | DEPOT_LOCATE_HANGAR, 0, DC_EXEC, CMD_SEND_VEHICLE_TO_DEPOT);
-		cur_company.Restore();
+	/* Send the helicopter to a hangar if needed for replacement when NeedsAutomaticServicing fails */
+	if (!v->NeedsAutomaticServicing() && v->HasPendingReplace() && _settings_game.order.serviceathelipad) {
+		Order *o = &v->current_order;
+		if (!v->HasDepotOrder() || !(o->IsType(OT_GOTO_DEPOT) && o->GetDepotOrderType() != ODTFB_SERVICE)) {
+			DestinationID destination;
+			if (v->FindClosestDepot(NULL, &destination, NULL)) {
+				o->MakeGoToDepot(destination, ODTFB_SERVICE);
+				AircraftNextAirportPos_and_Order(v);
+				SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+			}
+		}
 	}
 }
 
@@ -1676,13 +1692,6 @@ static void AircraftEventHandler_Landing(Aircraft *v, const AirportFTAClass *apc
 {
 	v->state = ENDLANDING;
 	AircraftLandAirplane(v);  // maybe crash airplane
-
-	/* check if the aircraft needs to be replaced or renewed and send it to a hangar if needed */
-	if (v->NeedsAutomaticServicing()) {
-		Backup<CompanyByte> cur_company(_current_company, v->owner, FILE_LINE);
-		DoCommand(v->tile, v->index | DEPOT_SERVICE, 0, DC_EXEC, CMD_SEND_VEHICLE_TO_DEPOT);
-		cur_company.Restore();
-	}
 }
 
 static void AircraftEventHandler_HeliLanding(Aircraft *v, const AirportFTAClass *apc)
