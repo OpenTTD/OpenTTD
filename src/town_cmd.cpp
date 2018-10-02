@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include "road_internal.h" /* Cleaning up road bits */
 #include "road_cmd.h"
+#include "ship.h"
 #include "landscape.h"
 #include "viewport_func.h"
 #include "cmd_helper.h"
@@ -855,6 +856,60 @@ static bool IsNeighborRoadTile(TileIndex tile, const DiagDirection dir, uint dis
 }
 
 /**
+ * Check whether growing on a half-tile coast tile ends up blocking a water connection
+ *
+ * @param tile The target tile
+ * @return true if building here blocks a water connection
+ */
+static bool GrowingBlocksWaterConnection(TileIndex tile)
+{
+	if (!IsValidTile(tile) || !IsCoastTile(tile)) return false;
+
+	Slope slope = GetTileSlope(tile);
+
+	/* Is this a coast tile with one corner raised ? */
+	if (!IsSlopeWithOneCornerRaised(slope)) return false;
+
+	Corner corner = GetHighestSlopeCorner(slope);
+
+	/* Test opposite tile is valid */
+	static const Direction corner_to_direction[] = { DIR_W, DIR_S, DIR_E, DIR_N };
+	TileIndex opposite_tile = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(corner_to_direction[OppositeCorner(corner)]));
+	if (!IsValidTile(opposite_tile)) return false;
+
+	/* Test adjacent tiles are traversible. */
+	Track track = TrackBitsToTrack(GetTileShipTrackStatus(tile));
+	Trackdir main_trackdir = TrackToTrackdir(track);
+
+	DiagDirection main_dir_1 = TrackdirToExitdir(main_trackdir);
+	DiagDirection main_dir_2 = TrackdirToExitdir(ReverseTrackdir(main_trackdir));
+
+	TrackBits trackbits_1 = GetTileShipTrackStatus(AddTileIndexDiffCWrap(tile, TileIndexDiffCByDiagDir(main_dir_1)));
+	TrackBits trackbits_2 = GetTileShipTrackStatus(AddTileIndexDiffCWrap(tile, TileIndexDiffCByDiagDir(main_dir_2)));
+
+	TrackBits main_track_1 = trackbits_1 & DiagdirReachesTracks(main_dir_1);
+	TrackBits main_track_2 = trackbits_2 & DiagdirReachesTracks(main_dir_2);
+
+	/* Is main tile connected to adjacent tiles? */
+	if (!main_track_1 || !main_track_2) return false;
+
+	Track opposite_track = TrackToOppositeTrack(track);
+	Trackdir oppo_trackdir = TrackToTrackdir(opposite_track);
+
+	TrackBits oppo_track_1 = trackbits_1 & DiagdirReachesTracks(TrackdirToExitdir(oppo_trackdir));
+	TrackBits oppo_track_2 = trackbits_2 & DiagdirReachesTracks(TrackdirToExitdir(ReverseTrackdir(oppo_trackdir)));
+
+	TrackBits mirror = TRACK_BIT_CROSS | (corner & 1 ? TRACK_BIT_HORZ : TRACK_BIT_VERT);
+
+	/* Is opposite tile connected to adjacent tiles? */
+	if (HasTrack(GetTileShipTrackStatus(opposite_tile), opposite_track) &&
+			oppo_track_1 & (main_track_1 ^ mirror) && oppo_track_2 & (main_track_2 ^ mirror)) return false;
+
+	/* There is either no track or an incomplete connection via opposite tile. */
+	return true;
+}
+
+/**
  * Check if a Road is allowed on a given tile
  *
  * @param t The current town
@@ -878,6 +933,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 				DoCommand(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR).Failed()) {
 			return false;
 		}
+		if (GrowingBlocksWaterConnection(tile)) return false;
 	}
 
 	Slope cur_slope = _settings_game.construction.build_on_slopes ? GetFoundationSlope(tile) : GetTileSlope(tile);
@@ -1101,6 +1157,9 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 	/* no water tiles in between? */
 	if (bridge_length == 1) return false;
 
+	/* Don't build the bridge if the bridge head at the destination is traversable by ships */
+	if (GrowingBlocksWaterConnection(bridge_tile)) return false;
+
 	for (uint8 times = 0; times <= 22; times++) {
 		byte bridge_type = RandomRange(MAX_BRIDGES - 1);
 
@@ -1264,6 +1323,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 		/* Don't walk into water. */
 		if (HasTileWaterGround(house_tile)) return;
+		if (GrowingBlocksWaterConnection(house_tile)) return;
 
 		if (!IsValidTile(house_tile)) return;
 
@@ -1313,6 +1373,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 	/* Return if a water tile */
 	if (HasTileWaterGround(tile)) return;
+	if (GrowingBlocksWaterConnection(tile)) return;
 
 	/* Make the roads look nicer */
 	rcmd = CleanUpRoadBits(tile, rcmd);
@@ -1338,6 +1399,7 @@ static bool CanFollowRoad(TileIndex tile, DiagDirection dir)
 	TileIndex target_tile = tile + TileOffsByDiagDir(dir);
 	if (!IsValidTile(target_tile)) return false;
 	if (HasTileWaterGround(target_tile)) return false;
+	if (GrowingBlocksWaterConnection(target_tile)) return false;
 
 	RoadBits target_rb = GetTownRoadBits(target_tile);
 	if (_settings_game.economy.allow_town_roads || _generating_world) {
@@ -2110,6 +2172,9 @@ static inline bool CanBuildHouseHere(TileIndex tile, bool noslope)
 
 	/* building under a bridge? */
 	if (IsBridgeAbove(tile)) return false;
+
+	/* building here blocks a water connection? */
+	if (GrowingBlocksWaterConnection(tile)) return false;
 
 	/* can we clear the land? */
 	return DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR).Succeeded();

@@ -58,6 +58,7 @@ struct Ship FINAL : public SpecializedVehicle<Ship, VEH_SHIP> {
 };
 
 static const uint SHIP_MAX_ORDER_DISTANCE = 130;
+TrackBits GetTileShipTrackStatus(TileIndex tile);
 
 /**
  * Iterate over all ships.

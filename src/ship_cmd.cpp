@@ -67,7 +67,7 @@ bool IsValidImageIndex<VEH_SHIP>(uint8 image_index)
 	return image_index < lengthof(_ship_sprites);
 }
 
-static inline TrackBits GetTileShipTrackStatus(TileIndex tile)
+TrackBits GetTileShipTrackStatus(TileIndex tile)
 {
 	return TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0));
 }
