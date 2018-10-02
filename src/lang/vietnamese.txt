@@ -475,6 +475,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Ảnh chụp m�
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Phóng to đầy đủ ảnh chụp màn hình
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Phóng to mặc định ảnh chụp màn hình
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ảnh màn hình toàn bản đồ
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Hiển thị tốc độ khung hình
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Giới thiệu 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Trình điều chỉnh sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Bật/tắt hiển thị khối nhà
@@ -650,6 +651,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Không sẵn có nhạc nền
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Bài Nhạc
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Tên
@@ -670,11 +672,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Bật/t�
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Hiện cửa số chọn bài nhạc
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Danh sách nhạc - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Bảng Bài Nhạc
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Chương Trình - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Xóa
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Tập danh sách thay đổi
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Xóa chương trình đang chọn ("Tự chọn 1" và "Tự chọn 2")
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Thay đổi lựa chọn danh sách nhạc khác
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click vào bài nhạc để thêm vào chương trình hiện tại (cho "Tự chọn 1" hay "Tự chọn 2")
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Click vào bài nhạc để xóa khỏi chương trình hiện tại (cho "Tự chọn 1" hay "Tự chọn 2")
 
@@ -810,6 +815,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Giám Đốc)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} Tài trợ xây dựng Thị Xã mới {TOWN}!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Một đô thị mới vừa được xây dựng, có tên là {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}{STRING} mới đang được xây dựng gần {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}{STRING} được lên kế hoạch xây gần {TOWN}!
@@ -877,10 +883,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Cửa sổ {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Nhìn ở cửa sổ lớn
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Đổi khung nhìn
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Nhìn vị trí này ở cửa sổ lớn chính
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Chuyển về cửa sổ chính
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Chuyển vị trí từ cửa sổ lớn về cửa sổ nhỏ
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Sao chép vị trí từ cửa sổ này về cửa sổ lớn
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Cấu Hình Trò Chơi
@@ -922,6 +928,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Nam Phi (Z
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Tùy chọn...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgia (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Đồng Rúp Nga mới (RUB)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Xe cộ
@@ -1334,6 +1341,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Màu sắc củ
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Lục
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Lục tối
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Tím
+STR_CONFIG_SETTING_SCROLLMODE                                   :Kiểu cuộn khung nhìn: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Hành xử khi kéo, cuộn bản đồ
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Kéo cuộn khung nhìn kiểu RMB, khoá vị trí con trỏ chuột
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Kéo cuộn kiểu RMB, khoá vị trí con trỏ chuột
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Kéo cuộn bản đồ kiểu RMB
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Kéo cuộn bản đồ kiểu LMB
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Cuộn uyển chuyển cửa sổ: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Điều khiển cách màn hình chính cuộn tới vị trí cụ thể khi nháy chuột vào bản đồ nhỏ hoặc khi gõ lệnh cuộn tới đối tượng trên bản đồ. Nếu bật, thì sẽ cuộn trượt, nếu tắt thì nhảy thẳng tới vị trí đó.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Hiện bảng chú giải đo lường khi dùng các công cụ xây dựng: {STRING}
@@ -2278,6 +2291,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Ghi chú
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Tất cả
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Không
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Lựa chọn công ty nào sẽ được hiển thị
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}không sử dụng
@@ -2687,10 +2701,52 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Nhóm OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Tốc độ khung hình
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Tốc độ khung giả lập game: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Số nhịp đếm giả lập trong mỗi giây
+STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Tốc độ khung hình: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Số khu hình vẽ lại mỗi giây.
+STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Chỉ số vận tốc game hiện tại: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Tốc độ chạy game hiện tại, so với tốc độ bình thường
+STR_FRAMERATE_CURRENT                                           :{WHITE}Hiện tại
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Trung bình
+STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Dữ liệu được tính theo số đo {COMMA}
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} khung/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} khung/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} khung/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{WHITE}Tổng vòng lặp khung hình game:
+STR_FRAMERATE_GL_ECONOMY                                        :{WHITE} Xử lý bốc dỡ hàng:
+STR_FRAMERATE_GL_TRAINS                                         :{WHITE}  Nhịp của tàu hoả:
+STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  Nhịp của xe ô-tô
+STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  Số nhịp của tàu thủy:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE}  Số nhịp của máy bay:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE} Nhịp của bản đồ game:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE}  Độ trễ tính toán đồ thị:
+STR_FRAMERATE_DRAWING                                           :{WHITE}Cách vẽ đồ hoạ game:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE} Khung nhìn toàn bản đồ:
 STR_FRAMERATE_VIDEO                                             :Nguồn xuất hình:
+STR_FRAMERATE_SOUND                                             :{WHITE}Trộn âm thanh:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Vòng lặp khung hình game
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Bốc dỡ hàng
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Nhịp cho tàu hoả
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Số nhịp xe ôtô
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Nhịp của tàu thủy
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Nhịp cho máy bay
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Nhịp của bản đồ
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Độ trễ tính toán đồ thị
+STR_FRAMETIME_CAPTION_DRAWING                                   :Cách vẽ đồ hoạ game
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Khung vẽ cả bản đồ game
+STR_FRAMETIME_CAPTION_VIDEO                                     :Ngõ xuất hình
+STR_FRAMETIME_CAPTION_SOUND                                     :Trộn âm thanh
 ############ End of leave-in-this-order
 
 
@@ -2978,6 +3034,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Nhập t
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Đô Thị
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Không Có -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (đô thị){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Tên các đô thị - nháy vào tên để xem trung tâm đô thị. Ctrl+Click mở cửa sổ mới về vị trí đô thị
 STR_TOWN_POPULATION                                             :{BLACK}Dân số thế giới: {COMMA}
 
@@ -2985,6 +3042,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Dân s�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Thành Phố)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Dân số: {ORANGE}{COMMA}{BLACK}  Toà nhà: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} tháng trước: {ORANGE}{COMMA}{BLACK} tối đa: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Hàng hoá cần để đô thị tăng trưởng:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} được yêu cầu
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} Yêu cầu trong mùa đông
@@ -4231,6 +4289,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... đâ
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... đường quay mặt sai hướng
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... đi qua điểm dừng không thể đi qua góc
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... đi qua điểm dừng không thể có ngã rẽ
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... đường 1 chiều hoặc bị chặn
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Không thể xoá bỏ một phần của ga...
@@ -4482,6 +4541,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Âm thanh gốc
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Âm thanh gốc từ phiên bản Transport Tycoon Deluxe trên Windows
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Gói âm thanh này không có âm thanh nào.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Nhạc gốc từ phiên bản Transport Tycoon Deluxe trên Windows
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Nhạc của nguyên bản Transport Tycoon Deluxe cho DOS.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Nhạc của nguyên bản Transport Tycoon (Original/World Editor) cho DOS.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Gói âm nhạc này không có nhạc nào.
 
 ##id 0x2000
