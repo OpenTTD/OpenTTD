@@ -430,6 +430,38 @@ static void CheckIfAircraftNeedsService(Aircraft *v)
 	} else if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 		v->current_order.MakeDummy();
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+	} else {
+		bool hangar_in_o = false;
+		const Order *o;
+
+		/* Is there at least an airport coupled with a hangar in the orders? */
+		FOR_VEHICLE_ORDERS(v, o) {
+			if (o->IsType(OT_GOTO_STATION)) {
+				const Station *ost = Station::Get(o->GetDestination());
+				if (CanVehicleUseStation(v, ost) && ost->airport.HasHangar()) {
+					hangar_in_o = true;
+					break;
+				}
+			}
+		}
+
+		if (!hangar_in_o || (!CanVehicleUseStation(v, st) && v->state >= TAKEOFF && v->state <= FLYING)) {
+			/* there's no airport coupled with a hangar in the orders, or the aircraft
+			 * can't use the airport, so look for a nearby hangar */
+			const StationID nearest_hangar = FindNearestHangar(v);
+
+			/* v->tile can't be used here, when aircraft is flying v->tile is set to 0 */
+			TileIndex vtile = TileVirtXY(v->x_pos, v->y_pos);
+
+			if (nearest_hangar != INVALID_STATION && ((!CanVehicleUseStation(v, st) && v->state >= TAKEOFF && v->state <= FLYING) || (!st->airport.HasHangar() &&
+					/* is nearest hangar closer than destination? */
+					DistanceSquare(vtile, Station::Get(nearest_hangar)->airport.tile) <= DistanceSquare(vtile, st->airport.tile)))) {
+				/* defer destination, service aircraft at that hangar now */
+				v->current_order.MakeGoToDepot(nearest_hangar, ODTFB_SERVICE);
+				v->dest_tile = v->GetOrderStationLocation(nearest_hangar);
+				SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+			}
+		}
 	}
 }
 
