@@ -140,10 +140,24 @@ static StationID FindNearestHangar(const Aircraft *v)
 
 		/* v->tile can't be used here, when aircraft is flying v->tile is set to 0 */
 		uint distance = DistanceSquare(vtile, st->airport.tile);
-		if (v->acache.cached_max_range_sqr != 0) {
-			/* Check if our current destination can be reached from the depot airport. */
-			const Station *cur_dest = GetTargetAirportIfValid(v);
-			if (cur_dest != nullptr && DistanceSquare(st->airport.tile, cur_dest->airport.tile) > v->acache.cached_max_range_sqr) continue;
+
+		uint max_range = v->acache.cached_max_range_sqr;
+		if (max_range != 0) {
+			/* Determine destinations */
+			const Station *last_dest = GetTargetAirportIfValid(v);
+			const Station *next_dest;
+			if (v->current_order.IsType(OT_GOTO_STATION) ||
+					(v->current_order.IsType(OT_GOTO_DEPOT) && v->current_order.GetDepotActionType() != ODATFB_NEAREST_DEPOT)) {
+				next_dest = Station::GetIfValid(v->current_order.GetDestination());
+				if (next_dest == last_dest) last_dest = Station::GetIfValid(v->last_station_visited);
+			} else {
+				next_dest = Station::GetIfValid(v->GetNextStoppingStation().value);
+			}
+
+			/* Check if our last and next destinations can be reached from the depot airport. */
+			uint last_dist = last_dest != nullptr && last_dest->airport.tile != INVALID_TILE ? DistanceSquare(st->airport.tile, last_dest->airport.tile) : 0;
+			uint next_dist = next_dest != nullptr && next_dest->airport.tile != INVALID_TILE ? DistanceSquare(st->airport.tile, next_dest->airport.tile) : 0;
+			if (last_dist > max_range || next_dist > max_range) continue;
 		}
 		if (distance < best || index == INVALID_STATION) {
 			best = distance;
