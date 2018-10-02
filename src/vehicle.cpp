@@ -177,35 +177,15 @@ void VehicleServiceInDepot(Vehicle *v)
 }
 
 /**
- * Check if the vehicle needs to go to a depot in near future (if a opportunity presents itself) for service or replacement.
- *
- * @see NeedsAutomaticServicing()
- * @return true if the vehicle should go to a depot if a opportunity presents itself.
+ * Test whether there is some pending autoreplace.
+ * @note We do this after the service-interval test.
+ *       There are a lot more reasons for autoreplace to fail than we can test here reasonably.
+ * @see NeedsServicing()
+ * @return true if there is a pending autoreplace
  */
-bool Vehicle::NeedsServicing() const
+bool Vehicle::HasPendingReplace() const
 {
-	/* Stopped or crashed vehicles will not move, as such making unmovable
-	 * vehicles to go for service is lame. */
-	if (this->vehstatus & (VS_STOPPED | VS_CRASHED)) return false;
-
-	/* Are we ready for the next service cycle? */
 	const Company *c = Company::Get(this->owner);
-	if (this->ServiceIntervalIsPercent() ?
-			(this->reliability >= this->GetEngine()->reliability * (100 - this->GetServiceInterval()) / 100) :
-			(this->date_of_last_service + this->GetServiceInterval() >= _date)) {
-		return false;
-	}
-
-	/* If we're servicing anyway, because we have not disabled servicing when
-	 * there are no breakdowns or we are playing with breakdowns, bail out. */
-	if (!_settings_game.order.no_servicing_if_no_breakdowns ||
-			_settings_game.difficulty.vehicle_breakdowns != 0) {
-		return true;
-	}
-
-	/* Test whether there is some pending autoreplace.
-	 * Note: We do this after the service-interval test.
-	 * There are a lot more reasons for autoreplace to fail than we can test here reasonably. */
 	bool pending_replace = false;
 	Money needed_money = c->settings.engine_renew_money;
 	if (needed_money > c->money) return false;
@@ -243,6 +223,35 @@ bool Vehicle::NeedsServicing() const
 	}
 
 	return pending_replace;
+}
+
+/**
+ * Check if the vehicle needs to go to a depot in near future (if a opportunity presents itself) for service or replacement.
+ *
+ * @see NeedsAutomaticServicing()
+ * @return true if the vehicle should go to a depot if a opportunity presents itself.
+ */
+bool Vehicle::NeedsServicing() const
+{
+	/* Stopped or crashed vehicles will not move, as such making unmovable
+	 * vehicles to go for service is lame. */
+	if (this->vehstatus & (VS_STOPPED | VS_CRASHED)) return false;
+
+	/* Are we ready for the next service cycle? */
+	if (this->ServiceIntervalIsPercent() ?
+			(this->reliability >= this->GetEngine()->reliability * (100 - this->GetServiceInterval()) / 100) :
+			(this->date_of_last_service + this->GetServiceInterval() >= _date)) {
+		return false;
+	}
+
+	/* If we're servicing anyway, because we have not disabled servicing when
+	 * there are no breakdowns or we are playing with breakdowns, bail out. */
+	if (!_settings_game.order.no_servicing_if_no_breakdowns ||
+			_settings_game.difficulty.vehicle_breakdowns != 0) {
+		return true;
+	}
+
+	return this->HasPendingReplace();
 }
 
 /**
