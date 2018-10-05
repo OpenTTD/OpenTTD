@@ -40,4 +40,6 @@ extern EngList_SortTypeFunction * const _engine_sort_functions[][11];
 uint GetEngineListHeight(VehicleType type);
 void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selected, int button);
 
+extern int _autoreplace_last_selected_aircraft_type;
+
 #endif /* ENGINE_GUI_H */

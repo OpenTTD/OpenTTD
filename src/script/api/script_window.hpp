@@ -965,6 +965,9 @@ public:
 		/* Train only widgets. */
 		WID_RV_TRAIN_ENGINEWAGON_DROPDOWN            = ::WID_RV_TRAIN_ENGINEWAGON_DROPDOWN,            ///< Dropdown to select engines and/or wagons.
 		WID_RV_TRAIN_WAGONREMOVE_TOGGLE              = ::WID_RV_TRAIN_WAGONREMOVE_TOGGLE,              ///< Button to toggle removing wagons.
+
+		/* Aircraft only widget. */
+		WID_RV_AIRCRAFT_TYPE_DROPDOWN                = ::WID_RV_AIRCRAFT_TYPE_DROPDOWN,                ///< Dropdown menu to select aircraft type.
 	};
 
 	/* automatically generated from ../../widgets/bootstrap_widget.h */

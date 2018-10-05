@@ -31,6 +31,7 @@
 #include "safeguards.h"
 
 void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group);
+int _autoreplace_last_selected_aircraft_type = 1; // Last aircraft type option selected by default (Same aircraft type)
 
 static bool EngineNumberSorter(const EngineID &a, const EngineID &b)
 {
@@ -72,6 +73,15 @@ static const StringID _start_replace_dropdown[] = {
 	INVALID_STRING_ID
 };
 
+static const StringID _autoreplace_aircraft_type_dropdown[] = {
+	STR_REPLACE_ALL_AIRCRAFT_TYPES, // sel_air_type = 0
+	STR_REPLACE_SAME_AIRCRAFT_TYPE, // sel_air_type = 1
+	STR_REPLACE_HELICOPTER,         // sel_air_type = 2
+	STR_REPLACE_SMALL_AEROPLANE,    // sel_air_type = 3
+	STR_REPLACE_LARGE_AEROPLANE,    // sel_air_type = 4
+	INVALID_STRING_ID
+};
+
 /**
  * Window for the autoreplacing of vehicles.
  */
@@ -85,6 +95,7 @@ class ReplaceVehicleWindow : public Window {
 	byte sort_criteria;           ///< Criteria of sorting vehicles.
 	bool descending_sort_order;   ///< Order of sorting vehicles.
 	bool show_hidden_engines;     ///< Whether to show the hidden engines.
+	int sel_air_type;             ///< Type of aircraft selected to list.
 	RailType sel_railtype;        ///< Type of rail tracks selected. #INVALID_RAILTYPE to show all.
 	RoadType sel_roadtype;        ///< Type of road selected. #INVALID_ROADTYPE to show all.
 	Scrollbar *vscroll[2];
@@ -110,6 +121,40 @@ class ReplaceVehicleWindow : public Window {
 		return true;
 	}
 
+	/**
+	 * Figure out if an aircraft should be added to the right list, regarding its type.
+	 * @param from The EngineID of the selected aircraft on the left list.
+	 * @param to   The EngineID of the aircraft to be added to the right list.
+	 * @return \c true if the engine should be added to the right list, else \c false.
+	 */
+	bool GenerateReplaceAircraftList(EngineID from, EngineID to)
+	{
+		const Engine *e_from = Engine::Get(from);
+		const Engine *e_to = Engine::Get(to);
+
+		switch (this->sel_air_type + STR_REPLACE_ALL_AIRCRAFT_TYPES) {
+			case STR_REPLACE_ALL_AIRCRAFT_TYPES: // All aircraft types
+				return true;
+
+			case STR_REPLACE_SAME_AIRCRAFT_TYPE: // Same aircraft type
+				if ((e_from->u.air.subtype == AIR_CTOL) != (e_to->u.air.subtype == AIR_CTOL)) return false;
+				if ((e_from->u.air.subtype == AIR_HELI) != (e_to->u.air.subtype == AIR_HELI)) return false;
+				if ((e_from->u.air.subtype == (AIR_CTOL | AIR_FAST)) != (e_to->u.air.subtype == (AIR_CTOL | AIR_FAST))) return false;
+				return true;
+
+			case STR_REPLACE_HELICOPTER: // Helicopter
+				return e_to->u.air.subtype == AIR_HELI;
+
+			case STR_REPLACE_SMALL_AEROPLANE: // Small aeroplane
+				return e_to->u.air.subtype == AIR_CTOL;
+
+			case STR_REPLACE_LARGE_AEROPLANE: // Large aeroplane
+				return e_to->u.air.subtype == (AIR_CTOL | AIR_FAST);
+
+			default:
+				return false;
+		}
+	}
 
 	/**
 	 * Generate an engines list
@@ -150,6 +195,7 @@ class ReplaceVehicleWindow : public Window {
 				if (num_engines == 0 && EngineReplacementForCompany(Company::Get(_local_company), eid, this->sel_group) == INVALID_ENGINE) continue;
 			} else {
 				if (!CheckAutoreplaceValidity(this->sel_engine[0], eid, _local_company)) continue;
+				if (type == VEH_AIRCRAFT && !this->GenerateReplaceAircraftList(this->sel_engine[0], eid)) continue;
 			}
 
 			list->push_back(eid);
@@ -233,6 +279,7 @@ public:
 		this->sel_engine[0] = INVALID_ENGINE;
 		this->sel_engine[1] = INVALID_ENGINE;
 		this->show_hidden_engines = _engine_sort_show_hidden_engines[vehicletype];
+		this->sel_air_type = _autoreplace_last_selected_aircraft_type;
 
 		this->CreateNestedTree();
 		this->vscroll[0] = this->GetScrollbar(WID_RV_LEFT_SCROLLBAR);
@@ -329,6 +376,17 @@ public:
 						break;
 
 					default: NOT_REACHED();
+				}
+				d.width += padding.width;
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
+
+			case WID_RV_AIRCRAFT_TYPE_DROPDOWN: {
+				Dimension d = GetStringBoundingBox(STR_REPLACE_ALL_AIRCRAFT_TYPES);
+				for (int i = 0; _autoreplace_aircraft_type_dropdown[i] != INVALID_STRING_ID; i++) {
+					d = maxdim(d, GetStringBoundingBox(_autoreplace_aircraft_type_dropdown[i]));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
@@ -458,6 +516,11 @@ public:
 			default: break;
 		}
 
+		if (this->window_number == VEH_AIRCRAFT) {
+			/* Show the last selected aircraft type in the pulldown menu */
+			this->GetWidget<NWidgetCore>(WID_RV_AIRCRAFT_TYPE_DROPDOWN)->widget_data = _autoreplace_aircraft_type_dropdown[sel_air_type];
+		}
+
 		this->DrawWidgets();
 
 		if (!this->IsShaded()) {
@@ -531,6 +594,11 @@ public:
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: // toggle renew_keep_length
 				DoCommandP(0, GetCompanySettingIndex("company.renew_keep_length"), Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1, CMD_CHANGE_COMPANY_SETTING);
 				break;
+
+			case WID_RV_AIRCRAFT_TYPE_DROPDOWN: { // Aircraft type dropdown menu
+				ShowDropDownMenu(this, _autoreplace_aircraft_type_dropdown, sel_air_type, WID_RV_AIRCRAFT_TYPE_DROPDOWN, 0, 0);
+				break;
+			}
 
 			case WID_RV_START_REPLACE: { // Start replacing
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
@@ -618,6 +686,17 @@ public:
 				this->replace_engines = index != 0;
 				this->engines[0].ForceRebuild();
 				this->reset_sel_engine = true;
+				this->SetDirty();
+				break;
+			}
+
+			case WID_RV_AIRCRAFT_TYPE_DROPDOWN: {
+				int temp = index;
+				if (temp == sel_air_type) return; // we didn't select a new one. No need to change anything
+				sel_air_type = temp;
+				_autoreplace_last_selected_aircraft_type = this->sel_air_type;
+				this->vscroll[1]->SetPosition(0);
+				this->engines[1].ForceRebuild();
 				this->SetDirty();
 				break;
 			}
@@ -826,6 +905,60 @@ static WindowDesc _replace_vehicle_desc(
 	_nested_replace_vehicle_widgets, lengthof(_nested_replace_vehicle_widgets)
 );
 
+static const NWidgetPart _nested_replace_aircraft_vehicle_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_RV_CAPTION), SetMinimalSize(433, 14), SetDataTip(STR_REPLACE_VEHICLES_WHITE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, COLOUR_GREY),
+		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(WWT_PANEL, COLOUR_GREY),
+			NWidget(WWT_LABEL, COLOUR_GREY), SetDataTip(STR_REPLACE_VEHICLE_VEHICLES_IN_USE, STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP), SetFill(1, 1), SetMinimalSize(0, 12), SetResize(1, 0),
+		EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_GREY),
+			NWidget(WWT_LABEL, COLOUR_GREY), SetDataTip(STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES, STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP), SetFill(1, 1), SetMinimalSize(0, 12), SetResize(1, 0),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_SORT_ASCENDING_DESCENDING), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 1), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIA),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_RV_SHOW_HIDDEN_ENGINES), SetDataTip(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN, STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_AIRCRAFT_TYPE_DROPDOWN), SetDataTip(STR_BLACK_STRING, STR_REPLACE_HELP_AIRCRAFT_TYPE_DROPDOWN), SetFill(1, 0), SetResize(1, 0),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(WWT_MATRIX, COLOUR_GREY, WID_RV_LEFT_MATRIX), SetMinimalSize(216, 0), SetFill(1, 1), SetMatrixDataTip(1, 0, STR_REPLACE_HELP_LEFT_ARRAY), SetResize(1, 1), SetScrollbar(WID_RV_LEFT_SCROLLBAR),
+		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_RV_LEFT_SCROLLBAR),
+		NWidget(WWT_MATRIX, COLOUR_GREY, WID_RV_RIGHT_MATRIX), SetMinimalSize(216, 0), SetFill(1, 1), SetMatrixDataTip(1, 0, STR_REPLACE_HELP_RIGHT_ARRAY), SetResize(1, 1), SetScrollbar(WID_RV_RIGHT_SCROLLBAR),
+		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_RV_RIGHT_SCROLLBAR),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_LEFT_DETAILS), SetMinimalSize(228, 92), SetResize(1, 0), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_RIGHT_DETAILS), SetMinimalSize(228, 92), SetResize(1, 0), EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_PUSHBUTTON_DROPDOWN, COLOUR_GREY, WID_RV_START_REPLACE), SetMinimalSize(139, 12), SetDataTip(STR_REPLACE_VEHICLES_START, STR_REPLACE_HELP_START_BUTTON),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_INFO_TAB), SetMinimalSize(167, 12), SetDataTip(0x0, STR_REPLACE_HELP_REPLACE_INFO_TAB), SetResize(1, 0), EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_STOP_REPLACE), SetMinimalSize(138, 12), SetDataTip(STR_REPLACE_VEHICLES_STOP, STR_REPLACE_HELP_STOP_BUTTON),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
+	EndContainer(),
+};
+
+static WindowDesc _replace_aircraft_vehicle_desc(
+	WDP_AUTO, "replace_vehicle_aircraft", 456, 118,
+	WC_REPLACE_VEHICLE, WC_NONE,
+	WDF_CONSTRUCTION,
+	_nested_replace_aircraft_vehicle_widgets, lengthof(_nested_replace_aircraft_vehicle_widgets)
+);
+
 /**
  * Show the autoreplace configuration window for a particular group.
  * @param id_g The group to replace the vehicles for.
@@ -838,6 +971,7 @@ void ShowReplaceGroupVehicleWindow(GroupID id_g, VehicleType vehicletype)
 	switch (vehicletype) {
 		case VEH_TRAIN: desc = &_replace_rail_vehicle_desc; break;
 		case VEH_ROAD:  desc = &_replace_road_vehicle_desc; break;
+		case VEH_AIRCRAFT: desc = &_replace_aircraft_vehicle_desc; break;
 		default:        desc = &_replace_vehicle_desc;      break;
 	}
 	new ReplaceVehicleWindow(desc, vehicletype, id_g);

@@ -229,6 +229,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_RAIL_ROAD_TYPE_DROPDOWN,            "WID_RV_RAIL_ROAD_TYPE_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_TRAIN_ENGINEWAGON_DROPDOWN,         "WID_RV_TRAIN_ENGINEWAGON_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_TRAIN_WAGONREMOVE_TOGGLE,           "WID_RV_TRAIN_WAGONREMOVE_TOGGLE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_RV_AIRCRAFT_TYPE_DROPDOWN,             "WID_RV_AIRCRAFT_TYPE_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BB_BACKGROUND,                         "WID_BB_BACKGROUND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BAFD_QUESTION,                         "WID_BAFD_QUESTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BAFD_YES,                              "WID_BAFD_YES");

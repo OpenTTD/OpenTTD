@@ -3732,6 +3732,13 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Vehicles
 STR_REPLACE_ROAD_VEHICLES                                       :Road Vehicles
 STR_REPLACE_TRAM_VEHICLES                                       :Tramway Vehicles
 
+STR_REPLACE_HELP_AIRCRAFT_TYPE_DROPDOWN                         :{BLACK}List the type of aircraft you want the left selected aircraft to be replaced with
+STR_REPLACE_ALL_AIRCRAFT_TYPES                                  :All aircraft types
+STR_REPLACE_SAME_AIRCRAFT_TYPE                                  :Same aircraft type
+STR_REPLACE_HELICOPTER                                          :Helicopter
+STR_REPLACE_SMALL_AEROPLANE                                     :Small aeroplane
+STR_REPLACE_LARGE_AEROPLANE                                     :Large aeroplane
+
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon removal: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing wagons (starting at the front), if replacing the engine would make the train longer
 

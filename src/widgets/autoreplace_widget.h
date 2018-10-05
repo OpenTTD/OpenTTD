@@ -38,6 +38,9 @@ enum ReplaceVehicleWidgets {
 	/* Train only widgets. */
 	WID_RV_TRAIN_ENGINEWAGON_DROPDOWN, ///< Dropdown to select engines and/or wagons.
 	WID_RV_TRAIN_WAGONREMOVE_TOGGLE, ///< Button to toggle removing wagons.
+
+	/* Aircraft only widget. */
+	WID_RV_AIRCRAFT_TYPE_DROPDOWN,   ///< Dropdown menu to select aircraft type.
 };
 
 #endif /* WIDGETS_AUTOREPLACE_WIDGET_H */
