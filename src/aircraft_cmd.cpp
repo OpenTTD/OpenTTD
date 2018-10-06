@@ -635,6 +635,12 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
 	 * and take-off speeds being too low. */
 	speed_limit *= _settings_game.vehicle.plane_speed;
 
+	/* adjust speed for broken vehicles */
+	if (v->vehstatus & VS_AIRCRAFT_BROKEN) {
+		speed_limit = min(speed_limit, SPEED_LIMIT_BROKEN);
+		hard_limit = false;
+	}
+
 	if (v->vcache.cached_max_speed < speed_limit) {
 		if (v->cur_speed < speed_limit) hard_limit = false;
 		speed_limit = v->vcache.cached_max_speed;
@@ -653,9 +659,6 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
 	}
 
 	spd = min(v->cur_speed + (spd >> 8) + (v->subspeed < t), speed_limit);
-
-	/* adjust speed for broken vehicles */
-	if (v->vehstatus & VS_AIRCRAFT_BROKEN) spd = min(spd, SPEED_LIMIT_BROKEN);
 
 	/* updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
