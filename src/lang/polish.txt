@@ -3072,13 +3072,16 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 Zespół OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Liczba renderowanych klatek wideo na sekundę.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Obecny
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE}  Opóźnienie wykresu połączeń:
 STR_FRAMERATE_VIDEO                                             :{WHITE}Wyjście video:
 STR_FRAMERATE_SOUND                                             :{WHITE}Miksowanie dźwięku:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_VIDEO                                     :Wyjście wideo
+STR_FRAMETIME_CAPTION_SOUND                                     :Miksowanie dźwięku
 ############ End of leave-in-this-order
 
 
