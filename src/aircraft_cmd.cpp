@@ -637,8 +637,8 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
 
 	/* adjust speed for broken vehicles */
 	if (v->vehstatus & VS_AIRCRAFT_BROKEN) {
+		if (speed_limit > SPEED_LIMIT_BROKEN) hard_limit = false;
 		speed_limit = min(speed_limit, SPEED_LIMIT_BROKEN);
-		hard_limit = false;
 	}
 
 	if (v->vcache.cached_max_speed < speed_limit) {
