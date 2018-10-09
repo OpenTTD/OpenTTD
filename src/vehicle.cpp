@@ -47,6 +47,7 @@
 #include "effectvehicle_base.h"
 #include "vehiclelist.h"
 #include "bridge_map.h"
+#include "tunnelbridge_map.h"
 #include "tunnel_map.h"
 #include "depot_map.h"
 #include "gamelog.h"
@@ -546,6 +547,69 @@ CommandCost EnsureNoVehicleOnGround(TileIndex tile)
 	 */
 	Vehicle *v = VehicleFromPos(tile, &z, &EnsureNoVehicleProcZ, true);
 	if (v != NULL) return_cmd_error(STR_ERROR_TRAIN_IN_THE_WAY + v->type);
+	return CommandCost();
+}
+
+/**
+ * Procedure testing if a ship is in (one of) the specified track bits.
+ * @param v Vehicle to examine.
+ * @param data Pointer to TrackBits.
+ * @return \a v if conditions are met, else \c NULL.
+ */
+static Vehicle *EnsureNoShipOnTrackProc(Vehicle *v, void *data)
+{
+	if (v->type != VEH_SHIP) return NULL;
+
+	Ship *s = Ship::From(v);
+	TrackBits tb = *(TrackBits *)data;
+	if (s->state & tb) return v;
+
+	return NULL;
+}
+
+/**
+ * Ensure there is no ship on the neighbouring tiles coming into or going
+ * away from the specified tile.
+ * @param tile the specified tile.
+ * @param diag_dir_mask mask containing the diagonal directions to the
+ *                      neighbouring tiles.
+ * @return Succeeded command (no neighbouring ship) or failed command (a
+ *         neighbouring ship is found)
+ */
+CommandCost EnsureNoShipFromDiagDirs(TileIndex tile, byte diag_dir_mask)
+{
+	if (!IsValidTile(tile)) return CommandCost();
+
+	/* Get track bits of the specified tile */
+	TrackBits tile_tb = TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0));
+
+	if ((tile_tb & TRACK_BIT_ALL) != TRACK_BIT_NONE) {
+		/* Ships can walk on main tile, so ensure from which provided diagonal directions a neightbouring ship can't be found */
+		for (DiagDirection diag_dir = DIAGDIR_BEGIN; diag_dir != DIAGDIR_END; diag_dir++) {
+			if (diag_dir_mask & 1 << diag_dir) {
+				/* Make checks on this diagonal direction */
+				TileIndex tc = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDiagDir(diag_dir)); // Move into the neighbouring tile
+				if (!IsValidTile(tc)) continue;
+
+				/* Get track bits of the neighbouring tile that can be reached from the main tile */
+				TrackBits tc_tb = TrackStatusToTrackBits(GetTileTrackStatus(tc, TRANSPORT_WATER, 0)) & DiagdirReachesTracks(diag_dir);
+
+				/* Then also check if there are track bits on the main tile that can be reached from the neighbouring tile */
+				if (tc_tb && DiagdirReachesTracks(ReverseDiagDir(diag_dir)) & tile_tb) {
+					/* We don't check for a ship in neighbouring ship depots, locks or aqueducts,
+					 * because we only care about 1-tile depth, and those structures are more than 1-tile wide. */
+					if (!IsShipDepotTile(tc) && !(IsTileType(tc, MP_WATER) && IsLock(tc)) &&
+							!(IsTileType(tc, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(tc) == TRANSPORT_WATER)) {
+						/* Check if there are no ships on the track bits of the neighbouring tile */
+						if (HasVehicleOnPos(tc, &tc_tb, EnsureNoShipOnTrackProc)) {
+							return_cmd_error(STR_ERROR_SHIP_IN_THE_WAY);
+						}
+					}
+				}
+			}
+		}
+	}
+
 	return CommandCost();
 }
 

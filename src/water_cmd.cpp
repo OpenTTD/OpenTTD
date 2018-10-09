@@ -135,6 +135,11 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		cost.AddCost(ret);
 	}
 
+	byte diag_dir_mask = (axis == AXIS_X) ? (1 << DIAGDIR_SE | 1 << DIAGDIR_NW) : (1 << DIAGDIR_NE | 1 << DIAGDIR_SW);
+	ret = EnsureNoShipFromDiagDirs(tile, diag_dir_mask);
+	if (ret.Succeeded()) ret = EnsureNoShipFromDiagDirs(tile2, diag_dir_mask);
+	if (ret.Failed()) return ret;
+
 	if (flags & DC_EXEC) {
 		Depot *depot = new Depot(tile);
 		depot->build_date = _date;
@@ -254,6 +259,11 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 	CommandCost ret = EnsureNoVehicleOnGround(tile);
 	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile + delta);
 	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile - delta);
+	if (ret.Failed()) return ret;
+
+	byte diag_dir_mask = (dir == DIAGDIR_NE || dir == DIAGDIR_SW) ? (1 << DIAGDIR_SE | 1 << DIAGDIR_NW) : (1 << DIAGDIR_NE | 1 << DIAGDIR_SW);
+	ret = EnsureNoShipFromDiagDirs(tile + delta, diag_dir_mask);
+	if (ret.Succeeded()) ret = EnsureNoShipFromDiagDirs(tile - delta, diag_dir_mask);
 	if (ret.Failed()) return ret;
 
 	/* middle tile */
@@ -1313,7 +1323,9 @@ static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlag flags, int 
 	/* Canals can't be terraformed */
 	if (IsWaterTile(tile) && IsCanal(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_CANAL_FIRST);
 
-	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	if (ret.Succeeded() && EnsureNoShipFromDiagDirs(tile).Failed()) return_cmd_error(STR_ERROR_SHIP_IN_THE_WAY);
+	return ret;
 }
 
 

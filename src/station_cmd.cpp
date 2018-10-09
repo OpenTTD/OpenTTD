@@ -789,6 +789,9 @@ static CommandCost CheckFlatLandAirport(AirportTileTableIterator tile_iter, DoCo
 		ret = DoCommand(tile_iter, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
+
+		ret = EnsureNoShipFromDiagDirs(tile_cur);
+		if (ret.Failed()) return ret;
 	}
 
 	return cost;
@@ -982,6 +985,9 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
 				ret = DoCommand(cur_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 				if (ret.Failed()) return ret;
 				cost.AddCost(ret);
+
+				ret = EnsureNoShipFromDiagDirs(cur_tile);
+				if (ret.Failed()) return ret;
 			}
 
 			uint roadbits_to_build = CountBits(rts) * 2 - num_roadbits;
@@ -2503,6 +2509,9 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	WaterClass wc = GetWaterClass(tile_cur);
 
 	ret = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	if (ret.Failed()) return ret;
+
+	ret = EnsureNoShipFromDiagDirs(tile_cur, (1 << direction | 1 << ChangeDiagDir(direction, DIAGDIRDIFF_90RIGHT) | 1 << ChangeDiagDir(direction, DIAGDIRDIFF_90LEFT)));
 	if (ret.Failed()) return ret;
 
 	tile_cur += TileOffsByDiagDir(direction);
