@@ -385,7 +385,7 @@ void OpenBrowser(const char *url)
 /** Callback structure of statements to be executed after the NewGRF scan. */
 struct AfterNewGRFScan : NewGRFScanCallback {
 	Year startyear;                    ///< The start year.
-	uint generation_seed;              ///< Seed for the new game.
+	uint32 generation_seed;            ///< Seed for the new game.
 	char *dedicated_host;              ///< Hostname for the dedicated server.
 	uint16 dedicated_port;             ///< Port for the dedicated server.
 	char *network_conn;                ///< Information about the server to connect to, or NULL.
@@ -393,6 +393,8 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	const char *join_company_password; ///< The password to join the company with.
 	bool *save_config_ptr;             ///< The pointer to the save config setting.
 	bool save_config;                  ///< The save config setting.
+
+	assert_compile(sizeof(generation_seed) == sizeof(_settings_game.game_creation.generation_seed));
 
 	/**
 	 * Create a new callback.
@@ -666,7 +668,7 @@ int openttd_main(int argc, char *argv[])
 
 			goto exit_noshutdown;
 		}
-		case 'G': scanner->generation_seed = atoi(mgo.opt); break;
+		case 'G': scanner->generation_seed = strtoul(mgo.opt, NULL, 10); break;
 		case 'c': free(_config_file); _config_file = stredup(mgo.opt); break;
 		case 'x': scanner->save_config = false; break;
 		case 'h':
