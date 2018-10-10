@@ -870,7 +870,7 @@ void StartScenarioEditor()
  * Start a normal game without the GUI.
  * @param seed The seed of the new game.
  */
-void StartNewGameWithoutGUI(uint seed)
+void StartNewGameWithoutGUI(uint32 seed)
 {
 	/* GenerateWorld takes care of the possible GENERATE_NEW_SEED value in 'seed' */
 	_settings_newgame.game_creation.generation_seed = seed;
