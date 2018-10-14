@@ -61,7 +61,7 @@ static inline bool IsValidTrackdirForRoadVehicle(Trackdir trackdir)
  */
 static inline bool IsValidTrackdir(Trackdir trackdir)
 {
-	return (1 << trackdir & TRACKDIR_BIT_MASK) != TRACKDIR_BIT_NONE;
+	return trackdir != INVALID_TRACKDIR && ((1 << trackdir & TRACKDIR_BIT_MASK) != TRACKDIR_BIT_NONE);
 }
 
 /**

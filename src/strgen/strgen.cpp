@@ -215,7 +215,10 @@ bool CompareFiles(const char *n1, const char *n2)
 	if (f2 == NULL) return false;
 
 	FILE *f1 = fopen(n1, "rb");
-	if (f1 == NULL) error("can't open %s", n1);
+	if (f1 == NULL) {
+		fclose(f2);
+		error("can't open %s", n1);
+	}
 
 	size_t l1, l2;
 	do {

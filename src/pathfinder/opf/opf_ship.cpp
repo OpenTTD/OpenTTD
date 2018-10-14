@@ -145,6 +145,7 @@ static uint FindShipTrack(const Ship *v, TileIndex tile, DiagDirection dir, Trac
 
 	Track best_track = INVALID_TRACK;
 
+	assert(bits != TRACK_BIT_NONE);
 	do {
 		Track i = RemoveFirstTrack(&bits);
 
@@ -176,7 +177,7 @@ good:;
 		best_length = pfs.best_length;
 bad:;
 
-	} while (bits != 0);
+	} while (bits != TRACK_BIT_NONE);
 
 	*track = best_track;
 	return best_bird_dist;

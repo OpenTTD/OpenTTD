@@ -719,7 +719,7 @@ void UpdateTownCargoTotal(Town *t)
 static void UpdateTownCargoes(Town *t, TileIndex start, bool update_total = true)
 {
 	CargoArray accepted, produced;
-	CargoTypes dummy;
+	CargoTypes dummy = 0;
 
 	/* Gather acceptance for all houses in an area around the start tile.
 	 * The area is composed of the square the tile is in, extended one square in all
