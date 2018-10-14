@@ -592,7 +592,6 @@ struct MusicTrackSelectionWindow : public Window {
 				break;
 			default:
 				NOT_REACHED();
-				break;
 		}
 	}
 };
