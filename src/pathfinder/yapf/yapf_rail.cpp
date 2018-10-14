@@ -28,6 +28,8 @@ template <typename Tpf> void DumpState(Tpf &pf1, Tpf &pf2)
 	pf2.DumpBase(dmp2);
 	FILE *f1 = fopen("yapf1.txt", "wt");
 	FILE *f2 = fopen("yapf2.txt", "wt");
+	assert(f1 != NULL);
+	assert(f2 != NULL);
 	fwrite(dmp1.m_out.Data(), 1, dmp1.m_out.Size(), f1);
 	fwrite(dmp2.m_out.Data(), 1, dmp2.m_out.Size(), f2);
 	fclose(f1);

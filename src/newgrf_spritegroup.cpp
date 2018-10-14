@@ -154,6 +154,7 @@ static uint32 RotateRight(uint32 val, uint32 rot)
 {
 	/* Do not rotate more than necessary */
 	rot %= 32;
+	assert(rot > 0);
 
 	return (val >> rot) | (val << (32 - rot));
 }

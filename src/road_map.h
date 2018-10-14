@@ -449,6 +449,7 @@ enum Roadside {
 	ROADSIDE_GRASS            = 1, ///< Road on grass
 	ROADSIDE_PAVED            = 2, ///< Road with paved sidewalks
 	ROADSIDE_STREET_LIGHTS    = 3, ///< Road with street lights on paved sidewalks
+	// 4 is unused for historical reasons
 	ROADSIDE_TREES            = 5, ///< Road with trees on paved sidewalks
 	ROADSIDE_GRASS_ROAD_WORKS = 6, ///< Road on grass with road works
 	ROADSIDE_PAVED_ROAD_WORKS = 7, ///< Road with sidewalks and road works

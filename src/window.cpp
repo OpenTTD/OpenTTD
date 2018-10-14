@@ -938,6 +938,8 @@ static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bo
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 {
 	Window *w;
+
+	DrawPixelInfo *old_dpi = _cur_dpi;
 	DrawPixelInfo bk;
 	_cur_dpi = &bk;
 
@@ -951,6 +953,7 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 			DrawOverlappedWindow(w, max(left, w->left), max(top, w->top), min(right, w->left + w->width), min(bottom, w->top + w->height));
 		}
 	}
+	_cur_dpi = old_dpi;
 }
 
 /**
