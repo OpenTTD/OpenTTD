@@ -3472,8 +3472,6 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 								} else {
 									/* Declared as been valid, can be used */
 									itt[k].gfx = tempid;
-									size = k + 1;
-									copy_from = itt;
 								}
 							} else if (itt[k].gfx == 0xFF) {
 								itt[k].ti.x = (int8)GB(itt[k].ti.x, 0, 8);
@@ -3787,8 +3785,6 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 								} else {
 									/* Declared as been valid, can be used */
 									att[k].gfx = tempid;
-									size = k + 1;
-									copy_from = att;
 								}
 							} else if (att[k].gfx == 0xFF) {
 								att[k].ti.x = (int8)GB(att[k].ti.x, 0, 8);

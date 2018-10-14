@@ -170,7 +170,7 @@ void str_fix_scc_encoded(char *str, const char *last)
 		if ((len == 0 && str + 4 > last) || str + len > last) break;
 
 		WChar c;
-		len = Utf8Decode(&c, str);
+		Utf8Decode(&c, str);
 		if (c == '\0') break;
 
 		if (c == 0xE028 || c == 0xE02A) {

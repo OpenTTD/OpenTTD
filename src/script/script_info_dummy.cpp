@@ -92,7 +92,7 @@ void Script_CreateDummy(HSQUIRRELVM vm, StringID string, const char *type)
 		p = newline + 1;
 	} while (newline != NULL);
 
-	dp = strecpy(dp, "  }\n}\n", lastof(dummy_script));
+	strecpy(dp, "  }\n}\n", lastof(dummy_script));
 
 	/* 3) We translate the error message in the character format that Squirrel wants.
 	 *    We can use the fact that the wchar string printing also uses %s to print

@@ -498,11 +498,6 @@ const ParagraphLayouter::Line *FallbackParagraphLayout::NextLine(int max_width)
 		return l;
 	}
 
-	const WChar *begin = this->buffer;
-	const WChar *last_space = NULL;
-	const WChar *last_char = begin;
-	int width = 0;
-
 	int offset = this->buffer - this->buffer_begin;
 	FontMap::iterator iter = this->runs.Begin();
 	while (iter->first <= offset) {
@@ -513,6 +508,10 @@ const ParagraphLayouter::Line *FallbackParagraphLayout::NextLine(int max_width)
 	const FontCache *fc = iter->second->fc;
 	const WChar *next_run = this->buffer_begin + iter->first;
 
+	const WChar *begin = this->buffer;
+	const WChar *last_space = NULL;
+	const WChar *last_char;
+	int width = 0;
 	for (;;) {
 		WChar c = *this->buffer;
 		last_char = this->buffer;
