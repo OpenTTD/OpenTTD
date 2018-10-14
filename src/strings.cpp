@@ -818,7 +818,6 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				sub_args.ClearTypeInformation();
 				memset(sub_args_need_free, 0, sizeof(sub_args_need_free));
 
-				const char *s = str;
 				char *p;
 				uint32 stringid = strtoul(str, &p, 16);
 				if (*p != ':' && *p != '\0') {
@@ -837,7 +836,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				int i = 0;
 				while (*p != '\0' && i < 20) {
 					uint64 param;
-					s = ++p;
+					const char *s = ++p;
 
 					/* Find the next value */
 					bool instring = false;

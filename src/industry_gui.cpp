@@ -508,7 +508,6 @@ public:
 				y += FONT_HEIGHT_NORMAL;
 
 				/* Get the additional purchase info text, if it has not already been queried. */
-				str = STR_NULL;
 				if (HasBit(indsp->callback_mask, CBM_IND_FUND_MORE_TEXT)) {
 					uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, NULL, this->selected_type, INVALID_TILE);
 					if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
