@@ -2445,7 +2445,6 @@ void UpdateTileSelection()
 					break;
 				default:
 					NOT_REACHED();
-					break;
 			}
 			_thd.new_pos.x = x1 & ~TILE_UNIT_MASK;
 			_thd.new_pos.y = y1 & ~TILE_UNIT_MASK;
