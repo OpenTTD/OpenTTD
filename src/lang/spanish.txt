@@ -52,7 +52,7 @@ STR_CARGO_PLURAL_RUBBER                                         :{G=m}Caucho
 STR_CARGO_PLURAL_SUGAR                                          :{G=m}Azúcar
 STR_CARGO_PLURAL_TOYS                                           :{G=m}Juguetes
 STR_CARGO_PLURAL_CANDY                                          :{G=m}Caramelos
-STR_CARGO_PLURAL_COLA                                           :{G=f}Cola
+STR_CARGO_PLURAL_COLA                                           :{G=f}Bebida de Cola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=m}Algodón de Azúcar
 STR_CARGO_PLURAL_BUBBLES                                        :{G=f}Burbujas
 STR_CARGO_PLURAL_TOFFEE                                         :{G=m}Tofes
@@ -476,6 +476,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pant
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura con zoom de cerca
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Captura con zoom por defecto
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de mapa completo
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Mostrar FPS(Fotogramas por segundo)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Acerca de 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador de sprites
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Activar cajas delimitadoras
@@ -649,6 +650,7 @@ STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLA
 STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MÁX
 STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}No hay música disponible
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
@@ -939,7 +941,7 @@ STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francés
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alemán
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Inglés (Adicional)
 STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latinoamericano
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Tontos/Absurdos
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Tontos/Absurdos (Inglés)
 STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Sueco
 STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Holandés
 STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finlandés
@@ -1335,6 +1337,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color a usar pa
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde oscuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
+STR_CONFIG_SETTING_SCROLLMODE                                   :Desplazamiento de vista: {STRING}¶
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Modo de recorrer la vista sobre el mapa¶
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Desplazar la vista con clic derecho, ratón en posición fija¶
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Recorrer mapa con clic derecho, ratón en posición fija¶
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Recorrer mapa con clic derecho¶
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Recorrer mapa con clic izquierdo¶
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desplazamiento de vista suavizado: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla la forma en la que la vista principal se mueve a una posición específica como resultado de hacer click en el mapa o al enviar la orden de moverse a un objeto determinado del mapa. Si se activa, la vista se mueve de forma suave. Si se desactiva, la vista se mueve directamente al destino
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas usando las herramientas de construcción: {STRING}
@@ -1989,7 +1997,7 @@ STR_NETWORK_LANG_CZECH                                          :Checo
 STR_NETWORK_LANG_DANISH                                         :Danés
 STR_NETWORK_LANG_DUTCH                                          :Alemán
 STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Fines
+STR_NETWORK_LANG_FINNISH                                        :Finlandés
 STR_NETWORK_LANG_HUNGARIAN                                      :Húngaro
 STR_NETWORK_LANG_ICELANDIC                                      :Islandés
 STR_NETWORK_LANG_ITALIAN                                        :Italiano
@@ -2007,7 +2015,7 @@ STR_NETWORK_LANG_SPANISH                                        :Español
 STR_NETWORK_LANG_SWEDISH                                        :Sueco
 STR_NETWORK_LANG_TURKISH                                        :Turco
 STR_NETWORK_LANG_UKRAINIAN                                      :Ucraniano
-STR_NETWORK_LANG_AFRIKAANS                                      :Africano
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikáns
 STR_NETWORK_LANG_CROATIAN                                       :Croata
 STR_NETWORK_LANG_CATALAN                                        :Catalán
 STR_NETWORK_LANG_ESTONIAN                                       :Estonio
@@ -2320,7 +2328,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converti
 
 STR_RAIL_NAME_RAILROAD                                          :Ferrocarril
 STR_RAIL_NAME_ELRAIL                                            :Ferrocarril eléctrico
-STR_RAIL_NAME_MONORAIL                                          :Monorraíl
+STR_RAIL_NAME_MONORAIL                                          :Monorriel
 STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
@@ -2688,9 +2696,52 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 El equipo OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION :{WHITE}FPS
+STR_FRAMERATE_CAPTION_SMALL :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP :{WHITE}Simulación: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP :{BLACK}Número de ticks simulados por segundo.
+STR_FRAMERATE_RATE_BLITTER :{WHITE}FPS de gráficos: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP :{BLACK}Número de cuadros por segundo.
+STR_FRAMERATE_SPEED_FACTOR :{WHITE}Factor de velocidad de juego actual: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP :{BLACK}Rapidez actual del juego comparada con la esperada durante una simulación normal.
+STR_FRAMERATE_CURRENT :{WHITE}Actual
+STR_FRAMERATE_AVERAGE :{WHITE}Promedio
+STR_FRAMERATE_DATA_POINTS :{WHITE}Informació de {COMMA} mediciones
+STR_FRAMERATE_MS_GOOD :{LTBLUE}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_WARN :{YELLOW}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_BAD :{RED}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_FPS_GOOD :{LTBLUE}{DECIMAL}{WHITE} cuadros/s
+STR_FRAMERATE_FPS_WARN :{YELLOW}{DECIMAL}{WHITE} cuadros/s
+STR_FRAMERATE_FPS_BAD :{RED}{DECIMAL}{WHITE} cuadros/s
+STR_FRAMERATE_GRAPH_MILLISECONDS :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP :{WHITE}Bucles de juego totales:
+STR_FRAMERATE_GL_ECONOMY :{WHITE} Manejo de cargamento:
+STR_FRAMERATE_GL_TRAINS :{WHITE} Ticks de trenes:
+STR_FRAMERATE_GL_ROADVEHS :{WHITE} Ticks de vehículos de carretera:
+STR_FRAMERATE_GL_SHIPS :{WHITE} Ticks de barcos:
+STR_FRAMERATE_GL_AIRCRAFT :{WHITE} Ticks de aeronaves:
+STR_FRAMERATE_GL_LANDSCAPE :{WHITE} Ticks de mapa:
+STR_FRAMERATE_GL_LINKGRAPH :{WHITE} Retraso en gráfica de distribución:
+STR_FRAMERATE_DRAWING :{WHITE}Presentación de gráficos:
+STR_FRAMERATE_DRAWING_VIEWPORTS :{WHITE} Ventanas de vista generales:
+STR_FRAMERATE_VIDEO :{WHITE}Salida de video:
+STR_FRAMERATE_SOUND :{WHITE}Mezcla de sonido:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP :Bucle de juego
+STR_FRAMETIME_CAPTION_GL_ECONOMY :Manejo de cargamento
+STR_FRAMETIME_CAPTION_GL_TRAINS :Ticks de trenes
+STR_FRAMETIME_CAPTION_GL_ROADVEHS :Ticks de vehículos de carretera
+STR_FRAMETIME_CAPTION_GL_SHIPS :Ticks de barcos
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT :Ticks de aeronaves
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE :Ticks de mapa
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH :Retraro en gráfica de distribución
+STR_FRAMETIME_CAPTION_DRAWING :Presentación de gráficos
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS :Presentación de ventanas de vista generales
+STR_FRAMETIME_CAPTION_VIDEO :Salida de video
+STR_FRAMETIME_CAPTION_SOUND :Mezcla de sonido!
 ############ End of leave-in-this-order
 
 
