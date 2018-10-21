@@ -874,9 +874,19 @@ public:
 	}
 };
 
+#if defined(WITH_COCOA) && !defined(STRGEN) && !defined(SETTINGSGEN)
+/* static */ StringIterator *StringIterator::Create()
+{
+	StringIterator *i = OSXStringIterator::Create();
+	if (i != NULL) return i;
+
+	return new DefaultStringIterator();
+}
+#else
 /* static */ StringIterator *StringIterator::Create()
 {
 	return new DefaultStringIterator();
 }
+#endif /* defined(WITH_COCOA) && !defined(STRGEN) && !defined(SETTINGSGEN) */
 
 #endif

@@ -12,6 +12,32 @@
 #ifndef STRING_OSX_H
 #define STRING_OSX_H
 
+#include "../../gfx_layout.h"
+#include "../../string_base.h"
+#include <vector>
+
+/** String iterator using CoreText as a backend. */
+class OSXStringIterator : public StringIterator {
+	/** Break info for a character. */
+	struct CharInfo {
+		bool word_stop : 1; ///< Code point is suitable as a word break.
+		bool char_stop : 1; ///< Code point is the start of a grapheme cluster, i.e. a "character".
+	};
+
+	std::vector<CharInfo> str_info;      ///< Break information for each code point.
+	std::vector<size_t>   utf16_to_utf8; ///< Mapping from UTF-16 code point position to index in the UTF-8 source string.
+
+	size_t cur_pos; ///< Current iteration position.
+
+public:
+	virtual void SetString(const char *s);
+	virtual size_t SetCurPosition(size_t pos);
+	virtual size_t Next(IterType what);
+	virtual size_t Prev(IterType what);
+
+	static StringIterator *Create();
+};
+
 
 void MacOSSetCurrentLocaleName(const char *iso_code);
 int MacOSStringCompare(const char *s1, const char *s2);
