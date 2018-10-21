@@ -22,13 +22,9 @@
 #include "../debug.h"
 #include "../base_media_base.h"
 
-#define Rect        OTTDRect
-#define Point       OTTDPoint
 #include <CoreServices/CoreServices.h>
 #include <AudioUnit/AudioUnit.h>
 #include <AudioToolbox/AudioToolbox.h>
-#undef Rect
-#undef Point
 
 #include "../safeguards.h"
 
