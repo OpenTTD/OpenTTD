@@ -33,7 +33,7 @@ STR_CARGO_PLURAL_COAL                                           :{G=m}Carvão
 STR_CARGO_PLURAL_MAIL                                           :{G=f}Correspondências
 STR_CARGO_PLURAL_OIL                                            :{G=m}Petróleo
 STR_CARGO_PLURAL_LIVESTOCK                                      :{G=m}Gado
-STR_CARGO_PLURAL_GOODS                                          :{G=f}Bens
+STR_CARGO_PLURAL_GOODS                                          :{G=m}Bens
 STR_CARGO_PLURAL_GRAIN                                          :{G=m}Cereais
 STR_CARGO_PLURAL_WOOD                                           :{G=f}Madeira
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Minério de Ferro
@@ -147,7 +147,7 @@ STR_ABBREV_MAIZE                                                :{TINY_FONT}MI
 STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
 STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
 STR_ABBREV_FOOD                                                 :{TINY_FONT}AL
-STR_ABBREV_PAPER                                                :{TINY_FONT}PL
+STR_ABBREV_PAPER                                                :{TINY_FONT}PP
 STR_ABBREV_GOLD                                                 :{TINY_FONT}OU
 STR_ABBREV_WATER                                                :{TINY_FONT}AG
 STR_ABBREV_WHEAT                                                :{TINY_FONT}TG
@@ -220,7 +220,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lb
 STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}kgf
 STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}pés
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}pé{P "" s}
 STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
@@ -476,6 +476,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Captura de tela
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ampliado em captura de tela
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Captura de tela em ampliação padrão
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de tela do mapa inteiro
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Exibir taxa de quadros
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de "sprites"
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Alternar caixas limítrofes
@@ -651,6 +652,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Nenhuma música disponível
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Faixa
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Título
@@ -671,11 +673,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Alternar
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Exibir janela de seleção de faixas de música
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Programação Musical - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} '{STRING}'
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Índice de faixas
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programa - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Limpar
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Alterar set
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Limpar programa atual (apenas Personalizado 1 ou Personalizado 2)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Altera a seleção de músicas para outro set instalado
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clique na faixa de música para a adicionar ao programa atual (apenas Personalizado 1 ou Personalizado 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clique na faixa de música para remover do programa atual (apenas Personalizado 1 ou Personalizado 2)
 
@@ -811,6 +816,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Gerente)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} patrocinou a construção da nova cidade {TOWN}!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Uma nova cidade, {TOWN}, foi construída!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Nov{G o a} {STRING} em construção próximo a {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Nov{G o a} {STRING} sendo plantada próximo a {TOWN}!
@@ -878,10 +884,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Janela {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar para janela
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Alterar visualização
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar o local da tela principal para esta janela
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Colar da janela
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colar a localização desta janela para a tela principal
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Colar da visualização principal
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colar a localização desta janela para a visualização principal
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opções do Jogo
@@ -923,6 +929,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Sul-Africa
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari da Georgia
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novo Rublo Russo (RUB)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automóveis
@@ -1335,8 +1342,14 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Cor do terreno 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde escuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
+STR_CONFIG_SETTING_SCROLLMODE                                   :Comportamento de rolamento da janela: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento ao rolar o mapa
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Mover vista com BDM, posição do mouse travada
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mover mapa com BDM, posição do mouse travada
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Mover mapa com BDM
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Move o mapa com BEM
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Suavizar rolamento da janela: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a janela principal rola para uma posição específica quando clicado no minimapa ou após localizar um objeto. Ativado torna o rolamento suave. Desativado torna o rolamento instanâneo
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a janela principal rola para uma posição específica quando clicado no minimapa ou após localizar um objeto. Ativado torna o rolamento suave. Desativado torna o rolamento instantâneo
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Exibe distâncias quando usar ferramentas de construção: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Exibe distâncias e diferenças de altitude quando clicando e arrastando enquanto constrói
 STR_CONFIG_SETTING_LIVERIES                                     :Exibir cores avançadas: {STRING}
@@ -2279,6 +2292,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda 
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Todas
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Nenhuma
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Selecione companhias a serem exibidas
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}não utilizado
@@ -2688,9 +2702,48 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 A equipe do OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Taxa de quadros
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Taxa de simulação: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Número de tiques simulados por segundo
+STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Taxa de quadros: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Número de quadros renderizados por segundo.
+STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Fator de velocidade do jogo atual: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Quão rápido o jogo está sendo executado, comparado com a velocidade esperada na simulação normal
+STR_FRAMERATE_CURRENT                                           :{WHITE}Atual
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Médio
+STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Dados baseados em {COMMA} medidas
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} quadros/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} quadros/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} quadros/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_ECONOMY                                        :{WHITE}  Manuseio de carga:
+STR_FRAMERATE_GL_TRAINS                                         :{WHITE}  Tiques de trem:
+STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  Tiques de automóveis:
+STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  Tiques de embarcação:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE}  Tiques de aeronave:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE}  Tiques do mundo:
+STR_FRAMERATE_DRAWING                                           :{WHITE}Renderizações de gráficos:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE}  Visualizações do mundo:
+STR_FRAMERATE_VIDEO                                             :{WHITE}Saída de vídeo:
+STR_FRAMERATE_SOUND                                             :{WHITE}Mixagem de áudio:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manuseio de carga
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Tiques de trem
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Tiques de automóveis
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Tiques de embarcação
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Tiques de aeronave:
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Tiques do mundo
+STR_FRAMETIME_CAPTION_DRAWING                                   :Renderizações de gráficos
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Renderização da janela principal
+STR_FRAMETIME_CAPTION_VIDEO                                     :Saída de vídeo
+STR_FRAMETIME_CAPTION_SOUND                                     :Mixagem de áudio
 ############ End of leave-in-this-order
 
 
@@ -2978,6 +3031,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Coloque 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Cidades
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nenhum -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Cidade){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomes das cidades - clique no nome para centralizar a visualização principal na cidade. Ctrl+Clique abre uma nova janela na localização da cidade
 STR_TOWN_POPULATION                                             :{BLACK}População mundial: {COMMA}
 
@@ -2985,6 +3039,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Populaç
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Cidade)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}População: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} últ. mês: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necessária para prover o crescimento:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} necessário(a)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} necessário no inverno
@@ -4231,6 +4286,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... é u
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... rua na direção errada
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... paradas "drive-thru" não podem ter esquinas
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... paradas "drive-thru" não podem ter junções
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... rua é mão única ou está bloqueada
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Impossível remover parte da estação...
@@ -4299,7 +4355,7 @@ STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Impossí
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Remova os semáforos antes
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tipo de linha não apropriado
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Remova a ferrovia antes
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Rua é mão única ou está bloqueado
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Rua é mão única ou está bloqueada
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Cruzamentos de nível não são permitidos para esse tipo de trilho
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Impossível construir sinais aqui...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossível construir ferrovia aqui...
@@ -4482,6 +4538,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Sons Originais 
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Sons Originais do Transport Tycoon Deluxe, Edição Windows.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Um pacote de sons sem sons.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Música Original do Transport Tycoon Deluxe, Edição Windows
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Música Original do Transport Tycoon Deluxe DOS.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Música Original do Transport Tycoon DOS
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Um pacote de músicas sem músicas.
 
 ##id 0x2000
