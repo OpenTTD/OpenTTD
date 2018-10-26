@@ -475,6 +475,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Kuvakaappaus
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Täysin lähennetty kuvakaappaus
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Kuvakaappaus oletuslähennystasolla
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Koko kartan kuvakaappaus
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Näytä kuvataajuus
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tietoja OpenTTD:stä
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-kohdistaja
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Reunat päälle/pois
@@ -650,6 +651,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Musiikkia ei ole saatavilla
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Raita
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Nimi
@@ -810,6 +812,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(pääjohtaja)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} rahoitti uuden kaupungin, {TOWN}, rakentamista!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Uusi kaupunki {TOWN} rakennettu!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Uusi {STRING} rakennetaan kaupungin {TOWN} lähistölle!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Uusi {STRING} istutetaan kaupungin {TOWN} lähistölle!
@@ -1334,6 +1337,10 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Maaston väri k
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Vihreä
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tummanvihreä
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violetti
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Toiminta karttaa vieritettäessä
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Siirrä karttaa hiiren oikealla painikkeella, hiiren sijainti lukiten
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Siirrä karttaa hiiren oikealla painikkeella
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Siirrä karttaa hiiren vasemmalla painikkeella
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Näkymän tasainen vieritys: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Hallitse miten päänäkymä siirtyy valittuun paikkaan karttaa klikattaessa tai käytettäessä komentoa joka muuttaa näkymän sijaintia. Mikäli käytössä, päänäkymä siirtyy uuteen sijaintiin pehmeäesti, muutoin se hyppää suoraan valittuun sijaintiin
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Näytä mittauksen työkaluvihje, kun käytetään rakennustyökaluja: {STRING}
@@ -1593,7 +1600,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Tavallinen
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Nopea
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Erittäin nopea
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Suurkaupunkien osuus: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Suurkaupungiksi muuttuvien kaupunkien määrä, eli kaupungit jotka ovat suurempia ja kasvavat nopeammin
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Suurkaupungiksi muuttuvien kaupunkien määrä, eli suurempana aloittavat ja nopeammin kasvavat kaupungit
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 / {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ei yhtään
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Kasvukerroin alussa: {STRING}
@@ -2278,6 +2285,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Rahtivir
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Kaikki
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Ei mitään
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Valitse näytettävät yhtiöt
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}käyttämätön
@@ -2687,9 +2695,23 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 The OpenTTD team
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Kuvataajuus
+STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Simulaationopeus: {STRING}
+STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Grafiikan kuvataajuus: {STRING}
+STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Pelin nykyinen nopeuskerroin: {DECIMAL}×
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} kuvaa/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} kuvaa/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} kuvaa/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_VIDEO                                             :{WHITE}Videolähtö:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_VIDEO                                     :Videolähtö
 ############ End of leave-in-this-order
 
 
@@ -2977,6 +2999,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Syötä 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Kaupungit
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ei mitään -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (suurkaup.){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Kaupunkien nimet - nimen klikkaaminen keskittää päänäkymän kaupunkiin. Ctrl+Klik avaa uuden näkymäikkunan kaupungin sijaintiin
 STR_TOWN_POPULATION                                             :{BLACK}Maailman asukasluku: {COMMA}
 
@@ -4229,6 +4252,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... kaup
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... tie on väärin päin
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... läpiajettavissa pysäkeissä ei voi olla mutkia
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... läpiajettavissa pysäkeissä ei voi olla risteyksiä
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... tie on yksisuuntainen tai suljettu
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Aseman osaa ei voi poistaa...
