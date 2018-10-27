@@ -394,8 +394,6 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	bool *save_config_ptr;             ///< The pointer to the save config setting.
 	bool save_config;                  ///< The save config setting.
 
-	assert_compile(sizeof(generation_seed) == sizeof(_settings_game.game_creation.generation_seed));
-
 	/**
 	 * Create a new callback.
 	 * @param save_config_ptr Pointer to the save_config local variable which
@@ -407,6 +405,9 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 			join_server_password(NULL), join_company_password(NULL),
 			save_config_ptr(save_config_ptr), save_config(true)
 	{
+		/* Visual C++ 2015 fails compiling this line (AfterNewGRFScan::generation_seed undefined symbol)
+		 * if it's placed outside a member function, directly in the struct body. */
+		assert_compile(sizeof(generation_seed) == sizeof(_settings_game.game_creation.generation_seed));
 	}
 
 	virtual void OnNewGRFsScanned()
