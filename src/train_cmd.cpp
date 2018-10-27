@@ -874,7 +874,7 @@ static void RemoveFromConsist(Train *part, bool chain = false)
 static void InsertInConsist(Train *dst, Train *chain)
 {
 	/* We do not want to add something in the middle of an articulated part. */
-	assert(dst->Next() == NULL || !dst->Next()->IsArticulatedPart());
+	assert(dst != NULL && (dst->Next() == NULL || !dst->Next()->IsArticulatedPart()));
 
 	chain->Last()->SetNext(dst->Next());
 	dst->SetNext(chain);
