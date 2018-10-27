@@ -22,11 +22,14 @@
 #include "widgets/framerate_widget.h"
 
 
+/**
+ * Private declarations for performance measurement implementation
+ */
 namespace {
 
 	/** Number of data points to keep in buffer for each performance measurement */
 	const int NUM_FRAMERATE_POINTS = 512;
-	/** Units a second is divided into in performance measurements */
+	/** %Units a second is divided into in performance measurements */
 	const TimingMeasurement TIMESTAMP_PRECISION = 1000000;
 
 	struct PerformanceData {
@@ -51,8 +54,15 @@ namespace {
 		/** Start time for current accumulation cycle */
 		TimingMeasurement acc_timestamp;
 
+		/**
+		 * Initialize a data element with an expected collection rate
+		 * @param expected_rate
+		 * Expected number of cycles per second of the performance element. Use 1 if unknown or not relevant.
+		 * The rate is used for highlighting slow-running elements in the GUI.
+		 */
 		explicit PerformanceData(double expected_rate) : expected_rate(expected_rate), next_index(0), prev_index(0), num_valid(0) { }
 
+		/** Collect a complete measurement, given start and ending times for a processing block */
 		void Add(TimingMeasurement start_time, TimingMeasurement end_time)
 		{
 			this->durations[this->next_index] = end_time - start_time;
@@ -63,6 +73,7 @@ namespace {
 			this->num_valid = min(NUM_FRAMERATE_POINTS, this->num_valid + 1);
 		}
 
+		/** Begin an accumulation of multiple measurements into a single value, from a given start time */
 		void BeginAccumulate(TimingMeasurement start_time)
 		{
 			this->timestamps[this->next_index] = this->acc_timestamp;
@@ -76,11 +87,13 @@ namespace {
 			this->acc_timestamp = start_time;
 		}
 
+		/** Accumulate a period onto the current measurement */
 		void AddAccumulate(TimingMeasurement duration)
 		{
 			this->acc_duration += duration;
 		}
 
+		/** Indicate a pause/expected discontinuity in processing the element */
 		void AddPause(TimingMeasurement start_time)
 		{
 			if (this->durations[this->prev_index] != INVALID_DURATION) {
@@ -125,11 +138,11 @@ namespace {
 			int last_point = this->next_index - this->num_valid;
 			if (last_point < 0) last_point += NUM_FRAMERATE_POINTS;
 
-			/** Number of data points collected */
+			/* Number of data points collected */
 			int count = 0;
-			/** Time of previous data point */
+			/* Time of previous data point */
 			TimingMeasurement last = this->timestamps[point];
-			/** Total duration covered by collected points */
+			/* Total duration covered by collected points */
 			TimingMeasurement total = 0;
 
 			while (point != last_point) {
@@ -149,9 +162,14 @@ namespace {
 		}
 	};
 
-	/** Game loop rate, cycles per second */
+	/** %Game loop rate, cycles per second */
 	static const double GL_RATE = 1000.0 / MILLISECONDS_PER_TICK;
 
+	/**
+	 * Storage for all performance element measurements.
+	 * Elements are initialized with the expected rate in recorded values per second.
+	 * @hideinitializer
+	 */
 	PerformanceData _pf_data[PFE_MAX] = {
 		PerformanceData(GL_RATE),               // PFE_GAMELOOP
 		PerformanceData(1),                     // PFE_ACC_GL_ECONOMY
@@ -182,7 +200,10 @@ static TimingMeasurement GetPerformanceTimer()
 }
 
 
-/** Begin a cycle of a measured element. */
+/**
+ * Begin a cycle of a measured element.
+ * @param elem The element to be measured
+ */
 PerformanceMeasurer::PerformanceMeasurer(PerformanceElement elem)
 {
 	assert(elem < PFE_MAX);
@@ -203,14 +224,20 @@ void PerformanceMeasurer::SetExpectedRate(double rate)
 	_pf_data[this->elem].expected_rate = rate;
 }
 
-/** Indicate that a cycle of "pause" where no processing occurs. */
+/**
+ * Indicate that a cycle of "pause" where no processing occurs.
+ * @param elem The element not currently being processed
+ */
 void PerformanceMeasurer::Paused(PerformanceElement elem)
 {
 	_pf_data[elem].AddPause(GetPerformanceTimer());
 }
 
 
-/** Begin measuring one block of the accumulating value. */
+/**
+ * Begin measuring one block of the accumulating value.
+ * @param elem The element to be measured
+ */
 PerformanceAccumulator::PerformanceAccumulator(PerformanceElement elem)
 {
 	assert(elem < PFE_MAX);
@@ -225,7 +252,11 @@ PerformanceAccumulator::~PerformanceAccumulator()
 	_pf_data[this->elem].AddAccumulate(GetPerformanceTimer() - this->start_time);
 }
 
-/** Store the previous accumulator value and reset for a new cycle of accumulating measurements. */
+/**
+ * Store the previous accumulator value and reset for a new cycle of accumulating measurements.
+ * @note This function must be called once per frame, otherwise measurements are not collected.
+ * @param elem The element to begin a new measurement cycle of
+ */
 void PerformanceAccumulator::Reset(PerformanceElement elem)
 {
 	_pf_data[elem].BeginAccumulate(GetPerformanceTimer());
@@ -235,6 +266,7 @@ void PerformanceAccumulator::Reset(PerformanceElement elem)
 void ShowFrametimeGraphWindow(PerformanceElement elem);
 
 
+/** @hideinitializer */
 static const NWidgetPart _framerate_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -478,6 +510,7 @@ static WindowDesc _framerate_display_desc(
 );
 
 
+/** @hideinitializer */
 static const NWidgetPart _frametime_graph_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -758,17 +791,20 @@ static WindowDesc _frametime_graph_window_desc(
 
 
 
+/** Open the general framerate window */
 void ShowFramerateWindow()
 {
 	AllocateWindowDescFront<FramerateWindow>(&_framerate_display_desc, 0);
 }
 
+/** Open a graph window for a performance element */
 void ShowFrametimeGraphWindow(PerformanceElement elem)
 {
 	if (elem < PFE_FIRST || elem >= PFE_MAX) return; // maybe warn?
 	AllocateWindowDescFront<FrametimeGraphWindow>(&_frametime_graph_window_desc, elem, true);
 }
 
+/** Print performance statistics to game console */
 void ConPrintFramerate()
 {
 	const int count1 = NUM_FRAMERATE_POINTS / 8;

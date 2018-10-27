@@ -9,6 +9,28 @@
 
 /** @file framerate_type.h
  * Types for recording game performance data.
+ *
+ * @par Adding new measurements
+ * Adding a new measurement requires multiple steps, which are outlined here.
+ * The first thing to do is add a new member of the #PerformanceElement enum.
+ * It must be added before \c PFE_MAX and should be added in a logical place.
+ * For example, an element of the game loop would be added next to the other game loop elements, and a rendering element next to the other rendering elements.
+ *
+ * @par
+ * Second is adding a member to the \link anonymous_namespace{framerate_gui.cpp}::_pf_data _pf_data \endlink array, in the same position as the new #PerformanceElement member.
+ *
+ * @par
+ * Third is adding strings for the new element. There is an array in #ConPrintFramerate with strings used for the console command.
+ * Additionally, there are two sets of strings in \c english.txt for two GUI uses, also in the #PerformanceElement order.
+ * Search for \c STR_FRAMERATE_GAMELOOP and \c STR_FRAMETIME_CAPTION_GAMELOOP in \c english.txt to find those.
+ *
+ * @par
+ * Last is actually adding the measurements. There are two ways to measure, either one-shot (a single function/block handling all processing),
+ * or as an accumulated element (multiple functions/blocks that need to be summed across each frame/tick).
+ * Use either the PerformanceMeasurer or the PerformanceAccumulator class respectively for the two cases.
+ * Either class is used by instantiating an object of it at the beginning of the block to be measured, so it auto-destructs at the end of the block.
+ * For PerformanceAccumulator, make sure to also call PerformanceAccumulator::Reset once at the beginning of a new frame. Usually the StateGameLoop function is appropriate for this.
+ *
  * @see framerate_gui.cpp for implementation
  */
 
@@ -18,6 +40,12 @@
 #include "stdafx.h"
 #include "core/enum_type.hpp"
 
+/**
+ * Elements of game performance that can be measured.
+ *
+ * @note When adding new elements here, make sure to also update all other locations depending on the length and order of this enum.
+ * See <em>Adding new measurements</em> above.
+ */
 enum PerformanceElement {
 	PFE_FIRST = 0,
 	PFE_GAMELOOP = 0,  ///< Speed of gameloop processing.
@@ -36,12 +64,15 @@ enum PerformanceElement {
 };
 DECLARE_POSTFIX_INCREMENT(PerformanceElement)
 
+/** Type used to hold a performance timing measurement */
 typedef uint64 TimingMeasurement;
 
 /**
  * RAII class for measuring simple elements of performance.
  * Construct an object with the appropriate element parameter when processing begins,
  * time is automatically taken when the object goes out of scope again.
+ *
+ * Call Paused at the start of a frame if the processing of this element is paused.
  */
 class PerformanceMeasurer {
 	PerformanceElement elem;
@@ -57,6 +88,12 @@ public:
  * RAII class for measuring multi-step elements of performance.
  * At the beginning of a frame, call Reset on the element, then construct an object in the scope where
  * each processing cycle happens. The measurements are summed between resets.
+ *
+ * Usually StateGameLoop is an appropriate function to place Reset calls in, but for elements with
+ * more isolated scopes it can also be appropriate to Reset somewhere else.
+ * An example is the CallVehicleTicks function where all the vehicle type elements are reset.
+ *
+ * The PerformanceMeasurer::Paused function can also be used with elements otherwise measured with this class.
  */
 class PerformanceAccumulator {
 	PerformanceElement elem;
