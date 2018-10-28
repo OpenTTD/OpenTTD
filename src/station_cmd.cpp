@@ -662,7 +662,7 @@ static void UpdateStationSignCoord(BaseStation *st)
 
 /**
  * Common part of building various station parts and possibly attaching them to an existing one.
- * @param [in,out] st Station to attach to
+ * @param[in,out] st Station to attach to
  * @param flags Command flags
  * @param reuse Whether to try to reuse a deleted station (gray sign) if possible
  * @param area Area occupied by the new part
@@ -2624,9 +2624,9 @@ const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx)
  * Check whether a sprite is a track sprite, which can be replaced by a non-track ground sprite and a rail overlay.
  * If the ground sprite is suitable, \a ground is replaced with the new non-track ground sprite, and \a overlay_offset
  * is set to the overlay to draw.
- * @param          ti             Positional info for the tile to decide snowyness etc. May be NULL.
- * @param [in,out] ground         Groundsprite to draw.
- * @param [out]    overlay_offset Overlay to draw.
+ * @param         ti             Positional info for the tile to decide snowyness etc. May be NULL.
+ * @param[in,out] ground         Groundsprite to draw.
+ * @param[out]    overlay_offset Overlay to draw.
  * @return true if overlay can be drawn.
  */
 bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrackOffset *overlay_offset)

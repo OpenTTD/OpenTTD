@@ -189,7 +189,7 @@ union Colour {
 
 	/**
 	 * Create a new colour.
-	 * @param The colour in the correct packed format.
+	 * @param data The colour in the correct packed format.
 	 */
 	Colour(uint data = 0) : data(data)
 	{

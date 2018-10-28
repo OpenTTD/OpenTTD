@@ -989,9 +989,9 @@ static void MakeNewEditorWorld()
  * Load the specified savegame but on error do different things.
  * If loading fails due to corrupt savegame, bad version, etc. go back to
  * a previous correct state. In the menu for example load the intro game again.
- * @param mode mode of loading, either SL_LOAD or SL_OLD_LOAD
- * @param newgm switch to this mode of loading fails due to some unknown error
  * @param filename file to be loaded
+ * @param fop mode of loading, always SLO_LOAD
+ * @param newgm switch to this mode of loading fails due to some unknown error
  * @param subdir default directory to look for filename, set to 0 if not needed
  * @param lf Load filter to use, if NULL: use filename + subdir.
  */

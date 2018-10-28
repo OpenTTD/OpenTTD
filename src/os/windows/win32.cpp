@@ -625,11 +625,11 @@ char *convert_from_fs(const TCHAR *name, char *utf8_buf, size_t buflen)
  * Convert from OpenTTD's encoding to that of the environment in
  * UNICODE. OpenTTD encoding is UTF8, local is wide
  * @param name pointer to a valid string that will be converted
- * @param utf16_buf pointer to a valid wide-char buffer that will receive the
+ * @param system_buf pointer to a valid wide-char buffer that will receive the
  * converted string
  * @param buflen length in wide characters of the receiving buffer
  * @param console_cp convert to the console encoding instead of the normal system encoding.
- * @return pointer to utf16_buf. If conversion fails the string is of zero-length
+ * @return pointer to system_buf. If conversion fails the string is of zero-length
  */
 TCHAR *convert_to_fs(const char *name, TCHAR *system_buf, size_t buflen, bool console_cp)
 {

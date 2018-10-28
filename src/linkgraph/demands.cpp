@@ -115,7 +115,6 @@ public:
 	 * Check if there is any acceptance left for this node. In asymmetric distribution
 	 * nodes always accept as long as their demand > 0.
 	 * @param to The node to be checked.
-	 * @param to_anno Unused.
 	 */
 	inline bool HasDemandLeft(const Node &to) { return to.Demand() > 0; }
 };

@@ -425,7 +425,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 /**
  * Schedule a list of errors.
  * Note: This does not try to display the error now. This is useful if the window system is not yet running.
- * @param data Error message datas; cleared afterwards
+ * @param datas Error message datas; cleared afterwards
  */
 void ScheduleErrorMessage(ErrorList &datas)
 {

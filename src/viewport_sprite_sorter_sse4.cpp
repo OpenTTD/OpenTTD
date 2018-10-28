@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file viewport_sprite_sorter_sse.cpp Sprite sorter that uses SSE4.1. */
+/** @file viewport_sprite_sorter_sse4.cpp Sprite sorter that uses SSE4.1. */
 
 #ifdef WITH_SSE
 

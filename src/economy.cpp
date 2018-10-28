@@ -1242,7 +1242,6 @@ Money CargoPayment::PayTransfer(const CargoPacket *cp, uint count)
 
 /**
  * Prepare the vehicle to be unloaded.
- * @param curr_station the station where the consist is at the moment
  * @param front_v the vehicle to be unloaded
  */
 void PrepareUnload(Vehicle *front_v)

@@ -1459,7 +1459,7 @@ static int DecodeHexNibble(char c)
  * Parse a sequence of characters (supposedly hex digits) into a sequence of bytes.
  * After the hex number should be a \c '|' character.
  * @param pos First character to convert.
- * @param dest [out] Output byte array to write the bytes.
+ * @param[out] dest Output byte array to write the bytes.
  * @param dest_size Number of bytes in \a dest.
  * @return Whether reading was successful.
  */
@@ -1748,7 +1748,7 @@ void SaveToConfig()
 
 /**
  * Get the list of known NewGrf presets.
- * @param list[inout] Pointer to list for storing the preset names.
+ * @param[in,out] list Pointer to list for storing the preset names.
  */
 void GetGRFPresetList(GRFPresetList *list)
 {

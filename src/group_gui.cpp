@@ -977,11 +977,11 @@ static inline VehicleGroupWindow *FindVehicleGroupWindow(VehicleType vt, Owner o
 }
 
 /**
- * Opens a 'Rename group' window for newly created group
- * @param success did command succeed?
- * @param tile unused
- * @param p1 vehicle type
- * @param p2 unused
+ * Opens a 'Rename group' window for newly created group.
+ * @param result Did command succeed?
+ * @param tile Unused.
+ * @param p1 Vehicle type.
+ * @param p2 Unused.
  * @see CmdCreateGroup
  */
 void CcCreateGroup(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
@@ -995,7 +995,7 @@ void CcCreateGroup(const CommandCost &result, TileIndex tile, uint32 p1, uint32 
 
 /**
  * Open rename window after adding a vehicle to a new group via drag and drop.
- * @param success Did command succeed?
+ * @param result Did command succeed?
  * @param tile Unused.
  * @param p1 Unused.
  * @param p2 Bit 0-19: Vehicle ID.

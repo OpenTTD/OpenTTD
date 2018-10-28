@@ -159,7 +159,7 @@ public:
 
 	/**
 	 * Erase a row, replacing it with the last one.
-	 * @param x Position of the row.
+	 * @param y Position of the row.
 	 */
 	void EraseRow(uint y)
 	{
@@ -174,7 +174,7 @@ public:
 
 	/**
 	 * Remove columns from the matrix while preserving the order of other columns.
-	 * @param x First column to remove.
+	 * @param y First column to remove.
 	 * @param count Number of consecutive columns to remove.
 	 */
 	void EraseRowPreservingOrder(uint y, uint count = 1)
@@ -210,8 +210,8 @@ public:
 	/**
 	 * Set the size to a specific width and height, preserving item positions
 	 * as far as possible in the process.
-	 * @param width Target width.
-	 * @param height Target height.
+	 * @param new_width Target width.
+	 * @param new_height Target height.
 	 */
 	inline void Resize(uint new_width, uint new_height)
 	{
@@ -297,7 +297,7 @@ public:
 	/**
 	 * Get column "number" (const)
 	 *
-	 * @param X Position of the column.
+	 * @param x Position of the column.
 	 * @return Column at "number".
 	 */
 	inline const T *operator[](uint x) const
@@ -309,7 +309,7 @@ public:
 	/**
 	 * Get column "number" (const)
 	 *
-	 * @param X Position of the column.
+	 * @param x Position of the column.
 	 * @return Column at "number".
 	 */
 	inline T *operator[](uint x)

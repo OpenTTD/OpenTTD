@@ -252,8 +252,6 @@ void LinkGraph::Node::RemoveEdge(NodeID to)
  * least the given capacity and usage, otherwise add the capacity and usage.
  * In any case set the respective update timestamp(s), according to the given
  * mode.
- * @param from Start node of the edge.
- * @param to End node of the edge.
  * @param capacity Capacity to be added/updated.
  * @param usage Usage to be added.
  * @param mode Update mode to be applied.

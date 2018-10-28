@@ -7,10 +7,10 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file 32bpp_sse_type.hpp Types related to SSE 32 bpp blitter. */
+/** @file 32bpp_sse_type.h Types related to SSE 32 bpp blitter. */
 
-#ifndef BLITTER_32BPP_SSE_TYPE_HPP
-#define BLITTER_32BPP_SSE_TYPE_HPP
+#ifndef BLITTER_32BPP_SSE_TYPE_H
+#define BLITTER_32BPP_SSE_TYPE_H
 
 #ifdef WITH_SSE
 
@@ -55,4 +55,4 @@ typedef union ALIGN(16) um128i {
 #define TRANSPARENT_NOM_BASE        _mm_setr_epi16(256, 256, 256, 256, 256, 256, 256, 256)
 
 #endif /* WITH_SSE */
-#endif /* BLITTER_32BPP_SSE_TYPE_HPP */
+#endif /* BLITTER_32BPP_SSE_TYPE_H */

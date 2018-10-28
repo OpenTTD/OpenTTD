@@ -98,7 +98,7 @@ void GroupStatistics::Clear()
 }
 
 /**
- * Update all caches after loading a game, changing NewGRF etc..
+ * Update all caches after loading a game, changing NewGRF, etc.
  */
 /* static */ void GroupStatistics::UpdateAfterLoad()
 {

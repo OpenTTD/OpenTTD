@@ -605,7 +605,6 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 /**
  * Helper to deduplicate the code for returning.
  * @param cmd   the command cost to return.
- * @param clear whether to keep the storage changes or not.
  */
 #define return_dcpi(cmd) { _docommand_recursive = 0; return cmd; }
 

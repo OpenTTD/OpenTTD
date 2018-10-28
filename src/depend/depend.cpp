@@ -217,22 +217,22 @@ enum Token {
 	TOKEN_LOCAL,      ///< Read a local include
 	TOKEN_GLOBAL,     ///< Read a global include
 	TOKEN_IDENTIFIER, ///< Identifier within the data.
-	TOKEN_DEFINE,     ///< (#)define in code
-	TOKEN_IF,         ///< (#)if in code
-	TOKEN_IFDEF,      ///< (#)ifdef in code
-	TOKEN_IFNDEF,     ///< (#)ifndef in code
-	TOKEN_ELIF,       ///< (#)elif in code
-	TOKEN_ELSE,       ///< (#)else in code
-	TOKEN_ENDIF,      ///< (#)endif in code
-	TOKEN_UNDEF,      ///< (#)undef in code
-	TOKEN_OR,         ///< '||' within <tt>#if</tt> expression
-	TOKEN_AND,        ///< '&&' within <tt>#if</tt> expression
-	TOKEN_DEFINED,    ///< 'defined' within <tt>#if</tt> expression
-	TOKEN_OPEN,       ///< '(' within <tt>#if</tt> expression
-	TOKEN_CLOSE,      ///< ')' within <tt>#if</tt> expression
-	TOKEN_NOT,        ///< '!' within <tt>#if</tt> expression
-	TOKEN_ZERO,       ///< '0' within <tt>#if</tt> expression
-	TOKEN_INCLUDE,    ///< (#)include in code
+	TOKEN_DEFINE,     ///< \c \#define in code
+	TOKEN_IF,         ///< \c \#if in code
+	TOKEN_IFDEF,      ///< \c \#ifdef in code
+	TOKEN_IFNDEF,     ///< \c \#ifndef in code
+	TOKEN_ELIF,       ///< \c \#elif in code
+	TOKEN_ELSE,       ///< \c \#else in code
+	TOKEN_ENDIF,      ///< \c \#endif in code
+	TOKEN_UNDEF,      ///< \c \#undef in code
+	TOKEN_OR,         ///< '||' within \c \#if expression
+	TOKEN_AND,        ///< '&&' within \c \#if expression
+	TOKEN_DEFINED,    ///< 'defined' within \c \#if expression
+	TOKEN_OPEN,       ///< '(' within \c \#if expression
+	TOKEN_CLOSE,      ///< ')' within \c \#if expression
+	TOKEN_NOT,        ///< '!' within \c \#if expression
+	TOKEN_ZERO,       ///< '0' within \c \#if expression
+	TOKEN_INCLUDE,    ///< \c \#include in code
 };
 
 /** Mapping from a C-style keyword representation to a Token. */
@@ -681,8 +681,8 @@ bool ExpressionOr(Lexer *lexer, StringSet *defines, bool verbose)
 /** Enumerator to tell how long to ignore 'stuff'. */
 enum Ignore {
 	NOT_IGNORE,         ///< No ignoring.
-	IGNORE_UNTIL_ELSE,  ///< Ignore till a #else is reached.
-	IGNORE_UNTIL_ENDIF, ///< Ignore till a #endif is reached.
+	IGNORE_UNTIL_ELSE,  ///< Ignore till a \c \#else is reached.
+	IGNORE_UNTIL_ENDIF, ///< Ignore till a \c \#endif is reached.
 };
 
 /**

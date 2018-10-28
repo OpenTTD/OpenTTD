@@ -204,6 +204,7 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, int *z)
  * Is a bridge of the specified type and length available?
  * @param bridge_type Wanted type of bridge.
  * @param bridge_len  Wanted length of the bridge.
+ * @param flags       Type of operation.
  * @return A succeeded (the requested bridge is available) or failed (it cannot be built) command.
  */
 CommandCost CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoCommandFlag flags)

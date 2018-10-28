@@ -602,7 +602,7 @@ uint VehicleCargoList::Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList:
  * Returns reserved cargo to the station and removes it from the cache.
  * @param max_move Maximum amount of cargo to move.
  * @param dest Station the cargo is returned to.
- * @param ID of next the station the cargo wants to go next.
+ * @param next ID of the next station the cargo wants to go to.
  * @return Amount of cargo actually returned.
  */
 uint VehicleCargoList::Return(uint max_move, StationCargoList *dest, StationID next)
@@ -668,7 +668,7 @@ uint VehicleCargoList::Truncate(uint max_move)
  * @param dest List to prepend the cargo to.
  * @param avoid Station to exclude from routing and current next hop of packets to reroute.
  * @param avoid2 Additional station to exclude from routing.
- * @oaram ge GoodsEntry to get the routing info from.
+ * @param ge GoodsEntry to get the routing info from.
  */
 uint VehicleCargoList::Reroute(uint max_move, VehicleCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge)
 {
@@ -859,7 +859,7 @@ uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, TileIndex loa
  * @param dest List to append the cargo to.
  * @param avoid Station to exclude from routing and current next hop of packets to reroute.
  * @param avoid2 Additional station to exclude from routing.
- * @oaram ge GoodsEntry to get the routing info from.
+ * @param ge GoodsEntry to get the routing info from.
  */
 uint StationCargoList::Reroute(uint max_move, StationCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge)
 {

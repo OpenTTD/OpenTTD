@@ -425,7 +425,7 @@ LinkGraphLegendWindow::LinkGraphLegendWindow(WindowDesc *desc, int window_number
 
 /**
  * Set the overlay belonging to this menu and import its company/cargo settings.
- * @params overlay New overlay for this menu.
+ * @param overlay New overlay for this menu.
  */
 void LinkGraphLegendWindow::SetOverlay(LinkGraphOverlay *overlay) {
 	this->overlay = overlay;

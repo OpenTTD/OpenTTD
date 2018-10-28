@@ -771,9 +771,9 @@ void GamelogGRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
  * Get some basic information from the given gamelog.
  * @param gamelog_action Pointer to the gamelog to extract information from.
  * @param gamelog_actions Number of actions in the given gamelog.
- * @param [out] last_ottd_rev OpenTTD NewGRF version from the binary that saved the savegame last.
- * @param [out] ever_modified Max value of 'modified' from all binaries that ever saved this savegame.
- * @param [out] removed_newgrfs Set to true if any NewGRFs have been removed.
+ * @param[out] last_ottd_rev OpenTTD NewGRF version from the binary that saved the savegame last.
+ * @param[out] ever_modified Max value of 'modified' from all binaries that ever saved this savegame.
+ * @param[out] removed_newgrfs Set to true if any NewGRFs have been removed.
  */
 void GamelogInfo(LoggedAction *gamelog_action, uint gamelog_actions, uint32 *last_ottd_rev, byte *ever_modified, bool *removed_newgrfs)
 {

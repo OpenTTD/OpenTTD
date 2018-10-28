@@ -447,9 +447,9 @@ void FixSlopes()
  * Reads the heightmap with the correct file reader.
  * @param dft Type of image file.
  * @param filename Name of the file to load.
- * @param [out] x Length of the image.
- * @param [out] y Height of the image.
- * @param [inout] map If not \c NULL, destination to store the loaded block of image data.
+ * @param[out] x Length of the image.
+ * @param[out] y Height of the image.
+ * @param[in,out] map If not \c NULL, destination to store the loaded block of image data.
  * @return Whether loading was successful.
  */
 static bool ReadHeightMap(DetailedFileType dft, const char *filename, uint *x, uint *y, byte **map)

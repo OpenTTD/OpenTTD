@@ -87,7 +87,7 @@ public:
 
 	/**
 	 * Get the area of the matrix square that contains a specific tile.
-	 * @param The tile to get the map area for.
+	 * @param tile The tile to get the map area for.
 	 * @param extend Extend the area by this many squares on all sides.
 	 * @return Tile area containing the tile.
 	 */

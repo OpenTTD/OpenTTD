@@ -87,8 +87,8 @@ RailTypeResolverObject::RailTypeResolverObject(const RailtypeInfo *rti, TileInde
  * @param rti The rail type data (spec).
  * @param tile The tile to get the sprite for.
  * @param rtsg The type of sprite to draw.
- * @param content Where are we drawing the tile?
- * @param [out] num_results If not NULL, return the number of sprites in the spriteset.
+ * @param context Where are we drawing the tile?
+ * @param[out] num_results If not NULL, return the number of sprites in the spriteset.
  * @return The sprite to draw.
  */
 SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, TileContext context, uint *num_results)

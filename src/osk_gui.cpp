@@ -437,9 +437,9 @@ void UpdateOSKOriginalText(const Window *parent, int button)
 
 /**
  * Check whether the OSK is opened for a specific editbox.
- * @parent w Window to check for
+ * @param w Window to check for
  * @param button Editbox of \a w to check for
- * @return true if the OSK is oppened for \a button.
+ * @return true if the OSK is opened for \a button.
  */
 bool IsOSKOpenedFor(const Window *w, int button)
 {

@@ -802,7 +802,6 @@ static const NWidgetPart _nested_station_view_widgets[] = {
  * @param left  left most coordinate to draw on
  * @param right right most coordinate to draw on
  * @param y y coordinate
- * @param width the width of the view
  */
 static void DrawCargoIcons(CargoID i, uint waiting, int left, int right, int y)
 {

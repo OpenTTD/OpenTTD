@@ -117,7 +117,7 @@ void DumpTarget::WriteIndent()
 	}
 }
 
-/** Write a line with indent at the beginning and <LF> at the end. */
+/** Write a line with indent at the beginning and \<LF\> at the end. */
 void DumpTarget::WriteLine(const char *format, ...)
 {
 	WriteIndent();
@@ -143,7 +143,7 @@ void DumpTarget::WriteTile(const char *name, TileIndex tile)
 }
 
 /**
- * Open new structure (one level deeper than the current one) 'name = {<LF>'.
+ * Open new structure (one level deeper than the current one) 'name = {\<LF\>'.
  */
 void DumpTarget::BeginStruct(size_t type_id, const char *name, const void *ptr)
 {
@@ -167,7 +167,7 @@ void DumpTarget::BeginStruct(size_t type_id, const char *name, const void *ptr)
 }
 
 /**
- * Close structure '}<LF>'.
+ * Close structure '}\<LF\>'.
  */
 void DumpTarget::EndStruct()
 {

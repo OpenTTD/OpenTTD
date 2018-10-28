@@ -70,11 +70,11 @@ uint TileHeightOutsideMap(int x, int y)
 
 /**
  * Get a tile's slope given the heigh of its four corners.
- * @param hnorth  The height at the northern corner in the same unit as TileHeight.
- * @param hwest   The height at the western corner in the same unit as TileHeight.
- * @param heast   The height at the eastern corner in the same unit as TileHeight.
- * @param hsouth  The height at the southern corner in the same unit as TileHeight.
- * @param [out] h The lowest height of the four corners.
+ * @param hnorth The height at the northern corner in the same unit as TileHeight.
+ * @param hwest  The height at the western corner in the same unit as TileHeight.
+ * @param heast  The height at the eastern corner in the same unit as TileHeight.
+ * @param hsouth The height at the southern corner in the same unit as TileHeight.
+ * @param[out] h The lowest height of the four corners.
  * @return The slope.
  */
 static Slope GetTileSlopeGivenHeight(int hnorth, int hwest, int heast, int hsouth, int *h)
@@ -134,7 +134,8 @@ Slope GetTileSlope(TileIndex tile, int *h)
 /**
  * Return the slope of a given tile outside the map.
  *
- * @param tile Tile outside the map to compute slope of.
+ * @param x X-coordinate of the tile outside to compute height of.
+ * @param y Y-coordinate of the tile outside to compute height of.
  * @param h    If not \c NULL, pointer to storage of z height.
  * @return Slope of the tile outside map, except for the HALFTILE part.
  */
@@ -194,7 +195,8 @@ int GetTileZ(TileIndex tile)
 /**
  * Get bottom height of the tile outside map.
  *
- * @param tile Tile outside the map to compute height of.
+ * @param x X-coordinate of the tile outside to compute height of.
+ * @param y Y-coordinate of the tile outside to compute height of.
  * @return Minimum height of the tile outside the map.
  */
 int GetTilePixelZOutsideMap(int x, int y)
@@ -229,7 +231,8 @@ int GetTileMaxZ(TileIndex t)
  *
  * @see Detailed description in header.
  *
- * @param tile Tile outside to compute height of.
+ * @param x X-coordinate of the tile outside to compute height of.
+ * @param y Y-coordinate of the tile outside to compute height of.
  * @return Maximum height of the tile.
  */
 int GetTileMaxPixelZOutsideMap(int x, int y)

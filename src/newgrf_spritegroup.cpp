@@ -118,7 +118,7 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
 
 /**
  * Store a value into the persistent storage area (PSA). Default implementation does nothing (for newgrf classes without storage).
- * @param pos Position to store into.
+ * @param reg Position to store into.
  * @param value Value to store.
  */
 /* virtual */ void ScopeResolver::StorePSA(uint reg, int32 value) {}
@@ -308,7 +308,7 @@ const SpriteGroup *RealSpriteGroup::Resolve(ResolverObject &object) const
  * Process registers and the construction stage into the sprite layout.
  * The passed construction stage might get reset to zero, if it gets incorporated into the layout
  * during the preprocessing.
- * @param [in, out] stage Construction stage (0-3), or NULL if not applicable.
+ * @param[in,out] stage Construction stage (0-3), or NULL if not applicable.
  * @return sprite layout to draw.
  */
 const DrawTileSprites *TileLayoutSpriteGroup::ProcessRegisters(uint8 *stage) const

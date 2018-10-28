@@ -39,7 +39,7 @@ static inline bool IsValidRoadType(RoadType rt)
 
 /**
  * Whether the given roadtype is valid.
- * @param rt the roadtype to check for validness
+ * @param r the roadtype to check for validness
  * @return true if and only if valid
  */
 static inline bool IsValidRoadBits(RoadBits r)

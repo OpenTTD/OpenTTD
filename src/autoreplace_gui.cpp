@@ -81,7 +81,7 @@ class ReplaceVehicleWindow : public Window {
 	EngineID sel_engine[2];       ///< Selected engine left and right.
 	GUIEngineList engines[2];     ///< Left and right list of engines.
 	bool replace_engines;         ///< If \c true, engines are replaced, if \c false, wagons are replaced (only for trains).
-	bool reset_sel_engine;        ///< Also reset #sel_engine while updating left and/or right (#update_left and/or #update_right) and no valid engine selected.
+	bool reset_sel_engine;        ///< Also reset #sel_engine while updating left and/or right and no valid engine selected.
 	GroupID sel_group;            ///< Group selected to replace.
 	int details_height;           ///< Minimal needed height of the details panels (found so far).
 	byte sort_criteria;           ///< Criteria of sorting vehicles.

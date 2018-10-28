@@ -2137,7 +2137,7 @@ bool NetworkCompanyHasClients(CompanyID company)
 
 
 /**
- * Get the name of the client, if the user did not send it yet, Client #<no> is used.
+ * Get the name of the client, if the user did not send it yet, Client ID is used.
  * @param client_name The variable to write the name to.
  * @param last        The pointer to the last element of the destination buffer
  */

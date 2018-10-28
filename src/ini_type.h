@@ -70,7 +70,7 @@ struct IniLoadFile {
 	 * Open the INI file.
 	 * @param filename Name of the INI file.
 	 * @param subdir The subdir to load the file from.
-	 * @param size [out] Size of the opened file.
+	 * @param[out] size Size of the opened file.
 	 * @return File handle of the opened file, or \c NULL.
 	 */
 	virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size) = 0;

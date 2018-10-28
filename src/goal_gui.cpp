@@ -101,7 +101,7 @@ struct GoalListWindow : public Window {
 
 	/**
 	 * Handle clicking at a goal.
-	 * @param s @Goal clicked at.
+	 * @param s #Goal clicked at.
 	 */
 	void HandleClick(const Goal *s)
 	{
@@ -193,7 +193,7 @@ struct GoalListWindow : public Window {
 	/**
 	 * Draws either the global goals or the company goal section.
 	 * This is a helper method for #DrawWidget.
-	 * @param pos [inout] Vertical line number to draw.
+	 * @param[in,out] pos Vertical line number to draw.
 	 * @param cap Number of lines to draw in the window.
 	 * @param x Left edge of the text line to draw.
 	 * @param y Vertical position of the top edge of the window.
@@ -250,8 +250,8 @@ struct GoalListWindow : public Window {
 	/**
 	 * Draws a given column of the goal list.
 	 * @param column Which column to draw.
-	 * @wid Pointer to the goal list widget.
-	 * @progress_col_width Width of the progress column.
+	 * @param wid Pointer to the goal list widget.
+	 * @param progress_col_width Width of the progress column.
 	 * @return max width of drawn text
 	 */
 	void DrawListColumn(GoalColumn column, NWidgetBase *wid, uint progress_col_width) const

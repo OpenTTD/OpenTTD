@@ -654,7 +654,7 @@ bool Ship::Tick()
  * @param flags    type of operation.
  * @param e        the engine to build.
  * @param data     unused.
- * @param ret[out] the vehicle that has been built.
+ * @param[out] ret the vehicle that has been built.
  * @return the cost of this operation or an error.
  */
 CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **ret)

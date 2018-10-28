@@ -293,7 +293,7 @@ int GetTilePixelZOutsideMap(int x, int y);
 
 /**
  * Get top height of the tile
- * @param t Tile to compute height of
+ * @param tile Tile to compute height of
  * @return Maximum height of the tile
  */
 static inline int GetTileMaxPixelZ(TileIndex tile)

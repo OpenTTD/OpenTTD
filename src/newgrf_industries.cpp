@@ -415,7 +415,7 @@ static const GRFFile *GetGrffile(IndustryType type)
 /**
  * Constructor of the industries resolver.
  * @param tile %Tile owned by the industry.
- * @param industry %Industry being resolved.
+ * @param indus %Industry being resolved.
  * @param type Type of the industry.
  * @param random_bits Random bits of the new industry.
  * @param callback Callback ID.

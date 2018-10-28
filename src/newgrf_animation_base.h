@@ -31,7 +31,6 @@ template <typename Tbase, typename Tspec, typename Tobj, typename Textra, uint16
 struct AnimationBase {
 	/**
 	 * Animate a single tile.
-	 * @param cb          The callback to actually call.
 	 * @param spec        Specification related to the tile.
 	 * @param obj         Object related to the tile.
 	 * @param tile        Tile to animate changes for.

@@ -85,7 +85,7 @@ void LangString::FreeTranslation()
 
 /**
  * Create a new string data container.
- * @param max_strings The maximum number of strings.
+ * @param tabs The maximum number of strings.
  */
 StringData::StringData(size_t tabs) : tabs(tabs), max_strings(tabs * TAB_SIZE)
 {

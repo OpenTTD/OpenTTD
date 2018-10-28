@@ -1580,7 +1580,7 @@ struct CargoesField {
 	/**
 	 * Connect a cargo from an industry to the #CFT_CARGO column.
 	 * @param cargo Cargo to connect.
-	 * @param produced Cargo is produced (if \c false, cargo is assumed to be accepted).
+	 * @param producer Cargo is produced (if \c false, cargo is assumed to be accepted).
 	 * @return Horizontal connection index, or \c -1 if not accepted at all.
 	 */
 	int ConnectCargo(CargoID cargo, bool producer)
@@ -1697,7 +1697,7 @@ struct CargoesField {
 	/**
 	 * Draw the field.
 	 * @param xpos Position of the left edge.
-	 * @param vpos Position of the top edge.
+	 * @param ypos Position of the top edge.
 	 */
 	void Draw(int xpos, int ypos) const
 	{

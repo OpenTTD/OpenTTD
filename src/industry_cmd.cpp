@@ -1323,7 +1323,7 @@ static CheckNewIndustryProc * const _check_new_industry_procs[CHECK_END] = {
  * Find a town for the industry, while checking for multiple industries in the same town.
  * @param tile Position of the industry to build.
  * @param type Industry type.
- * @param [out] town Pointer to return town for the new industry, \c NULL is written if no good town can be found.
+ * @param[out] t Pointer to return town for the new industry, \c NULL is written if no good town can be found.
  * @return Succeeded or failed command.
  *
  * @pre \c *t != NULL
@@ -1365,14 +1365,14 @@ bool IsSlopeRefused(Slope current, Slope refused)
 
 /**
  * Are the tiles of the industry free?
- * @param tile                     Position to check.
- * @param it                       Industry tiles table.
- * @param itspec_index             The index of the itsepc to build/fund
- * @param type                     Type of the industry.
- * @param initial_random_bits      The random bits the industry is going to have after construction.
- * @param founder                  Industry founder
- * @param creation_type            The circumstances the industry is created under.
- * @param [out] custom_shape_check Perform custom check for the site.
+ * @param tile                    Position to check.
+ * @param it                      Industry tiles table.
+ * @param itspec_index            The index of the itsepc to build/fund
+ * @param type                    Type of the industry.
+ * @param initial_random_bits     The random bits the industry is going to have after construction.
+ * @param founder                 Industry founder
+ * @param creation_type           The circumstances the industry is created under.
+ * @param[out] custom_shape_check Perform custom check for the site.
  * @return Failed or succeeded command.
  */
 static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, uint itspec_index, int type, uint16 initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type, bool *custom_shape_check = NULL)
@@ -1793,11 +1793,11 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
  * @param flags of operations to conduct
  * @param indspec pointer to industry specifications
  * @param itspec_index the index of the itsepc to build/fund
- * @param seed random seed (possibly) used by industries
- * @param initial_random_bits The random bits the industry is going to have after construction.
+ * @param random_var8f random seed (possibly) used by industries
+ * @param random_initial_bits The random bits the industry is going to have after construction.
  * @param founder Founder of the industry
  * @param creation_type The circumstances the industry is created under.
- * @param [out] ip Pointer to store newly created industry.
+ * @param[out] ip Pointer to store newly created industry.
  * @return Succeeded or failed command.
  *
  * @post \c *ip contains the newly created industry if all checks are successful and the \a flags request actual creation, else it contains \c NULL afterwards.
@@ -1961,7 +1961,7 @@ static Industry *CreateNewIndustry(TileIndex tile, IndustryType type, IndustryAv
 /**
  * Compute the appearance probability for an industry during map creation.
  * @param it Industry type to compute.
- * @param [out] force_at_least_one Returns whether at least one instance should be forced on map creation.
+ * @param[out] force_at_least_one Returns whether at least one instance should be forced on map creation.
  * @return Relative probability for the industry to appear.
  */
 static uint32 GetScaledIndustryGenerationProbability(IndustryType it, bool *force_at_least_one)
@@ -1986,7 +1986,7 @@ static uint32 GetScaledIndustryGenerationProbability(IndustryType it, bool *forc
 /**
  * Compute the probability for constructing a new industry during game play.
  * @param it Industry type to compute.
- * @param [out] min_number Minimal number of industries that should exist at the map.
+ * @param[out] min_number Minimal number of industries that should exist at the map.
  * @return Relative probability for the industry to appear.
  */
 static uint16 GetIndustryGamePlayProbability(IndustryType it, byte *min_number)

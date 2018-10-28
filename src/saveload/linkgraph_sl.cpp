@@ -132,7 +132,7 @@ static const SaveLoad _edge_desc[] = {
 
 /**
  * Save/load a link graph.
- * @param comp Link graph to be saved or loaded.
+ * @param lg Link graph to be saved or loaded.
  */
 void SaveLoad_LinkGraph(LinkGraph &lg)
 {
