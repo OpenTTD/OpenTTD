@@ -156,7 +156,7 @@ void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
  * his neighbour items. If they are valid, they are added to be checked too.
  * @return Possible values:
  *  - #AYSTAR_EMPTY_OPENLIST : indicates all items are tested, and no path has been found.
- *  - #AYSTAR_LIMIT_REACHED : Indicates that the max_nodes limit has been reached.
+ *  - #AYSTAR_LIMIT_REACHED : Indicates that the max_search_nodes limit has been reached.
  *  - #AYSTAR_FOUND_END_NODE : indicates we found the end. Path_found now is true, and in path is the path found.
  *  - #AYSTAR_STILL_BUSY : indicates we have done this tile, did not found the path yet, and have items left to try.
  */

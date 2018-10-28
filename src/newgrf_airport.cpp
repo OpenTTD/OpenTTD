@@ -216,7 +216,6 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 
 /**
  * Store a value into the object's persistent storage.
- * @param object Object that we want to query.
  * @param pos Position in the persistent storage to use.
  * @param value Value to store.
  */

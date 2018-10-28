@@ -516,7 +516,7 @@ private:
 public:
 	/**
 	 * Construct the iterator.
-	 * @param ta Area, i.e. begin point and width/height of to-be-iterated area.
+	 * @param st Station the airport is part of.
 	 */
 	AirportTileIterator(const Station *st) : OrthogonalTileIterator(st->airport), st(st)
 	{

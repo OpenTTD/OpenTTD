@@ -367,7 +367,6 @@ bool Textbuf::MovePos(uint16 keycode)
 /**
  * Initialize the textbuffer by supplying it the buffer to write into
  * and the maximum length of this buffer
- * @param buf the buffer that will be holding the data for input
  * @param max_bytes maximum size in bytes, including terminating '\0'
  * @param max_chars maximum size in chars, including terminating '\0'
  */

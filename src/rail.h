@@ -239,7 +239,7 @@ public:
 	 * When #INVALID_DATE or a vehicle using this railtype gets introduced earlier,
 	 * the vehicle's introduction date will be used instead for this railtype.
 	 * The introduction at this date is furthermore limited by the
-	 * #introduction_required_types.
+	 * #introduction_required_railtypes.
 	 */
 	Date introduction_date;
 

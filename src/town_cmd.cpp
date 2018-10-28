@@ -3145,7 +3145,7 @@ static void UpdateTownRating(Town *t)
 /**
  * Updates town grow counter after growth rate change.
  * Preserves relative house builting progress whenever it can.
- * @param town The town to calculate grow counter for
+ * @param t The town to calculate grow counter for
  * @param prev_growth_rate Town growth rate before it changed (one that was used with grow counter to be updated)
  */
 static void UpdateTownGrowCounter(Town *t, uint16 prev_growth_rate)
@@ -3160,7 +3160,7 @@ static void UpdateTownGrowCounter(Town *t, uint16 prev_growth_rate)
 
 /**
  * Calculates amount of active stations in the range of town (HZB_TOWN_EDGE).
- * @param town The town to calculate stations for
+ * @param t The town to calculate stations for
  * @returns Amount of active stations
  */
 static int CountActiveStations(Town *t)
@@ -3180,7 +3180,7 @@ static int CountActiveStations(Town *t)
 /**
  * Calculates town growth rate in normal conditions (custom growth rate not set).
  * If town growth speed is set to None(0) returns the same rate as if it was Normal(2).
- * @param town The town to calculate growth rate for
+ * @param t The town to calculate growth rate for
  * @returns Calculated growth rate
  */
 static uint GetNormalGrowthRate(Town *t)
@@ -3203,7 +3203,7 @@ static uint GetNormalGrowthRate(Town *t)
 
 /**
  * Updates town growth rate.
- * @param town The town to update growth rate for
+ * @param t The town to update growth rate for
  */
 static void UpdateTownGrowthRate(Town *t)
 {
@@ -3216,7 +3216,7 @@ static void UpdateTownGrowthRate(Town *t)
 
 /**
  * Updates town growth state (whether it is growing or not).
- * @param town The town to update growth for
+ * @param t The town to update growth for
  */
 static void UpdateTownGrowth(Town *t)
 {

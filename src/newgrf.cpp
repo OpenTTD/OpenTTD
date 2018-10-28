@@ -194,7 +194,7 @@ static GrfProcessingState _cur;
 
 /**
  * Helper to check whether an image index is valid for a particular NewGRF vehicle.
- * @param <T> The type of vehicle.
+ * @tparam T The type of vehicle.
  * @param image_index The image index to check.
  * @return True iff the image index is valid, or 0xFD (use new graphics).
  */
@@ -734,9 +734,9 @@ static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
  * @param invert_action1_flag Set to true, if palette bit 15 means 'not from action 1'.
  * @param use_cur_spritesets  Whether to use currently referenceable action 1 sets.
  * @param feature             GrfSpecFeature to use spritesets from.
- * @param [out] grf_sprite    Read sprite and palette.
- * @param [out] max_sprite_offset  Optionally returns the number of sprites in the spriteset of the sprite. (0 if no spritset)
- * @param [out] max_palette_offset Optionally returns the number of sprites in the spriteset of the palette. (0 if no spritset)
+ * @param[out] grf_sprite     Read sprite and palette.
+ * @param[out] max_sprite_offset  Optionally returns the number of sprites in the spriteset of the sprite. (0 if no spritset)
+ * @param[out] max_palette_offset Optionally returns the number of sprites in the spriteset of the palette. (0 if no spritset)
  * @return Read TileLayoutFlags.
  */
 static TileLayoutFlags ReadSpriteLayoutSprite(ByteReader *buf, bool read_flags, bool invert_action1_flag, bool use_cur_spritesets, int feature, PalSpriteID *grf_sprite, uint16 *max_sprite_offset = NULL, uint16 *max_palette_offset = NULL)
@@ -1845,7 +1845,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 
 /**
  * Define properties for stations
- * @param stdid StationID of the first station tile.
+ * @param stid StationID of the first station tile.
  * @param numinfo Number of subsequent station tiles to change the property for.
  * @param prop The property to change.
  * @param buf The property value.
@@ -2553,7 +2553,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
  * @param gvid ID of the global variable. This is basically only checked for zerones.
  * @param numinfo Number of subsequent IDs to change the property for.
  * @param buf The property value.
- * @param [in,out] translation_table Storage location for the translation table.
+ * @param[in,out] translation_table Storage location for the translation table.
  * @param name Name of the table for debug output.
  * @return ChangeInfoResult.
  */

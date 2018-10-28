@@ -329,7 +329,7 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
  * @param language_id    The (NewGRF) language ID associated with this string.
  * @param allow_newlines Whether newlines are allowed in the string or not.
  * @param str            The string to translate.
- * @param [out] olen     The length of the final string.
+ * @param[out] olen      The length of the final string.
  * @param byte80         The control code to use as replacement for the 0x80-value.
  * @return The translated string.
  */

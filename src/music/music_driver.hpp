@@ -21,7 +21,7 @@ class MusicDriver : public Driver {
 public:
 	/**
 	 * Play a particular song.
-	 * @param filename The name of file with the song to play.
+	 * @param song The information for the song to play.
 	 */
 	virtual void PlaySong(const MusicSongInfo &song) = 0;
 

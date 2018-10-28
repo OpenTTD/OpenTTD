@@ -80,7 +80,7 @@ static uint LoadGrfFile(const char *filename, uint load_index, int file_index)
 /**
  * Load an old fashioned GRF file to replace already loaded sprites.
  * @param filename   The name of the file to open.
- * @param index_tlb  The offsets of each of the sprites.
+ * @param index_tbl  The offsets of each of the sprites.
  * @param file_index The Fio offset to load the file in.
  * @return The number of loaded sprites.
  */

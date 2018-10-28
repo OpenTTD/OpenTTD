@@ -201,7 +201,7 @@ static const TextColour _fios_colours[] = {
 
 /**
  * Sort the collected list save games prior to displaying it in the save/load gui.
- * @param [inout] file_list List of save game files found in the directory.
+ * @param[in,out] file_list List of save game files found in the directory.
  */
 static void SortSaveGameList(FileList &file_list)
 {

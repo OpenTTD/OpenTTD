@@ -31,7 +31,7 @@ static const Money VEHICLE_PROFIT_THRESHOLD = 10000;        ///< Threshold for a
 
 /**
  * Helper to check whether an image index is valid for a particular vehicle.
- * @param <T> The type of vehicle.
+ * @tparam T The type of vehicle.
  * @param image_index The image index to check.
  * @return True iff the image index is valid.
  */

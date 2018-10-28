@@ -49,7 +49,7 @@ enum ViewportAutoscrolling {
 };
 
 static Point _drag_delta; ///< delta between mouse cursor and upper left corner of dragged window
-static Window *_mouseover_last_w = NULL; ///< Window of the last #MOUSEOVER event.
+static Window *_mouseover_last_w = NULL; ///< Window of the last OnMouseOver event.
 static Window *_last_scroll_window = NULL; ///< Window of the last scroll event.
 
 /** List of windows opened at the screen sorted from the front. */
@@ -1115,7 +1115,7 @@ Window *FindWindowById(WindowClass cls, WindowNumber number)
 
 /**
  * Find any window by its class. Useful when searching for a window that uses
- * the window number as a #WindowType, like #WC_SEND_NETWORK_MSG.
+ * the window number as a #WindowClass, like #WC_SEND_NETWORK_MSG.
  * @param cls Window class
  * @return Pointer to the found window, or \c NULL if not available
  */
@@ -1430,7 +1430,6 @@ static void BringWindowToFront(Window *w)
 
 /**
  * Initializes the data (except the position and initial size) of a new Window.
- * @param desc          Window description.
  * @param window_number Number being assigned to the new window
  * @return Window pointer of the newly created window
  * @pre If nested widgets are used (\a widget is \c NULL), #nested_root and #nested_array_size must be initialized.
@@ -2000,7 +1999,7 @@ static void HandleMouseOver()
 {
 	Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
-	/* We changed window, put a MOUSEOVER event to the last window */
+	/* We changed window, put an OnMouseOver event to the last window */
 	if (_mouseover_last_w != NULL && _mouseover_last_w != w) {
 		/* Reset mouse-over coordinates of previous window */
 		Point pt = { -1, -1 };

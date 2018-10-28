@@ -257,7 +257,7 @@ enum NWidgetDisplay {
 	NDB_SHADE_GREY      = 3, ///< Shade viewport to grey-scale.
 	NDB_SHADE_DIMMED    = 4, ///< Display dimmed colours in the viewport.
 	/* Button dropdown widget. */
-	NDB_DROPDOWN_ACTIVE = 5, ///< Dropdown menu of the button dropdown widget is active. @see #NWID_BUTTON_DRPDOWN
+	NDB_DROPDOWN_ACTIVE = 5, ///< Dropdown menu of the button dropdown widget is active. @see #NWID_BUTTON_DROPDOWN
 	/* Scrollbar widget. */
 	NDB_SCROLLBAR_UP    = 6, ///< Up-button is lowered bit.
 	NDB_SCROLLBAR_DOWN  = 7, ///< Down-button is lowered bit.
@@ -400,7 +400,7 @@ enum StackedZeroSizePlanes {
  * There are also a number of special planes (defined in #StackedZeroSizePlanes) that have zero size in one direction (and are stretchable in
  * the other direction) or have zero size in both directions. They are used to make all child planes of the widget disappear.
  * Unlike switching between the regular display planes (that all have the same size), switching from or to one of the zero-sized planes means that
- * a #Windows::ReInit() is needed to re-initialize the window since its size changes.
+ * a #Window::ReInit() is needed to re-initialize the window since its size changes.
  */
 class NWidgetStacked : public NWidgetContainer {
 public:
@@ -567,7 +567,7 @@ private:
  * Nested widget to display a viewport in a window.
  * After initializing the nested widget tree, call #InitializeViewport(). After changing the window size,
  * call #UpdateViewportCoordinates() eg from Window::OnResize().
- * If the #display_flags field contains the #ND_NO_TRANSPARENCY bit, the viewport will disable transparency.
+ * If the #disp_flags field contains the #ND_NO_TRANSPARENCY bit, the viewport will disable transparency.
  * Shading to grey-scale is controlled with the #ND_SHADE_GREY bit (used for B&W news papers), the #ND_SHADE_DIMMED gives dimmed colours (for colour news papers).
  * @todo Class derives from #NWidgetCore, but does not use #colour, #widget_data, or #tool_tip.
  * @ingroup NestedWidgets
@@ -1124,8 +1124,8 @@ static inline NWidgetPart NWidget(WidgetType tp, Colours col, int16 idx = -1)
 
 /**
  * Widget part function for starting a new horizontal container, vertical container, or spacer widget.
- * @param tp         Type of the new nested widget, #NWID_HORIZONTAL(_LTR), #NWID_VERTICAL, #NWID_SPACER, #NWID_SELECTION, and #NWID_MATRIX.
- * @param cont_flags Flags for the containers (#NWID_HORIZONTAL(_LTR) and #NWID_VERTICAL).
+ * @param tp         Type of the new nested widget, #NWID_HORIZONTAL, #NWID_VERTICAL, #NWID_SPACER, #NWID_SELECTION, and #NWID_MATRIX.
+ * @param cont_flags Flags for the containers (#NWID_HORIZONTAL and #NWID_VERTICAL).
  * @ingroup NestedWidgetParts
  */
 static inline NWidgetPart NWidget(WidgetType tp, NWidContainerFlags cont_flags = NC_NONE)

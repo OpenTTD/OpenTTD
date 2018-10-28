@@ -488,7 +488,7 @@ static inline bool SlIsObjectCurrentlyValid(uint16 version_from, uint16 version_
  * Get the NumberType of a setting. This describes the integer type
  * as it is represented in memory
  * @param type VarType holding information about the variable-type
- * @return return the SLE_VAR_* part of a variable-type description
+ * @return the SLE_VAR_* part of a variable-type description
  */
 static inline VarType GetVarMemType(VarType type)
 {
@@ -496,10 +496,10 @@ static inline VarType GetVarMemType(VarType type)
 }
 
 /**
- * Get the #FileType of a setting. This describes the integer type
+ * Get the FileType of a setting. This describes the integer type
  * as it is represented in a savegame/file
  * @param type VarType holding information about the file-type
- * @param return the SLE_FILE_* part of a variable-type description
+ * @return the SLE_FILE_* part of a variable-type description
  */
 static inline VarType GetVarFileType(VarType type)
 {

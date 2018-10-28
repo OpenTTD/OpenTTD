@@ -188,7 +188,7 @@ void InvalidateCompanyWindows(const Company *company)
 
 /**
  * Verify whether the company can pay the bill.
- * @param cost [inout] Money to pay, is changed to an error if the company does not have enough money.
+ * @param[in,out] cost Money to pay, is changed to an error if the company does not have enough money.
  * @return Function returns \c true if the company has enough money, else it returns \c false.
  */
 bool CheckCompanyHasMoney(CommandCost &cost)

@@ -881,7 +881,7 @@ bool CanStationTileHaveWires(TileIndex tile)
 	return statspec == NULL || !HasBit(statspec->wires, GetStationGfx(tile));
 }
 
-/** Wrapper for animation control, see #GetStationCallback. */
+/** Wrapper for animation control, see GetStationCallback. */
 uint16 GetAnimStationCallback(CallbackID callback, uint32 param1, uint32 param2, const StationSpec *statspec, BaseStation *st, TileIndex tile, int extra_data)
 {
 	return GetStationCallback(callback, param1, param2, statspec, st, tile);

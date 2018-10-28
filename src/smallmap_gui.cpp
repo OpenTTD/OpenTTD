@@ -416,7 +416,7 @@ static const byte _tiletype_importance[] = {
 /**
  * Return the colour a tile would be displayed with in the small map in mode "Contour".
  * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #GetTileColours).
+ * @param t    Effective tile type of the tile (see #SmallMapWindow::GetTileColours).
  * @return The colour of tile in the small map in mode "Contour"
  */
 static inline uint32 GetSmallMapContoursPixels(TileIndex tile, TileType t)
@@ -429,7 +429,7 @@ static inline uint32 GetSmallMapContoursPixels(TileIndex tile, TileType t)
  * Return the colour a tile would be displayed with in the small map in mode "Vehicles".
  *
  * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #GetTileColours).
+ * @param t    Effective tile type of the tile (see #SmallMapWindow::GetTileColours).
  * @return The colour of tile in the small map in mode "Vehicles"
  */
 static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile, TileType t)
@@ -442,7 +442,7 @@ static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile, TileType t)
  * Return the colour a tile would be displayed with in the small map in mode "Industries".
  *
  * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #GetTileColours).
+ * @param t    Effective tile type of the tile (see #SmallMapWindow::GetTileColours).
  * @return The colour of tile in the small map in mode "Industries"
  */
 static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile, TileType t)
@@ -455,7 +455,7 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile, TileType t)
  * Return the colour a tile would be displayed with in the small map in mode "Routes".
  *
  * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #GetTileColours).
+ * @param t    Effective tile type of the tile (see #SmallMapWindow::GetTileColours).
  * @return The colour of tile  in the small map in mode "Routes"
  */
 static inline uint32 GetSmallMapRoutesPixels(TileIndex tile, TileType t)
@@ -488,7 +488,7 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile, TileType t)
  * Return the colour a tile would be displayed with in the small map in mode "link stats".
  *
  * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #GetTileColours).
+ * @param t    Effective tile type of the tile (see #SmallMapWindow::GetTileColours).
  * @return The colour of tile in the small map in mode "link stats"
  */
 static inline uint32 GetSmallMapLinkStatsPixels(TileIndex tile, TileType t)
@@ -511,7 +511,7 @@ static const uint32 _vegetation_clear_bits[] = {
  * Return the colour a tile would be displayed with in the smallmap in mode "Vegetation".
  *
  * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #GetTileColours).
+ * @param t    Effective tile type of the tile (see #SmallMapWindow::GetTileColours).
  * @return The colour of tile  in the smallmap in mode "Vegetation"
  */
 static inline uint32 GetSmallMapVegetationPixels(TileIndex tile, TileType t)
@@ -538,7 +538,7 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile, TileType t)
  * Return the colour a tile would be displayed with in the small map in mode "Owner".
  *
  * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #GetTileColours).
+ * @param t    Effective tile type of the tile (see #SmallMapWindow::GetTileColours).
  * @return The colour of tile in the small map in mode "Owner"
  */
 static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
@@ -611,7 +611,7 @@ inline Point SmallMapWindow::RemapTile(int tile_x, int tile_y) const
  * that tile for a point in the smallmap.
  * @param px       Horizontal coordinate of the pixel.
  * @param py       Vertical coordinate of the pixel.
- * @param sub[out] Pixel position at the tile (0..3).
+ * @param[out] sub Pixel position at the tile (0..3).
  * @param add_sub  Add current #subscroll to the position.
  * @return Tile being displayed at the given position relative to #scroll_x and #scroll_y.
  * @note The #subscroll offset is already accounted for.
@@ -641,11 +641,11 @@ inline Point SmallMapWindow::PixelToTile(int px, int py, int *sub, bool add_sub)
 
 /**
  * Compute base parameters of the smallmap such that tile (\a tx, \a ty) starts at pixel (\a x, \a y).
- * @param tx        Tile x coordinate.
- * @param ty        Tile y coordinate.
- * @param x         Non-negative horizontal position in the display where the tile starts.
- * @param y         Non-negative vertical position in the display where the tile starts.
- * @param sub [out] Value of #subscroll needed.
+ * @param tx       Tile x coordinate.
+ * @param ty       Tile y coordinate.
+ * @param x        Non-negative horizontal position in the display where the tile starts.
+ * @param y        Non-negative vertical position in the display where the tile starts.
+ * @param[out] sub Value of #subscroll needed.
  * @return #scroll_x, #scroll_y values.
  */
 Point SmallMapWindow::ComputeScroll(int tx, int ty, int x, int y, int *sub)

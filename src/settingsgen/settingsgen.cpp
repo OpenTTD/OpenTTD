@@ -205,7 +205,6 @@ static const char *DEFAULTS_GROUP_NAME  = "defaults";   ///< Name of the group c
 /**
  * Load the INI file.
  * @param filename Name of the file to load.
- * @param subdir   The subdirectory to load from.
  * @return         Loaded INI data.
  */
 static IniLoadFile *LoadIniFile(const char *filename)
@@ -413,12 +412,12 @@ static const OptionData _opts[] = {
  * After loading, the [pre-amble] group is copied verbatim if it exists.
  *
  * For every group with a name that matches a template name the template is written.
- * It starts with a optional '#if' line if an 'if' item exists in the group. The item
- * value is used as condition. Similarly, '#ifdef' and '#ifndef' lines are also written.
+ * It starts with a optional \c \#if line if an 'if' item exists in the group. The item
+ * value is used as condition. Similarly, \c \#ifdef and \c \#ifndef lines are also written.
  * Below the macro processor directives, the value of the template is written
  * at a line with its variables replaced by item values of the group being written.
  * If the group has no item for the variable, the [defaults] group is tried as fall back.
- * Finally, '#endif' lines are written to match the macro processor lines.
+ * Finally, \c \#endif lines are written to match the macro processor lines.
  *
  * Last but not least, the [post-amble] group is copied verbatim.
  *

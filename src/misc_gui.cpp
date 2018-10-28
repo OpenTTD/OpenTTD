@@ -732,7 +732,7 @@ struct TooltipsWindow : public Window
  * @param str String to be displayed
  * @param paramcount number of params to deal with
  * @param params (optional) up to 5 pieces of additional information that may be added to a tooltip
- * @param use_left_mouse_button close the tooltip when the left (true) or right (false) mouse button is released
+ * @param close_tooltip when the left (true) or right (false) mouse button is released
  */
 void GuiShowTooltips(Window *parent, StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_tooltip)
 {
@@ -1068,7 +1068,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxsize, Window *paren
  */
 struct QueryWindow : public Window {
 	QueryCallbackProc *proc; ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
-	uint64 params[10];       ///< local copy of _decode_parameters
+	uint64 params[10];       ///< local copy of #_global_string_params
 	StringID message;        ///< message shown for query window
 	StringID caption;        ///< title of window
 

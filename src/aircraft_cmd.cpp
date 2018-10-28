@@ -248,7 +248,7 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height, int &xoff
  * @param flags    type of operation.
  * @param e        the engine to build.
  * @param data     unused.
- * @param ret[out] the vehicle that has been built.
+ * @param[out] ret the vehicle that has been built.
  * @return the cost of this operation or an error.
  */
 CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **ret)
@@ -694,9 +694,9 @@ int GetTileHeightBelowAircraft(const Vehicle *v)
  * When the maximum is reached the vehicle should consider descending.
  * When the minimum is reached the vehicle should consider ascending.
  *
- * @param v               The vehicle to get the flight levels for.
- * @param [out] min_level The minimum bounds for flight level.
- * @param [out] max_level The maximum bounds for flight level.
+ * @param v              The vehicle to get the flight levels for.
+ * @param[out] min_level The minimum bounds for flight level.
+ * @param[out] max_level The maximum bounds for flight level.
  */
 void GetAircraftFlightLevelBounds(const Vehicle *v, int *min_level, int *max_level)
 {
@@ -728,7 +728,7 @@ void GetAircraftFlightLevelBounds(const Vehicle *v, int *min_level, int *max_lev
 
 /**
  * Gets the maximum 'flight level' for the holding pattern of the aircraft,
- * in pixels 'z_pos' 0, depending on terrain below..
+ * in pixels 'z_pos' 0, depending on terrain below.
  *
  * @param v The aircraft that may or may not need to decrease its altitude.
  * @return Maximal aircraft holding altitude, while in normal flight, in pixels.
@@ -1889,7 +1889,7 @@ static bool FreeTerminal(Aircraft *v, byte i, byte last_terminal)
 
 /**
  * Get the number of terminals at the airport.
- * @param afc Airport description.
+ * @param apc Airport description.
  * @return Number of terminals.
  */
 static uint GetNumTerminals(const AirportFTAClass *apc)

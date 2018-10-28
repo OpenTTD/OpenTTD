@@ -251,7 +251,7 @@ RailTypes AddDateIntroducedRailTypes(RailTypes current, Date date)
 
 /**
  * Get the rail types the given company can build.
- * @param c the company to get the rail types for.
+ * @param company the company to get the rail types for.
  * @return the rail types.
  */
 RailTypes GetCompanyRailtypes(CompanyID company)

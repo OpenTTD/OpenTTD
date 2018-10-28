@@ -30,7 +30,7 @@ public:
 
 	/**
 	 * Call the demand calculator on the given component.
-	 * @param graph Component to calculate the demands for.
+	 * @param job Component to calculate the demands for.
 	 */
 	virtual void Run(LinkGraphJob &job) const { DemandCalculator c(job); }
 

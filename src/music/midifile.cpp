@@ -520,8 +520,8 @@ struct MpsMachine {
 
 	/**
 	 * Construct a TTD DOS music format decoder.
-	 * @param songdata Buffer of song data from CAT file, ownership remains with caller
-	 * @param songdatalen Length of the data buffer in bytes
+	 * @param data Buffer of song data from CAT file, ownership remains with caller
+	 * @param length Length of the data buffer in bytes
 	 * @param target MidiFile object to add decoded data to
 	 */
 	MpsMachine(const byte *data, size_t length, MidiFile &target)

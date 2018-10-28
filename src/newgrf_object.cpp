@@ -350,8 +350,8 @@ unhandled:
  * @param tile %Tile of the object.
  * @param view View of the object.
  * @param callback Callback ID.
- * @param callback_param1 First parameter (var 10) of the callback.
- * @param callback_param2 Second parameter (var 18) of the callback.
+ * @param param1 First parameter (var 10) of the callback.
+ * @param param2 Second parameter (var 18) of the callback.
  */
 ObjectResolverObject::ObjectResolverObject(const ObjectSpec *spec, Object *obj, TileIndex tile, uint8 view,
 		CallbackID callback, uint32 param1, uint32 param2)

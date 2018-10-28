@@ -1948,7 +1948,6 @@ void DeleteVehicleOrders(Vehicle *v, bool keep_orderlist, bool reset_order_indic
  * Clamp the service interval to the correct min/max. The actual min/max values
  * depend on whether it's in percent or days.
  * @param interval proposed service interval
- * @param company_id the owner of the vehicle
  * @return Clamped service interval
  */
 uint16 GetServiceIntervalClamped(uint interval, bool ispercent)

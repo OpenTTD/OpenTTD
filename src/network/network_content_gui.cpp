@@ -519,7 +519,7 @@ public:
 	 * Create the content list window.
 	 * @param desc the window description to pass to Window's constructor.
 	 * @param select_all Whether the select all button is allowed or not.
-	 * @param type the main type of content to display or #CONTENT_TYPE_END.
+	 * @param types the main type of content to display or #CONTENT_TYPE_END.
 	 *   When a type other than #CONTENT_TYPE_END is given, dependencies of
 	 *   other types are only shown when content that depend on them are
 	 *   selected.

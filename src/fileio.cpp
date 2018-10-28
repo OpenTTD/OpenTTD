@@ -347,7 +347,7 @@ char *FioGetFullPath(char *buf, const char *last, Searchpath sp, Subdirectory su
 
 /**
  * Find a path to the filename in one of the search directories.
- * @param buf [out] Destination buffer for the path.
+ * @param[out] buf Destination buffer for the path.
  * @param last End of the destination buffer.
  * @param subdir Subdirectory to try.
  * @param filename Filename to look for.
@@ -438,7 +438,7 @@ static FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath s
 /**
  * Opens a file from inside a tar archive.
  * @param entry The entry to open.
- * @param filesize [out] If not \c NULL, size of the opened file.
+ * @param[out] filesize If not \c NULL, size of the opened file.
  * @return File handle of the opened file, or \c NULL if the file is not available.
  * @note The file is read from within the tar file, and may not return \c EOF after reading the whole file.
  */
@@ -460,7 +460,6 @@ FILE *FioFOpenFileTar(TarFileListEntry *entry, size_t *filesize)
  * Opens a OpenTTD file somewhere in a personal or global directory.
  * @param filename Name of the file to open.
  * @param subdir Subdirectory to open.
- * @param filename Name of the file to open.
  * @return File handle of the opened file, or \c NULL if the file is not available.
  */
 FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, size_t *filesize)
@@ -632,7 +631,7 @@ static void SimplifyFileName(char *name)
 
 /**
  * Perform the scanning of a particular subdirectory.
- * @param subdir The subdirectory to scan.
+ * @param sd The subdirectory to scan.
  * @return The number of found tar files.
  */
 uint TarScanner::DoScan(Subdirectory sd)
@@ -1303,7 +1302,7 @@ void SanitizeFilename(char *filename)
 /**
  * Load a file into memory.
  * @param filename Name of the file to load.
- * @param lenp [out] Length of loaded data.
+ * @param[out] lenp Length of loaded data.
  * @param maxsize Maximum size to load.
  * @return Pointer to new memory containing the loaded data, or \c NULL if loading failed.
  * @note If \a maxsize less than the length of the file, loading fails.

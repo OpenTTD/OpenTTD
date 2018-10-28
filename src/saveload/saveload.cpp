@@ -2786,7 +2786,7 @@ SaveOrLoadResult LoadWithFilter(LoadFilter *reader)
  * Main Save or Load function where the high-level saveload functions are
  * handled. It opens the savegame, selects format and checks versions
  * @param filename The name of the savegame being created/loaded
- * @param mode Save or load mode. Load can also be a TTD(Patch) game. Use #SL_LOAD, #SL_OLD_LOAD, #SL_LOAD_CHECK, or #SL_SAVE.
+ * @param fop Save or load mode. Load can also be a TTD(Patch) game.
  * @param sb The sub directory to save the savegame in
  * @param threaded True when threaded saving is allowed
  * @return Return the result of the action. #SL_OK, #SL_ERROR, or #SL_REINIT ("unload" the game)

@@ -56,7 +56,7 @@ icu::Collator *_current_collator = NULL;          ///< Collator for the language
 #endif /* WITH_ICU_SORT */
 
 static uint64 _global_string_params_data[20];     ///< Global array of string parameters. To access, use #SetDParam.
-static WChar _global_string_params_type[20];      ///< Type of parameters stored in #_decode_parameters
+static WChar _global_string_params_type[20];      ///< Type of parameters stored in #_global_string_params
 StringParameters _global_string_params(_global_string_params_data, 20, _global_string_params_type);
 
 /** Reset the type array. */
@@ -760,11 +760,10 @@ uint ConvertDisplaySpeedToKmhishSpeed(uint speed)
 }
 /**
  * Parse most format codes within a string and write the result to a buffer.
- * @param buff  The buffer to write the final string to.
- * @param str   The original string with format codes.
- * @param args  Pointer to extra arguments used by various string codes.
- * @param case_index
- * @param last  Pointer to just past the end of the buff array.
+ * @param buff    The buffer to write the final string to.
+ * @param str_arg The original string with format codes.
+ * @param args    Pointer to extra arguments used by various string codes.
+ * @param last    Pointer to just past the end of the buff array.
  * @param dry_run True when the argt array is not yet initialized.
  */
 static char *FormatString(char *buff, const char *str_arg, StringParameters *args, const char *last, uint case_index, bool game_script, bool dry_run)
@@ -2003,7 +2002,7 @@ const char *GetCurrentLanguageIsoCode()
 
 /**
  * Check whether there are glyphs missing in the current language.
- * @param Pointer to an address for storing the text pointer.
+ * @param[out] str Pointer to an address for storing the text pointer.
  * @return If glyphs are missing, return \c true, else return \c false.
  * @post If \c true is returned and str is not NULL, *str points to a string that is found to contain at least one missing glyph.
  */

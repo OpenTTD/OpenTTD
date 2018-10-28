@@ -681,7 +681,7 @@ struct RefitWindow : public Window {
 
 	/**
 	 * Gets the #StringID to use for displaying capacity.
-	 * @param Cargo and cargo subtype to check for capacity.
+	 * @param option Cargo and cargo subtype to check for capacity.
 	 * @return INVALID_STRING_ID if there is no capacity. StringID to use in any other case.
 	 * @post String parameters have been set.
 	 */

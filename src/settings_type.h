@@ -99,7 +99,7 @@ struct GUISettings {
 	bool   smooth_scroll;                    ///< smooth scroll viewports
 	bool   measure_tooltip;                  ///< show a permanent tooltip when dragging tools
 	byte   liveries;                         ///< options for displaying company liveries, 0=none, 1=self, 2=all
-	bool   prefer_teamchat;                  ///< choose the chat message target with <ENTER>, true=all clients, false=your team
+	bool   prefer_teamchat;                  ///< choose the chat message target with \<ENTER\>, true=all clients, false=your team
 	uint8  advanced_vehicle_list;            ///< use the "advanced" vehicle list
 	uint8  loading_indicators;               ///< show loading indicators
 	uint8  default_rail_type;                ///< the default rail type for the rail GUI

@@ -573,7 +573,7 @@ static bool IsWagon(EngineID index)
 }
 
 /**
- * Update #reliability of engine \a e, (if needed) update the engine GUIs.
+ * Update #Engine::reliability and (if needed) update the engine GUIs.
  * @param e %Engine to update.
  */
 static void CalcEngineReliability(Engine *e)
