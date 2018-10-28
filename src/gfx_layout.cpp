@@ -25,6 +25,10 @@
 #include "os/windows/string_uniscribe.h"
 #endif /* WITH_UNISCRIBE */
 
+#ifdef WITH_COCOA
+#include "os/macosx/string_osx.h"
+#endif
+
 #include "safeguards.h"
 
 
@@ -670,7 +674,7 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 		} else {
 			/* Line is new, layout it */
 			FontState old_state = state;
-#if defined(WITH_ICU_LAYOUT) || defined(WITH_UNISCRIBE)
+#if defined(WITH_ICU_LAYOUT) || defined(WITH_UNISCRIBE) || defined(WITH_COCOA)
 			const char *old_str = str;
 #endif
 
@@ -691,6 +695,16 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 #ifdef WITH_UNISCRIBE
 			if (line.layout == NULL) {
 				GetLayouter<UniscribeParagraphLayoutFactory>(line, str, state);
+				if (line.layout == NULL) {
+					state = old_state;
+					str = old_str;
+				}
+			}
+#endif
+
+#ifdef WITH_COCOA
+			if (line.layout == NULL) {
+				GetLayouter<CoreTextParagraphLayoutFactory>(line, str, state);
 				if (line.layout == NULL) {
 					state = old_state;
 					str = old_str;
@@ -840,6 +854,9 @@ void Layouter::ResetFontCache(FontSize size)
 
 #if defined(WITH_UNISCRIBE)
 	UniscribeResetScriptCache(size);
+#endif
+#if defined(WITH_COCOA)
+	MacOSResetScriptCache(size);
 #endif
 }
 

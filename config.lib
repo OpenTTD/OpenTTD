@@ -2890,10 +2890,22 @@ detect_fontconfig() {
 }
 
 detect_icu_layout() {
+	if [ "$with_cocoa" != "0" ] && [ "$with_icu_layout" = "1" ]; then
+		log 1 "checking icu-lx... OSX, skipping"
+		icu_layout_config=""
+		return 0
+	fi
+
 	detect_pkg_config "$with_icu_layout" "icu-lx" "icu_layout_config" "4.8" "1"
 }
 
 detect_icu_sort() {
+	if [ "$with_cocoa" != "0" ] && [ "$with_icu_sort" = "1" ]; then
+		log 1 "checking icu-i18n... OSX, skipping"
+		icu_sort_config=""
+		return 0
+	fi
+
 	detect_pkg_config "$with_icu_sort" "icu-i18n" "icu_sort_config" "4.8" "1"
 }
 

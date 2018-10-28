@@ -38,7 +38,52 @@ public:
 	static StringIterator *Create();
 };
 
+/**
+ * Helper class to construct a new #CoreTextParagraphLayout.
+ */
+class CoreTextParagraphLayoutFactory {
+public:
+	/** Helper for GetLayouter, to get the right type. */
+	typedef UniChar CharType;
+	/** Helper for GetLayouter, to get whether the layouter supports RTL. */
+	static const bool SUPPORTS_RTL = true;
 
+	/**
+	 * Get the actual ParagraphLayout for the given buffer.
+	 * @param buff The begin of the buffer.
+	 * @param buff_end The location after the last element in the buffer.
+	 * @param fontMapping THe mapping of the fonts.
+	 * @return The ParagraphLayout instance.
+	 */
+	static ParagraphLayouter *GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping);
+
+	/**
+	 * Append a wide character to the internal buffer.
+	 * @param buff        The buffer to append to.
+	 * @param buffer_last The end of the buffer.
+	 * @param c           The character to add.
+	 * @return The number of buffer spaces that were used.
+	 */
+	static size_t AppendToBuffer(CharType *buff, const CharType *buffer_last, WChar c)
+	{
+		if (c >= 0x010000U) {
+			/* Character is encoded using surrogates in UTF-16. */
+			if (buff + 1 <= buffer_last) {
+				buff[0] = (CharType)(((c - 0x010000U) >> 10) + 0xD800);
+				buff[1] = (CharType)(((c - 0x010000U) & 0x3FF) + 0xDC00);
+			} else {
+				/* Not enough space in buffer. */
+				*buff = 0;
+			}
+			return 2;
+		} else {
+			*buff = (CharType)(c & 0xFFFF);
+			return 1;
+		}
+	}
+};
+
+void MacOSResetScriptCache(FontSize size);
 void MacOSSetCurrentLocaleName(const char *iso_code);
 int MacOSStringCompare(const char *s1, const char *s2);
 
