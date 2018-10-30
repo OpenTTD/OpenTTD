@@ -47,9 +47,10 @@ template <> struct EnumPropsT<RailType> : MakeEnumPropsT<RailType, byte, RAILTYP
 typedef TinyEnumT<RailType> RailTypeByte;
 
 /**
- * The different roadtypes we support, but then a bitmask of them
+ * The different railtypes we support, but then a bitmask of them.
+ * @note Must be treated as a uint64 type, narrowing it causes bit membership tests to give wrong results, as in bug #6951.
  */
-enum RailTypes {
+enum RailTypes : uint64 {
 	RAILTYPES_NONE     = 0,                      ///< No rail types
 	RAILTYPES_RAIL     = 1 << RAILTYPE_RAIL,     ///< Non-electrified rails
 	RAILTYPES_ELECTRIC = 1 << RAILTYPE_ELECTRIC, ///< Electrified rails
