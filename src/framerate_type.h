@@ -7,8 +7,13 @@
 * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef FRAMERATE_GUI_H
-#define FRAMERATE_GUI_H
+/** @file framerate_type.h
+ * Types for recording game performance data.
+ * @see framerate_gui.cpp for implementation
+ */
+
+#ifndef FRAMERATE_TYPE_H
+#define FRAMERATE_TYPE_H
 
 #include "stdafx.h"
 #include "core/enum_type.hpp"
@@ -64,4 +69,4 @@ public:
 
 void ShowFramerateWindow();
 
-#endif /* FRAMERATE_GUI_H */
+#endif /* FRAMERATE_TYPE_H */
