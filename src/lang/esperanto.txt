@@ -3579,7 +3579,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Tro da s
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Tro da partoj de stacidomo
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Tro da bushaltejoj
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Tro da ŝarĝaŭtaj stacioj
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Tro proksime al alia stacioj/ŝarĝejoj
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Tro proksime al alia haveno
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Tro proksime al alia flughaveno
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Ne povas alinomi stacion...

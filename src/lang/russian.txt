@@ -4435,7 +4435,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Слиш
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Слишком большая ж/д станция
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Слишком много автобусных остановок
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Слишком много грузовых терминалов
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Слишком близко к другой станции
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Слишком близко к другой пристани
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Слишком близко к другому аэропорту
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Невозможно переименовать станцию...

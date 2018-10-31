@@ -3667,7 +3667,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}يوجد
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}يوجد الكثير من قطاعات محطه السكه الحديديه
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}يوجد الكثير من محطات الحافلات
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}يوجد الكثير من محطات الشاحنات
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}قريب للغايه من محطه اخرى
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}قريب للغايه من مَرسَى اخر
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}قريب للغايه من مطار اخر
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}تعذر إعاده تسميه المحطه...

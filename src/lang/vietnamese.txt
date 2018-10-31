@@ -4281,7 +4281,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Quá nhi
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Quá nhiều mảnh của ga tàu hoả
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Quá nhiều điểm đừng xe buýt
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Quá nhiều trạm bốc dỡ hàng xe tải
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Quá sát với một bến khác
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Quá sát với hải cảng khác
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Quá sát với sân bay khác
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Không thể đổi tên ga, bến,cảng...

@@ -4261,7 +4261,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Liiga pa
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Liiga palju raudteejaama osasid
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Liiga palju bussipeatusi
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Liiga palju laadimisplatvorme
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Mõnele teisele jaamale liiga lähedal
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Liiga lähedal teisele dokile
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Liiga lähedal teisele lennuväljale
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Jaama nime ei saa vahetada...

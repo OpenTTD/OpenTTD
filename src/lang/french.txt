@@ -4281,7 +4281,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Trop de 
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Trop de parties de gare
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Trop d'arrêts d'autobus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Trop d'aires de chargement
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Trop près d'une autre gare
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Trop près d'un autre port
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Trop près d'un autre aéroport
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Impossible de renommer la gare...

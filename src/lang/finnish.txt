@@ -4244,7 +4244,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Liian mo
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Rautatieasema on jakautunut liian moneen osaan
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Liian monta linja-autopysäkkiä.
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Liian monta lastauslaituria.
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Liian lähellä toista asemaa tai lastausaluetta.
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Liian lähellä toista satamaa.
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Liian lähellä toista lentokenttää.
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Asemaa ei voi nimetä uudelleen.

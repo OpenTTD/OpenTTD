@@ -4203,7 +4203,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}太多�
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}太多火車站元件
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}太多公車站
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}太多貨運站
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}太接近另一個車站／載貨區
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}太接近另一個碼頭
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}太接近另一個機場
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}無法修改車站名稱...

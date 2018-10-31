@@ -4311,7 +4311,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Troppe s
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Stazione composta da troppe parti
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Troppe stazioni degli autobus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Troppe aree di carico per camion
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Troppo vicino ad un'altra stazione/area di carico
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Troppo vicino ad un altro molo
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Troppo vicino ad un altro aeroporto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Impossibile rinominare la stazione...

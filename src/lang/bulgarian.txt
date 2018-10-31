@@ -4133,7 +4133,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Твър
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Твърде много части на гара
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Твърде много автобусни спирки
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Твърде много гари за камиони
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Твърде близо до друга гара/товарна платформа
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Прекалено близо до друг док
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Прекалено близо до друго летище
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Станцията не може да бъде преименувана...

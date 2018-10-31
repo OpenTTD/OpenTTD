@@ -4588,7 +4588,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Зана
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Занадта вялікая чыгуначная станцыя
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Занадта шмат аўтобусных прыпынкаў
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Занадта шмат грузавых тэрмiналаў
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Занадта блізка да іншай станцыі
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Занадта блізка да іншай прыстані
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Занадта блізка да іншага аэрапорта
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Немагчыма перайменаваць станцыю...
