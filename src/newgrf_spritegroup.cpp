@@ -144,22 +144,6 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
 	return &this->default_scope;
 }
 
-/**
- * Rotate val rot times to the right
- * @param val the value to rotate
- * @param rot the amount of times to rotate
- * @return the rotated value
- */
-static uint32 RotateRight(uint32 val, uint32 rot)
-{
-	/* Do not rotate more than necessary */
-	rot %= 32;
-	assert(rot > 0);
-
-	return (val >> rot) | (val << (32 - rot));
-}
-
-
 /* Evaluate an adjustment for a variable of the given size.
  * U is the unsigned type and S is the signed type to use. */
 template <typename U, typename S>
@@ -192,7 +176,7 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ScopeResolver
 		case DSGA_OP_STO:  _temp_store.StoreValue((U)value, (S)last_value); return last_value;
 		case DSGA_OP_RST:  return value;
 		case DSGA_OP_STOP: scope->StorePSA((U)value, (S)last_value); return last_value;
-		case DSGA_OP_ROR:  return RotateRight(last_value, value);
+		case DSGA_OP_ROR:  return ROR<uint32>((U)last_value, (U)value & 0x1F); // mask 'value' to 5 bits, which should behave the same on all architectures.
 		case DSGA_OP_SCMP: return ((S)last_value == (S)value) ? 1 : ((S)last_value < (S)value ? 0 : 2);
 		case DSGA_OP_UCMP: return ((U)last_value == (U)value) ? 1 : ((U)last_value < (U)value ? 0 : 2);
 		case DSGA_OP_SHL:  return (uint32)(U)last_value << ((U)value & 0x1F); // Same behaviour as in ParamSet, mask 'value' to 5 bits, which should behave the same on all architectures.
