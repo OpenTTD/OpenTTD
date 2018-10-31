@@ -4222,7 +4222,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}För må
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}För många delar på järnvägsstationen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}För många busshållplatser
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}För många lastbryggor
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}För nära en annan station/hållplats
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}För nära en annan hamn
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}För nära en annan flygplats
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan inte byta namn på station...

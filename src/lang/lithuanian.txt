@@ -4478,7 +4478,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Per daug
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Perdaug traukinių stoties dalių
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Per daug autobusų stotelių
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Per daug sunkvežimių pakrovimo aikstelių
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Per arti kitos stotelės
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Per arti kitos prieplaukos
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Per arti kito oro uosto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Stotelės pervardinti negalima...

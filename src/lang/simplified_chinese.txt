@@ -4216,7 +4216,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}车站�
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}分体站台太多
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}公共汽车站过多
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}汽车货场过多
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}距离另一车站过近
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}距离另一码头过近
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}距离另一机场过近
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}不能重命名车站

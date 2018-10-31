@@ -4280,7 +4280,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Te veel 
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Te veel treinstationsdelen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushaltes
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te veel vrachtwagenlaadstations
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Te dicht bij een ander (laad)station
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Te dicht bij een andere haven
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te dicht bij een ander vliegveld
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan stationsnaam niet veranderen...

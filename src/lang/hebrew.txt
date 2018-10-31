@@ -4256,7 +4256,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}יותר
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}התחנה מורכבת מיותר מידי חלקים
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}יותר מידי תחנות אוטובוס
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}יותר מידי תחנות משאיות
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}קרוב מידי לתחנה או איזור טעינה אחרים
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}יותר מידי קרוב למזח אחר
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}קרוב מידי לשדה תעופה אחר
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}לא ניתן לשנות שם תחנה...

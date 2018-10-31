@@ -4228,7 +4228,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}For mang
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Banegården er i for mange dele
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}For mange busterminaler
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}For mange fragtcentraler
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}For tæt på en anden station/fragtcentral
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}For tæt på en anden havn
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}For tæt på en anden lufthavn
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan ikke omdøbe stationen...

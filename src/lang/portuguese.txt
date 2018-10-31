@@ -4223,7 +4223,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Demasiad
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Demasiadas partes na estação ferroviária
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paragens de autocarro
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Demasiadas estações de carga
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Muito junto de uma estação/local de carga
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Muito perto de outra doca
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Demasiado perto de outro aeroporto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Não pode alterar o nome da estação...

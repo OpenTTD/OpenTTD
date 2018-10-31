@@ -4463,7 +4463,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Cus stè
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Cus pàirtean dhe stèisean-rèile
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Gus stèiseanan bus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Tha cus ionadan-luchdaidh nan làraidh ann
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Ro fhaisg air stèisean/ionad-luchdaidh eile
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Ro fhaisg air port eile
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Ro fhaisg air port-adhair eile
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Cha ghabh ainm an stèisein atharrachadh...

@@ -4203,7 +4203,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}An iomar
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}An iomarca codanna stáisiún iarnróid
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}An iomarca stadanna bus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}An iomarca stáisiúin leoraithe
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Roghearr do stáisiún/limistéar lódála eile
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Roghearr do dug eile
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Roghearr d'aerfort eile
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Ní féidir an stáisiún a athainmniú...

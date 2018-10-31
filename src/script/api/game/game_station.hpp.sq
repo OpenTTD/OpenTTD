@@ -33,7 +33,6 @@ void SQGSStation_Register(Squirrel *engine)
 	SQGSStation.DefSQConst(engine, ScriptStation::STATION_ANY,                              "STATION_ANY");
 
 	ScriptError::RegisterErrorMap(STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT,    ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION);
-	ScriptError::RegisterErrorMap(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION,    ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION);
 	ScriptError::RegisterErrorMap(STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK,       ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION);
 	ScriptError::RegisterErrorMap(STR_ERROR_TOO_MANY_STATIONS_LOADING,       ScriptStation::ERR_STATION_TOO_MANY_STATIONS);
 	ScriptError::RegisterErrorMap(STR_ERROR_TOO_MANY_TRUCK_STOPS,            ScriptStation::ERR_STATION_TOO_MANY_STATIONS);

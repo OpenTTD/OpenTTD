@@ -4222,7 +4222,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Ze vill 
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Ze vill Garesdeeler
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Ze vill Busarrêten
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Ze vill Camionsgaren
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Ze noo un enger aanerer Gare/Luedstatioun
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Ze noo un engem aanerem Hafen
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Ze noo un engem aaneren Fluchhafen
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kann d'Statioun net ëmbenennen...

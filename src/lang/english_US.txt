@@ -4235,7 +4235,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Too many
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Too many railroad station parts
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Too many bus stops
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Too many truck stations
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Too close to another station/loading area
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Too close to another dock
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Too close to another airport
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Can't rename station...

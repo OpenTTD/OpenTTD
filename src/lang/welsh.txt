@@ -4222,7 +4222,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Gormod o
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Mae gan yr orsaf ormod o rannau
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Gormod o arosfannau bysus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Gormod o orsafoedd lorïau
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Rhy agos i orsaf/ardal lwytho
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Rhy agos i ddoc arall
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Rhy agos i faes awyr arall
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Methu ailenwi gorsaf...

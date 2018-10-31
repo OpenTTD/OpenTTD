@@ -4271,7 +4271,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Príliš
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Veľa častí vlakovej stanice
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Príliš veľa autobusových zastávok
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Príliš veľa zastávok nákladných automobilov
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Príliš blízko inej stanice/vykládky
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Príliš blízko iného prístavu
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Príliš blízko iného letiska
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Stanica sa nedá premenovať...
