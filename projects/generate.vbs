@@ -28,29 +28,6 @@ Set FSO = CreateObject("Scripting.FileSystemObject")
 ' generate_vs140.vcxproj        is for MSVC 2015
 ' version_vs140.vcxproj         is for MSVC 2015
 
-' openttd_vs100.sln             is for MSVC 2010
-' openttd_vs100.vcxproj         is for MSVC 2010
-' openttd_vs100.vcxproj.filters is for MSVC 2010
-' langs_vs100.vcxproj           is for MSVC 2010
-' strgen_vs100.vcxproj          is for MSVC 2010
-' strgen_vs100.vcxproj.filters  is for MSVC 2010
-' generate_vs100.vcxproj        is for MSVC 2010
-' version_vs100.vcxproj         is for MSVC 2010
-
-' openttd_vs90.sln              is for MSVC 2008
-' openttd_vs90.vcproj           is for MSVC 2008
-' langs_vs90.vcproj             is for MSVC 2008
-' strgen_vs90.vcproj            is for MSVC 2008
-' generate_vs90.vcproj          is for MSVC 2008
-' version_vs90.vcproj           is for MSVC 2008
-
-' openttd_vs80.sln              is for MSVC 2005
-' openttd_vs80.vcproj           is for MSVC 2005
-' langs_vs80.vcproj             is for MSVC 2005
-' strgen_vs80.vcproj            is for MSVC 2005
-' generate_vs80.vcproj          is for MSVC 2005
-' version_vs80.vcproj           is for MSVC 2005
-
 Sub safety_check(filename)
 	Dim file, line, regexp, list
 
@@ -383,10 +360,6 @@ headers_check ROOT_DIR & "/source.list", ROOT_DIR & "\src\" ' Backslashes needed
 
 Dim openttd, openttdvcxproj, openttdfilters, openttdfiles
 openttd = load_main_data(ROOT_DIR & "/source.list", openttdvcxproj, openttdfilters, openttdfiles)
-generate openttd, ROOT_DIR & "/projects/openttd_vs80.vcproj", Null
-generate openttd, ROOT_DIR & "/projects/openttd_vs90.vcproj", Null
-generate openttdvcxproj, ROOT_DIR & "/projects/openttd_vs100.vcxproj", Null
-generate openttdfiles, ROOT_DIR & "/projects/openttd_vs100.vcxproj.filters", openttdfilters
 generate openttdvcxproj, ROOT_DIR & "/projects/openttd_vs140.vcxproj", Null
 generate openttdfiles, ROOT_DIR & "/projects/openttd_vs140.vcxproj.filters", openttdfilters
 generate openttdvcxproj, ROOT_DIR & "/projects/openttd_vs141.vcxproj", Null
@@ -394,10 +367,6 @@ generate openttdfiles, ROOT_DIR & "/projects/openttd_vs141.vcxproj.filters", ope
 
 Dim lang, langvcxproj, langfiles
 lang = load_lang_data(ROOT_DIR & "/src/lang", langvcxproj, langfiles)
-generate lang, ROOT_DIR & "/projects/langs_vs80.vcproj", Null
-generate lang, ROOT_DIR & "/projects/langs_vs90.vcproj", Null
-generate langvcxproj, ROOT_DIR & "/projects/langs_vs100.vcxproj", Null
-generate langfiles, ROOT_DIR & "/projects/langs_vs100.vcxproj.filters", Null
 generate langvcxproj, ROOT_DIR & "/projects/langs_vs140.vcxproj", Null
 generate langfiles, ROOT_DIR & "/projects/langs_vs140.vcxproj.filters", Null
 generate langvcxproj, ROOT_DIR & "/projects/langs_vs141.vcxproj", Null
@@ -405,10 +374,6 @@ generate langfiles, ROOT_DIR & "/projects/langs_vs141.vcxproj.filters", Null
 
 Dim settings, settingsvcxproj, settingscommand, settingsfiles
 settings = load_settings_data(ROOT_DIR & "/src/table", settingsvcxproj, settingscommand, settingsfiles)
-generate settings, ROOT_DIR & "/projects/settings_vs80.vcproj", settingscommand
-generate settings, ROOT_DIR & "/projects/settings_vs90.vcproj", settingscommand
-generate settingsvcxproj, ROOT_DIR & "/projects/settings_vs100.vcxproj", settingscommand
-generate settingsfiles, ROOT_DIR & "/projects/settings_vs100.vcxproj.filters", Null
 generate settingsvcxproj, ROOT_DIR & "/projects/settings_vs140.vcxproj", settingscommand
 generate settingsfiles, ROOT_DIR & "/projects/settings_vs140.vcxproj.filters", Null
 generate settingsvcxproj, ROOT_DIR & "/projects/settings_vs141.vcxproj", settingscommand

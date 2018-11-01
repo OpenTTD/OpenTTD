@@ -40,28 +40,6 @@ fi
 # generate_vs140.vcxproj        is for MSVC 2015
 # version_vs140.vcxproj         is for MSVC 2015
 
-# openttd_vs100.sln             is for MSVC 2010
-# openttd_vs100.vcxproj         is for MSVC 2010
-# openttd_vs100.vcxproj.filters is for MSVC 2010
-# langs_vs100.vcxproj           is for MSVC 2010
-# strgen_vs100.vcxproj          is for MSVC 2010
-# strgen_vs100.vcxproj.filters  is for MSVC 2010
-# generate_vs100.vcxproj        is for MSVC 2010
-# version_vs100.vcxproj         is for MSVC 2010
-
-# openttd_vs90.sln              is for MSVC 2008
-# openttd_vs90.vcproj           is for MSVC 2008
-# langs_vs90.vcproj             is for MSVC 2008
-# strgen_vs90.vcproj            is for MSVC 2008
-# generate_vs90.vcproj          is for MSVC 2008
-# version_vs90.vcproj           is for MSVC 2008
-
-# openttd_vs80.sln              is for MSVC 2005
-# openttd_vs80.vcproj           is for MSVC 2005
-# langs_vs80.vcproj             is for MSVC 2005
-# strgen_vs80.vcproj            is for MSVC 2005
-# generate_vs80.vcproj          is for MSVC 2005
-# version_vs80.vcproj           is for MSVC 2005
 
 
 
@@ -322,26 +300,14 @@ settingscommand=`echo "$settings" | grep "^#3" | sed "s~#3~~g"`
 settingsvcxproj=`echo "$settings" | grep "^#2" | sed "s~#2~~g"`
 settings=`echo "$settings" | grep "^#1" | sed "s~#1~~g"`
 
-generate "$openttd" "openttd_vs80.vcproj"
-generate "$openttd" "openttd_vs90.vcproj"
-generate "$openttdvcxproj" "openttd_vs100.vcxproj"
-generate "$openttdfiles" "openttd_vs100.vcxproj.filters" "$openttdfilters"
 generate "$openttdvcxproj" "openttd_vs140.vcxproj"
 generate "$openttdfiles" "openttd_vs140.vcxproj.filters" "$openttdfilters"
 generate "$openttdvcxproj" "openttd_vs141.vcxproj"
 generate "$openttdfiles" "openttd_vs141.vcxproj.filters" "$openttdfilters"
-generate "$lang" "langs_vs80.vcproj"
-generate "$lang" "langs_vs90.vcproj"
-generate "$langvcxproj" "langs_vs100.vcxproj"
-generate "$langfiles" "langs_vs100.vcxproj.filters"
 generate "$langvcxproj" "langs_vs140.vcxproj"
 generate "$langfiles" "langs_vs140.vcxproj.filters"
 generate "$langvcxproj" "langs_vs141.vcxproj"
 generate "$langfiles" "langs_vs141.vcxproj.filters"
-generate "$settings" "settings_vs80.vcproj" "$settingscommand"
-generate "$settings" "settings_vs90.vcproj" "$settingscommand"
-generate "$settingsvcxproj" "settings_vs100.vcxproj" "$settingscommand"
-generate "$settingsfiles" "settings_vs100.vcxproj.filters"
 generate "$settingsvcxproj" "settings_vs140.vcxproj" "$settingscommand"
 generate "$settingsfiles" "settings_vs140.vcxproj.filters"
 generate "$settingsvcxproj" "settings_vs141.vcxproj" "$settingscommand"
