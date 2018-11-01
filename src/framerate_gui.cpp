@@ -450,7 +450,7 @@ struct FramerateWindow : Window {
 	void DrawElementTimesColumn(const Rect &r, StringID heading_str, const CachedDecimal *values) const
 	{
 		int y = r.top;
-		DrawString(r.left, r.right, y, heading_str, TC_FROMSTRING, SA_CENTER);
+		DrawString(r.left, r.right, y, heading_str, TC_FROMSTRING, SA_CENTER, true);
 		y += FONT_HEIGHT_NORMAL + VSPACING;
 
 		for (PerformanceElement e = PFE_FIRST; e < PFE_MAX; e++) {
