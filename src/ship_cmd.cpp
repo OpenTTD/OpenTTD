@@ -292,6 +292,31 @@ TileIndex Ship::GetOrderStationLocation(StationID station)
 	if (st->dock_tile != INVALID_TILE) {
 		return TILE_ADD(st->dock_tile, ToTileIndexDiff(GetDockOffset(st->dock_tile)));
 	} else {
+		/* Not a valid destination right now, check if there are any valid destinations at all */
+		Order *o;
+		int waypoint_orders = 0;
+		bool has_stop_order = false;
+		FOR_VEHICLE_ORDERS(this, o) {
+			switch (o->GetType()) {
+				case OT_GOTO_STATION:
+					if (Station::Get(o->GetDestination())->dock_tile != INVALID_TILE) has_stop_order = true;
+					break;
+				case OT_GOTO_DEPOT:
+					has_stop_order = true;
+					break;
+				case OT_GOTO_WAYPOINT:
+					waypoint_orders++;
+					break;
+				default:
+					break;
+			}
+		}
+		if (waypoint_orders < 2 && !has_stop_order) {
+			/* Bad order list, stop dead for now */
+			this->current_order.Free();
+			return 0;
+		}
+
 		this->IncrementRealOrderIndex();
 		return 0;
 	}
@@ -511,6 +536,14 @@ static void ShipController(Ship *v)
 
 	ProcessOrders(v);
 	v->HandleLoading();
+
+	/* Assume ships never have a valid destination that is tile 0, and it actually means the current order points to a deleted station */
+	if (v->dest_tile == 0) return;
+
+	if (v->current_order.IsType(OT_DUMMY) || v->current_order.IsType(OT_NOTHING)) {
+		v->cur_speed = 0;
+		return;
+	}
 
 	if (v->current_order.IsType(OT_LOADING)) return;
 
