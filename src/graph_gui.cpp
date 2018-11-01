@@ -1402,9 +1402,9 @@ struct PerformanceRatingDetailWindow : Window {
 		int colour_notdone = _colour_gradient[COLOUR_RED][4];
 
 		/* Draw all the score parts */
-		int val    = _score_part[company][score_type];
-		int needed = _score_info[score_type].needed;
-		int score  = _score_info[score_type].score;
+		int64 val    = _score_part[company][score_type];
+		int64 needed = _score_info[score_type].needed;
+		int   score  = _score_info[score_type].score;
 
 		/* SCORE_TOTAL has his own rules ;) */
 		if (score_type == SCORE_TOTAL) {
@@ -1422,7 +1422,7 @@ struct PerformanceRatingDetailWindow : Window {
 		DrawString(this->score_info_left, this->score_info_right, text_top, STR_BLACK_COMMA, TC_FROMSTRING, SA_RIGHT);
 
 		/* Calculate the %-bar */
-		uint x = Clamp(val, 0, needed) * this->bar_width / needed;
+		uint x = Clamp<int64>(val, 0, needed) * this->bar_width / needed;
 		bool rtl = _current_text_dir == TD_RTL;
 		if (rtl) {
 			x = this->bar_right - x;
@@ -1435,7 +1435,7 @@ struct PerformanceRatingDetailWindow : Window {
 		if (x != this->bar_right) GfxFillRect(x, bar_top, this->bar_right, bar_top + this->bar_height, rtl ? colour_done : colour_notdone);
 
 		/* Draw it */
-		SetDParam(0, Clamp(val, 0, needed) * 100 / needed);
+		SetDParam(0, Clamp<int64>(val, 0, needed) * 100 / needed);
 		DrawString(this->bar_left, this->bar_right, text_top, STR_PERFORMANCE_DETAIL_PERCENT, TC_FROMSTRING, SA_HOR_CENTER);
 
 		/* SCORE_LOAN is inversed */
