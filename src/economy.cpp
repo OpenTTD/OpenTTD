@@ -95,7 +95,7 @@ const ScoreInfo _score_info[] = {
 	{       0,   0}  // SCORE_TOTAL
 };
 
-int _score_part[MAX_COMPANIES][SCORE_END];
+int64 _score_part[MAX_COMPANIES][SCORE_END];
 Economy _economy;
 Prices _price;
 Money _additional_cash_required;
@@ -183,7 +183,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 		_score_part[owner][SCORE_VEHICLES] = num;
 		/* Don't allow negative min_profit to show */
 		if (min_profit > 0) {
-			_score_part[owner][SCORE_MIN_PROFIT] = ClampToI32(min_profit);
+			_score_part[owner][SCORE_MIN_PROFIT] = min_profit;
 		}
 	}
 
@@ -213,10 +213,10 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 			} while (++cee, --numec);
 
 			if (min_income > 0) {
-				_score_part[owner][SCORE_MIN_INCOME] = ClampToI32(min_income);
+				_score_part[owner][SCORE_MIN_INCOME] = min_income;
 			}
 
-			_score_part[owner][SCORE_MAX_INCOME] = ClampToI32(max_income);
+			_score_part[owner][SCORE_MAX_INCOME] = max_income;
 		}
 	}
 
@@ -230,7 +230,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 				total_delivered += cee->delivered_cargo.GetSum<OverflowSafeInt64>();
 			} while (++cee, --numec);
 
-			_score_part[owner][SCORE_DELIVERED] = ClampToI32(total_delivered);
+			_score_part[owner][SCORE_DELIVERED] = total_delivered;
 		}
 	}
 
@@ -242,13 +242,13 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 	/* Generate score for company's money */
 	{
 		if (c->money > 0) {
-			_score_part[owner][SCORE_MONEY] = ClampToI32(c->money);
+			_score_part[owner][SCORE_MONEY] = c->money;
 		}
 	}
 
 	/* Generate score for loan */
 	{
-		_score_part[owner][SCORE_LOAN] = ClampToI32(_score_info[SCORE_LOAN].needed - c->current_loan);
+		_score_part[owner][SCORE_LOAN] = _score_info[SCORE_LOAN].needed - c->current_loan;
 	}
 
 	/* Now we calculate the score for each item.. */
