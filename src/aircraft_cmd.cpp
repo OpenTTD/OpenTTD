@@ -918,6 +918,8 @@ static bool AircraftController(Aircraft *v)
 
 	/* Helicopter landing. */
 	if (amd.flag & AMED_HELI_LOWER) {
+		SetBit(v->flags, VAF_HELI_DIRECT_DESCENT);
+
 		if (st == NULL) {
 			/* FIXME - AircraftController -> if station no longer exists, do not land
 			 * helicopter will circle until sign disappears, then go to next order
@@ -938,7 +940,10 @@ static bool AircraftController(Aircraft *v)
 			Vehicle *u = v->Next()->Next();
 
 			/*  Increase speed of rotors. When speed is 80, we've landed. */
-			if (u->cur_speed >= 80) return true;
+			if (u->cur_speed >= 80) {
+				ClrBit(v->flags, VAF_HELI_DIRECT_DESCENT);
+				return true;
+			}
 			u->cur_speed += 4;
 		} else {
 			count = UpdateAircraftSpeed(v);
@@ -1603,6 +1608,7 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 				uint16 tsubspeed = v->subspeed;
 				if (!AirportHasBlock(v, current, apc)) {
 					v->state = landingtype; // LANDING / HELILANDING
+					if (v->state == HELILANDING) SetBit(v->flags, VAF_HELI_DIRECT_DESCENT);
 					/* it's a bit dirty, but I need to set position to next position, otherwise
 					 * if there are multiple runways, plane won't know which one it took (because
 					 * they all have heading LANDING). And also occupy that block! */
