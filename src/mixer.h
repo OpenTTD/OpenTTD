@@ -14,6 +14,14 @@
 
 struct MixerChannel;
 
+/**
+ * Type of callback functions for supplying PCM music.
+ * A music decoder/renderer implements this function and installs it with MxSetMusicSource, which also returns the sample rate used.
+ * @param buffer Pointer to interleaved 2-channel signed 16 bit PCM data buffer, guaranteed to be 0-initialized.
+ * @param samples number of samples that must be filled into \c buffer.
+ */
+typedef void(*MxStreamCallback)(int16 *buffer, size_t samples);
+
 bool MxInitialize(uint rate);
 void MxMixSamples(void *buffer, uint samples);
 
@@ -21,5 +29,7 @@ MixerChannel *MxAllocateChannel();
 void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, size_t size, uint rate, bool is16bit);
 void MxSetChannelVolume(MixerChannel *mc, uint volume, float pan);
 void MxActivateChannel(MixerChannel*);
+
+uint32 MxSetMusicSource(MxStreamCallback music_callback);
 
 #endif /* MIXER_H */
