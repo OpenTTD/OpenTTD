@@ -1,3 +1,15 @@
+openttd (1.8.0-0) unstable; urgency=low
+
+  * New upstream release 1.8.0
+
+ -- OpenTTD <info@openttd.org>  Sun, 01 Apr 2018 14:00:00 +0200
+
+openttd (1.8.0~RC1-0) unstable; urgency=low
+
+  * New upstream release 1.8.0-RC1
+
+ -- OpenTTD <info@openttd.org>  Wed, 21 Mar 2018 21:00:00 +0100
+
 openttd (1.7.2-0) unstable; urgency=low
 
   * New upstream release 1.7.2
@@ -1002,4 +1014,3 @@ openttd (0.3.5-1) unstable; urgency=low
   * Initial Release.
 
  -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Fri, 24 Dec 2004 02:58:47 +0100
-
