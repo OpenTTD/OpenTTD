@@ -1,6 +1,6 @@
 OpenTTD's known bugs
 Last updated:    2018-11-05
-Release version: 1.8.0
+Release version: 1.9.0
 ------------------------------------------------------------------------
 
 
@@ -47,22 +47,6 @@ After a while of playing, colours get corrupted:
                 a) Switching to windowed mode, instead of fullscreen
                 b) Switching off background slideshow
                 c) Setting up the 32bpp-anim or 32bpp-optimized blitter
-
-Long delay between switching songs/music:
-        On Windows there is a delay of a (few) second(s) between switching
-        of songs for the "Win32" driver. This delay is caused by the fact
-        that opening a MIDI file via MCI is extremely slow.
-
-        DirectMusic, known as "dmusic" in OpenTTD, has a much shorter delay.
-        However, under some circumstances DirectMusic does not reset its state
-        properly causing wrongly pitched/bad sounding songs. This problem is in
-        DirectMusic as it is reproducable with Microsoft's DirectMusic Producer.
-        DirectMusic has been deprecated since 2004 and as such has no support
-        for 64-bit OpenTTD.
-
-        As a delay is favourable over bad sounding music the "Win32" driver
-        is the default driver for OpenTTD. You can change this default by
-        setting the "musicdriver" in your openttd.cfg to "dmusic".
 
 Custom vehicle type name is incorrectly aligned:
         Some NewGRFs use sprites that are bigger than normal in the "buy
@@ -214,12 +198,6 @@ Train crashes entering same junction from block and path signals [#3928]:
         the train entering from path signal just after the backwards facing
         signal (from the path signal train) resolves the issue.
 
-Crashes when playing music [#3941]:
-        macOS's QuickTime (default music driver) and Windows' MCI ("Win32"
-        music driver) crash on some songs from OpenMSX. OpenTTD cannot do
-        anything about this. Please report these crashes to the authors
-        of OpenMSX so the crash causing songs can be removed or fixed.
-
 Crashes when run in a VM using Parallels Desktop [#4003]:
         When the Windows version of OpenTTD is executed in a VM under
         Parallels Desktop a privileged instruction exception may be thrown.
@@ -229,22 +207,6 @@ Crashes when run in a VM using Parallels Desktop [#4003]:
         the scope of OpenTTD. Most likely this is due to Parallels Desktop
         lacking support for RDTSC calls. The problem can be avoided by using
         other VM-software, Wine, or running natively on macOS.
-
-OpenTTD hangs when started on 32-bit Windows [#4083]:
-        Under some circumstances OpenTTD might hang for hours on the
-        initialisation of the music driver. The exact circumstances are
-        unknown except that it is the "dmusic" music driver that has the
-        problem and that the "Win32" music driver does not. As a result
-        using the "Win32" music driver will work around this issue.
-
-        As the exact circumstances are unknown, and the obvious
-        configuration settings related to the music driver are at their
-        default we are not able to detect this failure, except when Windows'
-        music initialisation function returns after several hours and then
-        there is no point in switching the music driver anymore.
-        The reason we still use the "Win32" music driver as default are
-        described in the "Long delay between switching music/song" section
-        of this document.
 
 Entry- and exit signals are not dragged [#4378]:
         Unlike all other signal types, the entry- and exit signals are not
@@ -264,14 +226,6 @@ Station build date is incorrect [#4415]:
         The tile query tool can be fixed by changing the "Build date" text
         to "Date at which the last (re)construction took place" but this is
         deemed too specific and long for that window.
-
-Can't change volume inside OpenTTD [#4416]:
-        Some backends do not provide a means to change the volume of sound
-        effects or music. The mixing of music and sound is left to external
-        libraries/the operating system we can't handle the volume control
-        in OpenTTD. As a result you can't change the volume inside OpenTTD
-        for backends such as SDL; just use the volume control provided by
-        your operating system.
 
 (Temporary) wrong colours when switching to full screen [#4511]:
         On Windows it can happen that you temporarily see wrong colours
