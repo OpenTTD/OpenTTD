@@ -73,7 +73,7 @@ Custom vehicle type name is incorrectly aligned:
         the default alignment. The only way to (partially) fix this is by
         adding spaces to the custom name.
 
-Clipping problems [FS#119]:
+Clipping problems [#119]:
         In some cases sprites are not drawn as one would expect. Examples of
         this are aircraft that might be hidden below the runway or trees that
         in some cases are rendered over vehicles.
@@ -91,7 +91,7 @@ Clipping problems [FS#119]:
         leave the Transport Tycoon graphics, which in effect means OpenTTD
         will not be a Transport Tycoon clone anymore.
 
-Mouse scrolling not possible at the edges of the screen [FS#383] [FS#3966]:
+Mouse scrolling not possible at the edges of the screen [#383] [#3966]:
         Scrolling the viewport with the mouse cursor at the edges of the screen
         in the same direction of the edge will fail. If the cursor is near the
         edge the scrolling will be very slow.
@@ -99,7 +99,7 @@ Mouse scrolling not possible at the edges of the screen [FS#383] [FS#3966]:
         OpenTTD's window. It is not told how far you have moved the cursor
         outside of OpenTTD's window.
 
-Lost trains ignore (block) exit signals [FS#1473]:
+Lost trains ignore (block) exit signals [#1473]:
         If trains are lost they ignore block exit signals, blocking junctions
         with presignals. This is caused because the path finders cannot tell
         where the train needs to go. As such a random direction is chosen at
@@ -111,7 +111,7 @@ Lost trains ignore (block) exit signals [FS#1473]:
         of work needed to write a system that prevents the lost trains from
         taking the wrong direction.
 
-Vehicle owner of last transfer leg gets paid for all [FS#2427]:
+Vehicle owner of last transfer leg gets paid for all [#2427]:
         When you make a transfer system that switches vehicle owners. This
         is only possible with 'industry stations', e.g. the oil rig station
         the owner of the vehicle that does the final delivery gets paid for
@@ -122,7 +122,7 @@ Vehicle owner of last transfer leg gets paid for all [FS#2427]:
         in only one corner case. We think it is not worth the effort until
         sharing of stations is an official feature.
 
-Forbid 90 degree turns does not work for crossing PBS paths [FS#2737]:
+Forbid 90 degree turns does not work for crossing PBS paths [#2737]:
         When you run a train through itself on a X junction with PBS turned on
         the train will not obey the 'forbid 90 degree turns' setting. This is
         due to the fact that we can not be sure that the setting was turned
@@ -137,7 +137,7 @@ Forbid 90 degree turns does not work for crossing PBS paths [FS#2737]:
         means adding quite a bit of data to the savegame for solving an issue
         that is basically an user error. We think it is not worth the effort.
 
-Duplicate (station) names after renaming [FS#3204]:
+Duplicate (station) names after renaming [#3204]:
         After renaming stations one can create duplicate station names. This
         is done giving a station the same custom name as another station with
         an automatically generated name.
@@ -153,7 +153,7 @@ Duplicate (station) names after renaming [FS#3204]:
         compared to the other custom names in the same class and not compared
         to the automatically generated names.
 
-Extreme CPU usage/hangs when using SDL and PulseAudio [FS#3294],
+Extreme CPU usage/hangs when using SDL and PulseAudio [#3294],
 OpenTTD hangs/freezes when closing, OpenTTD is slow, OpenTTD uses a lot of CPU:
         OpenTTD can be extremely slow/use a lot of CPU when the sound is
         played via SDL and then through PulseAudio's ALSA wrapper. Under the
@@ -180,7 +180,7 @@ OpenTTD hangs/freezes when closing, OpenTTD is slow, OpenTTD uses a lot of CPU:
         Ubuntu's Universe repository. For other distributions a similar
         package needs to be installed.
 
-OpenTTD not properly resizing with SDL on X [FS#3305]:
+OpenTTD not properly resizing with SDL on X [#3305]:
         Under some X window managers OpenTTD's window does not properly
         resize. You will either end up with a black bar at the right/bottom
         side of the window or you cannot see the right/bottom of the window,
@@ -193,7 +193,7 @@ OpenTTD not properly resizing with SDL on X [FS#3305]:
         event is sent when the user releases the mouse.
 
 Incorrect colours, crashes upon exit, debug warnings and smears upon
-window resizing with SDL on macOS [FS#3447]:
+window resizing with SDL on macOS [#3447]:
         Video handling with (lib)SDL under macOS is known to fail on some
         versions of macOS with some hardware configurations. Some of
         the problems happen only under some circumstances whereas others
@@ -201,7 +201,7 @@ window resizing with SDL on macOS [FS#3447]:
         We suggest that the SDL video/sound backend is not used for OpenTTD
         in combinations with macOS.
 
-Train crashes entering same junction from block and path signals [FS#3928]:
+Train crashes entering same junction from block and path signals [#3928]:
         When a train has reserved a path from a path signal to a two way
         block signal and the reservation passes a path signal through the
         back another train can enter the reserved path (only) via that
@@ -214,13 +214,13 @@ Train crashes entering same junction from block and path signals [FS#3928]:
         the train entering from path signal just after the backwards facing
         signal (from the path signal train) resolves the issue.
 
-Crashes when playing music [FS#3941]:
+Crashes when playing music [#3941]:
         macOS's QuickTime (default music driver) and Windows' MCI ("Win32"
         music driver) crash on some songs from OpenMSX. OpenTTD cannot do
         anything about this. Please report these crashes to the authors
         of OpenMSX so the crash causing songs can be removed or fixed.
 
-Crashes when run in a VM using Parallels Desktop [FS#4003]:
+Crashes when run in a VM using Parallels Desktop [#4003]:
         When the Windows version of OpenTTD is executed in a VM under
         Parallels Desktop a privileged instruction exception may be thrown.
         As OpenTTD works natively on macOS as well as natively on Windows and
@@ -230,7 +230,7 @@ Crashes when run in a VM using Parallels Desktop [FS#4003]:
         lacking support for RDTSC calls. The problem can be avoided by using
         other VM-software, Wine, or running natively on macOS.
 
-OpenTTD hangs when started on 32-bit Windows [FS#4083]:
+OpenTTD hangs when started on 32-bit Windows [#4083]:
         Under some circumstances OpenTTD might hang for hours on the
         initialisation of the music driver. The exact circumstances are
         unknown except that it is the "dmusic" music driver that has the
@@ -246,7 +246,7 @@ OpenTTD hangs when started on 32-bit Windows [FS#4083]:
         described in the "Long delay between switching music/song" section
         of this document.
 
-Entry- and exit signals are not dragged [FS#4378]:
+Entry- and exit signals are not dragged [#4378]:
         Unlike all other signal types, the entry- and exit signals are not
         dragged but instead normal signals are placed on subsequent track
         sections. This is done on purpose as this is the usually more
@@ -255,7 +255,7 @@ Entry- and exit signals are not dragged [FS#4378]:
         for all other signal types where several in a row can serve one
         purpose or another.
 
-Station build date is incorrect [FS#4415]:
+Station build date is incorrect [#4415]:
         The tile query tool will show the date of the last (re)construction
         at the station and not the date of the first construction. This is
         due to compatability reasons with NewGRFs and the fact that it is
@@ -265,7 +265,7 @@ Station build date is incorrect [FS#4415]:
         to "Date at which the last (re)construction took place" but this is
         deemed too specific and long for that window.
 
-Can't change volume inside OpenTTD [FS#4416]:
+Can't change volume inside OpenTTD [#4416]:
         Some backends do not provide a means to change the volume of sound
         effects or music. The mixing of music and sound is left to external
         libraries/the operating system we can't handle the volume control
@@ -273,7 +273,7 @@ Can't change volume inside OpenTTD [FS#4416]:
         for backends such as SDL; just use the volume control provided by
         your operating system.
 
-(Temporary) wrong colours when switching to full screen [FS#4511]:
+(Temporary) wrong colours when switching to full screen [#4511]:
         On Windows it can happen that you temporarily see wrong colours
         when switching to full screen OpenTTD, either by starting
         OpenTTD in full screen mode, changing to full screen mode or by
@@ -286,13 +286,13 @@ Can't change volume inside OpenTTD [FS#4416]:
                 a) Setting fullscreen_bpp to 32
                 b) Setting up the 32bpp-anim or 32bpp-optimized blitter
 
-Can't run OpenTTD with the -d option from a MSYS console [FS#4587]:
+Can't run OpenTTD with the -d option from a MSYS console [#4587]:
         The MSYS console does not allow OpenTTD to open an extra console for
         debugging output. Compiling OpenTTD with the --enable-console
         configure option prevents this issue and allows the -d option to use
         the MSYS console for its output.
 
-Unreadable characters for non-latin locales [FS#4607]:
+Unreadable characters for non-latin locales [#4607]:
         OpenTTD does not ship a non-latin font in its graphics files. As a
         result OpenTTD needs to acquire the font from somewhere else. What
         OpenTTD does is ask the operating system, or a system library, for
@@ -314,7 +314,7 @@ Unreadable characters for non-latin locales [FS#4607]:
         8 bits blitter there are not enough colours to properly perform the
         anti-aliasing.
 
-Train does not crash with itself [FS#4635]:
+Train does not crash with itself [#4635]:
         When a train drives in a circle the front engine passes through
         wagons of the same train without crashing. This is intentional.
         Signals are only aware of tracks, they do not consider the train
@@ -327,7 +327,7 @@ Train does not crash with itself [FS#4635]:
         Nevertheless trains shall not crash in normal operation, so making
         a train not crash with itself is the best solution for everyone.
 
-Aircraft coming through wall in rotated airports [FS#4705]:
+Aircraft coming through wall in rotated airports [#4705]:
         With rotated airports, specifically hangars, you will see that the
         aircraft will show a part through the back wall of the hangar.
         This can be solved by only drawing a part of the plane when being
@@ -336,7 +336,7 @@ Aircraft coming through wall in rotated airports [FS#4705]:
         As such the current behaviour is deemed the least bad.
         The same applies to overly long ships and their depots.
 
-Vehicles not keeping their "maximum" speed [FS#4815]:
+Vehicles not keeping their "maximum" speed [#4815]:
         Vehicles that have not enough power to reach and maintain their
         advertised maximum speed might be constantly jumping between two
         speeds. This is due to the fact that speed and its calculations
@@ -354,7 +354,7 @@ Vehicles not keeping their "maximum" speed [FS#4815]:
         It is possible to calculate whether the equilibrium will be passed,
         but then all acceleration calculations need to be done twice.
 
-Settings not saved when OpenTTD crashes [FS#4846]:
+Settings not saved when OpenTTD crashes [#4846]:
         The settings are not saved when OpenTTD crashes for several reasons.
         The most important is that the game state is broken and as such the
         settings might contain invalid values, or the settings have not even
@@ -380,13 +380,13 @@ Settings not saved when OpenTTD crashes [FS#4846]:
         and you need to run a version that crashes regularly, then you can
         use the 'saveconfig' command in the console to save the settings.
 
-Not all NewGRFs, AIs, game scripts are found [FS#4887]:
+Not all NewGRFs, AIs, game scripts are found [#4887]:
         Under certain situations, where the path for the content within a
         tar file is the same as other content on the file system or in another
         tar file, it is possible that content is not found. A more thorough
         explanation and solutions are described in section 4.4 of README.md.
 
-Mouse cursor going missing with SDL [FS#4997]:
+Mouse cursor going missing with SDL [#4997]:
         Under certain circumstances SDL does not notify OpenTTD of changes with
         respect to the mouse pointer, specifically whether the mouse pointer
         is within the bounds of OpenTTD or not. For example, if you "Alt-Tab"
@@ -399,7 +399,7 @@ Mouse cursor going missing with SDL [FS#4997]:
         information in these corner cases. This is a bug in SDL and as such
         there is little that we can do about it.
 
-Trains might not stop at platforms that are currently being changed [FS#5553]:
+Trains might not stop at platforms that are currently being changed [#5553]:
         If you add tiles to or remove tiles from a platform while a train is
         approaching to stop at the same platform, that train can miss the place
         where it's supposed to stop and pass the station without stopping.
@@ -408,9 +408,9 @@ Trains might not stop at platforms that are currently being changed [FS#5553]:
         let the train stop just anywhere in the station because then it would
         never leave the station if you have the same station in the order
         list multiple times in a row or if there is only one station
-        in theorder list (see FS#5684).
+        in theorder list (see #5684).
 
-Inconsistent catchment areas [FS#5661]:
+Inconsistent catchment areas [#5661]:
         Due to performance decisions the catchment area for cargo accepted by a
         station for delivery to houses or industries differs from the catchment
         area for cargo that is delivered to stations from houses or industries.
@@ -439,7 +439,7 @@ Inconsistent catchment areas [FS#5661]:
         that would require considering checking 10 by 10 tiles for each of
         the tiles of a station, instead of just once.
 
-Some houses and industries are not affected by transparency [FS#5817]:
+Some houses and industries are not affected by transparency [#5817]:
         Some of the default houses and industries (f.e. the iron ore mine) are
         not affected by the transparency options. This is because the graphics
         do not (completely) separate the ground from the building.
@@ -447,7 +447,7 @@ Some houses and industries are not affected by transparency [FS#5817]:
         fixed with OpenGFX for the sake of maintaining compatibility with
         the original graphics.
 
-Involuntary cargo exchange with cargodist via neutral station [FS#6114]:
+Involuntary cargo exchange with cargodist via neutral station [#6114]:
         When two players serve a neutral station at an industry, a cross-company
         chain for cargo flow can and will be established which can only be
         interrupted if one of the players stops competing for the ressources of
