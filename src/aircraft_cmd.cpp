@@ -438,26 +438,25 @@ static void CheckIfAircraftNeedsService(Aircraft *v)
 		FOR_VEHICLE_ORDERS(v, o) {
 			if (o->IsType(OT_GOTO_STATION)) {
 				const Station *ost = Station::Get(o->GetDestination());
-				if (CanVehicleUseStation(v, ost) && (ost->airport.HasHangar() ||
+				if (ost->airport.HasHangar() ||
 						/* Helicopters can be serviced at helipads as long as there is no pending replace and serviceathelipad is enabled */
-						(v->subtype == AIR_HELICOPTER && !v->HasPendingReplace() && _settings_game.order.serviceathelipad && ost->airport.GetFTA()->num_helipads))) {
+						(v->subtype == AIR_HELICOPTER && !v->HasPendingReplace() && _settings_game.order.serviceathelipad && ost->airport.GetFTA()->num_helipads)) {
 					hangar_in_o = true;
 					break;
 				}
 			}
 		}
 
-		if (!hangar_in_o || (!CanVehicleUseStation(v, st) && v->state >= TAKEOFF && v->state <= FLYING)) {
-			/* there's no airport coupled with a hangar in the orders, or the aircraft
-			 * can't use the airport, so look for a nearby hangar */
+		if (!hangar_in_o) {
+			/* there's no airport coupled with a hangar in the orders, so look for a nearby hangar */
 			const StationID nearest_hangar = FindNearestHangar(v);
 
 			/* v->tile can't be used here, when aircraft is flying v->tile is set to 0 */
 			TileIndex vtile = TileVirtXY(v->x_pos, v->y_pos);
 
-			if (nearest_hangar != INVALID_STATION && ((!CanVehicleUseStation(v, st) && v->state >= TAKEOFF && v->state <= FLYING) || (!st->airport.HasHangar() &&
+			if (nearest_hangar != INVALID_STATION &&
 					/* is nearest hangar closer than destination? */
-					DistanceSquare(vtile, Station::Get(nearest_hangar)->airport.tile) <= DistanceSquare(vtile, st->airport.tile)))) {
+					DistanceSquare(vtile, Station::Get(nearest_hangar)->airport.tile) <= DistanceSquare(vtile, st->airport.tile)) {
 				/* defer destination, service aircraft at that hangar now */
 				v->current_order.MakeGoToDepot(nearest_hangar, ODTFB_SERVICE);
 				v->dest_tile = v->GetOrderStationLocation(nearest_hangar);
