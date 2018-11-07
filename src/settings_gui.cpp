@@ -1733,6 +1733,7 @@ static SettingsContainer &GetSettingsTree()
 				towns->Add(new SettingEntry("economy.allow_town_roads"));
 				towns->Add(new SettingEntry("economy.allow_town_level_crossings"));
 				towns->Add(new SettingEntry("economy.found_town"));
+				towns->Add(new SettingEntry("economy.town_cargogen_mode"));
 			}
 
 			SettingsPage *industries = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES));

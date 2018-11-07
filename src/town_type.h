@@ -105,6 +105,14 @@ enum TownFounding {
 /** It needs to be 8bits, because we save and load it as such */
 typedef SimpleTinyEnumT<TownFounding, byte> TownFoundingByte;
 
+/** Town cargo generation modes */
+enum TownCargoGenMode : byte {
+	TCGM_BEGIN = 0,
+	TCGM_ORIGINAL = 0,  ///< Original algorithm (quadratic cargo by population)
+	TCGM_BITCOUNT,      ///< Bit-counted algorithm (normal distribution from individual house population)
+	TCGM_END,
+};
+
 static const uint MAX_LENGTH_TOWN_NAME_CHARS = 32; ///< The maximum length of a town name in characters including '\0'
 
 /** Store the maximum and actually transported cargo amount for the current and the last month. */

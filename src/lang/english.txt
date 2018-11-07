@@ -1583,6 +1583,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Enabling this s
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Forbidden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Allowed
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Allowed, custom town layout
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Town cargo generation: {STRING2}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :How much cargo is produced by houses in towns, relative to the overall population of the town.{}Quadratic growth: A town twice the size generates four times as many passengers.{}Linear growth: A town twice the size generates twice the amount of passengers.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Quadratic (original)
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :In game placement of trees: {STRING2}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Control random appearance of trees during the game. This might affect industries which rely on tree growth, for example lumber mills

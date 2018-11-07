@@ -3080,6 +3080,11 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_TOWN_CARGOGEN)) {
+		/* Ensure the original cargo generation mode is used */
+		_settings_game.economy.town_cargogen_mode = TCGM_ORIGINAL;
+	}
+
 	/* Station acceptance is some kind of cache */
 	if (IsSavegameVersionBefore(SLV_127)) {
 		Station *st;
