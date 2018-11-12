@@ -650,6 +650,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Tidak ada musik yang tersedia
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Track
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Titel
@@ -810,6 +811,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Pimpinan)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} menjadi sponsor pembangunan kota baru {TOWN}!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Kota baru yang bernama {TOWN} baru dibuatkan!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Ada pembangunan {STRING} baru di dekat {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}{STRING} baru sedang ditanam di dekat {TOWN}!
@@ -2685,9 +2687,20 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Tim OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CURRENT                                           :{WHITE}Sekarang
+STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Data tergantung oleh ukuran {COMMA}
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_TRAINS                                         :{WHITE} Titik kereta:
+STR_FRAMERATE_GL_SHIPS                                          :{WHITE} Titik kapal:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE} Viewport dunia:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Titik kendaraan
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Titik pesawat
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Titik dunia
 ############ End of leave-in-this-order
 
 
@@ -3288,6 +3301,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Membutuh
 STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Membutuhkan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Membutuhkan:
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Menghasilkan: {YELLOW}{STRING}{STRING}
@@ -3357,6 +3371,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Jual semua
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ubah nama kelompok
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Keuntungan tahun ini:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Keuntungan tahun lalu:
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Kereta Baru
@@ -3389,6 +3404,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Semua jenis kar
 STR_PURCHASE_INFO_ALL_BUT                                       :Semua tapi tidak untuk {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Traksi Maks.: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Jangkauan: {GOLD}{COMMA} kotak
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Jenis pesawat: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Daftar pilihan kereta - klik pada kereta untuk menampilkan informasi
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Daftar pilihan kendaraan - klik pada kendaraan untuk menampilkan informasi
@@ -3523,6 +3539,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :lokomotif magle
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Biaya: {CURRENCY_LONG} Berat: {WEIGHT_SHORT}{}Kecepatan: {VELOCITY}  Daya: {POWER}{}Biaya ops.: {CURRENCY_LONG}/thn{}Kapasitas: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Biaya: {CURRENCY_LONG} Berat: {WEIGHT_SHORT}{}Kecepatan: {VELOCITY}  Power: {POWER}  Max. T.E.: {6:FORCE}{}Biaya Operasional: {4:CURRENCY_LONG}/yr{}Kapasitas: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Biaya: {CURRENCY_LONG} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO_LONG}{}Bea Berjalan: {CURRENCY_LONG}/thn
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Biaya: {CURRENCY_LONG} Kec. Max.: {VELOCITY}{}Jenis pesawat: {STRING}{}Kapasitas: {CARGO_LONG}{}Biaya operasi: {CURRENCY_LONG}/thn
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ganti {STRING} - {STRING}
@@ -4461,6 +4478,7 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Efek suara oris
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Efek suara orisinil Transport Tycoon Deluxe versi Windows.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Paket efek suara tanpa suara apapun.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Musik pengiring orisinil Transport Tycoon Deluxe versi Windows.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Musik orisinil Transport Tycoon Deluxe versi DOS.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Paket musik tanpa musik sungguhan.
 
 ##id 0x2000
