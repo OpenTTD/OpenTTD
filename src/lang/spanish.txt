@@ -574,7 +574,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfico
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gráfico de Ingresos
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades de carga entregadas
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Calificaciones de actuación de empresas (tasa máxima=1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valores de las empresas
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valor de la empresa
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tasas de pago por carga
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Días en tránsito
@@ -878,10 +878,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar punto de vista
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Cambiar punto de vista
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copia la localización de la vista principal a este punto de vista
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Pegar punto de vista
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Pega la localización de este punto de vista a la principal
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Cambiar vista principal
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copia la localización de este punto de vista en la vista principal
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opciones del juego
@@ -2688,6 +2688,9 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 El equipo OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Fotogramas por segundo - FPS
+STR_FRAMERATE_CURRENT                                           :{WHITE}Actual
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Medio
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
@@ -2782,7 +2785,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}¿Desea
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% completado
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generación de mundo
-STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generación de Ríos
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generación de ríos
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generación de árboles
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generación de inamovibles
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generación de áreas ásperas o rocosas
@@ -2978,6 +2981,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Introduc
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Municipios
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ninguna -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Ciudad){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de los municipios - click sobre un nombre para centrar la vista principal en él. Ctrl+Click abre una ventana de visualización en dicha posición
 STR_TOWN_POPULATION                                             :{BLACK}Población mundial: {COMMA}
 
@@ -2985,6 +2989,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Poblaci�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Ciudad)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Habitantes: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} último mes: {ORANGE}{COMMA}{BLACK} máx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necesaria para crecimiento del municipio:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requeridos
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requerido en invierno
