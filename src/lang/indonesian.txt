@@ -671,10 +671,12 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Acak/Uru
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Tampilkan jendela pemilihan judul musik
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Program Musik - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Daftar rel
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Kosong
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Gantikan set
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Hapus program saat ini (hanya Bebas 1 atau Bebas 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik pada musik track untuk menambah pada program sekarang (hanya Bebas 1 atau Bebas 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik pada track musik untuk menghapusnya dari program saat ini. (Bebas 1 atau Bebas 2 saja)
@@ -897,7 +899,7 @@ STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen Jepang (JPY
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shilling Austria (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franc Belgia (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franc Swiss (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Czech (CZK)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Ceko (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone Denmark (DKK)
 STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Spanyol (ESP)
@@ -911,7 +913,7 @@ STR_GAME_OPTIONS_CURRENCY_NLG                                   :Dutch Guilder (
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone Norwegia (NOK)
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty Polandia (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Romania (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rubles Rusia (RUR)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rubel Rusia (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Slovenia (SIT)
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Krona Swedia (SEK)
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turki (TRY)
@@ -924,6 +926,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Afrika Sel
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Atur sendiri...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgia (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Rubel Rusia Baru (RUB)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kendaraan jalan raya
@@ -940,7 +943,7 @@ STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Perancis
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Jerman
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Inggris (Tambahan)
 STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Amerika-Latin
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Silly
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Lucu
 STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Swedia
 STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Belanda
 STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finlandia
@@ -950,7 +953,7 @@ STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norwegia
 STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungaria
 STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austria
 STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romania
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Czechnya
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Ceko
 STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Swiss
 STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Denmark
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turki
@@ -1336,6 +1339,10 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Warna daratan d
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Hijau
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Hijau Gelap
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Kelakuan waktu menggerakkan peta
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Gerakan viewport memakai tombol kanan tetikus, posisi tetikus terkunci
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Gerakan peta memakai tombol kanan tetikus, posisi tetikus terkunci
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Gerakan peta memakai tombol kanan tetikus
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Pergeseran pandangan viewport secara halus: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Menyetel bagaimana tampilan utama menggeser posisi di peta kecil. Jika dinyalakan, peta akan bergeser secara halus. Jika dimatikan, peta langsung menuju tempat yang di klik
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Tampilkan ukuran ketika menggunakan alat pembangun: {STRING}
@@ -1984,7 +1991,7 @@ STR_NETWORK_LANG_FRENCH                                         :Perancis
 STR_NETWORK_LANG_BRAZILIAN                                      :Brazil
 STR_NETWORK_LANG_BULGARIAN                                      :Bulgaria
 STR_NETWORK_LANG_CHINESE                                        :China
-STR_NETWORK_LANG_CZECH                                          :Czech
+STR_NETWORK_LANG_CZECH                                          :Ceko
 STR_NETWORK_LANG_DANISH                                         :Denmark
 STR_NETWORK_LANG_DUTCH                                          :Belanda
 STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
@@ -1999,7 +2006,7 @@ STR_NETWORK_LANG_NORWEGIAN                                      :Norwegia
 STR_NETWORK_LANG_POLISH                                         :Polandia
 STR_NETWORK_LANG_PORTUGUESE                                     :Portugis
 STR_NETWORK_LANG_ROMANIAN                                       :Rumania
-STR_NETWORK_LANG_RUSSIAN                                        :Russia
+STR_NETWORK_LANG_RUSSIAN                                        :Rusia
 STR_NETWORK_LANG_SLOVAK                                         :Slovakia
 STR_NETWORK_LANG_SLOVENIAN                                      :Slovenia
 STR_NETWORK_LANG_SPANISH                                        :Spanyol
@@ -2278,6 +2285,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda 
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Semua
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Tidak ada
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Pilih perusahaan yang akan ditampilkan
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}tak terpakai
@@ -2687,20 +2695,34 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Tim OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Rata simulasi: {STRING}
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Beberapa cepat permainan lagi berjalan, dibanding dengan kecepatan diharapkan memakai rata simulasi biasa.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Sekarang
 STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Data tergantung oleh ukuran {COMMA}
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_ECONOMY                                        :{WHITE} Penanganan kargo:
 STR_FRAMERATE_GL_TRAINS                                         :{WHITE} Titik kereta:
+STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE} Titik kendaraan:
 STR_FRAMERATE_GL_SHIPS                                          :{WHITE} Titik kapal:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE} Titik pesawat:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE} Titik dunia:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE} Viewport dunia:
+STR_FRAMERATE_SOUND                                             :{WHITE}Mixing suara:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Penanganan kargo
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Titik kereta
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Titik kendaraan
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Titik kapal
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Titik pesawat
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Titik dunia
+STR_FRAMETIME_CAPTION_SOUND                                     :Mixing suara
 ############ End of leave-in-this-order
 
 
@@ -2991,6 +3013,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Populasi
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (City)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Populasi: {ORANGE}{COMMA}{BLACK}  Rumah: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} bulan lalu: {ORANGE}{COMMA}{BLACK} max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kargo untuk pertumbuhan kota:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED} Butuh {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} dibutuhkan saat musim dingin
@@ -3302,6 +3325,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Membutuh
 ############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Membutuhkan:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} menunggu{STRING}
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Menghasilkan: {YELLOW}{STRING}{STRING}
@@ -3372,6 +3396,8 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ubah nam
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Keuntungan tahun ini:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Keuntungan tahun lalu:
+STR_GROUP_OCCUPANCY                                             :Penggunaan sekarang:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Kereta Baru
@@ -3379,7 +3405,7 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Kereta listrik 
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Monorel Baru
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Maglev Baru
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Semua Kereta
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Kereta Baru
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Kendaraan Baru
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Kapal Baru
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Buat Pesawat
@@ -3539,7 +3565,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :lokomotif magle
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Biaya: {CURRENCY_LONG} Berat: {WEIGHT_SHORT}{}Kecepatan: {VELOCITY}  Daya: {POWER}{}Biaya ops.: {CURRENCY_LONG}/thn{}Kapasitas: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Biaya: {CURRENCY_LONG} Berat: {WEIGHT_SHORT}{}Kecepatan: {VELOCITY}  Power: {POWER}  Max. T.E.: {6:FORCE}{}Biaya Operasional: {4:CURRENCY_LONG}/yr{}Kapasitas: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Biaya: {CURRENCY_LONG} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO_LONG}{}Bea Berjalan: {CURRENCY_LONG}/thn
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Biaya: {CURRENCY_LONG} Kec. Max.: {VELOCITY}{}Jenis pesawat: {STRING}{}Kapasitas: {CARGO_LONG}, {CARGO_LONG}{}Biaya operasi: {CURRENCY_LONG}/thn
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Biaya: {CURRENCY_LONG} Kec. Max.: {VELOCITY}{}Jenis pesawat: {STRING}{}Kapasitas: {CARGO_LONG}{}Biaya operasi: {CURRENCY_LONG}/thn
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Biaya: {CURRENCY_LONG} Kec. Max.: {VELOCITY}{}Jenis pesawat: {STRING} Jangkauan: {COMMA} ubin{}Kapasitas: {CARGO_LONG}, {CARGO_LONG}{}Biaya Operasi: {CURRENCY_LONG}/thn
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Biaya: {CURRENCY_LONG} Kec. Max.: {VELOCITY}{}Jenis pesawat: {STRING} Jangkauan: {COMMA} ubin{}Kapasitas: {CARGO_LONG}{}Biaya operasi: {CURRENCY_LONG}/thn
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ganti {STRING} - {STRING}
@@ -3569,6 +3598,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tekan un
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Pindah tampilan penggantian lokomitif atau gerbong
 STR_REPLACE_ENGINES                                             :Lokomotif
 STR_REPLACE_WAGONS                                              :Gerbong
+STR_REPLACE_ALL_RAILTYPE                                        :Semua kereta
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Pilih jenis kereta yang anda inginkan untuk diganti
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Menampilkan kendaraan terpilih di sisi kiri yang akan diganti, jika ada
@@ -3662,6 +3692,7 @@ STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ta
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Kec. Max: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Kecepatan Maks.: {LTBLUE}{VELOCITY} {BLACK}Jenis pesawat: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Kec. max.: {LTBLUE}{VELOCITY} {BLACK}Jenis pesawat: {LTBLUE}{STRING} {BLACK}Jangkauan: {LTBLUE}{COMMA} ubin
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
@@ -4227,6 +4258,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... jala
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... menghadap pada arah yang salah
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... terminal lintas-lalu tak bisa memiliki sudut
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... terminal lintas-lalu tak bisa memiliki simpangan
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... jalannya satu arah atau terhalang
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Tidak dapat menghapus bagian dari stasiun...
@@ -4295,7 +4327,7 @@ STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Kombinas
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Sinyal harus dihancurkan dulu
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tidak tersedia rel yang sesuai
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Harus membongkar rel terlebih dahulu
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Jalan satu arah atau ada yang menghalangi
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Jalannya satu arah atau terhalang
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Perlintasan tingkat tidak diperbolehkan pada tipe rel ini
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Tidak dapat membangun sinyal disini
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Tidak dapat membangun jalur rel disini
@@ -4479,6 +4511,7 @@ STR_BASESOUNDS_WIN_DESCRIPTION                                  :Efek suara oris
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Paket efek suara tanpa suara apapun.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Musik pengiring orisinil Transport Tycoon Deluxe versi Windows.
 STR_BASEMUSIC_DOS_DESCRIPTION                                   :Musik orisinil Transport Tycoon Deluxe versi DOS.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Musik orisinil Transport Tycoon (Orisinil/Editor Dunia) versi DOS.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Paket musik tanpa musik sungguhan.
 
 ##id 0x2000
