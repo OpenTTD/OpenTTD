@@ -15,7 +15,6 @@
 #include "cpu.h"
 #include "smmintrin.h"
 #include "viewport_sprite_sorter.h"
-#include "core/sort_func.hpp"
 
 #include "safeguards.h"
 
@@ -26,24 +25,12 @@
 	#define LOAD_128 _mm_loadu_si128
 #endif
 
-static int CDECL CompareParentSprites(ParentSpriteToDraw * const *psd, ParentSpriteToDraw * const *psd2)
-{
-	const ParentSpriteToDraw *ps = *psd;
-	const ParentSpriteToDraw *ps2 = *psd2;
-	return ps->xmin - ps2->xmin;
-}
-
 /** Sort parent sprites pointer array using SSE4.1 optimizations. */
 void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 {
-	const __m128i mask_ptest  = _mm_setr_epi8(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0,  0,  0,  0);
-	const __m128i mask_ptest2 = _mm_setr_epi8(-1, -1, -1, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0);
+	const __m128i mask_ptest = _mm_setr_epi8(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0,  0,  0,  0);
 	ParentSpriteToDraw ** const psdvend = psdv->End();
 	ParentSpriteToDraw **psd = psdv->Begin();
-
-	/* pre-sort by xmin in ascending order */
-	QSortT(psd, psdvend - psd, CompareParentSprites);
-
 	while (psd != psdvend) {
 		ParentSpriteToDraw * const ps = *psd;
 
@@ -77,14 +64,8 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 			__m128i ps1_max = LOAD_128((__m128i*) &ps->xmax);
 			__m128i ps2_min = LOAD_128((__m128i*) &ps2->xmin);
 			__m128i rslt1 = _mm_cmplt_epi32(ps1_max, ps2_min);
-			if (!_mm_testz_si128(mask_ptest, rslt1)) {
-				if (!_mm_testz_si128(mask_ptest2, rslt1) /* ps->xmax < ps2->xmin */) {
-					/* all following sprites have xmin >= ps2->xmin */
-					break;
-				} else {
-					continue;
-				}
-			}
+			if (!_mm_testz_si128(mask_ptest, rslt1))
+				continue;
 
 			__m128i ps1_min = LOAD_128((__m128i*) &ps->xmin);
 			__m128i ps2_max = LOAD_128((__m128i*) &ps2->xmax);
