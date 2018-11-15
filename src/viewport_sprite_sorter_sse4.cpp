@@ -16,6 +16,8 @@
 #include "smmintrin.h"
 #include "viewport_sprite_sorter.h"
 
+#include <algorithm>
+
 #include "safeguards.h"
 
 #ifdef _SQ64
@@ -29,8 +31,17 @@
 void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 {
 	const __m128i mask_ptest = _mm_setr_epi8(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0,  0,  0,  0);
+	const __m128i mask_ptest2 = _mm_setr_epi8(-1, -1, -1, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0);
 	auto const psdvend = psdv->end();
 	auto psd = psdv->begin();
+	auto psdMax = psd;
+
+	/* pre-sort by xmin in ascending order */
+	std::sort(psdv->begin(), psdv->end(),
+			[](ParentSpriteToDraw * const & psd, ParentSpriteToDraw * const & psd2) -> bool {
+		return psd->xmin < psd2->xmin;
+	});
+
 	while (psd != psdvend) {
 		ParentSpriteToDraw * const ps = *psd;
 
@@ -64,8 +75,10 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 			__m128i ps1_max = LOAD_128((__m128i*) &ps->xmax);
 			__m128i ps2_min = LOAD_128((__m128i*) &ps2->xmin);
 			__m128i rslt1 = _mm_cmplt_epi32(ps1_max, ps2_min);
-			if (!_mm_testz_si128(mask_ptest, rslt1))
+			if (!_mm_testz_si128(mask_ptest, rslt1)) {
+				if (!_mm_testz_si128(mask_ptest2, rslt1) /* ps->xmax < ps2->xmin */ && psd2 > psdMax) break; /* all following sprites have xmin >= ps2->xmin */
 				continue;
+			}
 
 			__m128i ps1_min = LOAD_128((__m128i*) &ps->xmin);
 			__m128i ps2_max = LOAD_128((__m128i*) &ps2->xmax);
@@ -89,6 +102,7 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 				*psd3 = *(psd3 - 1);
 			}
 			*psd = temp;
+			if (psd2 > psdMax) psdMax = psd2;
 		}
 	}
 }

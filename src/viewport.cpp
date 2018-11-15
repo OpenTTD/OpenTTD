@@ -90,6 +90,7 @@
 #include "network/network_func.h"
 #include "framerate_type.h"
 
+#include <algorithm>
 #include <map>
 
 #include "table/strings.h"
@@ -1409,6 +1410,14 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 {
 	auto psdvend = psdv->end();
 	auto psd = psdv->begin();
+	auto psdMax = psd;
+
+	/* pre-sort by xmin in ascending order */
+	std::sort(psdv->begin(), psdv->end(),
+			[](ParentSpriteToDraw * const & psd, ParentSpriteToDraw * const & psd2) -> bool {
+		return psd->xmin < psd2->xmin;
+	});
+
 	while (psd != psdvend) {
 		ParentSpriteToDraw *ps = *psd;
 
@@ -1445,11 +1454,11 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 				 * I.e. every single order of X, Y, Z says ps2 is behind ps or they overlap.
 				 * That is: If one partial order says ps behind ps2, do not change the order.
 				 */
-				if (ps->xmax < ps2->xmin ||
-						ps->ymax < ps2->ymin ||
-						ps->zmax < ps2->zmin) {
+				if (ps->xmax < ps2->xmin) {
+					if (psd2 > psdMax) break; /* all following sprites have xmin >= ps2->xmin */
 					continue;
 				}
+				if (ps->ymax < ps2->ymin || ps->zmax < ps2->zmin) continue;
 			}
 
 			/* Move ps2 in front of ps */
@@ -1458,6 +1467,7 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 				*psd3 = *(psd3 - 1);
 			}
 			*psd = temp;
+			if (psd2 > psdMax) psdMax = psd2;
 		}
 	}
 }
