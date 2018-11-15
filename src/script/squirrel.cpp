@@ -432,13 +432,8 @@ static SQInteger _io_file_read(SQUserPointer file, SQUserPointer buf, SQInteger 
 
 SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printerror)
 {
-	size_t size;
 	FILE *file;
-	SQInteger ret;
-	unsigned short us;
-	unsigned char uc;
-	SQLEXREADFUNC func;
-
+	size_t size;
 	if (strncmp(this->GetAPIName(), "AI", 2) == 0) {
 		file = FioFOpenFile(filename, "rb", AI_DIR, &size);
 		if (file == NULL) file = FioFOpenFile(filename, "rb", AI_LIBRARY_DIR, &size);
@@ -449,61 +444,75 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 		NOT_REACHED();
 	}
 
-	if (file != NULL) {
-		SQFile f(file, size);
-		ret = fread(&us, 1, sizeof(us), file);
-		/* Most likely an empty file */
-		if (ret != 2) us = 0;
-
-		switch (us) {
-			case SQ_BYTECODE_STREAM_TAG: { // BYTECODE
-				if (fseek(file, -2, SEEK_CUR) < 0) {
-					FioFCloseFile(file);
-					return sq_throwerror(vm, "cannot seek the file");
-				}
-				if (SQ_SUCCEEDED(sq_readclosure(vm, _io_file_read, &f))) {
-					FioFCloseFile(file);
-					return SQ_OK;
-				}
-				FioFCloseFile(file);
-				return sq_throwerror(vm, "Couldn't read bytecode");
-			}
-			case 0xFFFE:
-				/* Either this file is encoded as big-endian and we're on a little-endian
-				 * machine, or this file is encoded as little-endian and we're on a big-endian
-				 * machine. Either way, swap the bytes of every word we read. */
-				func = _io_file_lexfeed_UCS2_swap;
-				break;
-			case 0xFEFF: func = _io_file_lexfeed_UCS2_no_swap; break;
-			case 0xBBEF: // UTF-8
-			case 0xEFBB: // UTF-8 on big-endian machine
-				if (fread(&uc, 1, sizeof(uc), file) == 0) {
-					FioFCloseFile(file);
-					return sq_throwerror(vm, "I/O error");
-				}
-				if (uc != 0xBF) {
-					FioFCloseFile(file);
-					return sq_throwerror(vm, "Unrecognized encoding");
-				}
-				func = _io_file_lexfeed_UTF8;
-				break;
-			default: // ASCII
-				func = _io_file_lexfeed_ASCII;
-				if (fseek(file, -2, SEEK_CUR) < 0) {
-					FioFCloseFile(file);
-					return sq_throwerror(vm, "cannot seek the file");
-				}
-				break;
-		}
-
-		if (SQ_SUCCEEDED(sq_compile(vm, func, &f, filename, printerror))) {
-			FioFCloseFile(file);
-			return SQ_OK;
-		}
-		FioFCloseFile(file);
-		return SQ_ERROR;
+	if (file == NULL) {
+		return sq_throwerror(vm, "cannot open the file");
 	}
-	return sq_throwerror(vm, "cannot open the file");
+	unsigned short bom = 0;
+	if (size >= 2) {
+		fread(&bom, 1, sizeof(bom), file); // Inside tar, no point checking return value of fread
+	}
+
+	SQLEXREADFUNC func;
+	switch (bom) {
+		case SQ_BYTECODE_STREAM_TAG: { // BYTECODE
+			if (fseek(file, -2, SEEK_CUR) < 0) {
+				FioFCloseFile(file);
+				return sq_throwerror(vm, "cannot seek the file");
+			}
+
+			SQFile f(file, size);
+			if (SQ_SUCCEEDED(sq_readclosure(vm, _io_file_read, &f))) {
+				FioFCloseFile(file);
+				return SQ_OK;
+			}
+			FioFCloseFile(file);
+			return sq_throwerror(vm, "Couldn't read bytecode");
+		}
+		case 0xFFFE:
+			/* Either this file is encoded as big-endian and we're on a little-endian
+			 * machine, or this file is encoded as little-endian and we're on a big-endian
+			 * machine. Either way, swap the bytes of every word we read. */
+			func = _io_file_lexfeed_UCS2_swap;
+			size -= 2; // Skip BOM
+			break;
+		case 0xFEFF:
+			func = _io_file_lexfeed_UCS2_no_swap;
+			size -= 2; // Skip BOM
+			break;
+		case 0xBBEF:   // UTF-8
+		case 0xEFBB: { // UTF-8 on big-endian machine
+			/* Similarly, check the file is actually big enough to finish checking BOM */
+			if (size < 3) {
+				FioFCloseFile(file);
+				return sq_throwerror(vm, "I/O error");
+			}
+			unsigned char uc;
+			fread(&uc, 1, sizeof(uc), file);
+			if (uc != 0xBF) {
+				FioFCloseFile(file);
+				return sq_throwerror(vm, "Unrecognized encoding");
+			}
+			func = _io_file_lexfeed_UTF8;
+			size -= 3; // Skip BOM
+			break;
+		}
+		default: // ASCII
+			func = _io_file_lexfeed_ASCII;
+			/* Account for when we might not have fread'd earlier */
+			if (size >= 2 && fseek(file, -2, SEEK_CUR) < 0) {
+				FioFCloseFile(file);
+				return sq_throwerror(vm, "cannot seek the file");
+			}
+			break;
+	}
+
+	SQFile f(file, size);
+	if (SQ_SUCCEEDED(sq_compile(vm, func, &f, filename, printerror))) {
+		FioFCloseFile(file);
+		return SQ_OK;
+	}
+	FioFCloseFile(file);
+	return SQ_ERROR;
 }
 
 bool Squirrel::LoadScript(HSQUIRRELVM vm, const char *script, bool in_root)
