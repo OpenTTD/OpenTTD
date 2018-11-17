@@ -782,6 +782,7 @@ terms for Bootstrap documentation.
 - Christoph Elsenhans (frosch) - General coding (since 0.6)
 - Loïc Guilloux (glx) - Windows Expert (since 0.4.5)
 - Michael Lutz (michi_cc) - Path based signals (since 0.7)
+- Niels Martin Hansen (nielsm) - Music system, general coding (since 1.9)
 - Owen Rudge (orudge) - Forum host, OS/2 port (since 0.1)
 - Peter Nelson (peter1138) - Spiritual descendant from newGRF gods (since 0.4.5)
 - Ingo von Borstel (planetmaker) - General coding, Support (since 1.1)
