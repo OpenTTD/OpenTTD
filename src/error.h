@@ -13,6 +13,7 @@
 #include <list>
 #include "strings_type.h"
 #include "company_type.h"
+#include "command_type.h"
 #include "core/geometry_type.hpp"
 #include "guitimer_func.h"
 
@@ -37,13 +38,14 @@ protected:
 	uint32 textref_stack[16];       ///< Values to put on the #TextRefStack for the error message.
 	StringID summary_msg;           ///< General error message showed in first line. Must be valid.
 	StringID detailed_msg;          ///< Detailed error message showed in second line. Can be #INVALID_STRING_ID.
+	StringID extra_msg;             ///< Extra error message shown in third line. Can be #INVALID_STRING_ID.
 	Point position;                 ///< Position of the error message window.
 	CompanyID face;                 ///< Company belonging to the face being shown. #INVALID_COMPANY if no face present.
 
 public:
 	ErrorMessageData(const ErrorMessageData &data);
 	~ErrorMessageData();
-	ErrorMessageData(StringID summary_msg, StringID detailed_msg, uint duration = 0, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32 *textref_stack = nullptr);
+	ErrorMessageData(StringID summary_msg, StringID detailed_msg, uint duration = 0, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32 *textref_stack = nullptr, StringID extra_msg = INVALID_STRING_ID);
 
 	/* Remove the copy assignment, as the default implementation will not do the right thing. */
 	ErrorMessageData &operator=(ErrorMessageData &rhs) = delete;
@@ -64,7 +66,8 @@ typedef std::list<ErrorMessageData> ErrorList;
 void ScheduleErrorMessage(ErrorList &datas);
 void ScheduleErrorMessage(const ErrorMessageData &data);
 
-void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32 *textref_stack = nullptr);
+void ShowErrorMessage(StringID summary_msg, int x, int y, CommandCost cc);
+void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32 *textref_stack = nullptr, StringID extra_msg = INVALID_STRING_ID);
 bool HideActiveErrorMessage();
 
 void ClearErrorMessages();
