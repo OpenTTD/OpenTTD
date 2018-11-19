@@ -284,6 +284,7 @@ struct NetworkSettings {
 /** Settings related to the creation of games. */
 struct GameCreationSettings {
 	uint32 generation_seed;                  ///< noise seed for world generation
+	uint32 generation_unique_id;             ///< random id to differentiate savegames
 	Year   starting_year;                    ///< starting date
 	uint8  map_x;                            ///< X size of map
 	uint8  map_y;                            ///< Y size of map

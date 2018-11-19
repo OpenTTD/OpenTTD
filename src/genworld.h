@@ -83,6 +83,7 @@ enum GenWorldProgress {
 
 /* genworld.cpp */
 bool IsGenerateWorldThreaded();
+void ResetGameUniqueId();
 void GenerateWorldSetCallback(GWDoneProc *proc);
 void GenerateWorldSetAbortCallback(GWAbortProc *proc);
 void WaitTillGeneratedWorld();

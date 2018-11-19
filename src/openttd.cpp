@@ -1110,6 +1110,8 @@ void SwitchToMode(SwitchMode new_mode)
 				if (_file_to_saveload.abstract_ftype == FT_SCENARIO) {
 					/* Reset engine pool to simplify changing engine NewGRFs in scenario editor. */
 					EngineOverrideManager::ResetToCurrentNewGRFConfig();
+					/* Give the new game a new unique id. */
+					ResetGameUniqueId();
 				}
 				/* Update the local company for a loaded game. It is either always
 				 * company #1 (eg 0) or in the case of a dedicated server a spectator */
@@ -1165,6 +1167,8 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		case SM_SAVE_GAME: // Save game.
+			/* If saving from scenario editor, always reset the unique id before save, to make any "save as" operation count as a new file. */
+			if (_game_mode == GM_EDITOR) ResetGameUniqueId();
 			/* Make network saved games on pause compatible to singleplayer */
 			if (SaveOrLoad(_file_to_saveload.name, SLO_SAVE, DFT_GAME_FILE, NO_DIRECTORY) != SL_OK) {
 				SetDParamStr(0, GetSaveLoadErrorString());

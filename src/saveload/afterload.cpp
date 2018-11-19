@@ -55,6 +55,7 @@
 #include "../order_backup.h"
 #include "../error.h"
 #include "../disaster_vehicle.h"
+#include "../genworld.h"
 
 
 #include "saveload_internal.h"
@@ -3043,6 +3044,10 @@ bool AfterLoadGame()
 				}
 			}
 		}
+	}
+
+	if (IsSavegameVersionBefore(205)) {
+		ResetGameUniqueId();
 	}
 
 	/* Station acceptance is some kind of cache */
