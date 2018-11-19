@@ -22,12 +22,13 @@ struct GRFFile;
  * a possible error message/state together.
  */
 class CommandCost {
-	ExpensesType expense_type; ///< the type of expence as shown on the finances view
-	Money cost;       ///< The cost of this action
-	StringID message; ///< Warning message for when success is unset
-	bool success;     ///< Whether the command went fine up to this moment
-	const GRFFile *textref_stack_grffile; ///< NewGRF providing the #TextRefStack content.
-	uint textref_stack_size;   ///< Number of uint32 values to put on the #TextRefStack for the error message.
+	ExpensesType expense_type;                  ///< the type of expence as shown on the finances view
+	Money cost;                                 ///< The cost of this action
+	StringID message;                           ///< Warning message for when success is unset
+	bool success;                               ///< Whether the command went fine up to this moment
+	const GRFFile *textref_stack_grffile;       ///< NewGRF providing the #TextRefStack content.
+	uint textref_stack_size;                    ///< Number of uint32 values to put on the #TextRefStack for the error message.
+	StringID extra_message = INVALID_STRING_ID; ///< Additional warning message for when success is unset
 
 	static uint32 textref_stack[16];
 
@@ -38,9 +39,9 @@ public:
 	CommandCost() : expense_type(INVALID_EXPENSES), cost(0), message(INVALID_STRING_ID), success(true), textref_stack_grffile(nullptr), textref_stack_size(0) {}
 
 	/**
-	 * Creates a command return value the is failed with the given message
+	 * Creates a command return value with one, or optionally two, error message strings.
 	 */
-	explicit CommandCost(StringID msg) : expense_type(INVALID_EXPENSES), cost(0), message(msg), success(false), textref_stack_grffile(nullptr), textref_stack_size(0) {}
+	explicit CommandCost(StringID msg, StringID extra_msg = INVALID_STRING_ID) : expense_type(INVALID_EXPENSES), cost(0), message(msg), success(false), textref_stack_grffile(nullptr), textref_stack_size(0), extra_message(extra_msg) {}
 
 	/**
 	 * Creates a command cost with given expense type and start cost of 0
@@ -98,11 +99,12 @@ public:
 	 * Makes this #CommandCost behave like an error command.
 	 * @param message The error message.
 	 */
-	void MakeError(StringID message)
+	void MakeError(StringID message, StringID extra_message = INVALID_STRING_ID)
 	{
 		assert(message != INVALID_STRING_ID);
 		this->success = false;
 		this->message = message;
+		this->extra_message = extra_message;
 	}
 
 	void UseTextRefStack(const GRFFile *grffile, uint num_registers);
@@ -142,6 +144,16 @@ public:
 	{
 		if (this->success) return INVALID_STRING_ID;
 		return this->message;
+	}
+
+	/**
+	 * Returns the extra error message of a command
+	 * @return the extra error message, if succeeded #INVALID_STRING_ID
+	 */
+	StringID GetExtraErrorMessage() const
+	{
+		if (this->success) return INVALID_STRING_ID;
+		return this->extra_message;
 	}
 
 	/**
