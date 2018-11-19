@@ -3045,6 +3045,12 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(203)) {
+		/* Generate a random id for savegames that didn't have one */
+		/* We keep id 0 for old savegames that don't have an id */
+		_settings_game.game_creation.generation_unique_id = _interactive_random.Next(UINT32_MAX-1) + 1; /* Generates between [1;UINT32_MAX] */
+	}
+
 	/* Station acceptance is some kind of cache */
 	if (IsSavegameVersionBefore(127)) {
 		Station *st;
