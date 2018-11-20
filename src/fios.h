@@ -80,6 +80,17 @@ struct LoadCheckData {
 		return this->checkable && this->error == INVALID_STRING_ID && this->grfconfig != NULL;
 	}
 
+	/**
+	 * Check whether the game has the same unique ID as the currently loaded one.
+	 * @return true if unique ID matches, or is not set in check data
+	 */
+	bool UniqueIdMatchesCurrentGame()
+	{
+		if (this->settings.game_creation.generation_unique_id == 0) return true;
+		if (this->settings.game_creation.generation_unique_id == _settings_game.game_creation.generation_unique_id) return true;
+		return false;
+	}
+
 	void Clear();
 };
 
