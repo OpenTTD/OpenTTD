@@ -2773,6 +2773,7 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No infor
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING1}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter string:
+STR_SAVELOAD_DIFFERENT_ID                                       :{RED}Not the same game as you are saving.
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Enter a name for the savegame
 

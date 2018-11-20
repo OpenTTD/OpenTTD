@@ -463,6 +463,14 @@ public:
 					y = DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT,
 							y, r.bottom - WD_FRAMERECT_BOTTOM, _load_check_data.error, TC_RED);
 				} else {
+					/* Warning if save unique id differ when saving */
+					if (this->fop == SLO_SAVE &&
+							_load_check_data.settings.game_creation.generation_unique_id != 0 && /* Don't warn if the save has no id (old save) */
+							_load_check_data.settings.game_creation.generation_unique_id != _settings_game.game_creation.generation_unique_id) {
+						y = DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT,
+							y, r.bottom - WD_FRAMERECT_BOTTOM, STR_SAVELOAD_DIFFERENT_ID);
+					}
+
 					/* Mapsize */
 					SetDParam(0, _load_check_data.map_size_x);
 					SetDParam(1, _load_check_data.map_size_y);
