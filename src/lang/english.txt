@@ -4150,6 +4150,8 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :File not writea
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Data integrity check failed
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Game was saved in version without tram support. All trams have been removed
+STR_SAVEGAME_UNMATCHING_ID_CAPTION                              :{WHITE}Caution!
+STR_SAVEGAME_UNMATCHING_ID_CONFIRMATION_TEXT                    :{YELLOW}The savegame you are about to overwrite is not the same as the current one.{}Are you sure you want to do this?
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Map generation aborted...{}... no suitable town locations

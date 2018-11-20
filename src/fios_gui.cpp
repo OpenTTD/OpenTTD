@@ -265,6 +265,8 @@ static void SortSaveGameList(FileList &file_list)
 	QSortT(file_list.Get(sort_start), s_amount, CompareFiosItems);
 }
 
+void SaveGameConfirmationCallback(Window *w, bool confirmed);
+
 struct SaveLoadWindow : public Window {
 private:
 	static const uint EDITBOX_MAX_SIZE   =  50;
@@ -280,6 +282,8 @@ private:
 	StringFilter string_filter; ///< Filter for available games.
 	QueryString filter_editbox; ///< Filter editbox;
 	SmallVector<bool, 32> fios_items_shown; ///< Map of the filtered out fios items
+
+	friend void SaveGameConfirmationCallback(Window *w, bool confirmed);
 
 public:
 
@@ -739,8 +743,15 @@ public:
 			}
 		} else if (this->IsWidgetLowered(WID_SL_SAVE_GAME)) { // Save button clicked
 			if (this->abstract_filetype == FT_SAVEGAME || this->abstract_filetype == FT_SCENARIO) {
-				_switch_mode = SM_SAVE_GAME;
-				FiosMakeSavegameName(_file_to_saveload.name, this->filename_editbox.text.buf, lastof(_file_to_saveload.name));
+				if (_load_check_data.settings.game_creation.generation_unique_id != 0 && /* Don't warn if the save has no id (old save) */
+						_load_check_data.settings.game_creation.generation_unique_id != _settings_game.game_creation.generation_unique_id) {
+					/* The save has a different id to the current game */
+					/* Show a caption box asking whether the user is sure to overwrite the save */
+					ShowQuery(STR_SAVEGAME_UNMATCHING_ID_CAPTION, STR_SAVEGAME_UNMATCHING_ID_CONFIRMATION_TEXT, this, SaveGameConfirmationCallback);
+				} else {
+					/* We can safely overwrite the save */
+					SaveGameConfirmationCallback(this, true);
+				}
 			} else {
 				_switch_mode = SM_SAVE_HEIGHTMAP;
 				FiosMakeHeightmapName(_file_to_saveload.name, this->filename_editbox.text.buf, lastof(_file_to_saveload.name));
@@ -871,6 +882,19 @@ static WindowDesc _save_dialog_desc(
 	0,
 	_nested_save_dialog_widgets, lengthof(_nested_save_dialog_widgets)
 );
+
+/**
+ * Callback function for the savegame 'are you sure you want to overwrite save' window
+ * @param w Window which is calling this callback
+ * @param confirmed boolean value, true when yes was clicked, false otherwise
+ */
+void SaveGameConfirmationCallback(Window *w, bool confirmed)
+{
+	if (confirmed) {
+		_switch_mode = SM_SAVE_GAME;
+		FiosMakeSavegameName(_file_to_saveload.name, dynamic_cast<SaveLoadWindow*>(w)->filename_editbox.text.buf, lastof(_file_to_saveload.name));
+	}
+}
 
 /**
  * Launch save/load dialog in the given mode.
