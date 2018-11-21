@@ -76,9 +76,20 @@ static const NWidgetPart _nested_load_dialog_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SL_CAPTION),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
 	EndContainer(),
+	/* Current directory and free space */
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_BACKGROUND), SetFill(1, 0), SetResize(1, 0), EndContainer(),
+
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(NWID_VERTICAL),
+		/* Left side : filter box and available files */
+		NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), SetResize(1, 1),
+			/* Filter box with label */
+			NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, 0, WD_FRAMERECT_BOTTOM, 0),
+				SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, 0),
+					NWidget(WWT_TEXT, COLOUR_GREY), SetFill(0, 1), SetDataTip(STR_SAVELOAD_FILTER_TITLE , STR_NULL),
+					NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SL_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0),
+						SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+			EndContainer(),
+			/* Sort buttons */
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYNAME), SetDataTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
@@ -86,6 +97,7 @@ static const NWidgetPart _nested_load_dialog_widgets[] = {
 				EndContainer(),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SL_HOME_BUTTON), SetMinimalSize(12, 12), SetDataTip(SPR_HOUSE_ICON, STR_SAVELOAD_HOME_BUTTON),
 			EndContainer(),
+			/* Files */
 			NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_FILE_BACKGROUND),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_INSET, COLOUR_GREY, WID_SL_DRIVES_DIRECTORIES_LIST), SetFill(1, 1), SetPadding(2, 1, 2, 2),
@@ -98,6 +110,8 @@ static const NWidgetPart _nested_load_dialog_widgets[] = {
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),
+
+		/* Right side : game details */
 		NWidget(WWT_PANEL, COLOUR_GREY),
 			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SL_DETAILS), SetResize(1, 1), SetFill(1, 1),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_MISSING_NEWGRFS), SetDataTip(STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON, STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
@@ -119,8 +133,18 @@ static const NWidgetPart _nested_load_heightmap_dialog_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SL_CAPTION),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
 	EndContainer(),
+	/* Current directory and free space */
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_BACKGROUND), SetFill(1, 0), SetResize(1, 0), EndContainer(),
-	NWidget(NWID_VERTICAL),
+
+	NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), SetResize(1, 1),
+		/* Filter box with label */
+		NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, 0, WD_FRAMERECT_BOTTOM, 0),
+			SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, 0),
+				NWidget(WWT_TEXT, COLOUR_GREY), SetFill(0, 1), SetDataTip(STR_SAVELOAD_FILTER_TITLE , STR_NULL),
+				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SL_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0),
+					SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+		EndContainer(),
+		/* Sort Buttons */
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYNAME), SetDataTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
@@ -128,6 +152,7 @@ static const NWidgetPart _nested_load_heightmap_dialog_widgets[] = {
 			EndContainer(),
 			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SL_HOME_BUTTON), SetMinimalSize(12, 12), SetDataTip(SPR_HOUSE_ICON, STR_SAVELOAD_HOME_BUTTON),
 		EndContainer(),
+		/* Files */
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_FILE_BACKGROUND),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_INSET, COLOUR_GREY, WID_SL_DRIVES_DIRECTORIES_LIST), SetFill(1, 1), SetPadding(2, 1, 2, 2),
@@ -152,9 +177,19 @@ static const NWidgetPart _nested_save_dialog_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SL_CAPTION),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
 	EndContainer(),
+	/* Current directory and free space */
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_BACKGROUND), SetFill(1, 0), SetResize(1, 0), EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(NWID_VERTICAL),
+		/* Left side : filter box and available files */
+		NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), SetResize(1, 1),
+			/* Filter box with label */
+			NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, 0, WD_FRAMERECT_BOTTOM, 0),
+				SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, 0),
+				NWidget(WWT_TEXT, COLOUR_GREY), SetFill(0, 1), SetDataTip(STR_SAVELOAD_FILTER_TITLE , STR_NULL),
+				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SL_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0),
+					SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+			EndContainer(),
+			/* Sort buttons */
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYNAME), SetDataTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
@@ -162,6 +197,7 @@ static const NWidgetPart _nested_save_dialog_widgets[] = {
 				EndContainer(),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SL_HOME_BUTTON), SetMinimalSize(12, 12), SetDataTip(SPR_HOUSE_ICON, STR_SAVELOAD_HOME_BUTTON),
 			EndContainer(),
+			/* Files */
 			NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_FILE_BACKGROUND),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_INSET, COLOUR_GREY, WID_SL_DRIVES_DIRECTORIES_LIST), SetPadding(2, 1, 0, 2),
@@ -171,11 +207,14 @@ static const NWidgetPart _nested_save_dialog_widgets[] = {
 				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SL_SAVE_OSK_TITLE), SetPadding(3, 2, 2, 2), SetFill(1, 0), SetResize(1, 0),
 						SetDataTip(STR_SAVELOAD_OSKTITLE, STR_SAVELOAD_EDITBOX_TOOLTIP),
 			EndContainer(),
+			/* Save/delete buttons */
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_DELETE_SELECTION), SetDataTip(STR_SAVELOAD_DELETE_BUTTON, STR_SAVELOAD_DELETE_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SAVE_GAME),        SetDataTip(STR_SAVELOAD_SAVE_BUTTON, STR_SAVELOAD_SAVE_TOOLTIP),     SetFill(1, 0), SetResize(1, 0),
 			EndContainer(),
 		EndContainer(),
+
+		/* Right side : game details */
 		NWidget(WWT_PANEL, COLOUR_GREY),
 			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SL_DETAILS), SetResize(1, 1), SetFill(1, 1),
 			NWidget(NWID_HORIZONTAL),
@@ -227,6 +266,8 @@ static void SortSaveGameList(FileList &file_list)
 
 struct SaveLoadWindow : public Window {
 private:
+	static const uint EDITBOX_MAX_SIZE   =  50;
+
 	QueryString filename_editbox; ///< Filename editbox.
 	AbstractFileType abstract_filetype; /// Type of file to select.
 	SaveLoadOperation fop;        ///< File operation to perform.
@@ -234,6 +275,8 @@ private:
 	FiosItem o_dir;
 	const FiosItem *selected;     ///< Selected game in #fios_items, or \c NULL.
 	Scrollbar *vscroll;
+
+	QueryString filter_editbox; ///< Filter editbox;
 public:
 
 	/** Generate a default save filename. */
@@ -244,7 +287,7 @@ public:
 	}
 
 	SaveLoadWindow(WindowDesc *desc, AbstractFileType abstract_filetype, SaveLoadOperation fop)
-			: Window(desc), filename_editbox(64), abstract_filetype(abstract_filetype), fop(fop)
+			: Window(desc), filename_editbox(64), abstract_filetype(abstract_filetype), fop(fop), filter_editbox(EDITBOX_MAX_SIZE)
 	{
 		assert(this->fop == SLO_SAVE || this->fop == SLO_LOAD);
 
@@ -296,6 +339,8 @@ public:
 		this->FinishInitNested(0);
 
 		this->LowerWidget(WID_SL_DRIVES_DIRECTORIES_LIST);
+		this->querystrings[WID_SL_FILTER] = &this->filter_editbox;
+		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
 
 		/* pause is only used in single-player, non-editor mode, non-menu mode. It
 		 * will be unpaused in the WE_DESTROY event handler. */
@@ -327,8 +372,15 @@ public:
 				strecpy(o_dir.name, _personal_dir, lastof(o_dir.name));
 		}
 
-		/* Focus the edit box by default in the save windows */
-		if (this->fop == SLO_SAVE) this->SetFocusedWidget(WID_SL_SAVE_OSK_TITLE);
+		switch (this->fop) {
+			case SLO_SAVE:
+				/* Focus the edit box by default in the save window */
+				this->SetFocusedWidget(WID_SL_SAVE_OSK_TITLE);
+				break;
+
+			default:
+				this->SetFocusedWidget(WID_SL_FILTER);
+		}
 	}
 
 	virtual ~SaveLoadWindow()
