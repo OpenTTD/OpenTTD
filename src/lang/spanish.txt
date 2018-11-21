@@ -476,6 +476,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pant
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura con zoom de cerca
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Captura con zoom por defecto
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de mapa completo
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Mostrar fotogramas por segundo - FPS
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Acerca de 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador de sprites
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Activar cajas delimitadoras
@@ -651,6 +652,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}No hay música disponible
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Pista
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Título
