@@ -28,6 +28,7 @@
 #include "date_func.h"
 #include "core/geometry_func.hpp"
 #include "gamelog.h"
+#include "stringfilter_type.h"
 
 #include "widgets/fios_widget.h"
 
@@ -276,7 +277,10 @@ private:
 	const FiosItem *selected;     ///< Selected game in #fios_items, or \c NULL.
 	Scrollbar *vscroll;
 
+	StringFilter string_filter; ///< Filter for available games.
 	QueryString filter_editbox; ///< Filter editbox;
+	SmallVector<bool, 32> fios_items_shown; ///< Map of the filtered out fios items
+
 public:
 
 	/** Generate a default save filename. */
@@ -422,6 +426,10 @@ public:
 
 				uint y = r.top + WD_FRAMERECT_TOP;
 				for (uint pos = this->vscroll->GetPosition(); pos < this->fios_items.Length(); pos++) {
+					if (!this->fios_items_shown[pos]) {
+						/* The current item is filtered out : we do not show it */
+						continue;
+					}
 					const FiosItem *item = this->fios_items.Get(pos);
 
 					if (item == this->selected) {
@@ -559,7 +567,6 @@ public:
 			SortSaveGameList(this->fios_items);
 		}
 
-		this->vscroll->SetCount(this->fios_items.Length());
 		this->DrawWidgets();
 	}
 
@@ -624,6 +631,12 @@ public:
 				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SL_DRIVES_DIRECTORIES_LIST, WD_FRAMERECT_TOP);
 				if (y == INT_MAX) return;
 
+				/* Get the corresponding non-filtered out item from the list */
+				int i = 0;
+				while (i <= y) {
+					if (!this->fios_items_shown[i]) y++;
+					i++;
+				}
 				const FiosItem *file = this->fios_items.Get(y);
 
 				const char *name = FiosBrowseTo(file);
@@ -754,6 +767,10 @@ public:
 				this->vscroll->SetCount(this->fios_items.Length());
 				this->selected = NULL;
 				_load_check_data.Clear();
+
+				/* We reset the files filtered */
+				this->OnInvalidateData(SLIWD_FILTER_CHANGES);
+
 				FALLTHROUGH;
 
 			case SLIWD_SELECTION_CHANGES:
@@ -784,6 +801,41 @@ public:
 						NOT_REACHED();
 				}
 				break;
+
+			case SLIWD_FILTER_CHANGES:
+				/* Filter changes */
+				this->fios_items_shown.Resize(this->fios_items.Length());
+				uint items_shown_count = 0; ///< The number of items shown in the list
+				/* We pass through every fios item */
+				for (uint i = 0; i < this->fios_items.Length(); i++) {
+					if (this->string_filter.IsEmpty()) {
+						/* We don't filter anything out if the filter editbox is empty */
+						this->fios_items_shown[i] = true;
+						items_shown_count++;
+					} else {
+						this->string_filter.ResetState();
+						this->string_filter.AddLine(this->fios_items[i].title);
+						/* We set the vector to show this fios element as filtered depending on the result of the filter */
+						this->fios_items_shown[i] = this->string_filter.GetState();
+						if (this->fios_items_shown[i]) items_shown_count++;
+
+						if (&(this->fios_items[i]) == this->selected && this->fios_items_shown[i] == false) {
+							/* The selected element has been filtered out */
+							this->selected = NULL;
+							this->OnInvalidateData(SLIWD_SELECTION_CHANGES);
+						}
+					}
+				}
+				this->vscroll->SetCount(items_shown_count);
+				break;
+		}
+	}
+
+	virtual void OnEditboxChanged(int wid)
+	{
+		if (wid == WID_SL_FILTER) {
+			this->string_filter.SetFilterTerm(this->filter_editbox.text.buf);
+			this->InvalidateData(SLIWD_FILTER_CHANGES);
 		}
 	}
 };
