@@ -18,6 +18,12 @@
 #include "network/core/tcp_content.h"
 
 
+/** Special values for save-load window for the data parameter of #InvalidateWindowData. */
+enum SaveLoadInvalidateWindowData {
+	SLIWD_RESCAN_FILES,          ///< Rescan all files (when changed directory, ...)
+	SLIWD_SELECTION_CHANGES,     ///< File selection has changed (user click, ...)
+};
+
 typedef SmallMap<uint, CompanyProperties *> CompanyPropertiesMap;
 
 /**

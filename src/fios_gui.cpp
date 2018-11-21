@@ -304,7 +304,7 @@ public:
 		}
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
-		this->OnInvalidateData(0);
+		this->OnInvalidateData(SLIWD_RESCAN_FILES);
 
 		ResetObjectToPlace();
 
@@ -530,7 +530,7 @@ public:
 
 			case WID_SL_HOME_BUTTON: // OpenTTD 'button', jumps to OpenTTD directory
 				FiosBrowseTo(&o_dir);
-				this->InvalidateData();
+				this->InvalidateData(SLIWD_RESCAN_FILES);
 				break;
 
 			case WID_SL_LOAD_BUTTON:
@@ -586,7 +586,7 @@ public:
 								SaveOrLoad(name, SLO_CHECK, DFT_GAME_FILE, NO_DIRECTORY, false);
 							}
 
-							this->InvalidateData(1);
+							this->InvalidateData(SLIWD_SELECTION_CHANGES);
 						}
 						if (this->fop == SLO_SAVE) {
 							/* Copy clicked name to editbox */
@@ -611,7 +611,7 @@ public:
 					}
 				} else {
 					/* Changed directory, need refresh. */
-					this->InvalidateData();
+					this->InvalidateData(SLIWD_RESCAN_FILES);
 				}
 				break;
 			}
@@ -660,7 +660,7 @@ public:
 			if (!FiosDelete(this->filename_editbox.text.buf)) {
 				ShowErrorMessage(STR_ERROR_UNABLE_TO_DELETE_FILE, INVALID_STRING_ID, WL_ERROR);
 			} else {
-				this->InvalidateData();
+				this->InvalidateData(SLIWD_RESCAN_FILES);
 				/* Reset file name to current date on successful delete */
 				if (this->abstract_filetype == FT_SAVEGAME) GenerateFileName();
 			}
@@ -691,7 +691,7 @@ public:
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		switch (data) {
-			case 0:
+			case SLIWD_RESCAN_FILES:
 				/* Rescan files */
 				this->selected = NULL;
 				_load_check_data.Clear();
@@ -704,7 +704,7 @@ public:
 				_load_check_data.Clear();
 				FALLTHROUGH;
 
-			case 1:
+			case SLIWD_SELECTION_CHANGES:
 				/* Selection changes */
 				if (!gui_scope) break;
 
