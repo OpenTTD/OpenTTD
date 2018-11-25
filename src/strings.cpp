@@ -2070,7 +2070,7 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 
 	void SetFontNames(FreeTypeSettings *settings, const char *font_name) override
 	{
-#ifdef WITH_FREETYPE
+#if defined(WITH_FREETYPE) || defined(_WIN32)
 		strecpy(settings->small.font,  font_name, lastof(settings->small.font));
 		strecpy(settings->medium.font, font_name, lastof(settings->medium.font));
 		strecpy(settings->large.font,  font_name, lastof(settings->large.font));
@@ -2096,7 +2096,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 	static LanguagePackGlyphSearcher pack_searcher;
 	if (searcher == nullptr) searcher = &pack_searcher;
 	bool bad_font = !base_font || searcher->FindMissingGlyphs(nullptr);
-#ifdef WITH_FREETYPE
+#if defined(WITH_FREETYPE) || defined(_WIN32)
 	if (bad_font) {
 		/* We found an unprintable character... lets try whether we can find
 		 * a fallback font that can print the characters in the current language. */

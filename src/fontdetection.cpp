@@ -9,7 +9,7 @@
 
 /** @file fontdetection.cpp Detection of the right font. */
 
-#ifdef WITH_FREETYPE
+#if defined(WITH_FREETYPE) || defined(_WIN32)
 
 #include "stdafx.h"
 #include "debug.h"
@@ -17,7 +17,9 @@
 #include "string_func.h"
 #include "strings_func.h"
 
+#ifdef WITH_FREETYPE
 extern FT_Library _library;
+#endif /* WITH_FREETYPE */
 
 /**
  * Get the font loaded into a Freetype face by using a font-name.
@@ -37,6 +39,7 @@ extern FT_Library _library;
 
 #include "safeguards.h"
 
+#ifdef WITH_FREETYPE
 /**
  * Get the short DOS 8.3 format for paths.
  * FreeType doesn't support Unicode filenames and Windows' fopen (as used
@@ -241,6 +244,7 @@ err2:
 err1:
 	return ret_font_name == nullptr ? WIDE_TO_MB((const TCHAR*)logfont->elfFullName) : ret_font_name;
 }
+#endif /* WITH_FREETYPE */
 
 class FontList {
 protected:
@@ -317,6 +321,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	char font_name[MAX_PATH];
 	convert_from_fs((const TCHAR *)logfont->elfFullName, font_name, lengthof(font_name));
 
+#ifdef WITH_FREETYPE
 	/* Add english name after font name */
 	const char *english_name = GetEnglishFontName(logfont);
 	strecpy(font_name + strlen(font_name) + 1, english_name, lastof(font_name));
@@ -337,6 +342,9 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	}
 
 	if (!found) return 1;
+#else
+	const char *english_name = font_name;
+#endif /* WITH_FREETYPE */
 
 	info->callback->SetFontNames(info->settings, font_name);
 	if (info->callback->FindMissingGlyphs(nullptr)) return 1;

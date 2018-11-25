@@ -202,7 +202,7 @@ static inline bool GetDrawGlyphShadow(FontSize size)
 	return FontCache::Get(size)->GetDrawGlyphShadow();
 }
 
-#ifdef WITH_FREETYPE
+#if defined(WITH_FREETYPE) || defined(_WIN32)
 
 /** Settings for a single freetype font. */
 struct FreeTypeSubSetting {
@@ -221,7 +221,7 @@ struct FreeTypeSettings {
 
 extern FreeTypeSettings _freetype;
 
-#endif /* WITH_FREETYPE */
+#endif /* defined(WITH_FREETYPE) || defined(_WIN32) */
 
 void InitFreeType(bool monospace);
 void UninitFreeType();

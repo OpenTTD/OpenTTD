@@ -107,7 +107,7 @@
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <AdditionalIncludeDirectories>..\objs\langs;..\objs\settings;..\src\3rdparty\squirrel\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_XAUDIO2;WITH_SSE;WITH_ZLIB;WITH_LZO;WITH_LIBLZMA;WITH_PNG;WITH_FREETYPE;WITH_UNISCRIBE;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR="OpenTTD";WITH_ASSERT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_XAUDIO2;WITH_SSE;WITH_ZLIB;WITH_LZO;WITH_LIBLZMA;WITH_PNG;WITH_UNISCRIBE;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR="OpenTTD";WITH_ASSERT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -172,7 +172,7 @@
       <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <AdditionalIncludeDirectories>..\objs\langs;..\objs\settings;..\src\3rdparty\squirrel\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_XAUDIO2;WITH_SSE;WITH_ZLIB;WITH_LZO;WITH_LIBLZMA;WITH_PNG;WITH_FREETYPE;WITH_UNISCRIBE;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR="OpenTTD";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_XAUDIO2;WITH_SSE;WITH_ZLIB;WITH_LZO;WITH_LIBLZMA;WITH_PNG;WITH_UNISCRIBE;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR="OpenTTD";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>
@@ -230,7 +230,7 @@
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <AdditionalIncludeDirectories>..\objs\langs;..\objs\settings;..\src\3rdparty\squirrel\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_XAUDIO2;WITH_SSE;WITH_ZLIB;WITH_LZO;WITH_LIBLZMA;WITH_PNG;WITH_FREETYPE;WITH_UNISCRIBE;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR="OpenTTD";_SQ64;WITH_ASSERT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_XAUDIO2;WITH_SSE;WITH_ZLIB;WITH_LZO;WITH_LIBLZMA;WITH_PNG;WITH_UNISCRIBE;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR="OpenTTD";_SQ64;WITH_ASSERT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -293,7 +293,7 @@
       <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <AdditionalIncludeDirectories>..\objs\langs;..\objs\settings;..\src\3rdparty\squirrel\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_XAUDIO2;WITH_SSE;WITH_ZLIB;WITH_LZO;WITH_LIBLZMA;WITH_PNG;WITH_FREETYPE;WITH_UNISCRIBE;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR="OpenTTD";_SQ64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_XAUDIO2;WITH_SSE;WITH_ZLIB;WITH_LZO;WITH_LIBLZMA;WITH_PNG;WITH_UNISCRIBE;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR="OpenTTD";_SQ64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>
