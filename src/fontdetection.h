@@ -27,6 +27,9 @@
  */
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face);
 
+#endif /* WITH_FREETYPE */
+
+#if defined(WITH_FREETYPE) || defined(_WIN32)
 /**
  * We would like to have a fallback font as the current one
  * doesn't contain all characters we need.
@@ -39,6 +42,6 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face);
  */
 bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, class MissingGlyphSearcher *callback);
 
-#endif /* WITH_FREETYPE */
+#endif /* defined(WITH_FREETYPE) || defined(WIN32)*/
 
 #endif

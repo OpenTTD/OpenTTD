@@ -32,7 +32,6 @@ by following the `Quick Start` intructions of their
 After this, you can install the dependencies OpenTTD needs. We advise to use
 the `static` versions, and OpenTTD currently needs the following dependencies:
 
-- freetype
 - liblzma
 - libpng
 - lzo
@@ -41,8 +40,8 @@ the `static` versions, and OpenTTD currently needs the following dependencies:
 To install both the x64 (64bit) and x86 (32bit) variants, you can use:
 
 ```ps
-.\vcpkg install freetype:x64-windows-static liblzma:x64-windows-static libpng:x64-windows-static lzo:x64-windows-static zlib:x64-windows-static
-.\vcpkg install freetype:x86-windows-static liblzma:x86-windows-static libpng:x86-windows-static lzo:x86-windows-static zlib:x86-windows-static
+.\vcpkg install liblzma:x64-windows-static libpng:x64-windows-static lzo:x64-windows-static zlib:x64-windows-static
+.\vcpkg install liblzma:x86-windows-static libpng:x86-windows-static lzo:x86-windows-static zlib:x86-windows-static
 ```
 
 ## TTD Graphics files

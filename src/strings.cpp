@@ -2099,7 +2099,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 	static LanguagePackGlyphSearcher pack_searcher;
 	if (searcher == NULL) searcher = &pack_searcher;
 	bool bad_font = !base_font || searcher->FindMissingGlyphs(NULL);
-#ifdef WITH_FREETYPE
+#if defined(WITH_FREETYPE) || defined(_WIN32)
 	if (bad_font) {
 		/* We found an unprintable character... lets try whether we can find
 		 * a fallback font that can print the characters in the current language. */
