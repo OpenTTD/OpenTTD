@@ -346,7 +346,9 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	const char *english_name = font_name;
 #endif /* WITH_FREETYPE */
 
-	info->callback->SetFontNames(info->settings, font_name);
+	PLOGFONT os_data = MallocT<LOGFONT>(1);
+	*os_data = logfont->elfLogFont;
+	info->callback->SetFontNames(info->settings, font_name, os_data);
 	if (info->callback->FindMissingGlyphs(nullptr)) return 1;
 	DEBUG(freetype, 1, "Fallback font: %s (%s)", font_name, english_name);
 	return 0; // stop enumerating
