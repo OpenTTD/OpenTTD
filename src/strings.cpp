@@ -2068,13 +2068,18 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 		return false;
 	}
 
-	void SetFontNames(FreeTypeSettings *settings, const char *font_name) override
+	void SetFontNames(FreeTypeSettings *settings, const char *font_name, const void *os_data) override
 	{
 #if defined(WITH_FREETYPE) || defined(_WIN32)
 		strecpy(settings->small.font,  font_name, lastof(settings->small.font));
 		strecpy(settings->medium.font, font_name, lastof(settings->medium.font));
 		strecpy(settings->large.font,  font_name, lastof(settings->large.font));
-#endif /* WITH_FREETYPE */
+
+		free(settings->medium.os_handle); // Only free one, they are all the same pointer.
+		settings->small.os_handle = os_data;
+		settings->medium.os_handle = os_data;
+		settings->large.os_handle = os_data;
+#endif
 	}
 };
 
@@ -2103,7 +2108,13 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		FreeTypeSettings backup;
 		memcpy(&backup, &_freetype, sizeof(backup));
 
+		_freetype.mono.os_handle = nullptr;
+		_freetype.medium.os_handle = nullptr;
+
 		bad_font = !SetFallbackFont(&_freetype, _langpack->isocode, _langpack->winlangid, searcher);
+
+		free(_freetype.mono.os_handle);
+		free(_freetype.medium.os_handle);
 
 		memcpy(&_freetype, &backup, sizeof(backup));
 

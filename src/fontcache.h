@@ -126,6 +126,15 @@ public:
 	virtual const void *GetFontTable(uint32 tag, size_t &length) = 0;
 
 	/**
+	 * Get the native OS font handle, if there is one.
+	 * @return Opaque OS font handle.
+	 */
+	virtual void *GetOSHandle()
+	{
+		return nullptr;
+	}
+
+	/**
 	 * Get the name of this font.
 	 * @return The name of the font.
 	 */
@@ -209,6 +218,8 @@ struct FreeTypeSubSetting {
 	char font[MAX_PATH]; ///< The name of the font, or path to the font.
 	uint size;           ///< The (requested) size of the font.
 	bool aa;             ///< Whether to do anti aliasing or not.
+
+	const void *os_handle = nullptr; ///< Optional native OS font info.
 };
 
 /** Settings for the freetype fonts. */

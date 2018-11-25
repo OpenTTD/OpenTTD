@@ -275,8 +275,9 @@ public:
 	 * Set the right font names.
 	 * @param settings  The settings to modify.
 	 * @param font_name The new font name.
+	 * @param os_data Opaque pointer to OS-specific data.
 	 */
-	virtual void SetFontNames(struct FreeTypeSettings *settings, const char *font_name) = 0;
+	virtual void SetFontNames(struct FreeTypeSettings *settings, const char *font_name, const void *os_data = nullptr) = 0;
 
 	bool FindMissingGlyphs(const char **str);
 };

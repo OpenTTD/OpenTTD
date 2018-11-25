@@ -148,6 +148,8 @@ void UniscribeResetScriptCache(FontSize size)
 /** Load the matching native Windows font. */
 static HFONT HFontFromFont(Font *font)
 {
+	if (font->fc->GetOSHandle() != nullptr) return CreateFontIndirect((PLOGFONT)font->fc->GetOSHandle());
+
 	LOGFONT logfont;
 	ZeroMemory(&logfont, sizeof(LOGFONT));
 	logfont.lfHeight = font->fc->GetHeight();
