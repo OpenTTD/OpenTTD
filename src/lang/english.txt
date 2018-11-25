@@ -2772,6 +2772,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Game Det
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No information available
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING1}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter string:
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Enter a name for the savegame
 
