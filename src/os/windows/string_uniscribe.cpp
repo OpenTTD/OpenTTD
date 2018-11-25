@@ -195,6 +195,7 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 				for (int i = 0; i < range.len; i++) {
 					if (buff[range.pos + i] >= SCC_SPRITE_START && buff[range.pos + i] <= SCC_SPRITE_END) {
 						range.ft_glyphs[range.char_to_glyph[i]] = range.font->fc->MapCharToGlyph(buff[range.pos + i]);
+						range.offsets[range.char_to_glyph[i]].dv = range.font->fc->GetAscender() - range.font->fc->GetGlyph(range.ft_glyphs[range.char_to_glyph[i]])->height - 1; // Align sprite glyphs to font baseline.
 					}
 				}
 
