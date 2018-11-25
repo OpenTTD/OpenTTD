@@ -2786,6 +2786,12 @@ detect_png() {
 }
 
 detect_freetype() {
+	if  [ "$with_freetype" = "1" ] && ([ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]); then
+		log 1 "checking freetype2... WIN32, skipping"
+		freetype_config=""
+		return 0
+	fi
+
 	detect_pkg_config "$with_freetype" "freetype2" "freetype_config" "2.2" "1"
 }
 

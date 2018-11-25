@@ -199,7 +199,7 @@ bool SpriteFontCache::GetDrawGlyphShadow()
 
 /* static */ FontCache *FontCache::caches[FS_END] = { new SpriteFontCache(FS_NORMAL), new SpriteFontCache(FS_SMALL), new SpriteFontCache(FS_LARGE), new SpriteFontCache(FS_MONO) };
 
-#if defined(WITH_FREETYPE)
+#if defined(WITH_FREETYPE) || defined(_WIN32)
 
 FreeTypeSettings _freetype;
 
@@ -710,9 +710,278 @@ const void *FreeTypeFontCache::InternalGetFontTable(uint32 tag, size_t &length)
 	return result;
 }
 
+#elif defined(_WIN32)
+
+#include "os/windows/win32.h"
+#ifndef ANTIALIASED_QUALITY
+#define ANTIALIASED_QUALITY     4
+#endif
+
+/** Font cache for fonts that are based on a Win32 font. */
+class Win32FontCache : public TrueTypeFontCache {
+private:
+	LOGFONT logfont;      ///< Logical font information for selecting the font face.
+	HFONT font = nullptr; ///< The font face associated with this font.
+	HDC dc = nullptr;     ///< Cached GDI device context.
+	HGDIOBJ old_font;     ///< Old font selected into the GDI context.
+	SIZE glyph_size;      ///< Maximum size of regular glyphs.
+
+	void SetFontSize(FontSize fs, int pixels);
+	virtual const void *InternalGetFontTable(uint32 tag, size_t &length);
+	virtual const Sprite *InternalGetGlyph(GlyphID key, bool aa);
+
+public:
+	Win32FontCache(FontSize fs, const LOGFONT &logfont, int pixels);
+	~Win32FontCache();
+	virtual void ClearFontCache();
+	virtual GlyphID MapCharToGlyph(WChar key);
+	virtual const char *GetFontName() { return WIDE_TO_MB(this->logfont.lfFaceName); }
+	virtual bool IsBuiltInFont() { return false; }
+};
+
+
+/**
+ * Create a new Win32FontCache.
+ * @param fs      The font size that is going to be cached.
+ * @param logfont The font that has to be loaded.
+ * @param pixels  The number of pixels this font should be high.
+ */
+Win32FontCache::Win32FontCache(FontSize fs, const LOGFONT &logfont, int pixels) : TrueTypeFontCache(fs, pixels), logfont(logfont)
+{
+	this->dc = CreateCompatibleDC(nullptr);
+	this->SetFontSize(fs, pixels);
+}
+
+Win32FontCache::~Win32FontCache()
+{
+	this->ClearFontCache();
+	DeleteDC(this->dc);
+	DeleteObject(this->font);
+}
+
+void Win32FontCache::SetFontSize(FontSize fs, int pixels)
+{
+	if (pixels == 0) {
+		/* Try to determine a good height based on the minimal height recommended by the font. */
+		int scaled_height = ScaleFontTrad(_default_font_height[this->fs]);
+		pixels = scaled_height;
+
+		HFONT temp = CreateFontIndirect(&this->logfont);
+		if (temp != nullptr) {
+			HGDIOBJ old = SelectObject(this->dc, temp);
+
+			UINT size = GetOutlineTextMetrics(this->dc, 0, nullptr);
+			LPOUTLINETEXTMETRIC otm = (LPOUTLINETEXTMETRIC)AllocaM(BYTE, size);
+			GetOutlineTextMetrics(this->dc, size, otm);
+
+			/* Font height is minimum height plus the difference between the default
+			 * height for this font size and the small size. */
+			int diff = scaled_height - ScaleFontTrad(_default_font_height[FS_SMALL]);
+			pixels = Clamp(min(otm->otmusMinimumPPEM, 20) + diff, scaled_height, MAX_FONT_SIZE);
+
+			SelectObject(dc, old);
+			DeleteObject(temp);
+		}
+	} else {
+		pixels = ScaleFontTrad(pixels);
+	}
+	this->used_size = pixels;
+
+	/* Create GDI font handle. */
+	this->logfont.lfHeight = -pixels;
+	this->logfont.lfWidth  = 0;
+	this->logfont.lfOutPrecision = ANTIALIASED_QUALITY;
+
+	if (this->font != nullptr) {
+		SelectObject(dc, this->old_font);
+		DeleteObject(this->font);
+	}
+	this->font = CreateFontIndirect(&this->logfont);
+	this->old_font = SelectObject(this->dc, this->font);
+
+	/* Query the font metrics we needed. */
+	UINT otmSize = GetOutlineTextMetrics(this->dc, 0, nullptr);
+	POUTLINETEXTMETRIC otm = (POUTLINETEXTMETRIC)AllocaM(BYTE, otmSize);
+	GetOutlineTextMetrics(this->dc, otmSize, otm);
+
+	this->units_per_em = otm->otmEMSquare;
+	this->ascender = otm->otmTextMetrics.tmAscent;
+	this->descender = otm->otmTextMetrics.tmDescent;
+	this->height = this->ascender + this->descender;
+	this->glyph_size.cx = otm->otmTextMetrics.tmMaxCharWidth;
+	this->glyph_size.cy = otm->otmTextMetrics.tmHeight;
+
+	DEBUG(freetype, 2, "Loaded font '%s' with size %d", FS2OTTD((LPTSTR)((BYTE *)otm + (ptrdiff_t)otm->otmpFullName)), pixels);
+}
+
+/**
+ * Reset cached glyphs.
+ */
+void Win32FontCache::ClearFontCache()
+{
+	/* GUI scaling might have changed, determine font size anew if it was automatically selected. */
+	if (this->font != nullptr) this->SetFontSize(this->fs, this->req_size);
+
+	this->TrueTypeFontCache::ClearFontCache();
+}
+
+/* virtual */ const Sprite *Win32FontCache::InternalGetGlyph(GlyphID key, bool aa)
+{
+	GLYPHMETRICS gm;
+	MAT2 mat = { {0, 1}, {0, 0}, {0, 0}, {0, 1} };
+
+	/* Make a guess for the needed memory size. */
+	DWORD size = this->glyph_size.cy * Align(aa ? this->glyph_size.cx : max(this->glyph_size.cx / 8l, 1l), 4); // Bitmap data is DWORD-aligned rows.
+	byte *bmp = AllocaM(byte, size);
+	size = GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, size, bmp, &mat);
+
+	if (size == GDI_ERROR) {
+		/* No dice with the guess. First query size of needed glyph memory, then allocate the
+		 * memory and query again. This dance is necessary as some glyphs will only render with
+		 * the exact matching size; e.g. the space glyph has no pixels and must be requested
+		 * with size == 0, anything else fails. Unfortunately, a failed call doesn't return any
+		 * info about the size and thus the triple GetGlyphOutline()-call. */
+		size = GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, 0, nullptr, &mat);
+		if (size == GDI_ERROR) usererror("Unable to render font glyph");
+		bmp = AllocaM(byte, size);
+		GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, size, bmp, &mat);
+	}
+
+	/* Add 1 pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel. */
+	uint width = max(1U, (uint)gm.gmBlackBoxX + (this->fs == FS_NORMAL));
+	uint height = max(1U, (uint)gm.gmBlackBoxY + (this->fs == FS_NORMAL));
+
+	/* Limit glyph size to prevent overflows later on. */
+	if (width > 256 || height > 256) usererror("Font glyph is too large");
+
+	/* GDI has rendered the glyph, now we allocate a sprite and copy the image into it. */
+	SpriteLoader::Sprite sprite;
+	sprite.AllocateData(ZOOM_LVL_NORMAL, width * height);
+	sprite.type = ST_FONT;
+	sprite.width = width;
+	sprite.height = height;
+	sprite.x_offs = gm.gmptGlyphOrigin.x;
+	sprite.y_offs = this->ascender - gm.gmptGlyphOrigin.y;
+
+	if (size > 0) {
+		/* All pixel data returned by GDI is in the form of DWORD-aligned rows.
+		 * For a non anti-aliased glyph, the returned bitmap has one bit per pixel.
+		 * For anti-aliased rendering, GDI uses the strange value range of 0 to 64,
+		 * inclusively. To map this to 0 to 255, we shift left by two and then
+		 * subtract one. */
+		uint pitch = Align(aa ? gm.gmBlackBoxX : max(gm.gmBlackBoxX / 8u, 1u), 4);
+
+		/* Draw shadow for medium size. */
+		if (this->fs == FS_NORMAL && !aa) {
+			for (uint y = 0; y < gm.gmBlackBoxY; y++) {
+				for (uint x = 0; x < gm.gmBlackBoxX; x++) {
+					if (aa ? (bmp[x + y * pitch] > 0) : HasBit(bmp[(x / 8) + y * pitch], 7 - (x % 8))) {
+						sprite.data[1 + x + (1 + y) * sprite.width].m = SHADOW_COLOUR;
+						sprite.data[1 + x + (1 + y) * sprite.width].a = aa ? (bmp[x + y * pitch] << 2) - 1 : 0xFF;
+					}
+				}
+			}
+		}
+
+		for (uint y = 0; y < gm.gmBlackBoxY; y++) {
+			for (uint x = 0; x < gm.gmBlackBoxX; x++) {
+				if (aa ? (bmp[x + y * pitch] > 0) : HasBit(bmp[(x / 8) + y * pitch], 7 - (x % 8))) {
+					sprite.data[x + y * sprite.width].m = FACE_COLOUR;
+					sprite.data[x + y * sprite.width].a = aa ? (bmp[x + y * pitch] << 2) - 1 : 0xFF;
+				}
+			}
+		}
+	}
+
+	GlyphEntry new_glyph;
+	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(&sprite, AllocateFont);
+	new_glyph.width = gm.gmCellIncX;
+
+	this->SetGlyphPtr(key, &new_glyph);
+
+	return new_glyph.sprite;
+}
+
+/* virtual */ GlyphID Win32FontCache::MapCharToGlyph(WChar key)
+{
+	assert(IsPrintable(key));
+
+	if (key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
+		return this->parent->MapCharToGlyph(key);
+	}
+
+	/* Convert characters outside of the BMP into surrogate pairs. */
+	WCHAR chars[2];
+	if (key >= 0x010000U) {
+		chars[0] = (WCHAR)(((key - 0x010000U) >> 10) + 0xD800);
+		chars[1] = (WCHAR)(((key - 0x010000U) & 0x3FF) + 0xDC00);
+	} else {
+		chars[0] = (WCHAR)(key & 0xFFFF);
+	}
+
+	WORD glyphs[2] = {0, 0};
+	GetGlyphIndicesW(this->dc, chars, key >= 0x010000U ? 2 : 1, glyphs, GGI_MARK_NONEXISTING_GLYPHS);
+
+	return glyphs[0] != 0xFFFF ? glyphs[0] : 0;
+}
+
+/* virtual */ const void *Win32FontCache::InternalGetFontTable(uint32 tag, size_t &length)
+{
+	DWORD len = GetFontData(this->dc, tag, 0, nullptr, 0);
+
+	void *result = nullptr;
+	if (len != GDI_ERROR && len > 0) {
+		result = MallocT<BYTE>(len);
+		GetFontData(this->dc, tag, 0, result, len);
+	}
+
+	length = len;
+	return result;
+}
+
+/**
+ * Loads the GDI font.
+ * If a GDI font description is present, e.g. from the automatic font
+ * fallback search, use it. Otherwise, try to resolve it by font name.
+ * @param fs The font size to load.
+ */
+static void LoadWin32Font(FontSize fs)
+{
+	FreeTypeSubSetting *settings = nullptr;
+	switch (fs) {
+		default: NOT_REACHED();
+		case FS_SMALL:  settings = &_freetype.small;  break;
+		case FS_NORMAL: settings = &_freetype.medium; break;
+		case FS_LARGE:  settings = &_freetype.large;  break;
+		case FS_MONO:   settings = &_freetype.mono;   break;
+	}
+
+	if (StrEmpty(settings->font)) return;
+
+	LOGFONT logfont;
+	MemSetT(&logfont, 0);
+
+	logfont.lfWeight = strcasestr(settings->font, " bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
+	logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
+	logfont.lfCharSet = DEFAULT_CHARSET;
+	logfont.lfOutPrecision = OUT_OUTLINE_PRECIS;
+	logfont.lfClipPrecision = CLIP_DEFAULT_PRECIS;
+	convert_to_fs(settings->font, logfont.lfFaceName, lengthof(logfont.lfFaceName), false);
+
+	HFONT font = CreateFontIndirect(&logfont);
+	if (font == nullptr) {
+		static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
+		ShowInfoF("Unable to use '%s' for %s font, Win32 reported error 0x%lX, using sprite font instead", settings->font, SIZE_TO_NAME[fs], GetLastError());
+		return;
+	}
+	DeleteObject(font);
+
+	new Win32FontCache(fs, logfont, settings->size);
+}
+
 #endif /* WITH_FREETYPE */
 
-#endif /* defined(WITH_FREETYPE) */
+#endif /* defined(WITH_FREETYPE) || defined(_WIN32) */
 
 /**
  * (Re)initialize the freetype related things, i.e. load the non-sprite fonts.
@@ -728,6 +997,8 @@ void InitFreeType(bool monospace)
 
 #ifdef WITH_FREETYPE
 		LoadFreeTypeFont(fs);
+#elif defined(_WIN32)
+		LoadWin32Font(fs);
 #endif
 	}
 }
