@@ -1317,8 +1317,6 @@ make_compiler_cflags() {
 		if [ $cc_version -ge 110 ]; then
 			# remark #2259: non-pointer conversion from ... to ... may lose significant bits
 			flags="$flags -wd2259"
-			# Use c++0x mode so static_assert() is available
-			cxxflags="$cxxflags -std=c++0x"
 		fi
 
 		if [ "$enable_lto" != "0" ]; then
@@ -1380,11 +1378,6 @@ make_compiler_cflags() {
 			flags="$flags -Wno-unused-variable"
 		fi
 
-		if [ "$cc_version" -ge "33" ]; then
-			# clang completed C++11 support in version 3.3
-			flags="$flags -std=c++11"
-		fi
-
 		# rdynamic is used to get useful stack traces from crash reports.
 		ldflags="$ldflags -rdynamic"
 
@@ -1443,12 +1436,6 @@ make_compiler_cflags() {
 			flags="$flags -Wnon-virtual-dtor"
 		fi
 
-		if [ $cc_version -ge 403 ] && [ $cc_version -lt 600 ]; then
-			# Use gnu++0x mode so static_assert() is available.
-			# Don't use c++0x, it breaks mingw (with gcc 4.4.0).
-			cxxflags="$cxxflags -std=gnu++0x"
-		fi
-
 		if [ $cc_version -eq 405 ]; then
 			# Prevent optimisation supposing enums are in a range specified by the standard
 			# For details, see http://gcc.gnu.org/PR43680
@@ -1470,7 +1457,7 @@ make_compiler_cflags() {
 		if [ $cc_version -ge 600 ]; then
 			# -flifetime-dse=2 (default since GCC 6) doesn't play
 			# well with our custom pool item allocator
-			cxxflags="$cxxflags -flifetime-dse=1 -std=gnu++14"
+			cxxflags="$cxxflags -flifetime-dse=1"
 		fi
 
 		if [ "$enable_lto" != "0" ]; then
@@ -1533,6 +1520,8 @@ make_cflags_and_ldflags() {
 
 	CFLAGS="$CFLAGS -D$os"
 	CFLAGS_BUILD="$CFLAGS_BUILD -D$os"
+	CXXFLAGS="$CXXFLAGS -std=c++11"
+	CXXFLAGS_BUILD="$CXXFLAGS_BUILD -std=c++11"
 
 	if [ "$enable_debug" = "0" ]; then
 		# No debug, add default stuff
