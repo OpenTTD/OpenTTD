@@ -199,16 +199,16 @@ bool SpriteFontCache::GetDrawGlyphShadow()
 
 /* static */ FontCache *FontCache::caches[FS_END] = { new SpriteFontCache(FS_NORMAL), new SpriteFontCache(FS_SMALL), new SpriteFontCache(FS_LARGE), new SpriteFontCache(FS_MONO) };
 
-#ifdef WITH_FREETYPE
-#include <ft2build.h>
-#include FT_FREETYPE_H
-#include FT_GLYPH_H
-#include FT_TRUETYPE_TABLES_H
+#if defined(WITH_FREETYPE)
 
-/** Font cache for fonts that are based on a freetype font. */
-class FreeTypeFontCache : public FontCache {
-private:
-	FT_Face face;  ///< The font face associated with this font.
+FreeTypeSettings _freetype;
+
+static const byte FACE_COLOUR = 1;
+static const byte SHADOW_COLOUR = 2;
+
+/** Font cache for fonts that are based on a TrueType font. */
+class TrueTypeFontCache : public FontCache {
+protected:
 	int req_size;  ///< Requested font size.
 	int used_size; ///< Used font size.
 
@@ -239,31 +239,233 @@ private:
 
 	GlyphEntry *GetGlyphPtr(GlyphID key);
 	void SetGlyphPtr(GlyphID key, const GlyphEntry *glyph, bool duplicate = false);
-	void SetFontSize(FontSize fs, FT_Face face, int pixels);
+
+	virtual const void *InternalGetFontTable(uint32 tag, size_t &length) = 0;
+	virtual const Sprite *InternalGetGlyph(GlyphID key, bool aa) = 0;
 
 public:
-	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
-	~FreeTypeFontCache();
+	TrueTypeFontCache(FontSize fs, int pixels);
+	virtual ~TrueTypeFontCache();
 	virtual int GetFontSize() const { return this->used_size; }
 	virtual SpriteID GetUnicodeGlyph(WChar key) { return this->parent->GetUnicodeGlyph(key); }
 	virtual void SetUnicodeGlyph(WChar key, SpriteID sprite) { this->parent->SetUnicodeGlyph(key, sprite); }
 	virtual void InitializeUnicodeGlyphMap() { this->parent->InitializeUnicodeGlyphMap(); }
-	virtual void ClearFontCache();
 	virtual const Sprite *GetGlyph(GlyphID key);
+	virtual const void *GetFontTable(uint32 tag, size_t &length);
+	virtual void ClearFontCache();
 	virtual uint GetGlyphWidth(GlyphID key);
 	virtual bool GetDrawGlyphShadow();
+	virtual bool IsBuiltInFont() { return false; }
+};
+
+/**
+ * Create a new TrueTypeFontCache.
+ * @param fs     The font size that is going to be cached.
+ * @param pixels The number of pixels this font should be high.
+ */
+TrueTypeFontCache::TrueTypeFontCache(FontSize fs, int pixels) : FontCache(fs), req_size(pixels), glyph_to_sprite(NULL)
+{
+}
+
+/**
+ * Free everything that was allocated for this font cache.
+ */
+TrueTypeFontCache::~TrueTypeFontCache()
+{
+	this->ClearFontCache();
+
+	for (FontTable::iterator iter = this->font_tables.Begin(); iter != this->font_tables.End(); iter++) {
+		free(iter->second.second);
+	}
+}
+
+/**
+ * Reset cached glyphs.
+ */
+void TrueTypeFontCache::ClearFontCache()
+{
+	if (this->glyph_to_sprite == NULL) return;
+
+	for (int i = 0; i < 256; i++) {
+		if (this->glyph_to_sprite[i] == NULL) continue;
+
+		for (int j = 0; j < 256; j++) {
+			if (this->glyph_to_sprite[i][j].duplicate) continue;
+			free(this->glyph_to_sprite[i][j].sprite);
+		}
+
+		free(this->glyph_to_sprite[i]);
+	}
+
+	free(this->glyph_to_sprite);
+	this->glyph_to_sprite = NULL;
+
+	Layouter::ResetFontCache(this->fs);
+}
+
+
+TrueTypeFontCache::GlyphEntry *TrueTypeFontCache::GetGlyphPtr(GlyphID key)
+{
+	if (this->glyph_to_sprite == NULL) return NULL;
+	if (this->glyph_to_sprite[GB(key, 8, 8)] == NULL) return NULL;
+	return &this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)];
+}
+
+void TrueTypeFontCache::SetGlyphPtr(GlyphID key, const GlyphEntry *glyph, bool duplicate)
+{
+	if (this->glyph_to_sprite == NULL) {
+		DEBUG(freetype, 3, "Allocating root glyph cache for size %u", this->fs);
+		this->glyph_to_sprite = CallocT<GlyphEntry*>(256);
+	}
+
+	if (this->glyph_to_sprite[GB(key, 8, 8)] == NULL) {
+		DEBUG(freetype, 3, "Allocating glyph cache for range 0x%02X00, size %u", GB(key, 8, 8), this->fs);
+		this->glyph_to_sprite[GB(key, 8, 8)] = CallocT<GlyphEntry>(256);
+	}
+
+	DEBUG(freetype, 4, "Set glyph for unicode character 0x%04X, size %u", key, this->fs);
+	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].sprite = glyph->sprite;
+	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].width = glyph->width;
+	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].duplicate = duplicate;
+}
+
+static void *AllocateFont(size_t size)
+{
+	return MallocT<byte>(size);
+}
+
+
+/* Check if a glyph should be rendered with anti-aliasing. */
+static bool GetFontAAState(FontSize size)
+{
+	/* AA is only supported for 32 bpp */
+	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 32) return false;
+
+	switch (size) {
+		default: NOT_REACHED();
+		case FS_NORMAL: return _freetype.medium.aa;
+		case FS_SMALL:  return _freetype.small.aa;
+		case FS_LARGE:  return _freetype.large.aa;
+		case FS_MONO:   return _freetype.mono.aa;
+	}
+}
+
+bool TrueTypeFontCache::GetDrawGlyphShadow()
+{
+	return this->fs == FS_NORMAL && GetFontAAState(FS_NORMAL);
+}
+
+uint TrueTypeFontCache::GetGlyphWidth(GlyphID key)
+{
+	if ((key & SPRITE_GLYPH) != 0) return this->parent->GetGlyphWidth(key);
+
+	GlyphEntry *glyph = this->GetGlyphPtr(key);
+	if (glyph == NULL || glyph->sprite == NULL) {
+		this->GetGlyph(key);
+		glyph = this->GetGlyphPtr(key);
+	}
+
+	return glyph->width;
+}
+
+const Sprite *TrueTypeFontCache::GetGlyph(GlyphID key)
+{
+	if ((key & SPRITE_GLYPH) != 0) return this->parent->GetGlyph(key);
+
+	/* Check for the glyph in our cache */
+	GlyphEntry *glyph = this->GetGlyphPtr(key);
+	if (glyph != NULL && glyph->sprite != NULL) return glyph->sprite;
+
+	if (key == 0) {
+		GlyphID question_glyph = this->MapCharToGlyph('?');
+		if (question_glyph == 0) {
+			/* The font misses the '?' character. Use built-in sprite.
+			 * Note: We cannot use the baseset as this also has to work in the bootstrap GUI. */
+#define CPSET { 0, 0, 0, 0, 1 }
+#define CP___ { 0, 0, 0, 0, 0 }
+			static SpriteLoader::CommonPixel builtin_questionmark_data[10 * 8] = {
+				CP___, CP___, CPSET, CPSET, CPSET, CPSET, CP___, CP___,
+				CP___, CPSET, CPSET, CP___, CP___, CPSET, CPSET, CP___,
+				CP___, CP___, CP___, CP___, CP___, CPSET, CPSET, CP___,
+				CP___, CP___, CP___, CP___, CPSET, CPSET, CP___, CP___,
+				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
+				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
+				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
+				CP___, CP___, CP___, CP___, CP___, CP___, CP___, CP___,
+				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
+				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
+			};
+#undef CPSET
+#undef CP___
+			static const SpriteLoader::Sprite builtin_questionmark = {
+				10, // height
+				8,  // width
+				0,  // x_offs
+				0,  // y_offs
+				ST_FONT,
+				builtin_questionmark_data
+			};
+
+			Sprite *spr = BlitterFactory::GetCurrentBlitter()->Encode(&builtin_questionmark, AllocateFont);
+			assert(spr != NULL);
+			GlyphEntry new_glyph;
+			new_glyph.sprite = spr;
+			new_glyph.width  = spr->width + (this->fs != FS_NORMAL);
+			this->SetGlyphPtr(key, &new_glyph, false);
+			return new_glyph.sprite;
+		} else {
+			/* Use '?' for missing characters. */
+			this->GetGlyph(question_glyph);
+			glyph = this->GetGlyphPtr(question_glyph);
+			this->SetGlyphPtr(key, glyph, true);
+			return glyph->sprite;
+		}
+	}
+
+	return this->InternalGetGlyph(key, GetFontAAState(this->fs));
+}
+
+const void *TrueTypeFontCache::GetFontTable(uint32 tag, size_t &length)
+{
+	const FontTable::iterator iter = this->font_tables.Find(tag);
+	if (iter != this->font_tables.End()) {
+		length = iter->second.first;
+		return iter->second.second;
+	}
+
+	const void *result = this->InternalGetFontTable(tag, length);
+
+	this->font_tables.Insert(tag, SmallPair<size_t, const void *>(length, result));
+	return result;
+}
+
+
+#ifdef WITH_FREETYPE
+#include <ft2build.h>
+#include FT_FREETYPE_H
+#include FT_GLYPH_H
+#include FT_TRUETYPE_TABLES_H
+
+/** Font cache for fonts that are based on a freetype font. */
+class FreeTypeFontCache : public TrueTypeFontCache {
+private:
+	FT_Face face;  ///< The font face associated with this font.
+
+	void SetFontSize(FontSize fs, FT_Face face, int pixels);
+	virtual const void *InternalGetFontTable(uint32 tag, size_t &length);
+	virtual const Sprite *InternalGetGlyph(GlyphID key, bool aa);
+
+public:
+	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
+	~FreeTypeFontCache();
+	virtual void ClearFontCache();
 	virtual GlyphID MapCharToGlyph(WChar key);
-	virtual const void *GetFontTable(uint32 tag, size_t &length);
 	virtual const char *GetFontName() { return face->family_name; }
 	virtual bool IsBuiltInFont() { return false; }
 };
 
 FT_Library _library = NULL;
 
-FreeTypeSettings _freetype;
-
-static const byte FACE_COLOUR   = 1;
-static const byte SHADOW_COLOUR = 2;
 
 /**
  * Create a new FreeTypeFontCache.
@@ -271,7 +473,7 @@ static const byte SHADOW_COLOUR = 2;
  * @param face   The font that has to be loaded.
  * @param pixels The number of pixels this font should be high.
  */
-FreeTypeFontCache::FreeTypeFontCache(FontSize fs, FT_Face face, int pixels) : FontCache(fs), face(face), req_size(pixels), glyph_to_sprite(NULL)
+FreeTypeFontCache::FreeTypeFontCache(FontSize fs, FT_Face face, int pixels) : TrueTypeFontCache(fs, pixels), face(face)
 {
 	assert(face != NULL);
 
@@ -408,10 +610,6 @@ FreeTypeFontCache::~FreeTypeFontCache()
 	FT_Done_Face(this->face);
 	this->face = NULL;
 	this->ClearFontCache();
-
-	for (FontTable::iterator iter = this->font_tables.Begin(); iter != this->font_tables.End(); iter++) {
-		free(iter->second.second);
-	}
 }
 
 /**
@@ -419,133 +617,17 @@ FreeTypeFontCache::~FreeTypeFontCache()
  */
 void FreeTypeFontCache::ClearFontCache()
 {
-	if (this->glyph_to_sprite == NULL) return;
-
-	for (int i = 0; i < 256; i++) {
-		if (this->glyph_to_sprite[i] == NULL) continue;
-
-		for (int j = 0; j < 256; j++) {
-			if (this->glyph_to_sprite[i][j].duplicate) continue;
-			free(this->glyph_to_sprite[i][j].sprite);
-		}
-
-		free(this->glyph_to_sprite[i]);
-	}
-
-	free(this->glyph_to_sprite);
-	this->glyph_to_sprite = NULL;
-
-	Layouter::ResetFontCache(this->fs);
+	this->TrueTypeFontCache::ClearFontCache();
 
 	/* GUI scaling might have changed, determine font size anew if it was automatically selected. */
 	if (this->face != NULL && this->req_size == 0) this->SetFontSize(this->fs, this->face, this->req_size);
 }
 
-FreeTypeFontCache::GlyphEntry *FreeTypeFontCache::GetGlyphPtr(GlyphID key)
+
+const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 {
-	if (this->glyph_to_sprite == NULL) return NULL;
-	if (this->glyph_to_sprite[GB(key, 8, 8)] == NULL) return NULL;
-	return &this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)];
-}
-
-
-void FreeTypeFontCache::SetGlyphPtr(GlyphID key, const GlyphEntry *glyph, bool duplicate)
-{
-	if (this->glyph_to_sprite == NULL) {
-		DEBUG(freetype, 3, "Allocating root glyph cache for size %u", this->fs);
-		this->glyph_to_sprite = CallocT<GlyphEntry*>(256);
-	}
-
-	if (this->glyph_to_sprite[GB(key, 8, 8)] == NULL) {
-		DEBUG(freetype, 3, "Allocating glyph cache for range 0x%02X00, size %u", GB(key, 8, 8), this->fs);
-		this->glyph_to_sprite[GB(key, 8, 8)] = CallocT<GlyphEntry>(256);
-	}
-
-	DEBUG(freetype, 4, "Set glyph for unicode character 0x%04X, size %u", key, this->fs);
-	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].sprite    = glyph->sprite;
-	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].width     = glyph->width;
-	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].duplicate = duplicate;
-}
-
-static void *AllocateFont(size_t size)
-{
-	return MallocT<byte>(size);
-}
-
-
-/* Check if a glyph should be rendered with antialiasing */
-static bool GetFontAAState(FontSize size)
-{
-	/* AA is only supported for 32 bpp */
-	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 32) return false;
-
-	switch (size) {
-		default: NOT_REACHED();
-		case FS_NORMAL: return _freetype.medium.aa;
-		case FS_SMALL:  return _freetype.small.aa;
-		case FS_LARGE:  return _freetype.large.aa;
-		case FS_MONO:   return _freetype.mono.aa;
-	}
-}
-
-
-const Sprite *FreeTypeFontCache::GetGlyph(GlyphID key)
-{
-	if ((key & SPRITE_GLYPH) != 0) return this->parent->GetGlyph(key);
-
-	/* Check for the glyph in our cache */
-	GlyphEntry *glyph = this->GetGlyphPtr(key);
-	if (glyph != NULL && glyph->sprite != NULL) return glyph->sprite;
-
 	FT_GlyphSlot slot = this->face->glyph;
 
-	bool aa = GetFontAAState(this->fs);
-
-	GlyphEntry new_glyph;
-	if (key == 0) {
-		GlyphID question_glyph = this->MapCharToGlyph('?');
-		if (question_glyph == 0) {
-			/* The font misses the '?' character. Use built-in sprite.
-			 * Note: We cannot use the baseset as this also has to work in the bootstrap GUI. */
-#define CPSET { 0, 0, 0, 0, 1 }
-#define CP___ { 0, 0, 0, 0, 0 }
-			static SpriteLoader::CommonPixel builtin_questionmark_data[10 * 8] = {
-				CP___, CP___, CPSET, CPSET, CPSET, CPSET, CP___, CP___,
-				CP___, CPSET, CPSET, CP___, CP___, CPSET, CPSET, CP___,
-				CP___, CP___, CP___, CP___, CP___, CPSET, CPSET, CP___,
-				CP___, CP___, CP___, CP___, CPSET, CPSET, CP___, CP___,
-				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
-				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
-				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
-				CP___, CP___, CP___, CP___, CP___, CP___, CP___, CP___,
-				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
-				CP___, CP___, CP___, CPSET, CPSET, CP___, CP___, CP___,
-			};
-#undef CPSET
-#undef CP___
-			static const SpriteLoader::Sprite builtin_questionmark = {
-				10, // height
-				8,  // width
-				0,  // x_offs
-				0,  // y_offs
-				ST_FONT,
-				builtin_questionmark_data
-			};
-
-			Sprite *spr = BlitterFactory::GetCurrentBlitter()->Encode(&builtin_questionmark, AllocateFont);
-			assert(spr != NULL);
-			new_glyph.sprite = spr;
-			new_glyph.width  = spr->width + (this->fs != FS_NORMAL);
-			this->SetGlyphPtr(key, &new_glyph, false);
-			return new_glyph.sprite;
-		} else {
-			/* Use '?' for missing characters. */
-			this->GetGlyph(question_glyph);
-			glyph = this->GetGlyphPtr(question_glyph);
-			this->SetGlyphPtr(key, glyph, true);
-			return glyph->sprite;
-		}
-	}
 	FT_Load_Glyph(this->face, key, aa ? FT_LOAD_TARGET_NORMAL : FT_LOAD_TARGET_MONO);
 	FT_Render_Glyph(this->face->glyph, aa ? FT_RENDER_MODE_NORMAL : FT_RENDER_MODE_MONO);
 
@@ -589,6 +671,7 @@ const Sprite *FreeTypeFontCache::GetGlyph(GlyphID key)
 		}
 	}
 
+	GlyphEntry new_glyph;
 	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(&sprite, AllocateFont);
 	new_glyph.width  = slot->advance.x >> 6;
 
@@ -597,25 +680,6 @@ const Sprite *FreeTypeFontCache::GetGlyph(GlyphID key)
 	return new_glyph.sprite;
 }
 
-
-bool FreeTypeFontCache::GetDrawGlyphShadow()
-{
-	return this->fs == FS_NORMAL && GetFontAAState(FS_NORMAL);
-}
-
-
-uint FreeTypeFontCache::GetGlyphWidth(GlyphID key)
-{
-	if ((key & SPRITE_GLYPH) != 0) return this->parent->GetGlyphWidth(key);
-
-	GlyphEntry *glyph = this->GetGlyphPtr(key);
-	if (glyph == NULL || glyph->sprite == NULL) {
-		this->GetGlyph(key);
-		glyph = this->GetGlyphPtr(key);
-	}
-
-	return glyph->width;
-}
 
 GlyphID FreeTypeFontCache::MapCharToGlyph(WChar key)
 {
@@ -628,14 +692,8 @@ GlyphID FreeTypeFontCache::MapCharToGlyph(WChar key)
 	return FT_Get_Char_Index(this->face, key);
 }
 
-const void *FreeTypeFontCache::GetFontTable(uint32 tag, size_t &length)
+const void *FreeTypeFontCache::InternalGetFontTable(uint32 tag, size_t &length)
 {
-	const FontTable::iterator iter = this->font_tables.Find(tag);
-	if (iter != this->font_tables.End()) {
-		length = iter->second.first;
-		return iter->second.second;
-	}
-
 	FT_ULong len = 0;
 	FT_Byte *result = NULL;
 
@@ -645,13 +703,14 @@ const void *FreeTypeFontCache::GetFontTable(uint32 tag, size_t &length)
 		result = MallocT<FT_Byte>(len);
 		FT_Load_Sfnt_Table(this->face, tag, 0, result, &len);
 	}
-	length = len;
 
-	this->font_tables.Insert(tag, SmallPair<size_t, const void *>(length, result));
+	length = len;
 	return result;
 }
 
 #endif /* WITH_FREETYPE */
+
+#endif /* defined(WITH_FREETYPE) */
 
 /**
  * (Re)initialize the freetype related things, i.e. load the non-sprite fonts.
