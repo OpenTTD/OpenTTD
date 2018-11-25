@@ -68,6 +68,10 @@
 #include "void_map.h"
 #include "station_base.h"
 
+#if defined(WITH_FREETYPE)
+#define HAS_TRUETYPE_FONT
+#endif
+
 #include "table/strings.h"
 #include "table/settings.h"
 
