@@ -2071,13 +2071,20 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 		return false;
 	}
 
-	/* virtual */ void SetFontNames(FreeTypeSettings *settings, const char *font_name)
+	/* virtual */ void SetFontNames(FreeTypeSettings *settings, const char *font_name, const void *os_data)
 	{
-#ifdef WITH_FREETYPE
+#if defined(WITH_FREETYPE) || defined(_WIN32)
 		strecpy(settings->small.font,  font_name, lastof(settings->small.font));
 		strecpy(settings->medium.font, font_name, lastof(settings->medium.font));
 		strecpy(settings->large.font,  font_name, lastof(settings->large.font));
-#endif /* WITH_FREETYPE */
+
+		free(settings->small.os_handle);
+		free(settings->medium.os_handle);
+		free(settings->large.os_handle);
+		settings->small.os_handle = os_data;
+		settings->medium.os_handle = os_data;
+		settings->large.os_handle = os_data;
+#endif
 	}
 };
 

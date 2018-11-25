@@ -735,6 +735,7 @@ public:
 	virtual GlyphID MapCharToGlyph(WChar key);
 	virtual const char *GetFontName() { return WIDE_TO_MB(this->logfont.lfFaceName); }
 	virtual bool IsBuiltInFont() { return false; }
+	virtual void *GetOSHandle() { return &this->logfont; }
 };
 
 
@@ -955,19 +956,23 @@ static void LoadWin32Font(FontSize fs)
 
 	if (StrEmpty(settings->font)) return;
 
-	LOGFONT logfont;
-	logfont.lfWidth = 0;
-	logfont.lfEscapement = 0;
-	logfont.lfOrientation = 0;
-	logfont.lfWeight = strcasestr(settings->font, " bold") != NULL ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
-	logfont.lfItalic = FALSE;
-	logfont.lfUnderline = FALSE;
-	logfont.lfStrikeOut = FALSE;
-	logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
-	logfont.lfCharSet = DEFAULT_CHARSET;
-	logfont.lfOutPrecision = OUT_OUTLINE_PRECIS;
-	logfont.lfClipPrecision = CLIP_DEFAULT_PRECIS;
-	convert_to_fs(settings->font, logfont.lfFaceName, lengthof(logfont.lfFaceName), false);
+	LOGFONT logfont = { 0 };
+	if (settings->os_handle != NULL) logfont = *(const LPLOGFONT)settings->os_handle;
+
+	if (logfont.lfFaceName[0] == 0) {
+		logfont.lfWidth = 0;
+		logfont.lfEscapement = 0;
+		logfont.lfOrientation = 0;
+		logfont.lfWeight = strcasestr(settings->font, " bold") != NULL ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
+		logfont.lfItalic = FALSE;
+		logfont.lfUnderline = FALSE;
+		logfont.lfStrikeOut = FALSE;
+		logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
+		logfont.lfCharSet = DEFAULT_CHARSET;
+		logfont.lfOutPrecision = OUT_OUTLINE_PRECIS;
+		logfont.lfClipPrecision = CLIP_DEFAULT_PRECIS;
+		convert_to_fs(settings->font, logfont.lfFaceName, lengthof(logfont.lfFaceName), false);
+	}
 
 	HFONT font = CreateFontIndirect(&logfont);
 	if (font == NULL) {

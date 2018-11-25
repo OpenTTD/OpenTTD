@@ -147,14 +147,20 @@ void UniscribeResetScriptCache(FontSize size)
 /** Load the matching native Windows font. */
 static HFONT HFontFromFont(Font *font)
 {
-	LOGFONT logfont;
-	ZeroMemory(&logfont, sizeof(LOGFONT));
-	logfont.lfHeight = font->fc->GetHeight();
-	logfont.lfWeight = FW_NORMAL;
-	logfont.lfCharSet = DEFAULT_CHARSET;
-	convert_to_fs(font->fc->GetFontName(), logfont.lfFaceName, lengthof(logfont.lfFaceName));
+	LOGFONT local;
+	PLOGFONT logfont = (PLOGFONT)font->fc->GetOSHandle();
 
-	return CreateFontIndirect(&logfont);
+	if (logfont == NULL) {
+		logfont = &local;
+
+		ZeroMemory(logfont, sizeof(LOGFONT));
+		logfont->lfHeight = font->fc->GetHeight();
+		logfont->lfWeight = FW_NORMAL;
+		logfont->lfCharSet = DEFAULT_CHARSET;
+		convert_to_fs(font->fc->GetFontName(), logfont->lfFaceName, lengthof(logfont->lfFaceName));
+	}
+
+	return CreateFontIndirect(logfont);
 }
 
 /** Determine the glyph positions for a run. */
