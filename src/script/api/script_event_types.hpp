@@ -363,7 +363,7 @@ private:
 class ScriptEventCompanyAskMerger : public ScriptEvent {
 public:
 	/**
-	 * @param owner The company that can be bough.
+	 * @param owner The company that can be bought.
 	 * @param value The value/costs of buying the company.
 	 */
 	ScriptEventCompanyAskMerger(Owner owner, int32 value) :
