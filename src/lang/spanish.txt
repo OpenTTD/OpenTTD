@@ -925,6 +925,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand sudafrican
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizada...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiano (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraní (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nuevo Rublo Ruso (RUB)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vehículos de carretera
@@ -2693,8 +2694,8 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Fotogramas por segundo - FPS
 STR_FRAMERATE_CURRENT                                           :{WHITE}Actual
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Medio
-STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Datos basados en {COMMA} medidas
-STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Datos basados en {COMMA} medidas
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
