@@ -2696,6 +2696,7 @@ STR_FRAMERATE_CURRENT                                           :{WHITE}Actual
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Medio
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Datos basados en {COMMA} medidas
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
@@ -4241,6 +4242,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... esta
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... carretera en la dirección incorrecta
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... las estaciones de autobús de paso no pueden tener esquinas
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... las estaciones de autobús de paso no pueden tener intersecciones
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... carretera de un solo sentido o bloqueada
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}No se puede retirar parte de la estación...
