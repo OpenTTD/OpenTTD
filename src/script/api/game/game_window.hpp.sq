@@ -438,6 +438,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SL_CAPTION,                            "WID_SL_CAPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SL_SORT_BYNAME,                        "WID_SL_SORT_BYNAME");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SL_SORT_BYDATE,                        "WID_SL_SORT_BYDATE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SL_FILTER,                             "WID_SL_FILTER");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SL_BACKGROUND,                         "WID_SL_BACKGROUND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SL_FILE_BACKGROUND,                    "WID_SL_FILE_BACKGROUND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SL_HOME_BUTTON,                        "WID_SL_HOME_BUTTON");

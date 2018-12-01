@@ -1001,7 +1001,7 @@ public:
 	};
 
 	/* automatically generated from ../../widgets/cheat_widget.h */
-	/** Widgets of the #CheatWindow class.. */
+	/** Widgets of the #CheatWindow class. */
 	enum CheatWidgets {
 		WID_C_PANEL                                  = ::WID_C_PANEL,                                  ///< Panel where all cheats are shown in.
 	};
@@ -1272,6 +1272,7 @@ public:
 		WID_SL_CAPTION                               = ::WID_SL_CAPTION,                               ///< Caption of the window.
 		WID_SL_SORT_BYNAME                           = ::WID_SL_SORT_BYNAME,                           ///< Sort by name button.
 		WID_SL_SORT_BYDATE                           = ::WID_SL_SORT_BYDATE,                           ///< Sort by date button.
+		WID_SL_FILTER                                = ::WID_SL_FILTER,                                ///< Filter list of files
 		WID_SL_BACKGROUND                            = ::WID_SL_BACKGROUND,                            ///< Background of window.
 		WID_SL_FILE_BACKGROUND                       = ::WID_SL_FILE_BACKGROUND,                       ///< Background of file selection.
 		WID_SL_HOME_BUTTON                           = ::WID_SL_HOME_BUTTON,                           ///< Home button.
