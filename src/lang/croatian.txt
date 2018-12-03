@@ -2799,36 +2799,36 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Broj sličica
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
-STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Stopa simulacije: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Stopa simulacije: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Broj otkucaja igre simuliranih u sekundi.
-STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Broj sličica u sekundi: {STRING}
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Broj sličica u sekundi: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Broj sličica videa prikayanih u sekundi.
-STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Trenutni faktor brzine igre: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Trenutni faktor brzine igre: {DECIMAL}x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Koliko brzo se igra izvodi trenutno u usporedbi sa očekivanom brzinom u uobičajenoj simulaciji.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Trenutno
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Prosječno
-STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Podaci bazirani na {COMMA} mjerama
-STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
-STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
-STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
-STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} sličica/s
-STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} sličica/s
-STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} sličica/s
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Podaci bazirani na {COMMA} mjerama
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} sličica/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} sličica/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} sličica/s
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
-STR_FRAMERATE_GAMELOOP                                          :{WHITE}Zbroj petlji igre:
-STR_FRAMERATE_GL_ECONOMY                                        :{WHITE}  Korištenje tereta:
-STR_FRAMERATE_GL_TRAINS                                         :{WHITE} Otkucaji vlakova:
-STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  Otkucaji cestovnih vozila:
-STR_FRAMERATE_GL_SHIPS                                          :{WHITE} Otkucaji brodova:
-STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE}  Otkucaji aviona:
-STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE}  Otkucaji svijeta:
-STR_FRAMERATE_GL_LINKGRAPH                                      :Odmak linka grafikona
-STR_FRAMERATE_DRAWING                                           :{WHITE}Prikaz grafike:
-STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE}  Prikazi svijeta:
-STR_FRAMERATE_VIDEO                                             :{WHITE}Video izlaz:
-STR_FRAMERATE_SOUND                                             :{WHITE}Miksanje zvukova:
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Zbroj petlji igre:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Korištenje tereta:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Otkucaji vlakova:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Otkucaji cestovnih vozila:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK} Otkucaji brodova:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Otkucaji aviona:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Otkucaji svijeta:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Odmak linka grafikona:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Prikaz grafike:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Prikazi svijeta:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Video izlaz:
+STR_FRAMERATE_SOUND                                             :{BLACK}Miksanje zvukova:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Petlja igre
@@ -2868,6 +2868,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalji 
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nema dostupnih informacija.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtriraj niz:
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Upiši ime za spremanje igre
 
