@@ -2696,8 +2696,11 @@ STR_FRAMERATE_CURRENT                                           :{WHITE}Actual
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Medio
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Datos basados en {COMMA} medidas
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} fotograma/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} fotograma/s
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_DRAWING                                           :{BLACK}Renderizado gráfico:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_DRAWING                                   :Renderizado gráfico
@@ -4003,7 +4006,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La vent
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuración de Scripts de Juego / IA
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Script de Juego que será cargada en la próxima partida
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Script de Juego que será cargado en la próxima partida
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IAs que serán cargadas en la próxima partida
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador Humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatoria

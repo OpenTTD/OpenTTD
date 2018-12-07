@@ -1833,8 +1833,8 @@ STR_LIVERY_TRUCK                                                :Veículo de Mer
 STR_LIVERY_PASSENGER_SHIP                                       :Barco de Passageiros
 STR_LIVERY_FREIGHT_SHIP                                         :Barco Cargueiro
 STR_LIVERY_HELICOPTER                                           :Helicóptero
-STR_LIVERY_SMALL_PLANE                                          :Aeronave de Pequenas Dimensões
-STR_LIVERY_LARGE_PLANE                                          :Aeronave de Grandes Dimensões
+STR_LIVERY_SMALL_PLANE                                          :Avião de Pequenas Dimensões
+STR_LIVERY_LARGE_PLANE                                          :Avião de Grandes Dimensões
 STR_LIVERY_PASSENGER_TRAM                                       :Eléctrico de Passageiros
 STR_LIVERY_FREIGHT_TRAM                                         :Eléctrico de Mercadorias
 
