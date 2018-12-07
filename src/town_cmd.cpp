@@ -1267,7 +1267,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 		if (!IsValidTile(house_tile)) return;
 
-		if (target_dir != DIAGDIR_END && (_settings_game.economy.allow_town_roads || _generating_world)) {
+		if (target_dir != DIAGDIR_END) {
 			switch (t1->layout) {
 				default: NOT_REACHED();
 
