@@ -475,6 +475,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :屏幕截图
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :高清截图
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :默认缩放模式下的屏幕截图
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :全地图截图
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :显示帧率
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :关于 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite 对齐
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :切换边界框
@@ -650,6 +651,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}没有可用的音乐包
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}音轨
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}乐曲主题
@@ -812,6 +814,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(总裁)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} 赞助了城镇 {TOWN} 的建设！
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}一个名叫{TOWN}的城镇刚刚成立了！
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}新 {STRING} 正在 {TOWN} 加紧建设！
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}新 {STRING} 即将落户 {TOWN}！
@@ -1336,7 +1339,9 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :设置缩略地
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :绿色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :深绿色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :紫色
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :鼠标右键移动地图，鼠标指针不跟随移动
 STR_CONFIG_SETTING_SCROLLMODE_RMB                               :鼠标右键移动地图
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :鼠标左键移动地图
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :平滑视角滚动： {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :设置在缩略图上点击或者发出转到特定目标的命令时主视角的转换方式，如果“打开”本选项，视角平缓滚动，“关闭”时直接跳转到目标位置
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :建设时显示测量数据：{STRING}
@@ -1368,6 +1373,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :按住Command�
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :按住Ctrl键 点击
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :关闭
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :右键关闭窗口： {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :使用在窗口内按右键关闭该窗口，本功能与右键工具提示不能共存！
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :自动保存: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :选择自动存档时间间隔
@@ -1603,7 +1610,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :游戏开局时
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :每 {STRING}{NBSP}天刷新一次分配图
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :指定每次计算货物分配图之间的时间。由于每次重新计算只会处理一个货物分配图元件，因此本设定不代表“每若干日重新计算整个货物分配图”。{}如果此设定赋值越小，則系统需要使用更多处理器时间计算货物分配图。相反，如果此设定赋值越大，則货物被派往新路线所需的时间越长。
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :容许系统用 {STRING}{NBSP}天时间刷新货物分配图
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :當刷新货物分配图时，系统會衍生一条线程。本设定的值即为线程的持续时间。{}这设定赋值越小，线程越有可能在应当停止的时候还未完成，游戏会暂停运作至线程完成工作。相反，这设定赋值越大，則货物分配功能需要较长时间反映线路网変动的影晌。
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :当刷新货物分配图时，系统会创建一条线程。此处设定的数值即该线程的持续时间。{}赋值越小，线程越有可能在应当停止的时候还未完成，游戏会暂停运作至线程完成工作。相反，赋值越大，则货物分配功能需要较长时间反映线路网变动的影晌。
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :手动
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :不对称
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :对称
@@ -1612,7 +1619,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :假设有交通
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :邮件分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的邮件数量與乙站往甲站的邮件数量大致相同。“不对称”指任何一站往另一站的邮件数量皆由系统随意决定。“手动”指系统不会自动分配邮件的目的地。
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :装甲货物分配方式：{STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :“装甲货物”包括溫带场景的“贵重品”、寒带场景的“金块”及沙漠场景的“钻石”。使用 NewGRF 可能会改変以上设置。{} 假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的货物数量與乙站往甲站的装甲货物数量大致相同。“不对称”指任何一站往另一站的装甲货物数量皆由系统随意决定。“手动”指系统不会自动分配装甲货物的目的地。{} 建议在溫带及沙漠场景使用“对称”，因为银行之间会相互发送贵重品或钻石；在寒带则应使用“不对称”，因为银行不会把金块送回金矿。
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :“装甲货物”包括温带场景的“贵重品”、寒带场景的“金块”及沙漠场景的“钻石”。使用 NewGRF 可能会改变以上设置。{} 假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的货物数量与乙站往甲站的装甲货物数量大致相同。“不对称”指任何一站往另一站的装甲货物数量皆由系统随意决定。“手动”指系统不会自动分配装甲货物的目的地。{} 建议在温带及沙漠场景使用“对称”，因为银行之间会相互发送贵重品或钻石；在寒带则应使用“不对称”，因为银行不会把金块送回金矿。
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :其他货物分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :如为此设置赋值“不对称”，则任何一站往另一站的货物数量皆由系统随意决定。如为此设置赋值“手动”，则系统不会依据交通路线分配货物的目的地。
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :分配精确度：{STRING}
@@ -2257,7 +2264,7 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}无法�
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}缺失图形组
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 需要基础图形组用以绘制界面。您是否希望 OpenTTD 下载并安装以下图形组？
-STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}是的，下载之
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}好，开始下载
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}不，退出OpenTTD
 
 # Transparency settings window
@@ -2687,7 +2694,19 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD 团队
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}帧率
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}帧率：{STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}每秒渲染更新的图像帧。
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}当前游戏速度：{DECIMAL}x
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} fps
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} fps
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} fps
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 ############ Leave those lines in this order!!
+STR_FRAMERATE_VIDEO                                             :{BLACK}视频输出：
+STR_FRAMERATE_SOUND                                             :{BLACK}混响：
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -2715,6 +2734,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}游戏�
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}无可用信息
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}过滤字串：
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}为存档命名
 
@@ -3366,6 +3386,7 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}重命�
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :今年利润：
 STR_GROUP_PROFIT_LAST_YEAR                                      :去年利润
+STR_GROUP_OCCUPANCY                                             :当前使用量：
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
@@ -3534,7 +3555,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :磁悬浮机车
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}售价：{CURRENCY_LONG} 重量：{WEIGHT_SHORT}{}速度：{VELOCITY}  功率：{POWER}{}运行费用：{CURRENCY_LONG}/年{}运载能力： {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}售价：{CURRENCY_LONG} 重量：{WEIGHT_SHORT}{}速度：{VELOCITY}  功率：{POWER}  最大牵引力：{6:FORCE}{}运行费用{4:CURRENCY_LONG}/年{}运载能力：{5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}售价：{CURRENCY_LONG} 最大速度：{VELOCITY}{}运载能力：{CARGO_LONG}{}运行成本：{CURRENCY_LONG} /年
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}售价：{CURRENCY_LONG} 最大速度：{VELOCITY}{}飞机类型：{STRING}{}运载能力：{CARGO_LONG}, {CARGO_LONG}{}运行成本： {CURRENCY_LONG}/年
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}售价： {CURRENCY_LONG} 最大速度： {VELOCITY}{}飞机类型： {STRING}{}运载能力： {CARGO_LONG}{}运行成本： {CURRENCY_LONG}/年
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}购买费用： {CURRENCY_LONG} 最大速度： {VELOCITY}{}飞机种类： {STRING} 最大航程: {COMMA} 格{}装载量： {CARGO_LONG}, {CARGO_LONG}{}运行费用： {CURRENCY_LONG}/年
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}售价： {CURRENCY_LONG} 最大速度： {VELOCITY}{}飞机类型： {STRING} 续航里程： {COMMA} 格{}运载能力： {CARGO_LONG}{}运行成本： {CURRENCY_LONG}/年
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}更新 {STRING} - {STRING}
@@ -4475,6 +4499,7 @@ STR_BASESOUNDS_WIN_DESCRIPTION                                  :Transport Tycoo
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :一个空的音效包.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Transport Tycoon Deluxe（运输大亨Windows豪华版）的原版音乐包
 STR_BASEMUSIC_DOS_DESCRIPTION                                   :运输大亨DOS豪华版原版音乐。
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :原版运输大亨（DOS版及地图编辑器扩展）音乐。
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :一个没有实际内容的音乐包.
 
 ##id 0x2000

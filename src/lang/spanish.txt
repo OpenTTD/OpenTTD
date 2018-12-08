@@ -1603,10 +1603,10 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ninguna
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial del tamaño de ciudad: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamaño medio de las ciudades en relación a los pueblos normales al comienzo de la partida
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizar el grafo de distribución cada {STRING}{NBSP}día{P 0:2 "" s}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Periodo de tiempo entre cálculos del grafo de distribución consecutivos. Esta opción se refiere a los cálculos para cada uno de los componentes del grafo, por lo cual fijar un valor no quiere decir que el grafo completo se actualizará tras ese número de días. Cuanto menor sea, mayor tiempo de CPU será necesario para calcular el grafo de distribución. Cuanto mayor sea, más tardará el grafo de distribución en adaptarse a nuevas rutas
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Usar {STRING}{NBSP}día{P 0:2 "" s} para el cálculo del grafo de distribución
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tiempo a emplear en el cálculo de cada uno de los componentes del grafo de distribución. Cuanto menor sea este valor, más probable es que se produzca ralentización en el juego. Cuanto mayor sea, más tiempo tardará la distribución en actualizarse cuando se producen cambios en las rutas
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizar el gráfico de distribución cada {STRING}{NBSP}día{P 0:2 "" s}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Periodo de tiempo entre cálculos del gráfico de distribución consecutivos. Esta opción se refiere a los cálculos para cada uno de los componentes del gráfico, por lo cual fijar un valor no quiere decir que el gráfico completo se actualizará tras ese número de días. Cuanto menor sea, mayor tiempo de CPU será necesario para calcular el gráfico de distribución. Cuanto mayor sea, más tardará el gráfico de distribución en adaptarse a nuevas rutas.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Usar {STRING}{NBSP}día{P 0:2 "" s} para el cálculo del gráfico de distribución
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tiempo a emplear en el cálculo de cada uno de los componentes del gráfico de distribución. Cuanto menor sea este valor, más probable es que se produzca ralentización en el juego. Cuanto mayor sea, más tiempo tardará la distribución en actualizarse cuando se producen cambios en las rutas.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimétrico
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simétrico
@@ -1619,7 +1619,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La clase de car
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modo de distribución para otras clases de carga: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimétrico" significa que se pueden mover cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no habrá distribución automática para estos tipos de carga.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisión de la distribución: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Este valor determina el tiempo de CPU empleado en calcular el grafo de distribución. Si es demasiado elevado puede producir ralentización en el juego. Si es demasiado bajo la distribución puede ser poco precisa, causando que ocasionalmente se produzcan errores en los lugares a los que va la carga
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Este valor determina el tiempo de CPU empleado en calcular el gráfico de distribución. Si es demasiado elevado puede producir ralentización en el juego. Si es demasiado bajo la distribución puede ser poco precisa, causando que ocasionalmente se produzcan errores en los lugares a los que va la carga.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efecto de la distancia en la demanda: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Si se fija a un valor superior a 0, la distancia entre la estación origen A de cierta carga y un posible destino B afectará a la cantidad de carga que se enviará de A a B. Cuanto más lejos esté B de A, menos carga se enviará. Cuanto mayor sea el valor de esta opción, menos carga se enviará a estaciones distantes en favor de estaciones cercanas
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Cantidad de carga a devolver en modo simétrico: {STRING}
@@ -1864,7 +1864,7 @@ STR_FACE_FACECODE                                               :{BLACK}Cara del
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver y/o asignar número de cara de presidente
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver y/o asignar número de cara de presidente
 STR_FACE_FACECODE_SET                                           :{WHITE}Nuevo código de cara ha sido asignado
-STR_FACE_FACECODE_ERR                                           :{WHITE}No se puede asignar número de cara de presidente - ¡debe ser un número entre 0 y 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}No se puede asignar número de cara de presidente - ¡Ha de ser un número entre 0 y 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Guardar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Guardar cara favorita
 STR_FACE_SAVE_DONE                                              :{WHITE}Esta cara ha sido guardada como tu favorita en el fichero de configuración
@@ -2692,12 +2692,16 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Fotogramas por segundo - FPS
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Número de fotogramas renderizados por segundo.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Actual
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Medio
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Datos basados en {COMMA} medidas
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
-STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} fotograma/s
-STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} fotograma/s
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} frames/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} frames/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} frames/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
 STR_FRAMERATE_DRAWING                                           :{BLACK}Renderizado gráfico:
