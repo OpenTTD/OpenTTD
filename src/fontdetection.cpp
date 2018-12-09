@@ -28,7 +28,7 @@ extern FT_Library _library;
  * Windows support
  * ======================================================================================== */
 
-#ifdef WIN32
+#ifdef _WIN32
 #include "core/alloc_func.hpp"
 #include "core/math_func.hpp"
 #include <windows.h>

@@ -32,9 +32,9 @@ static bool CheckAPIVersion(const char *api_version)
 			strcmp(api_version, "1.8") == 0 || strcmp(api_version, "1.9") == 0;
 }
 
-#if defined(WIN32)
+#if defined(_WIN32)
 #undef GetClassName
-#endif /* WIN32 */
+#endif /* _WIN32 */
 template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
 
 /* static */ void AIInfo::RegisterAPI(Squirrel *engine)

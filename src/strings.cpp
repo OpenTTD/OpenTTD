@@ -1786,7 +1786,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 	strecpy(_config_language_file, c_file, lastof(_config_language_file));
 	SetCurrentGrfLangID(_current_language->newgrflangid);
 
-#ifdef WIN32
+#ifdef _WIN32
 	extern void Win32SetCurrentLocaleName(const char *iso_code);
 	Win32SetCurrentLocaleName(_current_language->isocode);
 #endif
@@ -1837,7 +1837,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 
 /* Win32 implementation in win32.cpp.
  * OS X implementation in os/macosx/macos.mm. */
-#if !(defined(WIN32) || defined(__APPLE__))
+#if !(defined(_WIN32) || defined(__APPLE__))
 /**
  * Determine the current charset based on the environment
  * First check some default values, after this one we passed ourselves
@@ -1865,7 +1865,7 @@ const char *GetCurrentLocale(const char *param)
 }
 #else
 const char *GetCurrentLocale(const char *param);
-#endif /* !(defined(WIN32) || defined(__APPLE__)) */
+#endif /* !(defined(_WIN32) || defined(__APPLE__)) */
 
 int CDECL StringIDSorter(const StringID *a, const StringID *b)
 {

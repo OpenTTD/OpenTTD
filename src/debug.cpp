@@ -17,7 +17,7 @@
 #include "fileio_func.h"
 #include "settings_type.h"
 
-#if defined(WIN32) || defined(WIN64)
+#if defined(_WIN32)
 #include "os/windows/win32.h"
 #endif
 
@@ -139,7 +139,7 @@ static void debug_print(const char *dbg, const char *buf)
 	} else {
 		char buffer[512];
 		seprintf(buffer, lastof(buffer), "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
-#if defined(WIN32) || defined(WIN64)
+#if defined(_WIN32)
 		TCHAR system_buf[512];
 		convert_to_fs(buffer, system_buf, lengthof(system_buf), true);
 		_fputts(system_buf, stderr);

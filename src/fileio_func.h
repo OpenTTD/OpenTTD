@@ -118,7 +118,7 @@ public:
 DECLARE_ENUM_AS_BIT_SET(TarScanner::Mode)
 
 /* Implementation of opendir/readdir/closedir for Windows */
-#if defined(WIN32)
+#if defined(_WIN32)
 struct DIR;
 
 struct dirent { // XXX - only d_name implemented
@@ -136,7 +136,7 @@ int closedir(DIR *d);
 /* Use system-supplied opendir/readdir/closedir functions */
 # include <sys/types.h>
 # include <dirent.h>
-#endif /* defined(WIN32) */
+#endif /* defined(_WIN32) */
 
 /**
  * A wrapper around opendir() which will convert the string from

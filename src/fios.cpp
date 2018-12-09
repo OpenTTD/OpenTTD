@@ -20,9 +20,9 @@
 #include "string_func.h"
 #include <sys/stat.h>
 
-#ifndef WIN32
+#ifndef _WIN32
 # include <unistd.h>
-#endif /* WIN32 */
+#endif /* _WIN32 */
 
 #include "table/strings.h"
 
@@ -153,7 +153,7 @@ const char *FiosBrowseTo(const FiosItem *item)
 {
 	switch (item->type) {
 		case FIOS_TYPE_DRIVE:
-#if defined(WIN32) || defined(__OS2__)
+#if defined(_WIN32) || defined(__OS2__)
 			seprintf(_fios_path, _fios_path_last, "%c:" PATHSEP, item->title[0]);
 #endif
 			break;
@@ -318,7 +318,7 @@ bool FiosFileScanner::AddFile(const char *filename, size_t basepath_length, cons
 	}
 
 	FiosItem *fios = file_list.Append();
-#ifdef WIN32
+#ifdef _WIN32
 	struct _stat sb;
 	if (_tstat(OTTD2FS(filename), &sb) == 0) {
 #else
