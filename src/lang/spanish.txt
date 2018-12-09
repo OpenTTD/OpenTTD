@@ -2698,6 +2698,7 @@ STR_FRAMERATE_AVERAGE                                           :{WHITE}Medio
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Datos basados en {COMMA} medidas
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} frames/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} frames/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} frames/s
@@ -2708,6 +2709,8 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Renderiz
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_DRAWING                                   :Renderizado gráfico
+STR_FRAMETIME_CAPTION_VIDEO                                     :Salida de vídeo
+STR_FRAMETIME_CAPTION_SOUND                                     :Mezcla de sonido
 ############ End of leave-in-this-order
 
 
@@ -2733,6 +2736,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalles
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No hay información disponible
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Patrón de filtrado:
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Introduce un nombre para el juego guardado
 
