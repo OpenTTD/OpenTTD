@@ -21,14 +21,14 @@
 #include <stdarg.h>
 #include <exception>
 
-#if (!defined(WIN32) && !defined(WIN64)) || defined(__CYGWIN__)
+#if !defined(_WIN32) || defined(__CYGWIN__)
 #include <unistd.h>
 #include <sys/stat.h>
 #endif
 
-#if defined WIN32 || defined __WATCOMC__
+#if defined(_WIN32) || defined(__WATCOMC__)
 #include <direct.h>
-#endif /* WIN32 || __WATCOMC__ */
+#endif /* _WIN32 || __WATCOMC__ */
 
 #ifdef __MORPHOS__
 #ifdef stderr
@@ -333,9 +333,9 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 			unlink(this->filename);
 		} else {
 			/* else rename tmp.xxx into filename */
-	#if defined(WIN32) || defined(WIN64)
+#	if defined(_WIN32)
 			unlink(this->real_filename);
-	#endif
+#	endif
 			if (rename(this->filename, this->real_filename) == -1) error("rename() failed");
 		}
 	}
@@ -377,7 +377,7 @@ static inline void ottd_mkdir(const char *directory)
 {
 	/* Ignore directory creation errors; they'll surface later on, and most
 	 * of the time they are 'directory already exists' errors anyhow. */
-#if defined(WIN32) || defined(__WATCOMC__)
+#if defined(_WIN32) || defined(__WATCOMC__)
 	mkdir(directory);
 #else
 	mkdir(directory, 0755);

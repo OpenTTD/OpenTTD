@@ -64,7 +64,7 @@ bool NetworkCoreInitialize()
 #endif /* __MORPHOS__ / __AMIGA__ */
 
 /* Let's load the network in windows */
-#ifdef WIN32
+#ifdef _WIN32
 	{
 		WSADATA wsa;
 		DEBUG(net, 3, "[core] loading windows socket library");
@@ -73,7 +73,7 @@ bool NetworkCoreInitialize()
 			return false;
 		}
 	}
-#endif /* WIN32 */
+#endif /* _WIN32 */
 
 	return true;
 }
@@ -94,7 +94,7 @@ void NetworkCoreShutdown()
 	if (SocketBase != NULL) CloseLibrary(SocketBase);
 #endif
 
-#if defined(WIN32)
+#if defined(_WIN32)
 	WSACleanup();
 #endif
 }

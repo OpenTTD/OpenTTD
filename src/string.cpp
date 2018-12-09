@@ -25,7 +25,7 @@
 #include <errno.h> // required by vsnprintf implementation for MSVC
 #endif
 
-#ifdef WIN32
+#ifdef _WIN32
 #include "os/windows/win32.h"
 #endif
 
@@ -359,7 +359,7 @@ bool IsValidChar(WChar key, CharSetFilter afilter)
 	}
 }
 
-#ifdef WIN32
+#ifdef _WIN32
 #if defined(_MSC_VER) && _MSC_VER < 1900
 /**
  * Almost POSIX compliant implementation of \c vsnprintf for VC compiler.
@@ -395,7 +395,7 @@ int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
 }
 #endif /* _MSC_VER */
 
-#endif /* WIN32 */
+#endif /* _WIN32 */
 
 /**
  * Safer implementation of snprintf; same as snprintf except:
@@ -592,7 +592,7 @@ int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
 	}
 #endif /* WITH_ICU_SORT */
 
-#if defined(WIN32) && !defined(STRGEN) && !defined(SETTINGSGEN)
+#if defined(_WIN32) && !defined(STRGEN) && !defined(SETTINGSGEN)
 	int res = OTTDStringCompare(s1, s2);
 	if (res != 0) return res - 2; // Convert to normal C return values.
 #endif

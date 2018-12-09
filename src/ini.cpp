@@ -19,7 +19,7 @@
 # include <unistd.h>
 #endif
 
-#ifdef WIN32
+#ifdef _WIN32
 # include <windows.h>
 # include <shellapi.h>
 # include "core/mem_func.hpp"
@@ -87,7 +87,7 @@ bool IniFile::SaveToDisk(const char *filename)
 	fclose(f);
 #endif
 
-#if defined(WIN32) || defined(WIN64)
+#if defined(_WIN32)
 	/* _tcsncpy = strcpy is TCHAR is char, but isn't when TCHAR is wchar. */
 	#undef strncpy
 	/* Allocate space for one more \0 character. */

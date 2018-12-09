@@ -168,7 +168,7 @@ static void ShowHelp()
 		"  -P password         = Password to join company\n"
 		"  -D [ip][:port]      = Start dedicated server\n"
 		"  -l ip[:port]        = Redirect DEBUG()\n"
-#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
+#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(_WIN32)
 		"  -f                  = Fork into the background (dedicated only)\n"
 #endif
 #endif /* ENABLE_NETWORK */
@@ -212,7 +212,7 @@ static void ShowHelp()
 
 	/* ShowInfo put output to stderr, but version information should go
 	 * to stdout; this is the only exception */
-#if !defined(WIN32) && !defined(WIN64)
+#if !defined(_WIN32)
 	printf("%s\n", buf);
 #else
 	ShowInfo(buf);
@@ -250,7 +250,7 @@ static void WriteSavegameInfo(const char *name)
 
 	/* ShowInfo put output to stderr, but version information should go
 	 * to stdout; this is the only exception */
-#if !defined(WIN32) && !defined(WIN64)
+#if !defined(_WIN32)
 	printf("%s\n", buf);
 #else
 	ShowInfo(buf);
@@ -514,7 +514,7 @@ static const OptionData _options[] = {
 	 GETOPT_SHORT_VALUE('l'),
 	 GETOPT_SHORT_VALUE('p'),
 	 GETOPT_SHORT_VALUE('P'),
-#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
+#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(_WIN32)
 	 GETOPT_SHORT_NOVAL('f'),
 #endif
 #endif /* ENABLE_NETWORK */
@@ -614,7 +614,7 @@ int openttd_main(int argc, char *argv[])
 		case 'r': ParseResolution(&resolution, mgo.opt); break;
 		case 't': scanner->startyear = atoi(mgo.opt); break;
 		case 'd': {
-#if defined(WIN32)
+#if defined(_WIN32)
 				CreateConsole();
 #endif
 				if (mgo.opt != NULL) SetDebugString(mgo.opt);

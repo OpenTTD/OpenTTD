@@ -21,7 +21,7 @@
 #ifdef ENABLE_NETWORK
 
 /* Windows stuff */
-#if defined(WIN32) || defined(WIN64)
+#if defined(_WIN32)
 #include <errno.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
@@ -125,7 +125,7 @@ static inline void OTTDfreeaddrinfo(struct addrinfo *ai)
 }
 #define freeaddrinfo OTTDfreeaddrinfo
 #endif /* __MINGW32__ && __CYGWIN__ */
-#endif /* WIN32 */
+#endif /* _WIN32 */
 
 /* UNIX stuff */
 #if defined(UNIX) && !defined(__OS2__)
@@ -290,7 +290,7 @@ typedef unsigned long in_addr_t;
  */
 static inline bool SetNonBlocking(SOCKET d)
 {
-#ifdef WIN32
+#ifdef _WIN32
 	u_long nonblocking = 1;
 #else
 	int nonblocking = 1;

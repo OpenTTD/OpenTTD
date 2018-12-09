@@ -107,7 +107,7 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // GE
 	freeifaddrs(ifap);
 }
 
-#elif defined(WIN32)
+#elif defined(_WIN32)
 static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // Win32 implementation
 {
 	SOCKET sock = socket(AF_INET, SOCK_DGRAM, 0);

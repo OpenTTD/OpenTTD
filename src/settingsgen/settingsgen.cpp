@@ -18,7 +18,7 @@
 
 #include <stdarg.h>
 
-#if (!defined(WIN32) && !defined(WIN64)) || defined(__CYGWIN__)
+#if !defined(_WIN32) || defined(__CYGWIN__)
 #include <unistd.h>
 #include <sys/stat.h>
 #endif
@@ -512,7 +512,7 @@ int CDECL main(int argc, char *argv[])
 			unlink(tmp_output);
 		} else {
 			/* Rename tmp2.xxx to output file. */
-#if defined(WIN32) || defined(WIN64)
+#if defined(_WIN32)
 			unlink(output_file);
 #endif
 			if (rename(tmp_output, output_file) == -1) error("rename() failed");

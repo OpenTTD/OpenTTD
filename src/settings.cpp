@@ -1668,9 +1668,9 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 {
 	if (basic_settings) {
 		proc(ini, (const SettingDesc*)_misc_settings,    "misc",  NULL);
-#if defined(WIN32) && !defined(DEDICATED)
+#if defined(_WIN32) && !defined(DEDICATED)
 		proc(ini, (const SettingDesc*)_win32_settings,   "win32", NULL);
-#endif /* WIN32 */
+#endif /* _WIN32 */
 	}
 
 	if (other_settings) {

@@ -264,7 +264,7 @@ static void GetAvailableVideoMode(uint *w, uint *h)
 	*h = _resolutions[best].height;
 }
 
-#ifdef WIN32
+#ifdef _WIN32
 /* Let's redefine the LoadBMP macro with because we are dynamically
  * loading SDL and need to 'SDL_CALL' all functions */
 #undef SDL_LoadBMP
@@ -500,7 +500,7 @@ static uint ConvertSdlKeyIntoMy(SDL_keysym *sym, WChar *character)
 	}
 
 	/* check scancode for BACKQUOTE key, because we want the key left of "1", not anything else (on non-US keyboards) */
-#if defined(WIN32) || defined(__OS2__)
+#if defined(_WIN32) || defined(__OS2__)
 	if (sym->scancode == 41) key = WKC_BACKQUOTE;
 #elif defined(__APPLE__)
 	if (sym->scancode == 10) key = WKC_BACKQUOTE;

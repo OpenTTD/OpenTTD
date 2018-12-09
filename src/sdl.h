@@ -15,7 +15,7 @@
 const char *SdlOpen(uint32 x);
 void SdlClose(uint32 x);
 
-#ifdef WIN32
+#ifdef _WIN32
 	#define DYNAMICALLY_LOADED_SDL
 #endif
 

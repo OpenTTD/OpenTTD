@@ -73,7 +73,7 @@ static void DedicatedSignalHandler(int sig)
 }
 #endif
 
-#if defined(WIN32)
+#if defined(_WIN32)
 # include <windows.h> /* GetTickCount */
 # include <conio.h>
 # include <time.h>
@@ -150,7 +150,7 @@ const char *VideoDriver_Dedicated::Start(const char * const *parm)
 	ScreenSizeChanged();
 	BlitterFactory::GetCurrentBlitter()->PostResize();
 
-#if defined(WIN32)
+#if defined(_WIN32)
 	/* For win32 we need to allocate a console (debug mode does the same) */
 	CreateConsole();
 	CreateWindowsConsoleThread();
@@ -173,7 +173,7 @@ const char *VideoDriver_Dedicated::Start(const char * const *parm)
 
 void VideoDriver_Dedicated::Stop()
 {
-#ifdef WIN32
+#ifdef _WIN32
 	CloseWindowsConsoleThread();
 #endif
 	free(_dedicated_video_mem);
