@@ -673,13 +673,16 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Encender
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostrar ventana de selección de pistas musicales
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Programación Musical - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Índice de pistas
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programa - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Borrar
-STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Borrar programa actual (solo Personal 1 y Personal 2)
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Pulse en la pista de música para añadirla al programa actual (solo Personal 1 y 2)
-STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Pulsa sobre la canción para quitarla del programa actual (Solo Personalizado1 y Personalizado2)
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Cambiar set
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Borrar programa actual (solo Personalizado1 y 2)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Cambia la selección musical a otro set instalado
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Pulse en la pista de música para añadirla al programa actual (solo Personalizado1 y 2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Pulsa sobre la canción para quitarla del programa actual (solo Personalizado1 y 2)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top de empresas que han alcanzado {NUM}
