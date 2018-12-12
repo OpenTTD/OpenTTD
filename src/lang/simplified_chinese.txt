@@ -2700,6 +2700,7 @@ STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}帧率�
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}每秒渲染更新的图像帧。
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}当前游戏速度：{DECIMAL}x
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} fps
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} fps
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} fps
@@ -4161,7 +4162,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}暂停�
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} 地方政府不批准此操作……
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}地方政府{}不同意在本市范围内再兴建一座机场
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} 考虑到噪音控制，地方当局拒绝修建机场。
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}您的桥梁修建计划受到了当地投资商的关注
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}您的贿赂行动被当地检察机关发现，赃款均已没收，您在本市评价已降为最低。
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}不能提高这里的地面……
