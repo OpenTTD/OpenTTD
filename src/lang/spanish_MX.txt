@@ -2704,36 +2704,36 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}FPS
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
-STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Simulación: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulación: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Número de ticks simulados por segundo.
-STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}FPS de gráficos: {STRING}
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}FPS de gráficos: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Número de cuadros por segundo.
-STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Factor de velocidad de juego actual: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Factor de velocidad de juego actual: {DECIMAL}x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Rapidez actual del juego comparada con la esperada durante una simulación normal.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Actual
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Promedio
-STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Información de {COMMA} mediciones
-STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
-STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
-STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
-STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} cuadros/s
-STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} cuadros/s
-STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} cuadros/s
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Información de {COMMA} mediciones
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} cuadros/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} cuadros/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} cuadros/s
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
-STR_FRAMERATE_GAMELOOP                                          :{WHITE}Bucles de juego totales:
-STR_FRAMERATE_GL_ECONOMY                                        :{WHITE} Manejo de cargamento:
-STR_FRAMERATE_GL_TRAINS                                         :{WHITE} Ticks de trenes:
-STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE} Ticks de vehículos de carretera:
-STR_FRAMERATE_GL_SHIPS                                          :{WHITE} Ticks de barcos:
-STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE} Ticks de aeronaves:
-STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE} Ticks de mapa:
-STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE} Retraso en gráfica de distribución:
-STR_FRAMERATE_DRAWING                                           :{WHITE}Presentación de gráficos:
-STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE} Ventanas de vista generales:
-STR_FRAMERATE_VIDEO                                             :{WHITE}Salida de video:
-STR_FRAMERATE_SOUND                                             :{WHITE}Mezcla de sonido:
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Bucles de juego totales:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} Manejo de cargamento:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Ticks de trenes:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Ticks de vehículos de carretera:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK} Ticks de barcos:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Ticks de aeronaves:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Ticks de mapa:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Retraso en gráfica de distribución:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Presentación de gráficos:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Ventanas de vista generales:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Salida de video:
+STR_FRAMERATE_SOUND                                             :{BLACK}Mezcla de sonido:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Bucle de juego
@@ -2773,6 +2773,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalles
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No hay información disponible
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtrar palabras:
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Indicar un nombre para la partida a guardar
 

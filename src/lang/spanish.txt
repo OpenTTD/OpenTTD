@@ -1496,11 +1496,11 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Mostrar noticia
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Cambios en la economía: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Mostrar noticias sobre cambios globales a la economía
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Cambios de producción en industrias atendidas por la empresa: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Mostrar una noticia cuando el nivel de producción de una industria que está servida por tu compañía cambia
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Mostrar una noticia cuando el nivel de producción de una industria, servida por tu compañía, cambia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Cambios de producción en las industrias servidas por los competidores: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Mostrar una noticia cuando el nivel de producción de una industria que está servida por compañías competidoras cambia
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Mostrar una noticia cuando el nivel de producción de una industria, servida por tus competidores, cambia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Cambios de producción de otras industrias: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Mostrar una noticia cuando el nivel de producción de una industria que no está servida por tu compañía o competidores cambia
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Mostrar una noticia cuando el nivel de producción de una industria, no servida por tu compañía o competidores, cambia
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Aviso / información de los vehículos de la empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostrar mensajes sobre vehículos que requieren atención
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nuevos vehículos: {STRING}
@@ -2285,6 +2285,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Leyenda 
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Todas
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Ninguna
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Seleccione las compañías a mostrar
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}sin uso
@@ -2938,6 +2939,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura más al
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF solicitados no disponibles (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} fue desactivado por {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de colocación de sprites inválido o desconocido (sprite {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Demasiados elementos en la lista de valores de propiedad (sprite {3:NUM}, propiedad {4:HEX})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}¡Precaución!
