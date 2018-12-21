@@ -66,10 +66,12 @@ public:
 	/**
 	 * Get the name of a bridge.
 	 * @param bridge_id The bridge to get the name of.
+	 * @param vehicle_type The vehicle-type of bridge to get the name of.
 	 * @pre IsValidBridge(bridge_id).
+	 * @pre vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_RAIL || vehicle_type == ScriptVehicle::VT_WATER
 	 * @return The name the bridge has.
 	 */
-	static char *GetName(BridgeID bridge_id);
+	static char *GetName(BridgeID bridge_id, ScriptVehicle::VehicleType vehicle_type);
 
 	/**
 	 * Get the maximum speed of a bridge.
