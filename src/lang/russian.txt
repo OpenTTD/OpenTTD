@@ -2884,17 +2884,17 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Кол-во игровых циклов, рассчитываемых в секунду.
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Кол-во отображаемых кадров в секунду.
-STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Данные по {COMMA} измерени{P ю ям ям}
-STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} мс
-STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} мс
-STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} мс
-STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} кадр{P "" а ов}/с
-STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} кадр{P "" а ов}/с
-STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} кадр{P "" а ов}/с
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Данные по {COMMA} измерени{P ю ям ям}
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} мс
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} мс
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} мс
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} кадр{P "" а ов}/с
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} кадр{P "" а ов}/с
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} кадр{P "" а ов}/с
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} мс
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} с
 ############ Leave those lines in this order!!
-STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE}  Задержка графа распределения:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Задержка графа распределения:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Задержка графа распределения
