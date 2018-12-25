@@ -245,12 +245,19 @@
 		#define fseek _fseeki64
 	#endif /* _WIN64 || WIN64 */
 
-	/* This is needed to zlib uses the stdcall calling convention on visual studio */
-	#if defined(WITH_ZLIB) || defined(WITH_PNG)
-		#if !defined(ZLIB_WINAPI)
-			#define ZLIB_WINAPI
-		#endif
-	#endif
+	/* zlib from vcpkg use cdecl calling convention without enforcing it in the headers */
+#	if defined(WITH_ZLIB)
+#		if !defined(ZEXPORT)
+#			define ZEXPORT CDECL
+#		endif
+#	endif
+
+	/* freetype from vcpkg use cdecl calling convention without enforcing it in the headers */
+#	if defined(WITH_FREETYPE)
+#		if !defined(FT_EXPORT)
+#			define FT_EXPORT( x )  extern "C"  x CDECL
+#		endif
+#	endif
 
 	#define strcasecmp stricmp
 	#define strncasecmp strnicmp
