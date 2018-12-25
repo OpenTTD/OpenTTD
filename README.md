@@ -511,15 +511,14 @@ create one after closing.
 
 ### Windows:
 
-You need Microsoft Visual Studio .NET. Open the project file
+You need Microsoft Visual Studio 2015 Update 3 or more recent. Open the project file
 and it should build automatically. In case you want to build with SDL support
 you need to add WITH_SDL to the project settings.
 
-PNG (WITH_PNG) and ZLIB (WITH_ZLIB) support is enabled by default. For these
-to work you need their development files. For best results, download the
-openttd-useful.zip file from https://www.openttd.org/download-openttd-useful.
-Put the header files into your compiler's include/ directory and the
-library (.lib) files into the lib/ directory.
+PNG (WITH_PNG), ZLIB (WITH_ZLIB), LZO (WITH_LZO), Freetype (WITH_FREETYPE) and
+LZMA (WITH_LZMA) support is enabled by default. For these to work you need their
+development files. To get them just use vcpkg from https://github.com/Microsoft/vcpkg
+using x86-windows-static and x64-windows-static triplets.
 For more help with VS see docs/Readme_Windows_MSVC.txt.
 
 You can also build it using the Makefile with MSYS/MinGW or Cygwin/MinGW.
