@@ -1,0 +1,105 @@
+trigger: none
+pr:
+- master
+
+jobs:
+- job: windows
+  displayName: 'Windows'
+  pool:
+    vmImage: 'VS2017-Win2016'
+
+  strategy:
+    matrix:
+      Win32:
+        BuildPlatform: 'Win32'
+      Win64:
+        BuildPlatform: 'x64'
+
+  steps:
+  # Rebase to origin/master for every PR. This means users don't have to
+  # rebase every time master changes. As long as the PR applies cleanly, we
+  # will validate it.
+  - script: |
+      git config user.email 'info@openttd.org'
+      git config user.name 'OpenTTD CI'
+      git rebase origin/master
+    displayName: 'Rebase to master'
+  - task: DownloadBuildArtifacts@0
+    displayName: 'Download dependencies'
+    inputs:
+      buildType: specific
+      project: '8da578ca-c6cf-47b8-b489-d54a7b188de8'
+      pipeline: 2
+      artifactName: 'windows-dependencies'
+      downloadPath: '$(Build.ArtifactStagingDirectory)'
+  - script: $(Build.ArtifactStagingDirectory)\windows-dependencies\vcpkg.exe integrate install
+    displayName: 'Install dependencies'
+  - task: VSBuild@1
+    displayName: 'Build'
+    inputs:
+      solution: 'projects/openttd_vs141.sln'
+      platform: $(BuildPlatform)
+      configuration: Release
+      maximumCpuCount: true
+  # Running the regression is currently not possibe via MSVC (console is not redirected)
+
+- job: linux
+  displayName: 'Linux'
+  pool:
+    vmImage: 'ubuntu-16.04'
+
+  strategy:
+    matrix:
+      commit-checker: {}
+      linux-amd64-clang-3.8: {}
+      linux-amd64-gcc-6: {}
+      linux-i386-gcc-6: {}
+
+  steps:
+  # Rebase to origin/master for every PR. This means users don't have to
+  # rebase every time master changes. As long as the PR applies cleanly, we
+  # will validate it.
+  - script: |
+      git config user.email 'info@openttd.org'
+      git config user.name 'OpenTTD CI'
+      git rebase origin/master
+    displayName: 'Rebase to master'
+  - task: Docker@1
+    displayName: 'Build and test'
+    inputs:
+      command: 'Run an image'
+      imageName: openttd/compile-farm-ci:$(Agent.JobName)
+      volumes: '$(Build.SourcesDirectory):$(Build.SourcesDirectory)'
+      workingDirectory: '$(Build.SourcesDirectory)'
+      runInBackground: false
+
+- job: macos
+  displayName: 'MacOS'
+  pool:
+    vmImage: 'macOS-10.13'
+
+  steps:
+  # Rebase to origin/master for every PR. This means users don't have to
+  # rebase every time master changes. As long as the PR applies cleanly, we
+  # will validate it.
+  - script: |
+      git config user.email 'info@openttd.org'
+      git config user.name 'OpenTTD CI'
+      git rebase origin/master
+    displayName: 'Rebase to master'
+  - script: HOMEBREW_NO_AUTO_UPDATE=1 brew install pkg-config lzo xz libpng
+    displayName: 'Install dependencies'
+  - bash: |
+      set -ex
+      mkdir -p ~/Documents/OpenTTD/baseset
+      cd ~/Documents/OpenTTD/baseset
+      wget https://binaries.openttd.org/extra/opengfx/0.5.2/opengfx-0.5.2-all.zip
+      unzip opengfx-0.5.2-all.zip
+      rm -f opengfx-0.5.2-all.zip
+    displayName: 'Install OpenGFX'
+  - script: './configure PKG_CONFIG_PATH=/usr/local/lib/pkgconfig --enable-static'
+    displayName: 'Configure'
+  - script: 'make -j2'
+    displayName: 'Build'
+  - script: 'make regression'
+    displayName: 'Test'
