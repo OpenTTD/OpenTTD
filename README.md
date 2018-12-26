@@ -519,7 +519,7 @@ PNG (WITH_PNG), ZLIB (WITH_ZLIB), LZO (WITH_LZO), Freetype (WITH_FREETYPE) and
 LZMA (WITH_LZMA) support is enabled by default. For these to work you need their
 development files. To get them just use vcpkg from https://github.com/Microsoft/vcpkg
 using x86-windows-static and x64-windows-static triplets.
-For more help with VS see docs/Readme_Windows_MSVC.txt.
+For more help with VS see docs/Readme_Windows_MSVC.md.
 
 You can also build it using the Makefile with MSYS/MinGW or Cygwin/MinGW.
 Please read the Makefile for more information.
