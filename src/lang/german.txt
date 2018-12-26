@@ -285,8 +285,8 @@ STR_SORT_BY_PRODUCTION                                          :Produktion
 STR_SORT_BY_TYPE                                                :Typ
 STR_SORT_BY_TRANSPORTED                                         :Transportiert
 STR_SORT_BY_NUMBER                                              :Nummer
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Gewinn im letzten Jahr
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Gewinn in diesem Jahr
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Gewinn letztes Jahr
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Gewinn dieses Jahr
 STR_SORT_BY_AGE                                                 :Alter
 STR_SORT_BY_RELIABILITY                                         :Zuverlässigkeit
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Gesamtkapazität pro Fracht
