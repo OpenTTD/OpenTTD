@@ -3366,8 +3366,8 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Liste leeren
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gruppe umbenennen
 
-STR_GROUP_PROFIT_THIS_YEAR                                      :Gewinn in diesem Jahr:
-STR_GROUP_PROFIT_LAST_YEAR                                      :Gewinn im letzten Jahr:
+STR_GROUP_PROFIT_THIS_YEAR                                      :Gewinn dieses Jahr:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Gewinn letztes Jahr:
 STR_GROUP_OCCUPANCY                                             :Aktuelle Nutzung:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
