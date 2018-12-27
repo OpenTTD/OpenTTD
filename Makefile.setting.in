@@ -58,7 +58,7 @@ depend:
 
 clean:
 	$(E) '$(STAGE) Cleaning up settings files'
-	$(Q)rm -f settingsgen.o alloc_func.o getoptdata.o ini_load.o $(SETTINGSGEN) table/settings.h
+	$(Q)rm -f settingsgen.o alloc_func.o getoptdata.o string.o ini_load.o $(SETTINGSGEN) table/settings.h
 
 mrproper: clean
 
