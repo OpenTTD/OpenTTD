@@ -246,7 +246,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Napsauta
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Suurenna/pienennä ikkuna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki - luettelon vieritys ylös/alas
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki - luettelon vieritys vasemmalle/oikealle.
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Tuhoa rakennuksia jne. ruudulta. Ctrl valitsee alueen vinottain. Shift vaihtaa tuhoamistilan ja kustannearvion välillä
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Tuhoa rakennuksia jne. ruudulta. Ctrl valitsee alueen vinottain. Shift vaihtaa tuhoamistilan ja kustannusarvion välillä
 
 # Show engines button
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Näytä piilotetut
@@ -350,15 +350,15 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Skenaariomuokkain
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Siirrä aloituspäivää vuodella taaksepäin
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Siirrä aloituspäivää vuodella eteenpäin
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klikkaa asettaaksesi aloitusvuoden
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Aseta aloitusvuosi napsauttamalla
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Näytä kartta, kaupunkihakemisto
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Maaston luonti
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Kaupunkien luonti
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Teollisuuden luonti
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Tienrakennus
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Istuta puita. Shift vaihtaa istutustilan ja kustannearvion välillä
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Istuta puita. Shift vaihtaa istutustilan ja kustannusarvion välillä
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Sijoita kyltti
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Sijoita objekti. Shift vaihtaa rakennustilan ja kustannearvion välillä
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Sijoita objekti. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Tallenna skenaario
@@ -535,15 +535,15 @@ STR_DAY_NUMBER_31ST                                             :31.
 ############ range for days ends
 
 ############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :01.
-STR_MONTH_ABBREV_FEB                                            :02.
-STR_MONTH_ABBREV_MAR                                            :03.
-STR_MONTH_ABBREV_APR                                            :04.
-STR_MONTH_ABBREV_MAY                                            :05.
-STR_MONTH_ABBREV_JUN                                            :06.
-STR_MONTH_ABBREV_JUL                                            :07.
-STR_MONTH_ABBREV_AUG                                            :08.
-STR_MONTH_ABBREV_SEP                                            :09.
+STR_MONTH_ABBREV_JAN                                            :{NBSP}1.
+STR_MONTH_ABBREV_FEB                                            :{NBSP}2.
+STR_MONTH_ABBREV_MAR                                            :{NBSP}3.
+STR_MONTH_ABBREV_APR                                            :{NBSP}4.
+STR_MONTH_ABBREV_MAY                                            :{NBSP}5.
+STR_MONTH_ABBREV_JUN                                            :{NBSP}6.
+STR_MONTH_ABBREV_JUL                                            :{NBSP}7.
+STR_MONTH_ABBREV_AUG                                            :{NBSP}8.
+STR_MONTH_ABBREV_SEP                                            :{NBSP}9.
 STR_MONTH_ABBREV_OCT                                            :10.
 STR_MONTH_ABBREV_NOV                                            :11.
 STR_MONTH_ABBREV_DEC                                            :12.
@@ -672,13 +672,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Sekoitta
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Näytä musiikkiraitojen valintaikkuna
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Soittolista - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Raita
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Soittolista - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Tyhjennä
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Tyhjennä nykyinen soittolista (vain Oma1 tai Oma2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Valitse musiikkiraita lisätäksesi sen nykyiseen soittolistaan (vain Oma1 tai Oma2).
-STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikkaa raitaa poistaaksesi se nykyisestä ohjelmasta (ainoastaan Custom1 tai Custom2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Poista musiikkiraita nykyseiltä soittolistalta napsauttamalla (ainoastaan Custom1 tai Custom2)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Parhaat yhtiöt, jotka saavuttivat vuoden {NUM}
@@ -713,9 +714,9 @@ STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Näytä 
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Näytä kuljetusreitit kartalla.
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Näytä kasvillisuus kartalla.
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Näytä maanomistajat kartalla.
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klikkaa teollisuustyyppiä näyttääksesi sen. Ctrl+Klik näyttää valitun tyypin. Ctrl+Klik uudestaan näyttää kaikki teollisuustyypit
-STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klikkaa yhtiötä näyttääksesi sen omaisuuden. Ctrl+Klik näyttää ainoastaan valitun yhtiön. Ctrl+Klik uudestaan näyttää kaikki yhtiöt
-STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Klikkaa rahtia näyttääksesi tai piilottaaksesi sen. Ctrl+Klik piilottaa kaikki paitsi valitun rahdin. Ctrl+Klik uudelleen palauttaa kaikki rahdit näkyviin
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Napsauta teollisuustyyppiä näyttääksesi sen. Ctrl+Klik näyttää valitun tyypin. Ctrl+Klik uudestaan näyttää kaikki teollisuustyypit
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Napsauta yhtiötä näyttääksesi sen omaisuuden. Ctrl+Klik näyttää ainoastaan valitun yhtiön. Ctrl+Klik uudestaan näyttää kaikki yhtiöt
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Napsauta rahtia näyttääksesi tai piilottaaksesi sen. Ctrl+Klik piilottaa kaikki paitsi valitun rahdin. Ctrl+Klik uudelleen palauttaa kaikki rahdit näkyviin
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Tiet
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Rautatiet
@@ -808,7 +809,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} on suljettu velkojien toimesta ja kaikki omaisuus on myyty pois!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Uusi kuljetusyhtiö perustettu!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} aloittaa rakentamisen kaupungin {TOWN} lähistölle!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}Yhtiön {STRING} on ottanut haltuun {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{1:STRING} on ottanut haltuunsa yhtiön {0:STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(pääjohtaja)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} rahoitti uuden kaupungin, {TOWN}, rakentamista!
@@ -834,9 +835,9 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY}: hyönteisparvet aiheuttavat tuhoa!{}Tuotanto vähenee 50{NBSP}%:lla.
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY} tuottaa {0:STRING} {2:COMMA}{NBSP}% entistä vähemmän!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} odottaa varikolla
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} odottaa veturitallilla
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} odottaa varikolla
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} odottaa varikolla
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} odottaa telakalla
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} odottaa lentokonehallissa
 
 # Order review system / warnings
@@ -868,7 +869,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Tuki päättynyt:{}{}{STRING} väli {STRING} - {STRING} ei ole enää tuettu
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Tuki vedetty pois:{}{}{STRING} kuljetuspalvelu välille {STRING}-{STRING} ei ole enää tuettu
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Tuki tarjottu:{}{}Ensimmäinen {STRING}kuljetus välillä {STRING} - {STRING} saa vuoden mittaisen tuen paikallisviranomaisilta!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Tuki tarjottu:{}{}Ensimmäinen {STRING}kuljetus välillä {STRING} – {STRING} saa vuoden mittaisen tuen paikallisviranomaisilta!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Tuki myönnetty yhtiölle {STRING}!{}{}{STRING}kuljetus välillä {STRING}-{STRING} tuottaa 50{NBSP}% enemmän seuraavan vuoden ajan!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Tuki myönnetty yhtiölle {STRING}!{}{}{STRING}kuljetus välillä {STRING}-{STRING} tuottaa tuplaten seuraavan vuoden ajan!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Tuki myönnetty yhtiölle {STRING}!{}{}{STRING}kuljetus välillä {STRING}-{STRING} tuottaa kolminkertaisesti seuraavan vuoden ajan!
@@ -876,7 +877,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLAC
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}: liikennekaaos!{}{}{STRING} rahoittaa katujen kunnostuksen; autoilijoille odotettavissa kuusi kuukautta kurjuutta!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Kuljetusmonopoli!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Kaupungin {TOWN} paikallisviranomaiset allekirjoittavat sopimuksen yhtiön {STRING} kanssa vuoden pituisesta kuljetusyksinoikeudesta!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} ja {STRING} allekirjoittavat sopimuksen vuoden pituisesta kuljetusyksinoikeudesta!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Näkymä {COMMA}
@@ -895,10 +896,10 @@ STR_GAME_OPTIONS_CURRENCY_GBP                                   :Englannin punta
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Yhdysvaltain dollari (USD)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
 STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanin jeni (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Itävallan shillinki (ATS)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Itävallan šillinki (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgian frangi (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveitsin frangi (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tsekin koruna (CZK)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tšekin koruna (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Saksan markka (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Tanskan kruunu (DKK)
 STR_GAME_OPTIONS_CURRENCY_ESP                                   :Espanjan peseta (ESP)
@@ -912,7 +913,7 @@ STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollannin gulde
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norjan kruunu (NOK)
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Puolan złoty (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Romanian leu (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Venjän rupla (RUR)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Venäjän rupla (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenian tolari (SIT)
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Ruotsin kruunu (SEK)
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkin liira (TRY)
@@ -925,6 +926,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Etelä-Afrikan 
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Oma...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranin rial (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Uusi Venäjän rupla (RUB)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kulkuneuvot
@@ -951,7 +953,7 @@ STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norjalainen
 STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Unkarilainen
 STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Itävaltalainen
 STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romanialainen
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tsekkiläinen
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tšekkiläinen
 STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Sveitsiläinen
 STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Tanskalainen
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkkilainen
@@ -1280,9 +1282,9 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Virheilmoituste
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Aika virheilmoitusten näyttämiseen punaisessa ikkunassa. Huomaa, että jotkut (kriittiset) virheilmoitukset eivät sulkeudu automaattisesti tämän ajan jälkeen, vaan ne on suljettava käsin
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekunti{P 0 "" a}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Näytä työkaluvihjeet: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Viive ennen työkaluvihjeen näyttämistä, kun hiiren kursoria pidetään käyttöliittymäelementin päällä. Vaihtoehtoisesti työkaluvihjeen saa myös näkymiin painamalla hiiren oikeaa näppäintä jos arvoksi on määritetty 0.
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Viive ennen työkaluvihjeen näyttämistä, kun hiiren kursoria pidetään käyttöliittymäelementin päällä. Vaihtoehtoisesti työkaluvihjeen saa myös näkymiin painamalla hiiren oikeata painiketta, kun arvoksi on määritetty 0.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Pidä hiirtä päällä {COMMA} millisekunti{P 0 "" a}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Hiiren oikea näppäin
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Hiiren oikea painike
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Näytä kaupungin asukasluku kaupungin nimessä: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Näytä kaupunkien asukasluku kartalla
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Viivojen paksuus kuvaajissa: {STRING}
@@ -1337,7 +1339,9 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Maaston väri k
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Vihreä
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tummanvihreä
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violetti
+STR_CONFIG_SETTING_SCROLLMODE                                   :Näkymän vieritystapa: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Toiminta karttaa vieritettäessä
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Siirrä näkymää hiiren oikealla painikkeella, hiiren sijainti lukiten
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Siirrä karttaa hiiren oikealla painikkeella, hiiren sijainti lukiten
 STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Siirrä karttaa hiiren oikealla painikkeella
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Siirrä karttaa hiiren vasemmalla painikkeella
@@ -1362,12 +1366,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Määritä hiir
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Virtuaalinäppäimistö: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Valitse tapa, jolla virtuaalinäppäimistö avataan syötettäessä tekstiä kun käytössä on ainoastaan osoitinlaite. Tämä on tarkoitettu pienille laitteille, joissa ei ole fyysistä näppäimistöä
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Pois käytöstä
-STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Tuplaklikkaus
-STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Yksi klikkaus (kun kohdistettuna)
-STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Yksi klikkaus (välittömästi)
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Kaksoisnapsautus
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Yksi napsautus (kun kohdistettuna)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Yksi napsautus (välitön)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Oikean painikkeen emulointi: {STRING}
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Määritä kuinka hiiren oikean näppäimen painalluksia emuloidaan
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Valitse, miten hiiren oikean painikkeen painalluksia emuloidaan
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Pois
@@ -1386,9 +1390,9 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Uusi peli alkaa pysäytettynä: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Mikäli käytössä, peli pysäytetään automaattisesti uuden pelin alussa, mahdollistaen esimerkiksi kartan tarkemman tutkimisen
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Pelin ollessa pysäytetty, salli: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Salli pelin ollessa pysäytettynä: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Valitse käytössä olevat toiminnot pelin ollessa pysäytettynä
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ei mitkään toiminnot
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ei mitään toimintoja
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Kaikki ei-rakennustoiminnot
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Kaikki paitsi maastonmuokkaustoiminnot
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Kaikki toiminnot
@@ -1396,8 +1400,8 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Käytä ryhmiä
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Salli kehittyneiden kulkuneuvolistojen käyttö kulkuneuvojen ryhmittelyssä
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Lastausilmaisimet: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Määritä näytetäänkö lastausilmaisimet kulkuneuvojen yläpuolella lastatessa ja purettaessa rahtia
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Näytä aikataulu tickseissä päivien sijaan: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Näytä aikataulun ajat päivien sijasta tickeinä
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Näytä aikataulu askelina päivien sijaan: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Näytä aikataulun ajat päivien sijasta askelina
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Näytä saapuminen ja lähtö aikatauluissa: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Näytä odotetut saapumis- ja lähtemisajat aikatauluissa
 STR_CONFIG_SETTING_QUICKGOTO                                    :Nopea kulkuneuvon käskyjen luominen: {STRING}
@@ -1422,8 +1426,8 @@ STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Vuoden loppu: {
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Toista ääni vuoden lopussa verrattaessa yhtiön tulosta edelliseen vuoteen
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Rakentaminen: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Toista ääni onnistuneen rakennus- tai muun toiminnon jälkeen
-STR_CONFIG_SETTING_SOUND_CLICK                                  :Painikkeiden klikkaus: {STRING}
-STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piippaa klikattaessa painikkeita
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Painikkeiden napsautus: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piippaa painikkeita napsauttaessa
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Vahingot/onnettomuudet: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Toista vahinkojen ja onnettomuuksien äänet
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Ajoneuvot: {STRING}
@@ -1549,8 +1553,8 @@ STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Uusissa kaupung
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Kaupunkien käyttämä tieverkon kaava
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Alkuperäinen
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Parempia teitä
-STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2-ruudukko
-STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3-ruudukko
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2×2-ruudukko
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3×3-ruudukko
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Satunnainen
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Kaupungit saavat rakentaa teitä: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Salli kaupunkien rakentaa teitä kasvaessaan. Mikäli pois käytöstä, kaupungit eivät voi rakentaa teitä itse
@@ -1571,9 +1575,9 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Vain sademetsii
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Kaikkialle
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Päätyökalupalkin sijainti: {STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Ruudun yläreunassa olevan työkalupalkin sijainti leveyssuunnassa
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Ruudun yläreunassa olevan työkalupalkin sijainti vaakasuunnassa
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Tilarivin sijainti: {STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Ruudun alareunassa olevan tilapalkin sijanti leveyssuunnassa
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Ruudun alareunassa olevan tilapalkin sijanti vaakasuunnassa
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Ikkunoiden kiinnittymisetäisyys: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Ikkunoiden välinen etäisyys ennen niiden kohdistamista toistensa kanssa
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pikseli{P 0 "" ä}
@@ -1785,7 +1789,7 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Lopeta peli
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Pelin lopetus
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Lopetetaanko peli?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Lopetetaanko skenaario?
 
@@ -1988,7 +1992,7 @@ STR_NETWORK_LANG_ANY                                            :mikä tahansa
 STR_NETWORK_LANG_ENGLISH                                        :englanti
 STR_NETWORK_LANG_GERMAN                                         :saksa
 STR_NETWORK_LANG_FRENCH                                         :ranska
-STR_NETWORK_LANG_BRAZILIAN                                      :brasilia
+STR_NETWORK_LANG_BRAZILIAN                                      :brasilianportugali
 STR_NETWORK_LANG_BULGARIAN                                      :bulgaria
 STR_NETWORK_LANG_CHINESE                                        :kiina
 STR_NETWORK_LANG_CZECH                                          :tšekki
@@ -2015,7 +2019,7 @@ STR_NETWORK_LANG_TURKISH                                        :turkki
 STR_NETWORK_LANG_UKRAINIAN                                      :ukraina
 STR_NETWORK_LANG_AFRIKAANS                                      :afrikaans
 STR_NETWORK_LANG_CROATIAN                                       :kroatia
-STR_NETWORK_LANG_CATALAN                                        :katalan
+STR_NETWORK_LANG_CATALAN                                        :katalaani
 STR_NETWORK_LANG_ESTONIAN                                       :viro
 STR_NETWORK_LANG_GALICIAN                                       :galego
 STR_NETWORK_LANG_GREEK                                          :kreikka
@@ -2190,7 +2194,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} on
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} on poistunut pelistä ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} on muuttanut nimekseen {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} antoi yhtiöllesi {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Annoit henkilölle {1:STRING} {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Annoit yhtiölle {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Palvelin sulki istunnon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...
 
@@ -2200,7 +2204,7 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tyyppi
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Sisällön tyyppi
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nimi
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Sisällön nimi
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Klikkaa kohtaa nähdäkesi lisätiedot{}Klikkaa valintaruutua valitaksesi sen ladattavaksi
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Katso lisätiedot napsauttamalla riviä{}Valitse ladattavaksi valintaruutua napsauttamalla
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Valitse kaikki
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Merkitse kaikki sisältö ladattavaksi
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Valitse päivitykset
@@ -2314,16 +2318,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Sähköradan ra
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Yksiraiteisen rakentaminen
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglevin rakentaminen
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Rakenna rautateitä. Ctrl vaihtaa rakennus/poistotilan välillä. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Rakenna rautatiet käyttäen Autorail-tilaa. Ctrl vaihtaa rakennus/poistotilan välillä. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Rakenna veturitalli (junien ostamista ja huoltoa varten). Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Muunna raide reittipisteeksi. Ctrl liittää reittipisteet. Shift vaihtaa muuntotilan ja kustannearvion välillä
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Rakenna rautatieasema. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Rakenna opastimia. Ctrl vaihtaa joko siipiopastimet tai valo-opastimet{}Vetäminen rakentaa opastimia suoralle rautatielle. Ctrl rakentaa opastimia seuraavaan risteykseen saakka{}Ctrl+Click avaa opastimenvalintaikkunan. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Rakenna rautatiesilta. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Rakenna rautatietunneli. Shift vaihtaa rakennustilan ja kustannearvion välillä
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Rakenna rautateitä. Ctrl vaihtaa rakennus-/poistotilan välillä. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Rakenna rautatietä automaattisesti valittuun suuntaan. Ctrl vaihtaa rakennus-/poistotilan välillä. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Rakenna veturitalli (junien ostamista ja huoltoa varten). Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Muunna raide reittipisteeksi. Ctrl liittää reittipisteet. Shift vaihtaa muuntotilan ja kustannusarvion välillä
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Rakenna rautatieasema. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Rakenna opastimia. Ctrl vaihtaa joko siipiopastimet tai valo-opastimet{}Vetäminen rakentaa opastimia suoralle rautatielle. Ctrl rakentaa opastimia seuraavaan risteykseen saakka{}Ctrl+Click avaa opastimenvalintaikkunan. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Rakenna rautatiesilta. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Rakenna rautatietunneli. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Rautatien, opastimien, reittipisteiden ja asemien rakentaminen/poisto päälle/pois. Pidä pohjassa Ctrl-näppäintä poistaaksesi myös aseman tai reittipisteen alla olevat raiteet.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Muunna/päivitä raidetyyppi. Shift vaihtaa muuntotilan ja kustannearvion välillä
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Muunna/päivitä raidetyyppi. Shift vaihtaa muuntotilan ja kustannusarvion välillä
 
 STR_RAIL_NAME_RAILROAD                                          :Rautatie
 STR_RAIL_NAME_ELRAIL                                            :Sähköistetty rautatie
@@ -2369,7 +2373,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Poistumi
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Yhdistelmäopastin (valo-opastin){}Yhdistelmäopastin toimii yhtä aikaa tulo- ja poistumisopastimena. Tämän avulla on mahdollista luoda suuria "opastinpuita"
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Reittiopastin (valo-opastin){}Reittiopastin varmistaa junille turvallisen reitin ja siten mahdollistaa useampien junien yhtäaikaisen liikenteen moniraiteisissa risteyksissä. Tavalliset reittiopastimet voi ohittaa takakautta
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Yksisuuntainen reittiopastin (valo-opastin){}Reittiopastin varmistaa junille turvallisen reitin ja siten mahdollistaa useampien junien yhtäaikaisen liikenteen moniraiteisissa risteyksissä. Yksisuuntaisia opastimia ei voi ohittaa takakautta
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Opastinten muuntaminen{}Kun tämä on valittu, olemassaolevan opastimen klikkaaminen muuntaa siitä valituntyyppisen ja -muotoisen. Ctrl+Klik vaihtaa nykyistä opastimen muotoa. Shift+Klik näyttää muuntamisen kustannearvion
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Opastinten muuntaminen{}Kun tämä on valittu, olemassaolevan opastimen napsauttaminen muuntaa siitä valituntyyppisen ja -muotoisen. Ctrl+Klik vaihtaa nykyistä opastimen muotoa. Shift+Klik näyttää muuntamisen kustannusarvion
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Opastimien väli vetämällä lisättäessä
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Pienennä opastimien väliä vetämällä lisättäessä
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Suurenna opastimien väliä vetämällä lisättäessä
@@ -2393,29 +2397,29 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Putkirakenne, p
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Tien rakentaminen
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Raitiotien rakentaminen
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Rakenna tieosuus. Ctrl vaihtaa rakennus/poistotilan välillä. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Rakenna raitiotietä. Ctrl vaihtaa rakennus/poistotilan välillä. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Rakenna tieosuus käyttäen Autoroad-tilaa. Ctrl vaihtaa rakennus/poistotilan välillä. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Rakenna raitiotieosuus käyttäen Autotram-tilaa. Ctrl vaihtaa rakennus/poistotilan välillä. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Rakenna autovarikko (ajoneuvojen ostamista ja huoltoa varten). Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Rakenna raitiotievarikko (vaunujen ostamiseen ja korjaamiseen). Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Rakenna linja-autoasema. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Rakenna matkustaja-asema. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Rakenna lastauslaituri. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Rakenna rahtiasema. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannearvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Rakenna tieosuus. Ctrl vaihtaa rakennus-/poistotilan välillä. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Rakenna raitiotietä. Ctrl vaihtaa rakennus-/poistotilan välillä. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Rakenna tieosuus automaattisesti valittuun suuntaan. Ctrl vaihtaa rakennus-/poistotilan välillä. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Rakenna raitiotieosuus automaattisesti valittuun suuntaan. Ctrl vaihtaa rakennus-/poistotilan välillä. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Rakenna autovarikko (ajoneuvojen ostamista ja huoltoa varten). Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Rakenna raitiotievarikko (vaunujen ostamiseen ja korjaamiseen). Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Rakenna linja-autoasema. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Rakenna raitiotien matkustaja-asema. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Rakenna lastauslaituri. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Rakenna raitiotien rahtiasema. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ota yksisuuntaiset tiet käyttöön/pois käytöstä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Rakenna maantiesilta. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Rakenna raitiotiesilta. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Rakenna maantietunneli. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Rakenna raitiotietunneli. Shift vaihtaa rakennustilan ja kustannearvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Rakenna maantiesilta. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Rakenna raitiotiesilta. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Rakenna maantietunneli. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Rakenna raitiotietunneli. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Tien rakentaminen/siirtäminen päälle/pois
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Vaihda raitiotien rakentamisen ja purkamisen välillä
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Autovarikon suunta
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Valitse autovarikon suunta.
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Varikon suunta
-STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Valitse varikon suunta
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Raitiotievarikon suunta
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Valitse raitiotievarikon suunta
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Linja-autoaseman suunta
@@ -2430,12 +2434,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Valitse 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Vesireittien rakentaminen
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vesireitit
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Rakenna kanavia. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Rakenna sulku. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Rakenna telakka (laivojen ostamista ja huoltamista varten). Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Rakenna satama. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Sijoita poiju: voidaan käyttää reittipisteenä. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Rakenna akvedukti. Shift vaihtaa rakennustilan ja kustannearvion välillä
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Rakenna kanavia. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Rakenna sulku. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Rakenna telakka (laivojen ostamista ja huoltamista varten). Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Rakenna satama. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Sijoita poiju, jota voi käyttää reittipisteenä. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Rakenna akvedukti. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Määrittele vesialue.{}Tee kanava, paitsi jos Ctrl on painettuna merenpinnalla. Tällöin meri laajenee ympäristöön.
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Sijoita jokia
 
@@ -2448,7 +2452,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Satama
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Lentokentät
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Rakenna lentokenttä. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannearvion välillä
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Rakenna lentokenttä. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Lentokentän valinta
@@ -2475,17 +2479,17 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Aiheutet
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Maastonmuokkaus
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Laske ruudun kulmaa. Vetäminen laskee ensimmäistä valittua kulmaa ja tasoittaa valitun alueen kulman korkeudelle. Ctrl valitsee alueen vinottain. Shift vaihtaa muokkaustilan ja kustannearvion välillä
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Nosta ruudun kulmaa. Vetäminen nostaa ensimmäistä valittua kulmaa ja tasoittaa valitun alueen kulman korkeudelle. Ctrl valitsee alueen vinottain. Shift vaihtaa muokkaustilan ja kustannearvion välillä
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Tasoita maata ensimmäisen valitun kulman korkeudelle. Ctrl valitsee alueen vinottain. Shift vaihtaa muokkaustilan ja kustannearvion välillä
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Osta maata tulevaa käyttöä varten. Shift vaihtaa ostotilan ja kustannearvion välillä
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Laske ruudun kulmaa. Vetäminen laskee ensimmäistä valittua kulmaa ja tasoittaa valitun alueen kulman korkeudelle. Ctrl valitsee alueen vinottain. Shift vaihtaa muokkaustilan ja kustannusarvion välillä
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Nosta ruudun kulmaa. Vetäminen nostaa ensimmäistä valittua kulmaa ja tasoittaa valitun alueen kulman korkeudelle. Ctrl valitsee alueen vinottain. Shift vaihtaa muokkaustilan ja kustannusarvion välillä
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Tasoita maata ensimmäisen valitun kulman korkeudelle. Ctrl valitsee alueen vinottain. Shift vaihtaa muokkaustilan ja kustannusarvion välillä
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Osta maata tulevaa käyttöä varten. Shift vaihtaa ostotilan ja kustannusarvion välillä
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektin valinta
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Valitse rakennettava objekti. Shift vaihtaa rakennustilan ja kustannearvion välillä
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Valitse rakennettava objekti. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Valitse rakennettavan objektin luokka
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objektin esikatselu
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}Koko: {GOLD}{NUM} x {NUM} ruutua
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Koko: {GOLD}{NUM} × {NUM} ruutua
 
 STR_OBJECT_CLASS_LTHS                                           :Majakat
 STR_OBJECT_CLASS_TRNS                                           :Lähettimet
@@ -2494,7 +2498,7 @@ STR_OBJECT_CLASS_TRNS                                           :Lähettimet
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Puita
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Valitse istutettava puutyyppi. Jos ruudussa on jo puu, tämä lisää uusia puita riippumatta valitun puun tyypistä
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Sattumanvaraisia puita
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Aseta sattumanvaraisia puita. Shift vaihtaa istutustilan ja kustannearvion välillä
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Aseta sattumanvaraisia puita. Shift vaihtaa istutustilan ja kustannusarvion välillä
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Satunnaisia puita.
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Istuta puita satunnaisesti maastoon
 
@@ -2515,7 +2519,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Haluatko
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Luo kaupunkeja
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Uusi kaupunki
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Perusta uusi kaupunki. Shift+Klik näyttää vain kustannearvion
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Perusta uusi kaupunki. Shift+Klik näyttää vain kustannusarvion
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Satunnainen kaupunki
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Perusta kaupunki satunnaiseen paikkaan
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Monta satunnaista kaupunkia
@@ -2523,7 +2527,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Peitä k
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Kaupungin nimi:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Syötä kaupungin nimi
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klikkaa syöttääksesi kaupungin nimen
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Syötä kaupungin nimi napsauttamalla
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Satunnainen nimi
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Arvo uusi satunnainen nimi
 
@@ -2540,8 +2544,8 @@ STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Kaupung
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Valitse tiekaava tälle kaupungille
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Alkuperäinen
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Parempia teitä
-STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2-ruudukko
-STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3-ruudukko
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2×2-ruudukko
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3×3-ruudukko
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Sattumanvarainen
 
 # Fund new industry window
@@ -2560,8 +2564,8 @@ STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Teollisu
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Tuottavia teollisuuksia
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Hyväksyviä teollisuuksia
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Taloja
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikkaa teollisuutta nähdäksesi sen tuottajat ja kuluttajat
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikkaa rahtia nähdäksesi sen tuottajat ja kuluttajat
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Napsauta teollisuutta nähdäksesi sen tuottajat ja kuluttajat
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Napsauta rahtia nähdäksesi sen tuottajat ja kuluttajat
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Näytä ketju
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Näytä rahdin tuottajat ja hyväksyvät teollisuudet
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Yhdistä karttaan
@@ -2696,9 +2700,12 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Kuvataajuus
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}×)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Simulaationopeus: {STRING}
 STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Grafiikan kuvataajuus: {STRING}
 STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Pelin nykyinen nopeuskerroin: {DECIMAL}×
+STR_FRAMERATE_CURRENT                                           :{WHITE}Nykyinen
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Data perustuu {COMMA} mittaukseen
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
@@ -2708,9 +2715,15 @@ STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Ajoneuvoaskeleet:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Laiva-askeleet:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Maailma-askeleet:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Maailmanäkymät:
 STR_FRAMERATE_VIDEO                                             :{WHITE}Videolähtö:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Laiva-askeleet
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ilma-alusaskeleet
 STR_FRAMETIME_CAPTION_VIDEO                                     :Videolähtö
 ############ End of leave-in-this-order
 
@@ -2737,6 +2750,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Tietoja 
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Tietoja ei ole saatavilla
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Suodatinteksti:
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Syötä nimi tallennustiedostolle
 
@@ -3000,7 +3014,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Kaupungi
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ei mitään -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (suurkaup.){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Kaupunkien nimet - nimen klikkaaminen keskittää päänäkymän kaupunkiin. Ctrl+Klik avaa uuden näkymäikkunan kaupungin sijaintiin
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Kaupunkien nimet - keskitä päänäkymä kaupunkiin napsauttamalla nimeä. Ctrl+Klik avaa uuden näkymäikkunan kaupungin sijaintiin
 STR_TOWN_POPULATION                                             :{BLACK}Maailman asukasluku: {COMMA}
 
 # Town view window
@@ -3066,7 +3080,7 @@ STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Ei sa
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Yhtiön tavoitteet:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikkaa tavoitetta keskittääksesi päänäkymän teollisuuteen/kaupunkiin/ruutuun. Ctrl+Klik avaa uuden näkymän teollisuuden/kaupungin/ruudun sijaintiin
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Keskitä päänäkymä teollisuuteen/kaupunkiin/ruutuun napsauttamalla tavoitetta. Ctrl+Klik avaa uuden näkymän teollisuuden/kaupungin/ruudun sijaintiin
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Kysymys
@@ -3105,7 +3119,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Napsauta palvelua keskittääksesi päänäkymän teollisuuteen/kaupunkiin. Ctrl+Klik avaa uuden näkymäikkunan teollisuuden/kaupungin sijaintiin
 
 # Story book window
-STR_STORY_BOOK_CAPTION                                          :{WHITE}Yhtiön {COMPANY} historia
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}: historia
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Yleinen yhtiöhistoria
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Sivu {NUM}
@@ -3183,7 +3197,7 @@ STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Keskitä
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Muuta aseman nimi.
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Näytä kaikki junat, joilla on tämä asema käskyissään.
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Näytä kaikki autot, joilla on tämä asema käskyissään.
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Näytä kaikki ajoneuvot, joilla on tämä asema käskyissään.
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Näytä kaikki lentokoneet, joilla on tämä asema käskyissään.
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Näytä kaikki laivat, joilla on tämä asema käskyissään.
 
@@ -3223,7 +3237,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Yhteensä:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Tilin saldo
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Laina
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Laina enimmillään: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Laina enintään: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Nosta lainaa {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Ota lisää lainaa. Ctrl+Klik nostaa lainaa niin paljon kuin mahdollista
@@ -3258,7 +3272,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Rakenna 
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Näytä päämaja
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Näytä yhtiön päämaja
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Siirrä päämaja
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rakenna yhtiön päärakennus muualle, kustannus 1{NBSP}% yhtiön arvosta. Shift+Klik näyttää kustannearvion sijoittamatta päärakennusta uudelleen
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rakenna yhtiön päärakennus muualle, kustannus 1{NBSP}% yhtiön arvosta. Shift+Klik näyttää kustannusarvion sijoittamatta päärakennusta uudelleen
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Yksityiskohdat
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Näytä tarkka infrastruktuurin määrä
 
@@ -3273,7 +3287,7 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Muuta p�
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Osta 25{NBSP}%:n osuus yhtiöstä
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Myy 25{NBSP}%:n osuus yhtiöstä
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Osta 25{NBSP}%:n osuus tästä yhtiöstä. Shift+Klik näyttää kustannearvion ostamatta osuuksia
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Osta 25{NBSP}%:n osuus tästä yhtiöstä. Shift+Klik näyttää kustannusarvion ostamatta osuuksia
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Myy 25{NBSP}%:n osuus tästä yhtiöstä. Shift+Klik näyttää tuottoarvion myymättä osuuksia
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Yhtiön nimi
@@ -3301,7 +3315,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ei mi
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% kuljetettu)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% kuljetettu)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Teollisuusmuotojen nimet - klikkaa nimeä kohdistaaksesi päänäkymän teollisuuslaitokseen. Ctrl+Klik avaa uuden näkymäikkunan teollisuuslaitoksen sijaintiin
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Teollisuusmuotojen nimet - kohdista päänäkymä teollisuuslaitokseen napsauttamalla nimeä. Ctrl+Klik avaa uuden näkymäikkunan teollisuuslaitoksen sijaintiin
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3327,13 +3341,13 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Tuottaa:
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Muokkaa tuotantoa (8:n kerroin, 2040 asti)
-STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Muuta tuotantotasoa (prosentteina, 800% asti)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Muuta tuotantotasoa (prosentteina, 800{NBSP}% asti)
 
 # Vehicle lists
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} junaa
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} ajoneuvoa
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} laivaa
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} lentokonetta
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} juna{P "" a}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} ajoneuvo{P "" a}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} laiva{P "" a}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} lentokone{P "" tta}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Junat - napsauta junaa saadaksesi tietoja.
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Ajoneuvot - napsauta ajoneuvoa saadaksesi tietoja.
@@ -3358,23 +3372,23 @@ STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Lähetä variko
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Lähetä telakalle
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Lähetä varikolle
 
-STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Pysäytä kaikki listalla olevat kulkuneuvot klikkaamalla
-STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Käynnistä kaikki listalla olevat ajoneuvot klikkaamalla
+STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Pysäytä kaikki listalla olevat kulkuneuvot napsauttamalla
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Käynnistä kaikki listalla olevat ajoneuvot napsauttamalla
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}{COMMA} ajoneuvon jaetut käskyt
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Kaikki junat
-STR_GROUP_ALL_ROAD_VEHICLES                                     :Kaikki autot
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Kaikki ajoneuvot
 STR_GROUP_ALL_SHIPS                                             :Kaikki laivat
 STR_GROUP_ALL_AIRCRAFTS                                         :Kaikki lentoalukset
 
 STR_GROUP_DEFAULT_TRAINS                                        :Muut junat
-STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Muut autot
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Muut ajoneuvot
 STR_GROUP_DEFAULT_SHIPS                                         :Muut laivat
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Muut lentokoneet
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Ryhmät - klikkaa ryhmää nähdäksesi kaikki kulkuneuvot tässä ryhmässä. Järjestä ryhmiä vetämällä ja pudottamalla.
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Ryhmät - napsauta ryhmää nähdäksesi kaikki kulkuneuvot tässä ryhmässä. Järjestä ryhmiä vetämällä ja pudottamalla.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Luo ryhmä
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Poista valittu ryhmä
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Nimeä valittu ryhmä
@@ -3390,6 +3404,7 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Nimeä r
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Tuotto tänä vuonna:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Tuotto viime vuonna:
+STR_GROUP_OCCUPANCY                                             :Nykyinen käyttö:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM} %
 
 # Build vehicle window
@@ -3435,10 +3450,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Osta ajo
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Osta laiva
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Osta lentokone
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Osta valittu yksikkö. Shift+Klik näyttää kustannearvion ostamatta kopiota
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Osta valittu ajoneuvo.. Shift+Klik näyttää kustannearvion ostamatta kopiota
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Osta valittu laiva. Shift+Klik näyttää kustannearvion ostamatta kopiota
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Osta korostettu lentokone. Shift+Klik näyttää kustannearvion ostamatta kopiota
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Osta valittu yksikkö. Shift+Klik näyttää kustannusarvion ostamatta
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Osta valittu ajoneuvo. Shift+Klik näyttää kustannusarvion ostamatta
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Osta valittu laiva. Shift+Klik näyttää kustannusarvion ostamatta
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Osta korostettu lentokone. Shift+Klik näyttää kustannusarvion ostamatta
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Nimeä
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Nimeä
@@ -3481,10 +3496,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kulkuneuvo{P "" a}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Junat - vedä kulkuneuvoa vasemmalla hiiren painikkella lisätäksesi/poistaaksesi junasta, oikealla näppäimellä lisätietoja, Pidä pohjassa Ctrl-näppäintä toteuttaaksesi molemmat toiminnot seuraavaan ketjuun
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ajoneuvot - napsauta ajoneuvoa oikealla hiiren näppäimellä saadaksesi tietoja.
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Laivat - napsauta laivaa oikealla hiiren näppäimellä saadaksesi tietoja.
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lentokoneet - napsauta lentokonetta oikealla hiiren näppäimellä saadaksesi tietoja.
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Junat - vedä kulkuneuvoa vasemmalla hiiren painikkella lisätäksesi/poistaaksesi junasta, oikealla painikkeella lisätietoja. Pidä pohjassa Ctrl-näppäintä toteuttaaksesi molemmat toiminnot seuraavaan ketjuun
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ajoneuvot - napsauta ajoneuvoa oikealla hiiren painikkeella saadaksesi tietoja.
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Laivat - napsauta laivaa oikealla hiiren painikkeella saadaksesi tietoja.
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lentokoneet - napsauta lentokonetta oikealla hiiren painikkeella saadaksesi tietoja.
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Vedä yksikkö tähän myydäksesi sen.
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Vedä ajoneuvo tähän myydäksesi sen.
@@ -3493,12 +3508,12 @@ STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Vedä le
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Vedä junan veturi tähän myydäksesi koko junan.
 
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Myy kaikki varikolla olevat junat
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Myy kaikki veturitallilla olevat junat
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Myy kaikki varikolla olevat ajoneuvot
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Myy kaikki telakalla olevat laivat
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Myy kaikki hallissa olevat ilma-alukset
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Korvaa kaikki varikolla olevat junat automaattisesti
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Korvaa kaikki veturitallilla olevat junat automaattisesti
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Korvaa kaikki varikolla olevat ajoneuvot automaattisesti
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Korvaa kaikki telakalla olevat laivat automaattisesti
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Korvaa kaikki hallissa olevat lento-alukset automaattisesti
@@ -3518,10 +3533,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Kloonaa 
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kloonaa laiva
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kloonaa lentokone
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Tämä ostaa kopion junasta ja kaikista sen vaunuista. Paina tätä nappia ja sen jälkeen junaa varikon sisä- tai ulkopuolella. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannearvion ostamatta kopiota
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Tämä ostaa kopion ajoneuvosta. Paina tätä nappia ja sen jälkeen ajoneuvoa varikon sisä- tai ulkopuolella. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannearvion ostamatta kopiota
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Tämä ostaa kopion laivasta. Paina tätä nappia ja sen jälkeen laivaa telakan sisä- tai ulkopuolella. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannearvion ostamatta kopiota
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Tämä ostaa kopion lentokoneesta. Paina tätä nappia ja sen jälkeen lentokonetta lentokonehallin sisä- tai ulkopuolella. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannearvion ostamatta kopiota
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Tämä ostaa kopion junasta ja kaikista sen vaunuista. Napsauta tätä painiketta ja sen jälkeen junaa varikon sisä- tai ulkopuolella. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannusarvion ostamatta kopiota
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Tämä ostaa kopion ajoneuvosta. Napsauta tätä painiketta ja sen jälkeen ajoneuvoa varikon sisä- tai ulkopuolella. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannusarvion ostamatta kopiota
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Tämä ostaa kopion laivasta. Napsauta tätä painiketta ja sen jälkeen laivaa telakan sisä- tai ulkopuolella. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannusarvion ostamatta kopiota
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Tämä ostaa kopion lentokoneesta. Napsauta tätä painiketta ja sen jälkeen lentokonetta lentokonehallin sisä- tai ulkopuolella. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannusarvion ostamatta kopiota
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Keskitä näkymä veturitallin sijaintiin. Ctrl+Klik avaa uuden näkymäikkunan veturitallin sijaintiin
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Keskitä päänäkymä varikon sijaintiin. Ctrl+Klik avaa uuden näkymäikkunan varikon sijaintiin
@@ -3533,15 +3548,15 @@ STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Näytä 
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Näytä tässä terminaalissa olevien laivojen käskyt
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Näytä tämän lentokentän ilma-alusten käskyistä hallista riippumatta
 
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Pysäytä kaikki varikolla olevat junat klikkaamalla
-STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Pysäytä kaikki varikolla olevat ajoneuvot klikkaamalla
-STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Pysäytä kaikki telakalla olevat laivat klikkaamalla
-STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Pysäytä kaikki hallissa olevat ilma-alukset klikkaamalla
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Pysäytä kaikki veturitallilla olevat junat napsauttamalla
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Pysäytä kaikki varikolla olevat ajoneuvot napsauttamalla
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Pysäytä kaikki telakalla olevat laivat napsauttamalla
+STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Pysäytä kaikki hallissa olevat ilma-alukset napsauttamalla
 
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Käynnistä kaikki varikolla olevat junat klikkaamalla
-STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Käynnistä kaikki varikolla olevat ajoneuvot klikkaamalla
-STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Käynnistä kaikki telakalla olevat laivat klikkaamalla
-STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Käynnistä kaikki hallissa olevat ilma-alukset klikkaamalla
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Käynnistä kaikki veturitallilla olevat junat napsauttamalla
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Käynnistä kaikki varikolla olevat ajoneuvot napsauttamalla
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Käynnistä kaikki telakalla olevat laivat napsauttamalla
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Käynnistä kaikki hallissa olevat ilma-alukset napsauttamalla
 
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Olet myymässä kaikki varikon ajoneuvot. Oletko varma?
 
@@ -3616,10 +3631,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Lähetä
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Lähetä laiva telakalle. Ctrl+Klik suorittaa vain huollon
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Lähetä lentokone lentokonehalliin. Ctrl+Klik suorittaa vain huollon
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tämä ostaa kopion junasta ja kaikista sen vaunuista. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannearvion ostamatta kopiota
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Tämä ostaa kopion ajoneuvosta. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannearvion ostamatta kopiota
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Tämä ostaa kopion laivasta. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannearvion ostamatta kopiota
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Tämä ostaa kopion lentokoneesta. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannearvion ostamatta kopiota
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tämä ostaa kopion junasta vaunuineen. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannusarvion ostamatta kopiota
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Tämä ostaa kopion ajoneuvosta. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannusarvion ostamatta kopiota
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Tämä ostaa kopion laivasta. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannusarvion ostamatta kopiota
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Tämä ostaa kopion lentokoneesta. Ctrl+Klik jakaa komennot. Shift+Klik näyttää kustannusarvion ostamatta kopiota
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Anna junalle lupa ohittaa punainen opastin.
 
@@ -3745,7 +3760,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Uusi kap
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Uusi kapasiteetti: {GOLD}{CARGO_LONG}{}{BLACK}Tulot sovittamisesta: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Uusi kapasiteetti: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Sovituksen kustannus: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Uusi kapasiteetti: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Tulot sovittamisesta: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Valitse sovitettavat kulkuneuvot. Hiirellä vetäminen sallii useamman kulkuneuvon valinnan. Tyhjän alueen klikkaus valitsee koko kulkuneuvon. Ctrl+Klik valitsee kulkuneuvon ja sitä seuraavan ketjun
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Valitse sovitettavat kulkuneuvot. Hiirellä vetäminen sallii useamman kulkuneuvon valinnan. Tyhjän alueen napsautus valitsee koko kulkuneuvon. Ctrl+Klik valitsee kulkuneuvon ja sitä seuraavan ketjun
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Valitse junan rahtityyppi
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Valitse ajoneuvolla ajettava rahti
@@ -3775,7 +3790,7 @@ STR_ORDERS_END_OF_ORDERS                                        :- - Käskyjen l
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jaettujen käskyjen loppu - -
 
 # Order bottom buttons
-STR_ORDER_NON_STOP                                              :{BLACK}Nonstop
+STR_ORDER_NON_STOP                                              :{BLACK}Välipysähdyksetön
 STR_ORDER_GO_TO                                                 :Mene
 STR_ORDER_GO_NON_STOP_TO                                        :Mene pysähtymättä
 STR_ORDER_GO_VIA                                                :Mene kautta
@@ -3847,7 +3862,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mene lähimmäl
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mene lähimmälle varikolle
 STR_ORDER_CONDITIONAL                                           :Ehdollinen hyppykäsky
 STR_ORDER_SHARE                                                 :Jaa käskyt
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uusi käsky ennen valittua, tai lisää listan viimeiseksi. Ctrl tekee asemakäskyistä 'lastaa täyteen kaikki rahti', reittipistekäskyistä 'non-stop' ja veturitallikäskyistä 'huolto'. 'Jaa käskyt' jakaa käskyt valitun kulkuneuvon kanssa. Kulkuneuvon klikkaaminen kopioi käskyt siitä kulkuneuvosta. Varikkokäsky poistaa käytöstä automaattisen huollon
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uusi käsky ennen valittua, tai lisää listan viimeiseksi. Ctrl tekee asemakäskyistä 'lastaa täyteen kaikki rahti', reittipistekäskyistä 'non-stop' ja veturitallikäskyistä 'huolto'. 'Jaa käskyt' jakaa käskyt valitun kulkuneuvon kanssa. Kulkuneuvon napsauttaminen kopioi käskyt kyseisestä kulkuneuvosta. Varikkokäsky poistaa käytöstä automaattisen huollon
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näytä kaikki ajoneuvot, jotka jakavat nämä käskyt
 
@@ -3856,11 +3871,11 @@ STR_ORDER_GO_TO_WAYPOINT                                        :Kierrä reittip
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Mene pysäht. pisteen {WAYPOINT} kautta
 
 STR_ORDER_SERVICE_AT                                            :Huolto
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Nonstop-huolto
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Huolto pysäytyksettä
 
 STR_ORDER_NEAREST_DEPOT                                         :lähin
 STR_ORDER_NEAREST_HANGAR                                        :lähin varikko
-STR_ORDER_TRAIN_DEPOT                                           :Junavarikko
+STR_ORDER_TRAIN_DEPOT                                           :Veturitalli
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Varikko
 STR_ORDER_SHIP_DEPOT                                            :Telakka
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
@@ -3922,7 +3937,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Käskyt
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Vaihda käskynäkymään
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Aikataulu - klikkaa käskyä valitaksesi sen
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Aikataulu - valitse käsky sitä napsauttamalla
 
 STR_TIMETABLE_NO_TRAVEL                                         :Ei kulkua
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Kulje (automaattinen; aikataulu seuraavan manuaalisen käskyn mukaisesti)
@@ -3937,7 +3952,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(matkusta {STRI
 STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ja kulje {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}päivä{P "" ä}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick{P "" iä}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}askel{P "" ta}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Aikataulun kesto on {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Aikataulun kesto on vähintään {STRING}
@@ -4293,7 +4308,7 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Telakkaa
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Varikon nimeä ei voi vaihtaa...
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... täytyy olla pysähdyksissä veturitallin sisällä
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... täytyy olla pysähtyneenä varikolla
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... täytyy olla pysäytettynä varikolla
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... täytyy olla pysähdyksissä telakalla
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... täytyy olla pysähdyksissä lentokonehallissa
 
