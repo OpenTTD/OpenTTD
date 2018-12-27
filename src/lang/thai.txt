@@ -3217,17 +3217,6 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}กด�
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}ระดับการผลิต: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}อุตสาหกรรมนี้ได้มีการประกาศปิดตัวลงอย่างเป็นทางการ!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}มีความต้องการ: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}มีความต้องการ: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}มีความต้องการ: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
-
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}ผลผลิต: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}ผลผลิต: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}ปรับเปลี่ยนปริมาณผลผลิต (ระหว่าง 8 ถึง 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}เปลี่ยนระดับการผลิต (เปอร์เซ็นต์เพิ่มมากสุดถึง 800%)

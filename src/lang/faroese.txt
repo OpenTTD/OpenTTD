@@ -2916,17 +2916,6 @@ STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Savna høvuðs sýni á ídnaðin. Ctrl+trýst letur nýggjan sýnisglugga upp við sýni á ídnaðin
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Framleiðslu støði: {YELLOW}{COMMA}%
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Tørvar: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Tørvar: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Tørvar: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
-
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Framleiður: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Framleiður: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Broyt framleiðslu (fald av 8, upp til 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Broyt framleiðslu støði (prosent, upp til 800%)
