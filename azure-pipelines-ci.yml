@@ -25,14 +25,13 @@ jobs:
       git config user.name 'OpenTTD CI'
       git rebase origin/master
     displayName: 'Rebase to master'
-  - task: DownloadBuildArtifacts@0
+  - bash: |
+      set -ex
+      curl -L https://github.com/OpenTTD/OpenTTD-CF/releases/download/latest/windows-dependencies.zip > windows-dependencies.zip
+      unzip windows-dependencies.zip
+      rm -f windows-dependencies.zip
     displayName: 'Download dependencies'
-    inputs:
-      buildType: specific
-      project: '8da578ca-c6cf-47b8-b489-d54a7b188de8'
-      pipeline: 2
-      artifactName: 'windows-dependencies'
-      downloadPath: '$(Build.ArtifactStagingDirectory)'
+    workingDirectory: $(Build.ArtifactStagingDirectory)
   - script: $(Build.ArtifactStagingDirectory)\windows-dependencies\vcpkg.exe integrate install
     displayName: 'Install dependencies'
   - task: VSBuild@1
