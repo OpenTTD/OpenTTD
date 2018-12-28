@@ -48,6 +48,12 @@
     <None Include="..\src\table\settings.h.postamble" />
     <None Include="..\src\table\settings.h.preamble" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="settingsgen_vs141.vcxproj">
+      <Project>{e9548de9-f089-49b7-93a6-30be2cc311c7}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
