@@ -702,6 +702,13 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 			return ret;
 		}
 
+		case 0x63: { // Poweredness relative to arbitrary railtype
+			if (v->type != VEH_TRAIN) return 0;
+			if (parameter >= RAILTYPE_END) return 0;
+			RailType rt = GetTileRailType(v->tile);
+			return HasPowerOnRail(object->ro.grffile->railtype_map[parameter], rt) ? 1 : 0;
+		}
+
 		case 0xFE:
 		case 0xFF: {
 			uint16 modflags = 0;
