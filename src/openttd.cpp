@@ -942,6 +942,14 @@ static void MakeNewGameDone()
 	Company *c = Company::Get(COMPANY_FIRST);
 	c->settings = _settings_client.company;
 
+	/* Overwrite color from settings if needed
+	 * COLOUR_END corresponds to Random colour */
+	if (_settings_client.gui.starting_colour != COLOUR_END) {
+		c->colour = _settings_client.gui.starting_colour;
+		ResetCompanyLivery(c);
+		_company_colours[c->index] = (Colours)c->colour;
+	}
+
 	IConsoleCmdExec("exec scripts/game_start.scr 0");
 
 	SetLocalCompany(COMPANY_FIRST);
