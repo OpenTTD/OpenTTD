@@ -3444,7 +3444,7 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :New Ships
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :New Aircraft
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Weight: {GOLD}{WEIGHT_SHORT}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK} Power: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK} Max. Power: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Speed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Speed on ocean: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Speed on canal/river: {GOLD}{VELOCITY}
@@ -3595,8 +3595,8 @@ STR_ENGINE_PREVIEW_SHIP                                         :ship
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail locomotive
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev locomotive
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY_LONG} Weight: {WEIGHT_SHORT}{}Speed: {VELOCITY}  Power: {POWER}{}Running Cost: {CURRENCY_LONG}/yr{}Capacity: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY_LONG} Weight: {WEIGHT_SHORT}{}Speed: {VELOCITY}  Power: {POWER}  Max. T.E.: {6:FORCE}{}Running Cost: {4:CURRENCY_LONG}/yr{}Capacity: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY_LONG} Weight: {WEIGHT_SHORT}{}Speed: {VELOCITY}  Max. Power: {POWER}{}Running Cost: {CURRENCY_LONG}/yr{}Capacity: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY_LONG} Weight: {WEIGHT_SHORT}{}Speed: {VELOCITY}  Max. Power: {POWER}  Max. T.E.: {6:FORCE}{}Running Cost: {4:CURRENCY_LONG}/yr{}Capacity: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Capacity: {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Aircraft type: {STRING}{}Capacity: {CARGO_LONG}, {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Aircraft type: {STRING}{}Capacity: {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/yr
