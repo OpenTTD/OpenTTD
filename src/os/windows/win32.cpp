@@ -300,7 +300,7 @@ void CreateConsole()
 	if (_has_console) return;
 	_has_console = true;
 
-	AllocConsole();
+	if (!AllocConsole()) return;
 
 	hand = GetStdHandle(STD_OUTPUT_HANDLE);
 	GetConsoleScreenBufferInfo(hand, &coninfo);
