@@ -189,7 +189,7 @@ uint SpriteFontCache::GetGlyphWidth(GlyphID key)
 
 int SpriteFontCache::GetHeight() const
 {
-	return ScaleGUITrad(this->height);
+	return this->height * (1 << _font_zoom);
 }
 
 bool SpriteFontCache::GetDrawGlyphShadow()
@@ -293,6 +293,10 @@ void FreeTypeFontCache::SetFontSize(FontSize fs, FT_Face face, int pixels)
 			pixels = Clamp(min(head->Lowest_Rec_PPEM, 20) + diff, scaled_height, MAX_FONT_SIZE);
 		}
 	}
+
+	/* Apply user-specified font zoom. */
+	pixels *= (1 << _font_zoom);
+
 	this->used_size = pixels;
 
 	FT_Error err = FT_Set_Pixel_Sizes(this->face, 0, pixels);
@@ -438,7 +442,7 @@ void FreeTypeFontCache::ClearFontCache()
 	Layouter::ResetFontCache(this->fs);
 
 	/* GUI scaling might have changed, determine font size anew if it was automatically selected. */
-	if (this->face != NULL && this->req_size == 0) this->SetFontSize(this->fs, this->face, this->req_size);
+	if (this->face != NULL) this->SetFontSize(this->fs, this->face, this->req_size);
 }
 
 FreeTypeFontCache::GlyphEntry *FreeTypeFontCache::GetGlyphPtr(GlyphID key)

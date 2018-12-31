@@ -1029,6 +1029,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_RESOLUTION_DROPDOWN,                "WID_GO_RESOLUTION_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_FULLSCREEN_BUTTON,                  "WID_GO_FULLSCREEN_BUTTON");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_GUI_ZOOM_DROPDOWN,                  "WID_GO_GUI_ZOOM_DROPDOWN");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_FONT_ZOOM_DROPDOWN,                 "WID_GO_FONT_ZOOM_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_GRF_DROPDOWN,                  "WID_GO_BASE_GRF_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_GRF_STATUS,                    "WID_GO_BASE_GRF_STATUS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_GRF_TEXTFILE,                  "WID_GO_BASE_GRF_TEXTFILE");

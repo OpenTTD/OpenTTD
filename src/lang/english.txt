@@ -995,6 +995,13 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Double size
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quad size
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Font size
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Select the interface font size to use
+
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Double size
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quad size
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base graphics set
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Select the base graphics set to use
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} missing/corrupted file{P "" s}
