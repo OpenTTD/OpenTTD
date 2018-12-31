@@ -34,6 +34,13 @@ jobs:
     workingDirectory: $(Build.ArtifactStagingDirectory)
   - script: $(Build.ArtifactStagingDirectory)\windows-dependencies\vcpkg.exe integrate install
     displayName: 'Install dependencies'
+  - bash: |
+      set -ex
+      cd bin/baseset
+      curl -L https://binaries.openttd.org/extra/opengfx/0.5.2/opengfx-0.5.2-all.zip > opengfx-0.5.2-all.zip
+      unzip opengfx-0.5.2-all.zip
+      rm -f opengfx-0.5.2-all.zip
+    displayName: 'Install OpenGFX'
   - task: VSBuild@1
     displayName: 'Build'
     inputs:
@@ -41,7 +48,11 @@ jobs:
       platform: $(BuildPlatform)
       configuration: Release
       maximumCpuCount: true
-  # Running the regression is currently not possibe via MSVC (console is not redirected)
+  - script: |
+      call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86
+      cd projects
+      call regression.bat
+    displayName: 'Test'
 
 - job: linux
   displayName: 'Linux'
