@@ -139,7 +139,8 @@ public:
 	virtual void OnMouseWheel(int wheel)
 	{
 		if (_settings_client.gui.scrollwheel_scrolling != 2) {
-			ZoomInOrOutToCursorWindow(wheel < 0, this);
+			/* rebuild_overlay is false for now, because there is currently no overlay for any ExtraViewportWindow. Only MainWindow can have the overlay. */
+			ZoomInOrOutToCursorWindow(wheel < 0, this, false);
 		}
 	}
 

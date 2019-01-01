@@ -187,7 +187,13 @@ bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
 	return true;
 }
 
-void ZoomInOrOutToCursorWindow(bool in, Window *w)
+/**
+ * Zooms in or out the viewport based on the cursor position.
+ * @param in              Indicates that we are zooming inward.
+ * @param w               The window to zoom.
+ * @param rebuild_overlay Update the linkgraph overlay after zooming. (If false, the caller should ensure that the linkgraph is rebuilt sometime soon.)
+ */
+void ZoomInOrOutToCursorWindow(bool in, Window *w, bool rebuild_overlay)
 {
 	assert(w != NULL);
 
@@ -197,7 +203,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 
 		Point pt = GetTileZoomCenterWindow(in, w);
 		if (pt.x != -1) {
-			ScrollWindowTo(pt.x, pt.y, -1, w, true);
+			ScrollWindowTo(pt.x, pt.y, -1, w, true, rebuild_overlay);
 
 			DoZoomInOutWindow(in ? ZOOM_IN : ZOOM_OUT, w);
 		}
@@ -440,7 +446,9 @@ struct MainWindow : Window
 	virtual void OnMouseWheel(int wheel)
 	{
 		if (_settings_client.gui.scrollwheel_scrolling != 2) {
-			ZoomInOrOutToCursorWindow(wheel < 0, this);
+			/* Don't rebuild overlay yet... we need to wait for LINKGRAPH_DELAY ticks before updating. */
+			ZoomInOrOutToCursorWindow(wheel < 0, this, false);
+			this->refresh = LINKGRAPH_DELAY;
 		}
 	}
 

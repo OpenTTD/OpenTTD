@@ -2218,14 +2218,15 @@ void RebuildViewportOverlay(Window *w)
 
 /**
  * Scrolls the viewport in a window to a given location.
- * @param x       Desired x location of the map to scroll to (world coordinate).
- * @param y       Desired y location of the map to scroll to (world coordinate).
- * @param z       Desired z location of the map to scroll to (world coordinate). Use \c -1 to scroll to the height of the map at the \a x, \a y location.
- * @param w       %Window containing the viewport.
- * @param instant Jump to the location instead of slowly moving to it.
+ * @param x               Desired x location of the map to scroll to (world coordinate).
+ * @param y               Desired y location of the map to scroll to (world coordinate).
+ * @param z               Desired z location of the map to scroll to (world coordinate). Use \c -1 to scroll to the height of the map at the \a x, \a y location.
+ * @param w               %Window containing the viewport.
+ * @param instant         Jump to the location instead of slowly moving to it.
+ * @param rebuild_overlay Update the linkgraph overlay after scrolling. (If false, the caller should ensure that the linkgraph is rebuilt sometime soon.)
  * @return Destination of the viewport was changed (to activate other actions when the viewport is already at the desired position).
  */
-bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant)
+bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant, bool rebuild_overlay)
 {
 	/* The slope cannot be acquired outside of the map, so make sure we are always within the map. */
 	if (z == -1) {
@@ -2245,7 +2246,7 @@ bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant)
 	if (instant) {
 		w->viewport->scrollpos_x = pt.x;
 		w->viewport->scrollpos_y = pt.y;
-		RebuildViewportOverlay(w);
+		if (rebuild_overlay) RebuildViewportOverlay(w);
 	}
 
 	w->viewport->dest_scrollpos_x = pt.x;
