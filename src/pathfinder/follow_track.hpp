@@ -410,8 +410,9 @@ protected:
 			}
 		}
 
-		/* single tram bits cause reversing */
-		if (IsTram() && GetSingleTramBit(m_old_tile) == ReverseDiagDir(m_exitdir)) {
+		/* Single tram bits and standard road stops cause reversing. */
+		if (IsRoadTT() && ((IsTram() && GetSingleTramBit(m_old_tile) == ReverseDiagDir(m_exitdir)) ||
+				(IsStandardRoadStopTile(m_old_tile) && GetRoadStopDir(m_old_tile) == ReverseDiagDir(m_exitdir)))) {
 			/* reverse */
 			m_new_tile = m_old_tile;
 			m_new_td_bits = TrackdirToTrackdirBits(ReverseTrackdir(m_old_td));
