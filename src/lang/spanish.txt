@@ -2710,6 +2710,10 @@ STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} 
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Ticks de trenes:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Ticks de vehículos de carretera:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Ticks de barcos:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Ticks de aeronaves:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Renderizado gráfico:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
