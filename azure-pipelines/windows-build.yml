@@ -1,0 +1,11 @@
+parameters:
+  BuildPlatform: ''
+
+steps:
+- task: VSBuild@1
+  displayName: 'Build'
+  inputs:
+    solution: 'projects/openttd_vs141.sln'
+    platform: ${{ parameters.BuildPlatform }}
+    configuration: Release
+    maximumCpuCount: true

@@ -1,0 +1,8 @@
+steps:
+- bash: |
+    set -e
+    git checkout -B ${BUILD_SOURCEBRANCHNAME}
+    VERSION=$(./findversion.sh | cut -d$'\t' -f1)
+    echo "${BASENAME}-${VERSION}"
+    echo "##vso[build.updatebuildnumber]${BASENAME}-${VERSION}"
+  displayName: 'Detect and use version as BuildNumber'

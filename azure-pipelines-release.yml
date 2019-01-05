@@ -1,0 +1,106 @@
+trigger: none
+pr: none
+
+variables:
+  BaseName: 'custom'
+  # If this is false, not all targets are triggered. For example:
+  # both the NSIS installer for Windows as the creation of debs only work
+  # for releases. Not for any other type of binary.
+  IsStableRelease: false
+
+jobs:
+- job: windows
+  displayName: 'Windows'
+  pool:
+    vmImage: 'VS2017-Win2016'
+
+  strategy:
+    matrix:
+      Win32:
+        BuildPlatform: 'Win32'
+        BundlePlatform: 'win32'
+      Win64:
+        BuildPlatform: 'x64'
+        BundlePlatform: 'win64'
+
+  steps:
+  - template: azure-pipelines/release-detect-version.yml
+  - template: azure-pipelines/windows-dependencies.yml
+  - template: azure-pipelines/windows-dependency-zip.yml
+  - ${{ if eq(parameters.IsStableRelease, 'true') }}:
+    - template: azure-pipelines/windows-dependency-nsis.yml
+      parameters:
+        IsStableRelease: $(IsStableRelease)
+  - template: azure-pipelines/windows-build.yml
+    parameters:
+      BuildPlatform: $(BuildPlatform)
+  - bash: |
+      set -ex
+      make -f Makefile.msvc bundle_pdb bundle_zip PLATFORM=$(BundlePlatform) BUNDLE_NAME=openttd-$(Build.BuildNumber)-windows-$(BundlePlatform)
+    displayName: 'Create bundles'
+  - ${{ if eq(parameters.IsStableRelease, 'true') }}:
+    - bash: |
+        set -ex
+        # NSIS will be part of the Hosted image in the next update. Till then, we set the PATH ourself
+        export PATH="${PATH}:/c/Program Files (x86)/NSIS"
+        make -f Makefile.msvc bundle_exe PLATFORM=$(BundlePlatform) BUNDLE_NAME=openttd-$(Build.BuildNumber)-windows-$(BundlePlatform)
+      displayName: 'Create installer bundle'
+  - template: azure-pipelines/release-bundles.yml
+
+- job: linux
+  displayName: 'Linux'
+  pool:
+    vmImage: 'ubuntu-16.04'
+
+  strategy:
+    matrix:
+      linux-generic-amd64-gcc: {}
+      linux-generic-i386-gcc: {}
+
+  steps:
+  - template: azure-pipelines/release-detect-version.yml
+  - template: azure-pipelines/linux-build.yml
+    parameters:
+      BaseImage: compile-farm
+      ContainerCommand: '$(Build.BuildNumber)'
+  - template: azure-pipelines/linux-claim-bundles.yml
+  - template: azure-pipelines/release-bundles.yml
+
+- ${{ if eq(parameters.IsStableRelease, 'true') }}:
+  - job: linux_full
+    displayName: 'Linux'
+    pool:
+      vmImage: 'ubuntu-16.04'
+
+    strategy:
+      matrix:
+        linux-ubuntu-xenial-i386-gcc: {}
+        linux-ubuntu-xenial-amd64-gcc: {}
+        linux-ubuntu-bionic-i386-gcc: {}
+        linux-ubuntu-bionic-amd64-gcc: {}
+        linux-debian-jessie-i386-gcc: {}
+        linux-debian-jessie-amd64-gcc: {}
+        linux-debian-stretch-i386-gcc: {}
+        linux-debian-stretch-amd64-gcc: {}
+
+    steps:
+    - template: azure-pipelines/release-detect-version.yml
+    - template: azure-pipelines/linux-build.yml
+      parameters:
+        BaseImage: compile-farm
+        ContainerCommand: '$(Build.BuildNumber)'
+    - template: azure-pipelines/linux-claim-bundles.yml
+    - template: azure-pipelines/release-bundles.yml
+
+- job: macos
+  displayName: 'MacOS'
+  pool:
+    vmImage: 'macOS-10.13'
+
+  steps:
+  - template: azure-pipelines/release-detect-version.yml
+  - template: azure-pipelines/osx-dependencies.yml
+  - template: azure-pipelines/osx-build.yml
+  - script: 'make bundle_zip bundle_dmg BUNDLE_NAME=openttd-$(Build.BuildNumber)-macosx'
+    displayName: 'Create bundles'
+  - template: azure-pipelines/release-bundles.yml
