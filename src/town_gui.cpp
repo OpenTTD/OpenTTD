@@ -32,6 +32,7 @@
 #include "core/geometry_func.hpp"
 #include "genworld.h"
 #include "widgets/dropdown_func.h"
+#include "town_kdtree.h"
 
 #include "widgets/town_widget.h"
 
@@ -39,12 +40,15 @@
 
 #include "safeguards.h"
 
+TownKdtree _town_local_authority_kdtree(&Kdtree_TownXYFunc);
+
 typedef GUIList<const Town*> GUITownList;
 
 static const NWidgetPart _nested_town_authority_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_TA_CAPTION), SetDataTip(STR_LOCAL_AUTHORITY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TA_ZONE_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_LOCAL_AUTHORITY_ZONE, STR_LOCAL_AUTHORITY_ZONE_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
@@ -112,6 +116,7 @@ public:
 			this->sel_index = -1;
 		}
 
+		this->SetWidgetLoweredState(WID_TA_ZONE_BUTTON, this->town->show_zone);
 		this->SetWidgetDisabledState(WID_TA_EXECUTE, this->sel_index == -1);
 
 		this->DrawWidgets();
@@ -257,6 +262,18 @@ public:
 	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
+			case WID_TA_ZONE_BUTTON: {
+				bool new_show_state = !this->town->show_zone;
+				TownID index = this->town->index;
+
+				new_show_state ? _town_local_authority_kdtree.Insert(index) : _town_local_authority_kdtree.Remove(index);
+
+				this->town->show_zone = new_show_state;
+				this->SetWidgetLoweredState(widget, new_show_state);
+				MarkWholeScreenDirty();
+				break;
+			}
+
 			case WID_TA_COMMAND_LIST: {
 				int y = this->GetRowFromWidget(pt.y, WID_TA_COMMAND_LIST, 1, FONT_HEIGHT_NORMAL);
 				if (!IsInsideMM(y, 0, 5)) return;
@@ -1228,4 +1245,9 @@ void ShowFoundTownWindow()
 {
 	if (_game_mode != GM_EDITOR && !Company::IsValidID(_local_company)) return;
 	AllocateWindowDescFront<FoundTownWindow>(&_found_town_desc, 0);
+}
+
+void InitializeTownGui()
+{
+	_town_local_authority_kdtree.Clear();
 }

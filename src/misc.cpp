@@ -47,6 +47,7 @@ void InitializeAirportGui();
 void InitializeDockGui();
 void InitializeGraphGui();
 void InitializeObjectGui();
+void InitializeTownGui();
 void InitializeIndustries();
 void InitializeObjects();
 void InitializeTrees();
@@ -97,6 +98,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	InitializeDockGui();
 	InitializeGraphGui();
 	InitializeObjectGui();
+	InitializeTownGui();
 	InitializeAIGui();
 	InitializeTrees();
 	InitializeIndustries();

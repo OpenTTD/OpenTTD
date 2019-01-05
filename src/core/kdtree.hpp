@@ -373,6 +373,17 @@ public:
 	}
 
 	/**
+	 * Clear the tree.
+	 */
+	void Clear()
+	{
+		this->nodes.clear();
+		this->free_list.clear();
+		this->unbalanced = 0;
+		return;
+	}
+
+	/**
 	 * Reconstruct the tree with the same elements, letting it be fully balanced.
 	 */
 	void Rebuild()
