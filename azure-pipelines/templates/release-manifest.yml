@@ -1,0 +1,13 @@
+steps:
+- task: DownloadBuildArtifacts@0
+  displayName: 'Download all bundles'
+  inputs:
+    downloadType: specific
+    itemPattern: 'bundles/*'
+    downloadPath: '$(Build.ArtifactStagingDirectory)'
+- script: |
+    set -ex
+    ./azure-pipelines/manifest.sh ../a/bundles/
+    mkdir -p bundles
+    mv manifest.yaml bundles/
+  displayName: 'Create manifest.yaml'

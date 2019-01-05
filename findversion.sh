@@ -74,8 +74,6 @@ if [ -d "$ROOT_DIR/.git" ]; then
 
 	if [ -n "$TAG" ]; then
 		VERSION="${TAG}"
-	elif [ "${BRANCH}" = "master" ]; then
-		VERSION="${ISODATE}-g${SHORTHASH}"
 	else
 		VERSION="${ISODATE}-${BRANCH}-g${SHORTHASH}"
 	fi

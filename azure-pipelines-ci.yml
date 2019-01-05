@@ -17,37 +17,12 @@ jobs:
         BuildPlatform: 'x64'
 
   steps:
-  # Rebase to origin/master for every PR. This means users don't have to
-  # rebase every time master changes. As long as the PR applies cleanly, we
-  # will validate it.
-  - script: |
-      git config user.email 'info@openttd.org'
-      git config user.name 'OpenTTD CI'
-      git rebase origin/master
-    displayName: 'Rebase to master'
-  - bash: |
-      set -ex
-      curl -L https://github.com/OpenTTD/OpenTTD-CF/releases/download/latest/windows-dependencies.zip > windows-dependencies.zip
-      unzip windows-dependencies.zip
-      rm -f windows-dependencies.zip
-    displayName: 'Download dependencies'
-    workingDirectory: $(Build.ArtifactStagingDirectory)
-  - script: $(Build.ArtifactStagingDirectory)\windows-dependencies\vcpkg.exe integrate install
-    displayName: 'Install dependencies'
-  - bash: |
-      set -ex
-      cd bin/baseset
-      curl -L https://binaries.openttd.org/extra/opengfx/0.5.2/opengfx-0.5.2-all.zip > opengfx-0.5.2-all.zip
-      unzip opengfx-0.5.2-all.zip
-      rm -f opengfx-0.5.2-all.zip
-    displayName: 'Install OpenGFX'
-  - task: VSBuild@1
-    displayName: 'Build'
-    inputs:
-      solution: 'projects/openttd_vs141.sln'
-      platform: $(BuildPlatform)
-      configuration: Release
-      maximumCpuCount: true
+  - template: azure-pipelines/templates/ci-git-rebase.yml
+  - template: azure-pipelines/templates/windows-dependencies.yml
+  - template: azure-pipelines/templates/ci-opengfx.yml
+  - template: azure-pipelines/templates/windows-build.yml
+    parameters:
+      BuildPlatform: $(BuildPlatform)
   - script: |
       call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86
       cd projects
@@ -67,22 +42,13 @@ jobs:
       linux-i386-gcc-6: {}
 
   steps:
-  # Rebase to origin/master for every PR. This means users don't have to
-  # rebase every time master changes. As long as the PR applies cleanly, we
-  # will validate it.
-  - script: |
-      git config user.email 'info@openttd.org'
-      git config user.name 'OpenTTD CI'
-      git rebase origin/master
-    displayName: 'Rebase to master'
-  - task: Docker@1
-    displayName: 'Build and test'
-    inputs:
-      command: 'Run an image'
-      imageName: openttd/compile-farm-ci:$(Agent.JobName)
-      volumes: '$(Build.SourcesDirectory):$(Build.SourcesDirectory)'
-      workingDirectory: '$(Build.SourcesDirectory)'
-      runInBackground: false
+  - template: azure-pipelines/templates/ci-git-rebase.yml
+  # The dockers already have the dependencies installed
+  # The dockers already have OpenGFX installed
+  - template: azure-pipelines/templates/linux-build.yml
+    parameters:
+      Image: compile-farm-ci
+      Tag: $(Agent.JobName)
 
 - job: macos
   displayName: 'MacOS'
@@ -90,27 +56,9 @@ jobs:
     vmImage: 'macOS-10.13'
 
   steps:
-  # Rebase to origin/master for every PR. This means users don't have to
-  # rebase every time master changes. As long as the PR applies cleanly, we
-  # will validate it.
-  - script: |
-      git config user.email 'info@openttd.org'
-      git config user.name 'OpenTTD CI'
-      git rebase origin/master
-    displayName: 'Rebase to master'
-  - script: HOMEBREW_NO_AUTO_UPDATE=1 brew install pkg-config lzo xz libpng
-    displayName: 'Install dependencies'
-  - bash: |
-      set -ex
-      mkdir -p ~/Documents/OpenTTD/baseset
-      cd ~/Documents/OpenTTD/baseset
-      wget https://binaries.openttd.org/extra/opengfx/0.5.2/opengfx-0.5.2-all.zip
-      unzip opengfx-0.5.2-all.zip
-      rm -f opengfx-0.5.2-all.zip
-    displayName: 'Install OpenGFX'
-  - script: './configure PKG_CONFIG_PATH=/usr/local/lib/pkgconfig --enable-static'
-    displayName: 'Configure'
-  - script: 'make -j2'
-    displayName: 'Build'
+  - template: azure-pipelines/templates/ci-git-rebase.yml
+  - template: azure-pipelines/templates/osx-dependencies.yml
+  - template: azure-pipelines/templates/ci-opengfx.yml
+  - template: azure-pipelines/templates/osx-build.yml
   - script: 'make regression'
     displayName: 'Test'
