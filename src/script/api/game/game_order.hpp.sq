@@ -44,6 +44,7 @@ void SQGSOrder_Register(Squirrel *engine)
 	SQGSOrder.DefSQConst(engine, ScriptOrder::OF_INVALID,                                       "OF_INVALID");
 	SQGSOrder.DefSQConst(engine, ScriptOrder::OC_LOAD_PERCENTAGE,                               "OC_LOAD_PERCENTAGE");
 	SQGSOrder.DefSQConst(engine, ScriptOrder::OC_RELIABILITY,                                   "OC_RELIABILITY");
+	SQGSOrder.DefSQConst(engine, ScriptOrder::OC_MAX_RELIABILITY,                               "OC_MAX_RELIABILITY");
 	SQGSOrder.DefSQConst(engine, ScriptOrder::OC_MAX_SPEED,                                     "OC_MAX_SPEED");
 	SQGSOrder.DefSQConst(engine, ScriptOrder::OC_AGE,                                           "OC_AGE");
 	SQGSOrder.DefSQConst(engine, ScriptOrder::OC_REQUIRES_SERVICE,                              "OC_REQUIRES_SERVICE");

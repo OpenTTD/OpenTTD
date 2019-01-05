@@ -152,6 +152,7 @@ static const StringID _order_goto_dropdown_aircraft[] = {
 static const OrderConditionVariable _order_conditional_variable[] = {
 	OCV_LOAD_PERCENTAGE,
 	OCV_RELIABILITY,
+	OCV_MAX_RELIABILITY,
 	OCV_MAX_SPEED,
 	OCV_AGE,
 	OCV_REMAINING_LIFETIME,

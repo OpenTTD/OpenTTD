@@ -3854,6 +3854,7 @@ STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Load percentage
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Reliability
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maximum reliability
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximum speed
 STR_ORDER_CONDITIONAL_AGE                                       :Age (years)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requires service

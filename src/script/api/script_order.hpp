@@ -91,6 +91,7 @@ public:
 		/* Note: these values represent part of the in-game OrderConditionVariable enum */
 		OC_LOAD_PERCENTAGE     = ::OCV_LOAD_PERCENTAGE,    ///< Skip based on the amount of load, value is in tons.
 		OC_RELIABILITY         = ::OCV_RELIABILITY,        ///< Skip based on the reliability, value is percent (0..100).
+		OC_MAX_RELIABILITY     = ::OCV_MAX_RELIABILITY,    ///< Skip based on the maximum reliability.  Value in percent
 		OC_MAX_SPEED           = ::OCV_MAX_SPEED,          ///< Skip based on the maximum speed, value is in OpenTTD's internal speed unit, see ScriptEngine::GetMaxSpeed.
 		OC_AGE                 = ::OCV_AGE,                ///< Skip based on the age, value is in years.
 		OC_REQUIRES_SERVICE    = ::OCV_REQUIRES_SERVICE,   ///< Skip when the vehicle requires service, no value.
