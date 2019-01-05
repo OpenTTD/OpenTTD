@@ -16,11 +16,11 @@
 #include "fluidsynth.h"
 #include "midifile.hpp"
 #include <fluidsynth.h>
+#include "../mixer.h"
 
 static struct {
 	fluid_settings_t* settings;    ///< FluidSynth settings handle
 	fluid_synth_t* synth;          ///< FluidSynth synthesizer handle
-	fluid_audio_driver_t* adriver; ///< FluidSynth audio driver handle
 	fluid_player_t* player;        ///< FluidSynth MIDI player handle
 } _midi; ///< Metadata about the midi we're playing.
 
@@ -42,32 +42,26 @@ static const char *default_sf[] = {
 	NULL
 };
 
+static void RenderMusicStream(int16 *buffer, size_t samples)
+{
+	if (!_midi.synth || !_midi.player) return;
+	fluid_synth_write_s16(_midi.synth, samples, buffer, 0, 2, buffer, 1, 2);
+}
+
 const char *MusicDriver_FluidSynth::Start(const char * const *param)
 {
-	const char *driver_name = GetDriverParam(param, "driver");
 	const char *sfont_name = GetDriverParam(param, "soundfont");
 	int sfont_id;
 
-	if (!driver_name) driver_name = "alsa";
-
-	DEBUG(driver, 1, "Fluidsynth: driver %s, sf %s", driver_name, sfont_name);
+	DEBUG(driver, 1, "Fluidsynth: sf %s", sfont_name);
 
 	/* Create the settings. */
 	_midi.settings = new_fluid_settings();
 	if (!_midi.settings) return "Could not create midi settings";
 
-	if (fluid_settings_setstr(_midi.settings, "audio.driver", driver_name) != 1) {
-		return "Could not set audio driver name";
-	}
-
 	/* Create the synthesizer. */
 	_midi.synth = new_fluid_synth(_midi.settings);
 	if (!_midi.synth) return "Could not open synth";
-
-	/* Create the audio driver. The synthesizer starts playing as soon
-	   as the driver is created. */
-	_midi.adriver = new_fluid_audio_driver(_midi.settings, _midi.synth);
-	if (!_midi.adriver) return "Could not open audio driver";
 
 	/* Load a SoundFont and reset presets (so that new instruments
 	 * get used from the SoundFont) */
@@ -87,13 +81,17 @@ const char *MusicDriver_FluidSynth::Start(const char * const *param)
 
 	_midi.player = NULL;
 
+	uint32 samplerate = MxSetMusicSource(RenderMusicStream);
+	fluid_synth_set_sample_rate(_midi.synth, samplerate);
+	DEBUG(driver, 1, "Fluidsynth: samplerate %.0f", (float)samplerate);
+
 	return NULL;
 }
 
 void MusicDriver_FluidSynth::Stop()
 {
+	MxSetMusicSource(NULL);
 	this->StopSong();
-	delete_fluid_audio_driver(_midi.adriver);
 	delete_fluid_synth(_midi.synth);
 	delete_fluid_settings(_midi.settings);
 }
