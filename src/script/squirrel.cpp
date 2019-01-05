@@ -449,7 +449,8 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 	}
 	unsigned short bom = 0;
 	if (size >= 2) {
-		fread(&bom, 1, sizeof(bom), file); // Inside tar, no point checking return value of fread
+		size_t sr = fread(&bom, 1, sizeof(bom), file);
+		(void)sr; // Inside tar, no point checking return value of fread
 	}
 
 	SQLEXREADFUNC func;
@@ -487,8 +488,7 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 				return sq_throwerror(vm, "I/O error");
 			}
 			unsigned char uc;
-			fread(&uc, 1, sizeof(uc), file);
-			if (uc != 0xBF) {
+			if (fread(&uc, 1, sizeof(uc), file) != sizeof(uc) || uc != 0xBF) {
 				FioFCloseFile(file);
 				return sq_throwerror(vm, "Unrecognized encoding");
 			}
