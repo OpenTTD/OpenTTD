@@ -1,0 +1,24 @@
+# Set the revisions, and remove the VCS files.
+# This ensures everything else picks up on the predefined versions, and not
+# that because of some build process the version all of a sudden changes.
+
+steps:
+- script: |
+    set -ex
+    git checkout -B ${BUILD_SOURCEBRANCHNAME}
+    ./findversion.sh > .ottdrev
+    ./azure-pipelines/changelog.sh > .changelog
+    TZ='UTC' date +"%Y-%m-%d %H:%M UTC" > .release_date
+    cat .ottdrev | cut -f 1 -d$'\t' > .version
+    echo "Release Date: $(cat .release_date)"
+    echo "Revision: $(cat .ottdrev)"
+    echo "Version: $(cat .version)"
+  displayName: 'Create version files'
+- script: |
+    set -e
+    VERSION=$(cat .version)
+    echo "${VERSION}"
+    echo "##vso[build.updatebuildnumber]${VERSION}"
+  displayName: 'Change BuildNumber to version'
+- script: find . -iname .hg -or -iname .git -or -iname .svn | xargs rm -rf
+  displayName: 'Remove VCS information'

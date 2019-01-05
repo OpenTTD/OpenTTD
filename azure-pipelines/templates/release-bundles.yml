@@ -1,0 +1,19 @@
+parameters:
+  CalculateChecksums: true
+
+steps:
+- ${{ if eq(parameters.CalculateChecksums, true) }}:
+  - bash: |
+      set -ex
+      cd bundles
+      for i in $(ls); do
+        openssl dgst -r -md5 -hex $i > $i.md5sum
+        openssl dgst -r -sha1 -hex $i > $i.sha1sum
+        openssl dgst -r -sha256 -hex $i > $i.sha256sum
+      done
+    displayName: 'Calculate checksums'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish bundles'
+  inputs:
+    PathtoPublish: bundles/
+    ArtifactName: bundles

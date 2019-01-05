@@ -1,0 +1,9 @@
+steps:
+# Rebase to origin/master for every PR. This means users don't have to
+# rebase every time master changes. As long as the PR applies cleanly, we
+# will validate it.
+- script: |
+    git config user.email 'info@openttd.org'
+    git config user.name 'OpenTTD CI'
+    git rebase origin/master
+  displayName: 'Rebase to master'
