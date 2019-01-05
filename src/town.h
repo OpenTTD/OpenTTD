@@ -101,6 +101,8 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	bool larger_town;                ///< if this is a larger town and should grow more quickly
 	TownLayout layout;               ///< town specific road layout
 
+	bool show_zone;                  ///< NOSAVE: mark town to show the local authority zone in the viewports
+
 	std::list<PersistentStorage *> psa_list;
 
 	/**

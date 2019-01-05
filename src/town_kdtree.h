@@ -15,6 +15,8 @@
 
 inline uint16 Kdtree_TownXYFunc(TownID tid, int dim) { return (dim == 0) ? TileX(Town::Get(tid)->xy) : TileY(Town::Get(tid)->xy); }
 typedef Kdtree<TownID, decltype(&Kdtree_TownXYFunc), uint16, int> TownKdtree;
+
 extern TownKdtree _town_kdtree;
+extern TownKdtree _town_local_authority_kdtree;
 
 #endif
