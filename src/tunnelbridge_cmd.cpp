@@ -701,10 +701,11 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 		 */
 		assert(coa >= _cleared_object_areas.Begin() && coa < _cleared_object_areas.End());
 		size_t coa_index = coa - _cleared_object_areas.Begin();
+		assert(coa_index < UINT_MAX); // more than 2**32 cleared areas would be a bug in itself
 		coa = NULL;
 
 		ret = DoCommand(end_tile, end_tileh & start_tileh, 0, flags, CMD_TERRAFORM_LAND);
-		_cleared_object_areas[coa_index].first_tile = old_first_tile;
+		_cleared_object_areas[(uint)coa_index].first_tile = old_first_tile;
 		if (ret.Failed()) return_cmd_error(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
 		cost.AddCost(ret);
 	}
