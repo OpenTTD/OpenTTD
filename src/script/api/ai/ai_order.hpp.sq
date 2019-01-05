@@ -44,6 +44,7 @@ void SQAIOrder_Register(Squirrel *engine)
 	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_INVALID,                                       "OF_INVALID");
 	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_LOAD_PERCENTAGE,                               "OC_LOAD_PERCENTAGE");
 	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_RELIABILITY,                                   "OC_RELIABILITY");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_MAX_RELIABILITY,                               "OC_MAX_RELIABILITY");
 	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_MAX_SPEED,                                     "OC_MAX_SPEED");
 	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_AGE,                                           "OC_AGE");
 	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_REQUIRES_SERVICE,                              "OC_REQUIRES_SERVICE");
