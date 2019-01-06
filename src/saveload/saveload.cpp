@@ -271,7 +271,7 @@
  *  201   #6885   Extend NewGRF persistant storages.
  *  202   #6867   Increase industry cargo slots to 16 in, 16 out
  */
-extern const uint16 SAVEGAME_VERSION = 202; ///< Current savegame version of OpenTTD.
+extern const uint16 SAVEGAME_VERSION = 203; ///< Current savegame version of OpenTTD.
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 FileToSaveLoad _file_to_saveload; ///< File to save or load in the openttd loop.
