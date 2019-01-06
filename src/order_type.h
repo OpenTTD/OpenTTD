@@ -118,12 +118,12 @@ DECLARE_ENUM_AS_BIT_SET(OrderDepotActionFlags)
 enum OrderConditionVariable {
 	OCV_LOAD_PERCENTAGE,    ///< Skip based on the amount of load
 	OCV_RELIABILITY,        ///< Skip based on the reliability
-	OCV_MAX_RELIABILITY,    ///< Skip based on the maximum reliability
 	OCV_MAX_SPEED,          ///< Skip based on the maximum speed
 	OCV_AGE,                ///< Skip based on the age
 	OCV_REQUIRES_SERVICE,   ///< Skip when the vehicle requires service
 	OCV_UNCONDITIONALLY,    ///< Always skip
 	OCV_REMAINING_LIFETIME, ///< Skip based on the remaining lifetime
+	OCV_MAX_RELIABILITY,    ///< Skip based on the maximum reliability
 	OCV_END
 };
 
