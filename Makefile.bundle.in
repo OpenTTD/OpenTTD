@@ -54,7 +54,7 @@ ifdef OSXAPP
 	$(Q)mkdir -p "$(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources"
 	$(Q)echo "APPL????" >                                          "$(BUNDLE_DIR)/$(OSXAPP)/Contents/PkgInfo"
 	$(Q)cp    "$(ROOT_DIR)/os/macosx/openttd.icns"                 "$(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/openttd.icns"
-	$(Q)$(ROOT_DIR)/os/macosx/plistgen.sh                          "$(BUNDLE_DIR)/$(OSXAPP)" "$(REV)"
+	$(Q)$(ROOT_DIR)/os/macosx/plistgen.sh                          "$(BUNDLE_DIR)/$(OSXAPP)" "$(VERSION)"
 	$(Q)cp    "$(ROOT_DIR)/os/macosx/splash.png"                   "$(BASESET_DIR)"
 endif
 ifeq ($(OS),UNIX)
@@ -151,10 +151,10 @@ bundle_lha: bundle
 
 bundle_dmg: bundle
 	@echo '[BUNDLE] Creating $(BUNDLE_NAME).dmg'
-	$(Q)mkdir -p "$(BUNDLES_DIR)/OpenTTD $(REV)"
-	$(Q)cp -R "$(BUNDLE_DIR)/" "$(BUNDLES_DIR)/OpenTTD $(REV)"
-	$(Q)hdiutil create -ov -format UDZO -srcfolder "$(BUNDLES_DIR)/OpenTTD $(REV)" "$(BUNDLES_DIR)/$(BUNDLE_NAME).dmg"
-	$(Q)rm -fr "$(BUNDLES_DIR)/OpenTTD $(REV)"
+	$(Q)mkdir -p "$(BUNDLES_DIR)/OpenTTD $(VERSION)"
+	$(Q)cp -R "$(BUNDLE_DIR)/" "$(BUNDLES_DIR)/OpenTTD $(VERSION)"
+	$(Q)hdiutil create -ov -format UDZO -srcfolder "$(BUNDLES_DIR)/OpenTTD $(VERSION)" "$(BUNDLES_DIR)/$(BUNDLE_NAME).dmg"
+	$(Q)rm -fr "$(BUNDLES_DIR)/OpenTTD $(VERSION)"
 
 bundle_exe: all
 	@echo '[BUNDLE] Creating $(BUNDLE_NAME).exe'
