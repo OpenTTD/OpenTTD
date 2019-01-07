@@ -686,10 +686,12 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}עירב
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}הצג את חלון בחירת המנגינה
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}תוכנית מוזיקה - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}רשימת רצועות
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}תוכנית- '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}מחק
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}ערכת שינוי
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}מחק תוכנית נוכחית
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}(לחץ כאן כדי להוסיף לתוכנית הנוכחית(מותאם אישית1 או מותאם אישית 2 בלבד
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}(לחץ על רצועה כדי להסיר אותה מהתוכנית הנוחכית(מותאם אישית 1 או מותאם אישית 2 בלבד
@@ -1351,7 +1353,9 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :צבע פני �
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :ירוק
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :ירוק כהה
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :סגול
+STR_CONFIG_SETTING_SCROLLMODE                                   :התנהגות גלילת תצוגה: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :הזז את התצוגה עם כפתור עכבר ימני, מיקום העכבר נעול
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :הזזת מפה עם כפתור עכבר ימני, מיקום העכבר נעול
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :הזז מפה עם כפתור עכבר שמאלי
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{STRING} :גלילה חלקה של התצוגה המשנית
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :שלוט כיצד התצוגה הראשית נגללת למיקום מסוים כאשר מקליקים על המפה הקטנה אן כאשר נותנים הוראה לגלול לעצם מסוים על גבי המפה. אם מאופשר, חלון התצוגה נגלל באופן חלק, אם מבוטל הוא מוקפץ ישירות אל נקודת המטרה
@@ -2706,19 +2710,34 @@ STR_ABOUT_VERSION                                               :{BLACK}{REV} ג
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 The OpenTTD team
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}קצב ריענון
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}קצב סימולציה: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}מספר פעימות משחק לשניה
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}מספר פריימים של וידאו המעובדים בשניה
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK} כמה מהר המשחק כרגע רץ, בהשוואה למהירות הצפוייה בקצב סימולציה רגיל.
+STR_FRAMERATE_CURRENT                                           :נוכחי{WHITE}
 STR_FRAMERATE_DATA_POINTS                                       :{WHITE}נתונים מבוססים על {COMMA} מדידות
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} מילישניה
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} פריים/ים
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} פריים/ים
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} פריים/ים
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} ש'
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}סה"כ לולאת משחק:
 STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE} פעימות כלי רכב:
 STR_FRAMERATE_GL_SHIPS                                          :{WHITE} פעימות כלי שייט:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE} נקודות עולם:
 STR_FRAMERATE_DRAWING                                           :{WHITE}עיבוד גרפיקה:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} תצוגות עולם:
+STR_FRAMERATE_VIDEO                                             :{BLACK}פלט וידאו:
 STR_FRAMERATE_SOUND                                             :{WHITE} ערבוב צליל:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :לולאת משחק
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :טיפול במטען
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :פעימות רכבת
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :פעימות עולם
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :השהיית גרף קשרים
 STR_FRAMETIME_CAPTION_DRAWING                                   :עיבוד גרפיקה
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :עיבוד תצוגת עולם
@@ -2748,6 +2767,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}פרטי
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}אין מידע זמין
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}מחרוזת סינון:
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}הכנס שם לשמירה
 
@@ -3831,6 +3851,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :גיל (שני�
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :זקוק לטיפול
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :תמיד
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :זמן חיים נותר (שנים)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :אמינות מירבית
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}כיצד יושוו נתוני כלי הרכב לערך נתון מסויים
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :שווה ל
@@ -4515,6 +4536,7 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :צלילי Tran
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :צלילי Transport Tycoon Deluxe המקורי בגרסת Windows.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :אוסף צלילים ללא צלילים.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :מנגינות Transport Tycoon Deluxe המקורי בגרסת Windows.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :מנגינות Transport Tycoon Deluxe המקורי בגרסת DOS.
 STR_BASEMUSIC_TTO_DESCRIPTION                                   :מנגינות Transport Tycoon Deluxe (Original/World Editor) המקורי בגרסת DOS.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :אוסף מנגינות ללא מנגינות.
 
