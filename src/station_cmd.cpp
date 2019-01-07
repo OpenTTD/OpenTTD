@@ -771,22 +771,22 @@ CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z
 }
 
 /**
- * Tries to clear the given area.
- * @param tile_area Area to check.
+ * Checks if an airport can be built at the given location and clear the area.
+ * @param tile_iter Airport tile iterator.
  * @param flags Operation to perform.
  * @return The cost in case of success, or an error code if it failed.
  */
-CommandCost CheckFlatLand(TileArea tile_area, DoCommandFlag flags)
+static CommandCost CheckFlatLandAirport(AirportTileTableIterator tile_iter, DoCommandFlag flags)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	int allowed_z = -1;
 
-	TILE_AREA_LOOP(tile_cur, tile_area) {
-		CommandCost ret = CheckBuildableTile(tile_cur, 0, allowed_z, true);
+	for (; tile_iter != INVALID_TILE; ++tile_iter) {
+		CommandCost ret = CheckBuildableTile(tile_iter, 0, allowed_z, true);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 
-		ret = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+		ret = DoCommand(tile_iter, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 	}
@@ -2218,11 +2218,11 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		return_cmd_error(STR_ERROR_STATION_TOO_SPREAD_OUT);
 	}
 
-	CommandCost cost = CheckFlatLand(airport_area, flags);
+	AirportTileTableIterator iter(as->table[layout], tile);
+	CommandCost cost = CheckFlatLandAirport(iter, flags);
 	if (cost.Failed()) return cost;
 
 	/* The noise level is the noise from the airport and reduce it to account for the distance to the town center. */
-	AirportTileTableIterator iter(as->table[layout], tile);
 	Town *nearest = AirportGetNearestTown(as, iter);
 	uint newnoise_level = GetAirportNoiseLevelForTown(as, iter, nearest->xy);
 
