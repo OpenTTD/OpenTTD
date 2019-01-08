@@ -26,7 +26,7 @@ apilc=`pwd | sed "s@/api@@;s@.*/@@"`
 
 # Check if we are in the root directory of the API, as then we generate all APIs
 if [ "$apilc" = "script" ]; then
-	for api in `find -type d | cut -b3- | grep -v '\.svn\|/'`; do
+	for api in `find -type d | cut -b3-`; do
 		if [ -z "$api" ]; then continue; fi
 		echo "Generating for API '$api' ..."
 		cd $api
@@ -54,15 +54,12 @@ for f in `ls ../*.hpp`; do
 	if [ "`wc -l ${bf}.tmp | cut -d\  -f1`" = "0" ]; then
 		if [ -f "${bf}.sq" ]; then
 			echo "Deleted: ${bf}.sq"
-			svn del --force ${bf}.sq > /dev/null 2>&1
+			rm -f ${bf}.sq
 		fi
 		rm -f ${bf}.tmp
 	elif ! [ -f "${bf}.sq" ] || [ -n "`diff -I '$Id' ${bf}.tmp ${bf}.sq 2> /dev/null || echo boo`" ]; then
 		mv ${bf}.tmp ${bf}.sq
 		echo "Updated: ${bf}.sq"
-		svn add ${bf}.sq > /dev/null 2>&1
-		svn propset svn:eol-style native ${bf}.sq > /dev/null 2>&1
-		svn propset svn:keywords Id ${bf}.sq > /dev/null 2>&1
 	else
 		rm -f ${bf}.tmp
 	fi
@@ -73,7 +70,7 @@ for f in `ls *.hpp.sq`; do
 	f=`echo ${f} | sed "s/.hpp.sq$/.hpp/;s@${apilc}_@script_@"`
 	if [ ! -f ../${f} ];then
 		echo "Deleted: ${f}.sq"
-		svn del --force ${f}.sq > /dev/null 2>&1
+		rm -f ${f}.sq
 	fi
 done
 
