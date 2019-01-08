@@ -90,7 +90,7 @@ Table of contents
    - [network] sync_freq:
      change it in console with: 'set network.sync_freq <number>'
      the number should be between the 50 and 1000, not much lower, not much
-     higer. It indicates the time between sync-frames. A sync-frame is a frame
+     higher. It indicates the time between sync-frames. A sync-frame is a frame
      which checks if all clients are still in sync. When the value it too high,
      clients can desync in 1960, but the server detects it in 1970. Not really
      handy. The lower the value, the more bandwidth it uses.
@@ -104,7 +104,7 @@ Table of contents
  - In UNIX like systems, you can fork your dedicated server by adding -f as
    parameter.
 
- - You can automaticly clean companies that do not have a client connected to
+ - You can automatically clean companies that do not have a client connected to
    them, for, let's say, 3 years. You can do this via: 'set autoclean_companies'
    and 'set autoclean_protected' and 'set autoclean_unprotected'. Unprotected
    removes a password from a company when it is not used for more then the
@@ -113,7 +113,7 @@ Table of contents
 
  - You can also do this manually via the console: 'reset_company'.
 
- - You can let your server automaticly restart a map when, let's say, year 2030
+ - You can let your server automatically restart a map when, let's say, year 2030
    is reached. See 'set restart_game_date' for detail.
 
  - If you want to be on the server-list, enable Advertising. To do this, select
