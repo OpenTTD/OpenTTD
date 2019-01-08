@@ -1118,13 +1118,6 @@ static void DoDryUp(TileIndex tile)
 			} else {
 				new_ground = RAIL_GROUND_GRASS_FENCE_1_2;
 			}
-/*			switch (GetTrackBits(tile)) {
-				case TRACK_BIT_UPPER: new_ground = RAIL_GROUND_FENCE_HORIZ1; break;
-				case TRACK_BIT_LOWER: new_ground = RAIL_GROUND_FENCE_HORIZ2; break;
-				case TRACK_BIT_LEFT:  new_ground = RAIL_GROUND_FENCE_VERT1;  break;
-				case TRACK_BIT_RIGHT: new_ground = RAIL_GROUND_FENCE_VERT2;  break;
-				default: NOT_REACHED();
-			}*/
 			SetRailGroundType(tile, new_ground);
 			MarkTileDirtyByTile(tile);
 			break;
