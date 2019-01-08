@@ -55,7 +55,6 @@
 #include "../order_backup.h"
 #include "../error.h"
 #include "../disaster_vehicle.h"
-#include "../rail_map.h"
 
 
 #include "saveload_internal.h"
@@ -2981,28 +2980,6 @@ bool AfterLoadGame()
 					if (*it >= cur_skip) IndividualRoadVehicleController(u, prev);
 				}
 				cur_skip--;
-			}
-		}
-	}
-
-	// Replacing for all rail tiles ground bits
-	if (IsSavegameVersionBefore(203)) {
-		TileIndex tile;
-		RailGroundType rgt;
-		for (tile = 0; tile < MapSize(); tile++){
-			if (IsPlainRailTile(tile)) {
-				rgt = GetRailGroundType(tile);
-
-				if (rgt >= 1 && rgt <= 11)
-					rgt = (RailGroundType)1;
-				else if (rgt == 12)
-					rgt = (RailGroundType)5;
-				else if (rgt == 13)
-					rgt = (RailGroundType)11;
-				else if (rgt == 14)
-					rgt = (RailGroundType)9;
-
-				SetRailGroundType(tile, rgt);
 			}
 		}
 	}

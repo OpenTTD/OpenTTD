@@ -775,7 +775,7 @@ bool FloodHalftile(TileIndex t)
 
 		if (IsNonContinuousFoundation(GetRailFoundation(tileh, rail_bits))) {
 			flooded = true;
-			SetRailGroundType(t, RAIL_GROUND_WATER_FENCE);
+			SetRailGroundType(t, RAIL_GROUND_WATER);
 			MarkTileDirtyByTile(t);
 		}
 	} else {
@@ -783,7 +783,7 @@ bool FloodHalftile(TileIndex t)
 		if (ApplyFoundationToSlope(GetRailFoundation(tileh, rail_bits), &tileh) == 0) {
 			if (IsSteepSlope(tileh) || IsSlopeWithThreeCornersRaised(tileh)) {
 				flooded = true;
-				SetRailGroundType(t, RAIL_GROUND_WATER_FENCE);
+				SetRailGroundType(t, RAIL_GROUND_WATER);
 				MarkTileDirtyByTile(t);
 			}
 		}
@@ -1997,35 +1997,6 @@ static void DrawTrackFence_SW(const TileInfo *ti, SpriteID base_image, uint num_
 }
 
 /**
- * Determine direction of fence
- * @param tile - tile with rails
- * @return rail fence direction
- */
-static byte DetermineFenceDirection(TileIndex tile)
-{
-	TrackBits rail = GetTrackBits(tile);
-
-	Owner owner = GetTileOwner(tile);
-	byte fences = 0;
-
-	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
-		static const TrackBits dir_to_trackbits[DIAGDIR_END] = {TRACK_BIT_3WAY_NE, TRACK_BIT_3WAY_SE, TRACK_BIT_3WAY_SW, TRACK_BIT_3WAY_NW};
-
-		// Track bit on this edge => no fence. 
-		if ((rail & dir_to_trackbits[d]) != TRACK_BIT_NONE) continue;
-
-		TileIndex tile2 = tile + TileOffsByDiagDir(d);
-
-		// Show fences if it's a house, industry, object, road, tunnelbridge or not owned by us. 
-		if (!IsValidTile(tile2) || IsTileType(tile2, MP_HOUSE) || IsTileType(tile2, MP_INDUSTRY) ||
-				IsTileType(tile2, MP_ROAD) || (IsTileType(tile2, MP_OBJECT) && !IsObjectType(tile2, OBJECT_OWNED_LAND)) || IsTileType(tile2, MP_TUNNELBRIDGE) || !IsTileOwner(tile2, owner)) {
-			fences |= 1 << d;
-		}
-	}
-	return fences;
-}
-
-/**
  * Draw track fences.
  * @param ti Tile drawing information.
  * @param rti Rail type information.
@@ -2044,108 +2015,19 @@ static void DrawTrackDetails(const TileInfo *ti, const RailtypeInfo *rti)
 	assert(num_sprites > 0);
 
 	switch (GetRailGroundType(ti->tile)) {
-		// No fences on this grounds
-		case RAIL_GROUND_BARREN:
-		case RAIL_GROUND_GRASS:
-		case RAIL_GROUND_ICE_DESERT:
-		case RAIL_GROUND_HALF_SNOW:
-		case RAIL_GROUND_WATER:
-			break;
-
-		// Drawing only fence 1
-		case RAIL_GROUND_GRASS_FENCE_1:
-		case RAIL_GROUND_ICE_DESERT_FENCE_1: {
-			byte fences = DetermineFenceDirection(ti->tile);
-
-			switch (fences) {
-				case (1 << DIAGDIR_SE):
-					DrawTrackFence_SE(ti, base_image, num_sprites);
-					break;
-				case (1 << DIAGDIR_SW):
-					DrawTrackFence_SW(ti, base_image, num_sprites);
-					break;
-				case (1 << DIAGDIR_SW) | (1 << DIAGDIR_NW):
-					DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_RIGHT);
-					break;
-				case (1 << DIAGDIR_NE) | (1 << DIAGDIR_NW):
-					DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_LOWER);
-					break;
-				default:
-					break;
-			}
-			break;
-		}
-
-		//Drawing only fence 2
-		case RAIL_GROUND_GRASS_FENCE_2:
-		case RAIL_GROUND_ICE_DESERT_FENCE_2: {
-			byte fences = DetermineFenceDirection(ti->tile);
-
-			switch (fences) {
-				case (1 << DIAGDIR_NE):
-					DrawTrackFence_NE(ti, base_image, num_sprites);
-					break;
-				case (1 << DIAGDIR_NW):
-					DrawTrackFence_NW(ti, base_image, num_sprites);
-					break;
-				case (1 << DIAGDIR_NE) | (1 << DIAGDIR_SE):
-					DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_LEFT);
-					break;
-				case (1 << DIAGDIR_SE) | (1 << DIAGDIR_SW):
-					DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_UPPER);
-					break;
-				default:
-					break;
-			}
-			break;
-		}
-
-		//Drawing fence 1 and 2
-		case RAIL_GROUND_GRASS_FENCE_1_2:
-		case RAIL_GROUND_ICE_DESERT_FENCE_1_2:
-		case RAIL_GROUND_HALF_SNOW_FENCE: {
-			byte fences = DetermineFenceDirection(ti->tile);
-
-			switch (fences) {
-				case (1 << DIAGDIR_SE):
-					DrawTrackFence_SE(ti, base_image, num_sprites);
-					break;
-				case (1 << DIAGDIR_SW):
-					DrawTrackFence_SW(ti, base_image, num_sprites);
-					break;
-				case (1 << DIAGDIR_SW) | (1 << DIAGDIR_NW):
-					DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_RIGHT);
-					break;
-				case (1 << DIAGDIR_NE) | (1 << DIAGDIR_NW):
-					DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_LOWER);
-					break;
-				case (1 << DIAGDIR_NE):
-					DrawTrackFence_NE(ti, base_image, num_sprites);
-					break;
-				case (1 << DIAGDIR_NW):
-					DrawTrackFence_NW(ti, base_image, num_sprites);
-					break;
-				case (1 << DIAGDIR_NE) | (1 << DIAGDIR_SE):
-					DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_LEFT);
-					break;
-				case (1 << DIAGDIR_SE) | (1 << DIAGDIR_SW):
-					DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_UPPER);
-					break;
-				case (1 << DIAGDIR_NE) | (1 << DIAGDIR_SW):
-					DrawTrackFence_NE(ti, base_image, num_sprites);
-					DrawTrackFence_SW(ti, base_image, num_sprites);
-					break;
-				case (1 << DIAGDIR_SE) | (1 << DIAGDIR_NW):
-					DrawTrackFence_SE(ti, base_image, num_sprites);
-					DrawTrackFence_NW(ti, base_image, num_sprites);
-					break;
-				default:
-					break;
-			}
-			break;
-		}
-
-		case RAIL_GROUND_WATER_FENCE: {
+		case RAIL_GROUND_FENCE_NW:     DrawTrackFence_NW(ti, base_image, num_sprites); break;
+		case RAIL_GROUND_FENCE_SE:     DrawTrackFence_SE(ti, base_image, num_sprites); break;
+		case RAIL_GROUND_FENCE_SENW:   DrawTrackFence_NW(ti, base_image, num_sprites);
+		                               DrawTrackFence_SE(ti, base_image, num_sprites); break;
+		case RAIL_GROUND_FENCE_NE:     DrawTrackFence_NE(ti, base_image, num_sprites); break;
+		case RAIL_GROUND_FENCE_SW:     DrawTrackFence_SW(ti, base_image, num_sprites); break;
+		case RAIL_GROUND_FENCE_NESW:   DrawTrackFence_NE(ti, base_image, num_sprites);
+		                               DrawTrackFence_SW(ti, base_image, num_sprites); break;
+		case RAIL_GROUND_FENCE_VERT1:  DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_LEFT);  break;
+		case RAIL_GROUND_FENCE_VERT2:  DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_RIGHT); break;
+		case RAIL_GROUND_FENCE_HORIZ1: DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_UPPER); break;
+		case RAIL_GROUND_FENCE_HORIZ2: DrawTrackFence(ti, base_image, num_sprites, RFO_FLAT_LOWER); break;
+		case RAIL_GROUND_WATER: {
 			Corner track_corner;
 			if (IsHalftileSlope(ti->tileh)) {
 				/* Steep slope or one-corner-raised slope with halftile foundation */
@@ -2199,7 +2081,7 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailtypeIn
 	/* DrawFoundation modifies ti */
 
 	/* Draw ground */
-	if (rgt == RAIL_GROUND_WATER || rgt == RAIL_GROUND_WATER_FENCE) {
+	if (rgt == RAIL_GROUND_WATER) {
 		if (track != TRACK_BIT_NONE || IsSteepSlope(ti->tileh)) {
 			/* three-corner-raised slope or steep slope with track on upper part */
 			DrawShoreTile(ti->tileh);
@@ -2212,11 +2094,8 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailtypeIn
 
 		switch (rgt) {
 			case RAIL_GROUND_BARREN:     image = SPR_FLAT_BARE_LAND;  break;
-			case RAIL_GROUND_ICE_DESERT:
-			case RAIL_GROUND_ICE_DESERT_FENCE_1:
-			case RAIL_GROUND_ICE_DESERT_FENCE_2:
-			case RAIL_GROUND_ICE_DESERT_FENCE_1_2: image = SPR_FLAT_SNOW_DESERT_TILE; break;
-			default:                               image = SPR_FLAT_GRASS_TILE; break;
+			case RAIL_GROUND_ICE_DESERT: image = SPR_FLAT_SNOW_DESERT_TILE; break;
+			default:                     image = SPR_FLAT_GRASS_TILE; break;
 		}
 
 		image += SlopeToSpriteOffset(ti->tileh);
@@ -2305,10 +2184,6 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailtypeIn
 		switch (rgt) {
 			case RAIL_GROUND_BARREN:     image = SPR_FLAT_BARE_LAND;  break;
 			case RAIL_GROUND_ICE_DESERT:
-			case RAIL_GROUND_ICE_DESERT_FENCE_1:
-			case RAIL_GROUND_ICE_DESERT_FENCE_2:
-			case RAIL_GROUND_ICE_DESERT_FENCE_1_2:
-			case RAIL_GROUND_HALF_SNOW_FENCE:
 			case RAIL_GROUND_HALF_SNOW:  image = SPR_FLAT_SNOW_DESERT_TILE; break;
 			default:                     image = SPR_FLAT_GRASS_TILE; break;
 		}
@@ -2372,7 +2247,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 	/* Select the sprite to use. */
 	if (track == 0) {
 		/* Clear ground (only track on halftile foundation) */
-		if (rgt == RAIL_GROUND_WATER || rgt == RAIL_GROUND_WATER_FENCE) {
+		if (rgt == RAIL_GROUND_WATER) {
 			if (IsSteepSlope(ti->tileh)) {
 				DrawShoreTile(ti->tileh);
 				image = 0;
@@ -2381,20 +2256,9 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 			}
 		} else {
 			switch (rgt) {
-				case RAIL_GROUND_BARREN:
-					image = SPR_FLAT_BARE_LAND;
-					break;
-
-				case RAIL_GROUND_ICE_DESERT:
-				case RAIL_GROUND_ICE_DESERT_FENCE_1:
-				case RAIL_GROUND_ICE_DESERT_FENCE_2:
-				case RAIL_GROUND_ICE_DESERT_FENCE_1_2:
-					image = SPR_FLAT_SNOW_DESERT_TILE;
-					break;
-
-				default:
-					image = SPR_FLAT_GRASS_TILE;
-					break;
+				case RAIL_GROUND_BARREN:     image = SPR_FLAT_BARE_LAND;  break;
+				case RAIL_GROUND_ICE_DESERT: image = SPR_FLAT_SNOW_DESERT_TILE; break;
+				default:                     image = SPR_FLAT_GRASS_TILE; break;
 			}
 			image += SlopeToSpriteOffset(ti->tileh);
 		}
@@ -2425,10 +2289,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 
 		switch (rgt) {
 			case RAIL_GROUND_BARREN:     pal = PALETTE_TO_BARE_LAND; break;
-			case RAIL_GROUND_ICE_DESERT:
-			case RAIL_GROUND_ICE_DESERT_FENCE_1:
-			case RAIL_GROUND_ICE_DESERT_FENCE_2:
-			case RAIL_GROUND_ICE_DESERT_FENCE_1_2: image += rti->snow_offset;  break;
+			case RAIL_GROUND_ICE_DESERT: image += rti->snow_offset;  break;
 			case RAIL_GROUND_WATER: {
 				/* three-corner-raised slope */
 				DrawShoreTile(ti->tileh);
@@ -2486,11 +2347,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 		switch (rgt) {
 			case RAIL_GROUND_BARREN:     pal = PALETTE_TO_BARE_LAND; break;
 			case RAIL_GROUND_ICE_DESERT:
-			case RAIL_GROUND_ICE_DESERT_FENCE_1:
-			case RAIL_GROUND_ICE_DESERT_FENCE_2:
-			case RAIL_GROUND_ICE_DESERT_FENCE_1_2:
-			case RAIL_GROUND_HALF_SNOW:
-			case RAIL_GROUND_HALF_SNOW_FENCE:  image += rti->snow_offset;  break; // higher part has snow in this case too
+			case RAIL_GROUND_HALF_SNOW:  image += rti->snow_offset;  break; // higher part has snow in this case too
 			default: break;
 		}
 		DrawGroundSprite(image, pal, &(_halftile_sub_sprite[halftile_corner]));
@@ -2761,31 +2618,9 @@ static void TileLoop_Track(TileIndex tile)
 			if (z > GetSnowLine()) {
 				if (half && z - GetSnowLine() == 1) {
 					/* track on non-continuous foundation, lower part is not under snow */
-					if (old_ground == RAIL_GROUND_HALF_SNOW)
-						new_ground = RAIL_GROUND_HALF_SNOW_FENCE;
-					else
-						new_ground = RAIL_GROUND_HALF_SNOW;
+					new_ground = RAIL_GROUND_HALF_SNOW;
 				} else {
-					switch (old_ground) {
-						case RAIL_GROUND_ICE_DESERT:
-							// TODO:
-							// make to random select _FENCE_1 or _FENCE_2
-							new_ground = RAIL_GROUND_ICE_DESERT_FENCE_1;
-							break;
-
-						case RAIL_GROUND_ICE_DESERT_FENCE_1:
-						case RAIL_GROUND_ICE_DESERT_FENCE_2:
-						case RAIL_GROUND_ICE_DESERT_FENCE_1_2:
-							new_ground = RAIL_GROUND_ICE_DESERT_FENCE_1_2;
-							break;
-
-						case RAIL_GROUND_BARREN:
-							new_ground = RAIL_GROUND_ICE_DESERT;
-							break;
-						
-						default:
-							NOT_REACHED();
-					}
+					new_ground = RAIL_GROUND_ICE_DESERT;
 				}
 				goto set_ground;
 			}
@@ -2802,29 +2637,42 @@ static void TileLoop_Track(TileIndex tile)
 
 	new_ground = RAIL_GROUND_GRASS;
 
-	if (IsPlainRail(tile)) {
-		switch (old_ground) {
-			case RAIL_GROUND_BARREN:
-				new_ground = RAIL_GROUND_GRASS;
-				break;
-			
-			case RAIL_GROUND_GRASS:
-				// TODO:
-				// make randon select of _FENCE_1 or _FENCE_2;
-				new_ground = RAIL_GROUND_GRASS_FENCE_1;
-				break;
-			
-			case RAIL_GROUND_GRASS_FENCE_1:
-			case RAIL_GROUND_GRASS_FENCE_2:
-			case RAIL_GROUND_GRASS_FENCE_1_2:
-				new_ground = RAIL_GROUND_GRASS_FENCE_1_2;
-				break;
-			
-			default:
-				NOT_REACHED();
+	if (IsPlainRail(tile) && old_ground != RAIL_GROUND_BARREN) { // wait until bottom is green
+		/* determine direction of fence */
+		TrackBits rail = GetTrackBits(tile);
+
+		Owner owner = GetTileOwner(tile);
+		byte fences = 0;
+
+		for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
+			static const TrackBits dir_to_trackbits[DIAGDIR_END] = {TRACK_BIT_3WAY_NE, TRACK_BIT_3WAY_SE, TRACK_BIT_3WAY_SW, TRACK_BIT_3WAY_NW};
+
+			/* Track bit on this edge => no fence. */
+			if ((rail & dir_to_trackbits[d]) != TRACK_BIT_NONE) continue;
+
+			TileIndex tile2 = tile + TileOffsByDiagDir(d);
+
+			/* Show fences if it's a house, industry, object, road, tunnelbridge or not owned by us. */
+			if (!IsValidTile(tile2) || IsTileType(tile2, MP_HOUSE) || IsTileType(tile2, MP_INDUSTRY) ||
+					IsTileType(tile2, MP_ROAD) || (IsTileType(tile2, MP_OBJECT) && !IsObjectType(tile2, OBJECT_OWNED_LAND)) || IsTileType(tile2, MP_TUNNELBRIDGE) || !IsTileOwner(tile2, owner)) {
+				fences |= 1 << d;
+			}
 		}
-	} else {
-		new_ground = RAIL_GROUND_GRASS;
+
+		switch (fences) {
+			case 0: break;
+			case (1 << DIAGDIR_NE): new_ground = RAIL_GROUND_FENCE_NE; break;
+			case (1 << DIAGDIR_SE): new_ground = RAIL_GROUND_FENCE_SE; break;
+			case (1 << DIAGDIR_SW): new_ground = RAIL_GROUND_FENCE_SW; break;
+			case (1 << DIAGDIR_NW): new_ground = RAIL_GROUND_FENCE_NW; break;
+			case (1 << DIAGDIR_NE) | (1 << DIAGDIR_SW): new_ground = RAIL_GROUND_FENCE_NESW; break;
+			case (1 << DIAGDIR_SE) | (1 << DIAGDIR_NW): new_ground = RAIL_GROUND_FENCE_SENW; break;
+			case (1 << DIAGDIR_NE) | (1 << DIAGDIR_SE): new_ground = RAIL_GROUND_FENCE_VERT1; break;
+			case (1 << DIAGDIR_NE) | (1 << DIAGDIR_NW): new_ground = RAIL_GROUND_FENCE_HORIZ2; break;
+			case (1 << DIAGDIR_SE) | (1 << DIAGDIR_SW): new_ground = RAIL_GROUND_FENCE_HORIZ1; break;
+			case (1 << DIAGDIR_SW) | (1 << DIAGDIR_NW): new_ground = RAIL_GROUND_FENCE_VERT2; break;
+			default: NOT_REACHED();
+		}
 	}
 
 set_ground:
