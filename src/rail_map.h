@@ -511,7 +511,10 @@ static inline RailGroundType GetRailGroundType(TileIndex t)
 
 static inline bool IsSnowRailGround(TileIndex t)
 {
-	return GetRailGroundType(t) == RAIL_GROUND_ICE_DESERT;
+	return GetRailGroundType(t) == RAIL_GROUND_ICE_DESERT ||
+	       GetRailGroundType(t) == RAIL_GROUND_ICE_DESERT_FENCE_1 ||
+	       GetRailGroundType(t) == RAIL_GROUND_ICE_DESERT_FENCE_2 ||
+	       GetRailGroundType(t) == RAIL_GROUND_ICE_DESERT_FENCE_1_2;
 }
 
 
