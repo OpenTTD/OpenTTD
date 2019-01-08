@@ -24,6 +24,8 @@ BEGIN {
 	skiptillend = 0;
 }
 
+{ CR = (match($0, "\\r$") > 0 ? "\r" : "") }
+
 /@enum/ {
 	print;
 	add_indent = gensub("[^	]*", "", "g");
@@ -42,7 +44,7 @@ BEGIN {
 		active_comment = 0;
 		comment = "";
 		file = filearray[i];
-		print add_indent "/* automatically generated from " file " */"
+		print add_indent "/* automatically generated from " file " */" CR
 		while ((getline < file) > 0) {
 			sub(rm_indent, "");
 
@@ -65,7 +67,7 @@ BEGIN {
 			}
 
 			# Forget doxygen comment, if no enum follows
-			if (active_comment == 2 && $0 != "") {
+			if (active_comment == 2 && $0 != "" CR) {
 				active_comment = 0;
 				comment = "";
 			}
@@ -78,22 +80,21 @@ BEGIN {
 					sub(" *//", " //");
 
 					match($0, "^(	*)([A-Za-z0-9_]+),(.*)", parts);
-					enumwidth - length(parts[2])
 
-					if (parts[3] == "") {
-						printf "%s%s%-45s= ::%s\n", add_indent, parts[1], parts[2], (parts[2] ",")
+					if (parts[3] == "" CR) {
+						printf "%s%s%-45s= ::%s\n", add_indent, parts[1], parts[2], (parts[2] "," CR)
 					} else {
-						printf "%s%s%-45s= ::%-45s%s\n", add_indent, parts[1], parts[2], (parts[2] ","), parts[3];
+						printf "%s%s%-45s= ::%-45s%s\n", add_indent, parts[1], parts[2], (parts[2] ","), (parts[3]);
 					}
-				} else if ($0 == "") {
-					print "";
+				} else if ($0 == "" CR) {
+					print "" CR;
 				} else {
 					print add_indent $0;
 				}
 			}
 
 			if (match($0, "^	*\\};") > 0) {
-				if (active != 0) print "";
+				if (active != 0) print "" CR;
 				active = 0;
 			}
 		}
