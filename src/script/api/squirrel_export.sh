@@ -43,50 +43,30 @@ case $apilc in
 	*) echo "Unknown API type."; exit 1 ;;
 esac
 
-if [ -z "$1" ]; then
-	for f in `ls ../*.hpp`; do
-		bf=`basename ${f} | sed s@script_@${apilc}_@`
+for f in `ls ../*.hpp`; do
+	bf=`basename ${f} | sed s@script_@${apilc}_@`
 
-		# ScriptController has custom code, and should not be generated
-		if [ "`basename ${f}`" = "script_controller.hpp" ]; then continue; fi
-		if [ "`basename ${f}`" = "script_object.hpp" ]; then continue; fi
+	# ScriptController has custom code, and should not be generated
+	if [ "`basename ${f}`" = "script_controller.hpp" ]; then continue; fi
 
-		${AWK} -v api=${apiuc} -f ${scriptdir}/squirrel_export.awk ${f} > ${bf}.tmp
+	${AWK} -v api=${apiuc} -f ${scriptdir}/squirrel_export.awk ${f} > ${bf}.tmp
 
-		if [ "`wc -l ${bf}.tmp | cut -d\  -f1`" = "0" ]; then
-			if [ -f "${bf}.sq" ]; then
-				echo "Deleted: ${bf}.sq"
-				svn del --force ${bf}.sq > /dev/null 2>&1
-			fi
-			rm -f ${bf}.tmp
-		elif ! [ -f "${bf}.sq" ] || [ -n "`diff -I '$Id' ${bf}.tmp ${bf}.sq 2> /dev/null || echo boo`" ]; then
-			mv ${bf}.tmp ${bf}.sq
-			echo "Updated: ${bf}.sq"
-			svn add ${bf}.sq > /dev/null 2>&1
-			svn propset svn:eol-style native ${bf}.sq > /dev/null 2>&1
-			svn propset svn:keywords Id ${bf}.sq > /dev/null 2>&1
-		else
-			rm -f ${bf}.tmp
+	if [ "`wc -l ${bf}.tmp | cut -d\  -f1`" = "0" ]; then
+		if [ -f "${bf}.sq" ]; then
+			echo "Deleted: ${bf}.sq"
+			svn del --force ${bf}.sq > /dev/null 2>&1
 		fi
-	done
-else
-	${AWK} -v api=${apiuc} -f ${scriptdir}/squirrel_export.awk $1 > $1.tmp
-	if [ `wc -l $1.tmp | cut -d\  -f1` -eq "0" ]; then
-		if [ -f "$1.sq" ]; then
-			echo "Deleted: $1.sq"
-			svn del --force $1.sq > /dev/null 2>&1
-		fi
-		rm -f $1.tmp
-	elif ! [ -f "${f}.sq" ] || [ -n "`diff -I '$Id' $1.sq $1.tmp 2> /dev/null || echo boo`" ]; then
-		mv $1.tmp $1.sq
-		echo "Updated: $1.sq"
-		svn add $1.sq > /dev/null 2>&1
-		svn propset svn:eol-style native $1.sq > /dev/null 2>&1
-		svn propset svn:keywords Id $1.sq > /dev/null 2>&1
+		rm -f ${bf}.tmp
+	elif ! [ -f "${bf}.sq" ] || [ -n "`diff -I '$Id' ${bf}.tmp ${bf}.sq 2> /dev/null || echo boo`" ]; then
+		mv ${bf}.tmp ${bf}.sq
+		echo "Updated: ${bf}.sq"
+		svn add ${bf}.sq > /dev/null 2>&1
+		svn propset svn:eol-style native ${bf}.sq > /dev/null 2>&1
+		svn propset svn:keywords Id ${bf}.sq > /dev/null 2>&1
 	else
-		rm -f $1.tmp
+		rm -f ${bf}.tmp
 	fi
-fi
+done
 
 # Remove .hpp.sq if .hpp doesn't exist anymore
 for f in `ls *.hpp.sq`; do
