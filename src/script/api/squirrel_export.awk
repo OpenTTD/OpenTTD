@@ -29,46 +29,46 @@ function dump_class_templates(name)
 	realname = name
 	gsub("^Script", "", realname)
 
-	print "	template <> inline "       name " *GetParam(ForceType<"       name " *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (" name " *)instance; }"
-	print "	template <> inline "       name " &GetParam(ForceType<"       name " &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(" name " *)instance; }"
-	print "	template <> inline const " name " *GetParam(ForceType<const " name " *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (" name " *)instance; }"
-	print "	template <> inline const " name " &GetParam(ForceType<const " name " &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(" name " *)instance; }"
+	print "	template <> inline "       name " *GetParam(ForceType<"       name " *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (" name " *)instance; }" CR
+	print "	template <> inline "       name " &GetParam(ForceType<"       name " &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(" name " *)instance; }" CR
+	print "	template <> inline const " name " *GetParam(ForceType<const " name " *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (" name " *)instance; }" CR
+	print "	template <> inline const " name " &GetParam(ForceType<const " name " &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(" name " *)instance; }" CR
 	if (name == "ScriptEvent") {
-		print "	template <> inline int Return<" name " *>(HSQUIRRELVM vm, " name " *res) { if (res == NULL) { sq_pushnull(vm); return 1; } Squirrel::CreateClassInstanceVM(vm, \"" realname "\", res, NULL, DefSQDestructorCallback<" name ">, true); return 1; }"
+		print "	template <> inline int Return<" name " *>(HSQUIRRELVM vm, " name " *res) { if (res == NULL) { sq_pushnull(vm); return 1; } Squirrel::CreateClassInstanceVM(vm, \"" realname "\", res, NULL, DefSQDestructorCallback<" name ">, true); return 1; }" CR
 	} else if (name == "ScriptText") {
-		print ""
-		print "	template <> inline Text *GetParam(ForceType<Text *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) {"
-		print "		if (sq_gettype(vm, index) == OT_INSTANCE) {"
-		print "			return GetParam(ForceType<ScriptText *>(), vm, index, ptr);"
-		print "		}"
-		print "		if (sq_gettype(vm, index) == OT_STRING) {"
-		print "			return new RawText(GetParam(ForceType<const char *>(), vm, index, ptr));"
-		print "		}"
-		print "		return NULL;"
-		print "	}"
+		print "" CR
+		print "	template <> inline Text *GetParam(ForceType<Text *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) {" CR
+		print "		if (sq_gettype(vm, index) == OT_INSTANCE) {" CR
+		print "			return GetParam(ForceType<ScriptText *>(), vm, index, ptr);" CR
+		print "		}" CR
+		print "		if (sq_gettype(vm, index) == OT_STRING) {" CR
+		print "			return new RawText(GetParam(ForceType<const char *>(), vm, index, ptr));" CR
+		print "		}" CR
+		print "		return NULL;" CR
+		print "	}" CR
 	} else {
-		print "	template <> inline int Return<" name " *>(HSQUIRRELVM vm, " name " *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, \"" realname "\", res, NULL, DefSQDestructorCallback<" name ">, true); return 1; }"
+		print "	template <> inline int Return<" name " *>(HSQUIRRELVM vm, " name " *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, \"" realname "\", res, NULL, DefSQDestructorCallback<" name ">, true); return 1; }" CR
 	}
 }
 
 function dump_fileheader()
 {
 	# Break the Id tag, so SVN doesn't replace it
-	print "/* $I" "d$ */"
-	print ""
-	print "/*"
-	print " * This file is part of OpenTTD."
-	print " * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2."
-	print " * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
-	print " * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>."
-	print " */"
-	print ""
-	print "/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */"
-	print ""
-	print "#include \"../" filename "\""
+	print "/* $I" "d$ */" CR
+	print "" CR
+	print "/*" CR
+	print " * This file is part of OpenTTD." CR
+	print " * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2." CR
+	print " * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE." CR
+	print " * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>." CR
+	print " */" CR
+	print "" CR
+	print "/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */" CR
+	print "" CR
+	print "#include \"../" filename "\"" CR
 	if (api != "Template") {
 		gsub("script_", "template_", filename)
-		print "#include \"../template/" filename ".sq\""
+		print "#include \"../template/" filename ".sq\"" CR
 	}
 }
 
@@ -103,10 +103,11 @@ BEGIN {
 	start_squirrel_define_on_next_line = "false"
 	has_fileheader = "false"
 	cls_level = 0
-	RS = "\r|\n"
 	apis = tolower(api)
 	if (apis == "gs") apis = "game"
 }
+
+{ CR = (match($0, "\\r$") > 0 ? "\r" : "") }
 
 /@file/ {
 	filename = $3
@@ -136,13 +137,13 @@ BEGIN {
 
 	if (api == "Template") {
 		api_selected = "true"
-		if ($0 == "none" || $0 == "-all") api_selected = "false"
+		if ($0 == "none" CR || $0 == "-all" CR) api_selected = "false"
 		next
 	}
 
-	if ($0 == "none") {
+	if ($0 == "none" CR) {
 		api_selected = "false"
-	} else if ($0 == "-all") {
+	} else if ($0 == "-all" CR) {
 		api_selected = "false"
 	} else if (match($0, "-" apis)) {
 		api_selected = "false"
@@ -259,7 +260,7 @@ BEGIN {
 }
 
 # Empty/white lines. When we may do the Squirrel export, do that export.
-/^([ 	]*)$/ {
+/^([ 	]*)\r*$/ {
 	if (start_squirrel_define_on_next_line == "false") next
 
 	if (cls_in_api != "true") {
@@ -280,19 +281,19 @@ BEGIN {
 	api_super_cls = super_cls
 	gsub("^Script", api, api_super_cls)
 
-	print ""
+	print "" CR
 
 	if (api == "Template") {
 		# First check whether we have enums to print
 		if (enum_size != 0) {
 			if (namespace_opened == "false") {
-				print "namespace SQConvert {"
+				print "namespace SQConvert {" CR
 				namespace_opened = "true"
 			}
-			print "	/* Allow enums to be used as Squirrel parameters */"
+			print "	/* Allow enums to be used as Squirrel parameters */" CR
 			for (i = 1; i <= enum_size; i++) {
-				print "	template <> inline " enums[i] " GetParam(ForceType<" enums[i] ">, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (" enums[i] ")tmp; }"
-				print "	template <> inline int Return<" enums[i] ">(HSQUIRRELVM vm, " enums[i] " res) { sq_pushinteger(vm, (int32)res); return 1; }"
+				print "	template <> inline " enums[i] " GetParam(ForceType<" enums[i] ">, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (" enums[i] ")tmp; }" CR
+				print "	template <> inline int Return<" enums[i] ">(HSQUIRRELVM vm, " enums[i] " res) { sq_pushinteger(vm, (int32)res); return 1; }" CR
 				delete enums[i]
 			}
 		}
@@ -300,10 +301,10 @@ BEGIN {
 		# Then check whether we have structs/classes to print
 		if (struct_size != 0) {
 			if (namespace_opened == "false") {
-				print "namespace SQConvert {"
+				print "namespace SQConvert {" CR
 				namespace_opened = "true"
 			}
-			print "	/* Allow inner classes/structs to be used as Squirrel parameters */"
+			print "	/* Allow inner classes/structs to be used as Squirrel parameters */" CR
 			for (i = 1; i <= struct_size; i++) {
 				dump_class_templates(structs[i])
 				delete structs[i]
@@ -311,41 +312,41 @@ BEGIN {
 		}
 
 		if (namespace_opened == "false") {
-			print "namespace SQConvert {"
+			print "namespace SQConvert {" CR
 			namespace_opened = "true"
 		} else {
-			print ""
+			print "" CR
 		}
-		print "	/* Allow " cls " to be used as Squirrel parameter */"
+		print "	/* Allow " cls " to be used as Squirrel parameter */" CR
 		dump_class_templates(cls)
 
-		print "} // namespace SQConvert"
+		print "} // namespace SQConvert" CR
 
 		reset_reader()
 		next
 	}
 
-	print "";
-	print "template <> const char *GetClassName<" cls ", ST_" toupper(api) ">() { return \"" api_cls "\"; }"
-	print "";
+	print "" CR
+	print "template <> const char *GetClassName<" cls ", ST_" toupper(api) ">() { return \"" api_cls "\"; }" CR
+	print "" CR
 
 	# Then do the registration functions of the class. */
-	print "void SQ" api_cls "_Register(Squirrel *engine)"
-	print "{"
-	print "	DefSQClass<" cls ", ST_" toupper(api) "> SQ" api_cls "(\"" api_cls "\");"
+	print "void SQ" api_cls "_Register(Squirrel *engine)" CR
+	print "{" CR
+	print "	DefSQClass<" cls ", ST_" toupper(api) "> SQ" api_cls "(\"" api_cls "\");" CR
 	if (super_cls == "Text" || super_cls == "ScriptObject" || super_cls == "AIAbstractList::Valuator") {
-		print "	SQ" api_cls ".PreRegister(engine);"
+		print "	SQ" api_cls ".PreRegister(engine);" CR
 	} else {
-		print "	SQ" api_cls ".PreRegister(engine, \"" api_super_cls "\");"
+		print "	SQ" api_cls ".PreRegister(engine, \"" api_super_cls "\");" CR
 	}
 	if (super_cls != "ScriptEvent") {
 		if (cls_param[2] == "v") {
-			print "	SQ" api_cls ".AddSQAdvancedConstructor(engine);"
+			print "	SQ" api_cls ".AddSQAdvancedConstructor(engine);" CR
 		} else {
-			print "	SQ" api_cls ".AddConstructor<void (" cls "::*)(" cls_param[0] "), " cls_param[1]">(engine, \"" cls_param[2] "\");"
+			print "	SQ" api_cls ".AddConstructor<void (" cls "::*)(" cls_param[0] "), " cls_param[1]">(engine, \"" cls_param[2] "\");" CR
 		}
 	}
-	print ""
+	print "" CR
 
 	# Enum values
 	mlen = 0
@@ -353,10 +354,10 @@ BEGIN {
 		if (mlen <= length(enum_value[i])) mlen = length(enum_value[i])
 	}
 	for (i = 1; i <= enum_value_size; i++) {
-		print "	SQ" api_cls ".DefSQConst(engine, " cls "::" enum_value[i] ", " substr(spaces, 1, mlen - length(enum_value[i])) "\""  enum_value[i] "\");"
+		print "	SQ" api_cls ".DefSQConst(engine, " cls "::" enum_value[i] ", " substr(spaces, 1, mlen - length(enum_value[i])) "\""  enum_value[i] "\");" CR
 		delete enum_value[i]
 	}
-	if (enum_value_size != 0) print ""
+	if (enum_value_size != 0) print "" CR
 
 	# Const values
 	mlen = 0
@@ -364,10 +365,10 @@ BEGIN {
 		if (mlen <= length(const_value[i])) mlen = length(const_value[i])
 	}
 	for (i = 1; i <= const_size; i++) {
-		print "	SQ" api_cls ".DefSQConst(engine, " cls "::" const_value[i] ", " substr(spaces, 1, mlen - length(const_value[i])) "\""  const_value[i] "\");"
+		print "	SQ" api_cls ".DefSQConst(engine, " cls "::" const_value[i] ", " substr(spaces, 1, mlen - length(const_value[i])) "\""  const_value[i] "\");" CR
 		delete const_value[i]
 	}
-	if (const_size != 0) print ""
+	if (const_size != 0) print "" CR
 
 	# Mapping of OTTD strings to errors
 	mlen = 0
@@ -375,11 +376,11 @@ BEGIN {
 		if (mlen <= length(enum_string_to_error_mapping_string[i])) mlen = length(enum_string_to_error_mapping_string[i])
 	}
 	for (i = 1; i <= enum_string_to_error_size; i++) {
-		print "	ScriptError::RegisterErrorMap(" enum_string_to_error_mapping_string[i] ", " substr(spaces, 1, mlen - length(enum_string_to_error_mapping_string[i]))  cls "::" enum_string_to_error_mapping_error[i] ");"
+		print "	ScriptError::RegisterErrorMap(" enum_string_to_error_mapping_string[i] ", " substr(spaces, 1, mlen - length(enum_string_to_error_mapping_string[i]))  cls "::" enum_string_to_error_mapping_error[i] ");" CR
 
 		delete enum_string_to_error_mapping_string[i]
 	}
-	if (enum_string_to_error_size != 0) print ""
+	if (enum_string_to_error_size != 0) print "" CR
 
 	# Mapping of errors to human 'readable' strings.
 	mlen = 0
@@ -387,10 +388,10 @@ BEGIN {
 		if (mlen <= length(enum_error_to_string_mapping[i])) mlen = length(enum_error_to_string_mapping[i])
 	}
 	for (i = 1; i <= enum_error_to_string_size; i++) {
-		print "	ScriptError::RegisterErrorMapString(" cls "::" enum_error_to_string_mapping[i] ", " substr(spaces, 1, mlen - length(enum_error_to_string_mapping[i])) "\"" enum_error_to_string_mapping[i] "\");"
+		print "	ScriptError::RegisterErrorMapString(" cls "::" enum_error_to_string_mapping[i] ", " substr(spaces, 1, mlen - length(enum_error_to_string_mapping[i])) "\"" enum_error_to_string_mapping[i] "\");" CR
 		delete enum_error_to_string_mapping[i]
 	}
-	if (enum_error_to_string_size != 0) print ""
+	if (enum_error_to_string_size != 0) print "" CR
 
 	# Static methods
 	mlen = 0
@@ -399,13 +400,13 @@ BEGIN {
 	}
 	for (i = 1; i <= static_method_size; i++) {
 		if (static_methods[i, 2] == "v") {
-			print "	SQ" api_cls ".DefSQAdvancedStaticMethod(engine, &" cls "::" static_methods[i, 0] ", " substr(spaces, 1, mlen - length(static_methods[i, 0]) - 8) "\""  static_methods[i, 0] "\");"
+			print "	SQ" api_cls ".DefSQAdvancedStaticMethod(engine, &" cls "::" static_methods[i, 0] ", " substr(spaces, 1, mlen - length(static_methods[i, 0]) - 8) "\""  static_methods[i, 0] "\");" CR
 		} else {
-			print "	SQ" api_cls ".DefSQStaticMethod(engine, &" cls "::" static_methods[i, 0] ", " substr(spaces, 1, mlen - length(static_methods[i, 0])) "\""  static_methods[i, 0] "\", " substr(spaces, 1, mlen - length(static_methods[i, 0])) "" static_methods[i, 1] ", \"" static_methods[i, 2] "\");"
+			print "	SQ" api_cls ".DefSQStaticMethod(engine, &" cls "::" static_methods[i, 0] ", " substr(spaces, 1, mlen - length(static_methods[i, 0])) "\""  static_methods[i, 0] "\", " substr(spaces, 1, mlen - length(static_methods[i, 0])) "" static_methods[i, 1] ", \"" static_methods[i, 2] "\");" CR
 		}
 		delete static_methods[i]
 	}
-	if (static_method_size != 0) print ""
+	if (static_method_size != 0) print "" CR
 
 	# Non-static methods
 	mlen = 0
@@ -414,16 +415,16 @@ BEGIN {
 	}
 	for (i = 1; i <= method_size; i++) {
 		if (methods[i, 2] == "v") {
-			print "	SQ" api_cls ".DefSQAdvancedMethod(engine, &" cls "::" methods[i, 0] ", " substr(spaces, 1, mlen - length(methods[i, 0]) - 8) "\""  methods[i, 0] "\");"
+			print "	SQ" api_cls ".DefSQAdvancedMethod(engine, &" cls "::" methods[i, 0] ", " substr(spaces, 1, mlen - length(methods[i, 0]) - 8) "\""  methods[i, 0] "\");" CR
 		} else {
-			print "	SQ" api_cls ".DefSQMethod(engine, &" cls "::" methods[i, 0] ", " substr(spaces, 1, mlen - length(methods[i, 0])) "\""  methods[i, 0] "\", " substr(spaces, 1, mlen - length(methods[i, 0])) "" methods[i, 1] ", \"" methods[i, 2] "\");"
+			print "	SQ" api_cls ".DefSQMethod(engine, &" cls "::" methods[i, 0] ", " substr(spaces, 1, mlen - length(methods[i, 0])) "\""  methods[i, 0] "\", " substr(spaces, 1, mlen - length(methods[i, 0])) "" methods[i, 1] ", \"" methods[i, 2] "\");" CR
 		}
 		delete methods[i]
 	}
-	if (method_size != 0) print ""
+	if (method_size != 0) print "" CR
 
-	print "	SQ" api_cls ".PostRegister(engine);"
-	print "}"
+	print "	SQ" api_cls ".PostRegister(engine);" CR
+	print "}" CR
 
 	reset_reader()
 
@@ -438,6 +439,7 @@ BEGIN {
 	if (in_enum == "true") {
 		enum_value_size++
 		sub(",", "", $1)
+		sub("\r", "", $1)
 		enum_value[enum_value_size] = $1
 
 		# Check if this a special error enum
@@ -475,7 +477,7 @@ BEGIN {
 }
 
 # Add a method to the list
-/^.*\(.*\).*$/ {
+/^.*\(.*\).*\r*$/ {
 	if (cls_level != 1) next
 	if (match($0, "~")) {
 		if (api_selected != "") {
