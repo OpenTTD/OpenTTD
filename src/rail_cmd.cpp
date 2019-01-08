@@ -2011,12 +2011,12 @@ static byte DetermineFenceDirection(TileIndex tile)
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 		static const TrackBits dir_to_trackbits[DIAGDIR_END] = {TRACK_BIT_3WAY_NE, TRACK_BIT_3WAY_SE, TRACK_BIT_3WAY_SW, TRACK_BIT_3WAY_NW};
 
-		// Track bit on this edge => no fence. 
+		// Track bit on this edge => no fence.
 		if ((rail & dir_to_trackbits[d]) != TRACK_BIT_NONE) continue;
 
 		TileIndex tile2 = tile + TileOffsByDiagDir(d);
 
-		// Show fences if it's a house, industry, object, road, tunnelbridge or not owned by us. 
+		// Show fences if it's a house, industry, object, road, tunnelbridge or not owned by us.
 		if (!IsValidTile(tile2) || IsTileType(tile2, MP_HOUSE) || IsTileType(tile2, MP_INDUSTRY) ||
 				IsTileType(tile2, MP_ROAD) || (IsTileType(tile2, MP_OBJECT) && !IsObjectType(tile2, OBJECT_OWNED_LAND)) || IsTileType(tile2, MP_TUNNELBRIDGE) || !IsTileOwner(tile2, owner)) {
 			fences |= 1 << d;
@@ -2768,8 +2768,6 @@ static void TileLoop_Track(TileIndex tile)
 				} else {
 					switch (old_ground) {
 						case RAIL_GROUND_ICE_DESERT:
-							// TODO:
-							// make to random select _FENCE_1 or _FENCE_2
 							new_ground = RAIL_GROUND_ICE_DESERT_FENCE_1;
 							break;
 
@@ -2782,7 +2780,7 @@ static void TileLoop_Track(TileIndex tile)
 						case RAIL_GROUND_BARREN:
 							new_ground = RAIL_GROUND_ICE_DESERT;
 							break;
-						
+
 						default:
 							NOT_REACHED();
 					}
@@ -2807,19 +2805,17 @@ static void TileLoop_Track(TileIndex tile)
 			case RAIL_GROUND_BARREN:
 				new_ground = RAIL_GROUND_GRASS;
 				break;
-			
+
 			case RAIL_GROUND_GRASS:
-				// TODO:
-				// make randon select of _FENCE_1 or _FENCE_2;
 				new_ground = RAIL_GROUND_GRASS_FENCE_1;
 				break;
-			
+
 			case RAIL_GROUND_GRASS_FENCE_1:
 			case RAIL_GROUND_GRASS_FENCE_2:
 			case RAIL_GROUND_GRASS_FENCE_1_2:
 				new_ground = RAIL_GROUND_GRASS_FENCE_1_2;
 				break;
-			
+
 			default:
 				NOT_REACHED();
 		}
