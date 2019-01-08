@@ -364,7 +364,11 @@ uint32 GetTerrainType(TileIndex tile, TileContext context)
 					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
 					if (_generating_world) goto genworld; // we do not care about foundations here
 					RailGroundType ground = GetRailGroundType(tile);
-					has_snow = (ground == RAIL_GROUND_ICE_DESERT || (context == TCX_UPPER_HALFTILE && ground == RAIL_GROUND_HALF_SNOW));
+					has_snow = ( (ground == RAIL_GROUND_ICE_DESERT ||
+					              ground == RAIL_GROUND_ICE_DESERT_FENCE_1   ||
+					              ground == RAIL_GROUND_ICE_DESERT_FENCE_2   ||
+					              ground == RAIL_GROUND_ICE_DESERT_FENCE_1_2) ||
+					              (context == TCX_UPPER_HALFTILE && (ground == RAIL_GROUND_HALF_SNOW || ground == RAIL_GROUND_HALF_SNOW_FENCE)));
 					break;
 				}
 
