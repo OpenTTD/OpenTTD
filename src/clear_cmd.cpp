@@ -208,16 +208,19 @@ static void TileLoopClearAlps(TileIndex tile)
 }
 
 /**
- * Tests if at least one surrounding tile is desert
+ * Tests if at least one surrounding tile is non-desert
  * @param tile tile to check
- * @return does this tile have at least one desert tile around?
+ * @return does this tile have at least one non-desert tile around?
  */
-static inline bool NeighbourIsDesert(TileIndex tile)
+static inline bool NeighbourIsNormal(TileIndex tile)
 {
-	return GetTropicZone(tile + TileDiffXY(  1,  0)) == TROPICZONE_DESERT ||
-			GetTropicZone(tile + TileDiffXY( -1,  0)) == TROPICZONE_DESERT ||
-			GetTropicZone(tile + TileDiffXY(  0,  1)) == TROPICZONE_DESERT ||
-			GetTropicZone(tile + TileDiffXY(  0, -1)) == TROPICZONE_DESERT;
+	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+		TileIndex t = tile + TileOffsByDiagDir(dir);
+		if (!IsValidTile(t)) continue;
+		if (GetTropicZone(t) != TROPICZONE_DESERT) return true;
+		if (HasTileWaterClass(t) && GetWaterClass(t) == WATER_CLASS_SEA) return true;
+	}
+	return false;
 }
 
 static void TileLoopClearDesert(TileIndex tile)
@@ -229,9 +232,7 @@ static void TileLoopClearDesert(TileIndex tile)
 	/* Expected desert level - 0 if it shouldn't be desert */
 	uint expected = 0;
 	if (GetTropicZone(tile) == TROPICZONE_DESERT) {
-		expected = 3;
-	} else if (NeighbourIsDesert(tile)) {
-		expected = 1;
+		expected = NeighbourIsNormal(tile) ? 1 : 3;
 	}
 
 	if (current == expected) return;
