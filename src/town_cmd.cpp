@@ -3335,7 +3335,7 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 			if (!HasTownOwnedRoad(tile)) {
 				TownID tid = GetTownIndex(tile);
 
-				if (tid == (TownID)INVALID_TOWN) {
+				if (tid == INVALID_TOWN) {
 					/* in the case we are generating "many random towns", this value may be INVALID_TOWN */
 					if (_generating_world) return CalcClosestTownFromTile(tile, threshold);
 					assert(Town::GetNumItems() == 0);
