@@ -3187,12 +3187,12 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 						if (!HasSignalOnTrackdir(gp.new_tile, ReverseTrackdir(i))) {
 							v->cur_speed = 0;
 							v->subspeed = 0;
-							v->progress = 255 - 100;
+							v->progress = 255; // make sure that every bit of acceleration will hit the signal again, so speed stays 0.
 							if (!_settings_game.pf.reverse_at_signals || ++v->wait_counter < _settings_game.pf.wait_oneway_signal * 20) return false;
 						} else if (HasSignalOnTrackdir(gp.new_tile, i)) {
 							v->cur_speed = 0;
 							v->subspeed = 0;
-							v->progress = 255 - 10;
+							v->progress = 255; // make sure that every bit of acceleration will hit the signal again, so speed stays 0.
 							if (!_settings_game.pf.reverse_at_signals || ++v->wait_counter < _settings_game.pf.wait_twoway_signal * 73) {
 								DiagDirection exitdir = TrackdirToExitdir(i);
 								TileIndex o_tile = TileAddByDiagDir(gp.new_tile, exitdir);
