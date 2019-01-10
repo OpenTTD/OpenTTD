@@ -190,6 +190,7 @@ STR_COLOUR_ORANGE                                               :Orange
 STR_COLOUR_BROWN                                                :Marron
 STR_COLOUR_GREY                                                 :Gris
 STR_COLOUR_WHITE                                                :Blanc
+STR_COLOUR_RANDOM                                               :Aléatoire
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -816,6 +817,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Président)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} a sponsorisé la construction de la nouvelle ville {TOWN}{NBSP}!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Une nouvelle ville nommée {TOWN} a été construite{NBSP}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Un{G 0 "" "" e} nouv{G 0 eau el elle} {STRING} en construction près de {TOWN}{NBSP}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Un{G 0 "" "" e} nouv{G 0 eau el elle} {STRING} s'implante près de {TOWN}{NBSP}!
@@ -1257,6 +1259,9 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Autoriser la co
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Il n'est pas possible de modifier ce paramètre quand il y a des véhicules
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Entretien de l'infrastructure{NBSP}: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Si activé, les infrastructures entraineront des coût d'entretien. Le coût augmente proportionnellement à la taille du réseau, affectant les grosses compagnies plus que les petites
+
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Couleur de la compagnie au démarrage{NBSP}: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Choisir la couleur de démarrage pour la compagnie
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Les aéroports n'expirent jamais{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Activer ce paramètre fait que chaque type d'aéroports reste toujours disponible après son introduction
@@ -2703,36 +2708,36 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Fréquence d'images
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
-STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Fréquence de simulation{NBSP}: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Fréquence de simulation{NBSP}: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Nombre de ticks simulés par seconde.
-STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Fréquence des graphismes{NBSP}: {STRING}
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Fréquence des graphismes{NBSP}: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Nombre d'images rendues par seconde.
-STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Facteur de vitesse actuel{NBSP}: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Facteur de vitesse actuel{NBSP}: {DECIMAL}x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}À quelle vitesse le jeu tourne actuellement, comparé à la vitesse attendue pour la simulation normale.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Actuel
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Moyen
-STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Données basées sur {COMMA} mesures
-STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
-STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
-STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
-STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} images/s
-STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} images/s
-STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} images/s
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Données basées sur {COMMA} mesures
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} images/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} images/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} images/s
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
-STR_FRAMERATE_GAMELOOP                                          :{WHITE}Total de la boucle de jeu{NBSP}:
-STR_FRAMERATE_GL_ECONOMY                                        :{WHITE}  Traitement des marchandises{NBSP}:
-STR_FRAMERATE_GL_TRAINS                                         :{WHITE}  Ticks des trains{NBSP}:
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Total de la boucle de jeu{NBSP}:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Traitement des marchandises{NBSP}:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Ticks des trains{NBSP}:
 STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  Ticks des véhicules routiers{NBSP}:
-STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  Ticks des navires{NBSP}:
-STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE}  Ticks des aéroplanes{NBSP}:
-STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE}  Ticks du monde{NBSP}:
-STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE}  Délai du flux des marchandises{NBSP}:
-STR_FRAMERATE_DRAWING                                           :{WHITE}Rendu des graphismes{NBSP}:
-STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE}  Vues{NBSP}:
-STR_FRAMERATE_VIDEO                                             :{WHITE}Sortie vidéo{NBSP}:
-STR_FRAMERATE_SOUND                                             :{WHITE}Mixage sonore{NBSP}:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Ticks des navires{NBSP}:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Ticks des aéroplanes{NBSP}:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Ticks du monde{NBSP}:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Délai du flux des marchandises{NBSP}:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Rendu des graphismes{NBSP}:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Vues{NBSP}:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Sortie vidéo{NBSP}:
+STR_FRAMERATE_SOUND                                             :{BLACK}Mixage sonore{NBSP}:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Boucle de jeu
@@ -2772,6 +2777,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Détails
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Pas d'informations disponibles
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}{NBSP}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF{NBSP}: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtre{NBSP}:
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Entrer un nom pour la sauvegarde
 
@@ -2970,6 +2976,8 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lecture après 
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Indisponibilité de la ressource demandée (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} a été désactivé par {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Format de sprite invalide ou inconnu (sprite {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Trop d'éléments dans la liste des valeurs de la propriété (sprite {3:NUM}, propriété {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Fonction de rappel de production d'industrie invalide (sprite {3:NUM}, "{1:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attention{NBSP}!
@@ -3856,6 +3864,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Âge du véhicu
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Entretien nécessaire
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Toujours
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Durée de vie restante (années)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Fiabilité maximum
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Comment comparer les données du véhicule à la valeur donnée
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :est égal à

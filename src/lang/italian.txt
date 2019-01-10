@@ -1282,6 +1282,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non è p
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenzione infrastrutture: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Se abilitata, le infrastrutture causano dei costi di manutenzione. I costi crescono in modo più che proporzionale alla dimensione della rete, influenzando maggiormente le compagnie più grandi rispetto alle piccole
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Non rendere mai obsoleti i tipi di aeroporto: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Abilitando questa impostazione, tutti i tipi di aeroporto rimangono disponibili indefinitamente dopo essere stati introdotti
 
@@ -3889,6 +3890,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Età (anni)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Manutenzione richiesta
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Vita rimanente (anni)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Affidabilità massima
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Modalità di confronto del dato del veicolo con il valore inserito
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :è uguale a

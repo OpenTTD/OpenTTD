@@ -1251,6 +1251,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Nid yw'n
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Cynnal a chadw tanadeiledd: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Pan fo wedi'i alluogi, mae tanadeiledd yn creu costau cynnal a chadw. Mae'r cost yn codi'n gyflymach na'i gyfradd gyda thŵf y rhwydwaith, gan effeithio'n fwy ar gwmniau mawr na rhai bychan
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Maes awyr ddim yn dibennu: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Mae galluogi'r dewis yma'n peri i bob math o faes awyr aros ar gael am byth wedi ei gyflwyniad gyntaf
 

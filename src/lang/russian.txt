@@ -1410,6 +1410,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Изме
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Обслуживание инфраструктуры: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Включает затраты на содержание инфраструктуры. Стоимость непропорционально увеличивается с ростом транспортной сети, оказывая, таким образом, большее влияние на крупные компании, чем на малые.
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аэропорты не устаревают: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :При включении все типы аэропортов доступны для строительства в любое время после их первоначального появления
 

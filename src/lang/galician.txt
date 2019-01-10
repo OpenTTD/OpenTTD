@@ -1252,6 +1252,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non é p
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Mantemento de infraestrutura: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Cando se activa, a infraestrutura provoca custos de mantemento. O custo aumenta sobre-proporcionadamente co tamaño da rede, e afecta máis ás compañías máis grandes cás pequenas
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Os aeroportos nunca caducan: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Activar esta opción fai que cada tipo de aeroporto siga estando dispoñíbel para sempre dende a súa aparición
 

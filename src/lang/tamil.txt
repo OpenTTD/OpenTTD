@@ -1173,6 +1173,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :வழிசெ
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}வாகனங்கள் இருக்கும் பொது இந்த அமைப்பினை மாற்ற இயலாது
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :கட்டட பராமரிப்பு: {STRING}
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :விமான நிலையங்கள் என்றும் காலாவதியாகாது: {STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :வாகனம் தொலைந்தால் எச்சரிக்கை செய்: {STRING}

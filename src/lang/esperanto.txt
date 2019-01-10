@@ -1156,6 +1156,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permesu trairaj
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permesu trairajn strathaltejojn sur stratoj posedataj de konkurantoj: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ne eblas ŝanĝi ĉi tiujn agordon dum veturiloj ĉeestas
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flughavenoj neniam antikviĝas: {STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avertu se veturilo estas perdita: {STRING}

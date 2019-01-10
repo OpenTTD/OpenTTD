@@ -1443,6 +1443,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non lice
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Tuitio infrastructurae: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Electa, infrastructura prodit expensa tuitionis. Expensa crescunt celerius quam pro portione magnitudini retis, ergo societates magnae affectantur magis quam parvae
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportus numquam recedunt: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Electa, omnes aeroportuum typi permanent post introductionem
 

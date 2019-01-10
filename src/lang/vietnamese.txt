@@ -1258,6 +1258,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Không t
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Phí bảo trì cơ sở hạ tầng: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Khi mở, thì hạ tầng công ty sẽ sinh ra chi phí bảo trì. Chi phí sẽ tăng theo mạng lưới giao thông bạn xây dựng, và sẽ tiêu tốn của công ty lớn nhiều hơn công ty nhỏ
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Sân bay không bao giờ thành đồ cổ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bật tùy chọn này cho phép tất cả các loại sân bay không bị lỗi thời
 

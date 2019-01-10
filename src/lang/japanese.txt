@@ -1251,6 +1251,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}この�
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :インフラ補修: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :有効にすると、インフラ設備にも維持費が発生するようになります。維持費はネットワークのサイズに非線形で比例する為、小さい会社よりも大きい会社の方が影響が大きくなります
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :空港の旧式化撤廃: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :有効にすると、いずれの種類の空港であっても、その開発後であれば永久に建設が可能になります
 

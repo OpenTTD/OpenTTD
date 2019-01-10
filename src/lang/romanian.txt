@@ -1245,6 +1245,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Schimbar
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Mentenanță infrastructură: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Cand este activă, infrastructura necesita cheltuieli cu intreținerea. Costurile cresc proporțional cu rețeaua de transport, afectând companiile mari mai mult decât companiile mici
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroporturile nu expiră niciodată: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Activarea acestei opțiuni determina ca fiecare tip de aeroport sa fie disponibil permanent, după ce a fost introdus.
 

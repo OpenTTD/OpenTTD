@@ -1257,6 +1257,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Deze ins
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Onderhoud infrastructuur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Wanneer dit is ingeschakeld, veroorzaakt de infrastructuur onderhoudskosten. De kosten groeien boven-proportioneel met de grootte van het netwerk, waardoor grotere bedrijven hierdoor meer worden beïnvloed dan kleinere
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Vliegvelden verlopen niet: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Het inschakelen van deze instelling zorgt ervoor dat elke luchthaven soort altijd beschikbaar blijft na de introductie
 

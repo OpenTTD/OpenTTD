@@ -1252,6 +1252,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Verander
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktuur onderhoud: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :As dit geaktiveer is sal dit veroorsaak dat infrastruktuur onderhoudskoste verhoog. Die koste groei oor-proporsioneel met die netwerk grootte, wat groter maatskappye meer as kleiner maatskappye benadeel
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lughawes verval nooit nie: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wanner hierdie stelling geaktiveer is, maak dit dat alle lughawens ewig beskikbaar bly, na hul bekendstelling datum
 

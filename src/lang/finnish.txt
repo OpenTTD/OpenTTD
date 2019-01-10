@@ -1256,6 +1256,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tätä a
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktuurin huoltokustannukset: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Mikäli käytössä, infrastruktuurista aiheutuu huoltokuluja. Kulut kasvavat suhteettomasti verkon kokoon nähden, täten ne vaikuttavat suurempiin yhtiöihin enemmän kuin pieniin
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lentokentät eivät vanhene: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Mikäli käytössä, kaikki lentokenttätyypit ovat saatavilla ikuisesti niiden julkistamisen jälkeen
 

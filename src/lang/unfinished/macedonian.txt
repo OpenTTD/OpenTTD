@@ -843,6 +843,7 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Износ на
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Инфраструктура за одржување: {STRING}
 
 
+
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Дебелина на линии во графици: {STRING}
 
 

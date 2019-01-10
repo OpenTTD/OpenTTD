@@ -1249,6 +1249,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}At der f
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Ynfrastruktuerûnderhâld: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :By ynskeakeljen binne der koster ferbûn oan it ûnderhâld fan ynfrastruktuer. De kosten wurde heger by gruttere netwurken wêrtoch gruttere bedriuwen hjir mear lêst fan hawwe
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Fleanfjilden ferrinne nea: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :By ynskeakeljen bliuwe alle fleanfjildtypes foar ivich beskikber
 

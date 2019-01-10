@@ -1203,6 +1203,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ekki er 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Viðhald á innviðum: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Ef þessi stilling er virk kostar að reka innviði fyrirtækisins. Kostnaður eykst í auknu hlutfalli við stærð fyrirtækisins, því eru áhrifin meiri á stór fyrirtæki en lítil
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Alltaf hægt að byggja allar gerðir flugvalla: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ef þessi stilling er virk þá er hver tegund flugvallar alltaf aðgengileg eftir að hann verður fyrst aðgengilegur
 

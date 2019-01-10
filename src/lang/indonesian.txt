@@ -1256,6 +1256,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tidak di
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Pemeliharaan Infrastruktur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Jika dinyalakan, infrastruktur membutuhkan biaya pemeliharaan. Biaya berkembang secara proporsional sesuai dengan ukuran jaringan, lebih berdampak pada perusahaan besar dari pada perusahaan kecil
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Bandara tidak kedaluarsa: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Menyalakan setelan ini membuat semua jenis bandara tetap ada selamanya sejak pendesainanya
 
