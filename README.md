@@ -78,7 +78,7 @@ When you are sure it is not already reported you should:
 After you have done all that you can report the bug. Please include the
 following information in your bug report:
 
-- OpenTTD version (PLEASE test the latest SVN/nightly build)
+- OpenTTD version (PLEASE test the latest Git revision/nightly build)
 - Bug details, including instructions how to reproduce it
 - Platform (Windows, Linux, FreeBSD, …) and compiler (including version) if
    you compiled OpenTTD yourself.
@@ -655,7 +655,7 @@ someone else may have already started translating to the same language.
 
 So, now that you have notified the development team about your intention to
 translate (You did, right? Of course you did.) you can pick up english.txt
-(found in the SVN repository under /src/lang) and translate.
+(found in the Git repository under /src/lang) and translate.
 
 You must change the first two lines of the file appropriately:
 
