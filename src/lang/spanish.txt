@@ -190,6 +190,7 @@ STR_COLOUR_ORANGE                                               :Naranja
 STR_COLOUR_BROWN                                                :Marrón
 STR_COLOUR_GREY                                                 :Gris
 STR_COLOUR_WHITE                                                :Blanco
+STR_COLOUR_RANDOM                                               :Aleatorio
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -374,7 +375,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Salir
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opciones de juego
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Configuración
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configuración de scripts
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configuración de Scripts
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configuración NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opciones de transparencia
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Ver nombres de municipios
@@ -4021,7 +4022,7 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Comproba
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró IA apropiada para cargar.{}Ésta es una IA por defecto que no realiza acción alguna.{}Puedes descargar nuevas IA mediante el sistema de 'Contenido Online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno de los scripts ejecutados ha fallado. Por favor, informe del fallo al autor del script con una captura de la ventana de depuración de Script / IA
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La ventana de depuración de scripts solo está disponible para el servidor
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La ventana de depuración de Scripts solo está disponible para el servidor
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuración de Scripts de Juego / IA
