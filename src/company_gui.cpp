@@ -2194,16 +2194,16 @@ struct CompanyWindow : Window
 				uint y = r.top;
 
 				/* Collect rail and road counts. */
-				uint rail_pices = c->infrastructure.signal;
+				uint rail_pieces = c->infrastructure.signal;
 				uint road_pieces = 0;
-				for (uint i = 0; i < lengthof(c->infrastructure.rail); i++) rail_pices += c->infrastructure.rail[i];
+				for (uint i = 0; i < lengthof(c->infrastructure.rail); i++) rail_pieces += c->infrastructure.rail[i];
 				for (uint i = 0; i < lengthof(c->infrastructure.road); i++) road_pieces += c->infrastructure.road[i];
 
-				if (rail_pices == 0 && road_pieces == 0 && c->infrastructure.water == 0 && c->infrastructure.station == 0 && c->infrastructure.airport == 0) {
+				if (rail_pieces == 0 && road_pieces == 0 && c->infrastructure.water == 0 && c->infrastructure.station == 0 && c->infrastructure.airport == 0) {
 					DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
 				} else {
-					if (rail_pices != 0) {
-						SetDParam(0, rail_pices);
+					if (rail_pieces != 0) {
+						SetDParam(0, rail_pieces);
 						DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL);
 						y += FONT_HEIGHT_NORMAL;
 					}
