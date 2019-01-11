@@ -565,11 +565,9 @@ public:
 			case WID_GL_INFO: {
 				Money this_year = 0;
 				Money last_year = 0;
-				uint32 occupancy = 0;
-				size_t vehicle_count = this->vehicles.size();
+				uint64 occupancy = 0;
 
-				for (uint i = 0; i < vehicle_count; i++) {
-					const Vehicle *v = this->vehicles[i];
+				for (const Vehicle * const v : this->vehicles) {
 					assert(v->owner == this->owner);
 
 					this_year += v->GetDisplayProfitThisYear();
@@ -592,6 +590,7 @@ public:
 
 				y += FONT_HEIGHT_NORMAL;
 				DrawString(left, right, y, STR_GROUP_OCCUPANCY, TC_BLACK);
+				const size_t vehicle_count = this->vehicles.size();
 				if (vehicle_count > 0) {
 					SetDParam(0, occupancy / vehicle_count);
 					DrawString(left, right, y, STR_GROUP_OCCUPANCY_VALUE, TC_BLACK, SA_RIGHT);
