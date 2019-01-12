@@ -800,7 +800,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				} else {
 					const Depot *dp = Depot::GetIfValid(new_order.GetDestination());
 
-					if (dp == NULL) return CMD_ERROR;
+					if (dp == NULL || !dp->IsInUse()) return CMD_ERROR;
 
 					CommandCost ret = CheckOwnership(GetTileOwner(dp->xy));
 					if (ret.Failed()) return ret;

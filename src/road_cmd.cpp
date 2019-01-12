@@ -1070,7 +1070,7 @@ static CommandCost RemoveRoadDepot(TileIndex tile, DoCommandFlag flags)
 			DirtyCompanyInfrastructureWindows(c->index);
 		}
 
-		delete Depot::GetByTile(tile);
+		Depot::GetByTile(tile)->Disuse();
 		DoClearSquare(tile);
 	}
 

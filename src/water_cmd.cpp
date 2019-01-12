@@ -224,7 +224,7 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
-		delete Depot::GetByTile(tile);
+		Depot::GetByTile(tile)->Disuse();
 
 		Company *c = Company::GetIfValid(GetTileOwner(tile));
 		if (c != NULL) {

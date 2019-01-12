@@ -31,21 +31,31 @@ Depot::~Depot()
 {
 	if (CleaningPool()) return;
 
-	if (!IsDepotTile(this->xy) || GetDepotIndex(this->xy) != this->index) {
-		/* It can happen there is no depot here anymore (TTO/TTD savegames) */
-		return;
-	}
-
-	/* Clear the order backup. */
-	OrderBackup::Reset(this->xy, false);
-
 	/* Clear the depot from all order-lists */
 	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, this->index);
+}
 
+/**
+ * Schedule deletion of this depot.
+ *
+ * This method is ought to be called after demolishing a depot.
+ * The depot will be kept in the pool for a while so it can be
+ * placed again later without messing vehicle orders.
+ *
+ * @see Depot::IsInUse
+ */
+void Depot::Disuse()
+{
 	/* Delete the depot-window */
 	DeleteWindowById(WC_VEHICLE_DEPOT, this->xy);
 
 	/* Delete the depot list */
 	VehicleType vt = GetDepotVehicleType(this->xy);
 	DeleteWindowById(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_DEPOT_LIST, vt, GetTileOwner(this->xy), this->index).Pack());
+
+	/* Clear the order backup. */
+	OrderBackup::Reset(this->xy, false);
+
+	/* Mark that the depot is demolished and start the countdown. */
+	this->delete_ctr = 8;
 }

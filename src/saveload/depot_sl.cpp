@@ -29,6 +29,7 @@ static const SaveLoad _depot_desc[] = {
 	 SLE_CONDVAR(Depot, build_date, SLE_INT32,                SLV_142, SL_MAX_VERSION),
 	 SLE_CONDVAR(Depot, type,       SLE_UINT8,                SLV_MOVEABLE_DEPOTS, SL_MAX_VERSION),
 	 SLE_CONDVAR(Depot, owner,      SLE_UINT8,                SLV_MOVEABLE_DEPOTS, SL_MAX_VERSION),
+	 SLE_CONDVAR(Depot, delete_ctr, SLE_UINT8,                SLV_MOVEABLE_DEPOTS, SL_MAX_VERSION),
 	 SLE_END()
 };
 
