@@ -2114,7 +2114,7 @@ static inline bool CanBuildHouseHere(TileIndex tile, bool noslope)
 
 	/* can we clear the land? */
 	if (DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR).Failed()) return false;
-	return EnsureNoShipFromDiagDirs(tile).Succeeded();
+	return EnsureNoShipOnDiagDirs(tile).Succeeded();
 }
 
 

@@ -691,7 +691,7 @@ do_clear:;
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 
-		ret = EnsureNoShipFromDiagDirs(tile);
+		ret = EnsureNoShipOnDiagDirs(tile);
 		if (ret.Failed()) return ret;
 	}
 
@@ -1031,7 +1031,7 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	}
 
 	cost.AddCost(DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR));
-	if (cost.Succeeded()) cost.AddCost(EnsureNoShipFromDiagDirs(tile));
+	if (cost.Succeeded()) cost.AddCost(EnsureNoShipOnDiagDirs(tile));
 	if (cost.Failed()) return cost;
 
 	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);

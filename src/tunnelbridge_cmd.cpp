@@ -375,7 +375,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		/* Try and clear the start landscape */
 		CommandCost ret = DoCommand(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (ret.Failed()) return ret;
-		if (EnsureNoShipFromDiagDirs(tile_start).Failed()) return_cmd_error(STR_ERROR_SHIP_IN_THE_WAY);
+		if (EnsureNoShipOnDiagDirs(tile_start).Failed()) return_cmd_error(STR_ERROR_SHIP_IN_THE_WAY);
 		cost = ret;
 
 		if (terraform_cost_north.Failed() || (terraform_cost_north.GetCost() != 0 && !allow_on_slopes)) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
@@ -384,7 +384,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		/* Try and clear the end landscape */
 		ret = DoCommand(tile_end, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (ret.Failed()) return ret;
-		if (EnsureNoShipFromDiagDirs(tile_end).Failed()) return_cmd_error(STR_ERROR_SHIP_IN_THE_WAY);
+		if (EnsureNoShipOnDiagDirs(tile_end).Failed()) return_cmd_error(STR_ERROR_SHIP_IN_THE_WAY);
 		cost.AddCost(ret);
 
 		/* false - end tile slope check */

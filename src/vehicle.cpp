@@ -576,7 +576,7 @@ static Vehicle *EnsureNoShipOnTrackProc(Vehicle *v, void *data)
  * @return Succeeded command (no neighbouring ship) or failed command (a
  *         neighbouring ship is found)
  */
-CommandCost EnsureNoShipFromDiagDirs(TileIndex tile, byte diag_dir_mask)
+CommandCost EnsureNoShipOnDiagDirs(TileIndex tile, byte diag_dir_mask)
 {
 	if (!IsValidTile(tile)) return CommandCost();
 
