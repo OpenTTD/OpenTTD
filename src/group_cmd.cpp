@@ -232,7 +232,7 @@ void GroupStatistics::Clear()
 			stats.autoreplace_defined = true;
 			stats.autoreplace_finished = true;
 		}
-		if (stats.num_engines[erl->from] > 0) stats.autoreplace_finished = false;
+		if (GetGroupNumEngines(company, erl->group_id, erl->from) > 0) stats.autoreplace_finished = false;
 	}
 }
 
@@ -409,11 +409,12 @@ CommandCost CmdAlterGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 		if (flags & DC_EXEC) {
 			g->parent = (pg == NULL) ? INVALID_GROUP : pg->index;
+			GroupStatistics::UpdateAutoreplace(g->owner);
 		}
 	}
 
 	if (flags & DC_EXEC) {
-		SetWindowDirty(WC_REPLACE_VEHICLE, g->vehicle_type);
+		InvalidateWindowData(WC_REPLACE_VEHICLE, g->vehicle_type, 1);
 		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).Pack());
 	}
 
