@@ -1439,6 +1439,7 @@ struct BuildVehicleWindow : Window {
 		this->vscroll->SetCount(this->eng_list.Length());
 
 		this->SetWidgetDisabledState(WID_BV_SHOW_HIDE, this->sel_engine == INVALID_ENGINE);
+		this->SetWidgetDisabledState(WID_BV_BUILD, this->sel_engine == INVALID_ENGINE);
 
 		this->DrawWidgets();
 
