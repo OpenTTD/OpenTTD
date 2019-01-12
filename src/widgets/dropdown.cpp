@@ -14,6 +14,7 @@
 #include "../string_func.h"
 #include "../strings_func.h"
 #include "../window_func.h"
+#include "../guitimer_func.h"
 #include "dropdown_type.h"
 
 #include "dropdown_widget.h"
@@ -97,6 +98,7 @@ struct DropdownWindow : Window {
 	bool drag_mode;
 	bool instant_close;           ///< Close the window when the mouse button is raised.
 	int scrolling;                ///< If non-zero, auto-scroll the item list (one time).
+	GUITimer scrolling_timer;     ///< Timer for auto-scroll of the item list.
 	Point position;               ///< Position of the topleft corner of the window.
 	Scrollbar *vscroll;
 
@@ -155,6 +157,7 @@ struct DropdownWindow : Window {
 		this->click_delay      = 0;
 		this->drag_mode        = true;
 		this->instant_close    = instant_close;
+		this->scrolling_timer  = GUITimer(MILLISECONDS_PER_TICK);
 	}
 
 	~DropdownWindow()
@@ -254,8 +257,11 @@ struct DropdownWindow : Window {
 		}
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
+		if (!this->scrolling_timer.Elapsed(delta_ms)) return;
+		this->scrolling_timer.SetInterval(MILLISECONDS_PER_TICK);
+
 		if (this->scrolling != 0) {
 			int pos = this->vscroll->GetPosition();
 

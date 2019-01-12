@@ -31,6 +31,7 @@
 #include "../core/geometry_func.hpp"
 #include "../genworld.h"
 #include "../map_type.h"
+#include "../guitimer_func.h"
 
 #include "../widgets/network_widget.h"
 
@@ -234,6 +235,7 @@ protected:
 	Scrollbar *vscroll;           ///< vertical scrollbar of the list of servers
 	QueryString name_editbox;     ///< Client name editbox.
 	QueryString filter_editbox;   ///< Editbox for filter on servers
+	GUITimer requery_timer;       ///< Timer for network requery
 
 	int lock_offset; ///< Left offset for lock icon.
 	int blot_offset; ///< Left offset for green/yellow/red compatibility icon.
@@ -479,6 +481,8 @@ public:
 		this->last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 		this->server = this->last_joined;
 		if (this->last_joined != NULL) NetworkUDPQueryServer(this->last_joined->address);
+
+		this->requery_timer.SetInterval(MILLISECONDS_PER_TICK);
 
 		this->servers.SetListing(this->last_sorting);
 		this->servers.SetSortFuncs(this->sorter_funcs);
@@ -903,8 +907,11 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_NG_MATRIX);
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
+		if (!this->requery_timer.Elapsed(delta_ms)) return;
+		this->requery_timer.SetInterval(MILLISECONDS_PER_TICK);
+
 		NetworkGameListRequery();
 	}
 };

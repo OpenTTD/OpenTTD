@@ -29,6 +29,7 @@
 #include "../widgets/dropdown_func.h"
 #include "../hotkeys.h"
 #include "../core/geometry_func.hpp"
+#include "../guitimer_func.h"
 
 #include "ai.hpp"
 #include "ai_gui.hpp"
@@ -286,7 +287,7 @@ struct AISettingsWindow : public Window {
 	bool clicked_increase;                ///< Whether we clicked the increase or decrease button.
 	bool clicked_dropdown;                ///< Whether the dropdown is open.
 	bool closing_dropdown;                ///< True, if the dropdown list is currently closing.
-	int timeout;                          ///< Timeout for unclicking the button.
+	GUITimer timeout;                     ///< Timeout for unclicking the button.
 	int clicked_row;                      ///< The clicked row of settings.
 	int line_height;                      ///< Height of a row in the matrix widget.
 	Scrollbar *vscroll;                   ///< Cache of the vertical scrollbar.
@@ -505,7 +506,7 @@ struct AISettingsWindow : public Window {
 					if (new_val != old_val) {
 						this->ai_config->SetSetting(config_item.name, new_val);
 						this->clicked_button = num;
-						this->timeout = 5;
+						this->timeout.SetInterval(150);
 					}
 				} else if (!bool_item && !config_item.complete_labels) {
 					/* Display a query box so users can enter a custom value. */
@@ -568,9 +569,9 @@ struct AISettingsWindow : public Window {
 		this->vscroll->SetCapacityFromWidget(this, WID_AIS_BACKGROUND);
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
-		if (--this->timeout == 0) {
+		if (this->timeout.Elapsed(delta_ms)) {
 			this->clicked_button = -1;
 			this->SetDirty();
 		}

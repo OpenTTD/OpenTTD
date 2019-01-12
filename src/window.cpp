@@ -3304,7 +3304,7 @@ void InvalidateWindowClassesData(WindowClass cls, int data, bool gui_scope)
 }
 
 /**
- * Dispatch OnTick event over all windows
+ * Dispatch OnGameTick event over all windows
  */
 void CallWindowGameTickEvent()
 {
