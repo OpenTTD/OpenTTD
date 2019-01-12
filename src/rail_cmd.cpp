@@ -995,7 +995,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (!Depot::CanAllocateItem()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		Depot *d = new Depot(tile);
+		Depot *d = new Depot(tile, VEH_TRAIN, _current_company);
 		d->build_date = _date;
 
 		MakeRailDepot(tile, _current_company, d->index, dir, railtype);

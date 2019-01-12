@@ -136,7 +136,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	}
 
 	if (flags & DC_EXEC) {
-		Depot *depot = new Depot(tile);
+		Depot *depot = new Depot(tile, VEH_SHIP, _current_company);
 		depot->build_date = _date;
 
 		if (wc1 == WATER_CLASS_CANAL || wc2 == WATER_CLASS_CANAL) {

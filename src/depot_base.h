@@ -23,10 +23,18 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	char *name;
 
 	TileIndex xy;
-	uint16 town_cn;    ///< The N-1th depot for this town (consecutive number)
-	Date build_date;   ///< Date of construction
+	uint16 town_cn;       ///< The N-1th depot for this town (consecutive number)
+	Date build_date;      ///< Date of construction
+	VehicleTypeByte type; ///< Type of the depot.
+	OwnerByte owner;      ///< Owner of the depot.
 
-	Depot(TileIndex xy = INVALID_TILE) : xy(xy) {}
+	Depot(TileIndex xy = INVALID_TILE, VehicleType type = VEH_INVALID, Owner owner = INVALID_OWNER)
+	{
+		 this->xy = xy;
+		 this->type = type;
+		 this->owner = owner;
+	}
+
 	~Depot();
 
 	static inline Depot *GetByTile(TileIndex tile)

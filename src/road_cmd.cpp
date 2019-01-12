@@ -1037,7 +1037,7 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	if (!Depot::CanAllocateItem()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		Depot *dep = new Depot(tile);
+		Depot *dep = new Depot(tile, VEH_ROAD, _current_company);
 		dep->build_date = _date;
 
 		/* A road depot has two road bits. */
