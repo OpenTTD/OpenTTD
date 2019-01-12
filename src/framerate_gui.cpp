@@ -15,9 +15,9 @@
 #include "window_gui.h"
 #include "table/sprites.h"
 #include "strings_func.h"
-#include "debug.h"
 #include "console_func.h"
 #include "console_type.h"
+#include "guitimer_func.h"
 
 #include "widgets/framerate_widget.h"
 
@@ -295,7 +295,7 @@ static const NWidgetPart _framerate_window_widgets[] = {
 
 struct FramerateWindow : Window {
 	bool small;
-	uint32 next_update;
+	GUITimer next_update;
 
 	struct CachedDecimal {
 		StringID strid;
@@ -339,21 +339,24 @@ struct FramerateWindow : Window {
 		this->InitNested(number);
 		this->small = this->IsShaded();
 		this->UpdateData();
+		this->next_update.SetInterval(100);
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
+		bool elapsed = this->next_update.Elapsed(delta_ms);
+
 		/* Check if the shaded state has changed, switch caption text if it has */
 		if (this->small != this->IsShaded()) {
 			this->small = this->IsShaded();
 			this->GetWidget<NWidgetLeaf>(WID_FRW_CAPTION)->SetDataTip(this->small ? STR_FRAMERATE_CAPTION_SMALL : STR_FRAMERATE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
-			this->next_update = 0;
+			elapsed = true;
 		}
 
-		if (_realtime_tick >= this->next_update) {
+		if (elapsed) {
 			this->UpdateData();
 			this->SetDirty();
-			this->next_update = _realtime_tick + 100;
+			this->next_update.SetInterval(100);
 		}
 	}
 
@@ -527,7 +530,7 @@ static const NWidgetPart _frametime_graph_window_widgets[] = {
 struct FrametimeGraphWindow : Window {
 	int vertical_scale;       ///< number of TIMESTAMP_PRECISION units vertically
 	int horizontal_scale;     ///< number of half-second units horizontally
-	uint32 next_scale_update; ///< realtime tick for next scale update
+	GUITimer next_scale_update; ///< interval for next scale update
 
 	PerformanceElement element; ///< what element this window renders graph for
 	Dimension graph_size;       ///< size of the main graph area (excluding axis labels)
@@ -537,7 +540,7 @@ struct FrametimeGraphWindow : Window {
 		this->element = (PerformanceElement)number;
 		this->horizontal_scale = 4;
 		this->vertical_scale = TIMESTAMP_PRECISION / 10;
-		this->next_scale_update = 0;
+		this->next_scale_update.SetInterval(1);
 
 		this->InitNested(number);
 	}
@@ -649,12 +652,12 @@ struct FrametimeGraphWindow : Window {
 		this->SelectVerticalScale(peak_value);
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
 		this->SetDirty();
 
-		if (this->next_scale_update < _realtime_tick) {
-			this->next_scale_update = _realtime_tick + 500;
+		if (this->next_scale_update.Elapsed(delta_ms)) {
+			this->next_scale_update.SetInterval(500);
 			this->UpdateScale();
 		}
 	}
