@@ -28,6 +28,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "widgets/dropdown_func.h"
+#include "widgets/dropdown_type.h"
 #include "engine_gui.h"
 #include "cargotype.h"
 #include "core/geometry_func.hpp"
@@ -93,7 +94,7 @@ static const CargoID CF_NONE = CT_INVALID;  ///< Show only vehicles which do not
 
 Listing _engine_sort_last_sorting[VEH_COMPANY_END] = { { 0, false }, { 0, false }, { 0, false }, { 0, false } };
 bool _engine_sort_show_hidden_engines[VEH_COMPANY_END] = {false, false, false, false}; ///< Last set 'show hidden engines' setting for each vehicle type.
-static CargoID _engine_sort_last_cargo_criteria[VEH_COMPANY_END] = {CF_ANY, CF_ANY, CF_ANY, CF_ANY}; ///< Last set filter criteria, for each vehicle type.
+static byte _engine_sort_last_cargo_criteria[VEH_COMPANY_END] = {CF_ANY, CF_ANY, CF_ANY, CF_ANY}; ///< Last set filter criteria, for each vehicle type.
 
 /**
  * Determines order of engines by engineID
@@ -957,6 +958,47 @@ void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selecte
 	ShowDropDownMenu(w, _engine_sort_listing[vehicle_type], selected, button, 0, hidden_mask);
 }
 
+/**
+ * Get the display string of a vehicle cargo filter.
+ * @param filter_criteria Filter criteria.
+ * @return The display string of the filter.
+ */
+static StringID GetVehicleFilterDropDownString(CargoID filter_criteria)
+{
+	switch (filter_criteria) {
+		case CF_ANY:  return STR_PURCHASE_INFO_ALL_TYPES;
+		case CF_NONE: return STR_PURCHASE_INFO_NONE;
+		default:      return CargoSpec::Get(filter_criteria)->name;
+	}
+}
+
+/**
+ * Display the dropdown for the vehicle filter criteria.
+ * @param w Parent window (holds the dropdown button).
+ * @param vehicle_type %Vehicle type being filtered.
+ * @param selected Currently selected filter criterium.
+ * @param button Widget button.
+ */
+static void DisplayVehicleFilterDropDown(Window *w, VehicleType vehicle_type, CargoID selected, int button)
+{
+	DropDownList *list = new DropDownList();
+
+	/* Add item for disabling filtering. */
+	*list->Append() = new DropDownListStringItem(GetVehicleFilterDropDownString(CF_ANY), CF_ANY, false);
+
+	/* Add item for vehicles not carrying anything, e.g. train engines.
+	 * This could also be useful for eyecandy vehicles of other types, but is likely too confusing for joe, */
+	*list->Append() = new DropDownListStringItem(GetVehicleFilterDropDownString(CF_NONE), CF_NONE, false);
+
+	/* Collect available cargo types for filtering. */
+	const CargoSpec *cs;
+	FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
+		*list->Append() = new DropDownListStringItem(GetVehicleFilterDropDownString(cs->Index()), cs->Index(), false);
+	}
+
+	ShowDropDownList(w, list, selected, button);
+}
+
 /** GUI for building vehicles. */
 struct BuildVehicleWindow : Window {
 	VehicleType vehicle_type;                   ///< Type of vehicles shown in the window.
@@ -967,9 +1009,7 @@ struct BuildVehicleWindow : Window {
 	EngineID sel_engine;                        ///< Currently selected engine, or #INVALID_ENGINE
 	EngineID rename_engine;                     ///< Engine being renamed.
 	GUIEngineList eng_list;
-	CargoID cargo_filter[NUM_CARGO + 2];        ///< Available cargo filters; CargoID or CF_ANY or CF_NONE
-	StringID cargo_filter_texts[NUM_CARGO + 3]; ///< Texts for filter_cargo, terminated by INVALID_STRING_ID
-	byte cargo_filter_criteria;                 ///< Selected cargo filter
+	byte cargo_filter;                          ///< Filter against selected cargo, also #CF_ANY and #CF_NONE are allowed.
 	int details_height;                         ///< Minimal needed height of the details panels (found so far).
 	Scrollbar *vscroll;
 
@@ -982,8 +1022,7 @@ struct BuildVehicleWindow : Window {
 	 */
 	static bool CDECL CargoFilter(const EngineID *eid, const void *data)
 	{
-		const BuildVehicleWindow *w = reinterpret_cast<const BuildVehicleWindow*>(data);
-		CargoID cid = w->cargo_filter[w->cargo_filter_criteria];
+		CargoID cid = reinterpret_cast<const BuildVehicleWindow*>(data)->cargo_filter;
 		if (cid == CF_ANY) return true;
 
 		uint32 refit_mask = GetUnionOfArticulatedRefitMasks(*eid, true) & _standard_cargo_mask;
@@ -1036,7 +1075,7 @@ struct BuildVehicleWindow : Window {
 		this->window_number = tile == INVALID_TILE ? (int)type : tile;
 
 		this->sel_engine = INVALID_ENGINE;
-		this->cargo_filter_criteria = INVALID_CARGO; // init from _engine_sort_last_cargo_criteria
+		this->cargo_filter = _engine_sort_last_cargo_criteria[type];
 
 		static GUIEngineList::FilterFunction * const filter_funcs[2] = { HiddenEnginesFilter, BuildableEnginesFilter };
 
@@ -1100,7 +1139,7 @@ struct BuildVehicleWindow : Window {
 	{
 		_engine_sort_last_sorting[this->vehicle_type] = this->eng_list.GetListing();
 		_engine_sort_show_hidden_engines[this->vehicle_type] = (this->eng_list.FilterType() != 0);
-		_engine_sort_last_cargo_criteria[this->vehicle_type] = this->cargo_filter[this->cargo_filter_criteria];
+		_engine_sort_last_cargo_criteria[this->vehicle_type] = this->cargo_filter;
 	}
 
 	/**
@@ -1117,54 +1156,14 @@ struct BuildVehicleWindow : Window {
 		return this->window_number <= VEH_END;
 	}
 
-	/** Populate the filter list and set the cargo filter criteria. */
-	void SetCargoFilterArray()
-	{
-		CargoID last_criteria = this->cargo_filter_criteria == INVALID_CARGO ?
-				_engine_sort_last_cargo_criteria[this->vehicle_type] :
-				this->cargo_filter[this->cargo_filter_criteria];
-
-		uint filter_items = 0;
-
-		/* Add item for disabling filtering. */
-		this->cargo_filter[filter_items] = CF_ANY;
-		this->cargo_filter_texts[filter_items] = STR_PURCHASE_INFO_ALL_TYPES;
-		filter_items++;
-
-		/* Add item for vehicles not carrying anything, e.g. train engines.
-		 * This could also be useful for eyecandy vehicles of other types, but is likely too confusing for joe, */
-		if (this->vehicle_type == VEH_TRAIN) {
-			this->cargo_filter[filter_items] = CF_NONE;
-			this->cargo_filter_texts[filter_items] = STR_PURCHASE_INFO_NONE;
-			filter_items++;
-		}
-
-		/* Collect available cargo types for filtering. */
-		const CargoSpec *cs;
-		FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
-			this->cargo_filter[filter_items] = cs->Index();
-			this->cargo_filter_texts[filter_items] = cs->name;
-			filter_items++;
-		}
-
-		/* Terminate the filter list. */
-		this->cargo_filter_texts[filter_items] = INVALID_STRING_ID;
-
-		/* If not found, the cargo criteria will be set to all cargoes. */
-		this->cargo_filter_criteria = 0;
-
-		/* Find the last cargo filter criteria. */
-		for (uint i = 0; i < filter_items; i++) {
-			if (this->cargo_filter[i] == last_criteria) {
-				this->cargo_filter_criteria = i;
-				break;
-			}
-		}
-	}
-
 	void OnInit()
 	{
-		this->SetCargoFilterArray();
+		/* Check if selected cargo is still valid. */
+		if (this->cargo_filter != CF_ANY && this->cargo_filter != CF_NONE && (
+				!CargoSpec::Get(this->cargo_filter)->IsValid() ||
+				IsCargoInClass(this->cargo_filter, CC_SPECIAL))) {
+			this->cargo_filter = CF_ANY;
+		}
 	}
 
 	/** Filter the engine list against the currently selected cargo filter */
@@ -1226,7 +1225,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_CARGO_FILTER_DROPDOWN: // Select cargo filtering criteria dropdown menu
-				ShowDropDownMenu(this, this->cargo_filter_texts, this->cargo_filter_criteria, WID_BV_CARGO_FILTER_DROPDOWN, 0, 0);
+				DisplayVehicleFilterDropDown(this, this->vehicle_type, this->cargo_filter, WID_BV_CARGO_FILTER_DROPDOWN);
 				break;
 
 			case WID_BV_SHOW_HIDE: {
@@ -1292,7 +1291,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_CARGO_FILTER_DROPDOWN:
-				SetDParam(0, this->cargo_filter_texts[this->cargo_filter_criteria]);
+				SetDParam(0, GetVehicleFilterDropDownString(this->cargo_filter));
 				break;
 
 			case WID_BV_SHOW_HIDE: {
@@ -1394,8 +1393,8 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_CARGO_FILTER_DROPDOWN: // Select a cargo filter criteria
-				if (this->cargo_filter_criteria != index) {
-					this->cargo_filter_criteria = index;
+				if (this->cargo_filter != index) {
+					this->cargo_filter = index;
 					this->eng_list.ForceRebuild();
 				}
 				break;
