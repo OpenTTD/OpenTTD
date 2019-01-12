@@ -17,6 +17,7 @@
 #include <windows.h>
 #include <fcntl.h>
 #include <regstr.h>
+#define NO_SHOBJIDL_SORTDIRECTION // Avoid multiple definition of SORT_ASCENDING
 #include <shlobj.h> /* SHGetFolderPath */
 #include <shellapi.h>
 #include "win32.h"
