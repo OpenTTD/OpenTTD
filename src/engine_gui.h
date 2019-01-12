@@ -17,7 +17,7 @@
 #include "gfx_type.h"
 #include "vehicle_type.h"
 
-typedef GUIList<EngineID, CargoID> GUIEngineList;
+typedef GUIList<EngineID, const void*> GUIEngineList;
 
 StringID GetEngineCategoryName(EngineID engine);
 StringID GetEngineInfoString(EngineID engine);

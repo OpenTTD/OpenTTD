@@ -520,18 +520,6 @@ const StringID _engine_sort_listing[VEH_COMPANY_END][12] = {{
 	INVALID_STRING_ID
 }};
 
-/** Cargo filter functions */
-static bool CDECL CargoFilter(const EngineID *eid, const CargoID cid)
-{
-	if (cid == CF_ANY) return true;
-	CargoTypes refit_mask = GetUnionOfArticulatedRefitMasks(*eid, true) & _standard_cargo_mask;
-	return (cid == CF_NONE ? refit_mask == 0 : HasBit(refit_mask, cid));
-}
-
-static GUIEngineList::FilterFunction * const _filter_funcs[] = {
-	&CargoFilter,
-};
-
 static int DrawCargoCapacityInfo(int left, int right, int y, EngineID engine)
 {
 	CargoArray cap;
@@ -976,7 +964,6 @@ struct BuildVehicleWindow : Window {
 		RailTypeByte railtype;              ///< Rail type to show, or #RAILTYPE_END.
 		RoadTypes roadtypes;                ///< Road type to show, or #ROADTYPES_ALL.
 	} filter;                                   ///< Filter to apply.
-	bool show_hidden_engines;                   ///< State of the 'show hidden engines' button.
 	bool listview_mode;                         ///< If set, only display the available vehicles and do not show a 'build' button.
 	EngineID sel_engine;                        ///< Currently selected engine, or #INVALID_ENGINE
 	EngineID rename_engine;                     ///< Engine being renamed.
@@ -987,6 +974,63 @@ struct BuildVehicleWindow : Window {
 	int details_height;                         ///< Minimal needed height of the details panels (found so far).
 	Scrollbar *vscroll;
 
+
+	/**
+	 * Filter functions for engines and wagons able carrying a certain cargo.
+	 * @param eid The item to test.
+	 * @param data The BuildVehicleWindow window.
+	 * @return Whether the item should stay on the list.
+	 */
+	static bool CDECL CargoFilter(const EngineID *eid, const void *data)
+	{
+		const BuildVehicleWindow *w = reinterpret_cast<const BuildVehicleWindow*>(data);
+		CargoID cid = w->cargo_filter[w->cargo_filter_criteria];
+		if (cid == CF_ANY) return true;
+
+		uint32 refit_mask = GetUnionOfArticulatedRefitMasks(*eid, true) & _standard_cargo_mask;
+		return (cid == CF_NONE ? refit_mask == 0 : HasBit(refit_mask, cid));
+	}
+
+	/**
+	 * Filter functions that keeps only engines and wagons which are buildable by the local company.
+	 * @param eid The item to test.
+	 * @param data The BuildVehicleWindow window.
+	 * @return Whether the item should stay on the list.
+	 */
+	static bool CDECL BuildableEnginesFilter(const EngineID *eid, const void *data)
+	{
+		const BuildVehicleWindow *w = reinterpret_cast<const BuildVehicleWindow*>(data);
+
+		if (!IsEngineBuildable(*eid, w->vehicle_type, _local_company)) return false;
+		switch (w->vehicle_type) {
+			case VEH_TRAIN:
+				if (w->filter.railtype != RAILTYPE_END && !HasPowerOnRail(Engine::Get(*eid)->u.rail.railtype, w->filter.railtype)) return false;
+				break;
+			case VEH_ROAD:
+				if (!HasBit(w->filter.roadtypes, HasBit(EngInfo(*eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) return false;
+				break;
+			case VEH_AIRCRAFT:
+				if (!w->listview_mode && !CanVehicleUseStation(*eid, Station::GetByTile(w->window_number))) return false;
+				break;
+			default: break;
+		}
+
+		return CargoFilter(eid, data);
+	}
+
+	/**
+	 * Filter functions that removes hidden engines and wagons.
+	 * @param eid The item to test.
+	 * @param data The BuildVehicleWindow window.
+	 * @return Whether the item should stay on the list.
+	 */
+	static bool CDECL HiddenEnginesFilter(const EngineID *eid, const void *data)
+	{
+		if (Engine::Get(*eid)->IsHidden(_local_company)) return false;
+
+		return BuildableEnginesFilter(eid, data);
+	}
+
 	BuildVehicleWindow(WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc)
 	{
 		this->vehicle_type = type;
@@ -995,10 +1039,12 @@ struct BuildVehicleWindow : Window {
 		this->sel_engine = INVALID_ENGINE;
 		this->cargo_filter_criteria = INVALID_CARGO; // init from _engine_sort_last_cargo_criteria
 
+		static GUIEngineList::FilterFunction * const filter_funcs[2] = { HiddenEnginesFilter, BuildableEnginesFilter };
+
 		this->eng_list.SetSortFuncs(_engine_sort_functions[type]);
-		this->eng_list.SetFilterFuncs(_filter_funcs);
+		this->eng_list.SetFilterFuncs(filter_funcs);
 		this->eng_list.SetListing(_engine_sort_last_sorting[type]);
-		this->show_hidden_engines = _engine_sort_show_hidden_engines[type];
+		this->eng_list.SetFilterType( _engine_sort_show_hidden_engines[type] ? 1 : 0);
 		this->eng_list.SetFilterState(true);
 		this->eng_list.ForceRebuild();
 
@@ -1044,7 +1090,7 @@ struct BuildVehicleWindow : Window {
 		widget = this->GetWidget<NWidgetCore>(WID_BV_SHOW_HIDDEN_ENGINES);
 		widget->widget_data = STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN + type;
 		widget->tool_tip    = STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP + type;
-		widget->SetLowered(this->show_hidden_engines);
+		widget->SetLowered(this->eng_list.FilterType() != 0);
 
 		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 10 : 9) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
@@ -1056,7 +1102,7 @@ struct BuildVehicleWindow : Window {
 	~BuildVehicleWindow()
 	{
 		_engine_sort_last_sorting[this->vehicle_type] = this->eng_list.GetListing();
-		_engine_sort_show_hidden_engines[this->vehicle_type] = this->show_hidden_engines;
+		_engine_sort_show_hidden_engines[this->vehicle_type] = (this->eng_list.FilterType() != 0);
 		_engine_sort_last_cargo_criteria[this->vehicle_type] = this->cargo_filter[this->cargo_filter_criteria];
 	}
 
@@ -1113,7 +1159,7 @@ struct BuildVehicleWindow : Window {
 	/** Filter the engine list against the currently selected cargo filter */
 	void FilterEngineList()
 	{
-		this->eng_list.Filter(this->cargo_filter[this->cargo_filter_criteria]);
+		this->eng_list.Filter(this);
 
 		if (0 == this->eng_list.Length()) { // no engine passed through the filter, invalidate the previously selected engine
 			this->sel_engine = INVALID_ENGINE;
@@ -1122,93 +1168,14 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	/* Figure out what train EngineIDs to put in the list */
-	void GenerateBuildTrainList()
-	{
-		this->filter.railtype = (this->listview_mode) ? RAILTYPE_END : GetRailType(this->window_number);
-
-		this->eng_list.Clear();
-
-		/* Make list of all available train engines and wagons.
-		 * Also check to see if the previously selected engine is still available,
-		 * and if not, reset selection to INVALID_ENGINE. This could be the case
-		 * when engines become obsolete and are removed */
-		const Engine *e;
-		FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
-			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
-			EngineID eid = e->index;
-			const RailVehicleInfo *rvi = &e->u.rail;
-
-			if (this->filter.railtype != RAILTYPE_END && !HasPowerOnRail(rvi->railtype, this->filter.railtype)) continue;
-			if (!IsEngineBuildable(eid, VEH_TRAIN, _local_company)) continue;
-
-			*this->eng_list.Append() = eid;
-		}
-	}
-
-	/* Figure out what road vehicle EngineIDs to put in the list */
-	void GenerateBuildRoadVehList()
-	{
-		this->eng_list.Clear();
-
-		const Engine *e;
-		FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
-			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
-			EngineID eid = e->index;
-			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
-			if (!HasBit(this->filter.roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
-			*this->eng_list.Append() = eid;
-		}
-	}
-
-	/* Figure out what ship EngineIDs to put in the list */
-	void GenerateBuildShipList()
-	{
-		this->eng_list.Clear();
-
-		const Engine *e;
-		FOR_ALL_ENGINES_OF_TYPE(e, VEH_SHIP) {
-			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
-			EngineID eid = e->index;
-			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
-			*this->eng_list.Append() = eid;
-		}
-	}
-
-	/* Figure out what aircraft EngineIDs to put in the list */
-	void GenerateBuildAircraftList()
-	{
-		this->eng_list.Clear();
-
-		const Station *st = this->listview_mode ? NULL : Station::GetByTile(this->window_number);
-
-		/* Make list of all available planes.
-		 * Also check to see if the previously selected plane is still available,
-		 * and if not, reset selection to INVALID_ENGINE. This could be the case
-		 * when planes become obsolete and are removed */
-		const Engine *e;
-		FOR_ALL_ENGINES_OF_TYPE(e, VEH_AIRCRAFT) {
-			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
-			EngineID eid = e->index;
-			if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_company)) continue;
-			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
-			if (!this->listview_mode && !CanVehicleUseStation(eid, st)) continue;
-
-			*this->eng_list.Append() = eid;
-		}
-	}
-
 	/* Generate the list of vehicles */
 	void GenerateBuildList()
 	{
 		if (!this->eng_list.NeedRebuild()) return;
-		switch (this->vehicle_type) {
-			default: NOT_REACHED();
-			case VEH_TRAIN:    this->GenerateBuildTrainList();    break;
-			case VEH_ROAD:     this->GenerateBuildRoadVehList();  break;
-			case VEH_SHIP:     this->GenerateBuildShipList();     break;
-			case VEH_AIRCRAFT: this->GenerateBuildAircraftList(); break;
-		}
+
+		this->eng_list.Clear();
+		const Engine *e;
+		FOR_ALL_ENGINES_OF_TYPE(e, this->vehicle_type) *this->eng_list.Append() = e->index;
 
 		this->FilterEngineList();
 		this->eng_list.Compact();
@@ -1224,9 +1191,9 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_SHOW_HIDDEN_ENGINES:
-				this->show_hidden_engines ^= true;
+				this->eng_list.SetFilterType(1 - this->eng_list.FilterType());
 				this->eng_list.ForceRebuild();
-				this->SetWidgetLoweredState(widget, this->show_hidden_engines);
+				this->SetWidgetLoweredState(widget, this->eng_list.FilterType() != 0);
 				this->SetDirty();
 				break;
 
