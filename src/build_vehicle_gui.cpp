@@ -1109,6 +1109,7 @@ struct BuildVehicleWindow : Window {
 	void FilterEngineList()
 	{
 		this->eng_list.Filter(this->cargo_filter[this->cargo_filter_criteria]);
+
 		if (0 == this->eng_list.Length()) { // no engine passed through the filter, invalidate the previously selected engine
 			this->sel_engine = INVALID_ENGINE;
 		} else if (!this->eng_list.Contains(this->sel_engine)) { // previously selected engine didn't pass the filter, select the first engine of the list
@@ -1116,20 +1117,22 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	/** Filter a single engine */
-	bool FilterSingleEngine(EngineID eid)
+	/** Filter the engine list against the currently selected cargo filter */
+	void SortEngineList()
 	{
-		CargoID filter_type = this->cargo_filter[this->cargo_filter_criteria];
-		return (filter_type == CF_ANY || CargoFilter(&eid, filter_type));
+		_engine_sort_direction = this->descending_sort_order;
+		EngList_Sort(&this->eng_list, _engine_sort_functions[this->vehicle_type][this->sort_criteria]);
+
+		if (this->vehicle_type == VEH_TRAIN) {
+			/* make engines first, then wagons */
+			_engine_sort_direction = false;
+			EngList_Sort(&this->eng_list, TrainEnginesThenWagonsSorter);
+		}
 	}
 
 	/* Figure out what train EngineIDs to put in the list */
 	void GenerateBuildTrainList()
 	{
-		EngineID sel_id = INVALID_ENGINE;
-		int num_engines = 0;
-		int num_wagons  = 0;
-
 		this->filter.railtype = (this->listview_mode) ? RAILTYPE_END : GetRailType(this->window_number);
 
 		this->eng_list.Clear();
@@ -1147,39 +1150,13 @@ struct BuildVehicleWindow : Window {
 			if (this->filter.railtype != RAILTYPE_END && !HasPowerOnRail(rvi->railtype, this->filter.railtype)) continue;
 			if (!IsEngineBuildable(eid, VEH_TRAIN, _local_company)) continue;
 
-			/* Filter now! So num_engines and num_wagons is valid */
-			if (!FilterSingleEngine(eid)) continue;
-
 			*this->eng_list.Append() = eid;
-
-			if (rvi->railveh_type != RAILVEH_WAGON) {
-				num_engines++;
-			} else {
-				num_wagons++;
-			}
-
-			if (eid == this->sel_engine) sel_id = eid;
 		}
-
-		this->sel_engine = sel_id;
-
-		/* make engines first, and then wagons, sorted by selected sort_criteria */
-		_engine_sort_direction = false;
-		EngList_Sort(&this->eng_list, TrainEnginesThenWagonsSorter);
-
-		/* and then sort engines */
-		_engine_sort_direction = this->descending_sort_order;
-		EngList_SortPartial(&this->eng_list, _engine_sort_functions[0][this->sort_criteria], 0, num_engines);
-
-		/* and finally sort wagons */
-		EngList_SortPartial(&this->eng_list, _engine_sort_functions[0][this->sort_criteria], num_engines, num_wagons);
 	}
 
 	/* Figure out what road vehicle EngineIDs to put in the list */
 	void GenerateBuildRoadVehList()
 	{
-		EngineID sel_id = INVALID_ENGINE;
-
 		this->eng_list.Clear();
 
 		const Engine *e;
@@ -1189,16 +1166,12 @@ struct BuildVehicleWindow : Window {
 			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
 			if (!HasBit(this->filter.roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
 			*this->eng_list.Append() = eid;
-
-			if (eid == this->sel_engine) sel_id = eid;
 		}
-		this->sel_engine = sel_id;
 	}
 
 	/* Figure out what ship EngineIDs to put in the list */
 	void GenerateBuildShipList()
 	{
-		EngineID sel_id = INVALID_ENGINE;
 		this->eng_list.Clear();
 
 		const Engine *e;
@@ -1207,17 +1180,12 @@ struct BuildVehicleWindow : Window {
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
 			*this->eng_list.Append() = eid;
-
-			if (eid == this->sel_engine) sel_id = eid;
 		}
-		this->sel_engine = sel_id;
 	}
 
 	/* Figure out what aircraft EngineIDs to put in the list */
 	void GenerateBuildAircraftList()
 	{
-		EngineID sel_id = INVALID_ENGINE;
-
 		this->eng_list.Clear();
 
 		const Station *st = this->listview_mode ? NULL : Station::GetByTile(this->window_number);
@@ -1235,10 +1203,7 @@ struct BuildVehicleWindow : Window {
 			if (!this->listview_mode && !CanVehicleUseStation(eid, st)) continue;
 
 			*this->eng_list.Append() = eid;
-			if (eid == this->sel_engine) sel_id = eid;
 		}
-
-		this->sel_engine = sel_id;
 	}
 
 	/* Generate the list of vehicles */
@@ -1247,27 +1212,14 @@ struct BuildVehicleWindow : Window {
 		if (!this->eng_list.NeedRebuild()) return;
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
-			case VEH_TRAIN:
-				this->GenerateBuildTrainList();
-				this->eng_list.Compact();
-				this->eng_list.RebuildDone();
-				return; // trains should not reach the last sorting
-			case VEH_ROAD:
-				this->GenerateBuildRoadVehList();
-				break;
-			case VEH_SHIP:
-				this->GenerateBuildShipList();
-				break;
-			case VEH_AIRCRAFT:
-				this->GenerateBuildAircraftList();
-				break;
+			case VEH_TRAIN:    this->GenerateBuildTrainList();    break;
+			case VEH_ROAD:     this->GenerateBuildRoadVehList();  break;
+			case VEH_SHIP:     this->GenerateBuildShipList();     break;
+			case VEH_AIRCRAFT: this->GenerateBuildAircraftList(); break;
 		}
 
 		this->FilterEngineList();
-
-		_engine_sort_direction = this->descending_sort_order;
-		EngList_Sort(&this->eng_list, _engine_sort_functions[this->vehicle_type][this->sort_criteria]);
-
+		this->SortEngineList();
 		this->eng_list.Compact();
 		this->eng_list.RebuildDone();
 	}

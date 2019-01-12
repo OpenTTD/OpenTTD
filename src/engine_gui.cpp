@@ -331,19 +331,3 @@ void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare)
 	if (size < 2) return;
 	QSortT(el->Begin(), size, compare);
 }
-
-/**
- * Sort selected range of items (on indices @ <begin, begin+num_items-1>)
- * @param el list to be sorted
- * @param compare function for evaluation of the quicksort
- * @param begin start of sorting
- * @param num_items count of items to be sorted
- */
-void EngList_SortPartial(GUIEngineList *el, EngList_SortTypeFunction compare, uint begin, uint num_items)
-{
-	if (num_items < 2) return;
-	assert(begin < el->Length());
-	assert(begin + num_items <= el->Length());
-	QSortT(el->Get(begin), num_items, compare);
-}
-
