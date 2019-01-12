@@ -739,6 +739,8 @@ public:
 	 */
 	virtual TileIndex GetOrderStationLocation(StationID station) { return INVALID_TILE; }
 
+	TileIndex GetOrderDepotLocation(DepotID depot);
+
 	/**
 	 * Find the closest depot for this vehicle and tell us the location,
 	 * DestinationID and whether we should reverse.

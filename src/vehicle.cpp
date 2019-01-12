@@ -33,6 +33,7 @@
 #include "autoreplace_gui.h"
 #include "station_base.h"
 #include "ai/ai.hpp"
+#include "depot_base.h"
 #include "depot_func.h"
 #include "network/network.h"
 #include "core/pool_func.hpp"
@@ -2297,6 +2298,25 @@ uint Vehicle::GetConsistTotalCapacity() const
 		result += v->cargo_cap;
 	}
 	return result;
+}
+
+
+/**
+ * Determine the location for the depot where the vehicle goes to next,
+ * ensure that the depot is still usable e.g. it exists on the map.
+ * @param depot The depot to make the next location of the vehicle.
+ * @return The location (tile) to aim for.
+ */
+TileIndex Vehicle::GetOrderDepotLocation(DepotID depot)
+{
+	const Depot *d = Depot::Get(depot);
+	if (!d->IsInUse()) {
+		/* The depot doesn't exist anymore so don't even TRY to go there. */
+		this->IncrementRealOrderIndex();
+		return 0;
+	}
+
+	return d->xy;
 }
 
 /**
