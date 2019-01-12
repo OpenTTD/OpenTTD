@@ -964,7 +964,6 @@ struct BuildVehicleWindow : Window {
 		RailTypeByte railtype;              ///< Rail type to show, or #RAILTYPE_END.
 		RoadTypes roadtypes;                ///< Road type to show, or #ROADTYPES_ALL.
 	} filter;                                   ///< Filter to apply.
-	bool listview_mode;                         ///< If set, only display the available vehicles and do not show a 'build' button.
 	EngineID sel_engine;                        ///< Currently selected engine, or #INVALID_ENGINE
 	EngineID rename_engine;                     ///< Engine being renamed.
 	GUIEngineList eng_list;
@@ -1010,7 +1009,7 @@ struct BuildVehicleWindow : Window {
 				if (!HasBit(w->filter.roadtypes, HasBit(EngInfo(*eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) return false;
 				break;
 			case VEH_AIRCRAFT:
-				if (!w->listview_mode && !CanVehicleUseStation(*eid, Station::GetByTile(w->window_number))) return false;
+				if (!w->IsListViewMode() && !CanVehicleUseStation(*eid, Station::GetByTile(w->window_number))) return false;
 				break;
 			default: break;
 		}
@@ -1060,15 +1059,13 @@ struct BuildVehicleWindow : Window {
 				break;
 		}
 
-		this->listview_mode = (this->window_number <= VEH_END);
-
 		this->CreateNestedTree();
 
 		this->vscroll = this->GetScrollbar(WID_BV_SCROLLBAR);
 
 		/* If we are just viewing the list of vehicles, we do not need the Build button.
 		 * So we just hide it, and enlarge the Rename button by the now vacant place. */
-		if (this->listview_mode) this->GetWidget<NWidgetStacked>(WID_BV_BUILD_SEL)->SetDisplayedPlane(SZSP_NONE);
+		if (this->IsListViewMode()) this->GetWidget<NWidgetStacked>(WID_BV_BUILD_SEL)->SetDisplayedPlane(SZSP_NONE);
 
 		/* disable renaming engines in network games if you are not the server */
 		this->SetWidgetDisabledState(WID_BV_RENAME, _networking && !_network_server);
@@ -1104,6 +1101,20 @@ struct BuildVehicleWindow : Window {
 		_engine_sort_last_sorting[this->vehicle_type] = this->eng_list.GetListing();
 		_engine_sort_show_hidden_engines[this->vehicle_type] = (this->eng_list.FilterType() != 0);
 		_engine_sort_last_cargo_criteria[this->vehicle_type] = this->cargo_filter[this->cargo_filter_criteria];
+	}
+
+	/**
+	 * Check if list-view mode is set.
+	 *
+	 * In list-view mode we display all of the available vehicles of a given
+	 * type and we do not show the 'build' button. Otherwise we show only
+	 * vehicles buildable at the given depot e.g. trams but not trucks.
+	 *
+	 * @return Whether this window is in list-view mode.
+	 */
+	inline bool IsListViewMode() const
+	{
+		return this->window_number <= VEH_END;
 	}
 
 	/** Populate the filter list and set the cargo filter criteria. */
@@ -1204,7 +1215,7 @@ struct BuildVehicleWindow : Window {
 				this->SetDirty();
 				if (_ctrl_pressed) {
 					this->OnClick(pt, WID_BV_SHOW_HIDE, 1);
-				} else if (click_count > 1 && !this->listview_mode) {
+				} else if (click_count > 1 && !this->IsListViewMode()) {
 					this->OnClick(pt, WID_BV_BUILD, 1);
 				}
 				break;
@@ -1268,11 +1279,11 @@ struct BuildVehicleWindow : Window {
 	{
 		switch (widget) {
 			case WID_BV_CAPTION:
-				if (this->vehicle_type == VEH_TRAIN && !this->listview_mode) {
+				if (this->vehicle_type == VEH_TRAIN && !this->IsListViewMode()) {
 					const RailtypeInfo *rti = GetRailTypeInfo(this->filter.railtype);
 					SetDParam(0, rti->strings.build_caption);
 				} else {
-					SetDParam(0, (this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUY_VEHICLE_TRAIN_ALL_CAPTION) + this->vehicle_type);
+					SetDParam(0, (this->IsListViewMode() ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUY_VEHICLE_TRAIN_ALL_CAPTION) + this->vehicle_type);
 				}
 				break;
 
