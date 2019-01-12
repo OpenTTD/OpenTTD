@@ -981,6 +981,23 @@ struct QueryStringWindow : public Window
 			resize->width = 0;
 			size->width = 0;
 		}
+
+		if (widget == WID_QS_WARNINGBOX && (this->flags & QSF_PASSWORD) == 0) {
+			/* We don't want this widget to show! */
+			fill->width = 0;
+			resize->width = 0;
+			size->width = 0;
+		}
+		if (widget == WID_QS_WARNING) {
+			*size = GetStringBoundingBox(STR_WARNING_PASSWORD_SECURITY);
+		}
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != WID_QS_WARNING) return;
+
+		DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_WARNING_PASSWORD_SECURITY, TC_FROMSTRING, SA_CENTER);
 	}
 
 	void SetStringParameters(int widget) const override
@@ -1036,6 +1053,9 @@ static const NWidgetPart _nested_query_string_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_QS_TEXT), SetMinimalSize(256, 12), SetFill(1, 1), SetPadding(2, 2, 2, 2),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_QS_WARNINGBOX),
+		NWidget(WWT_LABEL, COLOUR_GREY, WID_QS_WARNING), SetPadding(WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM, WD_FRAMETEXT_LEFT), SetFill(0, 1),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_DEFAULT), SetMinimalSize(87, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_DEFAULT, STR_NULL),
