@@ -802,24 +802,10 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 					if (dp == NULL || !dp->IsInUse()) return CMD_ERROR;
 
-					CommandCost ret = CheckOwnership(GetTileOwner(dp->xy));
+					CommandCost ret = CheckOwnership(dp->owner);
 					if (ret.Failed()) return ret;
 
-					switch (v->type) {
-						case VEH_TRAIN:
-							if (!IsRailDepotTile(dp->xy)) return CMD_ERROR;
-							break;
-
-						case VEH_ROAD:
-							if (!IsRoadDepotTile(dp->xy)) return CMD_ERROR;
-							break;
-
-						case VEH_SHIP:
-							if (!IsShipDepotTile(dp->xy)) return CMD_ERROR;
-							break;
-
-						default: return CMD_ERROR;
-					}
+					if (v->type != dp->type) return CMD_ERROR;
 				}
 			}
 

@@ -64,8 +64,7 @@ void Depot::Disuse()
 	DeleteWindowById(WC_VEHICLE_DEPOT, this->xy);
 
 	/* Delete the depot list */
-	VehicleType vt = GetDepotVehicleType(this->xy);
-	DeleteWindowById(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_DEPOT_LIST, vt, GetTileOwner(this->xy), this->index).Pack());
+	DeleteWindowById(GetWindowClassForVehicleType(this->type), VehicleListIdentifier(VL_DEPOT_LIST, this->type, this->owner, this->index).Pack());
 
 	/* Clear the order backup. */
 	OrderBackup::Reset(this->xy, false);
