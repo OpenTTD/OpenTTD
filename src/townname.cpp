@@ -23,6 +23,21 @@
 #include "safeguards.h"
 
 
+bool ValidateTownNameMask(uint32 r, const TownNameParams *par, uint site_location_bits);
+
+
+/**
+ * Return true if str ends with suffix.
+ *
+ * From: https://stackoverflow.com/a/42844629/173630
+ */
+static bool endsWith(const std::string& str, const std::string& suffix)
+{
+	return str.size() >= suffix.size() &&
+		0 == str.compare(str.size() - suffix.size(), suffix.size(), suffix);
+}
+
+
 /**
  * Initializes this struct from town data
  * @param t town for which we will be printing name later
@@ -135,6 +150,33 @@ bool GenerateTownName(uint32 *townnameparts, TownNames *town_names)
 	for (int i = 1000; i != 0; i--) {
 		uint32 r = _generating_world ? Random() : InteractiveRandom();
 		if (!VerifyTownName(r, &par, town_names)) continue;
+
+		*townnameparts = r;
+		return true;
+	}
+
+	return false;
+}
+
+
+bool GenerateTownName(uint32 *townnameparts, uint site_location_bits, TownNames *town_names)
+{
+	TownNameParams par(_settings_game.game_creation.town_name);
+
+	/* This function is called very often without entering the gameloop
+	 * inbetween. So reset layout cache to prevent it from growing too big. */
+	Layouter::ReduceLineCache();
+
+	/* Do not set i too low, since when we run out of names, we loop
+	 * for #tries only one time anyway - then we stop generating more
+	 * towns. Do not set it too high either, since looping through all
+	 * the other towns may take considerable amount of time (10000 is
+	 * too much). */
+	for (int i = 1000; i != 0; i--) {
+		uint32 r = _generating_world ? Random() : InteractiveRandom();
+
+		if (!VerifyTownName(r, &par, town_names)) continue;
+		if (!ValidateTownNameMask(r, &par, site_location_bits)) continue;
 
 		*townnameparts = r;
 		return true;
@@ -1069,4 +1111,77 @@ char *GenerateTownNameString(char *buf, const char *last, size_t lang, uint32 se
 	par->proc(buffer, buffer + par->min, seed);
 
 	return strecpy(buf, buffer, last);
+}
+
+
+uint GetScandinavianTownNameMask(char *name) {
+	if (endsWith(name, "havn")) {
+		return TOWNNAME_FEATURE_CLOSE_TO_WATER;
+	}
+	return 0;
+}
+
+
+uint GetSpanishTownNameMask(char *name) {
+	if (strncmp(name, "Puerto ", strlen("Puerto ")) == 0) {
+		return TOWNNAME_FEATURE_CLOSE_TO_WATER;
+	}
+	return 0;
+}
+
+
+typedef uint (*TownNameLocationMask)(char *name);
+
+static const TownNameLocationMask _town_name_masks[] = {
+	NULL, // English Original
+	NULL, // French
+	NULL, // German
+	NULL, // English Additional
+	GetSpanishTownNameMask,
+	NULL, // Silly
+	NULL, // Swedish
+	NULL, // Dutch
+	NULL, // Finnish
+	NULL, // Polish
+	NULL, // Slovak
+	GetScandinavianTownNameMask, // Norwegian
+	NULL, // Hungarian
+	NULL, // Austrian
+	NULL, // Romanian
+	NULL, // Czech
+	NULL, // Swiss
+	GetScandinavianTownNameMask, // Danish
+	NULL, // Turkish
+	NULL, // Italian
+	NULL, // Catalan
+};
+
+
+/**
+ * Returns true if the town name (constructed with r and par) is valid
+ * for the given location feature flags of the tile.
+ */
+bool ValidateTownNameMask(uint32 r, const TownNameParams *par, uint site_location_bits)
+{
+	if (_settings_game.game_creation.town_name > lengthof(_town_name_masks)) return true;
+
+	const TownNameLocationMask maskfunc =
+		_town_name_masks[_settings_game.game_creation.town_name];
+
+	if (maskfunc == NULL) return true;
+
+	char buf1[(MAX_LENGTH_TOWN_NAME_CHARS + 1) * MAX_CHAR_LENGTH];
+
+	GetTownName(buf1, par, r, lastof(buf1));
+
+	uint mask = maskfunc(buf1);
+
+	if (mask & TOWNNAME_FEATURE_CLOSE_TO_WATER) {
+		if ((site_location_bits & TOWNNAME_FEATURE_CLOSE_TO_WATER) !=
+			TOWNNAME_FEATURE_CLOSE_TO_WATER) {
+			return false;
+		}
+	}
+
+	return true;
 }

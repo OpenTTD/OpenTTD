@@ -183,6 +183,7 @@ enum TownGrowthResult {
 
 static bool BuildTownHouse(Town *t, TileIndex tile);
 static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size, bool city, TownLayout layout);
+static Town *CreateRandomTown(uint32 townnameparts, TownSize size, bool city, TownLayout layout, TileIndex tile);
 
 static void TownDrawHouseLift(const TileInfo *ti)
 {
@@ -1663,6 +1664,29 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 }
 
 /**
+ * Gets the given tile's special features, used for smart town naming.
+ *
+ * Right now the only feature is whether the tile is sufficiently
+ * close to water to be considered a port town. Only towns with this
+ * feature will be given names that refer to ports or harbors.
+ *
+ * @return feature mask of given tile's location
+ */
+static uint GetLocationBits(TileIndex tile)
+{
+	uint dist_to_water = GetClosestWaterDistance(tile, true);
+	uint flags = 0;
+
+	if (dist_to_water < 6) {
+		// This tile is close to water, so it enables some town names
+		// which require that.
+		flags |= TOWNNAME_FEATURE_CLOSE_TO_WATER;
+	}
+
+	return flags;
+}
+
+/**
  * Checks if it's possible to place a town at given tile
  * @param tile tile to check
  * @return error value or zero cost
@@ -1934,6 +1958,67 @@ static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layou
 	return INVALID_TILE;
 }
 
+static TileIndex GetRandomTownTile(uint attempts, TownLayout layout)
+{
+	do {
+		/* Generate a tile index not too close from the edge */
+		TileIndex tile = AlignTileToGrid(RandomTile(), layout);
+
+		/* if we tried to place the town on water, slide it over onto
+		 * the nearest likely-looking spot */
+		if (IsTileType(tile, MP_WATER)) {
+			tile = FindNearestGoodCoastalTownSpot(tile, layout);
+			if (tile == INVALID_TILE) continue;
+		}
+
+		/* Make sure town can be placed here */
+		if (TownCanBePlacedHere(tile).Failed()) continue;
+
+		return tile;
+	} while (--attempts != 0);
+
+	return 0;
+}
+
+static Town *CreateRandomTown(uint32 townnameparts, TownSize size, bool city, TownLayout layout, TileIndex tile)
+{
+	assert(_game_mode == GM_EDITOR || _generating_world); // These are the preconditions for CMD_DELETE_TOWN
+
+	if (!Town::CanAllocateItem()) return NULL;
+
+	/* if we tried to place the town on water, slide it over onto
+	 * the nearest likely-looking spot */
+	if (IsTileType(tile, MP_WATER)) {
+		tile = FindNearestGoodCoastalTownSpot(tile, layout);
+		if (tile == INVALID_TILE) return NULL;
+	}
+
+	/* Make sure town can be placed here */
+	if (TownCanBePlacedHere(tile).Failed()) return NULL;
+
+	/* Allocate a town struct */
+	Town *t = new Town(tile);
+
+	DoCreateTown(t, tile, townnameparts, size, city, layout, false);
+
+	/* if the population is still 0 at the point, then the
+	 * placement is so bad it couldn't grow at all */
+	if (t->cache.population > 0) return t;
+
+	Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
+	CommandCost rc = DoCommand(t->xy, t->index, 0, DC_EXEC, CMD_DELETE_TOWN);
+	cur_company.Restore();
+	assert(rc.Succeeded());
+
+	/* We already know that we can allocate a single town when
+	 * entering this function. However, we create and delete
+	 * a town which "resets" the allocation checks. As such we
+	 * need to check again when assertions are enabled. */
+	assert(Town::CanAllocateItem());
+
+	return NULL;
+}
+
 static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size, bool city, TownLayout layout)
 {
 	assert(_game_mode == GM_EDITOR || _generating_world); // These are the preconditions for CMD_DELETE_TOWN
@@ -2004,10 +2089,18 @@ bool GenerateTowns(TownLayout layout)
 	do {
 		bool city = (_settings_game.economy.larger_towns != 0 && Chance16(1, _settings_game.economy.larger_towns));
 		IncreaseGeneratingWorldProgress(GWP_TOWN);
+
+		/* Generate a tile index not too close from the edge */
+		/* try 20 times to find this tile for the first loop. */
+		TileIndex tile = GetRandomTownTile(20, layout);
+		if (!tile) continue;
+
+		uint site_location_bits = GetLocationBits(tile);
+
 		/* Get a unique name for the town. */
-		if (!GenerateTownName(&townnameparts, &town_names)) continue;
-		/* try 20 times to create a random-sized town for the first loop. */
-		if (CreateRandomTown(20, townnameparts, TSZ_RANDOM, city, layout) != NULL) current_number++; // If creation was successful, raise a flag.
+		if (!GenerateTownName(&townnameparts, site_location_bits, &town_names)) continue;
+
+		if (CreateRandomTown(townnameparts, TSZ_RANDOM, city, layout, tile) != NULL) current_number++; // If creation was successful, raise a flag.
 	} while (--total);
 
 	town_names.clear();

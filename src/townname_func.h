@@ -19,5 +19,6 @@ char *GetTownName(char *buff, const TownNameParams *par, uint32 townnameparts, c
 char *GetTownName(char *buff, const Town *t, const char *last);
 bool VerifyTownName(uint32 r, const TownNameParams *par, TownNames *town_names = NULL);
 bool GenerateTownName(uint32 *townnameparts, TownNames *town_names = NULL);
+bool GenerateTownName(uint32 *townnameparts, uint site_location_bits, TownNames *town_names = NULL);
 
 #endif /* TOWNNAME_FUNC_H */

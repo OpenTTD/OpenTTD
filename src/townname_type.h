@@ -45,4 +45,10 @@ struct TownNameParams {
 	TownNameParams(const Town *t);
 };
 
+/**
+ * Town name features are used to map a tile's geographical features
+ * to appropriate town names.
+ */
+const uint TOWNNAME_FEATURE_CLOSE_TO_WATER = 1;
+
 #endif /* TOWNNAME_TYPE_H */
