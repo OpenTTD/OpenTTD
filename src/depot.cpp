@@ -37,6 +37,18 @@ Depot::~Depot()
 }
 
 /**
+ * Cancel deletion of this depot (reuse it).
+ * @param xy New location of the depot.
+ * @see Depot::IsInUse
+ * @see Depot::Disuse
+ */
+void Depot::Reuse(TileIndex xy)
+{
+	this->delete_ctr = 0;
+	this->xy = xy;
+}
+
+/**
  * Schedule deletion of this depot.
  *
  * This method is ought to be called after demolishing a depot.
@@ -44,6 +56,7 @@ Depot::~Depot()
  * placed again later without messing vehicle orders.
  *
  * @see Depot::IsInUse
+ * @see Depot::Reuse
  */
 void Depot::Disuse()
 {

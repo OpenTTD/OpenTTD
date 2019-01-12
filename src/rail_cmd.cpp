@@ -992,15 +992,20 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
-	if (!Depot::CanAllocateItem()) return CMD_ERROR;
+	Depot *d = FindDeletedDepotCloseTo(tile, VEH_TRAIN, _current_company);
+	if (d == NULL && !Depot::CanAllocateItem()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		Depot *d = new Depot(tile, VEH_TRAIN, _current_company);
-		d->build_date = _date;
+		if (d == NULL) {
+			d = new Depot(tile, VEH_TRAIN, _current_company);
+			d->build_date = _date;
+			MakeDefaultName(d);
+		} else {
+			d->Reuse(tile);
+		}
 
 		MakeRailDepot(tile, _current_company, d->index, dir, railtype);
 		MarkTileDirtyByTile(tile);
-		MakeDefaultName(d);
 
 		Company::Get(_current_company)->infrastructure.rail[railtype]++;
 		DirtyCompanyInfrastructureWindows(_current_company);

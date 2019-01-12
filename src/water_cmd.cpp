@@ -116,7 +116,8 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
-	if (!Depot::CanAllocateItem()) return CMD_ERROR;
+	Depot *depot = FindDeletedDepotCloseTo(tile, VEH_SHIP, _current_company);
+	if (depot == NULL && !Depot::CanAllocateItem()) return CMD_ERROR;
 
 	WaterClass wc1 = GetWaterClass(tile);
 	WaterClass wc2 = GetWaterClass(tile2);
@@ -136,8 +137,13 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	}
 
 	if (flags & DC_EXEC) {
-		Depot *depot = new Depot(tile, VEH_SHIP, _current_company);
-		depot->build_date = _date;
+		if (depot == NULL) {
+			depot = new Depot(tile, VEH_SHIP, _current_company);
+			depot->build_date = _date;
+			MakeDefaultName(depot);
+		} else {
+			depot->Reuse(tile);
+		}
 
 		if (wc1 == WATER_CLASS_CANAL || wc2 == WATER_CLASS_CANAL) {
 			/* Update infrastructure counts after the unconditional clear earlier. */
@@ -150,7 +156,6 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		MakeShipDepot(tile2, _current_company, depot->index, DEPOT_PART_SOUTH, axis, wc2);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
-		MakeDefaultName(depot);
 	}
 
 	return cost;

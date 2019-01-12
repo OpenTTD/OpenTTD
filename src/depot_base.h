@@ -61,12 +61,21 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	 * and the depot awaits to be deleted.
 	 * @return true iff still in use
 	 * @see Depot::Disuse
+	 * @see Depot::Reuse
 	 */
 	inline bool IsInUse() const
 	{
 		return this->delete_ctr == 0;
 	}
 
+	/**
+	 * Cancel deletion of this depot (reuse it).
+	 * @param xy New location of the depot.
+	 * @see Depot::IsInUse
+	 * @see Depot::Disuse
+	 */
+
+	void Reuse(TileIndex xy);
 	void Disuse();
 };
 
