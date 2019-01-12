@@ -662,7 +662,7 @@ static const char * const _name_spanish_real[] = {
 	"Santa Cruz",
 	"Quito",
 	"Cuenca",
-	"Huacho",
+	"Medell\xC3\xADn",
 	"Tulc\xC3\xA1n",
 	"Esmeraldas",
 	"Ibarra",
