@@ -2157,7 +2157,7 @@ void ShowNetworkNeedPassword(NetworkPasswordType npt)
 		case NETWORK_GAME_PASSWORD:    caption = STR_NETWORK_NEED_GAME_PASSWORD_CAPTION; break;
 		case NETWORK_COMPANY_PASSWORD: caption = STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION; break;
 	}
-	ShowQueryString(STR_EMPTY, caption, NETWORK_PASSWORD_LENGTH, w, CS_ALPHANUMERAL, QSF_NONE);
+	ShowQueryString(STR_EMPTY, caption, NETWORK_PASSWORD_LENGTH, w, CS_ALPHANUMERAL, QSF_PASSWORD);
 }
 
 struct NetworkCompanyPasswordWindow : public Window {
@@ -2172,6 +2172,14 @@ struct NetworkCompanyPasswordWindow : public Window {
 		this->password_editbox.cancel_button = WID_NCP_CANCEL;
 		this->password_editbox.ok_button = WID_NCP_OK;
 		this->SetFocusedWidget(WID_NCP_PASSWORD);
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != WID_NCP_WARNING) return;
+
+		DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM,
+			STR_WARNING_PASSWORD_SECURITY, TC_FROMSTRING, SA_CENTER);
 	}
 
 	void OnOk()
@@ -2219,6 +2227,9 @@ static const NWidgetPart _nested_network_company_password_window_widgets[] = {
 											SetDataTip(STR_COMPANY_PASSWORD_MAKE_DEFAULT, STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_NCP_WARNING),
+		NWidget(WWT_LABEL, COLOUR_GREY), SetFill(0, 1), SetPadding(2, 2, 2, 2), SetDataTip(STR_WARNING_PASSWORD_SECURITY, STR_NULL),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NCP_CANCEL), SetFill(1, 0), SetDataTip(STR_BUTTON_CANCEL, STR_COMPANY_PASSWORD_CANCEL),

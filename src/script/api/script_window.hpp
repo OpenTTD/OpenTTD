@@ -1598,6 +1598,8 @@ public:
 	enum QueryStringWidgets {
 		WID_QS_CAPTION                               = ::WID_QS_CAPTION,                               ///< Caption of the window.
 		WID_QS_TEXT                                  = ::WID_QS_TEXT,                                  ///< Text of the query.
+		WID_QS_WARNING                               = ::WID_QS_WARNING,                               ///< Warning label about password security
+		WID_QS_WARNINGBOX                            = ::WID_QS_WARNINGBOX,                            ///< Container for warning label
 		WID_QS_DEFAULT                               = ::WID_QS_DEFAULT,                               ///< Default button.
 		WID_QS_CANCEL                                = ::WID_QS_CANCEL,                                ///< Cancel button.
 		WID_QS_OK                                    = ::WID_QS_OK,                                    ///< OK button.
@@ -1817,6 +1819,7 @@ public:
 		WID_NCP_LABEL                                = ::WID_NCP_LABEL,                                ///< Label in front of the password field.
 		WID_NCP_PASSWORD                             = ::WID_NCP_PASSWORD,                             ///< Input field for the password.
 		WID_NCP_SAVE_AS_DEFAULT_PASSWORD             = ::WID_NCP_SAVE_AS_DEFAULT_PASSWORD,             ///< Toggle 'button' for saving the current password as default password.
+		WID_NCP_WARNING                              = ::WID_NCP_WARNING,                              ///< Warning text about password security
 		WID_NCP_CANCEL                               = ::WID_NCP_CANCEL,                               ///< Close the window without changing anything.
 		WID_NCP_OK                                   = ::WID_NCP_OK,                                   ///< Safe the password etc.
 	};

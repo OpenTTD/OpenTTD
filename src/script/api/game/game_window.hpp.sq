@@ -636,6 +636,8 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_A_WEBSITE,                             "WID_A_WEBSITE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_CAPTION,                            "WID_QS_CAPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_TEXT,                               "WID_QS_TEXT");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_WARNING,                            "WID_QS_WARNING");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_WARNINGBOX,                         "WID_QS_WARNINGBOX");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_DEFAULT,                            "WID_QS_DEFAULT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_CANCEL,                             "WID_QS_CANCEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_OK,                                 "WID_QS_OK");
@@ -780,6 +782,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NCP_LABEL,                             "WID_NCP_LABEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NCP_PASSWORD,                          "WID_NCP_PASSWORD");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NCP_SAVE_AS_DEFAULT_PASSWORD,          "WID_NCP_SAVE_AS_DEFAULT_PASSWORD");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NCP_WARNING,                           "WID_NCP_WARNING");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NCP_CANCEL,                            "WID_NCP_CANCEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NCP_OK,                                "WID_NCP_OK");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NGRFI_CAPTION,                         "WID_NGRFI_CAPTION");
