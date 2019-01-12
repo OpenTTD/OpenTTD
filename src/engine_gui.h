@@ -19,9 +19,6 @@
 
 typedef GUIList<EngineID, CargoID> GUIEngineList;
 
-typedef int CDECL EngList_SortTypeFunction(const EngineID*, const EngineID*); ///< argument type for #EngList_Sort.
-void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare);
-
 StringID GetEngineCategoryName(EngineID engine);
 StringID GetEngineInfoString(EngineID engine);
 
@@ -31,12 +28,10 @@ void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID eng
 void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
 void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
 
-extern bool _engine_sort_direction;
-extern byte _engine_sort_last_criteria[];
-extern bool _engine_sort_last_order[];
-extern bool _engine_sort_show_hidden_engines[];
-extern const StringID _engine_sort_listing[][12];
-extern EngList_SortTypeFunction * const _engine_sort_functions[][11];
+extern Listing _engine_sort_last_sorting[VEH_COMPANY_END];
+extern bool _engine_sort_show_hidden_engines[VEH_COMPANY_END];
+extern const StringID _engine_sort_listing[VEH_COMPANY_END][12];
+extern GUIEngineList::SortFunction * const _engine_sort_functions[VEH_COMPANY_END][11];
 
 uint GetEngineListHeight(VehicleType type);
 void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selected, int button);

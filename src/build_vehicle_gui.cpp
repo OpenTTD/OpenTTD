@@ -91,11 +91,9 @@ static const NWidgetPart _nested_build_vehicle_widgets[] = {
 static const CargoID CF_ANY  = CT_NO_REFIT; ///< Show all vehicles independent of carried cargo (i.e. no filtering)
 static const CargoID CF_NONE = CT_INVALID;  ///< Show only vehicles which do not carry cargo (e.g. train engines)
 
-bool _engine_sort_direction; ///< \c false = descending, \c true = ascending.
-byte _engine_sort_last_criteria[]       = {0, 0, 0, 0};                 ///< Last set sort criteria, for each vehicle type.
-bool _engine_sort_last_order[]          = {false, false, false, false}; ///< Last set direction of the sort order, for each vehicle type.
-bool _engine_sort_show_hidden_engines[] = {false, false, false, false}; ///< Last set 'show hidden engines' setting for each vehicle type.
-static CargoID _engine_sort_last_cargo_criteria[] = {CF_ANY, CF_ANY, CF_ANY, CF_ANY}; ///< Last set filter criteria, for each vehicle type.
+Listing _engine_sort_last_sorting[VEH_COMPANY_END] = { { 0, false }, { 0, false }, { 0, false }, { 0, false } };
+bool _engine_sort_show_hidden_engines[VEH_COMPANY_END] = {false, false, false, false}; ///< Last set 'show hidden engines' setting for each vehicle type.
+static CargoID _engine_sort_last_cargo_criteria[VEH_COMPANY_END] = {CF_ANY, CF_ANY, CF_ANY, CF_ANY}; ///< Last set filter criteria, for each vehicle type.
 
 /**
  * Determines order of engines by engineID
@@ -103,11 +101,9 @@ static CargoID _engine_sort_last_cargo_criteria[] = {CF_ANY, CF_ANY, CF_ANY, CF_
  * @param *b second engine to compare
  * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
  */
-static int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b)
+int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b)
 {
-	int r = Engine::Get(*a)->list_position - Engine::Get(*b)->list_position;
-
-	return _engine_sort_direction ? -r : r;
+	return Engine::Get(*a)->list_position - Engine::Get(*b)->list_position;
 }
 
 /**
@@ -120,11 +116,11 @@ static int CDECL EngineIntroDateSorter(const EngineID *a, const EngineID *b)
 {
 	const int va = Engine::Get(*a)->intro_date;
 	const int vb = Engine::Get(*b)->intro_date;
-	const int r = va - vb;
+	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
-	if (r == 0) return EngineNumberSorter(a, b);
-	return _engine_sort_direction ? -r : r;
+	if (r == 0) r = EngineNumberSorter(a, b);
+	return r;
 }
 
 /**
@@ -156,8 +152,8 @@ static int CDECL EngineNameSorter(const EngineID *a, const EngineID *b)
 	int r = strnatcmp(last_name[0], last_name[1]); // Sort by name (natural sorting).
 
 	/* Use EngineID to sort instead since we want consistent sorting */
-	if (r == 0) return EngineNumberSorter(a, b);
-	return _engine_sort_direction ? -r : r;
+	if (r == 0) r = EngineNumberSorter(a, b);
+	return r;
 }
 
 /**
@@ -170,11 +166,11 @@ static int CDECL EngineReliabilitySorter(const EngineID *a, const EngineID *b)
 {
 	const int va = Engine::Get(*a)->reliability;
 	const int vb = Engine::Get(*b)->reliability;
-	const int r = va - vb;
+	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
-	if (r == 0) return EngineNumberSorter(a, b);
-	return _engine_sort_direction ? -r : r;
+	if (r == 0) r = EngineNumberSorter(a, b);
+	return r;
 }
 
 /**
@@ -190,8 +186,8 @@ static int CDECL EngineCostSorter(const EngineID *a, const EngineID *b)
 	int r = ClampToI32(va - vb);
 
 	/* Use EngineID to sort instead since we want consistent sorting */
-	if (r == 0) return EngineNumberSorter(a, b);
-	return _engine_sort_direction ? -r : r;
+	if (r == 0) r = EngineNumberSorter(a, b);
+	return r;
 }
 
 /**
@@ -207,8 +203,8 @@ static int CDECL EngineSpeedSorter(const EngineID *a, const EngineID *b)
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
-	if (r == 0) return EngineNumberSorter(a, b);
-	return _engine_sort_direction ? -r : r;
+	if (r == 0) r = EngineNumberSorter(a, b);
+	return r;
 }
 
 /**
@@ -224,8 +220,8 @@ static int CDECL EnginePowerSorter(const EngineID *a, const EngineID *b)
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
-	if (r == 0) return EngineNumberSorter(a, b);
-	return _engine_sort_direction ? -r : r;
+	if (r == 0) r = EngineNumberSorter(a, b);
+	return r;
 }
 
 /**
@@ -241,8 +237,8 @@ static int CDECL EngineTractiveEffortSorter(const EngineID *a, const EngineID *b
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
-	if (r == 0) return EngineNumberSorter(a, b);
-	return _engine_sort_direction ? -r : r;
+	if (r == 0) r = EngineNumberSorter(a, b);
+	return r;
 }
 
 /**
@@ -258,8 +254,8 @@ static int CDECL EngineRunningCostSorter(const EngineID *a, const EngineID *b)
 	int r = ClampToI32(va - vb);
 
 	/* Use EngineID to sort instead since we want consistent sorting */
-	if (r == 0) return EngineNumberSorter(a, b);
-	return _engine_sort_direction ? -r : r;
+	if (r == 0) r = EngineNumberSorter(a, b);
+	return r;
 }
 
 /**
@@ -284,31 +280,11 @@ static int CDECL EnginePowerVsRunningCostSorter(const EngineID *a, const EngineI
 	int r = ClampToI32(vb - va);
 
 	/* Use EngineID to sort instead since we want consistent sorting */
-	if (r == 0) return EngineNumberSorter(a, b);
-	return _engine_sort_direction ? -r : r;
+	if (r == 0) r = EngineNumberSorter(a, b);
+	return r;
 }
 
 /* Train sorting functions */
-
-/**
- * Determines order of train engines by capacity
- * @param *a first engine to compare
- * @param *b second engine to compare
- * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
- */
-static int CDECL TrainEngineCapacitySorter(const EngineID *a, const EngineID *b)
-{
-	const RailVehicleInfo *rvi_a = RailVehInfo(*a);
-	const RailVehicleInfo *rvi_b = RailVehInfo(*b);
-
-	int va = GetTotalCapacityOfArticulatedParts(*a) * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
-	int vb = GetTotalCapacityOfArticulatedParts(*b) * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
-	int r = va - vb;
-
-	/* Use EngineID to sort instead since we want consistent sorting */
-	if (r == 0) return EngineNumberSorter(a, b);
-	return _engine_sort_direction ? -r : r;
-}
 
 /**
  * Determines order of train engines by engine / wagon
@@ -320,11 +296,39 @@ static int CDECL TrainEnginesThenWagonsSorter(const EngineID *a, const EngineID 
 {
 	int val_a = (RailVehInfo(*a)->railveh_type == RAILVEH_WAGON ? 1 : 0);
 	int val_b = (RailVehInfo(*b)->railveh_type == RAILVEH_WAGON ? 1 : 0);
-	int r = val_a - val_b;
+	return val_a - val_b;
+}
+
+/** @copydoc TrainEnginesThenWagonsSorter */
+template <GUIEngineList::SortFunction *TfallbackSorter>
+static int CDECL TrainEnginesThenWagonsSorter(const EngineID *a, const EngineID *b)
+{
+	int r = TrainEnginesThenWagonsSorter(a, b);
+	if (r == 0) r = TfallbackSorter(a, b);
+	return r;
+}
+
+/**
+ * Determines order of train engines by capacity
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
+static int CDECL TrainEngineCapacitySorter(const EngineID *a, const EngineID *b)
+{
+	int r = TrainEnginesThenWagonsSorter(a, b);
+	if (r != 0) return r;
+
+	const RailVehicleInfo *rvi_a = RailVehInfo(*a);
+	const RailVehicleInfo *rvi_b = RailVehInfo(*b);
+
+	int va = GetTotalCapacityOfArticulatedParts(*a) * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	int vb = GetTotalCapacityOfArticulatedParts(*b) * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
 	if (r == 0) return EngineNumberSorter(a, b);
-	return _engine_sort_direction ? -r : r;
+	return r;
 }
 
 /* Road vehicle sorting functions */
@@ -342,8 +346,8 @@ static int CDECL RoadVehEngineCapacitySorter(const EngineID *a, const EngineID *
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
-	if (r == 0) return EngineNumberSorter(a, b);
-	return _engine_sort_direction ? -r : r;
+	if (r == 0) r = EngineNumberSorter(a, b);
+	return r;
 }
 
 /* Ship vehicle sorting functions */
@@ -364,8 +368,8 @@ static int CDECL ShipEngineCapacitySorter(const EngineID *a, const EngineID *b)
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
-	if (r == 0) return EngineNumberSorter(a, b);
-	return _engine_sort_direction ? -r : r;
+	if (r == 0) r = EngineNumberSorter(a, b);
+	return r;
 }
 
 /* Aircraft sorting functions */
@@ -386,16 +390,12 @@ static int CDECL AircraftEngineCargoSorter(const EngineID *a, const EngineID *b)
 	int vb = e_b->GetDisplayDefaultCapacity(&mail_b);
 	int r = va - vb;
 
-	if (r == 0) {
-		/* The planes have the same passenger capacity. Check mail capacity instead */
-		r = mail_a - mail_b;
+	/* The planes have the same passenger capacity. Check mail capacity instead */
+	if (r == 0) r = mail_a - mail_b;
 
-		if (r == 0) {
-			/* Use EngineID to sort instead since we want consistent sorting */
-			return EngineNumberSorter(a, b);
-		}
-	}
-	return _engine_sort_direction ? -r : r;
+	/* Use EngineID to sort instead since we want consistent sorting */
+	if (r == 0) r = EngineNumberSorter(a, b);
+	return r;
 }
 
 /**
@@ -412,23 +412,23 @@ static int CDECL AircraftRangeSorter(const EngineID *a, const EngineID *b)
 	int r = r_a - r_b;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
-	if (r == 0) return EngineNumberSorter(a, b);
-	return _engine_sort_direction ? -r : r;
+	if (r == 0) r = EngineNumberSorter(a, b);
+	return r;
 }
 
 /** Sort functions for the vehicle sort criteria, for each vehicle type. */
-EngList_SortTypeFunction * const _engine_sort_functions[][11] = {{
+GUIEngineList::SortFunction * const _engine_sort_functions[VEH_COMPANY_END][11] = {{
 	/* Trains */
-	&EngineNumberSorter,
-	&EngineCostSorter,
-	&EngineSpeedSorter,
-	&EnginePowerSorter,
-	&EngineTractiveEffortSorter,
-	&EngineIntroDateSorter,
-	&EngineNameSorter,
-	&EngineRunningCostSorter,
-	&EnginePowerVsRunningCostSorter,
-	&EngineReliabilitySorter,
+	&TrainEnginesThenWagonsSorter<&EngineNumberSorter>,
+	&TrainEnginesThenWagonsSorter<&EngineCostSorter>,
+	&TrainEnginesThenWagonsSorter<&EngineSpeedSorter>,
+	&TrainEnginesThenWagonsSorter<&EnginePowerSorter>,
+	&TrainEnginesThenWagonsSorter<&EngineTractiveEffortSorter>,
+	&TrainEnginesThenWagonsSorter<&EngineIntroDateSorter>,
+	&TrainEnginesThenWagonsSorter<&EngineNameSorter>,
+	&TrainEnginesThenWagonsSorter<&EngineRunningCostSorter>,
+	&TrainEnginesThenWagonsSorter<&EnginePowerVsRunningCostSorter>,
+	&TrainEnginesThenWagonsSorter<&EngineReliabilitySorter>,
 	&TrainEngineCapacitySorter,
 }, {
 	/* Road vehicles */
@@ -467,7 +467,7 @@ EngList_SortTypeFunction * const _engine_sort_functions[][11] = {{
 }};
 
 /** Dropdown menu strings for the vehicle sort criteria. */
-const StringID _engine_sort_listing[][12] = {{
+const StringID _engine_sort_listing[VEH_COMPANY_END][12] = {{
 	/* Trains */
 	STR_SORT_BY_ENGINE_ID,
 	STR_SORT_BY_COST,
@@ -976,8 +976,6 @@ struct BuildVehicleWindow : Window {
 		RailTypeByte railtype;              ///< Rail type to show, or #RAILTYPE_END.
 		RoadTypes roadtypes;                ///< Road type to show, or #ROADTYPES_ALL.
 	} filter;                                   ///< Filter to apply.
-	bool descending_sort_order;                 ///< Sort direction, @see _engine_sort_direction
-	byte sort_criteria;                         ///< Current sort criterium.
 	bool show_hidden_engines;                   ///< State of the 'show hidden engines' button.
 	bool listview_mode;                         ///< If set, only display the available vehicles and do not show a 'build' button.
 	EngineID sel_engine;                        ///< Currently selected engine, or #INVALID_ENGINE
@@ -995,10 +993,14 @@ struct BuildVehicleWindow : Window {
 		this->window_number = tile == INVALID_TILE ? (int)type : tile;
 
 		this->sel_engine = INVALID_ENGINE;
+		this->cargo_filter_criteria = INVALID_CARGO; // init from _engine_sort_last_cargo_criteria
 
-		this->sort_criteria         = _engine_sort_last_criteria[type];
-		this->descending_sort_order = _engine_sort_last_order[type];
-		this->show_hidden_engines   = _engine_sort_show_hidden_engines[type];
+		this->eng_list.SetSortFuncs(_engine_sort_functions[type]);
+		this->eng_list.SetFilterFuncs(_filter_funcs);
+		this->eng_list.SetListing(_engine_sort_last_sorting[type]);
+		this->show_hidden_engines = _engine_sort_show_hidden_engines[type];
+		this->eng_list.SetFilterState(true);
+		this->eng_list.ForceRebuild();
 
 		switch (type) {
 			default: NOT_REACHED();
@@ -1049,16 +1051,22 @@ struct BuildVehicleWindow : Window {
 		this->FinishInitNested(tile == INVALID_TILE ? (int)type : tile);
 
 		this->owner = (tile != INVALID_TILE) ? GetTileOwner(tile) : _local_company;
+	}
 
-		this->eng_list.ForceRebuild();
-		this->GenerateBuildList(); // generate the list, since we need it in the next line
-		/* Select the first engine in the list as default when opening the window */
-		if (this->eng_list.Length() > 0) this->sel_engine = this->eng_list[0];
+	~BuildVehicleWindow()
+	{
+		_engine_sort_last_sorting[this->vehicle_type] = this->eng_list.GetListing();
+		_engine_sort_show_hidden_engines[this->vehicle_type] = this->show_hidden_engines;
+		_engine_sort_last_cargo_criteria[this->vehicle_type] = this->cargo_filter[this->cargo_filter_criteria];
 	}
 
 	/** Populate the filter list and set the cargo filter criteria. */
 	void SetCargoFilterArray()
 	{
+		CargoID last_criteria = this->cargo_filter_criteria == INVALID_CARGO ?
+				_engine_sort_last_cargo_criteria[this->vehicle_type] :
+				this->cargo_filter[this->cargo_filter_criteria];
+
 		uint filter_items = 0;
 
 		/* Add item for disabling filtering. */
@@ -1090,14 +1098,11 @@ struct BuildVehicleWindow : Window {
 
 		/* Find the last cargo filter criteria. */
 		for (uint i = 0; i < filter_items; i++) {
-			if (this->cargo_filter[i] == _engine_sort_last_cargo_criteria[this->vehicle_type]) {
+			if (this->cargo_filter[i] == last_criteria) {
 				this->cargo_filter_criteria = i;
 				break;
 			}
 		}
-
-		this->eng_list.SetFilterFuncs(_filter_funcs);
-		this->eng_list.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
 	}
 
 	void OnInit()
@@ -1114,19 +1119,6 @@ struct BuildVehicleWindow : Window {
 			this->sel_engine = INVALID_ENGINE;
 		} else if (!this->eng_list.Contains(this->sel_engine)) { // previously selected engine didn't pass the filter, select the first engine of the list
 			this->sel_engine = this->eng_list[0];
-		}
-	}
-
-	/** Filter the engine list against the currently selected cargo filter */
-	void SortEngineList()
-	{
-		_engine_sort_direction = this->descending_sort_order;
-		EngList_Sort(&this->eng_list, _engine_sort_functions[this->vehicle_type][this->sort_criteria]);
-
-		if (this->vehicle_type == VEH_TRAIN) {
-			/* make engines first, then wagons */
-			_engine_sort_direction = false;
-			EngList_Sort(&this->eng_list, TrainEnginesThenWagonsSorter);
 		}
 	}
 
@@ -1219,7 +1211,6 @@ struct BuildVehicleWindow : Window {
 		}
 
 		this->FilterEngineList();
-		this->SortEngineList();
 		this->eng_list.Compact();
 		this->eng_list.RebuildDone();
 	}
@@ -1228,15 +1219,12 @@ struct BuildVehicleWindow : Window {
 	{
 		switch (widget) {
 			case WID_BV_SORT_ASCENDING_DESCENDING:
-				this->descending_sort_order ^= true;
-				_engine_sort_last_order[this->vehicle_type] = this->descending_sort_order;
-				this->eng_list.ForceRebuild();
+				this->eng_list.ToggleSortOrder();
 				this->SetDirty();
 				break;
 
 			case WID_BV_SHOW_HIDDEN_ENGINES:
 				this->show_hidden_engines ^= true;
-				_engine_sort_show_hidden_engines[this->vehicle_type] = this->show_hidden_engines;
 				this->eng_list.ForceRebuild();
 				this->SetWidgetLoweredState(widget, this->show_hidden_engines);
 				this->SetDirty();
@@ -1256,7 +1244,7 @@ struct BuildVehicleWindow : Window {
 			}
 
 			case WID_BV_SORT_DROPDOWN: // Select sorting criteria dropdown menu
-				DisplayVehicleSortDropDown(this, this->vehicle_type, this->sort_criteria, WID_BV_SORT_DROPDOWN);
+				DisplayVehicleSortDropDown(this, this->vehicle_type, this->eng_list.SortType(), WID_BV_SORT_DROPDOWN);
 				break;
 
 			case WID_BV_CARGO_FILTER_DROPDOWN: // Select cargo filtering criteria dropdown menu
@@ -1303,9 +1291,8 @@ struct BuildVehicleWindow : Window {
 		/* When switching to original acceleration model for road vehicles, clear the selected sort criteria if it is not available now. */
 		if (this->vehicle_type == VEH_ROAD &&
 				_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL &&
-				this->sort_criteria > 7) {
-			this->sort_criteria = 0;
-			_engine_sort_last_criteria[VEH_ROAD] = 0;
+				this->eng_list.SortType() > 7) {
+			this->eng_list.SetSortType(0);
 		}
 		this->eng_list.ForceRebuild();
 	}
@@ -1323,7 +1310,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_SORT_DROPDOWN:
-				SetDParam(0, _engine_sort_listing[this->vehicle_type][this->sort_criteria]);
+				SetDParam(0, _engine_sort_listing[this->vehicle_type][this->eng_list.SortType()]);
 				break;
 
 			case WID_BV_CARGO_FILTER_DROPDOWN:
@@ -1380,7 +1367,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_SORT_ASCENDING_DESCENDING:
-				this->DrawSortButtonState(WID_BV_SORT_ASCENDING_DESCENDING, this->descending_sort_order ? SBS_DOWN : SBS_UP);
+				this->DrawSortButtonState(WID_BV_SORT_ASCENDING_DESCENDING, this->eng_list.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 				break;
 		}
 	}
@@ -1388,6 +1375,7 @@ struct BuildVehicleWindow : Window {
 	virtual void OnPaint()
 	{
 		this->GenerateBuildList();
+		this->eng_list.Sort();
 		this->vscroll->SetCount(this->eng_list.Length());
 
 		this->SetWidgetDisabledState(WID_BV_SHOW_HIDE, this->sel_engine == INVALID_ENGINE);
@@ -1424,19 +1412,12 @@ struct BuildVehicleWindow : Window {
 	{
 		switch (widget) {
 			case WID_BV_SORT_DROPDOWN:
-				if (this->sort_criteria != index) {
-					this->sort_criteria = index;
-					_engine_sort_last_criteria[this->vehicle_type] = this->sort_criteria;
-					this->eng_list.ForceRebuild();
-				}
+				this->eng_list.SetSortType(index);
 				break;
 
 			case WID_BV_CARGO_FILTER_DROPDOWN: // Select a cargo filter criteria
 				if (this->cargo_filter_criteria != index) {
 					this->cargo_filter_criteria = index;
-					_engine_sort_last_cargo_criteria[this->vehicle_type] = this->cargo_filter[this->cargo_filter_criteria];
-					/* deactivate filter if criteria is 'Show All', activate it otherwise */
-					this->eng_list.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
 					this->eng_list.ForceRebuild();
 				}
 				break;

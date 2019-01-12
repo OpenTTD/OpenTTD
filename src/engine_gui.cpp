@@ -317,17 +317,3 @@ void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID eng
 		default: NOT_REACHED();
 	}
 }
-
-/**
- * Sort all items using quick sort and given 'CompareItems' function
- * @param el list to be sorted
- * @param compare function for evaluation of the quicksort
- */
-void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare)
-{
-	uint size = el->Length();
-	/* out-of-bounds access at the next line for size == 0 (even with operator[] at some systems)
-	 * generally, do not sort if there are less than 2 items */
-	if (size < 2) return;
-	QSortT(el->Begin(), size, compare);
-}

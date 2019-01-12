@@ -32,12 +32,11 @@
 
 void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group);
 
-static int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b)
-{
-	int r = Engine::Get(*a)->list_position - Engine::Get(*b)->list_position;
+extern int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b); // build_vehicle_gui.cpp
 
-	return r;
-}
+static GUIEngineList::SortFunction * const _engine_replace_list_sort_functions[] = {
+	EngineNumberSorter,
+};
 
 /**
  * Rebuild the left autoreplace list if an engine is removed or added
@@ -84,8 +83,6 @@ class ReplaceVehicleWindow : public Window {
 	bool reset_sel_engine;        ///< Also reset #sel_engine while updating left and/or right and no valid engine selected.
 	GroupID sel_group;            ///< Group selected to replace.
 	int details_height;           ///< Minimal needed height of the details panels (found so far).
-	byte sort_criteria;           ///< Criteria of sorting vehicles.
-	bool descending_sort_order;   ///< Order of sorting vehicles.
 	bool show_hidden_engines;     ///< Whether to show the hidden engines.
 	RailType sel_railtype;        ///< Type of rail tracks selected. #INVALID_RAILTYPE to show all.
 	Scrollbar *vscroll[2];
@@ -144,12 +141,6 @@ class ReplaceVehicleWindow : public Window {
 			if (eid == this->sel_engine[side]) selected_engine = eid; // The selected engine is still in the list
 		}
 		this->sel_engine[side] = selected_engine; // update which engine we selected (the same or none, if it's not in the list anymore)
-		if (draw_left) {
-			EngList_Sort(list, &EngineNumberSorter);
-		} else {
-			_engine_sort_direction = this->descending_sort_order;
-			EngList_Sort(list, _engine_sort_functions[this->window_number][this->sort_criteria]);
-		}
 	}
 
 	/** Generate the lists */
@@ -164,6 +155,7 @@ class ReplaceVehicleWindow : public Window {
 			if (this->reset_sel_engine && this->sel_engine[0] == INVALID_ENGINE && this->engines[0].Length() != 0) {
 				this->sel_engine[0] = this->engines[0][0];
 			}
+			this->engines[0].RebuildDone();
 		}
 
 		if (this->engines[1].NeedRebuild() || e != this->sel_engine[0]) {
@@ -190,10 +182,9 @@ class ReplaceVehicleWindow : public Window {
 					this->vscroll[1]->ScrollTowards(position);
 				}
 			}
+			this->engines[1].RebuildDone();
 		}
 		/* Reset the flags about needed updates */
-		this->engines[0].RebuildDone();
-		this->engines[1].RebuildDone();
 		this->reset_sel_engine = false;
 	}
 
@@ -213,7 +204,11 @@ public:
 	{
 		this->sel_railtype = INVALID_RAILTYPE;
 		this->replace_engines  = true; // start with locomotives (all other vehicles will not read this bool)
+
+		this->engines[0].SetSortFuncs(_engine_replace_list_sort_functions);
 		this->engines[0].ForceRebuild();
+		this->engines[1].SetSortFuncs(_engine_sort_functions[vehicletype]);
+		this->engines[1].SetListing(_engine_sort_last_sorting[vehicletype]);
 		this->engines[1].ForceRebuild();
 		this->reset_sel_engine = true;
 		this->details_height   = ((vehicletype == VEH_TRAIN) ? 10 : 9) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
@@ -231,10 +226,14 @@ public:
 		widget->SetLowered(this->show_hidden_engines);
 		this->FinishInitNested(vehicletype);
 
-		this->sort_criteria = _engine_sort_last_criteria[vehicletype];
-		this->descending_sort_order = _engine_sort_last_order[vehicletype];
 		this->owner = _local_company;
 		this->sel_group = id_g;
+	}
+
+	~ReplaceVehicleWindow()
+	{
+		_engine_sort_last_sorting[this->window_number] = this->engines[1].GetListing();
+		_engine_sort_show_hidden_engines[this->window_number] = this->show_hidden_engines;
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -338,7 +337,7 @@ public:
 				break;
 
 			case WID_RV_SORT_DROPDOWN:
-				SetDParam(0, _engine_sort_listing[this->window_number][this->sort_criteria]);
+				SetDParam(0, _engine_sort_listing[this->window_number][this->engines[1].SortType()]);
 				break;
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
@@ -357,7 +356,7 @@ public:
 	{
 		switch (widget) {
 			case WID_RV_SORT_ASCENDING_DESCENDING:
-				this->DrawSortButtonState(WID_RV_SORT_ASCENDING_DESCENDING, this->descending_sort_order ? SBS_DOWN : SBS_UP);
+				this->DrawSortButtonState(WID_RV_SORT_ASCENDING_DESCENDING, this->engines[1].IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 				break;
 
 			case WID_RV_INFO_TAB: {
@@ -397,6 +396,8 @@ public:
 	virtual void OnPaint()
 	{
 		if (this->engines[0].NeedRebuild() || this->engines[1].NeedRebuild()) this->GenerateLists();
+		this->engines[0].Sort();
+		this->engines[1].Sort();
 
 		Company *c = Company::Get(_local_company);
 
@@ -441,22 +442,19 @@ public:
 	{
 		switch (widget) {
 			case WID_RV_SORT_ASCENDING_DESCENDING:
-				this->descending_sort_order ^= true;
-				_engine_sort_last_order[this->window_number] = this->descending_sort_order;
-				this->engines[1].ForceRebuild();
+				this->engines[1].ToggleSortOrder();
 				this->SetDirty();
 				break;
 
 			case WID_RV_SHOW_HIDDEN_ENGINES:
 				this->show_hidden_engines ^= true;
-				_engine_sort_show_hidden_engines[this->window_number] = this->show_hidden_engines;
 				this->engines[1].ForceRebuild();
 				this->SetWidgetLoweredState(widget, this->show_hidden_engines);
 				this->SetDirty();
 				break;
 
 			case WID_RV_SORT_DROPDOWN:
-				DisplayVehicleSortDropDown(this, static_cast<VehicleType>(this->window_number), this->sort_criteria, WID_RV_SORT_DROPDOWN);
+				DisplayVehicleSortDropDown(this, static_cast<VehicleType>(this->window_number), this->engines[1].SortType(), WID_RV_SORT_DROPDOWN);
 				break;
 
 			case WID_RV_TRAIN_ENGINEWAGON_DROPDOWN: {
@@ -520,10 +518,8 @@ public:
 	{
 		switch (widget) {
 			case WID_RV_SORT_DROPDOWN:
-				if (this->sort_criteria != index) {
-					this->sort_criteria = index;
-					_engine_sort_last_criteria[this->window_number] = this->sort_criteria;
-					this->engines[1].ForceRebuild();
+				if (this->engines[1].SortType() != index) {
+					this->engines[1].SetSortType(index);
 					this->SetDirty();
 				}
 				break;
