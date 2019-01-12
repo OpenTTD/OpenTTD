@@ -236,6 +236,7 @@ enum {
 
 struct MainWindow : Window
 {
+	/* Timer to refresh the cargo flow legend that is drawn on the main map */
 	GUITimer refresh;
 
 	/* Refresh times in milliseconds */
