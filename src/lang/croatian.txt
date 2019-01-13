@@ -285,6 +285,7 @@ STR_COLOUR_ORANGE                                               :Narančasta
 STR_COLOUR_BROWN                                                :Smeđa
 STR_COLOUR_GREY                                                 :Siva
 STR_COLOUR_WHITE                                                :Bijela
+STR_COLOUR_RANDOM                                               :Nasumično
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -1025,6 +1026,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Proizvoljno...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski Lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski Rial (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nove ruske rublje (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksički Pesos (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cestovna vozila
@@ -1354,6 +1356,8 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Mijenjan
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Održavanje infrastrukture: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Kada je omogućeno, infrastruktura uzrokuje troškove održavanja. Cijena raste više nego proporcionalno s veličinom mreže, čime utječe veće tvrtke više od manjih
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Početna boja za kompaniju: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Odaberi početnu boju za kompaniju
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Zračne luke nikad ne ističu: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Uključivanjem ove postavke čini svaku vrstu zračne luke dostupnom zauvijek nakon uvođenja
@@ -2473,9 +2477,9 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombo si
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Putni signal (električni){}Putni signal omogućava da više od jednog vlaka uđe istovremeno u signalni blok, ako vlak može rezervirati putanju do sigurnog zaustavnog mjesta. Standardne putne signale moguće je proći iz suprotnog smjera
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednosmjerni putni signal (električni){}Putni znak omogućava da više od jednog vlaka uđe istovremeno u signalni blok, ako vlak može rezervirati putanju do sigurnog zaustavnog mjesta. Jednosmjerne putne signale nije moguće proći iz suprotnog smjera.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Pretvaranje signala{}Kada je odabrano, klikanjem na postojeći signal pretvara taj signal u odabranu vrstu i varijantu, Ctrl+Klik mijenja postojeću varijantu. Shift+Klik prikazuje procjenu troška pretvorbe
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Gustoća signala prilikom izgradnje
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Smanji gustoću signala prilikom izgradnje
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Povećaj gustoću signala prilikom izgradnje
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Razmak između signala prilikom izgradnje
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Smanji razmak između signala prilikom izgradnje
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Povećaj razmak između signala prilikom izgradnje
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Odaberi željeznički most
@@ -3956,6 +3960,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Starost vozila 
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Treba servis
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Uvijek
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Preostali životni vijek (godina)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maksimalna pouzdanost
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kako usporediti podatke vozila sa zadanom vrijednošću
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :je jednako
