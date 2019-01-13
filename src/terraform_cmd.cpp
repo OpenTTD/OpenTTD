@@ -309,6 +309,14 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	}
 
 	if (flags & DC_EXEC) {
+		/* Mark affected areas dirty. */
+		for (TileIndexSet::const_iterator it = ts.dirty_tiles.begin(); it != ts.dirty_tiles.end(); it++) {
+			MarkTileDirtyByTile(*it);
+			TileIndexToHeightMap::const_iterator new_height = ts.tile_to_new_height.find(tile);
+			if (new_height != ts.tile_to_new_height.end()) continue;
+			MarkTileDirtyByTile(*it, 0, new_height->second);
+		}
+
 		/* change the height */
 		for (TileIndexToHeightMap::const_iterator it = ts.tile_to_new_height.begin();
 				it != ts.tile_to_new_height.end(); it++) {
@@ -316,91 +324,6 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			int height = it->second;
 
 			SetTileHeight(tile, (uint)height);
-		}
-
-		/* Finally mark the dirty tiles dirty */
-		for (TileIndexSet::const_iterator it = ts.dirty_tiles.begin(); it != ts.dirty_tiles.end(); it++) {
-			MarkTileDirtyByTile(*it);
-
-			int height = TerraformGetHeightOfTile(&ts, *it);
-
-			/* Now, if we alter the height of the map edge, we need to take care
-			 * about repainting the affected areas outside map as well.
-			 * Remember:
-			 * Outside map, we assume that our landscape descends to
-			 * height zero as fast as possible.
-			 * Those simulated tiles (they don't exist as datastructure,
-			 * only as concept in code) need to be repainted properly,
-			 * otherwise we will get ugly glitches.
-			 *
-			 * Furthermore, note that we have to take care about the possibility,
-			 * that landscape was higher before the change,
-			 * so also tiles a bit outside need to be repainted.
-			 */
-			int x = TileX(*it);
-			int y = TileY(*it);
-			if (x == 0) {
-				if (y == 0) {
-					/* Height of the northern corner is altered. */
-					for (int cx = 0; cx >= -height - 1; cx--) {
-						for (int cy = 0; cy >= -height - 1; cy--) {
-							/* This means, tiles in the sector north of that
-							 * corner need to be repainted.
-							 */
-							if (cx + cy >= -height - 2) {
-								/* But only tiles that actually might have changed. */
-								MarkTileDirtyByTileOutsideMap(cx, cy);
-							}
-						}
-					}
-				} else if (y < (int)MapMaxY()) {
-					for (int cx = 0; cx >= -height - 1; cx--) {
-						MarkTileDirtyByTileOutsideMap(cx, y);
-					}
-				} else {
-					for (int cx = 0; cx >= -height - 1; cx--) {
-						for (int cy = (int)MapMaxY(); cy <= (int)MapMaxY() + height + 1; cy++) {
-							if (cx + ((int)MapMaxY() - cy) >= -height - 2) {
-								MarkTileDirtyByTileOutsideMap(cx, cy);
-							}
-						}
-					}
-				}
-			} else if (x < (int)MapMaxX()) {
-				if (y == 0) {
-					for (int cy = 0; cy >= -height - 1; cy--) {
-						MarkTileDirtyByTileOutsideMap(x, cy);
-					}
-				} else if (y < (int)MapMaxY()) {
-					/* Nothing to be done here, we are inside the map. */
-				} else {
-					for (int cy = (int)MapMaxY(); cy <= (int)MapMaxY() + height + 1; cy++) {
-						MarkTileDirtyByTileOutsideMap(x, cy);
-					}
-				}
-			} else {
-				if (y == 0) {
-					for (int cx = (int)MapMaxX(); cx <= (int)MapMaxX() + height + 1; cx++) {
-						for (int cy = 0; cy >= -height - 1; cy--) {
-							if (((int)MapMaxX() - cx) + cy >= -height - 2) {
-								MarkTileDirtyByTileOutsideMap(cx, cy);
-							}
-						}
-					}
-				} else if (y < (int)MapMaxY()) {
-					for (int cx = (int)MapMaxX(); cx <= (int)MapMaxX() + height + 1; cx++) {
-						MarkTileDirtyByTileOutsideMap(cx, y);
-					}
-				} else {
-					for (int cx = (int)MapMaxX(); cx <= (int)MapMaxX() + height + 1; cx++) {
-						for (int cy = (int)MapMaxY(); cy <= (int)MapMaxY() + height + 1; cy++) {
-							if (((int)MapMaxX() - cx) + ((int)MapMaxY() - cy) >= -height - 2) {
-								MarkTileDirtyByTileOutsideMap(cx, cy);
-							}
-						}
-					}
-				}
-			}
 		}
 
 		if (c != NULL) c->terraform_limit -= (uint32)ts.tile_to_new_height.size() << 16;

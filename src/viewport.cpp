@@ -1779,30 +1779,15 @@ void ConstrainAllViewportsZoom()
  * Mark a tile given by its index dirty for repaint.
  * @param tile The tile to mark dirty.
  * @param bridge_level_offset Height of bridge on tile to also mark dirty. (Height level relative to north corner.)
+ * @param tile_height_override Height of the tile (#TileHeight).
  * @ingroup dirty
  */
-void MarkTileDirtyByTile(TileIndex tile, int bridge_level_offset)
+void MarkTileDirtyByTile(TileIndex tile, int bridge_level_offset, int tile_height_override)
 {
-	Point pt = RemapCoords(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, TilePixelHeight(tile));
+	Point pt = RemapCoords(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, tile_height_override * TILE_HEIGHT);
 	MarkAllViewportsDirty(
 			pt.x - MAX_TILE_EXTENT_LEFT,
 			pt.y - MAX_TILE_EXTENT_TOP - ZOOM_LVL_BASE * TILE_HEIGHT * bridge_level_offset,
-			pt.x + MAX_TILE_EXTENT_RIGHT,
-			pt.y + MAX_TILE_EXTENT_BOTTOM);
-}
-
-/**
- * Mark a (virtual) tile outside the map dirty for repaint.
- * @param x Tile X position.
- * @param y Tile Y position.
- * @ingroup dirty
- */
-void MarkTileDirtyByTileOutsideMap(int x, int y)
-{
-	Point pt = RemapCoords(x * TILE_SIZE, y * TILE_SIZE, TilePixelHeightOutsideMap(x, y));
-	MarkAllViewportsDirty(
-			pt.x - MAX_TILE_EXTENT_LEFT,
-			pt.y, // no buildings outside of map
 			pt.x + MAX_TILE_EXTENT_RIGHT,
 			pt.y + MAX_TILE_EXTENT_BOTTOM);
 }
