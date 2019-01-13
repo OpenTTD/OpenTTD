@@ -30,6 +30,7 @@ fi
 # strgen_vs141.vcxproj.filters  is for MSVC 2017
 # generate_vs141.vcxproj        is for MSVC 2017
 # version_vs141.vcxproj         is for MSVC 2017
+# basesets_vs141.vcxproj        is for MSVC 2017
 
 # openttd_vs140.sln             is for MSVC 2015
 # openttd_vs140.vcxproj         is for MSVC 2015
@@ -39,6 +40,7 @@ fi
 # strgen_vs140.vcxproj.filters  is for MSVC 2015
 # generate_vs140.vcxproj        is for MSVC 2015
 # version_vs140.vcxproj         is for MSVC 2015
+# basesets_vs140.vcxproj        is for MSVC 2015
 
 
 
@@ -197,6 +199,44 @@ load_settings_data() {
 	eval "$2=\"\$RES\$RES2\""
 }
 
+load_baseset_data() {
+	FIRST=""
+	RES=""
+	RES2="
+#4    <Langs>"
+	# Windows Folder sort and Linux Folder sort are slightly different.
+	# By removing the extension and sorting it on Linux, they are the same.
+	for i in `ls $2 | sed s~.txt$~~g | sort`
+	do
+		if [ "$FIRST" != "" ]; then
+			RES2="$RES2;"
+		else
+			FIRST=1
+		fi
+		i=`basename $i`
+		RES2="$RES2..\\src\\lang\\$i.txt"
+	done
+	RES2="$RES2</Langs>"
+	# Windows Folder sort and Linux Folder sort are slightly different.
+	# By fiddling with the extension and sorting it on Linux, they are the same.
+	for i in `ls $1 | sed s~\\\.~000~g | sort | sed s~000~.~g`
+	do
+		i=`basename $i`
+		RES="$RES
+#2    <CustomBuild Include=\"..\\media\\baseset\\"$i"\">
+#2      <Message Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">Generating "$i" baseset metadata file</Message>
+#2      <Command Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">cscript //nologo ..\\media\\baseset\\translations.vbs \"%(FullPath)\" \"\$(OutputPath)$i\" ..\\src\\lang ..\\bin\\baseset\\orig_extra.grf</Command>
+#2      <AdditionalInputs Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">\$(Langs);..\\bin\\baseset\\orig_extra.grf;%(AdditionalInputs)</AdditionalInputs>
+#2      <Outputs Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\bin\\baseset\\"$i";%(Outputs)</Outputs>
+#2    </CustomBuild>
+#3    <CustomBuild Include=\"..\\media\\baseset\\"$i"\">
+#3      <Filter>Baseset Metadata</Filter>
+#3    </CustomBuild>"
+	done
+
+	eval "$3=\"\$RES\$RES2\""
+}
+
 generate() {
 	echo "Generating $2..."
 	if [ $# -eq 3 ]; then
@@ -263,6 +303,11 @@ settingsfiles=`echo "$settings" | grep "^#4" | sed "s~#4~~g"`
 settingscommand=`echo "$settings" | grep "^#3" | sed "s~#3~~g"`
 settingsvcxproj=`echo "$settings" | grep "^#2" | sed "s~#2~~g"`
 
+load_baseset_data "$ROOT_DIR/media/baseset/*.ob?" "$ROOT_DIR/src/lang/*.txt" baseset
+basesetfiles=`echo "$baseset" | grep "^#3" | sed "s-#3--g"`
+basesetvcxproj=`echo "$baseset" | grep "^#2" | sed "s~#2~~g"`
+basesetlangs=`echo "$baseset" | grep "^#4" | sed "s~#4~~g"`
+
 generate "$openttdvcxproj" "openttd_vs140.vcxproj"
 generate "$openttdfiles" "openttd_vs140.vcxproj.filters" "$openttdfilters"
 generate "$openttdvcxproj" "openttd_vs141.vcxproj"
@@ -275,3 +320,7 @@ generate "$settingsvcxproj" "settings_vs140.vcxproj" "$settingscommand"
 generate "$settingsfiles" "settings_vs140.vcxproj.filters"
 generate "$settingsvcxproj" "settings_vs141.vcxproj" "$settingscommand"
 generate "$settingsfiles" "settings_vs141.vcxproj.filters"
+generate "$basesetvcxproj" "basesets_vs140.vcxproj" "$basesetlangs"
+generate "$basesetfiles" "basesets_vs140.vcxproj.filters"
+generate "$basesetvcxproj" "basesets_vs141.vcxproj" "$basesetlangs"
+generate "$basesetfiles" "basesets_vs141.vcxproj.filters"

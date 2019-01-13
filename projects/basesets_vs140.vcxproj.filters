@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Baseset Metadata">
+      <UniqueIdentifier>{b5a3ac67-19a9-4276-80e9-2360367d2680}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\media\baseset\no_music.obm">
+      <Filter>Baseset Metadata</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\media\baseset\no_sound.obs">
+      <Filter>Baseset Metadata</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\media\baseset\orig_dos.obg">
+      <Filter>Baseset Metadata</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\media\baseset\orig_dos.obm">
+      <Filter>Baseset Metadata</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\media\baseset\orig_dos.obs">
+      <Filter>Baseset Metadata</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\media\baseset\orig_dos_de.obg">
+      <Filter>Baseset Metadata</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\media\baseset\orig_tto.obm">
+      <Filter>Baseset Metadata</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\media\baseset\orig_win.obg">
+      <Filter>Baseset Metadata</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\media\baseset\orig_win.obm">
+      <Filter>Baseset Metadata</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\media\baseset\orig_win.obs">
+      <Filter>Baseset Metadata</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

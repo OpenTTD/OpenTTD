@@ -365,6 +365,10 @@
       <Project>{1a2b3c5e-1c23-41a5-9c9b-acba2aa75fec}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="basesets_vs140.vcxproj">
+      <Project>{e12e77ca-c0f1-4ada-943f-4929274249d3}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

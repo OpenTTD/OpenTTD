@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "settingsgen", "settingsgen_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "regression", "regression_vs140.vcxproj", "{4712B013-437D-42CE-947F-DEBABA15261F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "basesets", "basesets_vs140.vcxproj", "{E12E77CA-C0F1-4ADA-943F-4929274249D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -83,6 +85,14 @@ Global
 		{4712B013-437D-42CE-947F-DEBABA15261F}.Debug|x64.ActiveCfg = Debug|Win32
 		{4712B013-437D-42CE-947F-DEBABA15261F}.Release|Win32.ActiveCfg = Debug|Win32
 		{4712B013-437D-42CE-947F-DEBABA15261F}.Release|x64.ActiveCfg = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Debug|Win32.Build.0 = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Debug|x64.ActiveCfg = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Debug|x64.Build.0 = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Release|Win32.ActiveCfg = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Release|Win32.Build.0 = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Release|x64.ActiveCfg = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Release|x64.Build.0 = Debug|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
