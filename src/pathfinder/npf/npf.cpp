@@ -538,6 +538,10 @@ static int32 NPFFindDepot(AyStar *as, OpenListNode *current)
 		return IsDepotTypeTile(current->path.node.tile, user->type) ?
 			AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
 	} else {
+		/* The tile where the ship actually "enters" the depot is the north tile.
+		 * Ship depots are also valid water tracks for ships from any company,
+		 * unlike the other depot types, so the pathfinder has to do a blind
+		 * search for a tile that matches these conditions. */
 		return IsShipDepotTile(current->path.node.tile) && GetShipDepotPart(current->path.node.tile) == DEPOT_PART_NORTH && IsTileOwner(current->path.node.tile, user->owner) ?
 			AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
 	}
