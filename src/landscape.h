@@ -108,12 +108,15 @@ static inline Point RemapCoords2(int x, int y)
  * @param y Y coordinate of the 2D coordinate.
  * @return X and Y components of equivalent world or tile coordinate.
  * @note Inverse of #RemapCoords function. Smaller values may get rounded.
+ * @see InverseRemapCoords2
  */
 static inline Point InverseRemapCoords(int x, int y)
 {
 	Point pt = {(y * 2 - x) >> (2 + ZOOM_LVL_SHIFT), (y * 2 + x) >> (2 + ZOOM_LVL_SHIFT)};
 	return pt;
 }
+
+Point InverseRemapCoords2(int x, int y, bool clamp_to_map = false);
 
 uint ApplyFoundationToSlope(Foundation f, Slope *s);
 /**

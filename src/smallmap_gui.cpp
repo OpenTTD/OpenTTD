@@ -923,8 +923,8 @@ void SmallMapWindow::DrawMapIndicators() const
 	/* Find main viewport. */
 	const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
-	Point upper_left_smallmap_coord  = TranslateXYToTileCoord(vp, vp->left, vp->top, false);
-	Point lower_right_smallmap_coord = TranslateXYToTileCoord(vp, vp->left + vp->width - 1, vp->top + vp->height - 1, false);
+	Point upper_left_smallmap_coord  = InverseRemapCoords2(vp->virtual_left, vp->virtual_top);
+	Point lower_right_smallmap_coord = InverseRemapCoords2(vp->virtual_left + vp->virtual_width - 1, vp->virtual_top + vp->virtual_height - 1);
 
 	Point upper_left = this->RemapTile(upper_left_smallmap_coord.x / (int)TILE_SIZE, upper_left_smallmap_coord.y / (int)TILE_SIZE);
 	upper_left.x -= this->subscroll;
@@ -1645,7 +1645,7 @@ void SmallMapWindow::SetNewScroll(int sx, int sy, int sub)
 void SmallMapWindow::SmallMapCenterOnCurrentPos()
 {
 	const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
-	Point viewport_center = TranslateXYToTileCoord(vp, vp->left + vp->width / 2, vp->top + vp->height / 2);
+	Point viewport_center = InverseRemapCoords2(vp->virtual_left + vp->virtual_width / 2, vp->virtual_top + vp->virtual_height / 2);
 
 	int sub;
 	const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
