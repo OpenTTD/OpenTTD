@@ -465,6 +465,10 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, Tr
 		if (track != TRACK_X && track != TRACK_Y) track = TrackToOppositeTrack(track);
 		if (!HasBit(tracks, track)) {
 			/* Can't continue in same direction so pick first available track. */
+			if (_settings_game.pf.forbid_90_deg) {
+				tracks &= ~TrackCrossesTracks(TrackdirToTrack(v->GetVehicleTrackdir()));
+				if (tracks == TRACK_BIT_NONE) return INVALID_TRACK;
+			}
 			track = FindFirstTrack(tracks);
 		}
 		path_found = false;
