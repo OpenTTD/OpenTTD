@@ -139,18 +139,23 @@ static const DiagDirection _ship_search_directions[6][4] = {
 /** Track to "direction (& 3)" mapping. */
 static const byte _pick_shiptrack_table[6] = {DIR_NE, DIR_SE, DIR_E, DIR_E, DIR_N, DIR_N};
 
-static uint FindShipTrack(const Ship *v, TileIndex tile, DiagDirection dir, TrackBits bits, TileIndex skiptile, Track *track, uint max_path_length = OPF_MAX_LENGTH, TileIndex dest_coords = INVALID_TILE)
+struct ShipTrackData {
+	Track best_track;
+	uint best_bird_dist;
+	uint best_length;
+};
+
+static void FindShipTrack(const Ship *v, TileIndex tile, DiagDirection dir, TrackBits bits, TileIndex skiptile, ShipTrackData *fstd, uint max_path_length = OPF_MAX_LENGTH, TileIndex dest_coords = INVALID_TILE)
 {
-	TrackPathFinder pfs;
-	uint best_bird_dist = 0;
-	uint best_length    = 0;
+	fstd->best_track = INVALID_TRACK;
+	fstd->best_bird_dist = 0;
+	fstd->best_length = 0;
 	byte ship_dir = v->direction & 3;
 
+	TrackPathFinder pfs;
 	pfs.dest_coords = dest_coords != INVALID_TILE ? dest_coords : v->dest_tile;
 	pfs.skiptile = skiptile;
 	pfs.max_path_length = max_path_length;
-
-	Track best_track = INVALID_TRACK;
 
 	assert(bits != TRACK_BIT_NONE);
 	do {
@@ -161,33 +166,30 @@ static uint FindShipTrack(const Ship *v, TileIndex tile, DiagDirection dir, Trac
 
 		OPFShipFollowTrack(tile, _ship_search_directions[i][dir], &pfs);
 
-		if (best_track != INVALID_TRACK) {
+		if (fstd->best_track != INVALID_TRACK) {
 			if (pfs.best_bird_dist != 0) {
 				/* neither reached the destination, pick the one with the smallest bird dist */
-				if (pfs.best_bird_dist > best_bird_dist) goto bad;
-				if (pfs.best_bird_dist < best_bird_dist) goto good;
+				if (pfs.best_bird_dist > fstd->best_bird_dist) goto bad;
+				if (pfs.best_bird_dist < fstd->best_bird_dist) goto good;
 			} else {
-				if (pfs.best_length > best_length) goto bad;
-				if (pfs.best_length < best_length) goto good;
+				if (pfs.best_length > fstd->best_length) goto bad;
+				if (pfs.best_length < fstd->best_length) goto good;
 			}
 
 			/* if we reach this position, there's two paths of equal value so far.
 			 * pick one randomly. */
 			uint r = GB(Random(), 0, 8);
 			if (_pick_shiptrack_table[i] == ship_dir) r += 80;
-			if (_pick_shiptrack_table[best_track] == ship_dir) r -= 80;
+			if (_pick_shiptrack_table[fstd->best_track] == ship_dir) r -= 80;
 			if (r <= 127) goto bad;
 		}
 good:;
-		best_track = i;
-		best_bird_dist = pfs.best_bird_dist;
-		best_length = pfs.best_length;
+		fstd->best_track = i;
+		fstd->best_bird_dist = pfs.best_bird_dist;
+		fstd->best_length = pfs.best_length;
 bad:;
 
 	} while (bits != TRACK_BIT_NONE);
-
-	*track = best_track;
-	return best_length;
 }
 
 /**
@@ -205,7 +207,7 @@ Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 	assert(IsValidDiagDirection(enterdir));
 
 	TileIndex tile2 = TILE_ADD(tile, -TileOffsByDiagDir(enterdir));
-	Track track;
+	ShipTrackData fstd;
 
 	/* Let's find out how far it would be if we would reverse first */
 	uint rev_dist = UINT_MAX; // distance if we reverse
@@ -215,16 +217,18 @@ Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 			DiagdirReachesTracks(rev_enterdir);
 
 	if (HasTrack(rev_tracks, cur_track)) {
-		rev_dist = FindShipTrack(v, tile2, rev_enterdir, TrackToTrackBits(cur_track), tile, &track);
+		FindShipTrack(v, tile2, rev_enterdir, TrackToTrackBits(cur_track), tile, &fstd);
+		rev_dist = fstd.best_bird_dist;
 		if (rev_dist != UINT_MAX) rev_dist++; // penalty for reversing
 	}
 
 	/* And if we would not reverse? */
-	uint dist = FindShipTrack(v, tile, enterdir, tracks, 0, &track);
+	FindShipTrack(v, tile, enterdir, tracks, 0, &fstd);
+	uint dist = fstd.best_bird_dist;
 
 	/* Due to the way this pathfinder works we cannot determine whether we're lost or not. */
 	path_found = true;
-	if (dist <= rev_dist) return track;
+	if (dist <= rev_dist) return fstd.best_track;
 	return INVALID_TRACK; // We could better reverse
 }
 
@@ -244,7 +248,7 @@ FindDepotData OPFShipFindNearestDepot(const Ship *v, int max_distance)
 	TileIndex tile_rev = v->tile;
 	TrackBits tracks_rev = TrackStatusToTrackBits(GetTileTrackStatus(tile_rev, TRANSPORT_WATER, 0)) & DiagdirReachesTracks(enterdir_rev) & TrackdirBitsToTrackBits(TrackdirToTrackdirBits(trackdir));
 
-	Track track; // initialized, but unused
+	ShipTrackData fstd;
 	if (max_distance == 0) max_distance = OPF_MAX_LENGTH;
 	uint best_dist = UINT_MAX;
 
@@ -258,12 +262,14 @@ FindDepotData OPFShipFindNearestDepot(const Ship *v, int max_distance)
 				/* Let's find the length it would be if we would reverse first */
 				uint length_rev = UINT_MAX;
 				if (tracks_rev != 0) {
-					length_rev = FindShipTrack(v, tile_rev, enterdir_rev, tracks_rev, tile, &track, max_distance, depottile);
+					FindShipTrack(v, tile_rev, enterdir_rev, tracks_rev, tile, &fstd, max_distance, depottile);
+					length_rev = fstd.best_length;
 					if (length_rev != UINT_MAX) length_rev++; // penalty for reversing
 				}
 
 				/* And if we would not reverse? */
-				uint length = FindShipTrack(v, tile, enterdir, tracks, 0, &track, max_distance, depottile);
+				FindShipTrack(v, tile, enterdir, tracks, 0, &fstd, max_distance, depottile);
+				uint length = fstd.best_length;
 
 				/* Get the shortest length */
 				uint min_length = minu(length_rev, length);

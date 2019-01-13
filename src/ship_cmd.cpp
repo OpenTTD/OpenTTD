@@ -176,11 +176,11 @@ static FindDepotData FindClosestReachableShipDepot(const Ship *v, int max_distan
 	if ((IsShipDepotTile(v->tile) && GetShipDepotPart(v->tile) == DEPOT_PART_NORTH) && IsTileOwner(v->tile, v->owner)) return FindDepotData(v->tile, 0);
 
 	switch (_settings_game.pf.pathfinder_for_ships) {
-		case VPF_OPF: return OPFShipFindNearestDepot(v, max_distance);
-		case VPF_NPF: return NPFShipFindNearestDepot(v, max_distance);
+		case VPF_OPF : return  OPFShipFindNearestDepot(v, max_distance);
+		case VPF_NPF : return  NPFShipFindNearestDepot(v, max_distance);
 		case VPF_YAPF: return YapfShipFindNearestDepot(v, max_distance);
 
-	default: NOT_REACHED();
+		default: NOT_REACHED();
 	}
 }
 
