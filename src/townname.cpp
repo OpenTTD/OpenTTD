@@ -121,17 +121,17 @@ bool VerifyTownName(uint32 r, const TownNameParams *par, TownNames *town_names)
  */
 bool GenerateTownName(uint32 *townnameparts, TownNames *town_names)
 {
-	/* Do not set too low tries, since when we run out of names, we loop
-	 * for #tries only one time anyway - then we stop generating more
-	 * towns. Do not show it too high neither, since looping through all
-	 * the other towns may take considerable amount of time (10000 is
-	 * too much). */
 	TownNameParams par(_settings_game.game_creation.town_name);
 
 	/* This function is called very often without entering the gameloop
 	 * inbetween. So reset layout cache to prevent it from growing too big. */
 	Layouter::ReduceLineCache();
 
+	/* Do not set i too low, since when we run out of names, we loop
+	 * for #tries only one time anyway - then we stop generating more
+	 * towns. Do not set it too high either, since looping through all
+	 * the other towns may take considerable amount of time (10000 is
+	 * too much). */
 	for (int i = 1000; i != 0; i--) {
 		uint32 r = _generating_world ? Random() : InteractiveRandom();
 		if (!VerifyTownName(r, &par, town_names)) continue;
@@ -1045,7 +1045,7 @@ static const TownNameGeneratorParams _town_name_generators[] = {
 
 
 /**
- * Generates town name from given seed. a language.
+ * Generates town name from given seed.
  * @param buf output buffer
  * @param last end of buffer
  * @param lang town name language

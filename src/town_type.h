@@ -54,7 +54,7 @@ enum Ratings {
 	RATING_GROWTH_UP_STEP    =   5, ///< when a town grows, all companies have rating increased a bit ...
 	RATING_GROWTH_MAXIMUM    = RATING_MEDIOCRE, ///< ... up to RATING_MEDIOCRE
 	RATING_STATION_UP_STEP   =  12, ///< when a town grows, company gains reputation for all well serviced stations ...
-	RATING_STATION_DOWN_STEP = -15, ///< ... but loses for bad serviced stations
+	RATING_STATION_DOWN_STEP = -15, ///< ... but loses for badly serviced stations
 
 	RATING_TUNNEL_BRIDGE_DOWN_STEP = -250, ///< penalty for removing town owned tunnel or bridge
 	RATING_TUNNEL_BRIDGE_MINIMUM   =    0, ///< minimum rating after removing tunnel or bridge
