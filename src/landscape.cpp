@@ -96,13 +96,16 @@ static SnowLine *_snow_line = NULL;
  * @param x X viewport 2D coordinate.
  * @param y Y viewport 2D coordinate.
  * @param clamp_to_map Clamp the coordinate outside of the map to the closest, non-void tile within the map.
+ * @param[out] clamped Whether coordinates were clamped.
  * @return 3D world coordinate of point visible at the given screen coordinate (3D perspective).
  *
  * @note Inverse of #RemapCoords2 function. Smaller values may get rounded.
  * @see InverseRemapCoords
  */
-Point InverseRemapCoords2(int x, int y, bool clamp_to_map)
+Point InverseRemapCoords2(int x, int y, bool clamp_to_map, bool *clamped)
 {
+	if (clamped != NULL) *clamped = false; // Not clamping yet.
+
 	/* Initial x/y world coordinate is like if the landscape
 	 * was completely flat on height 0. */
 	Point pt = InverseRemapCoords(x, y);
@@ -116,8 +119,10 @@ Point InverseRemapCoords2(int x, int y, bool clamp_to_map)
 		 * of extra tiles. This is mostly due to the tiles on the north side of
 		 * the map possibly being drawn higher due to the extra height levels. */
 		int extra_tiles = CeilDiv(_settings_game.construction.max_heightlevel * TILE_HEIGHT, TILE_PIXELS);
+		Point old_pt = pt;
 		pt.x = Clamp(pt.x, -extra_tiles * TILE_SIZE, max_x);
 		pt.y = Clamp(pt.y, -extra_tiles * TILE_SIZE, max_y);
+		if (clamped != NULL) *clamped = (pt.x != old_pt.x) || (pt.y != old_pt.y);
 	}
 
 	/* Now find the Z-world coordinate by fix point iteration.
@@ -133,8 +138,10 @@ Point InverseRemapCoords2(int x, int y, bool clamp_to_map)
 	pt.x += z;
 	pt.y += z;
 	if (clamp_to_map) {
+		Point old_pt = pt;
 		pt.x = Clamp(pt.x, min_coord, max_x);
 		pt.y = Clamp(pt.y, min_coord, max_y);
+		if (clamped != NULL) *clamped = *clamped || (pt.x != old_pt.x) || (pt.y != old_pt.y);
 	}
 
 	return pt;
