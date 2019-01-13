@@ -31,10 +31,7 @@
 #include <sys/stat.h>
 #include "../../language.h"
 
-/* Due to TCHAR, strncat and strncpy have to remain (for a while). */
 #include "../../safeguards.h"
-#undef strncat
-#undef strncpy
 
 static bool _has_console;
 static bool _cursor_disable = true;

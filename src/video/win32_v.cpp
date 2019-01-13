@@ -636,7 +636,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 	switch (msg) {
 		case WM_CREATE:
-			SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
+			SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, TrackMouseTimerProc);
 			SetCompositionPos(hwnd);
 			_imm_props = ImmGetProperty(GetKeyboardLayout(0), IGP_PROPERTY);
 			break;
@@ -741,7 +741,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 					_pTrackMouseEvent(&tme);
 				} else {
-					SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
+					SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, TrackMouseTimerProc);
 				}
 			}
 
