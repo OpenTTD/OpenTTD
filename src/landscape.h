@@ -116,7 +116,7 @@ static inline Point InverseRemapCoords(int x, int y)
 	return pt;
 }
 
-Point InverseRemapCoords2(int x, int y, bool clamp_to_map = false);
+Point InverseRemapCoords2(int x, int y, bool clamp_to_map = false, bool *clamped = NULL);
 
 uint ApplyFoundationToSlope(Foundation f, Slope *s);
 /**
