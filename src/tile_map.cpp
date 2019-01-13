@@ -193,23 +193,6 @@ int GetTileZ(TileIndex tile)
 }
 
 /**
- * Get bottom height of the tile outside map.
- *
- * @param x X-coordinate of the tile outside to compute height of.
- * @param y Y-coordinate of the tile outside to compute height of.
- * @return Minimum height of the tile outside the map.
- */
-int GetTilePixelZOutsideMap(int x, int y)
-{
-	uint h =   TileHeightOutsideMap(x,     y);      // N corner.
-	h = min(h, TileHeightOutsideMap(x + 1, y));     // W corner.
-	h = min(h, TileHeightOutsideMap(x,     y + 1)); // E corner.
-	h = min(h, TileHeightOutsideMap(x + 1, y + 1)); // S corner
-
-	return h * TILE_HEIGHT;
-}
-
-/**
  * Get top height of the tile inside the map.
  * @param t Tile to compute height of
  * @return Maximum height of the tile
@@ -224,23 +207,4 @@ int GetTileMaxZ(TileIndex t)
 	h = max<int>(h, TileHeight(t + TileDiffXY(1, 1))); // S corner
 
 	return h;
-}
-
-/**
- * Get top height of the tile outside the map.
- *
- * @see Detailed description in header.
- *
- * @param x X-coordinate of the tile outside to compute height of.
- * @param y Y-coordinate of the tile outside to compute height of.
- * @return Maximum height of the tile.
- */
-int GetTileMaxPixelZOutsideMap(int x, int y)
-{
-	uint h =   TileHeightOutsideMap(x,     y);
-	h = max(h, TileHeightOutsideMap(x + 1, y));
-	h = max(h, TileHeightOutsideMap(x,     y + 1));
-	h = max(h, TileHeightOutsideMap(x + 1, y + 1));
-
-	return h * TILE_HEIGHT;
 }
