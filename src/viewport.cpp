@@ -399,65 +399,27 @@ ViewPort *IsPtInWindowViewport(const Window *w, int x, int y)
 }
 
 /**
- * Translate screen coordinate in a viewport to a tile coordinate
+ * Translate screen coordinate in a viewport to underlying tile coordinate.
+ *
+ * Returns exact point of the map that is visible in the given place
+ * of the viewport (3D perspective), height of tiles and foundations matter.
+ *
  * @param vp  Viewport that contains the (\a x, \a y) screen coordinate
- * @param x   Screen x coordinate
- * @param y   Screen y coordinate
- * @param clamp_to_map Clamp the coordinate outside of the map to the closest tile within the map.
- * @return Tile coordinate
+ * @param x   Screen x coordinate, distance in pixels from the left edge of viewport frame
+ * @param y   Screen y coordinate, distance in pixels from the top edge of viewport frame
+ * @param clamp_to_map Clamp the coordinate outside of the map to the closest, non-void tile within the map
+ * @return Tile coordinate or (-1, -1) if given x or y is not within viewport frame
  */
 Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y, bool clamp_to_map)
 {
-	Point pt;
-	int a, b;
-	int z;
-
-	if ( (uint)(x -= vp->left) >= (uint)vp->width ||
-				(uint)(y -= vp->top) >= (uint)vp->height) {
-				Point pt = {-1, -1};
-				return pt;
+	if (!IsInsideBS(x, vp->left, vp->width) || !IsInsideBS(y, vp->top, vp->height)) {
+		Point pt = { -1, -1 };
+		return pt;
 	}
 
-	x = (ScaleByZoom(x, vp->zoom) + vp->virtual_left) >> (2 + ZOOM_LVL_SHIFT);
-	y = (ScaleByZoom(y, vp->zoom) + vp->virtual_top) >> (1 + ZOOM_LVL_SHIFT);
-
-	a = y - x;
-	b = y + x;
-
-	if (clamp_to_map) {
-		/* Bring the coordinates near to a valid range. This is mostly due to the
-		 * tiles on the north side of the map possibly being drawn too high due to
-		 * the extra height levels. So at the top we allow a number of extra tiles.
-		 * This number is based on the tile height and pixels. */
-		int extra_tiles = CeilDiv(_settings_game.construction.max_heightlevel * TILE_HEIGHT, TILE_PIXELS);
-		a = Clamp(a, -extra_tiles * TILE_SIZE, MapMaxX() * TILE_SIZE - 1);
-		b = Clamp(b, -extra_tiles * TILE_SIZE, MapMaxY() * TILE_SIZE - 1);
-	}
-
-	/* (a, b) is the X/Y-world coordinate that belongs to (x,y) if the landscape would be completely flat on height 0.
-	 * Now find the Z-world coordinate by fix point iteration.
-	 * This is a bit tricky because the tile height is non-continuous at foundations.
-	 * The clicked point should be approached from the back, otherwise there are regions that are not clickable.
-	 * (FOUNDATION_HALFTILE_LOWER on SLOPE_STEEP_S hides north halftile completely)
-	 * So give it a z-malus of 4 in the first iterations.
-	 */
-	z = 0;
-
-	int min_coord = _settings_game.construction.freeform_edges ? TILE_SIZE : 0;
-
-	for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(a + max(z, 4) - 4, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + max(z, 4) - 4, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
-	for (int malus = 3; malus > 0; malus--) z = GetSlopePixelZ(Clamp(a + max(z, malus) - malus, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + max(z, malus) - malus, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
-	for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(a + z, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + z, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
-
-	if (clamp_to_map) {
-		pt.x = Clamp(a + z, min_coord, MapMaxX() * TILE_SIZE - 1);
-		pt.y = Clamp(b + z, min_coord, MapMaxY() * TILE_SIZE - 1);
-	} else {
-		pt.x = a + z;
-		pt.y = b + z;
-	}
-
-	return pt;
+	return InverseRemapCoords2(
+			ScaleByZoom(x - vp->left, vp->zoom) + vp->virtual_left,
+			ScaleByZoom(y - vp->top, vp->zoom) + vp->virtual_top, clamp_to_map);
 }
 
 /* When used for zooming, check area below current coordinates (x,y)
