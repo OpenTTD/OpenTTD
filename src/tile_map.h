@@ -289,8 +289,6 @@ static inline int GetTilePixelZ(TileIndex tile)
 	return GetTileZ(tile) * TILE_HEIGHT;
 }
 
-int GetTilePixelZOutsideMap(int x, int y);
-
 /**
  * Get top height of the tile
  * @param tile Tile to compute height of
@@ -300,9 +298,6 @@ static inline int GetTileMaxPixelZ(TileIndex tile)
 {
 	return GetTileMaxZ(tile) * TILE_HEIGHT;
 }
-
-int GetTileMaxPixelZOutsideMap(int x, int y);
-
 
 /**
  * Calculate a hash value from a tile position
