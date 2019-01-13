@@ -407,7 +407,12 @@ void ShowDropDownListAt(Window *w, const DropDownList *list, int selected, int b
 
 	Point dw_pos = { w->left + (_current_text_dir == TD_RTL ? wi_rect.right + 1 - (int)width : wi_rect.left), top};
 	Dimension dw_size = {width, height};
-	new DropdownWindow(w, list, selected, button, instant_close, dw_pos, dw_size, wi_colour, scroll);
+	DropdownWindow *dropdown = new DropdownWindow(w, list, selected, button, instant_close, dw_pos, dw_size, wi_colour, scroll);
+
+	/* The dropdown starts scrolling downwards when opening it towards
+	 * the top and holding down the mouse button. It can be fooled by
+	 * opening the dropdown scrolled to the very bottom.  */
+	if (above && scroll) dropdown->vscroll->UpdatePosition(INT_MAX);
 }
 
 /**
