@@ -10,7 +10,7 @@
 /** @file void_cmd.cpp Handling of void tiles. */
 
 #include "stdafx.h"
-#include "tile_cmd.h"
+#include "landscape.h"
 #include "command_func.h"
 #include "viewport_func.h"
 #include "slope_func.h"
@@ -28,7 +28,12 @@ static void DrawTile_Void(TileInfo *ti)
 
 static int GetSlopePixelZ_Void(TileIndex tile, uint x, uint y)
 {
-	return TilePixelHeight(tile);
+	/* This function may be called on tiles outside the map, don't asssume
+	 * that 'tile' is a valid tile index. See GetSlopePixelZOutsideMap. */
+	int z;
+	Slope tileh = GetTilePixelSlopeOutsideMap(x >> 4, y >> 4, &z);
+
+	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 }
 
 static Foundation GetFoundation_Void(TileIndex tile, Slope tileh)

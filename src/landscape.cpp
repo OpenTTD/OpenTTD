@@ -131,9 +131,15 @@ Point InverseRemapCoords2(int x, int y, bool clamp_to_map, bool *clamped)
 	 * (FOUNDATION_HALFTILE_LOWER on SLOPE_STEEP_S hides north halftile completely)
 	 * So give it a z-malus of 4 in the first iterations. */
 	int z = 0;
-	for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(pt.x + max(z, 4) - 4, min_coord, max_x), Clamp(pt.y + max(z, 4) - 4, min_coord, max_y)) / 2;
-	for (int m = 3; m > 0; m--) z = GetSlopePixelZ(Clamp(pt.x + max(z, m) - m, min_coord, max_x), Clamp(pt.y + max(z, m) - m, min_coord, max_y)) / 2;
-	for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(pt.x + z,             min_coord, max_x), Clamp(pt.y + z,             min_coord, max_y)) / 2;
+	if (clamp_to_map) {
+		for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(pt.x + max(z, 4) - 4, min_coord, max_x), Clamp(pt.y + max(z, 4) - 4, min_coord, max_y)) / 2;
+		for (int m = 3; m > 0; m--) z = GetSlopePixelZ(Clamp(pt.x + max(z, m) - m, min_coord, max_x), Clamp(pt.y + max(z, m) - m, min_coord, max_y)) / 2;
+		for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(pt.x + z,             min_coord, max_x), Clamp(pt.y + z,             min_coord, max_y)) / 2;
+	} else {
+		for (int i = 0; i < 5; i++) z = GetSlopePixelZOutsideMap(pt.x + max(z, 4) - 4, pt.y + max(z, 4) - 4) / 2;
+		for (int m = 3; m > 0; m--) z = GetSlopePixelZOutsideMap(pt.x + max(z, m) - m, pt.y + max(z, m) - m) / 2;
+		for (int i = 0; i < 5; i++) z = GetSlopePixelZOutsideMap(pt.x + z,             pt.y + z            ) / 2;
+	}
 
 	pt.x += z;
 	pt.y += z;
@@ -340,6 +346,23 @@ int GetSlopePixelZ(int x, int y)
 	TileIndex tile = TileVirtXY(x, y);
 
 	return _tile_type_procs[GetTileType(tile)]->get_slope_z_proc(tile, x, y);
+}
+
+/**
+ * Return world \c z coordinate of a given point of a tile,
+ * also for tiles outside the map (virtual "black" tiles).
+ *
+ * @param x World X coordinate in tile "units", may be ouside the map.
+ * @param y World Y coordinate in tile "units", may be ouside the map.
+ * @return World Z coordinate at tile ground level, including slopes and foundations.
+ */
+int GetSlopePixelZOutsideMap(int x, int y)
+{
+	if (IsInsideBS(x, 0, MapSizeX() * TILE_SIZE) && IsInsideBS(y, 0, MapSizeY() * TILE_SIZE)) {
+		return GetSlopePixelZ(x, y);
+	} else {
+		return _tile_type_procs[MP_VOID]->get_slope_z_proc(INVALID_TILE, x, y);
+	}
 }
 
 /**
