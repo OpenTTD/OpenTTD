@@ -1980,7 +1980,7 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 		FOR_ALL_ROADVEHICLES(v) {
 			if (v->First() == v && v->current_order.IsType(OT_GOTO_STATION) &&
 					v->dest_tile == tile) {
-				v->dest_tile = v->GetOrderStationLocation(st->index);
+				v->SetDestTile(v->GetOrderStationLocation(st->index));
 			}
 		}
 
@@ -2604,7 +2604,7 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 			}
 
 			if (s->dest_tile == docking_location) {
-				s->dest_tile = 0;
+				s->SetDestTile(0);
 				s->current_order.Free();
 			}
 		}
