@@ -2313,7 +2313,7 @@ static const byte _initial_tile_subcoord[6][4][3] = {
 static Track DoTrainPathfind(const Train *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, bool do_track_reservation, PBSTileInfo *dest)
 {
 	switch (_settings_game.pf.pathfinder_for_trains) {
-		case VPF_NPF: return NPFTrainChooseTrack(v, tracks, path_found, do_track_reservation, dest);
+		case VPF_NPF: return NPFTrainChooseTrack(v, path_found, do_track_reservation, dest);
 		case VPF_YAPF: return YapfTrainChooseTrack(v, tile, enterdir, tracks, path_found, do_track_reservation, dest);
 
 		default: NOT_REACHED();

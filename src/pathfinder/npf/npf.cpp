@@ -1130,7 +1130,7 @@ FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penal
 	return FindDepotData(ftd.node.tile, ftd.best_path_dist);
 }
 
-Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool &path_found)
+Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, bool &path_found)
 {
 	NPFFindStationOrTileData fstd;
 
@@ -1152,7 +1152,7 @@ Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDir
 
 /*** Ships ***/
 
-Track NPFShipChooseTrack(const Ship *v, TrackBits tracks, bool &path_found)
+Track NPFShipChooseTrack(const Ship *v, bool &path_found)
 {
 	NPFFindStationOrTileData fstd;
 	Trackdir trackdir = v->GetVehicleTrackdir();
@@ -1255,7 +1255,7 @@ bool NPFTrainCheckReverse(const Train *v)
 	return ftd.best_bird_dist == 0 && NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE);
 }
 
-Track NPFTrainChooseTrack(const Train *v, TrackBits tracks, bool &path_found, bool reserve_track, struct PBSTileInfo *target)
+Track NPFTrainChooseTrack(const Train *v, bool &path_found, bool reserve_track, struct PBSTileInfo *target)
 {
 	NPFFindStationOrTileData fstd;
 	NPFFillWithOrderData(&fstd, v, reserve_track);

@@ -32,20 +32,18 @@ FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penal
  * @param v         the RV that needs to find a path
  * @param tile      the tile to find the path from (should be next tile the RV is about to enter)
  * @param enterdir  diagonal direction which the RV will enter this new tile from
- * @param trackdirs available trackdirs on the new tile (to choose from)
  * @param path_found [out] Whether a path has been found (true) or has been guessed (false)
  * @return          the best trackdir for next turn or INVALID_TRACKDIR if the path could not be found
  */
-Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool &path_found);
+Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, bool &path_found);
 
 /**
  * Finds the best path for given ship using NPF.
  * @param v        the ship that needs to find a path
- * @param tracks   available tracks on the new tile (to choose from)
  * @param path_found [out] Whether a path has been found (true) or has been guessed (false)
  * @return         the best trackdir for next turn or INVALID_TRACK if the path could not be found
  */
-Track NPFShipChooseTrack(const Ship *v, TrackBits tracks, bool &path_found);
+Track NPFShipChooseTrack(const Ship *v, bool &path_found);
 
 /**
  * Returns true if it is better to reverse the ship before leaving depot using NPF.
@@ -85,12 +83,11 @@ bool NPFTrainCheckReverse(const Train *v);
 /**
  * Finds the best path for given train using NPF.
  * @param v        the train that needs to find a path
- * @param tracks   available trackdirs on the new tile (to choose from)
  * @param path_found [out] Whether a path has been found (true) or has been guessed (false)
  * @param reserve_track indicates whether YAPF should try to reserve the found path
  * @param target   [out] the target tile of the reservation, free is set to true if path was reserved
  * @return         the best track for next turn
  */
-Track NPFTrainChooseTrack(const Train *v, TrackBits tracks, bool &path_found, bool reserve_track, struct PBSTileInfo *target);
+Track NPFTrainChooseTrack(const Train *v, bool &path_found, bool reserve_track, struct PBSTileInfo *target);
 
 #endif /* NPF_FUNC_H */
