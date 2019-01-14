@@ -193,7 +193,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 	}
 
 	v->current_order.MakeGoToDepot(depot->index, ODTFB_SERVICE);
-	v->dest_tile = depot->xy;
+	v->SetDestTile(depot->xy);
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
 
@@ -473,10 +473,24 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, Tr
 		}
 		path_found = false;
 	} else {
+		/* Attempt to follow cached path. */
+		if (!v->path.empty()) {
+			track = TrackdirToTrack(v->path.front());
+
+			if (HasBit(tracks, track)) {
+				v->path.pop_front();
+				/* HandlePathfindResult() is not called here because this is not a new pathfinder result. */
+				return track;
+			}
+
+			/* Cached path is invalid so continue with pathfinder. */
+		}
+
+		v->path.clear();
 		switch (_settings_game.pf.pathfinder_for_ships) {
 			case VPF_OPF: track = OPFShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
 			case VPF_NPF: track = NPFShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
-			case VPF_YAPF: track = YapfShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
+			case VPF_YAPF: track = YapfShipChooseTrack(v, tile, enterdir, tracks, path_found, v->path); break;
 			default: NOT_REACHED();
 		}
 	}
@@ -665,6 +679,7 @@ getout:
 reverse_direction:
 	dir = ReverseDir(v->direction);
 	v->direction = dir;
+	v->path.clear();
 	goto getout;
 }
 
@@ -677,6 +692,13 @@ bool Ship::Tick()
 	ShipController(this);
 
 	return true;
+}
+
+void Ship::SetDestTile(TileIndex tile)
+{
+	if (tile == this->dest_tile) return;
+	this->path.clear();
+	this->dest_tile = tile;
 }
 
 /**

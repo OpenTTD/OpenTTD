@@ -753,7 +753,8 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 	static const SaveLoad _ship_desc[] = {
 		SLE_WRITEBYTE(Vehicle, type, VEH_SHIP),
 		SLE_VEH_INCLUDE(),
-		     SLE_VAR(Ship, state, SLE_UINT8),
+		      SLE_VAR(Ship, state,     SLE_UINT8),
+		SLE_CONDDEQUE(Ship, path,      SLE_UINT8,  203, SL_MAX_VERSION),
 
 		SLE_CONDNULL(16, 2, 143), // old reserved space
 
