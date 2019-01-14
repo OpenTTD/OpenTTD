@@ -529,7 +529,7 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 }
 
 /* Will find any depot */
-static int32 NPFFindDepot(AyStar *as, OpenListNode *current)
+static int32 NPFFindDepot(const AyStar *as, const OpenListNode *current)
 {
 	AyStarUserData *user = (AyStarUserData *)as->user_data;
 	/* It's not worth caching the result with NPF_FLAG_IS_TARGET here as below,
@@ -539,7 +539,7 @@ static int32 NPFFindDepot(AyStar *as, OpenListNode *current)
 }
 
 /** Find any safe and free tile. */
-static int32 NPFFindSafeTile(AyStar *as, OpenListNode *current)
+static int32 NPFFindSafeTile(const AyStar *as, const OpenListNode *current)
 {
 	const Train *v = Train::From(((NPFFindStationOrTileData *)as->user_target)->v);
 
@@ -549,10 +549,10 @@ static int32 NPFFindSafeTile(AyStar *as, OpenListNode *current)
 }
 
 /* Will find a station identified using the NPFFindStationOrTileData */
-static int32 NPFFindStationOrTile(AyStar *as, OpenListNode *current)
+static int32 NPFFindStationOrTile(const AyStar *as, const OpenListNode *current)
 {
 	NPFFindStationOrTileData *fstd = (NPFFindStationOrTileData*)as->user_target;
-	AyStarNode *node = &current->path.node;
+	const AyStarNode *node = &current->path.node;
 	TileIndex tile = node->tile;
 
 	if (fstd->station_index == INVALID_STATION && tile == fstd->dest_coords) return AYSTAR_FOUND_END_NODE;
