@@ -101,6 +101,11 @@ static inline void NPFSetFlag(AyStarNode *node, NPFNodeFlag flag, bool value)
 	SB(node->user_data[NPF_NODE_FLAGS], flag, 1, value);
 }
 
+bool CheckIgnoreFirstTile(const PathNode *node)
+{
+	return (node->parent == NULL && HasBit(node->node.user_data[NPF_NODE_FLAGS], NPF_FLAG_IGNORE_START_TILE));
+}
+
 /**
  * Calculates the minimum distance travelled to get from t0 to t1 when only
  * using tracks (ie, only making 45 degree turns). Returns the distance in the
@@ -853,11 +858,6 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
 	TileIndex src_tile = current->path.node.tile;
 	DiagDirection src_exitdir = TrackdirToExitdir(src_trackdir);
 
-	/* Is src_tile valid, and can be used?
-	 * When choosing track on a junction src_tile is the tile neighboured to the junction wrt. exitdir.
-	 * But we must not check the validity of this move, as src_tile is totally unrelated to the move, if a roadvehicle reversed on a junction. */
-	bool ignore_src_tile = (current->path.parent == NULL && NPFGetFlag(&current->path.node, NPF_FLAG_IGNORE_START_TILE));
-
 	/* Information about the vehicle: TransportType (road/rail/water) and SubType (compatible rail/road types) */
 	TransportType type = user->type;
 	uint subtype = user->roadtypes;
@@ -871,7 +871,10 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
 	TrackdirBits trackdirbits;
 
 	/* Find dest tile */
-	if (ignore_src_tile) {
+	/* Is src_tile valid, and can be used?
+	 * When choosing track on a junction src_tile is the tile neighboured to the junction wrt. exitdir.
+	 * But we must not check the validity of this move, as src_tile is totally unrelated to the move, if a roadvehicle reversed on a junction. */
+	if (CheckIgnoreFirstTile(&current->path)) {
 		/* Do not perform any checks that involve src_tile */
 		dst_tile = src_tile + TileOffsByDiagDir(src_exitdir);
 		trackdirbits = GetDriveableTrackdirBits(dst_tile, src_trackdir, type, subtype);

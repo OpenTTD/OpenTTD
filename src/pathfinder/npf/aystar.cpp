@@ -170,7 +170,7 @@ int AyStar::Loop()
 	if (current == NULL) return AYSTAR_EMPTY_OPENLIST;
 
 	/* Check for end node and if found, return that code */
-	if (this->EndNodeCheck(this, current) == AYSTAR_FOUND_END_NODE) {
+	if (this->EndNodeCheck(this, current) == AYSTAR_FOUND_END_NODE && !CheckIgnoreFirstTile(&current->path)) {
 		if (this->FoundEndNode != NULL) {
 			this->FoundEndNode(this, current);
 		}
