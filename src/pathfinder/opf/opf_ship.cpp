@@ -35,27 +35,40 @@ struct TrackPathFinder {
 	uint max_path_length;
 	RememberData rd;
 	TrackdirByte the_dir;
+	Owner ship_owner;
 };
 
-static bool ShipTrackFollower(TileIndex tile, TrackPathFinder *pfs, uint length)
+static bool ShipTrackFollower(TileIndex tile, TrackPathFinder *pfs, uint length, bool depot)
 {
-	/* Found dest? */
-	if (tile == pfs->dest_coords) {
-		pfs->best_bird_dist = 0;
+	if (!depot) {
+		/* Found dest? */
+		if (tile == pfs->dest_coords) {
+			pfs->best_bird_dist = 0;
 
-		pfs->best_length = minu(pfs->best_length, length);
-		return true;
+			pfs->best_length = minu(pfs->best_length, length);
+			return true;
+		}
+
+		/* Skip this tile in the calculation */
+		if (tile != pfs->skiptile) {
+			pfs->best_bird_dist = minu(pfs->best_bird_dist, DistanceMaxPlusManhattan(pfs->dest_coords, tile));
+		}
+
+		return false;
+	} else {
+		/* Found depot? */
+		if (IsShipDepotTile(tile) && GetShipDepotPart(tile) == DEPOT_PART_NORTH && IsTileOwner(tile, pfs->ship_owner)) {
+			pfs->best_bird_dist = 0;
+			pfs->dest_coords = tile;
+			pfs->best_length = minu(pfs->best_length, length);
+			return true;
+		}
+
+		return false;
 	}
-
-	/* Skip this tile in the calculation */
-	if (tile != pfs->skiptile) {
-		pfs->best_bird_dist = minu(pfs->best_bird_dist, DistanceMaxPlusManhattan(pfs->dest_coords, tile));
-	}
-
-	return false;
 }
 
-static void TPFModeShip(TrackPathFinder *tpf, TileIndex tile, DiagDirection direction)
+static void TPFModeShip(TrackPathFinder *tpf, TileIndex tile, DiagDirection direction, bool depot)
 {
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		/* wrong track type */
@@ -105,15 +118,15 @@ static void TPFModeShip(TrackPathFinder *tpf, TileIndex tile, DiagDirection dire
 
 		tpf->the_dir = TrackEnterdirToTrackdir(track, direction);
 
-		if (!ShipTrackFollower(tile, tpf, tpf->rd.cur_length)) {
-			TPFModeShip(tpf, tile, TrackdirToExitdir(tpf->the_dir));
+		if (!ShipTrackFollower(tile, tpf, tpf->rd.cur_length, depot)) {
+			TPFModeShip(tpf, tile, TrackdirToExitdir(tpf->the_dir), depot);
 		}
 
 		tpf->rd = rd;
 	} while (bits != TRACK_BIT_NONE);
 }
 
-static void OPFShipFollowTrack(TileIndex tile, DiagDirection direction, TrackPathFinder *tpf)
+static void OPFShipFollowTrack(TileIndex tile, DiagDirection direction, TrackPathFinder *tpf, bool depot)
 {
 	assert(IsValidDiagDirection(direction));
 
@@ -122,8 +135,8 @@ static void OPFShipFollowTrack(TileIndex tile, DiagDirection direction, TrackPat
 	tpf->rd.depth = 0;
 	tpf->rd.last_choosen_track = INVALID_TRACK;
 
-	ShipTrackFollower(tile, tpf, 0);
-	TPFModeShip(tpf, tile, direction);
+	ShipTrackFollower(tile, tpf, 0, depot);
+	TPFModeShip(tpf, tile, direction, depot);
 }
 
 /** Directions to search towards given track bits and the ship's enter direction. */
@@ -143,19 +156,22 @@ struct ShipTrackData {
 	Track best_track;
 	uint best_bird_dist;
 	uint best_length;
+	TileIndex dest_coords;
 };
 
-static void FindShipTrack(const Ship *v, TileIndex tile, DiagDirection dir, TrackBits bits, TileIndex skiptile, ShipTrackData *fstd, uint max_path_length = OPF_MAX_LENGTH, TileIndex dest_coords = INVALID_TILE)
+static void FindShipTrack(const Ship *v, TileIndex tile, DiagDirection dir, TrackBits bits, TileIndex skiptile, ShipTrackData *fstd, uint max_path_length = OPF_MAX_LENGTH, bool depot = false)
 {
 	fstd->best_track = INVALID_TRACK;
 	fstd->best_bird_dist = 0;
 	fstd->best_length = 0;
+	fstd->dest_coords = depot ? INVALID_TILE : v->dest_tile;
 	byte ship_dir = v->direction & 3;
 
 	TrackPathFinder pfs;
-	pfs.dest_coords = dest_coords != INVALID_TILE ? dest_coords : v->dest_tile;
+	pfs.dest_coords = fstd->dest_coords;
 	pfs.skiptile = skiptile;
 	pfs.max_path_length = max_path_length;
+	pfs.ship_owner = v->owner;
 
 	assert(bits != TRACK_BIT_NONE);
 	do {
@@ -164,7 +180,7 @@ static void FindShipTrack(const Ship *v, TileIndex tile, DiagDirection dir, Trac
 		pfs.best_bird_dist = UINT_MAX;
 		pfs.best_length = UINT_MAX;
 
-		OPFShipFollowTrack(tile, _ship_search_directions[i][dir], &pfs);
+		OPFShipFollowTrack(tile, _ship_search_directions[i][dir], &pfs, depot);
 
 		if (fstd->best_track != INVALID_TRACK) {
 			if (pfs.best_bird_dist != 0) {
@@ -187,6 +203,7 @@ good:;
 		fstd->best_track = i;
 		fstd->best_bird_dist = pfs.best_bird_dist;
 		fstd->best_length = pfs.best_length;
+		fstd->dest_coords = pfs.dest_coords;
 bad:;
 
 	} while (bits != TRACK_BIT_NONE);
@@ -250,38 +267,36 @@ FindDepotData OPFShipFindNearestDepot(const Ship *v, int max_distance)
 
 	ShipTrackData fstd;
 	if (max_distance == 0) max_distance = OPF_MAX_LENGTH;
-	uint best_dist = UINT_MAX;
 
-	Depot *depot;
-	FOR_ALL_DEPOTS(depot) {
-		TileIndex depottile = depot->xy;
-		if (IsShipDepotTile(depottile) && IsTileOwner(depottile, v->owner)) {
-			uint distdepot = DistanceManhattan(v->tile, depottile);
-			if (distdepot <= (uint)max_distance && distdepot < best_dist) {
+	/* Let's find the length it would be if we would reverse first */
+	uint length_rev = UINT_MAX;
+	TileIndex dest_tile_rev = INVALID_TILE;
+	if (tracks_rev != 0) {
+		FindShipTrack(v, tile_rev, enterdir_rev, tracks_rev, tile, &fstd, max_distance, true);
+		length_rev = fstd.best_length;
+		tile_rev = fstd.dest_coords;
+		if (length_rev != UINT_MAX) length_rev++; // penalty for reversing
+	}
 
-				/* Let's find the length it would be if we would reverse first */
-				uint length_rev = UINT_MAX;
-				if (tracks_rev != 0) {
-					FindShipTrack(v, tile_rev, enterdir_rev, tracks_rev, tile, &fstd, max_distance, depottile);
-					length_rev = fstd.best_length;
-					if (length_rev != UINT_MAX) length_rev++; // penalty for reversing
-				}
+	/* And if we would not reverse? */
+	FindShipTrack(v, tile, enterdir, tracks, 0, &fstd, max_distance, true);
+	uint length = fstd.best_length;
+	TileIndex dest_tile = fstd.dest_coords;
 
-				/* And if we would not reverse? */
-				FindShipTrack(v, tile, enterdir, tracks, 0, &fstd, max_distance, depottile);
-				uint length = fstd.best_length;
-
-				/* Get the shortest length */
-				uint min_length = minu(length_rev, length);
-
-				if (min_length < best_dist) {
-					best_dist = min_length;
-
-					fdd.tile = depottile; // tile location of ship depot
-					fdd.best_length = distdepot; // distance manhattan from ship to depot
-					fdd.reverse = !(length <= length_rev);
-				}
-			}
+	if (IsValidTile(dest_tile_rev)) {
+		if (IsValidTile(dest_tile)) {
+			fdd.tile = length_rev < length ? dest_tile_rev : dest_tile; // tile location of ship depot
+			fdd.best_length = DistanceManhattan(v->tile, fdd.tile); // distance manhattan from ship to depot
+			fdd.reverse = !(length <= length_rev);
+		}
+		fdd.tile = dest_tile_rev;
+		fdd.best_length = DistanceManhattan(v->tile, fdd.tile); // distance manhattan from ship to depot
+		fdd.reverse = true;
+	} else {
+		if (IsValidTile(dest_tile)) {
+			fdd.tile = dest_tile;
+			fdd.best_length = DistanceManhattan(v->tile, fdd.tile); // distance manhattan from ship to depot
+			fdd.reverse = false;
 		}
 	}
 
