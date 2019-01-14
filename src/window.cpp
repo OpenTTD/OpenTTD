@@ -3516,8 +3516,9 @@ void ChangeVehicleViewports(VehicleID from_index, VehicleID to_index)
  */
 void RelocateAllWindows(int neww, int newh)
 {
-	Window *w;
+	DeleteWindowById(WC_DROPDOWN_MENU, 0);
 
+	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		int left, top;
 		/* XXX - this probably needs something more sane. For example specifying
