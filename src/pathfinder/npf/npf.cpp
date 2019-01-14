@@ -1139,13 +1139,8 @@ Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDir
 
 	AyStarUserData user = { v->owner, TRANSPORT_ROAD, INVALID_RAILTYPES, v->compatible_roadtypes };
 	NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, &user);
-	if (ftd.best_trackdir == INVALID_TRACKDIR) {
-		/* We are already at our target. Just do something
-		 * @todo: maybe display error?
-		 * @todo: go straight ahead if possible? */
-		path_found = true;
-		return (Trackdir)FindFirstBit2x64(trackdirs);
-	}
+
+	assert(ftd.best_trackdir != INVALID_TRACKDIR);
 
 	/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
 	 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
@@ -1168,12 +1163,13 @@ Track NPFShipChooseTrack(const Ship *v, TrackBits tracks, bool &path_found)
 	AyStarUserData user = { v->owner, TRANSPORT_WATER, INVALID_RAILTYPES, ROADTYPES_NONE };
 	NPFFoundTargetData ftd = NPFRouteToStationOrTile(v->tile, trackdir, true, &fstd, &user);
 
+	assert(ftd.best_trackdir != INVALID_TRACKDIR);
+
 	/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
 	 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
 	 * we did not find our target, but ftd.best_trackdir contains the direction leading
 	 * to the tile closest to our target. */
 	path_found = (ftd.best_bird_dist == 0);
-	if (ftd.best_trackdir == INVALID_TRACKDIR) return INVALID_TRACK;
 	return TrackdirToTrack(ftd.best_trackdir);
 }
 
@@ -1276,13 +1272,7 @@ Track NPFTrainChooseTrack(const Train *v, TrackBits tracks, bool &path_found, bo
 		target->okay = ftd.res_okay;
 	}
 
-	if (ftd.best_trackdir == INVALID_TRACKDIR) {
-		/* We are already at our target. Just do something
-		 * @todo maybe display error?
-		 * @todo: go straight ahead if possible? */
-		path_found = true;
-		return FindFirstTrack(tracks);
-	}
+	assert(ftd.best_trackdir != INVALID_TRACKDIR);
 
 	/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
 	 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
