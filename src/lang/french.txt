@@ -931,6 +931,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personnalisée.
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Géorgien (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iranien (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nouveau rouble russe (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso méxicain (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Véhicules routiers
@@ -2381,9 +2382,9 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Signal c
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Signal de chemin (électrique){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin peuvent être passés par l'arrière.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Signal de chemin à sens unique (électrique){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin à sens unique ne peuvent pas être passés par l'arrière.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversion de signal.{}Si sélectionné, cliquer sur un signal existant le convertit vers le type et la variante choisis.{}Ctrl-clic pour alterner entre les variantes existantes.{}Shift pour afficher seulement le coût estimé.
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densité de signaux
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Réduire l'intervalle entre les signaux (augmenter la densité)
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augmenter l'intervalle entre les signaux (réduire la densité)
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Intervalle entre les signaux
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Réduire l'intervalle entre les signaux
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augmenter l'intervalle entre les signaux
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Choisir un pont ferroviaire

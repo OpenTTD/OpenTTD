@@ -189,6 +189,7 @@ STR_COLOUR_ORANGE                                               :Oranssi
 STR_COLOUR_BROWN                                                :Ruskea
 STR_COLOUR_GREY                                                 :Harmaa
 STR_COLOUR_WHITE                                                :Valkoinen
+STR_COLOUR_RANDOM                                               :Satunnainen
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -927,6 +928,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Oma...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranin rial (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Uusi Venäjän rupla (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikon peso (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kulkuneuvot
