@@ -714,9 +714,10 @@ static WindowDesc _ai_config_desc(
  * Window to configure which AIs will start.
  */
 struct AIConfigWindow : public Window {
-	CompanyID selected_slot; ///< The currently selected AI slot or \c INVALID_COMPANY.
-	int line_height;         ///< Height of a single AI-name line.
-	Scrollbar *vscroll;      ///< Cache of the vertical scrollbar.
+	CompanyID selected_slot;     ///< The currently selected AI slot or \c INVALID_COMPANY.
+	int line_height;             ///< Height of a single AI-name line.
+	Scrollbar *vscroll;          ///< Cache of the vertical scrollbar.
+	byte old_max_no_competitors; ///< The previous value of max_no_competitors.
 
 	AIConfigWindow() : Window(&_ai_config_desc)
 	{
@@ -727,6 +728,7 @@ struct AIConfigWindow : public Window {
 		this->vscroll->SetCapacity(nwi->current_y / this->line_height);
 		this->vscroll->SetCount(MAX_COMPANIES);
 		this->OnInvalidateData(0);
+		this->old_max_no_competitors = GetGameSettings().difficulty.max_no_competitors;
 	}
 
 	~AIConfigWindow()
@@ -869,7 +871,6 @@ struct AIConfigWindow : public Window {
 					new_value = min(MAX_COMPANIES - 1, GetGameSettings().difficulty.max_no_competitors + 1);
 				}
 				IConsoleSetSetting("difficulty.max_no_competitors", new_value);
-				this->InvalidateData();
 				break;
 			}
 
@@ -951,6 +952,20 @@ struct AIConfigWindow : public Window {
 
 		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
 			this->SetWidgetDisabledState(WID_AIC_TEXTFILE + tft, this->selected_slot == INVALID_COMPANY || (GetConfig(this->selected_slot)->GetTextfile(tft, this->selected_slot) == NULL));
+		}
+	}
+
+	/**
+	 * Had the maximum number of maximum competitors changed?
+	 * @note In multiplayer games the value of difficulty.max_no_competitors:
+	 * @note - can take a few tick to update after setting it in the configuration window,
+	 * @note - can be changed by other clients.
+	 */
+	virtual void OnMouseLoop()
+	{
+		if (this->old_max_no_competitors != GetGameSettings().difficulty.max_no_competitors){
+			this->old_max_no_competitors = GetGameSettings().difficulty.max_no_competitors;
+			this->InvalidateData();
 		}
 	}
 };
