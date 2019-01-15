@@ -2717,8 +2717,11 @@ STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Ticks 
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Ticks de barcos:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Ticks de aeronaves:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Renderizado gráfico:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Salida de vídeo:
+STR_FRAMERATE_SOUND                                             :{BLACK}Mezcla de sonido:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Ticks de trenes
 STR_FRAMETIME_CAPTION_DRAWING                                   :Renderizado gráfico
 STR_FRAMETIME_CAPTION_VIDEO                                     :Salida de vídeo
 STR_FRAMETIME_CAPTION_SOUND                                     :Mezcla de sonido
