@@ -608,13 +608,23 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 		case 0x4A:
 			switch (v->type) {
 				case VEH_TRAIN: {
+					extern RailtypeInfo _railtypes[RAILTYPE_END];
+
 					RailType rt = GetTileRailType(v->tile);
-					return (HasPowerOnRail(Train::From(v)->railtype, rt) ? 0x100 : 0) | GetReverseRailTypeTranslation(rt, object->ro.grffile);
+					const RailtypeInfo *rti = &_railtypes[rt];
+					return ((rti->flags & RTFB_CATENARY) ? 0x200 : 0) |
+						(HasPowerOnRail(Train::From(v)->railtype, rt) ? 0x100 : 0) |
+						GetReverseRailTypeTranslation(rt, object->ro.grffile);
 				}
 
 				case VEH_ROAD: {
+					extern RoadTypeInfo _roadtypes[ROADTYPE_END];
+
 					RoadType rt = GetRoadType(v->tile, GetRoadTramType(RoadVehicle::From(v)->roadtype));
-					return 0x100 | GetReverseRoadTypeTranslation(rt, object->ro.grffile);
+					const RoadTypeInfo *rti = &_roadtypes[rt];
+					return ((rti->flags & ROTFB_CATENARY) ? 0x200 : 0) |
+						0x100 |
+						GetReverseRoadTypeTranslation(rt, object->ro.grffile);
 				}
 
 				default:
