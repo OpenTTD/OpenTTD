@@ -464,7 +464,7 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, Tr
 	if (v->dest_tile == 0 || DistanceManhattan(tile, v->dest_tile) > SHIP_MAX_ORDER_DISTANCE + 5) {
 		/* No destination or destination too far, don't invoke pathfinder. */
 		track = TrackBitsToTrack(v->state);
-		if (track != TRACK_X && track != TRACK_Y) track = TrackToOppositeTrack(track);
+		if (!IsDiagonalTrack(track)) track = TrackToOppositeTrack(track);
 		if (!HasBit(tracks, track)) {
 			/* Can't continue in same direction so pick first available track. */
 			if (_settings_game.pf.forbid_90_deg) {
