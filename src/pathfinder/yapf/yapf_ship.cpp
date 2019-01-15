@@ -59,7 +59,7 @@ public:
 		/* handle special case - when next tile is destination tile */
 		if (tile == v->dest_tile) {
 			/* convert tracks to trackdirs */
-			TrackdirBits trackdirs = (TrackdirBits)(tracks | ((int)tracks << 8));
+			TrackdirBits trackdirs = TrackBitsToTrackdirBits(tracks);
 			/* limit to trackdirs reachable from enterdir */
 			trackdirs &= DiagdirReachesTrackdirs(enterdir);
 
