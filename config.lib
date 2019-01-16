@@ -1509,7 +1509,7 @@ make_cflags_and_ldflags() {
 	CXXFLAGS_ENV="$CXXFLAGS"
 	CXXFLAGS=""
 	# Libs to compile. In fact this is just LDFLAGS
-	LIBS="-lstdc++"
+	LIBS=""
 	# LDFLAGS used for HOST
 	LDFLAGS_ENV="$LDFLAGS"
 	LDFLAGS=""
