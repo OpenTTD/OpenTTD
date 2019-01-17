@@ -278,7 +278,7 @@ static void ParseResolution(Dimension *res, const char *s)
 
 
 /**
- * Unitializes drivers, frees allocated memory, cleans pools, ...
+ * Uninitializes drivers, frees allocated memory, cleans pools, ...
  * Generally, prepares the game for shutting down
  */
 static void ShutdownGame()
