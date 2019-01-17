@@ -1767,16 +1767,16 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	bool distant_join = (station_to_join != INVALID_STATION);
 
 	uint8 width = (uint8)GB(p1, 0, 8);
-	uint8 lenght = (uint8)GB(p1, 8, 8);
+	uint8 length = (uint8)GB(p1, 8, 8);
 
 	/* Check if the requested road stop is too big */
-	if (width > _settings_game.station.station_spread || lenght > _settings_game.station.station_spread) return_cmd_error(STR_ERROR_STATION_TOO_SPREAD_OUT);
+	if (width > _settings_game.station.station_spread || length > _settings_game.station.station_spread) return_cmd_error(STR_ERROR_STATION_TOO_SPREAD_OUT);
 	/* Check for incorrect width / length. */
-	if (width == 0 || lenght == 0) return CMD_ERROR;
+	if (width == 0 || length == 0) return CMD_ERROR;
 	/* Check if the first tile and the last tile are valid */
-	if (!IsValidTile(tile) || TileAddWrap(tile, width - 1, lenght - 1) == INVALID_TILE) return CMD_ERROR;
+	if (!IsValidTile(tile) || TileAddWrap(tile, width - 1, length - 1) == INVALID_TILE) return CMD_ERROR;
 
-	TileArea roadstop_area(tile, width, lenght);
+	TileArea roadstop_area(tile, width, length);
 
 	if (distant_join && (!_settings_game.station.distant_join_stations || !Station::IsValidID(station_to_join))) return CMD_ERROR;
 
@@ -3433,7 +3433,7 @@ void RerouteCargo(Station *st, CargoID c, StationID avoid, StationID avoid2)
 	/* Reroute cargo in station. */
 	ge.cargo.Reroute(UINT_MAX, &ge.cargo, avoid, avoid2, &ge);
 
-	/* Reroute cargo staged to be transfered. */
+	/* Reroute cargo staged to be transferred. */
 	for (std::list<Vehicle *>::iterator it(st->loading_vehicles.begin()); it != st->loading_vehicles.end(); ++it) {
 		for (Vehicle *v = *it; v != NULL; v = v->Next()) {
 			if (v->cargo_type != c) continue;
@@ -3443,7 +3443,7 @@ void RerouteCargo(Station *st, CargoID c, StationID avoid, StationID avoid2)
 }
 
 /**
- * Check all next hops of cargo packets in this station for existance of a
+ * Check all next hops of cargo packets in this station for existence of a
  * a valid link they may use to travel on. Reroute any cargo not having a valid
  * link and remove timed out links found like this from the linkgraph. We're
  * not all links here as that is expensive and useless. A link no one is using
@@ -4230,7 +4230,7 @@ void FlowStat::Invalidate()
 }
 
 /**
- * Change share for specified station. By specifing INT_MIN as parameter you
+ * Change share for specified station. By specifying INT_MIN as parameter you
  * can erase a share. Newly added flows will be unrestricted.
  * @param st Next Hop to be removed.
  * @param flow Share to be added or removed.

@@ -2945,7 +2945,7 @@ static CommandCost TownActionFundBuildings(Town *t, DoCommandFlag flags)
 		 * Also emulate original behaviour when town was only growing in
 		 * TOWN_GROWTH_TICKS intervals, to make sure that it's not too
 		 * tick-perfect and gives player some time window where he can
-		 * spam funding with the exact same effeciency.
+		 * spam funding with the exact same efficiency.
 		 */
 		t->grow_counter = min(t->grow_counter, 2 * TOWN_GROWTH_TICKS - (t->growth_rate - t->grow_counter) % TOWN_GROWTH_TICKS);
 

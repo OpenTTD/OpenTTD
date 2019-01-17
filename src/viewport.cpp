@@ -58,7 +58,7 @@
  *
  *
  * Rows are horizontal sections of the viewport, also half a tile wide.
- * This time the nothern most tile on the map defines 0 and
+ * This time the northern most tile on the map defines 0 and
  * everything south of that has a positive number.
  */
 
