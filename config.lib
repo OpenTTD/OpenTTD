@@ -751,7 +751,7 @@ check_params() {
 			log 1 "checking GDI video driver... not Windows, skipping"
 		fi
 
-		if [ -z "$allegro_config" ] && [ -z "$sdl_config" ] && [ "$with_cocoa" = 0 ] && [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ]; then
+		if [ -z "$allegro_config" ] && [ -z "$sdl2_config" ] && [ -z "$sdl_config" ] && [ "$with_cocoa" = 0 ] && [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ]; then
 			log 1 "configure: error: no video driver development files found"
 			log 1 " If you want a dedicated server use --enable-dedicated as parameter"
 			exit 1
@@ -1629,7 +1629,16 @@ make_cflags_and_ldflags() {
 		fi
 	fi
 
-	if [ -n "$sdl_config" ]; then
+	if [ -n "$sdl2_config" ]; then
+		CFLAGS="$CFLAGS -DWITH_SDL2"
+		# SDL must not add _GNU_SOURCE as it breaks many platforms
+		CFLAGS="$CFLAGS `$sdl2_config --cflags | sed 's@-D_GNU_SOURCE[^ ]*@@'`"
+		if [ "$enable_static" != "0" ]; then
+			LIBS="$LIBS `$sdl2_config --static --libs`"
+		else
+			LIBS="$LIBS `$sdl2_config --libs`"
+		fi
+	elif [ -n "$sdl_config" ]; then
 		CFLAGS="$CFLAGS -DWITH_SDL"
 		# SDL must not add _GNU_SOURCE as it breaks many platforms
 		CFLAGS="$CFLAGS `$sdl_config --cflags | sed 's@-D_GNU_SOURCE[^ ]*@@'`"
@@ -2426,7 +2435,13 @@ detect_sdl() {
 		sleep 5
 	fi
 
-	detect_pkg_config "$with_sdl" "sdl" "sdl_config" "1.2"
+	if [ $with_sdl = "sdl1" ]; then
+		detect_pkg_config "2" "sdl" "sdl_config" "1.2"
+	elif [ $with_sdl = "sdl2" ] || [ -x `which sdl2-config` ]; then
+		detect_pkg_config "2" "sdl2" "sdl2_config" "2.0"
+	else
+		detect_pkg_config "$with_sdl" "sdl" "sdl_config" "1.2"
+	fi
 }
 
 detect_osx_sdk() {
@@ -3496,7 +3511,7 @@ showhelp() {
 	echo "  --with-allegro[=\"pkg-config allegro\"]"
 	echo "                                 enables Allegro video driver support"
 	echo "  --with-cocoa                   enables COCOA video driver (OSX ONLY)"
-	echo "  --with-sdl[=\"pkg-config sdl\"]  enables SDL video driver support"
+	echo "  --with-sdl[=\"sdl1|sdl2\"]       enables SDL video driver support"
 	echo "  --with-zlib[=\"pkg-config zlib\"]"
 	echo "                                 enables zlib support"
 	echo "  --with-liblzma[=\"pkg-config liblzma\"]"
