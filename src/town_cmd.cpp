@@ -1601,6 +1601,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	 * similar towns they're unlikely to grow all in one tick */
 	t->grow_counter = t->index % TOWN_GROWTH_TICKS;
 	t->growth_rate = TownTicksToGameTicks(250);
+	t->show_zone = false;
 
 	/* Set the default cargo requirement for town growth */
 	switch (_settings_game.game_creation.landscape) {
@@ -3558,4 +3559,25 @@ void ResetHouses()
 
 	/* Reset any overrides that have been set. */
 	_house_mngr.ResetOverride();
+}
+
+/**
+ * Checks all tiles within local autority and turn highlighting on/off for tiles belinging to the town.
+ * @param *town town selected to turn on/off the zone display
+ */
+void ToggleTownZoneDisplay(Town *town)
+{
+	int max_dist = _settings_game.economy.dist_local_authority;
+	bool new_show_state = !town->show_zone;
+	town->show_zone = new_show_state;
+
+	for (int dx = -max_dist; dx <= max_dist; dx++) {
+		int max_y = Delta(max_dist, dx);
+		for (int dy = -max_y; dy <= max_y; dy++) {
+			TileIndex t = TileAddWrap(town->xy, dx, dy);
+			if (t != INVALID_TILE) {
+				if (CalcClosestTownFromTile(t, max_dist) == town) SetTownZoneTileHighlight(t, new_show_state);
+			}
+		}
+	}
 }

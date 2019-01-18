@@ -1009,11 +1009,41 @@ static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type)
 }
 
 /**
+ * Checks if the specified tile should be highlghted as a tile within town authority
+ * @param tile tile index to be checked
+ */
+static bool TileInActiveTownZone(TileIndex tile)
+{
+	Town *town;
+
+	/* Check tiles where town ownership is possible */
+	switch (GetTileType(tile)) {
+		case MP_ROAD:
+			if (IsRoadDepot(tile) || !HasTownOwnedRoad(tile)) break;
+			FALLTHROUGH;
+
+		case MP_HOUSE:
+			town = Town::GetByTile(tile);
+			return town->show_zone;
+
+		default: break;
+	}
+
+	/* If not owned by town check map for saved indicaton */
+	return GetTownZoneTileHighlight(tile);
+}
+
+/**
  * Checks if the specified tile is selected and if so draws selection using correct selectionstyle.
  * @param *ti TileInfo Tile that is being drawn
  */
 static void DrawTileSelection(const TileInfo *ti)
 {
+	/* Show local authority zone of towns. */
+	if (TileInActiveTownZone(ti->tile)) {
+		DrawTileSelectionRect(ti, PALETTE_CRASH);
+	}
+
 	/* Draw a red error square? */
 	bool is_redsq = _thd.redsq == ti->tile;
 	if (is_redsq) DrawTileSelectionRect(ti, PALETTE_TILE_RED_PULSATING);

@@ -100,6 +100,8 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	bool larger_town;              ///< if this is a larger town and should grow more quickly
 	TownLayoutByte layout;         ///< town specific road layout
 
+	bool show_zone;                ///< mark town to show the local authority zone in the viewports
+
 	std::list<PersistentStorage *> psa_list;
 
 	/**
@@ -179,7 +181,7 @@ Town *CalcClosestTownFromTile(TileIndex tile, uint threshold = UINT_MAX);
 #define FOR_ALL_TOWNS(var) FOR_ALL_TOWNS_FROM(var, 0)
 
 void ResetHouses();
-
+void ToggleTownZoneDisplay(Town *t);
 void ClearTownHouse(Town *t, TileIndex tile);
 void UpdateTownMaxPass(Town *t);
 void UpdateTownRadius(Town *t);

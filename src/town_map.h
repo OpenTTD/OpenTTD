@@ -366,4 +366,24 @@ static inline void MakeHouseTile(TileIndex t, TownID tid, byte counter, byte sta
 	SetHouseProcessingTime(t, HouseSpec::Get(type)->processing_time);
 }
 
+/**
+ * Sets the highligh status of the tile indicating town authority.
+ * @param t tile index within the local authority boundary of a town
+ * @param state bool whether the higlight is set for the tile
+ * @note the intended use is purely visual, not game logic related
+ */
+static inline void SetTownZoneTileHighlight(TileIndex t, bool status)
+{
+	SB(_mc[t].c1, 0, 1, status);
+}
+
+/**
+ * Gets the highligh status of the tile indicating town authority.
+ * @param t any valid tile index
+ */
+static inline bool GetTownZoneTileHighlight(TileIndex t)
+{
+	return GB(_mc[t].c1, 0, 1);
+}
+
 #endif /* TOWN_MAP_H */

@@ -43,7 +43,7 @@ struct TileExtended {
  * Data is not stored in save files.
  */
 struct TileCache {
-	byte c1;   ///< bit 0-7: free
+	byte c1;   ///< bit 0: town authority; bit 1-7: free
 };
 
 assert_compile(sizeof(TileCache) == 1);

@@ -45,6 +45,7 @@ static const NWidgetPart _nested_town_authority_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_TA_CAPTION), SetDataTip(STR_LOCAL_AUTHORITY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TA_ZONE_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_LOCAL_AUTHORITY_ZONE, STR_LOCAL_AUTHORITY_ZONE_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
@@ -112,6 +113,7 @@ public:
 			this->sel_index = -1;
 		}
 
+		this->SetWidgetLoweredState(WID_TA_ZONE_BUTTON, this->town->show_zone);
 		this->SetWidgetDisabledState(WID_TA_EXECUTE, this->sel_index == -1);
 
 		this->DrawWidgets();
@@ -258,6 +260,12 @@ public:
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
+			case WID_TA_ZONE_BUTTON:
+				ToggleTownZoneDisplay(this->town);
+				this->SetWidgetLoweredState(widget, this->town->show_zone);
+				MarkWholeScreenDirty();
+				break;
+
 			case WID_TA_COMMAND_LIST: {
 				int y = this->GetRowFromWidget(pt.y, WID_TA_COMMAND_LIST, 1, FONT_HEIGHT_NORMAL);
 				if (!IsInsideMM(y, 0, 5)) return;
