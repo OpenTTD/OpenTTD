@@ -43,6 +43,14 @@ extern Tile *_m;
  */
 extern TileExtended *_me;
 
+/**
+ * Pointer to the cache tile-array.
+ *
+ * This variable points to the cache tile-array which contains
+ * cached information on the tiles of the map.
+ */
+extern TileCache *_mc;
+
 void AllocateMap(uint size_x, uint size_y);
 
 /**

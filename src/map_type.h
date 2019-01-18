@@ -39,6 +39,16 @@ struct TileExtended {
 };
 
 /**
+ * Data cache that is stored per tile.
+ * Data is not stored in save files.
+ */
+struct TileCache {
+	byte c1;   ///< bit 0-7: free
+};
+
+assert_compile(sizeof(TileCache) == 1);
+
+/**
  * An offset value between to tiles.
  *
  * This value is used for the difference between
