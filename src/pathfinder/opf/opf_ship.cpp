@@ -50,8 +50,10 @@ static bool ShipTrackFollower(TileIndex tile, TrackPathFinder *pfs, uint length)
 	return false;
 }
 
-static void TPFModeShip(TrackPathFinder *tpf, TileIndex tile, DiagDirection direction)
+static void TPFModeShip(TrackPathFinder *tpf, TileIndex tile, Trackdir trackdir)
 {
+	DiagDirection direction = TrackdirToExitdir(trackdir);
+
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		/* wrong track type */
 		if (GetTunnelBridgeTransportType(tile) != TRANSPORT_WATER) return;
@@ -78,6 +80,10 @@ static void TPFModeShip(TrackPathFinder *tpf, TileIndex tile, DiagDirection dire
 	if (++tpf->rd.cur_length > 50) return;
 
 	TrackBits bits = TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0)) & DiagdirReachesTracks(direction);
+	if (_settings_game.pf.forbid_90_deg) {
+		Track track_from = TrackdirToTrack(trackdir);
+		bits &= ~TrackCrossesTracks(track_from);
+	}
 	if (bits == TRACK_BIT_NONE) return;
 
 	assert(TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY());
@@ -100,16 +106,16 @@ static void TPFModeShip(TrackPathFinder *tpf, TileIndex tile, DiagDirection dire
 		tpf->the_dir = TrackEnterdirToTrackdir(track, direction);
 
 		if (!ShipTrackFollower(tile, tpf, tpf->rd.cur_length)) {
-			TPFModeShip(tpf, tile, TrackdirToExitdir(tpf->the_dir));
+			TPFModeShip(tpf, tile, tpf->the_dir);
 		}
 
 		tpf->rd = rd;
 	} while (bits != TRACK_BIT_NONE);
 }
 
-static void OPFShipFollowTrack(TileIndex tile, DiagDirection direction, TrackPathFinder *tpf)
+static void OPFShipFollowTrack(TileIndex tile, Trackdir trackdir, TrackPathFinder *tpf)
 {
-	assert(IsValidDiagDirection(direction));
+	assert(IsValidTrackdir(trackdir));
 
 	/* initialize path finder variables */
 	tpf->rd.cur_length = 0;
@@ -117,18 +123,8 @@ static void OPFShipFollowTrack(TileIndex tile, DiagDirection direction, TrackPat
 	tpf->rd.last_choosen_track = INVALID_TRACK;
 
 	ShipTrackFollower(tile, tpf, 0);
-	TPFModeShip(tpf, tile, direction);
+	TPFModeShip(tpf, tile, trackdir);
 }
-
-/** Directions to search towards given track bits and the ship's enter direction. */
-static const DiagDirection _ship_search_directions[6][4] = {
-	{ DIAGDIR_NE,      INVALID_DIAGDIR, DIAGDIR_SW,      INVALID_DIAGDIR },
-	{ INVALID_DIAGDIR, DIAGDIR_SE,      INVALID_DIAGDIR, DIAGDIR_NW      },
-	{ INVALID_DIAGDIR, DIAGDIR_NE,      DIAGDIR_NW,      INVALID_DIAGDIR },
-	{ DIAGDIR_SE,      INVALID_DIAGDIR, INVALID_DIAGDIR, DIAGDIR_SW      },
-	{ DIAGDIR_NW,      DIAGDIR_SW,      INVALID_DIAGDIR, INVALID_DIAGDIR },
-	{ INVALID_DIAGDIR, INVALID_DIAGDIR, DIAGDIR_SE,      DIAGDIR_NE      },
-};
 
 /** Track to "direction (& 3)" mapping. */
 static const byte _pick_shiptrack_table[6] = {DIR_NE, DIR_SE, DIR_E, DIR_E, DIR_N, DIR_N};
@@ -152,7 +148,7 @@ static uint FindShipTrack(const Ship *v, TileIndex tile, DiagDirection dir, Trac
 		pfs.best_bird_dist = UINT_MAX;
 		pfs.best_length = UINT_MAX;
 
-		OPFShipFollowTrack(tile, _ship_search_directions[i][dir], &pfs);
+		OPFShipFollowTrack(tile, TrackEnterdirToTrackdir(i, dir), &pfs);
 
 		if (best_track != INVALID_TRACK) {
 			if (pfs.best_bird_dist != 0) {
@@ -213,7 +209,10 @@ Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 	}
 
 	/* And if we would not reverse? */
-	uint dist = FindShipTrack(v, tile, enterdir, tracks, 0, &track);
+	uint dist = UINT_MAX;
+	if (!_settings_game.pf.forbid_90_deg || (tracks &= ~TrackCrossesTracks(cur_track)) != TRACK_BIT_NONE) {
+		dist = FindShipTrack(v, tile, enterdir, tracks, 0, &track);
+	}
 
 	/* Due to the way this pathfinder works we cannot determine whether we're lost or not. */
 	path_found = true;
