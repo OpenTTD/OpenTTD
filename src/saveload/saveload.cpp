@@ -21,6 +21,8 @@
  * <li>repeat this until everything is done, and flush any remaining output to file
  * </ol>
  */
+#include <deque>
+
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../station_base.h"
@@ -1420,6 +1422,129 @@ static void SlList(void *list, SLRefType conv)
 }
 
 
+/**
+ * Template class to help with std::deque.
+ */
+template <typename T>
+class SlDequeHelper {
+	typedef std::deque<T> SlDequeT;
+public:
+	/**
+	 * Internal templated helper to return the size in bytes of a std::deque.
+	 * @param deque The std::deque to find the size of
+	 * @param conv VarType type of variable that is used for calculating the size
+	 */
+	static size_t SlCalcDequeLen(const void *deque, VarType conv)
+	{
+		const SlDequeT *l = (const SlDequeT *)deque;
+
+		int type_size = 4;
+		/* Each entry is saved as type_size bytes, plus type_size bytes are used for the length
+		 * of the list */
+		return l->size() * SlCalcConvFileLen(conv) + type_size;
+	}
+
+	/**
+	 * Internal templated helper to save/load a std::deque.
+	 * @param deque The std::deque being manipulated
+	 * @param conv VarType type of variable that is used for calculating the size
+	*/
+	static void SlDeque(void *deque, VarType conv)
+	{
+		SlDequeT *l = (SlDequeT *)deque;
+
+		switch (_sl.action) {
+			case SLA_SAVE: {
+				SlWriteUint32((uint32)l->size());
+
+				typename SlDequeT::iterator iter;
+				for (iter = l->begin(); iter != l->end(); ++iter) {
+					SlSaveLoadConv(&(*iter), conv);
+				}
+				break;
+			}
+			case SLA_LOAD_CHECK:
+			case SLA_LOAD: {
+				size_t length = SlReadUint32();
+
+				/* Load each value and push to the end of the deque */
+				for (size_t i = 0; i < length; i++) {
+					T data;
+					SlSaveLoadConv(&data, conv);
+					l->push_back(data);
+				}
+				break;
+			}
+			case SLA_PTRS:
+				break;
+			case SLA_NULL:
+				l->clear();
+				break;
+			default: NOT_REACHED();
+		}
+	}
+};
+
+
+/**
+ * Return the size in bytes of a std::deque.
+ * @param deque The std::deque to find the size of
+ * @param conv VarType type of variable that is used for calculating the size
+ */
+static inline size_t SlCalcDequeLen(const void *deque, VarType conv)
+{
+	switch (GetVarMemType(conv)) {
+		case SLE_VAR_BL:
+			return SlDequeHelper<bool>::SlCalcDequeLen(deque, conv);
+		case SLE_VAR_I8:
+		case SLE_VAR_U8:
+			return SlDequeHelper<uint8>::SlCalcDequeLen(deque, conv);
+		case SLE_VAR_I16:
+		case SLE_VAR_U16:
+			return SlDequeHelper<uint16>::SlCalcDequeLen(deque, conv);
+		case SLE_VAR_I32:
+		case SLE_VAR_U32:
+			return SlDequeHelper<uint32>::SlCalcDequeLen(deque, conv);
+		case SLE_VAR_I64:
+		case SLE_VAR_U64:
+			return SlDequeHelper<uint64>::SlCalcDequeLen(deque, conv);
+		default: NOT_REACHED();
+	}
+}
+
+
+/**
+ * Save/load a std::deque.
+ * @param deque The std::deque being manipulated
+ * @param conv VarType type of variable that is used for calculating the size
+ */
+static void SlDeque(void *deque, VarType conv)
+{
+	switch (GetVarMemType(conv)) {
+		case SLE_VAR_BL:
+			SlDequeHelper<bool>::SlDeque(deque, conv);
+			break;
+		case SLE_VAR_I8:
+		case SLE_VAR_U8:
+			SlDequeHelper<uint8>::SlDeque(deque, conv);
+			break;
+		case SLE_VAR_I16:
+		case SLE_VAR_U16:
+			SlDequeHelper<uint16>::SlDeque(deque, conv);
+			break;
+		case SLE_VAR_I32:
+		case SLE_VAR_U32:
+			SlDequeHelper<uint32>::SlDeque(deque, conv);
+			break;
+		case SLE_VAR_I64:
+		case SLE_VAR_U64:
+			SlDequeHelper<uint64>::SlDeque(deque, conv);
+			break;
+		default: NOT_REACHED();
+	}
+}
+
+
 /** Are we going to save this object or not? */
 static inline bool SlIsObjectValidInSavegame(const SaveLoad *sld)
 {
@@ -1471,6 +1596,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld)
 		case SL_ARR:
 		case SL_STR:
 		case SL_LST:
+		case SL_DEQUE:
 			/* CONDITIONAL saveload types depend on the savegame version */
 			if (!SlIsObjectValidInSavegame(sld)) break;
 
@@ -1480,6 +1606,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld)
 				case SL_ARR: return SlCalcArrayLen(sld->length, sld->conv);
 				case SL_STR: return SlCalcStringLen(GetVariableAddress(object, sld), sld->length, sld->conv);
 				case SL_LST: return SlCalcListLen(GetVariableAddress(object, sld));
+				case SL_DEQUE: return SlCalcDequeLen(GetVariableAddress(object, sld), sld->conv);
 				default: NOT_REACHED();
 			}
 			break;
@@ -1548,6 +1675,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 		case SL_ARR:
 		case SL_STR:
 		case SL_LST:
+		case SL_DEQUE:
 			/* CONDITIONAL saveload types depend on the savegame version */
 			if (!SlIsObjectValidInSavegame(sld)) return false;
 			if (SlSkipVariableOnLoad(sld)) return false;
@@ -1575,6 +1703,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 				case SL_ARR: SlArray(ptr, sld->length, conv); break;
 				case SL_STR: SlString(ptr, sld->length, sld->conv); break;
 				case SL_LST: SlList(ptr, (SLRefType)conv); break;
+				case SL_DEQUE: SlDeque(ptr, conv); break;
 				default: NOT_REACHED();
 			}
 			break;
