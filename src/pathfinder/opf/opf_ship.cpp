@@ -202,14 +202,16 @@ Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 
 	/* Let's find out how far it would be if we would reverse first */
 	uint rev_dist = UINT_MAX; // distance if we reverse
-	Track cur_track = TrackdirToTrack(v->GetVehicleTrackdir()); // track on the current tile
-	DiagDirection rev_enterdir = ReverseDiagDir(enterdir);
-	TrackBits rev_tracks = TrackStatusToTrackBits(GetTileTrackStatus(tile2, TRANSPORT_WATER, 0)) &
-			DiagdirReachesTracks(rev_enterdir);
+	if (v->state == TRACK_BIT_DEPOT) {
+		Track cur_track = TrackdirToTrack(v->GetVehicleTrackdir()); // track on the current tile
+		DiagDirection rev_enterdir = ReverseDiagDir(enterdir);
+		TrackBits rev_tracks = TrackStatusToTrackBits(GetTileTrackStatus(tile2, TRANSPORT_WATER, 0)) &
+				DiagdirReachesTracks(rev_enterdir);
 
-	if (HasTrack(rev_tracks, cur_track)) {
-		rev_dist = FindShipTrack(v, tile2, rev_enterdir, TrackToTrackBits(cur_track), tile, &track);
-		if (rev_dist != UINT_MAX) rev_dist++; // penalty for reversing
+		if (HasTrack(rev_tracks, cur_track)) {
+			rev_dist = FindShipTrack(v, tile2, rev_enterdir, TrackToTrackBits(cur_track), tile, &track);
+			if (rev_dist != UINT_MAX) rev_dist++; // penalty for reversing
+		}
 	}
 
 	/* And if we would not reverse? */
