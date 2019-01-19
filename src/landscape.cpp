@@ -1036,11 +1036,18 @@ static bool FindSpring(TileIndex tile, void *user_data)
 
 	if (num < 4) return false;
 
-	/* Are we near the top of a hill? */
 	for (int dx = -16; dx <= 16; dx++) {
 		for (int dy = -16; dy <= 16; dy++) {
 			TileIndex t = TileAddWrap(tile, dx, dy);
-			if (t != INVALID_TILE && GetTileMaxZ(t) > referenceHeight + 2) return false;
+			if (t != INVALID_TILE) {
+				/* Are we near the top of a hill? */
+				if (GetTileMaxZ(t) > referenceHeight + 2) return false;
+
+				/* Are we too close to another river? */
+				if (dx >= -8 && dx <= 8 && dy >= -8 && dy <= 8) {
+					if (IsWaterTile(t) && IsRiver(t)) return false;
+				}
+			}
 		}
 	}
 
@@ -1074,6 +1081,70 @@ static bool MakeLake(TileIndex tile, void *user_data)
 }
 
 /**
+ * Check whether a river could (logically) flow into a lock.
+ * @param tile the middle tile of a lock.
+ * @return true iff the water can be flowing into a lock.
+ */
+static bool IsPossibleLockLocationRecursively(TileIndex tile)
+{
+	if (!IsPossibleLockLocation(tile)) return false;
+
+	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile));
+	TileIndexDiff delta_mid = TileOffsByDiagDir(dir);
+
+	DiagDirection dir_rot = ChangeDiagDir(dir, DIAGDIRDIFF_90RIGHT);
+	TileIndexDiff delta_side = TileOffsByDiagDir(dir_rot);
+
+	for (int m = -1; m <= 1; m += 2) {
+		TileIndex tile_offset = tile + m * delta_mid;
+		if (IsValidTile(tile_offset)) {
+			if (DistanceFromEdgeDir(tile_offset, dir) == 0 || DistanceFromEdgeDir(tile_offset, ReverseDiagDir(dir)) == 0) return false;
+
+			for (int s = -1; s <= 1; s += 2) {
+				tile_offset = tile + m * delta_mid + s * delta_side;
+				if (IsValidTile(tile_offset)) {
+					if (!IsTileFlat(tile_offset) && IsPossibleLockLocationOnDiagDir(tile_offset, dir_rot)) return false;
+
+					tile_offset = tile + m * delta_mid + 2 * s * delta_side;
+					if (IsValidTile(tile_offset)) {
+						if (!IsTileFlat(tile_offset) && IsPossibleLockLocationOnDiagDir(tile_offset, dir_rot)) return false;
+					}
+				}
+			}
+
+			tile_offset = tile + 2 * m * delta_mid;
+			if (IsValidTile(tile_offset)) {
+				if (!IsTileFlat(tile_offset)) return false;
+
+				for (int s = -1; s <= 1; s += 2) {
+					tile_offset = tile + 2 * m * delta_mid + s * delta_side;
+					if (IsValidTile(tile_offset)) {
+						if (!IsTileFlat(tile_offset)) {
+							if (IsTileFlat(tile + m * delta_mid + s * delta_side)) return false;
+							if (IsPossibleLockLocationOnDiagDir(tile_offset, dir_rot)) return false;
+						}
+					}
+				}
+
+				tile_offset = tile + 3 * m * delta_mid;
+				if (IsValidTile(tile_offset)) {
+					if (IsPossibleLockLocationOnDiagDir(tile_offset, dir)) return false;
+				}
+
+				for (int s = -1; s <= 1; s += 2) {
+					tile_offset = tile + 3 * m * delta_mid + s * delta_side;
+					if (IsValidTile(tile_offset)) {
+						if (IsPossibleLockLocationOnDiagDir(tile_offset, dir)) return false;
+					}
+				}
+			}
+		}
+	}
+
+	return true;
+}
+
+/**
  * Check whether a river at begin could (logically) flow down to end.
  * @param begin The origin of the flow.
  * @param end The destination of the flow.
@@ -1090,9 +1161,9 @@ static bool FlowsDown(TileIndex begin, TileIndex end)
 
 	return heightEnd <= heightBegin &&
 			/* Slope either is inclined or flat; rivers don't support other slopes. */
-			(slopeEnd == SLOPE_FLAT || IsInclinedSlope(slopeEnd)) &&
+			(slopeEnd == SLOPE_FLAT || (IsInclinedSlope(slopeEnd) && IsPossibleLockLocationRecursively(end))) &&
 			/* Slope continues, then it must be lower... or either end must be flat. */
-			((slopeEnd == slopeBegin && heightEnd < heightBegin) || slopeEnd == SLOPE_FLAT || slopeBegin == SLOPE_FLAT);
+			((slopeEnd == slopeBegin && heightEnd < heightBegin) || slopeEnd == SLOPE_FLAT || (slopeBegin == SLOPE_FLAT && GetTileMaxZ(end) == heightBegin));
 }
 
 /* AyStar callback for checking whether we reached our destination. */
@@ -1184,9 +1255,10 @@ static void BuildRiver(TileIndex begin, TileIndex end)
  * Try to flow the river down from a given begin.
  * @param spring The springing point of the river.
  * @param begin  The begin point we are looking from; somewhere down hill from the spring.
+ * @param flowdown_count The number of times the river has flowed down
  * @return True iff a river could/has been built, otherwise false.
  */
-static bool FlowRiver(TileIndex spring, TileIndex begin)
+static bool FlowRiver(TileIndex spring, TileIndex begin, uint flowdown_count = 0)
 {
 	#define SET_MARK(x) marks.insert(x)
 	#define IS_MARKED(x) (marks.find(x) != marks.end())
@@ -1209,7 +1281,7 @@ static bool FlowRiver(TileIndex spring, TileIndex begin)
 		queue.pop_front();
 
 		uint height2 = TileHeight(end);
-		if (IsTileFlat(end) && (height2 < height || (height2 == height && IsWaterTile(end)))) {
+		if (IsTileFlat(end) && ((height2 < height && ++flowdown_count) || (height2 == height && IsWaterTile(end)))) {
 			found = true;
 			break;
 		}
@@ -1226,8 +1298,8 @@ static bool FlowRiver(TileIndex spring, TileIndex begin)
 
 	if (found) {
 		/* Flow further down hill. */
-		found = FlowRiver(spring, end);
-	} else if (count > 32) {
+		found = FlowRiver(spring, end, flowdown_count);
+	} else if (count > 32 && flowdown_count > 1) {
 		/* Maybe we can make a lake. Find the Nth of the considered tiles. */
 		TileIndex lakeCenter = 0;
 		int i = RandomRange(count - 1) + 1;
@@ -1265,6 +1337,43 @@ static bool FlowRiver(TileIndex spring, TileIndex begin)
 	return found;
 }
 
+/* Create additional river tiles around possible lock locations to connect them. */
+static void ConnectPossibleLocksWithRivers()
+{
+	for (TileIndex tile = 0; tile != MapSize(); tile++) {
+		if (IsValidTile(tile) && IsTileType(tile, MP_WATER) && IsRiver(tile)) {
+			Slope slope = GetTileSlope(tile);
+			if (!IsInclinedSlope(slope)) continue;
+
+			DiagDirection dir = GetInclinedSlopeDirection(slope);
+			TileIndexDiff delta_side = TileOffsByDiagDir(ChangeDiagDir(dir, DIAGDIRDIFF_90RIGHT));
+			TileIndexDiff delta_mid = TileOffsByDiagDir(dir);
+			int mid_counts[] = { 2, 1, 1 };
+			int side_counts[] = { 0, 1, -1 };
+
+			for (int m = -1; m <= 1; m += 2) {
+				for (int i = 0; i < 3; i++) {
+					TileIndex tile_offset = tile + m * mid_counts[i] * delta_mid + side_counts[i] * delta_side;
+
+					TileIndex t = INVALID_TILE;
+					if (side_counts[i] != 0) {
+						if (IsValidTile(tile_offset) && IsWaterTile(tile_offset)) {
+							tile_offset = tile + m * mid_counts[i] * delta_mid + side_counts[i] * delta_side + m * delta_mid;
+							if (IsValidTile(tile_offset) && !IsWaterTile(tile_offset) && IsTileFlat(tile_offset)) t = tile_offset;
+						}
+					} else if (IsValidTile(tile_offset) && !IsWaterTile(tile_offset)) t = tile_offset;
+
+					if (t != INVALID_TILE && IsValidTile(t)) {
+						MakeRiver(t, Random());
+						/* Remove desert directly around the river tile. */
+						CircularTileSearch(&t, 5, RiverModifyDesertZone, NULL);
+					}
+				}
+			}
+		}
+	}
+}
+
 /**
  * Actually (try to) create some rivers.
  */
@@ -1284,6 +1393,7 @@ static void CreateRivers()
 			if (FlowRiver(t, t)) break;
 		}
 	}
+	ConnectPossibleLocksWithRivers();
 
 	/* Run tile loop to update the ground density. */
 	for (uint i = 0; i != 256; i++) {
