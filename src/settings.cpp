@@ -1312,6 +1312,15 @@ static bool MaxVehiclesChanged(int32 p1)
 	return true;
 }
 
+static bool InvalidateShipPathCache(int32 p1)
+{
+	Ship *s;
+	FOR_ALL_SHIPS(s) {
+		s->path.clear();
+	}
+	return true;
+}
+
 
 #ifdef ENABLE_NETWORK
 
