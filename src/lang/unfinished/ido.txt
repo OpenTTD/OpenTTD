@@ -925,12 +925,7 @@ STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehili:
 
 # Industry view
 
-############ range for requires starts
-############ range for requires ends
 
-
-############ range for produces starts
-############ range for produces ends
 
 
 # Vehicle lists

@@ -2727,6 +2727,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centri �
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produkta nivelo: {YELLOW}{COMMA}%
 
 
+
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ŝanĝu produktadon (multoble de 8, ĝis 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ŝanĝu produktan nivelon (procento, limigo je 800%)
 

@@ -3244,6 +3244,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivelul 
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industria a anunţat închiderea iminentă!
 
 
+
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Schimba productia (multiplu de 8, până la 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Modifică nivelul producţiei (procent, până la 800%)
 

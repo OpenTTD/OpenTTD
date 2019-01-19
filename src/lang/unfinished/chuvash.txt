@@ -1116,12 +1116,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 
 # Industry view
 
-############ range for requires starts
-############ range for requires ends
 
-
-############ range for produces starts
-############ range for produces ends
 
 
 # Vehicle lists

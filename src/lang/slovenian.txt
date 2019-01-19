@@ -3440,6 +3440,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivo pro
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industrija je napovedala zaprtje!
 
 
+
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Spremeni proizvodnjo (večkratnik 8, do 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Spremeni nivo proizvodnje (odstotki, do 800%)
 

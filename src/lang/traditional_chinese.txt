@@ -3286,6 +3286,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}產出�
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}該工業已宣佈關閉！
 
 
+
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}修改產量 (以 8 為倍數增減，最大為 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}變更產出等級 (百分比，最高可到800%)
 

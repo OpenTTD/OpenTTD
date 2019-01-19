@@ -3286,6 +3286,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}メイ�
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生産量: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}この産業拠点は間もなく閉鎖されます!
 
+
 STR_INDUSTRY_VIEW_REQUIRES                                      : {BLACK}必要物資:
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}生産量を変更 (8の倍数、最大2040)

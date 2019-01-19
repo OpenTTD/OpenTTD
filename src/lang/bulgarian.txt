@@ -3215,6 +3215,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Фоку
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ниво на производство: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Индустрията обяви незабавна ликвидация!
 
+
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} чакащ{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Промени производството

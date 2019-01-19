@@ -3077,6 +3077,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Framlei�
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Iðnaðurinn hefur tilkynnt yfirvofandi lokun.
 
 
+
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Breyta framleiðslu (margfeldi af 8, allt að 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Breyta framleiðslumagni (prósentu hámark er 800%)
 

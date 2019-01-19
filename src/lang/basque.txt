@@ -3175,6 +3175,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ekoizpen
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industriak berehalako itxiera iragarri du!
 
 
+
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ekoizpena aldatu (8 eta 2040 arteko multiploa)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ekoizpen ehunekoa aldatu (ehunekoa, %800 arte)
 

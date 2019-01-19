@@ -3037,6 +3037,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produksj
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Yndustry kundicht drigend sluten oan!
 
 
+
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Feroaring produksje nivo (percentage, up to 800%)
 
 # Vehicle lists

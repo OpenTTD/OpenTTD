@@ -3417,6 +3417,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Обся
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Підприємство оголосило про близьке закриття!
 
 
+
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Змінити виробництво (кратне 8, до 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Змінити обсяг виробництва (до 800%)
 

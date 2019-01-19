@@ -822,12 +822,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 
 # Industry view
 
-############ range for requires starts
-############ range for requires ends
 
-
-############ range for produces starts
-############ range for produces ends
 
 
 # Vehicle lists

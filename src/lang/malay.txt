@@ -2984,6 +2984,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Pusatkan
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tahap produksi: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW} Industri mengumumkan penutupan serta merta!
 
+
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Diperlukan:
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ubah pengeluaran (gandaan 8, sehingga 2040)

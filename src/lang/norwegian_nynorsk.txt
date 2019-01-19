@@ -3205,6 +3205,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produksj
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Verksemda legg snarleg ned drifta!
 
 
+
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Byt produksjon (8-gongen, opptil 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Endre produksjonsnivå (prosent, opp til 800%)
 

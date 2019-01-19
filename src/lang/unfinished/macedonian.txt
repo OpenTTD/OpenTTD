@@ -1414,12 +1414,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry view
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Производство ниво: {YELLOW}{COMMA}%
 
-############ range for requires starts
-############ range for requires ends
 
-
-############ range for produces starts
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Промена на производство на ниво (процент, до 800%)
 

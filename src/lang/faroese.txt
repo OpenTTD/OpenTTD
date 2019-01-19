@@ -2917,6 +2917,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Savna h�
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Framleiðslu støði: {YELLOW}{COMMA}%
 
 
+
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Broyt framleiðslu (fald av 8, upp til 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Broyt framleiðslu støði (prosent, upp til 800%)
 
