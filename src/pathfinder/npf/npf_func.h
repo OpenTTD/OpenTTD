@@ -15,6 +15,7 @@
 #include "../../track_type.h"
 #include "../../direction_type.h"
 #include "../../vehicle_type.h"
+#include "../../ship.h"
 #include "../pathfinder_type.h"
 
 /**
@@ -41,9 +42,10 @@ Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDir
  * Finds the best path for given ship using NPF.
  * @param v        the ship that needs to find a path
  * @param path_found [out] Whether a path has been found (true) or has been guessed (false)
+ * @param path_cache [out] The first tiles of the best path
  * @return         the best trackdir for next turn or INVALID_TRACK if the path could not be found
  */
-Track NPFShipChooseTrack(const Ship *v, bool &path_found);
+Track NPFShipChooseTrack(const Ship *v, bool &path_found, ShipPathCache *path_cache);
 
 /**
  * Returns true if it is better to reverse the ship before leaving depot using NPF.

@@ -29,12 +29,13 @@ static const uint NPF_HASH_HALFMASK = (1 << NPF_HASH_HALFBITS) - 1;
 
 /** Meant to be stored in AyStar.targetdata */
 struct NPFFindStationOrTileData {
-	TileIndex dest_coords;    ///< An indication of where the station is, for heuristic purposes, or the target tile
-	StationID station_index;  ///< station index we're heading for, or INVALID_STATION when we're heading for a tile
-	bool reserve_path;        ///< Indicates whether the found path should be reserved
-	StationType station_type; ///< The type of station we're heading for
-	bool not_articulated;     ///< The (road) vehicle is not articulated
-	const Vehicle *v;         ///< The vehicle we are pathfinding for
+	TileIndex dest_coords;       ///< An indication of where the station is, for heuristic purposes, or the target tile
+	StationID station_index;     ///< station index we're heading for, or INVALID_STATION when we're heading for a tile
+	bool reserve_path;           ///< Indicates whether the found path should be reserved
+	StationType station_type;    ///< The type of station we're heading for
+	bool not_articulated;        ///< The (road) vehicle is not articulated
+	const Vehicle *v;            ///< The vehicle we are pathfinding for
+	ShipPathCache *path_cache;   ///< Where should the best path found be stored
 };
 
 /** Indices into AyStar.userdata[] */
@@ -656,6 +657,39 @@ static void NPFSaveTargetData(AyStar *as, OpenListNode *current)
 		}
 
 		ftd->res_okay = true;
+	} else if (user->type == TRANSPORT_WATER) {
+		if (ftd->best_trackdir == INVALID_TRACKDIR) return;
+
+		/* Save path to ship cache only if it has been requested. */
+		ShipPathCache *path_cache = ((NPFFindStationOrTileData *)as->user_target)->path_cache;
+		if (path_cache == NULL) return;
+		assert(path_cache->empty());
+
+		const PathNode *pNode = &current->path;
+		assert(pNode != NULL);
+		if (ftd->best_bird_dist == 0) {
+			/* Found destination. Do not cache its tile. */
+			pNode = pNode->parent;
+		}
+
+		assert(pNode != NULL);
+
+		uint steps = 0;
+		for (const PathNode *n = pNode; n->parent != NULL; n = n->parent) steps++;
+
+		/* Walk through the path back to the origin and cache first tiles of the path. */
+		while (steps > 1) {
+			assert(pNode->parent != NULL);
+			steps--;
+
+			if (steps < NPF_SHIP_PATH_CACHE_LENGTH) {
+				TrackdirByte td;
+				td = pNode->node.direction;
+				path_cache->push_front(td);
+			}
+
+			pNode = pNode->parent;
+		}
 	}
 }
 
@@ -1111,6 +1145,11 @@ static void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *
 	fstd->v = v;
 }
 
+static void NPFSetPathCache(NPFFindStationOrTileData *fstd, ShipPathCache *path_cache)
+{
+	fstd->path_cache = path_cache;
+}
+
 /*** Road vehicles ***/
 
 FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penalty)
@@ -1152,13 +1191,16 @@ Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDir
 
 /*** Ships ***/
 
-Track NPFShipChooseTrack(const Ship *v, bool &path_found)
+Track NPFShipChooseTrack(const Ship *v, bool &path_found, ShipPathCache *path_cache)
 {
+	assert(path_cache->empty());
+
 	NPFFindStationOrTileData fstd;
 	Trackdir trackdir = v->GetVehicleTrackdir();
 	assert(trackdir != INVALID_TRACKDIR); // Check that we are not in a depot
 
 	NPFFillWithOrderData(&fstd, v);
+	NPFSetPathCache(&fstd, path_cache);
 
 	AyStarUserData user = { v->owner, TRANSPORT_WATER, INVALID_RAILTYPES, ROADTYPES_NONE };
 	NPFFoundTargetData ftd = NPFRouteToStationOrTile(v->tile, trackdir, true, &fstd, &user);
@@ -1175,10 +1217,13 @@ Track NPFShipChooseTrack(const Ship *v, bool &path_found)
 
 bool NPFShipCheckReverse(const Ship *v)
 {
+	assert(v->path.empty());
+
 	NPFFindStationOrTileData fstd;
 	NPFFoundTargetData ftd;
 
 	NPFFillWithOrderData(&fstd, v);
+	NPFSetPathCache(&fstd, NULL);
 
 	Trackdir trackdir = v->GetVehicleTrackdir();
 	Trackdir trackdir_rev = ReverseTrackdir(trackdir);

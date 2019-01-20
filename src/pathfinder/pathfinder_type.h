@@ -25,6 +25,9 @@ static const int NPF_TILE_LENGTH = 100;
  */
 static const int NPF_INFINITE_PENALTY = 1000 * NPF_TILE_LENGTH;
 
+/** Maximum length of ship path cache for NPF */
+static const int NPF_SHIP_PATH_CACHE_LENGTH = 32;
+
 
 /** Length (penalty) of one tile with YAPF */
 static const int YAPF_TILE_LENGTH = 100;
