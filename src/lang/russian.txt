@@ -315,6 +315,7 @@ STR_COLOUR_ORANGE                                               :Оранжев�
 STR_COLOUR_BROWN                                                :Коричневый
 STR_COLOUR_GREY                                                 :Серый
 STR_COLOUR_WHITE                                                :Белый
+STR_COLOUR_RANDOM                                               :Случайный
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}мил{P я и ь}/ч
@@ -1074,6 +1075,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Своя...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузинский лари (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Иранский риал (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Российский новый рубль (RUR)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Мексиканский песо (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Движение автомобилей
@@ -1410,6 +1412,8 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Изме
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Обслуживание инфраструктуры: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Включает затраты на содержание инфраструктуры. Стоимость непропорционально увеличивается с ростом транспортной сети, оказывая, таким образом, большее влияние на крупные компании, чем на малые.
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Фирменный цвет компании: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Выберите начальный фирменный цвет компании
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аэропорты не устаревают: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :При включении все типы аэропортов доступны для строительства в любое время после их первоначального появления
@@ -2925,6 +2929,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Инфо
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Нет информации.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Фильтр:
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Введите название сохраняемой игры
 
@@ -3123,6 +3128,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Чтение з
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Запрошенные ресурсы GRF недоступны (спрайт {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} был отключён из-за {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Недопустимый/неизвестный формат расположения спрайтов (спрайт {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Слишком много элементов в списке значений (спрайт {3:NUM}, свойство {4:HEX})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Осторожно!
@@ -3500,6 +3506,9 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Пока
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Производительность: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Предприятие скоро закрывается!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Требует: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Производит: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Требуется:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
@@ -4009,6 +4018,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Возраст 
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Требуется обслуживание
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Всегда
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Оставшийся срок службы (лет)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Максимальная надёжность
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Условие перехода
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :равно
