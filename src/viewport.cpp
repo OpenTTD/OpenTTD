@@ -3073,14 +3073,30 @@ void ResetObjectToPlace()
 
 Point GetViewportStationMiddle(const ViewPort *vp, const Station *st)
 {
+	return ViewportFromRemappedCoords(vp, GetRemappedStationMiddle(st));
+}
+
+Point GetRemappedStationMiddle(const Station *st)
+{
 	int x = TileX(st->xy) * TILE_SIZE;
 	int y = TileY(st->xy) * TILE_SIZE;
 	int z = GetSlopePixelZ(Clamp(x, 0, MapSizeX() * TILE_SIZE - 1), Clamp(y, 0, MapSizeY() * TILE_SIZE - 1));
 
-	Point p = RemapCoords(x, y, z);
-	p.x = UnScaleByZoom(p.x - vp->virtual_left, vp->zoom) + vp->left;
-	p.y = UnScaleByZoom(p.y - vp->virtual_top, vp->zoom) + vp->top;
-	return p;
+	return RemapCoords(x, y, z);
+}
+
+Point ViewportFromRemappedCoords(const ViewPort *vp, const Point &p)
+{
+	return Point{
+		UnScaleByZoom(p.x - vp->virtual_left, vp->zoom) + vp->left,
+		UnScaleByZoom(p.y - vp->virtual_top, vp->zoom) + vp->top };
+}
+
+Point RemappedFromViewportCoords(const ViewPort *vp, const Point &p)
+{
+	return Point{
+		ScaleByZoom(p.x - vp->left, vp->zoom) + vp->virtual_left,
+		ScaleByZoom(p.y - vp->top, vp->zoom) + vp->virtual_top };
 }
 
 /** Helper class for getting the best sprite sorter. */

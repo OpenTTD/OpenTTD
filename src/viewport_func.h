@@ -92,5 +92,8 @@ static inline void MarkTileDirtyByTile(TileIndex tile, int bridge_level_offset =
 }
 
 Point GetViewportStationMiddle(const ViewPort *vp, const Station *st);
+Point GetRemappedStationMiddle(const Station *st);
+Point ViewportFromRemappedCoords(const ViewPort *vp, const Point &p);
+Point RemappedFromViewportCoords(const ViewPort *vp, const Point &p);
 
 #endif /* VIEWPORT_FUNC_H */
