@@ -18,11 +18,16 @@
 #include "../viewport_func.h"
 #include "../smallmap_gui.h"
 #include "../core/geometry_func.hpp"
+#include "../core/math_func.hpp"
 #include "../widgets/link_graph_legend_widget.h"
 
 #include "table/strings.h"
 
 #include "../safeguards.h"
+
+#include <set>
+#include <utility>
+#include <vector>
 
 /**
  * Colours for the various "load" states of links. Ordered from "unused" to
@@ -47,25 +52,52 @@ void LinkGraphOverlay::GetWidgetDpi(DrawPixelInfo *dpi) const
 }
 
 /**
- * Rebuild the cache and recalculate which links and stations to be shown.
+ * Rebuild the cache of station and link locations for the current company_mask and cargo_mask.
  */
 void LinkGraphOverlay::RebuildCache()
 {
-	this->cached_links.clear();
-	this->cached_stations.clear();
-	if (this->company_mask == 0) return;
+	this->cached_data.Clear();
 
-	DrawPixelInfo dpi;
-	this->GetWidgetDpi(&dpi);
+	this->ResetBoundaries();
+
+	if (this->company_mask == 0) return;
 
 	const Station *sta;
 	FOR_ALL_STATIONS(sta) {
 		if (sta->rect.IsEmpty()) continue;
+		const Point pta = GetRemappedStationMiddle(sta);
+		this->cached_data_boundary.left = min(this->cached_data_boundary.left, pta.x);
+		this->cached_data_boundary.right = max(this->cached_data_boundary.right, pta.x);
+		this->cached_data_boundary.top = min(this->cached_data_boundary.top, pta.y);
+		this->cached_data_boundary.bottom = max(this->cached_data_boundary.bottom, pta.y);
+	}
 
-		Point pta = this->GetStationMiddle(sta);
+	if (!this->HasNonEmptyBoundaries()) return;
+	assert(this->cached_data_boundary.top <= this->cached_data_boundary.bottom);
+
+	const int link_padding = (this->scale * 3 + 1) / 2; // multiplies scale by 1.5 (rounded up), this is the maximum padding required for a link
+	const int max_station_padding = this->scale * 2 + 2; // multiplies scale by 2, this is the maximum padding required for a station
+
+	const int padding = max(link_padding, max_station_padding);
+	this->cached_data_boundary.left -= padding;
+	this->cached_data_boundary.right += padding;
+	this->cached_data_boundary.top -= padding;
+	this->cached_data_boundary.bottom += padding;
+
+	const uint8 required_tree_height = FindLastBit(((this->cached_data_boundary.bottom - this->cached_data_boundary.top) >> LINK_TREE_UNIT_SHIFT)) + 1;
+	const uint8 required_tree_width = FindLastBit(((this->cached_data_boundary.right - this->cached_data_boundary.left) >> LINK_TREE_UNIT_SHIFT)) + 1;
+	this->cached_data.Resize(required_tree_height, required_tree_width);
+
+	DrawPixelInfo dpi;
+	this->GetWidgetDpi(&dpi);
+
+	FOR_ALL_STATIONS(sta) {
+		if (sta->rect.IsEmpty()) continue;
+
+		Point pta = GetRemappedStationMiddle(sta);
 
 		StationID from = sta->index;
-		StationLinkMap &seen_links = this->cached_links[from];
+		std::set<std::pair<StationID, StationID>> seen_links;
 
 		uint supply = 0;
 		CargoID c;
@@ -79,25 +111,25 @@ void LinkGraphOverlay::RebuildCache()
 			for (ConstEdgeIterator i = from_node.Begin(); i != from_node.End(); ++i) {
 				StationID to = lg[i->first].Station();
 				assert(from != to);
-				if (!Station::IsValidID(to) || seen_links.find(to) != seen_links.end()) {
-					continue;
-				}
+
+				if (!Station::IsValidID(to)) continue;
+
+				if (!seen_links.emplace(from, to).second) continue;
+
 				const Station *stb = Station::Get(to);
 				assert(sta != stb);
+
+				Point ptb = GetRemappedStationMiddle(stb);
 
 				/* Show links between stations of selected companies or "neutral" ones like oilrigs. */
 				if (stb->owner != OWNER_NONE && sta->owner != OWNER_NONE && !HasBit(this->company_mask, stb->owner)) continue;
 				if (stb->rect.IsEmpty()) continue;
 
-				if (!this->IsLinkVisible(pta, this->GetStationMiddle(stb), &dpi)) continue;
-
-				this->AddLinks(sta, stb);
-				seen_links[to]; // make sure it is created and marked as seen
+				this->AddLinks(sta, stb, pta, ptb, link_padding);
 			}
 		}
-		if (this->IsPointVisible(pta, &dpi)) {
-			this->cached_stations.push_back(std::make_pair(from, supply));
-		}
+
+		this->CreateStationInCache(from, pta, (this->CalculateStationDotSizeFromSupply(supply) + 1) / 2) = supply;
 	}
 }
 
@@ -133,12 +165,44 @@ inline bool LinkGraphOverlay::IsLinkVisible(Point pta, Point ptb, const DrawPixe
 					ptb.y > dpi->top + dpi->height + padding));
 }
 
+
+LinkProperties & LinkGraphOverlay::CreateLinkInCache(StationID from, StationID to, Point from_location, Point to_location, int padding)
+{
+	const Rect &tree_rect = this->RemappedToTreeCoords(Rect{
+		min(from_location.x, to_location.x) - padding,
+		min(from_location.y, to_location.y) - padding,
+		max(from_location.x, to_location.x) + padding,
+		max(from_location.y, to_location.y) + padding });
+
+	LinkGraphOverlay::LinkMapItem &link_map_item = this->cached_data.Emplace(tree_rect.left, tree_rect.top, tree_rect.right, tree_rect.bottom);
+
+	link_map_item.is_station = false;
+	link_map_item.link.from = from;
+	link_map_item.link.to = to;
+	return link_map_item.link.link_properties = LinkProperties();
+}
+
+uint & LinkGraphOverlay::CreateStationInCache(StationID id, Point location, int padding)
+{
+	const Rect &tree_rect = this->RemappedToTreeCoords(Rect{
+		location.x - padding,
+		location.y - padding,
+		location.x + padding,
+		location.y + padding });
+
+	LinkGraphOverlay::LinkMapItem &link_map_item = this->cached_data.Emplace(tree_rect.left, tree_rect.top, tree_rect.right, tree_rect.bottom);
+
+	link_map_item.is_station = true;
+	link_map_item.station.id = id;
+	return link_map_item.station.supply = 0;
+}
+
 /**
  * Add all "interesting" links between the given stations to the cache.
  * @param from The source station.
  * @param to The destination station.
  */
-void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
+void LinkGraphOverlay::AddLinks(const Station *from, const Station *to, Point from_location, Point to_location, int padding)
 {
 	CargoID c;
 	FOR_EACH_SET_CARGO_ID(c, this->cargo_mask) {
@@ -151,9 +215,9 @@ void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
 		const LinkGraph &lg = *LinkGraph::Get(ge.link_graph);
 		ConstEdge edge = lg[ge.node][to->goods[c].node];
 		if (edge.Capacity() > 0) {
+			LinkProperties &link_properties = this->CreateLinkInCache(from->index, to->index, from_location, to_location, padding);
 			this->AddStats(lg.Monthly(edge.Capacity()), lg.Monthly(edge.Usage()),
-					ge.flows.GetFlowVia(to->index), from->owner == OWNER_NONE || to->owner == OWNER_NONE,
-					this->cached_links[from->index][to->index]);
+					ge.flows.GetFlowVia(to->index), from->owner == OWNER_NONE || to->owner == OWNER_NONE, link_properties);
 		}
 	}
 }
@@ -186,25 +250,49 @@ void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
  */
 void LinkGraphOverlay::Draw(const DrawPixelInfo *dpi) const
 {
-	this->DrawLinks(dpi);
-	this->DrawStationDots(dpi);
-}
+	if (!HasNonEmptyBoundaries()) return;
 
-/**
- * Draw the cached links or part of them into the given area.
- * @param dpi Area to be drawn to.
- */
-void LinkGraphOverlay::DrawLinks(const DrawPixelInfo *dpi) const
-{
-	for (LinkMap::const_iterator i(this->cached_links.begin()); i != this->cached_links.end(); ++i) {
-		if (!Station::IsValidID(i->first)) continue;
-		Point pta = this->GetStationMiddle(Station::Get(i->first));
-		for (StationLinkMap::const_iterator j(i->second.begin()); j != i->second.end(); ++j) {
-			if (!Station::IsValidID(j->first)) continue;
-			Point ptb = this->GetStationMiddle(Station::Get(j->first));
-			if (!this->IsLinkVisible(pta, ptb, dpi, this->scale + 2)) continue;
-			this->DrawContent(pta, ptb, j->second);
+	const Point topleft{ dpi->left, dpi->top };
+	const Point bottomright{ dpi->left + dpi->width - 1, dpi->top + dpi->height - 1 };
+	const Point remapped_topleft = RemappedFromViewportCoords(this->window->viewport, topleft);
+	const Point remapped_bottomright = RemappedFromViewportCoords(this->window->viewport, bottomright);
+
+	const Rect &tree_rect = RemappedToTreeCoords(Rect{ remapped_topleft.x, remapped_topleft.y, remapped_bottomright.x, remapped_bottomright.y });
+
+	/* Temporary keep the stations that needs to be drawn.  This allows us to draw stations on top of links. */
+	struct StationSizeInfo {
+		const Station* st;
+		Point middle;
+		uint size;
+		StationSizeInfo(const Station* st, Point middle, uint size) : st(st), middle(middle), size(size) {}
+	};
+	std::vector<StationSizeInfo> station_sizes;
+
+	this->cached_data.Query(tree_rect.left, tree_rect.top, tree_rect.right, tree_rect.bottom, [&](const LinkMapItem& link_map_item) {
+		if (link_map_item.is_station) {
+			const Station *st = Station::GetIfValid(link_map_item.station.id);
+			if (st != nullptr) {
+				const Point pt = this->GetStationMiddle(st);
+				if (this->IsPointVisible(pt, dpi, 3 * this->scale)) {
+					const uint size = CalculateStationDotSizeFromSupply(link_map_item.station.supply);
+					station_sizes.emplace_back(st, pt, size);
+				}
+			}
+		} else {
+			if (Station::IsValidID(link_map_item.link.from) && Station::IsValidID(link_map_item.link.to)) {
+				const Point pta = this->GetStationMiddle(Station::Get(link_map_item.link.from));
+				const Point ptb = this->GetStationMiddle(Station::Get(link_map_item.link.to));
+				if (this->IsLinkVisible(pta, ptb, dpi, (this->scale * 3 + 1) / 2)) {
+					this->DrawContent(pta, ptb, link_map_item.link.link_properties);
+				}
+			}
 		}
+	});
+	for (StationSizeInfo &ssi : station_sizes) {
+		LinkGraphOverlay::DrawVertex(ssi.middle.x, ssi.middle.y, ssi.size,
+			_colour_gradient[ssi.st->owner != OWNER_NONE ?
+			(Colours)Company::Get(ssi.st->owner)->colour : COLOUR_GREY][5],
+			_colour_gradient[COLOUR_GREY][1]);
 	}
 }
 
@@ -234,25 +322,32 @@ void LinkGraphOverlay::DrawContent(Point pta, Point ptb, const LinkProperties &c
 	GfxDrawLine(pta.x, pta.y, ptb.x, ptb.y, _colour_gradient[COLOUR_GREY][1], this->scale);
 }
 
-/**
- * Draw dots for stations into the smallmap. The dots' sizes are determined by the amount of
- * cargo produced there, their colours by the type of cargo produced.
- */
-void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
+uint LinkGraphOverlay::CalculateStationDotSizeFromSupply(uint supply) const
 {
-	for (StationSupplyList::const_iterator i(this->cached_stations.begin()); i != this->cached_stations.end(); ++i) {
-		const Station *st = Station::GetIfValid(i->first);
-		if (st == NULL) continue;
-		Point pt = this->GetStationMiddle(st);
-		if (!this->IsPointVisible(pt, dpi, 3 * this->scale)) continue;
+	return this->scale * 2 + this->scale * 2 * min(200, supply) / 200;
+}
 
-		uint r = this->scale * 2 + this->scale * 2 * min(200, i->second) / 200;
+Rect LinkGraphOverlay::RemappedToTreeCoords(const Rect &rect) const
+{
+	Rect answer;
+	answer.left = (Clamp(rect.left, this->cached_data_boundary.left, this->cached_data_boundary.right) - this->cached_data_boundary.left) >> LINK_TREE_UNIT_SHIFT;
+	answer.right = (Clamp(rect.right, this->cached_data_boundary.left, this->cached_data_boundary.right) - this->cached_data_boundary.left) >> LINK_TREE_UNIT_SHIFT;
+	answer.top = (Clamp(rect.top, this->cached_data_boundary.top, this->cached_data_boundary.bottom) - this->cached_data_boundary.top) >> LINK_TREE_UNIT_SHIFT;
+	answer.bottom = (Clamp(rect.bottom, this->cached_data_boundary.top, this->cached_data_boundary.bottom) - this->cached_data_boundary.top) >> LINK_TREE_UNIT_SHIFT;
+	return answer;
+}
 
-		LinkGraphOverlay::DrawVertex(pt.x, pt.y, r,
-				_colour_gradient[st->owner != OWNER_NONE ?
-						(Colours)Company::Get(st->owner)->colour : COLOUR_GREY][5],
-				_colour_gradient[COLOUR_GREY][1]);
-	}
+bool LinkGraphOverlay::HasNonEmptyBoundaries() const
+{
+	return this->cached_data_boundary.left <= this->cached_data_boundary.right;
+}
+
+void LinkGraphOverlay::ResetBoundaries()
+{
+	this->cached_data_boundary.left = INT_MAX;
+	this->cached_data_boundary.right = INT_MIN;
+	this->cached_data_boundary.top = INT_MAX;
+	this->cached_data_boundary.bottom = INT_MIN;
 }
 
 /**

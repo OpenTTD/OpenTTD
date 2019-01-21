@@ -13,12 +13,11 @@
 #define LINKGRAPH_GUI_H
 
 #include "../company_func.h"
+#include "../core/areaquery_type.hpp"
 #include "../station_base.h"
 #include "../widget_type.h"
 #include "../window_gui.h"
 #include "linkgraph_base.h"
-#include <map>
-#include <vector>
 
 /**
  * Properties of a link between two stations.
@@ -38,9 +37,34 @@ struct LinkProperties {
  */
 class LinkGraphOverlay {
 public:
-	typedef std::map<StationID, LinkProperties> StationLinkMap;
-	typedef std::map<StationID, StationLinkMap> LinkMap;
-	typedef std::vector<std::pair<StationID, uint> > StationSupplyList;
+	//typedef std::map<StationID, LinkProperties> StationLinkMap;
+	//typedef std::map<StationID, StationLinkMap> LinkMap;
+	//typedef std::vector<std::pair<StationID, uint> > StationSupplyList;
+
+	struct LinkData {
+		StationID from;
+		StationID to;
+		LinkProperties link_properties;
+	};
+
+	struct StationData {
+		StationID id;
+		uint supply;
+	};
+
+	struct LinkMapItem {
+		bool is_station;
+		union {
+			LinkData link;
+			StationData station;
+		};
+		LinkMapItem() {}
+	};
+	typedef AreaQueryTree<LinkMapItem> LinkTree;
+
+	enum {
+		LINK_TREE_UNIT_SHIFT = 14
+	};
 
 	static const uint8 LINK_COLOURS[];
 
@@ -54,7 +78,9 @@ public:
 	 */
 	LinkGraphOverlay(const Window *w, uint wid, CargoTypes cargo_mask, uint32 company_mask, uint scale) :
 			window(w), widget_id(wid), cargo_mask(cargo_mask), company_mask(company_mask), scale(scale)
-	{}
+	{
+		this->ResetBoundaries();
+	}
 
 	void RebuildCache();
 	void Draw(const DrawPixelInfo *dpi) const;
@@ -72,15 +98,20 @@ protected:
 	const uint widget_id;              ///< ID of Widget in Window to be drawn to.
 	CargoTypes cargo_mask;             ///< Bitmask of cargos to be displayed.
 	uint32 company_mask;               ///< Bitmask of companies to be displayed.
-	LinkMap cached_links;              ///< Cache for links to reduce recalculation.
-	StationSupplyList cached_stations; ///< Cache for stations to be drawn.
+	LinkTree cached_data;              ///< Cache for links and stations for efficient enumeration in a small area.
+	Rect cached_data_boundary;         ///< Boundary rectangle of the cache data.
+
 	uint scale;                        ///< Width of link lines.
 
 	Point GetStationMiddle(const Station *st) const;
 
-	void AddLinks(const Station *sta, const Station *stb);
-	void DrawLinks(const DrawPixelInfo *dpi) const;
-	void DrawStationDots(const DrawPixelInfo *dpi) const;
+	LinkProperties & CreateLinkInCache(StationID from, StationID to, Point from_location, Point to_location, int padding);
+	uint & CreateStationInCache(StationID id, Point location, int padding);
+	void AddLinks(const Station *from, const Station *to, Point from_location, Point to_location, int padding);
+	uint CalculateStationDotSizeFromSupply(uint supply) const;
+	Rect RemappedToTreeCoords(const Rect &rect) const;
+	bool HasNonEmptyBoundaries() const;
+	void ResetBoundaries();
 	void DrawContent(Point pta, Point ptb, const LinkProperties &cargo) const;
 	bool IsLinkVisible(Point pta, Point ptb, const DrawPixelInfo *dpi, int padding = 0) const;
 	bool IsPointVisible(Point pt, const DrawPixelInfo *dpi, int padding = 0) const;
