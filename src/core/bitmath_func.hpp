@@ -226,6 +226,13 @@ static inline uint8 FindFirstBit2x64(const int value)
 
 uint8 FindFirstBit(uint32 x);
 uint8 FindLastBit(uint64 x);
+uint8 FindLastBit(uint32 x);
+inline uint8 FindLastBit(int64 x) {
+	return FindLastBit(static_cast<uint64>(x));
+}
+inline uint8 FindLastBit(int32 x) {
+	return FindLastBit(static_cast<uint32>(x));
+}
 
 /**
  * Clear the first bit in an integer.

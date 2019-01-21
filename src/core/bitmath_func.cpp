@@ -79,3 +79,17 @@ uint8 FindLastBit(uint64 x)
 
 	return pos;
 }
+uint8 FindLastBit(uint32 x)
+{
+	if (x == 0) return static_cast<uint8>(-1);
+
+	uint8 pos = 0;
+
+	if ((x & 0xffff0000U) != 0) { x >>= 16; pos += 16; }
+	if ((x & 0x0000ff00U) != 0) { x >>= 8;  pos += 8; }
+	if ((x & 0x000000f0U) != 0) { x >>= 4;  pos += 4; }
+	if ((x & 0x0000000cU) != 0) { x >>= 2;  pos += 2; }
+	if ((x & 0x00000002U) != 0) { pos += 1; }
+
+	return pos;
+}

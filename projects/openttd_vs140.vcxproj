@@ -716,6 +716,7 @@
     <ClCompile Include="..\src\core\alloc_func.cpp" />
     <ClInclude Include="..\src\core\alloc_func.hpp" />
     <ClInclude Include="..\src\core\alloc_type.hpp" />
+    <ClInclude Include="..\src\core\areaquery_type.hpp" />
     <ClInclude Include="..\src\core\backup_type.hpp" />
     <ClCompile Include="..\src\core\bitmath_func.cpp" />
     <ClInclude Include="..\src\core\bitmath_func.hpp" />
@@ -725,6 +726,7 @@
     <ClCompile Include="..\src\core\geometry_func.cpp" />
     <ClInclude Include="..\src\core\geometry_func.hpp" />
     <ClInclude Include="..\src\core\geometry_type.hpp" />
+    <ClInclude Include="..\src\core\linearquery_type.hpp" />
     <ClCompile Include="..\src\core\math_func.cpp" />
     <ClInclude Include="..\src\core\math_func.hpp" />
     <ClInclude Include="..\src\core\mem_func.hpp" />

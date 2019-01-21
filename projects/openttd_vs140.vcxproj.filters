@@ -1236,6 +1236,9 @@
     <ClInclude Include="..\src\core\alloc_type.hpp">
       <Filter>Core Source Code</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\core\areaquery_type.hpp">
+      <Filter>Core Source Code</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\core\backup_type.hpp">
       <Filter>Core Source Code</Filter>
     </ClInclude>
@@ -1261,6 +1264,9 @@
       <Filter>Core Source Code</Filter>
     </ClInclude>
     <ClInclude Include="..\src\core\geometry_type.hpp">
+      <Filter>Core Source Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\linearquery_type.hpp">
       <Filter>Core Source Code</Filter>
     </ClInclude>
     <ClCompile Include="..\src\core\math_func.cpp">
