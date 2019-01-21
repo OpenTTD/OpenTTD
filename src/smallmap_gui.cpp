@@ -712,8 +712,6 @@ void SmallMapWindow::SetZoomLevel(ZoomLevelChange change, const Point *zoom_pt)
 			Point new_tile = this->PixelToTile(zoom_pt->x, zoom_pt->y, &sub);
 			this->SetNewScroll(this->scroll_x + (tile.x - new_tile.x) * TILE_SIZE,
 					this->scroll_y + (tile.y - new_tile.y) * TILE_SIZE, sub);
-		} else if (this->map_type == SMT_LINKSTATS) {
-			this->overlay->RebuildCache();
 		}
 		this->SetWidgetDisabledState(WID_SM_ZOOM_IN,  this->zoom == zoomlevels[MIN_ZOOM_INDEX]);
 		this->SetWidgetDisabledState(WID_SM_ZOOM_OUT, this->zoom == zoomlevels[MAX_ZOOM_INDEX]);
@@ -1624,7 +1622,6 @@ void SmallMapWindow::SetNewScroll(int sx, int sy, int sub)
 	this->scroll_x = sx;
 	this->scroll_y = sy;
 	this->subscroll = sub;
-	if (this->map_type == SMT_LINKSTATS) this->overlay->RebuildCache();
 }
 
 /* virtual */ void SmallMapWindow::OnScroll(Point delta)

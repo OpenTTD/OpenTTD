@@ -1676,7 +1676,6 @@ void UpdateViewportPosition(Window *w)
 		int delta_x = w->viewport->dest_scrollpos_x - w->viewport->scrollpos_x;
 		int delta_y = w->viewport->dest_scrollpos_y - w->viewport->scrollpos_y;
 
-		bool update_overlay = false;
 		if (delta_x != 0 || delta_y != 0) {
 			if (_settings_client.gui.smooth_scroll) {
 				int max_scroll = ScaleByMapSize1D(512 * ZOOM_LVL_BASE);
@@ -1687,14 +1686,11 @@ void UpdateViewportPosition(Window *w)
 				w->viewport->scrollpos_x = w->viewport->dest_scrollpos_x;
 				w->viewport->scrollpos_y = w->viewport->dest_scrollpos_y;
 			}
-			update_overlay = (w->viewport->scrollpos_x == w->viewport->dest_scrollpos_x &&
-								w->viewport->scrollpos_y == w->viewport->dest_scrollpos_y);
 		}
 
 		ClampViewportToMap(vp, &w->viewport->scrollpos_x, &w->viewport->scrollpos_y);
 
 		SetViewportPosition(w, w->viewport->scrollpos_x, w->viewport->scrollpos_y);
-		if (update_overlay) RebuildViewportOverlay(w);
 	}
 }
 
@@ -2059,16 +2055,6 @@ bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 	return result;
 }
 
-void RebuildViewportOverlay(Window *w)
-{
-	if (w->viewport->overlay != NULL &&
-			w->viewport->overlay->GetCompanyMask() != 0 &&
-			w->viewport->overlay->GetCargoMask() != 0) {
-		w->viewport->overlay->RebuildCache();
-		w->SetDirty();
-	}
-}
-
 /**
  * Scrolls the viewport in a window to a given location.
  * @param x       Desired x location of the map to scroll to (world coordinate).
@@ -2098,7 +2084,6 @@ bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant)
 	if (instant) {
 		w->viewport->scrollpos_x = pt.x;
 		w->viewport->scrollpos_y = pt.y;
-		RebuildViewportOverlay(w);
 	}
 
 	w->viewport->dest_scrollpos_x = pt.x;

@@ -437,7 +437,6 @@ struct MainWindow : Window
 		this->viewport->scrollpos_y += ScaleByZoom(delta.y, this->viewport->zoom);
 		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
 		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
-		this->refresh.SetInterval(LINKGRAPH_DELAY);
 	}
 
 	virtual void OnMouseWheel(int wheel)
@@ -452,7 +451,6 @@ struct MainWindow : Window
 		if (this->viewport != NULL) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_M_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
-			this->refresh.SetInterval(LINKGRAPH_DELAY);
 		}
 	}
 
