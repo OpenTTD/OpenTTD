@@ -436,7 +436,8 @@ protected:
 						 * integer, so at about 31 bits because of the sign bit, the
 						 * least significant bits are removed.
 						 */
-						int mult_range = FindLastBit(x_axis_offset) + FindLastBit(abs(datapoint));
+						const int64 abs_datapoint = abs(datapoint);
+						int mult_range = (x_axis_offset ? FindLastBit(x_axis_offset) : 0) + (abs_datapoint ? FindLastBit(abs_datapoint) : 0);
 						int reduce_range = max(mult_range - 31, 0);
 
 						/* Handle negative values differently (don't shift sign) */

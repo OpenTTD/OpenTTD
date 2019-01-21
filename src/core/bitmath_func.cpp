@@ -66,7 +66,7 @@ uint8 FindFirstBit(uint32 x)
  */
 uint8 FindLastBit(uint64 x)
 {
-	if (x == 0) return 0;
+	if (x == 0) return static_cast<uint8>(-1);
 
 	uint8 pos = 0;
 
