@@ -62,6 +62,7 @@ enum PauseMode : byte {
 	PM_PAUSED_ERROR          = 1 << 3, ///< A game paused because a (critical) error
 	PM_PAUSED_ACTIVE_CLIENTS = 1 << 4, ///< A game paused for 'min_active_clients'
 	PM_PAUSED_GAME_SCRIPT    = 1 << 5, ///< A game paused by a game script
+	PM_PAUSED_LINK_GRAPH     = 1 << 6, ///< A game paused due to the link graph schedule lagging
 
 	/** Pause mode bits when paused for network reasons. */
 	PMB_PAUSED_NETWORK = PM_PAUSED_ACTIVE_CLIENTS | PM_PAUSED_JOIN,

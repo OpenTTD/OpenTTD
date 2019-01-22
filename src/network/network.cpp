@@ -342,7 +342,8 @@ void NetworkHandlePauseChange(PauseMode prev_mode, PauseMode changed_mode)
 		case PM_PAUSED_NORMAL:
 		case PM_PAUSED_JOIN:
 		case PM_PAUSED_GAME_SCRIPT:
-		case PM_PAUSED_ACTIVE_CLIENTS: {
+		case PM_PAUSED_ACTIVE_CLIENTS:
+		case PM_PAUSED_LINK_GRAPH: {
 			bool changed = ((_pause_mode == PM_UNPAUSED) != (prev_mode == PM_UNPAUSED));
 			bool paused = (_pause_mode != PM_UNPAUSED);
 			if (!paused && !changed) return;
@@ -355,6 +356,7 @@ void NetworkHandlePauseChange(PauseMode prev_mode, PauseMode changed_mode)
 				if ((_pause_mode & PM_PAUSED_JOIN) != PM_UNPAUSED)           SetDParam(++i, STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS);
 				if ((_pause_mode & PM_PAUSED_GAME_SCRIPT) != PM_UNPAUSED)    SetDParam(++i, STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT);
 				if ((_pause_mode & PM_PAUSED_ACTIVE_CLIENTS) != PM_UNPAUSED) SetDParam(++i, STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS);
+				if ((_pause_mode & PM_PAUSED_LINK_GRAPH) != PM_UNPAUSED)     SetDParam(++i, STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH);
 				str = STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1 + i;
 			} else {
 				switch (changed_mode) {
@@ -362,6 +364,7 @@ void NetworkHandlePauseChange(PauseMode prev_mode, PauseMode changed_mode)
 					case PM_PAUSED_JOIN:           SetDParam(0, STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS); break;
 					case PM_PAUSED_GAME_SCRIPT:    SetDParam(0, STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT); break;
 					case PM_PAUSED_ACTIVE_CLIENTS: SetDParam(0, STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS); break;
+					case PM_PAUSED_LINK_GRAPH:     SetDParam(0, STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH); break;
 					default: NOT_REACHED();
 				}
 				str = paused ? STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED : STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED;

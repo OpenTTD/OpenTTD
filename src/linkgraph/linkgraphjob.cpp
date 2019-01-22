@@ -37,7 +37,8 @@ LinkGraphJob::LinkGraphJob(const LinkGraph &orig) :
 		 * This is on purpose. */
 		link_graph(orig),
 		settings(_settings_game.linkgraph),
-		join_date(_date + _settings_game.linkgraph.recalc_time)
+		join_date(_date + _settings_game.linkgraph.recalc_time),
+		job_completed(false)
 {
 }
 

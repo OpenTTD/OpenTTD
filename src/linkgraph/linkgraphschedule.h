@@ -55,6 +55,7 @@ public:
 	static void Clear();
 
 	void SpawnNext();
+	bool IsJoinWithUnfinishedJobDue() const;
 	void JoinNext();
 	void SpawnAll();
 	void ShiftDates(int interval);
@@ -75,5 +76,8 @@ public:
 	 */
 	void Unqueue(LinkGraph *lg) { this->schedule.remove(lg); }
 };
+
+void StateGameLoop_LinkGraphPauseControl();
+void AfterLoad_LinkGraphPauseControl();
 
 #endif /* LINKGRAPHSCHEDULE_H */
