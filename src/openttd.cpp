@@ -1355,6 +1355,10 @@ static void CheckCaches()
  */
 void StateGameLoop()
 {
+	if (!_networking || _network_server) {
+		StateGameLoop_LinkGraphPauseControl();
+	}
+
 	/* don't execute the state loop during pause */
 	if (_pause_mode != PM_UNPAUSED) {
 		PerformanceMeasurer::Paused(PFE_GAMELOOP);

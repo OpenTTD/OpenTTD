@@ -11,6 +11,7 @@
 #include "../linkgraph/linkgraph.h"
 #include "../linkgraph/linkgraphjob.h"
 #include "../linkgraph/linkgraphschedule.h"
+#include "../network/network.h"
 #include "../settings_internal.h"
 #include "saveload.h"
 
@@ -245,6 +246,10 @@ void AfterLoadLinkGraphs()
 	}
 
 	LinkGraphSchedule::instance.SpawnAll();
+
+	if (!_networking || _network_server) {
+		AfterLoad_LinkGraphPauseControl();
+	}
 }
 
 /**

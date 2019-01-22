@@ -13,6 +13,7 @@
 #include "../thread.h"
 #include "linkgraph.h"
 #include <list>
+#include <atomic>
 
 class LinkGraphJob;
 class Path;
@@ -61,6 +62,7 @@ protected:
 	Date join_date;                   ///< Date when the job is to be joined.
 	NodeAnnotationVector nodes;       ///< Extra node data necessary for link graph calculation.
 	EdgeAnnotationMatrix edges;       ///< Extra edge data necessary for link graph calculation.
+	std::atomic<bool> job_completed;  ///< Is the job still running. This is accessed by multiple threads and reads may be stale.
 
 	void EraseFlows(NodeID from);
 	void JoinThread();
@@ -265,7 +267,7 @@ public:
 	 * settings have to be brutally const-casted in order to populate them.
 	 */
 	LinkGraphJob() : settings(_settings_game.linkgraph),
-			join_date(INVALID_DATE) {}
+			join_date(INVALID_DATE), job_completed(false) {}
 
 	LinkGraphJob(const LinkGraph &orig);
 	~LinkGraphJob();
@@ -273,10 +275,17 @@ public:
 	void Init();
 
 	/**
+	 * Check if job has actually finished.
+	 * This is allowed to spuriously return an incorrect value.
+	 * @return True if job has actually finished.
+	 */
+	inline bool IsJobCompleted() const { return this->job_completed.load(std::memory_order_acquire); }
+
+	/**
 	 * Check if job is supposed to be finished.
 	 * @return True if job should be finished by now, false if not.
 	 */
-	inline bool IsFinished() const { return this->join_date <= _date; }
+	inline bool IsScheduledToBeJoined() const { return this->join_date <= _date; }
 
 	/**
 	 * Get the date when the job should be finished.
