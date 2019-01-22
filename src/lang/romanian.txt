@@ -3947,7 +3947,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Fereast
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configurație Inteligentă Artificială / Scripturi Joc
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Script Joc încărcat în jocul următor
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Modulul de IA care va fi încărcat în jocul următor
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Jucator uman
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleator
 STR_AI_CONFIG_NONE                                              :(nici unul)
 

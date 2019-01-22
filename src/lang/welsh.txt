@@ -3980,7 +3980,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Mae'r F
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Ffurfweddiad AI / Sgript Gêm
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Y Sgriptiau Gêm a lwythir yn y gêm nesaf
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Yr AIau a lwythir yn y gêm nesaf
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Chwaraewr dynol
 STR_AI_CONFIG_RANDOM_AI                                         :AI ar hap
 STR_AI_CONFIG_NONE                                              :(dim)
 

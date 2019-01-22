@@ -3729,7 +3729,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Aflúsu
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Stilling gervigreindar/forskriftar
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Forskriftin sem verður hlaðin í næsta leik
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Gervigreindin sem verður hlaðin í næsta leik
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Mennskur leikmaður
 STR_AI_CONFIG_RANDOM_AI                                         :Gervigreind af handahófi
 STR_AI_CONFIG_NONE                                              :(engin)
 

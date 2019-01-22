@@ -4256,7 +4256,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Chan ei
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Rèiteachadh an IF/sgriobt geama
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}An sgriobt geama a thèid a luchdadh leis an ath-gheama
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Na IF a thèid a luchdadh leis an ath-gheama
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Cluicheadair daonna
 STR_AI_CONFIG_RANDOM_AI                                         :IF air thuaiream
 STR_AI_CONFIG_NONE                                              :(gun IF)
 

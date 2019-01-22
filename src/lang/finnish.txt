@@ -4083,7 +4083,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tekoäl
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Tekoälyn/peliskriptin määritteet
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Seuraavassa pelissä ladattava peliskripti
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Seuraavassa pelissä ladattavat tekoälyt
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Ihmispelaaja
 STR_AI_CONFIG_RANDOM_AI                                         :Sattumanvarainen tekoäly
 STR_AI_CONFIG_NONE                                              :(ei mitään)
 

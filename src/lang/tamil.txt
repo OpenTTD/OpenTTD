@@ -3520,7 +3520,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/ஆ�
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/வரிவடிவம் ஏற்றபடி அமை
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}வரிவடிவம் அடுத்த ஆட்டங்களிலிருந்து பதிவேற்றப்படும்
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}அடுத்த ஆட்டங்களில் பதிவேற்றப்படும் AI-கள்
-STR_AI_CONFIG_HUMAN_PLAYER                                      :மனித வீரர்
 STR_AI_CONFIG_RANDOM_AI                                         :ஏதொவொரு AI
 STR_AI_CONFIG_NONE                                              :(none)
 

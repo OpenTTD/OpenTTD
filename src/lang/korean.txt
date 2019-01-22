@@ -4084,7 +4084,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}인공�
 STR_AI_CONFIG_CAPTION                                           :{WHITE}인공지능 / 게임 스크립트 설정
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}다음에 게임을 시작할 때 이 게임 스크립트를 불러올 것입니다.
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}다음에 게임을 시작할 때 이 인공지능을 불러올 것입니다
-STR_AI_CONFIG_HUMAN_PLAYER                                      :사용자 플레이어
 STR_AI_CONFIG_RANDOM_AI                                         :무작위 인공지능
 STR_AI_CONFIG_NONE                                              :(없음)
 

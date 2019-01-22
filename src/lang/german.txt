@@ -4062,7 +4062,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Debugfe
 STR_AI_CONFIG_CAPTION                                           :{WHITE}KI / Skripte einstellen
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Das Skript, das im nächsten Spiel geladen wird
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Die KIs, die im nächsten Spiel geladen werden
-STR_AI_CONFIG_HUMAN_PLAYER                                      :menschlicher Spieler
 STR_AI_CONFIG_RANDOM_AI                                         :Zufällige KI
 STR_AI_CONFIG_NONE                                              :-
 

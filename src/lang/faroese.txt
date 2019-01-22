@@ -3488,7 +3488,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/Game
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Spæli script innstillingar
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spæli scripti sum verður heinta í næsta spæli
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI sum verða heintaði í næsta spæli
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Menniskja spælari
 STR_AI_CONFIG_RANDOM_AI                                         :Tilvildarligt AI
 STR_AI_CONFIG_NONE                                              :(einki)
 

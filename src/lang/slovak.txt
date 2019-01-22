@@ -4029,7 +4029,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Umelá 
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Umelá inteligencia / Konfigurácia hry
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skript, ktorý bude načítaný v ďalšej hre
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AIs budú nastavené v ďalšej hre.
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Človek
 STR_AI_CONFIG_RANDOM_AI                                         :Náhodná AI
 STR_AI_CONFIG_NONE                                              :(none)
 

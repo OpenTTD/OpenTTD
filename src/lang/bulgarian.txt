@@ -3891,7 +3891,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}ИИ Д
 STR_AI_CONFIG_CAPTION                                           :{WHITE}ИИ Настройки
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Иговия скрипт ще бъде зареден в следващата игра
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}ИИ-тата ще бъдат заредени в следващата игра
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Човешки играч
 STR_AI_CONFIG_RANDOM_AI                                         :Случаен AI
 STR_AI_CONFIG_NONE                                              :(нищо)
 

@@ -3354,7 +3354,6 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vidu for
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Ludo Skripto Agordo
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Homa ludanto
 STR_AI_CONFIG_RANDOM_AI                                         :Hazarda AI
 STR_AI_CONFIG_NONE                                              :(neniu)
 

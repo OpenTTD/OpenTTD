@@ -4346,7 +4346,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вак�
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Канфігурацыя ШІ / скрыпту
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Гульнёвы скрыпт, які будзе загружаны ў наступнай гульні
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Модулі ШІ, якія будуць загружаны ў наступнай гульні
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Чалавек
 STR_AI_CONFIG_RANDOM_AI                                         :Выпадковы ШI
 STR_AI_CONFIG_NONE                                              :(няма)
 

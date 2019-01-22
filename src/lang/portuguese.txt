@@ -4077,7 +4077,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A janel
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuração IA / Script de Jogo
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}O Script de Jogo que será carregado no próximo jogo
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}As IAs que serão carregadas no próximo jogo
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Jogador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA Aleatória
 STR_AI_CONFIG_NONE                                              :(nenhum)
 

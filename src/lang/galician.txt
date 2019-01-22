@@ -3981,7 +3981,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A fiest
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuración IA / scripts do xogo
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}O script de xogo que se cargará na próxima partida
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}As IAs que serán cargadas na próxima partida
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Xogador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatoria
 STR_AI_CONFIG_NONE                                              :(ningunha)
 

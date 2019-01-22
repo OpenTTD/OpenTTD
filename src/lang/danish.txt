@@ -4083,7 +4083,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Compute
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguration af computerspiller/spilscript
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spilscriptet der vil bliver indlæst i næste spil
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AIer der vil bliver loaded i næste spil
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskelig spiller
 STR_AI_CONFIG_RANDOM_AI                                         :Tilfældig computerspiller
 STR_AI_CONFIG_NONE                                              :(ingen)
 

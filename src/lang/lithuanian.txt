@@ -4236,7 +4236,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}DI / Ga
 STR_AI_CONFIG_CAPTION                                           :{WHITE}DI / Žaidimo Nustatymai
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Žaidimo skriptas bus įkeltas sekančiame žaidime
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}DI'ai bus įkelti sekančiame žaidime
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Žaidėjas Žmogus
 STR_AI_CONFIG_RANDOM_AI                                         :Atsitiktinis DI
 STR_AI_CONFIG_NONE                                              :(tusčia)
 

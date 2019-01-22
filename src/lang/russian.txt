@@ -4273,7 +4273,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Окн�
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Конфигурация ИИ / скрипта
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Игровой скрипт, который будет загружен в следующей игре
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Модули ИИ, которые будут загружены в следующей игре
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Человек
 STR_AI_CONFIG_RANDOM_AI                                         :Случайный ИИ
 STR_AI_CONFIG_NONE                                              :(нет)
 

@@ -3898,7 +3898,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}MI/spē
 STR_AI_CONFIG_CAPTION                                           :{WHITE}MI/spēles skriptu konfigurācija
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spēles skripts, kas tiks ielādēts nākamajā spēlē
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}MI, kas tiks ielādēts nākamajā spēlē
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Spēlētājs (cilvēks)
 STR_AI_CONFIG_RANDOM_AI                                         :Nejaušs MI
 STR_AI_CONFIG_NONE                                              :(nav)
 

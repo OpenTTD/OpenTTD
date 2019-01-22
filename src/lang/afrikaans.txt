@@ -3962,7 +3962,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Rekenaa
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Spel Konfigurasie
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spel Skrip wat in die volgende spel gelaai sal word
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Die AIs wat om die volgende spel gelaai sal word
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Mens Speler
 STR_AI_CONFIG_RANDOM_AI                                         :Lukraak AI
 STR_AI_CONFIG_NONE                                              :(geen)
 

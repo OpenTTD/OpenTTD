@@ -4081,7 +4081,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fine
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuració de la IA/script de partida
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Aquest és l'script que s'usarà a la propera partida.
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Aquesta llista conté les IA que es carregaran a la propera partida.
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humà
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatòria
 STR_AI_CONFIG_NONE                                              :(cap)
 

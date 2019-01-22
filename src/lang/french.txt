@@ -4077,7 +4077,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fen�
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuration d'IA et de scripts de jeu
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Le script de jeu qui sera chargé dans la prochaine partie
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Les IAs qui seront chargées dans la prochaine partie
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Joueur humain
 STR_AI_CONFIG_RANDOM_AI                                         :IA aléatoire
 STR_AI_CONFIG_NONE                                              :(aucun)
 

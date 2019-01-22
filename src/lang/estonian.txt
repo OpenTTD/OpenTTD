@@ -4044,7 +4044,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tehism�
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Arvuti seadistus
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}GameScript-id mis laetakse j채rgmise m채nguga
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Tehism천istused mis laetakse j채rgmise m채nguga
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Inimene
 STR_AI_CONFIG_RANDOM_AI                                         :Suvaline tehism천istus
 STR_AI_CONFIG_NONE                                              :(mitte 체htegi)
 

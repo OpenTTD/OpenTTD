@@ -4427,7 +4427,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno de
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguracja SI / Game Script
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Game Script, który zostanie załadowany dla następnej gry
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}SI, które zostaną załadowane podczas kolejnej gry
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Ludzki gracz
 STR_AI_CONFIG_RANDOM_AI                                         :Losowe SI
 STR_AI_CONFIG_NONE                                              :(brak)
 

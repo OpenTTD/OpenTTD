@@ -4145,7 +4145,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Το π
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Ρύθμιση ΑΙ και Δέσμης Ενεργειών
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Η Δέσμη Ενεργειών παιχνιδιού που θα φορτωθεί στο επόμενο παιχνίδι
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Οι AIs που θα φορτωθούν στο επόμενο παιχνίδι
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Ανθρώπινος παίκτης
 STR_AI_CONFIG_RANDOM_AI                                         :Τυχαία AI
 STR_AI_CONFIG_NONE                                              :{G=f}(καμία)
 

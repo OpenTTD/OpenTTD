@@ -4196,7 +4196,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Fenestr
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuratio IA/Ludi Scriptum
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Ludi Scriptum quod imponet ludo proximo
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IA quae imponet ludo proximo
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Lusor humanus
 STR_AI_CONFIG_RANDOM_AI                                         :IA Fortuita
 STR_AI_CONFIG_NONE                                              :(nullum)
 

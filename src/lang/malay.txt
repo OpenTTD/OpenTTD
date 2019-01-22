@@ -3646,7 +3646,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tetingk
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfigurasi Kepintaran Tiruan / Permainan
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}SkripPermainan yang akan dimuatkan pada permainan seterusnya
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Kepintaran Tiruan yang akan dimuatkan pada permainan seterusnya
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Pemain manusia
 STR_AI_CONFIG_RANDOM_AI                                         :Kepintaran Tiruan rawak
 STR_AI_CONFIG_NONE                                              :(tiada)
 

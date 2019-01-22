@@ -4212,7 +4212,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вік�
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Налаштування AI / Ігрового Скрипта
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Ігровий Скрипт, який буде завантажено в наступній грі
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}АІ, які будуть завантажені в наступній грі
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Гравець-людина
 STR_AI_CONFIG_RANDOM_AI                                         :Випадковий AI
 STR_AI_CONFIG_NONE                                              :(нема)
 

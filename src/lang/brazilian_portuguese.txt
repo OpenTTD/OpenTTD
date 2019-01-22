@@ -4036,7 +4036,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Depura�
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuração da I.A./Script do jogo
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}O script do jogo que será carregado no próximo jogo
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IAs que serão carregadas no próximo jogo
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Jogador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatória
 STR_AI_CONFIG_NONE                                              :{G=m}(nenhum)
 

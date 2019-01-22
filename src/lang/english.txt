@@ -4095,7 +4095,6 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Game 
 STR_AI_CONFIG_CAPTION_INGAME                                    :{WHITE}AI/Game Script Settings
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}The Game Script that is loaded or will be loaded in the next game
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}The AIs that are currently loaded or will be loaded next time they start on these Company IDs while in a game
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Human player
 STR_AI_CONFIG_RANDOM_AI                                         :(random)
 STR_AI_CONFIG_NONE                                              :(none)
 

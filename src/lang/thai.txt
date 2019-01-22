@@ -3876,7 +3876,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/Game
 STR_AI_CONFIG_CAPTION                                           :{WHITE}ปรับแต่ง AI/Game Script
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Game Script จะเปิดใช้งานในเกมถัดไป
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI จะทำการเปิดใช้งานในเกมถัดไป
-STR_AI_CONFIG_HUMAN_PLAYER                                      :ผู้เล่น
 STR_AI_CONFIG_RANDOM_AI                                         :คอมพิวเตอร์
 STR_AI_CONFIG_NONE                                              :(ไม่มี)
 
