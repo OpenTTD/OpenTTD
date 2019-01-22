@@ -239,6 +239,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 	TransportType transport_type = Extract<TransportType, 15, 2>(p2);
 
+	_build_tunnel_endtile = 0;
 	/* type of bridge */
 	switch (transport_type) {
 		case TRANSPORT_ROAD:
@@ -377,8 +378,55 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		if (ret.Failed()) return ret;
 		cost = ret;
 
-		if (terraform_cost_north.Failed() || (terraform_cost_north.GetCost() != 0 && !allow_on_slopes)) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
-		cost.AddCost(terraform_cost_north);
+		if (transport_type != TRANSPORT_WATER) {
+			if (terraform_cost_north.Failed() || (terraform_cost_north.GetCost() != 0 && !allow_on_slopes)) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+			cost.AddCost(terraform_cost_north);
+		} else {
+			Slope tileh_north_aqueduct = GetTileSlope(tile_start);
+			if (tileh_north_aqueduct != ComplementSlope(tileh_end)) {
+				if (!IsInclinedSlope(GetTileSlope(end_tile))) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+				if (IsSteepSlope(tileh_north_aqueduct)) {
+					tileh_north_aqueduct = SlopeWithOneCornerRaised(OppositeCorner(GetHighestSlopeCorner((tileh_north_aqueduct ^ (SLOPE_ELEVATED | SLOPE_STEEP)) ^ tileh_end)));
+				} else {
+					tileh_north_aqueduct = ComplementSlope(tileh_end) ^ tileh_north_aqueduct;
+				}
+				/* Mark the tile as already cleared for the terraform command.
+				 * Do this for all tiles (like trees), not only objects. */
+				ClearedObjectArea *coa = FindClearedObject(tile_start);
+				if (coa == NULL) {
+					/*C++17: coa = &*/ _cleared_object_areas.push_back({tile_start, TileArea(tile_start, 1, 1)});
+					coa = &_cleared_object_areas.back();
+				}
+
+				/* Hide the tile from the terraforming command. */
+				TileIndex old_first_tile = coa->first_tile;
+				coa->first_tile = INVALID_TILE;
+
+				/* CMD_TERRAFORM_LAND may append further items to _cleared_object_areas,
+				 * however it will never erase or re-order existing items.
+				 * _cleared_object_areas is a value-type SmallVector, therefore appending items
+				 * may result in a backing-store re-allocation, which would invalidate the coa pointer.
+				 * The index of the coa pointer into the _cleared_object_areas vector remains valid,
+				 * and can be used safely after the CMD_TERRAFORM_LAND operation.
+				 * Deliberately clear the coa pointer to avoid leaving dangling pointers which could
+				 * inadvertently be dereferenced.
+				 */
+				ClearedObjectArea *begin = _cleared_object_areas.data();
+				assert(coa >= begin && coa < begin + _cleared_object_areas.size());
+				size_t coa_index = coa - begin;
+				assert(coa_index < UINT_MAX); // more than 2**32 cleared areas would be a bug in itself
+				coa = NULL;
+
+				ret = DoCommand(tile_start, tileh_north_aqueduct, 1, flags & ~DC_NO_WATER, CMD_TERRAFORM_LAND);
+				_cleared_object_areas[(uint)coa_index].first_tile = old_first_tile;
+				if (ret.Failed()) {
+					/* if the command fails from here on we want the end tile to be highlighted */
+					_build_tunnel_endtile = tile_start;
+					return_cmd_error(STR_ERROR_UNABLE_TO_LEVEL_LAND_AQUEDUCT);
+				}
+				cost.AddCost(ret);
+			}
+		}
 
 		/* Try and clear the end landscape */
 		ret = DoCommand(tile_end, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -386,8 +434,55 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		cost.AddCost(ret);
 
 		/* false - end tile slope check */
-		if (terraform_cost_south.Failed() || (terraform_cost_south.GetCost() != 0 && !allow_on_slopes)) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
-		cost.AddCost(terraform_cost_south);
+		if (transport_type != TRANSPORT_WATER) {
+			if (terraform_cost_south.Failed() || (terraform_cost_south.GetCost() != 0 && !allow_on_slopes)) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+			cost.AddCost(terraform_cost_south);
+		} else {
+			Slope tileh_south_aqueduct = GetTileSlope(tile_end);
+			if (tileh_south_aqueduct != ComplementSlope(tileh_start)) {
+				if (!IsInclinedSlope(GetTileSlope(end_tile))) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+				if (IsSteepSlope(tileh_south_aqueduct)) {
+					tileh_south_aqueduct = SlopeWithOneCornerRaised(OppositeCorner(GetHighestSlopeCorner((tileh_south_aqueduct ^ (SLOPE_ELEVATED | SLOPE_STEEP)) ^ tileh_start)));
+				} else {
+					tileh_south_aqueduct = ComplementSlope(tileh_start) ^ tileh_south_aqueduct;
+				}
+				/* Mark the tile as already cleared for the terraform command.
+				 * Do this for all tiles (like trees), not only objects. */
+				ClearedObjectArea *coa = FindClearedObject(tile_end);
+				if (coa == NULL) {
+					/*C++17: coa = &*/ _cleared_object_areas.push_back({tile_end, TileArea(tile_end, 1, 1)});
+					coa = &_cleared_object_areas.back();
+				}
+
+				/* Hide the tile from the terraforming command. */
+				TileIndex old_first_tile = coa->first_tile;
+				coa->first_tile = INVALID_TILE;
+
+				/* CMD_TERRAFORM_LAND may append further items to _cleared_object_areas,
+				 * however it will never erase or re-order existing items.
+				 * _cleared_object_areas is a value-type SmallVector, therefore appending items
+				 * may result in a backing-store re-allocation, which would invalidate the coa pointer.
+				 * The index of the coa pointer into the _cleared_object_areas vector remains valid,
+				 * and can be used safely after the CMD_TERRAFORM_LAND operation.
+				 * Deliberately clear the coa pointer to avoid leaving dangling pointers which could
+				 * inadvertently be dereferenced.
+				 */
+				ClearedObjectArea *begin = _cleared_object_areas.data();
+				assert(coa >= begin && coa < begin + _cleared_object_areas.size());
+				size_t coa_index = coa - begin;
+				assert(coa_index < UINT_MAX); // more than 2**32 cleared areas would be a bug in itself
+				coa = NULL;
+
+				ret = DoCommand(tile_end, tileh_south_aqueduct, 1, flags & ~DC_NO_WATER, CMD_TERRAFORM_LAND);
+				_cleared_object_areas[(uint)coa_index].first_tile = old_first_tile;
+				if (ret.Failed()) {
+					/* if the command fails from here on we want the end tile to be highlighted */
+					_build_tunnel_endtile = tile_end;
+					return_cmd_error(STR_ERROR_UNABLE_TO_LEVEL_LAND_AQUEDUCT);
+				}
+				cost.AddCost(ret);
+			}
+		}
 
 		const TileIndex heads[] = {tile_start, tile_end};
 		for (int i = 0; i < 2; i++) {

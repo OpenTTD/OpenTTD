@@ -4435,6 +4435,7 @@ STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... can'
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... can't build on river
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Must demolish canal first
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Can't build aqueduct here...
+STR_ERROR_UNABLE_TO_LEVEL_LAND_AQUEDUCT                         :{WHITE}Unable to level land for other end of aqueduct
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... tree already here
