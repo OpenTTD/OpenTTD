@@ -931,6 +931,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizada..
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiano (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraní (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nuevo Rublo Ruso (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso mexicano (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vehículos de carretera
@@ -2722,6 +2723,7 @@ STR_FRAMERATE_SOUND                                             :{BLACK}Mezcla d
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Ticks de trenes
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ticks de barcos
 STR_FRAMETIME_CAPTION_DRAWING                                   :Renderizado gráfico
 STR_FRAMETIME_CAPTION_VIDEO                                     :Salida de vídeo
 STR_FRAMETIME_CAPTION_SOUND                                     :Mezcla de sonido
@@ -3826,6 +3828,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Edad (años)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requiere mantenimiento
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Siempre
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tiempo de vida restante (años)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Fiabilidad máxima
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar los datos del vehículo al valor dado
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :es igual a
