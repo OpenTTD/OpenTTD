@@ -586,6 +586,7 @@ struct AISettingsWindow : public Window {
 	{
 		this->RebuildVisibleSettings();
 		HideDropDownMenu(this);
+		DeleteChildWindows(WC_QUERY_STRING);
 	}
 
 private:
