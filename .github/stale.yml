@@ -1,0 +1,34 @@
+daysUntilClose: 7
+staleLabel: stale
+closeComment: false
+exemptMilestones: true
+exemptAssignees: true
+
+issues:
+  daysUntilStale: 60
+  exemptLabels:
+  - pinned
+  - security
+  - "good first issue"
+  - regression
+  markComment: >
+    This issue has been automatically marked as stale because it has not had any activity in the last two months.
+
+    If you believe the issue is still relevant, please test on the latest nightly and report back.
+
+    It will be closed if no further activity occurs within 7 days.
+
+    Thank you for your contributions.
+
+pulls:
+  daysUntilStale: 30
+  exemptLabels:
+  - pinned
+  markComment: >
+    This pull request has been automatically marked as stale because it has not had any activity in the last month.
+
+    Please feel free to give a status update now, ping for review, or re-open when it's ready.
+
+    It will be closed if no further activity occurs within 7 days.
+
+    Thank you for your contributions.
