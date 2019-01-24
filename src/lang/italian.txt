@@ -191,6 +191,7 @@ STR_COLOUR_ORANGE                                               :Arancio
 STR_COLOUR_BROWN                                                :Marrone
 STR_COLOUR_GREY                                                 :Grigio
 STR_COLOUR_WHITE                                                :Bianco
+STR_COLOUR_RANDOM                                               :Casuale
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -931,6 +932,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizzata.
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari georgiano (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial iraniano (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nuovo rublo russo (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso messicano (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automezzi
@@ -1282,6 +1284,8 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non è p
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenzione infrastrutture: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Se abilitata, le infrastrutture causano dei costi di manutenzione. I costi crescono in modo più che proporzionale alla dimensione della rete, influenzando maggiormente le compagnie più grandi rispetto alle piccole
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Colore iniziale compagnia: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Sceglie il colore iniziale della compagnia
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Non rendere mai obsoleti i tipi di aeroporto: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Abilitando questa impostazione, tutti i tipi di aeroporto rimangono disponibili indefinitamente dopo essere stati introdotti
@@ -3381,6 +3385,9 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra l
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Livello di produzione: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}L'industria ha annunciato che a breve chiuderà!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Richiede: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Richiede:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
