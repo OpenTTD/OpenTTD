@@ -179,6 +179,7 @@ struct AIListWindow : public Window {
 		InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_AI);
 		InvalidateWindowClassesData(WC_AI_SETTINGS);
 		DeleteWindowByClass(WC_QUERY_STRING);
+		InvalidateWindowClassesData(WC_TEXTFILE);
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
@@ -640,15 +641,24 @@ struct ScriptTextfileWindow : public TextfileWindow {
 
 	ScriptTextfileWindow(TextfileType file_type, CompanyID slot) : TextfileWindow(file_type), slot(slot)
 	{
-		const char *textfile = GetConfig(slot)->GetTextfile(file_type, slot);
-		this->LoadTextfile(textfile, (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR);
+		this->OnInvalidateData();
 	}
 
 	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_TF_CAPTION) {
 			SetDParam(0, (slot == OWNER_DEITY) ? STR_CONTENT_TYPE_GAME_SCRIPT : STR_CONTENT_TYPE_AI);
-			SetDParamStr(1, GetConfig(slot)->GetName());
+			SetDParamStr(1, GetConfig(slot)->GetInfo()->GetName());
+		}
+	}
+
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	{
+		const char *textfile = GetConfig(slot)->GetTextfile(file_type, slot);
+		if (textfile == nullptr) {
+			delete this;
+		} else {
+			this->LoadTextfile(textfile, (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR);
 		}
 	}
 };
