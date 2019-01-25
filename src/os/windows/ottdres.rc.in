@@ -14,7 +14,7 @@
 #define APSTUDIO_HIDDEN_SYMBOLS
 #include "windows.h"
 #undef APSTUDIO_HIDDEN_SYMBOLS
-#ifdef MSVC
+#ifndef __MINGW32__
 #include "winres.h"
 #else
 #define IDC_STATIC              (-1)     // all static controls
@@ -116,6 +116,10 @@ BEGIN
 END
 
 #endif    // !_MAC
+
+#ifdef __MINGW32__
+1 24 "..\\..\\..\\projects\\dpi_aware.manifest"
+#endif
 
 #endif    // Neutral (Default) resources
 /////////////////////////////////////////////////////////////////////////////
