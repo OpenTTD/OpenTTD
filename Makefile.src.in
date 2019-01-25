@@ -250,7 +250,7 @@ $(OBJS_MM): %.o: $(SRC_DIR)/%.mm $(DEP_MASK) $(FILE_DEP)
 
 $(OBJS_RC): %.o: $(SRC_DIR)/%.rc $(FILE_DEP)
 	$(E) '$(STAGE) Compiling resource $(<:$(SRC_DIR)/%.rc=%.rc)'
-	$(Q)$(WINDRES) -o $@ -I `basename $<` $<
+	$(Q)$(WINDRES) -o $@ $<
 
 $(BIN_DIR)/$(TTD): $(TTD)
 	$(Q)cp $(TTD) $(BIN_DIR)/$(TTD)
