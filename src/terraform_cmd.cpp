@@ -313,7 +313,7 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		for (TileIndexSet::const_iterator it = ts.dirty_tiles.begin(); it != ts.dirty_tiles.end(); it++) {
 			MarkTileDirtyByTile(*it);
 			TileIndexToHeightMap::const_iterator new_height = ts.tile_to_new_height.find(tile);
-			if (new_height != ts.tile_to_new_height.end()) continue;
+			if (new_height == ts.tile_to_new_height.end()) continue;
 			MarkTileDirtyByTile(*it, 0, new_height->second);
 		}
 
