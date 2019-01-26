@@ -18,6 +18,34 @@
 #include <utility>
 #include <vector>
 
+#if !defined(__cpp_lib_make_unique) || !(__cpp_lib_make_unique >= 201304)
+
+/* Polyfill for make_unique if the compiler doesn't support it */
+
+#include <cstddef>
+#include <type_traits>
+
+namespace std {
+	/* Non-array overload for make_unique */
+	template<typename T, typename... Args, typename = typename std::enable_if<!(std::is_array<T>::value)>::type>
+	std::unique_ptr<T> make_unique(Args&&... args)
+	{
+		return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+	}
+
+	/* Array overload (with unknown bound) for make_unique */
+	template<typename T, typename = typename std::enable_if<std::is_array<T>::value && std::extent<T>::value == 0>::type>
+	std::unique_ptr<T> make_unique(std::size_t size)
+	{
+		return std::unique_ptr<T>(new typename std::remove_extent<T>::type[size]());
+	}
+}
+
+/* Define the macro in case code from somewhere else includes this header, and wants to determine if make_unique is available */
+#define __cpp_lib_make_unique 201304
+
+#endif
+
 /**
  * Segment tree class that can do efficient enumeration of segments that intersect a given range.
  * Note: In all functions, `end` is inclusive of that element itself, i.e. the range is [begin, end] and NOT [begin, end).
