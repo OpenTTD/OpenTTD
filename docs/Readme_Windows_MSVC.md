@@ -18,7 +18,7 @@ done during installing Visual Studio, by selecting
 `Visual C++ ATL for x86 and x64` depending on your version). If not, you
 can get it at this location:
 
-- [MS Windows Platform SDK](http://www.microsoft.com/downloads/details.aspx?FamilyId=A55B6B43-E24F-4EA3-A93E-40C0EC4F68E5&displaylang=en)
+- [MS Windows Platform SDK](https://developer.microsoft.com/en-US/windows/downloads/windows-10-sdk)
 
 Install the SDK by following the instructions as given.
 
@@ -55,6 +55,7 @@ Open the appropriate `sln` (Solution) file for your version of Visual Studio:
 
 - VS 2015: projects/openttd_vs140.sln
 - VS 2017: projects/openttd_vs141.sln
+- VS 2019: projects/openttd_vs142.sln
 
 Set the build mode to `Release` in
 `Build > Configuration manager > Active solution configuration`.

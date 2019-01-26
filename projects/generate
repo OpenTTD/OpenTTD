@@ -22,6 +22,16 @@ then
 	exit 1
 fi
 
+# openttd_vs142.sln             is for MSVC 2019
+# openttd_vs142.vcxproj         is for MSVC 2019
+# openttd_vs142.vcxproj.filters is for MSVC 2019
+# langs_vs142.vcxproj           is for MSVC 2019
+# strgen_vs142.vcxproj          is for MSVC 2019
+# strgen_vs142.vcxproj.filters  is for MSVC 2019
+# generate_vs142.vcxproj        is for MSVC 2019
+# version_vs142.vcxproj         is for MSVC 2019
+# basesets_vs142.vcxproj        is for MSVC 2019
+
 # openttd_vs141.sln             is for MSVC 2017
 # openttd_vs141.vcxproj         is for MSVC 2017
 # openttd_vs141.vcxproj.filters is for MSVC 2017
@@ -312,15 +322,23 @@ generate "$openttdvcxproj" "openttd_vs140.vcxproj"
 generate "$openttdfiles" "openttd_vs140.vcxproj.filters" "$openttdfilters"
 generate "$openttdvcxproj" "openttd_vs141.vcxproj"
 generate "$openttdfiles" "openttd_vs141.vcxproj.filters" "$openttdfilters"
+generate "$openttdvcxproj" "openttd_vs142.vcxproj"
+generate "$openttdfiles" "openttd_vs142.vcxproj.filters" "$openttdfilters"
 generate "$langvcxproj" "langs_vs140.vcxproj"
 generate "$langfiles" "langs_vs140.vcxproj.filters"
 generate "$langvcxproj" "langs_vs141.vcxproj"
 generate "$langfiles" "langs_vs141.vcxproj.filters"
+generate "$langvcxproj" "langs_vs142.vcxproj"
+generate "$langfiles" "langs_vs142.vcxproj.filters"
 generate "$settingsvcxproj" "settings_vs140.vcxproj" "$settingscommand"
 generate "$settingsfiles" "settings_vs140.vcxproj.filters"
 generate "$settingsvcxproj" "settings_vs141.vcxproj" "$settingscommand"
 generate "$settingsfiles" "settings_vs141.vcxproj.filters"
+generate "$settingsvcxproj" "settings_vs142.vcxproj" "$settingscommand"
+generate "$settingsfiles" "settings_vs142.vcxproj.filters"
 generate "$basesetvcxproj" "basesets_vs140.vcxproj" "$basesetlangs"
 generate "$basesetfiles" "basesets_vs140.vcxproj.filters"
 generate "$basesetvcxproj" "basesets_vs141.vcxproj" "$basesetlangs"
 generate "$basesetfiles" "basesets_vs141.vcxproj.filters"
+generate "$basesetvcxproj" "basesets_vs142.vcxproj" "$basesetlangs"
+generate "$basesetfiles" "basesets_vs142.vcxproj.filters"
