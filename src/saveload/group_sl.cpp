@@ -18,16 +18,16 @@
 #include "../safeguards.h"
 
 static const SaveLoad _group_desc[] = {
-	 SLE_CONDVAR(Group, name,               SLE_NAME,                       0,  84),
-	 SLE_CONDSTR(Group, name,               SLE_STR | SLF_ALLOW_CONTROL, 0, 84, SL_MAX_VERSION),
-	SLE_CONDNULL(2,                                                         0,  164), // num_vehicle
+	 SLE_CONDVAR(Group, name,               SLE_NAME,                       SL_MIN_VERSION,  SLV_84),
+	 SLE_CONDSTR(Group, name,               SLE_STR | SLF_ALLOW_CONTROL, 0, SLV_84, SL_MAX_VERSION),
+	SLE_CONDNULL(2,                                                         SL_MIN_VERSION,  SLV_164), // num_vehicle
 	     SLE_VAR(Group, owner,              SLE_UINT8),
 	     SLE_VAR(Group, vehicle_type,       SLE_UINT8),
 	     SLE_VAR(Group, replace_protection, SLE_BOOL),
-	 SLE_CONDVAR(Group, livery.in_use,      SLE_UINT8,                     205, SL_MAX_VERSION),
-	 SLE_CONDVAR(Group, livery.colour1,     SLE_UINT8,                     205, SL_MAX_VERSION),
-	 SLE_CONDVAR(Group, livery.colour2,     SLE_UINT8,                     205, SL_MAX_VERSION),
-	 SLE_CONDVAR(Group, parent,             SLE_UINT16,                    189, SL_MAX_VERSION),
+	 SLE_CONDVAR(Group, livery.in_use,      SLE_UINT8,                     SLV_205, SL_MAX_VERSION),
+	 SLE_CONDVAR(Group, livery.colour1,     SLE_UINT8,                     SLV_205, SL_MAX_VERSION),
+	 SLE_CONDVAR(Group, livery.colour2,     SLE_UINT8,                     SLV_205, SL_MAX_VERSION),
+	 SLE_CONDVAR(Group, parent,             SLE_UINT16,                    SLV_189, SL_MAX_VERSION),
 	     SLE_END()
 };
 
@@ -50,9 +50,9 @@ static void Load_GRPS()
 		Group *g = new (index) Group();
 		SlObject(g, _group_desc);
 
-		if (IsSavegameVersionBefore(189)) g->parent = INVALID_GROUP;
+		if (IsSavegameVersionBefore(SLV_189)) g->parent = INVALID_GROUP;
 
-		if (IsSavegameVersionBefore(205)) {
+		if (IsSavegameVersionBefore(SLV_205)) {
 	                const Company *c = Company::Get(g->owner);
 	                g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
 	                g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
