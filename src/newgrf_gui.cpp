@@ -113,15 +113,15 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 			SetDParam(0, STR_JUST_RAW_STRING);
 			SetDParamStr(1, buff);
 		} else {
-			SetDParam(0, STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE);
+			SetDParam(0, STR_NEWGRF_SETTINGS_PARAMETER_NONE);
 		}
 		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_PARAMETER);
 
 		/* Draw the palette of the NewGRF */
 		if (c->palette & GRFP_BLT_32BPP) {
-			SetDParamStr(0, (c->palette & GRFP_USE_WINDOWS) ? "Legacy (W) / 32 bpp" : "Default (D) / 32 bpp");
+			SetDParam(0, (c->palette & GRFP_USE_WINDOWS) ? STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP : STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP);
 		} else {
-			SetDParamStr(0, (c->palette & GRFP_USE_WINDOWS) ? "Legacy (W)" : "Default (D)");
+			SetDParam(0, (c->palette & GRFP_USE_WINDOWS) ? STR_NEWGRF_SETTINGS_PALETTE_LEGACY : STR_NEWGRF_SETTINGS_PALETTE_DEFAULT);
 		}
 		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_PALETTE);
 	}

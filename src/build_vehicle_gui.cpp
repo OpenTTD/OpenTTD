@@ -1070,7 +1070,7 @@ struct BuildVehicleWindow : Window {
 		 * This could also be useful for eyecandy vehicles of other types, but is likely too confusing for joe, */
 		if (this->vehicle_type == VEH_TRAIN) {
 			this->cargo_filter[filter_items] = CF_NONE;
-			this->cargo_filter_texts[filter_items] = STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE;
+			this->cargo_filter_texts[filter_items] = STR_PURCHASE_INFO_NONE;
 			filter_items++;
 		}
 

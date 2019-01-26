@@ -2894,8 +2894,13 @@ STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: 
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Version: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. compatible version: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{RAW_STRING}
-STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palette: {SILVER}{RAW_STRING}
+STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palette: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Default (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Default (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Legacy (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Legacy (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameters: {SILVER}{STRING1}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :None
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}No information available
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Matching file not found
@@ -3458,6 +3463,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacity
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Powered Wagons: {GOLD}+{POWER}{BLACK} Weight: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refittable to: {GOLD}{STRING2}
 STR_PURCHASE_INFO_ALL_TYPES                                     :All cargo types
+STR_PURCHASE_INFO_NONE                                          :None
 STR_PURCHASE_INFO_ALL_BUT                                       :All but {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tractive Effort: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Range: {GOLD}{COMMA} tiles
