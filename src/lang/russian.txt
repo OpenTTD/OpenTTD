@@ -2557,9 +2557,9 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Комб
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Маршрутный светофор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Допускает следование поездов в обе стороны.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Односторонний маршрутн. светофор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Не допускает следования поездов в обратную сторону.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Изменение типа сигнала{}Когда кнопка нажата, щёлкните для преобразования существующего сигнала в сигнал выбранного типа и варианта, или щёлкните с нажатым Ctrl для перебора существующих вариантов. Shift+щелчок - оценка стоимости преобразования.
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Плотность расстановки сигналов при протягивании.
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Уменьшить плотность сигналов при протягивании
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Увеличить плотность сигналов при протягивании
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Расстояние между сигналами при протягивании.
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Уменьшить расстояние между сигналами при протягивании
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Увеличить расстояние между сигналами при протягивании
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Выберите железнодорожный мост
@@ -2886,9 +2886,16 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Команда разработчиков OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Скорость игры
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Скорость расчёта игры: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Кол-во игровых циклов, рассчитываемых в секунду.
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Вывод на экран: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Кол-во отображаемых кадров в секунду.
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Текущая скорость игры: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Фактическая скорость игры
+STR_FRAMERATE_CURRENT                                           :{WHITE}Сейчас
+STR_FRAMERATE_AVERAGE                                           :{WHITE}В среднем
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Данные по {COMMA} измерени{P ю ям ям}
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} мс
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} мс
@@ -2900,10 +2907,17 @@ STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COM
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} с
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Задержка графа распределения:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Отрисовка изображения:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Дополнительные окна:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Вывод на экран:
+STR_FRAMERATE_SOUND                                             :{BLACK}Обработка звука:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Задержка графа распределения
-STR_FRAMETIME_CAPTION_DRAWING                                   :Отрисовка графики
+STR_FRAMETIME_CAPTION_DRAWING                                   :Отрисовка изображения
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Отрисовка изображения в доп. окнах
+STR_FRAMETIME_CAPTION_VIDEO                                     :Вывод на экран
+STR_FRAMETIME_CAPTION_SOUND                                     :Обработка звука
 ############ End of leave-in-this-order
 
 
