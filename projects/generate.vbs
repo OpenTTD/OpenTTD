@@ -10,6 +10,16 @@ Option Explicit
 Dim FSO
 Set FSO = CreateObject("Scripting.FileSystemObject")
 
+' openttd_vs142.sln             is for MSVC 2019
+' openttd_vs142.vcxproj         is for MSVC 2019
+' openttd_vs142.vcxproj.filters is for MSVC 2019
+' langs_vs142.vcxproj           is for MSVC 2019
+' strgen_vs142.vcxproj          is for MSVC 2019
+' strgen_vs142.vcxproj.filters  is for MSVC 2019
+' generate_vs142.vcxproj        is for MSVC 2019
+' version_vs142.vcxproj         is for MSVC 2019
+' basesets_vs142.vcxproj        is for MSVC 2019
+
 ' openttd_vs141.sln             is for MSVC 2017
 ' openttd_vs141.vcxproj         is for MSVC 2017
 ' openttd_vs141.vcxproj.filters is for MSVC 2017
@@ -368,6 +378,8 @@ generate openttdvcxproj, ROOT_DIR & "/projects/openttd_vs140.vcxproj", Null
 generate openttdfiles, ROOT_DIR & "/projects/openttd_vs140.vcxproj.filters", openttdfilters
 generate openttdvcxproj, ROOT_DIR & "/projects/openttd_vs141.vcxproj", Null
 generate openttdfiles, ROOT_DIR & "/projects/openttd_vs141.vcxproj.filters", openttdfilters
+generate openttdvcxproj, ROOT_DIR & "/projects/openttd_vs142.vcxproj", Null
+generate openttdfiles, ROOT_DIR & "/projects/openttd_vs142.vcxproj.filters", openttdfilters
 
 Dim langvcxproj, langfiles
 load_lang_data ROOT_DIR & "/src/lang", langvcxproj, langfiles
@@ -375,6 +387,8 @@ generate langvcxproj, ROOT_DIR & "/projects/langs_vs140.vcxproj", Null
 generate langfiles, ROOT_DIR & "/projects/langs_vs140.vcxproj.filters", Null
 generate langvcxproj, ROOT_DIR & "/projects/langs_vs141.vcxproj", Null
 generate langfiles, ROOT_DIR & "/projects/langs_vs141.vcxproj.filters", Null
+generate langvcxproj, ROOT_DIR & "/projects/langs_vs142.vcxproj", Null
+generate langfiles, ROOT_DIR & "/projects/langs_vs142.vcxproj.filters", Null
 
 Dim settingsvcxproj, settingscommand, settingsfiles
 load_settings_data ROOT_DIR & "/src/table", settingsvcxproj, settingscommand, settingsfiles
@@ -382,6 +396,8 @@ generate settingsvcxproj, ROOT_DIR & "/projects/settings_vs140.vcxproj", setting
 generate settingsfiles, ROOT_DIR & "/projects/settings_vs140.vcxproj.filters", Null
 generate settingsvcxproj, ROOT_DIR & "/projects/settings_vs141.vcxproj", settingscommand
 generate settingsfiles, ROOT_DIR & "/projects/settings_vs141.vcxproj.filters", Null
+generate settingsvcxproj, ROOT_DIR & "/projects/settings_vs142.vcxproj", settingscommand
+generate settingsfiles, ROOT_DIR & "/projects/settings_vs142.vcxproj.filters", Null
 
 Dim basesetvcxproj, basesetfiles, basesetlangs
 load_baseset_data ROOT_DIR & "/media/baseset", ROOT_DIR & "/src/lang", basesetvcxproj, basesetfiles, basesetlangs
@@ -389,3 +405,5 @@ generate basesetvcxproj, ROOT_DIR & "/projects/basesets_vs140.vcxproj", basesetl
 generate basesetfiles, ROOT_DIR & "/projects/basesets_vs140.vcxproj.filters", Null
 generate basesetvcxproj, ROOT_DIR & "/projects/basesets_vs141.vcxproj", basesetlangs
 generate basesetfiles, ROOT_DIR & "/projects/basesets_vs141.vcxproj.filters", Null
+generate settingsvcxproj, ROOT_DIR & "/projects/basesets_vs142.vcxproj", settingscommand
+generate settingsfiles, ROOT_DIR & "/projects/basesets_vs142.vcxproj.filters", Null
