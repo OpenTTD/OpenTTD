@@ -15,6 +15,284 @@
 #include "../fileio_type.h"
 #include "../strings_type.h"
 
+/** SaveLoad versions
+ * Previous savegame versions, the trunk revision where they were
+ * introduced and the released version that had that particular
+ * savegame version.
+ * Up to savegame version 18 there is a minor version as well.
+ *
+ * Older entries keep their original numbering.
+ *
+ * Newer entries should use a descriptive labels, numeric version
+ * and PR can be added to comment.
+ *
+ * Note that this list must not be reordered.
+ */
+enum SaveLoadVersion : uint16 {
+	SL_MIN_VERSION,                         ///< First savegame version
+
+	SLV_1,                                  ///<   1.0         0.1.x, 0.2.x
+	SLV_2,                                  /**<   2.0         0.3.0
+	                                         *     2.1         0.3.1, 0.3.2 */
+	SLV_3,                                  ///<   3.x         lost
+	SLV_4,                                  /**<   4.0     1
+	                                         *     4.1   122   0.3.3, 0.3.4
+	                                         *     4.2  1222   0.3.5
+	                                         *     4.3  1417
+	                                         *     4.4  1426 */
+
+	SLV_5,                                  /**<   5.0  1429
+	                                         *     5.1  1440
+	                                         *     5.2  1525   0.3.6 */
+	SLV_6,                                  /**<   6.0  1721
+	                                         *     6.1  1768 */
+	SLV_7,                                  ///<   7.0  1770
+	SLV_8,                                  ///<   8.0  1786
+	SLV_9,                                  ///<   9.0  1909
+
+	SLV_10,                                 ///<  10.0  2030
+	SLV_11,                                 /**<  11.0  2033
+	                                         *    11.1  2041 */
+	SLV_12,                                 ///<  12.1  2046
+	SLV_13,                                 ///<  13.1  2080   0.4.0, 0.4.0.1
+	SLV_14,                                 ///<  14.0  2441
+
+	SLV_15,                                 ///<  15.0  2499
+	SLV_16,                                 /**<  16.0  2817
+	                                         *    16.1  3155 */
+	SLV_17,                                 /**<  17.0  3212
+	                                         *    17.1  3218 */
+	SLV_18,                                 ///<  18    3227
+	SLV_19,                                 ///<  19    3396
+
+	SLV_20,                                 ///<  20    3403
+	SLV_21,                                 ///<  21    3472   0.4.x
+	SLV_22,                                 ///<  22    3726
+	SLV_23,                                 ///<  23    3915
+	SLV_24,                                 ///<  24    4150
+
+	SLV_25,                                 ///<  25    4259
+	SLV_26,                                 ///<  26    4466
+	SLV_27,                                 ///<  27    4757
+	SLV_28,                                 ///<  28    4987
+	SLV_29,                                 ///<  29    5070
+
+	SLV_30,                                 ///<  30    5946
+	SLV_31,                                 ///<  31    5999
+	SLV_32,                                 ///<  32    6001
+	SLV_33,                                 ///<  33    6440
+	SLV_34,                                 ///<  34    6455
+
+	SLV_35,                                 ///<  35    6602
+	SLV_36,                                 ///<  36    6624
+	SLV_37,                                 ///<  37    7182
+	SLV_38,                                 ///<  38    7195
+	SLV_39,                                 ///<  39    7269
+
+	SLV_40,                                 ///<  40    7326
+	SLV_41,                                 ///<  41    7348   0.5.x
+	SLV_42,                                 ///<  42    7573
+	SLV_43,                                 ///<  43    7642
+	SLV_44,                                 ///<  44    8144
+
+	SLV_45,                                 ///<  45    8501
+	SLV_46,                                 ///<  46    8705
+	SLV_47,                                 ///<  47    8735
+	SLV_48,                                 ///<  48    8935
+	SLV_49,                                 ///<  49    8969
+
+	SLV_50,                                 ///<  50    8973
+	SLV_51,                                 ///<  51    8978
+	SLV_52,                                 ///<  52    9066
+	SLV_53,                                 ///<  53    9316
+	SLV_54,                                 ///<  54    9613
+
+	SLV_55,                                 ///<  55    9638
+	SLV_56,                                 ///<  56    9667
+	SLV_57,                                 ///<  57    9691
+	SLV_58,                                 ///<  58    9762
+	SLV_59,                                 ///<  59    9779
+
+	SLV_60,                                 ///<  60    9874
+	SLV_61,                                 ///<  61    9892
+	SLV_62,                                 ///<  62    9905
+	SLV_63,                                 ///<  63    9956
+	SLV_64,                                 ///<  64   10006
+
+	SLV_65,                                 ///<  65   10210
+	SLV_66,                                 ///<  66   10211
+	SLV_67,                                 ///<  67   10236
+	SLV_68,                                 ///<  68   10266
+	SLV_69,                                 ///<  69   10319
+
+	SLV_70,                                 ///<  70   10541
+	SLV_71,                                 ///<  71   10567
+	SLV_72,                                 ///<  72   10601
+	SLV_73,                                 ///<  73   10903
+	SLV_74,                                 ///<  74   11030
+
+	SLV_75,                                 ///<  75   11107
+	SLV_76,                                 ///<  76   11139
+	SLV_77,                                 ///<  77   11172
+	SLV_78,                                 ///<  78   11176
+	SLV_79,                                 ///<  79   11188
+
+	SLV_80,                                 ///<  80   11228
+	SLV_81,                                 ///<  81   11244
+	SLV_82,                                 ///<  82   11410
+	SLV_83,                                 ///<  83   11589
+	SLV_84,                                 ///<  84   11822
+
+	SLV_85,                                 ///<  85   11874
+	SLV_86,                                 ///<  86   12042
+	SLV_87,                                 ///<  87   12129
+	SLV_88,                                 ///<  88   12134
+	SLV_89,                                 ///<  89   12160
+
+	SLV_90,                                 ///<  90   12293
+	SLV_91,                                 ///<  91   12347
+	SLV_92,                                 ///<  92   12381   0.6.x
+	SLV_93,                                 ///<  93   12648
+	SLV_94,                                 ///<  94   12816
+
+	SLV_95,                                 ///<  95   12924
+	SLV_96,                                 ///<  96   13226
+	SLV_97,                                 ///<  97   13256
+	SLV_98,                                 ///<  98   13375
+	SLV_99,                                 ///<  99   13838
+
+	SLV_100,                                ///< 100   13952
+	SLV_101,                                ///< 101   14233
+	SLV_102,                                ///< 102   14332
+	SLV_103,                                ///< 103   14598
+	SLV_104,                                ///< 104   14735
+
+	SLV_105,                                ///< 105   14803
+	SLV_106,                                ///< 106   14919
+	SLV_107,                                ///< 107   15027
+	SLV_108,                                ///< 108   15045
+	SLV_109,                                ///< 109   15075
+
+	SLV_110,                                ///< 110   15148
+	SLV_111,                                ///< 111   15190
+	SLV_112,                                ///< 112   15290
+	SLV_113,                                ///< 113   15340
+	SLV_114,                                ///< 114   15601
+
+	SLV_115,                                ///< 115   15695
+	SLV_116,                                ///< 116   15893   0.7.x
+	SLV_117,                                ///< 117   16037
+	SLV_118,                                ///< 118   16129
+	SLV_119,                                ///< 119   16242
+
+	SLV_120,                                ///< 120   16439
+	SLV_121,                                ///< 121   16694
+	SLV_122,                                ///< 122   16855
+	SLV_123,                                ///< 123   16909
+	SLV_124,                                ///< 124   16993
+
+	SLV_125,                                ///< 125   17113
+	SLV_126,                                ///< 126   17433
+	SLV_127,                                ///< 127   17439
+	SLV_128,                                ///< 128   18281
+	SLV_129,                                ///< 129   18292
+
+	SLV_130,                                ///< 130   18404
+	SLV_131,                                ///< 131   18481
+	SLV_132,                                ///< 132   18522
+	SLV_133,                                ///< 133   18674
+	SLV_134,                                ///< 134   18703
+
+	SLV_135,                                ///< 135   18719
+	SLV_136,                                ///< 136   18764
+	SLV_137,                                ///< 137   18912
+	SLV_138,                                ///< 138   18942   1.0.x
+	SLV_139,                                ///< 139   19346
+
+	SLV_140,                                ///< 140   19382
+	SLV_141,                                ///< 141   19799
+	SLV_142,                                ///< 142   20003
+	SLV_143,                                ///< 143   20048
+	SLV_144,                                ///< 144   20334
+
+	SLV_145,                                ///< 145   20376
+	SLV_146,                                ///< 146   20446
+	SLV_147,                                ///< 147   20621
+	SLV_148,                                ///< 148   20659
+	SLV_149,                                ///< 149   20832
+
+	SLV_150,                                ///< 150   20857
+	SLV_151,                                ///< 151   20918
+	SLV_152,                                ///< 152   21171
+	SLV_153,                                ///< 153   21263
+	SLV_154,                                ///< 154   21426
+
+	SLV_155,                                ///< 155   21453
+	SLV_156,                                ///< 156   21728
+	SLV_157,                                ///< 157   21862
+	SLV_158,                                ///< 158   21933
+	SLV_159,                                ///< 159   21962
+
+	SLV_160,                                ///< 160   21974   1.1.x
+	SLV_161,                                ///< 161   22567
+	SLV_162,                                ///< 162   22713
+	SLV_163,                                ///< 163   22767
+	SLV_164,                                ///< 164   23290
+
+	SLV_165,                                ///< 165   23304
+	SLV_166,                                ///< 166   23415
+	SLV_167,                                ///< 167   23504
+	SLV_168,                                ///< 168   23637
+	SLV_169,                                ///< 169   23816
+
+	SLV_170,                                ///< 170   23826
+	SLV_171,                                ///< 171   23835
+	SLV_172,                                ///< 172   23947
+	SLV_173,                                ///< 173   23967   1.2.0-RC1
+	SLV_174,                                ///< 174   23973   1.2.x
+
+	SLV_175,                                ///< 175   24136
+	SLV_176,                                ///< 176   24446
+	SLV_177,                                ///< 177   24619
+	SLV_178,                                ///< 178   24789
+	SLV_179,                                ///< 179   24810
+
+	SLV_180,                                ///< 180   24998   1.3.x
+	SLV_181,                                ///< 181   25012
+	SLV_182,                                ///< 182   25115 FS#5492, r25259, r25296 Goal status
+	SLV_183,                                ///< 183   25363 Cargodist
+	SLV_184,                                ///< 184   25508 Unit localisation split
+
+	SLV_185,                                ///< 185   25620 Storybooks
+	SLV_186,                                ///< 186   25833 Objects storage
+	SLV_187,                                ///< 187   25899 Linkgraph - restricted flows
+	SLV_188,                                ///< 188   26169 FS#5831 Unify RV travel time
+	SLV_189,                                ///< 189   26450 Heirarchical vehicle subgroups
+
+	SLV_190,                                ///< 190   26547 Separate order travel and wait times
+	SLV_191,                                ///< 191   26636 FS#6026 Fix disaster vehicle storage (No bump)
+	                                        ///< 191   26646 FS#6041 Linkgraph - store locations
+	SLV_192,                                ///< 192   26700 FS#6066 Fix saving of order backups
+	SLV_193,                                ///< 193   26802
+	SLV_194,                                ///< 194   26881 v1.5
+
+	SLV_195,                                ///< 195   27572 v1.6.1
+	SLV_196,                                ///< 196   27778 v1.7
+	SLV_197,                                ///< 197   27978 v1.8
+	SLV_198,                                ///< 198  PR#6763 Switch town growth rate and counter to actual game ticks
+	SLV_199,                                ///< 199  PR#6802 Extend cargotypes to 64
+
+	SLV_200,                                ///< 200  PR#6805 Extend railtypes to 64, adding uint16 to map array.
+	SLV_201,                                ///< 201  PR#6885 Extend NewGRF persistant storages.
+	SLV_202,                                ///< 202  PR#6867 Increase industry cargo slots to 16 in, 16 out
+	SLV_203,                                ///< 203  PR#7072 Add path cache for ships
+	SLV_204,                                ///< 204  PR#7065 Add extra rotation stages for ships.
+
+	SLV_205,                                ///< 205  PR#7108 Livery storage change and group liveries.
+
+	SL_MAX_VERSION,                         ///< Highest possible saveload version
+};
+
 /** Save or load result codes. */
 enum SaveOrLoadResult {
 	SL_OK     = 0, ///< completed successfully
@@ -91,9 +369,6 @@ enum SLRefType {
 	REF_LINK_GRAPH     = 10, ///< Load/save a reference to a link graph.
 	REF_LINK_GRAPH_JOB = 11, ///< Load/save a reference to a link graph job.
 };
-
-/** Highest possible savegame version. */
-#define SL_MAX_VERSION UINT16_MAX
 
 /** Flags of a chunk. */
 enum ChunkType {
@@ -211,8 +486,8 @@ struct SaveLoad {
 	SaveLoadType cmd;    ///< the action to take with the saved/loaded type, All types need different action
 	VarType conv;        ///< type of the variable to be saved, int
 	uint16 length;       ///< (conditional) length of the variable (eg. arrays) (max array size is 65536 elements)
-	uint16 version_from; ///< save/load the variable starting from this savegame version
-	uint16 version_to;   ///< save/load the variable until this savegame version
+	SaveLoadVersion version_from; ///< save/load the variable starting from this savegame version
+	SaveLoadVersion version_to;   ///< save/load the variable until this savegame version
 	/* NOTE: This element either denotes the address of the variable for a global
 	 * variable, or the offset within a struct which is then bound to a variable
 	 * during runtime. Decision on which one to use is controlled by the function
@@ -304,7 +579,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param variable Name of the variable in the class or struct referenced by \a base.
  * @param type     Storage of the data in memory and in the savegame.
  */
-#define SLE_VAR(base, variable, type) SLE_CONDVAR(base, variable, type, 0, SL_MAX_VERSION)
+#define SLE_VAR(base, variable, type) SLE_CONDVAR(base, variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Storage of a reference in every version of a savegame.
@@ -312,7 +587,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param variable Name of the variable in the class or struct referenced by \a base.
  * @param type     Type of the reference, a value from #SLRefType.
  */
-#define SLE_REF(base, variable, type) SLE_CONDREF(base, variable, type, 0, SL_MAX_VERSION)
+#define SLE_REF(base, variable, type) SLE_CONDREF(base, variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Storage of an array in every version of a savegame.
@@ -321,7 +596,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param type     Storage of the data in memory and in the savegame.
  * @param length   Number of elements in the array.
  */
-#define SLE_ARR(base, variable, type, length) SLE_CONDARR(base, variable, type, length, 0, SL_MAX_VERSION)
+#define SLE_ARR(base, variable, type, length) SLE_CONDARR(base, variable, type, length, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Storage of a string in every savegame version.
@@ -330,7 +605,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param type     Storage of the data in memory and in the savegame.
  * @param length   Number of elements in the string (only used for fixed size buffers).
  */
-#define SLE_STR(base, variable, type, length) SLE_CONDSTR(base, variable, type, length, 0, SL_MAX_VERSION)
+#define SLE_STR(base, variable, type, length) SLE_CONDSTR(base, variable, type, length, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Storage of a list in every savegame version.
@@ -338,13 +613,13 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param variable Name of the variable in the class or struct referenced by \a base.
  * @param type     Storage of the data in memory and in the savegame.
  */
-#define SLE_LST(base, variable, type) SLE_CONDLST(base, variable, type, 0, SL_MAX_VERSION)
+#define SLE_LST(base, variable, type) SLE_CONDLST(base, variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Empty space in every savegame version.
  * @param length Length of the empty space.
  */
-#define SLE_NULL(length) SLE_CONDNULL(length, 0, SL_MAX_VERSION)
+#define SLE_NULL(length) SLE_CONDNULL(length, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Empty space in some savegame versions.
@@ -355,13 +630,13 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLE_CONDNULL(length, from, to) SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL | SLF_NOT_IN_CONFIG, length, from, to)
 
 /** Translate values ingame to different values in the savegame and vv. */
-#define SLE_WRITEBYTE(base, variable) SLE_GENERAL(SL_WRITEBYTE, base, variable, 0, 0, 0, 0)
+#define SLE_WRITEBYTE(base, variable) SLE_GENERAL(SL_WRITEBYTE, base, variable, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION)
 
-#define SLE_VEH_INCLUDE() {false, SL_VEH_INCLUDE, 0, 0, 0, SL_MAX_VERSION, NULL, 0}
-#define SLE_ST_INCLUDE() {false, SL_ST_INCLUDE, 0, 0, 0, SL_MAX_VERSION, NULL, 0}
+#define SLE_VEH_INCLUDE() {false, SL_VEH_INCLUDE, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, NULL, 0}
+#define SLE_ST_INCLUDE() {false, SL_ST_INCLUDE, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, NULL, 0}
 
 /** End marker of a struct/class save or load. */
-#define SLE_END() {false, SL_END, 0, 0, 0, 0, NULL, 0}
+#define SLE_END() {false, SL_END, 0, 0, SL_MIN_VERSION, SL_MIN_VERSION, NULL, 0}
 
 /**
  * Storage of global simple variables, references (pointers), and arrays.
@@ -426,35 +701,35 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
  */
-#define SLEG_VAR(variable, type) SLEG_CONDVAR(variable, type, 0, SL_MAX_VERSION)
+#define SLEG_VAR(variable, type) SLEG_CONDVAR(variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Storage of a global reference in every savegame version.
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
  */
-#define SLEG_REF(variable, type) SLEG_CONDREF(variable, type, 0, SL_MAX_VERSION)
+#define SLEG_REF(variable, type) SLEG_CONDREF(variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Storage of a global array in every savegame version.
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
  */
-#define SLEG_ARR(variable, type) SLEG_CONDARR(variable, type, lengthof(variable), 0, SL_MAX_VERSION)
+#define SLEG_ARR(variable, type) SLEG_CONDARR(variable, type, lengthof(variable), SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Storage of a global string in every savegame version.
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
  */
-#define SLEG_STR(variable, type) SLEG_CONDSTR(variable, type, sizeof(variable), 0, SL_MAX_VERSION)
+#define SLEG_STR(variable, type) SLEG_CONDSTR(variable, type, sizeof(variable), SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Storage of a global list in every savegame version.
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
  */
-#define SLEG_LST(variable, type) SLEG_CONDLST(variable, type, 0, SL_MAX_VERSION)
+#define SLEG_LST(variable, type) SLEG_CONDLST(variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Empty global space in some savegame versions.
@@ -465,7 +740,7 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLEG_CONDNULL(length, from, to) {true, SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL | SLF_NOT_IN_CONFIG, length, from, to, (void*)NULL}
 
 /** End marker of global variables save or load. */
-#define SLEG_END() {true, SL_END, 0, 0, 0, 0, NULL, 0}
+#define SLEG_END() {true, SL_END, 0, 0, SL_MIN_VERSION, SL_MIN_VERSION, NULL, 0}
 
 /**
  * Checks whether the savegame is below \a major.\a minor.
@@ -473,7 +748,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param minor Minor number of the version to check against. If \a minor is 0 or not specified, only the major number is checked.
  * @return Savegame version is earlier than the specified version.
  */
-static inline bool IsSavegameVersionBefore(uint16 major, byte minor = 0)
+static inline bool IsSavegameVersionBefore(SaveLoadVersion major, byte minor = 0)
 {
 	extern uint16 _sl_version;
 	extern byte   _sl_minor_version;
@@ -487,7 +762,7 @@ static inline bool IsSavegameVersionBefore(uint16 major, byte minor = 0)
  * @param version_to   Exclusive savegame version upper bound. SL_MAX_VERSION if no upper bound.
  * @return Active savegame version falls within the given range.
  */
-static inline bool SlIsObjectCurrentlyValid(uint16 version_from, uint16 version_to)
+static inline bool SlIsObjectCurrentlyValid(SaveLoadVersion version_from, SaveLoadVersion version_to)
 {
 	extern const uint16 SAVEGAME_VERSION;
 	if (SAVEGAME_VERSION < version_from || SAVEGAME_VERSION >= version_to) return false;

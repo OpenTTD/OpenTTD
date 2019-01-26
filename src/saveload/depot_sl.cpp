@@ -20,13 +20,13 @@
 static TownID _town_index;
 
 static const SaveLoad _depot_desc[] = {
-	 SLE_CONDVAR(Depot, xy,         SLE_FILE_U16 | SLE_VAR_U32, 0, 6),
-	 SLE_CONDVAR(Depot, xy,         SLE_UINT32,                 6, SL_MAX_VERSION),
-	SLEG_CONDVAR(_town_index,       SLE_UINT16,                 0, 141),
-	 SLE_CONDREF(Depot, town,       REF_TOWN,                 141, SL_MAX_VERSION),
-	 SLE_CONDVAR(Depot, town_cn,    SLE_UINT16,               141, SL_MAX_VERSION),
-	 SLE_CONDSTR(Depot, name,       SLE_STR, 0,               141, SL_MAX_VERSION),
-	 SLE_CONDVAR(Depot, build_date, SLE_INT32,                142, SL_MAX_VERSION),
+	 SLE_CONDVAR(Depot, xy,         SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_6),
+	 SLE_CONDVAR(Depot, xy,         SLE_UINT32,                 SLV_6, SL_MAX_VERSION),
+	SLEG_CONDVAR(_town_index,       SLE_UINT16,                 SL_MIN_VERSION, SLV_141),
+	 SLE_CONDREF(Depot, town,       REF_TOWN,                 SLV_141, SL_MAX_VERSION),
+	 SLE_CONDVAR(Depot, town_cn,    SLE_UINT16,               SLV_141, SL_MAX_VERSION),
+	 SLE_CONDSTR(Depot, name,       SLE_STR, 0,               SLV_141, SL_MAX_VERSION),
+	 SLE_CONDVAR(Depot, build_date, SLE_INT32,                SLV_142, SL_MAX_VERSION),
 	 SLE_END()
 };
 
@@ -49,7 +49,7 @@ static void Load_DEPT()
 		SlObject(depot, _depot_desc);
 
 		/* Set the town 'pointer' so we can restore it later. */
-		if (IsSavegameVersionBefore(141)) depot->town = (Town *)(size_t)_town_index;
+		if (IsSavegameVersionBefore(SLV_141)) depot->town = (Town *)(size_t)_town_index;
 	}
 }
 
@@ -59,7 +59,7 @@ static void Ptrs_DEPT()
 
 	FOR_ALL_DEPOTS(depot) {
 		SlObject(depot, _depot_desc);
-		if (IsSavegameVersionBefore(141)) depot->town = Town::Get((size_t)depot->town);
+		if (IsSavegameVersionBefore(SLV_141)) depot->town = Town::Get((size_t)depot->town);
 	}
 }
 
