@@ -581,7 +581,10 @@ static bool QZ_PollEvent()
 
 			/* Use precise scrolling-specific deltas if they're supported. */
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7)
-			if ([event respondsToSelector:@selector(scrollingDeltaX)]) {
+			if ([event respondsToSelector:@selector(hasPreciseScrollingDeltas)]) {
+				/* No precise deltas indicates a scroll wheel is being used, so we don't want 2D scrolling. */
+				if (![ event hasPreciseScrollingDeltas ]) break;
+
 				deltaX = [ event scrollingDeltaX ] * 0.5f;
 				deltaY = [ event scrollingDeltaY ] * 0.5f;
 			} else
