@@ -312,8 +312,6 @@ struct AISettingsWindow : public Window {
 		this->vscroll = this->GetScrollbar(WID_AIS_SCROLLBAR);
 		this->FinishInitNested(slot);  // Initializes 'this->line_height' as side effect.
 
-		this->SetWidgetDisabledState(WID_AIS_RESET, _game_mode != GM_MENU && Company::IsValidID(this->slot));
-
 		this->RebuildVisibleSettings();
 	}
 
@@ -522,10 +520,8 @@ struct AISettingsWindow : public Window {
 				break;
 
 			case WID_AIS_RESET:
-				if (_game_mode == GM_MENU || !Company::IsValidID(this->slot)) {
-					this->ai_config->ResetSettings();
-					this->SetDirty();
-				}
+				this->ai_config->ResetEditableSettings(_game_mode == GM_MENU || ((this->slot != OWNER_DEITY) && !Company::IsValidID(this->slot)));
+				this->SetDirty();
 				break;
 		}
 	}
