@@ -1928,7 +1928,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Змін
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Дозволити зміну рівня виробництва: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Нова кольорова схема
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Показати загальне фарбування
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Показати фарбування поїздів

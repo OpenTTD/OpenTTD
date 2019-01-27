@@ -1817,7 +1817,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}현재�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}1차 산업시설 생산량 조절 허용: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}새 색상
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}기본 색상 선택
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}열차 색상 선택

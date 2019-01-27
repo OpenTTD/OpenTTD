@@ -2126,7 +2126,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Зьмя
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Дазволіць зьмяненьне прадукцыйнасьці: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Новая каляровая схэма
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Паказаць асноўныя каляровыя схэмы
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Паказаць каляровыя схэмы цягнікоў

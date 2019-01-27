@@ -1621,7 +1621,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Broyt n�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Gilda broytingar av framleiðslu virðum: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nýggja lit samanseting
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Vís vanligu lit samansetingarnar
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Vís tok lit samansetingarnar

@@ -1867,7 +1867,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Aktuáli
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}A nyersanyagüzemek termelése változtatható: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Új színséma
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Általános színsémák mutatása
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Vonat színsémák mutatása

@@ -1803,7 +1803,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Newid y 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Galluogi newid graddfeydd cynhyrchu: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Cynllun Lliw Newydd
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Dangos cynllun lliw cyffredinol
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Dangos cynllun lliw trenau

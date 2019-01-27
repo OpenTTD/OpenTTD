@@ -1412,7 +1412,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}موجو
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}پیداوار میں تبدیلی کو فعال کریں: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}نئے رنگوں کا انتخاب
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}رنگوں کا عام انتخاب دکھائیں
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}ریل گاڑیوں کے رنگوں کا انتخاب دکھائیں

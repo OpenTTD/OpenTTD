@@ -1749,7 +1749,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}เป�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}เปิดใช้งานการแก้ไขปริมาณผลผลิต: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}สร้างแบบสีใหม่
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}แสดงแบบสีทั่วไป
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}แสดงแบบสีรถไฟ
