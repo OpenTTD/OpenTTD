@@ -137,6 +137,11 @@ public:
 	void ResetSettings();
 
 	/**
+	 * Reset only editable and visible settings to their default value.
+	 */
+	void ResetSettingsGUI();
+
+	/**
 	 * Randomize all settings the Script requested to be randomized.
 	 */
 	void AddRandomDeviation();

@@ -129,6 +129,24 @@ void ScriptConfig::ResetSettings()
 	this->settings.clear();
 }
 
+void ScriptConfig::ResetSettingsGUI()
+{
+	for (SettingValueList::iterator it = this->settings.begin(); it != this->settings.end();) {
+		const ScriptConfigItem *config_item = this->info->GetConfigItem((*it).first);
+		assert(config_item != NULL);
+
+		bool editable = _game_mode == GM_MENU || ((*config_item).flags & SCRIPTCONFIG_INGAME) != 0;
+		bool visible = _settings_client.gui.ai_developer_tools || ((*config_item).flags & SCRIPTCONFIG_DEVELOPER) == 0;
+
+		if (editable && visible) {
+			free((*it).first);
+			it = this->settings.erase(it);
+		} else {
+			it++;
+		}
+	}
+}
+
 void ScriptConfig::AddRandomDeviation()
 {
 	for (ScriptConfigItemList::const_iterator it = this->GetConfigList()->begin(); it != this->GetConfigList()->end(); it++) {
