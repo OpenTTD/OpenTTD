@@ -1775,7 +1775,7 @@ STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Display 
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Exit 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}The currently selected base graphics set is missing {NUM} sprite{P "" s}. Please check for updates for the baseset.
-STR_INTRO_TRANSLATION                                           :{BLACK}This translation misses {NUM} string{P "" s}. Please help make OpenTTD better by signing up as translator. See readme.txt for details.
+STR_INTRO_TRANSLATION                                           :{BLACK}This translation misses {NUM} string{P "" s}. Please help make OpenTTD better by signing up as a translator. See readme.txt for details.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Exit
