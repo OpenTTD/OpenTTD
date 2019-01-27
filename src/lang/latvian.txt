@@ -1747,6 +1747,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mainīt 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ieslēgt ražojumu vērtības maiņu: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Jauna identitātes krāsu shēma
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Rādīt vispārējo identitates krāsu shēmas
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Rādīt vilcienu identitātes krāsu shēmas

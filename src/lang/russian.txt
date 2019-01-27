@@ -602,7 +602,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Снимок э
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Снимок экрана в макс. приближении
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Снимок экрана в обычном масштабе
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Снимок всей карты
-STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Показать кол-во кадров/с
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Информация о скорости игры
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Об игре
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Выравнивание спрайтов
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Переключить ограничивающие рамки
@@ -1972,6 +1972,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Изме
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Разрешить изменение производительности: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Новая цветовая схема
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Настройка основной цветовой схемы
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Настройка цветовой схемы поездов
@@ -2905,6 +2906,7 @@ STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} 
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} мс
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} с
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Расчёт игрового цикла:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Задержка графа распределения:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Отрисовка изображения:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Дополнительные окна:

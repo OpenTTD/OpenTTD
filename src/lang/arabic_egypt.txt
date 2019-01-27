@@ -1471,6 +1471,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}غير �
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}تفعيل تغيير قيمة الانتاج: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}الوان جديدة
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}اظهر اللون العام
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}اظهر لون القطائرات

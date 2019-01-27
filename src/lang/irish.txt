@@ -1800,6 +1800,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Athraigh
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cumasaigh luachanna táirgeachta a athrú: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Scéim Dathanna Nua
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Taispeáin scéimeanna dathanna ginearálta
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Taispeáin scéimeanna dathanna na dtraenacha

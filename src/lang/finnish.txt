@@ -1816,6 +1816,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Muuta ny
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Salli tuotantomäärien muuttaminen: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Uusi väriteema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Näytä yleiset väriteemat
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Näytä junan väriteemat

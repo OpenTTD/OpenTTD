@@ -1810,6 +1810,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}改变�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}开启可调整产量模式：{ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}新色彩方案
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}显示总体配色方案
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}显示列车配色方案

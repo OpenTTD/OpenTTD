@@ -1074,7 +1074,7 @@ STR_RIVERS_FEW                                                  :Pocos
 STR_RIVERS_MODERATE                                             :Medio
 STR_RIVERS_LOT                                                  :Muchos
 
-STR_DISASTER_NONE                                               :Ninguna
+STR_DISASTER_NONE                                               :Ninguno
 STR_DISASTER_REDUCED                                            :Reducidas
 STR_DISASTER_NORMAL                                             :Normales
 
@@ -1598,7 +1598,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocidad crecimiento población: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocidad de crecimiento de los municipios
-STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ninguna
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ninguno
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lenta
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rápida
@@ -1813,6 +1813,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambiar 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir modificación de los valores de producción: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Nuevo Esquema de Color
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Mostrar esquema de colores general
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Ver esquema de color de los trenes
@@ -2723,6 +2724,7 @@ STR_FRAMERATE_SOUND                                             :{BLACK}Mezcla d
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Ticks de trenes
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ticks de barcos
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ticks de aeronaves
 STR_FRAMETIME_CAPTION_DRAWING                                   :Renderizado gráfico
 STR_FRAMETIME_CAPTION_VIDEO                                     :Salida de vídeo
 STR_FRAMETIME_CAPTION_SOUND                                     :Mezcla de sonido
@@ -2870,6 +2872,7 @@ STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Mín. ve
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parámetros: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Ninguno
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}No hay información disponible
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Archivo no encontrado

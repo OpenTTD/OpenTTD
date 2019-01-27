@@ -1804,6 +1804,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Yılı d
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Üretim değerlerini değiştir: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Yeni Renk
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Genel renk şemalarını göster
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Tren renk düzenlerini göster

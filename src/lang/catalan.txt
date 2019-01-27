@@ -1815,6 +1815,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Canvia l
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activa la modificació dels valors de producció: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Nou esquema de colors
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Mostra esquemes de colors generals
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostra els esquemes de colors dels trens

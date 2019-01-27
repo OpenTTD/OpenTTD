@@ -1801,6 +1801,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Verander
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiveer modifisering van produksie waardes: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Nuwe Kleur Skema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Toon algemene kleurskemas
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Wys trein kleur skemas

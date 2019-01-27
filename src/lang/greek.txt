@@ -1920,6 +1920,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Αλλα
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ενεργοποίηση δυνατότητας αλλαγής τιμών παραγωγής: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Νέος Χρωματισμός
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Εμφάνιση γενικών χρωματικών μοτίβων
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Εμφάνιση χρωματικών μοτίβων τρένων

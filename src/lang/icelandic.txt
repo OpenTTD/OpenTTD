@@ -1663,6 +1663,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Breyta u
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Leyfa breytingar á verðmæti framleiðslu: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Nýtt Litaskema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Grunnlitur fyrirtækis
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Litaskema lesta

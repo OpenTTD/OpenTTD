@@ -1815,6 +1815,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Wijzig h
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Sta aanpassen productiewaarden toe: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Nieuw kleurenschema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Toon algemene kleurenschema's
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Toon kleurenschema's voor treinen

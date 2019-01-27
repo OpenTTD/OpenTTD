@@ -2001,6 +2001,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mutare a
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Sinere mutare productiones industriarum: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Schema Coloris Novum
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Monstrare schemata coloris generalia
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Monstrare schemata coloris traminum

@@ -1803,6 +1803,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ändra n
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktivera modifiering av produktionsvärden: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Nytt färgval
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Visa generellt färgschema
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Visa färgscheman för tåg

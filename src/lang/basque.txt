@@ -1711,6 +1711,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Aurtengo
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ekoizpen balioak aldatzea baimendu: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Kolore eskema berria
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Erakutsi kolore eskema orokorrak
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Erakutsi trenen kolore eskemak
