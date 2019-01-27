@@ -660,6 +660,10 @@ public:
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
+			case WID_SCL_CAPTION:
+				SetDParam(0, (CompanyID)this->window_number);
+				break;
+
 			case WID_SCL_PRI_COL_DROPDOWN:
 			case WID_SCL_SEC_COL_DROPDOWN: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
