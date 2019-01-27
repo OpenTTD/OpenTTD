@@ -2195,7 +2195,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Zmiana o
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Pozwól modyfikować wielkość produkcji przedsiębiorstw: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nowy schemat kolorów
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Pokaż ogólne schematy koloru
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Pokaż schematy koloru pociągów

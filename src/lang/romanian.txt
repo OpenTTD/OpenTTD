@@ -1765,7 +1765,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Schimbă
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activează accesul la valorile de producţie: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Schemă de culori nouă
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Afişează schemele generale de culori
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Arată schemele de culori pentru trenuri

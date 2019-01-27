@@ -1813,7 +1813,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambiar 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir modificación de los valores de producción: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nuevo Esquema de Color
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Mostrar esquema de colores general
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Ver esquema de color de los trenes

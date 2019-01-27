@@ -1821,7 +1821,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Modifier
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permettre la modification des valeurs de production{NBSP}: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nouvelle couleur
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Montrer les livrées générales
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Montrer les livrées de trains

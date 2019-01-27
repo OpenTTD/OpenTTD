@@ -1809,7 +1809,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Skift å
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiver modifikation af produktion: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nyt farvetema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Vis generelle farveskemaer
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Vis farveskemaer for tog
