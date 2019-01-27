@@ -122,14 +122,13 @@ private:
 
 	Dimension column_size[VGC_END]; ///< Size of the columns in the group list.
 
-	void AddParents(GUIGroupList *source, GroupID parent, int indent)
+	void AddChildren(GUIGroupList *source, GroupID parent, int indent)
 	{
 		for (const Group **g = source->Begin(); g != source->End(); g++) {
-			if ((*g)->parent == parent) {
-				*this->groups.Append() = *g;
-				*this->indents.Append() = indent;
-				AddParents(source, (*g)->index, indent + 1);
-			}
+			if ((*g)->parent != parent) continue;
+			*this->groups.Append() = *g;
+			*this->indents.Append() = indent;
+			AddChildren(source, (*g)->index, indent + 1);
 		}
 	}
 
@@ -180,7 +179,7 @@ private:
 		list.ForceResort();
 		list.Sort(&GroupNameSorter);
 
-		AddParents(&list, INVALID_GROUP, 0);
+		AddChildren(&list, INVALID_GROUP, 0);
 
 		this->groups.Compact();
 		this->groups.RebuildDone();
