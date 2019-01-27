@@ -21,31 +21,34 @@ Sub FindReplaceInFile(filename, to_find, replacement)
 	file.Close
 End Sub
 
-Sub UpdateFile(modified, isodate, version, cur_date, filename)
+Sub UpdateFile(modified, isodate, version, cur_date, githash, filename)
 	FSO.CopyFile filename & ".in", filename
 	FindReplaceInFile filename, "!!MODIFIED!!", modified
 	FindReplaceInFile filename, "!!ISODATE!!", isodate
 	FindReplaceInFile filename, "!!VERSION!!", version
 	FindReplaceInFile filename, "!!DATE!!", cur_date
+	FindReplaceInFile filename, "!!GITHASH!!", githash
 End Sub
 
 Sub UpdateFiles(version)
-	Dim modified, isodate, cur_date
+	Dim modified, isodate, cur_date, githash
 	cur_date = DatePart("D", Date) & "." & DatePart("M", Date) & "." & DatePart("YYYY", Date)
 
 	If InStr(version, Chr(9)) Then
 		isodate  = Mid(version, InStr(version, Chr(9)) + 1)
 		modified = Mid(isodate, InStr(isodate, Chr(9)) + 1)
+		githash  = Mid(modified, InStr(modified, Chr(9)) + 1)
 		isodate  = Mid(isodate, 1, InStr(isodate, Chr(9)) - 1)
 		modified = Mid(modified, 1, InStr(modified, Chr(9)) - 1)
 		version  = Mid(version, 1, InStr(version, Chr(9)) - 1)
 	Else
 		isodate = 0
 		modified = 1
+		githash = ""
 	End If
 
-	UpdateFile modified, isodate, version, cur_date, "../src/rev.cpp"
-	UpdateFile modified, isodate, version, cur_date, "../src/os/windows/ottdres.rc"
+	UpdateFile modified, isodate, version, cur_date, githash, "../src/rev.cpp"
+	UpdateFile modified, isodate, version, cur_date, githash, "../src/os/windows/ottdres.rc"
 End Sub
 
 Function DetermineVersion()
@@ -71,7 +74,7 @@ Function DetermineVersion()
 
 		If oExec.ExitCode = 0 Then
 			hash = oExec.StdOut.ReadLine()
-			shorthash = Mid(hash, 1, 8)
+			shorthash = Mid(hash, 1, 10)
 			' Make sure index is in sync with disk
 			Set oExec = WshShell.Exec("git update-index --refresh")
 			If Err.Number = 0 Then
@@ -133,17 +136,19 @@ Function DetermineVersion()
 	ElseIf hash = "" Then
 		DetermineVersion = "norev000"
 	Else
-		Dim version
-		If tag <> "" Then
-			version = tag
-		ElseIf branch = "master" Then
-			version = isodate & "-g" & shorthash
+		Dim version, hashprefix
+		If modified = 0 Then
+			hashprefix = "-g"
+		ElseIf modified = 2 Then
+			hashprefix = "-m"
 		Else
-			version = isodate & "-" & branch & "-g" & shorthash
+			hashprefix = "-u"
 		End If
 
-		If modified = 2 Then
-			version = version & "M"
+		If tag <> "" Then
+			version = tag
+		Else
+			version = isodate & "-" & branch & hashprefix & shorthash
 		End If
 
 		DetermineVersion = version & Chr(9) & isodate & Chr(9) & modified & Chr(9) & hash
