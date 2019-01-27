@@ -1820,7 +1820,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Change c
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Enable modifying production values: {ORANGE}{STRING1}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}New Colour Scheme
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Colour Scheme
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Show general colour schemes
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Show train colour schemes
