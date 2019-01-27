@@ -16,6 +16,8 @@
 #include <vector>
 
 bool _voronoi_initialized;
+bool _hold_next_add;
+TownID _town_on_hold;
 
 typedef std::vector<const Town*> TownList;
 
@@ -52,6 +54,8 @@ static void SetClosestTown(TileIndex tile, TownID index)
 
 void UninitializeVoronoi() {
 	_voronoi_initialized = false;
+	_hold_next_add = false;
+	_town_on_hold = INVALID_TOWN;
 }
 
 /**
@@ -83,6 +87,7 @@ static uint CalcHalfDistance(const Town* town_a, const Town* town_b)
  * @param town_a pointer to the competing town
  * @param tile tile index of the tile in question
  * @return true if town A is closer
+ * @note if the previously closest town is town A, the return value is false
  */
 static bool IsCloserTown(const Town* town_a, TileIndex tile)
 {
@@ -298,8 +303,54 @@ void AddTownToVoronoi(const Town* t)
 {
 	if (!_voronoi_initialized) return;
 
+	if (_hold_next_add) {
+		_town_on_hold = t->index;
+		return;
+	}
+
 	FillTownTilesInDirection(t, true);
 	FillTownTilesInDirection(t, false);
+}
+
+/**
+ * Hold has a purpose of delaying a town add, as the town might be deleted in the next few steps.
+ * If the town was placed in a wrong palce and gets deleted, it is only removed from the hold.
+ * If the town placement is finalized, the town can be added to the Voronoi diaram with the
+ * AddTownToVoronoiFromHold() function.
+ */
+void HoldNextAddTownToVoronoi()
+{
+	_hold_next_add = true;
+}
+
+void AddTownToVoronoiFromHold()
+{
+	if (_town_on_hold == INVALID_TOWN) return;
+
+	_hold_next_add = false;
+	AddTownToVoronoi(Town::Get(_town_on_hold));
+}
+
+void ClearTownVoronoiHold()
+{
+	_hold_next_add = false;
+	_town_on_hold = INVALID_TOWN;
+}
+
+/**
+ * Removes a town form the Vonoroi diagram.
+ *
+ * @param pointer to the town
+ * @note the town is removed by rebuilding the whole diagram
+ */
+void RemoveTownFromVoronoi(TownID index)
+{
+	if (_town_on_hold == index) {
+		ClearTownVoronoiHold();
+		return;
+	}
+
+	BuildVoronoiDiagram();
 }
 
 /**

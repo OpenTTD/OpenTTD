@@ -223,6 +223,10 @@ extern TownID _new_town_id;
 void UninitializeVoronoi();
 void BuildVoronoiDiagram();
 void AddTownToVoronoi(const Town* t);
+void HoldNextAddTownToVoronoi();
+void AddTownToVoronoiFromHold();
+void ClearTownVoronoiHold();
+void RemoveTownFromVoronoi(TownID index);
 TownID GetClosestTownFromTile(TileIndex tile);
 
 /**

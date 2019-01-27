@@ -19,6 +19,7 @@
 #include "economy_func.h"
 #include "date_func.h"
 #include "texteff.hpp"
+#include "town.h"
 #include "gfx_func.h"
 #include "gamelog.h"
 #include "animated_tile_func.h"
@@ -95,6 +96,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	InitializeIndustries();
 	InitializeObjects();
 	InitializeBuildingCounts();
+	UninitializeVoronoi();
 
 	InitializeNPF();
 

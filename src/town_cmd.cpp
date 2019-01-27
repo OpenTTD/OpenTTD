@@ -341,30 +341,7 @@ static void AnimateTile_Town(TileIndex tile)
  */
 static bool IsCloseToTown(TileIndex tile, uint dist)
 {
-	/* On a large map with many towns, it may be faster to check the surroundings of the tile.
-	 * An iteration in TILE_AREA_LOOP() is generally 2 times faster than one in FOR_ALL_TOWNS(). */
-	if (Town::GetNumItems() > (size_t) (dist * dist * 2)) {
-		const int tx = TileX(tile);
-		const int ty = TileY(tile);
-		TileArea tile_area = TileArea(
-			TileXY(max(0,         tx - (int) dist), max(0,         ty - (int) dist)),
-			TileXY(min(MapMaxX(), tx + (int) dist), min(MapMaxY(), ty + (int) dist))
-		);
-		TILE_AREA_LOOP(atile, tile_area) {
-			if (GetTileType(atile) == MP_HOUSE) {
-				Town *t = Town::GetByTile(atile);
-				if (DistanceManhattan(tile, t->xy) < dist) return true;
-			}
-		}
-		return false;
-	}
-
-	const Town *t;
-
-	FOR_ALL_TOWNS(t) {
-		if (DistanceManhattan(tile, t->xy) < dist) return true;
-	}
-	return false;
+	return CalcClosestTownFromTile(tile, dist) == NULL ? false : true;
 }
 
 /**
@@ -1659,6 +1636,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	UpdateTownRadius(t);
 	UpdateTownGrowthRate(t);
 	UpdateTownMaxPass(t);
+	AddTownToVoronoi(t);
 	UpdateAirportsNoise();
 }
 
@@ -1956,12 +1934,18 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 
 		/* Allocate a town struct */
 		Town *t = new Town(tile);
+		HoldNextAddTownToVoronoi();
 
 		DoCreateTown(t, tile, townnameparts, size, city, layout, false);
 
 		/* if the population is still 0 at the point, then the
 		 * placement is so bad it couldn't grow at all */
-		if (t->cache.population > 0) return t;
+		if (t->cache.population > 0) {
+			AddTownToVoronoiFromHold();
+			return t;
+		}
+
+		ClearTownVoronoiHold();
 
 		Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
 		CommandCost rc = DoCommand(t->xy, t->index, 0, DC_EXEC, CMD_DELETE_TOWN);
@@ -2777,8 +2761,12 @@ CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		}
 	}
 
-	/* The town destructor will delete the other things related to the town. */
-	if (flags & DC_EXEC) delete t;
+	if (flags & DC_EXEC) {
+		TownID index = t->index;
+		/* The town destructor will delete the other things related to the town. */
+		delete t;
+		RemoveTownFromVoronoi(index);
+	}
 
 	return CommandCost();
 }
@@ -3303,19 +3291,11 @@ CommandCost CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags
  */
 Town *CalcClosestTownFromTile(TileIndex tile, uint threshold)
 {
-	Town *t;
-	uint best = threshold;
-	Town *best_town = NULL;
+	if (Town::GetNumItems() == 0) return NULL;
 
-	FOR_ALL_TOWNS(t) {
-		uint dist = DistanceManhattan(tile, t->xy);
-		if (dist < best) {
-			best = dist;
-			best_town = t;
-		}
-	}
+	Town* t = Town::GetIfValid(GetClosestTownFromTile(tile));
 
-	return best_town;
+	return DistanceManhattan(t->xy, tile) >= threshold ? NULL : t;
 }
 
 /**
