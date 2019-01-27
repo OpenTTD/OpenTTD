@@ -648,9 +648,11 @@ public:
 
 	virtual void OnPaint()
 	{
+		bool local = (CompanyID)this->window_number == _local_company;
+
 		/* Disable dropdown controls if no scheme is selected */
-		this->SetWidgetDisabledState(WID_SCL_PRI_COL_DROPDOWN, this->sel == 0);
-		this->SetWidgetDisabledState(WID_SCL_SEC_COL_DROPDOWN, this->sel == 0);
+		this->SetWidgetDisabledState(WID_SCL_PRI_COL_DROPDOWN, !local || this->sel == 0);
+		this->SetWidgetDisabledState(WID_SCL_SEC_COL_DROPDOWN, !local || this->sel == 0);
 
 		this->DrawWidgets();
 	}
@@ -789,6 +791,9 @@ public:
 
 	virtual void OnDropdownSelect(int widget, int index)
 	{
+		bool local = (CompanyID)this->window_number == _local_company;
+		if (!local) return;
+
 		for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 			/* Changed colour for the selected scheme, or all visible schemes if CTRL is pressed. */
 			if (HasBit(this->sel, scheme) || (_ctrl_pressed && _livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme))) {
