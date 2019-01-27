@@ -93,6 +93,7 @@ tgp.cpp
 tile_map.cpp
 tilearea.cpp
 townname.cpp
+town_voronoi.cpp
 #if WIN32
 #else
 	#if OS2

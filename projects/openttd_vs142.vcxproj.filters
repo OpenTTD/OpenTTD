@@ -378,6 +378,9 @@
     <ClCompile Include="..\src\townname.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\town_voronoi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\vehicle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

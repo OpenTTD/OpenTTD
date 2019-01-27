@@ -16,6 +16,7 @@
 #include "tile_type.h"
 #include "map_type.h"
 #include "direction_func.h"
+#include "town_type.h"
 
 extern uint _map_tile_mask;
 
@@ -42,6 +43,14 @@ extern Tile *_m;
  * of the map.
  */
 extern TileExtended *_me;
+
+/**
+ * Pointer to the closest town cache tile-array.
+ *
+ * This variable holds the town ID of the closest tile from the tile
+ * for every tile of the map.
+ */
+extern TownID *_closest_town;
 
 void AllocateMap(uint size_x, uint size_y);
 

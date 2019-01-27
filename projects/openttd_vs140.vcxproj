@@ -430,6 +430,7 @@
     <ClCompile Include="..\src\tile_map.cpp" />
     <ClCompile Include="..\src\tilearea.cpp" />
     <ClCompile Include="..\src\townname.cpp" />
+    <ClCompile Include="..\src\town_voronoi.cpp" />
     <ClCompile Include="..\src\vehicle.cpp" />
     <ClCompile Include="..\src\vehiclelist.cpp" />
     <ClCompile Include="..\src\viewport.cpp" />

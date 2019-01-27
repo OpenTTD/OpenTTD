@@ -220,6 +220,11 @@ DECLARE_ENUM_AS_BIT_SET(TownActions)
 extern const byte _town_action_costs[TACT_COUNT];
 extern TownID _new_town_id;
 
+void UninitializeVoronoi();
+void BuildVoronoiDiagram();
+void AddTownToVoronoi(const Town* t);
+TownID GetClosestTownFromTile(TileIndex tile);
+
 /**
  * Set the default name for a depot/waypoint
  * @tparam T The type/class to make a default name for

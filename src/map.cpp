@@ -31,6 +31,7 @@ uint _map_tile_mask; ///< _map_size - 1 (to mask the mapsize)
 
 Tile *_m = NULL;          ///< Tiles of the map
 TileExtended *_me = NULL; ///< Extended Tiles of the map
+TownID *_closest_town = NULL; ///< TownID of the closest town for every tile
 
 
 /**
@@ -60,9 +61,11 @@ void AllocateMap(uint size_x, uint size_y)
 
 	free(_m);
 	free(_me);
+	free(_closest_town);
 
 	_m = CallocT<Tile>(_map_size);
 	_me = CallocT<TileExtended>(_map_size);
+	_closest_town = CallocT<TownID>(_map_size);
 }
 
 
