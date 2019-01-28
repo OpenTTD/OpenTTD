@@ -191,7 +191,7 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *p, Networ
 
 	strecpy(ngi.map_name, _network_game_info.map_name, lastof(ngi.map_name));
 	strecpy(ngi.server_name, _settings_client.network.server_name, lastof(ngi.server_name));
-	strecpy(ngi.server_revision, _openttd_revision, lastof(ngi.server_revision));
+	strecpy(ngi.server_revision, GetNetworkRevisionString(), lastof(ngi.server_revision));
 
 	Packet packet(PACKET_UDP_SERVER_RESPONSE);
 	this->SendNetworkGameInfo(&packet, &ngi);

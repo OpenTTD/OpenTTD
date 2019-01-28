@@ -45,14 +45,14 @@ NetworkHTTPSocketHandler::NetworkHTTPSocketHandler(SOCKET s,
 	redirect_depth(depth),
 	sock(s)
 {
-	size_t bufferSize = strlen(url) + strlen(host) + strlen(_openttd_revision) + (data == NULL ? 0 : strlen(data)) + 128;
+	size_t bufferSize = strlen(url) + strlen(host) + strlen(GetNetworkRevisionString()) + (data == NULL ? 0 : strlen(data)) + 128;
 	char *buffer = AllocaM(char, bufferSize);
 
 	DEBUG(net, 7, "[tcp/http] requesting %s%s", host, url);
 	if (data != NULL) {
-		seprintf(buffer, buffer + bufferSize - 1, "POST %s HTTP/1.0\r\nHost: %s\r\nUser-Agent: OpenTTD/%s\r\nContent-Type: text/plain\r\nContent-Length: %d\r\n\r\n%s\r\n", url, host, _openttd_revision, (int)strlen(data), data);
+		seprintf(buffer, buffer + bufferSize - 1, "POST %s HTTP/1.0\r\nHost: %s\r\nUser-Agent: OpenTTD/%s\r\nContent-Type: text/plain\r\nContent-Length: %d\r\n\r\n%s\r\n", url, host, GetNetworkRevisionString(), (int)strlen(data), data);
 	} else {
-		seprintf(buffer, buffer + bufferSize - 1, "GET %s HTTP/1.0\r\nHost: %s\r\nUser-Agent: OpenTTD/%s\r\n\r\n", url, host, _openttd_revision);
+		seprintf(buffer, buffer + bufferSize - 1, "GET %s HTTP/1.0\r\nHost: %s\r\nUser-Agent: OpenTTD/%s\r\n\r\n", url, host, GetNetworkRevisionString());
 	}
 
 	ssize_t size = strlen(buffer);
