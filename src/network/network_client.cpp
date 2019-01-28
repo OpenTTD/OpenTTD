@@ -343,7 +343,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
 	Packet *p = new Packet(PACKET_CLIENT_JOIN);
-	p->Send_string(_openttd_revision);
+	p->Send_string(GetNetworkRevisionString());
 	p->Send_uint32(_openttd_newgrf_version);
 	p->Send_string(_settings_client.network.client_name); // Client name
 	p->Send_uint8 (_network_join_as);     // PlayAs
