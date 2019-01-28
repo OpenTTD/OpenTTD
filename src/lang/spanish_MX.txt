@@ -1548,12 +1548,12 @@ STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activar interfa
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Mostrar una ventana para elegir los tipos de señales a instalar. Si no se activa, se instalan las señales y se selecciona un tipo determinado mediante Ctrl+Clic, sin que aparezca ninguna interfaz
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipo de señal predeterminada a instalar: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipo de señal predeterminada a utilizar
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Señales de bloqueo
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Señales de tramo
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Señales de ruta
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Señales de ruta de un sentido
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cambiar entre tipos de señales: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Elegir entre qué señales se debe cambiar al usar Ctrl+Clic con la herramienta de señales
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Solo señales de bloqueo
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Solo señales de tramo
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Solo señales de ruta
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas
 
@@ -2331,7 +2331,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito de trenes (para comprar y dar mantenimiento a trenes). Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir punto guía sobre vías férreas. Ctrl activa la unión de puntos guías. Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estación de ferrocarril. Ctrl activa la ampliación de estaciones. Mayús muestra una estimación del precio
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Instalar señales de ferrocarril. Ctrl cambia entre señales mecánicas y eléctricas{}Al arrastrar sobre las vías se instalan señales a lo largo de un tramo recto elegido. Ctrl instala señales hasta el siguiente desvío u otra señal{}Ctrl+Clic cambia a la herramienta de selección de señales. Mayús muestra una estimación del precio
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Poner señales. Ctrl intercambia señales mecánicas y eléctricas{}Arrastrar sobre un tramo recto permite poner señales intercaladas. Ctrl pone señales hasta un desvío u otra señal{}Ctrl+Clic cambia al modo de selección de señales. Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir puente de ferrocarril. Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel de ferrocarril. Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Quitar vías férreas, señales, estaciones y puntos guías. Al mantener pulsado Ctrl se quitan también las vías al retirar estaciones o puntos guías
@@ -2369,17 +2369,17 @@ STR_STATION_CLASS_WAYP                                          :Puntos guías
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selección de señales
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Señal de bloqueo (mecánica){}Es el tipo de señal más básico que permite a un único tren ocupar al mismo tiempo un tramo de vía entre dos señales
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Señal de entrada (mecánica){}Abierta si existe una o más señales de salida en el siguiente tramo, de lo contrario se mostrará cerrada
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Señal de salida (mecánica){}Igual que una señal de bloqueo pero es necesaria para activar la posición correcta de las señales de entrada y combo
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Señal de combo (mecánica){}La señal hace lo mismo que una señal de entrada y salida a la vez, lo que permite construir grandes "árboles" de señales condicionales
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Señal de ruta (mecánica){}Una señal de ruta permite a más de un tren entrar al mismo tiempo en un tramo de vía con señales, en tanto que el tren pueda reservar una ruta hasta un lugar seguro. Puede ser pasada por detrás
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Señal de tramo (mecánica){}Es la señal más básica. Permite a un solo tren ocupar un tramo de vía entre dos señales
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Señal de entrada (mecánica){}Se abre si existe una o más señales de salida en el siguiente tramo, de lo contrario se mostrará cerrada
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Señal de salida (mecánica){}Igual que una señal de tramo pero es necesaria para activar la posición correcta de las señales de entrada y combo
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Señal combo (mecánica){}Hace lo mismo que las señales de entrada y de salida, lo que permite construir amplios "árboles" de señales condicionales
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Señal de ruta (mecánica){}Permite a más de un tren entrar al mismo tiempo en un tramo de vía con señales, en tanto que el tren pueda reservar una ruta hasta un lugar seguro. Puede ser pasada por detrás
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Señal de ruta de un sentido (mecánica){}Igual que una señal de ruta pero no puede ser pasada por detrás
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Señal de bloqueo (eléctrica){}Es el tipo de señal más básico que permite a un único tren ocupar al mismo tiempo un tramo de vía entre dos señales
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Señal de entrada (eléctrica){}Verde si existe una o más señales de salida en el siguiente tramo, de lo contrario se mostrará en rojo
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Señal de salida (eléctrica){}Igual que una señal de bloqueo pero es necesaria para activar el color correcto de las señales de entrada y combo
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Señal combo (eléctrica){}La señal hace lo mismo que una señal de entrada y salida a la vez, lo que permite construir grandes "árboles" de señales condicionales
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Señal de ruta (eléctrica){}Una señal de ruta permite a más de un tren entrar al mismo tiempo en un tramo de vía con señales, en tanto que el tren pueda reservar una ruta hasta un lugar seguro. Puede ser pasada por detrás
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Señal de tramo (eléctrica){}Es la señal más básica. Permite a un solo tren ocupar un tramo de vía entre dos señales
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Señal de entrada (eléctrica){}En verde si existe una o más señales de salida en el siguiente tramo, de lo contrario se mostrará en rojo
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Señal de salida (eléctrica){}Igual que una señal de tramo pero es necesaria para activar el color correcto de las señales de entrada y combo
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Señal combo (eléctrica){}Hace lo mismo que las señales de entrada y de salida, lo que permite construir amplios "árboles" de señales condicionales
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Señal de ruta (eléctrica){}Permite a más de un tren entrar al mismo tiempo en un tramo de vía con señales, en tanto que el tren pueda reservar una ruta hasta un lugar seguro. Puede ser pasada por detrás
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Señal de ruta de un sentido (eléctrica){}Igual que una señal de ruta pero no puede ser pasada por detrás
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversión de señal{}Activar para pulsar sobre una señal existente y convertirla en el tipo y variante elegidos. Ctrl+Clic permite cambiar entre variantes de señales. Mayús+Clic muestra una estimación del precio de conversión
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distancia entre señales

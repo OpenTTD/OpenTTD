@@ -190,6 +190,7 @@ STR_COLOUR_ORANGE                                               :주황
 STR_COLOUR_BROWN                                                :갈색
 STR_COLOUR_GREY                                                 :회색
 STR_COLOUR_WHITE                                                :흰색
+STR_COLOUR_RANDOM                                               :무작위
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -930,6 +931,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :사용자 설�
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :그루지야 라리 (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :이란 리알 (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :신 러시아 루블 (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :멕시코 페소 (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}차량 통행 방식
@@ -1259,6 +1261,8 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}이미 �
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :기반시설 유지비: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :이 설정을 켜면, 기반시설 유지비가 발생합니다. 유지비는 교통망의 규모에 비례하며 대형 회사는 소형 회사보다 많은 유지비가 들어갑니다.
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :시작시 회사 색상: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :새 회사에서 사용할 색상을 선택하세요.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :옛날 공항을 사라지지 않고 계속 만들 수 있게 함: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :이 설정을 켜면, 소형 공항을 포함한 모든 공항 종류를 도입 이후에 계속 사용할 수 있게 됩니다.
@@ -1817,7 +1821,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}현재�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}1차 산업시설 생산량 조절 허용: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}새 색상
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - 색상
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}기본 색상 선택
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}열차 색상 선택
@@ -2892,7 +2896,12 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}버전: 
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}최소 이용 가능한 버전: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5합: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}색상표: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :도스
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :도스 / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Windows
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Windows / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}매개 변숫값: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :없음
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}관련 정보 없음
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}일치하는 파일을 찾을 수 없습니다
@@ -3352,6 +3361,9 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}이 산�
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}생산 수준: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}산업시설이 곧 폐쇄됩니다!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}받는 화물: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}생산 화물: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}받는 화물:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
@@ -3452,6 +3464,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}수용�
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 화물차: {GOLD}+{POWER}{BLACK} 중량: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}개조가능 화물: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :모든 화물
+STR_PURCHASE_INFO_NONE                                          :없음
 STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST} 이외의 모든 화물
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인력: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속거리: {GOLD}{COMMA} 칸
@@ -3851,6 +3864,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :연령 (년)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :정비 필요성
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :항상
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :남은 수명 (년)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :최대 신뢰도
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}왼쪽의 비교조건과 오른쪽의 입력값을 비교할 연산자를 선택합니다.
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :=

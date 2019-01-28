@@ -1972,7 +1972,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Изме
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Разрешить изменение производительности: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Новая цветовая схема
+STR_LIVERY_CAPTION                                              :{WHITE}Цвета компании «{COMPANY}»
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Настройка основной цветовой схемы
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Настройка цветовой схемы поездов
@@ -2907,6 +2907,12 @@ STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COM
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} с
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}Расчёт игрового цикла:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} Расчёт объёмов груза:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Движение поездов:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Движение автомобилей:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK} Движение кораблей:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Движение воздушных судов:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Изменения на карте:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Задержка графа распределения:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Отрисовка изображения:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Дополнительные окна:
@@ -2914,6 +2920,13 @@ STR_FRAMERATE_VIDEO                                             :{BLACK}Выво
 STR_FRAMERATE_SOUND                                             :{BLACK}Обработка звука:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Расчёт игрового цикла
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Расчёт объёмов груза
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Движение поездов
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Движение автомобилей
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Движение кораблей
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Движение воздушных судов
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Расчёт изменений на карте
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Задержка графа распределения
 STR_FRAMETIME_CAPTION_DRAWING                                   :Отрисовка изображения
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Отрисовка изображения в доп. окнах
@@ -3062,7 +3075,12 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Верс
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Совместимо с версией не ниже: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Палитра: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Стандартная (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Стандартная (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Устаревшая (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Устаревшая (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Параметры: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Нет
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Нет доступной информации
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Файл не найден
@@ -3144,6 +3162,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Запроше�
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} был отключён из-за {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Недопустимый/неизвестный формат расположения спрайтов (спрайт {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Слишком много элементов в списке значений (спрайт {3:NUM}, свойство {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Неверная обработка продукции предприятия (спрайт {3:NUM}, "{1:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Осторожно!
@@ -3624,6 +3643,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ёмко
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ведущие вагоны: {GOLD}+{POWER}{BLACK} Вес: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Может перевозить: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Все типы грузов
+STR_PURCHASE_INFO_NONE                                          :Нет
 STR_PURCHASE_INFO_ALL_BUT                                       :Всё, кроме {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. тяговое усилие: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальность: {GOLD}{COMMA} клет{P ка ки ок}

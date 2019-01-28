@@ -1813,7 +1813,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambiar 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir modificación de los valores de producción: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nuevo Esquema de Color
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Esquema de Color
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Mostrar esquema de colores general
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Ver esquema de color de los trenes
@@ -3331,6 +3331,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar 
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de producción: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}La industria ha anunciado su cierre inminente!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Requiere: {YELLOW}{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necesita:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
