@@ -18,9 +18,9 @@
 #include "../safeguards.h"
 
 static const SaveLoad _engine_desc[] = {
-	 SLE_CONDVAR(Engine, intro_date,          SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
+	 SLE_CONDVAR(Engine, intro_date,          SLE_FILE_U16 | SLE_VAR_I32,  0,  31),
 	 SLE_CONDVAR(Engine, intro_date,          SLE_INT32,                  31, SL_MAX_VERSION),
-	 SLE_CONDVAR(Engine, age,                 SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
+	 SLE_CONDVAR(Engine, age,                 SLE_FILE_U16 | SLE_VAR_I32,  0,  31),
 	 SLE_CONDVAR(Engine, age,                 SLE_INT32,                  31, SL_MAX_VERSION),
 	     SLE_VAR(Engine, reliability,         SLE_UINT16),
 	     SLE_VAR(Engine, reliability_spd_dec, SLE_UINT16),
@@ -31,19 +31,19 @@ static const SaveLoad _engine_desc[] = {
 	     SLE_VAR(Engine, duration_phase_2,    SLE_UINT16),
 	     SLE_VAR(Engine, duration_phase_3,    SLE_UINT16),
 
-	SLE_CONDNULL(1,                                                        0, 120),
+	SLE_CONDNULL(1,                                                        0, 121),
 	     SLE_VAR(Engine, flags,               SLE_UINT8),
-	SLE_CONDNULL(1,                                                        0, 178), // old preview_company_rank
+	SLE_CONDNULL(1,                                                        0, 179), // old preview_company_rank
 	 SLE_CONDVAR(Engine, preview_asked,       SLE_UINT16,                179, SL_MAX_VERSION),
 	 SLE_CONDVAR(Engine, preview_company,     SLE_UINT8,                 179, SL_MAX_VERSION),
 	     SLE_VAR(Engine, preview_wait,        SLE_UINT8),
-	SLE_CONDNULL(1,                                                        0,  44),
-	 SLE_CONDVAR(Engine, company_avail,       SLE_FILE_U8  | SLE_VAR_U16,  0, 103),
+	SLE_CONDNULL(1,                                                        0,  45),
+	 SLE_CONDVAR(Engine, company_avail,       SLE_FILE_U8  | SLE_VAR_U16,  0, 104),
 	 SLE_CONDVAR(Engine, company_avail,       SLE_UINT16,                104, SL_MAX_VERSION),
 	 SLE_CONDVAR(Engine, company_hidden,      SLE_UINT16,                193, SL_MAX_VERSION),
 	 SLE_CONDSTR(Engine, name,                SLE_STR, 0,                 84, SL_MAX_VERSION),
 
-	SLE_CONDNULL(16,                                                       2, 143), // old reserved space
+	SLE_CONDNULL(16,                                                       2, 144), // old reserved space
 
 	SLE_END()
 };

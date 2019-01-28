@@ -20,9 +20,9 @@
 static TownID _town_index;
 
 static const SaveLoad _depot_desc[] = {
-	 SLE_CONDVAR(Depot, xy,         SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	 SLE_CONDVAR(Depot, xy,         SLE_FILE_U16 | SLE_VAR_U32, 0, 6),
 	 SLE_CONDVAR(Depot, xy,         SLE_UINT32,                 6, SL_MAX_VERSION),
-	SLEG_CONDVAR(_town_index,       SLE_UINT16,                 0, 140),
+	SLEG_CONDVAR(_town_index,       SLE_UINT16,                 0, 141),
 	 SLE_CONDREF(Depot, town,       REF_TOWN,                 141, SL_MAX_VERSION),
 	 SLE_CONDVAR(Depot, town_cn,    SLE_UINT16,               141, SL_MAX_VERSION),
 	 SLE_CONDSTR(Depot, name,       SLE_STR, 0,               141, SL_MAX_VERSION),

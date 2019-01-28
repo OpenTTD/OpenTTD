@@ -104,7 +104,7 @@ const SaveLoad *GetCargoPacketDesc()
 		 SLE_CONDVAR(CargoPacket, source_id,       SLE_UINT16, 125, SL_MAX_VERSION),
 
 		/* Used to be paid_for, but that got changed. */
-		SLE_CONDNULL(1, 0, 120),
+		SLE_CONDNULL(1, 0, 121),
 
 		SLE_END()
 	};

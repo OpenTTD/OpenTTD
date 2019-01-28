@@ -150,42 +150,42 @@ void AfterLoadRoadStops()
 
 static const SaveLoad _roadstop_desc[] = {
 	SLE_VAR(RoadStop, xy,           SLE_UINT32),
-	SLE_CONDNULL(1, 0, 44),
+	SLE_CONDNULL(1, 0, 45),
 	SLE_VAR(RoadStop, status,       SLE_UINT8),
 	/* Index was saved in some versions, but this is not needed */
-	SLE_CONDNULL(4, 0, 8),
-	SLE_CONDNULL(2, 0, 44),
-	SLE_CONDNULL(1, 0, 25),
+	SLE_CONDNULL(4, 0, 9),
+	SLE_CONDNULL(2, 0, 45),
+	SLE_CONDNULL(1, 0, 26),
 
 	SLE_REF(RoadStop, next,         REF_ROADSTOPS),
-	SLE_CONDNULL(2, 0, 44),
+	SLE_CONDNULL(2, 0, 45),
 
-	SLE_CONDNULL(4, 0, 24),
-	SLE_CONDNULL(1, 25, 25),
+	SLE_CONDNULL(4, 0, 25),
+	SLE_CONDNULL(1, 25, 26),
 
 	SLE_END()
 };
 
 static const SaveLoad _old_station_desc[] = {
-	SLE_CONDVAR(Station, xy,                         SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
+	SLE_CONDVAR(Station, xy,                         SLE_FILE_U16 | SLE_VAR_U32,  0, 6),
 	SLE_CONDVAR(Station, xy,                         SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDNULL(4, 0, 5),  ///< bus/lorry tile
-	SLE_CONDVAR(Station, train_station.tile,         SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
+	SLE_CONDNULL(4, 0, 6),  ///< bus/lorry tile
+	SLE_CONDVAR(Station, train_station.tile,         SLE_FILE_U16 | SLE_VAR_U32,  0, 6),
 	SLE_CONDVAR(Station, train_station.tile,         SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(Station, airport.tile,               SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
+	SLE_CONDVAR(Station, airport.tile,               SLE_FILE_U16 | SLE_VAR_U32,  0, 6),
 	SLE_CONDVAR(Station, airport.tile,               SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(Station, dock_tile,                  SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
+	SLE_CONDVAR(Station, dock_tile,                  SLE_FILE_U16 | SLE_VAR_U32,  0, 6),
 	SLE_CONDVAR(Station, dock_tile,                  SLE_UINT32,                  6, SL_MAX_VERSION),
 	    SLE_REF(Station, town,                       REF_TOWN),
 	    SLE_VAR(Station, train_station.w,            SLE_FILE_U8 | SLE_VAR_U16),
 	SLE_CONDVAR(Station, train_station.h,            SLE_FILE_U8 | SLE_VAR_U16,   2, SL_MAX_VERSION),
 
-	SLE_CONDNULL(1, 0, 3),  ///< alpha_order
+	SLE_CONDNULL(1, 0, 4),  ///< alpha_order
 
 	    SLE_VAR(Station, string_id,                  SLE_STRINGID),
 	SLE_CONDSTR(Station, name,                       SLE_STR | SLF_ALLOW_CONTROL, 0, 84, SL_MAX_VERSION),
 	SLE_CONDVAR(Station, indtype,                    SLE_UINT8,                 103, SL_MAX_VERSION),
-	SLE_CONDVAR(Station, had_vehicle_of_type,        SLE_FILE_U16 | SLE_VAR_U8,   0, 121),
+	SLE_CONDVAR(Station, had_vehicle_of_type,        SLE_FILE_U16 | SLE_VAR_U8,   0, 122),
 	SLE_CONDVAR(Station, had_vehicle_of_type,        SLE_UINT8,                 122, SL_MAX_VERSION),
 
 	    SLE_VAR(Station, time_since_load,            SLE_UINT8),
@@ -195,18 +195,18 @@ static const SaveLoad _old_station_desc[] = {
 	    SLE_VAR(Station, facilities,                 SLE_UINT8),
 	    SLE_VAR(Station, airport.type,               SLE_UINT8),
 
-	SLE_CONDNULL(2, 0, 5),  ///< Truck/bus stop status
-	SLE_CONDNULL(1, 0, 4),  ///< Blocked months
+	SLE_CONDNULL(2, 0, 6),  ///< Truck/bus stop status
+	SLE_CONDNULL(1, 0, 5),  ///< Blocked months
 
-	SLE_CONDVAR(Station, airport.flags,              SLE_VAR_U64 | SLE_FILE_U16,  0,  2),
-	SLE_CONDVAR(Station, airport.flags,              SLE_VAR_U64 | SLE_FILE_U32,  3, 45),
+	SLE_CONDVAR(Station, airport.flags,              SLE_VAR_U64 | SLE_FILE_U16,  0,  3),
+	SLE_CONDVAR(Station, airport.flags,              SLE_VAR_U64 | SLE_FILE_U32,  3, 46),
 	SLE_CONDVAR(Station, airport.flags,              SLE_UINT64,                 46, SL_MAX_VERSION),
 
-	SLE_CONDNULL(2, 0, 25), ///< last-vehicle
+	SLE_CONDNULL(2, 0, 26), ///< last-vehicle
 	SLE_CONDVAR(Station, last_vehicle_type,          SLE_UINT8,                  26, SL_MAX_VERSION),
 
-	SLE_CONDNULL(2, 3, 25), ///< custom station class and id
-	SLE_CONDVAR(Station, build_date,                 SLE_FILE_U16 | SLE_VAR_I32,  3, 30),
+	SLE_CONDNULL(2, 3, 26), ///< custom station class and id
+	SLE_CONDVAR(Station, build_date,                 SLE_FILE_U16 | SLE_VAR_I32,  3, 31),
 	SLE_CONDVAR(Station, build_date,                 SLE_INT32,                  31, SL_MAX_VERSION),
 
 	SLE_CONDREF(Station, bus_stops,                  REF_ROADSTOPS,               6, SL_MAX_VERSION),
@@ -266,21 +266,21 @@ static const SaveLoad _flow_desc[] = {
 const SaveLoad *GetGoodsDesc()
 {
 	static const SaveLoad goods_desc[] = {
-		SLEG_CONDVAR(            _waiting_acceptance,  SLE_UINT16,                  0, 67),
+		SLEG_CONDVAR(            _waiting_acceptance,  SLE_UINT16,                  0, 68),
 		 SLE_CONDVAR(GoodsEntry, status,               SLE_UINT8,                  68, SL_MAX_VERSION),
-		SLE_CONDNULL(2,                                                            51, 67),
+		SLE_CONDNULL(2,                                                            51, 68),
 		     SLE_VAR(GoodsEntry, time_since_pickup,    SLE_UINT8),
 		     SLE_VAR(GoodsEntry, rating,               SLE_UINT8),
-		SLEG_CONDVAR(            _cargo_source,        SLE_FILE_U8 | SLE_VAR_U16,   0, 6),
-		SLEG_CONDVAR(            _cargo_source,        SLE_UINT16,                  7, 67),
-		SLEG_CONDVAR(            _cargo_source_xy,     SLE_UINT32,                 44, 67),
-		SLEG_CONDVAR(            _cargo_days,          SLE_UINT8,                   0, 67),
+		SLEG_CONDVAR(            _cargo_source,        SLE_FILE_U8 | SLE_VAR_U16,   0, 7),
+		SLEG_CONDVAR(            _cargo_source,        SLE_UINT16,                  7, 68),
+		SLEG_CONDVAR(            _cargo_source_xy,     SLE_UINT32,                 44, 68),
+		SLEG_CONDVAR(            _cargo_days,          SLE_UINT8,                   0, 68),
 		     SLE_VAR(GoodsEntry, last_speed,           SLE_UINT8),
 		     SLE_VAR(GoodsEntry, last_age,             SLE_UINT8),
-		SLEG_CONDVAR(            _cargo_feeder_share,  SLE_FILE_U32 | SLE_VAR_I64, 14, 64),
-		SLEG_CONDVAR(            _cargo_feeder_share,  SLE_INT64,                  65, 67),
+		SLEG_CONDVAR(            _cargo_feeder_share,  SLE_FILE_U32 | SLE_VAR_I64, 14, 65),
+		SLEG_CONDVAR(            _cargo_feeder_share,  SLE_INT64,                  65, 68),
 		 SLE_CONDVAR(GoodsEntry, amount_fract,         SLE_UINT8,                 150, SL_MAX_VERSION),
-		SLEG_CONDLST(            _packets,             REF_CARGO_PACKET,           68, 182),
+		SLEG_CONDLST(            _packets,             REF_CARGO_PACKET,           68, 183),
 		SLEG_CONDVAR(            _num_dests,           SLE_UINT32,                183, SL_MAX_VERSION),
 		 SLE_CONDVAR(GoodsEntry, cargo.reserved_count, SLE_UINT,                  181, SL_MAX_VERSION),
 		 SLE_CONDVAR(GoodsEntry, link_graph,           SLE_UINT16,                183, SL_MAX_VERSION),
@@ -431,7 +431,7 @@ static const SaveLoad _station_desc[] = {
 	  SLE_CONDVAR(Station, airport.layout,             SLE_UINT8,                 145, SL_MAX_VERSION),
 	      SLE_VAR(Station, airport.flags,              SLE_UINT64),
 	  SLE_CONDVAR(Station, airport.rotation,           SLE_UINT8,                 145, SL_MAX_VERSION),
-	 SLEG_CONDARR(_old_st_persistent_storage.storage,  SLE_UINT32, 16,            145, 160),
+	 SLEG_CONDARR(_old_st_persistent_storage.storage,  SLE_UINT32, 16,            145, 161),
 	  SLE_CONDREF(Station, airport.psa,                REF_STORAGE,               161, SL_MAX_VERSION),
 
 	      SLE_VAR(Station, indtype,                    SLE_UINT8),
@@ -441,7 +441,7 @@ static const SaveLoad _station_desc[] = {
 	      SLE_VAR(Station, last_vehicle_type,          SLE_UINT8),
 	      SLE_VAR(Station, had_vehicle_of_type,        SLE_UINT8),
 	      SLE_LST(Station, loading_vehicles,           REF_VEHICLE),
-	  SLE_CONDVAR(Station, always_accepted,            SLE_FILE_U32 | SLE_VAR_U64, 127, 198),
+	  SLE_CONDVAR(Station, always_accepted,            SLE_FILE_U32 | SLE_VAR_U64, 127, 199),
 	  SLE_CONDVAR(Station, always_accepted,            SLE_UINT64,                 199, SL_MAX_VERSION),
 
 	      SLE_END()

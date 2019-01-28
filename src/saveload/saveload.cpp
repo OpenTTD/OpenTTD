@@ -1551,7 +1551,7 @@ static void SlDeque(void *deque, VarType conv)
 /** Are we going to save this object or not? */
 static inline bool SlIsObjectValidInSavegame(const SaveLoad *sld)
 {
-	if (_sl_version < sld->version_from || _sl_version > sld->version_to) return false;
+	if (_sl_version < sld->version_from || _sl_version >= sld->version_to) return false;
 	if (sld->conv & SLF_NOT_IN_SAVE) return false;
 
 	return true;
