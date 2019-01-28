@@ -76,7 +76,7 @@ struct ContentTextfileWindow : public TextfileWindow {
 
 void ShowContentTextfileWindow(TextfileType file_type, const ContentInfo *ci)
 {
-	DeleteWindowByClass(WC_TEXTFILE);
+	DeleteWindowById(WC_TEXTFILE, file_type);
 	new ContentTextfileWindow(file_type, ci);
 }
 
