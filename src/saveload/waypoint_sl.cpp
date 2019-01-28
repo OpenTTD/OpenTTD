@@ -150,17 +150,17 @@ void MoveWaypointsToBaseStations()
 }
 
 static const SaveLoad _old_waypoint_desc[] = {
-	SLE_CONDVAR(OldWaypoint, xy,         SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
+	SLE_CONDVAR(OldWaypoint, xy,         SLE_FILE_U16 | SLE_VAR_U32,  0, 6),
 	SLE_CONDVAR(OldWaypoint, xy,         SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16,                 12, 121),
+	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16,                 12, 122),
 	SLE_CONDREF(OldWaypoint, town,       REF_TOWN,                  122, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_FILE_U8 | SLE_VAR_U16,  12, 88),
+	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_FILE_U8 | SLE_VAR_U16,  12, 89),
 	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_UINT16,                 89, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, string_id,  SLE_STRINGID,                0, 83),
+	SLE_CONDVAR(OldWaypoint, string_id,  SLE_STRINGID,                0, 84),
 	SLE_CONDSTR(OldWaypoint, name,       SLE_STR, 0,                 84, SL_MAX_VERSION),
 	    SLE_VAR(OldWaypoint, delete_ctr, SLE_UINT8),
 
-	SLE_CONDVAR(OldWaypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32,  3, 30),
+	SLE_CONDVAR(OldWaypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32,  3, 31),
 	SLE_CONDVAR(OldWaypoint, build_date, SLE_INT32,                  31, SL_MAX_VERSION),
 	SLE_CONDVAR(OldWaypoint, localidx,   SLE_UINT8,                   3, SL_MAX_VERSION),
 	SLE_CONDVAR(OldWaypoint, grfid,      SLE_UINT32,                 17, SL_MAX_VERSION),

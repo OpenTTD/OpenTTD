@@ -29,10 +29,10 @@ void AfterLoadStoryBook()
 }
 
 static const SaveLoad _story_page_elements_desc[] = {
-	SLE_CONDVAR(StoryPageElement, sort_value,    SLE_FILE_U16 | SLE_VAR_U32, 0,   184),
+	SLE_CONDVAR(StoryPageElement, sort_value,    SLE_FILE_U16 | SLE_VAR_U32, 0,   185),
 	SLE_CONDVAR(StoryPageElement, sort_value,    SLE_UINT32,                 185, SL_MAX_VERSION),
 	    SLE_VAR(StoryPageElement, page,          SLE_UINT16),
-	SLE_CONDVAR(StoryPageElement, type,          SLE_FILE_U16 | SLE_VAR_U8,  0,   184),
+	SLE_CONDVAR(StoryPageElement, type,          SLE_FILE_U16 | SLE_VAR_U8,  0,   185),
 	SLE_CONDVAR(StoryPageElement, type,          SLE_UINT8,                  185, SL_MAX_VERSION),
 	    SLE_VAR(StoryPageElement, referenced_id, SLE_UINT32),
 	    SLE_STR(StoryPageElement, text,          SLE_STR | SLF_ALLOW_CONTROL, 0),
@@ -66,10 +66,10 @@ static void Load_STORY_PAGE_ELEMENT()
 }
 
 static const SaveLoad _story_pages_desc[] = {
-	SLE_CONDVAR(StoryPage, sort_value, SLE_FILE_U16 | SLE_VAR_U32, 0,   184),
+	SLE_CONDVAR(StoryPage, sort_value, SLE_FILE_U16 | SLE_VAR_U32, 0,   185),
 	SLE_CONDVAR(StoryPage, sort_value, SLE_UINT32,                 185, SL_MAX_VERSION),
 	    SLE_VAR(StoryPage, date,       SLE_UINT32),
-	SLE_CONDVAR(StoryPage, company,    SLE_FILE_U16 | SLE_VAR_U8,  0,   184),
+	SLE_CONDVAR(StoryPage, company,    SLE_FILE_U16 | SLE_VAR_U8,  0,   185),
 	SLE_CONDVAR(StoryPage, company,    SLE_UINT8,                  185, SL_MAX_VERSION),
 	    SLE_STR(StoryPage, title,      SLE_STR | SLF_ALLOW_CONTROL, 0),
 	    SLE_END()

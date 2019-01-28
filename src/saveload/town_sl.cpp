@@ -116,12 +116,12 @@ void UpdateHousesAndTowns()
 
 /** Save and load of towns. */
 static const SaveLoad _town_desc[] = {
-	SLE_CONDVAR(Town, xy,                    SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Town, xy,                    SLE_FILE_U16 | SLE_VAR_U32, 0, 6),
 	SLE_CONDVAR(Town, xy,                    SLE_UINT32,                 6, SL_MAX_VERSION),
 
-	SLE_CONDNULL(2, 0, 2),                   ///< population, no longer in use
-	SLE_CONDNULL(4, 3, 84),                  ///< population, no longer in use
-	SLE_CONDNULL(2, 0, 91),                  ///< num_houses, no longer in use
+	SLE_CONDNULL(2, 0, 3),                   ///< population, no longer in use
+	SLE_CONDNULL(4, 3, 85),                  ///< population, no longer in use
+	SLE_CONDNULL(2, 0, 92),                  ///< num_houses, no longer in use
 
 	SLE_CONDVAR(Town, townnamegrfid,         SLE_UINT32, 66, SL_MAX_VERSION),
 	    SLE_VAR(Town, townnametype,          SLE_UINT16),
@@ -129,56 +129,56 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDSTR(Town, name,                  SLE_STR | SLF_ALLOW_CONTROL, 0, 84, SL_MAX_VERSION),
 
 	    SLE_VAR(Town, flags,                 SLE_UINT8),
-	SLE_CONDVAR(Town, statues,               SLE_FILE_U8  | SLE_VAR_U16, 0, 103),
+	SLE_CONDVAR(Town, statues,               SLE_FILE_U8  | SLE_VAR_U16, 0, 104),
 	SLE_CONDVAR(Town, statues,               SLE_UINT16,               104, SL_MAX_VERSION),
 
-	SLE_CONDNULL(1, 0, 1),                   ///< sort_index, no longer in use
+	SLE_CONDNULL(1, 0, 2),                   ///< sort_index, no longer in use
 
-	SLE_CONDVAR(Town, have_ratings,          SLE_FILE_U8  | SLE_VAR_U16, 0, 103),
+	SLE_CONDVAR(Town, have_ratings,          SLE_FILE_U8  | SLE_VAR_U16, 0, 104),
 	SLE_CONDVAR(Town, have_ratings,          SLE_UINT16,               104, SL_MAX_VERSION),
-	SLE_CONDARR(Town, ratings,               SLE_INT16, 8,               0, 103),
+	SLE_CONDARR(Town, ratings,               SLE_INT16, 8,               0, 104),
 	SLE_CONDARR(Town, ratings,               SLE_INT16, MAX_COMPANIES, 104, SL_MAX_VERSION),
 	/* failed bribe attempts are stored since savegame format 4 */
-	SLE_CONDARR(Town, unwanted,              SLE_INT8,  8,               4, 103),
+	SLE_CONDARR(Town, unwanted,              SLE_INT8,  8,               4, 104),
 	SLE_CONDARR(Town, unwanted,              SLE_INT8,  MAX_COMPANIES, 104, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].old_max, SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
-	SLE_CONDVAR(Town, supplied[CT_MAIL].old_max,       SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
-	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].new_max, SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
-	SLE_CONDVAR(Town, supplied[CT_MAIL].new_max,       SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
-	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].old_act, SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
-	SLE_CONDVAR(Town, supplied[CT_MAIL].old_act,       SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
-	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].new_act, SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
-	SLE_CONDVAR(Town, supplied[CT_MAIL].new_act,       SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].old_max, SLE_FILE_U16 | SLE_VAR_U32, 0, 9),
+	SLE_CONDVAR(Town, supplied[CT_MAIL].old_max,       SLE_FILE_U16 | SLE_VAR_U32, 0, 9),
+	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].new_max, SLE_FILE_U16 | SLE_VAR_U32, 0, 9),
+	SLE_CONDVAR(Town, supplied[CT_MAIL].new_max,       SLE_FILE_U16 | SLE_VAR_U32, 0, 9),
+	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].old_act, SLE_FILE_U16 | SLE_VAR_U32, 0, 9),
+	SLE_CONDVAR(Town, supplied[CT_MAIL].old_act,       SLE_FILE_U16 | SLE_VAR_U32, 0, 9),
+	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].new_act, SLE_FILE_U16 | SLE_VAR_U32, 0, 9),
+	SLE_CONDVAR(Town, supplied[CT_MAIL].new_act,       SLE_FILE_U16 | SLE_VAR_U32, 0, 9),
 
-	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].old_max, SLE_UINT32,                 9, 164),
-	SLE_CONDVAR(Town, supplied[CT_MAIL].old_max,       SLE_UINT32,                 9, 164),
-	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].new_max, SLE_UINT32,                 9, 164),
-	SLE_CONDVAR(Town, supplied[CT_MAIL].new_max,       SLE_UINT32,                 9, 164),
-	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].old_act, SLE_UINT32,                 9, 164),
-	SLE_CONDVAR(Town, supplied[CT_MAIL].old_act,       SLE_UINT32,                 9, 164),
-	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].new_act, SLE_UINT32,                 9, 164),
-	SLE_CONDVAR(Town, supplied[CT_MAIL].new_act,       SLE_UINT32,                 9, 164),
+	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].old_max, SLE_UINT32,                 9, 165),
+	SLE_CONDVAR(Town, supplied[CT_MAIL].old_max,       SLE_UINT32,                 9, 165),
+	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].new_max, SLE_UINT32,                 9, 165),
+	SLE_CONDVAR(Town, supplied[CT_MAIL].new_max,       SLE_UINT32,                 9, 165),
+	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].old_act, SLE_UINT32,                 9, 165),
+	SLE_CONDVAR(Town, supplied[CT_MAIL].old_act,       SLE_UINT32,                 9, 165),
+	SLE_CONDVAR(Town, supplied[CT_PASSENGERS].new_act, SLE_UINT32,                 9, 165),
+	SLE_CONDVAR(Town, supplied[CT_MAIL].new_act,       SLE_UINT32,                 9, 165),
 
-	SLE_CONDNULL(2, 0, 163),                 ///< pct_pass_transported / pct_mail_transported, now computed on the fly
+	SLE_CONDNULL(2, 0, 164),                 ///< pct_pass_transported / pct_mail_transported, now computed on the fly
 
-	SLE_CONDVAR(Town, received[TE_FOOD].old_act,       SLE_UINT16,                 0, 164),
-	SLE_CONDVAR(Town, received[TE_WATER].old_act,      SLE_UINT16,                 0, 164),
-	SLE_CONDVAR(Town, received[TE_FOOD].new_act,       SLE_UINT16,                 0, 164),
-	SLE_CONDVAR(Town, received[TE_WATER].new_act,      SLE_UINT16,                 0, 164),
+	SLE_CONDVAR(Town, received[TE_FOOD].old_act,       SLE_UINT16,                 0, 165),
+	SLE_CONDVAR(Town, received[TE_WATER].old_act,      SLE_UINT16,                 0, 165),
+	SLE_CONDVAR(Town, received[TE_FOOD].new_act,       SLE_UINT16,                 0, 165),
+	SLE_CONDVAR(Town, received[TE_WATER].new_act,      SLE_UINT16,                 0, 165),
 
 	SLE_CONDARR(Town, goal, SLE_UINT32, NUM_TE, 165, SL_MAX_VERSION),
 
 	SLE_CONDSTR(Town, text,                  SLE_STR | SLF_ALLOW_CONTROL, 0, 168, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Town, time_until_rebuild,    SLE_FILE_U8 | SLE_VAR_U16,  0, 53),
-	SLE_CONDVAR(Town, grow_counter,          SLE_FILE_U8 | SLE_VAR_U16,  0, 53),
-	SLE_CONDVAR(Town, growth_rate,           SLE_FILE_U8 | SLE_VAR_I16,  0, 53),
+	SLE_CONDVAR(Town, time_until_rebuild,    SLE_FILE_U8 | SLE_VAR_U16,  0, 54),
+	SLE_CONDVAR(Town, grow_counter,          SLE_FILE_U8 | SLE_VAR_U16,  0, 54),
+	SLE_CONDVAR(Town, growth_rate,           SLE_FILE_U8 | SLE_VAR_I16,  0, 54),
 
 	SLE_CONDVAR(Town, time_until_rebuild,    SLE_UINT16,                54, SL_MAX_VERSION),
 	SLE_CONDVAR(Town, grow_counter,          SLE_UINT16,                54, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Town, growth_rate,           SLE_FILE_I16 | SLE_VAR_U16, 54, 164),
+	SLE_CONDVAR(Town, growth_rate,           SLE_FILE_I16 | SLE_VAR_U16, 54, 165),
 	SLE_CONDVAR(Town, growth_rate,           SLE_UINT16,                 165, SL_MAX_VERSION),
 
 	    SLE_VAR(Town, fund_buildings_months, SLE_UINT8),
@@ -192,7 +192,7 @@ static const SaveLoad _town_desc[] = {
 
 	SLE_CONDLST(Town, psa_list,            REF_STORAGE,                161, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Town, cargo_produced,        SLE_FILE_U32 | SLE_VAR_U64, 166, 198),
+	SLE_CONDVAR(Town, cargo_produced,        SLE_FILE_U32 | SLE_VAR_U64, 166, 199),
 	SLE_CONDVAR(Town, cargo_produced,        SLE_UINT64,                 199, SL_MAX_VERSION),
 
 	/* reserve extra space in savegame here. (currently 30 bytes) */

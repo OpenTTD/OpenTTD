@@ -36,11 +36,11 @@ static void Load_CAPR()
 }
 
 static const SaveLoad _economy_desc[] = {
-	SLE_CONDNULL(4,                                                                  0, 64),             // max_loan
-	SLE_CONDNULL(8,                                                                 65, 143), // max_loan
-	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_FILE_I32 | SLE_VAR_I64,  0, 64),
-	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_INT64,                  65, 125),
-	SLE_CONDVAR(Economy, old_max_loan_unround_fract,    SLE_UINT16,                 70, 125),
+	SLE_CONDNULL(4,                                                                  0, 65),             // max_loan
+	SLE_CONDNULL(8,                                                                 65, 144), // max_loan
+	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_FILE_I32 | SLE_VAR_I64,  0, 65),
+	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_INT64,                  65, 126),
+	SLE_CONDVAR(Economy, old_max_loan_unround_fract,    SLE_UINT16,                 70, 126),
 	SLE_CONDVAR(Economy, inflation_prices,              SLE_UINT64,                126, SL_MAX_VERSION),
 	SLE_CONDVAR(Economy, inflation_payment,             SLE_UINT64,                126, SL_MAX_VERSION),
 	    SLE_VAR(Economy, fluct,                         SLE_INT16),

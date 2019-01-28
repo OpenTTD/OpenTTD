@@ -121,7 +121,7 @@ static const SaveLoad _node_desc[] = {
  * SaveLoad desc for a link graph edge.
  */
 static const SaveLoad _edge_desc[] = {
-	SLE_CONDNULL(4, 0, 190), // distance
+	SLE_CONDNULL(4, 0, 191), // distance
 	     SLE_VAR(Edge, capacity,                 SLE_UINT32),
 	     SLE_VAR(Edge, usage,                    SLE_UINT32),
 	     SLE_VAR(Edge, last_unrestricted_update, SLE_INT32),

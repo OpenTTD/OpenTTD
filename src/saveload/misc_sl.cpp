@@ -71,52 +71,52 @@ void ResetViewportAfterLoadGame()
 byte _age_cargo_skip_counter; ///< Skip aging of cargo? Used before savegame version 162.
 
 static const SaveLoadGlobVarList _date_desc[] = {
-	SLEG_CONDVAR(_date,                   SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
+	SLEG_CONDVAR(_date,                   SLE_FILE_U16 | SLE_VAR_I32,  0,  31),
 	SLEG_CONDVAR(_date,                   SLE_INT32,                  31, SL_MAX_VERSION),
 	    SLEG_VAR(_date_fract,             SLE_UINT16),
 	    SLEG_VAR(_tick_counter,           SLE_UINT16),
-	SLE_CONDNULL(2, 0, 156), // _vehicle_id_ctr_day
-	SLEG_CONDVAR(_age_cargo_skip_counter, SLE_UINT8,                   0, 161),
-	SLE_CONDNULL(1, 0, 45),
-	SLEG_CONDVAR(_cur_tileloop_tile,      SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
+	SLE_CONDNULL(2, 0, 157), // _vehicle_id_ctr_day
+	SLEG_CONDVAR(_age_cargo_skip_counter, SLE_UINT8,                   0, 162),
+	SLE_CONDNULL(1, 0, 46),
+	SLEG_CONDVAR(_cur_tileloop_tile,      SLE_FILE_U16 | SLE_VAR_U32,  0, 6),
 	SLEG_CONDVAR(_cur_tileloop_tile,      SLE_UINT32,                  6, SL_MAX_VERSION),
 	    SLEG_VAR(_disaster_delay,         SLE_UINT16),
-	SLE_CONDNULL(2, 0, 119),
+	SLE_CONDNULL(2, 0, 120),
 	    SLEG_VAR(_random.state[0],        SLE_UINT32),
 	    SLEG_VAR(_random.state[1],        SLE_UINT32),
-	SLE_CONDNULL(1,  0,   9),
-	SLE_CONDNULL(4, 10, 119),
+	SLE_CONDNULL(1,  0,  10),
+	SLE_CONDNULL(4, 10, 120),
 	    SLEG_VAR(_cur_company_tick_index, SLE_FILE_U8  | SLE_VAR_U32),
-	SLEG_CONDVAR(_next_competitor_start,  SLE_FILE_U16 | SLE_VAR_U32,  0, 108),
+	SLEG_CONDVAR(_next_competitor_start,  SLE_FILE_U16 | SLE_VAR_U32,  0, 109),
 	SLEG_CONDVAR(_next_competitor_start,  SLE_UINT32,                109, SL_MAX_VERSION),
 	    SLEG_VAR(_trees_tick_ctr,         SLE_UINT8),
 	SLEG_CONDVAR(_pause_mode,             SLE_UINT8,                   4, SL_MAX_VERSION),
-	SLE_CONDNULL(4, 11, 119),
+	SLE_CONDNULL(4, 11, 120),
 	    SLEG_END()
 };
 
 static const SaveLoadGlobVarList _date_check_desc[] = {
-	SLEG_CONDVAR(_load_check_data.current_date,  SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
+	SLEG_CONDVAR(_load_check_data.current_date,  SLE_FILE_U16 | SLE_VAR_I32,  0,  31),
 	SLEG_CONDVAR(_load_check_data.current_date,  SLE_INT32,                  31, SL_MAX_VERSION),
 	    SLE_NULL(2),                       // _date_fract
 	    SLE_NULL(2),                       // _tick_counter
-	SLE_CONDNULL(2, 0, 156),               // _vehicle_id_ctr_day
-	SLE_CONDNULL(1, 0, 161),               // _age_cargo_skip_counter
-	SLE_CONDNULL(1, 0, 45),
-	SLE_CONDNULL(2, 0, 5),                 // _cur_tileloop_tile
+	SLE_CONDNULL(2, 0, 157),               // _vehicle_id_ctr_day
+	SLE_CONDNULL(1, 0, 162),               // _age_cargo_skip_counter
+	SLE_CONDNULL(1, 0, 46),
+	SLE_CONDNULL(2, 0, 6),                 // _cur_tileloop_tile
 	SLE_CONDNULL(4, 6, SL_MAX_VERSION),    // _cur_tileloop_tile
 	    SLE_NULL(2),                       // _disaster_delay
-	SLE_CONDNULL(2, 0, 119),
+	SLE_CONDNULL(2, 0, 120),
 	    SLE_NULL(4),                       // _random.state[0]
 	    SLE_NULL(4),                       // _random.state[1]
-	SLE_CONDNULL(1,  0,   9),
-	SLE_CONDNULL(4, 10, 119),
+	SLE_CONDNULL(1,  0,  10),
+	SLE_CONDNULL(4, 10, 120),
 	    SLE_NULL(1),                       // _cur_company_tick_index
-	SLE_CONDNULL(2, 0, 108),               // _next_competitor_start
+	SLE_CONDNULL(2, 0, 109),               // _next_competitor_start
 	SLE_CONDNULL(4, 109, SL_MAX_VERSION),  // _next_competitor_start
 	    SLE_NULL(1),                       // _trees_tick_ctr
 	SLE_CONDNULL(1, 4, SL_MAX_VERSION),    // _pause_mode
-	SLE_CONDNULL(4, 11, 119),
+	SLE_CONDNULL(4, 11, 120),
 	    SLEG_END()
 };
 
@@ -137,9 +137,9 @@ static void Check_DATE()
 
 
 static const SaveLoadGlobVarList _view_desc[] = {
-	SLEG_CONDVAR(_saved_scrollpos_x,    SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
+	SLEG_CONDVAR(_saved_scrollpos_x,    SLE_FILE_I16 | SLE_VAR_I32, 0, 6),
 	SLEG_CONDVAR(_saved_scrollpos_x,    SLE_INT32,                  6, SL_MAX_VERSION),
-	SLEG_CONDVAR(_saved_scrollpos_y,    SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
+	SLEG_CONDVAR(_saved_scrollpos_y,    SLE_FILE_I16 | SLE_VAR_I32, 0, 6),
 	SLEG_CONDVAR(_saved_scrollpos_y,    SLE_INT32,                  6, SL_MAX_VERSION),
 	    SLEG_VAR(_saved_scrollpos_zoom, SLE_UINT8),
 	    SLEG_END()
