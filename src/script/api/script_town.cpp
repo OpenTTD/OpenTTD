@@ -170,7 +170,7 @@
 			break;
 
 		default:
-			EnforcePrecondition(false, days_between_town_growth <= MAX_TOWN_GROWTH_TICKS);
+			EnforcePrecondition(false, (days_between_town_growth * DAY_TICKS / TOWN_GROWTH_TICKS) <= MAX_TOWN_GROWTH_TICKS);
 			/* Don't use growth_rate 0 as it means GROWTH_NORMAL */
 			growth_rate = max(days_between_town_growth * DAY_TICKS, 2u) - 1;
 			break;
