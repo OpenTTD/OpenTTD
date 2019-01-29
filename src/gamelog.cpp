@@ -23,13 +23,13 @@
 
 #include "safeguards.h"
 
-extern const uint16 SAVEGAME_VERSION;  ///< current savegame version
+extern const SaveLoadVersion SAVEGAME_VERSION;  ///< current savegame version
 
 extern SavegameType _savegame_type; ///< type of savegame we are loading
 
-extern uint32 _ttdp_version;     ///< version of TTDP savegame (if applicable)
-extern uint16 _sl_version;       ///< the major savegame version identifier
-extern byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
+extern uint32 _ttdp_version;        ///< version of TTDP savegame (if applicable)
+extern SaveLoadVersion _sl_version; ///< the major savegame version identifier
+extern byte   _sl_minor_version;    ///< the minor savegame version, DO NOT USE!
 
 
 static GamelogActionType _gamelog_action_type = GLAT_NONE; ///< action to record if anything changes

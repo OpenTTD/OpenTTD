@@ -223,7 +223,7 @@ static void ShowHelp()
 
 static void WriteSavegameInfo(const char *name)
 {
-	extern uint16 _sl_version;
+	extern SaveLoadVersion _sl_version;
 	uint32 last_ottd_rev = 0;
 	byte ever_modified = 0;
 	bool removed_newgrfs = false;
