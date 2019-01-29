@@ -750,8 +750,8 @@ typedef SaveLoad SaveLoadGlobVarList;
  */
 static inline bool IsSavegameVersionBefore(SaveLoadVersion major, byte minor = 0)
 {
-	extern uint16 _sl_version;
-	extern byte   _sl_minor_version;
+	extern SaveLoadVersion _sl_version;
+	extern byte            _sl_minor_version;
 	return _sl_version < major || (minor > 0 && _sl_version == major && _sl_minor_version < minor);
 }
 
@@ -764,7 +764,7 @@ static inline bool IsSavegameVersionBefore(SaveLoadVersion major, byte minor = 0
  */
 static inline bool SlIsObjectCurrentlyValid(SaveLoadVersion version_from, SaveLoadVersion version_to)
 {
-	extern const uint16 SAVEGAME_VERSION;
+	extern const SaveLoadVersion SAVEGAME_VERSION;
 	if (SAVEGAME_VERSION < version_from || SAVEGAME_VERSION >= version_to) return false;
 
 	return true;

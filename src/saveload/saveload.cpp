@@ -53,16 +53,16 @@
 
 #include "../safeguards.h"
 
-extern const uint16 SAVEGAME_VERSION = SL_MAX_VERSION - 1; ///< Current savegame version of OpenTTD.
+extern const SaveLoadVersion SAVEGAME_VERSION = (SaveLoadVersion)(SL_MAX_VERSION - 1); ///< Current savegame version of OpenTTD.
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 FileToSaveLoad _file_to_saveload; ///< File to save or load in the openttd loop.
 
-uint32 _ttdp_version;     ///< version of TTDP savegame (if applicable)
-uint16 _sl_version;       ///< the major savegame version identifier
-byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
-char _savegame_format[8]; ///< how to compress savegames
-bool _do_autosave;        ///< are we doing an autosave at the moment?
+uint32 _ttdp_version;        ///< version of TTDP savegame (if applicable)
+SaveLoadVersion _sl_version; ///< the major savegame version identifier
+byte   _sl_minor_version;    ///< the minor savegame version, DO NOT USE!
+char _savegame_format[8];    ///< how to compress savegames
+bool _do_autosave;           ///< are we doing an autosave at the moment?
 
 /** What are we currently doing? */
 enum SaveLoadAction {
@@ -1915,7 +1915,7 @@ struct LZOLoadFilter : LoadFilter {
 		/* Check if size is bad */
 		((uint32*)out)[0] = size = tmp[1];
 
-		if (_sl_version != 0) {
+		if (_sl_version != SL_MIN_VERSION) {
 			tmp[0] = TO_BE32(tmp[0]);
 			size = TO_BE32(size);
 		}
@@ -2562,7 +2562,7 @@ static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
 		if (fmt == endof(_saveload_formats)) {
 			DEBUG(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
 			_sl.lf->Reset();
-			_sl_version = 0;
+			_sl_version = SL_MIN_VERSION;
 			_sl_minor_version = 0;
 
 			/* Try to find the LZO savegame format; it uses 'OTTD' as tag. */
@@ -2580,7 +2580,7 @@ static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
 
 		if (fmt->tag == hdr[0]) {
 			/* check version number */
-			_sl_version = TO_BE32(hdr[1]) >> 16;
+			_sl_version = (SaveLoadVersion)(TO_BE32(hdr[1]) >> 16);
 			/* Minor is not used anymore from version 18.0, but it is still needed
 			 * in versions before that (4 cases) which can't be removed easy.
 			 * Therefore it is loaded, but never saved (or, it saves a 0 in any scenario). */
@@ -2721,7 +2721,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, SaveLoadOperation fop, Detaile
 			ClearGRFConfigList(&_grfconfig);
 			GamelogReset();
 			if (!LoadOldSaveGame(filename)) return SL_REINIT;
-			_sl_version = 0;
+			_sl_version = SL_MIN_VERSION;
 			_sl_minor_version = 0;
 			GamelogStartAction(GLAT_LOAD);
 			if (!AfterLoadGame()) {
