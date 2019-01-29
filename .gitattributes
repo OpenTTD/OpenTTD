@@ -1,0 +1,10 @@
+# Visual Studio likes occasionally rewriting project files, make sure they always use Windows line endings
+*.sln              text eol=crlf
+*.vcxproj          text eol=crlf
+*.vcxproj.filters  text eol=crlf
+
+# Various binary file types
+*.png              binary
+*.bmp              binary
+*.grf              binary
+opntitle.dat       binary
