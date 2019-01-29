@@ -1710,17 +1710,15 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 			}
 			break;
 
-		/* SL_WRITEBYTE translates a value of a variable to another one upon
-		 * saving or loading.
-		 * XXX - variable renaming abuse
-		 * game_value: the value of the variable ingame is abused by sld->version_from
-		 * file_value: the value of the variable in the savegame is abused by sld->version_to */
+		/* SL_WRITEBYTE writes a value to the savegame to identify the type of an object.
+		 * When loading, the value is read explictly with SlReadByte() to determine which
+		 * object description to use. */
 		case SL_WRITEBYTE:
 			switch (_sl.action) {
-				case SLA_SAVE: SlWriteByte(sld->version_to); break;
+				case SLA_SAVE: SlWriteByte(*(uint8 *)ptr); break;
 				case SLA_LOAD_CHECK:
-				case SLA_LOAD: *(byte *)ptr = sld->version_from; break;
-				case SLA_PTRS: break;
+				case SLA_LOAD:
+				case SLA_PTRS:
 				case SLA_NULL: break;
 				default: NOT_REACHED();
 			}
