@@ -1916,7 +1916,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Promijen
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Omogući izmjeni produkcijskih vrijednosti: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nova boja
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} -Boja
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Pokaži generalne sheme boja
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Pokaži sheme boja za vlak
@@ -2991,7 +2991,12 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Verzija:
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatibilna verzija: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 suma: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Osnovna postavka (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Osnovna postavka (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Legacy (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Legacy (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametri: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Ništa
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Nema dostupnih informacija
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nije pronađena odgovarajuća datoteka
@@ -3554,6 +3559,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Nosivost
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK} Pokretni vagoni:.{GOLD}+{POWER}{BLACK} Težina: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prenamjenjivo u: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Sve vrste tereta
+STR_PURCHASE_INFO_NONE                                          :Ništa
 STR_PURCHASE_INFO_ALL_BUT                                       :Sve osim {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK} Najveća vučna sila: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Domet: {GOLD}{COMMA} polja

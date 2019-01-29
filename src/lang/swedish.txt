@@ -810,6 +810,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(VD)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} har sponsrat byggnationen av nya staden {TOWN}!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}En ny stad, kallad {TOWN}, har grundats!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Ny {STRING} under konstruktion nära {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Ny {STRING} planteras nära {TOWN}!
@@ -1335,6 +1336,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Terrängens fä
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grön
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mörkgrön
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violett
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Beteende vid scrollning av kartan
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Mjuk scrollning av vy: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrollera hur huvudvyn skrollar till en specifik position vid klick på minikartan eller när ett kommando används för att skrolla till ett specifikt objekt på kartan. Om det är aktiverat skrollar vyn mjukt, om det är inaktiverat hoppar den direkt till målet
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Visa måtthjälptext vid användning av byggverktyg: {STRING}
@@ -1803,7 +1805,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ändra n
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktivera modifiering av produktionsvärden: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nytt färgval
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Färgschema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Visa generellt färgschema
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Visa färgscheman för tåg
@@ -2688,9 +2690,13 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD-teamet
 
 # Framerate display window
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Skepps-tick:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Grafikåtergivning:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Vägfordons-tick
 ############ End of leave-in-this-order
 
 
@@ -3214,7 +3220,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(VD)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Etablerades: {WHITE}{NUM}
-STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Färgval:
+STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Färgschema:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Fordon:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tåg
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} vägfordon
@@ -3242,7 +3248,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Visa det
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nytt ansikte
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Välj nytt ansikte på VD:n
-STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Färgval
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Färgschema
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Byt färg på företaget
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Företagsnamn
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Byt företagets namn
@@ -3778,7 +3784,7 @@ STR_ORDER_DROP_SERVICE_DEPOT                                    :Service vid beh
 STR_ORDER_DROP_HALT_DEPOT                                       :Stanna
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Skippa den här ordern om service ej behövs
 
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Fordonsdata att basera hoppning på
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Fordonsdata att basera hopp på
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Laddningsprocent
@@ -3880,9 +3886,9 @@ STR_ORDER_STOP_LOCATION_FAR_END                                 :[slutet]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Nästa destination är utanför räckvidden)
 
-STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Skippa till order {COMMA}
-STR_ORDER_CONDITIONAL_NUM                                       :Skippa till order {COMMA} när {STRING} {STRING} {COMMA}
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Skippa till order {COMMA} när {STRING} {STRING}
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Hoppa till order {COMMA}
+STR_ORDER_CONDITIONAL_NUM                                       :Hoppa till order {COMMA} när {STRING} {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Hoppa till order {COMMA} när {STRING} {STRING}
 
 STR_INVALID_ORDER                                               :{RED} (Ogiltig order)
 
