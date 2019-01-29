@@ -540,6 +540,7 @@ int CDECL main(int argc, char *argv[])
 			HeaderFileWriter writer(pathbuf);
 			writer.WriteHeader(data);
 			writer.Finalise(data);
+			if (_errors != 0) return 1;
 		} else if (mgo.numleft >= 1) {
 			char *r;
 
