@@ -809,7 +809,9 @@ do_clear:;
  */
 static bool CanConnectToRoad(TileIndex tile, RoadType rt, DiagDirection dir)
 {
-	RoadBits bits = GetAnyRoadBits(tile + TileOffsByDiagDir(dir), rt, false);
+	tile += TileOffsByDiagDir(dir);
+	if (!IsValidTile(tile)) return false;
+	RoadBits bits = GetAnyRoadBits(tile, rt, false);
 	return (bits & DiagDirToRoadBits(ReverseDiagDir(dir))) != 0;
 }
 
