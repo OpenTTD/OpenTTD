@@ -117,7 +117,9 @@ void CDECL error(const char *s, ...)
 	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
 
-	ShowOSErrorBox(buf, true);
+	if (VideoDriver::GetInstance() == NULL || VideoDriver::GetInstance()->HasGUI()) {
+		ShowOSErrorBox(buf, true);
+	}
 
 	/* Set the error message for the crash log and then invoke it. */
 	CrashLog::SetErrorMessage(buf);
