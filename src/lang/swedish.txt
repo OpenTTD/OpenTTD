@@ -189,6 +189,7 @@ STR_COLOUR_ORANGE                                               :Orange
 STR_COLOUR_BROWN                                                :Brun
 STR_COLOUR_GREY                                                 :Grå
 STR_COLOUR_WHITE                                                :Vit
+STR_COLOUR_RANDOM                                               :Slumpmässig
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -241,7 +242,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fönster
 STR_TOOLTIP_SHADE                                               :{BLACK}Dölj fönster - Visa bara namnlisten
 STR_TOOLTIP_DEBUG                                               :{BLACK}Visa NewGRF felsökningsinformation
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Återställ fönstret till standardstorlek. Ctrl-klicka för att sätta nuvarande storlek som ny standard
-STR_TOOLTIP_STICKY                                              :{BLACK}Markera att fönstret ska lämnas öppet när 'Stäng alla fönster'-knappen används. Ctrl+Click för att spara som default
+STR_TOOLTIP_STICKY                                              :{BLACK}Markera att fönstret ska lämnas öppet när 'Stäng alla fönster'-knappen används. Ctrl+klick för att spara som standardinställning
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klicka och dra för att förstora fönstret
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Växla stor/liten fönsterstorlek
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullningslist - rullar listan upp/ned
@@ -475,6 +476,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Skärmdump
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Fullt inzoomad skärmdump
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Normalt inzoomad skärmdump
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skärmdump av hela kartan
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Visa bildfrekvens
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Justering av spriteobjekt
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Slå av/på yttre gränser för grafiska element
@@ -650,6 +652,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Ingen musik tillgänglig
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Spår
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Titel
@@ -670,11 +673,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Växla s
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Visa fönstret för val av musikspår
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Musikprogram - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Spårindex
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Spellista - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Töm
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Byt samling
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Töm aktuell spellista (enbart Personlig1 eller Personlig2)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Ändra musikvalet till en annan installerad samling
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klicka på ett musikstycke för att lägga till det i spellistan (enbart Personlig1 eller Personlig2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klicka på ett musikstycke för att ta bort det från spellistan (endast Personlig1 och Personlig2)
 
@@ -824,7 +830,7 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLAC
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Lågkonjunkturen över!{}{}Uppsving i handeln ger tillförsikt till industrier när ekonomin stärks!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} ökar produktionen!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nytt lager av kol funnet vid {INDUSTRY}!{}Produktionen fördubblas!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Ny fyndighet av kol upptäckt vid {INDUSTRY}!{}Produktionen fördubblas!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nya oljereserver funna vid {INDUSTRY}!{}Produktionen fördubblas!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Nya jordbruksmetoder vid {INDUSTRY} ger fördubblad produktion!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produktionen av {STRING} vid {INDUSTRY} upp med {COMMA}%!
@@ -878,10 +884,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vyfönster {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiera till vy
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Byt vy
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopiera huvudvyns position till detta vyfönster
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Klistra in vyn
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Flytta huvudvyns position till positionen i det här vyfönstret
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Byt huvudvy
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopiera denna vys position till huvudvyn
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spelinställningar
@@ -923,6 +929,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sydafrikansk ra
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Egen...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgisk lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iransk rial (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ny rysk rubel (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexikansk peso (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vägfordon
@@ -1045,7 +1053,7 @@ STR_VARIETY_VERY_LOW                                            :Väldigt låg
 STR_VARIETY_LOW                                                 :Låg
 STR_VARIETY_MEDIUM                                              :Medium
 STR_VARIETY_HIGH                                                :Hög
-STR_VARIETY_VERY_HIGH                                           :Väldigt Hög
+STR_VARIETY_VERY_HIGH                                           :Väldigt hög
 
 STR_AI_SPEED_VERY_SLOW                                          :Väldigt långsam
 STR_AI_SPEED_SLOW                                               :Långsam
@@ -1252,6 +1260,8 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det är 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Underhåll av infrastruktur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Om det är aktiverat så kostar underhåll av infrastruktur. Kostnaden ökar mer än proportionellt mot nätverkets storlek, vilket innebär att större företag drabbas hårdare än små företag av underhållskostnader.
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Företagets startfärg: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Välj startfärg för företaget
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flygplatser blir aldrig gamla: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktivering av denna inställning gör så att alla flygplatstyper finns kvar i obegränsad tid efter att de blivit tillgängliga
@@ -1289,7 +1299,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Linjernas bredd
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landskap: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landskap definiera grundläggande gameplay scenarier med olika last och krav stad tillväxt. NewGRF och Game skript tillåter finare kontroll.
-STR_CONFIG_SETTING_LAND_GENERATOR                               :Land generator: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Landgenerator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Den ursprungliga generatorn beror på bas grafik set, och komponerar fasta landskapsformer. TerraGenesis är en Perlin buller baserad generator med finare inställningar kontroll
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
@@ -1299,8 +1309,8 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industritäthet
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Ange hur många industrier som ska genereras och vilken nivå som ska bibehållas under spelet
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalt avstånd mellan oljeraffinaderier och kartans kant: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Oljeraffinaderier byggs bara nära kartans kanter, alltså vid kusten om det är en ö-karta
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snölinjeshöjd: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontroll på vilken höjd snön börjar i subarktiska landskapet. Snö påverkar också industrin generation och stad tillväxtkrav
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snögränsens höjd: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontrollerar på vilken höjd snön börjar i det subarktiska landskapet. Snö påverkar även industrigeneration och städers tillväxtkrav
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Terrängens svårhetsgrad: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis endast) Välj frekvensen av kullar: Smooth landskap har färre, mer utbredda kullar. Rough landskap har många kullar, som kan se repetitiva
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väldigt lätt
@@ -1336,7 +1346,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Terrängens fä
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grön
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mörkgrön
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violett
+STR_CONFIG_SETTING_SCROLLMODE                                   :Vyfönsters skrollningsbeteende: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Beteende vid scrollning av kartan
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Rör vyn med höger musknapp, musens position låst
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Rör kartan med höger musknapp, musens position låst
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Rör kartan med höger musknapp
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Rör kartan med vänster musknapp
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Mjuk scrollning av vy: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrollera hur huvudvyn skrollar till en specifik position vid klick på minikartan eller när ett kommando används för att skrolla till ett specifikt objekt på kartan. Om det är aktiverat skrollar vyn mjukt, om det är inaktiverat hoppar den direkt till målet
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Visa måtthjälptext vid användning av byggverktyg: {STRING}
@@ -1495,7 +1510,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produktionsför
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Visa nyhetstidning vid förändring av industriers produktionsnivåer för industrier som används av det egna företaget
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produktionsförändring vid industri som motståndare betjänar: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Visa nyhetstidning vid förändring av industriers produktionsnivåer för industrier som används av motståndare
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Andra produktionsförändringar vid industrier.: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Andra produktionsförändringar vid industrier: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Visa nyhetstidning vid förändring av industriers produktionsnivåer för industrier som inte används av motståndare eller det egna företaget
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Råd / information om företagets fordon: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Visa meddelande ifall att ett fordon behöver uppmärksamhet
@@ -1550,7 +1565,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 rutnät
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Slumpmässig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Städer tillåts bygga vägar: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Tillåt städer att bygga vägar för att kunna växa. Stäng av för att hindra städernas lokala myndigheter från att själva bygga vägar
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Städer är tillåtna att bygga plankorsningar: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Städer tillåts bygga plankorsningar: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Om denna inställning aktiveras så blir det tillåtet för städer att bygga plankorsningar
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Tillåt stadskontrollerade bullernivåer för flygplatser: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Med denna inställning avstängd kan det finnas max två flygplatser i varje stad. Med inställningen påslagen begränsas antalet flygplatser i en stad istället av vilken bullernivå staden accepterar, vilket styrs av populationen, flygplatsens storlek och avstånd till staden
@@ -2281,6 +2296,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legend f
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Alla
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Inga
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Välj företag att visa
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}oanvänd
@@ -2690,13 +2706,50 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD-teamet
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Bildfrekvens
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulationsfrekvens: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Antal spel-tick som simuleras per sekund.
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Bildfrekvens för grafik: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Antal bildrutor som återges per sekund.
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Spelets nuvarande hastighetsfaktor: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hur snabbt spelet för närvarande körs, jämfört med förväntad hastighet vid normal simulationsfrekvens.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Nuvarande
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Genomsnittlig
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Data baseras på {COMMA} mätvärden
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} bildrutor/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} bildrutor/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} bildrutor/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Totalt för spel-loopen:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Godshantering:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Tåg-tick:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Vägfordons-tick:
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Skepps-tick:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Flygplans-tick:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Världs-tick:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Länkgrafens fördröjning:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Grafikåtergivning:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Videoutmatning:
+STR_FRAMERATE_SOUND                                             :{BLACK}Ljudmixning:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Spel-loop
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Godshantering
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Tåg-tick
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Vägfordons-tick
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Skepps-tick
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Flygplans-tick
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Världs-tick
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Länkgrafens fördröjning
+STR_FRAMETIME_CAPTION_DRAWING                                   :Grafikåtergivning
+STR_FRAMETIME_CAPTION_VIDEO                                     :Videoutmatning
+STR_FRAMETIME_CAPTION_SOUND                                     :Ljudmixning
 ############ End of leave-in-this-order
 
 
@@ -2722,11 +2775,12 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Speldeta
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen information tillgänglig
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Sökfilter:
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Mata in ett namn för detta sparade spel
 
 # World generation
-STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Generera Värld
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Generera värld
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kartstorlek:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Ange kartans storlek i rutor. Antalet tillgängliga rutor kommer att bli något lägre
 STR_MAPGEN_BY                                                   :{BLACK}*
@@ -2737,8 +2791,8 @@ STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maximal 
 STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Öka maximal bergshöjd med ett
 STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Minska maximal bergshöjd med ett
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snögränsens höjd:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Höj snögränsens höjd ett upp
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sänk snögränsens höjd ett ner
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Höj snögränsens höjd ett steg
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sänk snögränsens höjd ett steg
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trädalgoritm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrängtyp:
@@ -2776,7 +2830,7 @@ STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generera
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Slumpat land
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Höjd av platt land:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Sänk höjden av platt land ett ner
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Öka höjden av platt land ett upp
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Öka höjden av platt land ett steg
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Ändra höjd av platt land
 
@@ -2787,10 +2841,10 @@ STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Avbryt g
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vill du verkligen avbryta genereringen?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% färdigt
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
-STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generera Värld
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generera värld
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generera Flod
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generera Träd
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generera Objekt
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generera objekt
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Svår och stenig markgenerering
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ställer in spel
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kör tile-loop
@@ -2839,7 +2893,12 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Version:
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatibel version: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palett: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Standard (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Standard (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Äldre (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Äldre (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paramerar: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Ingen
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ingen information tillgänglig
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Matchande fil hittades ej
@@ -2913,13 +2972,15 @@ STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :För många New
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Att ladda {1:STRING} som statisk NewGRF med {STRING} kan orsaka desynkronisering
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Oväntat spriteobjekt (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Okänd Action 0-egenskap {4:HEX} (spriteobjekt {3:NUM})
-STR_NEWGRF_ERROR_INVALID_ID                                     :Försökt att använda ett ogiltligt ID (spriteobjekt {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Försök att använda ett ogiltligt ID (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} innehåller en skadad bild. Alla korrupta bilder kommer att visas som ett rött frågetecken (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller flera Action 8 (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läste förbi slutet av pseudo-spriteobjekt (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade GRF-resurser är inte tillgängliga (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} har inaktiverats av {2:STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Felaktig/okänd layout-format av spriteobjekt (spriteobjekt {3:NUM})
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Felaktigt/okänt layout-format av spriteobjekt (spriteobjekt {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :För många poster i listan med egenskapsvärden (spriteobjekt {3:NUM}, egenskap {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ogiltig industriproduktions-callback (spriteobjekt {3:NUM}, "{1:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varning!
@@ -2932,7 +2993,7 @@ STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kan inte
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel GRF laddad för saknade filer
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Saknad GRF-fil har stängts av
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Saknad(e) GRF-fil(er)
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausning kan krascha OpenTTD. Skicka ej igen bugg-rapport för möjlig krasch.{}Är du säker att du vill avpausa?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausning kan krascha OpenTTD. Skicka ej bugg-rapporter för eventuella resulterande krascher.{}Är du säker på att du vill avpausa?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Inga
@@ -2949,7 +3010,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{V
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' ger felaktig information
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last/återställnings information för '{1:ENGINE}' är skilld ifrån köp lista efter konstruktion. Detta kan leda till att utomatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' skapade en ändlös loop i en produktions-callback-funktion
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' skapade en oändlig loop i en produktions-callback-funktion
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback-funktion {1:HEX} returnerade ett okänt/ogiltligt resultat {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
@@ -2984,6 +3045,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Mata in 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Städer
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Inga -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Stad){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stadsnamn - klicka på ett namn för att centrera huvudvyn på staden. Ctrl+klick öppnar en ny vy över stadens läge
 STR_TOWN_POPULATION                                             :{BLACK}Global folkmängd: {COMMA}
 
@@ -2991,6 +3053,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Global f
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Stad)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Invånare: {ORANGE}{COMMA}{BLACK}  Hus: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} förra månaden: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Fraktgods behövs för ortens tillväxt:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} krävs
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} krävs under vintern
@@ -3237,7 +3300,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} flygplats{P "" er}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Inga
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bygg Högkvarter
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bygg högkvarter
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg företagets huvudkontor
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Visa högkvarter
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vy av företagets huvudkontor
@@ -3295,6 +3358,9 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrera
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktionsnivå: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industrin har annonserat att den snart kommer att stänga!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Kräver: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Producerar: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Kräver:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
@@ -3304,7 +3370,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ändra p
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ändra produktionsnivå (procent, upp till 800%)
 
 # Vehicle lists
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tåg
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} tåg
 STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Vägfordon
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} skepp
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} flygplan
@@ -3325,17 +3391,17 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Se lista
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Behandlingslista
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Skicka instruktioner till alla fordon på denna lista
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Byt ut fordon
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Skicka till Service
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Skicka på service
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Skicka till Depå
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Skicka till Depå
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Skicka till Depå
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Skicka till Hangar
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Skicka till depå
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Skicka till depå
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Skicka till depå
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Skicka till hangar
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Klicka för att stoppa alla fordon i listan
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Klicka för att starta alla fordon i listan
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Delade instruktioner med {COMMA} Fordon{P "" s}
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Delade instruktioner med {COMMA} fordon
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Alla tåg
@@ -3395,6 +3461,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacite
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserade vagnar: {GOLD}+{POWER}{BLACK} Vikt: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Anpassningsbar till: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alla typer av last
+STR_PURCHASE_INFO_NONE                                          :Ingen
 STR_PURCHASE_INFO_ALL_BUT                                       :Allt utom {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximal Dragkraft: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Räckvidd: {GOLD}{COMMA} rutor
@@ -3406,7 +3473,7 @@ STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Skeppsli
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Flygplanslista. Klicka på flygplan för information. Ctrl+klick visar eller döljer flygplanstypen
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Köp fordon
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Köp Fordon
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Köp fordon
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Köp skepp
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Köp flygplan
 
@@ -3708,7 +3775,7 @@ STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informat
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Visa detaljer för tågfordon
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapaciteter
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Visa kapaciteter för varje fordon
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Gods Totalt
+STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Gods totalt
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Visa tågets totala kapacitet, separera för typ av gods
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacitet: {LTBLUE}
@@ -3772,7 +3839,7 @@ STR_ORDER_DROP_NO_UNLOADING                                     :Ej avlastning
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ändra avlastningsbeteende för markerad order
 
 STR_ORDER_REFIT                                                 :{BLACK}Anpassa
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Välj vilken godstyp anpassningen ska göras i denna order. Ctrl-klick för att ta bort anpassningsordern
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Välj vilken godstyp anpassningen ska göras till i denna order. Ctrl-klick för att ta bort anpassningsordern
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-anpassning vid station
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Välj vilket lasttyp att auto-anpassa till i den här ordningen. Ctrl+klicka för att ta bort anpassningsinstruktionen. Auto-anpassning vid stationer kommer enbart att utföras om fordonet tillåter det
 STR_ORDER_DROP_REFIT_AUTO                                       :Fast lasttyp
@@ -3794,6 +3861,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Ålder (år)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Behöver service
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Alltid
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Återstående livstid (år)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maximal tillförlitlighet
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hur man jämför fordonsdata med givet värde
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :samma som
@@ -3817,7 +3885,7 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Ta bort 
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Sluta dela
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Sluta dela orderlistan. Ctrl+Klick tar även bort alla order för det här fordonet
 
-STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Åk Till
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Åk till
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Åk till närmsta depå
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Åk till närmsta hangar
 STR_ORDER_CONDITIONAL                                           :Villkorat order-hopp
@@ -3912,7 +3980,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(resor för {ST
 STR_TIMETABLE_STAY_FOR                                          :och stanna i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :och res i {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}dag{P "" ar}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Den här tidtabellen kommer ta {STRING} att slutföra
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Denna tidtabell kommer att ta åtminstonde {STRING} att slutföra (allt är inte inlagt i en tidtabell)
@@ -3926,7 +3994,7 @@ STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Den här
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdatum
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Välj ett datum som startpunkt för den här tidtabellen. Om tidtabellen är fullt tidssatt så innebär Ctrl+klick att startpunkten sätts för denna tidtabell och att startpunkten för övriga fordon som delar dessa order fördelas ut jämt baserat på deras relativa ordning
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ändra Tid
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ändra tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ändra hur lång tid den markerade ordern bör ta
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Rensa tid
@@ -3982,7 +4050,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Spelskri
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Visa debug-utskrifter för spelskript
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande datorspelare hittades.{}Denna datorspelare är en test-datorspelare och kommer inte göra någonting.{}Du kan ladda ner nya datorspelare genom spelets 'Online-innehåll'-system
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ett av scripten som körs har krachat. Vänligen raportera detta till datorspelarens skapare med en skärmdump på förstret 'Felsökning av datorspelare / spelskript'
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ett av skripten som körs har kraschat. Vänligen rapportera detta till datorspelarens skapare med en skärmdump av förstret 'Felsökning av datorspelare / spelskript'
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Felsökning av datorspelare / spelskript är bara tillgänglig för servern
 
 # AI configuration window
@@ -4226,6 +4294,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... dett
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vägen pekar i fel riktning
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... genomfartshållplatser kan inte ha gatuhörn
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... genomfartshållplatser kan inte ha korsningar
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... vägen är enkelriktad eller blockerad
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan ej ta bort del av station...
@@ -4470,13 +4539,15 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan inte
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Ett simuleringsspel baserat på Transport Tycoon Deluxe
 
 # Translatable descriptions in media/baseset/*.ob* files
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Originalgrafiken från Transport Tycoon Deluxe, DOS-utgåvan.
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Originalgrafiken från Transport Tycoon Deluxe, DOS-utgåvan (tyska).
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Originalgrafiken från Transport Tycoon Deluxe, Windows-utgåvan.
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originalljuden från Transport Tycoon Deluxe, DOS-utgåvan.
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originalljuden från Transport Tycoon Deluxe, Windows-utgåvan.
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Originalgrafiken från DOS-utgåvan av Transport Tycoon Deluxe.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Originalgrafiken från den tyska DOS-utgåvan av Transport Tycoon Deluxe.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Originalgrafiken från Windows-utgåvan av Transport Tycoon Deluxe.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originalljuden från DOS-utgåvan av Transport Tycoon Deluxe.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originalljuden från Windows-utgåvan av Transport Tycoon Deluxe.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Ett ljudpaket utan några ljud.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originalmusiken från Transport Tycoon Deluxe, Windows-utgåvan.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originalmusiken från Windows-utgåvan av Transport Tycoon Deluxe.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Originalmusiken från DOS-utgåvan av Transport Tycoon Deluxe.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Originalmusiken från DOS-utgåvan av Transport Tycoon (Original/World Editor).
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Ett musikpaket utan någon musik.
 
 ##id 0x2000
@@ -4494,11 +4565,11 @@ STR_TOWN_BUILDING_NAME_PARK_1                                   :Park
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Kontorslokaler
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Affärer och kontor
 STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Modern kontorsbyggnad
-STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Varuhus
+STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Lagerbyggnad
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Kontorsbyggnad
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Arena
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Gamla hus
-STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Stuga
+STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Stugor
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Hus
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Lägenheter
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Hög kontorsbyggnad
@@ -4512,7 +4583,7 @@ STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Biograf
 STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Shoppingcenter
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Igloo
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Kåtor
-STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Tekanne-Hus
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Tekanne-hus
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Spargris
 
 ##id 0x4800
@@ -4570,29 +4641,29 @@ STR_SV_STNAME_NORTH                                             :Norra {STRING}
 STR_SV_STNAME_SOUTH                                             :Södra {STRING}
 STR_SV_STNAME_EAST                                              :Östra {STRING}
 STR_SV_STNAME_WEST                                              :Västra {STRING}
-STR_SV_STNAME_CENTRAL                                           :{STRING} Centralstation
-STR_SV_STNAME_TRANSFER                                          :{STRING} Övergång
+STR_SV_STNAME_CENTRAL                                           :{STRING} centralstation
+STR_SV_STNAME_TRANSFER                                          :{STRING} övergång
 STR_SV_STNAME_HALT                                              :{STRING} hållplats
-STR_SV_STNAME_VALLEY                                            :{STRING} Dal
+STR_SV_STNAME_VALLEY                                            :{STRING} dal
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Höjder
-STR_SV_STNAME_WOODS                                             :{STRING} Skog
-STR_SV_STNAME_LAKESIDE                                          :{STRING} Sjöstrand
+STR_SV_STNAME_WOODS                                             :{STRING} skog
+STR_SV_STNAME_LAKESIDE                                          :{STRING} sjöstrand
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Växel
-STR_SV_STNAME_AIRPORT                                           :{STRING} Flygplats
-STR_SV_STNAME_OILFIELD                                          :{STRING} Oljefält
-STR_SV_STNAME_MINES                                             :{STRING} Gruva
-STR_SV_STNAME_DOCKS                                             :{STRING} Kaj
+STR_SV_STNAME_AIRPORT                                           :{STRING} flygplats
+STR_SV_STNAME_OILFIELD                                          :{STRING} oljefält
+STR_SV_STNAME_MINES                                             :{STRING} gruva
+STR_SV_STNAME_DOCKS                                             :{STRING} hamn
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
-STR_SV_STNAME_ANNEXE                                            :{STRING} Tillbyggnad
-STR_SV_STNAME_SIDINGS                                           :{STRING} Förort
-STR_SV_STNAME_BRANCH                                            :{STRING} Förgrening
+STR_SV_STNAME_ANNEXE                                            :{STRING} tillbyggnad
+STR_SV_STNAME_SIDINGS                                           :{STRING} förort
+STR_SV_STNAME_BRANCH                                            :{STRING} förgrening
 STR_SV_STNAME_UPPER                                             :Övre {STRING}
 STR_SV_STNAME_LOWER                                             :Nedre {STRING}
-STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopterplats
-STR_SV_STNAME_FOREST                                            :{STRING} Skog
-STR_SV_STNAME_FALLBACK                                          :{STRING} Station #{NUM}
+STR_SV_STNAME_HELIPORT                                          :{STRING} helikopterplats
+STR_SV_STNAME_FOREST                                            :{STRING} skog
+STR_SV_STNAME_FALLBACK                                          :{STRING} station #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
