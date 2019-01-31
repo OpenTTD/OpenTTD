@@ -319,6 +319,15 @@ void Ship::UpdateDeltaXY()
 	this->x_extent      = bb[1];
 	this->y_extent      = bb[0];
 	this->z_extent      = 6;
+
+	if (this->direction != this->rotation) {
+		/* If we are rotating, then it is possible the ship was moved to its next position. In that
+		 * case, because we are still showing the old direction, the ship will appear to glitch sideways
+		 * slightly. We can work around this by applying an additional offset to make the ship appear
+		 * where it was before it moved. */
+		this->x_offs -= this->x_pos - this->rotation_x_pos;
+		this->y_offs -= this->y_pos - this->rotation_y_pos;
+	}
 }
 
 /**
@@ -678,6 +687,9 @@ static void ShipController(Ship *v)
 					/* Stop for rotation */
 					v->cur_speed = 0;
 					v->direction = new_direction;
+					/* Remember our current location to avoid movement glitch */
+					v->rotation_x_pos = v->x_pos;
+					v->rotation_y_pos = v->y_pos;
 					break;
 			}
 		}
@@ -704,6 +716,9 @@ getout:
 
 reverse_direction:
 	v->direction = ReverseDir(v->direction);
+	/* Remember our current location to avoid movement glitch */
+	v->rotation_x_pos = v->x_pos;
+	v->rotation_y_pos = v->y_pos;
 	v->cur_speed = 0;
 	v->path.clear();
 	goto getout;
