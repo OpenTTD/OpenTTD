@@ -867,105 +867,165 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Bridge--
   Bridge -1
     IsValidBridge():    false
-    GetName():          (null : 0x00000000)
+    GetName():
+     VT_RAIL:           (null : 0x00000000)
+     VT_ROAD:           (null : 0x00000000)
+     VT_WATER:          (null : 0x00000000)
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      -1
     GetPrice():         -1
     GetMaxLength():     -1
     GetMinLength():     -1
   Bridge 0
     IsValidBridge():    true
-    GetName():          Wooden rail bridge
+    GetName():
+     VT_RAIL:           Wooden rail bridge
+     VT_ROAD:           Wooden road bridge
+     VT_WATER:          Aqueduct
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      32
     GetPrice():         450
     GetMaxLength():     66
     GetMinLength():     2
   Bridge 1
     IsValidBridge():    true
-    GetName():          Concrete rail bridge
+    GetName():
+     VT_RAIL:           Concrete rail bridge
+     VT_ROAD:           Concrete road bridge
+     VT_WATER:          Aqueduct
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      48
     GetPrice():         630
     GetMaxLength():     4
     GetMinLength():     2
   Bridge 2
     IsValidBridge():    true
-    GetName():          Steel girder rail bridge
+    GetName():
+     VT_RAIL:           Steel girder rail bridge
+     VT_ROAD:           Steel girder road bridge
+     VT_WATER:          Aqueduct
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      64
     GetPrice():         811
     GetMaxLength():     7
     GetMinLength():     2
   Bridge 3
     IsValidBridge():    true
-    GetName():          Reinforced concrete suspension rail bridge
+    GetName():
+     VT_RAIL:           Reinforced concrete suspension rail bridge
+     VT_ROAD:           Reinforced concrete suspension road bridge
+     VT_WATER:          Aqueduct
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      80
     GetPrice():         946
     GetMaxLength():     12
     GetMinLength():     4
   Bridge 4
     IsValidBridge():    true
-    GetName():          Steel suspension rail bridge
+    GetName():
+     VT_RAIL:           Steel suspension rail bridge
+     VT_ROAD:           Steel suspension road bridge
+     VT_WATER:          Aqueduct
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      96
     GetPrice():         1042
     GetMaxLength():     66
     GetMinLength():     5
   Bridge 5
     IsValidBridge():    true
-    GetName():          Steel suspension rail bridge
+    GetName():
+     VT_RAIL:           Steel suspension rail bridge
+     VT_ROAD:           Steel suspension road bridge
+     VT_WATER:          Aqueduct
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      112
     GetPrice():         1081
     GetMaxLength():     66
     GetMinLength():     5
   Bridge 6
     IsValidBridge():    true
-    GetName():          Steel cantilever rail bridge
+    GetName():
+     VT_RAIL:           Steel cantilever rail bridge
+     VT_ROAD:           Steel cantilever road bridge
+     VT_WATER:          Aqueduct
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      160
     GetPrice():         1261
     GetMaxLength():     9
     GetMinLength():     5
   Bridge 7
     IsValidBridge():    true
-    GetName():          Steel cantilever rail bridge
+    GetName():
+     VT_RAIL:           Steel cantilever rail bridge
+     VT_ROAD:           Steel cantilever road bridge
+     VT_WATER:          Aqueduct
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      208
     GetPrice():         1306
     GetMaxLength():     10
     GetMinLength():     5
   Bridge 8
     IsValidBridge():    true
-    GetName():          Steel cantilever rail bridge
+    GetName():
+     VT_RAIL:           Steel cantilever rail bridge
+     VT_ROAD:           Steel cantilever road bridge
+     VT_WATER:          Aqueduct
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      240
     GetPrice():         1396
     GetMaxLength():     11
     GetMinLength():     5
   Bridge 9
     IsValidBridge():    true
-    GetName():          Steel girder rail bridge
+    GetName():
+     VT_RAIL:           Steel girder rail bridge
+     VT_ROAD:           Steel girder road bridge
+     VT_WATER:          Aqueduct
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      256
     GetPrice():         1351
     GetMaxLength():     4
     GetMinLength():     2
   Bridge 10
     IsValidBridge():    false
-    GetName():          (null : 0x00000000)
+    GetName():
+     VT_RAIL:           (null : 0x00000000)
+     VT_ROAD:           (null : 0x00000000)
+     VT_WATER:          (null : 0x00000000)
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      -1
     GetPrice():         -1
     GetMaxLength():     -1
     GetMinLength():     -1
   Bridge 11
     IsValidBridge():    false
-    GetName():          (null : 0x00000000)
+    GetName():
+     VT_RAIL:           (null : 0x00000000)
+     VT_ROAD:           (null : 0x00000000)
+     VT_WATER:          (null : 0x00000000)
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      -1
     GetPrice():         -1
     GetMaxLength():     -1
     GetMinLength():     -1
   Bridge 12
     IsValidBridge():    false
-    GetName():          (null : 0x00000000)
+    GetName():
+     VT_RAIL:           (null : 0x00000000)
+     VT_ROAD:           (null : 0x00000000)
+     VT_WATER:          (null : 0x00000000)
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      -1
     GetPrice():         -1
     GetMaxLength():     -1
     GetMinLength():     -1
   Bridge 13
     IsValidBridge():    false
-    GetName():          (null : 0x00000000)
+    GetName():
+     VT_RAIL:           (null : 0x00000000)
+     VT_ROAD:           (null : 0x00000000)
+     VT_WATER:          (null : 0x00000000)
+     VT_AIR:            (null : 0x00000000)
     GetMaxSpeed():      -1
     GetPrice():         -1
     GetMaxLength():     -1

@@ -28,6 +28,9 @@
  * \li GSViewport::ScrollClientTo
  * \li GSGoal::QuestionClient
  *
+ * Other changes:
+ * \li GSBridge::GetName takes one extra parameter to refer the vehicle type
+ *
  * \b 1.8.0
  *
  * No changes

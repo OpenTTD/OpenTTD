@@ -21,6 +21,9 @@
  * API additions:
  * \li AIAirport::GetMonthlyMaintenanceCost
  *
+ * Other changes:
+ * \li AIBridge::GetName takes one extra parameter to refer the vehicle type
+ *
  * \b 1.8.0
  *
  * No changes

@@ -253,7 +253,11 @@ function Regression::Bridge()
 		if (AIBridge.IsValidBridge(i)) j++;
 		print("  Bridge " + i);
 		print("    IsValidBridge():    " + AIBridge.IsValidBridge(i));
-		print("    GetName():          " + AIBridge.GetName(i));
+		print("    GetName():");
+		print("     VT_RAIL:           " + AIBridge.GetName(i, AIVehicle.VT_RAIL));
+		print("     VT_ROAD:           " + AIBridge.GetName(i, AIVehicle.VT_ROAD));
+		print("     VT_WATER:          " + AIBridge.GetName(i, AIVehicle.VT_WATER));
+		print("     VT_AIR:            " + AIBridge.GetName(i, AIVehicle.VT_AIR));
 		print("    GetMaxSpeed():      " + AIBridge.GetMaxSpeed(i));
 		print("    GetPrice():         " + AIBridge.GetPrice(i, 5));
 		print("    GetMaxLength():     " + AIBridge.GetMaxLength(i));
