@@ -8591,6 +8591,8 @@ static void FinaliseEngineArray()
 			}
 		}
 
+		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
+
 		/* When the train does not set property 27 (misc flags), but it
 		 * is overridden by a NewGRF graphically we want to disable the
 		 * flipping possibility. */
