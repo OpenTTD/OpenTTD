@@ -561,7 +561,7 @@ private:
 	uint32 sel;
 	LiveryClass livery_class;
 	Dimension square;
-	uint livery_height;
+	uint rows;
 	uint line_height;
 	GUIGroupList groups;
 	SmallVector<int, 32> indents;
@@ -678,20 +678,20 @@ private:
 		this->groups.RebuildDone();
 	}
 
-	void SetLiveryHeight()
+	void SetRows()
 	{
 		if (this->livery_class < LC_GROUP_RAIL) {
-			this->livery_height = 0;
+			this->rows = 0;
 			for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 				if (_livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
-					this->livery_height++;
+					this->rows++;
 				}
 			}
 		} else {
-			this->livery_height = this->groups.Length();
+			this->rows = this->groups.Length();
 		}
 
-		this->vscroll->SetCount(this->livery_height);
+		this->vscroll->SetCount(this->rows);
 	}
 
 public:
@@ -708,7 +708,7 @@ public:
 			this->sel = 1;
 			this->LowerWidget(WID_SCL_CLASS_GENERAL);
 			this->BuildGroupList(company);
-			this->SetLiveryHeight();
+			this->SetRows();
 		} else {
 			this->SetSelectedGroup(group);
 		}
@@ -734,10 +734,10 @@ public:
 
 		this->groups.ForceRebuild();
 		this->BuildGroupList((CompanyID)this->window_number);
-		this->SetLiveryHeight();
+		this->SetRows();
 
 		/* Position scrollbar to selected group */
-		for (uint i = 0; i < this->livery_height; i++) {
+		for (uint i = 0; i < this->rows; i++) {
 			if (this->groups[i]->index == sel) {
 				this->vscroll->SetPosition(Clamp(i - this->vscroll->GetCapacity() / 2, 0, max(this->vscroll->GetCount() - this->vscroll->GetCapacity(), 0)));
 				break;
@@ -894,9 +894,11 @@ public:
 		};
 
 		if (livery_class < LC_GROUP_RAIL) {
+			int pos = this->vscroll->GetPosition();
 			const Company *c = Company::Get((CompanyID)this->window_number);
 			for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 				if (_livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
+					if (pos-- > 0) continue;
 					draw_livery(STR_LIVERY_DEFAULT + scheme, c->livery[scheme], HasBit(this->sel, scheme), scheme == LS_DEFAULT, 0);
 				}
 			}
@@ -946,7 +948,7 @@ public:
 					}
 				}
 
-				this->SetLiveryHeight();
+				this->SetRows();
 				this->SetDirty();
 				break;
 
@@ -959,17 +961,16 @@ public:
 				break;
 
 			case WID_SCL_MATRIX: {
-				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SCL_MATRIX);
+				uint row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SCL_MATRIX, 0, this->line_height);
+				if (row >= this->rows) return;
+
 				if (this->livery_class < LC_GROUP_RAIL) {
-					LiveryScheme j = (LiveryScheme)((pt.y - wid->pos_y) / this->line_height);
+					LiveryScheme j = (LiveryScheme)row;
 
-					if (j >= this->livery_height) return;
-
-					for (LiveryScheme scheme = LS_BEGIN; scheme <= j; scheme++) {
+					for (LiveryScheme scheme = LS_BEGIN; scheme <= j && scheme < LS_END; scheme++) {
 						if (_livery_class[scheme] != this->livery_class || !HasBit(_loaded_newgrf_features.used_liveries, scheme)) j++;
-						if (scheme >= LS_END) return;
 					}
-					if (j >= LS_END) return;
+					assert(j < LS_END);
 
 					if (_ctrl_pressed) {
 						ToggleBit(this->sel, j);
@@ -977,10 +978,7 @@ public:
 						this->sel = 1 << j;
 					}
 				} else {
-					uint id_g = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SCL_MATRIX, 0, this->line_height);
-					if (id_g >= this->groups.Length()) return;
-
-					this->sel = this->groups[id_g]->index;
+					this->sel = this->groups[row]->index;
 				}
 				this->SetDirty();
 				break;
