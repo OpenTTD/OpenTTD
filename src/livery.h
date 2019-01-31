@@ -69,12 +69,16 @@ enum LiveryClass {
 	LC_ROAD,
 	LC_SHIP,
 	LC_AIRCRAFT,
+	LC_GROUP_RAIL,
+	LC_GROUP_ROAD,
+	LC_GROUP_SHIP,
+	LC_GROUP_AIRCRAFT,
 	LC_END
 };
 
 /** Information about a particular livery. */
 struct Livery {
-	bool in_use;  ///< Set if this livery should be used instead of the default livery.
+	byte in_use;  ///< Bit 0 set if this livery should override the default livery first colour, Bit 1 for the second colour.
 	byte colour1; ///< First colour, for all vehicles.
 	byte colour2; ///< Second colour, for vehicles with 2CC support.
 };

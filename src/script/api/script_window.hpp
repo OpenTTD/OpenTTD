@@ -1080,10 +1080,15 @@ public:
 		WID_SCL_CLASS_ROAD                           = ::WID_SCL_CLASS_ROAD,                           ///< Class road.
 		WID_SCL_CLASS_SHIP                           = ::WID_SCL_CLASS_SHIP,                           ///< Class ship.
 		WID_SCL_CLASS_AIRCRAFT                       = ::WID_SCL_CLASS_AIRCRAFT,                       ///< Class aircraft.
+		WID_SCL_GROUPS_RAIL                          = ::WID_SCL_GROUPS_RAIL,                          ///< Rail groups.
+		WID_SCL_GROUPS_ROAD                          = ::WID_SCL_GROUPS_ROAD,                          ///< Road groups.
+		WID_SCL_GROUPS_SHIP                          = ::WID_SCL_GROUPS_SHIP,                          ///< Ship groups.
+		WID_SCL_GROUPS_AIRCRAFT                      = ::WID_SCL_GROUPS_AIRCRAFT,                      ///< Aircraft groups.
 		WID_SCL_SPACER_DROPDOWN                      = ::WID_SCL_SPACER_DROPDOWN,                      ///< Spacer for dropdown.
 		WID_SCL_PRI_COL_DROPDOWN                     = ::WID_SCL_PRI_COL_DROPDOWN,                     ///< Dropdown for primary colour.
 		WID_SCL_SEC_COL_DROPDOWN                     = ::WID_SCL_SEC_COL_DROPDOWN,                     ///< Dropdown for secondary colour.
 		WID_SCL_MATRIX                               = ::WID_SCL_MATRIX,                               ///< Matrix.
+		WID_SCL_MATRIX_SCROLLBAR                     = ::WID_SCL_MATRIX_SCROLLBAR,                     ///< Matrix scrollbar.
 	};
 
 	/**
@@ -1471,6 +1476,7 @@ public:
 		WID_GL_CREATE_GROUP                          = ::WID_GL_CREATE_GROUP,                          ///< Create group button.
 		WID_GL_DELETE_GROUP                          = ::WID_GL_DELETE_GROUP,                          ///< Delete group button.
 		WID_GL_RENAME_GROUP                          = ::WID_GL_RENAME_GROUP,                          ///< Rename group button.
+		WID_GL_LIVERY_GROUP                          = ::WID_GL_LIVERY_GROUP,                          ///< Group livery button.
 		WID_GL_REPLACE_PROTECTION                    = ::WID_GL_REPLACE_PROTECTION,                    ///< Replace protection button.
 		WID_GL_INFO                                  = ::WID_GL_INFO,                                  ///< Group info.
 	};

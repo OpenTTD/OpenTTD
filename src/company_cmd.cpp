@@ -517,9 +517,18 @@ restart:;
 void ResetCompanyLivery(Company *c)
 {
 	for (LiveryScheme scheme = LS_BEGIN; scheme < LS_END; scheme++) {
-		c->livery[scheme].in_use  = false;
+		c->livery[scheme].in_use  = 0;
 		c->livery[scheme].colour1 = c->colour;
 		c->livery[scheme].colour2 = c->colour;
+	}
+
+	Group *g;
+	FOR_ALL_GROUPS(g) {
+		if (g->owner == c->index) {
+			g->livery.in_use  = 0;
+			g->livery.colour1 = c->colour;
+			g->livery.colour2 = c->colour;
+		}
 	}
 }
 
@@ -946,23 +955,26 @@ CommandCost CmdSetCompanyManagerFace(TileIndex tile, DoCommandFlag flags, uint32
  * @param flags operation to perform
  * @param p1 bitstuffed:
  * p1 bits 0-7 scheme to set
- * p1 bits 8-9 set in use state or first/second colour
+ * p1 bit 8 set first/second colour
  * @param p2 new colour for vehicles, property, etc.
  * @param text unused
  * @return the cost of this operation or an error
  */
 CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Colours colour = Extract<Colours, 0, 4>(p2);
+	Colours colour = Extract<Colours, 0, 8>(p2);
 	LiveryScheme scheme = Extract<LiveryScheme, 0, 8>(p1);
-	byte state = GB(p1, 8, 2);
+	bool second = HasBit(p1, 8);
 
-	if (scheme >= LS_END || state >= 3 || colour == INVALID_COLOUR) return CMD_ERROR;
+	if (scheme >= LS_END || (colour >= COLOUR_END && colour != INVALID_COLOUR)) return CMD_ERROR;
+
+	/* Default scheme can't be reset to invalid. */
+	if (scheme == LS_DEFAULT && colour == INVALID_COLOUR) return CMD_ERROR;
 
 	Company *c = Company::Get(_current_company);
 
 	/* Ensure no two companies have the same primary colour */
-	if (scheme == LS_DEFAULT && state == 0) {
+	if (scheme == LS_DEFAULT && !second) {
 		const Company *cc;
 		FOR_ALL_COMPANIES(cc) {
 			if (cc != c && cc->colour == colour) return CMD_ERROR;
@@ -970,52 +982,48 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	}
 
 	if (flags & DC_EXEC) {
-		switch (state) {
-			case 0:
-				c->livery[scheme].colour1 = colour;
+		if (!second) {
+			if (scheme != LS_DEFAULT) SB(c->livery[scheme].in_use, 0, 1, colour != INVALID_COLOUR);
+			if (colour == INVALID_COLOUR) colour = (Colours)c->livery[LS_DEFAULT].colour1;
+			c->livery[scheme].colour1 = colour;
 
-				/* If setting the first colour of the default scheme, adjust the
-				 * original and cached company colours too. */
-				if (scheme == LS_DEFAULT) {
-					_company_colours[_current_company] = colour;
-					c->colour = colour;
-					CompanyAdminUpdate(c);
+			/* If setting the first colour of the default scheme, adjust the
+			 * original and cached company colours too. */
+			if (scheme == LS_DEFAULT) {
+				for (int i = 1; i < LS_END; i++) {
+					if (!HasBit(c->livery[i].in_use, 0)) c->livery[i].colour1 = colour;
 				}
-				break;
+				_company_colours[_current_company] = colour;
+				c->colour = colour;
+				CompanyAdminUpdate(c);
+			}
+		} else {
+			if (scheme != LS_DEFAULT) SB(c->livery[scheme].in_use, 1, 1, colour != INVALID_COLOUR);
+			if (colour == INVALID_COLOUR) colour = (Colours)c->livery[LS_DEFAULT].colour2;
+			c->livery[scheme].colour2 = colour;
 
-			case 1:
-				c->livery[scheme].colour2 = colour;
-				break;
+			if (scheme == LS_DEFAULT) {
+				for (int i = 1; i < LS_END; i++) {
+					if (!HasBit(c->livery[i].in_use, 1)) c->livery[i].colour2 = colour;
+				}
+			}
+		}
 
-			case 2:
-				c->livery[scheme].in_use = colour != 0;
-
-				/* Now handle setting the default scheme's in_use flag.
-				 * This is different to the other schemes, as it signifies if any
-				 * scheme is active at all. If this flag is not set, then no
-				 * processing of vehicle types occurs at all, and only the default
-				 * colours will be used. */
-
-				/* If enabling a scheme, set the default scheme to be in use too */
-				if (colour != 0) {
-					c->livery[LS_DEFAULT].in_use = true;
+		if (c->livery[scheme].in_use != 0) {
+			/* If enabling a scheme, set the default scheme to be in use too */
+			c->livery[LS_DEFAULT].in_use = 1;
+		} else {
+			/* Else loop through all schemes to see if any are left enabled.
+			 * If not, disable the default scheme too. */
+			c->livery[LS_DEFAULT].in_use = 0;
+			for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+				if (c->livery[scheme].in_use != 0) {
+					c->livery[LS_DEFAULT].in_use = 1;
 					break;
 				}
-
-				/* Else loop through all schemes to see if any are left enabled.
-				 * If not, disable the default scheme too. */
-				c->livery[LS_DEFAULT].in_use = false;
-				for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-					if (c->livery[scheme].in_use) {
-						c->livery[LS_DEFAULT].in_use = true;
-						break;
-					}
-				}
-				break;
-
-			default:
-				break;
+			}
 		}
+
 		ResetVehicleColourMap();
 		MarkWholeScreenDirty();
 
