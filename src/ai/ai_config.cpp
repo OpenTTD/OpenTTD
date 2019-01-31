@@ -118,3 +118,14 @@ void AIConfig::SetSetting(const char *name, int value)
 
 	ScriptConfig::SetSetting(name, value);
 }
+
+void AIConfig::AddRandomDeviation()
+{
+	int start_date = this->GetSetting("start_date");
+
+	ScriptConfig::AddRandomDeviation();
+
+	/* start_date = 0 is a special case, where random deviation does not occur.
+	 * If start_date was not already 0, then a minimum value of 1 must apply. */
+	this->SetSetting("start_date", start_date != 0 ? max(1, this->GetSetting("start_date")) : 0);
+}
