@@ -29,6 +29,19 @@
 #define MT(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 1 << EF_RAIL_FLIPS, 0, 0, STR_EMPTY, CARGO_AGING_TICKS }
 
 /**
+ * Writes the properties of a multiple-unit train into the EngineInfo struct.
+ * @see EngineInfo
+ * @param a base introduction date (days since 1920-01-01)
+ * @param b decay speed
+ * @param c life length (years)
+ * @param d base life (years)
+ * @param e cargo type
+ * @param f Bitmask of the climates
+ * @note the 5 between b and f is the load amount
+ */
+#define MM(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 1 << EF_RAIL_FLIPS | 1 << EF_RAIL_IS_MU, 0, 0, STR_EMPTY, CARGO_AGING_TICKS }
+
+/**
  * Writes the properties of a train carriage into the EngineInfo struct.
  * @param a base introduction date (days since 1920-01-01)
  * @param b decay speed
@@ -102,8 +115,8 @@ static const EngineInfo _orig_engine_info[] = {
 	MT(  5114,  20,  21,  30, 0              , T      ), //   8 Chaney 'Jubilee' (Steam)
 	MT(  5479,  20,  20,  30, 0              , T      ), //   9 Ginzu 'A4' (Steam)
 	MT( 12419,  20,  23,  25, 0              , T      ), //  10 SH '8P' (Steam)
-	MT( 13149,  20,  12,  30, CT_PASSENGERS  , T      ), //  11 Manley-Morel DMU (Diesel)
-	MT( 23376,  20,  15,  35, CT_PASSENGERS  , T      ), //  12 'Dash' (Diesel)
+	MM( 13149,  20,  12,  30, CT_PASSENGERS  , T      ), //  11 Manley-Morel DMU (Diesel)
+	MM( 23376,  20,  15,  35, CT_PASSENGERS  , T      ), //  12 'Dash' (Diesel)
 	MT( 14976,  20,  18,  28, 0              , T      ), //  13 SH/Hendry '25' (Diesel)
 	MT( 14245,  20,  20,  30, 0              , T      ), //  14 UU '37' (Diesel)
 	MT( 15341,  20,  22,  33, 0              , T      ), //  15 Floss '47' (Diesel)
@@ -111,13 +124,13 @@ static const EngineInfo _orig_engine_info[] = {
 	MT( 16437,  20,  20,  30, 0              ,   A|S  ), //  17 CS 2400 (Diesel)
 	MT( 18993,  20,  22,  30, 0              ,   A|S  ), //  18 Centennial (Diesel)
 	MT( 13880,  20,  22,  30, 0              ,   A|S  ), //  19 Kelling 3100 (Diesel)
-	MT( 20454,  20,  22,  30, 0              ,   A|S  ), //  20 Turner Turbo (Diesel)
+	MM( 20454,  20,  22,  30, 0              ,   A|S  ), //  20 Turner Turbo (Diesel)
 	MT( 16071,  20,  22,  30, 0              ,   A|S  ), //  21 MJS 1000 (Diesel)
 	MT( 20820,  20,  20,  25, CT_MAIL        , T      ), //  22 SH '125' (Diesel)
 	MT( 16437,  20,  23,  30, 0              , T      ), //  23 SH '30' (Electric)
 	MT( 19359,  20,  23,  80, 0              , T      ), //  24 SH '40' (Electric)
-	MT( 23376,  20,  25,  30, 0              , T      ), //  25 'T.I.M.' (Electric)
-	MT( 26298,  20,  25,  50, 0              , T      ), //  26 'AsiaStar' (Electric)
+	MM( 23376,  20,  25,  30, 0              , T      ), //  25 'T.I.M.' (Electric)
+	MM( 26298,  20,  25,  50, 0              , T      ), //  26 'AsiaStar' (Electric)
 	MW(  1827,  20,  20,  50, CT_PASSENGERS  , T|A|S|Y), //  27 Passenger Carriage
 	MW(  1827,  20,  20,  50, CT_MAIL        , T|A|S|Y), //  28 Mail Van
 	MW(  1827,  20,  20,  50, CT_COAL        , T|A    ), //  29 Coal Truck
