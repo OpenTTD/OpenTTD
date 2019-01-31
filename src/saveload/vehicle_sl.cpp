@@ -375,6 +375,17 @@ void AfterLoadVehicles(bool part_of_load)
 			FOR_ALL_SHIPS(s) {
 				s->rotation = s->direction;
 			}
+		} else {
+			Ship *s;
+			FOR_ALL_SHIPS(s) {
+				if (s->rotation == s->direction) continue;
+				/* In case we are rotating on gameload, set the rotation position to
+				 * the current position, otherwise the applied workaround offset would
+				 * be with respect to 0,0.
+				 */
+				s->rotation_x_pos = s->x_pos;
+				s->rotation_y_pos = s->y_pos;
+			}
 		}
 	}
 
