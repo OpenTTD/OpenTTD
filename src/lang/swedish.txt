@@ -717,8 +717,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Visa god
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Visa transportrutter på kartan
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Visa vegetation på kartan
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Visa markägare på kartan
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klicka på en typ av industri för att växla om den visas. Ctrl+Klick visar inga andra typer av industrier. Ctrl+Klick igen visar alla typer av industrier.
-STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klicka på ett företag för att växla om det företagets egendomar visas. Ctrl+Klick visar inga företag utom det valda. Ctrl+Klick igen visar alla företag.
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klicka på en typ av industri för att växla om den visas. Ctrl+klick visar inga andra typer av industrier. Ctrl+klick igen visar alla typer av industrier.
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klicka på ett företag för att växla om det företagets egendomar visas. Ctrl+klick visar inga företag utom det valda. Ctrl+klick igen visar alla företag.
 STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Klicka på en godstyp för att växla visning av dess egenskap. Ctrl+klick stänger av alla godstyper utom den valda. Ctrl+klicka igen för att aktivera alla godstyper
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Vägar
@@ -977,13 +977,13 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Var 12:e månad
 ############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Språk
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Välj språk att använda
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Välj vilket språk som ska användas
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Helskärm
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Kryssa i den här rutan för att spela OpenTTD i helskärmsläge
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skärmupplösning
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Välj skärmupplösning att använda
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Välj vilken skärmupplösning som ska användas
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annan
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Gränssnittstorlek
@@ -999,11 +999,11 @@ STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} sakn
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligare information om basgrafik-set
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Grundljudspaket
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Välj grundljudspaket att använda
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Välj vilket grundljudspaket som ska användas
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligare information om grundljudpaketet
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikpaket valt
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Välj vilket musikpaket att använda
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Välj vilket musikpaket som ska användas
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fil{P "" er} korrupt{P "" a}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yttligare information om musikpaketet
 
@@ -1413,7 +1413,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Visa ankomster 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Visa förväntade ankomst- och avgångstider i tidtabeller
 STR_CONFIG_SETTING_QUICKGOTO                                    :Snabbskapande av fordonsorder: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Förvälj 'åk till'-pekaren när orderfönstret öppnas
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standard järnvägsräls (efter nytt/laddat spel): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standardspår-typ (efter nytt/laddat spel): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Spårtyp som ska förväljas efter att ett spel startas eller laddas. 'Först tillgängliga' väljer den äldsta spårtypen, 'Senast tillgängliga' väljer den nyaste spårtypen och 'Mest använda' väljer den spårtyp som för närvarande är mest använd
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Först tillgängliga
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Senast tillgängliga
@@ -1546,7 +1546,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Välj vilket å
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Använd signal-GUI: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Visa ett fönster för att välja signaltyp att bygga, istället för enbart fönsterlös signaltyps-rotation genom Ctrl+klick på byggda signaler
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Standardsignal-typ: {STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Signaltyp att använda som standard
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Signaltyp som ska användas som standard
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normal
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Avancerad
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Avancerad envägssignal
@@ -1682,7 +1682,7 @@ STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafik
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ljud
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Gränssnitt
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generelt
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Vyportar
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Vyfönster
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruktion
 STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE} Nyheter / Rådgivare
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Företag
@@ -1829,7 +1829,7 @@ STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Visa fä
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Visa färgschema för flygplan
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Välj huvudfärg för det aktuella schemat. Ctrl+klick kommer att välja färgen för alla scheman
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Välj andravalsfärgen för det aktuella schemat. Ctrl+klick kommer att välja färgen för alla scheman
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Välj ett färgschema att ändra eller välj flera genom CTRL+klick. Bocka för rutan för att använda scheman
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Välj ett färgschema att ändra eller välj flera genom Ctrl+klick. Bocka för rutan för att använda scheman
 
 STR_LIVERY_DEFAULT                                              :Normalt färgschema
 STR_LIVERY_STEAM                                                :Ånglok
@@ -2342,8 +2342,8 @@ STR_RAIL_NAME_MONORAIL                                          :Monorail
 STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Riktning för depå
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Välj riktning för depå
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Riktning för tågdepå
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Välj riktning för tågdepå
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Riktmärke
@@ -2356,7 +2356,7 @@ STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Välj ri
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Antal spår
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Välj antal plattformar för järnvägsstation
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Längd på plattform
-STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Välj längden på järnvägsstation
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Välj längd på järnvägsstation
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Släpp
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg en station genom att dra & släppa
 
@@ -2408,7 +2408,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bygg vä
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bygg spårvägssektion. Ctrl växlar mellan att bygga/ta bort spårvagnssektion. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Använd Automatvägläge för att bygga vägsektion. Ctrl växlar mellan att bygga/ta bort vägkonstruktion. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Använd Automatspårläge för att bygga spårväg. Ctrl växlar mellan bygg/ta bort spårväg. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bygg bussgarage (för konstruktion eller service av vägfordon). Shift växlar mellan att bygga/visa beräknad kostnad
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bygg vägfordonsdepå (för konstruktion och service av vägfordon). Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bygg spårvagnsdepå (för konstruktion och service av fordon). Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bygg busshållplats. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bygg passagerarspårvagnsstation. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
@@ -2423,10 +2423,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Växla m
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Växla mellan att bygga/riva spårväg
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Riktning för bussgarage
-STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Välj riktning för bussgarage
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Spårvagnsdepåns orientering
-STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Välj spårvagnsdepåns orientering
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Riktning för vägfordonsdepå
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Välj riktning för vägfordonsdepå
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Riktning för spårvagnsdepå
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Välj riktning för spårvagnsdepå
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Riktining för busshållplats
@@ -2434,9 +2434,9 @@ STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Välj ri
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Riktning för lastbrygga
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Välj riktning för lastbrygga
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Riktning för passagerarspårvagnsstation
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Välj passagerarspårvagnsstationens orientering
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Välj riktning för passagerarspårvagnsstation
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Riktning för godspårvagnsstation
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Välj godsspårvagnsstationens orientering
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Välj riktning för godsspårvagnsstation
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Farledskonstruktion
@@ -2451,8 +2451,8 @@ STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definier
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Placera flod
 
 # Ship depot construction window
-STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientering för Skeppsvarv
-STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Välj skeppsvarvets orientering
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Riktning för skeppsvarv
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Välj riktning för skeppsvarv
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Hamn
@@ -2644,7 +2644,7 @@ STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Järnvägsdepå
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Väg
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Väg med gatubelysning
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Väg kantad av träd
-STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Bussgarage
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Vägfordonsdepå
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Väg-/Järnvägskorsning
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Spårväg
 
@@ -2735,6 +2735,7 @@ STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Flygpl
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Världs-tick:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Länkgrafens fördröjning:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Grafikåtergivning:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Vyfönster:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Videoutmatning:
 STR_FRAMERATE_SOUND                                             :{BLACK}Ljudmixning:
 ############ End of leave-in-this-order
@@ -2748,6 +2749,7 @@ STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Flygplans-tick
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Världs-tick
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Länkgrafens fördröjning
 STR_FRAMETIME_CAPTION_DRAWING                                   :Grafikåtergivning
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Återgivning av vyer
 STR_FRAMETIME_CAPTION_VIDEO                                     :Videoutmatning
 STR_FRAMETIME_CAPTION_SOUND                                     :Ljudmixning
 ############ End of leave-in-this-order
@@ -2909,7 +2911,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ej kompati
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Spara förinställning
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista över tillgängliga förinställningar, väljer man att kopiera den till spara namn nedan
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Skriv in ett namn
-STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}För tillfället vald namn för förinställningen att spara
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nuvarande valt namn för förinställningen att spara
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Avbryt
 STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ändra inte det förinställda
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Spara
@@ -3520,7 +3522,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Byt namn på te
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} fordon{P "" s}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} fordon{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tåg - drag vagn/lok för att lägga till/ta bort från tåg. Högerklicka på tåg för information. Håll Ctrl nedtryckt för att respektive funktion även ska gälla resten av tåget
@@ -3546,7 +3548,7 @@ STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Byt ut a
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Byt ut alla flygplan i hangaren
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nytt fordon
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nytt Fordon
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nytt fordon
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nytt skepp
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nytt flygplan
 
@@ -3566,7 +3568,7 @@ STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Köper e
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Köper en kopia av ett flygplan. Tryck på den här knappen och sedan på ett flygplan i eller utanför hangaren. Ctrl+klick gör så att de delar order. Shift+klick visar kostnad utan att köpa
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrera huvudvyn ovanför depån. Ctrl+klick öppnar en ny vy över depåns läge
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrera huvudvyn ovanför bussgaraget. Ctrl+klick öppnar en ny vy över bussgaragets läge
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrera huvudvyn ovanför vägfordonsdepån. Ctrl+klick öppnar en ny vy över vägfordonsdepåns läge
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrera huvudvyn ovanför skeppdepån. Ctrl+klick öppnar en ny vy över skeppdepåns läge
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrera huvudvyn ovanför hangaren. Ctrl+klick öppnar en ny vy över hangarens läge
 
@@ -3583,7 +3585,7 @@ STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Klicka f
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Klicka för att starta alla tåg i depån
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Klicka för att starta alla fordon i depån
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Klicka för att starta alla skepp i depån
-STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Klicka för att starta alla skepp i depån
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Klicka för att starta alla flygplan i hangaren
 
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du är på väg att sälja alla fordon i depån. Är du säker?
 
@@ -3654,9 +3656,9 @@ STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrera
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrera huvudvyn ovanför flygplanet. Ctrl+klick följer flygplanet i huvudvyn
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Skicka tåg till depå. Ctrl+klick skickar tåget enbart på service
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Skicka fordon till depå. CTRL + klick servar endast
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Skicka skepp till depå. CTRL + klick servar endast
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Skicka flygplan till hangar. CTRL + klick servar endast
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Skicka fordon till depå. Ctrl+klick servar endast
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Skicka skepp till depå. Ctrl+klick servar endast
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Skicka flygplan till hangar. Ctrl+klick servar endast
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Köper en kopia av tåget inklusive alla vagnar. Ctrl+klick gör så att de delar order. Shift+klick visar kostnad utan att köpa
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Köper en kopia av fordonet. Ctrl+klick gör så att de delar order. Shift+klick visar kostnad utan att köpa
@@ -4329,7 +4331,7 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boje
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kan inte bygga depå här...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kan inte bygga bussgarage här...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kan inte bygga vägfordonsdepå här...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan inte bygga spårvagnsdepå här...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan inte bygga skeppsdepå här...
 
@@ -4942,8 +4944,8 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Riktmärke {TOW
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Järnvägsdepå
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Järnvägsterminal #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Vägfordonsdepå
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Vägfordons terminal #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} vägfordonsdepå
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} vägfordonsdepå #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Hamnterminal
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Hamnterminal#{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar

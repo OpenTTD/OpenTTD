@@ -190,6 +190,7 @@ STR_COLOUR_ORANGE                                               :Laranja
 STR_COLOUR_BROWN                                                :Castanho
 STR_COLOUR_GREY                                                 :Cinzento
 STR_COLOUR_WHITE                                                :Branco
+STR_COLOUR_RANDOM                                               :Aleatório
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
@@ -476,6 +477,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Captura de ecr�
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura com resolução máxima
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Captura com resolução normal
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de mapa
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Mostrar taxa de fotograma
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o OpenTTD...
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de gráficos
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Alternar as caixas envolventes
@@ -651,6 +653,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Nenhuma música disponível
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}'{STRING}'
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Faixa
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Título
@@ -671,6 +674,7 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Ligar/De
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostrar janela de selecção de faixas de música
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Programa musical - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} '{STRING}'
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Índice de faixas
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programa - '{STRING}'
@@ -811,6 +815,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Presidente)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} subsidiou a construção da nova cidade de {TOWN}!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Uma nova cidade chamada {TOWN} foi construida!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Nov{G 0 o o a os as} {STRING} em construção em {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Nov{G 0 o o a os as} {STRING} est{G 0 á á á ão ão} a ser plantad{G 0 o o a os as} em {TOWN}!
@@ -923,6 +928,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Sul Africa
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiano (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novo Rublo Russo (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mexicano (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Veículos rodoviários
@@ -1336,6 +1343,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Cor do terreno 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde Escuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Mover janela de exibição com Botão Direito Rato, posição do rato bloqueada
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mover mapa com Botão Direito Rato, posição do rato bloqueada
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Suavizar deslocamento da navegação no mapa: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a vista principal navega para uma posição específica ao clicar no mapa pequeno ou ao dar um comando para navegar para um objecto específico no mapa. Se activo, a vista principal navega suavemente, se inactivo a vista salta directamente para o destino.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas nas várias ferramentas de construção: {STRING}
@@ -2689,9 +2698,32 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 A equipa do OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Taxa de fotogramas dos gráficos: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Número de fotogramas de video renderizados por segundo.
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Factor de velocidade actual do jogo: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Quão rápido o jogo está a ser executado, comparado com a velocidade esperada na taxa de simulação normal.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Actual
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Média
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} frames/s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :Total de loops no jogo
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Movimentação de carga:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}Quantidade de atraso no percurso do veículo rodoviário:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Ship ticks:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  World ticks:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Renderização gráfica:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Janelas de exibição do mundo:
+STR_FRAMERATE_SOUND                                             :{BLACK}Mistura de Som:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Loop de jogo
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Movimentação de carga
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Quantidade de atraso no percurso do Comboio
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Renderização de janela de exibição do mundo
+STR_FRAMETIME_CAPTION_VIDEO                                     :Saída de video
 ############ End of leave-in-this-order
 
 
@@ -2834,6 +2866,8 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versão:
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Versão mínima compatível: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Padrão (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Padrão (D) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parâmetros: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Sem informação disponível
@@ -3715,7 +3749,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova cap
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}{}{BLACK}Lucro da conversão: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Custo da adaptação: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Lucro da conversão: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecionar os veículos a reaparelhar. Arrastando com o rato permite selecionar vários veículos. Clicando sobre um espaço vazio irá selecionar todo o veículo. Ctrl+Clique irá selecionar um veículo e composição
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecionar os veículos a readaptar. Arrastando com o rato permite selecionar vários veículos. Clicando sobre um espaço vazio irá selecionar todo o veículo. Ctrl+Clique irá selecionar um veículo e composição
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Seleccionar tipo de carga do comboio
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Seleccione o tipo de carga para o veículo
@@ -3789,6 +3823,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Idade (anos)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requer manutenção
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tempo de vida restante (anos)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Máxima fiabilidade
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar os dados do veículo com o parâmetro passado
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :é igual a
@@ -4472,6 +4507,7 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Sons originais 
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Sons originais da edição Windows de Transport Tycoon Deluxe.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Um conjunto de sons vazio.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Música original da edição Windows de Transport Tycoon Deluxe.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Música original da edição DOS do Transport Tycoon Deluxe.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Um conjunto de música vazio.
 
 ##id 0x2000

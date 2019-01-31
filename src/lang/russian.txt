@@ -316,6 +316,7 @@ STR_COLOUR_BROWN                                                :Коричне�
 STR_COLOUR_GREY                                                 :Серый
 STR_COLOUR_WHITE                                                :Белый
 STR_COLOUR_RANDOM                                               :Случайный
+STR_COLOUR_DEFAULT                                              :По умолчанию
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}мил{P я и ь}/ч
@@ -3600,6 +3601,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Щёлк
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Создать группу
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Удалить выбранную группу
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Переименовать выбранную группу
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Изменить цвет выбранной группы
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Защита транспорта в группе от глобальной автозамены
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Удаление группы

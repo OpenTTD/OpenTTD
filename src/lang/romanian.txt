@@ -674,7 +674,9 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTB
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Lista melodiilor
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Şterge
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Schimbă setul
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Şterge programul curent (doar pentru cele personale)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Schimbă selecția muzicală pe un alt set instalat
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click pe o melodie pentru a o adăuga în programul personal curent
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Apasă pe melodie pentru a o elimina din programul actual (doar Custom1 sau Custom2)
 
@@ -997,6 +999,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecta�
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fişier{P "" e} corupt{P "" e}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informaţii adiţionale despre setul de muzică de bază
 
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nu s-a putut obține lista de rezoluții suportate
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Comutarea pe întreg ecranul a eşuat
 
 # Custom currency window
@@ -1112,6 +1115,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Setări joc (st
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Setări joc (stocate în salvări; afectează doar jocul curent)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Setări companie (stocate în salvări; afectează doar jocurile noi)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Setări compenia (stocate în salvări; afectează doar compania curentă)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Arată toate rezultatele de căutare setând{}{SILVER}Categoria {BLACK}în {WHITE}{STRING}
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nespecificat -
 
 STR_CONFIG_SETTING_OFF                                          :Inactiv
@@ -1286,6 +1290,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Generator teren
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tip teren: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Doar TerraGenesis) Frecvența dealurilor din peisaj
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densitatea industriei: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distanța maximă de la marginea hărții pentru rafinării: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinăriile de petrol vor fi construite doar la marginea hărţii, sau pe coastă, în cazul harţilor insulare
@@ -1302,6 +1307,7 @@ STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Alegeți distri
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Niciunul
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Îmbunătăţit
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Alege banda pentru condus
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotaţie hartă înălţimi: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Spre stânga
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Spre dreapta
@@ -1632,6 +1638,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localizare
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efecte sonore
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfaţă
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}General
 STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Câmpuri vizuale
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construcţie
 STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Știri / Consilieri
@@ -1765,7 +1772,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Schimbă
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activează accesul la valorile de producţie: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Schemă de culori nouă
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Schemă de culori
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Afişează schemele generale de culori
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Arată schemele de culori pentru trenuri
@@ -2326,7 +2333,7 @@ STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Semnal d
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Semnal de cale cu sens unic (electric){}Un semnal de cale permite trecerea simultană a mai multor trenuri prin blocurile de semnale, dacă trenul poate rezerva o cale până la un punct sigur de oprire. Semnalele de cale cu sens unic permit trecerea intr-un singur sens
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversie semnal{}Când este selectat, click-ul pe un semafor existent îl va converti în tipul şi varianta selectată de semnalizare. Ctrl+Click va comuta varianta existentă. Shift+Click afişează costul estimat al conversiei
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densitatea semnalelor plasate prin tragerea cu mouse-ul
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Scade densitatea semnalelor plasate prin tragerea cu mouse-ul
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Redu distanța semnalelor plasate prin tragerea cu mouse-ul
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Creşte densitatea semnalelor plasate prin tragerea cu mouse-ul
 
 # Bridge selection window
@@ -2649,7 +2656,12 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Echipa OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Număr de evenimente de joc simulate per secundă.
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Medie
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Date bazate pe măsurători {COMMA}
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 ############ Leave those lines in this order!!
+STR_FRAMERATE_VIDEO                                             :{BLACK}Ieșire video:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -2940,6 +2952,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Populaţ
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Metropolă)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Populaţia: {ORANGE}{COMMA}{BLACK}  Locuinţe: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} luna trecută: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Transporturi necesare dezvoltării oraşului:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} necesare
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} necesare iarna
@@ -3297,15 +3310,18 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupuri 
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Click pentru a creea un grup
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Şterge grupul selectat
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Redenumeşte grupul selectat
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Schimbă uniforma grupului selectat
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Click aici pentru a proteja acest grup de la înlocuirile automate globale
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Şterge Grup
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Sigur dorești ștergerea grupului și a descendenților lui?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Adaugă vehicule partajate
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Elimină toate vehiculele
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Redenumeşte un grup
 
+STR_GROUP_OCCUPANCY                                             :Utilizare curentă:
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Noi vehicule feroviare

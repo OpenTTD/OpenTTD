@@ -2871,6 +2871,8 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versión
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Mín. versión compatible: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Por Defecto (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Por Defecto (D) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parámetros: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Ninguno
 
@@ -3332,6 +3334,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}La industria ha anunciado su cierre inminente!
 
 STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Requiere: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce: {YELLOW}{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necesita:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
