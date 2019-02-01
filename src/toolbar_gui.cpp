@@ -141,6 +141,7 @@ static void PopupMainToolbarMenu(Window *w, WidgetID widget, const std::initiali
 static const int CTMN_CLIENT_LIST = -1; ///< Show the client list
 static const int CTMN_SPECTATE    = -2; ///< Become spectator
 static const int CTMN_SPECTATOR   = -3; ///< Show a company window as spectator
+static const int CTMN_NEW_COMPANY = -4; ///< Create a new company
 
 /**
  * Pop up a generic company list menu.
@@ -154,8 +155,19 @@ static void PopupMainCompanyToolbMenu(Window *w, WidgetID widget, CompanyMask gr
 
 	switch (widget) {
 		case WID_TN_COMPANIES:
-			if (!_networking) break;
-
+			if (!_networking) {
+				if (_local_company == COMPANY_SPECTATOR) {
+					bool human = false;
+					for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
+						if (Company::IsValidHumanID(c)) {
+							human = true;
+							break;
+						}
+					}
+					if (!human) list.push_back(MakeDropDownListStringItem(STR_COMPANY_LIST_NEW_COMPANY, CTMN_NEW_COMPANY, Company::GetNumItems() >= MAX_COMPANIES));
+				}
+				break;
+			}
 			/* Add the client list button for the companies menu */
 			list.push_back(MakeDropDownListStringItem(STR_NETWORK_COMPANY_LIST_CLIENT_LIST, CTMN_CLIENT_LIST));
 
@@ -594,6 +606,17 @@ static CallBackFunction MenuClickCompany(int index)
 				return CBF_NONE;
 		}
 	}
+
+	if (!_networking && _local_company == COMPANY_SPECTATOR) {
+		if (index == CTMN_NEW_COMPANY) {
+			extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid());
+			Company *c = DoStartupNewCompany(false);
+			c->settings = _settings_client.company;
+			SetLocalCompany(c->index);
+			return CBF_NONE;
+		}
+	}
+
 	ShowCompany((CompanyID)index);
 	return CBF_NONE;
 }

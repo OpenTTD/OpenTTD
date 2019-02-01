@@ -2246,7 +2246,7 @@ struct CompanyWindow : Window
 			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_HOSTILE_TAKEOVER)->SetDisplayedPlane((local || _local_company == COMPANY_SPECTATOR || !c->is_ai || _networking) ? SZSP_NONE : 0);
 
 			/* Multiplayer buttons. */
-			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_MULTIPLAYER)->SetDisplayedPlane((!_networking || !NetworkCanJoinCompany(c->index) || _local_company == c->index) ? (int)SZSP_NONE : 0);
+			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_MULTIPLAYER)->SetDisplayedPlane(((!_networking && (c->is_ai || local || _local_company != COMPANY_SPECTATOR)) || (_networking && (!NetworkCanJoinCompany(c->index) || _local_company == c->index))) ? (int)SZSP_NONE : 0);
 
 			this->SetWidgetDisabledState(WID_C_COMPANY_JOIN, c->is_ai);
 
@@ -2512,6 +2512,11 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_COMPANY_JOIN: {
+				if (!_networking) {
+					if (_local_company == COMPANY_SPECTATOR) SetLocalCompany((CompanyID)this->window_number);
+					break;
+				}
+
 				this->query_widget = WID_C_COMPANY_JOIN;
 				CompanyID company = this->window_number;
 				if (_network_server) {

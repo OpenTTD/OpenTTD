@@ -72,8 +72,8 @@ static int32_t ClickMoneyCheat(int32_t, int32_t change_direction)
  */
 static int32_t ClickChangeCompanyCheat(int32_t new_value, int32_t change_direction)
 {
-	while ((uint)new_value < Company::GetPoolSize()) {
-		if (Company::IsValidID((CompanyID)new_value)) {
+	while ((uint)new_value <= COMPANY_SPECTATOR) {
+		if (Company::IsValidID((CompanyID)new_value) || (new_value == COMPANY_SPECTATOR && _settings_client.gui.start_spectator)) {
 			SetLocalCompany((CompanyID)new_value);
 			return _local_company.base();
 		}
@@ -303,7 +303,7 @@ struct CheatWindow : Window {
 						case STR_CHEAT_CHANGE_COMPANY: {
 							SetDParam(0, val + 1);
 							uint offset = WidgetDimensions::scaled.hsep_indent + GetStringBoundingBox(ce->str).width;
-							DrawCompanyIcon(_local_company, rtl ? text_right - offset - WidgetDimensions::scaled.hsep_indent : text_left + offset, y + icon_y_offset);
+							if (_local_company != COMPANY_SPECTATOR) DrawCompanyIcon(_local_company, rtl ? text_right - offset - WidgetDimensions::scaled.hsep_indent : text_left + offset, y + icon_y_offset);
 							break;
 						}
 

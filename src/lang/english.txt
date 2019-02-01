@@ -644,6 +644,9 @@ STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Show det
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Key to company graphs
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Toggle graph of this company
 
+# Company list toolbar dropdown
+STR_COMPANY_LIST_NEW_COMPANY                                    :New company
+
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Company League Table
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'

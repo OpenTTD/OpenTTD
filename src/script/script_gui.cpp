@@ -1139,11 +1139,9 @@ struct ScriptDebugWindow : public Window {
 
 		this->SetWidgetDisabledState(WID_SCRD_SETTINGS, this->filter.script_debug_company == CompanyID::Invalid() ||
 			GetConfig(this->filter.script_debug_company)->GetConfigList()->empty());
-		extern CompanyID _local_company;
 		this->SetWidgetDisabledState(WID_SCRD_RELOAD_TOGGLE,
 				this->filter.script_debug_company == CompanyID::Invalid() ||
-				this->filter.script_debug_company == OWNER_DEITY ||
-				this->filter.script_debug_company == _local_company);
+				this->filter.script_debug_company == OWNER_DEITY);
 		this->SetWidgetDisabledState(WID_SCRD_CONTINUE_BTN, this->filter.script_debug_company == CompanyID::Invalid() ||
 			(this->filter.script_debug_company == OWNER_DEITY ? !Game::IsPaused() : !AI::IsPaused(this->filter.script_debug_company)));
 	}

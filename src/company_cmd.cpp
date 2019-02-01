@@ -925,9 +925,6 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 		case CCA_DELETE: { // Delete a company
 			if (reason >= CRR_END) return CMD_ERROR;
 
-			/* We can't delete the last existing company in singleplayer mode. */
-			if (!_networking && Company::GetNumItems() == 1) return CMD_ERROR;
-
 			Company *c = Company::GetIfValid(company_id);
 			if (c == nullptr) return CMD_ERROR;
 

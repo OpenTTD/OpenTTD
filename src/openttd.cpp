@@ -842,8 +842,8 @@ static void OnStartScenario()
 static void OnStartGame(bool dedicated_server)
 {
 	/* Update the local company for a loaded game. It is either the first available company
-	 * or in the case of a dedicated server, a spectator */
-	SetLocalCompany(dedicated_server ? COMPANY_SPECTATOR : GetFirstPlayableCompanyID());
+	 * or, in the case of starting as spectator or a dedicated server, a spectator. */
+	SetLocalCompany((dedicated_server || _settings_client.gui.start_spectator) ? COMPANY_SPECTATOR : GetFirstPlayableCompanyID());
 
 	NetworkOnGameStart();
 
@@ -862,23 +862,25 @@ static void MakeNewGameDone()
 		return;
 	}
 
-	/* Create a single company */
-	DoStartupNewCompany(false);
+	if (!_settings_client.gui.start_spectator) {
+		/* Create a single company */
+		DoStartupNewCompany(false);
 
-	Company *c = Company::Get(CompanyID::Begin());
-	c->settings = _settings_client.company;
+		Company *c = Company::Get(CompanyID::Begin());
+		c->settings = _settings_client.company;
 
-	/* Overwrite color from settings if needed
-	 * COLOUR_END corresponds to Random colour */
+		/* Overwrite color from settings if needed
+		 * COLOUR_END corresponds to Random colour */
 
-	if (_settings_client.gui.starting_colour != COLOUR_END) {
-		c->colour = _settings_client.gui.starting_colour;
-		ResetCompanyLivery(c);
-		_company_colours[c->index] = c->colour;
-	}
+		if (_settings_client.gui.starting_colour != COLOUR_END) {
+			c->colour = _settings_client.gui.starting_colour;
+			ResetCompanyLivery(c);
+			_company_colours[c->index] = c->colour;
+		}
 
-	if (_settings_client.gui.starting_colour_secondary != COLOUR_END && HasBit(_loaded_newgrf_features.used_liveries, LS_DEFAULT)) {
-		Command<CMD_SET_COMPANY_COLOUR>::Post(LS_DEFAULT, false, _settings_client.gui.starting_colour_secondary);
+		if (_settings_client.gui.starting_colour_secondary != COLOUR_END && HasBit(_loaded_newgrf_features.used_liveries, LS_DEFAULT)) {
+			Command<CMD_SET_COMPANY_COLOUR>::Post(LS_DEFAULT, false, _settings_client.gui.starting_colour_secondary);
+		}
 	}
 
 	OnStartGame(false);
@@ -1231,6 +1233,7 @@ void StateGameLoop()
 
 	Layouter::ReduceLineCache();
 
+	bool valid_local_company = _game_mode != GM_EDITOR && !_networking && _settings_client.gui.start_spectator && Company::IsValidID(_local_company);
 	if (_game_mode == GM_EDITOR) {
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 		RunTileLoop();
@@ -1281,6 +1284,10 @@ void StateGameLoop()
 	}
 
 	assert(IsLocalCompany());
+	if (valid_local_company && !Company::IsValidID(_local_company)) {
+		/* _local_company no longer exists due to bankruptcy. */
+		SetLocalCompany(COMPANY_SPECTATOR);
+	}
 }
 
 /** Interval for regular autosaves. Initialized at zero to disable till settings are loaded. */
