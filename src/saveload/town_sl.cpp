@@ -192,8 +192,8 @@ static const SaveLoad _town_desc[] = {
 
 	SLE_CONDLST(Town, psa_list,            REF_STORAGE,                SLV_161, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Town, cargo_produced,        SLE_FILE_U32 | SLE_VAR_U64, SLV_166, SLV_199),
-	SLE_CONDVAR(Town, cargo_produced,        SLE_UINT64,                 SLV_199, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, cargo_produced,        SLE_FILE_U32 | SLE_VAR_U64, SLV_166, SLV_EXTEND_CARGOTYPES),
+	SLE_CONDVAR(Town, cargo_produced,        SLE_UINT64,                 SLV_EXTEND_CARGOTYPES, SL_MAX_VERSION),
 
 	/* reserve extra space in savegame here. (currently 30 bytes) */
 	SLE_CONDNULL(30, SLV_2, SL_MAX_VERSION),
@@ -275,7 +275,7 @@ static void Save_TOWN()
 static void Load_TOWN()
 {
 	int index;
-	uint num_cargo = IsSavegameVersionBefore(SLV_199) ? 32 : NUM_CARGO;
+	uint num_cargo = IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
 
 	while ((index = SlIterateArray()) != -1) {
 		Town *t = new (index) Town();
