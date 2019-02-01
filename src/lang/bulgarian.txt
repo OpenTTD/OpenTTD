@@ -2627,7 +2627,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Земя, пр�
 STR_ABOUT_OPENTTD                                               :{WHITE}Относно OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Авторски права {COPYRIGHT} 1995 Крис Сойер (Chris Sawyer), Всички права са запазени
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD версия {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 The OpenTTD team
 
 # Framerate display window
 ############ Leave those lines in this order!!

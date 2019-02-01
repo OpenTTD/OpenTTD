@@ -2749,7 +2749,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Vállalat álta
 STR_ABOUT_OPENTTD                                               :{WHITE}Az OpenTTD-ről
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Eredeti copyright {COPYRIGHT} 1995 Chris Sawyer, Minden jog fenntartva
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD {REV} verzió
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 Az OpenTTD csapat
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 Az OpenTTD csapat
 
 # Framerate display window
 ############ Leave those lines in this order!!

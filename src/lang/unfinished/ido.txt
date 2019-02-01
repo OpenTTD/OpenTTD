@@ -776,7 +776,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Stabeyo di komp
 
 # About OpenTTD window
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versiono {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 La kruo OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 La kruo OpenTTD
 
 # Framerate display window
 ############ Leave those lines in this order!!

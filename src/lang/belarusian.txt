@@ -3029,7 +3029,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Зямля на
 STR_ABOUT_OPENTTD                                               :{WHITE}Аб OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Арыґінальныя аўтарскія правы {COPYRIGHT} 1995 Chris Sawyer. Усе правы абароненыя.
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD вэрсія {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002–2018 Каманда распрацоўнікаў OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002–2019 Каманда распрацоўнікаў OpenTTD
 
 # Framerate display window
 ############ Leave those lines in this order!!

@@ -2926,7 +2926,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Tìr a' chompan
 STR_ABOUT_OPENTTD                                               :{WHITE}Mu dheidhinn OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Còir-lethbhreac tùsail {COPYRIGHT} 1995 Chris Sawyer, a h-uile còir glèidhte
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD tionndadh {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 An sgioba OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 An sgioba OpenTTD
 
 # Framerate display window
 ############ Leave those lines in this order!!

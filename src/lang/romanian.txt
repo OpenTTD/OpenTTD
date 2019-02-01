@@ -2653,7 +2653,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Teren în propr
 STR_ABOUT_OPENTTD                                               :{WHITE}Despre OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Toate drepturile rezervate
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versiunea {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Echipa OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 Echipa OpenTTD
 
 # Framerate display window
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Număr de evenimente de joc simulate per secundă.

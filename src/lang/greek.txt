@@ -2803,7 +2803,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ιδιοκτη�
 STR_ABOUT_OPENTTD                                               :{WHITE}Σχετικά με το OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Αρχικά Πνευματικά Δικαιώματα {COPYRIGHT} 1995 Chris Sawyer, Όλα τα δικαιώματα διατηρούνται
 STR_ABOUT_VERSION                                               :{BLACK}Έκδοση OpenTTD{REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Η ομάδα του OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 Η ομάδα του OpenTTD
 
 # Framerate display window
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Αριθμός στιγμών παιχνιδιού που προσομοιώνεται ανά δευτερόλεπτο.

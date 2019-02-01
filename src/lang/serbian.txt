@@ -2890,7 +2890,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Zemljište u po
 STR_ABOUT_OPENTTD                                               :{WHITE}O OpenTTD-u
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Originalni kopirajt {COPYRIGHT} 1995 Chris Sawyer, Sva prava zadržana
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD verzija {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD tim
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD tim
 
 # Framerate display window
 ############ Leave those lines in this order!!

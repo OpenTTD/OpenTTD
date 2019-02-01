@@ -2700,7 +2700,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :O terreno é pr
 STR_ABOUT_OPENTTD                                               :{WHITE}Sobre o OpenTTD...
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Todos os direitos reservados
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versão {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 A equipe do OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 A equipe do OpenTTD
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Taxa de quadros

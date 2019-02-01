@@ -2586,7 +2586,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Konpainia jabe 
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD-ri buruz
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD bertsioa {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 The OpenTTD team
 
 # Framerate display window
 ############ Leave those lines in this order!!

@@ -2693,7 +2693,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Tanah milik Per
 STR_ABOUT_OPENTTD                                               :{WHITE}Tentang OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Hak Cipta asli {COPYRIGHT} 1995 Chris Sawyer, Hak Cipta dilindungi
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versi {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Tim OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 Tim OpenTTD
 
 # Framerate display window
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)

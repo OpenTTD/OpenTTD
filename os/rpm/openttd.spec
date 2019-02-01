@@ -2,7 +2,7 @@
 # spec file for package openttd
 #
 # Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
-# Copyright (c) 2007-2018 The OpenTTD developers
+# Copyright (c) 2007-2019 The OpenTTD developers
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed

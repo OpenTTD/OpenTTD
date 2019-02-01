@@ -2421,7 +2421,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ogn hjá fyrit�
 STR_ABOUT_OPENTTD                                               :{WHITE}Um OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Upprunalig upphavsrættindi {COPYRIGHT} 1995 Chris Sawyer, Øll rættindi umbiðin
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD útgáva {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD toymi
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD toymi
 
 # Framerate display window
 ############ Leave those lines in this order!!
