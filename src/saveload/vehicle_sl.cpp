@@ -369,7 +369,7 @@ void AfterLoadVehicles(bool part_of_load)
 			}
 		}
 
-		if (IsSavegameVersionBefore(SLV_204)) {
+		if (IsSavegameVersionBefore(SLV_SHIP_ROTATION)) {
 			/* Ship rotation added */
 			Ship *s;
 			FOR_ALL_SHIPS(s) {
@@ -762,8 +762,8 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		SLE_WRITEBYTE(Vehicle, type),
 		SLE_VEH_INCLUDE(),
 		      SLE_VAR(Ship, state,                     SLE_UINT8),
-		SLE_CONDDEQUE(Ship, path,                      SLE_UINT8,                  SLV_203, SL_MAX_VERSION),
-		  SLE_CONDVAR(Ship, rotation,                  SLE_UINT8,                  SLV_204, SL_MAX_VERSION),
+		SLE_CONDDEQUE(Ship, path,                      SLE_UINT8,                  SLV_SHIP_PATH_CACHE, SL_MAX_VERSION),
+		  SLE_CONDVAR(Ship, rotation,                  SLE_UINT8,                  SLV_SHIP_ROTATION, SL_MAX_VERSION),
 
 		SLE_CONDNULL(16, SLV_2, SLV_144), // old reserved space
 

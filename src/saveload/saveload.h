@@ -280,15 +280,15 @@ enum SaveLoadVersion : uint16 {
 	SLV_196,                                ///< 196   27778 v1.7
 	SLV_197,                                ///< 197   27978 v1.8
 	SLV_198,                                ///< 198  PR#6763 Switch town growth rate and counter to actual game ticks
-	SLV_199,                                ///< 199  PR#6802 Extend cargotypes to 64
+	SLV_EXTEND_CARGOTYPES,                  ///< 199  PR#6802 Extend cargotypes to 64
 
-	SLV_200,                                ///< 200  PR#6805 Extend railtypes to 64, adding uint16 to map array.
-	SLV_201,                                ///< 201  PR#6885 Extend NewGRF persistant storages.
-	SLV_202,                                ///< 202  PR#6867 Increase industry cargo slots to 16 in, 16 out
-	SLV_203,                                ///< 203  PR#7072 Add path cache for ships
-	SLV_204,                                ///< 204  PR#7065 Add extra rotation stages for ships.
+	SLV_EXTEND_RAILTYPES,                   ///< 200  PR#6805 Extend railtypes to 64, adding uint16 to map array.
+	SLV_EXTEND_PERSISTENT_STORAGE,          ///< 201  PR#6885 Extend NewGRF persistant storages.
+	SLV_EXTEND_INDUSTRY_CARGO_SLOTS,        ///< 202  PR#6867 Increase industry cargo slots to 16 in, 16 out
+	SLV_SHIP_PATH_CACHE,                    ///< 203  PR#7072 Add path cache for ships
+	SLV_SHIP_ROTATION,                      ///< 204  PR#7065 Add extra rotation stages for ships.
 
-	SLV_205,                                ///< 205  PR#7108 Livery storage change and group liveries.
+	SLV_GROUP_LIVERIES,                     ///< 205  PR#7108 Livery storage change and group liveries.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

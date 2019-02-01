@@ -1214,8 +1214,8 @@ bool AfterLoadGame()
 		}
 	}
 
-	/* Railtype moved from m3 to m8 in version SLV_200. */
-	if (IsSavegameVersionBefore(SLV_200)) {
+	/* Railtype moved from m3 to m8 in version SLV_EXTEND_RAILTYPES. */
+	if (IsSavegameVersionBefore(SLV_EXTEND_RAILTYPES)) {
 		for (TileIndex t = 0; t < map_size; t++) {
 			switch (GetTileType(t)) {
 				case MP_RAILWAY:
@@ -3015,7 +3015,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_202)) {
+	if (IsSavegameVersionBefore(SLV_EXTEND_INDUSTRY_CARGO_SLOTS)) {
 		/* Make sure added industry cargo slots are cleared */
 		Industry *i;
 		FOR_ALL_INDUSTRIES(i) {

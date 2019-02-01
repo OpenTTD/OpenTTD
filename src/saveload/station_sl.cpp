@@ -329,7 +329,7 @@ static void Load_STNS()
 	_cargo_days = 0;
 	_cargo_feeder_share = 0;
 
-	uint num_cargo = IsSavegameVersionBefore(SLV_55) ? 12 : IsSavegameVersionBefore(SLV_199) ? 32 : NUM_CARGO;
+	uint num_cargo = IsSavegameVersionBefore(SLV_55) ? 12 : IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		Station *st = new (index) Station();
@@ -377,7 +377,7 @@ static void Ptrs_STNS()
 	/* Don't run when savegame version is higher than or equal to 123. */
 	if (!IsSavegameVersionBefore(SLV_123)) return;
 
-	uint num_cargo = IsSavegameVersionBefore(SLV_199) ? 32 : NUM_CARGO;
+	uint num_cargo = IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
 	Station *st;
 	FOR_ALL_STATIONS(st) {
 		if (!IsSavegameVersionBefore(SLV_68)) {
@@ -441,8 +441,8 @@ static const SaveLoad _station_desc[] = {
 	      SLE_VAR(Station, last_vehicle_type,          SLE_UINT8),
 	      SLE_VAR(Station, had_vehicle_of_type,        SLE_UINT8),
 	      SLE_LST(Station, loading_vehicles,           REF_VEHICLE),
-	  SLE_CONDVAR(Station, always_accepted,            SLE_FILE_U32 | SLE_VAR_U64, SLV_127, SLV_199),
-	  SLE_CONDVAR(Station, always_accepted,            SLE_UINT64,                 SLV_199, SL_MAX_VERSION),
+	  SLE_CONDVAR(Station, always_accepted,            SLE_FILE_U32 | SLE_VAR_U64, SLV_127, SLV_EXTEND_CARGOTYPES),
+	  SLE_CONDVAR(Station, always_accepted,            SLE_UINT64,                 SLV_EXTEND_CARGOTYPES, SL_MAX_VERSION),
 
 	      SLE_END()
 };
@@ -522,7 +522,7 @@ static void Load_STNN()
 {
 	_num_flows = 0;
 
-	uint num_cargo = IsSavegameVersionBefore(SLV_199) ? 32 : NUM_CARGO;
+	uint num_cargo = IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		bool waypoint = (SlReadByte() & FACIL_WAYPOINT) != 0;
@@ -583,7 +583,7 @@ static void Ptrs_STNN()
 	/* Don't run when savegame version lower than 123. */
 	if (IsSavegameVersionBefore(SLV_123)) return;
 
-	uint num_cargo = IsSavegameVersionBefore(SLV_199) ? 32 : NUM_CARGO;
+	uint num_cargo = IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
 	Station *st;
 	FOR_ALL_STATIONS(st) {
 		for (CargoID i = 0; i < num_cargo; i++) {
