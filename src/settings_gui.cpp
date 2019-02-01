@@ -182,6 +182,7 @@ struct GameOptionsWindow : Window {
 	~GameOptionsWindow()
 	{
 		DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
+		DeleteWindowByClass(WC_TEXTFILE);
 		if (this->reload) _switch_mode = SM_MENU;
 	}
 
