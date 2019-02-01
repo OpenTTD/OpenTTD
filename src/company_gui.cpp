@@ -2312,8 +2312,12 @@ struct CompanyWindow : Window
 				reinit = true;
 			}
 
-			/* Multiplayer buttons. */
-			plane = ((!_networking) ? (int)SZSP_NONE : (int)(local ? CWP_MP_C_PWD : CWP_MP_C_JOIN));
+			if (!_networking) {
+				plane = (int)((!c->is_ai && !local && _local_company == COMPANY_SPECTATOR) ? CWP_MP_C_JOIN : SZSP_NONE);
+			} else {
+				/* Multiplayer buttons. */
+				plane = (int)(local ? CWP_MP_C_PWD : CWP_MP_C_JOIN);
+			}
 			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_MULTIPLAYER);
 			if (plane != wi->shown_plane) {
 				wi->SetDisplayedPlane(plane);
@@ -2594,8 +2598,14 @@ struct CompanyWindow : Window
 			case WID_C_COMPANY_PASSWORD:
 				if (this->window_number == _local_company) ShowNetworkCompanyPasswordWindow(this);
 				break;
+#endif /* ENABLE_NETWORK */
 
 			case WID_C_COMPANY_JOIN: {
+				if (!_networking) {
+					if (_local_company == COMPANY_SPECTATOR) SetLocalCompany((CompanyID)this->window_number);
+					break;
+				}
+#ifdef ENABLE_NETWORK
 				this->query_widget = WID_C_COMPANY_JOIN;
 				CompanyID company = (CompanyID)this->window_number;
 				if (_network_server) {
@@ -2608,9 +2618,9 @@ struct CompanyWindow : Window
 					/* just send the join command */
 					NetworkClientRequestMove(company);
 				}
+#endif /* ENABLE_NETWORK */
 				break;
 			}
-#endif /* ENABLE_NETWORK */
 		}
 	}
 

@@ -164,6 +164,7 @@ struct GUISettings {
 	bool   show_date_in_logs;                ///< whether to show dates in console logs
 	bool   newgrf_developer_tools;           ///< activate NewGRF developer tools and allow modifying NewGRFs in an existing game
 	bool   ai_developer_tools;               ///< activate AI developer tools
+	bool   start_spectator;                  ///< activate a spectator slot in single player and initiate games as a spectator
 	bool   scenario_developer;               ///< activate scenario developer: allow modifying NewGRFs in an existing game
 	uint8  settings_restriction_mode;        ///< selected restriction mode in adv. settings GUI. @see RestrictionMode
 	bool   newgrf_show_old_versions;         ///< whether to show old versions in the NewGRF list

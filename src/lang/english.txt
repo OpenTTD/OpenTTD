@@ -775,6 +775,7 @@ STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {C
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  PAUSED  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSAVE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SAVING GAME  *  *
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}- -  Spectator  - -
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Message History

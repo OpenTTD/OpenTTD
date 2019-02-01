@@ -297,17 +297,10 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	if (_networking) NetworkClientsToSpectators(old_owner);
 #endif /* ENABLE_NETWORK */
 	if (old_owner == _local_company) {
-		/* Single player cheated to AI company.
-		 * There are no spectators in single player, so we must pick some other company. */
-		assert(!_networking);
+		/* Single player company bankrupts. Move player to Spectator. */
+		assert(!_networking && _settings_client.gui.start_spectator);
 		Backup<CompanyByte> cur_company2(_current_company, FILE_LINE);
-		Company *c;
-		FOR_ALL_COMPANIES(c) {
-			if (c->index != old_owner) {
-				SetLocalCompany(c->index);
-				break;
-			}
-		}
+		SetLocalCompany(COMPANY_SPECTATOR);
 		cur_company2.Restore();
 		assert(old_owner != _local_company);
 	}
@@ -624,11 +617,12 @@ static void CompanyCheckBankrupt(Company *c)
 		 * after 9 months (if it still had value after 6 months) */
 		default:
 		case 10: {
-			if (!_networking && _local_company == c->index) {
-				/* If we are in offline mode, leave the company playing. Eg. there
-				 * is no THE-END, otherwise mark the client as spectator to make sure
-				 * he/she is no long in control of this company. However... when you
-				 * join another company (cheat) the "unowned" company can bankrupt. */
+			if (!_networking && _local_company == c->index && !_settings_client.gui.start_spectator) {
+				/* If we are in offline mode and if spectator mode isn't active,
+				 * leave the company playing. Eg. there is no THE-END, otherwise
+				 * mark the client as spectator to make sure he/she is no long
+				 * in control of this company. However... when you join another
+				 * company (cheat) the "unowned" company can bankrupt. */
 				c->bankrupt_asked = MAX_UVALUE(CompanyMask);
 				break;
 			}
@@ -640,8 +634,8 @@ static void CompanyCheckBankrupt(Company *c)
 			 * updating the local company triggers an assert later on. In the
 			 * case of a network game the command will be processed at a time
 			 * that changing the current company is okay. In case of single
-			 * player we are sure (the above check) that we are not the local
-			 * company and thus we won't be moved. */
+			 * player we ensure that the local company remains the same until
+			 * the end of StateGameLoop, where it could be changed. */
 			if (!_networking || _network_server) DoCommandP(0, CCA_DELETE | (c->index << 16), CRR_BANKRUPT, CMD_COMPANY_CTRL);
 			break;
 		}
@@ -657,7 +651,11 @@ static void CompaniesGenStatistics()
 	/* Check for bankruptcy each month */
 	Company *c;
 	FOR_ALL_COMPANIES(c) {
+		Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+		Backup<CompanyByte> loc_company(_local_company, FILE_LINE);
 		CompanyCheckBankrupt(c);
+		loc_company.Restore();
+		cur_company.Restore();
 	}
 
 	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);

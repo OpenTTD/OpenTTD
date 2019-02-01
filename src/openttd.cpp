@@ -938,23 +938,25 @@ static void MakeNewGameDone()
 		return;
 	}
 
-	/* Create a single company */
-	DoStartupNewCompany(false);
+	if (!_settings_client.gui.start_spectator) {
+		/* Create a single company */
+		DoStartupNewCompany(false);
 
-	Company *c = Company::Get(COMPANY_FIRST);
-	c->settings = _settings_client.company;
+		Company *c = Company::Get(COMPANY_FIRST);
+		c->settings = _settings_client.company;
 
-	/* Overwrite color from settings if needed
-	 * COLOUR_END corresponds to Random colour */
-	if (_settings_client.gui.starting_colour != COLOUR_END) {
-		c->colour = _settings_client.gui.starting_colour;
-		ResetCompanyLivery(c);
-		_company_colours[c->index] = (Colours)c->colour;
+		/* Overwrite color from settings if needed
+		 * COLOUR_END corresponds to Random colour */
+		if (_settings_client.gui.starting_colour != COLOUR_END) {
+			c->colour = _settings_client.gui.starting_colour;
+			ResetCompanyLivery(c);
+			_company_colours[c->index] = (Colours)c->colour;
+		}
 	}
 
 	IConsoleCmdExec("exec scripts/game_start.scr 0");
 
-	SetLocalCompany(COMPANY_FIRST);
+	SetLocalCompany(_settings_client.gui.start_spectator ? COMPANY_SPECTATOR : COMPANY_FIRST);
 
 	InitializeRailGUI();
 
@@ -1113,9 +1115,9 @@ void SwitchToMode(SwitchMode new_mode)
 					/* Reset engine pool to simplify changing engine NewGRFs in scenario editor. */
 					EngineOverrideManager::ResetToCurrentNewGRFConfig();
 				}
-				/* Update the local company for a loaded game. It is either always
-				 * company #1 (eg 0) or in the case of a dedicated server a spectator */
-				SetLocalCompany(_network_dedicated ? COMPANY_SPECTATOR : COMPANY_FIRST);
+				/* Update the local company for a loaded game. It is either always company #1 (eg 0)
+				 * or, in the case of starting as spectator or a dedicated server, a spectator. */
+				SetLocalCompany((_network_dedicated || _settings_client.gui.start_spectator) ? COMPANY_SPECTATOR : COMPANY_FIRST);
 				/* Execute the game-start script */
 				IConsoleCmdExec("exec scripts/game_start.scr 0");
 				/* Decrease pause counter (was increased from opening load dialog) */
@@ -1374,6 +1376,7 @@ void StateGameLoop()
 
 	Layouter::ReduceLineCache();
 
+	bool valid_local_company = _game_mode != GM_EDITOR && !_networking && _settings_client.gui.start_spectator && Company::IsValidID(_local_company);
 	if (_game_mode == GM_EDITOR) {
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 		RunTileLoop();
@@ -1418,6 +1421,10 @@ void StateGameLoop()
 	}
 
 	assert(IsLocalCompany());
+	if (valid_local_company && !Company::IsValidID(_local_company)) {
+		/* _local_company no longer exists due to bankruptcy. */
+		SetLocalCompany(COMPANY_SPECTATOR);
+	}
 }
 
 /**

@@ -798,11 +798,10 @@ bool AfterLoadGame()
 	 * version. It didn't show up before r12070. */
 	if (IsSavegameVersionBefore(SLV_87)) UpdateVoidTiles();
 
-	/* If Load Scenario / New (Scenario) Game is used,
-	 *  a company does not exist yet. So create one here.
-	 * 1 exception: network-games. Those can have 0 companies
-	 *   But this exception is not true for non-dedicated network servers! */
-	if (!Company::IsValidID(COMPANY_FIRST) && (!_networking || (_networking && _network_server && !_network_dedicated))) {
+	/* If Load Scenario / New (Scenario) Game is used, a company does not exist yet.
+	 * Create one here whenever start_spectator is disabled.
+	 * 1 exception: dedicated network servers. Those can have 0 companies. */
+	if (!Company::IsValidID(COMPANY_FIRST) && !_settings_client.gui.start_spectator && (!_networking || (_networking && _network_server && !_network_dedicated))) {
 		DoStartupNewCompany(false);
 		Company *c = Company::Get(COMPANY_FIRST);
 		c->settings = _settings_client.company;
