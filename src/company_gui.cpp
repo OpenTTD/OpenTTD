@@ -700,9 +700,6 @@ public:
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SCL_MATRIX_SCROLLBAR);
 
-		this->square = GetSpriteSize(SPR_SQUARE);
-		this->line_height = max(this->square.height, (uint)FONT_HEIGHT_NORMAL) + 4;
-
 		if (group == INVALID_GROUP) {
 			this->livery_class = LC_OTHER;
 			this->sel = 1;
@@ -770,6 +767,9 @@ public:
 
 			case WID_SCL_MATRIX: {
 				/* 11 items in the default rail class */
+				this->square = GetSpriteSize(SPR_SQUARE);
+				this->line_height = max(this->square.height, (uint)FONT_HEIGHT_NORMAL) + 4;
+
 				size->height = 11 * this->line_height;
 				resize->width = 1;
 				resize->height = this->line_height;
@@ -784,6 +784,7 @@ public:
 				FALLTHROUGH;
 
 			case WID_SCL_PRI_COL_DROPDOWN: {
+				this->square = GetSpriteSize(SPR_SQUARE);
 				int padding = this->square.width + NWidgetScrollbar::GetVerticalDimension().width + 10;
 				for (const StringID *id = _colour_dropdown; id != endof(_colour_dropdown); id++) {
 					size->width = max(size->width, GetStringBoundingBox(*id).width + padding);
