@@ -2780,6 +2780,8 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No hay i
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtrar palabras:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Sobrescribir archivo
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}¿Estás seguro de sobrescribir el archivo?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Indicar un nombre para la partida a guardar
 

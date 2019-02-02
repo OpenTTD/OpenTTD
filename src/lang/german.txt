@@ -190,6 +190,7 @@ STR_COLOUR_ORANGE                                               :Orange
 STR_COLOUR_BROWN                                                :Braun
 STR_COLOUR_GREY                                                 :Grau
 STR_COLOUR_WHITE                                                :Weiß
+STR_COLOUR_RANDOM                                               :Zufällig
 STR_COLOUR_DEFAULT                                              :Standard
 
 # Units used in OpenTTD
@@ -477,6 +478,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Sta
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Screenshot in Nahaufnahme
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Screenshot mit normalem Zoom
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Riesiger Screenshot (Standard: Strg+G)
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Bildwiederholrate anzeigen
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Über OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-Ausrichtung
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Hüllquader anzeigen/ausblenden
@@ -814,6 +816,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Manager)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} finanziert die Gründung der Stadt {TOWN}!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Eine neue Stadt mit dem Namen {TOWN} wurde errichtet!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} gebaut!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} angepflanzt!
@@ -881,9 +884,9 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ansicht {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}In Zusatzansicht kopieren
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Zusatzansicht ändern
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Aktuelle Position der Hauptansicht in diese Zusatzansicht kopieren
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Aus Zusatzansicht einfügen
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Hauptansicht ändern
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Hauptansicht zur Position dieser Zusatzansicht scrollen
 
 # Game options window
@@ -1340,6 +1343,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Farbe von Landf
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grün
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dunkelgrün
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Lila
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Bewege die Karte mit rechter Maustaste
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Bewege die Karte mit linker Maustaste
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Weicher Bildlauf beim Springen zu einer Position: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Lege fest, auf welche Weise die Hauptansicht an eine bestimmte Position wechselt (z.B. wenn ein Punkt auf der Weltkarte angeklickt wird oder der Standort eines Bahnhofs angezeigt werden soll). Ist diese Option eingeschaltet, schwenkt die Ansicht über die Karte, bis sie am gewünschten Punkt angekommen ist. Ist sie ausgeschaltet, springt die Ansicht sofort an die gewünschte Position
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Beim Bauen Tooltip mit Abmessungen anzeigen: {STRING}
@@ -1808,7 +1813,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ändert 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Erlaube manuelles Ändern der Produktionsleistungen: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Neues Farbschema
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Farbschema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Allgemeines Farbschema anzeigen
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Zugfarbschema anzeigen

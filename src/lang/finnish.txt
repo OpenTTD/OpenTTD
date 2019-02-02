@@ -132,7 +132,7 @@ STR_QUANTITY_N_A                                                :-
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINY_FONT}MA
 STR_ABBREV_COAL                                                 :{TINY_FONT}HL
-STR_ABBREV_MAIL                                                 :{TINY_FONT}SP
+STR_ABBREV_MAIL                                                 :{TINY_FONT}PO
 STR_ABBREV_OIL                                                  :{TINY_FONT}ÖL
 STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}KA
 STR_ABBREV_GOODS                                                :{TINY_FONT}TA
@@ -1816,7 +1816,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Muuta ny
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Salli tuotantomäärien muuttaminen: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Uusi väriteema
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY}: Väriteema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Näytä yleiset väriteemat
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Näytä junan väriteemat
@@ -3832,7 +3832,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Miten ku
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :on yhtä kuin
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ei ole yhtä kuin
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :on pienempi kuin
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :on suurempi kuin
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :on pienempi tai yhtä kuin
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :on enemmän kuin
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :on enemmän tai yhtä kuin
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :on tosi

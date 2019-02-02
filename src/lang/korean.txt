@@ -191,6 +191,7 @@ STR_COLOUR_BROWN                                                :갈색
 STR_COLOUR_GREY                                                 :회색
 STR_COLOUR_WHITE                                                :흰색
 STR_COLOUR_RANDOM                                               :무작위
+STR_COLOUR_DEFAULT                                              :기본
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -2779,6 +2780,8 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}사용 �
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}검색할 문자열:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}파일 덮어쓰기
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}정말로 이미 존재하는 파일에 덮어씌우시겠습니까?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}게임을 저장할 파일명을 입력하세요
 
@@ -3421,6 +3424,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}그룹 -
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}그룹 만들기
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}선택한 그룹 삭제
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}선택한 그룹 이름 바꾸기
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}선택한 그룹의 차량 색상을 변경합니다.
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}클릭하여 전체 자동 교체로부터 이 그룹을 보호합니다.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}그룹 삭제

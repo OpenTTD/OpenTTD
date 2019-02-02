@@ -2959,6 +2959,8 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Нет �
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Фильтр:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Перезапись файла
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Перезаписать файл?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Введите название сохраняемой игры
 

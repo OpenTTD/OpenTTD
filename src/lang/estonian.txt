@@ -1861,7 +1861,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Muuda jo
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Tootmisväärtuste muutmine: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Uus värvivalik
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Värvivalik
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Näita üldiseid värvistikke
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Näita rongide värvistikke
