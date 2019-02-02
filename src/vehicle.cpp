@@ -1813,11 +1813,12 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 					if (parent_engine_type == INVALID_ENGINE) {
 						return LS_PASSENGER_WAGON_STEAM;
 					} else {
+						bool is_mu = HasBit(EngInfo(parent_engine_type)->misc_flags, EF_RAIL_IS_MU);
 						switch (RailVehInfo(parent_engine_type)->engclass) {
 							default: NOT_REACHED();
 							case EC_STEAM:    return LS_PASSENGER_WAGON_STEAM;
-							case EC_DIESEL:   return LS_PASSENGER_WAGON_DIESEL;
-							case EC_ELECTRIC: return LS_PASSENGER_WAGON_ELECTRIC;
+							case EC_DIESEL:   return is_mu ? LS_DMU : LS_PASSENGER_WAGON_DIESEL;
+							case EC_ELECTRIC: return is_mu ? LS_EMU : LS_PASSENGER_WAGON_ELECTRIC;
 							case EC_MONORAIL: return LS_PASSENGER_WAGON_MONORAIL;
 							case EC_MAGLEV:   return LS_PASSENGER_WAGON_MAGLEV;
 						}
