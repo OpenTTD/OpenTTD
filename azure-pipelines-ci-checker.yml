@@ -1,0 +1,23 @@
+trigger:
+- master
+pr:
+- master
+
+jobs:
+- job: linux
+  displayName: 'Linux'
+  pool:
+    vmImage: 'ubuntu-16.04'
+
+  strategy:
+    matrix:
+      commit-checker: {}
+
+  steps:
+  - template: azure-pipelines/templates/ci-git-rebase.yml
+  # The dockers already have the dependencies installed
+  # The dockers already have OpenGFX installed
+  - template: azure-pipelines/templates/linux-build.yml
+    parameters:
+      Image: compile-farm-ci
+      Tag: $(Agent.JobName)
