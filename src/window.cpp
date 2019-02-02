@@ -3100,7 +3100,7 @@ void UpdateWindows()
 
 	CallWindowRealtimeTickEvent(delta_ms);
 
-#ifdef ENABLE_NETWORKING
+#ifdef ENABLE_NETWORK
 	static GUITimer network_message_timer = GUITimer(1);
 	if (network_message_timer.Elapsed(delta_ms)) {
 		network_message_timer.SetInterval(1000);
