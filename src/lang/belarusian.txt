@@ -2405,7 +2405,7 @@ STR_NETWORK_CLIENT                                              :Кліент
 STR_NETWORK_SPECTATORS                                          :Назіральнікі
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Увядзіце суму грошай, якую вы хочаце перадаць
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Назіральнік
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Назіральнік
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не захоўваць уведзены пароль

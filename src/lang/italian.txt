@@ -2123,7 +2123,7 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spettatori
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Inserire la quantità di denaro da donare
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spettatore
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Spettatore
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Non salvare la password inserita

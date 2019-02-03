@@ -2286,7 +2286,7 @@ STR_NETWORK_CLIENT                                              :Igrač
 STR_NETWORK_SPECTATORS                                          :Posmatrači
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Unesite svotu novca koju želite dati
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Posmatrač
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Posmatrač
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Otkaži unetu lozinku

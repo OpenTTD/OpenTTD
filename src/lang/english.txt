@@ -2100,7 +2100,7 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spectators
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Enter the amount of money you want to give
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spectator
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Spectator
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Do not save the entered password

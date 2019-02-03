@@ -2096,7 +2096,7 @@ STR_NETWORK_CLIENT                                              :Cliente
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Entre a quantia a ser dada
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Espectador
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Espectador
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Não salvar a senha digitada

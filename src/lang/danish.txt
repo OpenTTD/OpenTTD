@@ -2100,7 +2100,7 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Tilskuere
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv beløbet du vil give
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Tilskuer
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Tilskuer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Gem ikke den indtastede adgangskode

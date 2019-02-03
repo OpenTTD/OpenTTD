@@ -2099,7 +2099,7 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Åskådare
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv in mängd pengar som du vill ge
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Åskådare
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Åskådare
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Spara inte det inmatade lösenordet

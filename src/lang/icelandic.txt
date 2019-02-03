@@ -1936,7 +1936,7 @@ STR_NETWORK_CLIENT                                              :Notandi
 STR_NETWORK_SPECTATORS                                          :Áhorfendur
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sláðu inn peningaupphæð sem þú vilt láta af hendi rakna
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Áhorfandi
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Áhorfandi
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ekki vista innslegið lykilorð

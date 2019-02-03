@@ -2100,7 +2100,7 @@ STR_NETWORK_CLIENT                                              :Speler
 STR_NETWORK_SPECTATORS                                          :Toeschouwers
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Voer de hoeveelheid geld die je wilt geven in
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Toeschouwer
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Toeschouwer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Sla het ingegeven wachtwoord niet op

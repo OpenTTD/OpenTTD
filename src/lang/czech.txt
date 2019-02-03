@@ -2174,7 +2174,7 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Pozorovatelé
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Napiš částku, kterou chceš poskytnout
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Pozorovatel
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Pozorovatel
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neukládat zadané heslo

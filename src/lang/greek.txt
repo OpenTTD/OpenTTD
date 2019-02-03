@@ -2199,7 +2199,7 @@ STR_NETWORK_CLIENT                                              :Πελάτης
 STR_NETWORK_SPECTATORS                                          :Θεατές
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Εισάγετε το πόσο των χρημάτων που θέλετε να δώσετε
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Θεατής
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Θεατής
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Να μην αποθηκευτεί ο κωδικός

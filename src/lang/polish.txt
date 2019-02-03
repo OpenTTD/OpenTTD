@@ -2474,7 +2474,7 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Widzowie
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Wprowadź ilość pieniędzy, które chcesz przekazać
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Obserwator
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Obserwator
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nie zapisuj podanego hasła

@@ -2079,7 +2079,7 @@ STR_NETWORK_CLIENT                                              :用戶端
 STR_NETWORK_SPECTATORS                                          :旁觀者
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}請輸入你要付出多少資金
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}旁觀者
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}旁觀者
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}不要儲存所輸入的密碼

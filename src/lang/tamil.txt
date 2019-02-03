@@ -1829,7 +1829,7 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :கவனிப்பவர்கள்
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}கொடுக்கப்படும் பணத்தின் அளவினை இடவும்
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}பார்வையாளர்
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}பார்வையாளர்
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}கடவுச்சொல்லினை நினைவில் வைத்திருக்காதே

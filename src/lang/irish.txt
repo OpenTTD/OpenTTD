@@ -2079,7 +2079,7 @@ STR_NETWORK_CLIENT                                              :Cliant
 STR_NETWORK_SPECTATORS                                          :Féachadóirí
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Iontráil an méid airgid is mian leat a thabhairt
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Féachadóir
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Féachadóir
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ná sábháil an pasfhocal a iontráladh

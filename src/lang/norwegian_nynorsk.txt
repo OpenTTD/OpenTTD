@@ -2002,7 +2002,7 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Tilskodarar
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv inn kor mykje pengar du ønskar å gje
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Tilskodar
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Tilskodar
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ikkje lagre passordet

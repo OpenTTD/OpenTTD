@@ -2079,7 +2079,7 @@ STR_NETWORK_CLIENT                                              :クライアン
 STR_NETWORK_SPECTATORS                                          :観覧者
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}送りたい金額を入力
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}観覧者
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}観覧者
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}入力したパスワードを保存しない

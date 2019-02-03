@@ -2095,7 +2095,7 @@ STR_NETWORK_CLIENT                                              :Pelaaja
 STR_NETWORK_SPECTATORS                                          :Katsojat
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Syötä rahamäärä, jonka haluat antaa
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Katsoja
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Katsoja
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Älä tallenna syötettyä salasanaa

@@ -2051,7 +2051,7 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spectatori
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introduceţi suma pe care o oferiţi
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spectator
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Spectator
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Parola introdusă nu se va salva

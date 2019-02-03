@@ -2089,7 +2089,7 @@ STR_NETWORK_CLIENT                                              :客户端
 STR_NETWORK_SPECTATORS                                          :旁观者
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}请输入您想赠与的资金数
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}旁观者
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}旁观者
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}不保存所输入的密码

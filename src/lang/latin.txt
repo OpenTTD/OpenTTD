@@ -2280,7 +2280,7 @@ STR_NETWORK_CLIENT                                              :Cliens
 STR_NETWORK_SPECTATORS                                          :Spectatores
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Inscribe quantitatem pecuniae dandam
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spectator
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Spectator
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Relinquere tesseram inscriptam

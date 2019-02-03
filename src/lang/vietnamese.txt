@@ -2095,7 +2095,7 @@ STR_NETWORK_CLIENT                                              :Máy trạm
 STR_NETWORK_SPECTATORS                                          :Người xem
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Nhập số tiền muốn cho đi
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Người xem
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Người xem
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Không được ghi mật khẩu đã nhập

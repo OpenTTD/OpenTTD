@@ -2284,7 +2284,7 @@ STR_NETWORK_CLIENT                                              :Cliant
 STR_NETWORK_SPECTATORS                                          :Amharcaichean
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Cuir a-steach na tha thu airson toirt seachad
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Amharc
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Amharc
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Na sàbhail am facal-faire air a chur a-steach

@@ -2089,7 +2089,7 @@ STR_NETWORK_CLIENT                                              :Klien
 STR_NETWORK_SPECTATORS                                          :Penonton
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Masukkan jumlah uang yang akan diberikan
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Pengamat
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Pengamat
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Jangan simpan kata sandi yang telah dimasukkan

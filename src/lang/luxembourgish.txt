@@ -2082,7 +2082,7 @@ STR_NETWORK_CLIENT                                              :Spiller
 STR_NETWORK_SPECTATORS                                          :Zuschauer
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Gëff de Betrag un deens du wëlls ginn
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Zuschauer
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Zuschauer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Späicher d'Passwuert net

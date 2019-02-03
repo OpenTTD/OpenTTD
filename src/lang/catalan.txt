@@ -2094,7 +2094,7 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Espectadors
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introdueix la quantitat de diners que vols donar
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Espectador
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Espectador
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No desis la nova contrasenya.

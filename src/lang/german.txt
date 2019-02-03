@@ -2092,7 +2092,7 @@ STR_NETWORK_CLIENT                                              :Teilnehmer
 STR_NETWORK_SPECTATORS                                          :Zuschauer
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Wieviel Geld soll übergeben werden?
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Zuschauer
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Zuschauer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Eingegebenes Passwort nicht speichern

@@ -2141,7 +2141,7 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Vaatlejad
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sisesta summa mida anda
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Vaatleja
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Vaatleja
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Sisestatud salasõna ei salvestata

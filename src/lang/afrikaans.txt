@@ -2080,7 +2080,7 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Aanskouers
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sleutel die bedrag geld in wat u wil gee
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Toeskouer
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Toeskouer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Moenie die ingesleutelde wagwoord bewaar nie

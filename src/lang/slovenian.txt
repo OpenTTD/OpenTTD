@@ -2233,7 +2233,7 @@ STR_NETWORK_CLIENT                                              :Gost
 STR_NETWORK_SPECTATORS                                          :Gledalci
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Vpiši znesek denarja za darovanje
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Gledalec
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Gledalec
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne shrani vnešenega gesla

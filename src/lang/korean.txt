@@ -2101,7 +2101,7 @@ STR_NETWORK_CLIENT                                              :접속자
 STR_NETWORK_SPECTATORS                                          :관전자
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}송금하고 싶은 양을 입력하세요.
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}관전자
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}관전자
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}입력한 비밀번호는 저장하지 않기

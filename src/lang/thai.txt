@@ -2028,7 +2028,7 @@ STR_NETWORK_CLIENT                                              :ลูกข่
 STR_NETWORK_SPECTATORS                                          :ผู้ชม
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}กรอกจำนวนเงินที่ต้องการจะให้
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}ผู้สังเกตุการณ์
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}ผู้สังเกตุการณ์
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}ไม่ทำการเก็บพาสเวิร์ดที่กรอกไว้แล้ว

@@ -2025,7 +2025,7 @@ STR_NETWORK_CLIENT                                              :Spēlētājs
 STR_NETWORK_SPECTATORS                                          :Novērotāji
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Ievadiet cik daudz naudas vēlaties dot
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Novērotājs
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Novērotājs
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nesaglabāt ievadīto paroli

@@ -2082,7 +2082,7 @@ STR_NETWORK_CLIENT                                              :Gwestai
 STR_NETWORK_SPECTATORS                                          :Gwylwyr
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Nodwch faint o arian yr hoffech chi ei roi
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Gwyliwr
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Gwyliwr
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Peidio cadw'r cyfrinair a roddwyd

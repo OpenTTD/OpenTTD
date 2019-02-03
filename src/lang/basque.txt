@@ -1988,7 +1988,7 @@ STR_NETWORK_CLIENT                                              :Bezeroa
 STR_NETWORK_SPECTATORS                                          :Ikusleak
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Eman nahi duzun diru kantitatea ezarri
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Ikusle
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Ikusle
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ez gorde sartutako pasahitza

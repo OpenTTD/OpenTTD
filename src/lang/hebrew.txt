@@ -2105,7 +2105,7 @@ STR_NETWORK_CLIENT                                              :לקוח
 STR_NETWORK_SPECTATORS                                          :צופים
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}הכנס סכום כסף שברצונך לתת
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}צופה
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}צופה
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}בטל שמירת הסיסמה החדשה

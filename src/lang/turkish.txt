@@ -2083,7 +2083,7 @@ STR_NETWORK_CLIENT                                              :İstemci
 STR_NETWORK_SPECTATORS                                          :İzleyiciler
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Vermek istediğiniz para miktarını girin
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}İzleyici
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}İzleyici
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Girilen parolayı kaydetme

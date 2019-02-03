@@ -2196,7 +2196,7 @@ STR_NETWORK_CLIENT                                              :Klijent
 STR_NETWORK_SPECTATORS                                          :Promatrači
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Unesite iznos novca koji želite dati
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Gledatelj
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Gledatelj
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nemoj spremiti upisanu zaporku

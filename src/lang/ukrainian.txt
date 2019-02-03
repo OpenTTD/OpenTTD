@@ -2207,7 +2207,7 @@ STR_NETWORK_CLIENT                                              :Клієнт
 STR_NETWORK_SPECTATORS                                          :Спостерігачі
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введіть суму грошей, яку Ви хочете віддати
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Глядач
+STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{WHITE}Глядач
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не запам'ятовувати введений пароль
