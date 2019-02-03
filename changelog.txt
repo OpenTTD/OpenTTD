@@ -1,3 +1,76 @@
+1.9.0-beta1 (2018-02-09)
+------------------------------------------------------------------------
+Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbers have been replaced with Pull Requests and Issue numbers
+- Feature: Group liveries, and livery window usability enhancements (#7108)
+- Feature: Overhaul of music system, support MPSMIDI music files (TTD DOS/TTO) (#6839)
+- Feature: [Win32] Rewritten DMusic and WinMM music drivers
+- Feature: [Win32] New XAudio2 sound driver
+- Feature: [Linux] New Fluidsynth music driver
+- Feature: Framerate display window (#6822)
+- Feature: [NewGRF] Ability for industries & houses to produce and/or accept up to 16 different cargoes
+- Feature #6610: Allow towns to build houses on road turns (#6758)
+- Feature: Replace independent map scrolling GUI settings with single option, and add choice to not lock cursor position when scrolling (#6756)
+- Feature #6459: API for querying network clients from GS (#6736)
+- Feature: New Russian Ruble & Mexican Peso as currencies (#6678, #7035)
+- Feature #4186: Append '(City)' after city names in the town directory
+- Feature #986: Automatic save when losing connection to a network game
+- Add: [NewGRF] Flag to hide rail types from construction (#7118)
+- Add: [NewGRF] Airport animation trigger for plane landing (#6334)
+- Add #4115: Default starting company colour setting (#6998)
+- Add: Mixer feature for streaming sampled music
+- Add #6460: [AI] start_date parameter for Random AIs on new game
+- Add: BACKSPACE can be mapped as a hotkey
+- Add: 32bpp SSE2 blitter palette animator (#6795)
+- Change: Make ships turn slowly when changing direction and stop when going up or down a lock (#7065, #7150)
+- Change: Improve ship pathfinder performance
+- Change: Decouple GUI timing from game ticks (#6780)
+- Change: Desert tiles are now half-desert if a neighboured tile is non-desert or sea/coast (#4754)
+- Change: Gradually slow down aircraft speed on breakdown (#6932)
+- Change: [NewGRF] Increase rail type & cargo type limits to 64
+- Change: [NewGRF] Increase size of persistent storage to 256
+- Change: [NewGRF] Use last OpenTTD SVN revision in NewGRF version number (#6843)
+- Change: Clone tool in depot window now behaves like clone button in vehicle window (#6754)
+- Change #6397: Keep town growth rate in sync with house count
+- Change: Scale default FreeType font size selection by UI zoom level
+- Change: [OSX] Reversed pinch to zoom behaviour
+- Change: Switch town growth rate and counter to actual game ticks (#6763)
+- Change: Non-tag revisions are now named '<commitdate>-<branch>-g<shorthash><modified>'
+- Change: Rewrite several bits of documentation in markdown
+- Fix: Reinitialise graph GUI on game restart (#7191)
+- Fix: Potential crash during shutdown after unpacking downloaded content (#7185)
+- Fix #6584: Text layout in engine preview dialogue
+- Fix #6636: Airplanes could be sent to helicopter station depots
+- Fix: Deadlock when launched with -n switch (#7103)
+- Fix: Various corrections to town names in non-English languages (#7038, 7141)
+- Fix: Only consider airport tiles when placing (for non-rectangular airports) (#6613)
+- Fix: Spelling fixes on some Latin American town names
+- Fix #7001: Pathfinders should see standard road stations as tiles where to reverse
+- Fix #6676: Prevent helicopters from stopping in midair during some kinds of landing
+- Fix: Remove need to use Ctrl+Click when building stations next to competitors (#6906)
+- Fix: [NewGRF] Make VA2 operator 11 (ror) behave well-defined when rotating by 0 bits
+- Fix #4109: Add more water checks to the Oil Rig layout
+- Fix #6938: Incorrect value for "Cost to Clear" was displayed for Company Headquarters in tile inspector (#6939)
+- Fix #6920: Make 9.8m/s^2 a common constant for TE-calculation
+- Fix #6892: [Script] CONFIG_RANDOM did not use the full parameter range (#6902)
+- Fix #6622: News message when GS constructs a town had empty company name
+- Fix: [NewGRF] Action7 variable 0x85 had no bounds checks
+- Fix #6875: Depot building cost did not include foundation build cost (#6883)
+- Fix: Some pixels in ship autoreplace icon (sprite 106) were transparent
+- Fix: Poor contrast in cargo dest flow legend window cargo labels
+- Fix #6553: Make viewport button text unambiguous
+- Fix: [OSX] Setting mouse-wheel to scroll the map does not disable pinch to zoom
+- Fix #6969: Account for BOM when reading script files
+- Fix #6898: Ability to use seeds above INT_MAX (#6936)
+- Fix #6659: Bus stations could be demolished when not in demolish mode (#6815)
+- Fix: One-way roads could be over-built by road stops regardless of road owner
+- Fix: Use name of cargo instead of Passengers/Mail in town statistics (#6801)
+- Fix: Prevent ships moving into docks after finishing (un)loading (#6791)
+- Fix: Tractive effort was slightly too high as per NewGRF spec (#6785)
+- Fix #6465: Add {NORMAL_FONT} and {MONO_FONT} control codes to GS strings (#6726)
+- Fix: Four group action icons were misplaced and cropped
+- Remove: PSP, WinCE support
+
+
 1.8.0 (2018-04-01)
 ------------------------------------------------------------------------
 (None)
