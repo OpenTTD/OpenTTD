@@ -56,7 +56,7 @@ Function DetermineVersion()
 	Set WshShell = CreateObject("WScript.Shell")
 	On Error Resume Next
 
-	modified = 1
+	modified = 0
 	hash = ""
 	shorthash = ""
 	branch = ""
@@ -135,6 +135,7 @@ Function DetermineVersion()
 		rev_file.Close()
 	ElseIf hash = "" Then
 		DetermineVersion = "norev000"
+		modified = 1
 	Else
 		Dim version, hashprefix
 		If modified = 0 Then
