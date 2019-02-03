@@ -658,6 +658,8 @@ CommandCost CmdSetGroupLivery(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	if (g == NULL || g->owner != _current_company) return CMD_ERROR;
 
+	if (colour >= COLOUR_END && colour != INVALID_COLOUR) return CMD_ERROR;
+
 	if (flags & DC_EXEC) {
 		if (primary) {
 			SB(g->livery.in_use, 0, 1, colour != INVALID_COLOUR);
