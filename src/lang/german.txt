@@ -675,10 +675,12 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Zufälli
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Zeige Musiktitelauswahl
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Musikprogramm - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Track Inhalt
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programm - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Bereinigen
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Set ändern
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Lösche laufendes Programm (nur für Benutzerdefiniert 1 und 2)
 STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Ein anderes Musik-Set auswählen)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klicke auf einen Musiktitel, um ihn in das laufende Programm zu übernehmen (nur für Benutzerdefiniert 1 und 2)
@@ -916,7 +918,7 @@ STR_GAME_OPTIONS_CURRENCY_NLG                                   :Niederländisch
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norwegische Kronen (NOK)
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polnische Zloty (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumänische Lei (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russische Rubel (RUR)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Alte Russische Rubel (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenische Taler (SIT)
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Schwedische Kronen (SEK)
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Türkische Lire (TRY)
@@ -929,6 +931,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Südafrikanisch
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Eigene...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgischer Lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranischer Rial (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Russische Rubel (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexikanischer Peso (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Fahrzeuge
@@ -1225,7 +1229,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :am Anfang
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :in der Mitte
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :am Ende
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Spielfeld scrollen, wenn die Maus am Bildrand anstößt: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Falls aktiv wird der Kartenausschnit scrollen, wenn die Maus nahe dem Fensterrand ist
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Falls aktiv, wird der Kartenausschnitt scrollen, wenn die Maus nahe dem Fensterrand ist
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Ausgeschaltet
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Hauptfenster, nur bei Vollbildschirm
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Hauptfenster
@@ -1258,6 +1262,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Diese Ei
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Instandhaltung der Infrastruktur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Unterhaltskosten für Infrastruktur einschalten. Die Unterhaltskosten wachsen mit zunehmender Netzwerkgröße überproportional an, so dass sie größere Firmen stärker belasten als kleinere
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Firmenfarbe zu Spielbeginn: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Wähle die Firmenfarbe zu Spielbeginn
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flughäfen veralten nie: {STRING}
@@ -1343,6 +1348,10 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Farbe von Landf
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grün
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dunkelgrün
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Lila
+STR_CONFIG_SETTING_SCROLLMODE                                   :Verhalten beim Verschieben der Zusatzansicht: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Verhalten beim Verschieben der Karte
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Bewege Zusatzansicht mit rechter Maustaste, Mausposition fixiert
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Bewege die Karte mit rechter Maustaste, Mausposition fixiert
 STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Bewege die Karte mit rechter Maustaste
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Bewege die Karte mit linker Maustaste
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Weicher Bildlauf beim Springen zu einer Position: {STRING}
@@ -2700,20 +2709,51 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Bildwiederholrate
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulationsrate: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Anzahl an simulierten Ticks pro Sekunde.
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Bildwiederholrate: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Anzahl an Einzelbildern, die pro Sekunde gerendert werden.
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Aktueller Geschwindigkeitsfaktor des Spiels: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Wie schnell das Spiel aktuell läuft, verglichen mit der erwarteten Geschwindigkeit bei normaler Simulationsrate.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Momentan
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Durchschnitt
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Daten basierend auf {COMMA} Messungen
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} Bilder/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} Bilder/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} Bilder/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
-STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Ticks (Schiffe):
-STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Ticks (Luftfahrzeuge)
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Spielschleifen insgesamt:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}Warenumschlag:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK}Ticks (Züge):
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}Ticks (Straßenfahrzeuge):
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}Ticks (Schiffe):
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}Ticks (Luftfahrzeuge)
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}Welt-Ticks:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}Intervall für Neuberechnung des Verteilungsgraphen:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Grafik-Rendering:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}Kartenansichten:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Videoausgabe:
+STR_FRAMERATE_SOUND                                             :{BLACK}Sound-Abmischung:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
-STR_FRAMETIME_CAPTION_GAMELOOP                                  :Spiel-Schleife
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Spielschleife
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Warenumschlag
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Ticks (Züge)
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Ticks (Straßenfahrzeuge)
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ticks (Schiffe)
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ticks (Luftfahrzeuge)
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Welt-Ticks
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Intervall für Neuberechnung des Verteilungsgraphen
 STR_FRAMETIME_CAPTION_DRAWING                                   :Grafik-Rendering
-STR_FRAMETIME_CAPTION_SOUND                                     :Sound mixing
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Karten-Rendering
+STR_FRAMETIME_CAPTION_VIDEO                                     :Videoausgabe
+STR_FRAMETIME_CAPTION_SOUND                                     :Sound-Abmischung
 ############ End of leave-in-this-order
 
 
@@ -2739,6 +2779,9 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spielsta
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Keine Informationen verfügbar
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Suchtext:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Datei überschreiben
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Existierende Datei wirklich überschreiben?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Namen für den Spielstand eingeben
 
@@ -2856,8 +2899,12 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Version:
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatible Version: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5-Summe: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Farbpalette: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Standard (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Standard (D) / 32 bpp
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :veraltet (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :veraltet (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameter: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Keine
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Keine Informationen verfügbar
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Zugehörige Datei nicht gefunden
@@ -2930,7 +2977,7 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :der NewGRF-Date
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Zu viele NewGRFs geladen
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Das Laden von {1:STRING} als statisches NewGRF mit {STRING} könnte Synchronisationsfehler hervorrufen
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unerwartetes Sprite (Sprite {3:NUM})
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unbekannte Action 0 - Property {4:HEX} (Sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unbekannte Action 0 - Eigenschaft {4:HEX} (Sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Zugriff auf eine ungültige ID (Sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enthält fehlerhafte Grafiken. Diese werden als Fragezeichen (?) dargestellt
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Enthält mehrere Action 8 - Einträge (Sprite {3:NUM})
@@ -2938,6 +2985,8 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lesezugriff üb
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Die angeforderte GRF-Ressource ist nicht verfügbar (Sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} wurde von {STRING} deaktiviert
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ungültiges oder unbekanntes Format für Spritelayout (Sprite {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Zu viele Elemente in Eigenschaftswert-Liste (Sprite {3:NUM}, Eigenschaft {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ungültige Produktions-Rückruffunktion (Sprite {3:NUM}, "{1:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Achtung!
@@ -2967,13 +3016,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug '{VE
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' liefert falsche Informationen
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fracht / Ersetzungs - Informationen für '{1:ENGINE}' weichen von der Einkaufsliste nach dem Kauf ab. Das kann dazu führen, dass das Umrüsten beim autmatisches Ersetzen oder Erneuern nicht korrekt funktioniert
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' verursachte eine Endlosschleife im 'Production callback'
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' verursachte eine Endlosschleife in Produktions-Rückruffunktion
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback {1:HEX} lieferte des unbekannte und ungülte Resultat {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<ungültige Frachtart>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
-STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <ungültige Frachtart>
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} Einheiten <ungültige Frachtart>
 STR_NEWGRF_INVALID_ENGINE                                       :<ungültiger Fahrzeugtyp>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ungültige Industrie>
 
@@ -3010,6 +3059,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Weltbev�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Großstadt)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Einwohner: {ORANGE}{COMMA}{BLACK}  Häuser: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} im letzten Monat: {ORANGE}{COMMA}{BLACK} Max.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Für Stadtwachstum benötigte Fracht:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} benötigt
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} im Winter benötigt
@@ -3316,6 +3366,7 @@ STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Diese I
 
 STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Benötigt: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produziert: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}benötigt:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
@@ -3373,6 +3424,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruppen 
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Neue Gruppe erstellen
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Ausgewählte Gruppe löschen
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Ausgewählte Gruppe umbenennen
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Farbschema der ausgewählten Gruppe ändern
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Diese Gruppe von der automatischen Fahrzeugersetzung ausschließen
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Gruppe löschen
@@ -3416,6 +3468,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazit�
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Angetriebene Waggons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Umrüstbar auf: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle Frachtarten
+STR_PURCHASE_INFO_NONE                                          :Keine
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles außer {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Zugkraft: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Reichweite: {GOLD}{COMMA} Felder
@@ -3815,6 +3868,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Fahrzeugalter (
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Wartung erforderlich
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Immer
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Verbleibende Laufzeit (Jahre)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maximale Zuverlässigkeit
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Die Bedingung, die erfüllt werden muss
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :gleich
@@ -4247,6 +4301,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... dies
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... Straße verläuft in die falsche Richtung
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... Bus- und Lkw-Haltestellen können nicht um die Kurve gehen
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... Bus- und Lkw-Haltestellen können keine Abzweigung haben
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}...Einbahnstraße oder blockierter Weg
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Dieser Teil der Station kann nicht entfernt werden...
