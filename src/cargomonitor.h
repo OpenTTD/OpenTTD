@@ -45,10 +45,13 @@ enum CargoCompanyBits {
 	CCB_IS_INDUSTRY_BIT        = 16, ///< Bit indicating the town/industry number is an industry.
 	CCB_IS_INDUSTRY_BIT_VALUE  = 1ul << CCB_IS_INDUSTRY_BIT, ///< Value of the #CCB_IS_INDUSTRY_BIT bit.
 	CCB_CARGO_TYPE_START       = 19, ///< Start bit of the cargo type field.
-	CCB_CARGO_TYPE_LENGTH      = 5,  ///< Number of bits of the cargo type field.
-	CCB_COMPANY_START          = 24, ///< Start bit of the company field.
-	CCB_COMPANY_LENGTH         = 8,  ///< Number of bits of the company field.
+	CCB_CARGO_TYPE_LENGTH      = 6,  ///< Number of bits of the cargo type field.
+	CCB_COMPANY_START          = 25, ///< Start bit of the company field.
+	CCB_COMPANY_LENGTH         = 4,  ///< Number of bits of the company field.
 };
+
+assert_compile(NUM_CARGO     <= (1 << CCB_CARGO_TYPE_LENGTH));
+assert_compile(MAX_COMPANIES <= (1 << CCB_COMPANY_LENGTH));
 
 
 /**
@@ -61,6 +64,7 @@ enum CargoCompanyBits {
 static inline CargoMonitorID EncodeCargoIndustryMonitor(CompanyID company, CargoID ctype, IndustryID ind)
 {
 	assert(ctype < (1 << CCB_CARGO_TYPE_LENGTH));
+	assert(company < (1 << CCB_COMPANY_LENGTH));
 
 	uint32 ret = 0;
 	SB(ret, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH, ind);
@@ -80,6 +84,7 @@ static inline CargoMonitorID EncodeCargoIndustryMonitor(CompanyID company, Cargo
 static inline CargoMonitorID EncodeCargoTownMonitor(CompanyID company, CargoID ctype, TownID town)
 {
 	assert(ctype < (1 << CCB_CARGO_TYPE_LENGTH));
+	assert(company < (1 << CCB_COMPANY_LENGTH));
 
 	uint32 ret = 0;
 	SB(ret, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH, town);
