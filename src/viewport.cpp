@@ -1044,41 +1044,29 @@ draw_inner:
 }
 
 /**
- * Returns the Y coordinate in the viewport coordinate system where a given
- * tile should be painted. Can be used on virtual "black" tiles outside map.
- *
- * @param tile Tile coordinates of the tile. Map outside is allowed.
- * @return Viewport Y coordinate where the northern corner of the tile is located (foundations not included).
+ * Returns the y coordinate in the viewport coordinate system where the given
+ * tile is painted.
+ * @param tile Any tile.
+ * @return The viewport y coordinate where the tile is painted.
  */
-static inline int GetTilePaintY(Point tile)
+static int GetViewportY(Point tile)
 {
-	return RemapCoords(tile.x * TILE_SIZE, tile.y * TILE_SIZE, TilePixelHeightOutsideMap(tile.x, tile.y)).y;
+	/* Each increment in X or Y direction moves down by half a tile, i.e. TILE_PIXELS / 2. */
+	return (tile.y * (int)(TILE_PIXELS / 2) + tile.x * (int)(TILE_PIXELS / 2) - TilePixelHeightOutsideMap(tile.x, tile.y)) << ZOOM_LVL_SHIFT;
 }
 
 /**
- * Add sprites of a single tile to the viewport.
- *
- * @param[in,out] ti Filled-in tile information of the tile. On return, \a z coordinate will be updated and include foundations (if any).
- * @param tile_type Type of the tile (#GetTileType) or #MP_VOID for virtual "black" tiles outside map.
- */
-static void ViewportAddTile(TileInfo *ti, TileType tile_type)
-{
-	_vd.foundation_part = FOUNDATION_PART_NONE;
-	_vd.foundation[0] = -1;
-	_vd.foundation[1] = -1;
-	_vd.last_foundation_child[0] = NULL;
-	_vd.last_foundation_child[1] = NULL;
-
-	_cur_ti = ti;
-	_tile_type_procs[tile_type]->draw_tile_proc(ti);
-}
-
-/**
- * Add the landscape to the viewport, i.e. all ground tiles, buildings and bridges.
+ * Add the landscape to the viewport, i.e. all ground tiles and buildings.
  */
 static void ViewportAddLandscape()
 {
-	/* Transformations between tile x/y coordinates and 45-degree rotated rows/columns:
+	assert(_vd.dpi.top <= _vd.dpi.top + _vd.dpi.height);
+	assert(_vd.dpi.left <= _vd.dpi.left + _vd.dpi.width);
+
+	Point upper_left = InverseRemapCoords(_vd.dpi.left, _vd.dpi.top);
+	Point upper_right = InverseRemapCoords(_vd.dpi.left + _vd.dpi.width, _vd.dpi.top);
+
+	/* Transformations between tile coordinates and viewport rows/columns: See vp_column_row
 	 *   column = y - x
 	 *   row    = x + y
 	 *   x      = (row - column) / 2
@@ -1086,46 +1074,38 @@ static void ViewportAddLandscape()
 	 * Note: (row, columns) pairs are only valid, if they are both even or both odd.
 	 */
 
-	/* Rectangle to repaint. Includes oversize for tile sprites.
-	 * There is no oversize for the bottom side of a tile so the first tile we draw
-	 * in a column must have its northern corner above or at the 'top' bound. */
-	const int left            = _vd.dpi.left - MAX_TILE_EXTENT_RIGHT; // inclusive
-	const int top             = _vd.dpi.top; // unlike to other bounds, this one is relative to S tile corner, not N, not inclusive (for S corner)
-	const int right           = _vd.dpi.left + _vd.dpi.width + MAX_TILE_EXTENT_LEFT; // not inclusive
-	const int bottom_empty    = _vd.dpi.top + _vd.dpi.height; // bottom bound for void tiles and tiles outside map, includes only clear ground sprites, not inclusive
-	const int bottom_building = bottom_empty + MAX_TILE_EXTENT_TOP; // bottom bound that accounts for buildings but does not include oversize for bridges, not inclusive
-	const int bottom          = bottom_building + ZOOM_LVL_BASE * TILE_HEIGHT * _settings_game.construction.max_bridge_height; // bottom bound that includes entire oversize, also for bridges, not inclusive
-	assert(left < right && top < bottom);
+	/* Columns overlap with neighbouring columns by a half tile.
+	 *  - Left column is column of upper_left (rounded down) and one column to the left.
+	 *  - Right column is column of upper_right (rounded up) and one column to the right.
+	 * Note: Integer-division does not round down for negative numbers, so ensure rounding with another increment/decrement.
+	 */
+	int left_column = (upper_left.y - upper_left.x) / (int)TILE_SIZE - 2;
+	int right_column = (upper_right.y - upper_right.x) / (int)TILE_SIZE + 2;
 
-	/* Base 2 logarithm of the distance between tile columns in a viewport.
-	 * It will be used to achieve proper rounding easily. */
-	assert_compile(TILE_SIZE == 1 << 4);
-	static const uint column_log = ZOOM_LVL_SHIFT + 4 + 1; // +1 comes from the factor 2 that is used when remapping to horizontal 'x' screen coordinate (see RemapCoords)
+	int potential_bridge_height = ZOOM_LVL_BASE * TILE_HEIGHT * _settings_game.construction.max_bridge_height;
 
-	/* Horizontal iteration bounds. */
-	int first_col = left >> column_log; // inclusive, round toward -inf
-	int last_col = -(-right >> column_log); // not inclusive, round toward +inf
+	/* Rows overlap with neighbouring rows by a half tile.
+	 * The first row that could possibly be visible is the row above upper_left (if it is at height 0).
+	 * Due to integer-division not rounding down for negative numbers, we need another decrement.
+	 */
+	int row = (upper_left.x + upper_left.y) / (int)TILE_SIZE - 2;
+	bool last_row = false;
+	for (; !last_row; row++) {
+		last_row = true;
+		for (int column = left_column; column <= right_column; column++) {
+			/* Valid row/column? */
+			if ((row + column) % 2 != 0) continue;
 
-	/* Use tile that intersects with the left-top corner of the repaint
-	 * rectangle as an approximate start row of the iteration. */
-	Point start = InverseRemapCoords2(left, top, false); // warning, it will take foundations into account, might return a tile that is further to S, but that's OK because coordinates will be moved toward N later if needed
-	int first_row = (start.x >> 4) + (start.y >> 4);
-	/* Combine with the first column, round toward S. */
-	start.x = (first_row - first_col + 1) >> 1;
-	start.y = (first_row + first_col + 1) >> 1;
+			Point tilecoord;
+			tilecoord.x = (row - column) / 2;
+			tilecoord.y = (row + column) / 2;
+			assert(column == tilecoord.y - tilecoord.x);
+			assert(row == tilecoord.y + tilecoord.x);
 
-	/* Iterate over columns of tiles. */
-	while (first_col++ < last_col) {
-		/* Fix column start tile - move it toward N until it reaches the 'top' bound. */
-		int y_pos;
-		while (top < (y_pos = GetTilePaintY(start))) start.x--, start.y--;
-
-		/* Iterate over tiles in a column. */
-		Point tilecoord = start;
-		do {
 			TileType tile_type;
 			TileInfo tile_info;
-			tile_info.x = tilecoord.x * TILE_SIZE; // FIXME: tile_info should use signed integers
+			_cur_ti = &tile_info;
+			tile_info.x = tilecoord.x * TILE_SIZE; // FIXME tile_info should use signed integers
 			tile_info.y = tilecoord.y * TILE_SIZE;
 
 			if (IsInsideBS(tilecoord.x, 0, MapSizeX()) && IsInsideBS(tilecoord.y, 0, MapSizeY())) {
@@ -1137,32 +1117,58 @@ static void ViewportAddLandscape()
 				tile_type = MP_VOID;
 			}
 
-			/* Check if tile is "visible".
-			 *
-			 * Until 'bottom_empty' every tile is visible, also "black" tiles outside map.
-			 * Since 'bottom_empty' only tiles with a content might be visible. */
-			if (y_pos >= bottom_empty) {
-				if (tilecoord.x >= (int)MapSizeX() || tilecoord.y >= (int)MapSizeY()) break; // No more non-void tiles in this column? Then stop.
-				if (tile_type == MP_VOID) continue; // No content on the tile? Then skip.
-
-				/* Since 'bottom_building' only bridges might be visible. */
-				if (y_pos >= bottom_building) {
-					if (!IsBridgeAbove(tile_info.tile)) continue; // no bridge above, skip
-					if (RemapCoords(tile_info.x, tile_info.y, GetBridgePixelHeight(GetNorthernBridgeEnd(tile_info.tile))).y >= bottom_building) continue; // bridge isn't high enough, skip
-				}
+			if (tile_type != MP_VOID) {
+				/* We are inside the map => paint landscape. */
+				tile_info.tileh = GetTilePixelSlope(tile_info.tile, &tile_info.z);
+			} else {
+				/* We are outside the map => paint black. */
+				tile_info.tileh = GetTilePixelSlopeOutsideMap(tilecoord.x, tilecoord.y, &tile_info.z);
 			}
 
-			/* Paint the tile. */
-			tile_info.tileh = (tile_info.tile != INVALID_TILE) ? GetTilePixelSlope(tile_info.tile, &tile_info.z) : GetTilePixelSlopeOutsideMap(tilecoord.x, tilecoord.y, &tile_info.z);
-			ViewportAddTile(&tile_info, tile_type);
-			if (tile_info.tile != INVALID_TILE) DrawTileSelection(&tile_info);
+			int viewport_y = GetViewportY(tilecoord);
 
-		/* Next tile. */
-		} while (tilecoord.x++, tilecoord.y++, y_pos = GetTilePaintY(tilecoord), y_pos < bottom);
+			if (viewport_y + MAX_TILE_EXTENT_BOTTOM < _vd.dpi.top) {
+				/* The tile in this column is not visible yet.
+				 * Tiles in other columns may be visible, but we need more rows in any case. */
+				last_row = false;
+				continue;
+			}
 
-		/* Go one tile toward SE. This will advance us to next column. Bias toward S will
-		 * take care of slopes too. Coordinates will be moved toward N later if needed. */
-		start.y++;
+			int min_visible_height = viewport_y - (_vd.dpi.top + _vd.dpi.height);
+			bool tile_visible = min_visible_height <= 0;
+
+			if (tile_type != MP_VOID) {
+				/* Is tile with buildings visible? */
+				if (min_visible_height < MAX_TILE_EXTENT_TOP) tile_visible = true;
+
+				if (IsBridgeAbove(tile_info.tile)) {
+					/* Is the bridge visible? */
+					TileIndex bridge_tile = GetNorthernBridgeEnd(tile_info.tile);
+					int bridge_height = ZOOM_LVL_BASE * (GetBridgePixelHeight(bridge_tile) - TilePixelHeight(tile_info.tile));
+					if (min_visible_height < bridge_height + MAX_TILE_EXTENT_TOP) tile_visible = true;
+				}
+
+				/* Would a higher bridge on a more southern tile be visible?
+				 * If yes, we need to loop over more rows to possibly find one. */
+				if (min_visible_height < potential_bridge_height + MAX_TILE_EXTENT_TOP) last_row = false;
+			} else {
+				/* Outside of map. If we are on the north border of the map, there may still be a bridge visible,
+				 * so we need to loop over more rows to possibly find one. */
+				if ((tilecoord.x <= 0 || tilecoord.y <= 0) && min_visible_height < potential_bridge_height + MAX_TILE_EXTENT_TOP) last_row = false;
+			}
+
+			if (tile_visible) {
+				last_row = false;
+				_vd.foundation_part = FOUNDATION_PART_NONE;
+				_vd.foundation[0] = -1;
+				_vd.foundation[1] = -1;
+				_vd.last_foundation_child[0] = NULL;
+				_vd.last_foundation_child[1] = NULL;
+
+				_tile_type_procs[tile_type]->draw_tile_proc(&tile_info);
+				if (tile_info.tile != INVALID_TILE) DrawTileSelection(&tile_info);
+			}
+		}
 	}
 }
 
