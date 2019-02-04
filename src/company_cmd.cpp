@@ -612,7 +612,7 @@ static bool MaybeStartNewCompany()
 	if (n < (uint)_settings_game.difficulty.max_no_competitors) {
 		/* Send a command to all clients to start up a new AI.
 		 * Works fine for Multiplayer and Singleplayer */
-		return DoCommandP(0, 1 | INVALID_COMPANY << 16, 0, CMD_COMPANY_CTRL);
+		return DoCommandP(0, CCA_NEW_AI | INVALID_COMPANY << 16, 0, CMD_COMPANY_CTRL);
 	}
 
 	return false;
@@ -810,10 +810,7 @@ void CompanyAdminRemove(CompanyID company_id, CompanyRemoveReason reason)
  * @param tile unused
  * @param flags operation to perform
  * @param p1 various functionality
- * - bits 0..15:
- *        = 0 - create a new company
- *        = 1 - create a new AI company
- *        = 2 - delete a company
+ * - bits 0..15: CompanyCtrlAction
  * - bits 16..24: CompanyID
  * @param p2 ClientID
  * @param text unused
@@ -827,8 +824,8 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	ClientID client_id = (ClientID)p2;
 #endif /* ENABLE_NETWORK */
 
-	switch (GB(p1, 0, 16)) {
-		case 0: { // Create a new company
+	switch ((CompanyCtrlAction)GB(p1, 0, 16)) {
+		case CCA_NEW: { // Create a new company
 			/* This command is only executed in a multiplayer game */
 			if (!_networking) return CMD_ERROR;
 
@@ -878,7 +875,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			break;
 		}
 
-		case 1: { // Make a new AI company
+		case CCA_NEW_AI: { // Make a new AI company
 			if (!(flags & DC_EXEC)) return CommandCost();
 
 			if (company_id != INVALID_COMPANY && (company_id >= MAX_COMPANIES || Company::IsValidID(company_id))) return CMD_ERROR;
@@ -889,7 +886,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			break;
 		}
 
-		case 2: { // Delete a company
+		case CCA_DELETE: { // Delete a company
 			CompanyRemoveReason reason = (CompanyRemoveReason)GB(p2, 0, 2);
 			if (reason >= CRR_END) return CMD_ERROR;
 

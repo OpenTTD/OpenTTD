@@ -1282,8 +1282,8 @@ struct AIDebugWindow : public Window {
 			case WID_AID_RELOAD_TOGGLE:
 				if (ai_debug_company == OWNER_DEITY) break;
 				/* First kill the company of the AI, then start a new one. This should start the current AI again */
-				DoCommandP(0, 2 | ai_debug_company << 16, CRR_MANUAL, CMD_COMPANY_CTRL);
-				DoCommandP(0, 1 | ai_debug_company << 16, 0, CMD_COMPANY_CTRL);
+				DoCommandP(0, CCA_DELETE | ai_debug_company << 16, CRR_MANUAL, CMD_COMPANY_CTRL);
+				DoCommandP(0, CCA_NEW_AI | ai_debug_company << 16, 0, CMD_COMPANY_CTRL);
 				break;
 
 			case WID_AID_SETTINGS:

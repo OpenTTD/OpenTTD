@@ -642,7 +642,7 @@ static void CompanyCheckBankrupt(Company *c)
 			 * that changing the current company is okay. In case of single
 			 * player we are sure (the above check) that we are not the local
 			 * company and thus we won't be moved. */
-			if (!_networking || _network_server) DoCommandP(0, 2 | (c->index << 16), CRR_BANKRUPT, CMD_COMPANY_CTRL);
+			if (!_networking || _network_server) DoCommandP(0, CCA_DELETE | (c->index << 16), CRR_BANKRUPT, CMD_COMPANY_CTRL);
 			break;
 		}
 	}
