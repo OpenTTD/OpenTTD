@@ -2747,6 +2747,9 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Graphics
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  World viewports:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Video output:
 STR_FRAMERATE_SOUND                                             :{BLACK}Sound mixing:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  GS/AI total:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Game script:
+STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {RAW_STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Game loop
@@ -2761,6 +2764,9 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Graphics render
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :World viewport rendering
 STR_FRAMETIME_CAPTION_VIDEO                                     :Video output
 STR_FRAMETIME_CAPTION_SOUND                                     :Sound mixing
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :GS/AI scripts total
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Game script
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {RAW_STRING}
 ############ End of leave-in-this-order
 
 

@@ -16,6 +16,7 @@
 #include "../company_func.h"
 #include "../network/network.h"
 #include "../window_func.h"
+#include "../framerate_type.h"
 #include "ai_scanner.hpp"
 #include "ai_instance.hpp"
 #include "ai_config.hpp"
@@ -79,8 +80,11 @@
 	const Company *c;
 	FOR_ALL_COMPANIES(c) {
 		if (c->is_ai) {
+			PerformanceMeasurer framerate((PerformanceElement)(PFE_AI0 + c->index));
 			cur_company.Change(c->index);
 			c->ai_instance->GameLoop();
+		} else {
+			PerformanceMeasurer::SetInactive((PerformanceElement)(PFE_AI0 + c->index));
 		}
 	}
 	cur_company.Restore();
@@ -101,6 +105,7 @@
 /* static */ void AI::Stop(CompanyID company)
 {
 	if (_networking && !_network_server) return;
+	PerformanceMeasurer::SetInactive((PerformanceElement)(PFE_AI0 + company));
 
 	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
 	Company *c = Company::Get(company);

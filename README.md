@@ -476,6 +476,12 @@ The following is an explanation of the different statistics:
 - *World ticks* - Time spent on other world/landscape processing. This
   includes towns growing, building animations, updates of farmland and trees,
   and station rating updates.
+- *GS/AI total*, *Game script*, and *AI players* - Time spent running logic
+  for game scripts and AI players. The total may show as less than the current
+  sum of the individual scripts, this is because AI players at lower
+  difficulty settings do not run every game tick, and hence contribute less
+  to the average across all ticks. Keep in mind that the "Current" figure is
+  also an average, just only over short term.
 - *Link graph delay* - Time overruns of the cargo distribution link graph
   update thread. Usually the link graph is updated in a background thread,
   but these updates need to synchronise with the main game loop occasionally,

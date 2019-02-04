@@ -15,6 +15,7 @@
 #include "../company_func.h"
 #include "../network/network.h"
 #include "../window_func.h"
+#include "../framerate_type.h"
 #include "game.hpp"
 #include "game_scanner.hpp"
 #include "game_config.hpp"
@@ -31,8 +32,16 @@
 
 /* static */ void Game::GameLoop()
 {
-	if (_networking && !_network_server) return;
-	if (Game::instance == NULL) return;
+	if (_networking && !_network_server) {
+		PerformanceMeasurer::SetInactive(PFE_GAMESCRIPT);
+		return;
+	}
+	if (Game::instance == NULL) {
+		PerformanceMeasurer::SetInactive(PFE_GAMESCRIPT);
+		return;
+	}
+
+	PerformanceMeasurer framerate(PFE_GAMESCRIPT);
 
 	Game::frame_counter++;
 
