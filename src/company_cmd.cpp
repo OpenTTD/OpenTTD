@@ -724,6 +724,10 @@ void OnTick_Companies()
 		/* Allow multiple AIs to possibly start in the same tick. */
 		do {
 			if (!MaybeStartNewCompany()) break;
+
+			/* In networking mode, we can only send a command to start but it
+			 * didn't execute yet, so we cannot loop. */
+			if (_networking) break;
 		} while (AI::GetStartNextTime() == 0);
 	}
 
