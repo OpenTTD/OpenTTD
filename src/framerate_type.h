@@ -60,6 +60,23 @@ enum PerformanceElement {
 	PFE_DRAWWORLD,     ///< Time spent drawing world viewports in GUI
 	PFE_VIDEO,         ///< Speed of painting drawn video buffer.
 	PFE_SOUND,         ///< Speed of mixing audio samples
+	PFE_ALLSCRIPTS,    ///< Sum of all GS/AI scripts
+	PFE_GAMESCRIPT,    ///< Game script execution
+	PFE_AI0,           ///< AI execution for player slot 1
+	PFE_AI1,           ///< AI execution for player slot 2
+	PFE_AI2,           ///< AI execution for player slot 3
+	PFE_AI3,           ///< AI execution for player slot 4
+	PFE_AI4,           ///< AI execution for player slot 5
+	PFE_AI5,           ///< AI execution for player slot 6
+	PFE_AI6,           ///< AI execution for player slot 7
+	PFE_AI7,           ///< AI execution for player slot 8
+	PFE_AI8,           ///< AI execution for player slot 9
+	PFE_AI9,           ///< AI execution for player slot 10
+	PFE_AI10,          ///< AI execution for player slot 11
+	PFE_AI11,          ///< AI execution for player slot 12
+	PFE_AI12,          ///< AI execution for player slot 13
+	PFE_AI13,          ///< AI execution for player slot 14
+	PFE_AI14,          ///< AI execution for player slot 15
 	PFE_MAX,           ///< End of enum, must be last.
 };
 DECLARE_POSTFIX_INCREMENT(PerformanceElement)
@@ -81,6 +98,7 @@ public:
 	PerformanceMeasurer(PerformanceElement elem);
 	~PerformanceMeasurer();
 	void SetExpectedRate(double rate);
+	static void SetInactive(PerformanceElement elem);
 	static void Paused(PerformanceElement elem);
 };
 

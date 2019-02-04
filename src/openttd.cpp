@@ -1407,8 +1407,11 @@ void StateGameLoop()
 		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);
 
 #ifndef DEBUG_DUMP_COMMANDS
-		AI::GameLoop();
-		Game::GameLoop();
+		{
+			PerformanceMeasurer framerate(PFE_ALLSCRIPTS);
+			AI::GameLoop();
+			Game::GameLoop();
+		}
 #endif
 		UpdateLandscapingLimits();
 
