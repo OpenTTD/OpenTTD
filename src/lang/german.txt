@@ -3890,7 +3890,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Löschen
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Lösche den markierten Auftrag
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Lösche alle Aufträge
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Gemeinsame Aufträge aufheben
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Gemeinsame Auftragliste aufheben. Ctrl+Klick löscht zusätzlich die Auftragliste für dieses Fahrzeug
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Gemeinsame Auftragliste aufheben. Strg+Klick löscht zusätzlich die Auftragliste für dieses Fahrzeug
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Fahre zu
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Nächstes Depot
