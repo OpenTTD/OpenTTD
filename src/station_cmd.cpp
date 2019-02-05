@@ -3885,15 +3885,20 @@ const StationList *StationFinder::GetStations()
 	return &this->stations;
 }
 
+/** The type of cargo to be compared. */
+static CargoID cargo_type_comparator;
+
+static int CDECL CompareCargoRatings(Station * const *a, Station * const *b)
+{
+	return (*b)->goods[cargo_type_comparator].rating - (*a)->goods[cargo_type_comparator].rating;
+}
+
 uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, SourceID source_id, const StationList *all_stations)
 {
 	/* Return if nothing to do. Also the rounding below fails for 0. */
 	if (amount == 0) return 0;
 
-	Station *st1 = NULL;   // Station with best rating
-	Station *st2 = NULL;   // Second best station
-	uint best_rating1 = 0; // rating of st1
-	uint best_rating2 = 0; // rating of st2
+	SmallVector<Station *, 1> used_stations;
 
 	for (Station *st : *all_stations) {
 		/* Is the station reserved exclusively for somebody else? */
@@ -3909,44 +3914,57 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 			if (st->facilities == FACIL_BUS_STOP) continue; // non-passengers are never served by just a bus stop
 		}
 
-		/* This station can be used, add it to st1/st2 */
-		if (st1 == NULL || st->goods[type].rating >= best_rating1) {
-			st2 = st1; best_rating2 = best_rating1; st1 = st; best_rating1 = st->goods[type].rating;
-		} else if (st2 == NULL || st->goods[type].rating >= best_rating2) {
-			st2 = st; best_rating2 = st->goods[type].rating;
-		}
+		/* This station can be used, add it to the list */
+		used_stations.Include(st);
 	}
 
+	const uint num_stations = used_stations.Length(); // total number of stations added
+
 	/* no stations around at all? */
-	if (st1 == NULL) return 0;
+	if (num_stations == 0) return 0;
+
+	/* Sort the stations by cargo rating in descending order. */
+	cargo_type_comparator = type;
+	QSortT<Station *>(used_stations.Begin(), num_stations, CompareCargoRatings);
+	Station *best_station = *used_stations.Begin();
 
 	/* From now we'll calculate with fractal cargo amounts.
 	 * First determine how much cargo we really have. */
-	amount *= best_rating1 + 1;
+	amount *= best_station->goods[type].rating + 1;
 
-	if (st2 == NULL) {
-		/* only one station around */
-		return UpdateStationWaiting(st1, type, amount, source_type, source_id);
+	/* several stations around */
+	uint ratings_sum = 0;
+	for (Station * const *st_iter = used_stations.Begin(); st_iter != used_stations.End(); ++st_iter) {
+		Station *st = *st_iter;
+
+		ratings_sum += st->goods[type].rating;
 	}
 
-	/* several stations around, the best two (highest rating) are in st1 and st2 */
-	assert(st1 != NULL);
-	assert(st2 != NULL);
-	assert(best_rating1 != 0 || best_rating2 != 0);
+	uint moved = 0;
+	for (Station * const *st_iter = used_stations.End(); st_iter != used_stations.Begin(); --st_iter) {
+		Station *st = *(st_iter - 1);
 
-	/* Then determine the amount the worst station gets. We do it this way as the
-	 * best should get a bonus, which in this case is the rounding difference from
-	 * this calculation. In reality that will mean the bonus will be pretty low.
-	 * Nevertheless, the best station should always get the most cargo regardless
-	 * of rounding issues. */
-	uint worst_cargo = amount * best_rating2 / (best_rating1 + best_rating2);
-	assert(worst_cargo <= (amount - worst_cargo));
+		if (st != best_station) {
+			/* Determine the amount the worst station gets, which is the last one from the list.
+			 * Then determine the amount the next worst gets by iterating backwards, until the
+			 * best station remains. We do it this way as the best should get a bonus, which in
+			 * this case is the rounding difference from the last time this calculation is done.
+			 * In reality that will mean the bonus will be pretty low. Nevertheless, the best
+			 * station should always get the most cargo regardless of rounding issues. */
+			uint cur_worst = amount * st->goods[type].rating / ratings_sum;
 
-	/* And then send the cargo to the stations! */
-	uint moved = UpdateStationWaiting(st1, type, amount - worst_cargo, source_type, source_id);
-	/* These two UpdateStationWaiting's can't be in the statement as then the order
-	 * of execution would be undefined and that could cause desyncs with callbacks. */
-	return moved + UpdateStationWaiting(st2, type, worst_cargo, source_type, source_id);
+			/* And then send the cargo to the stations! */
+			moved += UpdateStationWaiting(st, type, cur_worst, source_type, source_id);
+
+			amount -= cur_worst;
+			ratings_sum -= st->goods[type].rating;
+		} else {
+			/* These two UpdateStationWaiting's can't be in the statement as then the order
+			 * of execution would be undefined and that could cause desyncs with callbacks. */
+			moved += UpdateStationWaiting(st, type, amount, source_type, source_id);
+		}
+	}
+	return moved;
 }
 
 void BuildOilRig(TileIndex tile)
