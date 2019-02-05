@@ -46,6 +46,7 @@ typedef SmallVector<Train *, 16> TrainList;
 RailtypeInfo _railtypes[RAILTYPE_END];
 RailType _sorted_railtypes[RAILTYPE_END];
 uint8 _sorted_railtypes_size;
+RailTypes _railtypes_hidden_mask;
 
 /** Enum holding the signal offset in the sprite sheet according to the side it is representing. */
 enum SignalOffsets {
@@ -78,6 +79,8 @@ void ResetRailTypes()
 		RailTypeLabelList(), 0, 0, RAILTYPES_NONE, RAILTYPES_NONE, 0,
 		{}, {} };
 	for (; i < lengthof(_railtypes);          i++) _railtypes[i] = empty_railtype;
+
+	_railtypes_hidden_mask = RAILTYPES_NONE;
 }
 
 void ResolveRailTypeGUISprites(RailtypeInfo *rti)
@@ -140,11 +143,12 @@ void InitRailTypes()
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
 		RailtypeInfo *rti = &_railtypes[rt];
 		ResolveRailTypeGUISprites(rti);
+		if (HasBit(rti->flags, RTF_HIDDEN)) SetBit(_railtypes_hidden_mask, rt);
 	}
 
 	_sorted_railtypes_size = 0;
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		if (_railtypes[rt].label != 0) {
+		if (_railtypes[rt].label != 0 && !HasBit(_railtypes_hidden_mask, rt)) {
 			_sorted_railtypes[_sorted_railtypes_size++] = rt;
 		}
 	}
