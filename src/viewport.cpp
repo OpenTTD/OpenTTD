@@ -97,6 +97,7 @@
 #include "safeguards.h"
 
 Point _tile_fract_coords;
+TownID _selected_town;
 
 
 static const int MAX_TILE_EXTENT_LEFT   = ZOOM_LVL_BASE * TILE_PIXELS;                     ///< Maximum left   extent of tile relative to north corner.
@@ -976,6 +977,10 @@ static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type)
  */
 static void DrawTileSelection(const TileInfo *ti)
 {
+	if ((_thd.drawstyle & HT_RECT) != HT_NONE && GetClosestTownFromTile(ti->tile) == _selected_town) {
+		if (Town::GetNumItems() > 1) DrawTileSelectionRect(ti, PALETTE_CRASH);
+	}
+
 	/* Draw a red error square? */
 	bool is_redsq = _thd.redsq == ti->tile;
 	if (is_redsq) DrawTileSelectionRect(ti, PALETTE_TILE_RED_PULSATING);
@@ -2315,6 +2320,19 @@ void UpdateTileSelection()
 
 		/* Draw the new tile selection? */
 		if ((new_drawstyle & HT_DRAG_MASK) != HT_NONE) SetSelectionTilesDirty();
+
+		if ((_thd.drawstyle & HT_RECT) != HT_NONE) {
+			TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
+			if (_selected_town != GetClosestTownFromTile(tile)) {
+				_selected_town = GetClosestTownFromTile(tile);
+				MarkWholeScreenDirty();
+			}
+		} else {
+			if (_selected_town != INVALID_TOWN) {
+				_selected_town = INVALID_TOWN;
+				MarkWholeScreenDirty();
+			}
+		}
 	}
 }
 
