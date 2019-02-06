@@ -307,10 +307,15 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCL_CLASS_ROAD,                        "WID_SCL_CLASS_ROAD");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCL_CLASS_SHIP,                        "WID_SCL_CLASS_SHIP");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCL_CLASS_AIRCRAFT,                    "WID_SCL_CLASS_AIRCRAFT");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCL_GROUPS_RAIL,                       "WID_SCL_GROUPS_RAIL");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCL_GROUPS_ROAD,                       "WID_SCL_GROUPS_ROAD");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCL_GROUPS_SHIP,                       "WID_SCL_GROUPS_SHIP");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCL_GROUPS_AIRCRAFT,                   "WID_SCL_GROUPS_AIRCRAFT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCL_SPACER_DROPDOWN,                   "WID_SCL_SPACER_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCL_PRI_COL_DROPDOWN,                  "WID_SCL_PRI_COL_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCL_SEC_COL_DROPDOWN,                  "WID_SCL_SEC_COL_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCL_MATRIX,                            "WID_SCL_MATRIX");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCL_MATRIX_SCROLLBAR,                  "WID_SCL_MATRIX_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCMF_CAPTION,                          "WID_SCMF_CAPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCMF_TOGGLE_LARGE_SMALL,               "WID_SCMF_TOGGLE_LARGE_SMALL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SCMF_SELECT_FACE,                      "WID_SCMF_SELECT_FACE");
@@ -563,6 +568,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_CREATE_GROUP,                       "WID_GL_CREATE_GROUP");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_DELETE_GROUP,                       "WID_GL_DELETE_GROUP");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_RENAME_GROUP,                       "WID_GL_RENAME_GROUP");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_LIVERY_GROUP,                       "WID_GL_LIVERY_GROUP");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_REPLACE_PROTECTION,                 "WID_GL_REPLACE_PROTECTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_INFO,                               "WID_GL_INFO");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_H_BACKGROUND,                          "WID_H_BACKGROUND");
