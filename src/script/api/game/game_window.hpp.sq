@@ -546,7 +546,8 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_CPR_FOOTER,                            "WID_CPR_FOOTER");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_CPR_ENABLE_CARGOES,                    "WID_CPR_ENABLE_CARGOES");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_CPR_DISABLE_CARGOES,                   "WID_CPR_DISABLE_CARGOES");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_CPR_CARGO_FIRST,                       "WID_CPR_CARGO_FIRST");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_CPR_MATRIX,                            "WID_CPR_MATRIX");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_CPR_MATRIX_SCROLLBAR,                  "WID_CPR_MATRIX_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_CL_BACKGROUND,                         "WID_CL_BACKGROUND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_PRD_SCORE_FIRST,                       "WID_PRD_SCORE_FIRST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_PRD_SCORE_LAST,                        "WID_PRD_SCORE_LAST");

@@ -869,35 +869,26 @@ void ShowCompanyValueGraph()
 /*****************/
 
 struct PaymentRatesGraphWindow : BaseGraphWindow {
-	bool first_init; ///< This value is true until the first initialization of the window has finished.
+	uint line_height;   ///< Pixel height of each cargo type row.
+	Scrollbar *vscroll; ///< Cargo list scrollbar.
+
 	PaymentRatesGraphWindow(WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, WID_CPR_GRAPH, STR_JUST_CURRENCY_SHORT)
 	{
-		this->first_init = true;
 		this->num_on_x_axis = 20;
 		this->num_vert_lines = 20;
 		this->month = 0xFF;
 		this->x_values_start     = 10;
 		this->x_values_increment = 10;
 
+		this->CreateNestedTree();
+		this->vscroll = this->GetScrollbar(WID_CPR_MATRIX_SCROLLBAR);
+		this->vscroll->SetCount(_sorted_standard_cargo_specs_size);
+
 		/* Initialise the dataset */
 		this->OnHundredthTick();
 
-		this->InitNested(window_number);
-
-		this->UpdateLoweredWidgets();
-	}
-
-	virtual void OnInit()
-	{
-		/* UpdateLoweredWidgets needs to be called after a language or NewGRF change, but it can't be called before
-		 * InitNested is done. On the first init these functions are called in the correct order by the constructor. */
-		if (!this->first_init) {
-			/* Initialise the dataset */
-			this->OnHundredthTick();
-			this->UpdateLoweredWidgets();
-		}
-		this->first_init = false;
+		this->FinishInitNested(window_number);
 	}
 
 	void UpdateExcludedData()
@@ -912,53 +903,64 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		}
 	}
 
-	void UpdateLoweredWidgets()
-	{
-		for (int i = 0; i < _sorted_standard_cargo_specs_size; i++) {
-			this->SetWidgetLoweredState(WID_CPR_CARGO_FIRST + i, !HasBit(this->excluded_data, i));
-		}
-	}
-
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget < WID_CPR_CARGO_FIRST) {
+		if (widget != WID_CPR_MATRIX) {
 			BaseGraphWindow::UpdateWidgetSize(widget, size, padding, fill, resize);
 			return;
 		}
 
-		const CargoSpec *cs = _sorted_cargo_specs[widget - WID_CPR_CARGO_FIRST];
-		SetDParam(0, cs->name);
-		Dimension d = GetStringBoundingBox(STR_GRAPH_CARGO_PAYMENT_CARGO);
-		d.width += 14; // colour field
-		d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-		d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
-		*size = maxdim(d, *size);
+		const CargoSpec *cs;
+		FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
+			SetDParam(0, cs->name);
+			Dimension d = GetStringBoundingBox(STR_GRAPH_CARGO_PAYMENT_CARGO);
+			d.width += 14; // colour field
+			d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+			d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+			*size = maxdim(d, *size);
+		}
+
+		this->line_height = size->height;
+		size->height = this->line_height * 11; /* Default number of cargo types in most climates. */
+		resize->width = 0;
+		resize->height = this->line_height;
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget < WID_CPR_CARGO_FIRST) {
+		if (widget != WID_CPR_MATRIX) {
 			BaseGraphWindow::DrawWidget(r, widget);
 			return;
 		}
 
-		const CargoSpec *cs = _sorted_cargo_specs[widget - WID_CPR_CARGO_FIRST];
 		bool rtl = _current_text_dir == TD_RTL;
 
-		/* Since the buttons have no text, no images,
-		 * both the text and the coloured box have to be manually painted.
-		 * clk_dif will move one pixel down and one pixel to the right
-		 * when the button is clicked */
-		byte clk_dif = this->IsWidgetLowered(widget) ? 1 : 0;
 		int x = r.left + WD_FRAMERECT_LEFT;
 		int y = r.top;
 
-		int rect_x = clk_dif + (rtl ? r.right - 12 : r.left + WD_FRAMERECT_LEFT);
+		int pos = this->vscroll->GetPosition();
+		int max = pos + this->vscroll->GetCapacity();
 
-		GfxFillRect(rect_x, y + clk_dif, rect_x + 8, y + 5 + clk_dif, PC_BLACK);
-		GfxFillRect(rect_x + 1, y + 1 + clk_dif, rect_x + 7, y + 4 + clk_dif, cs->legend_colour);
-		SetDParam(0, cs->name);
-		DrawString(rtl ? r.left : x + 14 + clk_dif, (rtl ? r.right - 14 + clk_dif : r.right), y + clk_dif, STR_GRAPH_CARGO_PAYMENT_CARGO);
+		const CargoSpec *cs;
+		FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
+			if (pos-- > 0) continue;
+			if (--max < 0) break;
+
+			bool lowered = !HasBit(_legend_excluded_cargo, cs->Index());
+
+			/* Redraw box if lowered */
+			if (lowered) DrawFrameRect(r.left, y, r.right, y + this->line_height - 1, COLOUR_ORANGE, lowered ? FR_LOWERED : FR_NONE);
+
+			byte clk_dif = lowered ? 1 : 0;
+			int rect_x = clk_dif + (rtl ? r.right - 12 : r.left + WD_FRAMERECT_LEFT);
+
+			GfxFillRect(rect_x, y + clk_dif, rect_x + 8, y + 5 + clk_dif, PC_BLACK);
+			GfxFillRect(rect_x + 1, y + 1 + clk_dif, rect_x + 7, y + 4 + clk_dif, cs->legend_colour);
+			SetDParam(0, cs->name);
+			DrawString(rtl ? r.left : x + 14 + clk_dif, (rtl ? r.right - 14 + clk_dif : r.right), y + clk_dif, STR_GRAPH_CARGO_PAYMENT_CARGO);
+
+			y += this->line_height;
+		}
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -968,7 +970,6 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 				/* Remove all cargoes from the excluded lists. */
 				_legend_excluded_cargo = 0;
 				this->excluded_data = 0;
-				this->UpdateLoweredWidgets();
 				this->SetDirty();
 				break;
 
@@ -981,21 +982,31 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 					SetBit(this->excluded_data, i);
 					i++;
 				}
-				this->UpdateLoweredWidgets();
 				this->SetDirty();
 				break;
 			}
 
-			default:
-				if (widget >= WID_CPR_CARGO_FIRST) {
-					int i = widget - WID_CPR_CARGO_FIRST;
-					ToggleBit(_legend_excluded_cargo, _sorted_cargo_specs[i]->Index());
-					this->ToggleWidgetLoweredState(widget);
+			case WID_CPR_MATRIX: {
+				uint row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_CPR_MATRIX, 0, this->line_height);
+				if (row >= this->vscroll->GetCount()) return;
+
+				const CargoSpec *cs;
+				FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
+					if (row-- > 0) continue;
+
+					ToggleBit(_legend_excluded_cargo, cs->Index());
 					this->UpdateExcludedData();
 					this->SetDirty();
+					break;
 				}
 				break;
+			}
 		}
+	}
+
+	virtual void OnResize()
+	{
+		this->vscroll->SetCapacityFromWidget(this, WID_CPR_MATRIX);
 	}
 
 	virtual void OnGameTick()
@@ -1031,23 +1042,6 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	}
 };
 
-/** Construct the row containing the digit keys. */
-static NWidgetBase *MakeCargoButtons(int *biggest_index)
-{
-	NWidgetVertical *ver = new NWidgetVertical;
-
-	for (int i = 0; i < _sorted_standard_cargo_specs_size; i++) {
-		NWidgetBackground *leaf = new NWidgetBackground(WWT_PANEL, COLOUR_ORANGE, WID_CPR_CARGO_FIRST + i, NULL);
-		leaf->tool_tip = STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO;
-		leaf->SetFill(1, 0);
-		leaf->SetLowered(true);
-		ver->Add(leaf);
-	}
-	*biggest_index = WID_CPR_CARGO_FIRST + _sorted_standard_cargo_specs_size - 1;
-	return ver;
-}
-
-
 static const NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1065,12 +1059,15 @@ static const NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_EMPTY, COLOUR_GREY, WID_CPR_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1), SetResize(1, 1),
 			NWidget(NWID_VERTICAL),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 0), SetResize(0, 1),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_CPR_ENABLE_CARGOES), SetDataTip(STR_GRAPH_CARGO_ENABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL), SetFill(1, 0),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_CPR_DISABLE_CARGOES), SetDataTip(STR_GRAPH_CARGO_DISABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL), SetFill(1, 0),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
-				NWidgetFunction(MakeCargoButtons),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1), SetResize(0, 1),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_MATRIX, COLOUR_ORANGE, WID_CPR_MATRIX), SetResize(0, 2), SetMatrixDataTip(1, 0, STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO), SetScrollbar(WID_CPR_MATRIX_SCROLLBAR),
+					NWidget(NWID_VSCROLLBAR, COLOUR_ORANGE, WID_CPR_MATRIX_SCROLLBAR),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(0, 1), SetResize(0, 1),
 		EndContainer(),
