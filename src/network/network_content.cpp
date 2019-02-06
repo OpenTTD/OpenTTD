@@ -404,10 +404,14 @@ static bool GunzipFile(const ContentInfo *ci)
 {
 #if defined(WITH_ZLIB)
 	bool ret = true;
+
+	/* Need to open the file with fopen() to support non-ASCII on Windows. */
 	FILE *ftmp = fopen(GetFullFilename(ci, true), "rb");
 	if (ftmp == NULL) return false;
+	/* Duplicate the handle, and close the FILE*, to avoid double-closing the handle later. */
+	gzFile fin = gzdopen(dup(fileno(ftmp)), "rb");
+	fclose(ftmp);
 
-	gzFile fin = gzdopen(fileno(ftmp), "rb");
 	FILE *fout = fopen(GetFullFilename(ci, false), "wb");
 
 	if (fin == NULL || fout == NULL) {
@@ -444,14 +448,7 @@ static bool GunzipFile(const ContentInfo *ci)
 		}
 	}
 
-	if (fin != NULL) {
-		/* Closes ftmp too! */
-		gzclose(fin);
-	} else if (ftmp != NULL) {
-		/* In case the gz stream was opened correctly this will
-		 * be closed by gzclose. */
-		fclose(ftmp);
-	}
+	if (fin != NULL) gzclose(fin);
 	if (fout != NULL) fclose(fout);
 
 	return ret;
