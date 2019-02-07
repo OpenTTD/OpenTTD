@@ -569,6 +569,7 @@ STR_COLOUR_BROWN                                                :Brązowy
 STR_COLOUR_GREY                                                 :Szary
 STR_COLOUR_WHITE                                                :Biały
 STR_COLOUR_RANDOM                                               :Losowy
+STR_COLOUR_DEFAULT                                              :Domyślny
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -1725,6 +1726,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :zielony
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :ciemnozielony
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :fioletowy
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Zachowanie podczas przeciągania mapy
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Przeciągnij okno podglądu prawym przyciskiem myszy, pozycja myszy zablokowana
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Przeciągnij mapę prawym przyciskiem myszy, pozycja myszy zablokowana
 STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Przeciągnij mapę prawym przyciskiem myszy
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Przeciągnij mapę lewym przyciskiem myszy
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Wygładź przesuwanie widoku: {STRING}
@@ -2195,7 +2198,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Zmiana o
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Pozwól modyfikować wielkość produkcji przedsiębiorstw: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nowy schemat kolorów
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Schemat kolorów
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Pokaż ogólne schematy koloru
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Pokaż schematy koloru pociągów
@@ -2756,7 +2759,7 @@ STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sygnaliz
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednokierunkowy sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamiana sygnałów{}Jeżeli włączone, kliknięcie na istniejący sygnał spowoduje zamianę go na wybrany typ i wariant. CTRL+klik przełącza istniejący wariant. Shift+klik pokazuje szacowany koszt zamiany
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Gęstość sygnałów przy przeciąganiu
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Zmniejsz gęstość sygnałów przy przeciąganiu
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Zmniejsz odległość między sygnałami przy przeciąganiu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zwiększ gęstość sygnałów przy przeciąganiu
 
 # Bridge selection window
@@ -3086,6 +3089,7 @@ STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Liczba r
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Jak szybko gra obecnie działa, w porównaniu do oczekiwanej prędkości przy normalnym tempie symulacji.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Obecny
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Średnia
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Dane oparte na {COMMA} pomiarach
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
@@ -3095,13 +3099,18 @@ STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} 
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} sek.
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Obsługa ładunku:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE}  Opóźnienie wykresu połączeń:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Renderowanie grafiki:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Okna podgląu świata:
 STR_FRAMERATE_VIDEO                                             :{WHITE}Wyjście video:
 STR_FRAMERATE_SOUND                                             :{WHITE}Miksowanie dźwięku:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Pętla gry
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Opóźnienie wykresu połączeń
 STR_FRAMETIME_CAPTION_DRAWING                                   :Renderowanie grafiki
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Renderowanie okna podgląu świata
 STR_FRAMETIME_CAPTION_VIDEO                                     :Wyjście wideo
 STR_FRAMETIME_CAPTION_SOUND                                     :Miksowanie dźwięku
 ############ End of leave-in-this-order
@@ -3129,6 +3138,9 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Szczegó
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Brak dostępnych informacji
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Fraza filtru:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Zastąp plik
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Czy na pewno chcesz zastąpić istniejący stan gry?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Wprowadź nazwę pod jaką zapisać grę
 
@@ -3246,7 +3258,10 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Wersja: 
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Kompatybilność z wersją min.: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}Suma MD5: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Domyslny (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Domyślny (D) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametry: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Żadne
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Brak dostępnych informacji
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nie znaleziono pasującego pliku
@@ -3804,6 +3819,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ładowno
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Masa: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Można przystosować do: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :wszystkie typy ładunków
+STR_PURCHASE_INFO_NONE                                          :Żadne
 STR_PURCHASE_INFO_ALL_BUT                                       :wszystko oprócz {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. siła pociągowa: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Zasięg: {GOLD}{COMMA} pól

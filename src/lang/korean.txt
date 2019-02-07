@@ -1168,7 +1168,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :이 설정을 �
 STR_CONFIG_SETTING_DISASTERS                                    :재앙: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :일정 구역이나 차량, 기반시설을 간혹 파괴할 수도 있는 재앙을 켜거나 끕니다.
 STR_CONFIG_SETTING_CITY_APPROVAL                                :지역 개발에 대한 도시의 태도: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :회사가 유발하는 소음과 환경 파괴가 회사에 대한 도시의 평가치와 향후 해당 지역에서의 건설 행동에 얼마나 영향을 미칠지 선택하십시오.
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :회사가 유발하는 소음과 환경 파괴가 회사에 대한 도시의 평가치와 향후 해당 지역에서 건설하는 행동에 얼마나 영향을 미칠지 선택하십시오.
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :최대 지형 높이: {STRING}
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :지도에 생성되는 산이 가질 수 있는 최대 높이를 설정합니다.
@@ -3454,8 +3454,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :새 항공기
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}가격: {GOLD}{CURRENCY_LONG}{BLACK} 중량: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}속력: {GOLD}{VELOCITY}{BLACK} 힘: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}속력: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}바다에서의 속력: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}운하/강에서의 속력: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}바다에서 속력: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}운하/강에서 속력: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}유지비: {GOLD}{CURRENCY_LONG}/년
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}수송량: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(개조 가능)
@@ -3829,21 +3829,21 @@ STR_ORDER_GO_TO                                                 :완행
 STR_ORDER_GO_NON_STOP_TO                                        :직행
 STR_ORDER_GO_VIA                                                :완행 경유
 STR_ORDER_GO_NON_STOP_VIA                                       :직행 경유
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}선택한 목적지에서의 정차 방식을 변경합니다
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}선택한 목적지에서 화물을 정차할 방식을 변경합니다
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}아무 화물이나 가득 싣기
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :가능한 것만 적재
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :모든 화물을 가득 실음
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :아무 화물이나 가득 싣기
 STR_ORDER_DROP_NO_LOADING                                       :싣지 않기
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}선택한 목적지에서의 화물 적재 방식을 변경합니다
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}선택한 목적지에서 화물을 적재할 방식을 변경합니다
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}모든 화물 하차
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :화물을 받는경우 하차
 STR_ORDER_DROP_UNLOAD                                           :모든 화물 하차
 STR_ORDER_DROP_TRANSFER                                         :환승
 STR_ORDER_DROP_NO_UNLOADING                                     :화물을 하차시키지 않음
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}선택한 목적지에서의 화물 하차 방식을 변경합니다
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}선택한 목적지에서 화물을 하차할 방식을 변경합니다
 
 STR_ORDER_REFIT                                                 :{BLACK}개조
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}이 경로에서 열차를 어떤 화물을 받을 수 있게 개조할 것인지 선택하십시오. CTRL+클릭하면 개조 설정을 해제합니다.
