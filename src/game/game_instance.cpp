@@ -261,8 +261,9 @@ void GameInstance::Died()
  */
 void CcGame(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
-	Game::GetGameInstance()->DoCommandCallback(result, tile, p1, p2, cmd);
-	Game::GetGameInstance()->Continue();
+	if (Game::GetGameInstance()->DoCommandCallback(result, tile, p1, p2, cmd)) {
+		Game::GetGameInstance()->Continue();
+	}
 }
 
 CommandCallback *GameInstance::GetDoCommandCallback()

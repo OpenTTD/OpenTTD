@@ -83,6 +83,23 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->mode_instance;
 }
 
+/* static */ void ScriptObject::SetLastCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+{
+	GetStorage()->last_tile = tile;
+	GetStorage()->last_p1 = p1;
+	GetStorage()->last_p2 = p2;
+	GetStorage()->last_cmd = cmd;
+}
+
+/* static */ bool ScriptObject::CheckLastCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+{
+	if (GetStorage()->last_tile != tile) return false;
+	if (GetStorage()->last_p1 != p1) return false;
+	if (GetStorage()->last_p2 != p2) return false;
+	if (GetStorage()->last_cmd != cmd) return false;
+	return true;
+}
+
 /* static */ void ScriptObject::SetDoCommandCosts(Money value)
 {
 	GetStorage()->costs = CommandCost(value);
@@ -303,6 +320,9 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 
 	/* Only set p2 when the command does not come from the network. */
 	if (GetCommandFlags(cmd) & CMD_CLIENT_ID && p2 == 0) p2 = UINT32_MAX;
+
+	/* Store the command for command callback validation. */
+	if (!estimate_only && _networking && !_generating_world) SetLastCommand(tile, p1, p2, cmd);
 
 	/* Try to perform the command. */
 	CommandCost res = ::DoCommandPInternal(tile, p1, p2, cmd, (_networking && !_generating_world) ? ScriptObject::GetActiveInstance()->GetDoCommandCallback() : nullptr, text, false, estimate_only);
