@@ -1023,6 +1023,19 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 /** The industries we've currently brought cargo to. */
 static SmallIndustryList _cargo_delivery_destinations;
 
+static bool CanDeliverGoodsToIndustry(uint cargo_index, CargoID cargo_type, IndustryID source, Industry *ind)
+{
+	if (ind->index == source) return false;
+
+	/* Check if matching cargo has been found */
+	if (cargo_index >= lengthof(ind->accepts_cargo)) return false;
+
+	/* Check if industry temporarily refuses acceptance */
+	if (IndustryTemporarilyRefusesCargo(ind, cargo_type)) return false;
+
+	return min(1, 0xFFFFU - ind->incoming_cargo_waiting[cargo_index]) != 0;
+}
+
 /**
  * Transfer goods from station to industry.
  * All cargo is delivered to the nearest (Manhattan) industry to the station sign, which is inside the acceptance rectangle and actually accepts the cargo.
@@ -1054,23 +1067,12 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 			if (r-- == 0) break;
 		}
 
-		if (ind->index == source) {
-			rejected.Include(ind);
-			continue;
-		}
-
 		uint cargo_index;
 		for (cargo_index = 0; cargo_index < lengthof(ind->accepts_cargo); cargo_index++) {
 			if (cargo_type == ind->accepts_cargo[cargo_index]) break;
 		}
-		/* Check if matching cargo has been found */
-		if (cargo_index >= lengthof(ind->accepts_cargo)) {
-			rejected.Include(ind);
-			continue;
-		}
 
-		/* Check if industry temporarily refuses acceptance */
-		if (IndustryTemporarilyRefusesCargo(ind, cargo_type)) {
+		if (!CanDeliverGoodsToIndustry(cargo_index, cargo_type, source, ind)) {
 			rejected.Include(ind);
 			continue;
 		}
@@ -1079,19 +1081,13 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 		_cargo_delivery_destinations.Include(ind);
 
 		/* Deliver one piece at a time */
-		uint amount = min(1, 0xFFFFU - ind->incoming_cargo_waiting[cargo_index]);
-		if (amount == 0) {
-			rejected.Include(ind);
-			continue;
-		}
-
-		ind->incoming_cargo_waiting[cargo_index] += amount;
+		ind->incoming_cargo_waiting[cargo_index]++;
 		ind->last_cargo_accepted_at[cargo_index] = _date;
-		num_pieces -= amount;
-		accepted += amount;
+		num_pieces--;
+		accepted++;
 
 		/* Update the cargo monitor. */
-		AddCargoDelivery(cargo_type, company, amount, ST_INDUSTRY, source, st, ind->index);
+		AddCargoDelivery(cargo_type, company, 1, ST_INDUSTRY, source, st, ind->index);
 	} while (num_pieces != 0 && rejected.Length() != st->industries_near.size());
 
 	return accepted;
