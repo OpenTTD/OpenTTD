@@ -261,7 +261,7 @@ void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 	 * when the company does not exist anymore.
 	 */
 	const Company *c = Company::GetIfValid(_current_company);
-	if (c == nullptr || c->ai_instance == nullptr) return;
+	if (c == nullptr || c->ai_instance == nullptr || !c->ai_instance->IsWaiting()) return;
 
 	c->ai_instance->DoCommandCallback(result, tile, p1, p2);
 	c->ai_instance->Continue();

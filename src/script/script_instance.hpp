@@ -198,6 +198,11 @@ public:
 	 */
 	bool IsSleeping() { return this->suspend != 0; }
 
+	/**
+	 * Check if the instance is expecting an answer from a DoCommand.
+	 */
+	bool IsWaiting() { return this->suspend < 0; }
+
 	size_t GetAllocatedMemory() const;
 
 protected:
