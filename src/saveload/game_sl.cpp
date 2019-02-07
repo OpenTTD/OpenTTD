@@ -73,21 +73,36 @@ static void Load_GSDT()
 	GameConfig *config = GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME);
 	if (StrEmpty(_game_saveload_name)) {
 	} else {
-		config->Change(_game_saveload_name, _game_saveload_version, false, _game_saveload_is_random);
+		char script_name[1024];
+		strecpy(script_name, _game_saveload_name, lastof(script_name));
+		strtolower(script_name);
+		int versionParam = _game_saveload_version;
+		bool force_match_version = false;
+		char *e = strrchr(script_name, '.');
+		if (e != nullptr) {
+			*e = '\0';
+			e++;
+			versionParam = atoi(e);
+			if (versionParam == _game_saveload_version) {
+				versionParam = -1;
+				force_match_version = true;
+			}
+		}
+		config->Change(_game_saveload_name, versionParam, force_match_version, _game_saveload_is_random);
 		if (!config->HasScript()) {
 			/* No version of the GameScript available that can load the data. Try to load the
 			 * latest version of the GameScript instead. */
-			config->Change(_game_saveload_name, -1, false, _game_saveload_is_random);
+			config->Change(script_name, -1, false, _game_saveload_is_random);
 			if (!config->HasScript()) {
-				if (strcmp(_game_saveload_name, "%_dummy") != 0) {
-					DEBUG(script, 0, "The savegame has an GameScript by the name '%s', version %d which is no longer available.", _game_saveload_name, _game_saveload_version);
+				if (strcmp(script_name, "%_dummy") != 0) {
+					DEBUG(script, 0, "The savegame has a GameScript by the name '%s', version %d which is no longer available.", script_name, _game_saveload_version);
 					DEBUG(script, 0, "This game will continue to run without GameScript.");
 				} else {
 					DEBUG(script, 0, "The savegame had no GameScript available at the time of saving.");
 					DEBUG(script, 0, "This game will continue to run without GameScript.");
 				}
 			} else {
-				DEBUG(script, 0, "The savegame has an GameScript by the name '%s', version %d which is no longer available.", _game_saveload_name, _game_saveload_version);
+				DEBUG(script, 0, "The savegame has a GameScript by the name '%s', version %d which is no longer available.", script_name, _game_saveload_version);
 				DEBUG(script, 0, "The latest version of that GameScript has been loaded instead, but it'll not get the savegame data as it's incompatible.");
 			}
 			/* Make sure the GameScript doesn't get the saveload data, as he was not the

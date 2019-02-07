@@ -22,6 +22,18 @@ void ScriptConfig::Change(const char *name, int version, bool force_exact_match,
 	this->name = (name == nullptr) ? nullptr : stredup(name);
 	this->info = (name == nullptr) ? nullptr : this->FindInfo(this->name, version, force_exact_match);
 	this->version = (info == nullptr) ? -1 : info->GetVersion();
+	if (this->name != nullptr && info != nullptr && strcasecmp(this->name, this->info->GetName()) != 0 && this->version > -1) {
+		char script_name[1024];
+		strecpy(script_name, this->name, lastof(script_name));
+		strtolower(script_name);
+		char *e = strrchr(script_name, '.');
+		if (e != nullptr) {
+			*e = '\0';
+			e++;
+			int versionParam = atoi(e);
+			if (this->version != versionParam) this->name = stredup(GetInfo()->GetName());
+		}
+	}
 	this->is_random = is_random;
 	if (this->config_list != nullptr) delete this->config_list;
 	this->config_list = (info == nullptr) ? nullptr : new ScriptConfigItemList();

@@ -81,21 +81,36 @@ static void Load_AIPL()
 			/* A random AI. */
 			config->Change(nullptr, -1, false, true);
 		} else {
-			config->Change(_ai_saveload_name, _ai_saveload_version, false, _ai_saveload_is_random);
+			char script_name[1024];
+			strecpy(script_name, _ai_saveload_name, lastof(script_name));
+			strtolower(script_name);
+			int versionParam = _ai_saveload_version;
+			bool force_match_version = false;
+			char *e = strrchr(script_name, '.');
+			if (e != nullptr) {
+				*e = '\0';
+				e++;
+				versionParam = atoi(e);
+				if (versionParam == _ai_saveload_version) {
+					versionParam = -1;
+					force_match_version = true;
+				}
+			}
+			config->Change(_ai_saveload_name, versionParam, force_match_version, _ai_saveload_is_random);
 			if (!config->HasScript()) {
 				/* No version of the AI available that can load the data. Try to load the
 				 * latest version of the AI instead. */
-				config->Change(_ai_saveload_name, -1, false, _ai_saveload_is_random);
+				config->Change(script_name, -1, false, _ai_saveload_is_random);
 				if (!config->HasScript()) {
-					if (strcmp(_ai_saveload_name, "%_dummy") != 0) {
-						DEBUG(script, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", _ai_saveload_name, _ai_saveload_version);
+					if (strcmp(script_name, "%_dummy") != 0) {
+						DEBUG(script, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", script_name, _ai_saveload_version);
 						DEBUG(script, 0, "A random other AI will be loaded in its place.");
 					} else {
 						DEBUG(script, 0, "The savegame had no AIs available at the time of saving.");
 						DEBUG(script, 0, "A random available AI will be loaded now.");
 					}
 				} else {
-					DEBUG(script, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", _ai_saveload_name, _ai_saveload_version);
+					DEBUG(script, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", script_name, _ai_saveload_version);
 					DEBUG(script, 0, "The latest version of that AI has been loaded instead, but it'll not get the savegame data as it's incompatible.");
 				}
 				/* Make sure the AI doesn't get the saveload data, as he was not the
