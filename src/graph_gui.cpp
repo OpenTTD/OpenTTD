@@ -1580,3 +1580,9 @@ void ShowPerformanceRatingDetail()
 {
 	AllocateWindowDescFront<PerformanceRatingDetailWindow>(&_performance_rating_detail_desc, 0);
 }
+
+void InitializeGraphGui()
+{
+	_legend_excluded_companies = 0;
+	_legend_excluded_cargo = 0;
+}
