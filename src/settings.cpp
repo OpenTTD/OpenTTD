@@ -1222,8 +1222,8 @@ static bool CheckFreeformEdges(int32 p1)
 				return false;
 			}
 		}
-		for (uint i = 0; i < MapSizeX(); i++) MakeVoid(TileXY(i, 0));
-		for (uint i = 0; i < MapSizeY(); i++) MakeVoid(TileXY(0, i));
+		for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
+		for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(0, y));
 	} else {
 		for (uint i = 0; i < MapMaxX(); i++) {
 			if (TileHeight(TileXY(i, 1)) != 0) {
