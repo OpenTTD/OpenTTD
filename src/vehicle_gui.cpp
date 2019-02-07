@@ -2377,7 +2377,7 @@ static const uint32 _vehicle_command_translation_table[][4] = {
  * @param p1 vehicle ID
  * @param p2 unused
  */
-void CcStartStopVehicle(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+void CcStartStopVehicle(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	if (result.Failed()) return;
 
@@ -2822,8 +2822,9 @@ void StopGlobalFollowVehicle(const Vehicle *v)
  * @param tile unused
  * @param p1 unused
  * @param p2 unused
+ * @param cmd unused
  */
-void CcBuildPrimaryVehicle(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+void CcBuildPrimaryVehicle(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	if (result.Failed()) return;
 

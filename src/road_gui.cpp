@@ -68,7 +68,7 @@ static RoadType _cur_roadtype;
 static DiagDirection _road_depot_orientation;
 static DiagDirection _road_station_picker_orientation;
 
-void CcPlaySound_SPLAT_OTHER(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+void CcPlaySound_SPLAT_OTHER(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT_OTHER, tile);
 }
@@ -96,8 +96,9 @@ static void PlaceRoad_Bridge(TileIndex tile, Window *w)
  * @param p1 bit 0-3 railtype or roadtypes
  *           bit 8-9 transport type
  * @param p2 unused
+ * @param cmd unused
  */
-void CcBuildRoadTunnel(const CommandCost &result, TileIndex start_tile, uint32 p1, uint32 p2)
+void CcBuildRoadTunnel(const CommandCost &result, TileIndex start_tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	if (result.Succeeded()) {
 		if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT_OTHER, start_tile);
@@ -130,7 +131,7 @@ void ConnectRoadToStructure(TileIndex tile, DiagDirection direction)
 	}
 }
 
-void CcRoadDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+void CcRoadDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	if (result.Failed()) return;
 
@@ -153,9 +154,10 @@ void CcRoadDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
  *           bit 3: #Axis of the road for drive-through stops.
  *           bit 5..9: The roadtype.
  *           bit 16..31: Station ID to join (NEW_STATION if build new one).
+ * @param cmd Unused.
  * @see CmdBuildRoadStop
  */
-void CcRoadStop(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+void CcRoadStop(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	if (result.Failed()) return;
 

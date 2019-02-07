@@ -117,8 +117,9 @@ extern void DepotSortList(VehicleList *list);
  * @param tile unused
  * @param p1 unused
  * @param p2 unused
+ * @param cmd unused
  */
-void CcCloneVehicle(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+void CcCloneVehicle(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	if (result.Failed()) return;
 

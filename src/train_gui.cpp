@@ -27,8 +27,9 @@
  * @param tile   The tile the command was executed on.
  * @param p1 Additional data for the command (for the #CommandProc)
  * @param p2 Additional data for the command (for the #CommandProc)
+ * @param cmd Unused.
  */
-void CcBuildWagon(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+void CcBuildWagon(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	if (result.Failed()) return;
 

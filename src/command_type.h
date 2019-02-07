@@ -469,7 +469,7 @@ struct Command {
  * @param p1 Additional data of the command
  * @see CommandProc
  */
-typedef void CommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2);
+typedef void CommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd);
 
 /**
  * Structure for buffering the build command when selecting a station to join.
