@@ -55,64 +55,71 @@ static const DrawTileSpriteSpan _shipdepot_display_data[][DEPOT_PART_END] = {
 	},
 };
 
+static constexpr uint8_t LOCK_HEIGHT_LOWER_REAR = 6; ///< Sub-tile height of rear wall of lower part.
+static constexpr uint8_t LOCK_HEIGHT_LOWER_FRONT = 10; ///< Sub-tile height of front wall of lower part.
+static constexpr uint8_t LOCK_HEIGHT_MIDDLE_REAR = 6; ///< Sub-tile height of rear wall of middle part.
+static constexpr uint8_t LOCK_HEIGHT_MIDDLE_FRONT = 10; ///< Sub-tile height of front wall of middle part.
+static constexpr uint8_t LOCK_HEIGHT_UPPER_REAR = 6; ///< Sub-tile height of rear wall of upper part.
+static constexpr uint8_t LOCK_HEIGHT_UPPER_FRONT = 6; ///< Sub-tile height of front wall of upper part.
+
 static const DrawTileSeqStruct _lock_display_middle_ne_seq[] = {
-	TILE_SEQ_LINE( 0,   0, 0, 0x10, 1, 0x14, 0 + 1)
-	TILE_SEQ_LINE( 0, 0xF, 0, 0x10, 1, 0x14, 4 + 1)
+	TILE_SEQ_LINE(0,  0, 0, TILE_SIZE, 1, LOCK_HEIGHT_MIDDLE_REAR,  0 + 1)
+	TILE_SEQ_LINE(0, 15, 0, TILE_SIZE, 1, LOCK_HEIGHT_MIDDLE_FRONT, 4 + 1)
 };
 
 static const DrawTileSeqStruct _lock_display_middle_se_seq[] = {
-	TILE_SEQ_LINE(   0, 0, 0, 1, 0x10, 0x14, 0)
-	TILE_SEQ_LINE( 0xF, 0, 0, 1, 0x10, 0x14, 4)
+	TILE_SEQ_LINE( 0, 0, 0, 1, TILE_SIZE, LOCK_HEIGHT_MIDDLE_REAR,  0)
+	TILE_SEQ_LINE(15, 0, 0, 1, TILE_SIZE, LOCK_HEIGHT_MIDDLE_FRONT, 4)
 };
 
 static const DrawTileSeqStruct _lock_display_middle_sw_seq[] = {
-	TILE_SEQ_LINE( 0,   0, 0, 0x10, 1, 0x14, 0 + 2)
-	TILE_SEQ_LINE( 0, 0xF, 0, 0x10, 1, 0x14, 4 + 2)
+	TILE_SEQ_LINE(0,  0, 0, TILE_SIZE, 1, LOCK_HEIGHT_MIDDLE_REAR,  0 + 2)
+	TILE_SEQ_LINE(0, 15, 0, TILE_SIZE, 1, LOCK_HEIGHT_MIDDLE_FRONT, 4 + 2)
 };
 
 static const DrawTileSeqStruct _lock_display_middle_nw_seq[] = {
-	TILE_SEQ_LINE(   0, 0, 0, 1, 0x10, 0x14, 0 + 3)
-	TILE_SEQ_LINE( 0xF, 0, 0, 1, 0x10, 0x14, 4 + 3)
+	TILE_SEQ_LINE( 0, 0, 0, 1, TILE_SIZE, LOCK_HEIGHT_MIDDLE_REAR,  0 + 3)
+	TILE_SEQ_LINE(15, 0, 0, 1, TILE_SIZE, LOCK_HEIGHT_MIDDLE_FRONT, 4 + 3)
 };
 
 static const DrawTileSeqStruct _lock_display_lower_ne_seq[] = {
-	TILE_SEQ_LINE( 0,   0, 0, 0x10, 1, 0x14, 8 + 1)
-	TILE_SEQ_LINE( 0, 0xF, 0, 0x10, 1, 0x14, 12 + 1)
+	TILE_SEQ_LINE(0,  0, 0, TILE_SIZE, 1, LOCK_HEIGHT_LOWER_REAR,   8 + 1)
+	TILE_SEQ_LINE(0, 15, 0, TILE_SIZE, 1, LOCK_HEIGHT_LOWER_FRONT, 12 + 1)
 };
 
 static const DrawTileSeqStruct _lock_display_lower_se_seq[] = {
-	TILE_SEQ_LINE(   0, 0, 0, 0x1, 0x10, 0x14, 8)
-	TILE_SEQ_LINE( 0xF, 0, 0, 0x1, 0x10, 0x14, 12)
+	TILE_SEQ_LINE( 0, 0, 0, 1, TILE_SIZE, LOCK_HEIGHT_LOWER_REAR,   8)
+	TILE_SEQ_LINE(15, 0, 0, 1, TILE_SIZE, LOCK_HEIGHT_LOWER_FRONT, 12)
 };
 
 static const DrawTileSeqStruct _lock_display_lower_sw_seq[] = {
-	TILE_SEQ_LINE( 0,   0, 0, 0x10, 1, 0x14, 8 + 2)
-	TILE_SEQ_LINE( 0, 0xF, 0, 0x10, 1, 0x14, 12 + 2)
+	TILE_SEQ_LINE(0,  0, 0, TILE_SIZE, 1, LOCK_HEIGHT_LOWER_REAR,   8 + 2)
+	TILE_SEQ_LINE(0, 15, 0, TILE_SIZE, 1, LOCK_HEIGHT_LOWER_FRONT, 12 + 2)
 };
 
 static const DrawTileSeqStruct _lock_display_lower_nw_seq[] = {
-	TILE_SEQ_LINE(   0, 0, 0, 1, 0x10, 0x14, 8 + 3)
-	TILE_SEQ_LINE( 0xF, 0, 0, 1, 0x10, 0x14, 12 + 3)
+	TILE_SEQ_LINE( 0, 0, 0, 1, TILE_SIZE, LOCK_HEIGHT_LOWER_REAR,   8 + 3)
+	TILE_SEQ_LINE(15, 0, 0, 1, TILE_SIZE, LOCK_HEIGHT_LOWER_FRONT, 12 + 3)
 };
 
 static const DrawTileSeqStruct _lock_display_upper_ne_seq[] = {
-	TILE_SEQ_LINE( 0,   0, 0, 0x10, 1, 0x14, 16 + 1)
-	TILE_SEQ_LINE( 0, 0xF, 0, 0x10, 1, 0x14, 20 + 1)
+	TILE_SEQ_LINE(0,  0, 0, TILE_SIZE, 1, LOCK_HEIGHT_UPPER_REAR,  16 + 1)
+	TILE_SEQ_LINE(0, 15, 0, TILE_SIZE, 1, LOCK_HEIGHT_UPPER_FRONT, 20 + 1)
 };
 
 static const DrawTileSeqStruct _lock_display_upper_se_seq[] = {
-	TILE_SEQ_LINE(   0, 0, 0, 0x1, 0x10, 0x14, 16)
-	TILE_SEQ_LINE( 0xF, 0, 0, 0x1, 0x10, 0x14, 20)
+	TILE_SEQ_LINE( 0, 0, 0, 1, TILE_SIZE, LOCK_HEIGHT_UPPER_REAR,  16)
+	TILE_SEQ_LINE(15, 0, 0, 1, TILE_SIZE, LOCK_HEIGHT_UPPER_FRONT, 20)
 };
 
 static const DrawTileSeqStruct _lock_display_upper_sw_seq[] = {
-	TILE_SEQ_LINE( 0,   0, 0, 0x10, 1, 0x14, 16 + 2)
-	TILE_SEQ_LINE( 0, 0xF, 0, 0x10, 1, 0x14, 20 + 2)
+	TILE_SEQ_LINE(0,  0, 0, TILE_SIZE, 1, LOCK_HEIGHT_UPPER_REAR,  16 + 2)
+	TILE_SEQ_LINE(0, 15, 0, TILE_SIZE, 1, LOCK_HEIGHT_UPPER_FRONT, 20 + 2)
 };
 
 static const DrawTileSeqStruct _lock_display_upper_nw_seq[] = {
-	TILE_SEQ_LINE(   0, 0, 0, 1, 0x10, 0x14, 16 + 3)
-	TILE_SEQ_LINE( 0xF, 0, 0, 1, 0x10, 0x14, 20 + 3)
+	TILE_SEQ_LINE( 0, 0, 0, 1, TILE_SIZE, LOCK_HEIGHT_UPPER_REAR,  16 + 3)
+	TILE_SEQ_LINE(15, 0, 0, 1, TILE_SIZE, LOCK_HEIGHT_UPPER_FRONT, 20 + 3)
 };
 
 static const DrawTileSpriteSpan _lock_display_data[][DIAGDIR_END] = {

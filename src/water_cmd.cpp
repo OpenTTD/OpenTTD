@@ -302,6 +302,21 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlags flags)
 }
 
 /**
+ * Get the minimal height required for a bridge above a lock part.
+ * @param lock_part the lock part.
+ * @return the minimal bridge height.
+ */
+static uint8_t GetLockPartMinimalBridgeHeight(LockPart lock_part)
+{
+	static constexpr uint8_t MINIMAL_BRIDGE_HEIGHT[LOCK_PART_END] = {
+		2, // LOCK_PART_MIDDLE
+		3, // LOCK_PART_LOWER
+		2, // LOCK_PART_UPPER
+	};
+	return MINIMAL_BRIDGE_HEIGHT[to_underlying(lock_part)];
+}
+
+/**
  * Builds a lock.
  * @param tile Central tile of the lock.
  * @param dir Uphill direction.
@@ -348,8 +363,11 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlags
 	}
 	WaterClass wc_upper = IsWaterTile(tile + delta) ? GetWaterClass(tile + delta) : WATER_CLASS_CANAL;
 
-	if (IsBridgeAbove(tile) || IsBridgeAbove(tile - delta) || IsBridgeAbove(tile + delta)) {
-		return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+	for (LockPart lock_part = LOCK_PART_MIDDLE; TileIndex t : {tile, tile - delta, tile + delta}) {
+		if (IsBridgeAbove(t) && GetBridgeHeight(GetSouthernBridgeEnd(t)) < GetTileMaxZ(t) + GetLockPartMinimalBridgeHeight(lock_part)) {
+			return CommandCost(STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK);
+		}
+		++lock_part;
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -939,6 +957,9 @@ static void DrawTile_Water(TileInfo *ti)
 
 		case WATER_TILE_LOCK:
 			DrawWaterLock(ti);
+			DrawBridgeMiddle(ti, DiagDirToAxis(GetLockDirection(ti->tile)) == AXIS_X
+				? BridgePillarFlags{BridgePillarFlag::EdgeNE, BridgePillarFlag::EdgeSW}
+				: BridgePillarFlags{BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE});
 			break;
 
 		case WATER_TILE_DEPOT:
@@ -1412,9 +1433,13 @@ static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlags flags, int
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
-static CommandCost CheckBuildAbove_Water(TileIndex tile, DoCommandFlags flags, Axis, int)
+static CommandCost CheckBuildAbove_Water(TileIndex tile, DoCommandFlags flags, Axis, int height)
 {
 	if (IsWater(tile) || IsCoast(tile)) return CommandCost();
+	if (IsLock(tile)) {
+		if (GetTileMaxZ(tile) + GetLockPartMinimalBridgeHeight(GetLockPart(tile)) <= height) return CommandCost();
+		return CommandCost(STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK);
+	}
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
