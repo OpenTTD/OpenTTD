@@ -120,8 +120,8 @@ static void _GenerateWorld(void *)
 
 			/* Make sure the tiles at the north border are void tiles if needed. */
 			if (_settings_game.construction.freeform_edges) {
-				for (uint row = 0; row < MapSizeY(); row++) MakeVoid(TileXY(0, row));
-				for (uint col = 0; col < MapSizeX(); col++) MakeVoid(TileXY(col, 0));
+				for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
+				for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(0, y));
 			}
 
 			/* Make the map the height of the setting */

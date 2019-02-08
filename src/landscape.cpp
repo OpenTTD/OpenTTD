@@ -841,22 +841,17 @@ void RunTileLoop()
 
 void InitializeLandscape()
 {
-	uint maxx = MapMaxX();
-	uint maxy = MapMaxY();
-	uint sizex = MapSizeX();
-
-	uint y;
-	for (y = _settings_game.construction.freeform_edges ? 1 : 0; y < maxy; y++) {
-		uint x;
-		for (x = _settings_game.construction.freeform_edges ? 1 : 0; x < maxx; x++) {
-			MakeClear(sizex * y + x, CLEAR_GRASS, 3);
-			SetTileHeight(sizex * y + x, 0);
-			SetTropicZone(sizex * y + x, TROPICZONE_NORMAL);
-			ClearBridgeMiddle(sizex * y + x);
+	for (uint y = _settings_game.construction.freeform_edges ? 1 : 0; y < MapMaxY(); y++) {
+		for (uint x = _settings_game.construction.freeform_edges ? 1 : 0; x < MapMaxX(); x++) {
+			MakeClear(TileXY(x, y), CLEAR_GRASS, 3);
+			SetTileHeight(TileXY(x, y), 0);
+			SetTropicZone(TileXY(x, y), TROPICZONE_NORMAL);
+			ClearBridgeMiddle(TileXY(x, y));
 		}
-		MakeVoid(sizex * y + x);
 	}
-	for (uint x = 0; x < sizex; x++) MakeVoid(sizex * y + x);
+
+	for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, MapMaxY()));
+	for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(MapMaxX(), y));
 }
 
 static const byte _genterrain_tbl_1[5] = { 10, 22, 33, 37, 4  };
