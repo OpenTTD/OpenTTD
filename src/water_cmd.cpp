@@ -239,6 +239,30 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_DEPOT_SHIP]);
 }
 
+static bool IsPossibleLockLocation(TileIndex tile)
+{
+	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile));
+	if (!IsValidDiagDirection(dir)) return false;
+
+	TileIndexDiff delta_mid = TileOffsByDiagDir(dir);
+	if (!IsTileFlat(tile + delta_mid)) return false;
+	if (!IsTileFlat(tile - delta_mid)) return false;
+
+	return true;
+}
+
+/**
+ * Tests whether a tile is suitable for a lock for the provided diagonal direction (axis).
+ * @param tile The middle tile of a lock.
+ * @param dir Any diagonal direction belonging to the same axis.
+ * @return true if a lock can be placed in the given direction.
+ */
+bool IsPossibleLockLocationOnDiagDir(TileIndex tile, DiagDirection dir)
+{
+	DiagDirection tdir = GetInclinedSlopeDirection(GetTileSlope(tile));
+	return (tdir == dir || tdir == ReverseDiagDir(dir)) && IsPossibleLockLocation(tile);
+}
+
 /**
  * Builds a lock.
  * @param tile Central tile of the lock.

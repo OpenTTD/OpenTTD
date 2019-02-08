@@ -46,6 +46,7 @@
 #include "object_base.h"
 #include "ai/ai.hpp"
 #include "game/game.hpp"
+#include "water.h"
 
 #include "table/strings.h"
 #include "table/town_land.h"
@@ -1050,6 +1051,28 @@ static bool GrowTownWithRoad(const Town *t, TileIndex tile, RoadBits rcmd)
 }
 
 /**
+ * Determine if a player could possibly build a ship lock that would cover this tile.
+ *
+ * @param bridge_tile The tile to possibly outrule a bridge position
+ * @param bridge_dir The bridge direction
+ * @return true if a player could possibly build a ship lock on this tile.
+ * @see GrowTownWithBridge
+ */
+static bool IsPossibleLockLocationOnTownBridgeTile(const TileIndex bridge_tile, const DiagDirection bridge_dir)
+{
+	const DiagDirection dir_side = ChangeDiagDir(bridge_dir, DIAGDIRDIFF_90LEFT);
+	const TileIndexDiff delta_side = TileOffsByDiagDir(dir_side);
+
+	if ((IsValidTile(bridge_tile) && !IsTileFlat(bridge_tile) && IsPossibleLockLocationOnDiagDir(bridge_tile, bridge_dir) && IsWaterTile(bridge_tile)) ||
+			(IsValidTile(bridge_tile + delta_side) && !IsTileFlat(bridge_tile + delta_side) && IsPossibleLockLocationOnDiagDir(bridge_tile + delta_side, dir_side) && IsWaterTile(bridge_tile + delta_side)) ||
+			(IsValidTile(bridge_tile - delta_side) && !IsTileFlat(bridge_tile - delta_side) && IsPossibleLockLocationOnDiagDir(bridge_tile - delta_side, ReverseDiagDir(dir_side)) && IsWaterTile(bridge_tile - delta_side))) {
+		return true;
+	}
+
+	return false;
+}
+
+/**
  * Grows the town with a bridge.
  *  At first we check if a bridge is reasonable.
  *  If so we check if we are able to build it.
@@ -1087,6 +1110,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 				return false;
 			}
 			bridge_tile += delta;
+			if (IsPossibleLockLocationOnTownBridgeTile(bridge_tile, bridge_dir)) return false;
 		} while (IsValidTile(bridge_tile) && IsWaterTile(bridge_tile) && !IsSea(bridge_tile));
 	} else {
 		do {
@@ -1095,6 +1119,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 				return false;
 			}
 			bridge_tile += delta;
+			if (IsPossibleLockLocationOnTownBridgeTile(bridge_tile, bridge_dir)) return false;
 		} while (IsValidTile(bridge_tile) && IsWaterTile(bridge_tile));
 	}
 

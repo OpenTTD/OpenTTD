@@ -41,6 +41,8 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o);
 
 bool RiverModifyDesertZone(TileIndex tile, void *data);
 
+bool IsPossibleLockLocationOnDiagDir(TileIndex tile, DiagDirection dir);
+
 bool IsWateredTile(TileIndex tile, Direction from);
 
 /**
