@@ -2356,8 +2356,10 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 		if (!(command & DEPOT_SERVICE)) this->current_order.SetDepotActionType(ODATFB_HALT);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 
-		/* If there is no depot in front, reverse automatically (trains only) */
-		if (this->type == VEH_TRAIN && reverse) DoCommand(this->tile, this->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
+		/* If there is no depot in front and the train is not already reversing, reverse automatically (trains only) */
+		if (this->type == VEH_TRAIN && (reverse ^ HasBit(Train::From(this)->flags, VRF_REVERSING))) {
+			DoCommand(this->tile, this->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
+		}
 
 		if (this->type == VEH_AIRCRAFT) {
 			Aircraft *a = Aircraft::From(this);
