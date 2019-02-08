@@ -286,10 +286,6 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 	}
 	WaterClass wc_upper = IsWaterTile(tile + delta) ? GetWaterClass(tile + delta) : WATER_CLASS_CANAL;
 
-	if (IsBridgeAbove(tile) || IsBridgeAbove(tile - delta) || IsBridgeAbove(tile + delta)) {
-		return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
-	}
-
 	if (flags & DC_EXEC) {
 		/* Update company infrastructure counts. */
 		Company *c = Company::GetIfValid(_current_company);
@@ -857,6 +853,7 @@ static void DrawTile_Water(TileInfo *ti)
 
 		case WATER_TILE_LOCK:
 			DrawWaterLock(ti);
+			DrawBridgeMiddle(ti);
 			break;
 
 		case WATER_TILE_DEPOT:
