@@ -164,6 +164,9 @@ jobs:
   steps:
   - template: release-fetch-source.yml
   - template: release-manifest.yml
+    ${{ if eq(parameters.IsStableRelease, true) }}:
+      parameters:
+        IsStableRelease: true
   - template: release-bundles.yml
     parameters:
       CalculateChecksums: false

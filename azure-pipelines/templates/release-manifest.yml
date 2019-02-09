@@ -1,3 +1,6 @@
+parameters:
+  IsStableRelease: false
+
 steps:
 - task: DownloadBuildArtifacts@0
   displayName: 'Download all bundles'
@@ -5,6 +8,10 @@ steps:
     downloadType: specific
     itemPattern: 'bundles/*'
     downloadPath: '$(Build.ArtifactStagingDirectory)'
+- ${{ if eq(parameters.IsStableRelease, true) }}:
+  - script: |
+      touch .is_stable
+    displayName: 'Mark as stable release'
 - script: |
     set -ex
     ./azure-pipelines/manifest.sh ../a/bundles/
