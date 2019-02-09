@@ -405,5 +405,5 @@ generate basesetvcxproj, ROOT_DIR & "/projects/basesets_vs140.vcxproj", basesetl
 generate basesetfiles, ROOT_DIR & "/projects/basesets_vs140.vcxproj.filters", Null
 generate basesetvcxproj, ROOT_DIR & "/projects/basesets_vs141.vcxproj", basesetlangs
 generate basesetfiles, ROOT_DIR & "/projects/basesets_vs141.vcxproj.filters", Null
-generate settingsvcxproj, ROOT_DIR & "/projects/basesets_vs142.vcxproj", settingscommand
-generate settingsfiles, ROOT_DIR & "/projects/basesets_vs142.vcxproj.filters", Null
+generate basesetvcxproj, ROOT_DIR & "/projects/basesets_vs142.vcxproj", basesetlangs
+generate basesetfiles, ROOT_DIR & "/projects/basesets_vs142.vcxproj.filters", Null
