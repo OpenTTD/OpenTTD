@@ -15,7 +15,7 @@ if [ ! -e .version ] || [ ! -e .release_date ]; then
 fi
 
 # Find the name based on the version
-if [ "${ISSTABLERELEASE}" = "true" ]; then
+if [ -e .is_stable ]; then
     isTesting=$(cat .version | grep "RC\|beta" || true)
     if [ -z "${isTesting}" ]; then
         NAME="stable"
