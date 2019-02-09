@@ -26,6 +26,7 @@
 #include "string_func.h"
 #include "settings_type.h"
 #include "settings_gui.h"
+#include "tilehighlight_func.h"
 #include "widgets/dropdown_func.h"
 #include "widgets/dropdown_type.h"
 
@@ -650,6 +651,7 @@ static void ShowMusicTrackSelection()
 
 struct MusicWindow : public Window {
 	static const int slider_width = 3;
+	int dragged_vol_widget = 0;
 
 	MusicWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
@@ -795,22 +797,14 @@ struct MusicWindow : public Window {
 				break;
 
 			case WID_M_MUSIC_VOL: case WID_M_EFFECT_VOL: { // volume sliders
-				int x = pt.x - this->GetWidget<NWidgetBase>(widget)->pos_x;
+				this->dragged_vol_widget = widget;
 
-				byte *vol = (widget == WID_M_MUSIC_VOL) ? &_settings_client.music.music_vol : &_settings_client.music.effect_vol;
-
-				byte new_vol = x * 127 / this->GetWidget<NWidgetBase>(widget)->current_x;
-				if (_current_text_dir == TD_RTL) new_vol = 127 - new_vol;
-				/* Clamp to make sure min and max are properly settable */
-				if (new_vol > 124) new_vol = 127;
-				if (new_vol < 3) new_vol = 0;
-				if (new_vol != *vol) {
-					*vol = new_vol;
-					if (widget == WID_M_MUSIC_VOL) MusicDriver::GetInstance()->SetVolume(new_vol);
-					this->SetDirty();
-				}
+				this->UpdateVolumeWidget(pt);
 
 				_left_button_clicked = false;
+
+				/* Activate dragging */
+				SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
 				break;
 			}
 
@@ -832,6 +826,38 @@ struct MusicWindow : public Window {
 			case WID_M_EZY: case WID_M_CUSTOM1: case WID_M_CUSTOM2: // playlist
 				_music.ChangePlaylist((MusicSystem::PlaylistChoices)(widget - WID_M_ALL));
 				break;
+		}
+	}
+
+	virtual void OnMouseDrag(Point pt, int widget)
+	{
+		this->UpdateVolumeWidget(pt);
+	}
+
+	void UpdateVolumeWidget(Point pt)
+	{
+		uint widget_width = this->GetWidget<NWidgetBase>(this->dragged_vol_widget)->current_x;
+
+		int x = pt.x - this->GetWidget<NWidgetBase>(this->dragged_vol_widget)->pos_x;
+
+		/* Only update the volume along the width of this widget */
+		if (x < 0) x = 0;
+		if (x > (int)widget_width) x = (int)widget_width;
+
+		byte *vol = (this->dragged_vol_widget == WID_M_MUSIC_VOL) ? &_settings_client.music.music_vol : &_settings_client.music.effect_vol;
+
+		byte new_vol = x * 127 / widget_width;
+		if (_current_text_dir == TD_RTL) new_vol = 127 - new_vol;
+		/* Clamp to make sure min and max are properly settable */
+		if (new_vol > 124) new_vol = 127;
+		if (new_vol < 3) new_vol = 0;
+		if (new_vol != *vol) {
+			/* Update the volume in the game's settings */
+			*vol = new_vol;
+			/* If this slider is for the music volume, we also need to
+			 * update the music driver's volume. */
+			if (this->dragged_vol_widget == WID_M_MUSIC_VOL) MusicDriver::GetInstance()->SetVolume(new_vol);
+			this->SetDirty();
 		}
 	}
 };
