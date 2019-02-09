@@ -1047,6 +1047,25 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 		Industry *ind = st->industries_near[i];
 		if (ind->index == source) continue;
 
+		if (!_settings_game.station.serve_neutral_industries) {
+			if (HasIndustryStation(ind)) {
+				/* A company owned station accepts the cargo, but the catchment area may have picked up more industries accepting it,
+				 * some with attached neutral stations, some without.
+				 * Check whether the cargo being delivered at the company station can be accepted by the industries providing their own stations. */
+				if (!IsOilRig(st->xy)) continue;
+
+				/* The station accepting the cargo is a neutral station (station 1) belonging to an industry (industry 1),
+				 * but there may be other neutral stations nearby (station n) belonging to their respective industries (industry n).
+				 * Is the station accepting the cargo (station 1) a part of the industry it's attached to (industry 1)? */
+				if (!IsStationIndustryPair(st, ind->index)) continue;
+			} else {
+				/* The station accepting the cargo is a neutral station, but the catchment area may have picked up more industries accepting it,
+				 * some with attached neutral stations, some without.
+				 * Check whether the cargo being delivered at the neutral station can be accepted by the industries without neutral stations. */
+				if (IsOilRig(st->xy)) continue;
+			}
+		}
+
 		uint cargo_index;
 		for (cargo_index = 0; cargo_index < lengthof(ind->accepts_cargo); cargo_index++) {
 			if (cargo_type == ind->accepts_cargo[cargo_index]) break;

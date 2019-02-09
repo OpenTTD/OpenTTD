@@ -390,6 +390,62 @@ static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
 	return FlatteningFoundation(tileh);
 }
 
+/**
+ * Check whether an industry provides its own station
+ * @param i the industry to investigate
+ * @return true if the industry has an attached station (OilRig)
+ */
+bool HasIndustryStation(const Industry *i)
+{
+	TILE_AREA_LOOP(tile_cur, i->location) {
+		if (IsTileType(tile_cur, MP_INDUSTRY) && GetIndustryGfx(tile_cur) == GFX_OILRIG_1) {
+			TileIndex other = tile_cur + TileDiffXY(0, -1);
+			if ((IsTileType(other, MP_STATION) && IsOilRig(other)) || (IsTileType(other, MP_INDUSTRY) && GetIndustryGfx(other) == GFX_OILRIG_1 && i->index == GetIndustryIndex(other) && !IsIndustryCompleted(other))) {
+				return true;
+			}
+		} else if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
+			TileIndex other = tile_cur + TileDiffXY(0, 1);
+			if (IsTileType(other, MP_INDUSTRY) && GetIndustryGfx(other) == GFX_OILRIG_1 && i->index == GetIndustryIndex(other)) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+/**
+ * Check whether a neutral station belongs to the given industry
+ * @param st the station to query
+ * @param i the industry index to query
+ * @pre IsOilRig(st->xy)
+ * @return true if the station belongs to the given industry
+ */
+bool IsStationIndustryPair(const Station *st, IndustryID i)
+{
+	assert(IsOilRig(st->xy));
+
+	if (i != INVALID_INDUSTRY) {
+		TileIndex other = st->xy + TileDiffXY(0, 1);
+		if (IsTileType(other, MP_INDUSTRY) && GetIndustryGfx(other) == GFX_OILRIG_1 && i == GetIndustryIndex(other)) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * Get corresponding industry index this neutral station is paired with
+ * @param st the station to query
+ * @pre IsOilRig(st->xy)
+ * @return IndustryID that is paired with this station
+ */
+IndustryID GetStationIndustryIndex(const Station *st)
+{
+	assert(IsOilRig(st->xy));
+
+	return GetIndustryIndex(st->xy + TileDiffXY(0, 1));
+}
+
 static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, CargoTypes *always_accepted)
 {
 	IndustryGfx gfx = GetIndustryGfx(tile);
@@ -528,7 +584,7 @@ static bool TransportIndustryGoods(TileIndex tile)
 
 			i->this_month_production[j] += cw;
 
-			uint am = MoveGoodsToStation(i->produced_cargo[j], cw, ST_INDUSTRY, i->index, stations.GetStations());
+			uint am = MoveGoodsToStation(i->produced_cargo[j], cw, ST_INDUSTRY, i->index, stations.GetStations(), HasIndustryStation(i));
 			i->this_month_transported[j] += am;
 
 			moved_cargo |= (am != 0);

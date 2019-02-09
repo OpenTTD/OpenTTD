@@ -18,6 +18,7 @@
 #include "industry_map.h"
 #include "industrytype.h"
 #include "tilearea_type.h"
+#include "station_base.h"
 
 
 typedef Pool<Industry, IndustryID, 64, 64000> IndustryPool;
@@ -165,6 +166,14 @@ void PlantRandomFarmField(const Industry *i);
 void ReleaseDisastersTargetingIndustry(IndustryID);
 
 bool IsTileForestIndustry(TileIndex tile);
+
+/* Check whether an industry provides its own station */
+bool HasIndustryStation(const Industry *i);
+
+/* Check whether a neutral station belongs to the given industry */
+bool IsStationIndustryPair(const Station *st, IndustryID i = INVALID_INDUSTRY);
+
+IndustryID GetStationIndustryIndex(const Station *st);
 
 #define FOR_ALL_INDUSTRIES_FROM(var, start) FOR_ALL_ITEMS_FROM(Industry, industry_index, var, start)
 #define FOR_ALL_INDUSTRIES(var) FOR_ALL_INDUSTRIES_FROM(var, 0)

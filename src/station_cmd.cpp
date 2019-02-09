@@ -506,6 +506,7 @@ CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad)
 	const Industry *i;
 	FOR_ALL_INDUSTRIES(i) {
 		if (!ta.Intersects(i->location)) continue;
+		if (HasIndustryStation(i) && !_settings_game.station.serve_neutral_industries) continue;
 
 		for (uint j = 0; j < lengthof(i->produced_cargo); j++) {
 			CargoID cargo = i->produced_cargo[j];
@@ -523,8 +524,9 @@ CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad)
  * @param h Y extent of area
  * @param rad Search radius in addition to given area
  * @param always_accepted bitmask of cargo accepted by houses and headquarters; can be NULL
+ * @param st_ind IndustryID associated with Station, if any (e.g. oil rig or INVALID_INDUSTRY)
  */
-CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, CargoTypes *always_accepted)
+CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, CargoTypes *always_accepted, IndustryID st_ind)
 {
 	CargoArray acceptance;
 	if (always_accepted != NULL) *always_accepted = 0;
@@ -547,6 +549,15 @@ CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, Cargo
 	for (int yc = y1; yc != y2; yc++) {
 		for (int xc = x1; xc != x2; xc++) {
 			TileIndex tile = TileXY(xc, yc);
+
+			if (!_settings_game.station.serve_neutral_industries) {
+				if (st_ind != INVALID_INDUSTRY) {
+					if (!IsTileType(tile, MP_INDUSTRY)) continue;
+					if (Industry::GetByTile(tile)->index != st_ind) continue;
+				} else {
+					if (IsTileType(tile, MP_INDUSTRY) && HasIndustryStation(Industry::GetByTile(tile))) continue;
+				}
+			}
 			AddAcceptedCargo(tile, acceptance, always_accepted);
 		}
 	}
@@ -572,7 +583,8 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 			st->rect.right  - st->rect.left + 1,
 			st->rect.bottom - st->rect.top  + 1,
 			st->GetCatchmentRadius(),
-			&st->always_accepted
+			&st->always_accepted,
+			IsOilRig(st->xy) ? GetStationIndustryIndex(st) : INVALID_INDUSTRY
 		);
 	}
 
@@ -3834,7 +3846,7 @@ const StationList *StationFinder::GetStations()
 	return &this->stations;
 }
 
-uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, SourceID source_id, const StationList *all_stations)
+uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, SourceID source_id, const StationList *all_stations, bool st_ind)
 {
 	/* Return if nothing to do. Also the rounding below fails for 0. */
 	if (amount == 0) return 0;
@@ -3858,6 +3870,20 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 			if (st->facilities == FACIL_TRUCK_STOP) continue; // passengers are never served by just a truck stop
 		} else {
 			if (st->facilities == FACIL_BUS_STOP) continue; // non-passengers are never served by just a bus stop
+		}
+
+		if (!_settings_game.station.serve_neutral_industries) {
+			if (st_ind) {
+				/* Cargo from industries with attached neutral station is served by their own attached station and not by company stations. */
+				if (!IsOilRig(st->xy)) continue;
+
+				/* Special case when there's more than one industry with attached neutral stations.
+				 * Cargo served to a neutral station comes only from its paired industry and not from any other industry. */
+				if (source_type == ST_INDUSTRY && !IsStationIndustryPair(st, source_id)) continue;
+			} else {
+				/* Cargo not originated from industries with attached neutral stations are never served to neutral stations. */
+				if (IsOilRig(st->xy)) continue;
+			}
 		}
 
 		/* This station can be used, add it to st1/st2 */
