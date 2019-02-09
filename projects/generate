@@ -10,6 +10,10 @@
 # This file generates all project files based on sources.list, so everyone who
 #  can start a bash process, can update the project files.
 
+# Set neutral locale so sort behaves the same everywhere
+LC_ALL=C
+export LC_ALL
+
 ROOT_DIR="`pwd`/.."
 if ! [ -e "$ROOT_DIR/source.list" ]
 then
