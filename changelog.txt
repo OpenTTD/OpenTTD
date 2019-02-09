@@ -1,3 +1,7 @@
+1.9.0-beta2 (2018-02-09)
+------------------------------------------------------------------------
+- Fix: Non-Windows builds did not get correct git hash
+
 1.9.0-beta1 (2018-02-09)
 ------------------------------------------------------------------------
 Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbers have been replaced with Pull Requests and Issue numbers
