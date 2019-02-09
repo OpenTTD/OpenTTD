@@ -5,7 +5,18 @@
 steps:
 - script: |
     set -ex
-    git checkout -B ${BUILD_SOURCEBRANCHNAME}
+
+    if [ -n "${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}" ]; then
+      # We are triggered from a GitHub Pull Request
+      git checkout -B pr${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}
+    elif [ "${BUILD_SOURCEBRANCHNAME}" = "merge" ] || [ "${BUILD_SOURCEBRANCHNAME}" = "head" ]; then
+      # We are manually triggered based on a GitHub Pull Request
+      PULLREQUESTNUMBER=$(echo ${BUILD_SOURCEBRANCH} | cut -d/ -f3)
+      git checkout -B pr${PULLREQUESTNUMBER}
+    else
+      git checkout -B ${BUILD_SOURCEBRANCHNAME}
+    fi
+
     ./findversion.sh > .ottdrev
     ./azure-pipelines/changelog.sh > .changelog
     TZ='UTC' date +"%Y-%m-%d %H:%M UTC" > .release_date
