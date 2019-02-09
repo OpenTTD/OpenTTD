@@ -90,7 +90,7 @@ MODIFIED := $(shell echo "$(VERSIONS)" | cut -f 3 -d'	')
 # Use autodetected revisions
 VERSION  := $(shell echo "$(VERSIONS)" | cut -f 1 -d'	')
 ISODATE  := $(shell echo "$(VERSIONS)" | cut -f 2 -d'	')
-GITHASH  := $(shell echo "$(VERSIONS)" | cut -f 3 -d'	')
+GITHASH  := $(shell echo "$(VERSIONS)" | cut -f 4 -d'	')
 
 # Make sure we have something in VERSION and ISODATE
 ifeq ($(VERSION),)
