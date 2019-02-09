@@ -1561,7 +1561,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Tukar ta
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Bolehkan pengubahsuaian nilai-nilai pengeluaran: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Skim Warna Baru
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Tunjukkan skim warna am
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Tunjukkan skim warna keretapi

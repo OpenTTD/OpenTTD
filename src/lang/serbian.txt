@@ -2007,7 +2007,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Promena 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Dozvoliti promenu količine proizvodnje: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nova šema boja
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Prikaži generalnu mustru boja
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Prikaži mustre boja vozova

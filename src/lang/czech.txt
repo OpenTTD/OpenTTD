@@ -1895,7 +1895,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Změnit 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Povolit změnu produkce průmyslu: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nové barevné schéma
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Zobrazit všeobecná barevná schémata
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Zobrazit barevná schémata pro vlaky

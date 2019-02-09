@@ -250,6 +250,8 @@ STR_COLOUR_ORANGE                                               :Πορτοκα�
 STR_COLOUR_BROWN                                                :Καφέ
 STR_COLOUR_GREY                                                 :Γκρι
 STR_COLOUR_WHITE                                                :Λευκό
+STR_COLOUR_RANDOM                                               :Τυχαία
+STR_COLOUR_DEFAULT                                              :Προεπιλογή
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}μίλια/ώρα
@@ -1033,6 +1035,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Νοτιοαφ�
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Άλλο...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Γεοργιανό Λάρι (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Ιρανικό Ριάλ (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Νεο Ρώσικο Ρούβλι (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Πεσος Μεξικου (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Οχήματα δρόμου
@@ -1920,7 +1924,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Αλλα
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ενεργοποίηση δυνατότητας αλλαγής τιμών παραγωγής: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Νέος Χρωματισμός
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Νέος Χρωματισμός
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Εμφάνιση γενικών χρωματικών μοτίβων
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Εμφάνιση χρωματικών μοτίβων τρένων
@@ -2806,13 +2810,18 @@ STR_ABOUT_VERSION                                               :{BLACK}Έκδο
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 Η ομάδα του OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Αριθμός στιγμών παιχνιδιού που προσομοιώνεται ανά δευτερόλεπτο.
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Αριθμος των παραγμενων video frames ανα δευτερολεπτο
 STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Παράγοντας ταχύτητας τρέχοντος παιχνιδιού: {DECIMAL}x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Πόσο γρήγορα εκτελείται το παιχνίδι αυτήν τη στιγμή, σε σύγκριση με την αναμενόμενη ταχύτητα στον κανονικό ρυθμό εξομοίωσης.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Τρέχον
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Μέσο
 STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Τα δεδομένα βασίζονται σε μετρήσεις {COMMA}
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} frames/δευτ.
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} frames/δευτ.
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GL_ECONOMY                                        :{WHITE} Διαχείριση φορτίου:
 STR_FRAMERATE_GL_TRAINS                                         :Στιγμές τρένων:
@@ -2858,6 +2867,8 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Λεπτ
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Δεν υπάρχουν πληροφορίες.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Αντικατάσταση Αρχείου
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Είστε σίγουροι οτι θέλετε να αντικαταστήσετε το υπάρχων αρχείο;
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Δώστε το όνομα του παιχνιδιού προς αποθήκευση
 
@@ -2975,7 +2986,9 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Έκδο
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Ελάχ. συμβατή έκδοση: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Παλέτα: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Προεπιλογή (D)
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Παράμετροι: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Κανένα
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Δεν υπάρχουν διαθέσιμες πληροφορίες
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Δεν βρέθηκε το ταυτοποιημένο αρχείο
@@ -3433,6 +3446,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Κεντ
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Επίπεδο παραγωγής: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Η βιομηχανία έχει ανακοινώσει άμεσο κλείσιμο!
 
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Απαιτεί:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}

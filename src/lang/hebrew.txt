@@ -1826,7 +1826,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}שנה �
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}אפשר שינוי ערכי התפוקה: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}הגדרות צבע חדשות
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}הצג הגדרות צבע כלליות
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}הצג הגדרות צבע לרכבות

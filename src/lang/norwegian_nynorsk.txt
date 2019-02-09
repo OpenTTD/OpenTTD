@@ -1723,7 +1723,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Byt nove
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Tillet endring av produksjonsmengder: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Ny firmafarge
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Syne generelle fargetema
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Syne togfargetema

@@ -1803,7 +1803,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Wiessel 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Erlaabt d'ännere vun de Produktiounswäerter: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Neie Faarfschema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Weis generell Faarfschemen
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Weis Zuch Faarfschemen

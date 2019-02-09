@@ -1515,7 +1515,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}تغیی
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}قابلیت تغییر سطح تولید صنایع: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}طرح رنگ جدید
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}نمایش طرح رنگهای اصلی
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}نمایش طرح رنگهای قطار
