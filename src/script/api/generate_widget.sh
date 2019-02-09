@@ -20,5 +20,5 @@ if [ "$?" != "0" ]; then
 	exit 1
 fi
 
-${AWK} -f generate_widget.awk script_window.hpp > script_window.tmp
+${AWK} -v BINMODE=1 -f generate_widget.awk script_window.hpp > script_window.tmp
 mv script_window.tmp script_window.hpp
