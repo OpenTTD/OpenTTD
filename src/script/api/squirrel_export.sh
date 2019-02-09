@@ -49,7 +49,7 @@ for f in `ls ../*.hpp`; do
 	# ScriptController has custom code, and should not be generated
 	if [ "`basename ${f}`" = "script_controller.hpp" ]; then continue; fi
 
-	${AWK} -v api=${apiuc} -f ${scriptdir}/squirrel_export.awk ${f} > ${bf}.tmp
+	${AWK} -v BINMODE=1 -v api=${apiuc} -f ${scriptdir}/squirrel_export.awk ${f} > ${bf}.tmp
 
 	if [ "`wc -l ${bf}.tmp | cut -d\  -f1`" = "0" ]; then
 		if [ -f "${bf}.sq" ]; then
@@ -90,7 +90,7 @@ echo "
 /Note: this line is a marker in squirrel_export.sh. Do not change!/ {
 	print \$0
 	gsub(\"^.*/\", \"\")
-	split(\"`grep '^void SQ'${apiuc}'.*_Register(Squirrel \*engine)$' *.hpp.sq | sed 's/:.*$//' | sort | uniq | tr -d '\r' | tr '\n' ' '`\", files, \" \")
+	split(\"`grep '^void SQ'${apiuc}'.*_Register(Squirrel \*engine).\?$' *.hpp.sq | sed 's/:.*$//' | sort | uniq | tr -d '\r' | tr '\n' ' '`\", files, \" \")
 
 	for (i = 1; files[i] != \"\"; i++) {
 		print \"#include \\\"../script/api/${apilc}/\" files[i] \"\\\"\" \$0
@@ -104,7 +104,7 @@ echo "
 	gsub(\"^.*/\", \"\")
 	# List needs to be registered with squirrel before all List subclasses.
 	print \"	SQ${apiuc}List_Register(this->engine);\" \$0
-	split(\"`grep '^void SQ'${apiuc}'.*_Register(Squirrel \*engine)$' *.hpp.sq | grep -v 'SQ'${apiuc}'List_Register' | sed 's/^.*void //;s/Squirrel \*/this->/;s/$/;/;s/_Register/0000Register/g;' | sort | sed 's/0000Register/_Register/g' | tr -d '\r' | tr '\n' ' '`\", regs, \" \")
+	split(\"`grep '^void SQ'${apiuc}'.*_Register(Squirrel \*engine).\?$' *.hpp.sq | grep -v 'SQ'${apiuc}'List_Register' | sed 's/^.*void //;s/Squirrel \*/this->/;s/$/;/;s/_Register/0000Register/g;' | sort | sed 's/0000Register/_Register/g' | tr -d '\r' | tr '\n' ' '`\", regs, \" \")
 
 	for (i = 1; regs[i] != \"\"; i++) {
 		if (regs[i] == \"SQ${apiuc}Controller_Register(this->engine);\") continue
@@ -117,7 +117,7 @@ echo "
 { print \$0; }
 " > ${f}.awk
 
-${AWK} -f ${f}.awk ${f} > ${f}.tmp
+${AWK} -v BINMODE=1 -f ${f}.awk ${f} > ${f}.tmp
 
 if ! [ -f "${f}" ] || [ -n "`diff -I '$Id' ${f} ${f}.tmp 2> /dev/null || echo boo`" ]; then
 	mv ${f}.tmp ${f}
