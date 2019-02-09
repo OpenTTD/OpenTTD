@@ -4,8 +4,6 @@ parameters:
 steps:
 - bash: |
     set -ex
-    # NSIS will be part of the Hosted image in the next update. Till then, we install it ourself
-    choco install nsis -y
 
     mkdir nsis-plugin; cd nsis-plugin
     curl -L https://devs.openttd.org/~truebrain/nsis-plugins/Nsis7z.zip > Nsis7z.zip
