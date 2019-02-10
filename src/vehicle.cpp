@@ -1490,6 +1490,8 @@ void VehicleEnterDepot(Vehicle *v)
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 	v->MarkDirty();
 
+	InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
+
 	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 

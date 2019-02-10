@@ -2503,6 +2503,8 @@ public:
 		this->GetWidget<NWidgetCore>(WID_VV_SHOW_ORDERS)->tool_tip      = STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP + v->type;
 		this->GetWidget<NWidgetCore>(WID_VV_SHOW_DETAILS)->tool_tip     = STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP + v->type;
 		this->GetWidget<NWidgetCore>(WID_VV_CLONE)->tool_tip            = STR_VEHICLE_VIEW_CLONE_TRAIN_INFO + v->type;
+
+		this->UpdateButtonStatus();
 	}
 
 	~VehicleViewWindow()
@@ -2732,7 +2734,7 @@ public:
 		}
 	}
 
-	virtual void OnGameTick()
+	void UpdateButtonStatus()
 	{
 		const Vehicle *v = Vehicle::Get(this->window_number);
 		bool veh_stopped = v->IsStoppedInDepot();
@@ -2769,6 +2771,8 @@ public:
 			 * Nothing to do for this window. */
 			return;
 		}
+
+		this->UpdateButtonStatus();
 	}
 
 	virtual bool IsNewGRFInspectable() const
