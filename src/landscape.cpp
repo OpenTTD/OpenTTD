@@ -1297,7 +1297,7 @@ static void CreateRivers()
 #endif
 
 struct TilePrio {
-	TilePrio(TileIndex t): t(t) { prio = (Random() & 0x7) >> 2; }
+	TilePrio(TileIndex t): t(t) { prio = (Random() & 0xFF); }
 	TileIndex t;
 	uint prio;
 	bool operator<(const TilePrio& t) const { return prio < t.prio; }
