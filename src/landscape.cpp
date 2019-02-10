@@ -1377,7 +1377,7 @@ static void CreateRivers()
 			} else if (flow == _me[t2].m7) {
 				_me[t2].m7++;
 			}
-		} else if (flow > 2 && GetTileType(tile) != MP_WATER) {
+		} else if ((flow > 3 && GetTileType(tile) != MP_WATER) || (flow > 2 && GetTileSlope(tile) == SLOPE_FLAT)) {
 			//make a lake
 			//TODO: handle case of "sinkhole"
 			TileIndex lakeCenter = tile;
