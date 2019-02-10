@@ -82,8 +82,10 @@ if [ -d "$ROOT_DIR/.git" ]; then
 
 	if [ -n "$TAG" ]; then
 		VERSION="${TAG}"
+		ISTAG="1"
 	else
 		VERSION="${ISODATE}-${BRANCH}${hashprefix}${SHORTHASH}"
+		ISTAG="0"
 	fi
 
 elif [ -f "$ROOT_DIR/.ottdrev" ]; then
@@ -99,6 +101,7 @@ else
 	ISODATE=""
 	TAG=""
 	VERSION=""
+	ISTAG="0"
 fi
 
-echo "$VERSION	$ISODATE	$MODIFIED	$HASH"
+echo "$VERSION	$ISODATE	$MODIFIED	$HASH	$ISTAG"
