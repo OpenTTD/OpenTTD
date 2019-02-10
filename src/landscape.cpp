@@ -35,6 +35,12 @@
 #include "framerate_type.h"
 #include <list>
 #include <set>
+#include <array>
+#include <queue>
+
+
+//TODO: remove dirty hack
+#include "map_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -1011,6 +1017,7 @@ static void CreateDesertOrRainForest()
 	}
 }
 
+#if 0
 /**
  * Find the spring of a river.
  * @param tile The tile to consider for being the spring.
@@ -1046,6 +1053,7 @@ static bool FindSpring(TileIndex tile, void *user_data)
 
 	return true;
 }
+#endif
 
 /**
  * Make a connected lake; fill all tiles in the circular tile search that are connected.
@@ -1092,6 +1100,7 @@ static bool FlowsDown(TileIndex begin, TileIndex end)
 			((slopeEnd == slopeBegin && heightEnd < heightBegin) || slopeEnd == SLOPE_FLAT || slopeBegin == SLOPE_FLAT);
 }
 
+#if 0
 /* AyStar callback for checking whether we reached our destination. */
 static int32 River_EndNodeCheck(const AyStar *aystar, const OpenListNode *current)
 {
@@ -1283,6 +1292,101 @@ static void CreateRivers()
 	for (uint i = 0; i != 256; i++) {
 		if (i % 64 == 0) IncreaseGeneratingWorldProgress(GWP_RIVER);
 		RunTileLoop();
+	}
+}
+#endif
+
+struct TilePrio {
+	TilePrio(TileIndex t): t(t) { prio = (Random() & 0x7) >> 2; }
+	TileIndex t;
+	uint prio;
+	bool operator<(const TilePrio& t) const { return prio < t.prio; }
+};
+/**
+ * reimplement with BFS
+ */
+static void CreateRivers()
+{
+	int amount = _settings_game.game_creation.amount_of_rivers;
+	if (amount == 0) return;
+
+	std::array<std::set<TileIndex>, MAX_TILE_HEIGHT> heights;
+	std::priority_queue<TilePrio> candidates;
+	std::deque<TileIndex> tiles;
+
+
+	// 0. Slice terrain into heightlevels, ignoring unusable slopes
+	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
+		if (!IsValidTile(tile)) continue;
+		Slope slope = GetTileSlope(tile);
+		if (slope == SLOPE_FLAT || IsInclinedSlope(slope)) heights[TileHeight(tile)].insert(tile);
+	}
+
+	uint starting_height = 0;
+	while (starting_height < MAX_TILE_HEIGHT) {
+		// 1. Pick starting tile (basin)
+		if (heights[starting_height].empty()) {
+			starting_height++;
+			continue;
+		}
+
+		// consider all tiles of same height equally
+		for(TileIndex const& tile: heights[starting_height]) {
+			candidates.push(tile);
+		}
+		heights[starting_height].clear();
+
+		// 2. Run BFS
+		while (!candidates.empty()) {
+			// TODO: cleaner way to de-queue?
+			TileIndex tile = candidates.top().t;
+			//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d", tile, TileX(tile), TileY(tile), TileHeight(tile));
+			candidates.pop();
+			tiles.push_front(tile);
+			for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
+				TileIndex t2 = tile + TileOffsByDiagDir(d);
+				if (IsValidTile(t2) && FlowsDown(t2, tile)) {
+					if (heights[TileHeight(t2)].find(t2) != heights[TileHeight(t2)].end()) {
+						// untouched tile
+						heights[TileHeight(t2)].erase(t2);
+						candidates.push(t2);
+						assert(GetTileType(t2) == MP_CLEAR || GetTileType(t2) == MP_WATER);
+						assert(_m[t2].m2 == 0 && _me[t2].m8 == 0 && _me[t2].m7 == 0);
+						//TODO: remove dirty hack
+						_me[t2].m8 = tile & 0xFFFF;
+						_m[t2].m2 = tile >> 16;
+					}
+				}
+			}
+		}
+		//break;
+	}
+	//DEBUG(misc, 0, "==============");
+	// 3. calculate flow number
+	for (TileIndex const& tile: tiles) {
+		TileIndex t2 = _me[tile].m8 | _m[tile].m2 << 16;
+		uint flow = _me[tile].m7;
+		_m[tile].m2 = 0;
+		_me[tile].m8 = 0;
+		_me[tile].m7 = 0;
+		//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d; Flow: %d; Target: %d (%d, %d)", tile, TileX(tile), TileY(tile), TileHeight(tile), flow, t2, TileX(t2), TileY(t2));
+		// 4. place river tiles
+		if (IsValidTile(t2)) {
+			if (flow > _me[t2].m7) {
+				_me[t2].m7 = flow;
+			} else if (flow == _me[t2].m7) {
+				_me[t2].m7++;
+			}
+		} else if (flow > 2 && GetTileType(tile) != MP_WATER) {
+			//make a lake
+			//TODO: handle case of "sinkhole"
+			TileIndex lakeCenter = tile;
+			uint height = TileHeight(lakeCenter);
+			uint range = RandomRange(8) + 3;
+			MakeRiver(lakeCenter, Random());
+			CircularTileSearch(&lakeCenter, range, MakeLake, &height);
+		}
+		if (flow > 3 && (GetTileType(tile) != MP_WATER || GetTileSlope(tile) != SLOPE_FLAT)) MakeRiver(tile, Random());
 	}
 }
 
