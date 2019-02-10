@@ -816,7 +816,9 @@ void CompanyAdminRemove(CompanyID company_id, CompanyRemoveReason reason)
  * @param p1 various functionality
  * - bits 0..15: CompanyCtrlAction
  * - bits 16..24: CompanyID
- * @param p2 ClientID
+ * @param p2 various depending on CompanyCtrlAction
+ * - bits 0..31: ClientID (with CCA_NEW)
+ * - bits 0..1: CompanyRemoveReason (with CCA_DELETE)
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -824,9 +826,6 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 {
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
 	CompanyID company_id = (CompanyID)GB(p1, 16, 8);
-#ifdef ENABLE_NETWORK
-	ClientID client_id = (ClientID)p2;
-#endif /* ENABLE_NETWORK */
 
 	switch ((CompanyCtrlAction)GB(p1, 0, 16)) {
 		case CCA_NEW: { // Create a new company
@@ -836,6 +835,8 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 #ifdef ENABLE_NETWORK
 			/* Has the network client a correct ClientIndex? */
 			if (!(flags & DC_EXEC)) return CommandCost();
+
+			ClientID client_id = (ClientID)p2;
 			NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 #ifndef DEBUG_DUMP_COMMANDS
 			/* When replaying the client ID is not a valid client; there
