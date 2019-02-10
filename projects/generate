@@ -14,6 +14,15 @@
 LC_ALL=C
 export LC_ALL
 
+# We really need gawk for this!
+AWK=gawk
+
+${AWK} --version > /dev/null 2> /dev/null
+if [ "$?" != "0" ]; then
+	echo "This script needs gawk to run properly"
+	exit 1
+fi
+
 ROOT_DIR="`pwd`/.."
 if ! [ -e "$ROOT_DIR/source.list" ]
 then
@@ -70,7 +79,7 @@ with_cocoa="0"
 enable_directmusic="1"
 enable_fluidsynth="0"
 with_threads="1"
-file_prefix="..\\\\src\\\\"
+file_prefix="..\\\\\\\\src\\\\\\\\"
 
 safety_check() {
 	li=""
@@ -101,7 +110,8 @@ rm tmp.headers.*
 
 load_main_data() {
 	# Read the source.list and process it
-	RES="`cat $1 | tr '\r' '\n' | awk '
+	RES="`cat $1 | ${AWK} -v BINMODE=1 '
+		{ gsub("\\r", "", $0); }
 		/^(	*)#end/  { if (deep == skip) { skip -= 1; } deep -= 1; next; }
 		/^(	*)#else/ { if (deep == skip) { skip -= 1; } else if (deep - 1 == skip) { skip += 1; } next; }
 		/^(	*)#if/   {
@@ -153,7 +163,7 @@ load_main_data() {
 		{
 			if (deep == skip) {
 				gsub("	", "", $0);
-				gsub("/", "\\\\", $0);
+				gsub("/", "\\\\\\\\", $0);
 				split($0, file, ".");
 				cltype = "ClInclude"
 				if (file[2] == "cpp") cltype = "ClCompile";
@@ -181,13 +191,13 @@ load_lang_data() {
 			continue
 		fi
 		RES="$RES
-#2    <CustomBuild Include=\"..\\src\\lang\\"$i".txt\">
+#2    <CustomBuild Include=\"..\\\\src\\\\lang\\\\"$i".txt\">
 #2      <Message Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">Generating "$i" language file</Message>
-#2      <Command Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\objs\\strgen\\strgen.exe -s ..\\src\\lang -d ..\\bin\\lang \"%(FullPath)\"</Command>
-#2      <AdditionalInputs Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\src\\lang\\english.txt;..\\objs\\strgen\\strgen.exe;%(AdditionalInputs)</AdditionalInputs>
-#2      <Outputs Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\bin\\lang\\"$i".lng;%(Outputs)</Outputs>
+#2      <Command Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\\\objs\\\\strgen\\\\strgen.exe -s ..\\\\src\\\\lang -d ..\\\\bin\\\\lang \"%(FullPath)\"</Command>
+#2      <AdditionalInputs Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\\\src\\\\lang\\\\english.txt;..\\\\objs\\\\strgen\\\\strgen.exe;%(AdditionalInputs)</AdditionalInputs>
+#2      <Outputs Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\\\bin\\\\lang\\\\"$i".lng;%(Outputs)</Outputs>
 #2    </CustomBuild>
-#3    <CustomBuild Include=\"..\\src\\lang\\"$i".txt\">
+#3    <CustomBuild Include=\"..\\\\src\\\\lang\\\\"$i".txt\">
 #3      <Filter>Translations</Filter>
 #3    </CustomBuild>"
 	done
@@ -198,16 +208,16 @@ load_lang_data() {
 load_settings_data() {
 	RES=""
 	RES2="
-#3..\\objs\\settings\\settings_gen.exe -o ..\\objs\\settings\\table\\settings.h -b ..\\src\\table\\settings.h.preamble -a ..\\src\\table\\settings.h.postamble"
+#3..\\\\objs\\\\settings\\\\settings_gen.exe -o ..\\\\objs\\\\settings\\\\table\\\\settings.h -b ..\\\\src\\\\table\\\\settings.h.preamble -a ..\\\\src\\\\table\\\\settings.h.postamble"
 	for i in `ls $1`
 	do
 		i=`basename $i`
 		RES="$RES
-#2    <None Include=\"..\\src\\table\\"$i"\" />
-#4    <None Include=\"..\\src\\table\\"$i"\">
+#2    <None Include=\"..\\\\src\\\\table\\\\"$i"\" />
+#4    <None Include=\"..\\\\src\\\\table\\\\"$i"\">
 #4      <Filter>INI</Filter>
 #4    </None>"
-		RES2="$RES2 ..\\src\\table\\"$i
+		RES2="$RES2 ..\\\\src\\\\table\\\\"$i
 	done
 
 	eval "$2=\"\$RES\$RES2\""
@@ -228,7 +238,7 @@ load_baseset_data() {
 			FIRST=1
 		fi
 		i=`basename $i`
-		RES2="$RES2..\\src\\lang\\$i.txt"
+		RES2="$RES2..\\\\src\\\\lang\\\\$i.txt"
 	done
 	RES2="$RES2</Langs>"
 	# Windows Folder sort and Linux Folder sort are slightly different.
@@ -237,13 +247,13 @@ load_baseset_data() {
 	do
 		i=`basename $i`
 		RES="$RES
-#2    <CustomBuild Include=\"..\\media\\baseset\\"$i"\">
+#2    <CustomBuild Include=\"..\\\\media\\\\baseset\\\\"$i"\">
 #2      <Message Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">Generating "$i" baseset metadata file</Message>
-#2      <Command Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">cscript //nologo ..\\media\\baseset\\translations.vbs \"%(FullPath)\" \"\$(OutputPath)$i\" ..\\src\\lang ..\\bin\\baseset\\orig_extra.grf</Command>
-#2      <AdditionalInputs Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">\$(Langs);..\\bin\\baseset\\orig_extra.grf;%(AdditionalInputs)</AdditionalInputs>
-#2      <Outputs Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\bin\\baseset\\"$i";%(Outputs)</Outputs>
+#2      <Command Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">cscript //nologo ..\\\\media\\\\baseset\\\\translations.vbs \"%(FullPath)\" \"\$(OutputPath)$i\" ..\\\\src\\\\lang ..\\\\bin\\\\baseset\\\\orig_extra.grf</Command>
+#2      <AdditionalInputs Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">\$(Langs);..\\\\bin\\\\baseset\\\\orig_extra.grf;%(AdditionalInputs)</AdditionalInputs>
+#2      <Outputs Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\\\bin\\\\baseset\\\\"$i";%(Outputs)</Outputs>
 #2    </CustomBuild>
-#3    <CustomBuild Include=\"..\\media\\baseset\\"$i"\">
+#3    <CustomBuild Include=\"..\\\\media\\\\baseset\\\\"$i"\">
 #3      <Filter>Baseset Metadata</Filter>
 #3    </CustomBuild>"
 	done
@@ -253,52 +263,28 @@ load_baseset_data() {
 
 generate() {
 	echo "Generating $2..."
-	if [ $# -eq 3 ]; then
-		# Everything above the !!FILTERS!! marker
-		cat "$ROOT_DIR/projects/$2".in | tr '\r' '\n' | awk '
-			/^$/ { next }
-			/!!FILTERS!!/ { stop = 1; }
-			{
-				if (stop == 0) { print $0 }
-			}
-		' > "$ROOT_DIR/projects/$2"
-
-		echo "$3" >> "$ROOT_DIR/projects/$2"
-
-		# Everything below the !!FILTERS!! marker and above the !!FILES!! marker
-		cat "$ROOT_DIR/projects/$2".in | tr '\r' '\n' | awk '
-			BEGIN { stop = 1; }
-			/^$/ { next }
-			/!!FILTERS!!/ { stop = 2; }
-			/!!FILES!!/ { stop = 1; }
-			{
-				if (stop == 0) { print $0 }
-				if (stop == 2) { stop = 0 }
-			}
-		' >> "$ROOT_DIR/projects/$2"
-	else
-		# Everything above the !!FILES!! marker
-		cat "$ROOT_DIR/projects/$2".in | tr '\r' '\n' | awk '
-			/^$/ { next }
-			/!!FILES!!/ { stop = 1; }
-			{
-				if (stop == 0) { print $0 }
-			}
-		' > "$ROOT_DIR/projects/$2"
-	fi
-
-	echo "$1" >> "$ROOT_DIR/projects/$2"
-
-	# Everything below the !!FILES!! marker
-	cat "$ROOT_DIR/projects/$2".in | tr '\r' '\n' | awk '
-		BEGIN { stop = 1; }
+	# Everything above the !!FILTERS!! marker
+	cat "$ROOT_DIR/projects/$2".in | ${AWK} -v BINMODE=1 -v FILTERS="$3" -v FILES="$1" '
+		{ CR = (match($0, "\\r$") > 0 ? "\r" : "") }
 		/^$/ { next }
-		/!!FILES!!/ { stop = 2; }
-		{
-			if (stop == 0) { print $0 }
-			if (stop == 2) { stop = 0 }
+		/!!FILTERS!!/ {
+			split(FILTERS, filters, "\n");
+			for (i = 1; filters[i] != ""; i++) {
+				print filters[i] CR;
+			}
+			next;
 		}
-	' >> "$ROOT_DIR/projects/$2"
+		/!!FILES!!/ {
+			split(FILES, files, "\n");
+			for (i = 1; files[i] != ""; i++) {
+				print files[i] CR;
+			}
+			next;
+		}
+		{
+			print $0;
+		}
+	' > "$ROOT_DIR/projects/$2"
 }
 
 safety_check "$ROOT_DIR/source.list"
