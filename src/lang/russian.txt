@@ -1539,7 +1539,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Выкл.
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Закрывать окна щелчком ПКМ: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Закрывать окно щелчком правой кнопкой мыши в его пределах. При этом отключается появление подсказок по правой кнопке.
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Автосохранения: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE                                     :Автосохранение: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Укажите интервал между автоматическими сохранениями
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Использовать {STRING} формат даты для имён сохранений
@@ -1651,7 +1651,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Первое т
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Показывать новости о первом транспортном средстве, прибывающем на станцию конкурента
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Аварии и катастрофы: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Показывать новости об авариях и катастрофах
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информация о Компании: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информация о компании: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Показывать новости об основании и риске банкротства транспортных компаний
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Открытие предприятий: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Показывать новости об открывающихся предприятиях
@@ -2367,7 +2367,7 @@ STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Наим
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Нажмите на строке для просмотра подробностей{}Отметьте чекбокс для загрузки
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Выбрать всё
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Пометить весь контент для загрузки
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Выбрать обновл.
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Выбрать обновления
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Отметить для загрузки обновления для имеющегося контента
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Снять выделение
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Ничего не загружать
