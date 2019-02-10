@@ -1300,7 +1300,7 @@ struct TilePrio {
 	TilePrio(TileIndex t): t(t) { prio = (Random() & 0xFF); }
 	TileIndex t;
 	uint prio;
-	bool operator<(const TilePrio& t) const { return prio < t.prio; }
+	bool operator<(const TilePrio& tp) const { return (GetTileZ(t) > GetTileZ(tp.t)) || ((GetTileZ(t) == GetTileZ(tp.t)) && (prio < tp.prio)); }
 };
 /**
  * reimplement with BFS
