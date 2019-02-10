@@ -1121,8 +1121,11 @@ const char * GetNetworkRevisionString()
 		/* Ensure it's not longer than the packet buffer length. */
 		if (strlen(network_revision) >= NETWORK_REVISION_LENGTH) network_revision[NETWORK_REVISION_LENGTH - 1] = '\0';
 
-		/* Release version names are not mangled further. */
-		if (IsReleasedVersion()) return network_revision;
+		/* Tag names are not mangled further. */
+		if (_openttd_revision_tagged) {
+			DEBUG(net, 1, "Network revision name is '%s'", network_revision);
+			return network_revision;
+		}
 
 		/* Prepare a prefix of the git hash.
 		* Size is length + 1 for terminator, +2 for -g prefix. */
@@ -1140,6 +1143,7 @@ const char * GetNetworkRevisionString()
 		/* Replace the git hash in revision string. */
 		strecpy(network_revision + hashofs, githash_suffix, network_revision + NETWORK_REVISION_LENGTH);
 		assert(strlen(network_revision) < NETWORK_REVISION_LENGTH); // strlen does not include terminator, constant does, hence strictly less than
+		DEBUG(net, 1, "Network revision name is '%s'", network_revision);
 	}
 
 	return network_revision;
@@ -1158,6 +1162,11 @@ static const char *ExtractNetworkRevisionHash(const char *revstr)
 bool IsNetworkCompatibleVersion(const char *other)
 {
 	if (strncmp(GetNetworkRevisionString(), other, NETWORK_REVISION_LENGTH - 1) == 0) return true;
+
+	/* If this version is tagged, then the revision string must be a complete match,
+	 * since there is no git hash suffix in it.
+	 * This is needed to avoid situations like "1.9.0-beta1" comparing equal to "2.0.0-beta1".  */
+	if (_openttd_revision_tagged) return false;
 
 	const char *hash1 = ExtractNetworkRevisionHash(GetNetworkRevisionString());
 	const char *hash2 = ExtractNetworkRevisionHash(other);
