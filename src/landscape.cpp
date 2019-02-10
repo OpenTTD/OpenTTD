@@ -1353,8 +1353,7 @@ static void CreateRivers()
 						assert(GetTileType(t2) == MP_CLEAR || GetTileType(t2) == MP_WATER);
 						assert(_m[t2].m2 == 0 && _me[t2].m8 == 0 && _me[t2].m7 == 0);
 						//TODO: remove dirty hack
-						_me[t2].m8 = tile & 0xFFFF;
-						_m[t2].m2 = tile >> 16;
+						_me[t2].m8 = ReverseDiagDir(d) | 0x4;
 					}
 				}
 			}
@@ -1364,14 +1363,15 @@ static void CreateRivers()
 	//DEBUG(misc, 0, "==============");
 	// 3. calculate flow number
 	for (TileIndex const& tile: tiles) {
-		TileIndex t2 = _me[tile].m8 | _m[tile].m2 << 16;
+		bool valid = _me[tile].m8 & 0x4;
+		TileIndex t2 = tile + TileOffsByDiagDir((DiagDirection)(_me[tile].m8 & 0x3));
 		uint flow = _me[tile].m7;
 		_m[tile].m2 = 0;
 		_me[tile].m8 = 0;
 		_me[tile].m7 = 0;
 		//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d; Flow: %d; Target: %d (%d, %d)", tile, TileX(tile), TileY(tile), TileHeight(tile), flow, t2, TileX(t2), TileY(t2));
 		// 4. place river tiles
-		if (IsValidTile(t2)) {
+		if (valid) {
 			if (flow > _me[t2].m7) {
 				_me[t2].m7 = flow;
 			} else if (flow == _me[t2].m7) {
