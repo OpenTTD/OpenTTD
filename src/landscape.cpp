@@ -1325,7 +1325,7 @@ static void CreateRivers()
 	uint starting_height = 0;
 	while (starting_height < MAX_TILE_HEIGHT) {
 		// 1. Pick starting tile (basin)
-		if (heights[starting_height].empty()) {
+		if (heights[starting_height].empty() && candidates.empty()) {
 			starting_height++;
 			continue;
 		}
@@ -1340,6 +1340,11 @@ static void CreateRivers()
 		while (!candidates.empty()) {
 			// TODO: cleaner way to de-queue?
 			TileIndex tile = candidates.top().t;
+			/*if (GetTileZ(tile) > (int)starting_height + 2) {
+				// exhausted this heightlevel, consider new basins
+				starting_height++;
+				break;
+			}*/
 			//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d", tile, TileX(tile), TileY(tile), GetTileZ(tile));
 			candidates.pop();
 			tiles.push_front(tile);
