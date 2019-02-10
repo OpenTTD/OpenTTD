@@ -1363,7 +1363,7 @@ static void CreateRivers()
 	//DEBUG(misc, 0, "==============");
 	// 3. calculate flow number
 	for (TileIndex const& tile: tiles) {
-		bool valid = _me[tile].m8 & 0x4;
+		bool flows = _me[tile].m8 & 0x4;
 		TileIndex t2 = tile + TileOffsByDiagDir((DiagDirection)(_me[tile].m8 & 0x3));
 		uint flow = _me[tile].m7;
 		_m[tile].m2 = 0;
@@ -1371,7 +1371,7 @@ static void CreateRivers()
 		_me[tile].m7 = 0;
 		//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d; Flow: %d; Target: %d (%d, %d)", tile, TileX(tile), TileY(tile), GetTileZ(tile), flow, t2, TileX(t2), TileY(t2));
 		// 4. place river tiles
-		if (valid) {
+		if (flows && IsValidTile(t2)) {
 			if (flow > _me[t2].m7) {
 				_me[t2].m7 = flow;
 			} else if (flow == _me[t2].m7) {
