@@ -1319,7 +1319,7 @@ static void CreateRivers()
 	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
 		if (!IsValidTile(tile)) continue;
 		Slope slope = GetTileSlope(tile);
-		if (slope == SLOPE_FLAT || IsInclinedSlope(slope)) heights[TileHeight(tile)].insert(tile);
+		if (slope == SLOPE_FLAT || IsInclinedSlope(slope)) heights[GetTileZ(tile)].insert(tile);
 	}
 
 	uint starting_height = 0;
@@ -1340,15 +1340,15 @@ static void CreateRivers()
 		while (!candidates.empty()) {
 			// TODO: cleaner way to de-queue?
 			TileIndex tile = candidates.top().t;
-			//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d", tile, TileX(tile), TileY(tile), TileHeight(tile));
+			//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d", tile, TileX(tile), TileY(tile), GetTileZ(tile));
 			candidates.pop();
 			tiles.push_front(tile);
 			for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 				TileIndex t2 = tile + TileOffsByDiagDir(d);
 				if (IsValidTile(t2) && FlowsDown(t2, tile)) {
-					if (heights[TileHeight(t2)].find(t2) != heights[TileHeight(t2)].end()) {
+					if (heights[GetTileZ(t2)].find(t2) != heights[GetTileZ(t2)].end()) {
 						// untouched tile
-						heights[TileHeight(t2)].erase(t2);
+						heights[GetTileZ(t2)].erase(t2);
 						candidates.push(t2);
 						assert(GetTileType(t2) == MP_CLEAR || GetTileType(t2) == MP_WATER);
 						assert(_m[t2].m2 == 0 && _me[t2].m8 == 0 && _me[t2].m7 == 0);
@@ -1369,7 +1369,7 @@ static void CreateRivers()
 		_m[tile].m2 = 0;
 		_me[tile].m8 = 0;
 		_me[tile].m7 = 0;
-		//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d; Flow: %d; Target: %d (%d, %d)", tile, TileX(tile), TileY(tile), TileHeight(tile), flow, t2, TileX(t2), TileY(t2));
+		//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d; Flow: %d; Target: %d (%d, %d)", tile, TileX(tile), TileY(tile), GetTileZ(tile), flow, t2, TileX(t2), TileY(t2));
 		// 4. place river tiles
 		if (valid) {
 			if (flow > _me[t2].m7) {
@@ -1381,7 +1381,7 @@ static void CreateRivers()
 			//make a lake
 			//TODO: handle case of "sinkhole"
 			TileIndex lakeCenter = tile;
-			uint height = TileHeight(lakeCenter);
+			uint height = GetTileZ(lakeCenter);
 			uint range = RandomRange(8) + 3;
 			MakeRiver(lakeCenter, Random());
 			CircularTileSearch(&lakeCenter, range, MakeLake, &height);
