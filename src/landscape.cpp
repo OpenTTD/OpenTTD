@@ -1296,11 +1296,37 @@ static void CreateRivers()
 }
 #endif
 
+void FloodFill(TileIndex tile, uint& count, uint mode) {
+	if (!IsValidTile(tile)) {
+		if (mode==1) count+=5+(Random()&0xF); //make edge basins appear bigger
+		return;
+	}
+	Slope slope = GetTileSlope(tile);
+	if (slope == SLOPE_FLAT || IsInclinedSlope(slope)) return;
+	if (_me[tile].m8 == mode) return;
+	_me[tile].m8 = mode;
+	switch (mode) {
+		case 1: count++; break;
+		case 2: _m[tile].m2=min(count,0xFFFF); break;
+		default: NOT_REACHED();
+	}
+	if (slope != SLOPE_FLAT) return;
+	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
+		FloodFill(tile + TileOffsByDiagDir(d), count, mode);
+	}
+}
 struct TilePrio {
 	TilePrio(TileIndex t): t(t) { prio = (Random() & 0xFF); }
 	TileIndex t;
 	uint prio;
-	bool operator<(const TilePrio& tp) const { return (GetTileZ(t) > GetTileZ(tp.t)) || ((GetTileZ(t) == GetTileZ(tp.t)) && (prio < tp.prio)); }
+	bool operator<(const TilePrio& tp) const {
+		if (GetTileZ(t) > GetTileZ(tp.t)) return true;
+		if (GetTileZ(t) < GetTileZ(tp.t)) return false;
+		if (_m[t].m2+prio < _m[tp.t].m2+tp.prio) return true;
+		if (_m[t].m2+prio > _m[tp.t].m2+tp.prio) return false;
+		return (prio < tp.prio);
+
+	}
 };
 /**
  * reimplement with BFS
@@ -1320,6 +1346,8 @@ static void CreateRivers()
 	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
 		IncreaseGeneratingWorldProgress(GWP_RIVER);
 		if (!IsValidTile(tile)) continue;
+		assert(GetTileType(tile) == MP_CLEAR || GetTileType(tile) == MP_WATER);
+		assert(_m[tile].m2 == 0 && _me[tile].m8 == 0 && _me[tile].m7 == 0);
 		Slope slope = GetTileSlope(tile);
 		if (slope == SLOPE_FLAT || IsInclinedSlope(slope)) heights[GetTileZ(tile)].insert(tile);
 	}
@@ -1335,6 +1363,12 @@ static void CreateRivers()
 		// consider all tiles of same height equally
 		for(TileIndex const& tile: heights[starting_height]) {
 			candidates.push(tile);
+			if (GetTileSlope(tile) == SLOPE_FLAT && _m[tile].m2 == 0) {
+				// estimate basin size
+				uint count = 0;
+				FloodFill(tile, count, 1);
+				FloodFill(tile, count, 2);
+			}
 		}
 		heights[starting_height].clear();
 
@@ -1347,7 +1381,7 @@ static void CreateRivers()
 				starting_height++;
 				break;
 			}*/
-			//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d", tile, TileX(tile), TileY(tile), GetTileZ(tile));
+			//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d; Size: %d", tile, TileX(tile), TileY(tile), GetTileZ(tile), _m[tile].m2);
 			IncreaseGeneratingWorldProgress(GWP_RIVER);
 			candidates.pop();
 			tiles.push_front(tile);
@@ -1358,10 +1392,9 @@ static void CreateRivers()
 						// untouched tile
 						heights[GetTileZ(t2)].erase(t2);
 						candidates.push(t2);
-						assert(GetTileType(t2) == MP_CLEAR || GetTileType(t2) == MP_WATER);
-						assert(_m[t2].m2 == 0 && _me[t2].m8 == 0 && _me[t2].m7 == 0);
 						//TODO: remove dirty hack
 						_me[t2].m8 = ReverseDiagDir(d) | 0x4;
+						_m[t2].m2 = max(_m[tile].m2-5,0);
 					}
 				}
 			}
