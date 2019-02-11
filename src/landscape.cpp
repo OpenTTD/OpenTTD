@@ -1315,8 +1315,10 @@ static void CreateRivers()
 	std::deque<TileIndex> tiles;
 
 
+	SetGeneratingWorldProgress(GWP_RIVER, 3*MapSize());
 	// 0. Slice terrain into heightlevels, ignoring unusable slopes
 	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
+		IncreaseGeneratingWorldProgress(GWP_RIVER);
 		if (!IsValidTile(tile)) continue;
 		Slope slope = GetTileSlope(tile);
 		if (slope == SLOPE_FLAT || IsInclinedSlope(slope)) heights[GetTileZ(tile)].insert(tile);
@@ -1346,6 +1348,7 @@ static void CreateRivers()
 				break;
 			}*/
 			//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d", tile, TileX(tile), TileY(tile), GetTileZ(tile));
+			IncreaseGeneratingWorldProgress(GWP_RIVER);
 			candidates.pop();
 			tiles.push_front(tile);
 			for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
@@ -1368,6 +1371,7 @@ static void CreateRivers()
 	//DEBUG(misc, 0, "==============");
 	// 3. calculate flow number
 	for (TileIndex const& tile: tiles) {
+		IncreaseGeneratingWorldProgress(GWP_RIVER);
 		bool flows = _me[tile].m8 & 0x4;
 		TileIndex t2 = tile + TileOffsByDiagDir((DiagDirection)(_me[tile].m8 & 0x3));
 		uint flow = _me[tile].m7;
