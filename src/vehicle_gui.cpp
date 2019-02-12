@@ -267,7 +267,7 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_t
 				StringID subtype = GetCargoSubtypeText(v);
 				if (subtype == STR_EMPTY) break;
 
-				if (!subtypes.Contains(subtype)) continue;
+				if (std::find(subtypes.begin(), subtypes.end(), subtype) == subtypes.end()) continue;
 
 				/* We found something matching. */
 				ret_refit_cyc = refit_cyc;
@@ -414,7 +414,7 @@ struct RefitWindow : public Window {
 		GetVehicleSet(vehicles_to_refit, Vehicle::Get(this->selected_vehicle), this->num_vehicles);
 
 		do {
-			if (v->type == VEH_TRAIN && !vehicles_to_refit.Contains(v->index)) continue;
+			if (v->type == VEH_TRAIN && std::find(vehicles_to_refit.begin(), vehicles_to_refit.end(), v->index) == vehicles_to_refit.end()) continue;
 			const Engine *e = v->GetEngine();
 			CargoTypes cmask = e->info.refit_mask;
 			byte callback_mask = e->info.callback_mask;
@@ -747,14 +747,15 @@ struct RefitWindow : public Window {
 
 						for (Train *u = Train::From(v); u != NULL; u = u->Next()) {
 							/* Start checking. */
-							if (vehicles_to_refit.Contains(u->index) && left == INT32_MIN) {
+							const bool contained = std::find(vehicles_to_refit.begin(), vehicles_to_refit.end(), u->index) != vehicles_to_refit.end();
+							if (contained && left == INT32_MIN) {
 								left = x - this->hscroll->GetPosition() + r.left + this->vehicle_margin;
 								width = 0;
 							}
 
 							/* Draw a selection. */
-							if ((!vehicles_to_refit.Contains(u->index) || u->Next() == NULL) && left != INT32_MIN) {
-								if (u->Next() == NULL && vehicles_to_refit.Contains(u->index)) {
+							if ((!contained || u->Next() == NULL) && left != INT32_MIN) {
+								if (u->Next() == NULL && contained) {
 									int current_width = u->GetDisplayImageWidth();
 									width += current_width;
 									x += current_width;

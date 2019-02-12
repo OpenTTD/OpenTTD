@@ -304,7 +304,7 @@ RailType GetRailTypeByLabel(RailTypeLabel label, bool allow_alternate_labels)
 		/* Test if any rail type defines the label as an alternate. */
 		for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
 			const RailtypeInfo *rti = GetRailTypeInfo(r);
-			if (rti->alternate_labels.Contains(label)) return r;
+			if (std::find(rti->alternate_labels.begin(), rti->alternate_labels.end(), label) != rti->alternate_labels.end()) return r;
 		}
 	}
 

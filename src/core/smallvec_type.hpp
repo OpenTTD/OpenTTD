@@ -115,17 +115,6 @@ public:
 	}
 
 	/**
-	 * Tests whether a item is present in the vector.
-	 * The '!=' operator of T is used for comparison.
-	 * @param item Item to test for
-	 * @return true iff the item is present
-	 */
-	inline bool Contains(const T &item) const
-	{
-		return std::find(std::vector<T>::begin(), std::vector<T>::end(), item) != std::vector<T>::end();
-	}
-
-	/**
 	 * Removes given item from this vector
 	 * @param item item to remove
 	 * @note it has to be pointer to item in this map. It is overwritten by the last item.
@@ -145,7 +134,7 @@ public:
 	 */
 	inline bool Include(const T &item)
 	{
-		bool is_member = this->Contains(item);
+		bool is_member = std::find(std::vector<T>::begin(), std::vector<T>::end(), item) != std::vector<T>::end();
 		if (!is_member) *this->Append() = item;
 		return is_member;
 	}
