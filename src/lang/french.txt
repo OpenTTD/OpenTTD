@@ -2780,6 +2780,8 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Pas d'in
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}{NBSP}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF{NBSP}: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtre{NBSP}:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Écraser le fichier
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Êtes-vous sûr de vouloir écraser le fichier existant{NBSP}?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Entrer un nom pour la sauvegarde
 

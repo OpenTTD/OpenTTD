@@ -2779,6 +2779,7 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen in
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter-udtryk:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Overskriv fil
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Skriv et navn til det gemte spil
 
