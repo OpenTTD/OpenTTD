@@ -301,7 +301,9 @@ void HotkeyList::Save(IniFile *ini) const
 int HotkeyList::CheckMatch(uint16 keycode, bool global_only) const
 {
 	for (const Hotkey *list = this->items; list->name != NULL; ++list) {
-		if (list->keycodes.Contains(keycode | WKC_GLOBAL_HOTKEY) || (!global_only && list->keycodes.Contains(keycode))) {
+		auto begin = list->keycodes.begin();
+		auto end = list->keycodes.end();
+		if (std::find(begin, end, keycode | WKC_GLOBAL_HOTKEY) != end || (!global_only && std::find(begin, end, keycode) != end)) {
 			return list->num;
 		}
 	}
