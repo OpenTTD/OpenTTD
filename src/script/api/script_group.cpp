@@ -17,6 +17,7 @@
 #include "../../strings_func.h"
 #include "../../autoreplace_func.h"
 #include "../../settings_func.h"
+#include "../../vehicle_base.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
@@ -147,4 +148,28 @@
 	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == GROUP_DEFAULT || group_id == GROUP_ALL);
 
 	return ScriptObject::DoCommand(0, group_id << 16, (::INVALID_ENGINE << 16) | engine_id, CMD_SET_AUTOREPLACE);
+}
+
+/* static */ Money ScriptGroup::GetProfitThisYear(GroupID group_id)
+{
+	if (!IsValidGroup(group_id)) return -1;
+
+	Money profit = 0;
+
+	const Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->group_id != group_id) continue;
+		if (!v->IsPrimaryVehicle()) continue;
+
+		profit += v->GetDisplayProfitThisYear();
+	}
+
+	return profit;
+}
+
+/* static */ Money ScriptGroup::GetProfitLastYear(GroupID group_id)
+{
+	if (!IsValidGroup(group_id)) return -1;
+
+	return ::Group::Get(group_id)->statistics.profit_last_year;
 }
