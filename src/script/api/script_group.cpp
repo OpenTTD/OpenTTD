@@ -173,3 +173,24 @@
 
 	return ::Group::Get(group_id)->statistics.profit_last_year;
 }
+
+/* static */ uint32 ScriptGroup::GetCurrentUsage(GroupID group_id)
+{
+	if (!IsValidGroup(group_id)) return -1;
+
+	uint32 occupancy = 0;
+	uint32 vehicle_count = 0;
+
+	const Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->group_id != group_id) continue;
+		if (!v->IsPrimaryVehicle()) continue;
+
+		occupancy += v->trip_occupancy;
+		vehicle_count++;
+	}
+
+	if (vehicle_count == 0) return -1;
+
+	return occupancy / vehicle_count;
+}

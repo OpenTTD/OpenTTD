@@ -205,6 +205,14 @@ public:
 	 * @return The current profit the group had last year.
 	 */
 	static Money GetProfitLastYear(GroupID group_id);
+
+	/**
+	 * Get the current vehicle usage of a group.
+	 * @param group_id The group to get the current usage of.
+	 * @pre IsValidGroup(group_id).
+	 * @return The current usage of the group.
+	 */
+	static uint32 GetCurrentUsage(GroupID group_id);
 };
 
 #endif /* SCRIPT_GROUP_HPP */
