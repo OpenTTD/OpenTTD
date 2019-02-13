@@ -189,6 +189,22 @@ public:
 	 * @return True if and if the replacing was successfully stopped.
 	 */
 	static bool StopAutoReplace(GroupID group_id, EngineID engine_id);
+
+	/**
+	 * Get the current profit of a group.
+	 * @param group_id The group to get the profit of.
+	 * @pre IsValidGroup(group_id).
+	 * @return The current profit the group has.
+	 */
+	static Money GetProfitThisYear(GroupID group_id);
+
+	/**
+	 * Get the profit of last year of a group.
+	 * @param group_id The group to get the profit of.
+	 * @pre IsValidGroup(group_id).
+	 * @return The current profit the group had last year.
+	 */
+	static Money GetProfitLastYear(GroupID group_id);
 };
 
 #endif /* SCRIPT_GROUP_HPP */

@@ -42,6 +42,8 @@ void SQAIGroup_Register(Squirrel *engine)
 	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::SetAutoReplace,              "SetAutoReplace",              4, ".iii");
 	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::GetEngineReplacement,        "GetEngineReplacement",        3, ".ii");
 	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::StopAutoReplace,             "StopAutoReplace",             3, ".ii");
+	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::GetProfitThisYear,           "GetProfitThisYear",           2, ".i");
+	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::GetProfitLastYear,           "GetProfitLastYear",           2, ".i");
 
 	SQAIGroup.PostRegister(engine);
 }
