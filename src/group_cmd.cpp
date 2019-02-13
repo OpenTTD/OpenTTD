@@ -311,7 +311,7 @@ Group::~Group()
  * @param tile unused
  * @param flags type of operation
  * @param p1   vehicle type
- * @param p2   unused
+ * @param p2   parent groupid
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -322,15 +322,27 @@ CommandCost CmdCreateGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	if (!Group::CanAllocateItem()) return CMD_ERROR;
 
+	const Group *pg = Group::GetIfValid(GB(p2, 0, 16));
+	if (pg != NULL) {
+		if (pg->owner != _current_company) return CMD_ERROR;
+		if (pg->vehicle_type != vt) return CMD_ERROR;
+	}
+
 	if (flags & DC_EXEC) {
 		Group *g = new Group(_current_company);
 		g->replace_protection = false;
 		g->vehicle_type = vt;
 		g->parent = INVALID_GROUP;
 
-		const Company *c = Company::Get(_current_company);
-		g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
-		g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
+		if (pg == NULL) {
+			const Company *c = Company::Get(_current_company);
+			g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
+			g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
+		} else {
+			g->parent = pg->index;
+			g->livery.colour1 = pg->livery.colour1;
+			g->livery.colour2 = pg->livery.colour2;
+		}
 
 		_new_group_id = g->index;
 
