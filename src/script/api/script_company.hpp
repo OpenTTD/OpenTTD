@@ -14,6 +14,8 @@
 
 #include "script_text.hpp"
 #include "../../economy_type.h"
+#include "../../livery.h"
+#include "../../gfx_type.h"
 
 /**
  * Class that handles all company related functions.
@@ -44,6 +46,55 @@ public:
 		GENDER_MALE,         ///< A male person.
 		GENDER_FEMALE,       ///< A female person.
 		GENDER_INVALID = -1, ///< An invalid gender.
+	};
+
+	/** List of different livery schemes. */
+	enum LiveryScheme {
+		LS_DEFAULT,                  ///< Default scheme.
+		LS_STEAM,                    ///< Steam engines.
+		LS_DIESEL,                   ///< Diesel engines.
+		LS_ELECTRIC,                 ///< Electric engines.
+		LS_MONORAIL,                 ///< Monorail engines.
+		LS_MAGLEV,                   ///< Maglev engines.
+		LS_DMU,                      ///< DMUs and their passenger wagons.
+		LS_EMU,                      ///< EMUs and their passenger wagons.
+		LS_PASSENGER_WAGON_STEAM,    ///< Passenger wagons attached to steam engines.
+		LS_PASSENGER_WAGON_DIESEL,   ///< Passenger wagons attached to diesel engines.
+		LS_PASSENGER_WAGON_ELECTRIC, ///< Passenger wagons attached to electric engines.
+		LS_PASSENGER_WAGON_MONORAIL, ///< Passenger wagons attached to monorail engines.
+		LS_PASSENGER_WAGON_MAGLEV,   ///< Passenger wagons attached to maglev engines.
+		LS_FREIGHT_WAGON,            ///< Freight wagons.
+		LS_BUS,                      ///< Buses.
+		LS_TRUCK,                    ///< Trucks.
+		LS_PASSENGER_SHIP,           ///< Passenger ships.
+		LS_FREIGHT_SHIP,             ///< Freight ships.
+		LS_HELICOPTER,               ///< Helicopters.
+		LS_SMALL_PLANE,              ///< Small aeroplanes.
+		LS_LARGE_PLANE,              ///< Large aeroplanes.
+		LS_PASSENGER_TRAM,           ///< Passenger trams.
+		LS_FREIGHT_TRAM,             ///< Freight trams.
+		LS_INVALID = -1,
+	};
+
+	/** List of colours. */
+	enum Colours {
+		COLOUR_DARK_BLUE,
+		COLOUR_PALE_GREEN,
+		COLOUR_PINK,
+		COLOUR_YELLOW,
+		COLOUR_RED,
+		COLOUR_LIGHT_BLUE,
+		COLOUR_GREEN,
+		COLOUR_DARK_GREEN,
+		COLOUR_BLUE,
+		COLOUR_CREAM,
+		COLOUR_MAUVE,
+		COLOUR_PURPLE,
+		COLOUR_ORANGE,
+		COLOUR_BROWN,
+		COLOUR_GREY,
+		COLOUR_WHITE,
+		COLOUR_INVALID = ::INVALID_COLOUR
 	};
 
 	/**
@@ -331,6 +382,36 @@ public:
 	 * @return The minimum required money for autorenew to work.
 	 */
 	static Money GetAutoRenewMoney(CompanyID company);
+
+	/**
+	 * Set primary colour for your company.
+	 * @param scheme Livery scheme to set.
+	 * @param colour Colour to set.
+	 * @return False if unable to set primary colour of the livery scheme (e.g. colour in use).
+	 */
+	static bool SetPrimaryLiveryColour(LiveryScheme scheme, Colours colour);
+
+	/**
+	 * Set secondary colour for your company.
+	 * @param scheme Livery scheme to set.
+	 * @param colour Colour to set.
+	 * @return False if unable to set secondary colour of the livery scheme.
+	 */
+	static bool SetSecondaryLiveryColour(LiveryScheme scheme, Colours colour);
+
+	/**
+	 * Get primary colour of a livery for your company.
+	 * @param scheme Livery scheme to get.
+	 * @return Primary colour of livery.
+	 */
+	static ScriptCompany::Colours GetPrimaryLiveryColour(LiveryScheme scheme);
+
+	/**
+	 * Get secondary colour of a livery for your company.
+	 * @param scheme Livery scheme to get.
+	 * @return Secondary colour of livery.
+	 */
+	static ScriptCompany::Colours GetSecondaryLiveryColour(LiveryScheme scheme);
 };
 
 DECLARE_POSTFIX_INCREMENT(ScriptCompany::CompanyID)

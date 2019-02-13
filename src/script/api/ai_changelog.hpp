@@ -22,6 +22,10 @@
  * \li AIAirport::GetMonthlyMaintenanceCost
  * \li AIGroup::SetParent
  * \li AIGroup::GetParent
+ * \li AICompany::SetPrimaryLiveryColour
+ * \li AICompany::SetSecondaryLiveryColour
+ * \li AICompany::GetPrimaryLiveryColour
+ * \li AICompany::GetSecondaryLiveryColour
  *
  * Other changes:
  * \li AIBridge::GetName takes one extra parameter to refer the vehicle type
