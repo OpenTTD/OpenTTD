@@ -917,7 +917,7 @@ STR_GAME_OPTIONS_CURRENCY_NLG                                   :Dutch Guilder (
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norwegian Krone (NOK)
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polish Złoty (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Romanian Leu (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russian Rubel (RUR)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russian Ruble (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenian Tolar (SIT)
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Swedish Krona (SEK)
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkish Lira (TRY)
