@@ -19,6 +19,10 @@ namespace SQConvert {
 	template <> inline int Return<ScriptCompany::CompanyID>(HSQUIRRELVM vm, ScriptCompany::CompanyID res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptCompany::Gender GetParam(ForceType<ScriptCompany::Gender>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptCompany::Gender)tmp; }
 	template <> inline int Return<ScriptCompany::Gender>(HSQUIRRELVM vm, ScriptCompany::Gender res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptCompany::LiveryScheme GetParam(ForceType<ScriptCompany::LiveryScheme>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptCompany::LiveryScheme)tmp; }
+	template <> inline int Return<ScriptCompany::LiveryScheme>(HSQUIRRELVM vm, ScriptCompany::LiveryScheme res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptCompany::Colours GetParam(ForceType<ScriptCompany::Colours>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptCompany::Colours)tmp; }
+	template <> inline int Return<ScriptCompany::Colours>(HSQUIRRELVM vm, ScriptCompany::Colours res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptCompany::ExpensesType GetParam(ForceType<ScriptCompany::ExpensesType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptCompany::ExpensesType)tmp; }
 	template <> inline int Return<ScriptCompany::ExpensesType>(HSQUIRRELVM vm, ScriptCompany::ExpensesType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
