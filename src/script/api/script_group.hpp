@@ -85,6 +85,24 @@ public:
 	static char *GetName(GroupID group_id);
 
 	/**
+	 * Set parent group of a group.
+	 * @param group_id The group to set the parent for.
+	 * @param parent_group_id The parent group to set.
+	 * @pre IsValidGroup(group_id).
+	 * @pre IsValidGroup(parent_group_id).
+	 * @return True if and only if the parent group was changed.
+	 */
+	static bool SetParent(GroupID group_id, GroupID parent_group_id);
+
+	/**
+	 * Get parent group of a group.
+	 * @param group_id The group to get the parent of.
+	 * @pre IsValidGroup(group_id).
+	 * @return The group id of the parent group.
+	 */
+	static GroupID GetParent(GroupID group_id);
+
+	/**
 	 * Enable or disable autoreplace protected. If the protection is
 	 *  enabled, global autoreplace won't affect vehicles in this group.
 	 * @param group_id The group to change the protection for.

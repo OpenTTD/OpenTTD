@@ -20,6 +20,8 @@
  * 1.9.0 is not yet released. The following changes are not set in stone yet.
  * API additions:
  * \li AIAirport::GetMonthlyMaintenanceCost
+ * \li AIGroup::SetParent
+ * \li AIGroup::GetParent
  *
  * Other changes:
  * \li AIBridge::GetName takes one extra parameter to refer the vehicle type
