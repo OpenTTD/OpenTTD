@@ -31,6 +31,8 @@ void SQAIGroup_Register(Squirrel *engine)
 	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::GetVehicleType,              "GetVehicleType",              2, ".i");
 	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::SetName,                     "SetName",                     3, ".i.");
 	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::GetName,                     "GetName",                     2, ".i");
+	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::SetParent,                   "SetParent",                   3, ".ii");
+	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::GetParent,                   "GetParent",                   2, ".i");
 	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::EnableAutoReplaceProtection, "EnableAutoReplaceProtection", 3, ".ib");
 	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::GetAutoReplaceProtection,    "GetAutoReplaceProtection",    2, ".i");
 	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::GetNumEngines,               "GetNumEngines",               3, ".ii");

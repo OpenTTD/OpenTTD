@@ -70,6 +70,22 @@
 	return GetString(STR_GROUP_NAME);
 }
 
+/* static */ bool ScriptGroup::SetParent(GroupID group_id, GroupID parent_group_id)
+{
+	EnforcePrecondition(false, IsValidGroup(group_id));
+	EnforcePrecondition(false, IsValidGroup(parent_group_id));
+
+	return ScriptObject::DoCommand(0, group_id | 1 << 16, parent_group_id, CMD_ALTER_GROUP);
+}
+
+/* static */ ScriptGroup::GroupID ScriptGroup::GetParent(GroupID group_id)
+{
+	EnforcePrecondition((ScriptGroup::GroupID)INVALID_GROUP, IsValidGroup(group_id));
+
+	const Group *g = ::Group::GetIfValid(group_id);
+	return (ScriptGroup::GroupID)g->parent;
+}
+
 /* static */ bool ScriptGroup::EnableAutoReplaceProtection(GroupID group_id, bool enable)
 {
 	EnforcePrecondition(false, IsValidGroup(group_id));
