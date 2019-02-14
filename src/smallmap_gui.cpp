@@ -1401,15 +1401,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 {
 	switch (widget) {
 		case WID_SM_MAP: { // Map window
-			/*
-			 * XXX: scrolling with the left mouse button is done by subsequently
-			 * clicking with the left mouse button; clicking once centers the
-			 * large map at the selected point. So by unclicking the left mouse
-			 * button here, it gets reclicked during the next inputloop, which
-			 * would make it look like the mouse is being dragged, while it is
-			 * actually being (virtually) clicked every inputloop.
-			 */
-			_left_button_clicked = false;
+			if (click_count > 0) this->mouse_capture_widget = widget;
 
 			const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
 			Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
