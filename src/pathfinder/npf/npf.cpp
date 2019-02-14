@@ -1163,13 +1163,12 @@ Track NPFShipChooseTrack(const Ship *v, bool &path_found)
 	AyStarUserData user = { v->owner, TRANSPORT_WATER, INVALID_RAILTYPES, ROADTYPES_NONE };
 	NPFFoundTargetData ftd = NPFRouteToStationOrTile(v->tile, trackdir, true, &fstd, &user);
 
-	assert(ftd.best_trackdir != INVALID_TRACKDIR);
-
 	/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
 	 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
 	 * we did not find our target, but ftd.best_trackdir contains the direction leading
 	 * to the tile closest to our target. */
 	path_found = (ftd.best_bird_dist == 0);
+	if (ftd.best_trackdir == INVALID_TRACKDIR) return INVALID_TRACK;
 	return TrackdirToTrack(ftd.best_trackdir);
 }
 
