@@ -799,7 +799,7 @@ struct MusicWindow : public Window {
 
 				byte *vol = (widget == WID_M_MUSIC_VOL) ? &_settings_client.music.music_vol : &_settings_client.music.effect_vol;
 
-				byte new_vol = x * 127 / this->GetWidget<NWidgetBase>(widget)->current_x;
+				byte new_vol = Clamp(x * 127 / (int)this->GetWidget<NWidgetBase>(widget)->current_x, 0, 127);
 				if (_current_text_dir == TD_RTL) new_vol = 127 - new_vol;
 				/* Clamp to make sure min and max are properly settable */
 				if (new_vol > 124) new_vol = 127;
@@ -810,7 +810,7 @@ struct MusicWindow : public Window {
 					this->SetDirty();
 				}
 
-				_left_button_clicked = false;
+				if (click_count > 0) this->mouse_capture_widget = widget;
 				break;
 			}
 
