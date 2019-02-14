@@ -418,6 +418,8 @@ struct YAPFSettings {
 	uint32 rail_longer_platform_per_tile_penalty;  ///< penalty for longer  station platform than train (per tile)
 	uint32 rail_shorter_platform_penalty;          ///< penalty for shorter station platform than train
 	uint32 rail_shorter_platform_per_tile_penalty; ///< penalty for shorter station platform than train (per tile)
+	uint32 ship_curve45_penalty;                   ///< penalty for 45-deg curve for ships
+	uint32 ship_curve90_penalty;                   ///< penalty for 90-deg curve for ships
 };
 
 /** Settings related to all pathfinders. */

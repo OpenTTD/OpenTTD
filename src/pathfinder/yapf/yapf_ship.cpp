@@ -169,6 +169,21 @@ protected:
 	}
 
 public:
+	inline int CurveCost(Trackdir td1, Trackdir td2)
+	{
+		assert(IsValidTrackdir(td1));
+		assert(IsValidTrackdir(td2));
+
+		if (HasTrackdir(TrackdirCrossesTrackdirs(td1), td2)) {
+			/* 90-deg curve penalty */
+			return Yapf().PfGetSettings().ship_curve90_penalty;
+		} else if (td2 != NextTrackdir(td1)) {
+			/* 45-deg curve penalty */
+			return Yapf().PfGetSettings().ship_curve45_penalty;
+		}
+		return 0;
+	}
+
 	/**
 	 * Called by YAPF to calculate the cost from the origin to the given node.
 	 *  Calculates only the cost of given node, adds it to the parent node cost
@@ -179,10 +194,7 @@ public:
 		/* base tile cost depending on distance */
 		int c = IsDiagonalTrackdir(n.GetTrackdir()) ? YAPF_TILE_LENGTH : YAPF_TILE_CORNER_LENGTH;
 		/* additional penalty for curves */
-		if (n.GetTrackdir() != NextTrackdir(n.m_parent->GetTrackdir())) {
-			/* new trackdir does not match the next one when going straight */
-			c += YAPF_TILE_LENGTH;
-		}
+		c += CurveCost(n.m_parent->GetTrackdir(), n.GetTrackdir());
 
 		/* Skipped tile cost for aqueducts. */
 		c += YAPF_TILE_LENGTH * tf->m_tiles_skipped;
