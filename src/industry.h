@@ -63,6 +63,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	byte was_cargo_delivered;           ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
 
 	PartOfSubsidyByte part_of_subsidy;  ///< NOSAVE: is this industry a source/destination of a subsidy?
+	StationList stations_near;          ///< NOSAVE: List of nearby stations.
 
 	OwnerByte founder;                  ///< Founder of the industry
 	Date construction_date;             ///< Date of the construction of the industry

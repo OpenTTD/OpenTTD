@@ -447,6 +447,22 @@ uint32 GetWorldPopulation()
 }
 
 /**
+ * Remove stations from nearby station list if a town is no longer in the catchment area of each.
+ * @param t Town to work on
+ */
+static void RemoveNearbyStations(Town *t)
+{
+	for (StationList::iterator it = t->stations_near.begin(); it != t->stations_near.end(); /* incremented inside loop */) {
+		const Station *st = *it;
+		if (!st->CatchmentCoversTown(t->index)) {
+			it = t->stations_near.erase(it);
+		} else {
+			++it;
+		}
+	}
+}
+
+/**
  * Helper function for house completion stages progression
  * @param tile TileIndex of the house (or parts of it) to "grow"
  */
@@ -599,7 +615,11 @@ static void TileLoop_Town(TileIndex tile)
 		ClearTownHouse(t, tile);
 
 		/* Rebuild with another house? */
-		if (GB(r, 24, 8) >= 12) BuildTownHouse(t, tile);
+		if (GB(r, 24, 8) < 12 || !BuildTownHouse(t, tile))
+		{
+			/* House wasn't replaced, so remove it */
+			if (!_generating_world) RemoveNearbyStations(t);
+		}
 	}
 
 	cur_company.Restore();
@@ -628,6 +648,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 	ChangeTownRating(t, -rating, RATING_HOUSE_MINIMUM, flags);
 	if (flags & DC_EXEC) {
 		ClearTownHouse(t, tile);
+		RemoveNearbyStations(t);
 	}
 
 	return cost;
@@ -2151,6 +2172,8 @@ static void MakeTownHouse(TileIndex t, Town *town, byte counter, byte stage, Hou
 	if (size & BUILDING_2_TILES_Y)   ClearMakeHouseTile(t + TileDiffXY(0, 1), town, counter, stage, ++type, random_bits);
 	if (size & BUILDING_2_TILES_X)   ClearMakeHouseTile(t + TileDiffXY(1, 0), town, counter, stage, ++type, random_bits);
 	if (size & BUILDING_HAS_4_TILES) ClearMakeHouseTile(t + TileDiffXY(1, 1), town, counter, stage, ++type, random_bits);
+
+	if (!_generating_world) FindStationsAroundTiles(TileArea(t, (size & BUILDING_2_TILES_X) ? 2 : 1, (size & BUILDING_2_TILES_Y) ? 2 : 1), &town->stations_near, false);
 }
 
 

@@ -573,15 +573,11 @@ bool CheckSubsidised(CargoID cargo_type, CompanyID company, SourceType src_type,
 			if (s->cargo_type != cargo_type || s->src_type != src_type || s->src != src) continue;
 			if (s->IsAwarded() && s->awarded != company) continue;
 
-			Rect rect = st->GetCatchmentRect();
-
-			for (int y = rect.top; y <= rect.bottom; y++) {
-				for (int x = rect.left; x <= rect.right; x++) {
-					TileIndex tile = TileXY(x, y);
-					if (!IsTileType(tile, MP_HOUSE)) continue;
-					const Town *t = Town::GetByTile(tile);
-					if (t->cache.part_of_subsidy & POS_DST) towns_near.Include(t);
-				}
+			BitmapTileIterator it(st->catchment_tiles);
+			for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
+				if (!IsTileType(tile, MP_HOUSE)) continue;
+				const Town *t = Town::GetByTile(tile);
+				if (t->cache.part_of_subsidy & POS_DST) towns_near.Include(t);
 			}
 			break;
 		}

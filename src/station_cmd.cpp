@@ -527,7 +527,7 @@ CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad)
  * @param always_accepted bitmask of cargo accepted by houses and headquarters; can be NULL
  * @param ind Industry associated with neutral station (e.g. oil rig) or NULL
  */
-CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, CargoTypes *always_accepted, const Industry *ind)
+CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, CargoTypes *always_accepted)
 {
 	CargoArray acceptance;
 	if (always_accepted != NULL) *always_accepted = 0;
@@ -551,16 +551,29 @@ CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, Cargo
 		for (int xc = x1; xc != x2; xc++) {
 			TileIndex tile = TileXY(xc, yc);
 
-			if (!_settings_game.station.serve_neutral_industries) {
-				if (ind != NULL) {
-					if (!IsTileType(tile, MP_INDUSTRY)) continue;
-					if (Industry::GetByTile(tile) != ind) continue;
-				} else {
-					if (IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile)->neutral_station != NULL) continue;
-				}
-			}
+			/* Ignore industry if it has a neutral station. */
+			if (!_settings_game.station.serve_neutral_industries && IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile)->neutral_station != NULL) continue;
+
 			AddAcceptedCargo(tile, acceptance, always_accepted);
 		}
+	}
+
+	return acceptance;
+}
+
+/**
+ * Get the acceptance of cargoes around the station in.
+ * @param st Station to get acceptance of.
+ * @param always_accepted bitmask of cargo accepted by houses and headquarters; can be NULL
+ */
+static CargoArray GetAcceptanceAroundStation(const Station *st, CargoTypes *always_accepted)
+{
+	CargoArray acceptance;
+	if (always_accepted != NULL) *always_accepted = 0;
+
+	BitmapTileIterator it(st->catchment_tiles);
+	for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
+		AddAcceptedCargo(tile, acceptance, always_accepted);
 	}
 
 	return acceptance;
@@ -579,14 +592,7 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 	/* And retrieve the acceptance. */
 	CargoArray acceptance;
 	if (!st->rect.IsEmpty()) {
-		acceptance = GetAcceptanceAroundTiles(
-			TileXY(st->rect.left, st->rect.top),
-			st->rect.right  - st->rect.left + 1,
-			st->rect.bottom - st->rect.top  + 1,
-			st->GetCatchmentRadius(),
-			&st->always_accepted,
-			_settings_game.station.serve_neutral_industries ? NULL : st->industry
-		);
+		acceptance = GetAcceptanceAroundStation(st, &st->always_accepted);
 	}
 
 	/* Adjust in case our station only accepts fewer kinds of goods */
@@ -736,7 +742,7 @@ static void DeleteStationIfEmpty(BaseStation *st)
 void Station::AfterStationTileSetChange(bool adding, StationType type)
 {
 	this->UpdateVirtCoord();
-	this->RecomputeIndustriesNear();
+	this->RecomputeCatchment();
 	DirtyCompanyInfrastructureWindows(this->owner);
 	if (adding) InvalidateWindowData(WC_STATION_LIST, this->owner, 0);
 
@@ -1643,7 +1649,7 @@ CommandCost CmdRemoveFromRailStation(TileIndex start, DoCommandFlag flags, uint3
 
 		if (st->train_station.tile == INVALID_TILE) SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_TRAINS);
 		st->MarkTilesDirty(false);
-		st->RecomputeIndustriesNear();
+		st->RecomputeCatchment();
 	}
 
 	/* Now apply the rail cost to the number that we deleted */
@@ -1726,7 +1732,7 @@ static CommandCost RemoveRailStation(TileIndex tile, DoCommandFlag flags)
 	Station *st = Station::GetByTile(tile);
 	CommandCost cost = RemoveRailStation(st, flags, _price[PR_CLEAR_STATION_RAIL]);
 
-	if (flags & DC_EXEC) st->RecomputeIndustriesNear();
+	if (flags & DC_EXEC) st->RecomputeCatchment();
 
 	return cost;
 }
@@ -3215,9 +3221,8 @@ void TriggerWatchedCargoCallbacks(Station *st)
 	if (cargoes == 0) return;
 
 	/* Loop over all houses in the catchment. */
-	Rect r = st->GetCatchmentRect();
-	TileArea ta(TileXY(r.left, r.top), TileXY(r.right, r.bottom));
-	TILE_AREA_LOOP(tile, ta) {
+	BitmapTileIterator it(st->catchment_tiles);
+	for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
 		if (IsTileType(tile, MP_HOUSE)) {
 			WatchedCargoCallback(tile, cargoes);
 		}
@@ -3623,7 +3628,7 @@ void IncreaseStats(Station *st, const Vehicle *front, StationID next_station_id)
 			 * As usage is not such an important figure anyway we just
 			 * ignore the additional cargo then.*/
 			IncreaseStats(st, v->cargo_type, next_station_id, v->refit_cap,
-				min(v->refit_cap, v->cargo.StoredCount()), EUM_INCREASE);
+					min(v->refit_cap, v->cargo.StoredCount()), EUM_INCREASE);
 		}
 	}
 }
@@ -3789,57 +3794,63 @@ CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	return CommandCost();
 }
 
+static void AddNearbyStationsByCatchment(TileIndex tile, StationList *stations, StationList &nearby)
+{
+	for (Station *st : nearby) {
+		if (st->TileIsInCatchment(tile)) stations->insert(st);
+	}
+}
+
 /**
  * Find all stations around a rectangular producer (industry, house, headquarter, ...)
  *
  * @param location The location/area of the producer
  * @param stations The list to store the stations in
+ * @param use_nearby Use nearby station list of industry/town associated with location.tile
  */
-void FindStationsAroundTiles(const TileArea &location, StationList *stations)
+void FindStationsAroundTiles(const TileArea &location, StationList *stations, bool use_nearby)
 {
-	/* area to search = producer plus station catchment radius */
-	uint max_rad = (_settings_game.station.modified_catchment ? MAX_CATCHMENT : CA_UNMODIFIED);
+	if (use_nearby) {
+		/* Industries and towns maintain a list of nearby stations */
+		if (IsTileType(location.tile, MP_INDUSTRY)) {
+			/* Industry nearby stations are already filtered by catchment. */
+			stations = &Industry::GetByTile(location.tile)->stations_near;
+			return;
+		} else if (IsTileType(location.tile, MP_HOUSE)) {
+			/* Town nearby stations need to be filtered per tile. */
+			assert(location.w == 1 && location.h == 1);
+			AddNearbyStationsByCatchment(location.tile, stations, Town::GetByTile(location.tile)->stations_near);
+			return;
+		}
+	}
 
+	/* Not using, or don't have a nearby stations list, so we need to scan. */
 	uint x = TileX(location.tile);
 	uint y = TileY(location.tile);
 
-	uint min_x = (x > max_rad) ? x - max_rad : 0;
-	uint max_x = x + location.w + max_rad;
-	uint min_y = (y > max_rad) ? y - max_rad : 0;
-	uint max_y = y + location.h + max_rad;
+	std::set<StationID> seen_stations;
 
-	IndustryID ind = IsTileType(location.tile, MP_INDUSTRY) ? GetIndustryIndex(location.tile) : INVALID_INDUSTRY;
+	/* Scan an area around the building covering the maximum possible station
+	 * to find the possible nearby stations. */
+	uint max_c = _settings_game.station.modified_catchment ? MAX_CATCHMENT : CA_UNMODIFIED;
+	TileArea ta(TileXY(max<int>(0, x - max_c), max<int>(0, y - max_c)), TileXY(min<int>(MapMaxX(), x + location.w + max_c), min<int>(MapMaxY(), y + location.h + max_c)));
+	TILE_AREA_LOOP(tile, ta) {
+		if (IsTileType(tile, MP_STATION)) seen_stations.insert(GetStationIndex(tile));
+	}
 
-	if (min_x == 0 && _settings_game.construction.freeform_edges) min_x = 1;
-	if (min_y == 0 && _settings_game.construction.freeform_edges) min_y = 1;
-	if (max_x >= MapSizeX()) max_x = MapSizeX() - 1;
-	if (max_y >= MapSizeY()) max_y = MapSizeY() - 1;
+	for (StationID stationid : seen_stations) {
+		Station *st = Station::GetIfValid(stationid);
+		if (st == NULL) continue; /* Waypoint */
 
-	for (uint cy = min_y; cy < max_y; cy++) {
-		for (uint cx = min_x; cx < max_x; cx++) {
-			TileIndex cur_tile = TileXY(cx, cy);
-			if (!IsTileType(cur_tile, MP_STATION)) continue;
+		/* Check if station is attached to an industry */
+		if (!_settings_game.station.serve_neutral_industries && st->industry != NULL) continue;
 
-			Station *st = Station::GetByTile(cur_tile);
-			/* st can be NULL in case of waypoints */
-			if (st == NULL) continue;
-
-			/* Check if neutral station is attached to us */
-			if (!_settings_game.station.serve_neutral_industries && st->industry != NULL && st->industry->index != ind) continue;
-
-			if (_settings_game.station.modified_catchment) {
-				int rad = st->GetCatchmentRadius();
-				int rad_x = cx - x;
-				int rad_y = cy - y;
-
-				if (rad_x < -rad || rad_x >= rad + location.w) continue;
-				if (rad_y < -rad || rad_y >= rad + location.h) continue;
+		/* Test if the tile is within the station's catchment */
+		TILE_AREA_LOOP(tile, location) {
+			if (st->TileIsInCatchment(tile)) {
+				stations->insert(st);
+				break;
 			}
-
-			/* Insert the station in the set. This will fail if it has
-			 * already been added.
-			 */
-			stations->insert(st);
 		}
 	}
 }
@@ -3950,8 +3961,8 @@ void BuildOilRig(TileIndex tile)
 	st->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
 
 	st->UpdateVirtCoord();
+	st->RecomputeCatchment();
 	UpdateStationAcceptance(st, false);
-	st->RecomputeIndustriesNear();
 }
 
 void DeleteOilRig(TileIndex tile)
@@ -3968,7 +3979,7 @@ void DeleteOilRig(TileIndex tile)
 	st->rect.AfterRemoveTile(st, tile);
 
 	st->UpdateVirtCoord();
-	st->RecomputeIndustriesNear();
+	st->RecomputeCatchment();
 	if (!st->IsInUse()) delete st;
 }
 

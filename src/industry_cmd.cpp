@@ -182,6 +182,10 @@ Industry::~Industry()
 
 	DeleteSubsidyWith(ST_INDUSTRY, this->index);
 	CargoPacket::InvalidateAllFrom(ST_INDUSTRY, this->index);
+
+	for (Station *st : this->stations_near) {
+		st->industries_near.erase(this);
+	}
 }
 
 /**
@@ -191,7 +195,6 @@ Industry::~Industry()
 void Industry::PostDestructor(size_t index)
 {
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 0);
-	Station::RecomputeIndustriesNearForAll();
 }
 
 
@@ -516,14 +519,6 @@ static bool TransportIndustryGoods(TileIndex tile)
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 	bool moved_cargo = false;
 
-	StationFinder stations(i->location);
-	StationList neutral;
-
-	if (i->neutral_station != NULL && !_settings_game.station.serve_neutral_industries) {
-		/* Industry has a neutral station. Use it and ignore any other nearby stations. */
-		neutral.insert(i->neutral_station);
-	}
-
 	for (uint j = 0; j < lengthof(i->produced_cargo_waiting); j++) {
 		uint cw = min(i->produced_cargo_waiting[j], 255);
 		if (cw > indspec->minimal_cargo && i->produced_cargo[j] != CT_INVALID) {
@@ -534,7 +529,7 @@ static bool TransportIndustryGoods(TileIndex tile)
 
 			i->this_month_production[j] += cw;
 
-			uint am = MoveGoodsToStation(i->produced_cargo[j], cw, ST_INDUSTRY, i->index, neutral.size() != 0 ? &neutral : stations.GetStations());
+			uint am = MoveGoodsToStation(i->produced_cargo[j], cw, ST_INDUSTRY, i->index, &i->stations_near);
 			i->this_month_transported[j] += am;
 
 			moved_cargo |= (am != 0);
@@ -1651,6 +1646,37 @@ static void AdvertiseIndustryOpening(const Industry *ind)
 }
 
 /**
+ * Populate an industry's list of nearby stations, and if it accepts any cargo, also
+ * add the industry to each station's nearby industry list.
+ * @param ind Industry
+ */
+static void PopulateStationsNearby(Industry *ind)
+{
+	if (ind->neutral_station != NULL && !_settings_game.station.serve_neutral_industries) {
+		/* Industry has a neutral station. Use it and ignore any other nearby stations. */
+		ind->stations_near.insert(ind->neutral_station);
+		ind->neutral_station->industries_near.clear();
+		ind->neutral_station->industries_near.insert(ind);
+		return;
+	}
+
+	/* Get our list of nearby stations. */
+	FindStationsAroundTiles(ind->location, &ind->stations_near, false);
+
+	/* Test if industry can accept cargo */
+	uint cargo_index;
+	for (cargo_index = 0; cargo_index < lengthof(ind->accepts_cargo); cargo_index++) {
+		if (ind->accepts_cargo[cargo_index] != CT_INVALID) break;
+	}
+	if (cargo_index >= lengthof(ind->accepts_cargo)) return;
+
+	/* Cargo is accepted, add industry to nearby stations nearby industry list. */
+	for (Station *st : ind->stations_near) {
+		st->industries_near.insert(ind);
+	}
+}
+
+/**
  * Put an industry on the map.
  * @param i       Just allocated poolitem, mostly empty.
  * @param tile    North tile of the industry.
@@ -1823,7 +1849,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	}
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 0);
 
-	Station::RecomputeIndustriesNearForAll();
+	if (!_generating_world) PopulateStationsNearby(i);
 }
 
 /**
@@ -2428,11 +2454,7 @@ static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accept
  */
 static int WhoCanServiceIndustry(Industry *ind)
 {
-	/* Find all stations within reach of the industry */
-	StationList stations;
-	FindStationsAroundTiles(ind->location, &stations);
-
-	if (stations.size() == 0) return 0; // No stations found at all => nobody services
+	if (ind->stations_near.size() == 0) return 0; // No stations found at all => nobody services
 
 	const Vehicle *v;
 	int result = 0;
@@ -2468,7 +2490,7 @@ static int WhoCanServiceIndustry(Industry *ind)
 				/* Same cargo produced by industry is dropped here => not serviced by vehicle v */
 				if ((o->GetUnloadType() & OUFB_UNLOAD) && !c_accepts) break;
 
-				if (stations.find(st) != stations.end()) {
+				if (ind->stations_near.find(st) != ind->stations_near.end()) {
 					if (v->owner == _local_company) return 2; // Company services industry
 					result = 1; // Competitor services industry
 				}
