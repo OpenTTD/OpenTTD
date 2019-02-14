@@ -510,9 +510,20 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, Tr
 	return track;
 }
 
-static inline TrackBits GetAvailShipTracks(TileIndex tile, DiagDirection dir)
+/**
+ * Get the available water tracks on a tile for a ship entering a tile.
+ * @param tile The tile about to enter.
+ * @param dir The entry direction.
+ * @param trackdir The trackdir the ship has on the old tile.
+ * @return The available trackbits on the next tile.
+ */
+static inline TrackBits GetAvailShipTracks(TileIndex tile, DiagDirection dir, Trackdir trackdir)
 {
-	return GetTileShipTrackStatus(tile) & DiagdirReachesTracks(dir);
+	TrackBits tracks = GetTileShipTrackStatus(tile) & DiagdirReachesTracks(dir);
+
+	if (_settings_game.pf.forbid_90_deg) tracks &= ~TrackCrossesTracks(TrackdirToTrack(trackdir));
+
+	return tracks;
 }
 
 static const byte _ship_subcoord[4][6][3] = {
@@ -699,7 +710,7 @@ static void ShipController(Ship *v)
 
 			DiagDirection diagdir = DiagdirBetweenTiles(gp.old_tile, gp.new_tile);
 			assert(diagdir != INVALID_DIAGDIR);
-			tracks = GetAvailShipTracks(gp.new_tile, diagdir);
+			tracks = GetAvailShipTracks(gp.new_tile, diagdir, v->GetVehicleTrackdir());
 			if (tracks == TRACK_BIT_NONE) goto reverse_direction;
 
 			/* Choose a direction, and continue if we find one */
