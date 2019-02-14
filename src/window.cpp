@@ -1846,7 +1846,7 @@ void Window::InitNested(WindowNumber window_number)
  * Empty constructor, initialization has been moved to #InitNested() called from the constructor of the derived class.
  * @param desc The description of the window.
  */
-Window::Window(WindowDesc *desc) : window_desc(desc), scrolling_scrollbar(-1)
+Window::Window(WindowDesc *desc) : window_desc(desc), mouse_capture_widget(-1)
 {
 }
 
@@ -1934,7 +1934,7 @@ static void DecreaseWindowCounters()
 					NWidgetScrollbar *sb = static_cast<NWidgetScrollbar*>(nwid);
 					if (sb->disp_flags & (ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN)) {
 						sb->disp_flags &= ~(ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN);
-						w->scrolling_scrollbar = -1;
+						w->mouse_capture_widget = -1;
 						sb->SetDirty(w);
 					}
 				}
@@ -2386,47 +2386,66 @@ static void StartWindowSizing(Window *w, bool to_left)
 }
 
 /**
- * handle scrollbar scrolling with the mouse.
+ * Handle scrollbar scrolling with the mouse.
+ * @param w window with active scrollbar.
+ */
+static void HandleScrollbarScrolling(Window *w)
+{
+	int i;
+	NWidgetScrollbar *sb = w->GetWidget<NWidgetScrollbar>(w->mouse_capture_widget);
+	bool rtl = false;
+
+	if (sb->type == NWID_HSCROLLBAR) {
+		i = _cursor.pos.x - _cursorpos_drag_start.x;
+		rtl = _current_text_dir == TD_RTL;
+	} else {
+		i = _cursor.pos.y - _cursorpos_drag_start.y;
+	}
+
+	if (sb->disp_flags & ND_SCROLLBAR_BTN) {
+		if (_scroller_click_timeout == 1) {
+			_scroller_click_timeout = 3;
+			sb->UpdatePosition(rtl == HasBit(sb->disp_flags, NDB_SCROLLBAR_UP) ? 1 : -1);
+			w->SetDirty();
+		}
+		return;
+	}
+
+	/* Find the item we want to move to and make sure it's inside bounds. */
+	int pos = min(max(0, i + _scrollbar_start_pos) * sb->GetCount() / _scrollbar_size, max(0, sb->GetCount() - sb->GetCapacity()));
+	if (rtl) pos = max(0, sb->GetCount() - sb->GetCapacity() - pos);
+	if (pos != sb->GetPosition()) {
+		sb->SetPosition(pos);
+		w->SetDirty();
+	}
+}
+
+/**
+ * Handle active widget (mouse draggin on widget) with the mouse.
  * @return State of handling the event.
  */
-static EventState HandleScrollbarScrolling()
+static EventState HandleActiveWidget()
 {
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		if (w->scrolling_scrollbar >= 0) {
+		if (w->mouse_capture_widget >= 0) {
 			/* Abort if no button is clicked any more. */
 			if (!_left_button_down) {
-				w->scrolling_scrollbar = -1;
+				w->mouse_capture_widget = -1;
 				w->SetDirty();
 				return ES_HANDLED;
 			}
 
-			int i;
-			NWidgetScrollbar *sb = w->GetWidget<NWidgetScrollbar>(w->scrolling_scrollbar);
-			bool rtl = false;
+			/* If cursor hasn't moved, there is nothing to do. */
+			if (_cursor.delta.x == 0 && _cursor.delta.y == 0) return ES_HANDLED;
 
-			if (sb->type == NWID_HSCROLLBAR) {
-				i = _cursor.pos.x - _cursorpos_drag_start.x;
-				rtl = _current_text_dir == TD_RTL;
+			/* Handle scrollbar internally, or dispatch click event */
+			WidgetType type = w->GetWidget<NWidgetBase>(w->mouse_capture_widget)->type;
+			if (type == NWID_VSCROLLBAR || type == NWID_HSCROLLBAR) {
+				HandleScrollbarScrolling(w);
 			} else {
-				i = _cursor.pos.y - _cursorpos_drag_start.y;
-			}
-
-			if (sb->disp_flags & ND_SCROLLBAR_BTN) {
-				if (_scroller_click_timeout == 1) {
-					_scroller_click_timeout = 3;
-					sb->UpdatePosition(rtl == HasBit(sb->disp_flags, NDB_SCROLLBAR_UP) ? 1 : -1);
-					w->SetDirty();
-				}
-				return ES_HANDLED;
-			}
-
-			/* Find the item we want to move to and make sure it's inside bounds. */
-			int pos = min(max(0, i + _scrollbar_start_pos) * sb->GetCount() / _scrollbar_size, max(0, sb->GetCount() - sb->GetCapacity()));
-			if (rtl) pos = max(0, sb->GetCount() - sb->GetCapacity() - pos);
-			if (pos != sb->GetPosition()) {
-				sb->SetPosition(pos);
-				w->SetDirty();
+				Point pt = { _cursor.pos.x - w->left, _cursor.pos.y - w->top };
+				w->OnClick(pt, w->mouse_capture_widget, 0);
 			}
 			return ES_HANDLED;
 		}
@@ -2845,7 +2864,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	if (VpHandlePlaceSizingDrag()  == ES_HANDLED) return;
 	if (HandleMouseDragDrop()      == ES_HANDLED) return;
 	if (HandleWindowDragging()     == ES_HANDLED) return;
-	if (HandleScrollbarScrolling() == ES_HANDLED) return;
+	if (HandleActiveWidget()       == ES_HANDLED) return;
 	if (HandleViewportScroll()     == ES_HANDLED) return;
 
 	HandleMouseOver();
