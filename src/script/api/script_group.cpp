@@ -28,9 +28,9 @@
 	return g != NULL && g->owner == ScriptObject::GetCompany();
 }
 
-/* static */ ScriptGroup::GroupID ScriptGroup::CreateGroup(ScriptVehicle::VehicleType vehicle_type)
+/* static */ ScriptGroup::GroupID ScriptGroup::CreateGroup(ScriptVehicle::VehicleType vehicle_type, GroupID parent_group_id)
 {
-	if (!ScriptObject::DoCommand(0, (::VehicleType)vehicle_type, INVALID_GROUP, CMD_CREATE_GROUP, NULL, &ScriptInstance::DoCommandReturnGroupID)) return GROUP_INVALID;
+	if (!ScriptObject::DoCommand(0, (::VehicleType)vehicle_type, parent_group_id, CMD_CREATE_GROUP, NULL, &ScriptInstance::DoCommandReturnGroupID)) return GROUP_INVALID;
 
 	/* In case of test-mode, we return GroupID 0 */
 	return (ScriptGroup::GroupID)0;

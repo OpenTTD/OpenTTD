@@ -574,7 +574,7 @@ function Regression::Group()
 	local vehicle = AIVehicle.BuildVehicle(10000, 116);
 	print("  AIVehicle.BuildVehicle(): " + vehicle);
 	print("  GetNumEngines():          " + AIGroup.GetNumEngines(AIGroup.GROUP_ALL, 116));
-	local group = AIGroup.CreateGroup(AIVehicle.VT_ROAD);
+	local group = AIGroup.CreateGroup(AIVehicle.VT_ROAD, AIGroup.GROUP_INVALID);
 	print("  CreateGroup():            " + group);
 	print("  MoveVehicle():            " + AIGroup.MoveVehicle(group, vehicle));
 	print("  GetNumEngines():          " + AIGroup.GetNumEngines(group, 116));

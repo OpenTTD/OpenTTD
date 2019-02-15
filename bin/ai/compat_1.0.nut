@@ -126,3 +126,10 @@ AIBridge.GetName <- function(bridge_id)
 {
 	return AIBridge._GetName(bridge_id, AIVehicle.VT_RAIL);
 }
+
+/* 1.9 adds parent_group_id to CreateGroup function */
+AIGroup._CreateGroup <- AIGroup.CreateGroup;
+AIGroup.CreateGroup <- function(vehicle_type)
+{
+	return AIGroup._CreateGroup(vehicle_type, AIGroup.GROUP_INVALID);
+}
