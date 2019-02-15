@@ -29,6 +29,7 @@
  *
  * Other changes:
  * \li AIBridge::GetName takes one extra parameter to refer the vehicle type
+ * \li AIGroup::CreateGroup gains parent_group_id parameter
  *
  * \b 1.8.0
  *

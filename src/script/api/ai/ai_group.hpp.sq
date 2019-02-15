@@ -26,7 +26,7 @@ void SQAIGroup_Register(Squirrel *engine)
 	SQAIGroup.DefSQConst(engine, ScriptGroup::GROUP_INVALID, "GROUP_INVALID");
 
 	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::IsValidGroup,                "IsValidGroup",                2, ".i");
-	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::CreateGroup,                 "CreateGroup",                 2, ".i");
+	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::CreateGroup,                 "CreateGroup",                 3, ".ii");
 	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::DeleteGroup,                 "DeleteGroup",                 2, ".i");
 	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::GetVehicleType,              "GetVehicleType",              2, ".i");
 	SQAIGroup.DefSQStaticMethod(engine, &ScriptGroup::SetName,                     "SetName",                     3, ".i.");

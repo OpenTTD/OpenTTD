@@ -42,11 +42,12 @@ public:
 	/**
 	 * Create a new group.
 	 * @param vehicle_type The type of vehicle to create a group for.
+	 * @param parent_group_id The parent group id to create this group under, INVALID_GROUP for top-level.
 	 * @return The GroupID of the new group, or an invalid GroupID when
 	 *  it failed. Check the return value using IsValidGroup(). In test-mode
 	 *  0 is returned if it was successful; any other value indicates failure.
 	 */
-	static GroupID CreateGroup(ScriptVehicle::VehicleType vehicle_type);
+	static GroupID CreateGroup(ScriptVehicle::VehicleType vehicle_type, GroupID parent_group_id);
 
 	/**
 	 * Delete the given group. When the deletion succeeds all vehicles in the
