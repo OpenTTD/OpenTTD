@@ -3054,7 +3054,14 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 			break;
 		case STATION_TRUCK:    str = STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA; break;
 		case STATION_BUS:      str = STR_LAI_STATION_DESCRIPTION_BUS_STATION; break;
-		case STATION_OILRIG:   str = STR_INDUSTRY_NAME_OIL_RIG; break;
+		case STATION_OILRIG: {
+			const Industry *i = Station::GetByTile(tile)->industry;
+			const IndustrySpec *is = GetIndustrySpec(i->type);
+			td->owner[0] = i->owner;
+			str = is->name;
+			if (is->grf_prop.grffile != NULL) td->grf = GetGRFConfig(is->grf_prop.grffile->grfid)->GetName();
+			break;
+		}
 		case STATION_DOCK:     str = STR_LAI_STATION_DESCRIPTION_SHIP_DOCK; break;
 		case STATION_BUOY:     str = STR_LAI_STATION_DESCRIPTION_BUOY; break;
 		case STATION_WAYPOINT: str = STR_LAI_STATION_DESCRIPTION_WAYPOINT; break;
