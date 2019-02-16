@@ -2009,9 +2009,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сърв
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компанията е защитена. Въведете парола
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Списък с играчите
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Наблюдавай
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Нова фирма
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Списък с играчите
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Наблюдавай
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Нова фирма
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Изгони
@@ -2026,7 +2026,6 @@ STR_NETWORK_CLIENT                                              :Клиент
 STR_NETWORK_SPECTATORS                                          :Наблюдатели
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Въведете количеството пари, което искате да дадете
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Зрител
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Незапазвай паролата

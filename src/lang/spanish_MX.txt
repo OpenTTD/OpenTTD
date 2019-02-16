@@ -2084,9 +2084,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Introducir contraseña
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Lista de clientes
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Observar
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nueva empresa
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de clientes
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Observar
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nueva empresa
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Expulsar
@@ -2101,7 +2101,6 @@ STR_NETWORK_CLIENT                                              :Cliente
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introducir la cantidad de dinero a dar
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Espectador
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No guardar la contraseña introducida

@@ -2062,9 +2062,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Verskaff
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Maatskappy is beskerm. Voer wagwoord in
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klient Lys
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Toeskou
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nuwe maatskapy
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klient Lys
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Toeskou
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nuwe maatskapy
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Skop
@@ -2079,7 +2079,6 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Aanskouers
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sleutel die bedrag geld in wat u wil gee
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Toeskouer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Moenie die ingesleutelde wagwoord bewaar nie

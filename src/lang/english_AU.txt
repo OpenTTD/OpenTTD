@@ -2036,9 +2036,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server i
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company is protected. Enter password
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Client list
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spectate
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}New company
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Client list
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spectate
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :New company
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kick
@@ -2053,7 +2053,6 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spectators
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Enter the amount of money you want to give
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spectator
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Do not save the entered password

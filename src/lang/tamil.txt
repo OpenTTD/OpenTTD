@@ -1811,9 +1811,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}சர�
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}நிற்வனம் காக்கப்பட்டுள்ளது. கடவுச்சொல்லினை இடவும்
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}விளையாடுவோர் பட்டியல்
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}கவனி
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}புதிய நிறுவனம்
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :விளையாடுவோர் பட்டியல்
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :கவனி
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :புதிய நிறுவனம்
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :உதை
@@ -1828,7 +1828,6 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :கவனிப்பவர்கள்
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}கொடுக்கப்படும் பணத்தின் அளவினை இடவும்
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}பார்வையாளர்
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}கடவுச்சொல்லினை நினைவில் வைத்திருக்காதே

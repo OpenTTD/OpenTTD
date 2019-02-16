@@ -2156,9 +2156,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server j
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Společnost je chráněná. Napiš heslo
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Seznam hráčů
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Pozorovat
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nová společnost
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Seznam hráčů
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Pozorovat
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nová společnost
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Vyhodit
@@ -2173,7 +2173,6 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Pozorovatelé
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Napiš částku, kterou chceš poskytnout
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Pozorovatel
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neukládat zadané heslo

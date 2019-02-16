@@ -2061,9 +2061,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}伺服�
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}公司受保護，輸入密碼
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}用戶端清單
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}旁觀者
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新公司
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :用戶端清單
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :旁觀者
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :新公司
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :踢除
@@ -2078,7 +2078,6 @@ STR_NETWORK_CLIENT                                              :用戶端
 STR_NETWORK_SPECTATORS                                          :旁觀者
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}請輸入你要付出多少資金
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}旁觀者
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}不要儲存所輸入的密碼

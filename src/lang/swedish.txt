@@ -2083,9 +2083,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servern 
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Företaget är skyddat. Ange lösenord
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klientlista
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Åskåda
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nytt företag
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klientlista
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Åskåda
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nytt företag
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kasta ut
@@ -2100,7 +2100,6 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Åskådare
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv in mängd pengar som du vill ge
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Åskådare
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Spara inte det inmatade lösenordet

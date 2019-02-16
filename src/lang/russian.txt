@@ -2235,9 +2235,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Серв
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компания защищена. Введите пароль.
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Список клиентов
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Наблюдать
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Новая компания
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Список клиентов
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Наблюдать
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Новая компания
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Отключить
@@ -2252,7 +2252,6 @@ STR_NETWORK_CLIENT                                              :Клиент
 STR_NETWORK_SPECTATORS                                          :Наблюдатели
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введите сумму денег, которую вы хотите передать
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Наблюдатель
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не сохранять пароль

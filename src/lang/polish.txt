@@ -2461,9 +2461,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serwer j
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma jest chroniona. Wprowadź hasło
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Lista klientów
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Obserwuj
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nowa firma
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista klientów
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Obserwuj
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nowa firma
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Wyrzuć
@@ -2478,7 +2478,6 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Widzowie
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Wprowadź ilość pieniędzy, które chcesz przekazać
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Obserwator
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nie zapisuj podanego hasła

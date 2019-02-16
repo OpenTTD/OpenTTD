@@ -2065,9 +2065,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Sunucu k
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Şirket korumalı. Parola girin
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Oyuncu listesi
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Gözlemle
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Yeni şirket
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Oyuncu listesi
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Gözlemle
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Yeni şirket
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :At
@@ -2082,7 +2082,6 @@ STR_NETWORK_CLIENT                                              :İstemci
 STR_NETWORK_SPECTATORS                                          :İzleyiciler
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Vermek istediğiniz para miktarını girin
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}İzleyici
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Girilen parolayı kaydetme

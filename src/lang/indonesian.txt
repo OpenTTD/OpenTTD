@@ -2071,9 +2071,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server t
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Perusahaan terkunci, masukkan kata kunci
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Daftar klien
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Menonton
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Buat Perusahaan
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Daftar klien
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Menonton
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Buat Perusahaan
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Usir
@@ -2088,7 +2088,6 @@ STR_NETWORK_CLIENT                                              :Klien
 STR_NETWORK_SPECTATORS                                          :Penonton
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Masukkan jumlah uang yang akan diberikan
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Pengamat
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Jangan simpan kata sandi yang telah dimasukkan

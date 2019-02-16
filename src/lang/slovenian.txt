@@ -2215,9 +2215,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Strežni
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Podjetje je zaščiteno. Vnesi geslo
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Seznam gostov
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Opazuj
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Novo podjetje
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Seznam gostov
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Opazuj
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Novo podjetje
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Brcni
@@ -2232,7 +2232,6 @@ STR_NETWORK_CLIENT                                              :Gost
 STR_NETWORK_SPECTATORS                                          :Gledalci
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Vpiši znesek denarja za darovanje
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Gledalec
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne shrani vnešenega gesla

@@ -2061,9 +2061,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tá an f
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tá an chuideachta faoi chosaint. Iontráil pasfhocal
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Liosta na gcliant
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Féach air
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Cuideachta nua
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liosta na gcliant
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Féach air
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Cuideachta nua
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Ciceáil
@@ -2078,7 +2078,6 @@ STR_NETWORK_CLIENT                                              :Cliant
 STR_NETWORK_SPECTATORS                                          :Féachadóirí
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Iontráil an méid airgid is mian leat a thabhairt
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Féachadóir
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ná sábháil an pasfhocal a iontráladh

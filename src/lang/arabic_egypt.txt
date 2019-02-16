@@ -1726,9 +1726,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}الخا
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}الشركه محميه. من فضلك ادخل كلمه المرور
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}قائمة العملاء
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}شاهد
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}شركة جديدة
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :قائمة العملاء
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :شاهد
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :شركة جديدة
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :اطرد

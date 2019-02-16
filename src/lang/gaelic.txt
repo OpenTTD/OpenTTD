@@ -2266,9 +2266,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tha am f
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tha a' chompanaidh dìonta. Cuir a-steach facal-faire
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Liosta nan cliant
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Coimhead air
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Companaidh ùr
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liosta nan cliant
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Coimhead air
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Companaidh ùr
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Thoir a bhròg dha
@@ -2283,7 +2283,6 @@ STR_NETWORK_CLIENT                                              :Cliant
 STR_NETWORK_SPECTATORS                                          :Amharcaichean
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Cuir a-steach na tha thu airson toirt seachad
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Amharc
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Na sàbhail am facal-faire air a chur a-steach

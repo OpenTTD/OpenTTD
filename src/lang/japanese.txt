@@ -2061,9 +2061,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}この�
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}この会社は保護されています。経営に参画するにはパスワードを入力してください
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}クライアントリスト
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}観覧モード
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新会社
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :クライアントリスト
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :観覧モード
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :新会社
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :追放
@@ -2078,7 +2078,6 @@ STR_NETWORK_CLIENT                                              :クライアン
 STR_NETWORK_SPECTATORS                                          :観覧者
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}送りたい金額を入力
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}観覧者
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}入力したパスワードを保存しない
