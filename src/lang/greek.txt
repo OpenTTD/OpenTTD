@@ -2186,9 +2186,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Η πρ�
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Η εταιρεία προστατεύεται από κωδικό. Εισάγετε κωδικό
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Λίστα συμμετεχόντων
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Παρακολούθηση
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Νέα εταιρεία
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Λίστα συμμετεχόντων
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Παρακολούθηση
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Νέα εταιρεία
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Εκδίωξη
@@ -2203,7 +2203,6 @@ STR_NETWORK_CLIENT                                              :Πελάτης
 STR_NETWORK_SPECTATORS                                          :Θεατές
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Εισάγετε το πόσο των χρημάτων που θέλετε να δώσετε
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Θεατής
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Να μην αποθηκευτεί ο κωδικός

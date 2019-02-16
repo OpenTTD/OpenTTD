@@ -2083,9 +2083,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveren
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Selskabet er beskyttet. Indtast kodeord
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klient liste
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Tilslut som tilskuer
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nyt firma
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klient liste
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Tilslut som tilskuer
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nyt firma
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Smid ud
@@ -2100,7 +2100,6 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Tilskuere
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv beløbet du vil give
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Tilskuer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Gem ikke den indtastede adgangskode

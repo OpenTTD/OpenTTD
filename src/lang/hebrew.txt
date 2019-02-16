@@ -2087,9 +2087,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}שרת �
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}חברה מוגנת. הזן סיסמה
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}רשימת משתתפים
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}צפה
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}חברה חדשה
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :רשימת משתתפים
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :צפה
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :חברה חדשה
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :בעט
@@ -2104,7 +2104,6 @@ STR_NETWORK_CLIENT                                              :לקוח
 STR_NETWORK_SPECTATORS                                          :צופים
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}הכנס סכום כסף שברצונך לתת
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}צופה
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}בטל שמירת הסיסמה החדשה

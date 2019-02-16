@@ -2262,9 +2262,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servatru
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Societas tuta est. Tesseram inscribe
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Index clientum
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spectare
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Societas Nova
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Index clientum
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spectare
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Societas Nova
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Dimittere
@@ -2279,7 +2279,6 @@ STR_NETWORK_CLIENT                                              :Cliens
 STR_NETWORK_SPECTATORS                                          :Spectatores
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Inscribe quantitatem pecuniae dandam
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spectator
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Relinquere tesseram inscriptam

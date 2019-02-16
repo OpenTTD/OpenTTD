@@ -1984,9 +1984,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tenaren 
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firmaet er beskytta. Skriv inn passord
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Liste over klientar
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Vær tilskodar
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nytt firma
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liste over klientar
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Vær tilskodar
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nytt firma
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kast ut
@@ -2001,7 +2001,6 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Tilskodarar
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv inn kor mykje pengar du ønskar å gje
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Tilskodar
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ikkje lagre passordet

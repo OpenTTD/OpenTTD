@@ -2064,9 +2064,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Mae'r gw
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Mae'r cwmni wedi'i ddiogelu. rhowch y cyfrinair.
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Rhestr Cleientiaid
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Gwylio
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Cwmni newydd
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Rhestr Cleientiaid
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Gwylio
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Cwmni newydd
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Cicio
@@ -2081,7 +2081,6 @@ STR_NETWORK_CLIENT                                              :Gwestai
 STR_NETWORK_SPECTATORS                                          :Gwylwyr
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Nodwch faint o arian yr hoffech chi ei roi
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Gwyliwr
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Peidio cadw'r cyfrinair a roddwyd

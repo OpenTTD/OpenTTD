@@ -2077,9 +2077,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server y
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Công ty yêu cầu xác thực. Nhập mật khẩu
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Danh sách máy trạm
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Xem
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Công ty mới
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Danh sách máy trạm
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Xem
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Công ty mới
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Đá
@@ -2094,7 +2094,6 @@ STR_NETWORK_CLIENT                                              :Máy trạm
 STR_NETWORK_SPECTATORS                                          :Người xem
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Nhập số tiền muốn cho đi
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Người xem
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Không được ghi mật khẩu đã nhập

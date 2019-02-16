@@ -2128,9 +2128,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}A szerve
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A vállalat jelszóval van védve. Írd be
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Kliens lista
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Megfigyelés
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Új vállalat
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Kliens lista
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Megfigyelés
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Új vállalat
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kirúgás
@@ -2145,7 +2145,6 @@ STR_NETWORK_CLIENT                                              :Kliens
 STR_NETWORK_SPECTATORS                                          :Megfigyelők
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Add meg a küldeni kívánt pénz mennyiségét
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Megfigyelő
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne mentsd el a megadott jelszót

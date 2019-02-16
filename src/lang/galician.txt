@@ -2065,9 +2065,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}O servid
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A compañía está protexida. Introduce o contrasinal
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Lista de clientes
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Observar
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova compañía
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de clientes
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Observar
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nova compañía
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Chimpar
@@ -2082,7 +2082,6 @@ STR_NETWORK_CLIENT                                              :Cliente
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introduce a cantidade de cartos que queres dar
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Espectador
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Non grava-lo contrasinal introducido

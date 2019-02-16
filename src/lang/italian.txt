@@ -2105,9 +2105,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server p
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Compagnia protetta. Inserire la password
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Elenco dei client
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Diventa spettatore
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nuova compagnia
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Elenco dei client
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Diventa spettatore
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nuova compagnia
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Espelli
@@ -2122,7 +2122,6 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spettatori
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Inserire la quantità di denaro da donare
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spettatore
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Non salvare la password inserita

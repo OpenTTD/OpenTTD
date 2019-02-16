@@ -2124,9 +2124,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server o
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Ettevõte on kaitstud. Sisesta salasõna
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klientide nimekiri
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Jälgi
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Uus ettevõte
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klientide nimekiri
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Jälgi
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Uus ettevõte
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Viska välja
@@ -2141,7 +2141,6 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Vaatlejad
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sisesta summa mida anda
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Vaatleja
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Sisestatud salasõna ei salvestata

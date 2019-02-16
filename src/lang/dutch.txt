@@ -2083,9 +2083,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server i
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Bedrijf is beveiligd. Voer wachtwoord in
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Spelerslijst
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Kijk toe
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nieuw bedrijf
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spelerslijst
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Kijk toe
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nieuw bedrijf
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Gooi uit het spel
@@ -2100,7 +2100,6 @@ STR_NETWORK_CLIENT                                              :Speler
 STR_NETWORK_SPECTATORS                                          :Toeschouwers
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Voer de hoeveelheid geld die je wilt geven in
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Toeschouwer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ingevoerd wachtwoord niet opslaan

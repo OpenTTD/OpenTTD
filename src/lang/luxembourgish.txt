@@ -2064,9 +2064,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server a
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma ass geschützt. Passwuert aginn
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Spillerlëscht
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Nokucken
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nei Firma
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spillerlëscht
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Nokucken
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nei Firma
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kicken
@@ -2081,7 +2081,6 @@ STR_NETWORK_CLIENT                                              :Spiller
 STR_NETWORK_SPECTATORS                                          :Zuschauer
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Gëff de Betrag un deens du wëlls ginn
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Zuschauer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Späicher d'Passwuert net

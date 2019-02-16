@@ -2189,9 +2189,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Серв
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компанія захищена паролем. Введіть пароль
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Список клієнтів
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Спостерігати
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Нова компанія
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Список клієнтів
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Спостерігати
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Нова компанія
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Відключити гравця
@@ -2206,7 +2206,6 @@ STR_NETWORK_CLIENT                                              :Клієнт
 STR_NETWORK_SPECTATORS                                          :Спостерігачі
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введіть суму грошей, яку Ви хочете віддати
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Глядач
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не запам'ятовувати введений пароль

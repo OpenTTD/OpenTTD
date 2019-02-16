@@ -2010,9 +2010,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}เซ�
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}บริษัทมีการป้องกัน. กรุณากรอกพาสเวิร์ด
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}รายการลูกข่าย
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}ผู้ชม
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}บริษัทใหม่
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :รายการลูกข่าย
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :ผู้ชม
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :บริษัทใหม่
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :เตะ
@@ -2027,7 +2027,6 @@ STR_NETWORK_CLIENT                                              :ลูกข่
 STR_NETWORK_SPECTATORS                                          :ผู้ชม
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}กรอกจำนวนเงินที่ต้องการจะให้
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}ผู้สังเกตุการณ์
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}ไม่ทำการเก็บพาสเวิร์ดที่กรอกไว้แล้ว

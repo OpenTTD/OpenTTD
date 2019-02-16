@@ -2034,9 +2034,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server p
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Companie protejată. Introdu parola
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Lista de clienţi
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Observă
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Companie nouă
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de clienţi
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Observă
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Companie nouă
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Dă afară
@@ -2051,7 +2051,6 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spectatori
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introduceţi suma pe care o oferiţi
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spectator
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Parola introdusă nu se va salva

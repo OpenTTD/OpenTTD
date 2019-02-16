@@ -2007,9 +2007,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveris
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Uzņēmums ir aizsargāts. Ievadiet paroli
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Spēlētāju saraksts
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Skatīt
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Jauns uzņēmums
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spēlētāju saraksts
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Skatīt
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Jauns uzņēmums
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Izmest
@@ -2024,7 +2024,6 @@ STR_NETWORK_CLIENT                                              :Spēlētājs
 STR_NETWORK_SPECTATORS                                          :Novērotāji
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Ievadiet cik daudz naudas vēlaties dot
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Novērotājs
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nesaglabāt ievadīto paroli

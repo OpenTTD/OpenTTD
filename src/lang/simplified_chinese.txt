@@ -2071,9 +2071,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}服务�
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}公司需要密码：
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}客户端列表
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}旁观
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新公司
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :客户端列表
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :旁观
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :新公司
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :踢出
@@ -2088,7 +2088,6 @@ STR_NETWORK_CLIENT                                              :客户端
 STR_NETWORK_SPECTATORS                                          :旁观者
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}请输入您想赠与的资金数
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}旁观者
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}不保存所输入的密码

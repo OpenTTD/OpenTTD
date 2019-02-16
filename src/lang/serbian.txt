@@ -2268,9 +2268,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server j
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Preduzeće je zaštićeno. Unesite lozinku
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Spisak klijenata
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Praćenje
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Novo preduzeće
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spisak klijenata
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Praćenje
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Novo preduzeće
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Izbaci
@@ -2285,7 +2285,6 @@ STR_NETWORK_CLIENT                                              :Igrač
 STR_NETWORK_SPECTATORS                                          :Posmatrači
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Unesite svotu novca koju želite dati
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Posmatrač
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Otkaži unetu lozinku

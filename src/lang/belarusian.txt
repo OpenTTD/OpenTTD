@@ -2387,9 +2387,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сэрв
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Кампанія абароненая. Увядзіце пароль
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Сьпіс кліентаў
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Назіраць
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Новая кампанія
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Сьпіс кліентаў
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Назіраць
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Новая кампанія
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Выкінуць гульца
@@ -2404,7 +2404,6 @@ STR_NETWORK_CLIENT                                              :Кліент
 STR_NETWORK_SPECTATORS                                          :Назіральнікі
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Увядзіце суму грошай, якую вы хочаце перадаць
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Назіральнік
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не захоўваць уведзены пароль

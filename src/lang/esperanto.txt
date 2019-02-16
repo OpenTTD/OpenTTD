@@ -1713,9 +1713,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servilo 
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Kompanio estas protektata. Enigu pasvorton
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klientlisto
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spekti
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova kompanio
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klientlisto
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spekti
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nova kompanio
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Forbatu

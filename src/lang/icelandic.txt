@@ -1918,9 +1918,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Þjónn 
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Fyrirtæki er varið. Sláðu inn lykilorð
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Listi yfir leikmenn
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Fylgjast með
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nýtt fyrirtæki
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yfir leikmenn
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Fylgjast með
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nýtt fyrirtæki
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Sparka
@@ -1935,7 +1935,6 @@ STR_NETWORK_CLIENT                                              :Notandi
 STR_NETWORK_SPECTATORS                                          :Áhorfendur
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sláðu inn peningaupphæð sem þú vilt láta af hendi rakna
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Áhorfandi
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ekki vista innslegið lykilorð
