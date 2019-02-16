@@ -39,6 +39,7 @@
 #include "framerate_type.h"
 #include "network/network_func.h"
 #include "guitimer_func.h"
+#include "news_func.h"
 
 #include "safeguards.h"
 
@@ -3368,6 +3369,17 @@ restart_search:
 			goto restart_search;
 		}
 	}
+}
+
+/**
+ * Delete all messages and their corresponding window (if any).
+ */
+void DeleteAllMessages()
+{
+	InitNewsItemStructs();
+	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED); // invalidate the statusbar
+	InvalidateWindowData(WC_MESSAGE_HISTORY, 0); // invalidate the message history
+	DeleteWindowById(WC_NEWS_WINDOW, 0); // close newspaper or general message window if shown
 }
 
 /**

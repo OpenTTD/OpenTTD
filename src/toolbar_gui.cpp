@@ -1023,7 +1023,7 @@ static CallBackFunction MenuClickMusicWindow(int index)
 
 static CallBackFunction ToolbarNewspaperClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_MESSAGES, STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT, 2);
+	PopupMainToolbMenu(w, WID_TN_MESSAGES, STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT, 3);
 	return CBF_NONE;
 }
 
@@ -1038,6 +1038,7 @@ static CallBackFunction MenuClickNewspaper(int index)
 	switch (index) {
 		case 0: ShowLastNewsMessage(); break;
 		case 1: ShowMessageHistory();  break;
+		case 2: DeleteAllMessages();   break;
 	}
 	return CBF_NONE;
 }
