@@ -466,6 +466,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sound/music
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Last message/news report
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Message history
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Delete all messages
 ############ range ends here
 
 ############ range for about menu starts
