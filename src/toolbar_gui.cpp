@@ -218,7 +218,6 @@ static const int CTMN_SPECTATOR   = -4; ///< Show a company window as spectator
  * @param w The toolbar window.
  * @param widget The button widget id.
  * @param grey A bitbask of which items to mark as disabled.
- * @param include_spectator If true, a spectator option is included in the list.
  */
 static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 {
@@ -254,7 +253,7 @@ static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 		*list->Append() = new DropDownListCompanyItem(c, false, HasBit(grey, c));
 	}
 
-	PopupMainToolbMenu(w, widget, list, _local_company == COMPANY_SPECTATOR ? CTMN_CLIENT_LIST : (int)_local_company);
+	PopupMainToolbMenu(w, widget, list, _local_company == COMPANY_SPECTATOR ? (widget == WID_TN_COMPANIES ? CTMN_CLIENT_LIST : CTMN_SPECTATOR) : (int)_local_company);
 }
 
 
