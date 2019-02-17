@@ -97,7 +97,7 @@
 #include "safeguards.h"
 
 Point _tile_fract_coords;
-
+TownList _towns_sign_filter;
 
 static const int MAX_TILE_EXTENT_LEFT   = ZOOM_LVL_BASE * TILE_PIXELS;                     ///< Maximum left   extent of tile relative to north corner.
 static const int MAX_TILE_EXTENT_RIGHT  = ZOOM_LVL_BASE * TILE_PIXELS;                     ///< Maximum right  extent of tile relative to north corner.
@@ -1219,7 +1219,14 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 	if (!HasBit(_display_opt, DO_SHOW_TOWN_NAMES) || _game_mode == GM_MENU) return;
 
 	const Town *t;
-	FOR_ALL_TOWNS(t) {
+
+	int sign_height = ScaleByZoom(VPSM_TOP + FONT_HEIGHT_NORMAL + VPSM_BOTTOM, dpi->zoom);
+
+	for (uint index = _towns_sign_filter.FirstTownPosAfterYCoordinate(dpi->top - sign_height);
+		index < _towns_sign_filter.Size() && Town::Get(_towns_sign_filter.towns[index])->cache.sign.top < (dpi->top + dpi->height);
+		index++) {
+
+		t = Town::Get(_towns_sign_filter.towns[index]);
 		ViewportAddString(dpi, ZOOM_LVL_OUT_16X, &t->cache.sign,
 				_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN,
 				STR_VIEWPORT_TOWN_TINY_WHITE, STR_VIEWPORT_TOWN_TINY_BLACK,

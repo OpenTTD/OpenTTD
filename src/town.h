@@ -19,6 +19,7 @@
 #include "cargotype.h"
 #include "tilematrix_type.hpp"
 #include <list>
+#include <vector>
 
 template <typename T>
 struct BuildingCounts {
@@ -294,5 +295,40 @@ static inline uint16 TownTicksToGameTicks(uint16 ticks) {
 
 
 extern CargoTypes _town_cargoes_accepted;
+
+/** Data structure with cached data of towns. */
+/* ToDo: documentation */
+struct TownList {
+	std::vector<TownID> towns;
+
+private:
+	bool needs_resort; ///<
+	bool initialized;  ///<
+	uint size;         ///<
+
+	bool Sort();
+
+public:
+	TownList() : needs_resort(true), initialized(false), size(0) { }
+
+	void Uninitialize();
+
+	static bool CompareBySignTopPosition(TownID index_a, TownID index_b) {
+		return (Town::Get(index_a)->cache.sign.top < Town::Get(index_b)->cache.sign.top);
+	}
+
+	static bool CompareSignTopPositionWithValue(TownID index, int32 y) {
+		return (Town::Get(index)->cache.sign.top < y);
+	}
+
+	inline uint Size() {
+		return this->size;
+	}
+
+	bool Build();
+	void AddTown(TownID index);
+	void RemoveTown(TownID index);
+	uint FirstTownPosAfterYCoordinate(int32 y);
+};
 
 #endif /* TOWN_H */

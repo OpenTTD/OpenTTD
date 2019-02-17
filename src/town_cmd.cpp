@@ -46,6 +46,7 @@
 #include "object_base.h"
 #include "ai/ai.hpp"
 #include "game/game.hpp"
+#include <algorithm>
 
 #include "table/strings.h"
 #include "table/town_land.h"
@@ -1660,6 +1661,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	UpdateTownGrowthRate(t);
 	UpdateTownMaxPass(t);
 	UpdateAirportsNoise();
+	_towns_sign_filter.AddTown(t->index);
 }
 
 /**
@@ -2778,7 +2780,10 @@ CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	}
 
 	/* The town destructor will delete the other things related to the town. */
-	if (flags & DC_EXEC) delete t;
+	if (flags & DC_EXEC) {
+		_towns_sign_filter.RemoveTown(t->index);
+		delete t;
+	}
 
 	return CommandCost();
 }
@@ -3558,4 +3563,81 @@ void ResetHouses()
 
 	/* Reset any overrides that have been set. */
 	_house_mngr.ResetOverride();
+}
+
+void TownList::Uninitialize() {
+	this->needs_resort = true;
+	this->initialized = false;
+	this->size = 0;
+}
+
+bool TownList::Build() {
+	if (!HasBit(_display_opt, DO_SHOW_TOWN_NAMES) || _game_mode == GM_MENU) return false;
+
+	towns.clear();
+	towns.reserve(Town::GetNumItems());
+
+	const Town *t;
+
+	FOR_ALL_TOWNS(t) {
+		this->towns.push_back(t->index);
+	}
+
+	this->size = this->towns.size();
+	this->initialized = true;
+	this->needs_resort = true;
+
+	return true;
+}
+
+/**
+ * Sort towns by the Y coordinate of the town sign.
+ * Ties are not handled, as order is not important in case of
+ * equal Y coordinates.
+ */
+bool TownList::Sort() {
+	if (!this->initialized) {
+		if (!this->Build()) return false;
+	}
+
+	std::sort(this->towns.begin(), this->towns.end(), CompareBySignTopPosition);
+	this->needs_resort = false;
+
+	return true;
+}
+
+void TownList::AddTown(TownID index) {
+	if (!this->initialized) return;
+
+	this->towns.push_back(index);
+	this->size = this->towns.size();
+	this->needs_resort = true;
+}
+
+/**
+ * Removes a town form the list. Checks last added element first, as CreateRandomTown
+ * delets the last added town, only manual deletion can remove any town.
+ */
+void TownList::RemoveTown(TownID index) {
+	if (!this->initialized) return;
+
+	if (this->towns.back() == index) {
+		this->towns.erase(this->towns.end() - 1);
+		this->size = this->towns.size();
+	} else {
+		this->towns.erase(std::remove(this->towns.begin(), this->towns.end(), index), this->towns.end());
+		this->size = this->towns.size();
+	}
+}
+
+// Can return with index = size, where towns[index] is undefined!
+uint TownList::FirstTownPosAfterYCoordinate(int32 y) {
+	if (this->needs_resort) {
+		if (!this->Sort()) return 0;
+	}
+
+	std::vector<TownID>::iterator it;
+	it = std::lower_bound(this->towns.begin(), this->towns.end(), y, CompareSignTopPositionWithValue);
+
+	return it - this->towns.begin();
 }

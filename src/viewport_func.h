@@ -17,6 +17,7 @@
 #include "window_type.h"
 #include "tile_map.h"
 #include "station_type.h"
+#include "town.h"
 
 static const int TILE_HEIGHT_STEP = 50; ///< One Z unit tile height difference is displayed as 50m.
 
@@ -77,6 +78,7 @@ bool ScrollMainWindowTo(int x, int y, int z = -1, bool instant = false);
 void UpdateAllVirtCoords();
 
 extern Point _tile_fract_coords;
+extern TownList _towns_sign_filter;
 
 void MarkTileDirtyByTile(TileIndex tile, int bridge_level_offset, int tile_height_override);
 
