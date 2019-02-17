@@ -149,7 +149,7 @@ namespace SQConvert {
 
 		Array *arr = (Array*)MallocT<byte>(sizeof(Array) + sizeof(int32) * data.size());
 		arr->size = data.size();
-		memcpy(arr->array, data.Begin(), sizeof(int32) * data.size());
+		memcpy(arr->array, data.data(), sizeof(int32) * data.size());
 
 		ptr->push_back(arr);
 		return arr;

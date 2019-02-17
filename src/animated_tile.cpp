@@ -53,8 +53,8 @@ void AnimateAnimatedTiles()
 {
 	PerformanceAccumulator framerate(PFE_GL_LANDSCAPE);
 
-	const TileIndex *ti = _animated_tiles.Begin();
-	while (ti < _animated_tiles.End()) {
+	const TileIndex *ti = _animated_tiles.data();
+	while (ti < _animated_tiles.data() + _animated_tiles.size()) {
 		const TileIndex curr = *ti;
 		AnimateTile(curr);
 		/* During the AnimateTile call, DeleteAnimatedTile could have been called,

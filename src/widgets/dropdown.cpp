@@ -174,8 +174,7 @@ struct DropdownWindow : Window {
 
 		/* Total length of list */
 		int list_height = 0;
-		for (const DropDownListItem * const *it = list->Begin(); it != list->End(); ++it) {
-			const DropDownListItem *item = *it;
+		for (const DropDownListItem *item : *list) {
 			list_height += item->Height(items_width);
 		}
 
@@ -230,13 +229,10 @@ struct DropdownWindow : Window {
 		int width = nwi->current_x - 4;
 		int pos   = this->vscroll->GetPosition();
 
-		const DropDownList *list = this->list;
-
-		for (const DropDownListItem * const *it = list->Begin(); it != list->End(); ++it) {
+		for (const DropDownListItem *item : *this->list) {
 			/* Skip items that are scrolled up */
 			if (--pos >= 0) continue;
 
-			const DropDownListItem *item = *it;
 			int item_height = item->Height(width);
 
 			if (y < item_height) {
@@ -259,8 +255,7 @@ struct DropdownWindow : Window {
 
 		int y = r.top + 2;
 		int pos = this->vscroll->GetPosition();
-		for (const DropDownListItem * const *it = this->list->Begin(); it != this->list->End(); ++it) {
-			const DropDownListItem *item = *it;
+		for (const DropDownListItem *item : *this->list) {
 			int item_height = item->Height(r.right - r.left + 1);
 
 			/* Skip items that are scrolled up */
@@ -389,8 +384,7 @@ void ShowDropDownListAt(Window *w, const DropDownList *list, int selected, int b
 	/* Total height of list */
 	uint height = 0;
 
-	for (const DropDownListItem * const *it = list->Begin(); it != list->End(); ++it) {
-		const DropDownListItem *item = *it;
+	for (const DropDownListItem *item : *list) {
 		height += item->Height(width);
 		if (auto_width) max_item_width = max(max_item_width, item->Width() + 5);
 	}

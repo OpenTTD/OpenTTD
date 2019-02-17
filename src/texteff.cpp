@@ -89,20 +89,19 @@ void MoveAllTextEffects(uint delta_ms)
 	uint count = texteffecttimer.CountElapsed(delta_ms);
 	if (count == 0) return;
 
-	const TextEffect *end = _text_effects.End();
-	for (TextEffect *te = _text_effects.Begin(); te != end; te++) {
-		if (te->string_id == INVALID_STRING_ID) continue;
-		if (te->mode != TE_RISING) continue;
+	for (TextEffect &te : _text_effects) {
+		if (te.string_id == INVALID_STRING_ID) continue;
+		if (te.mode != TE_RISING) continue;
 
-		if (te->duration < count) {
-			te->Reset();
+		if (te.duration < count) {
+			te.Reset();
 			continue;
 		}
 
-		te->MarkDirty(ZOOM_LVL_OUT_8X);
-		te->duration -= count;
-		te->top -= count * ZOOM_LVL_BASE;
-		te->MarkDirty(ZOOM_LVL_OUT_8X);
+		te.MarkDirty(ZOOM_LVL_OUT_8X);
+		te.duration -= count;
+		te.top -= count * ZOOM_LVL_BASE;
+		te.MarkDirty(ZOOM_LVL_OUT_8X);
 	}
 }
 
@@ -117,11 +116,10 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 	/* Don't draw the text effects when zoomed out a lot */
 	if (dpi->zoom > ZOOM_LVL_OUT_8X) return;
 
-	const TextEffect *end = _text_effects.End();
-	for (TextEffect *te = _text_effects.Begin(); te != end; te++) {
-		if (te->string_id == INVALID_STRING_ID) continue;
-		if (te->mode == TE_RISING || (_settings_client.gui.loading_indicators && !IsTransparencySet(TO_LOADING))) {
-			ViewportAddString(dpi, ZOOM_LVL_OUT_8X, te, te->string_id, te->string_id - 1, STR_NULL, te->params_1, te->params_2);
+	for (TextEffect &te : _text_effects) {
+		if (te.string_id == INVALID_STRING_ID) continue;
+		if (te.mode == TE_RISING || (_settings_client.gui.loading_indicators && !IsTransparencySet(TO_LOADING))) {
+			ViewportAddString(dpi, ZOOM_LVL_OUT_8X, &te, te.string_id, te.string_id - 1, STR_NULL, te.params_1, te.params_2);
 		}
 	}
 }

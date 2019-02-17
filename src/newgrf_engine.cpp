@@ -1231,13 +1231,12 @@ void CommitVehicleListOrderChanges()
 	FOR_ALL_ENGINES(e) {
 		ordering.push_back(e->index);
 	}
-	QSortT(ordering.Begin(), ordering.size(), EnginePreSort);
+	QSortT(ordering.data(), ordering.size(), EnginePreSort);
 
 	/* Apply Insertion-Sort operations */
-	const ListOrderChange *end = _list_order_changes.End();
-	for (const ListOrderChange *it = _list_order_changes.Begin(); it != end; ++it) {
-		EngineID source = it->engine;
-		uint local_target = it->target;
+	for (const ListOrderChange &it : _list_order_changes) {
+		EngineID source = it.engine;
+		uint local_target = it.target;
 
 		const EngineIDMapping *id_source = _engine_mngr.data() + source;
 		if (id_source->internal_id == local_target) continue;
@@ -1251,7 +1250,7 @@ void CommitVehicleListOrderChanges()
 		assert(source_index >= 0 && target_index >= 0);
 		assert(source_index != target_index);
 
-		EngineID *list = ordering.Begin();
+		EngineID *list = ordering.data();
 		if (source_index < target_index) {
 			--target_index;
 			for (int i = source_index; i < target_index; ++i) list[i] = list[i + 1];
@@ -1263,10 +1262,10 @@ void CommitVehicleListOrderChanges()
 	}
 
 	/* Store final sort-order */
-	const EngineID *idend = ordering.End();
 	uint index = 0;
-	for (const EngineID *it = ordering.Begin(); it != idend; ++it, ++index) {
-		Engine::Get(*it)->list_position = index;
+	for (const EngineID &eid : ordering) {
+		Engine::Get(eid)->list_position = index;
+		++index;
 	}
 
 	/* Clear out the queue */

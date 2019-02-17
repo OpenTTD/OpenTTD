@@ -1945,9 +1945,8 @@ void LoadUnloadStation(Station *st)
 	}
 
 	/* Call the production machinery of industries */
-	const Industry * const *isend = _cargo_delivery_destinations.End();
-	for (Industry **iid = _cargo_delivery_destinations.Begin(); iid != isend; iid++) {
-		TriggerIndustryProduction(*iid);
+	for (Industry *iid : _cargo_delivery_destinations) {
+		TriggerIndustryProduction(iid);
 	}
 	_cargo_delivery_destinations.clear();
 }

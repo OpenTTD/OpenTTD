@@ -282,8 +282,8 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 	if (length == 0) return NULL;
 
 	/* Can't layout our in-built sprite fonts. */
-	for (FontMap::const_iterator i = fontMapping.Begin(); i != fontMapping.End(); i++) {
-		if (i->second->fc->IsBuiltInFont()) return NULL;
+	for (auto const &pair : fontMapping) {
+		if (pair.second->fc->IsBuiltInFont()) return NULL;
 	}
 
 	/* Itemize text. */
@@ -296,12 +296,12 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 
 	int cur_pos = 0;
 	std::vector<SCRIPT_ITEM>::iterator cur_item = items.begin();
-	for (FontMap::const_iterator i = fontMapping.Begin(); i != fontMapping.End(); i++) {
-		while (cur_pos < i->first && cur_item != items.end() - 1) {
+	for (auto const &i : fontMapping) {
+		while (cur_pos < i.first && cur_item != items.end() - 1) {
 			/* Add a range that spans the intersection of the remaining item and font run. */
-			int stop_pos = min(i->first, (cur_item + 1)->iCharPos);
+			int stop_pos = min(i.first, (cur_item + 1)->iCharPos);
 			assert(stop_pos - cur_pos > 0);
-			ranges.push_back(UniscribeRun(cur_pos, stop_pos - cur_pos, i->second, cur_item->a));
+			ranges.push_back(UniscribeRun(cur_pos, stop_pos - cur_pos, i.second, cur_item->a));
 
 			/* Shape the range. */
 			if (!UniscribeShapeRun(buff, ranges.back())) {
@@ -448,8 +448,8 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 int UniscribeParagraphLayout::UniscribeLine::GetLeading() const
 {
 	int leading = 0;
-	for (const UniscribeVisualRun * const *run = this->Begin(); run != this->End(); run++) {
-		leading = max(leading, (*run)->GetLeading());
+	for (const UniscribeVisualRun *run : *this) {
+		leading = max(leading, run->GetLeading());
 	}
 
 	return leading;
@@ -462,8 +462,8 @@ int UniscribeParagraphLayout::UniscribeLine::GetLeading() const
 int UniscribeParagraphLayout::UniscribeLine::GetWidth() const
 {
 	int length = 0;
-	for (const UniscribeVisualRun * const *run = this->Begin(); run != this->End(); run++) {
-		length += (*run)->GetAdvance();
+	for (const UniscribeVisualRun *run : *this) {
+		length += run->GetAdvance();
 	}
 
 	return length;

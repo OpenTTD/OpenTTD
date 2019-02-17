@@ -110,7 +110,7 @@ struct PacketReader : LoadFilter {
 	{
 		this->read_bytes = 0;
 
-		this->block = this->blocks.Begin();
+		this->block = this->blocks.data();
 		this->buf   = *this->block++;
 		this->bufe  = this->buf + CHUNK;
 	}

@@ -585,8 +585,8 @@ DEF_CONSOLE_CMD(ConBanList)
 	IConsolePrint(CC_DEFAULT, "Banlist: ");
 
 	uint i = 1;
-	for (char **iter = _network_ban_list.Begin(); iter != _network_ban_list.End(); iter++, i++) {
-		IConsolePrintF(CC_DEFAULT, "  %d) %s", i, *iter);
+	for (char *entry : _network_ban_list) {
+		IConsolePrintF(CC_DEFAULT, "  %d) %s", i, entry);
 	}
 
 	return true;

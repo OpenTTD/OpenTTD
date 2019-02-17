@@ -380,7 +380,7 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 	{
 		SortingBits order = _savegame_sort_order;
 		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
-		QSortT(file_list.files.Begin(), file_list.files.size(), CompareFiosItems);
+		QSortT(file_list.files.data(), file_list.files.size(), CompareFiosItems);
 		_savegame_sort_order = order;
 	}
 
@@ -724,10 +724,10 @@ const char *FindScenario(const ContentInfo *ci, bool md5sum)
 {
 	_scanner.Scan(false);
 
-	for (ScenarioIdentifier *id = _scanner.Begin(); id != _scanner.End(); id++) {
-		if (md5sum ? (memcmp(id->md5sum, ci->md5sum, sizeof(id->md5sum)) == 0)
-		           : (id->scenid == ci->unique_id)) {
-			return id->filename;
+	for (ScenarioIdentifier &id : _scanner) {
+		if (md5sum ? (memcmp(id.md5sum, ci->md5sum, sizeof(id.md5sum)) == 0)
+		           : (id.scenid == ci->unique_id)) {
+			return id.filename;
 		}
 	}
 

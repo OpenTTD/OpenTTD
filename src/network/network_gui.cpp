@@ -1045,8 +1045,8 @@ void ShowNetworkGameWindow()
 	if (first) {
 		first = false;
 		/* Add all servers from the config file to our list. */
-		for (char **iter = _network_host_list.Begin(); iter != _network_host_list.End(); iter++) {
-			NetworkAddServer(*iter);
+		for (char *iter : _network_host_list) {
+			NetworkAddServer(iter);
 		}
 	}
 
@@ -1783,8 +1783,8 @@ struct NetworkClientListPopupWindow : Window {
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		Dimension d = *size;
-		for (const ClientListAction *action = this->actions.Begin(); action != this->actions.End(); action++) {
-			d = maxdim(GetStringBoundingBox(action->name), d);
+		for (const ClientListAction &action : this->actions) {
+			d = maxdim(GetStringBoundingBox(action.name), d);
 		}
 
 		d.height *= this->actions.size();
@@ -1798,7 +1798,7 @@ struct NetworkClientListPopupWindow : Window {
 		/* Draw the actions */
 		int sel = this->sel_index;
 		int y = r.top + WD_FRAMERECT_TOP;
-		for (const ClientListAction *action = this->actions.Begin(); action != this->actions.End(); action++, y += FONT_HEIGHT_NORMAL) {
+		for (const ClientListAction &action : this->actions) {
 			TextColour colour;
 			if (sel-- == 0) { // Selected item, highlight it
 				GfxFillRect(r.left + 1, y, r.right - 1, y + FONT_HEIGHT_NORMAL - 1, PC_BLACK);
@@ -1807,7 +1807,8 @@ struct NetworkClientListPopupWindow : Window {
 				colour = TC_BLACK;
 			}
 
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, action->name, colour);
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, action.name, colour);
+			y += FONT_HEIGHT_NORMAL;
 		}
 	}
 

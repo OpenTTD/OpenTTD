@@ -177,11 +177,11 @@ static const SaveLoad _engine_id_mapping_desc[] = {
 
 static void Save_EIDS()
 {
-	const EngineIDMapping *end = _engine_mngr.End();
 	uint index = 0;
-	for (EngineIDMapping *eid = _engine_mngr.Begin(); eid != end; eid++, index++) {
+	for (EngineIDMapping &eid : _engine_mngr) {
 		SlSetArrayIndex(index);
-		SlObject(eid, _engine_id_mapping_desc);
+		SlObject(&eid, _engine_id_mapping_desc);
+		index++;
 	}
 }
 

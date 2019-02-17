@@ -747,8 +747,8 @@ static void IniSaveSettingList(IniFile *ini, const char *grpname, StringList *li
 	if (group == NULL || list == NULL) return;
 	group->Clear();
 
-	for (char **iter = list->Begin(); iter != list->End(); iter++) {
-		group->GetItem(*iter, true)->SetValue("");
+	for (char *iter : *list) {
+		group->GetItem(iter, true)->SetValue("");
 	}
 }
 

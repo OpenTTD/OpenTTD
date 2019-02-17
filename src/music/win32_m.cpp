@@ -229,7 +229,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 			break;
 		}
 
-		byte *data = block.data.Begin();
+		byte *data = block.data.data();
 		size_t remaining = block.data.size();
 		byte last_status = 0;
 		while (remaining > 0) {

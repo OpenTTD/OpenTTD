@@ -91,9 +91,8 @@ void StringFilter::SetFilterTerm(const char *str)
 void StringFilter::ResetState()
 {
 	this->word_matches = 0;
-	const WordState *end = this->word_index.End();
-	for (WordState *it = this->word_index.Begin(); it != end; ++it) {
-		it->match = false;
+	for (WordState &ws : this->word_index) {
+		ws.match = false;
 	}
 }
 
@@ -110,11 +109,10 @@ void StringFilter::AddLine(const char *str)
 	if (str == NULL) return;
 
 	bool match_case = this->case_sensitive != NULL && *this->case_sensitive;
-	const WordState *end = this->word_index.End();
-	for (WordState *it = this->word_index.Begin(); it != end; ++it) {
-		if (!it->match) {
-			if ((match_case ? strstr(str, it->start) : strcasestr(str, it->start)) != NULL) {
-				it->match = true;
+	for (WordState &ws : this->word_index) {
+		if (!ws.match) {
+			if ((match_case ? strstr(str, ws.start) : strcasestr(str, ws.start)) != NULL) {
+				ws.match = true;
 				this->word_matches++;
 			}
 		}

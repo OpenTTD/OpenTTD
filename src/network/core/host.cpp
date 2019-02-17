@@ -200,8 +200,8 @@ void NetworkFindBroadcastIPs(NetworkAddressList *broadcast)
 	/* Now display to the debug all the detected ips */
 	DEBUG(net, 3, "Detected broadcast addresses:");
 	int i = 0;
-	for (NetworkAddress *addr = broadcast->Begin(); addr != broadcast->End(); addr++) {
-		addr->SetPort(NETWORK_DEFAULT_PORT);
-		DEBUG(net, 3, "%d) %s", i++, addr->GetHostname());
+	for (NetworkAddress &addr : *broadcast) {
+		addr.SetPort(NETWORK_DEFAULT_PORT);
+		DEBUG(net, 3, "%d) %s", i++, addr.GetHostname());
 	}
 }

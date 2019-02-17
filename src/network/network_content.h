@@ -131,11 +131,11 @@ public:
 	/** Get the number of content items we know locally. */
 	uint Length() const { return this->infos.size(); }
 	/** Get the begin of the content inf iterator. */
-	ConstContentIterator Begin() const { return this->infos.Begin(); }
+	ConstContentIterator Begin() const { return this->infos.data(); }
 	/** Get the nth position of the content inf iterator. */
 	ConstContentIterator Get(uint32 index) const { return this->infos.data() + index; }
 	/** Get the end of the content inf iterator. */
-	ConstContentIterator End() const { return this->infos.End(); }
+	ConstContentIterator End() const { return this->Begin() + this->Length(); }
 
 	void Clear();
 

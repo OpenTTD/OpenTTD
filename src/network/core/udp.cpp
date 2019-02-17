@@ -25,8 +25,8 @@
 NetworkUDPSocketHandler::NetworkUDPSocketHandler(NetworkAddressList *bind)
 {
 	if (bind != NULL) {
-		for (NetworkAddress *addr = bind->Begin(); addr != bind->End(); addr++) {
-			this->bind.push_back(*addr);
+		for (NetworkAddress &addr : *bind) {
+			this->bind.push_back(addr);
 		}
 	} else {
 		/* As hostname NULL and port 0/NULL don't go well when
@@ -47,8 +47,8 @@ bool NetworkUDPSocketHandler::Listen()
 	/* Make sure socket is closed */
 	this->Close();
 
-	for (NetworkAddress *addr = this->bind.Begin(); addr != this->bind.End(); addr++) {
-		addr->Listen(SOCK_DGRAM, &this->sockets);
+	for (NetworkAddress &addr : this->bind) {
+		addr.Listen(SOCK_DGRAM, &this->sockets);
 	}
 
 	return this->sockets.size() != 0;
@@ -59,8 +59,8 @@ bool NetworkUDPSocketHandler::Listen()
  */
 void NetworkUDPSocketHandler::Close()
 {
-	for (SocketList::iterator s = this->sockets.Begin(); s != this->sockets.End(); s++) {
-		closesocket(s->second);
+	for (auto &s : this->sockets) {
+		closesocket(s.second);
 	}
 	this->sockets.clear();
 }
@@ -82,26 +82,26 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv, bool a
 {
 	if (this->sockets.size() == 0) this->Listen();
 
-	for (SocketList::iterator s = this->sockets.Begin(); s != this->sockets.End(); s++) {
+	for (auto &s : this->sockets) {
 		/* Make a local copy because if we resolve it we cannot
 		 * easily unresolve it so we can resolve it later again. */
 		NetworkAddress send(*recv);
 
 		/* Not the same type */
-		if (!send.IsFamily(s->first.GetAddress()->ss_family)) continue;
+		if (!send.IsFamily(s.first.GetAddress()->ss_family)) continue;
 
 		p->PrepareToSend();
 
 		if (broadcast) {
 			/* Enable broadcast */
 			unsigned long val = 1;
-			if (setsockopt(s->second, SOL_SOCKET, SO_BROADCAST, (char *) &val, sizeof(val)) < 0) {
+			if (setsockopt(s.second, SOL_SOCKET, SO_BROADCAST, (char *) &val, sizeof(val)) < 0) {
 				DEBUG(net, 1, "[udp] setting broadcast failed with: %i", GET_LAST_ERROR());
 			}
 		}
 
 		/* Send the buffer */
-		int res = sendto(s->second, (const char*)p->buffer, p->size, 0, (const struct sockaddr *)send.GetAddress(), send.GetAddressLength());
+		int res = sendto(s.second, (const char*)p->buffer, p->size, 0, (const struct sockaddr *)send.GetAddress(), send.GetAddressLength());
 		DEBUG(net, 7, "[udp] sendto(%s)", send.GetAddressAsString());
 
 		/* Check for any errors, but ignore it otherwise */
@@ -116,7 +116,7 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv, bool a
  */
 void NetworkUDPSocketHandler::ReceivePackets()
 {
-	for (SocketList::iterator s = this->sockets.Begin(); s != this->sockets.End(); s++) {
+	for (auto &s : this->sockets) {
 		for (int i = 0; i < 1000; i++) { // Do not infinitely loop when DoSing with UDP
 			struct sockaddr_storage client_addr;
 			memset(&client_addr, 0, sizeof(client_addr));
@@ -125,8 +125,8 @@ void NetworkUDPSocketHandler::ReceivePackets()
 			socklen_t client_len = sizeof(client_addr);
 
 			/* Try to receive anything */
-			SetNonBlocking(s->second); // Some OSes seem to lose the non-blocking status of the socket
-			int nbytes = recvfrom(s->second, (char*)p.buffer, SEND_MTU, 0, (struct sockaddr *)&client_addr, &client_len);
+			SetNonBlocking(s.second); // Some OSes seem to lose the non-blocking status of the socket
+			int nbytes = recvfrom(s.second, (char*)p.buffer, SEND_MTU, 0, (struct sockaddr *)&client_addr, &client_len);
 
 			/* Did we get the bytes for the base header of the packet? */
 			if (nbytes <= 0) break;    // No data, i.e. no packet

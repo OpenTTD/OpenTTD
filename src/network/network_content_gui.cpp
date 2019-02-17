@@ -176,8 +176,8 @@ public:
 	~NetworkContentDownloadStatusWindow()
 	{
 		TarScanner::Mode mode = TarScanner::NONE;
-		for (ContentType *iter = this->receivedTypes.Begin(); iter != this->receivedTypes.End(); iter++) {
-			switch (*iter) {
+		for (auto ctype : this->receivedTypes) {
+			switch (ctype) {
 				case CONTENT_TYPE_AI:
 				case CONTENT_TYPE_AI_LIBRARY:
 					/* AI::Rescan calls the scanner. */
@@ -210,8 +210,8 @@ public:
 		TarScanner::DoScan(mode);
 
 		/* Tell all the backends about what we've downloaded */
-		for (ContentType *iter = this->receivedTypes.Begin(); iter != this->receivedTypes.End(); iter++) {
-			switch (*iter) {
+		for (auto ctype : this->receivedTypes) {
+			switch (ctype) {
 				case CONTENT_TYPE_AI:
 				case CONTENT_TYPE_AI_LIBRARY:
 					AI::Rescan();
@@ -333,8 +333,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 			pos = strecpy(pos, "do=searchgrfid&q=", last);
 
 			bool first = true;
-			for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
-				const ContentInfo *ci = *iter;
+			for (const ContentInfo *ci : this->content) {
 				if (ci->state != ContentInfo::DOES_NOT_EXIST) continue;
 
 				if (!first) pos = strecpy(pos, ",", last);
@@ -635,8 +634,13 @@ public:
 		int sprite_y_offset = WD_MATRIX_TOP + (line_height - this->checkbox_size.height) / 2 - 1;
 		int text_y_offset = WD_MATRIX_TOP + (line_height - FONT_HEIGHT_NORMAL) / 2;
 		uint y = r.top;
-		int cnt = 0;
-		for (ConstContentIterator iter = this->content.data() + this->vscroll->GetPosition(); iter != this->content.End() && cnt < this->vscroll->GetCapacity(); iter++, cnt++) {
+
+		auto iter = this->content.begin() + this->vscroll->GetPosition();
+		auto end = iter + this->vscroll->GetCapacity();
+		if (end > this->content.end())
+			end = this->content.end();
+
+		for (/**/; iter != end; iter++) {
 			const ContentInfo *ci = *iter;
 
 			if (ci == this->selected) GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->resize.step_height - 1, PC_GREY);
@@ -761,8 +765,7 @@ public:
 
 			char buf[DRAW_STRING_BUFFER] = "";
 			char *p = buf;
-			for (ConstContentIterator iter = tree.Begin(); iter != tree.End(); iter++) {
-				const ContentInfo *ci = *iter;
+			for (const ContentInfo *ci : tree) {
 				if (ci == this->selected || ci->state != ContentInfo::SELECTED) continue;
 
 				p += seprintf(p, lastof(buf), buf == p ? "%s" : ", %s", ci->name);
@@ -985,8 +988,7 @@ public:
 		this->filesize_sum = 0;
 		bool show_select_all = false;
 		bool show_select_upgrade = false;
-		for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
-			const ContentInfo *ci = *iter;
+		for (const ContentInfo *ci : this->content) {
 			switch (ci->state) {
 				case ContentInfo::SELECTED:
 				case ContentInfo::AUTOSELECTED:
@@ -1158,7 +1160,7 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 	ShowErrorMessage(STR_CONTENT_NO_ZLIB, STR_CONTENT_NO_ZLIB_SUB, WL_ERROR);
 	/* Connection failed... clean up the mess */
 	if (cv != NULL) {
-		for (ContentIterator iter = cv->Begin(); iter != cv->End(); iter++) delete *iter;
+		for (ContentInfo *ci : *cv) delete ci;
 	}
 #endif /* WITH_ZLIB */
 }

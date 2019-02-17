@@ -164,7 +164,7 @@ struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
 	 */
 	const DrawTileSeqStruct *GetLayout(PalSpriteID *ground) const
 	{
-		DrawTileSeqStruct *front = result_seq.Begin();
+		DrawTileSeqStruct *front = result_seq.data();
 		*ground = front->image;
 		return front + 1;
 	}

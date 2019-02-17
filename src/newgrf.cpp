@@ -391,9 +391,8 @@ void CDECL grfmsg(int severity, const char *str, ...)
  */
 static GRFFile *GetFileByGRFID(uint32 grfid)
 {
-	const GRFFile * const *end = _grf_files.End();
-	for (GRFFile * const *file = _grf_files.Begin(); file != end; file++) {
-		if ((*file)->grfid == grfid) return *file;
+	for (GRFFile * const file : _grf_files) {
+		if (file->grfid == grfid) return file;
 	}
 	return NULL;
 }
@@ -405,9 +404,8 @@ static GRFFile *GetFileByGRFID(uint32 grfid)
  */
 static GRFFile *GetFileByFilename(const char *filename)
 {
-	const GRFFile * const *end = _grf_files.End();
-	for (GRFFile * const *file = _grf_files.Begin(); file != end; file++) {
-		if (strcmp((*file)->filename, filename) == 0) return *file;
+	for (GRFFile * const file : _grf_files) {
+		if (strcmp(file->filename, filename) == 0) return file;
 	}
 	return NULL;
 }
@@ -1923,7 +1921,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 						/* On error, bail out immediately. Temporary GRF data was already freed */
 						if (_cur.skip_sprites < 0) return CIR_DISABLED;
 					}
-					dts->Clone(tmp_layout.Begin());
+					dts->Clone(tmp_layout.data());
 				}
 				break;
 
@@ -4826,7 +4824,7 @@ static void NewSpriteGroup(ByteReader *buf)
 
 			group->num_adjusts = adjusts.size();
 			group->adjusts = MallocT<DeterministicSpriteGroupAdjust>(group->num_adjusts);
-			MemCpyT(group->adjusts, adjusts.Begin(), group->num_adjusts);
+			MemCpyT(group->adjusts, adjusts.data(), group->num_adjusts);
 
 			std::vector<DeterministicSpriteGroupRange> ranges;
 			ranges.resize(buf->ReadByte());
@@ -8094,9 +8092,8 @@ static void InitializeGRFSpecial()
 /** Reset and clear all NewGRF stations */
 static void ResetCustomStations()
 {
-	const GRFFile * const *end = _grf_files.End();
-	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
-		StationSpec **&stations = (*file)->stations;
+	for (GRFFile * const file : _grf_files) {
+		StationSpec **&stations = file->stations;
 		if (stations == NULL) continue;
 		for (uint i = 0; i < NUM_STATIONS_PER_GRF; i++) {
 			if (stations[i] == NULL) continue;
@@ -8129,9 +8126,8 @@ static void ResetCustomStations()
 /** Reset and clear all NewGRF houses */
 static void ResetCustomHouses()
 {
-	const GRFFile * const *end = _grf_files.End();
-	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
-		HouseSpec **&housespec = (*file)->housespec;
+	for (GRFFile * const file : _grf_files) {
+		HouseSpec **&housespec = file->housespec;
 		if (housespec == NULL) continue;
 		for (uint i = 0; i < NUM_HOUSES_PER_GRF; i++) {
 			free(housespec[i]);
@@ -8145,9 +8141,8 @@ static void ResetCustomHouses()
 /** Reset and clear all NewGRF airports */
 static void ResetCustomAirports()
 {
-	const GRFFile * const *end = _grf_files.End();
-	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
-		AirportSpec **aslist = (*file)->airportspec;
+	for (GRFFile * const file : _grf_files) {
+		AirportSpec **aslist = file->airportspec;
 		if (aslist != NULL) {
 			for (uint i = 0; i < NUM_AIRPORTS_PER_GRF; i++) {
 				AirportSpec *as = aslist[i];
@@ -8166,10 +8161,10 @@ static void ResetCustomAirports()
 				}
 			}
 			free(aslist);
-			(*file)->airportspec = NULL;
+			file->airportspec = NULL;
 		}
 
-		AirportTileSpec **&airporttilespec = (*file)->airtspec;
+		AirportTileSpec **&airporttilespec = file->airtspec;
 		if (airporttilespec != NULL) {
 			for (uint i = 0; i < NUM_AIRPORTTILES_PER_GRF; i++) {
 				free(airporttilespec[i]);
@@ -8183,10 +8178,9 @@ static void ResetCustomAirports()
 /** Reset and clear all NewGRF industries */
 static void ResetCustomIndustries()
 {
-	const GRFFile * const *end = _grf_files.End();
-	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
-		IndustrySpec **&industryspec = (*file)->industryspec;
-		IndustryTileSpec **&indtspec = (*file)->indtspec;
+	for (GRFFile * const file : _grf_files) {
+		IndustrySpec **&industryspec = file->industryspec;
+		IndustryTileSpec **&indtspec = file->indtspec;
 
 		/* We are verifiying both tiles and industries specs loaded from the grf file
 		 * First, let's deal with industryspec */
@@ -8223,9 +8217,8 @@ static void ResetCustomIndustries()
 /** Reset and clear all NewObjects */
 static void ResetCustomObjects()
 {
-	const GRFFile * const *end = _grf_files.End();
-	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
-		ObjectSpec **&objectspec = (*file)->objectspec;
+	for (GRFFile * const file : _grf_files) {
+		ObjectSpec **&objectspec = file->objectspec;
 		if (objectspec == NULL) continue;
 		for (uint i = 0; i < NUM_OBJECTS_PER_GRF; i++) {
 			free(objectspec[i]);
@@ -8239,9 +8232,8 @@ static void ResetCustomObjects()
 /** Reset and clear all NewGRFs */
 static void ResetNewGRF()
 {
-	const GRFFile * const *end = _grf_files.End();
-	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
-		delete *file;
+	for (GRFFile * const file : _grf_files) {
+		delete file;
 	}
 
 	_grf_files.clear();
@@ -8760,9 +8752,8 @@ static void FinaliseHouseArray()
 	 * On the other hand, why 1930? Just 'fix' the houses with the lowest
 	 * minimum introduction date to 0.
 	 */
-	const GRFFile * const *end = _grf_files.End();
-	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
-		HouseSpec **&housespec = (*file)->housespec;
+	for (GRFFile * const file : _grf_files) {
+		HouseSpec **&housespec = file->housespec;
 		if (housespec == NULL) continue;
 
 		for (int i = 0; i < NUM_HOUSES_PER_GRF; i++) {
@@ -8774,7 +8765,7 @@ static void FinaliseHouseArray()
 			const HouseSpec *next2 = (i + 2 < NUM_HOUSES_PER_GRF ? housespec[i + 2] : NULL);
 			const HouseSpec *next3 = (i + 3 < NUM_HOUSES_PER_GRF ? housespec[i + 3] : NULL);
 
-			if (!IsHouseSpecValid(hs, next1, next2, next3, (*file)->filename)) continue;
+			if (!IsHouseSpecValid(hs, next1, next2, next3, file->filename)) continue;
 
 			_house_mngr.SetEntitySpec(hs);
 		}
@@ -8823,10 +8814,9 @@ static void FinaliseHouseArray()
  */
 static void FinaliseIndustriesArray()
 {
-	const GRFFile * const *end = _grf_files.End();
-	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
-		IndustrySpec **&industryspec = (*file)->industryspec;
-		IndustryTileSpec **&indtspec = (*file)->indtspec;
+	for (GRFFile * const file : _grf_files) {
+		IndustrySpec **&industryspec = file->industryspec;
+		IndustryTileSpec **&indtspec = file->indtspec;
 		if (industryspec != NULL) {
 			for (int i = 0; i < NUM_INDUSTRYTYPES_PER_GRF; i++) {
 				IndustrySpec *indsp = industryspec[i];
@@ -8894,9 +8884,8 @@ static void FinaliseIndustriesArray()
  */
 static void FinaliseObjectsArray()
 {
-	const GRFFile * const *end = _grf_files.End();
-	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
-		ObjectSpec **&objectspec = (*file)->objectspec;
+	for (GRFFile * const file : _grf_files) {
+		ObjectSpec **&objectspec = file->objectspec;
 		if (objectspec != NULL) {
 			for (int i = 0; i < NUM_OBJECTS_PER_GRF; i++) {
 				if (objectspec[i] != NULL && objectspec[i]->grf_prop.grffile != NULL && objectspec[i]->enabled) {
@@ -8914,9 +8903,8 @@ static void FinaliseObjectsArray()
  */
 static void FinaliseAirportsArray()
 {
-	const GRFFile * const *end = _grf_files.End();
-	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
-		AirportSpec **&airportspec = (*file)->airportspec;
+	for (GRFFile * const file : _grf_files) {
+		AirportSpec **&airportspec = file->airportspec;
 		if (airportspec != NULL) {
 			for (int i = 0; i < NUM_AIRPORTS_PER_GRF; i++) {
 				if (airportspec[i] != NULL && airportspec[i]->enabled) {
@@ -8925,7 +8913,7 @@ static void FinaliseAirportsArray()
 			}
 		}
 
-		AirportTileSpec **&airporttilespec = (*file)->airtspec;
+		AirportTileSpec **&airporttilespec = file->airtspec;
 		if (airporttilespec != NULL) {
 			for (uint i = 0; i < NUM_AIRPORTTILES_PER_GRF; i++) {
 				if (airporttilespec[i] != NULL && airporttilespec[i]->enabled) {
@@ -9286,10 +9274,9 @@ static void FinalisePriceBaseMultipliers()
 	}
 
 	/* Apply fallback prices for grf version < 8 */
-	const GRFFile * const *end = _grf_files.End();
-	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
-		if ((*file)->grf_version >= 8) continue;
-		PriceMultipliers &price_base_multipliers = (*file)->price_base_multipliers;
+	for (GRFFile * const file : _grf_files) {
+		if (file->grf_version >= 8) continue;
+		PriceMultipliers &price_base_multipliers = file->price_base_multipliers;
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
 			Price fallback_price = _price_base_specs[p].fallback_price;
 			if (fallback_price != INVALID_PRICE && price_base_multipliers[p] == INVALID_PRICE_MODIFIER) {
@@ -9301,21 +9288,21 @@ static void FinalisePriceBaseMultipliers()
 	}
 
 	/* Decide local/global scope of price base multipliers */
-	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
-		PriceMultipliers &price_base_multipliers = (*file)->price_base_multipliers;
+	for (GRFFile * const file : _grf_files) {
+		PriceMultipliers &price_base_multipliers = file->price_base_multipliers;
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
 			if (price_base_multipliers[p] == INVALID_PRICE_MODIFIER) {
 				/* No multiplier was set; set it to a neutral value */
 				price_base_multipliers[p] = 0;
 			} else {
-				if (!HasBit((*file)->grf_features, _price_base_specs[p].grf_feature)) {
+				if (!HasBit(file->grf_features, _price_base_specs[p].grf_feature)) {
 					/* The grf does not define any objects of the feature,
 					 * so it must be a difficulty setting. Apply it globally */
-					DEBUG(grf, 3, "'%s' sets global price base multiplier %d", (*file)->filename, p);
+					DEBUG(grf, 3, "'%s' sets global price base multiplier %d", file->filename, p);
 					SetPriceBaseMultiplier(p, price_base_multipliers[p]);
 					price_base_multipliers[p] = 0;
 				} else {
-					DEBUG(grf, 3, "'%s' sets local price base multiplier %d", (*file)->filename, p);
+					DEBUG(grf, 3, "'%s' sets local price base multiplier %d", file->filename, p);
 				}
 			}
 		}
@@ -9327,8 +9314,8 @@ extern void InitGRFTownGeneratorNames();
 /** Finish loading NewGRFs and execute needed post-processing */
 static void AfterLoadGRFs()
 {
-	for (StringIDMapping *it = _string_to_grf_mapping.Begin(); it != _string_to_grf_mapping.End(); it++) {
-		*it->target = MapGRFStringID(it->grfid, it->source);
+	for (StringIDMapping &it : _string_to_grf_mapping) {
+		*it.target = MapGRFStringID(it.grfid, it.source);
 	}
 	_string_to_grf_mapping.clear();
 

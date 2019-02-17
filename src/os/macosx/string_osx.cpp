@@ -75,8 +75,8 @@ public:
 
 				/* Extract font information for this run. */
 				CFRange chars = CTRunGetStringRange(run);
-				FontMap::const_iterator map = fontMapping.Begin();
-				while (map < fontMapping.End() - 1 && map->first <= chars.location) map++;
+				auto map = fontMapping.begin();
+				while (map < fontMapping.end() - 1 && map->first <= chars.location) map++;
 
 				this->push_back(new CoreTextVisualRun(run, map->second, buff));
 			}
@@ -137,8 +137,8 @@ static CTRunDelegateCallbacks _sprite_font_callback = {
 	if (length == 0) return NULL;
 
 	/* Can't layout our in-built sprite fonts. */
-	for (FontMap::const_iterator i = fontMapping.Begin(); i != fontMapping.End(); i++) {
-		if (i->second->fc->IsBuiltInFont()) return NULL;
+	for (const auto &i : fontMapping) {
+		if (i.second->fc->IsBuiltInFont()) return NULL;
 	}
 
 	/* Make attributed string with embedded font information. */
@@ -152,31 +152,31 @@ static CTRunDelegateCallbacks _sprite_font_callback = {
 	/* Apply font and colour ranges to our string. This is important to make sure
 	 * that we get proper glyph boundaries on style changes. */
 	int last = 0;
-	for (FontMap::const_iterator i = fontMapping.Begin(); i != fontMapping.End(); i++) {
-		if (i->first - last == 0) continue;
+	for (const auto &i : fontMapping) {
+		if (i.first - last == 0) continue;
 
-		if (_font_cache[i->second->fc->GetSize()] == NULL) {
+		if (_font_cache[i.second->fc->GetSize()] == NULL) {
 			/* Cache font information. */
-			CFStringRef font_name = CFStringCreateWithCString(kCFAllocatorDefault, i->second->fc->GetFontName(), kCFStringEncodingUTF8);
-			_font_cache[i->second->fc->GetSize()] = CTFontCreateWithName(font_name, i->second->fc->GetFontSize(), NULL);
+			CFStringRef font_name = CFStringCreateWithCString(kCFAllocatorDefault, i.second->fc->GetFontName(), kCFStringEncodingUTF8);
+			_font_cache[i.second->fc->GetSize()] = CTFontCreateWithName(font_name, i.second->fc->GetFontSize(), NULL);
 			CFRelease(font_name);
 		}
-		CFAttributedStringSetAttribute(str, CFRangeMake(last, i->first - last), kCTFontAttributeName, _font_cache[i->second->fc->GetSize()]);
+		CFAttributedStringSetAttribute(str, CFRangeMake(last, i.first - last), kCTFontAttributeName, _font_cache[i.second->fc->GetSize()]);
 
-		CGColorRef color = CGColorCreateGenericGray((uint8)i->second->colour / 255.0f, 1.0f); // We don't care about the real colours, just that they are different.
-		CFAttributedStringSetAttribute(str, CFRangeMake(last, i->first - last), kCTForegroundColorAttributeName, color);
+		CGColorRef color = CGColorCreateGenericGray((uint8)i.second->colour / 255.0f, 1.0f); // We don't care about the real colours, just that they are different.
+		CFAttributedStringSetAttribute(str, CFRangeMake(last, i.first - last), kCTForegroundColorAttributeName, color);
 		CGColorRelease(color);
 
 		/* Install a size callback for our special sprite glyphs. */
-		for (ssize_t c = last; c < i->first; c++) {
+		for (ssize_t c = last; c < i.first; c++) {
 			if (buff[c] >= SCC_SPRITE_START && buff[c] <= SCC_SPRITE_END) {
-				CTRunDelegateRef del = CTRunDelegateCreate(&_sprite_font_callback, (void *)(size_t)(buff[c] | (i->second->fc->GetSize() << 24)));
+				CTRunDelegateRef del = CTRunDelegateCreate(&_sprite_font_callback, (void *)(size_t)(buff[c] | (i.second->fc->GetSize() << 24)));
 				CFAttributedStringSetAttribute(str, CFRangeMake(c, 1), kCTRunDelegateAttributeName, del);
 				CFRelease(del);
 			}
 		}
 
-		last = i->first;
+		last = i.first;
 	}
 	CFAttributedStringEndEditing(str);
 
@@ -243,8 +243,8 @@ CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font
 int CoreTextParagraphLayout::CoreTextLine::GetLeading() const
 {
 	int leading = 0;
-	for (const CoreTextVisualRun * const *run = this->Begin(); run != this->End(); run++) {
-		leading = max(leading, (*run)->GetLeading());
+	for (const CoreTextVisualRun * const &run : *this) {
+		leading = max(leading, run->GetLeading());
 	}
 
 	return leading;
@@ -259,8 +259,8 @@ int CoreTextParagraphLayout::CoreTextLine::GetWidth() const
 	if (this->size() == 0) return 0;
 
 	int total_width = 0;
-	for (const CoreTextVisualRun * const *run = this->Begin(); run != this->End(); run++) {
-		total_width += (*run)->GetAdvance();
+	for (const CoreTextVisualRun * const &run : *this) {
+		total_width += run->GetAdvance();
 	}
 
 	return total_width;

@@ -683,7 +683,7 @@ uint32 NewGRFSpriteLayout::PrepareLayout(uint32 orig_offset, uint32 newgrf_groun
 	 * and apply the default sprite offsets (unless disabled). */
 	const TileLayoutRegisters *regs = this->registers;
 	bool ground = true;
-	foreach_draw_tile_seq(result, result_seq.Begin()) {
+	foreach_draw_tile_seq(result, result_seq.data()) {
 		TileLayoutFlags flags = TLF_NOTHING;
 		if (regs != NULL) flags = regs->flags;
 
@@ -737,7 +737,7 @@ void NewGRFSpriteLayout::ProcessRegisters(uint8 resolved_var10, uint32 resolved_
 	DrawTileSeqStruct *result;
 	const TileLayoutRegisters *regs = this->registers;
 	bool ground = true;
-	foreach_draw_tile_seq(result, result_seq.Begin()) {
+	foreach_draw_tile_seq(result, result_seq.data()) {
 		TileLayoutFlags flags = TLF_NOTHING;
 		if (regs != NULL) flags = regs->flags;
 

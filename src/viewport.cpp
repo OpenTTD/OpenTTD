@@ -628,8 +628,8 @@ static void AddCombinedSprite(SpriteID image, PaletteID pal, int x, int y, int z
 			pt.y + spr->y_offs + spr->height <= _vd.dpi.top)
 		return;
 
-	const ParentSpriteToDraw *pstd = _vd.parent_sprites_to_draw.End() - 1;
-	AddChildSpriteScreen(image, pal, pt.x - pstd->left, pt.y - pstd->top, false, sub, false);
+	const ParentSpriteToDraw &pstd = _vd.parent_sprites_to_draw.back();
+	AddChildSpriteScreen(image, pal, pt.x - pstd.left, pt.y - pstd.top, false, sub, false);
 }
 
 /**
@@ -1393,9 +1393,8 @@ void ViewportSign::MarkDirty(ZoomLevel maxzoom) const
 
 static void ViewportDrawTileSprites(const TileSpriteToDrawVector *tstdv)
 {
-	const TileSpriteToDraw *tsend = tstdv->End();
-	for (const TileSpriteToDraw *ts = tstdv->Begin(); ts != tsend; ++ts) {
-		DrawSpriteViewport(ts->image, ts->pal, ts->x, ts->y, ts->sub);
+	for (const TileSpriteToDraw &ts : *tstdv) {
+		DrawSpriteViewport(ts.image, ts.pal, ts.x, ts.y, ts.sub);
 	}
 }
 
@@ -1408,8 +1407,8 @@ static bool ViewportSortParentSpritesChecker()
 /** Sort parent sprites pointer array */
 static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 {
-	ParentSpriteToDraw **psdvend = psdv->End();
-	ParentSpriteToDraw **psd = psdv->Begin();
+	auto psdvend = psdv->end();
+	auto psd = psdv->begin();
 	while (psd != psdvend) {
 		ParentSpriteToDraw *ps = *psd;
 
@@ -1420,7 +1419,7 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 
 		ps->comparison_done = true;
 
-		for (ParentSpriteToDraw **psd2 = psd + 1; psd2 != psdvend; psd2++) {
+		for (auto psd2 = psd + 1; psd2 != psdvend; psd2++) {
 			ParentSpriteToDraw *ps2 = *psd2;
 
 			if (ps2->comparison_done) continue;
@@ -1455,7 +1454,7 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 
 			/* Move ps2 in front of ps */
 			ParentSpriteToDraw *temp = ps2;
-			for (ParentSpriteToDraw **psd3 = psd2; psd3 > psd; psd3--) {
+			for (auto psd3 = psd2; psd3 > psd; psd3--) {
 				*psd3 = *(psd3 - 1);
 			}
 			*psd = temp;
@@ -1465,9 +1464,7 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 
 static void ViewportDrawParentSprites(const ParentSpriteToSortVector *psd, const ChildScreenSpriteToDrawVector *csstdv)
 {
-	const ParentSpriteToDraw * const *psd_end = psd->End();
-	for (const ParentSpriteToDraw * const *it = psd->Begin(); it != psd_end; it++) {
-		const ParentSpriteToDraw *ps = *it;
+	for (const ParentSpriteToDraw *ps : *psd) {
 		if (ps->image != SPR_EMPTY_BOUNDING_BOX) DrawSpriteViewport(ps->image, ps->pal, ps->x, ps->y, ps->sub);
 
 		int child_idx = ps->first_child;
@@ -1485,9 +1482,7 @@ static void ViewportDrawParentSprites(const ParentSpriteToSortVector *psd, const
  */
 static void ViewportDrawBoundingBoxes(const ParentSpriteToSortVector *psd)
 {
-	const ParentSpriteToDraw * const *psd_end = psd->End();
-	for (const ParentSpriteToDraw * const *it = psd->Begin(); it != psd_end; it++) {
-		const ParentSpriteToDraw *ps = *it;
+	for (const ParentSpriteToDraw *ps : *psd) {
 		Point pt1 = RemapCoords(ps->xmax + 1, ps->ymax + 1, ps->zmax + 1); // top front corner
 		Point pt2 = RemapCoords(ps->xmin    , ps->ymax + 1, ps->zmax + 1); // top left corner
 		Point pt3 = RemapCoords(ps->xmax + 1, ps->ymin    , ps->zmax + 1); // top right corner
@@ -1524,38 +1519,37 @@ static void ViewportDrawDirtyBlocks()
 
 static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *sstdv)
 {
-	const StringSpriteToDraw *ssend = sstdv->End();
-	for (const StringSpriteToDraw *ss = sstdv->Begin(); ss != ssend; ++ss) {
+	for (const StringSpriteToDraw &ss : *sstdv) {
 		TextColour colour = TC_BLACK;
-		bool small = HasBit(ss->width, 15);
-		int w = GB(ss->width, 0, 15);
-		int x = UnScaleByZoom(ss->x, zoom);
-		int y = UnScaleByZoom(ss->y, zoom);
+		bool small = HasBit(ss.width, 15);
+		int w = GB(ss.width, 0, 15);
+		int x = UnScaleByZoom(ss.x, zoom);
+		int y = UnScaleByZoom(ss.y, zoom);
 		int h = VPSM_TOP + (small ? FONT_HEIGHT_SMALL : FONT_HEIGHT_NORMAL) + VPSM_BOTTOM;
 
-		SetDParam(0, ss->params[0]);
-		SetDParam(1, ss->params[1]);
+		SetDParam(0, ss.params[0]);
+		SetDParam(1, ss.params[1]);
 
-		if (ss->colour != INVALID_COLOUR) {
+		if (ss.colour != INVALID_COLOUR) {
 			/* Do not draw signs nor station names if they are set invisible */
-			if (IsInvisibilitySet(TO_SIGNS) && ss->string != STR_WHITE_SIGN) continue;
+			if (IsInvisibilitySet(TO_SIGNS) && ss.string != STR_WHITE_SIGN) continue;
 
-			if (IsTransparencySet(TO_SIGNS) && ss->string != STR_WHITE_SIGN) {
+			if (IsTransparencySet(TO_SIGNS) && ss.string != STR_WHITE_SIGN) {
 				/* Don't draw the rectangle.
 				 * Real colours need the TC_IS_PALETTE_COLOUR flag.
 				 * Otherwise colours from _string_colourmap are assumed. */
-				colour = (TextColour)_colour_gradient[ss->colour][6] | TC_IS_PALETTE_COLOUR;
+				colour = (TextColour)_colour_gradient[ss.colour][6] | TC_IS_PALETTE_COLOUR;
 			} else {
 				/* Draw the rectangle if 'transparent station signs' is off,
 				 * or if we are drawing a general text sign (STR_WHITE_SIGN). */
 				DrawFrameRect(
-					x, y, x + w, y + h, ss->colour,
+					x, y, x + w, y + h, ss.colour,
 					IsTransparencySet(TO_SIGNS) ? FR_TRANSPARENT : FR_NONE
 				);
 			}
 		}
 
-		DrawString(x + VPSM_LEFT, x + w - 1 - VPSM_RIGHT, y + VPSM_TOP, ss->string, colour, SA_HOR_CENTER);
+		DrawString(x + VPSM_LEFT, x + w - 1 - VPSM_RIGHT, y + VPSM_TOP, ss.string, colour, SA_HOR_CENTER);
 	}
 }
 
@@ -1590,9 +1584,8 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 
 	if (_vd.tile_sprites_to_draw.size() != 0) ViewportDrawTileSprites(&_vd.tile_sprites_to_draw);
 
-	ParentSpriteToDraw *psd_end = _vd.parent_sprites_to_draw.End();
-	for (ParentSpriteToDraw *it = _vd.parent_sprites_to_draw.Begin(); it != psd_end; it++) {
-		_vd.parent_sprites_to_sort.push_back(it);
+	for (auto &psd : _vd.parent_sprites_to_draw) {
+		_vd.parent_sprites_to_sort.push_back(&psd);
 	}
 
 	_vp_sprite_sorter(&_vd.parent_sprites_to_sort);

@@ -674,7 +674,7 @@ public:
 
 		UText text = UTEXT_INITIALIZER;
 		UErrorCode status = U_ZERO_ERROR;
-		utext_openUChars(&text, this->utf16_str.Begin(), this->utf16_str.size() - 1, &status);
+		utext_openUChars(&text, this->utf16_str.data(), this->utf16_str.size() - 1, &status);
 		this->char_itr->setText(&text, status);
 		this->word_itr->setText(&text, status);
 		this->char_itr->first();

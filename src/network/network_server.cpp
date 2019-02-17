@@ -2095,8 +2095,8 @@ uint NetworkServerKickOrBanIP(const char *ip, bool ban)
 	/* Add address to ban-list */
 	if (ban) {
 		bool contains = false;
-		for (char **iter = _network_ban_list.Begin(); iter != _network_ban_list.End(); iter++) {
-			if (strcmp(*iter, ip) == 0) {
+		for (char *iter : _network_ban_list) {
+			if (strcmp(iter, ip) == 0) {
 				contains = true;
 				break;
 			}

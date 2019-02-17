@@ -698,8 +698,9 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 		 * Deliberately clear the coa pointer to avoid leaving dangling pointers which could
 		 * inadvertently be dereferenced.
 		 */
-		assert(coa >= _cleared_object_areas.Begin() && coa < _cleared_object_areas.End());
-		size_t coa_index = coa - _cleared_object_areas.Begin();
+		ClearedObjectArea *begin = _cleared_object_areas.data();
+		assert(coa >= begin && coa < begin + _cleared_object_areas.size());
+		size_t coa_index = coa - begin;
 		assert(coa_index < UINT_MAX); // more than 2**32 cleared areas would be a bug in itself
 		coa = NULL;
 

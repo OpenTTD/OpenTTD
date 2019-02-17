@@ -31,10 +31,7 @@
  */
 /* static */ void PoolBase::Clean(PoolType pt)
 {
-	PoolVector *pools = PoolBase::GetPools();
-	PoolBase **end = pools->End();
-	for (PoolBase **ppool = pools->Begin(); ppool != end; ppool++) {
-		PoolBase *pool = *ppool;
+	for (PoolBase *pool : *PoolBase::GetPools()) {
 		if (pool->type & pt) pool->CleanPool();
 	}
 }

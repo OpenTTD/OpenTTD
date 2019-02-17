@@ -182,9 +182,9 @@ void GRFConfig::SetSuitablePalette()
  */
 void GRFConfig::FinalizeParameterInfo()
 {
-	for (GRFParameterInfo **info = this->param_info.Begin(); info != this->param_info.End(); ++info) {
-		if (*info == NULL) continue;
-		(*info)->Finalize();
+	for (GRFParameterInfo *info : this->param_info) {
+		if (info == NULL) continue;
+		info->Finalize();
 	}
 }
 

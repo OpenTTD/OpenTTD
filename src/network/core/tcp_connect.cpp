@@ -93,5 +93,5 @@ void TCPConnecter::Connect()
 /** Kill all connection attempts. */
 /* static */ void TCPConnecter::KillAll()
 {
-	for (TCPConnecter **iter = _tcp_connecters.Begin(); iter != _tcp_connecters.End(); iter++) (*iter)->killed = true;
+	for (TCPConnecter *conn : _tcp_connecters) conn->killed = true;
 }

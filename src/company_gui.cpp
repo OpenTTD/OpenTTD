@@ -640,11 +640,11 @@ private:
 
 	void AddChildren(GUIGroupList *source, GroupID parent, int indent)
 	{
-		for (const Group **g = source->Begin(); g != source->End(); g++) {
-			if ((*g)->parent != parent) continue;
-			this->groups.push_back(*g);
+		for (const Group *g : *source) {
+			if (g->parent != parent) continue;
+			this->groups.push_back(g);
 			this->indents.push_back(indent);
-			AddChildren(source, (*g)->index, indent + 1);
+			AddChildren(source, g->index, indent + 1);
 		}
 	}
 

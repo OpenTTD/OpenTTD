@@ -168,8 +168,8 @@ static byte _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
 int LanguageMap::GetMapping(int newgrf_id, bool gender) const
 {
 	const SmallVector<Mapping, 1> &map = gender ? this->gender_map : this->case_map;
-	for (const Mapping *m = map.Begin(); m != map.End(); m++) {
-		if (m->newgrf_id == newgrf_id) return m->openttd_id;
+	for (const Mapping &m : map) {
+		if (m.newgrf_id == newgrf_id) return m.openttd_id;
 	}
 	return -1;
 }
@@ -183,8 +183,8 @@ int LanguageMap::GetMapping(int newgrf_id, bool gender) const
 int LanguageMap::GetReverseMapping(int openttd_id, bool gender) const
 {
 	const SmallVector<Mapping, 1> &map = gender ? this->gender_map : this->case_map;
-	for (const Mapping *m = map.Begin(); m != map.End(); m++) {
-		if (m->openttd_id == openttd_id) return m->newgrf_id;
+	for (const Mapping &m : map) {
+		if (m.openttd_id == openttd_id) return m.newgrf_id;
 	}
 	return -1;
 }
@@ -194,8 +194,8 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 	/** Clean everything up. */
 	~UnmappedChoiceList()
 	{
-		for (SmallPair<byte, char *> *p = this->strings.Begin(); p < this->strings.End(); p++) {
-			free(p->second);
+		for (SmallPair<byte, char *> p : this->strings) {
+			free(p.second);
 		}
 	}
 

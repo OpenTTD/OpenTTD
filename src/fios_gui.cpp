@@ -57,9 +57,8 @@ void LoadCheckData::Clear()
 	this->current_date = 0;
 	memset(&this->settings, 0, sizeof(this->settings));
 
-	const CompanyPropertiesMap::iterator end = this->companies.End();
-	for (CompanyPropertiesMap::iterator it = this->companies.Begin(); it != end; it++) {
-		delete it->second;
+	for (auto &pair : this->companies) {
+		delete pair.second;
 	}
 	companies.clear();
 
@@ -531,10 +530,9 @@ public:
 						if (y > y_max) break;
 
 						/* Companies / AIs */
-						CompanyPropertiesMap::const_iterator end = _load_check_data.companies.End();
-						for (CompanyPropertiesMap::const_iterator it = _load_check_data.companies.Begin(); it != end; it++) {
-							SetDParam(0, it->first + 1);
-							const CompanyProperties &c = *it->second;
+						for (auto &pair : _load_check_data.companies) {
+							SetDParam(0, pair.first + 1);
+							const CompanyProperties &c = *pair.second;
 							if (c.name != NULL) {
 								SetDParam(1, STR_JUST_RAW_STRING);
 								SetDParamStr(2, c.name);

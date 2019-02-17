@@ -1622,8 +1622,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 
 	if (quantity == 0) return error.Failed() ? error : CommandCost(STR_ERROR_THERE_IS_NO_STATION);
 
-	for (T **stp = affected_stations.Begin(); stp != affected_stations.End(); stp++) {
-		T *st = *stp;
+	for (T *st : affected_stations) {
 
 		/* now we need to make the "spanned" area of the railway station smaller
 		 * if we deleted something at the edges.
@@ -1667,8 +1666,7 @@ CommandCost CmdRemoveFromRailStation(TileIndex start, DoCommandFlag flags, uint3
 	if (ret.Failed()) return ret;
 
 	/* Do all station specific functions here. */
-	for (Station **stp = affected_stations.Begin(); stp != affected_stations.End(); stp++) {
-		Station *st = *stp;
+	for (Station *st : affected_stations) {
 
 		if (st->train_station.tile == INVALID_TILE) SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_TRAINS);
 		st->MarkTilesDirty(false);
