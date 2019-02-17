@@ -303,8 +303,8 @@ int NetworkHTTPSocketHandler::Receive()
 	struct timeval tv;
 
 	FD_ZERO(&read_fd);
-	for (NetworkHTTPSocketHandler **iter = _http_connections.Begin(); iter < _http_connections.End(); iter++) {
-		FD_SET((*iter)->sock, &read_fd);
+	for (NetworkHTTPSocketHandler *handler : _http_connections) {
+		FD_SET(handler->sock, &read_fd);
 	}
 
 	tv.tv_sec = tv.tv_usec = 0; // don't block at all.

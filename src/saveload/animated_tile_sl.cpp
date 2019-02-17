@@ -25,8 +25,8 @@ extern SmallVector<TileIndex, 256> _animated_tiles;
  */
 static void Save_ANIT()
 {
-	SlSetLength(_animated_tiles.size() * sizeof(*_animated_tiles.Begin()));
-	SlArray(_animated_tiles.Begin(), _animated_tiles.size(), SLE_UINT32);
+	SlSetLength(_animated_tiles.size() * sizeof(_animated_tiles.front()));
+	SlArray(_animated_tiles.data(), _animated_tiles.size(), SLE_UINT32);
 }
 
 /**
@@ -47,10 +47,10 @@ static void Load_ANIT()
 		return;
 	}
 
-	uint count = (uint)SlGetFieldLength() / sizeof(*_animated_tiles.Begin());
+	uint count = (uint)SlGetFieldLength() / sizeof(_animated_tiles.front());
 	_animated_tiles.clear();
 	_animated_tiles.resize(_animated_tiles.size() + count);
-	SlArray(_animated_tiles.Begin(), count, SLE_UINT32);
+	SlArray(_animated_tiles.data(), count, SLE_UINT32);
 }
 
 /**

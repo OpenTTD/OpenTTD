@@ -144,9 +144,9 @@ void WindowDesc::LoadFromConfig()
 {
 	IniFile *ini = new IniFile();
 	ini->LoadFromDisk(_windows_file, NO_DIRECTORY);
-	for (WindowDesc **it = _window_descs->Begin(); it != _window_descs->End(); ++it) {
-		if ((*it)->ini_key == NULL) continue;
-		IniLoadWindowSettings(ini, (*it)->ini_key, *it);
+	for (WindowDesc *wd : *_window_descs) {
+		if (wd->ini_key == NULL) continue;
+		IniLoadWindowSettings(ini, wd->ini_key, wd);
 	}
 	delete ini;
 }
@@ -166,13 +166,13 @@ static int CDECL DescSorter(WindowDesc * const *a, WindowDesc * const *b)
 void WindowDesc::SaveToConfig()
 {
 	/* Sort the stuff to get a nice ini file on first write */
-	QSortT(_window_descs->Begin(), _window_descs->size(), DescSorter);
+	QSortT(_window_descs->data(), _window_descs->size(), DescSorter);
 
 	IniFile *ini = new IniFile();
 	ini->LoadFromDisk(_windows_file, NO_DIRECTORY);
-	for (WindowDesc **it = _window_descs->Begin(); it != _window_descs->End(); ++it) {
-		if ((*it)->ini_key == NULL) continue;
-		IniSaveWindowSettings(ini, (*it)->ini_key, *it);
+	for (WindowDesc *wd : *_window_descs) {
+		if (wd->ini_key == NULL) continue;
+		IniSaveWindowSettings(ini, wd->ini_key, wd);
 	}
 	ini->SaveToDisk(_windows_file);
 	delete ini;
@@ -330,8 +330,8 @@ Scrollbar *Window::GetScrollbar(uint widnum)
  */
 const QueryString *Window::GetQueryString(uint widnum) const
 {
-	const SmallMap<int, QueryString*>::Pair *query = this->querystrings.Find(widnum);
-	return query != this->querystrings.End() ? query->second : NULL;
+	auto query = this->querystrings.Find(widnum);
+	return query != this->querystrings.end() ? query->second : NULL;
 }
 
 /**
@@ -1944,8 +1944,8 @@ static void DecreaseWindowCounters()
 		}
 
 		/* Handle editboxes */
-		for (SmallMap<int, QueryString*>::Pair *it = w->querystrings.Begin(); it != w->querystrings.End(); ++it) {
-			it->second->HandleEditBox(w, it->first);
+		for (SmallMap<int, QueryString*>::Pair &pair : w->querystrings) {
+			pair.second->HandleEditBox(w, pair.first);
 		}
 
 		w->OnMouseLoop();
@@ -3252,8 +3252,9 @@ void Window::InvalidateData(int data, bool gui_scope)
  */
 void Window::ProcessScheduledInvalidations()
 {
-	for (int *data = this->scheduled_invalidation_data.Begin(); this->window_class != WC_INVALID && data != this->scheduled_invalidation_data.End(); data++) {
-		this->OnInvalidateData(*data, true);
+	for (int data : this->scheduled_invalidation_data) {
+		if (this->window_class == WC_INVALID) break;
+		this->OnInvalidateData(data, true);
 	}
 	this->scheduled_invalidation_data.clear();
 }

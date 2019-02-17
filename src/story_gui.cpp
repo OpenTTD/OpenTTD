@@ -130,8 +130,7 @@ protected:
 	int GetSelPageNum() const
 	{
 		int page_number = 0;
-		for (const StoryPage *const*iter = this->story_pages.Begin(); iter != this->story_pages.End(); iter++) {
-			const StoryPage *p = *iter;
+		for (const StoryPage *p : this->story_pages) {
 			if (p->index == this->selected_page_id) {
 				return page_number;
 			}
@@ -148,7 +147,7 @@ protected:
 		/* Verify that the selected page exist. */
 		if (!_story_page_pool.IsValidID(this->selected_page_id)) return false;
 
-		return (*this->story_pages.Begin())->index == this->selected_page_id;
+		return this->story_pages.front()->index == this->selected_page_id;
 	}
 
 	/**
@@ -160,7 +159,7 @@ protected:
 		if (!_story_page_pool.IsValidID(this->selected_page_id)) return false;
 
 		if (this->story_pages.size() <= 1) return true;
-		const StoryPage *last = *(this->story_pages.End() - 1);
+		const StoryPage *last = this->story_pages.back();
 		return last->index == this->selected_page_id;
 	}
 
@@ -195,8 +194,7 @@ protected:
 		/* Find the last available page which is previous to the current selected page. */
 		const StoryPage *last_available;
 		last_available = NULL;
-		for (const StoryPage *const*iter = this->story_pages.Begin(); iter != this->story_pages.End(); iter++) {
-			const StoryPage *p = *iter;
+		for (const StoryPage *p : this->story_pages) {
 			if (p->index == this->selected_page_id) {
 				if (last_available == NULL) return; // No previous page available.
 				this->SetSelectedPage(last_available->index);
@@ -214,12 +212,12 @@ protected:
 		if (!_story_page_pool.IsValidID(this->selected_page_id)) return;
 
 		/* Find selected page. */
-		for (const StoryPage *const*iter = this->story_pages.Begin(); iter != this->story_pages.End(); iter++) {
+		for (auto iter = this->story_pages.begin(); iter != this->story_pages.end(); iter++) {
 			const StoryPage *p = *iter;
 			if (p->index == this->selected_page_id) {
 				/* Select the page after selected page. */
 				iter++;
-				if (iter != this->story_pages.End()) {
+				if (iter != this->story_pages.end()) {
 					this->SetSelectedPage((*iter)->index);
 				}
 				return;
@@ -234,8 +232,7 @@ protected:
 	{
 		DropDownList *list = new DropDownList();
 		uint16 page_num = 1;
-		for (const StoryPage *const*iter = this->story_pages.Begin(); iter != this->story_pages.End(); iter++) {
-			const StoryPage *p = *iter;
+		for (const StoryPage *p : this->story_pages) {
 			bool current_page = p->index == this->selected_page_id;
 			DropDownListStringItem *item = NULL;
 			if (p->title != NULL) {
@@ -353,8 +350,7 @@ protected:
 		uint height = GetHeadHeight(max_width);
 
 		/* Body */
-		for (const StoryPageElement **iter = this->story_page_elements.Begin(); iter != this->story_page_elements.End(); iter++) {
-			const StoryPageElement *pe = *iter;
+		for (const StoryPageElement *pe : this->story_page_elements) {
 			height += element_vertical_dist;
 			height += GetPageElementHeight(*pe, max_width);
 		}
@@ -532,8 +528,7 @@ public:
 		y_offset = DrawStringMultiLine(0, right - x, y_offset, bottom - y, STR_STORY_BOOK_TITLE, TC_BLACK, SA_TOP | SA_HOR_CENTER);
 
 		/* Page elements */
-		for (const StoryPageElement *const*iter = this->story_page_elements.Begin(); iter != this->story_page_elements.End(); iter++) {
-			const StoryPageElement *const pe = *iter;
+		for (const StoryPageElement *const pe : this->story_page_elements) {
 			y_offset += line_height; // margin to previous element
 
 			switch (pe->type) {
@@ -650,8 +645,7 @@ public:
 				/* Detect if a page element was clicked. */
 				uint y = head_height;
 				uint element_vertical_dist = FONT_HEIGHT_NORMAL;
-				for (const StoryPageElement *const*iter = this->story_page_elements.Begin(); iter != this->story_page_elements.End(); iter++) {
-					const StoryPageElement *const pe = *iter;
+				for (const StoryPageElement *const pe : this->story_page_elements) {
 
 					y += element_vertical_dist; // margin row
 

@@ -295,13 +295,12 @@ CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1,
 		int num_vehs = vehs.size();
 
 		if (num_vehs >= 2) {
-			QSortT(vehs.Begin(), vehs.size(), &VehicleTimetableSorter);
+			QSortT(vehs.data(), vehs.size(), &VehicleTimetableSorter);
 		}
 
 		int idx = vehs.begin() - std::find(vehs.begin(), vehs.end(), v);
 
-		for (Vehicle **viter = vehs.Begin(); viter != vehs.End(); viter++) {
-			Vehicle *w = *viter;
+		for (Vehicle *w : vehs) {
 
 			w->lateness_counter = 0;
 			ClrBit(w->vehicle_flags, VF_TIMETABLE_STARTED);

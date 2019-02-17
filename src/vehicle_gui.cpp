@@ -106,8 +106,8 @@ const StringID BaseVehicleListWindow::vehicle_depot_name[] = {
 uint GetUnitNumberDigits(VehicleList &vehicles)
 {
 	uint unitnumber = 0;
-	for (const Vehicle **v = vehicles.Begin(); v != vehicles.End(); v++) {
-		unitnumber = max<uint>(unitnumber, (*v)->unitnumber);
+	for (const Vehicle *v : vehicles) {
+		unitnumber = max<uint>(unitnumber, v->unitnumber);
 	}
 
 	if (unitnumber >= 10000) return 5;
@@ -194,7 +194,7 @@ void BaseVehicleListWindow::SortVehicleList()
 void DepotSortList(VehicleList *list)
 {
 	if (list->size() < 2) return;
-	QSortT(list->Begin(), list->size(), &VehicleNumberSorter);
+	QSortT(list->data(), list->size(), &VehicleNumberSorter);
 }
 
 /** draw the vehicle profit button in the vehicle list window. */

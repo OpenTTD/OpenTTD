@@ -453,9 +453,8 @@ ClearedObjectArea *FindClearedObject(TileIndex tile)
 {
 	TileArea ta = TileArea(tile, 1, 1);
 
-	const ClearedObjectArea *end = _cleared_object_areas.End();
-	for (ClearedObjectArea *coa = _cleared_object_areas.Begin(); coa != end; coa++) {
-		if (coa->area.Intersects(ta)) return coa;
+	for (ClearedObjectArea &coa : _cleared_object_areas) {
+		if (coa.area.Intersects(ta)) return &coa;
 	}
 
 	return NULL;

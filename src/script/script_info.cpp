@@ -26,8 +26,8 @@ ScriptInfo::~ScriptInfo()
 		free((*it).name);
 		free((*it).description);
 		if (it->labels != NULL) {
-			for (LabelMapping::iterator it2 = (*it).labels->Begin(); it2 != (*it).labels->End(); it2++) {
-				free(it2->second);
+			for (auto &lbl_map : *(*it).labels) {
+				free(lbl_map.second);
 			}
 			delete it->labels;
 		}

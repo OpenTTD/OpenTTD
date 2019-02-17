@@ -147,7 +147,7 @@ struct StringListReader : StringReader {
 	 * @param translation Are we reading a translation?
 	 */
 	StringListReader(StringData &data, const LanguageStrings *strings, bool master, bool translation) :
-			StringReader(data, strings->language, master, translation), p(strings->lines.Begin()), end(strings->lines.End())
+			StringReader(data, strings->language, master, translation), p(strings->lines.data()), end(p + strings->lines.size())
 	{
 	}
 
@@ -318,13 +318,13 @@ void GameStrings::Compile()
 	StringNameWriter id_writer(&this->string_names);
 	id_writer.WriteHeader(data);
 
-	for (LanguageStrings **p = this->raw_strings.Begin(); p != this->raw_strings.End(); p++) {
+	for (LanguageStrings *p : this->raw_strings) {
 		data.FreeTranslation();
-		StringListReader translation_reader(data, *p, false, strcmp((*p)->language, "english") != 0);
+		StringListReader translation_reader(data, p, false, strcmp(p->language, "english") != 0);
 		translation_reader.ParseFile();
 		if (_errors != 0) throw std::exception();
 
-		this->compiled_strings.push_back(new LanguageStrings((*p)->language));
+		this->compiled_strings.push_back(new LanguageStrings(p->language));
 		TranslationWriter writer(&this->compiled_strings.back()->lines);
 		writer.WriteLang(data);
 	}
@@ -360,10 +360,11 @@ void RegisterGameTranslation(Squirrel *engine)
 	if (SQ_FAILED(sq_get(vm, -2))) return;
 
 	int idx = 0;
-	for (const char * const *p = _current_data->string_names.Begin(); p != _current_data->string_names.End(); p++, idx++) {
-		sq_pushstring(vm, *p, -1);
+	for (const char * const p : _current_data->string_names) {
+		sq_pushstring(vm, p, -1);
 		sq_pushinteger(vm, idx);
 		sq_rawset(vm, -3);
+		idx++;
 	}
 
 	sq_pop(vm, 2);
@@ -391,9 +392,9 @@ void ReconsiderGameScriptLanguage()
 	assert(language != NULL);
 	language++;
 
-	for (LanguageStrings **p = _current_data->compiled_strings.Begin(); p != _current_data->compiled_strings.End(); p++) {
-		if (strcmp((*p)->language, language) == 0) {
-			_current_data->cur_language = *p;
+	for (LanguageStrings *p : _current_data->compiled_strings) {
+		if (strcmp(p->language, language) == 0) {
+			_current_data->cur_language = p;
 			return;
 		}
 	}

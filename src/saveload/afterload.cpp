@@ -2197,12 +2197,12 @@ bool AfterLoadGame()
 
 		extern SmallVector<TileIndex, 256> _animated_tiles;
 
-		for (TileIndex *tile = _animated_tiles.Begin(); tile < _animated_tiles.End(); /* Nothing */) {
+		for (auto tile = _animated_tiles.begin(); tile < _animated_tiles.end(); /* Nothing */) {
 			/* Remove if tile is not animated */
 			bool remove = _tile_type_procs[GetTileType(*tile)]->animate_tile_proc == NULL;
 
 			/* and remove if duplicate */
-			for (TileIndex *j = _animated_tiles.Begin(); !remove && j < tile; j++) {
+			for (auto j = _animated_tiles.begin(); !remove && j < tile; j++) {
 				remove = *tile == *j;
 			}
 
@@ -2981,9 +2981,12 @@ bool AfterLoadGame()
 			while (cur_skip > skip_frames[0]) {
 				RoadVehicle *u = v;
 				RoadVehicle *prev = NULL;
-				for (uint *it = skip_frames.Begin(); it != skip_frames.End(); ++it, prev = u, u = u->Next()) {
+				for (uint sf : skip_frames) {
 					extern bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev);
-					if (*it >= cur_skip) IndividualRoadVehicleController(u, prev);
+					if (sf >= cur_skip) IndividualRoadVehicleController(u, prev);
+
+					prev = u;
+					u = u->Next();
 				}
 				cur_skip--;
 			}

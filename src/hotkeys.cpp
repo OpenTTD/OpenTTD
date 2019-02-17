@@ -316,11 +316,11 @@ static void SaveLoadHotkeys(bool save)
 	IniFile *ini = new IniFile();
 	ini->LoadFromDisk(_hotkeys_file, NO_DIRECTORY);
 
-	for (HotkeyList **list = _hotkey_lists->Begin(); list != _hotkey_lists->End(); ++list) {
+	for (HotkeyList *list : *_hotkey_lists) {
 		if (save) {
-			(*list)->Save(ini);
+			list->Save(ini);
 		} else {
-			(*list)->Load(ini);
+			list->Load(ini);
 		}
 	}
 
@@ -343,11 +343,11 @@ void SaveHotkeysToConfig()
 
 void HandleGlobalHotkeys(WChar key, uint16 keycode)
 {
-	for (HotkeyList **list = _hotkey_lists->Begin(); list != _hotkey_lists->End(); ++list) {
-		if ((*list)->global_hotkey_handler == NULL) continue;
+	for (HotkeyList *list : *_hotkey_lists) {
+		if (list->global_hotkey_handler == NULL) continue;
 
-		int hotkey = (*list)->CheckMatch(keycode, true);
-		if (hotkey >= 0 && ((*list)->global_hotkey_handler(hotkey) == ES_HANDLED)) return;
+		int hotkey = list->CheckMatch(keycode, true);
+		if (hotkey >= 0 && (list->global_hotkey_handler(hotkey) == ES_HANDLED)) return;
 	}
 }
 

@@ -29,8 +29,8 @@
 void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 {
 	const __m128i mask_ptest = _mm_setr_epi8(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0,  0,  0,  0);
-	ParentSpriteToDraw ** const psdvend = psdv->End();
-	ParentSpriteToDraw **psd = psdv->Begin();
+	auto const psdvend = psdv->end();
+	auto psd = psdv->begin();
 	while (psd != psdvend) {
 		ParentSpriteToDraw * const ps = *psd;
 
@@ -41,7 +41,7 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 
 		ps->comparison_done = true;
 
-		for (ParentSpriteToDraw **psd2 = psd + 1; psd2 != psdvend; psd2++) {
+		for (auto psd2 = psd + 1; psd2 != psdvend; psd2++) {
 			ParentSpriteToDraw * const ps2 = *psd2;
 
 			if (ps2->comparison_done) continue;
@@ -85,7 +85,7 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 
 			/* Move ps2 in front of ps */
 			ParentSpriteToDraw * const temp = ps2;
-			for (ParentSpriteToDraw **psd3 = psd2; psd3 > psd; psd3--) {
+			for (auto psd3 = psd2; psd3 > psd; psd3--) {
 				*psd3 = *(psd3 - 1);
 			}
 			*psd = temp;

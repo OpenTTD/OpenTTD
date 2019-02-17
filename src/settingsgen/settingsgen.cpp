@@ -136,8 +136,8 @@ public:
 	 */
 	void Write(FILE *out_fp) const
 	{
-		for (const OutputBuffer *out_data = this->output_buffer.Begin(); out_data != this->output_buffer.End(); out_data++) {
-			out_data->Write(out_fp);
+		for (const OutputBuffer &out_data : output_buffer) {
+			out_data.Write(out_fp);
 		}
 	}
 

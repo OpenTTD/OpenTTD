@@ -83,46 +83,6 @@ public:
 	}
 
 	~SmallVector() = default;
-
-	/**
-	 * Get the pointer to the first item (const)
-	 *
-	 * @return the pointer to the first item
-	 */
-	inline const T *Begin() const
-	{
-		return std::vector<T>::data();
-	}
-
-	/**
-	 * Get the pointer to the first item
-	 *
-	 * @return the pointer to the first item
-	 */
-	inline T *Begin()
-	{
-		return std::vector<T>::data();
-	}
-
-	/**
-	 * Get the pointer behind the last valid item (const)
-	 *
-	 * @return the pointer behind the last valid item
-	 */
-	inline const T *End() const
-	{
-		return std::vector<T>::data() + std::vector<T>::size();
-	}
-
-	/**
-	 * Get the pointer behind the last valid item
-	 *
-	 * @return the pointer behind the last valid item
-	 */
-	inline T *End()
-	{
-		return std::vector<T>::data() + std::vector<T>::size();
-	}
 };
 
 /**

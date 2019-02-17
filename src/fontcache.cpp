@@ -411,8 +411,8 @@ FreeTypeFontCache::~FreeTypeFontCache()
 	this->face = NULL;
 	this->ClearFontCache();
 
-	for (FontTable::iterator iter = this->font_tables.Begin(); iter != this->font_tables.End(); iter++) {
-		free(iter->second.second);
+	for (auto &iter : this->font_tables) {
+		free(iter.second.second);
 	}
 }
 
@@ -633,7 +633,7 @@ GlyphID FreeTypeFontCache::MapCharToGlyph(WChar key)
 const void *FreeTypeFontCache::GetFontTable(uint32 tag, size_t &length)
 {
 	const FontTable::iterator iter = this->font_tables.Find(tag);
-	if (iter != this->font_tables.End()) {
+	if (iter != this->font_tables.data() + this->font_tables.size()) {
 		length = iter->second.first;
 		return iter->second.second;
 	}

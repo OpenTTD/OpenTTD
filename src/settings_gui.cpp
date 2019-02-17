@@ -215,7 +215,7 @@ struct GameOptionsWindow : Window {
 					if (i == CURRENCY_CUSTOM) continue;
 					list->push_back(new DropDownListStringItem(*items, i, HasBit(disabled, i)));
 				}
-				QSortT(list->Begin(), list->size(), DropDownListStringItem::NatSortFunc);
+				QSortT(list->data(), list->size(), DropDownListStringItem::NatSortFunc);
 
 				/* Append custom currency at the end */
 				list->push_back(new DropDownListItem(-1, false)); // separator line
@@ -253,7 +253,7 @@ struct GameOptionsWindow : Window {
 					int result = _nb_orig_names + i;
 					list->push_back(new DropDownListStringItem(_grf_names[i], result, enabled_item != result && enabled_item >= 0));
 				}
-				QSortT(list->Begin(), list->size(), DropDownListStringItem::NatSortFunc);
+				QSortT(list->data(), list->size(), DropDownListStringItem::NatSortFunc);
 
 				int newgrf_size = list->size();
 				/* Insert newgrf_names at the top of the list */
@@ -266,7 +266,7 @@ struct GameOptionsWindow : Window {
 				for (int i = 0; i < _nb_orig_names; i++) {
 					list->push_back(new DropDownListStringItem(STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + i, i, enabled_item != i && enabled_item >= 0));
 				}
-				QSortT(list->Begin() + newgrf_size, list->size() - newgrf_size, DropDownListStringItem::NatSortFunc);
+				QSortT(list->data() + newgrf_size, list->size() - newgrf_size, DropDownListStringItem::NatSortFunc);
 				break;
 			}
 
@@ -286,7 +286,7 @@ struct GameOptionsWindow : Window {
 					if (&_languages[i] == _current_language) *selected_index = i;
 					list->push_back(new DropDownListStringItem(SPECSTR_LANGUAGE_START + i, i, false));
 				}
-				QSortT(list->Begin(), list->size(), DropDownListStringItem::NatSortFunc);
+				QSortT(list->data(), list->size(), DropDownListStringItem::NatSortFunc);
 				break;
 			}
 
@@ -432,11 +432,11 @@ struct GameOptionsWindow : Window {
 				DropDownList *list = this->BuildDropDownList(widget, &selected);
 				if (list != NULL) {
 					/* Find the biggest item for the default size. */
-					for (const DropDownListItem * const *it = list->Begin(); it != list->End(); it++) {
+					for (const DropDownListItem * const ddli : *list) {
 						Dimension string_dim;
-						int width = (*it)->Width();
+						int width = ddli->Width();
 						string_dim.width = width + padding.width;
-						string_dim.height = (*it)->Height(width) + padding.height;
+						string_dim.height = ddli->Height(width) + padding.height;
 						*size = maxdim(*size, string_dim);
 					}
 					delete list;

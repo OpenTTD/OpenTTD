@@ -837,8 +837,7 @@ static void RestoreTrainBackup(TrainList &list)
 
 	Train *prev = NULL;
 	/* Iterate over the list and rebuild it. */
-	for (Train **iter = list.Begin(); iter != list.End(); iter++) {
-		Train *t = *iter;
+	for (Train *t : list) {
 		if (prev != NULL) {
 			prev->SetNext(t);
 		} else if (t->Previous() != NULL) {

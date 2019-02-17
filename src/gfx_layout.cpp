@@ -196,13 +196,13 @@ public:
 			/* ICU's ParagraphLayout cannot handle empty strings, so fake one. */
 			buff[0] = ' ';
 			length = 1;
-			fontMapping.End()[-1].first++;
+			fontMapping.back().first++;
 		}
 
 		/* Fill ICU's FontRuns with the right data. */
 		icu::FontRuns runs(fontMapping.size());
-		for (FontMap::iterator iter = fontMapping.Begin(); iter != fontMapping.End(); iter++) {
-			runs.add(iter->second, iter->first);
+		for (auto &pair : fontMapping) {
+			runs.add(pair.second, pair.first);
 		}
 
 		LEErrorCode status = LE_NO_ERROR;
@@ -419,8 +419,8 @@ int FallbackParagraphLayout::FallbackVisualRun::GetLeading() const
 int FallbackParagraphLayout::FallbackLine::GetLeading() const
 {
 	int leading = 0;
-	for (const FallbackVisualRun * const *run = this->Begin(); run != this->End(); run++) {
-		leading = max(leading, (*run)->GetLeading());
+	for (const FallbackVisualRun * const &run : *this) {
+		leading = max(leading, run->GetLeading());
 	}
 
 	return leading;
@@ -498,12 +498,12 @@ const ParagraphLayouter::Line *FallbackParagraphLayout::NextLine(int max_width)
 	if (*this->buffer == '\0') {
 		/* Only a newline. */
 		this->buffer = NULL;
-		l->push_back(new FallbackVisualRun(this->runs.Begin()->second, this->buffer, 0, 0));
+		l->push_back(new FallbackVisualRun(this->runs.front().second, this->buffer, 0, 0));
 		return l;
 	}
 
 	int offset = this->buffer - this->buffer_begin;
-	FontMap::iterator iter = this->runs.Begin();
+	FontMap::iterator iter = this->runs.data();
 	while (iter->first <= offset) {
 		iter++;
 		assert(iter != this->runs.End());
@@ -733,9 +733,9 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 Dimension Layouter::GetBounds()
 {
 	Dimension d = { 0, 0 };
-	for (const ParagraphLayouter::Line **l = this->Begin(); l != this->End(); l++) {
-		d.width = max<uint>(d.width, (*l)->GetWidth());
-		d.height += (*l)->GetLeading();
+	for (const ParagraphLayouter::Line *l : *this) {
+		d.width = max<uint>(d.width, l->GetWidth());
+		d.height += l->GetLeading();
 	}
 	return d;
 }
@@ -757,12 +757,12 @@ Point Layouter::GetCharPosition(const char *ch) const
 		size_t len = Utf8Decode(&c, str);
 		if (c == '\0' || c == '\n') break;
 		str += len;
-		index += (*this->Begin())->GetInternalCharLength(c);
+		index += this->front()->GetInternalCharLength(c);
 	}
 
 	if (str == ch) {
 		/* Valid character. */
-		const ParagraphLayouter::Line *line = *this->Begin();
+		const ParagraphLayouter::Line *line = this->front();
 
 		/* Pointer to the end-of-string/line marker? Return total line width. */
 		if (*ch == '\0' || *ch == '\n') {
@@ -795,7 +795,7 @@ Point Layouter::GetCharPosition(const char *ch) const
  */
 const char *Layouter::GetCharAtPosition(int x) const
 {
-	const ParagraphLayouter::Line *line = *this->Begin();
+	const ParagraphLayouter::Line *line = this->front();
 
 	for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
 		const ParagraphLayouter::VisualRun *run = line->GetVisualRun(run_index);
@@ -844,8 +844,8 @@ Font *Layouter::GetFont(FontSize size, TextColour colour)
  */
 void Layouter::ResetFontCache(FontSize size)
 {
-	for (FontColourMap::iterator it = fonts[size].Begin(); it != fonts[size].End(); ++it) {
-		delete it->second;
+	for (auto &pair : fonts[size]) {
+		delete pair.second;
 	}
 	fonts[size].clear();
 

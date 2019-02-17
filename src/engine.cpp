@@ -511,12 +511,12 @@ void EngineOverrideManager::ResetToDefaultMapping()
  */
 EngineID EngineOverrideManager::GetID(VehicleType type, uint16 grf_local_id, uint32 grfid)
 {
-	const EngineIDMapping *end = this->End();
 	EngineID index = 0;
-	for (const EngineIDMapping *eid = this->Begin(); eid != end; eid++, index++) {
-		if (eid->type == type && eid->grfid == grfid && eid->internal_id == grf_local_id) {
+	for (const EngineIDMapping &eid : *this) {
+		if (eid.type == type && eid.grfid == grfid && eid.internal_id == grf_local_id) {
 			return index;
 		}
+		index++;
 	}
 	return INVALID_ENGINE;
 }
@@ -549,14 +549,14 @@ void SetupEngines()
 	_engine_pool.CleanPool();
 
 	assert(_engine_mngr.size() >= _engine_mngr.NUM_DEFAULT_ENGINES);
-	const EngineIDMapping *end = _engine_mngr.End();
 	uint index = 0;
-	for (const EngineIDMapping *eid = _engine_mngr.Begin(); eid != end; eid++, index++) {
+	for (const EngineIDMapping &eid : _engine_mngr) {
 		/* Assert is safe; there won't be more than 256 original vehicles
 		 * in any case, and we just cleaned the pool. */
 		assert(Engine::CanAllocateItem());
-		const Engine *e = new Engine(eid->type, eid->internal_id);
+		const Engine *e = new Engine(eid.type, eid.internal_id);
 		assert(e->index == index);
+		index++;
 	}
 }
 

@@ -1045,7 +1045,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 			if (cmdp != NULL) PutCommandString(&buffer, cmdp);
 
 			this->WriteLength(buffer.size());
-			this->Write(buffer.Begin(), buffer.size());
+			this->Write(buffer.data(), buffer.size());
 			buffer.clear();
 		}
 	}

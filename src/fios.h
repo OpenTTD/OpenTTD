@@ -139,7 +139,7 @@ public:
 	 */
 	inline const FiosItem *Begin() const
 	{
-		return this->files.Begin();
+		return this->files.data();
 	}
 
 	/**
@@ -148,7 +148,7 @@ public:
 	 */
 	inline const FiosItem *End() const
 	{
-		return this->files.End();
+		return this->Begin() + this->Length();
 	}
 
 	/**

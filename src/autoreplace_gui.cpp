@@ -183,8 +183,8 @@ class ReplaceVehicleWindow : public Window {
 				this->vscroll[1]->SetCount(this->engines[1].size());
 				if (this->reset_sel_engine && this->sel_engine[1] != INVALID_ENGINE) {
 					int position = 0;
-					for (EngineID *it = this->engines[1].Begin(); it != this->engines[1].End(); ++it) {
-						if (*it == this->sel_engine[1]) break;
+					for (EngineID &eid : this->engines[1]) {
+						if (eid == this->sel_engine[1]) break;
 						++position;
 					}
 					this->vscroll[1]->ScrollTowards(position);

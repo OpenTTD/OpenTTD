@@ -751,7 +751,7 @@ static void MidiThreadProc(void *)
 				block_time = playback_start_time + block.realtime * MIDITIME_TO_REFTIME;
 				DEBUG(driver, 9, "DMusic thread: Streaming block " PRINTF_SIZE " (cur=" OTTD_PRINTF64 ", block=" OTTD_PRINTF64 ")", current_block, (long long)(current_time / MS_TO_REFTIME), (long long)(block_time / MS_TO_REFTIME));
 
-				byte *data = block.data.Begin();
+				byte *data = block.data.data();
 				size_t remaining = block.data.size();
 				byte last_status = 0;
 				while (remaining > 0) {

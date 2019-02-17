@@ -632,8 +632,8 @@ void NetworkAddServer(const char *b)
  */
 void GetBindAddresses(NetworkAddressList *addresses, uint16 port)
 {
-	for (char **iter = _network_bind_list.Begin(); iter != _network_bind_list.End(); iter++) {
-		addresses->emplace_back(*iter, port);
+	for (char *iter : _network_bind_list) {
+		addresses->emplace_back(iter, port);
 	}
 
 	/* No address, so bind to everything. */

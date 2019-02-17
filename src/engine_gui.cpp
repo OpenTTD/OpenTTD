@@ -329,7 +329,7 @@ void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare)
 	/* out-of-bounds access at the next line for size == 0 (even with operator[] at some systems)
 	 * generally, do not sort if there are less than 2 items */
 	if (size < 2) return;
-	QSortT(el->Begin(), size, compare);
+	QSortT(el->data(), size, compare);
 }
 
 /**

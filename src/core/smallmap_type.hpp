@@ -55,12 +55,13 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 * @param key key to find
 	 * @return &Pair(key, data) if found, this->End() if not
 	 */
-	inline const Pair *Find(const T &key) const
+	inline typename std::vector<Pair>::const_iterator Find(const T &key) const
 	{
-		for (uint i = 0; i < std::vector<Pair>::size(); i++) {
-			if (key == std::vector<Pair>::operator[](i).first) return &std::vector<Pair>::operator[](i);
+		typename std::vector<Pair>::const_iterator it;
+		for (it = std::vector<Pair>::begin(); it != std::vector<Pair>::end(); it++) {
+			if (key == it->first) return it;
 		}
-		return this->End();
+		return it;
 	}
 
 	/**
@@ -114,7 +115,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 */
 	inline void Erase(Pair *pair)
 	{
-		assert(pair >= this->Begin() && pair < this->End());
+		assert(pair >= std::vector<Pair>::data() && pair < this->End());
 		auto distance = pair - std::vector<Pair>::data();
 		std::vector<Pair>::erase(std::vector<Pair>::begin() + distance);
 	}
@@ -166,7 +167,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 
 	inline void SortByKey()
 	{
-		QSortT(this->Begin(), std::vector<Pair>::size(), KeySorter);
+		QSortT(std::vector<Pair>::data(), std::vector<Pair>::size(), KeySorter);
 	}
 
 	static int CDECL KeySorter(const Pair *a, const Pair *b)

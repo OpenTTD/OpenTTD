@@ -336,7 +336,7 @@ static bool FixupMidiData(MidiFile &target)
 			last_ticktime = block.ticktime;
 		} else {
 			byte *datadest = grow(merged_blocks.back().data, block.data.size());
-			memcpy(datadest, block.data.Begin(), block.data.size());
+			memcpy(datadest, block.data.data(), block.data.size());
 		}
 	}
 	std::swap(merged_blocks, target.blocks);
@@ -940,8 +940,8 @@ bool MidiFile::WriteSMF(const char *filename)
 		}
 
 		/* Write each block data command */
-		byte *dp = block.data.Begin();
-		while (dp < block.data.End()) {
+		byte *dp = block.data.data();
+		while (dp < block.data.data() + block.data.size()) {
 			/* Always zero delta time inside blocks */
 			if (needtime) {
 				fputc(0, f);

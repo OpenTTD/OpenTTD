@@ -840,8 +840,8 @@ struct SpriteAlignerWindow : Window {
 				/* Relative offset is new absolute offset - starting absolute offset.
 				 * Show 0, 0 as the relative offsets if entry is not in the map (meaning they have not been changed yet).
 				 */
-				const SmallPair<SpriteID, XyOffs> *key_offs_pair = this->offs_start_map.Find(this->current_sprite);
-				if (key_offs_pair != this->offs_start_map.End()) {
+				const auto key_offs_pair = this->offs_start_map.Find(this->current_sprite);
+				if (key_offs_pair != this->offs_start_map.end()) {
 					SetDParam(0, spr->x_offs - key_offs_pair->second.first);
 					SetDParam(1, spr->y_offs - key_offs_pair->second.second);
 				} else {
