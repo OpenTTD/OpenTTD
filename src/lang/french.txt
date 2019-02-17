@@ -2082,6 +2082,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Déconne
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Le serveur est protégé. Entrez le mot de passe
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}La compagnie est protégée. Entrez le mot de passe
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Liste des clients
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liste des clients
@@ -3111,6 +3112,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Corromp
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Objectifs de {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objectifs globaux
+STR_GOALS_SPECTATOR                                             :Objectifs globaux
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Objectifs globaux{NBSP}:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}− Aucun −
@@ -3159,6 +3161,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliquer 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}Livre d'histoire de {COMPANY}
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Livre d'histoire global
+STR_STORY_BOOK_SPECTATOR                                        :Livre d'histoire global
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Page {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Aller à une page spécifique en la choisissant dans cette liste

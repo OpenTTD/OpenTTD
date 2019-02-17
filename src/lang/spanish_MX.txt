@@ -467,6 +467,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sonido y músic
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Último mensaje o noticia
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de mensajes
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Eliminar todos los mensajes
 ############ range ends here
 
 ############ range for about menu starts
@@ -2082,6 +2083,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconec
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Introducir contraseña
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Introducir contraseña
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Lista de clientes
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de clientes
@@ -3111,6 +3113,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Soborna
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Metas de {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Metas globales
+STR_GOALS_SPECTATOR                                             :Metas globales
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Metas globales:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ninguna -
@@ -3159,6 +3162,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clic en 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}Historial de {COMPANY}
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Historial global
+STR_STORY_BOOK_SPECTATOR                                        :Historial global
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Página {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Permitir ir a una página específica al elegirla en esta lista desplegable

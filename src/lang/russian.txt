@@ -592,6 +592,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Звук/муз
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Последняя новость
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :История сообщений
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Удалить все сообщения
 ############ range ends here
 
 ############ range for about menu starts
@@ -2233,6 +2234,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Откл
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сервер защищён. Введите пароль.
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компания защищена. Введите пароль.
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Список клиентов
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Список клиентов
@@ -3290,6 +3292,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Дат�
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Задачи компании «{COMPANY}»
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глобальные задачи
+STR_GOALS_SPECTATOR                                             :Общие задачи
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Общие задачи:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Нет -
@@ -3338,6 +3341,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Нажм
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}История компании «{COMPANY}»
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Мировая история
+STR_STORY_BOOK_SPECTATOR                                        :Мировая история
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Стр. {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Перейти на нужную страницу, выбрав её в выпадающем списке.

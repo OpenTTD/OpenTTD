@@ -1791,7 +1791,6 @@ STR_NETWORK_CLIENT                                              :سرویس گی
 STR_NETWORK_SPECTATORS                                          :تماشاگران
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}مقدار پولی که می خواهید دریافت نمایید را وارد کنید
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}تماشگر
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}رمز وارد شده را به خاطر نسپار
