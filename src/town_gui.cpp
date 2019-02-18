@@ -654,7 +654,7 @@ private:
 
 			const Town *t;
 			FOR_ALL_TOWNS(t) {
-				*this->towns.Append() = t;
+				this->towns.push_back(t);
 			}
 
 			this->towns.shrink_to_fit();

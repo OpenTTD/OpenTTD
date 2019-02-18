@@ -140,7 +140,7 @@ class ReplaceVehicleWindow : public Window {
 				if (!CheckAutoreplaceValidity(this->sel_engine[0], eid, _local_company)) continue;
 			}
 
-			*list->Append() = eid;
+			list->push_back(eid);
 			if (eid == this->sel_engine[side]) selected_engine = eid; // The selected engine is still in the list
 		}
 		this->sel_engine[side] = selected_engine; // update which engine we selected (the same or none, if it's not in the list anymore)
@@ -468,8 +468,8 @@ public:
 
 			case WID_RV_TRAIN_ENGINEWAGON_DROPDOWN: {
 				DropDownList *list = new DropDownList();
-				*list->Append() = new DropDownListStringItem(STR_REPLACE_ENGINES, 1, false);
-				*list->Append() = new DropDownListStringItem(STR_REPLACE_WAGONS, 0, false);
+				list->push_back(new DropDownListStringItem(STR_REPLACE_ENGINES, 1, false));
+				list->push_back(new DropDownListStringItem(STR_REPLACE_WAGONS, 0, false));
 				ShowDropDownList(this, list, this->replace_engines ? 1 : 0, WID_RV_TRAIN_ENGINEWAGON_DROPDOWN);
 				break;
 			}

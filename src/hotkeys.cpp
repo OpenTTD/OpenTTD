@@ -255,7 +255,7 @@ HotkeyList::HotkeyList(const char *ini_group, Hotkey *items, GlobalHotkeyHandler
 	global_hotkey_handler(global_hotkey_handler), ini_group(ini_group), items(items)
 {
 	if (_hotkey_lists == NULL) _hotkey_lists = new SmallVector<HotkeyList*, 16>();
-	*_hotkey_lists->Append() = this;
+	_hotkey_lists->push_back(this);
 }
 
 HotkeyList::~HotkeyList()

@@ -42,14 +42,14 @@ static void Load_ANIT()
 
 		for (int i = 0; i < 256; i++) {
 			if (anim_list[i] == 0) break;
-			*_animated_tiles.Append() = anim_list[i];
+			_animated_tiles.push_back(anim_list[i]);
 		}
 		return;
 	}
 
 	uint count = (uint)SlGetFieldLength() / sizeof(*_animated_tiles.Begin());
 	_animated_tiles.clear();
-	_animated_tiles.Append(count);
+	_animated_tiles.resize(_animated_tiles.size() + count);
 	SlArray(_animated_tiles.Begin(), count, SLE_UINT32);
 }
 

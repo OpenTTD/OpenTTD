@@ -26,14 +26,14 @@ NetworkUDPSocketHandler::NetworkUDPSocketHandler(NetworkAddressList *bind)
 {
 	if (bind != NULL) {
 		for (NetworkAddress *addr = bind->Begin(); addr != bind->End(); addr++) {
-			*this->bind.Append() = *addr;
+			this->bind.push_back(*addr);
 		}
 	} else {
 		/* As hostname NULL and port 0/NULL don't go well when
 		 * resolving it we need to add an address for each of
 		 * the address families we support. */
-		*this->bind.Append() = NetworkAddress(NULL, 0, AF_INET);
-		*this->bind.Append() = NetworkAddress(NULL, 0, AF_INET6);
+		this->bind.emplace_back(nullptr, 0, AF_INET);
+		this->bind.emplace_back(nullptr, 0, AF_INET6);
 	}
 }
 

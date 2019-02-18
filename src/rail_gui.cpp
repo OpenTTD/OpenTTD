@@ -2007,7 +2007,7 @@ DropDownList *GetRailTypeDropDownList(bool for_replacement, bool all_option)
 
 	if (all_option) {
 		DropDownListStringItem *item = new DropDownListStringItem(STR_REPLACE_ALL_RAILTYPE, INVALID_RAILTYPE, false);
-		*list->Append() = item;
+		list->push_back(item);
 	}
 
 	Dimension d = { 0, 0 };
@@ -2038,7 +2038,7 @@ DropDownList *GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		}
 		item->SetParam(0, rti->strings.menu_text);
 		item->SetParam(1, rti->max_speed);
-		*list->Append() = item;
+		list->push_back(item);
 	}
 	return list;
 }

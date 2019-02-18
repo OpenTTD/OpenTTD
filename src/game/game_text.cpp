@@ -115,7 +115,7 @@ LanguageStrings *ReadRawLanguageStrings(const char *file)
 			while (i > 0 && (buffer[i - 1] == '\r' || buffer[i - 1] == '\n' || buffer[i - 1] == ' ')) i--;
 			buffer[i] = '\0';
 
-			*ret->lines.Append() = stredup(buffer, buffer + to_read - 1);
+			ret->lines.push_back(stredup(buffer, buffer + to_read - 1));
 
 			if (len > to_read) {
 				to_read = 0;
@@ -194,7 +194,7 @@ struct TranslationWriter : LanguageWriter {
 		char *dest = MallocT<char>(length + 1);
 		memcpy(dest, buffer, length);
 		dest[length] = '\0';
-		*this->strings->Append() = dest;
+		this->strings->push_back(dest);
 	}
 };
 
@@ -212,7 +212,7 @@ struct StringNameWriter : HeaderWriter {
 
 	void WriteStringID(const char *name, int stringid)
 	{
-		if (stringid == (int)this->strings->size()) *this->strings->Append() = stredup(name);
+		if (stringid == (int)this->strings->size()) this->strings->push_back(stredup(name));
 	}
 
 	void Finalise(const StringData &data)
@@ -246,7 +246,7 @@ public:
 	{
 		if (strcmp(filename, exclude) == 0) return true;
 
-		*gs->raw_strings.Append() = ReadRawLanguageStrings(filename);
+		gs->raw_strings.push_back(ReadRawLanguageStrings(filename));
 		return true;
 	}
 };
@@ -269,7 +269,7 @@ GameStrings *LoadTranslations()
 
 	GameStrings *gs = new GameStrings();
 	try {
-		*gs->raw_strings.Append() = ReadRawLanguageStrings(filename);
+		gs->raw_strings.push_back(ReadRawLanguageStrings(filename));
 
 		/* Scan for other language files */
 		LanguageScanner scanner(gs, filename);
@@ -324,8 +324,8 @@ void GameStrings::Compile()
 		translation_reader.ParseFile();
 		if (_errors != 0) throw std::exception();
 
-		LanguageStrings *compiled = *this->compiled_strings.Append() = new LanguageStrings((*p)->language);
-		TranslationWriter writer(&compiled->lines);
+		this->compiled_strings.push_back(new LanguageStrings((*p)->language));
+		TranslationWriter writer(&this->compiled_strings.back()->lines);
 		writer.WriteLang(data);
 	}
 }

@@ -129,8 +129,8 @@ private:
 	{
 		for (const Group **g = source->Begin(); g != source->End(); g++) {
 			if ((*g)->parent != parent) continue;
-			*this->groups.Append() = *g;
-			*this->indents.Append() = indent;
+			this->groups.push_back(*g);
+			this->indents.push_back(indent);
 			AddChildren(source, (*g)->index, indent + 1);
 		}
 	}
@@ -175,7 +175,7 @@ private:
 		const Group *g;
 		FOR_ALL_GROUPS(g) {
 			if (g->owner == owner && g->vehicle_type == this->vli.vtype) {
-				*list.Append() = g;
+				list.push_back(g);
 			}
 		}
 

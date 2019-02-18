@@ -378,7 +378,7 @@ struct NewGRFParametersWindow : public Window {
 
 							DropDownList *list = new DropDownList();
 							for (uint32 i = par_info->min_value; i <= par_info->max_value; i++) {
-								*list->Append() = new DropDownListCharStringItem(GetGRFStringFromGRFText(par_info->value_names.Find(i)->second), i, false);
+								list->push_back(new DropDownListCharStringItem(GetGRFStringFromGRFText(par_info->value_names.Find(i)->second), i, false));
 							}
 
 							ShowDropDownListAt(this, list, old_val, -1, wi_rect, COLOUR_ORANGE, true);
@@ -927,11 +927,11 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				DropDownList *list = new DropDownList();
 
 				/* Add 'None' option for clearing list */
-				*list->Append() = new DropDownListStringItem(STR_NONE, -1, false);
+				list->push_back(new DropDownListStringItem(STR_NONE, -1, false));
 
 				for (uint i = 0; i < _grf_preset_list.size(); i++) {
 					if (_grf_preset_list[i] != NULL) {
-						*list->Append() = new DropDownListCharStringItem(_grf_preset_list[i], i, false);
+						list->push_back(new DropDownListCharStringItem(_grf_preset_list[i], i, false));
 					}
 				}
 
@@ -1464,7 +1464,7 @@ private:
 			if (found) continue;
 
 			if (_settings_client.gui.newgrf_show_old_versions) {
-				*this->avails.Append() = c;
+				this->avails.push_back(c);
 			} else {
 				const GRFConfig *best = FindGRFConfig(c->ident.grfid, HasBit(c->flags, GCF_INVALID) ? FGCM_NEWEST : FGCM_NEWEST_VALID);
 				/*
@@ -1475,7 +1475,7 @@ private:
 				 * show that NewGRF!.
 				 */
 				if (best->version == 0 || best->ident.HasGrfIdentifier(c->ident.grfid, c->ident.md5sum)) {
-					*this->avails.Append() = c;
+					this->avails.push_back(c);
 				}
 			}
 		}
@@ -1558,7 +1558,7 @@ void ShowMissingContentWindow(const GRFConfig *list)
 		strecpy(ci->name, c->GetName(), lastof(ci->name));
 		ci->unique_id = BSWAP32(c->ident.grfid);
 		memcpy(ci->md5sum, HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum, sizeof(ci->md5sum));
-		*cv.Append() = ci;
+		cv.push_back(ci);
 	}
 	ShowNetworkContentListWindow(cv.size() == 0 ? NULL : &cv, CONTENT_TYPE_NEWGRF);
 }

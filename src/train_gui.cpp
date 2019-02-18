@@ -280,7 +280,8 @@ static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary *su
 
 		CargoSummaryItem *item = &*std::find(summary->begin(), summary->end(), new_item);
 		if (item == summary->End()) {
-			item = summary->Append();
+			/*C++17: item = &*/ summary->emplace_back();
+			item = &summary->back();
 			item->cargo = new_item.cargo;
 			item->subtype = new_item.subtype;
 			item->capacity = 0;

@@ -120,7 +120,8 @@ public:
 	 */
 	inline FiosItem *Append()
 	{
-		return this->files.Append();
+		/*C++17: return &*/ this->files.emplace_back();
+		return &this->files.back();
 	}
 
 	/**

@@ -2101,7 +2101,7 @@ uint NetworkServerKickOrBanIP(const char *ip, bool ban)
 				break;
 			}
 		}
-		if (!contains) *_network_ban_list.Append() = stredup(ip);
+		if (!contains) _network_ban_list.push_back(stredup(ip));
 	}
 
 	uint n = 0;

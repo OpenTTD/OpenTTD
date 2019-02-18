@@ -143,7 +143,7 @@ struct MemoryDumper {
 		/* Are we at the end of this chunk? */
 		if (this->buf == this->bufe) {
 			this->buf = CallocT<byte>(MEMORY_CHUNK_SIZE);
-			*this->blocks.Append() = this->buf;
+			this->blocks.push_back(this->buf);
 			this->bufe = this->buf + MEMORY_CHUNK_SIZE;
 		}
 

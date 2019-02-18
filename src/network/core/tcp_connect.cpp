@@ -32,7 +32,7 @@ TCPConnecter::TCPConnecter(const NetworkAddress &address) :
 	sock(INVALID_SOCKET),
 	address(address)
 {
-	*_tcp_connecters.Append() = this;
+	_tcp_connecters.push_back(this);
 	if (!ThreadObject::New(TCPConnecter::ThreadEntry, this, &this->thread, "ottd:tcp")) {
 		this->Connect();
 	}

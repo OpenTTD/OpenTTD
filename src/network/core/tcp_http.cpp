@@ -63,7 +63,7 @@ NetworkHTTPSocketHandler::NetworkHTTPSocketHandler(SOCKET s,
 		return;
 	}
 
-	*_http_connections.Append() = this;
+	_http_connections.push_back(this);
 }
 
 /** Free whatever needs to be freed. */

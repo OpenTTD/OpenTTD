@@ -85,9 +85,9 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	if (config.error != NULL) this->error = new GRFError(*config.error);
 	for (uint i = 0; i < config.param_info.size(); i++) {
 		if (config.param_info[i] == NULL) {
-			*this->param_info.Append() = NULL;
+			this->param_info.push_back(NULL);
 		} else {
-			*this->param_info.Append() = new GRFParameterInfo(*config.param_info[i]);
+			this->param_info.push_back(new GRFParameterInfo(*config.param_info[i]));
 		}
 	}
 }
@@ -611,9 +611,9 @@ compatible_grf:
 				c->has_param_defaults = f->has_param_defaults;
 				for (uint i = 0; i < f->param_info.size(); i++) {
 					if (f->param_info[i] == NULL) {
-						*c->param_info.Append() = NULL;
+						c->param_info.push_back(NULL);
 					} else {
-						*c->param_info.Append() = new GRFParameterInfo(*f->param_info[i]);
+						c->param_info.push_back(new GRFParameterInfo(*f->param_info[i]));
 					}
 				}
 			}

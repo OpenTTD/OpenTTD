@@ -63,7 +63,7 @@ struct SignList {
 		this->signs.clear();
 
 		const Sign *si;
-		FOR_ALL_SIGNS(si) *this->signs.Append() = si;
+		FOR_ALL_SIGNS(si) this->signs.push_back(si);
 
 		this->signs.SetFilterState(true);
 		this->FilterSignList();

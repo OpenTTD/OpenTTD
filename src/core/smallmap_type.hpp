@@ -143,9 +143,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	inline bool Insert(const T &key, const U &data)
 	{
 		if (this->Contains(key)) return false;
-		Pair *n = this->Append();
-		n->first = key;
-		n->second = data;
+		std::vector<Pair>::emplace_back(key, data);
 		return true;
 	}
 
@@ -160,9 +158,10 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 		for (uint i = 0; i < std::vector<Pair>::size(); i++) {
 			if (key == std::vector<Pair>::operator[](i).first) return std::vector<Pair>::operator[](i).second;
 		}
-		Pair *n = this->Append();
-		n->first = key;
-		return n->second;
+		/*C++17: Pair &n = */ std::vector<Pair>::emplace_back();
+		Pair &n = std::vector<Pair>::back();
+		n.first = key;
+		return n.second;
 	}
 
 	inline void SortByKey()

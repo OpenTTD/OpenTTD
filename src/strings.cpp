@@ -1932,7 +1932,7 @@ static void GetLanguageList(const char *path)
 			} else if (GetLanguage(lmd.newgrflangid) != NULL) {
 				DEBUG(misc, 3, "%s's language ID is already known", lmd.file);
 			} else {
-				*_languages.Append() = lmd;
+				_languages.push_back(lmd);
 			}
 		}
 		closedir(dir);

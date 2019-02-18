@@ -1206,7 +1206,7 @@ protected:
 
 			const Industry *i;
 			FOR_ALL_INDUSTRIES(i) {
-				*this->industries.Append() = i;
+				this->industries.push_back(i);
 			}
 
 			this->industries.shrink_to_fit();
@@ -2415,12 +2415,13 @@ struct IndustryCargoesWindow : public Window {
 		_displayed_industries.set(it);
 
 		this->fields.clear();
-		CargoesRow *row = this->fields.Append();
-		row->columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
-		row->columns[1].MakeEmpty(CFT_SMALL_EMPTY);
-		row->columns[2].MakeEmpty(CFT_SMALL_EMPTY);
-		row->columns[3].MakeEmpty(CFT_SMALL_EMPTY);
-		row->columns[4].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
+		/*C++17: CargoesRow &row = */ this->fields.emplace_back();
+		CargoesRow &row = this->fields.back();
+		row.columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
+		row.columns[1].MakeEmpty(CFT_SMALL_EMPTY);
+		row.columns[2].MakeEmpty(CFT_SMALL_EMPTY);
+		row.columns[3].MakeEmpty(CFT_SMALL_EMPTY);
+		row.columns[4].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
 
 		const IndustrySpec *central_sp = GetIndustrySpec(it);
 		bool houses_supply = HousesCanSupply(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo));
@@ -2430,12 +2431,13 @@ struct IndustryCargoesWindow : public Window {
 		int num_cust = CountMatchingAcceptingIndustries(central_sp->produced_cargo, lengthof(central_sp->produced_cargo)) + houses_accept;
 		int num_indrows = max(3, max(num_supp, num_cust)); // One is needed for the 'it' industry, and 2 for the cargo labels.
 		for (int i = 0; i < num_indrows; i++) {
-			CargoesRow *row = this->fields.Append();
-			row->columns[0].MakeEmpty(CFT_EMPTY);
-			row->columns[1].MakeCargo(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo));
-			row->columns[2].MakeEmpty(CFT_EMPTY);
-			row->columns[3].MakeCargo(central_sp->produced_cargo, lengthof(central_sp->produced_cargo));
-			row->columns[4].MakeEmpty(CFT_EMPTY);
+			/*C++17: CargoesRow &row = */ this->fields.emplace_back();
+			CargoesRow &row = this->fields.back();
+			row.columns[0].MakeEmpty(CFT_EMPTY);
+			row.columns[1].MakeCargo(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo));
+			row.columns[2].MakeEmpty(CFT_EMPTY);
+			row.columns[3].MakeCargo(central_sp->produced_cargo, lengthof(central_sp->produced_cargo));
+			row.columns[4].MakeEmpty(CFT_EMPTY);
 		}
 		/* Add central industry. */
 		int central_row = 1 + num_indrows / 2;
@@ -2493,12 +2495,13 @@ struct IndustryCargoesWindow : public Window {
 		_displayed_industries.reset();
 
 		this->fields.clear();
-		CargoesRow *row = this->fields.Append();
-		row->columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
-		row->columns[1].MakeEmpty(CFT_SMALL_EMPTY);
-		row->columns[2].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
-		row->columns[3].MakeEmpty(CFT_SMALL_EMPTY);
-		row->columns[4].MakeEmpty(CFT_SMALL_EMPTY);
+		/*C++17: CargoesRow &row = */ this->fields.emplace_back();
+		CargoesRow &row = this->fields.back();
+		row.columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
+		row.columns[1].MakeEmpty(CFT_SMALL_EMPTY);
+		row.columns[2].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
+		row.columns[3].MakeEmpty(CFT_SMALL_EMPTY);
+		row.columns[4].MakeEmpty(CFT_SMALL_EMPTY);
 
 		bool houses_supply = HousesCanSupply(&cid, 1);
 		bool houses_accept = HousesCanAccept(&cid, 1);
@@ -2506,12 +2509,13 @@ struct IndustryCargoesWindow : public Window {
 		int num_cust = CountMatchingAcceptingIndustries(&cid, 1) + houses_accept;
 		int num_indrows = max(num_supp, num_cust);
 		for (int i = 0; i < num_indrows; i++) {
-			CargoesRow *row = this->fields.Append();
-			row->columns[0].MakeEmpty(CFT_EMPTY);
-			row->columns[1].MakeCargo(&cid, 1);
-			row->columns[2].MakeEmpty(CFT_EMPTY);
-			row->columns[3].MakeEmpty(CFT_EMPTY);
-			row->columns[4].MakeEmpty(CFT_EMPTY);
+			/*C++17: CargoesRow &row = */ this->fields.emplace_back();
+			CargoesRow &row = this->fields.back();
+			row.columns[0].MakeEmpty(CFT_EMPTY);
+			row.columns[1].MakeCargo(&cid, 1);
+			row.columns[2].MakeEmpty(CFT_EMPTY);
+			row.columns[3].MakeEmpty(CFT_EMPTY);
+			row.columns[4].MakeEmpty(CFT_EMPTY);
 		}
 
 		this->fields[num_indrows].MakeCargoLabel(0, false); // Add cargo labels at the left bottom.
@@ -2708,7 +2712,7 @@ struct IndustryCargoesWindow : public Window {
 				DropDownList *lst = new DropDownList;
 				const CargoSpec *cs;
 				FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
-					*lst->Append() = new DropDownListStringItem(cs->name, cs->Index(), false);
+					lst->push_back(new DropDownListStringItem(cs->name, cs->Index(), false));
 				}
 				if (lst->size() == 0) {
 					delete lst;
@@ -2725,7 +2729,7 @@ struct IndustryCargoesWindow : public Window {
 					IndustryType ind = _sorted_industry_types[i];
 					const IndustrySpec *indsp = GetIndustrySpec(ind);
 					if (!indsp->enabled) continue;
-					*lst->Append() = new DropDownListStringItem(indsp->name, ind, false);
+					lst->push_back(new DropDownListStringItem(indsp->name, ind, false));
 				}
 				if (lst->size() == 0) {
 					delete lst;

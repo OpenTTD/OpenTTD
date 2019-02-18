@@ -1140,7 +1140,7 @@ private:
 
 		const Company *c;
 		FOR_ALL_COMPANIES(c) {
-			*this->companies.Append() = c;
+			this->companies.push_back(c);
 		}
 
 		this->companies.shrink_to_fit();

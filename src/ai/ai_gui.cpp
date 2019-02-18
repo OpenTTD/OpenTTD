@@ -481,7 +481,7 @@ struct AISettingsWindow : public Window {
 
 							DropDownList *list = new DropDownList();
 							for (int i = config_item.min_value; i <= config_item.max_value; i++) {
-								*list->Append() = new DropDownListCharStringItem(config_item.labels->Find(i)->second, i, false);
+								list->push_back(new DropDownListCharStringItem(config_item.labels->Find(i)->second, i, false));
 							}
 
 							ShowDropDownListAt(this, list, old_val, -1, wi_rect, COLOUR_ORANGE, true);

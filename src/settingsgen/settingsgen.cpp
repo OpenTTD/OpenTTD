@@ -121,9 +121,10 @@ public:
 			text += stored_size;
 		}
 		while (length > 0) {
-			OutputBuffer *block = this->output_buffer.Append();
-			block->Clear(); // Initialize the new block.
-			int stored_size = block->Add(text, length);
+			/*C++17: OutputBuffer &block =*/ this->output_buffer.emplace_back();
+			OutputBuffer &block = this->output_buffer.back();
+			block.Clear(); // Initialize the new block.
+			int stored_size = block.Add(text, length);
 			length -= stored_size;
 			text += stored_size;
 		}

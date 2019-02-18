@@ -391,7 +391,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 
 		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
 			if ((*iter)->state == ContentInfo::DOES_NOT_EXIST) all_available = false;
-			*this->content.Append() = *iter;
+			this->content.push_back(*iter);
 		}
 
 		this->SetWidgetDisabledState(WID_NCL_SEARCH_EXTERNAL, this->auto_select && all_available);

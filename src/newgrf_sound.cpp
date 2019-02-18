@@ -32,7 +32,7 @@ static SmallVector<SoundEntry, 8> _sounds;
  */
 SoundEntry *AllocateSound(uint num)
 {
-	SoundEntry *sound = _sounds.Append(num);
+	SoundEntry *sound = grow(_sounds, num);
 	MemSetT(sound, 0, num);
 	return sound;
 }

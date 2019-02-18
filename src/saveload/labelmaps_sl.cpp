@@ -48,7 +48,7 @@ void AfterLoadLabelMaps()
 			RailType r = GetRailTypeByLabel(_railtype_list[i]);
 			if (r == INVALID_RAILTYPE) r = RAILTYPE_BEGIN;
 
-			*railtype_conversion_map.Append() = r;
+			railtype_conversion_map.push_back(r);
 		}
 
 		for (TileIndex t = 0; t < MapSize(); t++) {
@@ -114,7 +114,7 @@ static void Load_RAIL()
 
 	while (SlIterateArray() != -1) {
 		SlObject(&lo, _label_object_desc);
-		*_railtype_list.Append() = (RailTypeLabel)lo.label;
+		_railtype_list.push_back((RailTypeLabel)lo.label);
 	}
 }
 

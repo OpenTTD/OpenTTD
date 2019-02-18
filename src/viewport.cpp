@@ -499,13 +499,14 @@ static void AddTileSpriteToDraw(SpriteID image, PaletteID pal, int32 x, int32 y,
 {
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
-	TileSpriteToDraw *ts = _vd.tile_sprites_to_draw.Append();
-	ts->image = image;
-	ts->pal = pal;
-	ts->sub = sub;
+	/*C++17: TileSpriteToDraw &ts = */ _vd.tile_sprites_to_draw.emplace_back();
+	TileSpriteToDraw &ts = _vd.tile_sprites_to_draw.back();
+	ts.image = image;
+	ts.pal = pal;
+	ts.sub = sub;
 	Point pt = RemapCoords(x, y, z);
-	ts->x = pt.x + extra_offs_x;
-	ts->y = pt.y + extra_offs_y;
+	ts.x = pt.x + extra_offs_x;
+	ts.y = pt.y + extra_offs_y;
 }
 
 /**
@@ -708,29 +709,30 @@ void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int w,
 		return;
 	}
 
-	ParentSpriteToDraw *ps = _vd.parent_sprites_to_draw.Append();
-	ps->x = tmp_x;
-	ps->y = tmp_y;
+	/*C++17: ParentSpriteToDraw &ps = */ _vd.parent_sprites_to_draw.emplace_back();
+	ParentSpriteToDraw &ps = _vd.parent_sprites_to_draw.back();
+	ps.x = tmp_x;
+	ps.y = tmp_y;
 
-	ps->left = tmp_left;
-	ps->top  = tmp_top;
+	ps.left = tmp_left;
+	ps.top  = tmp_top;
 
-	ps->image = image;
-	ps->pal = pal;
-	ps->sub = sub;
-	ps->xmin = x + bb_offset_x;
-	ps->xmax = x + max(bb_offset_x, w) - 1;
+	ps.image = image;
+	ps.pal = pal;
+	ps.sub = sub;
+	ps.xmin = x + bb_offset_x;
+	ps.xmax = x + max(bb_offset_x, w) - 1;
 
-	ps->ymin = y + bb_offset_y;
-	ps->ymax = y + max(bb_offset_y, h) - 1;
+	ps.ymin = y + bb_offset_y;
+	ps.ymax = y + max(bb_offset_y, h) - 1;
 
-	ps->zmin = z + bb_offset_z;
-	ps->zmax = z + max(bb_offset_z, dz) - 1;
+	ps.zmin = z + bb_offset_z;
+	ps.zmax = z + max(bb_offset_z, dz) - 1;
 
-	ps->comparison_done = false;
-	ps->first_child = -1;
+	ps.comparison_done = false;
+	ps.first_child = -1;
 
-	_vd.last_child = &ps->first_child;
+	_vd.last_child = &ps.first_child;
 
 	if (_vd.combine_sprites == SPRITE_COMBINE_PENDING) _vd.combine_sprites = SPRITE_COMBINE_ACTIVE;
 }
@@ -826,33 +828,35 @@ void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool tran
 
 	*_vd.last_child = _vd.child_screen_sprites_to_draw.size();
 
-	ChildScreenSpriteToDraw *cs = _vd.child_screen_sprites_to_draw.Append();
-	cs->image = image;
-	cs->pal = pal;
-	cs->sub = sub;
-	cs->x = scale ? x * ZOOM_LVL_BASE : x;
-	cs->y = scale ? y * ZOOM_LVL_BASE : y;
-	cs->next = -1;
+	/*C++17: ChildScreenSpriteToDraw &cs = */ _vd.child_screen_sprites_to_draw.emplace_back();
+	ChildScreenSpriteToDraw &cs = _vd.child_screen_sprites_to_draw.back();
+	cs.image = image;
+	cs.pal = pal;
+	cs.sub = sub;
+	cs.x = scale ? x * ZOOM_LVL_BASE : x;
+	cs.y = scale ? y * ZOOM_LVL_BASE : y;
+	cs.next = -1;
 
 	/* Append the sprite to the active ChildSprite list.
 	 * If the active ParentSprite is a foundation, update last_foundation_child as well.
 	 * Note: ChildSprites of foundations are NOT sequential in the vector, as selection sprites are added at last. */
-	if (_vd.last_foundation_child[0] == _vd.last_child) _vd.last_foundation_child[0] = &cs->next;
-	if (_vd.last_foundation_child[1] == _vd.last_child) _vd.last_foundation_child[1] = &cs->next;
-	_vd.last_child = &cs->next;
+	if (_vd.last_foundation_child[0] == _vd.last_child) _vd.last_foundation_child[0] = &cs.next;
+	if (_vd.last_foundation_child[1] == _vd.last_child) _vd.last_foundation_child[1] = &cs.next;
+	_vd.last_child = &cs.next;
 }
 
 static void AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2, Colours colour, uint16 width)
 {
 	assert(width != 0);
-	StringSpriteToDraw *ss = _vd.string_sprites_to_draw.Append();
-	ss->string = string;
-	ss->x = x;
-	ss->y = y;
-	ss->params[0] = params_1;
-	ss->params[1] = params_2;
-	ss->width = width;
-	ss->colour = colour;
+	/*C++17: StringSpriteToDraw &ss = */ _vd.string_sprites_to_draw.emplace_back();
+	StringSpriteToDraw &ss = _vd.string_sprites_to_draw.back();
+	ss.string = string;
+	ss.x = x;
+	ss.y = y;
+	ss.params[0] = params_1;
+	ss.params[1] = params_2;
+	ss.width = width;
+	ss.colour = colour;
 }
 
 
@@ -1588,7 +1592,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 
 	ParentSpriteToDraw *psd_end = _vd.parent_sprites_to_draw.End();
 	for (ParentSpriteToDraw *it = _vd.parent_sprites_to_draw.Begin(); it != psd_end; it++) {
-		*_vd.parent_sprites_to_sort.Append() = it;
+		_vd.parent_sprites_to_sort.push_back(it);
 	}
 
 	_vp_sprite_sorter(&_vd.parent_sprites_to_sort);

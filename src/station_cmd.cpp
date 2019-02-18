@@ -942,7 +942,7 @@ static CommandCost CheckFlatLandRailStation(TileArea tile_area, DoCommandFlag fl
 					if (HasBit(GetRailReservationTrackBits(tile_cur), track)) {
 						Train *v = GetTrainForReservation(tile_cur, track);
 						if (v != NULL) {
-							*affected_vehicles.Append() = v;
+							affected_vehicles.push_back(v);
 						}
 					}
 					CommandCost ret = DoCommand(tile_cur, 0, track, flags, CMD_REMOVE_SINGLE_RAIL);
@@ -1386,7 +1386,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 					/* Check for trains having a reservation for this tile. */
 					Train *v = GetTrainForReservation(tile, AxisToTrack(GetRailStationAxis(tile)));
 					if (v != NULL) {
-						*affected_vehicles.Append() = v;
+						affected_vehicles.push_back(v);
 						FreeTrainReservation(v);
 					}
 				}
@@ -3538,7 +3538,7 @@ void DeleteStaleLinks(Station *from)
 							}
 						}
 						if (!found_to || !found_from) continue;
-						*(vehicles.Append()) = l->GetFirstSharedVehicle();
+						vehicles.push_back(l->GetFirstSharedVehicle());
 					}
 
 					auto iter = vehicles.begin();

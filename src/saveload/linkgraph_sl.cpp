@@ -69,7 +69,7 @@ const SaveLoad *GetLinkGraphJobDesc()
 				char *&address = reinterpret_cast<char *&>(sl.address);
 				address -= offset_gamesettings;
 				address += offset_component;
-				*(saveloads.Append()) = sl;
+				saveloads.push_back(sl);
 			}
 			desc = GetSettingDescription(++setting);
 		}
@@ -82,7 +82,7 @@ const SaveLoad *GetLinkGraphJobDesc()
 
 		int i = 0;
 		do {
-			*(saveloads.Append()) = job_desc[i++];
+			saveloads.push_back(job_desc[i++]);
 		} while (saveloads[saveloads.size() - 1].cmd != SL_END);
 	}
 
