@@ -18,6 +18,7 @@
 #include "command_func.h"
 #include "industry.h"
 #include "station_base.h"
+#include "station_kdtree.h"
 #include "company_base.h"
 #include "news_func.h"
 #include "error.h"
@@ -3197,6 +3198,21 @@ CommandCost CmdDoTownAction(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	return cost;
 }
 
+template <typename Func>
+static void ForAllStationsNearTown(Town *t, Func func)
+{
+	/* Ideally the search radius should be close to the actual town zone 0 radius.
+	 * The true radius is not stored or calculated anywhere, only the squared radius. */
+	/* The efficiency of this search might be improved for large towns and many stations on the map,
+	 * by using an integer square root approximation giving a value not less than the true square root. */
+	uint search_radius = t->cache.squared_town_zone_radius[0] / 2;
+	ForAllStationsRadius(t->xy, search_radius, [&](const Station * st) {
+		if (DistanceSquare(st->xy, t->xy) <= t->cache.squared_town_zone_radius[0]) {
+			func(st);
+		}
+	});
+}
+
 static void UpdateTownRating(Town *t)
 {
 	/* Increase company ratings if they're low */
@@ -3207,22 +3223,19 @@ static void UpdateTownRating(Town *t)
 		}
 	}
 
-	const Station *st;
-	FOR_ALL_STATIONS(st) {
-		if (DistanceSquare(st->xy, t->xy) <= t->cache.squared_town_zone_radius[0]) {
-			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
-				if (Company::IsValidID(st->owner)) {
-					int new_rating = t->ratings[st->owner] + RATING_STATION_UP_STEP;
-					t->ratings[st->owner] = min(new_rating, INT16_MAX); // do not let it overflow
-				}
-			} else {
-				if (Company::IsValidID(st->owner)) {
-					int new_rating = t->ratings[st->owner] + RATING_STATION_DOWN_STEP;
-					t->ratings[st->owner] = max(new_rating, INT16_MIN);
-				}
+	ForAllStationsNearTown(t, [&](const Station *st) {
+		if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
+			if (Company::IsValidID(st->owner)) {
+				int new_rating = t->ratings[st->owner] + RATING_STATION_UP_STEP;
+				t->ratings[st->owner] = min(new_rating, INT16_MAX); // do not let it overflow
+			}
+		} else {
+			if (Company::IsValidID(st->owner)) {
+				int new_rating = t->ratings[st->owner] + RATING_STATION_DOWN_STEP;
+				t->ratings[st->owner] = max(new_rating, INT16_MIN);
 			}
 		}
-	}
+	});
 
 	/* clamp all ratings to valid values */
 	for (uint i = 0; i < MAX_COMPANIES; i++) {
@@ -3257,14 +3270,11 @@ static void UpdateTownGrowCounter(Town *t, uint16 prev_growth_rate)
 static int CountActiveStations(Town *t)
 {
 	int n = 0;
-	const Station *st;
-	FOR_ALL_STATIONS(st) {
-		if (DistanceSquare(st->xy, t->xy) <= t->cache.squared_town_zone_radius[0]) {
-			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
-				n++;
-			}
+	ForAllStationsNearTown(t, [&](const Station * st) {
+		if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
+			n++;
 		}
-	}
+	});
 	return n;
 }
 

@@ -1026,6 +1026,9 @@
     <ClInclude Include="..\src\station_gui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\station_kdtree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\station_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>

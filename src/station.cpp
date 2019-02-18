@@ -21,6 +21,7 @@
 #include "vehiclelist.h"
 #include "core/pool_func.hpp"
 #include "station_base.h"
+#include "station_kdtree.h"
 #include "roadstop_base.h"
 #include "industry.h"
 #include "town.h"
@@ -35,6 +36,20 @@
 /** The pool of stations. */
 StationPool _station_pool("Station");
 INSTANTIATE_POOL_METHODS(Station)
+
+
+StationKdtree _station_kdtree(Kdtree_StationXYFunc);
+
+void RebuildStationKdtree()
+{
+	std::vector<StationID> stids;
+	BaseStation *st;
+	FOR_ALL_STATIONS(st) {
+		stids.push_back(st->index);
+	}
+	_station_kdtree.Build(stids.begin(), stids.end());
+}
+
 
 BaseStation::~BaseStation()
 {
@@ -146,6 +161,8 @@ Station::~Station()
 	}
 
 	CargoPacket::InvalidateAllFrom(this->index);
+
+	_station_kdtree.Remove(this->index);
 }
 
 

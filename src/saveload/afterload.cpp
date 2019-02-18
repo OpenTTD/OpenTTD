@@ -537,6 +537,7 @@ bool AfterLoadGame()
 	GamelogTestMode();
 
 	RebuildTownKdtree();
+	RebuildStationKdtree();
 
 	if (IsSavegameVersionBefore(SLV_98)) GamelogGRFAddList(_grfconfig);
 

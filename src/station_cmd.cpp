@@ -37,6 +37,7 @@
 #include "animated_tile_func.h"
 #include "elrail_func.h"
 #include "station_base.h"
+#include "station_kdtree.h"
 #include "roadstop_base.h"
 #include "newgrf_railtype.h"
 #include "waypoint_base.h"
@@ -359,19 +360,21 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 static Station *GetClosestDeletedStation(TileIndex tile)
 {
 	uint threshold = 8;
-	Station *best_station = NULL;
-	Station *st;
 
-	FOR_ALL_STATIONS(st) {
+	Station *best_station = NULL;
+	ForAllStationsRadius(tile, threshold, [&](Station *st) {
 		if (!st->IsInUse() && st->owner == _current_company) {
 			uint cur_dist = DistanceManhattan(tile, st->xy);
 
 			if (cur_dist < threshold) {
 				threshold = cur_dist;
 				best_station = st;
+			} else if (cur_dist == threshold && best_station != NULL) {
+				/* In case of a tie, lowest station ID wins */
+				if (st->index < best_station->index) best_station = st;
 			}
 		}
-	}
+	});
 
 	return best_station;
 }
@@ -667,8 +670,13 @@ static void UpdateStationSignCoord(BaseStation *st)
 	if (r->IsEmpty()) return; // no tiles belong to this station
 
 	/* clamp sign coord to be inside the station rect */
-	st->xy = TileXY(ClampU(TileX(st->xy), r->left, r->right), ClampU(TileY(st->xy), r->top, r->bottom));
-	st->UpdateVirtCoord();
+	TileIndex new_xy = TileXY(ClampU(TileX(st->xy), r->left, r->right), ClampU(TileY(st->xy), r->top, r->bottom));
+	if (new_xy != st->xy) {
+		_station_kdtree.Remove(st->index);
+		st->xy = new_xy;
+		_station_kdtree.Insert(st->index);
+		st->UpdateVirtCoord();
+	}
 
 	if (!Station::IsExpected(st)) return;
 	Station *full_station = Station::From(st);
@@ -706,6 +714,7 @@ static CommandCost BuildStationPart(Station **st, DoCommandFlag flags, bool reus
 
 		if (flags & DC_EXEC) {
 			*st = new Station(area.tile);
+			_station_kdtree.Insert((*st)->index);
 
 			(*st)->town = ClosestTownFromTile(area.tile, UINT_MAX);
 			(*st)->string_id = GenerateStationName(*st, area.tile, name_class);
@@ -3687,11 +3696,8 @@ void StationMonthlyLoop()
 
 void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius)
 {
-	Station *st;
-
-	FOR_ALL_STATIONS(st) {
-		if (st->owner == owner &&
-				DistanceManhattan(tile, st->xy) <= radius) {
+	ForAllStationsRadius(tile, radius, [&](Station *st) {
+		if (st->owner == owner) {
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				GoodsEntry *ge = &st->goods[i];
 
@@ -3700,7 +3706,7 @@ void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint rad
 				}
 			}
 		}
-	}
+	});
 }
 
 static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceType source_type, SourceID source_id)
@@ -3940,6 +3946,7 @@ void BuildOilRig(TileIndex tile)
 	}
 
 	Station *st = new Station(tile);
+	_station_kdtree.Insert(st->index);
 	st->town = ClosestTownFromTile(tile, UINT_MAX);
 
 	st->string_id = GenerateStationName(st, tile, STATIONNAMING_OILRIG);
