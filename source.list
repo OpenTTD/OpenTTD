@@ -429,6 +429,7 @@ core/enum_type.hpp
 core/geometry_func.cpp
 core/geometry_func.hpp
 core/geometry_type.hpp
+core/kdtree.hpp
 core/math_func.cpp
 core/math_func.hpp
 core/mem_func.hpp
