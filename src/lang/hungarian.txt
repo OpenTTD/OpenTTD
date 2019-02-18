@@ -1780,7 +1780,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Rakomá
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Ellenfelek
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Számítógép által vezérelt ellenfelek
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :Eredeti
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Ajánlott)
 

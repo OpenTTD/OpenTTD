@@ -1838,7 +1838,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Razpore
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Tekmeci
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računalniški igralci
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Priporočeno)
 

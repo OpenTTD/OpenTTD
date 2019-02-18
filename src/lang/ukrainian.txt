@@ -1844,7 +1844,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Роз�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Конкуренти
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Віртуальні гравці
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :стандартний
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(рекомендовано)
 
