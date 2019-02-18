@@ -432,6 +432,9 @@
     <ClInclude Include="..\src\base_station_base.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\bitmap_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\bmp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
