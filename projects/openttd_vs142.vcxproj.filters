@@ -1260,6 +1260,9 @@
     <ClInclude Include="..\src\core\geometry_type.hpp">
       <Filter>Core Source Code</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\core\kdtree.hpp">
+      <Filter>Core Source Code</Filter>
+    </ClInclude>
     <ClCompile Include="..\src\core\math_func.cpp">
       <Filter>Core Source Code</Filter>
     </ClCompile>
