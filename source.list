@@ -367,6 +367,7 @@ timetable.h
 toolbar_gui.h
 town.h
 town_type.h
+town_kdtree.h
 townname_func.h
 townname_type.h
 track_func.h

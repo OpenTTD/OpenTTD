@@ -1128,6 +1128,9 @@
     <ClInclude Include="..\src\town_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\town_kdtree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\townname_func.h">
       <Filter>Header Files</Filter>
     </ClInclude>

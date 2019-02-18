@@ -145,6 +145,9 @@ void UpdateAllTownVirtCoords();
 void ShowTownViewWindow(TownID town);
 void ExpandTown(Town *t);
 
+void RebuildTownKdtree();
+
+
 /**
  * Action types that a company must ask permission for to a town authority.
  * @see CheckforTownRating

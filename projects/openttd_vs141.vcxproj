@@ -680,6 +680,7 @@
     <ClInclude Include="..\src\toolbar_gui.h" />
     <ClInclude Include="..\src\town.h" />
     <ClInclude Include="..\src\town_type.h" />
+    <ClInclude Include="..\src\town_kdtree.h" />
     <ClInclude Include="..\src\townname_func.h" />
     <ClInclude Include="..\src\townname_type.h" />
     <ClInclude Include="..\src\track_func.h" />
