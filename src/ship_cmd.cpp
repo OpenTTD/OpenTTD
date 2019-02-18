@@ -521,7 +521,8 @@ static inline TrackBits GetAvailShipTracks(TileIndex tile, DiagDirection dir, Tr
 {
 	TrackBits tracks = GetTileShipTrackStatus(tile) & DiagdirReachesTracks(dir);
 
-	if (_settings_game.pf.forbid_90_deg) tracks &= ~TrackCrossesTracks(TrackdirToTrack(trackdir));
+	/* Do not remove 90 degree turns for OPF, as it isn't able to find paths taking it into account. */
+	if (_settings_game.pf.forbid_90_deg && _settings_game.pf.pathfinder_for_ships != VPF_OPF) tracks &= ~TrackCrossesTracks(TrackdirToTrack(trackdir));
 
 	return tracks;
 }
