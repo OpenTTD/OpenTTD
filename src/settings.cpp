@@ -2275,18 +2275,6 @@ static void Save_PATS()
 	SaveSettings(_settings, &_settings_game);
 }
 
-void CheckConfig()
-{
-	/*
-	 * Increase old default values for pf_maxdepth and pf_maxlength
-	 * to support big networks.
-	 */
-	if (_settings_newgame.pf.opf.pf_maxdepth == 16 && _settings_newgame.pf.opf.pf_maxlength == 512) {
-		_settings_newgame.pf.opf.pf_maxdepth = 48;
-		_settings_newgame.pf.opf.pf_maxlength = 4096;
-	}
-}
-
 extern const ChunkHandler _setting_chunk_handlers[] = {
 	{ 'OPTS', NULL,      Load_OPTS, NULL, NULL,       CH_RIFF},
 	{ 'PATS', Save_PATS, Load_PATS, NULL, Check_PATS, CH_RIFF | CH_LAST},

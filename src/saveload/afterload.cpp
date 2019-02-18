@@ -1875,7 +1875,7 @@ bool AfterLoadGame()
 		if (_settings_game.pf.yapf.ship_use_yapf) {
 			_settings_game.pf.pathfinder_for_ships = VPF_YAPF;
 		} else {
-			_settings_game.pf.pathfinder_for_ships = (_settings_game.pf.new_pathfinding_all ? VPF_NPF : VPF_OPF);
+			_settings_game.pf.pathfinder_for_ships = VPF_NPF;
 		}
 	}
 

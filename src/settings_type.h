@@ -346,12 +346,6 @@ struct ScriptSettings {
 	uint32 script_max_opcode_till_suspend;   ///< max opcode calls till scripts will suspend
 };
 
-/** Settings related to the old pathfinder. */
-struct OPFSettings {
-	uint16 pf_maxlength;                     ///< maximum length when searching for a train route for new pathfinder
-	byte   pf_maxdepth;                      ///< maximum recursion depth when searching for a train route for new pathfinder
-};
-
 /** Settings related to the new pathfinder. */
 struct NPFSettings {
 	/**
@@ -440,7 +434,6 @@ struct PathfinderSettings {
 	byte   wait_for_pbs_path;                ///< how long to wait for a path reservation.
 	byte   path_backoff_interval;            ///< ticks between checks for a free path.
 
-	OPFSettings  opf;                        ///< pathfinder settings for the old pathfinder
 	NPFSettings  npf;                        ///< pathfinder settings for the new pathfinder
 	YAPFSettings yapf;                       ///< pathfinder settings for the yet another pathfinder
 };

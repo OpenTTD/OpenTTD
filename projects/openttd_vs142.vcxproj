@@ -1291,8 +1291,6 @@
     <ClCompile Include="..\src\network\core\udp.cpp" />
     <ClInclude Include="..\src\network\core\udp.h" />
     <ClInclude Include="..\src\pathfinder\follow_track.hpp" />
-    <ClCompile Include="..\src\pathfinder\opf\opf_ship.cpp" />
-    <ClInclude Include="..\src\pathfinder\opf\opf_ship.h" />
     <ClInclude Include="..\src\pathfinder\pathfinder_func.h" />
     <ClInclude Include="..\src\pathfinder\pathfinder_type.h" />
     <ClInclude Include="..\src\pathfinder\pf_performance_timer.hpp" />

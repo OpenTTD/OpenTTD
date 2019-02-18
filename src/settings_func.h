@@ -24,7 +24,6 @@ void IConsoleListSettings(const char *prefilter);
 
 void LoadFromConfig(bool minimal = false);
 void SaveToConfig();
-void CheckConfig();
 
 void IniLoadWindowSettings(IniFile *ini, const char *grpname, void *desc);
 void IniSaveWindowSettings(IniFile *ini, const char *grpname, void *desc);

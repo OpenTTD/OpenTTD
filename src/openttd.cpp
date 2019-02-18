@@ -434,7 +434,6 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 
 		Game::Uninitialize(true);
 		AI::Uninitialize(true);
-		CheckConfig();
 		LoadFromHighScore();
 		LoadHotkeysFromConfig();
 		WindowDesc::LoadFromConfig();
