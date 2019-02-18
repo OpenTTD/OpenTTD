@@ -1684,7 +1684,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Dáilea
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Iomaitheoirí
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ríomh-imreoirí
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :Bunaidh
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Molta)
 

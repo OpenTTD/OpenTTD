@@ -1635,7 +1635,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}กา�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}คู่แข่ง
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}ผู้เล่นคอมพิวเตอร์
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :ดั้งเดิม
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(แนะนำ)
 

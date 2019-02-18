@@ -1635,7 +1635,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Frachtd
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Tsjinstânners
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer spilers
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :Orizjiniel
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
 

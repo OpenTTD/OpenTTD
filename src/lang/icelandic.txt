@@ -1551,7 +1551,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Iðnað
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Mótherji
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Gervigreind
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :Upprunalegt
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Ráðlegt)
 

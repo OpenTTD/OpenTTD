@@ -1684,7 +1684,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}貨物�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}競爭對手
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}電腦玩家
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :預設
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(建議)
 

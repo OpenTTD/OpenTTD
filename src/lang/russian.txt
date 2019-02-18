@@ -1866,7 +1866,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Рас�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Конкуренты
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Искусственный интеллект
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :оригинальный
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Рекомендуется)
 

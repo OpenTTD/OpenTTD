@@ -2084,7 +2084,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Dystryb
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Rywale
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Gracze komputerowi
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :Oryginalne
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Zalecane)
 

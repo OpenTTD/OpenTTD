@@ -1884,7 +1884,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Partiti
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competitores
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Lusores computatrales
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originale
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Commendatum)
 

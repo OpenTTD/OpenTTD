@@ -1685,7 +1685,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Vragver
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Mededingers
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Rekenaar spelers
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :Oorspronklik
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Aanbevole)
 

@@ -1709,7 +1709,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kargo d
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Rakipler
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Bilgisayar oyuncuları
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :Özgün
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Önerilen)
 

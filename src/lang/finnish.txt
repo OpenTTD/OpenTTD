@@ -1714,7 +1714,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Rahdin 
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Kilpailijat
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Tietokonepelaajat
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :Alkuperäinen
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Suositeltu)
 
