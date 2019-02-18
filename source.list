@@ -333,6 +333,7 @@ spritecache.h
 station_base.h
 station_func.h
 station_gui.h
+station_kdtree.h
 station_type.h
 statusbar_gui.h
 stdafx.h

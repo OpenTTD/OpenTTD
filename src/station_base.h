@@ -556,4 +556,6 @@ public:
 	}
 };
 
+void RebuildStationKdtree();
+
 #endif /* STATION_BASE_H */

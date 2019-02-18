@@ -646,6 +646,7 @@
     <ClInclude Include="..\src\station_base.h" />
     <ClInclude Include="..\src\station_func.h" />
     <ClInclude Include="..\src\station_gui.h" />
+    <ClInclude Include="..\src\station_kdtree.h" />
     <ClInclude Include="..\src\station_type.h" />
     <ClInclude Include="..\src\statusbar_gui.h" />
     <ClInclude Include="..\src\stdafx.h" />
