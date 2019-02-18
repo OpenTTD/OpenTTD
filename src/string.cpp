@@ -634,8 +634,8 @@ public:
 		this->char_itr = icu::BreakIterator::createCharacterInstance(icu::Locale(_current_language != NULL ? _current_language->isocode : "en"), status);
 		this->word_itr = icu::BreakIterator::createWordInstance(icu::Locale(_current_language != NULL ? _current_language->isocode : "en"), status);
 
-		*this->utf16_str.Append() = '\0';
-		*this->utf16_to_utf8.Append() = 0;
+		this->utf16_str.push_back('\0');
+		this->utf16_to_utf8.push_back(0);
 	}
 
 	virtual ~IcuStringIterator()
@@ -660,17 +660,17 @@ public:
 
 			WChar c = Utf8Consume(&s);
 			if (c < 0x10000) {
-				*this->utf16_str.Append() = (UChar)c;
+				this->utf16_str.push_back((UChar)c);
 			} else {
 				/* Make a surrogate pair. */
-				*this->utf16_str.Append() = (UChar)(0xD800 + ((c - 0x10000) >> 10));
-				*this->utf16_str.Append() = (UChar)(0xDC00 + ((c - 0x10000) & 0x3FF));
-				*this->utf16_to_utf8.Append() = idx;
+				this->utf16_str.push_back((UChar)(0xD800 + ((c - 0x10000) >> 10)));
+				this->utf16_str.push_back((UChar)(0xDC00 + ((c - 0x10000) & 0x3FF)));
+				this->utf16_to_utf8.push_back(idx);
 			}
-			*this->utf16_to_utf8.Append() = idx;
+			this->utf16_to_utf8.push_back(idx);
 		}
-		*this->utf16_str.Append() = '\0';
-		*this->utf16_to_utf8.Append() = s - string_base;
+		this->utf16_str.push_back('\0');
+		this->utf16_to_utf8.push_back(s - string_base);
 
 		UText text = UTEXT_INITIALIZER;
 		UErrorCode status = U_ZERO_ERROR;

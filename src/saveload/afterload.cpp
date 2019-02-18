@@ -2954,24 +2954,24 @@ bool AfterLoadGame()
 					cur_skip = prev_tile_skip;
 				}
 
-				uint *this_skip = skip_frames.Append();
-				*this_skip = prev_tile_skip;
+				/*C++17: uint &this_skip = */ skip_frames.push_back(prev_tile_skip);
+				uint &this_skip = skip_frames.back();
 
 				/* The following 3 curves now take longer than before */
 				switch (u->state) {
 					case 2:
 						cur_skip++;
-						if (u->frame <= (roadside ? 9 : 5)) *this_skip = cur_skip;
+						if (u->frame <= (roadside ? 9 : 5)) this_skip = cur_skip;
 						break;
 
 					case 4:
 						cur_skip++;
-						if (u->frame <= (roadside ? 5 : 9)) *this_skip = cur_skip;
+						if (u->frame <= (roadside ? 5 : 9)) this_skip = cur_skip;
 						break;
 
 					case 5:
 						cur_skip++;
-						if (u->frame <= (roadside ? 4 : 2)) *this_skip = cur_skip;
+						if (u->frame <= (roadside ? 4 : 2)) this_skip = cur_skip;
 						break;
 
 					default:

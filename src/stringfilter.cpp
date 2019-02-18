@@ -76,9 +76,8 @@ void StringFilter::SetFilterTerm(const char *str)
 
 		/* Add to word */
 		if (word == NULL) {
-			word = this->word_index.Append();
-			word->start = dest;
-			word->match = false;
+			/*C++17: word = &*/ this->word_index.push_back({dest, false});
+			word = &this->word_index.back();
 		}
 
 		memcpy(dest, pos, len);

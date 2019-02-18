@@ -168,13 +168,13 @@ DropDownList *BaseVehicleListWindow::BuildActionDropdownList(bool show_autorepla
 {
 	DropDownList *list = new DropDownList();
 
-	if (show_autoreplace) *list->Append() = new DropDownListStringItem(STR_VEHICLE_LIST_REPLACE_VEHICLES, ADI_REPLACE, false);
-	*list->Append() = new DropDownListStringItem(STR_VEHICLE_LIST_SEND_FOR_SERVICING, ADI_SERVICE, false);
-	*list->Append() = new DropDownListStringItem(this->vehicle_depot_name[this->vli.vtype], ADI_DEPOT, false);
+	if (show_autoreplace) list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_REPLACE_VEHICLES, ADI_REPLACE, false));
+	list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_SEND_FOR_SERVICING, ADI_SERVICE, false));
+	list->push_back(new DropDownListStringItem(this->vehicle_depot_name[this->vli.vtype], ADI_DEPOT, false));
 
 	if (show_group) {
-		*list->Append() = new DropDownListStringItem(STR_GROUP_ADD_SHARED_VEHICLE, ADI_ADD_SHARED, false);
-		*list->Append() = new DropDownListStringItem(STR_GROUP_REMOVE_ALL_VEHICLES, ADI_REMOVE_ALL, false);
+		list->push_back(new DropDownListStringItem(STR_GROUP_ADD_SHARED_VEHICLE, ADI_ADD_SHARED, false));
+		list->push_back(new DropDownListStringItem(STR_GROUP_REMOVE_ALL_VEHICLES, ADI_REMOVE_ALL, false));
 	}
 
 	return list;
@@ -438,10 +438,7 @@ struct RefitWindow : public Window {
 				bool first_vehicle = this->list[current_index].size() == 0;
 				if (first_vehicle) {
 					/* Keeping the current subtype is always an option. It also serves as the option in case of no subtypes */
-					RefitOption *option = this->list[current_index].Append();
-					option->cargo   = cid;
-					option->subtype = 0xFF;
-					option->string  = STR_EMPTY;
+					this->list[current_index].push_back({cid, 0xFF, STR_EMPTY});
 				}
 
 				/* Check the vehicle's callback mask for cargo suffixes.

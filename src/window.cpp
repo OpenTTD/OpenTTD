@@ -109,7 +109,7 @@ WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_wi
 	default_height_trad(def_height_trad)
 {
 	if (_window_descs == NULL) _window_descs = new SmallVector<WindowDesc*, 16>();
-	*_window_descs->Append() = this;
+	_window_descs->push_back(this);
 }
 
 WindowDesc::~WindowDesc()
@@ -3242,7 +3242,7 @@ void Window::InvalidateData(int data, bool gui_scope)
 	this->SetDirty();
 	if (!gui_scope) {
 		/* Schedule GUI-scope invalidation for next redraw. */
-		*this->scheduled_invalidation_data.Append() = data;
+		this->scheduled_invalidation_data.push_back(data);
 	}
 	this->OnInvalidateData(data, gui_scope);
 }

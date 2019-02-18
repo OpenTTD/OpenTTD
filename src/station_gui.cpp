@@ -189,14 +189,14 @@ protected:
 						if (st->goods[j].HasRating()) {
 							num_waiting_cargo++; // count number of waiting cargo
 							if (HasBit(this->cargo_filter, j)) {
-								*this->stations.Append() = st;
+								this->stations.push_back(st);
 								break;
 							}
 						}
 					}
 					/* stations without waiting cargo */
 					if (num_waiting_cargo == 0 && this->include_empty) {
-						*this->stations.Append() = st;
+						this->stations.push_back(st);
 					}
 				}
 			}
@@ -2135,7 +2135,7 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
 	for (uint i = 0; i < _deleted_stations_nearby.size(); i++) {
 		auto ts = _deleted_stations_nearby.begin() + i;
 		if (ts->tile == tile) {
-			*_stations_nearby_list.Append() = _deleted_stations_nearby[i].station;
+			_stations_nearby_list.push_back(_deleted_stations_nearby[i].station);
 			_deleted_stations_nearby.erase(ts);
 			i--;
 		}
@@ -2153,7 +2153,7 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
 	if (st->owner != _local_company || std::find(_stations_nearby_list.begin(), _stations_nearby_list.end(), sid) != _stations_nearby_list.end()) return false;
 
 	if (st->rect.BeforeAddRect(ctx->tile, ctx->w, ctx->h, StationRect::ADD_TEST).Succeeded()) {
-		*_stations_nearby_list.Append() = sid;
+		_stations_nearby_list.push_back(sid);
 	}
 
 	return false; // We want to include *all* nearby stations
@@ -2187,9 +2187,7 @@ static const T *FindStationsNearby(TileArea ta, bool distant_join)
 		if (T::IsExpected(st) && !st->IsInUse() && st->owner == _local_company) {
 			/* Include only within station spread (yes, it is strictly less than) */
 			if (max(DistanceMax(ta.tile, st->xy), DistanceMax(TILE_ADDXY(ta.tile, ta.w - 1, ta.h - 1), st->xy)) < _settings_game.station.station_spread) {
-				TileAndStation *ts = _deleted_stations_nearby.Append();
-				ts->tile = st->xy;
-				ts->station = st->index;
+				_deleted_stations_nearby.push_back({st->xy, st->index});
 
 				/* Add the station when it's within where we're going to build */
 				if (IsInsideBS(TileX(st->xy), TileX(ctx.tile), ctx.w) &&

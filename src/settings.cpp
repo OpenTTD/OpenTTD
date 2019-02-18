@@ -727,7 +727,7 @@ static void IniLoadSettingList(IniFile *ini, const char *grpname, StringList *li
 	list->Clear();
 
 	for (const IniItem *item = group->item; item != NULL; item = item->next) {
-		if (item->name != NULL) *list->Append() = stredup(item->name);
+		if (item->name != NULL) list->push_back(stredup(item->name));
 	}
 }
 
@@ -1777,7 +1777,7 @@ void GetGRFPresetList(GRFPresetList *list)
 	IniGroup *group;
 	for (group = ini->group; group != NULL; group = group->next) {
 		if (strncmp(group->name, "preset-", 7) == 0) {
-			*list->Append() = stredup(group->name + 7);
+			list->push_back(stredup(group->name + 7));
 		}
 	}
 

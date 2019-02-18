@@ -285,10 +285,10 @@ CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1,
 
 		if (timetable_all) {
 			for (Vehicle *w = v->orders.list->GetFirstSharedVehicle(); w != NULL; w = w->NextShared()) {
-				*vehs.Append() = w;
+				vehs.push_back(w);
 			}
 		} else {
-			*vehs.Append() = v;
+			vehs.push_back(v);
 		}
 
 		int total_duration = v->orders.list->GetTimetableTotalDuration();

@@ -50,7 +50,7 @@ struct PoolBase {
 	 */
 	PoolBase(PoolType pt) : type(pt)
 	{
-		*PoolBase::GetPools()->Append() = this;
+		PoolBase::GetPools()->push_back(this);
 	}
 
 	virtual ~PoolBase();

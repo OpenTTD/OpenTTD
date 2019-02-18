@@ -57,7 +57,7 @@ protected:
 			const StoryPage *p;
 			FOR_ALL_STORY_PAGES(p) {
 				if (this->IsPageAvailable(p)) {
-					*this->story_pages.Append() = p;
+					this->story_pages.push_back(p);
 				}
 			}
 
@@ -85,7 +85,7 @@ protected:
 				const StoryPageElement *pe;
 				FOR_ALL_STORY_PAGE_ELEMENTS(pe) {
 					if (pe->page == p->index) {
-						*this->story_page_elements.Append() = pe;
+						this->story_page_elements.push_back(pe);
 					}
 				}
 			}
@@ -248,7 +248,7 @@ protected:
 				item = str_item;
 			}
 
-			*list->Append() = item;
+			list->push_back(item);
 			page_num++;
 		}
 

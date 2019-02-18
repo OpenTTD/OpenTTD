@@ -78,7 +78,7 @@ public:
 				FontMap::const_iterator map = fontMapping.Begin();
 				while (map < fontMapping.End() - 1 && map->first <= chars.location) map++;
 
-				*this->Append() = new CoreTextVisualRun(run, map->second, buff);
+				this->push_back(new CoreTextVisualRun(run, map->second, buff));
 			}
 			CFRelease(line);
 		}

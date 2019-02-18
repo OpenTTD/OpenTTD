@@ -48,20 +48,20 @@ TextEffectID AddTextEffect(StringID msg, int center, int y, uint8 duration, Text
 	for (i = 0; i < _text_effects.size(); i++) {
 		if (_text_effects[i].string_id == INVALID_STRING_ID) break;
 	}
-	if (i == _text_effects.size()) _text_effects.Append();
+	if (i == _text_effects.size()) _text_effects.emplace_back();
 
-	TextEffect *te = _text_effects.data() + i;
+	TextEffect &te = _text_effects[i];
 
 	/* Start defining this object */
-	te->string_id = msg;
-	te->duration = duration;
-	te->params_1 = GetDParam(0);
-	te->params_2 = GetDParam(1);
-	te->mode = mode;
+	te.string_id = msg;
+	te.duration = duration;
+	te.params_1 = GetDParam(0);
+	te.params_2 = GetDParam(1);
+	te.mode = mode;
 
 	/* Make sure we only dirty the new area */
-	te->width_normal = 0;
-	te->UpdatePosition(center, y, msg);
+	te.width_normal = 0;
+	te.UpdatePosition(center, y, msg);
 
 	return i;
 }

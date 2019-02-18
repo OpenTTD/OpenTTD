@@ -365,11 +365,11 @@ static void Xunzip(byte **bufp, size_t *sizep)
 	str_validate(p, this->text + filesize, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
 
 	/* Split the string on newlines. */
-	*this->lines.Append() = p;
+	this->lines.push_back(p);
 	for (; *p != '\0'; p++) {
 		if (*p == '\n') {
 			*p = '\0';
-			*this->lines.Append() = p + 1;
+			this->lines.push_back(p + 1);
 		}
 	}
 

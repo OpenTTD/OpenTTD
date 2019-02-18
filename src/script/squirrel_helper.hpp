@@ -117,7 +117,7 @@ namespace SQConvert {
 		sq_getstring(vm, -1, &tmp);
 		char *tmp_str = stredup(tmp);
 		sq_poptop(vm);
-		*ptr->Append() = (void *)tmp_str;
+		ptr->push_back((void *)tmp_str);
 		str_validate(tmp_str, tmp_str + strlen(tmp_str));
 		return tmp_str;
 	}
@@ -137,7 +137,7 @@ namespace SQConvert {
 		while (SQ_SUCCEEDED(sq_next(vm, -2))) {
 			SQInteger tmp;
 			if (SQ_SUCCEEDED(sq_getinteger(vm, -1, &tmp))) {
-				*data.Append() = (int32)tmp;
+				data.push_back((int32)tmp);
 			} else {
 				sq_pop(vm, 4);
 				throw sq_throwerror(vm, "a member of an array used as parameter to a function is not numeric");
@@ -151,7 +151,7 @@ namespace SQConvert {
 		arr->size = data.size();
 		memcpy(arr->array, data.Begin(), sizeof(int32) * data.size());
 
-		*ptr->Append() = arr;
+		ptr->push_back(arr);
 		return arr;
 	}
 

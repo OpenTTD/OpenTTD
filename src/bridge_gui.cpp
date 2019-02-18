@@ -416,12 +416,13 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 		for (BridgeType brd_type = 0; brd_type != MAX_BRIDGES; brd_type++) {
 			if (CheckBridgeAvailability(brd_type, bridge_len).Succeeded()) {
 				/* bridge is accepted, add to list */
-				BuildBridgeData *item = bl->Append();
-				item->index = brd_type;
-				item->spec = GetBridgeSpec(brd_type);
+				/*C++17: BuildBridgeData &item = */ bl->emplace_back();
+				BuildBridgeData &item = bl->back();
+				item.index = brd_type;
+				item.spec = GetBridgeSpec(brd_type);
 				/* Add to terraforming & bulldozing costs the cost of the
 				 * bridge itself (not computed with DC_QUERY_COST) */
-				item->cost = ret.GetCost() + (((int64)tot_bridgedata_len * _price[PR_BUILD_BRIDGE] * item->spec->price) >> 8) + infra_cost;
+				item.cost = ret.GetCost() + (((int64)tot_bridgedata_len * _price[PR_BUILD_BRIDGE] * item.spec->price) >> 8) + infra_cost;
 			}
 		}
 	}

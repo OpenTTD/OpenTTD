@@ -823,7 +823,7 @@ typedef SmallVector<Train *, 16> TrainList;
  */
 static void MakeTrainBackup(TrainList &list, Train *t)
 {
-	for (; t != NULL; t = t->Next()) *list.Append() = t;
+	for (; t != NULL; t = t->Next()) list.push_back(t);
 }
 
 /**

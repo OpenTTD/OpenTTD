@@ -666,7 +666,8 @@ uint32 NewGRFSpriteLayout::PrepareLayout(uint32 orig_offset, uint32 newgrf_groun
 
 	/* Create a copy of the spritelayout, so we can modify some values.
 	 * Also include the groundsprite into the sequence for easier processing. */
-	DrawTileSeqStruct *result = result_seq.Append();
+	/*C++17: DrawTileSeqStruct *result = &*/ result_seq.emplace_back();
+	DrawTileSeqStruct *result = &result_seq.back();
 	result->image = ground;
 	result->delta_x = 0;
 	result->delta_y = 0;
@@ -674,10 +675,10 @@ uint32 NewGRFSpriteLayout::PrepareLayout(uint32 orig_offset, uint32 newgrf_groun
 
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, this->seq) {
-		*result_seq.Append() = *dtss;
+		result_seq.push_back(*dtss);
 	}
-	result_seq.Append()->MakeTerminator();
-
+	result_seq.emplace_back() /*C++17: .MakeTerminator()*/;
+	result_seq.back().MakeTerminator();
 	/* Determine the var10 values the action-1-2-3 chains needs to be resolved for,
 	 * and apply the default sprite offsets (unless disabled). */
 	const TileLayoutRegisters *regs = this->registers;

@@ -417,11 +417,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		 *  - We have to call the refit cost callback with the pre-refit configuration of the chain because we want refit and
 		 *    autorefit to behave the same, and we need its result for auto_refit_allowed.
 		 */
-		RefitResult *result = refit_result.Append();
-		result->v = v;
-		result->capacity = amount;
-		result->mail_capacity = mail_capacity;
-		result->subtype = actual_subtype;
+		refit_result.push_back({v, amount, mail_capacity, actual_subtype});
 	}
 
 	if (flags & DC_EXEC) {

@@ -242,7 +242,7 @@ struct Buffer : SmallVector<byte, 256> {
 	 */
 	void AppendByte(byte value)
 	{
-		*this->Append() = value;
+		this->push_back(value);
 	}
 
 	/**
@@ -252,19 +252,19 @@ struct Buffer : SmallVector<byte, 256> {
 	void AppendUtf8(uint32 value)
 	{
 		if (value < 0x80) {
-			*this->Append() = value;
+			this->push_back(value);
 		} else if (value < 0x800) {
-			*this->Append() = 0xC0 + GB(value,  6, 5);
-			*this->Append() = 0x80 + GB(value,  0, 6);
+			this->push_back(0xC0 + GB(value,  6, 5));
+			this->push_back(0x80 + GB(value,  0, 6));
 		} else if (value < 0x10000) {
-			*this->Append() = 0xE0 + GB(value, 12, 4);
-			*this->Append() = 0x80 + GB(value,  6, 6);
-			*this->Append() = 0x80 + GB(value,  0, 6);
+			this->push_back(0xE0 + GB(value, 12, 4));
+			this->push_back(0x80 + GB(value,  6, 6));
+			this->push_back(0x80 + GB(value,  0, 6));
 		} else if (value < 0x110000) {
-			*this->Append() = 0xF0 + GB(value, 18, 3);
-			*this->Append() = 0x80 + GB(value, 12, 6);
-			*this->Append() = 0x80 + GB(value,  6, 6);
-			*this->Append() = 0x80 + GB(value,  0, 6);
+			this->push_back(0xF0 + GB(value, 18, 3));
+			this->push_back(0x80 + GB(value, 12, 6));
+			this->push_back(0x80 + GB(value,  6, 6));
+			this->push_back(0x80 + GB(value,  0, 6));
 		} else {
 			strgen_warning("Invalid unicode value U+0x%X", value);
 		}

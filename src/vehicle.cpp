@@ -2283,9 +2283,7 @@ void Vehicle::GetConsistFreeCapacities(SmallMap<CargoID, uint> &capacities) cons
 		if (v->cargo_cap == 0) continue;
 		SmallPair<CargoID, uint> *pair = capacities.Find(v->cargo_type);
 		if (pair == capacities.End()) {
-			pair = capacities.Append();
-			pair->first = v->cargo_type;
-			pair->second = v->cargo_cap - v->cargo.StoredCount();
+			capacities.push_back({v->cargo_type, v->cargo_cap - v->cargo.StoredCount()});
 		} else {
 			pair->second += v->cargo_cap - v->cargo.StoredCount();
 		}

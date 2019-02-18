@@ -472,10 +472,7 @@ static StringIDMappingVector _string_to_grf_mapping;
 static void AddStringForMapping(StringID source, StringID *target)
 {
 	*target = STR_UNDEFINED;
-	StringIDMapping *item = _string_to_grf_mapping.Append();
-	item->grfid = _cur.grffile->grfid;
-	item->source = source;
-	item->target = target;
+	_string_to_grf_mapping.push_back({_cur.grffile->grfid, source, target});
 }
 
 /**
@@ -659,11 +656,12 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 
 	/* Reserve the engine slot */
 	assert(_engine_mngr.size() == e->index);
-	EngineIDMapping *eid = _engine_mngr.Append();
-	eid->type            = type;
-	eid->grfid           = scope_grfid; // Note: this is INVALID_GRFID if dynamic_engines is disabled, so no reservation
-	eid->internal_id     = internal_id;
-	eid->substitute_id   = min(internal_id, _engine_counts[type]); // substitute_id == _engine_counts[subtype] means "no substitute"
+	_engine_mngr.push_back({
+			scope_grfid, // Note: this is INVALID_GRFID if dynamic_engines is disabled, so no reservation
+			internal_id,
+			{static_cast<byte>(type)},
+			static_cast<uint8>(min(internal_id, _engine_counts[type])) // substitute_id == _engine_counts[subtype] means "no substitute"
+	});
 
 	if (engine_pool_size != Engine::GetPoolSize()) {
 		/* Resize temporary engine data ... */
@@ -1909,18 +1907,19 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					tmp_layout.clear();
 					for (;;) {
 						/* no relative bounding box support */
-						DrawTileSeqStruct *dtss = tmp_layout.Append();
-						MemSetT(dtss, 0);
+						/*C++17: DrawTileSeqStruct &dtss = */ tmp_layout.emplace_back();
+						DrawTileSeqStruct &dtss = tmp_layout.back();
+						MemSetT(&dtss, 0);
 
-						dtss->delta_x = buf->ReadByte();
-						if (dtss->IsTerminator()) break;
-						dtss->delta_y = buf->ReadByte();
-						dtss->delta_z = buf->ReadByte();
-						dtss->size_x = buf->ReadByte();
-						dtss->size_y = buf->ReadByte();
-						dtss->size_z = buf->ReadByte();
+						dtss.delta_x = buf->ReadByte();
+						if (dtss.IsTerminator()) break;
+						dtss.delta_y = buf->ReadByte();
+						dtss.delta_z = buf->ReadByte();
+						dtss.size_x = buf->ReadByte();
+						dtss.size_y = buf->ReadByte();
+						dtss.size_z = buf->ReadByte();
 
-						ReadSpriteLayoutSprite(buf, false, true, false, GSF_STATIONS, &dtss->image);
+						ReadSpriteLayoutSprite(buf, false, true, false, GSF_STATIONS, &dtss.image);
 						/* On error, bail out immediately. Temporary GRF data was already freed */
 						if (_cur.skip_sprites < 0) return CIR_DISABLED;
 					}
@@ -2594,7 +2593,7 @@ static ChangeInfoResult LoadTranslationTable(uint gvid, int numinfo, ByteReader 
 	translation_table.clear();
 	for (int i = 0; i < numinfo; i++) {
 		uint32 item = buf->ReadDWord();
-		*translation_table.Append() = BSWAP32(item);
+		translation_table.push_back(BSWAP32(item));
 	}
 
 	return CIR_SUCCESS;
@@ -2799,14 +2798,14 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 						if (map.openttd_id >= MAX_NUM_GENDERS) {
 							grfmsg(1, "GlobalVarChangeInfo: Gender name %s is not known, ignoring", name);
 						} else {
-							*_cur.grffile->language_map[curidx].gender_map.Append() = map;
+							_cur.grffile->language_map[curidx].gender_map.push_back(map);
 						}
 					} else {
 						map.openttd_id = lang->GetCaseIndex(name);
 						if (map.openttd_id >= MAX_NUM_CASES) {
 							grfmsg(1, "GlobalVarChangeInfo: Case name %s is not known, ignoring", name);
 						} else {
-							*_cur.grffile->language_map[curidx].case_map.Append() = map;
+							_cur.grffile->language_map[curidx].case_map.push_back(map);
 						}
 					}
 					newgrf_id = buf->ReadByte();
@@ -4335,7 +4334,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 				if (_cur.grffile->railtype_map[id + i] != INVALID_RAILTYPE) {
 					int n = buf->ReadByte();
 					for (int j = 0; j != n; j++) {
-						*_railtypes[_cur.grffile->railtype_map[id + i]].alternate_labels.Append() = BSWAP32(buf->ReadDWord());
+						_railtypes[_cur.grffile->railtype_map[id + i]].alternate_labels.push_back(BSWAP32(buf->ReadDWord()));
 					}
 					break;
 				}
@@ -4796,29 +4795,30 @@ static void NewSpriteGroup(ByteReader *buf)
 			/* Loop through the var adjusts. Unfortunately we don't know how many we have
 			 * from the outset, so we shall have to keep reallocing. */
 			do {
-				DeterministicSpriteGroupAdjust *adjust = adjusts.Append();
+				/*C++17: DeterministicSpriteGroupAdjust &adjust = */ adjusts.emplace_back();
+				DeterministicSpriteGroupAdjust &adjust = adjusts.back();
 
 				/* The first var adjust doesn't have an operation specified, so we set it to add. */
-				adjust->operation = adjusts.size() == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)buf->ReadByte();
-				adjust->variable  = buf->ReadByte();
-				if (adjust->variable == 0x7E) {
+				adjust.operation = adjusts.size() == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)buf->ReadByte();
+				adjust.variable  = buf->ReadByte();
+				if (adjust.variable == 0x7E) {
 					/* Link subroutine group */
-					adjust->subroutine = GetGroupFromGroupID(setid, type, buf->ReadByte());
+					adjust.subroutine = GetGroupFromGroupID(setid, type, buf->ReadByte());
 				} else {
-					adjust->parameter = IsInsideMM(adjust->variable, 0x60, 0x80) ? buf->ReadByte() : 0;
+					adjust.parameter = IsInsideMM(adjust.variable, 0x60, 0x80) ? buf->ReadByte() : 0;
 				}
 
 				varadjust = buf->ReadByte();
-				adjust->shift_num = GB(varadjust, 0, 5);
-				adjust->type      = (DeterministicSpriteGroupAdjustType)GB(varadjust, 6, 2);
-				adjust->and_mask  = buf->ReadVarSize(varsize);
+				adjust.shift_num = GB(varadjust, 0, 5);
+				adjust.type      = (DeterministicSpriteGroupAdjustType)GB(varadjust, 6, 2);
+				adjust.and_mask  = buf->ReadVarSize(varsize);
 
-				if (adjust->type != DSGA_TYPE_NONE) {
-					adjust->add_val    = buf->ReadVarSize(varsize);
-					adjust->divmod_val = buf->ReadVarSize(varsize);
+				if (adjust.type != DSGA_TYPE_NONE) {
+					adjust.add_val    = buf->ReadVarSize(varsize);
+					adjust.divmod_val = buf->ReadVarSize(varsize);
 				} else {
-					adjust->add_val    = 0;
-					adjust->divmod_val = 0;
+					adjust.add_val    = 0;
+					adjust.divmod_val = 0;
 				}
 
 				/* Continue reading var adjusts while bit 5 is set. */
@@ -7851,9 +7851,7 @@ static bool HandleParameterInfo(ByteReader *buf)
 		}
 
 		if (id >= _cur.grfconfig->param_info.size()) {
-			uint num_to_add = id - _cur.grfconfig->param_info.size() + 1;
-			GRFParameterInfo **newdata = _cur.grfconfig->param_info.Append(num_to_add);
-			MemSetT<GRFParameterInfo *>(newdata, 0, num_to_add);
+			_cur.grfconfig->param_info.resize(id + 1);
 		}
 		if (_cur.grfconfig->param_info[id] == NULL) {
 			_cur.grfconfig->param_info[id] = new GRFParameterInfo(id);
@@ -8405,7 +8403,7 @@ static void InitNewGRFFile(const GRFConfig *config)
 	}
 
 	newfile = new GRFFile(config);
-	*_grf_files.Append() = _cur.grffile = newfile;
+	_grf_files.push_back(_cur.grffile = newfile);
 }
 
 /**

@@ -129,7 +129,7 @@ static DropDownList *BuildSetDropDownList(int *selected_index, bool allow_select
 
 	DropDownList *list = new DropDownList();
 	for (int i = 0; i < n; i++) {
-		*list->Append() = new DropDownListCharStringItem(T::GetSet(i)->name, i, !allow_selection && (*selected_index != i));
+		list->push_back(new DropDownListCharStringItem(T::GetSet(i)->name, i, !allow_selection && (*selected_index != i)));
 	}
 
 	return list;
@@ -213,13 +213,13 @@ struct GameOptionsWindow : Window {
 				/* Add non-custom currencies; sorted naturally */
 				for (uint i = 0; i < CURRENCY_END; items++, i++) {
 					if (i == CURRENCY_CUSTOM) continue;
-					*list->Append() = new DropDownListStringItem(*items, i, HasBit(disabled, i));
+					list->push_back(new DropDownListStringItem(*items, i, HasBit(disabled, i)));
 				}
 				QSortT(list->Begin(), list->size(), DropDownListStringItem::NatSortFunc);
 
 				/* Append custom currency at the end */
-				*list->Append() = new DropDownListItem(-1, false); // separator line
-				*list->Append() = new DropDownListStringItem(STR_GAME_OPTIONS_CURRENCY_CUSTOM, CURRENCY_CUSTOM, HasBit(disabled, CURRENCY_CUSTOM));
+				list->push_back(new DropDownListItem(-1, false)); // separator line
+				list->push_back(new DropDownListStringItem(STR_GAME_OPTIONS_CURRENCY_CUSTOM, CURRENCY_CUSTOM, HasBit(disabled, CURRENCY_CUSTOM)));
 				break;
 			}
 
@@ -237,7 +237,7 @@ struct GameOptionsWindow : Window {
 				}
 
 				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					*list->Append() = new DropDownListStringItem(*items, i, HasBit(disabled, i));
+					list->push_back(new DropDownListStringItem(*items, i, HasBit(disabled, i)));
 				}
 				break;
 			}
@@ -251,20 +251,20 @@ struct GameOptionsWindow : Window {
 				/* Add and sort newgrf townnames generators */
 				for (int i = 0; i < _nb_grf_names; i++) {
 					int result = _nb_orig_names + i;
-					*list->Append() = new DropDownListStringItem(_grf_names[i], result, enabled_item != result && enabled_item >= 0);
+					list->push_back(new DropDownListStringItem(_grf_names[i], result, enabled_item != result && enabled_item >= 0));
 				}
 				QSortT(list->Begin(), list->size(), DropDownListStringItem::NatSortFunc);
 
 				int newgrf_size = list->size();
 				/* Insert newgrf_names at the top of the list */
 				if (newgrf_size > 0) {
-					*list->Append() = new DropDownListItem(-1, false); // separator line
+					list->push_back(new DropDownListItem(-1, false)); // separator line
 					newgrf_size++;
 				}
 
 				/* Add and sort original townnames generators */
 				for (int i = 0; i < _nb_orig_names; i++) {
-					*list->Append() = new DropDownListStringItem(STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + i, i, enabled_item != i && enabled_item >= 0);
+					list->push_back(new DropDownListStringItem(STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + i, i, enabled_item != i && enabled_item >= 0));
 				}
 				QSortT(list->Begin() + newgrf_size, list->size() - newgrf_size, DropDownListStringItem::NatSortFunc);
 				break;
@@ -275,7 +275,7 @@ struct GameOptionsWindow : Window {
 				*selected_index = _settings_client.gui.autosave;
 				const StringID *items = _autosave_dropdown;
 				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					*list->Append() = new DropDownListStringItem(*items, i, false);
+					list->push_back(new DropDownListStringItem(*items, i, false));
 				}
 				break;
 			}
@@ -284,7 +284,7 @@ struct GameOptionsWindow : Window {
 				list = new DropDownList();
 				for (uint i = 0; i < _languages.size(); i++) {
 					if (&_languages[i] == _current_language) *selected_index = i;
-					*list->Append() = new DropDownListStringItem(SPECSTR_LANGUAGE_START + i, i, false);
+					list->push_back(new DropDownListStringItem(SPECSTR_LANGUAGE_START + i, i, false));
 				}
 				QSortT(list->Begin(), list->size(), DropDownListStringItem::NatSortFunc);
 				break;
@@ -296,7 +296,7 @@ struct GameOptionsWindow : Window {
 				list = new DropDownList();
 				*selected_index = GetCurRes();
 				for (int i = 0; i < _num_resolutions; i++) {
-					*list->Append() = new DropDownListStringItem(SPECSTR_RESOLUTION_START + i, i, false);
+					list->push_back(new DropDownListStringItem(SPECSTR_RESOLUTION_START + i, i, false));
 				}
 				break;
 
@@ -305,7 +305,7 @@ struct GameOptionsWindow : Window {
 				*selected_index = ZOOM_LVL_OUT_4X - _gui_zoom;
 				const StringID *items = _gui_zoom_dropdown;
 				for (int i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					*list->Append() = new DropDownListStringItem(*items, i, _settings_client.gui.zoom_min > ZOOM_LVL_OUT_4X - i);
+					list->push_back(new DropDownListStringItem(*items, i, _settings_client.gui.zoom_min > ZOOM_LVL_OUT_4X - i));
 				}
 				break;
 			}
@@ -315,7 +315,7 @@ struct GameOptionsWindow : Window {
 				*selected_index = ZOOM_LVL_OUT_4X - _font_zoom;
 				const StringID *items = _font_zoom_dropdown;
 				for (int i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					*list->Append() = new DropDownListStringItem(*items, i, false);
+					list->push_back(new DropDownListStringItem(*items, i, false));
 				}
 				break;
 			}
@@ -1964,16 +1964,16 @@ struct GameSettingsWindow : Window {
 					 * we don't want to allow comparing with new game's settings. */
 					bool disabled = mode == RM_CHANGED_AGAINST_NEW && settings_ptr == &_settings_newgame;
 
-					*list->Append() = new DropDownListStringItem(_game_settings_restrict_dropdown[mode], mode, disabled);
+					list->push_back(new DropDownListStringItem(_game_settings_restrict_dropdown[mode], mode, disabled));
 				}
 				break;
 
 			case WID_GS_TYPE_DROPDOWN:
 				list = new DropDownList();
-				*list->Append() = new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL, ST_ALL, false);
-				*list->Append() = new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME, ST_GAME, false);
-				*list->Append() = new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME, ST_COMPANY, false);
-				*list->Append() = new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT, ST_CLIENT, false);
+				list->push_back(new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL, ST_ALL, false));
+				list->push_back(new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME, ST_GAME, false));
+				list->push_back(new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME, ST_COMPANY, false));
+				list->push_back(new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT, ST_CLIENT, false));
 				break;
 		}
 		return list;
@@ -2130,7 +2130,7 @@ struct GameSettingsWindow : Window {
 
 					DropDownList *list = new DropDownList();
 					for (int i = sdb->min; i <= (int)sdb->max; i++) {
-						*list->Append() = new DropDownListStringItem(sdb->str_val + i - sdb->min, i, false);
+						list->push_back(new DropDownListStringItem(sdb->str_val + i - sdb->min, i, false));
 					}
 
 					ShowDropDownListAt(this, list, value, -1, wi_rect, COLOUR_ORANGE, true);

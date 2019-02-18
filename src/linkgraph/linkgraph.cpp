@@ -159,7 +159,7 @@ NodeID LinkGraph::AddNode(const Station *st)
 	const GoodsEntry &good = st->goods[this->cargo];
 
 	NodeID new_node = this->Size();
-	this->nodes.Append();
+	this->nodes.emplace_back();
 	/* Avoid reducing the height of the matrix as that is expensive and we
 	 * most likely will increase it again later which is again expensive. */
 	this->edges.Resize(new_node + 1U,

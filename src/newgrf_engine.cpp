@@ -1196,9 +1196,7 @@ static SmallVector<ListOrderChange, 16> _list_order_changes;
 void AlterVehicleListOrder(EngineID engine, uint target)
 {
 	/* Add the list order change to a queue */
-	ListOrderChange *loc = _list_order_changes.Append();
-	loc->engine = engine;
-	loc->target = target;
+	_list_order_changes.push_back({engine, target});
 }
 
 /**
@@ -1231,7 +1229,7 @@ void CommitVehicleListOrderChanges()
 	SmallVector<EngineID, 16> ordering;
 	Engine *e;
 	FOR_ALL_ENGINES(e) {
-		*ordering.Append() = e->index;
+		ordering.push_back(e->index);
 	}
 	QSortT(ordering.Begin(), ordering.size(), EnginePreSort);
 

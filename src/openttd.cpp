@@ -445,7 +445,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 
 		if (dedicated_host != NULL) {
 			_network_bind_list.Clear();
-			*_network_bind_list.Append() = stredup(dedicated_host);
+			_network_bind_list.push_back(stredup(dedicated_host));
 		}
 		if (dedicated_port != 0) _settings_client.network.server_port = dedicated_port;
 
@@ -1177,7 +1177,7 @@ static void CheckCaches()
 	SmallVector<TownCache, 4> old_town_caches;
 	Town *t;
 	FOR_ALL_TOWNS(t) {
-		MemCpyT(old_town_caches.Append(), &t->cache);
+		old_town_caches.push_back(t->cache);
 	}
 
 	extern void RebuildTownCaches();
@@ -1195,7 +1195,7 @@ static void CheckCaches()
 	/* Check company infrastructure cache. */
 	SmallVector<CompanyInfrastructure, 4> old_infrastructure;
 	Company *c;
-	FOR_ALL_COMPANIES(c) MemCpyT(old_infrastructure.Append(), &c->infrastructure);
+	FOR_ALL_COMPANIES(c) old_infrastructure.push_back(c->infrastructure);
 
 	extern void AfterLoadCompanyStats();
 	AfterLoadCompanyStats();

@@ -253,7 +253,7 @@ protected:
 		this->servers.clear();
 
 		for (NetworkGameList *ngl = _network_game_list; ngl != NULL; ngl = ngl->next) {
-			*this->servers.Append() = ngl;
+			this->servers.push_back(ngl);
 		}
 
 		/* Apply the filter condition immediately, if a search string has been provided. */
@@ -1737,9 +1737,7 @@ struct NetworkClientListPopupWindow : Window {
 	 */
 	inline void AddAction(StringID name, ClientList_Action_Proc *proc)
 	{
-		ClientListAction *action = this->actions.Append();
-		action->name = name;
-		action->proc = proc;
+		this->actions.push_back({name, proc});
 	}
 
 	NetworkClientListPopupWindow(WindowDesc *desc, int x, int y, ClientID client_id) :

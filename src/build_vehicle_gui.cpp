@@ -1246,7 +1246,7 @@ struct BuildVehicleWindow : Window {
 			/* Filter now! So num_engines and num_wagons is valid */
 			if (!FilterSingleEngine(eid)) continue;
 
-			*this->eng_list.Append() = eid;
+			this->eng_list.push_back(eid);
 
 			if (rvi->railveh_type != RAILVEH_WAGON) {
 				num_engines++;
@@ -1284,7 +1284,7 @@ struct BuildVehicleWindow : Window {
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
 			if (!HasBit(this->filter.roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
-			*this->eng_list.Append() = eid;
+			this->eng_list.push_back(eid);
 
 			if (eid == this->sel_engine) sel_id = eid;
 		}
@@ -1302,7 +1302,7 @@ struct BuildVehicleWindow : Window {
 			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
-			*this->eng_list.Append() = eid;
+			this->eng_list.push_back(eid);
 
 			if (eid == this->sel_engine) sel_id = eid;
 		}
@@ -1330,7 +1330,7 @@ struct BuildVehicleWindow : Window {
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
 			if (!this->listview_mode && !CanVehicleUseStation(eid, st)) continue;
 
-			*this->eng_list.Append() = eid;
+			this->eng_list.push_back(eid);
 			if (eid == this->sel_engine) sel_id = eid;
 		}
 

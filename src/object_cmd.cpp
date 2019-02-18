@@ -530,9 +530,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 			break;
 	}
 
-	ClearedObjectArea *cleared_area = _cleared_object_areas.Append();
-	cleared_area->first_tile = tile;
-	cleared_area->area = ta;
+	_cleared_object_areas.push_back({tile, ta});
 
 	if (flags & DC_EXEC) ReallyClearObjectTile(o);
 

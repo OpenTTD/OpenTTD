@@ -633,12 +633,12 @@ void NetworkAddServer(const char *b)
 void GetBindAddresses(NetworkAddressList *addresses, uint16 port)
 {
 	for (char **iter = _network_bind_list.Begin(); iter != _network_bind_list.End(); iter++) {
-		*addresses->Append() = NetworkAddress(*iter, port);
+		addresses->emplace_back(*iter, port);
 	}
 
 	/* No address, so bind to everything. */
 	if (addresses->size() == 0) {
-		*addresses->Append() = NetworkAddress("", port);
+		addresses->emplace_back("", port);
 	}
 }
 
@@ -650,7 +650,7 @@ void NetworkRebuildHostList()
 	_network_host_list.Clear();
 
 	for (NetworkGameList *item = _network_game_list; item != NULL; item = item->next) {
-		if (item->manually) *_network_host_list.Append() = stredup(item->address.GetAddressAsString(false));
+		if (item->manually) _network_host_list.push_back(stredup(item->address.GetAddressAsString(false)));
 	}
 }
 

@@ -1623,7 +1623,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					if (v != NULL && !HasPowerOnRail(v->railtype, totype)) {
 						/* No power on new rail type, reroute. */
 						FreeTrainTrackReservation(v);
-						*vehicles_affected.Append() = v;
+						vehicles_affected.push_back(v);
 					}
 				}
 
@@ -1705,7 +1705,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 						if (v != NULL && !HasPowerOnRail(v->railtype, totype)) {
 							/* No power on new rail type, reroute. */
 							FreeTrainTrackReservation(v);
-							*vehicles_affected.Append() = v;
+							vehicles_affected.push_back(v);
 						}
 					}
 

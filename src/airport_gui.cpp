@@ -219,7 +219,7 @@ class BuildAirportWindow : public PickerWindowBase {
 		DropDownList *list = new DropDownList();
 
 		for (uint i = 0; i < AirportClass::GetClassCount(); i++) {
-			*list->Append() = new DropDownListStringItem(AirportClass::Get((AirportClassID)i)->name, i, false);
+			list->push_back(new DropDownListStringItem(AirportClass::Get((AirportClassID)i)->name, i, false));
 		}
 
 		return list;

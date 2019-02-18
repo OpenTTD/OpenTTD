@@ -165,7 +165,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 		return true;
 	}
 
-	*this->infos.Append() = ci;
+	this->infos.push_back(ci);
 
 	/* Incoming data means that we might need to reconsider dependencies */
 	for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) {
@@ -278,7 +278,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 			}
 		}
 		if (!found) {
-			*this->infos.Append() = ci;
+			this->infos.push_back(ci);
 		} else {
 			delete ci;
 		}
@@ -300,7 +300,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 		const ContentInfo *ci = *iter;
 		if (!ci->IsSelected() || ci->state == ContentInfo::ALREADY_HERE) continue;
 
-		*content.Append() = ci->id;
+		content.push_back(ci->id);
 		bytes += ci->filesize;
 	}
 
@@ -579,11 +579,11 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 	if (this->http_response_index == -1) {
 		if (data != NULL) {
 			/* Append the rest of the response. */
-			memcpy(this->http_response.Append((uint)length), data, length);
+			memcpy(grow(this->http_response, (uint)length), data, length);
 			return;
 		} else {
 			/* Make sure the response is properly terminated. */
-			*this->http_response.Append() = '\0';
+			this->http_response.push_back('\0');
 
 			/* And prepare for receiving the rest of the data. */
 			this->http_response_index = 0;
@@ -905,7 +905,7 @@ void ClientNetworkContentSocketHandler::ReverseLookupDependency(ConstContentVect
 
 		for (uint i = 0; i < ci->dependency_count; i++) {
 			if (ci->dependencies[i] == child->id) {
-				*parents.Append() = ci;
+				parents.push_back(ci);
 				break;
 			}
 		}
@@ -919,7 +919,7 @@ void ClientNetworkContentSocketHandler::ReverseLookupDependency(ConstContentVect
  */
 void ClientNetworkContentSocketHandler::ReverseLookupTreeDependency(ConstContentVector &tree, const ContentInfo *child) const
 {
-	*tree.Append() = child;
+	tree.push_back(child);
 
 	/* First find all direct parents. We can't use the "normal" iterator as
 	 * we are including stuff into the vector and as such the vector's data

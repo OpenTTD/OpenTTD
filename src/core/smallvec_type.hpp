@@ -67,17 +67,6 @@ public:
 	~SmallVector() = default;
 
 	/**
-	 * Append an item and return it.
-	 * @param to_add the number of items to append
-	 * @return pointer to newly allocated item
-	 */
-	inline T *Append(uint to_add = 1)
-	{
-		std::vector<T>::resize(std::vector<T>::size() + to_add);
-		return this->End() - to_add;
-	}
-
-	/**
 	 * Insert a new item at a specific position into the vector, moving all following items.
 	 * @param item Position at which the new item should be inserted
 	 * @return pointer to the new item
@@ -112,7 +101,7 @@ public:
 	inline bool Include(const T &item)
 	{
 		bool is_member = std::find(std::vector<T>::begin(), std::vector<T>::end(), item) != std::vector<T>::end();
-		if (!is_member) *this->Append() = item;
+		if (!is_member) std::vector<T>::emplace_back(item);
 		return is_member;
 	}
 
@@ -156,6 +145,23 @@ public:
 		return std::vector<T>::data() + std::vector<T>::size();
 	}
 };
+
+/**
+ * Helper function to extend a vector by more than one element
+ * Consider using std::back_inserter in new code
+ *
+ * @param vec A reference to the vector to be extended
+ * @param num The number of elements to default-construct
+ *
+ * @return Pointer to the first new element
+ */
+template <typename T>
+inline T* grow(std::vector<T>& vec, std::size_t num)
+{
+	const std::size_t pos = vec.size();
+	vec.resize(pos + num);
+	return vec.data() + pos;
+}
 
 
 /**

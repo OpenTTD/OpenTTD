@@ -178,7 +178,8 @@ static void Load_WAYP()
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
-		OldWaypoint *wp = _old_waypoints.Append();
+		/*C++17: OldWaypoint *wp = &*/ _old_waypoints.emplace_back();
+		OldWaypoint *wp = &_old_waypoints.back();
 		memset(wp, 0, sizeof(*wp));
 
 		wp->index = index;

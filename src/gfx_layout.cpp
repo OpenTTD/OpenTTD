@@ -150,7 +150,7 @@ public:
 		ICULine(icu::ParagraphLayout::Line *l) : l(l)
 		{
 			for (int i = 0; i < l->countRuns(); i++) {
-				*this->Append() = new ICUVisualRun(l->getVisualRun(i));
+				this->push_back(new ICUVisualRun(l->getVisualRun(i)));
 			}
 		}
 		~ICULine() { delete l; }
@@ -498,7 +498,7 @@ const ParagraphLayouter::Line *FallbackParagraphLayout::NextLine(int max_width)
 	if (*this->buffer == '\0') {
 		/* Only a newline. */
 		this->buffer = NULL;
-		*l->Append() = new FallbackVisualRun(this->runs.Begin()->second, this->buffer, 0, 0);
+		l->push_back(new FallbackVisualRun(this->runs.Begin()->second, this->buffer, 0, 0));
 		return l;
 	}
 
@@ -527,7 +527,7 @@ const ParagraphLayouter::Line *FallbackParagraphLayout::NextLine(int max_width)
 
 		if (this->buffer == next_run) {
 			int w = l->GetWidth();
-			*l->Append() = new FallbackVisualRun(iter->second, begin, this->buffer - begin, w);
+			l->push_back(new FallbackVisualRun(iter->second, begin, this->buffer - begin, w));
 			iter++;
 			assert(iter != this->runs.End());
 
@@ -574,7 +574,7 @@ const ParagraphLayouter::Line *FallbackParagraphLayout::NextLine(int max_width)
 
 	if (l->size() == 0 || last_char - begin != 0) {
 		int w = l->GetWidth();
-		*l->Append() = new FallbackVisualRun(iter->second, begin, last_char - begin, w);
+		l->push_back(new FallbackVisualRun(iter->second, begin, last_char - begin, w));
 	}
 	return l;
 }
@@ -720,7 +720,7 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 		/* Copy all lines into a local cache so we can reuse them later on more easily. */
 		const ParagraphLayouter::Line *l;
 		while ((l = line.layout->NextLine(maxw)) != NULL) {
-			*this->Append() = l;
+			this->push_back(l);
 		}
 
 	} while (c != '\0');
@@ -834,7 +834,7 @@ Font *Layouter::GetFont(FontSize size, TextColour colour)
 	if (it != fonts[size].End()) return it->second;
 
 	Font *f = new Font(size, colour);
-	*fonts[size].Append() = FontColourMap::Pair(colour, f);
+	fonts[size].emplace_back(colour, f);
 	return f;
 }
 
