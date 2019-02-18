@@ -38,6 +38,7 @@
 #include "subsidy_func.h"
 #include "core/pool_func.hpp"
 #include "town.h"
+#include "town_kdtree.h"
 #include "townname_func.h"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
@@ -58,6 +59,20 @@ CargoTypes _town_cargoes_accepted; ///< Bitmap of all cargoes accepted by houses
 /* Initialize the town-pool */
 TownPool _town_pool("Town");
 INSTANTIATE_POOL_METHODS(Town)
+
+
+TownKdtree _town_kdtree(&Kdtree_TownXYFunc);
+
+void RebuildTownKdtree()
+{
+	std::vector<TownID> townids;
+	Town *town;
+	FOR_ALL_TOWNS(town) {
+		townids.push_back(town->index);
+	}
+	_town_kdtree.Build(townids.begin(), townids.end());
+}
+
 
 /**
  * Check if a town 'owns' a bridge.
@@ -366,30 +381,9 @@ static void AnimateTile_Town(TileIndex tile)
  */
 static bool IsCloseToTown(TileIndex tile, uint dist)
 {
-	/* On a large map with many towns, it may be faster to check the surroundings of the tile.
-	 * An iteration in TILE_AREA_LOOP() is generally 2 times faster than one in FOR_ALL_TOWNS(). */
-	if (Town::GetNumItems() > (size_t) (dist * dist * 2)) {
-		const int tx = TileX(tile);
-		const int ty = TileY(tile);
-		TileArea tile_area = TileArea(
-			TileXY(max(0,         tx - (int) dist), max(0,         ty - (int) dist)),
-			TileXY(min(MapMaxX(), tx + (int) dist), min(MapMaxY(), ty + (int) dist))
-		);
-		TILE_AREA_LOOP(atile, tile_area) {
-			if (GetTileType(atile) == MP_HOUSE) {
-				Town *t = Town::GetByTile(atile);
-				if (DistanceManhattan(tile, t->xy) < dist) return true;
-			}
-		}
-		return false;
-	}
-
-	const Town *t;
-
-	FOR_ALL_TOWNS(t) {
-		if (DistanceManhattan(tile, t->xy) < dist) return true;
-	}
-	return false;
+	if (_town_kdtree.Count() == 0) return false;
+	Town *t = Town::Get(_town_kdtree.FindNearest(TileX(tile), TileY(tile)));
+	return DistanceManhattan(tile, t->xy) < dist;
 }
 
 /**
@@ -1682,6 +1676,8 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->grow_counter = t->index % TOWN_GROWTH_TICKS;
 	t->growth_rate = TownTicksToGameTicks(250);
 
+	_town_kdtree.Insert(t->index);
+
 	/* Set the default cargo requirement for town growth */
 	switch (_settings_game.game_creation.landscape) {
 		case LT_ARCTIC:
@@ -2091,6 +2087,9 @@ bool GenerateTowns(TownLayout layout)
 	} while (--total);
 
 	town_names.clear();
+
+	/* Build the town k-d tree again to make sure it's well balanced */
+	RebuildTownKdtree();
 
 	if (current_number != 0) return true;
 
@@ -2867,7 +2866,10 @@ CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	}
 
 	/* The town destructor will delete the other things related to the town. */
-	if (flags & DC_EXEC) delete t;
+	if (flags & DC_EXEC) {
+		_town_kdtree.Remove(t->index);
+		delete t;
+	}
 
 	return CommandCost();
 }
@@ -3392,19 +3394,12 @@ CommandCost CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags
  */
 Town *CalcClosestTownFromTile(TileIndex tile, uint threshold)
 {
-	Town *t;
-	uint best = threshold;
-	Town *best_town = NULL;
+	if (Town::GetNumItems() == 0) return NULL;
 
-	FOR_ALL_TOWNS(t) {
-		uint dist = DistanceManhattan(tile, t->xy);
-		if (dist < best) {
-			best = dist;
-			best_town = t;
-		}
-	}
-
-	return best_town;
+	TownID tid = _town_kdtree.FindNearest(TileX(tile), TileY(tile));
+	Town *town = Town::Get(tid);
+	if (DistanceManhattan(tile, town->xy) < threshold) return town;
+	return NULL;
 }
 
 /**

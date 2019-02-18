@@ -28,6 +28,7 @@
 #include "core/pool_type.hpp"
 #include "game/game.hpp"
 #include "linkgraph/linkgraphschedule.h"
+#include "town_kdtree.h"
 
 #include "safeguards.h"
 
@@ -74,6 +75,8 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 
 	LinkGraphSchedule::Clear();
 	PoolBase::Clean(PT_NORMAL);
+
+	RebuildTownKdtree();
 
 	ResetPersistentNewGRFData();
 
