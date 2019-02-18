@@ -135,6 +135,7 @@ autoslope.h
 base_media_base.h
 base_media_func.h
 base_station_base.h
+bitmap_type.h
 bmp.h
 bridge.h
 cargo_type.h

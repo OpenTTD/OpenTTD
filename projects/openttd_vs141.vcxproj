@@ -448,6 +448,7 @@
     <ClInclude Include="..\src\base_media_base.h" />
     <ClInclude Include="..\src\base_media_func.h" />
     <ClInclude Include="..\src\base_station_base.h" />
+    <ClInclude Include="..\src\bitmap_type.h" />
     <ClInclude Include="..\src\bmp.h" />
     <ClInclude Include="..\src\bridge.h" />
     <ClInclude Include="..\src\cargo_type.h" />
