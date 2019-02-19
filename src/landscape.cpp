@@ -1317,7 +1317,7 @@ void FloodFill(TileIndex tile, uint& count, uint mode) {
 	}
 }
 struct TilePrio {
-	TilePrio(TileIndex t): t(t) { prio = (Random() & 0x3); }
+	TilePrio(TileIndex t): t(t) { prio = (Random() & 0x3F); }
 	TileIndex t;
 	uint prio;
 	bool operator<(const TilePrio& tp) const {
