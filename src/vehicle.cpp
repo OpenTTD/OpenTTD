@@ -53,6 +53,7 @@
 #include "linkgraph/linkgraph.h"
 #include "linkgraph/refresh.h"
 #include "framerate_type.h"
+#include "disaster_vehicle.h"
 
 #include "table/strings.h"
 
@@ -940,24 +941,11 @@ static void RunVehicleDayProc()
 	}
 }
 
-void CallVehicleTicks()
+template <typename vt>
+void CallVehicleTicksOfType()
 {
-	_vehicles_to_autoreplace.Clear();
-
-	RunVehicleDayProc();
-
-	{
-		PerformanceMeasurer framerate(PFE_GL_ECONOMY);
-		Station *st;
-		FOR_ALL_STATIONS(st) LoadUnloadStation(st);
-	}
-	PerformanceAccumulator::Reset(PFE_GL_TRAINS);
-	PerformanceAccumulator::Reset(PFE_GL_ROADVEHS);
-	PerformanceAccumulator::Reset(PFE_GL_SHIPS);
-	PerformanceAccumulator::Reset(PFE_GL_AIRCRAFT);
-
 	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	FOR_ALL_VEHICLES_OF_TYPE(vt, v) {
 		/* Vehicle could be deleted in this tick */
 		if (!v->Tick()) {
 			assert(Vehicle::Get(vehicle_index) == NULL);
@@ -1025,7 +1013,42 @@ void CallVehicleTicks()
 			}
 		}
 	}
+}
 
+void CallVehicleTicks()
+{
+	_vehicles_to_autoreplace.Clear();
+
+	RunVehicleDayProc();
+
+	{
+		PerformanceMeasurer framerate(PFE_GL_ECONOMY);
+		Station *st;
+		FOR_ALL_STATIONS(st) LoadUnloadStation(st);
+	}
+
+	{
+		PerformanceMeasurer framerate(PFE_GL_TRAINS);
+		CallVehicleTicksOfType<Train>();
+	}
+	{
+		PerformanceMeasurer framerate(PFE_GL_ROADVEHS);
+		CallVehicleTicksOfType<RoadVehicle>();
+	}
+	{
+		PerformanceMeasurer framerate(PFE_GL_SHIPS);
+		CallVehicleTicksOfType<Ship>();
+	}
+	{
+		PerformanceMeasurer framerate(PFE_GL_AIRCRAFT);
+		CallVehicleTicksOfType<Aircraft>();
+	}
+	{
+		CallVehicleTicksOfType<EffectVehicle>();
+		CallVehicleTicksOfType<DisasterVehicle>();
+	}
+
+	Vehicle *v;
 	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
 	for (AutoreplaceMap::iterator it = _vehicles_to_autoreplace.Begin(); it != _vehicles_to_autoreplace.End(); it++) {
 		v = it->first;

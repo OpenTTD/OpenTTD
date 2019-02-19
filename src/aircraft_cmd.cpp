@@ -2054,8 +2054,6 @@ bool Aircraft::Tick()
 {
 	if (!this->IsNormalAircraft()) return true;
 
-	PerformanceAccumulator framerate(PFE_GL_AIRCRAFT);
-
 	this->tick_counter++;
 
 	if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;

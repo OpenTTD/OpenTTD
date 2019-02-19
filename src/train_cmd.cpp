@@ -3901,8 +3901,6 @@ Money Train::GetRunningCost() const
  */
 bool Train::Tick()
 {
-	PerformanceAccumulator framerate(PFE_GL_TRAINS);
-
 	this->tick_counter++;
 
 	if (this->IsFrontEngine()) {
