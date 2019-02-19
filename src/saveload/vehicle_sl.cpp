@@ -752,21 +752,22 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 	static const SaveLoad _roadveh_desc[] = {
 		SLE_WRITEBYTE(Vehicle, type),
 		SLE_VEH_INCLUDE(),
-		     SLE_VAR(RoadVehicle, state,                SLE_UINT8),
-		     SLE_VAR(RoadVehicle, frame,                SLE_UINT8),
-		     SLE_VAR(RoadVehicle, blocked_ctr,          SLE_UINT16),
-		     SLE_VAR(RoadVehicle, overtaking,           SLE_UINT8),
-		     SLE_VAR(RoadVehicle, overtaking_ctr,       SLE_UINT8),
-		     SLE_VAR(RoadVehicle, crashed_ctr,          SLE_UINT16),
-		     SLE_VAR(RoadVehicle, reverse_ctr,          SLE_UINT8),
+		      SLE_VAR(RoadVehicle, state,                SLE_UINT8),
+		      SLE_VAR(RoadVehicle, frame,                SLE_UINT8),
+		      SLE_VAR(RoadVehicle, blocked_ctr,          SLE_UINT16),
+		      SLE_VAR(RoadVehicle, overtaking,           SLE_UINT8),
+		      SLE_VAR(RoadVehicle, overtaking_ctr,       SLE_UINT8),
+		      SLE_VAR(RoadVehicle, crashed_ctr,          SLE_UINT16),
+		      SLE_VAR(RoadVehicle, reverse_ctr,          SLE_UINT8),
+		SLE_CONDDEQUE(RoadVehicle, path,                SLE_UINT8,                  SLV_ROADVEH_PATH_CACHE, SL_MAX_VERSION),
 
-		SLE_CONDNULL(2,                                                               SLV_6,  SLV_69),
-		 SLE_CONDVAR(RoadVehicle, gv_flags,             SLE_UINT16,                 SLV_139, SL_MAX_VERSION),
-		SLE_CONDNULL(4,                                                              SLV_69, SLV_131),
-		SLE_CONDNULL(2,                                                               SLV_6, SLV_131),
-		SLE_CONDNULL(16,                                                              SLV_2, SLV_144), // old reserved space
+		 SLE_CONDNULL(2,                                                               SLV_6,  SLV_69),
+		  SLE_CONDVAR(RoadVehicle, gv_flags,             SLE_UINT16,                 SLV_139, SL_MAX_VERSION),
+		 SLE_CONDNULL(4,                                                              SLV_69, SLV_131),
+		 SLE_CONDNULL(2,                                                               SLV_6, SLV_131),
+		 SLE_CONDNULL(16,                                                              SLV_2, SLV_144), // old reserved space
 
-		     SLE_END()
+		      SLE_END()
 	};
 
 	static const SaveLoad _ship_desc[] = {

@@ -18,6 +18,7 @@
 #include "track_func.h"
 #include "road_type.h"
 #include "newgrf_engine.h"
+#include <deque>
 
 struct RoadVehicle;
 
@@ -82,10 +83,13 @@ static const byte RV_OVERTAKE_TIMEOUT = 35;
 void RoadVehUpdateCache(RoadVehicle *v, bool same_length = false);
 void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 
+typedef std::deque<TrackdirByte> RoadVehPathCache;
+
 /**
  * Buses, trucks and trams belong to this class.
  */
 struct RoadVehicle FINAL : public GroundVehicle<RoadVehicle, VEH_ROAD> {
+	RoadVehPathCache path;  ///< Cached path.
 	byte state;             ///< @see RoadVehicleStates
 	byte frame;
 	uint16 blocked_ctr;
@@ -125,6 +129,7 @@ struct RoadVehicle FINAL : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 
 	int GetCurrentMaxSpeed() const;
 	int UpdateSpeed();
+	void SetDestTile(TileIndex tile);
 
 protected: // These functions should not be called outside acceleration code.
 

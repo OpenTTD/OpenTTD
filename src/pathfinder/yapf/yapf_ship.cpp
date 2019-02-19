@@ -96,7 +96,8 @@ public:
 			/* walk through the path back to the origin */
 			Node *pPrevNode = NULL;
 			while (pNode->m_parent != NULL) {
-				if (steps > 1 && --steps < YAPF_SHIP_PATH_CACHE_LENGTH) {
+				steps--;
+				if (steps > 0 && steps < YAPF_SHIP_PATH_CACHE_LENGTH) {
 					TrackdirByte td;
 					td = pNode->GetTrackdir();
 					path_cache.push_front(td);

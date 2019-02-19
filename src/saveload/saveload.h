@@ -295,6 +295,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_SHIP_CURVE_PENALTY,                 ///< 209  PR#7289 Configurable ship curve penalties.
 
 	SLV_SERVE_NEUTRAL_INDUSTRIES,           ///< 210  PR#7234 Company stations can serve industries with attached neutral stations.
+	SLV_ROADVEH_PATH_CACHE,                 ///< 211  PR#7261 Add path cache for road vehicles.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

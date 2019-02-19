@@ -348,13 +348,13 @@ public:
 		return 'r';
 	}
 
-	static Trackdir stChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, bool &path_found)
+	static Trackdir stChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, bool &path_found, RoadVehPathCache &path_cache)
 	{
 		Tpf pf;
-		return pf.ChooseRoadTrack(v, tile, enterdir, path_found);
+		return pf.ChooseRoadTrack(v, tile, enterdir, path_found, path_cache);
 	}
 
-	inline Trackdir ChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, bool &path_found)
+	inline Trackdir ChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, bool &path_found, RoadVehPathCache &path_cache)
 	{
 		/* Handle special case - when next tile is destination tile.
 		 * However, when going to a station the (initial) destination
@@ -382,15 +382,26 @@ public:
 		Trackdir next_trackdir = INVALID_TRACKDIR;
 		Node *pNode = Yapf().GetBestNode();
 		if (pNode != NULL) {
+			uint steps = 0;
+			for (Node *n = pNode; n->m_parent != NULL; n = n->m_parent) steps++;
+
 			/* path was found or at least suggested
 			 * walk through the path back to its origin */
 			while (pNode->m_parent != NULL) {
+				steps--;
+				if (pNode->GetIsChoice() && steps < YAPF_ROADVEH_PATH_CACHE_SEGMENTS) {
+					TrackdirByte td;
+					td = pNode->GetTrackdir();
+					path_cache.push_front(td);
+				}
 				pNode = pNode->m_parent;
 			}
 			/* return trackdir from the best origin node (one of start nodes) */
 			Node &best_next_node = *pNode;
 			assert(best_next_node.GetTile() == tile);
 			next_trackdir = best_next_node.GetTrackdir();
+			/* remove last element for the special case when tile == dest_tile */
+			if (path_found && !path_cache.empty()) path_cache.pop_back();
 		}
 		return next_trackdir;
 	}
@@ -497,18 +508,18 @@ struct CYapfRoadAnyDepot1 : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyDepot1, CRoadNod
 struct CYapfRoadAnyDepot2 : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyDepot2, CRoadNodeListExitDir , CYapfDestinationAnyDepotRoadT> > {};
 
 
-Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool &path_found)
+Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool &path_found, RoadVehPathCache &path_cache)
 {
 	/* default is YAPF type 2 */
-	typedef Trackdir (*PfnChooseRoadTrack)(const RoadVehicle*, TileIndex, DiagDirection, bool &path_found);
-	PfnChooseRoadTrack pfnChooseRoadTrack = &CYapfRoad2::stChooseRoadTrack; // default: ExitDir
+	typedef Trackdir (*PfnChooseRoadTrack)(const RoadVehicle*, TileIndex, DiagDirection, bool &path_found, RoadVehPathCache &path_cache);
+	PfnChooseRoadTrack pfnChooseRoadTrack = &CYapfRoad2::stChooseRoadTrack; // default: ExitDir, allow 90-deg
 
 	/* check if non-default YAPF type should be used */
 	if (_settings_game.pf.yapf.disable_node_optimization) {
 		pfnChooseRoadTrack = &CYapfRoad1::stChooseRoadTrack; // Trackdir
 	}
 
-	Trackdir td_ret = pfnChooseRoadTrack(v, tile, enterdir, path_found);
+	Trackdir td_ret = pfnChooseRoadTrack(v, tile, enterdir, path_found, path_cache);
 	return (td_ret != INVALID_TRACKDIR) ? td_ret : (Trackdir)FindFirstBit2x64(trackdirs);
 }
 
