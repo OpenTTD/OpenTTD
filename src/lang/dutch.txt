@@ -21,7 +21,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :(ongedefinieerde string)
+STR_UNDEFINED                                                   :(ongedefinieerde tekenreeks)
 STR_JUST_NOTHING                                                :Niets
 
 # Cargo related strings
@@ -30,7 +30,7 @@ STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Passagiers
 STR_CARGO_PLURAL_COAL                                           :Kolen
 STR_CARGO_PLURAL_MAIL                                           :Post
-STR_CARGO_PLURAL_OIL                                            :Aardolie
+STR_CARGO_PLURAL_OIL                                            :Olie
 STR_CARGO_PLURAL_LIVESTOCK                                      :Vee
 STR_CARGO_PLURAL_GOODS                                          :Goederen
 STR_CARGO_PLURAL_GRAIN                                          :Graan
@@ -52,7 +52,7 @@ STR_CARGO_PLURAL_SUGAR                                          :Suiker
 STR_CARGO_PLURAL_TOYS                                           :Speelgoed
 STR_CARGO_PLURAL_CANDY                                          :Snoep
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Suikerspinnen
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Suikerspin
 STR_CARGO_PLURAL_BUBBLES                                        :Bellen
 STR_CARGO_PLURAL_TOFFEE                                         :Toffee
 STR_CARGO_PLURAL_BATTERIES                                      :Batterijen
@@ -64,14 +64,14 @@ STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Passagier
 STR_CARGO_SINGULAR_COAL                                         :Kolen
 STR_CARGO_SINGULAR_MAIL                                         :Post
-STR_CARGO_SINGULAR_OIL                                          :Aardolie
+STR_CARGO_SINGULAR_OIL                                          :Olie
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Vee
 STR_CARGO_SINGULAR_GOODS                                        :Goederen
 STR_CARGO_SINGULAR_GRAIN                                        :Graan
 STR_CARGO_SINGULAR_WOOD                                         :Hout
 STR_CARGO_SINGULAR_IRON_ORE                                     :IJzererts
 STR_CARGO_SINGULAR_STEEL                                        :Staal
-STR_CARGO_SINGULAR_VALUABLES                                    :Kostbaarheden
+STR_CARGO_SINGULAR_VALUABLES                                    :Kostbaarheid
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Kopererts
 STR_CARGO_SINGULAR_MAIZE                                        :Maïs
 STR_CARGO_SINGULAR_FRUIT                                        :Fruit
@@ -87,7 +87,7 @@ STR_CARGO_SINGULAR_TOY                                          :Speelgoed
 STR_CARGO_SINGULAR_CANDY                                        :Snoep
 STR_CARGO_SINGULAR_COLA                                         :Cola
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Suikerspin
-STR_CARGO_SINGULAR_BUBBLE                                       :Bel
+STR_CARGO_SINGULAR_BUBBLE                                       :Bubbel
 STR_CARGO_SINGULAR_TOFFEE                                       :Toffee
 STR_CARGO_SINGULAR_BATTERY                                      :Batterij
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastic
@@ -117,16 +117,16 @@ STR_QUANTITY_WATER                                              :{VOLUME_LONG} w
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} tarwe
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} rubber
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} suiker
-STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}stuk{P "" ken} speelgoed
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}stuk{P "" s} speelgoed
 STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}zak{P "" ken} snoep
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} cola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} suikerspinnen
-STR_QUANTITY_BUBBLES                                            :{COMMA} bel{P "" len}
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} suikerspin
+STR_QUANTITY_BUBBLES                                            :{COMMA} bubbel{P "" s}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} toffee
 STR_QUANTITY_BATTERIES                                          :{COMMA} batterij{P "" en}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastic
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} blikje{P "" s} frisdrank
-STR_QUANTITY_N_A                                                :N.V.T.
+STR_QUANTITY_N_A                                                :N.v.t.
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -149,7 +149,7 @@ STR_ABBREV_FOOD                                                 :{TINY_FONT}VD
 STR_ABBREV_PAPER                                                :{TINY_FONT}PR
 STR_ABBREV_GOLD                                                 :{TINY_FONT}GO
 STR_ABBREV_WATER                                                :{TINY_FONT}WA
-STR_ABBREV_WHEAT                                                :{TINY_FONT}GN
+STR_ABBREV_WHEAT                                                :{TINY_FONT}TW
 STR_ABBREV_RUBBER                                               :{TINY_FONT}RB
 STR_ABBREV_SUGAR                                                :{TINY_FONT}SU
 STR_ABBREV_TOYS                                                 :{TINY_FONT}SP
@@ -168,7 +168,7 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}ALLE
 STR_PASSENGERS                                                  :{COMMA}{NBSP}passagier{P "" s}
 STR_BAGS                                                        :{COMMA}{NBSP}zak{P "" ken}
 STR_TONS                                                        :{COMMA}{NBSP}ton
-STR_LITERS                                                      :{COMMA}{NBSP}liter{P "" s}
+STR_LITERS                                                      :{COMMA}{NBSP}liter
 STR_ITEMS                                                       :{COMMA}{NBSP}stuk{P "" s}
 STR_CRATES                                                      :{COMMA}{NBSP}krat{P "" ten}
 
@@ -227,13 +227,13 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtertekst:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Voer filtertekst in
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Geef een woord waarop gefilterd kan worden in de lijst
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filtertekst invoeren
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Voer een woord in waarop de lijst wordt gefilterd
 
-STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Kies groepeervolgorde
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecteer sorteerrichting (aflopend/oplopend)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecteer sorteercriteria
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Kies filtercriteria
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Selecteer de volgorde voor groeperen
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecteer de sorteerrichting (aflopend-oplopend)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecteer de sorteercriteria
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecteer de filtercriteria
 STR_BUTTON_SORT_BY                                              :{BLACK}Sorteren op
 STR_BUTTON_LOCATION                                             :{BLACK}Locatie
 STR_BUTTON_RENAME                                               :{BLACK}Hernoemen
@@ -242,13 +242,13 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Venster 
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vensternaam - sleep om venster te verplaatsen
 STR_TOOLTIP_SHADE                                               :{BLACK}Venster inklappen - alleen titelbalk weergeven
 STR_TOOLTIP_DEBUG                                               :{BLACK}Probleemgegevens voor NewGRF weergeven
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}wijzig venster naar standaardgrootte. Ctrl+Klik om de huidige grootte als standaard op te slaan
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Venster op standaardgrootte weergeven. Ctrl+klik slaat huidige grootte op als standaard.
 STR_TOOLTIP_STICKY                                              :{BLACK}Dit venster markeren als niet-sluitbaar met de knop 'Alle vensters sluiten'. Ctrl+klik om slaat status op als standaard.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik en sleep om de grootte van dit venster te veranderen
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Schakelen tussen groot/klein venster
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - scroll verticaal door de lijst
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - scroll horizontaal door de lijst
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Sloop gebouwen etc. op een stuk land. Ctrl selecteert het gebied diagonaal. Shift schakelt tussen bouwen/inschatting van de kosten
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - blader verticaal door de lijst
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - blader horizontaal door de lijst
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Hiermee sloop je gebouwen enz. op een landtegel. Ctrl selecteert het gebied diagonaal. Shift schakelt tussen bouwen/inschatting van de kosten.
 
 # Show engines button
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Verborgen weergeven
@@ -256,10 +256,10 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Verborge
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Verborgen weergeven
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Verborgen weergeven
 
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Door het inschakelen van deze knop, worden de verborgen treinen ook weergegeven
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Door het inschakelen van deze knop, worden de verborgen wegvoertuigen ook weergegeven
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Door het inschakelen van deze knop, worden de verborgen schepen ook weergegeven
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Door het inschakelen van deze knop, worden de verborgen vliegtuig ook weergegeven
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Wanneer je deze knop inschakelt, worden verborgen treinen ook weergegeven
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Wanneer je deze knop inschakelt, worden verborgen wegvoertuigen ook weergegeven
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Wanneer je deze knop inschakelt, worden verborgen schepen ook weergegeven
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Wanneer je deze knop inschakelt, worden verborgen vliegtuigen ook weergegeven
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standaard
@@ -272,9 +272,9 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Lengte: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Gebied: {NUM} x {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Oppervlakte: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lengte: {NUM}{}Hoogteverschil: {HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Gebied: {NUM} x {NUM}{}Hoogteverschil: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Oppervlakte: {NUM} x {NUM}{}Hoogteverschil: {HEIGHT}
 
 
 # These are used in buttons
@@ -290,7 +290,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Winst vorig jaa
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Winst dit jaar
 STR_SORT_BY_AGE                                                 :Leeftijd
 STR_SORT_BY_RELIABILITY                                         :Betrouwbaarheid
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capaciteit per vrachttype
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Totale capaciteit per vrachttype
 STR_SORT_BY_MAX_SPEED                                           :Maximumsnelheid
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Waarde
@@ -299,24 +299,24 @@ STR_SORT_BY_LIFE_TIME                                           :Resterende leve
 STR_SORT_BY_TIMETABLE_DELAY                                     :Vertraging in dienstregeling
 STR_SORT_BY_FACILITY                                            :Stationstype
 STR_SORT_BY_WAITING_TOTAL                                       :Totaal wachtende vracht
-STR_SORT_BY_WAITING_AVAILABLE                                   :Beschikbare wachtende lading
+STR_SORT_BY_WAITING_AVAILABLE                                   :Beschikbare wachtende vracht
 STR_SORT_BY_RATING_MAX                                          :Hoogste vrachtwaardering
 STR_SORT_BY_RATING_MIN                                          :Laagste vrachtwaardering
-STR_SORT_BY_ENGINE_ID                                           :Voertuig-ID (klassieke sortering)
+STR_SORT_BY_ENGINE_ID                                           :Voertuig-id (klassieke sortering)
 STR_SORT_BY_COST                                                :Prijs
 STR_SORT_BY_POWER                                               :Vermogen
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Trekkracht
 STR_SORT_BY_INTRO_DATE                                          :Introductiedatum
 STR_SORT_BY_RUNNING_COST                                        :Bedrijfskosten
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Vermogen/Bedrijfskosten
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Vermogen / lopende kosten
 STR_SORT_BY_CARGO_CAPACITY                                      :Vrachtcapaciteit
 STR_SORT_BY_RANGE                                               :Bereik
-STR_SORT_BY_POPULATION                                          :Inwoners
+STR_SORT_BY_POPULATION                                          :Aantal inwoners
 STR_SORT_BY_RATING                                              :Waardering
 
 # Tooltips for the main toolbar
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauzeer spel
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Verhoog de spelsnelheid
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Hiermee pauzeer je het spel
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Hiermee verhoog je de spelsnelheid
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opties
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spel opslaan, spel stoppen, afsluiten
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Kaart, extra kijkvenster of lijst met bordjes weergeven
@@ -338,36 +338,36 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Inzoomen
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Uitzoomen
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bouw spoorwegen
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bouw wegen
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bouw havens
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bouw vliegvelden
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Open de landschapsbalk om land te verhogen/verlagen, bomen te planten, etc.
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Dokken en havens bouwen
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Vliegvelden bouwen
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Hiermee open je de landschapsbalk om land te verhogen/verlagen, bomen te planten, enz.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Geluid-/muziekvenster weergeven
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Laatste (nieuws-)bericht weergeven, berichtinstellingen weergeven
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landinformatie, console, scriptdebug, screenshots, over OpenTTD
-STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Verwissel knoppenbalk
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Knoppenbalken wisselen
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Scenario opslaan of laden, scenario-editor verlaten, afsluiten
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenario-editor
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Zet startdatum 1 jaar terug
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Zet startdatum 1 jaar vooruit
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Startdatum 1 jaar terugzetten
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Startdatum 1 jaar vooruitzetten
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klik om het startjaar op te geven
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Kaart, stedenlijst weergeven
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landschapsontwikkeling
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stadsontwikkeling
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrieontwikkeling
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Wegenbouw
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant bomen. Shift schakelt tussen bouwen/inschatting van de kosten
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Bomen planten. Shift schakelt tussen planten/inschatting van de kosten
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Bord plaatsen
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Object plaatsen. Shift schakelt tussen bouwen/inschatting van de kosten
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Scenario opslaan
-STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Scenario openen
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Scenario laden
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Hoogtekaart opslaan
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Laad hoogtekaart
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Sluit scenario-editor
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Hoogtekaart laden
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Scenario-editor sluiten
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Afsluiten
 ############ range for SE file menu starts
@@ -375,7 +375,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Afsluiten
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelopties
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Instellingen
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Spelscriptinstellingen
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI-/spelscriptinstellingen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-instellingen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Doorzichtigheidsopties
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Plaatsnamen weergeven
@@ -386,26 +386,26 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Bordjes en name
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Alle animaties
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Alle details
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparante gebouwen
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparante borden
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparante bordjes
 ############ range ends here
 
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Spel opslaan
 STR_FILE_MENU_LOAD_GAME                                         :Spel laden
-STR_FILE_MENU_QUIT_GAME                                         :Verlaat spel
+STR_FILE_MENU_QUIT_GAME                                         :Spel sluiten
 STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Afsluiten
 ############ range ends here
 
 # map menu
-STR_MAP_MENU_MAP_OF_WORLD                                       :Kaart
+STR_MAP_MENU_MAP_OF_WORLD                                       :Wereldkaart
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extra kijkvenster
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Vrachtstroomlegende
-STR_MAP_MENU_SIGN_LIST                                          :Bordenlijst
+STR_MAP_MENU_SIGN_LIST                                          :Bordjeslijst
 
 ############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stedenlijst
-STR_TOWN_MENU_FOUND_TOWN                                        :Sticht een stad
+STR_TOWN_MENU_FOUND_TOWN                                        :Stad stichten
 ############ range ends here
 
 ############ range for subsidies menu starts
@@ -429,24 +429,24 @@ STR_GRAPH_MENU_HIGHSCORE                                        :Scoretabel
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industrielijst
-STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Bedrijfsketen
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industrieketens
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Betaal nieuwe industrie
 ############ range ends here
 
 ############ range for railway construction menu starts
-STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Bouw spoorwegen
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Bouw geëlektrificeerde spoorwegen
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Spoorwegen bouwen
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Geëlektrificeerde spoorwegen bouwen
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Bouw monorailspoorwegen
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Bouw magneetzweeftreinspoorwegen
 ############ range ends here
 
 ############ range for road construction menu starts
-STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Bouw wegen
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Wegen bouwen
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Bouw tramsporen
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Bouw waterwegen
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Waterwegen bouwen
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -455,7 +455,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Vliegvelden bou
 
 ############ range for landscaping menu starts
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Terreinvorming
-STR_LANDSCAPING_MENU_PLANT_TREES                                :Plant bomen
+STR_LANDSCAPING_MENU_PLANT_TREES                                :Bomen planten
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Bord plaatsen
 ############ range ends here
 
@@ -464,7 +464,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Geluid/muziek
 ############ range ends here
 
 ############ range for message menu starts
-STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Laatst (nieuws)bericht
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Laatste (nieuws)bericht
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berichtengeschiedenis
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Alle berichten verwijderen
 ############ range ends here
@@ -596,7 +596,7 @@ STR_GRAPH_KEY_CAPTION                                           :{WHITE}Legenda 
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klik hier om dit bedrijf weer te geven of te verbergen op de grafiek
 
 # Company league window
-STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bedrijfscompetitietabel
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bedrijfsscoretabel
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingenieur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Verkeersleider
@@ -1152,7 +1152,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaal bedrag
 STR_CONFIG_SETTING_INTEREST_RATE                                :Rente van lening: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Percentage rente op lening; bepaald ook het inflatiecijfer wanneer ingeschakeld
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Onderhoudskosten: {STRING}
-STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Het niveau van onderhoud en bedrijfskosten van voertuigen en infrastuctuur
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Het niveau van onderhoud en lopende kosten van voertuigen en infrastuctuur
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Bouwsnelheid: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Beperk de hoeveelheid bouwactiviteiten voor computerspeler
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Voertuigstoringen: {STRING}
@@ -1774,9 +1774,9 @@ STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Schermin
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-instellingen weergeven
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Zoeken naar nieuwe en aangepaste inhoud om te downloaden
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}AI-/spelscriptinstellingen weergeven
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Verlaat 'OpenTTD'
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' afsluiten
 
-STR_INTRO_BASESET                                               :{BLACK}De huidige gekozen set grafische elementen mist {NUM} afbeelding{P "" en}. Controleer of er updates zijn voor deze basisset.
+STR_INTRO_BASESET                                               :{BLACK}De huidige gekozen set grafische elementen mist {NUM} sprite{P "" s}. Controleer of er updates zijn voor deze basisset.
 STR_INTRO_TRANSLATION                                           :{BLACK}Deze vertaling mist {NUM} tekst{P "" en}. Help aub om OpenTTD beter te maken door je al vertaler aan te melden. Zie readme.txt voor details.
 
 # Quit window
@@ -2404,7 +2404,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Buis, silicium
 
 
 # Road construction toolbar
-STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Bouw wegen
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Wegen bouwen
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Bouw tramsporen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bouw weg. Ctrl schakelt tussen bouwen/verwijderen van de weg. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bouw tramsporen. Ctrl schakelt tussen bouwen/verwijderen van tramsporen. Shift schakelt tussen bouwen/inschatting van de kosten
@@ -2509,7 +2509,7 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Kies een
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeurige soorten bomen
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Willekeurig bomen planten. Shift+klik wisselt tussen bouwen/verwachte kosten.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Willekeurige bomen
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plant bomen willekeurig over de kaart
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Hiermee plant je bomen willekeurig over het landschap
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landontwikkeling
@@ -2558,7 +2558,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3-rast
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Willekeurig
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Betaal nieuwe industrie
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Nieuwe industrie financieren
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Kiest de gewenste industrie in de lijst
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Veel willekeurige industrieën
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Bedek de kaart met willekeurig geplaatste industrieën
@@ -2761,8 +2761,8 @@ STR_FRAMETIME_CAPTION_SOUND                                     :Geluid mixen
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Spel Opslaan
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Spel Laden
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Scenario Opslaan
-STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Scenario Laden
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Laad Hoogtekaart
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Scenario laden
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Hoogtekaart laden
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Hoogtekaart Opslaan
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik hier om naar de standaard bewaar-/laadmap te gaan
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} vrij
@@ -2881,7 +2881,7 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Geselect
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Naar beneden
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Geselecteerde NewGRF-bestand naar beneden in de lijst verplaatsen
 STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Opwaarderen
-STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Opwaarderen van NewGRF bestanden waar je een nieuwere versie van hebt geïnstalleerd
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Opwaarderen van NewGRF-bestanden waar je een nieuwere versie van hebt geïnstalleerd
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Een lijst van de NewGRF-bestanden die zijn geïnstalleerd.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stel parameters in
@@ -2942,23 +2942,23 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Spoortype
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x parameter (hexadecimaal)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Afbeelding uitlijnen {COMMA} ({STRING})
-STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Volgende afbeelding
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Sprite uitlijnen {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Volgende sprite
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Doorgaan met volgende normale sprite, alle pseudo-/herkleur-/lettertype-sprites overslaan; bij het einde terug naar het begin
-STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ga naar afbeelding
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ga naar de opgegeven afbeelding. Wanneer dit geen normale afbeelding is, ga verder naar de volgende normale afbeelding
-STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorige afbeelding
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ga naar sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ga naar de opgegeven sprite. Wanneer dit geen normale sprite is, ga verder naar de volgende normale sprite.
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorige sprite
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Doorgaan met de vorige normale sprite, alle pseudo-/herkleur-/lettertype-sprites overslaan; bij het einde terug naar het begin
-STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Voorbeeld van de huidige afbeelding. De uitlijning wordt genegeerd bij het weergeven van de afbeelding
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Voorbeeld van de huidige sprite. De uitlijning wordt genegeerd bij het weergeven van deze sprite.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Afbeelding verplaatsen, dit verandert X en Y offsets. Ctr+klik om de afbeelding 8 eenheden per keer te verplaatsen.
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Herstel relatief
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Herstel de huidige relative offsets
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (Absoluut)
 STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (Relatief)
-STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Kies afbeelding
-STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Kies een afbeelding van een willekeurige plaats op het scherm
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Sprite kiezen
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Kies een sprite van een willekeurige plaats op het scherm
 
-STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Ga naar afbeelding
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Ga naar sprite
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2986,7 +2986,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Gevraagde GRF-m
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} is uitgeschakeld door {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ongeldige/onbekende indeling voor afbeeldingslay-out (afbeelding {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Te veel elementen in eigenschappenwaardelijst (affbeelding {3:NUM}, eigenschap {4:HEX})
-STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ongeldige terugroep voor industriële productie (afbeelding {3:NUM}, "{1:STRING}")
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ongeldige terugroep voor industriële productie (sprite {3:NUM}, "{1:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Waarschuwing!
@@ -3036,7 +3036,7 @@ STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} Ne
 STR_NEWGRF_SCAN_ARCHIVES                                        :Zoeken naar archieven
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordenlijst - {COMMA} bord{P "" en}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordjeslijst - {COMMA} bordje{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Hoofdlettergevoelig
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Schakel hoofdlettergevoeligheid in bij het vergelijken van bordnamen met de filtertekst
 
@@ -3105,7 +3105,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begin e
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begin een grote advertentiecampagne, om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financier een herstelling van het wegennetwerk. Veroorzaakt tot 6 maanden lang een aanzienlijke verstoring van het wegverkeer.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bouw een standbeeld ter ere van jouw bedrijf.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financier de bouw van nieuwe commerciële gebouwen in de stad.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}De bouw van nieuwe commerciële gebouwen in de stad financieren.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}1 jaar exclusieve transportrechten kopen in deze plaats. Het gemeentebestuur staat alleen passagiers en vracht toe bij jouw stations.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Koop het plaatselijk gezag om om je reputatie te verhogen met het risico op een strenge sanctie wanneer je gepakt wordt.{}Kosten: {CURRENCY_LONG}
 
@@ -3606,13 +3606,13 @@ STR_ENGINE_PREVIEW_SHIP                                         :schip
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monoraillocomotief
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :zweeflocomotief
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prijs: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Snelheid: {VELOCITY}  Kracht: {POWER}{}Brandstofprijs: {CURRENCY_LONG}/jr{}Capaciteit: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Prijs: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Snelheid: {VELOCITY}  Kracht: {POWER}  Max. T.E.: {6:FORCE}{}Bedrijfskosten: {4:CURRENCY_LONG}/yr{}Capaciteit: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Snelheid: {VELOCITY}  Kracht: {POWER}{}Lopende kosten: {CURRENCY_LONG}/jr{}Capaciteit: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kosten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Snelheid: {VELOCITY}  Kracht: {POWER}  Max. T.E.: {6:FORCE}{}Lopende kosten: {4:CURRENCY_LONG}/yr{}Capaciteit: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kosten: {CURRENCY_LONG} Max. Snelheid: {VELOCITY}{}Capaciteit: {CARGO_LONG}{}Gebruikskosten: {CURRENCY_LONG}/jaar
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Prijs: {CURRENCY_LONG} Max. Snelheid: {VELOCITY}{}Vliegtuig type: {STRING}{}Capaciteit: {CARGO_LONG}, {CARGO_LONG}{}Gebruikskosten: {CURRENCY_LONG}/jaar
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Prijs: {CURRENCY_LONG} Max. Snelheid: {VELOCITY}{}Vliegtuig type: {STRING}{}Capaciteit: {CARGO_LONG}{}Gebruikskosten: {CURRENCY_LONG}/jaar
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Prijs: {CURRENCY_LONG} Max. Snelheid: {VELOCITY}{}Vliegtuig type: {STRING} Bereik: {COMMA} tiles{}Capaciteit: {CARGO_LONG}, {CARGO_LONG}{}Gebruikskosten: {CURRENCY_LONG}/jaar
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Prijs: {CURRENCY_LONG} Max. Snelheid: {VELOCITY}{}Vliegtuig type: {STRING} Bereik: {COMMA} tiles{}Capaciteit: {CARGO_LONG}{}Gebruikskosten: {CURRENCY_LONG}/jaar
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Kosten: {CURRENCY_LONG} Max. Snelheid: {VELOCITY}{}Vliegtuig type: {STRING}{}Capaciteit: {CARGO_LONG}, {CARGO_LONG}{}Gebruikskosten: {CURRENCY_LONG}/jaar
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Kosten: {CURRENCY_LONG} Max. Snelheid: {VELOCITY}{}Vliegtuig type: {STRING}{}Capaciteit: {CARGO_LONG}{}Gebruikskosten: {CURRENCY_LONG}/jaar
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Kosten: {CURRENCY_LONG} Max. Snelheid: {VELOCITY}{}Vliegtuig type: {STRING} Bereik: {COMMA} tiles{}Capaciteit: {CARGO_LONG}, {CARGO_LONG}{}Gebruikskosten: {CURRENCY_LONG}/jaar
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Kosten: {CURRENCY_LONG} Max. Snelheid: {VELOCITY}{}Vliegtuig type: {STRING} Bereik: {COMMA} tiles{}Capaciteit: {CARGO_LONG}{}Gebruikskosten: {CURRENCY_LONG}/jaar
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING} - {STRING}
@@ -4183,8 +4183,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Het aan
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Alleen back-upgeluid is gevonden. Als u geluid wilt, installeer dan een geluiddsset via het downloadsysteem
 
 # Screenshot related messages
-STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Grote schermafdruk
-STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}De schermafdruk heeft een resolutie van {COMMA} x {COMMA} pixels. De schermafdruk maken kan even duren. Verder gaan?
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Grote schermfoto
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}De schermfoto heeft een resolutie van {COMMA} x {COMMA} pixels. Het maken van de schermfoto kan even duren. Verder gaan?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Schermafbeelding succesvol opgeslagen als '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Schermfoto mislukt!
@@ -4539,10 +4539,10 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Voertuig
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Dit voertuig stopt niet op dit station
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... te veel borden
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan hier geen bord plaatsen
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan de naam van het bord niet wijzigen
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan bord niet verwijderen...
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... te veel bordjes
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan hier geen bordje plaatsen
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan de naam van het bordje niet wijzigen
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan bordje niet verwijderen...
 
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Een simulatiespel gebaseerd op Transport Tycoon Deluxe
@@ -4724,7 +4724,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Rubberwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Suikerwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Suikerspinnenwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Toffeewagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Bellenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Bubbelwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Colatanker
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Snoepwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Speelgoedwagon
@@ -4754,7 +4754,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Rubberwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Suikerwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Suikerspinnenwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Toffeewagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Bellenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Bubbelwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Colatanker
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Snoepwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Speelgoedwagon
@@ -4786,7 +4786,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Rubberwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Suikerwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Suikerspinnenwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Toffeewagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Bellenwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Bubbelwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Colatanker
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Snoepwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Speelgoedwagon
@@ -4857,8 +4857,8 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow Suiker
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover Colatruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught Colatruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow Colatruck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover Suikerspinnentruck
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught Suikerspinnentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover-suikerspintruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught-suikerspintruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow Suikerspinnentruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover Toffeetruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught Toffeetruck
@@ -4878,9 +4878,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow Frisdr
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover Plastictruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught Plastictruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow Plastictruck
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover Bellentruck
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught Bellentruck
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow Bellentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover-bubbeltruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught-bubbeltruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow-bubbeltruck
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS Olietanker
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. Olietanker
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS Veerboot
