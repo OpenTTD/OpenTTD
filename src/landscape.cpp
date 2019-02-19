@@ -28,6 +28,7 @@
 #include "landscape_type.h"
 #include "animated_tile_func.h"
 #include "core/random_func.hpp"
+#include "core/math_func.hpp"
 #include "object_base.h"
 #include "company_func.h"
 #include "pathfinder/npf/aystar.h"
@@ -1307,7 +1308,7 @@ void FloodFill(TileIndex tile, uint& count, uint mode) {
 	_me[tile].m8 = mode;
 	switch (mode) {
 		case 1: count++; break;
-		case 2: _m[tile].m2=min(count,0xFFFF); break;
+		case 2: _m[tile].m2=min(4*IntSqrt(count),0xFFFF); break;
 		default: NOT_REACHED();
 	}
 	if (slope != SLOPE_FLAT) return;
@@ -1394,7 +1395,7 @@ static void CreateRivers()
 						candidates.push(t2);
 						//TODO: remove dirty hack
 						_me[t2].m8 = ReverseDiagDir(d) | 0x4;
-						_m[t2].m2 = max(_m[tile].m2-5,0);
+						_m[t2].m2 = max(_m[tile].m2-4,0);
 					}
 				}
 			}
