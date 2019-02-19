@@ -70,7 +70,7 @@ void MoveWaypointsToBaseStations()
 	 * waypoints to make way for storing the index in m2. The custom graphics
 	 * id which was stored in m4 is now saved as a grf/id reference in the
 	 * waypoint struct. */
-	if (IsSavegameVersionBefore(17)) {
+	if (IsSavegameVersionBefore(SLV_17)) {
 		for (OldWaypoint *wp = _old_waypoints.Begin(); wp != _old_waypoints.End(); wp++) {
 			if (wp->delete_ctr != 0) continue; // The waypoint was deleted
 
@@ -113,7 +113,7 @@ void MoveWaypointsToBaseStations()
 		TileIndex t = wp->xy;
 		if (IsTileType(t, MP_RAILWAY) && GetRailTileType(t) == 2 /* RAIL_TILE_WAYPOINT */ && _m[t].m2 == wp->index) {
 			/* The tile might've been reserved! */
-			bool reserved = !IsSavegameVersionBefore(100) && HasBit(_m[t].m5, 4);
+			bool reserved = !IsSavegameVersionBefore(SLV_100) && HasBit(_m[t].m5, 4);
 
 			/* The tile really has our waypoint, so reassign the map array */
 			MakeRailWaypoint(t, GetTileOwner(t), new_wp->index, (Axis)GB(_m[t].m5, 0, 1), 0, GetRailType(t));
@@ -150,21 +150,21 @@ void MoveWaypointsToBaseStations()
 }
 
 static const SaveLoad _old_waypoint_desc[] = {
-	SLE_CONDVAR(OldWaypoint, xy,         SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
-	SLE_CONDVAR(OldWaypoint, xy,         SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16,                 12, 121),
-	SLE_CONDREF(OldWaypoint, town,       REF_TOWN,                  122, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_FILE_U8 | SLE_VAR_U16,  12, 88),
-	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_UINT16,                 89, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, string_id,  SLE_STRINGID,                0, 83),
-	SLE_CONDSTR(OldWaypoint, name,       SLE_STR, 0,                 84, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, xy,         SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_6),
+	SLE_CONDVAR(OldWaypoint, xy,         SLE_UINT32,                  SLV_6, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16,                 SLV_12, SLV_122),
+	SLE_CONDREF(OldWaypoint, town,       REF_TOWN,                  SLV_122, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_FILE_U8 | SLE_VAR_U16,  SLV_12, SLV_89),
+	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_UINT16,                 SLV_89, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, string_id,  SLE_STRINGID,                SL_MIN_VERSION, SLV_84),
+	SLE_CONDSTR(OldWaypoint, name,       SLE_STR, 0,                 SLV_84, SL_MAX_VERSION),
 	    SLE_VAR(OldWaypoint, delete_ctr, SLE_UINT8),
 
-	SLE_CONDVAR(OldWaypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32,  3, 30),
-	SLE_CONDVAR(OldWaypoint, build_date, SLE_INT32,                  31, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, localidx,   SLE_UINT8,                   3, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, grfid,      SLE_UINT32,                 17, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, owner,      SLE_UINT8,                 101, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32,  SLV_3, SLV_31),
+	SLE_CONDVAR(OldWaypoint, build_date, SLE_INT32,                  SLV_31, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, localidx,   SLE_UINT8,                   SLV_3, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, grfid,      SLE_UINT32,                 SLV_17, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, owner,      SLE_UINT8,                 SLV_101, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -190,10 +190,10 @@ static void Ptrs_WAYP()
 	for (OldWaypoint *wp = _old_waypoints.Begin(); wp != _old_waypoints.End(); wp++) {
 		SlObject(wp, _old_waypoint_desc);
 
-		if (IsSavegameVersionBefore(12)) {
+		if (IsSavegameVersionBefore(SLV_12)) {
 			wp->town_cn = (wp->string_id & 0xC000) == 0xC000 ? (wp->string_id >> 8) & 0x3F : 0;
 			wp->town = ClosestTownFromTile(wp->xy, UINT_MAX);
-		} else if (IsSavegameVersionBefore(122)) {
+		} else if (IsSavegameVersionBefore(SLV_122)) {
 			/* Only for versions 12 .. 122 */
 			if (!Town::IsValidID(wp->town_index)) {
 				/* Upon a corrupted waypoint we'll likely get here. The next step will be to
@@ -206,7 +206,7 @@ static void Ptrs_WAYP()
 			}
 			wp->town = Town::Get(wp->town_index);
 		}
-		if (IsSavegameVersionBefore(84)) {
+		if (IsSavegameVersionBefore(SLV_84)) {
 			wp->name = CopyFromOldName(wp->string_id);
 		}
 	}

@@ -191,6 +191,7 @@ STR_COLOUR_ORANGE                                               :Arancio
 STR_COLOUR_BROWN                                                :Marrone
 STR_COLOUR_GREY                                                 :Grigio
 STR_COLOUR_WHITE                                                :Bianco
+STR_COLOUR_RANDOM                                               :Casuale
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -931,6 +932,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizzata.
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari georgiano (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial iraniano (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nuovo rublo russo (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso messicano (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automezzi
@@ -1281,6 +1283,9 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Consente la cos
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non è possibile modificare questa impostazione quando esistono veicoli
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenzione infrastrutture: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Se abilitata, le infrastrutture causano dei costi di manutenzione. I costi crescono in modo più che proporzionale alla dimensione della rete, influenzando maggiormente le compagnie più grandi rispetto alle piccole
+
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Colore iniziale compagnia: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Sceglie il colore iniziale della compagnia
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Non rendere mai obsoleti i tipi di aeroporto: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Abilitando questa impostazione, tutti i tipi di aeroporto rimangono disponibili indefinitamente dopo essere stati introdotti
@@ -1839,7 +1844,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambia l
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permetti la modifica dei valori di produzione: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nuovo schema colori
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Mostra gli schemi di colorazione generali
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostra gli schemi di colorazione dei treni
@@ -2101,9 +2105,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server p
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Compagnia protetta. Inserire la password
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Elenco dei client
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Diventa spettatore
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nuova compagnia
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Elenco dei client
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Diventa spettatore
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nuova compagnia
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Espelli
@@ -2118,7 +2122,6 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spettatori
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Inserire la quantità di denaro da donare
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spettatore
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Non salvare la password inserita
@@ -2728,7 +2731,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terreno possedu
 STR_ABOUT_OPENTTD                                               :{WHITE}Informazioni su OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright originale {COPYRIGHT} 1995 Chris Sawyer, Tutti i diritti riservati
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versione {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Il team OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 Il team OpenTTD
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Frame rate
@@ -2920,7 +2923,12 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versione
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Versione minima compatibile: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}Somma MD5: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Tavolozza: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Predefinita (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Predefinita (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Legacy (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Legacy (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametri: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Nessuno
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Informazioni non disponibili
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}File corrispondente non trovato
@@ -3380,20 +3388,13 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra l
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Livello di produzione: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}L'industria ha annunciato che a breve chiuderà!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Richiede: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Richiede: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Richiede: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Richiede: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Richiede:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} in attesa{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produce: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produce: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambia produzione (multiplo di 8, fino a 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Cambia livello di produzione (percentuale, fino a 800%)
@@ -3490,6 +3491,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacit�
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoni motorizzati: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Riadattabile per: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tutti i tipi di carico
+STR_PURCHASE_INFO_NONE                                          :Niente
 STR_PURCHASE_INFO_ALL_BUT                                       :Tutto tranne {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Sforzo di trazione massimo: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Autonomia: {GOLD}{COMMA} riquadr{P o i}
@@ -3889,6 +3891,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Età (anni)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Manutenzione richiesta
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Vita rimanente (anni)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Affidabilità massima
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Modalità di confronto del dato del veicolo con il valore inserito
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :è uguale a

@@ -190,6 +190,8 @@ STR_COLOUR_ORANGE                                               :Naranja
 STR_COLOUR_BROWN                                                :Café
 STR_COLOUR_GREY                                                 :Gris
 STR_COLOUR_WHITE                                                :Blanco
+STR_COLOUR_RANDOM                                               :Aleatorio
+STR_COLOUR_DEFAULT                                              :Predefinido
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -465,6 +467,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sonido y músic
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Último mensaje o noticia
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de mensajes
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Eliminar todos los mensajes
 ############ range ends here
 
 ############ range for about menu starts
@@ -930,6 +933,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizada..
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari georgiano (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial iraní (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nuevo rublo ruso (RUR)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso mexicano (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vehículos de carretera
@@ -1259,6 +1263,9 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No se pu
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Mantenimiento de infraestructura: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Cuando se activa, la infraestructura tiene costo de mantenimiento, el cual aumenta en relación con el tamaño de la red de transporte. Esto afecta en mayor medida a las empresas grandes que a las pequeñas
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Color inicial de la empresa: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Elegir el color inicial de la empresa
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeropuertos siempre disponibles: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Los tipos de aeropuertos estarán disponibles todo el tiempo tras haber sido introducidos
 
@@ -1543,12 +1550,12 @@ STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activar interfa
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Mostrar una ventana para elegir los tipos de señales a instalar. Si no se activa, se instalan las señales y se selecciona un tipo determinado mediante Ctrl+Clic, sin que aparezca ninguna interfaz
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipo de señal predeterminada a instalar: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipo de señal predeterminada a utilizar
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Señales de bloqueo
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Señales de tramo
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Señales de ruta
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Señales de ruta de un sentido
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cambiar entre tipos de señales: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Elegir entre qué señales se debe cambiar al usar Ctrl+Clic con la herramienta de señales
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Solo señales de bloqueo
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Solo señales de tramo
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Solo señales de ruta
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas
 
@@ -1816,7 +1823,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambiar 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir cambiar los valores de producción: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nueva cromática
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Cromática
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Mostrar cromática general
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostrar cromáticas para trenes
@@ -2076,11 +2083,12 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconec
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Introducir contraseña
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Introducir contraseña
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Lista de clientes
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Lista de clientes
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Observar
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nueva empresa
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de clientes
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Observar
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nueva empresa
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Expulsar
@@ -2095,7 +2103,6 @@ STR_NETWORK_CLIENT                                              :Cliente
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introducir la cantidad de dinero a dar
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Espectador
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No guardar la contraseña introducida
@@ -2326,7 +2333,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito de trenes (para comprar y dar mantenimiento a trenes). Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir punto guía sobre vías férreas. Ctrl activa la unión de puntos guías. Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estación de ferrocarril. Ctrl activa la ampliación de estaciones. Mayús muestra una estimación del precio
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Instalar señales de ferrocarril. Ctrl cambia entre señales mecánicas y eléctricas{}Al arrastrar sobre las vías se instalan señales a lo largo de un tramo recto elegido. Ctrl instala señales hasta el siguiente desvío u otra señal{}Ctrl+Clic cambia a la herramienta de selección de señales. Mayús muestra una estimación del precio
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Poner señales. Ctrl intercambia señales mecánicas y eléctricas{}Arrastrar sobre un tramo recto permite poner señales intercaladas. Ctrl pone señales hasta un desvío u otra señal{}Ctrl+Clic cambia al modo de selección de señales. Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir puente de ferrocarril. Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel de ferrocarril. Mayús muestra una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Quitar vías férreas, señales, estaciones y puntos guías. Al mantener pulsado Ctrl se quitan también las vías al retirar estaciones o puntos guías
@@ -2364,22 +2371,22 @@ STR_STATION_CLASS_WAYP                                          :Puntos guías
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selección de señales
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Señal de bloqueo (mecánica){}Es el tipo de señal más básico que permite a un único tren ocupar al mismo tiempo un tramo de vía entre dos señales
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Señal de entrada (mecánica){}Abierta si existe una o más señales de salida en el siguiente tramo, de lo contrario se mostrará cerrada
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Señal de salida (mecánica){}Igual que una señal de bloqueo pero es necesaria para activar la posición correcta de las señales de entrada y combo
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Señal de combo (mecánica){}La señal hace lo mismo que una señal de entrada y salida a la vez, lo que permite construir grandes "árboles" de señales condicionales
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Señal de ruta (mecánica){}Una señal de ruta permite a más de un tren entrar al mismo tiempo en un tramo de vía con señales, en tanto que el tren pueda reservar una ruta hasta un lugar seguro. Puede ser pasada por detrás
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Señal de tramo (mecánica){}Es la señal más básica. Permite a un solo tren ocupar un tramo de vía entre dos señales
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Señal de entrada (mecánica){}Se abre si existe una o más señales de salida en el siguiente tramo, de lo contrario se mostrará cerrada
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Señal de salida (mecánica){}Igual que una señal de tramo pero es necesaria para activar la posición correcta de las señales de entrada y combo
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Señal combo (mecánica){}Hace lo mismo que las señales de entrada y de salida, lo que permite construir amplios "árboles" de señales condicionales
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Señal de ruta (mecánica){}Permite a más de un tren entrar al mismo tiempo en un tramo de vía con señales, en tanto que el tren pueda reservar una ruta hasta un lugar seguro. Puede ser pasada por detrás
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Señal de ruta de un sentido (mecánica){}Igual que una señal de ruta pero no puede ser pasada por detrás
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Señal de bloqueo (eléctrica){}Es el tipo de señal más básico que permite a un único tren ocupar al mismo tiempo un tramo de vía entre dos señales
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Señal de entrada (eléctrica){}Verde si existe una o más señales de salida en el siguiente tramo, de lo contrario se mostrará en rojo
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Señal de salida (eléctrica){}Igual que una señal de bloqueo pero es necesaria para activar el color correcto de las señales de entrada y combo
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Señal combo (eléctrica){}La señal hace lo mismo que una señal de entrada y salida a la vez, lo que permite construir grandes "árboles" de señales condicionales
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Señal de ruta (eléctrica){}Una señal de ruta permite a más de un tren entrar al mismo tiempo en un tramo de vía con señales, en tanto que el tren pueda reservar una ruta hasta un lugar seguro. Puede ser pasada por detrás
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Señal de tramo (eléctrica){}Es la señal más básica. Permite a un solo tren ocupar un tramo de vía entre dos señales
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Señal de entrada (eléctrica){}En verde si existe una o más señales de salida en el siguiente tramo, de lo contrario se mostrará en rojo
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Señal de salida (eléctrica){}Igual que una señal de tramo pero es necesaria para activar el color correcto de las señales de entrada y combo
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Señal combo (eléctrica){}Hace lo mismo que las señales de entrada y de salida, lo que permite construir amplios "árboles" de señales condicionales
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Señal de ruta (eléctrica){}Permite a más de un tren entrar al mismo tiempo en un tramo de vía con señales, en tanto que el tren pueda reservar una ruta hasta un lugar seguro. Puede ser pasada por detrás
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Señal de ruta de un sentido (eléctrica){}Igual que una señal de ruta pero no puede ser pasada por detrás
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversión de señal{}Activar para pulsar sobre una señal existente y convertirla en el tipo y variante elegidos. Ctrl+Clic permite cambiar entre variantes de señales. Mayús+Clic muestra una estimación del precio de conversión
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Cantidad de señales instaladas al arrastrar
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Más
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Menos
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distancia entre señales
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Reducir distancia entre señales
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar distancia entre señales
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selección de puente de ferrocarril
@@ -2699,7 +2706,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terreno propied
 STR_ABOUT_OPENTTD                                               :{WHITE}Acerca de OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Todos los derechos reservados
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versión {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018, el equipo de OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019, el equipo de OpenTTD
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}FPS
@@ -2774,6 +2781,8 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No hay i
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtrar palabras:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Sobrescribir archivo
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}¿Estás seguro de sobrescribir el archivo?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Indicar un nombre para la partida a guardar
 
@@ -2891,7 +2900,12 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versión
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Mín. versión compatible: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Por defecto (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Por defecto (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Tradicional (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Tradicional (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parámetros: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Ninguna
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}No hay información disponible
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Archivo no encontrado
@@ -3099,6 +3113,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Soborna
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Metas de {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Metas globales
+STR_GOALS_SPECTATOR                                             :Metas globales
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Metas globales:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ninguna -
@@ -3147,6 +3162,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clic en 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}Historial de {COMPANY}
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Historial global
+STR_STORY_BOOK_SPECTATOR                                        :Historial global
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Página {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Permitir ir a una página específica al elegirla en esta lista desplegable
@@ -3351,20 +3367,13 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar 
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de producción: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}¡La industria ha anunciado su cierre inminente!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Requiere: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Requiere: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Requiere: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Requiere: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Requiere:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} esperando{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produce: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produce: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambiar producción (múltiplo de 8, máximo 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Cambiar nivel de producción (porcentaje, máximo 800%)
@@ -3418,6 +3427,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos: 
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Clic para crear un grupo
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Eliminar el grupo seleccionado
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Cambiar nombre del grupo seleccionado
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Cambiar cromática del grupo elegido
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clic para evitar que los vehículos en este grupo se reemplacen automáticamente.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Eliminar grupo
@@ -3461,6 +3471,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacida
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones con motor: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reforma: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todo tipo de carga
+STR_PURCHASE_INFO_NONE                                          :Ninguno
 STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Máx. fuerza de tracción: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} casillas

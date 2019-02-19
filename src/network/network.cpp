@@ -1101,12 +1101,76 @@ void NetworkShutDown()
 }
 
 /**
+ * How many hex digits of the git hash to include in network revision string.
+ * Determined as 10 hex digits + 2 characters for -g/-u/-m prefix.
+ */
+static const uint GITHASH_SUFFIX_LEN = 12;
+
+/**
+ * Get the network version string used by this build.
+ * The returned string is guaranteed to be at most NETWORK_REVISON_LENGTH bytes.
+ */
+const char * GetNetworkRevisionString()
+{
+	/* This will be allocated on heap and never free'd, but only once so not a "real" leak. */
+	static char *network_revision = nullptr;
+
+	if (!network_revision) {
+		/* Start by taking a chance on the full revision string. */
+		network_revision = stredup(_openttd_revision);
+		/* Ensure it's not longer than the packet buffer length. */
+		if (strlen(network_revision) >= NETWORK_REVISION_LENGTH) network_revision[NETWORK_REVISION_LENGTH - 1] = '\0';
+
+		/* Tag names are not mangled further. */
+		if (_openttd_revision_tagged) {
+			DEBUG(net, 1, "Network revision name is '%s'", network_revision);
+			return network_revision;
+		}
+
+		/* Prepare a prefix of the git hash.
+		* Size is length + 1 for terminator, +2 for -g prefix. */
+		assert(_openttd_revision_modified < 3);
+		char githash_suffix[GITHASH_SUFFIX_LEN + 1] = "-";
+		githash_suffix[1] = "gum"[_openttd_revision_modified];
+		for (uint i = 2; i < GITHASH_SUFFIX_LEN; i++) {
+			githash_suffix[i] = _openttd_revision_hash[i-2];
+		}
+
+		/* Where did the hash start in the original string?
+		 * Overwrite from that position, unless that would go past end of packet buffer length. */
+		ptrdiff_t hashofs = strrchr(_openttd_revision, '-') - _openttd_revision;
+		if (hashofs + strlen(githash_suffix) + 1 > NETWORK_REVISION_LENGTH) hashofs = strlen(network_revision) - strlen(githash_suffix);
+		/* Replace the git hash in revision string. */
+		strecpy(network_revision + hashofs, githash_suffix, network_revision + NETWORK_REVISION_LENGTH);
+		assert(strlen(network_revision) < NETWORK_REVISION_LENGTH); // strlen does not include terminator, constant does, hence strictly less than
+		DEBUG(net, 1, "Network revision name is '%s'", network_revision);
+	}
+
+	return network_revision;
+}
+
+static const char *ExtractNetworkRevisionHash(const char *revstr)
+{
+	return strrchr(revstr, '-');
+}
+
+/**
  * Checks whether the given version string is compatible with our version.
+ * First tries to match the full string, if that fails, attempts to compare just git hashes.
  * @param other the version string to compare to
  */
 bool IsNetworkCompatibleVersion(const char *other)
 {
-	return strncmp(_openttd_revision, other, NETWORK_REVISION_LENGTH - 1) == 0;
+	if (strncmp(GetNetworkRevisionString(), other, NETWORK_REVISION_LENGTH - 1) == 0) return true;
+
+	/* If this version is tagged, then the revision string must be a complete match,
+	 * since there is no git hash suffix in it.
+	 * This is needed to avoid situations like "1.9.0-beta1" comparing equal to "2.0.0-beta1".  */
+	if (_openttd_revision_tagged) return false;
+
+	const char *hash1 = ExtractNetworkRevisionHash(GetNetworkRevisionString());
+	const char *hash2 = ExtractNetworkRevisionHash(other);
+	return hash1 && hash2 && (strncmp(hash1, hash2, GITHASH_SUFFIX_LEN) == 0);
 }
 
 #endif /* ENABLE_NETWORK */

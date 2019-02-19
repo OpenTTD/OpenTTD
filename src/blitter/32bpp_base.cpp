@@ -11,6 +11,7 @@
 
 #include "../stdafx.h"
 #include "32bpp_base.hpp"
+#include "common.hpp"
 
 #include "../safeguards.h"
 
@@ -22,6 +23,14 @@ void *Blitter_32bppBase::MoveTo(void *video, int x, int y)
 void Blitter_32bppBase::SetPixel(void *video, int x, int y, uint8 colour)
 {
 	*((Colour *)video + x + y * _screen.pitch) = LookupColourInPalette(colour);
+}
+
+void Blitter_32bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width, int dash)
+{
+	const Colour c = LookupColourInPalette(colour);
+	this->DrawLineGeneric(x, y, x2, y2, screen_width, screen_height, width, dash, [=](int x, int y) {
+		*((Colour *)video + x + y * _screen.pitch) = c;
+	});
 }
 
 void Blitter_32bppBase::DrawRect(void *video, int width, int height, uint8 colour)

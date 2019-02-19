@@ -1225,6 +1225,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Hau ezin
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Azpiegituren mantentze-lana: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Gaitua dagoenean, azpiegiturek mantentze kostuak eragiten dituzte. Kostuak garraio sarearekin proportzionalki hazten dira, hau da, kostu handiagoak izango dituzten konpainia handiagoek
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aireportuei inoiz ez zaie epea amaitzen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Gaitua badago, aireportu mota ezberdinak betirako egongo dira aukeran
 
@@ -1710,7 +1711,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Aurtengo
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ekoizpen balioak aldatzea baimendu: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Kolore eskema berria
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Erakutsi kolore eskema orokorrak
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Erakutsi trenen kolore eskemak
@@ -1970,9 +1970,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Zerbitza
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Konpainia babestua dago. Pasahitza sartu
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Bezero zerrenda
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Ikusle
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Konpainia berria
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Bezero zerrenda
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Ikusle
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Konpainia berria
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kanporatu
@@ -1987,7 +1987,6 @@ STR_NETWORK_CLIENT                                              :Bezeroa
 STR_NETWORK_SPECTATORS                                          :Ikusleak
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Eman nahi duzun diru kantitatea ezarri
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Ikusle
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ez gorde sartutako pasahitza
@@ -2585,7 +2584,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Konpainia jabe 
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD-ri buruz
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD bertsioa {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 The OpenTTD team
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -3173,17 +3172,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Ikuspegi
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ekoizpen kopurua: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industriak berehalako itxiera iragarri du!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Beharrezkoa du: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Beharrezkoa du: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Beharrezkoa du: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Ekoizpena: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Ekoizpena: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ekoizpena aldatu (8 eta 2040 arteko multiploa)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ekoizpen ehunekoa aldatu (ehunekoa, %800 arte)

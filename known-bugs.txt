@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2018-11-05
-Release version: 1.9.0
+Last updated:    2019-02-09
+Release version: 1.9.0-beta2
 ------------------------------------------------------------------------
 
 

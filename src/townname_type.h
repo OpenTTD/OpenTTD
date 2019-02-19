@@ -23,7 +23,7 @@
 typedef std::set<std::string> TownNames;
 
 /**
- * Struct holding a parameters used to generate town name.
+ * Struct holding parameters used to generate town name.
  * Speeds things up a bit because these values are computed only once per name generation.
  */
 struct TownNameParams {

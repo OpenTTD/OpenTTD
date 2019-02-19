@@ -611,7 +611,7 @@ static inline void AddAcceptedCargoSetMask(CargoID cargo, uint amount, CargoArra
 static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, CargoTypes *always_accepted)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
-	CargoID accepts[3];
+	CargoID accepts[lengthof(hs->accepts_cargo)];
 
 	/* Set the initial accepted cargo types */
 	for (uint8 i = 0; i < lengthof(accepts); i++) {
@@ -2945,7 +2945,7 @@ static CommandCost TownActionFundBuildings(Town *t, DoCommandFlag flags)
 		 * Also emulate original behaviour when town was only growing in
 		 * TOWN_GROWTH_TICKS intervals, to make sure that it's not too
 		 * tick-perfect and gives player some time window where he can
-		 * spam funding with the exact same effeciency.
+		 * spam funding with the exact same efficiency.
 		 */
 		t->grow_counter = min(t->grow_counter, 2 * TOWN_GROWTH_TICKS - (t->growth_rate - t->grow_counter) % TOWN_GROWTH_TICKS);
 
@@ -3335,7 +3335,7 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 			if (!HasTownOwnedRoad(tile)) {
 				TownID tid = GetTownIndex(tile);
 
-				if (tid == (TownID)INVALID_TOWN) {
+				if (tid == INVALID_TOWN) {
 					/* in the case we are generating "many random towns", this value may be INVALID_TOWN */
 					if (_generating_world) return CalcClosestTownFromTile(tile, threshold);
 					assert(Town::GetNumItems() == 0);

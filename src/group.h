@@ -17,6 +17,7 @@
 #include "company_type.h"
 #include "vehicle_type.h"
 #include "engine_type.h"
+#include "livery.h"
 
 typedef Pool<Group, GroupID, 16, 64000> GroupPool;
 extern GroupPool _group_pool; ///< Pool of groups.
@@ -69,6 +70,7 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 	VehicleTypeByte vehicle_type;           ///< Vehicle type of the group
 
 	bool replace_protection;                ///< If set to true, the global autoreplace have no effect on the group
+	Livery livery;                          ///< Custom colour scheme for vehicles in this group
 	GroupStatistics statistics;             ///< NOSAVE: Statistics and caches on the vehicles in the group.
 
 	GroupID parent;                         ///< Parent group

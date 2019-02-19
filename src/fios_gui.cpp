@@ -281,6 +281,18 @@ private:
 	QueryString filter_editbox; ///< Filter editbox;
 	SmallVector<bool, 32> fios_items_shown; ///< Map of the filtered out fios items
 
+	static void SaveGameConfirmationCallback(Window *w, bool confirmed)
+	{
+		/* File name has already been written to _file_to_saveload */
+		if (confirmed) _switch_mode = SM_SAVE_GAME;
+	}
+
+	static void SaveHeightmapConfirmationCallback(Window *w, bool confirmed)
+	{
+		/* File name has already been written to _file_to_saveload */
+		if (confirmed) _switch_mode = SM_SAVE_HEIGHTMAP;
+	}
+
 public:
 
 	/** Generate a default save filename. */
@@ -731,11 +743,19 @@ public:
 			}
 		} else if (this->IsWidgetLowered(WID_SL_SAVE_GAME)) { // Save button clicked
 			if (this->abstract_filetype == FT_SAVEGAME || this->abstract_filetype == FT_SCENARIO) {
-				_switch_mode = SM_SAVE_GAME;
 				FiosMakeSavegameName(_file_to_saveload.name, this->filename_editbox.text.buf, lastof(_file_to_saveload.name));
+				if (FioCheckFileExists(_file_to_saveload.name, Subdirectory::SAVE_DIR)) {
+					ShowQuery(STR_SAVELOAD_OVERWRITE_TITLE, STR_SAVELOAD_OVERWRITE_WARNING, this, SaveLoadWindow::SaveGameConfirmationCallback);
+				} else {
+					_switch_mode = SM_SAVE_GAME;
+				}
 			} else {
-				_switch_mode = SM_SAVE_HEIGHTMAP;
 				FiosMakeHeightmapName(_file_to_saveload.name, this->filename_editbox.text.buf, lastof(_file_to_saveload.name));
+				if (FioCheckFileExists(_file_to_saveload.name, Subdirectory::SAVE_DIR)) {
+					ShowQuery(STR_SAVELOAD_OVERWRITE_TITLE, STR_SAVELOAD_OVERWRITE_WARNING, this, SaveLoadWindow::SaveHeightmapConfirmationCallback);
+				} else {
+					_switch_mode = SM_SAVE_HEIGHTMAP;
+				}
 			}
 
 			/* In the editor set up the vehicle engines correctly (date might have changed) */

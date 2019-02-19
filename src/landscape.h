@@ -40,6 +40,7 @@ Slope GetFoundationSlope(TileIndex tile, int *z = NULL);
 
 uint GetPartialPixelZ(int x, int y, Slope corners);
 int GetSlopePixelZ(int x, int y);
+int GetSlopePixelZOutsideMap(int x, int y);
 void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2);
 
 /**
@@ -108,12 +109,15 @@ static inline Point RemapCoords2(int x, int y)
  * @param y Y coordinate of the 2D coordinate.
  * @return X and Y components of equivalent world or tile coordinate.
  * @note Inverse of #RemapCoords function. Smaller values may get rounded.
+ * @see InverseRemapCoords2
  */
 static inline Point InverseRemapCoords(int x, int y)
 {
 	Point pt = {(y * 2 - x) >> (2 + ZOOM_LVL_SHIFT), (y * 2 + x) >> (2 + ZOOM_LVL_SHIFT)};
 	return pt;
 }
+
+Point InverseRemapCoords2(int x, int y, bool clamp_to_map = false, bool *clamped = NULL);
 
 uint ApplyFoundationToSlope(Foundation f, Slope *s);
 /**

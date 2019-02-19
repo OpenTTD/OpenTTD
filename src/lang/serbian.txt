@@ -1450,6 +1450,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Promena 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Održavanje infrastrukture: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Ako je omogućeno, infrastruktura će imati troškove održavanja. Trošak raste brže sa porastom veličine putne mreže i time više pogađa veća preduzeća od manjih
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Nezastarevanje aerodroma: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Omogućavanje ovog podešavanja čini svaki tip aerodroma zauvek pristupan nakon njegovog uvođenja
 
@@ -2006,7 +2007,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Promena 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Dozvoliti promenu količine proizvodnje: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nova šema boja
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Prikaži generalnu mustru boja
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Prikaži mustre boja vozova
@@ -2268,9 +2268,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server j
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Preduzeće je zaštićeno. Unesite lozinku
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Spisak klijenata
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Praćenje
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Novo preduzeće
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spisak klijenata
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Praćenje
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Novo preduzeće
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Izbaci
@@ -2285,7 +2285,6 @@ STR_NETWORK_CLIENT                                              :Igrač
 STR_NETWORK_SPECTATORS                                          :Posmatrači
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Unesite svotu novca koju želite dati
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Posmatrač
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Otkaži unetu lozinku
@@ -2889,7 +2888,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Zemljište u po
 STR_ABOUT_OPENTTD                                               :{WHITE}O OpenTTD-u
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Originalni kopirajt {COPYRIGHT} 1995 Chris Sawyer, Sva prava zadržana
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD verzija {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD tim
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD tim
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -3495,20 +3494,10 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Prebacuj
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivo proizvodnje: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Fabrika je objavila da može svakog trenutka da se zatvori!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Potražuje: {YELLOW}{STRING.aku}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Potražuje: {YELLOW}{STRING.aku}{STRING}, {STRING.aku}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Potražuje: {YELLOW}{STRING.aku}{STRING}, {STRING.aku}{STRING}, {STRING.aku}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK} Zahteva:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} čekaje {STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Proizvodi: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Proizvodi: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Promena proizvodnje
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Promena nivoa proizvodnje (u procentima, do 800%)

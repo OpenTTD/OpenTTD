@@ -48,6 +48,7 @@
 #include "story_base.h"
 #include "toolbar_gui.h"
 #include "framerate_type.h"
+#include "guitimer_func.h"
 
 #include "widgets/toolbar_widget.h"
 
@@ -118,12 +119,14 @@ public:
  */
 class DropDownListCompanyItem : public DropDownListItem {
 	Dimension icon_size;
+	Dimension lock_size;
 public:
 	bool greyed;
 
 	DropDownListCompanyItem(int result, bool masked, bool greyed) : DropDownListItem(result, masked), greyed(greyed)
 	{
 		this->icon_size = GetSpriteSize(SPR_COMPANY_ICON);
+		this->lock_size = GetSpriteSize(SPR_LOCK);
 	}
 
 	virtual ~DropDownListCompanyItem() {}
@@ -138,12 +141,12 @@ public:
 		CompanyID company = (CompanyID)this->result;
 		SetDParam(0, company);
 		SetDParam(1, company);
-		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_size.width + 3;
+		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_size.width + this->lock_size.width + 6;
 	}
 
 	uint Height(uint width) const
 	{
-		return max(this->icon_size.height + 2U, (uint)FONT_HEIGHT_NORMAL);
+		return max(max(this->icon_size.height, this->lock_size.height) + 2U, (uint)FONT_HEIGHT_NORMAL);
 	}
 
 	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
@@ -156,8 +159,12 @@ public:
 
 		int icon_offset = (bottom - top - icon_size.height) / 2;
 		int text_offset = (bottom - top - FONT_HEIGHT_NORMAL) / 2;
+		int lock_offset = (bottom - top - lock_size.height) / 2;
 
 		DrawCompanyIcon(company, rtl ? right - this->icon_size.width - WD_FRAMERECT_RIGHT : left + WD_FRAMERECT_LEFT, top + icon_offset);
+		if (NetworkCompanyIsPassworded(company)) {
+			DrawSprite(SPR_LOCK, PAL_NONE, rtl ? left + WD_FRAMERECT_LEFT : right - this->lock_size.width - WD_FRAMERECT_RIGHT, top + lock_offset);
+		}
 
 		SetDParam(0, company);
 		SetDParam(1, company);
@@ -167,7 +174,7 @@ public:
 		} else {
 			col = sel ? TC_WHITE : TC_BLACK;
 		}
-		DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 0 : 3 + this->icon_size.width), right - WD_FRAMERECT_RIGHT - (rtl ? 3 + this->icon_size.width : 0), top + text_offset, STR_COMPANY_NAME_COMPANY_NUM, col);
+		DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 3 + this->lock_size.width : 3 + this->icon_size.width), right - WD_FRAMERECT_RIGHT - (rtl ? 3 + this->icon_size.width : 3 + this->lock_size.width), top + text_offset, STR_COMPANY_NAME_COMPANY_NUM, col);
 	}
 };
 
@@ -211,39 +218,42 @@ static const int CTMN_SPECTATOR   = -4; ///< Show a company window as spectator
  * @param w The toolbar window.
  * @param widget The button widget id.
  * @param grey A bitbask of which items to mark as disabled.
- * @param include_spectator If true, a spectator option is included in the list.
  */
-static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0, bool include_spectator = false)
+static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 {
 	DropDownList *list = new DropDownList();
 
+	switch (widget) {
+		case WID_TN_COMPANIES:
 #ifdef ENABLE_NETWORK
-	if (_networking) {
-		if (widget == WID_TN_COMPANIES) {
+			if (!_networking) break;
+
 			/* Add the client list button for the companies menu */
 			*list->Append() = new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_CLIENT_LIST, CTMN_CLIENT_LIST, false);
-		}
 
-		if (include_spectator) {
-			if (widget == WID_TN_COMPANIES) {
-				if (_local_company == COMPANY_SPECTATOR) {
-					*list->Append() = new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_NEW_COMPANY, CTMN_NEW_COMPANY, NetworkMaxCompaniesReached());
-				} else {
-					*list->Append() = new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_SPECTATE, CTMN_SPECTATE, NetworkMaxSpectatorsReached());
-				}
+			if (_local_company == COMPANY_SPECTATOR) {
+				*list->Append() = new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_NEW_COMPANY, CTMN_NEW_COMPANY, NetworkMaxCompaniesReached());
 			} else {
-				*list->Append() = new DropDownListStringItem(STR_NETWORK_TOOLBAR_LIST_SPECTATOR, CTMN_SPECTATOR, false);
+				*list->Append() = new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_SPECTATE, CTMN_SPECTATE, NetworkMaxSpectatorsReached());
 			}
-		}
-	}
 #endif /* ENABLE_NETWORK */
+			break;
+
+		case WID_TN_STORY:
+			*list->Append() = new DropDownListStringItem(STR_STORY_BOOK_SPECTATOR, CTMN_SPECTATOR, false);
+			break;
+
+		case WID_TN_GOAL:
+			*list->Append() = new DropDownListStringItem(STR_GOALS_SPECTATOR, CTMN_SPECTATOR, false);
+			break;
+	}
 
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		if (!Company::IsValidID(c)) continue;
 		*list->Append() = new DropDownListCompanyItem(c, false, HasBit(grey, c));
 	}
 
-	PopupMainToolbMenu(w, widget, list, _local_company == COMPANY_SPECTATOR ? CTMN_CLIENT_LIST : (int)_local_company);
+	PopupMainToolbMenu(w, widget, list, _local_company == COMPANY_SPECTATOR ? (widget == WID_TN_COMPANIES ? CTMN_CLIENT_LIST : CTMN_SPECTATOR) : (int)_local_company);
 }
 
 
@@ -590,7 +600,7 @@ static CallBackFunction MenuClickFinances(int index)
 
 static CallBackFunction ToolbarCompaniesClick(Window *w)
 {
-	PopupMainCompanyToolbMenu(w, WID_TN_COMPANIES, 0, true);
+	PopupMainCompanyToolbMenu(w, WID_TN_COMPANIES, 0);
 	return CBF_NONE;
 }
 
@@ -611,9 +621,9 @@ static CallBackFunction MenuClickCompany(int index)
 
 			case CTMN_NEW_COMPANY:
 				if (_network_server) {
-					DoCommandP(0, 0, _network_own_client_id, CMD_COMPANY_CTRL);
+					DoCommandP(0, CCA_NEW, _network_own_client_id, CMD_COMPANY_CTRL);
 				} else {
-					NetworkSendCommand(0, 0, 0, CMD_COMPANY_CTRL, NULL, NULL, _local_company);
+					NetworkSendCommand(0, CCA_NEW, 0, CMD_COMPANY_CTRL, NULL, NULL, _local_company);
 				}
 				return CBF_NONE;
 
@@ -636,7 +646,7 @@ static CallBackFunction MenuClickCompany(int index)
 
 static CallBackFunction ToolbarStoryClick(Window *w)
 {
-	PopupMainCompanyToolbMenu(w, WID_TN_STORY, 0, true);
+	PopupMainCompanyToolbMenu(w, WID_TN_STORY, 0);
 	return CBF_NONE;
 }
 
@@ -656,7 +666,7 @@ static CallBackFunction MenuClickStory(int index)
 
 static CallBackFunction ToolbarGoalClick(Window *w)
 {
-	PopupMainCompanyToolbMenu(w, WID_TN_GOAL, 0, true);
+	PopupMainCompanyToolbMenu(w, WID_TN_GOAL, 0);
 	return CBF_NONE;
 }
 
@@ -1012,7 +1022,7 @@ static CallBackFunction MenuClickMusicWindow(int index)
 
 static CallBackFunction ToolbarNewspaperClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_MESSAGES, STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT, 2);
+	PopupMainToolbMenu(w, WID_TN_MESSAGES, STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT, 3);
 	return CBF_NONE;
 }
 
@@ -1027,6 +1037,7 @@ static CallBackFunction MenuClickNewspaper(int index)
 	switch (index) {
 		case 0: ShowLastNewsMessage(); break;
 		case 1: ShowMessageHistory();  break;
+		case 2: DeleteAllMessages();   break;
 	}
 	return CBF_NONE;
 }
@@ -1978,6 +1989,8 @@ enum MainToolbarHotkeys {
 
 /** Main toolbar. */
 struct MainToolbarWindow : Window {
+	GUITimer timer;
+
 	MainToolbarWindow(WindowDesc *desc) : Window(desc)
 	{
 		this->InitNested(0);
@@ -1988,6 +2001,8 @@ struct MainToolbarWindow : Window {
 		this->SetWidgetDisabledState(WID_TN_FAST_FORWARD, _networking); // if networking, disable fast-forward button
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
+
+		this->timer.SetInterval(MILLISECONDS_PER_TICK);
 	}
 
 	virtual void FindWindowPlacementAndResize(int def_width, int def_height)
@@ -2092,8 +2107,11 @@ struct MainToolbarWindow : Window {
 		_last_started_action = CBF_NONE;
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
+		if (!this->timer.Elapsed(delta_ms)) return;
+		this->timer.SetInterval(MILLISECONDS_PER_TICK);
+
 		if (this->IsWidgetLowered(WID_TN_PAUSE) != !!_pause_mode) {
 			this->ToggleWidgetLoweredState(WID_TN_PAUSE);
 			this->SetWidgetDirty(WID_TN_PAUSE);
@@ -2310,6 +2328,8 @@ enum MainToolbarEditorHotkeys {
 };
 
 struct ScenarioEditorToolbarWindow : Window {
+	GUITimer timer;
+
 	ScenarioEditorToolbarWindow(WindowDesc *desc) : Window(desc)
 	{
 		this->InitNested(0);
@@ -2318,6 +2338,8 @@ struct ScenarioEditorToolbarWindow : Window {
 		CLRBITS(this->flags, WF_WHITE_BORDER);
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
+
+		this->timer.SetInterval(MILLISECONDS_PER_TICK);
 	}
 
 	virtual void FindWindowPlacementAndResize(int def_width, int def_height)
@@ -2445,8 +2467,11 @@ struct ScenarioEditorToolbarWindow : Window {
 		this->SetWidgetDirty(WID_TE_DATE_FORWARD);
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
+		if (!this->timer.Elapsed(delta_ms)) return;
+		this->timer.SetInterval(MILLISECONDS_PER_TICK);
+
 		if (this->IsWidgetLowered(WID_TE_PAUSE) != !!_pause_mode) {
 			this->ToggleWidgetLoweredState(WID_TE_PAUSE);
 			this->SetDirty();

@@ -78,7 +78,7 @@ When you are sure it is not already reported you should:
 After you have done all that you can report the bug. Please include the
 following information in your bug report:
 
-- OpenTTD version (PLEASE test the latest SVN/nightly build)
+- OpenTTD version (PLEASE test the latest Git revision/nightly build)
 - Bug details, including instructions how to reproduce it
 - Platform (Windows, Linux, FreeBSD, …) and compiler (including version) if
    you compiled OpenTTD yourself.
@@ -593,8 +593,7 @@ no graphical user interface; you would be building a dedicated server.
 
 The following compilers are known to compile OpenTTD:
 
-- Microsoft Visual C++ (MSVC) 2005, 2008 and 2010.
-   Version 2005 gives bogus warnings about scoping issues.
+- Microsoft Visual C++ (MSVC) 2015, 2017 and 2019.
 - GNU Compiler Collection (GCC) 3.3 - 4.4, 4.6 - 4.8.
     - Versions 4.1 and earlier give bogus warnings about uninitialised variables.
     - Versions 4.4, 4.6 give bogus warnings about freeing non-heap objects.
@@ -605,7 +604,8 @@ The following compilers are known to compile OpenTTD:
 
 The following compilers are known not to compile OpenTTD:
 
-- Microsoft Visual C++ (MSVC) 2003 and earlier.
+- Microsoft Visual C++ (MSVC) 2013 and earlier.
+   These old versions do not support modern C++ language features.
 - GNU Compiler Collection (GCC) 3.2 and earlier.
    These old versions fail due to OpenTTD's template usage.
 - GNU Compiler Collection (GCC) 4.5. It optimizes enums too aggressively.
@@ -655,7 +655,7 @@ someone else may have already started translating to the same language.
 
 So, now that you have notified the development team about your intention to
 translate (You did, right? Of course you did.) you can pick up english.txt
-(found in the SVN repository under /src/lang) and translate.
+(found in the Git repository under /src/lang) and translate.
 
 You must change the first two lines of the file appropriately:
 

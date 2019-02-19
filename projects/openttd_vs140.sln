@@ -4,10 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openttd", "openttd_vs140.vcxproj", "{668328A0-B40E-4CDB-BD72-D0064424414A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{0817F629-589E-4A3B-B81A-8647BC571E35} = {0817F629-589E-4A3B-B81A-8647BC571E35}
-		{E9548DE9-F089-49B7-93A6-30BE2CC311C7} = {E9548DE9-F089-49B7-93A6-30BE2CC311C7}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "strgen", "strgen_vs140.vcxproj", "{A133A442-BD0A-4ADE-B117-AD7545E4BDD1}"
 EndProject
@@ -18,13 +14,12 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "generate", "generate_vs140.vcxproj", "{2F31FD79-D1AC-43C4-89F3-B0D5E4E53E34}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "settings", "settings_vs140.vcxproj", "{0817F629-589E-4A3B-B81A-8647BC571E35}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E9548DE9-F089-49B7-93A6-30BE2CC311C7} = {E9548DE9-F089-49B7-93A6-30BE2CC311C7}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "settingsgen", "settingsgen_vs140.vcxproj", "{E9548DE9-F089-49B7-93A6-30BE2CC311C7}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "regression", "regression_vs140.vcxproj", "{4712B013-437D-42CE-947F-DEBABA15261F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "basesets", "basesets_vs140.vcxproj", "{E12E77CA-C0F1-4ADA-943F-4929274249D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -90,6 +85,14 @@ Global
 		{4712B013-437D-42CE-947F-DEBABA15261F}.Debug|x64.ActiveCfg = Debug|Win32
 		{4712B013-437D-42CE-947F-DEBABA15261F}.Release|Win32.ActiveCfg = Debug|Win32
 		{4712B013-437D-42CE-947F-DEBABA15261F}.Release|x64.ActiveCfg = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Debug|Win32.Build.0 = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Debug|x64.ActiveCfg = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Debug|x64.Build.0 = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Release|Win32.ActiveCfg = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Release|Win32.Build.0 = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Release|x64.ActiveCfg = Debug|Win32
+		{E12E77CA-C0F1-4ADA-943F-4929274249D3}.Release|x64.Build.0 = Debug|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

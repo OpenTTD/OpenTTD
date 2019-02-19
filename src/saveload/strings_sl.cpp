@@ -63,7 +63,7 @@ char *CopyFromOldName(StringID id)
 	/* Is this name an (old) custom name? */
 	if (GetStringTab(id) != TEXT_TAB_OLD_CUSTOM) return NULL;
 
-	if (IsSavegameVersionBefore(37)) {
+	if (IsSavegameVersionBefore(SLV_37)) {
 		/* Allow for expansion when converted to UTF-8. */
 		char tmp[LEN_OLD_STRINGS * MAX_CHAR_LENGTH];
 		uint offs = _savegame_type == SGT_TTO ? LEN_OLD_STRINGS_TTO * GB(id, 0, 8) : LEN_OLD_STRINGS * GB(id, 0, 9);

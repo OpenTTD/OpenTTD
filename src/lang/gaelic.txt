@@ -1453,6 +1453,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Cha ghab
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Cumail suas a' bhun-structair: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Nuair a bhios seo air, bidh cumail suas a' bhun-structair a' cosg airgid. Fàsaidh na cosgaisean nas luaithe na meud an lìonraidh, mar sin bheir an roghainn seo barrachd buaidh air companaidhean mòra
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Chan fhalbh an ùine air puirt-adhair: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Nuair a chuireas tu an roghainn seo an comas, cumaidh gach port-adhair a' dol gu bràth an dèidh a thogail
 
@@ -2004,7 +2005,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Atharrai
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cuir an comas atharrachadh air luachan saothrachaidh: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Sgeama nan dath ùr
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Seall sgeamannan nan dath coitcheann
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Seall sgeamannan nan dath airson trèanaichean
@@ -2266,9 +2266,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tha am f
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tha a' chompanaidh dìonta. Cuir a-steach facal-faire
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Liosta nan cliant
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Coimhead air
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Companaidh ùr
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liosta nan cliant
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Coimhead air
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Companaidh ùr
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Thoir a bhròg dha
@@ -2283,7 +2283,6 @@ STR_NETWORK_CLIENT                                              :Cliant
 STR_NETWORK_SPECTATORS                                          :Amharcaichean
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Cuir a-steach na tha thu airson toirt seachad
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Amharc
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Na sàbhail am facal-faire air a chur a-steach
@@ -2925,7 +2924,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Tìr a' chompan
 STR_ABOUT_OPENTTD                                               :{WHITE}Mu dheidhinn OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Còir-lethbhreac tùsail {COPYRIGHT} 1995 Chris Sawyer, a h-uile còir glèidhte
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD tionndadh {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 An sgioba OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 An sgioba OpenTTD
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -3529,20 +3528,10 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Meadhana
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ìre an dèanadais: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Tha an gnìomhachas gu bhith a dhùnadh a dh'aithghearr!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Feum air: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Feum air: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Feum air: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Feum air:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} a' feitheamh{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Toradh: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Toradh: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Atharraich an saothrachaidh (iomadach aig 8, suas gu 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Atharraich ìre an saothrachaidh (ceudad, suas gu 800%)

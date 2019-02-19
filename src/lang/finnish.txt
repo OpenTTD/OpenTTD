@@ -132,7 +132,7 @@ STR_QUANTITY_N_A                                                :-
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINY_FONT}MA
 STR_ABBREV_COAL                                                 :{TINY_FONT}HL
-STR_ABBREV_MAIL                                                 :{TINY_FONT}SP
+STR_ABBREV_MAIL                                                 :{TINY_FONT}PO
 STR_ABBREV_OIL                                                  :{TINY_FONT}ÖL
 STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}KA
 STR_ABBREV_GOODS                                                :{TINY_FONT}TA
@@ -189,6 +189,7 @@ STR_COLOUR_ORANGE                                               :Oranssi
 STR_COLOUR_BROWN                                                :Ruskea
 STR_COLOUR_GREY                                                 :Harmaa
 STR_COLOUR_WHITE                                                :Valkoinen
+STR_COLOUR_RANDOM                                               :Satunnainen
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -927,6 +928,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Oma...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranin rial (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Uusi Venäjän rupla (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikon peso (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kulkuneuvot
@@ -1255,6 +1257,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Salli pysäkkie
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tätä asetusta ei voi muuttaa, kun kulkuneuvoja on olemassa
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktuurin huoltokustannukset: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Mikäli käytössä, infrastruktuurista aiheutuu huoltokuluja. Kulut kasvavat suhteettomasti verkon kokoon nähden, täten ne vaikuttavat suurempiin yhtiöihin enemmän kuin pieniin
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lentokentät eivät vanhene: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Mikäli käytössä, kaikki lentokenttätyypit ovat saatavilla ikuisesti niiden julkistamisen jälkeen
@@ -1813,7 +1816,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Muuta ny
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Salli tuotantomäärien muuttaminen: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Uusi väriteema
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY}: Väriteema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Näytä yleiset väriteemat
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Näytä junan väriteemat
@@ -2075,9 +2078,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Palvelin
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Yhtiö on suojattu. Anna salasana
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Asiakaslista
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Katsele
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Uusi yhtiö
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Asiakaslista
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Katsele
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Uusi yhtiö
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Potkaise
@@ -2092,7 +2095,6 @@ STR_NETWORK_CLIENT                                              :Pelaaja
 STR_NETWORK_SPECTATORS                                          :Katsojat
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Syötä rahamäärä, jonka haluat antaa
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Katsoja
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Älä tallenna syötettyä salasanaa
@@ -2696,7 +2698,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Yhtiön omistam
 STR_ABOUT_OPENTTD                                               :{WHITE}Tietoja OpenTTD:stä
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Alkuperäiset oikeudet {COPYRIGHT} 1995 Chris Sawyer, kaikki oikeudet pidätetään
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-versio {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 The OpenTTD team
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Kuvataajuus
@@ -3325,20 +3327,10 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Keskitä
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tuotantotaso: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Teollisuuslaitos ilmoittaa pikaisesta sulkeutumisestaan!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Tarvitsee: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Tarvitsee: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Tarvitsee: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Tarvitsee:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} odottamassa{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Tuottaa: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Tuottaa: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Muokkaa tuotantoa (8:n kerroin, 2040 asti)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Muuta tuotantotasoa (prosentteina, 800{NBSP}% asti)
@@ -3839,7 +3831,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Miten ku
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :on yhtä kuin
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ei ole yhtä kuin
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :on pienempi kuin
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :on suurempi kuin
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :on pienempi tai yhtä kuin
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :on enemmän kuin
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :on enemmän tai yhtä kuin
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :on tosi

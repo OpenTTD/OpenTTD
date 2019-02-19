@@ -43,7 +43,7 @@ static const uint NETWORK_NAME_LENGTH             =   80;         ///< The maxim
 static const uint NETWORK_COMPANY_NAME_LENGTH     =  128;         ///< The maximum length of the company name, in bytes including '\0'
 static const uint NETWORK_HOSTNAME_LENGTH         =   80;         ///< The maximum length of the host name, in bytes including '\0'
 static const uint NETWORK_SERVER_ID_LENGTH        =   33;         ///< The maximum length of the network id of the servers, in bytes including '\0'
-static const uint NETWORK_REVISION_LENGTH         =   15;         ///< The maximum length of the revision, in bytes including '\0'
+static const uint NETWORK_REVISION_LENGTH         =   33;         ///< The maximum length of the revision, in bytes including '\0'
 static const uint NETWORK_PASSWORD_LENGTH         =   33;         ///< The maximum length of the password, in bytes including '\0' (must be >= NETWORK_SERVER_ID_LENGTH)
 static const uint NETWORK_CLIENTS_LENGTH          =  200;         ///< The maximum length for the list of clients that controls a company, in bytes including '\0'
 static const uint NETWORK_CLIENT_NAME_LENGTH      =   25;         ///< The maximum length of a client's name, in bytes including '\0'

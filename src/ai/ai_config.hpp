@@ -26,14 +26,13 @@ public:
 		ScriptConfig()
 	{}
 
-	AIConfig(const AIConfig *config) :
-		ScriptConfig(config)
-	{}
+	AIConfig(const AIConfig *config);
 
 	class AIInfo *GetInfo() const;
 
 	/* virtual */ int GetSetting(const char *name) const;
 	/* virtual */ void SetSetting(const char *name, int value);
+	/* virtual */ void AddRandomDeviation();
 
 	/**
 	 * When ever the AI Scanner is reloaded, all infos become invalid. This

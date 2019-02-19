@@ -21,8 +21,8 @@ static const SaveLoad _engine_renew_desc[] = {
 	    SLE_VAR(EngineRenew, to,       SLE_UINT16),
 
 	    SLE_REF(EngineRenew, next,     REF_ENGINE_RENEWS),
-	SLE_CONDVAR(EngineRenew, group_id, SLE_UINT16, 60, SL_MAX_VERSION),
-	SLE_CONDVAR(EngineRenew, replace_when_old, SLE_BOOL, 175, SL_MAX_VERSION),
+	SLE_CONDVAR(EngineRenew, group_id, SLE_UINT16, SLV_60, SL_MAX_VERSION),
+	SLE_CONDVAR(EngineRenew, replace_when_old, SLE_BOOL, SLV_175, SL_MAX_VERSION),
 	SLE_END()
 };
 
@@ -45,9 +45,9 @@ static void Load_ERNW()
 		SlObject(er, _engine_renew_desc);
 
 		/* Advanced vehicle lists, ungrouped vehicles got added */
-		if (IsSavegameVersionBefore(60)) {
+		if (IsSavegameVersionBefore(SLV_60)) {
 			er->group_id = ALL_GROUP;
-		} else if (IsSavegameVersionBefore(71)) {
+		} else if (IsSavegameVersionBefore(SLV_71)) {
 			if (er->group_id == DEFAULT_GROUP) er->group_id = ALL_GROUP;
 		}
 	}

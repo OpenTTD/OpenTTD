@@ -61,10 +61,10 @@ static const SaveLoad _grfconfig_desc[] = {
 	    SLE_STR(GRFConfig, filename,         SLE_STR,    0x40),
 	    SLE_VAR(GRFConfig, ident.grfid,      SLE_UINT32),
 	    SLE_ARR(GRFConfig, ident.md5sum,     SLE_UINT8,  16),
-	SLE_CONDVAR(GRFConfig, version,          SLE_UINT32, 151, SL_MAX_VERSION),
+	SLE_CONDVAR(GRFConfig, version,          SLE_UINT32, SLV_151, SL_MAX_VERSION),
 	    SLE_ARR(GRFConfig, param,            SLE_UINT32, 0x80),
 	    SLE_VAR(GRFConfig, num_params,       SLE_UINT8),
-	SLE_CONDVAR(GRFConfig, palette,          SLE_UINT8,  101, SL_MAX_VERSION),
+	SLE_CONDVAR(GRFConfig, palette,          SLE_UINT8,  SLV_101, SL_MAX_VERSION),
 	SLE_END()
 };
 
@@ -87,7 +87,7 @@ static void Load_NGRF_common(GRFConfig *&grfconfig)
 	while (SlIterateArray() != -1) {
 		GRFConfig *c = new GRFConfig();
 		SlObject(c, _grfconfig_desc);
-		if (IsSavegameVersionBefore(101)) c->SetSuitablePalette();
+		if (IsSavegameVersionBefore(SLV_101)) c->SetSuitablePalette();
 		AppendToGRFConfigList(&grfconfig, c);
 	}
 }

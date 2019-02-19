@@ -210,6 +210,7 @@ group.h
 group_gui.h
 group_type.h
 gui.h
+guitimer_func.h
 heightmap.h
 highscore.h
 hotkeys.h
@@ -947,8 +948,8 @@ blitter/8bpp_optimized.hpp
 blitter/8bpp_simple.cpp
 blitter/8bpp_simple.hpp
 #end
-blitter/base.cpp
 blitter/base.hpp
+blitter/common.hpp
 blitter/factory.hpp
 blitter/null.cpp
 blitter/null.hpp

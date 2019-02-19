@@ -1236,6 +1236,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Ļauj būvēt c
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Šo iestatījumu nav iespējams mainīt, kad tur ir transportlīdzekļi
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktūras uzturēšana: {STRING}
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lidostas darbosies mūžīgi: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ieslēdzot šo iestatījumu, katrs lidostas veids pēc tā ieviešanas vienmēr ir pieejams
 
@@ -1746,7 +1747,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mainīt 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ieslēgt ražojumu vērtības maiņu: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Jauna identitātes krāsu shēma
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Rādīt vispārējo identitates krāsu shēmas
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Rādīt vilcienu identitātes krāsu shēmas
@@ -2007,9 +2007,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveris
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Uzņēmums ir aizsargāts. Ievadiet paroli
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Spēlētāju saraksts
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Skatīt
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Jauns uzņēmums
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spēlētāju saraksts
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Skatīt
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Jauns uzņēmums
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Izmest
@@ -2024,7 +2024,6 @@ STR_NETWORK_CLIENT                                              :Spēlētājs
 STR_NETWORK_SPECTATORS                                          :Novērotāji
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Ievadiet cik daudz naudas vēlaties dot
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Novērotājs
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nesaglabāt ievadīto paroli
@@ -2626,7 +2625,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Uzņēmumam pie
 STR_ABOUT_OPENTTD                                               :{WHITE}Par OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Oriģināla autortiesības {COPYRIGHT} 1995 Kriss Sojers. Visas tiesības paturētas
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versija {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD darba grupa
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD darba grupa
 
 # Framerate display window
 STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}pašreizējās spēles ātruma pakāpe: {DECIMAL}x
@@ -3228,17 +3227,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrēt
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ražošanas līmenis: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Nozare ir paziņojusi par nenovēršamu slēgšanu!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Nepieciešams: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Nepieciešams: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Nepieciešams: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Ražo: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Ražo: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Mainīt ražošanu (dalāmais ar 8, līdz pat 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Mainīt ražošanas līmeni (procentos, līdz 800%)

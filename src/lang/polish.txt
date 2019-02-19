@@ -568,6 +568,8 @@ STR_COLOUR_ORANGE                                               :Pomarańczowy
 STR_COLOUR_BROWN                                                :Brązowy
 STR_COLOUR_GREY                                                 :Szary
 STR_COLOUR_WHITE                                                :Biały
+STR_COLOUR_RANDOM                                               :Losowy
+STR_COLOUR_DEFAULT                                              :Domyślny
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -854,6 +856,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut ekranu
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zrzut ekranu z pełnym przybliżeniem
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Zrzut ekranu z przybliżeniem domyślnym
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zrzut ekranu całej mapy
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Pokaż ilość klatek na sekundę
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Info o 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite'ów
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Włącz/wyłącz ramki
@@ -1056,6 +1059,7 @@ STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLA
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Wyczyść
 STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Zmień zestaw
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Wyczyść obecny program (tylko Wlasny1 lub Wlasny2)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Zmień wybór muzyki na następny zainstalowany zestaw
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik na ścieżce aby dodać do obecnego programu (Wlasny1 i Wlasny2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliknij na ścieżce muzycznej aby usunąć ją z wybranego programu (Wlasny1 lub Wlasny2)
 
@@ -1192,6 +1196,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Prezes)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} sponsoruje konstrukcję nowego miasta {TOWN}!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Zostało wybudowane nowe miasto o nazwie {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Rozpoczęto budowę nowe{G go j go} {STRING.d} blisko {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Now{G y a e} {STRING} został{G 0 "" a o} posadzon{G 0 y a e} blisko {TOWN}!
@@ -1304,6 +1309,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Południow
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Własna...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari gruzińskie (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial irański (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nowy rubel rosyjski (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso meksykańskie (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Pojazdy drogowe
@@ -1633,6 +1640,9 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Zmiana t
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Utrzymywanie infrastruktury: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Kiedy włączone, utrzymanie infrastruktury jest naliczane w kosztach. Koszty wzrastają nadproporcjonalnie do rozmiarów sieci połączeń, a więc dotykają bardziej duże niż małe firmy
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Początkowy kolor firmy: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Wybierz początkowy kolor dla firmy
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Pozwól budować stare lotniska: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Włączona opcja sprawia, że każdy typ lotniska będzie dostępny na zawsze od chwili wprowadzenia
 
@@ -1717,6 +1727,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :zielony
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :ciemnozielony
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :fioletowy
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Zachowanie podczas przeciągania mapy
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Przeciągnij okno podglądu prawym przyciskiem myszy, pozycja myszy zablokowana
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Przeciągnij mapę prawym przyciskiem myszy, pozycja myszy zablokowana
 STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Przeciągnij mapę prawym przyciskiem myszy
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Przeciągnij mapę lewym przyciskiem myszy
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Wygładź przesuwanie widoku: {STRING}
@@ -1775,7 +1787,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Wlącz obsług�
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Pokazuj wskaźniki załadunku: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Wybierz, czy wskaźnik załadunku pokazuje się nad ładowanym/rozładowywanym pojazdem
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Pokazuj rozkłady jazdy w tickach, a nie w dniach: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :W tabelach czasu, czas podróży pokaż w tyknięciach gry zamiast w dniach
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :W tabelach czasu, czas podróży pokaż w tickach gry zamiast w dniach
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Pokazuj przyjazdy i odjazdy w rozkładach: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Wyświetlanie przewidywanego przyjazdu i odjazdu w rozkładach
 STR_CONFIG_SETTING_QUICKGOTO                                    :Szybkie tworzenie poleceń pojazdu: {STRING}
@@ -2187,7 +2199,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Zmiana o
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Pozwól modyfikować wielkość produkcji przedsiębiorstw: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nowy schemat kolorów
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Schemat kolorów
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Pokaż ogólne schematy koloru
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Pokaż schematy koloru pociągów
@@ -2449,9 +2461,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serwer j
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma jest chroniona. Wprowadź hasło
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Lista klientów
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Obserwuj
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nowa firma
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista klientów
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Obserwuj
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nowa firma
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Wyrzuć
@@ -2466,7 +2478,6 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Widzowie
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Wprowadź ilość pieniędzy, które chcesz przekazać
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Obserwator
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nie zapisuj podanego hasła
@@ -2748,7 +2759,7 @@ STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sygnaliz
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednokierunkowy sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamiana sygnałów{}Jeżeli włączone, kliknięcie na istniejący sygnał spowoduje zamianę go na wybrany typ i wariant. CTRL+klik przełącza istniejący wariant. Shift+klik pokazuje szacowany koszt zamiany
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Gęstość sygnałów przy przeciąganiu
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Zmniejsz gęstość sygnałów przy przeciąganiu
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Zmniejsz odległość między sygnałami przy przeciąganiu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zwiększ gęstość sygnałów przy przeciąganiu
 
 # Bridge selection window
@@ -3069,17 +3080,37 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Teren w posiada
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Prawa Autorskie {COPYRIGHT} 1995 Chris Sawyer, Wszelkie prawa zastrzeżone
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD wersja {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 Zespół OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 Zespół OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Ilość klatek na sekundę
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Liczba ticków gry symulowanych na sekundę.
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Liczba renderowanych klatek wideo na sekundę.
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Jak szybko gra obecnie działa, w porównaniu do oczekiwanej prędkości przy normalnym tempie symulacji.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Obecny
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Średnia
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Dane oparte na {COMMA} pomiarach
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} klatek/sek.
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} klatek/sek.
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} klatek/sek.
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} sek.
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Obsługa ładunku:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE}  Opóźnienie wykresu połączeń:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Renderowanie grafiki:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Okna podgląu świata:
 STR_FRAMERATE_VIDEO                                             :{WHITE}Wyjście video:
 STR_FRAMERATE_SOUND                                             :{WHITE}Miksowanie dźwięku:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Pętla gry
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Opóźnienie wykresu połączeń
+STR_FRAMETIME_CAPTION_DRAWING                                   :Renderowanie grafiki
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Renderowanie okna podgląu świata
 STR_FRAMETIME_CAPTION_VIDEO                                     :Wyjście wideo
 STR_FRAMETIME_CAPTION_SOUND                                     :Miksowanie dźwięku
 ############ End of leave-in-this-order
@@ -3107,6 +3138,9 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Szczegó
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Brak dostępnych informacji
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Fraza filtru:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Zastąp plik
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Czy na pewno chcesz zastąpić istniejący stan gry?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Wprowadź nazwę pod jaką zapisać grę
 
@@ -3224,7 +3258,10 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Wersja: 
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Kompatybilność z wersją min.: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}Suma MD5: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Domyslny (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Domyślny (D) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametry: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Żadne
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Brak dostępnych informacji
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nie znaleziono pasującego pliku
@@ -3369,6 +3406,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Wpisz na
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Miasta
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Żaden -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Miasto){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nazwy miast - klik na nazwie aby wycentrować widok na mieście. Ctrl+klik otwiera nowy podgląd na lokację miasta
 STR_TOWN_POPULATION                                             :{BLACK}Populacja świata: {COMMA}
 
@@ -3681,20 +3719,10 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centruj 
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Poziom produkcji: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Przedsiębiorstwo ogłosiło likwidację!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Wymaga: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Wymaga: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Wymaga: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Potrzebuje:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} oczekuje{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produkuje: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produkuje: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmiana produkcji (wielokrotność 8, do 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Zmiana poziomu produkcji (procentowo, do 800%)
@@ -3748,6 +3776,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupy - 
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Kliknij aby stworzyć grupę
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Usuń zaznaczoną grupę
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Zmień nazwę zaznaczonej grupy
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Zmień kolor zaznaczonej grupy
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Kliknij, aby ochronić tę grupę przed globalną zamianą pojazdów
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Skasuj Grupę
@@ -3791,6 +3820,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ładowno
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Masa: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Można przystosować do: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :wszystkie typy ładunków
+STR_PURCHASE_INFO_NONE                                          :Żadne
 STR_PURCHASE_INFO_ALL_BUT                                       :wszystko oprócz {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. siła pociągowa: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Zasięg: {GOLD}{COMMA} pól
@@ -4196,6 +4226,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Wiek (w latach)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Wymaga serwisowania
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Zawsze
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Pozostały czas życia (w latach)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maksymalna niezawodność
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Jak porównać dane pojazdu z zadaną wartością
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :jest równy

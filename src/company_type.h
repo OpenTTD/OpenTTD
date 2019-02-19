@@ -64,4 +64,13 @@ enum CompanyRemoveReason {
 	CRR_END,       ///< Sentinel for end.
 };
 
+/** The action to do with CMD_COMPANY_CTRL. */
+enum CompanyCtrlAction {
+	CCA_NEW,    ///< Create a new company.
+	CCA_NEW_AI, ///< Create a new AI company.
+	CCA_DELETE, ///< Delete a company.
+
+	CCA_END,    ///< Sentinel for end.
+};
+
 #endif /* COMPANY_TYPE_H */

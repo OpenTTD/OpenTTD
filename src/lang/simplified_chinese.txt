@@ -1256,6 +1256,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}当有�
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :加强版固定资产维护: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :固定资产会发生维护费用，“打开”本选项时，维护费用的增长会超过交通网络的增长规模，因而，对大公司影响更大。
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :总允许建设小型机场： {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :“打开”此选项，每种类型机场出现后一直是可用的
 
@@ -1809,7 +1810,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}改变�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}开启可调整产量模式：{ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}新色彩方案
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}显示总体配色方案
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}显示列车配色方案
@@ -2071,9 +2071,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}服务�
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}公司需要密码：
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}客户端列表
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}旁观
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新公司
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :客户端列表
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :旁观
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :新公司
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :踢出
@@ -2088,7 +2088,6 @@ STR_NETWORK_CLIENT                                              :客户端
 STR_NETWORK_SPECTATORS                                          :旁观者
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}请输入您想赠与的资金数
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}旁观者
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}不保存所输入的密码
@@ -2691,7 +2690,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :公司属地
 STR_ABOUT_OPENTTD                                               :{WHITE}关于 OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}原始版权由 {COPYRIGHT} 1995 Chris Sawyer 所有，保留一切权力。
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 版本 {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD 团队
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD 团队
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}帧率
@@ -3309,19 +3308,9 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}将屏�
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生产程度: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}此工业已经宣布即刻停业倒闭!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}需要：{YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}需要：{YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}需要：{YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} 等待中{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}产出: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}产出: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}改变产量
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}修改产量 (百分比, 最高 800%)

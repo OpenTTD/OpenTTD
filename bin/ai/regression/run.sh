@@ -43,11 +43,11 @@ for tst in $tests; do
 	if [ -n "$gdb" ]; then
 		$gdb ./openttd -x -c ai/regression/regression.cfg $params -g $sav
 	else
-		./openttd -x -c ai/regression/regression.cfg $params -g $sav -d script=2 -d misc=9 2>&1 | awk '{ gsub("0x(\\(nil\\)|0+)(x0)?", "0x00000000", $0); gsub("^dbg: \\[script\\]", "", $0); gsub("^ ", "ERROR: ", $0); gsub("ERROR: \\[1\\] ", "", $0); gsub("\\[P\\] ", "", $0); print $0; }' | grep -v '^dbg: \[.*\]' > tmp.regression
+		./openttd -x -c ai/regression/regression.cfg $params -g $sav -d script=2 -d misc=9 2>&1 | awk '{ gsub("0x(\\(nil\\)|0+)(x0)?", "0x00000000", $0); gsub("^dbg: \\[script\\]", "", $0); gsub("^ ", "ERROR: ", $0); gsub("ERROR: \\[1\\] ", "", $0); gsub("\\[P\\] ", "", $0); print $0; }' | grep -v '^dbg: \[.*\]' > $tst/tmp.regression
 	fi
 
 	if [ -z "$gdb" ]; then
-		res="`diff -ub $tst/result.txt tmp.regression`"
+		res="`diff -ub $tst/result.txt $tst/tmp.regression`"
 		if [ -z "$res" ]; then
 			echo "passed!"
 		else
@@ -58,14 +58,14 @@ for tst in $tests; do
 	fi
 
 	rm $tst/info.nut
+
+	if [ "$1" != "-k" ]; then
+		rm -f $tst/tmp.regression
+	fi
 done
 
 if [ -f scripts/game_start.scr.regression ]; then
 	mv scripts/game_start.scr.regression scripts/game_start.scr
-fi
-
-if [ "$1" != "-k" ]; then
-	rm -f tmp.regression
 fi
 
 exit $ret

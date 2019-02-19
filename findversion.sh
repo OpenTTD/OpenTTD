@@ -67,22 +67,27 @@ if [ -d "$ROOT_DIR/.git" ]; then
 		MODIFIED="2"
 	fi
 	HASH=`LC_ALL=C git rev-parse --verify HEAD 2>/dev/null`
-	SHORTHASH=`echo ${HASH} | cut -c1-8`
+	SHORTHASH=`echo ${HASH} | cut -c1-10`
 	ISODATE=`LC_ALL=C git show -s --pretty='format:%ci' HEAD | "$AWK" '{ gsub("-", "", $1); print $1 }'`
 	BRANCH="`git symbolic-ref -q HEAD 2>/dev/null | sed 's@.*/@@'`"
 	TAG="`git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null | sed 's@\^0$@@'`"
 
-	if [ -n "$TAG" ]; then
-		VERSION="${TAG}"
-	elif [ "${BRANCH}" = "master" ]; then
-		VERSION="${ISODATE}-g${SHORTHASH}"
+	if [ "$MODIFIED" -eq "0" ]; then
+		hashprefix="-g"
+	elif [ "$MODIFIED" -eq "2" ]; then
+		hashprefix="-m"
 	else
-		VERSION="${ISODATE}-${BRANCH}-g${SHORTHASH}"
+		hashprefix="-u"
 	fi
 
-	if [ "$MODIFIED" -eq "2" ]; then
-		VERSION="${VERSION}M"
+	if [ -n "$TAG" ]; then
+		VERSION="${TAG}"
+		ISTAG="1"
+	else
+		VERSION="${ISODATE}-${BRANCH}${hashprefix}${SHORTHASH}"
+		ISTAG="0"
 	fi
+
 elif [ -f "$ROOT_DIR/.ottdrev" ]; then
 	# We are an exported source bundle
 	cat $ROOT_DIR/.ottdrev
@@ -96,6 +101,7 @@ else
 	ISODATE=""
 	TAG=""
 	VERSION=""
+	ISTAG="0"
 fi
 
-echo "$VERSION	$ISODATE	$MODIFIED	$HASH"
+echo "$VERSION	$ISODATE	$MODIFIED	$HASH	$ISTAG"

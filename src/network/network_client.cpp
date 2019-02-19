@@ -343,7 +343,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
 	Packet *p = new Packet(PACKET_CLIENT_JOIN);
-	p->Send_string(_openttd_revision);
+	p->Send_string(GetNetworkRevisionString());
 	p->Send_uint32(_openttd_newgrf_version);
 	p->Send_string(_settings_client.network.client_name); // Client name
 	p->Send_uint8 (_network_join_as);     // PlayAs
@@ -878,7 +878,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 			 * the server will give us a client-id and let us in */
 			_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
 			ShowJoinStatusWindow();
-			NetworkSendCommand(0, 0, 0, CMD_COMPANY_CTRL, NULL, NULL, _local_company);
+			NetworkSendCommand(0, CCA_NEW, 0, CMD_COMPANY_CTRL, NULL, NULL, _local_company);
 		}
 	} else {
 		/* take control over an existing company */

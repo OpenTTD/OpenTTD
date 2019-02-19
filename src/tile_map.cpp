@@ -15,60 +15,6 @@
 #include "safeguards.h"
 
 /**
- * Returns the tile height for a coordinate outside map.  Such a height is
- * needed for painting the area outside map using completely black tiles.
- * The idea is descending to heightlevel 0 as fast as possible.
- * @param x The X-coordinate (same unit as TileX).
- * @param y The Y-coordinate (same unit as TileY).
- * @return The height in the same unit as TileHeight.
- */
-uint TileHeightOutsideMap(int x, int y)
-{
-	/* In all cases: Descend to heightlevel 0 as fast as possible.
-	 * So: If we are at the 0-side of the map (x<0 or y<0), we must
-	 * subtract the distance to coordinate 0 from the heightlevel at
-	 * coordinate 0.
-	 * In other words: Subtract e.g. -x. If we are at the MapMax
-	 * side of the map, we also need to subtract the distance to
-	 * the edge of map, e.g. MapMaxX - x.
-	 *
-	 * NOTE: Assuming constant heightlevel outside map would be
-	 * simpler here. However, then we run into painting problems,
-	 * since whenever a heightlevel change at the map border occurs,
-	 * we would need to repaint anything outside map.
-	 * In contrast, by doing it this way, we can localize this change,
-	 * which means we may assume constant heightlevel for all tiles
-	 * at more than <heightlevel at map border> distance from the
-	 * map border.
-	 */
-	if (x < 0) {
-		if (y < 0) {
-			return max((int)TileHeight(TileXY(0, 0)) - (-x) - (-y), 0);
-		} else if (y < (int)MapMaxY()) {
-			return max((int)TileHeight(TileXY(0, y)) - (-x), 0);
-		} else {
-			return max((int)TileHeight(TileXY(0, (int)MapMaxY())) - (-x) - (y - (int)MapMaxY()), 0);
-		}
-	} else if (x < (int)MapMaxX()) {
-		if (y < 0) {
-			return max((int)TileHeight(TileXY(x, 0)) - (-y), 0);
-		} else if (y < (int)MapMaxY()) {
-			return TileHeight(TileXY(x, y));
-		} else {
-			return max((int)TileHeight(TileXY(x, (int)MapMaxY())) - (y - (int)MapMaxY()), 0);
-		}
-	} else {
-		if (y < 0) {
-			return max((int)TileHeight(TileXY((int)MapMaxX(), 0)) - (x - (int)MapMaxX()) - (-y), 0);
-		} else if (y < (int)MapMaxY()) {
-			return max((int)TileHeight(TileXY((int)MapMaxX(), y)) - (x - (int)MapMaxX()), 0);
-		} else {
-			return max((int)TileHeight(TileXY((int)MapMaxX(), (int)MapMaxY())) - (x - (int)MapMaxX()) - (y - (int)MapMaxY()), 0);
-		}
-	}
-}
-
-/**
  * Get a tile's slope given the heigh of its four corners.
  * @param hnorth The height at the northern corner in the same unit as TileHeight.
  * @param hwest  The height at the western corner in the same unit as TileHeight.
@@ -114,30 +60,26 @@ static Slope GetTileSlopeGivenHeight(int hnorth, int hwest, int heast, int hsout
  */
 Slope GetTileSlope(TileIndex tile, int *h)
 {
-	assert(tile < MapSize());
+	uint x1 = TileX(tile);
+	uint y1 = TileY(tile);
+	uint x2 = min(x1 + 1, MapMaxX());
+	uint y2 = min(y1 + 1, MapMaxY());
 
-	uint x = TileX(tile);
-	uint y = TileY(tile);
-	if (x == MapMaxX() || y == MapMaxY()) {
-		if (h != NULL) *h = TileHeight(tile);
-		return SLOPE_FLAT;
-	}
-
-	int hnorth = TileHeight(tile);                    // Height of the North corner.
-	int hwest  = TileHeight(tile + TileDiffXY(1, 0)); // Height of the West corner.
-	int heast  = TileHeight(tile + TileDiffXY(0, 1)); // Height of the East corner.
-	int hsouth = TileHeight(tile + TileDiffXY(1, 1)); // Height of the South corner.
+	int hnorth = TileHeight(tile);           // Height of the North corner.
+	int hwest  = TileHeight(TileXY(x2, y1)); // Height of the West corner.
+	int heast  = TileHeight(TileXY(x1, y2)); // Height of the East corner.
+	int hsouth = TileHeight(TileXY(x2, y2)); // Height of the South corner.
 
 	return GetTileSlopeGivenHeight(hnorth, hwest, heast, hsouth, h);
 }
 
 /**
- * Return the slope of a given tile outside the map.
+ * Return the slope of a given tile, also for tiles outside the map (virtual "black" tiles).
  *
- * @param x X-coordinate of the tile outside to compute height of.
- * @param y Y-coordinate of the tile outside to compute height of.
- * @param h    If not \c NULL, pointer to storage of z height.
- * @return Slope of the tile outside map, except for the HALFTILE part.
+ * @param x X coordinate of the tile to compute slope of, may be ouside the map.
+ * @param y Y coordinate of the tile to compute slope of, may be ouside the map.
+ * @param h If not \c NULL, pointer to storage of z height.
+ * @return Slope of the tile, except for the HALFTILE part.
  */
 Slope GetTilePixelSlopeOutsideMap(int x, int y, int *h)
 {
@@ -159,17 +101,15 @@ Slope GetTilePixelSlopeOutsideMap(int x, int y, int *h)
  */
 bool IsTileFlat(TileIndex tile, int *h)
 {
-	assert(tile < MapSize());
-
-	if (!IsInnerTile(tile)) {
-		if (h != NULL) *h = TileHeight(tile);
-		return true;
-	}
+	uint x1 = TileX(tile);
+	uint y1 = TileY(tile);
+	uint x2 = min(x1 + 1, MapMaxX());
+	uint y2 = min(y1 + 1, MapMaxY());
 
 	uint z = TileHeight(tile);
-	if (TileHeight(tile + TileDiffXY(1, 0)) != z) return false;
-	if (TileHeight(tile + TileDiffXY(0, 1)) != z) return false;
-	if (TileHeight(tile + TileDiffXY(1, 1)) != z) return false;
+	if (TileHeight(TileXY(x2, y1)) != z) return false;
+	if (TileHeight(TileXY(x1, y2)) != z) return false;
+	if (TileHeight(TileXY(x2, y2)) != z) return false;
 
 	if (h != NULL) *h = z;
 	return true;
@@ -182,31 +122,17 @@ bool IsTileFlat(TileIndex tile, int *h)
  */
 int GetTileZ(TileIndex tile)
 {
-	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) return 0;
+	uint x1 = TileX(tile);
+	uint y1 = TileY(tile);
+	uint x2 = min(x1 + 1, MapMaxX());
+	uint y2 = min(y1 + 1, MapMaxY());
 
-	int h =    TileHeight(tile);                     // N corner
-	h = min(h, TileHeight(tile + TileDiffXY(1, 0))); // W corner
-	h = min(h, TileHeight(tile + TileDiffXY(0, 1))); // E corner
-	h = min(h, TileHeight(tile + TileDiffXY(1, 1))); // S corner
+	int h =    TileHeight(tile);            // N corner
+	h = min(h, TileHeight(TileXY(x2, y1))); // W corner
+	h = min(h, TileHeight(TileXY(x1, y2))); // E corner
+	h = min(h, TileHeight(TileXY(x2, y2))); // S corner
 
 	return h;
-}
-
-/**
- * Get bottom height of the tile outside map.
- *
- * @param x X-coordinate of the tile outside to compute height of.
- * @param y Y-coordinate of the tile outside to compute height of.
- * @return Minimum height of the tile outside the map.
- */
-int GetTilePixelZOutsideMap(int x, int y)
-{
-	uint h =   TileHeightOutsideMap(x,     y);      // N corner.
-	h = min(h, TileHeightOutsideMap(x + 1, y));     // W corner.
-	h = min(h, TileHeightOutsideMap(x,     y + 1)); // E corner.
-	h = min(h, TileHeightOutsideMap(x + 1, y + 1)); // S corner
-
-	return h * TILE_HEIGHT;
 }
 
 /**
@@ -216,31 +142,15 @@ int GetTilePixelZOutsideMap(int x, int y)
  */
 int GetTileMaxZ(TileIndex t)
 {
-	if (TileX(t) == MapMaxX() || TileY(t) == MapMaxY()) return TileHeightOutsideMap(TileX(t), TileY(t));
+	uint x1 = TileX(t);
+	uint y1 = TileY(t);
+	uint x2 = min(x1 + 1, MapMaxX());
+	uint y2 = min(y1 + 1, MapMaxY());
 
-	int h =         TileHeight(t);                     // N corner
-	h = max<int>(h, TileHeight(t + TileDiffXY(1, 0))); // W corner
-	h = max<int>(h, TileHeight(t + TileDiffXY(0, 1))); // E corner
-	h = max<int>(h, TileHeight(t + TileDiffXY(1, 1))); // S corner
+	int h =         TileHeight(t);               // N corner
+	h = max<int>(h, TileHeight(TileXY(x2, y1))); // W corner
+	h = max<int>(h, TileHeight(TileXY(x1, y2))); // E corner
+	h = max<int>(h, TileHeight(TileXY(x2, y2))); // S corner
 
 	return h;
-}
-
-/**
- * Get top height of the tile outside the map.
- *
- * @see Detailed description in header.
- *
- * @param x X-coordinate of the tile outside to compute height of.
- * @param y Y-coordinate of the tile outside to compute height of.
- * @return Maximum height of the tile.
- */
-int GetTileMaxPixelZOutsideMap(int x, int y)
-{
-	uint h =   TileHeightOutsideMap(x,     y);
-	h = max(h, TileHeightOutsideMap(x + 1, y));
-	h = max(h, TileHeightOutsideMap(x,     y + 1));
-	h = max(h, TileHeightOutsideMap(x + 1, y + 1));
-
-	return h * TILE_HEIGHT;
 }

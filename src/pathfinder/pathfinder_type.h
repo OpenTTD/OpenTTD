@@ -40,6 +40,9 @@ static const int YAPF_TILE_CORNER_LENGTH = 71;
  */
 static const int YAPF_INFINITE_PENALTY = 1000 * YAPF_TILE_LENGTH;
 
+/** Maximum length of ship path cache */
+static const int YAPF_SHIP_PATH_CACHE_LENGTH = 32;
+
 /**
  * Helper container to find a depot
  */

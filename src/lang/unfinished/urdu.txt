@@ -1113,6 +1113,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :مد مقابل
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}جب گاڑیاں موجود ہوں تو یہ سیٹنگ بدلنا ممکن نہیں
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :انفراسٹرکچر کی بحالی: {STRING}
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :ہوائی اڈوں کی معیاد کبھی ختم نہ ہو: {STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :اگر گاڑی کھو جاے تو انتباہ کیجئیے: {STRING}
@@ -1411,7 +1412,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}موجو
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}پیداوار میں تبدیلی کو فعال کریں: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}نئے رنگوں کا انتخاب
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}رنگوں کا عام انتخاب دکھائیں
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}ریل گاڑیوں کے رنگوں کا انتخاب دکھائیں
@@ -2291,9 +2291,6 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 
 # Company view
 
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA}پٹڑی { "کا" "کے" P} { "ٹکڑا" "ٹکڑے" P}
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} سڑک { "کا" "کے" P} { "ٹکڑا" "ٹکڑے" P}
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} پانی { "کا" "کے" P} { "ٹکڑا" "ٹکڑے" P}
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} اسٹیشن کی ٹائلیں
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{COMMA}{WHITE} ہوائی اڈے
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}کوئی نہیں
@@ -2322,12 +2319,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry view
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}گزشتہ ماہ کی پیداوار:
 
-############ range for requires starts
-############ range for requires ends
 
-
-############ range for produces starts
-############ range for produces ends
 
 
 # Vehicle lists

@@ -453,6 +453,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Skermmynd
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Suma in skermmynd
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Vanliga suma skermmynd
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skermmynd av øllum kortinum
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Vís mynda títtleika
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Um 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Skift millum bindingar kassar
@@ -1203,6 +1204,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ikki mø
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Innakervis viðlílkahald: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Um gilda, innankervi elvir til viðlíkahalds kostnað. Kostnaðurin vaksur yvir-lutfalsliga við støddina á kervinum, og ávirkar harvið størri fyritøkur meira enn smærri fyritøkur
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Floghavnir ganga ongantíð út: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Gildan av hesi áseting ger at hvørt floghavna slag altíð er tøkt eftir tað er komi í nýtslu
 
@@ -1620,7 +1622,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Broyt n�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Gilda broytingar av framleiðslu virðum: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nýggja lit samanseting
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Vís vanligu lit samansetingarnar
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Vís tok lit samansetingarnar
@@ -1880,9 +1881,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servarin
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Fyritøka er vard. Skriva loyniorð
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Listi yvir klientar
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Eygleið
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nýggja fyritøku
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yvir klientar
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Eygleið
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nýggja fyritøku
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Sparka
@@ -2420,7 +2421,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ogn hjá fyrit�
 STR_ABOUT_OPENTTD                                               :{WHITE}Um OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Upprunalig upphavsrættindi {COPYRIGHT} 1995 Chris Sawyer, Øll rættindi umbiðin
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD útgáva {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD toymi
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD toymi
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -2915,17 +2916,7 @@ STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Savna høvuðs sýni á ídnaðin. Ctrl+trýst letur nýggjan sýnisglugga upp við sýni á ídnaðin
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Framleiðslu støði: {YELLOW}{COMMA}%
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Tørvar: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Tørvar: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Tørvar: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Framleiður: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Framleiður: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Broyt framleiðslu (fald av 8, upp til 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Broyt framleiðslu støði (prosent, upp til 800%)

@@ -532,6 +532,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Ekraanitõmmis
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Suurendatud ekraanitõmmis
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Tavasuurendusega ekraanitõmmis
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Terve kaardi ekraanitõmmis
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Näita kaadrisagedust
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' kohta
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Kontuuride kuvamine
@@ -979,6 +980,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Lõuna-Aafrika 
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Omatehtud...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruusia lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iraani rial (IRR)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mehhiko Peeso (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Sõidukid
@@ -1270,10 +1272,10 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Sisse lülitami
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Ülesanded on esialgselt «Peatusteta»: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Tavaliselt peatub sõiduk igas peatuses, mida ta läbib. Selle seadega sõidab sõiduk lõppsihini ilma vahejaamades peatumata. NB! See seade määrab vaid uute korralduste esialgse seadistuse. Korraldusi saab hiljem eraldi ümber seadistada
 STR_CONFIG_SETTING_STOP_LOCATION                                :Esialgne platvormi peatumisosa uute rongide ülesannetes: {STRING}
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Esialgne peatumiskoht rongiplatvormil. «Lõpu lähedal» tähendab sisenemispunkti lähistel. «Keskel» tähendab keset platvormi. «Kaugel lõpus» tähendab kaugel sisenemispunktist. NB! Selle seadega sõidab sõiduk lõppsihini ilma vahejaamades peatumata. NB! See seade määrab vaid uute korralduste esialgse seadistuse. Korraldusi saab hiljem eraldi ümber seadistada
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :lõpu lähedal
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Esialgne peatumiskoht rongiplatvormil. «alguses» tähendab sisenemispunkti lähistel. «keskel» tähendab keset platvormi. «lõpus» tähendab sisenemispunktist kaugeimal. NB! See seade määrab vaid uute korralduste esialgse seadistuse. Korraldusi saab hiljem eraldi ümber seadistada
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :alguses
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskel
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :täiesti lõpus
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :lõpus
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Vaate liikumine, kui hiireosuti on akna servas: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Sisse lülitamisel liigub vaade, kui hiireosuti on aknaserva lähedal
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Väljas
@@ -1307,6 +1309,8 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Lubab teisele e
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sõidukite olemasolul ei saa seda seadet muuta
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Taristu hooldamine: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Taristuga kaasnevad halduskulud. Kulud kasvavad taristu hulga suhtes ebaproportsionaalselt, ning mõjutavad pigem suurettevõtteid
+
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Vali ettevõttele esialgne värvus
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aegumatud lennuväljad: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Selle seade sisse lülitamine jätab kõik lennujaamade tüübid avatuks lõpmata ajaks peale nende avanemist
@@ -1422,6 +1426,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+klõps
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klõps
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Väljas
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Akna sulgemine paremklõpsuga: {STRING}
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Automaatne salvestamine: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vali automaatse salvestamise intervall
@@ -1856,7 +1861,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Muuda jo
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Tootmisväärtuste muutmine: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Uus värvivalik
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Värvivalik
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Näita üldiseid värvistikke
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Näita rongide värvistikke
@@ -2119,9 +2124,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server o
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Ettevõte on kaitstud. Sisesta salasõna
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klientide nimekiri
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Jälgi
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Uus ettevõte
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klientide nimekiri
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Jälgi
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Uus ettevõte
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Viska välja
@@ -2136,7 +2141,6 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Vaatlejad
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sisesta summa mida anda
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Vaatleja
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Sisestatud salasõna ei salvestata
@@ -2738,12 +2742,25 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ettevõtte maa
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD lisainfo
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Algne autorikaitse {COPYRIGHT} 1995 Chris Sawyer, kõik õigused kaitstud
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD osa {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 OpenTTD meeskond
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 OpenTTD meeskond
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Kaadrisagedus
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Renderdatud videokaadrite arv sekundis.
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Keskmine
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} kaadrit/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} kaadrit/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} kaadrit/s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Õhusõiduki sammud:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Ahelgraafiku viide:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Graafika renderdamine:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Õhusõiduki sammud
 ############ End of leave-in-this-order
 
 
@@ -3031,6 +3048,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Sisesta 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Linnad
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Puudub -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Linn){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Linnanimed - vajuta linnanimele, et viia vaade linnale. Ctrl+klõps avab uue vaate linna asukohast
 STR_TOWN_POPULATION                                             :{BLACK}Maailma rahvastik: {COMMA}
 
@@ -3038,6 +3056,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Maailma 
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Linn)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Rahvaarv: {ORANGE}{COMMA}{BLACK}  Ehitisi: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} eelmisel kuul: {ORANGE}{COMMA}{BLACK}  Suurim: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Veoseid linna kasvamiseks:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} vajalik
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} on talvel vajalik
@@ -3342,17 +3361,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Vaate ke
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tootlikkuse tase: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Tööstus teatab kohesest sulgemisest!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Vajab: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Vajab: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Vajab: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Toodab: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Toodab: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Tootlikuse muutmine (kaheksaga jaguv, kuni 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Muuda tootlikkuse taset (protsent, kuni 800%)
@@ -3416,6 +3425,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Eemalda kõik s
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rühma nime vahetamine
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Kasum sellel aastal:
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Uued rööbassõidukid
@@ -3582,6 +3592,9 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magnethõljukve
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Hind: {CURRENCY_LONG} Tühimass: {WEIGHT_SHORT}{}Tippkiirus: {VELOCITY}  Võimsus: {POWER}{}Käituskulud: {CURRENCY_LONG}/aastas{}Kandevõime: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Hind: {CURRENCY_LONG} Tühimass: {WEIGHT_SHORT}{}Kiirus: {VELOCITY}  Võimsus: {POWER}  Veojõud: {6:FORCE}{}Käituskulud: {4:CURRENCY_LONG}/aasta{}Mahutavus: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Hind: {CURRENCY_LONG} Tippkiirus: {VELOCITY}{}Kandevõime: {CARGO_LONG}{}Käituskulud: {CURRENCY_LONG}/a
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Hind: {CURRENCY_LONG} Tippkiirus: {VELOCITY}{}Lennuki tüüp: {STRING}{}kandevõime: {CARGO_LONG}{}Käitluskulud: {CURRENCY_LONG}/a
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Hind: {CURRENCY_LONG} Tippkiirus: {VELOCITY}{}Lennuki tüüp: {STRING} Lennukaugus: {COMMA} ruutu{}Kandevõime: {CARGO_LONG}, {CARGO_LONG}{}Käituskulud: {CURRENCY_LONG}/a
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Hind: {CURRENCY_LONG} Tippkiirus: {VELOCITY}{}Lennuki tüüp: {STRING} Lennukaugus: {COMMA} ruutu{}Kandevõime: {CARGO_LONG}{}Käituskulud: {CURRENCY_LONG}/a
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Asenda {STRING} - {STRING}
@@ -3703,6 +3716,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} aasta{P
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} aasta{P "" t} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Tippkiirus: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Tippkiirus: {LTBLUE}{VELOCITY} {BLACK}Lennuki tüüp: {LTBLUE}{STRING}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Tühimass: {LTBLUE}{WEIGHT_SHORT} {BLACK}Võimsus: {LTBLUE}{POWER}{BLACK} Tippkiirus: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Tühimass: {LTBLUE}{WEIGHT_SHORT} {BLACK}Võimsus: {LTBLUE}{POWER}{BLACK} Tippkiirus: {LTBLUE}{VELOCITY} {BLACK}Veojõud: {LTBLUE}{FORCE}
 
@@ -3922,9 +3936,9 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Maha mitte laa
 
 STR_ORDER_AUTO_REFIT_ANY                                        :võimalikud kaubad
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[lõpu lähedal]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[alguses]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[keskel]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[täiesti lõpus]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[lõpus]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Järgmine sihtpunkt on väljaspool tegevusraadiust)
 
@@ -4268,6 +4282,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... see 
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... tee on vales suunas
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... nurgad ei saa läbisõidupeatustes olla
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... ristmikud ei saa olla läbisõidupeatustes
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... tee on ühesuunaline või blokeeritud
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Siinset jaamablokki ei saa lammutada...

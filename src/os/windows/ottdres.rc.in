@@ -14,7 +14,7 @@
 #define APSTUDIO_HIDDEN_SYMBOLS
 #include "windows.h"
 #undef APSTUDIO_HIDDEN_SYMBOLS
-#ifdef MSVC
+#ifndef __MINGW32__
 #include "winres.h"
 #else
 #define IDC_STATIC              (-1)     // all static controls
@@ -100,7 +100,7 @@ BEGIN
             VALUE "FileDescription", "OpenTTD\0"
             VALUE "FileVersion", "!!VERSION!!\0"
             VALUE "InternalName", "openttd\0"
-            VALUE "LegalCopyright", "Copyright \xA9 OpenTTD Developers 2002-2018. All Rights Reserved.\0"
+            VALUE "LegalCopyright", "Copyright \xA9 OpenTTD Developers 2002-2019. All Rights Reserved.\0"
             VALUE "LegalTrademarks", "\0"
             VALUE "OriginalFilename", "openttd.exe\0"
             VALUE "PrivateBuild", "\0"
@@ -116,6 +116,10 @@ BEGIN
 END
 
 #endif    // !_MAC
+
+#ifdef __MINGW32__
+1 24 "..\\..\\..\\projects\\dpi_aware.manifest"
+#endif
 
 #endif    // Neutral (Default) resources
 /////////////////////////////////////////////////////////////////////////////

@@ -28,7 +28,7 @@ enum TextEffectMode {
 
 typedef uint16 TextEffectID;
 
-void MoveAllTextEffects();
+void MoveAllTextEffects(uint delta_ms);
 TextEffectID AddTextEffect(StringID msg, int x, int y, uint8 duration, TextEffectMode mode);
 void InitTextEffects();
 void DrawTextEffects(DrawPixelInfo *dpi);

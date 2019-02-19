@@ -1,0 +1,26 @@
+parameters:
+  condition: true
+
+steps:
+- bash: |
+    set -ex
+
+    mkdir nsis-plugin; cd nsis-plugin
+    curl -L https://devs.openttd.org/~truebrain/nsis-plugins/Nsis7z.zip > Nsis7z.zip
+    unzip Nsis7z.zip
+    cp -R Plugins/* "/c/Program Files (x86)/NSIS/Plugins/"
+    cd ..; rm -rf nsis-plugin
+
+    mkdir nsis-plugin; cd nsis-plugin
+    curl -L https://devs.openttd.org/~truebrain/nsis-plugins/NsisGetVersion.zip > NsisGetVersion.zip
+    unzip NsisGetVersion.zip
+    cp -R Plugins/* "/c/Program Files (x86)/NSIS/Plugins/x86-ansi/"
+    cd ..; rm -rf nsis-plugin
+
+    mkdir nsis-plugin; cd nsis-plugin
+    curl -L https://devs.openttd.org/~truebrain/nsis-plugins/NsisFindProc.zip > NsisFindProc.zip
+    unzip NsisFindProc.zip
+    cp -R *.dll "/c/Program Files (x86)/NSIS/Plugins/x86-ansi/"
+    cd ..; rm -rf nsis-plugin
+  displayName: 'Install NSIS with the 7z, GetVersion, and FindProc plugins'
+  condition: and(succeeded(), ${{ parameters.condition }})

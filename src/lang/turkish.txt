@@ -1252,6 +1252,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Araçlar
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Altyapı bakımları: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Etkinleştirildiğinde; altyapı, bakım giderine neden olur. Maliyet ağ büyüklüğüne göre daha hızlı yükselir, dolayısıyla büyük şirketleri küçüklere göre daha çok etkiler
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Havalimanlarının süresi asla dolmasın: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bu ayarı etkinleştirmek her havaalanı türünün, tanıtımından sonra sürekli olarak kullanılabilir kalmasını sağlar.
 
@@ -1803,7 +1804,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Yılı d
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Üretim değerlerini değiştir: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Yeni Renk
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Genel renk şemalarını göster
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Tren renk düzenlerini göster
@@ -2065,9 +2065,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Sunucu k
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Şirket korumalı. Parola girin
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Oyuncu listesi
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Gözlemle
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Yeni şirket
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Oyuncu listesi
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Gözlemle
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Yeni şirket
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :At
@@ -2082,7 +2082,6 @@ STR_NETWORK_CLIENT                                              :İstemci
 STR_NETWORK_SPECTATORS                                          :İzleyiciler
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Vermek istediğiniz para miktarını girin
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}İzleyici
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Girilen parolayı kaydetme
@@ -2685,7 +2684,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Satın alınmı
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD Hakkında
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Telif hakkı {COPYRIGHT} 1995 Chris Sawyer, Her hakkı saklıdır
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD sürüm {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD ekibi
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD ekibi
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -3289,20 +3288,10 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Görünt
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Üretim seviyesi: %{YELLOW}{COMMA}
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Fabrika çok yakında kapanacağını duyurdu!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}İstenen: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}İstenenler: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}İstenenler: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Gereken:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} bekliyor{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Üretir: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Üretir: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Üretimi değiştir (8'in katı, 2040'a kadar)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Üretim seviyesini değiştir (yüzde olarak, %800'e kadar)

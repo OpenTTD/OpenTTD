@@ -1230,6 +1230,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Changing
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastructure maintenance: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :When enabled, infrastructure causes maintenance costs. The cost grows in proportion to the network size, thus affecting larger companies more than smaller ones
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Airports never expire: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Enabling this setting makes each airport type stay available forever after its introduction
 
@@ -1774,7 +1775,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Change c
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Enable modifying production values: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}New Colour Scheme
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Show general colour schemes
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Show train colour schemes
@@ -2036,9 +2036,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server i
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company is protected. Enter password
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Client list
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spectate
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}New company
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Client list
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spectate
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :New company
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kick
@@ -2053,7 +2053,6 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spectators
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Enter the amount of money you want to give
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spectator
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Do not save the entered password
@@ -2655,7 +2654,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Company-owned l
 STR_ABOUT_OPENTTD                                               :{WHITE}About OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 The OpenTTD team
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -3251,17 +3250,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centre t
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Production level: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}The industry has announced imminent closure!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Requires: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Requires: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Requires: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produces: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produces: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Change production (multiple of 8, up to 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Change production level (percentage, up to 800%)

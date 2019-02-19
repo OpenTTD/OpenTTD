@@ -1167,6 +1167,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :اجازه اس
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغییر دادن این تنظیم هنگامی که خودرو وجود دارد ممکن نیست
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :تعمیر و نگهداری زیرساخت ها: {STRING}
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :فرودگاه‌ها هیچ‌گاه از کار نیافتند: {STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :اعلام هشدار هنگام گم شدن وسیله نقلیه: {STRING}
@@ -1514,7 +1515,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}تغیی
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}قابلیت تغییر سطح تولید صنایع: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}طرح رنگ جدید
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}نمایش طرح رنگهای اصلی
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}نمایش طرح رنگهای قطار
@@ -1791,7 +1791,6 @@ STR_NETWORK_CLIENT                                              :سرویس گی
 STR_NETWORK_SPECTATORS                                          :تماشاگران
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}مقدار پولی که می خواهید دریافت نمایید را وارد کنید
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}تماشگر
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}رمز وارد شده را به خاطر نسپار
@@ -2384,7 +2383,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :زمین خری
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD در باره ی
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD ویرایش {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 The OpenTTD team
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -2902,17 +2901,7 @@ STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}مرکز تصویر را روی کارخانه قرار بده.Ctrl+Click کنید تا پنجره نمایی از کارخانه نمایش داده شود
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}این کارخانه اعلام کرده است که به زودی بسته خواهد شد!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}مواد اولیه: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}مواد اولیه: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}مواد اولیه: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}محصولات: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}محصولات: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 
 # Vehicle lists

@@ -1259,6 +1259,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Impossí
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenção de Infraestrutura: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quando ativado, infraestrutura gera custos de manutenção. O custo aumenta proporcionalmente à malha de transportes, afetando companhias maiores mais do que as menores
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportos nunca saem de linha: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ativando essa config. mantém todos os tipos de aeroportos disponíveis à construção após sua introdução
 
@@ -1816,7 +1817,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mudar an
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ativar modificação de valores de produção: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Novo Esquema de Cores
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Exibir esquemas de cor gerais
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Exibe esquemas de cor de trens
@@ -2078,9 +2078,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa está protegida. Digite a senha
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Lista de clientes
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Assistir
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova Companhia
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de clientes
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Assistir
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nova Companhia
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Banir
@@ -2095,7 +2095,6 @@ STR_NETWORK_CLIENT                                              :Cliente
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Entre a quantia a ser dada
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Espectador
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Não salvar a senha digitada
@@ -2699,7 +2698,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :O terreno é pr
 STR_ABOUT_OPENTTD                                               :{WHITE}Sobre o OpenTTD...
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Todos os direitos reservados
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versão {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 A equipe do OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 A equipe do OpenTTD
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Taxa de quadros
@@ -3344,20 +3343,10 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar 
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nível de produção: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}A indústria anunciou fechamento iminente!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Requer: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Requer: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Requer: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necessita:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} aguardando{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produz: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produz: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Modificar produção (múltiplo de 8, até 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Mudar nível de produção (porcentagem, até 800%)

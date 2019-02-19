@@ -1252,6 +1252,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Verander
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktuur onderhoud: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :As dit geaktiveer is sal dit veroorsaak dat infrastruktuur onderhoudskoste verhoog. Die koste groei oor-proporsioneel met die netwerk grootte, wat groter maatskappye meer as kleiner maatskappye benadeel
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lughawes verval nooit nie: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wanner hierdie stelling geaktiveer is, maak dit dat alle lughawens ewig beskikbaar bly, na hul bekendstelling datum
 
@@ -1800,7 +1801,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Verander
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiveer modifisering van produksie waardes: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nuwe Kleur Skema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Toon algemene kleurskemas
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Wys trein kleur skemas
@@ -2062,9 +2062,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Verskaff
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Maatskappy is beskerm. Voer wagwoord in
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klient Lys
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Toeskou
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nuwe maatskapy
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klient Lys
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Toeskou
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nuwe maatskapy
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Skop
@@ -2079,7 +2079,6 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Aanskouers
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sleutel die bedrag geld in wat u wil gee
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Toeskouer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Moenie die ingesleutelde wagwoord bewaar nie
@@ -2681,7 +2680,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Maatskappy-besi
 STR_ABOUT_OPENTTD                                               :{WHITE}Oor OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Oorspronklike kopiereg {COPYRIGHT} 1995 Chris Sawyer, Alle regte voorbehou
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD uitgawe {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Die OpenTTD span
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 Die OpenTTD span
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -3285,17 +3284,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Skuif sk
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produksie vlak: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Die nywerheid het aangekondig dat dit binnekort gaan sluit!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Vereis: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Vereis: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Vereis: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produseer: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produseer: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Verander produksie (veelvoude van 8, tot en met 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Verander produksie vlakke (persentasie, tot 800%)

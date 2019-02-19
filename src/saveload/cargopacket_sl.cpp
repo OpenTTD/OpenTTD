@@ -22,7 +22,7 @@
  */
 /* static */ void CargoPacket::AfterLoad()
 {
-	if (IsSavegameVersionBefore(44)) {
+	if (IsSavegameVersionBefore(SLV_44)) {
 		Vehicle *v;
 		/* If we remove a station while cargo from it is still en route, payment calculation will assume
 		 * 0, 0 to be the source of the cargo, resulting in very high payments usually. v->source_xy
@@ -59,7 +59,7 @@
 		}
 	}
 
-	if (IsSavegameVersionBefore(120)) {
+	if (IsSavegameVersionBefore(SLV_120)) {
 		/* CargoPacket's source should be either INVALID_STATION or a valid station */
 		CargoPacket *cp;
 		FOR_ALL_CARGOPACKETS(cp) {
@@ -67,7 +67,7 @@
 		}
 	}
 
-	if (!IsSavegameVersionBefore(68)) {
+	if (!IsSavegameVersionBefore(SLV_68)) {
 		/* Only since version 68 we have cargo packets. Savegames from before used
 		 * 'new CargoPacket' + cargolist.Append so their caches are already
 		 * correct and do not need rebuilding. */
@@ -80,7 +80,7 @@
 		}
 	}
 
-	if (IsSavegameVersionBefore(181)) {
+	if (IsSavegameVersionBefore(SLV_181)) {
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) v->cargo.KeepAll();
 	}
@@ -100,11 +100,11 @@ const SaveLoad *GetCargoPacketDesc()
 		     SLE_VAR(CargoPacket, count,           SLE_UINT16),
 		     SLE_VAR(CargoPacket, days_in_transit, SLE_UINT8),
 		     SLE_VAR(CargoPacket, feeder_share,    SLE_INT64),
-		 SLE_CONDVAR(CargoPacket, source_type,     SLE_UINT8,  125, SL_MAX_VERSION),
-		 SLE_CONDVAR(CargoPacket, source_id,       SLE_UINT16, 125, SL_MAX_VERSION),
+		 SLE_CONDVAR(CargoPacket, source_type,     SLE_UINT8,  SLV_125, SL_MAX_VERSION),
+		 SLE_CONDVAR(CargoPacket, source_id,       SLE_UINT16, SLV_125, SL_MAX_VERSION),
 
 		/* Used to be paid_for, but that got changed. */
-		SLE_CONDNULL(1, 0, 120),
+		SLE_CONDNULL(1, SL_MIN_VERSION, SLV_121),
 
 		SLE_END()
 	};

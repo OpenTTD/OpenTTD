@@ -180,14 +180,24 @@ RailType GetTileRailType(TileIndex tile)
 }
 
 /**
- * Finds out if a company has a certain railtype available
+ * Finds out if a company has a certain buildable railtype available.
  * @param company the company in question
  * @param railtype requested RailType
  * @return true if company has requested RailType available
  */
 bool HasRailtypeAvail(const CompanyID company, const RailType railtype)
 {
-	return HasBit(Company::Get(company)->avail_railtypes, railtype);
+	return !HasBit(_railtypes_hidden_mask, railtype) && HasBit(Company::Get(company)->avail_railtypes, railtype);
+}
+
+/**
+ * Test if any buildable railtype is available for a company.
+ * @param company the company in question
+ * @return true if company has any RailTypes available
+ */
+bool HasAnyRailtypesAvail(const CompanyID company)
+{
+	return (Company::Get(company)->avail_railtypes & ~_railtypes_hidden_mask) != 0;
 }
 
 /**

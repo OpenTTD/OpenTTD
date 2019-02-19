@@ -2294,6 +2294,10 @@ static ChangeInfoResult IgnoreTownHouseProperty(int prop, ByteReader *buf)
 			break;
 		}
 
+		case 0x23:
+			buf->Skip(buf->ReadByte() * 2);
+			break;
+
 		default:
 			ret = CIR_UNKNOWN;
 			break;
@@ -2525,6 +2529,28 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 			case 0x22: // long maximum year
 				housespec->max_year = buf->ReadWord();
 				break;
+
+			case 0x23: { // variable length cargo types accepted
+				uint count = buf->ReadByte();
+				if (count > lengthof(housespec->accepts_cargo)) {
+					GRFError *error = DisableGrf(STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG);
+					error->param_value[1] = prop;
+					return CIR_DISABLED;
+				}
+				/* Always write the full accepts_cargo array, and check each index for being inside the
+				 * provided data. This ensures all values are properly initialized, and also avoids
+				 * any risks of array overrun. */
+				for (uint i = 0; i < lengthof(housespec->accepts_cargo); i++) {
+					if (i < count) {
+						housespec->accepts_cargo[i] = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
+						housespec->cargo_acceptance[i] = buf->ReadByte();
+					} else {
+						housespec->accepts_cargo[i] = CT_INVALID;
+						housespec->cargo_acceptance[i] = 0;
+					}
+				}
+				break;
+			}
 
 			default:
 				ret = CIR_UNKNOWN;
@@ -8564,6 +8590,8 @@ static void FinaliseEngineArray()
 				e->info.string_id = STR_NEWGRF_INVALID_ENGINE;
 			}
 		}
+
+		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
 
 		/* When the train does not set property 27 (misc flags), but it
 		 * is overridden by a NewGRF graphically we want to disable the

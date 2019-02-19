@@ -1156,6 +1156,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permesu trairaj
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permesu trairajn strathaltejojn sur stratoj posedataj de konkurantoj: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ne eblas ŝanĝi ĉi tiujn agordon dum veturiloj ĉeestas
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flughavenoj neniam antikviĝas: {STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avertu se veturilo estas perdita: {STRING}
@@ -1457,7 +1458,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ŝanĝu 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ebligu ŝanĝi produktvalorojn: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nova Kolorskemo
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Montru ĝeneralajn kolorskemojn
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Montru trajnajn kolorskemojn
@@ -1713,9 +1713,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servilo 
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Kompanio estas protektata. Enigu pasvorton
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klientlisto
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spekti
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova kompanio
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klientlisto
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spekti
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nova kompanio
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Forbatu
@@ -2260,7 +2260,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Kompanie poseda
 STR_ABOUT_OPENTTD                                               :{WHITE}Pri OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Origina kopirajto {COPYRIGHT} 1995 Chris Sawyer, Ĉiuj rajtoj rezervitaj
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-versio {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 La teamo de OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 La teamo de OpenTTD
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -2725,17 +2725,7 @@ STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centri ĉefvidon ĉe la industrio. Stir+Klak por malfermi novan vidujon ĉe la industrioloko.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produkta nivelo: {YELLOW}{COMMA}%
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Bezonas: {YELLOW}{STRING.n}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Bezonas: {YELLOW}{STRING.n}{STRING}, {STRING.n}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Bezonas: {YELLOW}{STRING.n}{STRING}, {STRING.n}{STRING}, {STRING.n}{STRING}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produktas: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produktas: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ŝanĝu produktadon (multoble de 8, ĝis 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ŝanĝu produktan nivelon (procento, limigo je 800%)

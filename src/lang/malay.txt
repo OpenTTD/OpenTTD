@@ -1208,6 +1208,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Menukar 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Penyelenggaraan Infrastruktur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Apabila diupayakan,infrastuktur menyebabkan kos penyelenggaraan. Kadar kos tumbuh berdasarkan saiz rangkaian, sekaligus menjejaskan syarikat yang lebih besar daripada yang kecil
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lapangan terbang tidak akan tamat tempohnya: {STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Beri amaran sekiranya kenderaan sesat: {STRING}
@@ -1560,7 +1561,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Tukar ta
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Bolehkan pengubahsuaian nilai-nilai pengeluaran: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Skim Warna Baru
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Tunjukkan skim warna am
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Tunjukkan skim warna keretapi
@@ -1817,9 +1817,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Pelayan 
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Syarikat ini dilindungi. Masukkan kata laluan
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Senarai klien
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Saksi
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Syarikat baru
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Senarai klien
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Saksi
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Syarikat baru
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Tendang
@@ -2426,7 +2426,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Tanah dimiliki 
 STR_ABOUT_OPENTTD                                               :{WHITE}Tentang OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Hakcipta Asal {COPYRIGHT} 1995 Chris Sawyer, Hakcipta terpelihara
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versi {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 The OpenTTD team
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -2983,18 +2983,8 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Pusatkan
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tahap produksi: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW} Industri mengumumkan penutupan serta merta!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Memerlukan: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Memerlukan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Memerlukan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Diperlukan:
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Mengeluarkan: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Mengeluarkan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ubah pengeluaran (gandaan 8, sehingga 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ubah tahap produksi (peratus, hingga 800%)

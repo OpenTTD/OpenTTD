@@ -1258,6 +1258,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Không t
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Phí bảo trì cơ sở hạ tầng: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Khi mở, thì hạ tầng công ty sẽ sinh ra chi phí bảo trì. Chi phí sẽ tăng theo mạng lưới giao thông bạn xây dựng, và sẽ tiêu tốn của công ty lớn nhiều hơn công ty nhỏ
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Sân bay không bao giờ thành đồ cổ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bật tùy chọn này cho phép tất cả các loại sân bay không bị lỗi thời
 
@@ -1815,7 +1816,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Thay đ�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cho phép khả năng sửa giá trị sản xuất: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Cách Phối Màu Mới
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Hiển thị phối màu chung
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Hiển thị phối màu tàu hỏa
@@ -2077,9 +2077,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server y
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Công ty yêu cầu xác thực. Nhập mật khẩu
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Danh sách máy trạm
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Xem
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Công ty mới
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Danh sách máy trạm
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Xem
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Công ty mới
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Đá
@@ -2094,7 +2094,6 @@ STR_NETWORK_CLIENT                                              :Máy trạm
 STR_NETWORK_SPECTATORS                                          :Người xem
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Nhập số tiền muốn cho đi
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Người xem
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Không được ghi mật khẩu đã nhập
@@ -2698,7 +2697,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Đất công ty
 STR_ABOUT_OPENTTD                                               :{WHITE}Về OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Nguyên tác bản quyền {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD phiên bản {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Nhóm OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 Nhóm OpenTTD
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Tốc độ khung hình
@@ -3347,20 +3346,10 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Xem vị
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Mức sản lượng: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Nhà máy này đã thông báo sắp đóng cửa!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Yêu cầu: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Yêu cầu: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Yêu cầu: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Cần cung cấp:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} đang chờ{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Sản xuất: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Sản xuất: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Thay đổi sản lượng (bội số của 8, max 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Thay đổi mức sản lượng (theo phần trăm, cao nhất 800%)

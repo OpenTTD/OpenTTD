@@ -129,6 +129,8 @@ void Ship::GetImage(Direction direction, EngineImageType image_type, VehicleSpri
 {
 	uint8 spritenum = this->spritenum;
 
+	if (image_type == EIT_ON_MAP) direction = this->rotation;
+
 	if (is_custom_sprite(spritenum)) {
 		GetCustomVehicleSprite(this, direction, image_type, result);
 		if (result->IsValid()) return;
@@ -193,7 +195,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 	}
 
 	v->current_order.MakeGoToDepot(depot->index, ODTFB_SERVICE);
-	v->dest_tile = depot->xy;
+	v->SetDestTile(depot->xy);
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
 
@@ -311,12 +313,29 @@ void Ship::UpdateDeltaXY()
 		{32,  6, -16,  -3}, // NW
 	};
 
-	const int8 *bb = _delta_xy_table[this->direction];
+	const int8 *bb = _delta_xy_table[this->rotation];
 	this->x_offs        = bb[3];
 	this->y_offs        = bb[2];
 	this->x_extent      = bb[1];
 	this->y_extent      = bb[0];
 	this->z_extent      = 6;
+
+	if (this->direction != this->rotation) {
+		/* If we are rotating, then it is possible the ship was moved to its next position. In that
+		 * case, because we are still showing the old direction, the ship will appear to glitch sideways
+		 * slightly. We can work around this by applying an additional offset to make the ship appear
+		 * where it was before it moved. */
+		this->x_offs -= this->x_pos - this->rotation_x_pos;
+		this->y_offs -= this->y_pos - this->rotation_y_pos;
+	}
+}
+
+/**
+ * Test-procedure for HasVehicleOnPos to check for a ship.
+ */
+static Vehicle *EnsureNoVisibleShipProc(Vehicle *v, void *data)
+{
+	return v->type == VEH_SHIP && (v->vehstatus & VS_HIDDEN) == 0 ? v : NULL;
 }
 
 static bool CheckShipLeaveDepot(Ship *v)
@@ -329,6 +348,13 @@ static bool CheckShipLeaveDepot(Ship *v)
 		VehicleEnterDepot(v);
 		return true;
 	}
+
+	/* Don't leave depot if no destination set */
+	if (v->dest_tile == 0) return true;
+
+	/* Don't leave depot if another vehicle is already entering/leaving */
+	/* This helps avoid CPU load if many ships are set to start at the same time */
+	if (HasVehicleOnPos(v->tile, NULL, &EnsureNoVisibleShipProc)) return true;
 
 	TileIndex tile = v->tile;
 	Axis axis = GetShipDepotAxis(tile);
@@ -355,10 +381,10 @@ static bool CheckShipLeaveDepot(Ship *v)
 
 	if (north_tracks) {
 		/* Leave towards north */
-		v->direction = DiagDirToDir(north_dir);
+		v->rotation = v->direction = DiagDirToDir(north_dir);
 	} else if (south_tracks) {
 		/* Leave towards south */
-		v->direction = DiagDirToDir(south_dir);
+		v->rotation = v->direction = DiagDirToDir(south_dir);
 	} else {
 		/* Both ways blocked */
 		return false;
@@ -443,20 +469,62 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, Tr
 
 	bool path_found = true;
 	Track track;
-	switch (_settings_game.pf.pathfinder_for_ships) {
-		case VPF_OPF: track = OPFShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
-		case VPF_NPF: track = NPFShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
-		case VPF_YAPF: track = YapfShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
-		default: NOT_REACHED();
+
+	if (v->dest_tile == 0 || DistanceManhattan(tile, v->dest_tile) > SHIP_MAX_ORDER_DISTANCE + 5) {
+		/* No destination or destination too far, don't invoke pathfinder. */
+		track = TrackBitsToTrack(v->state);
+		if (!IsDiagonalTrack(track)) track = TrackToOppositeTrack(track);
+		if (!HasBit(tracks, track)) {
+			/* Can't continue in same direction so pick first available track. */
+			if (_settings_game.pf.forbid_90_deg) {
+				tracks &= ~TrackCrossesTracks(TrackdirToTrack(v->GetVehicleTrackdir()));
+				if (tracks == TRACK_BIT_NONE) return INVALID_TRACK;
+			}
+			track = FindFirstTrack(tracks);
+		}
+		path_found = false;
+	} else {
+		/* Attempt to follow cached path. */
+		if (!v->path.empty()) {
+			track = TrackdirToTrack(v->path.front());
+
+			if (HasBit(tracks, track)) {
+				v->path.pop_front();
+				/* HandlePathfindResult() is not called here because this is not a new pathfinder result. */
+				return track;
+			}
+
+			/* Cached path is invalid so continue with pathfinder. */
+			v->path.clear();
+		}
+
+		switch (_settings_game.pf.pathfinder_for_ships) {
+			case VPF_OPF: track = OPFShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
+			case VPF_NPF: track = NPFShipChooseTrack(v, path_found); break;
+			case VPF_YAPF: track = YapfShipChooseTrack(v, tile, enterdir, tracks, path_found, v->path); break;
+			default: NOT_REACHED();
+		}
 	}
 
 	v->HandlePathfindingResult(path_found);
 	return track;
 }
 
-static inline TrackBits GetAvailShipTracks(TileIndex tile, DiagDirection dir)
+/**
+ * Get the available water tracks on a tile for a ship entering a tile.
+ * @param tile The tile about to enter.
+ * @param dir The entry direction.
+ * @param trackdir The trackdir the ship has on the old tile.
+ * @return The available trackbits on the next tile.
+ */
+static inline TrackBits GetAvailShipTracks(TileIndex tile, DiagDirection dir, Trackdir trackdir)
 {
-	return GetTileShipTrackStatus(tile) & DiagdirReachesTracks(dir);
+	TrackBits tracks = GetTileShipTrackStatus(tile) & DiagdirReachesTracks(dir);
+
+	/* Do not remove 90 degree turns for OPF, as it isn't able to find paths taking it into account. */
+	if (_settings_game.pf.forbid_90_deg && _settings_game.pf.pathfinder_for_ships != VPF_OPF) tracks &= ~TrackCrossesTracks(TrackdirToTrack(trackdir));
+
+	return tracks;
 }
 
 static const byte _ship_subcoord[4][6][3] = {
@@ -494,11 +562,60 @@ static const byte _ship_subcoord[4][6][3] = {
 	}
 };
 
+/**
+ * Test if a ship is in the centre of a lock and should move up or down.
+ * @param v Ship being tested.
+ * @return 0 if ship is not moving in lock, or -1 to move down, 1 to move up.
+ */
+static int ShipTestUpDownOnLock(const Ship *v)
+{
+	/* Suitable tile? */
+	if (!IsTileType(v->tile, MP_WATER) || !IsLock(v->tile) || GetLockPart(v->tile) != LOCK_PART_MIDDLE) return 0;
+
+	/* Must be at the centre of the lock */
+	if ((v->x_pos & 0xF) != 8 || (v->y_pos & 0xF) != 8) return 0;
+
+	DiagDirection diagdir = GetInclinedSlopeDirection(GetTileSlope(v->tile));
+	assert(IsValidDiagDirection(diagdir));
+
+	if (DirToDiagDir(v->direction) == diagdir) {
+		/* Move up */
+		return (v->z_pos < GetTileMaxZ(v->tile) * (int)TILE_HEIGHT) ? 1 : 0;
+	} else {
+		/* Move down */
+		return (v->z_pos > GetTileZ(v->tile) * (int)TILE_HEIGHT) ? -1 : 0;
+	}
+}
+
+/**
+ * Test and move a ship up or down in a lock.
+ * @param v Ship to move.
+ * @return true iff ship is moving up or down in a lock.
+ */
+static bool ShipMoveUpDownOnLock(Ship *v)
+{
+	/* Moving up/down through lock */
+	int dz = ShipTestUpDownOnLock(v);
+	if (dz == 0) return false;
+
+	if (v->cur_speed != 0) {
+		v->cur_speed = 0;
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+	}
+
+	if ((v->tick_counter & 7) == 0) {
+		v->z_pos += dz;
+		v->UpdatePosition();
+		v->UpdateViewport(true, true);
+	}
+
+	return true;
+}
+
 static void ShipController(Ship *v)
 {
 	uint32 r;
 	const byte *b;
-	Direction dir;
 	Track track;
 	TrackBits tracks;
 
@@ -517,6 +634,18 @@ static void ShipController(Ship *v)
 	if (CheckShipLeaveDepot(v)) return;
 
 	v->ShowVisualEffect();
+
+	/* Rotating on spot */
+	if (v->direction != v->rotation) {
+		if ((v->tick_counter & 7) == 0) {
+			DirDiff diff = DirDifference(v->direction, v->rotation);
+			v->rotation = ChangeDir(v->rotation, diff > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT);
+			v->UpdateViewport(true, true);
+		}
+		return;
+	}
+
+	if (ShipMoveUpDownOnLock(v)) return;
 
 	if (!ShipAccelerate(v)) return;
 
@@ -582,7 +711,7 @@ static void ShipController(Ship *v)
 
 			DiagDirection diagdir = DiagdirBetweenTiles(gp.old_tile, gp.new_tile);
 			assert(diagdir != INVALID_DIAGDIR);
-			tracks = GetAvailShipTracks(gp.new_tile, diagdir);
+			tracks = GetAvailShipTracks(gp.new_tile, diagdir, v->GetVehicleTrackdir());
 			if (tracks == TRACK_BIT_NONE) goto reverse_direction;
 
 			/* Choose a direction, and continue if we find one */
@@ -608,7 +737,25 @@ static void ShipController(Ship *v)
 				if (old_wc != new_wc) v->UpdateCache();
 			}
 
-			v->direction = (Direction)b[2];
+			Direction new_direction = (Direction)b[2];
+			DirDiff diff = DirDifference(new_direction, v->direction);
+			switch (diff) {
+				case DIRDIFF_SAME:
+				case DIRDIFF_45RIGHT:
+				case DIRDIFF_45LEFT:
+					/* Continue at speed */
+					v->rotation = v->direction = new_direction;
+					break;
+
+				default:
+					/* Stop for rotation */
+					v->cur_speed = 0;
+					v->direction = new_direction;
+					/* Remember our current location to avoid movement glitch */
+					v->rotation_x_pos = v->x_pos;
+					v->rotation_y_pos = v->y_pos;
+					break;
+			}
 		}
 	} else {
 		/* On a bridge */
@@ -624,7 +771,6 @@ static void ShipController(Ship *v)
 	/* update image of ship, as well as delta XY */
 	v->x_pos = gp.x;
 	v->y_pos = gp.y;
-	v->z_pos = GetSlopePixelZ(gp.x, gp.y);
 
 getout:
 	v->UpdatePosition();
@@ -632,8 +778,12 @@ getout:
 	return;
 
 reverse_direction:
-	dir = ReverseDir(v->direction);
-	v->direction = dir;
+	v->direction = ReverseDir(v->direction);
+	/* Remember our current location to avoid movement glitch */
+	v->rotation_x_pos = v->x_pos;
+	v->rotation_y_pos = v->y_pos;
+	v->cur_speed = 0;
+	v->path.clear();
 	goto getout;
 }
 
@@ -646,6 +796,13 @@ bool Ship::Tick()
 	ShipController(this);
 
 	return true;
+}
+
+void Ship::SetDestTile(TileIndex tile)
+{
+	if (tile == this->dest_tile) return;
+	this->path.clear();
+	this->dest_tile = tile;
 }
 
 /**

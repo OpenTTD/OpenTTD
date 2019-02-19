@@ -99,11 +99,11 @@ Function RunTest(test, params, ret)
 
 	command = ".\openttd -x -c ai/regression/regression.cfg " & params & " -g " & sav & " -d script=2 -d misc=9"
 	' 2>&1 must be after >tmp.regression, else stderr is not redirected to the file
-	WshShell.Run "cmd /c " & command & " >tmp.regression 2>&1", 0, True
+	WshShell.Run "cmd /c " & command & " >"& test & "/tmp.regression 2>&1", 0, True
 
-	FilterFile "tmp.regression"
+	FilterFile test & "/tmp.regression"
 
-	If CompareFiles(test & "/result.txt", "tmp.regression") Then
+	If CompareFiles(test & "/result.txt", test & "/tmp.regression") Then
 		RunTest = "passed!"
 	Else
 		RunTest = "failed!"
@@ -111,6 +111,14 @@ Function RunTest(test, params, ret)
 	End If
 
 	FSO.DeleteFile test & "/info.nut"
+
+	If WScript.Arguments.Count > 0 Then
+		If WScript.Arguments.Item(0) = "-k" Then
+			Exit Function
+		End If
+	End If
+
+	FSO.DeleteFile test & "/tmp.regression"
 End Function
 
 On Error Resume Next
@@ -142,13 +150,5 @@ Next
 If FSO.FileExists("scripts/game_start.scr.regression") Then
 	FSO.MoveFile "scripts/game_start.scr.regression", "scripts/game_start.scr"
 End If
-
-If WScript.Arguments.Count > 0 Then
-	If WScripts.Arguments.Items(0) = "-k" Then
-		WScript.Quit ret
-	End If
-End If
-
-FSO.DeleteFile "tmp.regression"
 
 WScript.Quit ret

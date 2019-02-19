@@ -232,7 +232,7 @@ void GroupStatistics::Clear()
 			stats.autoreplace_defined = true;
 			stats.autoreplace_finished = true;
 		}
-		if (stats.num_engines[erl->from] > 0) stats.autoreplace_finished = false;
+		if (GetGroupNumEngines(company, erl->group_id, erl->from) > 0) stats.autoreplace_finished = false;
 	}
 }
 
@@ -255,6 +255,45 @@ static inline void UpdateNumEngineGroup(const Vehicle *v, GroupID old_g, GroupID
 }
 
 
+const Livery *GetParentLivery(const Group *g)
+{
+	if (g->parent == INVALID_GROUP) {
+		const Company *c = Company::Get(g->owner);
+		return &c->livery[LS_DEFAULT];
+	}
+
+	const Group *pg = Group::Get(g->parent);
+	return &pg->livery;
+}
+
+
+/**
+ * Propagate a livery change to a group's children.
+ * @param g Group.
+ */
+void PropagateChildLivery(const Group *g)
+{
+	/* Company colour data is indirectly cached. */
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->group_id == g->index && (!v->IsGroundVehicle() || v->IsFrontEngine())) {
+			for (Vehicle *u = v; u != NULL; u = u->Next()) {
+				u->colourmap = PAL_NONE;
+				u->InvalidateNewGRFCache();
+			}
+		}
+	}
+
+	Group *cg;
+	FOR_ALL_GROUPS(cg) {
+		if (cg->parent == g->index) {
+			if (!HasBit(cg->livery.in_use, 0)) cg->livery.colour1 = g->livery.colour1;
+			if (!HasBit(cg->livery.in_use, 1)) cg->livery.colour2 = g->livery.colour2;
+			PropagateChildLivery(cg);
+		}
+	}
+}
+
 
 Group::Group(Owner owner)
 {
@@ -272,7 +311,7 @@ Group::~Group()
  * @param tile unused
  * @param flags type of operation
  * @param p1   vehicle type
- * @param p2   unused
+ * @param p2   parent groupid
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -283,15 +322,32 @@ CommandCost CmdCreateGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	if (!Group::CanAllocateItem()) return CMD_ERROR;
 
+	const Group *pg = Group::GetIfValid(GB(p2, 0, 16));
+	if (pg != NULL) {
+		if (pg->owner != _current_company) return CMD_ERROR;
+		if (pg->vehicle_type != vt) return CMD_ERROR;
+	}
+
 	if (flags & DC_EXEC) {
 		Group *g = new Group(_current_company);
 		g->replace_protection = false;
 		g->vehicle_type = vt;
 		g->parent = INVALID_GROUP;
 
+		if (pg == NULL) {
+			const Company *c = Company::Get(_current_company);
+			g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
+			g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
+		} else {
+			g->parent = pg->index;
+			g->livery.colour1 = pg->livery.colour1;
+			g->livery.colour2 = pg->livery.colour2;
+		}
+
 		_new_group_id = g->index;
 
 		InvalidateWindowData(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_GROUP_LIST, vt, _current_company).Pack());
+		InvalidateWindowData(WC_COMPANY_COLOUR, g->owner, g->vehicle_type);
 	}
 
 	return CommandCost();
@@ -346,6 +402,7 @@ CommandCost CmdDeleteGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		delete g;
 
 		InvalidateWindowData(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_GROUP_LIST, vt, _current_company).Pack());
+		InvalidateWindowData(WC_COMPANY_COLOUR, _current_company, vt);
 	}
 
 	return CommandCost();
@@ -409,12 +466,23 @@ CommandCost CmdAlterGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 		if (flags & DC_EXEC) {
 			g->parent = (pg == NULL) ? INVALID_GROUP : pg->index;
+			GroupStatistics::UpdateAutoreplace(g->owner);
+
+			if (g->livery.in_use == 0) {
+				const Livery *livery = GetParentLivery(g);
+				g->livery.colour1 = livery->colour1;
+				g->livery.colour2 = livery->colour2;
+
+				PropagateChildLivery(g);
+				MarkWholeScreenDirty();
+			}
 		}
 	}
 
 	if (flags & DC_EXEC) {
-		SetWindowDirty(WC_REPLACE_VEHICLE, g->vehicle_type);
+		InvalidateWindowData(WC_REPLACE_VEHICLE, g->vehicle_type, 1);
 		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).Pack());
+		InvalidateWindowData(WC_COMPANY_COLOUR, g->owner, g->vehicle_type);
 	}
 
 	return CommandCost();
@@ -441,6 +509,11 @@ static void AddVehicleToGroup(Vehicle *v, GroupID new_g)
 		case VEH_AIRCRAFT:
 			if (v->IsEngineCountable()) UpdateNumEngineGroup(v, v->group_id, new_g);
 			v->group_id = new_g;
+			for (Vehicle *u = v; u != NULL; u = u->Next()) {
+				u->colourmap = PAL_NONE;
+				u->InvalidateNewGRFCache();
+				u->UpdateViewport(true);
+			}
 			break;
 	}
 
@@ -495,6 +568,9 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 		/* Update the Replace Vehicle Windows */
 		SetWindowDirty(WC_REPLACE_VEHICLE, v->type);
+		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
+		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 		InvalidateWindowData(GetWindowClassForVehicleType(v->type), VehicleListIdentifier(VL_GROUP_LIST, v->type, _current_company).Pack());
 	}
 
@@ -577,6 +653,44 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint3
 }
 
 /**
+ * Set the livery for a vehicle group.
+ * @param tile      Unused.
+ * @param flags     Command flags.
+ * @param p1
+ * - p1 bit  0-15   Group ID.
+ * @param p2
+ * - p2 bit  8      Set secondary instead of primary colour
+ * - p2 bit 16-23   Colour.
+ */
+CommandCost CmdSetGroupLivery(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	Group *g = Group::GetIfValid(p1);
+	bool primary = !HasBit(p2, 8);
+	Colours colour = Extract<Colours, 16, 8>(p2);
+
+	if (g == NULL || g->owner != _current_company) return CMD_ERROR;
+
+	if (colour >= COLOUR_END && colour != INVALID_COLOUR) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		if (primary) {
+			SB(g->livery.in_use, 0, 1, colour != INVALID_COLOUR);
+			if (colour == INVALID_COLOUR) colour = (Colours)GetParentLivery(g)->colour1;
+			g->livery.colour1 = colour;
+		} else {
+			SB(g->livery.in_use, 1, 1, colour != INVALID_COLOUR);
+			if (colour == INVALID_COLOUR) colour = (Colours)GetParentLivery(g)->colour2;
+			g->livery.colour2 = colour;
+		}
+
+		PropagateChildLivery(g);
+		MarkWholeScreenDirty();
+	}
+
+	return CommandCost();
+}
+
+/**
  * Set replace protection for a group and its sub-groups.
  * @param g initial group.
  * @param protect 1 to set or 0 to clear protection.
@@ -651,6 +765,9 @@ void SetTrainGroupID(Train *v, GroupID new_g)
 		if (u->IsEngineCountable()) UpdateNumEngineGroup(u, u->group_id, new_g);
 
 		u->group_id = new_g;
+		u->colourmap = PAL_NONE;
+		u->InvalidateNewGRFCache();
+		u->UpdateViewport(true);
 	}
 
 	/* Update the Replace Vehicle Windows */
@@ -675,6 +792,8 @@ void UpdateTrainGroupID(Train *v)
 		if (u->IsEngineCountable()) UpdateNumEngineGroup(u, u->group_id, new_g);
 
 		u->group_id = new_g;
+		u->colourmap = PAL_NONE;
+		u->InvalidateNewGRFCache();
 	}
 
 	/* Update the Replace Vehicle Windows */

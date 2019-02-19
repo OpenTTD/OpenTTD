@@ -90,6 +90,8 @@ MODIFIED := $(shell echo "$(VERSIONS)" | cut -f 3 -d'	')
 # Use autodetected revisions
 VERSION  := $(shell echo "$(VERSIONS)" | cut -f 1 -d'	')
 ISODATE  := $(shell echo "$(VERSIONS)" | cut -f 2 -d'	')
+GITHASH  := $(shell echo "$(VERSIONS)" | cut -f 4 -d'	')
+ISTAG    := $(shell echo "$(VERSIONS)" | cut -f 5 -d'	')
 
 # Make sure we have something in VERSION and ISODATE
 ifeq ($(VERSION),)
@@ -159,6 +161,19 @@ $(SRC_OBJS_DIR)/$(DEPEND): $(SRC_DIR)/depend/depend.cpp
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) $(LDFLAGS_BUILD) -o $@ $<
 endif
 
+# Macro for invoking a command on groups of 100 words at a time
+# (analogous to xargs(1)).  The macro invokes itself recursively
+# until the list of words is depleted.
+#
+# Usage: $(call xargs,COMMAND,LIST)
+#
+# COMMAND should be a shell command to which the words will be
+# appended as arguments in groups of 100.
+define xargs
+$(1) $(wordlist 1,100,$(2))
+$(if $(word 101,$(2)),$(call xargs,$(1),$(wordlist 101,$(words $(2)),$(2))))
+endef
+
 # Make sure that only 'make depend' ALWAYS triggers a recheck
 ifeq ($(filter depend, $(MAKECMDGOALS)),)
 Makefile.dep: $(FILE_DEP) $(SRCS:%=$(SRC_DIR)/%) $(CONFIG_CACHE_SOURCE) $(DEP)
@@ -170,14 +185,7 @@ endif
 	$(Q)touch Makefile.dep.tmp
 
 # Calculate the deps via makedepend
-	$(Q)$(MAKEDEPEND) -f$(SRC_OBJS_DIR)/Makefile.dep.tmp -o.o -Y -v -- $(CFLAGS_MAKEDEP) -- $(SRCS:%=$(SRC_DIR)/%) 2>/dev/null
-
-# Convert x:/... paths to /x/... for mingw
-ifeq ($(OS), MINGW)
-	@cat Makefile.dep.tmp | sed 's@/\([a-zA-Z]\):\/@\/\1\/@g' > Makefile.dep.tmp.mingw
-	@cp Makefile.dep.tmp.mingw Makefile.dep.tmp
-	@rm -f Makefile.dep.tmp.mingw
-endif
+	$(call xargs,$(Q)$(MAKEDEPEND) -f$(SRC_OBJS_DIR)/Makefile.dep.tmp -o.o -Y -v -a -- $(CFLAGS_MAKEDEP) -- 2>/dev/null,$(SRCS:%=$(SRC_DIR)/%))
 
 # Remove all comments and includes that don't start with $(SRC_DIR)
 # Remove $(SRC_DIR) from object-file-name
@@ -244,7 +252,7 @@ $(OBJS_MM): %.o: $(SRC_DIR)/%.mm $(DEP_MASK) $(FILE_DEP)
 
 $(OBJS_RC): %.o: $(SRC_DIR)/%.rc $(FILE_DEP)
 	$(E) '$(STAGE) Compiling resource $(<:$(SRC_DIR)/%.rc=%.rc)'
-	$(Q)$(WINDRES) -o $@ -I `basename $<` $<
+	$(Q)$(WINDRES) -o $@ $<
 
 $(BIN_DIR)/$(TTD): $(TTD)
 	$(Q)cp $(TTD) $(BIN_DIR)/$(TTD)
@@ -269,10 +277,10 @@ endif
 # Revision files
 
 $(SRC_DIR)/rev.cpp: $(CONFIG_CACHE_VERSION) $(SRC_DIR)/rev.cpp.in
-	$(Q)cat $(SRC_DIR)/rev.cpp.in      | sed "s@\!\!ISODATE\!\!@$(ISODATE)@g;s@!!VERSION!!@$(VERSION)@g;s@!!MODIFIED!!@$(MODIFIED)@g;s@!!DATE!!@`date +%d.%m.%y`@g" > $(SRC_DIR)/rev.cpp
+	$(Q)cat $(SRC_DIR)/rev.cpp.in      | sed "s@\!\!ISODATE\!\!@$(ISODATE)@g;s@!!VERSION!!@$(VERSION)@g;s@!!MODIFIED!!@$(MODIFIED)@g;s@!!DATE!!@`date +%d.%m.%y`@g;s@!!GITHASH!!@$(GITHASH)@g;s@!!ISTAG!!@$(ISTAG)@g" > $(SRC_DIR)/rev.cpp
 
 $(SRC_DIR)/os/windows/ottdres.rc: $(CONFIG_CACHE_VERSION) $(SRC_DIR)/os/windows/ottdres.rc.in
-	$(Q)cat $(SRC_DIR)/os/windows/ottdres.rc.in | sed "s@\!\!ISODATE\!\!@$(ISODATE)@g;s@!!VERSION!!@$(VERSION)@g;s@!!DATE!!@`date +%d.%m.%y`@g" > $(SRC_DIR)/os/windows/ottdres.rc
+	$(Q)cat $(SRC_DIR)/os/windows/ottdres.rc.in | sed "s@\!\!ISODATE\!\!@$(ISODATE)@g;s@!!VERSION!!@$(VERSION)@g;s@!!DATE!!@`date +%d.%m.%y`@g;s@!!GITHASH!!@$(GITHASH)@g;s@!!ISTAG!!@$(ISTAG)@g" > $(SRC_DIR)/os/windows/ottdres.rc
 
 FORCE:
 

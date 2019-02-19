@@ -1317,7 +1317,11 @@ void DrawDirtyBlocks()
 		/* Wait a while and update _realtime_tick so we are given the rights */
 		if (!IsFirstModalProgressLoop()) CSleep(MODAL_PROGRESS_REDRAW_TIMEOUT);
 		_realtime_tick += MODAL_PROGRESS_REDRAW_TIMEOUT;
+
+		/* Modal progress thread may need blitter access while we are waiting for it. */
+		VideoDriver::GetInstance()->ReleaseBlitterLock();
 		_modal_progress_paint_mutex->BeginCritical();
+		VideoDriver::GetInstance()->AcquireBlitterLock();
 		_modal_progress_work_mutex->BeginCritical();
 
 		/* When we ended with the modal progress, do not draw the blocks.

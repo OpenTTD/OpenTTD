@@ -483,6 +483,8 @@ public:
 
 	void UpdateVirtCoord();
 
+	void AfterStationTileSetChange(bool adding, StationType type);
+
 	/* virtual */ uint GetPlatformLength(TileIndex tile, DiagDirection dir) const;
 	/* virtual */ uint GetPlatformLength(TileIndex tile) const;
 	void RecomputeIndustriesNear();

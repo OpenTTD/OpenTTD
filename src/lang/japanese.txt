@@ -1251,6 +1251,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}この�
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :インフラ補修: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :有効にすると、インフラ設備にも維持費が発生するようになります。維持費はネットワークのサイズに非線形で比例する為、小さい会社よりも大きい会社の方が影響が大きくなります
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :空港の旧式化撤廃: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :有効にすると、いずれの種類の空港であっても、その開発後であれば永久に建設が可能になります
 
@@ -1799,7 +1800,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}現在�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}生産量変更: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}コーポレートカラー
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}通常のコーポレートカラー(車両塗装色)を表示します
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}列車の塗装色を表示します
@@ -2061,9 +2061,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}この�
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}この会社は保護されています。経営に参画するにはパスワードを入力してください
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}クライアントリスト
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}観覧モード
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新会社
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :クライアントリスト
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :観覧モード
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :新会社
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :追放
@@ -2078,7 +2078,6 @@ STR_NETWORK_CLIENT                                              :クライアン
 STR_NETWORK_SPECTATORS                                          :観覧者
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}送りたい金額を入力
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}観覧者
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}入力したパスワードを保存しない
@@ -2681,7 +2680,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :社有地
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTDについて
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}オリジナル版権{COPYRIGHT} 1995 Chris Sawyer All rights reserved
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD バージョン {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 The OpenTTD team
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -3285,18 +3284,8 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}メイ�
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生産量: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}この産業拠点は間もなく閉鎖されます!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}必要資源: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}必要資源: {YELLOW}{STRING}{STRING}と{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}必要資源: {YELLOW}{STRING}{STRING}、{STRING}{STRING}、{STRING}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      : {BLACK}必要物資:
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}生産品: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}生産品: {YELLOW}{STRING}{STRING}、{STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}生産量を変更 (8の倍数、最大2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}生産量を変更 (%表記、最大800%)

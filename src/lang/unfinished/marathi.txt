@@ -796,6 +796,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :खरेखु
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :वाहनांचा धूर/ठिणग्या: {STRING}
 
 
+
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन हरवल्यास सूचित करा: {STRING}
 
 
@@ -1277,17 +1278,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUST
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}लाग्त: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}लाग्त: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}लाग्त: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}बनव्त: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}बनव्त: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 
 # Vehicle lists

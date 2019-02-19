@@ -573,6 +573,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Сылтӑмр�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ҫук
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ҫук
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аэропорт кивел мар: {STRING}
 
 
@@ -1115,12 +1116,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 
 # Industry view
 
-############ range for requires starts
-############ range for requires ends
 
-
-############ range for produces starts
-############ range for produces ends
 
 
 # Vehicle lists

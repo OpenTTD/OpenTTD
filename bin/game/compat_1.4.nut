@@ -15,3 +15,10 @@ GSNews.Create <- function(type, text, company)
 {
     return GSNews._Create(type, text, company, GSNews.NR_NONE, 0);
 }
+
+/* 1.9 adds a vehicle type parameter. */
+GSBridge._GetName <- GSBridge.GetName;
+GSBridge.GetName <- function(bridge_id)
+{
+	return GSBridge._GetName(bridge_id, GSVehicle.VT_RAIL);
+}

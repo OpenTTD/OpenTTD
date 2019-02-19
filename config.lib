@@ -376,6 +376,7 @@ detect_params() {
 
 			--with-fluidsynth)            with_fluidsynth="2";;
 			--without-fluidsynth)         with_fluidsynth="0";;
+			--with-fluidsynth=*)          with_fluidsynth="$optarg";;
 
 			--with-freetype)              with_freetype="2";;
 			--without-freetype)           with_freetype="0";;
@@ -1508,7 +1509,7 @@ make_cflags_and_ldflags() {
 	CXXFLAGS_ENV="$CXXFLAGS"
 	CXXFLAGS=""
 	# Libs to compile. In fact this is just LDFLAGS
-	LIBS="-lstdc++"
+	LIBS=""
 	# LDFLAGS used for HOST
 	LDFLAGS_ENV="$LDFLAGS"
 	LDFLAGS=""
@@ -1958,7 +1959,7 @@ make_cflags_and_ldflags() {
 		cflags_makedep="`echo | $cxx_host $CXXFLAGS -E -x c++ -dM - | sed 's@.define @-D@g;s@ .*@ @g;s@(.*)@@g' | tr -d '\r\n'`"
 
 		# Please escape ALL " within ` because e.g. "" terminates the string in some sh implementations
-		cflags_makedep="$cflags_makedep `echo \"$CFLAGS\" \"$CXXFLAGS\" | sed 's@ /@ -@g;s@-I[ ]*[^ ]*@@g'`"
+		cflags_makedep="$cflags_makedep `echo \"$CFLAGS\" \"$CXXFLAGS\" | sed 's@ /@ -@g;s@-I[ ]*[^ ]*@@g;s@[ ]*-[^D][^ ]*@@g'`"
 	else
 		makedepend=""
 	fi

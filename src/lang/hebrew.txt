@@ -1270,6 +1270,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}שינו
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :תחזוקת תשתיות: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :כאשר מאופשר, תשתיות גורמות לעלויות תחזוקה. העלות גדלה באופן שהוא מעבר ליחסי לעומת גודל הרשת, וכך משפיע יותר על חברות גדולות מאשר על חברות קטנות
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :בטל התיישנות נמלי תעופה: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :אפשור הגדרה זו גורם לכל סוג נמל תעופה להישאר זמין לעד אחרי השקתו
 
@@ -1825,7 +1826,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}שנה �
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}אפשר שינוי ערכי התפוקה: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}הגדרות צבע חדשות
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}הצג הגדרות צבע כלליות
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}הצג הגדרות צבע לרכבות
@@ -2087,9 +2087,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}שרת �
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}חברה מוגנת. הזן סיסמה
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}רשימת משתתפים
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}צפה
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}חברה חדשה
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :רשימת משתתפים
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :צפה
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :חברה חדשה
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :בעט
@@ -2104,7 +2104,6 @@ STR_NETWORK_CLIENT                                              :לקוח
 STR_NETWORK_SPECTATORS                                          :צופים
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}הכנס סכום כסף שברצונך לתת
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}צופה
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}בטל שמירת הסיסמה החדשה
@@ -2707,7 +2706,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :שטח בבעל
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD אודות
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}כל הזכויות שמורות , {COPYRIGHT}1995 כריס סויר - זכויות יוצרים מקוריות
 STR_ABOUT_VERSION                                               :{BLACK}{REV} גירסה , OpenTTD
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 The OpenTTD team
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}קצב ריענון
@@ -3342,20 +3341,10 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}מקד �
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}רמת הפקה: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}התעשייה הכריזה על סגירה מתקרבת!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{YELLOW}{1:STRING}{0:STRING}{BLACK} : דורש
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{YELLOW}{3:STRING}{2:STRING},{1:STRING}{0:STRING}{BLACK} :דורש
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{YELLOW}{5:STRING}{4:STRING},{3:STRING}{2:STRING},{1:STRING}{0:STRING}{BLACK} :דורש
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}דורש:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} ממתין{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{YELLOW}{1:STRING}{0:STRING}{BLACK} :מייצר
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{YELLOW}{3:STRING}{2:STRING},{1:STRING}{0:STRING}{BLACK} :מייצר
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}שנה תפוקה (כפולות של 8, עד 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}שינוי ברמת ההפקה (עד 800% אחוז)

@@ -517,9 +517,18 @@ restart:;
 void ResetCompanyLivery(Company *c)
 {
 	for (LiveryScheme scheme = LS_BEGIN; scheme < LS_END; scheme++) {
-		c->livery[scheme].in_use  = false;
+		c->livery[scheme].in_use  = 0;
 		c->livery[scheme].colour1 = c->colour;
 		c->livery[scheme].colour2 = c->colour;
+	}
+
+	Group *g;
+	FOR_ALL_GROUPS(g) {
+		if (g->owner == c->index) {
+			g->livery.in_use  = 0;
+			g->livery.colour1 = c->colour;
+			g->livery.colour2 = c->colour;
+		}
 	}
 }
 
@@ -586,10 +595,10 @@ void StartupCompanies()
 }
 
 /** Start a new competitor company if possible. */
-static void MaybeStartNewCompany()
+static bool MaybeStartNewCompany()
 {
 #ifdef ENABLE_NETWORK
-	if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) return;
+	if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) return false;
 #endif /* ENABLE_NETWORK */
 
 	Company *c;
@@ -603,8 +612,10 @@ static void MaybeStartNewCompany()
 	if (n < (uint)_settings_game.difficulty.max_no_competitors) {
 		/* Send a command to all clients to start up a new AI.
 		 * Works fine for Multiplayer and Singleplayer */
-		DoCommandP(0, 1 | INVALID_COMPANY << 16, 0, CMD_COMPANY_CTRL);
+		return DoCommandP(0, CCA_NEW_AI | INVALID_COMPANY << 16, 0, CMD_COMPANY_CTRL);
 	}
+
+	return false;
 }
 
 /** Initialize the pool of companies. */
@@ -705,11 +716,19 @@ void OnTick_Companies()
 	}
 
 	if (_next_competitor_start == 0) {
-		_next_competitor_start = AI::GetStartNextTime() * DAY_TICKS;
+		/* AI::GetStartNextTime() can return 0. */
+		_next_competitor_start = max(1, AI::GetStartNextTime() * DAY_TICKS);
 	}
 
-	if (AI::CanStartNew() && _game_mode != GM_MENU && --_next_competitor_start == 0) {
-		MaybeStartNewCompany();
+	if (_game_mode != GM_MENU && AI::CanStartNew() && --_next_competitor_start == 0) {
+		/* Allow multiple AIs to possibly start in the same tick. */
+		do {
+			if (!MaybeStartNewCompany()) break;
+
+			/* In networking mode, we can only send a command to start but it
+			 * didn't execute yet, so we cannot loop. */
+			if (_networking) break;
+		} while (AI::GetStartNextTime() == 0);
 	}
 
 	_cur_company_tick_index = (_cur_company_tick_index + 1) % MAX_COMPANIES;
@@ -795,12 +814,11 @@ void CompanyAdminRemove(CompanyID company_id, CompanyRemoveReason reason)
  * @param tile unused
  * @param flags operation to perform
  * @param p1 various functionality
- * - bits 0..15:
- *        = 0 - create a new company
- *        = 1 - create a new AI company
- *        = 2 - delete a company
+ * - bits 0..15: CompanyCtrlAction
  * - bits 16..24: CompanyID
- * @param p2 ClientID
+ * @param p2 various depending on CompanyCtrlAction
+ * - bits 0..31: ClientID (with CCA_NEW)
+ * - bits 0..1: CompanyRemoveReason (with CCA_DELETE)
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -808,18 +826,17 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 {
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
 	CompanyID company_id = (CompanyID)GB(p1, 16, 8);
-#ifdef ENABLE_NETWORK
-	ClientID client_id = (ClientID)p2;
-#endif /* ENABLE_NETWORK */
 
-	switch (GB(p1, 0, 16)) {
-		case 0: { // Create a new company
+	switch ((CompanyCtrlAction)GB(p1, 0, 16)) {
+		case CCA_NEW: { // Create a new company
 			/* This command is only executed in a multiplayer game */
 			if (!_networking) return CMD_ERROR;
 
 #ifdef ENABLE_NETWORK
 			/* Has the network client a correct ClientIndex? */
 			if (!(flags & DC_EXEC)) return CommandCost();
+
+			ClientID client_id = (ClientID)p2;
 			NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 #ifndef DEBUG_DUMP_COMMANDS
 			/* When replaying the client ID is not a valid client; there
@@ -863,7 +880,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			break;
 		}
 
-		case 1: { // Make a new AI company
+		case CCA_NEW_AI: { // Make a new AI company
 			if (!(flags & DC_EXEC)) return CommandCost();
 
 			if (company_id != INVALID_COMPANY && (company_id >= MAX_COMPANIES || Company::IsValidID(company_id))) return CMD_ERROR;
@@ -874,7 +891,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			break;
 		}
 
-		case 2: { // Delete a company
+		case CCA_DELETE: { // Delete a company
 			CompanyRemoveReason reason = (CompanyRemoveReason)GB(p2, 0, 2);
 			if (reason >= CRR_END) return CMD_ERROR;
 
@@ -946,23 +963,26 @@ CommandCost CmdSetCompanyManagerFace(TileIndex tile, DoCommandFlag flags, uint32
  * @param flags operation to perform
  * @param p1 bitstuffed:
  * p1 bits 0-7 scheme to set
- * p1 bits 8-9 set in use state or first/second colour
+ * p1 bit 8 set first/second colour
  * @param p2 new colour for vehicles, property, etc.
  * @param text unused
  * @return the cost of this operation or an error
  */
 CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Colours colour = Extract<Colours, 0, 4>(p2);
+	Colours colour = Extract<Colours, 0, 8>(p2);
 	LiveryScheme scheme = Extract<LiveryScheme, 0, 8>(p1);
-	byte state = GB(p1, 8, 2);
+	bool second = HasBit(p1, 8);
 
-	if (scheme >= LS_END || state >= 3 || colour == INVALID_COLOUR) return CMD_ERROR;
+	if (scheme >= LS_END || (colour >= COLOUR_END && colour != INVALID_COLOUR)) return CMD_ERROR;
+
+	/* Default scheme can't be reset to invalid. */
+	if (scheme == LS_DEFAULT && colour == INVALID_COLOUR) return CMD_ERROR;
 
 	Company *c = Company::Get(_current_company);
 
 	/* Ensure no two companies have the same primary colour */
-	if (scheme == LS_DEFAULT && state == 0) {
+	if (scheme == LS_DEFAULT && !second) {
 		const Company *cc;
 		FOR_ALL_COMPANIES(cc) {
 			if (cc != c && cc->colour == colour) return CMD_ERROR;
@@ -970,52 +990,48 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	}
 
 	if (flags & DC_EXEC) {
-		switch (state) {
-			case 0:
-				c->livery[scheme].colour1 = colour;
+		if (!second) {
+			if (scheme != LS_DEFAULT) SB(c->livery[scheme].in_use, 0, 1, colour != INVALID_COLOUR);
+			if (colour == INVALID_COLOUR) colour = (Colours)c->livery[LS_DEFAULT].colour1;
+			c->livery[scheme].colour1 = colour;
 
-				/* If setting the first colour of the default scheme, adjust the
-				 * original and cached company colours too. */
-				if (scheme == LS_DEFAULT) {
-					_company_colours[_current_company] = colour;
-					c->colour = colour;
-					CompanyAdminUpdate(c);
+			/* If setting the first colour of the default scheme, adjust the
+			 * original and cached company colours too. */
+			if (scheme == LS_DEFAULT) {
+				for (int i = 1; i < LS_END; i++) {
+					if (!HasBit(c->livery[i].in_use, 0)) c->livery[i].colour1 = colour;
 				}
-				break;
+				_company_colours[_current_company] = colour;
+				c->colour = colour;
+				CompanyAdminUpdate(c);
+			}
+		} else {
+			if (scheme != LS_DEFAULT) SB(c->livery[scheme].in_use, 1, 1, colour != INVALID_COLOUR);
+			if (colour == INVALID_COLOUR) colour = (Colours)c->livery[LS_DEFAULT].colour2;
+			c->livery[scheme].colour2 = colour;
 
-			case 1:
-				c->livery[scheme].colour2 = colour;
-				break;
+			if (scheme == LS_DEFAULT) {
+				for (int i = 1; i < LS_END; i++) {
+					if (!HasBit(c->livery[i].in_use, 1)) c->livery[i].colour2 = colour;
+				}
+			}
+		}
 
-			case 2:
-				c->livery[scheme].in_use = colour != 0;
-
-				/* Now handle setting the default scheme's in_use flag.
-				 * This is different to the other schemes, as it signifies if any
-				 * scheme is active at all. If this flag is not set, then no
-				 * processing of vehicle types occurs at all, and only the default
-				 * colours will be used. */
-
-				/* If enabling a scheme, set the default scheme to be in use too */
-				if (colour != 0) {
-					c->livery[LS_DEFAULT].in_use = true;
+		if (c->livery[scheme].in_use != 0) {
+			/* If enabling a scheme, set the default scheme to be in use too */
+			c->livery[LS_DEFAULT].in_use = 1;
+		} else {
+			/* Else loop through all schemes to see if any are left enabled.
+			 * If not, disable the default scheme too. */
+			c->livery[LS_DEFAULT].in_use = 0;
+			for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+				if (c->livery[scheme].in_use != 0) {
+					c->livery[LS_DEFAULT].in_use = 1;
 					break;
 				}
-
-				/* Else loop through all schemes to see if any are left enabled.
-				 * If not, disable the default scheme too. */
-				c->livery[LS_DEFAULT].in_use = false;
-				for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-					if (c->livery[scheme].in_use) {
-						c->livery[LS_DEFAULT].in_use = true;
-						break;
-					}
-				}
-				break;
-
-			default:
-				break;
+			}
 		}
+
 		ResetVehicleColourMap();
 		MarkWholeScreenDirty();
 

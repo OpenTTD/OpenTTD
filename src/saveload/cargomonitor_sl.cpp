@@ -29,6 +29,21 @@ static const SaveLoad _cargomonitor_pair_desc[] = {
 	SLE_END()
 };
 
+static CargoMonitorID FixupCargoMonitor(CargoMonitorID number)
+{
+	/* Between SLV_EXTEND_CARGOTYPES and SLV_FIX_CARGO_MONITOR, the
+	 * CargoMonitorID structure had insufficient packing for more
+	 * than 32 cargo types. Here we have to shuffle bits to account
+	 * for the change.
+	 * Company moved from bits 24-31 to 25-28.
+	 * Cargo type increased from bits 19-23 to 19-24.
+	 */
+	SB(number, 25, 4, GB(number, 24, 4));
+	SB(number, 29, 3, 0);
+	ClrBit(number, 24);
+	return number;
+}
+
 /** Save the #_cargo_deliveries monitoring map. */
 static void SaveDelivery()
 {
@@ -52,11 +67,14 @@ static void SaveDelivery()
 static void LoadDelivery()
 {
 	TempStorage storage;
+	bool fix = IsSavegameVersionBefore(SLV_FIX_CARGO_MONITOR);
 
 	ClearCargoDeliveryMonitoring();
 	for (;;) {
 		if (SlIterateArray() < 0) break;
 		SlObject(&storage, _cargomonitor_pair_desc);
+
+		if (fix) storage.number = FixupCargoMonitor(storage.number);
 
 		std::pair<CargoMonitorID, uint32> p(storage.number, storage.amount);
 		_cargo_deliveries.insert(p);
@@ -87,11 +105,14 @@ static void SavePickup()
 static void LoadPickup()
 {
 	TempStorage storage;
+	bool fix = IsSavegameVersionBefore(SLV_FIX_CARGO_MONITOR);
 
 	ClearCargoPickupMonitoring();
 	for (;;) {
 		if (SlIterateArray() < 0) break;
 		SlObject(&storage, _cargomonitor_pair_desc);
+
+		if (fix) storage.number = FixupCargoMonitor(storage.number);
 
 		std::pair<CargoMonitorID, uint32> p(storage.number, storage.amount);
 		_cargo_pickups.insert(p);

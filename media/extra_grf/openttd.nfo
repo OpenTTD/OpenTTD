@@ -14,6 +14,8 @@
 // allowing it to be used.
 //
 
+//@@WARNING DISABLE 60
+
 //
 // Number of sprites, it is wrong, but GRFcodec automagically gets it right.
 //

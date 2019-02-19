@@ -162,7 +162,7 @@ struct BaseSetTextfileWindow : public TextfileWindow {
 template <class TBaseSet>
 void ShowBaseSetTextfileWindow(TextfileType file_type, const TBaseSet* baseset, StringID content_type)
 {
-	DeleteWindowByClass(WC_TEXTFILE);
+	DeleteWindowById(WC_TEXTFILE, file_type);
 	new BaseSetTextfileWindow<TBaseSet>(file_type, baseset, content_type);
 }
 
@@ -182,6 +182,7 @@ struct GameOptionsWindow : Window {
 	~GameOptionsWindow()
 	{
 		DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
+		DeleteWindowByClass(WC_TEXTFILE);
 		if (this->reload) _switch_mode = SM_MENU;
 	}
 
@@ -1584,6 +1585,7 @@ static SettingsContainer &GetSettingsTree()
 			company->Add(new SettingEntry("gui.drag_signals_fixed_distance"));
 			company->Add(new SettingEntry("gui.new_nonstop"));
 			company->Add(new SettingEntry("gui.stop_location"));
+			company->Add(new SettingEntry("gui.starting_colour"));
 			company->Add(new SettingEntry("company.engine_renew"));
 			company->Add(new SettingEntry("company.engine_renew_months"));
 			company->Add(new SettingEntry("company.engine_renew_money"));

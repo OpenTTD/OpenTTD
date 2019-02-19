@@ -30,8 +30,8 @@ static bool _ai_saveload_is_random;
 static const SaveLoad _ai_company[] = {
 	    SLEG_STR(_ai_saveload_name,        SLE_STRB),
 	    SLEG_STR(_ai_saveload_settings,    SLE_STRB),
-	SLEG_CONDVAR(_ai_saveload_version,   SLE_UINT32, 108, SL_MAX_VERSION),
-	SLEG_CONDVAR(_ai_saveload_is_random,   SLE_BOOL, 136, SL_MAX_VERSION),
+	SLEG_CONDVAR(_ai_saveload_version,   SLE_UINT32, SLV_108, SL_MAX_VERSION),
+	SLEG_CONDVAR(_ai_saveload_is_random,   SLE_BOOL, SLV_136, SL_MAX_VERSION),
 	     SLE_END()
 };
 

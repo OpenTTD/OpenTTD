@@ -32,6 +32,7 @@
 #include "linkgraph/linkgraph_gui.h"
 #include "tilehighlight_func.h"
 #include "hotkeys.h"
+#include "guitimer_func.h"
 
 #include "saveload/saveload.h"
 
@@ -219,6 +220,7 @@ enum {
 	GHK_RESET_OBJECT_TO_PLACE,
 	GHK_DELETE_WINDOWS,
 	GHK_DELETE_NONVITAL_WINDOWS,
+	GHK_DELETE_ALL_MESSAGES,
 	GHK_REFRESH_SCREEN,
 	GHK_CRASH,
 	GHK_MONEY,
@@ -235,10 +237,11 @@ enum {
 
 struct MainWindow : Window
 {
-	uint refresh;
+	GUITimer refresh;
 
-	static const uint LINKGRAPH_REFRESH_PERIOD = 0xff;
-	static const uint LINKGRAPH_DELAY = 0xf;
+	/* Refresh times in milliseconds */
+	static const uint LINKGRAPH_REFRESH_PERIOD = 7650;
+	static const uint LINKGRAPH_DELAY = 450;
 
 	MainWindow(WindowDesc *desc) : Window(desc)
 	{
@@ -250,14 +253,14 @@ struct MainWindow : Window
 		nvp->InitializeViewport(this, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
 
 		this->viewport->overlay = new LinkGraphOverlay(this, WID_M_VIEWPORT, 0, 0, 3);
-		this->refresh = LINKGRAPH_DELAY;
+		this->refresh.SetInterval(LINKGRAPH_DELAY);
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
-		if (--this->refresh > 0) return;
+		if (!this->refresh.Elapsed(delta_ms)) return;
 
-		this->refresh = LINKGRAPH_REFRESH_PERIOD;
+		this->refresh.SetInterval(LINKGRAPH_REFRESH_PERIOD);
 
 		if (this->viewport->overlay->GetCargoMask() == 0 ||
 				this->viewport->overlay->GetCompanyMask() == 0) {
@@ -343,6 +346,7 @@ struct MainWindow : Window
 			case GHK_RESET_OBJECT_TO_PLACE: ResetObjectToPlace(); break;
 			case GHK_DELETE_WINDOWS: DeleteNonVitalWindows(); break;
 			case GHK_DELETE_NONVITAL_WINDOWS: DeleteAllNonVitalWindows(); break;
+			case GHK_DELETE_ALL_MESSAGES: DeleteAllMessages(); break;
 			case GHK_REFRESH_SCREEN: MarkWholeScreenDirty(); break;
 
 			case GHK_CRASH: // Crash the game
@@ -434,7 +438,7 @@ struct MainWindow : Window
 		this->viewport->scrollpos_y += ScaleByZoom(delta.y, this->viewport->zoom);
 		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
 		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
-		this->refresh = LINKGRAPH_DELAY;
+		this->refresh.SetInterval(LINKGRAPH_DELAY);
 	}
 
 	virtual void OnMouseWheel(int wheel)
@@ -449,7 +453,7 @@ struct MainWindow : Window
 		if (this->viewport != NULL) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_M_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
-			this->refresh = LINKGRAPH_DELAY;
+			this->refresh.SetInterval(LINKGRAPH_DELAY);
 		}
 	}
 
@@ -486,6 +490,7 @@ static Hotkey global_hotkeys[] = {
 	Hotkey(WKC_ESC, "reset_object_to_place", GHK_RESET_OBJECT_TO_PLACE),
 	Hotkey(WKC_DELETE, "delete_windows", GHK_DELETE_WINDOWS),
 	Hotkey(WKC_DELETE | WKC_SHIFT, "delete_all_windows", GHK_DELETE_NONVITAL_WINDOWS),
+	Hotkey(WKC_DELETE | WKC_CTRL, "delete_all_messages", GHK_DELETE_ALL_MESSAGES),
 	Hotkey('R' | WKC_CTRL, "refresh_screen", GHK_REFRESH_SCREEN),
 #if defined(_DEBUG)
 	Hotkey('0' | WKC_ALT, "crash_game", GHK_CRASH),

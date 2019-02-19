@@ -285,6 +285,8 @@ STR_COLOUR_ORANGE                                               :Narančasta
 STR_COLOUR_BROWN                                                :Smeđa
 STR_COLOUR_GREY                                                 :Siva
 STR_COLOUR_WHITE                                                :Bijela
+STR_COLOUR_RANDOM                                               :Nasumično
+STR_COLOUR_DEFAULT                                              :Osnovna postavka
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -1025,6 +1027,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Proizvoljno...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski Lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski Rial (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nove ruske rublje (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksički Pesos (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cestovna vozila
@@ -1353,6 +1356,9 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Dopusti izgradn
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Mijenjanje ovih postavki nije moguće kada postoje vozila
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Održavanje infrastrukture: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Kada je omogućeno, infrastruktura uzrokuje troškove održavanja. Cijena raste više nego proporcionalno s veličinom mreže, čime utječe veće tvrtke više od manjih
+
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Početna boja za kompaniju: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Odaberi početnu boju za kompaniju
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Zračne luke nikad ne ističu: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Uključivanjem ove postavke čini svaku vrstu zračne luke dostupnom zauvijek nakon uvođenja
@@ -1911,7 +1917,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Promijen
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Omogući izmjeni produkcijskih vrijednosti: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nova boja
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} -Boja
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Pokaži generalne sheme boja
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Pokaži sheme boja za vlak
@@ -2173,9 +2179,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Posluži
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tvrtka je zaštićena. Unesite zaporku
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Popis klijenata
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Promatraj
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova tvrtka
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Popis klijenata
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Promatraj
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nova tvrtka
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Izbaci
@@ -2190,7 +2196,6 @@ STR_NETWORK_CLIENT                                              :Klijent
 STR_NETWORK_SPECTATORS                                          :Promatrači
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Unesite iznos novca koji želite dati
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Gledatelj
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nemoj spremiti upisanu zaporku
@@ -2472,9 +2477,9 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombo si
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Putni signal (električni){}Putni signal omogućava da više od jednog vlaka uđe istovremeno u signalni blok, ako vlak može rezervirati putanju do sigurnog zaustavnog mjesta. Standardne putne signale moguće je proći iz suprotnog smjera
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednosmjerni putni signal (električni){}Putni znak omogućava da više od jednog vlaka uđe istovremeno u signalni blok, ako vlak može rezervirati putanju do sigurnog zaustavnog mjesta. Jednosmjerne putne signale nije moguće proći iz suprotnog smjera.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Pretvaranje signala{}Kada je odabrano, klikanjem na postojeći signal pretvara taj signal u odabranu vrstu i varijantu, Ctrl+Klik mijenja postojeću varijantu. Shift+Klik prikazuje procjenu troška pretvorbe
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Gustoća signala prilikom izgradnje
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Smanji gustoću signala prilikom izgradnje
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Povećaj gustoću signala prilikom izgradnje
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Razmak između signala prilikom izgradnje
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Smanji razmak između signala prilikom izgradnje
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Povećaj razmak između signala prilikom izgradnje
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Odaberi željeznički most
@@ -2794,7 +2799,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Zemlja u posjed
 STR_ABOUT_OPENTTD                                               :{WHITE}O OpenTTD-u
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Izvorno autorsko pravo {COPYRIGHT} 1995 Chris Sawyer, sva prava pridržana
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD verzija {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD tim
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD tim
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Broj sličica
@@ -2869,6 +2874,8 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nema dos
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtriraj niz:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Presnimi datoteku
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Jeste li sigurano da želite presnimiti postojeću datoteku?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Upiši ime za spremanje igre
 
@@ -2986,7 +2993,12 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Verzija:
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatibilna verzija: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 suma: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Osnovna postavka (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Osnovna postavka (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Legacy (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Legacy (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametri: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Ništa
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Nema dostupnih informacija
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nije pronađena odgovarajuća datoteka
@@ -3446,20 +3458,13 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrira
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Razina proizvodnje: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industrija je najavila uskoro zatvaranje!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Treba: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Treba: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Treba: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Treba: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Proizvodi: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Treba:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} čeka{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Proizvodi: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Proizvodi: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Promijeni proizvodnju (višekratnik broja 8, do 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Promijeni razinu proizvodnje (postotak, do najviše 800%)
@@ -3513,6 +3518,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupe - 
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikni za kreiranje grupe
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Obriši odabranu grupu
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Preimenuj odabranu grupu
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Promijeni livreju odabrane grupe
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikni kako bi zaštitio ovu grupu od globalne automatske zamjene
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Izbriši grupu
@@ -3556,6 +3562,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Nosivost
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK} Pokretni vagoni:.{GOLD}+{POWER}{BLACK} Težina: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prenamjenjivo u: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Sve vrste tereta
+STR_PURCHASE_INFO_NONE                                          :Ništa
 STR_PURCHASE_INFO_ALL_BUT                                       :Sve osim {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK} Najveća vučna sila: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Domet: {GOLD}{COMMA} polja
@@ -3955,6 +3962,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Starost vozila 
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Treba servis
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Uvijek
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Preostali životni vijek (godina)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maksimalna pouzdanost
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kako usporediti podatke vozila sa zadanom vrijednošću
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :je jednako

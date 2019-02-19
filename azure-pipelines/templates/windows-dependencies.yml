@@ -1,0 +1,10 @@
+steps:
+- bash: |
+    set -ex
+    curl -L https://github.com/OpenTTD/CompileFarm/releases/download/latest/windows-dependencies.zip > windows-dependencies.zip
+    unzip windows-dependencies.zip
+    rm -f windows-dependencies.zip
+  displayName: 'Download dependencies'
+  workingDirectory: $(Build.ArtifactStagingDirectory)
+- script: $(Build.ArtifactStagingDirectory)\windows-dependencies\vcpkg.exe integrate install
+  displayName: 'Install dependencies'

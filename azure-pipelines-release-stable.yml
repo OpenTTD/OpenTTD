@@ -1,0 +1,10 @@
+trigger:
+  branches:
+    include:
+      - refs/tags/*
+pr: none
+
+jobs:
+- template: azure-pipelines/templates/release.yml
+  parameters:
+    IsStableRelease: true

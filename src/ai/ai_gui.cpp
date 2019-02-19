@@ -29,6 +29,7 @@
 #include "../widgets/dropdown_func.h"
 #include "../hotkeys.h"
 #include "../core/geometry_func.hpp"
+#include "../guitimer_func.h"
 
 #include "ai.hpp"
 #include "ai_gui.hpp"
@@ -286,7 +287,7 @@ struct AISettingsWindow : public Window {
 	bool clicked_increase;                ///< Whether we clicked the increase or decrease button.
 	bool clicked_dropdown;                ///< Whether the dropdown is open.
 	bool closing_dropdown;                ///< True, if the dropdown list is currently closing.
-	int timeout;                          ///< Timeout for unclicking the button.
+	GUITimer timeout;                     ///< Timeout for unclicking the button.
 	int clicked_row;                      ///< The clicked row of settings.
 	int line_height;                      ///< Height of a row in the matrix widget.
 	Scrollbar *vscroll;                   ///< Cache of the vertical scrollbar.
@@ -377,7 +378,7 @@ struct AISettingsWindow : public Window {
 		for (; this->vscroll->IsVisible(i) && it != visible_settings.end(); i++, it++) {
 			const ScriptConfigItem &config_item = **it;
 			int current_value = config->GetSetting((config_item).name);
-			bool editable = _game_mode == GM_MENU || ((this->slot != OWNER_DEITY) && !Company::IsValidID(this->slot)) || (config_item.flags & SCRIPTCONFIG_INGAME) != 0;
+			bool editable = this->IsEditableItem(config_item);
 
 			StringID str;
 			TextColour colour;
@@ -440,7 +441,7 @@ struct AISettingsWindow : public Window {
 				VisibleSettingsList::const_iterator it = this->visible_settings.begin();
 				for (int i = 0; i < num; i++) it++;
 				const ScriptConfigItem config_item = **it;
-				if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
+				if (!this->IsEditableItem(config_item)) return;
 
 				if (this->clicked_row != num) {
 					DeleteChildWindows(WC_QUERY_STRING);
@@ -505,7 +506,7 @@ struct AISettingsWindow : public Window {
 					if (new_val != old_val) {
 						this->ai_config->SetSetting(config_item.name, new_val);
 						this->clicked_button = num;
-						this->timeout = 5;
+						this->timeout.SetInterval(150);
 					}
 				} else if (!bool_item && !config_item.complete_labels) {
 					/* Display a query box so users can enter a custom value. */
@@ -568,9 +569,9 @@ struct AISettingsWindow : public Window {
 		this->vscroll->SetCapacityFromWidget(this, WID_AIS_BACKGROUND);
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
-		if (--this->timeout == 0) {
+		if (this->timeout.Elapsed(delta_ms)) {
 			this->clicked_button = -1;
 			this->SetDirty();
 		}
@@ -584,6 +585,12 @@ struct AISettingsWindow : public Window {
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		this->RebuildVisibleSettings();
+	}
+
+private:
+	bool IsEditableItem(const ScriptConfigItem config_item) const
+	{
+		return _game_mode == GM_MENU || ((this->slot != OWNER_DEITY) && !Company::IsValidID(this->slot)) || (config_item.flags & SCRIPTCONFIG_INGAME) != 0;
 	}
 };
 
@@ -653,7 +660,7 @@ struct ScriptTextfileWindow : public TextfileWindow {
  */
 void ShowScriptTextfileWindow(TextfileType file_type, CompanyID slot)
 {
-	DeleteWindowByClass(WC_TEXTFILE);
+	DeleteWindowById(WC_TEXTFILE, file_type);
 	new ScriptTextfileWindow(file_type, slot);
 }
 
@@ -868,7 +875,6 @@ struct AIConfigWindow : public Window {
 					new_value = min(MAX_COMPANIES - 1, GetGameSettings().difficulty.max_no_competitors + 1);
 				}
 				IConsoleSetSetting("difficulty.max_no_competitors", new_value);
-				this->InvalidateData();
 				break;
 			}
 
@@ -1276,8 +1282,8 @@ struct AIDebugWindow : public Window {
 			case WID_AID_RELOAD_TOGGLE:
 				if (ai_debug_company == OWNER_DEITY) break;
 				/* First kill the company of the AI, then start a new one. This should start the current AI again */
-				DoCommandP(0, 2 | ai_debug_company << 16, CRR_MANUAL, CMD_COMPANY_CTRL);
-				DoCommandP(0, 1 | ai_debug_company << 16, 0, CMD_COMPANY_CTRL);
+				DoCommandP(0, CCA_DELETE | ai_debug_company << 16, CRR_MANUAL, CMD_COMPANY_CTRL);
+				DoCommandP(0, CCA_NEW_AI | ai_debug_company << 16, 0, CMD_COMPANY_CTRL);
 				break;
 
 			case WID_AID_SETTINGS:

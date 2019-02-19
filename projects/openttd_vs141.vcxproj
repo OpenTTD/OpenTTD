@@ -521,6 +521,7 @@
     <ClInclude Include="..\src\group_gui.h" />
     <ClInclude Include="..\src\group_type.h" />
     <ClInclude Include="..\src\gui.h" />
+    <ClInclude Include="..\src\guitimer_func.h" />
     <ClInclude Include="..\src\heightmap.h" />
     <ClInclude Include="..\src\highscore.h" />
     <ClInclude Include="..\src\hotkeys.h" />
@@ -1200,8 +1201,8 @@
     <ClInclude Include="..\src\blitter\8bpp_optimized.hpp" />
     <ClCompile Include="..\src\blitter\8bpp_simple.cpp" />
     <ClInclude Include="..\src\blitter\8bpp_simple.hpp" />
-    <ClCompile Include="..\src\blitter\base.cpp" />
     <ClInclude Include="..\src\blitter\base.hpp" />
+    <ClInclude Include="..\src\blitter\common.hpp" />
     <ClInclude Include="..\src\blitter\factory.hpp" />
     <ClCompile Include="..\src\blitter\null.cpp" />
     <ClInclude Include="..\src\blitter\null.hpp" />
@@ -1344,12 +1345,24 @@
       <Project>{0f066b23-18df-4284-8265-f4a5e7e3b966}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="settingsgen_vs141.vcxproj">
+      <Project>{e9548de9-f089-49b7-93a6-30be2cc311c7}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="settings_vs141.vcxproj">
+      <Project>{0817f629-589e-4a3b-b81a-8647bc571e35}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
     <ProjectReference Include="strgen_vs141.vcxproj">
       <Project>{a133a442-bd0a-4ade-b117-ad7545e4bdd1}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="version_vs141.vcxproj">
       <Project>{1a2b3c5e-1c23-41a5-9c9b-acba2aa75fec}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="basesets_vs141.vcxproj">
+      <Project>{e12e77ca-c0f1-4ada-943f-4929274249d3}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>

@@ -29,7 +29,7 @@ english.txt to work. Below are some examples of strgen usage.
 1.1) Examples
 ---- --------
 Example 1:
-if you are in the root of your working copy (svn code), you should type
+if you are in the root of your working copy (git repository), you should type
 strgen/strgen -s lang lang/english.txt
 to compile englist.txt into english.lng. It will be placed in the lang dir
 
@@ -50,7 +50,7 @@ You can interchange english.txt to whichever language you want to generate a
 1.2) strgen command switches
 ---- -----------------------
 -v | --version
-strgen will tell what svn revision it was last modified
+strgen will tell what git revision it was last modified
 
 -t | --todo
 strgen will add <TODO> to any untranslated/missing strings and use the english

@@ -315,6 +315,8 @@ STR_COLOUR_ORANGE                                               :Оранжев�
 STR_COLOUR_BROWN                                                :Коричневый
 STR_COLOUR_GREY                                                 :Серый
 STR_COLOUR_WHITE                                                :Белый
+STR_COLOUR_RANDOM                                               :Случайный
+STR_COLOUR_DEFAULT                                              :По умолчанию
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}мил{P я и ь}/ч
@@ -590,6 +592,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Звук/муз
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Последняя новость
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :История сообщений
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Удалить все сообщения
 ############ range ends here
 
 ############ range for about menu starts
@@ -601,7 +604,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Снимок э
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Снимок экрана в макс. приближении
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Снимок экрана в обычном масштабе
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Снимок всей карты
-STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Показать кол-во кадров/с
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Информация о скорости игры
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Об игре
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Выравнивание спрайтов
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Переключить ограничивающие рамки
@@ -1074,6 +1077,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Своя...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузинский лари (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Иранский риал (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Российский новый рубль (RUR)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Мексиканский песо (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Движение автомобилей
@@ -1410,6 +1414,9 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Изме
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Обслуживание инфраструктуры: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Включает затраты на содержание инфраструктуры. Стоимость непропорционально увеличивается с ростом транспортной сети, оказывая, таким образом, большее влияние на крупные компании, чем на малые.
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Фирменный цвет компании: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Выберите начальный фирменный цвет компании
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аэропорты не устаревают: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :При включении все типы аэропортов доступны для строительства в любое время после их первоначального появления
 
@@ -1533,7 +1540,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Выкл.
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Закрывать окна щелчком ПКМ: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Закрывать окно щелчком правой кнопкой мыши в его пределах. При этом отключается появление подсказок по правой кнопке.
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Автосохранения: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE                                     :Автосохранение: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Укажите интервал между автоматическими сохранениями
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Использовать {STRING} формат даты для имён сохранений
@@ -1645,7 +1652,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Первое т
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Показывать новости о первом транспортном средстве, прибывающем на станцию конкурента
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Аварии и катастрофы: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Показывать новости об авариях и катастрофах
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информация о Компании: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информация о компании: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Показывать новости об основании и риске банкротства транспортных компаний
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Открытие предприятий: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Показывать новости об открывающихся предприятиях
@@ -1967,7 +1974,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Изме
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Разрешить изменение производительности: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Новая цветовая схема
+STR_LIVERY_CAPTION                                              :{WHITE}Цвета компании «{COMPANY}»
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Настройка основной цветовой схемы
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Настройка цветовой схемы поездов
@@ -2227,11 +2234,12 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Откл
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сервер защищён. Введите пароль.
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компания защищена. Введите пароль.
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Список клиентов
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Список клиентов
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Наблюдать
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Новая компания
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Список клиентов
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Наблюдать
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Новая компания
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Отключить
@@ -2246,7 +2254,6 @@ STR_NETWORK_CLIENT                                              :Клиент
 STR_NETWORK_SPECTATORS                                          :Наблюдатели
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введите сумму денег, которую вы хотите передать
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Наблюдатель
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не сохранять пароль
@@ -2361,7 +2368,7 @@ STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Наим
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Нажмите на строке для просмотра подробностей{}Отметьте чекбокс для загрузки
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Выбрать всё
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Пометить весь контент для загрузки
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Выбрать обновл.
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Выбрать обновления
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Отметить для загрузки обновления для имеющегося контента
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Снять выделение
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Ничего не загружать
@@ -2552,9 +2559,9 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Комб
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Маршрутный светофор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Допускает следование поездов в обе стороны.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Односторонний маршрутн. светофор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Не допускает следования поездов в обратную сторону.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Изменение типа сигнала{}Когда кнопка нажата, щёлкните для преобразования существующего сигнала в сигнал выбранного типа и варианта, или щёлкните с нажатым Ctrl для перебора существующих вариантов. Shift+щелчок - оценка стоимости преобразования.
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Плотность расстановки сигналов при протягивании.
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Уменьшить плотность сигналов при протягивании
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Увеличить плотность сигналов при протягивании
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Расстояние между сигналами при протягивании.
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Уменьшить расстояние между сигналами при протягивании
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Увеличить расстояние между сигналами при протягивании
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Выберите железнодорожный мост
@@ -2878,12 +2885,19 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Земля в �
 STR_ABOUT_OPENTTD                                               :{WHITE}Об OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Оригинальные авторские права {COPYRIGHT} 1995 Chris Sawyer. Все права защищены.
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD версия {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Команда разработчиков OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 Команда разработчиков OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Скорость игры
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Скорость расчёта игры: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Кол-во игровых циклов, рассчитываемых в секунду.
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Вывод на экран: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Кол-во отображаемых кадров в секунду.
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Текущая скорость игры: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Фактическая скорость игры
+STR_FRAMERATE_CURRENT                                           :{WHITE}Сейчас
+STR_FRAMERATE_AVERAGE                                           :{WHITE}В среднем
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Данные по {COMMA} измерени{P ю ям ям}
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} мс
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} мс
@@ -2894,11 +2908,32 @@ STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} 
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} мс
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} с
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Расчёт игрового цикла:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} Расчёт объёмов груза:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Движение поездов:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Движение автомобилей:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK} Движение кораблей:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Движение воздушных судов:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Изменения на карте:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Задержка графа распределения:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Отрисовка изображения:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Дополнительные окна:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Вывод на экран:
+STR_FRAMERATE_SOUND                                             :{BLACK}Обработка звука:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Расчёт игрового цикла
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Расчёт объёмов груза
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Движение поездов
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Движение автомобилей
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Движение кораблей
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Движение воздушных судов
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Расчёт изменений на карте
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Задержка графа распределения
-STR_FRAMETIME_CAPTION_DRAWING                                   :Отрисовка графики
+STR_FRAMETIME_CAPTION_DRAWING                                   :Отрисовка изображения
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Отрисовка изображения в доп. окнах
+STR_FRAMETIME_CAPTION_VIDEO                                     :Вывод на экран
+STR_FRAMETIME_CAPTION_SOUND                                     :Обработка звука
 ############ End of leave-in-this-order
 
 
@@ -2924,6 +2959,9 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Инфо
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Нет информации.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Фильтр:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Перезапись файла
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Перезаписать файл?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Введите название сохраняемой игры
 
@@ -3041,7 +3079,12 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Верс
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Совместимо с версией не ниже: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Палитра: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Стандартная (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Стандартная (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Устаревшая (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Устаревшая (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Параметры: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Нет
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Нет доступной информации
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Файл не найден
@@ -3122,6 +3165,8 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Чтение з
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Запрошенные ресурсы GRF недоступны (спрайт {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} был отключён из-за {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Недопустимый/неизвестный формат расположения спрайтов (спрайт {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Слишком много элементов в списке значений (спрайт {3:NUM}, свойство {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Неверная обработка продукции предприятия (спрайт {3:NUM}, "{1:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Осторожно!
@@ -3247,6 +3292,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Дат�
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Задачи компании «{COMPANY}»
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глобальные задачи
+STR_GOALS_SPECTATOR                                             :Общие задачи
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Общие задачи:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Нет -
@@ -3295,6 +3341,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Нажм
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}История компании «{COMPANY}»
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Мировая история
+STR_STORY_BOOK_SPECTATOR                                        :Мировая история
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Стр. {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Перейти на нужную страницу, выбрав её в выпадающем списке.
@@ -3499,20 +3546,13 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Пока
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Производительность: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Предприятие скоро закрывается!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Требуется: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Требуется: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Требуется: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Требует: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Производит: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Требуется:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} ожидает{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Производит: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Производит: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Изменить производительность (кратно 8, до 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Изменить производительность (в процентах, до 800%)
@@ -3566,6 +3606,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Щёлк
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Создать группу
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Удалить выбранную группу
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Переименовать выбранную группу
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Изменить цвет выбранной группы
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Защита транспорта в группе от глобальной автозамены
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Удаление группы
@@ -3609,6 +3650,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ёмко
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ведущие вагоны: {GOLD}+{POWER}{BLACK} Вес: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Может перевозить: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Все типы грузов
+STR_PURCHASE_INFO_NONE                                          :Нет
 STR_PURCHASE_INFO_ALL_BUT                                       :Всё, кроме {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. тяговое усилие: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальность: {GOLD}{COMMA} клет{P ка ки ок}
@@ -4018,6 +4060,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Возраст 
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Требуется обслуживание
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Всегда
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Оставшийся срок службы (лет)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Максимальная надёжность
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Условие перехода
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :равно

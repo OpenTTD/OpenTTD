@@ -190,6 +190,7 @@ STR_COLOUR_ORANGE                                               :Naranja
 STR_COLOUR_BROWN                                                :Marrón
 STR_COLOUR_GREY                                                 :Gris
 STR_COLOUR_WHITE                                                :Blanco
+STR_COLOUR_RANDOM                                               :Aleatorio
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -374,7 +375,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Salir
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opciones de juego
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Configuración
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configuración de scripts
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configuración de Scripts
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configuración NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opciones de transparencia
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Ver nombres de municipios
@@ -930,6 +931,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizada..
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiano (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraní (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nuevo Rublo Ruso (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso mexicano (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vehículos de carretera
@@ -1072,7 +1074,7 @@ STR_RIVERS_FEW                                                  :Pocos
 STR_RIVERS_MODERATE                                             :Medio
 STR_RIVERS_LOT                                                  :Muchos
 
-STR_DISASTER_NONE                                               :Ninguna
+STR_DISASTER_NONE                                               :Ninguno
 STR_DISASTER_REDUCED                                            :Reducidas
 STR_DISASTER_NORMAL                                             :Normales
 
@@ -1258,6 +1260,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite constru
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Cambiar esta opción no es posible cuando ya existen vehículos
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Mantenimiento de infraestructuras: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Cuando se activa, las infraestructuras tienen costes de mantenimiento. Los costes de la infraestructura aumentan con el tamaño de la red, con lo cual afectan a compañías grandes en mayor grado que a las pequeñas
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeropuertos nunca caducan: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Permite a todos los aeropuertos estar disponibles permanentemente una vez han sido introducidos
@@ -1527,7 +1530,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Cuando se activ
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentaje del beneficio total a pagar en transferencias: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentaje de los beneficios dados a los transportes intermedios en sistemas de transferencias, dando un mayor control sobre el beneficio de cada vehículo
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Al arrastrar, colocar señales cada: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Fija la distancia de separación entre señales al construir señales hasta el próximo obstáculo al arrastrar el ratón
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Fija la distancia a la que se construirán las señales hasta el próximo obstáculo (señal, cruce), si estas son arrastradas
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} casilla{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Al arrastrar, mantener distancia fija entre señales: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Fija el comportamiento de la construcción de señales cuando se usa Ctrl+Arrastrar. Si se deshabilita, se colocan señales cerca de túneles y puentes para evitar largos trozos de vía sin señales. Si se activa, se colocan señales cada N casillas, haciendo que el alineamiento de vías paralelas sea más sencillo
@@ -1595,7 +1598,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocidad crecimiento población: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocidad de crecimiento de los municipios
-STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ninguna
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ninguno
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lenta
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rápida
@@ -1810,7 +1813,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambiar 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir modificación de los valores de producción: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nuevo Esquema de Color
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Esquema de Color
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Mostrar esquema de colores general
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Ver esquema de color de los trenes
@@ -2072,9 +2075,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Introduzca la contraseña
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Lista de clientes
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Presenciar
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nueva empresa
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de clientes
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Presenciar
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nueva empresa
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Expulsar
@@ -2089,7 +2092,6 @@ STR_NETWORK_CLIENT                                              :Cliente
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introduce la cantidad de dinero que deseas dar
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Espectador
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No guardar la contraseña introducida
@@ -2371,9 +2373,9 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Señal c
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Señal de ruta (eléctrica){}Una señal de ruta permite a más de un tren entrar a un bloque de señales a la vez, si el tren puede reservar una ruta hasta un lugar seguro. Pueden ser traspasadas desde atrás
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Señal de ruta de un sentido (eléctrica){}Una señal de ruta permite a más de un tren entrar a un bloque de señales a la vez, si el tren puede reservar una ruta hasta un lugar seguro. No pueden ser traspasadas desde atrás
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Convertir señal{}Cuando es seleccionado, pulsar sobre una señal existente la convierte en el tipo y variante indicados. Pulsar Ctrl+Click permite cambiar de variante. Shift+Click muestra una estimación del precio de conversión
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densidad de arrastre de señales
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Reducir arrastre de intensidad de señales
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Incrementar arrastre de intensidad de señales
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distancia del arrastre de señales
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Reducir distancia del arrastre de señales
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Incrementar distancia del arrastre de señales
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Seleccione Puente de Ferrocarril
@@ -2693,7 +2695,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terreno propied
 STR_ABOUT_OPENTTD                                               :{WHITE}Acerca de OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright Original {COPYRIGHT} 1995 Chris Sawyer, Todos los derechos reservados
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versión {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 El equipo OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 El equipo OpenTTD
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Fotogramas por segundo - FPS
@@ -2715,8 +2717,13 @@ STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Ticks 
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Ticks de barcos:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Ticks de aeronaves:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Renderizado gráfico:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Salida de vídeo:
+STR_FRAMERATE_SOUND                                             :{BLACK}Mezcla de sonido:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Ticks de trenes
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ticks de barcos
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ticks de aeronaves
 STR_FRAMETIME_CAPTION_DRAWING                                   :Renderizado gráfico
 STR_FRAMETIME_CAPTION_VIDEO                                     :Salida de vídeo
 STR_FRAMETIME_CAPTION_SOUND                                     :Mezcla de sonido
@@ -2863,7 +2870,10 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versión
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Mín. versión compatible: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Por Defecto (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Por Defecto (D) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parámetros: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Ninguno
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}No hay información disponible
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Archivo no encontrado
@@ -3322,20 +3332,12 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar 
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de producción: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}La industria ha anunciado su cierre inminente!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Requiere: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Necesita: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Requiere: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Requiere: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce: {YELLOW}{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necesita:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} esperando{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produce: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produce: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambiar producción (múltiplo de 8, máximo 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Cambiar nivel de producción (porcentaje, hasta un máximo de 800%)
@@ -3831,6 +3833,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Edad (años)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requiere mantenimiento
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Siempre
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tiempo de vida restante (años)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Fiabilidad máxima
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar los datos del vehículo al valor dado
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :es igual a
@@ -4020,7 +4023,7 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Comproba
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró IA apropiada para cargar.{}Ésta es una IA por defecto que no realiza acción alguna.{}Puedes descargar nuevas IA mediante el sistema de 'Contenido Online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno de los scripts ejecutados ha fallado. Por favor, informe del fallo al autor del script con una captura de la ventana de depuración de Script / IA
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La ventana de depuración de scripts solo está disponible para el servidor
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La ventana de depuración de Scripts solo está disponible para el servidor
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuración de Scripts de Juego / IA

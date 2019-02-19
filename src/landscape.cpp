@@ -90,6 +90,70 @@ extern const byte _slope_to_sprite_offset[32] = {
 static SnowLine *_snow_line = NULL;
 
 /**
+ * Map 2D viewport or smallmap coordinate to 3D world or tile coordinate.
+ * Function takes into account height of tiles and foundations.
+ *
+ * @param x X viewport 2D coordinate.
+ * @param y Y viewport 2D coordinate.
+ * @param clamp_to_map Clamp the coordinate outside of the map to the closest, non-void tile within the map.
+ * @param[out] clamped Whether coordinates were clamped.
+ * @return 3D world coordinate of point visible at the given screen coordinate (3D perspective).
+ *
+ * @note Inverse of #RemapCoords2 function. Smaller values may get rounded.
+ * @see InverseRemapCoords
+ */
+Point InverseRemapCoords2(int x, int y, bool clamp_to_map, bool *clamped)
+{
+	if (clamped != NULL) *clamped = false; // Not clamping yet.
+
+	/* Initial x/y world coordinate is like if the landscape
+	 * was completely flat on height 0. */
+	Point pt = InverseRemapCoords(x, y);
+
+	const uint min_coord = _settings_game.construction.freeform_edges ? TILE_SIZE : 0;
+	const uint max_x = MapMaxX() * TILE_SIZE - 1;
+	const uint max_y = MapMaxY() * TILE_SIZE - 1;
+
+	if (clamp_to_map) {
+		/* Bring the coordinates near to a valid range. At the top we allow a number
+		 * of extra tiles. This is mostly due to the tiles on the north side of
+		 * the map possibly being drawn higher due to the extra height levels. */
+		int extra_tiles = CeilDiv(_settings_game.construction.max_heightlevel * TILE_HEIGHT, TILE_PIXELS);
+		Point old_pt = pt;
+		pt.x = Clamp(pt.x, -extra_tiles * TILE_SIZE, max_x);
+		pt.y = Clamp(pt.y, -extra_tiles * TILE_SIZE, max_y);
+		if (clamped != NULL) *clamped = (pt.x != old_pt.x) || (pt.y != old_pt.y);
+	}
+
+	/* Now find the Z-world coordinate by fix point iteration.
+	 * This is a bit tricky because the tile height is non-continuous at foundations.
+	 * The clicked point should be approached from the back, otherwise there are regions that are not clickable.
+	 * (FOUNDATION_HALFTILE_LOWER on SLOPE_STEEP_S hides north halftile completely)
+	 * So give it a z-malus of 4 in the first iterations. */
+	int z = 0;
+	if (clamp_to_map) {
+		for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(pt.x + max(z, 4) - 4, min_coord, max_x), Clamp(pt.y + max(z, 4) - 4, min_coord, max_y)) / 2;
+		for (int m = 3; m > 0; m--) z = GetSlopePixelZ(Clamp(pt.x + max(z, m) - m, min_coord, max_x), Clamp(pt.y + max(z, m) - m, min_coord, max_y)) / 2;
+		for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(pt.x + z,             min_coord, max_x), Clamp(pt.y + z,             min_coord, max_y)) / 2;
+	} else {
+		for (int i = 0; i < 5; i++) z = GetSlopePixelZOutsideMap(pt.x + max(z, 4) - 4, pt.y + max(z, 4) - 4) / 2;
+		for (int m = 3; m > 0; m--) z = GetSlopePixelZOutsideMap(pt.x + max(z, m) - m, pt.y + max(z, m) - m) / 2;
+		for (int i = 0; i < 5; i++) z = GetSlopePixelZOutsideMap(pt.x + z,             pt.y + z            ) / 2;
+	}
+
+	pt.x += z;
+	pt.y += z;
+	if (clamp_to_map) {
+		Point old_pt = pt;
+		pt.x = Clamp(pt.x, min_coord, max_x);
+		pt.y = Clamp(pt.y, min_coord, max_y);
+		if (clamped != NULL) *clamped = *clamped || (pt.x != old_pt.x) || (pt.y != old_pt.y);
+	}
+
+	return pt;
+}
+
+/**
  * Applies a foundation to a slope.
  *
  * @pre      Foundation and slope must be valid combined.
@@ -282,6 +346,23 @@ int GetSlopePixelZ(int x, int y)
 	TileIndex tile = TileVirtXY(x, y);
 
 	return _tile_type_procs[GetTileType(tile)]->get_slope_z_proc(tile, x, y);
+}
+
+/**
+ * Return world \c z coordinate of a given point of a tile,
+ * also for tiles outside the map (virtual "black" tiles).
+ *
+ * @param x World X coordinate in tile "units", may be ouside the map.
+ * @param y World Y coordinate in tile "units", may be ouside the map.
+ * @return World Z coordinate at tile ground level, including slopes and foundations.
+ */
+int GetSlopePixelZOutsideMap(int x, int y)
+{
+	if (IsInsideBS(x, 0, MapSizeX() * TILE_SIZE) && IsInsideBS(y, 0, MapSizeY() * TILE_SIZE)) {
+		return GetSlopePixelZ(x, y);
+	} else {
+		return _tile_type_procs[MP_VOID]->get_slope_z_proc(INVALID_TILE, x, y);
+	}
 }
 
 /**
@@ -760,22 +841,17 @@ void RunTileLoop()
 
 void InitializeLandscape()
 {
-	uint maxx = MapMaxX();
-	uint maxy = MapMaxY();
-	uint sizex = MapSizeX();
-
-	uint y;
-	for (y = _settings_game.construction.freeform_edges ? 1 : 0; y < maxy; y++) {
-		uint x;
-		for (x = _settings_game.construction.freeform_edges ? 1 : 0; x < maxx; x++) {
-			MakeClear(sizex * y + x, CLEAR_GRASS, 3);
-			SetTileHeight(sizex * y + x, 0);
-			SetTropicZone(sizex * y + x, TROPICZONE_NORMAL);
-			ClearBridgeMiddle(sizex * y + x);
+	for (uint y = _settings_game.construction.freeform_edges ? 1 : 0; y < MapMaxY(); y++) {
+		for (uint x = _settings_game.construction.freeform_edges ? 1 : 0; x < MapMaxX(); x++) {
+			MakeClear(TileXY(x, y), CLEAR_GRASS, 3);
+			SetTileHeight(TileXY(x, y), 0);
+			SetTropicZone(TileXY(x, y), TROPICZONE_NORMAL);
+			ClearBridgeMiddle(TileXY(x, y));
 		}
-		MakeVoid(sizex * y + x);
 	}
-	for (uint x = 0; x < sizex; x++) MakeVoid(sizex * y + x);
+
+	for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, MapMaxY()));
+	for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(MapMaxX(), y));
 }
 
 static const byte _genterrain_tbl_1[5] = { 10, 22, 33, 37, 4  };
@@ -1017,7 +1093,7 @@ static bool FlowsDown(TileIndex begin, TileIndex end)
 }
 
 /* AyStar callback for checking whether we reached our destination. */
-static int32 River_EndNodeCheck(AyStar *aystar, OpenListNode *current)
+static int32 River_EndNodeCheck(const AyStar *aystar, const OpenListNode *current)
 {
 	return current->path.node.tile == *(TileIndex*)aystar->user_target ? AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
 }

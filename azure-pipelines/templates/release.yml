@@ -1,0 +1,172 @@
+parameters:
+  # If this is false, not all targets are triggered. For example:
+  # The NSIS installer for Windows and the creation of debs only work for
+  # releases. Not for any other type of binary. So they are skilled if this
+  # is set to false.
+  IsStableRelease: false
+
+jobs:
+- job: source
+  displayName: 'Source'
+  pool:
+    vmImage: 'ubuntu-16.04'
+
+  steps:
+  - template: release-prepare-source.yml
+  - script: |
+      set -ex
+
+      # Rename the folder to openttd-NNN-source
+      mkdir openttd-$(Build.BuildNumber)
+      find . -maxdepth 1 -not -name . -not -name openttd-$(Build.BuildNumber) -exec mv {} openttd-$(Build.BuildNumber)/ \;
+      # Copy back release_date, as it is needed for the template 'release-bundles'
+      cp openttd-$(Build.BuildNumber)/.release_date .release_date
+
+      mkdir bundles
+      tar --xz -cf bundles/openttd-$(Build.BuildNumber)-source.tar.xz openttd-$(Build.BuildNumber)
+      zip -9 -r -q bundles/openttd-$(Build.BuildNumber)-source.zip openttd-$(Build.BuildNumber)
+    displayName: 'Create bundle'
+  - template: release-bundles.yml
+
+- job: meta
+  displayName: 'Metadata'
+  pool:
+    vmImage: 'ubuntu-16.04'
+  dependsOn: source
+
+  steps:
+  - template: release-fetch-source.yml
+  - script: |
+      set -ex
+
+      mkdir -p bundles
+      cp .changelog bundles/changelog.txt
+      cp .release_date bundles/released.txt
+      cp README.md bundles/README.md
+    displayName: 'Copy meta files'
+  - template: release-bundles.yml
+    parameters:
+      CalculateChecksums: false
+
+- job: docs
+  displayName: 'Docs'
+  pool:
+    vmImage: 'ubuntu-16.04'
+  dependsOn: source
+
+  steps:
+    - template: release-fetch-source.yml
+    - template: linux-build.yml
+      parameters:
+        Image: compile-farm
+        ContainerCommand: '$(Build.BuildNumber)'
+        Tag: docs
+    - template: linux-claim-bundles.yml
+    - template: release-bundles.yml
+
+- job: windows
+  displayName: 'Windows'
+  pool:
+    vmImage: 'VS2017-Win2016'
+  dependsOn: source
+
+  strategy:
+    matrix:
+      Win32:
+        BuildPlatform: 'Win32'
+        BundlePlatform: 'win32'
+      Win64:
+        BuildPlatform: 'x64'
+        BundlePlatform: 'win64'
+
+  steps:
+  - template: release-fetch-source.yml
+  - template: windows-dependencies.yml
+  - template: windows-dependency-zip.yml
+  - ${{ if eq(parameters.IsStableRelease, true) }}:
+    - template: windows-dependency-nsis.yml
+  - template: windows-build.yml
+    parameters:
+      BuildPlatform: $(BuildPlatform)
+  - bash: |
+      set -ex
+      make -f Makefile.msvc bundle_pdb bundle_zip PLATFORM=$(BundlePlatform) BUNDLE_NAME=openttd-$(Build.BuildNumber)-windows-$(BundlePlatform)
+    displayName: 'Create bundles'
+  - ${{ if eq(parameters.IsStableRelease, true) }}:
+    - bash: |
+        set -ex
+        # NSIS will be part of the Hosted image in the next update. Till then, we set the PATH ourself
+        export PATH="${PATH}:/c/Program Files (x86)/NSIS"
+        make -f Makefile.msvc bundle_exe PLATFORM=$(BundlePlatform) BUNDLE_NAME=openttd-$(Build.BuildNumber)-windows-$(BundlePlatform)
+      displayName: 'Create installer bundle'
+  - template: release-bundles.yml
+
+- ${{ if eq(parameters.IsStableRelease, true) }}:
+  - job: linux_stable
+    displayName: 'Linux'
+    pool:
+      vmImage: 'ubuntu-16.04'
+    dependsOn: source
+
+    strategy:
+      matrix:
+        linux-ubuntu-xenial-i386-gcc: {}
+        linux-ubuntu-xenial-amd64-gcc: {}
+        linux-ubuntu-bionic-i386-gcc: {}
+        linux-ubuntu-bionic-amd64-gcc: {}
+        linux-debian-jessie-i386-gcc: {}
+        linux-debian-jessie-amd64-gcc: {}
+        linux-debian-stretch-i386-gcc: {}
+        linux-debian-stretch-amd64-gcc: {}
+
+    steps:
+    - template: release-fetch-source.yml
+    - template: linux-build.yml
+      parameters:
+        Image: compile-farm
+        ContainerCommand: '$(Build.BuildNumber)'
+        Tag: $(Agent.JobName)
+    - template: linux-claim-bundles.yml
+    - template: release-bundles.yml
+
+- job: macos
+  displayName: 'MacOS'
+  pool:
+    vmImage: 'macOS-10.13'
+  dependsOn: source
+
+  steps:
+  - template: release-fetch-source.yml
+  - template: osx-dependencies.yml
+  - template: osx-build.yml
+  - script: 'make bundle_zip bundle_dmg BUNDLE_NAME=openttd-$(Build.BuildNumber)-macosx'
+    displayName: 'Create bundles'
+  - template: release-bundles.yml
+
+- job: manifest
+  displayName: 'Manifest'
+  pool:
+    vmImage: 'ubuntu-16.04'
+  dependsOn:
+  - source
+  - docs
+  - windows
+  - ${{ if eq(parameters.IsStableRelease, true) }}:
+    - linux_stable
+  - macos
+  # "Skipped" is not a status, and is not succeeded. So it seems to be
+  # considered failed. So we trigger if all the earlier jobs are done (which
+  # might be succeeded, failed, or skipped), and run this job. This is not
+  # optimal, but given the rules, it is the only way to get this to work (as
+  # some jobs might be skipped).
+  condition: succeededOrFailed()
+
+  steps:
+  - template: release-fetch-source.yml
+  - template: release-manifest.yml
+    ${{ if eq(parameters.IsStableRelease, true) }}:
+      parameters:
+        IsStableRelease: true
+  - template: release-bundles.yml
+    parameters:
+      CalculateChecksums: false

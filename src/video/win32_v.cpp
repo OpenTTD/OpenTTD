@@ -238,7 +238,7 @@ int RedrawScreenDebug()
 #define TID_POLLMOUSE 1
 #define MOUSE_POLL_DELAY 75
 
-static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT event, DWORD time)
+static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT_PTR event, DWORD time)
 {
 	RECT rc;
 	POINT pt;
@@ -636,7 +636,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 	switch (msg) {
 		case WM_CREATE:
-			SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
+			SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, TrackMouseTimerProc);
 			SetCompositionPos(hwnd);
 			_imm_props = ImmGetProperty(GetKeyboardLayout(0), IGP_PROPERTY);
 			break;
@@ -741,7 +741,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 					_pTrackMouseEvent(&tme);
 				} else {
-					SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
+					SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, TrackMouseTimerProc);
 				}
 			}
 

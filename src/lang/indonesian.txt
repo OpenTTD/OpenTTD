@@ -1256,6 +1256,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tidak di
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Pemeliharaan Infrastruktur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Jika dinyalakan, infrastruktur membutuhkan biaya pemeliharaan. Biaya berkembang secara proporsional sesuai dengan ukuran jaringan, lebih berdampak pada perusahaan besar dari pada perusahaan kecil
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Bandara tidak kedaluarsa: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Menyalakan setelan ini membuat semua jenis bandara tetap ada selamanya sejak pendesainanya
 
@@ -1809,7 +1810,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ubah tah
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktifkan modifikasi nilai produksi: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Warna tema baru
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Tampilkan skema warna umum
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Tampilkan skema warna kereta
@@ -2071,9 +2071,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server t
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Perusahaan terkunci, masukkan kata kunci
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Daftar klien
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Menonton
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Buat Perusahaan
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Daftar klien
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Menonton
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Buat Perusahaan
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Usir
@@ -2088,7 +2088,6 @@ STR_NETWORK_CLIENT                                              :Klien
 STR_NETWORK_SPECTATORS                                          :Penonton
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Masukkan jumlah uang yang akan diberikan
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Pengamat
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Jangan simpan kata sandi yang telah dimasukkan
@@ -2692,7 +2691,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Tanah milik Per
 STR_ABOUT_OPENTTD                                               :{WHITE}Tentang OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Hak Cipta asli {COPYRIGHT} 1995 Chris Sawyer, Hak Cipta dilindungi
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versi {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 Tim OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 Tim OpenTTD
 
 # Framerate display window
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
@@ -3318,19 +3317,9 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Arahkan 
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tingkat produksi: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industri akan segera ditutup!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Membutuhkan: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Membutuhkan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Membutuhkan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Membutuhkan:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} menunggu{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Menghasilkan: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Menghasilkan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Perubahan produksi (kelipatan 8, hingga 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ubah tingkat produksi (dalam persen, hingga 800%)

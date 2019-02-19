@@ -63,6 +63,7 @@ static const CurrencySpec origin_currency_specs[CURRENCY_END] = {
 	{    3, "", CF_NOEURO, "",             NBSP "GEL",       1, STR_GAME_OPTIONS_CURRENCY_GEL    }, ///< Georgian Lari
 	{ 4901, "", CF_NOEURO, "",             NBSP "Rls",       1, STR_GAME_OPTIONS_CURRENCY_IRR    }, ///< Iranian Rial
 	{   80, "", CF_NOEURO, "",             NBSP "rub",       1, STR_GAME_OPTIONS_CURRENCY_RUB    }, ///< New Russian Ruble
+	{   24, "", CF_NOEURO, "$",            "",               0, STR_GAME_OPTIONS_CURRENCY_MXN    }, ///< Mexican peso
 };
 
 /** Array of currencies used by the system */

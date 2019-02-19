@@ -1568,6 +1568,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Зьме
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Утрыманьне iнфраструктуры: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Калі ўключана, інфраструктура патрабуе выдаткаў на ўтрыманьне. Кошт расьце прапарцыянальна памерам сеткі, таму гэта больш датычыць вялікіх кампаніяў, ніж малых.
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Малыя аэрапорты ніколі не састарэюць: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Уключэньне гэтай наладкі робіць усе віды аэрапортаў даступнымі назаўжды.
 
@@ -2125,7 +2126,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Зьмя
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Дазволіць зьмяненьне прадукцыйнасьці: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Новая каляровая схэма
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Паказаць асноўныя каляровыя схэмы
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Паказаць каляровыя схэмы цягнікоў
@@ -2387,9 +2387,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сэрв
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Кампанія абароненая. Увядзіце пароль
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Сьпіс кліентаў
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Назіраць
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Новая кампанія
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Сьпіс кліентаў
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Назіраць
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Новая кампанія
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Выкінуць гульца
@@ -2404,7 +2404,6 @@ STR_NETWORK_CLIENT                                              :Кліент
 STR_NETWORK_SPECTATORS                                          :Назіральнікі
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Увядзіце суму грошай, якую вы хочаце перадаць
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Назіральнік
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не захоўваць уведзены пароль
@@ -3028,7 +3027,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Зямля на
 STR_ABOUT_OPENTTD                                               :{WHITE}Аб OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Арыґінальныя аўтарскія правы {COPYRIGHT} 1995 Chris Sawyer. Усе правы абароненыя.
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD вэрсія {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002–2018 Каманда распрацоўнікаў OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002–2019 Каманда распрацоўнікаў OpenTTD
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -3634,20 +3633,10 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Пака
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Прадукцыйнасьць: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Прадпрыемства хутка закрываецца!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Патрабуецца: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Патрабуецца: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Патрабуецца: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Патрабуецца:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} чакае{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Вырабляе: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Вырабляе: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Зьмяніць прадукцыйнасьць (кратна 8, да 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Зьмяніць прадукцыйнасьць (у адсотках, да 800%)

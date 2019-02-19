@@ -37,6 +37,7 @@
 #include "core/backup_type.hpp"
 #include "zoom_func.h"
 #include "disaster_vehicle.h"
+#include "newgrf_airporttiles.h"
 #include "framerate_type.h"
 
 #include "table/strings.h"
@@ -127,16 +128,15 @@ static StationID FindNearestHangar(const Aircraft *v)
 	const AircraftVehicleInfo *avi = AircraftVehInfo(v->engine_type);
 
 	FOR_ALL_STATIONS(st) {
-		if (st->owner != v->owner || !(st->facilities & FACIL_AIRPORT)) continue;
+		if (st->owner != v->owner || !(st->facilities & FACIL_AIRPORT) || !st->airport.HasHangar()) continue;
 
 		const AirportFTAClass *afc = st->airport.GetFTA();
-		if (!st->airport.HasHangar() || (
-					/* don't crash the plane if we know it can't land at the airport */
-					(afc->flags & AirportFTAClass::SHORT_STRIP) &&
-					(avi->subtype & AIR_FAST) &&
-					!_cheats.no_jetcrash.value)) {
-			continue;
-		}
+
+		/* don't crash the plane if we know it can't land at the airport */
+		if ((afc->flags & AirportFTAClass::SHORT_STRIP) && (avi->subtype & AIR_FAST) && !_cheats.no_jetcrash.value) continue;
+
+		/* the plane won't land at any helicopter station */
+		if (!(afc->flags & AirportFTAClass::AIRPLANES) && (avi->subtype & AIR_CTOL)) continue;
 
 		/* v->tile can't be used here, when aircraft is flying v->tile is set to 0 */
 		uint distance = DistanceSquare(vtile, st->airport.tile);
@@ -379,7 +379,7 @@ bool Aircraft::FindClosestDepot(TileIndex *location, DestinationID *destination,
 {
 	const Station *st = GetTargetAirportIfValid(this);
 	/* If the station is not a valid airport or if it has no hangars */
-	if (st == NULL || !st->airport.HasHangar()) {
+	if (st == NULL || !CanVehicleUseStation(this, st) || !st->airport.HasHangar()) {
 		/* the aircraft has to search for a hangar on its own */
 		StationID station = FindNearestHangar(this);
 
@@ -1370,7 +1370,13 @@ static void AircraftEntersTerminal(Aircraft *v)
  */
 static void AircraftLandAirplane(Aircraft *v)
 {
+	Station *st = Station::Get(v->targetairport);
+
+	TileIndex vt = TileVirtXY(v->x_pos, v->y_pos);
+
 	v->UpdateDeltaXY();
+
+	AirportTileAnimationTrigger(st, vt, AAT_STATION_AIRPLANE_LAND);
 
 	if (!PlayVehicleSound(v, VSE_TOUCHDOWN)) {
 		SndPlayVehicleFx(SND_17_SKID_PLANE, v);
@@ -1539,7 +1545,7 @@ static void AircraftEventHandler_AtTerminal(Aircraft *v, const AirportFTAClass *
 			go_to_hangar = Station::Get(v->targetairport)->airport.HasHangar();
 	}
 
-	if (go_to_hangar) {
+	if (go_to_hangar && Station::Get(v->targetairport)->airport.HasHangar()) {
 		v->state = HANGAR;
 	} else {
 		/* airplane goto state takeoff, helicopter to helitakeoff */

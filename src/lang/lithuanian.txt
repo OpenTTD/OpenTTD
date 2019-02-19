@@ -1456,6 +1456,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Neįmano
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktūros priežiūra reikalauja išlaidų: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Infrastruktūros (kelių, geležinkelių, stotelių, angarą ir kitų objektų) priežiūra kainuoja. Kaštai auga proporcingai kompanijos dydžiui, taigi didesnėms kompanijoms infrastruktūros priežiūra kainuos daugiau, nei mažesnėms
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Oro uostai niekada nepasensta: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Kartą atsiradę, oro uostų tipai niekada nebepasens ir galimybė juos statyti niekuomet nebus pašalinta
 
@@ -2018,7 +2019,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Pakeisti
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Leisti keisti produkcijos vertes: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Naujos spalvos
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Rodyti pagrinidines spalvų parinktis
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Rodyti traukiniš spalvas
@@ -2280,9 +2280,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveris
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Kompanija apsaugota. Įvesk slaptažodį
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Žaidėjų sąrašas
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Stebėti
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nauja įmonė
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Žaidėjų sąrašas
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Stebėti
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nauja įmonė
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Išmesti (Kick)
@@ -2297,7 +2297,6 @@ STR_NETWORK_CLIENT                                              :Žaidėjas
 STR_NETWORK_SPECTATORS                                          :Stebėtojai
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Įveskite kiekį pinigų, kurį norite gauti
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Stebėtojas
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neišsaugotas įvestas slaptažodis
@@ -2899,7 +2898,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Kompanijos žem
 STR_ABOUT_OPENTTD                                               :{WHITE}Apie OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Pradinės versijos teisės priklauso {COPYRIGHT} 1995 Chris Sawyer, Visos teisės saugomos
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versija {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 OpenTTD komanda
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 OpenTTD komanda
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -3503,17 +3502,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centruot
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Gamybos sparta: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Pramonės įmonė paskelbė apie jos neišvengiamą uždarymą!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Reikalauja: {YELLOW}{STRING.ko}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Reikalauja: {YELLOW}{STRING.ko}{STRING}, {STRING.ko}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Reikalauja: {YELLOW}{STRING.ko}{STRING}, {STRING.ko}{STRING}, {STRING.ko}{STRING}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Gamina: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Gamina: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Keisti gamybos apimtį (8 daugiklis, iki 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Pakeisti gamybos spartą (procentais, iki 800%)

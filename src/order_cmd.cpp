@@ -23,6 +23,7 @@
 #include "core/random_func.hpp"
 #include "aircraft.h"
 #include "roadveh.h"
+#include "ship.h"
 #include "station_base.h"
 #include "waypoint_base.h"
 #include "company_base.h"
@@ -929,7 +930,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				dist = GetOrderDistance(prev, &new_order, v);
 			}
 
-			if (dist >= 130) {
+			if (dist >= SHIP_MAX_ORDER_DISTANCE) {
 				return_cmd_error(STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION);
 			}
 		}
@@ -2040,13 +2041,13 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 {
 	if (conditional_depth > v->GetNumOrders()) {
 		v->current_order.Free();
-		v->dest_tile = 0;
+		v->SetDestTile(0);
 		return false;
 	}
 
 	switch (order->GetType()) {
 		case OT_GOTO_STATION:
-			v->dest_tile = v->GetOrderStationLocation(order->GetDestination());
+			v->SetDestTile(v->GetOrderStationLocation(order->GetDestination()));
 			return true;
 
 		case OT_GOTO_DEPOT:
@@ -2067,7 +2068,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 					/* PBS reservations cannot reverse */
 					if (pbs_look_ahead && reverse) return false;
 
-					v->dest_tile = location;
+					v->SetDestTile(location);
 					v->current_order.MakeGoToDepot(destination, v->current_order.GetDepotOrderType(), v->current_order.GetNonStopType(), (OrderDepotActionFlags)(v->current_order.GetDepotActionType() & ~ODATFB_NEAREST_DEPOT), v->current_order.GetRefitCargo());
 
 					/* If there is no depot in front, reverse automatically (trains only) */
@@ -2091,14 +2092,21 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 				v->IncrementRealOrderIndex();
 			} else {
 				if (v->type != VEH_AIRCRAFT) {
-					v->dest_tile = Depot::Get(order->GetDestination())->xy;
+					v->SetDestTile(Depot::Get(order->GetDestination())->xy);
+				} else {
+					Aircraft *a = Aircraft::From(v);
+					DestinationID destination = a->current_order.GetDestination();
+					if (a->targetairport != destination) {
+						/* The aircraft is now heading for a different hangar than the next in the orders */
+						a->SetDestTile(a->GetOrderStationLocation(destination));
+					}
 				}
 				return true;
 			}
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			v->dest_tile = Waypoint::Get(order->GetDestination())->xy;
+			v->SetDestTile(Waypoint::Get(order->GetDestination())->xy);
 			return true;
 
 		case OT_CONDITIONAL: {
@@ -2126,7 +2134,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 		}
 
 		default:
-			v->dest_tile = 0;
+			v->SetDestTile(0);
 			return false;
 	}
 
@@ -2142,7 +2150,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 
 	if (order == NULL) {
 		v->current_order.Free();
-		v->dest_tile = 0;
+		v->SetDestTile(0);
 		return false;
 	}
 
@@ -2218,7 +2226,7 @@ bool ProcessOrders(Vehicle *v)
 		}
 
 		v->current_order.Free();
-		v->dest_tile = 0;
+		v->SetDestTile(0);
 		return false;
 	}
 

@@ -280,6 +280,8 @@ class BuildIndustryWindow : public Window {
 
 	/** The offset for the text in the matrix. */
 	static const int MATRIX_TEXT_OFFSET = 17;
+	/** The largest allowed minimum-width of the window, given in line heights */
+	static const int MAX_MINWIDTH_LINEHEIGHTS = 20;
 
 	void SetupArrays()
 	{
@@ -337,6 +339,53 @@ class BuildIndustryWindow : public Window {
 		this->SetWidgetDisabledState(WID_DPI_DISPLAY_WIDGET, this->selected_type == INVALID_INDUSTRYTYPE && this->enabled[this->selected_index]);
 	}
 
+	/**
+	 * Build a string of cargo names with suffixes attached.
+	 * This is distinct from the CARGO_LIST string formatting code in two ways:
+	 *  - This cargo list uses the order defined by the industry, rather than alphabetic.
+	 *  - NewGRF-supplied suffix strings can be attached to each cargo.
+	 *
+	 * @param cargolist    Array of CargoID to display
+	 * @param cargo_suffix Array of suffixes to attach to each cargo
+	 * @param cargolistlen Length of arrays
+	 * @param prefixstr    String to use for the first item
+	 * @return A formatted raw string
+	 */
+	std::string MakeCargoListString(const CargoID *cargolist, const CargoSuffix *cargo_suffix, int cargolistlen, StringID prefixstr) const
+	{
+		std::string cargostring;
+		char buf[1024];
+		int numcargo = 0;
+		int firstcargo = -1;
+
+		for (byte j = 0; j < cargolistlen; j++) {
+			if (cargolist[j] == CT_INVALID) continue;
+			numcargo++;
+			if (firstcargo < 0) {
+				firstcargo = j;
+				continue;
+			}
+			SetDParam(0, CargoSpec::Get(cargolist[j])->name);
+			SetDParamStr(1, cargo_suffix[j].text);
+			GetString(buf, STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION, lastof(buf));
+			cargostring += buf;
+		}
+
+		if (numcargo > 0) {
+			SetDParam(0, CargoSpec::Get(cargolist[firstcargo])->name);
+			SetDParamStr(1, cargo_suffix[firstcargo].text);
+			GetString(buf, prefixstr, lastof(buf));
+			cargostring = std::string(buf) + cargostring;
+		} else {
+			SetDParam(0, STR_JUST_NOTHING);
+			SetDParamStr(1, "");
+			GetString(buf, prefixstr, lastof(buf));
+			cargostring = std::string(buf);
+		}
+
+		return cargostring;
+	}
+
 public:
 	BuildIndustryWindow() : Window(&_build_industry_desc)
 	{
@@ -378,42 +427,39 @@ public:
 			case WID_DPI_INFOPANEL: {
 				/* Extra line for cost outside of editor + extra lines for 'extra' information for NewGRFs. */
 				int height = 2 + (_game_mode == GM_EDITOR ? 0 : 1) + (_loaded_newgrf_features.has_newindustries ? 4 : 0);
+				uint extra_lines_req = 0;
+				uint extra_lines_prd = 0;
+				uint max_minwidth = FONT_HEIGHT_NORMAL * MAX_MINWIDTH_LINEHEIGHTS;
 				Dimension d = {0, 0};
 				for (byte i = 0; i < this->count; i++) {
 					if (this->index[i] == INVALID_INDUSTRYTYPE) continue;
 
 					const IndustrySpec *indsp = GetIndustrySpec(this->index[i]);
-
 					CargoSuffix cargo_suffix[lengthof(indsp->accepts_cargo)];
-					GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_FUND, NULL, this->index[i], indsp, indsp->accepts_cargo, cargo_suffix);
-					StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
-					byte p = 0;
-					SetDParam(0, STR_JUST_NOTHING);
-					SetDParamStr(1, "");
-					for (byte j = 0; j < lengthof(indsp->accepts_cargo); j++) {
-						if (indsp->accepts_cargo[j] == CT_INVALID) continue;
-						if (p > 0) str++;
-						SetDParam(p++, CargoSpec::Get(indsp->accepts_cargo[j])->name);
-						SetDParamStr(p++, cargo_suffix[j].text);
-					}
-					d = maxdim(d, GetStringBoundingBox(str));
 
-					/* Draw the produced cargoes, if any. Otherwise, will print "Nothing". */
-					GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_FUND, NULL, this->index[i], indsp, indsp->produced_cargo, cargo_suffix);
-					str = STR_INDUSTRY_VIEW_PRODUCES_CARGO;
-					p = 0;
-					SetDParam(0, STR_JUST_NOTHING);
-					SetDParamStr(1, "");
-					for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
-						if (indsp->produced_cargo[j] == CT_INVALID) continue;
-						if (p > 0) str++;
-						SetDParam(p++, CargoSpec::Get(indsp->produced_cargo[j])->name);
-						SetDParamStr(p++, cargo_suffix[j].text);
+					/* Measure the accepted cargoes, if any. */
+					GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_FUND, NULL, this->index[i], indsp, indsp->accepts_cargo, cargo_suffix);
+					std::string cargostring = this->MakeCargoListString(indsp->accepts_cargo, cargo_suffix, lengthof(indsp->accepts_cargo), STR_INDUSTRY_VIEW_REQUIRES_N_CARGO);
+					Dimension strdim = GetStringBoundingBox(cargostring.c_str());
+					if (strdim.width > max_minwidth) {
+						extra_lines_req = max(extra_lines_req, strdim.width / max_minwidth + 1);
+						strdim.width = max_minwidth;
 					}
-					d = maxdim(d, GetStringBoundingBox(str));
+					d = maxdim(d, strdim);
+
+					/* Measure the produced cargoes, if any. */
+					GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_FUND, NULL, this->index[i], indsp, indsp->produced_cargo, cargo_suffix);
+					cargostring = this->MakeCargoListString(indsp->produced_cargo, cargo_suffix, lengthof(indsp->produced_cargo), STR_INDUSTRY_VIEW_PRODUCES_N_CARGO);
+					strdim = GetStringBoundingBox(cargostring.c_str());
+					if (strdim.width > max_minwidth) {
+						extra_lines_prd = max(extra_lines_prd, strdim.width / max_minwidth + 1);
+						strdim.width = max_minwidth;
+					}
+					d = maxdim(d, strdim);
 				}
 
 				/* Set it to something more sane :) */
+				height += extra_lines_prd + extra_lines_req;
 				size->height = height * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				size->width  = d.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 				break;
@@ -502,36 +548,17 @@ public:
 					y += FONT_HEIGHT_NORMAL;
 				}
 
-				/* Draw the accepted cargoes, if any. Otherwise, will print "Nothing". */
 				CargoSuffix cargo_suffix[lengthof(indsp->accepts_cargo)];
+
+				/* Draw the accepted cargoes, if any. Otherwise, will print "Nothing". */
 				GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_FUND, NULL, this->selected_type, indsp, indsp->accepts_cargo, cargo_suffix);
-				StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
-				byte p = 0;
-				SetDParam(0, STR_JUST_NOTHING);
-				SetDParamStr(1, "");
-				for (byte j = 0; j < lengthof(indsp->accepts_cargo); j++) {
-					if (indsp->accepts_cargo[j] == CT_INVALID) continue;
-					if (p > 0) str++;
-					SetDParam(p++, CargoSpec::Get(indsp->accepts_cargo[j])->name);
-					SetDParamStr(p++, cargo_suffix[j].text);
-				}
-				DrawString(left, right, y, str);
-				y += FONT_HEIGHT_NORMAL;
+				std::string cargostring = this->MakeCargoListString(indsp->accepts_cargo, cargo_suffix, lengthof(indsp->accepts_cargo), STR_INDUSTRY_VIEW_REQUIRES_N_CARGO);
+				y = DrawStringMultiLine(left, right, y, bottom, cargostring.c_str());
 
 				/* Draw the produced cargoes, if any. Otherwise, will print "Nothing". */
 				GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_FUND, NULL, this->selected_type, indsp, indsp->produced_cargo, cargo_suffix);
-				str = STR_INDUSTRY_VIEW_PRODUCES_CARGO;
-				p = 0;
-				SetDParam(0, STR_JUST_NOTHING);
-				SetDParamStr(1, "");
-				for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
-					if (indsp->produced_cargo[j] == CT_INVALID) continue;
-					if (p > 0) str++;
-					SetDParam(p++, CargoSpec::Get(indsp->produced_cargo[j])->name);
-					SetDParamStr(p++, cargo_suffix[j].text);
-				}
-				DrawString(left, right, y, str);
-				y += FONT_HEIGHT_NORMAL;
+				cargostring = this->MakeCargoListString(indsp->produced_cargo, cargo_suffix, lengthof(indsp->produced_cargo), STR_INDUSTRY_VIEW_PRODUCES_N_CARGO);
+				y = DrawStringMultiLine(left, right, y, bottom, cargostring.c_str());
 
 				/* Get the additional purchase info text, if it has not already been queried. */
 				if (HasBit(indsp->callback_mask, CBM_IND_FUND_MORE_TEXT)) {
@@ -540,7 +567,7 @@ public:
 						if (callback_res > 0x400) {
 							ErrorUnknownCallbackResult(indsp->grf_prop.grffile->grfid, CBID_INDUSTRY_FUND_MORE_TEXT, callback_res);
 						} else {
-							str = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
+							StringID str = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
 							if (str != STR_UNDEFINED) {
 								StartTextRefStackUsage(indsp->grf_prop.grffile, 6);
 								DrawStringMultiLine(left, right, y, bottom, str, TC_YELLOW);
@@ -647,9 +674,8 @@ public:
 		if (success && !_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	}
 
-	virtual void OnTick()
+	virtual void OnGameTick()
 	{
-		if (_pause_mode != PM_UNPAUSED) return;
 		if (!this->timer_enabled) return;
 		if (--this->callback_timer == 0) {
 			/* We have just passed another day.

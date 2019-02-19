@@ -29,7 +29,7 @@ static const SaveLoad _glog_mode_desc[] = {
 };
 
 static const SaveLoad _glog_revision_desc[] = {
-	SLE_ARR(LoggedChange, revision.text,     SLE_UINT8,  NETWORK_REVISION_LENGTH),
+	SLE_ARR(LoggedChange, revision.text,     SLE_UINT8,  GAMELOG_REVISION_LENGTH),
 	SLE_VAR(LoggedChange, revision.newgrf,   SLE_UINT32),
 	SLE_VAR(LoggedChange, revision.slver,    SLE_UINT16),
 	SLE_VAR(LoggedChange, revision.modified, SLE_UINT8),

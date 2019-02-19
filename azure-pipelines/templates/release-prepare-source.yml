@@ -1,0 +1,35 @@
+# Set the revisions, and remove the VCS files.
+# This ensures everything else picks up on the predefined versions, and not
+# that because of some build process the version all of a sudden changes.
+
+steps:
+- script: |
+    set -ex
+
+    if [ -n "${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}" ]; then
+      # We are triggered from a GitHub Pull Request
+      git checkout -B pr${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}
+    elif [ "${BUILD_SOURCEBRANCHNAME}" = "merge" ] || [ "${BUILD_SOURCEBRANCHNAME}" = "head" ]; then
+      # We are manually triggered based on a GitHub Pull Request
+      PULLREQUESTNUMBER=$(echo ${BUILD_SOURCEBRANCH} | cut -d/ -f3)
+      git checkout -B pr${PULLREQUESTNUMBER}
+    else
+      git checkout -B ${BUILD_SOURCEBRANCHNAME}
+    fi
+
+    ./findversion.sh > .ottdrev
+    ./azure-pipelines/changelog.sh > .changelog
+    TZ='UTC' date +"%Y-%m-%d %H:%M UTC" > .release_date
+    cat .ottdrev | cut -f 1 -d$'\t' > .version
+    echo "Release Date: $(cat .release_date)"
+    echo "Revision: $(cat .ottdrev)"
+    echo "Version: $(cat .version)"
+  displayName: 'Create version files'
+- script: |
+    set -e
+    VERSION=$(cat .version)
+    echo "${VERSION}"
+    echo "##vso[build.updatebuildnumber]${VERSION}"
+  displayName: 'Change BuildNumber to version'
+- script: find . -iname .hg -or -iname .git -or -iname .svn | xargs rm -rf
+  displayName: 'Remove VCS information'

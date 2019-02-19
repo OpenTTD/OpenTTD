@@ -189,6 +189,8 @@ STR_COLOUR_ORANGE                                               :Orange
 STR_COLOUR_BROWN                                                :Brown
 STR_COLOUR_GREY                                                 :Grey
 STR_COLOUR_WHITE                                                :White
+STR_COLOUR_RANDOM                                               :Random
+STR_COLOUR_DEFAULT                                              :Default
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -464,6 +466,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sound/music
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Last message/news report
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Message history
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Delete all messages
 ############ range ends here
 
 ############ range for about menu starts
@@ -929,6 +932,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Custom...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranian Rial (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :New Russian Ruble (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexican Peso (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Road vehicles
@@ -1257,6 +1261,9 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Allow construct
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Changing this setting is not possible when there are vehicles
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastructure maintenance: {STRING2}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :When enabled, infrastructure causes maintenance costs. The cost grows over-proportional with the network size, thus affecting bigger companies more than smaller ones
+
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Starting company colour: {STRING2}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Choose starting colour for the company
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Airports never expire: {STRING2}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Enabling this setting makes each airport type stay available forever after its introduction
@@ -1815,7 +1822,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Change c
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Enable modifying production values: {ORANGE}{STRING1}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}New Colour Scheme
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Colour Scheme
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Show general colour schemes
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Show train colour schemes
@@ -2075,11 +2082,12 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Disconne
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is protected. Enter password
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company is protected. Enter password
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Client list
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Client list
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spectate
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}New company
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Client list
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spectate
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :New company
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kick
@@ -2094,7 +2102,6 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spectators
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Enter the amount of money you want to give
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spectator
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Do not save the entered password
@@ -2376,9 +2383,9 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combo Si
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Standard path signals can be passed from the back side
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}One-way Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals can't be passed from the back side
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signal Convert{}When selected, clicking an existing signal will convert it to the selected signal type and variant. Ctrl+Click will toggle the existing variant. Shift+Click shows estimated conversion cost
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dragging signal density
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Decrease dragging signal density
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Increase dragging signal density
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dragging signal distance
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Decrease dragging signal distance
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Increase dragging signal distance
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Select Rail Bridge
@@ -2698,7 +2705,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Company-owned l
 STR_ABOUT_OPENTTD                                               :{WHITE}About OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 The OpenTTD team
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Frame rate
@@ -2773,6 +2780,8 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No infor
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING1}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter string:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Overwrite File
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Are you sure you want to overwrite the existing file?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Enter a name for the savegame
 
@@ -2889,8 +2898,13 @@ STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: 
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Version: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. compatible version: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{RAW_STRING}
-STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palette: {SILVER}{RAW_STRING}
+STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palette: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Default (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Default (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Legacy (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Legacy (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameters: {SILVER}{STRING1}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :None
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}No information available
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Matching file not found
@@ -3098,6 +3112,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Bribe t
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Goals
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Global Goals
+STR_GOALS_SPECTATOR                                             :Global Goals
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Global goals:
 STR_GOALS_TEXT                                                  :{ORANGE}{RAW_STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- None -
@@ -3146,6 +3161,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click on
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Story Book
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Global Story Book
+STR_STORY_BOOK_SPECTATOR                                        :Global Story Book
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{RAW_STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Page {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Jump to a specific page by selecting it in this drop down list.
@@ -3350,20 +3366,13 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centre t
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Production level: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}The industry has announced imminent closure!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Requires: {YELLOW}{STRING}{RAW_STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Requires: {YELLOW}{STRING}{RAW_STRING}, {STRING}{RAW_STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Requires: {YELLOW}{STRING}{RAW_STRING}, {STRING}{RAW_STRING}, {STRING}{RAW_STRING}
-############ range for requires ends
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Requires: {YELLOW}{STRING}{RAW_STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produces: {YELLOW}{STRING}{RAW_STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{RAW_STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Requires:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:RAW_STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} waiting{RAW_STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produces: {YELLOW}{STRING}{RAW_STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produces: {YELLOW}{STRING}{RAW_STRING}, {STRING}{RAW_STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Change production (multiple of 8, up to 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Change production level (percentage, up to 800%)
@@ -3417,6 +3426,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groups -
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Click to create a group
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Delete the selected group
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Rename the selected group
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Change livery of the selected group
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Click to protect this group from global autoreplace
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Delete Group
@@ -3460,6 +3470,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacity
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Powered Wagons: {GOLD}+{POWER}{BLACK} Weight: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refittable to: {GOLD}{STRING2}
 STR_PURCHASE_INFO_ALL_TYPES                                     :All cargo types
+STR_PURCHASE_INFO_NONE                                          :None
 STR_PURCHASE_INFO_ALL_BUT                                       :All but {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tractive Effort: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Range: {GOLD}{COMMA} tiles

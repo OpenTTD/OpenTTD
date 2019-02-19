@@ -1050,6 +1050,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Південн�
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Власна...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузинські ларі (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Іранський ріал (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Російський новий рубель (RUB)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Сторона руху транспорту
@@ -1378,6 +1379,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Дозволя�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Цю настройку не можливо змінити при наявності транспорту у грі
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Витрати на утримання інфраструктури: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :При включенні інфраструктура потребує коштів для утримання. Витрати збільшуються не пропорційно з ростом розміру мережі, більше впливаючи на великі компанії ніж на малі
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аеропорти не застарівають: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :При включенні кожен аеропорт буде доступним для будівництва безстроково після його впровадження.
@@ -1927,7 +1929,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Змін
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Дозволити зміну рівня виробництва: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Нова кольорова схема
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Показати загальне фарбування
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Показати фарбування поїздів
@@ -2189,9 +2190,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Серв
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компанія захищена паролем. Введіть пароль
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Список клієнтів
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Спостерігати
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Нова компанія
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Список клієнтів
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Спостерігати
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Нова компанія
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Відключити гравця
@@ -2206,7 +2207,6 @@ STR_NETWORK_CLIENT                                              :Клієнт
 STR_NETWORK_SPECTATORS                                          :Спостерігачі
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введіть суму грошей, яку Ви хочете віддати
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Глядач
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не запам'ятовувати введений пароль
@@ -2811,9 +2811,13 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ця ділян
 STR_ABOUT_OPENTTD                                               :{WHITE}Про OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Авторське право {COPYRIGHT} 1995 Кріс Сойєр, Всі права захищені
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD версія {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 команда OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 команда OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Дані отримано з {COMMA} вимірюван {P "ня" "нь" "нь" }
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} кадр{P "" "и" "ів"}/сек
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
@@ -3415,17 +3419,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Пока
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Обсяг виробництва: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Підприємство оголосило про близьке закриття!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Потребує: {YELLOW}{STRING.z}{STRING.z}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Потребує: {YELLOW}{STRING.z}{STRING.z}, {STRING.z}{STRING.z}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Потребує: {YELLOW}{STRING.z}{STRING.z}, {STRING.z}{STRING.z}, {STRING.z}{STRING.z}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Продукція: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Продукція: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Змінити виробництво (кратне 8, до 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Змінити обсяг виробництва (до 800%)
@@ -4592,6 +4586,7 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Оригіна�
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Оригінальний набір звуків з Transport Tycoon Deluxe Windows edition.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Порожній набір звуків.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Оригінальна музика з Transport Tycoon Deluxe Windows edition.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Оригінальна музика Transport Tycoon Deluxe(DOS)
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Порожній набір музики.
 
 ##id 0x2000

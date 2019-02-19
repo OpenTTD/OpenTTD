@@ -23,6 +23,7 @@
 #include "sound_func.h"
 #include "window_func.h"
 #include "company_base.h"
+#include "guitimer_func.h"
 
 #include "smallmap_gui.h"
 
@@ -922,8 +923,8 @@ void SmallMapWindow::DrawMapIndicators() const
 	/* Find main viewport. */
 	const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
-	Point upper_left_smallmap_coord  = TranslateXYToTileCoord(vp, vp->left, vp->top, false);
-	Point lower_right_smallmap_coord = TranslateXYToTileCoord(vp, vp->left + vp->width - 1, vp->top + vp->height - 1, false);
+	Point upper_left_smallmap_coord  = InverseRemapCoords2(vp->virtual_left, vp->virtual_top);
+	Point lower_right_smallmap_coord = InverseRemapCoords2(vp->virtual_left + vp->virtual_width - 1, vp->virtual_top + vp->virtual_height - 1);
 
 	Point upper_left = this->RemapTile(upper_left_smallmap_coord.x / (int)TILE_SIZE, upper_left_smallmap_coord.y / (int)TILE_SIZE);
 	upper_left.x -= this->subscroll;
@@ -1055,7 +1056,7 @@ void SmallMapWindow::SetupWidgetData()
 	this->GetWidget<NWidgetStacked>(WID_SM_SELECT_BUTTONS)->SetDisplayedPlane(plane);
 }
 
-SmallMapWindow::SmallMapWindow(WindowDesc *desc, int window_number) : Window(desc), refresh(FORCE_REFRESH_PERIOD)
+SmallMapWindow::SmallMapWindow(WindowDesc *desc, int window_number) : Window(desc), refresh(GUITimer(FORCE_REFRESH_PERIOD))
 {
 	_smallmap_industry_highlight = INVALID_INDUSTRYTYPE;
 	this->overlay = new LinkGraphOverlay(this, WID_SM_MAP, 0, this->GetOverlayCompanyMask(), 1);
@@ -1390,7 +1391,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 	}
 	if (new_highlight != _smallmap_industry_highlight) {
 		_smallmap_industry_highlight = new_highlight;
-		this->refresh = _smallmap_industry_highlight != INVALID_INDUSTRYTYPE ? BLINK_PERIOD : FORCE_REFRESH_PERIOD;
+		this->refresh.SetInterval(_smallmap_industry_highlight != INVALID_INDUSTRYTYPE ? BLINK_PERIOD : FORCE_REFRESH_PERIOD);
 		_smallmap_industry_highlight_state = true;
 		this->SetDirty();
 	}
@@ -1570,10 +1571,10 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 	}
 }
 
-/* virtual */ void SmallMapWindow::OnTick()
+/* virtual */ void SmallMapWindow::OnRealtimeTick(uint delta_ms)
 {
 	/* Update the window every now and then */
-	if (--this->refresh != 0) return;
+	if (!this->refresh.Elapsed(delta_ms)) return;
 
 	if (this->map_type == SMT_LINKSTATS) {
 		uint32 company_mask = this->GetOverlayCompanyMask();
@@ -1585,7 +1586,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 	}
 	_smallmap_industry_highlight_state = !_smallmap_industry_highlight_state;
 
-	this->refresh = _smallmap_industry_highlight != INVALID_INDUSTRYTYPE ? BLINK_PERIOD : FORCE_REFRESH_PERIOD;
+	this->refresh.SetInterval(_smallmap_industry_highlight != INVALID_INDUSTRYTYPE ? BLINK_PERIOD : FORCE_REFRESH_PERIOD);
 	this->SetDirty();
 }
 
@@ -1644,7 +1645,7 @@ void SmallMapWindow::SetNewScroll(int sx, int sy, int sub)
 void SmallMapWindow::SmallMapCenterOnCurrentPos()
 {
 	const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
-	Point viewport_center = TranslateXYToTileCoord(vp, vp->left + vp->width / 2, vp->top + vp->height / 2);
+	Point viewport_center = InverseRemapCoords2(vp->virtual_left + vp->virtual_width / 2, vp->virtual_top + vp->virtual_height / 2);
 
 	int sub;
 	const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);

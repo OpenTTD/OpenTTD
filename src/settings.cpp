@@ -1095,7 +1095,7 @@ static bool InvalidateNewGRFChangeWindows(int32 p1)
 
 static bool InvalidateCompanyLiveryWindow(int32 p1)
 {
-	InvalidateWindowClassesData(WC_COMPANY_COLOUR);
+	InvalidateWindowClassesData(WC_COMPANY_COLOUR, -1);
 	return RedrawScreen(p1);
 }
 
@@ -1174,6 +1174,7 @@ static bool MaxNoAIsChange(int32 i)
 		ShowErrorMessage(STR_WARNING_NO_SUITABLE_AI, INVALID_STRING_ID, WL_CRITICAL);
 	}
 
+	InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
 	return true;
 }
 
@@ -1221,8 +1222,8 @@ static bool CheckFreeformEdges(int32 p1)
 				return false;
 			}
 		}
-		for (uint i = 0; i < MapSizeX(); i++) MakeVoid(TileXY(i, 0));
-		for (uint i = 0; i < MapSizeY(); i++) MakeVoid(TileXY(0, i));
+		for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
+		for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(0, y));
 	} else {
 		for (uint i = 0; i < MapMaxX(); i++) {
 			if (TileHeight(TileXY(i, 1)) != 0) {
@@ -1312,6 +1313,15 @@ static bool MaxVehiclesChanged(int32 p1)
 	return true;
 }
 
+static bool InvalidateShipPathCache(int32 p1)
+{
+	Ship *s;
+	FOR_ALL_SHIPS(s) {
+		s->path.clear();
+	}
+	return true;
+}
+
 
 #ifdef ENABLE_NETWORK
 
@@ -1367,7 +1377,7 @@ static void PrepareOldDiffCustom()
  */
 static void HandleOldDiffCustom(bool savegame)
 {
-	uint options_to_load = GAME_DIFFICULTY_NUM - ((savegame && IsSavegameVersionBefore(4)) ? 1 : 0);
+	uint options_to_load = GAME_DIFFICULTY_NUM - ((savegame && IsSavegameVersionBefore(SLV_4)) ? 1 : 0);
 
 	if (!savegame) {
 		/* If we did read to old_diff_custom, then at least one value must be non 0. */

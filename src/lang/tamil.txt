@@ -1173,6 +1173,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :வழிசெ
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}வாகனங்கள் இருக்கும் பொது இந்த அமைப்பினை மாற்ற இயலாது
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :கட்டட பராமரிப்பு: {STRING}
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :விமான நிலையங்கள் என்றும் காலாவதியாகாது: {STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :வாகனம் தொலைந்தால் எச்சரிக்கை செய்: {STRING}
@@ -1567,7 +1568,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}நட�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}தயாரிப்பு மதிப்புகளை மாற்ற முடியும்: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}புதிய நிற கோட்பாடு
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}பொதுவான நிற கோட்பாடுகளைக் காட்டவும்
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}இரயில் நிற கோட்பாடுகளைக் காட்டவும்
@@ -1811,9 +1811,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}சர�
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}நிற்வனம் காக்கப்பட்டுள்ளது. கடவுச்சொல்லினை இடவும்
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}விளையாடுவோர் பட்டியல்
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}கவனி
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}புதிய நிறுவனம்
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :விளையாடுவோர் பட்டியல்
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :கவனி
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :புதிய நிறுவனம்
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :உதை
@@ -1828,7 +1828,6 @@ STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :கவனிப்பவர்கள்
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}கொடுக்கப்படும் பணத்தின் அளவினை இடவும்
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}பார்வையாளர்
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}கடவுச்சொல்லினை நினைவில் வைத்திருக்காதே
@@ -2374,7 +2373,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :நிறுவ
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD-ஐ பற்றி
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}அசல் உரிமைகள் {COPYRIGHT} 1995 கிறிஸ் சாயர், எல்லா உரிமைகளும் பதிவுசெய்யப்பட்டது
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD பதிப்பு {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD குழுமம்
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD குழுமம்
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -2907,17 +2906,7 @@ STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}தயாரிப்பு அளவு: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}தொழிற்சாலை உடனடியாக மூடப்படும் என்று அறிவிக்கப்பட்டுள்ளது!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}தேவைப்படுகிறது: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}தேவைப்படுகிறது: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}தேவைப்படுகிறது: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}தயாரிப்பு: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}தயாரிக்கிறது: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}தயாரிப்பினை மாற்றவும் (8 இன் பெருக்கங்கள், 2040 வரை)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}தயாரிப்பு அளவினை மாற்றவும் (சதவிகிதம், 800% வரை)

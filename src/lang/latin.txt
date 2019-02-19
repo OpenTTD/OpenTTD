@@ -1443,6 +1443,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non lice
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Tuitio infrastructurae: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Electa, infrastructura prodit expensa tuitionis. Expensa crescunt celerius quam pro portione magnitudini retis, ergo societates magnae affectantur magis quam parvae
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportus numquam recedunt: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Electa, omnes aeroportuum typi permanent post introductionem
 
@@ -2000,7 +2001,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mutare a
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Sinere mutare productiones industriarum: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Schema Coloris Novum
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Monstrare schemata coloris generalia
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Monstrare schemata coloris traminum
@@ -2262,9 +2262,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servatru
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Societas tuta est. Tesseram inscribe
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Index clientum
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spectare
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Societas Nova
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Index clientum
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spectare
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Societas Nova
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Dimittere
@@ -2279,7 +2279,6 @@ STR_NETWORK_CLIENT                                              :Cliens
 STR_NETWORK_SPECTATORS                                          :Spectatores
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Inscribe quantitatem pecuniae dandam
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Spectator
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Relinquere tesseram inscriptam
@@ -3502,20 +3501,10 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Movere c
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Quantitas productionis: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Haec industria mox claudetur!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Postulat: {YELLOW}{STRING.acc}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Postulat: {YELLOW}{STRING.acc}{STRING}, {STRING.acc}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Postulat: {YELLOW}{STRING.acc}{STRING}, {STRING.acc}{STRING}, {STRING.acc}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Postulat:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING.acc}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} manet{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Efficit: {YELLOW}{STRING.acc}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Efficit: {YELLOW}{STRING.acc}{STRING}, {STRING.acc}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Mutare productionem (per octo multiplicatur, ad 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Mutare productionem (centesima, ad 800%)

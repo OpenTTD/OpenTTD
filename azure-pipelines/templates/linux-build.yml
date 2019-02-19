@@ -1,0 +1,18 @@
+parameters:
+  Image: ''
+  Tag: ''
+  ContainerCommand: ''
+
+steps:
+- task: Docker@1
+  ${{ if eq(parameters.Image, 'compile-farm') }}:
+    displayName: 'Build'
+  ${{ if eq(parameters.Image, 'compile-farm-ci') }}:
+    displayName: 'Build and test'
+  inputs:
+    command: 'Run an image'
+    imageName: openttd/${{ parameters.Image }}:${{ parameters.Tag }}
+    volumes: '$(Build.SourcesDirectory):$(Build.SourcesDirectory)'
+    workingDirectory: '$(Build.SourcesDirectory)'
+    containerCommand: ${{ parameters.ContainerCommand }}
+    runInBackground: false

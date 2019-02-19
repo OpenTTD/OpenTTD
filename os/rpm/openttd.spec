@@ -2,7 +2,7 @@
 # spec file for package openttd
 #
 # Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
-# Copyright (c) 2007-2018 The OpenTTD developers
+# Copyright (c) 2007-2019 The OpenTTD developers
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 #
 
 Name:           openttd
-Version:        1.9.beta1
+Version:        1.9.beta2
 Release:        0
-%define srcver  1.9.0-beta1
+%define srcver  1.9.0-beta2
 Summary:        An open source reimplementation of Chris Sawyer's Transport Tycoon Deluxe
 License:        GPL-2.0
 Group:          Amusements/Games/Strategy/Other

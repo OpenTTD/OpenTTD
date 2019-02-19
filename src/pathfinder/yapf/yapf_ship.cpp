@@ -54,12 +54,12 @@ public:
 		return 'w';
 	}
 
-	static Trackdir ChooseShipTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found)
+	static Trackdir ChooseShipTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, ShipPathCache &path_cache)
 	{
 		/* handle special case - when next tile is destination tile */
 		if (tile == v->dest_tile) {
 			/* convert tracks to trackdirs */
-			TrackdirBits trackdirs = (TrackdirBits)(tracks | ((int)tracks << 8));
+			TrackdirBits trackdirs = TrackBitsToTrackdirBits(tracks);
 			/* limit to trackdirs reachable from enterdir */
 			trackdirs &= DiagdirReachesTrackdirs(enterdir);
 
@@ -90,9 +90,17 @@ public:
 
 		Node *pNode = pf.GetBestNode();
 		if (pNode != NULL) {
+			uint steps = 0;
+			for (Node *n = pNode; n->m_parent != NULL; n = n->m_parent) steps++;
+
 			/* walk through the path back to the origin */
 			Node *pPrevNode = NULL;
 			while (pNode->m_parent != NULL) {
+				if (steps > 1 && --steps < YAPF_SHIP_PATH_CACHE_LENGTH) {
+					TrackdirByte td;
+					td = pNode->GetTrackdir();
+					path_cache.push_front(td);
+				}
 				pPrevNode = pNode;
 				pNode = pNode->m_parent;
 			}
@@ -100,6 +108,8 @@ public:
 			Node &best_next_node = *pPrevNode;
 			assert(best_next_node.GetTile() == tile);
 			next_trackdir = best_next_node.GetTrackdir();
+			/* remove last element for the special case when tile == dest_tile */
+			if (path_found && !path_cache.empty()) path_cache.pop_back();
 		}
 		return next_trackdir;
 	}
@@ -222,10 +232,10 @@ struct CYapfShip2 : CYapfT<CYapfShip_TypesT<CYapfShip2, CFollowTrackWater    , C
 struct CYapfShip3 : CYapfT<CYapfShip_TypesT<CYapfShip3, CFollowTrackWaterNo90, CShipNodeListTrackDir> > {};
 
 /** Ship controller helper - path finder invoker */
-Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found)
+Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, ShipPathCache &path_cache)
 {
 	/* default is YAPF type 2 */
-	typedef Trackdir (*PfnChooseShipTrack)(const Ship*, TileIndex, DiagDirection, TrackBits, bool &path_found);
+	typedef Trackdir (*PfnChooseShipTrack)(const Ship*, TileIndex, DiagDirection, TrackBits, bool &path_found, ShipPathCache &path_cache);
 	PfnChooseShipTrack pfnChooseShipTrack = CYapfShip2::ChooseShipTrack; // default: ExitDir, allow 90-deg
 
 	/* check if non-default YAPF type needed */
@@ -235,7 +245,7 @@ Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir,
 		pfnChooseShipTrack = &CYapfShip1::ChooseShipTrack; // Trackdir, allow 90-deg
 	}
 
-	Trackdir td_ret = pfnChooseShipTrack(v, tile, enterdir, tracks, path_found);
+	Trackdir td_ret = pfnChooseShipTrack(v, tile, enterdir, tracks, path_found, path_cache);
 	return (td_ret != INVALID_TRACKDIR) ? TrackdirToTrack(td_ret) : INVALID_TRACK;
 }
 

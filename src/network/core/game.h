@@ -56,6 +56,8 @@ struct NetworkGameInfo : NetworkServerGameInfo {
 	byte map_set;                                   ///< Graphical set
 };
 
+const char * GetNetworkRevisionString();
+
 #endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_GAME_H */

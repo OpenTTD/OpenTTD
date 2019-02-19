@@ -642,7 +642,7 @@ static void CompanyCheckBankrupt(Company *c)
 			 * that changing the current company is okay. In case of single
 			 * player we are sure (the above check) that we are not the local
 			 * company and thus we won't be moved. */
-			if (!_networking || _network_server) DoCommandP(0, 2 | (c->index << 16), CRR_BANKRUPT, CMD_COMPANY_CTRL);
+			if (!_networking || _network_server) DoCommandP(0, CCA_DELETE | (c->index << 16), CRR_BANKRUPT, CMD_COMPANY_CTRL);
 			break;
 		}
 	}
@@ -1484,7 +1484,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 			if (st->goods[cid].cargo.HasCargoFor(next_station)) {
 				/* Try to find out if auto-refitting would succeed. In case the refit is allowed,
 				 * the returned refit capacity will be greater than zero. */
-				DoCommand(v_start->tile, v_start->index, cid | 1U << 6 | 0xFF << 8 | 1U << 16, DC_QUERY_COST, GetCmdRefitVeh(v_start)); // Auto-refit and only this vehicle including artic parts.
+				DoCommand(v_start->tile, v_start->index, cid | 1U << 24 | 0xFF << 8 | 1U << 16, DC_QUERY_COST, GetCmdRefitVeh(v_start)); // Auto-refit and only this vehicle including artic parts.
 				/* Try to balance different loadable cargoes between parts of the consist, so that
 				 * all of them can be loaded. Avoid a situation where all vehicles suddenly switch
 				 * to the first loadable cargo for which there is only one packet. If the capacities
@@ -1507,7 +1507,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 		 * "via any station" before reserving. We rather produce some more "any station" cargo than
 		 * misrouting it. */
 		IterateVehicleParts(v_start, ReturnCargoAction(st, INVALID_STATION));
-		CommandCost cost = DoCommand(v_start->tile, v_start->index, new_cid | 1U << 6 | 0xFF << 8 | 1U << 16, DC_EXEC, GetCmdRefitVeh(v_start)); // Auto-refit and only this vehicle including artic parts.
+		CommandCost cost = DoCommand(v_start->tile, v_start->index, new_cid | 1U << 24 | 0xFF << 8 | 1U << 16, DC_EXEC, GetCmdRefitVeh(v_start)); // Auto-refit and only this vehicle including artic parts.
 		if (cost.Succeeded()) v->First()->profit_this_year -= cost.GetCost() << 8;
 	}
 

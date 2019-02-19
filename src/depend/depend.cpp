@@ -1008,7 +1008,7 @@ int main(int argc, char *argv[])
 		fclose(src);
 
 		/* Then append it to the real file. */
-		src = fopen(backup, "rb");
+		src = fopen(backup, "r");
 		while (fgets(content, size, src) != NULL) {
 			fputs(content, dst);
 			if (!strncmp(content, delimiter, strlen(delimiter))) found_delimiter = true;

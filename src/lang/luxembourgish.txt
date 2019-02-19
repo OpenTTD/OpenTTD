@@ -1251,6 +1251,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Déi Ast
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastrukturënnerhalt {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Wann ugeschalt, kaschten Infrastrukturen Ennerhaltskäschten. D'Käschten wuessen iwwerproportional zu der Netzwierkgréisst, an treffen sou grouss Firmen méi wéi klenger
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Fluchhäfen lafen nie of: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wann ugeschalt, bleift all Fluchhafentyp säit senger Aféierung bestoen
 
@@ -1802,7 +1803,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Wiessel 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Erlaabt d'ännere vun de Produktiounswäerter: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Neie Faarfschema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Weis generell Faarfschemen
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Weis Zuch Faarfschemen
@@ -2064,9 +2064,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server a
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma ass geschützt. Passwuert aginn
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Spillerlëscht
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Nokucken
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nei Firma
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spillerlëscht
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Nokucken
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nei Firma
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kicken
@@ -2081,7 +2081,6 @@ STR_NETWORK_CLIENT                                              :Spiller
 STR_NETWORK_SPECTATORS                                          :Zuschauer
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Gëff de Betrag un deens du wëlls ginn
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Zuschauer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Späicher d'Passwuert net
@@ -2684,7 +2683,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Land am Firmenb
 STR_ABOUT_OPENTTD                                               :{WHITE}Iwwert OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original Copyright {COPYRIGHT} 1995 Chris Sawyer, All Rechter virbehalen
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD Versioun {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 D'OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 D'OpenTTD team
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -3288,20 +3287,10 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Zentréi
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktiounslevel: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}D'Industrie annoncéiert dass se zougemaach gëtt
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Brauch: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Brauch: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Brauch: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Brauch:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} um waarden{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produzéiert: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produzéiert: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}D'Produktioun änneren (Multipel vun 8, bis op 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Änner de Produktiounslevel (Prozenter, bis zu 800%)

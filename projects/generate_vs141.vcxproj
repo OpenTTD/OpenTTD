@@ -31,7 +31,6 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Running %27generate.vbs%27 ...</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cscript "$(ProjectDir)generate.vbs"</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(FullPath);%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)openttd_vs80.vcproj;$(SolutionDir)openttd_vs90.vcproj;$(SolutionDir)openttd_vs100.vcxproj;$(SolutionDir)openttd_vs100.vcxproj.filters;$(SolutionDir)langs_vs80.vcproj;$(SolutionDir)langs_vs90.vcproj;$(SolutionDir)langs_vs100.vcxproj;%(Outputs)</Outputs>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -958,7 +958,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 	}
 
 	switch (_settings_game.pf.pathfinder_for_roadvehs) {
-		case VPF_NPF:  best_track = NPFRoadVehicleChooseTrack(v, tile, enterdir, trackdirs, path_found); break;
+		case VPF_NPF:  best_track = NPFRoadVehicleChooseTrack(v, tile, enterdir, path_found); break;
 		case VPF_YAPF: best_track = YapfRoadVehicleChooseTrack(v, tile, enterdir, trackdirs, path_found); break;
 
 		default: NOT_REACHED();
@@ -1639,7 +1639,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 
 	SetBit(v->gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
 	v->current_order.MakeGoToDepot(depot, ODTFB_SERVICE);
-	v->dest_tile = rfdd.tile;
+	v->SetDestTile(rfdd.tile);
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
 

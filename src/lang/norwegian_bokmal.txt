@@ -191,6 +191,8 @@ STR_COLOUR_ORANGE                                               :Oransje
 STR_COLOUR_BROWN                                                :Brun
 STR_COLOUR_GREY                                                 :Grå
 STR_COLOUR_WHITE                                                :Hvit
+STR_COLOUR_RANDOM                                               :Tilfeldig
+STR_COLOUR_DEFAULT                                              :Standard
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mi/t
@@ -477,6 +479,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Skjermbilde
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Fullt forstørret skjermbilde
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Normalt forstørret skjermbilde
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skjermbilde av hele kartet
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Vis bildehastighet
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteforskyver
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Vis/skjul markeringsramme
@@ -652,6 +655,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Ingen musikk tilgjengelig
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}«{STRING}»
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Spor
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Tittel
@@ -672,11 +676,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Skru av/
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Vis musikkspormeny
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Musikkprogram - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Sporliste
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Tøm
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Endre sett
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Slett gjeldende program (gjelder bare Egendefinert 1 og 2)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK} Bytt musikk til et annet installert sett
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikk på et musikkspor for å legge til gjeldende program (Gjelder bare egendefinert 1 og 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikk på et musikkspor for å fjerne det fra nåværende program (Gjelder bare egendefinert 1 og 2)
 
@@ -812,6 +819,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Sjef)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} sponset grunnleggelsen av den nye byen {TOWN}!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}En ny by kalt {TOWN} har blitt reist!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Ny{G "" "" tt} {STRING} blir anlagt i nærheten av {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Ny{G "" "" tt} {STRING} plantes i nærheten av {TOWN}!
@@ -881,8 +889,8 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Tilleggsvindu {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopier til tilleggsvindu
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopier hovedvisningen til dette tilleggsvinduet
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Lim inn fra tilleggsvindu
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopier plasseringen av dette tilleggsvinduet til hovedvisningen
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Endre hovedsynsfelt
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}flytt plasseringen i dette tilleggsvinduet til hovedvisningen
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spillinnstillinger
@@ -918,12 +926,14 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Tyrkisk lire (T
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakisk koruna (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiliansk real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estlandsk krone (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauiske litas (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sørkoreanske won (KRW)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauisk litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sørkoreansk won (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sørafrikanske rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Egendefinert...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgianske Lari (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rial (IRR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgisk lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iransk rial (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ny russisk rubel (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikansk peso (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kjøretøy
@@ -1254,6 +1264,9 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det er i
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Vedlikehold av infrastruktur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Når aktivert, medfører infrastruktur vedlikeholdskostnader. Kostnadene vokser over-proporsjonalt med nettverkets størrelse, og påvirker dermed større selskaper mer enn de små
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Startifarge for firmaet: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Velg startfarge for firmaet
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flyplasser utgår aldri: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktivering av denne innstillingen gjør at hver type flyplass forblir tilgjengelig for alltid etter at sin introduksjon
 
@@ -1276,9 +1289,9 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} måned{
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} måned{P 0 "" er} etter
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimum formue for autofornyelse av kjøretøy: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minste pengemengde som må være igjen i banken for å vurdere automatisk fornying av kjøretøy
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :Varighet av error-melding: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Varighet av feilmelding: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Varighet for visning av feilmeldinger i et rødt vindu. Vær oppmerksom på at noen (kritiske) feilmeldinger ikke lukkes automatisk etter dette tidspunktet, men må lukkes manuelt
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} andre{P 0 "" s}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Vis verktøytips: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Forsinkelse før verktøytips vises når musen svever over elementer i grensesnittet. Alternativt kan verktøytips bindes til den høyre museknappen
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hovre i {COMMA} millisekunder{P 0 "" s}
@@ -1337,6 +1350,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Farge på terre
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grønn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mørkegrønn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fiolett
+STR_CONFIG_SETTING_SCROLLMODE                                   :Rulleoppførsel for vindu: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Oppførsel ved rulling av kart
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Flytt synsfelt med høyre museknapp, museposisjon låst
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Rull kartet med høyre museknapp, museposisjon låst
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Rull kartet med høyre museknapp
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Rull kartet med venstre museknapp
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Myk rulling: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Velge hvordan synsfeltet ruller til en bestemt posisjon når du klikker på det lille kartet, eller ved utstedelse av en kommando for å gå til et bestemt objekt på kartet. Hvis aktivert, ruller synsfeltet jevnt, og hvis deaktivert hopper det direkte til det valgte punktet
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Vis målingsverktøy ved bruk av byggingsverktøy: {STRING}
@@ -1805,7 +1824,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Endre n�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Tillat endring av produksjonsmengder: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Ny firmafarge
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Firmafarge
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Vis generelle fargetemaer
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Vis togfargetemaer
@@ -2068,9 +2087,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tjeneren
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firmaet er beskyttet. Skriv inn passord
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Liste over klienter
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Vær tilskuer
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nytt firma
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liste over klienter
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Vær tilskuer
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nytt firma
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kast ut
@@ -2085,7 +2104,6 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Tilskuere
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv inn hvor mye penger du ønsker å gi
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Tilskuer
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ikke lagre passordet
@@ -2282,6 +2300,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Symbolfo
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Alle
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Ingen
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Velg selskaper som skal vises
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}ubrukt
@@ -2367,8 +2386,8 @@ STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avansert
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Enveis avansert signal (lyssignal){}Et avansert signal tillater flere tog å kjøre samtidig på samme signalblokk, dersom togene kan reservere en rute til et trygt stoppested . Enveis avanserte signaler kan ikke passeres bakfra.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konverter signal{}Konverterer signaler til den valgte signaltypen. Ctrl+klikk vil endre eksisterende variant. Shift+klikk viser kostnadsestimat
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Signaltetthet ved dra-og-slipp
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Senk signaltetthet ved dra-og-slipp
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Øk signaltetthet ved dra-og-slipp
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Senk signalavstand ved dra-og-slipp
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Øk signalavstand ved dra-og-slipp
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Velg jernbanebrotype
@@ -2688,12 +2707,55 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Firma-eid lando
 STR_ABOUT_OPENTTD                                               :{WHITE}Om OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Opprinnelig opphavsbeskyttet {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheter reservert
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versjon {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2018 OpenTTD-teamet
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD-teamet
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Bildehastighet
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simuleringshastighet: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Antall spill-tikk per sekund.
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Bildehastighet: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Antall bilder tegnet per sekund.
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Gjeldende spillhastighetsfaktor: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hvor raskt spillet kjører i forhold til forventet hastighet ved normal simulering.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Gjeldende
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Middels
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Data basert på {COMMA} målinger
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} bilder/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} Bilder/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} frames/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Spill-løkke totalt:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} Godshåndtering:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Tog-tikk:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Veikjøretøy-tikk:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Skips-tikk:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Fly-tikk:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Spillverden-tikk:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Koblingsgraf-etterslep:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Grafikktegning:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Synsfelt for spillverden:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Video output:
+STR_FRAMERATE_SOUND                                             :{BLACK}Lydmiksing:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Spill-løkke
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Godshåndtering
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Tog-tikk
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Veikjøretøy-tikk
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Skips-tikk
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Fly-tikk
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Verdens-tikk
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Koblingsgrad-etterslep
+STR_FRAMETIME_CAPTION_DRAWING                                   :Grafikktegning
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Tegning av synsfelt for spillverden
+STR_FRAMETIME_CAPTION_VIDEO                                     :Video output
+STR_FRAMETIME_CAPTION_SOUND                                     :Lydmiksing
 ############ End of leave-in-this-order
 
 
@@ -2719,6 +2781,9 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spilldet
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen informasjon tilgjengelig.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtrer streng:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Overskriv fil
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Er du sikker på at du vil overskrive eksisterende fil?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Skriv inn et navn på spillet som skal lagres
 
@@ -2836,7 +2901,12 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versjon:
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatibel versjon: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palett: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Default (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Default (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Legacy (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Legacy (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametre: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Ingen
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ingen informasjon tilgjengelig
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Matchende fil ble ikke funnet
@@ -2854,7 +2924,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Lagre
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Lagre forhåndsinnstillingen med det valgte navnet
 
 # NewGRF parameters window
-STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Forandre NewGRF-parametre
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Endre NewGRF-parametre
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Lukk
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Tilbakestill
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Sett alle parametere til standardverdi
@@ -2917,6 +2987,8 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leste forbi slu
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Etterspurte GRF-ressurser ikke tilgjengelig (figur {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ble deaktivert av {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ugyldig/ukjent sprite layout-format (figur {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :For mange elementer i fortegnelse over eiendomsverdier (sprite {3:NUM}, property {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ugyldig industriprodukjson callback (sprite {3:NUM}, "{1:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!
@@ -2981,13 +3053,15 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Skriv in
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Byer
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ingen -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (By){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bynavn - klikk på navnet for å gå til byen. Ctrl+klikk åpner et nytt tilleggsvindu over byen
 STR_TOWN_POPULATION                                             :{BLACK}Verdensbefolkning: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (By)
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Storby)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Innbyggertall: {ORANGE}{COMMA}{BLACK}  Antall hus: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} siste måned: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Varebehov for byvekst:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} påkrevd
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} nødvendig om vinteren
@@ -3292,20 +3366,13 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Gå til 
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produksjonsnivå: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Næringen har annonsert snarlig nedleggelse!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Trenger: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Trenger: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Trenger: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Trenger: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produserer: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Krever:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} venter{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produserer: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produserer: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Endre produksjon (multiplum av 8, opptil 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Endre produksjonsnivå (prosentsats, opptil 800{NBSP}%)
@@ -3359,6 +3426,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupper 
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikk for å opprette en gruppe
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Fjern den valgte gruppen
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Gi nytt navn på den valgte gruppen
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Endre firmafarger for valgt gruppe
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikk for å beskytte denne gruppen fra global autoerstatning
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Slette gruppe
@@ -3402,6 +3470,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasite
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomotivvogner: {GOLD}+{POWER}{BLACK} Vekt: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Kan bygges om til: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle varetyper
+STR_PURCHASE_INFO_NONE                                          :Ingen
 STR_PURCHASE_INFO_ALL_BUT                                       :Alt utenom {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks trekkraft: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rekkevidde: {GOLD}{COMMA} ruter
@@ -3801,6 +3870,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Alder (år)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Trenger vedlikehold
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Alltid
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Gjenstående levetid (år)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maksimal pålitelighet
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hvordan sammenligne kjøretøyets data til den gitte verdi
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :er lik
@@ -4234,6 +4304,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... denn
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... veien vender i feil retning
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... gjennomkjøringsstopper kan ikke ha hjørner
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... gjennomkjøringsstopper kan ikke ha kryss
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... veien er enveiskjørt eller blokkert
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan ikke fjerne del av stasjonen...
@@ -4485,6 +4556,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originale lyder
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originale lyder fra Transport Tycoon Deluxe for Windows.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :En lydpakke uten noen lyder.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Original musikk fra Transport Tycoon Deluxe for Windows.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Original Transport Tycoon Deluxe DOS edition music.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Original Transport Tycoon (Original/World Editor) DOS edition music.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :En musikkpakke uten noe musikk.
 
 ##id 0x2000

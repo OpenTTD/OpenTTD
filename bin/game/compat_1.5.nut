@@ -8,3 +8,10 @@
  */
 
 GSLog.Info("1.5 API compatibility in effect.");
+
+/* 1.9 adds a vehicle type parameter. */
+GSBridge._GetName <- GSBridge.GetName;
+GSBridge.GetName <- function(bridge_id)
+{
+	return GSBridge._GetName(bridge_id, GSVehicle.VT_RAIL);
+}

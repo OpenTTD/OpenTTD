@@ -723,7 +723,7 @@ bool Vehicle::IsEngineCountable() const
 
 /**
  * Check whether Vehicle::engine_type has any meaning.
- * @return true if the vehicle has a useable engine type.
+ * @return true if the vehicle has a usable engine type.
  */
 bool Vehicle::HasEngineType() const
 {
@@ -1222,8 +1222,11 @@ void CheckVehicleBreakdown(Vehicle *v)
 	int rel, rel_old;
 
 	/* decrease reliability */
-	v->reliability = rel = max((rel_old = v->reliability) - v->reliability_spd_dec, 0);
-	if ((rel_old >> 8) != (rel >> 8)) SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
+	if (!_settings_game.order.no_servicing_if_no_breakdowns ||
+			_settings_game.difficulty.vehicle_breakdowns != 0) {
+		v->reliability = rel = max((rel_old = v->reliability) - v->reliability_spd_dec, 0);
+		if ((rel_old >> 8) != (rel >> 8)) SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
+	}
 
 	if (v->breakdown_ctr != 0 || (v->vehstatus & VS_STOPPED) ||
 			_settings_game.difficulty.vehicle_breakdowns < 1 ||
@@ -1489,6 +1492,8 @@ void VehicleEnterDepot(Vehicle *v)
 	/* After a vehicle trigger, the graphics and properties of the vehicle could change. */
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 	v->MarkDirty();
+
+	InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
 
 	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
@@ -1757,7 +1762,10 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 
 	UnitID max;
 	switch (type) {
-		case VEH_TRAIN:    max = _settings_game.vehicle.max_trains; break;
+		case VEH_TRAIN:
+			if (!HasAnyRailtypesAvail(_local_company)) return false;
+			max = _settings_game.vehicle.max_trains;
+			break;
 		case VEH_ROAD:     max = _settings_game.vehicle.max_roadveh; break;
 		case VEH_SHIP:     max = _settings_game.vehicle.max_ships; break;
 		case VEH_AIRCRAFT: max = _settings_game.vehicle.max_aircraft; break;
@@ -1813,11 +1821,12 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 					if (parent_engine_type == INVALID_ENGINE) {
 						return LS_PASSENGER_WAGON_STEAM;
 					} else {
+						bool is_mu = HasBit(EngInfo(parent_engine_type)->misc_flags, EF_RAIL_IS_MU);
 						switch (RailVehInfo(parent_engine_type)->engclass) {
 							default: NOT_REACHED();
 							case EC_STEAM:    return LS_PASSENGER_WAGON_STEAM;
-							case EC_DIESEL:   return LS_PASSENGER_WAGON_DIESEL;
-							case EC_ELECTRIC: return LS_PASSENGER_WAGON_ELECTRIC;
+							case EC_DIESEL:   return is_mu ? LS_DMU : LS_PASSENGER_WAGON_DIESEL;
+							case EC_ELECTRIC: return is_mu ? LS_EMU : LS_PASSENGER_WAGON_ELECTRIC;
 							case EC_MONORAIL: return LS_PASSENGER_WAGON_MONORAIL;
 							case EC_MAGLEV:   return LS_PASSENGER_WAGON_MAGLEV;
 						}
@@ -1886,14 +1895,24 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 	const Company *c = Company::Get(company);
 	LiveryScheme scheme = LS_DEFAULT;
 
-	/* The default livery is always available for use, but its in_use flag determines
-	 * whether any _other_ liveries are in use. */
-	if (c->livery[LS_DEFAULT].in_use && (livery_setting == LIT_ALL || (livery_setting == LIT_COMPANY && company == _local_company))) {
-		/* Determine the livery scheme to use */
-		scheme = GetEngineLiveryScheme(engine_type, parent_engine_type, v);
+	if (livery_setting == LIT_ALL || (livery_setting == LIT_COMPANY && company == _local_company)) {
+		if (v != NULL) {
+			const Group *g = Group::GetIfValid(v->First()->group_id);
+			if (g != NULL) {
+				/* Traverse parents until we find a livery or reach the top */
+				while (g->livery.in_use == 0 && g->parent != INVALID_GROUP) {
+					g = Group::Get(g->parent);
+				}
+				if (g->livery.in_use != 0) return &g->livery;
+			}
+		}
 
-		/* Switch back to the default scheme if the resolved scheme is not in use */
-		if (!c->livery[scheme].in_use) scheme = LS_DEFAULT;
+		/* The default livery is always available for use, but its in_use flag determines
+		 * whether any _other_ liveries are in use. */
+		if (c->livery[LS_DEFAULT].in_use != 0) {
+			/* Determine the livery scheme to use */
+			scheme = GetEngineLiveryScheme(engine_type, parent_engine_type, v);
+		}
 	}
 
 	return &c->livery[scheme];
@@ -2337,13 +2356,15 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 			SetBit(gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
 		}
 
-		this->dest_tile = location;
+		this->SetDestTile(location);
 		this->current_order.MakeGoToDepot(destination, ODTF_MANUAL);
 		if (!(command & DEPOT_SERVICE)) this->current_order.SetDepotActionType(ODATFB_HALT);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 
-		/* If there is no depot in front, reverse automatically (trains only) */
-		if (this->type == VEH_TRAIN && reverse) DoCommand(this->tile, this->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
+		/* If there is no depot in front and the train is not already reversing, reverse automatically (trains only) */
+		if (this->type == VEH_TRAIN && (reverse ^ HasBit(Train::From(this)->flags, VRF_REVERSING))) {
+			DoCommand(this->tile, this->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
+		}
 
 		if (this->type == VEH_AIRCRAFT) {
 			Aircraft *a = Aircraft::From(this);

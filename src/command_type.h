@@ -322,6 +322,7 @@ enum Commands {
 	CMD_ADD_SHARED_VEHICLE_GROUP,     ///< add all other shared vehicles to a group which are missing
 	CMD_REMOVE_ALL_VEHICLES_GROUP,    ///< remove all vehicles from a group
 	CMD_SET_GROUP_REPLACE_PROTECTION, ///< set the autoreplace-protection for a group
+	CMD_SET_GROUP_LIVERY,             ///< set the livery for a group
 
 	CMD_MOVE_ORDER,                   ///< move an order
 	CMD_CHANGE_TIMETABLE,             ///< change the timetable for a vehicle
@@ -394,6 +395,7 @@ enum CommandFlags {
 	CMD_CLIENT_ID = 0x080, ///< set p2 with the ClientID of the sending client.
 	CMD_DEITY     = 0x100, ///< the command may be executed by COMPANY_DEITY
 	CMD_STR_CTRL  = 0x200, ///< the command's string may contain control strings
+	CMD_NO_EST    = 0x400, ///< the command is never estimated.
 };
 DECLARE_ENUM_AS_BIT_SET(CommandFlags)
 

@@ -101,6 +101,11 @@ static inline void NPFSetFlag(AyStarNode *node, NPFNodeFlag flag, bool value)
 	SB(node->user_data[NPF_NODE_FLAGS], flag, 1, value);
 }
 
+bool CheckIgnoreFirstTile(const PathNode *node)
+{
+	return (node->parent == NULL && HasBit(node->node.user_data[NPF_NODE_FLAGS], NPF_FLAG_IGNORE_START_TILE));
+}
+
 /**
  * Calculates the minimum distance travelled to get from t0 to t1 when only
  * using tracks (ie, only making 45 degree turns). Returns the distance in the
@@ -529,7 +534,7 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 }
 
 /* Will find any depot */
-static int32 NPFFindDepot(AyStar *as, OpenListNode *current)
+static int32 NPFFindDepot(const AyStar *as, const OpenListNode *current)
 {
 	AyStarUserData *user = (AyStarUserData *)as->user_data;
 	/* It's not worth caching the result with NPF_FLAG_IS_TARGET here as below,
@@ -539,7 +544,7 @@ static int32 NPFFindDepot(AyStar *as, OpenListNode *current)
 }
 
 /** Find any safe and free tile. */
-static int32 NPFFindSafeTile(AyStar *as, OpenListNode *current)
+static int32 NPFFindSafeTile(const AyStar *as, const OpenListNode *current)
 {
 	const Train *v = Train::From(((NPFFindStationOrTileData *)as->user_target)->v);
 
@@ -549,10 +554,10 @@ static int32 NPFFindSafeTile(AyStar *as, OpenListNode *current)
 }
 
 /* Will find a station identified using the NPFFindStationOrTileData */
-static int32 NPFFindStationOrTile(AyStar *as, OpenListNode *current)
+static int32 NPFFindStationOrTile(const AyStar *as, const OpenListNode *current)
 {
 	NPFFindStationOrTileData *fstd = (NPFFindStationOrTileData*)as->user_target;
-	AyStarNode *node = &current->path.node;
+	const AyStarNode *node = &current->path.node;
 	TileIndex tile = node->tile;
 
 	if (fstd->station_index == INVALID_STATION && tile == fstd->dest_coords) return AYSTAR_FOUND_END_NODE;
@@ -853,11 +858,6 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
 	TileIndex src_tile = current->path.node.tile;
 	DiagDirection src_exitdir = TrackdirToExitdir(src_trackdir);
 
-	/* Is src_tile valid, and can be used?
-	 * When choosing track on a junction src_tile is the tile neighboured to the junction wrt. exitdir.
-	 * But we must not check the validity of this move, as src_tile is totally unrelated to the move, if a roadvehicle reversed on a junction. */
-	bool ignore_src_tile = (current->path.parent == NULL && NPFGetFlag(&current->path.node, NPF_FLAG_IGNORE_START_TILE));
-
 	/* Information about the vehicle: TransportType (road/rail/water) and SubType (compatible rail/road types) */
 	TransportType type = user->type;
 	uint subtype = user->roadtypes;
@@ -871,7 +871,10 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
 	TrackdirBits trackdirbits;
 
 	/* Find dest tile */
-	if (ignore_src_tile) {
+	/* Is src_tile valid, and can be used?
+	 * When choosing track on a junction src_tile is the tile neighboured to the junction wrt. exitdir.
+	 * But we must not check the validity of this move, as src_tile is totally unrelated to the move, if a roadvehicle reversed on a junction. */
+	if (CheckIgnoreFirstTile(&current->path)) {
 		/* Do not perform any checks that involve src_tile */
 		dst_tile = src_tile + TileOffsByDiagDir(src_exitdir);
 		trackdirbits = GetDriveableTrackdirBits(dst_tile, src_trackdir, type, subtype);
@@ -1127,7 +1130,7 @@ FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penal
 	return FindDepotData(ftd.node.tile, ftd.best_path_dist);
 }
 
-Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool &path_found)
+Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, bool &path_found)
 {
 	NPFFindStationOrTileData fstd;
 
@@ -1136,13 +1139,8 @@ Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDir
 
 	AyStarUserData user = { v->owner, TRANSPORT_ROAD, INVALID_RAILTYPES, v->compatible_roadtypes };
 	NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, &user);
-	if (ftd.best_trackdir == INVALID_TRACKDIR) {
-		/* We are already at our target. Just do something
-		 * @todo: maybe display error?
-		 * @todo: go straight ahead if possible? */
-		path_found = true;
-		return (Trackdir)FindFirstBit2x64(trackdirs);
-	}
+
+	assert(ftd.best_trackdir != INVALID_TRACKDIR);
 
 	/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
 	 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
@@ -1154,7 +1152,7 @@ Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDir
 
 /*** Ships ***/
 
-Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found)
+Track NPFShipChooseTrack(const Ship *v, bool &path_found)
 {
 	NPFFindStationOrTileData fstd;
 	Trackdir trackdir = v->GetVehicleTrackdir();
@@ -1163,14 +1161,15 @@ Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 	NPFFillWithOrderData(&fstd, v);
 
 	AyStarUserData user = { v->owner, TRANSPORT_WATER, INVALID_RAILTYPES, ROADTYPES_NONE };
-	NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, &user);
+	NPFFoundTargetData ftd = NPFRouteToStationOrTile(v->tile, trackdir, true, &fstd, &user);
+
+	assert(ftd.best_trackdir != INVALID_TRACKDIR);
 
 	/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
 	 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
 	 * we did not find our target, but ftd.best_trackdir contains the direction leading
 	 * to the tile closest to our target. */
 	path_found = (ftd.best_bird_dist == 0);
-	if (ftd.best_trackdir == INVALID_TRACKDIR) return INVALID_TRACK;
 	return TrackdirToTrack(ftd.best_trackdir);
 }
 
@@ -1256,7 +1255,7 @@ bool NPFTrainCheckReverse(const Train *v)
 	return ftd.best_bird_dist == 0 && NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE);
 }
 
-Track NPFTrainChooseTrack(const Train *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, bool reserve_track, struct PBSTileInfo *target)
+Track NPFTrainChooseTrack(const Train *v, bool &path_found, bool reserve_track, struct PBSTileInfo *target)
 {
 	NPFFindStationOrTileData fstd;
 	NPFFillWithOrderData(&fstd, v, reserve_track);
@@ -1273,13 +1272,7 @@ Track NPFTrainChooseTrack(const Train *v, TileIndex tile, DiagDirection enterdir
 		target->okay = ftd.res_okay;
 	}
 
-	if (ftd.best_trackdir == INVALID_TRACKDIR) {
-		/* We are already at our target. Just do something
-		 * @todo maybe display error?
-		 * @todo: go straight ahead if possible? */
-		path_found = true;
-		return FindFirstTrack(tracks);
-	}
+	assert(ftd.best_trackdir != INVALID_TRACKDIR);
 
 	/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
 	 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,

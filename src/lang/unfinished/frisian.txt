@@ -1249,6 +1249,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}At der f
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Ynfrastruktuerûnderhâld: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :By ynskeakeljen binne der koster ferbûn oan it ûnderhâld fan ynfrastruktuer. De kosten wurde heger by gruttere netwurken wêrtoch gruttere bedriuwen hjir mear lêst fan hawwe
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Fleanfjilden ferrinne nea: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :By ynskeakeljen bliuwe alle fleanfjildtypes foar ivich beskikber
 
@@ -1731,7 +1732,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Wizigje 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Stea oanpassen fan produksje ta: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nei Kleurenskema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Lit gewoane kleurskemas sjen
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Lit kleurskema sjen fan treinen
@@ -1976,7 +1976,6 @@ STR_NETWORK_SERVER                                              :Tsjinner
 STR_NETWORK_CLIENT                                              :Kliïnt
 STR_NETWORK_SPECTATORS                                          :Taskôgers
 
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Taskôger
 
 # Network set password
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Jou it bedriuw it nije wachtwurd
@@ -2468,7 +2467,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Lân fan bedriu
 STR_ABOUT_OPENTTD                                               :{WHITE}Oer OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Orizjineel copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-ferzje {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 It OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 It OpenTTD team
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -3035,17 +3034,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Sintrear
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produksje nivo: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Yndustry kundicht drigend sluten oan!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Nedich: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Nedich: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Nedich: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produseart: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produseart: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Feroaring produksje nivo (percentage, up to 800%)
 

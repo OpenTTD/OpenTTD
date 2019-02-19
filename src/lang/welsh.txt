@@ -1251,6 +1251,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Nid yw'n
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Cynnal a chadw tanadeiledd: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Pan fo wedi'i alluogi, mae tanadeiledd yn creu costau cynnal a chadw. Mae'r cost yn codi'n gyflymach na'i gyfradd gyda thŵf y rhwydwaith, gan effeithio'n fwy ar gwmniau mawr na rhai bychan
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Maes awyr ddim yn dibennu: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Mae galluogi'r dewis yma'n peri i bob math o faes awyr aros ar gael am byth wedi ei gyflwyniad gyntaf
 
@@ -1802,7 +1803,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Newid y 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Galluogi newid graddfeydd cynhyrchu: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Cynllun Lliw Newydd
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Dangos cynllun lliw cyffredinol
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Dangos cynllun lliw trenau
@@ -2064,9 +2064,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Mae'r gw
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Mae'r cwmni wedi'i ddiogelu. rhowch y cyfrinair.
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Rhestr Cleientiaid
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Gwylio
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Cwmni newydd
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Rhestr Cleientiaid
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Gwylio
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Cwmni newydd
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Cicio
@@ -2081,7 +2081,6 @@ STR_NETWORK_CLIENT                                              :Gwestai
 STR_NETWORK_SPECTATORS                                          :Gwylwyr
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Nodwch faint o arian yr hoffech chi ei roi
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Gwyliwr
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Peidio cadw'r cyfrinair a roddwyd
@@ -2684,7 +2683,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Tir cwmni
 STR_ABOUT_OPENTTD                                               :{WHITE}Gwybodaeth am OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Hawlfraint Wreiddiol {COPYRIGHT} 1995 Chris Sawyer, Holl cedwir pob hawl
 STR_ABOUT_VERSION                                               :{BLACK}fersiwn OpenTTD {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 Y tîm OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 Y tîm OpenTTD
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -3288,20 +3287,10 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Canoli'r
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Lefel cynhyrchu: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Mae'r diwydiant wedi datgan ei fod ar fin cau!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Angen: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Angen: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Angen: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Angen:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} yn disgwyl{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Cynhyrchu: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Cynhyrchu: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Newid cynnyrch (lluosrif o 8, hyd at 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Newid y lefel cynhyrchu (canran, hyd at 800%)

@@ -941,9 +941,9 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}{COMMA}. látkép
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Látkép aktualizálása
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Látkép átállítása
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}A látképre a fő nézet pozícióját másolja
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Látkép visszatöltése
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Fő nézet ideállítása
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}A látkép pozícióját a fő nézetre másolja
 
 # Game options window
@@ -1314,6 +1314,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Áthaladó meg�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}A beállítást nem lehet megváltoztatni, ha van használatban jármű
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Az infrastruktúra fenntartási költségének engedélyezése: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Bekapcsolva az infrastruktúrának fenntartási költsége van. A költség hatványozottan nő a hálózatnagysággal, nagyobb hatással a nagyobb vállalatokra mint a kisebbekre
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Repülőterek nem avulnak el: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bekapcsolva minden repülőtértípus örökké elérhető marad bevezetése után
@@ -1866,7 +1867,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Aktuáli
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}A nyersanyagüzemek termelése változtatható: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Új színséma
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Általános színsémák mutatása
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Vonat színsémák mutatása
@@ -2128,9 +2128,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}A szerve
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A vállalat jelszóval van védve. Írd be
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Kliens lista
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Megfigyelés
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Új vállalat
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Kliens lista
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Megfigyelés
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Új vállalat
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kirúgás
@@ -2145,7 +2145,6 @@ STR_NETWORK_CLIENT                                              :Kliens
 STR_NETWORK_SPECTATORS                                          :Megfigyelők
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Add meg a küldeni kívánt pénz mennyiségét
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Megfigyelő
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne mentsd el a megadott jelszót
@@ -2426,9 +2425,9 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombiná
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Irányjelző (fény){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az irányjelzők mellett hátulról is el lehet haladni
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Egyirányú irányjelző (fény){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az egyirányú jelzők mellett nem lehet hátulról elhaladni
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Jelző átalakítás{}Amikor ki van jelölve, egy meglévő jelzőre való kattintással átkonvertálja a kiválasztott jelzőtípusra és -variációra, CTRL+kattintás a variációt fogja változtatni. Shift+kattintással megmutatja a becsült átalakítási költséget
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Automata jelzőtelepítés sűrűsége
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Automata jelzőtelepítés-sűrűség csökkentése
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Automata jelzőltelepítés-sűrűség növelése
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Automata jelzőtelepítés esetén a jelzők távolsága
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Automata jelzőtelepítés esetén a jelzők távolságának csökkentése
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Automata jelzőtelepítés esetén a jelzők távolságának növelése
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Válassz egy vasúti hidat
@@ -2748,7 +2747,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Vállalat álta
 STR_ABOUT_OPENTTD                                               :{WHITE}Az OpenTTD-ről
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Eredeti copyright {COPYRIGHT} 1995 Chris Sawyer, Minden jog fenntartva
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD {REV} verzió
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2018 Az OpenTTD csapat
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 Az OpenTTD csapat
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -3352,20 +3351,10 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}A fő n�
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Termelési szint: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}A gyár bejelentette a közelgő bezárását!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Felhasznál: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Felhasznál: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Felhasznál: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Elfogad:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} várakozik{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Gyárt: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Gyárt: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Termelés megváltoztatása (8 többszörösei 2040-ig)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Termelési szint megváltoztatása (százalékosan, 800%-ig)
