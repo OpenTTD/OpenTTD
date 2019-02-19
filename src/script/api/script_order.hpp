@@ -578,6 +578,7 @@ public:
 
 	/**
 	 * Removes the given vehicle from a shared orders list.
+	 * After unsharing orders, the orders list of the vehicle is empty.
 	 * @param vehicle_id The vehicle to remove from the shared order list.
 	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
 	 * @return True if and only if the unsharing succeeded.
