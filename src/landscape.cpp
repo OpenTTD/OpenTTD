@@ -1302,7 +1302,7 @@ void FloodFill(TileIndex tile, uint& count, uint mode) {
 		return;
 	}
 	Slope slope = GetTileSlope(tile);
-	if (slope == SLOPE_FLAT || IsInclinedSlope(slope)) return;
+	if (slope != SLOPE_FLAT && !IsInclinedSlope(slope)) return;
 	if (_me[tile].m8 == mode) return;
 	_me[tile].m8 = mode;
 	switch (mode) {
