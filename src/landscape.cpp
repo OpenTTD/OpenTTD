@@ -1377,11 +1377,11 @@ static void CreateRivers()
 		while (!candidates.empty()) {
 			// TODO: cleaner way to de-queue?
 			TileIndex tile = candidates.top().t;
-			/*if (GetTileZ(tile) > (int)starting_height + 2) {
+			if (GetTileZ(tile) > (int)starting_height+1) {
 				// exhausted this heightlevel, consider new basins
 				starting_height++;
 				break;
-			}*/
+			}
 			//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d; Size: %d", tile, TileX(tile), TileY(tile), GetTileZ(tile), _m[tile].m2);
 			IncreaseGeneratingWorldProgress(GWP_RIVER);
 			candidates.pop();
