@@ -1295,7 +1295,7 @@ static void CreateRivers()
 #endif
 
 struct RiverData {
-	RiverData() { prio = (Random() & 0xF); }
+	RiverData(): t(0), flowing(false), flow_dir(DIAGDIR_BEGIN), area(0), distance(0), flow_amount(0), visited(0) { prio = (Random() & 0xF); }
 	TileIndex t;
 	bool flowing;
 	DiagDirection flow_dir;
