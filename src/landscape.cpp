@@ -1394,7 +1394,7 @@ static void CreateRivers()
 				starting_height++;
 				break;
 			}
-			//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d; Size: %d", tile, TileX(tile), TileY(tile), GetTileZ(tile), rd->area);
+			DEBUG(misc, 8, "Tile: %d (%d, %d); Height: %d; Size: %d", tile, TileX(tile), TileY(tile), GetTileZ(tile), rd->area);
 			IncreaseGeneratingWorldProgress(GWP_RIVER);
 			candidates.pop();
 			tiles.push_front(rd);
@@ -1416,7 +1416,7 @@ static void CreateRivers()
 		}
 		//break;
 	}
-	//DEBUG(misc, 0, "==============");
+	DEBUG(misc, 9, "==============");
 	// 3. calculate flow number
 	for (RiverData* rd: tiles) {
 		TileIndex tile = rd->t;
@@ -1424,7 +1424,7 @@ static void CreateRivers()
 		TileIndex t2 = tile + TileOffsByDiagDir(rd->flow_dir);
 		RiverData* rd2 = &riverdata[t2];
 		int flow = rd->flow_amount;
-		//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d; Flow: %d; Target: %d (%d, %d)", tile, TileX(tile), TileY(tile), GetTileZ(tile), flow, t2, TileX(t2), TileY(t2));
+		DEBUG(misc, 9, "Tile: %d (%d, %d); Height: %d; Flow: %d; Target: %d (%d, %d)", tile, TileX(tile), TileY(tile), GetTileZ(tile), flow, t2, TileX(t2), TileY(t2));
 		// 4. place river tiles
 		if (rd->flowing && IsValidTile(t2)) {
 			if (flow > rd2->flow_amount) {
