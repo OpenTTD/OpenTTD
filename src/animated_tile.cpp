@@ -43,7 +43,7 @@ void DeleteAnimatedTile(TileIndex tile)
 void AddAnimatedTile(TileIndex tile)
 {
 	MarkTileDirtyByTile(tile);
-	_animated_tiles.Include(tile);
+	include(_animated_tiles, tile);
 }
 
 /**

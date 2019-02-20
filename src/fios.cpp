@@ -706,7 +706,7 @@ public:
 
 		FioFCloseFile(f);
 
-		this->Include(id);
+		include(*this, id);
 		return true;
 	}
 };

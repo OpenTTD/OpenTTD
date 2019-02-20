@@ -18,6 +18,24 @@
 #include <algorithm>
 
 /**
+ * Helper function to append an item to a vector if it is not already contained
+ * Consider using std::set, std::unordered_set or std::flat_set in new code
+ *
+ * @param vec A reference to the vector to be extended
+ * @param item Reference to the item to be copy-constructed if not found
+ *
+ * @return Whether the item was already present
+ */
+template <typename T>
+inline bool include(std::vector<T>& vec, const T &item)
+{
+	const bool is_member = std::find(vec.begin(), vec.end(), item) != vec.end();
+	if (!is_member) vec.emplace_back(item);
+	return is_member;
+}
+
+
+/**
  * Simple vector template class.
  *
  * @note There are no asserts in the class so you have
@@ -65,19 +83,6 @@ public:
 	}
 
 	~SmallVector() = default;
-
-	/**
-	 * Tests whether a item is present in the vector, and appends it to the end if not.
-	 * The '!=' operator of T is used for comparison.
-	 * @param item Item to test for
-	 * @return true iff the item is was already present
-	 */
-	inline bool Include(const T &item)
-	{
-		bool is_member = std::find(std::vector<T>::begin(), std::vector<T>::end(), item) != std::vector<T>::end();
-		if (!is_member) std::vector<T>::emplace_back(item);
-		return is_member;
-	}
 
 	/**
 	 * Get the pointer to the first item (const)

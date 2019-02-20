@@ -577,7 +577,7 @@ bool CheckSubsidised(CargoID cargo_type, CompanyID company, SourceType src_type,
 			for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
 				if (!IsTileType(tile, MP_HOUSE)) continue;
 				const Town *t = Town::GetByTile(tile);
-				if (t->cache.part_of_subsidy & POS_DST) towns_near.Include(t);
+				if (t->cache.part_of_subsidy & POS_DST) include(towns_near, t);
 			}
 			break;
 		}

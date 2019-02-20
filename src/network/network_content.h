@@ -140,7 +140,7 @@ public:
 	void Clear();
 
 	/** Add a callback to this class */
-	void AddCallback(ContentCallback *cb) { this->callbacks.Include(cb); }
+	void AddCallback(ContentCallback *cb) { include(this->callbacks, cb); }
 	/** Remove a callback */
 	void RemoveCallback(ContentCallback *cb) { this->callbacks.erase(std::find(this->callbacks.begin(), this->callbacks.end(), cb)); }
 };
