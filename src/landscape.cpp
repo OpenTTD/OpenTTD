@@ -1308,14 +1308,14 @@ struct RiverData {
 void FloodFill(TileIndex tile, std::vector<RiverData> &riverdata, uint &count, uint mode) {
 	//can't use pointer to RiverData here everywhere, because rd->t is not fully initialized
 	RiverData *rd = &riverdata[tile];
+	if (rd->visited == mode) return;
+	rd->visited = mode;
 	if (!IsValidTile(tile)) {
 		if (mode == 1) count += 5 + (Random() & 0xF); //make edge basins appear bigger
 		return;
 	}
 	Slope slope = GetTileSlope(tile);
 	if (slope != SLOPE_FLAT && !IsInclinedSlope(slope)) return;
-	if (rd->visited == mode) return;
-	rd->visited = mode;
 	switch (mode) {
 		case 1: count++; break;
 		case 2: rd->area = min(IntSqrt(count), 0xFFFF); break;
