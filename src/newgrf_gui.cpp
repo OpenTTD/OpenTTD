@@ -1486,8 +1486,10 @@ private:
 		this->avails.Sort();
 
 		if (this->avail_sel != NULL) {
-			this->avail_pos = this->avails.FindIndex(this->avail_sel);
-			if (this->avail_pos < 0) this->avail_sel = NULL;
+			this->avail_pos = find_index(this->avails, this->avail_sel);
+			if (this->avail_pos == -1) {
+				this->avail_sel = NULL;
+			}
 		}
 
 		this->vscroll2->SetCount(this->avails.size()); // Update the scrollbar

@@ -424,7 +424,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 			if (!UniscribeShapeRun(this->text_buffer, run)) return NULL;
 		}
 
-		*line->Append() = new UniscribeVisualRun(run, cur_pos);
+		line->push_back(new UniscribeVisualRun(run, cur_pos));
 		cur_pos += run.total_advance;
 	}
 

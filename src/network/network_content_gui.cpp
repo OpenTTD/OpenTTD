@@ -435,12 +435,8 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	{
 		if (!this->content.Sort()) return;
 
-		for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
-			if (*iter == this->selected) {
-				this->list_pos = iter - this->content.Begin();
-				break;
-			}
-		}
+		int idx = find_index(this->content, this->selected);
+		if (idx >= 0) this->list_pos = idx;
 	}
 
 	/** Filter content by tags/name */
@@ -478,11 +474,10 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		if (!changed) return;
 
 		/* update list position */
-		for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
-			if (*iter == this->selected) {
-				this->list_pos = iter - this->content.Begin();
-				return;
-			}
+		int idx = find_index(this->content, this->selected);
+		if (idx >= 0) {
+			this->list_pos = idx;
+			return;
 		}
 
 		/* previously selected item not in list anymore */

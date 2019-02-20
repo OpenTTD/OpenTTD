@@ -1245,8 +1245,8 @@ void CommitVehicleListOrderChanges()
 		EngineID target = _engine_mngr.GetID(id_source->type, local_target, id_source->grfid);
 		if (target == INVALID_ENGINE) continue;
 
-		int source_index = ordering.FindIndex(source);
-		int target_index = ordering.FindIndex(target);
+		int source_index = find_index(ordering, source);
+		int target_index = find_index(ordering, target);
 
 		assert(source_index >= 0 && target_index >= 0);
 		assert(source_index != target_index);
