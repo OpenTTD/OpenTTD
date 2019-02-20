@@ -298,10 +298,9 @@ CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1,
 			QSortT(vehs.Begin(), vehs.size(), &VehicleTimetableSorter);
 		}
 
-		int base = vehs.FindIndex(v);
+		int idx = vehs.begin() - std::find(vehs.begin(), vehs.end(), v);
 
 		for (Vehicle **viter = vehs.Begin(); viter != vehs.End(); viter++) {
-			int idx = (viter - vehs.Begin()) - base;
 			Vehicle *w = *viter;
 
 			w->lateness_counter = 0;
@@ -309,6 +308,7 @@ CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1,
 			/* Do multiplication, then division to reduce rounding errors. */
 			w->timetable_start = start_date + idx * total_duration / num_vehs / DAY_TICKS;
 			SetWindowDirty(WC_VEHICLE_TIMETABLE, w->index);
+			++idx;
 		}
 
 	}

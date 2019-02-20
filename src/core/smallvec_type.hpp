@@ -67,18 +67,6 @@ public:
 	~SmallVector() = default;
 
 	/**
-	 * Search for the first occurrence of an item.
-	 * The '!=' operator of T is used for comparison.
-	 * @param item Item to search for
-	 * @return The position of the item, or -1 when not present
-	 */
-	inline int FindIndex(const T &item) const
-	{
-		auto const it = std::find(std::vector<T>::begin(), std::vector<T>::end(), item);
-		return it == std::vector<T>::end() ? -1 : it - std::vector<T>::begin();
-	}
-
-	/**
 	 * Tests whether a item is present in the vector, and appends it to the end if not.
 	 * The '!=' operator of T is used for comparison.
 	 * @param item Item to test for
@@ -133,7 +121,25 @@ public:
 };
 
 /**
- * Helper function to extend a vector by more than one element
+ * Helper function to get the index of an item
+ * Consider using std::set, std::unordered_set or std::flat_set in new code
+ *
+ * @param vec A reference to the vector to be extended
+ * @param item Reference to the item to be search for
+ *
+ * @return Index of element if found, otherwise -1
+ */
+template <typename T>
+int find_index(std::vector<T> const& vec, T const& item)
+{
+	auto const it = std::find(vec.begin(), vec.end(), item);
+	if (it != vec.end()) return it - vec.begin();
+
+	return -1;
+}
+
+/**
+ * Helper function to append N default-constructed elements and get a pointer to the first new element
  * Consider using std::back_inserter in new code
  *
  * @param vec A reference to the vector to be extended

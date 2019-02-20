@@ -143,8 +143,9 @@ uint8 GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile)
 
 	/* Look for a matching rail type label in the table */
 	RailTypeLabel label = GetRailTypeInfo(railtype)->label;
-	int index = grffile->railtype_list.FindIndex(label);
-	if (index >= 0) return index;
+
+	int idx = find_index(grffile->railtype_list, label);
+	if (idx >= 0) return idx;
 
 	/* If not found, return as invalid */
 	return 0xFF;

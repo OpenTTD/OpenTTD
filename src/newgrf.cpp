@@ -8383,8 +8383,8 @@ static void BuildCargoTranslationMap()
 			_cur.grffile->cargo_map[c] = cs->bitnum;
 		} else {
 			/* Check the translation table for this cargo's label */
-			int index = _cur.grffile->cargo_list.FindIndex(cs->label);
-			if (index >= 0) _cur.grffile->cargo_map[c] = index;
+			int idx = find_index(_cur.grffile->cargo_list, {cs->label});
+			if (idx >= 0) _cur.grffile->cargo_map[c] = idx;
 		}
 	}
 }
@@ -9226,7 +9226,7 @@ static void FinalisePriceBaseMultipliers()
 		GRFFile *dest = GetFileByGRFID(override);
 		if (dest == NULL) continue;
 
-		grf_overrides[i] = _grf_files.FindIndex(dest);
+		grf_overrides[i] = find_index(_grf_files, dest);
 		assert(grf_overrides[i] >= 0);
 	}
 
