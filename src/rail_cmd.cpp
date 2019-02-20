@@ -1534,7 +1534,7 @@ static Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 	if (v->type != VEH_TRAIN) return NULL;
 
 	TrainList *affected_trains = static_cast<TrainList*>(data);
-	affected_trains->Include(Train::From(v)->First());
+	include(*affected_trains, Train::From(v)->First());
 
 	return NULL;
 }

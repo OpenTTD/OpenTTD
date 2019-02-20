@@ -1614,7 +1614,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 
 			DeallocateSpecFromStation(st, specindex);
 
-			affected_stations.Include(st);
+			include(affected_stations, st);
 
 			if (v != NULL) RestoreTrainReservation(v);
 		}

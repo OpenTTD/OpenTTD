@@ -238,7 +238,7 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_t
 	for (; v_from != NULL; v_from = v_from->HasArticulatedPart() ? v_from->GetNextArticulatedPart() : NULL) {
 		const Engine *e_from = v_from->GetEngine();
 		if (!e_from->CanCarryCargo() || !HasBit(e_from->info.callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) continue;
-		subtypes.Include(GetCargoSubtypeText(v_from));
+		include(subtypes, GetCargoSubtypeText(v_from));
 	}
 
 	byte ret_refit_cyc = 0;
@@ -470,7 +470,7 @@ struct RefitWindow : public Window {
 							option.cargo   = cid;
 							option.subtype = refit_cyc;
 							option.string  = subtype;
-							this->list[current_index].Include(option);
+							include(this->list[current_index], option);
 						} else {
 							/* Intersect the subtypes of earlier vehicles with the subtypes of this vehicle */
 							if (subtype == STR_EMPTY) {

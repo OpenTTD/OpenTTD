@@ -274,7 +274,7 @@ public:
 	void OnDownloadProgress(const ContentInfo *ci, int bytes) override
 	{
 		BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(ci, bytes);
-		this->receivedTypes.Include(ci->type);
+		include(this->receivedTypes, ci->type);
 
 		/* When downloading is finished change cancel in ok */
 		if (this->downloaded_bytes == this->total_bytes) {

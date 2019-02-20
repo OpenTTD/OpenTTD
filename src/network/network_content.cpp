@@ -930,7 +930,7 @@ void ClientNetworkContentSocketHandler::ReverseLookupTreeDependency(ConstContent
 		this->ReverseLookupDependency(parents, tree[i]);
 
 		for (ConstContentIterator piter = parents.Begin(); piter != parents.End(); piter++) {
-			tree.Include(*piter);
+			include(tree, *piter);
 		}
 	}
 }

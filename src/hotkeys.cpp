@@ -248,7 +248,7 @@ Hotkey::Hotkey(const uint16 *default_keycodes, const char *name, int num) :
  */
 void Hotkey::AddKeycode(uint16 keycode)
 {
-	this->keycodes.Include(keycode);
+	include(this->keycodes, keycode);
 }
 
 HotkeyList::HotkeyList(const char *ini_group, Hotkey *items, GlobalHotkeyHandlerFunc global_hotkey_handler) :

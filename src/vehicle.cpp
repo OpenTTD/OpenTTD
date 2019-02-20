@@ -2899,10 +2899,10 @@ void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8 num_vehicles)
 		for (; u != NULL && num_vehicles > 0; num_vehicles--) {
 			do {
 				/* Include current vehicle in the selection. */
-				set.Include(u->index);
+				include(set, u->index);
 
 				/* If the vehicle is multiheaded, add the other part too. */
-				if (u->IsMultiheaded()) set.Include(u->other_multiheaded_part->index);
+				if (u->IsMultiheaded()) include(set, u->other_multiheaded_part->index);
 
 				u = u->Next();
 			} while (u != NULL && u->IsArticulatedPart());
