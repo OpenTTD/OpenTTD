@@ -67,20 +67,6 @@ public:
 	~SmallVector() = default;
 
 	/**
-	 * Insert a new item at a specific position into the vector, moving all following items.
-	 * @param item Position at which the new item should be inserted
-	 * @return pointer to the new item
-	 */
-	inline T *Insert(T *item)
-	{
-		assert(item >= this->Begin() && item <= this->End());
-
-		size_t start = item - this->Begin();
-		std::vector<T>::insert(std::vector<T>::begin() + start);
-		return this->Begin() + start;
-	}
-
-	/**
 	 * Search for the first occurrence of an item.
 	 * The '!=' operator of T is used for comparison.
 	 * @param item Item to search for
