@@ -55,10 +55,6 @@ typedef SimpleTinyEnumT<ZoomLevel, byte> ZoomLevelByte;
 extern ZoomLevelByte _gui_zoom;
 extern ZoomLevelByte _font_zoom;
 #define ZOOM_LVL_GUI (_gui_zoom)
-/*
- * Invert _font_zoom to be consistent with _gui_zoom and ZOOM_LVL_GUI
- * (higher numbers = smaller font)
- */
-#define ZOOM_LVL_FONT (2 - _font_zoom)
+#define ZOOM_LVL_FONT (_font_zoom)
 
 #endif /* ZOOM_TYPE_H */

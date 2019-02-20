@@ -189,7 +189,7 @@ uint SpriteFontCache::GetGlyphWidth(GlyphID key)
 
 int SpriteFontCache::GetHeight() const
 {
-	return this->height * (1 << _font_zoom);
+	return this->height * (1 << (ZOOM_LVL_OUT_4X - _font_zoom));
 }
 
 bool SpriteFontCache::GetDrawGlyphShadow()
@@ -295,7 +295,7 @@ void FreeTypeFontCache::SetFontSize(FontSize fs, FT_Face face, int pixels)
 	}
 
 	/* Apply user-specified font zoom. */
-	pixels *= (1 << _font_zoom);
+	pixels *= (1 << (ZOOM_LVL_OUT_4X - _font_zoom));
 
 	this->used_size = pixels;
 

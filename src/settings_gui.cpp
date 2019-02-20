@@ -312,7 +312,7 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_FONT_ZOOM_DROPDOWN: {
 				list = new DropDownList();
-				*selected_index = _font_zoom;
+				*selected_index = ZOOM_LVL_OUT_4X - _font_zoom;
 				const StringID *items = _font_zoom_dropdown;
 				for (int i = 0; *items != INVALID_STRING_ID; items++, i++) {
 					*list->Append() = new DropDownListStringItem(*items, i, false);
@@ -349,7 +349,7 @@ struct GameOptionsWindow : Window {
 			case WID_GO_LANG_DROPDOWN:       SetDParamStr(0, _current_language->own_name); break;
 			case WID_GO_RESOLUTION_DROPDOWN: SetDParam(0, GetCurRes() == _num_resolutions ? STR_GAME_OPTIONS_RESOLUTION_OTHER : SPECSTR_RESOLUTION_START + GetCurRes()); break;
 			case WID_GO_GUI_ZOOM_DROPDOWN:   SetDParam(0, _gui_zoom_dropdown[ZOOM_LVL_OUT_4X - _gui_zoom]); break;
-			case WID_GO_FONT_ZOOM_DROPDOWN:  SetDParam(0, _font_zoom_dropdown[_font_zoom]); break;
+			case WID_GO_FONT_ZOOM_DROPDOWN:  SetDParam(0, _font_zoom_dropdown[ZOOM_LVL_OUT_4X - _font_zoom]); break;
 			case WID_GO_BASE_GRF_DROPDOWN:   SetDParamStr(0, BaseGraphics::GetUsedSet()->name); break;
 			case WID_GO_BASE_GRF_STATUS:     SetDParam(0, BaseGraphics::GetUsedSet()->GetNumInvalid()); break;
 			case WID_GO_BASE_SFX_DROPDOWN:   SetDParamStr(0, BaseSounds::GetUsedSet()->name); break;
@@ -562,7 +562,7 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_FONT_ZOOM_DROPDOWN:
 				GfxClearSpriteCache();
-				_font_zoom = (ZoomLevel)index;
+				_font_zoom = (ZoomLevel)(ZOOM_LVL_OUT_4X - index);
 				ClearFontCache();
 				UpdateAllVirtCoords();
 				ReInitAllWindows();
