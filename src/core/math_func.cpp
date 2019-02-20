@@ -45,7 +45,8 @@ int GreatestCommonDivisor(int a, int b)
 		b = a % b;
 		a = t;
 	}
-	return a;
+	/* GCD is always positive */
+	return abs(a);
 
 }
 
