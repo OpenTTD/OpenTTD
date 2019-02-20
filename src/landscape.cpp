@@ -1295,7 +1295,7 @@ static void CreateRivers()
 #endif
 
 struct RiverData {
-	RiverData() { prio = (Random() & 0x3F); }
+	RiverData() { prio = (Random() & 0xF); }
 	TileIndex t;
 	bool flowing;
 	DiagDirection flow_dir;
@@ -1318,7 +1318,7 @@ void FloodFill(TileIndex tile, std::vector<RiverData>& riverdata, uint& count, u
 	rd->visited = mode;
 	switch (mode) {
 		case 1: count++; break;
-		case 2: rd->area=min(4*IntSqrt(count),0xFFFF); break;
+		case 2: rd->area=min(IntSqrt(count),0xFFFF); break;
 		default: NOT_REACHED();
 	}
 	if (slope != SLOPE_FLAT) return;
@@ -1331,8 +1331,8 @@ struct CompareRD {
 	bool operator()(const RiverData* rd2, const RiverData* rd){
 		if (GetTileZ(rd2->t) > GetTileZ(rd->t)) return true;
 		if (GetTileZ(rd2->t) < GetTileZ(rd->t)) return false;
-		if (rd2->area+rd2->prio < rd->area+rd->prio) return true;
-		if (rd2->area+rd2->prio > rd->area+rd->prio) return false;
+		if (max(rd2->area-rd2->distance, 0)+rd2->prio < max(rd->area-rd->distance, 0)+rd->prio) return true;
+		if (max(rd2->area-rd2->distance, 0)+rd2->prio > max(rd->area-rd->distance, 0)+rd->prio) return false;
 		return (rd2->prio < rd->prio);
 	}
 };
@@ -1408,7 +1408,8 @@ static void CreateRivers()
 						candidates.push(rd2);
 						rd2->flow_dir = ReverseDiagDir(d);
 						rd2->flowing = true;
-						rd2->area = max(rd->area-4,0);
+						rd2->area = rd->area;
+						rd2->distance = rd->distance+1;
 					}
 				}
 			}
