@@ -3853,7 +3853,7 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 		Station *st = *st_iter;
 
 		/* Is the station reserved exclusively for somebody else? */
-		if (st->town->exclusive_counter > 0 && st->town->exclusivity != st->owner) continue;
+		if (st->owner != OWNER_NONE && st->town->exclusive_counter > 0 && st->town->exclusivity != st->owner) continue;
 
 		if (st->goods[type].rating == 0) continue; // Lowest possible rating, better not to give cargo anymore
 
