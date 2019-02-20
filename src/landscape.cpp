@@ -1305,9 +1305,8 @@ struct RiverData {
 	uint visited;
 	uint prio;
 };
-void FloodFill(TileIndex tile, std::vector<RiverData> &riverdata, uint &count, uint mode) {
-	//can't use pointer to RiverData here everywhere, because rd->t is not fully initialized
-	RiverData *rd = &riverdata[tile];
+void FloodFill(RiverData *rd, std::vector<RiverData> &riverdata, std::deque<RiverData*> &tiles, uint &count, uint mode) {
+	TileIndex tile = rd->t;
 	if (rd->visited == mode) return;
 	rd->visited = mode;
 	if (!IsValidTile(tile)) {
@@ -1323,7 +1322,11 @@ void FloodFill(TileIndex tile, std::vector<RiverData> &riverdata, uint &count, u
 	}
 	if (slope != SLOPE_FLAT) return;
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
-		FloodFill(tile + TileOffsByDiagDir(d), riverdata, count, mode);
+		TileIndex t2 = tile + TileOffsByDiagDir(d);
+		RiverData *rd2 = &riverdata[t2];
+		if (rd2->t != t2) rd2->t = t2; // might not have been initialized before
+		if (rd2->visited != mode) tiles.push_back(rd2); // weak filter on trying to not visit a tile twice
+		//FloodFill(t2, riverdata, count, mode);
 	}
 }
 
@@ -1348,7 +1351,7 @@ static void CreateRivers()
 	std::vector<RiverData> riverdata(MapSize());
 	std::array<std::set<RiverData*>, MAX_TILE_HEIGHT> heights;
 	std::priority_queue<RiverData*, std::vector<RiverData*>, CompareRD> candidates;
-	std::deque<RiverData*> tiles;
+	std::deque<RiverData*> tiles, flood;
 	riverdata.reserve(MapSize());
 
 	SetGeneratingWorldProgress(GWP_RIVER, 3 * MapSize());
@@ -1379,8 +1382,18 @@ static void CreateRivers()
 			if (GetTileSlope(tile) == SLOPE_FLAT && rd->area == 0) {
 				// estimate basin size
 				uint count = 0;
-				FloodFill(tile, riverdata, count, 1);
-				FloodFill(tile, riverdata, count, 2);
+				flood.push_back(rd);
+				while (!flood.empty()) {
+					RiverData *rd2 = flood.front();
+					flood.pop_front();
+					FloodFill(rd2, riverdata, flood, count, 1);
+				}
+				flood.push_back(rd);
+				while (!flood.empty()) {
+					RiverData *rd2 = flood.front();
+					flood.pop_front();
+					FloodFill(rd2, riverdata, flood, count, 2);
+				}
 			}
 		}
 		heights[starting_height].clear();
