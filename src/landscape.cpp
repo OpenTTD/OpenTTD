@@ -40,9 +40,6 @@
 #include <queue>
 
 
-//TODO: remove dirty hack
-#include "map_func.h"
-
 #include "table/strings.h"
 #include "table/sprites.h"
 
@@ -1297,38 +1294,49 @@ static void CreateRivers()
 }
 #endif
 
-void FloodFill(TileIndex tile, uint& count, uint mode) {
+struct RiverData {
+	RiverData() { prio = (Random() & 0x3F); }
+	TileIndex t;
+	bool flowing;
+	DiagDirection flow_dir;
+	int area;
+	int distance;
+	int flow_amount;
+	uint visited;
+	uint prio;
+};
+void FloodFill(TileIndex tile, std::vector<RiverData>& riverdata, uint& count, uint mode) {
+	//can't use pointer to RiverData here everywhere, because rd->t is not fully initialized
+	RiverData* rd = &riverdata[tile];
 	if (!IsValidTile(tile)) {
 		if (mode==1) count+=5+(Random()&0xF); //make edge basins appear bigger
 		return;
 	}
 	Slope slope = GetTileSlope(tile);
 	if (slope != SLOPE_FLAT && !IsInclinedSlope(slope)) return;
-	if (_me[tile].m8 == mode) return;
-	_me[tile].m8 = mode;
+	if (rd->visited == mode) return;
+	rd->visited = mode;
 	switch (mode) {
 		case 1: count++; break;
-		case 2: _m[tile].m2=min(4*IntSqrt(count),0xFFFF); break;
+		case 2: rd->area=min(4*IntSqrt(count),0xFFFF); break;
 		default: NOT_REACHED();
 	}
 	if (slope != SLOPE_FLAT) return;
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
-		FloodFill(tile + TileOffsByDiagDir(d), count, mode);
+		FloodFill(tile + TileOffsByDiagDir(d), riverdata, count, mode);
 	}
 }
-struct TilePrio {
-	TilePrio(TileIndex t): t(t) { prio = (Random() & 0x3F); }
-	TileIndex t;
-	uint prio;
-	bool operator<(const TilePrio& tp) const {
-		if (GetTileZ(t) > GetTileZ(tp.t)) return true;
-		if (GetTileZ(t) < GetTileZ(tp.t)) return false;
-		if (_m[t].m2+prio < _m[tp.t].m2+tp.prio) return true;
-		if (_m[t].m2+prio > _m[tp.t].m2+tp.prio) return false;
-		return (prio < tp.prio);
 
+struct CompareRD {
+	bool operator()(const RiverData* rd2, const RiverData* rd){
+		if (GetTileZ(rd2->t) > GetTileZ(rd->t)) return true;
+		if (GetTileZ(rd2->t) < GetTileZ(rd->t)) return false;
+		if (rd2->area+rd2->prio < rd->area+rd->prio) return true;
+		if (rd2->area+rd2->prio > rd->area+rd->prio) return false;
+		return (rd2->prio < rd->prio);
 	}
 };
+
 /**
  * reimplement with BFS
  */
@@ -1337,20 +1345,23 @@ static void CreateRivers()
 	int amount = _settings_game.game_creation.amount_of_rivers;
 	if (amount == 0) return;
 
-	std::array<std::set<TileIndex>, MAX_TILE_HEIGHT> heights;
-	std::priority_queue<TilePrio> candidates;
-	std::deque<TileIndex> tiles;
-
+	std::vector<RiverData> riverdata(MapSize());
+	std::array<std::set<RiverData*>, MAX_TILE_HEIGHT> heights;
+	std::priority_queue<RiverData*, std::vector<RiverData*>, CompareRD> candidates;
+	std::deque<RiverData*> tiles;
+	riverdata.reserve(MapSize());
 
 	SetGeneratingWorldProgress(GWP_RIVER, 3*MapSize());
 	// 0. Slice terrain into heightlevels, ignoring unusable slopes
 	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
 		IncreaseGeneratingWorldProgress(GWP_RIVER);
 		if (!IsValidTile(tile)) continue;
-		assert(GetTileType(tile) == MP_CLEAR || GetTileType(tile) == MP_WATER);
-		assert(_m[tile].m2 == 0 && _me[tile].m8 == 0 && _me[tile].m7 == 0);
 		Slope slope = GetTileSlope(tile);
-		if (slope == SLOPE_FLAT || IsInclinedSlope(slope)) heights[GetTileZ(tile)].insert(tile);
+		if (slope == SLOPE_FLAT || IsInclinedSlope(slope)) {
+			RiverData* rd = &riverdata[tile];
+			rd->t = tile;
+			heights[GetTileZ(tile)].insert(rd);
+		}
 	}
 
 	uint starting_height = 0;
@@ -1362,40 +1373,42 @@ static void CreateRivers()
 		}
 
 		// consider all tiles of same height equally
-		for(TileIndex const& tile: heights[starting_height]) {
-			candidates.push(tile);
-			if (GetTileSlope(tile) == SLOPE_FLAT && _m[tile].m2 == 0) {
+		for(RiverData* rd: heights[starting_height]) {
+			TileIndex tile = rd->t;
+			candidates.push(rd);
+			if (GetTileSlope(tile) == SLOPE_FLAT && rd->area == 0) {
 				// estimate basin size
 				uint count = 0;
-				FloodFill(tile, count, 1);
-				FloodFill(tile, count, 2);
+				FloodFill(tile, riverdata, count, 1);
+				FloodFill(tile, riverdata, count, 2);
 			}
 		}
 		heights[starting_height].clear();
 
 		// 2. Run BFS
 		while (!candidates.empty()) {
-			// TODO: cleaner way to de-queue?
-			TileIndex tile = candidates.top().t;
+			RiverData* rd = candidates.top();
+			TileIndex tile = rd->t;
 			if (GetTileZ(tile) > (int)starting_height+1) {
 				// exhausted this heightlevel, consider new basins
 				starting_height++;
 				break;
 			}
-			//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d; Size: %d", tile, TileX(tile), TileY(tile), GetTileZ(tile), _m[tile].m2);
+			//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d; Size: %d", tile, TileX(tile), TileY(tile), GetTileZ(tile), rd->area);
 			IncreaseGeneratingWorldProgress(GWP_RIVER);
 			candidates.pop();
-			tiles.push_front(tile);
+			tiles.push_front(rd);
 			for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 				TileIndex t2 = tile + TileOffsByDiagDir(d);
+				RiverData* rd2 = &riverdata[t2];
 				if (IsValidTile(t2) && FlowsDown(t2, tile)) {
-					if (heights[GetTileZ(t2)].find(t2) != heights[GetTileZ(t2)].end()) {
+					if (heights[GetTileZ(t2)].find(rd2) != heights[GetTileZ(t2)].end()) {
 						// untouched tile
-						heights[GetTileZ(t2)].erase(t2);
-						candidates.push(t2);
-						//TODO: remove dirty hack
-						_me[t2].m8 = ReverseDiagDir(d) | 0x4;
-						_m[t2].m2 = max(_m[tile].m2-4,0);
+						heights[GetTileZ(t2)].erase(rd2);
+						candidates.push(rd2);
+						rd2->flow_dir = ReverseDiagDir(d);
+						rd2->flowing = true;
+						rd2->area = max(rd->area-4,0);
 					}
 				}
 			}
@@ -1404,21 +1417,19 @@ static void CreateRivers()
 	}
 	//DEBUG(misc, 0, "==============");
 	// 3. calculate flow number
-	for (TileIndex const& tile: tiles) {
+	for (RiverData* rd: tiles) {
+		TileIndex tile = rd->t;
 		IncreaseGeneratingWorldProgress(GWP_RIVER);
-		bool flows = _me[tile].m8 & 0x4;
-		TileIndex t2 = tile + TileOffsByDiagDir((DiagDirection)(_me[tile].m8 & 0x3));
-		uint flow = _me[tile].m7;
-		_m[tile].m2 = 0;
-		_me[tile].m8 = 0;
-		_me[tile].m7 = 0;
+		TileIndex t2 = tile + TileOffsByDiagDir(rd->flow_dir);
+		RiverData* rd2 = &riverdata[t2];
+		int flow = rd->flow_amount;
 		//DEBUG(misc, 0, "Tile: %d (%d, %d); Height: %d; Flow: %d; Target: %d (%d, %d)", tile, TileX(tile), TileY(tile), GetTileZ(tile), flow, t2, TileX(t2), TileY(t2));
 		// 4. place river tiles
-		if (flows && IsValidTile(t2)) {
-			if (flow > _me[t2].m7) {
-				_me[t2].m7 = flow;
-			} else if (flow == _me[t2].m7) {
-				_me[t2].m7++;
+		if (rd->flowing && IsValidTile(t2)) {
+			if (flow > rd2->flow_amount) {
+				rd2->flow_amount = flow;
+			} else if (flow == rd2->flow_amount) {
+				rd2->flow_amount++;
 			}
 		} else if ((flow > 3 || (flow > 2 && GetTileSlope(tile) == SLOPE_FLAT)) && GetTileType(tile) != MP_WATER) {
 			//make a lake
