@@ -849,6 +849,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Chan eil ceòl ann
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}“{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Traca
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Tiotal
@@ -869,10 +870,12 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Toglaich
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Seall uinneag taghadh tracaichean ciùil
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Prògram ciùil - "{STRING}"
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} “{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Clàr-amais nan traca
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Prògram - “{STRING}"
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Falamhaich
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Atharraich an seata
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Falamhaich am prògram làithreach (Gnàthaichte1 no Gnàthaichte2 a-mhàin)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Dèan briogadh air traca ciùil gus a chur ris a' phrògram làithreach (Gnàthaichte1 no Gnàthaichte2 a-mhàin)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Dèan briogadh air traca ciùil gus a thoirt air falbh bhon phrògram làithreach (Gnàthaichte1 no Gnàthaichte2 a-mhàin)
@@ -1079,10 +1082,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Port-seallaidh {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Cuir lethbhreac sa phort-seallaidh seo
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Atharraich am port-seallaidh
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Cuir lethbhreac dhen ionad air a' phrìomh shealladh sa phort-seallaidh seo
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Cuir ann bhon phort-seallaidh seo
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Cuir ionad a' phuirt-seallaidh seo sa phrìomh shealladh
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Atharraich am prìomh phort-seallaidh
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Cuir lethbhreac de dh'ionad a' phuirt-seallaidh seo sa phrìomh shealladh
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Roghainnean a' gheama
@@ -1453,6 +1456,8 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Cha ghab
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Cumail suas a' bhun-structair: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Nuair a bhios seo air, bidh cumail suas a' bhun-structair a' cosg airgid. Fàsaidh na cosgaisean nas luaithe na meud an lìonraidh, mar sin bheir an roghainn seo barrachd buaidh air companaidhean mòra
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Dath tòiseachadh na companaidh: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Tagh dath tòiseachaidh airson na companaidh
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Chan fhalbh an ùine air puirt-adhair: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Nuair a chuireas tu an roghainn seo an comas, cumaidh gach port-adhair a' dol gu bràth an dèidh a thogail
@@ -1537,6 +1542,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Dath na crutha-
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Uaine
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dorch-uaine
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Purpaidh
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Gluais am mapa le putan deas na luchaige
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Sgroladh mìn nam port-seallaidh: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Tagh mar a ghluaiseas am prìomh-shealladh gu ionad sònraichte. Ma tha seo dheth, thèid leum dhan ionad a chaidh a thaghadh sa bhad
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Seall gliocasan-sgrìn tomhais le innealan togail: {STRING}
@@ -2005,6 +2011,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Atharrai
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cuir an comas atharrachadh air luachan saothrachaidh: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Sgeama nan dath
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Seall sgeamannan nan dath coitcheann
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Seall sgeamannan nan dath airson trèanaichean
@@ -2575,9 +2582,9 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Comharra
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Comharra slighe (dealain){}Leigidh comharra slighe le barrachd air aon trèan dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèan slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Faodar dol seachad air comharran slighe àbhaisteach on chùlaibh
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Comharra slighe aon-shligheach (dealain){}Leigidh comharra slighe le barrachd air aon trèan dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèan slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Chan fhaodar dol seachad air comharran slighe àbhaisteach on chùlaibh
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Iompachadh chomharran{}Ma thagh thu seo ’s tu a' briogadh air comharra a tha ann, iompaichidh seo an comharra dhan t-seòrsa a thagh thu. Seallaidh Shift+briogadh tuairmse air cosgaisean an iompachaidh dhut
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dlùths nan comharran air an cruthachadh le slaodadh
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Lùghdaich dlùths nan comharran air an cruthachadh le slaodadh
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Meudaich dlùths nan comharran air an cruthachadh le slaodadh
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Astar nan comharran air an cruthachadh le slaodadh
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Lùghdaich astar nan comharran air an cruthachadh le slaodadh
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Meudaich astar nan comharran air an cruthachadh le slaodadh
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Tagh drochaid rèile
@@ -2927,9 +2934,29 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 An sgioba OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Reat fhrèamaichean
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Reat fhrèamaichean na grafaigeachd: {STRING}
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Factar làithreach air luaths a' gheama: {DECIMAL}x
+STR_FRAMERATE_CURRENT                                           :{WHITE}Làithreach
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Cuibheasach
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Dàta stèidhichte air {COMMA} {P "tomhas" "thomhas" "tomhasan" "tomhas" }
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} {P "fhrèam" "fhrèam" "frèamaichean" "frèam" }/diog
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} {P "fhrèam" "fhrèam" "frèamaichean" "frèam" }/diog
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Dàil air graf nan ceangal:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Reandaradh na grafaigeachd:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Puirt-sheallaidh an t-saoghail:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Às-chur video:
+STR_FRAMERATE_SOUND                                             :{BLACK}Measgachadh fuaime:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Lùb a' gheama
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              : Dàil air graf nan ceangal
+STR_FRAMETIME_CAPTION_VIDEO                                     :Às-chur video
+STR_FRAMETIME_CAPTION_SOUND                                     :Measgachadh fuaime
 ############ End of leave-in-this-order
 
 
@@ -2955,6 +2982,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Fiosrach
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Chan eil fiosrachadh ri làimh
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Sgrìobh thairis air an fhaidhle
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Cuir a-steach ainm ùr gus an geama a shàbhaladh
 
@@ -3072,6 +3100,10 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Tionndad
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}An tionndadh as sine a tha co-chòrdail: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}Suim MD5: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Pailead: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Bun-roghainn (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Bun-roghainn (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Dìleabach (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Dìleabach (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paramadairean: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Chan eil fiosrachadh ri làimh
@@ -3224,6 +3256,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Sluagh a
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Mòr-bhaile)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Sluagh: {ORANGE}{COMMA}{BLACK}  Taighean: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} sa mhìos seo chaidh: {ORANGE}{COMMA}{BLACK}  as motha: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carago a tha a dhìth ach am fàs am baile:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}Feum air {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{BLACK}Feum air {ORANGE}{STRING}{BLACK} sa gheamhradh
@@ -3276,6 +3309,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Ceannai
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Amasan aig {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Amasan coitcheann
+STR_GOALS_SPECTATOR                                             :Amasan coitcheann
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Amasan coitcheann:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Chan eil gin -
@@ -3628,6 +3662,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Tomhas-l
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Carbadan le cumhachd: {GOLD}+{POWER}{BLACK} Cuideam: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Gabhaidh mùthadh airson: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Na h-uile seòrsa dhe charago
+STR_PURCHASE_INFO_NONE                                          :Chan eil gin
 STR_PURCHASE_INFO_ALL_BUT                                       :Na h-uile ach {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Spàirn tàirnge as motha: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Astar: {GOLD}{COMMA} {P leac leac leacan leac}
@@ -4459,6 +4494,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... tha 
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... tha comhair an rathaid cearr
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... chan urrainn dha dh’oiseanan a bhith aig stèiseanan draibhidh troimhe
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... chan urrainn dha ghoibhlean a bhith aig stèiseanan draibhidh troimhe
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... rathad aon-shligheach no bacte
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Cha ghabh pàirt dhen stèisean toirt air falbh...
@@ -4710,6 +4746,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Fuaimean aig an
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Fuaimean aig an deasachadh Windows tùsail aig Transport Tycoon Deluxe.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Pacaid fhuaimean anns nach eil fuaim sam bith.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Ceòl aig an deasachadh Windows tùsail aig Transport Tycoon Deluxe.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Ceòl aig an deasachadh DOS tùsail aig Transport Tycoon Deluxe.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Ceòl aig an deasachadh DOS tùsail aig Transport Tycoon Deluxe (Original/World Editor).
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Pacaid ciùil anns nach eil fonn sam bith.
 
 ##id 0x2000
