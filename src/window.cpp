@@ -2436,14 +2436,14 @@ static EventState HandleActiveWidget()
 				return ES_HANDLED;
 			}
 
-			/* If cursor hasn't moved, there is nothing to do. */
-			if (_cursor.delta.x == 0 && _cursor.delta.y == 0) return ES_HANDLED;
-
 			/* Handle scrollbar internally, or dispatch click event */
 			WidgetType type = w->GetWidget<NWidgetBase>(w->mouse_capture_widget)->type;
 			if (type == NWID_VSCROLLBAR || type == NWID_HSCROLLBAR) {
 				HandleScrollbarScrolling(w);
 			} else {
+				/* If cursor hasn't moved, there is nothing to do. */
+				if (_cursor.delta.x == 0 && _cursor.delta.y == 0) return ES_HANDLED;
+
 				Point pt = { _cursor.pos.x - w->left, _cursor.pos.y - w->top };
 				w->OnClick(pt, w->mouse_capture_widget, 0);
 			}
