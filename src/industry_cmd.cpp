@@ -1509,21 +1509,35 @@ static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int i
 }
 
 /**
+ * Get industry layout size.
+ * @param it TileTable of industry layout
+ * @return Size of industry layout, excluding clear water checks.
+ */
+static TileIndexDiffC GetIndustryTileTableSize(const IndustryTileTable *it)
+{
+	const int MKEND = -0x80;   // used for last element in an IndustryTileTable (see build_industry.h)
+
+	TileIndexDiffC ti = it->ti;
+
+	/* Finds dimensions of this variant of this industry */
+	do {
+		if (it->gfx == 0xFF) continue; // 0xFF is a marker to perform a check for clear water, skip it
+		if (it->ti.x > ti.x) ti.x = it->ti.x;
+		if (it->ti.y > ti.y) ti.y = it->ti.y;
+	} while ((++it)->ti.x != MKEND);
+
+	return ti;
+}
+
+/**
  * This function tries to flatten out the land below an industry, without
  *  damaging the surroundings too much.
  */
 static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags, const IndustryTileTable *it, int type)
 {
-	const int MKEND = -0x80;   // used for last element in an IndustryTileTable (see build_industry.h)
-	int max_x = 0;
-	int max_y = 0;
-
-	/* Finds dimensions of largest variant of this industry */
-	do {
-		if (it->gfx == 0xFF) continue;  //  FF been a marquer for a check on clear water, skip it
-		if (it->ti.x > max_x) max_x = it->ti.x;
-		if (it->ti.y > max_y) max_y = it->ti.y;
-	} while ((++it)->ti.x != MKEND);
+	TileIndexDiffC ti = GetIndustryTileTableSize(it);
+	int max_x = ti.x;
+	int max_y = ti.y;
 
 	/* Remember level height */
 	uint h = TileHeight(tile);
@@ -1843,6 +1857,10 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 	bool custom_shape_check = false;
 
 	*ip = NULL;
+
+	/* Get layout size so we can use provided origin as centre of layout. */
+	TileIndexDiffC ti = GetIndustryTileTableSize(it);
+	tile = TileXY(max<int>(0, TileX(tile) - ti.x / 2), max<int>(0, TileY(tile) - ti.y / 2));
 
 	SmallVector<ClearedObjectArea, 1> object_areas(_cleared_object_areas);
 	CommandCost ret = CheckIfIndustryTilesAreFree(tile, it, itspec_index, type, random_initial_bits, founder, creation_type, &custom_shape_check);
