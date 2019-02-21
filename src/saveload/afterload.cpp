@@ -3085,6 +3085,25 @@ bool AfterLoadGame()
 		_settings_game.economy.town_cargogen_mode = TCGM_ORIGINAL;
 	}
 
+	if (IsSavegameVersionBefore(SLV_SERVE_NEUTRAL_INDUSTRIES)) {
+		/* Ensure the original neutral industry/station behaviour is used */
+		_settings_game.station.serve_neutral_industries = true;
+
+		/* Link oil rigs to their industry and back. */
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			if (IsTileType(st->xy, MP_STATION) && IsOilRig(st->xy)) {
+				/* Industry tile is always adjacent during construction by TileDiffXY(0, 1) */
+				st->industry = Industry::GetByTile(st->xy + TileDiffXY(0, 1));
+				st->industry->neutral_station = st;
+			}
+		}
+	} else {
+		/* Link neutral station back to industry, as this is not saved. */
+		Industry *ind;
+		FOR_ALL_INDUSTRIES(ind) if (ind->neutral_station != NULL) ind->neutral_station->industry = ind;
+	}
+
 	/* Station acceptance is some kind of cache */
 	if (IsSavegameVersionBefore(SLV_127)) {
 		Station *st;

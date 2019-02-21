@@ -18,6 +18,7 @@
 #include "industry_map.h"
 #include "industrytype.h"
 #include "tilearea_type.h"
+#include "station_base.h"
 
 
 typedef Pool<Industry, IndustryID, 64, 64000> IndustryPool;
@@ -41,6 +42,7 @@ enum ProductionLevels {
 struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	TileArea location;                                     ///< Location of the industry
 	Town *town;                                            ///< Nearest town
+	Station *neutral_station;                              ///< Associated neutral station
 	CargoID produced_cargo[INDUSTRY_NUM_OUTPUTS];          ///< 16 production cargo slots
 	uint16 produced_cargo_waiting[INDUSTRY_NUM_OUTPUTS];   ///< amount of cargo produced per cargo
 	uint16 incoming_cargo_waiting[INDUSTRY_NUM_INPUTS];    ///< incoming cargo waiting to be processed

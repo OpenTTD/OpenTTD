@@ -1048,6 +1048,11 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 		Industry *ind = st->industries_near[i];
 		if (ind->index == source) continue;
 
+		if (!_settings_game.station.serve_neutral_industries) {
+			/* If this industry is only served by its neutral station, check it's us. */
+			if (ind->neutral_station != NULL && ind->neutral_station != st) continue;
+		}
+
 		uint cargo_index;
 		for (cargo_index = 0; cargo_index < lengthof(ind->accepts_cargo); cargo_index++) {
 			if (cargo_type == ind->accepts_cargo[cargo_index]) break;
