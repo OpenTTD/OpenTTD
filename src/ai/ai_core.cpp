@@ -73,14 +73,16 @@
 	/* The speed with which AIs go, is limited by the 'competitor_speed' */
 	AI::frame_counter++;
 	assert(_settings_game.difficulty.competitor_speed <= 4);
-	if ((AI::frame_counter & ((1 << (4 - _settings_game.difficulty.competitor_speed)) - 1)) != 0) return;
+	uint tick_interval = (1 << (4 - _settings_game.difficulty.competitor_speed)) - 1;
 
 	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
 	const Company *c;
 	FOR_ALL_COMPANIES(c) {
 		if (c->is_ai) {
-			cur_company.Change(c->index);
-			c->ai_instance->GameLoop();
+			if (((AI::frame_counter + c->index) & tick_interval) == 0) {
+				cur_company.Change(c->index);
+				c->ai_instance->GameLoop();
+			}
 		}
 	}
 	cur_company.Restore();
