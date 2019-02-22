@@ -385,6 +385,7 @@ vehicle_gui_base.h
 vehicle_type.h
 vehiclelist.h
 viewport_func.h
+viewport_kdtree.h
 viewport_sprite_sorter.h
 viewport_type.h
 water.h

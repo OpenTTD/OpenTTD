@@ -30,6 +30,7 @@
 #include "linkgraph/linkgraphschedule.h"
 #include "station_kdtree.h"
 #include "town_kdtree.h"
+#include "viewport_kdtree.h"
 
 #include "safeguards.h"
 
@@ -79,6 +80,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 
 	RebuildStationKdtree();
 	RebuildTownKdtree();
+	RebuildViewportKdtree();
 
 	ResetPersistentNewGRFData();
 

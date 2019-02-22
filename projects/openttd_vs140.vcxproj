@@ -698,6 +698,7 @@
     <ClInclude Include="..\src\vehicle_type.h" />
     <ClInclude Include="..\src\vehiclelist.h" />
     <ClInclude Include="..\src\viewport_func.h" />
+    <ClInclude Include="..\src\viewport_kdtree.h" />
     <ClInclude Include="..\src\viewport_sprite_sorter.h" />
     <ClInclude Include="..\src\viewport_type.h" />
     <ClInclude Include="..\src\water.h" />

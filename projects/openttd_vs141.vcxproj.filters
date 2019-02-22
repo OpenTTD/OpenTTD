@@ -1182,6 +1182,9 @@
     <ClInclude Include="..\src\viewport_func.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\viewport_kdtree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\viewport_sprite_sorter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
