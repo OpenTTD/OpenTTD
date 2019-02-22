@@ -14,6 +14,7 @@
 #include "bridge_map.h"
 #include "cmd_helper.h"
 #include "viewport_func.h"
+#include "viewport_kdtree.h"
 #include "command_func.h"
 #include "town.h"
 #include "news_func.h"
@@ -672,9 +673,11 @@ static void UpdateStationSignCoord(BaseStation *st)
 	/* clamp sign coord to be inside the station rect */
 	TileIndex new_xy = TileXY(ClampU(TileX(st->xy), r->left, r->right), ClampU(TileY(st->xy), r->top, r->bottom));
 	if (new_xy != st->xy) {
+		_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeStation(st->index));
 		_station_kdtree.Remove(st->index);
 		st->xy = new_xy;
 		_station_kdtree.Insert(st->index);
+		_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation(st->index));
 		st->UpdateVirtCoord();
 	}
 
@@ -715,6 +718,7 @@ static CommandCost BuildStationPart(Station **st, DoCommandFlag flags, bool reus
 		if (flags & DC_EXEC) {
 			*st = new Station(area.tile);
 			_station_kdtree.Insert((*st)->index);
+			_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation((*st)->index));
 
 			(*st)->town = ClosestTownFromTile(area.tile, UINT_MAX);
 			(*st)->string_id = GenerateStationName(*st, area.tile, name_class);
@@ -3975,6 +3979,7 @@ void BuildOilRig(TileIndex tile)
 	st->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
 
 	st->UpdateVirtCoord();
+	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation(st->index));
 	st->RecomputeCatchment();
 	UpdateStationAcceptance(st, false);
 }

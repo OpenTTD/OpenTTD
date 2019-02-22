@@ -14,6 +14,7 @@
 #include "road_cmd.h"
 #include "landscape.h"
 #include "viewport_func.h"
+#include "viewport_kdtree.h"
 #include "cmd_helper.h"
 #include "command_func.h"
 #include "industry.h"
@@ -1713,6 +1714,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->townnameparts = townnameparts;
 
 	t->UpdateVirtCoord();
+	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeTown(t->index));
 	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 0);
 
 	t->InitializeLayout(layout);
@@ -2869,6 +2871,7 @@ CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	/* The town destructor will delete the other things related to the town. */
 	if (flags & DC_EXEC) {
 		_town_kdtree.Remove(t->index);
+		_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeTown(t->index));
 		delete t;
 	}
 

@@ -19,6 +19,7 @@
 #include "../network/network_func.h"
 #include "../gfxinit.h"
 #include "../viewport_func.h"
+#include "../viewport_kdtree.h"
 #include "../industry.h"
 #include "../clear_map.h"
 #include "../vehicle_func.h"
@@ -221,6 +222,7 @@ void UpdateAllVirtCoords()
 	UpdateAllStationVirtCoords();
 	UpdateAllSignVirtCoords();
 	UpdateAllTownVirtCoords();
+	RebuildViewportKdtree();
 }
 
 /**
@@ -538,6 +540,9 @@ bool AfterLoadGame()
 
 	RebuildTownKdtree();
 	RebuildStationKdtree();
+	/* This needs to be done even before conversion, because some conversions will destroy objects
+	 * that otherwise won't exist in the tree. */
+	RebuildViewportKdtree();
 
 	if (IsSavegameVersionBefore(SLV_98)) GamelogGRFAddList(_grfconfig);
 

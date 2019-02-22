@@ -15,6 +15,7 @@
 #include "window_func.h"
 #include "newgrf_station.h"
 #include "waypoint_base.h"
+#include "viewport_kdtree.h"
 
 #include "safeguards.h"
 
@@ -54,4 +55,5 @@ Waypoint::~Waypoint()
 	if (CleaningPool()) return;
 	DeleteWindowById(WC_WAYPOINT_VIEW, this->index);
 	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, this->index);
+	_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeWaypoint(this->index));
 }

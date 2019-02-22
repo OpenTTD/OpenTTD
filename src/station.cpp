@@ -14,6 +14,7 @@
 #include "company_base.h"
 #include "roadveh.h"
 #include "viewport_func.h"
+#include "viewport_kdtree.h"
 #include "date_func.h"
 #include "command_func.h"
 #include "news_func.h"
@@ -163,6 +164,7 @@ Station::~Station()
 	CargoPacket::InvalidateAllFrom(this->index);
 
 	_station_kdtree.Remove(this->index);
+	_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeStation(this->index));
 }
 
 
