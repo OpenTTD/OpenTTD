@@ -30,6 +30,7 @@ enum StationViewWidgets {
 	WID_SV_ROADVEHS,           ///< List of scheduled road vehs button.
 	WID_SV_SHIPS,              ///< List of scheduled ships button.
 	WID_SV_PLANES,             ///< List of scheduled planes button.
+	WID_SV_CATCHMENT,          ///< Toggle catchment area highlight.
 };
 
 /** Widgets of the #CompanyStationsWindow class. */
