@@ -468,6 +468,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Lyd/musikk
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Siste melding/nyhet
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidligere meldinger
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Slett alle meldinger
 ############ range ends here
 
 ############ range for about menu starts
@@ -2085,6 +2086,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koble fr
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tjeneren er beskyttet. Skriv inn passord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firmaet er beskyttet. Skriv inn passord
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Klientliste
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liste over klienter
@@ -3114,6 +3116,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Du kan 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Målsetninger
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globale mål
+STR_GOALS_SPECTATOR                                             :Globale mål
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globale mål:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ingen -
@@ -3162,6 +3165,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikk fo
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Historiebok
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Global historiebok
+STR_STORY_BOOK_SPECTATOR                                        :Global historiebok
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Side {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Gå til en bestemt side ved å velge den i denne nedtrekkslisten.

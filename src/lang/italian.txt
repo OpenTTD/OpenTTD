@@ -192,6 +192,7 @@ STR_COLOUR_BROWN                                                :Marrone
 STR_COLOUR_GREY                                                 :Grigio
 STR_COLOUR_WHITE                                                :Bianco
 STR_COLOUR_RANDOM                                               :Casuale
+STR_COLOUR_DEFAULT                                              :Predefinito
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -467,6 +468,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Suoni/musica
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Ultimo messaggio/notizia
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Cronologia messaggi
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Elimina tutti i messaggi
 ############ range ends here
 
 ############ range for about menu starts
@@ -1844,6 +1846,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambia l
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permetti la modifica dei valori di produzione: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Schema colori
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Mostra gli schemi di colorazione generali
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostra gli schemi di colorazione dei treni
@@ -2103,6 +2106,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Disconne
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server protetto. Inserire la password
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Compagnia protetta. Inserire la password
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Elenco dei client
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Elenco dei client
@@ -2806,6 +2810,8 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Informaz
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtro:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Sovrascrivi file
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Si è sicuri di voler sovrascrivere il file esistente?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Inserire un nome per il salvataggio
 
@@ -3136,6 +3142,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Corromp
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Obiettivi della {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Obiettivi globali
+STR_GOALS_SPECTATOR                                             :Obiettivi globali
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Obiettivi globali:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nessuno -
@@ -3184,6 +3191,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Fare cli
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}Storia della {COMPANY}
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Storia globale
+STR_STORY_BOOK_SPECTATOR                                        :Storia globale
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Pagina {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Salta a una pagina specifica selezionandola dall'elenco
@@ -3448,6 +3456,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruppi -
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Fare clic per creare un gruppo
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Elimina il gruppo selezionato
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Rinomina il gruppo selezionato
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Cambia la livrea del gruppo selezionato
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Fare clic per proteggere questo gruppo dal rimpiazzo automatico
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Elimina Gruppo
