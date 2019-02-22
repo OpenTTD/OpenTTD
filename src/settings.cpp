@@ -1320,6 +1320,7 @@ static bool ChangeMaxHeightLevel(int32 p1)
 static bool StationCatchmentChanged(int32 p1)
 {
 	Station::RecomputeCatchmentForAll();
+	MarkWholeScreenDirty();
 	return true;
 }
 

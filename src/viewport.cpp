@@ -979,6 +979,44 @@ static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type)
 	DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : pal, ti, 7, foundation_part);
 }
 
+enum TileHighlightType {
+	THT_NONE,
+	THT_WHITE,
+	THT_BLUE,
+};
+
+const Station *_viewport_highlight_station; ///< Currently selected station for coverage area highlight
+
+/**
+ * Get tile highlight type of coverage area for a given tile.
+ * @param t Tile that is being drawn
+ * @return Tile highlight type to draw
+ */
+static TileHighlightType GetTileHighlightType(TileIndex t)
+{
+	if (_viewport_highlight_station != nullptr) {
+		if (IsTileType(t, MP_STATION) && GetStationIndex(t) == _viewport_highlight_station->index) return THT_WHITE;
+		if (_viewport_highlight_station->TileIsInCatchment(t)) return THT_BLUE;
+	}
+
+	return THT_NONE;
+}
+
+/**
+ * Draw tile highlight for coverage area highlight.
+ * @param *ti TileInfo Tile that is being drawn
+ * @param tht Highlight type to draw.
+ */
+static void DrawTileHighlightType(const TileInfo *ti, TileHighlightType tht)
+{
+	switch (tht) {
+		default:
+		case THT_NONE: break;
+		case THT_WHITE: DrawTileSelectionRect(ti, PAL_NONE); break;
+		case THT_BLUE:  DrawTileSelectionRect(ti, PALETTE_SEL_TILE_BLUE); break;
+	}
+}
+
 /**
  * Checks if the specified tile is selected and if so draws selection using correct selectionstyle.
  * @param *ti TileInfo Tile that is being drawn
@@ -988,6 +1026,9 @@ static void DrawTileSelection(const TileInfo *ti)
 	/* Draw a red error square? */
 	bool is_redsq = _thd.redsq == ti->tile;
 	if (is_redsq) DrawTileSelectionRect(ti, PALETTE_TILE_RED_PULSATING);
+
+	TileHighlightType tht = GetTileHighlightType(ti->tile);
+	DrawTileHighlightType(ti, tht);
 
 	/* No tile selection active? */
 	if ((_thd.drawstyle & HT_DRAG_MASK) == HT_NONE) return;
@@ -1043,7 +1084,7 @@ draw_inner:
 	}
 
 	/* Check if it's inside the outer area? */
-	if (!is_redsq && _thd.outersize.x > 0 &&
+	if (!is_redsq && tht == THT_NONE && _thd.outersize.x > 0 &&
 			IsInsideBS(ti->x, _thd.pos.x + _thd.offs.x, _thd.size.x + _thd.outersize.x) &&
 			IsInsideBS(ti->y, _thd.pos.y + _thd.offs.y, _thd.size.y + _thd.outersize.y)) {
 		/* Draw a blue rect. */
@@ -3341,4 +3382,38 @@ CommandCost CmdScrollViewport(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		ScrollMainWindowToTile(tile);
 	}
 	return CommandCost();
+}
+
+static void MarkCatchmentTilesDirty()
+{
+	if (_viewport_highlight_station != nullptr) {
+		if (_viewport_highlight_station->catchment_tiles.tile == INVALID_TILE) {
+			MarkWholeScreenDirty();
+			_viewport_highlight_station = nullptr;
+		} else {
+			BitmapTileIterator it(_viewport_highlight_station->catchment_tiles);
+			for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
+				MarkTileDirtyByTile(tile);
+			}
+		}
+	}
+}
+
+/**
+ * Select or deselect station for coverage area highlight.
+ * @param *st Station in question
+ * @param sel Select or deselect given station
+ */
+void SetViewportCatchmentStation(const Station *st, bool sel)
+{
+	if (_viewport_highlight_station != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station->index);
+	if (sel && _viewport_highlight_station != st) {
+		MarkCatchmentTilesDirty();
+		_viewport_highlight_station = st;
+		MarkCatchmentTilesDirty();
+	} else if (!sel && _viewport_highlight_station == st) {
+		MarkCatchmentTilesDirty();
+		_viewport_highlight_station = nullptr;
+	}
+	if (_viewport_highlight_station != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station->index);
 }
