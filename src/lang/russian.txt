@@ -1140,6 +1140,13 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Обычный
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Удвоенный
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Учетверённый
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Размер шрифта
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Выберите размер шрифта, используемого в игре
+
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Нормальный
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Двукратный
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Четырёхкратный
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовый набор графики
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Выбрать базовый набор графики
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} отсутствующи{P й х х}/повреждённы{P й х х} файл{P "" а ов}
@@ -2920,6 +2927,7 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Отри
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Дополнительные окна:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Вывод на экран:
 STR_FRAMERATE_SOUND                                             :{BLACK}Обработка звука:
+STR_FRAMERATE_AI                                                :{BLACK}   ИИ {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Расчёт игрового цикла

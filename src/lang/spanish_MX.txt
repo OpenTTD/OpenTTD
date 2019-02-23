@@ -996,6 +996,13 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Doble
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Cuádruple
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Tamaño de letra
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Elegir qué tamaño de letra usar en la interfaz
+
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Doble
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Cuádruple
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Elegir los gráficos base
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} archivo{P "" s} perdido{P "" s} o con errores
@@ -2741,6 +2748,9 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Presenta
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Ventanas de vista generales:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Salida de video:
 STR_FRAMERATE_SOUND                                             :{BLACK}Mezcla de sonido:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Scripts en total:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} Script de juego:
+STR_FRAMERATE_AI                                                :{BLACK} IA {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Bucle de juego
@@ -2755,6 +2765,9 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Presentación d
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Presentación de ventanas de vista generales
 STR_FRAMETIME_CAPTION_VIDEO                                     :Salida de video
 STR_FRAMETIME_CAPTION_SOUND                                     :Mezcla de sonido
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Scripts de juego e IA en total
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Script de juego
+STR_FRAMETIME_CAPTION_AI                                        :IA {NUM} {STRING}
 ############ End of leave-in-this-order
 
 

@@ -481,6 +481,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
 
 
 
+
+
 # Custom currency window
 
 

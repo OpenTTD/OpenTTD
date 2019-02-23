@@ -995,6 +995,13 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dobbelt størrelse
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quad (4x) størrelse
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Skriftstørrelse
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Vælg skriftstørrelsen du ønsker i grænsefladen
+
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dobbelt størrelse
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quad (4x) størrelse
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafiksæt
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vælg det basis-grafiksæt der skal bruges
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} forsvund{P en ne}/ødelagt{P "" e} fil{P "" er}
@@ -2740,6 +2747,9 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Grafik-t
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Landskabsvisninger:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Grafik-output:
 STR_FRAMERATE_SOUND                                             :{BLACK}Lydmiksning:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Spilscript/AI total:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Spilscript:
+STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Spillogik
@@ -2754,6 +2764,9 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Grafik-tegning
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Tegning af landskabsvisninger
 STR_FRAMETIME_CAPTION_VIDEO                                     :Grafik-output
 STR_FRAMETIME_CAPTION_SOUND                                     :Lydmiksning
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Spil/AI script total
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Spilscript
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 

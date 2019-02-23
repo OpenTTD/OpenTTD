@@ -805,6 +805,8 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој ме
 
 
 
+
+
 # Custom currency window
 
 

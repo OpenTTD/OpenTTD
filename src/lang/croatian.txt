@@ -562,6 +562,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Zvuk/glazba
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Poslijednja poruka/vijest
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Povijest poruka
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Obriši sve poruke
 ############ range ends here
 
 ############ range for about menu starts
@@ -1089,6 +1090,13 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Odaberit
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normalno
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dvostruka veličina
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Četvorostruka veličina
+
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Veličina fonta
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Odaberite veličinu fonta za sučelje
+
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normalno
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dvostruka veličina
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Četvorostruka veličina
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni set grafike
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Odaberi osnovni grafički set za igru
@@ -2177,6 +2185,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Odspoji
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Poslužitelj je zaštićen. Unesite zaporku
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tvrtka je zaštićena. Unesite zaporku
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Popis klijenata
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Popis klijenata
@@ -3206,6 +3215,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podmiti
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Ciljevi
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globalni ciljevi
+STR_GOALS_SPECTATOR                                             :Globalni ciljevi
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globalni ciljevi:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nijedan -
@@ -3254,6 +3264,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikni n
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Priča
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globalna priča
+STR_STORY_BOOK_SPECTATOR                                        :Globalna knjiga priča
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Stranica {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Preskoči na specifičnu stranicu odabravši je iz liste.

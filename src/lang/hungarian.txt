@@ -252,6 +252,8 @@ STR_COLOUR_ORANGE                                               :Narancssárga
 STR_COLOUR_BROWN                                                :Barna
 STR_COLOUR_GREY                                                 :Szürke
 STR_COLOUR_WHITE                                                :Fehér
+STR_COLOUR_RANDOM                                               :Véletlenszerű
+STR_COLOUR_DEFAULT                                              :Alapértelmezett
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mi/h
@@ -527,6 +529,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Hang/zene
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Legutóbbi üzenet/újsághír
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Előző üzenetek
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Az összes üzenet törlése
 ############ range ends here
 
 ############ range for about menu starts
@@ -538,6 +541,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Teljes nagyítású képmentés
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Alapértelmezett nagyítású képmentés
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Képmentés teljes térképről
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :FPS ablak
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Az 'OpenTTD'-ről
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite elhelyező
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Befoglaló doboz ki/bekapcsolása
@@ -713,6 +717,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Nincs elérhető zene
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Szám
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Cím
@@ -733,11 +738,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Véletle
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}A számkiválasztó ablak megjelenítése
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Zenei lejátszási lista - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Számlista
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}"{STRING}" Műsora
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Törlés
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Lista választása
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Az aktuális műsor törlése (csak Saját 1 és Saját 2)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}A zenei alapcsomag megváltoztatása
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kattints a zeneszámra a zenei műsorhoz való hozzáadására (csak Saját 1 és Saját 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kattints a zeneszámra annak az aktuális zenei műsorból való eltávolításához (csak Saját 1 és Saját 2 esetén)
 
@@ -874,6 +882,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Elnök)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} támogatásával új várost alapítottak {TOWN} néven!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Új várost alapítottak {TOWN} néven!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Új {STRING.t} építenek {TOWN} közelében!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Új {STRING.t} ültettek {TOWN} közelében!
@@ -986,6 +995,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Dél-afrikai Ra
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Saját...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Grúz Lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iráni Riál (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Új Orosz Rubel (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexikói Peso (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Közúti járművek
@@ -1047,6 +1058,13 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Használ
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normál
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dupla méret
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Négyszeres méret
+
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Betűméret
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Használni kívánt betűméret kiválasztása
+
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normál
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dupla méret
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Négyszeres méret
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikus alapcsomag
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}A játékhoz használandó grafikus alapcsomag kiválasztása
@@ -1315,6 +1333,8 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}A beáll
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Az infrastruktúra fenntartási költségének engedélyezése: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Bekapcsolva az infrastruktúrának fenntartási költsége van. A költség hatványozottan nő a hálózatnagysággal, nagyobb hatással a nagyobb vállalatokra mint a kisebbekre
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :A vállalat kezdő színsémája: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :A vállalat színsémája a játék kezdetén
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Repülőterek nem avulnak el: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bekapcsolva minden repülőtértípus örökké elérhető marad bevezetése után
@@ -1399,6 +1419,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Talaj színe a 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Zöld
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Sötétzöld
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Sötétkék
+STR_CONFIG_SETTING_SCROLLMODE                                   :A látkép mozgatása: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :A látkép mozgatásának módja
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :A látkép mozgatása jobb egérgombbal, fix kurzorral
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :A térkép mozgatása jobb egérgombbal, fix kurzorral
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :A térkép mozgatása jobb egérgombbal
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :A térkép mozgatása bal egérgombbal
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Finomított nézőpont-görgetés: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Beállítható, hogy a fő nézet hogyan mozogjon egy adott pozícióra a térképre kattintáskor ha egy adott objektumra történik mozgás. Bekapcsolva a nézet egyenletesen mozog, kikapcsolva közvetlenül a kijelölt helyre ugrik
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Területinformációk mutatása építési eszközök használatakor: {STRING}
@@ -1867,6 +1893,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Aktuáli
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}A nyersanyagüzemek termelése változtatható: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} színsémája
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Általános színsémák mutatása
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Vonat színsémák mutatása
@@ -2126,6 +2153,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Megszak�
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}A szerver jelszóval van védve. Írd be
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A vállalat jelszóval van védve. Írd be
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Kliens lista
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Kliens lista
@@ -2341,6 +2369,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Rakomán
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Mind
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Nincs
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Megjelenítendő cégek kiválasztása
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nem használt
@@ -2750,9 +2779,58 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 Az OpenTTD csapat
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}FPS ablak
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Szimuláció: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}A másodpercenként szimulált játékbeli tickek száma.
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}A grafika képkockasűrűsége: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}A másodpercenként renderelt képkockák száma.
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}A játék pillanatnyi sebessége: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Milyen gyorsan fut a játék, viszonyítva az elvárt sebességhez normál játéksebesség esetén.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Pillanatnyi
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Átlagos
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Adatok {COMMA} mérés alapján
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} képkocka/másodperc
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} képkocka/másodperc
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} képkocka/másodperc
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Játékciklus összesen:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Árukezelés:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Vonat tickek:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Közúti jármű tickek:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Hajó tickek:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Repülőgép tickek:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Világ tickek:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Kapcsolati gráf:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Renderelés:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Világ látképek:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Videokimenet:
+STR_FRAMERATE_SOUND                                             :{BLACK}Hangkeverés:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Játékszkript/MI összesen:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Játékszkript:
+STR_FRAMERATE_AI                                                :{BLACK}   MI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Játékciklus
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Árukezelés
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Vonat tickek
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Közúti jármű tickek
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Hajó tickek
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Repülőgép tickek
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Világ tickek
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Kapcsolati gráf
+STR_FRAMETIME_CAPTION_DRAWING                                   :Renderelés
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Világ látképek
+STR_FRAMETIME_CAPTION_VIDEO                                     :Videokimenet
+STR_FRAMETIME_CAPTION_SOUND                                     :Hangkeverés
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Játékszkriptek/MI-k összesen
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Játékszkript
+STR_FRAMETIME_CAPTION_AI                                        :MI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2778,6 +2856,9 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Részlet
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nincs elérhető információ
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Szűrő:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Fájl felülírása
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Biztos vagy benne, hogy felülírod a létező fájlt?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Add meg a játékmentés nevét
 
@@ -2895,7 +2976,12 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Vezió: 
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatibilis verzió: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paletta: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Alapértelmezett (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Alapértelmezett (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Régi (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Régi (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paraméterek: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Nincs
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Nem érhető el információ
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fájl nem található
@@ -2976,6 +3062,8 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ál-sprite táv
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Kért GRF források nem elérhetőek (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} kikapcsolva {STRING} által
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Érvénytelen/ismeretlen sprite szerkezet formátum (sprite {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Túl sok érték a tulajdonságlistában (sprite {3:NUM}, property {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Érvénytelen termelési callback gazdasági épületben (sprite {3:NUM}, "{1:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Figyelem!
@@ -3040,6 +3128,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Felirat 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Városok
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nincs -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Város){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Városnevek - kattints egy névre a város megnézéséhez. Ctrl+kattintás esetén új látképet nyit a város pozíciójára
 STR_TOWN_POPULATION                                             :{BLACK}Világnépesség: {COMMA}
 
@@ -3047,6 +3136,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Világn�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Város)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Lakosság: {ORANGE}{COMMA}{BLACK} Házak: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} a legutóbbi hónapban: {ORANGE}{COMMA}{BLACK}  maximum: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}A város növekedéséhez szükséges rakomány:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} szükséges
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} szükséges télen
@@ -3099,6 +3189,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}A megí
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} céljai
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globális célok
+STR_GOALS_SPECTATOR                                             :Globális célok
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globális célok:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nincs -
@@ -3147,6 +3238,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kattints
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} naplója
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globális napló
+STR_STORY_BOOK_SPECTATOR                                        :Globális napló
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :{NUM}. oldal
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Ugrás tetszőleges oldalra
@@ -3351,6 +3443,9 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}A fő n�
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Termelési szint: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}A gyár bejelentette a közelgő bezárását!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Elfogad: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Termel: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Elfogad:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
@@ -3408,6 +3503,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Csoporto
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Csoport létrehozásához kattints ide
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Kijelölt csoport törlése
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Kijelölt csoport átnevezése
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}A kiválasztott csoport színsémájának megváltoztatása
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Csoport teljes listás automata csere alóli mentessége
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Csoport törlése
@@ -3451,6 +3547,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacit�
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajtott vagonok: {GOLD}+{POWER}{BLACK} Súly: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Átalakítható: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Minden rakomány típusra
+STR_PURCHASE_INFO_NONE                                          :Semmi
 STR_PURCHASE_INFO_ALL_BUT                                       :Mindenre, kivéve {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximális vonóerő: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Hatótávolság: {GOLD}{COMMA} mező
@@ -3850,6 +3947,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Kor (év)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Javításra szorul
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Mindig
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Hátralévő élettartam (év)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maximális megbízhatóság
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hogyan viszonyul a jármű kiválasztott adata a megadott értékhez
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :egyenlő
@@ -4282,6 +4380,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ez e
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... az út a másik irányba vezet
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... áthaladó megállóhelyeken nem lehet kanyar
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... áthaladó megállóhelyeken nem lehet elágazás
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... az út egyirányú vagy blokkolt
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nem lehet eltávolítani az állomás részét...
@@ -4350,7 +4449,7 @@ STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nem lehe
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Először el kell távolítani a jelzőket
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nincs megfelelő vasúti pálya
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Előbb le kell rombolnod a vasúti pályát
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Az út egyirányú vagy blokkolt
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}... az út egyirányú vagy blokkolt
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Ehhez a síntipushoz nem megengedett vasúti átjárók építése
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nem helyezhetsz ide jelzőt...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nem építhetsz ide vasúti pályát...
@@ -4533,6 +4632,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Az eredeti Tran
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Az eredeti Transport Tycoon Deluxe Windows verziójának hangjai.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Hang alapcsomag hangok nélkül.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Az eredeti Transport Tycoon Deluxe Windows verziójának zenéje.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Az eredeti Transport Tycoon Deluxe DOS verziójának zenéje.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Az eredeti Transport Tycoon (az első változat és a World Editor) DOS verziójának zenéje.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Zenei alapcsomag zene nélkül.
 
 ##id 0x2000

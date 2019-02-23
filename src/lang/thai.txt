@@ -971,6 +971,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :อื่นๆ
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}ขนาดของแผงควบคุม
 
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ตั้งค่า Graphic พื้นฐาน
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}เลือกและตั้งค่าฐานกราฟิกที่จะใช้
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ไฟล์สูญหายหรือไม่สมบูรณ์
