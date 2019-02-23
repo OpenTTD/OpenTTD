@@ -239,8 +239,12 @@ void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
  * Draw the linkgraph overlay or some part of it, in the area given.
  * @param dpi Area to be drawn to.
  */
-void LinkGraphOverlay::Draw(const DrawPixelInfo *dpi) const
+void LinkGraphOverlay::Draw(const DrawPixelInfo *dpi)
 {
+	if (this->dirty) {
+		this->RebuildCache();
+		this->dirty = false;
+	}
 	this->DrawLinks(dpi);
 	this->DrawStationDots(dpi);
 }

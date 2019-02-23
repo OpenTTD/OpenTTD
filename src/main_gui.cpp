@@ -267,7 +267,7 @@ struct MainWindow : Window
 			return;
 		}
 
-		this->viewport->overlay->RebuildCache();
+		this->viewport->overlay->SetDirty();
 		this->GetWidget<NWidgetBase>(WID_M_VIEWPORT)->SetDirty(this);
 	}
 

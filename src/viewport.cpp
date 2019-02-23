@@ -2070,7 +2070,7 @@ void RebuildViewportOverlay(Window *w)
 	if (w->viewport->overlay != NULL &&
 			w->viewport->overlay->GetCompanyMask() != 0 &&
 			w->viewport->overlay->GetCargoMask() != 0) {
-		w->viewport->overlay->RebuildCache();
+		w->viewport->overlay->SetDirty();
 		w->SetDirty();
 	}
 }
