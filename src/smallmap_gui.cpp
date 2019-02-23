@@ -713,7 +713,7 @@ void SmallMapWindow::SetZoomLevel(ZoomLevelChange change, const Point *zoom_pt)
 			this->SetNewScroll(this->scroll_x + (tile.x - new_tile.x) * TILE_SIZE,
 					this->scroll_y + (tile.y - new_tile.y) * TILE_SIZE, sub);
 		} else if (this->map_type == SMT_LINKSTATS) {
-			this->overlay->RebuildCache();
+			this->overlay->SetDirty();
 		}
 		this->SetWidgetDisabledState(WID_SM_ZOOM_IN,  this->zoom == zoomlevels[MIN_ZOOM_INDEX]);
 		this->SetWidgetDisabledState(WID_SM_ZOOM_OUT, this->zoom == zoomlevels[MAX_ZOOM_INDEX]);
@@ -1290,7 +1290,7 @@ void SmallMapWindow::SwitchMapType(SmallMapType map_type)
 
 	this->SetupWidgetData();
 
-	if (map_type == SMT_LINKSTATS) this->overlay->RebuildCache();
+	if (map_type == SMT_LINKSTATS) this->overlay->SetDirty();
 	if (map_type != SMT_INDUSTRY) this->BreakIndustryChainLink();
 	this->SetDirty();
 }
@@ -1573,7 +1573,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 		if (this->overlay->GetCompanyMask() != company_mask) {
 			this->overlay->SetCompanyMask(company_mask);
 		} else {
-			this->overlay->RebuildCache();
+			this->overlay->SetDirty();
 		}
 	}
 	_smallmap_industry_highlight_state = !_smallmap_industry_highlight_state;
@@ -1616,7 +1616,7 @@ void SmallMapWindow::SetNewScroll(int sx, int sy, int sub)
 	this->scroll_x = sx;
 	this->scroll_y = sy;
 	this->subscroll = sub;
-	if (this->map_type == SMT_LINKSTATS) this->overlay->RebuildCache();
+	if (this->map_type == SMT_LINKSTATS) this->overlay->SetDirty();
 }
 
 /* virtual */ void SmallMapWindow::OnScroll(Point delta)

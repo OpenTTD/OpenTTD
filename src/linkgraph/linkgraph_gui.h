@@ -56,10 +56,12 @@ public:
 			window(w), widget_id(wid), cargo_mask(cargo_mask), company_mask(company_mask), scale(scale)
 	{}
 
-	void RebuildCache();
-	void Draw(const DrawPixelInfo *dpi) const;
+	void Draw(const DrawPixelInfo *dpi);
 	void SetCargoMask(CargoTypes cargo_mask);
 	void SetCompanyMask(uint32 company_mask);
+
+	/** Mark the linkgraph dirty to be rebuilt next time Draw() is called. */
+	void SetDirty() { this->dirty = true; }
 
 	/** Get a bitmask of the currently shown cargoes. */
 	CargoTypes GetCargoMask() { return this->cargo_mask; }
@@ -75,6 +77,7 @@ protected:
 	LinkMap cached_links;              ///< Cache for links to reduce recalculation.
 	StationSupplyList cached_stations; ///< Cache for stations to be drawn.
 	uint scale;                        ///< Width of link lines.
+	bool dirty;                        ///< Set if overlay should be rebuilt.
 
 	Point GetStationMiddle(const Station *st) const;
 
@@ -85,6 +88,7 @@ protected:
 	bool IsLinkVisible(Point pta, Point ptb, const DrawPixelInfo *dpi, int padding = 0) const;
 	bool IsPointVisible(Point pt, const DrawPixelInfo *dpi, int padding = 0) const;
 	void GetWidgetDpi(DrawPixelInfo *dpi) const;
+	void RebuildCache();
 
 	static void AddStats(uint new_cap, uint new_usg, uint new_flow, bool new_shared, LinkProperties &cargo);
 	static void DrawVertex(int x, int y, int size, int colour, int border_colour);
