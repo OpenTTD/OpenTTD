@@ -428,7 +428,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 					MakeRiver(tile, Random());
 					if (_game_mode == GM_EDITOR) {
 						TileIndex tile2 = tile;
-						CircularTileSearch(&tile2, 5, RiverModifyDesertZone, NULL);
+						CircularTileSearch(&tile2, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, NULL);
 					}
 					break;
 

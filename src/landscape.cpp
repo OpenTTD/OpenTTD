@@ -1063,6 +1063,9 @@ static bool MakeLake(TileIndex tile, void *user_data)
 		TileIndex t2 = tile + TileOffsByDiagDir(d);
 		if (IsWaterTile(t2)) {
 			MakeRiver(tile, Random());
+			/* Remove desert directly around the river tile. */
+			TileIndex t = tile;
+			CircularTileSearch(&t, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, NULL);
 			return false;
 		}
 	}
@@ -1134,7 +1137,7 @@ static void River_FoundEndNode(AyStar *aystar, OpenListNode *current)
 		if (!IsWaterTile(tile)) {
 			MakeRiver(tile, Random());
 			/* Remove desert directly around the river tile. */
-			CircularTileSearch(&tile, 5, RiverModifyDesertZone, NULL);
+			CircularTileSearch(&tile, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, NULL);
 		}
 	}
 }
@@ -1245,6 +1248,9 @@ static bool FlowRiver(TileIndex spring, TileIndex begin)
 				DistanceManhattan(spring, lakeCenter) > _settings_game.game_creation.min_river_length) {
 			end = lakeCenter;
 			MakeRiver(lakeCenter, Random());
+			/* Remove desert directly around the river tile. */
+			CircularTileSearch(&lakeCenter, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, NULL);
+			lakeCenter = end;
 			uint range = RandomRange(8) + 3;
 			CircularTileSearch(&lakeCenter, range, MakeLake, &height);
 			/* Call the search a second time so artefacts from going circular in one direction get (mostly) hidden. */
