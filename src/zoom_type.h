@@ -53,6 +53,8 @@ DECLARE_POSTFIX_INCREMENT(ZoomLevel)
 typedef SimpleTinyEnumT<ZoomLevel, byte> ZoomLevelByte;
 
 extern ZoomLevelByte _gui_zoom;
+extern ZoomLevelByte _font_zoom;
 #define ZOOM_LVL_GUI (_gui_zoom)
+#define ZOOM_LVL_FONT (_font_zoom)
 
 #endif /* ZOOM_TYPE_H */

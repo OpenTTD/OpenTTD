@@ -58,6 +58,7 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode,
 static ReusableBuffer<uint8> _cursor_backup;
 
 ZoomLevelByte _gui_zoom; ///< GUI Zoom level
+ZoomLevelByte _font_zoom; ///< Font Zoom level
 
 /**
  * The rect for repaint.

@@ -35,6 +35,7 @@ enum GameOptionsWidgets {
 	WID_GO_BASE_MUSIC_STATUS,      ///< Info about corrupted files etc.
 	WID_GO_BASE_MUSIC_TEXTFILE,    ///< Open base music readme, changelog (+1) or license (+2).
 	WID_GO_BASE_MUSIC_DESCRIPTION = WID_GO_BASE_MUSIC_TEXTFILE + TFT_END, ///< Description of selected base music set.
+	WID_GO_FONT_ZOOM_DROPDOWN,     ///< Dropdown for the font zoom level.
 };
 
 /** Widgets of the #GameSettingsWindow class. */
