@@ -162,9 +162,11 @@ public:
 		int lock_offset = (bottom - top - lock_size.height) / 2;
 
 		DrawCompanyIcon(company, rtl ? right - this->icon_size.width - WD_FRAMERECT_RIGHT : left + WD_FRAMERECT_LEFT, top + icon_offset);
+#ifdef ENABLE_NETWORK
 		if (NetworkCompanyIsPassworded(company)) {
 			DrawSprite(SPR_LOCK, PAL_NONE, rtl ? left + WD_FRAMERECT_LEFT : right - this->lock_size.width - WD_FRAMERECT_RIGHT, top + lock_offset);
 		}
+#endif
 
 		SetDParam(0, company);
 		SetDParam(1, company);
