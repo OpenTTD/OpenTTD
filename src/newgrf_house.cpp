@@ -350,8 +350,7 @@ static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, HouseI
 
 			/* Collect acceptance stats. */
 			uint32 res = 0;
-			for (Station * const * st_iter = sl->Begin(); st_iter != sl->End(); st_iter++) {
-				const Station *st = *st_iter;
+			for (Station *st : *sl) {
 				if (HasBit(st->goods[cid].status, GoodsEntry::GES_EVER_ACCEPTED))    SetBit(res, 0);
 				if (HasBit(st->goods[cid].status, GoodsEntry::GES_LAST_MONTH))       SetBit(res, 1);
 				if (HasBit(st->goods[cid].status, GoodsEntry::GES_CURRENT_MONTH))    SetBit(res, 2);

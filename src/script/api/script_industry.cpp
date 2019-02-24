@@ -134,7 +134,7 @@
 	Industry *ind = ::Industry::Get(industry_id);
 	StationList stations;
 	::FindStationsAroundTiles(ind->location, &stations);
-	return (int32)stations.Length();
+	return (int32)stations.size();
 }
 
 /* static */ int32 ScriptIndustry::GetDistanceManhattanToTile(IndustryID industry_id, TileIndex tile)

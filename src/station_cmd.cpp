@@ -3839,7 +3839,7 @@ void FindStationsAroundTiles(const TileArea &location, StationList *stations)
 			/* Insert the station in the set. This will fail if it has
 			 * already been added.
 			 */
-			stations->Include(st);
+			stations->insert(st);
 		}
 	}
 }
@@ -3867,9 +3867,7 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 	uint best_rating1 = 0; // rating of st1
 	uint best_rating2 = 0; // rating of st2
 
-	for (Station * const *st_iter = all_stations->Begin(); st_iter != all_stations->End(); ++st_iter) {
-		Station *st = *st_iter;
-
+	for (Station *st : *all_stations) {
 		/* Is the station reserved exclusively for somebody else? */
 		if (st->owner != OWNER_NONE && st->town->exclusive_counter > 0 && st->town->exclusivity != st->owner) continue;
 
