@@ -135,6 +135,9 @@ jobs:
     vmImage: 'macOS-10.13'
   dependsOn: source
 
+  variables:
+    MACOSX_DEPLOYMENT_TARGET: 10.9
+
   steps:
   - template: release-fetch-source.yml
   - template: osx-dependencies.yml

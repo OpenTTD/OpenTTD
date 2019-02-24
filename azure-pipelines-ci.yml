@@ -55,6 +55,9 @@ jobs:
   pool:
     vmImage: 'macOS-10.13'
 
+  variables:
+    MACOSX_DEPLOYMENT_TARGET: 10.9
+
   steps:
   - template: azure-pipelines/templates/ci-git-rebase.yml
   - template: azure-pipelines/templates/osx-dependencies.yml
