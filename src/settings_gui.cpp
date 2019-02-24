@@ -556,16 +556,15 @@ struct GameOptionsWindow : Window {
 				GfxClearSpriteCache();
 				_gui_zoom = (ZoomLevel)(ZOOM_LVL_OUT_4X - index);
 				UpdateCursorSize();
-				LoadStringWidthTable();
 				UpdateAllVirtCoords();
+				ReInitAllWindows();
 				break;
 
 			case WID_GO_FONT_ZOOM_DROPDOWN:
-				GfxClearSpriteCache();
 				_font_zoom = (ZoomLevel)(ZOOM_LVL_OUT_4X - index);
 				ClearFontCache();
+				LoadStringWidthTable();
 				UpdateAllVirtCoords();
-				ReInitAllWindows();
 				break;
 
 			case WID_GO_BASE_GRF_DROPDOWN:
