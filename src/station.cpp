@@ -571,3 +571,8 @@ Money AirportMaintenanceCost(Owner owner)
 	/* 3 bits fraction for the maintenance cost factor. */
 	return total_cost >> 3;
 }
+
+bool StationCompare::operator() (const Station *lhs, const Station *rhs) const
+{
+	return lhs->index < rhs->index;
+}
