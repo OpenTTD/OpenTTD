@@ -521,7 +521,7 @@ static bool TransportIndustryGoods(TileIndex tile)
 
 	if (i->neutral_station != NULL && !_settings_game.station.serve_neutral_industries) {
 		/* Industry has a neutral station. Use it and ignore any other nearby stations. */
-		*neutral.Append() = i->neutral_station;
+		neutral.insert(i->neutral_station);
 	}
 
 	for (uint j = 0; j < lengthof(i->produced_cargo_waiting); j++) {
@@ -534,7 +534,7 @@ static bool TransportIndustryGoods(TileIndex tile)
 
 			i->this_month_production[j] += cw;
 
-			uint am = MoveGoodsToStation(i->produced_cargo[j], cw, ST_INDUSTRY, i->index, neutral.Length() != 0 ? &neutral : stations.GetStations());
+			uint am = MoveGoodsToStation(i->produced_cargo[j], cw, ST_INDUSTRY, i->index, neutral.size() != 0 ? &neutral : stations.GetStations());
 			i->this_month_transported[j] += am;
 
 			moved_cargo |= (am != 0);
@@ -2907,3 +2907,8 @@ extern const TileTypeProcs _tile_type_industry_procs = {
 	GetFoundation_Industry,      // get_foundation_proc
 	TerraformTile_Industry,      // terraform_tile_proc
 };
+
+bool IndustryCompare::operator() (const Industry *lhs, const Industry *rhs) const
+{
+	return lhs->index < rhs->index;
+}

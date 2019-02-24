@@ -596,9 +596,9 @@ bool CheckSubsidised(CargoID cargo_type, CompanyID company, SourceType src_type,
 		if (s->cargo_type == cargo_type && s->src_type == src_type && s->src == src && (!s->IsAwarded() || s->awarded == company)) {
 			switch (s->dst_type) {
 				case ST_INDUSTRY:
-					for (const Industry * const *ip = st->industries_near.Begin(); ip != st->industries_near.End(); ip++) {
-						if (s->dst == (*ip)->index) {
-							assert((*ip)->part_of_subsidy & POS_DST);
+					for (Industry *ind : st->industries_near) {
+						if (s->dst == ind->index) {
+							assert(ind->part_of_subsidy & POS_DST);
 							subsidised = true;
 							if (!s->IsAwarded()) s->AwardTo(company);
 						}
