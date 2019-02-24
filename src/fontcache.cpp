@@ -421,6 +421,9 @@ FreeTypeFontCache::~FreeTypeFontCache()
  */
 void FreeTypeFontCache::ClearFontCache()
 {
+	/* Font scaling might have changed, determine font size anew if it was automatically selected. */
+	if (this->face != NULL) this->SetFontSize(this->fs, this->face, this->req_size);
+
 	if (this->glyph_to_sprite == NULL) return;
 
 	for (int i = 0; i < 256; i++) {
@@ -438,9 +441,6 @@ void FreeTypeFontCache::ClearFontCache()
 	this->glyph_to_sprite = NULL;
 
 	Layouter::ResetFontCache(this->fs);
-
-	/* GUI scaling might have changed, determine font size anew if it was automatically selected. */
-	if (this->face != NULL) this->SetFontSize(this->fs, this->face, this->req_size);
 }
 
 FreeTypeFontCache::GlyphEntry *FreeTypeFontCache::GetGlyphPtr(GlyphID key)
