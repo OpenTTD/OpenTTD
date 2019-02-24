@@ -1,3 +1,29 @@
+1.9.0-beta3 (2019-02-24)
+------------------------------------------------------------------------
+- Feature: Option to adjust font size separately from GUI size (#7003)
+- Feature: Increase maximum number of orders from 64000 to ~16.7m (#7220)
+- Add: Show performance of AI and GS in framerate window
+- Add: News menu entry and shortcut for deleting all messages (#7240)
+- Change: [OSX] Improved scrolling behaviour when using touchpads
+- Change: Add scrollbar to cargo legend in cargo payment rates window
+- Change: Owner of vehicle with exclusive transport rights may now load cargo from neutral stations (#7256)
+- Change: Improved UI behaviour when dragging sound volume sliders with the mouse (#7227)
+- Change: Use selected vehicle group as parent when creating a new group (#7224)
+- Change: Use SlErrorCorrupt() on pool index error when loading a savegame, instead of terminating (#7219)
+- Change: Skip reliability decay if servicing is disabled
+- Fix: Remove desert around lakes upon generation
+- Fix: Re-sorting file list did not update filtered rows
+- Fix #7159: Waiting time at red one-way signals was too short
+- Fix #7189: Fluidsynth volume gain too high
+- Fix #7004: Cargo flow legend was not properly refreshed after zooming (#7265)
+- Fix: Possibility to modify wrong AI/GS settings when switching AI/GS scripts around (#7090, #7091)
+- Fix: Use more descriptive "spectator" strings for story book and goal dropdown menus
+- Fix #6599: Disable build and rename button in build vehicle window when no vehicle is selected
+- Fix: Do not mangle tagged revision strings for network revision strings
+- Fix #7151: AI start date deviation was still applied when not set to a random AI (#7223)
+- Fix #7197: Invalidate depot buttons when necessary (#7212)
+- Doc: [AI] UnshareOrders empties the orders list of the vehicle
+
 1.9.0-beta2 (2019-02-09)
 ------------------------------------------------------------------------
 - Fix: Non-Windows builds did not get correct git hash
