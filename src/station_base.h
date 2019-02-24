@@ -20,6 +20,7 @@
 #include "linkgraph/linkgraph_type.h"
 #include "newgrf_storage.h"
 #include <map>
+#include <set>
 
 typedef Pool<BaseStation, StationID, 32, 64000> StationPool;
 extern StationPool _station_pool;
@@ -440,7 +441,11 @@ private:
 	}
 };
 
-typedef SmallVector<Industry *, 2> IndustryVector;
+struct IndustryCompare {
+	bool operator() (const Industry *lhs, const Industry *rhs) const;
+};
+
+typedef std::set<Industry *, IndustryCompare> IndustryList;
 
 /** Station data structure */
 struct Station FINAL : SpecializedStation<Station, false> {
@@ -472,8 +477,8 @@ public:
 	GoodsEntry goods[NUM_CARGO];  ///< Goods at this station
 	CargoTypes always_accepted;       ///< Bitmask of always accepted cargo types (by houses, HQs, industry tiles when industry doesn't accept cargo)
 
-	IndustryVector industries_near; ///< Cached list of industries near the station that can accept cargo, @see DeliverGoodsToIndustry()
-	Industry *industry;             ///< NOSAVE: Associated industry for neutral stations. (Rebuilt on load from Industry->st)
+	IndustryList industries_near; ///< Cached list of industries near the station that can accept cargo, @see DeliverGoodsToIndustry()
+	Industry *industry;           ///< NOSAVE: Associated industry for neutral stations. (Rebuilt on load from Industry->st)
 
 	Station(TileIndex tile = INVALID_TILE);
 	~Station();

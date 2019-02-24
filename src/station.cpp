@@ -307,8 +307,8 @@ Rect Station::GetCatchmentRect() const
 
 /** Rect and pointer to IndustryVector */
 struct RectAndIndustryVector {
-	Rect rect;                       ///< The rectangle to search the industries in.
-	IndustryVector *industries_near; ///< The nearby industries.
+	Rect rect;                     ///< The rectangle to search the industries in.
+	IndustryList *industries_near; ///< The nearby industries.
 };
 
 /**
@@ -328,7 +328,7 @@ static bool FindIndustryToDeliver(TileIndex ind_tile, void *user_data)
 	Industry *ind = Industry::GetByTile(ind_tile);
 
 	/* Don't check further if this industry is already in the list */
-	if (riv->industries_near->Contains(ind)) return false;
+	if (riv->industries_near->find(ind) != riv->industries_near->end()) return false;
 
 	/* Only process tiles in the station acceptance rectangle */
 	int x = TileX(ind_tile);
@@ -342,7 +342,7 @@ static bool FindIndustryToDeliver(TileIndex ind_tile, void *user_data)
 	}
 	if (cargo_index >= lengthof(ind->accepts_cargo)) return false;
 
-	*riv->industries_near->Append() = ind;
+	riv->industries_near->insert(ind);
 
 	return false;
 }
@@ -353,12 +353,12 @@ static bool FindIndustryToDeliver(TileIndex ind_tile, void *user_data)
  */
 void Station::RecomputeIndustriesNear()
 {
-	this->industries_near.Clear();
+	this->industries_near.clear();
 	if (this->rect.IsEmpty()) return;
 
 	if (!_settings_game.station.serve_neutral_industries && this->industry != NULL) {
 		/* Station is associated with an industry, so we only need to deliver to that industry. */
-		*this->industries_near.Append() = this->industry;
+		this->industries_near.insert(this->industry);
 		return;
 	}
 

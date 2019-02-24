@@ -151,9 +151,9 @@ void AddCargoDelivery(CargoID cargo_type, CompanyID company, uint32 amount, Sour
 	if (iter != _cargo_deliveries.end()) iter->second += amount;
 
 	/* Industry delivery. */
-	for (const Industry * const *ip = st->industries_near.Begin(); ip != st->industries_near.End(); ip++) {
-		if ((*ip)->index != dest) continue;
-		CargoMonitorID num = EncodeCargoIndustryMonitor(company, cargo_type, (*ip)->index);
+	for (Industry *ind : st->industries_near) {
+		if (ind->index != dest) continue;
+		CargoMonitorID num = EncodeCargoIndustryMonitor(company, cargo_type, ind->index);
 		CargoMonitorMap::iterator iter = _cargo_deliveries.find(num);
 		if (iter != _cargo_deliveries.end()) iter->second += amount;
 	}
