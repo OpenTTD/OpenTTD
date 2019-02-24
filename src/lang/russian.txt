@@ -2927,6 +2927,8 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Отри
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Дополнительные окна:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Вывод на экран:
 STR_FRAMERATE_SOUND                                             :{BLACK}Обработка звука:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Выполнение скриптов:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Игровой скрипт:
 STR_FRAMERATE_AI                                                :{BLACK}   ИИ {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
@@ -2942,6 +2944,9 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Отрисов�
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Отрисовка изображения в доп. окнах
 STR_FRAMETIME_CAPTION_VIDEO                                     :Вывод на экран
 STR_FRAMETIME_CAPTION_SOUND                                     :Обработка звука
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Общее время выполнения скриптов
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Время выполнения игрового скрипта
+STR_FRAMETIME_CAPTION_AI                                        :ИИ {NUM} {STRING}
 ############ End of leave-in-this-order
 
 

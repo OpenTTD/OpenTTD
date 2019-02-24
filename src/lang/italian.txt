@@ -997,7 +997,12 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normale
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Doppia
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quadrupla
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Dimensione caratteri
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Seleziona la dimensione dei caratteri dell'interfaccia
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normale
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Doppia
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quadrupla
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Pacchetto grafico di base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Seleziona il pacchetto grafico di base da utilizzare
@@ -2772,6 +2777,9 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Renderiz
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Visuali mondo:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Output video:
 STR_FRAMERATE_SOUND                                             :{BLACK}Missaggio suoni:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Totale IA/Script:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Script:
+STR_FRAMERATE_AI                                                :{BLACK}   IA {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Ciclo simulazione
@@ -2786,6 +2794,9 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Renderizzazione
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Renderizzazione visuali mondo
 STR_FRAMETIME_CAPTION_VIDEO                                     :Output video
 STR_FRAMETIME_CAPTION_SOUND                                     :Missaggio suoni
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Totale IA/Script
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Script
+STR_FRAMETIME_CAPTION_AI                                        :IA {NUM} {STRING}
 ############ End of leave-in-this-order
 
 

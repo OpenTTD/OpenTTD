@@ -995,7 +995,12 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normaal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dubbele grootte
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4x Grootte
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Lettergrootte
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Hiermee kies je hoe groot de letters op het scherm moeten zijn
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normaal
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dubbele grootte
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Viervoudige grootte
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisset voor graphics
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kiest de te gebruiken basisset voor grafische elementen
@@ -1096,7 +1101,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Toegeeflijk
 STR_CITY_APPROVAL_TOLERANT                                      :Neutraal
 STR_CITY_APPROVAL_HOSTILE                                       :Vijandig
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen bruikbare AIs beschikbaar...{}U kunt diverse AI's downloaden via het 'Online Content' systeem
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen bruikbare AI's beschikbaar...{}Je kunt diverse AI's downloaden via het 'online-inhoud'-systeem
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Instellingen
@@ -1106,11 +1111,11 @@ STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles in
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(geen uitleg beschikbaar)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standaardwaarde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Instellingstype: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :Gebruiker instellingen (niet opgeslagen in bestand; heeft invloed op alle spellen)
-STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Spelinstellingen (opgeslagen in bestand; hebben alleen invloed op nieuw spel)
-STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spelinstellingen (opgeslagen in bestand; hebben alleen invloed op huidig spel)
-STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen invloed op nieuw spel)
-STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen invloed op huidig bedrijf)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Gebruikersinstellingen (niet opgeslagen in bestand; van invloed op alle spellen)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Spelinstellingen (opgeslagen in bestand; alleen van invloed op nieuwe spellen)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spelinstellingen (opgeslagen in bestand; alleen van invloed op huidig spel)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Bedrijfsinstellingen (opgeslagen in bestand; alleen van invloed op nieuwe spellen)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Bedrijfsinstellingen (opgeslagen in bestand; alleen van invloed op huidig bedrijf)
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categorie:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
@@ -1123,11 +1128,11 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Instellingen me
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Filter de lijst hieronder op bepaalde instellingstypen
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle instellingen
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Gebruikersinstellingen (Niet opgeslagen in bestand; heeft betrekking op alle spellen)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spelinstellingen (Opgeslagen in bestand; hebben alleen betrekking op nieuwe spellen)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spelinstellingen (Opgeslagen in bestand; hebben alleen betrekking op huidig spel)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Bedrijfsinstellingen (Opgeslagen in bestand; heeft alleen betrekking op nieuwe spellen)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen betrekking op huidig bedrijf)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Gebruikersinstellingen (niet opgeslagen in bestand; van invloed op alle spellen)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spelinstellingen (opgeslagen in bestand; alleen van invloed op nieuwe spellen)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spelinstellingen (opgeslagen in bestand; alleen van invloed op huidig spel)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Bedrijfsinstellingen (opgeslagen in bestand; alleen van invloed op nieuwe spellen)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Bedrijfsinstellingen (opgeslagen in bestand; alleen van invloed op huidig bedrijf)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Alle zoekresultaten per instelling weergeven{}{SILVER}Categorie {BLACK}naar {WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Alle zoekresultaten per instelling weergeven{}{SILVER}Type {BLACK}naar {WHITE}alle instellingstypen
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Alle zoekresultaten per instelling weergeven{}{SILVER}Categorie {BLACK}naar {WHITE}{STRING} {BLACK}en {SILVER}type {BLACK}naar {WHITE}Alle instellingstypen
@@ -2210,34 +2215,34 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}De serve
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De server wordt opnieuw gestart...{}Wacht alstublieft...
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Download extra content
+STR_CONTENT_TITLE                                               :{WHITE}Download extra inhoud
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Type van de content
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Naam
-STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Naam van de content
+STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Naam van de inhoud
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Klik op een regel voor details{}Gebruik het selectievakje om het te selecteren voor download
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selecteer alles
-STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Markeer alle content om te downloaden
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Markeer alle inhoud voor download
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selecteer updates
-STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Markeer alle updates voor bestaande content om te downloaden
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Markeer alle updates voor bestaande inhoud voor download
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselecteer alles
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Markeer alle content om niet te downloaden
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Zoek externe websites
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Zoek inhoud niet beschikbaar op de server van OpenTTD op websites die niet gekoppeld zijn aan OpenTTD
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}U verlaat OpenTTD!
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}De voorwaarden voor het downloaden van content van externe websites variëren.{}U moet naar de externe sites gaan voor instructies hoe de inhoud te installeren in OpenTTD.{}Wil je doorgaan?
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Je verlaat OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}De voorwaarden voor het downloaden van inhoud van externe websites variëren.{}Ga  naar de externe website voor instructies over het installeren van de inhoud in OpenTTD.{}Wil je doorgaan?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag-/naamfilter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Bezoek website
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Bezoek de website voor deze inhoud
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
-STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Start downloaden van geselecteerde content
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Start met het downloaden van de geselecteerde inhoud
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Totale downloadgrootte: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_TITLE                                        :{SILVER}CONTENT INFO
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFO OVER INHOUD
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Je hebt ervoor gekozen om dit niet te downloaden
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Je hebt ervoor gekozen om dit te downloaden
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Deze afhankelijkheid is geselecteerd om te downloaden
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Dit heb je al
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Deze content is onbekend en kan niet gedownload worden in OpenTTD
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Deze inhoud is onbekend en kan niet worden gedownload in OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Dit is een vervanging voor een bestaande {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Naam: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versie: {WHITE}{STRING}
@@ -2252,7 +2257,7 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... niet mogelijk gegevens te downloaden
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Basisgraphics
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Basis-grafische elementen
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI-bibliotheek
@@ -2260,25 +2265,25 @@ STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Hoogtekaart
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basisgeluiden
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Basismuziek
-STR_CONTENT_TYPE_GAME_SCRIPT                                    :Spel script
-STR_CONTENT_TYPE_GS_LIBRARY                                     :GS-bibliotheek
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Spelscript
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Spelscript-bibliotheek
 
 # Content downloading progress window
-STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Content aan het downloaden...
-STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Bestanden aan het opvragen...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Aan het downloaden: {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Inhoud wordt gedownload...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Bezig met bestanden opvragen...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Bezig met downloaden: {STRING} ({NUM} van {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Downloaden is klaar
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} van {BYTES} gedownload ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kon geen verbinding maken met de contentserver...
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kon geen verbinding maken met de inhoudserver...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Downloaden mislukt...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... verbinding verbroken
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... bestand niet schrijfbaar
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kon gedownload bestand niet uitpakken
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Ontbrekende graphics
-STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD heeft graphics nodig om te kunnen werken, maar er konden er geen gevonden worden. Staat u toe dat OpenTTD deze graphics downloadt en installeert?
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD heeft grafische elementen nodig om te kunnen werken, maar deze zijn niet gevonden. Wil je dat OpenTTD deze downloadt en installeert?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, download de graphics
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nee, OpenTTD afsluiten
 
@@ -2451,8 +2456,8 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Dok bouw
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Haven bouwen. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten.
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Boei plaatsen, deze kan gebruikt worden voor extra tussenstops. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Aquaduct bouwen. Shift schakelt tussen bouwen/inschatting van de kosten.
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definieer watergebied.{}Maak een kanaal, tenzij Ctrl wordt vastgehouden op zeeniveau, dan zal de omgeving overstromen
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Leg rivieren aan
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Hiermee plaats je watermassa's.{}Maakt een kanaal, tenzij je Ctrl vasthoudt op zeeniveau, dan overstroomt de omgeving.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Hiermee maak je rivieren
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Richting van dok
@@ -2742,6 +2747,9 @@ STR_FRAMERATE_DRAWING                                           :{WHITE}Grafisch
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Wereldkijkvensters:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Video-uitvoer:
 STR_FRAMERATE_SOUND                                             :{BLACK}Geluid mengen:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Spelscript/AI totaal:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Spelscript:
+STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Gameloop
@@ -2752,10 +2760,13 @@ STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Scheepstikken
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Vliegtuigtikken
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Wereldtikken
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Link grafiekvertraging
-STR_FRAMETIME_CAPTION_DRAWING                                   :Graphics weergeven
+STR_FRAMETIME_CAPTION_DRAWING                                   :Grafische elementen realiseren
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Wereldkijkvenster weergeven
 STR_FRAMETIME_CAPTION_VIDEO                                     :Video-output
 STR_FRAMETIME_CAPTION_SOUND                                     :Geluid mixen
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Spel-/AI-schripts totaal
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Spelscript
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2854,7 +2865,7 @@ STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Rivierpl
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bosplaatsing
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ontwikkeling van onverplaatsbare objecten
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ontwikkeling van ruig en rotsachtig gebied
-STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spel aan het configureren
+STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spel wordt geconfigureerd
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Bezig met tile-loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script loopt
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Voorbereiden spel
@@ -3635,7 +3646,7 @@ STR_REPLACE_VEHICLES_START                                      :{BLACK}Start he
 STR_REPLACE_VEHICLES_NOW                                        :Vervang alle voertuigen nu
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Vervang alleen oude voertuigen
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klik op deze knop als je de links geselecteerde locomotief wilt vervangen met de rechtse
-STR_REPLACE_NOT_REPLACING                                       :{BLACK}Niet aan het vervangen
+STR_REPLACE_NOT_REPLACING                                       :{BLACK}Niet vervangen
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Geen voertuig geselecteerd
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} als oud
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop het vervangen
@@ -3703,7 +3714,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Huidige 
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}In- en uitladen
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Vertrekt van
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Verongelukt!
-STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Motorpech
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Pech onderweg
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Gestopt
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Remmen, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Geen stroom
@@ -4182,7 +4193,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Schaalwa
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Het aanpassen van de grootte van een bronkaart is niet aan te bevelen. Toch doorgaan?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Alleen back-upgeluid is gevonden. Als u geluid wilt, installeer dan een geluiddsset via het downloadsysteem
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Alleen back-upgeluid is gevonden. Als je geluid wilt, installeer dan een geluiddsset via het downloadsysteem
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Grote schermfoto
