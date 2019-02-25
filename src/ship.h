@@ -57,8 +57,6 @@ struct Ship FINAL : public SpecializedVehicle<Ship, VEH_SHIP> {
 	void SetDestTile(TileIndex tile);
 };
 
-static const uint SHIP_MAX_ORDER_DISTANCE = 130;
-
 /**
  * Iterate over all ships.
  * @param var The variable used for iteration.

@@ -23,7 +23,6 @@
 #include "core/random_func.hpp"
 #include "aircraft.h"
 #include "roadveh.h"
-#include "ship.h"
 #include "station_base.h"
 #include "waypoint_base.h"
 #include "company_base.h"
@@ -899,42 +898,6 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (v->GetNumOrders() >= MAX_VEH_ORDER_ID) return_cmd_error(STR_ERROR_TOO_MANY_ORDERS);
 	if (!Order::CanAllocateItem()) return_cmd_error(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS);
 	if (v->orders.list == NULL && !OrderList::CanAllocateItem()) return_cmd_error(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS);
-
-	if (v->type == VEH_SHIP && _settings_game.pf.pathfinder_for_ships != VPF_NPF) {
-		/* Make sure the new destination is not too far away from the previous */
-		const Order *prev = NULL;
-		uint n = 0;
-
-		/* Find the last goto station or depot order before the insert location.
-		 * If the order is to be inserted at the beginning of the order list this
-		 * finds the last order in the list. */
-		const Order *o;
-		FOR_VEHICLE_ORDERS(v, o) {
-			switch (o->GetType()) {
-				case OT_GOTO_STATION:
-				case OT_GOTO_DEPOT:
-				case OT_GOTO_WAYPOINT:
-					prev = o;
-					break;
-
-				default: break;
-			}
-			if (++n == sel_ord && prev != NULL) break;
-		}
-		if (prev != NULL) {
-			uint dist;
-			if (new_order.IsType(OT_CONDITIONAL)) {
-				/* The order is not yet inserted, so we have to do the first iteration here. */
-				dist = GetOrderDistance(prev, v->GetOrder(new_order.GetConditionSkipToOrder()), v);
-			} else {
-				dist = GetOrderDistance(prev, &new_order, v);
-			}
-
-			if (dist >= SHIP_MAX_ORDER_DISTANCE) {
-				return_cmd_error(STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION);
-			}
-		}
-	}
 
 	if (flags & DC_EXEC) {
 		Order *new_o = new Order();
