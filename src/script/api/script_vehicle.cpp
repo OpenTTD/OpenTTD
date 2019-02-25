@@ -472,9 +472,6 @@
 
 	const ::Vehicle *v = ::Vehicle::Get(vehicle_id);
 	switch (v->type) {
-		case VEH_SHIP:
-			return _settings_game.pf.pathfinder_for_ships != VPF_NPF ? 129 : 0;
-
 		case VEH_AIRCRAFT:
 			return ::Aircraft::From(v)->acache.cached_max_range_sqr;
 
