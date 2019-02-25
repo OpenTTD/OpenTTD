@@ -466,8 +466,8 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, Tr
 	bool path_found = true;
 	Track track;
 
-	if (v->dest_tile == 0 || DistanceManhattan(tile, v->dest_tile) > SHIP_MAX_ORDER_DISTANCE + 5) {
-		/* No destination or destination too far, don't invoke pathfinder. */
+	if (v->dest_tile == 0) {
+		/* No destination, don't invoke pathfinder. */
 		track = TrackBitsToTrack(v->state);
 		if (!IsDiagonalTrack(track)) track = TrackToOppositeTrack(track);
 		if (!HasBit(tracks, track)) track = FindFirstTrack(tracks);
