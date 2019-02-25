@@ -24,6 +24,7 @@
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_BITMAP "top.bmp"
 
+ManifestDPIAware true
 BrandingText "OpenTTD Installer"
 SetCompressor LZMA
 
