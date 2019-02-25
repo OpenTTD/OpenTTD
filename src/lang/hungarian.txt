@@ -2793,9 +2793,9 @@ STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Adatok {
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
-STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} képkocka/másodperc
-STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} képkocka/másodperc
-STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} képkocka/másodperc
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} frame/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} frame/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} frame/s
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!

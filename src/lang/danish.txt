@@ -373,7 +373,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Afslut
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spilvalg
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opsætning
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Indstillinger
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/spilscript-indstillinger
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF indstillinger
@@ -391,7 +391,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gennemsigtige s
 
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Gem spil
-STR_FILE_MENU_LOAD_GAME                                         :Hent spil
+STR_FILE_MENU_LOAD_GAME                                         :Fortsæt spil
 STR_FILE_MENU_QUIT_GAME                                         :Forlad spillet
 STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Afslut
@@ -892,7 +892,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Flyt hov
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Bevæg hovedvisningen til samme sted som dette vindue
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spilvalg
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opsætning
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenhed
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valg af valutaenhed
 
@@ -1422,8 +1422,8 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Vis ankomst og 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vis forventede ankomst-og afgangstider i tidsplaner
 STR_CONFIG_SETTING_QUICKGOTO                                    :Hurtig oprettelse af køretøjsordrer: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Forvælg 'gå-til' når du åbner ordrer vinduet
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standard skinnetype (efter nyt spil/hentet spil): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Hvilken sportype der skal vælges efter start eller hentning af et spil. 'første tilgængelige' vælger den ældste type spor, 'sidste tilgængelige' vælger den nyeste form for spor, og 'mest anvendte' vælger den type, der i øjeblikket er mest i brug
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standard sportype (efter nyt spil/indlæst spil): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Hvilken sportype der skal vælges efter start eller indlæsning af et spil. 'Første tilgængelige' vælger den ældste type spor, 'sidste tilgængelige' vælger den nyeste form for spor, og 'mest anvendte' vælger den type, der i øjeblikket er mest i brug
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Første tilgængelige
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Sidste tilgængelige
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest anvendte
@@ -1749,13 +1749,13 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allokeri
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nyt spil
-STR_INTRO_LOAD_GAME                                             :{BLACK}Hent spil
+STR_INTRO_LOAD_GAME                                             :{BLACK}Fortsæt spil
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Spil et scenarie
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Spil højdekort
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenarieeditor
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Netværksspil
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spilvalg
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opsætning
 STR_INTRO_HIGHSCORE                                             :{BLACK} Topresultater
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Indstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF indstillinger
@@ -1764,7 +1764,7 @@ STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spils
 STR_INTRO_QUIT                                                  :{BLACK}Afslut
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nyt spil. Ctrl+Klik springer kortindstillingerne over.
-STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Hent et gemt spil
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Fortsæt et gemt spil
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Start et nyt spil med et højdekort som landskab
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Start et nyt spil med et brugerdefineret scenarie
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Lav en brugerdefineret verden/scenarie
@@ -1775,7 +1775,7 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Vælg 's
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Vælg 'subtropisk' landskab
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vælg 'legetøjsland' landskab
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Vis spilvalg
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Sæt spillet op
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Hvis topscoreliste
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Skærm indstillinger
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vis NewGRF-indstillinger
@@ -1882,7 +1882,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Simpel
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Simpelt valg af ansigt.
 STR_FACE_LOAD                                                   :{BLACK}Hent
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Hent favoritansigt
-STR_FACE_LOAD_DONE                                              :{WHITE}Dit favoritansigt er hentet fra OpenTTD-konfigurationsfilen.
+STR_FACE_LOAD_DONE                                              :{WHITE}Dit favoritansigt er indlæst fra OpenTTD konfigurationsfilen.
 STR_FACE_FACECODE                                               :{BLACK}Spiller ansigtsnr.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Vis og/eller indstil spillers ansigtsnummer
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vis og/eller indstil spillers ansigtsnummer
@@ -2062,8 +2062,8 @@ STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Spiller
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nyt selskab
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Opret et nyt selskab
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Tilskuer spil
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Se et spil som tilskuer
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Tilskuer
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Tilslut spillet som tilskuer
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Tilslut dig selskab
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Hjælp med at bestyrre dette selskab
 
@@ -2772,12 +2772,12 @@ STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRIN
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Gem spil
-STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Hent spil
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Fortsæt spil
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Gem scenarie
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Hent scenarie
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Hent højdekort
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Gem højdekort
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik her for at gå til det nuværende standard gemme/hente bibliotek
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik her for at gå til den nuværende standard gem/indlæs mappe
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} fri
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste over drev, biblioteker og gemte spilfiler
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nuværende gemte spils navn
@@ -4165,7 +4165,7 @@ STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Fejl und
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Kan ikke læse drevet
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Fejl under gemning af spil{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kan ikke slette fil
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Fejl under hentning af spil{}{STRING}
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Fejl under indlæsning af spil{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Intern fejl: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Ødelagt gemt spil - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spillet er gemt med en nyere version
@@ -4179,12 +4179,12 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spillet 
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kortgenerering afbrudt...{}... ingen brugbare lokaliteter til byer
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... der er ingen byer i dette scenarie
 
-STR_ERROR_PNGMAP                                                :{WHITE}Kan ikke hente landskab fra PNG...
+STR_ERROR_PNGMAP                                                :{WHITE}Kan ikke indlæse landskab fra PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... filen blev ikke fundet.
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kan ikke konvertere billedtype. Der skal bruges 8 eller 24-bit PNG.
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... noget gik galt. Undskyld (Måske en ødelagt fil)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Kan ikke hente landskab fra BMP...
+STR_ERROR_BMPMAP                                                :{WHITE}Kan ikke indlæse landskab fra BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kunne ikke konvertere billedtypen.
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... billede er for stort

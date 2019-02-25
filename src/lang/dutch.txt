@@ -812,7 +812,7 @@ STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} is verkocht aan {STRING} voor {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Failliet!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} is gesloten door schuldeisers en alle eigendommen zijn verkocht!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nieuw transportbedrijf opgestart!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nieuw transportbedrijf gestart!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} begint werkzaamheden bij {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} is overgenomen door {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Directeur)
@@ -827,7 +827,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Leveringsproblemen noodzaken {STRING} dreigende sluiting aan te kondigen!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Gebrek aan nabije bomen noodzaakt {STRING} dreigende sluitng aan te kondigen!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Europese Monetaire Unie!{}{}De Euro is geïntroduceerd als de enige munt voor alledaagse transacties in jouw land!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Europese Monetaire Unie!{}{}De euro wordt in jouw land ingevoerd als de enige munt voor gewone transacties!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Wereldwijde recessie!{}{}Financiële experts vrezen het ergste terwijl economie ineenstort!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Recessie voorbij!{}{}Toenemende handel geeft industrie vertrouwen vanwege sterkere economie!
 
@@ -857,7 +857,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} is erg oud aan het worden en moet nodig vervangen worden
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan geen route vinden om verder te gaan
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} is verdwaald
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Winst van {VEHICLE} was vorig jaar {CURRENCY_LONG}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Winst van {VEHICLE} was vorig jaar:{}{CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kan niet naar de volgende bestemming omdat deze buiten bereik ligt
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} is gestopt omdat een ombouworder is mislukt
@@ -880,7 +880,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsidie toegekend aan {STRING}!{}{}{STRING}route van {STRING} naar {STRING} krijgt volgend jaar driedubbel betaald!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsidie toegekend aan {STRING}!{}{}{STRING}route van {STRING} naar {STRING} krijgt volgend jaar vierdubbel betaald!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Verkeerschaos in {TOWN}!{}{}Wegherstelling betaald door {STRING} zorgt voor 6 maanden van miserie bij weggebruikers!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Verkeerschaos in {TOWN}!{}{}Wegreconstructie betaald door {STRING} zorgt voor 6 maanden van misère bij weggebruikers!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transportmonopolie!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Gemeentebestuur van {TOWN} tekent contract met {STRING} voor een jaar exclusieve transportrechten!
 
@@ -1004,7 +1004,7 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Viervoudige gro
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisset voor graphics
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kiest de te gebruiken basisset voor grafische elementen
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ontbrekend{P "" e}/corrupt{P "" e} bestand{P "" en}
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ontbrekend{P "" e}/beschadigd{P "" e} bestand{P "" en}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Aanvullende informatie over de basisset voor graphics
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basisset voor geluidseffecten
@@ -1013,7 +1013,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Aanvulle
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basisset voor muziek
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Kiest de te gebruiken basisset voor muziek
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} corrupt{P "" e} bestand{P "" en}
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} beschadigd{P "" e} bestand{P "" en}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Aanvullende informatie over the basisset voor muziek
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Mislukt om een lijst met ondersteunde resoluties op te halen
@@ -1023,9 +1023,9 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modus vo
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Aangepaste valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
-STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verlaag de wisselkoers van jouw munteenheid ten opzicht van de Pond (£)
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verhoog de wisselkoers van jouw munteenheid ten opzicht van de Pond (£)
-STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Stel de wisselkoers in van jouw munteenheid ten opzichte van de Pond (£)
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verlaag de wisselkoers van jouw munteenheid ten opzichte van het pond (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verhoog de wisselkoers van jouw munteenheid ten opzichte van het pond (£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Stel de wisselkoers in van jouw munteenheid ten opzichte van het pond (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Scheidingsteken: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Stel het scheidingsteken in voor jouw munteenheid
@@ -1035,14 +1035,14 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Stel het
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Achtervoegsel: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Stel het eindteken in voor jouw munteenheid
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Overgaan op de Euro: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Overgaan op de Euro: {ORANGE}nooit
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Stel het jaar in waarin de Euro wordt geïntroduceerd
-STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Eerder naar de Euro
-STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Later naar de Euro
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Overgaan op de euro: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Overgaan op de euro: {ORANGE}nooit
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Stel het jaar in waarin de euro wordt geïntroduceerd
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Eerder naar de euro
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Later naar de euro
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorbeeld: {ORANGE}{CURRENCY_LONG}
-STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pound (£) in jouw munteenheid
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10.000 pond (£) in jouw munteenheid
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Verander optie van aangepaste valuta
 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximaal aantal tegenstanders: {ORANGE}{COMMA}
@@ -1750,8 +1750,8 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nieuw spel
 STR_INTRO_LOAD_GAME                                             :{BLACK}Spel laden
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Speel scenario
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Speel hoogtekaart
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Scenario spelen
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Hoogtekaart spelen
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario bewerken
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Netwerkspel
 
@@ -1767,8 +1767,8 @@ STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start ee
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Een opgeslagen spel laden
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Start een nieuw spel, gebruik een hoogtekaart als landschap
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Start een nieuw spel, gebaseerd op een scenario
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Maak een eigen spelwereld/scenario
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Start een multiplayerspel
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Een eigen spelwereld/scenario maken
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Een netwerkspel spelen
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Gematigd klimaat
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Subarctisch klimaat
@@ -1784,7 +1784,7 @@ STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}AI-/spel
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' afsluiten
 
 STR_INTRO_BASESET                                               :{BLACK}De huidige gekozen set grafische elementen mist {NUM} sprite{P "" s}. Controleer of er updates zijn voor deze basisset.
-STR_INTRO_TRANSLATION                                           :{BLACK}Deze vertaling mist {NUM} tekst{P "" en}. Help aub om OpenTTD beter te maken door je al vertaler aan te melden. Zie readme.txt voor details.
+STR_INTRO_TRANSLATION                                           :{BLACK}Deze vertaling mist {NUM} tekst{P "" en}. Help alsjeblieft mee om OpenTTD beter te maken door je als vertaler aan te melden. Zie readme.txt voor details.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Afsluiten
@@ -2525,8 +2525,8 @@ STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiee
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Vergroot de landoppervlakte om te verhogen/verlagen
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Verklein de landoppervlakte om te verhogen/verlagen
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genereer willekeurig land
-STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Maak nieuw scenario aan
-STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Verwijder landschap
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Nieuw scenario maken
+STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Landschap verwijderen
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Verwijder alle eigendommen van een bedrijf van de kaart
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Landschap terugstellen
@@ -2903,14 +2903,14 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palet om
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Verander het palet van het geselecteerde NewGRF-bestand.{}Gebruik deze mogelijkheid als de afbeeldingen van dit NewGRF-bestand er paars uit zien in het spel
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Wijzigingen doorvoeren
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Zoek ontbrekende content online
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Kijk of de ontbrekende content online te vinden is
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Online naar ontbrekende inhoud zoeken
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Kijk of de ontbrekende inhoud online te vinden is
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Bestandsnaam: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF-ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versie: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Laagste compatibele versie: {SILVER}{NUM}
-STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5-controlesom: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palet: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Standaard (D)
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Standaard (D) / 32 bpp
@@ -2928,7 +2928,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Niet compa
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Voorkeursinstelling opslaan
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lijst met beschikbare voorkeursinstellingen, Selecteer om deze te kopiëren naar de opslagnaam hieronder.
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Voer een naam in voor de voorkeursinstelling
-STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Huidig gekozen naam voor de preset om op te slaan
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Huidige gekozen naam voor de voorkeursinstelling om op te slaan
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Annuleren
 STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Voorkeursinstelling niet wijzigen
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Opslaan
@@ -2937,22 +2937,22 @@ STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Sla de h
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF-parameters wijzigen
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sluiten
-STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Terugstellen
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Zet alle parameters naar de standaardwaarde
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Aantal parameters: {ORANGE}{NUM}
 
 # NewGRF inspect window
-STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspecteer - {STRING}
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspecteren - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Huidig
-STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspecteer het object van het huidige hoofd bestand
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspecteer het object van het bovenliggende element
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} bij {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Object
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Spoortype
 
-STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x parameter (hexadecimaal)
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parameter 60+x voor NewGRF-variabele (hexadecimaal)
 
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Sprite uitlijnen {COMMA} ({STRING})
@@ -2980,7 +2980,7 @@ STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fout: {SIL
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatale fout: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Een fatale NewGRF-fout is ontstaan:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} werkt niet met de TTDPatch-versie die is opgegeven door OpenTTD
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} is voor de {STRING} versie van TTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} is voor versie {STRING} van TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} is ontwikkeld voor {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ongeldige parameter voor {1:STRING}: parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} moet geladen zijn voor {STRING}
@@ -3012,7 +3012,7 @@ STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kan best
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatibele GRF(s) geladen voor ontbrekende bestanden
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missend(e) GRF-bestand(en) zijn uitgeschakeld
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ontbrekend(e) GRF-bestand(en)
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Het spel vervolgen kan OpenTTD laten vastlopen. Rapporteer geen bugs als het spel vastloopt.{}Weet je zeker dat je het spel wilt vervolgen?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Het spel vervolgen kan OpenTTD laten vastlopen. Rapporteer geen fouten als het spel nogmaals vastloopt.{}Weet je zeker dat je het spel wilt vervolgen?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Geen
@@ -3044,7 +3044,7 @@ STR_INVALID_VEHICLE                                             :<ongeldig voert
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scannen van NewGRFs
-STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Scannen van NewGRFs. Afhankelijk van het aantal, kan dit even duren...
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF's worden ingelezen. Afhankelijk van het aantal kan dit even duren...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} gescand van een geschatte {NUM} NewGRF{P "" s}
 STR_NEWGRF_SCAN_ARCHIVES                                        :Zoeken naar archieven
 
@@ -3577,10 +3577,10 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Koop nie
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Koop nieuw schip
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Koop een nieuw vliegtuig
 
-STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Kloon trein
-STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Kloon wegvoertuig
-STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kloon schip
-STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kloon vliegtuig
+STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Trein klonen
+STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Wegvoertuig klonen
+STR_DEPOT_CLONE_SHIP                                            :{BLACK}Schip klonen
+STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Vliegtuig klonen
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Hiermee koop je een kopie van een trein, inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Hiermee koop je een kopie van een wegvoertuig. Klik op deze knop en dan op een wegvoertuig binnen of buiten de garage. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
@@ -3831,7 +3831,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Dienstregeling
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Naar dienstregeling schakelen
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Orderlijst - klik op een order om deze te selecteren. Ctrl+klik scrollt naar het station
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Orderlijst - klik op een order om deze te selecteren. Met Ctrl+klik ga je naar de bestemming van de order.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -3864,19 +3864,19 @@ STR_ORDER_REFIT                                                 :{BLACK}Ombouwen
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Kies naar welk type vracht moet worden omgebouwd in deze order. Ctrl+klik om ombouwopdracht te verwijderen
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Ombouwen
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Kies vrachttype om naar om te bouwen in deze order. Ctrl+Klik om ombouwopdracht te verwijderen. Ombouwen wordt alleen uitgevoerd als het voertuig dit toelaat
-STR_ORDER_DROP_REFIT_AUTO                                       :Voorgedefinieerde vracht
+STR_ORDER_DROP_REFIT_AUTO                                       :Vaste vracht
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Beschikbare vracht
 
 STR_ORDER_SERVICE                                               :{BLACK}Onderhoud
-STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ga altijd
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Onderhoud wanneer nodig
-STR_ORDER_DROP_HALT_DEPOT                                       :Stop
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Altijd gaan
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Onderhouden wanneer nodig
+STR_ORDER_DROP_HALT_DEPOT                                       :Stoppen
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Deze order overslaan, tenzij onderhoud nodig is
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuiggegevens voor basisspringen wanneer
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Laad percentage
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Laadpercentage
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Betrouwbaarheid
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximumsnelheid
 STR_ORDER_CONDITIONAL_AGE                                       :Leeftijd (jaren)
@@ -3885,7 +3885,7 @@ STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Altijd
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Resterende levensverwachting (jaren)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maximale betrouwbaarheid
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Op welke manier vergelijken van de voertuiginfo bij de opgegeven waarde
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Bepaalt op welke manier de voertuiggegevens worden vergeleken met de opgegeven waarde
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :is gelijk aan
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :is niet gelijk aan
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :is minder dan
@@ -3895,13 +3895,13 @@ STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :is meer of geli
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :is waar
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :is niet waar
 
-STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}De waarde waartegen het voertuig wordt vergeleken
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}De waarde waarmee de voertuiggegevens worden vergeleken
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Geef waarde voor de vergelijking
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Overslaan
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Huidige order overslaan en de volgende uitvoeren. Ctrl+klik begint direct met geselecteerde order.
 
-STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Verwijder
+STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Verwijderen
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Verwijder de geselecteerde order
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Verwijder alle orders
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stop met delen
@@ -3921,7 +3921,7 @@ STR_ORDER_GO_TO_WAYPOINT                                        :Ga via {WAYPOIN
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ga non-stop via {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Onderhoud bij
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Onderhoud non-stop bij
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Non-stop naar onderhoud bij
 
 STR_ORDER_NEAREST_DEPOT                                         :het dichtstbijzijnde
 STR_ORDER_NEAREST_HANGAR                                        :de dichtstbijzijnde hangar
@@ -3990,7 +3990,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Ga naar 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Dienstregeling - klik op een order om te selecteren
 
 STR_TIMETABLE_NO_TRAVEL                                         :Niet rijden
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Rijd (automatisch; volgens dienstregeling bij volgende handmatige bestemming)
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Rijden (automatisch; volgens dienstregeling bij volgende handmatige bestemming)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (geen dienstregeling)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis met maximaal {2:VELOCITY} (geen dienstregeling)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis naar {STRING}
@@ -3999,8 +3999,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Reis (gedurende
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Reis (gedurende {STRING}, geen dienstregeling) maximaal {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(wacht gedurende {STRING}, geen dienstregeling)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(reis gedurende {STRING}, geen dienstregeling)
-STR_TIMETABLE_STAY_FOR                                          :en blijf voor {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :en rijd naar {STRING}
+STR_TIMETABLE_STAY_FOR                                          :en blijf gedurende {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :en rijd {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}dag{P "" en}
 STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tik{P "" ken}
 
@@ -4011,28 +4011,28 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dit voer
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dit voertuig heeft {STRING} vertraging
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dit voertuig is {STRING} te vroeg
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Deze dienstregeling is nog niet gestart
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Deze dienstregeling begint bij {STRING}
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Deze dienstregeling begint op {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdatum
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecteer een datum als startpunt voor deze dienstregeling. Ctrl + klik geeft het startpunt van deze dienstregeling en verdeelt alle voertuigen die deze orders delen gelijkmatig op basis van hun relatieve volgorde, als de order volledig is ingeroosterd.
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Verander de tijd
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Tijd wijzigen
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander de tijdsduur die de geselecteerde order mag duren
 
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Verwijder tijd
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Tijd wissen
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Verwijder de tijdsduur die de geselecteerde order mag duren
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Wijzig Maximumsnelheid
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Wijzig de maximumsnelheid voor de gekozen order
 
-STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Verwijder Snelheidslimiet
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Snelheidslimiet wissen
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Verwijder de maximumsnelheid van de gekozen order
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset vertragingsteller
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset de vertragingsteller zodat het voertuig op tijd is
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Vertragingsteller terugstellen
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Stel de vertragingsteller terug zodat het voertuig op tijd is
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatisch vullen
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis (Ctrl+klik om proberen wachttijden te bewaren)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis (Ctrl+klik om te proberen om wachttijden te bewaren)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Verwacht
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Volgens dienstregeling
@@ -4125,12 +4125,12 @@ STR_AI_SETTINGS_START_DELAY                                     :Aantal dagen da
 
 
 # Textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} leesme van {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} leesmij van {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} wijzigingen van {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licentie van {STRING}
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Tekst afbreken
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Tekst aanpassen aan venster zodat je niet hoeft te bladeren
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Bekijk leesme
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Leesmij-bestand bekijken
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Wijzigingen
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licentie
 
@@ -4181,8 +4181,8 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... er i
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan landschap uit PNG niet laden...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... bestand niet gevonden
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kon afbeelding niet omzetten. 8 óf 24-bit PNG afbeelding nodig
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... er ging iets fout. Sorry (bestand waarschijnlijk corrupt)
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kon afbeelding niet omzetten. 8 óf 24 bits-PNG-afbeelding nodig
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... er ging iets fout. Sorry (bestand waarschijnlijk beschadigd)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Kan het landschap uit BMP niet laden...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan dit type afbeelding niet omzetten
@@ -4320,7 +4320,7 @@ STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... weg 
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan deel van station niet verwijderen...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Treinstation moet eerst verwijderd worden
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Verwijder eerst treinstation
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kan busstation niet verwijderen...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan vrachtwagenlaadstation niet verwijderen...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan passagierstramstation niet verwijderen...
@@ -4382,7 +4382,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(onvoldoende ge
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Onmogelijke spoorcombinatie
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Sein moet eerst worden verwijderd
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Verwijder eerst sein
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Geen bruikbaar spoor
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Moet spoor eerst verwijderen
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Weg is eenrichtingsverkeer of geblokkeerd
@@ -4416,7 +4416,7 @@ STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... kan 
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... kan niet op de zee bouwen
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... kan niet op kanaal bouwen
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... kan niet op rivier bouwen
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Het kanaal moet eerst verwijderd worden
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Verwijder eerst kanaal
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan hier geen aquaduct bouwen...
 
 # Tree related errors
@@ -4426,7 +4426,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kan hier
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Kan hier geen brug bouwen...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Brug moet eerst afgebroken worden
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Breek eerst brug af
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan niet beginnen en eindigen op dezelfde plaats
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Begin van bruggen niet op hetzelfde niveau
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brug is te laag voor dit terrein
@@ -4439,7 +4439,7 @@ STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Brug zou
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan hier geen tunnel bouwen...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Locatie ongeschikt voor ingang tunnel
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Tunnel moet eerst afgebroken worden
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Verwijder eerst tunnel
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Andere tunnel in de weg
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel eindigt buiten de kaart
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan geen land uitgraven voor andere uiteinde tunnel
@@ -4513,8 +4513,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan onde
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... voertuig is vernietigd
 
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Geen enkel voertuig zal beschikbaar zijn
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Pas je NewGRF configuratie aan
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Er zullen geen voertuigen beschikbaar zijn
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Pas je NewGRF-configuratie aan
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nog geen voertuigen beschikbaar
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE} Start een nieuw spel na {DATE_SHORT} of gebruik een NewGRF dat in vroege voertuigen voorziet
 
