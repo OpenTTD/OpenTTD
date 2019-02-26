@@ -707,7 +707,7 @@ public:
 			this->BuildGroupList(company);
 			this->SetRows();
 		} else {
-			this->SetSelectedGroup(group);
+			this->SetSelectedGroup(company, group);
 		}
 
 		this->FinishInitNested(company);
@@ -715,7 +715,7 @@ public:
 		this->InvalidateData(1);
 	}
 
-	void SetSelectedGroup(GroupID group)
+	void SetSelectedGroup(CompanyID company, GroupID group)
 	{
 		this->RaiseWidget(this->livery_class + WID_SCL_CLASS_GENERAL);
 		const Group *g = Group::Get(group);
@@ -730,7 +730,7 @@ public:
 		this->LowerWidget(this->livery_class + WID_SCL_CLASS_GENERAL);
 
 		this->groups.ForceRebuild();
-		this->BuildGroupList((CompanyID)this->window_number);
+		this->BuildGroupList(company);
 		this->SetRows();
 
 		/* Position scrollbar to selected group */
@@ -1105,7 +1105,7 @@ void ShowCompanyLiveryWindow(CompanyID company, GroupID group)
 	if (w == NULL) {
 		new SelectCompanyLiveryWindow(&_select_company_livery_desc, company, group);
 	} else if (group != INVALID_GROUP) {
-		w->SetSelectedGroup(group);
+		w->SetSelectedGroup(company, group);
 	}
 }
 
