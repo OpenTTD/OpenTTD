@@ -1025,9 +1025,15 @@ public:
 		if (data != -1) {
 			/* data contains a VehicleType, rebuild list if it displayed */
 			if (this->livery_class == data + LC_GROUP_RAIL) {
-				if (!Group::IsValidID(this->sel)) this->sel = INVALID_GROUP;
 				this->groups.ForceRebuild();
 				this->BuildGroupList((CompanyID)this->window_number);
+				this->SetRows();
+
+				if (!Group::IsValidID(this->sel)) {
+					this->sel = INVALID_GROUP;
+					if (this->groups.Length() > 0) this->sel = this->groups[0]->index;
+				}
+
 				this->SetDirty();
 			}
 			return;
