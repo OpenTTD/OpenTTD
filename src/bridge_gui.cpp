@@ -112,7 +112,7 @@ private:
 
 	void BuildBridge(uint8 i)
 	{
-		switch ((TransportType)(this->type >> 15)) {
+		switch ((TransportType)(this->start_tile >> 24)) {
 			case TRANSPORT_RAIL: _last_railbridge_type = this->bridges->Get(i)->index; break;
 			case TRANSPORT_ROAD: _last_roadbridge_type = this->bridges->Get(i)->index; break;
 			default: break;
@@ -144,10 +144,10 @@ public:
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_BBS_SCROLLBAR);
 		/* Change the data, or the caption of the gui. Set it to road or rail, accordingly. */
-		this->GetWidget<NWidgetCore>(WID_BBS_CAPTION)->widget_data = (GB(this->type, 15, 2) == TRANSPORT_ROAD) ? STR_SELECT_ROAD_BRIDGE_CAPTION : STR_SELECT_RAIL_BRIDGE_CAPTION;
-		this->FinishInitNested(GB(br_type, 15, 2)); // Initializes 'this->bridgetext_offset'.
+		this->GetWidget<NWidgetCore>(WID_BBS_CAPTION)->widget_data = (GB(this->start_tile, 24, 2) == TRANSPORT_ROAD) ? STR_SELECT_ROAD_BRIDGE_CAPTION : STR_SELECT_RAIL_BRIDGE_CAPTION;
+		this->FinishInitNested(GB(start, 24, 2)); // Initializes 'this->bridgetext_offset'.
 
-		this->parent = FindWindowById(WC_BUILD_TOOLBAR, GB(this->type, 15, 2));
+		this->parent = FindWindowById(WC_BUILD_TOOLBAR, GB(this->start_tile, 24, 2));
 		this->bridges->SetListing(this->last_sorting);
 		this->bridges->SetSortFuncs(this->sorter_funcs);
 		this->bridges->NeedResort();
@@ -363,10 +363,10 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 	DeleteWindowByClass(WC_BUILD_BRIDGE);
 
 	/* Data type for the bridge.
-	 * Bit 16,15 = transport type,
-	 *     14..8 = road/rail types,
+	 * Bit 31.16 = town index,
+	 *     13..8 = road/rail types,
 	 *      7..0 = type of bridge */
-	uint32 type = (transport_type << 15) | (road_rail_type << 8);
+	uint32 type = road_rail_type << 8;
 
 	/* The bridge length without ramps. */
 	const uint bridge_len = GetTunnelBridgeLength(start, end);
@@ -383,14 +383,14 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 		default: break; // water ways and air routes don't have bridge types
 	}
 	if (_ctrl_pressed && CheckBridgeAvailability(last_bridge_type, bridge_len).Succeeded()) {
-		DoCommandP(end, start, type | last_bridge_type, CMD_BUILD_BRIDGE | CMD_MSG(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE), CcBuildBridge);
+		DoCommandP(end, start | transport_type << 24, type | last_bridge_type, CMD_BUILD_BRIDGE | CMD_MSG(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE), CcBuildBridge);
 		return;
 	}
 
 	/* only query bridge building possibility once, result is the same for all bridges!
 	 * returns CMD_ERROR on failure, and price on success */
 	StringID errmsg = INVALID_STRING_ID;
-	CommandCost ret = DoCommand(end, start, type, CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_BRIDGE)) | DC_QUERY_COST, CMD_BUILD_BRIDGE);
+	CommandCost ret = DoCommand(end, start | transport_type << 24, type, CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_BRIDGE)) | DC_QUERY_COST, CMD_BUILD_BRIDGE);
 
 	GUIBridgeList *bl = NULL;
 	if (ret.Failed()) {
@@ -427,7 +427,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 	}
 
 	if (bl != NULL && bl->Length() != 0) {
-		new BuildBridgeWindow(&_build_bridge_desc, start, end, type, bl);
+		new BuildBridgeWindow(&_build_bridge_desc, start | transport_type << 24, end, type, bl);
 	} else {
 		delete bl;
 		ShowErrorMessage(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE, errmsg, WL_INFO, TileX(end) * TILE_SIZE, TileY(end) * TILE_SIZE);

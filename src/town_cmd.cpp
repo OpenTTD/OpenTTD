@@ -86,11 +86,8 @@ Town::~Town()
 				break;
 
 			case MP_ROAD:
-				assert(!HasTownOwnedRoad(tile) || GetTownIndex(tile) != this->index);
-				break;
-
 			case MP_TUNNELBRIDGE:
-				assert(!IsTileOwner(tile, OWNER_TOWN) || ClosestTownFromTile(tile, UINT_MAX) != this);
+				assert(!HasTownOwnedRoad(tile) || GetTownIndex(tile) != this->index);
 				break;
 
 			default:
@@ -1105,8 +1102,8 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 		byte bridge_type = RandomRange(MAX_BRIDGES - 1);
 
 		/* Can we actually build the bridge? */
-		if (DoCommand(tile, bridge_tile, bridge_type | ROADTYPES_ROAD << 8 | TRANSPORT_ROAD << 15, CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_BRIDGE)), CMD_BUILD_BRIDGE).Succeeded()) {
-			DoCommand(tile, bridge_tile, bridge_type | ROADTYPES_ROAD << 8 | TRANSPORT_ROAD << 15, DC_EXEC | CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_BRIDGE)), CMD_BUILD_BRIDGE);
+		if (DoCommand(tile, bridge_tile | TRANSPORT_ROAD << 24, bridge_type | ROADTYPES_ROAD << 8 | t->index << 16, CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_BRIDGE)), CMD_BUILD_BRIDGE).Succeeded()) {
+			DoCommand(tile, bridge_tile | TRANSPORT_ROAD << 24, bridge_type | ROADTYPES_ROAD << 8 | t->index << 16, DC_EXEC | CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_BRIDGE)), CMD_BUILD_BRIDGE);
 			_grow_town_result = GROWTH_SUCCEED;
 			return true;
 		}
@@ -1415,6 +1412,17 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile)
 		if (cur_rb == ROAD_NONE) return false;
 
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+			if (IsBridge(tile) && IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_NONE) && _game_mode == GM_EDITOR) {
+				/* If we are in the SE, and this bridge-piece has no town owner yet, it just found an
+				 * owner :) (happy happy happy bridge now) */
+				TileIndex other_end = GetOtherBridgeEnd(tile);
+				SetTileOwner(tile, OWNER_TOWN);
+				SetTileOwner(other_end, OWNER_TOWN);
+				SetRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN);
+				SetRoadOwner(other_end, ROADTYPE_ROAD, OWNER_TOWN);
+				SetTownIndex(tile, t->index);
+				SetTownIndex(other_end, t->index);
+			}
 			/* Only build in the direction away from the tunnel or bridge. */
 			target_dir = ReverseDiagDir(GetTunnelBridgeDirection(tile));
 		} else {
@@ -2735,11 +2743,8 @@ CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		bool try_clear = false;
 		switch (GetTileType(tile)) {
 			case MP_ROAD:
-				try_clear = HasTownOwnedRoad(tile) && GetTownIndex(tile) == t->index;
-				break;
-
 			case MP_TUNNELBRIDGE:
-				try_clear = IsTileOwner(tile, OWNER_TOWN) && ClosestTownFromTile(tile, UINT_MAX) == t;
+				try_clear = HasTownOwnedRoad(tile) && GetTownIndex(tile) == t->index;
 				break;
 
 			case MP_HOUSE:
@@ -3331,6 +3336,10 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 	switch (GetTileType(tile)) {
 		case MP_ROAD:
 			if (IsRoadDepot(tile)) return CalcClosestTownFromTile(tile, threshold);
+			FALLTHROUGH;
+
+		case MP_TUNNELBRIDGE:
+			if (IsTileType(tile, MP_TUNNELBRIDGE) && (IsTunnel(tile) || GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD)) return CalcClosestTownFromTile(tile, threshold);
 
 			if (!HasTownOwnedRoad(tile)) {
 				TownID tid = GetTownIndex(tile);

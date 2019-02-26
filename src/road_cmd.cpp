@@ -493,7 +493,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	 * if a non-company is building the road */
 	if ((Company::IsValidID(company) && p2 != 0) || (company == OWNER_TOWN && !Town::IsValidID(p2)) || (company == OWNER_DEITY && p2 != 0)) return CMD_ERROR;
 	if (company != OWNER_TOWN) {
-		const Town *town = CalcClosestTownFromTile(tile);
+		const Town *town = ClosestTownFromTile(tile, UINT_MAX);
 		p2 = (town != NULL) ? town->index : INVALID_TOWN;
 
 		if (company == OWNER_DEITY) {
@@ -1445,7 +1445,7 @@ void UpdateNearestTownForRoadTiles(bool invalidate)
 	assert(!invalidate || _generating_world);
 
 	for (TileIndex t = 0; t < MapSize(); t++) {
-		if (IsTileType(t, MP_ROAD) && !IsRoadDepot(t) && !HasTownOwnedRoad(t)) {
+		if (((IsTileType(t, MP_ROAD) && !IsRoadDepot(t)) || (IsTileType(t, MP_TUNNELBRIDGE) && IsBridge(t) && GetTunnelBridgeTransportType(t) == TRANSPORT_ROAD)) && !HasTownOwnedRoad(t)) {
 			TownID tid = INVALID_TOWN;
 			if (!invalidate) {
 				const Town *town = CalcClosestTownFromTile(t);

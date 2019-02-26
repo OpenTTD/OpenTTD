@@ -3080,6 +3080,10 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_TOWN_BRIDGES) && !IsSavegameVersionBefore(SLV_103)) {
+		UpdateNearestTownForRoadTiles(false);
+	}
+
 	/* Station acceptance is some kind of cache */
 	if (IsSavegameVersionBefore(SLV_127)) {
 		Station *st;
