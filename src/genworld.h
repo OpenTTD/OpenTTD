@@ -98,6 +98,7 @@ void IncreaseGeneratingWorldProgress(GenWorldProgress cls);
 void PrepareGenerateWorldProgress();
 void ShowGenerateWorldProgress();
 void StartNewGameWithoutGUI(uint32 seed);
+void StartNewHeightMapGameWithoutGUI(uint32 seed);
 void ShowCreateScenario();
 void StartScenarioEditor();
 
