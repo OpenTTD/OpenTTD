@@ -1051,48 +1051,48 @@ DEF_CONSOLE_CMD(ConNewGame)
 
 DEF_CONSOLE_CMD(ConNewHeightMapGame)
 {
-    bool answer = true;
+	bool answer = true;
 
 	if (argc == 0) {
-        IConsoleHelp("Load a game by name or index. Usage: 'newheightmapgame [<file | number> [seed]]'");
+		IConsoleHelp("Load a game by name or index. Usage: 'newheightmapgame [<file | number> [seed]]'");
 		IConsoleHelp("The server can force a new game using 'newheightmapgame'; any client joined will rejoin after the server is done generating the new game.");
-    }
+	}
 
-    if (argc >=1 && argc <= 3) {
-        const char *file = NULL;
+	if (argc >=1 && argc <= 3) {
+		const char *file = NULL;
 
-        if (argc == 1) {
-            file = _file_to_saveload.title;
-        }
+		if (argc == 1) {
+			file = _file_to_saveload.title;
+		}
 
-        if (argc >= 2) {
-            file = argv[1];
-        }
+		if (argc >= 2) {
+			file = argv[1];
+		}
 
-//        _console_file_list.ValidateFileList();
+//		_console_file_list.ValidateFileList();
 		_console_file_list.BuildFileList(FT_HEIGHTMAP, SLO_LOAD);
-        const FiosItem *item = _console_file_list.FindItem(file);
-        if (item != NULL) {
-            if (GetAbstractFileType(item->type) == FT_HEIGHTMAP) {
-                _switch_mode = SM_LOAD_HEIGHTMAP;
-                _file_to_saveload.SetMode(item->type);
-                _file_to_saveload.SetName(FiosBrowseTo(item));
-                _file_to_saveload.SetTitle(item->title);
+		const FiosItem *item = _console_file_list.FindItem(file);
+		if (item != NULL) {
+			if (GetAbstractFileType(item->type) == FT_HEIGHTMAP) {
+				_switch_mode = SM_LOAD_HEIGHTMAP;
+				_file_to_saveload.SetMode(item->type);
+				_file_to_saveload.SetName(FiosBrowseTo(item));
+				_file_to_saveload.SetTitle(item->title);
 
-                StartNewHeightMapGameWithoutGUI((argc == 3) ? strtoul(argv[2], NULL, 10) : GENERATE_NEW_SEED);
-            } else {
-                IConsolePrintF(CC_ERROR, "%s: Not a heightmap.", file);
-            }
-        } else {
-            IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
-        }
+				StartNewHeightMapGameWithoutGUI((argc == 3) ? strtoul(argv[2], NULL, 10) : GENERATE_NEW_SEED);
+			} else {
+				IConsolePrintF(CC_ERROR, "%s: Not a heightmap.", file);
+			}
+		} else {
+			IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
+		}
 
-        _console_file_list.InvalidateFileList();
-    }
+		_console_file_list.InvalidateFileList();
+	}
 
-    if (argc > 3) answer = false;
+	if (argc > 3) answer = false;
 
-    return answer;
+	return answer;
 }
 
 DEF_CONSOLE_CMD(ConRestart)

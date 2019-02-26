@@ -887,11 +887,11 @@ void StartNewHeightMapGameWithoutGUI(uint32 seed)
 	/* GenerateWorld takes care of the possible GENERATE_NEW_SEED value in 'seed' */
 	_settings_newgame.game_creation.generation_seed = seed;
 
-    uint x = 0;
-    uint y = 0;
+	uint x = 0;
+	uint y = 0;
 
-    /* If the function returns negative, it means there was a problem loading the heightmap */
-    if (!GetHeightmapDimensions(_file_to_saveload.detail_ftype, _file_to_saveload.name, &x, &y)) return;
+	/* If the function returns negative, it means there was a problem loading the heightmap */
+	if (!GetHeightmapDimensions(_file_to_saveload.detail_ftype, _file_to_saveload.name, &x, &y)) return;
 
 	StartGeneratingLandscape(GLWM_HEIGHTMAP);
 }
