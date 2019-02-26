@@ -408,17 +408,6 @@ CommandCost CmdDeleteGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	return CommandCost();
 }
 
-static bool IsUniqueGroupNameForVehicleType(const char *name, VehicleType type)
-{
-	const Group *g;
-
-	FOR_ALL_GROUPS(g) {
-		if (g->name != NULL && g->vehicle_type == type && strcmp(g->name, name) == 0) return false;
-	}
-
-	return true;
-}
-
 /**
  * Alter a group
  * @param tile unused
@@ -442,7 +431,6 @@ CommandCost CmdAlterGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 		if (!reset) {
 			if (Utf8StringLength(text) >= MAX_LENGTH_GROUP_NAME_CHARS) return CMD_ERROR;
-			if (!IsUniqueGroupNameForVehicleType(text, g->vehicle_type)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
 		}
 
 		if (flags & DC_EXEC) {
