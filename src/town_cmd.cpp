@@ -1061,6 +1061,8 @@ static bool GrowTownWithRoad(const Town *t, TileIndex tile, RoadBits rcmd)
  */
 static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDirection bridge_dir)
 {
+	if (_generating_world && t->cache.population == 0) return false;
+
 	assert(bridge_dir < DIAGDIR_END);
 
 	const Slope slope = GetTileSlope(tile);
