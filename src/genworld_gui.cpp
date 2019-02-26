@@ -865,7 +865,7 @@ void StartScenarioEditor()
 }
 
 /**
- * Start a normal game without the GUI.
+ * Start a normal/heightmap game without the GUI.
  * @param seed The seed of the new game.
  */
 void StartNewGameWithoutGUI(uint32 seed)
@@ -873,7 +873,20 @@ void StartNewGameWithoutGUI(uint32 seed)
 	/* GenerateWorld takes care of the possible GENERATE_NEW_SEED value in 'seed' */
 	_settings_newgame.game_creation.generation_seed = seed;
 
-	StartGeneratingLandscape(GLWM_GENERATE);
+
+	GenerateLandscapeWindowMode mode = GLWM_GENERATE;
+
+	if(_file_to_saveload.abstract_ftype == FT_HEIGHTMAP) {
+		uint x = 0;
+		uint y = 0;
+
+		/* If the function returns false, it means there was a problem loading the heightmap */
+		if (!GetHeightmapDimensions(_file_to_saveload.detail_ftype, _file_to_saveload.name, &x, &y)) return;
+
+		mode = GLWM_HEIGHTMAP;
+	}
+
+	StartGeneratingLandscape(mode);
 }
 
 struct CreateScenarioWindow : public Window

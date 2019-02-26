@@ -1055,6 +1055,52 @@ DEF_CONSOLE_CMD(ConNewGame)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConNewHeightMapGame)
+{
+	if (argc == 0) {
+		IConsoleHelp("Load a game by name or index. Usage: 'newheightmapgame [<file | number> [seed]]'");
+		IConsoleHelp("The server can force a new game using 'newheightmapgame'; any client joined will rejoin after the server is done generating the new game.");
+		return true;
+	}
+
+	if (argc > 3) return false;
+
+	bool heightmap_loaded = true;
+	const char *file = NULL;
+
+	if (argc == 1) {
+		file = _file_to_saveload.title;
+	}
+
+	if (argc >= 2) {
+		file = argv[1];
+	}
+
+	/* ConLoad command actually uses
+	_console_file_list.ValidateFileList()
+	here, but for this procedure build a file list for mere savegames, instead of merely validating */
+	_console_file_list.BuildFileList(FT_HEIGHTMAP, SLO_LOAD);
+	const FiosItem *item = _console_file_list.FindItem(file);
+	if (item != NULL) {
+		if (GetAbstractFileType(item->type) == FT_HEIGHTMAP) {
+			_switch_mode = SM_LOAD_HEIGHTMAP;
+			_file_to_saveload.SetMode(item->type);
+			_file_to_saveload.SetName(FiosBrowseTo(item));
+			_file_to_saveload.SetTitle(item->title);
+
+			StartNewGameWithoutGUI((argc == 3) ? strtoul(argv[2], NULL, 10) : GENERATE_NEW_SEED);
+		} else {
+			IConsolePrintF(CC_ERROR, "%s: Not a heightmap.", file);
+		}
+	} else {
+		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
+	}
+
+	_console_file_list.InvalidateFileList();
+
+	return heightmap_loaded;
+}
+
 DEF_CONSOLE_CMD(ConRestart)
 {
 	if (argc == 0) {
@@ -2089,6 +2135,7 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("list_cmds",    ConListCommands);
 	IConsoleCmdRegister("list_aliases", ConListAliases);
 	IConsoleCmdRegister("newgame",      ConNewGame);
+	IConsoleCmdRegister("newheightmapgame",      ConNewHeightMapGame);
 	IConsoleCmdRegister("restart",      ConRestart);
 	IConsoleCmdRegister("getseed",      ConGetSeed);
 	IConsoleCmdRegister("getdate",      ConGetDate);
