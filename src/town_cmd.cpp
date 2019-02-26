@@ -90,7 +90,7 @@ Town::~Town()
 				break;
 
 			case MP_TUNNELBRIDGE:
-				assert(!IsTileOwner(tile, OWNER_TOWN) || ClosestTownFromTile(tile, UINT_MAX) != this);
+				assert(_generating_world || !IsTileOwner(tile, OWNER_TOWN) || ClosestTownFromTile(tile, UINT_MAX) != this);
 				break;
 
 			default:
@@ -2739,7 +2739,7 @@ CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 				break;
 
 			case MP_TUNNELBRIDGE:
-				try_clear = IsTileOwner(tile, OWNER_TOWN) && ClosestTownFromTile(tile, UINT_MAX) == t;
+				try_clear = !_generating_world && IsTileOwner(tile, OWNER_TOWN) && ClosestTownFromTile(tile, UINT_MAX) == t;
 				break;
 
 			case MP_HOUSE:
