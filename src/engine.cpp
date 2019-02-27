@@ -73,6 +73,7 @@ Engine::Engine(VehicleType type, EngineID base)
 	this->grf_prop.local_id = base;
 	this->list_position = base;
 	this->preview_company = INVALID_COMPANY;
+	this->display_last_variant = INVALID_ENGINE;
 
 	/* Check if this base engine is within the original engine data range */
 	if (base >= _engine_counts[type]) {
@@ -93,6 +94,8 @@ Engine::Engine(VehicleType type, EngineID base)
 		}
 		/* Set cargo aging period to the default value. */
 		this->info.cargo_age_period = CARGO_AGING_TICKS;
+		/* Not a variant */
+		this->info.variant_id = INVALID_ENGINE;
 		return;
 	}
 
