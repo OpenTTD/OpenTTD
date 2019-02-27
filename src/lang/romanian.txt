@@ -475,6 +475,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Capturează ecr
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captură mărită
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Mărimea implicită a capturii
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Capturează toată harta
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Arată FPS
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Despre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Aliniere imagini
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Afişează/ascunde casetele de încadrare
@@ -923,6 +924,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand sud-africa
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizată...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgian (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iranian (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ruble rusești (RUB)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Autovehiculele circulă...
@@ -1118,6 +1120,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Setări joc (st
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Setări companie (stocate în salvări; afectează doar jocurile noi)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Setări compenia (stocate în salvări; afectează doar compania curentă)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Arată toate rezultatele de căutare setând{}{SILVER}Categoria {BLACK}în {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Arată toate rezultatele de căutare setând{}{SILVER}Tipul {BLACK}în {WHITE}Toate tipurile de setări
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nespecificat -
 
 STR_CONFIG_SETTING_OFF                                          :Inactiv
@@ -1328,6 +1331,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Culoarea terenu
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde închis
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Mov
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mută harta ținând apăsat click dreapta, poziția cursorului rămânând fixă
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Derulare uşoară ecran: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controlează modul de deplasare a imaginii din ecranul principal când se face click pe harta mică sau când se execută o comandă de deplasare către un obiect anume de pe hartă. Dacă este activată, imaginea se deplasează în mod fluid, altfel imaginea sare direct la zona dorită
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Arată o indicaţie de distanţă la folosirea uneltelor de construcţie: {STRING}
@@ -1598,6 +1602,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modalitatea de 
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modalitatea de distribuire pentru alte clase de cargo: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Acurateţea distribuţiei: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efectul distanţei asupra cererii: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Dacă setezi această valoare peste 0, distanța dintre stația origine A al mărfii și o posibilă stație B va afecta cantitatea de marfă trimisă din punctul A în B. Cu cât e mai departe B de A cu atât va fi mai mică cantitatea de marfă transportată. Cu cât mărești această valoare, cu atât mai puțină marfă se livrează spre destinațiile îndepărtate si cu atât mai multă la cele mai apropiate.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Cantitatea de cargo la întoarcere pentru modul simetric: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturaţia căilor de capacitate mică înainte de a utiliza căi de capacitate mare: {STRING}
 
@@ -2690,6 +2695,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalii 
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nicio informaţie disponibilă
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtrare după:
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Introduceţi un nume pentru salvare
 
@@ -4423,6 +4429,7 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Setul de sunete
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Setul de sunete original al Transport Tycoon Deluxe pentru Windows.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Un set de sunete fără nici un sunet inclus.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Setul de muzică original al Transport Tycoon Deluxe pentru Windows.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Setul de muzică original al Transport Tycoon Deluxe pentru DOS.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Un set de muzică fără muzică inclusă.
 
 ##id 0x2000
