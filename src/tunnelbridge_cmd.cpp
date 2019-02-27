@@ -217,11 +217,13 @@ CommandCost CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoC
  * Build a Bridge
  * @param end_tile end tile
  * @param flags type of operation
- * @param p1 packed start tile coords (~ dx)
+ * @param p1 various bitstuffed elements
+ * - p1 = (bit  0-23) - start tile coords (~ dx)
+ * - p1 = (bit 24-25) - transport type.
  * @param p2 various bitstuffed elements
  * - p2 = (bit  0- 7) - bridge type (hi bh)
  * - p2 = (bit  8-13) - rail type or road types.
- * - p2 = (bit 15-16) - transport type.
+ * - p2 = (bit 16-31) - town index
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -235,9 +237,12 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	/* unpack parameters */
 	BridgeType bridge_type = GB(p2, 0, 8);
 
-	if (!IsValidTile(p1)) return_cmd_error(STR_ERROR_BRIDGE_THROUGH_MAP_BORDER);
+	TileIndex tile_start = GB(p1, 0, 24);
+	if (!IsValidTile(tile_start)) return_cmd_error(STR_ERROR_BRIDGE_THROUGH_MAP_BORDER);
 
-	TransportType transport_type = Extract<TransportType, 15, 2>(p2);
+	TransportType transport_type = Extract<TransportType, 24, 2>(p1);
+
+	TownID tid = GB(p2, 16, 16);
 
 	/* type of bridge */
 	switch (transport_type) {
@@ -258,18 +263,19 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 			/* Airports don't have bridges. */
 			return CMD_ERROR;
 	}
-	TileIndex tile_start = p1;
 	TileIndex tile_end = end_tile;
 
-	if (company == OWNER_DEITY) {
-		if (transport_type != TRANSPORT_ROAD) return CMD_ERROR;
-		const Town *town = CalcClosestTownFromTile(tile_start);
+	if (company != OWNER_TOWN) {
+		const Town *town = ClosestTownFromTile(tile_start, UINT_MAX);
+		tid = (town != NULL) ? town->index : INVALID_TOWN;
 
-		company = OWNER_TOWN;
+		if (company == OWNER_DEITY) {
+			company = OWNER_TOWN;
 
-		/* If we are not within a town, we are not owned by the town */
-		if (town == NULL || DistanceSquare(tile_start, town->xy) > town->cache.squared_town_zone_radius[HZB_TOWN_EDGE]) {
-			company = OWNER_NONE;
+			/* If we are not within a town, we are not owned by the town */
+			if (town == NULL || DistanceSquare(tile_start, town->xy) > town->cache.squared_town_zone_radius[HZB_TOWN_EDGE]) {
+				company = OWNER_NONE;
+			}
 		}
 	}
 
@@ -503,8 +509,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 				}
 				Owner owner_road = HasBit(prev_roadtypes, ROADTYPE_ROAD) ? GetRoadOwner(tile_start, ROADTYPE_ROAD) : company;
 				Owner owner_tram = HasBit(prev_roadtypes, ROADTYPE_TRAM) ? GetRoadOwner(tile_start, ROADTYPE_TRAM) : company;
-				MakeRoadBridgeRamp(tile_start, owner, owner_road, owner_tram, bridge_type, dir,                 roadtypes);
-				MakeRoadBridgeRamp(tile_end,   owner, owner_road, owner_tram, bridge_type, ReverseDiagDir(dir), roadtypes);
+				MakeRoadBridgeRamp(tile_start, owner, owner_road, owner_tram, bridge_type, dir,                 roadtypes, tid);
+				MakeRoadBridgeRamp(tile_end,   owner, owner_road, owner_tram, bridge_type, ReverseDiagDir(dir), roadtypes, tid);
 				break;
 			}
 

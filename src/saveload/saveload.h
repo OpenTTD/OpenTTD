@@ -291,6 +291,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_GROUP_LIVERIES,                     ///< 205  PR#7108 Livery storage change and group liveries.
 	SLV_SHIPS_STOP_IN_LOCKS,                ///< 206  PR#7150 Ship/lock movement changes.
 	SLV_FIX_CARGO_MONITOR,                  ///< 207  PR#7175 Cargo monitor data packing fix to support 64 cargotypes.
+	SLV_TOWN_BRIDGES,                       ///< 208  PR#7282 Town bridges store town indexes in map array.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

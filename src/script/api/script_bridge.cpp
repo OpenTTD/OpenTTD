@@ -80,29 +80,30 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY || vehicle_type == ScriptVehicle::VT_ROAD);
 
 	uint type = 0;
+	uint start_type = start;
 	switch (vehicle_type) {
 		case ScriptVehicle::VT_ROAD:
-			type |= (TRANSPORT_ROAD << 15);
+			start_type |= (TRANSPORT_ROAD << 24);
 			type |= (::RoadTypeToRoadTypes((::RoadType)ScriptObject::GetRoadType()) << 8);
 			break;
 		case ScriptVehicle::VT_RAIL:
-			type |= (TRANSPORT_RAIL << 15);
+			start_type |= (TRANSPORT_RAIL << 24);
 			type |= (ScriptRail::GetCurrentRailType() << 8);
 			break;
 		case ScriptVehicle::VT_WATER:
-			type |= (TRANSPORT_WATER << 15);
+			start_type |= (TRANSPORT_WATER << 24);
 			break;
 		default: NOT_REACHED();
 	}
 
 	/* For rail and water we do nothing special */
 	if (vehicle_type == ScriptVehicle::VT_RAIL || vehicle_type == ScriptVehicle::VT_WATER) {
-		return ScriptObject::DoCommand(end, start, type | bridge_id, CMD_BUILD_BRIDGE);
+		return ScriptObject::DoCommand(end, start_type, type | bridge_id, CMD_BUILD_BRIDGE);
 	}
 
 	ScriptObject::SetCallbackVariable(0, start);
 	ScriptObject::SetCallbackVariable(1, end);
-	return ScriptObject::DoCommand(end, start, type | bridge_id, CMD_BUILD_BRIDGE, NULL, &::_DoCommandReturnBuildBridge1);
+	return ScriptObject::DoCommand(end, start_type, type | bridge_id, CMD_BUILD_BRIDGE, NULL, &::_DoCommandReturnBuildBridge1);
 }
 
 /* static */ bool ScriptBridge::_BuildBridgeRoad1()
