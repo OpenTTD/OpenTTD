@@ -33,11 +33,11 @@
 
 #include "safeguards.h"
 
-void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group);
+void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group);
 
-static bool EngineNumberSorter(const EngineID &a, const EngineID &b)
+static bool EngineNumberSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	return Engine::Get(a)->list_position < Engine::Get(b)->list_position;
+	return Engine::Get(a.engine_id)->list_position < Engine::Get(b.engine_id)->list_position;
 }
 
 /**
@@ -113,6 +113,22 @@ class ReplaceVehicleWindow : public Window {
 		return true;
 	}
 
+	void AddChildren(const GUIEngineList &source, GUIEngineList &target, EngineID parent, int indent, int side)
+	{
+		for (const auto &item : source) {
+			if (item.variant_id != parent || item.engine_id == parent) continue;
+
+			const Engine *e = Engine::Get(item.engine_id);
+			EngineDisplayFlags flags = item.flags;
+			if (e->display_last_variant != INVALID_ENGINE) flags &= ~EngineDisplayFlags::Shaded;
+			target.emplace_back(e->display_last_variant == INVALID_ENGINE ? item.engine_id : e->display_last_variant, item.engine_id, flags, indent);
+
+			/* Add variants if not folded */
+			if ((item.flags & (EngineDisplayFlags::HasVariants | EngineDisplayFlags::IsFolded)) == EngineDisplayFlags::HasVariants) {
+				AddChildren(source, target, item.engine_id, indent + 1, side);
+			}
+		}
+	}
 
 	/**
 	 * Generate an engines list
@@ -120,12 +136,12 @@ class ReplaceVehicleWindow : public Window {
 	 */
 	void GenerateReplaceVehList(bool draw_left)
 	{
+		std::vector<EngineID> variants;
 		EngineID selected_engine = INVALID_ENGINE;
 		VehicleType type = (VehicleType)this->window_number;
 		byte side = draw_left ? 0 : 1;
 
-		GUIEngineList *list = &this->engines[side];
-		list->clear();
+		GUIEngineList list;
 
 		for (const Engine *e : Engine::IterateType(type)) {
 			if (!draw_left && !this->show_hidden_engines && e->IsHidden(_local_company)) continue;
@@ -155,15 +171,37 @@ class ReplaceVehicleWindow : public Window {
 				if (!CheckAutoreplaceValidity(this->sel_engine[0], eid, _local_company)) continue;
 			}
 
-			list->push_back(eid);
+			EngineDisplayFlags flags = (side == 0) ? EngineDisplayFlags::None : e->display_flags;
+			if (side == 1 && eid == this->sel_engine[0]) flags |= EngineDisplayFlags::Shaded;
+			list.emplace_back(eid, e->info.variant_id, flags, 0);
+
+			if (side == 1 && e->info.variant_id != INVALID_ENGINE) variants.push_back(e->info.variant_id);
 			if (eid == this->sel_engine[side]) selected_engine = eid; // The selected engine is still in the list
 		}
+
+		if (side == 1) {
+			/* ensure primary engine of variant group is in list */
+			for (const auto &variant : variants) {
+				if (std::find(list.begin(), list.end(), variant) == list.end()) {
+					const Engine *e = Engine::Get(variant);
+					list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlags::Shaded, 0);
+				}
+			}
+		}
+
 		this->sel_engine[side] = selected_engine; // update which engine we selected (the same or none, if it's not in the list anymore)
 		if (draw_left) {
-			EngList_Sort(list, &EngineNumberSorter);
+			EngList_Sort(&list, &EngineNumberSorter);
 		} else {
 			_engine_sort_direction = this->descending_sort_order;
-			EngList_Sort(list, _engine_sort_functions[this->window_number][this->sort_criteria]);
+			EngList_Sort(&list, _engine_sort_functions[this->window_number][this->sort_criteria]);
+		}
+
+		this->engines[side].clear();
+		if (side == 1) {
+			AddChildren(list, this->engines[side], INVALID_ENGINE, 0, side);
+		} else {
+			this->engines[side].swap(list);
 		}
 	}
 
@@ -177,7 +215,7 @@ class ReplaceVehicleWindow : public Window {
 			this->GenerateReplaceVehList(true);
 			this->vscroll[0]->SetCount((uint)this->engines[0].size());
 			if (this->reset_sel_engine && this->sel_engine[0] == INVALID_ENGINE && this->engines[0].size() != 0) {
-				this->sel_engine[0] = this->engines[0][0];
+				this->sel_engine[0] = this->engines[0][0].engine_id;
 			}
 		}
 
@@ -198,8 +236,8 @@ class ReplaceVehicleWindow : public Window {
 				this->vscroll[1]->SetCount((uint)this->engines[1].size());
 				if (this->reset_sel_engine && this->sel_engine[1] != INVALID_ENGINE) {
 					int position = 0;
-					for (EngineID &eid : this->engines[1]) {
-						if (eid == this->sel_engine[1]) break;
+					for (const auto &item : this->engines[1]) {
+						if (item.engine_id == this->sel_engine[1]) break;
 						++position;
 					}
 					this->vscroll[1]->ScrollTowards(position);
@@ -433,7 +471,7 @@ public:
 				EngineID end    = static_cast<EngineID>(std::min<size_t>(this->vscroll[side]->GetCapacity() + start, this->engines[side].size()));
 
 				/* Do the actual drawing */
-				DrawEngineList((VehicleType)this->window_number, r, &this->engines[side], start, end, this->sel_engine[side], side == 0, this->sel_group);
+				DrawEngineList((VehicleType)this->window_number, r, this->engines[side], start, end, this->sel_engine[side], side == 0, this->sel_group);
 				break;
 			}
 		}
@@ -579,7 +617,7 @@ public:
 				uint i = this->vscroll[click_side]->GetScrolledRowFromWidget(pt.y, this, widget);
 				size_t engine_count = this->engines[click_side].size();
 
-				EngineID e = engine_count > i ? this->engines[click_side][i] : INVALID_ENGINE;
+				EngineID e = engine_count > i ? this->engines[click_side][i].engine_id : INVALID_ENGINE;
 
 				/* If Ctrl is pressed on the left side and we don't have any engines of the selected type, stop autoreplacing.
 				 * This is most common when we have finished autoreplacing the engine and want to remove it from the list. */
