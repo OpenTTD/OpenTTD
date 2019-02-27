@@ -106,9 +106,9 @@ static CargoID _engine_sort_last_cargo_criteria[] = {CF_ANY, CF_ANY, CF_ANY, CF_
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool EngineNumberSorter(const EngineID &a, const EngineID &b)
+static bool EngineNumberSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	int r = Engine::Get(a)->list_position - Engine::Get(b)->list_position;
+	int r = Engine::Get(a.engine_id)->list_position - Engine::Get(b.engine_id)->list_position;
 
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
@@ -119,10 +119,10 @@ static bool EngineNumberSorter(const EngineID &a, const EngineID &b)
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool EngineIntroDateSorter(const EngineID &a, const EngineID &b)
+static bool EngineIntroDateSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	const int va = Engine::Get(a)->intro_date;
-	const int vb = Engine::Get(b)->intro_date;
+	const int va = Engine::Get(a.engine_id)->intro_date;
+	const int vb = Engine::Get(b.engine_id)->intro_date;
 	const int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -139,19 +139,19 @@ static EngineID _last_engine[2] = { INVALID_ENGINE, INVALID_ENGINE };
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool EngineNameSorter(const EngineID &a, const EngineID &b)
+static bool EngineNameSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	static char     last_name[2][64] = { "", "" };
 
-	if (a != _last_engine[0]) {
-		_last_engine[0] = a;
-		SetDParam(0, a);
+	if (a.engine_id != _last_engine[0]) {
+		_last_engine[0] = a.engine_id;
+		SetDParam(0, a.engine_id);
 		GetString(last_name[0], STR_ENGINE_NAME, lastof(last_name[0]));
 	}
 
-	if (b != _last_engine[1]) {
-		_last_engine[1] = b;
-		SetDParam(0, b);
+	if (b.engine_id != _last_engine[1]) {
+		_last_engine[1] = b.engine_id;
+		SetDParam(0, b.engine_id);
 		GetString(last_name[1], STR_ENGINE_NAME, lastof(last_name[1]));
 	}
 
@@ -168,10 +168,10 @@ static bool EngineNameSorter(const EngineID &a, const EngineID &b)
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool EngineReliabilitySorter(const EngineID &a, const EngineID &b)
+static bool EngineReliabilitySorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	const int va = Engine::Get(a)->reliability;
-	const int vb = Engine::Get(b)->reliability;
+	const int va = Engine::Get(a.engine_id)->reliability;
+	const int vb = Engine::Get(b.engine_id)->reliability;
 	const int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -185,10 +185,10 @@ static bool EngineReliabilitySorter(const EngineID &a, const EngineID &b)
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool EngineCostSorter(const EngineID &a, const EngineID &b)
+static bool EngineCostSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	Money va = Engine::Get(a)->GetCost();
-	Money vb = Engine::Get(b)->GetCost();
+	Money va = Engine::Get(a.engine_id)->GetCost();
+	Money vb = Engine::Get(b.engine_id)->GetCost();
 	int r = ClampToI32(va - vb);
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -202,10 +202,10 @@ static bool EngineCostSorter(const EngineID &a, const EngineID &b)
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool EngineSpeedSorter(const EngineID &a, const EngineID &b)
+static bool EngineSpeedSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	int va = Engine::Get(a)->GetDisplayMaxSpeed();
-	int vb = Engine::Get(b)->GetDisplayMaxSpeed();
+	int va = Engine::Get(a.engine_id)->GetDisplayMaxSpeed();
+	int vb = Engine::Get(b.engine_id)->GetDisplayMaxSpeed();
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -219,10 +219,10 @@ static bool EngineSpeedSorter(const EngineID &a, const EngineID &b)
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool EnginePowerSorter(const EngineID &a, const EngineID &b)
+static bool EnginePowerSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	int va = Engine::Get(a)->GetPower();
-	int vb = Engine::Get(b)->GetPower();
+	int va = Engine::Get(a.engine_id)->GetPower();
+	int vb = Engine::Get(b.engine_id)->GetPower();
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -236,10 +236,10 @@ static bool EnginePowerSorter(const EngineID &a, const EngineID &b)
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool EngineTractiveEffortSorter(const EngineID &a, const EngineID &b)
+static bool EngineTractiveEffortSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	int va = Engine::Get(a)->GetDisplayMaxTractiveEffort();
-	int vb = Engine::Get(b)->GetDisplayMaxTractiveEffort();
+	int va = Engine::Get(a.engine_id)->GetDisplayMaxTractiveEffort();
+	int vb = Engine::Get(b.engine_id)->GetDisplayMaxTractiveEffort();
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -253,10 +253,10 @@ static bool EngineTractiveEffortSorter(const EngineID &a, const EngineID &b)
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool EngineRunningCostSorter(const EngineID &a, const EngineID &b)
+static bool EngineRunningCostSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	Money va = Engine::Get(a)->GetRunningCost();
-	Money vb = Engine::Get(b)->GetRunningCost();
+	Money va = Engine::Get(a.engine_id)->GetRunningCost();
+	Money vb = Engine::Get(b.engine_id)->GetRunningCost();
 	int r = ClampToI32(va - vb);
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -270,10 +270,10 @@ static bool EngineRunningCostSorter(const EngineID &a, const EngineID &b)
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool EnginePowerVsRunningCostSorter(const EngineID &a, const EngineID &b)
+static bool EnginePowerVsRunningCostSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	const Engine *e_a = Engine::Get(a);
-	const Engine *e_b = Engine::Get(b);
+	const Engine *e_a = Engine::Get(a.engine_id);
+	const Engine *e_b = Engine::Get(b.engine_id);
 	uint p_a = e_a->GetPower();
 	uint p_b = e_b->GetPower();
 	Money r_a = e_a->GetRunningCost();
@@ -312,13 +312,13 @@ static bool EnginePowerVsRunningCostSorter(const EngineID &a, const EngineID &b)
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool TrainEngineCapacitySorter(const EngineID &a, const EngineID &b)
+static bool TrainEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	const RailVehicleInfo *rvi_a = RailVehInfo(a);
-	const RailVehicleInfo *rvi_b = RailVehInfo(b);
+	const RailVehicleInfo *rvi_a = RailVehInfo(a.engine_id);
+	const RailVehicleInfo *rvi_b = RailVehInfo(b.engine_id);
 
-	int va = GetTotalCapacityOfArticulatedParts(a) * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
-	int vb = GetTotalCapacityOfArticulatedParts(b) * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	int va = GetTotalCapacityOfArticulatedParts(a.engine_id) * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	int vb = GetTotalCapacityOfArticulatedParts(b.engine_id) * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -332,10 +332,10 @@ static bool TrainEngineCapacitySorter(const EngineID &a, const EngineID &b)
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool TrainEnginesThenWagonsSorter(const EngineID &a, const EngineID &b)
+static bool TrainEnginesThenWagonsSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	int val_a = (RailVehInfo(a)->railveh_type == RAILVEH_WAGON ? 1 : 0);
-	int val_b = (RailVehInfo(b)->railveh_type == RAILVEH_WAGON ? 1 : 0);
+	int val_a = (RailVehInfo(a.engine_id)->railveh_type == RAILVEH_WAGON ? 1 : 0);
+	int val_b = (RailVehInfo(b.engine_id)->railveh_type == RAILVEH_WAGON ? 1 : 0);
 	int r = val_a - val_b;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -351,10 +351,10 @@ static bool TrainEnginesThenWagonsSorter(const EngineID &a, const EngineID &b)
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool RoadVehEngineCapacitySorter(const EngineID &a, const EngineID &b)
+static bool RoadVehEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	int va = GetTotalCapacityOfArticulatedParts(a);
-	int vb = GetTotalCapacityOfArticulatedParts(b);
+	int va = GetTotalCapacityOfArticulatedParts(a.engine_id);
+	int vb = GetTotalCapacityOfArticulatedParts(b.engine_id);
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -370,10 +370,10 @@ static bool RoadVehEngineCapacitySorter(const EngineID &a, const EngineID &b)
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool ShipEngineCapacitySorter(const EngineID &a, const EngineID &b)
+static bool ShipEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	const Engine *e_a = Engine::Get(a);
-	const Engine *e_b = Engine::Get(b);
+	const Engine *e_a = Engine::Get(a.engine_id);
+	const Engine *e_b = Engine::Get(b.engine_id);
 
 	int va = e_a->GetDisplayDefaultCapacity();
 	int vb = e_b->GetDisplayDefaultCapacity();
@@ -392,10 +392,10 @@ static bool ShipEngineCapacitySorter(const EngineID &a, const EngineID &b)
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool AircraftEngineCargoSorter(const EngineID &a, const EngineID &b)
+static bool AircraftEngineCargoSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	const Engine *e_a = Engine::Get(a);
-	const Engine *e_b = Engine::Get(b);
+	const Engine *e_a = Engine::Get(a.engine_id);
+	const Engine *e_b = Engine::Get(b.engine_id);
 
 	uint16 mail_a, mail_b;
 	int va = e_a->GetDisplayDefaultCapacity(&mail_a);
@@ -420,10 +420,10 @@ static bool AircraftEngineCargoSorter(const EngineID &a, const EngineID &b)
  * @param b second engine to compare
  * @return for descending order: returns true if a < b. Vice versa for ascending order
  */
-static bool AircraftRangeSorter(const EngineID &a, const EngineID &b)
+static bool AircraftRangeSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	uint16 r_a = Engine::Get(a)->GetRange();
-	uint16 r_b = Engine::Get(b)->GetRange();
+	uint16 r_a = Engine::Get(a.engine_id)->GetRange();
+	uint16 r_b = Engine::Get(b.engine_id)->GetRange();
 
 	int r = r_a - r_b;
 
@@ -537,14 +537,14 @@ const StringID _engine_sort_listing[][12] = {{
 }};
 
 /** Filters vehicles by cargo and engine (in case of rail vehicle). */
-static bool CDECL CargoAndEngineFilter(const EngineID *eid, const CargoID cid)
+static bool CDECL CargoAndEngineFilter(const GUIEngineListItem *item, const CargoID cid)
 {
 	if (cid == CF_ANY) {
 		return true;
 	} else if (cid == CF_ENGINES) {
-		return Engine::Get(*eid)->GetPower() != 0;
+		return Engine::Get(item->engine_id)->GetPower() != 0;
 	} else {
-		CargoTypes refit_mask = GetUnionOfArticulatedRefitMasks(*eid, true) & _standard_cargo_mask;
+		CargoTypes refit_mask = GetUnionOfArticulatedRefitMasks(item->engine_id, true) & _standard_cargo_mask;
 		return (cid == CF_NONE ? refit_mask == 0 : HasBit(refit_mask, cid));
 	}
 }
@@ -962,12 +962,12 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
  * @param show_count Whether to show the amount of engines or not
  * @param selected_group the group to list the engines of
  */
-void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group)
+void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group)
 {
 	static const int sprite_y_offsets[] = { -1, -1, -2, -2 };
 
 	/* Obligatory sanity checks! */
-	assert(max <= eng_list->size());
+	assert(max <= eng_list.size());
 
 	bool rtl = _current_text_dir == TD_RTL;
 	int step_size = GetEngineListHeight(type);
@@ -998,7 +998,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList *eng_li
 
 	int y = ir.top;
 	for (; min < max; min++, y += step_size) {
-		const EngineID engine = (*eng_list)[min];
+		const EngineID engine = eng_list[min].engine_id;
 		/* Note: num_engines is only used in the autoreplace GUI, so it is correct to use _local_company here. */
 		const uint num_engines = GetGroupNumEngines(_local_company, selected_group, engine);
 
@@ -1078,6 +1078,23 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
+	void AddChildren(const GUIEngineList &source, EngineID parent, int indent)
+	{
+		for (auto &item : source) {
+			if (item.variant_id != parent || item.engine_id == parent) continue;
+
+			const Engine *e = Engine::Get(item.engine_id);
+			EngineDisplayFlags flags = item.flags;
+			if (e->display_last_variant != INVALID_ENGINE) flags &= ~EngineDisplayFlags::Shaded;
+			this->eng_list.emplace_back(e->display_last_variant == INVALID_ENGINE ? item.engine_id : e->display_last_variant, item.engine_id, flags, indent);
+
+			/* Add variants if not folded */
+			if ((item.flags & (EngineDisplayFlags::HasVariants | EngineDisplayFlags::IsFolded)) == EngineDisplayFlags::HasVariants) {
+				AddChildren(source, item.engine_id, indent + 1);
+			}
+		}
+	}
+
 	BuildVehicleWindow(WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc)
 	{
 		this->vehicle_type = type;
@@ -1125,7 +1142,7 @@ struct BuildVehicleWindow : Window {
 		this->GenerateBuildList(); // generate the list, since we need it in the next line
 		/* Select the first engine in the list as default when opening the window */
 		if (this->eng_list.size() > 0) {
-			this->SelectEngine(this->eng_list[0]);
+			this->SelectEngine(this->eng_list[0].engine_id);
 		} else {
 			this->SelectEngine(INVALID_ENGINE);
 		}
@@ -1251,13 +1268,13 @@ struct BuildVehicleWindow : Window {
 	}
 
 	/** Filter the engine list against the currently selected cargo filter */
-	void FilterEngineList()
+	void FilterEngineList(GUIEngineList &list)
 	{
-		this->eng_list.Filter(this->cargo_filter[this->cargo_filter_criteria]);
-		if (0 == this->eng_list.size()) { // no engine passed through the filter, invalidate the previously selected engine
+		list.Filter(this->cargo_filter[this->cargo_filter_criteria]);
+		if (0 == list.size()) { // no engine passed through the filter, invalidate the previously selected engine
 			this->SelectEngine(INVALID_ENGINE);
-		} else if (std::find(this->eng_list.begin(), this->eng_list.end(), this->sel_engine) == this->eng_list.end()) { // previously selected engine didn't pass the filter, select the first engine of the list
-			this->SelectEngine(this->eng_list[0]);
+		} else if (std::find(list.begin(), list.end(), this->sel_engine) == list.end()) { // previously selected engine didn't pass the filter, select the first engine of the list
+			this->SelectEngine(list[0].engine_id);
 		}
 	}
 
@@ -1265,17 +1282,19 @@ struct BuildVehicleWindow : Window {
 	bool FilterSingleEngine(EngineID eid)
 	{
 		CargoID filter_type = this->cargo_filter[this->cargo_filter_criteria];
-		return CargoAndEngineFilter(&eid, filter_type);
+		GUIEngineListItem item = {eid, eid, EngineDisplayFlags::None, 0};
+		return CargoAndEngineFilter(&item, filter_type);
 	}
 
 	/* Figure out what train EngineIDs to put in the list */
-	void GenerateBuildTrainList()
+	void GenerateBuildTrainList(GUIEngineList &list)
 	{
+		std::vector<EngineID> variants;
 		EngineID sel_id = INVALID_ENGINE;
 		int num_engines = 0;
 		int num_wagons  = 0;
 
-		this->eng_list.clear();
+		list.clear();
 
 		/* Make list of all available train engines and wagons.
 		 * Also check to see if the previously selected engine is still available,
@@ -1292,7 +1311,7 @@ struct BuildVehicleWindow : Window {
 			/* Filter now! So num_engines and num_wagons is valid */
 			if (!FilterSingleEngine(eid)) continue;
 
-			this->eng_list.push_back(eid);
+			list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
 			if (rvi->railveh_type != RAILVEH_WAGON) {
 				num_engines++;
@@ -1300,7 +1319,16 @@ struct BuildVehicleWindow : Window {
 				num_wagons++;
 			}
 
+			if (e->info.variant_id != eid && e->info.variant_id != INVALID_ENGINE) variants.push_back(e->info.variant_id);
 			if (eid == this->sel_engine) sel_id = eid;
+		}
+
+		/* ensure primary engine of variant group is in list */
+		for (const auto &variant : variants) {
+			if (std::find(list.begin(), list.end(), variant) == list.end()) {
+				const Engine *e = Engine::Get(variant);
+				list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlags::Shaded, 0);
+			}
 		}
 
 		this->SelectEngine(sel_id);
@@ -1310,22 +1338,22 @@ struct BuildVehicleWindow : Window {
 
 		/* make engines first, and then wagons, sorted by selected sort_criteria */
 		_engine_sort_direction = false;
-		EngList_Sort(&this->eng_list, TrainEnginesThenWagonsSorter);
+		EngList_Sort(&list, TrainEnginesThenWagonsSorter);
 
 		/* and then sort engines */
 		_engine_sort_direction = this->descending_sort_order;
-		EngList_SortPartial(&this->eng_list, _engine_sort_functions[0][this->sort_criteria], 0, num_engines);
+		EngList_SortPartial(&list, _engine_sort_functions[0][this->sort_criteria], 0, num_engines);
 
 		/* and finally sort wagons */
-		EngList_SortPartial(&this->eng_list, _engine_sort_functions[0][this->sort_criteria], num_engines, num_wagons);
+		EngList_SortPartial(&list, _engine_sort_functions[0][this->sort_criteria], num_engines, num_wagons);
 	}
 
 	/* Figure out what road vehicle EngineIDs to put in the list */
-	void GenerateBuildRoadVehList()
+	void GenerateBuildRoadVehList(GUIEngineList &list)
 	{
 		EngineID sel_id = INVALID_ENGINE;
 
-		this->eng_list.clear();
+		list.clear();
 
 		for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
 			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
@@ -1333,36 +1361,39 @@ struct BuildVehicleWindow : Window {
 			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
 			if (this->filter.roadtype != INVALID_ROADTYPE && !HasPowerOnRoad(e->u.road.roadtype, this->filter.roadtype)) continue;
 
-			this->eng_list.push_back(eid);
+			list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
 			if (eid == this->sel_engine) sel_id = eid;
 		}
+
 		this->SelectEngine(sel_id);
 	}
 
 	/* Figure out what ship EngineIDs to put in the list */
-	void GenerateBuildShipList()
+	void GenerateBuildShipList(GUIEngineList &list)
 	{
 		EngineID sel_id = INVALID_ENGINE;
-		this->eng_list.clear();
+		list.clear();
 
 		for (const Engine *e : Engine::IterateType(VEH_SHIP)) {
 			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
-			this->eng_list.push_back(eid);
+
+			list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
 			if (eid == this->sel_engine) sel_id = eid;
 		}
+
 		this->SelectEngine(sel_id);
 	}
 
 	/* Figure out what aircraft EngineIDs to put in the list */
-	void GenerateBuildAircraftList()
+	void GenerateBuildAircraftList(GUIEngineList &list)
 	{
 		EngineID sel_id = INVALID_ENGINE;
 
-		this->eng_list.clear();
+		list.clear();
 
 		const Station *st = this->listview_mode ? nullptr : Station::GetByTile(this->window_number);
 
@@ -1377,7 +1408,8 @@ struct BuildVehicleWindow : Window {
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
 			if (!this->listview_mode && !CanVehicleUseStation(eid, st)) continue;
 
-			this->eng_list.push_back(eid);
+			list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
+
 			if (eid == this->sel_engine) sel_id = eid;
 		}
 
@@ -1392,29 +1424,47 @@ struct BuildVehicleWindow : Window {
 		/* Update filter type in case the road/railtype of the depot got converted */
 		this->UpdateFilterByTile();
 
+		this->eng_list.clear();
+
+		GUIEngineList list;
+
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
 			case VEH_TRAIN:
-				this->GenerateBuildTrainList();
+				this->GenerateBuildTrainList(list);
+				AddChildren(list, INVALID_ENGINE, 0);
 				this->eng_list.shrink_to_fit();
 				this->eng_list.RebuildDone();
-				return; // trains should not reach the last sorting
+				return;
 			case VEH_ROAD:
-				this->GenerateBuildRoadVehList();
+				this->GenerateBuildRoadVehList(list);
 				break;
 			case VEH_SHIP:
-				this->GenerateBuildShipList();
+				this->GenerateBuildShipList(list);
 				break;
 			case VEH_AIRCRAFT:
-				this->GenerateBuildAircraftList();
+				this->GenerateBuildAircraftList(list);
 				break;
 		}
 
-		this->FilterEngineList();
+		this->FilterEngineList(list);
+
+		/* ensure primary engine of variant group is in list after filtering */
+		std::vector<EngineID> variants;
+		for (const auto &item : list) {
+			if (item.engine_id != item.variant_id && item.variant_id != INVALID_ENGINE) variants.push_back(item.variant_id);
+		}
+		for (const auto &variant : variants) {
+			if (std::find(list.begin(), list.end(), variant) == list.end()) {
+				const Engine *e = Engine::Get(variant);
+				list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlags::Shaded, 0);
+			}
+		}
 
 		_engine_sort_direction = this->descending_sort_order;
-		EngList_Sort(&this->eng_list, _engine_sort_functions[this->vehicle_type][this->sort_criteria]);
+		EngList_Sort(&list, _engine_sort_functions[this->vehicle_type][this->sort_criteria]);
 
+		AddChildren(list, INVALID_ENGINE, 0);
 		this->eng_list.shrink_to_fit();
 		this->eng_list.RebuildDone();
 	}
@@ -1440,7 +1490,7 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_LIST: {
 				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_BV_LIST);
 				size_t num_items = this->eng_list.size();
-				this->SelectEngine((i < num_items) ? this->eng_list[i] : INVALID_ENGINE);
+				this->SelectEngine((i < num_items) ? this->eng_list[i].engine_id : INVALID_ENGINE);
 				this->SetDirty();
 				if (_ctrl_pressed) {
 					this->OnClick(pt, WID_BV_SHOW_HIDE, 1);
@@ -1589,7 +1639,7 @@ struct BuildVehicleWindow : Window {
 				DrawEngineList(
 					this->vehicle_type,
 					r,
-					&this->eng_list,
+					this->eng_list,
 					this->vscroll->GetPosition(),
 					static_cast<uint16>(std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->eng_list.size())),
 					this->sel_engine,
