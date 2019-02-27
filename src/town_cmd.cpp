@@ -1412,7 +1412,7 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile)
 		if (cur_rb == ROAD_NONE) return false;
 
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			if (IsBridge(tile) && IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_NONE) && GetRoadTypes(tile) == ROADTYPES_ROAD && _game_mode == GM_EDITOR) {
+			if (IsBridge(tile) && IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_NONE) && _game_mode == GM_EDITOR) {
 				/* If we are in the SE, and this bridge-piece has no town owner yet, it just found an
 				 * owner :) (happy happy happy bridge now) */
 				TileIndex other_end = GetOtherBridgeEnd(tile);
