@@ -294,7 +294,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	if (refit_cargo == CT_INVALID) return CommandCost(); // incompatible cargoes
 
 	/* Build the new vehicle */
-	cost = DoCommand(old_veh->tile, e, 0, DC_EXEC | DC_AUTOREPLACE, GetCmdBuildVeh(old_veh));
+	cost = DoCommand(old_veh->tile, e | (CT_INVALID << 24), 0, DC_EXEC | DC_AUTOREPLACE, GetCmdBuildVeh(old_veh));
 	if (cost.Failed()) return cost;
 
 	Vehicle *new_veh = Vehicle::Get(_new_vehicle_id);

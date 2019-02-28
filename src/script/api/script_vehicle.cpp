@@ -70,7 +70,7 @@
 
 	EnforcePreconditionCustomError(VEHICLE_INVALID, !ScriptGameSettings::IsDisabledVehicleType((ScriptVehicle::VehicleType)type), ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED);
 
-	if (!ScriptObject::DoCommand(depot, engine_id, 0, ::GetCmdBuildVeh(type), NULL, &ScriptInstance::DoCommandReturnVehicleID)) return VEHICLE_INVALID;
+	if (!ScriptObject::DoCommand(depot, engine_id | (CT_INVALID << 24), 0, ::GetCmdBuildVeh(type), NULL, &ScriptInstance::DoCommandReturnVehicleID)) return VEHICLE_INVALID;
 
 	/* In case of test-mode, we return VehicleID 0 */
 	return 0;
