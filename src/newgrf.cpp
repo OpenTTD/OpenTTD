@@ -5828,7 +5828,6 @@ static void GraphicsNew(ByteReader *buf)
 	 * B graphics-type What set of graphics the sprites define.
 	 * E num-sprites   How many sprites are in this set?
 	 * V other data    Graphics type specific data.  Currently unused. */
-	/* TODO */
 
 	uint8 type = buf->ReadByte();
 	uint16 num = buf->ReadExtendedByte();
@@ -6216,7 +6215,6 @@ static void SkipIf(ByteReader *buf)
 	 * B condition-type
 	 * V value
 	 * B num-sprites */
-	/* TODO: More params. More condition types. */
 	uint32 cond_val = 0;
 	uint32 mask = 0;
 	bool result;
@@ -6902,12 +6900,6 @@ static void ParamSet(ByteReader *buf)
 		src2 = (src2 == 0xFF) ? data : GetParamVal(src2, NULL);
 	}
 
-	/* TODO: You can access the parameters of another GRF file by using
-	 * source2=FE, source1=the other GRF's parameter number and data=GRF
-	 * ID.  This is only valid with operation 00 (set).  If the GRF ID
-	 * cannot be found, a value of 0 is used for the parameter value
-	 * instead. */
-
 	uint32 res;
 	switch (oper) {
 		case 0x00:
@@ -7008,13 +7000,13 @@ static void ParamSet(ByteReader *buf)
 			break;
 		}
 
-		/* @todo implement */
-		case 0x93: // Tile refresh offset to left
+		/* not implemented */
+		case 0x93: // Tile refresh offset to left -- Intended to allow support for larger sprites, not necessary for OTTD
 		case 0x94: // Tile refresh offset to right
 		case 0x95: // Tile refresh offset upwards
 		case 0x96: // Tile refresh offset downwards
-		case 0x97: // Snow line height
-		case 0x99: // Global ID offset
+		case 0x97: // Snow line height -- Better supported by feature 8 property 10h (snow line table) TODO: implement by filling the entire snow line table with the given value
+		case 0x99: // Global ID offset -- Not necessary since IDs are remapped automatically
 			grfmsg(7, "ParamSet: Skipping unimplemented target 0x%02X", target);
 			break;
 
@@ -8237,7 +8229,6 @@ static void ResetNewGRFErrors()
 
 /**
  * Reset all NewGRF loaded data
- * TODO
  */
 void ResetNewGRFData()
 {
