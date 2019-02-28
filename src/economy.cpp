@@ -2027,7 +2027,7 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	if (GetAmountOwnedBy(c, COMPANY_SPECTATOR) == 0) return cost;
 
 	if (GetAmountOwnedBy(c, COMPANY_SPECTATOR) == 1) {
-		if (!c->is_ai) return cost; //  We can not buy out a real company (temporarily). TODO: well, enable it obviously.
+		if (!c->is_ai || (c->is_ai && _networking)) return cost; //  We can not buy out a real or AI company in multiplayer.
 
 		if (GetAmountOwnedBy(c, _current_company) == 3 && !MayCompanyTakeOver(_current_company, target_company)) return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 	}

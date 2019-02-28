@@ -2667,8 +2667,8 @@ struct CompanyWindow : Window
 
 			/* If all shares are owned by someone (none by nobody), disable buy button */
 			this->SetWidgetDisabledState(WID_C_BUY_SHARE, GetAmountOwnedBy(c, INVALID_OWNER) == 0 ||
-					/* Only 25% left to buy. If the company is human, disable buying it up.. TODO issues! */
-					(GetAmountOwnedBy(c, INVALID_OWNER) == 1 && !c->is_ai) ||
+					/* Only 25% left to buy. If the company is human or AI in multiplayer, disable buying it up! */
+					(GetAmountOwnedBy(c, INVALID_OWNER) == 1 && (!c->is_ai || (c->is_ai && _networking))) ||
 					/* Spectators cannot do anything of course */
 					_local_company == COMPANY_SPECTATOR);
 
