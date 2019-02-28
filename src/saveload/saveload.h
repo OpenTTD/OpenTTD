@@ -842,5 +842,6 @@ bool SaveloadCrashWithMissingNewGRFs();
 
 extern char _savegame_format[8];
 extern bool _do_autosave;
+extern bool _save_empty_script;
 
 #endif /* SAVELOAD_H */

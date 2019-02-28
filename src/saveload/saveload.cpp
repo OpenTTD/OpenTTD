@@ -63,6 +63,7 @@ SaveLoadVersion _sl_version; ///< the major savegame version identifier
 byte   _sl_minor_version;    ///< the minor savegame version, DO NOT USE!
 char _savegame_format[8];    ///< how to compress savegames
 bool _do_autosave;           ///< are we doing an autosave at the moment?
+bool _save_empty_script;     ///< are AI/GS not going to save? (true if sending a map to a client over the network, false otherwise)
 
 /** What are we currently doing? */
 enum SaveLoadAction {
@@ -2415,6 +2416,7 @@ static void SaveFileDone()
 
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SAVELOAD_FINISH);
 	_sl.saveinprogress = false;
+	_save_empty_script = false;
 }
 
 /** Set the error message from outside of the actual loading/saving of the game (AfterLoadGame and friends) */
@@ -2546,6 +2548,7 @@ static SaveOrLoadResult DoSave(SaveFilter *writer, bool threaded)
 SaveOrLoadResult SaveWithFilter(SaveFilter *writer, bool threaded)
 {
 	try {
+		_save_empty_script = true;
 		_sl.action = SLA_SAVE;
 		return DoSave(writer, threaded);
 	} catch (...) {

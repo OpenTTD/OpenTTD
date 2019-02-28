@@ -14,6 +14,7 @@
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../network/network.h"
+#include "../saveload/saveload.h"
 #include "../window_func.h"
 #include "../framerate_type.h"
 #include "game.hpp"
@@ -206,7 +207,7 @@
 
 /* static */ void Game::Save()
 {
-	if (Game::instance != NULL && (!_networking || _network_server)) {
+	if (Game::instance != NULL && (!_networking || (_network_server && !_save_empty_script))) {
 		Backup<CompanyByte> cur_company(_current_company, OWNER_DEITY, FILE_LINE);
 		Game::instance->Save();
 		cur_company.Restore();
