@@ -1080,14 +1080,14 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 	const int delta = TileOffsByDiagDir(bridge_dir);
 
 	if (slope == SLOPE_FLAT) {
-		/* Bridges starting on flat tiles are only allowed when crossing rivers. */
+		/* Bridges starting on flat tiles are only allowed when crossing rivers or rails. */
 		do {
 			if (bridge_length++ >= 4) {
-				/* Allow to cross rivers, not big lakes. */
+				/* Allow to cross rivers, not big lakes, nor large amounts of rails. */
 				return false;
 			}
 			bridge_tile += delta;
-		} while (IsValidTile(bridge_tile) && IsWaterTile(bridge_tile) && !IsSea(bridge_tile));
+		} while (IsValidTile(bridge_tile) && ((IsWaterTile(bridge_tile) && !IsSea(bridge_tile)) || IsPlainRailTile(bridge_tile)));
 	} else {
 		do {
 			if (bridge_length++ >= 11) {
@@ -1095,7 +1095,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 				return false;
 			}
 			bridge_tile += delta;
-		} while (IsValidTile(bridge_tile) && IsWaterTile(bridge_tile));
+		} while (IsValidTile(bridge_tile) && (IsWaterTile(bridge_tile) || IsPlainRailTile(bridge_tile)));
 	}
 
 	/* no water tiles in between? */
