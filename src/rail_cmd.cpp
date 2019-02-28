@@ -522,11 +522,20 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 						(track == TRACK_Y && ((road | tram) & ROAD_Y) == 0)) {
 					Owner road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
 					Owner tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
-					/* Disallow breaking end-of-line of someone else
-					 * so trams can still reverse on this tile. */
-					if (Company::IsValidID(tram_owner) && HasExactlyOneBit(tram)) {
-						CommandCost ret = CheckOwnership(tram_owner);
-						if (ret.Failed()) return ret;
+					if (_settings_game.construction.allow_company_level_crossing) {
+						/* Disallow breaking end-of-line of someone else
+						 * so trams can still reverse on this tile. */
+						if (Company::IsValidID(tram_owner) && HasExactlyOneBit(tram)) {
+							CommandCost ret = CheckOwnership(tram_owner);
+							if (ret.Failed()) return ret;
+						}
+					} else {
+						if (HasExactlyOneBit(road)) {
+							CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+							if (ret.Failed()) return ret;
+						} else {
+							return_cmd_error(STR_ERROR_MUST_REMOVE_ROAD_FIRST);
+						}
 					}
 					/* Crossings must always have a road... */
 					uint num_new_road_pieces = 2 - CountBits(road);

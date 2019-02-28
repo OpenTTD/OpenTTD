@@ -1265,6 +1265,8 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Allow drive-thr
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Allow construction of drive-through road stops on town-owned roads
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Allow drive-through road stops on roads owned by competitors: {STRING2}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Allow construction of drive-through road stops on roads owned by other companies
+STR_CONFIG_SETTING_ALLOW_COMPANY_LEVEL_CROSSINGS                :Companies are allowed to build level crossings: {STRING2}
+STR_CONFIG_SETTING_ALLOW_COMPANY_LEVEL_CROSSINGS_HELPTEXT       :Enabling this setting allows companies to build level crossings
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Changing this setting is not possible when there are vehicles
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastructure maintenance: {STRING2}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :When enabled, infrastructure causes maintenance costs. The cost grows over-proportional with the network size, thus affecting bigger companies more than smaller ones

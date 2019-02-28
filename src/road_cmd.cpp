@@ -625,6 +625,15 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				default: goto do_clear;
 			}
 
+			if (!_settings_game.construction.allow_company_level_crossing && company != OWNER_TOWN) {
+				CommandCost ret = CheckTileOwnership(tile);
+				if (ret.Failed()) {
+					goto do_clear;
+				} else {
+					return_cmd_error(STR_ERROR_MUST_REMOVE_RAILROAD_TRACK);
+				}
+			}
+
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
 			if (ret.Failed()) return ret;
 
