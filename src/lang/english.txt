@@ -1257,8 +1257,8 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :Plane speed fac
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Set the relative speed of planes compared to other vehicle types, to reduce the amount of income of transport by aircraft
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Number of plane crashes: {STRING2}
-STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Set the chance of an aircraft crash happening
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :None
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Set the chance of a random aircraft crash happening.{}* Large airplanes always have a risk of crashing when landing on small airports
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :None*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduced
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Allow drive-through road stops on town owned roads: {STRING2}
