@@ -1,11 +1,12 @@
 steps:
 - script: |
     set -ex
-    HOMEBREW_NO_AUTO_UPDATE=1 brew install pkg-config lzo xz libpng
+    HOMEBREW_NO_AUTO_UPDATE=1 brew install pkg-config lzo xz libpng freetype
     # Remove the dynamic libraries of these libraries, to ensure we use
     # the static versions. That is important, as it is unlikely any
     # end-user has these brew libraries installed.
     rm /usr/local/Cellar/lzo/*/lib/*.dylib
     rm /usr/local/Cellar/xz/*/lib/*.dylib
     rm /usr/local/Cellar/libpng/*/lib/*.dylib
+    rm /usr/local/Cellar/freetype/*/lib/*.dylib
   displayName: 'Install dependencies'
