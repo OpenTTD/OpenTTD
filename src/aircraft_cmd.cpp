@@ -1314,12 +1314,12 @@ static void MaybeCrashAirplane(Aircraft *v)
 	Station *st = Station::Get(v->targetairport);
 
 	/* FIXME -- MaybeCrashAirplane -> increase crashing chances of very modern airplanes on smaller than AT_METROPOLITAN airports */
-	uint32 prob = (0x4000 << _settings_game.vehicle.plane_crashes);
+	uint32 prob = (0x4000 << (_settings_game.vehicle.plane_crashes > 1 ? _settings_game.vehicle.plane_crashes - 1 : _settings_game.vehicle.plane_crashes));
 	if ((st->airport.GetFTA()->flags & AirportFTAClass::SHORT_STRIP) &&
-			(AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
-			!_cheats.no_jetcrash.value) {
-		prob /= 20;
+			(AircraftVehInfo(v->engine_type)->subtype & AIR_FAST)) {
+		prob /= !_cheats.no_jetcrash.value ? 20 : 1500;
 	} else {
+		if (_settings_game.vehicle.plane_crashes == 1) return;
 		prob /= 1500;
 	}
 
