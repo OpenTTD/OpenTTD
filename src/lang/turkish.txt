@@ -996,7 +996,10 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :İki kat büyük
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Dört kat büyük
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :Arayüz boyutunu seç
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Yazı iki kat büyük
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Temel grafik kümesi
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kullanılacak temel grafik kümesini seçin
@@ -2743,6 +2746,7 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Grafik i
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Dünya görüş alanları:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Video çıkışı:
 STR_FRAMERATE_SOUND                                             :{BLACK}Ses karıştırma:
+STR_FRAMERATE_GAMESCRIPT                                        :Oyun scripti
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Oyun döngüsü

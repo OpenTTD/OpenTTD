@@ -840,7 +840,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Insekter foresager kaos ved {INDUSTRY}!{}Produktionen er faldet med 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}produktionen på {INDUSTRY} sænkes med {COMMA}%!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} venter i remisen
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} afventer i remisen
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} venter på værkstedet
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} venter i skibsdokken
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} venter i hangaren
@@ -2152,7 +2152,7 @@ STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Der opst
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revisionen af denne klient passer ikke sammen med serverens revision
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Forkert kodeord
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serveren er fuld
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du har forbud mod at bruge denne server
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du er bandlyst fra denne server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du blev smidt ud af spillet
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Snyderi er ikke tilladt på denne server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Du sendte for mange kommandoer til serveren
@@ -2348,7 +2348,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Ombyg/op
 STR_RAIL_NAME_RAILROAD                                          :Jernbane
 STR_RAIL_NAME_ELRAIL                                            :Elektrisk jernbane
 STR_RAIL_NAME_MONORAIL                                          :Monorail
-STR_RAIL_NAME_MAGLEV                                            :Magnetskinne
+STR_RAIL_NAME_MAGLEV                                            :Magnetsvævebane
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Retning af remise
@@ -3258,7 +3258,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Vis alle
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Omdøb stationen/fragtcentralen
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Luk lufthavn
-STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Undgå at fly lander i denne lufthavn
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Forhindre at fly lander i denne lufthavn
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3457,7 +3457,7 @@ STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nye jernbanekøretøjer
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nyt elektrisk lokomotiv
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nye elektriske jernbanekøretøjer
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nye monorailkøretøjer
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nye magnetskinnekøretøjer
 
@@ -3585,7 +3585,7 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klon fly
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dette vil købe en kopi af toget inklusiv alle vogne. Klik på denne knap og så på et tog indeni eller udenfor remisen. Ctrl-klik vil kopiere ordrer. Shift-klik vil vise prisoverslag.
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil købe en kopi af køretøjet. Klik på denne knap og så på et køretøj indeni eller udenfor værkstedet. Ctrl-klik vil dele ordrer. Shift-klik viser anslået pris uden køb
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dette vil købe en kopi af skibet. Klik på denne knap og så på et skib indeni eller udenfor dokken. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil købe en kopi af et fly. Klik på denne knap og så på et fly indeni eller udenfor hangaren. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil købe en kopi af et fly. Klik på denne knap og så på et fly indeni eller udenfor hangaren. Ctrl-klik vil dele ordrer. Shift-klik viser estimerede omkostninger uden at indkøbe
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrer skærmen over remisens lokalitet. Ctrl+Klik åbner et nyt vindue ved remisens lokalitet.
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrer skærmen over værkstedets lokalitet. Ctrl+Klik åbner et nyt vindue ved køretøjsværkstedets lokalitet.
@@ -3595,7 +3595,7 @@ STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrér
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Vis en liste over alle tog med denne remise i ordrelisten
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Vis liste over alle køretøjer med dette værksted i ordrelisten
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Vis liste over alle skibe med denne skibsdok i ordrelisten
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Vis liste over alle fly med en hangar ved denne lufthavn i ordrelisten
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Hent en liste over alle fly der har hvilken som helst hangar ved denne lufthavn i deres ordrer
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klik for at stoppe alle toge i remisen
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Klik for at stoppe alle køretøjer i værkstedet
@@ -3617,7 +3617,7 @@ STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :vejkøretøj
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :fly
 STR_ENGINE_PREVIEW_SHIP                                         :skib
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monoraillokomotiv
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magnetskinnelokomotiv
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magnettog
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Pris: {CURRENCY_LONG} Vægt: {WEIGHT_SHORT}{}Hastighed: {VELOCITY}  Styrke: {POWER}{}Driftsomkostninger: {CURRENCY_LONG}/år{}Kapacitet: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Pris: {CURRENCY_LONG} Vægt: {WEIGHT_SHORT}{}Hastighed: {VELOCITY}  Hestekræfter: {POWER}  Maks. Trækkraft: {6:FORCE}{}Driftsomkostning: {4:CURRENCY_LONG}/år{}Kapacitet: {5:CARGO_LONG}
@@ -4052,7 +4052,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vælg å
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Computerspiller/Spilscript-debug
+STR_AI_DEBUG                                                    :{WHITE}KI/Spilscript-debug
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Navn på scriptet
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Indstillinger
@@ -4089,7 +4089,7 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Flyt ned
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Flyt valgte computerspiller ned i listen
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spilscript
-STR_AI_CONFIG_AI                                                :{SILVER}AIer
+STR_AI_CONFIG_AI                                                :{SILVER}KI'er
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Vælg {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :Ingen ændringer

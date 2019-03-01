@@ -997,7 +997,12 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :2 ganger størrelse
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4 ganger størrelse
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Skriftstørrelse
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Velg skriftstørrelse for grensesnitt
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dobbel størrelse
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Firedobbel størrelse
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikksett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Velg grafikksett som skal brukes
@@ -2746,6 +2751,9 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Grafikkt
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Synsfelt for spillverden:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Video output:
 STR_FRAMERATE_SOUND                                             :{BLACK}Lydmiksing:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  GS/AI total:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Game script:
+STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Spill-løkke
@@ -2760,6 +2768,9 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Grafikktegning
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Tegning av synsfelt for spillverden
 STR_FRAMETIME_CAPTION_VIDEO                                     :Video output
 STR_FRAMETIME_CAPTION_SOUND                                     :Lydmiksing
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :GS/AI scripts total
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Game script
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 

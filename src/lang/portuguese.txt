@@ -996,7 +996,12 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dobro do tamanho
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quádruplo do tamanho
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Tamanho da fonte
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Seleccionar tamanho da fonte de interface a usar
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dobro do tamanho
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quádruplo do tamanho
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Seleccione o conjunto de gráficos base a usar
@@ -2743,6 +2748,9 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Renderiz
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Janelas de exibição do mundo:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Saída de video:
 STR_FRAMERATE_SOUND                                             :{BLACK}Mistura de Som:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  GS/AI total:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Script de jogo:
+STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Loop de jogo
@@ -2757,6 +2765,9 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Renderização 
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Renderização de janela de exibição do mundo
 STR_FRAMETIME_CAPTION_VIDEO                                     :Saída de video
 STR_FRAMETIME_CAPTION_SOUND                                     :Mistura de Som
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :total scripts GS/AI
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Script de jogo
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
