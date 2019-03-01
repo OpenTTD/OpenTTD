@@ -759,7 +759,8 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		      SLE_VAR(RoadVehicle, overtaking_ctr,       SLE_UINT8),
 		      SLE_VAR(RoadVehicle, crashed_ctr,          SLE_UINT16),
 		      SLE_VAR(RoadVehicle, reverse_ctr,          SLE_UINT8),
-		SLE_CONDDEQUE(RoadVehicle, path,                SLE_UINT8,                  SLV_ROADVEH_PATH_CACHE, SL_MAX_VERSION),
+		SLE_CONDDEQUE(RoadVehicle, path.td,              SLE_UINT8,                  SLV_ROADVEH_PATH_CACHE, SL_MAX_VERSION),
+		SLE_CONDDEQUE(RoadVehicle, path.tile,            SLE_UINT32,                 SLV_ROADVEH_PATH_CACHE, SL_MAX_VERSION),
 
 		 SLE_CONDNULL(2,                                                               SLV_6,  SLV_69),
 		  SLE_CONDVAR(RoadVehicle, gv_flags,             SLE_UINT16,                 SLV_139, SL_MAX_VERSION),

@@ -83,7 +83,24 @@ static const byte RV_OVERTAKE_TIMEOUT = 35;
 void RoadVehUpdateCache(RoadVehicle *v, bool same_length = false);
 void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 
-typedef std::deque<TrackdirByte> RoadVehPathCache;
+struct RoadVehPathCache {
+	std::deque<TrackdirByte> td;
+	std::deque<TileIndex> tile;
+
+	inline bool empty() const { return this->td.empty(); }
+
+	inline size_t size() const
+	{
+		assert(this->td.size() == this->tile.size());
+		return this->td.size();
+	}
+
+	inline void clear()
+	{
+		this->td.clear();
+		this->tile.clear();
+	}
+};
 
 /**
  * Buses, trucks and trams belong to this class.

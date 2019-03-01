@@ -956,20 +956,30 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 
 	/* Only one track to choose between? */
 	if (KillFirstBit(trackdirs) == TRACKDIR_BIT_NONE) {
+		if (!v->path.empty() && v->path.tile.front() == tile) {
+			/* Vehicle expected a choice here, invalidate its path. */
+			v->path.clear();
+		}
 		return_track(FindFirstBit2x64(trackdirs));
 	}
 
 	/* Attempt to follow cached path. */
 	if (!v->path.empty()) {
-		Trackdir trackdir = v->path.front();
+		if (v->path.tile.front() != tile) {
+			/* Vehicle didn't expect a choice here, invalidate its path. */
+			v->path.clear();
+		} else {
+			Trackdir trackdir = v->path.td.front();
 
-		if (HasBit(trackdirs, trackdir)) {
-			v->path.pop_front();
-			return_track(trackdir);
+			if (HasBit(trackdirs, trackdir)) {
+				v->path.td.pop_front();
+				v->path.tile.pop_front();
+				return_track(trackdir);
+			}
+
+			/* Vehicle expected a choice which is no longer available. */
+			v->path.clear();
 		}
-
-		/* Cached path is invalid so continue with pathfinder. */
-		v->path.clear();
 	}
 
 	switch (_settings_game.pf.pathfinder_for_roadvehs) {
