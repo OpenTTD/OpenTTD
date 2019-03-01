@@ -74,19 +74,7 @@ struct SignList {
 	/** Sort signs by their name */
 	static int CDECL SignNameSorter(const Sign * const *a, const Sign * const *b)
 	{
-		static char buf_cache[64];
-		char buf[64];
-
-		SetDParam(0, (*a)->index);
-		GetString(buf, STR_SIGN_NAME, lastof(buf));
-
-		if (*b != last_sign) {
-			last_sign = *b;
-			SetDParam(0, (*b)->index);
-			GetString(buf_cache, STR_SIGN_NAME, lastof(buf_cache));
-		}
-
-		int r = strnatcmp(buf, buf_cache); // Sort by name (natural sorting).
+		int r = strnatcmp((*a)->name, (*b)->name); // Sort by name (natural sorting).
 
 		return r != 0 ? r : ((*a)->index - (*b)->index);
 	}
