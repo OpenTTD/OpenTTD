@@ -97,13 +97,12 @@ struct SignList {
 	/** Filter sign list by sign name */
 	static bool CDECL SignNameFilter(const Sign * const *a, StringFilter &filter)
 	{
-		/* Get sign string */
-		char buf1[MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH];
-		SetDParam(0, (*a)->index);
-		GetString(buf1, STR_SIGN_NAME, lastof(buf1));
+		const char *a_name = (*a)->name;
+
+		if (a_name == NULL) a_name = SignList::default_name;
 
 		filter.ResetState();
-		filter.AddLine(buf1);
+		filter.AddLine(a_name);
 		return filter.GetState();
 	}
 
