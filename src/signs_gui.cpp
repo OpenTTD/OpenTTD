@@ -41,7 +41,6 @@ struct SignList {
 	 */
 	typedef GUIList<const Sign *, StringFilter &> GUISignList;
 
-	static const Sign *last_sign;
 	GUISignList signs;
 
 	StringFilter string_filter;                                       ///< The match string to be used when the GUIList is (re)-sorted.
@@ -89,9 +88,6 @@ struct SignList {
 	void SortSignsList()
 	{
 		if (!this->signs.Sort(&SignNameSorter)) return;
-
-		/* Reset the name sorter sort cache */
-		this->last_sign = NULL;
 	}
 
 	/** Filter sign list by sign name */
@@ -132,7 +128,6 @@ struct SignList {
 	}
 };
 
-const Sign *SignList::last_sign = NULL;
 bool SignList::match_case = false;
 char SignList::default_name[64];
 
