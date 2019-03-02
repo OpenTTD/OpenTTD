@@ -193,7 +193,7 @@ struct SignListWindow : Window, SignList {
 
 	virtual void OnPaint()
 	{
-		if (this->signs.NeedRebuild()) this->BuildSortSignList();
+		if (!this->IsShaded() && this->signs.NeedRebuild()) this->BuildSortSignList();
 		this->DrawWidgets();
 	}
 
