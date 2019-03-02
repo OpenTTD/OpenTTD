@@ -62,7 +62,6 @@
 #include <lzo/lzo1x.h>
 #endif
 #ifdef WITH_SDL
-#	include "sdl.h"
 #	include <SDL.h>
 #endif /* WITH_SDL */
 #ifdef WITH_ZLIB
@@ -268,14 +267,8 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
 #endif /* WITH_PNG */
 
 #ifdef WITH_SDL
-#ifdef DYNAMICALLY_LOADED_SDL
-	if (SDL_CALL SDL_Linked_Version != NULL) {
-#else
-	{
-#endif
-		const SDL_version *v = SDL_CALL SDL_Linked_Version();
-		buffer += seprintf(buffer, last, " SDL:        %d.%d.%d\n", v->major, v->minor, v->patch);
-	}
+	const SDL_version *v = SDL_Linked_Version();
+	buffer += seprintf(buffer, last, " SDL:        %d.%d.%d\n", v->major, v->minor, v->patch);
 #endif /* WITH_SDL */
 
 #ifdef WITH_ZLIB
