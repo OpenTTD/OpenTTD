@@ -71,9 +71,6 @@ rev.cpp
 road.cpp
 roadstop.cpp
 screenshot.cpp
-#if SDL
-	sdl.cpp
-#end
 settings.cpp
 signal.cpp
 signs.cpp
@@ -312,7 +309,6 @@ roadstop_base.h
 roadveh.h
 safeguards.h
 screenshot.h
-sdl.h
 sound/sdl_s.h
 video/sdl_v.h
 settings_func.h
