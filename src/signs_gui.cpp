@@ -74,6 +74,10 @@ struct SignList {
 	/** Sort signs by their name */
 	static int CDECL SignNameSorter(const Sign * const *a, const Sign * const *b)
 	{
+		/* Signs are very very rarely using the default text, but there can also be
+		 * a lot of them. Therefore a worthwhile performance gain can be made by
+		 * directly comparing Sign::name instead of going through the string
+		 * system for each comparison. */
 		const char *a_name = (*a)->name;
 		const char *b_name = (*b)->name;
 
@@ -93,6 +97,7 @@ struct SignList {
 	/** Filter sign list by sign name */
 	static bool CDECL SignNameFilter(const Sign * const *a, StringFilter &filter)
 	{
+		/* Same performance benefit as above for sorting. */
 		const char *a_name = (*a)->name;
 
 		if (a_name == NULL) a_name = SignList::default_name;
