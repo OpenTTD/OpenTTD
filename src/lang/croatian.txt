@@ -2843,6 +2843,9 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Prikaz g
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Prikazi svijeta:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Video izlaz:
 STR_FRAMERATE_SOUND                                             :{BLACK}Miksanje zvukova:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK} Ukupni broj GS/AI:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} Skripta Igre:
+STR_FRAMERATE_AI                                                :{BLACK} AI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Petlja igre
@@ -2857,6 +2860,9 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Prikaz grafike
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Prikazi svijeta
 STR_FRAMETIME_CAPTION_VIDEO                                     :Video izlaz
 STR_FRAMETIME_CAPTION_SOUND                                     :Miksanje zvukova
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :GS/AI broj skripti
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Skripta Igre
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
