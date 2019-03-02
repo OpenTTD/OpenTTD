@@ -791,7 +791,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 	WChar b = '\0';
 	uint next_substr_case_index = 0;
 	char *buf_start = buff;
-	std::stack<const char *> str_stack;
+	std::stack<const char *, std::vector<const char *>> str_stack;
 	str_stack.push(str_arg);
 
 	for (;;) {
