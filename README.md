@@ -310,22 +310,22 @@ your operating system:
 Different types of data or extensions go into different subdirectories of the
 chosen main OpenTTD directory:
 
-| data type | directory | additional info |
-| --- | --- | --- |
-| Config File | (no subdirectory) | |
-| Screenshots | screenshot | |
-| Base Graphics | baseset | (or a subdirectory thereof) |
-| Sound Sets | baseset | (or a subdirectory thereof) |
-| NewGRFs | newgrf | (or a subdirectory thereof) |
-| 32bpp Sets | newgrf | (or a subdirectory thereof) |
-| Music Sets | baseset | (or a subdirectory thereof) |
-| AIs | ai | (or a subdirectory thereof) |
-| AI Libraries | ai/library | (or a subdirectory thereof) |
-| Game Scripts (GS) | game | (or a subdirectory thereof) |
-| GS Libraries | game/library | (or a subdirectory thereof) |
-| Savegames | save | |
-| Automatic Savegames | save/autosave | |
-| Scenarios | scenario | |
+| data type           | directory         | additional info             |
+| ------------------- | ----------------- | --------------------------- |
+| Config File         | (no subdirectory) |                             |
+| Screenshots         | screenshot        |                             |
+| Base Graphics       | baseset           | (or a subdirectory thereof) |
+| Sound Sets          | baseset           | (or a subdirectory thereof) |
+| NewGRFs             | newgrf            | (or a subdirectory thereof) |
+| 32bpp Sets          | newgrf            | (or a subdirectory thereof) |
+| Music Sets          | baseset           | (or a subdirectory thereof) |
+| AIs                 | ai                | (or a subdirectory thereof) |
+| AI Libraries        | ai/library        | (or a subdirectory thereof) |
+| Game Scripts (GS)   | game              | (or a subdirectory thereof) |
+| GS Libraries        | game/library      | (or a subdirectory thereof) |
+| Savegames           | save              |                             |
+| Automatic Savegames | save/autosave     |                             |
+| Scenarios           | scenario          |                             |
 
 The (automatically created) directory content_download is for OpenTTD's internal
 use and no files should be added to it or its subdirectories manually.
