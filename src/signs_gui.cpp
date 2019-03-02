@@ -46,6 +46,7 @@ struct SignList {
 
 	StringFilter string_filter;                                       ///< The match string to be used when the GUIList is (re)-sorted.
 	static bool match_case;                                           ///< Should case sensitive matching be used?
+	static char default_name[64];                                     ///< Default sign name, used if Sign::name is NULL.
 
 	/**
 	 * Creates a SignList with filtering disabled by default.
@@ -74,7 +75,13 @@ struct SignList {
 	/** Sort signs by their name */
 	static int CDECL SignNameSorter(const Sign * const *a, const Sign * const *b)
 	{
-		int r = strnatcmp((*a)->name, (*b)->name); // Sort by name (natural sorting).
+		const char *a_name = (*a)->name;
+		const char *b_name = (*b)->name;
+
+		if (a_name == NULL) a_name = SignList::default_name;
+		if (b_name == NULL) b_name = SignList::default_name;
+
+		int r = strnatcmp(a_name, b_name); // Sort by name (natural sorting).
 
 		return r != 0 ? r : ((*a)->index - (*b)->index);
 	}
@@ -128,6 +135,7 @@ struct SignList {
 
 const Sign *SignList::last_sign = NULL;
 bool SignList::match_case = false;
+char SignList::default_name[64];
 
 /** Enum referring to the Hotkeys in the sign list window */
 enum SignListHotkeys {
@@ -157,6 +165,15 @@ struct SignListWindow : Window, SignList {
 		this->signs.ForceRebuild();
 		this->signs.ForceResort();
 		this->BuildSortSignList();
+	}
+
+	virtual void OnInit()
+	{
+		/* Default sign name, used if Sign::name is NULL. */
+		GetString(SignList::default_name, STR_DEFAULT_SIGN_NAME, lastof(SignList::default_name));
+		this->signs.ForceResort();
+		this->SortSignsList();
+		this->SetDirty();
 	}
 
 	/**
