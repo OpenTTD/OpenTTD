@@ -86,15 +86,15 @@ const char *GetDebugString();
  **/
 #define TIC() {\
 	uint64 _xxx_ = ottd_rdtsc();\
-	static uint64 __sum__ = 0;\
-	static uint32 __i__ = 0;
+	static uint64 _sum_ = 0;\
+	static uint32 _i_ = 0;
 
 #define TOC(str, count)\
-	__sum__ += ottd_rdtsc() - _xxx_;\
-	if (++__i__ == count) {\
-		DEBUG(misc, 0, "[%s] " OTTD_PRINTF64 " [avg: %.1f]", str, __sum__, __sum__/(double)__i__);\
-		__i__ = 0;\
-		__sum__ = 0;\
+	_sum_ += ottd_rdtsc() - _xxx_;\
+	if (++_i_ == count) {\
+		DEBUG(misc, 0, "[%s] " OTTD_PRINTF64 " [avg: %.1f]", str, _sum_, _sum_/(double)_i_);\
+		_i_ = 0;\
+		_sum_ = 0;\
 	}\
 }
 
