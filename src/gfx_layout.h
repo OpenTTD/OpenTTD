@@ -19,6 +19,7 @@
 #include <map>
 #include <string>
 #include <stack>
+#include <vector>
 
 #ifdef WITH_ICU_LAYOUT
 #include "layout/ParagraphLayout.h"
@@ -35,7 +36,7 @@ struct FontState {
 	FontSize fontsize;       ///< Current font size.
 	TextColour cur_colour;   ///< Current text colour.
 
-	std::stack<TextColour> colour_stack; ///< Stack of colours to assist with colour switching.
+	std::stack<TextColour, std::vector<TextColour>> colour_stack; ///< Stack of colours to assist with colour switching.
 
 	FontState() : fontsize(FS_END), cur_colour(TC_INVALID) {}
 	FontState(TextColour colour, FontSize fontsize) : fontsize(fontsize), cur_colour(colour) {}
