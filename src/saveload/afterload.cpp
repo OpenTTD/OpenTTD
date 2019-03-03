@@ -3080,6 +3080,11 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Previous versions didn't have separate 90-deg settings */
+	if (IsSavegameVersionBefore(SLV_FORBID_90_DEG_SHIPS)) {
+		_settings_game.pf.forbid_90_deg_ships = _settings_game.pf.forbid_90_deg;
+	}
+
 	/* Station acceptance is some kind of cache */
 	if (IsSavegameVersionBefore(SLV_127)) {
 		Station *st;

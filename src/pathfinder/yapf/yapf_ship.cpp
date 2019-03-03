@@ -239,7 +239,7 @@ Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir,
 	PfnChooseShipTrack pfnChooseShipTrack = CYapfShip2::ChooseShipTrack; // default: ExitDir, allow 90-deg
 
 	/* check if non-default YAPF type needed */
-	if (_settings_game.pf.forbid_90_deg) {
+	if (_settings_game.pf.forbid_90_deg_ships) {
 		pfnChooseShipTrack = &CYapfShip3::ChooseShipTrack; // Trackdir, forbid 90-deg
 	} else if (_settings_game.pf.yapf.disable_node_optimization) {
 		pfnChooseShipTrack = &CYapfShip1::ChooseShipTrack; // Trackdir, allow 90-deg
@@ -259,7 +259,7 @@ bool YapfShipCheckReverse(const Ship *v)
 	PfnCheckReverseShip pfnCheckReverseShip = CYapfShip2::CheckShipReverse; // default: ExitDir, allow 90-deg
 
 	/* check if non-default YAPF type needed */
-	if (_settings_game.pf.forbid_90_deg) {
+	if (_settings_game.pf.forbid_90_deg_ships) {
 		pfnCheckReverseShip = &CYapfShip3::CheckShipReverse; // Trackdir, forbid 90-deg
 	} else if (_settings_game.pf.yapf.disable_node_optimization) {
 		pfnCheckReverseShip = &CYapfShip1::CheckShipReverse; // Trackdir, allow 90-deg

@@ -429,6 +429,7 @@ struct PathfinderSettings {
 
 	bool   roadveh_queue;                    ///< buggy road vehicle queueing
 	bool   forbid_90_deg;                    ///< forbid trains to make 90 deg turns
+	bool   forbid_90_deg_ships;              ///< forbid ships to make 90 deg turns
 
 	bool   reverse_at_signals;               ///< whether to reverse at signals at all
 	byte   wait_oneway_signal;               ///< waitingtime in days before a oneway signal

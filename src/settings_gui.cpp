@@ -1658,6 +1658,7 @@ static SettingsContainer &GetSettingsTree()
 				routing->Add(new SettingEntry("difficulty.line_reverse_mode"));
 				routing->Add(new SettingEntry("pf.reverse_at_signals"));
 				routing->Add(new SettingEntry("pf.forbid_90_deg"));
+				routing->Add(new SettingEntry("pf.forbid_90_deg_ships"));
 				routing->Add(new SettingEntry("pf.pathfinder_for_roadvehs"));
 				routing->Add(new SettingEntry("pf.pathfinder_for_ships"));
 			}

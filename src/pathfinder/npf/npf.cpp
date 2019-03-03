@@ -835,8 +835,8 @@ static TrackdirBits GetDriveableTrackdirBits(TileIndex dst_tile, Trackdir src_tr
 	/* Select only trackdirs we can reach from our current trackdir */
 	trackdirbits &= TrackdirReachesTrackdirs(src_trackdir);
 
-	/* Filter out trackdirs that would make 90 deg turns for trains */
-	if (_settings_game.pf.forbid_90_deg && (type == TRANSPORT_RAIL || type == TRANSPORT_WATER)) trackdirbits &= ~TrackdirCrossesTrackdirs(src_trackdir);
+	/* Filter out trackdirs that would make 90 deg turns for trains and ships */
+	if (_settings_game.pf.forbid_90_deg && type == TRANSPORT_RAIL || _settings_game.pf.forbid_90_deg_ships && type == TRANSPORT_WATER) trackdirbits &= ~TrackdirCrossesTrackdirs(src_trackdir);
 
 	DEBUG(npf, 6, "After filtering: (%d, %d), possible trackdirs: 0x%X", TileX(dst_tile), TileY(dst_tile), trackdirbits);
 
