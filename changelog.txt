@@ -1,3 +1,15 @@
+1.9.0-RC1 (2019-03-03)
+------------------------------------------------------------------------
+- Add: Various AI/GS functions for vehicle groups (#7225)
+- Change: Synchronise introduction date and reliability randomness across vehicles with the same base introduction date (#7147)
+- Change: Allow towns to build bridges over rails and one-way roads (#7291)
+- Fix: Detection of coast tiles with trees on them (#7309)
+- Fix: Emergency netsave saved the title game instead of the broken game in question (#7298)
+- Fix: Company livery window showed incorrect groups when opened in multiplayer (#7288)
+- Fix: Unable to select last group in open livery window (#7283)
+- Fix: Goto hangar orders were not invalidated when rebuilding airports (#7100)
+
+
 1.9.0-beta3 (2019-02-24)
 ------------------------------------------------------------------------
 - Feature: Option to adjust font size separately from GUI size (#7003)
@@ -24,9 +36,11 @@
 - Fix #7197: Invalidate depot buttons when necessary (#7212)
 - Doc: [AI] UnshareOrders empties the orders list of the vehicle
 
+
 1.9.0-beta2 (2019-02-09)
 ------------------------------------------------------------------------
 - Fix: Non-Windows builds did not get correct git hash
+
 
 1.9.0-beta1 (2019-02-09)
 ------------------------------------------------------------------------
