@@ -1,7 +1,9 @@
 trigger:
 - master
+- release/*
 pr:
 - master
+- release/*
 
 jobs:
 - job: windows
