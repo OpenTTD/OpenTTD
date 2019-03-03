@@ -83,9 +83,15 @@ if [ -d "$ROOT_DIR/.git" ]; then
 	if [ -n "$TAG" ]; then
 		VERSION="${TAG}"
 		ISTAG="1"
+		if [ -n "`echo \"${TAG}\" | grep \"^[0-9.]*$\"`" ]; then
+			ISSTABLETAG="1"
+		else
+			ISSTABLETAG="0"
+		fi
 	else
 		VERSION="${ISODATE}-${BRANCH}${hashprefix}${SHORTHASH}"
 		ISTAG="0"
+		ISSTABLETAG="0"
 	fi
 
 elif [ -f "$ROOT_DIR/.ottdrev" ]; then
@@ -102,6 +108,7 @@ else
 	TAG=""
 	VERSION=""
 	ISTAG="0"
+	ISSTABLETAG="0"
 fi
 
-echo "$VERSION	$ISODATE	$MODIFIED	$HASH	$ISTAG"
+echo "$VERSION	$ISODATE	$MODIFIED	$HASH	$ISTAG	$ISSTABLETAG"

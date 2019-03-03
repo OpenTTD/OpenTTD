@@ -21,7 +21,7 @@ Sub FindReplaceInFile(filename, to_find, replacement)
 	file.Close
 End Sub
 
-Sub UpdateFile(modified, isodate, version, cur_date, githash, istag, filename)
+Sub UpdateFile(modified, isodate, version, cur_date, githash, istag, isstabletag, filename)
 	FSO.CopyFile filename & ".in", filename
 	FindReplaceInFile filename, "!!MODIFIED!!", modified
 	FindReplaceInFile filename, "!!ISODATE!!", isodate
@@ -29,10 +29,11 @@ Sub UpdateFile(modified, isodate, version, cur_date, githash, istag, filename)
 	FindReplaceInFile filename, "!!DATE!!", cur_date
 	FindReplaceInFile filename, "!!GITHASH!!", githash
 	FindReplaceInFile filename, "!!ISTAG!!", istag
+	FindReplaceInFile filename, "!!ISSTABLETAG!!", isstabletag
 End Sub
 
 Sub UpdateFiles(version)
-	Dim modified, isodate, cur_date, githash, istag
+	Dim modified, isodate, cur_date, githash, istag, isstabletag
 	cur_date = DatePart("D", Date) & "." & DatePart("M", Date) & "." & DatePart("YYYY", Date)
 
 	If InStr(version, Chr(9)) Then
@@ -41,20 +42,23 @@ Sub UpdateFiles(version)
 		modified = Mid(isodate, InStr(isodate, Chr(9)) + 1)
 		githash  = Mid(modified, InStr(modified, Chr(9)) + 1)
 		istag    = Mid(githash, InStr(githash, Chr(9)) + 1)
+		isstabletag = Mid(istag, InStr(istag, Chr(9)) + 1)
 		' Remove tails from fields
 		version  = Mid(version, 1, InStr(version, Chr(9)) - 1)
 		isodate  = Mid(isodate, 1, InStr(isodate, Chr(9)) - 1)
 		modified = Mid(modified, 1, InStr(modified, Chr(9)) - 1)
 		githash  = Mid(githash, 1, InStr(githash, Chr(9)) - 1)
+		istag    = Mid(istag, 1, InStr(istag, Chr(9)) - 1)
 	Else
 		isodate = 0
 		modified = 1
 		githash = ""
 		istag = 0
+		isstabletag = 0
 	End If
 
-	UpdateFile modified, isodate, version, cur_date, githash, istag, "../src/rev.cpp"
-	UpdateFile modified, isodate, version, cur_date, githash, istag, "../src/os/windows/ottdres.rc"
+	UpdateFile modified, isodate, version, cur_date, githash, istag, isstabletag, "../src/rev.cpp"
+	UpdateFile modified, isodate, version, cur_date, githash, istag, isstabletag, "../src/os/windows/ottdres.rc"
 End Sub
 
 Function DetermineVersion()
@@ -143,7 +147,7 @@ Function DetermineVersion()
 		DetermineVersion = "norev000"
 		modified = 1
 	Else
-		Dim version, hashprefix, istag
+		Dim version, hashprefix, istag, isstabletag
 		If modified = 0 Then
 			hashprefix = "-g"
 		ElseIf modified = 2 Then
@@ -155,12 +159,21 @@ Function DetermineVersion()
 		If tag <> "" Then
 			version = tag
 			istag = 1
+
+			Set stable_regexp = New RegExp
+			stable_regexp.Pattern = "^[0-9.]*$"
+			If stable_regexp.Test(tag) Then
+				isstabletag = 1
+			Else
+				isstabletag = 0
+			End If
 		Else
 			version = isodate & "-" & branch & hashprefix & shorthash
 			istag = 0
+			isstabletag = 0
 		End If
 
-		DetermineVersion = version & Chr(9) & isodate & Chr(9) & modified & Chr(9) & hash & Chr(9) & istag
+		DetermineVersion = version & Chr(9) & isodate & Chr(9) & modified & Chr(9) & hash & Chr(9) & istag & Chr(9) & isstabletag
 	End If
 End Function
 
