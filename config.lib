@@ -820,7 +820,7 @@ check_params() {
 	pre_detect_with_zlib=$with_zlib
 	detect_zlib
 
-	if [ "$with_zlib" = "0" ] || [ -z "$zlib-config" ]; then
+	if [ "$with_zlib" = "0" ] || [ -z "$zlib_config" ]; then
 		log 1 "WARNING: zlib was not detected or disabled"
 		log 1 "WARNING: OpenTTD doesn't require zlib, but it does mean that many features"
 		log 1 "WARNING: (like loading most old savegames/scenarios, loading heightmaps,"
