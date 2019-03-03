@@ -785,6 +785,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		SLE_WRITEBYTE(Vehicle, type),
 		SLE_VEH_INCLUDE(),
 		     SLE_VAR(Aircraft, crashed_counter,       SLE_UINT16),
+		 SLE_CONDVAR(Aircraft, flight_counter,        SLE_UINT16,                   SLV_PLANE_BREAKDOWN_DIST, SL_MAX_VERSION),
 		     SLE_VAR(Aircraft, pos,                   SLE_UINT8),
 
 		 SLE_CONDVAR(Aircraft, targetairport,         SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION, SLV_5),

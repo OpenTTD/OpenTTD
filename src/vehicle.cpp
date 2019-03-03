@@ -1238,7 +1238,13 @@ void CheckVehicleBreakdown(Vehicle *v)
 
 	/* increase chance of failure */
 	int chance = v->breakdown_chance + 1;
-	if (Chance16I(1, 25, r)) chance += 25;
+	if (Chance16I(1, 25, r) || _settings_game.vehicle.plane_breakdown_dist &&
+			v->type == VEH_AIRCRAFT && !(v->vehstatus & VS_AIRCRAFT_BROKEN) &&
+		    (Aircraft::From(v)->state == FLYING || Aircraft::From(v)->state == ENDTAKEOFF ||
+			Aircraft::From(v)->state == LANDING || Aircraft::From(v)->state == HELILANDING) &&
+			Aircraft::From(v)->flight_counter >= _settings_game.vehicle.plane_breakdown_dist) {
+		chance += 25;
+	}
 	v->breakdown_chance = min(255, chance);
 
 	/* calculate reliability value to use in comparison */

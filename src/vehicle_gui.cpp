@@ -2092,7 +2092,9 @@ struct VehicleDetailsWindow : Window {
 				/* Draw breakdown & reliability */
 				SetDParam(0, ToPercent16(v->reliability));
 				SetDParam(1, v->breakdowns_since_last_service);
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS);
+				SetDParam(2, (_settings_game.difficulty.vehicle_breakdowns >= 1 && Aircraft::From(v)->flight_counter >= _settings_game.vehicle.plane_breakdown_dist && _settings_game.vehicle.plane_breakdown_dist) ? STR_VEHICLE_INFO_FLOWN_RED : STR_VEHICLE_INFO_FLOWN);
+				SetDParam(3, Aircraft::From(v)->flight_counter);
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS_FLOWN);
 				break;
 			}
 

@@ -1256,6 +1256,10 @@ STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Set the impact 
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Plane speed factor: {STRING2}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Set the relative speed of planes compared to other vehicle types, to reduce the amount of income of transport by aircraft
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
+STR_CONFIG_SETTING_PLANE_BREAKDOWN_DIST                         :Increased aircraft breakdown rate after: {STRING2}
+STR_CONFIG_SETTING_PLANE_BREAKDOWN_DIST_HELPTEXT                :If vehicle breakdowns are enabled, this sets how many tiles it takes for an aircraft to travel before it's forced to breakdown, if it hasn't already
+STR_CONFIG_SETTING_PLANE_BREAKDOWN_DIST_VALUE                   :{COMMA}{NBSP}tile{P "" s}
+STR_CONFIG_SETTING_PLANE_BREAKDOWN_DIST_VALUE_DISABLED          :Disabled
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Number of plane crashes: {STRING2}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Set the chance of an aircraft crash happening
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :None
@@ -3755,6 +3759,9 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Weight: 
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit this year: {LTBLUE}{CURRENCY_LONG} (last year: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliability: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS_FLOWN                   :{BLACK}Reliability: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}  {BLACK}Distance flown: {LTBLUE}{STRING2}
+STR_VEHICLE_INFO_FLOWN                                          :{COMMA}{NBSP}tile{P "" s}
+STR_VEHICLE_INFO_FLOWN_RED                                      :{RED}{COMMA}{NBSP}tile{P "" s}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Built: {LTBLUE}{NUM}{BLACK} Value: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacity: {LTBLUE}None{STRING}

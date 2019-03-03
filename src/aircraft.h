@@ -75,6 +75,7 @@ struct AircraftCache {
  */
 struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	uint16 crashed_counter;        ///< Timer for handling crash animations.
+	uint16 flight_counter;         ///< Handler for flight distance since last takeoff.
 	byte pos;                      ///< Next desired position of the aircraft.
 	byte previous_pos;             ///< Previous desired position of the aircraft.
 	StationID targetairport;       ///< Airport to go to next.
@@ -135,6 +136,15 @@ struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	uint16 GetRange() const
 	{
 		return this->acache.cached_max_range;
+	}
+
+	/** Increase flight_counter everytime the aircraft coordinates don't match. */
+	void UpdateFlightDistance(Aircraft *v, TileIndex old_pos, TileIndex new_pos)
+	{
+		if (old_pos == new_pos) return;
+		if (v->flight_counter == UINT16_MAX) return;
+
+		v->flight_counter = v->flight_counter < UINT16_MAX - 1 ? v->flight_counter + 1 : UINT16_MAX;
 	}
 };
 

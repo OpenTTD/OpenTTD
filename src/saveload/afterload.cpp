@@ -1696,7 +1696,6 @@ bool AfterLoadGame()
 		}
 	}
 
-
 	if (IsSavegameVersionBefore(SLV_93)) {
 		/* Rework of orders. */
 		Order *order;
@@ -3078,6 +3077,14 @@ bool AfterLoadGame()
 				s->z_pos = GetTileZ(s->tile) * (int)TILE_HEIGHT;
 			}
 		}
+	}
+
+	if (IsSavegameVersionBefore(SLV_PLANE_BREAKDOWN_DIST)) {
+		Aircraft *a;
+		FOR_ALL_AIRCRAFT(a) {
+			a->flight_counter = 0;
+		}
+		_settings_game.vehicle.plane_breakdown_dist = 0;
 	}
 
 	/* Station acceptance is some kind of cache */

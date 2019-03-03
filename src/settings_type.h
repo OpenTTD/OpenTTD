@@ -472,6 +472,7 @@ struct VehicleSettings {
 	bool   never_expire_vehicles;            ///< never expire vehicles
 	byte   extend_vehicle_life;              ///< extend vehicle life by this many years
 	byte   road_side;                        ///< the side of the road vehicles drive on
+	uint16 plane_breakdown_dist;             ///< distance before increasing breakdown chance during a flight
 	uint8  plane_crashes;                    ///< number of plane crashes, 0 = none, 1 = reduced, 2 = normal
 };
 
