@@ -996,7 +996,12 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Taille double
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Taille quadruple
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Taille de police
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Choisir la taille de police d'interface à utiliser
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Taille double
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Taille quadruple
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Graphiques de base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Sélectionner les graphiques de base à utiliser
@@ -2743,6 +2748,9 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Rendu de
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Vues{NBSP}:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Sortie vidéo{NBSP}:
 STR_FRAMERATE_SOUND                                             :{BLACK}Mixage sonore{NBSP}:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Total GS/IA{NBSP}:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Script de jeu{NBSP}:
+STR_FRAMERATE_AI                                                :{BLACK}   IA {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Boucle de jeu
@@ -2757,6 +2765,9 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Rendu des graph
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Rendu des vues
 STR_FRAMETIME_CAPTION_VIDEO                                     :Sortie vidéo
 STR_FRAMETIME_CAPTION_SOUND                                     :Mixage sonore
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Total des scripts GS/IA
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Script de jeu
+STR_FRAMETIME_CAPTION_AI                                        :IA {NUM} {STRING}
 ############ End of leave-in-this-order
 
 

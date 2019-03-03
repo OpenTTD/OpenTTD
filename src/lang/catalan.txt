@@ -190,6 +190,8 @@ STR_COLOUR_ORANGE                                               :{G=Masculin}Tar
 STR_COLOUR_BROWN                                                :{G=Masculin}Marró
 STR_COLOUR_GREY                                                 :{G=Masculin}Gris
 STR_COLOUR_WHITE                                                :{G=Masculin}Blanc
+STR_COLOUR_RANDOM                                               :Aleatori
+STR_COLOUR_DEFAULT                                              :Per defecte
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -465,6 +467,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :So/música
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Darrer missatge/notícia
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de missatges
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Esborra tots els missatges
 ############ range ends here
 
 ############ range for about menu starts
@@ -816,6 +819,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(President)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} ha patrocinat la construcció d'una nova població, anomenada {TOWN}
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}S'ha fundat una nova població que es diu {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}No{G u va} {STRING} en construcció prop de {TOWN}
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}S'està plantant {G un una} {G nou nova} {STRING} prop de {TOWN}
@@ -928,6 +932,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand sud-afric�
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalitzada
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari georgià (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial iranià (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ruble rus modern (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso mexicà (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vehicles de carretera
@@ -990,7 +996,12 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Doble
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quàdruple
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Mida de la lletra
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Seleccioneu la mida de les fonts de la interfície.
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Doble
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quàdruple
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunt de gràfics base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunt de gràfics base a utilitzar
@@ -1259,6 +1270,8 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No es po
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manteniment de la infraestructura: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quan està activat, la infraestructura provoca costos de manteniment. El cost creix proporcionalment al tamany de la xarxa de transport, afectant en conseqüència més a les companyies grosses que a les petites
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Color inicial de la companyia: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Escolliu el color inicial de la vostra companyia.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Els aeroports mai caduquen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Activant aquesta opció fa que cada tipus d'aeroport estigui disponible per sempre després de la seva introducció
@@ -1817,6 +1830,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Canvia l
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activa la modificació dels valors de producció: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Esquema de colors nou
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Mostra esquemes de colors generals
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostra els esquemes de colors dels trens
@@ -2076,6 +2090,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconne
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegit: escriviu-ne la contrasenya
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Companyia protegida: escriviu-ne la contrasenya
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Llista de clients
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Llista de clients
@@ -2376,7 +2391,7 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Senyal p
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Senyal de ruta (elèctric){}Un senyal de ruta permet entrar més d'un tren dins de la mateixa secció de vies. Cal, però, que sigui capaç de reservar una ruta fins un punt de parada segur sense creuar-se amb cap altre tren. Es pot travessar en el sentit contrari al senyal.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Senyal de ruta d'un sentit (elèctric){}Un senyal de ruta permet entrar més d'un tren dins de la mateixa secció de vies. Cal, però, que sigui capaç de reservar una ruta fins un punt de parada segur sense creuar-se amb cap altre tren. No es pot travessar en el sentit contrari al senyal.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversió de senyals{}Quan aquest botó està premut, si es clica un senyal existent el converteix al tipus de senyal seleccionat. Ctrl+Clic commuta la variant existent. Maj+Clic mostra el cost estimat de conversió.
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Espaiat entre senyals
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distància entre senyals
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Disminueix l'espai entre senyals consecutives situades automàticament quan s'arrossega el ratolí o es manté premuda la tecla Ctrl.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augmenta l'espai entre senyals consecutives situades automàticament quan s'arrossega el ratolí o es manté premuda la tecla Ctrl.
 
@@ -2703,36 +2718,39 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Fotogrames per segon
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} (x{DECIMAL})
-STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Velocitat de simulació: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Velocitat de simulació: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Nombre de tics del joc per segon.
-STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Fotogrames per segon: {STRING}
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Fotogrames per segon: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Nombre de fotogrames renderitzats per segon.
-STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Factor de velocitat actual: x{DECIMAL}
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Factor de velocitat actual: x{DECIMAL}
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Quant ràpid va la partida actual, comparant-ho amb l'estimació de la velocitat normal.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Actual
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Mitjana
-STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Dades basades en {COMMA} mesures.
-STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE}{NBSP}ms
-STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE}{NBSP}ms
-STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE}{NBSP}ms
-STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE}{NBSP}fps
-STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE}{NBSP}fps
-STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE}{NBSP}fps
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Dades basades en {COMMA} mesures.
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{NBSP}ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{NBSP}ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{NBSP}ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{NBSP}fps
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{NBSP}fps
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{NBSP}fps
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA}{NBSP}ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA}{NBSP}s
 ############ Leave those lines in this order!!
-STR_FRAMERATE_GAMELOOP                                          :{WHITE}Total del bucle:
-STR_FRAMERATE_GL_ECONOMY                                        :{WHITE}  Tractament de la càrrega:
-STR_FRAMERATE_GL_TRAINS                                         :{WHITE}  Tics de tren:
-STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  Tics de vehicles de carretera:
-STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  Tics de vaixell:
-STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE}  Tics d'aeronau:
-STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE}  Tics del mapa:
-STR_FRAMERATE_GL_LINKGRAPH                                      :{WHITE}  Retard del graf de distribució:
-STR_FRAMERATE_DRAWING                                           :{WHITE}Renderitzat de gràfics:
-STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE}  Vistes del mapa:
-STR_FRAMERATE_VIDEO                                             :{WHITE}Sortida de vídeo:
-STR_FRAMERATE_SOUND                                             :{WHITE}Mescla de so:
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Total del bucle:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Tractament de càrrega:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Tics de trens:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Tics de vehicles de carretera:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Tics de vaixells:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Tics d'aeronaus:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Tics del mapa:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Retard del graf de distribució:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Renderitzat de gràfics:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Vistes del mapa:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Sortida de vídeo:
+STR_FRAMERATE_SOUND                                             :{BLACK}Mescla de so:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Total GS/IA:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Script de partida:
+STR_FRAMERATE_AI                                                :{BLACK}   IA {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Bucle
@@ -2747,6 +2765,9 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Renderitzat de 
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Renderitzat de la vista del mapa
 STR_FRAMETIME_CAPTION_VIDEO                                     :Sortida de vídeo
 STR_FRAMETIME_CAPTION_SOUND                                     :Mescla de so
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Total de scripts d'IA/GS
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Script de partida
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM}: {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2772,6 +2793,9 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalls 
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No hi ha informació disponible
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Cadena de filtre:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Sobreescriu fitxer
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Esteu segur que voleu sobreescriure el fitxer?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Posa el nom amb què desar la partida actual
 
@@ -2889,7 +2913,12 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versió:
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Mín. versió compatible: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Per defecte (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Per defecte (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Antic (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Antic (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paràmetres: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Cap
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}No hi ha informació disponible
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}No s'ha trobat cap arxiu coincident
@@ -2970,6 +2999,8 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :S'ha llegit des
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Els recursos GRF demanats no estan disponibles (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ha estat desactivat per {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Format de disposició de sprite no vàlid o desconegut (sprite {3:NUM}).
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Hi ha massa elements a la llista de valors de propietats (sprite {3:NUM}, propietat {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :«Callback» de producció d'indústria no vàlid (sprite {3:NUM}, «{1:STRING}»).
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
@@ -3095,6 +3126,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Objectius
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objectius globals
+STR_GOALS_SPECTATOR                                             :Objectius globals
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Objectius globals:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Cap -
@@ -3143,6 +3175,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clica al
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}Llibre de Partida de {COMPANY}
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Llibre Global de Partida
+STR_STORY_BOOK_SPECTATOR                                        :Llibre de partida global
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Pàgina {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Salteu a una pàgina seleccionant-la en aquesta llista desplegable.
@@ -3347,6 +3380,9 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra l
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivell de producció: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}La indústria ha anunciat la seva clausura imminent!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Requereix: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produeix: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necessita:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
@@ -3404,6 +3440,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grups - 
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Clica per crear un grup
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Elimina el grup seleccionat
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Canvia el nom del grup seleccionat
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Canvia l'aspecte dels vehicles del grup seleccionat.
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clica per protegir aquest grup de l'autosubstitueix global
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Esborrar grup
@@ -3447,6 +3484,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacita
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagons Automotrius: {GOLD}+{POWER}{BLACK} Pes: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Remodelable a: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Totes les càrregues
+STR_PURCHASE_INFO_NONE                                          :Cap
 STR_PURCHASE_INFO_ALL_BUT                                       :Qualsevol excepte {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Esforç de tracció màxim: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Abast: {GOLD}{COMMA} cel·les
@@ -3846,6 +3884,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Antiguitat (any
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Necessita revisió
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Temps de vida restant (anys)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Fiabilitat màxima
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Com comparar les dades del vehicle al valor donat
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :és igual a
