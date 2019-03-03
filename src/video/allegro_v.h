@@ -17,30 +17,30 @@
 /** The allegro video driver. */
 class VideoDriver_Allegro : public VideoDriver {
 public:
-	/* virtual */ const char *Start(const char * const *param);
+	const char *Start(const char * const *param) override;
 
-	/* virtual */ void Stop();
+	void Stop() override;
 
-	/* virtual */ void MakeDirty(int left, int top, int width, int height);
+	void MakeDirty(int left, int top, int width, int height) override;
 
-	/* virtual */ void MainLoop();
+	void MainLoop() override;
 
-	/* virtual */ bool ChangeResolution(int w, int h);
+	bool ChangeResolution(int w, int h) override;
 
-	/* virtual */ bool ToggleFullscreen(bool fullscreen);
+	bool ToggleFullscreen(bool fullscreen) override;
 
-	/* virtual */ bool AfterBlitterChange();
+	bool AfterBlitterChange() override;
 
-	/* virtual */ bool ClaimMousePointer();
+	bool ClaimMousePointer() override;
 
-	/* virtual */ const char *GetName() const { return "allegro"; }
+	const char *GetName() const override { return "allegro"; }
 };
 
 /** Factory for the allegro video driver. */
 class FVideoDriver_Allegro : public DriverFactoryBase {
 public:
 	FVideoDriver_Allegro() : DriverFactoryBase(Driver::DT_VIDEO, 4, "allegro", "Allegro Video Driver") {}
-	/* virtual */ Driver *CreateInstance() const { return new VideoDriver_Allegro(); }
+	Driver *CreateInstance() const override { return new VideoDriver_Allegro(); }
 };
 
 #endif /* VIDEO_ALLEGRO_H */

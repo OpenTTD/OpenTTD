@@ -42,10 +42,10 @@ struct StationScopeResolver : public ScopeResolver {
 	{
 	}
 
-	/* virtual */ uint32 GetRandomBits() const;
-	/* virtual */ uint32 GetTriggers() const;
+	uint32 GetRandomBits() const override;
+	uint32 GetTriggers() const override;
 
-	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
+	uint32 GetVariable(byte variable, uint32 parameter, bool *available) const override;
 };
 
 /** Station resolver. */
@@ -59,7 +59,7 @@ struct StationResolverObject : public ResolverObject {
 
 	TownScopeResolver *GetTown();
 
-	/* virtual */ ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0)
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF:
@@ -76,7 +76,7 @@ struct StationResolverObject : public ResolverObject {
 		}
 	}
 
-	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
+	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
 };
 
 enum StationClassID {

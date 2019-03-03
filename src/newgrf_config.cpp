@@ -633,7 +633,7 @@ public:
 	{
 	}
 
-	/* virtual */ bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename);
+	bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename) override;
 
 	/** Do the scan for GRFs. */
 	static uint DoScan()

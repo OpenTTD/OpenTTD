@@ -17,25 +17,25 @@
 /** OS/2's music player. */
 class MusicDriver_OS2 : public MusicDriver {
 public:
-	/* virtual */ const char *Start(const char * const *param);
+	const char *Start(const char * const *param) override;
 
-	/* virtual */ void Stop();
+	void Stop() override;
 
-	/* virtual */ void PlaySong(const MusicSongInfo &song);
+	void PlaySong(const MusicSongInfo &song) override;
 
-	/* virtual */ void StopSong();
+	void StopSong() override;
 
-	/* virtual */ bool IsSongPlaying();
+	bool IsSongPlaying() override;
 
-	/* virtual */ void SetVolume(byte vol);
-	/* virtual */ const char *GetName() const { return "os2"; }
+	void SetVolume(byte vol) override;
+	const char *GetName() const override { return "os2"; }
 };
 
 /** Factory for OS/2's music player. */
 class FMusicDriver_OS2 : public DriverFactoryBase {
 public:
 	FMusicDriver_OS2() : DriverFactoryBase(Driver::DT_MUSIC, 10, "os2", "OS/2 Music Driver") {}
-	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_OS2(); }
+	Driver *CreateInstance() const override { return new MusicDriver_OS2(); }
 };
 
 #endif /* MUSIC_OS2_H */

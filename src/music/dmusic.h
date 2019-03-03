@@ -19,25 +19,25 @@ class MusicDriver_DMusic : public MusicDriver {
 public:
 	virtual ~MusicDriver_DMusic();
 
-	/* virtual */ const char *Start(const char * const *param);
+	const char *Start(const char * const *param) override;
 
-	/* virtual */ void Stop();
+	void Stop() override;
 
-	/* virtual */ void PlaySong(const MusicSongInfo &song);
+	void PlaySong(const MusicSongInfo &song) override;
 
-	/* virtual */ void StopSong();
+	void StopSong() override;
 
-	/* virtual */ bool IsSongPlaying();
+	bool IsSongPlaying() override;
 
-	/* virtual */ void SetVolume(byte vol);
-	/* virtual */ const char *GetName() const { return "dmusic"; }
+	void SetVolume(byte vol) override;
+	const char *GetName() const override { return "dmusic"; }
 };
 
 /** Factory for the DirectX music player. */
 class FMusicDriver_DMusic : public DriverFactoryBase {
 public:
 	FMusicDriver_DMusic() : DriverFactoryBase(Driver::DT_MUSIC, 10, "dmusic", "DirectMusic MIDI Driver") {}
-	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_DMusic(); }
+	Driver *CreateInstance() const override { return new MusicDriver_DMusic(); }
 };
 
 #endif /* MUSIC_DMUSIC_H */

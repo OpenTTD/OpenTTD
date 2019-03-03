@@ -17,17 +17,17 @@
 /** Implementation of the sound driver for Windows. */
 class SoundDriver_Win32 : public SoundDriver {
 public:
-	/* virtual */ const char *Start(const char * const *param);
+	const char *Start(const char * const *param) override;
 
-	/* virtual */ void Stop();
-	/* virtual */ const char *GetName() const { return "win32"; }
+	void Stop() override;
+	const char *GetName() const override { return "win32"; }
 };
 
 /** Factory for the sound driver for Windows. */
 class FSoundDriver_Win32 : public DriverFactoryBase {
 public:
 	FSoundDriver_Win32() : DriverFactoryBase(Driver::DT_SOUND, 9, "win32", "Win32 WaveOut Sound Driver") {}
-	/* virtual */ Driver *CreateInstance() const { return new SoundDriver_Win32(); }
+	Driver *CreateInstance() const override { return new SoundDriver_Win32(); }
 };
 
 #endif /* SOUND_WIN32_H */

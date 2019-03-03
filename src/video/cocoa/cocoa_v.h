@@ -16,10 +16,10 @@
 
 class VideoDriver_Cocoa : public VideoDriver {
 public:
-	/* virtual */ const char *Start(const char * const *param);
+	const char *Start(const char * const *param) override;
 
 	/** Stop the video driver */
-	/* virtual */ void Stop();
+	void Stop() override;
 
 	/** Mark dirty a screen region
 	 * @param left x-coordinate of left border
@@ -27,44 +27,44 @@ public:
 	 * @param width width or dirty rectangle
 	 * @param height height of dirty rectangle
 	 */
-	/* virtual */ void MakeDirty(int left, int top, int width, int height);
+	void MakeDirty(int left, int top, int width, int height) override;
 
 	/** Programme main loop */
-	/* virtual */ void MainLoop();
+	void MainLoop() override;
 
 	/** Change window resolution
 	 * @param w New window width
 	 * @param h New window height
 	 * @return Whether change was successful
 	 */
-	/* virtual */ bool ChangeResolution(int w, int h);
+	bool ChangeResolution(int w, int h) override;
 
 	/** Set a new window mode
 	 * @param fullscreen Whether to set fullscreen mode or not
 	 * @return Whether changing the screen mode was successful
 	 */
-	/* virtual */ bool ToggleFullscreen(bool fullscreen);
+	bool ToggleFullscreen(bool fullscreen) override;
 
 	/** Callback invoked after the blitter was changed.
 	 * @return True if no error.
 	 */
-	/* virtual */ bool AfterBlitterChange();
+	bool AfterBlitterChange() override;
 
 	/**
 	 * An edit box lost the input focus. Abort character compositing if necessary.
 	 */
-	/* virtual */ void EditBoxLostFocus();
+	void EditBoxLostFocus() override;
 
 	/** Return driver name
 	 * @return driver name
 	 */
-	/* virtual */ const char *GetName() const { return "cocoa"; }
+	const char *GetName() const override { return "cocoa"; }
 };
 
 class FVideoDriver_Cocoa : public DriverFactoryBase {
 public:
 	FVideoDriver_Cocoa() : DriverFactoryBase(Driver::DT_VIDEO, 10, "cocoa", "Cocoa Video Driver") {}
-	/* virtual */ Driver *CreateInstance() const { return new VideoDriver_Cocoa(); }
+	Driver *CreateInstance() const override { return new VideoDriver_Cocoa(); }
 };
 
 

@@ -42,7 +42,7 @@ public:
 	bool ResetInfo(bool force_exact_match);
 
 protected:
-	/* virtual */ ScriptInfo *FindInfo(const char *name, int version, bool force_exact_match);
+	ScriptInfo *FindInfo(const char *name, int version, bool force_exact_match) override;
 };
 
 #endif /* GAME_CONFIG_HPP */

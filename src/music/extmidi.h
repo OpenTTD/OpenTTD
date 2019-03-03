@@ -24,24 +24,24 @@ private:
 	void DoStop();
 
 public:
-	/* virtual */ const char *Start(const char * const *param);
+	const char *Start(const char * const *param) override;
 
-	/* virtual */ void Stop();
+	void Stop() override;
 
-	/* virtual */ void PlaySong(const MusicSongInfo &song);
+	void PlaySong(const MusicSongInfo &song) override;
 
-	/* virtual */ void StopSong();
+	void StopSong() override;
 
-	/* virtual */ bool IsSongPlaying();
+	bool IsSongPlaying() override;
 
-	/* virtual */ void SetVolume(byte vol);
-	/* virtual */ const char *GetName() const { return "extmidi"; }
+	void SetVolume(byte vol) override;
+	const char *GetName() const override { return "extmidi"; }
 };
 
 class FMusicDriver_ExtMidi : public DriverFactoryBase {
 public:
 	FMusicDriver_ExtMidi() : DriverFactoryBase(Driver::DT_MUSIC, 3, "extmidi", "External MIDI Driver") {}
-	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_ExtMidi(); }
+	Driver *CreateInstance() const override { return new MusicDriver_ExtMidi(); }
 };
 
 #endif /* MUSIC_EXTERNAL_H */

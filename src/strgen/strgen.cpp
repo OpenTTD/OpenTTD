@@ -115,14 +115,14 @@ struct FileStringReader : StringReader {
 		fclose(this->fh);
 	}
 
-	/* virtual */ char *ReadLine(char *buffer, const char *last)
+	char *ReadLine(char *buffer, const char *last) override
 	{
 		return fgets(buffer, ClampToU16(last - buffer + 1), this->fh);
 	}
 
-	/* virtual */ void HandlePragma(char *str);
+	void HandlePragma(char *str) override;
 
-	/* virtual */ void ParseFile()
+	void ParseFile() override
 	{
 		this->StringReader::ParseFile();
 

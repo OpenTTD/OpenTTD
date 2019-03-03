@@ -35,19 +35,19 @@ private:
 
 public:
 	template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last, bool translucent, bool animated>
-	/* virtual */ void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
-	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
-	/* virtual */ Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) {
+	void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
+	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
+	Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) override {
 		return Blitter_32bppSSE_Base::Encode(sprite, allocator);
 	}
-	/* virtual */ const char *GetName() { return "32bpp-sse4-anim"; }
+	const char *GetName() override { return "32bpp-sse4-anim"; }
 };
 
 /** Factory for the SSE4 32 bpp blitter (with palette animation). */
 class FBlitter_32bppSSE4_Anim: public BlitterFactory {
 public:
 	FBlitter_32bppSSE4_Anim() : BlitterFactory("32bpp-sse4-anim", "SSE4 Blitter (palette animation)", HasCPUIDFlag(1, 2, 19)) {}
-	/* virtual */ Blitter *CreateInstance() { return new Blitter_32bppSSE4_Anim(); }
+	Blitter *CreateInstance() override { return new Blitter_32bppSSE4_Anim(); }
 };
 
 #endif /* WITH_SSE */

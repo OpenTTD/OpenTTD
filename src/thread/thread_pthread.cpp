@@ -45,14 +45,14 @@ public:
 		pthread_create(&this->thread, NULL, &stThreadProc, this);
 	}
 
-	/* virtual */ bool Exit()
+	bool Exit() override
 	{
 		assert(pthread_self() == this->thread);
 		/* For now we terminate by throwing an error, gives much cleaner cleanup */
 		throw OTTDThreadExitSignal();
 	}
 
-	/* virtual */ void Join()
+	void Join() override
 	{
 		/* You cannot join yourself */
 		assert(pthread_self() != this->thread);
@@ -129,7 +129,7 @@ public:
 		pthread_cond_init(&this->condition, NULL);
 	}
 
-	/* virtual */ ~ThreadMutex_pthread()
+	~ThreadMutex_pthread() override
 	{
 		int err = pthread_cond_destroy(&this->condition);
 		assert(err != EBUSY);
@@ -142,7 +142,7 @@ public:
 		return this->owner == pthread_self();
 	}
 
-	/* virtual */ void BeginCritical(bool allow_recursive = false)
+	void BeginCritical(bool allow_recursive = false) override
 	{
 		/* pthread mutex is not recursive by itself */
 		if (this->IsOwnedByCurrentThread()) {
@@ -156,7 +156,7 @@ public:
 		this->recursive_count++;
 	}
 
-	/* virtual */ void EndCritical(bool allow_recursive = false)
+	void EndCritical(bool allow_recursive = false) override
 	{
 		assert(this->IsOwnedByCurrentThread());
 		if (!allow_recursive && this->recursive_count != 1) NOT_REACHED();
@@ -167,7 +167,7 @@ public:
 		assert(err == 0);
 	}
 
-	/* virtual */ void WaitForSignal()
+	void WaitForSignal() override
 	{
 		uint old_recursive_count = this->recursive_count;
 		this->recursive_count = 0;
@@ -178,7 +178,7 @@ public:
 		this->recursive_count = old_recursive_count;
 	}
 
-	/* virtual */ void SendSignal()
+	void SendSignal() override
 	{
 		int err = pthread_cond_signal(&this->condition);
 		assert(err == 0);

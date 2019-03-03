@@ -52,7 +52,7 @@ class CrashLogOSX : public CrashLog {
 	char filename_save[MAX_PATH];       ///< Path of crash.sav
 	char filename_screenshot[MAX_PATH]; ///< Path of crash.(png|bmp|pcx)
 
-	/* virtual */ char *LogOSVersion(char *buffer, const char *last) const
+	char *LogOSVersion(char *buffer, const char *last) const override
 	{
 		int ver_maj, ver_min, ver_bug;
 		GetMacOSVersion(&ver_maj, &ver_min, &ver_bug);
@@ -71,7 +71,7 @@ class CrashLogOSX : public CrashLog {
 		);
 	}
 
-	/* virtual */ char *LogError(char *buffer, const char *last, const char *message) const
+	char *LogError(char *buffer, const char *last, const char *message) const override
 	{
 		return buffer + seprintf(buffer, last,
 				"Crash reason:\n"
@@ -83,7 +83,7 @@ class CrashLogOSX : public CrashLog {
 		);
 	}
 
-	/* virtual */ char *LogStacktrace(char *buffer, const char *last) const
+	char *LogStacktrace(char *buffer, const char *last) const override
 	{
 		/* As backtrace() is only implemented in 10.5 or later,
 		 * we're rolling our own here. Mostly based on

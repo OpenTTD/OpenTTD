@@ -17,29 +17,29 @@
 /** The video driver for windows. */
 class VideoDriver_Win32 : public VideoDriver {
 public:
-	/* virtual */ const char *Start(const char * const *param);
+	const char *Start(const char * const *param) override;
 
-	/* virtual */ void Stop();
+	void Stop() override;
 
-	/* virtual */ void MakeDirty(int left, int top, int width, int height);
+	void MakeDirty(int left, int top, int width, int height) override;
 
-	/* virtual */ void MainLoop();
+	void MainLoop() override;
 
-	/* virtual */ bool ChangeResolution(int w, int h);
+	bool ChangeResolution(int w, int h) override;
 
-	/* virtual */ bool ToggleFullscreen(bool fullscreen);
+	bool ToggleFullscreen(bool fullscreen) override;
 
-	/* virtual */ bool AfterBlitterChange();
+	bool AfterBlitterChange() override;
 
-	/* virtual */ void AcquireBlitterLock();
+	void AcquireBlitterLock() override;
 
-	/* virtual */ void ReleaseBlitterLock();
+	void ReleaseBlitterLock() override;
 
-	/* virtual */ bool ClaimMousePointer();
+	bool ClaimMousePointer() override;
 
-	/* virtual */ void EditBoxLostFocus();
+	void EditBoxLostFocus() override;
 
-	/* virtual */ const char *GetName() const { return "win32"; }
+	const char *GetName() const override { return "win32"; }
 
 	bool MakeWindow(bool full_screen);
 };
@@ -48,7 +48,7 @@ public:
 class FVideoDriver_Win32 : public DriverFactoryBase {
 public:
 	FVideoDriver_Win32() : DriverFactoryBase(Driver::DT_VIDEO, 10, "win32", "Win32 GDI Video Driver") {}
-	/* virtual */ Driver *CreateInstance() const { return new VideoDriver_Win32(); }
+	Driver *CreateInstance() const override { return new VideoDriver_Win32(); }
 };
 
 #endif /* VIDEO_WIN32_H */

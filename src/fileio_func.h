@@ -107,7 +107,7 @@ public:
 		ALL      = BASESET | NEWGRF | AI | SCENARIO | GAME, ///< Scan for everything.
 	};
 
-	/* virtual */ bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename = NULL);
+	bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename = NULL) override;
 
 	bool AddFile(Subdirectory sd, const char *filename);
 
