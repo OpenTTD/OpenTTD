@@ -45,45 +45,10 @@ inline bool include(std::vector<T>& vec, const T &item)
  * @tparam T The type of the items stored
  * @tparam S The steps of allocation
  */
+
+
 template <typename T, uint S>
-class SmallVector : public std::vector<T> {
-public:
-	SmallVector() = default;
-
-	/**
-	 * Copy constructor.
-	 * @param other The other vector to copy.
-	 */
-	SmallVector(const SmallVector &other) = default;
-
-	/**
-	 * Generic copy constructor.
-	 * @param other The other vector to copy.
-	 */
-	template <uint X>
-	SmallVector(const SmallVector<T, X> &other) : std::vector<T>(other)
-	{
-	}
-
-	/**
-	 * Assignment.
-	 * @param other The other vector to assign.
-	 */
-	SmallVector &operator=(const SmallVector &other) = default;
-
-	/**
-	 * Generic assignment.
-	 * @param other The other vector to assign.
-	 */
-	template <uint X>
-	SmallVector &operator=(const SmallVector<T, X> &other)
-	{
-		std::vector<T>::operator=(other);
-		return *this;
-	}
-
-	~SmallVector() = default;
-};
+using SmallVector = std::vector<T>;
 
 /**
  * Helper function to get the index of an item
