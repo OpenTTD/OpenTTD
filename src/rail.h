@@ -118,7 +118,7 @@ enum RailFenceOffset {
 };
 
 /** List of rail type labels. */
-typedef SmallVector<RailTypeLabel, 4> RailTypeLabelList;
+typedef std::vector<RailTypeLabel> RailTypeLabelList;
 
 /**
  * This struct contains all the info that is needed to draw and construct tracks.

@@ -47,7 +47,7 @@ struct Filtering {
  * @tparam F Type of data fed as additional value to the filter function. @see FilterFunction
  */
 template <typename T, typename F = const char*>
-class GUIList : public SmallVector<T, 32> {
+class GUIList : public std::vector<T> {
 public:
 	typedef int CDECL SortFunction(const T*, const T*); ///< Signature of sort function.
 	typedef bool CDECL FilterFunction(const T*, F);     ///< Signature of filter function.

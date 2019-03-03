@@ -22,7 +22,7 @@
 
 #include "safeguards.h"
 
-static SmallVector<SoundEntry, 8> _sounds;
+static std::vector<SoundEntry> _sounds;
 
 
 /**

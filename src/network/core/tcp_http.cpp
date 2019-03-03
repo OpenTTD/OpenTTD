@@ -21,7 +21,7 @@
 #include "../../safeguards.h"
 
 /** List of open HTTP connections. */
-static SmallVector<NetworkHTTPSocketHandler *, 1> _http_connections;
+static std::vector<NetworkHTTPSocketHandler *> _http_connections;
 
 /**
  * Start the querying

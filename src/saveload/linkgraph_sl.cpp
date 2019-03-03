@@ -51,7 +51,7 @@ const SaveLoad *GetLinkGraphDesc()
  */
 const SaveLoad *GetLinkGraphJobDesc()
 {
-	static SmallVector<SaveLoad, 16> saveloads;
+	static std::vector<SaveLoad> saveloads;
 	static const char *prefix = "linkgraph.";
 
 	/* Build the SaveLoad array on first call and don't touch it later on */

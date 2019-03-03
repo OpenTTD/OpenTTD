@@ -579,7 +579,7 @@ bool Convert8bitBooleanCallback(const GRFFile *grffile, uint16 cbid, uint16 cb_r
 }
 
 
-/* static */ SmallVector<DrawTileSeqStruct, 8> NewGRFSpriteLayout::result_seq;
+/* static */ std::vector<DrawTileSeqStruct> NewGRFSpriteLayout::result_seq;
 
 /**
  * Clone the building sprites of a spritelayout.

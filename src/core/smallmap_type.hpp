@@ -40,7 +40,7 @@ struct SmallPair {
  * @see SmallVector
  */
 template <typename T, typename U, uint S = 16>
-struct SmallMap : SmallVector<SmallPair<T, U>, S> {
+struct SmallMap : std::vector<SmallPair<T, U> > {
 	typedef ::SmallPair<T, U> Pair;
 	typedef Pair *iterator;
 	typedef const Pair *const_iterator;

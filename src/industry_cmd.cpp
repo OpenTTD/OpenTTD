@@ -1884,7 +1884,7 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 
 	*ip = NULL;
 
-	SmallVector<ClearedObjectArea, 1> object_areas(_cleared_object_areas);
+	std::vector<ClearedObjectArea> object_areas(_cleared_object_areas);
 	CommandCost ret = CheckIfIndustryTilesAreFree(tile, it, itspec_index, type, random_initial_bits, founder, creation_type, &custom_shape_check);
 	_cleared_object_areas = object_areas;
 	if (ret.Failed()) return ret;

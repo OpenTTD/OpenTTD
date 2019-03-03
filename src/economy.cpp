@@ -77,7 +77,7 @@ static inline int32 BigMulS(const int32 a, const int32 b, const uint8 shift)
 	return (int32)((int64)a * (int64)b >> shift);
 }
 
-typedef SmallVector<Industry *, 16> SmallIndustryList;
+typedef std::vector<Industry *> SmallIndustryList;
 
 /**
  * Score info, values used for computing the detailed performance rating.

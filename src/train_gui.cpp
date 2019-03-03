@@ -186,7 +186,7 @@ static const uint TRAIN_DETAILS_MIN_INDENT = 32; ///< Minimum indent level in th
 static const uint TRAIN_DETAILS_MAX_INDENT = 72; ///< Maximum indent level in the train details window; wider than this and we start on a new line
 
 /** Container for the cargo summary information. */
-typedef SmallVector<CargoSummaryItem, 2> CargoSummary;
+typedef std::vector<CargoSummaryItem> CargoSummary;
 /** Reused container of cargo details */
 static CargoSummary _cargo_summary;
 

@@ -170,7 +170,7 @@ struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
 	}
 
 private:
-	static SmallVector<DrawTileSeqStruct, 8> result_seq; ///< Temporary storage when preprocessing spritelayouts.
+	static std::vector<DrawTileSeqStruct> result_seq; ///< Temporary storage when preprocessing spritelayouts.
 };
 
 /**

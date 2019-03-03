@@ -19,7 +19,7 @@
 #include "../../safeguards.h"
 
 /** List of connections that are currently being created */
-static SmallVector<TCPConnecter *,  1> _tcp_connecters;
+static std::vector<TCPConnecter *> _tcp_connecters;
 
 /**
  * Create a new connecter for the given address

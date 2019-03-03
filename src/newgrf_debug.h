@@ -29,7 +29,7 @@ struct NewGrfDebugSpritePicker {
 	NewGrfDebugSpritePickerMode mode;   ///< Current state
 	void *clicked_pixel;                ///< Clicked pixel (pointer to blitter buffer)
 	uint32 click_time;                  ///< Realtime tick when clicked to detect next frame
-	SmallVector<SpriteID, 256> sprites; ///< Sprites found
+	std::vector<SpriteID> sprites; ///< Sprites found
 };
 
 extern NewGrfDebugSpritePicker _newgrf_debug_sprite_picker;

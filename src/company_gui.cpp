@@ -562,7 +562,7 @@ private:
 	uint rows;
 	uint line_height;
 	GUIGroupList groups;
-	SmallVector<int, 32> indents;
+	std::vector<int> indents;
 	Scrollbar *vscroll;
 
 	void ShowColourDropDownMenu(uint32 widget)

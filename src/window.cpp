@@ -85,7 +85,7 @@ SpecialMouseMode _special_mouse_mode; ///< Mode of the mouse.
  * List of all WindowDescs.
  * This is a pointer to ensure initialisation order with the various static WindowDesc instances.
  */
-static SmallVector<WindowDesc*, 16> *_window_descs = NULL;
+static std::vector<WindowDesc*> *_window_descs = NULL;
 
 /** Config file to store WindowDesc */
 char *_windows_file;
@@ -108,7 +108,7 @@ WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_wi
 	default_width_trad(def_width_trad),
 	default_height_trad(def_height_trad)
 {
-	if (_window_descs == NULL) _window_descs = new SmallVector<WindowDesc*, 16>();
+	if (_window_descs == NULL) _window_descs = new std::vector<WindowDesc*>();
 	_window_descs->push_back(this);
 }
 

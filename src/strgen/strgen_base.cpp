@@ -235,7 +235,7 @@ static ParsedCommandStruct _cur_pcs;
 static int _cur_argidx;
 
 /** The buffer for writing a single string. */
-struct Buffer : SmallVector<byte, 256> {
+struct Buffer : std::vector<byte> {
 	/**
 	 * Convenience method for adding a byte.
 	 * @param value The value to add.

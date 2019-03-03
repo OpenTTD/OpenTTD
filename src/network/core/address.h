@@ -18,7 +18,7 @@
 #include "../../core/smallmap_type.hpp"
 
 class NetworkAddress;
-typedef SmallVector<NetworkAddress, 4> NetworkAddressList; ///< Type for a list of addresses.
+typedef std::vector<NetworkAddress> NetworkAddressList; ///< Type for a list of addresses.
 typedef SmallMap<NetworkAddress, SOCKET, 4> SocketList;    ///< Type for a mapping between address and socket.
 
 /**

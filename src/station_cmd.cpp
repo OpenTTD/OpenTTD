@@ -887,7 +887,7 @@ static CommandCost CheckFlatLandAirport(AirportTileTableIterator tile_iter, DoCo
  * @param numtracks Number of platforms.
  * @return The cost in case of success, or an error code if it failed.
  */
-static CommandCost CheckFlatLandRailStation(TileArea tile_area, DoCommandFlag flags, Axis axis, StationID *station, RailType rt, SmallVector<Train *, 4> &affected_vehicles, StationClassID spec_class, byte spec_index, byte plat_len, byte numtracks)
+static CommandCost CheckFlatLandRailStation(TileArea tile_area, DoCommandFlag flags, Axis axis, StationID *station, RailType rt, std::vector<Train *> &affected_vehicles, StationClassID spec_class, byte spec_index, byte plat_len, byte numtracks)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	int allowed_z = -1;
@@ -1310,7 +1310,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 
 	/* Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station) */
 	StationID est = INVALID_STATION;
-	SmallVector<Train *, 4> affected_vehicles;
+	std::vector<Train *> affected_vehicles;
 	/* Clear the land below the station. */
 	CommandCost cost = CheckFlatLandRailStation(new_location, flags, axis, &est, rt, affected_vehicles, spec_class, spec_index, plat_len, numtracks);
 	if (cost.Failed()) return cost;
@@ -1547,7 +1547,7 @@ restart:
  * @return the number of cleared tiles or an error.
  */
 template <class T>
-CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected_stations, DoCommandFlag flags, Money removal_cost, bool keep_rail)
+CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_stations, DoCommandFlag flags, Money removal_cost, bool keep_rail)
 {
 	/* Count of the number of tiles removed */
 	int quantity = 0;
@@ -1660,7 +1660,7 @@ CommandCost CmdRemoveFromRailStation(TileIndex start, DoCommandFlag flags, uint3
 	if (start >= MapSize() || end >= MapSize()) return CMD_ERROR;
 
 	TileArea ta(start, end);
-	SmallVector<Station *, 4> affected_stations;
+	std::vector<Station *> affected_stations;
 
 	CommandCost ret = RemoveFromRailBaseStation(ta, affected_stations, flags, _price[PR_CLEAR_STATION_RAIL], HasBit(p2, 0));
 	if (ret.Failed()) return ret;
@@ -1694,7 +1694,7 @@ CommandCost CmdRemoveFromRailWaypoint(TileIndex start, DoCommandFlag flags, uint
 	if (start >= MapSize() || end >= MapSize()) return CMD_ERROR;
 
 	TileArea ta(start, end);
-	SmallVector<Waypoint *, 4> affected_stations;
+	std::vector<Waypoint *> affected_stations;
 
 	return RemoveFromRailBaseStation(ta, affected_stations, flags, _price[PR_CLEAR_WAYPOINT_RAIL], HasBit(p2, 0));
 }
@@ -1727,7 +1727,7 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags, Money removal_cost)
 	TILE_AREA_LOOP(tile, ta) {
 		/* only remove tiles that are actually train station tiles */
 		if (st->TileBelongsToRailStation(tile)) {
-			SmallVector<T*, 4> affected_stations; // dummy
+			std::vector<T*> affected_stations; // dummy
 			CommandCost ret = RemoveFromRailBaseStation(TileArea(tile, 1, 1), affected_stations, flags, removal_cost, false);
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret);
@@ -3521,7 +3521,7 @@ void DeleteStaleLinks(Station *from)
 					/* Have all vehicles refresh their next hops before deciding to
 					 * remove the node. */
 					OrderList *l;
-					SmallVector<Vehicle *, 32> vehicles;
+					std::vector<Vehicle *> vehicles;
 					FOR_ALL_ORDER_LISTS(l) {
 						bool found_from = false;
 						bool found_to = false;

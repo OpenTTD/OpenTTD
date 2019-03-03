@@ -42,7 +42,7 @@ struct OldWaypoint {
 };
 
 /** Temporary array with old waypoints. */
-static SmallVector<OldWaypoint, 16> _old_waypoints;
+static std::vector<OldWaypoint> _old_waypoints;
 
 /**
  * Update the waypoint orders to get the new waypoint ID.

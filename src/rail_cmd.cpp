@@ -41,7 +41,7 @@
 #include "safeguards.h"
 
 /** Helper type for lists/vectors of trains */
-typedef SmallVector<Train *, 16> TrainList;
+typedef std::vector<Train *> TrainList;
 
 RailtypeInfo _railtypes[RAILTYPE_END];
 RailType _sorted_railtypes[RAILTYPE_END];
@@ -1603,7 +1603,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			continue;
 		}
 
-		SmallVector<Train *, 2> vehicles_affected;
+		std::vector<Train *> vehicles_affected;
 
 		/* Vehicle on the tile when not converting Rail <-> ElRail
 		 * Tunnels and bridges have special check later */

@@ -87,7 +87,7 @@ private:
 	Tindex first_free;
 
 	ThreadMutex *mutex;
-	SmallVector<SimplePoolPoolItem, Tgrowth_step> data;
+	std::vector<SimplePoolPoolItem> data;
 };
 
 /**

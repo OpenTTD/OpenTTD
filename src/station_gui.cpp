@@ -2116,8 +2116,8 @@ struct TileAndStation {
 	StationID station; ///< StationID
 };
 
-static SmallVector<TileAndStation, 8> _deleted_stations_nearby;
-static SmallVector<StationID, 8> _stations_nearby_list;
+static std::vector<TileAndStation> _deleted_stations_nearby;
+static std::vector<StationID> _stations_nearby_list;
 
 /**
  * Add station on this tile to _stations_nearby_list if it's fully within the

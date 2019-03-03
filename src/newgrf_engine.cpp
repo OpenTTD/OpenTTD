@@ -1185,7 +1185,7 @@ struct ListOrderChange {
 	uint target;      ///< local ID
 };
 
-static SmallVector<ListOrderChange, 16> _list_order_changes;
+static std::vector<ListOrderChange> _list_order_changes;
 
 /**
  * Record a vehicle ListOrderChange.
@@ -1226,7 +1226,7 @@ static int CDECL EnginePreSort(const EngineID *a, const EngineID *b)
 void CommitVehicleListOrderChanges()
 {
 	/* Pre-sort engines by scope-grfid and local index */
-	SmallVector<EngineID, 16> ordering;
+	std::vector<EngineID> ordering;
 	Engine *e;
 	FOR_ALL_ENGINES(e) {
 		ordering.push_back(e->index);

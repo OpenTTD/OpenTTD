@@ -233,7 +233,7 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_t
 	v_for = v_for->GetFirstEnginePart();
 
 	/* Create a list of subtypes used by the various parts of v_for */
-	static SmallVector<StringID, 4> subtypes;
+	static std::vector<StringID> subtypes;
 	subtypes.clear();
 	for (; v_from != NULL; v_from = v_from->HasArticulatedPart() ? v_from->GetNextArticulatedPart() : NULL) {
 		const Engine *e_from = v_from->GetEngine();
@@ -317,7 +317,7 @@ struct RefitOption {
 	}
 };
 
-typedef SmallVector<RefitOption, 32> SubtypeList; ///< List of refit subtypes associated to a cargo.
+typedef std::vector<RefitOption> SubtypeList; ///< List of refit subtypes associated to a cargo.
 
 /**
  * Draw the list of available refit options for a consist and highlight the selected refit option (if any).
