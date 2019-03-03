@@ -749,7 +749,17 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				if (ret.Failed()) return ret;
 			}
 
-			if (!CanVehicleUseStation(v, st)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER);
+			if (!CanVehicleUseStation(v, st)) {
+				if (v->type == VEH_AIRCRAFT &&
+						(AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
+						(st->airport.GetFTA()->flags & AirportFTAClass::SHORT_STRIP) &&
+						!_settings_game.vehicle.large_plane_on_short_runway) {
+					return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER_SHORT_RUNWAY)
+				} else {
+					return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER);
+				}
+			}
+
 			for (Vehicle *u = v->FirstShared(); u != nullptr; u = u->NextShared()) {
 				if (!CanVehicleUseStation(u, st)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER_SHARED);
 			}
@@ -1560,7 +1570,14 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 				 * are temporarily invalid due to reconstruction. */
 				const Station *st = Station::Get(order->GetDestination());
 				if (CanVehicleUseStation(src, st) && !CanVehicleUseStation(dst, st)) {
-					return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER);
+					if (dst->type == VEH_AIRCRAFT &&
+							(AircraftVehInfo(dst->engine_type)->subtype & AIR_FAST) &&
+							(st->airport.GetFTA()->flags & AirportFTAClass::SHORT_STRIP) &&
+							!_settings_game.vehicle.large_plane_on_short_runway) {
+						return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER_SHORT_RUNWAY);
+					} else {
+						return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER);
+					}
 				}
 			}
 
@@ -1605,9 +1622,16 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			 * and neither can helicopters and aircraft. */
 			const Order *order;
 			FOR_VEHICLE_ORDERS(src, order) {
-				if (OrderGoesToStation(dst, order) &&
-						!CanVehicleUseStation(dst, Station::Get(order->GetDestination()))) {
-					return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER);
+				const Station *st = Station::Get(order->GetDestination());
+				if (OrderGoesToStation(dst, order) && !CanVehicleUseStation(dst, st)) {
+					if (dst->type == VEH_AIRCRAFT &&
+							(AircraftVehInfo(dst->engine_type)->subtype & AIR_FAST) &&
+							(st->airport.GetFTA()->flags & AirportFTAClass::SHORT_STRIP) &&
+							!_settings_game.vehicle.large_plane_on_short_runway) {
+						return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER_SHORT_RUNWAY);
+					} else {
+						return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER);
+					}
 				}
 			}
 
@@ -1756,14 +1780,17 @@ void CheckOrders(const Vehicle *v)
 				const Station *st = Station::Get(order->GetDestination());
 
 				n_st++;
-				if (!CanVehicleUseStation(v, st)) {
-					message = STR_NEWS_VEHICLE_HAS_INVALID_ENTRY;
-				} else if (v->type == VEH_AIRCRAFT &&
-							(AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
-							(st->airport.GetFTA()->flags & AirportFTAClass::SHORT_STRIP) &&
-							!_cheats.no_jetcrash.value &&
-							message == INVALID_STRING_ID) {
+				if (v->type == VEH_AIRCRAFT &&
+						(AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
+						(st->airport.GetFTA()->flags & AirportFTAClass::SHORT_STRIP) &&
+						((_settings_game.vehicle.large_plane_on_short_runway &&
+						!_cheats.no_jetcrash.value) ||
+						!CanVehicleUseStation(v, st)) &&
+						(message == INVALID_STRING_ID ||
+						message == STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY)) {
 					message = STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY;
+				} else if (!CanVehicleUseStation(v, st)) {
+					message = STR_NEWS_VEHICLE_HAS_INVALID_ENTRY;
 				}
 			}
 		}

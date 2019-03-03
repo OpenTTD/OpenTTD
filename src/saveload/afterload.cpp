@@ -3121,6 +3121,11 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_LARGE_PLANE_ON_SHORT_RUNWAY)) {
+		/* Ensure the original large plane on short runway behaviour is used. */
+		_settings_game.vehicle.large_plane_on_short_runway = true;
+	}
+
 	/* Compute station catchment areas. This is needed here in case UpdateStationAcceptance is called below. */
 	Station::RecomputeCatchmentForAll();
 

@@ -2322,6 +2322,23 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 			if (flags & DC_EXEC) {
 				this->current_order.SetDepotOrderType(ODTF_MANUAL);
 				this->current_order.SetDepotActionType(halt_in_depot ? ODATF_SERVICE_ONLY : ODATFB_HALT);
+
+				/* We need to ensure the same hangar is still reachable */
+				if (this->type == VEH_AIRCRAFT) {
+					Aircraft *a = Aircraft::From(this);
+
+					/* Search for a reachable hangar */
+					DestinationID destination;
+					if (a->FindClosestDepot(nullptr, &destination, nullptr)) {
+						Order *o = &a->current_order;
+
+						if (o->GetDestination() != destination) {
+							/* The aircraft is now heading for a different hangar */
+							o->MakeGoToDepot(destination, o->GetDepotOrderType(), o->GetNonStopType(), o->GetDepotActionType());
+							a->SetDestTile(a->GetOrderStationLocation(destination));
+						}
+					}
+				}
 				SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 			}
 			return CommandCost();
@@ -2347,7 +2364,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 	TileIndex location;
 	DestinationID destination;
 	bool reverse;
-	static const StringID no_depot[] = {STR_ERROR_UNABLE_TO_FIND_ROUTE_TO, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR};
+	static const StringID no_depot[] = {STR_ERROR_UNABLE_TO_FIND_ROUTE_TO, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR};
 	if (!this->FindClosestDepot(&location, &destination, &reverse)) return_cmd_error(no_depot[this->type]);
 
 	if (flags & DC_EXEC) {
@@ -2799,8 +2816,23 @@ bool CanVehicleUseStation(EngineID engine_type, const Station *st)
 			return (st->facilities & FACIL_DOCK) != 0;
 
 		case VEH_AIRCRAFT:
-			return (st->facilities & FACIL_AIRPORT) != 0 &&
-					(st->airport.GetFTA()->flags & (e->u.air.subtype & AIR_CTOL ? AirportFTAClass::AIRPLANES : AirportFTAClass::HELICOPTERS)) != 0;
+			if ((st->facilities & FACIL_AIRPORT) == 0) return false;
+
+			switch (e->u.air.subtype) {
+				case AIR_HELI:
+					return (st->airport.GetFTA()->flags & AirportFTAClass::HELICOPTERS) != 0;
+
+				case AIR_CTOL:
+					return (st->airport.GetFTA()->flags & AirportFTAClass::AIRPLANES) != 0;
+
+				case AIR_CTOL | AIR_FAST:
+					return (st->airport.GetFTA()->flags & AirportFTAClass::AIRPLANES) != 0 &&
+							((st->airport.GetFTA()->flags & AirportFTAClass::SHORT_STRIP) == 0 ||
+							_settings_game.vehicle.large_plane_on_short_runway);
+
+				default:
+					return false;
+			}
 
 		default:
 			return false;

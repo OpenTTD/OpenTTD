@@ -1502,6 +1502,8 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Enable wagon sp
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :When enabled, also use speed limits of wagons for deciding the maximum speed of a train
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Disable electric rails: {STRING2}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Enabling this setting disables the requirement to electrify tracks to make electric engines run on them
+STR_CONFIG_SETTING_LARGE_PLANE_ON_SHORT_RUNWAY                  :Allow large aeroplanes to use airports with short runways: {STRING2}
+STR_CONFIG_SETTING_LARGE_PLANE_ON_SHORT_RUNWAY_HELPTEXT         :When disabled, large aeroplanes do not land, can't be ordered and are not available for purchase on airports with short runways
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arrival of first vehicle at player's station: {STRING2}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Display a newspaper when the first vehicle arrives at a new player's station
@@ -4389,6 +4391,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Can't mo
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}The rear engine will always follow its front counterpart
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Unable to find route to local depot
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Unable to find local depot
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :{WHITE}Unable to find local hangar
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Wrong depot type
 
@@ -4555,7 +4558,9 @@ STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Can't mo
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Can't skip current order...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Can't skip to selected order...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... vehicle can't go to all stations
+STR_ERROR_CAN_T_COPY_SHARE_ORDER_SHORT_RUNWAY                   :{WHITE}... an airport runway is too short for this aeroplane
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... vehicle can't go to that station
+STR_ERROR_CAN_T_ADD_ORDER_SHORT_RUNWAY                          :{WHITE}... airport runway is too short for this aeroplane
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... a vehicle sharing this order can't go to that station
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Can't share order list...

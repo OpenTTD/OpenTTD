@@ -1675,6 +1675,7 @@ static SettingsContainer &GetSettingsTree()
 			limitations->Add(new SettingEntry("construction.road_stop_on_town_road"));
 			limitations->Add(new SettingEntry("construction.road_stop_on_competitor_road"));
 			limitations->Add(new SettingEntry("vehicle.disable_elrails"));
+			limitations->Add(new SettingEntry("vehicle.large_plane_on_short_runway"));
 		}
 
 		SettingsPage *disasters = main->Add(new SettingsPage(STR_CONFIG_SETTING_ACCIDENTS));

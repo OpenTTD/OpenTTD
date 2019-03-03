@@ -298,6 +298,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_ROADVEH_PATH_CACHE,                 ///< 211  PR#7261 Add path cache for road vehicles.
 	SLV_REMOVE_OPF,                         ///< 212  PR#7245 Remove OPF.
 	SLV_TREES_WATER_CLASS,                  ///< 213  PR#7405 WaterClass update for tree tiles.
+	SLV_LARGE_PLANE_ON_SHORT_RUNWAY,        ///< 214  PR#7502 Add allow large planes on short runway setting.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

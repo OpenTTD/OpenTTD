@@ -452,6 +452,7 @@ struct VehicleSettings {
 	uint8  roadveh_slope_steepness;          ///< Steepness of hills for road vehicles when using realistic acceleration
 	bool   wagon_speed_limits;               ///< enable wagon speed limits
 	bool   disable_elrails;                  ///< when true, the elrails are disabled
+	bool   large_plane_on_short_runway;      ///< when false, large planes can't use airports with short runways
 	UnitID max_trains;                       ///< max trains in game per company
 	UnitID max_roadveh;                      ///< max trucks in game per company
 	UnitID max_aircraft;                     ///< max planes in game per company

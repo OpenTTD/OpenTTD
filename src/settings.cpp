@@ -34,6 +34,8 @@
 #include "pathfinder/pathfinder_type.h"
 #include "genworld.h"
 #include "train.h"
+#include "aircraft.h"
+#include "vehicle_func.h"
 #include "news_func.h"
 #include "window_func.h"
 #include "sound_func.h"
@@ -861,6 +863,31 @@ static bool StationSpreadChanged(int32 p1)
 static bool InvalidateBuildIndustryWindow(int32 p1)
 {
 	InvalidateWindowData(WC_BUILD_INDUSTRY, 0);
+	return true;
+}
+
+static bool LargePlaneOnShortRunwayChanged(int32 p1)
+{
+	if (p1 == 0) {
+		Aircraft *a;
+		FOR_ALL_AIRCRAFT(a) {
+			if (!a->IsNormalAircraft()) continue;
+
+			/* We need to ensure the same hangar is still reachable */
+			Order *o = &a->current_order;
+			if (o->IsType(OT_GOTO_DEPOT) && o->GetDepotOrderType() == ODTF_MANUAL) {
+				/* Search for a reachable hangar */
+				DestinationID destination;
+				if (a->FindClosestDepot(nullptr, &destination, nullptr) && o->GetDestination() != destination) {
+					/* The aircraft is now heading for a different hangar */
+					o->MakeGoToDepot(destination, o->GetDepotOrderType(), o->GetNonStopType(), o->GetDepotActionType(), o->GetRefitCargo());
+					a->SetDestTile(a->GetOrderStationLocation(destination));
+					SetWindowWidgetDirty(WC_VEHICLE_VIEW, a->index, WID_VV_START_STOP);
+				}
+			}
+		}
+	}
+	InvalidateWindowClassesData(WC_BUILD_VEHICLE, 0);
 	return true;
 }
 
