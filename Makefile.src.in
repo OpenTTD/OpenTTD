@@ -92,6 +92,7 @@ VERSION  := $(shell echo "$(VERSIONS)" | cut -f 1 -d'	')
 ISODATE  := $(shell echo "$(VERSIONS)" | cut -f 2 -d'	')
 GITHASH  := $(shell echo "$(VERSIONS)" | cut -f 4 -d'	')
 ISTAG    := $(shell echo "$(VERSIONS)" | cut -f 5 -d'	')
+ISSTABLETAG := $(shell echo "$(VERSIONS)" | cut -f 6 -d'	')
 
 # Make sure we have something in VERSION and ISODATE
 ifeq ($(VERSION),)
@@ -277,10 +278,10 @@ endif
 # Revision files
 
 $(SRC_DIR)/rev.cpp: $(CONFIG_CACHE_VERSION) $(SRC_DIR)/rev.cpp.in
-	$(Q)cat $(SRC_DIR)/rev.cpp.in      | sed "s@\!\!ISODATE\!\!@$(ISODATE)@g;s@!!VERSION!!@$(VERSION)@g;s@!!MODIFIED!!@$(MODIFIED)@g;s@!!DATE!!@`date +%d.%m.%y`@g;s@!!GITHASH!!@$(GITHASH)@g;s@!!ISTAG!!@$(ISTAG)@g" > $(SRC_DIR)/rev.cpp
+	$(Q)cat $(SRC_DIR)/rev.cpp.in      | sed "s@\!\!ISODATE\!\!@$(ISODATE)@g;s@!!VERSION!!@$(VERSION)@g;s@!!MODIFIED!!@$(MODIFIED)@g;s@!!DATE!!@`date +%d.%m.%y`@g;s@!!GITHASH!!@$(GITHASH)@g;s@!!ISTAG!!@$(ISTAG)@g;s@!!ISSTABLETAG!!@$(ISSTABLETAG)@g" > $(SRC_DIR)/rev.cpp
 
 $(SRC_DIR)/os/windows/ottdres.rc: $(CONFIG_CACHE_VERSION) $(SRC_DIR)/os/windows/ottdres.rc.in
-	$(Q)cat $(SRC_DIR)/os/windows/ottdres.rc.in | sed "s@\!\!ISODATE\!\!@$(ISODATE)@g;s@!!VERSION!!@$(VERSION)@g;s@!!DATE!!@`date +%d.%m.%y`@g;s@!!GITHASH!!@$(GITHASH)@g;s@!!ISTAG!!@$(ISTAG)@g" > $(SRC_DIR)/os/windows/ottdres.rc
+	$(Q)cat $(SRC_DIR)/os/windows/ottdres.rc.in | sed "s@\!\!ISODATE\!\!@$(ISODATE)@g;s@!!VERSION!!@$(VERSION)@g;s@!!DATE!!@`date +%d.%m.%y`@g;s@!!GITHASH!!@$(GITHASH)@g;s@!!ISTAG!!@$(ISTAG)@g;s@!!ISSTABLETAG!!@$(ISSTABLETAG)@g" > $(SRC_DIR)/os/windows/ottdres.rc
 
 FORCE:
 
