@@ -25,23 +25,23 @@ struct Waypoint FINAL : SpecializedStation<Waypoint, true> {
 	Waypoint(TileIndex tile = INVALID_TILE) : SpecializedStation<Waypoint, true>(tile) { }
 	~Waypoint();
 
-	void UpdateVirtCoord();
+	void UpdateVirtCoord() override;
 
-	/* virtual */ inline bool TileBelongsToRailStation(TileIndex tile) const
+	inline bool TileBelongsToRailStation(TileIndex tile) const override
 	{
 		return IsRailWaypointTile(tile) && GetStationIndex(tile) == this->index;
 	}
 
-	/* virtual */ uint32 GetNewGRFVariable(const struct ResolverObject &object, byte variable, byte parameter, bool *available) const;
+	uint32 GetNewGRFVariable(const struct ResolverObject &object, byte variable, byte parameter, bool *available) const override;
 
-	/* virtual */ void GetTileArea(TileArea *ta, StationType type) const;
+	void GetTileArea(TileArea *ta, StationType type) const override;
 
-	/* virtual */ uint GetPlatformLength(TileIndex tile, DiagDirection dir) const
+	uint GetPlatformLength(TileIndex tile, DiagDirection dir) const override
 	{
 		return 1;
 	}
 
-	/* virtual */ uint GetPlatformLength(TileIndex tile) const
+	uint GetPlatformLength(TileIndex tile) const override
 	{
 		return 1;
 	}

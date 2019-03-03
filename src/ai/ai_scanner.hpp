@@ -19,7 +19,7 @@ public:
 	AIScannerInfo();
 	~AIScannerInfo();
 
-	/* virtual */ void Initialize();
+	void Initialize() override;
 
 	/**
 	 * Select a random AI.
@@ -42,11 +42,11 @@ public:
 	void SetDummyAI(class AIInfo *info);
 
 protected:
-	/* virtual */ void GetScriptName(ScriptInfo *info, char *name, const char *last);
-	/* virtual */ const char *GetFileName() const { return PATHSEP "info.nut"; }
-	/* virtual */ Subdirectory GetDirectory() const { return AI_DIR; }
-	/* virtual */ const char *GetScannerName() const { return "AIs"; }
-	/* virtual */ void RegisterAPI(class Squirrel *engine);
+	void GetScriptName(ScriptInfo *info, char *name, const char *last) override;
+	const char *GetFileName() const override { return PATHSEP "info.nut"; }
+	Subdirectory GetDirectory() const override { return AI_DIR; }
+	const char *GetScannerName() const override { return "AIs"; }
+	void RegisterAPI(class Squirrel *engine) override;
 
 private:
 	AIInfo *info_dummy; ///< The dummy AI.
@@ -54,7 +54,7 @@ private:
 
 class AIScannerLibrary : public ScriptScanner {
 public:
-	/* virtual */ void Initialize();
+	void Initialize() override;
 
 	/**
 	 * Find a library in the pool.
@@ -65,11 +65,11 @@ public:
 	class AILibrary *FindLibrary(const char *library, int version);
 
 protected:
-	/* virtual */ void GetScriptName(ScriptInfo *info, char *name, const char *last);
-	/* virtual */ const char *GetFileName() const { return PATHSEP "library.nut"; }
-	/* virtual */ Subdirectory GetDirectory() const { return AI_LIBRARY_DIR; }
-	/* virtual */ const char *GetScannerName() const { return "AI Libraries"; }
-	/* virtual */ void RegisterAPI(class Squirrel *engine);
+	void GetScriptName(ScriptInfo *info, char *name, const char *last) override;
+	const char *GetFileName() const override { return PATHSEP "library.nut"; }
+	Subdirectory GetDirectory() const override { return AI_LIBRARY_DIR; }
+	const char *GetScannerName() const override { return "AI Libraries"; }
+	void RegisterAPI(class Squirrel *engine) override;
 };
 
 #endif /* AI_SCANNER_HPP */

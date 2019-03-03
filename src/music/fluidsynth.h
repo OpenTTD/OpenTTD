@@ -17,25 +17,25 @@
 /** Music driver making use of FluidSynth. */
 class MusicDriver_FluidSynth : public MusicDriver {
 public:
-	/* virtual */ const char *Start(const char * const *param);
+	const char *Start(const char * const *param) override;
 
-	/* virtual */ void Stop();
+	void Stop() override;
 
-	/* virtual */ void PlaySong(const MusicSongInfo &song);
+	void PlaySong(const MusicSongInfo &song) override;
 
-	/* virtual */ void StopSong();
+	void StopSong() override;
 
-	/* virtual */ bool IsSongPlaying();
+	bool IsSongPlaying() override;
 
-	/* virtual */ void SetVolume(byte vol);
-	/* virtual */ const char *GetName() const { return "fluidsynth"; }
+	void SetVolume(byte vol) override;
+	const char *GetName() const override { return "fluidsynth"; }
 };
 
 /** Factory for the fluidsynth driver. */
 class FMusicDriver_FluidSynth : public DriverFactoryBase {
 public:
 	FMusicDriver_FluidSynth() : DriverFactoryBase(Driver::DT_MUSIC, 5, "fluidsynth", "FluidSynth MIDI Driver") {}
-	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_FluidSynth(); }
+	Driver *CreateInstance() const override { return new MusicDriver_FluidSynth(); }
 };
 
 #endif /* MUSIC_FLUIDSYNTH_H */

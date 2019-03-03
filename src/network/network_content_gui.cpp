@@ -64,7 +64,7 @@ struct ContentTextfileWindow : public TextfileWindow {
 		}
 	}
 
-	/* virtual */ void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_TF_CAPTION) {
 			SetDParam(0, this->GetTypeString());

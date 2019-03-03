@@ -17,17 +17,17 @@
 /** Implementation of the SDL sound driver. */
 class SoundDriver_SDL : public SoundDriver {
 public:
-	/* virtual */ const char *Start(const char * const *param);
+	const char *Start(const char * const *param) override;
 
-	/* virtual */ void Stop();
-	/* virtual */ const char *GetName() const { return "sdl"; }
+	void Stop() override;
+	const char *GetName() const override { return "sdl"; }
 };
 
 /** Factory for the SDL sound driver. */
 class FSoundDriver_SDL : public DriverFactoryBase {
 public:
 	FSoundDriver_SDL() : DriverFactoryBase(Driver::DT_SOUND, 5, "sdl", "SDL Sound Driver") {}
-	/* virtual */ Driver *CreateInstance() const { return new SoundDriver_SDL(); }
+	Driver *CreateInstance() const override { return new SoundDriver_SDL(); }
 };
 
 #endif /* SOUND_SDL_H */

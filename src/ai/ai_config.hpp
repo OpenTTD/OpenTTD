@@ -30,9 +30,9 @@ public:
 
 	class AIInfo *GetInfo() const;
 
-	/* virtual */ int GetSetting(const char *name) const;
-	/* virtual */ void SetSetting(const char *name, int value);
-	/* virtual */ void AddRandomDeviation();
+	int GetSetting(const char *name) const override;
+	void SetSetting(const char *name, int value) override;
+	void AddRandomDeviation() override;
 
 	/**
 	 * When ever the AI Scanner is reloaded, all infos become invalid. This
@@ -45,9 +45,9 @@ public:
 	bool ResetInfo(bool force_exact_match);
 
 protected:
-	/* virtual */ void PushExtraConfigList();
-	/* virtual */ void ClearConfigList();
-	/* virtual */ ScriptInfo *FindInfo(const char *name, int version, bool force_exact_match);
+	void PushExtraConfigList() override;
+	void ClearConfigList() override;
+	ScriptInfo *FindInfo(const char *name, int version, bool force_exact_match) override;
 };
 
 #endif /* AI_CONFIG_HPP */

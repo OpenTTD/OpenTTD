@@ -151,7 +151,7 @@ struct StringListReader : StringReader {
 	{
 	}
 
-	/* virtual */ char *ReadLine(char *buffer, const char *last)
+	char *ReadLine(char *buffer, const char *last) override
 	{
 		if (this->p == this->end) return NULL;
 
@@ -242,7 +242,7 @@ public:
 		this->FileScanner::Scan(".txt", directory, false);
 	}
 
-	/* virtual */ bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
+	bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename) override
 	{
 		if (strcmp(filename, exclude) == 0) return true;
 

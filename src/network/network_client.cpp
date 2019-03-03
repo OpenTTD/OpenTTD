@@ -84,7 +84,7 @@ struct PacketReader : LoadFilter {
 		this->buf += to_write;
 	}
 
-	/* virtual */ size_t Read(byte *rbuf, size_t size)
+	size_t Read(byte *rbuf, size_t size) override
 	{
 		/* Limit the amount to read to whatever we still have. */
 		size_t ret_size = size = min(this->written_bytes - this->read_bytes, size);
@@ -106,7 +106,7 @@ struct PacketReader : LoadFilter {
 		return ret_size;
 	}
 
-	/* virtual */ void Reset()
+	void Reset() override
 	{
 		this->read_bytes = 0;
 

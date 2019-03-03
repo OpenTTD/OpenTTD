@@ -2032,18 +2032,18 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 	uint i; ///< Iterator for the primary language tables.
 	uint j; ///< Iterator for the secondary language tables.
 
-	/* virtual */ void Reset()
+	void Reset() override
 	{
 		this->i = 0;
 		this->j = 0;
 	}
 
-	/* virtual */ FontSize DefaultSize()
+	FontSize DefaultSize() override
 	{
 		return FS_NORMAL;
 	}
 
-	/* virtual */ const char *NextString()
+	const char *NextString() override
 	{
 		if (this->i >= TEXT_TAB_END) return NULL;
 
@@ -2058,12 +2058,12 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 		return ret;
 	}
 
-	/* virtual */ bool Monospace()
+	bool Monospace() override
 	{
 		return false;
 	}
 
-	/* virtual */ void SetFontNames(FreeTypeSettings *settings, const char *font_name)
+	void SetFontNames(FreeTypeSettings *settings, const char *font_name) override
 	{
 #ifdef WITH_FREETYPE
 		strecpy(settings->small.font,  font_name, lastof(settings->small.font));

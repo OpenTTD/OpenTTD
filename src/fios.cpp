@@ -276,7 +276,7 @@ public:
 			fop(fop), callback_proc(callback_proc), file_list(file_list)
 	{}
 
-	/* virtual */ bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename);
+	bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename) override;
 };
 
 /**
@@ -673,7 +673,7 @@ public:
 		this->scanned = true;
 	}
 
-	/* virtual */ bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
+	bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename) override
 	{
 		FILE *f = FioFOpenFile(filename, "r", SCENARIO_DIR);
 		if (f == NULL) return false;

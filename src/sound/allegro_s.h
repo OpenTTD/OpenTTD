@@ -17,12 +17,12 @@
 /** Implementation of the allegro sound driver. */
 class SoundDriver_Allegro : public SoundDriver {
 public:
-	/* virtual */ const char *Start(const char * const *param);
+	const char *Start(const char * const *param);
 
-	/* virtual */ void Stop();
+	void Stop();
 
-	/* virtual */ void MainLoop();
-	/* virtual */ const char *GetName() const { return "allegro"; }
+	void MainLoop();
+	const char *GetName() const { return "allegro"; }
 };
 
 /** Factory for the allegro sound driver. */

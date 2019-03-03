@@ -17,19 +17,19 @@
 /** The dedicated server video driver. */
 class VideoDriver_Dedicated : public VideoDriver {
 public:
-	/* virtual */ const char *Start(const char * const *param);
+	const char *Start(const char * const *param) override;
 
-	/* virtual */ void Stop();
+	void Stop() override;
 
-	/* virtual */ void MakeDirty(int left, int top, int width, int height);
+	void MakeDirty(int left, int top, int width, int height) override;
 
-	/* virtual */ void MainLoop();
+	void MainLoop() override;
 
-	/* virtual */ bool ChangeResolution(int w, int h);
+	bool ChangeResolution(int w, int h) override;
 
-	/* virtual */ bool ToggleFullscreen(bool fullscreen);
-	/* virtual */ const char *GetName() const { return "dedicated"; }
-	/* virtual */ bool HasGUI() const { return false; }
+	bool ToggleFullscreen(bool fullscreen) override;
+	const char *GetName() const override { return "dedicated"; }
+	bool HasGUI() const override { return false; }
 };
 
 /** Factory for the dedicated server video driver. */
@@ -43,7 +43,7 @@ public:
 	static const int PRIORITY = 0;
 #endif
 	FVideoDriver_Dedicated() : DriverFactoryBase(Driver::DT_VIDEO, PRIORITY, "dedicated", "Dedicated Video Driver") {}
-	/* virtual */ Driver *CreateInstance() const { return new VideoDriver_Dedicated(); }
+	Driver *CreateInstance() const override { return new VideoDriver_Dedicated(); }
 };
 
 #endif /* VIDEO_DEDICATED_H */

@@ -17,27 +17,27 @@
 /** The SDL video driver. */
 class VideoDriver_SDL : public VideoDriver {
 public:
-	/* virtual */ const char *Start(const char * const *param);
+	const char *Start(const char * const *param) override;
 
-	/* virtual */ void Stop();
+	void Stop() override;
 
-	/* virtual */ void MakeDirty(int left, int top, int width, int height);
+	void MakeDirty(int left, int top, int width, int height) override;
 
-	/* virtual */ void MainLoop();
+	void MainLoop() override;
 
-	/* virtual */ bool ChangeResolution(int w, int h);
+	bool ChangeResolution(int w, int h) override;
 
-	/* virtual */ bool ToggleFullscreen(bool fullscreen);
+	bool ToggleFullscreen(bool fullscreen) override;
 
-	/* virtual */ bool AfterBlitterChange();
+	bool AfterBlitterChange() override;
 
-	/* virtual */ void AcquireBlitterLock();
+	void AcquireBlitterLock() override;
 
-	/* virtual */ void ReleaseBlitterLock();
+	void ReleaseBlitterLock() override;
 
-	/* virtual */ bool ClaimMousePointer();
+	bool ClaimMousePointer() override;
 
-	/* virtual */ const char *GetName() const { return "sdl"; }
+	const char *GetName() const override { return "sdl"; }
 private:
 	int PollEvent();
 	bool CreateMainSurface(uint w, uint h);
@@ -48,7 +48,7 @@ private:
 class FVideoDriver_SDL : public DriverFactoryBase {
 public:
 	FVideoDriver_SDL() : DriverFactoryBase(Driver::DT_VIDEO, 5, "sdl", "SDL Video Driver") {}
-	/* virtual */ Driver *CreateInstance() const { return new VideoDriver_SDL(); }
+	Driver *CreateInstance() const override { return new VideoDriver_SDL(); }
 };
 
 #endif /* VIDEO_SDL_H */

@@ -24,17 +24,17 @@ public:
 		byte data[];                   ///< Data, all zoomlevels.
 	};
 
-	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
-	/* virtual */ Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator);
+	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
+	Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) override;
 
-	/* virtual */ const char *GetName() { return "8bpp-optimized"; }
+	const char *GetName() override { return "8bpp-optimized"; }
 };
 
 /** Factory for the 8bpp blitter optimised for speed. */
 class FBlitter_8bppOptimized : public BlitterFactory {
 public:
 	FBlitter_8bppOptimized() : BlitterFactory("8bpp-optimized", "8bpp Optimized Blitter (compression + all-ZoomLevel cache)") {}
-	/* virtual */ Blitter *CreateInstance() { return new Blitter_8bppOptimized(); }
+	Blitter *CreateInstance() override { return new Blitter_8bppOptimized(); }
 };
 
 #endif /* BLITTER_8BPP_OPTIMIZED_HPP */

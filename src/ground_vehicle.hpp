@@ -92,14 +92,14 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	void PowerChanged();
 	void CargoChanged();
 	int GetAcceleration() const;
-	bool IsChainInDepot() const;
+	bool IsChainInDepot() const override;
 
 	/**
 	 * Common code executed for crashed ground vehicles
 	 * @param flooded was this vehicle flooded?
 	 * @return number of victims
 	 */
-	/* virtual */ uint Crash(bool flooded)
+	uint Crash(bool flooded) override
 	{
 		/* Crashed vehicles aren't going up or down */
 		for (T *v = T::From(this); v != NULL; v = v->Next()) {

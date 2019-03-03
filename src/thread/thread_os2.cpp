@@ -41,13 +41,13 @@ public:
 		thread = _beginthread(stThreadProc, NULL, 1048576, this);
 	}
 
-	/* virtual */ bool Exit()
+	bool Exit() override
 	{
 		_endthread();
 		return true;
 	}
 
-	/* virtual */ void Join()
+	void Join() override
 	{
 		DosWaitThread(&this->thread, DCWW_WAIT);
 		this->thread = 0;
@@ -106,13 +106,13 @@ public:
 		DosCreateEventSem(NULL, &event, 0, FALSE);
 	}
 
-	/* virtual */ ~ThreadMutex_OS2()
+	~ThreadMutex_OS2() override
 	{
 		DosCloseMutexSem(mutex);
 		DosCloseEventSem(event);
 	}
 
-	/* virtual */ void BeginCritical(bool allow_recursive = false)
+	void BeginCritical(bool allow_recursive = false) override
 	{
 		/* os2 mutex is recursive by itself */
 		DosRequestMutexSem(mutex, (unsigned long) SEM_INDEFINITE_WAIT);
@@ -120,14 +120,14 @@ public:
 		if (!allow_recursive && this->recursive_count != 1) NOT_REACHED();
 	}
 
-	/* virtual */ void EndCritical(bool allow_recursive = false)
+	void EndCritical(bool allow_recursive = false) override
 	{
 		if (!allow_recursive && this->recursive_count != 1) NOT_REACHED();
 		this->recursive_count--;
 		DosReleaseMutexSem(mutex);
 	}
 
-	/* virtual */ void WaitForSignal()
+	void WaitForSignal() override
 	{
 		assert(this->recursive_count == 1); // Do we need to call Begin/EndCritical multiple times otherwise?
 		this->EndCritical();
@@ -135,7 +135,7 @@ public:
 		this->BeginCritical();
 	}
 
-	/* virtual */ void SendSignal()
+	void SendSignal() override
 	{
 		DosPostEventSem(event);
 	}

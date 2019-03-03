@@ -20,26 +20,26 @@ private:
 	uint ticks; ///< Amount of ticks to run.
 
 public:
-	/* virtual */ const char *Start(const char * const *param);
+	const char *Start(const char * const *param) override;
 
-	/* virtual */ void Stop();
+	void Stop() override;
 
-	/* virtual */ void MakeDirty(int left, int top, int width, int height);
+	void MakeDirty(int left, int top, int width, int height) override;
 
-	/* virtual */ void MainLoop();
+	void MainLoop() override;
 
-	/* virtual */ bool ChangeResolution(int w, int h);
+	bool ChangeResolution(int w, int h) override;
 
-	/* virtual */ bool ToggleFullscreen(bool fullscreen);
-	/* virtual */ const char *GetName() const { return "null"; }
-	/* virtual */ bool HasGUI() const { return false; }
+	bool ToggleFullscreen(bool fullscreen) override;
+	const char *GetName() const override { return "null"; }
+	bool HasGUI() const override { return false; }
 };
 
 /** Factory the null video driver. */
 class FVideoDriver_Null : public DriverFactoryBase {
 public:
 	FVideoDriver_Null() : DriverFactoryBase(Driver::DT_VIDEO, 0, "null", "Null Video Driver") {}
-	/* virtual */ Driver *CreateInstance() const { return new VideoDriver_Null(); }
+	Driver *CreateInstance() const override { return new VideoDriver_Null(); }
 };
 
 #endif /* VIDEO_NULL_H */

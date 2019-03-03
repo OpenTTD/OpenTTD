@@ -45,7 +45,7 @@ public:
 	RawText(const char *text);
 	~RawText();
 
-	/* virtual */ const char *GetEncodedText() { return this->text; }
+	const char *GetEncodedText() override { return this->text; }
 private:
 	const char *text;
 };
