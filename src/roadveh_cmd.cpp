@@ -1593,7 +1593,8 @@ bool RoadVehicle::Tick()
 	this->tick_counter++;
 
 	if (this->IsFrontEngine()) {
-		if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
+		bool pause_running_cost = (this->current_order.GetType() == OT_LOADING || this->current_order.GetType() == OT_LEAVESTATION) && IsStandardRoadStopTile(this->tile);
+		if (!(this->vehstatus & VS_STOPPED) && !pause_running_cost) this->running_ticks++;
 		return RoadVehController(this);
 	}
 
