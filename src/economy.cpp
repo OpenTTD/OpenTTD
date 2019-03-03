@@ -293,8 +293,15 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	 * are the current local company. */
 	Backup<CompanyByte> cur_company(_current_company, old_owner, FILE_LINE);
 #ifdef ENABLE_NETWORK
-	/* In all cases, make spectators of clients connected to that company */
-	if (_networking) NetworkClientsToSpectators(old_owner);
+	if (_networking) {
+		if (Company::IsValidHumanID(new_owner) && Company::Get(new_owner)->settings.merge_players) {
+			/* Move clients to the new company */
+			NetworkClientsToCompany(old_owner, new_owner);
+		} else {
+			/* Make spectators of clients connected to that company */
+			NetworkClientsToSpectators(old_owner);
+		}
+	}
 #endif /* ENABLE_NETWORK */
 	if (old_owner == _local_company) {
 		/* Single player cheated to AI company.

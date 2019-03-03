@@ -313,6 +313,8 @@ static const SaveLoad _company_settings_desc[] = {
 	SLE_CONDVAR(Company, settings.vehicle.servint_aircraft,  SLE_UINT16,     SLV_120, SL_MAX_VERSION),
 	SLE_CONDVAR(Company, settings.vehicle.servint_ships,     SLE_UINT16,     SLV_120, SL_MAX_VERSION),
 
+	SLE_CONDVAR(Company, settings.merge_players,               SLE_BOOL, SLV_MERGE_PLAYERS, SL_MAX_VERSION),
+
 	SLE_CONDNULL(63, SLV_2, SLV_144), // old reserved space
 
 	SLE_END()
@@ -334,6 +336,8 @@ static const SaveLoad _company_settings_skip_desc[] = {
 	SLE_CONDNULL(2, SLV_120, SL_MAX_VERSION),    // settings.vehicle.servint_roadveh
 	SLE_CONDNULL(2, SLV_120, SL_MAX_VERSION),    // settings.vehicle.servint_aircraft
 	SLE_CONDNULL(2, SLV_120, SL_MAX_VERSION),    // settings.vehicle.servint_ships
+
+	SLE_CONDNULL(1, SLV_MERGE_PLAYERS, SL_MAX_VERSION),    // settings.merge_players
 
 	SLE_CONDNULL(63, SLV_2, SLV_144), // old reserved space
 

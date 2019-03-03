@@ -546,6 +546,7 @@ struct CompanySettings {
 	uint32 engine_renew_money;               ///< minimum amount of money before autorenew is used
 	bool renew_keep_length;                  ///< sell some wagons if after autoreplace the train is longer than before
 	VehicleDefaultSettings vehicle;          ///< default settings for vehicles
+	bool merge_players;                      ///< move players from offering company to purchasing company on buyout
 };
 
 /** All settings together for the game. */

@@ -3080,6 +3080,13 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_MERGE_PLAYERS)) {
+		Company * c;
+		FOR_ALL_COMPANIES(c) {
+			c->settings.merge_players = false;
+		}
+	}
+
 	/* Station acceptance is some kind of cache */
 	if (IsSavegameVersionBefore(SLV_127)) {
 		Station *st;

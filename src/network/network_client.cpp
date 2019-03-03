@@ -1240,6 +1240,26 @@ void NetworkClientsToSpectators(CompanyID cid)
 }
 
 /**
+ * Move the clients of a company to another company.
+ * @param cid_from The company to move the clients from.
+ * @param cid_to The company to move the clients to.
+ */
+void NetworkClientsToCompany(CompanyID cid_from, CompanyID cid_to)
+{
+	if (!_network_server) return;
+
+	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+
+	NetworkClientInfo *ci;
+	FOR_ALL_CLIENT_INFOS(ci) {
+		if (ci->client_playas != cid_from) continue;
+		NetworkServerDoMove(ci->client_id, cid_to);
+	}
+
+	cur_company.Restore();
+}
+
+/**
  * Send the server our name.
  */
 void NetworkUpdateClientName()
