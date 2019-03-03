@@ -1683,7 +1683,7 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS `$sdl_config --cflags | sed 's@-D_GNU_SOURCE[^ ]*@@'`"
 		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ]; then
 			if [ "$enable_static" != "0" ]; then
-				LIBS="$LIBS `$sdl_config --static-libs`"
+				LIBS="$LIBS `$sdl_config --static --libs`"
 			else
 				LIBS="$LIBS `$sdl_config --libs`"
 			fi
