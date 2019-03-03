@@ -21,12 +21,12 @@ const char *GetTextfile(TextfileType type, Subdirectory dir, const char *filenam
 
 /** Window for displaying a textfile */
 struct TextfileWindow : public Window, MissingGlyphSearcher {
-	TextfileType file_type;              ///< Type of textfile to view.
-	Scrollbar *vscroll;                  ///< Vertical scrollbar.
-	Scrollbar *hscroll;                  ///< Horizontal scrollbar.
-	char *text;                          ///< Lines of text from the NewGRF's textfile.
-	SmallVector<const char *, 64> lines; ///< #text, split into lines in a table with lines.
-	uint search_iterator;                ///< Iterator for the font check search.
+	TextfileType file_type;          ///< Type of textfile to view.
+	Scrollbar *vscroll;              ///< Vertical scrollbar.
+	Scrollbar *hscroll;              ///< Horizontal scrollbar.
+	char *text;                      ///< Lines of text from the NewGRF's textfile.
+	std::vector<const char *> lines; ///< #text, split into lines in a table with lines.
+	uint search_iterator;            ///< Iterator for the font check search.
 
 	static const int TOP_SPACING    = WD_FRAMETEXT_TOP;    ///< Additional spacing at the top of the #WID_TF_BACKGROUND widget.
 	static const int BOTTOM_SPACING = WD_FRAMETEXT_BOTTOM; ///< Additional spacing at the bottom of the #WID_TF_BACKGROUND widget.

@@ -17,7 +17,7 @@
 
 #include "../safeguards.h"
 
-static SmallVector<RailTypeLabel, RAILTYPE_END> _railtype_list;
+static std::vector<RailTypeLabel> _railtype_list;
 
 /**
  * Test if any saved rail type labels are different to the currently loaded
@@ -42,7 +42,7 @@ static bool NeedRailTypeConversion()
 void AfterLoadLabelMaps()
 {
 	if (NeedRailTypeConversion()) {
-		SmallVector<RailType, RAILTYPE_END> railtype_conversion_map;
+		std::vector<RailType> railtype_conversion_map;
 
 		for (uint i = 0; i < _railtype_list.size(); i++) {
 			RailType r = GetRailTypeByLabel(_railtype_list[i]);

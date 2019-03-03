@@ -26,7 +26,7 @@ enum PoolType {
 };
 DECLARE_ENUM_AS_BIT_SET(PoolType)
 
-typedef SmallVector<struct PoolBase *, 4> PoolVector; ///< Vector of pointers to PoolBase
+typedef std::vector<struct PoolBase *> PoolVector; ///< Vector of pointers to PoolBase
 
 /** Base class for base of all pools. */
 struct PoolBase {

@@ -172,7 +172,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	uint8 num_params;                              ///< Number of used parameters
 	uint8 num_valid_params;                        ///< NOSAVE: Number of valid parameters (action 0x14)
 	uint8 palette;                                 ///< GRFPalette, bitset
-	SmallVector<GRFParameterInfo *, 4> param_info; ///< NOSAVE: extra information about the parameters
+	std::vector<GRFParameterInfo *> param_info; ///< NOSAVE: extra information about the parameters
 	bool has_param_defaults;                       ///< NOSAVE: did this newgrf specify any defaults for it's parameters
 
 	struct GRFConfig *next;                        ///< NOSAVE: Next item in the linked list

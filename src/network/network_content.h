@@ -16,9 +16,9 @@
 #include "core/tcp_http.h"
 
 /** Vector with content info */
-typedef SmallVector<ContentInfo *, 16> ContentVector;
+typedef std::vector<ContentInfo *> ContentVector;
 /** Vector with constant content info */
-typedef SmallVector<const ContentInfo *, 16> ConstContentVector;
+typedef std::vector<const ContentInfo *> ConstContentVector;
 
 /** Iterator for the content vector */
 typedef ContentInfo **ContentIterator;
@@ -66,11 +66,11 @@ struct ContentCallback {
  */
 class ClientNetworkContentSocketHandler : public NetworkContentSocketHandler, ContentCallback, HTTPCallback {
 protected:
-	typedef SmallVector<ContentID, 4> ContentIDList; ///< List of content IDs to (possibly) select.
-	SmallVector<ContentCallback *, 2> callbacks; ///< Callbacks to notify "the world"
+	typedef std::vector<ContentID> ContentIDList; ///< List of content IDs to (possibly) select.
+	std::vector<ContentCallback *> callbacks; ///< Callbacks to notify "the world"
 	ContentIDList requested;                     ///< ContentIDs we already requested (so we don't do it again)
 	ContentVector infos;                         ///< All content info we received
-	SmallVector<char, 1024> http_response;       ///< The HTTP response to the requests we've been doing
+	std::vector<char> http_response;       ///< The HTTP response to the requests we've been doing
 	int http_response_index;                     ///< Where we are, in the response, with handling it
 
 	FILE *curFile;        ///< Currently downloaded file

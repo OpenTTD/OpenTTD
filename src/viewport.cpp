@@ -153,10 +153,10 @@ enum SpriteCombineMode {
 	SPRITE_COMBINE_ACTIVE,   ///< %Sprite combining is active. #AddSortableSpriteToDraw outputs child sprites.
 };
 
-typedef SmallVector<TileSpriteToDraw, 64> TileSpriteToDrawVector;
-typedef SmallVector<StringSpriteToDraw, 4> StringSpriteToDrawVector;
-typedef SmallVector<ParentSpriteToDraw, 64> ParentSpriteToDrawVector;
-typedef SmallVector<ChildScreenSpriteToDraw, 16> ChildScreenSpriteToDrawVector;
+typedef std::vector<TileSpriteToDraw> TileSpriteToDrawVector;
+typedef std::vector<StringSpriteToDraw> StringSpriteToDrawVector;
+typedef std::vector<ParentSpriteToDraw> ParentSpriteToDrawVector;
+typedef std::vector<ChildScreenSpriteToDraw> ChildScreenSpriteToDrawVector;
 
 /** Data structure storing rendering information */
 struct ViewportDrawer {

@@ -152,7 +152,7 @@ private:
 		return num_blocks > 0 && this->output_buffer[num_blocks - 1].HasRoom();
 	}
 
-	typedef SmallVector<OutputBuffer, 2> OutputBufferVector; ///< Vector type for output buffers.
+	typedef std::vector<OutputBuffer> OutputBufferVector; ///< Vector type for output buffers.
 	OutputBufferVector output_buffer; ///< Vector of blocks containing the stored output.
 };
 

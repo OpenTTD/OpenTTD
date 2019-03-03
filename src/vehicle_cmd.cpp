@@ -346,8 +346,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		v = v->First();
 	}
 
-	static SmallVector<RefitResult, 16> refit_result;
-	refit_result.clear();
+	std::vector<RefitResult> refit_result;
 
 	v->InvalidateNewGRFCacheOfChain();
 	byte actual_subtype = new_subtype;

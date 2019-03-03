@@ -121,7 +121,7 @@ private:
 	uint tiny_step_height; ///< Step height for the group list
 	Scrollbar *group_sb;
 
-	SmallVector<int, 16> indents; ///< Indentation levels
+	std::vector<int> indents; ///< Indentation levels
 
 	Dimension column_size[VGC_END]; ///< Size of the columns in the group list.
 

@@ -1728,7 +1728,7 @@ struct NetworkClientListPopupWindow : Window {
 	uint sel_index;
 	ClientID client_id;
 	Point desired_location;
-	SmallVector<ClientListAction, 2> actions; ///< Actions to execute
+	std::vector<ClientListAction> actions; ///< Actions to execute
 
 	/**
 	 * Add an action to the list of actions to execute.

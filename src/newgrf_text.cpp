@@ -167,7 +167,7 @@ static byte _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
  */
 int LanguageMap::GetMapping(int newgrf_id, bool gender) const
 {
-	const SmallVector<Mapping, 1> &map = gender ? this->gender_map : this->case_map;
+	const std::vector<Mapping> &map = gender ? this->gender_map : this->case_map;
 	for (const Mapping &m : map) {
 		if (m.newgrf_id == newgrf_id) return m.openttd_id;
 	}
@@ -182,7 +182,7 @@ int LanguageMap::GetMapping(int newgrf_id, bool gender) const
  */
 int LanguageMap::GetReverseMapping(int openttd_id, bool gender) const
 {
-	const SmallVector<Mapping, 1> &map = gender ? this->gender_map : this->case_map;
+	const std::vector<Mapping> &map = gender ? this->gender_map : this->case_map;
 	for (const Mapping &m : map) {
 		if (m.openttd_id == openttd_id) return m.newgrf_id;
 	}

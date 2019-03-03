@@ -435,7 +435,7 @@ public:
 		void RemoveEdge(NodeID to);
 	};
 
-	typedef SmallVector<BaseNode, 16> NodeVector;
+	typedef std::vector<BaseNode> NodeVector;
 	typedef SmallMatrix<BaseEdge> EdgeMatrix;
 
 	/** Minimum effective distance for timeout calculation. */

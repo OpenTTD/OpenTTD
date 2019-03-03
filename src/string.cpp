@@ -624,8 +624,8 @@ class IcuStringIterator : public StringIterator
 	icu::BreakIterator *char_itr; ///< ICU iterator for characters.
 	icu::BreakIterator *word_itr; ///< ICU iterator for words.
 
-	SmallVector<UChar, 32> utf16_str;      ///< UTF-16 copy of the string.
-	SmallVector<size_t, 32> utf16_to_utf8; ///< Mapping from UTF-16 code point position to index in the UTF-8 source string.
+	std::vector<UChar> utf16_str;      ///< UTF-16 copy of the string.
+	std::vector<size_t> utf16_to_utf8; ///< Mapping from UTF-16 code point position to index in the UTF-8 source string.
 
 public:
 	IcuStringIterator() : char_itr(NULL), word_itr(NULL)

@@ -24,7 +24,7 @@ char *_hotkeys_file;
  * List of all HotkeyLists.
  * This is a pointer to ensure initialisation order with the various static HotkeyList instances.
  */
-static SmallVector<HotkeyList*, 16> *_hotkey_lists = NULL;
+static std::vector<HotkeyList*> *_hotkey_lists = NULL;
 
 /** String representation of a keycode */
 struct KeycodeNames {
@@ -254,7 +254,7 @@ void Hotkey::AddKeycode(uint16 keycode)
 HotkeyList::HotkeyList(const char *ini_group, Hotkey *items, GlobalHotkeyHandlerFunc global_hotkey_handler) :
 	global_hotkey_handler(global_hotkey_handler), ini_group(ini_group), items(items)
 {
-	if (_hotkey_lists == NULL) _hotkey_lists = new SmallVector<HotkeyList*, 16>();
+	if (_hotkey_lists == NULL) _hotkey_lists = new std::vector<HotkeyList*>();
 	_hotkey_lists->push_back(this);
 }
 

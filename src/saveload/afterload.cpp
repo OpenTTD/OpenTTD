@@ -2195,7 +2195,7 @@ bool AfterLoadGame()
 		/* Animated tiles would sometimes not be actually animated or
 		 * in case of old savegames duplicate. */
 
-		extern SmallVector<TileIndex, 256> _animated_tiles;
+		extern std::vector<TileIndex> _animated_tiles;
 
 		for (auto tile = _animated_tiles.begin(); tile < _animated_tiles.end(); /* Nothing */) {
 			/* Remove if tile is not animated */
@@ -2939,7 +2939,7 @@ bool AfterLoadGame()
 		 * So, make articulated parts catch up. */
 		RoadVehicle *v;
 		bool roadside = _settings_game.vehicle.road_side == 1;
-		SmallVector<uint, 16> skip_frames;
+		std::vector<uint> skip_frames;
 		FOR_ALL_ROADVEHICLES(v) {
 			if (!v->IsFrontEngine()) continue;
 			skip_frames.clear();

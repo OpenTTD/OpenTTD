@@ -29,7 +29,7 @@ namespace SQConvert {
 	 *  comes out of scope. Useful to make sure you can use stredup(),
 	 *  without leaking memory.
 	 */
-	struct SQAutoFreePointers : SmallVector<void *, 1> {
+	struct SQAutoFreePointers : std::vector<void *> {
 		~SQAutoFreePointers()
 		{
 			for (uint i = 0; i < std::vector<void *>::size(); i++) free(std::vector<void *>::operator[](i));
@@ -132,7 +132,7 @@ namespace SQConvert {
 		sq_pushobject(vm, obj);
 		sq_pushnull(vm);
 
-		SmallVector<int32, 2> data;
+		std::vector<int32> data;
 
 		while (SQ_SUCCEEDED(sq_next(vm, -2))) {
 			SQInteger tmp;

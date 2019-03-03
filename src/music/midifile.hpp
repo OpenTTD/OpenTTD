@@ -24,7 +24,7 @@ struct MidiFile {
 	struct DataBlock {
 		uint32 ticktime;           ///< tick number since start of file this block should be triggered at
 		uint32 realtime;           ///< real-time (microseconds) since start of file this block should be triggered at
-		SmallVector<byte, 8> data; ///< raw midi data contained in block
+		std::vector<byte> data; ///< raw midi data contained in block
 		DataBlock(uint32 _ticktime = 0) : ticktime(_ticktime) { }
 	};
 	struct TempoChange {

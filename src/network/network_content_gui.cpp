@@ -160,7 +160,7 @@ void BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(const ContentInf
 /** Window for showing the download status of content */
 struct NetworkContentDownloadStatusWindow : public BaseNetworkContentDownloadStatusWindow {
 private:
-	SmallVector<ContentType, 4> receivedTypes;     ///< Types we received so we can update their cache
+	std::vector<ContentType> receivedTypes;     ///< Types we received so we can update their cache
 
 public:
 	/**

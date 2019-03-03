@@ -442,7 +442,7 @@ static void ReallyClearObjectTile(Object *o)
 	delete o;
 }
 
-SmallVector<ClearedObjectArea, 4> _cleared_object_areas;
+std::vector<ClearedObjectArea> _cleared_object_areas;
 
 /**
  * Find the entry in _cleared_object_areas which occupies a certain tile.

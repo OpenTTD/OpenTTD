@@ -18,7 +18,7 @@
 
 #include "../safeguards.h"
 
-extern SmallVector<TileIndex, 256> _animated_tiles;
+extern std::vector<TileIndex> _animated_tiles;
 
 /**
  * Save the ANIT chunk.

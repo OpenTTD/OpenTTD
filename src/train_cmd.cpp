@@ -814,7 +814,7 @@ static Train *FindGoodVehiclePos(const Train *src)
 }
 
 /** Helper type for lists/vectors of trains */
-typedef SmallVector<Train *, 16> TrainList;
+typedef std::vector<Train *> TrainList;
 
 /**
  * Make a backup of a train into a train list.

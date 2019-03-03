@@ -2155,7 +2155,7 @@ next_cargo: ;
 struct IndustryCargoesWindow : public Window {
 	static const int HOR_TEXT_PADDING, VERT_TEXT_PADDING;
 
-	typedef SmallVector<CargoesRow, 4> Fields;
+	typedef std::vector<CargoesRow> Fields;
 
 	Fields fields;  ///< Fields to display in the #WID_IC_PANEL.
 	uint ind_cargo; ///< If less than #NUM_INDUSTRYTYPES, an industry type, else a cargo id + NUM_INDUSTRYTYPES.

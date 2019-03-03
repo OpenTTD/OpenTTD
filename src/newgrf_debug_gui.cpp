@@ -47,7 +47,7 @@
 #include "safeguards.h"
 
 /** The sprite picker. */
-NewGrfDebugSpritePicker _newgrf_debug_sprite_picker = { SPM_NONE, NULL, 0, SmallVector<SpriteID, 256>() };
+NewGrfDebugSpritePicker _newgrf_debug_sprite_picker = { SPM_NONE, NULL, 0, std::vector<SpriteID>() };
 
 /**
  * Get the feature index related to the window number.
@@ -894,7 +894,7 @@ struct SpriteAlignerWindow : Window {
 				const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
 				int step_size = nwid->resize_y;
 
-				SmallVector<SpriteID, 256> &list = _newgrf_debug_sprite_picker.sprites;
+				std::vector<SpriteID> &list = _newgrf_debug_sprite_picker.sprites;
 				int max = min<int>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), list.size());
 
 				int y = r.top + WD_FRAMERECT_TOP;

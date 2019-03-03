@@ -19,7 +19,7 @@
 #include "safeguards.h"
 
 /** The table/list with animated tiles. */
-SmallVector<TileIndex, 256> _animated_tiles;
+std::vector<TileIndex> _animated_tiles;
 
 /**
  * Removes the given tile from the animated tile table.

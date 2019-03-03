@@ -65,7 +65,7 @@
  * served as subject to the initial testing of this codec. */
 
 /** List of all loaded GRF files */
-static SmallVector<GRFFile *, 16> _grf_files;
+static std::vector<GRFFile *> _grf_files;
 
 /** Miscellaneous GRF features, set by Action 0x0D, parameter 0x9E */
 byte _misc_grf_features = 0;
@@ -459,7 +459,7 @@ struct StringIDMapping {
 	StringID source;  ///< Source StringID (GRF local).
 	StringID *target; ///< Destination for mapping result.
 };
-typedef SmallVector<StringIDMapping, 16> StringIDMappingVector;
+typedef std::vector<StringIDMapping> StringIDMappingVector;
 static StringIDMappingVector _string_to_grf_mapping;
 
 /**
@@ -1901,7 +1901,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					/* On error, bail out immediately. Temporary GRF data was already freed */
 					if (_cur.skip_sprites < 0) return CIR_DISABLED;
 
-					static SmallVector<DrawTileSeqStruct, 8> tmp_layout;
+					static std::vector<DrawTileSeqStruct> tmp_layout;
 					tmp_layout.clear();
 					for (;;) {
 						/* no relative bounding box support */
@@ -4787,7 +4787,7 @@ static void NewSpriteGroup(ByteReader *buf)
 				case 2: group->size = DSG_SIZE_DWORD; varsize = 4; break;
 			}
 
-			static SmallVector<DeterministicSpriteGroupAdjust, 16> adjusts;
+			static std::vector<DeterministicSpriteGroupAdjust> adjusts;
 			adjusts.clear();
 
 			/* Loop through the var adjusts. Unfortunately we don't know how many we have

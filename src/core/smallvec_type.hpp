@@ -34,22 +34,6 @@ inline bool include(std::vector<T>& vec, const T &item)
 	return is_member;
 }
 
-
-/**
- * Simple vector template class.
- *
- * @note There are no asserts in the class so you have
- *       to care about that you grab an item which is
- *       inside the list.
- *
- * @tparam T The type of the items stored
- * @tparam S The steps of allocation
- */
-
-
-template <typename T, uint S>
-using SmallVector = std::vector<T>;
-
 /**
  * Helper function to get the index of an item
  * Consider using std::set, std::unordered_set or std::flat_set in new code
@@ -73,18 +57,17 @@ int find_index(std::vector<T> const& vec, T const& item)
  * Consider using std::back_inserter in new code
  *
  * @param vec A reference to the vector to be extended
- * @param num The number of elements to default-construct
+ * @param num Number of elements to be default-constructed
  *
  * @return Pointer to the first new element
  */
 template <typename T>
-inline T* grow(std::vector<T>& vec, std::size_t num)
+T* grow(std::vector<T>& vec, std::size_t num)
 {
-	const std::size_t pos = vec.size();
+	std::size_t const pos = vec.size();
 	vec.resize(pos + num);
 	return vec.data() + pos;
 }
-
 
 /**
  * Simple vector template class, with automatic free.
@@ -97,7 +80,7 @@ inline T* grow(std::vector<T>& vec, std::size_t num)
  * @param S The steps of allocation
  */
 template <typename T, uint S>
-class AutoFreeSmallVector : public SmallVector<T, S> {
+class AutoFreeSmallVector : public std::vector<T> {
 public:
 	~AutoFreeSmallVector()
 	{
@@ -128,7 +111,7 @@ public:
  * @param S The steps of allocation
  */
 template <typename T, uint S>
-class AutoDeleteSmallVector : public SmallVector<T, S> {
+class AutoDeleteSmallVector : public std::vector<T> {
 public:
 	~AutoDeleteSmallVector()
 	{

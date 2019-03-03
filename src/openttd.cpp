@@ -1174,7 +1174,7 @@ static void CheckCaches()
 	if (_debug_desync_level <= 1) return;
 
 	/* Check the town caches. */
-	SmallVector<TownCache, 4> old_town_caches;
+	std::vector<TownCache> old_town_caches;
 	Town *t;
 	FOR_ALL_TOWNS(t) {
 		old_town_caches.push_back(t->cache);
@@ -1193,7 +1193,7 @@ static void CheckCaches()
 	}
 
 	/* Check company infrastructure cache. */
-	SmallVector<CompanyInfrastructure, 4> old_infrastructure;
+	std::vector<CompanyInfrastructure> old_infrastructure;
 	Company *c;
 	FOR_ALL_COMPANIES(c) old_infrastructure.push_back(c->infrastructure);
 

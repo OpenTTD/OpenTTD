@@ -655,7 +655,7 @@ struct ScenarioIdentifier {
 /**
  * Scanner to find the unique IDs of scenarios
  */
-class ScenarioScanner : protected FileScanner, public SmallVector<ScenarioIdentifier, 8> {
+class ScenarioScanner : protected FileScanner, public std::vector<ScenarioIdentifier> {
 	bool scanned; ///< Whether we've already scanned
 public:
 	/** Initialise */
