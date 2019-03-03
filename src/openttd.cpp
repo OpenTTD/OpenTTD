@@ -997,14 +997,14 @@ static void MakeNewEditorWorldDone()
 	SetLocalCompany(OWNER_NONE);
 }
 
-static void MakeNewEditorWorld()
+static void MakeNewEditorWorld(bool from_heightmap)
 {
 	_game_mode = GM_EDITOR;
 
 	ResetGRFConfig(true);
 
 	GenerateWorldSetCallback(&MakeNewEditorWorldDone);
-	GenerateWorld(GWM_EMPTY, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
+	GenerateWorld(from_heightmap ? GWM_HEIGHTMAP : GWM_EMPTY, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 }
 
 /**
@@ -1048,7 +1048,7 @@ bool SafeLoad(const char *filename, SaveLoadOperation fop, DetailedFileType dft,
 			switch (ogm) {
 				default:
 				case GM_MENU:   LoadIntroGame();      break;
-				case GM_EDITOR: MakeNewEditorWorld(); break;
+				case GM_EDITOR: MakeNewEditorWorld(false); break;
 			}
 			return false;
 
@@ -1064,7 +1064,7 @@ void SwitchToMode(SwitchMode new_mode)
 	if (new_mode != SM_SAVE_GAME) {
 		/* If the network is active, make it not-active */
 		if (_networking) {
-			if (_network_server && (new_mode == SM_LOAD_GAME || new_mode == SM_NEWGAME || new_mode == SM_RESTARTGAME)) {
+			if (_network_server && (new_mode == SM_LOAD_GAME || new_mode == SM_START_HEIGHTMAP || new_mode == SM_NEWGAME || new_mode == SM_RESTARTGAME)) {
 				NetworkReboot();
 			} else {
 				NetworkDisconnect();
@@ -1094,7 +1094,7 @@ void SwitchToMode(SwitchMode new_mode)
 
 	switch (new_mode) {
 		case SM_EDITOR: // Switch to scenario editor
-			MakeNewEditorWorld();
+			MakeNewEditorWorld(false);
 			break;
 
 		case SM_RESTARTGAME: // Restart --> Current settings preserved
@@ -1155,10 +1155,7 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		case SM_LOAD_HEIGHTMAP: // Load heightmap from scenario editor
-			SetLocalCompany(OWNER_NONE);
-
-			GenerateWorld(GWM_HEIGHTMAP, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
-			MarkWholeScreenDirty();
+			MakeNewEditorWorld(true);
 			break;
 
 		case SM_LOAD_SCENARIO: { // Load scenario from scenario editor

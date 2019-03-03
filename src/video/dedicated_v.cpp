@@ -21,6 +21,7 @@
 #include "../core/random_func.hpp"
 #include "../saveload/saveload.h"
 #include "../thread.h"
+#include "../heightmap.h"
 #include "dedicated_v.h"
 
 #ifdef __OS2__
@@ -262,21 +263,36 @@ void VideoDriver_Dedicated::MainLoop()
 	_current_company = _local_company = COMPANY_SPECTATOR;
 
 	/* If SwitchMode is SM_LOAD_GAME, it means that the user used the '-g' options */
-	if (_switch_mode != SM_LOAD_GAME) {
+	if (_switch_mode != SM_LOAD_GAME && _switch_mode != SM_START_HEIGHTMAP) {
 		StartNewGameWithoutGUI(GENERATE_NEW_SEED);
 		SwitchToMode(_switch_mode);
 		_switch_mode = SM_NONE;
 	} else {
+		SwitchMode old_switch_mode = _switch_mode;
 		_switch_mode = SM_NONE;
-		/* First we need to test if the savegame can be loaded, else we will end up playing the
-		 *  intro game... */
-		if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, GM_NORMAL, BASE_DIR)) {
+
+		/* First file load needs to be tested, defaulting to play the intro game */
+		bool loadable = false;
+		if (old_switch_mode == SM_LOAD_GAME) {
+			/* If the function returns false, it means there was a problem loading the savegame */
+			loadable = SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, GM_NORMAL, BASE_DIR);
+		}
+
+		if (old_switch_mode == SM_START_HEIGHTMAP) {
+			uint x = 0;
+			uint y = 0;
+
+			/* If the function returns false, it means there was a problem loading the heightmap */
+			loadable = GetHeightmapDimensions(_file_to_saveload.detail_ftype, _file_to_saveload.name, &x, &y);
+		}
+
+		if (!loadable) {
 			/* Loading failed, pop out.. */
 			DEBUG(net, 0, "Loading requested map failed, aborting");
 			_networking = false;
 		} else {
 			/* We can load this game, so go ahead */
-			SwitchToMode(SM_LOAD_GAME);
+			SwitchToMode(old_switch_mode);
 		}
 	}
 
