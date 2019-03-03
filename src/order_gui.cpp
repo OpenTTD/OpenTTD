@@ -399,7 +399,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				case VEH_SHIP:     facil = FACIL_DOCK;    break;
 				case VEH_TRAIN:    facil = FACIL_TRAIN;   break;
 				case VEH_AIRCRAFT: facil = FACIL_AIRPORT; break;
-				case VEH_ROAD:     facil = RoadVehicle::From(v)->IsBus() ? FACIL_BUS_STOP : FACIL_TRUCK_STOP; break;
+				case VEH_ROAD:     facil = FACIL_BUS_STOP | FACIL_TRUCK_STOP; break;
 				default: NOT_REACHED();
 			}
 			if (st->facilities & facil) {
