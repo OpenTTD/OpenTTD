@@ -82,7 +82,6 @@ set_default() {
 	with_iconv="1"
 	with_midi=""
 	with_midi_arg=""
-	with_libtimidity="1"
 	with_fluidsynth="1"
 	with_freetype="1"
 	with_fontconfig="1"
@@ -160,7 +159,6 @@ set_default() {
 		with_iconv
 		with_midi
 		with_midi_arg
-		with_libtimidity
 		with_fluidsynth
 		with_freetype
 		with_fontconfig
@@ -369,10 +367,6 @@ detect_params() {
 			--with-libpng)                with_png="2";;
 			--without-libpng)             with_png="0";;
 			--with-libpng=*)              with_png="$optarg";;
-
-			--with-libtimidity)           with_libtimidity="2";;
-			--without-libtimidity)        with_libtimidity="0";;
-			--with-libtimidity=*)         with_libtimidity="$optarg";;
 
 			--with-fluidsynth)            with_fluidsynth="2";;
 			--without-fluidsynth)         with_fluidsynth="0";;
@@ -895,7 +889,6 @@ check_params() {
 	detect_fontconfig
 	detect_icu_layout
 	detect_icu_sort
-	detect_libtimidity
 	detect_fluidsynth
 
 	if [ "$with_direct_music" != "0" ]; then
@@ -1810,17 +1803,6 @@ make_cflags_and_ldflags() {
 
 	if [ "$with_xaudio2" != "0" ]; then
 		CFLAGS="$CFLAGS -DWITH_XAUDIO2"
-	fi
-
-	if [ -n "$libtimidity_config" ]; then
-		CFLAGS="$CFLAGS -DLIBTIMIDITY"
-		CFLAGS="$CFLAGS `$libtimidity_config --cflags | tr '\n\r' '  '`"
-
-		if [ "$enable_static" != "0" ]; then
-			LIBS="$LIBS `$libtimidity_config --libs --static | tr '\n\r' '  '`"
-		else
-			LIBS="$LIBS `$libtimidity_config --libs | tr '\n\r' '  '`"
-		fi
 	fi
 
 	if [ -n "$fluidsynth" ]; then
@@ -2752,10 +2734,6 @@ detect_lzo2() {
 	detect_library "$with_lzo2" "lzo2" "liblzo2.a" "lzo/" "lzo1x.h"
 }
 
-detect_libtimidity() {
-	detect_pkg_config "$with_libtimidity" "libtimidity" "libtimidity_config" "0.1" "1"
-}
-
 detect_fluidsynth() {
 	detect_library "$with_fluidsynth" "fluidsynth" "" "" "fluidsynth.h"
 }
@@ -3544,8 +3522,6 @@ showhelp() {
 	echo "  --with-midi=midi               define which midi-player to use"
 	echo "  --with-midi-arg=arg            define which args to use for the"
 	echo "                                 midi-player"
-	echo "  --with-libtimidity[=\"pkg-config libtimidity\"]"
-	echo "                                 enables libtimidity support"
 	echo "  --with-fluidsynth              enables fluidsynth support"
 	echo "  --with-allegro[=\"pkg-config allegro\"]"
 	echo "                                 enables Allegro video driver support"
