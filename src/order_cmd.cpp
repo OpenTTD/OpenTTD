@@ -1798,7 +1798,6 @@ void CheckOrders(const Vehicle *v)
 				} else if (v->type == VEH_AIRCRAFT &&
 							(AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
 							(st->airport.GetFTA()->flags & AirportFTAClass::SHORT_STRIP) &&
-							_settings_game.vehicle.plane_crashes != 0 &&
 							!_cheats.no_jetcrash.value &&
 							message == INVALID_STRING_ID) {
 					message = STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY;
