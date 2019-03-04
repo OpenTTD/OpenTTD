@@ -63,7 +63,7 @@ typedef unsigned long in_addr_t;
 #	include <arpa/inet.h>
 #	include <net/if.h>
 /* According to glibc/NEWS, <ifaddrs.h> appeared in glibc-2.3. */
-#	if !defined(__sgi__) && !defined(SUNOS) && !defined(__HAIKU__) && !defined(__INNOTEK_LIBC__) \
+#	if !defined(__sgi__) && !defined(SUNOS) && !defined(__INNOTEK_LIBC__) \
 	   && !(defined(__GLIBC__) && (__GLIBC__ <= 2) && (__GLIBC_MINOR__ <= 2)) && !defined(__dietlibc__) && !defined(HPUX)
 /* If for any reason ifaddrs.h does not exist on your system, comment out
  *   the following two lines and an alternative way will be used to fetch
@@ -83,10 +83,6 @@ typedef unsigned long in_addr_t;
 #	include <sys/time.h>
 #	include <netdb.h>
 #endif /* UNIX */
-
-#ifdef __HAIKU__
-	#define IPV6_V6ONLY 27
-#endif
 
 /* OS/2 stuff */
 #if defined(__OS2__)

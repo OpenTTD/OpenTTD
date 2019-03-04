@@ -309,12 +309,18 @@ typedef unsigned char byte;
 #endif
 
 #if defined(TROUBLED_INTS)
-	/* Haiku's types for uint32/int32 are based on longs, which causes
-	 * trouble all over the place in OpenTTD. */
-	#define uint32 uint32_ugly_hack
-	#define int32 int32_ugly_hack
+	/* Haiku's types for uint32/int32/uint64/int64 are different than what
+	 * they are on other platforms; not in length, but how to print them.
+	 * So make them more like the other platforms, to make printf() etc a
+	 * little bit easier. */
+#	define uint32 uint32_ugly_hack
+#	define int32 int32_ugly_hack
+#	define uint64 uint64_ugly_hack
+#	define int64 int64_ugly_hack
 	typedef unsigned int uint32_ugly_hack;
 	typedef signed int int32_ugly_hack;
+	typedef unsigned __int64 uint64_ugly_hack;
+	typedef signed __int64 int64_ugly_hack;
 #else
 	typedef unsigned char    uint8;
 	typedef   signed char     int8;
