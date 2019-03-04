@@ -30,13 +30,6 @@
 #include <direct.h>
 #endif /* _WIN32 || __WATCOMC__ */
 
-#ifdef __MORPHOS__
-#ifdef stderr
-#undef stderr
-#endif
-#define stderr stdout
-#endif /* __MORPHOS__ */
-
 #include "../table/strgen_tables.h"
 
 #include "../safeguards.h"

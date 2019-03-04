@@ -162,7 +162,7 @@ const char *FiosBrowseTo(const FiosItem *item)
 			break;
 
 		case FIOS_TYPE_PARENT: {
-			/* Check for possible NULL ptr (not required for UNIXes, but AmigaOS-alikes) */
+			/* Check for possible NULL ptr */
 			char *s = strrchr(_fios_path, PATHSEPCHAR);
 			if (s != NULL && s != _fios_path) {
 				s[0] = '\0'; // Remove last path separator character, so we can go up one level.
@@ -170,11 +170,6 @@ const char *FiosBrowseTo(const FiosItem *item)
 			s = strrchr(_fios_path, PATHSEPCHAR);
 			if (s != NULL) {
 				s[1] = '\0'; // go up a directory
-#if defined(__MORPHOS__) || defined(__AMIGAOS__)
-			/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
-			} else if ((s = strrchr(_fios_path, ':')) != NULL) {
-				s[1] = '\0';
-#endif
 			}
 			break;
 		}
@@ -215,21 +210,7 @@ static void FiosMakeFilename(char *buf, const char *path, const char *name, cons
 	/* Don't append the extension if it is already there */
 	period = strrchr(name, '.');
 	if (period != NULL && strcasecmp(period, ext) == 0) ext = "";
-#if  defined(__MORPHOS__) || defined(__AMIGAOS__)
-	if (path != NULL) {
-		unsigned char sepchar = path[(strlen(path) - 1)];
-
-		if (sepchar != ':' && sepchar != '/') {
-			seprintf(buf, last, "%s" PATHSEP "%s%s", path, name, ext);
-		} else {
-			seprintf(buf, last, "%s%s%s", path, name, ext);
-		}
-	} else {
-		seprintf(buf, last, "%s%s", name, ext);
-	}
-#else
 	seprintf(buf, last, "%s" PATHSEP "%s%s", path, name, ext);
-#endif
 }
 
 /**

@@ -170,7 +170,7 @@ static void ShowHelp()
 		"  -P password         = Password to join company\n"
 		"  -D [ip][:port]      = Start dedicated server\n"
 		"  -l ip[:port]        = Redirect DEBUG()\n"
-#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(_WIN32)
+#if !defined(_WIN32)
 		"  -f                  = Fork into the background (dedicated only)\n"
 #endif
 #endif /* ENABLE_NETWORK */
@@ -497,7 +497,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	}
 };
 
-#if defined(UNIX) && !defined(__MORPHOS__)
+#if defined(UNIX)
 extern void DedicatedFork();
 #endif
 
@@ -516,7 +516,7 @@ static const OptionData _options[] = {
 	 GETOPT_SHORT_VALUE('l'),
 	 GETOPT_SHORT_VALUE('p'),
 	 GETOPT_SHORT_VALUE('P'),
-#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(_WIN32)
+#if !defined(_WIN32)
 	 GETOPT_SHORT_NOVAL('f'),
 #endif
 #endif /* ENABLE_NETWORK */
@@ -707,7 +707,7 @@ int openttd_main(int argc, char *argv[])
 	if (dedicated) DEBUG(net, 0, "Starting dedicated version %s", _openttd_revision);
 	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
 
-#if defined(UNIX) && !defined(__MORPHOS__)
+#if defined(UNIX)
 	/* We must fork here, or we'll end up without some resources we need (like sockets) */
 	if (_dedicated_forks) DedicatedFork();
 #endif

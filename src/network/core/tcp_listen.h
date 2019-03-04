@@ -118,11 +118,7 @@ public:
 		}
 
 		tv.tv_sec = tv.tv_usec = 0; // don't block at all.
-#if !defined(__MORPHOS__) && !defined(__AMIGA__)
 		if (select(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv) < 0) return false;
-#else
-		if (WaitSelect(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv, NULL) < 0) return false;
-#endif
 
 		/* accept clients.. */
 		for (SocketList::iterator s = sockets.Begin(); s != sockets.End(); s++) {

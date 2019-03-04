@@ -83,10 +83,3 @@ const byte _openttd_revision_tagged = !!ISTAG!!;
  * version, thus making comparisons on specific revisions easy.
  */
 const uint32 _openttd_newgrf_version = 1 << 28 | 10 << 24 | 0 << 20 | !!ISSTABLETAG!! << 19 | 28004;
-
-#ifdef __MORPHOS__
-/**
- * Variable used by MorphOS to show the version.
- */
-extern const char morphos_versions_tag[] = "$VER: OpenTTD !!VERSION!! (!!DATE!!) OpenTTD Team [MorphOS, PowerPC]";
-#endif

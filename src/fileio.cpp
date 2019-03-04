@@ -539,16 +539,6 @@ void FioCreateDirectory(const char *name)
 	CreateDirectory(OTTD2FS(name), NULL);
 #elif defined(OS2) && !defined(__INNOTEK_LIBC__)
 	mkdir(OTTD2FS(name));
-#elif defined(__MORPHOS__) || defined(__AMIGAOS__)
-	char buf[MAX_PATH];
-	strecpy(buf, name, lastof(buf));
-
-	size_t len = strlen(name) - 1;
-	if (buf[len] == '/') {
-		buf[len] = '\0'; // Kill pathsep, so mkdir() will not fail
-	}
-
-	mkdir(OTTD2FS(buf), 0755);
 #else
 	mkdir(OTTD2FS(name), 0755);
 #endif
@@ -1066,7 +1056,7 @@ void DetermineBasePaths(const char *exe)
 	AppendPathSeparator(tmp, lastof(tmp));
 	_searchpaths[SP_PERSONAL_DIR_XDG] = stredup(tmp);
 #endif
-#if defined(__MORPHOS__) || defined(__AMIGA__) || defined(DOS) || defined(OS2) || !defined(WITH_PERSONAL_DIR)
+#if defined(DOS) || defined(OS2) || !defined(WITH_PERSONAL_DIR)
 	_searchpaths[SP_PERSONAL_DIR] = NULL;
 #else
 #ifdef __HAIKU__
@@ -1109,13 +1099,9 @@ void DetermineBasePaths(const char *exe)
 	_searchpaths[SP_SHARED_DIR] = NULL;
 #endif
 
-#if defined(__MORPHOS__) || defined(__AMIGA__)
-	_searchpaths[SP_WORKING_DIR] = NULL;
-#else
 	if (getcwd(tmp, MAX_PATH) == NULL) *tmp = '\0';
 	AppendPathSeparator(tmp, lastof(tmp));
 	_searchpaths[SP_WORKING_DIR] = stredup(tmp);
-#endif
 
 	_do_scan_working_directory = DoScanWorkingDirectory();
 
@@ -1135,7 +1121,7 @@ void DetermineBasePaths(const char *exe)
 		}
 	}
 
-#if defined(__MORPHOS__) || defined(__AMIGA__) || defined(DOS) || defined(OS2)
+#if defined(DOS) || defined(OS2)
 	_searchpaths[SP_INSTALLATION_DIR] = NULL;
 #else
 	seprintf(tmp, lastof(tmp), "%s", GLOBAL_DATA_DIR);
@@ -1239,7 +1225,7 @@ void DeterminePaths(const char *exe)
 	}
 
 	/* Make the necessary folders */
-#if !defined(__MORPHOS__) && !defined(__AMIGA__) && defined(WITH_PERSONAL_DIR)
+#if defined(WITH_PERSONAL_DIR)
 	FioCreateDirectory(config_dir);
 	if (config_dir != _personal_dir) FioCreateDirectory(_personal_dir);
 #endif
