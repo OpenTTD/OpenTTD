@@ -1685,7 +1685,7 @@ public:
 		this->smallmap_window = NULL;
 	}
 
-	virtual void SetupSmallestSize(Window *w, bool init_array)
+	void SetupSmallestSize(Window *w, bool init_array) override
 	{
 		NWidgetBase *display = this->head;
 		NWidgetBase *bar = display->next;
@@ -1703,7 +1703,7 @@ public:
 		this->resize_y = min(display->resize_y, bar->resize_y);
 	}
 
-	virtual void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override
 	{
 		this->pos_x = x;
 		this->pos_y = y;
@@ -1727,7 +1727,7 @@ public:
 		bar->AssignSizePosition(ST_RESIZE, x, y + display_height, given_width, bar_height, rtl);
 	}
 
-	virtual NWidgetCore *GetWidgetFromPos(int x, int y)
+	NWidgetCore *GetWidgetFromPos(int x, int y) override
 	{
 		if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return NULL;
 		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
@@ -1737,7 +1737,7 @@ public:
 		return NULL;
 	}
 
-	virtual void Draw(const Window *w)
+	void Draw(const Window *w) override
 	{
 		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) child_wid->Draw(w);
 	}

@@ -364,7 +364,7 @@ struct DepotWindow : Window {
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget != WID_D_MATRIX) return;
 
@@ -422,7 +422,7 @@ struct DepotWindow : Window {
 		}
 	}
 
-	void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		if (widget != WID_D_CAPTION) return;
 
@@ -650,7 +650,7 @@ struct DepotWindow : Window {
 	uint flag_width;
 	uint flag_height;
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_D_MATRIX: {
@@ -701,12 +701,12 @@ struct DepotWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		this->generate_list = true;
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		if (this->generate_list) {
 			/* Generate the vehicle list
@@ -758,7 +758,7 @@ struct DepotWindow : Window {
 		this->DrawWidgets();
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_D_MATRIX: { // List
@@ -837,7 +837,7 @@ struct DepotWindow : Window {
 		}
 	}
 
-	virtual void OnQueryTextFinished(char *str)
+	void OnQueryTextFinished(char *str) override
 	{
 		if (str == NULL) return;
 
@@ -845,7 +845,7 @@ struct DepotWindow : Window {
 		DoCommandP(0, GetDepotIndex(this->window_number), 0, CMD_RENAME_DEPOT | CMD_MSG(STR_ERROR_CAN_T_RENAME_DEPOT), NULL, str);
 	}
 
-	virtual bool OnRightClick(Point pt, int widget)
+	bool OnRightClick(Point pt, int widget) override
 	{
 		if (widget != WID_D_MATRIX) return false;
 
@@ -906,7 +906,7 @@ struct DepotWindow : Window {
 	 * @param v the original vehicle to clone
 	 * @return Always true.
 	 */
-	virtual bool OnVehicleSelect(const Vehicle *v)
+	bool OnVehicleSelect(const Vehicle *v) override
 	{
 		if (_ctrl_pressed) {
 			/* Share-clone, do not open new viewport, and keep tool active */
@@ -921,7 +921,7 @@ struct DepotWindow : Window {
 		return true;
 	}
 
-	virtual void OnPlaceObjectAbort()
+	void OnPlaceObjectAbort() override
 	{
 		/* abort clone */
 		this->RaiseWidget(WID_D_CLONE);
@@ -939,7 +939,7 @@ struct DepotWindow : Window {
 		}
 	}
 
-	virtual void OnMouseDrag(Point pt, int widget)
+	void OnMouseDrag(Point pt, int widget) override
 	{
 		if (this->sel == INVALID_VEHICLE) return;
 		if (widget != this->hovered_widget) {
@@ -991,7 +991,7 @@ struct DepotWindow : Window {
 		this->SetWidgetDirty(widget);
 	}
 
-	virtual void OnDragDrop(Point pt, int widget)
+	void OnDragDrop(Point pt, int widget) override
 	{
 		switch (widget) {
 			case WID_D_MATRIX: {
@@ -1046,7 +1046,7 @@ struct DepotWindow : Window {
 		_cursor.vehchain = false;
 	}
 
-	virtual void OnTimeout()
+	void OnTimeout() override
 	{
 		if (!this->IsWidgetDisabled(WID_D_SELL)) {
 			this->RaiseWidget(WID_D_SELL);
@@ -1058,7 +1058,7 @@ struct DepotWindow : Window {
 		}
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_D_MATRIX);
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_D_MATRIX);
@@ -1069,7 +1069,7 @@ struct DepotWindow : Window {
 		}
 	}
 
-	virtual EventState OnCTRLStateChange()
+	EventState OnCTRLStateChange() override
 	{
 		if (this->sel != INVALID_VEHICLE) {
 			_cursor.vehchain = _ctrl_pressed;

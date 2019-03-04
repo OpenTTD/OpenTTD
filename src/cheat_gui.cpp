@@ -221,7 +221,7 @@ struct CheatWindow : Window {
 		this->InitNested();
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget != WID_C_PANEL) return;
 
@@ -283,7 +283,7 @@ struct CheatWindow : Window {
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget != WID_C_PANEL) return;
 
@@ -330,7 +330,7 @@ struct CheatWindow : Window {
 		size->height = this->header_height + WD_FRAMERECT_TOP + WD_PAR_VSEP_NORMAL + WD_FRAMERECT_BOTTOM + this->line_height * lengthof(_cheats_ui);
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_C_PANEL);
 		uint btn = (pt.y - wid->pos_y - WD_FRAMERECT_TOP - this->header_height) / this->line_height;
@@ -384,13 +384,13 @@ struct CheatWindow : Window {
 		this->SetDirty();
 	}
 
-	virtual void OnTimeout()
+	void OnTimeout() override
 	{
 		this->clicked = 0;
 		this->SetDirty();
 	}
 
-	virtual void OnQueryTextFinished(char *str)
+	void OnQueryTextFinished(char *str) override
 	{
 		/* Was 'cancel' pressed or nothing entered? */
 		if (str == NULL || StrEmpty(str)) return;

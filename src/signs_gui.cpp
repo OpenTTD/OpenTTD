@@ -166,7 +166,7 @@ struct SignListWindow : Window, SignList {
 		this->BuildSortSignList();
 	}
 
-	virtual void OnInit()
+	void OnInit() override
 	{
 		/* Default sign name, used if Sign::name is NULL. */
 		GetString(SignList::default_name, STR_DEFAULT_SIGN_NAME, lastof(SignList::default_name));
@@ -190,13 +190,13 @@ struct SignListWindow : Window, SignList {
 		this->InvalidateData();
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		if (!this->IsShaded() && this->signs.NeedRebuild()) this->BuildSortSignList();
 		this->DrawWidgets();
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
 			case WID_SIL_LIST: {
@@ -228,12 +228,12 @@ struct SignListWindow : Window, SignList {
 		}
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_SIL_CAPTION) SetDParam(0, this->vscroll->GetCount());
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_SIL_LIST: {
@@ -260,12 +260,12 @@ struct SignListWindow : Window, SignList {
 		}
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_SIL_LIST, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_SIL_LIST: {
@@ -286,7 +286,7 @@ struct SignListWindow : Window, SignList {
 		}
 	}
 
-	virtual EventState OnHotkey(int hotkey)
+	EventState OnHotkey(int hotkey) override
 	{
 		switch (hotkey) {
 			case SLHK_FOCUS_FILTER_BOX:
@@ -301,7 +301,7 @@ struct SignListWindow : Window, SignList {
 		return ES_HANDLED;
 	}
 
-	virtual void OnEditboxChanged(int widget)
+	void OnEditboxChanged(int widget) override
 	{
 		if (widget == WID_SIL_FILTER_TEXT) this->SetFilterString(this->filter_editbox.text.buf);
 	}
@@ -316,7 +316,7 @@ struct SignListWindow : Window, SignList {
 		this->SortSignsList();
 	}
 
-	virtual void OnHundredthTick()
+	void OnHundredthTick() override
 	{
 		this->BuildSortSignList();
 		this->SetDirty();
@@ -327,7 +327,7 @@ struct SignListWindow : Window, SignList {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		/* When there is a filter string, we always need to rebuild the list even if
 		 * the amount of signs in total is unchanged, as the subset of signs that is
@@ -482,7 +482,7 @@ struct SignWindow : Window, SignList {
 		return this->signs[next ? 0 : this->signs.Length() - 1];
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
 			case WID_QES_CAPTION:
@@ -491,7 +491,7 @@ struct SignWindow : Window, SignList {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_QES_PREVIOUS:
