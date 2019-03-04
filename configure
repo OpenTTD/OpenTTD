@@ -117,8 +117,7 @@ AWKCOMMAND='
 		if ($0 == "AI"          && "'$enable_ai'" == "0")          { next; }
 		if ($0 == "COCOA"       && "'$with_cocoa'" == "0")         { next; }
 		if ($0 == "DOS"         && "'$os'" != "DOS")               { next; }
-		if ($0 == "BEOS"        && "'$os'" != "BEOS" &&
-		                                       "'$os'" != "HAIKU") { next; }
+		if ($0 == "HAIKU"       && "'$os'" != "HAIKU")             { next; }
 		if ($0 == "WIN32"       && "'$os'" != "MINGW" &&
 		                 "'$os'" != "CYGWIN" && "'$os'" != "MSVC") { next; }
 		if ($0 == "MSVC"        && "'$os'" != "MSVC")              { next; }

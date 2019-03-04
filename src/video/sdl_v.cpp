@@ -496,8 +496,6 @@ static uint ConvertSdlKeyIntoMy(SDL_keysym *sym, WChar *character)
 	if (sym->scancode == 41) key = WKC_BACKQUOTE;
 #elif defined(__APPLE__)
 	if (sym->scancode == 10) key = WKC_BACKQUOTE;
-#elif defined(__BEOS__)
-	if (sym->scancode == 17) key = WKC_BACKQUOTE;
 #elif defined(__SVR4) && defined(__sun)
 	if (sym->scancode == 60) key = WKC_BACKQUOTE;
 	if (sym->scancode == 49) key = WKC_BACKSPACE;

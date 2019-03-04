@@ -270,11 +270,7 @@ bool GetClipboardContents(char *buffer, const char *last)
 
 void CSleep(int milliseconds)
 {
-	#if defined(__BEOS__)
-		snooze(milliseconds * 1000);
-	#else
-		usleep(milliseconds * 1000);
-	#endif
+	usleep(milliseconds * 1000);
 }
 
 

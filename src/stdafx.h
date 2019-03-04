@@ -16,7 +16,7 @@
 	#include "os/macosx/osx_stdafx.h"
 #endif /* __APPLE__ */
 
-#if defined(__BEOS__) || defined(__HAIKU__)
+#if defined(__HAIKU__)
 	#include <SupportDefs.h>
 	#include <unistd.h>
 	#define _GNU_SOURCE
@@ -304,12 +304,12 @@
 typedef unsigned char byte;
 
 /* This is already defined in unix, but not in QNX Neutrino (6.x)*/
-#if (!defined(UNIX) && !defined(__CYGWIN__) && !defined(__BEOS__) && !defined(__HAIKU__)) || defined(__QNXNTO__)
+#if (!defined(UNIX) && !defined(__CYGWIN__) && !defined(__HAIKU__)) || defined(__QNXNTO__)
 	typedef unsigned int uint;
 #endif
 
 #if defined(TROUBLED_INTS)
-	/* NDS'/BeOS'/Haiku's types for uint32/int32 are based on longs, which causes
+	/* Haiku's types for uint32/int32 are based on longs, which causes
 	 * trouble all over the place in OpenTTD. */
 	#define uint32 uint32_ugly_hack
 	#define int32 int32_ugly_hack

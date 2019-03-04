@@ -152,7 +152,6 @@ OpenTTD has been ported to several platforms and operating systems. It should
 not be very difficult to port it to a new platform. The currently working
 platforms are:
 
-- BeOS (SDL or Allegro)
 - DOS (Allegro)
 - FreeBSD (SDL)
 - Linux (SDL or Allegro)
@@ -545,10 +544,6 @@ This will give you a binary for your CPU type (PPC/Intel)
 However, for the first build one has to do a '`./configure`' first.
 To make a universal binary type '`./configure --enabled-universal`'
 instead of '`./configure`'.
-
-### BeOS:
-
-Use '`make`', but do a '`./configure`' before the first build.
 
 ### OS/2:
 

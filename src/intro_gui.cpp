@@ -293,8 +293,6 @@ void AskExitGame()
 		SetDParam(0, STR_OSNAME_WINDOWS);
 #elif defined(__APPLE__)
 		SetDParam(0, STR_OSNAME_OSX);
-#elif defined(__BEOS__)
-		SetDParam(0, STR_OSNAME_BEOS);
 #elif defined(__HAIKU__)
 		SetDParam(0, STR_OSNAME_HAIKU);
 #elif defined(__OS2__)
