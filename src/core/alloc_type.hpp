@@ -25,24 +25,8 @@
  */
 template <typename T, size_t length>
 struct SmallStackSafeStackAlloc {
-#if !defined(__NDS__)
 	/** Storing the data on the stack */
 	T data[length];
-#else
-	/** Storing it on the heap */
-	T *data;
-	/** The length (in elements) of data in this allocator. */
-	size_t len;
-
-	/** Allocating the memory */
-	SmallStackSafeStackAlloc() : data(MallocT<T>(length)), len(length) {}
-
-	/** And freeing when it goes out of scope */
-	~SmallStackSafeStackAlloc()
-	{
-		free(data);
-	}
-#endif
 
 	/**
 	 * Gets a pointer to the data stored in this wrapper.
@@ -69,11 +53,7 @@ struct SmallStackSafeStackAlloc {
 	 */
 	inline T *EndOf()
 	{
-#if !defined(__NDS__)
 		return endof(data);
-#else
-		return &data[len];
-#endif
 	}
 };
 

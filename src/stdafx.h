@@ -22,9 +22,6 @@
 	#define _GNU_SOURCE
 	#define TROUBLED_INTS
 	#include <strings.h>
-#elif defined(__NDS__)
-	#include <nds/jtypes.h>
-	#define TROUBLED_INTS
 #endif
 
 /* It seems that we need to include stdint.h before anything else
@@ -433,7 +430,7 @@ void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
 	#define OTTD_ASSERT
 #endif
 
-#if defined(__NDS__) || defined(__DJGPP__)
+#if defined(__DJGPP__)
 	/* DJGPP doesn't have C++ conformant _stricmp... */
 	#define _stricmp stricmp
 #elif defined(OPENBSD)
