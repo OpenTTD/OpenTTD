@@ -26,10 +26,6 @@
 #include "../saveload/saveload.h"
 #include "dedicated_v.h"
 
-#ifdef BEOS_NET_SERVER
-#include <net/socket.h>
-#endif
-
 #ifdef __OS2__
 #	include <sys/time.h> /* gettimeofday */
 #	include <sys/types.h>

@@ -1117,7 +1117,7 @@ music/midifile.cpp
 		music/extmidi.cpp
 	#end
 #end
-#if BEOS
+#if HAIKU
 	music/bemidi.cpp
 #end
 #if LIBTIMIDITY

@@ -94,7 +94,6 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv, bool a
 
 		p->PrepareToSend();
 
-#ifndef BEOS_NET_SERVER /* will work around this, some day; maybe. */
 		if (broadcast) {
 			/* Enable broadcast */
 			unsigned long val = 1;
@@ -102,7 +101,6 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv, bool a
 				DEBUG(net, 1, "[udp] setting broadcast failed with: %i", GET_LAST_ERROR());
 			}
 		}
-#endif
 
 		/* Send the buffer */
 		int res = sendto(s->second, (const char*)p->buffer, p->size, 0, (const struct sockaddr *)send.GetAddress(), send.GetAddressLength());

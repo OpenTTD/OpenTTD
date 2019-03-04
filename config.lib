@@ -559,10 +559,10 @@ check_params() {
 
 	# Check if all params have valid values
 
-	# OS only allows DETECT, UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, and DOS
-	if [ -z "`echo $os | egrep '^(DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS)$'`" ]; then
+	# OS only allows DETECT, UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, HAIKU, SUNOS, CYGWIN, MINGW, OS2, and DOS
+	if [ -z "`echo $os | egrep '^(DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS)$'`" ]; then
 		log 1 "configure: error: invalid option --os=$os"
-		log 1 " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS]"
+		log 1 " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS]"
 		exit 1
 	fi
 	# cpu_type can be either 32 or 64
@@ -1641,12 +1641,12 @@ make_cflags_and_ldflags() {
 		fi
 	fi
 
-	if [ "$os" = "BEOS" ] || [ "$os" = "HAIKU" ]; then
+	if [ "$os" = "HAIKU" ]; then
 		LIBS="$LIBS -lmidi -lbe"
 	fi
 
 	# Most targets act like UNIX, just with some additions
-	if [ "$os" = "BEOS" ] || [ "$os" = "HAIKU" ] || [ "$os" = "OSX" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "DRAGONFLY" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ] || [ "$os" = "OS2" ]; then
+	if [ "$os" = "HAIKU" ] || [ "$os" = "OSX" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "DRAGONFLY" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ] || [ "$os" = "OS2" ]; then
 		CFLAGS="$CFLAGS -DUNIX"
 	fi
 	# And others like Windows
@@ -1860,10 +1860,6 @@ make_cflags_and_ldflags() {
 
 	if [ "$enable_network" != "0" ]; then
 		CFLAGS="$CFLAGS -DENABLE_NETWORK"
-
-		if [ "$os" = "BEOS" ]; then
-			LDFLAGS="$LDFLAGS -lbind -lsocket"
-		fi
 
 		if [ "$os" = "HAIKU" ]; then
 			LDFLAGS="$LDFLAGS -lnetwork"
@@ -2350,7 +2346,7 @@ detect_awk() {
 
 detect_os() {
 	if [ "$os" = "DETECT" ]; then
-		# Detect UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, HPUX, BEOS, SUNOS, CYGWIN, MINGW, OS2, and DOS
+		# Detect UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, HPUX, SUNOS, CYGWIN, MINGW, OS2, and DOS
 
 		# Try first via dumpmachine, then via uname
 		os=`echo "$host" | tr '[A-Z]' '[a-z]' | $awk '
@@ -2361,7 +2357,6 @@ detect_os() {
 					/openbsd/      { print "OPENBSD";   exit}
 					/netbsd/       { print "NETBSD";    exit}
 					/hp-ux/        { print "HPUX";      exit}
-					/beos/         { print "BEOS";      exit}
 					/haiku/        { print "HAIKU";     exit}
 					/sunos/        { print "SUNOS";     exit}
 					/solaris/      { print "SUNOS";     exit}
@@ -2380,7 +2375,6 @@ detect_os() {
 					/openbsd/      { print "OPENBSD";   exit}
 					/netbsd/       { print "NETBSD";    exit}
 					/hp-ux/        { print "HPUX";      exit}
-					/beos/         { print "BEOS";      exit}
 					/haiku/        { print "HAIKU";     exit}
 					/sunos/        { print "SUNOS";     exit}
 					/cygwin/       { print "CYGWIN";    exit}
@@ -2393,7 +2387,7 @@ detect_os() {
 		if [ -z "$os" ]; then
 			log 1 "detecting OS... none detected"
 			log 1 "I couldn't detect your OS. Please use --os=OS to force one"
-			log 1 "Allowed values are: UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, HPUX, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, and DOS"
+			log 1 "Allowed values are: UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, HPUX, HAIKU, SUNOS, CYGWIN, MINGW, OS2, and DOS"
 			exit 1
 		fi
 
@@ -3480,7 +3474,7 @@ showhelp() {
 	echo "  --lipo=LIPO                    the lipo to use (OSX ONLY) [HOST-lipo]"
 	echo "  --os=OS                        the OS we are compiling for [DETECT]"
 	echo "                                 DETECT/UNIX/OSX/FREEBSD/DRAGONFLY/OPENBSD/"
-	echo "                                 NETBSD/HPUX/BEOS/SUNOS/CYGWIN/"
+	echo "                                 NETBSD/HPUX/SUNOS/CYGWIN/"
 	echo "                                 MINGW/OS2/DOS/HAIKU"
 	echo ""
 	echo "Paths:"

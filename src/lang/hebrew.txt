@@ -1796,7 +1796,6 @@ STR_OSNAME_WINDOWS                                              :חלונות
 STR_OSNAME_DOS                                                  :דוס
 STR_OSNAME_UNIX                                                 :יוניקס
 STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_BEOS                                                 :מערכת הפעלה בי
 STR_OSNAME_HAIKU                                                :הייקו
 STR_OSNAME_OS2                                                  :מערכת הפעלה או.אס שתיים
 STR_OSNAME_SUNOS                                                :סולריס
