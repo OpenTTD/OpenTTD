@@ -12,11 +12,6 @@
 #ifndef GEOMETRY_TYPE_HPP
 #define GEOMETRY_TYPE_HPP
 
-#if defined(__AMIGA__)
-	/* AmigaOS already has a Point declared */
-	#define Point OTTD_Point
-#endif /* __AMIGA__ */
-
 #if defined(__APPLE__)
 	/* Mac OS X already has both Rect and Point declared */
 	#define Rect OTTD_Rect

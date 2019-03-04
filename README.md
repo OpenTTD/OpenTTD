@@ -157,7 +157,6 @@ platforms are:
 - FreeBSD (SDL)
 - Linux (SDL or Allegro)
 - macOS (universal) (Cocoa video and sound drivers)
-- MorphOS (SDL)
 - OpenBSD (SDL)
 - OS/2 (SDL)
 - Windows (Win32 GDI (faster) or SDL or Allegro)
@@ -550,13 +549,6 @@ instead of '`./configure`'.
 ### BeOS:
 
 Use '`make`', but do a '`./configure`' before the first build.
-
-### MorphOS:
-
-Use '`make`'. However, for the first build one has to do a '`./configure`'
-first. Note that you need the MorphOS SDK, latest libnix updates (else C++
-parts of OpenTTD will not build) and the powersdl.library SDK. Optionally libz,
-libpng and freetype2 developer files.
 
 ### OS/2:
 

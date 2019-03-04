@@ -559,10 +559,10 @@ check_params() {
 
 	# Check if all params have valid values
 
-	# OS only allows DETECT, UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, MORPHOS, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, and DOS
-	if [ -z "`echo $os | egrep '^(DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|MORPHOS|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS)$'`" ]; then
+	# OS only allows DETECT, UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, and DOS
+	if [ -z "`echo $os | egrep '^(DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS)$'`" ]; then
 		log 1 "configure: error: invalid option --os=$os"
-		log 1 " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|MORPHOS|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS]"
+		log 1 " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|DRAGONFLY|OPENBSD|NETBSD|HPUX|BEOS|HAIKU|SUNOS|CYGWIN|MINGW|OS2|DOS]"
 		exit 1
 	fi
 	# cpu_type can be either 32 or 64
@@ -629,7 +629,7 @@ check_params() {
 	detect_sse_capable_architecture
 
 	if [ "$enable_static" = "1" ]; then
-		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "MORPHOS" ] || [ "$os" = "DOS" ]; then
+		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "DOS" ]; then
 			enable_static="2"
 		else
 			enable_static="0"
@@ -639,8 +639,8 @@ check_params() {
 	if [ "$enable_static" != "0" ]; then
 		log 1 "checking static... yes"
 
-		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ] && [ "$os" != "OSX" ] && [ "$os" != "MORPHOS" ] && [ "$os" != "DOS" ]; then
-			log 1 "WARNING: static is only known to work on Windows, DOS, MacOSX and MorphOS"
+		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ] && [ "$os" != "OSX" ] && [ "$os" != "DOS" ]; then
+			log 1 "WARNING: static is only known to work on Windows, DOS, and MacOSX"
 			log 1 "WARNING: use static at your own risk on this platform"
 
 			sleep 5
@@ -939,9 +939,7 @@ check_params() {
 	fi
 
 	if [ "$enable_debug" = "0" ] && [ "$enable_profiling" = "0" ] && [ "$enable_strip" != "0" ]; then
-		if [ "$os" = "MORPHOS" ]; then
-			strip_arg="--strip-all --strip-unneeded --remove-section .comment"
-		elif [ "$os" = "OSX" ]; then
+		if [ "$os" = "OSX" ]; then
 			strip_arg=""
 		elif [ "$os" = "OS2" ]; then
 			strip_arg=""
@@ -1527,10 +1525,6 @@ make_cflags_and_ldflags() {
 	if [ "$enable_debug" = "0" ]; then
 		# No debug, add default stuff
 		OBJS_SUBDIR="release"
-		if [ "$os" = "MORPHOS" ]; then
-			CFLAGS="-I/gg/os-include -noixemul -fstrict-aliasing -fexpensive-optimizations -mcpu=604 -fno-inline -mstring -mmultiple $CFLAGS"
-			LDFLAGS="$LDFLAGS -noixemul"
-		fi
 
 		if [ "$enable_profiling" = "0" ]; then
 			# -fomit-frame-pointer and -pg do not go well together (gcc errors they are incompatible)
@@ -1616,17 +1610,12 @@ make_cflags_and_ldflags() {
 		fi
 	fi
 
-	if [ "$os" != "CYGWIN" ] && [ "$os" != "HAIKU" ] && [ "$os" != "OPENBSD" ] && [ "$os" != "MINGW" ] && [ "$os" != "MORPHOS" ] && [ "$os" != "OSX" ] && [ "$os" != "DOS" ] && [ "$os" != "OS2" ]; then
+	if [ "$os" != "CYGWIN" ] && [ "$os" != "HAIKU" ] && [ "$os" != "OPENBSD" ] && [ "$os" != "MINGW" ] && [ "$os" != "OSX" ] && [ "$os" != "DOS" ] && [ "$os" != "OS2" ]; then
 		LIBS="$LIBS -lpthread"
 	fi
 
 	if [ "$os" != "CYGWIN" ] && [ "$os" != "HAIKU" ] && [ "$os" != "MINGW" ] && [ "$os" != "DOS" ]; then
 		LIBS="$LIBS -lc"
-	fi
-
-	if [ "$os" = "MORPHOS" ]; then
-		# -Wstrict-prototypes generates much noise because of system headers
-		CFLAGS="$CFLAGS -Wno-strict-prototypes"
 	fi
 
 	if [ "$os" = "OPENBSD" ]; then
@@ -1657,7 +1646,7 @@ make_cflags_and_ldflags() {
 	fi
 
 	# Most targets act like UNIX, just with some additions
-	if [ "$os" = "BEOS" ] || [ "$os" = "HAIKU" ] || [ "$os" = "OSX" ] || [ "$os" = "MORPHOS" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "DRAGONFLY" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ] || [ "$os" = "OS2" ]; then
+	if [ "$os" = "BEOS" ] || [ "$os" = "HAIKU" ] || [ "$os" = "OSX" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "DRAGONFLY" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ] || [ "$os" = "OS2" ]; then
 		CFLAGS="$CFLAGS -DUNIX"
 	fi
 	# And others like Windows
@@ -2361,7 +2350,7 @@ detect_awk() {
 
 detect_os() {
 	if [ "$os" = "DETECT" ]; then
-		# Detect UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, HPUX, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, and DOS
+		# Detect UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, HPUX, BEOS, SUNOS, CYGWIN, MINGW, OS2, and DOS
 
 		# Try first via dumpmachine, then via uname
 		os=`echo "$host" | tr '[A-Z]' '[a-z]' | $awk '
@@ -2372,7 +2361,6 @@ detect_os() {
 					/openbsd/      { print "OPENBSD";   exit}
 					/netbsd/       { print "NETBSD";    exit}
 					/hp-ux/        { print "HPUX";      exit}
-					/morphos/      { print "MORPHOS";   exit}
 					/beos/         { print "BEOS";      exit}
 					/haiku/        { print "HAIKU";     exit}
 					/sunos/        { print "SUNOS";     exit}
@@ -2392,7 +2380,6 @@ detect_os() {
 					/openbsd/      { print "OPENBSD";   exit}
 					/netbsd/       { print "NETBSD";    exit}
 					/hp-ux/        { print "HPUX";      exit}
-					/morphos/      { print "MORPHOS";   exit}
 					/beos/         { print "BEOS";      exit}
 					/haiku/        { print "HAIKU";     exit}
 					/sunos/        { print "SUNOS";     exit}
@@ -2406,7 +2393,7 @@ detect_os() {
 		if [ -z "$os" ]; then
 			log 1 "detecting OS... none detected"
 			log 1 "I couldn't detect your OS. Please use --os=OS to force one"
-			log 1 "Allowed values are: UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, MORPHOS, HPUX, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, and DOS"
+			log 1 "Allowed values are: UNIX, OSX, FREEBSD, DRAGONFLY, OPENBSD, NETBSD, HPUX, BEOS, HAIKU, SUNOS, CYGWIN, MINGW, OS2, and DOS"
 			exit 1
 		fi
 
@@ -3493,7 +3480,7 @@ showhelp() {
 	echo "  --lipo=LIPO                    the lipo to use (OSX ONLY) [HOST-lipo]"
 	echo "  --os=OS                        the OS we are compiling for [DETECT]"
 	echo "                                 DETECT/UNIX/OSX/FREEBSD/DRAGONFLY/OPENBSD/"
-	echo "                                 NETBSD/MORPHOS/HPUX/BEOS/SUNOS/CYGWIN/"
+	echo "                                 NETBSD/HPUX/BEOS/SUNOS/CYGWIN/"
 	echo "                                 MINGW/OS2/DOS/HAIKU"
 	echo ""
 	echo "Paths:"

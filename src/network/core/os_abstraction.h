@@ -48,13 +48,11 @@ typedef unsigned long in_addr_t;
 #	endif
 #	define SOCKET int
 #	define INVALID_SOCKET -1
-#	if !defined(__MORPHOS__) && !defined(__AMIGA__)
-#		define ioctlsocket ioctl
+#	define ioctlsocket ioctl
 #	if !defined(BEOS_NET_SERVER)
 #		define closesocket close
 #	endif
-#		define GET_LAST_ERROR() (errno)
-#	endif
+#	define GET_LAST_ERROR() (errno)
 /* Need this for FIONREAD on solaris */
 #	define BSD_COMP
 
@@ -74,7 +72,7 @@ typedef unsigned long in_addr_t;
 #		include <arpa/inet.h>
 #		include <net/if.h>
 /* According to glibc/NEWS, <ifaddrs.h> appeared in glibc-2.3. */
-#		if !defined(__sgi__) && !defined(SUNOS) && !defined(__MORPHOS__) && !defined(__BEOS__) && !defined(__HAIKU__) && !defined(__INNOTEK_LIBC__) \
+#		if !defined(__sgi__) && !defined(SUNOS) && !defined(__BEOS__) && !defined(__HAIKU__) && !defined(__INNOTEK_LIBC__) \
 		   && !(defined(__GLIBC__) && (__GLIBC__ <= 2) && (__GLIBC_MINOR__ <= 2)) && !defined(__dietlibc__) && !defined(HPUX)
 /* If for any reason ifaddrs.h does not exist on your system, comment out
  *   the following two lines and an alternative way will be used to fetch
@@ -163,39 +161,6 @@ typedef unsigned long in_addr_t;
 #endif /* __INNOTEK_LIBC__ */
 
 #endif /* OS/2 */
-
-/* MorphOS and Amiga stuff */
-#if defined(__MORPHOS__) || defined(__AMIGA__)
-#	include <exec/types.h>
-#	include <proto/exec.h>   /* required for Open/CloseLibrary() */
-	/* MorphOS defines his network functions with UBYTE arrays while we
-	 *  use char arrays. This gives tons of unneeded warnings */
-#	define UBYTE char
-#	if defined(__MORPHOS__)
-#		include <sys/filio.h>  /* FIO* defines */
-#		include <sys/sockio.h> /* SIO* defines */
-#		include <netinet/in.h>
-#	else /* __AMIGA__ */
-#		include	<proto/socket.h>
-#	endif
-
-/* Make the names compatible */
-#	define closesocket(s) CloseSocket(s)
-#	define GET_LAST_ERROR() Errno()
-#	define ioctlsocket(s, request, status) IoctlSocket((LONG)s, (ULONG)request, (char*)status)
-#	define ioctl ioctlsocket
-
-	typedef unsigned int in_addr_t;
-	typedef long         socklen_t;
-	extern struct Library *SocketBase;
-
-#	ifdef __AMIGA__
-	/* for usleep() implementation */
-	extern struct Device      *TimerBase;
-	extern struct MsgPort     *TimerPort;
-	extern struct timerequest *TimerRequest;
-#	endif
-#endif /* __MORPHOS__ || __AMIGA__ */
 
 /**
  * Try to set the socket into non-blocking mode.

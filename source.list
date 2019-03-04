@@ -1114,10 +1114,7 @@ music/midifile.cpp
 #else
 	#if DOS
 	#else
-		#if MORPHOS
-		#else
-			music/extmidi.cpp
-		#end
+		music/extmidi.cpp
 	#end
 #end
 #if BEOS
@@ -1186,11 +1183,7 @@ thread/thread.h
 		#if OS2
 			thread/thread_os2.cpp
 		#else
-			#if MORPHOS
-				thread/thread_morphos.cpp
-			#else
-				thread/thread_pthread.cpp
-			#end
+			thread/thread_pthread.cpp
 		#end
 	#end
 #else

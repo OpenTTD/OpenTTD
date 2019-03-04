@@ -1445,8 +1445,6 @@ STR_OSNAME_UNIX                                                 :يونكس
 STR_OSNAME_OSX                                                  :OS{NBSP}X
 STR_OSNAME_BEOS                                                 :بي او اس
 STR_OSNAME_HAIKU                                                :هايكو
-STR_OSNAME_MORPHOS                                              :مورف او اس
-STR_OSNAME_AMIGAOS                                              :اميقا
 STR_OSNAME_OS2                                                  :او اس/2
 STR_OSNAME_SUNOS                                                :صن
 

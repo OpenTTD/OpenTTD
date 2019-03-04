@@ -310,11 +310,7 @@ int NetworkHTTPSocketHandler::Receive()
 	}
 
 	tv.tv_sec = tv.tv_usec = 0; // don't block at all.
-#if !defined(__MORPHOS__) && !defined(__AMIGA__)
 	int n = select(FD_SETSIZE, &read_fd, NULL, NULL, &tv);
-#else
-	int n = WaitSelect(FD_SETSIZE, &read_fd, NULL, NULL, &tv, NULL);
-#endif
 	if (n == -1) return;
 
 	for (NetworkHTTPSocketHandler **iter = _http_connections.Begin(); iter < _http_connections.End(); /* nothing */) {

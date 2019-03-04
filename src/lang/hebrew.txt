@@ -1798,8 +1798,6 @@ STR_OSNAME_UNIX                                                 :יוניקס
 STR_OSNAME_OSX                                                  :OS{NBSP}X
 STR_OSNAME_BEOS                                                 :מערכת הפעלה בי
 STR_OSNAME_HAIKU                                                :הייקו
-STR_OSNAME_MORPHOS                                              :מערכת הפעלה מורפ
-STR_OSNAME_AMIGAOS                                              :מערכת הפעלה אניגמה
 STR_OSNAME_OS2                                                  :מערכת הפעלה או.אס שתיים
 STR_OSNAME_SUNOS                                                :סולריס
 

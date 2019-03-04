@@ -238,11 +238,7 @@ bool NetworkTCPSocketHandler::CanSendReceive()
 	FD_SET(this->sock, &write_fd);
 
 	tv.tv_sec = tv.tv_usec = 0; // don't block at all.
-#if !defined(__MORPHOS__) && !defined(__AMIGA__)
 	if (select(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv) < 0) return false;
-#else
-	if (WaitSelect(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv, NULL) < 0) return false;
-#endif
 
 	this->writable = !!FD_ISSET(this->sock, &write_fd);
 	return FD_ISSET(this->sock, &read_fd) != 0;

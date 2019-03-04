@@ -43,21 +43,6 @@
 #include <sys/sysctl.h>
 #endif
 
-
-#ifdef __MORPHOS__
-#include <exec/types.h>
-ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
-
-/* The system supplied definition of SIG_IGN does not match */
-#undef SIG_IGN
-#define SIG_IGN (void (*)(int))1
-#endif /* __MORPHOS__ */
-
-#ifdef __AMIGA__
-#warning add stack symbol to avoid that user needs to set stack manually (tokai)
-// ULONG __stack =
-#endif
-
 #if defined(__APPLE__)
 	#if defined(WITH_SDL)
 		/* the mac implementation needs this file included in the same file as main() */
@@ -69,13 +54,7 @@ ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 
 bool FiosIsRoot(const char *path)
 {
-#if !defined(__MORPHOS__) && !defined(__AMIGAOS__)
 	return path[1] == '\0';
-#else
-	/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
-	const char *s = strchr(path, ':');
-	return s != NULL && s[1] == '\0';
-#endif
 }
 
 void FiosGetDrives(FileList &file_list)
@@ -106,15 +85,8 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 {
 	char filename[MAX_PATH];
 	int res;
-#if defined(__MORPHOS__) || defined(__AMIGAOS__)
-	/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
-	if (FiosIsRoot(path)) {
-		res = seprintf(filename, lastof(filename), "%s:%s", path, ent->d_name);
-	} else // XXX - only next line!
-#else
 	assert(path[strlen(path) - 1] == PATHSEPCHAR);
 	if (strlen(path) > 2) assert(path[strlen(path) - 2] != PATHSEPCHAR);
-#endif
 	res = seprintf(filename, lastof(filename), "%s%s", path, ent->d_name);
 
 	/* Could we fully concatenate the path and filename? */
@@ -296,36 +268,10 @@ bool GetClipboardContents(char *buffer, const char *last)
 
 /* multi os compatible sleep function */
 
-#ifdef __AMIGA__
-/* usleep() implementation */
-#	include <devices/timer.h>
-#	include <dos/dos.h>
-
-	extern struct Device      *TimerBase    = NULL;
-	extern struct MsgPort     *TimerPort    = NULL;
-	extern struct timerequest *TimerRequest = NULL;
-#endif /* __AMIGA__ */
-
 void CSleep(int milliseconds)
 {
 	#if defined(__BEOS__)
 		snooze(milliseconds * 1000);
-	#elif defined(__AMIGA__)
-	{
-		ULONG signals;
-		ULONG TimerSigBit = 1 << TimerPort->mp_SigBit;
-
-		/* send IORequest */
-		TimerRequest->tr_node.io_Command = TR_ADDREQUEST;
-		TimerRequest->tr_time.tv_secs    = (milliseconds * 1000) / 1000000;
-		TimerRequest->tr_time.tv_micro   = (milliseconds * 1000) % 1000000;
-		SendIO((struct IORequest *)TimerRequest);
-
-		if (!((signals = Wait(TimerSigBit | SIGBREAKF_CTRL_C)) & TimerSigBit) ) {
-			AbortIO((struct IORequest *)TimerRequest);
-		}
-		WaitIO((struct IORequest *)TimerRequest);
-	}
 	#else
 		usleep(milliseconds * 1000);
 	#endif

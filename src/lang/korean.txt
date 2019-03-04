@@ -1800,8 +1800,6 @@ STR_OSNAME_UNIX                                                 :{G=f}Unix
 STR_OSNAME_OSX                                                  :{G=f}OS{NBSP}X
 STR_OSNAME_BEOS                                                 :{G=f}BeOS
 STR_OSNAME_HAIKU                                                :{G=f}Haiku
-STR_OSNAME_MORPHOS                                              :{G=f}MorphOS
-STR_OSNAME_AMIGAOS                                              :{G=f}AmigaOS
 STR_OSNAME_OS2                                                  :{G=f}OS/2
 STR_OSNAME_SUNOS                                                :{G=f}SunOS
 

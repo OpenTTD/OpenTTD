@@ -121,7 +121,6 @@ AWKCOMMAND='
 		                                       "'$os'" != "HAIKU") { next; }
 		if ($0 == "WIN32"       && "'$os'" != "MINGW" &&
 		                 "'$os'" != "CYGWIN" && "'$os'" != "MSVC") { next; }
-		if ($0 == "MORPHOS"     && "'$os'" != "MORPHOS")           { next; }
 		if ($0 == "MSVC"        && "'$os'" != "MSVC")              { next; }
 		if ($0 == "DIRECTMUSIC" && "'$with_direct_music'" == "0")  { next; }
 		if ($0 == "LIBTIMIDITY" && "'$libtimidity'" == "" )        { next; }

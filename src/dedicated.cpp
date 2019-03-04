@@ -16,7 +16,7 @@
 char *_log_file = NULL; ///< File to reroute output of a forked OpenTTD to
 FILE *_log_fd   = NULL; ///< File to reroute output of a forked OpenTTD to
 
-#if defined(UNIX) && !defined(__MORPHOS__)
+#if defined(UNIX)
 
 #include <unistd.h>
 
@@ -71,7 +71,7 @@ void DedicatedFork()
 
 #else
 
-/** Empty helper function call for NOT(UNIX and not MORPHOS) systems */
+/** Empty helper function call for NOT(UNIX) systems */
 void DedicatedFork() {}
 
 #endif /* ENABLE_NETWORK */

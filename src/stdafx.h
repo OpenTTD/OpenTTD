@@ -29,9 +29,9 @@
 
 /* It seems that we need to include stdint.h before anything else
  * We need INT64_MAX, which for most systems comes from stdint.h. However, MSVC
- * does not have stdint.h and apparently neither does MorphOS.
+ * does not have stdint.h.
  * For OSX the inclusion is already done in osx_stdafx.h. */
-#if !defined(__APPLE__) && (!defined(_MSC_VER) || _MSC_VER >= 1600) && !defined(__MORPHOS__)
+#if !defined(__APPLE__) && (!defined(_MSC_VER) || _MSC_VER >= 1600)
 	#if defined(SUNOS)
 		/* SunOS/Solaris does not have stdint.h, but inttypes.h defines everything
 		 * stdint.h defines and we need. */
@@ -103,30 +103,6 @@
 #if defined(SUNOS) || defined(HPUX)
 	#include <alloca.h>
 #endif
-
-#if defined(__MORPHOS__)
-	/* MorphOS defines certain Amiga defines per default, we undefine them
-	 * here to make the rest of source less messy and more clear what is
-	 * required for morphos and what for AmigaOS */
-	#if defined(amigaos)
-		#undef amigaos
-	#endif
-	#if defined(__amigaos__)
-		#undef __amigaos__
-	# endif
-	#if defined(__AMIGA__)
-		#undef __AMIGA__
-	#endif
-	#if defined(AMIGA)
-		#undef AMIGA
-	#endif
-	#if defined(amiga)
-		#undef amiga
-	#endif
-	/* Act like we already included this file, as it somehow gives linkage problems
-	 *  (mismatch linkage of C++ and C between this include and unistd.h). */
-	#define CLIB_USERGROUP_PROTOS_H
-#endif /* __MORPHOS__ */
 
 /* Stuff for GCC */
 #if defined(__GNUC__)
@@ -331,7 +307,7 @@
 typedef unsigned char byte;
 
 /* This is already defined in unix, but not in QNX Neutrino (6.x)*/
-#if (!defined(UNIX) && !defined(__CYGWIN__) && !defined(__BEOS__) && !defined(__HAIKU__) && !defined(__MORPHOS__)) || defined(__QNXNTO__)
+#if (!defined(UNIX) && !defined(__CYGWIN__) && !defined(__BEOS__) && !defined(__HAIKU__)) || defined(__QNXNTO__)
 	typedef unsigned int uint;
 #endif
 
@@ -457,8 +433,8 @@ void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
 	#define OTTD_ASSERT
 #endif
 
-#if defined(MORPHOS) || defined(__NDS__) || defined(__DJGPP__)
-	/* MorphOS and NDS don't have C++ conformant _stricmp... */
+#if defined(__NDS__) || defined(__DJGPP__)
+	/* DJGPP doesn't have C++ conformant _stricmp... */
 	#define _stricmp stricmp
 #elif defined(OPENBSD)
 	/* OpenBSD uses strcasecmp(3) */
