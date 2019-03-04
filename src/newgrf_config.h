@@ -133,7 +133,7 @@ struct GRFParameterInfo {
 	byte param_nr;         ///< GRF parameter to store content in
 	byte first_bit;        ///< First bit to use in the GRF parameter
 	byte num_bit;          ///< Number of bits to use for this parameter
-	SmallMap<uint32, struct GRFText *, 8> value_names; ///< Names for each value.
+	SmallMap<uint32, struct GRFText *> value_names; ///< Names for each value.
 	bool complete_labels;  ///< True if all values have a label.
 
 	uint32 GetValue(struct GRFConfig *config) const;
@@ -155,27 +155,27 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	GRFConfig(const GRFConfig &config);
 	~GRFConfig();
 
-	GRFIdentifier ident;                           ///< grfid and md5sum to uniquely identify newgrfs
-	uint8 original_md5sum[16];                     ///< MD5 checksum of original file if only a 'compatible' file was loaded
-	char *filename;                                ///< Filename - either with or without full path
-	GRFTextWrapper *name;                          ///< NOSAVE: GRF name (Action 0x08)
-	GRFTextWrapper *info;                          ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
-	GRFTextWrapper *url;                           ///< NOSAVE: URL belonging to this GRF.
-	GRFError *error;                               ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
+	GRFIdentifier ident;                        ///< grfid and md5sum to uniquely identify newgrfs
+	uint8 original_md5sum[16];                  ///< MD5 checksum of original file if only a 'compatible' file was loaded
+	char *filename;                             ///< Filename - either with or without full path
+	GRFTextWrapper *name;                       ///< NOSAVE: GRF name (Action 0x08)
+	GRFTextWrapper *info;                       ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
+	GRFTextWrapper *url;                        ///< NOSAVE: URL belonging to this GRF.
+	GRFError *error;                            ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
 
-	uint32 version;                                ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
-	uint32 min_loadable_version;                   ///< NOSAVE: Minimum compatible version a NewGRF can define
-	uint8 flags;                                   ///< NOSAVE: GCF_Flags, bitset
-	GRFStatus status;                              ///< NOSAVE: GRFStatus, enum
-	uint32 grf_bugs;                               ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
-	uint32 param[0x80];                            ///< GRF parameters
-	uint8 num_params;                              ///< Number of used parameters
-	uint8 num_valid_params;                        ///< NOSAVE: Number of valid parameters (action 0x14)
-	uint8 palette;                                 ///< GRFPalette, bitset
+	uint32 version;                             ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
+	uint32 min_loadable_version;                ///< NOSAVE: Minimum compatible version a NewGRF can define
+	uint8 flags;                                ///< NOSAVE: GCF_Flags, bitset
+	GRFStatus status;                           ///< NOSAVE: GRFStatus, enum
+	uint32 grf_bugs;                            ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
+	uint32 param[0x80];                         ///< GRF parameters
+	uint8 num_params;                           ///< Number of used parameters
+	uint8 num_valid_params;                     ///< NOSAVE: Number of valid parameters (action 0x14)
+	uint8 palette;                              ///< GRFPalette, bitset
 	std::vector<GRFParameterInfo *> param_info; ///< NOSAVE: extra information about the parameters
-	bool has_param_defaults;                       ///< NOSAVE: did this newgrf specify any defaults for it's parameters
+	bool has_param_defaults;                    ///< NOSAVE: did this newgrf specify any defaults for it's parameters
 
-	struct GRFConfig *next;                        ///< NOSAVE: Next item in the linked list
+	struct GRFConfig *next;                     ///< NOSAVE: Next item in the linked list
 
 	void CopyParams(const GRFConfig &src);
 

@@ -32,9 +32,9 @@ struct GameStrings {
 	uint version;                  ///< The version of the language strings.
 	LanguageStrings *cur_language; ///< The current (compiled) language.
 
-	AutoDeleteSmallVector<LanguageStrings *, 4> raw_strings;      ///< The raw strings per language, first must be English/the master language!.
-	AutoDeleteSmallVector<LanguageStrings *, 4> compiled_strings; ///< The compiled strings per language, first must be English/the master language!.
-	StringList string_names;                                      ///< The names of the compiled strings.
+	AutoDeleteSmallVector<LanguageStrings *> raw_strings;      ///< The raw strings per language, first must be English/the master language!.
+	AutoDeleteSmallVector<LanguageStrings *> compiled_strings; ///< The compiled strings per language, first must be English/the master language!.
+	StringList string_names;                                   ///< The names of the compiled strings.
 
 	void Compile();
 };

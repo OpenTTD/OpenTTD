@@ -77,9 +77,8 @@ T* grow(std::vector<T>& vec, std::size_t num)
  *       inside the list.
  *
  * @param T The type of the items stored, must be a pointer
- * @param S The steps of allocation
  */
-template <typename T, uint S>
+template <typename T>
 class AutoFreeSmallVector : public std::vector<T> {
 public:
 	~AutoFreeSmallVector()
@@ -108,9 +107,8 @@ public:
  *       inside the list.
  *
  * @param T The type of the items stored, must be a pointer
- * @param S The steps of allocation
  */
-template <typename T, uint S>
+template <typename T>
 class AutoDeleteSmallVector : public std::vector<T> {
 public:
 	~AutoDeleteSmallVector()
@@ -131,6 +129,6 @@ public:
 	}
 };
 
-typedef AutoFreeSmallVector<char*, 4> StringList; ///< Type for a list of strings.
+typedef AutoFreeSmallVector<char*> StringList; ///< Type for a list of strings.
 
 #endif /* SMALLVEC_TYPE_HPP */

@@ -150,7 +150,7 @@ public:
  *
  * It also accounts for the memory allocations and frees.
  */
-class Layouter : public AutoDeleteSmallVector<const ParagraphLayouter::Line *, 4> {
+class Layouter : public AutoDeleteSmallVector<const ParagraphLayouter::Line *> {
 	const char *string; ///< Pointer to the original string.
 
 	/** Key into the linecache */

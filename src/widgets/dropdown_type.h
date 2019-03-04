@@ -98,7 +98,7 @@ public:
 /**
  * A drop down list is a collection of drop down list items.
  */
-typedef AutoDeleteSmallVector<const DropDownListItem *, 4> DropDownList;
+typedef AutoDeleteSmallVector<const DropDownListItem *> DropDownList;
 
 void ShowDropDownListAt(Window *w, const DropDownList *list, int selected, int button, Rect wi_rect, Colours wi_colour, bool auto_width = false, bool instant_close = false);
 

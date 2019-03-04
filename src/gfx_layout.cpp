@@ -124,7 +124,7 @@ le_bool Font::getGlyphPoint(LEGlyphID glyph, le_int32 pointNumber, LEPoint &poin
 /**
  * Wrapper for doing layouts with ICU.
  */
-class ICUParagraphLayout : public AutoDeleteSmallVector<ParagraphLayouter::Line *, 4>, public ParagraphLayouter {
+class ICUParagraphLayout : public AutoDeleteSmallVector<ParagraphLayouter::Line *>, public ParagraphLayouter {
 	icu::ParagraphLayout *p; ///< The actual ICU paragraph layout.
 public:
 	/** Visual run contains data about the bit of text with the same font. */
@@ -143,7 +143,7 @@ public:
 	};
 
 	/** A single line worth of VisualRuns. */
-	class ICULine : public AutoDeleteSmallVector<ICUVisualRun *, 4>, public ParagraphLayouter::Line {
+	class ICULine : public AutoDeleteSmallVector<ICUVisualRun *>, public ParagraphLayouter::Line {
 		icu::ParagraphLayout::Line *l; ///< The actual ICU line.
 
 	public:
@@ -269,7 +269,7 @@ public:
 	};
 
 	/** A single line worth of VisualRuns. */
-	class FallbackLine : public AutoDeleteSmallVector<FallbackVisualRun *, 4>, public ParagraphLayouter::Line {
+	class FallbackLine : public AutoDeleteSmallVector<FallbackVisualRun *>, public ParagraphLayouter::Line {
 	public:
 		int GetLeading() const;
 		int GetWidth() const;

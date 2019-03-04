@@ -106,7 +106,7 @@ public:
 	};
 
 	/** A single line worth of VisualRuns. */
-	class UniscribeLine : public AutoDeleteSmallVector<UniscribeVisualRun *, 4>, public ParagraphLayouter::Line {
+	class UniscribeLine : public AutoDeleteSmallVector<UniscribeVisualRun *>, public ParagraphLayouter::Line {
 	public:
 		virtual int GetLeading() const;
 		virtual int GetWidth() const;

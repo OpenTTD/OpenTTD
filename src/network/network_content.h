@@ -67,11 +67,11 @@ struct ContentCallback {
 class ClientNetworkContentSocketHandler : public NetworkContentSocketHandler, ContentCallback, HTTPCallback {
 protected:
 	typedef std::vector<ContentID> ContentIDList; ///< List of content IDs to (possibly) select.
-	std::vector<ContentCallback *> callbacks; ///< Callbacks to notify "the world"
-	ContentIDList requested;                     ///< ContentIDs we already requested (so we don't do it again)
-	ContentVector infos;                         ///< All content info we received
-	std::vector<char> http_response;       ///< The HTTP response to the requests we've been doing
-	int http_response_index;                     ///< Where we are, in the response, with handling it
+	std::vector<ContentCallback *> callbacks;     ///< Callbacks to notify "the world"
+	ContentIDList requested;                      ///< ContentIDs we already requested (so we don't do it again)
+	ContentVector infos;                          ///< All content info we received
+	std::vector<char> http_response;              ///< The HTTP response to the requests we've been doing
+	int http_response_index;                      ///< Where we are, in the response, with handling it
 
 	FILE *curFile;        ///< Currently downloaded file
 	ContentInfo *curInfo; ///< Information about the currently downloaded file

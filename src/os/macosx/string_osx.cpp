@@ -65,7 +65,7 @@ public:
 	};
 
 	/** A single line worth of VisualRuns. */
-	class CoreTextLine : public AutoDeleteSmallVector<CoreTextVisualRun *, 4>, public ParagraphLayouter::Line {
+	class CoreTextLine : public AutoDeleteSmallVector<CoreTextVisualRun *>, public ParagraphLayouter::Line {
 	public:
 		CoreTextLine(CTLineRef line, const FontMap &fontMapping, const CoreTextParagraphLayoutFactory::CharType *buff)
 		{
