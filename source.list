@@ -403,7 +403,6 @@ zoom_type.h
 music/bemidi.h
 music/cocoa_m.h
 music/extmidi.h
-music/libtimidity.h
 music/fluidsynth.h
 music/os2_m.h
 music/qtmidi.h
@@ -1119,9 +1118,6 @@ music/midifile.cpp
 #end
 #if HAIKU
 	music/bemidi.cpp
-#end
-#if LIBTIMIDITY
-	music/libtimidity.cpp
 #end
 #if FLUIDSYNTH
 	music/fluidsynth.cpp
