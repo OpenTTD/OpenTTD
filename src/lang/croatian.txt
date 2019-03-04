@@ -1296,8 +1296,8 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Kosina nagiba p
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Strmina nagiba za cestovna vozila: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Kosina nagiba polja za cestovna vozila. Veće vrijednosti čine nagib težim za penjanje
-STR_CONFIG_SETTING_FORBID_90_DEG                                :Zabrani vlakovima i brodovima skretanja pod 90 stupnjeva: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Okreti za 90 stupnjeva se događaju kada vodoravni dio pruge odmah nastavlja okomiti dio pruge na sljedećem polju, dakle čineći zaokret vlaka od 90 stupnjeva prelaskom ruba polja umjesto uobičajenih 45 stupnjeva kod drugih kombinacija pruge. Ovo se primjenjuje i na radijus okretanja brodova
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Zabrani vlakovima skretanja pod 90 stupnjeva: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Okreti za 90 stupnjeva se događaju kada se na vodoravni dio pruge odmah nastavlja okomiti dio pruge na sljedećem polju, dakle čineći zaokret vlaka od 90 stupnjeva prelaskom ruba polja umjesto uobičajenih 45 stupnjeva kod drugih kombinacija pruge.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Dopusti spajanje postaja koje nisu izravno jedna do druge {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Dopusti dodavanje dijelova stanice bez izravnog dodira s postojećim dijelovima. Potrebno pritisnuti Ctrl+klik dok se dodaju novi dijelovi
 STR_CONFIG_SETTING_INFLATION                                    :Inflacija: {STRING}
@@ -1353,8 +1353,8 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :Faktor brzine z
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Postavite relativnu brzinu zrakoplova u odnosu na ostale vrste vozila, kako bi se smanjio iznos prihoda od prijevoza zrakoplovom
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Broj padova zrakoplova: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Odredi šansu za događanje zrakoplovne nesreće
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ništa
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Odredi šansu za događanje avionske nesreće.{}* Veliki avioni uvijek riskiraju nesreću kad slijeću na male aerodrome
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ništa*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Smanjeno
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalno
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Dopusti prolazne postaje na cestama u vlasništvu gradova: {STRING}
@@ -3641,7 +3641,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozil{P o a a}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlakovi - drži lijevi klik i vuci vozilo za dodavanje/skidanjed iz vlaka, desni klik za informacije. Drži tipku Ctrl da obje funkcije rade na slijedu
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlakovi - drži lijevi klik i vuci vozilo za dodavanje/skidanje iz vlaka, desni klik za informacije. Drži tipku Ctrl da obje funkcije rade na slijedu
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - desni klik na vozilo za informacije
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Brodovi - desni klik na brod za informacije
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Zrakoplov - desni klik na zrakoplov za informacije

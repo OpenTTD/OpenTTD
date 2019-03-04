@@ -467,6 +467,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :효과음/배�
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :최근 메시지/뉴스 기록
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :과거 메시지 목록
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :모든 뉴스 메시지 삭제
 ############ range ends here
 
 ############ range for about menu starts
@@ -989,13 +990,18 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}사용�
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :기타
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}인터페이스 크기
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}인터페이스의 크기를 선택하십시오.
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}인터페이스의 크기를 선택합니다.
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :보통
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :기본 크기
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :2배 크기
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4배 크기
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}글씨 크기
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}인터페이스에서 사용할 글씨 크기를 선택합니다.
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :기본 크기
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :2배 크기
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :4배 크기
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}기본 그래픽 세트
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}사용하실 기본 그래픽을 선택하세요.
@@ -1195,7 +1201,7 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :열차에 적�
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :경사도 설정 (자동차/전차용): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :자동차/전차에 적용시킬 경사도를 설정합니다. 값이 높을수록 차량이 언덕을 오를 때 더 힘이 듭니다.
-STR_CONFIG_SETTING_FORBID_90_DEG                                :열차/선박의 90도 회전을 금지함: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :열차의 90도 회전을 금지함: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :─ 모양의 수평 선로와 │ 모양의 수직 선로가 바로 이어져 만날 때 90도 회전이 발생합니다. 이 설정을 켜면, 열차가 칸 가장자리를 통과할 때 90도로 회전할 수 있도록 허용합니다. 이 설정은 선박의 회전 반경에도 적용됩니다.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :역이 같은 방향으로 붙어있지 않아도 같은 이름의 역 짓기 허용: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :이미 존재하는 역을 직접 건드리지 않고도 역의 일부분을 새로 추가/확장하는 것을 허용합니다. 인접한 칸에 기존과 다른 새로운 역을 놓을 때에는 CTRL+클릭해야 합니다.
@@ -1252,8 +1258,8 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :항공기 속�
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :항공 수송에 대한 수익을 제한하기 위해, 다른 운송 수단의 속력을 1로 보았을 때의 항공기의 속력 비율을 설정합니다.
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :(실제 속력) x {COMMA}분의 1
 STR_CONFIG_SETTING_PLANE_CRASHES                                :항공기 추락 빈도수: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :항공기 충돌 사고가 일어날 수 있는지 여부를 설정합니다.
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :없음
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :항공기 충돌 사고가 일어날 수 있는지 여부를 설정합니다.{}* 대형 항공기는 소형 공항에 착륙할 때 항상 충돌 사고를 일으킬 가능성이 있습니다.
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :없음*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :적음
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :보통
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :도시 소유의 도로 위에 버스 정류장 건설 허용: {STRING}
@@ -2084,6 +2090,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}접속 �
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}서버 암호가 걸려있습니다. 암호를 입력하세요.
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}회사 암호가 걸려있습니다. 암호를 입력하세요.
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}접속자 목록
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :접속자 목록
@@ -2741,6 +2748,9 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}그래�
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  세계 화면:
 STR_FRAMERATE_VIDEO                                             :{BLACK}비디오 출력:
 STR_FRAMERATE_SOUND                                             :{BLACK}사운드 합성:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  총 게임 스크립트/AI:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   게임 스크립트:
+STR_FRAMERATE_AI                                                :{BLACK}  인공지능 {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :게임 루프
@@ -2755,6 +2765,9 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :그래픽 렌�
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :세계 화면 렌더링
 STR_FRAMETIME_CAPTION_VIDEO                                     :비디오 출력
 STR_FRAMETIME_CAPTION_SOUND                                     :사운드 합성
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :게임 스크립트/인공지능의 전체 스크립트 양입니다.
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :게임 스크립트
+STR_FRAMETIME_CAPTION_AI                                        :인공지능 {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -3113,6 +3126,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}성취�
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} 목표
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}전체 목표
+STR_GOALS_SPECTATOR                                             :전체 목표
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}전체 목표:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- 없음 -
@@ -3161,6 +3175,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}산업�
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}의 스토리 북
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}전체 스토리 북
+STR_STORY_BOOK_SPECTATOR                                        :전체 스토리 북
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :{NUM}쪽
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}드롭 다운 목록에서 이동하고자 하는 쪽수를 선택하세요.

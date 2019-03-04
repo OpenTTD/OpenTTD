@@ -678,6 +678,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTB
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Raita
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Soittolista - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Tyhjennä
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Vaihda kokoelma
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Tyhjennä nykyinen soittolista (vain Oma1 tai Oma2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Valitse musiikkiraita lisätäksesi sen nykyiseen soittolistaan (vain Oma1 tai Oma2).
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Poista musiikkiraita nykyseiltä soittolistalta napsauttamalla (ainoastaan Custom1 tai Custom2)
@@ -991,7 +992,11 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Tavallinen
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Kaksinkertainen
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Nelinkertainen
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Kirjasinkoko
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Valitse käyttöliittymän kirjasinkoko
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normaali
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Nelinkertainen koko
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Perusgrafiikat
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valitse käytettävät perusgrafiikat
@@ -1260,6 +1265,8 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tätä a
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktuurin huoltokustannukset: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Mikäli käytössä, infrastruktuurista aiheutuu huoltokuluja. Kulut kasvavat suhteettomasti verkon kokoon nähden, täten ne vaikuttavat suurempiin yhtiöihin enemmän kuin pieniin
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Yhtiön väri alussa: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Valitse yhtiön aloitusväri
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lentokentät eivät vanhene: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Mikäli käytössä, kaikki lentokenttätyypit ovat saatavilla ikuisesti niiden julkistamisen jälkeen
@@ -2706,9 +2713,13 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Kuvataajuus
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}×)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Simulaationopeus: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Simuloitujen peliaskelten määrä sekunnissa.
 STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Grafiikan kuvataajuus: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Piirrettyjen kuvien määrä sekunnissa.
 STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Pelin nykyinen nopeuskerroin: {DECIMAL}×
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Pelin tämänhetkinen nopeus verrattuna normaalilla simulaationopeudella odotettavissa olevaan.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Nykyinen
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Keskiarvo
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Data perustuu {COMMA} mittaukseen
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
@@ -2719,16 +2730,31 @@ STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Rahdin käsittely:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Juna-askeleet:
 STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Ajoneuvoaskeleet:
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Laiva-askeleet:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Maailma-askeleet:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Yhteyskuvaajan viive:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Grafiikan hahmonnus:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Maailmanäkymät:
 STR_FRAMERATE_VIDEO                                             :{WHITE}Videolähtö:
+STR_FRAMERATE_SOUND                                             :{BLACK}Äänen miksaus:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Peliskripti:
+STR_FRAMERATE_AI                                                :{BLACK}   Tekoäly {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Juna-askeleet
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Ajoneuvoaskeleet
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Laiva-askeleet
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ilma-alusaskeleet
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Maailma-askeleet
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Maailmanäkymän hahmonnus
 STR_FRAMETIME_CAPTION_VIDEO                                     :Videolähtö
+STR_FRAMETIME_CAPTION_SOUND                                     :Äänen miksaus
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Peliskriptit ja tekoälyt yht.
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Peliskripti
+STR_FRAMETIME_CAPTION_AI                                        :Tekoäly {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2755,6 +2781,7 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Tietoja 
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Suodatinteksti:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Tiedosto on jo olemassa
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Syötä nimi tallennustiedostolle
 
@@ -2872,7 +2899,11 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versio: 
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Pienin yhteensopiva versio: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5-summa: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paletti: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Oletus (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Oletus (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Perinteinen (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametrit: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Ei mitään
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ei tietoa
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Sopivaa tiedostoa ei löydy
@@ -2953,6 +2984,8 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Luku pseudo-spr
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Pyydetyt GRF-resurssit eivät ole saatavilla (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} poisti käytöstä NewGRF:n {1:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Virheellinen/tuntematon spriten asettelumuoto (sprite {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Liian monta elementtiä ominaisuusarvolistassa (sprite {3:NUM}, ominaisuus {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Virhe teollisuuden tuotannon takaisinkutsussa (sprite {3:NUM}, "{1:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varoitus!
@@ -3025,6 +3058,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Maailman
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (City)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Asukasluku: {ORANGE}{COMMA}{BLACK}  Taloja: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} viime kuussa: {ORANGE}{COMMA}{BLACK}  enimmillään: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kaupungin kasvuun tarvittava rahti:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} vaadittu
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} vaaditaan talvella
@@ -3125,6 +3159,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Napsauta
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}: historia
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Yleinen yhtiöhistoria
+STR_STORY_BOOK_SPECTATOR                                        :Yleinen yhtiöhistoria
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Sivu {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Siirry tietylle sivulle valitsemalla se tästä valikosta
@@ -3386,6 +3421,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Ryhmät 
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Luo ryhmä
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Poista valittu ryhmä
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Nimeä valittu ryhmä
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Muuta valitun ryhmän väritystä
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Poista ryhmä automaattisesti korvattavien joukosta
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Poista ryhmä
@@ -3429,6 +3465,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasite
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moottoroidut vaunut: {GOLD}+{POWER}{BLACK} Paino: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Sovitettavissa: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Kaikki rahtityypit
+STR_PURCHASE_INFO_NONE                                          :Ei mitään
 STR_PURCHASE_INFO_ALL_BUT                                       :Kaikki paitsi {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurin vetovoima: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Toimintasäde: {GOLD}{COMMA} ruutua
@@ -3828,6 +3865,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Ikä (vuotta)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Vaatii huoltoa
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Aina
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Jäljelläoleva elinikä (vuotta)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Enimmäisluotettavuus
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Miten kulkuneuvon tietoja verrataan annettuihin arvoihin
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :on yhtä kuin
@@ -4513,6 +4551,7 @@ STR_BASESOUNDS_WIN_DESCRIPTION                                  :Alkuperäiset T
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Äänipaketti, jossa ei ole ääniä.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Alkuperäinen Transport Tycoon Deluxen Windows-version musiikki.
 STR_BASEMUSIC_DOS_DESCRIPTION                                   :Alkuperäinen Transport Tycoon Deluxen DOS-version musiikki.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Alkuperäinen Transport Tycoonin (alkuperäinen / World Editor) DOS-version musiikki.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Musiikkipaketti, jossa ei ole musiikkia.
 
 ##id 0x2000
