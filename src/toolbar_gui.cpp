@@ -127,12 +127,12 @@ public:
 		this->lock_size = GetSpriteSize(SPR_LOCK);
 	}
 
-	bool Selectable() const
+	bool Selectable() const override
 	{
 		return true;
 	}
 
-	uint Width() const
+	uint Width() const override
 	{
 		CompanyID company = (CompanyID)this->result;
 		SetDParam(0, company);
@@ -140,12 +140,12 @@ public:
 		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_size.width + this->lock_size.width + 6;
 	}
 
-	uint Height(uint width) const
+	uint Height(uint width) const override
 	{
 		return max(max(this->icon_size.height, this->lock_size.height) + 2U, (uint)FONT_HEIGHT_NORMAL);
 	}
 
-	void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const
+	void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const override
 	{
 		CompanyID company = (CompanyID)this->result;
 		bool rtl = _current_text_dir == TD_RTL;

@@ -44,9 +44,9 @@ public:
 
 	DropDownListStringItem(StringID string, int result, bool masked) : DropDownListItem(result, masked), string(string) {}
 
-	virtual bool Selectable() const { return true; }
-	virtual uint Width() const;
-	virtual void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const;
+	bool Selectable() const override { return true; }
+	uint Width() const override;
+	void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const override;
 	virtual StringID String() const { return this->string; }
 
 	static int CDECL NatSortFunc(const DropDownListItem * const *first, const DropDownListItem * const *second);
@@ -61,8 +61,8 @@ public:
 
 	DropDownListParamStringItem(StringID string, int result, bool masked) : DropDownListStringItem(string, result, masked) {}
 
-	virtual StringID String() const;
-	virtual void SetParam(uint index, uint64 value) { decode_params[index] = value; }
+	StringID String() const override;
+	void SetParam(uint index, uint64 value) { decode_params[index] = value; }
 };
 
 /**
@@ -74,7 +74,7 @@ public:
 
 	DropDownListCharStringItem(const char *raw_string, int result, bool masked) : DropDownListStringItem(STR_JUST_RAW_STRING, result, masked), raw_string(raw_string) {}
 
-	virtual StringID String() const;
+	StringID String() const override;
 };
 
 /**
