@@ -154,6 +154,7 @@ platforms are:
 
 - DOS (Allegro)
 - FreeBSD (SDL)
+- Haiku (SDL)
 - Linux (SDL or Allegro)
 - macOS (universal) (Cocoa video and sound drivers)
 - OpenBSD (SDL)
@@ -544,6 +545,10 @@ This will give you a binary for your CPU type (PPC/Intel)
 However, for the first build one has to do a '`./configure`' first.
 To make a universal binary type '`./configure --enabled-universal`'
 instead of '`./configure`'.
+
+### Haiku:
+
+Use '`make`', but do a '`./configure`' before the first build.
 
 ### OS/2:
 
