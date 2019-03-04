@@ -163,7 +163,7 @@ public:
 		delete bridges;
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_BBS_DROPDOWN_ORDER: {
@@ -207,7 +207,7 @@ public:
 		}
 	}
 
-	virtual Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number)
+	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
 	{
 		/* Position the window so hopefully the first bridge from the list is under the mouse pointer. */
 		NWidgetBase *list = this->GetWidget<NWidgetBase>(WID_BBS_BRIDGE_LIST);
@@ -217,7 +217,7 @@ public:
 		return corner;
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
 			case WID_BBS_DROPDOWN_ORDER:
@@ -243,7 +243,7 @@ public:
 		}
 	}
 
-	virtual EventState OnKeyPress(WChar key, uint16 keycode)
+	EventState OnKeyPress(WChar key, uint16 keycode) override
 	{
 		const uint8 i = keycode - '1';
 		if (i < 9 && i < this->bridges->Length()) {
@@ -255,7 +255,7 @@ public:
 		return ES_NOT_HANDLED;
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			default: break;
@@ -279,7 +279,7 @@ public:
 		}
 	}
 
-	virtual void OnDropdownSelect(int widget, int index)
+	void OnDropdownSelect(int widget, int index) override
 	{
 		if (widget == WID_BBS_DROPDOWN_CRITERIA && this->bridges->SortType() != index) {
 			this->bridges->SetSortType(index);
@@ -288,7 +288,7 @@ public:
 		}
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_BBS_BRIDGE_LIST);
 	}

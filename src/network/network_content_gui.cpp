@@ -257,7 +257,7 @@ public:
 		InvalidateWindowData(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST, 2);
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		if (widget == WID_NCDS_CANCELOK) {
 			if (this->downloaded_bytes != this->total_bytes) {
@@ -271,7 +271,7 @@ public:
 		}
 	}
 
-	virtual void OnDownloadProgress(const ContentInfo *ci, int bytes)
+	void OnDownloadProgress(const ContentInfo *ci, int bytes) override
 	{
 		BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(ci, bytes);
 		this->receivedTypes.Include(ci->type);
@@ -562,7 +562,7 @@ public:
 		_network_content_client.RemoveCallback(this);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_NCL_FILTER_CAPT:
@@ -590,7 +590,7 @@ public:
 	}
 
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
 			case WID_NCL_FILTER_CAPT:
@@ -607,7 +607,7 @@ public:
 		}
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		const SortButtonState arrow = this->content.IsDescSortOrder() ? SBS_DOWN : SBS_UP;
 
@@ -779,7 +779,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		if (widget >= WID_NCL_TEXTFILE && widget < WID_NCL_TEXTFILE + TFT_END) {
 			if (this->selected == NULL || this->selected->state != ContentInfo::ALREADY_HERE) return;
@@ -865,7 +865,7 @@ public:
 		}
 	}
 
-	virtual EventState OnKeyPress(WChar key, uint16 keycode)
+	EventState OnKeyPress(WChar key, uint16 keycode) override
 	{
 		switch (keycode) {
 			case WKC_UP:
@@ -937,7 +937,7 @@ public:
 		return ES_HANDLED;
 	}
 
-	virtual void OnEditboxChanged(int wid)
+	void OnEditboxChanged(int wid) override
 	{
 		if (wid == WID_NCL_FILTER) {
 			this->filter_data.string_filter.SetFilterTerm(this->filter_editbox.text.buf);
@@ -947,25 +947,25 @@ public:
 		}
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_NCL_MATRIX);
 	}
 
-	virtual void OnReceiveContentInfo(const ContentInfo *rci)
+	void OnReceiveContentInfo(const ContentInfo *rci) override
 	{
 		if (this->auto_select && !rci->IsSelected()) _network_content_client.ToggleSelectedState(rci);
 		this->content.ForceRebuild();
 		this->InvalidateData();
 	}
 
-	virtual void OnDownloadComplete(ContentID cid)
+	void OnDownloadComplete(ContentID cid) override
 	{
 		this->content.ForceResort();
 		this->InvalidateData();
 	}
 
-	virtual void OnConnect(bool success)
+	void OnConnect(bool success) override
 	{
 		if (!success) {
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_CONNECT, INVALID_STRING_ID, WL_ERROR);
@@ -981,7 +981,7 @@ public:
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		if (this->content.NeedRebuild()) this->BuildContentList();

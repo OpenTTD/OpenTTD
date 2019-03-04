@@ -190,7 +190,7 @@ struct NewGRFParametersWindow : public Window {
 		return &dummy_parameter_info;
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_NP_NUMPAR_DEC:
@@ -234,7 +234,7 @@ struct NewGRFParametersWindow : public Window {
 		}
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
 			case WID_NP_NUMPAR:
@@ -243,7 +243,7 @@ struct NewGRFParametersWindow : public Window {
 		}
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget == WID_NP_DESCRIPTION) {
 			const GRFParameterInfo *par_info = (this->clicked_row < this->grf_config->param_info.Length()) ? this->grf_config->param_info[this->clicked_row] : NULL;
@@ -304,7 +304,7 @@ struct NewGRFParametersWindow : public Window {
 		}
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		if (this->closing_dropdown) {
 			this->closing_dropdown = false;
@@ -313,7 +313,7 @@ struct NewGRFParametersWindow : public Window {
 		this->DrawWidgets();
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_NP_NUMPAR_DEC:
@@ -427,7 +427,7 @@ struct NewGRFParametersWindow : public Window {
 		}
 	}
 
-	virtual void OnQueryTextFinished(char *str)
+	void OnQueryTextFinished(char *str) override
 	{
 		if (StrEmpty(str)) return;
 		int32 value = atoi(str);
@@ -438,7 +438,7 @@ struct NewGRFParametersWindow : public Window {
 		this->SetDirty();
 	}
 
-	virtual void OnDropdownSelect(int widget, int index)
+	void OnDropdownSelect(int widget, int index) override
 	{
 		assert(this->clicked_dropdown);
 		GRFParameterInfo *par_info = ((uint)this->clicked_row < this->grf_config->param_info.Length()) ? this->grf_config->param_info[this->clicked_row] : NULL;
@@ -447,7 +447,7 @@ struct NewGRFParametersWindow : public Window {
 		this->SetDirty();
 	}
 
-	virtual void OnDropdownClose(Point pt, int widget, int index, bool instant_close)
+	void OnDropdownClose(Point pt, int widget, int index, bool instant_close) override
 	{
 		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
 		 * the same dropdown button was clicked again, and then not open the dropdown again.
@@ -458,7 +458,7 @@ struct NewGRFParametersWindow : public Window {
 		this->SetDirty();
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_NP_BACKGROUND);
 	}
@@ -468,7 +468,7 @@ struct NewGRFParametersWindow : public Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		if (!this->action14present) {
@@ -483,7 +483,7 @@ struct NewGRFParametersWindow : public Window {
 		}
 	}
 
-	virtual void OnRealtimeTick(uint delta_ms)
+	void OnRealtimeTick(uint delta_ms) override
 	{
 		if (timeout.Elapsed(delta_ms)) {
 			this->clicked_button = UINT_MAX;
@@ -718,7 +718,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_NS_FILE_LIST:
@@ -769,13 +769,13 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		}
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_NS_FILE_LIST);
 		this->vscroll2->SetCapacityFromWidget(this, WID_NS_AVAIL_LIST);
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
 			case WID_NS_PRESET_LIST:
@@ -824,7 +824,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		return pal;
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
 			case WID_NS_FILE_LIST: {
@@ -913,7 +913,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		if (widget >= WID_NS_NEWGRF_TEXTFILE && widget < WID_NS_NEWGRF_TEXTFILE + TFT_END) {
 			if (this->active_sel == NULL && this->avail_sel == NULL) return;
@@ -1139,7 +1139,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		}
 	}
 
-	virtual void OnNewGRFsScanned()
+	void OnNewGRFsScanned() override
 	{
 		if (this->active_sel == NULL) DeleteWindowByClass(WC_TEXTFILE);
 		this->avail_sel = NULL;
@@ -1148,7 +1148,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 	}
 
-	virtual void OnDropdownSelect(int widget, int index)
+	void OnDropdownSelect(int widget, int index) override
 	{
 		if (!this->editable) return;
 
@@ -1167,7 +1167,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->InvalidateData(GOID_NEWGRF_PRESET_LOADED);
 	}
 
-	virtual void OnQueryTextFinished(char *str)
+	void OnQueryTextFinished(char *str) override
 	{
 		if (str == NULL) return;
 
@@ -1190,7 +1190,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	 * @param data Information about the changed data. @see GameOptionsInvalidationData
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		switch (data) {
@@ -1296,7 +1296,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->SetWidgetDisabledState(WID_NS_PRESET_SAVE, has_missing);
 	}
 
-	virtual EventState OnKeyPress(WChar key, uint16 keycode)
+	EventState OnKeyPress(WChar key, uint16 keycode) override
 	{
 		if (!this->editable) return ES_NOT_HANDLED;
 
@@ -1348,7 +1348,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		return ES_HANDLED;
 	}
 
-	virtual void OnEditboxChanged(int wid)
+	void OnEditboxChanged(int wid) override
 	{
 		if (!this->editable) return;
 
@@ -1358,7 +1358,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->InvalidateData(0);
 	}
 
-	virtual void OnDragDrop(Point pt, int widget)
+	void OnDragDrop(Point pt, int widget) override
 	{
 		if (!this->editable) return;
 
@@ -1406,7 +1406,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		}
 	}
 
-	virtual void OnMouseDrag(Point pt, int widget)
+	void OnMouseDrag(Point pt, int widget) override
 	{
 		if (!this->editable) return;
 
@@ -1605,7 +1605,7 @@ public:
 		this->editable = true; // Temporary setting, 'real' value is set in SetupSmallestSize().
 	}
 
-	virtual void SetupSmallestSize(Window *w, bool init_array)
+	void SetupSmallestSize(Window *w, bool init_array) override
 	{
 		/* Copy state flag from the window. */
 		assert(dynamic_cast<NewGRFWindow *>(w) != NULL);
@@ -1648,7 +1648,7 @@ public:
 		this->smallest_y = ComputeMaxSize(min_acs_height, this->smallest_y + this->resize_y - 1, this->resize_y);
 	}
 
-	virtual void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override
 	{
 		this->StoreSizePosition(sizing, x, y, given_width, given_height);
 
@@ -1767,7 +1767,7 @@ public:
 		}
 	}
 
-	virtual NWidgetCore *GetWidgetFromPos(int x, int y)
+	NWidgetCore *GetWidgetFromPos(int x, int y) override
 	{
 		if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return NULL;
 
@@ -1777,7 +1777,7 @@ public:
 		return nw;
 	}
 
-	virtual void Draw(const Window *w)
+	void Draw(const Window *w) override
 	{
 		if (this->editable) this->avs->Draw(w);
 		this->acs->Draw(w);
@@ -2074,7 +2074,7 @@ struct SavePresetWindow : public Window {
 	{
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_SVP_PRESET_LIST: {
@@ -2091,7 +2091,7 @@ struct SavePresetWindow : public Window {
 		}
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
 			case WID_SVP_PRESET_LIST: {
@@ -2115,7 +2115,7 @@ struct SavePresetWindow : public Window {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_SVP_PRESET_LIST: {
@@ -2142,7 +2142,7 @@ struct SavePresetWindow : public Window {
 		}
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_SVP_PRESET_LIST);
 	}
@@ -2197,7 +2197,7 @@ struct ScanProgressWindow : public Window {
 		free(last_name);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_SP_PROGRESS_BAR: {
@@ -2220,7 +2220,7 @@ struct ScanProgressWindow : public Window {
 		}
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
 			case WID_SP_PROGRESS_BAR: {

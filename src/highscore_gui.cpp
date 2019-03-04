@@ -63,12 +63,12 @@ struct EndGameHighScoreBaseWindow : Window {
 		return pt;
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		delete this;
 	}
 
-	virtual EventState OnKeyPress(WChar key, uint16 keycode)
+	EventState OnKeyPress(WChar key, uint16 keycode) override
 	{
 		/* All keys are 'handled' by this window but we want to make
 		 * sure that 'quit' still works correctly. Not handling the
@@ -129,7 +129,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 		ShowHighscoreTable(this->window_number, this->rank);
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		this->SetupHighScoreEndWindow();
 		Point pt = this->GetTopLeft(640, 480);
@@ -177,7 +177,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		if (!_networking && !this->game_paused_by_player) DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE); // unpause
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		const HighScore *hs = _highscore_table[this->window_number];
 

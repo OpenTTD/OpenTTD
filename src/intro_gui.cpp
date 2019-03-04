@@ -49,7 +49,7 @@ struct SelectGameWindow : public Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		this->SetWidgetLoweredState(WID_SGI_TEMPERATE_LANDSCAPE, _settings_newgame.game_creation.landscape == LT_TEMPERATE);
@@ -58,7 +58,7 @@ struct SelectGameWindow : public Window {
 		this->SetWidgetLoweredState(WID_SGI_TOYLAND_LANDSCAPE,   _settings_newgame.game_creation.landscape == LT_TOYLAND);
 	}
 
-	virtual void OnInit()
+	void OnInit() override
 	{
 		bool missing_sprites = _missing_extra_graphics > 0 && !IsReleasedVersion();
 		this->GetWidget<NWidgetStacked>(WID_SGI_BASESET_SELECTION)->SetDisplayedPlane(missing_sprites ? 0 : SZSP_NONE);
@@ -67,7 +67,7 @@ struct SelectGameWindow : public Window {
 		this->GetWidget<NWidgetStacked>(WID_SGI_TRANSLATION_SELECTION)->SetDisplayedPlane(missing_lang ? 0 : SZSP_NONE);
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
 			case WID_SGI_BASESET:
@@ -82,7 +82,7 @@ struct SelectGameWindow : public Window {
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		StringID str = 0;
 		switch (widget) {
@@ -111,7 +111,7 @@ struct SelectGameWindow : public Window {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		/* Do not create a network server when you (just) have closed one of the game
 		 * creation/load windows for the network server. */

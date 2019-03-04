@@ -201,7 +201,7 @@ struct IConsoleWindow : Window
 		this->SetDirty();
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		const int right = this->width - 5;
 
@@ -229,7 +229,7 @@ struct IConsoleWindow : Window
 		}
 	}
 
-	virtual void OnHundredthTick()
+	void OnHundredthTick() override
 	{
 		if (IConsoleLine::Truncate() &&
 				(IConsoleWindow::scroll > IConsoleLine::size)) {
@@ -238,12 +238,12 @@ struct IConsoleWindow : Window
 		}
 	}
 
-	virtual void OnMouseLoop()
+	void OnMouseLoop() override
 	{
 		if (_iconsole_cmdline.HandleCaret()) this->SetDirty();
 	}
 
-	virtual EventState OnKeyPress(WChar key, uint16 keycode)
+	EventState OnKeyPress(WChar key, uint16 keycode) override
 	{
 		if (_focused_window != this) return ES_NOT_HANDLED;
 
@@ -314,7 +314,7 @@ struct IConsoleWindow : Window
 		return ES_HANDLED;
 	}
 
-	virtual void InsertTextString(int wid, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end)
+	void InsertTextString(int wid, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end) override
 	{
 		if (_iconsole_cmdline.InsertString(str, marked, caret, insert_location, replacement_end)) {
 			IConsoleWindow::scroll = 0;
@@ -323,17 +323,17 @@ struct IConsoleWindow : Window
 		}
 	}
 
-	virtual const char *GetFocusedText() const
+	const char *GetFocusedText() const override
 	{
 		return _iconsole_cmdline.buf;
 	}
 
-	virtual const char *GetCaret() const
+	const char *GetCaret() const override
 	{
 		return _iconsole_cmdline.buf + _iconsole_cmdline.caretpos;
 	}
 
-	virtual const char *GetMarkedText(size_t *length) const
+	const char *GetMarkedText(size_t *length) const override
 	{
 		if (_iconsole_cmdline.markend == 0) return NULL;
 
@@ -341,7 +341,7 @@ struct IConsoleWindow : Window
 		return _iconsole_cmdline.buf + _iconsole_cmdline.markpos;
 	}
 
-	virtual Point GetCaretPosition() const
+	Point GetCaretPosition() const override
 	{
 		int delta = min(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 		Point pt = {this->line_offset + delta + _iconsole_cmdline.caretxoffs, this->height - this->line_height};
@@ -349,7 +349,7 @@ struct IConsoleWindow : Window
 		return pt;
 	}
 
-	virtual Rect GetTextBoundingRect(const char *from, const char *to) const
+	Rect GetTextBoundingRect(const char *from, const char *to) const override
 	{
 		int delta = min(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
@@ -360,7 +360,7 @@ struct IConsoleWindow : Window
 		return r;
 	}
 
-	virtual const char *GetTextCharacterAtPosition(const Point &pt) const
+	const char *GetTextCharacterAtPosition(const Point &pt) const override
 	{
 		int delta = min(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
@@ -369,12 +369,12 @@ struct IConsoleWindow : Window
 		return GetCharAtPosition(_iconsole_cmdline.buf, pt.x - delta);
 	}
 
-	virtual void OnMouseWheel(int wheel)
+	void OnMouseWheel(int wheel) override
 	{
 		this->Scroll(-wheel);
 	}
 
-	virtual void OnFocusLost()
+	void OnFocusLost() override
 	{
 		VideoDriver::GetInstance()->EditBoxLostFocus();
 	}

@@ -94,12 +94,12 @@ struct OskWindow : public Window {
 		this->SetWidgetLoweredState(WID_OSK_CAPS, HasBit(_keystate, KEYS_CAPS));
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_OSK_CAPTION) SetDParam(0, this->caption);
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget < WID_OSK_LETTERS) return;
 
@@ -110,7 +110,7 @@ struct OskWindow : public Window {
 			TC_BLACK);
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		/* clicked a letter */
 		if (widget >= WID_OSK_LETTERS) {
@@ -192,21 +192,21 @@ struct OskWindow : public Window {
 		}
 	}
 
-	virtual void OnEditboxChanged(int widget)
+	void OnEditboxChanged(int widget) override
 	{
 		this->SetWidgetDirty(WID_OSK_TEXT);
 		this->parent->OnEditboxChanged(this->text_btn);
 		this->parent->SetWidgetDirty(this->text_btn);
 	}
 
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		this->SetWidgetDirty(WID_OSK_TEXT);
 		this->parent->SetWidgetDirty(this->text_btn);
 	}
 
-	virtual void OnFocusLost()
+	void OnFocusLost() override
 	{
 		VideoDriver::GetInstance()->EditBoxLostFocus();
 		delete this;

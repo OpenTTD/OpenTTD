@@ -237,7 +237,7 @@ public:
 		this->sel_group = id_g;
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_RV_SORT_ASCENDING_DESCENDING: {
@@ -316,7 +316,7 @@ public:
 		}
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
 			case WID_RV_CAPTION:
@@ -353,7 +353,7 @@ public:
 		}
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
 			case WID_RV_SORT_ASCENDING_DESCENDING:
@@ -394,7 +394,7 @@ public:
 		}
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		if (this->engines[0].NeedRebuild() || this->engines[1].NeedRebuild()) this->GenerateLists();
 
@@ -437,7 +437,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_RV_SORT_ASCENDING_DESCENDING:
@@ -516,7 +516,7 @@ public:
 		}
 	}
 
-	virtual void OnDropdownSelect(int widget, int index)
+	void OnDropdownSelect(int widget, int index) override
 	{
 		switch (widget) {
 			case WID_RV_SORT_DROPDOWN:
@@ -557,7 +557,7 @@ public:
 		}
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		this->vscroll[0]->SetCapacityFromWidget(this, WID_RV_LEFT_MATRIX);
 		this->vscroll[1]->SetCapacityFromWidget(this, WID_RV_RIGHT_MATRIX);
@@ -568,7 +568,7 @@ public:
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (data != 0) {
 			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */

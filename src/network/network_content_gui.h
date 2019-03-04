@@ -39,8 +39,8 @@ public:
 	 */
 	~BaseNetworkContentDownloadStatusWindow();
 
-	virtual void DrawWidget(const Rect &r, int widget) const;
-	virtual void OnDownloadProgress(const ContentInfo *ci, int bytes);
+	void DrawWidget(const Rect &r, int widget) const override;
+	void OnDownloadProgress(const ContentInfo *ci, int bytes) override;
 };
 
 void BuildContentTypeStringList();

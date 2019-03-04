@@ -72,7 +72,7 @@ public:
 	char landinfo_data[LAND_INFO_LINE_END][LAND_INFO_LINE_BUFF_SIZE];
 	TileIndex tile;
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget != WID_LI_BACKGROUND) return;
 
@@ -91,7 +91,7 @@ public:
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget != WID_LI_BACKGROUND) return;
 
@@ -137,7 +137,7 @@ public:
 #undef LANDINFOD_LEVEL
 	}
 
-	virtual void OnInit()
+	void OnInit() override
 	{
 		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 
@@ -328,12 +328,12 @@ public:
 		if (!found) this->landinfo_data[LAND_INFO_MULTICENTER_LINE][0] = '\0';
 	}
 
-	virtual bool IsNewGRFInspectable() const
+	bool IsNewGRFInspectable() const override
 	{
 		return ::IsNewGRFInspectable(GetGrfSpecFeature(this->tile), this->tile);
 	}
 
-	virtual void ShowNewGRFInspectWindow() const
+	void ShowNewGRFInspectWindow() const override
 	{
 		::ShowNewGRFInspectWindow(GetGrfSpecFeature(this->tile), this->tile);
 	}
@@ -343,7 +343,7 @@ public:
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		switch (data) {
@@ -469,12 +469,12 @@ struct AboutWindow : public Window {
 		this->timer.SetInterval(TIMER_INTERVAL);
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_A_WEBSITE) SetDParamStr(0, "Website: http://www.openttd.org");
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget != WID_A_SCROLLING_TEXT) return;
 
@@ -490,7 +490,7 @@ struct AboutWindow : public Window {
 		*size = maxdim(*size, d);
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget != WID_A_SCROLLING_TEXT) return;
 
@@ -505,7 +505,7 @@ struct AboutWindow : public Window {
 		}
 	}
 
-	virtual void OnRealtimeTick(uint delta_ms)
+	void OnRealtimeTick(uint delta_ms) override
 	{
 		uint count = this->timer.CountElapsed(delta_ms);
 		if (count > 0) {
@@ -667,7 +667,7 @@ struct TooltipsWindow : public Window
 		CLRBITS(this->flags, WF_WHITE_BORDER);
 	}
 
-	virtual Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number)
+	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
 	{
 		/* Find the free screen space between the main toolbar at the top, and the statusbar at the bottom.
 		 * Add a fixed distance 2 so the tooltip floats free from both bars.
@@ -687,7 +687,7 @@ struct TooltipsWindow : public Window
 		return pt;
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		/* There is only one widget. */
 		for (uint i = 0; i != this->paramcount; i++) SetDParam(i, this->params[i]);
@@ -700,7 +700,7 @@ struct TooltipsWindow : public Window
 		size->height += 2 + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		/* There is only one widget. */
 		GfxFillRect(r.left, r.top, r.right, r.bottom, PC_BLACK);
@@ -712,7 +712,7 @@ struct TooltipsWindow : public Window
 		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM, this->string_id, TC_FROMSTRING, SA_CENTER);
 	}
 
-	virtual void OnMouseLoop()
+	void OnMouseLoop() override
 	{
 		/* Always close tooltips when the cursor is not in our window. */
 		if (!_cursor.in_window) {
@@ -973,7 +973,7 @@ struct QueryStringWindow : public Window
 		this->SetFocusedWidget(WID_QS_TEXT);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget == WID_QS_DEFAULT && (this->flags & QSF_ENABLE_DEFAULT) == 0) {
 			/* We don't want this widget to show! */
@@ -983,7 +983,7 @@ struct QueryStringWindow : public Window
 		}
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_QS_CAPTION) SetDParam(0, this->editbox.caption);
 	}
@@ -1002,7 +1002,7 @@ struct QueryStringWindow : public Window
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_QS_DEFAULT:
@@ -1097,7 +1097,7 @@ struct QueryWindow : public Window {
 		if (this->proc != NULL) this->proc(this->parent, false);
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
 			case WID_Q_CAPTION:
@@ -1111,7 +1111,7 @@ struct QueryWindow : public Window {
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget != WID_Q_TEXT) return;
 
@@ -1121,7 +1121,7 @@ struct QueryWindow : public Window {
 		*size = d;
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget != WID_Q_TEXT) return;
 
@@ -1129,7 +1129,7 @@ struct QueryWindow : public Window {
 				this->message, TC_FROMSTRING, SA_CENTER);
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_Q_YES: {
@@ -1152,7 +1152,7 @@ struct QueryWindow : public Window {
 		}
 	}
 
-	virtual EventState OnKeyPress(WChar key, uint16 keycode)
+	EventState OnKeyPress(WChar key, uint16 keycode) override
 	{
 		/* ESC closes the window, Enter confirms the action */
 		switch (keycode) {

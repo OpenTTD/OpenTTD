@@ -308,13 +308,13 @@ struct NewsWindow : Window {
 		GfxFillRect(r.left,  r.bottom, r.right, r.bottom, PC_BLACK);
 	}
 
-	virtual Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number)
+	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
 	{
 		Point pt = { 0, _screen.height };
 		return pt;
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		StringID str = STR_NULL;
 		switch (widget) {
@@ -365,12 +365,12 @@ struct NewsWindow : Window {
 		*size = maxdim(*size, d);
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_N_DATE) SetDParam(0, this->ni->date);
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
 			case WID_N_CAPTION:
@@ -427,7 +427,7 @@ struct NewsWindow : Window {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_N_CLOSEBOX:
@@ -466,7 +466,7 @@ struct NewsWindow : Window {
 		}
 	}
 
-	virtual EventState OnKeyPress(WChar key, uint16 keycode)
+	EventState OnKeyPress(WChar key, uint16 keycode) override
 	{
 		if (keycode == WKC_SPACE) {
 			/* Don't continue. */
@@ -481,7 +481,7 @@ struct NewsWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		/* The chatbar has notified us that is was either created or closed */
@@ -490,7 +490,7 @@ struct NewsWindow : Window {
 		this->SetWindowTop(newtop);
 	}
 
-	virtual void OnRealtimeTick(uint delta_ms)
+	void OnRealtimeTick(uint delta_ms) override
 	{
 		int count = this->timer.CountElapsed(delta_ms);
 		if (count > 0) {
@@ -1024,7 +1024,7 @@ struct MessageHistoryWindow : Window {
 		this->OnInvalidateData(0);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget == WID_MH_BACKGROUND) {
 			this->line_height = FONT_HEIGHT_NORMAL + 2;
@@ -1040,13 +1040,13 @@ struct MessageHistoryWindow : Window {
 		}
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		this->OnInvalidateData(0);
 		this->DrawWidgets();
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget != WID_MH_BACKGROUND || _total_news == 0) return;
 
@@ -1081,13 +1081,13 @@ struct MessageHistoryWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		this->vscroll->SetCount(_total_news);
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		if (widget == WID_MH_BACKGROUND) {
 			NewsItem *ni = _latest_news;
@@ -1102,7 +1102,7 @@ struct MessageHistoryWindow : Window {
 		}
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_MH_BACKGROUND);
 	}

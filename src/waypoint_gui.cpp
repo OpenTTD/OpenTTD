@@ -81,12 +81,12 @@ public:
 		DeleteWindowById(GetWindowClassForVehicleType(this->vt), VehicleListIdentifier(VL_STATION_LIST, this->vt, this->owner, this->window_number).Pack(), false);
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_W_CAPTION) SetDParam(0, this->wp->index);
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_W_CENTER_VIEW: // scroll to location
@@ -113,7 +113,7 @@ public:
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		/* You can only change your own waypoints */
@@ -124,7 +124,7 @@ public:
 		ScrollWindowToTile(this->GetCenterTile(), this, true);
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		if (this->viewport != NULL) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_W_VIEWPORT);
@@ -135,7 +135,7 @@ public:
 		}
 	}
 
-	virtual void OnQueryTextFinished(char *str)
+	void OnQueryTextFinished(char *str) override
 	{
 		if (str == NULL) return;
 

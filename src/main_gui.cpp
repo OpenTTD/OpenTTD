@@ -250,7 +250,7 @@ struct MainWindow : Window
 		this->refresh.SetInterval(LINKGRAPH_DELAY);
 	}
 
-	virtual void OnRealtimeTick(uint delta_ms)
+	void OnRealtimeTick(uint delta_ms) override
 	{
 		if (!this->refresh.Elapsed(delta_ms)) return;
 
@@ -265,7 +265,7 @@ struct MainWindow : Window
 		this->GetWidget<NWidgetBase>(WID_M_VIEWPORT)->SetDirty(this);
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		this->DrawWidgets();
 		if (_game_mode == GM_MENU) {
@@ -285,7 +285,7 @@ struct MainWindow : Window
 		}
 	}
 
-	virtual EventState OnHotkey(int hotkey)
+	EventState OnHotkey(int hotkey) override
 	{
 		if (hotkey == GHK_QUIT) {
 			HandleExitGameRequest();
@@ -424,7 +424,7 @@ struct MainWindow : Window
 		return ES_HANDLED;
 	}
 
-	virtual void OnScroll(Point delta)
+	void OnScroll(Point delta) override
 	{
 		this->viewport->scrollpos_x += ScaleByZoom(delta.x, this->viewport->zoom);
 		this->viewport->scrollpos_y += ScaleByZoom(delta.y, this->viewport->zoom);
@@ -433,14 +433,14 @@ struct MainWindow : Window
 		this->refresh.SetInterval(LINKGRAPH_DELAY);
 	}
 
-	virtual void OnMouseWheel(int wheel)
+	void OnMouseWheel(int wheel) override
 	{
 		if (_settings_client.gui.scrollwheel_scrolling != 2) {
 			ZoomInOrOutToCursorWindow(wheel < 0, this);
 		}
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		if (this->viewport != NULL) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_M_VIEWPORT);
@@ -454,7 +454,7 @@ struct MainWindow : Window
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		/* Forward the message to the appropriate toolbar (ingame or scenario editor) */

@@ -87,14 +87,14 @@ struct BuildAirToolbarWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 
 		if (!CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) delete this;
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_AT_AIRPORT:
@@ -114,7 +114,7 @@ struct BuildAirToolbarWindow : Window {
 	}
 
 
-	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	void OnPlaceObject(Point pt, TileIndex tile) override
 	{
 		switch (this->last_user_action) {
 			case WID_AT_AIRPORT:
@@ -129,19 +129,19 @@ struct BuildAirToolbarWindow : Window {
 		}
 	}
 
-	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
+	void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt) override
 	{
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
-	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
+	void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
 		if (pt.x != -1 && select_proc == DDSP_DEMOLISH_AREA) {
 			GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
 		}
 	}
 
-	virtual void OnPlaceObjectAbort()
+	void OnPlaceObjectAbort() override
 	{
 		this->RaiseButtons();
 
@@ -268,7 +268,7 @@ public:
 		DeleteWindowById(WC_SELECT_STATION, 0);
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
 			case WID_AP_CLASS_DROPDOWN:
@@ -293,7 +293,7 @@ public:
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_AP_CLASS_DROPDOWN: {
@@ -357,7 +357,7 @@ public:
 		}
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
 			case WID_AP_AIRPORT_LIST: {
@@ -394,7 +394,7 @@ public:
 		}
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		this->DrawWidgets();
 
@@ -462,7 +462,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_AP_CLASS_DROPDOWN:
@@ -535,7 +535,7 @@ public:
 		this->SelectOtherAirport(-1);
 	}
 
-	virtual void OnDropdownSelect(int widget, int index)
+	void OnDropdownSelect(int widget, int index) override
 	{
 		assert(widget == WID_AP_CLASS_DROPDOWN);
 		_selected_airport_class = (AirportClassID)index;
@@ -543,7 +543,7 @@ public:
 		this->SelectFirstAvailableAirport(false);
 	}
 
-	virtual void OnRealtimeTick(uint delta_ms)
+	void OnRealtimeTick(uint delta_ms) override
 	{
 		CheckRedrawStationCoverage(this);
 	}

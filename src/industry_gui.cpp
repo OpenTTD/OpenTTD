@@ -403,12 +403,12 @@ public:
 		this->SetButtons();
 	}
 
-	virtual void OnInit()
+	void OnInit() override
 	{
 		this->SetupArrays();
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_DPI_MATRIX_WIDGET: {
@@ -477,7 +477,7 @@ public:
 		}
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
 			case WID_DPI_FUND_WIDGET:
@@ -494,7 +494,7 @@ public:
 		}
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
 			case WID_DPI_MATRIX_WIDGET: {
@@ -581,7 +581,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_DPI_MATRIX_WIDGET: {
@@ -635,13 +635,13 @@ public:
 		}
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		/* Adjust the number of items in the matrix depending of the resize */
 		this->vscroll->SetCapacityFromWidget(this, WID_DPI_MATRIX_WIDGET);
 	}
 
-	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	void OnPlaceObject(Point pt, TileIndex tile) override
 	{
 		bool success = true;
 		/* We do not need to protect ourselves against "Random Many Industries" in this mode */
@@ -674,7 +674,7 @@ public:
 		if (success && !_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	}
 
-	virtual void OnGameTick()
+	void OnGameTick() override
 	{
 		if (!this->timer_enabled) return;
 		if (--this->callback_timer == 0) {
@@ -697,12 +697,12 @@ public:
 		}
 	}
 
-	virtual void OnTimeout()
+	void OnTimeout() override
 	{
 		this->RaiseButtons();
 	}
 
-	virtual void OnPlaceObjectAbort()
+	void OnPlaceObjectAbort() override
 	{
 		this->RaiseButtons();
 	}
@@ -712,7 +712,7 @@ public:
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		this->SetupArrays();
@@ -787,7 +787,7 @@ public:
 		this->InvalidateData();
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		this->DrawWidgets();
 
@@ -924,17 +924,17 @@ public:
 		return y + WD_FRAMERECT_BOTTOM;
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_IV_CAPTION) SetDParam(0, this->window_number);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget == WID_IV_INFO) size->height = this->info_height;
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_IV_INFO: {
@@ -1039,14 +1039,14 @@ public:
 		}
 	}
 
-	virtual void OnTimeout()
+	void OnTimeout() override
 	{
 		this->clicked_line = IL_NONE;
 		this->clicked_button = 0;
 		this->SetDirty();
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		if (this->viewport != NULL) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_IV_VIEWPORT);
@@ -1056,7 +1056,7 @@ public:
 		}
 	}
 
-	virtual void OnQueryTextFinished(char *str)
+	void OnQueryTextFinished(char *str) override
 	{
 		if (StrEmpty(str)) return;
 
@@ -1082,7 +1082,7 @@ public:
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		const Industry *i = Industry::Get(this->window_number);
@@ -1094,12 +1094,12 @@ public:
 		}
 	}
 
-	virtual bool IsNewGRFInspectable() const
+	bool IsNewGRFInspectable() const override
 	{
 		return ::IsNewGRFInspectable(GSF_INDUSTRIES, this->window_number);
 	}
 
-	virtual void ShowNewGRFInspectWindow() const
+	void ShowNewGRFInspectWindow() const override
 	{
 		::ShowNewGRFInspectWindow(GSF_INDUSTRIES, this->window_number);
 	}
@@ -1357,12 +1357,12 @@ public:
 		this->last_sorting = this->industries.GetListing();
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_ID_DROPDOWN_CRITERIA) SetDParam(0, IndustryDirectoryWindow::sorter_names[this->industries.SortType()]);
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
 			case WID_ID_DROPDOWN_ORDER:
@@ -1387,7 +1387,7 @@ public:
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_ID_DROPDOWN_ORDER: {
@@ -1425,7 +1425,7 @@ public:
 	}
 
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_ID_DROPDOWN_ORDER:
@@ -1451,7 +1451,7 @@ public:
 		}
 	}
 
-	virtual void OnDropdownSelect(int widget, int index)
+	void OnDropdownSelect(int widget, int index) override
 	{
 		if (this->industries.SortType() != index) {
 			this->industries.SetSortType(index);
@@ -1459,18 +1459,18 @@ public:
 		}
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_ID_INDUSTRY_LIST);
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		if (this->industries.NeedRebuild()) this->BuildSortIndustriesList();
 		this->DrawWidgets();
 	}
 
-	virtual void OnHundredthTick()
+	void OnHundredthTick() override
 	{
 		this->industries.ForceResort();
 		this->BuildSortIndustriesList();
@@ -1481,7 +1481,7 @@ public:
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (data == 0) {
 			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
@@ -2172,7 +2172,7 @@ struct IndustryCargoesWindow : public Window {
 		this->OnInvalidateData(id);
 	}
 
-	virtual void OnInit()
+	void OnInit() override
 	{
 		/* Initialize static CargoesField size variables. */
 		Dimension d = GetStringBoundingBox(STR_INDUSTRY_CARGOES_PRODUCERS);
@@ -2219,7 +2219,7 @@ struct IndustryCargoesWindow : public Window {
 		CargoesField::cargo_field_width = CargoesField::HOR_CARGO_BORDER_SPACE * 2 + CargoesField::HOR_CARGO_WIDTH * CargoesField::max_cargoes + CargoesField::HOR_CARGO_SPACE * (CargoesField::max_cargoes - 1);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_IC_PANEL:
@@ -2238,7 +2238,7 @@ struct IndustryCargoesWindow : public Window {
 
 
 	CargoesFieldType type; ///< Type of field.
-	virtual void SetStringParameters  (int widget) const
+	void SetStringParameters  (int widget) const override
 	{
 		if (widget != WID_IC_CAPTION) return;
 
@@ -2557,7 +2557,7 @@ struct IndustryCargoesWindow : public Window {
 	 * - data = NUM_INDUSTRYTYPES: Stop sending updates to the smallmap window.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		if (data == NUM_INDUSTRYTYPES) {
@@ -2572,7 +2572,7 @@ struct IndustryCargoesWindow : public Window {
 		this->ComputeIndustryDisplay(data);
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget != WID_IC_PANEL) return;
 
@@ -2660,7 +2660,7 @@ struct IndustryCargoesWindow : public Window {
 		return true;
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_IC_PANEL: {
@@ -2738,7 +2738,7 @@ struct IndustryCargoesWindow : public Window {
 		}
 	}
 
-	virtual void OnDropdownSelect(int widget, int index)
+	void OnDropdownSelect(int widget, int index) override
 	{
 		if (index < 0) return;
 
@@ -2753,7 +2753,7 @@ struct IndustryCargoesWindow : public Window {
 		}
 	}
 
-	bool OnTooltip(Point pt, int widget, TooltipCloseCondition close_cond)
+	bool OnTooltip(Point pt, int widget, TooltipCloseCondition close_cond) override
 	{
 		if (widget != WID_IC_PANEL) return false;
 
@@ -2795,7 +2795,7 @@ struct IndustryCargoesWindow : public Window {
 		return false;
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_IC_PANEL);
 	}

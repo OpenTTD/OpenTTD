@@ -432,7 +432,7 @@ struct FramerateWindow : Window {
 		ResizeWindow(this, 0, (max(MIN_ELEMENTS, this->num_displayed) - MIN_ELEMENTS) * FONT_HEIGHT_NORMAL);
 	}
 
-	virtual void OnRealtimeTick(uint delta_ms)
+	void OnRealtimeTick(uint delta_ms) override
 	{
 		bool elapsed = this->next_update.Elapsed(delta_ms);
 
@@ -475,7 +475,7 @@ struct FramerateWindow : Window {
 		}
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
 			case WID_FRW_CAPTION:
@@ -503,7 +503,7 @@ struct FramerateWindow : Window {
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_FRW_RATE_GAMELOOP:
@@ -582,7 +582,7 @@ struct FramerateWindow : Window {
 		}
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
 			case WID_FRW_TIMES_NAMES: {
@@ -621,7 +621,7 @@ struct FramerateWindow : Window {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_FRW_TIMES_NAMES:
@@ -646,7 +646,7 @@ struct FramerateWindow : Window {
 		}
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		auto *wid = this->GetWidget<NWidgetResizeBase>(WID_FRW_TIMES_NAMES);
 		this->num_displayed = (wid->current_y - wid->min_y - VSPACING) / FONT_HEIGHT_NORMAL - 1; // subtract 1 for headings
@@ -694,7 +694,7 @@ struct FrametimeGraphWindow : Window {
 		this->InitNested(number);
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
 			case WID_FGW_CAPTION:
@@ -709,7 +709,7 @@ struct FrametimeGraphWindow : Window {
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget == WID_FGW_GRAPH) {
 			SetDParam(0, 100);
@@ -807,7 +807,7 @@ struct FrametimeGraphWindow : Window {
 		this->SelectVerticalScale(peak_value);
 	}
 
-	virtual void OnRealtimeTick(uint delta_ms)
+	void OnRealtimeTick(uint delta_ms) override
 	{
 		this->SetDirty();
 
@@ -826,7 +826,7 @@ struct FrametimeGraphWindow : Window {
 		return (value - src_min) * dst_diff / src_diff + dst_min;
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget == WID_FGW_GRAPH) {
 			const TimingMeasurement *durations  = _pf_data[this->element].durations;

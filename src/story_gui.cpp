@@ -463,7 +463,7 @@ public:
 		}
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
 			case WID_SB_SEL_PAGE: {
@@ -482,7 +482,7 @@ public:
 		}
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		/* Detect if content has changed height. This can happen if a
 		 * multi-line text contains eg. {COMPANY} and that company is
@@ -497,7 +497,7 @@ public:
 		this->DrawWidgets();
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget != WID_SB_PAGE_PANEL) return;
 
@@ -563,7 +563,7 @@ public:
 		_cur_dpi = old_dpi;
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget != WID_SB_SEL_PAGE && widget != WID_SB_PAGE_PANEL) return;
 
@@ -606,13 +606,13 @@ public:
 
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_SB_PAGE_PANEL, WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM);
 		this->vscroll->SetCount(this->GetContentHeight());
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_SB_SEL_PAGE: {
@@ -667,7 +667,7 @@ public:
 		}
 	}
 
-	virtual void OnDropdownSelect(int widget, int index)
+	void OnDropdownSelect(int widget, int index) override
 	{
 		if (widget != WID_SB_SEL_PAGE) return;
 
@@ -682,7 +682,7 @@ public:
 	 *   >= 0   Id of the page that needs to be refreshed. If it is not the current page, nothing happens.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 

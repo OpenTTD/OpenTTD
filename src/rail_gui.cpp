@@ -440,7 +440,7 @@ struct BuildRailToolbarWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 
@@ -507,7 +507,7 @@ struct BuildRailToolbarWindow : Window {
 		}
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_RAT_CAPTION) {
 			const RailtypeInfo *rti = GetRailTypeInfo(this->railtype);
@@ -521,7 +521,7 @@ struct BuildRailToolbarWindow : Window {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		if (widget < WID_RAT_BUILD_NS) return;
 
@@ -613,13 +613,13 @@ struct BuildRailToolbarWindow : Window {
 		if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
 	}
 
-	virtual EventState OnHotkey(int hotkey)
+	EventState OnHotkey(int hotkey) override
 	{
 		MarkTileDirtyByTile(TileVirtXY(_thd.pos.x, _thd.pos.y)); // redraw tile selection
 		return Window::OnHotkey(hotkey);
 	}
 
-	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	void OnPlaceObject(Point pt, TileIndex tile) override
 	{
 		switch (this->last_user_action) {
 			case WID_RAT_BUILD_NS:
@@ -680,7 +680,7 @@ struct BuildRailToolbarWindow : Window {
 		}
 	}
 
-	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
+	void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt) override
 	{
 		/* no dragging if you have pressed the convert button */
 		if (FindWindowById(WC_BUILD_SIGNAL, 0) != NULL && _convert_signal_button && this->IsWidgetLowered(WID_RAT_BUILD_SIGNALS)) return;
@@ -688,7 +688,7 @@ struct BuildRailToolbarWindow : Window {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
-	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
+	void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
 		if (pt.x != -1) {
 			switch (select_proc) {
@@ -741,7 +741,7 @@ struct BuildRailToolbarWindow : Window {
 		}
 	}
 
-	virtual void OnPlaceObjectAbort()
+	void OnPlaceObjectAbort() override
 	{
 		this->RaiseButtons();
 		this->DisableWidget(WID_RAT_REMOVE);
@@ -755,13 +755,13 @@ struct BuildRailToolbarWindow : Window {
 		DeleteWindowByClass(WC_BUILD_BRIDGE);
 	}
 
-	virtual void OnPlacePresize(Point pt, TileIndex tile)
+	void OnPlacePresize(Point pt, TileIndex tile) override
 	{
 		DoCommand(tile, _cur_railtype | (TRANSPORT_RAIL << 8), 0, DC_AUTO, CMD_BUILD_TUNNEL);
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 	}
 
-	virtual EventState OnCTRLStateChange()
+	EventState OnCTRLStateChange() override
 	{
 		/* do not toggle Remove button by Ctrl when placing station */
 		if (!this->IsWidgetLowered(WID_RAT_BUILD_STATION) && !this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT) && RailToolbar_CtrlChanged(this)) return ES_HANDLED;
@@ -996,7 +996,7 @@ public:
 		DeleteWindowById(WC_SELECT_STATION, 0);
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		bool newstations = _railstation.newstations;
 		const StationSpec *statspec = newstations ? StationClass::Get(_railstation.station_class)->GetSpec(_railstation.station_type) : NULL;
@@ -1047,7 +1047,7 @@ public:
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_BRAS_NEWST_LIST: {
@@ -1104,7 +1104,7 @@ public:
 		}
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		DrawPixelInfo tmp_dpi;
 
@@ -1178,14 +1178,14 @@ public:
 		}
 	}
 
-	virtual void OnResize()
+	void OnResize() override
 	{
 		if (this->vscroll != NULL) { // New stations available.
 			this->vscroll->SetCapacityFromWidget(this, WID_BRAS_NEWST_LIST);
 		}
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_BRAS_SHOW_NEWST_TYPE) {
 			const StationSpec *statspec = StationClass::Get(_railstation.station_class)->GetSpec(_railstation.station_type);
@@ -1193,7 +1193,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (GB(widget, 0, 16)) {
 			case WID_BRAS_PLATFORM_DIR_X:
@@ -1369,7 +1369,7 @@ public:
 		}
 	}
 
-	virtual void OnRealtimeTick(uint delta_ms)
+	void OnRealtimeTick(uint delta_ms) override
 	{
 		CheckRedrawStationCoverage(this);
 	}
@@ -1523,7 +1523,7 @@ public:
 		_convert_signal_button = false;
 	}
 
-	virtual void OnInit()
+	void OnInit() override
 	{
 		/* Calculate maximum signal sprite size. */
 		this->sig_sprite_size.width = 0;
@@ -1543,7 +1543,7 @@ public:
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget == WID_BS_DRAG_SIGNALS_DENSITY_LABEL) {
 			/* Two digits for signals density. */
@@ -1554,7 +1554,7 @@ public:
 		}
 	}
 
-	virtual void SetStringParameters(int widget) const
+	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
 			case WID_BS_DRAG_SIGNALS_DENSITY_LABEL:
@@ -1563,7 +1563,7 @@ public:
 		}
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (IsInsideMM(widget, WID_BS_SEMAPHORE_NORM, WID_BS_ELECTRIC_PBS_OWAY + 1)) {
 			/* Extract signal from widget number. */
@@ -1575,7 +1575,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_BS_SEMAPHORE_NORM:
@@ -1632,7 +1632,7 @@ public:
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		this->LowerWidget((_cur_signal_variant == SIG_ELECTRIC ? WID_BS_ELECTRIC_NORM : WID_BS_SEMAPHORE_NORM) + _cur_signal_type);
@@ -1704,7 +1704,7 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 		this->LowerWidget(_build_depot_direction + WID_BRAD_DEPOT_NE);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (!IsInsideMM(widget, WID_BRAD_DEPOT_NE, WID_BRAD_DEPOT_NW + 1)) return;
 
@@ -1712,14 +1712,14 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 		size->height = ScaleGUITrad(48) + 2;
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (!IsInsideMM(widget, WID_BRAD_DEPOT_NE, WID_BRAD_DEPOT_NW + 1)) return;
 
 		DrawTrainDepotSprite(r.left + 1 + ScaleGUITrad(31), r.bottom - ScaleGUITrad(31), widget - WID_BRAD_DEPOT_NE + DIAGDIR_NE, _cur_railtype);
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_BRAD_DEPOT_NE:
@@ -1793,7 +1793,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 		matrix->SetClicked(_cur_waypoint_type);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_BRW_WAYPOINT_MATRIX:
@@ -1812,7 +1812,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 		}
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (GB(widget, 0, 16)) {
 			case WID_BRW_WAYPOINT: {
@@ -1827,7 +1827,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (GB(widget, 0, 16)) {
 			case WID_BRW_WAYPOINT: {

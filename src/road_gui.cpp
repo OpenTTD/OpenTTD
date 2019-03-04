@@ -335,7 +335,7 @@ struct BuildRoadToolbarWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 
@@ -403,7 +403,7 @@ struct BuildRoadToolbarWindow : Window {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		_remove_button_clicked = false;
 		_one_way_button_clicked = false;
@@ -483,13 +483,13 @@ struct BuildRoadToolbarWindow : Window {
 		if (_ctrl_pressed) RoadToolbar_CtrlChanged(this);
 	}
 
-	virtual EventState OnHotkey(int hotkey)
+	EventState OnHotkey(int hotkey) override
 	{
 		MarkTileDirtyByTile(TileVirtXY(_thd.pos.x, _thd.pos.y)); // redraw tile selection
 		return Window::OnHotkey(hotkey);
 	}
 
-	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	void OnPlaceObject(Point pt, TileIndex tile) override
 	{
 		_remove_button_clicked = this->IsWidgetLowered(WID_ROT_REMOVE);
 		_one_way_button_clicked = this->IsWidgetLowered(WID_ROT_ONE_WAY);
@@ -543,7 +543,7 @@ struct BuildRoadToolbarWindow : Window {
 		}
 	}
 
-	virtual void OnPlaceObjectAbort()
+	void OnPlaceObjectAbort() override
 	{
 		this->RaiseButtons();
 		this->SetWidgetsDisabledState(true,
@@ -560,7 +560,7 @@ struct BuildRoadToolbarWindow : Window {
 		DeleteWindowByClass(WC_BUILD_BRIDGE);
 	}
 
-	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
+	void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt) override
 	{
 		/* Here we update the end tile flags
 		 * of the road placement actions.
@@ -603,7 +603,7 @@ struct BuildRoadToolbarWindow : Window {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
-	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
+	void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
 		if (pt.x != -1) {
 			switch (select_proc) {
@@ -659,13 +659,13 @@ struct BuildRoadToolbarWindow : Window {
 		}
 	}
 
-	virtual void OnPlacePresize(Point pt, TileIndex tile)
+	void OnPlacePresize(Point pt, TileIndex tile) override
 	{
 		DoCommand(tile, RoadTypeToRoadTypes(_cur_roadtype) | (TRANSPORT_ROAD << 8), 0, DC_AUTO, CMD_BUILD_TUNNEL);
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 	}
 
-	virtual EventState OnCTRLStateChange()
+	EventState OnCTRLStateChange() override
 	{
 		if (RoadToolbar_CtrlChanged(this)) return ES_HANDLED;
 		return ES_NOT_HANDLED;
@@ -874,7 +874,7 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 		this->FinishInitNested(TRANSPORT_ROAD);
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (!IsInsideMM(widget, WID_BROD_DEPOT_NE, WID_BROD_DEPOT_NW + 1)) return;
 
@@ -882,14 +882,14 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 		size->height = ScaleGUITrad(48) + 2;
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (!IsInsideMM(widget, WID_BROD_DEPOT_NE, WID_BROD_DEPOT_NW + 1)) return;
 
 		DrawRoadDepotSprite(r.left + 1 + ScaleGUITrad(31), r.bottom - ScaleGUITrad(31), (DiagDirection)(widget - WID_BROD_DEPOT_NE + DIAGDIR_NE), _cur_roadtype);
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_BROD_DEPOT_NW:
@@ -979,7 +979,7 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 		DeleteWindowById(WC_SELECT_STATION, 0);
 	}
 
-	virtual void OnPaint()
+	void OnPaint() override
 	{
 		this->DrawWidgets();
 
@@ -1006,7 +1006,7 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (!IsInsideMM(widget, WID_BROS_STATION_NE, WID_BROS_STATION_Y + 1)) return;
 
@@ -1014,7 +1014,7 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 		size->height = ScaleGUITrad(48) + 2;
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (!IsInsideMM(widget, WID_BROS_STATION_NE, WID_BROS_STATION_Y + 1)) return;
 
@@ -1022,7 +1022,7 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 		StationPickerDrawSprite(r.left + 1 + ScaleGUITrad(31), r.bottom - ScaleGUITrad(31), st, INVALID_RAILTYPE, widget < WID_BROS_STATION_X ? ROADTYPE_ROAD : _cur_roadtype, widget - WID_BROS_STATION_NE);
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_BROS_STATION_NE:
@@ -1053,7 +1053,7 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 		}
 	}
 
-	virtual void OnRealtimeTick(uint delta_ms)
+	void OnRealtimeTick(uint delta_ms) override
 	{
 		CheckRedrawStationCoverage(this);
 	}
