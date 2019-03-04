@@ -39,7 +39,7 @@ private:
 	};
 
 	const char *filter_buffer;                     ///< Parsed filter string. Words separated by 0.
-	std::vector<WordState> word_index;          ///< Word index and filter state.
+	std::vector<WordState> word_index;             ///< Word index and filter state.
 	uint word_matches;                             ///< Summary of filter state: Number of words matched.
 
 	const bool *case_sensitive;                    ///< Match case-sensitively (usually a static variable).

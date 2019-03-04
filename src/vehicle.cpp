@@ -688,7 +688,7 @@ void ResetVehicleColourMap()
  * List of vehicles that should check for autoreplace this tick.
  * Mapping of vehicle -> leave depot immediately after autoreplace.
  */
-typedef SmallMap<Vehicle *, bool, 4> AutoreplaceMap;
+typedef SmallMap<Vehicle *, bool> AutoreplaceMap;
 static AutoreplaceMap _vehicles_to_autoreplace;
 
 void InitializeVehicles()

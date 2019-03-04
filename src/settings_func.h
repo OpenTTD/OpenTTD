@@ -30,7 +30,7 @@ void IniSaveWindowSettings(IniFile *ini, const char *grpname, void *desc);
 
 /* Functions to load and save NewGRF settings to a separate
  * configuration file, used for presets. */
-typedef AutoFreeSmallVector<char *, 4> GRFPresetList;
+typedef AutoFreeSmallVector<char *> GRFPresetList;
 
 void GetGRFPresetList(GRFPresetList *list);
 struct GRFConfig *LoadGRFPresetFromConfig(const char *config_name);
