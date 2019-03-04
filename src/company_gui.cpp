@@ -524,17 +524,17 @@ public:
 		return this->result >= COLOUR_END ? STR_COLOUR_DEFAULT : _colour_dropdown[this->result];
 	}
 
-	uint Height(uint width) const
+	uint Height(uint width) const override
 	{
 		return max(FONT_HEIGHT_NORMAL, ScaleGUITrad(12) + 2);
 	}
 
-	bool Selectable() const
+	bool Selectable() const override
 	{
 		return true;
 	}
 
-	void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const
+	void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const override
 	{
 		bool rtl = _current_text_dir == TD_RTL;
 		int height = bottom - top;
