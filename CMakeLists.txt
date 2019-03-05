@@ -151,6 +151,7 @@ target_link_libraries(openttd
     openttd::languages
     openttd::settings
     openttd::basesets
+    openttd::script_api
     Threads::Threads
 )
 

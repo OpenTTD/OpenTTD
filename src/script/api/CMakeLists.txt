@@ -1,3 +1,44 @@
+# Get script_window.hpp dependencies
+file(STRINGS ${CMAKE_CURRENT_SOURCE_DIR}/script_window.hpp.in ENUM_LINES REGEX "@enum")
+foreach(ENUM IN LISTS ENUM_LINES)
+    string(REGEX REPLACE ".* ([^ @]+)@.*" "\\1" FILE_PATTERN "${ENUM}")
+    file(GLOB FILENAMES "${FILE_PATTERN}")
+    list(APPEND DEPENDENCIES ${FILENAMES})
+endforeach(ENUM)
+list(REMOVE_DUPLICATES DEPENDENCIES)
+
+# Add a command to generate script_window.hpp
+add_custom_command_timestamp(OUTPUT ${CMAKE_BINARY_DIR}/generated/script/api/script_window.hpp
+        COMMAND ${CMAKE_COMMAND}
+                -DGENERATE_SOURCE_FILE=${CMAKE_CURRENT_SOURCE_DIR}/script_window.hpp.in
+                -DGENERATE_BINARY_FILE=${CMAKE_BINARY_DIR}/generated/script/api/script_window.hpp
+                -P ${CMAKE_SOURCE_DIR}/cmake/scripts/GenerateWidget.cmake
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/generated/script/api/dummy # dummy directory for #include "../script_window.hpp"
+        MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/script_window.hpp.in
+        DEPENDS ${CMAKE_SOURCE_DIR}/cmake/scripts/GenerateWidget.cmake ${DEPENDENCIES}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        COMMENT "Generating script_window.hpp"
+)
+add_custom_target_timestamp(script_window
+        DEPENDS
+        ${CMAKE_BINARY_DIR}/generated/script/api/script_window.hpp
+)
+
+add_library(script_api
+        INTERFACE
+)
+target_include_directories(script_api
+        INTERFACE
+        ${CMAKE_BINARY_DIR}/generated/script/api/
+        ${CMAKE_BINARY_DIR}/generated/script/api/dummy # dummy path so #include "../script_window.hpp" works
+        ${CMAKE_CURRENT_SOURCE_DIR}
+)
+add_dependencies(script_api
+        script_window
+)
+add_library(openttd::script_api ALIAS script_api)
+
+
 add_files(
     ai_changelog.hpp
     game_changelog.hpp
@@ -69,7 +110,6 @@ add_files(
     script_viewport.hpp
     script_waypoint.hpp
     script_waypointlist.hpp
-    script_window.hpp
     script_accounting.cpp
     script_admin.cpp
     script_airport.cpp

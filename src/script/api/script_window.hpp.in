@@ -1,0 +1,171 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/** @file script_window.hpp Everything to handle window interaction. */
+
+#ifndef SCRIPT_WINDOW_HPP
+#define SCRIPT_WINDOW_HPP
+
+#include "script_object.hpp"
+#include "../../window_type.h"
+#include "../../gfx_type.h"
+
+#include "../../widgets/ai_widget.h"
+#include "../../widgets/airport_widget.h"
+#include "../../widgets/autoreplace_widget.h"
+#include "../../widgets/bootstrap_widget.h"
+#include "../../widgets/bridge_widget.h"
+#include "../../widgets/build_vehicle_widget.h"
+#include "../../widgets/cheat_widget.h"
+#include "../../widgets/company_widget.h"
+#include "../../widgets/console_widget.h"
+#include "../../widgets/date_widget.h"
+#include "../../widgets/depot_widget.h"
+#include "../../widgets/dock_widget.h"
+#include "../../widgets/dropdown_widget.h"
+#include "../../widgets/engine_widget.h"
+#include "../../widgets/error_widget.h"
+#include "../../widgets/fios_widget.h"
+#include "../../widgets/framerate_widget.h"
+#include "../../widgets/genworld_widget.h"
+#include "../../widgets/goal_widget.h"
+#include "../../widgets/graph_widget.h"
+#include "../../widgets/group_widget.h"
+#include "../../widgets/highscore_widget.h"
+#include "../../widgets/industry_widget.h"
+#include "../../widgets/intro_widget.h"
+#include "../../widgets/main_widget.h"
+#include "../../widgets/misc_widget.h"
+#include "../../widgets/music_widget.h"
+#include "../../widgets/network_chat_widget.h"
+#include "../../widgets/network_content_widget.h"
+#include "../../widgets/network_widget.h"
+#include "../../widgets/newgrf_debug_widget.h"
+#include "../../widgets/newgrf_widget.h"
+#include "../../widgets/news_widget.h"
+#include "../../widgets/object_widget.h"
+#include "../../widgets/order_widget.h"
+#include "../../widgets/osk_widget.h"
+#include "../../widgets/rail_widget.h"
+#include "../../widgets/road_widget.h"
+#include "../../widgets/screenshot_widget.h"
+#include "../../widgets/settings_widget.h"
+#include "../../widgets/sign_widget.h"
+#include "../../widgets/smallmap_widget.h"
+#include "../../widgets/station_widget.h"
+#include "../../widgets/statusbar_widget.h"
+#include "../../widgets/subsidy_widget.h"
+#include "../../widgets/terraform_widget.h"
+#include "../../widgets/timetable_widget.h"
+#include "../../widgets/toolbar_widget.h"
+#include "../../widgets/town_widget.h"
+#include "../../widgets/transparency_widget.h"
+#include "../../widgets/tree_widget.h"
+#include "../../widgets/vehicle_widget.h"
+#include "../../widgets/viewport_widget.h"
+#include "../../widgets/waypoint_widget.h"
+#include "../../widgets/link_graph_legend_widget.h"
+#include "../../widgets/story_widget.h"
+
+/**
+ * Class that handles window interaction. A Window in OpenTTD has two imporant
+ *  values. The WindowClass, and a Window number. The first indicates roughly
+ *  which window it is. WC_TOWN_VIEW for example, is the view of a town.
+ * The Window number is a bit more complex, as it depends mostly on the
+ *  WindowClass. For example for WC_TOWN_VIEW it is the TownID. In general a
+ *  good rule of thumb is: either the number is always 0, or the ID of the
+ *  object in question.
+ * In the comment at the widget enum, it is mentioned how the number is used.
+ *
+ * Note, that the detailed window layout is very version specific.
+ * Enum values might be added, changed or removed in future versions without notice
+ * in the changelog, and there won't be any means of compatibility.
+ *
+ * @api game
+ */
+class ScriptWindow : public ScriptObject {
+public:
+	// @enum WindowNumberEnum ../../window_type.h@ENUM_WINDOWNUMBERENUM@
+	// @endenum
+
+	// @enum WindowClass ../../window_type.h@ENUM_WINDOWCLASS@
+	// @endenum
+
+	/**
+	 * The colours in the game which you can use for text and highlights.
+	 */
+	enum TextColour {
+		/* Note: these values represent part of the in-game TextColour enum */
+		TC_BLUE        = ::TC_BLUE,        ///< Blue colour.
+		TC_SILVER      = ::TC_SILVER,      ///< Silver colour.
+		TC_GOLD        = ::TC_GOLD,        ///< Gold colour.
+		TC_RED         = ::TC_RED,         ///< Red colour.
+		TC_PURPLE      = ::TC_PURPLE,      ///< Purple colour.
+		TC_LIGHT_BROWN = ::TC_LIGHT_BROWN, ///< Light brown colour.
+		TC_ORANGE      = ::TC_ORANGE,      ///< Orange colour.
+		TC_GREEN       = ::TC_GREEN,       ///< Green colour.
+		TC_YELLOW      = ::TC_YELLOW,      ///< Yellow colour.
+		TC_DARK_GREEN  = ::TC_DARK_GREEN,  ///< Dark green colour.
+		TC_CREAM       = ::TC_CREAM,       ///< Cream colour.
+		TC_BROWN       = ::TC_BROWN,       ///< Brown colour.
+		TC_WHITE       = ::TC_WHITE,       ///< White colour.
+		TC_LIGHT_BLUE  = ::TC_LIGHT_BLUE,  ///< Light blue colour.
+		TC_GREY        = ::TC_GREY,        ///< Grey colour.
+		TC_DARK_BLUE   = ::TC_DARK_BLUE,   ///< Dark blue colour.
+		TC_BLACK       = ::TC_BLACK,       ///< Black colour.
+		TC_INVALID     = ::TC_INVALID,     ///< Invalid colour.
+	};
+
+	/**
+	 * Special number values.
+	 */
+	enum NumberType {
+		NUMBER_ALL = 0xFFFFFFFF, ///< Value to select all windows of a class.
+	};
+
+	/**
+	 * Special widget values.
+	 */
+	enum WidgetType {
+		WIDGET_ALL = 0xFF, ///< Value to select all widgets of a window.
+	};
+
+	/**
+	 * Close a window.
+	 * @param window The class of the window to close.
+	 * @param number The number of the window to close, or NUMBER_ALL to close all of this class.
+	 * @pre !ScriptGame::IsMultiplayer().
+	 */
+	static void Close(WindowClass window, uint32 number);
+
+	/**
+	 * Check if a window is open.
+	 * @param window The class of the window to check for.
+	 * @param number The number of the window to check for, or NUMBER_ALL to check for any in the class.
+	 * @pre !ScriptGame::IsMultiplayer().
+	 * @return True if the window is open.
+	 */
+	static bool IsOpen(WindowClass window, uint32 number);
+
+	/**
+	 * Highlight a widget in a window.
+	 * @param window The class of the window to highlight a widget in.
+	 * @param number The number of the window to highlight a widget in.
+	 * @param widget The widget in the window to highlight, or WIDGET_ALL (in combination with TC_INVALID) to disable all widget highlighting on this window.
+	 * @param colour The colour of the highlight, or TC_INVALID for disabling.
+	 * @pre !ScriptGame::IsMultiplayer().
+	 * @pre number != NUMBER_ALL.
+	 * @pre colour < TC_END || (widget == WIDGET_ALL && colour == TC_INVALID).
+	 * @pre IsOpen(window, number).
+	 */
+	static void Highlight(WindowClass window, uint32 number, uint8 widget, TextColour colour);
+
+	// @enum .*Widgets ../../widgets/*_widget.h@ENUM_WIDGETS@
+	// @endenum
+};
+
+#endif /* SCRIPT_WINDOW_HPP */
