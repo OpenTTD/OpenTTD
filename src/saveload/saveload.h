@@ -848,6 +848,8 @@ void NORETURN SlErrorCorruptFmt(const char *format, ...);
 bool SaveloadCrashWithMissingNewGRFs();
 
 extern char _savegame_format[8];
+extern char _sendmap_format[8];
+extern char _autosave_format[8];
 extern bool _do_autosave;
 
 #endif /* SAVELOAD_H */

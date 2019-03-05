@@ -63,6 +63,8 @@ uint32 _ttdp_version;        ///< version of TTDP savegame (if applicable)
 SaveLoadVersion _sl_version; ///< the major savegame version identifier
 byte   _sl_minor_version;    ///< the minor savegame version, DO NOT USE!
 char _savegame_format[8];    ///< how to compress savegames
+char _sendmap_format[8];     ///< how to compress the map to send to a client joining servers
+char _autosave_format[8];    ///< how to compress autosaves
 bool _do_autosave;           ///< are we doing an autosave at the moment?
 
 /** What are we currently doing? */
@@ -201,6 +203,8 @@ struct SaveLoadParams {
 
 	byte ff_state;                       ///< The state of fast-forward when saving started.
 	bool saveinprogress;                 ///< Whether there is currently a save in progress.
+	bool sendmapinprogress;              ///< Whether there is currently an encoding of a map in progress while being sent to a client joining the server.
+	bool autosaveinprogress;             ///< Whether there is currently an autosave in progress.
 };
 
 static SaveLoadParams _sl; ///< Parameters used for/at saveload.
@@ -2278,28 +2282,30 @@ struct SaveLoadFormat {
 	LoadFilter *(*init_load)(LoadFilter *chain);                    ///< Constructor for the load filter.
 	SaveFilter *(*init_write)(SaveFilter *chain, byte compression); ///< Constructor for the save filter.
 
-	byte min_compression;                 ///< the minimum compression level of this format
-	byte default_compression;             ///< the default compression level of this format
-	byte max_compression;                 ///< the maximum compression level of this format
+	byte min_compression;                 ///< the minimum compression level accepted by this format
+	byte fast_compression;                ///< the default fast compression level of this format to be used by openttd
+	byte default_compression;             ///< the default compression level of this format to be used by openttd
+	byte slow_compression;                ///< the default slow compression level of this format to be used by openttd
+	byte max_compression;                 ///< the maximum compression level accepted by this format
 };
 
 /** The different saveload formats known/understood by OpenTTD. */
 static const SaveLoadFormat _saveload_formats[] = {
 #if defined(WITH_LZO)
 	/* Roughly 75% larger than zlib level 6 at only ~7% of the CPU usage. */
-	{"lzo",    TO_BE32X('OTTD'), CreateLoadFilter<LZOLoadFilter>,    CreateSaveFilter<LZOSaveFilter>,    0, 0, 0},
+	{"lzo",    TO_BE32X('OTTD'), CreateLoadFilter<LZOLoadFilter>,    CreateSaveFilter<LZOSaveFilter>,    0, 0, 0, 0, 0},
 #else
-	{"lzo",    TO_BE32X('OTTD'), NULL,                               NULL,                               0, 0, 0},
+	{"lzo",    TO_BE32X('OTTD'), NULL,                               NULL,                               0, 0, 0, 0, 0},
 #endif
 	/* Roughly 5 times larger at only 1% of the CPU usage over zlib level 6. */
-	{"none",   TO_BE32X('OTTN'), CreateLoadFilter<NoCompLoadFilter>, CreateSaveFilter<NoCompSaveFilter>, 0, 0, 0},
+	{"none",   TO_BE32X('OTTN'), CreateLoadFilter<NoCompLoadFilter>, CreateSaveFilter<NoCompSaveFilter>, 0, 0, 0, 0, 0},
 #if defined(WITH_ZLIB)
 	/* After level 6 the speed reduction is significant (1.5x to 2.5x slower per level), but the reduction in filesize is
 	 * fairly insignificant (~1% for each step). Lower levels become ~5-10% bigger by each level than level 6 while level
 	 * 1 is "only" 3 times as fast. Level 0 results in uncompressed savegames at about 8 times the cost of "none". */
-	{"zlib",   TO_BE32X('OTTZ'), CreateLoadFilter<ZlibLoadFilter>,   CreateSaveFilter<ZlibSaveFilter>,   0, 6, 9},
+	{"zlib",   TO_BE32X('OTTZ'), CreateLoadFilter<ZlibLoadFilter>,   CreateSaveFilter<ZlibSaveFilter>,   0, 1, 6, 6, 9},
 #else
-	{"zlib",   TO_BE32X('OTTZ'), NULL,                               NULL,                               0, 0, 0},
+	{"zlib",   TO_BE32X('OTTZ'), NULL,                               NULL,                               0, 0, 0, 0, 0},
 #endif
 #if defined(WITH_LIBLZMA)
 	/* Level 2 compression is speed wise as fast as zlib level 6 compression (old default), but results in ~10% smaller saves.
@@ -2307,9 +2313,9 @@ static const SaveLoadFormat _saveload_formats[] = {
 	 * The next significant reduction in file size is at level 4, but that is already 4 times slower. Level 3 is primarily 50%
 	 * slower while not improving the filesize, while level 0 and 1 are faster, but don't reduce savegame size much.
 	 * It's OTTX and not e.g. OTTL because liblzma is part of xz-utils and .tar.xz is preferred over .tar.lzma. */
-	{"lzma",   TO_BE32X('OTTX'), CreateLoadFilter<LZMALoadFilter>,   CreateSaveFilter<LZMASaveFilter>,   0, 2, 9},
+	{"lzma",   TO_BE32X('OTTX'), CreateLoadFilter<LZMALoadFilter>,   CreateSaveFilter<LZMASaveFilter>,   0, 0, 2, 2, 9},
 #else
-	{"lzma",   TO_BE32X('OTTX'), NULL,                               NULL,                               0, 0, 0},
+	{"lzma",   TO_BE32X('OTTX'), NULL,                               NULL,                               0, 0, 0, 0, 0},
 #endif
 };
 
@@ -2335,6 +2341,8 @@ static const SaveLoadFormat *GetSavegameFormat(char *s, byte *compression_level)
 		for (const SaveLoadFormat *slf = &_saveload_formats[0]; slf != endof(_saveload_formats); slf++) {
 			if (slf->init_write != NULL && strcmp(s, slf->name) == 0) {
 				*compression_level = slf->default_compression;
+				if ((_network_server && !_sl.sendmapinprogress) || (_pause_mode == PM_UNPAUSED && _sl.autosaveinprogress && _sl.ff_state != _fast_forward)) *compression_level = slf->fast_compression;
+				if (_sl.sendmapinprogress) *compression_level = slf->slow_compression;
 				if (complevel != NULL) {
 					/* There is a compression level in the string.
 					 * First restore the : we removed to do proper name matching,
@@ -2364,6 +2372,8 @@ static const SaveLoadFormat *GetSavegameFormat(char *s, byte *compression_level)
 		if (complevel != NULL) *complevel = ':';
 	}
 	*compression_level = def->default_compression;
+	if ((_network_server && !_sl.sendmapinprogress) || (_pause_mode == PM_UNPAUSED && _sl.autosaveinprogress && _sl.ff_state != _fast_forward)) *compression_level = def->fast_compression;
+	if (_sl.sendmapinprogress) *compression_level = def->slow_compression;
 	return def;
 }
 
@@ -2403,6 +2413,7 @@ static void SaveFileStart()
 
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SAVELOAD_START);
 	_sl.saveinprogress = true;
+	if (_do_autosave) _sl.autosaveinprogress = true;
 }
 
 /** Update the gui accordingly when saving is done and release locks on saveload. */
@@ -2413,6 +2424,8 @@ static void SaveFileDone()
 
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SAVELOAD_FINISH);
 	_sl.saveinprogress = false;
+	_sl.sendmapinprogress = false;
+	_sl.autosaveinprogress = false;
 }
 
 /** Set the error message from outside of the actual loading/saving of the game (AfterLoadGame and friends) */
@@ -2448,7 +2461,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 {
 	try {
 		byte compression;
-		const SaveLoadFormat *fmt = GetSavegameFormat(_savegame_format, &compression);
+		const SaveLoadFormat *fmt = GetSavegameFormat(_sl.sendmapinprogress ? _sendmap_format : _sl.autosaveinprogress ? _autosave_format : _savegame_format, &compression);
 
 		/* We have written our stuff to memory, now write it to file! */
 		uint32 hdr[2] = { fmt->tag, TO_BE32(SAVEGAME_VERSION << 16) };
@@ -2536,7 +2549,9 @@ static SaveOrLoadResult DoSave(SaveFilter *writer, bool threaded)
  */
 SaveOrLoadResult SaveWithFilter(SaveFilter *writer, bool threaded)
 {
+	if (_network_server && _sl.saveinprogress && threaded) WaitTillSaved();
 	try {
+		_sl.sendmapinprogress = true;
 		_sl.action = SLA_SAVE;
 		return DoSave(writer, threaded);
 	} catch (...) {
@@ -2772,7 +2787,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, SaveLoadOperation fop, Detaile
 
 		if (fop == SLO_SAVE) { // SAVE game
 			DEBUG(desync, 1, "save: %08x; %02x; %s", _date, _date_fract, filename);
-			if (_network_server || !_settings_client.gui.threaded_saves) threaded = false;
+			if (!_settings_client.gui.threaded_saves) threaded = false;
 
 			return DoSave(new FileWriter(fh), threaded);
 		}
