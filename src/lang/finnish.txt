@@ -190,6 +190,7 @@ STR_COLOUR_BROWN                                                :Ruskea
 STR_COLOUR_GREY                                                 :Harmaa
 STR_COLOUR_WHITE                                                :Valkoinen
 STR_COLOUR_RANDOM                                               :Satunnainen
+STR_COLOUR_DEFAULT                                              :Oletus
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -465,6 +466,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Ääni/musiikki
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Viimeisin viesti/uutisraportti
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Viestihistoria
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Poista kaikki viestit
 ############ range ends here
 
 ############ range for about menu starts
@@ -680,6 +682,7 @@ STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLA
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Tyhjennä
 STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Vaihda kokoelma
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Tyhjennä nykyinen soittolista (vain Oma1 tai Oma2)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Valitse toinen asennettu kokoelma musiikkivalikoimaksesi
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Valitse musiikkiraita lisätäksesi sen nykyiseen soittolistaan (vain Oma1 tai Oma2).
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Poista musiikkiraita nykyseiltä soittolistalta napsauttamalla (ainoastaan Custom1 tai Custom2)
 
@@ -883,10 +886,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Näkymä {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopioi näkymään
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Päänäkymästä tähän
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopioi päänäkymän sijainti tähän näkymään
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Liitä näkymästä
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Liitä sijainti tästä näkymästä päänäkymään
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Vaihda päänäkymää
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Siirrä päänäkymää tämän näkymän sijaintiin
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pelin valinnat
@@ -996,6 +999,7 @@ STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Kirjasin
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Valitse käyttöliittymän kirjasinkoko
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normaali
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Kaksinkertainen koko
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Nelinkertainen koko
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Perusgrafiikat
@@ -1196,8 +1200,8 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Mäkien jyrkkyy
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Mäkien jyrkkyys ajoneuvoille: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Mäkien jyrkkyys ajoneuvoille. Korkeammat arvot tekevät mäkien nousemisesta vaikeampaa
-STR_CONFIG_SETTING_FORBID_90_DEG                                :90 asteen käännökset kielletty junilta ja laivoilta: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 asteen käännöksiä esiintyy kun vaakasuuntaista rataa seuraa pystysuuntainen rata viereisellä ruudulla, tämä vaatii junan kääntymään 90 astetta ruutujen reunalla normaalin 45 asteen sijasta. Tämä asetus vaikuttaa myös laivojen kääntymissäteeseen
+STR_CONFIG_SETTING_FORBID_90_DEG                                :90 asteen käännökset kielletty junilta: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 asteen käännöksiä esiintyy kun vaakasuuntaista rataa seuraa pystysuuntainen rata viereisellä ruudulla, tämä vaatii junan kääntymään 90 astetta ruutujen reunalla normaalin 45 asteen sijasta.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Salli ei-vierekkäisten asemien yhdistäminen: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Mahdollistaa aseman osien rakentamisen vaikka ne eivät olisi kosketuksissa olemassaoleviin aseman osiin. Vaatii Ctrl-näppäimen painamisen rakennettaessa
 STR_CONFIG_SETTING_INFLATION                                    :Inflaatio: {STRING}
@@ -1253,8 +1257,8 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :Lentokoneiden n
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Määritä lentokoneiden suhteellinen nopeus verrattuna toisiin kulkuneuvotyyppeihin
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Lento-onnettomuuksien määrä: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Määrittää lento-onnettomuuksien todennäköisyyden
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ei yhtään
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Määrittää lento-onnettomuuksien todennäköisyyden.{}¹ Isot lentokoneet voivat kuitenkin aina tuhoutua pienille lentokentille laskeutuessaan.
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ei yhtään¹
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Vähennetty
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Tavallinen
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Läpiajettavat pysäkit kaupungin teille: {STRING}
@@ -1579,6 +1583,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Mikäli käytö
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Kielletty
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Sallittu
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Sallittu, oma kaupungin kaava
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Kaupunkirahdin luonti: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Talojen tuottaman rahdin määrä suhteessa kunnan asukaslukuun.{}Neliöllinen kasvu: Kaksinkertainen asukasmäärä tuottaa matkustajia nelinkertaisesti.{}Lineaarinen kasvu: Kaksinkertainen asukasmäärä tuottaa matkustajia kaksinkertaisesti.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Neliöllinen (alkuperäinen)
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineaarinen
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Puiden istutus pelissä: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Määrittää puiden sattumanvaraisen luomisen. Tämä voi vaikuttaa teollisuuslaitoksiin jotka ovat riippuvaisia puiden kasvamisesta, esimerkiksi sahat
@@ -2085,6 +2093,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Pura yht
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Palvelin on suojattu. Anna salasana
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Yhtiö on suojattu. Anna salasana
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Asiakaslista
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Asiakaslista
@@ -2643,7 +2652,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Rautatie poistu
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Rautatie yhdistelmä- ja reittiopastimilla
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Rautatie yhdistelmä- ja yksisuuntaisilla opastimilla
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Rautatie reitti- ja yksisuuntaisilla opastimilla
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Rautatie veturitalli
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Veturitalli
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Tie
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Tie katuvaloilla
@@ -2712,43 +2721,50 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Kuvataajuus
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}×)
-STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Simulaationopeus: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulaationopeus: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Simuloitujen peliaskelten määrä sekunnissa.
-STR_FRAMERATE_RATE_BLITTER                                      :{WHITE}Grafiikan kuvataajuus: {STRING}
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Grafiikan kuvataajuus: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Piirrettyjen kuvien määrä sekunnissa.
-STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Pelin nykyinen nopeuskerroin: {DECIMAL}×
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Pelin nykyinen nopeuskerroin: {DECIMAL}×
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Pelin tämänhetkinen nopeus verrattuna normaalilla simulaationopeudella odotettavissa olevaan.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Nykyinen
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Keskiarvo
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Data perustuu {COMMA} mittaukseen
-STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
-STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
-STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
-STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} kuvaa/s
-STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} kuvaa/s
-STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} kuvaa/s
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} kuvaa/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} kuvaa/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} kuvaa/s
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Pelisilmukka yhteensä:
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Rahdin käsittely:
 STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Juna-askeleet:
 STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Ajoneuvoaskeleet:
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Laiva-askeleet:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Ilma-alusaskeleet:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Maailma-askeleet:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Yhteyskuvaajan viive:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Grafiikan hahmonnus:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Maailmanäkymät:
-STR_FRAMERATE_VIDEO                                             :{WHITE}Videolähtö:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Videolähtö:
 STR_FRAMERATE_SOUND                                             :{BLACK}Äänen miksaus:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Peliskriptit/tekoälyt yht.:
 STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Peliskripti:
 STR_FRAMERATE_AI                                                :{BLACK}   Tekoäly {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Pelisilmukka
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Rahdin käsittely
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Juna-askeleet
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Ajoneuvoaskeleet
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Laiva-askeleet
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ilma-alusaskeleet
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Maailma-askeleet
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Yhteyskuvaajan viive
+STR_FRAMETIME_CAPTION_DRAWING                                   :Grafiikan hahmonnus
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Maailmanäkymän hahmonnus
 STR_FRAMETIME_CAPTION_VIDEO                                     :Videolähtö
 STR_FRAMETIME_CAPTION_SOUND                                     :Äänen miksaus
@@ -2782,6 +2798,7 @@ STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Suodatinteksti:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Tiedosto on jo olemassa
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Haluatko varmasti korvata olemassaolevan tiedoston?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Syötä nimi tallennustiedostolle
 
@@ -2901,6 +2918,7 @@ STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5-summ
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paletti: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Oletus (D)
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Oletus (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Perinteinen (W)
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Perinteinen (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametrit: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Ei mitään
@@ -3111,6 +3129,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Lahjo v
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Tavoitteet
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Maailmanlaajuiset tavoitteet
+STR_GOALS_SPECTATOR                                             :Maailmanlaajuiset tavoitteet
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Maailmanlaajuiset tavoitteet:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ei mitään -
@@ -3364,6 +3383,9 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Keskitä
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tuotantotaso: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Teollisuuslaitos ilmoittaa pikaisesta sulkeutumisestaan!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Tarvitsee: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Tuottaa: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Tarvitsee:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
