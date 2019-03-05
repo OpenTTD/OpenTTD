@@ -1032,7 +1032,22 @@ void SwitchToMode(SwitchMode new_mode)
 			MakeNewEditorWorld();
 			break;
 
-		case SM_RESTARTGAME: // Restart --> 'Random game' with current settings
+		case SM_RESTARTGAME: // Restart --> Current settings preserved
+			if (_file_to_saveload.abstract_ftype == FT_SAVEGAME || _file_to_saveload.abstract_ftype == FT_SCENARIO) {
+				/* Restart current savegame/scenario */
+				_switch_mode = _game_mode == GM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+				SwitchToMode(_switch_mode);
+				break;
+			} else if (_file_to_saveload.abstract_ftype == FT_HEIGHTMAP) {
+				/* Restart current heightmap */
+				_switch_mode = _game_mode == GM_EDITOR ? SM_LOAD_HEIGHTMAP : SM_RESTART_HEIGHTMAP;
+				SwitchToMode(_switch_mode);
+				break;
+			}
+			/* No break here, to enter the next case:
+			 * Restart --> 'Random game' with current settings */
+			FALLTHROUGH;
+
 		case SM_NEWGAME: // New Game --> 'Random game'
 			if (_network_server) {
 				seprintf(_network_game_info.map_name, lastof(_network_game_info.map_name), "Random Map");
@@ -1066,11 +1081,12 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 		}
 
+		case SM_RESTART_HEIGHTMAP: // Load a heightmap and start a new game from it with current settings
 		case SM_START_HEIGHTMAP: // Load a heightmap and start a new game from it
 			if (_network_server) {
 				seprintf(_network_game_info.map_name, lastof(_network_game_info.map_name), "%s (Heightmap)", _file_to_saveload.title);
 			}
-			MakeNewGame(true, true);
+			MakeNewGame(true, new_mode == SM_START_HEIGHTMAP);
 			break;
 
 		case SM_LOAD_HEIGHTMAP: // Load heightmap from scenario editor
