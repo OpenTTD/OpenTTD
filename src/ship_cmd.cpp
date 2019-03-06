@@ -766,6 +766,10 @@ static void ShipController(Ship *v)
 			if ((v->vehstatus & VS_HIDDEN) == 0) v->Vehicle::UpdateViewport(true);
 			return;
 		}
+
+		/* Ship is back on the bridge head, we need to comsume its path
+		 * cache entry here as we didn't have to choose a ship track. */
+		if (!v->path.empty()) v->path.pop_front();
 	}
 
 	/* update image of ship, as well as delta XY */
