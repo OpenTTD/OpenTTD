@@ -1201,7 +1201,7 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Hellingsteilheid voor wegvoertuigen: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Steilheid van een schuine tegel voor een wegvoertuig. Hogere waarden maken het moeilijker om een heuvel te beklimmen
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Treinen en schepen mogen niet 90° draaien: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Draaiingen met 90° treden op wanneer een horizontale baan direct gevolgd wordt door een verticaal baanstuk op de aangrenzende tegel, waardoor de trein daarna 90 graden draait wanneer de tegelrand wordt overgestoken in plaats van de gebruikelijke 45 graden voor andere spoorcombinaties. Dit geldt ook voor de draaicirkel van schepen
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Draaiingen met 90° treden op wanneer een horizontale baan direct gevolgd wordt door een verticaal baanstuk op de aangrenzende tegel, waardoor de trein daarna 90 graden draait wanneer de tegelrand wordt overgestoken in plaats van de gebruikelijke 45 graden voor andere spoorcombinaties.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Samenvoegen van indirect aansluitende stations toestaan: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Staat toe dat er aanvullende onderdelen aan een station worden geplaatst zonder dat reeds bestaande onderdelen beïnvloed worden. Ctrl+klik is vereist tijdens het plaatsen van nieuwe onderdelen.
 STR_CONFIG_SETTING_INFLATION                                    :Inflatie: {STRING}
@@ -1231,7 +1231,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Indien ingescha
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nieuwe orders zijn standaard 'non-stop': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normaal gesproken zal een voertuig stoppen op elk station dit wordt gepasseerd. Door het inschakelen van deze instelling, zal het rijden door alle station op weg naar de eindbestemming zonder te stoppen. Merk op dat deze instelling alleen een standaardwaarde voor nieuwe orders bepaalt. Individuele opdrachten kan expliciet worden ingesteld op het gedrag
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nieuwe treinorders stoppen de trein standaard {STRING} van het perron
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Plaats waar een trein standaard stopt bij het platform . De 'bij einde' betekent in de buurt van de ingang, 'midden' betekent in het midden van het platform, en 'einde' betekent ver weg van de ingang. Merk op dat deze instelling alleen een standaardwaarde voor nieuwe orders bepaalt. Individuele opdrachten kunnen expliciet worden ingesteld op het gedrag
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Plaats waar een trein standaard stopt aan het perron. 'Aan het begin' betekent in de buurt van de ingang, 'In het midden' betekent in het midden van het perron, en 'Aan het einde' betekent ver weg van de ingang. Merk op dat deze instelling alleen een standaardwaarde voor nieuwe orders bepaalt. Je kunt opdrachten expliciet instellen op elk gewenst gedrag.
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :aan het begin
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :in het midden
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :aan het einde
@@ -1258,7 +1258,7 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Stel de relatie
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Aantal neerstortende vliegtuigen: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Bepaalt de kans op neerstorten van een vliegtuig
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Geen
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Geen*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Verminderd
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normaal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Haltes plaatsen op door stad beheerde wegen toestaan: {STRING}
@@ -1419,7 +1419,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Geef aan of laa
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Dienstregeling in tikken weergeven i.p.v. in dagen: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Reistijden in tijdtabellen in speltikken weergeven in plaats van dagen
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Aankomst- en vertrektijden in dienstregeling weergeven: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Geef de verwachte aankomst-en vertrektijden in de dienstregeling
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Geef de verwachte aankomst-en vertrektijden in de dienstregeling weer
 STR_CONFIG_SETTING_QUICKGOTO                                    :Snel voertuigorders maken: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pre-selecteer de 'Ga naar cursor' bij het openen van de orders venster
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standaard spoorsoort (bij nieuw of opgeslagen spel): {STRING}
@@ -1445,11 +1445,11 @@ STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Speel geluidsef
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Klikgeluid knoppen: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piep bij het klikken op knoppen
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Rampen/ongelukken: {STRING}
-STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Speel geluidseffecten van ongelukken en rampen
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Speel geluidseffecten af bij ongelukken en rampen
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Voertuigen: {STRING}
-STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Speel geluidseffecten van voertuigen
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Speel geluidseffecten van voertuigen af
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgeving: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Speel omgevingsgeluidseffecten van landschap, industrieën en steden
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Speel omgevingsgeluidseffecten van landschap, industrieën en steden af
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Bouwen van infrastructuur uitschakelen wanneer geen geschikt voertuig beschikbaar is: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Wanneer je dit inschakelt, is de infrastructuur alleen beschikbaar als er ook voertuigen beschikbaar zijn. Dit voorkomt verspilling van tijd en geld aan onbruikbare infrastructuur
@@ -1579,10 +1579,14 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Door deze optie
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Geluidsniveaucontrole door steden voor vliegvelden toestaan: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Met deze instelling uitgeschakeld kunnen er twee luchthavens in elke stad zijn. Als deze instelling is ingeschakeld, wordt het aantal luchthavens in een stad beperkt door het lawaai tollerantie van de stad, die afhankelijk is van de bevolking en de luchthaven grootte en afstand
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Steden stichten in spel: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Het inschakelen van deze instelling laat spelers toe om nieuwe steden op te richten tijdens het spel.
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Wanneer deze instelling is ingeschakeld, kunnen spelers nieuwe steden stichten tijdens het spel.
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verboden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Toestaan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Toestaan, eigen wegpatroon
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Genereren van vracht in steden: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hoeveel vracht wordt geproduceerd door huizen in steden, in relatie tot de totale bevolking van de stad.{}Kwadratische groei: een stad die twee keer zo groot is, genereert vier keer zo veel passagiers.{}Lineaire groei: een stad die twee keer zo groot is, genereert twee keer zo veel passagiers.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kwadratisch (origineel)
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineair
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Plaatsing van bomen in het spel: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Beheert het willekeurig verschijnen van bomen tijdens het spel. Dit kan gevolgen hebben voor industrietakken die afhankelijk zijn van groei van bomen, bijvoorbeeld houtzagerijen.
@@ -1599,7 +1603,7 @@ STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Afstand tussen 
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Uitgeschakeld
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximumaantal (niet-blijvende) vensters: {STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Aantal niet-klevende open vensters voor oude vensters automatisch worden gesloten om ruimte voor nieuwe vensters te maken
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Aantal niet-blijvende open vensters voordat oude vensters automatisch worden gesloten om ruimte voor nieuwe vensters te maken
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :uitgeschakeld
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximaal inzoomniveau: {STRING}
