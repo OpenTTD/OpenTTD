@@ -194,3 +194,35 @@
 
 	return occupancy / vehicle_count;
 }
+
+/* static */ bool ScriptGroup::SetPrimaryColour(GroupID group_id, ScriptCompany::Colours colour)
+{
+	EnforcePrecondition(false, IsValidGroup(group_id));
+
+	return ScriptObject::DoCommand(0, group_id, colour << 16, CMD_SET_GROUP_LIVERY);
+}
+
+/* static */ bool ScriptGroup::SetSecondaryColour(GroupID group_id, ScriptCompany::Colours colour)
+{
+	EnforcePrecondition(false, IsValidGroup(group_id));
+
+	return ScriptObject::DoCommand(0, group_id, (1 << 8) | (colour << 16), CMD_SET_GROUP_LIVERY);
+}
+
+/* static */ ScriptCompany::Colours ScriptGroup::GetPrimaryColour(GroupID group_id)
+{
+	EnforcePrecondition(ScriptCompany::Colours::COLOUR_INVALID, IsValidGroup(group_id));
+
+	const Group *g = ::Group::GetIfValid(group_id);
+	if (!HasBit(g->livery.in_use, 0)) return ScriptCompany::Colours::COLOUR_INVALID;
+	return (ScriptCompany::Colours)g->livery.colour1;
+}
+
+/* static */ ScriptCompany::Colours ScriptGroup::GetSecondaryColour(GroupID group_id)
+{
+	EnforcePrecondition(ScriptCompany::Colours::COLOUR_INVALID, IsValidGroup(group_id));
+
+	const Group *g = ::Group::GetIfValid(group_id);
+	if (!HasBit(g->livery.in_use, 1)) return ScriptCompany::Colours::COLOUR_INVALID;
+	return (ScriptCompany::Colours)g->livery.colour2;
+}
