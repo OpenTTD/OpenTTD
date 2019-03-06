@@ -225,5 +225,7 @@ void FiosMakeHeightmapName(char *buf, const char *name, const char *last);
 void FiosMakeSavegameName(char *buf, const char *name, const char *last);
 
 FiosType FiosGetSavegameListCallback(SaveLoadOperation fop, const char *file, const char *ext, char *title, const char *last);
+FiosType FiosGetScenarioListCallback(SaveLoadOperation fop, const char *file, const char *ext, char *title, const char *last);
+FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const char *file, const char *ext, char *title, const char *last);
 
 #endif /* FIOS_H */

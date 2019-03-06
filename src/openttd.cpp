@@ -155,24 +155,24 @@ static void ShowHelp()
 		"\n"
 		"\n"
 		"Command line options:\n"
-		"  -v drv              = Set video driver (see below)\n"
-		"  -s drv              = Set sound driver (see below) (param bufsize,hz)\n"
-		"  -m drv              = Set music driver (see below)\n"
-		"  -b drv              = Set the blitter to use (see below)\n"
-		"  -r res              = Set resolution (for instance 800x600)\n"
-		"  -h                  = Display this help text\n"
-		"  -t year             = Set starting year\n"
-		"  -d [[fac=]lvl[,...]]= Debug mode\n"
-		"  -e                  = Start Editor\n"
-		"  -g [savegame]       = Start new/save game immediately\n"
-		"  -G seed             = Set random seed\n"
-		"  -n [ip:port#company]= Join network game\n"
-		"  -p password         = Password to join server\n"
-		"  -P password         = Password to join company\n"
-		"  -D [ip][:port]      = Start dedicated server\n"
-		"  -l ip[:port]        = Redirect DEBUG()\n"
+		"  -v drv               = Set video driver (see below)\n"
+		"  -s drv               = Set sound driver (see below) (param bufsize,hz)\n"
+		"  -m drv               = Set music driver (see below)\n"
+		"  -b drv               = Set the blitter to use (see below)\n"
+		"  -r res               = Set resolution (for instance 800x600)\n"
+		"  -h                   = Display this help text\n"
+		"  -t year              = Set starting year\n"
+		"  -d [[fac=]lvl[,...]] = Debug mode\n"
+		"  -e                   = Start Editor\n"
+		"  -g [file/name/title] = Load savegame/scenario/heightmap immediately\n"
+		"  -G seed              = Set random seed\n"
+		"  -n [ip:port#company] = Join network game\n"
+		"  -p password          = Password to join server\n"
+		"  -P password          = Password to join company\n"
+		"  -D [ip][:port]       = Start dedicated server\n"
+		"  -l ip[:port]         = Redirect DEBUG()\n"
 #if !defined(_WIN32)
-		"  -f                  = Fork into the background (dedicated only)\n"
+		"  -f                   = Fork into the background (dedicated only)\n"
 #endif
 		"  -I graphics_set     = Force the graphics set (see below)\n"
 		"  -S sounds_set       = Force the sounds set (see below)\n"
@@ -609,19 +609,84 @@ int openttd_main(int argc, char *argv[])
 				if (mgo.opt != nullptr) SetDebugString(mgo.opt);
 				break;
 			}
-		case 'e': _switch_mode = (_switch_mode == SM_LOAD_GAME || _switch_mode == SM_LOAD_SCENARIO ? SM_LOAD_SCENARIO : SM_EDITOR); break;
+		case 'e':
+			_switch_mode = (_switch_mode == SM_LOAD_GAME || _switch_mode == SM_LOAD_SCENARIO ? SM_LOAD_SCENARIO : ((_switch_mode == SM_LOAD_HEIGHTMAP || _switch_mode == SM_START_HEIGHTMAP) ? SM_LOAD_HEIGHTMAP : SM_EDITOR));
+			break;
 		case 'g':
 			if (mgo.opt != nullptr) {
 				_file_to_saveload.SetName(mgo.opt);
-				bool is_scenario = _switch_mode == SM_EDITOR || _switch_mode == SM_LOAD_SCENARIO;
-				_switch_mode = is_scenario ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
-				_file_to_saveload.SetMode(SLO_LOAD, is_scenario ? FT_SCENARIO : FT_SAVEGAME, DFT_GAME_FILE);
+				bool is_editor = _switch_mode == SM_EDITOR || _switch_mode == SM_LOAD_SCENARIO || _switch_mode == SM_LOAD_HEIGHTMAP;
+				_switch_mode = is_editor ? (_switch_mode == SM_LOAD_HEIGHTMAP ? SM_LOAD_HEIGHTMAP : SM_LOAD_SCENARIO) : SM_LOAD_GAME;
 
-				/* if the file doesn't exist or it is not a valid savegame, let the saveload code show an error */
+				/* Unfortunately, initializing file type to being invalid breaks the SafeLoad function which expects SLO_LOAD operation: initializing to dummy value */
+				/*_file_to_saveload.SetMode(FIOS_TYPE_INVALID);
+				_file_to_saveload.SetMode(SLO_INVALID, FT_INVALID, DFT_INVALID);*/
+				_file_to_saveload.SetMode(SLO_LOAD, FT_SAVEGAME, DFT_GAME_FILE);
+
+				/* If supplied file does not exist or is not a valid savegame/scenario/heightmap, let the saveload code show an error */
 				const char *t = strrchr(_file_to_saveload.name, '.');
 				if (t != nullptr) {
-					FiosType ft = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, t, nullptr, nullptr);
-					if (ft != FIOS_TYPE_INVALID) _file_to_saveload.SetMode(ft);
+					FiosType ft;
+					ft = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, t, nullptr, nullptr);
+					if (ft != FIOS_TYPE_INVALID) {
+						_file_to_saveload.SetMode(ft);
+						_switch_mode = is_editor ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+						break;
+					}
+					ft = FiosGetScenarioListCallback(SLO_LOAD, _file_to_saveload.name, t, nullptr, nullptr);
+					if (ft != FIOS_TYPE_INVALID) {
+						_file_to_saveload.SetMode(ft);
+						_switch_mode = is_editor ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+						break;
+					}
+					ft = FiosGetHeightmapListCallback(SLO_LOAD, _file_to_saveload.name, t, nullptr, nullptr);
+					if (ft != FIOS_TYPE_INVALID) {
+						_file_to_saveload.SetMode(ft);
+						_switch_mode = is_editor ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP;
+						break;
+					}
+				}
+
+				/* If supplied value was not recognized as a valid resource, attempt to find a matching title */
+				DeterminePaths(argv[0]);
+				TarScanner::DoScan(TarScanner::SCENARIO);
+				FileList _my_file_list;
+				const FiosItem *item;
+
+				_my_file_list.BuildFileList(FT_SAVEGAME, SLO_LOAD);
+				item = _my_file_list.FindItem(mgo.opt);
+				if (item != nullptr) {
+					if (GetAbstractFileType(item->type) == FT_SAVEGAME) {
+						_file_to_saveload.SetMode(item->type);
+						_file_to_saveload.SetName(FiosBrowseTo(item));
+						_file_to_saveload.SetTitle(item->title);
+					}
+					_switch_mode = is_editor ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+					break;
+				}
+
+				_my_file_list.BuildFileList(FT_SCENARIO, SLO_LOAD);
+				item = _my_file_list.FindItem(mgo.opt);
+				if (item != nullptr) {
+					if (GetAbstractFileType(item->type) == FT_SCENARIO) {
+						_file_to_saveload.SetMode(item->type);
+						_file_to_saveload.SetName(FiosBrowseTo(item));
+						_file_to_saveload.SetTitle(item->title);
+					}
+					_switch_mode = is_editor ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+					break;
+				}
+
+				_my_file_list.BuildFileList(FT_HEIGHTMAP, SLO_LOAD);
+				item = _my_file_list.FindItem(mgo.opt);
+				if (item != nullptr) {
+					if (GetAbstractFileType(item->type) == FT_HEIGHTMAP) {
+						_file_to_saveload.SetMode(item->type);
+						_file_to_saveload.SetName(FiosBrowseTo(item));
+						_file_to_saveload.SetTitle(item->title);
+					}
+					_switch_mode = is_editor ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP;
+					break;
 				}
 
 				break;
