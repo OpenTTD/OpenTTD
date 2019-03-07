@@ -1175,7 +1175,6 @@ void ClientNetworkGameSocketHandler::CheckConnection()
 	 * the server will forcefully disconnect you. */
 	if (lag > 20) {
 		this->NetworkGameSocketHandler::CloseConnection();
-		ShowErrorMessage(STR_NETWORK_ERROR_LOSTCONNECTION, INVALID_STRING_ID, WL_CRITICAL);
 		return;
 	}
 
