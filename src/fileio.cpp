@@ -1221,7 +1221,7 @@ void DeterminePaths(const char *exe)
 	} else
 #endif
 	{
-		_personal_dir = config_dir;
+		_personal_dir = _searchpaths[SP_PERSONAL_DIR];
 	}
 
 	/* Make the necessary folders */
