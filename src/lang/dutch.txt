@@ -1163,7 +1163,7 @@ STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Het niveau van 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Bouwsnelheid: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Beperk de hoeveelheid bouwactiviteiten voor computerspeler
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Voertuigstoringen: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controle hoe vaak onvoldoende onderhouden voertuigen kapot kunnen gaan
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Bepaal hoe vaak onvoldoende onderhouden voertuigen kapot kunnen gaan
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidiefactor: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Instellen hoeveel wordt betaald voor gesubsidieerde verbindingen
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bouwkosten: {STRING}
@@ -2898,7 +2898,7 @@ STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Opwaarde
 STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Opwaarderen van NewGRF-bestanden waar je een nieuwere versie van hebt geïnstalleerd
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Een lijst van de NewGRF-bestanden die zijn geïnstalleerd.
 
-STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stel parameters in
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parameters instellen
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Parameters weergeven
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palet omzetten
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Verander het palet van het geselecteerde NewGRF-bestand.{}Gebruik deze mogelijkheid als de afbeeldingen van dit NewGRF-bestand er paars uit zien in het spel
