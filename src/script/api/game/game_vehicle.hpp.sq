@@ -123,6 +123,8 @@ void SQGSVehicle_Register(Squirrel *engine)
 	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::IsInDepot,                      "IsInDepot",                      2, ".i");
 	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::IsStoppedInDepot,               "IsStoppedInDepot",               2, ".i");
 	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::BuildVehicle,                   "BuildVehicle",                   3, ".ii");
+	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::BuildVehicleWithRefit,          "BuildVehicleWithRefit",          4, ".iii");
+	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetBuildWithRefitCapacity,      "GetBuildWithRefitCapacity",      4, ".iii");
 	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::CloneVehicle,                   "CloneVehicle",                   4, ".iib");
 	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::MoveWagon,                      "MoveWagon",                      5, ".iiii");
 	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::MoveWagonChain,                 "MoveWagonChain",                 5, ".iiii");
