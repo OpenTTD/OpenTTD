@@ -43,6 +43,9 @@ static const int YAPF_INFINITE_PENALTY = 1000 * YAPF_TILE_LENGTH;
 /** Maximum length of ship path cache */
 static const int YAPF_SHIP_PATH_CACHE_LENGTH = 32;
 
+/** Maximum segments of road vehicle path cache */
+static const int YAPF_ROADVEH_PATH_CACHE_SEGMENTS = 8;
+
 /**
  * Helper container to find a depot
  */

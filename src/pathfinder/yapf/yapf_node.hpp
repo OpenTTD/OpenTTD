@@ -67,6 +67,7 @@ struct CYapfNodeT {
 	Node       *m_parent;
 	int         m_cost;
 	int         m_estimate;
+	bool        m_is_choice;
 
 	inline void Set(Node *parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
@@ -75,6 +76,7 @@ struct CYapfNodeT {
 		m_parent = parent;
 		m_cost = 0;
 		m_estimate = 0;
+		m_is_choice = is_choice;
 	}
 
 	inline Node *GetHashNext()
@@ -110,6 +112,11 @@ struct CYapfNodeT {
 	inline int GetCostEstimate() const
 	{
 		return m_estimate;
+	}
+
+	inline bool GetIsChoice() const
+	{
+		return m_is_choice;
 	}
 
 	inline bool operator<(const Node &other) const
