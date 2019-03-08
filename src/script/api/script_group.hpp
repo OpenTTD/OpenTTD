@@ -214,6 +214,36 @@ public:
 	 * @return The current usage of the group.
 	 */
 	static uint32 GetCurrentUsage(GroupID group_id);
+
+	/**
+	 * Set primary colour for a group.
+	 * @param group_id The group id to set the colour of.
+	 * @param colour Colour to set.
+	 * @pre IsValidGroup(group_id).
+	 */
+	static bool SetPrimaryColour(GroupID group_id, ScriptCompany::Colours colour);
+
+	/**
+	 * Set secondary colour for a group.
+	 * @param group_id The group id to set the colour of.
+	 * @param colour Colour to set.
+	 * @pre IsValidGroup(group_id).
+	 */
+	static bool SetSecondaryColour(GroupID group_id, ScriptCompany::Colours colour);
+
+	/**
+	 * Get primary colour of a group.
+	 * @param group_id The group id to get the colour of.
+	 * @pre IsValidGroup(group_id).
+	 */
+	static ScriptCompany::Colours GetPrimaryColour(GroupID group_id);
+
+	/**
+	 * Get secondary colour for a group.
+	 * @param group_id The group id to get the colour of.
+	 * @pre IsValidGroup(group_id).
+	 */
+	static ScriptCompany::Colours GetSecondaryColour(GroupID group_id);
 };
 
 #endif /* SCRIPT_GROUP_HPP */
