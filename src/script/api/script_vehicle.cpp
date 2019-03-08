@@ -61,19 +61,42 @@
 	return v->IsGroundVehicle() ? v->GetGroundVehicleCache()->cached_total_length : -1;
 }
 
-/* static */ VehicleID ScriptVehicle::BuildVehicle(TileIndex depot, EngineID engine_id)
+/* static */ VehicleID ScriptVehicle::_BuildVehicleInternal(TileIndex depot, EngineID engine_id, CargoID cargo)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
+	EnforcePrecondition(VEHICLE_INVALID, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(VEHICLE_INVALID, ScriptEngine::IsBuildable(engine_id));
+	EnforcePrecondition(VEHICLE_INVALID, cargo == CT_INVALID || ScriptCargo::IsValidCargo(cargo));
 
 	::VehicleType type = ::Engine::Get(engine_id)->type;
 
 	EnforcePreconditionCustomError(VEHICLE_INVALID, !ScriptGameSettings::IsDisabledVehicleType((ScriptVehicle::VehicleType)type), ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED);
 
-	if (!ScriptObject::DoCommand(depot, engine_id | (CT_INVALID << 24), 0, ::GetCmdBuildVeh(type), NULL, &ScriptInstance::DoCommandReturnVehicleID)) return VEHICLE_INVALID;
+	if (!ScriptObject::DoCommand(depot, engine_id | (cargo << 24), 0, ::GetCmdBuildVeh(type), NULL, &ScriptInstance::DoCommandReturnVehicleID)) return VEHICLE_INVALID;
 
 	/* In case of test-mode, we return VehicleID 0 */
 	return 0;
+}
+
+/* static */ VehicleID ScriptVehicle::BuildVehicle(TileIndex depot, EngineID engine_id)
+{
+	return _BuildVehicleInternal(depot, engine_id, CT_INVALID);
+}
+
+/* static */ VehicleID ScriptVehicle::BuildVehicleWithRefit(TileIndex depot, EngineID engine_id, CargoID cargo)
+{
+	EnforcePrecondition(VEHICLE_INVALID, ScriptCargo::IsValidCargo(cargo));
+	return _BuildVehicleInternal(depot, engine_id, cargo);
+}
+
+/* static */ int ScriptVehicle::GetBuildWithRefitCapacity(TileIndex depot, EngineID engine_id, CargoID cargo)
+{
+	if (!ScriptEngine::IsBuildable(engine_id)) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
+
+	::VehicleType type = ::Engine::Get(engine_id)->type;
+
+	CommandCost res = ::DoCommand(depot, engine_id | (cargo << 24), 0, DC_QUERY_COST, ::GetCmdBuildVeh(type));
+	return res.Succeeded() ? _returned_refit_capacity : -1;
 }
 
 /* static */ VehicleID ScriptVehicle::CloneVehicle(TileIndex depot, VehicleID vehicle_id, bool share_orders)

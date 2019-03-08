@@ -321,6 +321,41 @@ public:
 	static VehicleID BuildVehicle(TileIndex depot, EngineID engine_id);
 
 	/**
+	 * Builds a vehicle with the given engine at the given depot and refits it to the given cargo.
+	 * @param depot The depot where the vehicle will be build.
+	 * @param engine_id The engine to use for this vehicle.
+	 * @param cargo The cargo to refit to.
+	 * @pre The tile at depot has a depot that can build the engine and
+	 *   is owned by you.
+	 * @pre ScriptEngine::IsBuildable(engine_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @exception ScriptVehicle::ERR_VEHICLE_TOO_MANY
+	 * @exception ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED
+	 * @exception ScriptVehicle::ERR_VEHICLE_WRONG_DEPOT
+	 * @return The VehicleID of the new vehicle, or an invalid VehicleID when
+	 *   it failed. Check the return value using IsValidVehicle. In test-mode
+	 *   0 is returned if it was successful; any other value indicates failure.
+	 * @note In Test Mode it means you can't assign orders yet to this vehicle,
+	 *   as the vehicle isn't really built yet. Build it for real first before
+	 *   assigning orders.
+	 */
+	static VehicleID BuildVehicleWithRefit(TileIndex depot, EngineID engine_id, CargoID cargo);
+
+	/**
+	 * Gets the capacity of a vehicle built at the given depot with the given engine and refitted to the given cargo.
+	 * @param depot The depot where the vehicle will be build.
+	 * @param engine_id The engine to use for this vehicle.
+	 * @param cargo The cargo to refit to.
+	 * @pre The tile at depot has a depot that can build the engine and
+	 *   is owned by you.
+	 * @pre ScriptEngine::IsBuildable(engine_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo).
+	 * @return The capacity the vehicle will have when refited.
+	 */
+	static int GetBuildWithRefitCapacity(TileIndex depot, EngineID engine_id, CargoID cargo);
+
+	/**
 	 * Clones a vehicle at the given depot, copying or cloning its orders.
 	 * @param depot The depot where the vehicle will be build.
 	 * @param vehicle_id The vehicle to use as example for the new vehicle.
@@ -563,6 +598,11 @@ public:
 	static uint GetMaximumOrderDistance(VehicleID vehicle_id);
 
 private:
+	/**
+	 * Internal function used by BuildVehicle(WithRefit).
+	 */
+	static VehicleID _BuildVehicleInternal(TileIndex depot, EngineID engine_id, CargoID cargo);
+
 	/**
 	 * Internal function used by SellWagon(Chain).
 	 */

@@ -9128,6 +9128,18 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetWagonAge():        0
   GetWagonEngineType(): 65535
   GetWagonAge():        -1
+  --Refit--
+    GetBuildWithRefitCapacity(): -1
+    GetBuildWithRefitCapacity(): 0
+    GetBuildWithRefitCapacity(): 160
+    BuildVehicleWithRefit():     20
+    GetCapacity():               160
+    GetCapacity():               0
+    GetRefitCapacity():          160
+    RefitVehicle():              true
+    GetCapacity():               0
+    GetCapacity():               160
+    SellVehicle():               true
   --Errors--
     RefitVehicle():        false
     GetLastErrorString():  ERR_VEHICLE_NOT_IN_DEPOT
@@ -9175,7 +9187,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     13 => 5489
     12 => 5489
   CurrentSpeed ListDump:
-    12 => 21
+    12 => 27
     17 => 0
     16 => 0
     14 => 0
