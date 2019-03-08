@@ -466,6 +466,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_TIMES_NAMES,                       "WID_FRW_TIMES_NAMES");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_TIMES_CURRENT,                     "WID_FRW_TIMES_CURRENT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_TIMES_AVERAGE,                     "WID_FRW_TIMES_AVERAGE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_SCROLLBAR,                         "WID_FRW_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FGW_CAPTION,                           "WID_FGW_CAPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FGW_GRAPH,                             "WID_FGW_GRAPH");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_TEMPERATE,                          "WID_GL_TEMPERATE");
@@ -1030,7 +1031,6 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_RESOLUTION_DROPDOWN,                "WID_GO_RESOLUTION_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_FULLSCREEN_BUTTON,                  "WID_GO_FULLSCREEN_BUTTON");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_GUI_ZOOM_DROPDOWN,                  "WID_GO_GUI_ZOOM_DROPDOWN");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_FONT_ZOOM_DROPDOWN,                 "WID_GO_FONT_ZOOM_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_GRF_DROPDOWN,                  "WID_GO_BASE_GRF_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_GRF_STATUS,                    "WID_GO_BASE_GRF_STATUS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_GRF_TEXTFILE,                  "WID_GO_BASE_GRF_TEXTFILE");
@@ -1042,6 +1042,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_MUSIC_STATUS,                  "WID_GO_BASE_MUSIC_STATUS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_MUSIC_TEXTFILE,                "WID_GO_BASE_MUSIC_TEXTFILE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_MUSIC_DESCRIPTION,             "WID_GO_BASE_MUSIC_DESCRIPTION");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_FONT_ZOOM_DROPDOWN,                 "WID_GO_FONT_ZOOM_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GS_FILTER,                             "WID_GS_FILTER");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GS_OPTIONSPANEL,                       "WID_GS_OPTIONSPANEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GS_SCROLLBAR,                          "WID_GS_SCROLLBAR");
