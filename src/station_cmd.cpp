@@ -506,6 +506,8 @@ CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad)
 	const Industry *i;
 	FOR_ALL_INDUSTRIES(i) {
 		if (!ta.Intersects(i->location)) continue;
+		/* Skip industry with neutral station */
+		if (i->neutral_station != NULL && !_settings_game.station.serve_neutral_industries) continue;
 
 		for (uint j = 0; j < lengthof(i->produced_cargo); j++) {
 			CargoID cargo = i->produced_cargo[j];
@@ -523,8 +525,9 @@ CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad)
  * @param h Y extent of area
  * @param rad Search radius in addition to given area
  * @param always_accepted bitmask of cargo accepted by houses and headquarters; can be NULL
+ * @param ind Industry associated with neutral station (e.g. oil rig) or NULL
  */
-CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, CargoTypes *always_accepted)
+CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, CargoTypes *always_accepted, const Industry *ind)
 {
 	CargoArray acceptance;
 	if (always_accepted != NULL) *always_accepted = 0;
@@ -547,6 +550,15 @@ CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, Cargo
 	for (int yc = y1; yc != y2; yc++) {
 		for (int xc = x1; xc != x2; xc++) {
 			TileIndex tile = TileXY(xc, yc);
+
+			if (!_settings_game.station.serve_neutral_industries) {
+				if (ind != NULL) {
+					if (!IsTileType(tile, MP_INDUSTRY)) continue;
+					if (Industry::GetByTile(tile) != ind) continue;
+				} else {
+					if (IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile)->neutral_station != NULL) continue;
+				}
+			}
 			AddAcceptedCargo(tile, acceptance, always_accepted);
 		}
 	}
@@ -572,7 +584,8 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 			st->rect.right  - st->rect.left + 1,
 			st->rect.bottom - st->rect.top  + 1,
 			st->GetCatchmentRadius(),
-			&st->always_accepted
+			&st->always_accepted,
+			_settings_game.station.serve_neutral_industries ? NULL : st->industry
 		);
 	}
 
@@ -3795,6 +3808,8 @@ void FindStationsAroundTiles(const TileArea &location, StationList *stations)
 	uint min_y = (y > max_rad) ? y - max_rad : 0;
 	uint max_y = y + location.h + max_rad;
 
+	IndustryID ind = IsTileType(location.tile, MP_INDUSTRY) ? GetIndustryIndex(location.tile) : INVALID_INDUSTRY;
+
 	if (min_x == 0 && _settings_game.construction.freeform_edges) min_x = 1;
 	if (min_y == 0 && _settings_game.construction.freeform_edges) min_y = 1;
 	if (max_x >= MapSizeX()) max_x = MapSizeX() - 1;
@@ -3808,6 +3823,9 @@ void FindStationsAroundTiles(const TileArea &location, StationList *stations)
 			Station *st = Station::GetByTile(cur_tile);
 			/* st can be NULL in case of waypoints */
 			if (st == NULL) continue;
+
+			/* Check if neutral station is attached to us */
+			if (!_settings_game.station.serve_neutral_industries && st->industry != NULL && st->industry->index != ind) continue;
 
 			if (_settings_game.station.modified_catchment) {
 				int rad = st->GetCatchmentRadius();
@@ -3918,6 +3936,9 @@ void BuildOilRig(TileIndex tile)
 	st->string_id = GenerateStationName(st, tile, STATIONNAMING_OILRIG);
 
 	assert(IsTileType(tile, MP_INDUSTRY));
+	/* Mark industry as associated both ways */
+	st->industry = Industry::GetByTile(tile);
+	st->industry->neutral_station = st;
 	DeleteAnimatedTile(tile);
 	MakeOilrig(tile, st->index, GetWaterClass(tile));
 

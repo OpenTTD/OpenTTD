@@ -517,6 +517,12 @@ static bool TransportIndustryGoods(TileIndex tile)
 	bool moved_cargo = false;
 
 	StationFinder stations(i->location);
+	StationList neutral;
+
+	if (i->neutral_station != NULL && !_settings_game.station.serve_neutral_industries) {
+		/* Industry has a neutral station. Use it and ignore any other nearby stations. */
+		*neutral.Append() = i->neutral_station;
+	}
 
 	for (uint j = 0; j < lengthof(i->produced_cargo_waiting); j++) {
 		uint cw = min(i->produced_cargo_waiting[j], 255);
@@ -528,7 +534,7 @@ static bool TransportIndustryGoods(TileIndex tile)
 
 			i->this_month_production[j] += cw;
 
-			uint am = MoveGoodsToStation(i->produced_cargo[j], cw, ST_INDUSTRY, i->index, stations.GetStations());
+			uint am = MoveGoodsToStation(i->produced_cargo[j], cw, ST_INDUSTRY, i->index, neutral.Length() != 0 ? &neutral : stations.GetStations());
 			i->this_month_transported[j] += am;
 
 			moved_cargo |= (am != 0);

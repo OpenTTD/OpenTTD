@@ -356,6 +356,12 @@ void Station::RecomputeIndustriesNear()
 	this->industries_near.Clear();
 	if (this->rect.IsEmpty()) return;
 
+	if (!_settings_game.station.serve_neutral_industries && this->industry != NULL) {
+		/* Station is associated with an industry, so we only need to deliver to that industry. */
+		*this->industries_near.Append() = this->industry;
+		return;
+	}
+
 	RectAndIndustryVector riv = {
 		this->GetCatchmentRect(),
 		&this->industries_near
