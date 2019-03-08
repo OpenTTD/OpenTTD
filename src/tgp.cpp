@@ -489,24 +489,12 @@ static void HeightMapSineTransform(height_t h_min, height_t h_max)
 				break;
 
 			case LT_TROPIC:
-				{
-					/* Desert terrain needs special height distribution.
-					 * Half of tiles should be at lowest (0..25%) heights */
-					double sine_lower_limit = 0.5;
-					double linear_compression = 2;
-					if (fheight <= sine_lower_limit) {
-						/* Under the limit we do linear compression down */
-						fheight = fheight / linear_compression;
-					} else {
-						double m = sine_lower_limit / linear_compression;
-						/* Get sine_lower_limit..1 into -1..1 */
-						fheight = 2.0 * ((fheight - sine_lower_limit) / (1.0 - sine_lower_limit)) - 1.0;
-						/* Sine wave transform */
-						fheight = sin(fheight * M_PI_2);
-						/* Get -1..1 back to (sine_lower_limit / linear_compression)..1.0 */
-						fheight = 0.5 * ((1.0 - m) * fheight + (1.0 + m));
-					}
-				}
+				/* Move and scale 0..1 into -1..+1 */
+				fheight = 2 * fheight - 1;
+				/* Sine transform */
+				fheight = sin(fheight * M_PI_2);
+				/* Transform it back from -1..1 into 0..1 space */
+				fheight = 0.5 * (fheight + 1);
 				break;
 
 			default:
