@@ -3933,11 +3933,11 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 	amount *= best_station->goods[type].rating + 1;
 
 	/* several stations around */
-	uint ratings_sum = 0;
+	uint ratings_square_sum = 0;
 	for (Station * const *st_iter = used_stations.Begin(); st_iter != used_stations.End(); ++st_iter) {
 		Station *st = *st_iter;
 
-		ratings_sum += st->goods[type].rating;
+		ratings_square_sum += st->goods[type].rating * st->goods[type].rating;
 	}
 
 	uint moved = 0;
@@ -3951,13 +3951,13 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 			 * this case is the rounding difference from the last time this calculation is done.
 			 * In reality that will mean the bonus will be pretty low. Nevertheless, the best
 			 * station should always get the most cargo regardless of rounding issues. */
-			uint cur_worst = amount * st->goods[type].rating / ratings_sum;
+			uint cur_worst = amount * st->goods[type].rating * st->goods[type].rating / ratings_square_sum;
 
 			/* And then send the cargo to the stations! */
 			moved += UpdateStationWaiting(st, type, cur_worst, source_type, source_id);
 
 			amount -= cur_worst;
-			ratings_sum -= st->goods[type].rating;
+			ratings_square_sum -= st->goods[type].rating * st->goods[type].rating;
 		} else {
 			/* These two UpdateStationWaiting's can't be in the statement as then the order
 			 * of execution would be undefined and that could cause desyncs with callbacks. */
