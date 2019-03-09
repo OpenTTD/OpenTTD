@@ -109,13 +109,13 @@ char *DumpDebugFacilityNames(char *buf, char *last)
  * @param dbg Debug category.
  * @param buf Text line to output.
  */
-static void debug_print(const char *dbg, const char *buf)
+static void debug_print(const char *file, const int line, const char *func, const char *dbg, const char *buf)
 {
 #if defined(ENABLE_NETWORK)
 	if (_debug_socket != INVALID_SOCKET) {
 		char buf2[1024 + 32];
 
-		seprintf(buf2, lastof(buf2), "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
+		seprintf(buf2, lastof(buf2), "%sdbg: [%s] %s:%d %s %s\n", GetLogPrefix(), dbg, file, line, func, buf);
 		/* Sending out an error when this fails would be nice, however... the error
 		 * would have to be send over this failing socket which won't work. */
 		send(_debug_socket, buf2, (int)strlen(buf2), 0);
@@ -138,7 +138,7 @@ static void debug_print(const char *dbg, const char *buf)
 #endif
 	} else {
 		char buffer[512];
-		seprintf(buffer, lastof(buffer), "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
+		seprintf(buffer, lastof(buffer), "%sdbg: [%s] %s:%d %s %s\n", GetLogPrefix(), dbg, file, line, func, buf);
 #if defined(_WIN32)
 		TCHAR system_buf[512];
 		convert_to_fs(buffer, system_buf, lengthof(system_buf), true);
@@ -159,7 +159,7 @@ static void debug_print(const char *dbg, const char *buf)
  * @param dbg Debug category.
  * @param format Text string a la printf, with optional arguments.
  */
-void CDECL debug(const char *dbg, const char *format, ...)
+void CDECL debug(const char *file, const int line, const char *func, const char *dbg, const char *format, ...)
 {
 	char buf[1024];
 
@@ -168,7 +168,7 @@ void CDECL debug(const char *dbg, const char *format, ...)
 	vseprintf(buf, lastof(buf), format, va);
 	va_end(va);
 
-	debug_print(dbg, buf);
+	debug_print(file, line, func, dbg, buf);
 }
 
 /**
@@ -256,12 +256,13 @@ const char *GetDebugString()
  */
 const char *GetLogPrefix()
 {
-	static char _log_prefix[24];
+	static char _log_prefix[24 + sizeof(pid_t) + 3];
 	if (_settings_client.gui.show_date_in_logs) {
 		time_t cur_time = time(NULL);
 		strftime(_log_prefix, sizeof(_log_prefix), "[%Y-%m-%d %H:%M:%S] ", localtime(&cur_time));
+		seprintf(_log_prefix + 22, lastof(_log_prefix), "[%d] ", getpid());
 	} else {
-		*_log_prefix = '\0';
+		seprintf(_log_prefix, lastof(_log_prefix), "[%d] ", getpid());
 	}
 	return _log_prefix;
 }

@@ -33,7 +33,7 @@
  * @param name Category
  * @param level Debugging level, higher levels means more detailed information.
  */
-#define DEBUG(name, level, ...) if ((level) == 0 || _debug_ ## name ## _level >= (level)) debug(#name, __VA_ARGS__)
+#define DEBUG(name, level, ...) if ((level) == 0 || _debug_ ## name ## _level >= (level)) debug(__FILE__, __LINE__, __func__, #name, __VA_ARGS__)
 
 extern int _debug_driver_level;
 extern int _debug_grf_level;
@@ -54,7 +54,7 @@ extern int _debug_console_level;
 extern int _debug_random_level;
 #endif
 
-void CDECL debug(const char *dbg, const char *format, ...) WARN_FORMAT(2, 3);
+void CDECL debug(const char *file, const int line, const char *func, const char *dbg, const char *format, ...) WARN_FORMAT(5, 6);
 
 char *DumpDebugFacilityNames(char *buf, char *last);
 void SetDebugString(const char *s);
