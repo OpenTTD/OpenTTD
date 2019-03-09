@@ -159,9 +159,9 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length,
 
 	Tbase_set *set = new Tbase_set();
 	IniFile *ini = new IniFile();
-	ini->LoadFromDisk(filename, BASESET_DIR);
-
 	char *path = stredup(filename + basepath_length);
+	ini->LoadFromDisk(path, BASESET_DIR);
+
 	char *psep = strrchr(path, PATHSEPCHAR);
 	if (psep != NULL) {
 		psep[1] = '\0';
