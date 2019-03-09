@@ -27,11 +27,13 @@ enum RailTypeFlags {
 	RTF_CATENARY          = 0,                           ///< Bit number for drawing a catenary.
 	RTF_NO_LEVEL_CROSSING = 1,                           ///< Bit number for disallowing level crossings.
 	RTF_HIDDEN            = 2,                           ///< Bit number for hiding from selection.
+	RTF_NO_SPRITE_COMBINE = 3,                           ///< Bit number for using non-combined junctions.
 
 	RTFB_NONE              = 0,                          ///< All flags cleared.
 	RTFB_CATENARY          = 1 << RTF_CATENARY,          ///< Value for drawing a catenary.
 	RTFB_NO_LEVEL_CROSSING = 1 << RTF_NO_LEVEL_CROSSING, ///< Value for disallowing level crossings.
 	RTFB_HIDDEN            = 1 << RTF_HIDDEN,            ///< Value for hiding from selection.
+	RTFB_NO_SPRITE_COMBINE = 1 << RTF_NO_SPRITE_COMBINE, ///< Value for using non-combined junctions.
 };
 DECLARE_ENUM_AS_BIT_SET(RailTypeFlags)
 
@@ -51,6 +53,7 @@ enum RailTypeSpriteGroup {
 	RTSG_FENCES,      ///< Fence images
 	RTSG_TUNNEL_PORTAL, ///< Tunnel portal overlay
 	RTSG_SIGNALS,     ///< Signal images
+	RTSG_GROUND_COMPLETE, ///< Complete ground images
 	RTSG_END,
 };
 
