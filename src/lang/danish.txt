@@ -1184,6 +1184,8 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillad landskab
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillad landskabsformning under bygninger og spor uden at fjerne dem
 STR_CONFIG_SETTING_CATCHMENT                                    :Tillad mere realistisk størrelse på stationernes opland: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Har forskellige størrelser oplande til forskellige typer af stationer og lufthavne
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Selskabers stationer kan betjene industrier med tilknyttede neutrale stationer: {STRING}
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Når aktiveret kan industries med tilknyttede stationer (så som Boreplatforme) også betjenes af andre selskabers stationer i nærheden. Når deaktiveret, kan disse industrier kun betjenes af deres egen tilknyttede station. Andre stationer i nærheden kan ikke betjene dem, og industriens tilknyttede station vil heller ikke betjene andet end industrien.
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Tillad nedriving af flere by-ejede veje, broer og tunneler: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Gør det nemmere at fjerne by-ejede infrastruktur og bygninger
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Den maksimale længde af tog: {STRING}
@@ -1200,8 +1202,8 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Stejlhed af skr
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Skrånings stejlhed for vejkøretøjer: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Stejlhed af skrå felter for vej køretøjer. Højere værdier gør det vanskeligere at bestige en bakke
-STR_CONFIG_SETTING_FORBID_90_DEG                                :Forbyd skibe og tog at dreje 90 grader: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 graders drejninger forekommer når et horisontalt spor er direkte efterfulgt af et lodret spor stykke på det tilstødende felt, hvorved toget drejer 90 grader ved kørsel på feltets kant stedet for de sædvanlige 45 grader for andre spor kombinationer. Dette gælder også for drejeradius af skibe
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Forbyd tog at dreje 90 grader: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 graders drejninger forekommer når et vandret sporstykke er direkte efterfulgt af et lodret sporstykke på det tilstødende felt. Således drejer toget 90 grader når det passerer feltets kant, i stedet for de sædvanlige 45 grader for andre sporkombinationer.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Tillad sammenkædning af stationer der ikke ligger direkte op ad hinanden: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Tillad at tilføje dele til en station uden direkte at berøre eksisterende dele. Ctrl+Klik for at sætte nye dele
 STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STRING}
@@ -1257,8 +1259,8 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :Fly hastigheds-
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Indstil den relative hastighed af fly i forhold til andre køretøjstyper, for at reducere mængden af indkomst for transport med fly
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Antal flystyrt: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Angiv chancen for et flystyrt sker
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ingen
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Angiv sandsynligheden for at fly styrter ned.{}* Store fly har altid en risiko for at styrte når de lander på små lufthavne.
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ingen*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduceret
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillad gennemkørsels-stop på veje ejet af en by: {STRING}
@@ -1583,6 +1585,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Hvis denne inds
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Forbudt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tilladt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tilladt, tilpasset by-layout
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Godsgenerering i byer: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hvor meget gods der bliver produceret af byers bygninger, i forhold til byens samlede indbyggertal.{}Kvadratisk vækst: En by med dobbelt indbyggertal genererer fire gange så mange passagerer.{}Lineær vækst: En by med dobbelt indbyggertal genererer dobbelt så mange passagerer.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kvadratisk (original)
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineær
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Placering af træer i spillet: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontroller den tilfældige fremkomst af træer i løbet af spillet. Dette vil påvirke industrier der afhænger træers vækst, f.eks. savværker

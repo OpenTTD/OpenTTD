@@ -1248,6 +1248,8 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Épületek, vá
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tájrendezés engedélyezése épületek és utak alatt azok eltávolítása nélkül
 STR_CONFIG_SETTING_CATCHMENT                                    :Élethűbben méretezett állomási vonzáskörzetek bekapcsolása: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :A különböző állomások és repterek más vonzáskörzettel rendelkeznek
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :A vállalatok állomásai elláthatnak beépített semleges állomással rendelkező gazdasági épületeket: {STRING}
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Ha be van kapcsolva, akkor az olyan gazdasági épületeket, amelyekhez beépített állomás tartozik (pl. olajfúró tornyok), el lehet látni a vállalatok által épített közeli állomásokkal is. Ha ki van kapcsolva, akkor csak a beépített állomásukkal lehet ellátni ezeket a gazdasági épületeket. A vállalatok közeli állomásai nem tudják őket ellátni, és a beépített állomások sem látnak el mást, csak az adott gazdasági épületet.
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Települési tulajdonú utak/hidak/alagutak rombolásának engedélyezése: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Városi tulajdonú infrastruktúra és épületek könnyebb eltávolíthatósága
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Vonatok maximális hossza: {STRING}

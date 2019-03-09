@@ -629,7 +629,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Yhteens�
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Liikennevälineiden määrä. Tähän kuuluvat ajoneuvot, junat, laivat ja lentokoneet
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Asemien osien määrä. Kaikki osat asemista (esim. rautatieasema, bussipysäkki, lentokenttä) lasketaan, vaikka ne olisivat yhdistettynä yhdeksi asemaksi.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Vähätuottoisimman ajoneuvon tulo (kaikkien yli 2 vuotta vanhojen ajoneuvojen)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Vähätuottoisimman kulkuneuvon tulo (kaikkien yli 2 vuotta vanhojen kulkuneuvojen)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Viimeisen 12 neljänneksen vähätuottoisimman kuun käteistuoton määrä
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Viimeisen 12 neljänneksen korkeatuottoisimman kuun käteistuoton määrä
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Viimeisen neljän neljänneksen kuljetetun rahdin määrä
@@ -848,7 +848,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Kulkuneuvolla {VEHICLE} on liian vähän käskyjä
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Kulkuneuvolla {VEHICLE} on virheellinen käsky
-STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Ajoneuvolla {VEHICLE} on toistuvia käskyjä
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Kulkuneuvolla {VEHICLE} on toistuvia käskyjä
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Kulkuneuvon {VEHICLE} käskyissä on virheellinen asema
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}Kulkuneuvon {VEHICLE} käskyissä on lentokenttä, jonka kiitorata on liian lyhyt
 
@@ -860,8 +860,8 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Kulkuneuvon {VEHICLE} tulos viime vuonna oli {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ei pääse seuraavaan määränpäähän koska se on toimintasäteen ulkopuolella
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Korvauksen epäonnistuminen pysäytti ajoneuvon {VEHICLE}
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automaattinen korvaus epäonnistui ajoneuvolle {VEHICLE}{}{STRING}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Korvauksen epäonnistuminen pysäytti kulkuneuvon {VEHICLE}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automaattinen korvaus epäonnistui kulkuneuvolle {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Uusi {STRING} on nyt saatavilla!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
@@ -1162,7 +1162,7 @@ STR_CONFIG_SETTING_RUNNING_COSTS                                :Käyttökustann
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Määritä kulkuneuvojen sekä infrastruktuurin ylläpito- ja käyttökustannusten taso
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Rakennusnopeus: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Rajoita tekoälyn rakennustoimien määrää
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Ajoneuvojen hajoaminen: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Kulkuneuvojen hajoaminen: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Määritä, kuinka usein puutteellisesti huolletut ajoneuvot voivat hajota
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Tukikerroin: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Määritä kuinka paljon tuetuista yhteyksistä maksetaan
@@ -1190,7 +1190,7 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Junien maksimip
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Määrittää junien suurimman sallitun pituuden
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} ruutu{P 0 "" a}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Kulkuneuvon savun/kipinöiden määrä: {STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Määrittää kuinka paljon savua tai kipinöitä ajoneuvot saavat aikaan
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Määrittää kuinka paljon savua tai kipinöitä kulkuneuvot saavat aikaan
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Junien kiihdytysmalli: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Valitsee junien käyttämän fysiikkamallin. "Alkuperäinen" malli hidastaa junia mäissä tasapuolisesti. "Realistinen" malli hidastaa junia mäissä ja mutkissa junan ominaisuuksista riippuen
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Ajoneuvojen kiihdytysmalli: {STRING}
@@ -1229,7 +1229,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Oikealla puolel
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Näytä rahoitusikkuna vuoden lopussa: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Mikäli käytössä, rahoitusikkuna näytetään jokaisen vuoden lopussa yhtiön taloudellisen tilanteen seurannan helpottamiseksi
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Uudet käskyt ovat oletusarvoisesti nonstop-tyyppisiä: {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normaalisti kulkuneuvo pysähtyy jokaisella läpikulkemallaan asemalla. Mikäli tämä asetus on käytössä kulkuneuvot eivät pysähdy ajaessaan asemien läpi. Huomioi, että tämä asetus määrittää oletusarvoisen toiminnon uusille kulkuneuvoille. Asetusta voidaan muuttaa erikseen kunkin ajoneuvon kohdalla
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normaalisti kulkuneuvo pysähtyy jokaisella läpikulkemallaan asemalla. Mikäli tämä asetus on käytössä kulkuneuvot eivät pysähdy ajaessaan asemien läpi. Huomioi, että tämä asetus määrittää oletusarvoisen toiminnon uusille kulkuneuvoille. Asetusta voidaan muuttaa erikseen kunkin kulkuneuvon kohdalla
 STR_CONFIG_SETTING_STOP_LOCATION                                :Uudet junien käskyt pysäyttävät junan aseman {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Paikka, johon juna pysähtyy oletuksena asemalla. 'Alkuun' tarkoittaa että junan viimeinen vaunu pysähtyy laiturin alkuun, 'keskelle' tarkoittaa junan pysähtyvän keskelle laituria, ja 'loppuun' tarkoittaa että veturi pysähtyy laiturin päähän. Huomaa, että tämä asetus määrittää oletusarvon uusille määräyksille. Yksittäisten määräysten kohdalla käyttäytymistä voi muuttaa tästä asetuksesta huolimatta
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :alkuun
@@ -1277,22 +1277,22 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Mikäli käytö
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Varoita, jos kulkuneuvo on eksynyt: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Lähetä viesti, jos kulkuneuvo ei löydä reittiä määränpäähänsä
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :Tarkista ajoneuvojen pysähdykset: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Tarkista kulkuneuvojen pysähdykset: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Mikäli käytössä, kulkuneuvojen määräykset tarkistetaan väliajoin ja havaituista ongelmista ilmoitetaan uutisviestillä
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Ei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Kyllä, mutta ei pysäytetyille
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Kaikille ajoneuvoille
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Kaikille kulkuneuvoille
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varoita, jos kulkuneuvon tulos on negatiivinen: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Mikäli käytössä, uutisviesti lähetetään, jos kulkuneuvo ei ole tuottanut rahaa viimeisen kalenterivuoden aikana
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ajoneuvot eivät vanhene: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kulkuneuvot eivät vanhene: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Mikäli käytössä, kaikki kulkuneuvot ovat saatavilla ikuisesti niiden julkistamisen jälkeen
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Uudista ajoneuvo automaattisesti, kun se vanhenee: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Uudista kulkuneuvo automaattisesti, kun se vanhenee: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Mikäli käytössä, lähellä käyttöikänsä loppua oleva kulkuneuvo korvataan automaattisesti
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Uudista automaattisesti {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Suhteellinen ikä, jonka jälkeen kulkuneuvo voidaan uudistaa automaattisesti
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} kuukau{P 0 tta tta} ennen kulkuneuvon käyttöiän loppua
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} kuukau{P 0 si tta} jälkeen kulkuneuvon käyttöiän lopun
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Vähimmäisrahamäärä ajoneuvon automaattiseen uudistukseen: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Vähimmäisrahamäärä kulkuneuvon automaattiseen uudistukseen: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Pienin rahamäärä, joka on oltava pankissa ennen kulkuneuvojen automaattista uudistamista
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Virheilmoitusten näyttöaika: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Aika virheilmoitusten näyttämiseen punaisessa ikkunassa. Huomaa, että jotkut (kriittiset) virheilmoitukset eivät sulkeudu automaattisesti tämän ajan jälkeen, vaan ne on suljettava käsin
@@ -1446,8 +1446,8 @@ STR_CONFIG_SETTING_SOUND_CLICK                                  :Painikkeiden na
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piippaa painikkeita napsauttaessa
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Vahingot/onnettomuudet: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Toista vahinkojen ja onnettomuuksien äänet
-STR_CONFIG_SETTING_SOUND_VEHICLE                                :Ajoneuvot: {STRING}
-STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Toista ajoneuvojen äänet
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Kulkuneuvot: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Toista kulkuneuvojen äänet
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ympäristö: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Toista ympäristön, kuten maaston, teollisuuden ja kaupunkien äänet
 
@@ -1494,17 +1494,17 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Lentokoneiden o
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Määritä oletushuoltoväli uusille lentokoneille, mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Laivojen oletushuoltoväli: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Määritä oletushuoltoväli uusille laivoille, mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
-STR_CONFIG_SETTING_NOSERVICE                                    :Poista huollot käytöstä kun ajoneuvojen rikkoutuminen on poistettu käytöstä: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :Poista huollot käytöstä kun kulkuneuvojen rikkoutuminen on poistettu käytöstä: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Mikäli käytössä, kulkuneuvoja ei huolleta, jos ne eivät voi rikkoutua
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ota käyttöön vaunujen nopeusrajoitukset: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Mikäli käytössä, vaunujen nopeusrajoitusta käytetään junan maksiminopeuden määrittämisessä
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Poista sähköradat käytöstä: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Mikäli käytössä, sähköveturit toimivat ei-sähköistetyillä radoilla
 
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ensimmäinen ajoneuvo saapuu pelaajan asemalle.: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Näytä sanomalehti ensimmäisen ajoneuvon saapuessa pelaajan uudelle asemalle
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Ensimmäinen ajoneuvo saapuu kilpailijan asemalle.: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Näytä sanomalehti ensimmäisen ajoneuvon saapuessa kilpailijan uudelle asemalle
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ensimmäinen kulkuneuvo saapuu pelaajan asemalle: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Näytä sanomalehti ensimmäisen kulkuneuvon saapuessa pelaajan uudelle asemalle
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Ensimmäinen kulkuneuvo saapuu kilpailijan asemalle.: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Näytä sanomalehti ensimmäisen kulkuneuvon saapuessa kilpailijan uudelle asemalle
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Vahingot/onnettomuudet: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Näytä sanomalehti vahingon tai onnettomuuden sattuessa
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Yhtiön tiedot: {STRING}
@@ -1522,9 +1522,9 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Näytä sanomal
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Muita muutoksia tuotannossa: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Näytä sanomalehti tuotannon muuttuessa teollisuudessa, jota oma tai kilpaileva yhtiö ei palvele
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Neuvoja / tietoa yhtiön kulkuneuvoista: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Näytä viesti ajoneuvon vaatiessa huomiota
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Uudet ajoneuvot: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Näytä sanomalehti kun saatavilla on uusi ajoneuvotyyppi
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Näytä viesti kulkuneuvon vaatiessa huomiota
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Uudet kulkuneuvot: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Näytä sanomalehti kun saatavilla on uusi kulkuneuvotyyppi
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Rahdin vastaanottamisen muutokset: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Näytä viesti kun asemat muuttavat hyväksymäänsä rahtia
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Tuet: {STRING}
@@ -1700,7 +1700,7 @@ STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Rakenta
 STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Uutiset / Neuvonantajat
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Yhtiö
 STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Talous
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ajoneuvot
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kulkuneuvot
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fysiikka
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Reititys
 STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Rajoitukset
@@ -3275,7 +3275,7 @@ STR_FINANCES_CAPTION                                            :{WHITE}Talous, 
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Menot/tulot
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Rakentaminen
-STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Uudet ajoneuvot
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Uudet kulkuneuvot
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Junien käyttökustannukset
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Ajoneuvojen käyttökustannukset
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Lentokoneiden käyttökustannukset
@@ -3334,7 +3334,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Näytä 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Uudet kasvot
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Valitse uudet kasvot pääjohtajalle.
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Väriteema
-STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Muuta yhtiön ajoneuvojen väritystä
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Muuta yhtiön kulkuneuvojen väritystä
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Yhtiön nimi
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Muuta yhtiön nimeä.
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Pääjohtajan nimi
@@ -3408,10 +3408,10 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Käytettäviss�
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Käytettävissä olevat ajoneuvot
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Käytettävissä olevat laivat
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Käytettävissä olevat ilma-alukset
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Näytä lista saatavilla olevista moottorityypeistä tälle ajoneuvotyypille
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Näytä lista saatavilla olevista moottorityypeistä tälle kulkuneuvotyypille
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Muokkaa listaa
-STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Ohjaa kaikkia listan ajoneuvoja
+STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Ohjaa kaikkia listan kulkuneuvoja
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Korvaa liikennevälineitä
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Lähetä huoltoon
 
@@ -3423,7 +3423,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Lähetä variko
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Pysäytä kaikki listalla olevat kulkuneuvot napsauttamalla
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Käynnistä kaikki listalla olevat ajoneuvot napsauttamalla
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}{COMMA} ajoneuvon jaetut käskyt
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}{COMMA} kulkuneuvon jaetut käskyt
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Kaikki junat
@@ -3446,8 +3446,8 @@ STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Poista r
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Poista ryhmä
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Haluatko varmasti poistaa tämän ryhmän ja sen alaryhmät?
 
-STR_GROUP_ADD_SHARED_VEHICLE                                    :Lisää jaettuja ajoneuvoja
-STR_GROUP_REMOVE_ALL_VEHICLES                                   :Poista kaikki ajoneuvot
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Lisää jaettuja kulkuneuvoja
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Poista kaikki kulkuneuvot
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Nimeä ryhmä
 
@@ -3608,10 +3608,10 @@ STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Käynnis
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Käynnistä kaikki telakalla olevat laivat napsauttamalla
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Käynnistä kaikki hallissa olevat ilma-alukset napsauttamalla
 
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Olet myymässä kaikki varikon ajoneuvot. Oletko varma?
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Olet myymässä kaikki varikon kulkuneuvot. Oletko varma?
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Viesti ajoneuvovalmistajalta
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Viesti kulkuneuvovalmistajalta
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Olemme juuri suunnitelleet uuden {STRING} - oletteko kiinnostunut vuoden yksinoikeutetusta kokeilusta, jotta näemme miten tuote suoriutuu ennen kuin julkistamme sen yleiseen käyttöön?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :veturin
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ajoneuvon
@@ -3643,14 +3643,14 @@ STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Sarake k
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Valitse korvattava veturityyppi.
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Valitse vasemmalla näkyvän veturityypinn korvaava uusi veturityyppi.
 
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Aloita ajoneuvojen korvaaminen
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Aloita kulkuneuvojen korvaaminen
 STR_REPLACE_VEHICLES_NOW                                        :Korvaa kaikki liikennevälineet nyt
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Korvaa vain vanhat liikennevälineet
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Napsauta aloittaaksesi vasemmalta valitun veturityypin korvauksen oikealta valitulla veturityypillä.
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ei korvata
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ei liikennevälinettä valittuna
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kun vanha
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lopeta ajoneuvojen korv.
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lopeta kulkuneuvojen korvaaminen
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Napsauta pysäyttääksesi vasemmalta valitun veturityypin korvauksen.
 
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Vaihda toiseen korvausikkunaan
@@ -3797,7 +3797,7 @@ STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Näytä 
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Tietoa
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Näytä yksikön tiedot.
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapasiteetit
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Näytä kunkin ajoneuvon kapasiteetti.
+STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Näytä kunkin kulkuneuvon kapasiteetti
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Rahtia yhteensä
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Näytä junan kokonaiskapasiteetti, eritelty rahtityypin mukaan.
 
@@ -3915,7 +3915,7 @@ STR_ORDER_CONDITIONAL                                           :Ehdollinen hypp
 STR_ORDER_SHARE                                                 :Jaa käskyt
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uusi käsky ennen valittua, tai lisää listan viimeiseksi. Ctrl tekee asemakäskyistä 'lastaa täyteen kaikki rahti', reittipistekäskyistä 'non-stop' ja veturitallikäskyistä 'huolto'. 'Jaa käskyt' jakaa käskyt valitun kulkuneuvon kanssa. Kulkuneuvon napsauttaminen kopioi käskyt kyseisestä kulkuneuvosta. Varikkokäsky poistaa käytöstä automaattisen huollon
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näytä kaikki ajoneuvot, jotka jakavat nämä käskyt
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näytä kaikki kulkuneuvot, jotka jakavat nämä käskyt
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Kierrä reittipisteen {WAYPOINT} kautta
@@ -4008,14 +4008,14 @@ STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}as
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Aikataulun kesto on {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Aikataulun kesto on vähintään {STRING}
 
-STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ajoneuvo on aikataulussa
-STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ajoneuvo on {STRING} myöhässä
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ajoneuvo on {STRING} etuajassa
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Kulkuneuvo on aikataulussa
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Kulkuneuvo on {STRING} myöhässä
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kulkuneuvo on {STRING} etuajassa
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tämä aikataulu ei ole vielä alkanut
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tämä aikataulu alkaa {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Aloituspäivä
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Valitse päivämäärä aikataulun aloituspäiväksi. Ctrl+Klik määrittää aikataulun aloituspäivän ja jakaa aikataulun tasaisesti kaikkien sitä käyttävien ajoneuvojen kesken niiden järjestyksen mukaan.
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Valitse päivämäärä aikataulun aloituspäiväksi. Ctrl+Klik määrittää aikataulun aloituspäivän ja jakaa aikataulun tasaisesti kaikkien sitä käyttävien kulkuneuvojen kesken niiden järjestyksen mukaan.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuta aikaa
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Aseta kuinka kauan käskyn tulisi kestää
@@ -4459,9 +4459,9 @@ STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Ei voi l
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Ryhmää ei voi poistaa.
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Ryhmää ei voi nimetä.
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Pääryhmää ei voi määrittää...
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Ryhmän kaikkia ajoneuvoja ei voi poistaa.
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Ei voi lisätä ajoneuvoa ryhmään.
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Ei voi lisätä jaettuja ajoneuvoja ryhmään.
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Ryhmän kaikkia kulkuneuvoja ei voi poistaa.
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Ei voi lisätä kulkuneuvoa ryhmään.
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Ei voi lisätä jaettuja kulkuneuvoja ryhmään.
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Juna on tiellä.
@@ -4509,12 +4509,12 @@ STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Ajoneuvo
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Laiva ei ole saatavilla
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Lentokone ei ole saatavilla
 
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Liian monta ajoneuvoa pelissä.
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Liian monta kulkuneuvoa pelissä.
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Huoltoväliä ei voi muuttaa.
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... kulkuneuvo on tuhoutunut
 
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Yhtään ajoneuvoa ei ole saatavilla
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Yhtään kulkuneuvoa ei ole saatavilla
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Muuta NewGRF-asetuksiasi
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Kulkuneuvoja ei ole vielä saatavilla
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Aloita peli {DATE_SHORT} jälkeen tai käytä NewGRF:ää joka tarjoaa aikaisempia kulkuneuvoja
@@ -4550,7 +4550,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... lent
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ei voi asettaa aikataulua.
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Kulkuneuvo voi odottaa vain asemalla
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Tämä ajoneuvo ei pysähdy tällä asemalla
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Tämä kulkuneuvo ei pysähdy tällä asemalla
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... liian monta kylttiä.
