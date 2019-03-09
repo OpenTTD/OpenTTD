@@ -400,7 +400,7 @@ bool IsSafeWaitingPosition(const Train *v, TileIndex tile, Trackdir trackdir, bo
 
 	/* Check for reachable tracks. */
 	ft.m_new_td_bits &= DiagdirReachesTrackdirs(ft.m_exitdir);
-	if (forbid_90deg) ft.m_new_td_bits &= ~TrackdirCrossesTrackdirs(trackdir);
+	if (Rail90DegTurnDisallowed(GetTileRailType(ft.m_old_tile), GetTileRailType(ft.m_new_tile), forbid_90deg)) ft.m_new_td_bits &= ~TrackdirCrossesTrackdirs(trackdir);
 	if (ft.m_new_td_bits == TRACKDIR_BIT_NONE) return include_line_end;
 
 	if (ft.m_new_td_bits != TRACKDIR_BIT_NONE && KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE) {
@@ -445,7 +445,7 @@ bool IsWaitingPositionFree(const Train *v, TileIndex tile, Trackdir trackdir, bo
 
 	/* Check for reachable tracks. */
 	ft.m_new_td_bits &= DiagdirReachesTrackdirs(ft.m_exitdir);
-	if (forbid_90deg) ft.m_new_td_bits &= ~TrackdirCrossesTrackdirs(trackdir);
+	if (Rail90DegTurnDisallowed(GetTileRailType(ft.m_old_tile), GetTileRailType(ft.m_new_tile), forbid_90deg)) ft.m_new_td_bits &= ~TrackdirCrossesTrackdirs(trackdir);
 
 	return !HasReservedTracks(ft.m_new_tile, TrackdirBitsToTrackBits(ft.m_new_td_bits));
 }
