@@ -32,7 +32,7 @@ public:
 	virtual bool Selectable() const { return false; }
 	virtual uint Height(uint width) const { return FONT_HEIGHT_NORMAL; }
 	virtual uint Width() const { return 0; }
-	virtual void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const;
+	virtual void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const;
 };
 
 /**
@@ -47,7 +47,7 @@ public:
 
 	virtual bool Selectable() const { return true; }
 	virtual uint Width() const;
-	virtual void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const;
+	virtual void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const;
 	virtual StringID String() const { return this->string; }
 
 	static int CDECL NatSortFunc(const DropDownListItem * const *first, const DropDownListItem * const *second);

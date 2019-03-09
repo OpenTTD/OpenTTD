@@ -536,7 +536,7 @@ public:
 		return true;
 	}
 
-	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
+	void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const
 	{
 		bool rtl = _current_text_dir == TD_RTL;
 		int height = bottom - top;
