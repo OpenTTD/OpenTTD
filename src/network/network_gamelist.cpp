@@ -15,17 +15,17 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../window_func.h"
-#include "../thread/thread.h"
 #include "network_internal.h"
 #include "network_udp.h"
 #include "network_gamelist.h"
+#include <mutex>
 
 #include "../safeguards.h"
 
 NetworkGameList *_network_game_list = NULL;
 
 /** Mutex for handling delayed insertion/querying of servers. */
-static ThreadMutex *_network_game_list_mutex = ThreadMutex::New();
+static std::mutex _network_game_list_mutex;
 /** The games to insert when the GUI thread has time for us. */
 static NetworkGameList *_network_game_delayed_insertion_list = NULL;
 
@@ -36,16 +36,15 @@ static NetworkGameList *_network_game_delayed_insertion_list = NULL;
  */
 void NetworkGameListAddItemDelayed(NetworkGameList *item)
 {
-	_network_game_list_mutex->BeginCritical();
+	std::lock_guard<std::mutex> lock(_network_game_list_mutex);
 	item->next = _network_game_delayed_insertion_list;
 	_network_game_delayed_insertion_list = item;
-	_network_game_list_mutex->EndCritical();
 }
 
 /** Perform the delayed (thread safe) insertion into the game list */
 static void NetworkGameListHandleDelayedInsert()
 {
-	_network_game_list_mutex->BeginCritical();
+	std::lock_guard<std::mutex> lock(_network_game_list_mutex);
 	while (_network_game_delayed_insertion_list != NULL) {
 		NetworkGameList *ins_item = _network_game_delayed_insertion_list;
 		_network_game_delayed_insertion_list = ins_item->next;
@@ -66,7 +65,6 @@ static void NetworkGameListHandleDelayedInsert()
 		}
 		free(ins_item);
 	}
-	_network_game_list_mutex->EndCritical();
 }
 
 /**

@@ -28,8 +28,3 @@ public:
 	virtual void WaitForSignal() {}
 	virtual void SendSignal() {}
 };
-
-/* static */ ThreadMutex *ThreadMutex::New()
-{
-	return new ThreadMutex_None();
-}

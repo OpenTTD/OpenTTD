@@ -68,6 +68,7 @@
 #include "linkgraph/linkgraphschedule.h"
 
 #include <stdarg.h>
+#include <system_error>
 
 #include "safeguards.h"
 
@@ -547,6 +548,9 @@ int openttd_main(int argc, char *argv[])
 	extern bool _dedicated_forks;
 	_dedicated_forks = false;
 
+	std::unique_lock<std::mutex> modal_work_lock(_modal_progress_work_mutex, std::defer_lock);
+	std::unique_lock<std::mutex> modal_paint_lock(_modal_progress_paint_mutex, std::defer_lock);
+
 	_game_mode = GM_MENU;
 	_switch_mode = SM_MENU;
 	_config_file = NULL;
@@ -830,8 +834,14 @@ int openttd_main(int argc, char *argv[])
 	free(musicdriver);
 
 	/* Take our initial lock on whatever we might want to do! */
-	_modal_progress_paint_mutex->BeginCritical();
-	_modal_progress_work_mutex->BeginCritical();
+	try {
+		modal_work_lock.lock();
+		modal_paint_lock.lock();
+	} catch (const std::system_error&) {
+		/* If there is some error we assume that threads aren't usable on the system we run. */
+		extern bool _use_threaded_modal_progress; // From progress.cpp
+		_use_threaded_modal_progress = false;
+	}
 
 	GenerateWorld(GWM_EMPTY, 64, 64); // Make the viewport initialization happy
 	WaitTillGeneratedWorld();

@@ -30,6 +30,8 @@
 #include "../core/pool_func.hpp"
 #include "../core/random_func.hpp"
 #include "../rev.h"
+#include <mutex>
+#include <condition_variable>
 
 #include "../safeguards.h"
 
@@ -58,7 +60,8 @@ struct PacketWriter : SaveFilter {
 	Packet *current;                    ///< The packet we're currently writing to.
 	size_t total_size;                  ///< Total size of the compressed savegame.
 	Packet *packets;                    ///< Packet queue of the savegame; send these "slowly" to the client.
-	ThreadMutex *mutex;                 ///< Mutex for making threaded saving safe.
+	std::mutex mutex;                   ///< Mutex for making threaded saving safe.
+	std::condition_variable exit_sig;   ///< Signal for threaded destruction of this packet writer.
 
 	/**
 	 * Create the packet writer.
@@ -66,17 +69,14 @@ struct PacketWriter : SaveFilter {
 	 */
 	PacketWriter(ServerNetworkGameSocketHandler *cs) : SaveFilter(NULL), cs(cs), current(NULL), total_size(0), packets(NULL)
 	{
-		this->mutex = ThreadMutex::New();
 	}
 
 	/** Make sure everything is cleaned up. */
 	~PacketWriter()
 	{
-		if (this->mutex != NULL) this->mutex->BeginCritical();
+		std::unique_lock<std::mutex> lock(this->mutex);
 
-		if (this->cs != NULL && this->mutex != NULL) {
-			this->mutex->WaitForSignal();
-		}
+		if (this->cs != NULL) this->exit_sig.wait(lock);
 
 		/* This must all wait until the Destroy function is called. */
 
@@ -87,11 +87,6 @@ struct PacketWriter : SaveFilter {
 		}
 
 		delete this->current;
-
-		if (this->mutex != NULL) this->mutex->EndCritical();
-
-		delete this->mutex;
-		this->mutex = NULL;
 	}
 
 	/**
@@ -106,13 +101,12 @@ struct PacketWriter : SaveFilter {
 	 */
 	void Destroy()
 	{
-		if (this->mutex != NULL) this->mutex->BeginCritical();
+		std::unique_lock<std::mutex> lock(this->mutex);
 
 		this->cs = NULL;
 
-		if (this->mutex != NULL) this->mutex->SendSignal();
-
-		if (this->mutex != NULL) this->mutex->EndCritical();
+		this->exit_sig.notify_all();
+		lock.unlock();
 
 		/* Make sure the saving is completely cancelled. Yes,
 		 * we need to handle the save finish as well as the
@@ -138,13 +132,11 @@ struct PacketWriter : SaveFilter {
 	 */
 	Packet *PopPacket()
 	{
-		if (this->mutex != NULL) this->mutex->BeginCritical();
+		std::lock_guard<std::mutex> lock(this->mutex);
 
 		Packet *p = this->packets;
 		this->packets = p->next;
 		p->next = NULL;
-
-		if (this->mutex != NULL) this->mutex->EndCritical();
 
 		return p;
 	}
@@ -170,7 +162,7 @@ struct PacketWriter : SaveFilter {
 
 		if (this->current == NULL) this->current = new Packet(PACKET_SERVER_MAP_DATA);
 
-		if (this->mutex != NULL) this->mutex->BeginCritical();
+		std::lock_guard<std::mutex> lock(this->mutex);
 
 		byte *bufe = buf + size;
 		while (buf != bufe) {
@@ -185,8 +177,6 @@ struct PacketWriter : SaveFilter {
 			}
 		}
 
-		if (this->mutex != NULL) this->mutex->EndCritical();
-
 		this->total_size += size;
 	}
 
@@ -195,7 +185,7 @@ struct PacketWriter : SaveFilter {
 		/* We want to abort the saving when the socket is closed. */
 		if (this->cs == NULL) SlError(STR_NETWORK_ERROR_LOSTCONNECTION);
 
-		if (this->mutex != NULL) this->mutex->BeginCritical();
+		std::lock_guard<std::mutex> lock(this->mutex);
 
 		/* Make sure the last packet is flushed. */
 		this->AppendQueue();
@@ -208,8 +198,6 @@ struct PacketWriter : SaveFilter {
 		Packet *p = new Packet(PACKET_SERVER_MAP_SIZE);
 		p->Send_uint32((uint32)this->total_size);
 		this->cs->NetworkTCPSocketHandler::SendPacket(p);
-
-		if (this->mutex != NULL) this->mutex->EndCritical();
 	}
 };
 
