@@ -3515,8 +3515,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastr
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Partes ferriviariae:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signalia
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Partes viariae:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Viariae
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Ferriviae stratariae
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Tegulae aquariae:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canales
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stationes:
@@ -4564,7 +4562,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Necesse 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nulla astaria idonea
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Necesse est ferriviam removere
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Via est monodromus vel obstructa
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Non licet huic typo ferriviae habere transitus
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Non licet huic typo ferriviae habere transitus
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Non licet signalia hic struere...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Non licet ferriviam hic struere...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Non licet ferriviam removere hic...

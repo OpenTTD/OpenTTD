@@ -2876,8 +2876,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}زیرس
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}قطعه های ریل:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}نشانگرها
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}قطعه های راه:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}راه
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}تراموا
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}قسمتهای زیر آب:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}کانال ها
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}ایستگاه ها:

@@ -3046,8 +3046,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Innviði
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Járnbrautarspor:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Umferðarmerki
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Vegir:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Vegir
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Sporvagnaspor
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vatns reitir:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Skipaskurðir
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stöðvar:
@@ -4031,7 +4029,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Verður 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ekkert hentugt járnbrautarspor
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Verður að fjarlægja járnbrautarspor fyrst
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vegurinn er einstefnuvegur eða stíflaður
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Gatnamót ekki leyfð fyrir þessa tegund járnbrautarspora
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Gatnamót ekki leyfð fyrir þessa tegund járnbrautarspora
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Get ekki byggt umferðarmerki hér...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Get ekki byggt járnbrautarspor hér...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Get ekki fjarlægt járnbrautarspor héðan...

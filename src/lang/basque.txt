@@ -3144,8 +3144,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Trenbide sailak:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Seinaleak
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Errepide sailak:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Errepidea
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tranbia sailak
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Urbide sailak:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanalak
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Geltokiak:
@@ -4141,7 +4139,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Lehendab
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ez dago trenbide egokirik
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Lehendabizi trenbidea ezabatu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Errepidea norabide bakarrekoa da edo blokeatua dago
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Ezin dira maila bereko pasaguneak egin trenbide mota honetan
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Ezin dira maila bereko pasaguneak egin trenbide mota honetan
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Ezin da seinalerik hemen eraiki...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Ezin da trenbiderik hemen eraiki...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Ezin da hemengo trenbidea ezabatu...

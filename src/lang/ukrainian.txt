@@ -3485,8 +3485,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Інфр
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Залізничні ділянки:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}З сигналами
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Дорожні ділянки:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Автомобільні
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Трамвайні
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Судноплавні ділянки:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Канали
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Станції:
@@ -4520,7 +4518,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Споч
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Невідповідний тип колії
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Спочатку приберіть колію
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дорога з одностороннім рухом або блокована
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Переїзди для такого виду колії є забороненими
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Переїзди для такого виду колії є забороненими
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Неможливо будувати сигнали тут...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Неможливо будувати колію тут...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Неможливо прибрати колію звідси...

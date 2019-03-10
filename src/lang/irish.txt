@@ -3255,8 +3255,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Bonneaga
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Píosaí iarnróid:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Comharthaí
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Píosaí bóthair:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Bóthar
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Trambhealach
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Tíleanna uisce:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canálacha
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stáisiúin:
@@ -4268,7 +4266,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Ní mór
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Níl ráillí iarnróid feiliúnacha ann
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Ní mór na ráillí iarnróid a bhaint ar dtús
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Is bóthar aonbhealaigh nó blocáilte é
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Ní cheadaítear crosairí comhréidh don chineál ráille seo
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Ní cheadaítear crosairí comhréidh don chineál ráille seo
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Ní féidir comharthaí a thógáil anseo...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Ní féidir ráillí iarnróid a thógáil anseo...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Ní féidir ráillí iarnróid a bhaint as seo...

@@ -3333,8 +3333,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE} {COMPAN
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Raudtee tükid:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signaalid
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Tee tükid:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Tee
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Trammitee
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Veekogu ruudud:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanalid
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Jaamad:
@@ -4352,7 +4350,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Signaali
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Sobiv rongitee puudub
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Rööbastee tuleb eelnevalt lammutada
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Läbipääsmatu või ühesuunaline maantee
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Ülesõidukohad on selle raudteetüübi puhul keelatud
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Ülesõidukohad on selle raudteetüübi puhul keelatud
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Siia ei saa signaale rajada...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Siia ei saa raudteed ehitada...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Siit ei saa raudteed lammutada...

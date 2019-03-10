@@ -1399,8 +1399,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Инфр
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}железнички парчиња:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}сигнали
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Патот парчиња:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}патот
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}трамвај
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Вода плочки:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}каналите
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}станици:
@@ -1768,7 +1766,7 @@ STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Не а�
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(лимит на пари)
 
 # Rail construction errors
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Ниво, нема премини се дозволени за овој вид железнички
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Ниво, нема премини се дозволени за овој вид железнички
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... не постои железничка пруга
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... постојат никакви сигнали
 

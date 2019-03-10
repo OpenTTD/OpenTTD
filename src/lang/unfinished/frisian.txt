@@ -3009,8 +3009,6 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Wy sykje
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Ynfrastruktuer fan {COMPANY}
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Seinen
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Stikjes dyk:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Dyk
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tramwei
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stasjons:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stasjontegels
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Fleanfjilden
@@ -3821,7 +3819,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Stopljoc
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Spoar is net geskikt
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Spoar moat der earst wei
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Dyk is in ienrjochtingsdyk of blokearre
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}In oergong is net tastien foar dit type spoar
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}In oergong is net tastien foar dit type spoar
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kin hjir gjin stopljochten boue...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kin hjir gjin spoarwei boue
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kin hjir gjin spoar fuorthelje...

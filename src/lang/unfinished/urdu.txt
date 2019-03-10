@@ -2302,8 +2302,6 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}تفصی
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}ریل کے ٹکڑے
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}اشارے
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}سڑک کے ٹکرے
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}سڑک
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}ٹرام وے
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}پانی کی ٹائل
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}نہریں
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD} اسٹیشن:
