@@ -1776,7 +1776,7 @@ make_cflags_and_ldflags() {
 	fi
 
 	if [ -n "$icu_sort_config" ]; then
-		CFLAGS="$CFLAGS -DWITH_ICU_SORT"
+		CFLAGS="$CFLAGS -DWITH_ICU_I18N"
 		CFLAGS="$CFLAGS `$icu_sort_config --cflags | tr '\n\r' '  '`"
 
 		if [ "$static_icu" != "0" ]; then
