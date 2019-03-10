@@ -2984,7 +2984,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Die angefordert
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} wurde von {STRING} deaktiviert
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ungültiges oder unbekanntes Format für Spritelayout (Sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Zu viele Elemente in Eigenschaftswert-Liste (Sprite {3:NUM}, Eigenschaft {4:HEX})
-STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ungültige Produktions-Rückruffunktion (Sprite {3:NUM}, "{1:STRING}")
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ungültige Produktions-Rückruffunktion (Sprite {3:NUM}, "{2:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Achtung!

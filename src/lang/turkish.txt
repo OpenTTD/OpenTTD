@@ -2990,7 +2990,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :İstenen GRF ka
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} {STRING} tarafından deaktive edildi
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Geçersiz/bilinmeyen nesne yerleşim biçimi (nesne {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Özellik değeri listesinde çok fazla öğe (sprite {3:NUM}, özellik {4:HEX})
-STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Geçersiz endüstri üretim geri çağrımı (sprite {3:NUM}, "{1:STRING}")
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Geçersiz endüstri üretim geri çağrımı (sprite {3:NUM}, "{2:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uyarı!

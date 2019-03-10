@@ -3001,7 +3001,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Els recursos GR
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ha estat desactivat per {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Format de disposició de sprite no vàlid o desconegut (sprite {3:NUM}).
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Hi ha massa elements a la llista de valors de propietats (sprite {3:NUM}, propietat {4:HEX})
-STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :«Callback» de producció d'indústria no vàlid (sprite {3:NUM}, «{1:STRING}»).
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :«Callback» de producció d'indústria no vàlid (sprite {3:NUM}, «{2:STRING}»).
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
