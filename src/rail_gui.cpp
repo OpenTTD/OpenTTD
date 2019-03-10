@@ -2010,7 +2010,17 @@ DropDownList *GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		*list->Append() = item;
 	}
 
+	Dimension d = { 0, 0 };
 	RailType rt;
+	/* Get largest icon size, to ensure text is aligned on each menu item. */
+	if (!for_replacement) {
+		FOR_ALL_SORTED_RAILTYPES(rt) {
+			if (!HasBit(used_railtypes, rt)) continue;
+			const RailtypeInfo *rti = GetRailTypeInfo(rt);
+			d = maxdim(d, GetSpriteSize(rti->gui_sprites.build_x_rail));
+		}
+	}
+
 	FOR_ALL_SORTED_RAILTYPES(rt) {
 		/* If it's not used ever, don't show it to the user. */
 		if (!HasBit(used_railtypes, rt)) continue;
@@ -2018,7 +2028,14 @@ DropDownList *GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		const RailtypeInfo *rti = GetRailTypeInfo(rt);
 
 		StringID str = for_replacement ? rti->strings.replace_text : (rti->max_speed > 0 ? STR_TOOLBAR_RAILTYPE_VELOCITY : STR_JUST_STRING);
-		DropDownListParamStringItem *item = new DropDownListParamStringItem(str, rt, !HasBit(c->avail_railtypes, rt));
+		DropDownListParamStringItem *item;
+		if (for_replacement) {
+			item = new DropDownListParamStringItem(str, rt, !HasBit(c->avail_railtypes, rt));
+		} else {
+			DropDownListIconItem *iconitem = new DropDownListIconItem(rti->gui_sprites.build_x_rail, PAL_NONE, str, rt, !HasBit(c->avail_railtypes, rt));
+			iconitem->SetDimension(d);
+			item = iconitem;
+		}
 		item->SetParam(0, rti->strings.menu_text);
 		item->SetParam(1, rti->max_speed);
 		*list->Append() = item;
