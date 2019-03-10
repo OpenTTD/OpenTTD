@@ -519,8 +519,6 @@ class DropDownListColourItem : public DropDownListItem {
 public:
 	DropDownListColourItem(int result, bool masked) : DropDownListItem(result, masked) {}
 
-	virtual ~DropDownListColourItem() {}
-
 	StringID String() const
 	{
 		return this->result >= COLOUR_END ? STR_COLOUR_DEFAULT : _colour_dropdown[this->result];

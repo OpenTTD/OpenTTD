@@ -97,8 +97,6 @@ public:
 		this->checkmark_width = GetStringBoundingBox(STR_JUST_CHECKMARK).width + 3;
 	}
 
-	virtual ~DropDownListCheckedItem() {}
-
 	uint Width() const
 	{
 		return DropDownListStringItem::Width() + this->checkmark_width;
@@ -128,8 +126,6 @@ public:
 		this->icon_size = GetSpriteSize(SPR_COMPANY_ICON);
 		this->lock_size = GetSpriteSize(SPR_LOCK);
 	}
-
-	virtual ~DropDownListCompanyItem() {}
 
 	bool Selectable() const
 	{
