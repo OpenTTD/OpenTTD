@@ -21,12 +21,12 @@
 #include <stack>
 #include <vector>
 
-#ifdef WITH_ICU_LAYOUT
+#ifdef WITH_ICU_LX
 #include "layout/ParagraphLayout.h"
 #define ICU_FONTINSTANCE : public icu::LEFontInstance
-#else /* WITH_ICU_LAYOUT */
+#else /* WITH_ICU_LX */
 #define ICU_FONTINSTANCE
-#endif /* WITH_ICU_LAYOUT */
+#endif /* WITH_ICU_LX */
 
 /**
  * Text drawing parameters, which can change while drawing a line, but are kept between multiple parts
@@ -89,7 +89,7 @@ public:
 
 	Font(FontSize size, TextColour colour);
 
-#ifdef WITH_ICU_LAYOUT
+#ifdef WITH_ICU_LX
 	/* Implementation details of LEFontInstance */
 
 	le_int32 getUnitsPerEM() const;
@@ -105,7 +105,7 @@ public:
 	LEGlyphID mapCharToGlyph(LEUnicode32 ch) const;
 	void getGlyphAdvance(LEGlyphID glyph, LEPoint &advance) const;
 	le_bool getGlyphPoint(LEGlyphID glyph, le_int32 pointNumber, LEPoint &point) const;
-#endif /* WITH_ICU_LAYOUT */
+#endif /* WITH_ICU_LX */
 };
 
 /** Mapping from index to font. */

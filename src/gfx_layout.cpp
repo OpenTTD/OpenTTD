@@ -17,9 +17,9 @@
 
 #include "table/control_codes.h"
 
-#ifdef WITH_ICU_LAYOUT
+#ifdef WITH_ICU_LX
 #include <unicode/ustring.h>
-#endif /* WITH_ICU_LAYOUT */
+#endif /* WITH_ICU_LX */
 
 #ifdef WITH_UNISCRIBE
 #include "os/windows/string_uniscribe.h"
@@ -50,7 +50,7 @@ Font::Font(FontSize size, TextColour colour) :
 	assert(size < FS_END);
 }
 
-#ifdef WITH_ICU_LAYOUT
+#ifdef WITH_ICU_LX
 /* Implementation details of LEFontInstance */
 
 le_int32 Font::getUnitsPerEM() const
@@ -226,7 +226,7 @@ public:
 		return length;
 	}
 };
-#endif /* WITH_ICU_LAYOUT */
+#endif /* WITH_ICU_LX */
 
 /*** Paragraph layout ***/
 /**
@@ -674,11 +674,11 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 		} else {
 			/* Line is new, layout it */
 			FontState old_state = state;
-#if defined(WITH_ICU_LAYOUT) || defined(WITH_UNISCRIBE) || defined(WITH_COCOA)
+#if defined(WITH_ICU_LX) || defined(WITH_UNISCRIBE) || defined(WITH_COCOA)
 			const char *old_str = str;
 #endif
 
-#ifdef WITH_ICU_LAYOUT
+#ifdef WITH_ICU_LX
 			GetLayouter<ICUParagraphLayoutFactory>(line, str, state);
 			if (line.layout == NULL) {
 				static bool warned = false;
