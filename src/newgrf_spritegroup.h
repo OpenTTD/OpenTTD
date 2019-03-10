@@ -277,7 +277,7 @@ struct TileLayoutSpriteGroup : SpriteGroup {
 struct IndustryProductionSpriteGroup : SpriteGroup {
 	IndustryProductionSpriteGroup() : SpriteGroup(SGT_INDUSTRY_PRODUCTION) {}
 
-	uint8 version;
+	uint8 version;                              ///< Production callback version used, or 0xFF if marked invalid
 	uint8 num_input;                            ///< How many subtract_input values are valid
 	int16 subtract_input[INDUSTRY_NUM_INPUTS];  ///< Take this much of the input cargo (can be negative, is indirect in cb version 1+)
 	CargoID cargo_input[INDUSTRY_NUM_INPUTS];   ///< Which input cargoes to take from (only cb version 2)
