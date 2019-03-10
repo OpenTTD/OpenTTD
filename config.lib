@@ -1765,7 +1765,7 @@ make_cflags_and_ldflags() {
 	fi
 
 	if [ -n "$icu_layout_config" ]; then
-		CFLAGS="$CFLAGS -DWITH_ICU_LAYOUT"
+		CFLAGS="$CFLAGS -DWITH_ICU_LX"
 		CFLAGS="$CFLAGS `$icu_layout_config --cflags | tr '\n\r' '  '`"
 
 		if [ "$static_icu" != "0" ]; then

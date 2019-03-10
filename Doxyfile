@@ -298,7 +298,7 @@ PREDEFINED             = ENABLE_NETWORK \
                          WITH_FONTCONFIG \
                          WITH_FREETYPE \
                          WITH_ICU_SORT \
-                         WITH_ICU_LAYOUT \
+                         WITH_ICU_LX \
                          UNICODE \
                          _UNICODE \
                          _GNU_SOURCE \
