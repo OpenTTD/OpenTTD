@@ -58,6 +58,8 @@ const char *MusicDriver_FluidSynth::Start(const char * const *param)
 	/* Create the settings. */
 	_midi.settings = new_fluid_settings();
 	if (!_midi.settings) return "Could not create midi settings";
+	/* Don't try to lock sample data in memory, OTTD usually does not run with privileges allowing that */
+	fluid_settings_setint(_midi.settings, "synth.lock-memory", 0);
 
 	/* Create the synthesizer. */
 	_midi.synth = new_fluid_synth(_midi.settings);
