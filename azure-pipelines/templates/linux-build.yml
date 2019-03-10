@@ -19,4 +19,4 @@ steps:
     containerCommand: ${{ parameters.ContainerCommand }}
     runInBackground: false
     envVars: |
-      TARGET_BRANCH=$(System.PullRequest.TargetBranch)
+      TARGET_BRANCH=${SYSTEM_PULLREQUEST_TARGETBRANCH}
