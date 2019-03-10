@@ -180,6 +180,7 @@ Sub load_main_data(filename, ByRef vcxproj, ByRef filters, ByRef files)
 						line = "DIRECTMUSIC" Or _
 						line = "AI" Or _
 						line = "USE_SSE" Or _
+						line = "USE_XAUDIO2" Or _
 						line = "USE_THREADS" _
 					) Then skip = skip + 1
 					deep = deep + 1
