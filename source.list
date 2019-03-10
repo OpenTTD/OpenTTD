@@ -111,7 +111,7 @@ vehicle.cpp
 vehiclelist.cpp
 viewport.cpp
 #if SSE
-viewport_sprite_sorter_sse4.cpp
+	viewport_sprite_sorter_sse4.cpp
 #end
 waypoint.cpp
 widget.cpp
@@ -404,19 +404,19 @@ zoom_func.h
 zoom_type.h
 #if WIN32
 #else
-music/bemidi.h
-music/cocoa_m.h
-music/extmidi.h
-music/fluidsynth.h
-music/os2_m.h
-music/qtmidi.h
-os/macosx/macos.h
-os/macosx/osx_stdafx.h
-os/macosx/splash.h
-os/macosx/string_osx.h
-sound/cocoa_s.h
-video/cocoa/cocoa_keys.h
-video/cocoa/cocoa_v.h
+	music/bemidi.h
+	music/cocoa_m.h
+	music/extmidi.h
+	music/fluidsynth.h
+	music/os2_m.h
+	music/qtmidi.h
+	os/macosx/macos.h
+	os/macosx/osx_stdafx.h
+	os/macosx/splash.h
+	os/macosx/string_osx.h
+	sound/cocoa_s.h
+	video/cocoa/cocoa_keys.h
+	video/cocoa/cocoa_v.h
 #end
 
 # Core Source Code
@@ -917,36 +917,36 @@ script/api/script_window.cpp
 # Blitters
 #if DEDICATED
 #else
-blitter/32bpp_anim.cpp
-blitter/32bpp_anim.hpp
-#if SSE
-blitter/32bpp_anim_sse2.cpp
-blitter/32bpp_anim_sse2.hpp
-blitter/32bpp_anim_sse4.cpp
-blitter/32bpp_anim_sse4.hpp
-#end
-blitter/32bpp_base.cpp
-blitter/32bpp_base.hpp
-blitter/32bpp_optimized.cpp
-blitter/32bpp_optimized.hpp
-blitter/32bpp_simple.cpp
-blitter/32bpp_simple.hpp
-#if SSE
-blitter/32bpp_sse_func.hpp
-blitter/32bpp_sse_type.h
-blitter/32bpp_sse2.cpp
-blitter/32bpp_sse2.hpp
-blitter/32bpp_sse4.cpp
-blitter/32bpp_sse4.hpp
-blitter/32bpp_ssse3.cpp
-blitter/32bpp_ssse3.hpp
-#end
-blitter/8bpp_base.cpp
-blitter/8bpp_base.hpp
-blitter/8bpp_optimized.cpp
-blitter/8bpp_optimized.hpp
-blitter/8bpp_simple.cpp
-blitter/8bpp_simple.hpp
+	blitter/32bpp_anim.cpp
+	blitter/32bpp_anim.hpp
+	#if SSE
+		blitter/32bpp_anim_sse2.cpp
+		blitter/32bpp_anim_sse2.hpp
+		blitter/32bpp_anim_sse4.cpp
+		blitter/32bpp_anim_sse4.hpp
+	#end
+	blitter/32bpp_base.cpp
+	blitter/32bpp_base.hpp
+	blitter/32bpp_optimized.cpp
+	blitter/32bpp_optimized.hpp
+	blitter/32bpp_simple.cpp
+	blitter/32bpp_simple.hpp
+	#if SSE
+		blitter/32bpp_sse_func.hpp
+		blitter/32bpp_sse_type.h
+		blitter/32bpp_sse2.cpp
+		blitter/32bpp_sse2.hpp
+		blitter/32bpp_sse4.cpp
+		blitter/32bpp_sse4.hpp
+		blitter/32bpp_ssse3.cpp
+		blitter/32bpp_ssse3.hpp
+	#end
+	blitter/8bpp_base.cpp
+	blitter/8bpp_base.hpp
+	blitter/8bpp_optimized.cpp
+	blitter/8bpp_optimized.hpp
+	blitter/8bpp_simple.cpp
+	blitter/8bpp_simple.hpp
 #end
 blitter/base.hpp
 blitter/common.hpp
@@ -1088,61 +1088,61 @@ video/dedicated_v.cpp
 video/null_v.cpp
 #if DEDICATED
 #else
-#if ALLEGRO
-	video/allegro_v.cpp
-#end
-#if SDL
-	video/sdl_v.cpp
-#end
-#if WIN32
-	video/win32_v.cpp
-#end
+	#if ALLEGRO
+		video/allegro_v.cpp
+	#end
+	#if SDL
+		video/sdl_v.cpp
+	#end
+	#if WIN32
+		video/win32_v.cpp
+	#end
 #end
 
 # Music
 #if DEDICATED
 #else
-#if ALLEGRO
-	music/allegro_m.cpp
-#end
-#if DIRECTMUSIC
-	music/dmusic.cpp
-#end
+	#if ALLEGRO
+		music/allegro_m.cpp
+	#end
+	#if DIRECTMUSIC
+		music/dmusic.cpp
+	#end
 #end
 music/null_m.cpp
 music/midifile.cpp
 #if DEDICATED
 #else
-#if WIN32
-	music/win32_m.cpp
-#else
-	#if DOS
+	#if WIN32
+		music/win32_m.cpp
 	#else
-		music/extmidi.cpp
+		#if DOS
+		#else
+			music/extmidi.cpp
+		#end
 	#end
-#end
-#if HAIKU
-	music/bemidi.cpp
-#end
-#if FLUIDSYNTH
-	music/fluidsynth.cpp
-#end
+	#if HAIKU
+		music/bemidi.cpp
+	#end
+	#if FLUIDSYNTH
+		music/fluidsynth.cpp
+	#end
 #end
 
 # Sound
 sound/null_s.cpp
 #if DEDICATED
 #else
-#if ALLEGRO
-	sound/allegro_s.cpp
-#end
-#if SDL
-	sound/sdl_s.cpp
-#end
-#if WIN32
-	sound/win32_s.cpp
-	sound/xaudio2_s.cpp
-#end
+	#if ALLEGRO
+		sound/allegro_s.cpp
+	#end
+	#if SDL
+		sound/sdl_s.cpp
+	#end
+	#if WIN32
+		sound/win32_s.cpp
+		sound/xaudio2_s.cpp
+	#end
 #end
 
 #if OSX
