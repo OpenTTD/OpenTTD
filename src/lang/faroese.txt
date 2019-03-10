@@ -2889,8 +2889,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Innanker
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Jarnbreyta pettir:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Tekin
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Vega pettir:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Vegur
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Sporvognur
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vatn puntar:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Siglingarennir
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Støðir:
@@ -3790,7 +3788,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Neyðugt
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ikki hóskandi jarnbreyt
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Neyðugt at beina burtur jarnbreyt fyrst
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vegur er einvegis ella blokeraður
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Javnir krossvegir ikki loyvdir fyri hetta slagi av tok bana
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Javnir krossvegir ikki loyvdir fyri hetta slagi av tok bana
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kann ikki byggja jarnbreytatekin her...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kann ikki byggja jarnbreyt her...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kann ikki beina burtur jarnbreyt hagani...

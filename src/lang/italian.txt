@@ -3389,8 +3389,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastr
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Segmenti ferroviari:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Segnali
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Segmenti stradali:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Strada
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tranvia
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Riquadri d'acqua:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canali
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stazioni:
@@ -4436,7 +4434,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Bisogna 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tipo di binari non adatti
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Bisogna rimuovere i binari prima
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}La strada è bloccata o a senso unico
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Passaggi a livello non consentiti per questo tipo di rotaia
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Passaggi a livello non consentiti per questo tipo di rotaia
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Impossibile costruire i segnali qui...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossibile costruire i binari qui...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Impossibile rimuovere i binari da qui...

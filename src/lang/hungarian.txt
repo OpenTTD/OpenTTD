@@ -3420,8 +3420,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Vasúti elemek:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Vasúti jelzők
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Közúti elemek:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Út
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Villamospálya
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vízi elemek:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Csatornák
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Állomások:
@@ -4467,7 +4465,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Előszö
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nincs megfelelő vasúti pálya
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Előbb le kell rombolnod a vasúti pályát
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}... az út egyirányú vagy blokkolt
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Ehhez a síntipushoz nem megengedett vasúti átjárók építése
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Ehhez a síntipushoz nem megengedett vasúti átjárók építése
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nem helyezhetsz ide jelzőt...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nem építhetsz ide vasúti pályát...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nem szedheted fel innen a vasúti pályát...

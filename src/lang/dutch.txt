@@ -3359,8 +3359,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastr
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Spoordelen:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Seinen
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Wegdelen:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Weg
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tramsporen
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Watertegels:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanalen
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stations:
@@ -4406,7 +4404,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Verwijde
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Geen bruikbaar spoor
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Moet spoor eerst verwijderen
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Weg is eenrichtingsverkeer of geblokkeerd
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Gelijkvloerse kruisingen zijn niet toegestaan voor dit type spoor
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Gelijkvloerse kruisingen zijn niet toegestaan voor dit type spoor
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan hier geen seinen plaatsen...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan hier geen spoor leggen...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan hier geen spoor verwijderen...

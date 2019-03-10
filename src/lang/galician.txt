@@ -3260,8 +3260,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infraest
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Segmentos de vía de ferrocarril:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Sinais
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Segmentos de estrada:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Estrada
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE} Tranvía
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Cadros de auga:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canles
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Estacións:
@@ -4288,7 +4286,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Debes re
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Non hay vía de ferrocarril adecuada
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Debes elimina-la vía de ferrocarril primeiro
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}A estrada é de sentido único ou está bloqueada
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Non se permiten pasos a nivel con este tipo de carril
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Non se permiten pasos a nivel con este tipo de carril
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Non se poden construír sinais aquí...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Non se pode construír vía ferroviaria aquí...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Non se pode elimina-la vía ferroviaria de aquí...

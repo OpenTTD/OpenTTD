@@ -2880,8 +2880,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}இரயில் பாகங்கள்:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}சிக்னல்கள்
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}சாலை பாகங்கள்:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}சாலை
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}ட்ராம்வே
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}தண்ணீர் வட்டங்கள்:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}கால்வாய்கள்
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}நிலையங்கள்:
@@ -3822,7 +3820,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}மு�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}தக்க இரயில் தடம் ஏதும் இல்லை
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}முதலில் இரயில்வே தடத்தினை எடுக்க வேண்டும்
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}சாலை ஒருவழிப்பாதை அல்லது மறிக்கப்பட்டுள்ளது
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}இந்த வகையிலான இரயில்களுக்கு இருப்புப்பாதை சந்திக் கடவுகள் கிடையாது
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}இந்த வகையிலான இரயில்களுக்கு இருப்புப்பாதை சந்திக் கடவுகள் கிடையாது
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}இங்கே சிக்னல்களை நிறுவ இயலாது...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}இங்கே இரயில்வே தடங்களை பதிய முடியாது...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}இங்கிருந்து இரயில்வே தடங்களை அகற்ற முடியாது...

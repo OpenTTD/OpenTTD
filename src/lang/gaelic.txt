@@ -3534,8 +3534,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Am bun-s
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Earrannan rèile:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Comharran
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Earrannan rathaid:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Rathad
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Slighe-trama
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Leacan uisge:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canalan
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stèiseanan:
@@ -4564,7 +4562,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Feumaidh
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Chan eil slighe rèile iomchaidh ann
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Feumaidh tu an t-slighe rèile a thoirt air falbh an toiseach
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Rathad aon-shligheach no bacte
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Chan eil staranan-rèile ceadaichte leis an t-seòrsa dhe rèile seo
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Chan eil staranan-rèile ceadaichte leis an t-seòrsa dhe rèile seo
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Cha ghabh comharran togail an-seo...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Cha ghabh slighe-rèile togail an-seo...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Cha ghabh an t-slighe-rèile toirt air falbh an-seo...

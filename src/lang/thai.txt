@@ -3187,8 +3187,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}โค�
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}ชิ้นส่วนทางรถไฟ:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}เสาอาณัติสัญญาณ
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}ชิ้นส่วนถนน:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}ถนน
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}ทางรถราง
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}คลอง:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}คลอง
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}สถานี:
@@ -4181,7 +4179,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}ต้�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}ไม่มีรางรถไฟที่เหมาะสม
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}ต้องทำลายทางรถไฟทิ้งเสียก่อน
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}ถนนเป็นทางเดียวหรือถูกปิดกั้น
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}ทางตัดเสมอระดับทางไม่อนุญาตให้ตัดผ่านทางประเภทนี้
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}ทางตัดเสมอระดับทางไม่อนุญาตให้ตัดผ่านทางประเภทนี้
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}ไม่สามารถสร้างเสาอาณัติสัญญาณได้...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}บริเวณนี้ไม่สามารถสร้างรางรถไฟได้...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}ตรงนี้ไม่สามารถลบรางรถไฟออกไปได้

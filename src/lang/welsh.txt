@@ -3259,8 +3259,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Tanadeil
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Darnau rheilffordd:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signalau
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Darnau ffordd:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Ffordd
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tramffordd
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Teiliau dŵr:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Camlesi
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Gorsafoedd:
@@ -4287,7 +4285,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Rhaid ty
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Dim trac rheilffordd addas
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Rhaid tynnu'r trac rheilffordd yn gyntaf
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Mae'r ffordd yn ffordd un-ffordd, neu wedi'i blocio
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Ni chaniateir croesfannau ar y cledrau yma
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Ni chaniateir croesfannau ar y cledrau yma
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Methu adeiladu signalau yma...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Methu adeiladu trac rheilffordd yma...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Methu tynnu trac rheilffordd oddi yma...

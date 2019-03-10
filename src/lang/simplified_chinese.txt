@@ -3280,8 +3280,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}铁路：
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}信号灯
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}道路：
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}普通道路
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}电车线路
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}水运：
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}运河
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}站台：
@@ -4306,7 +4304,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}必须�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}没有合适的轨道
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}必须先拆除轨道
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}这是单行道或这条路被堵死了
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}该轨道类型不允许建设平交道
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}该轨道类型不允许建设平交道
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}不能在这里设置信号灯……
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}不能在这里铺设轨道……
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}不能从这里拆除轨道……

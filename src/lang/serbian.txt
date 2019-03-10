@@ -3466,8 +3466,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastr
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Delova pruge:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signalizacija
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Delova druma:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Drum
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tramvajska pruga
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Pločica sa vodom:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanali
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stanice:
@@ -4511,7 +4509,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Neophodn
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nedostaje odgovarajuća železnička pruga
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Potrebno je prvo ukloniti železničku prugu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Put je jednosmeran ili je blokiran
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Putni prelaz nije dozvoljen za ovu vrstu pruge
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Putni prelaz nije dozvoljen za ovu vrstu pruge
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Izgradnja signalizacije ovde nije moguća...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Izgradnja železničke pruge ovde nije moguća...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nemoguće je ukloniti železničku prugu odatle...

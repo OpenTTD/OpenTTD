@@ -3359,8 +3359,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Rautatiepalat:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Opastimet
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Teiden palat:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Tie
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Raitiotie
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vesiruudut:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanavat
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Asemat:
@@ -4406,7 +4404,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Opastime
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ei kelvollista rautatietä.
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Rautatie pitää poistaa ensin.
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Tie on yksisuuntainen tai suljettu
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Tasoristeykset eivät ole sallittu tälle raidetyypille
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Tasoristeykset eivät ole sallittu tälle raidetyypille
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Opastinta ei voi rakentaa.
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Rautatietä ei voi rakentaa.
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Rautatietä ei voi poistaa.

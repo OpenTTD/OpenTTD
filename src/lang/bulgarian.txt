@@ -3185,8 +3185,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Инфр
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Релсови части:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Сигнали
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Пътни части:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Път
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Трамвай
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Водни части:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Канали
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Станции:
@@ -4198,7 +4196,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Първ
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Неподходящ за употреба релсов път
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Първо трябва да бъде премахнат релсовия път
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Пътят е еднопосочен или блокиран
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Пресичането на различни видове ЖП линии не е позволено.
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Пресичането на различни видове ЖП линии не е позволено.
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Тук не може да бъдат поставени сигнали...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Тук не могат да бъдат построени ЖП релси...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Не може да премахнеш тези ЖП релси...
