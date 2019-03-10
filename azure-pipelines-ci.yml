@@ -43,6 +43,9 @@ jobs:
       linux-amd64-gcc-6: {}
       linux-i386-gcc-6: {}
 
+  variables:
+    TARGET_BRANCH: '$(System.PullRequest.TargetBranch)'
+
   steps:
   - template: azure-pipelines/templates/ci-git-rebase.yml
   # The dockers already have the dependencies installed

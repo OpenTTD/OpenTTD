@@ -3,9 +3,6 @@ parameters:
   Tag: ''
   ContainerCommand: ''
 
-variables:
-  TARGET_BRANCH: '$(System.PullRequest.TargetBranch)'
-
 steps:
 - task: Docker@1
   ${{ if eq(parameters.Image, 'compile-farm') }}:
