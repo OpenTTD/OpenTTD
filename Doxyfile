@@ -297,7 +297,7 @@ PREDEFINED             = ENABLE_NETWORK \
                          WITH_PNG \
                          WITH_FONTCONFIG \
                          WITH_FREETYPE \
-                         WITH_ICU_SORT \
+                         WITH_ICU_I18N \
                          WITH_ICU_LX \
                          UNICODE \
                          _UNICODE \

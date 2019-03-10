@@ -37,12 +37,12 @@
 #include "os/macosx/string_osx.h"
 #endif
 
-#ifdef WITH_ICU_SORT
+#ifdef WITH_ICU_I18N
 /* Required by strnatcmp. */
 #include <unicode/ustring.h>
 #include "language.h"
 #include "gfx_func.h"
-#endif /* WITH_ICU_SORT */
+#endif /* WITH_ICU_I18N */
 
 /* The function vsnprintf is used internally to perform the required formatting
  * tasks. As such this one must be allowed, and makes sure it's terminated. */
@@ -584,13 +584,13 @@ int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
 		s2 = SkipGarbage(s2);
 	}
 
-#ifdef WITH_ICU_SORT
+#ifdef WITH_ICU_I18N
 	if (_current_collator != NULL) {
 		UErrorCode status = U_ZERO_ERROR;
 		int result = _current_collator->compareUTF8(s1, s2, status);
 		if (U_SUCCESS(status)) return result;
 	}
-#endif /* WITH_ICU_SORT */
+#endif /* WITH_ICU_I18N */
 
 #if defined(_WIN32) && !defined(STRGEN) && !defined(SETTINGSGEN)
 	int res = OTTDStringCompare(s1, s2);
@@ -613,7 +613,7 @@ int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
 	return new UniscribeStringIterator();
 }
 
-#elif defined(WITH_ICU_SORT)
+#elif defined(WITH_ICU_I18N)
 
 #include <unicode/utext.h>
 #include <unicode/brkiter.h>
