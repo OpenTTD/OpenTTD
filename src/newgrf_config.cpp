@@ -21,6 +21,7 @@
 #include "video/video_driver.hpp"
 #include "strings_func.h"
 #include "textfile_gui.h"
+#include "thread/thread.h"
 
 #include "fileio_func.h"
 #include "fios.h"
@@ -682,18 +683,18 @@ bool GRFFileScanner::AddFile(const char *filename, size_t basepath_length, const
 
 	this->num_scanned++;
 	if (this->next_update <= _realtime_tick) {
-		_modal_progress_work_mutex->EndCritical();
-		_modal_progress_paint_mutex->BeginCritical();
+		_modal_progress_work_mutex.unlock();
+		_modal_progress_paint_mutex.lock();
 
 		const char *name = NULL;
 		if (c->name != NULL) name = GetGRFStringFromGRFText(c->name->text);
 		if (name == NULL) name = c->filename;
 		UpdateNewGRFScanStatus(this->num_scanned, name);
 
-		_modal_progress_work_mutex->BeginCritical();
-		_modal_progress_paint_mutex->EndCritical();
+		_modal_progress_work_mutex.lock();
+		_modal_progress_paint_mutex.unlock();
 
-		this->next_update = _realtime_tick + 200;
+		this->next_update = _realtime_tick + MODAL_PROGRESS_REDRAW_TIMEOUT;
 	}
 
 	if (!added) {
@@ -725,7 +726,7 @@ static int CDECL GRFSorter(GRFConfig * const *p1, GRFConfig * const *p2)
  */
 void DoScanNewGRFFiles(void *callback)
 {
-	_modal_progress_work_mutex->BeginCritical();
+	std::unique_lock<std::mutex> lock_work(_modal_progress_work_mutex);
 
 	ClearGRFConfigList(&_all_grfs);
 	TarScanner::DoScan(TarScanner::NEWGRF);
@@ -760,8 +761,8 @@ void DoScanNewGRFFiles(void *callback)
 		NetworkAfterNewGRFScan();
 	}
 
-	_modal_progress_work_mutex->EndCritical();
-	_modal_progress_paint_mutex->BeginCritical();
+	lock_work.unlock();
+	std::lock_guard<std::mutex> lock_paint(_modal_progress_paint_mutex);
 
 	/* Yes... these are the NewGRF windows */
 	InvalidateWindowClassesData(WC_SAVELOAD, 0, true);
@@ -771,7 +772,6 @@ void DoScanNewGRFFiles(void *callback)
 	DeleteWindowByClass(WC_MODAL_PROGRESS);
 	SetModalProgress(false);
 	MarkWholeScreenDirty();
-	_modal_progress_paint_mutex->EndCritical();
 }
 
 /**
@@ -785,12 +785,12 @@ void ScanNewGRFFiles(NewGRFScanCallback *callback)
 	/* Only then can we really start, especially by marking the whole screen dirty. Get those other windows hidden!. */
 	MarkWholeScreenDirty();
 
-	if (!VideoDriver::GetInstance()->HasGUI() || !ThreadObject::New(&DoScanNewGRFFiles, callback, NULL, "ottd:newgrf-scan")) {
-		_modal_progress_work_mutex->EndCritical();
-		_modal_progress_paint_mutex->EndCritical();
+	if (!UseThreadedModelProgress() || !VideoDriver::GetInstance()->HasGUI() || !ThreadObject::New(&DoScanNewGRFFiles, callback, NULL, "ottd:newgrf-scan")) {
+		_modal_progress_work_mutex.unlock();
+		_modal_progress_paint_mutex.unlock();
 		DoScanNewGRFFiles(callback);
-		_modal_progress_paint_mutex->BeginCritical();
-		_modal_progress_work_mutex->BeginCritical();
+		_modal_progress_paint_mutex.lock();
+		_modal_progress_work_mutex.lock();
 	} else {
 		UpdateNewGRFScanStatus(0, NULL);
 	}

@@ -29,13 +29,14 @@
 #include "../newgrf_text.h"
 #include "../strings_func.h"
 #include "table/strings.h"
+#include <mutex>
 
 #include "core/udp.h"
 
 #include "../safeguards.h"
 
 /** Mutex for all out threaded udp resolution and such. */
-static ThreadMutex *_network_udp_mutex = ThreadMutex::New();
+static std::mutex _network_udp_mutex;
 
 /** Session key to register ourselves to the master server */
 static uint64 _session_key = 0;
@@ -80,11 +81,11 @@ static void NetworkUDPQueryServer(NetworkAddress *address, bool needs_mutex, boo
 	item->manually = manually;
 	NetworkGameListAddItemDelayed(item);
 
-	if (needs_mutex) _network_udp_mutex->BeginCritical();
+	std::unique_lock<std::mutex> lock(_network_udp_mutex, std::defer_lock);
+	if (needs_mutex) lock.lock();
 	/* Init the packet */
 	Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
 	if (_udp_client_socket != NULL) _udp_client_socket->SendPacket(&p, address);
-	if (needs_mutex) _network_udp_mutex->EndCritical();
 }
 
 /**
@@ -549,9 +550,8 @@ static void NetworkUDPRemoveAdvertiseThread(void *pntr)
 	p.Send_uint8 (NETWORK_MASTER_SERVER_VERSION);
 	p.Send_uint16(_settings_client.network.server_port);
 
-	_network_udp_mutex->BeginCritical();
+	std::lock_guard<std::mutex> lock(_network_udp_mutex);
 	if (_udp_master_socket != NULL) _udp_master_socket->SendPacket(&p, &out_addr, true);
-	_network_udp_mutex->EndCritical();
 }
 
 /**
@@ -603,9 +603,8 @@ static void NetworkUDPAdvertiseThread(void *pntr)
 	p.Send_uint16(_settings_client.network.server_port);
 	p.Send_uint64(_session_key);
 
-	_network_udp_mutex->BeginCritical();
+	std::lock_guard<std::mutex> lock(_network_udp_mutex);
 	if (_udp_master_socket != NULL) _udp_master_socket->SendPacket(&p, &out_addr, true);
-	_network_udp_mutex->EndCritical();
 }
 
 /**
@@ -660,7 +659,7 @@ void NetworkUDPInitialize()
 	DEBUG(net, 1, "[udp] initializing listeners");
 	assert(_udp_client_socket == NULL && _udp_server_socket == NULL && _udp_master_socket == NULL);
 
-	_network_udp_mutex->BeginCritical();
+	std::lock_guard<std::mutex> lock(_network_udp_mutex);
 
 	_udp_client_socket = new ClientNetworkUDPSocketHandler();
 
@@ -674,13 +673,12 @@ void NetworkUDPInitialize()
 
 	_network_udp_server = false;
 	_network_udp_broadcast = 0;
-	_network_udp_mutex->EndCritical();
 }
 
 /** Close all UDP related stuff. */
 void NetworkUDPClose()
 {
-	_network_udp_mutex->BeginCritical();
+	std::lock_guard<std::mutex> lock(_network_udp_mutex);
 	_udp_server_socket->Close();
 	_udp_master_socket->Close();
 	_udp_client_socket->Close();
@@ -690,7 +688,6 @@ void NetworkUDPClose()
 	_udp_client_socket = NULL;
 	_udp_server_socket = NULL;
 	_udp_master_socket = NULL;
-	_network_udp_mutex->EndCritical();
 
 	_network_udp_server = false;
 	_network_udp_broadcast = 0;
@@ -700,7 +697,7 @@ void NetworkUDPClose()
 /** Receive the UDP packets. */
 void NetworkBackgroundUDPLoop()
 {
-	_network_udp_mutex->BeginCritical();
+	std::lock_guard<std::mutex> lock(_network_udp_mutex);
 
 	if (_network_udp_server) {
 		_udp_server_socket->ReceivePackets();
@@ -709,6 +706,4 @@ void NetworkBackgroundUDPLoop()
 		_udp_client_socket->ReceivePackets();
 		if (_network_udp_broadcast > 0) _network_udp_broadcast--;
 	}
-
-	_network_udp_mutex->EndCritical();
 }

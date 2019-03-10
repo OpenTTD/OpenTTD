@@ -13,7 +13,7 @@
 #define SMALLSTACK_TYPE_HPP
 
 #include "smallvec_type.hpp"
-#include "../thread/thread.h"
+#include <mutex>
 
 /**
  * A simplified pool which stores values instead of pointers and doesn't
@@ -23,15 +23,14 @@
 template<typename Titem, typename Tindex, Tindex Tgrowth_step, Tindex Tmax_size>
 class SimplePool {
 public:
-	inline SimplePool() : first_unused(0), first_free(0), mutex(ThreadMutex::New()) {}
-	inline ~SimplePool() { delete this->mutex; }
+	inline SimplePool() : first_unused(0), first_free(0) {}
 
 	/**
 	 * Get the mutex. We don't lock the mutex in the pool methods as the
 	 * SmallStack isn't necessarily in a consistent state after each method.
 	 * @return Mutex.
 	 */
-	inline ThreadMutex *GetMutex() { return this->mutex; }
+	inline std::mutex &GetMutex() { return this->mutex; }
 
 	/**
 	 * Get the item at position index.
@@ -86,7 +85,7 @@ private:
 	Tindex first_unused;
 	Tindex first_free;
 
-	ThreadMutex *mutex;
+	std::mutex mutex;
 	std::vector<SimplePoolPoolItem> data;
 };
 
@@ -196,7 +195,7 @@ public:
 	inline void Push(const Titem &item)
 	{
 		if (this->value != Tinvalid) {
-			ThreadMutexLocker lock(SmallStack::GetPool().GetMutex());
+			std::lock_guard<std::mutex> lock(SmallStack::GetPool().GetMutex());
 			Tindex new_item = SmallStack::GetPool().Create();
 			if (new_item != Tmax_size) {
 				PooledSmallStack &pushed = SmallStack::GetPool().Get(new_item);
@@ -219,7 +218,7 @@ public:
 		if (this->next == Tmax_size) {
 			this->value = Tinvalid;
 		} else {
-			ThreadMutexLocker lock(SmallStack::GetPool().GetMutex());
+			std::lock_guard<std::mutex> lock(SmallStack::GetPool().GetMutex());
 			PooledSmallStack &popped = SmallStack::GetPool().Get(this->next);
 			this->value = popped.value;
 			if (popped.branch_count == 0) {
@@ -258,7 +257,7 @@ public:
 	{
 		if (item == Tinvalid || item == this->value) return true;
 		if (this->next != Tmax_size) {
-			ThreadMutexLocker lock(SmallStack::GetPool().GetMutex());
+			std::lock_guard<std::mutex> lock(SmallStack::GetPool().GetMutex());
 			const SmallStack *in_list = this;
 			do {
 				in_list = static_cast<const SmallStack *>(
@@ -282,7 +281,7 @@ protected:
 	inline void Branch()
 	{
 		if (this->next != Tmax_size) {
-			ThreadMutexLocker lock(SmallStack::GetPool().GetMutex());
+			std::lock_guard<std::mutex> lock(SmallStack::GetPool().GetMutex());
 			++(SmallStack::GetPool().Get(this->next).branch_count);
 		}
 	}

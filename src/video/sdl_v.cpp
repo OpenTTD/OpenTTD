@@ -25,6 +25,8 @@
 #include "../framerate_type.h"
 #include "sdl_v.h"
 #include <SDL.h>
+#include <mutex>
+#include <condition_variable>
 
 #include "../safeguards.h"
 
@@ -39,7 +41,9 @@ static bool _draw_threaded;
 /** Thread used to 'draw' to the screen, i.e. push data to the screen. */
 static ThreadObject *_draw_thread = NULL;
 /** Mutex to keep the access to the shared memory controlled. */
-static ThreadMutex *_draw_mutex = NULL;
+static std::recursive_mutex *_draw_mutex = NULL;
+/** Signal to draw the next frame. */
+static std::condition_variable_any *_draw_signal = NULL;
 /** Should we keep continue drawing? */
 static volatile bool _draw_continue;
 static Palette _local_palette;
@@ -172,20 +176,19 @@ static void DrawSurfaceToScreen()
 static void DrawSurfaceToScreenThread(void *)
 {
 	/* First tell the main thread we're started */
-	_draw_mutex->BeginCritical();
-	_draw_mutex->SendSignal();
+	std::unique_lock<std::recursive_mutex> lock(*_draw_mutex);
+	_draw_signal->notify_one();
 
 	/* Now wait for the first thing to draw! */
-	_draw_mutex->WaitForSignal();
+	_draw_signal->wait(*_draw_mutex);
 
 	while (_draw_continue) {
 		CheckPaletteAnim();
 		/* Then just draw and wait till we stop */
 		DrawSurfaceToScreen();
-		_draw_mutex->WaitForSignal();
+		_draw_signal->wait(lock);
 	}
 
-	_draw_mutex->EndCritical();
 	_draw_thread->Exit();
 }
 
@@ -668,26 +671,31 @@ void VideoDriver_SDL::MainLoop()
 
 	CheckPaletteAnim();
 
+	std::unique_lock<std::recursive_mutex> draw_lock;
 	if (_draw_threaded) {
 		/* Initialise the mutex first, because that's the thing we *need*
 		 * directly in the newly created thread. */
-		_draw_mutex = ThreadMutex::New();
+		_draw_mutex = new std::recursive_mutex();
 		if (_draw_mutex == NULL) {
 			_draw_threaded = false;
 		} else {
-			_draw_mutex->BeginCritical();
+			draw_lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
+			_draw_signal = new std::condition_variable_any();
 			_draw_continue = true;
 
 			_draw_threaded = ThreadObject::New(&DrawSurfaceToScreenThread, NULL, &_draw_thread, "ottd:draw-sdl");
 
 			/* Free the mutex if we won't be able to use it. */
 			if (!_draw_threaded) {
-				_draw_mutex->EndCritical();
+				draw_lock.unlock();
+				draw_lock.release();
 				delete _draw_mutex;
+				delete _draw_signal;
 				_draw_mutex = NULL;
+				_draw_signal = NULL;
 			} else {
 				/* Wait till the draw mutex has started itself. */
-				_draw_mutex->WaitForSignal();
+				_draw_signal->wait(*_draw_mutex);
 			}
 		}
 	}
@@ -752,19 +760,19 @@ void VideoDriver_SDL::MainLoop()
 
 			/* The gameloop is the part that can run asynchronously. The rest
 			 * except sleeping can't. */
-			if (_draw_mutex != NULL) _draw_mutex->EndCritical();
+			if (_draw_mutex != NULL) draw_lock.unlock();
 
 			GameLoop();
 
-			if (_draw_mutex != NULL) _draw_mutex->BeginCritical();
+			if (_draw_mutex != NULL) draw_lock.lock();
 
 			UpdateWindows();
 			_local_palette = _cur_palette;
 		} else {
 			/* Release the thread while sleeping */
-			if (_draw_mutex != NULL) _draw_mutex->EndCritical();
+			if (_draw_mutex != NULL) draw_lock.unlock();
 			CSleep(1);
-			if (_draw_mutex != NULL) _draw_mutex->BeginCritical();
+			if (_draw_mutex != NULL) draw_lock.lock();
 
 			NetworkDrawChatMessage();
 			DrawMouseCursor();
@@ -772,7 +780,7 @@ void VideoDriver_SDL::MainLoop()
 
 		/* End of the critical part. */
 		if (_draw_mutex != NULL && !HasModalProgress()) {
-			_draw_mutex->SendSignal();
+			_draw_signal->notify_one();
 		} else {
 			/* Oh, we didn't have threads, then just draw unthreaded */
 			CheckPaletteAnim();
@@ -784,29 +792,34 @@ void VideoDriver_SDL::MainLoop()
 		_draw_continue = false;
 		/* Sending signal if there is no thread blocked
 		 * is very valid and results in noop */
-		_draw_mutex->SendSignal();
-		_draw_mutex->EndCritical();
+		_draw_signal->notify_one();
+		if (draw_lock.owns_lock()) draw_lock.unlock();
+		draw_lock.release();
 		_draw_thread->Join();
 
 		delete _draw_mutex;
+		delete _draw_signal;
 		delete _draw_thread;
 
 		_draw_mutex = NULL;
+		_draw_signal = NULL;
 		_draw_thread = NULL;
 	}
 }
 
 bool VideoDriver_SDL::ChangeResolution(int w, int h)
 {
-	if (_draw_mutex != NULL) _draw_mutex->BeginCritical(true);
-	bool ret = CreateMainSurface(w, h);
-	if (_draw_mutex != NULL) _draw_mutex->EndCritical(true);
-	return ret;
+	std::unique_lock<std::recursive_mutex> lock;
+	if (_draw_mutex != NULL) lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
+
+	return CreateMainSurface(w, h);
 }
 
 bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 {
-	if (_draw_mutex != NULL) _draw_mutex->BeginCritical(true);
+	std::unique_lock<std::recursive_mutex> lock;
+	if (_draw_mutex != NULL) lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
+
 	_fullscreen = fullscreen;
 	GetVideoModes(); // get the list of available video modes
 	bool ret = _num_resolutions != 0 && CreateMainSurface(_cur_resolution.width, _cur_resolution.height);
@@ -816,7 +829,6 @@ bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 		_fullscreen ^= true;
 	}
 
-	if (_draw_mutex != NULL) _draw_mutex->EndCritical(true);
 	return ret;
 }
 
@@ -827,12 +839,12 @@ bool VideoDriver_SDL::AfterBlitterChange()
 
 void VideoDriver_SDL::AcquireBlitterLock()
 {
-	if (_draw_mutex != NULL) _draw_mutex->BeginCritical(true);
+	if (_draw_mutex != NULL) _draw_mutex->lock();
 }
 
 void VideoDriver_SDL::ReleaseBlitterLock()
 {
-	if (_draw_mutex != NULL) _draw_mutex->EndCritical(true);
+	if (_draw_mutex != NULL) _draw_mutex->unlock();
 }
 
 #endif /* WITH_SDL */
