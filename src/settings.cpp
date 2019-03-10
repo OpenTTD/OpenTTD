@@ -448,13 +448,18 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 			case SLE_VAR_U16:
 			case SLE_VAR_I32: {
 				/* Override the minimum value. No value below sdb->min, except special value 0 */
-				if (!(sdb->flags & SGF_0ISDISABLED) || val != 0) val = Clamp(val, sdb->min, sdb->max);
+				if (!(sdb->flags & SGF_0ISDISABLED) || val != 0) {
+				       if (val < sdb->min || val > (int32)sdb->max) val = (int32)(size_t)sdb->def;
+				}
 				break;
 			}
 			case SLE_VAR_U32: {
 				/* Override the minimum value. No value below sdb->min, except special value 0 */
-				uint min = ((sdb->flags & SGF_0ISDISABLED) && (uint)val <= (uint)sdb->min) ? 0 : sdb->min;
-				WriteValue(ptr, SLE_VAR_U32, (int64)ClampU(val, min, sdb->max));
+				uint32 uval = (uint32)val;
+				if (!(sdb->flags & SGF_0ISDISABLED) || uval != 0) {
+				       if (uval < (uint)sdb->min || uval > sdb->max) uval = (uint32)(size_t)sdb->def;
+				}
+				WriteValue(ptr, SLE_VAR_U32, (int64)uval);
 				return;
 			}
 			case SLE_VAR_I64:
