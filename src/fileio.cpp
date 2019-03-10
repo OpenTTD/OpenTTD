@@ -29,7 +29,7 @@
 #include <algorithm>
 
 #ifdef WITH_XDG_BASEDIR
-#include "basedir.h"
+#include <basedir.h>
 #endif
 
 #include "safeguards.h"
