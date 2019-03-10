@@ -3000,7 +3000,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF so
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} fue desactivado por {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de colocación de sprites no válido o desconocido (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Demasiados elementos en la lista de valores de propiedad (sprite {3:NUM}, property {4:HEX})
-STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Llamada de producción de industria no válida (sprite {3:NUM}, "{1:STRING}")
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Llamada de producción de industria no válida (sprite {3:NUM}, "{2:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}¡Precaución!

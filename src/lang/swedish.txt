@@ -2986,7 +2986,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade G
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} har inaktiverats av {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Felaktigt/okänt layout-format av spriteobjekt (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :För många poster i listan med egenskapsvärden (spriteobjekt {3:NUM}, egenskap {4:HEX})
-STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ogiltig industriproduktions-callback (spriteobjekt {3:NUM}, "{1:STRING}")
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ogiltig industriproduktions-callback (spriteobjekt {3:NUM}, "{2:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varning!
