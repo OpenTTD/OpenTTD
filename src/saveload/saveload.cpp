@@ -2153,7 +2153,7 @@ struct ZlibSaveFilter : SaveFilter {
  ********** START OF LZMA CODE **************
  ********************************************/
 
-#if defined(WITH_LZMA)
+#if defined(WITH_LIBLZMA)
 #include <lzma.h>
 
 /**
@@ -2266,7 +2266,7 @@ struct LZMASaveFilter : SaveFilter {
 	}
 };
 
-#endif /* WITH_LZMA */
+#endif /* WITH_LIBLZMA */
 
 /*******************************************
  ************* END OF CODE *****************
@@ -2303,7 +2303,7 @@ static const SaveLoadFormat _saveload_formats[] = {
 #else
 	{"zlib",   TO_BE32X('OTTZ'), NULL,                               NULL,                               0, 0, 0},
 #endif
-#if defined(WITH_LZMA)
+#if defined(WITH_LIBLZMA)
 	/* Level 2 compression is speed wise as fast as zlib level 6 compression (old default), but results in ~10% smaller saves.
 	 * Higher compression levels are possible, and might improve savegame size by up to 25%, but are also up to 10 times slower.
 	 * The next significant reduction in file size is at level 4, but that is already 4 times slower. Level 3 is primarily 50%
