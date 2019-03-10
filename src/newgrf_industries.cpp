@@ -605,6 +605,17 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		if (tgroup == NULL || tgroup->type != SGT_INDUSTRY_PRODUCTION) break;
 		const IndustryProductionSpriteGroup *group = (const IndustryProductionSpriteGroup *)tgroup;
 
+		if (group->version == 0xFF) {
+			/* Result was marked invalid on load, display error message */
+			SetDParamStr(0, spec->grf_prop.grffile->filename);
+			SetDParam(1, spec->name);
+			SetDParam(2, ind->location.tile);
+			ShowErrorMessage(STR_NEWGRF_BUGGY, STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK, WL_WARNING);
+
+			/* abort the function early, this error isn't critical and will allow the game to continue to run */
+			break;
+		}
+
 		bool deref = (group->version >= 1);
 
 		if (group->version < 2) {

@@ -5005,7 +5005,12 @@ static void NewSpriteGroup(ByteReader *buf)
 						for (uint i = 0; i < group->num_input; i++) {
 							byte rawcargo = buf->ReadByte();
 							CargoID cargo = GetCargoTranslation(rawcargo, _cur.grffile);
-							if (std::find(group->cargo_input, group->cargo_input + i, cargo) != group->cargo_input + i) {
+							if (cargo == CT_INVALID) {
+								/* The mapped cargo is invalid. This is permitted at this point,
+								 * as long as the result is not used. Mark it invalid so this
+								 * can be tested later. */
+								group->version = 0xFF;
+							} else if (std::find(group->cargo_input, group->cargo_input + i, cargo) != group->cargo_input + i) {
 								GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
 								error->data = stredup("duplicate input cargo");
 								return;
@@ -5022,7 +5027,10 @@ static void NewSpriteGroup(ByteReader *buf)
 						for (uint i = 0; i < group->num_output; i++) {
 							byte rawcargo = buf->ReadByte();
 							CargoID cargo = GetCargoTranslation(rawcargo, _cur.grffile);
-							if (std::find(group->cargo_output, group->cargo_output + i, cargo) != group->cargo_output + i) {
+							if (cargo == CT_INVALID) {
+								/* Mark this result as invalid to use */
+								group->version = 0xFF;
+							} else if (std::find(group->cargo_output, group->cargo_output + i, cargo) != group->cargo_output + i) {
 								GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
 								error->data = stredup("duplicate output cargo");
 								return;
