@@ -4,11 +4,20 @@ parameters:
   ContainerCommand: ''
 
 steps:
+# 'envVars' in the 'Docker@1' task is a bit funky. When you want to use a
+# variable, you have to quote it. But the quote is also sent directly to
+# Docker and ends up in the variable, which you don't want. To work around
+# this, we set the correct variable first (which becomes an env-variable), and
+# pass that env-variable through to Docker. We cannot use the normal
+# 'variables' entry, as we are a template. So that results in this bit of
+# Bash code. Not because it is pretty, but it is the only way we found that
+# works.
 - bash: |
     echo "##vso[task.setvariable variable=TARGET_BRANCH]${SYSTEM_PULLREQUEST_TARGETBRANCH}"
     echo "Target branch is ${SYSTEM_PULLREQUEST_TARGETBRANCH}"
   displayName: "Set target branch"
   condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'))
+
 - task: Docker@1
   ${{ if eq(parameters.Image, 'compile-farm') }}:
     displayName: 'Build'
