@@ -6,5 +6,5 @@ steps:
     git config user.email 'info@openttd.org'
     git config user.name 'OpenTTD CI'
     git rebase origin/${SYSTEM_PULLREQUEST_TARGETBRANCH}
-  displayName: 'Rebase to $(System.PullRequest.TargetBranch)'
+  displayName: 'Rebase to target branch'
   condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'))
