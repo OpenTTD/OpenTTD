@@ -244,10 +244,10 @@ STR_TOOLTIP_SHADE                                               :{BLACK}Pienenn�
 STR_TOOLTIP_DEBUG                                               :{BLACK}Näytä NewGRF-vianmääritystiedot
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Palauta ikkunan oletuskoko. Ctrl+Klik tallentaa nykyisen koon oletukseksi
 STR_TOOLTIP_STICKY                                              :{BLACK}Aseta ikkuna säilymään "Sulje kaikki ikkunat" -napista huolimatta. Ctrl+Klik tallentaa tilan oletukseksi
-STR_TOOLTIP_RESIZE                                              :{BLACK}Napsauta ja vedä muuttaaksesi tämän ikkunan kokoa.
+STR_TOOLTIP_RESIZE                                              :{BLACK}Napsauta ja vedä muuttaaksesi tämän ikkunan kokoa
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Suurenna/pienennä ikkuna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki - luettelon vieritys ylös/alas
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki - luettelon vieritys vasemmalle/oikealle.
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki – luettelon vieritys vasemmalle/oikealle
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Tuhoa rakennuksia jne. ruudulta. Ctrl valitsee alueen vinottain. Shift vaihtaa tuhoamistilan ja kustannusarvion välillä
 
 # Show engines button
@@ -320,7 +320,7 @@ STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Nopeuta 
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Asetukset
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Tallenna peli, hylkää peli, sulje
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Näytä kartta, lisänäkymä ja kylttilista
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Näytä kaupunkihakemisto
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Näytä kuntahakemisto
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Näytä tukitarjoukset
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Näytä luettelo yhtiön asemista
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Näytä yhtiön taloustiedot
@@ -353,9 +353,9 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Skenaar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Siirrä aloituspäivää vuodella taaksepäin
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Siirrä aloituspäivää vuodella eteenpäin
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Aseta aloitusvuosi napsauttamalla
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Näytä kartta, kaupunkihakemisto
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Näytä kartta, kuntahakemisto
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Maaston luonti
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Kaupunkien luonti
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Kuntien luonti
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Teollisuuden luonti
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Tienrakennus
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Istuta puita. Shift vaihtaa istutustilan ja kustannusarvion välillä
@@ -378,7 +378,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Asetukset
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Tekoälyn/Peliskriptin asetukset
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-asetukset
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läpinäkyvyysasetukset
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Kaupunkien nimet näkyvissä
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Kuntien nimet näkyvissä
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Asemien nimet näkyvissä
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Reittipisteitten nimet näkyvissä
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Kyltit näkyvissä
@@ -404,8 +404,8 @@ STR_MAP_MENU_LINGRAPH_LEGEND                                    :Rahtivirran sel
 STR_MAP_MENU_SIGN_LIST                                          :Kylttilista
 
 ############ range for town menu starts
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Kaupunkihakemisto
-STR_TOWN_MENU_FOUND_TOWN                                        :Perusta kaupunki
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Kuntahakemisto
+STR_TOWN_MENU_FOUND_TOWN                                        :Perusta kunta
 ############ range ends here
 
 ############ range for subsidies menu starts
@@ -593,7 +593,7 @@ STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Näytä 
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Selite yhtiön kuvaajiin
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Napsauta tätä vaihtaaksesi yhtiön merkinnän kuvaajassa päälle/pois.
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Napsauta tätä vaihtaaksesi yhtiön merkinnän kuvaajassa päälle/pois
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Yhtiökilpataulukko
@@ -628,7 +628,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Laina:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Yhteensä:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Liikennevälineiden määrä. Tähän kuuluvat ajoneuvot, junat, laivat ja lentokoneet
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Asemien osien määrä. Kaikki osat asemista (esim. rautatieasema, bussipysäkki, lentokenttä) lasketaan, vaikka ne olisivat yhdistettynä yhdeksi asemaksi.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Asemien osien määrä. Kaikki osat asemista (esim. rautatieasema, bussipysäkki, lentokenttä) lasketaan, vaikka ne olisivat yhdistettynä yhdeksi asemaksi
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Vähätuottoisimman kulkuneuvon tulo (kaikkien yli 2 vuotta vanhojen kulkuneuvojen)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Viimeisen 12 neljänneksen vähätuottoisimman kuun käteistuoton määrä
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Viimeisen 12 neljänneksen korkeatuottoisimman kuun käteistuoton määrä
@@ -636,7 +636,7 @@ STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Viimeise
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Viimeisen neljänneksen kuljetetun rahdin tyyppi
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Käteisvarat
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Tämän yhtiön ottaman lainan määrä
-STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Summa kaikista mahdollisista pisteistä.
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Summa kaikista mahdollisista pisteistä
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jazz-jukeboksi
@@ -660,17 +660,17 @@ STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLA
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Nimi
 STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Sekoita
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Soittolista
-STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Hyppää edelliseen raitaan.
-STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Hyppää seuraavaan raitaan.
-STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Pysäytä musiikki.
-STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Aloita musiikki.
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Aseta liukusäätimillä sopiva äänenvoimakkuus musiikille ja tehosteille.
-STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Valitse 'kaikki raidat'
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Valitse 'vanhan tyylin musiikki'
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Valitse 'uuden tyylin musiikki'
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Valitse 'Ezy Street'.
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Valitse 'oma 1' (käyttäjän määritettävissä)
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Valitse 'oma 2' (käyttäjän määritettävissä)
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Hyppää edelliseen raitaan
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Hyppää seuraavaan raitaan
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Pysäytä musiikki
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Aloita musiikki
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Aseta liukusäätimillä sopiva äänenvoimakkuus musiikille ja tehosteille
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Valitse ”kaikki raidat”
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Valitse ”vanhan tyylin musiikki”
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Valitse ”uuden tyylin musiikki”
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Valitse ”Ezy Street” -tyylin musiikki
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Valitse ”oma 1” (käyttäjän määritettävissä)
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Valitse ”oma 2” (käyttäjän määritettävissä)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Sekoittaminen päälle/pois
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Näytä musiikkiraitojen valintaikkuna
 
@@ -712,13 +712,13 @@ STR_SMALLMAP_TYPE_ROUTEMAP                                      :Rahtivirta
 STR_SMALLMAP_TYPE_ROUTES                                        :Reitit
 STR_SMALLMAP_TYPE_VEGETATION                                    :Kasvillisuus
 STR_SMALLMAP_TYPE_OWNERS                                        :Omistajat
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Näytä korkeuserot kartalla.
-STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Näytä liikennevälineet kartalla.
-STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Näytä teollisuuus kartalla.
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Näytä korkeuserot kartalla
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Näytä liikennevälineet kartalla
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Näytä teollisuuslaitokset kartalla
 STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Näytä rahtivirta kartalla
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Näytä kuljetusreitit kartalla.
-STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Näytä kasvillisuus kartalla.
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Näytä maanomistajat kartalla.
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Näytä kuljetusreitit kartalla
+STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Näytä kasvillisuus kartalla
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Näytä maanomistajat kartalla
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Napsauta teollisuustyyppiä näyttääksesi sen. Ctrl+Klik näyttää valitun tyypin. Ctrl+Klik uudestaan näyttää kaikki teollisuustyypit
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Napsauta yhtiötä näyttääksesi sen omaisuuden. Ctrl+Klik näyttää ainoastaan valitun yhtiön. Ctrl+Klik uudestaan näyttää kaikki yhtiöt
 STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Napsauta rahtia näyttääksesi tai piilottaaksesi sen. Ctrl+Klik piilottaa kaikki paitsi valitun rahdin. Ctrl+Klik uudelleen palauttaa kaikki rahdit näkyviin
@@ -747,12 +747,12 @@ STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Kiviä
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Vettä
 STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Ei omistajaa
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Kaupunkeja
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Taajamia
 STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Teollisuutta
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Autiomaata
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Lunta
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Kaupunkien nimet kartalla.
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Näytä kuntien nimet kartalla
 STR_SMALLMAP_CENTER                                             :{BLACK}Keskitä pieni kartta tähän paikkaan
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -778,13 +778,13 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  TALL
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Viestihistoria
-STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Lista viimeisimmistä uutisviesteistä.
-STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
+STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Lista viimeisimmistä uutisviesteistä
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  –  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Viesti
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}Ensimmäinen juna saapuu asemalle {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Asukkaat juhlivat . . .{}Ensimmäinen juna saapuu asemalle {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen linja-auton!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen kuorma-auton!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen raitiovaunun!
@@ -813,15 +813,15 @@ STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Konkurssi!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} on suljettu velkojien toimesta ja kaikki omaisuus on myyty pois!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Uusi kuljetusyhtiö perustettu!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} aloittaa rakentamisen kaupungin {TOWN} lähistölle!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} aloittaa rakentamisen kunnassa {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{1:STRING} on ottanut haltuunsa yhtiön {0:STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(pääjohtaja)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} rahoitti uuden kaupungin, {TOWN}, rakentamista!
-STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Uusi kaupunki {TOWN} rakennettu!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} rahoitti uuden kunnan, {TOWN}, rakentamista!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Uusi kunta {TOWN} perustettu!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Uusi {STRING} rakennetaan kaupungin {TOWN} lähistölle!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Uusi {STRING} istutetaan kaupungin {TOWN} lähistölle!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Uusi {STRING} rakennetaan paikkakunnalle {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Uusi {STRING} istutetaan paikkakunnalle {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING}: alasajo aloitetaan välittömästi!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}{STRING}: toimitusongelmista johtuen sulkeminen uhkaavan lähellä!
@@ -894,7 +894,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Siirrä 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pelin valinnat
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Rahayksikkö
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Rahayksikön valinta.
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Rahayksikön valinta
 
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Englannin punta (GBP)
@@ -936,12 +936,12 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikon peso (
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kulkuneuvot
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Valitse kummalla puolella tietä ajetaan.
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Valitse kummalla puolella tietä ajetaan
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasemmanpuolinen liikenne
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Oikeanpuolinen liikenne
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Kaupunkien nimet
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Valitse kaupunkien nimien tyyli.
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Kuntien nimet
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Valitse kuntien nimien tyyli
 
 ############ start of townname region
 STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Englantilainen
@@ -968,7 +968,7 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalonialainen
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automaattitallennus
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Valitse aikaväli automaattisille pelitallennuksille.
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Valitse aikaväli automaattisille pelitallennuksille
 
 ############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Pois
@@ -979,10 +979,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Kerran vuodessa
 ############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kieli
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Valitse käyttöliittymän kieli.
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Valitse käyttöliittymän kieli
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Koko näyttö
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Valitse tämä pelataksesi kokoruututilassa.
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Valitse tämä pelataksesi kokoruututilassa
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Näytön tarkkuus
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Valitse käytettävä näytön tarkkuus
@@ -1174,7 +1174,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :Estä junien k�
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Mikäli käytössä, junat eivät käänny läpiajettavilla asemilla vaikka kääntymisen jälkeen saatavilla olisi lyhempi reitti
 STR_CONFIG_SETTING_DISASTERS                                    :Onnettomuudet: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ottaa käyttöön onnettomuudet jotka saattavat ajoittain estää tai tuhota liikennettä tai infrastruktuuria
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Kaupunginvaltuuston asenne alueiden uudelleenjärjestelyyn: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Valtuuston asenne alueiden uudelleenjärjestelyyn: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Valitse, kuinka paljon yhtiöiden aiheuttama melu ja ympäristövahingot vaikuttavat niiden arvioihin sekä tuleviin rakennustoimiin alueella
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Kartan suurin sallittu korkeus: {STRING}
@@ -1184,8 +1184,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Salli maaston m
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Sallii maaston muokkaamisen rakennusten ja ratojen alta tuhoamatta niitä
 STR_CONFIG_SETTING_CATCHMENT                                    :Realistisemman kokoiset vaikutusalueet: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Erityyppisillä asemilla ja lentokentillä on eri kokoiset vaikutusalueet
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :Kaupungin omistamien teiden, siltojen ja tunneleiden raivaaminen sallittu: {STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Tekee kaupunkien omistaman infrastruktuurin ja rakennusten tuhoamisesta helpompaa
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Yhtiöiden asemat voivat palvella laitoksia, joilla on omat asemat: {STRING}
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Mikäli käytössä, asemilla valmiiksi varustettuja teollisuuslaitoksia (kuten öljylauttoja) voivat palvella myös yhtiöiden lähistölle rakentamat asemat. Mikäli pois käytöstä, tällaisia laitoksia voivat palvella vain niiden omat asemat. Lähistöllä olevat yhtiöiden asemat eivät tällöin voi palvella näitä laitoksia, eivätkä laitosten asemat palvele muita kuin näitä laitoksia
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Kunnan omistamien teiden, siltojen ja tunneleiden raivaaminen sallittu: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Tekee kuntien omistaman infrastruktuurin ja rakennusten tuhoamisesta helpompaa
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Junien maksimipituus: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Määrittää junien suurimman sallitun pituuden
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} ruutu{P 0 "" a}
@@ -1213,14 +1215,14 @@ STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Suurin sallittu
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Suurin sallittu tunnelin pituus: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Suurin sallittu pituus tunneleita rakennettaessa
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manuaalinen raakateollisuuden rakentamistapa: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Ensisijaisten teollisuuslaitosten rahoitustapa. 'ei mitään' tarkoittaa, että rahoitus ei ole mahdollista, 'koekaivaus' tarkoittaa, että rahoitus on mahdollista mutta teollisuuslaitos rakennetaan sattumanvaraiselle paikalle kartalla tai rakennus epäonnistuu, 'kuten muut tehtaat' tarkoittaa, että rakentaminen onnistuu kuten kaikkien muidenkin teollisuuslaitosten kohdalla
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Ensisijaisten teollisuuslaitosten rahoitustapa. ”Ei mitään” tarkoittaa, että rahoitus ei ole mahdollista; ”koekaivaus” tarkoittaa, että rahoitus on mahdollista, mutta teollisuuslaitos rakennetaan sattumanvaraiselle paikalle kartalla tai rakennus epäonnistuu; ”kuten muut tehtaat” tarkoittaa, että rakentaminen onnistuu kuten kaikkien muidenkin teollisuuslaitosten kohdalla
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ei mikään
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Kuten muut tehtaat
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Koekaivaus
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Teollisuutta ympäröivä tasainen maasto: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Teollisuuslaitosten ympärillä oleva tasainen maasto. Tämä varmistaa että teollisuuslaitosten ympärillä on tyhjää tilaa esimerkiksi ratojen ja asemien rakantamiseen
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :Kaupungissa voi olla useita samanlaisia teollisuustyyppejä: {STRING}
-STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normaalisti kaupunki ei halua enempää kuin yhden kutakin teollisuuslaitostyyppiä. Tämän asetuksen ollessa käytössä kaupungit sallivat useampien samaa tyyppiä olevien teollisuuslaitosten rakentamisen
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :Kunnassa voi olla useita samanlaisia teollisuustyyppejä: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normaalisti kunta ei halua enempää kuin yhden kutakin teollisuuslaitostyyppiä. Tämän asetuksen ollessa käytössä kunnat sallivat useampien samaa tyyppiä olevien teollisuuslaitosten rakentamisen
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Näytä opastimet: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Valitse kummalle puolelle rataa opastimet rakennetaan
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Vasemmalla puolella
@@ -1228,10 +1230,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Ajokaistan puol
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Oikealla puolella
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Näytä rahoitusikkuna vuoden lopussa: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Mikäli käytössä, rahoitusikkuna näytetään jokaisen vuoden lopussa yhtiön taloudellisen tilanteen seurannan helpottamiseksi
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Uudet käskyt ovat oletusarvoisesti nonstop-tyyppisiä: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Uudet käskyt ovat oletusarvoisesti ilman välipysähdyksiä: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normaalisti kulkuneuvo pysähtyy jokaisella läpikulkemallaan asemalla. Mikäli tämä asetus on käytössä kulkuneuvot eivät pysähdy ajaessaan asemien läpi. Huomioi, että tämä asetus määrittää oletusarvoisen toiminnon uusille kulkuneuvoille. Asetusta voidaan muuttaa erikseen kunkin kulkuneuvon kohdalla
 STR_CONFIG_SETTING_STOP_LOCATION                                :Uudet junien käskyt pysäyttävät junan aseman {STRING}
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Paikka, johon juna pysähtyy oletuksena asemalla. 'Alkuun' tarkoittaa että junan viimeinen vaunu pysähtyy laiturin alkuun, 'keskelle' tarkoittaa junan pysähtyvän keskelle laituria, ja 'loppuun' tarkoittaa että veturi pysähtyy laiturin päähän. Huomaa, että tämä asetus määrittää oletusarvon uusille määräyksille. Yksittäisten määräysten kohdalla käyttäytymistä voi muuttaa tästä asetuksesta huolimatta
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Paikka, johon juna pysähtyy oletuksena asemalla. ”Alkuun” tarkoittaa, että junan viimeinen vaunu pysähtyy laiturin alkuun; ”keskelle” tarkoittaa junan pysähtymistä keskelle laituria; ja ”loppuun” tarkoittaa, että veturi pysähtyy laiturin päähän. Huomaa, että tämä asetus määrittää vain oletusarvon uusille määräyksille. Yksittäisten määräysten kohdalla käyttäytymistä voi muuttaa tästä asetuksesta huolimatta
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :alkuun
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskelle
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :loppuun
@@ -1242,13 +1244,13 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Päänäkymäss
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Päänäkymässä
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Kaikissa näkymissä
 STR_CONFIG_SETTING_BRIBE                                        :Salli viranomaisten lahjominen: {STRING}
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Salli yhtiöiden yrittää paikallisviranomaisten lahjontaa. Jos lahjontayritys paljastuu, yhtiö ei voi toimia kaupungissa kuuteen kuukauteen
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Salli yhtiöiden yrittää paikallisviranomaisten lahjontaa. Jos lahjontayritys paljastuu, yhtiö ei voi toimia kunnassa kuuteen kuukauteen
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Salli kuljetusyksinoikeuksien ostaminen: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jos yhtiö ostaa kuljetusyksinoikeudet kaupunkiin, vastustajien asemat (matkustaja ja rahti) eivät vastaanota rahtia vuoden ajan
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jos yhtiö ostaa kuljetusyksinoikeudet kuntaan, vastustajien matkustaja- ja rahtiasemat eivät vastaanota rahtia vuoden ajan
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Salli rakennusten rahoittaminen: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Sallii yhtiöiden rahoittaa uusien talojen rakentamista kaupungeissa
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Sallii yhtiöiden rahoittaa uusien talojen rakentamista kunnissa
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Salli paikallisen tieverkon uudelleenrakentamisen rahoitus: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Sallii yhtiöiden rahoittaa tieverkon uudelleenrakentamista kaupungeissa tieliikenteen häiritsemiseksi
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Sallii yhtiöiden rahoittaa kuntien tieverkon uudelleenrakentamista tieliikenteen häiritsemiseksi
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Salli rahan lähettäminen muille yhtiöille: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Sallii rahan siirtämisen yhtiöiden välillä moninpelitilassa
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Rahdin painokerroin raskaiden junien simulointia varten: {STRING}
@@ -1261,8 +1263,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Määrittää l
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ei yhtään¹
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Vähennetty
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Tavallinen
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Läpiajettavat pysäkit kaupungin teille: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Sallii pysäkkien rakentamisen kaupunkien omistamille teille
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Läpiajettavat pysäkit kuntien omistamille teille: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Sallii pysäkkien rakentamisen kuntien omistamille teille
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Salli läpiajettavat pysäkit kilpailijoiden omistamilla teillä: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Salli pysäkkien rakentaminen toisten yhtiöiden omistamille teille
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tätä asetusta ei voi muuttaa, kun kulkuneuvoja on olemassa
@@ -1301,13 +1303,13 @@ STR_CONFIG_SETTING_HOVER_DELAY                                  :Näytä työkal
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Viive ennen työkaluvihjeen näyttämistä, kun hiiren kursoria pidetään käyttöliittymäelementin päällä. Vaihtoehtoisesti työkaluvihjeen saa myös näkymiin painamalla hiiren oikeata painiketta, kun arvoksi on määritetty 0.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Pidä hiirtä päällä {COMMA} millisekunti{P 0 "" a}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Hiiren oikea painike
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Näytä kaupungin asukasluku kaupungin nimessä: {STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Näytä kaupunkien asukasluku kartalla
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Näytä kunnan asukasluku kunnan nimen yhteydessä: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Näytä kuntien asukasluvut kartalla
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Viivojen paksuus kuvaajissa: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Viivan leveys kuvaajissa. Ohut viiva on tarkasti luettavissa kun taas paksumpi viiva on helpompi nähdä ja sen värit ovat helpommin havaittavissa
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Maasto: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Maasto vaikuttaa useisiin pelin peruselementteihin, kuten rahtiin ja kaupunkien kasvuvaatimuksiin. NewGRF:t ja Peliskriptit voivat kuitenkin vaikuttaa tarkemmin pelin kulkuun
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Maasto vaikuttaa useisiin pelin peruselementteihin, kuten rahtiin ja kuntien kasvuedellytyksiin. NewGRF:t ja peliskriptit voivat kuitenkin vaikuttaa tarkemmin pelin kulkuun
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Maastogeneraattori: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Alkuperäinen maastonluoja riippuu perusgrafiikkapaketista ja luo ennalta määritettyjä maastonmuotoja. TerraGenesis luo maastoa Perlin-kohinan perusteella ja mahdollistaa asetusten tarkemman määrittelyn
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Alkuperäinen
@@ -1319,7 +1321,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Määritä, kui
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Suurin sallittu etäisyys kartan reunoilta öljynjalostamoille: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Öljynjalostamoja rakennetaan ainoastaan kartan reunoille eli rannikoille saarikartoilla
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Lumirajan korkeus: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Määritä, millä korkeudella lumiraja on pohjoisessa maastotyypissä. Lumi vaikuttaa teollisuuksien luontiin sekä kaupunkien kasvuvaatimuksiin
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Määritä, millä korkeudella lumiraja on pohjoisessa maastotyypissä. Lumi vaikuttaa teollisuuslaitosten luontiin sekä kuntien kasvuedellytyksiin
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Maaston epätasaisuus: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Vain TerraGenesis) Määritä mäkien tiheys: Tasaisessa maastossa mäet ovat laajempia ja niitä on vähemmän. Epätasaisessa maastossa on enemmän mäkiä, mikä voi saada maaston näyttämään itseään toistavalta
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erittäin tasainen
@@ -1331,7 +1333,7 @@ STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Vain TerraGene
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Jokien määrä: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Valitse, kuinka paljon jokia luodaan
 STR_CONFIG_SETTING_TREE_PLACER                                  :Puiden sijoittelualgoritmi: {STRING}
-STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Määritä puiden jakautuminen kartalla: 'Alkuperäinen' istuttaa puita tasaisesti ympäri karttaa, 'Parannettu' istuttaa niitä ryhmiin
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Määritä puiden jakautuminen kartalla: ”Alkuperäinen” istuttaa puita tasaisesti ympäri karttaa, ”parannettu” istuttaa niitä ryhmiin
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ei mitään
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Alkuperäinen
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Parannettu
@@ -1421,9 +1423,9 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Näytä aikatau
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Näytä saapuminen ja lähtö aikatauluissa: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Näytä odotetut saapumis- ja lähtemisajat aikatauluissa
 STR_CONFIG_SETTING_QUICKGOTO                                    :Nopea kulkuneuvon käskyjen luominen: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Valitse 'mene'-kursori kun määräysikkuna avataan
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Valitse ”mene”-kursori kun määräysikkuna avataan
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Oletusraidetyyppi: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Ratatyyppi, joka valitaan pelin aloittamisen jälkeen. 'ensimmäinen saatavilla oleva' valitsee vanhimman ratatyypin, 'viimeisin saatavilla oleva' valitsee uusimman ratatyypin ja 'eniten käytetty' valitsee eniten käytetyn ratatyypin
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Ratatyyppi, joka valitaan pelin aloittamisen jälkeen: ”ensimmäinen saatavilla oleva” valitsee vanhimman ratatyypin, ”viimeisin saatavilla oleva” valitsee uusimman ratatyypin, ja ”eniten käytetty” valitsee eniten käytetyn ratatyypin
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Ensimmäinen
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Viimeinen
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Yleisin
@@ -1449,7 +1451,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Toista vahinkoj
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Kulkuneuvot: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Toista kulkuneuvojen äänet
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ympäristö: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Toista ympäristön, kuten maaston, teollisuuden ja kaupunkien äänet
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Toista ympäristön, kuten maaston, teollisuuden ja taajamien äänet
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Poista käytöstä infrastruktuurin rakennus kun sopivia kulkuneuvoja ei ole saatavilla: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Mikäli käytössä, infrastruktuuri on saatavilla vain jos sille on saatavilla kulkuneuvoja, välttäen ajan ja rahan tuhlaamisen infrastruktuuriin, jota ei voida käyttää
@@ -1565,25 +1567,25 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Vain suojastuso
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Vain reittiopastimet
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Kaikki
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Uusissa kaupungeissa käytettävä tiekaava: {STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Kaupunkien käyttämä tieverkon kaava
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Uusissa kunnissa käytettävä tiekaava: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Kuntien käyttämä tieverkon kaava
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Alkuperäinen
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Parempia teitä
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2×2-ruudukko
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3×3-ruudukko
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Satunnainen
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Kaupungit saavat rakentaa teitä: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Salli kaupunkien rakentaa teitä kasvaessaan. Mikäli pois käytöstä, kaupungit eivät voi rakentaa teitä itse
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Kaupungit saavat rakentaa tasoristeyksiä: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Mikäli käytössä, kaupungit voivat rakentaa tasoristeyksiä
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Käytä kaupunkien hallitsemaa melutasoa lentokentille: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Mikäli pois käytöstä, kaupungissa voi olla kaksi lentokentää. Mikäli käytössä, lentokenttien määrä kaupungissa rajoittuu kaupungin melurajan mukaan. Meluraja riippuu asukasluvusta ja lentokentän koosta sekä etäisyydestä
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :Kaupunkien perustaminen pelissä: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Mikäli käytössä, pelaajat voivat perustaa uusia kaupunkeja
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Kunnat saavat rakentaa teitä: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Salli kuntien rakentaa teitä kasvaessaan. Mikäli pois käytöstä, kunnat eivät voi rakentaa teitä itse
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Kunnat saavat rakentaa tasoristeyksiä: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Mikäli käytössä, kunnat voivat rakentaa tasoristeyksiä
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Käytä kuntien hallitsemaa melutasoa lentokentille: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Mikäli pois käytöstä, kunnassa voi olla kaksi lentokentää. Mikäli käytössä, lentokenttien määrä kunnassa rajoittuu kunnan melurajan mukaan. Meluraja riippuu asukasluvusta ja lentokentän koosta sekä etäisyydestä
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Kuntien perustaminen pelissä: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Mikäli käytössä, pelaajat voivat perustaa uusia kuntia
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Kielletty
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Sallittu
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Sallittu, oma kaupungin kaava
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Kaupunkirahdin luonti: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Sallittu, oma tiekaava
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Taajamarahdin luonti: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Talojen tuottaman rahdin määrä suhteessa kunnan asukaslukuun.{}Neliöllinen kasvu: Kaksinkertainen asukasmäärä tuottaa matkustajia nelinkertaisesti.{}Lineaarinen kasvu: Kaksinkertainen asukasmäärä tuottaa matkustajia kaksinkertaisesti.
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Neliöllinen (alkuperäinen)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineaarinen
@@ -1616,19 +1618,19 @@ STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Tavallinen
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :Kaupunkien kasvunopeus: {STRING}
-STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Kaupungin kasvunopeus
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Kuntien kasvunopeus: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Kunnan kasvunopeus
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ei kasvua
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Hidas
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Tavallinen
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Nopea
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Erittäin nopea
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :Suurkaupunkien osuus: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Kaupunkien osuus: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Suurkaupungiksi muuttuvien kaupunkien määrä, eli suurempana aloittavat ja nopeammin kasvavat kaupungit
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 / {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ei yhtään
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Kasvukerroin alussa: {STRING}
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Suurkaupunkien keskimääräinen koko suhteessa normaaleihin kaupunkeihin pelin alussa
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Kaupunkien keskimääräinen koko suhteessa muihin kuntiin pelin alussa
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Päivitä rahdin jakautuminen {STRING}{NBSP}päivän välein
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Yhteyskuvaajan uudelleenlaskujen välinen aika. Kukin uudelleenlasku laskee yhden kuvaajan komponentin. Tämä tarkoittaa sitä, että koko kuvaajaa ei lasketa uudelleen määrittämäsi ajan välein, vaan ainoastaan yksi komponentti. Mitä lyhyemmäksi määrität asetuksen, sitä enemmän prosessoriaikaa komponentin laskemiseen vaaditaan. Mitä pidemmäksi määrität sen, sitä pidempi aika kuluu, kunnes rahdin jakaminen alkaa uusilla reiteillä.
@@ -1708,7 +1710,7 @@ STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Onnetto
 STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Maailman luominen
 STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ympäristö
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Viranomaiset
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Kaupungit
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Kunnat
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Laitokset
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Rahdin jakautuminen
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Kilpailijat
@@ -1768,24 +1770,24 @@ STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Tekoäly
 STR_INTRO_QUIT                                                  :{BLACK}Sulje
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Aloita uusi peli. Ctrl+Klik ohittaa kartan asetukset
-STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Lataa tallennettu peli.
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Lataa tallennettu peli
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Aloita uusi peli, käyttäen korkeuskarttaa maastona
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Aloita uusi peli käyttäen omaa skenaariota.
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Luo oma pelimaailma/skenaario.
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Aloita uusi peli käyttäen omaa skenaariota
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Luo oma pelimaailma/skenaario
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Aloita moninpeli
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Valitse lauhkea maastotyyppi.
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Valitse pohjoinen maastotyyppi.
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Valitse subtrooppinen maastotyyppi.
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Valitse lelumaan maastotyyppi.
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Valitse lauhkea maastotyyppi
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Valitse pohjoinen maastotyyppi
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Valitse subtrooppinen maastotyyppi
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Valitse lelumaan maastotyyppi
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Näytä pelin valinnat
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Näytä pistetaulukko
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Näyttöasetukset
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Näytä asetukset
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näytä NewGRF-asetukset
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista uutta ja päivitettyä sisältöä ladattavaksi
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Näytä tekoäly/peliskriptiasetukset
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sulje OpenTTD.
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Lopeta OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}Valitusta perusgrafiikkapaketista puuttuu {NUM} sprite{P "" ä}. Tarkista, onko sille päivityksiä.
 STR_INTRO_TRANSLATION                                           :{BLACK}Tästä käännöksestä puuttuu {NUM} merkkijono{P "" a}. Auta tekemään OpenTTD:stä parempi ryhtymällä kääntäjäksi. Lisätietoja readme.txt:ssä.
@@ -1812,7 +1814,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Lopetet
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Huijaukset
-STR_CHEATS_TOOLTIP                                              :{BLACK}Valintaruudut osoittavat, oletko käyttänyt huijausta aiemmin.
+STR_CHEATS_TOOLTIP                                              :{BLACK}Valintaruudut osoittavat, oletko käyttänyt huijausta aiemmin
 STR_CHEATS_WARNING                                              :{BLACK}Varoitus! Olet juuri pettämässä kanssakilpailijoitasi. Pidä mielessä, että tällainen häväistys pidetään mielessä ikuisuuden ajan
 STR_CHEAT_MONEY                                                 :{LTBLUE}Anna lisää rahaa: {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hallinnassa oleva yhtiö: {ORANGE}{COMMA}
@@ -1833,7 +1835,7 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Salli t
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY}: Väriteema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Näytä yleiset väriteemat
-STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Näytä junan väriteemat
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Näytä junien väriteemat
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Näytä tieajoneuvojen väriteemat
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Näytä laivojen väriteemat
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Näytä lentokoneiden väriteemat
@@ -1867,16 +1869,16 @@ STR_LIVERY_FREIGHT_TRAM                                         :Raitiotavaravau
 
 # Face selection window
 STR_FACE_CAPTION                                                :{WHITE}Kasvojen valinta
-STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Peruuta uusien kasvojen valinta.
-STR_FACE_OK_TOOLTIP                                             :{BLACK}Hyväksy uusien kasvojen valinta.
+STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Peruuta uusien kasvojen valinta
+STR_FACE_OK_TOOLTIP                                             :{BLACK}Hyväksy uusien kasvojen valinta
 STR_FACE_RANDOM                                                 :{BLACK}Satunnainen
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Mies
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Valitse miehen kasvot.
+STR_FACE_MALE_TOOLTIP                                           :{BLACK}Valitse miehen kasvot
 STR_FACE_FEMALE_BUTTON                                          :{BLACK}Nainen
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Valitse naisen kasvot.
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Valitse naisen kasvot
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Uudet kasvot
-STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Luo satunnaiset kasvot.
+STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Luo satunnaiset kasvot
 STR_FACE_ADVANCED                                               :{BLACK}Monipuolinen
 STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Monipuolisempi kasvojenvalitsin
 STR_FACE_SIMPLE                                                 :{BLACK}Yksinkertainen
@@ -1930,10 +1932,10 @@ STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Valitse 
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ei
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Kyllä
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Pelaajan nimi
-STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Pelaajat tunnistetaan ja erotetaan toisistaan nimien avulla.
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Pelaajat tunnistetaan ja erotetaan toisistaan nimien avulla
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Nimi
-STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Pelin nimi.
+STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Pelin nimi
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Pelaajia
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Pelaajia online / pelaajia maks.{}Yhtiöitä online / yhtiöitä maks.
@@ -1967,14 +1969,14 @@ STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF-
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Liity peliin
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Päivitä
-STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Päivitä palvelintiedot.
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Päivitä palvelintiedot
 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Etsi palvelin
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Etsi palvelin verkosta.
+STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Etsi palvelin verkosta
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Lisää palvelin
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Lisää palvelin listaan, joka käydään läpi aina uusia pelejä haettaessa
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Käynnistä palvelin
-STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Käynnistä oma palvelin.
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Käynnistä oma palvelin
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Kirjoita nimesi
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Syötä palvelimen IP-osoite
@@ -1983,15 +1985,15 @@ STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Syötä 
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Aloita uusi peli
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Pelin nimi:
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nimi näytetään muille pelaajille moninpelivalikossa.
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nimi näytetään muille pelaajille moninpelivalikossa
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Aseta salasana
-STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Jos peliin ei halua ulkopuolisia, voi sen suojata salasanalla.
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Jos peliin ei halua ulkopuolisia, voi sen suojata salasanalla
 
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Ei
 STR_NETWORK_START_SERVER_ADVERTISED                             :Kyllä
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} asiakas{P "" ta}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Pelaajien enimmäismäärä:
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pelaajien enimmäismäärä. Pelissä voi olla myös vähemmän pelaajia.
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pelaajien enimmäismäärä. Pelissä voi olla myös vähemmän pelaajia
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} yhtiö{P "" tä}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Yhtiöiden enimmäismäärä:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Rajoita yhtiöiden määrää palvelimella
@@ -1999,7 +2001,7 @@ STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} ka
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Katsojien enimmäismäärä:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Rajoita katsojien määrää palvelimella
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Puhuttu kieli:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Toiset pelaajat tietävät tästä, mitä kieltä palvelimella puhutaan.
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Toiset pelaajat tietävät tästä, mitä kieltä palvelimella puhutaan
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Syötä nimi verkkopelille
 
@@ -2047,7 +2049,7 @@ STR_NETWORK_LANG_LATVIAN                                        :latvia
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Moninpeliaula
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Valmistautuu yhdistämään: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Lista pelissä olevista yhtiöistä. Voit joko liittyä yhteen tai perustaa omasi.
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Lista pelissä olevista yhtiöistä. Voit joko liittyä yhteen tai perustaa omasi
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}YHTIÖN TIEDOT
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Yhtiön nimi: {WHITE}{STRING}
@@ -2062,11 +2064,11 @@ STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Asemat:
 STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Pelaajat: {WHITE}{STRING}
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Uusi yhtiö
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Perusta uusi yhtiö.
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Perusta uusi yhtiö
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Seuraa peliä
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Seuraa pelin kulkua.
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Seuraa pelin kulkua
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Liity yhtiöön
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Auta tämän yhtiön hallinnassa.
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Auta tämän yhtiön hallinnassa
 
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Yhdistetään...
@@ -2317,8 +2319,8 @@ STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLA
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Vaikutusalueen korostus
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}pois
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}päällä
-STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Älä korosta ehdotetun tontin vaikutusaluetta.
-STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Korosta ehdotetun tontin vaikutusalue.
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Älä korosta ehdotetun tontin vaikutusaluetta
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Korosta ehdotetun tontin vaikutusalue
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Vastaanottaa: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tuottaa: {GOLD}{CARGO_LIST}
 
@@ -2343,7 +2345,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Rakenna 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Rakenna opastimia. Ctrl vaihtaa joko siipiopastimet tai valo-opastimet{}Vetäminen rakentaa opastimia suoralle rautatielle. Ctrl rakentaa opastimia seuraavaan risteykseen saakka{}Ctrl+Click avaa opastimenvalintaikkunan. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Rakenna rautatiesilta. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Rakenna rautatietunneli. Shift vaihtaa rakennustilan ja kustannusarvion välillä
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Rautatien, opastimien, reittipisteiden ja asemien rakentaminen/poisto päälle/pois. Pidä pohjassa Ctrl-näppäintä poistaaksesi myös aseman tai reittipisteen alla olevat raiteet.
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Rautatien, opastimien, reittipisteiden ja asemien rakentaminen/poisto päälle/pois. Pidä pohjassa Ctrl-näppäintä poistaaksesi myös aseman tai reittipisteen alla olevat raiteet
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Muunna/päivitä raidetyyppi. Shift vaihtaa muuntotilan ja kustannusarvion välillä
 
 STR_RAIL_NAME_RAILROAD                                          :Rautatie
@@ -2353,7 +2355,7 @@ STR_RAIL_NAME_MAGLEV                                            :Maglev-rata
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Veturitallin suunta
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Valitse veturitallin suunta.
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Valitse veturitallin suunta
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Reittipiste
@@ -2362,13 +2364,13 @@ STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Valitse 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Rautatieaseman valinta
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Suunta
-STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Valitse rautatieaseman suunta.
+STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Valitse rautatieaseman suunta
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Raiteiden lukumäärä
-STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Valitse asemalaiturien määrä rautatieasemalle.
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Valitse asemalaiturien määrä rautatieasemalle
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Asemalaiturin pituus
-STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Valitse rautatieaseman pituus.
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Valitse rautatieaseman pituus
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vedä ja pudota
-STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Rakenna asema vetämällä ja pudottamalla.
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Rakenna asema vetämällä ja pudottamalla
 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Valitse asemaluokka
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Valitse asematyyppi
@@ -2398,7 +2400,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Suurenna
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Valitse rautatiesilta
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Valitse maantiesilta
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Sillan valinta - napsauta valittua siltaa rakentaaksesi sen.
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Sillan valinta – napsauta valittua siltaa rakentaaksesi sen
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Riippusilta, terästä
@@ -2434,15 +2436,15 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Vaihda r
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Autovarikon suunta
-STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Valitse autovarikon suunta.
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Valitse autovarikon suunta
 STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Raitiotievarikon suunta
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Valitse raitiotievarikon suunta
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Linja-autoaseman suunta
-STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Valitse linja-autoaseman suunta.
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Valitse linja-autoaseman suunta
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Lastauslaiturin suunta
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Valitse lastauslaiturin suunta.
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Valitse lastauslaiturin suunta
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Aseman suunta
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Valitse aseman suunta
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Rahtiaseman suunta
@@ -2473,7 +2475,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Rakenna 
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Lentokentän valinta
-STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Valitse lentokentän koko ja tyyppi.
+STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Valitse lentokentän koko ja tyyppi
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Lentokentän luokka
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Kaava {NUM}
 
@@ -2534,31 +2536,31 @@ STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Nollaa m
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Haluatko varmasti poistaa kaikki yhtiön omistamat tontit?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}Luo kaupunkeja
-STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Uusi kaupunki
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Luo kuntia
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Uusi kunta
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Perusta uusi kaupunki. Shift+Klik näyttää vain kustannusarvion
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Satunnainen kaupunki
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Perusta kaupunki satunnaiseen paikkaan
-STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Monta satunnaista kaupunkia
-STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Peitä kartta satunnaisesti sijoitetuilla kaupungeilla.
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Satunnainen kunta
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Perusta kunta satunnaiseen paikkaan
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Monta satunnaista kuntaa
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Täytä kartta satunnaisesti sijoitetuilla kunnilla
 
-STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Kaupungin nimi:
-STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Syötä kaupungin nimi
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Kunnan nimi:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Syötä kunnan nimi
 STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Syötä kaupungin nimi napsauttamalla
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Satunnainen nimi
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Arvo uusi satunnainen nimi
 
-STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Kaupungin koko:
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Kunnan koko:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Pieni
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Keskisuuri
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Suuri
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Sattumanvarainen
-STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Valitse kaupungin koko.
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Valitse kunnan koko
 STR_FOUND_TOWN_CITY                                             :{BLACK}Kaupunki
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Suurkaupungit kasvavat nopeammin kuin tavalliset kaupungit{}Asetuksista riippuen, ne ovat suurempia perustettaessa
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Kaupungit kasvavat nopeammin kuin tavalliset kunnat{}Asetuksista riippuen, ne ovat suurempia perustettaessa
 
-STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Kaupungin tiekaava:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Valitse tiekaava tälle kaupungille
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Kunnan tiekaava:
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Valitse tiekaava tälle kunnalle
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Alkuperäinen
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Parempia teitä
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2×2-ruudukko
@@ -2719,11 +2721,11 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Kuvataajuus
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}×)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulaationopeus: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Simuloitujen peliaskelten määrä sekunnissa.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Simuloitujen peliaskelten määrä sekunnissa
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Grafiikan kuvataajuus: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Piirrettyjen kuvien määrä sekunnissa.
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Piirrettyjen kuvien määrä sekunnissa
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Pelin nykyinen nopeuskerroin: {DECIMAL}×
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Pelin tämänhetkinen nopeus verrattuna normaalilla simulaationopeudella odotettavissa olevaan.
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Pelin tämänhetkinen nopeus verrattuna normaalilla simulaationopeudella odotettavissa olevaan
 STR_FRAMERATE_CURRENT                                           :{WHITE}Nykyinen
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Keskiarvo
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Data perustuu {COMMA} mittaukseen
@@ -2780,12 +2782,12 @@ STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Lataa ko
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Tallenna korkeuskartta
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Siirry tallennusten oletuskansioon napsauttamalla tätä
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} vapaana
-STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista asemista, hakemistoista ja tallennetuista peleistä.
-STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Valittu nimi pelitallenteelle.
+STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista asemista, hakemistoista ja tallennetuista peleistä
+STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Valittu nimi pelitallenteelle
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Poista
-STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Poista valittu pelitallenne.
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Poista valittu pelitallenne
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Tallenna
-STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Tallenna nykyinen peli käyttäen valittua nimeä.
+STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Tallenna nykyinen peli käyttäen valittua nimeä
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Lataa
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Lataa valittu peli
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Lataa valittu korkeuskartta
@@ -2901,7 +2903,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista as
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Aseta parametrit
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Näytä parametrit
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Käytä eri palettia
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Käytä valitun NewGRF:n kanssa eri palettia.{}Tee näin, jos tämän NewGRF:n grafiikat näkyvät pelissä vaaleanpunaisina.
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Käytä valitun NewGRF:n kanssa eri palettia.{}Tee näin, jos tämän NewGRF:n grafiikat näkyvät pelissä vaaleanpunaisina
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Ota käyttöön
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Etsi puuttuvaa sisältöä online-palvelusta
@@ -3062,46 +3064,46 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Siirry e
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Syötä kyltin nimi
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Kaupungit
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Kunnat
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ei mitään -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (suurkaup.){BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (kaupunki){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Kaupunkien nimet - keskitä päänäkymä kaupunkiin napsauttamalla nimeä. Ctrl+Klik avaa uuden näkymäikkunan kaupungin sijaintiin
 STR_TOWN_POPULATION                                             :{BLACK}Maailman asukasluku: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (City)
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (kaupunki)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Asukasluku: {ORANGE}{COMMA}{BLACK}  Taloja: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} viime kuussa: {ORANGE}{COMMA}{BLACK}  enimmillään: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kaupungin kasvuun tarvittava rahti:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kunnan kasvuun tarvittava rahti:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} vaadittu
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} vaaditaan talvella
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} kuljetettu
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (tarvitaan lisää)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (kuljetettu)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Kaupunki kasvaa {ORANGE}{COMMA}{BLACK}{NBSP}päivän{P "" ""} välein
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Kaupunki kasvaa {ORANGE}{COMMA}{BLACK}{NBSP}päivän{P "" ""} välein (rahoitettu)
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Kaupunki {RED}ei{BLACK} kasva
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Meluraja kaupungissa: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskitä näkymä kaupungin sijaintiin. Ctrl+Klik avaa uuden näkymäikkunan kaupungin sijaintiin
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Kunta kasvaa {ORANGE}{COMMA}{BLACK}{NBSP}päivän{P "" ""} välein
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Kunta kasvaa {ORANGE}{COMMA}{BLACK}{NBSP}päivän{P "" ""} välein (rahoitettu)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Kunta {RED}ei{BLACK} kasva
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Meluraja kunnassa: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskitä näkymä kunnan sijaintiin. Ctrl+Klik avaa uuden näkymäikkunan kunnan sijaintiin
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Viranomaiset
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Näytä tietoja paikallisviranomaisista.
-STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Vaihda kaupungin nimeä.
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Vaihda kunnan nimeä.
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Laajenna
-STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Suurenna kaupunkia
+STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Laajenna kuntaa
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Poista
-STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Poista tämä kaupunki kokonaan.
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Poista tämä kunta kokonaan.
 
-STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Nimeä kaupunki
+STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Nimeä kunta
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN}: viranomaiset
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Kuljetusyhtiön arvioinnit:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Toiminnot:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Luettelo kaupungissa tehtävistä asioista - napsauta kohdetta saadaksesi lisätietoja.
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Luettelo kunnassa tehtävistä asioista – napsauta kohdetta saadaksesi lisätietoja
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Sijoita
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Suorita valittu toiminto.
 
@@ -3117,10 +3119,10 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Lahjo viranomai
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Käynnistä pieni mainoskampanja hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Käynnistä keskikokoinen mainoskampanja houkutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Käynnistä suuri mainoskampanja hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Kustannus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Rahoita kaupungin tieverkon rakentamista. Aiheuttaa huomattavaa häiriötä tieliikenteessä kuuden kuukauden ajan.{}Kustannus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Rahoita tieverkon uudelleenrakentamista. Aiheuttaa huomattavaa häiriötä tieliikenteessä jopa kuuden kuukauden ajan.{}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Rakenna patsas yhtiösi kunniaksi.{}Kustannus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Rahoita uusien kaupparakennusten rakentamista kaupungissa.{}Kustannus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Osta vuoden yksinoikeudet kaupungin liikennöintiin. Paikallisviranomaiset eivät salli muiden yhtiöiden kuljettaa matkustajia ja rahtia.{}Kustannus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Rahoita uusien liikerakennusten rakentamista kunnassa.{}Kustannus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Osta vuoden yksinoikeudet kunnan liikennöintiin. Paikallisviranomaiset eivät salli muiden yhtiöiden kuljettaa matkustajia ja rahtia.{}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Lahjo viranomaisia lisätäksesi arviotasi; rangaistus voi olla kuitenkin suuri, jos jäät kiinni.{}Kustannus: {CURRENCY_LONG}
 
 # Goal window
@@ -3170,7 +3172,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ei mitään -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Käytetyt tuet:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} välille {STRING}-{STRING}{YELLOW} ({COMPANY}{YELLOW}, {DATE_SHORT} asti)
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Napsauta palvelua keskittääksesi päänäkymän teollisuuteen/kaupunkiin. Ctrl+Klik avaa uuden näkymäikkunan teollisuuden/kaupungin sijaintiin
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Napsauta palvelua keskittääksesi päänäkymän teollisuuteen/kuntaan. Ctrl+Klik avaa uuden näkymäikkunan teollisuuden/kunnan sijaintiin
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}: historia
@@ -3186,7 +3188,7 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Siirry s
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Virheellinen viittaus tavoitteeseen
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Asemien nimet - napsauta nimeä keskittääksesi päänäkymän asemaan. Ctrl+Klik avaa uuden näkymäikkunan aseman sijaintiin
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Asemien nimet – napsauta nimeä keskittääksesi päänäkymän asemaan. Ctrl+Klik avaa uuden näkymäikkunan aseman sijaintiin
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Pidä Ctrl-näppäin painettuna valitaksesi useamman kuin yhden vaihtoehdon
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} asema{P "" a}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
@@ -3206,8 +3208,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Ottaa va
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Näytä luettelo vastaanotettavasta rahdista.
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Vastaanottaa: {WHITE}{CARGO_LIST}
 
-STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Tällä asemalla on kuljetusyksinoikeus tässä kaupungissa.
-STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} osti tämän kaupungin kuljetusyksinoikeuden.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Tällä asemalla on kuljetusyksinoikeus tässä kunnassa.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} osti tämän kunnan kuljetusyksinoikeuden.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Arviot
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näytä aseman arviot.
@@ -3332,13 +3334,13 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Yksityis
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Näytä tarkka infrastruktuurin määrä
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Uudet kasvot
-STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Valitse uudet kasvot pääjohtajalle.
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Valitse uudet kasvot pääjohtajalle
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Väriteema
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Muuta yhtiön kulkuneuvojen väritystä
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Yhtiön nimi
-STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Muuta yhtiön nimeä.
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Muuta yhtiön nimeä
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Pääjohtajan nimi
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Muuta pääjohtajan nimeä.
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Muuta pääjohtajan nimeä
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Osta 25{NBSP}%:n osuus yhtiöstä
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Myy 25{NBSP}%:n osuus yhtiöstä
@@ -3510,10 +3512,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Nimeä
 STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Nimeä
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Nimeä
 
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Nimeä yksikön tyyppi uudelleen.
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Nimeä yksikön tyyppi uudelleen
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Nimeä ajoneuvon tyyppi uudelleen
-STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Nimeä laivatyyppi uudelleen.
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Nimeä lentokonetyyppi uudelleen.
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Nimeä laivatyyppi uudelleen
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Nimeä lentokonetyyppi uudelleen
 
 STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Piilota
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Piilota
@@ -3551,12 +3553,12 @@ STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ajoneuvo
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Laivat - napsauta laivaa oikealla hiiren painikkeella saadaksesi tietoja.
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lentokoneet - napsauta lentokonetta oikealla hiiren painikkeella saadaksesi tietoja.
 
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Vedä yksikkö tähän myydäksesi sen.
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Vedä ajoneuvo tähän myydäksesi sen.
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Vedä laiva tähän myydäksesi sen.
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Vedä lentokone tähän myydäksesi sen.
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Vedä yksikkö tähän myydäksesi sen
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Vedä ajoneuvo tähän myydäksesi sen
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Vedä laiva tähän myydäksesi sen
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Vedä lentokone tähän myydäksesi sen
 
-STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Vedä junan veturi tähän myydäksesi koko junan.
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Vedä junan veturi tähän myydäksesi koko junan
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Myy kaikki veturitallilla olevat junat
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Myy kaikki varikolla olevat ajoneuvot
@@ -3573,8 +3575,8 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Uusia aj
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Uusia laivoja
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Uusia lentokoneita
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Osta uusi yksikkö.
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Osta uusi ajoneuvo.
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Osta uusi yksikkö
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Osta uusi ajoneuvo
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Osta uusi laiva
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Osta uusi lentokone
 
@@ -3630,10 +3632,10 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Hinta: {
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Korvaa {STRING} - {STRING}
-STR_REPLACE_VEHICLE_TRAIN                                       :Juna
-STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Ajoneuvo
-STR_REPLACE_VEHICLE_SHIP                                        :Laiva
-STR_REPLACE_VEHICLE_AIRCRAFT                                    :Lentokone
+STR_REPLACE_VEHICLE_TRAIN                                       :junia
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :ajoneuvoja
+STR_REPLACE_VEHICLE_SHIP                                        :laivoja
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :lentokoneita
 
 STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Käytössä olevat kulkuneuvot
 STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Sarake kulkuneuvoille, jotka omistat
@@ -3752,7 +3754,7 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Huippuno
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Lentokonetyyppi: {LTBLUE}{STRING}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Lentokonetyyppi: {LTBLUE}{STRING} {BLACK}Toimintamatka: {LTBLUE}{COMMA} ruutua
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Maks. vetovoima: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Tuotto tänä vuonna: {LTBLUE}{CURRENCY_LONG} (viime vuonna: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Luotettavuus: {LTBLUE}{COMMA}%  {BLACK}Hajoamiset viime huollon jälkeen: {LTBLUE}{COMMA}
@@ -3814,18 +3816,18 @@ STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Valitse 
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Valitse junan rahtityyppi
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Valitse ajoneuvolla ajettava rahti
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Valitse laivan kuljettama rahtityyppi.
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Valitse kuljetettavan rahdin tyyppi.
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Valitse laivan kuljettama rahtityyppi
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Valitse kuljetettavan rahdin tyyppi
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Sovita juna
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Korjaa ajoneuvo.
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Sovita laiva
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Sovita lentokone
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Sovita juna kuljettamaan valittua rahtityyppiä.
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Sovita juna kuljettamaan valittua rahtityyppiä
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Muuta ajoneuvo rahtaamaan korostettua rahtityyppiä.
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Sovita laiva korostetulle rahtityypille.
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Sovita lentokone kuljettamaan valittua rahtityyppiä.
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Sovita laiva valitulle rahtityypille
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Sovita lentokone kuljettamaan valittua rahtityyppiä
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Käskyt)
@@ -3864,7 +3866,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Muuta ko
 STR_ORDER_REFIT                                                 :{BLACK}Sovita
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Valitse mihin rahtityyppiin tämä käsky sovittaa. Ctrl+Klik poistaa sovituskäskyn
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Uudelleensovitus asemalla
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Valitse tällä määräyksellä sovitettava rahtityyppi. Ctrl+Klik poistaaksesi sovitusmääräyksen. Sovitus suoritetaan vain, jos kulkuneuvo sallii sen.
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Valitse tällä määräyksellä sovitettava rahtityyppi. Ctrl+Klik poistaaksesi sovitusmääräyksen. Sovitus suoritetaan vain, jos kulkuneuvo sallii sen
 STR_ORDER_DROP_REFIT_AUTO                                       :Määrätty rahti
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Saatavilla oleva rahti
 
@@ -3872,7 +3874,7 @@ STR_ORDER_SERVICE                                               :{BLACK}Huolto
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mene aina
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Huolto, jos tarpeen
 STR_ORDER_DROP_HALT_DEPOT                                       :Pysähdy
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Ohita tämä käsky, ellei palvelua tarvita.
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Ohita tämä käsky, ellei huoltoa tarvita
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kulkuneuvon tiedot, joiden perusteella hypätään
 
@@ -4177,8 +4179,8 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ei saatavilla>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Peli tallennettiin versiossa, joka ei tue raitiovaunuja. Kaikki raitiovaunut on poistettu
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartan generointi peruutettu...{}... ei kelvollisia kaupunkien sijainteja
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... tässä skenaariossa ei ole kaupunkeja.
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartan generointi peruutettu...{}... ei kelvollisia kuntien sijainteja
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... tässä skenaariossa ei ole yhtään kuntaa
 
 STR_ERROR_PNGMAP                                                :{WHITE}Maastoa ei voida ladata PNG-tiedostosta...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... tiedostoa ei löydy
@@ -4229,7 +4231,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ei salli
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}: paikallisviranomaiset kieltäytyvät.
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} paikallisviranomaiset eivät salli toisen lentokentän rakentamista tähän kaupunkiin.
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} paikallisviranomaiset eivät salli toisen lentokentän rakentamista tähän kuntaan
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} paikallisviranomaiset kieltävät lentokentän rakennuksen äänekkyyden takia
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Paikallisviranomaiset ovat huomanneet lahjontayrityksesi
 
@@ -4260,18 +4262,18 @@ STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Tästä 
 STR_ERROR_PROTECTED                                             :{WHITE}Tällä yhtiöllä ei ole vielä osakkeita...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kaupunkeja ei voi rakentaa
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kaupungin nimeä ei voi vaihtaa.
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kaupunkia ei voi rakentaa tähän...
-STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kaupunkia ei voi laajentaa...
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kuntia ei voi luoda
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kunnan nimeä ei voi vaihtaa...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kuntaa ei voi perustaa tähän...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kuntaa ei voi laajentaa...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... liian lähellä kartan reunaa.
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... liian lähellä toista kaupunkia.
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... liian monta kaupunkia.
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... liian lähellä toista kuntaa
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... liian monta kuntaa
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... kartalla ei ole enää tilaa
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Kaupunki ei rakenna teitä. Voit sallia teiden rakentamisen valikosta Asetukset->Ympäristö->Kaupungit
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Kunta ei rakenna teitä. Voit sallia teiden rakentamisen valikosta Asetukset->Ympäristö->Kunnat
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Tietyöt ovat käynnissä.
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kaupunkia ei voida poistaa...{}Asema tai varikko viittaa kaupunkiin tai kaupungin omistamaa ruutua ei voida poistaa
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... kaupungin keskustassa ei ole sopivaa paikkaa patsaalle
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kuntaa ei voida poistaa...{}Asema tai varikko viittaa kuntaan tai kunnan omistamaa ruutua ei voida poistaa
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... tämän kunnan keskustassa ei ole sopivaa paikkaa patsaalle
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... liian paljon teollisuutta
@@ -4279,13 +4281,13 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Teollisu
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING}: tähän ei voi rakentaa...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Teollisuustyyppiä ei voi rakentaa tähän...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... liian lähellä toista teollisuutta.
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... kaupunki pitää rakentaa ensin.
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... vain yksi on sallittu kaupunkia kohden.
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... voidaan rakentaa vain kaupunkeihin, joissa on yli 1200 asukasta.
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... kunta pitää perustaa ensin
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... vain yksi on sallittu kuntaa kohden
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... voidaan rakentaa vain kuntiin, joissa on vähintään 1200 asukasta
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... voidaan rakentaa vain sademetsäalueisiin
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... voidaan rakentaa vain aavikkoalueisiin
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... voidaan rakentaa vain kaupunkeihin (korvaamaan taloja)
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... voidaan rakentaa vain lähelle kaupungin keskustaa
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... voidaan rakentaa vain taajamiin (korvaamaan taloja)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... voidaan rakentaa vain lähelle kunnan keskustaa
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... voidaan rakentaa vain matalille alueille
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... voidaan asettaa vain kartan reunoille
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... metsää voi istuttaa vain lumirajan yläpuolelle
@@ -4313,7 +4315,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Liian mo
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Liian lähellä toista satamaa.
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Liian lähellä toista lentokenttää.
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Asemaa ei voi nimetä uudelleen.
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... kaupunki omistaa tien
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... kunta omistaa tien
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... tie on väärin päin
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... läpiajettavissa pysäkeissä ei voi olla mutkia
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... läpiajettavissa pysäkeissä ei voi olla risteyksiä
@@ -4580,7 +4582,7 @@ STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Tomistorakennus
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Pieni kerrostalo
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Kirkko
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Suuri toimistorakennus
-STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Kaupunkitalot
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Asuintaloja
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hotelli
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Patsas
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Suihkulähde
