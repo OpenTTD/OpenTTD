@@ -157,7 +157,7 @@ struct CFollowTrackT
 
 			return false;
 		}
-		if (!Allow90degTurns()) {
+		if ((!IsRailTT() && !Allow90degTurns()) || (IsRailTT() && Rail90DegTurnDisallowed(GetTileRailType(m_old_tile), GetTileRailType(m_new_tile), !Allow90degTurns()))) {
 			m_new_td_bits &= (TrackdirBits)~(int)TrackdirCrossesTrackdirs(m_old_td);
 			if (m_new_td_bits == TRACKDIR_BIT_NONE) {
 				m_err = EC_90DEG;

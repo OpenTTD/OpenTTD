@@ -803,12 +803,13 @@ static bool CanEnterTile(TileIndex tile, DiagDirection dir, AyStarUserData *user
  * One-way-roads are taken into account. Signals are not tested.
  *
  * @param dst_tile The tile of interest.
+ * @param src_tile The originating tile.
  * @param src_trackdir The direction the vehicle is currently moving.
  * @param type The transporttype of the vehicle.
  * @param subtype For TRANSPORT_ROAD the compatible RoadTypes of the vehicle.
  * @return The Trackdirs the vehicle can continue moving on.
  */
-static TrackdirBits GetDriveableTrackdirBits(TileIndex dst_tile, Trackdir src_trackdir, TransportType type, uint subtype)
+static TrackdirBits GetDriveableTrackdirBits(TileIndex dst_tile, TileIndex src_tile, Trackdir src_trackdir, TransportType type, uint subtype)
 {
 	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(GetTileTrackStatus(dst_tile, type, subtype));
 
@@ -836,7 +837,9 @@ static TrackdirBits GetDriveableTrackdirBits(TileIndex dst_tile, Trackdir src_tr
 	trackdirbits &= TrackdirReachesTrackdirs(src_trackdir);
 
 	/* Filter out trackdirs that would make 90 deg turns for trains */
-	if (_settings_game.pf.forbid_90_deg && type == TRANSPORT_RAIL) trackdirbits &= ~TrackdirCrossesTrackdirs(src_trackdir);
+	if (type == TRANSPORT_RAIL && Rail90DegTurnDisallowed(GetTileRailType(src_tile), GetTileRailType(dst_tile))) {
+		trackdirbits &= ~TrackdirCrossesTrackdirs(src_trackdir);
+	}
 
 	DEBUG(npf, 6, "After filtering: (%d, %d), possible trackdirs: 0x%X", TileX(dst_tile), TileY(dst_tile), trackdirbits);
 
@@ -877,7 +880,7 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
 	if (CheckIgnoreFirstTile(&current->path)) {
 		/* Do not perform any checks that involve src_tile */
 		dst_tile = src_tile + TileOffsByDiagDir(src_exitdir);
-		trackdirbits = GetDriveableTrackdirBits(dst_tile, src_trackdir, type, subtype);
+		trackdirbits = GetDriveableTrackdirBits(dst_tile, src_tile, src_trackdir, type, subtype);
 	} else if (IsTileType(src_tile, MP_TUNNELBRIDGE) && GetTunnelBridgeDirection(src_tile) == src_exitdir) {
 		/* We drive through the wormhole and arrive on the other side */
 		dst_tile = GetOtherTunnelBridgeEnd(src_tile);
@@ -901,7 +904,7 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
 			src_trackdir = ReverseTrackdir(src_trackdir);
 		}
 
-		trackdirbits = GetDriveableTrackdirBits(dst_tile, src_trackdir, type, subtype);
+		trackdirbits = GetDriveableTrackdirBits(dst_tile, src_tile, src_trackdir, type, subtype);
 
 		if (trackdirbits == TRACKDIR_BIT_NONE) {
 			/* We cannot enter the next tile. Road vehicles can reverse, others reach dead end */
@@ -910,7 +913,7 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
 			dst_tile = src_tile;
 			src_trackdir = ReverseTrackdir(src_trackdir);
 
-			trackdirbits = GetDriveableTrackdirBits(dst_tile, src_trackdir, type, subtype);
+			trackdirbits = GetDriveableTrackdirBits(dst_tile, src_tile, src_trackdir, type, subtype);
 		}
 	}
 
