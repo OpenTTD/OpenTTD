@@ -25,7 +25,7 @@
 #include <zlib.h>
 #endif
 
-#if defined(WITH_LZMA)
+#if defined(WITH_LIBLZMA)
 #include <lzma.h>
 #endif
 
@@ -257,7 +257,7 @@ static void Gunzip(byte **bufp, size_t *sizep)
 }
 #endif
 
-#if defined(WITH_LZMA)
+#if defined(WITH_LIBLZMA)
 
 /**
  * Do an in-memory xunzip operation. This works on a .xz or (legacy)
@@ -332,7 +332,7 @@ static void Xunzip(byte **bufp, size_t *sizep)
 
 	if (read != filesize) return;
 
-#if defined(WITH_ZLIB) || defined(WITH_LZMA)
+#if defined(WITH_ZLIB) || defined(WITH_LIBLZMA)
 	const char *suffix = strrchr(textfile, '.');
 	if (suffix == NULL) return;
 #endif
@@ -342,7 +342,7 @@ static void Xunzip(byte **bufp, size_t *sizep)
 	if (strcmp(suffix, ".gz") == 0) Gunzip((byte**)&this->text, &filesize);
 #endif
 
-#if defined(WITH_LZMA)
+#if defined(WITH_LIBLZMA)
 	/* In-place xunzip */
 	if (strcmp(suffix, ".xz") == 0) Xunzip((byte**)&this->text, &filesize);
 #endif
@@ -407,7 +407,7 @@ const char *GetTextfile(TextfileType type, Subdirectory dir, const char *filenam
 #if defined(WITH_ZLIB)
 		"txt.gz",
 #endif
-#if defined(WITH_LZMA)
+#if defined(WITH_LIBLZMA)
 		"txt.xz",
 #endif
 	};

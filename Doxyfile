@@ -292,7 +292,7 @@ INCLUDE_FILE_PATTERNS  =
 PREDEFINED             = ENABLE_NETWORK \
                          WITH_ZLIB \
                          WITH_LZO \
-                         WITH_LZMA \
+                         WITH_LIBLZMA \
                          WITH_SDL \
                          WITH_PNG \
                          WITH_FONTCONFIG \

@@ -1694,7 +1694,7 @@ make_cflags_and_ldflags() {
 	fi
 
 	if [ -n "$lzma_config" ]; then
-		CFLAGS="$CFLAGS -DWITH_LZMA"
+		CFLAGS="$CFLAGS -DWITH_LIBLZMA"
 		CFLAGS="$CFLAGS `$lzma_config --cflags | tr '\n\r' '  '`"
 
 		if [ "$enable_static" != "0" ]; then

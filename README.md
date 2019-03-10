@@ -521,7 +521,7 @@ and it should build automatically. In case you want to build with SDL support
 you need to add WITH_SDL to the project settings.
 
 PNG (WITH_PNG), ZLIB (WITH_ZLIB), LZO (WITH_LZO), Freetype (WITH_FREETYPE) and
-LZMA (WITH_LZMA) support is enabled by default. For these to work you need their
+libLZMA (WITH_LIBLZMA) support is enabled by default. For these to work you need their
 development files. To get them just use vcpkg from https://github.com/Microsoft/vcpkg
 using x86-windows-static and x64-windows-static triplets.
 For more help with VS see docs/Readme_Windows_MSVC.md.

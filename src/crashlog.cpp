@@ -55,7 +55,7 @@
 #if defined(WITH_ICU_LAYOUT) || defined(WITH_ICU_SORT)
 #	include <unicode/uversion.h>
 #endif /* WITH_ICU_SORT || WITH_ICU_LAYOUT */
-#ifdef WITH_LZMA
+#ifdef WITH_LIBLZMA
 #	include <lzma.h>
 #endif
 #ifdef WITH_LZO
@@ -254,7 +254,7 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
 #endif
 #endif /* WITH_ICU_SORT || WITH_ICU_LAYOUT */
 
-#ifdef WITH_LZMA
+#ifdef WITH_LIBLZMA
 	buffer += seprintf(buffer, last, " LZMA:       %s\n", lzma_version_string());
 #endif
 
