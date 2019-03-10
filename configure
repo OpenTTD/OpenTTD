@@ -124,7 +124,7 @@ AWKCOMMAND='
 		if ($0 == "DIRECTMUSIC" && "'$with_direct_music'" == "0")  { next; }
 		if ($0 == "FLUIDSYNTH"  && "'$fluidsynth'" == "" )         { next; }
 		if ($0 == "USE_THREADS" && "'$with_threads'" == "0")       { next; }
-		if ($0 == "SSE"         && "'$with_sse'" != "1")           { next; }
+		if ($0 == "USE_SSE"     && "'$with_sse'" != "1")           { next; }
 
 		skip += 1;
 
