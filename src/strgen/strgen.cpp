@@ -392,11 +392,13 @@ static inline char *mkpath(char *buf, const char *last, const char *path, const 
 	return buf;
 }
 
-#if defined(__MINGW32__)
+#if defined(_WIN32)
 /**
  * On MingW, it is common that both / as \ are accepted in the
  * params. To go with those flow, we rewrite all incoming /
- * simply to \, so internally we can safely assume \.
+ * simply to \, so internally we can safely assume \, and do
+ * this for all Windows machines to keep identical behaviour,
+ * no matter what your compiler was.
  */
 static inline char *replace_pathsep(char *s)
 {
