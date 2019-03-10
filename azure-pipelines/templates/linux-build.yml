@@ -9,6 +9,8 @@ steps:
     displayName: 'Build'
   ${{ if eq(parameters.Image, 'compile-farm-ci') }}:
     displayName: 'Build and test'
+  ${{ if eq(parameters.Tag, 'commit-checker') }}:
+    condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'))
   inputs:
     command: 'Run an image'
     imageName: openttd/${{ parameters.Image }}:${{ parameters.Tag }}
@@ -16,3 +18,5 @@ steps:
     workingDirectory: '$(Build.SourcesDirectory)'
     containerCommand: ${{ parameters.ContainerCommand }}
     runInBackground: false
+    envVars: |
+      TARGET_BRANCH=$(System.PullRequest.TargetBranch)
