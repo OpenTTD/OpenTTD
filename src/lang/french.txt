@@ -2997,7 +2997,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Indisponibilit�
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} a été désactivé par {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Format de sprite invalide ou inconnu (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Trop d'éléments dans la liste des valeurs de la propriété (sprite {3:NUM}, propriété {4:HEX})
-STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Fonction de rappel de production d'industrie invalide (sprite {3:NUM}, "{1:STRING}")
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Fonction de rappel de production d'industrie invalide (sprite {3:NUM}, "{2:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attention{NBSP}!

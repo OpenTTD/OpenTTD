@@ -3000,7 +3000,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Gevraagde GRF-m
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} is uitgeschakeld door {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ongeldige/onbekende indeling voor spritelay-out (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Te veel elementen in eigenschappenwaardelijst (affbeelding {3:NUM}, eigenschap {4:HEX})
-STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ongeldige terugroep voor industriële productie (sprite {3:NUM}, "{1:STRING}")
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ongeldige terugroep voor industriële productie (sprite {3:NUM}, "{2:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Waarschuwing!

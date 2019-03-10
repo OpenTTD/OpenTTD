@@ -3098,7 +3098,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Zatraženi GRF 
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} je isključen od strane {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Pogrešan/nepoznat format raspored sprite-a (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Previše elemenata na listi postavki varijabli (sprite {3:NUM}, postavka {4:HEX})
-STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Pogrešna callback funkcija za industrijsku proizvodnju (sprite {3:NUM}, "{1:STRING}")
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Pogrešna callback funkcija za industrijsku proizvodnju (sprite {3:NUM}, "{2:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Oprez!
