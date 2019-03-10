@@ -78,6 +78,24 @@ public:
 };
 
 /**
+ * List item with icon and string.
+ */
+class DropDownListIconItem : public DropDownListParamStringItem {
+	SpriteID sprite;
+	PaletteID pal;
+	Dimension dim;
+	uint sprite_y;
+	uint text_y;
+public:
+	DropDownListIconItem(SpriteID sprite, PaletteID pal, StringID string, int result, bool masked);
+
+	/* virtual */ uint Height(uint width) const;
+	/* virtual */ uint Width() const;
+	/* virtual */ void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const;
+	void SetDimension(Dimension d);
+};
+
+/**
  * A drop down list is a collection of drop down list items.
  */
 typedef AutoDeleteSmallVector<const DropDownListItem *, 4> DropDownList;
