@@ -57,6 +57,7 @@
 #include "../error.h"
 #include "../disaster_vehicle.h"
 #include "../ship.h"
+#include "../water.h"
 
 
 #include "saveload_internal.h"
@@ -675,7 +676,6 @@ bool AfterLoadGame()
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (st->airport.tile       == 0) st->airport.tile = INVALID_TILE;
-			if (st->dock_tile          == 0) st->dock_tile    = INVALID_TILE;
 			if (st->train_station.tile == 0) st->train_station.tile   = INVALID_TILE;
 		}
 
@@ -3174,6 +3174,27 @@ bool AfterLoadGame()
 		/* Update water class for trees. */
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (IsTileType(t, MP_TREES)) SetWaterClass(t, GetTreeGround(t) == TREE_GROUND_SHORE ? WATER_CLASS_SEA : WATER_CLASS_INVALID);
+		}
+	}
+
+	/* Update structures for multitile docks */
+	if (IsSavegameVersionBefore(SLV_MULTITILE_DOCKS)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			/* Clear docking tile flag from relevant tiles as it
+			 * was not previously cleared. */
+			if (IsTileType(t, MP_WATER) || IsTileType(t, MP_RAILWAY) || IsTileType(t, MP_STATION) || IsTileType(t, MP_TUNNELBRIDGE)) {
+				SetDockingTile(t, false);
+			}
+			/* Add docks and oilrigs to Station::ship_station. */
+			if (IsTileType(t, MP_STATION)) {
+				if (IsDock(t) || IsOilRig(t)) Station::GetByTile(t)->ship_station.Add(t);
+			}
+		}
+
+		/* Scan for docking tiles */
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			if (st->ship_station.tile != INVALID_TILE) UpdateStationDockingTiles(st);
 		}
 	}
 

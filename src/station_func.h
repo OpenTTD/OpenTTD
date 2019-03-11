@@ -40,6 +40,9 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 bool HasStationInUse(StationID station, bool include_company, CompanyID company);
 
 void DeleteOilRig(TileIndex t);
+void UpdateStationDockingTiles(Station *st);
+void RemoveDockingTile(TileIndex t);
+void ClearDockingTilesCheckingNeighbours(TileIndex tile);
 
 /* Check if a rail station tile is traversable. */
 bool IsStationTileBlocked(TileIndex tile);

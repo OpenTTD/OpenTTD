@@ -57,6 +57,8 @@ struct Ship FINAL : public SpecializedVehicle<Ship, VEH_SHIP> {
 	void SetDestTile(TileIndex tile);
 };
 
+bool IsShipDestinationTile(TileIndex tile, StationID station);
+
 /**
  * Iterate over all ships.
  * @param var The variable used for iteration.

@@ -165,8 +165,8 @@ static int32 NPFCalcStationOrTileHeuristic(AyStar *as, AyStarNode *current, Open
 	uint dist;
 	AyStarUserData *user = (AyStarUserData *)as->user_data;
 
-	/* for train-stations, we are going to aim for the closest station tile */
-	if (user->type != TRANSPORT_WATER && fstd->station_index != INVALID_STATION) {
+	/* aim for the closest station tile */
+	if (fstd->station_index != INVALID_STATION) {
 		to = CalcClosestStationTile(fstd->station_index, from, fstd->station_type);
 	}
 
@@ -562,6 +562,12 @@ static int32 NPFFindStationOrTile(const AyStar *as, const OpenListNode *current)
 	TileIndex tile = node->tile;
 
 	if (fstd->station_index == INVALID_STATION && tile == fstd->dest_coords) return AYSTAR_FOUND_END_NODE;
+
+	if (fstd->v->type == VEH_SHIP) {
+		/* Ships do not actually reach the destination station, so we check for a docking tile instead. */
+		if (IsDockingTile(tile) && IsShipDestinationTile(tile, fstd->station_index)) return AYSTAR_FOUND_END_NODE;
+		return AYSTAR_DONE;
+	}
 
 	if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == fstd->station_index) {
 		if (fstd->v->type == VEH_TRAIN) return AYSTAR_FOUND_END_NODE;
@@ -1111,10 +1117,16 @@ static void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *
 	 * dest_tile, not just any stop of that station.
 	 * So only for train orders to stations we fill fstd->station_index, for all
 	 * others only dest_coords */
-	if (v->type != VEH_SHIP && (v->current_order.IsType(OT_GOTO_STATION) || v->current_order.IsType(OT_GOTO_WAYPOINT))) {
-		assert(v->IsGroundVehicle());
+	if (v->current_order.IsType(OT_GOTO_STATION) || v->current_order.IsType(OT_GOTO_WAYPOINT)) {
 		fstd->station_index = v->current_order.GetDestination();
-		fstd->station_type = (v->type == VEH_TRAIN) ? (v->current_order.IsType(OT_GOTO_STATION) ? STATION_RAIL : STATION_WAYPOINT) : (RoadVehicle::From(v)->IsBus() ? STATION_BUS : STATION_TRUCK);
+		if (v->type == VEH_TRAIN) {
+			fstd->station_type = v->current_order.IsType(OT_GOTO_STATION) ? STATION_RAIL : STATION_WAYPOINT;
+		} else if (v->type == VEH_ROAD) {
+			fstd->station_type = RoadVehicle::From(v)->IsBus() ? STATION_BUS : STATION_TRUCK;
+		} else if (v->type == VEH_SHIP) {
+			fstd->station_type = v->current_order.IsType(OT_GOTO_STATION) ? STATION_DOCK : STATION_BUOY;
+		}
+
 		fstd->not_articulated = v->type == VEH_ROAD && !RoadVehicle::From(v)->HasArticulatedPart();
 		/* Let's take the closest tile of the station as our target for vehicles */
 		fstd->dest_coords = CalcClosestStationTile(fstd->station_index, v->tile, fstd->station_type);

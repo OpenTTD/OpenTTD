@@ -463,8 +463,9 @@ public:
 	RoadStop *truck_stops;  ///< All the truck stops
 	TileArea truck_station; ///< Tile area the truck 'station' part covers
 
-	Airport airport;        ///< Tile area the airport covers
-	TileIndex dock_tile;    ///< The location of the dock
+	Airport airport;          ///< Tile area the airport covers
+	TileArea ship_station;    ///< Tile area the ship 'station' part covers
+	TileArea docking_station; ///< Tile area the docking tiles cover
 
 	IndustryType indtype;   ///< Industry type to get the name from
 

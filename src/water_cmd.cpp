@@ -39,6 +39,7 @@
 #include "company_base.h"
 #include "company_gui.h"
 #include "newgrf_generic.h"
+#include "industry.h"
 
 #include "table/strings.h"
 
@@ -148,12 +149,56 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 		MakeShipDepot(tile,  _current_company, depot->index, DEPOT_PART_NORTH, axis, wc1);
 		MakeShipDepot(tile2, _current_company, depot->index, DEPOT_PART_SOUTH, axis, wc2);
+		CheckForDockingTile(tile);
+		CheckForDockingTile(tile2);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
 		MakeDefaultName(depot);
 	}
 
 	return cost;
+}
+
+bool IsPossibleDockingTile(TileIndex t)
+{
+	assert(IsValidTile(t));
+	switch (GetTileType(t)) {
+		case MP_WATER:
+			if (IsLock(t) && GetLockPart(t) == LOCK_PART_MIDDLE) return false;
+			FALLTHROUGH;
+		case MP_RAILWAY:
+		case MP_STATION:
+		case MP_TUNNELBRIDGE:
+			return TrackStatusToTrackBits(GetTileTrackStatus(t, TRANSPORT_WATER, 0)) != TRACK_BIT_NONE;
+
+		default:
+			return false;
+	}
+}
+
+/**
+ * Mark the supplied tile as a docking tile if it is suitable for docking.
+ * Tiles surrounding the tile are tested to be docks with correct orientation.
+ * @param t Tile to test.
+ */
+void CheckForDockingTile(TileIndex t)
+{
+	for (DiagDirection d = DIAGDIR_BEGIN; d != DIAGDIR_END; d++) {
+		TileIndex tile = t + TileOffsByDiagDir(d);
+		if (!IsValidTile(tile)) continue;
+
+		if (IsDockTile(tile)) {
+			Station::GetByTile(tile)->docking_station.Add(t);
+			SetDockingTile(t, true);
+		}
+		if (IsTileType(tile, MP_INDUSTRY)) {
+			Station *st = Industry::GetByTile(tile)->neutral_station;
+			if (st != nullptr) {
+				st->docking_station.Add(t);
+				SetDockingTile(t, true);
+			}
+		}
+	}
 }
 
 void MakeWaterKeepingClass(TileIndex tile, Owner o)
@@ -204,6 +249,7 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 		default: break;
 	}
 
+	if (wc != WATER_CLASS_INVALID) CheckForDockingTile(tile);
 	MarkTileDirtyByTile(tile);
 }
 
@@ -303,6 +349,8 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 		}
 
 		MakeLock(tile, _current_company, dir, wc_lower, wc_upper, wc_middle);
+		CheckForDockingTile(tile - delta);
+		CheckForDockingTile(tile + delta);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile - delta);
 		MarkTileDirtyByTile(tile + delta);
@@ -449,6 +497,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			}
 			MarkTileDirtyByTile(tile);
 			MarkCanalsAndRiversAroundDirty(tile);
+			CheckForDockingTile(tile);
 		}
 
 		cost.AddCost(_price[PR_BUILD_CANAL]);
@@ -489,8 +538,10 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 					Company::Get(owner)->infrastructure.water--;
 					DirtyCompanyInfrastructureWindows(owner);
 				}
+				bool remove = IsDockingTile(tile);
 				DoClearSquare(tile);
 				MarkCanalsAndRiversAroundDirty(tile);
+				if (remove) RemoveDockingTile(tile);
 			}
 
 			return CommandCost(EXPENSES_CONSTRUCTION, base_cost);
@@ -504,8 +555,10 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 			if (ret.Failed()) return ret;
 
 			if (flags & DC_EXEC) {
+				bool remove = IsDockingTile(tile);
 				DoClearSquare(tile);
 				MarkCanalsAndRiversAroundDirty(tile);
+				if (remove) RemoveDockingTile(tile);
 			}
 			if (IsSlopeWithOneCornerRaised(slope)) {
 				return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WATER]);
@@ -1095,6 +1148,8 @@ void DoFloodTile(TileIndex target)
 
 		/* update signals if needed */
 		UpdateSignalsInBuffer();
+
+		if (IsPossibleDockingTile(target)) CheckForDockingTile(target);
 	}
 
 	cur_company.Restore();
