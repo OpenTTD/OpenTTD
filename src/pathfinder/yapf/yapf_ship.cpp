@@ -12,6 +12,7 @@
 #include "../../stdafx.h"
 #include "../../ship.h"
 #include "../../industry.h"
+#include "../../vehicle_func.h"
 
 #include "yapf.hpp"
 #include "yapf_node_ship.hpp"
@@ -261,6 +262,15 @@ public:
 		return 0;
 	}
 
+	static Vehicle *CountShipProc(Vehicle *v, void *data)
+	{
+		uint *count = (uint *)data;
+		/* Ignore other vehicles (aircraft) and ships inside depot. */
+		if (v->type == VEH_SHIP && (v->vehstatus & VS_HIDDEN) == 0) (*count)++;
+
+		return nullptr;
+	}
+
 	/**
 	 * Called by YAPF to calculate the cost from the origin to the given node.
 	 *  Calculates only the cost of given node, adds it to the parent node cost
@@ -272,6 +282,13 @@ public:
 		int c = IsDiagonalTrackdir(n.GetTrackdir()) ? YAPF_TILE_LENGTH : YAPF_TILE_CORNER_LENGTH;
 		/* additional penalty for curves */
 		c += CurveCost(n.m_parent->GetTrackdir(), n.GetTrackdir());
+
+		if (IsDockingTile(n.GetTile())) {
+			/* Check docking tile for occupancy */
+			uint count = 1;
+			HasVehicleOnPos(n.GetTile(), &count, &CountShipProc);
+			c += count * 3 * YAPF_TILE_LENGTH;
+		}
 
 		/* Skipped tile cost for aqueducts. */
 		c += YAPF_TILE_LENGTH * tf->m_tiles_skipped;
