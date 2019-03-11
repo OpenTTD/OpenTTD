@@ -222,6 +222,35 @@ class Kdtree {
 		}
 	}
 
+	/**
+	 * Find an element in the tree.
+	 * @param element   The element to search for
+	 * @param node_idx  Sub-tree to search in
+	 * @param level     Current depth in the tree
+	 * @return node index of the found element, or INVALID_NODE
+	 */
+	size_t FindRecursive(const T &element, size_t node_idx, int level)
+	{
+		/* Node reference */
+		node &n = this->nodes[node_idx];
+
+		if (n.element == element) return node_idx;
+
+		/* Search in a sub-tree */
+		/* Dimension index of current level */
+		int dim = level % 2;
+		/* Coordinate of element splitting at this node */
+		CoordT nc = this->xyfunc(n.element, dim);
+		/* Coordinate of the element being removed */
+		CoordT ec = this->xyfunc(element, dim);
+		/* Which side to remove from */
+		size_t next = (ec < nc) ? n.left : n.right;
+
+		if (next == INVALID_NODE) return INVALID_NODE;
+
+		/* Descend */
+		return this->FindRecursive(element, next, level + 1);
+	}
 
 	DistT ManhattanDistance(const T &element, CoordT x, CoordT y) const
 	{
@@ -467,6 +496,17 @@ public:
 		std::vector<T> result;
 		this->FindContained(x1, y1, x2, y2, [&result](T e) {result.push_back(e); });
 		return result;
+	}
+
+	/**
+	 * Checks whether an element is in the tree.
+	 */
+	bool IsInTree(const T &element)
+	{
+		if (this->Count() == 0) return false;
+
+		size_t node_idx = this->FindRecursive(element, this->root, 0);
+		return node_idx != INVALID_NODE;
 	}
 };
 
