@@ -725,7 +725,7 @@ static const OldChunks station_chunk[] = {
 	OCL_NULL( 4 ), ///< bus/lorry tile
 	OCL_SVAR(   OC_TILE, Station, train_station.tile ),
 	OCL_SVAR(   OC_TILE, Station, airport.tile ),
-	OCL_SVAR(   OC_TILE, Station, dock_tile ),
+	OCL_NULL( 4 ), ///< dock tile
 	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Station, train_station.w ),
 
 	OCL_NULL( 1 ),         ///< sort-index, no longer in use

@@ -301,6 +301,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_ROAD_TYPES,                         ///< 214  PR#6811 NewGRF road types.
 
 	SLV_SCRIPT_MEMLIMIT,                    ///< 215  PR#7516 Limit on AI/GS memory consumption.
+	SLV_MULTITILE_DOCKS,                    ///< 216  PR#7380 Multiple docks per station.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

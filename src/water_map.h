@@ -69,6 +69,8 @@ enum LockPart {
 	LOCK_PART_UPPER  = 2, ///< Upper part of a lock.
 };
 
+bool IsPossibleDockingTile(TileIndex t);
+
 /**
  * Get the water tile type at a tile.
  * @param t Water tile to query.
@@ -346,6 +348,27 @@ static inline bool HasTileWaterGround(TileIndex t)
 	return HasTileWaterClass(t) && IsTileOnWater(t) && !IsCoastTile(t);
 }
 
+/**
+ * Set the docking tile state of a tile. This is used by pathfinders to reach their destination.
+ * As well as water tiles, half-rail tiles, buoys and aqueduct ends can also be docking tiles.
+ * @param t the tile
+ * @param b the docking tile state
+ */
+static inline void SetDockingTile(TileIndex t, bool b)
+{
+	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_RAILWAY) || IsTileType(t, MP_STATION) || IsTileType(t, MP_TUNNELBRIDGE));
+	SB(_m[t].m1, 7, 1, b ? 1 : 0);
+}
+
+/**
+ * Checks whether the tile is marked as a dockling tile.
+ * @return true iff the tile is marked as a docking tile.
+ */
+static inline bool IsDockingTile(TileIndex t)
+{
+	return (IsTileType(t, MP_WATER) || IsTileType(t, MP_RAILWAY) || IsTileType(t, MP_STATION) || IsTileType(t, MP_TUNNELBRIDGE)) && HasBit(_m[t].m1, 7);
+}
+
 
 /**
  * Helper function to make a coast tile.
@@ -356,6 +379,7 @@ static inline void MakeShore(TileIndex t)
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, OWNER_WATER);
 	SetWaterClass(t, WATER_CLASS_SEA);
+	SetDockingTile(t, false);
 	_m[t].m2 = 0;
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
@@ -376,6 +400,7 @@ static inline void MakeWater(TileIndex t, Owner o, WaterClass wc, uint8 random_b
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
 	SetWaterClass(t, wc);
+	SetDockingTile(t, false);
 	_m[t].m2 = 0;
 	_m[t].m3 = 0;
 	_m[t].m4 = random_bits;
@@ -429,6 +454,7 @@ static inline void MakeShipDepot(TileIndex t, Owner o, DepotID did, DepotPart pa
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
 	SetWaterClass(t, original_water_class);
+	SetDockingTile(t, false);
 	_m[t].m2 = did;
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
@@ -451,6 +477,7 @@ static inline void MakeLockTile(TileIndex t, Owner o, LockPart part, DiagDirecti
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
 	SetWaterClass(t, original_water_class);
+	SetDockingTile(t, false);
 	_m[t].m2 = 0;
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;

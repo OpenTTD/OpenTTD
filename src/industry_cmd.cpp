@@ -155,6 +155,13 @@ Industry::~Industry()
 		}
 	}
 
+	if (this->neutral_station != nullptr) {
+		/* Remove possible docking tiles */
+		TILE_AREA_LOOP(tile_cur, this->location) {
+			ClearDockingTilesCheckingNeighbours(tile_cur);
+		}
+	}
+
 	if (GetIndustrySpec(this->type)->behaviour & INDUSTRYBEH_PLANT_FIELDS) {
 		TileArea ta = TileArea(this->location.tile, 0, 0).Expand(21);
 
