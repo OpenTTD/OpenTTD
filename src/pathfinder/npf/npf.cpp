@@ -14,6 +14,7 @@
 #include "../../viewport_func.h"
 #include "../../ship.h"
 #include "../../roadstop_base.h"
+#include "../../vehicle_func.h"
 #include "../pathfinder_func.h"
 #include "../pathfinder_type.h"
 #include "../follow_track.hpp"
@@ -303,6 +304,15 @@ static void NPFMarkTile(TileIndex tile)
 	}
 }
 
+static Vehicle *CountShipProc(Vehicle *v, void *data)
+{
+	uint *count = (uint *)data;
+	/* Ignore other vehicles (aircraft) and ships inside depot. */
+	if (v->type == VEH_SHIP && (v->vehstatus & VS_HIDDEN) == 0) (*count)++;
+
+	return nullptr;
+}
+
 static int32 NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
 {
 	/* TileIndex tile = current->tile; */
@@ -317,6 +327,13 @@ static int32 NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *par
 
 	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction)) {
 		cost += _settings_game.pf.npf.npf_water_curve_penalty;
+	}
+
+	if (IsDockingTile(current->tile)) {
+		/* Check docking tile for occupancy */
+		uint count = 1;
+		HasVehicleOnPos(current->tile, &count, &CountShipProc);
+		cost += count * 3 * _trackdir_length[trackdir];
 	}
 
 	/* @todo More penalties? */
