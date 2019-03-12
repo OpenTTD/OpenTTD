@@ -154,15 +154,14 @@ public:
 				SetDParam(1, c->index);
 
 				int r = this->town->ratings[c->index];
-				StringID str;
-				(str = STR_CARGO_RATING_APPALLING, r <= RATING_APPALLING) || // Apalling
-				(str++,                    r <= RATING_VERYPOOR)  || // Very Poor
-				(str++,                    r <= RATING_POOR)      || // Poor
-				(str++,                    r <= RATING_MEDIOCRE)  || // Mediocore
-				(str++,                    r <= RATING_GOOD)      || // Good
-				(str++,                    r <= RATING_VERYGOOD)  || // Very Good
-				(str++,                    r <= RATING_EXCELLENT) || // Excellent
-				(str++,                    true);                    // Outstanding
+				StringID str = STR_CARGO_RATING_APPALLING;
+				if (r > RATING_APPALLING) str++;
+				if (r > RATING_VERYPOOR)  str++;
+				if (r > RATING_POOR)      str++;
+				if (r > RATING_MEDIOCRE)  str++;
+				if (r > RATING_GOOD)      str++;
+				if (r > RATING_VERYGOOD)  str++;
+				if (r > RATING_EXCELLENT) str++;
 
 				SetDParam(2, str);
 				if (this->town->exclusivity == c->index) {
