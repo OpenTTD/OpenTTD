@@ -6,18 +6,4 @@
  */
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
-
-#include "../script_roadtypelist.hpp"
-#include "../template/template_roadtypelist.hpp.sq"
-
-
-template <> const char *GetClassName<ScriptRoadTypeList, ST_GS>() { return "GSRoadTypeList"; }
-
-void SQGSRoadTypeList_Register(Squirrel *engine)
-{
-	DefSQClass<ScriptRoadTypeList, ST_GS> SQGSRoadTypeList("GSRoadTypeList");
-	SQGSRoadTypeList.PreRegister(engine, "GSList");
-	SQGSRoadTypeList.AddConstructor<void (ScriptRoadTypeList::*)(ScriptRoad::RoadTramTypes rtts), 2>(engine, "xi");
-
-	SQGSRoadTypeList.PostRegister(engine);
-}
+${SQUIRREL_EXPORT}

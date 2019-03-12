@@ -1,3 +1,7 @@
+add_library(script_api
+        INTERFACE
+)
+
 # Get script_window.hpp dependencies
 file(STRINGS ${CMAKE_CURRENT_SOURCE_DIR}/script_window.hpp.in ENUM_LINES REGEX "@enum")
 foreach(ENUM IN LISTS ENUM_LINES)
@@ -13,7 +17,6 @@ add_custom_command_timestamp(OUTPUT ${CMAKE_BINARY_DIR}/generated/script/api/scr
                 -DGENERATE_SOURCE_FILE=${CMAKE_CURRENT_SOURCE_DIR}/script_window.hpp.in
                 -DGENERATE_BINARY_FILE=${CMAKE_BINARY_DIR}/generated/script/api/script_window.hpp
                 -P ${CMAKE_SOURCE_DIR}/cmake/scripts/GenerateWidget.cmake
-        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/generated/script/api/dummy # dummy directory for #include "../script_window.hpp"
         MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/script_window.hpp.in
         DEPENDS ${CMAKE_SOURCE_DIR}/cmake/scripts/GenerateWidget.cmake ${DEPENDENCIES}
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
@@ -23,19 +26,94 @@ add_custom_target_timestamp(script_window
         DEPENDS
         ${CMAKE_BINARY_DIR}/generated/script/api/script_window.hpp
 )
-
-add_library(script_api
-        INTERFACE
-)
 target_include_directories(script_api
         INTERFACE
         ${CMAKE_BINARY_DIR}/generated/script/api/
-        ${CMAKE_BINARY_DIR}/generated/script/api/dummy # dummy path so #include "../script_window.hpp" works
         ${CMAKE_CURRENT_SOURCE_DIR}
 )
-add_dependencies(script_api
-        script_window
-)
+
+file(GLOB SCRIPT_API_FILES "script_*.hpp")
+list(APPEND SCRIPT_API_FILES ${CMAKE_BINARY_DIR}/generated/script/api/script_window.hpp)
+
+foreach(API "ai;AI" "game;GS" "template;Template")
+    list(GET API 0 APILC)
+    list(GET API 1 APIUC)
+
+    foreach(SCRIPT_API_FILE IN LISTS SCRIPT_API_FILES)
+        if ("${SCRIPT_API_FILE}" MATCHES ".*script_controller.*")
+            continue()
+        endif ("${SCRIPT_API_FILE}" MATCHES ".*script_controller.*")
+        get_filename_component(SCRIPT_API_FILE_NAME "${SCRIPT_API_FILE}" NAME)
+        string(REPLACE "script_" "${APILC}_" SCRIPT_API_FILE_NAME "${SCRIPT_API_FILE_NAME}")
+        set(SCRIPT_API_BINARY_FILE "${CMAKE_BINARY_DIR}/generated/script/api/${APILC}/${SCRIPT_API_FILE_NAME}.sq")
+
+        add_custom_command_timestamp(OUTPUT ${SCRIPT_API_BINARY_FILE}
+                COMMAND ${CMAKE_COMMAND}
+                        -DSCRIPT_API_SOURCE_FILE=${CMAKE_CURRENT_SOURCE_DIR}/squirrel_export.hpp.sq.in
+                        -DSCRIPT_API_BINARY_FILE=${SCRIPT_API_BINARY_FILE}
+                        -DSCRIPT_API_FILE=${SCRIPT_API_FILE}
+                        -DAPIUC=${APIUC}
+                        -DAPILC=${APILC}
+                        -P ${CMAKE_SOURCE_DIR}/cmake/scripts/SquirrelExport.cmake
+                MAIN_DEPENDENCY ${SCRIPT_API_FILE}
+                DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/squirrel_export.hpp.sq.in
+                        ${CMAKE_SOURCE_DIR}/cmake/scripts/SquirrelExport.cmake
+                WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+                COMMENT "Generating ${APILC}/${SCRIPT_API_FILE_NAME}.sq"
+        )
+        list(APPEND SCRIPT_${APIUC}_BINARY_FILES ${SCRIPT_API_BINARY_FILE})
+    endforeach(SCRIPT_API_FILE)
+
+    add_custom_target_timestamp(script_${APILC}
+            DEPENDS
+            ${SCRIPT_${APIUC}_BINARY_FILES}
+    )
+    add_dependencies(script_${APILC}
+            script_window
+    )
+
+    if (NOT "${APILC}" STREQUAL "template")
+        list(APPEND SCRIPT_${APIUC}_BINARY_FILES "${CMAKE_CURRENT_SOURCE_DIR}/${APILC}/${APILC}_controller.hpp.sq")
+        set(INCLUDES_BINARY_FILE "${CMAKE_BINARY_DIR}/generated/script/api/${APILC}/${APILC}_includes.hpp")
+        add_custom_command_timestamp(OUTPUT ${INCLUDES_BINARY_FILE}
+                COMMAND ${CMAKE_COMMAND}
+                        -DINCLUDES_SOURCE_FILE=${CMAKE_CURRENT_SOURCE_DIR}/script_includes.hpp.in
+                        -DINCLUDES_BINARY_FILE=${INCLUDES_BINARY_FILE}
+                        -DAPIUC=${APIUC}
+                        -DAPILC=${APILC}
+                        -P ${CMAKE_SOURCE_DIR}/cmake/scripts/SquirrelIncludes.cmake
+                        --
+                        ${SCRIPT_${APIUC}_BINARY_FILES}
+                MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/script_includes.hpp.in
+                DEPENDS ${SCRIPT_${APIUC}_BINARY_FILES}
+                        ${CMAKE_SOURCE_DIR}/cmake/scripts/SquirrelIncludes.cmake
+                WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+                COMMENT "Generating ${APILC}/${APILC}_includes.hpp"
+        )
+        add_custom_target_timestamp(script_${APILC}_includes
+                DEPENDS
+                ${INCLUDES_BINARY_FILE}
+        )
+        add_dependencies(script_${APILC}_includes
+            script_${APILC}
+        )
+        add_dependencies(script_api
+                script_${APILC}_includes
+        )
+    else (NOT "${APILC}" STREQUAL "template")
+        add_dependencies(script_api
+                script_${APILC}
+        )
+    endif (NOT "${APILC}" STREQUAL "template")
+
+    target_include_directories(script_api
+            INTERFACE
+            ${CMAKE_BINARY_DIR}/generated/script
+            ${CMAKE_BINARY_DIR}/generated/script/api/${APILC}
+            ${CMAKE_CURRENT_SOURCE_DIR}/${APILC}
+    )
+endforeach(API)
+
 add_library(openttd::script_api ALIAS script_api)
 
 
