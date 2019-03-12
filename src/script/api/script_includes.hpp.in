@@ -7,17 +7,9 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "../script_industrytypelist.hpp"
-#include "../template/template_industrytypelist.hpp.sq"
+${SQUIRREL_INCLUDES}
 
-
-template <> const char *GetClassName<ScriptIndustryTypeList, ST_AI>() { return "AIIndustryTypeList"; }
-
-void SQAIIndustryTypeList_Register(Squirrel *engine)
+void SQ${APIUC}_RegisterAll(Squirrel *engine)
 {
-	DefSQClass<ScriptIndustryTypeList, ST_AI> SQAIIndustryTypeList("AIIndustryTypeList");
-	SQAIIndustryTypeList.PreRegister(engine, "AIList");
-	SQAIIndustryTypeList.AddConstructor<void (ScriptIndustryTypeList::*)(), 1>(engine, "x");
-
-	SQAIIndustryTypeList.PostRegister(engine);
+${SQUIRREL_REGISTER}
 }
