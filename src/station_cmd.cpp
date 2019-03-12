@@ -3375,27 +3375,25 @@ static void UpdateStationRating(Station *st)
 
 				byte waittime = ge->time_since_pickup;
 				if (st->last_vehicle_type == VEH_SHIP) waittime >>= 2;
-				(waittime > 21) ||
-				(rating += 25, waittime > 12) ||
-				(rating += 25, waittime > 6) ||
-				(rating += 45, waittime > 3) ||
-				(rating += 35, true);
+				if (waittime <= 21) rating += 25;
+				if (waittime <= 12) rating += 25;
+				if (waittime <= 6) rating += 45;
+				if (waittime <= 3) rating += 35;
 
-				(rating -= 90, ge->max_waiting_cargo > 1500) ||
-				(rating += 55, ge->max_waiting_cargo > 1000) ||
-				(rating += 35, ge->max_waiting_cargo > 600) ||
-				(rating += 10, ge->max_waiting_cargo > 300) ||
-				(rating += 20, ge->max_waiting_cargo > 100) ||
-				(rating += 10, true);
+				rating -= 90;
+				if (ge->max_waiting_cargo <= 1500) rating += 55;
+				if (ge->max_waiting_cargo <= 1000) rating += 35;
+				if (ge->max_waiting_cargo <= 600) rating += 10;
+				if (ge->max_waiting_cargo <= 300) rating += 20;
+				if (ge->max_waiting_cargo <= 100) rating += 10;
 			}
 
 			if (Company::IsValidID(st->owner) && HasBit(st->town->statues, st->owner)) rating += 26;
 
 			byte age = ge->last_age;
-			(age >= 3) ||
-			(rating += 10, age >= 2) ||
-			(rating += 10, age >= 1) ||
-			(rating += 13, true);
+			if (age < 3) rating += 10;
+			if (age < 2) rating += 10;
+			if (age < 1) rating += 13;
 
 			{
 				int or_ = ge->rating; // old rating
