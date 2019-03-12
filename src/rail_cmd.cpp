@@ -2285,23 +2285,30 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 			image = _track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.track_y;
 		} else {
 			/* track on flat ground */
-			(image = rti->base_sprites.track_y, track == TRACK_BIT_Y) ||
-			(image++,                           track == TRACK_BIT_X) ||
-			(image++,                           track == TRACK_BIT_UPPER) ||
-			(image++,                           track == TRACK_BIT_LOWER) ||
-			(image++,                           track == TRACK_BIT_RIGHT) ||
-			(image++,                           track == TRACK_BIT_LEFT) ||
-			(image++,                           track == TRACK_BIT_CROSS) ||
+			switch (track) {
+				/* single track, select combined track + ground sprite*/
+				case TRACK_BIT_Y:     image = rti->base_sprites.track_y;     break;
+				case TRACK_BIT_X:     image = rti->base_sprites.track_y + 1; break;
+				case TRACK_BIT_UPPER: image = rti->base_sprites.track_y + 2; break;
+				case TRACK_BIT_LOWER: image = rti->base_sprites.track_y + 3; break;
+				case TRACK_BIT_RIGHT: image = rti->base_sprites.track_y + 4; break;
+				case TRACK_BIT_LEFT:  image = rti->base_sprites.track_y + 5; break;
+				case TRACK_BIT_CROSS: image = rti->base_sprites.track_y + 6; break;
 
-			(image = rti->base_sprites.track_ns, track == TRACK_BIT_HORZ) ||
-			(image++,                            track == TRACK_BIT_VERT) ||
+				/* double diagonal track, select combined track + ground sprite*/
+				case TRACK_BIT_HORZ:  image = rti->base_sprites.track_ns;     break;
+				case TRACK_BIT_VERT:  image = rti->base_sprites.track_ns + 1; break;
 
-			(junction = true, false) ||
-			(image = rti->base_sprites.ground, (track & TRACK_BIT_3WAY_NE) == 0) ||
-			(image++,                          (track & TRACK_BIT_3WAY_SW) == 0) ||
-			(image++,                          (track & TRACK_BIT_3WAY_NW) == 0) ||
-			(image++,                          (track & TRACK_BIT_3WAY_SE) == 0) ||
-			(image++, true);
+				/* junction, select only ground sprite, handle track sprite later */
+				default:
+					junction = true;
+					if ((track & TRACK_BIT_3WAY_NE) == 0) { image = rti->base_sprites.ground;     break; }
+					if ((track & TRACK_BIT_3WAY_SW) == 0) { image = rti->base_sprites.ground + 1; break; }
+					if ((track & TRACK_BIT_3WAY_NW) == 0) { image = rti->base_sprites.ground + 2; break; }
+					if ((track & TRACK_BIT_3WAY_SE) == 0) { image = rti->base_sprites.ground + 3; break; }
+					image = rti->base_sprites.ground + 4;
+					break;
+			}
 		}
 
 		switch (rgt) {
