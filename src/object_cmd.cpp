@@ -158,12 +158,11 @@ void UpdateCompanyHQ(TileIndex tile, uint score)
 {
 	if (tile == INVALID_TILE) return;
 
-	byte val;
-	(val = 0, score < 170) ||
-	(val++, score < 350) ||
-	(val++, score < 520) ||
-	(val++, score < 720) ||
-	(val++, true);
+	byte val = 0;
+	if (score >= 170) val++;
+	if (score >= 350) val++;
+	if (score >= 520) val++;
+	if (score >= 720) val++;
 
 	while (GetCompanyHQSize(tile) < val) {
 		IncreaseCompanyHQSize(tile);
