@@ -91,8 +91,8 @@ public:
 	 */
 	inline void Clear()
 	{
-		for (uint i = 0; i < std::vector<T>::size(); i++) {
-			free(std::vector<T>::operator[](i));
+		for (T p : *this) {
+			free(p);
 		}
 
 		std::vector<T>::clear();
@@ -121,8 +121,8 @@ public:
 	 */
 	inline void Clear()
 	{
-		for (uint i = 0; i < std::vector<T>::size(); i++) {
-			delete std::vector<T>::operator[](i);
+		for (T p : *this) {
+			delete p;
 		}
 
 		std::vector<T>::clear();
