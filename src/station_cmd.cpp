@@ -3822,10 +3822,10 @@ static void AddNearbyStationsByCatchment(TileIndex tile, StationList *stations, 
  * Find all stations around a rectangular producer (industry, house, headquarter, ...)
  *
  * @param location The location/area of the producer
- * @param stations The list to store the stations in
+ * @param[out] stations The list to store the stations in
  * @param use_nearby Use nearby station list of industry/town associated with location.tile
  */
-void FindStationsAroundTiles(const TileArea &location, StationList *stations, bool use_nearby)
+void FindStationsAroundTiles(const TileArea &location, StationList * const stations, bool use_nearby)
 {
 	if (use_nearby) {
 		/* Industries and towns maintain a list of nearby stations */
