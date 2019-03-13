@@ -3831,7 +3831,7 @@ void FindStationsAroundTiles(const TileArea &location, StationList *stations, bo
 		/* Industries and towns maintain a list of nearby stations */
 		if (IsTileType(location.tile, MP_INDUSTRY)) {
 			/* Industry nearby stations are already filtered by catchment. */
-			stations = &Industry::GetByTile(location.tile)->stations_near;
+			*stations = Industry::GetByTile(location.tile)->stations_near;
 			return;
 		} else if (IsTileType(location.tile, MP_HOUSE)) {
 			/* Town nearby stations need to be filtered per tile. */
