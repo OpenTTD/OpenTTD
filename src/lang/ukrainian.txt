@@ -3133,7 +3133,6 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Недосту�
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} був вимкнений {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Некоректний або невідомий формат розміщення спрайтів (спрайт {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Дуже багато елементів у списку значень (спрайт {3:NUM}, властивість {4:HEX})
-STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Невірна обробка продукції підприємства (спрайт {3:NUM}, "{1:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Обережно!
