@@ -623,7 +623,7 @@ static void CompanyCheckBankrupt(Company *c)
 			 * player we are sure (the above check) that we are not the local
 			 * company and thus we won't be moved. */
 			if (!_networking || _network_server) {
-				DoCommandP(0, CCA_DELETE | (c->index << 16) | (CRR_BANKRUPT << 24), 0, CMD_COMPANY_CTRL);
+				DoCommandP(0, CCA_DELETE | (c->index << 4) | (CRR_BANKRUPT << 12), 0, CMD_COMPANY_CTRL);
 				return;
 			}
 			break;

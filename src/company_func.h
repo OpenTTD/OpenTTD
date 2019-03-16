@@ -15,6 +15,7 @@
 #include "gfx_type.h"
 #include "vehicle_type.h"
 
+void MaybeStartNewCompany();
 bool MayCompanyTakeOver(CompanyID cbig, CompanyID small);
 void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner);
 void GetNameOfOwner(Owner owner, TileIndex tile);

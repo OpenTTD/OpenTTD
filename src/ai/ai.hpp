@@ -135,8 +135,15 @@ public:
 
 	/**
 	 * Get the number of days before the next AI should start.
+	 * @param count For which Nth AI to retrieve the starting date.
 	 */
-	static int GetStartNextTime();
+	static int GetStartNextTime(uint count = 0);
+
+	/**
+	 * Get the associated company index the next AI should start with.
+	 * @param count For which Nth AI to retrieve the starting company.
+	 */
+	static CompanyID GetStartNextCompany(uint count = 0);
 
 	/** Wrapper function for AIScanner::GetAIConsoleList */
 	static char *GetConsoleList(char *p, const char *last, bool newest_only = false);
