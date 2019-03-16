@@ -450,8 +450,10 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 				/* Override the minimum value. No value below sdb->min, except special value 0 */
 				if (!(sdb->flags & SGF_0ISDISABLED) || val != 0) {
 					if (!(sdb->flags & SGF_MULTISTRING)) {
+						/* Clamp value-type setting to its valid range */
 						val = Clamp(val, sdb->min, sdb->max);
 					} else if (val < sdb->min || val > (int32)sdb->max) {
+						/* Reset invalid discrete setting (where different values change gameplay) to its default value */
 						val = (int32)(size_t)sdb->def;
 					}
 				}
@@ -462,8 +464,10 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 				uint32 uval = (uint32)val;
 				if (!(sdb->flags & SGF_0ISDISABLED) || uval != 0) {
 					if (!(sdb->flags & SGF_MULTISTRING)) {
+						/* Clamp value-type setting to its valid range */
 						uval = ClampU(uval, sdb->min, sdb->max);
 					} else if (uval < (uint)sdb->min || uval > sdb->max) {
+						/* Reset invalid discrete setting to its default value */
 						uval = (uint32)(size_t)sdb->def;
 					}
 				}
