@@ -274,35 +274,6 @@ bool GetClipboardContents(char *buffer, const char *last)
 
 
 #ifndef __APPLE__
-uint GetCPUCoreCount()
-{
-	uint count = 1;
-#ifdef HAS_SYSCTL
-	int ncpu = 0;
-	size_t len = sizeof(ncpu);
-
-#ifdef OPENBSD
-	int name[2];
-	name[0] = CTL_HW;
-	name[1] = HW_NCPU;
-	if (sysctl(name, 2, &ncpu, &len, NULL, 0) < 0) {
-	        ncpu = 0;
-	}
-#else
-	if (sysctlbyname("hw.availcpu", &ncpu, &len, NULL, 0) < 0) {
-		sysctlbyname("hw.ncpu", &ncpu, &len, NULL, 0);
-	}
-#endif /* #ifdef OPENBSD */
-
-	if (ncpu > 0) count = ncpu;
-#elif defined(_SC_NPROCESSORS_ONLN)
-	long res = sysconf(_SC_NPROCESSORS_ONLN);
-	if (res > 0) count = res;
-#endif
-
-	return count;
-}
-
 void OSOpenBrowser(const char *url)
 {
 	pid_t child_pid = fork();
