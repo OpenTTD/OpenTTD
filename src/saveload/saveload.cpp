@@ -45,6 +45,7 @@
 #include "../string_func.h"
 #include "../fios.h"
 #include "../error.h"
+#include <atomic>
 
 #include "table/strings.h"
 
@@ -370,9 +371,9 @@ void NORETURN SlErrorCorruptFmt(const char *format, ...)
 }
 
 
-typedef void (*AsyncSaveFinishProc)();                ///< Callback for when the savegame loading is finished.
-static AsyncSaveFinishProc _async_save_finish = NULL; ///< Callback to call when the savegame loading is finished.
-static std::thread _save_thread;                      ///< The thread we're using to compress and write a savegame
+typedef void (*AsyncSaveFinishProc)();                      ///< Callback for when the savegame loading is finished.
+static std::atomic<AsyncSaveFinishProc> _async_save_finish; ///< Callback to call when the savegame loading is finished.
+static std::thread _save_thread;                            ///< The thread we're using to compress and write a savegame
 
 /**
  * Called by save thread to tell we finished saving.
@@ -381,9 +382,9 @@ static std::thread _save_thread;                      ///< The thread we're usin
 static void SetAsyncSaveFinish(AsyncSaveFinishProc proc)
 {
 	if (_exit_game) return;
-	while (_async_save_finish != NULL) CSleep(10);
+	while (_async_save_finish.load(std::memory_order_acquire) != NULL) CSleep(10);
 
-	_async_save_finish = proc;
+	_async_save_finish.store(proc, std::memory_order_release);
 }
 
 /**
@@ -391,11 +392,10 @@ static void SetAsyncSaveFinish(AsyncSaveFinishProc proc)
  */
 void ProcessAsyncSaveFinish()
 {
-	if (_async_save_finish == NULL) return;
+	AsyncSaveFinishProc proc = _async_save_finish.exchange(NULL, std::memory_order_acq_rel);
+	if (proc == NULL) return;
 
-	_async_save_finish();
-
-	_async_save_finish = NULL;
+	proc();
 
 	if (_save_thread.joinable()) {
 		_save_thread.join();
