@@ -205,15 +205,6 @@ bool GetClipboardContents(char *buffer, const char *last)
 }
 
 
-void CSleep(int milliseconds)
-{
-#ifndef __INNOTEK_LIBC__
-	delay(milliseconds);
-#else
-	usleep(milliseconds * 1000);
-#endif
-}
-
 const char *FS2OTTD(const char *name) {return name;}
 const char *OTTD2FS(const char *name) {return name;}
 

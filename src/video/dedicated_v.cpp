@@ -22,6 +22,7 @@
 #include "../company_func.h"
 #include "../core/random_func.hpp"
 #include "../saveload/saveload.h"
+#include "../thread.h"
 #include "dedicated_v.h"
 
 #ifdef __OS2__

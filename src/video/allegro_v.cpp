@@ -25,6 +25,7 @@
 #include "../core/random_func.hpp"
 #include "../core/math_func.hpp"
 #include "../framerate_type.h"
+#include "../thread.h"
 #include "allegro_v.h"
 #include <allegro.h>
 
