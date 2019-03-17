@@ -75,7 +75,6 @@ void HandleKeypress(uint keycode, WChar key);
 void HandleTextInput(const char *str, bool marked = false, const char *caret = NULL, const char *insert_location = NULL, const char *replacement_end = NULL);
 void HandleCtrlChanged();
 void HandleMouseEvents();
-void CSleep(int milliseconds);
 void UpdateWindows();
 
 void DrawMouseCursor();

@@ -29,6 +29,7 @@
 #include "network_base.h"
 #include "network_client.h"
 #include "../core/backup_type.hpp"
+#include "../thread.h"
 
 #include "table/strings.h"
 

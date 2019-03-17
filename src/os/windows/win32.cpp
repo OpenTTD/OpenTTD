@@ -544,12 +544,6 @@ bool GetClipboardContents(char *buffer, const char *last)
 }
 
 
-void CSleep(int milliseconds)
-{
-	Sleep(milliseconds);
-}
-
-
 /**
  * Convert to OpenTTD's encoding from that of the local environment.
  * When the project is built in UNICODE, the system codepage is irrelevant and

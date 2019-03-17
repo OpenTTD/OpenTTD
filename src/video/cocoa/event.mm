@@ -37,6 +37,7 @@
 #include "../../core/math_func.hpp"
 #include "../../texteff.hpp"
 #include "../../window_func.h"
+#include "../../thread.h"
 
 #import <sys/time.h> /* gettimeofday */
 

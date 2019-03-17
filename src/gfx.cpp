@@ -21,6 +21,7 @@
 #include "network/network_func.h"
 #include "window_func.h"
 #include "newgrf_debug.h"
+#include "thread.h"
 
 #include "table/palettes.h"
 #include "table/string_colours.h"

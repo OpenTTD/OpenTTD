@@ -18,6 +18,7 @@
 #include "../gfx_func.h"
 #include "extmidi.h"
 #include "../base_media_base.h"
+#include "../thread.h"
 #include "midifile.hpp"
 #include <fcntl.h>
 #include <sys/types.h>

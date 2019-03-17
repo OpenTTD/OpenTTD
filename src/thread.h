@@ -21,6 +21,15 @@ class OTTDThreadExitSignal { };
 
 
 /**
+ * Sleep on the current thread for a defined time.
+ * @param milliseconds Time to sleep for in milliseconds.
+ */
+inline void CSleep(int milliseconds)
+{
+	std::this_thread::sleep_for(std::chrono::milliseconds(milliseconds));
+}
+
+/**
  * Get number of processor cores in the system, including HyperThreading or similar.
  * @return Total number of processor cores.
  */

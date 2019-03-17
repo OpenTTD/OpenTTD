@@ -273,14 +273,6 @@ bool GetClipboardContents(char *buffer, const char *last)
 #endif
 
 
-/* multi os compatible sleep function */
-
-void CSleep(int milliseconds)
-{
-	usleep(milliseconds * 1000);
-}
-
-
 #ifndef __APPLE__
 uint GetCPUCoreCount()
 {
