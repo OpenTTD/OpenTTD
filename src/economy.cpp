@@ -260,7 +260,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 			/* Skip the total */
 			if (i == SCORE_TOTAL) continue;
 			/*  Check the score */
-			s = Clamp(_score_part[owner][i], 0, _score_info[i].needed) * _score_info[i].score / _score_info[i].needed;
+			s = Clamp<int64>(_score_part[owner][i], 0, _score_info[i].needed) * _score_info[i].score / _score_info[i].needed;
 			score += s;
 			total_score += _score_info[i].score;
 		}
