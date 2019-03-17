@@ -69,13 +69,11 @@ void LinkGraphSchedule::JoinNext()
 }
 
 /**
- * Run all handlers for the given Job. This method is tailored to
- * ThreadObject::New.
- * @param j Pointer to a link graph job.
+ * Run all handlers for the given Job.
+ * @param job Pointer to a link graph job.
  */
-/* static */ void LinkGraphSchedule::Run(void *j)
+/* static */ void LinkGraphSchedule::Run(LinkGraphJob *job)
 {
-	LinkGraphJob *job = (LinkGraphJob *)j;
 	for (uint i = 0; i < lengthof(instance.handlers); ++i) {
 		instance.handlers[i]->Run(*job);
 	}

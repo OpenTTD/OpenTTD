@@ -857,6 +857,7 @@ int openttd_main(int argc, char *argv[])
 	VideoDriver::GetInstance()->MainLoop();
 
 	WaitTillSaved();
+	WaitTillGeneratedWorld(); // Make sure any generate world threads have been joined.
 
 	/* only save config if we have to */
 	if (save_config) {

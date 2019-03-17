@@ -21,7 +21,8 @@
 #include "video/video_driver.hpp"
 #include "strings_func.h"
 #include "textfile_gui.h"
-#include "thread/thread.h"
+#include "thread.h"
+#include "newgrf_config.h"
 
 #include "fileio_func.h"
 #include "fios.h"
@@ -724,7 +725,7 @@ static int CDECL GRFSorter(GRFConfig * const *p1, GRFConfig * const *p2)
  * Really perform the scan for all NewGRFs.
  * @param callback The callback to call after the scanning is complete.
  */
-void DoScanNewGRFFiles(void *callback)
+void DoScanNewGRFFiles(NewGRFScanCallback *callback)
 {
 	std::unique_lock<std::mutex> lock_work(_modal_progress_work_mutex);
 
@@ -767,7 +768,7 @@ void DoScanNewGRFFiles(void *callback)
 	/* Yes... these are the NewGRF windows */
 	InvalidateWindowClassesData(WC_SAVELOAD, 0, true);
 	InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE, GOID_NEWGRF_RESCANNED, true);
-	if (callback != NULL) ((NewGRFScanCallback*)callback)->OnNewGRFsScanned();
+	if (callback != NULL) callback->OnNewGRFsScanned();
 
 	DeleteWindowByClass(WC_MODAL_PROGRESS);
 	SetModalProgress(false);
@@ -785,7 +786,7 @@ void ScanNewGRFFiles(NewGRFScanCallback *callback)
 	/* Only then can we really start, especially by marking the whole screen dirty. Get those other windows hidden!. */
 	MarkWholeScreenDirty();
 
-	if (!UseThreadedModelProgress() || !VideoDriver::GetInstance()->HasGUI() || !ThreadObject::New(&DoScanNewGRFFiles, callback, NULL, "ottd:newgrf-scan")) {
+	if (!UseThreadedModelProgress() || !VideoDriver::GetInstance()->HasGUI() || !StartNewThread(NULL, "ottd:newgrf-scan", &DoScanNewGRFFiles, (NewGRFScanCallback *)callback)) { // Without the seemingly superfluous cast, strange compiler errors ensue.
 		_modal_progress_work_mutex.unlock();
 		_modal_progress_paint_mutex.unlock();
 		DoScanNewGRFFiles(callback);

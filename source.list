@@ -1173,17 +1173,4 @@ sound/null_s.cpp
 #end
 
 # Threading
-thread/thread.h
-#if USE_THREADS
-	#if WIN32
-		thread/thread_win32.cpp
-	#else
-		#if OS2
-			thread/thread_os2.cpp
-		#else
-			thread/thread_pthread.cpp
-		#end
-	#end
-#else
-	thread/thread_none.cpp
-#end
+thread.h

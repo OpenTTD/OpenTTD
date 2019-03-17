@@ -3090,12 +3090,9 @@
     <ClCompile Include="..\src\os\windows\win32.cpp">
       <Filter>Windows files</Filter>
     </ClCompile>
-    <ClInclude Include="..\src\thread\thread.h">
+    <ClInclude Include="..\src\thread.h">
       <Filter>Threading</Filter>
     </ClInclude>
-    <ClCompile Include="..\src\thread\thread_win32.cpp">
-      <Filter>Threading</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\media\openttd.ico" />

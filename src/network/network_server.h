@@ -14,7 +14,6 @@
 
 #include "network_internal.h"
 #include "core/tcp_listen.h"
-#include "../thread/thread.h"
 
 class ServerNetworkGameSocketHandler;
 /** Make the code look slightly nicer/simpler. */

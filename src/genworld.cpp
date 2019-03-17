@@ -34,7 +34,7 @@
 #include "game/game.hpp"
 #include "game/game_instance.hpp"
 #include "string_func.h"
-#include "thread/thread.h"
+#include "thread.h"
 
 #include "safeguards.h"
 
@@ -94,7 +94,7 @@ static void CleanupGeneration()
 /**
  * The internal, real, generate function.
  */
-static void _GenerateWorld(void *)
+static void _GenerateWorld()
 {
 	/* Make sure everything is done via OWNER_NONE. */
 	Backup<CompanyByte> _cur_company(_current_company, OWNER_NONE, FILE_LINE);
@@ -242,14 +242,12 @@ void GenerateWorldSetAbortCallback(GWAbortProc *proc)
  */
 void WaitTillGeneratedWorld()
 {
-	if (_gw.thread == NULL) return;
+	if (!_gw.thread.joinable()) return;
 
 	_modal_progress_work_mutex.unlock();
 	_modal_progress_paint_mutex.unlock();
 	_gw.quit_thread = true;
-	_gw.thread->Join();
-	delete _gw.thread;
-	_gw.thread   = NULL;
+	_gw.thread.join();
 	_gw.threaded = false;
 	_modal_progress_work_mutex.lock();
 	_modal_progress_paint_mutex.lock();
@@ -284,7 +282,7 @@ void HandleGeneratingWorldAbortion()
 
 	CleanupGeneration();
 
-	if (_gw.thread != NULL) _gw.thread->Exit();
+	if (_gw.thread.joinable() && _gw.thread.get_id() == std::this_thread::get_id()) throw OTTDThreadExitSignal();
 
 	SwitchToMode(_switch_mode);
 }
@@ -326,17 +324,13 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 	SetupColoursAndInitialWindow();
 	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
-	if (_gw.thread != NULL) {
-		_gw.thread->Join();
-		delete _gw.thread;
-		_gw.thread = NULL;
-	}
+	if (_gw.thread.joinable()) _gw.thread.join();
 
-	if (!UseThreadedModelProgress() || !VideoDriver::GetInstance()->HasGUI() || !ThreadObject::New(&_GenerateWorld, NULL, &_gw.thread, "ottd:genworld")) {
+	if (!UseThreadedModelProgress() || !VideoDriver::GetInstance()->HasGUI() || !StartNewThread(&_gw.thread, "ottd:genworld", &_GenerateWorld)) {
 		DEBUG(misc, 1, "Cannot create genworld thread, reverting to single-threaded mode");
 		_gw.threaded = false;
 		_modal_progress_work_mutex.unlock();
-		_GenerateWorld(NULL);
+		_GenerateWorld();
 		_modal_progress_work_mutex.lock();
 		return;
 	}
