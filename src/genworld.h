@@ -13,6 +13,7 @@
 #define GENWORLD_H
 
 #include "company_type.h"
+#include <thread>
 
 /** Constants related to world generation */
 enum LandscapeGenerator {
@@ -61,7 +62,7 @@ struct GenWorldInfo {
 	uint size_y;           ///< Y-size of the map
 	GWDoneProc *proc;      ///< Proc that is called when done (can be NULL)
 	GWAbortProc *abortp;   ///< Proc that is called when aborting (can be NULL)
-	class ThreadObject *thread; ///< The thread we are in (can be NULL)
+	std::thread thread;    ///< The thread we are in (joinable if a thread was created)
 };
 
 /** Current stage of world generation process */

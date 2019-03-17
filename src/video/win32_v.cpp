@@ -19,7 +19,7 @@
 #include "../core/math_func.hpp"
 #include "../core/random_func.hpp"
 #include "../texteff.hpp"
-#include "../thread/thread.h"
+#include "../thread.h"
 #include "../progress.h"
 #include "../window_gui.h"
 #include "../window_func.h"
@@ -67,8 +67,6 @@ DWORD _imm_props;
 
 /** Whether the drawing is/may be done in a separate thread. */
 static bool _draw_threaded;
-/** Thread used to 'draw' to the screen, i.e. push data to the screen. */
-static ThreadObject *_draw_thread = NULL;
 /** Mutex to keep the access to the shared memory controlled. */
 static std::recursive_mutex *_draw_mutex = NULL;
 /** Signal to draw the next frame. */
@@ -395,7 +393,7 @@ static void PaintWindow(HDC dc)
 	DeleteDC(dc2);
 }
 
-static void PaintWindowThread(void *)
+static void PaintWindowThread()
 {
 	/* First tell the main thread we're started */
 	std::unique_lock<std::recursive_mutex> lock(*_draw_mutex);
@@ -426,8 +424,6 @@ static void PaintWindowThread(void *)
 
 		_draw_signal->wait(*_draw_mutex);
 	}
-
-	_draw_thread->Exit();
 }
 
 /** Forward key presses to the window system. */
@@ -1190,6 +1186,7 @@ void VideoDriver_Win32::MainLoop()
 	uint32 last_cur_ticks = cur_ticks;
 	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
 
+	std::thread draw_thread;
 	std::unique_lock<std::recursive_mutex> draw_lock;
 
 	if (_draw_threaded) {
@@ -1206,7 +1203,7 @@ void VideoDriver_Win32::MainLoop()
 			draw_lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
 
 			_draw_continue = true;
-			_draw_threaded = ThreadObject::New(&PaintWindowThread, NULL, &_draw_thread, "ottd:draw-win32");
+			_draw_threaded = StartNewThread(&draw_thread, "ottd:draw-win32", &PaintWindowThread);
 
 			/* Free the mutex if we won't be able to use it. */
 			if (!_draw_threaded) {
@@ -1308,11 +1305,10 @@ void VideoDriver_Win32::MainLoop()
 		_draw_signal->notify_all();
 		if (draw_lock.owns_lock()) draw_lock.unlock();
 		draw_lock.release();
-		_draw_thread->Join();
+		draw_thread.join();
 
 		delete _draw_mutex;
 		delete _draw_signal;
-		delete _draw_thread;
 
 		_draw_mutex = NULL;
 	}

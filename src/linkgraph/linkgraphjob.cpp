@@ -39,7 +39,6 @@ LinkGraphJob::LinkGraphJob(const LinkGraph &orig) :
 		 * This is on purpose. */
 		link_graph(orig),
 		settings(_settings_game.linkgraph),
-		thread(NULL),
 		join_date(_date + _settings_game.linkgraph.recalc_time)
 {
 }
@@ -61,8 +60,7 @@ void LinkGraphJob::EraseFlows(NodeID from)
  */
 void LinkGraphJob::SpawnThread()
 {
-	if (!ThreadObject::New(&(LinkGraphSchedule::Run), this, &this->thread, "ottd:linkgraph")) {
-		this->thread = NULL;
+	if (!StartNewThread(&this->thread, "ottd:linkgraph", &(LinkGraphSchedule::Run), this)) {
 		/* Of course this will hang a bit.
 		 * On the other hand, if you want to play games which make this hang noticably
 		 * on a platform without threads then you'll probably get other problems first.
@@ -79,10 +77,8 @@ void LinkGraphJob::SpawnThread()
  */
 void LinkGraphJob::JoinThread()
 {
-	if (this->thread != NULL) {
-		this->thread->Join();
-		delete this->thread;
-		this->thread = NULL;
+	if (this->thread.joinable()) {
+		this->thread.join();
 	}
 }
 

@@ -17,7 +17,7 @@
 #include "../rev.h"
 #include "../blitter/factory.hpp"
 #include "../network/network.h"
-#include "../thread/thread.h"
+#include "../thread.h"
 #include "../progress.h"
 #include "../core/random_func.hpp"
 #include "../core/math_func.hpp"
@@ -38,8 +38,6 @@ static bool _all_modes;
 
 /** Whether the drawing is/may be done in a separate thread. */
 static bool _draw_threaded;
-/** Thread used to 'draw' to the screen, i.e. push data to the screen. */
-static ThreadObject *_draw_thread = NULL;
 /** Mutex to keep the access to the shared memory controlled. */
 static std::recursive_mutex *_draw_mutex = NULL;
 /** Signal to draw the next frame. */
@@ -173,7 +171,7 @@ static void DrawSurfaceToScreen()
 	}
 }
 
-static void DrawSurfaceToScreenThread(void *)
+static void DrawSurfaceToScreenThread()
 {
 	/* First tell the main thread we're started */
 	std::unique_lock<std::recursive_mutex> lock(*_draw_mutex);
@@ -188,8 +186,6 @@ static void DrawSurfaceToScreenThread(void *)
 		DrawSurfaceToScreen();
 		_draw_signal->wait(lock);
 	}
-
-	_draw_thread->Exit();
 }
 
 static const Dimension _default_resolutions[] = {
@@ -671,6 +667,7 @@ void VideoDriver_SDL::MainLoop()
 
 	CheckPaletteAnim();
 
+	std::thread draw_thread;
 	std::unique_lock<std::recursive_mutex> draw_lock;
 	if (_draw_threaded) {
 		/* Initialise the mutex first, because that's the thing we *need*
@@ -683,7 +680,7 @@ void VideoDriver_SDL::MainLoop()
 			_draw_signal = new std::condition_variable_any();
 			_draw_continue = true;
 
-			_draw_threaded = ThreadObject::New(&DrawSurfaceToScreenThread, NULL, &_draw_thread, "ottd:draw-sdl");
+			_draw_threaded = StartNewThread(&draw_thread, "ottd:draw-sdl", &DrawSurfaceToScreenThread);
 
 			/* Free the mutex if we won't be able to use it. */
 			if (!_draw_threaded) {
@@ -795,15 +792,13 @@ void VideoDriver_SDL::MainLoop()
 		_draw_signal->notify_one();
 		if (draw_lock.owns_lock()) draw_lock.unlock();
 		draw_lock.release();
-		_draw_thread->Join();
+		draw_thread.join();
 
 		delete _draw_mutex;
 		delete _draw_signal;
-		delete _draw_thread;
 
 		_draw_mutex = NULL;
 		_draw_signal = NULL;
-		_draw_thread = NULL;
 	}
 }
 

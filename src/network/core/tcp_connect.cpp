@@ -12,7 +12,7 @@
  */
 
 #include "../../stdafx.h"
-#include "../../thread/thread.h"
+#include "../../thread.h"
 
 #include "tcp.h"
 
@@ -33,7 +33,7 @@ TCPConnecter::TCPConnecter(const NetworkAddress &address) :
 	address(address)
 {
 	_tcp_connecters.push_back(this);
-	if (!ThreadObject::New(TCPConnecter::ThreadEntry, this, &this->thread, "ottd:tcp")) {
+	if (!StartNewThread(NULL, "ottd:tcp", &TCPConnecter::ThreadEntry, this)) {
 		this->Connect();
 	}
 }
@@ -53,9 +53,9 @@ void TCPConnecter::Connect()
  * Entry point for the new threads.
  * @param param the TCPConnecter instance to call Connect on.
  */
-/* static */ void TCPConnecter::ThreadEntry(void *param)
+/* static */ void TCPConnecter::ThreadEntry(TCPConnecter *param)
 {
-	static_cast<TCPConnecter*>(param)->Connect();
+	param->Connect();
 }
 
 /**

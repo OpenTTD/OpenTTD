@@ -17,6 +17,7 @@
 #include "../../debug.h"
 #include "../../string_func.h"
 #include "../../fios.h"
+#include "../../thread.h"
 
 
 #include <dirent.h>
@@ -43,11 +44,17 @@
 #include <sys/sysctl.h>
 #endif
 
+#ifndef NO_THREADS
+#include <pthread.h>
+#endif
+
 #if defined(__APPLE__)
-	#if defined(WITH_SDL)
+#	if defined(WITH_SDL)
 		/* the mac implementation needs this file included in the same file as main() */
-		#include <SDL.h>
-	#endif
+#		include <SDL.h>
+#	endif
+
+#	include "../macosx/macos.h"
 #endif
 
 #include "../../safeguards.h"
@@ -317,4 +324,15 @@ void OSOpenBrowser(const char *url)
 	DEBUG(misc, 0, "Failed to open url: %s", url);
 	exit(0);
 }
-#endif
+#endif /* __APPLE__ */
+
+void SetCurrentThreadName(const char *threadName) {
+#if !defined(NO_THREADS) && defined(__GLIBC__)
+#if __GLIBC_PREREQ(2, 12)
+	if (threadName) pthread_setname_np(pthread_self(), threadName);
+#endif /* __GLIBC_PREREQ(2, 12) */
+#endif /* !defined(NO_THREADS) && defined(__GLIBC__) */
+#if defined(__APPLE__)
+	MacOSSetThreadName(threadName);
+#endif /* defined(__APPLE__) */
+}

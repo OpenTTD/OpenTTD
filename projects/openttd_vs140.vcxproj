@@ -1334,8 +1334,7 @@
     <ResourceCompile Include="..\src\os\windows\ottdres.rc" />
     <ClCompile Include="..\src\os\windows\string_uniscribe.cpp" />
     <ClCompile Include="..\src\os\windows\win32.cpp" />
-    <ClInclude Include="..\src\thread\thread.h" />
-    <ClCompile Include="..\src\thread\thread_win32.cpp" />
+    <ClInclude Include="..\src\thread.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\media\openttd.ico" />

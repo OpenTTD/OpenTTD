@@ -18,6 +18,7 @@
 #include "../../core/random_func.hpp"
 #include "../../string_func.h"
 #include "../../textbuf_gui.h"
+#include "../../thread.h"
 
 #include "table/strings.h"
 
@@ -225,4 +226,8 @@ void OSOpenBrowser(const char *url)
 {
 	// stub only
 	DEBUG(misc, 0, "Failed to open url: %s", url);
+}
+
+void SetCurrentThreadName(const char *)
+{
 }

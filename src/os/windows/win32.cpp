@@ -30,6 +30,7 @@
 #include <errno.h>
 #include <sys/stat.h>
 #include "../../language.h"
+#include "../../thread.h"
 
 #include "../../safeguards.h"
 
@@ -816,12 +817,12 @@ PACK_N(struct THREADNAME_INFO {
 /**
  * Signal thread name to any attached debuggers.
  */
-void SetWin32ThreadName(DWORD dwThreadID, const char* threadName)
+void SetCurrentThreadName(const char *threadName)
 {
 	THREADNAME_INFO info;
 	info.dwType = 0x1000;
 	info.szName = threadName;
-	info.dwThreadID = dwThreadID;
+	info.dwThreadID = -1;
 	info.dwFlags = 0;
 
 #pragma warning(push)
@@ -832,4 +833,6 @@ void SetWin32ThreadName(DWORD dwThreadID, const char* threadName)
 	}
 #pragma warning(pop)
 }
+#else
+void SetCurrentThreadName(const char *) {}
 #endif

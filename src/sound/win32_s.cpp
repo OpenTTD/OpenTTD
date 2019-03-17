@@ -20,6 +20,7 @@
 #include <windows.h>
 #include <mmsystem.h>
 #include "../os/windows/win32.h"
+#include "../thread.h"
 
 #include "../safeguards.h"
 
@@ -42,7 +43,7 @@ static void PrepareHeader(WAVEHDR *hdr)
 
 static DWORD WINAPI SoundThread(LPVOID arg)
 {
-	SetWin32ThreadName(-1, "ottd:win-sound");
+	SetCurrentThreadName("ottd:win-sound");
 
 	do {
 		for (WAVEHDR *hdr = _wave_hdr; hdr != endof(_wave_hdr); hdr++) {
