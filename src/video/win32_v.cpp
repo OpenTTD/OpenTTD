@@ -1149,7 +1149,7 @@ const char *VideoDriver_Win32::Start(const char * const *parm)
 
 	MarkWholeScreenDirty();
 
-	_draw_threaded = GetDriverParam(parm, "no_threads") == NULL && GetDriverParam(parm, "no_thread") == NULL && GetCPUCoreCount() > 1;
+	_draw_threaded = GetDriverParam(parm, "no_threads") == NULL && GetDriverParam(parm, "no_thread") == NULL && std::thread::hardware_concurrency() > 1;
 
 	return NULL;
 }

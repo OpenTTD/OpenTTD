@@ -30,12 +30,6 @@ inline void CSleep(int milliseconds)
 }
 
 /**
- * Get number of processor cores in the system, including HyperThreading or similar.
- * @return Total number of processor cores.
- */
-uint GetCPUCoreCount();
-
-/**
  * Name the thread this function is called on for the debugger.
  * @param name Name to set for the thread..
  */

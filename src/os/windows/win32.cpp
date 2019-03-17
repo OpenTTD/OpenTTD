@@ -725,14 +725,6 @@ const char *GetCurrentLocale(const char *)
 	return retbuf;
 }
 
-uint GetCPUCoreCount()
-{
-	SYSTEM_INFO info;
-
-	GetSystemInfo(&info);
-	return info.dwNumberOfProcessors;
-}
-
 
 static WCHAR _cur_iso_locale[16] = L"";
 
