@@ -4530,6 +4530,11 @@ static void FeatureChangeInfo(ByteReader *buf)
 	uint numinfo  = buf->ReadByte();
 	uint engine   = buf->ReadExtendedByte();
 
+	if (feature >= GSF_END) {
+		grfmsg(1, "FeatureChangeInfo: Unsupported feature 0x%02X, skipping", feature);
+		return;
+	}
+
 	grfmsg(6, "FeatureChangeInfo: Feature 0x%02X, %d properties, to apply to %d+%d",
 	               feature, numprops, engine, numinfo);
 
@@ -4649,6 +4654,12 @@ static void NewSpriteSet(ByteReader *buf)
 	}
 	uint16 num_ents = buf->ReadExtendedByte();
 
+	if (feature >= GSF_END) {
+		_cur.skip_sprites = num_sets * num_ents;
+		grfmsg(1, "NewSpriteSet: Unsupported feature 0x%02X, skipping %d sprites", feature, _cur.skip_sprites);
+		return;
+	}
+
 	_cur.AddSpriteSets(feature, _cur.spriteid, first_set, num_sets, num_ents);
 
 	grfmsg(7, "New sprite set at %d of feature 0x%02X, consisting of %d sets with %d views each (total %d)",
@@ -4743,6 +4754,11 @@ static void NewSpriteGroup(ByteReader *buf)
 	SpriteGroup *act_group = NULL;
 
 	uint8 feature = buf->ReadByte();
+	if (feature >= GSF_END) {
+		grfmsg(1, "NewSpriteGroup: Unsupported feature 0x%02X, skipping", feature);
+		return;
+	}
+
 	uint8 setid   = buf->ReadByte();
 	uint8 type    = buf->ReadByte();
 
@@ -5573,6 +5589,11 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 	uint8 feature = buf->ReadByte();
 	uint8 idcount = buf->ReadByte();
 
+	if (feature >= GSF_END) {
+		grfmsg(1, "FeatureMapSpriteGroup: Unsupported feature 0x%02X, skipping", feature);
+		return;
+	}
+
 	/* If idcount is zero, this is a feature callback */
 	if (idcount == 0) {
 		/* Skip number of cargo ids? */
@@ -5667,6 +5688,11 @@ static void FeatureNewName(ByteReader *buf)
 	bool new_scheme = _cur.grffile->grf_version >= 7;
 
 	uint8 feature  = buf->ReadByte();
+	if (feature >= GSF_END) {
+		grfmsg(1, "FeatureNewName: Unsupported feature 0x%02X, skipping", feature);
+		return;
+	}
+
 	uint8 lang     = buf->ReadByte();
 	uint8 num      = buf->ReadByte();
 	bool generic   = HasBit(lang, 7);
