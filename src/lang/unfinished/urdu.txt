@@ -1380,7 +1380,6 @@ STR_QUIT_NO                                                     :{BLACK}نہیں
 
 # Supported OSes
 STR_OSNAME_WINDOWS                                              :ونڈوز
-STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :یونیکس
 STR_OSNAME_OSX                                                  :OS{NBSP}X
 STR_OSNAME_HAIKU                                                :Haiku

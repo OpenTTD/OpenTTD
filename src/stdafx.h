@@ -242,15 +242,6 @@
 
 #endif /* defined(_MSC_VER) */
 
-#if defined(DOS)
-	/* The DOS port does not have all signals/signal functions. */
-	#define strsignal(sig) ""
-	/* Use 'no floating point' for bus errors; SIGBUS does not exist
-	 * for DOS, SIGNOFP for other platforms. So it's fairly safe
-	 * to interchange those. */
-	#define SIGBUS SIGNOFP
-#endif
-
 /* NOTE: the string returned by these functions is only valid until the next
  * call to the same function and is not thread- or reentrancy-safe */
 #if !defined(STRGEN) && !defined(SETTINGSGEN)
@@ -436,10 +427,7 @@ void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
 	#define OTTD_ASSERT
 #endif
 
-#if defined(__DJGPP__)
-	/* DJGPP doesn't have C++ conformant _stricmp... */
-	#define _stricmp stricmp
-#elif defined(OPENBSD)
+#if defined(OPENBSD)
 	/* OpenBSD uses strcasecmp(3) */
 	#define _stricmp strcasecmp
 #endif

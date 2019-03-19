@@ -1114,10 +1114,7 @@ music/midifile.cpp
 	#if WIN32
 		music/win32_m.cpp
 	#else
-		#if DOS
-		#else
-			music/extmidi.cpp
-		#end
+		music/extmidi.cpp
 	#end
 	#if HAIKU
 		music/bemidi.cpp

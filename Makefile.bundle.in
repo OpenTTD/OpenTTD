@@ -89,12 +89,6 @@ ifdef MENU_DIR
 endif
 ifeq ($(TTD), openttd.exe)
 	$(Q)unix2dos "$(BUNDLE_DIR)/docs/"* "$(BUNDLE_DIR)/README.md" "$(BUNDLE_DIR)/COPYING" "$(BUNDLE_DIR)/changelog.txt" "$(BUNDLE_DIR)/known-bugs.txt"
-ifeq ($(OS), DOS)
-	$(Q)cp "$(ROOT_DIR)/os/dos/cwsdpmi/cwsdpmi.txt"   "$(BUNDLE_DIR)/docs/"
-ifndef STRIP
-	$(Q)cp "$(ROOT_DIR)/os/dos/cwsdpmi/cwsdpmi.exe"   "$(TTD_DIR)/"
-endif
-endif
 endif
 
 ### Packing the current bundle into several compressed file formats ###

@@ -152,7 +152,6 @@ OpenTTD has been ported to several platforms and operating systems. It should
 not be very difficult to port it to a new platform. The currently working
 platforms are:
 
-- DOS (Allegro)
 - FreeBSD (SDL)
 - Haiku (SDL)
 - Linux (SDL or Allegro)
@@ -555,17 +554,6 @@ Use '`make`', but do a '`./configure`' before the first build.
 A comprehensive GNU build environment is required to build the OS/2 version.
 See the docs/Readme_OS2.txt file for more information.
 
-### DOS:
-
-A build environment with DJGPP is needed as well as libraries such as
-Allegro, zlib and libpng, which all can be downloaded from the DJGPP
-website. Compilation is straight forward: use '`make`', but do a '`./configure`'
-before the first build. The build binary will need cwsdpmi.exe to be in
-the same directory as the openttd executable. cwsdpmi.exe can be found in
-the os/dos/cwsdpmi subdirectory. If you compile with stripping turned on a
-binary will be generated that does not need cwsdpmi.exe by adding the
-cswdstub.exe to the created OpenTTD binary.
-
 ### 7.1) Required/optional libraries
 
 The following libraries are used by OpenTTD for:
@@ -751,16 +739,6 @@ src/3rdparty/os2 are distributed partly under the GNU Lesser General Public
 License 2.1, and partly under the (3-clause) BSD license. The exact licensing
 terms can be found in src/3rdparty/os2/getaddrinfo.c resp.
 src/3rdparty/os2/getnameinfo.c.
-
-The exe2coff implementation in os/dos/exe2coff is available under the
-GPL, with a number of additional terms. See os/dos/exe2coff/copying and
-os/dos/exe2coff/copying.dj for the exact licensing terms.
-
-The CWSDPMI implementation in os/dos/cwsdpmi is distributed under a
-custom binary-only license that prohibits modification. The exact
-licensing terms can be found in os/dos/cwsdpmi/cwsdpmi.txt. The sources
-for these files can be downloaded at its author site, at
-http://homer.rice.edu/~sandmann/cwsdpmi/csdpmi5s.zip.
 
 CONTRIBUTING.md is adapted from
 [Bootstrap](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md)

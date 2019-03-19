@@ -299,8 +299,6 @@ void AskExitGame()
 		SetDParam(0, STR_OSNAME_OS2);
 #elif defined(SUNOS)
 		SetDParam(0, STR_OSNAME_SUNOS);
-#elif defined(DOS)
-		SetDParam(0, STR_OSNAME_DOS);
 #else
 		SetDParam(0, STR_OSNAME_UNIX);
 #endif

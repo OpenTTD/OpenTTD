@@ -35,7 +35,7 @@ unsigned __int64 ottd_rdtsc();
 #endif
 
 /* rdtsc for all other *nix-en (hopefully). Use GCC syntax */
-#if (defined(__i386__) || defined(__x86_64__)) && !defined(__DJGPP__) && !defined(RDTSC_AVAILABLE)
+#if (defined(__i386__) || defined(__x86_64__)) && !defined(RDTSC_AVAILABLE)
 uint64 ottd_rdtsc()
 {
 	uint32 high, low;
