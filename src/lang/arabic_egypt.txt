@@ -1439,7 +1439,6 @@ STR_QUIT_NO                                                     :{BLACK}لا
 
 # Supported OSes
 STR_OSNAME_WINDOWS                                              :ويندوز
-STR_OSNAME_DOS                                                  :دوس
 STR_OSNAME_UNIX                                                 :يونكس
 STR_OSNAME_OSX                                                  :OS{NBSP}X
 STR_OSNAME_HAIKU                                                :هايكو

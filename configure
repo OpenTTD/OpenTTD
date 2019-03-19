@@ -75,7 +75,7 @@ save_params
 make_cflags_and_ldflags
 
 EXE=""
-if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "OS2" ] || [ "$os" = "DOS" ]; then
+if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "OS2" ]; then
 	EXE=".exe"
 fi
 
@@ -116,7 +116,6 @@ AWKCOMMAND='
 		if ($0 == "DEDICATED"   && "'$enable_dedicated'" != "1")   { next; }
 		if ($0 == "AI"          && "'$enable_ai'" == "0")          { next; }
 		if ($0 == "COCOA"       && "'$with_cocoa'" == "0")         { next; }
-		if ($0 == "DOS"         && "'$os'" != "DOS")               { next; }
 		if ($0 == "HAIKU"       && "'$os'" != "HAIKU")             { next; }
 		if ($0 == "WIN32"       && "'$os'" != "MINGW" &&
 		                 "'$os'" != "CYGWIN" && "'$os'" != "MSVC") { next; }

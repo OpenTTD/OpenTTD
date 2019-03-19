@@ -1527,7 +1527,6 @@ STR_QUIT_NO                                                     :{BLACK}Tidak
 
 # Supported OSes
 STR_OSNAME_WINDOWS                                              :Tetingkap
-STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS{NBSP}X
 STR_OSNAME_HAIKU                                                :Haiku

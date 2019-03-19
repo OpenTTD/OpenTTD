@@ -1000,10 +1000,6 @@ static bool ChangeWorkingDirectoryToExecutable(const char *exe)
 	char *s = strrchr(tmp, PATHSEPCHAR);
 	if (s != NULL) {
 		*s = '\0';
-#if defined(__DJGPP__)
-		/* If we want to go to the root, we can't use cd C:, but we must use '/' */
-		if (s > tmp && *(s - 1) == ':') chdir("/");
-#endif
 		if (chdir(tmp) != 0) {
 			DEBUG(misc, 0, "Directory with the binary does not exist?");
 		} else {
@@ -1056,7 +1052,7 @@ void DetermineBasePaths(const char *exe)
 	AppendPathSeparator(tmp, lastof(tmp));
 	_searchpaths[SP_PERSONAL_DIR_XDG] = stredup(tmp);
 #endif
-#if defined(DOS) || defined(OS2) || !defined(WITH_PERSONAL_DIR)
+#if defined(OS2) || !defined(WITH_PERSONAL_DIR)
 	_searchpaths[SP_PERSONAL_DIR] = NULL;
 #else
 #ifdef __HAIKU__

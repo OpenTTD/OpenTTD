@@ -1776,7 +1776,6 @@ STR_QUIT_NO                                                     :{BLACK}否
 
 # Supported OSes
 STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS{NBSP}X
 STR_OSNAME_HAIKU                                                :Haiku

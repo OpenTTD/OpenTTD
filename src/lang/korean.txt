@@ -1800,7 +1800,6 @@ STR_QUIT_NO                                                     :{BLACK}아니�
 
 # Supported OSes
 STR_OSNAME_WINDOWS                                              :{G=f}Windows
-STR_OSNAME_DOS                                                  :{G=f}DOS
 STR_OSNAME_UNIX                                                 :{G=f}Unix
 STR_OSNAME_OSX                                                  :{G=f}OS{NBSP}X
 STR_OSNAME_HAIKU                                                :{G=f}Haiku
