@@ -2753,12 +2753,12 @@ struct IndustryCargoesWindow : public Window {
 		}
 	}
 
-	virtual void OnHover(Point pt, int widget)
+	bool OnTooltip(Point pt, int widget, TooltipCloseCondition close_cond)
 	{
-		if (widget != WID_IC_PANEL) return;
+		if (widget != WID_IC_PANEL) return false;
 
 		Point fieldxy, xy;
-		if (!CalculatePositionInWidget(pt, &fieldxy, &xy)) return;
+		if (!CalculatePositionInWidget(pt, &fieldxy, &xy)) return false;
 
 		const CargoesField *fld = this->fields[fieldxy.y].columns + fieldxy.x;
 		CargoID cid = INVALID_CARGO;
@@ -2777,9 +2777,9 @@ struct IndustryCargoesWindow : public Window {
 
 			case CFT_INDUSTRY:
 				if (fld->u.industry.ind_type < NUM_INDUSTRYTYPES && (this->ind_cargo >= NUM_INDUSTRYTYPES || fieldxy.x != 2)) {
-					GuiShowTooltips(this, STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP, 0, NULL, TCC_HOVER);
+					GuiShowTooltips(this, STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP, 0, NULL, close_cond);
 				}
-				return;
+				return true;
 
 			default:
 				break;
@@ -2788,8 +2788,11 @@ struct IndustryCargoesWindow : public Window {
 			const CargoSpec *csp = CargoSpec::Get(cid);
 			uint64 params[5];
 			params[0] = csp->name;
-			GuiShowTooltips(this, STR_INDUSTRY_CARGOES_CARGO_TOOLTIP, 1, params, TCC_HOVER);
+			GuiShowTooltips(this, STR_INDUSTRY_CARGOES_CARGO_TOOLTIP, 1, params, close_cond);
+			return true;
 		}
+
+		return false;
 	}
 
 	virtual void OnResize()
