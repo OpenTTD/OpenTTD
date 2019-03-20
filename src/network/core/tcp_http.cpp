@@ -11,8 +11,6 @@
  * @file tcp_http.cpp Basic functions to receive and send HTTP TCP packets.
  */
 
-#ifdef ENABLE_NETWORK
-
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "../../rev.h"
@@ -331,5 +329,3 @@ int NetworkHTTPSocketHandler::Receive()
 		iter++;
 	}
 }
-
-#endif /* ENABLE_NETWORK */

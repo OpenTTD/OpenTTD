@@ -14,8 +14,6 @@
 
 #include "core/game.h"
 
-#ifdef ENABLE_NETWORK
-
 /** How many clients can we have */
 static const uint MAX_CLIENTS = 255;
 
@@ -130,5 +128,4 @@ enum NetworkErrorCode {
 	NETWORK_ERROR_END,
 };
 
-#endif /* ENABLE_NETWORK */
 #endif /* NETWORK_TYPE_H */

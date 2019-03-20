@@ -26,8 +26,6 @@
 #include "../openttd.h"
 #include "../company_type.h"
 
-#ifdef ENABLE_NETWORK
-
 extern NetworkServerGameInfo _network_game_info;
 extern NetworkCompanyState *_network_company_states;
 
@@ -90,5 +88,4 @@ void NetworkChatMessageLoop();
 
 void NetworkAfterNewGRFScan();
 
-#endif /* ENABLE_NETWORK */
 #endif /* NETWORK_FUNC_H */

@@ -11,8 +11,6 @@
 
 #include "../stdafx.h"
 
-#ifdef ENABLE_NETWORK
-
 #include "../gfx_func.h"
 #include "../network/network.h"
 #include "../network/network_internal.h"
@@ -316,5 +314,3 @@ void VideoDriver_Dedicated::MainLoop()
 		}
 	}
 }
-
-#endif /* ENABLE_NETWORK */

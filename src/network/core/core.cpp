@@ -11,8 +11,6 @@
  * @file core.cpp Functions used to initialize/shut down the core network
  */
 
-#ifdef ENABLE_NETWORK
-
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "os_abstraction.h"
@@ -80,5 +78,3 @@ void NetworkSocketHandler::ReceiveGRFIdentifier(Packet *p, GRFIdentifier *grf)
 		grf->md5sum[j] = p->Recv_uint8();
 	}
 }
-
-#endif /* ENABLE_NETWORK */

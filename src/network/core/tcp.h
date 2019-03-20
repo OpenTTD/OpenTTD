@@ -17,8 +17,6 @@
 #include "address.h"
 #include "packet.h"
 
-#ifdef ENABLE_NETWORK
-
 /** The states of sending the packets. */
 enum SendPacketsState {
 	SPS_CLOSED,      ///< The connection got closed.
@@ -98,7 +96,5 @@ public:
 	static void CheckCallbacks();
 	static void KillAll();
 };
-
-#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_TCP_H */

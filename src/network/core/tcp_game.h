@@ -19,8 +19,6 @@
 #include "../network_type.h"
 #include "../../core/pool_type.hpp"
 
-#ifdef ENABLE_NETWORK
-
 /**
  * Enum with all types of TCP packets.
  * For the exact meaning, look at #NetworkGameSocketHandler.
@@ -557,7 +555,5 @@ public:
 	const char *ReceiveCommand(Packet *p, CommandPacket *cp);
 	void SendCommand(Packet *p, const CommandPacket *cp);
 };
-
-#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_TCP_GAME_H */

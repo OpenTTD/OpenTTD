@@ -292,10 +292,8 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	 * the client. This is needed as it needs to know whether "you" really
 	 * are the current local company. */
 	Backup<CompanyByte> cur_company(_current_company, old_owner, FILE_LINE);
-#ifdef ENABLE_NETWORK
 	/* In all cases, make spectators of clients connected to that company */
 	if (_networking) NetworkClientsToSpectators(old_owner);
-#endif /* ENABLE_NETWORK */
 	if (old_owner == _local_company) {
 		/* Single player cheated to AI company.
 		 * There are no spectators in single player, so we must pick some other company. */

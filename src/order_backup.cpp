@@ -193,11 +193,7 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	 * but compiled it. A network client has its own variable for the unique
 	 * client/user identifier. Finally if networking isn't compiled in the
 	 * default is just plain and simple: 0. */
-#ifdef ENABLE_NETWORK
 	uint32 user = _networking && !_network_server ? _network_own_client_id : CLIENT_ID_SERVER;
-#else
-	uint32 user = 0;
-#endif
 
 	OrderBackup *ob;
 	FOR_ALL_ORDER_BACKUPS(ob) {

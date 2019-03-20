@@ -12,8 +12,6 @@
 #ifndef NETWORK_BASE_H
 #define NETWORK_BASE_H
 
-#ifdef ENABLE_NETWORK
-
 #include "network_type.h"
 #include "core/address.h"
 #include "../core/pool_type.hpp"
@@ -54,5 +52,4 @@ struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_p
  */
 #define FOR_ALL_CLIENT_INFOS(var) FOR_ALL_CLIENT_INFOS_FROM(var, 0)
 
-#endif /* ENABLE_NETWORK */
 #endif /* NETWORK_BASE_H */

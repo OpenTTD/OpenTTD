@@ -12,8 +12,6 @@
 #ifndef NETWORK_ADMIN_H
 #define NETWORK_ADMIN_H
 
-#ifdef ENABLE_NETWORK
-
 #include "network_internal.h"
 #include "core/tcp_listen.h"
 #include "core/tcp_admin.h"
@@ -124,5 +122,4 @@ void NetworkAdminConsole(const char *origin, const char *string);
 void NetworkAdminGameScript(const char *json);
 void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacket *cp);
 
-#endif /* ENABLE_NETWORK */
 #endif /* NETWORK_ADMIN_H */

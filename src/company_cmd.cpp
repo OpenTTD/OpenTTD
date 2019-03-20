@@ -104,10 +104,8 @@ void SetLocalCompany(CompanyID new_company)
 	/* company could also be COMPANY_SPECTATOR or OWNER_NONE */
 	assert(Company::IsValidID(new_company) || new_company == COMPANY_SPECTATOR || new_company == OWNER_NONE);
 
-#ifdef ENABLE_NETWORK
 	/* Delete the chat window, if you were team chatting. */
 	InvalidateWindowData(WC_SEND_NETWORK_MSG, DESTTYPE_TEAM, _local_company);
-#endif
 
 	assert(IsLocalCompany());
 
@@ -597,9 +595,7 @@ void StartupCompanies()
 /** Start a new competitor company if possible. */
 static bool MaybeStartNewCompany()
 {
-#ifdef ENABLE_NETWORK
 	if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) return false;
-#endif /* ENABLE_NETWORK */
 
 	Company *c;
 
@@ -792,9 +788,7 @@ void CompanyNewsInformation::FillData(const Company *c, const Company *other)
  */
 void CompanyAdminUpdate(const Company *company)
 {
-#ifdef ENABLE_NETWORK
 	if (_network_server) NetworkAdminCompanyUpdate(company);
-#endif /* ENABLE_NETWORK */
 }
 
 /**
@@ -804,9 +798,7 @@ void CompanyAdminUpdate(const Company *company)
  */
 void CompanyAdminRemove(CompanyID company_id, CompanyRemoveReason reason)
 {
-#ifdef ENABLE_NETWORK
 	if (_network_server) NetworkAdminCompanyRemove(company_id, (AdminCompanyRemoveReason)reason);
-#endif /* ENABLE_NETWORK */
 }
 
 /**
@@ -832,7 +824,6 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			/* This command is only executed in a multiplayer game */
 			if (!_networking) return CMD_ERROR;
 
-#ifdef ENABLE_NETWORK
 			/* Has the network client a correct ClientIndex? */
 			if (!(flags & DC_EXEC)) return CommandCost();
 
@@ -876,7 +867,6 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			}
 
 			NetworkServerNewCompany(c, ci);
-#endif /* ENABLE_NETWORK */
 			break;
 		}
 
@@ -885,9 +875,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			if (company_id != INVALID_COMPANY && (company_id >= MAX_COMPANIES || Company::IsValidID(company_id))) return CMD_ERROR;
 			Company *c = DoStartupNewCompany(true, company_id);
-#ifdef ENABLE_NETWORK
 			if (c != NULL) NetworkServerNewCompany(c, NULL);
-#endif /* ENABLE_NETWORK */
 			break;
 		}
 

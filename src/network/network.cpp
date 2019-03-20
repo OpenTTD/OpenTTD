@@ -11,8 +11,6 @@
 
 #include "../stdafx.h"
 
-#ifdef ENABLE_NETWORK
-
 #include "../strings_func.h"
 #include "../command_func.h"
 #include "../date_func.h"
@@ -1172,5 +1170,3 @@ bool IsNetworkCompatibleVersion(const char *other)
 	const char *hash2 = ExtractNetworkRevisionHash(other);
 	return hash1 && hash2 && (strncmp(hash1, hash2, GITHASH_SUFFIX_LEN) == 0);
 }
-
-#endif /* ENABLE_NETWORK */

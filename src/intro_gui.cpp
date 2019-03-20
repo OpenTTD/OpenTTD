@@ -113,11 +113,9 @@ struct SelectGameWindow : public Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-#ifdef ENABLE_NETWORK
 		/* Do not create a network server when you (just) have closed one of the game
 		 * creation/load windows for the network server. */
 		if (IsInsideMM(widget, WID_SGI_GENERATE_GAME, WID_SGI_EDIT_SCENARIO + 1)) _is_network_server = false;
-#endif /* ENABLE_NETWORK */
 
 		switch (widget) {
 			case WID_SGI_GENERATE_GAME:

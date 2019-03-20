@@ -154,12 +154,10 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
 		case PM_PAUSED_GAME_SCRIPT:
 			break;
 
-#ifdef ENABLE_NETWORK
 		case PM_PAUSED_JOIN:
 		case PM_PAUSED_ACTIVE_CLIENTS:
 			if (!_networking) return CMD_ERROR;
 			break;
-#endif /* ENABLE_NETWORK */
 
 		default: return CMD_ERROR;
 	}
@@ -172,9 +170,7 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
 				AskUnsafeUnpauseCallback
 			);
 		} else {
-#ifdef ENABLE_NETWORK
 			PauseMode prev_mode = _pause_mode;
-#endif /* ENABLE_NETWORK */
 
 			if (p2 == 0) {
 				_pause_mode = _pause_mode & ~p1;
@@ -182,9 +178,7 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
 				_pause_mode = _pause_mode | p1;
 			}
 
-#ifdef ENABLE_NETWORK
 			NetworkHandlePauseChange(prev_mode, (PauseMode)p1);
-#endif /* ENABLE_NETWORK */
 		}
 
 		SetWindowDirty(WC_STATUS_BAR, 0);

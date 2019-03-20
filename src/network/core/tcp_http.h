@@ -16,8 +16,6 @@
 
 #include "tcp.h"
 
-#ifdef ENABLE_NETWORK
-
 /** Callback for when the HTTP handler has something to tell us. */
 struct HTTPCallback {
 	/**
@@ -121,7 +119,5 @@ public:
 		this->data = NULL;
 	}
 };
-
-#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_TCP_HTTP_H */

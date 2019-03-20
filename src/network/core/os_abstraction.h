@@ -18,8 +18,6 @@
 
 /* Include standard stuff per OS */
 
-#ifdef ENABLE_NETWORK
-
 /* Windows stuff */
 #if defined(_WIN32)
 #include <errno.h>
@@ -171,7 +169,5 @@ static inline bool SetNoDelay(SOCKET d)
 /* Make sure these structures have the size we expect them to be */
 assert_compile(sizeof(in_addr)  ==  4); ///< IPv4 addresses should be 4 bytes.
 assert_compile(sizeof(in6_addr) == 16); ///< IPv6 addresses should be 16 bytes.
-
-#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_OS_ABSTRACTION_H */

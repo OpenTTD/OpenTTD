@@ -137,12 +137,8 @@
 {
 	EnforcePrecondition(false, ScriptGame::IsMultiplayer());
 	EnforcePrecondition(false, ScriptClient::ResolveClientID(client) != ScriptClient::CLIENT_INVALID);
-#ifdef ENABLE_NETWORK
 	ClientIndex c = NetworkClientInfo::GetByClientID((::ClientID)client)->index;
 	return DoQuestion(uniqueid, c, true, question, type, buttons);
-#else
-	return false;
-#endif
 }
 
 /* static */ bool ScriptGoal::CloseQuestion(uint16 uniqueid)

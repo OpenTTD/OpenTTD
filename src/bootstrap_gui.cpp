@@ -13,7 +13,7 @@
 #include "base_media_base.h"
 #include "blitter/factory.hpp"
 
-#if defined(ENABLE_NETWORK) && defined(WITH_FREETYPE)
+#if defined(WITH_FREETYPE)
 
 #include "core/geometry_func.hpp"
 #include "fontcache.h"
@@ -204,7 +204,7 @@ public:
 	}
 };
 
-#endif /* defined(ENABLE_NETWORK) && defined(WITH_FREETYPE) */
+#endif /* defined(WITH_FREETYPE) */
 
 /**
  * Handle all procedures for bootstrapping OpenTTD without a base graphics set.
@@ -220,7 +220,7 @@ bool HandleBootstrap()
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) goto failure;
 
 	/* If there is no network or no freetype, then there is nothing we can do. Go straight to failure. */
-#if defined(ENABLE_NETWORK) && defined(WITH_FREETYPE) && (defined(WITH_FONTCONFIG) || defined(_WIN32) || defined(__APPLE__))
+#if defined(WITH_FREETYPE) && (defined(WITH_FONTCONFIG) || defined(_WIN32) || defined(__APPLE__))
 	if (!_network_available) goto failure;
 
 	/* First tell the game we're bootstrapping. */

@@ -86,9 +86,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 
 	if (_cursor.visible) UndrawMouseCursor();
 
-#ifdef ENABLE_NETWORK
 	if (_networking) NetworkUndrawChatMessage();
-#endif /* ENABLE_NETWORK */
 
 	blitter->ScrollBuffer(_screen.dst_ptr, left, top, width, height, xo, yo);
 	/* This part of the screen is now dirty. */
@@ -1288,9 +1286,7 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 		}
 	}
 
-#ifdef ENABLE_NETWORK
 	if (_networking) NetworkUndrawChatMessage();
-#endif /* ENABLE_NETWORK */
 
 	DrawOverlappedWindowForAll(left, top, right, bottom);
 

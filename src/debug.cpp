@@ -23,10 +23,8 @@
 
 #include <time.h>
 
-#if defined(ENABLE_NETWORK)
 #include "network/network_admin.h"
 SOCKET _debug_socket = INVALID_SOCKET;
-#endif /* ENABLE_NETWORK */
 
 #include "safeguards.h"
 
@@ -111,7 +109,6 @@ char *DumpDebugFacilityNames(char *buf, char *last)
  */
 static void debug_print(const char *dbg, const char *buf)
 {
-#if defined(ENABLE_NETWORK)
 	if (_debug_socket != INVALID_SOCKET) {
 		char buf2[1024 + 32];
 
@@ -121,7 +118,6 @@ static void debug_print(const char *dbg, const char *buf)
 		send(_debug_socket, buf2, (int)strlen(buf2), 0);
 		return;
 	}
-#endif /* ENABLE_NETWORK */
 	if (strcmp(dbg, "desync") == 0) {
 		static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
 		if (f == NULL) return;
@@ -146,9 +142,7 @@ static void debug_print(const char *dbg, const char *buf)
 #else
 		fputs(buffer, stderr);
 #endif
-#ifdef ENABLE_NETWORK
 		NetworkAdminConsole(dbg, buf);
-#endif /* ENABLE_NETWORK */
 		IConsoleDebug(dbg, buf);
 	}
 }

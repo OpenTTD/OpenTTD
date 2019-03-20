@@ -2387,11 +2387,9 @@ struct CompanyWindow : Window
 				break;
 			}
 
-#ifdef ENABLE_NETWORK
 			case WID_C_HAS_PASSWORD:
 				*size = maxdim(*size, GetSpriteSize(SPR_LOCK));
 				break;
-#endif /* ENABLE_NETWORK */
 		}
 	}
 
@@ -2498,13 +2496,11 @@ struct CompanyWindow : Window
 				break;
 			}
 
-#ifdef ENABLE_NETWORK
 			case WID_C_HAS_PASSWORD:
 				if (_networking && NetworkCompanyIsPassworded(c->index)) {
 					DrawSprite(SPR_LOCK, PAL_NONE, r.left, r.top);
 				}
 				break;
-#endif /* ENABLE_NETWORK */
 		}
 	}
 
@@ -2594,7 +2590,6 @@ struct CompanyWindow : Window
 				DoCommandP(0, this->window_number, 0, CMD_SELL_SHARE_IN_COMPANY | CMD_MSG(STR_ERROR_CAN_T_SELL_25_SHARE_IN));
 				break;
 
-#ifdef ENABLE_NETWORK
 			case WID_C_COMPANY_PASSWORD:
 				if (this->window_number == _local_company) ShowNetworkCompanyPasswordWindow(this);
 				break;
@@ -2614,7 +2609,6 @@ struct CompanyWindow : Window
 				}
 				break;
 			}
-#endif /* ENABLE_NETWORK */
 		}
 	}
 
@@ -2652,11 +2646,9 @@ struct CompanyWindow : Window
 				DoCommandP(0, 0, 0, CMD_RENAME_COMPANY | CMD_MSG(STR_ERROR_CAN_T_CHANGE_COMPANY_NAME), NULL, str);
 				break;
 
-#ifdef ENABLE_NETWORK
 			case WID_C_COMPANY_JOIN:
 				NetworkClientRequestMove((CompanyID)this->window_number, str);
 				break;
-#endif /* ENABLE_NETWORK */
 		}
 	}
 

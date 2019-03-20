@@ -247,20 +247,14 @@ CommandCost CmdGoalQuestion(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 {
 	uint16 uniqueid = (GoalType)GB(p1, 0, 16);
 	CompanyID company = (CompanyID)GB(p1, 16, 8);
-#ifdef ENABLE_NETWORK
 	ClientIndex client = (ClientIndex)GB(p1, 16, 8);
-#endif
 	byte type = GB(p1, 24, 2);
 	bool is_client = HasBit(p1, 31);
 
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (StrEmpty(text)) return CMD_ERROR;
 	if (is_client) {
-#ifdef ENABLE_NETWORK
 		if (!NetworkClientInfo::IsValidID(client)) return CMD_ERROR;
-#else
-		return CMD_ERROR;
-#endif
 	} else {
 		if (company != INVALID_COMPANY && !Company::IsValidID(company)) return CMD_ERROR;
 	}
@@ -270,9 +264,7 @@ CommandCost CmdGoalQuestion(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (flags & DC_EXEC) {
 		if (is_client) {
-#ifdef ENABLE_NETWORK
 			if (NetworkClientInfo::Get(client)->client_id != _network_own_client_id) return CommandCost();
-#endif
 		} else {
 			if (company == INVALID_COMPANY && !Company::IsValidID(_local_company)) return CommandCost();
 			if (company != INVALID_COMPANY && company != _local_company) return CommandCost();

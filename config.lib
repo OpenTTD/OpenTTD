@@ -52,7 +52,6 @@ set_default() {
 	enable_profiling="0"
 	enable_lto="0"
 	enable_dedicated="0"
-	enable_network="1"
 	enable_static="1"
 	enable_translator="0"
 	enable_unicode="1"
@@ -130,7 +129,6 @@ set_default() {
 		enable_profiling
 		enable_lto
 		enable_dedicated
-		enable_network
 		enable_static
 		enable_translator
 		enable_unicode
@@ -289,9 +287,6 @@ detect_params() {
 			--enable-ipo=*)               enable_lto="$optarg";;
 			--enable-dedicated)           enable_dedicated="1";;
 			--enable-dedicated=*)         enable_dedicated="$optarg";;
-			--enable-network)             enable_network="2";;
-			--enable-network=*)           enable_network="$optarg";;
-			--disable-network)            enable_network="0";;
 			--disable-static)             enable_static="0";;
 			--enable-static)              enable_static="2";;
 			--enable-static=*)            enable_static="$optarg";;
@@ -749,11 +744,6 @@ check_params() {
 	if [ "$enable_dedicated" != "0" ]; then
 		log 1 "checking GDI video driver... dedicated server, skipping"
 		log 1 "checking dedicated... found"
-
-		if [ "$enable_network" = "0" ]; then
-			log 1 "configure: error: building a dedicated server without network support is pointless"
-			exit 1
-		fi
 	else
 		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]; then
 			log 1 "checking GDI video driver... found"
@@ -782,12 +772,6 @@ check_params() {
 		log 1 "checking console application... disabled"
 	else
 		log 1 "checking console application... enabled"
-	fi
-
-    if [ "$enable_network" != "0" ]; then
-		log 1 "checking network... found"
-	else
-		log 1 "checking network... disabled"
 	fi
 
 	log 1 "checking squirrel... found"
@@ -1833,16 +1817,12 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -DUNICODE -D_UNICODE"
 	fi
 
-	if [ "$enable_network" != "0" ]; then
-		CFLAGS="$CFLAGS -DENABLE_NETWORK"
+	if [ "$os" = "HAIKU" ]; then
+		LDFLAGS="$LDFLAGS -lnetwork"
+	fi
 
-		if [ "$os" = "HAIKU" ]; then
-			LDFLAGS="$LDFLAGS -lnetwork"
-		fi
-
-		if [ "$os" = "SUNOS" ]; then
-			LDFLAGS="$LDFLAGS -lnsl -lsocket"
-		fi
+	if [ "$os" = "SUNOS" ]; then
+		LDFLAGS="$LDFLAGS -lnsl -lsocket"
 	fi
 
 	if [ "$enable_static" != "0" ]; then
@@ -3499,7 +3479,6 @@ showhelp() {
 	echo "  --enable-console               compile as a console application instead of as a GUI application."
 	echo "                                 If this setting is active, debug output will appear in the same"
 	echo "                                 console instead of opening a new window. (Win32 ONLY)"
-	echo "  --disable-network              disable network support"
 	echo "  --disable-assert               disable asserts (continue on errors)"
 	echo "  --enable-strip                 enable any possible stripping"
 	echo "  --without-osx-sysroot          disable the automatic adding of sysroot "

@@ -11,8 +11,6 @@
  * @file tcp_content.cpp Basic functions to receive and send Content packets.
  */
 
-#ifdef ENABLE_NETWORK
-
 #include "../../stdafx.h"
 #ifndef OPENTTD_MSU
 #include "../../textfile_gui.h"
@@ -266,5 +264,3 @@ Subdirectory GetContentInfoSubDir(ContentType type)
 	}
 }
 #endif /* OPENTTD_MSU */
-
-#endif /* ENABLE_NETWORK */

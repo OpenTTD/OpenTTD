@@ -17,8 +17,6 @@
 
 #include "../command_type.h"
 
-#ifdef ENABLE_NETWORK
-
 #ifdef RANDOM_DEBUG
 /**
  * If this line is enable, every frame will have a sync test
@@ -171,5 +169,4 @@ StringID GetNetworkErrorMsg(NetworkErrorCode err);
 bool NetworkFindName(char *new_name, const char *last);
 const char *GenerateCompanyPasswordHash(const char *password, const char *password_server_id, uint32 password_game_seed);
 
-#endif /* ENABLE_NETWORK */
 #endif /* NETWORK_INTERNAL_H */

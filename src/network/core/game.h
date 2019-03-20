@@ -19,8 +19,6 @@
 #include "../../newgrf_config.h"
 #include "../../date_type.h"
 
-#ifdef ENABLE_NETWORK
-
 /**
  * The game information that is not generated on-the-fly and has to
  * be sent to the clients.
@@ -57,7 +55,5 @@ struct NetworkGameInfo : NetworkServerGameInfo {
 };
 
 const char * GetNetworkRevisionString();
-
-#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_GAME_H */

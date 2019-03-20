@@ -17,8 +17,6 @@
 #include "../window_type.h"
 #include "network_type.h"
 
-#ifdef ENABLE_NETWORK
-
 void ShowNetworkNeedPassword(NetworkPasswordType npt);
 void ShowNetworkGiveMoneyWindow(CompanyID company);
 void ShowNetworkChatQueryWindow(DestType type, int dest);
@@ -41,15 +39,5 @@ struct NetworkCompanyInfo : NetworkCompanyStats {
 };
 
 NetworkCompanyInfo *GetLobbyCompanyInfo(CompanyID company);
-
-#else /* ENABLE_NETWORK */
-/* Network function stubs when networking is disabled */
-
-static inline void ShowNetworkChatQueryWindow(byte desttype, int dest) {}
-static inline void ShowClientList() {}
-static inline void ShowNetworkGameWindow() {}
-static inline void ShowNetworkCompanyPasswordWindow(Window *parent) {}
-
-#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_GUI_H */

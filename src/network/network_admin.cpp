@@ -9,8 +9,6 @@
 
 /** @file network_admin.cpp Server part of the admin network protocol. */
 
-#ifdef ENABLE_NETWORK
-
 #include "../stdafx.h"
 #include "../strings_func.h"
 #include "../date_func.h"
@@ -1045,5 +1043,3 @@ void NetworkAdminUpdate(AdminUpdateFrequency freq)
 		}
 	}
 }
-
-#endif /* ENABLE_NETWORK */

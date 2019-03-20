@@ -3120,13 +3120,11 @@ void UpdateWindows()
 
 	CallWindowRealtimeTickEvent(delta_ms);
 
-#ifdef ENABLE_NETWORK
 	static GUITimer network_message_timer = GUITimer(1);
 	if (network_message_timer.Elapsed(delta_ms)) {
 		network_message_timer.SetInterval(1000);
 		NetworkChatMessageLoop();
 	}
-#endif
 
 	Window *w;
 
@@ -3443,10 +3441,9 @@ void ReInitAllWindows()
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		w->ReInit();
 	}
-#ifdef ENABLE_NETWORK
+
 	void NetworkReInitChatBoxSize();
 	NetworkReInitChatBoxSize();
-#endif
 
 	/* Make sure essential parts of all windows are visible */
 	RelocateAllWindows(_cur_resolution.width, _cur_resolution.height);
