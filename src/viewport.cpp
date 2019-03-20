@@ -3318,12 +3318,8 @@ CommandCost CmdScrollViewport(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 			if (_local_company != (CompanyID)p2) return CommandCost();
 			break;
 		case VST_CLIENT:
-#ifdef ENABLE_NETWORK
 			if (_network_own_client_id != (ClientID)p2) return CommandCost();
 			break;
-#else
-			return CommandCost();
-#endif
 		default:
 			return CMD_ERROR;
 	}

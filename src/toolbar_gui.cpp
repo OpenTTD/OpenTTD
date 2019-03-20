@@ -158,11 +158,9 @@ public:
 		int lock_offset = (bottom - top - lock_size.height) / 2;
 
 		DrawCompanyIcon(company, rtl ? right - this->icon_size.width - WD_FRAMERECT_RIGHT : left + WD_FRAMERECT_LEFT, top + icon_offset);
-#ifdef ENABLE_NETWORK
 		if (NetworkCompanyIsPassworded(company)) {
 			DrawSprite(SPR_LOCK, PAL_NONE, rtl ? left + WD_FRAMERECT_LEFT : right - this->lock_size.width - WD_FRAMERECT_RIGHT, top + lock_offset);
 		}
-#endif
 
 		SetDParam(0, company);
 		SetDParam(1, company);
@@ -223,7 +221,6 @@ static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 
 	switch (widget) {
 		case WID_TN_COMPANIES:
-#ifdef ENABLE_NETWORK
 			if (!_networking) break;
 
 			/* Add the client list button for the companies menu */
@@ -234,7 +231,6 @@ static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 			} else {
 				*list->Append() = new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_SPECTATE, CTMN_SPECTATE, NetworkMaxSpectatorsReached());
 			}
-#endif /* ENABLE_NETWORK */
 			break;
 
 		case WID_TN_STORY:
@@ -610,7 +606,6 @@ static CallBackFunction ToolbarCompaniesClick(Window *w)
  */
 static CallBackFunction MenuClickCompany(int index)
 {
-#ifdef ENABLE_NETWORK
 	if (_networking) {
 		switch (index) {
 			case CTMN_CLIENT_LIST:
@@ -635,7 +630,6 @@ static CallBackFunction MenuClickCompany(int index)
 				return CBF_NONE;
 		}
 	}
-#endif /* ENABLE_NETWORK */
 	ShowCompany((CompanyID)index);
 	return CBF_NONE;
 }
@@ -2076,9 +2070,7 @@ struct MainToolbarWindow : Window {
 			case MTHK_CHEATS: if (!_networking) ShowCheatWindow(); break;
 			case MTHK_TERRAFORM: ShowTerraformToolbar(); break;
 			case MTHK_EXTRA_VIEWPORT: ShowExtraViewPortWindowForTileUnderCursor(); break;
-#ifdef ENABLE_NETWORK
 			case MTHK_CLIENT_LIST: if (_networking) ShowClientList(); break;
-#endif
 			case MTHK_SIGN_LIST: ShowSignList(); break;
 			default: return ES_NOT_HANDLED;
 		}
@@ -2189,9 +2181,7 @@ static Hotkey maintoolbar_hotkeys[] = {
 	Hotkey(WKC_CTRL | WKC_ALT | 'C', "cheats", MTHK_CHEATS),
 	Hotkey('L', "terraform", MTHK_TERRAFORM),
 	Hotkey('V', "extra_viewport", MTHK_EXTRA_VIEWPORT),
-#ifdef ENABLE_NETWORK
 	Hotkey((uint16)0, "client_list", MTHK_CLIENT_LIST),
-#endif
 	Hotkey((uint16)0, "sign_list", MTHK_SIGN_LIST),
 	HOTKEY_LIST_END
 };

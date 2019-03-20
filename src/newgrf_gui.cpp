@@ -1126,11 +1126,9 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				if (!_network_available) {
 					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
 				} else {
-#if defined(ENABLE_NETWORK)
 					this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 
 					ShowMissingContentWindow(this->actives);
-#endif
 				}
 				break;
 
@@ -1543,7 +1541,6 @@ private:
 	}
 };
 
-#if defined(ENABLE_NETWORK)
 /**
  * Show the content list window with all missing grfs from the given list.
  * @param list The list of grfs to check for missing / not exactly matching ones.
@@ -1565,7 +1562,6 @@ void ShowMissingContentWindow(const GRFConfig *list)
 	}
 	ShowNetworkContentListWindow(cv.Length() == 0 ? NULL : &cv, CONTENT_TYPE_NEWGRF);
 }
-#endif
 
 Listing NewGRFWindow::last_sorting     = {false, 0};
 Filtering NewGRFWindow::last_filtering = {false, 0};

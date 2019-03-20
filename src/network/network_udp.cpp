@@ -14,8 +14,6 @@
  * communication before the game is being joined.
  */
 
-#ifdef ENABLE_NETWORK
-
 #include "../stdafx.h"
 #include "../date_func.h"
 #include "../map_func.h"
@@ -714,5 +712,3 @@ void NetworkBackgroundUDPLoop()
 
 	_network_udp_mutex->EndCritical();
 }
-
-#endif /* ENABLE_NETWORK */

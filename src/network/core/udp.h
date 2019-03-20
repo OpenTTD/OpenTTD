@@ -18,8 +18,6 @@
 #include "game.h"
 #include "packet.h"
 
-#ifdef ENABLE_NETWORK
-
 /** Enum with all types of UDP packets. The order MUST not be changed **/
 enum PacketUDPType {
 	PACKET_UDP_CLIENT_FIND_SERVER,   ///< Queries a game server for game information
@@ -245,7 +243,5 @@ public:
 	void SendNetworkGameInfo(Packet *p, const NetworkGameInfo *info);
 	void ReceiveNetworkGameInfo(Packet *p, NetworkGameInfo *info);
 };
-
-#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_UDP_H */

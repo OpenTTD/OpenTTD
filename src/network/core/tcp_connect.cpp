@@ -11,8 +11,6 @@
  * @file tcp_connect.cpp Basic functions to create connections without blocking.
  */
 
-#ifdef ENABLE_NETWORK
-
 #include "../../stdafx.h"
 #include "../../thread/thread.h"
 
@@ -97,5 +95,3 @@ void TCPConnecter::Connect()
 {
 	for (TCPConnecter **iter = _tcp_connecters.Begin(); iter != _tcp_connecters.End(); iter++) (*iter)->killed = true;
 }
-
-#endif /* ENABLE_NETWORK */

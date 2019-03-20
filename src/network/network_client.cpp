@@ -9,8 +9,6 @@
 
 /** @file network_client.cpp Client part of the network protocol. */
 
-#ifdef ENABLE_NETWORK
-
 #include "../stdafx.h"
 #include "network_gui.h"
 #include "../saveload/saveload.h"
@@ -1320,5 +1318,3 @@ bool NetworkMaxSpectatorsReached()
 {
 	return NetworkSpectatorCount() >= (_network_server ? _settings_client.network.max_spectators : _network_server_max_spectators);
 }
-
-#endif /* ENABLE_NETWORK */

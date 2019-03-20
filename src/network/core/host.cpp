@@ -9,8 +9,6 @@
 
 /** @file host.cpp Functions related to getting host specific data (IPs). */
 
-#ifdef ENABLE_NETWORK
-
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "address.h"
@@ -207,5 +205,3 @@ void NetworkFindBroadcastIPs(NetworkAddressList *broadcast)
 		DEBUG(net, 3, "%d) %s", i++, addr->GetHostname());
 	}
 }
-
-#endif /* ENABLE_NETWORK */

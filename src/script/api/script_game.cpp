@@ -39,9 +39,5 @@
 
 /* static */ bool ScriptGame::IsMultiplayer()
 {
-#ifdef ENABLE_NETWORK
 	return _network_server;
-#else
-	return false;
-#endif
 }

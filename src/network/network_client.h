@@ -12,8 +12,6 @@
 #ifndef NETWORK_CLIENT_H
 #define NETWORK_CLIENT_H
 
-#ifdef ENABLE_NETWORK
-
 #include "network_internal.h"
 
 /** Class for handling the client side of the game connection. */
@@ -117,7 +115,5 @@ extern CompanyID _network_join_as;
 
 extern const char *_network_join_server_password;
 extern const char *_network_join_company_password;
-
-#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CLIENT_H */

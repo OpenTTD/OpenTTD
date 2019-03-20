@@ -9,7 +9,6 @@
 
 /** @file network_content_gui.cpp Implementation of the Network Content related GUIs. */
 
-#if defined(ENABLE_NETWORK)
 #include "../stdafx.h"
 #include "../strings_func.h"
 #include "../gfx_func.h"
@@ -1168,5 +1167,3 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 	}
 #endif /* WITH_ZLIB */
 }
-
-#endif /* ENABLE_NETWORK */

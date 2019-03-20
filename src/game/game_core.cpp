@@ -257,8 +257,6 @@
 	return Game::scanner_library->FindLibrary(library, version);
 }
 
-#if defined(ENABLE_NETWORK)
-
 /**
  * Check whether we have an Game (library) with the exact characteristics as ci.
  * @param ci the characteristics to search on (shortname and md5sum)
@@ -274,8 +272,6 @@
 {
 	return Game::scanner_library->HasScript(ci, md5sum);
 }
-
-#endif /* defined(ENABLE_NETWORK) */
 
 /* static */ GameScannerInfo *Game::GetScannerInfo()
 {

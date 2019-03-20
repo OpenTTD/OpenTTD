@@ -17,8 +17,6 @@
 #include "../../newgrf_config.h"
 #include "config.h"
 
-#ifdef ENABLE_NETWORK
-
 bool NetworkCoreInitialize();
 void NetworkCoreShutdown();
 
@@ -79,7 +77,5 @@ public:
 	void ReceiveGRFIdentifier(Packet *p, GRFIdentifier *grf);
 	void SendCompanyInformation(Packet *p, const struct Company *c, const struct NetworkCompanyStats *stats, uint max_len = NETWORK_COMPANY_NAME_LENGTH);
 };
-
-#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_CORE_H */

@@ -16,7 +16,6 @@
 
 #include "../../safeguards.h"
 
-#ifdef ENABLE_NETWORK
 /**
  * Finds NetworkClientInfo given client-identifier,
  *  is used by other methods to resolve client-identifier.
@@ -29,46 +28,29 @@ static NetworkClientInfo *FindClientInfo(ScriptClient::ClientID client)
 	if (!_networking) return NULL;
 	return NetworkClientInfo::GetByClientID((::ClientID)client);
 }
-#endif
 
 /* static */ ScriptClient::ClientID ScriptClient::ResolveClientID(ScriptClient::ClientID client)
 {
-#ifdef ENABLE_NETWORK
 	return (FindClientInfo(client) == NULL ? ScriptClient::CLIENT_INVALID : client);
-#else
-	return CLIENT_INVALID;
-#endif
 }
 
 /* static */ char *ScriptClient::GetName(ScriptClient::ClientID client)
 {
-#ifdef ENABLE_NETWORK
 	NetworkClientInfo *ci = FindClientInfo(client);
 	if (ci == NULL) return NULL;
 	return stredup(ci->client_name);
-#else
-	return NULL;
-#endif
 }
 
 /* static */ ScriptCompany::CompanyID ScriptClient::GetCompany(ScriptClient::ClientID client)
 {
-#ifdef ENABLE_NETWORK
 	NetworkClientInfo *ci = FindClientInfo(client);
 	if (ci == NULL) return ScriptCompany::COMPANY_INVALID;
 	return (ScriptCompany::CompanyID)ci->client_playas;
-#else
-	return ScriptCompany::COMPANY_INVALID;
-#endif
 }
 
 /* static */ ScriptDate::Date ScriptClient::GetJoinDate(ScriptClient::ClientID client)
 {
-#ifdef ENABLE_NETWORK
 	NetworkClientInfo *ci = FindClientInfo(client);
 	if (ci == NULL) return ScriptDate::DATE_INVALID;
 	return (ScriptDate::Date)ci->join_date;
-#else
-	return ScriptDate::DATE_INVALID;
-#endif
 }

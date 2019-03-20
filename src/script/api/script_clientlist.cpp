@@ -19,18 +19,15 @@
 
 ScriptClientList::ScriptClientList()
 {
-#ifdef ENABLE_NETWORK
 	if (!_networking) return;
 	NetworkClientInfo *ci;
 	FOR_ALL_CLIENT_INFOS(ci) {
 		this->AddItem(ci->client_id);
 	}
-#endif
 }
 
 ScriptClientList_Company::ScriptClientList_Company(ScriptCompany::CompanyID company)
 {
-#ifdef ENABLE_NETWORK
 	if (!_networking) return;
 	CompanyID c;
 	if (company == ScriptCompany::COMPANY_SPECTATOR) {
@@ -45,5 +42,4 @@ ScriptClientList_Company::ScriptClientList_Company(ScriptCompany::CompanyID comp
 	FOR_ALL_CLIENT_INFOS(ci) {
 		if (ci->client_playas == c) this->AddItem(ci->client_id);
 	}
-#endif
 }

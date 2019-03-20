@@ -11,8 +11,6 @@
 
 #include "../../stdafx.h"
 
-#ifdef ENABLE_NETWORK
-
 #include "address.h"
 #include "../../debug.h"
 
@@ -433,5 +431,3 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 		default:        return "unsupported";
 	}
 }
-
-#endif /* ENABLE_NETWORK */

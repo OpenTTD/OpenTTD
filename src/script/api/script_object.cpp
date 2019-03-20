@@ -301,10 +301,8 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	/* Are we only interested in the estimate costs? */
 	bool estimate_only = GetDoCommandMode() != NULL && !GetDoCommandMode()();
 
-#ifdef ENABLE_NETWORK
 	/* Only set p2 when the command does not come from the network. */
 	if (GetCommandFlags(cmd) & CMD_CLIENT_ID && p2 == 0) p2 = UINT32_MAX;
-#endif
 
 	/* Try to perform the command. */
 	CommandCost res = ::DoCommandPInternal(tile, p1, p2, cmd, (_networking && !_generating_world) ? ScriptObject::GetActiveInstance()->GetDoCommandCallback() : NULL, text, false, estimate_only);

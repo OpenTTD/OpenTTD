@@ -11,8 +11,6 @@
 
 #include <stdarg.h> /* va_list */
 
-#ifdef ENABLE_NETWORK
-
 #include "../stdafx.h"
 #include "../strings_func.h"
 #include "../blitter/factory.hpp"
@@ -562,5 +560,3 @@ void ShowNetworkChatQueryWindow(DestType type, int dest)
 	DeleteWindowByClass(WC_SEND_NETWORK_MSG);
 	new NetworkChatWindow(&_chat_window_desc, type, dest);
 }
-
-#endif /* ENABLE_NETWORK */

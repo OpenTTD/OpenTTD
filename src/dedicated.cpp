@@ -11,8 +11,6 @@
 
 #include "stdafx.h"
 
-#ifdef ENABLE_NETWORK
-
 char *_log_file = NULL; ///< File to reroute output of a forked OpenTTD to
 FILE *_log_fd   = NULL; ///< File to reroute output of a forked OpenTTD to
 
@@ -67,10 +65,3 @@ void DedicatedFork()
 	}
 }
 #endif
-
-#else
-
-/** Empty helper function call for NOT(UNIX) systems */
-void DedicatedFork() {}
-
-#endif /* ENABLE_NETWORK */

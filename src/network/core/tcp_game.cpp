@@ -11,8 +11,6 @@
  * @file tcp_game.cpp Basic functions to receive and send TCP packets for game purposes.
  */
 
-#ifdef ENABLE_NETWORK
-
 #include "../../stdafx.h"
 
 #include "../network.h"
@@ -199,5 +197,3 @@ NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_MOVE(Packet *p) { ret
 NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_MOVE); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_COMPANY_UPDATE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_COMPANY_UPDATE); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_CONFIG_UPDATE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_CONFIG_UPDATE); }
-
-#endif /* ENABLE_NETWORK */

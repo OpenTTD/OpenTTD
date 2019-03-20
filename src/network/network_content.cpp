@@ -9,8 +9,6 @@
 
 /** @file network_content.cpp Content sending/receiving part of the network protocol. */
 
-#if defined(ENABLE_NETWORK)
-
 #include "../stdafx.h"
 #include "../rev.h"
 #include "../ai/ai.hpp"
@@ -1090,5 +1088,3 @@ void ClientNetworkContentSocketHandler::OnDownloadComplete(ContentID cid)
 		if (iter != this->callbacks.End() && *iter == cb) iter++;
 	}
 }
-
-#endif /* ENABLE_NETWORK */

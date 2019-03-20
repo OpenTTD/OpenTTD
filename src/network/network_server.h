@@ -12,8 +12,6 @@
 #ifndef NETWORK_SERVER_H
 #define NETWORK_SERVER_H
 
-#ifdef ENABLE_NETWORK
-
 #include "network_internal.h"
 #include "core/tcp_listen.h"
 #include "../thread/thread.h"
@@ -137,13 +135,5 @@ void NetworkServerUpdateCompanyPassworded(CompanyID company_id, bool passworded)
  * @param var The variable to iterate with.
  */
 #define FOR_ALL_CLIENT_SOCKETS(var) FOR_ALL_CLIENT_SOCKETS_FROM(var, 0)
-
-#else /* ENABLE_NETWORK */
-/* Network function stubs when networking is disabled */
-
-static inline void NetworkServerMonthlyLoop() {}
-static inline void NetworkServerYearlyLoop() {}
-
-#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_SERVER_H */

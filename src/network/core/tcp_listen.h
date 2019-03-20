@@ -20,8 +20,6 @@
 #include "../../debug.h"
 #include "table/strings.h"
 
-#ifdef ENABLE_NETWORK
-
 /**
  * Template for TCP listeners.
  * @param Tsocket      The class we create sockets for.
@@ -172,7 +170,5 @@ public:
 };
 
 template <class Tsocket, PacketType Tfull_packet, PacketType Tban_packet> SocketList TCPListenHandler<Tsocket, Tfull_packet, Tban_packet>::sockets;
-
-#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_TCP_LISTEN_H */

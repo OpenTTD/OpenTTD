@@ -53,7 +53,6 @@ static int _rename_what = -1;
 
 void CcGiveMoney(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-#ifdef ENABLE_NETWORK
 	if (result.Failed() || !_settings_game.economy.give_money) return;
 
 	/* Inform the company of the action of one of its clients (controllers). */
@@ -66,25 +65,22 @@ void CcGiveMoney(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
 	} else {
 		NetworkServerSendChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg, CLIENT_ID_SERVER, p1);
 	}
-#endif /* ENABLE_NETWORK */
 }
 
 void HandleOnEditText(const char *str)
 {
 	switch (_rename_what) {
-#ifdef ENABLE_NETWORK
-	case 3: { // Give money, you can only give money in excess of loan
-		const Company *c = Company::GetIfValid(_local_company);
-		if (c == NULL) break;
-		Money money = min(c->money - c->current_loan, (Money)(atoi(str) / _currency->rate));
+		case 3: { // Give money, you can only give money in excess of loan
+			const Company *c = Company::GetIfValid(_local_company);
+			if (c == NULL) break;
+			Money money = min(c->money - c->current_loan, (Money)(atoi(str) / _currency->rate));
 
-		uint32 money_c = Clamp(ClampToI32(money), 0, 20000000); // Clamp between 20 million and 0
+			uint32 money_c = Clamp(ClampToI32(money), 0, 20000000); // Clamp between 20 million and 0
 
-		/* Give 'id' the money, and subtract it from ourself */
-		DoCommandP(0, money_c, _rename_id, CMD_GIVE_MONEY | CMD_MSG(STR_ERROR_INSUFFICIENT_FUNDS), CcGiveMoney, str);
-		break;
-	}
-#endif /* ENABLE_NETWORK */
+			/* Give 'id' the money, and subtract it from ourself */
+			DoCommandP(0, money_c, _rename_id, CMD_GIVE_MONEY | CMD_MSG(STR_ERROR_INSUFFICIENT_FUNDS), CcGiveMoney, str);
+			break;
+		}
 		default: NOT_REACHED();
 	}
 
@@ -124,14 +120,12 @@ void CcPlaySound_EXPLOSION(const CommandCost &result, TileIndex tile, uint32 p1,
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_12_EXPLOSION, tile);
 }
 
-#ifdef ENABLE_NETWORK
 void ShowNetworkGiveMoneyWindow(CompanyID company)
 {
 	_rename_id = company;
 	_rename_what = 3;
 	ShowQueryString(STR_EMPTY, STR_NETWORK_GIVE_MONEY_CAPTION, 30, NULL, CS_NUMERAL, QSF_NONE);
 }
-#endif /* ENABLE_NETWORK */
 
 
 /**
@@ -397,7 +391,6 @@ struct MainWindow : Window
 				ResetRestoreAllTransparency();
 				break;
 
-#ifdef ENABLE_NETWORK
 			case GHK_CHAT: // smart chat; send to team if any, otherwise to all
 				if (_networking) {
 					const NetworkClientInfo *cio = NetworkClientInfo::GetByClientID(_network_own_client_id);
@@ -425,7 +418,6 @@ struct MainWindow : Window
 					ShowNetworkChatQueryWindow(DESTTYPE_CLIENT, CLIENT_ID_SERVER);
 				}
 				break;
-#endif
 
 			default: return ES_NOT_HANDLED;
 		}
@@ -516,12 +508,10 @@ static Hotkey global_hotkeys[] = {
 	Hotkey('8' | WKC_CTRL | WKC_SHIFT, "invisibility_catenary", GHK_TOGGLE_INVISIBILITY + 7),
 	Hotkey('X' | WKC_CTRL, "transparency_toolbar", GHK_TRANSPARENCY_TOOLBAR),
 	Hotkey('X', "toggle_transparency", GHK_TRANSPARANCY),
-#ifdef ENABLE_NETWORK
 	Hotkey(_ghk_chat_keys, "chat", GHK_CHAT),
 	Hotkey(_ghk_chat_all_keys, "chat_all", GHK_CHAT_ALL),
 	Hotkey(_ghk_chat_company_keys, "chat_company", GHK_CHAT_COMPANY),
 	Hotkey(_ghk_chat_server_keys, "chat_server", GHK_CHAT_SERVER),
-#endif
 	HOTKEY_LIST_END
 };
 HotkeyList MainWindow::hotkeys("global", global_hotkeys);

@@ -12,8 +12,6 @@
 #ifndef NETWORK_UDP_H
 #define NETWORK_UDP_H
 
-#ifdef ENABLE_NETWORK
-
 #include "core/address.h"
 
 void NetworkUDPInitialize();
@@ -24,7 +22,5 @@ void NetworkUDPAdvertise();
 void NetworkUDPRemoveAdvertise(bool blocking);
 void NetworkUDPClose();
 void NetworkBackgroundUDPLoop();
-
-#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_UDP_H */

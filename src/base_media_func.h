@@ -277,7 +277,6 @@ template <class Tbase_set>
 	return p;
 }
 
-#if defined(ENABLE_NETWORK)
 #include "network/network_content.h"
 
 template <class Tbase_set> const char *TryGetBaseSetFile(const ContentInfo *ci, bool md5sum, const Tbase_set *s)
@@ -306,22 +305,6 @@ template <class Tbase_set>
 	return (TryGetBaseSetFile(ci, md5sum, BaseMedia<Tbase_set>::available_sets) != NULL) ||
 			(TryGetBaseSetFile(ci, md5sum, BaseMedia<Tbase_set>::duplicate_sets) != NULL);
 }
-
-#else
-
-template <class Tbase_set>
-const char *TryGetBaseSetFile(const ContentInfo *ci, bool md5sum, const Tbase_set *s)
-{
-	return NULL;
-}
-
-template <class Tbase_set>
-/* static */ bool BaseMedia<Tbase_set>::HasSet(const ContentInfo *ci, bool md5sum)
-{
-	return false;
-}
-
-#endif /* ENABLE_NETWORK */
 
 /**
  * Count the number of available graphics sets.

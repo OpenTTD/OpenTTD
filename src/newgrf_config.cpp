@@ -757,9 +757,7 @@ void DoScanNewGRFFiles(void *callback)
 
 		free(to_sort);
 
-#ifdef ENABLE_NETWORK
 		NetworkAfterNewGRFScan();
-#endif
 	}
 
 	_modal_progress_work_mutex->EndCritical();
@@ -826,8 +824,6 @@ const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8
 	return best;
 }
 
-#ifdef ENABLE_NETWORK
-
 /** Structure for UnknownGRFs; this is a lightweight variant of GRFConfig */
 struct UnknownGRF : public GRFIdentifier {
 	UnknownGRF *next;     ///< The next unknown GRF.
@@ -876,9 +872,6 @@ GRFTextWrapper *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create)
 	unknown_grfs = grf;
 	return grf->name;
 }
-
-#endif /* ENABLE_NETWORK */
-
 
 /**
  * Retrieve a NewGRF from the current config by its grfid.

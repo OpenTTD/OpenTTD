@@ -9,8 +9,6 @@
 
 /** @file network_server.cpp Server part of the network protocol. */
 
-#ifdef ENABLE_NETWORK
-
 #include "../stdafx.h"
 #include "../strings_func.h"
 #include "../date_func.h"
@@ -2206,5 +2204,3 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 		NetworkServerSendChat(NETWORK_ACTION_COMPANY_NEW, DESTTYPE_BROADCAST, 0, "", ci->client_id, c->index + 1);
 	}
 }
-
-#endif /* ENABLE_NETWORK */

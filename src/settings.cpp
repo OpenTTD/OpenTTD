@@ -1339,9 +1339,6 @@ static bool InvalidateShipPathCache(int32 p1)
 	return true;
 }
 
-
-#ifdef ENABLE_NETWORK
-
 static bool UpdateClientName(int32 p1)
 {
 	NetworkUpdateClientName();
@@ -1372,9 +1369,6 @@ static bool UpdateClientConfigValues(int32 p1)
 
 	return true;
 }
-
-#endif /* ENABLE_NETWORK */
-
 
 /* End - Callback Functions */
 
@@ -1705,11 +1699,9 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 		proc(ini, _currency_settings,"currency", &_custom_currency);
 		proc(ini, _company_settings, "company",  &_settings_client.company);
 
-#ifdef ENABLE_NETWORK
 		proc_list(ini, "server_bind_addresses", &_network_bind_list);
 		proc_list(ini, "servers", &_network_host_list);
 		proc_list(ini, "bans",    &_network_ban_list);
-#endif /* ENABLE_NETWORK */
 	}
 }
 
@@ -2009,7 +2001,6 @@ void SetDefaultCompanySettings(CompanyID cid)
 	}
 }
 
-#if defined(ENABLE_NETWORK)
 /**
  * Sync all company settings in a multiplayer game.
  */
@@ -2025,7 +2016,6 @@ void SyncCompanySettings()
 		if (old_value != new_value) NetworkSendCommand(0, i, new_value, CMD_CHANGE_COMPANY_SETTING, NULL, NULL, _local_company);
 	}
 }
-#endif /* ENABLE_NETWORK */
 
 /**
  * Get the index in the _company_settings array of a setting

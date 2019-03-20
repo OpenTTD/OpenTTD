@@ -9,7 +9,6 @@
 
 /** @file network_gui.cpp Implementation of the Network related GUIs. */
 
-#ifdef ENABLE_NETWORK
 #include "../stdafx.h"
 #include "../strings_func.h"
 #include "../date_func.h"
@@ -2241,5 +2240,3 @@ void ShowNetworkCompanyPasswordWindow(Window *parent)
 
 	new NetworkCompanyPasswordWindow(&_network_company_password_window_desc, parent);
 }
-
-#endif /* ENABLE_NETWORK */

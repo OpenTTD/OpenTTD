@@ -1240,7 +1240,6 @@ void DeterminePaths(const char *exe)
 
 	/* If we have network we make a directory for the autodownloading of content */
 	_searchpaths[SP_AUTODOWNLOAD_DIR] = str_fmt("%s%s", _personal_dir, "content_download" PATHSEP);
-#ifdef ENABLE_NETWORK
 	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR]);
 
 	/* Create the directory for each of the types of content */
@@ -1253,14 +1252,6 @@ void DeterminePaths(const char *exe)
 
 	extern char *_log_file;
 	_log_file = str_fmt("%sopenttd.log",  _personal_dir);
-#else /* ENABLE_NETWORK */
-	/* If we don't have networking, we don't need to make the directory. But
-	 * if it exists we keep it, otherwise remove it from the search paths. */
-	if (!FileExists(_searchpaths[SP_AUTODOWNLOAD_DIR]))  {
-		free(_searchpaths[SP_AUTODOWNLOAD_DIR]);
-		_searchpaths[SP_AUTODOWNLOAD_DIR] = NULL;
-	}
-#endif /* ENABLE_NETWORK */
 }
 
 /**

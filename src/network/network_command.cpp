@@ -9,8 +9,6 @@
 
 /** @file network_command.cpp Command handling over network connections. */
 
-#ifdef ENABLE_NETWORK
-
 #include "../stdafx.h"
 #include "network_admin.h"
 #include "network_client.h"
@@ -344,5 +342,3 @@ void NetworkGameSocketHandler::SendCommand(Packet *p, const CommandPacket *cp)
 	}
 	p->Send_uint8 (callback);
 }
-
-#endif /* ENABLE_NETWORK */

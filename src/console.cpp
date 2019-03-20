@@ -33,10 +33,8 @@ FILE *_iconsole_output_file;
 void IConsoleInit()
 {
 	_iconsole_output_file = NULL;
-#ifdef ENABLE_NETWORK /* Initialize network only variables */
 	_redirect_console_to_client = INVALID_CLIENT_ID;
 	_redirect_console_to_admin  = INVALID_ADMIN_ID;
-#endif
 
 	IConsoleGUIInit();
 
@@ -90,7 +88,6 @@ void IConsolePrint(TextColour colour_code, const char *string)
 	assert(IsValidConsoleColour(colour_code));
 
 	char *str;
-#ifdef ENABLE_NETWORK
 	if (_redirect_console_to_client != INVALID_CLIENT_ID) {
 		/* Redirect the string to the client */
 		NetworkServerSendRcon(_redirect_console_to_client, colour_code, string);
@@ -101,7 +98,6 @@ void IConsolePrint(TextColour colour_code, const char *string)
 		NetworkServerSendAdminRcon(_redirect_console_to_admin, colour_code, string);
 		return;
 	}
-#endif
 
 	/* Create a copy of the string, strip if of colours and invalid
 	 * characters and (when applicable) assign it to the console buffer */
@@ -110,9 +106,7 @@ void IConsolePrint(TextColour colour_code, const char *string)
 	str_validate(str, str + strlen(str));
 
 	if (_network_dedicated) {
-#ifdef ENABLE_NETWORK
 		NetworkAdminConsole("console", str);
-#endif /* ENABLE_NETWORK */
 		fprintf(stdout, "%s%s\n", GetLogPrefix(), str);
 		fflush(stdout);
 		IConsoleWriteToLogFile(str);

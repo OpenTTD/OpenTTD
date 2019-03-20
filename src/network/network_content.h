@@ -15,8 +15,6 @@
 #include "core/tcp_content.h"
 #include "core/tcp_http.h"
 
-#if defined(ENABLE_NETWORK)
-
 /** Vector with content info */
 typedef SmallVector<ContentInfo *, 16> ContentVector;
 /** Vector with constant content info */
@@ -152,9 +150,5 @@ extern ClientNetworkContentSocketHandler _network_content_client;
 void ShowNetworkContentListWindow(ContentVector *cv = NULL, ContentType type1 = CONTENT_TYPE_END, ContentType type2 = CONTENT_TYPE_END);
 
 void ShowMissingContentWindow(const struct GRFConfig *list);
-
-#else
-static inline void ShowNetworkContentListWindow() {}
-#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CONTENT_H */

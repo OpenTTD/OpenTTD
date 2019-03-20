@@ -11,8 +11,6 @@
  * @file packet.cpp Basic functions to create, fill and read packets.
  */
 
-#ifdef ENABLE_NETWORK
-
 #include "../../stdafx.h"
 #include "../../string_func.h"
 
@@ -310,5 +308,3 @@ void Packet::Recv_string(char *buffer, size_t size, StringValidationSettings set
 
 	str_validate(bufp, last, settings);
 }
-
-#endif /* ENABLE_NETWORK */

@@ -11,8 +11,6 @@
  * @file tcp_admin.cpp Basic functions to receive and send TCP packets to and from the admin network.
  */
 
-#ifdef ENABLE_NETWORK
-
 #include "../../stdafx.h"
 
 #include "../network_internal.h"
@@ -172,5 +170,3 @@ NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CMD_NAMES(Packet *p)
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CMD_LOGGING(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_CMD_LOGGING); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_RCON_END(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_RCON_END); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_PONG(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_PONG); }
-
-#endif /* ENABLE_NETWORK */
