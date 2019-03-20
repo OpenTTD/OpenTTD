@@ -770,16 +770,17 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 	NWidgetCore *wid = w->nested_root->GetWidgetFromPos(x, y);
 	if (wid == NULL) return;
 
+	Point pt = { x, y };
+
 	/* No widget to handle, or the window is not interested in it. */
 	if (wid->index >= 0) {
-		Point pt = { x, y };
 		if (w->OnRightClick(pt, wid->index)) return;
 	}
 
 	/* Right-click close is enabled and there is a closebox */
 	if (_settings_client.gui.right_mouse_wnd_close && w->nested_root->GetWidgetOfType(WWT_CLOSEBOX)) {
 		delete w;
-	} else if (_settings_client.gui.hover_delay_ms == 0 && wid->tool_tip != 0) {
+	} else if (_settings_client.gui.hover_delay_ms == 0 && !w->OnTooltip(pt, wid->index, TCC_RIGHT_CLICK) && wid->tool_tip != 0) {
 		GuiShowTooltips(w, wid->tool_tip, 0, NULL, TCC_RIGHT_CLICK);
 	}
 }
@@ -797,8 +798,10 @@ static void DispatchHoverEvent(Window *w, int x, int y)
 	/* No widget to handle */
 	if (wid == NULL) return;
 
+	Point pt = { x, y };
+
 	/* Show the tooltip if there is any */
-	if (wid->tool_tip != 0) {
+	if (!w->OnTooltip(pt, wid->index, TCC_HOVER) && wid->tool_tip != 0) {
 		GuiShowTooltips(w, wid->tool_tip);
 		return;
 	}
@@ -806,7 +809,6 @@ static void DispatchHoverEvent(Window *w, int x, int y)
 	/* Widget has no index, so the window is not interested in it. */
 	if (wid->index < 0) return;
 
-	Point pt = { x, y };
 	w->OnHover(pt, wid->index);
 }
 

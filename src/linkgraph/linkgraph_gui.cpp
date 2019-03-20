@@ -559,7 +559,7 @@ void LinkGraphLegendWindow::DrawWidget(const Rect &r, int widget) const
 	}
 }
 
-bool LinkGraphLegendWindow::OnHoverCommon(Point pt, int widget, TooltipCloseCondition close_cond)
+bool LinkGraphLegendWindow::OnTooltip(Point pt, int widget, TooltipCloseCondition close_cond)
 {
 	if (IsInsideMM(widget, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST + 1)) {
 		if (this->IsWidgetDisabled(widget)) {
@@ -580,19 +580,6 @@ bool LinkGraphLegendWindow::OnHoverCommon(Point pt, int widget, TooltipCloseCond
 		params[0] = cargo->name;
 		GuiShowTooltips(this, STR_BLACK_STRING, 1, params, close_cond);
 		return true;
-	}
-	return false;
-}
-
-void LinkGraphLegendWindow::OnHover(Point pt, int widget)
-{
-	this->OnHoverCommon(pt, widget, TCC_HOVER);
-}
-
-bool LinkGraphLegendWindow::OnRightClick(Point pt, int widget)
-{
-	if (_settings_client.gui.hover_delay_ms == 0) {
-		return this->OnHoverCommon(pt, widget, TCC_RIGHT_CLICK);
 	}
 	return false;
 }
