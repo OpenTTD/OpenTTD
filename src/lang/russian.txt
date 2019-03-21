@@ -2291,7 +2291,7 @@ STR_NETWORK_CHAT_ALL                                            :[Всем] {STR
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Введите текст для сетевого сообщения
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Не найдены сетевые устройства или игра скомпилирована без поддержки сети
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Не найдены сетевые устройства
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Не найдены сетевые игры
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Сервер не ответил на запрос
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Невозможно присоединиться из-за несоответствия NewGRF
