@@ -2331,7 +2331,7 @@ static inline void ShowMeasurementTooltips(StringID str, uint paramcount, const 
 	GuiShowTooltips(_thd.GetCallbackWnd(), str, paramcount, params, close_cond);
 }
 
-void HideMeasurementTooltips()
+static void HideMeasurementTooltips()
 {
 	DeleteWindowById(WC_TOOLTIPS, 0);
 }
@@ -3009,6 +3009,7 @@ EventState VpHandlePlaceSizingDrag()
 	}
 	SetTileSelectSize(1, 1);
 
+	HideMeasurementTooltips();
 	w->OnPlaceMouseUp(_thd.select_method, _thd.select_proc, _thd.selend, TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y));
 
 	return ES_HANDLED;
