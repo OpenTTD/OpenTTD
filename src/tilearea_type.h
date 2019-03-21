@@ -231,4 +231,6 @@ public:
  */
 #define TILE_AREA_LOOP(var, ta) for (OrthogonalTileIterator var(ta); var != INVALID_TILE; ++var)
 
+#define DIAGONAL_TILE_AREA_LOOP(var, ta) for (DiagonalTileIterator var(ta); var != INVALID_TILE; ++var)
+
 #endif /* TILEAREA_TYPE_H */

@@ -96,6 +96,7 @@ DECLARE_ENUM_AS_BIT_SET(ViewportPlaceMethod)
  */
 enum ViewportDragDropSelectionProcess {
 	DDSP_DEMOLISH_AREA,        ///< Clear area
+	DDSP_DEMOLISH_TREES,        ///< Clear trees
 	DDSP_RAISE_AND_LEVEL_AREA, ///< Raise / level area
 	DDSP_LOWER_AND_LEVEL_AREA, ///< Lower / level area
 	DDSP_LEVEL_AREA,           ///< Level area

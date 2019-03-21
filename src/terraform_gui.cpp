@@ -118,6 +118,28 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 		case DDSP_DEMOLISH_AREA:
 			DoCommandP(end_tile, start_tile, _ctrl_pressed ? 1 : 0, CMD_CLEAR_AREA | CMD_MSG(STR_ERROR_CAN_T_CLEAR_THIS_AREA), CcPlaySound_EXPLOSION);
 			break;
+		case DDSP_DEMOLISH_TREES:
+			// loop through every tile and send a demolish command for each tree
+			// orthogonal area
+			if (!_ctrl_pressed) {
+				OrthogonalTileArea square_area = OrthogonalTileArea(start_tile, end_tile);
+				TILE_AREA_LOOP(curr_tile, square_area)
+				{
+					if (GetTileType(curr_tile) == MP_TREES) {
+						DoCommandP(curr_tile, curr_tile, 0, CMD_CLEAR_AREA | CMD_MSG(STR_ERROR_CAN_T_CLEAR_THIS_AREA), CcPlaySound_EXPLOSION);
+					}
+				}
+			// diagonal area (not supported)
+			} else {
+				DiagonalTileArea diagonal_area = DiagonalTileArea(start_tile, end_tile);
+				DIAGONAL_TILE_AREA_LOOP(curr_tile, diagonal_area)
+				{
+					if (GetTileType(curr_tile) == MP_TREES) {
+						DoCommandP(curr_tile, curr_tile, 0, CMD_CLEAR_AREA | CMD_MSG(STR_ERROR_CAN_T_CLEAR_THIS_AREA), CcPlaySound_EXPLOSION);
+					}
+				}
+			}
+			break;
 		case DDSP_RAISE_AND_LEVEL_AREA:
 			DoCommandP(end_tile, start_tile, LM_RAISE << 1 | (_ctrl_pressed ? 1 : 0), CMD_LEVEL_LAND | CMD_MSG(STR_ERROR_CAN_T_RAISE_LAND_HERE), CcTerraform);
 			break;
@@ -197,6 +219,11 @@ struct TerraformToolbarWindow : Window {
 				this->last_user_action = widget;
 				break;
 
+			case WID_TT_DEMOLISH_TREES: // Demolish aka dynamite button
+				HandlePlacePushButton(this, WID_TT_DEMOLISH_TREES, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL);
+				this->last_user_action = widget;
+				break;
+
 			case WID_TT_BUY_LAND: // Buy land button
 				HandlePlacePushButton(this, WID_TT_BUY_LAND, SPR_CURSOR_BUY_LAND, HT_RECT);
 				this->last_user_action = widget;
@@ -238,6 +265,10 @@ struct TerraformToolbarWindow : Window {
 				PlaceProc_DemolishArea(tile);
 				break;
 
+			case WID_TT_DEMOLISH_TREES: // Demolish trees only
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_DEMOLISH_TREES);
+				break;
+
 			case WID_TT_BUY_LAND: // Buy land button
 				DoCommandP(tile, OBJECT_OWNED_LAND, 0, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_PURCHASE_THIS_LAND), CcPlaySound_SPLAT_RAIL);
 				break;
@@ -262,12 +293,19 @@ struct TerraformToolbarWindow : Window {
 		return pt;
 	}
 
+	virtual void OnGameTick()
+	{
+		// hello! hunt for trees here
+		// ...maybe
+	}
+
 	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
 	{
 		if (pt.x != -1) {
 			switch (select_proc) {
 				default: NOT_REACHED();
 				case DDSP_DEMOLISH_AREA:
+				case DDSP_DEMOLISH_TREES:
 				case DDSP_RAISE_AND_LEVEL_AREA:
 				case DDSP_LOWER_AND_LEVEL_AREA:
 				case DDSP_LEVEL_AREA:
@@ -328,6 +366,8 @@ static const NWidgetPart _nested_terraform_widgets[] = {
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(4, 22), EndContainer(),
 
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_DEMOLISH), SetMinimalSize(22, 22),
+								SetFill(0, 1), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_DEMOLISH_TREES), SetMinimalSize(22, 22),
 								SetFill(0, 1), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_BUY_LAND), SetMinimalSize(22, 22),
 								SetFill(0, 1), SetDataTip(SPR_IMG_BUY_LAND, STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND),
