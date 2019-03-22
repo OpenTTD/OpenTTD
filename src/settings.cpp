@@ -268,7 +268,7 @@ static void MakeIntList(char *buf, const char *last, const void *array, int nele
 	const byte *p = (const byte *)array;
 
 	for (i = 0; i != nelems; i++) {
-		switch (type) {
+		switch (GetVarMemType(type)) {
 			case SLE_VAR_BL:
 			case SLE_VAR_I8:  v = *(const   int8 *)p; p += 1; break;
 			case SLE_VAR_U8:  v = *(const  uint8 *)p; p += 1; break;
@@ -278,7 +278,13 @@ static void MakeIntList(char *buf, const char *last, const void *array, int nele
 			case SLE_VAR_U32: v = *(const uint32 *)p; p += 4; break;
 			default: NOT_REACHED();
 		}
-		buf += seprintf(buf, last, IsSignedVarMemType(type) ? ((i == 0) ? "%d" : ",%d") : ((i == 0) ? "%u" : ",%u"), v);
+		if (IsSignedVarMemType(type)) {
+			buf += seprintf(buf, last, (i == 0) ? "%d" : ",%d", v);
+		} else if (type & SLF_HEX) {
+			buf += seprintf(buf, last, (i == 0) ? "0x%X" : ",0x%X", v);
+		} else {
+			buf += seprintf(buf, last, (i == 0) ? "%u" : ",%u", v);
+		}
 	}
 }
 
@@ -673,7 +679,7 @@ static void IniSaveSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 
 				switch (sdb->cmd) {
 					case SDT_BOOLX:      strecpy(buf, (i != 0) ? "true" : "false", lastof(buf)); break;
-					case SDT_NUMX:       seprintf(buf, lastof(buf), IsSignedVarMemType(sld->conv) ? "%d" : "%u", i); break;
+					case SDT_NUMX:       seprintf(buf, lastof(buf), IsSignedVarMemType(sld->conv) ? "%d" : (sld->conv & SLF_HEX) ? "%X" : "%u", i); break;
 					case SDT_ONEOFMANY:  MakeOneOfMany(buf, lastof(buf), sdb->many, i); break;
 					case SDT_MANYOFMANY: MakeManyOfMany(buf, lastof(buf), sdb->many, i); break;
 					default: NOT_REACHED();
@@ -701,7 +707,7 @@ static void IniSaveSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 				break;
 
 			case SDT_INTLIST:
-				MakeIntList(buf, lastof(buf), ptr, sld->length, GetVarMemType(sld->conv));
+				MakeIntList(buf, lastof(buf), ptr, sld->length, sld->conv);
 				break;
 
 			default: NOT_REACHED();
