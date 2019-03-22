@@ -22,6 +22,7 @@
  */
 
 #include "stdafx.h"
+#include <limits>
 #include "currency.h"
 #include "screenshot.h"
 #include "network/network.h"
@@ -169,7 +170,8 @@ static size_t LookupManyOfMany(const char *many, const char *str)
  * @param maxitems the maximum number of elements the integerlist-array has
  * @return returns the number of items found, or -1 on an error
  */
-static int ParseIntList(const char *p, int *items, int maxitems)
+template<typename T>
+static int ParseIntList(const char *p, T *items, int maxitems)
 {
 	int n = 0; // number of items read so far
 	bool comma = false; // do we accept comma?
@@ -189,9 +191,9 @@ static int ParseIntList(const char *p, int *items, int maxitems)
 			default: {
 				if (n == maxitems) return -1; // we don't accept that many numbers
 				char *end;
-				long v = strtol(p, &end, 0);
+				unsigned long v = strtoul(p, &end, 0);
 				if (p == end) return -1; // invalid character (not a number)
-				if (sizeof(int) < sizeof(long)) v = ClampToI32(v);
+				if (sizeof(T) < sizeof(v)) v = Clamp<unsigned long>(v, std::numeric_limits<T>::min(), std::numeric_limits<T>::max());
 				items[n++] = v;
 				p = end; // first non-number
 				comma = true; // we accept comma now
@@ -217,7 +219,7 @@ static int ParseIntList(const char *p, int *items, int maxitems)
  */
 static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
 {
-	int items[64];
+	unsigned long items[64];
 	int i, nitems;
 
 	if (str == nullptr) {
@@ -1534,7 +1536,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 
 		/* Parse parameters */
 		if (!StrEmpty(item->value)) {
-			int count = ParseIntList(item->value, (int*)c->param, lengthof(c->param));
+			int count = ParseIntList(item->value, c->param, lengthof(c->param));
 			if (count < 0) {
 				SetDParamStr(0, filename);
 				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
