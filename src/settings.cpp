@@ -276,7 +276,7 @@ static void MakeIntList(char *buf, const char *last, const void *array, int nele
 			case SLE_VAR_U32: v = *(const uint32 *)p; p += 4; break;
 			default: NOT_REACHED();
 		}
-		buf += seprintf(buf, last, (i == 0) ? "%d" : ",%d", v);
+		buf += seprintf(buf, last, IsSignedVarMemType(type) ? ((i == 0) ? "%d" : ",%d") : ((i == 0) ? "%u" : ",%u"), v);
 	}
 }
 
