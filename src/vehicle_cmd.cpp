@@ -148,6 +148,9 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		if (refitting) {
 			value.AddCost(CmdRefitVehicle(tile, flags, v->index, cargo, NULL));
+		} else {
+			/* Fill in non-refitted capacities */
+			_returned_refit_capacity = e->GetDisplayDefaultCapacity(&_returned_mail_refit_capacity);
 		}
 
 		if (flags & DC_EXEC) {

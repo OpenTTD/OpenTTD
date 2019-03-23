@@ -26,7 +26,7 @@ extern const uint8 _engine_offsets[4];
 
 bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company);
 bool IsEngineRefittable(EngineID engine);
-void GetArticulatedVehicleCargoesAndRefits(EngineID engine, CargoArray *cargoes, CargoTypes *refits);
+void GetArticulatedVehicleCargoesAndRefits(EngineID engine, CargoArray *cargoes, CargoTypes *refits, CargoID cargo_type, uint16 cargo_capacity);
 void SetYearEngineAgingStops();
 void StartupOneEngine(Engine *e, Date aging_date);
 

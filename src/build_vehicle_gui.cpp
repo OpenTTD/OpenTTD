@@ -532,11 +532,11 @@ static GUIEngineList::FilterFunction * const _filter_funcs[] = {
 	&CargoFilter,
 };
 
-static int DrawCargoCapacityInfo(int left, int right, int y, EngineID engine)
+static int DrawCargoCapacityInfo(int left, int right, int y, EngineID engine, TestedEngineDetails &te)
 {
 	CargoArray cap;
 	CargoTypes refits;
-	GetArticulatedVehicleCargoesAndRefits(engine, &cap, &refits);
+	GetArticulatedVehicleCargoesAndRefits(engine, &cap, &refits, te.cargo, te.capacity);
 
 	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		if (cap[c] == 0) continue;
@@ -552,19 +552,25 @@ static int DrawCargoCapacityInfo(int left, int right, int y, EngineID engine)
 }
 
 /* Draw rail wagon specific details */
-static int DrawRailWagonPurchaseInfo(int left, int right, int y, EngineID engine_number, const RailVehicleInfo *rvi)
+static int DrawRailWagonPurchaseInfo(int left, int right, int y, EngineID engine_number, const RailVehicleInfo *rvi, TestedEngineDetails &te)
 {
 	const Engine *e = Engine::Get(engine_number);
 
 	/* Purchase cost */
-	SetDParam(0, e->GetCost());
-	DrawString(left, right, y, STR_PURCHASE_INFO_COST);
+	if (te.cost != 0) {
+		SetDParam(0, e->GetCost() + te.cost);
+		SetDParam(1, te.cost);
+		DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT);
+	} else {
+		SetDParam(0, e->GetCost());
+		DrawString(left, right, y, STR_PURCHASE_INFO_COST);
+	}
 	y += FONT_HEIGHT_NORMAL;
 
 	/* Wagon weight - (including cargo) */
 	uint weight = e->GetDisplayWeight();
 	SetDParam(0, weight);
-	uint cargo_weight = (e->CanCarryCargo() ? CargoSpec::Get(e->GetDefaultCargoType())->weight * GetTotalCapacityOfArticulatedParts(engine_number) / 16 : 0);
+	uint cargo_weight = (e->CanCarryCargo() ? CargoSpec::Get(te.cargo)->weight * te.capacity / 16 : 0);
 	SetDParam(1, cargo_weight + weight);
 	DrawString(left, right, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT);
 	y += FONT_HEIGHT_NORMAL;
@@ -590,14 +596,21 @@ static int DrawRailWagonPurchaseInfo(int left, int right, int y, EngineID engine
 }
 
 /* Draw locomotive specific details */
-static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engine_number, const RailVehicleInfo *rvi)
+static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engine_number, const RailVehicleInfo *rvi, TestedEngineDetails &te)
 {
 	const Engine *e = Engine::Get(engine_number);
 
 	/* Purchase Cost - Engine weight */
-	SetDParam(0, e->GetCost());
-	SetDParam(1, e->GetDisplayWeight());
-	DrawString(left, right, y, STR_PURCHASE_INFO_COST_WEIGHT);
+	if (te.cost != 0) {
+		SetDParam(0, e->GetCost() + te.cost);
+		SetDParam(1, te.cost);
+		SetDParam(2, e->GetDisplayWeight());
+		DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT_WEIGHT);
+	} else {
+		SetDParam(0, e->GetCost());
+		SetDParam(1, e->GetDisplayWeight());
+		DrawString(left, right, y, STR_PURCHASE_INFO_COST_WEIGHT);
+	}
 	y += FONT_HEIGHT_NORMAL;
 
 	/* Max speed - Engine power */
@@ -632,20 +645,26 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 }
 
 /* Draw road vehicle specific details */
-static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_number)
+static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_number, TestedEngineDetails &te)
 {
 	const Engine *e = Engine::Get(engine_number);
 
 	if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
 		/* Purchase Cost */
-		SetDParam(0, e->GetCost());
-		DrawString(left, right, y, STR_PURCHASE_INFO_COST);
+		if (te.cost != 0) {
+			SetDParam(0, e->GetCost() + te.cost);
+			SetDParam(1, te.cost);
+			DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT);
+		} else {
+			SetDParam(0, e->GetCost());
+			DrawString(left, right, y, STR_PURCHASE_INFO_COST);
+		}
 		y += FONT_HEIGHT_NORMAL;
 
 		/* Road vehicle weight - (including cargo) */
 		int16 weight = e->GetDisplayWeight();
 		SetDParam(0, weight);
-		uint cargo_weight = (e->CanCarryCargo() ? CargoSpec::Get(e->GetDefaultCargoType())->weight * GetTotalCapacityOfArticulatedParts(engine_number) / 16 : 0);
+		uint cargo_weight = (e->CanCarryCargo() ? CargoSpec::Get(te.cargo)->weight * te.capacity / 16 : 0);
 		SetDParam(1, cargo_weight + weight);
 		DrawString(left, right, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT);
 		y += FONT_HEIGHT_NORMAL;
@@ -662,9 +681,16 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 		y += FONT_HEIGHT_NORMAL;
 	} else {
 		/* Purchase cost - Max speed */
-		SetDParam(0, e->GetCost());
-		SetDParam(1, e->GetDisplayMaxSpeed());
-		DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
+		if (te.cost != 0) {
+			SetDParam(0, e->GetCost() + te.cost);
+			SetDParam(1, te.cost);
+			SetDParam(2, e->GetDisplayMaxSpeed());
+			DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT_SPEED);
+		} else {
+			SetDParam(0, e->GetCost());
+			SetDParam(2, e->GetDisplayMaxSpeed());
+			DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
+		}
 		y += FONT_HEIGHT_NORMAL;
 	}
 
@@ -677,7 +703,7 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 }
 
 /* Draw ship specific details */
-static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_number, bool refittable)
+static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_number, bool refittable, TestedEngineDetails &te)
 {
 	const Engine *e = Engine::Get(engine_number);
 
@@ -686,13 +712,27 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 	uint ocean_speed = e->u.ship.ApplyWaterClassSpeedFrac(raw_speed, true);
 	uint canal_speed = e->u.ship.ApplyWaterClassSpeedFrac(raw_speed, false);
 
-	SetDParam(0, e->GetCost());
 	if (ocean_speed == canal_speed) {
-		SetDParam(1, ocean_speed);
-		DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
+		if (te.cost != 0) {
+			SetDParam(0, e->GetCost() + te.cost);
+			SetDParam(1, te.cost);
+			SetDParam(2, ocean_speed);
+			DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT_SPEED);
+		} else {
+			SetDParam(0, e->GetCost());
+			SetDParam(1, ocean_speed);
+			DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
+		}
 		y += FONT_HEIGHT_NORMAL;
 	} else {
-		DrawString(left, right, y, STR_PURCHASE_INFO_COST);
+		if (te.cost != 0) {
+			SetDParam(0, e->GetCost() + te.cost);
+			SetDParam(1, te.cost);
+			DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT);
+		} else {
+			SetDParam(0, e->GetCost());
+			DrawString(left, right, y, STR_PURCHASE_INFO_COST);
+		}
 		y += FONT_HEIGHT_NORMAL;
 
 		SetDParam(0, ocean_speed);
@@ -705,8 +745,8 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 	}
 
 	/* Cargo type + capacity */
-	SetDParam(0, e->GetDefaultCargoType());
-	SetDParam(1, e->GetDisplayDefaultCapacity());
+	SetDParam(0, te.cargo);
+	SetDParam(1, te.capacity);
 	SetDParam(2, refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY);
 	DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
 	y += FONT_HEIGHT_NORMAL;
@@ -728,31 +768,35 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
  * @param refittable If set, the aircraft can be refitted.
  * @return Bottom of the used area.
  */
-static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_number, bool refittable)
+static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_number, bool refittable, TestedEngineDetails &te)
 {
 	const Engine *e = Engine::Get(engine_number);
-	CargoID cargo = e->GetDefaultCargoType();
 
 	/* Purchase cost - Max speed */
-	SetDParam(0, e->GetCost());
-	SetDParam(1, e->GetDisplayMaxSpeed());
-	DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
+	if (te.cost != 0) {
+		SetDParam(0, e->GetCost() + te.cost);
+		SetDParam(1, te.cost);
+		SetDParam(2, e->GetDisplayMaxSpeed());
+		DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT_SPEED);
+	} else {
+		SetDParam(0, e->GetCost());
+		SetDParam(1, e->GetDisplayMaxSpeed());
+		DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
+	}
 	y += FONT_HEIGHT_NORMAL;
 
 	/* Cargo capacity */
-	uint16 mail_capacity;
-	uint capacity = e->GetDisplayDefaultCapacity(&mail_capacity);
-	if (mail_capacity > 0) {
-		SetDParam(0, cargo);
-		SetDParam(1, capacity);
+	if (te.mail_capacity > 0) {
+		SetDParam(0, te.cargo);
+		SetDParam(1, te.capacity);
 		SetDParam(2, CT_MAIL);
-		SetDParam(3, mail_capacity);
+		SetDParam(3, te.mail_capacity);
 		DrawString(left, right, y, STR_PURCHASE_INFO_AIRCRAFT_CAPACITY);
 	} else {
 		/* Note, if the default capacity is selected by the refit capacity
 		 * callback, then the capacity shown is likely to be incorrect. */
-		SetDParam(0, cargo);
-		SetDParam(1, capacity);
+		SetDParam(0, te.cargo);
+		SetDParam(1, te.capacity);
 		SetDParam(2, refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY);
 		DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
 	}
@@ -809,7 +853,7 @@ static uint ShowAdditionalText(int left, int right, int y, EngineID engine)
  * @param engine_number the engine of which to draw the info of
  * @return y after drawing all the text
  */
-int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
+int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, TestedEngineDetails &te)
 {
 	const Engine *e = Engine::Get(engine_number);
 	YearMonthDay ymd;
@@ -821,30 +865,30 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 		default: NOT_REACHED();
 		case VEH_TRAIN:
 			if (e->u.rail.railveh_type == RAILVEH_WAGON) {
-				y = DrawRailWagonPurchaseInfo(left, right, y, engine_number, &e->u.rail);
+				y = DrawRailWagonPurchaseInfo(left, right, y, engine_number, &e->u.rail, te);
 			} else {
-				y = DrawRailEnginePurchaseInfo(left, right, y, engine_number, &e->u.rail);
+				y = DrawRailEnginePurchaseInfo(left, right, y, engine_number, &e->u.rail, te);
 			}
 			articulated_cargo = true;
 			break;
 
 		case VEH_ROAD:
-			y = DrawRoadVehPurchaseInfo(left, right, y, engine_number);
+			y = DrawRoadVehPurchaseInfo(left, right, y, engine_number, te);
 			articulated_cargo = true;
 			break;
 
 		case VEH_SHIP:
-			y = DrawShipPurchaseInfo(left, right, y, engine_number, refittable);
+			y = DrawShipPurchaseInfo(left, right, y, engine_number, refittable, te);
 			break;
 
 		case VEH_AIRCRAFT:
-			y = DrawAircraftPurchaseInfo(left, right, y, engine_number, refittable);
+			y = DrawAircraftPurchaseInfo(left, right, y, engine_number, refittable, te);
 			break;
 	}
 
 	if (articulated_cargo) {
 		/* Cargo type + capacity, or N/A */
-		int new_y = DrawCargoCapacityInfo(left, right, y, engine_number);
+		int new_y = DrawCargoCapacityInfo(left, right, y, engine_number, te);
 
 		if (new_y == y) {
 			SetDParam(0, CT_INVALID);
@@ -988,6 +1032,7 @@ struct BuildVehicleWindow : Window {
 	byte cargo_filter_criteria;                 ///< Selected cargo filter
 	int details_height;                         ///< Minimal needed height of the details panels (found so far).
 	Scrollbar *vscroll;
+	TestedEngineDetails te;                     ///< Tested cost and capacity after refit.
 
 	void SetBuyVehicleText()
 	{
@@ -1065,8 +1110,11 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.ForceRebuild();
 		this->GenerateBuildList(); // generate the list, since we need it in the next line
 		/* Select the first engine in the list as default when opening the window */
-		if (this->eng_list.Length() > 0) this->sel_engine = this->eng_list[0];
-		this->SetBuyVehicleText();
+		if (this->eng_list.Length() > 0) {
+			this->SelectEngine(this->eng_list[0]);
+		} else {
+			this->SelectEngine(INVALID_ENGINE);
+		}
 	}
 
 	/** Populate the filter list and set the cargo filter criteria. */
@@ -1113,6 +1161,41 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
 	}
 
+	void SelectEngine(EngineID engine)
+	{
+		bool refit = this->cargo_filter[this->cargo_filter_criteria] != CF_ANY && this->cargo_filter[this->cargo_filter_criteria] != CF_NONE;
+		CargoID cargo = refit ? this->cargo_filter[this->cargo_filter_criteria] : CT_INVALID;
+
+		this->sel_engine = engine;
+		this->SetBuyVehicleText();
+
+		if (this->sel_engine == INVALID_ENGINE) return;
+
+		const Engine *e = Engine::Get(this->sel_engine);
+		if (!e->CanCarryCargo()) {
+			this->te.cost = 0;
+			this->te.cargo = CT_INVALID;
+			return;
+		}
+
+		if (!this->listview_mode) {
+			/* Query for cost and refitted capacity */
+			CommandCost ret = DoCommand(this->window_number, this->sel_engine | (cargo << 24), 0, DC_QUERY_COST, GetCmdBuildVeh(this->vehicle_type), NULL);
+			if (ret.Succeeded()) {
+				this->te.cost          = ret.GetCost() - e->GetCost();
+				this->te.capacity      = _returned_refit_capacity;
+				this->te.mail_capacity = _returned_mail_refit_capacity;
+				this->te.cargo         = (cargo == CT_INVALID) ? e->GetDefaultCargoType() : cargo;
+				return;
+			}
+		}
+
+		/* Purchase test was not possible or failed, fill in the defaults instead. */
+		this->te.cost     = 0;
+		this->te.capacity = e->GetDisplayDefaultCapacity(&this->te.mail_capacity);
+		this->te.cargo    = e->GetDefaultCargoType();
+	}
+
 	void OnInit() override
 	{
 		this->SetCargoFilterArray();
@@ -1123,11 +1206,9 @@ struct BuildVehicleWindow : Window {
 	{
 		this->eng_list.Filter(this->cargo_filter[this->cargo_filter_criteria]);
 		if (0 == this->eng_list.Length()) { // no engine passed through the filter, invalidate the previously selected engine
-			this->sel_engine = INVALID_ENGINE;
-			this->SetBuyVehicleText();
+			this->SelectEngine(INVALID_ENGINE);
 		} else if (!this->eng_list.Contains(this->sel_engine)) { // previously selected engine didn't pass the filter, select the first engine of the list
-			this->sel_engine = this->eng_list[0];
-			this->SetBuyVehicleText();
+			this->SelectEngine(this->eng_list[0]);
 		}
 	}
 
@@ -1176,7 +1257,7 @@ struct BuildVehicleWindow : Window {
 			if (eid == this->sel_engine) sel_id = eid;
 		}
 
-		this->sel_engine = sel_id;
+		this->SelectEngine(sel_id);
 
 		/* make engines first, and then wagons, sorted by selected sort_criteria */
 		_engine_sort_direction = false;
@@ -1207,7 +1288,7 @@ struct BuildVehicleWindow : Window {
 
 			if (eid == this->sel_engine) sel_id = eid;
 		}
-		this->sel_engine = sel_id;
+		this->SelectEngine(sel_id);
 	}
 
 	/* Figure out what ship EngineIDs to put in the list */
@@ -1225,7 +1306,7 @@ struct BuildVehicleWindow : Window {
 
 			if (eid == this->sel_engine) sel_id = eid;
 		}
-		this->sel_engine = sel_id;
+		this->SelectEngine(sel_id);
 	}
 
 	/* Figure out what aircraft EngineIDs to put in the list */
@@ -1253,7 +1334,7 @@ struct BuildVehicleWindow : Window {
 			if (eid == this->sel_engine) sel_id = eid;
 		}
 
-		this->sel_engine = sel_id;
+		this->SelectEngine(sel_id);
 	}
 
 	/* Generate the list of vehicles */
@@ -1308,8 +1389,7 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_LIST: {
 				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_BV_LIST);
 				size_t num_items = this->eng_list.Length();
-				this->sel_engine = (i < num_items) ? this->eng_list[i] : INVALID_ENGINE;
-				this->SetBuyVehicleText();
+				this->SelectEngine((i < num_items) ? this->eng_list[i] : INVALID_ENGINE);
 				this->SetDirty();
 				if (_ctrl_pressed) {
 					this->OnClick(pt, WID_BV_SHOW_HIDE, 1);
@@ -1473,7 +1553,7 @@ struct BuildVehicleWindow : Window {
 			if (this->sel_engine != INVALID_ENGINE) {
 				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(WID_BV_PANEL);
 				int text_end = DrawVehiclePurchaseInfo(nwi->pos_x + WD_FRAMETEXT_LEFT, nwi->pos_x + nwi->current_x - WD_FRAMETEXT_RIGHT,
-						nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine);
+						nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine, this->te);
 				needed_height = max(needed_height, text_end - (int)nwi->pos_y + WD_FRAMERECT_BOTTOM);
 			}
 			if (needed_height != this->details_height) { // Details window are not high enough, enlarge them.
@@ -1510,7 +1590,7 @@ struct BuildVehicleWindow : Window {
 					/* deactivate filter if criteria is 'Show All', activate it otherwise */
 					this->eng_list.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
 					this->eng_list.ForceRebuild();
-					this->SetBuyVehicleText();
+					this->SelectEngine(this->sel_engine);
 				}
 				break;
 		}

@@ -423,9 +423,16 @@ public:
 			/* Draw details panels. */
 			for (int side = 0; side < 2; side++) {
 				if (this->sel_engine[side] != INVALID_ENGINE) {
+					/* Use default engine details without refitting */
+					const Engine *e = Engine::Get(this->sel_engine[side]);
+					TestedEngineDetails ted;
+					ted.cost = 0;
+					ted.cargo = e->GetDefaultCargoType();
+					ted.capacity = e->GetDisplayDefaultCapacity(&ted.mail_capacity);
+
 					NWidgetBase *nwi = this->GetWidget<NWidgetBase>(side == 0 ? WID_RV_LEFT_DETAILS : WID_RV_RIGHT_DETAILS);
 					int text_end = DrawVehiclePurchaseInfo(nwi->pos_x + WD_FRAMETEXT_LEFT, nwi->pos_x + nwi->current_x - WD_FRAMETEXT_RIGHT,
-							nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine[side]);
+							nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine[side], ted);
 					needed_height = max(needed_height, text_end - (int)nwi->pos_y + WD_FRAMERECT_BOTTOM);
 				}
 			}
