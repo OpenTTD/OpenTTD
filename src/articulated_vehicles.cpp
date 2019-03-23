@@ -168,16 +168,16 @@ CargoArray GetCapacityOfArticulatedParts(EngineID engine)
  * @param engine Model to investigate.
  * @param[out] cargoes Total amount of units that can be transported, summed by cargo.
  * @param[out] refits Whether a (possibly partial) refit for each cargo is possible.
+ * @param cargo_type Selected refitted cargo type
+ * @param cargo_capacity Capacity of selected refitted cargo type
  */
-void GetArticulatedVehicleCargoesAndRefits(EngineID engine, CargoArray *cargoes, CargoTypes *refits)
+void GetArticulatedVehicleCargoesAndRefits(EngineID engine, CargoArray *cargoes, CargoTypes *refits, CargoID cargo_type, uint16 cargo_capacity)
 {
 	cargoes->Clear();
 	*refits = 0;
 
 	const Engine *e = Engine::Get(engine);
 
-	CargoID cargo_type;
-	uint16 cargo_capacity = GetVehicleDefaultCapacity(engine, &cargo_type);
 	if (cargo_type < NUM_CARGO && cargo_capacity > 0) {
 		(*cargoes)[cargo_type] += cargo_capacity;
 		if (IsEngineRefittable(engine)) SetBit(*refits, cargo_type);
