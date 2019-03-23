@@ -492,6 +492,8 @@ public:
 
 	void UpdateVirtCoord() override;
 
+	void MoveSign(TileIndex new_xy) override;
+
 	void AfterStationTileSetChange(bool adding, StationType type);
 
 	uint GetPlatformLength(TileIndex tile, DiagDirection dir) const override;

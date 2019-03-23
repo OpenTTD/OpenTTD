@@ -429,6 +429,23 @@ void Station::UpdateVirtCoord()
 	SetWindowDirty(WC_STATION_VIEW, this->index);
 }
 
+/**
+ * Move the station main coordinate somewhere else.
+ * @param new_xy new tile location of the sign
+ */
+void Station::MoveSign(TileIndex new_xy)
+{
+	if (this->xy == new_xy) return;
+
+	_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeStation(this->index));
+	_station_kdtree.Remove(this->index);
+
+	this->BaseStation::MoveSign(new_xy);
+
+	_station_kdtree.Insert(this->index);
+	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation(this->index));
+}
+
 /** Update the virtual coords needed to draw the station sign for all stations. */
 void UpdateAllStationVirtCoords()
 {
@@ -672,14 +689,7 @@ static void UpdateStationSignCoord(BaseStation *st)
 
 	/* clamp sign coord to be inside the station rect */
 	TileIndex new_xy = TileXY(ClampU(TileX(st->xy), r->left, r->right), ClampU(TileY(st->xy), r->top, r->bottom));
-	if (new_xy != st->xy) {
-		_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeStation(st->index));
-		_station_kdtree.Remove(st->index);
-		st->xy = new_xy;
-		_station_kdtree.Insert(st->index);
-		_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation(st->index));
-		st->UpdateVirtCoord();
-	}
+	st->MoveSign(new_xy);
 
 	if (!Station::IsExpected(st)) return;
 	Station *full_station = Station::From(st);
