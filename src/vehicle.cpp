@@ -1348,8 +1348,11 @@ void AgeVehicle(Vehicle *v)
 	/* Don't warn about non-primary or not ours vehicles or vehicles that are crashed */
 	if (v->Previous() != NULL || v->owner != _local_company || (v->vehstatus & VS_CRASHED) != 0) return;
 
+	const Company *c = Company::Get(v->owner);
 	/* Don't warn if a renew is active */
-	if (Company::Get(v->owner)->settings.engine_renew && v->GetEngine()->company_avail != 0) return;
+	if (c->settings.engine_renew && v->GetEngine()->company_avail != 0) return;
+	/* Don't warn if a replacement is active */
+	if (EngineHasReplacementForCompany(c, v->engine_type, v->group_id)) return;
 
 	StringID str;
 	if (age == -DAYS_IN_LEAP_YEAR) {
