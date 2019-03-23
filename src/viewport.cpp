@@ -2183,7 +2183,9 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeTown(TownID id)
 	item.id.town = id;
 
 	const Town *town = Town::Get(id);
-	Point pt = RemapCoords2(TileX(town->xy) * TILE_SIZE, TileY(town->xy) * TILE_SIZE);
+	/* Avoid using RemapCoords2, it has dependency on the foundations status of the tile, and that can be unavailable during saveload, leading to crashes.
+	 * Instead "fake" foundations by taking the highest Z coordinate of any corner of the tile. */
+	Point pt = RemapCoords(TileX(town->xy) * TILE_SIZE, TileY(town->xy) * TILE_SIZE, GetTileMaxZ(town->xy) * TILE_HEIGHT);
 
 	pt.y -= 24 * ZOOM_LVL_BASE;
 
