@@ -314,6 +314,8 @@ STR_COLOUR_ORANGE                                               :Помаран�
 STR_COLOUR_BROWN                                                :Коричневий
 STR_COLOUR_GREY                                                 :Сірий
 STR_COLOUR_WHITE                                                :Білий
+STR_COLOUR_RANDOM                                               :Випадково
+STR_COLOUR_DEFAULT                                              :Звичайний
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}миль/год
@@ -589,6 +591,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Звук/Муз
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Останнє повідомлення
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Історія повідомлень
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Видалити всі повідомлення
 ############ range ends here
 
 ############ range for about menu starts
@@ -600,6 +603,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Знімок е
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Знімок екрану з максимальним збільшенням
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Знімок екрану зі стандартним збільшенням
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Знімок всієї карти
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Швидкість генерації гри
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Про гру 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Вирівнювання спрайтів
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Вкл./відкл. обмежуючі рамки
@@ -778,6 +782,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Немає доступної музики
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Доріжка
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Заголовок
@@ -798,11 +803,14 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Вкл./
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Показує вікно вибору музичної програми
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Музична програма - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Назва доріжки
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Програма - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Очистити
+STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Змінити набір
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Очистити програму (тільки для Набору 1 або Набору 2)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Виберіть інший набір музичного оформлення
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Виберіть доріжку, щоб додати до програми (тільки для Набору 1 або Набору 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клацніть мишою на мелодії для її видалення зі списку (лише Набір1 та Набір2)
 
@@ -938,6 +946,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Керівник)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} субсидував спорудження нового міста {TOWN}!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Нове місто {TOWN} побудовано!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Будується {STRING} біля {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Насаджено {STRING} біля {TOWN}!
@@ -1005,9 +1014,9 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Вікно {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Копіювати до вікна
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Змінити вікно
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Копіювати місцеположення з основного екрану до цього вікна
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Вставити з вікна
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Вставити в головне вікно
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Перейти на основному екрані до цього місця
 
 # Game options window
@@ -1051,6 +1060,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Власна...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузинські ларі (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Іранський ріал (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Російський новий рубель (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Мексиканське песо (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Сторона руху транспорту
@@ -1113,7 +1123,12 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Нормаль�
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Подвійний розмір
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Почетверний розмір
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Розмір шрифту
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Виберть розмір шрифту інтерфейсу
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Нормальний
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Подвійний розмір
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Почетверний розмір
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовий набір графіки
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Оберіть, яку основну графіку використовувати
@@ -1382,6 +1397,8 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Цю н�
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Витрати на утримання інфраструктури: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :При включенні інфраструктура потребує коштів для утримання. Витрати збільшуються не пропорційно з ростом розміру мережі, більше впливаючи на великі компанії ніж на малі
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Колір компанії: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Виберіть початковий колір для компанії
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аеропорти не застарівають: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :При включенні кожен аеропорт буде доступним для будівництва безстроково після його впровадження.
@@ -1466,6 +1483,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Колір по
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :зелений
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :темнозелений
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фіолетовий
+STR_CONFIG_SETTING_SCROLLMODE                                   :Переміщення вікна обзору: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Спосіб пересування ігрового поля
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Переміщувати ПКМ, зафіксувавши курсор
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Переміщувати карту ПКМ, зафіксувавши курсор
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Переміщувати карту ПКМ
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Переміщувати ЛКМ
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавна прокрутка у вікні: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Налаштування способу прокрутки основного екрану при клацанні мишою по зменшенній карті, або інших діях, що призводять до переміщення по карті (кнопки "Оглянути", тощо). При включенні опції переміщення карти відбувається плавно. При виключенні - відбувається моментальне переміщення в необхідну точку
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Показувати підказки про розміри під час будівництва: {STRING}
@@ -1497,6 +1520,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+клац мишою
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :не емулювати
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Закрити вікно правою кнопкою миші: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Закривати вікно кліком правої кнопки миші по ньому. При цьому віключається поява підказок за правою кнопкою.
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Автозбереження: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Оберіть проміжок між автоматичними збереженнями гри
@@ -1886,6 +1911,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Пере
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показати налаштування AI / Ігрового Скрипта
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Вийти з OpenTTD
 
+STR_INTRO_BASESET                                               :{BLACK}В обраному наборі базової графіки немає {NUM} спрайт{P а ів ів}. Будь ласка, оновіть набір графіки.
 STR_INTRO_TRANSLATION                                           :{BLACK}Переклад має {NUM} неперекладених рядків. Зареєструйтесь як перекладач вашої мови та покращіть OpenTTD. Детальніше читайте в readme.txt.
 
 # Quit window
@@ -1931,6 +1957,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Змін
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Дозволити зміну рівня виробництва: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Кольори компанії «{COMPANY}»
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Показати загальне фарбування
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Показати фарбування поїздів
@@ -2190,6 +2217,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Роз'�
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сервер захищено паролем. Введіть пароль
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компанія захищена паролем. Введіть пароль
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Список клієнтів
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Список клієнтів
@@ -2405,6 +2433,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Леге
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Усе
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Немає
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Виберіть компанії для відображення
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}не використовується
@@ -2492,9 +2521,9 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Комб
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Розширений сигнал (електричний){}Розширений сигнал дозволяє більше ніж одному поїзду одночасно заходити до блоку сигналів, якщо поїзд може зарезервувати шлях до безпечної точки зупинки. Розширені сигнали дозволяють проїжджати їх з обох сторін
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Односторонній розширений сигнал (електричний){}Розширений сигнал дозволяє більше ніж одному поїзду одночасно заходити до блоку сигналів, якщо поїзд може зарезервувати шлях до безпечної точки зупинки. Односторонні розширені сигнали не дозволяють вїжджати з іншої сторони
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Заміна сигналів{}Коли обрано, натискання на існуючому сигналі замінить його на обраний тип і варіант сигналу, CTRL+натискання замінить існуючий варіант. Утримуйте Shift для показу витрат на заміну
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Частота сигналів при перетаскуванні
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Зменшити частоту сигналів
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Збільшити частоту сигналів
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Відстань між сигналами при перетаскуванні
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Зменшити відстань між сигналами
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Збільшити відстань між сигналами
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Виберіть міст
@@ -2715,6 +2744,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Назв
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Приймає: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Тип зал.колії: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Ліміт швидкості залізниці: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Ліміт швидкості авто: {LTBLUE}{VELOCITY}
 
@@ -2727,29 +2757,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Поле
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Засніжена земля
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустеля
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Звичайна колія
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Звичайна колія з блок-сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Звичайна колія з пресигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Звичайна колія з вихідними сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Звичайна колія з комбосигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Звичайна колія з маршрутними сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Звичайна колія з односторонніми маршрутними сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Звичайна колія з блок-сигналами і пресигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Звичайна колія з блок-сигналами і вихідними сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Звичайна колія з блок-сигналами і комбосигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Звичайна колія з блок-сигналами та маршрутними сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Звичайна колія з блок-сигналами та одност. маршрутними сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Звичайна колія з пресигналами і вихідними сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Звичайна колія з пресигналами і комбосигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Звичайна колія з пресигналами і маршрутними сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Звичайна колія з пресигналами і одност. маршрутними сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Звичайна колія з вихідними сигналами та комбосигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Звичайна колія з вихідними та маршрутними сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Звичайна колія з вихідними та одност. маршрутними сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Звичайна колія з комбосигналами і маршрутними сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Звичайна колія з комбосигналами та одност. маршрутними сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Звичайна колія з маршрутними та одност. маршрутними сигналами
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Звичайна колія залізничне депо
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Залізнична колія
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Залізнична колія з блок-сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Залізнична колія з пресигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Залізнична колія з вихідними сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Залізнична колія з комбосигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Залізнична колія з маршрутними сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Залізнична колія з односторонніми маршрутними сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Залізнична колія з блок-сигналами і пресигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Залізнична колія з блок-сигналами і вихідними сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Залізнична колія з блок-сигналами і комбосигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Залізнична колія з блок-сигналами та маршрутними сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Залізнична колія з блок-сигналами та одност. маршрутними сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Залізнична колія з пресигналами і вихідними сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Залізнична колія з пресигналами і комбосигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Залізнична колія з пресигналами і маршрутними сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Залізнична колія з пресигналами і одност. маршрутними сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Залізнична колія з вихідними сигналами та комбосигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Залізнична колія з вихідними та маршрутними сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Залізнична колія з вихідними та одност. маршрутними сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Залізнична колія з комбосигналами і маршрутними сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Залізнична колія з комбосигналами та одност. маршрутними сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Залізнична колія з маршрутними та одност. маршрутними сигналами
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Залізничне депо
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Дорога
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Дорога з вуличними ліхтарями
@@ -2816,13 +2846,58 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 команда OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Швидкість гри
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Швидкість прорахунку гри: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Кількість ігрових циклів в секунду.
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Виведення на екран: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Кількість кадрів побудованих за секунду
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Наявна швидкість гри: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK} Як швидко гра біжить в даний час, в порівнянні з очікуваною швидкістю при звичайній швидкості моделювання.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Зараз
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Середнє
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Дані отримано з {COMMA} вимірюван {P "ня" "нь" "нь" }
-STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} мс
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} мс
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} кадрів/сек
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} кадр{P "" "и" "ів"}/сек
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} кадрів/сек
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} мс
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} с
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Швидкість прорахунку гри:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Розрахунок вантажів:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Рух поїздів:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Рух автомобілів:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Рух кораблів:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Рух літаків:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Зміни на карті:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Затримка графу розподілу:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Побудова зображень:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Додаткові вікна:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Виведення на екран:
+STR_FRAMERATE_SOUND                                             :{BLACK}Обробка звуків:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Виконання скриптів:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Ігровий Скрипт:
+STR_FRAMERATE_AI                                                :{BLACK}   ШІ {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Прорахунок ігрового циклу
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Розрахунок обсягу вантажів
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Прорахунок поїздів
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Рух автомобілів
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Рух кораблів
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Прорахунок літаків
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Розрахунок змін на карті
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Затримка графу розподілу
+STR_FRAMETIME_CAPTION_DRAWING                                   :Відображення графіки
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Додаткові вікна перегляду
+STR_FRAMETIME_CAPTION_VIDEO                                     :Виведення на екран
+STR_FRAMETIME_CAPTION_SOUND                                     :Обробка звуку
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Час виконання скриптів
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Час виконання ігрового скрипту
+STR_FRAMETIME_CAPTION_AI                                        :ШІ {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2848,6 +2923,9 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Дета
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Інформація відсутня
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Фільтр:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Перезаписати файл
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW} Ви справді хочете перезаписати існуючий файл?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Введіть назву файла збереженої гри
 
@@ -2965,7 +3043,12 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Верс
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Мінімальна підтримувана версія: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5сума: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Палітра: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Звичайна (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Стандартна (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Застаріла
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Застаріла (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Параметри: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :нема
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Немає доступної інформації
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Таких файлів не знайдено
@@ -3046,6 +3129,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Вихід за
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Недоступні необхідні ресурси GRF (спрайт {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} був вимкнений {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Некоректний або невідомий формат розміщення спрайтів (спрайт {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Дуже багато елементів у списку значень (спрайт {3:NUM}, властивість {4:HEX})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Обережно!
@@ -3110,6 +3194,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Введ
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Міста
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- немає -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Мегаполіс){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Назви міст - натисніть на назву, щоб показати місто у центрі екрану. Ctrl+клац мишою відкриває нове вікно з видом на місто
 STR_TOWN_POPULATION                                             :{BLACK}Населення світу: {COMMA}
 
@@ -3117,6 +3202,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Насе
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (місто)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Населення: {ORANGE}{COMMA}{BLACK}  Будинки: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} минулого місяця: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Вантаж, потрібний для зростання міста:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} потрібно
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} потрібно взимку
@@ -3169,6 +3255,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Під�
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Цілі {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глобальні цілі:
+STR_GOALS_SPECTATOR                                             :Загальні задачі
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Глобальні цілі:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- нема -
@@ -3217,6 +3304,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Нати
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}Історія {COMPANY}
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Світова історія
+STR_STORY_BOOK_SPECTATOR                                        :Всесвітня історія
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Стор. {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Перейти до сторінки, вибраної в цьому списку.
@@ -3421,7 +3509,13 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Пока
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Обсяг виробництва: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Підприємство оголосило про близьке закриття!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Потребує: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Виробляє: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Потребує:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} очікує{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Змінити виробництво (кратне 8, до 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Змінити обсяг виробництва (до 800%)
@@ -3475,6 +3569,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Груп
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Клацніть мишою, щоб створити групу
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Стерти вибрану групу
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Перейменувати вибрану групу
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Змінити колір вибраної групи
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Клацніть мишою, щоб захистити групу від глобальної автозаміни
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Видалити групу
@@ -3485,6 +3580,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Позбути�
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Перейменувати групу
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Прибуток цього року:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Прибуток минулого року:
+STR_GROUP_OCCUPANCY                                             :Використання:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Новий неелектрифікований поїзд
@@ -3514,9 +3613,11 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Міст
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Потужність: {GOLD}+{POWER}{BLACK} Вага: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Може бути переобладненим на: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи вантажів
+STR_PURCHASE_INFO_NONE                                          :Нема
 STR_PURCHASE_INFO_ALL_BUT                                       :Всі, крім {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальна тягова сила: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальність: {GOLD}{COMMA} клітинок
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Тип літака: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список поїздів. Клацніть на поїзд для інформації. Ctrl+клац мишою вимикає показ типу транспорту
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Список автомобілів. Клацніть на авто для отримання інформації. Ctrl+клац мишою вимикає показ типу транспорту
@@ -3651,6 +3752,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :магнітн�
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Ціна: {CURRENCY_LONG} Вага: {WEIGHT_SHORT}{}Швидкість: {VELOCITY}{}Потужність: {POWER}{}Вартість експлуатації: {CURRENCY_LONG}/рік{}Місткість: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Вартість: {CURRENCY_LONG} Вага: {WEIGHT_SHORT}{}Швидкість: {VELOCITY}  Потужність: {POWER}  Макс. тяга: {6:FORCE}{}Вартість експлуатації: {4:CURRENCY_LONG}/рік{}Місткість: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Вартість: {CURRENCY_LONG} Макс. швидкість: {VELOCITY}{}Місткість: {CARGO_LONG}{}Вартість експлуатації: {CURRENCY_LONG}/рік
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Вартість: {CURRENCY_LONG} Макс. швидкість: {VELOCITY}{}Тип: {STRING}{}Місткість: {CARGO_LONG}, {CARGO_LONG}{}Вартість експлуатації: {CURRENCY_LONG}/рік
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Вартість: {CURRENCY_LONG} Макс. швидкість: {VELOCITY}{}Тип: {STRING}{}Місткість: {CARGO_LONG}{}Експлуатація: {CURRENCY_LONG}/рік
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Вартість: {CURRENCY_LONG} Макс. швидкість: {VELOCITY}{}Тип: {STRING} Дальність: {COMMA} клітин{P ка ки ок}Місткість: {CARGO_LONG}, {CARGO_LONG}{}Експлуатація: {CURRENCY_LONG}/рік
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Вартість: {CURRENCY_LONG} Макс. швидкість: {VELOCITY}{}Тип: {STRING} Дальність: {COMMA} клітин{P ка ки ок}Місткість: {CARGO_LONG}{}Експлуатація: {CURRENCY_LONG}/рік
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Оновити {STRING} - {STRING}
@@ -3680,6 +3785,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Нати
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Переключення між вікнами заміни потягів та вагонів.
 STR_REPLACE_ENGINES                                             :Локомотиви
 STR_REPLACE_WAGONS                                              :Вагони
+STR_REPLACE_ALL_RAILTYPE                                        :Весь з/д транспорт
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якого ви збираєтесь оновити потяги
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Показує, яким потягом буде замінено потяг, вибраний ліворуч
@@ -3772,6 +3878,8 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} р{P і
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} р{P ік оки оків} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Тип: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Тип: {LTBLUE}{STRING} {BLACK}Дальність: {LTBLUE}{COMMA} клітин{P ка ки ок }
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Макс. тяга: {LTBLUE}{FORCE}
 
@@ -3905,6 +4013,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Вік (рок�
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Потребує техогляду
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Завжди
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Залишок строку служби (років)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Максимальна надійність
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Як порівнювати дані транспорту з заданим значенням
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :дорівнює
@@ -4337,6 +4446,7 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ця
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... дорога не в тому напрямку
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... проїзні зупинки не можуть мати поворотів
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... проїзні зупинки не можуть мати перехресть
+STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... дорога одностороння або заблокована
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Не можна зруйнувати частину станції...
@@ -4589,6 +4699,7 @@ STR_BASESOUNDS_WIN_DESCRIPTION                                  :Оригіна�
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Порожній набір звуків.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Оригінальна музика з Transport Tycoon Deluxe Windows edition.
 STR_BASEMUSIC_DOS_DESCRIPTION                                   :Оригінальна музика Transport Tycoon Deluxe(DOS)
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Оригінальна музика Transport Tycoon Deluxe(DOS)
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Порожній набір музики.
 
 ##id 0x2000
