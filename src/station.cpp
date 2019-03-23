@@ -207,7 +207,7 @@ RoadStop *Station::GetPrimaryRoadStop(const RoadVehicle *v) const
 void Station::AddFacility(StationFacility new_facility_bit, TileIndex facil_xy)
 {
 	if (this->facilities == FACIL_NONE) {
-		this->xy = facil_xy;
+		this->MoveSign(facil_xy);
 		this->random_bits = Random();
 	}
 	this->facilities |= new_facility_bit;

@@ -110,6 +110,12 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	 */
 	virtual void UpdateVirtCoord() = 0;
 
+	virtual void MoveSign(TileIndex new_xy)
+	{
+		this->xy = new_xy;
+		this->UpdateVirtCoord();
+	}
+
 	/**
 	 * Get the tile area for a given station type.
 	 * @param ta tile area to fill.
