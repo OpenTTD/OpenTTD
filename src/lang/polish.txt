@@ -1374,6 +1374,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Podwójny
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Poczwórny
 
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Poczwórny
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Podstawowy zestaw grafik
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Wybierz podstawowy zestaw grafik do użycia
@@ -2762,7 +2763,7 @@ STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednokie
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamiana sygnałów{}Jeżeli włączone, kliknięcie na istniejący sygnał spowoduje zamianę go na wybrany typ i wariant. CTRL+klik przełącza istniejący wariant. Shift+klik pokazuje szacowany koszt zamiany
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Gęstość sygnałów przy przeciąganiu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Zmniejsz odległość między sygnałami przy przeciąganiu
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zwiększ gęstość sygnałów przy przeciąganiu
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zwiększ odległość między sygnałami przy przeciąganiu
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Wybierz rodzaj mostu kolejowego
@@ -3086,6 +3087,7 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Ilość klatek na sekundę
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Liczba ticków gry symulowanych na sekundę.
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Liczba renderowanych klatek wideo na sekundę.
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Jak szybko gra obecnie działa, w porównaniu do oczekiwanej prędkości przy normalnym tempie symulacji.
@@ -3110,6 +3112,7 @@ STR_FRAMERATE_SOUND                                             :{WHITE}Miksowan
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Pętla gry
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Obsługa ładunku
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Opóźnienie wykresu połączeń
 STR_FRAMETIME_CAPTION_DRAWING                                   :Renderowanie grafiki
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Renderowanie okna podgląu świata
@@ -3469,6 +3472,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Daj ła
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Cele firmy {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Cele globalne
+STR_GOALS_SPECTATOR                                             :Cele globalne
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Cele globalne:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Brak -
@@ -3517,6 +3521,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik na 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}Dziennik Historii Firmy {COMPANY}
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Ogólny przewodnik
+STR_STORY_BOOK_SPECTATOR                                        :Ogólny przewodnik
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Strona {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Skocz na właściwą stronę wybierając ją z listy.

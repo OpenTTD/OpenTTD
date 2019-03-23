@@ -467,6 +467,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :효과음/배�
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :최근 메시지/뉴스 기록
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :과거 메시지 목록
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :모든 뉴스 메시지 삭제
 ############ range ends here
 
 ############ range for about menu starts
@@ -989,13 +990,18 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}사용�
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :기타
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}인터페이스 크기
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}인터페이스의 크기를 선택하십시오.
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}인터페이스의 크기를 선택합니다.
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :보통
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :기본 크기
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :2배 크기
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4배 크기
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}글씨 크기
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}인터페이스에서 사용할 글씨 크기를 선택합니다.
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :기본 크기
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :2배 크기
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :4배 크기
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}기본 그래픽 세트
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}사용하실 기본 그래픽을 선택하세요.
@@ -2084,6 +2090,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}접속 �
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}서버 암호가 걸려있습니다. 암호를 입력하세요.
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}회사 암호가 걸려있습니다. 암호를 입력하세요.
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}접속자 목록
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :접속자 목록
@@ -2741,6 +2748,9 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}그래�
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  세계 화면:
 STR_FRAMERATE_VIDEO                                             :{BLACK}비디오 출력:
 STR_FRAMERATE_SOUND                                             :{BLACK}사운드 합성:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  총 게임 스크립트/AI:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   게임 스크립트:
+STR_FRAMERATE_AI                                                :{BLACK}  인공지능 {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :게임 루프
@@ -2755,6 +2765,9 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :그래픽 렌�
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :세계 화면 렌더링
 STR_FRAMETIME_CAPTION_VIDEO                                     :비디오 출력
 STR_FRAMETIME_CAPTION_SOUND                                     :사운드 합성
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :게임 스크립트/인공지능의 전체 스크립트 양입니다.
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :게임 스크립트
+STR_FRAMETIME_CAPTION_AI                                        :인공지능 {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -3019,6 +3032,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}(을)를 만들기 이전과 이후의 화물/개조 정보가 현재의 구매 목록과 다릅니다. 이 경우 자동 교체시 열차 개조에 실패할 수도 있습니다.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 때문에 결과물 콜백 과정에서 무한 루프가 발생하고 있습니다.
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}콜백 함수({1:HEX})가 알 수 없거나 잘못된 결과 값({2:HEX})을 반환했습니다.
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' - 생산 콜백 함수의 {2:HEX}에서 잘못된 화물 종류를 반환했습니다.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<알 수 없는 화물>
@@ -3113,6 +3127,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}성취�
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} 목표
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}전체 목표
+STR_GOALS_SPECTATOR                                             :전체 목표
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}전체 목표:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- 없음 -
@@ -3161,6 +3176,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}산업�
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}의 스토리 북
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}전체 스토리 북
+STR_STORY_BOOK_SPECTATOR                                        :전체 스토리 북
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :{NUM}쪽
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}드롭 다운 목록에서 이동하고자 하는 쪽수를 선택하세요.
