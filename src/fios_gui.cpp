@@ -437,12 +437,15 @@ public:
 				GfxFillRect(r.left + 1, r.top + 1, r.right, r.bottom, PC_BLACK);
 
 				uint y = r.top + WD_FRAMERECT_TOP;
-				for (uint pos = this->vscroll->GetPosition(); pos < this->fios_items.Length(); pos++) {
-					if (!this->fios_items_shown[pos]) {
+				uint scroll_pos = this->vscroll->GetPosition();
+				for (uint row = 0; row < this->fios_items.Length(); row++) {
+					if (!this->fios_items_shown[row]) {
 						/* The current item is filtered out : we do not show it */
+						scroll_pos++;
 						continue;
 					}
-					const FiosItem *item = this->fios_items.Get(pos);
+					if (row < scroll_pos) continue;
+					const FiosItem *item = this->fios_items.Get(row);
 
 					if (item == this->selected) {
 						GfxFillRect(r.left + 1, y, r.right, y + this->resize.step_height, PC_DARK_BLUE);
