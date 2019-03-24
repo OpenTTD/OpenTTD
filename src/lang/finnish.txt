@@ -785,12 +785,12 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Viesti
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Asukkaat juhlivat . . .{}Ensimmäinen juna saapuu asemalle {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen linja-auton!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen kuorma-auton!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen raitiovaunun!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen rahtiraitiovaunun!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen laivan!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}{STATION} vastaanottaa ensimmäisen lentokoneen!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Asukkaat juhlivat . . .{}{STATION} vastaanottaa ensimmäisen linja-auton!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Asukkaat juhlivat . . .{}{STATION} vastaanottaa ensimmäisen kuorma-auton!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Asukkaat juhlivat . . .{}{STATION} vastaanottaa ensimmäisen raitiovaunun!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Asukkaat juhlivat . . .{}{STATION} vastaanottaa ensimmäisen rahtiraitiovaunun!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Asukkaat juhlivat . . .{}{STATION} vastaanottaa ensimmäisen laivan!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Asukkaat juhlivat . . .{}{STATION} vastaanottaa ensimmäisen lentokoneen!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Junaonnettomuus!{}{COMMA} kuolee törmäyksen jälkeisessä tulipallossa.
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Tasoristeysturma!{}Kuljettaja kuolee junan ja auton törmäyksen jälkeisessä tulipallossa
@@ -1620,7 +1620,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Tavallinen
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Nopea
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Erittäin nopea
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Kaupunkien osuus: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Suurkaupungiksi muuttuvien kaupunkien määrä, eli suurempana aloittavat ja nopeammin kasvavat kaupungit
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Kaupunkien määrä: kaupungit ovat isompia jo alussa ja kasvavat nopeammin kuin muut kunnat
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 / {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ei yhtään
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Kasvukerroin alussa: {STRING}
@@ -2535,7 +2535,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Haluatko
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Luo kuntia
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Uusi kunta
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Perusta uusi kaupunki. Shift+Klik näyttää vain kustannusarvion
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Perusta uusi kunta. Shift+Klik näyttää vain kustannusarvion
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Satunnainen kunta
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Perusta kunta satunnaiseen paikkaan
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Monta satunnaista kuntaa
@@ -2543,7 +2543,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Täytä 
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Kunnan nimi:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Syötä kunnan nimi
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Syötä kaupungin nimi napsauttamalla
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Syötä kunnan nimi napsauttamalla
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Satunnainen nimi
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Arvo uusi satunnainen nimi
 
@@ -2803,7 +2803,7 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Maailman
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kartan koko:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Valitse kartan koko ruutuina. Saatavilla olevien ruutujen määrä on hieman alhaisempi
 STR_MAPGEN_BY                                                   :{BLACK}×
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Kaupunkien määrä:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Kuntien määrä:
 STR_MAPGEN_DATE                                                 :{BLACK}Päivämäärä:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Teollisuuden määrä:
 STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Suurin sallittu kartan korkeus:
@@ -3031,6 +3031,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF �
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Kulkuneuvon ”{1:ENGINE}” rahti-/uudelleensovitustiedot ovat toiset kuin ostolistassa rakentamisen jälkeen. Tämä voi johtaa uudelleensovituksen epäonnistumiseen, kun kulkuneuvo uudistetaan tai korvataan automaattisesti
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}”{1:STRING}” aiheutti ikuisen silmukan tuotannon takaisinkutsussa
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback-funktio {1:HEX} palautti tuntemattoman/kelvottoman tuloksen {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}”{1:STRING}” palautti virheellisen rahtityypin tuotannon takaisinkutsun kohdassa {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<virheellinen rahti>
@@ -3133,7 +3134,7 @@ STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Ei sa
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Yhtiön tavoitteet:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Keskitä päänäkymä teollisuuteen/kaupunkiin/ruutuun napsauttamalla tavoitetta. Ctrl+Klik avaa uuden näkymän teollisuuden/kaupungin/ruudun sijaintiin
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Keskitä päänäkymä laitokseen/kuntaan/ruutuun napsauttamalla tavoitetta. Ctrl+Klik avaa uuden näkymän laitoksen/kunnan/ruudun sijaintiin
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Kysymys
