@@ -26,14 +26,14 @@ extern NetworkAdminSocketPool _networkadminsocket_pool;
 /** Class for handling the server side of the game connection. */
 class ServerNetworkAdminSocketHandler : public NetworkAdminSocketPool::PoolItem<&_networkadminsocket_pool>, public NetworkAdminSocketHandler, public TCPListenHandler<ServerNetworkAdminSocketHandler, ADMIN_PACKET_SERVER_FULL, ADMIN_PACKET_SERVER_BANNED> {
 protected:
-	virtual NetworkRecvStatus Receive_ADMIN_JOIN(Packet *p);
-	virtual NetworkRecvStatus Receive_ADMIN_QUIT(Packet *p);
-	virtual NetworkRecvStatus Receive_ADMIN_UPDATE_FREQUENCY(Packet *p);
-	virtual NetworkRecvStatus Receive_ADMIN_POLL(Packet *p);
-	virtual NetworkRecvStatus Receive_ADMIN_CHAT(Packet *p);
-	virtual NetworkRecvStatus Receive_ADMIN_RCON(Packet *p);
-	virtual NetworkRecvStatus Receive_ADMIN_GAMESCRIPT(Packet *p);
-	virtual NetworkRecvStatus Receive_ADMIN_PING(Packet *p);
+	NetworkRecvStatus Receive_ADMIN_JOIN(Packet *p) override;
+	NetworkRecvStatus Receive_ADMIN_QUIT(Packet *p) override;
+	NetworkRecvStatus Receive_ADMIN_UPDATE_FREQUENCY(Packet *p) override;
+	NetworkRecvStatus Receive_ADMIN_POLL(Packet *p) override;
+	NetworkRecvStatus Receive_ADMIN_CHAT(Packet *p) override;
+	NetworkRecvStatus Receive_ADMIN_RCON(Packet *p) override;
+	NetworkRecvStatus Receive_ADMIN_GAMESCRIPT(Packet *p) override;
+	NetworkRecvStatus Receive_ADMIN_PING(Packet *p) override;
 
 	NetworkRecvStatus SendProtocol();
 	NetworkRecvStatus SendPong(uint32 d1);

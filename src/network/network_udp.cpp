@@ -117,8 +117,8 @@ void NetworkUDPQueryServer(NetworkAddress address, bool manually)
 /** Helper class for connecting to the master server. */
 class MasterNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
-	virtual void Receive_MASTER_ACK_REGISTER(Packet *p, NetworkAddress *client_addr);
-	virtual void Receive_MASTER_SESSION_KEY(Packet *p, NetworkAddress *client_addr);
+	void Receive_MASTER_ACK_REGISTER(Packet *p, NetworkAddress *client_addr) override;
+	void Receive_MASTER_SESSION_KEY(Packet *p, NetworkAddress *client_addr) override;
 public:
 	/**
 	 * Create the socket.
@@ -148,9 +148,9 @@ void MasterNetworkUDPSocketHandler::Receive_MASTER_SESSION_KEY(Packet *p, Networ
 /** Helper class for handling all server side communication. */
 class ServerNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
-	virtual void Receive_CLIENT_FIND_SERVER(Packet *p, NetworkAddress *client_addr);
-	virtual void Receive_CLIENT_DETAIL_INFO(Packet *p, NetworkAddress *client_addr);
-	virtual void Receive_CLIENT_GET_NEWGRFS(Packet *p, NetworkAddress *client_addr);
+	void Receive_CLIENT_FIND_SERVER(Packet *p, NetworkAddress *client_addr) override;
+	void Receive_CLIENT_DETAIL_INFO(Packet *p, NetworkAddress *client_addr) override;
+	void Receive_CLIENT_GET_NEWGRFS(Packet *p, NetworkAddress *client_addr) override;
 public:
 	/**
 	 * Create the socket.
@@ -324,10 +324,10 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_GET_NEWGRFS(Packet *p, Networ
 /** Helper class for handling all client side communication. */
 class ClientNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
-	virtual void Receive_SERVER_RESPONSE(Packet *p, NetworkAddress *client_addr);
-	virtual void Receive_MASTER_RESPONSE_LIST(Packet *p, NetworkAddress *client_addr);
-	virtual void Receive_SERVER_NEWGRFS(Packet *p, NetworkAddress *client_addr);
-	virtual void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config);
+	void Receive_SERVER_RESPONSE(Packet *p, NetworkAddress *client_addr) override;
+	void Receive_MASTER_RESPONSE_LIST(Packet *p, NetworkAddress *client_addr) override;
+	void Receive_SERVER_NEWGRFS(Packet *p, NetworkAddress *client_addr) override;
+	void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config) override;
 public:
 	virtual ~ClientNetworkUDPSocketHandler() {}
 };

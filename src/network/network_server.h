@@ -26,22 +26,22 @@ extern NetworkClientSocketPool _networkclientsocket_pool;
 /** Class for handling the server side of the game connection. */
 class ServerNetworkGameSocketHandler : public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>, public NetworkGameSocketHandler, public TCPListenHandler<ServerNetworkGameSocketHandler, PACKET_SERVER_FULL, PACKET_SERVER_BANNED> {
 protected:
-	virtual NetworkRecvStatus Receive_CLIENT_JOIN(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_COMPANY_INFO(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_GAME_PASSWORD(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_COMPANY_PASSWORD(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_GETMAP(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_MAP_OK(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_ACK(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_COMMAND(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_CHAT(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_SET_PASSWORD(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_SET_NAME(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_QUIT(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_ERROR(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_RCON(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_NEWGRFS_CHECKED(Packet *p);
-	virtual NetworkRecvStatus Receive_CLIENT_MOVE(Packet *p);
+	NetworkRecvStatus Receive_CLIENT_JOIN(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_COMPANY_INFO(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_GAME_PASSWORD(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_COMPANY_PASSWORD(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_GETMAP(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_MAP_OK(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_ACK(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_COMMAND(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_CHAT(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_SET_PASSWORD(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_SET_NAME(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_QUIT(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_ERROR(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_RCON(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_NEWGRFS_CHECKED(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_MOVE(Packet *p) override;
 
 	NetworkRecvStatus SendCompanyInfo();
 	NetworkRecvStatus SendNewGRFCheck();
@@ -79,8 +79,8 @@ public:
 	ServerNetworkGameSocketHandler(SOCKET s);
 	~ServerNetworkGameSocketHandler();
 
-	virtual Packet *ReceivePacket();
-	NetworkRecvStatus CloseConnection(NetworkRecvStatus status);
+	virtual Packet *ReceivePacket() override;
+	NetworkRecvStatus CloseConnection(NetworkRecvStatus status) override;
 	void GetClientName(char *client_name, const char *last) const;
 
 	NetworkRecvStatus SendMap();

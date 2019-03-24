@@ -724,13 +724,13 @@ public:
 	 */
 	NetworkContentConnecter(const NetworkAddress &address) : TCPConnecter(address) {}
 
-	virtual void OnFailure()
+	void OnFailure() override
 	{
 		_network_content_client.isConnecting = false;
 		_network_content_client.OnConnect(false);
 	}
 
-	virtual void OnConnect(SOCKET s)
+	void OnConnect(SOCKET s) override
 	{
 		assert(_network_content_client.sock == INVALID_SOCKET);
 		_network_content_client.isConnecting = false;
