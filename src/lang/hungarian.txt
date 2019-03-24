@@ -3564,10 +3564,12 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Megvesz
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Megvesz
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Megvesz
 
+
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}A kijelölt vasúti jármű megvétele. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}A kijelölt közúti jármű megvétele. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}A kijelölt hajó megvétele. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}A kijelölt repülőgép megvétele. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
+
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Átnevez
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Átnevez

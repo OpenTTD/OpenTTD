@@ -985,6 +985,8 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupigita aer
 
 
 
+
+
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 

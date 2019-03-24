@@ -3399,10 +3399,12 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Prynu Ce
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Prynu Llong
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Prynu Awyren
 
+
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Adeiladu'r cerbyd trên sydd wedi'i amlygu. Mae Shift+Clic yn dangos amcangyfrif o'r gost
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Adeiladu'r cerbyd ffordd sydd wedi'i amlygu. Mae Shift+Clic yn dangos amcangyfrif o'r gost
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Adeiladu'r llong sydd wedi'i hamlygu. Mae Shift+Clic yn dfangos amcangyfrif o'r gost
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Adeiladu'r awyren sydd wedi'i hamlygu. Mae Shift+Clic yn dangos amcangyfrif o'r gost
+
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Ailenwi
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Ailenwi

@@ -2140,7 +2140,7 @@ STR_NETWORK_CHAT_ALL                                            :[모두] {STRIN
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}채팅 메시지를 입력하세요.
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}네트워크 장치를 찾을수 없거나 게임 자체가 네트워크를 사용할 수 없는 버전으로 컴파일되었습니다.
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}사용할 수 있는 네트워크 장치가 없습니다.
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}네트워크 게임이 존재하지 않습니다.
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}서버가 요청을 받지 않습니다.
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF이 맞지 않아서 연결할 수 없습니다
@@ -3502,10 +3502,12 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}차량 �
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}선박 구입
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}항공기 구입
 
+
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}선택된 차량을 구입합니다. SHIFT+클릭으로 예상 구입 가격을 볼 수 있습니다.
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}선택한 차량을 구입합니다. Shift+클릭하면 예상 구입 비용을 볼 수 있습니다.
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}선택한 선박을 구입합니다. SHIFT+클릭으로 예상 구입 비용을 볼 수 있습니다.
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}선택한 항공기를 구입합니다. SHIFT+클릭으로 예상 구입 비용을 볼 수 있습니다.
+
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}이름
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}이름 지정

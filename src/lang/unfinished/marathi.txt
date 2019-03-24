@@ -1330,6 +1330,8 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}कि�
 
 
 
+
+
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 

@@ -2354,6 +2354,8 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}پہنچ
 
 
 
+
+
 STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}چهپایں
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}چهپایں
 STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}چهپایں
