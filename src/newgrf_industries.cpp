@@ -312,12 +312,14 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 			CargoID cargo = GetCargoTranslation(parameter, this->ro.grffile);
 			int index = this->industry->GetCargoProducedIndex(cargo);
 			if (index < 0) return 0; // invalid cargo
-			if (variable == 0x69) return this->industry->produced_cargo_waiting[index];
-			if (variable == 0x6A) return this->industry->this_month_production[index];
-			if (variable == 0x6B) return this->industry->this_month_transported[index];
-			if (variable == 0x6C) return this->industry->last_month_production[index];
-			if (variable == 0x6D) return this->industry->last_month_transported[index];
-			NOT_REACHED();
+			switch (variable) {
+				case 0x69: return this->industry->produced_cargo_waiting[index];
+				case 0x6A: return this->industry->this_month_production[index];
+				case 0x6B: return this->industry->this_month_transported[index];
+				case 0x6C: return this->industry->last_month_production[index];
+				case 0x6D: return this->industry->last_month_transported[index];
+				default: NOT_REACHED();
+			}
 		}
 
 
