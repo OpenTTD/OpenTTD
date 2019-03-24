@@ -277,6 +277,7 @@ static inline void MakeTree(TileIndex t, TreeType type, uint count, uint growth,
 {
 	SetTileType(t, MP_TREES);
 	SetTileOwner(t, OWNER_NONE);
+	SetWaterClass(t, ground == TREE_GROUND_SHORE ? WATER_CLASS_SEA : WATER_CLASS_INVALID);
 	_m[t].m2 = ground << 6 | density << 4 | 0;
 	_m[t].m3 = type;
 	_m[t].m4 = 0 << 5 | 0 << 2;
