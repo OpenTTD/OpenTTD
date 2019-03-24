@@ -297,6 +297,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_SERVE_NEUTRAL_INDUSTRIES,           ///< 210  PR#7234 Company stations can serve industries with attached neutral stations.
 	SLV_ROADVEH_PATH_CACHE,                 ///< 211  PR#7261 Add path cache for road vehicles.
 	SLV_REMOVE_OPF,                         ///< 212  PR#7245 Remove OPF.
+	SLV_TREES_WATER_CLASS,                  ///< 213  PR#7405 WaterClass update for tree tiles.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
