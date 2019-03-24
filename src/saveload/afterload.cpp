@@ -3111,8 +3111,8 @@ bool AfterLoadGame()
 		FOR_ALL_INDUSTRIES(ind) if (ind->neutral_station != NULL) ind->neutral_station->industry = ind;
 	}
 
-	{
-		/* Update water class for trees for all current savegame versions. */
+	if (IsSavegameVersionBefore(SLV_TREES_WATER_CLASS)) {
+		/* Update water class for trees. */
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (IsTileType(t, MP_TREES)) SetWaterClass(t, GetTreeGround(t) == TREE_GROUND_SHORE ? WATER_CLASS_SEA : WATER_CLASS_INVALID);
 		}
