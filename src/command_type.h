@@ -395,7 +395,6 @@ enum CommandFlags {
 	CMD_CLIENT_ID = 0x080, ///< set p2 with the ClientID of the sending client.
 	CMD_DEITY     = 0x100, ///< the command may be executed by COMPANY_DEITY
 	CMD_STR_CTRL  = 0x200, ///< the command's string may contain control strings
-	CMD_NO_EST    = 0x400, ///< the command is never estimated.
 };
 DECLARE_ENUM_AS_BIT_SET(CommandFlags)
 
