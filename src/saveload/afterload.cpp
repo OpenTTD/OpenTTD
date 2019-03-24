@@ -3080,6 +3080,13 @@ bool AfterLoadGame()
 		}
 	}
 
+	{
+		/* Update water class for trees for all current savegame versions. */
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsTileType(t, MP_TREES)) SetWaterClass(t, GetTreeGround(t) == TREE_GROUND_SHORE ? WATER_CLASS_SEA : WATER_CLASS_INVALID);
+		}
+	}
+
 	/* Station acceptance is some kind of cache */
 	if (IsSavegameVersionBefore(SLV_127)) {
 		Station *st;
