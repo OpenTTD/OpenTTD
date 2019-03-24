@@ -1321,6 +1321,9 @@ make_compiler_cflags() {
 		# it happens when using the FOR_ALL_WINDOWS_FROM_BACK_FROM macro
 		flags="$flags -Wno-self-assign"
 
+		# warning: <something> is a C++11 extension
+		flags="$flags -Wno-c++11-extensions"
+
 		if [ "$cc_version" -lt "30" ]; then
 			# warning: equality comparison with extraneous parentheses
 			flags="$flags -Wno-parentheses"
