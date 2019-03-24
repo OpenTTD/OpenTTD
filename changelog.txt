@@ -1,3 +1,16 @@
+1.9.0-RC2 (2019-03-24)
+------------------------------------------------------------------------
+- Fix #7400: WaterClass for tree tiles was not converted for old saves preventing industry creation (#7405)
+- Fix: Filtered file list did not scroll properly (#7402)
+- Fix #7391: Don't invalidate go to depot orders of non-aircraft when invalidating hangar orders that happen to share IDs (#7392)
+- Fix #7386: Measurement tooltip for tunnels, aqueducts & docks did not display or flickered (#7389)
+- Fix: Wrong company performance rating when money exceeds INT_MAX (#7382)
+- Fix: Permit loading of industry production callback with invalid cargo type (#7364)
+- Fix: Spelling for a few real town names (#7338)
+- Fix: Runway too short for large aircraft message should not depend on plane crashes setting (#7325)
+- Fix #7334: Ship lost after crossing bridge due to path cache not being consumed while on final bridge end (#7335)
+
+
 1.9.0-RC1 (2019-03-03)
 ------------------------------------------------------------------------
 - Add: Various AI/GS functions for vehicle groups (#7225)
