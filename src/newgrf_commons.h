@@ -228,6 +228,7 @@ class HouseOverrideManager : public OverrideManagerBase {
 public:
 	HouseOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
+
 	void SetEntitySpec(const HouseSpec *hs);
 };
 
@@ -238,8 +239,9 @@ public:
 	IndustryOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
 
-	virtual uint16 AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id);
-	virtual uint16 GetID(uint8 grf_local_id, uint32 grfid) const;
+	uint16 AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id) override;
+	uint16 GetID(uint8 grf_local_id, uint32 grfid) const override;
+
 	void SetEntitySpec(IndustrySpec *inds);
 };
 
