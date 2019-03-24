@@ -576,12 +576,12 @@ class TCPQueryConnecter : TCPConnecter {
 public:
 	TCPQueryConnecter(const NetworkAddress &address) : TCPConnecter(address) {}
 
-	virtual void OnFailure()
+	void OnFailure() override
 	{
 		NetworkDisconnect();
 	}
 
-	virtual void OnConnect(SOCKET s)
+	void OnConnect(SOCKET s) override
 	{
 		_networking = true;
 		new ClientNetworkGameSocketHandler(s);
@@ -659,12 +659,12 @@ class TCPClientConnecter : TCPConnecter {
 public:
 	TCPClientConnecter(const NetworkAddress &address) : TCPConnecter(address) {}
 
-	virtual void OnFailure()
+	void OnFailure() override
 	{
 		NetworkError(STR_NETWORK_ERROR_NOCONNECTION);
 	}
 
-	virtual void OnConnect(SOCKET s)
+	void OnConnect(SOCKET s) override
 	{
 		_networking = true;
 		new ClientNetworkGameSocketHandler(s);

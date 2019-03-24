@@ -80,20 +80,20 @@ protected:
 
 	friend class NetworkContentConnecter;
 
-	virtual bool Receive_SERVER_INFO(Packet *p);
-	virtual bool Receive_SERVER_CONTENT(Packet *p);
+	bool Receive_SERVER_INFO(Packet *p) override;
+	bool Receive_SERVER_CONTENT(Packet *p) override;
 
 	ContentInfo *GetContent(ContentID cid);
 	void DownloadContentInfo(ContentID cid);
 
-	void OnConnect(bool success);
-	void OnDisconnect();
-	void OnReceiveContentInfo(const ContentInfo *ci);
-	void OnDownloadProgress(const ContentInfo *ci, int bytes);
-	void OnDownloadComplete(ContentID cid);
+	void OnConnect(bool success) override;
+	void OnDisconnect() override;
+	void OnReceiveContentInfo(const ContentInfo *ci) override;
+	void OnDownloadProgress(const ContentInfo *ci, int bytes) override;
+	void OnDownloadComplete(ContentID cid) override;
 
-	void OnFailure();
-	void OnReceiveData(const char *data, size_t length);
+	void OnFailure() override;
+	void OnReceiveData(const char *data, size_t length) override;
 
 	bool BeforeDownload();
 	void AfterDownload();
@@ -109,7 +109,7 @@ public:
 
 	void Connect();
 	void SendReceive();
-	void Close();
+	void Close() override;
 
 	void RequestContentList(ContentType type);
 	void RequestContentList(uint count, const ContentID *content_ids);

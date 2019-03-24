@@ -522,7 +522,7 @@ public:
 	CommandQueue incoming_queue; ///< The command-queue awaiting handling
 	uint last_packet;            ///< Time we received the last frame.
 
-	NetworkRecvStatus CloseConnection(bool error = true);
+	NetworkRecvStatus CloseConnection(bool error = true) override;
 
 	/**
 	 * Close the network connection due to the given status.

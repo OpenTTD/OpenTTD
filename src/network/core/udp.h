@@ -52,7 +52,7 @@ protected:
 	/** The opened sockets. */
 	SocketList sockets;
 
-	NetworkRecvStatus CloseConnection(bool error = true);
+	NetworkRecvStatus CloseConnection(bool error = true) override;
 
 	void ReceiveInvalidPacket(PacketUDPType, NetworkAddress *client_addr);
 
@@ -235,7 +235,7 @@ public:
 	virtual ~NetworkUDPSocketHandler() { this->Close(); }
 
 	bool Listen();
-	void Close();
+	void Close() override;
 
 	void SendPacket(Packet *p, NetworkAddress *recv, bool all = false, bool broadcast = false);
 	void ReceivePackets();

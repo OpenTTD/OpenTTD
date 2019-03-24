@@ -481,7 +481,7 @@ protected:
 
 	NetworkRecvStatus HandlePacket(Packet *p);
 public:
-	NetworkRecvStatus CloseConnection(bool error = true);
+	NetworkRecvStatus CloseConnection(bool error = true) override;
 
 	NetworkAdminSocketHandler(SOCKET s);
 	~NetworkAdminSocketHandler();
