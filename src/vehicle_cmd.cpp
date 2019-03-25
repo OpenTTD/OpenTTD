@@ -131,7 +131,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	DoCommandFlag subflags = flags;
 	if (refitting) subflags |= DC_EXEC;
 
-	Vehicle *v;
+	Vehicle *v = NULL;
 	switch (type) {
 		case VEH_TRAIN:    value.AddCost(CmdBuildRailVehicle(tile, subflags, e, GB(p1, 24, 8), &v)); break;
 		case VEH_ROAD:     value.AddCost(CmdBuildRoadVehicle(tile, subflags, e, GB(p1, 24, 8), &v)); break;
