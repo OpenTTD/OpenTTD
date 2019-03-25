@@ -26,9 +26,6 @@
 
 #include "../../safeguards.h"
 
-static const uint MAX_SYMBOL_LEN = 512;
-static const uint MAX_FRAMES     = 64;
-
 /* printf format specification for 32/64-bit addresses. */
 #ifdef _M_AMD64
 #define PRINTF_PTR "0x%016IX"
@@ -322,6 +319,9 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 }
 
 #if defined(_MSC_VER)
+static const uint MAX_SYMBOL_LEN = 512;
+static const uint MAX_FRAMES     = 64;
+
 #pragma warning(disable:4091)
 #include <dbghelp.h>
 #pragma warning(default:4091)
