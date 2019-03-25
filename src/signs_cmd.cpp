@@ -100,6 +100,7 @@ CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		}
 	} else { // Delete sign
 		if (flags & DC_EXEC) {
+			si->sign.MarkDirty();
 			_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeSign(si->index));
 			delete si;
 
