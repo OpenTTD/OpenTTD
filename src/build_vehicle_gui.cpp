@@ -1163,8 +1163,8 @@ struct BuildVehicleWindow : Window {
 
 	void SelectEngine(EngineID engine)
 	{
-		bool refit = this->cargo_filter[this->cargo_filter_criteria] != CF_ANY && this->cargo_filter[this->cargo_filter_criteria] != CF_NONE;
-		CargoID cargo = refit ? this->cargo_filter[this->cargo_filter_criteria] : CT_INVALID;
+		CargoID cargo = this->cargo_filter[this->cargo_filter_criteria];
+		if (cargo == CF_ANY) cargo = CF_NONE;
 
 		this->sel_engine = engine;
 		this->SetBuyVehicleText();
@@ -1419,8 +1419,8 @@ struct BuildVehicleWindow : Window {
 				EngineID sel_eng = this->sel_engine;
 				if (sel_eng != INVALID_ENGINE) {
 					CommandCallback *callback = (this->vehicle_type == VEH_TRAIN && RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildPrimaryVehicle;
-					bool refit = this->cargo_filter[this->cargo_filter_criteria] != CF_ANY && this->cargo_filter[this->cargo_filter_criteria] != CF_NONE;
-					CargoID cargo = refit ? this->cargo_filter[this->cargo_filter_criteria] : CT_INVALID;
+					CargoID cargo = this->cargo_filter[this->cargo_filter_criteria];
+					if (cargo == CF_ANY) cargo = CF_NONE;
 					DoCommandP(this->window_number, sel_eng | (cargo << 24), 0, GetCmdBuildVeh(this->vehicle_type), callback);
 				}
 				break;
