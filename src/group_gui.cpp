@@ -213,8 +213,10 @@ private:
 		}
 		this->tiny_step_height = max(this->tiny_step_height, this->column_size[VGC_PROFIT].height);
 
-		SetDParamMaxValue(0, GroupStatistics::Get(this->vli.company, ALL_GROUP, this->vli.vtype).num_vehicle, 3, FS_SMALL);
-		this->column_size[VGC_NUMBER] = GetStringBoundingBox(STR_TINY_COMMA);
+		int num_vehicle = GetGroupNumVehicle(this->vli.company, ALL_GROUP, this->vli.vtype);
+		SetDParamMaxValue(0, num_vehicle, 3, FS_SMALL);
+		SetDParamMaxValue(1, num_vehicle, 3, FS_SMALL);
+		this->column_size[VGC_NUMBER] = GetStringBoundingBox(STR_GROUP_COUNT_WITH_SUBGROUP);
 		this->tiny_step_height = max(this->tiny_step_height, this->column_size[VGC_NUMBER].height);
 
 		this->tiny_step_height += WD_MATRIX_TOP;
@@ -275,11 +277,13 @@ private:
 		/* draw the profit icon */
 		x = rtl ? x - 2 - this->column_size[VGC_PROFIT].width : x + 2 + this->column_size[VGC_AUTOREPLACE].width;
 		SpriteID spr;
-		if (stats.num_profit_vehicle == 0) {
+		uint num_profit_vehicle = GetGroupNumProfitVehicle(this->vli.company, g_id, this->vli.vtype);
+		Money profit_last_year = GetGroupProfitLastYear(this->vli.company, g_id, this->vli.vtype);
+		if (num_profit_vehicle == 0) {
 			spr = SPR_PROFIT_NA;
-		} else if (stats.profit_last_year < 0) {
+		} else if (profit_last_year < 0) {
 			spr = SPR_PROFIT_NEGATIVE;
-		} else if (stats.profit_last_year < 10000 * stats.num_profit_vehicle) { // TODO magic number
+		} else if (profit_last_year < (Money) 10000 * num_profit_vehicle) { // TODO magic number
 			spr = SPR_PROFIT_SOME;
 		} else {
 			spr = SPR_PROFIT_LOT;
@@ -288,8 +292,16 @@ private:
 
 		/* draw the number of vehicles of the group */
 		x = rtl ? x - 2 - this->column_size[VGC_NUMBER].width : x + 2 + this->column_size[VGC_PROFIT].width;
-		SetDParam(0, stats.num_vehicle);
-		DrawString(x, x + this->column_size[VGC_NUMBER].width - 1, y + (this->tiny_step_height - this->column_size[VGC_NUMBER].height) / 2, STR_TINY_COMMA, colour, SA_RIGHT | SA_FORCE);
+		int num_vehicle_with_subgroups = GetGroupNumVehicle(this->vli.company, g_id, this->vli.vtype);
+		int num_vehicle = GroupStatistics::Get(this->vli.company, g_id, this->vli.vtype).num_vehicle;
+		if (IsAllGroupID(g_id) || IsDefaultGroupID(g_id) || num_vehicle_with_subgroups == num_vehicle) {
+			SetDParam(0, num_vehicle);
+			DrawString(x, x + this->column_size[VGC_NUMBER].width - 1, y + (this->tiny_step_height - this->column_size[VGC_NUMBER].height) / 2, STR_TINY_COMMA, colour, SA_RIGHT | SA_FORCE);
+		} else {
+			SetDParam(0, num_vehicle);
+			SetDParam(1, num_vehicle_with_subgroups - num_vehicle);
+			DrawString(x, x + this->column_size[VGC_NUMBER].width - 1, y + (this->tiny_step_height - this->column_size[VGC_NUMBER].height) / 2, STR_GROUP_COUNT_WITH_SUBGROUP, colour, SA_RIGHT | SA_FORCE);
+		}
 	}
 
 	/**
@@ -463,12 +475,12 @@ public:
 					SetDParam(2, this->vehicles.size());
 					SetDParam(3, this->vehicles.size());
 				} else {
-					const Group *g = Group::Get(this->vli.index);
+					uint num_vehicle = GetGroupNumVehicle(this->vli.company, this->vli.index, this->vli.vtype);
 
 					SetDParam(0, STR_GROUP_NAME);
-					SetDParam(1, g->index);
-					SetDParam(2, g->statistics.num_vehicle);
-					SetDParam(3, g->statistics.num_vehicle);
+					SetDParam(1, this->vli.index);
+					SetDParam(2, num_vehicle);
+					SetDParam(3, num_vehicle);
 				}
 				break;
 		}
