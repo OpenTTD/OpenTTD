@@ -76,7 +76,10 @@ int64 StringParameters::GetInt64(WChar type)
 		return 0;
 	}
 	if (this->type != NULL) {
-		assert(this->type[this->offset] == 0 || this->type[this->offset] == type);
+		if (this->type[this->offset] != 0 && this->type[this->offset] != type) {
+			DEBUG(misc, 0, "Trying to read string parameter with wrong type");
+			return 0;
+		}
 		this->type[this->offset] = type;
 	}
 	return this->data[this->offset++];
@@ -1414,8 +1417,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 						}
 					}
 
-					int64 args_array[] = {STR_TOWN_NAME, st->town->index, st->index};
-					StringParameters tmp_params(args_array);
+					uint64 args_array[] = {STR_TOWN_NAME, st->town->index, st->index};
+					WChar types_array[] = {0, SCC_TOWN_NAME, SCC_NUM};
+					StringParameters tmp_params(args_array, 3, types_array);
 					buff = GetStringWithArgs(buff, str, &tmp_params, last);
 				}
 				break;
