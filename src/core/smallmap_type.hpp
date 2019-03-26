@@ -79,12 +79,12 @@ struct SmallMap : std::vector<SmallPair<T, U> > {
 
 	inline const Pair *End() const
 	{
-		return &*std::vector<Pair>::end();
+		return std::vector<Pair>::data() + std::vector<Pair>::size();
 	}
 
 	inline Pair *End()
 	{
-		return &*std::vector<Pair>::end();
+		return std::vector<Pair>::data() + std::vector<Pair>::size();
 	}
 
 
