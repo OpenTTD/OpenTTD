@@ -527,6 +527,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Ήχος/Μου
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Τελευταίο μήνυμα/αναφορά ειδήσεων
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Ιστορικό μηνυμάτων
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Διαγραφή όλων των μηνυμάτων
 ############ range ends here
 
 ############ range for about menu starts
@@ -538,6 +539,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Στιγμιό�
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Στιγμιότυπο οθόνης μέγιστης μεγέθυνσης
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Στιγμιότυπο οθόνης τυπικής μεγέθυνσης
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Στιγμιότυπο οθόνης για ολό τον χάρτη
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Εμφάνιση ρυθμού καρέ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Σχετικά με το 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ευθυγραμμιστής στοιχεών
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Εναλλαγή πλαισίου οριοθέτησης
@@ -1100,6 +1102,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Κανονικ�
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Διπλό μέγεθος
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Τετραπλό μέγεθος
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Μέγεθος γραμματοσειράς
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Επιλέξτε το μέγεθος της γραμματοσειράς διεπαφής
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Κανονικό
@@ -1288,6 +1291,8 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Να επιτρ
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Επιτρέπεται η διαμόρφωση του εδάφους κάτω από κτίρια και σιδηροτροχιές χωρίς αυτά να αφαιρούνται
 STR_CONFIG_SETTING_CATCHMENT                                    :Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Διαφορετικοί σταθμοί και αεροδρόμια έχουν περιοχές κάλυψης διαφορετικού μεγέθους
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Οι σταθμοί της εταιρίας μπορούν να εξυπηρετήσεουν βιομηχανίες με κοντινούς ουδέτερους σταθμούς: {STRING}
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Όταν είναι ενεργοποιημένο, βιομηχανίες με ενσωματωμένους σταθμούς (όπως Πλατφόρμες Πετρελαίου) μπορούν να εξυπηρετούνται από κοντινούς σταθμούς της εταιρίας. Όταν είναι απενεργοποιημένο, οι βιομηχανίες αυτές μπορούν να εξυπηρετούνται μόνο από τους ενσωματωμένους σταθμούς τους. Κοντινοί σταθμοί της εταιρίας δεν θα μπορούν να τους εξυπηρετούν, ούτε και ο ενσωματωμένος σταθμός θα μπορεί να εξυπηρετήσει οτιδήποτε άλλο εκτός από τη βιομηχανία.
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Επιτρέπεται η αφαίρεση περισσότερων ιδιοκτησιών των πολέων: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Είναι ευκολότερη η αφαίρεση υποδομών και κτιρίων που κατέχονται από την πόλη
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Μέγιστο μήκος τρένων: {STRING}
@@ -1304,7 +1309,7 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Η κλίση �
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Κλίση εδάφους για τα οδικά οχήματα: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Η κλίση ενός κεκλιμένου τετραγωνίδιου για τα οδικά οχήματα. Μεγαλύτερες τιμές καθιστούν δυσκολότερο το ανέβασμα λόφων
-STR_CONFIG_SETTING_FORBID_90_DEG                                :Απαγόρευση στα τρένα και πλοία να κάνουν στροφές 90°: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Απαγόρευση στα τρένα να κάνουν στροφές 90°: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Στροφές 90 μοιρών προκύπτουν όταν μια οριζόντια σιδηροτροχιά ακολουθείται από μια κάθετη στο επόμενο τετραγωνίδιο, κάνοντας το τρένο να στρίψει κατά 90 μοίρες όταν αλλάζει τετραγωνίδιο, αντί για τις συνηθισμένες 45 μοίρες σε άλλους συνδυασμούς σιδηροτροχιών. Αυτό έχει επίσης εφαρμογή στην ακτίνα στροφής των πλοίων
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Να επιτρέπεται η συνένωση μη παρακείμενων σταθμών: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Επιτρέπεται η προσθήκη τμημάτων σε σταθμό χωρίς αυτά να αγγίζουν τα ήδη υπάρχοντα τμήματα. Χρειάζεται Ctrl+Κλικ κατά την τοποθέτηση των νέων τμημάτων
@@ -1361,8 +1366,8 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :Παράγον�
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Ορίζεται η σχετική ταχύτητα των αεροπλάνων συγκριτικά με τους άλλους τύπους οχημάτων, ώστε να μειώνεται το ποσό του εισοδήματος από μεταφορές με αεροσκάφη
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Αριθμός των αεροπορικών ατυχημάτων: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Ορίστε την πιθανότητα συντριβής ενός αεροσκάφους
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Καθόλου
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Ορίστε την πιθανότητα συντριβής ενός τυχαίου αεροσκάφους.{}* Μεγάλα αεροσκάφη πάντα έχουν ένα ρίσκο συντριβής όταν προσγειώνονται σε μικρά αεροδρόμια.
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Κανένα*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Μειωμένη
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Κανονική
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Επιτρέπονται οι στάσεις σε δρόμους που είναι ιδιοκτησία των πόλεων : {STRING}
@@ -1374,6 +1379,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Συντήρη�
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Όταν είναι ενεργοποιημένη, οι υποδομές προκαλούν έξοδα συντήρησης. Το κόστος μεγαλώνει δυσανάλογα με το μέγεθος του δικτύου, επηρεάζοντας έτσι τις μεγάλες εταιρείες περισσότερο από τις μικρότερες
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Αρχικό χρώμα εταιρίας: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Επιλογή του αρχικού χρώματος της εταιρίας
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Τα αεροδρόμια δεν λήγουν ποτέ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ενεργοποιώντας αυτήν τη ρύθμιση κάθε τύπος αεροδρομίου παραμένει διαθέσιμο για πάντα μετά την παρουσίασή του
@@ -1687,6 +1693,9 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Δεν επιτ
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Επιτρέπεται
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Επιτρέπεται, προσαρμοσμένο σχέδιο πόλης
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Δημιουργία εμπορευμάτων πόλης: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Η ποσότητα εμπορευμάτων που παράγεται απο σπίτια σε πόλεις, σε σχέση με τον πληθυσμό της πόλης.{}Τετραγωνική ανάπτυξη: Μια πόλη διπλού μεγέθους παράγει τετραπλάσιο αριθμό επιβατών.{}Γραμμική ανάπτυξη: Μια πόλη διπλού μεγέθους παράγει διπλάσιο αριθμό επιβατών.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Τετραγωνικός (αρχική έκδοση)
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Γραμμικό
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Τοποθέτηση δέντρων εντός παιχνιδιού: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Έλεγχος της τυχαίας εμφάνισης δέντρων κατά τη διάρκεια του παιχνιδιού. Αυτό είναι πιθανό να επηρεάσει βιομηχανίες που εξαρτώνται από την ανάπτυξη των δέντρων, όπως για παράδειγμα οι υλοτομίες
@@ -1891,7 +1900,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Λείπ
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Έξοδος
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Είστε σίγουροι ότι θέλετε να εγκαταλείψετε το OpenTTD και να επιστρέψετε στο {STRING};
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Είστε σίγουροι ότι θέλετε να εγκαταλείψετε το OpenTTD και να επιστρέψετε στο λειτουργικό {STRING};
 STR_QUIT_YES                                                    :{BLACK}Ναι
 STR_QUIT_NO                                                     :{BLACK}Όχι
 
@@ -2188,6 +2197,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Αποσ
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Η πρόσβαση στον διακομιστή προστατεύεται. Εισάγετε τον κωδικό
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Η εταιρεία προστατεύεται από κωδικό. Εισάγετε κωδικό
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Λίστα συμμετεχόντων
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Λίστα συμμετεχόντων
@@ -2236,7 +2246,7 @@ STR_NETWORK_CHAT_ALL                                            :[Όλοι] {STR
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Εισάγετε το κείμενο για δικτυακή συζήτηση
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Δεν βρέθηκε συσκευή δικτύου ή έγινε μεταγλώττιση χωρίς την παράμετρο ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Δεν βρέθηκαν συσκευές δικτύου
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Δεν βρέθηκε κάποιο δικτυακό παιχνίδι
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Ο διακομιστής δεν απάντησε στο αίτημα
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Απέτυχε η σύνδεση λόγο ασυμφωνίας NewGRF
@@ -2488,9 +2498,9 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Συνδ
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Σηματοδότης Τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα από ένα τρένο να είναι σε ένα κομμάτι ελέγχου την ίδια στιγμή, εάν το τρένο μπορεί να δεσμεύσει τροχιά σε ασφαλές σημείο στάσης. Κανονικοί σηματοδότες τροχιάς μπορούν να περαστούν από την πίσω πλευρά
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Μονόδρομος Σηματοδότης Τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα από ένα τρένο να είναι σε ένα κομμάτι ελέγχου την ίδια στιγμή, εάν το τρένο μπορεί να δεσμεύσει τροχιά σε ασφαλές σημείο στάσης. Μονόδρομοι σηματοδότες τροχιάς δεν μπορούν να περαστούν από την πίσω πλευρά
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Μετατροπέας Σηματοδότη{}Όταν επιλέγεται, πατώντας σε έναν υπάρχωντα σηματοδότη θα τον μετατρέψει στον επιλεγμένο τύπο και παραλλαγή σηματοδότη. Με Ctrl+Κλικ εναλλάσσεται με την υπάρχουσα παραλλαγή. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος μετατροπής
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Πυκνότητα σηματοδοτών με σύρσιμο
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Μείωση πυκνότητας σηματοδοτών με σύρσιμο
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Αύξηση πυκνότητας σηματοδοτών με σύρσιμο
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Απόσταση μεταξύ σηματοδοτών με σύρσιμο
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Μείωση απόστασης μεταξύ σηματοδοτών με σύρσιμο
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Αύξηση απόστασης μεταξύ σηματοδοτών με σύρσιμο
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Επιλογή Γέφυρας
@@ -2809,37 +2819,44 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ιδιοκτη�
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Σχετικά με το OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Αρχικά Πνευματικά Δικαιώματα {COPYRIGHT} 1995 Chris Sawyer, Όλα τα δικαιώματα διατηρούνται
-STR_ABOUT_VERSION                                               :{BLACK}Έκδοση OpenTTD{REV}
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD έκδοση {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 Η ομάδα του OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Ρυθμός καρέ γραφικών
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Ρυθμός προσομοίωσης: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Αριθμός στιγμών παιχνιδιού που προσομοιώνεται ανά δευτερόλεπτο.
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Ρυθμός καρέ γραφικών: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Αριθμος των παραγμενων video frames ανα δευτερολεπτο
-STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Παράγοντας ταχύτητας τρέχοντος παιχνιδιού: {DECIMAL}x
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Αριθμος των παραγμενων καρέ ανα δευτερολεπτο
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Παράγοντας ταχύτητας τρέχοντος παιχνιδιού: {DECIMAL}x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Πόσο γρήγορα εκτελείται το παιχνίδι αυτήν τη στιγμή, σε σύγκριση με την αναμενόμενη ταχύτητα στον κανονικό ρυθμό εξομοίωσης.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Τρέχον
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Μέσο
-STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Τα δεδομένα βασίζονται σε μετρήσεις {COMMA}
-STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Τα δεδομένα βασίζονται σε μετρήσεις {COMMA}
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
-STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} frames/δευτ.
-STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} frames/δευτ.
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} καρέ/δευτερόλεπτο
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} καρέ/δευτερόλεπτο
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} καρέ/δευτερόλεπτο
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} ς
 ############ Leave those lines in this order!!
-STR_FRAMERATE_GL_ECONOMY                                        :{WHITE} Διαχείριση φορτίου:
-STR_FRAMERATE_GL_TRAINS                                         :Στιγμές τρένων:
-STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE} Στιγμές οχημάτων δρόμου:
-STR_FRAMERATE_GL_SHIPS                                          :Στιγμές πλοίων:
-STR_FRAMERATE_GL_AIRCRAFT                                       :Στιγμές αεροσκαφών:
-STR_FRAMERATE_GL_LANDSCAPE                                      :Στιγμές κόσμου:
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Σύνολο βρόγχου παιχνιδιού:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} Διαχείριση φορτίου:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Στιγμές τρένων:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Στιγμές οχημάτων δρόμου:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK} Στιγμές πλοίων:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Στιγμές αεροσκαφών:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Στιγμές κόσμου:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Καθυστέρηση γραφήματος συνδέσμου:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Γραφική απόδοση:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :Παράθυρα προβολής κόσμου:
-STR_FRAMERATE_VIDEO                                             :{WHITE}Έξοδος βίντεο:
-STR_FRAMERATE_SOUND                                             :{WHITE}Μίξη ήχου:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Έξοδος βίντεο:
+STR_FRAMERATE_SOUND                                             :{BLACK}Μίξη ήχου:
 STR_FRAMERATE_ALLSCRIPTS                                        :Σύνολο GS/AI:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Δέσμη ενεργειών παιχνιδιού:
 STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
@@ -2857,6 +2874,7 @@ STR_FRAMETIME_CAPTION_VIDEO                                     :Έξοδος β
 STR_FRAMETIME_CAPTION_SOUND                                     :Μίξη ήχου
 STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Σύνολο GS/AI δεσμών ενεργειών
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Δέσμη Ενεργειών παιχνιδιού
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -3005,6 +3023,7 @@ STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Παλέ
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Προεπιλογή (D)
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Προεπιλογή (D) / 32 bpp
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Παλαιού τύπου (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Παλαιού τύπου (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Παράμετροι: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Κανένα
 
@@ -3088,6 +3107,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Οι ζητημ
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Το {1:STRING} απενεργοποιήθηκε από το {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Άκυρη/άγνωστη μορφή σχεδίου sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Πάρα πολλά αντικέιμενα στη λίστα τιμών ιδιοτήτων (sprite {3:NUM}, ιδιότητα {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Άγνωστη/άκυρη σπιτροφή κήσης από παραγωγή βιομηχανίας (sprite {3:NUM}, "{2:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Προσοχή!
@@ -3113,12 +3133,13 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Η συ�
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Άλλαξε την κατάσταση *** για «{1:ENGINE}» όταν δεν είναι μέσα σε αμαξοστάσιο
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Άλλαξε το μήκος του οχήματος «{1:ENGINE}» ενώ δεν βρισκόταν μέσα σε αμαξοστάσιο
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Άλλαξε τη χωριτικότητα όχηματος για τη «{1:ENGINE}» όταν δεν είναι σε αμαξοστάσιο ή διαδικασία μετατροπής
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Το τρένο «{VEHICLE}» που ανήκει στην εταιρία «{COMPANY}» έχει μη έγκυρο μήκος. Πιθανόν να προέρχεται από προβλήματα με NewGRF. Το παιχνίδι μπορεί να αποσυγχρονιστεί ή να κλείσει απρόοπτα.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Το τρένο «{VEHICLE}» που ανήκει στην εταιρία «{COMPANY}» έχει μη έγκυρο μήκος. Πιθανόν να προκλήθηκε από προβλήματα με κάποια NewGRF. Το παιχνίδι μπορεί να αποσυγχρονιστεί ή να κλείσει απρόοπτα.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF «{0:STRING}» δίνει λάθος πληροφορίες
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/μετατροπής για το «{1:ENGINE}» διαφέρει από τη λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αποτυχία της αυτόματης ανανέωσης/αντικατάστασης για σωστή μετατροπή
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Το «{1:STRING}» προκάλεσε ένα ατέρμονο βρόχο στην κλήση παραγωγής
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Η κλήση {1:HEX} επέστρεψε άγνωστο/άκυρο αποτέλεσμα {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}Το '{1:STRING}' επέστρεψε άγνωστο/άκυρο τύπο εμπορεύματος στην κλήση {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<μη έγκυρο φορτίο>
@@ -3527,6 +3548,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Ομάδ
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Πατήστε για δημιουργήσετε ομάδα
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Διαγραφή της επιλεγμένης ομάδας
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Μετονομασία της επιλεγμένης ομάδας
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Αλλαγή εμφάνισης της επιλεγμένης ομάδας
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Πατήστε για προστατέψετε αυτήν την ομάδα από την γενική αυτόματη αντικατάσταση
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Διαγραφή ομάδας
@@ -3554,6 +3576,7 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :Νέα Πλοί
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Νέα Αεροσκάφη
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Κόστος: {GOLD}{CURRENCY_LONG}{BLACK} Βάρος: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Κόστος: {GOLD}{CURRENCY_LONG}{BLACK} (Κόστος μετατροπής: {GOLD}{CURRENCY_LONG}{BLACK}) Βάρος: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ταχύτητα: {GOLD}{VELOCITY}{BLACK} Δύναμη κινητήρα: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Ταχύτητα: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Ταχύτητα στον ωκεανό: {GOLD}{VELOCITY}
@@ -3564,6 +3587,7 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(μετατρέ
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Έτος σχεδίασης: {GOLD}{NUM}{BLACK} Χρόνος ζωής: {GOLD}{COMMA} χρόν{P ο ια}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Μέγ. Αξιοπιστία: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Κόστος: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Κόστος: {GOLD}{CURRENCY_LONG}{BLACK} (Κόστος μετατροπής: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Βάρος: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Κόστος: {GOLD}{CURRENCY_LONG}{BLACK} Ταχύτητα: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Κόστος: {GOLD}{CURRENCY_LONG}{BLACK} (Κόστος μετατροπής: {GOLD}{CURRENCY_LONG}{BLACK}) Ταχύτητα: {GOLD}{VELOCITY}
@@ -3571,7 +3595,8 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Χωρη
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ενισχυμένα Βαγόνια: {GOLD}+{POWER}{BLACK} Βάρος: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Μετατρέψιμο σε: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Όλοι οι τύποι εμπορεύματος
-STR_PURCHASE_INFO_ALL_BUT                                       :Όλοι εκτός από {CARGO_LIST}
+STR_PURCHASE_INFO_NONE                                          :Κανένα
+STR_PURCHASE_INFO_ALL_BUT                                       :Όλα εκτός από {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Μέγ. Δύναμη Έλξης: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Εύρος: {GOLD}{COMMA} τετραγωνίδια
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Τύπος αεροσκάφους: {GOLD}{STRING}
@@ -3589,6 +3614,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Αγορ
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Αγορά και μετατροπή οχήματος
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Αγορά και μετατροπή οχήματος
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Αγορά και μετατροπή πλοίου
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Αγορά και μετατροπή του αεροσκάφους
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Αγορά του επιλεγμένου οχήματος τρένου. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς αγορά
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Αγορά του επιλεγμένου οχήματος δρόμου. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς αγορά

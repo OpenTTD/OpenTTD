@@ -377,6 +377,8 @@ STR_COLOUR_ORANGE                                               :Fulvus
 STR_COLOUR_BROWN                                                :Aquilus
 STR_COLOUR_GREY                                                 :Canus
 STR_COLOUR_WHITE                                                :Albus
+STR_COLOUR_RANDOM                                               :Fortuitus
+STR_COLOUR_DEFAULT                                              :Solitus
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -652,6 +654,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sonus musicave
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Monstrare nuntium novissimum
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historia nuntiorum
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Delere omnia nuntia
 ############ range ends here
 
 ############ range for about menu starts
@@ -1114,6 +1117,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Randum Africae 
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Propria...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiana (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Regalis Iranica (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novus Rubelus Russicus (RUB)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vehicula Viaria
@@ -1376,8 +1380,8 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Arduitas tegula
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Arduitas clivorum vehiculis viariis: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Arduitas tegulae clivosae vehiculo viario. Arduitate maiore, difficultas ascendendi maior est vehiculis
-STR_CONFIG_SETTING_FORBID_90_DEG                                :Vetare tramina et naves cursum flectere 90°: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Tramina possunt cursum flectere in astariis aut 45° (diagonale deinde horizontale/verticale) aut 90° (horizontale deinde verticale); quoque naves possunt cursum 90° aut 45° cursum flectere. Hac electa, tantum 45° licet
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Vetare traminum cursum flectere 90°: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Tramina possunt cursum flectere in astariis aut 45° (diagonale deinde horizontale/verticale) aut 90° (horizontale deinde verticale). Hac electa, tantum 45° licet.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Sinere stationes iungi quae non contigua sunt: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Sinere partes stationi addere quae non prorsus contigua sunt. Necesse est Ctrl premere dum novae partes adduntur.
 STR_CONFIG_SETTING_INFLATION                                    :Inflatio: {STRING}
@@ -1433,8 +1437,8 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :Multiplicator v
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Eligere si aeroplana eant lentius quam alia vehicula, ut reditus aeroplanorum minuatur
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Calamitates aeroplanicae accidunt: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Eligere crebritatem calamitatum aeroplanicarum
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Numquam
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Eligere crebritatem calamitatum aeroplanicarum.{}* Aeroplana magna tamen semper corruere possunt si aeroportui parvo appellant.
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Numquam*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Raro
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Mediocriter
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Sinere stationes viarias pervias esse in viis oppidorum: {STRING}
@@ -1998,6 +2002,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mutare a
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Sinere mutare productiones industriarum: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} Schema Coloris
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Monstrare schemata coloris generalia
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Monstrare schemata coloris traminum
@@ -2305,7 +2310,7 @@ STR_NETWORK_CHAT_ALL                                            :[Omnibus] {STRI
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Inscribere nuntium ad retis colloquium
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nullae res retis inventae vel compilata sine ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nullae res retis inventae
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nulli ludi in rete inventi
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Nulla responsa a servatro
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Non potest iungere propter NewGRF imparia
@@ -2571,9 +2576,9 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Signale 
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Signale Itineris (electricum){}Signale itineris sinit plura tramina inire intra signalia eodem tempore, si tramen potest reservare iter ad destinatum tutum. Signalia itineris usitata possunt transiri a tergo
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Signale Itineris Unius Cursus (electricum){}Signale itineris sinit plura tramina inire intra signalia eodem tempore, si tramen potest reservare iter ad destinatum tutum. Signalia itineris unius cursus non possunt transiri a tergo
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Mutare Signalia{}Electa, pressio in signale facit ut mutetur in novum typum electum. Ctrl+Preme ut signale mutetur inter semaphoricum et electricum. Shift mutat inter mutationem et aestimationem monstrandam
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densitas signalia trahendi
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minuere densitatem signalia trahendi
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augere densitatem signalia trahendi
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Intervallum signalia trahendi
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minuere intervallum signalia trahendi
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augere intervallum signalia trahendi
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Eligere Pontem Ferriviarium
@@ -2893,7 +2898,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terra societati
 STR_ABOUT_OPENTTD                                               :{WHITE}De OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Privilegium impressorium originale {COPYRIGHT} MCMXCV Chris Sawyer, Omnia proprietatis iura reservantur
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD editio {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} MMII-MMXVII Manus OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} MMII-MMXIX Manus OpenTTD
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -3194,6 +3199,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Incolae 
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Urbs)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Incolae: {ORANGE}{COMMA}{BLACK}  Aedificia: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} mensis prioris: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Onera mandata ad oppidum crescendum:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} mandatur
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} hieme mandatur
@@ -3246,6 +3252,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Largiri
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Proposita
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Proposita Universalia
+STR_GOALS_SPECTATOR                                             :Proposita universalia
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Proposita universalia:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nullae -
@@ -3555,6 +3562,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Greges -
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Preme ut grex creatur
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Delere gregem electam
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renominare gregem electam
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Mutare schema coloris gregis electi
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Preme ut vehicula huius gregis custodiantur contra autocommutationem universalem
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Gregem Delere
@@ -3613,6 +3621,8 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Emere Ve
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Emere Navem
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Emere Aeroplanum
 
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Emere reficereque vehiculum
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Emere reficereque aeroplanum
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Emere vehiculum ferriviarium electum. Shift+Preme ut pretium monstretur sine emptione
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Emere vehiculum viarium electum. Shift+Preme ut pretium monstretur sine emptione
