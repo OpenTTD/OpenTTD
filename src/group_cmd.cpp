@@ -808,6 +808,60 @@ uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e)
 	return count + GroupStatistics::Get(company, id_g, e->type).num_engines[id_e];
 }
 
+/**
+ * Get the number of vehicles in the group with GroupID
+ * id_g and its sub-groups.
+ * @param company The company the group belongs to
+ * @param id_g The GroupID of the group used
+ * @param type The vehicle type of the group
+ * @return The number of vehicles in the group
+ */
+uint GetGroupNumVehicle(CompanyID company, GroupID id_g, VehicleType type)
+{
+	uint count = 0;
+	const Group *g;
+	FOR_ALL_GROUPS(g) {
+		if (g->parent == id_g) count += GetGroupNumVehicle(company, g->index, type);
+	}
+	return count + GroupStatistics::Get(company, id_g, type).num_vehicle;
+}
+
+/**
+ * Get the number of vehicles above profit minimum age in the group with GroupID
+ * id_g and its sub-groups.
+ * @param company The company the group belongs to
+ * @param id_g The GroupID of the group used
+ * @param type The vehicle type of the group
+ * @return The number of vehicles above profit minimum age in the group
+ */
+uint GetGroupNumProfitVehicle(CompanyID company, GroupID id_g, VehicleType type)
+{
+	uint count = 0;
+	const Group *g;
+	FOR_ALL_GROUPS(g) {
+		if (g->parent == id_g) count += GetGroupNumProfitVehicle(company, g->index, type);
+	}
+	return count + GroupStatistics::Get(company, id_g, type).num_profit_vehicle;
+}
+
+/**
+ * Get last year's profit for the group with GroupID
+ * id_g and its sub-groups.
+ * @param company The company the group belongs to
+ * @param id_g The GroupID of the group used
+ * @param type The vehicle type of the group
+ * @return Last year's profit for the group
+ */
+Money GetGroupProfitLastYear(CompanyID company, GroupID id_g, VehicleType type)
+{
+	Money sum = 0;
+	const Group *g;
+	FOR_ALL_GROUPS(g) {
+		if (g->parent == id_g) sum += GetGroupProfitLastYear(company, g->index, type);
+	}
+	return sum + GroupStatistics::Get(company, id_g, type).profit_last_year;
+}
+
 void RemoveAllGroupsForCompany(const CompanyID company)
 {
 	Group *g;
