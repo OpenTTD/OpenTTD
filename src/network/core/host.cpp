@@ -76,7 +76,7 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // BE
 				memset(&address, 0, sizeof(address));
 				((sockaddr_in*)&address)->sin_addr.s_addr = htonl(ip | ~netmask);
 				NetworkAddress addr(address, sizeof(sockaddr));
-				if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const& elem) -> bool { return elem == addr; })) *broadcast->Append() = addr;
+				if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const& elem) -> bool { return elem == addr; })) broadcast->push_back(addr);
 			}
 			if (read < 0) {
 				break;
