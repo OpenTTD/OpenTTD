@@ -73,6 +73,8 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 	Livery livery;                          ///< Custom colour scheme for vehicles in this group
 	GroupStatistics statistics;             ///< NOSAVE: Statistics and caches on the vehicles in the group.
 
+	bool folded;                            ///< NOSAVE: Is this group folded in the group view?
+
 	GroupID parent;                         ///< Parent group
 
 	Group(CompanyID owner = INVALID_COMPANY);
