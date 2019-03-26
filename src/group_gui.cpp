@@ -103,6 +103,7 @@ class VehicleGroupWindow : public BaseVehicleListWindow {
 private:
 	/* Columns in the group list */
 	enum ListColumns {
+		VGC_FOLD,          ///< Fold / Unfold button.
 		VGC_NAME,          ///< Group name.
 		VGC_PROTECT,       ///< Autoreplace protect icon.
 		VGC_AUTOREPLACE,   ///< Autoreplace active icon.
@@ -131,7 +132,14 @@ private:
 			if (g->parent != parent) continue;
 			this->groups.push_back(g);
 			this->indents.push_back(indent);
-			AddChildren(source, g->index, indent + 1);
+			if (g->folded) {
+				/* Test if this group has children at all. If not, the folded flag should be cleared to avoid lingering unfold buttons in the list. */
+				auto child = std::find_if(source->begin(), source->end(), [g](const Group *child){ return child->parent == g->index; });
+				bool has_children = child != source->end();
+				Group::Get(g->index)->folded = has_children;
+			} else {
+				AddChildren(source, g->index, indent + 1);
+			}
 		}
 	}
 
@@ -194,9 +202,12 @@ private:
 	 */
 	uint ComputeGroupInfoSize()
 	{
+		this->column_size[VGC_FOLD] = maxdim(GetSpriteSize(SPR_CIRCLE_FOLDED), GetSpriteSize(SPR_CIRCLE_UNFOLDED));
+		this->tiny_step_height = this->column_size[VGC_FOLD].height;
+
 		this->column_size[VGC_NAME] = maxdim(GetStringBoundingBox(STR_GROUP_DEFAULT_TRAINS + this->vli.vtype), GetStringBoundingBox(STR_GROUP_ALL_TRAINS + this->vli.vtype));
 		this->column_size[VGC_NAME].width = max(170u, this->column_size[VGC_NAME].width);
-		this->tiny_step_height = this->column_size[VGC_NAME].height;
+		this->tiny_step_height = max(this->tiny_step_height, this->column_size[VGC_NAME].height);
 
 		this->column_size[VGC_PROTECT] = GetSpriteSize(SPR_GROUP_REPLACE_PROTECT);
 		this->tiny_step_height = max(this->tiny_step_height, this->column_size[VGC_PROTECT].height);
@@ -222,6 +233,7 @@ private:
 		this->tiny_step_height += WD_MATRIX_TOP;
 
 		return WD_FRAMERECT_LEFT + 8 +
+			this->column_size[VGC_FOLD].width + 2 +
 			this->column_size[VGC_NAME].width + 8 +
 			this->column_size[VGC_PROTECT].width + 2 +
 			this->column_size[VGC_AUTOREPLACE].width + 2 +
@@ -238,8 +250,9 @@ private:
 	 * @param g_id Group to list.
 	 * @param indent Indentation level.
 	 * @param protection Whether autoreplace protection is set.
+	 * @param has_children Whether the group has children and should have a fold / unfold button.
 	 */
-	void DrawGroupInfo(int y, int left, int right, GroupID g_id, int indent = 0, bool protection = false) const
+	void DrawGroupInfo(int y, int left, int right, GroupID g_id, int indent = 0, bool protection = false, bool has_children = false) const
 	{
 		/* Highlight the group if a vehicle is dragged over it */
 		if (g_id == this->group_over) {
@@ -253,6 +266,12 @@ private:
 		const GroupStatistics &stats = GroupStatistics::Get(this->vli.company, g_id, this->vli.vtype);
 		bool rtl = _current_text_dir == TD_RTL;
 
+		/* draw fold / unfold button */
+		int x = rtl ? right - WD_FRAMERECT_RIGHT - 8 - this->column_size[VGC_FOLD].width + 1 : left + WD_FRAMERECT_LEFT + 8;
+		if (has_children) {
+			DrawSprite(Group::Get(g_id)->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, rtl ? x - indent : x + indent, y + (this->tiny_step_height - this->column_size[VGC_FOLD].height) / 2);
+		}
+
 		/* draw group name */
 		StringID str;
 		if (IsAllGroupID(g_id)) {
@@ -263,7 +282,7 @@ private:
 			SetDParam(0, g_id);
 			str = STR_GROUP_NAME;
 		}
-		int x = rtl ? right - WD_FRAMERECT_RIGHT - 8 - this->column_size[VGC_NAME].width + 1 : left + WD_FRAMERECT_LEFT + 8;
+		x = rtl ? x - 2 - this->column_size[VGC_NAME].width : x + 2 + this->column_size[VGC_FOLD].width;
 		DrawString(x + (rtl ? 0 : indent), x + this->column_size[VGC_NAME].width - 1 - (rtl ? indent : 0), y + (this->tiny_step_height - this->column_size[VGC_NAME].height) / 2, str, colour);
 
 		/* draw autoreplace protection */
@@ -283,7 +302,7 @@ private:
 			spr = SPR_PROFIT_NA;
 		} else if (profit_last_year < 0) {
 			spr = SPR_PROFIT_NEGATIVE;
-		} else if (profit_last_year < (Money) 10000 * num_profit_vehicle) { // TODO magic number
+		} else if (profit_last_year < (Money)10000 * num_profit_vehicle) { // TODO magic number
 			spr = SPR_PROFIT_SOME;
 		} else {
 			spr = SPR_PROFIT_LOT;
@@ -598,7 +617,7 @@ public:
 
 					assert(g->owner == this->owner);
 
-					DrawGroupInfo(y1, r.left, r.right, g->index, this->indents[i] * LEVEL_WIDTH, g->replace_protection);
+					DrawGroupInfo(y1, r.left, r.right, g->index, this->indents[i] * LEVEL_WIDTH, g->replace_protection, g->folded || (i + 1 < (int)this->groups.size() && indents[i + 1] > this->indents[i]));
 
 					y1 += this->tiny_step_height;
 				}
@@ -671,6 +690,33 @@ public:
 			case WID_GL_LIST_GROUP: { // Matrix Group
 				uint id_g = this->group_sb->GetScrolledRowFromWidget(pt.y, this, WID_GL_LIST_GROUP, 0, this->tiny_step_height);
 				if (id_g >= this->groups.size()) return;
+
+				if (groups[id_g]->folded || (id_g + 1 < this->groups.size() && this->indents[id_g + 1] > this->indents[id_g])) {
+					/* The group has children, check if the user clicked the fold / unfold button. */
+					NWidgetCore *group_display = this->GetWidget<NWidgetCore>(widget);
+					int x = _current_text_dir == TD_RTL ?
+							group_display->pos_x + group_display->current_x - WD_FRAMERECT_RIGHT - 8 - this->indents[id_g] * LEVEL_WIDTH - this->column_size[VGC_FOLD].width :
+							group_display->pos_x + WD_FRAMERECT_LEFT + 8 + this->indents[id_g] * LEVEL_WIDTH;
+					if (click_count > 1 || (pt.x >= x && pt.x < (int)(x + this->column_size[VGC_FOLD].width))) {
+
+						GroupID g = this->vli.index;
+						if (!IsAllGroupID(g) && !IsDefaultGroupID(g)) {
+							do {
+								g = Group::Get(g)->parent;
+								if (g == groups[id_g]->index) {
+									this->vli.index = g;
+									break;
+								}
+							} while (g != INVALID_GROUP);
+						}
+
+						Group::Get(groups[id_g]->index)->folded = !groups[id_g]->folded;
+						this->groups.ForceRebuild();
+
+						this->SetDirty();
+						break;
+					}
+				}
 
 				this->group_sel = this->vli.index = this->groups[id_g]->index;
 

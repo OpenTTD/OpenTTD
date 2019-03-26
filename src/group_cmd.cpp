@@ -298,6 +298,7 @@ void PropagateChildLivery(const Group *g)
 Group::Group(Owner owner)
 {
 	this->owner = owner;
+	this->folded = false;
 }
 
 Group::~Group()
