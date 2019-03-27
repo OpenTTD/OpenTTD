@@ -95,7 +95,7 @@ struct SmallMap : std::vector<SmallPair<T, U> > {
 	 */
 	inline bool Contains(const T &key) const
 	{
-		return this->Find(key) != this->End();
+		return this->Find(key) != std::vector<Pair>::end();
 	}
 
 	/**
