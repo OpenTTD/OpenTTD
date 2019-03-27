@@ -3357,6 +3357,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :未分组汽车
 STR_GROUP_DEFAULT_SHIPS                                         :未分组船只
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :未分组飞机
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}组 - 点击一个组别以显示所有隶属此组的车辆。拖曳组别标签以重新排列组别的次序和层级。
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}创建分组
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}删除分组

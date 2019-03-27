@@ -3249,6 +3249,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :køyretøy utan
 STR_GROUP_DEFAULT_SHIPS                                         :Ugrupperte skip
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Luftfartøy utan gruppe
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupper - Klikk på ei gruppe for å få ei liste over alle køyretøya i den
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikk for å lage ei gruppe
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Slett den valde gruppa

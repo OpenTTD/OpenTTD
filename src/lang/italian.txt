@@ -3460,6 +3460,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Automezzi senza
 STR_GROUP_DEFAULT_SHIPS                                         :Navi senza gruppo
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeromobili senza gruppo
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruppi - fare clic su un gruppo per elencare tutti i suoi veicoli. Trascinare i gruppi per organizzarli in gerarchia.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Fare clic per creare un gruppo
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Elimina il gruppo selezionato

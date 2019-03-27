@@ -3072,6 +3072,7 @@ STR_GROUP_ALL_AIRCRAFTS                                         :Alle fleantugen
 
 STR_GROUP_DEFAULT_SHIPS                                         :Net groepearre skepen
 
+
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik om in groep oan te meitsje
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Smit de selektearre groep fuort
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Feroarje de namme fan de selektearre groep

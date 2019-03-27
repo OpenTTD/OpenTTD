@@ -3262,6 +3262,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :พาหนะ
 STR_GROUP_DEFAULT_SHIPS                                         :พาหนะที่ไม่ได้จัดกลุ่ม
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :พาหนะที่ไม่ได้จัดกลุ่ม
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}กลุ่ม - คลิ๊กที่กลุ่มเพื่อดูรายการยานพาหนะในกลุ่ม
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}กดเพื่อสร้างกลุ่ม
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}ลบกลุ่มที่เลือก

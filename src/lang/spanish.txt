@@ -3384,6 +3384,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Vehículos de c
 STR_GROUP_DEFAULT_SHIPS                                         :Barcos sin agrupar
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronaves sin agrupar
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos - Click en un grupo para ver la lista de sus vehículos. Es posible arrastrar grupos para modificar su jerarquía.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Click para crear un grupo
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Borrar el grupo seleccionado

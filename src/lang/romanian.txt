@@ -3314,6 +3314,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Vehicule rutier
 STR_GROUP_DEFAULT_SHIPS                                         :Nave negrupate
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronave negrupate
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupuri - click pe un grup pentru lista completă a vehiculelor acestuia
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Click pentru a creea un grup
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Şterge grupul selectat

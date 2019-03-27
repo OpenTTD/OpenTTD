@@ -3438,6 +3438,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :그룹에 속�
 STR_GROUP_DEFAULT_SHIPS                                         :그룹에 속하지 않은 선박
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :그룹에 속하지 않은 항공기
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}그룹 - 클릭해서 그룹에 속한 차량을 모두 나열합니다. 상하위 그룹을 바꾸려면 드래그 앤 드롭하십시오.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}그룹 만들기
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}선택한 그룹 삭제

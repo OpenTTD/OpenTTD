@@ -3544,6 +3544,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Negrupisana dru
 STR_GROUP_DEFAULT_SHIPS                                         :Negrupisani brodovi
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupisane letilice
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupe - klikom na grupu se prikazuje spisak vozila u grupi. Hijerarhija grupa se uređuje metodom "prevuci i pusti"
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikom se pravi nova grupa
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Briše se označena grupa

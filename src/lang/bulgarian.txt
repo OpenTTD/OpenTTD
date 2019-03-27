@@ -3261,6 +3261,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Безгруп�
 STR_GROUP_DEFAULT_SHIPS                                         :Безгрупни кораби
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Безгрупни самолети
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Групи - Щракни на група за да видиш списък на всички превозни средства от тази група
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Щракни да създадеш група
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Изтрий избраната група

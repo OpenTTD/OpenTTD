@@ -2337,6 +2337,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرس
 # Group window
 
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}گروپ ۔ اس گروپ ک تمام گاڑیاں دیکھنے کے لیے اسے دبایں۔ پکڑ کے اوپر نیچے بھی کر سکتے ہیں۔
 
 

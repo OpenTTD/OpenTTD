@@ -1304,6 +1304,7 @@ STR_GROUP_ALL_AIRCRAFTS                                         :सर्व �
 
 
 
+
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :सगळे वाहने काढा
 
 

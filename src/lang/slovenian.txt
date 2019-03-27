@@ -3484,6 +3484,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Cestna vozila b
 STR_GROUP_DEFAULT_SHIPS                                         :Ladje brez skupine
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Letala brez skupine
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Skupine - Klikni na skupino za seznam vseh vozil v skupini
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikni za ustvarit skupino
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Izbriši izbrano skupino

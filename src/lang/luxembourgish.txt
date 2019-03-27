@@ -465,6 +465,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sound/Musik
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Läscht Meldung/Neiegkeet
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meldungshistorie
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :All Message läschen
 ############ range ends here
 
 ############ range for about menu starts
@@ -990,6 +991,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Duebel
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Véierfach
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Schrëftgréisst
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Véierfach
@@ -1262,6 +1264,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Déi Ast
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastrukturënnerhalt {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Wann ugeschalt, kaschten Infrastrukturen Ennerhaltskäschten. D'Käschten wuessen iwwerproportional zu der Netzwierkgréisst, an treffen sou grouss Firmen méi wéi klenger
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Firmefaarw um Start: {STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Fluchhäfen lafen nie of: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wann ugeschalt, bleift all Fluchhafentyp säit senger Aféierung bestoen
@@ -1346,6 +1349,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Faarf vum Terra
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Gréng
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donkelgréng
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Mof
+STR_CONFIG_SETTING_SCROLLMODE                                   :Usiicht-Scrollverhalen: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Kaart mat der lénker Maustast bewegen
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Feine Scrolling: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolléiert wéi d'Haptusiicht op eng bestëmmten Positioun scrollt, wann een op déi kléng Kaart klickt oder en Befehl fir ob en spezifescht Objet ze scrollen gëtt. Wann ugeschalt, gëtt bis dohin gescrollt, wann ausgeschalt, spréngt d'Vue op den Zielobjet
@@ -2696,6 +2700,7 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 D'OpenTTD team
 
 # Framerate display window
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Unzuel Gameticks déi pro Sekonn simuléiert ginn.
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Mëttel
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
@@ -2703,10 +2708,12 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} Biller/s
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Zuchticks:
 STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Stroossegefierer Ticken:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Linkgrafik-Verzögerung:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Graphikrendering:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Video-output:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}  Gamescript:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Stroossegefierer Ticken
@@ -2854,6 +2861,7 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versioun
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatibel Versioun: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palette: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Standard (S) / 32 bpp
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Legacy (W)
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameter: {SILVER}{STRING}
 
@@ -3001,6 +3009,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Gëff en
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Stied
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Keng -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Stad){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stiednimm - klick op den Numm fir d'Usiicht drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht vun der Stad
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 
@@ -3364,6 +3373,7 @@ STR_GROUP_DEFAULT_TRAINS                                        :Ongruppéiert Z
 STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Ongruppéiert Stroossegefierer
 STR_GROUP_DEFAULT_SHIPS                                         :Ongruppéiert Schëffer
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ongruppéiert Fligeren
+
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruppen - klick op eng Grupp fir d'Gefierer aus der Grupp ze gesinn. Per Drag and Drop d'Hierarchie änneren.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klick fir eng Grupp ze maachen
@@ -3815,6 +3825,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Alter (Joer)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Brauch eng Revisioun
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Ëmmer
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Reschtlaafzäit (Joer)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maximal Zouverlässegkeet
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Wéi Gefierdaten verglach solle ginn
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :ass gläich

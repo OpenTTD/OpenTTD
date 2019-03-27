@@ -3775,6 +3775,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Pojazdy bez gru
 STR_GROUP_DEFAULT_SHIPS                                         :Statki bez grupy
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Samoloty bez grupy
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupy - kliknij na grupę, aby wyświetlić wszystkie pojazdy z grupy. Przeciągnij i upuść grupy, aby dostosować hierarchię.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Kliknij aby stworzyć grupę
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Usuń zaznaczoną grupę

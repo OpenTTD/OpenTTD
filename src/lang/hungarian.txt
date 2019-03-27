@@ -3501,6 +3501,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Csoportosítatl
 STR_GROUP_DEFAULT_SHIPS                                         :Csoportosítatlan hajók
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Csoportosítatlan repülők
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Csoportok - Kattints a csoport nevére a járművek listázásához. Húzással a csoportokat hierarchiába rendezheted.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Csoport létrehozásához kattints ide
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Kijelölt csoport törlése

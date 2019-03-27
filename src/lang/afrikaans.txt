@@ -3331,6 +3331,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Ongegroepeerde 
 STR_GROUP_DEFAULT_SHIPS                                         :Ongegroepeerde skepe
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ongegroepeerde vliegtuig
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groepe - klik op 'n groep om alle voertuie in hierdie groep te lys. Sleep en los om te rangskik volgens hiërargie.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik om groep te skep
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Vee uit die gekose groep

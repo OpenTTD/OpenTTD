@@ -972,6 +972,7 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupigita aer
 
 
 
+
 # Build vehicle window
 
 

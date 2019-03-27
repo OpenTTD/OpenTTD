@@ -2963,6 +2963,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Óbólkaði akf
 STR_GROUP_DEFAULT_SHIPS                                         :Óbólkaði skip
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Óbólkaði flogfør
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Bólkar - trýst á ein bólk fyri at síggja øll flutningstól í hesum bólki
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Trýst fyri at gera ein bólk
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Strika valda bólkin

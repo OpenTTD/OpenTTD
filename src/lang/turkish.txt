@@ -3424,6 +3424,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Gruplanmamış 
 STR_GROUP_DEFAULT_SHIPS                                         :Gruplanmamış gemiler
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Gruplanmamış uçaklar
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruplar - gruba ait araçları listelemek için grubun üzerine tıklayın. Hiyerarşiyi düzenlemek için grupları sürükleyip bırakın.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Grup oluşturmak için tıklayın
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Seçili grubu sil

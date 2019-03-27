@@ -3337,6 +3337,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Cerbydau ffordd
 STR_GROUP_DEFAULT_SHIPS                                         :Llongau heb eu grwpio
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Awyrenau heb eu grwpio
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grŵp - cliciwch ar grŵp i restru pob cerbyd yn y grŵp hwn. Gallwch glico a llusgo grwpiau i drefnu'r hierarchaeth.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Cliciwch i greu grŵp
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Dileu'r grŵp a ddewiswyd

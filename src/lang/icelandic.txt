@@ -3121,6 +3121,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Hóplausar bifr
 STR_GROUP_DEFAULT_SHIPS                                         :Hóplaus skip
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Hóplausar flugvélar
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Hópar - Smelltu á hóp til að skrifa öll farartæki í þessum hóp
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Smelltu til að búa til hóp
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Eyða völdum hóp

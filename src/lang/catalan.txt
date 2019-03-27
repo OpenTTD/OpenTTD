@@ -3435,6 +3435,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Vehicles desagr
 STR_GROUP_DEFAULT_SHIPS                                         :Vaixells desagrupats
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Avions desagrupats
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grups - Clica en un grup per llistar tots els vehicles d'aquest grup. Arrossega i solta per a canviar-ne la jerarquia.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Clica per crear un grup
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Elimina el grup seleccionat

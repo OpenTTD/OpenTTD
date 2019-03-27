@@ -2364,7 +2364,7 @@ STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Stations
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Richting
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Kies richting van treinstation
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Aantal sporen
-STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Selecteer aantal perrons voor station
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Selecteer het aantal sporen voor het treinstation
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Perronlengte
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selecteer lengte van station
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Slepen
@@ -2441,8 +2441,8 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selectee
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Richting van bushalte
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Selecteer richting van bushalte
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Richting van vrachtwagenlaadhal
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecteer richting van vrachtwagenlaadhal
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Richting van vrachtwagenperron
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecteer richting van vrachtwagenperron
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Richting van passagierstramhalte
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Selecteer richting van passagierstramhalte
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Richting van vrachttramhalte
@@ -2594,7 +2594,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Bedrijf 
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landinformatie
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Sloopkosten: {LTBLUE}Niet mogelijk
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Sloopkosten: {LTBLUE}niet mogelijk
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Sloopkosten: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Opbrengst bij verwijdering: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Geen
@@ -2965,10 +2965,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorige s
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Doorgaan met de vorige normale sprite, alle pseudo-/herkleur-/lettertype-sprites overslaan; bij het einde terug naar het begin
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Voorbeeld van de huidige sprite. De uitlijning wordt genegeerd bij het weergeven van deze sprite.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sprite verplaatsen, dit verandert X en Y offsets. Ctr+klik om de sprite 8 eenheden per keer te verplaatsen.
-STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Herstel relatief
-STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Herstel de huidige relative offsets
-STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (Absoluut)
-STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (Relatief)
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Relatief herstellen
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Herstel de huidige relatieve offsets
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X-offset: {NUM}, Y-offset: {NUM} (absoluut)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X-offset: {NUM}, Y-offset: {NUM} (relatief)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Sprite kiezen
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Kies een sprite van een willekeurige plaats op het scherm
 
@@ -3084,7 +3084,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Stad groeit iedere {ORANGE}{COMMA}{BLACK}{NBSP}dag{P "" en}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Stad groeit iedere {ORANGE}{COMMA}{BLACK}{NBSP}dag{P "" en} (gefinancierd)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Stad groeit {RED}niet{BLACK}
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geluidslimiet in stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geluidslimiet in stad: {ORANGE}{COMMA}{BLACK} max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het scherm op de locatie van de stad. Ctrl+klik opent een nieuw kijkvenster op de locatie van de stad
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Gemeente
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Geef informatie over de gemeente weer
@@ -3193,8 +3193,8 @@ STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Geen -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Kies alle faciliteiten
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Kies alle vrachttypen (inclusief niet-wachtende vracht)
+STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Alle faciliteiten selecteren
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Selecteer alle vrachttypen (inclusief niet-wachtende vracht)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Er wacht geen vracht van enig type
 
 # Station view window
@@ -3210,16 +3210,16 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acceptee
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Dit station heeft exclusieve transportrechten in deze gemeente.
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} kocht exclusieve transportrechten in deze gemeente
 
-STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Rangen
-STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Bekijk stationsreputaties
+STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Scores
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Bekijk de score van stations
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Maandelijkse levering en lokale waardering:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Groeperen op
-STR_STATION_VIEW_WAITING_STATION                                :Station: Wachtend
-STR_STATION_VIEW_WAITING_AMOUNT                                 :Hoeveelheid: Wachtend
-STR_STATION_VIEW_PLANNED_STATION                                :Station: Gepland
-STR_STATION_VIEW_PLANNED_AMOUNT                                 :Hoeveelheid: Gepland
+STR_STATION_VIEW_WAITING_STATION                                :Station: wachtend
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Hoeveelheid: wachtend
+STR_STATION_VIEW_PLANNED_STATION                                :Station: gepland
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Hoeveelheid: gepland
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} van {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} via {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} naar {STATION}
@@ -3436,6 +3436,8 @@ STR_GROUP_DEFAULT_TRAINS                                        :Niet-gegroepeer
 STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Niet-gegroepeerde wegvoertuigen
 STR_GROUP_DEFAULT_SHIPS                                         :Niet-gegroepeerde schepen
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Niet-gegroepeerde vliegtuigen
+
+STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groepen - Klik op een groep voor een lijst van alle voertuigen in deze groep. Klik en sleep om hiërarchie te beheren
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik om een groep te creëren
@@ -4345,7 +4347,7 @@ STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...er is
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Verwijder eerst treinstation
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Verwijder eerst busstation
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Verwijder eerst vrachtwagenlaadhal
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Verwijder eerst vrachtwagenperron
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Verwijder eerst passagierstramstation
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Verwijder eerst vrachttramhalte
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Verwijder eerst haven
@@ -4473,6 +4475,7 @@ STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan groe
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Kan deze groep niet verwijderen...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Kan deze groep niet hernoemen...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Kan huidige groep niet instellen...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... lussen in de groepshiërarchie zijn niet toegestaan
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Kan niet alle voertuigen van deze groep verwijderen...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Kan niet alle voertuigen aan deze groep toevoegen...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Kan niet alle gedeelde voertuigen aan deze groep toevoegen...

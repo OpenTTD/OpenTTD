@@ -3398,6 +3398,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Nezaradené voz
 STR_GROUP_DEFAULT_SHIPS                                         :Nezaradené lode
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Nezaradené lietadlá
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Skupiny - klikni na skupinu pre zobrazenie všetkých vozidiel skupiny. Ťahaj a Pusti pre usporiadanie hierarchiu v skupine
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikni pre vytvorenie skupiny
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Zrušiť vybranú skupinu

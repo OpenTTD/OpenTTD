@@ -2938,6 +2938,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :فرستادن 
 
 
 
+
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :قطار جدید
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :قطار جدید مونوریل

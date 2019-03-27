@@ -3437,6 +3437,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Ikke-grupperede
 STR_GROUP_DEFAULT_SHIPS                                         :Ikke-grupperede skibe
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ikke-grupperede fly
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupper - klik på en gruppe for at vise alle køretøjer i gruppen
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik for at oprette en gruppe
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Slet den valgte gruppe

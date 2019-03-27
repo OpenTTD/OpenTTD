@@ -2901,9 +2901,17 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} MMII-MMXIX Manus OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_AI                                                :{BLACK} IA {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_AI                                        :IA {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2929,6 +2937,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Ludi ind
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nulla indicia parabilia
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Series colans:
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Inscribe nomen ludi
 
@@ -3505,6 +3514,9 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Movere c
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Quantitas productionis: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Haec industria mox claudetur!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Postulat: {YELLOW}{STRING.acc}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Fabricat: {YELLOW}{STRING.acc}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Postulat:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING.acc}{BLACK}{3:STRING}
@@ -3557,6 +3569,7 @@ STR_GROUP_DEFAULT_TRAINS                                        :Tramina sine gr
 STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Vehicula viaria sine grege
 STR_GROUP_DEFAULT_SHIPS                                         :Naves sine grege
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeroplana sine grege
+
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Greges - preme in gregem ut index vehiculorum huius gregis ostendeatur. Trahe poneque greges ut ordinentur.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Preme ut grex creatur
@@ -3621,8 +3634,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Emere Ve
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Emere Navem
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Emere Aeroplanum
 
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Emere reficereque vehiculum
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Emere reficereque aeroplanum
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Emere Reficereque Vehiculum
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Emere Reficereque Vehiculum
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Emere Reficereque Navem
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Emere Reficereque Aeroplanum
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Emere vehiculum ferriviarium electum. Shift+Preme ut pretium monstretur sine emptione
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Emere vehiculum viarium electum. Shift+Preme ut pretium monstretur sine emptione

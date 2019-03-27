@@ -3330,6 +3330,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Feithiclí bót
 STR_GROUP_DEFAULT_SHIPS                                         :Longa nach bhfuil i ngrúpa
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aerárthaigh nach bhfuil i ngrúpa
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grúpaí - cliceáil ar ghrúpa le gach feithicil sa ghrúpa seo a liostú
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Cliceáil le grúpa a chruthú
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Scrios an grúpa roghnaithe

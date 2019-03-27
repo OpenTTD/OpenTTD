@@ -3408,6 +3408,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Rühmitamata s�
 STR_GROUP_DEFAULT_SHIPS                                         :Rühmitamata laevad
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Rühmitamata õhusõidukid
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Rühm - Klõpsa rühmal, et kõiki seal olevaid sõidukeid järjestada
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klõpsa rühma loomiseks
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Eemalda valitud rühm

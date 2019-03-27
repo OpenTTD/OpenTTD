@@ -3437,6 +3437,8 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Muut ajoneuvot
 STR_GROUP_DEFAULT_SHIPS                                         :Muut laivat
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Muut lentokoneet
 
+STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Ryhmät – napsauta ryhmää nähdäksesi kaikki kulkuneuvot tässä ryhmässä. Järjestä ryhmiä vetämällä ja pudottamalla.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Luo ryhmä
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Poista valittu ryhmä
@@ -4473,6 +4475,7 @@ STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Ei voi l
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Ryhmää ei voi poistaa.
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Ryhmää ei voi nimetä.
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Pääryhmää ei voi määrittää...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... ryhmähierarkiassa ei saa olla silmukoita
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Ryhmän kaikkia kulkuneuvoja ei voi poistaa.
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Ei voi lisätä kulkuneuvoa ryhmään.
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Ei voi lisätä jaettuja kulkuneuvoja ryhmään.

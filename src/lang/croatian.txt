@@ -3533,6 +3533,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Negrupirana ces
 STR_GROUP_DEFAULT_SHIPS                                         :Negrupirani brodovi
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupirani zrakoplovi
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupe - kliknite na grupu kako bi izlistali sva vozila ove grupe. Povucite i prenesite grupe za postavljanje hijerarhije.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikni za kreiranje grupe
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Obriši odabranu grupu

@@ -3617,6 +3617,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Без груп
 STR_GROUP_DEFAULT_SHIPS                                         :Без группы
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Без группы
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Щёлкните по имени группы для отображения списка транспорта. Можно создавать вложенные группы с помощью перетаскивания.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Создать группу
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Удалить выбранную группу

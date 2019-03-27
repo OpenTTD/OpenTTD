@@ -1448,6 +1448,7 @@ STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Испрати 
 
 
 
+
 # Build vehicle window
 
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Шински возила

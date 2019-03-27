@@ -3219,6 +3219,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Taldeetan ez da
 STR_GROUP_DEFAULT_SHIPS                                         :Taldeetan ez dauden itsasontziak
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Taldeetan ez dauden hegazkinak
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Taldeak - Taldean klikatu taldearen ibilgailuak zerrendatzeko
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikatu taldea sortzeko
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Aukeratutako taldea ezabatu

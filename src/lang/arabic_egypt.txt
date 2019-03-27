@@ -2859,6 +2859,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :لاتنتمي 
 STR_GROUP_DEFAULT_SHIPS                                         :مركبة لاتنتمي لأي مجموعة
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :طائرة لاتنتمي لأي مجموعة
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}المجموعات: اضغط على اي مجموعة لعرض مركباتها . اسحب للترتيب .
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}أضغط لإنشاء مجموعة
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}أحذف المجموعة المختارة

@@ -3391,6 +3391,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :רכבים לא
 STR_GROUP_DEFAULT_SHIPS                                         :כלי שייט לא משוייכים
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :כלי טייס לא משוייכים
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}קבוצות – לחץ על קבוצה לצפייה בכל הכלים השייכים אליה. גרור כדי לסדר הירארכיה.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}לחץ ליצירת קבוצה חדשה
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}מחק את הקבוצה שנבחרה

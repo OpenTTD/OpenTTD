@@ -3549,6 +3549,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Nesugrupuoti au
 STR_GROUP_DEFAULT_SHIPS                                         :Nesugrupuoti laivai
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Nesugrupuoti lėktuvai
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupės - Spragtelk ant grupės jai priklausančių transporto priemonių peržiūrai
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Spragtelk, kad sukurti grupę
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Pašalinti pasirinktą grupę

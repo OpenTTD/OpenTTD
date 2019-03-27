@@ -3683,6 +3683,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Бяз груп
 STR_GROUP_DEFAULT_SHIPS                                         :Бяз групы
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Бяз групы
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Ґрупы — клікніце па назьве ґрупы, каб убачыць сьпіс транспарту ў гэтай ґрупе. Націсьніце ды перацягвайце ґрупы, каб упарадкаваць гіерархію.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Стварыць групу
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Выдаліць выбраную групу

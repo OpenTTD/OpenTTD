@@ -3612,6 +3612,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Carbadan-rathai
 STR_GROUP_DEFAULT_SHIPS                                         :Longan gun bhuidheann
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Carbadan-adhair gun bhuidheann
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Buidhnean - briog air buidheann gus a h-uile carbad a tha sa bhuidheann seo a shealltainn. Slaod buidhnean ’s leig às iad gus an rangachd atharrachadh.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Briog gus buidheann a chruthachadh
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Sguab às dhan bhuidheann a thagh thu

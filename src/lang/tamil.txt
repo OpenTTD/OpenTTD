@@ -2952,6 +2952,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :குழுவ
 STR_GROUP_DEFAULT_SHIPS                                         :குழுவில் இல்லாத கப்பல்கள்
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :குழுவில் இல்லாத விமானம்
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}குழுக்கள் - குழுவில் உள்ள அனைத்து வாகனங்களினை பார்க்க அக்குழுவினை சொடுக்கவும்
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}ஓர் குழுவினை உருவாக்க சொடுக்கவும்
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}தேர்ந்தெடுக்கப்பட்ட குழுவின் பெயரினை நீக்கவும்
