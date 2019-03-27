@@ -1211,7 +1211,7 @@ protected:
 
 			this->industries.shrink_to_fit();
 			this->industries.RebuildDone();
-			this->vscroll->SetCount(this->industries.size()); // Update scrollbar as well.
+			this->vscroll->SetCount((uint)this->industries.size()); // Update scrollbar as well.
 		}
 
 		if (!this->industries.Sort()) return;

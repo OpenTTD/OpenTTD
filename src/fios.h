@@ -128,7 +128,7 @@ public:
 	 * Get the number of files in the list.
 	 * @return The number of files stored in the list.
 	 */
-	inline uint Length() const
+	inline size_t Length() const
 	{
 		return this->files.size();
 	}
@@ -155,7 +155,7 @@ public:
 	 * Get a pointer to the indicated file information. File information must exist.
 	 * @return Address of the indicated existing file information.
 	 */
-	inline const FiosItem *Get(uint index) const
+	inline const FiosItem *Get(size_t index) const
 	{
 		return this->files.data() + index;
 	}
@@ -164,12 +164,12 @@ public:
 	 * Get a pointer to the indicated file information. File information must exist.
 	 * @return Address of the indicated existing file information.
 	 */
-	inline FiosItem *Get(uint index)
+	inline FiosItem *Get(size_t index)
 	{
 		return this->files.data() + index;
 	}
 
-	inline const FiosItem &operator[](uint index) const
+	inline const FiosItem &operator[](size_t index) const
 	{
 		return this->files[index];
 	}
@@ -178,7 +178,7 @@ public:
 	 * Get a reference to the indicated file information. File information must exist.
 	 * @return The requested file information.
 	 */
-	inline FiosItem &operator[](uint index)
+	inline FiosItem &operator[](size_t index)
 	{
 		return this->files[index];
 	}

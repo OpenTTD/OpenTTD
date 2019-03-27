@@ -247,9 +247,9 @@ static inline T Delta(const T a, const T b)
  * @return True if the value is in the interval, false else.
  */
 template <typename T>
-static inline bool IsInsideBS(const T x, const uint base, const uint size)
+static inline bool IsInsideBS(const T x, const size_t base, const size_t size)
 {
-	return (uint)(x - base) < size;
+	return (size_t)(x - base) < size;
 }
 
 /**
@@ -263,9 +263,9 @@ static inline bool IsInsideBS(const T x, const uint base, const uint size)
  * @see IsInsideBS()
  */
 template <typename T>
-static inline bool IsInsideMM(const T x, const uint min, const uint max)
+static inline bool IsInsideMM(const T x, const size_t min, const size_t max)
 {
-	return (uint)(x - min) < (max - min);
+	return (size_t)(x - min) < (max - min);
 }
 
 /**

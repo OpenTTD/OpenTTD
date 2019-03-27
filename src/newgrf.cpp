@@ -4822,7 +4822,7 @@ static void NewSpriteGroup(ByteReader *buf)
 				/* Continue reading var adjusts while bit 5 is set. */
 			} while (HasBit(varadjust, 5));
 
-			group->num_adjusts = adjusts.size();
+			group->num_adjusts = (uint)adjusts.size();
 			group->adjusts = MallocT<DeterministicSpriteGroupAdjust>(group->num_adjusts);
 			MemCpyT(group->adjusts, adjusts.data(), group->num_adjusts);
 
@@ -9202,7 +9202,7 @@ static void FinalisePriceBaseMultipliers()
 	static const uint32 override_features = (1 << GSF_TRAINS) | (1 << GSF_ROADVEHICLES) | (1 << GSF_SHIPS) | (1 << GSF_AIRCRAFT);
 
 	/* Evaluate grf overrides */
-	int num_grfs = _grf_files.size();
+	int num_grfs = (uint)_grf_files.size();
 	int *grf_overrides = AllocaM(int, num_grfs);
 	for (int i = 0; i < num_grfs; i++) {
 		grf_overrides[i] = -1;

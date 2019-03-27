@@ -882,7 +882,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
 				uint y = r.top + WD_FRAMERECT_TOP;
 				uint min_index = this->vscroll2->GetPosition();
-				uint max_index = min(min_index + this->vscroll2->GetCapacity(), this->avails.size());
+				uint max_index = min(min_index + this->vscroll2->GetCapacity(), (uint)this->avails.size());
 
 				for (uint i = min_index; i < max_index; i++) {
 					const GRFConfig *c = this->avails[i];
@@ -1328,7 +1328,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			case WKC_END:
 				/* jump to end */
-				this->avail_pos = this->avails.size() - 1;
+				this->avail_pos = (uint)this->avails.size() - 1;
 				break;
 
 			default:
@@ -1492,7 +1492,7 @@ private:
 			}
 		}
 
-		this->vscroll2->SetCount(this->avails.size()); // Update the scrollbar
+		this->vscroll2->SetCount((uint)this->avails.size()); // Update the scrollbar
 	}
 
 	/**
@@ -2067,7 +2067,7 @@ struct SavePresetWindow : public Window {
 		this->vscroll = this->GetScrollbar(WID_SVP_SCROLLBAR);
 		this->FinishInitNested(0);
 
-		this->vscroll->SetCount(this->presets.size());
+		this->vscroll->SetCount((uint)this->presets.size());
 		this->SetFocusedWidget(WID_SVP_EDITBOX);
 		if (initial_text != NULL) this->presetname_editbox.text.Assign(initial_text);
 	}
@@ -2087,7 +2087,7 @@ struct SavePresetWindow : public Window {
 					size->width = max(size->width, d.width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
 					resize->height = max(resize->height, d.height);
 				}
-				size->height = ClampU(this->presets.size(), 5, 20) * resize->height + 1;
+				size->height = ClampU((uint)this->presets.size(), 5, 20) * resize->height + 1;
 				break;
 			}
 		}
@@ -2103,7 +2103,7 @@ struct SavePresetWindow : public Window {
 				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
 				uint y = r.top + WD_FRAMERECT_TOP;
 				uint min_index = this->vscroll->GetPosition();
-				uint max_index = min(min_index + this->vscroll->GetCapacity(), this->presets.size());
+				uint max_index = min(min_index + this->vscroll->GetCapacity(), (uint)this->presets.size());
 
 				for (uint i = min_index; i < max_index; i++) {
 					if ((int)i == this->selected) GfxFillRect(r.left + 1, y, r.right - 1, y + step_height - 2, PC_DARK_BLUE);

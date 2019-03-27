@@ -342,7 +342,7 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 	struct dirent *dirent;
 	DIR *dir;
 	FiosItem *fios;
-	int sort_start;
+	size_t sort_start;
 	char d_name[sizeof(fios->name)];
 
 	file_list.Clear();

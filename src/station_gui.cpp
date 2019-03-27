@@ -205,7 +205,7 @@ protected:
 		this->stations.shrink_to_fit();
 		this->stations.RebuildDone();
 
-		this->vscroll->SetCount(this->stations.size()); // Update the scrollbar
+		this->vscroll->SetCount((uint)this->stations.size()); // Update the scrollbar
 	}
 
 	/** Sort stations by their name */
@@ -411,7 +411,7 @@ public:
 
 			case WID_STL_LIST: {
 				bool rtl = _current_text_dir == TD_RTL;
-				int max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->stations.size());
+				int max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), (uint)this->stations.size());
 				int y = r.top + WD_FRAMERECT_TOP;
 				for (int i = this->vscroll->GetPosition(); i < max; ++i) { // do until max number of stations of owner
 					const Station *st = this->stations[i];
@@ -2331,7 +2331,7 @@ struct SelectStationWindow : Window {
 	{
 		if (!gui_scope) return;
 		FindStationsNearby<T>(this->area, true);
-		this->vscroll->SetCount(_stations_nearby_list.size() + 1);
+		this->vscroll->SetCount((uint)_stations_nearby_list.size() + 1);
 		this->SetDirty();
 	}
 };

@@ -483,8 +483,8 @@ public:
 
 		this->BuildGroupList(this->owner);
 
-		this->group_sb->SetCount(this->groups.size());
-		this->vscroll->SetCount(this->vehicles.size());
+		this->group_sb->SetCount((uint)this->groups.size());
+		this->vscroll->SetCount((uint)this->vehicles.size());
 
 		/* The drop down menu is out, *but* it may not be used, retract it. */
 		if (this->vehicles.size() == 0 && this->IsWidgetLowered(WID_GL_MANAGE_VEHICLES_DROPDOWN)) {
@@ -544,7 +544,7 @@ public:
 				Money this_year = 0;
 				Money last_year = 0;
 				uint32 occupancy = 0;
-				uint32 vehicle_count = this->vehicles.size();
+				size_t vehicle_count = this->vehicles.size();
 
 				for (uint i = 0; i < vehicle_count; i++) {
 					const Vehicle *v = this->vehicles[i];
@@ -580,7 +580,7 @@ public:
 
 			case WID_GL_LIST_GROUP: {
 				int y1 = r.top + WD_FRAMERECT_TOP;
-				int max = min(this->group_sb->GetPosition() + this->group_sb->GetCapacity(), this->groups.size());
+				int max = min(this->group_sb->GetPosition() + this->group_sb->GetCapacity(), (uint)this->groups.size());
 				for (int i = this->group_sb->GetPosition(); i < max; ++i) {
 					const Group *g = this->groups[i];
 
@@ -604,7 +604,7 @@ public:
 				if (this->vli.index != ALL_GROUP) {
 					/* Mark vehicles which are in sub-groups */
 					int y = r.top;
-					uint max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->vehicles.size());
+					uint max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), (uint)this->vehicles.size());
 					for (uint i = this->vscroll->GetPosition(); i < max; ++i) {
 						const Vehicle *v = this->vehicles[i];
 						if (v->group_id != this->vli.index) {

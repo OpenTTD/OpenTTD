@@ -292,7 +292,7 @@ CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1,
 		}
 
 		int total_duration = v->orders.list->GetTimetableTotalDuration();
-		int num_vehs = vehs.size();
+		int num_vehs = (uint)vehs.size();
 
 		if (num_vehs >= 2) {
 			QSortT(vehs.data(), vehs.size(), &VehicleTimetableSorter);

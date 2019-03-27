@@ -14,7 +14,7 @@
 
 /** Definition of a simple array. */
 struct Array {
-	int32 size;    ///< The size of the array.
+	size_t size;   ///< The size of the array.
 	int32 array[]; ///< The data of the array.
 };
 
