@@ -128,10 +128,10 @@ struct SmallMap : std::vector<SmallPair<T, U> > {
 	 */
 	inline bool Erase(const T &key)
 	{
-		auto pair = std::find(this->begin(), this->end(), key);
-		if (pair == this->end()) return false;
+		auto *pair = this->Find(key);
+		if (pair == this->End()) return false;
 
-		std::vector<Pair>::erase(pair);
+		this->Erase(pair);
 		return true;
 	}
 
