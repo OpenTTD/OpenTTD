@@ -895,7 +895,7 @@ struct SpriteAlignerWindow : Window {
 				int step_size = nwid->resize_y;
 
 				std::vector<SpriteID> &list = _newgrf_debug_sprite_picker.sprites;
-				int max = min<int>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), list.size());
+				int max = min<int>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), (uint)list.size());
 
 				int y = r.top + WD_FRAMERECT_TOP;
 				for (int i = this->vscroll->GetPosition(); i < max; i++) {
@@ -1015,7 +1015,7 @@ struct SpriteAlignerWindow : Window {
 		if (data == 1) {
 			/* Sprite picker finished */
 			this->RaiseWidget(WID_SA_PICKER);
-			this->vscroll->SetCount(_newgrf_debug_sprite_picker.sprites.size());
+			this->vscroll->SetCount((uint)_newgrf_debug_sprite_picker.sprites.size());
 		}
 	}
 

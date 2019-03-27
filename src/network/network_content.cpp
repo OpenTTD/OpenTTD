@@ -250,7 +250,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 			(sizeof(uint8) + sizeof(uint32) + (send_md5sum ? /*sizeof(ContentInfo::md5sum)*/16 : 0)));
 
 	Packet *p = new Packet(send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID);
-	p->Send_uint8(cv->size());
+	p->Send_uint8((uint8)cv->size());
 
 	for (const ContentInfo *ci : *cv) {
 		p->Send_uint8((byte)ci->type);
@@ -299,7 +299,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 		bytes += ci->filesize;
 	}
 
-	files = content.size();
+	files = (uint)content.size();
 
 	/* If there's nothing to download, do nothing. */
 	if (files == 0) return;
@@ -317,7 +317,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
  */
 void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const ContentIDList &content)
 {
-	uint count = content.size();
+	uint count = (uint)content.size();
 
 	/* Allocate memory for the whole request.
 	 * Requests are "id\nid\n..." (as strings), so assume the maximum ID,
@@ -345,7 +345,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const Conten
  */
 void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const ContentIDList &content)
 {
-	uint count = content.size();
+	uint count = (uint)content.size();
 	const ContentID *content_ids = content.data();
 	this->Connect();
 

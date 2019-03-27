@@ -398,7 +398,7 @@ struct DepotWindow : Window {
 		uint16 rows_in_display = wid->current_y / wid->resize_y;
 
 		uint16 num = this->vscroll->GetPosition() * this->num_columns;
-		int maxval = min(this->vehicle_list.size(), num + (rows_in_display * this->num_columns));
+		int maxval = min((uint)this->vehicle_list.size(), num + (rows_in_display * this->num_columns));
 		int y;
 		for (y = r.top + 1; num < maxval; y += this->resize.step_height) { // Draw the rows
 			for (byte i = 0; i < this->num_columns && num < maxval; i++, num++) {
@@ -413,7 +413,7 @@ struct DepotWindow : Window {
 			}
 		}
 
-		maxval = min(this->vehicle_list.size() + this->wagon_list.size(), (this->vscroll->GetPosition() * this->num_columns) + (rows_in_display * this->num_columns));
+		maxval = min((uint)this->vehicle_list.size() + (uint)this->wagon_list.size(), (this->vscroll->GetPosition() * this->num_columns) + (rows_in_display * this->num_columns));
 
 		/* Draw the train wagons without an engine in front. */
 		for (; num < maxval; num++, y += this->resize.step_height) {
@@ -483,7 +483,7 @@ struct DepotWindow : Window {
 			/* Skip vehicles that are scrolled off the list */
 			if (this->type == VEH_TRAIN) x += this->hscroll->GetPosition();
 		} else {
-			pos -= this->vehicle_list.size();
+			pos -= (uint)this->vehicle_list.size();
 			*veh = this->wagon_list[pos];
 			/* free wagons don't have an initial loco. */
 			x -= ScaleGUITrad(VEHICLEINFO_FULL_VEHICLE_WIDTH);
@@ -734,11 +734,11 @@ struct DepotWindow : Window {
 				max_width = max(max_width, width);
 			}
 			/* Always have 1 empty row, so people can change the setting of the train */
-			this->vscroll->SetCount(this->vehicle_list.size() + this->wagon_list.size() + 1);
+			this->vscroll->SetCount((uint)this->vehicle_list.size() + (uint)this->wagon_list.size() + 1);
 			/* Always make it longer than the longest train, so you can attach vehicles at the end, and also see the next vertical tile separator line */
 			this->hscroll->SetCount(max_width + ScaleGUITrad(2 * VEHICLEINFO_FULL_VEHICLE_WIDTH + 1));
 		} else {
-			this->vscroll->SetCount(CeilDiv(this->vehicle_list.size(), this->num_columns));
+			this->vscroll->SetCount(CeilDiv((uint)this->vehicle_list.size(), this->num_columns));
 		}
 
 		/* Setup disabled buttons. */

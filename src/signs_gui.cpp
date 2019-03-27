@@ -310,7 +310,7 @@ struct SignListWindow : Window, SignList {
 	{
 		if (this->signs.NeedRebuild()) {
 			this->BuildSignsList();
-			this->vscroll->SetCount(this->signs.size());
+			this->vscroll->SetCount((uint)this->signs.size());
 			this->SetWidgetDirty(WID_SIL_CAPTION);
 		}
 		this->SortSignsList();
@@ -471,7 +471,7 @@ struct SignWindow : Window, SignList {
 		/* Search through the list for the current sign, excluding
 		 * - the first sign if we want the previous sign or
 		 * - the last sign if we want the next sign */
-		uint end = this->signs.size() - (next ? 1 : 0);
+		size_t end = this->signs.size() - (next ? 1 : 0);
 		for (uint i = next ? 0 : 1; i < end; i++) {
 			if (this->cur_sign == this->signs[i]->index) {
 				/* We've found the current sign, so return the sign before/after it */

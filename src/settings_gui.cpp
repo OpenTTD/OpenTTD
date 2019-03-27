@@ -255,7 +255,7 @@ struct GameOptionsWindow : Window {
 				}
 				QSortT(list->data(), list->size(), DropDownListStringItem::NatSortFunc);
 
-				int newgrf_size = list->size();
+				size_t newgrf_size = list->size();
 				/* Insert newgrf_names at the top of the list */
 				if (newgrf_size > 0) {
 					list->push_back(new DropDownListItem(-1, false)); // separator line

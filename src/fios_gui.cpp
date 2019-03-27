@@ -244,8 +244,8 @@ static const TextColour _fios_colours[] = {
  */
 static void SortSaveGameList(FileList &file_list)
 {
-	uint sort_start = 0;
-	uint sort_end = 0;
+	size_t sort_start = 0;
+	size_t sort_end = 0;
 
 	/* Directories are always above the files (FIOS_TYPE_DIR)
 	 * Drives (A:\ (windows only) are always under the files (FIOS_TYPE_DRIVE)
@@ -260,7 +260,7 @@ static void SortSaveGameList(FileList &file_list)
 		}
 	}
 
-	uint s_amount = file_list.Length() - sort_start - sort_end;
+	size_t s_amount = file_list.Length() - sort_start - sort_end;
 	QSortT(file_list.Get(sort_start), s_amount, CompareFiosItems);
 }
 
@@ -782,7 +782,7 @@ public:
 
 				_fios_path_changed = true;
 				this->fios_items.BuildFileList(this->abstract_filetype, this->fop);
-				this->vscroll->SetCount(this->fios_items.Length());
+				this->vscroll->SetCount((uint)this->fios_items.Length());
 				this->selected = NULL;
 				_load_check_data.Clear();
 

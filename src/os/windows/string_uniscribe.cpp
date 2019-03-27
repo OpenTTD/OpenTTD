@@ -110,7 +110,7 @@ public:
 	public:
 		virtual int GetLeading() const;
 		virtual int GetWidth() const;
-		virtual int CountRuns() const { return this->size();  }
+		virtual int CountRuns() const { return (uint)this->size();  }
 		virtual const VisualRun *GetVisualRun(int run) const { return this->at(run);  }
 
 		int GetInternalCharLength(WChar c) const

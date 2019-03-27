@@ -56,7 +56,7 @@ SoundEntry *GetSound(SoundID index)
 
 uint GetNumSounds()
 {
-	return _sounds.size();
+	return (uint)_sounds.size();
 }
 
 

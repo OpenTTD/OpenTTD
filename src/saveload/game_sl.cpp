@@ -132,7 +132,7 @@ static const SaveLoad _game_language_string[] = {
 static void SaveReal_GSTR(LanguageStrings *ls)
 {
 	_game_saveload_string  = ls->language;
-	_game_saveload_strings = ls->lines.size();
+	_game_saveload_strings = (uint)ls->lines.size();
 
 	SlObject(NULL, _game_language_header);
 	for (uint i = 0; i < _game_saveload_strings; i++) {

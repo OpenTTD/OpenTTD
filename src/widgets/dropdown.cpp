@@ -412,7 +412,7 @@ void ShowDropDownListAt(Window *w, const DropDownList *list, int selected, int b
 		/* If the dropdown doesn't fully fit, we need a dropdown. */
 		if (height > available_height) {
 			scroll = true;
-			uint avg_height = height / list->size();
+			uint avg_height = height / (uint)list->size();
 
 			/* Check at least there is space for one item. */
 			assert(available_height >= avg_height);

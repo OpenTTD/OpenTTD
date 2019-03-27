@@ -400,7 +400,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		this->content.RebuildDone();
 		this->SortContentList();
 
-		this->vscroll->SetCount(this->content.size()); // Update the scrollbar
+		this->vscroll->SetCount((int)this->content.size()); // Update the scrollbar
 		this->ScrollToSelected();
 	}
 
@@ -813,7 +813,7 @@ public:
 			case WID_NCL_NAME:
 				if (this->content.SortType() == widget - WID_NCL_CHECKBOX) {
 					this->content.ToggleSortOrder();
-					if (this->content.size() > 0) this->list_pos = this->content.size() - this->list_pos - 1;
+					if (this->content.size() > 0) this->list_pos = (int)this->content.size() - this->list_pos - 1;
 				} else {
 					this->content.SetSortType(widget - WID_NCL_CHECKBOX);
 					this->content.ForceResort();
@@ -888,7 +888,7 @@ public:
 				break;
 			case WKC_END:
 				/* jump to end */
-				this->list_pos = this->content.size() - 1;
+				this->list_pos = (int)this->content.size() - 1;
 				break;
 
 			case WKC_SPACE:

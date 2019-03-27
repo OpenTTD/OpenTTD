@@ -574,7 +574,7 @@ int GetStringLineCount(StringID str, int maxw)
 	GetString(buffer, str, lastof(buffer));
 
 	Layouter layout(buffer, maxw);
-	return layout.size();
+	return (uint)layout.size();
 }
 
 /**

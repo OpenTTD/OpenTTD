@@ -25,7 +25,7 @@
  * @param desc Sort descending.
  */
 template <typename T>
-static inline void QSortT(T *base, uint num, int (CDECL *comparator)(const T*, const T*), bool desc = false)
+static inline void QSortT(T *base, size_t num, int (CDECL *comparator)(const T*, const T*), bool desc = false)
 {
 	if (num < 2) return;
 
@@ -49,7 +49,7 @@ static inline void QSortT(T *base, uint num, int (CDECL *comparator)(const T*, c
  * @param desc Sort descending.
  */
 template <typename T>
-static inline void GSortT(T *base, uint num, int (CDECL *comparator)(const T*, const T*), bool desc = false)
+static inline void GSortT(T *base, size_t num, int (CDECL *comparator)(const T*, const T*), bool desc = false)
 {
 	if (num < 2) return;
 

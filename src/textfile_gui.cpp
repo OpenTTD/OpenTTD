@@ -116,7 +116,7 @@ void TextfileWindow::SetupScrollbars()
 		for (uint i = 0; i < this->lines.size(); i++) {
 			max_length = max(max_length, GetStringBoundingBox(this->lines[i], FS_MONO).width);
 		}
-		this->vscroll->SetCount(this->lines.size() * FONT_HEIGHT_MONO);
+		this->vscroll->SetCount((uint)this->lines.size() * FONT_HEIGHT_MONO);
 		this->hscroll->SetCount(max_length + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
 	}
 

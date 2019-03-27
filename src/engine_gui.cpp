@@ -325,7 +325,7 @@ void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID eng
  */
 void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare)
 {
-	uint size = el->size();
+	size_t size = el->size();
 	/* out-of-bounds access at the next line for size == 0 (even with operator[] at some systems)
 	 * generally, do not sort if there are less than 2 items */
 	if (size < 2) return;
