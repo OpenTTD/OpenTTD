@@ -2130,23 +2130,6 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 }
 
 /**
- * Computes the minimal distance from town's xy to any airport's tile.
- * @param it An iterator over all airport tiles.
- * @param town_tile town's tile (t->xy)
- * @return minimal manhattan distance from town_tile to any airport's tile
- */
-static uint GetMinimalAirportDistanceToTile(TileIterator &it, TileIndex town_tile)
-{
-	uint mindist = UINT_MAX;
-
-	for (TileIndex cur_tile = it; cur_tile != INVALID_TILE; cur_tile = ++it) {
-		mindist = min(mindist, DistanceManhattan(town_tile, cur_tile));
-	}
-
-	return mindist;
-}
-
-/**
  * Get a possible noise reduction factor based on distance from town center.
  * The further you get, the less noise you generate.
  * So all those folks at city council can now happily slee...  work in their offices
@@ -2185,20 +2168,32 @@ uint8 GetAirportNoiseLevelForDistance(const AirportSpec *as, uint distance)
  */
 Town *AirportGetNearestTown(const AirportSpec *as, const TileIterator &it, uint &mindist)
 {
+	assert(Town::GetNumItems() > 0);
+
 	Town *nearest = nullptr;
-	uint add = as->size_x + as->size_y - 2; // GetMinimalAirportDistanceToTile can differ from DistanceManhattan by this much
-	mindist = UINT_MAX - add; // prevent overflow
-	for (Town *t : Town::Iterate()) {
-		if (DistanceManhattan(t->xy, it) < mindist + add) { // avoid calling GetMinimalAirportDistanceToTile too often
-			TileIterator *copy = it.Clone();
-			uint dist = GetMinimalAirportDistanceToTile(*copy, t->xy);
-			delete copy;
+
+	uint perimeter_min_x = TileX(it);
+	uint perimeter_min_y = TileY(it);
+	uint perimeter_max_x = perimeter_min_x + as->size_x - 1;
+	uint perimeter_max_y = perimeter_min_y + as->size_y - 1;
+
+	mindist = UINT_MAX - 1; // prevent overflow
+
+	TileIterator *copy = it.Clone();
+	for (TileIndex cur_tile = *copy; cur_tile != INVALID_TILE; cur_tile = ++*copy) {
+		if (TileX(cur_tile) == perimeter_min_x || TileX(cur_tile) == perimeter_max_x || TileY(cur_tile) == perimeter_min_y || TileY(cur_tile) == perimeter_max_y) {
+			Town *t = CalcClosestTownFromTile(cur_tile, mindist + 1);
+			if (t == nullptr) continue;
+
+			uint dist = DistanceManhattan(t->xy, cur_tile);
+			if (dist == mindist && t->index < nearest->index) nearest = t;
 			if (dist < mindist) {
 				nearest = t;
 				mindist = dist;
 			}
 		}
 	}
+	delete copy;
 
 	return nearest;
 }
