@@ -512,21 +512,21 @@ CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad)
 	assert(w > 0);
 	assert(h > 0);
 
+	std::set<IndustryID> industries;
 	TileArea ta(TileXY(x1, y1), TileXY(x2 - 1, y2 - 1));
 
 	/* Loop over all tiles to get the produced cargo of
 	 * everything except industries */
-	TILE_AREA_LOOP(tile, ta) AddProducedCargo(tile, produced);
+	TILE_AREA_LOOP(tile, ta) {
+		if (IsTileType(tile, MP_INDUSTRY)) industries.insert(GetIndustryIndex(tile));
+		AddProducedCargo(tile, produced);
+	}
 
-	/* Loop over the industries. They produce cargo for
-	 * anything that is within 'rad' from their bounding
-	 * box. As such if you have e.g. a oil well the tile
-	 * area loop might not hit an industry tile while
-	 * the industry would produce cargo for the station.
+	/* Loop over the seen industries. They produce cargo for
+	 * anything that is within 'rad' of any one of their tiles.
 	 */
-	const Industry *i;
-	FOR_ALL_INDUSTRIES(i) {
-		if (!ta.Intersects(i->location)) continue;
+	for (IndustryID industry : industries) {
+		const Industry *i = Industry::Get(industry);
 		/* Skip industry with neutral station */
 		if (i->neutral_station != NULL && !_settings_game.station.serve_neutral_industries) continue;
 

@@ -8536,7 +8536,6 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --TileList_IndustryProducing--
   Count():             92
   Location ListDump:
-    46920 => 1
     46919 => 1
     46918 => 1
     46917 => 1
@@ -8545,7 +8544,6 @@ ERROR: IsEnd() is invalid as Begin() is never called
     46914 => 1
     46913 => 1
     46912 => 1
-    46911 => 1
     46664 => 1
     46663 => 1
     46662 => 1
@@ -8628,6 +8626,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     44353 => 1
     44352 => 1
     44351 => 1
+    46920 => 0
+    46911 => 0
 
 --TileList_StationType--
   Count():             4
