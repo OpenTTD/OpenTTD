@@ -41,7 +41,7 @@ void NORETURN CDECL error(const char *s, ...)
 	exit(1);
 }
 
-static const int OUTPUT_BLOCK_SIZE = 16000; ///< Block size of the buffer in #OutputBuffer.
+static const size_t OUTPUT_BLOCK_SIZE = 16000; ///< Block size of the buffer in #OutputBuffer.
 
 /** Output buffer for a block of data. */
 class OutputBuffer {
@@ -58,10 +58,9 @@ public:
 	 * @param length Length of the text in bytes.
 	 * @return Number of bytes actually stored.
 	 */
-	int Add(const char *text, int length)
+	size_t Add(const char *text, size_t length)
 	{
-		int store_size = min(length, OUTPUT_BLOCK_SIZE - this->size);
-		assert(store_size >= 0);
+		size_t store_size = min(length, OUTPUT_BLOCK_SIZE - this->size);
 		assert(store_size <= OUTPUT_BLOCK_SIZE);
 		MemCpyT(this->data + this->size, text, store_size);
 		this->size += store_size;
@@ -74,7 +73,7 @@ public:
 	 */
 	void Write(FILE *out_fp) const
 	{
-		if (fwrite(this->data, 1, this->size, out_fp) != (size_t)this->size) {
+		if (fwrite(this->data, 1, this->size, out_fp) != this->size) {
 			fprintf(stderr, "Error: Cannot write output\n");
 		}
 	}
@@ -88,7 +87,7 @@ public:
 		return this->size < OUTPUT_BLOCK_SIZE;
 	}
 
-	int size;                     ///< Number of bytes stored in \a data.
+	size_t size;                  ///< Number of bytes stored in \a data.
 	char data[OUTPUT_BLOCK_SIZE]; ///< Stored data.
 };
 
@@ -111,12 +110,12 @@ public:
 	 * @param text   Text to store.
 	 * @param length Length of the text in bytes, \c 0 means 'length of the string'.
 	 */
-	void Add(const char *text, int length = 0)
+	void Add(const char *text, size_t length = 0)
 	{
 		if (length == 0) length = strlen(text);
 
 		if (length > 0 && this->BufferHasRoom()) {
-			int stored_size = this->output_buffer[this->output_buffer.size() - 1].Add(text, length);
+			size_t stored_size = this->output_buffer[this->output_buffer.size() - 1].Add(text, length);
 			length -= stored_size;
 			text += stored_size;
 		}
@@ -124,7 +123,7 @@ public:
 			/*C++17: OutputBuffer &block =*/ this->output_buffer.emplace_back();
 			OutputBuffer &block = this->output_buffer.back();
 			block.Clear(); // Initialize the new block.
-			int stored_size = block.Add(text, length);
+			size_t stored_size = block.Add(text, length);
 			length -= stored_size;
 			text += stored_size;
 		}
@@ -148,7 +147,7 @@ private:
 	 */
 	bool BufferHasRoom() const
 	{
-		uint num_blocks = this->output_buffer.size();
+		size_t num_blocks = this->output_buffer.size();
 		return num_blocks > 0 && this->output_buffer[num_blocks - 1].HasRoom();
 	}
 
