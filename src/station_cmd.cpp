@@ -2268,6 +2268,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	/* Check if a valid, buildable airport was chosen for construction */
 	const AirportSpec *as = AirportSpec::Get(airport_type);
 	if (!as->IsAvailable() || layout >= as->num_table) return CMD_ERROR;
+	if (!as->IsWithinMapBounds(layout, tile)) return CMD_ERROR;
 
 	Direction rotation = as->rotation[layout];
 	int w = as->size_x;

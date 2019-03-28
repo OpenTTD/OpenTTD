@@ -136,8 +136,10 @@
 	if (!::IsValidTile(tile)) return -1;
 	if (!IsAirportInformationAvailable(type)) return -1;
 
+	const AirportSpec *as = ::AirportSpec::Get(type);
+	if (!as->IsWithinMapBounds(0, tile)) return -1;
+
 	if (_settings_game.economy.station_noise_level) {
-		const AirportSpec *as = ::AirportSpec::Get(type);
 		AirportTileTableIterator it(as->table[0], tile);
 		uint dist;
 		AirportGetNearestTown(as, it, dist);
@@ -155,6 +157,8 @@
 	if (!IsAirportInformationAvailable(type)) return INVALID_TOWN;
 
 	const AirportSpec *as = AirportSpec::Get(type);
+	if (!as->IsWithinMapBounds(0, tile)) return INVALID_TOWN;
+
 	uint dist;
 	return AirportGetNearestTown(as, AirportTileTableIterator(as->table[0], tile), dist)->index;
 }
