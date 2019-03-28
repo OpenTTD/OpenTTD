@@ -3644,6 +3644,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Emere ve
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Emere navem electam. Shift+Preme ut pretium monstretur sine emptione
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Emere aeroplanum electum. Shift+Preme ut pretium monstretur sine emptione
 
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Emere et reficere vehiculum ferriviarium electum. Shift+Preme ut pretium monstretur sine emptione
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Emere et reficere vehiculum viarium electum. Shift+Preme ut pretium monstretur sine emptione
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Emere et reficere navem electam. Shift+Preme ut pretium monstretur sine emptione
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Emere et reficere aeroplanum electum. Shift+Preme ut pretium monstretur sine emptione
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Renominare
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Renominare
