@@ -664,44 +664,50 @@ CommandCost CmdSetGroupLivery(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 }
 
 /**
- * Set replace protection for a group and its sub-groups.
+ * Set group flag for a group and its sub-groups.
  * @param g initial group.
- * @param protect 1 to set or 0 to clear protection.
+ * @param set 1 to set or 0 to clear protection.
  */
-static void SetGroupReplaceProtection(Group *g, bool protect, bool children)
+static void SetGroupFlag(Group *g, GroupFlags flag, bool set, bool children)
 {
-	if (protect) {
-		SetBit(g->flags, GroupFlags::GF_REPLACE_PROTECTION);
+	if (set) {
+		SetBit(g->flags, flag);
 	} else {
-		ClrBit(g->flags, GroupFlags::GF_REPLACE_PROTECTION);
+		ClrBit(g->flags, flag);
 	}
 
 	if (!children) return;
 
 	for (Group *pg : Group::Iterate()) {
-		if (pg->parent == g->index) SetGroupReplaceProtection(pg, protect, true);
+		if (pg->parent == g->index) SetGroupFlag(pg, flag, set, true);
 	}
 }
 
 /**
- * (Un)set global replace protection from a group
+ * (Un)set group flag from a group
  * @param tile unused
  * @param flags type of operation
  * @param p1   index of group array
- * - p1 bit 0-15 : GroupID
+ * - p1 bit 0-15  : GroupID
+ * - p1 bit 16-18 : Flag to set, by value not bit.
  * @param p2
  * - p2 bit 0    : 1 to set or 0 to clear protection.
  * - p2 bit 1    : 1 to apply to sub-groups.
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetGroupReplaceProtection(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdSetGroupFlag(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Group *g = Group::GetIfValid(p1);
+	Group *g = Group::GetIfValid(GB(p1, 0, 16));
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
 
+	/* GroupFlags are stored in as an 8 bit bitfield but passed here by value,
+	 * so 3 bits is sufficient to cover each possible value. */
+	GroupFlags flag = (GroupFlags)GB(p1, 16, 3);
+	if (flag >= GroupFlags::GF_END) return CMD_ERROR;
+
 	if (flags & DC_EXEC) {
-		SetGroupReplaceProtection(g, HasBit(p2, 0), HasBit(p2, 1));
+		SetGroupFlag(g, flag, HasBit(p2, 0), HasBit(p2, 1));
 
 		SetWindowDirty(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).Pack());
 		InvalidateWindowData(WC_REPLACE_VEHICLE, g->vehicle_type);
