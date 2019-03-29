@@ -2164,17 +2164,14 @@ static uint GetMinimalAirportDistanceToTile(TileIterator &it, TileIndex town_til
  * The further you get, the less noise you generate.
  * So all those folks at city council can now happily slee...  work in their offices
  * @param as airport information
- * @param it An iterator over all airport tiles.
- * @param town_tile TileIndex of town's center, the one who will receive the airport's candidature
+ * @param distance minimum distance between town and airport
  * @return the noise that will be generated, according to distance
  */
-uint8 GetAirportNoiseLevelForTown(const AirportSpec *as, TileIterator &it, TileIndex town_tile)
+uint8 GetAirportNoiseLevelForDistance(const AirportSpec *as, uint distance)
 {
 	/* 0 cannot be accounted, and 1 is the lowest that can be reduced from town.
 	 * So no need to go any further*/
 	if (as->noise_level < 2) return as->noise_level;
-
-	uint distance = GetMinimalAirportDistanceToTile(it, town_tile);
 
 	/* The steps for measuring noise reduction are based on the "magical" (and arbitrary) 8 base distance
 	 * adding the town_council_tolerance 4 times, as a way to graduate, depending of the tolerance.
@@ -2196,13 +2193,14 @@ uint8 GetAirportNoiseLevelForTown(const AirportSpec *as, TileIterator &it, TileI
  * If two towns have the same distance, town with lower index is returned.
  * @param as airport's description
  * @param it An iterator over all airport tiles
+ * @param[out] mindist Minimum distance to town
  * @return nearest town to airport
  */
-Town *AirportGetNearestTown(const AirportSpec *as, const TileIterator &it)
+Town *AirportGetNearestTown(const AirportSpec *as, const TileIterator &it, uint &mindist)
 {
 	Town *t, *nearest = NULL;
 	uint add = as->size_x + as->size_y - 2; // GetMinimalAirportDistanceToTile can differ from DistanceManhattan by this much
-	uint mindist = UINT_MAX - add; // prevent overflow
+	mindist = UINT_MAX - add; // prevent overflow
 	FOR_ALL_TOWNS(t) {
 		if (DistanceManhattan(t->xy, it) < mindist + add) { // avoid calling GetMinimalAirportDistanceToTile too often
 			TileIterator *copy = it.Clone();
@@ -2231,8 +2229,9 @@ void UpdateAirportsNoise()
 		if (st->airport.tile != INVALID_TILE && st->airport.type != AT_OILRIG) {
 			const AirportSpec *as = st->airport.GetSpec();
 			AirportTileIterator it(st);
-			Town *nearest = AirportGetNearestTown(as, it);
-			nearest->noise_reached += GetAirportNoiseLevelForTown(as, it, nearest->xy);
+			uint dist;
+			Town *nearest = AirportGetNearestTown(as, it, dist);
+			nearest->noise_reached += GetAirportNoiseLevelForDistance(as, dist);
 		}
 	}
 }
@@ -2285,8 +2284,9 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (cost.Failed()) return cost;
 
 	/* The noise level is the noise from the airport and reduce it to account for the distance to the town center. */
-	Town *nearest = AirportGetNearestTown(as, iter);
-	uint newnoise_level = GetAirportNoiseLevelForTown(as, iter, nearest->xy);
+	uint dist;
+	Town *nearest = AirportGetNearestTown(as, iter, dist);
+	uint newnoise_level = GetAirportNoiseLevelForDistance(as, dist);
 
 	/* Check if local auth would allow a new airport */
 	StringID authority_refuse_message = STR_NULL;
@@ -2405,8 +2405,9 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 		 * And as for construction, always remove it, even if the setting is not set, in order to avoid the
 		 * need of recalculation */
 		AirportTileIterator it(st);
-		Town *nearest = AirportGetNearestTown(as, it);
-		nearest->noise_reached -= GetAirportNoiseLevelForTown(as, it, nearest->xy);
+		uint dist;
+		Town *nearest = AirportGetNearestTown(as, it, dist);
+		nearest->noise_reached -= GetAirportNoiseLevelForDistance(as, dist);
 	}
 
 	TILE_AREA_LOOP(tile_cur, st->airport) {
