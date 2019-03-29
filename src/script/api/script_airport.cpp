@@ -149,6 +149,34 @@
 	return 1;
 }
 
+/* static */ bool ScriptAirport::IsNoiseLevelIncreaseAllowed(TileIndex tile, AirportType type)
+{
+	extern Town *AirportGetNearestTown(const AirportSpec *as, const TileIterator &it, uint &mindist);
+	extern uint8 GetAirportNoiseLevelForDistance(const AirportSpec *as, uint distance);
+
+	if (!::IsValidTile(tile)) return false;
+	if (!IsAirportInformationAvailable(type)) return false;
+
+	const AirportSpec *as = ::AirportSpec::Get(type);
+	if (!as->IsWithinMapBounds(0, tile)) return false;
+
+	AirportTileTableIterator it(as->table[0], tile);
+	uint dist;
+	Town *t = AirportGetNearestTown(as, it, dist);
+	if (!::Town::IsValidID(t->index)) return false;
+
+	if (_settings_game.economy.station_noise_level) {
+		return GetAirportNoiseLevelForDistance(as, dist) <= t->MaxTownNoise() - t->noise_reached;
+	}
+
+	int num = 0;
+	const Station *st;
+	FOR_ALL_STATIONS(st) {
+		if (st->town == t && (st->facilities & FACIL_AIRPORT) && st->airport.type != AT_OILRIG) num++;
+	}
+	return 1 <= max(0, 2 - num);
+}
+
 /* static */ TownID ScriptAirport::GetNearestTown(TileIndex tile, AirportType type)
 {
 	extern Town *AirportGetNearestTown(const AirportSpec *as, const TileIterator &it, uint &mindist);

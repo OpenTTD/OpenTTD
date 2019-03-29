@@ -50,6 +50,7 @@ void SQAIAirport_Register(Squirrel *engine)
 	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::RemoveAirport,                 "RemoveAirport",                 2, ".i");
 	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::GetAirportType,                "GetAirportType",                2, ".i");
 	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::GetNoiseLevelIncrease,         "GetNoiseLevelIncrease",         3, ".ii");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::IsNoiseLevelIncreaseAllowed,   "IsNoiseLevelIncreaseAllowed",   3, ".ii");
 	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::GetNearestTown,                "GetNearestTown",                3, ".ii");
 	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::GetMaintenanceCostFactor,      "GetMaintenanceCostFactor",      2, ".i");
 	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::GetMonthlyMaintenanceCost,     "GetMonthlyMaintenanceCost",     2, ".i");

@@ -185,6 +185,17 @@ public:
 	static int GetNoiseLevelIncrease(TileIndex tile, AirportType type);
 
 	/**
+	 * Checks whether the noise that will be added to the nearest town if an airport would be
+	 *  built at this tile is allowed.
+	 * @param tile The tile to check.
+	 * @param type The AirportType to check.
+	 * @pre IsAirportInformationAvailable(type).
+	 * @return true if and only if the noise level increase added by the airport is allowed.
+	 * @note The noise will be added to the town with TownID GetNearestTown(tile, type).
+	 */
+	static bool IsNoiseLevelIncreaseAllowed(TileIndex tile, AirportType type);
+
+	/**
 	 * Get the TownID of the town whose local authority will influence
 	 *  an airport at some tile.
 	 * @param tile The tile to check.

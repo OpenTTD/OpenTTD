@@ -26,6 +26,7 @@
  * \li AIGroup::GetSecondaryColour
  * \li AIVehicle::BuildVehicleWithRefit
  * \li AIVehicle::GetBuildWithRefitCapacity
+ * \li AIAirport::IsNoiseLevelIncreaseAllowed
  *
  * \b 1.9.0
  *

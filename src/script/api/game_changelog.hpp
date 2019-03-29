@@ -18,6 +18,9 @@
  * \b 1.10.0
  *
  * This version is not yet released. The following changes are not set in stone yet.
+
+ * API additions:
+ * \li GSAirport::IsNoiseLevelIncreaseAllowed
  *
  * API additions:
  * \li GSVehicle::BuildVehicleWithRefit
