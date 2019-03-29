@@ -96,7 +96,7 @@
 {
 	if (!IsValidGroup(group_id)) return false;
 
-	return ::Group::Get(group_id)->replace_protection;
+	return HasBit(::Group::Get(group_id)->flags, GroupFlags::GF_REPLACE_PROTECTION);
 }
 
 /* static */ int32 ScriptGroup::GetNumEngines(GroupID group_id, EngineID engine_id)
