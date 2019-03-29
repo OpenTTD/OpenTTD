@@ -636,9 +636,8 @@ public:
 		uint y = r.top;
 
 		auto iter = this->content.begin() + this->vscroll->GetPosition();
-		auto end = iter + this->vscroll->GetCapacity();
-		if (end > this->content.end())
-			end = this->content.end();
+		size_t last = this->vscroll->GetPosition() + this->vscroll->GetCapacity();
+		auto end = (last < this->content.size()) ? this->content.begin() + last : this->content.end();
 
 		for (/**/; iter != end; iter++) {
 			const ContentInfo *ci = *iter;
