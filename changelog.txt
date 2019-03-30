@@ -1,3 +1,8 @@
+1.9.0 (2019-04-01)
+------------------------------------------------------------------------
+- Fix #7411: Use industry production callback (if used) on initial industry cargo generation (#7412)
+
+
 1.9.0-RC2 (2019-03-24)
 ------------------------------------------------------------------------
 - Fix #7400: WaterClass for tree tiles was not converted for old saves preventing industry creation (#7405)
