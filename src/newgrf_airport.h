@@ -123,6 +123,7 @@ struct AirportSpec {
 	static AirportSpec *GetWithoutOverride(byte type);
 
 	bool IsAvailable() const;
+	bool IsWithinMapBounds(byte table, TileIndex index) const;
 
 	static void ResetAirports();
 
