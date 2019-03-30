@@ -190,6 +190,7 @@ STR_COLOUR_BROWN                                                :Brong
 STR_COLOUR_GREY                                                 :Gro
 STR_COLOUR_WHITE                                                :Wäiss
 STR_COLOUR_RANDOM                                               :Zoufälleg
+STR_COLOUR_DEFAULT                                              :Standard
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -463,8 +464,9 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sound/Musik
 ############ range ends here
 
 ############ range for message menu starts
-STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Läscht Meldung/Neiegkeet
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Lescht Meldung/Neiegkeet
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meldungshistorie
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :All Message läschen
 ############ range ends here
 
 ############ range for about menu starts
@@ -928,6 +930,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Südafrikanesch
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Eegen...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgesche Lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranësche Rial (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Neie Russesche Rubel (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexikanesche Peso (MXN)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Stroossegefierer
@@ -990,8 +994,10 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Duebel
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Véierfach
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Schrëftgréisst
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Duebel Gréisst
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Véierfach
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis Grafikset
@@ -1261,6 +1267,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Déi Ast
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastrukturënnerhalt {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Wann ugeschalt, kaschten Infrastrukturen Ennerhaltskäschten. D'Käschten wuessen iwwerproportional zu der Netzwierkgréisst, an treffen sou grouss Firmen méi wéi klenger
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Firmefaarw um Start: {STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Fluchhäfen lafen nie of: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wann ugeschalt, bleift all Fluchhafentyp säit senger Aféierung bestoen
@@ -1268,12 +1275,12 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wann ugeschalt,
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Warnen wann en Gefier verluer ass: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Messagen uweisen wann Gefierer keen Wee op hiert Ziel fannen
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Opträg vun de Gefierer nopréifen: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Wann ugeschalt, ginn d'Opträg vu Gefierer periodesch kontrolléiert, an e puer evident Fehler ginn mat enger Noriichtenmessage gemellt wann se fonnt ginn
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Wann ugeschalt, ginn d'Opträg vu Gefierer periodesch kontrolléiert, an e puer evident Fehler ginn mat engem Noriichtenmessage gemellt wann se fonnt ginn
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nee
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Jo, mee net déi gestoppten Gefierer
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Vun allen Gefierer
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warnen wann en Gefier en negativt Akommes huet: {STRING}
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Wann ugeschalt, gëtt eng Noorichtenmessage gesent , wann en Gefier een Joer laang keen Profit gemeet huet
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Wann ugeschalt, gëtt e Noorichtemessage gesent, wann e Gefier ee Joer laang kee Profit gemeet huet
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Gefierer lafen nie of: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wann ugeschalt, bleiwen all Modeller vu Gefierer éiweg verfügbar
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Gefier automatesch ernéieren wann et al gëtt: {STRING}
@@ -1345,6 +1352,9 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Faarf vum Terra
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Gréng
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donkelgréng
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Mof
+STR_CONFIG_SETTING_SCROLLMODE                                   :Usiicht-Scrollverhalen: {STRING}
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Verhalen beim Scrolle vun der Kaart
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :D'Usiicht mat der rietser Maustast bewegen, Maus-Positioun gespaart
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Kaart mat der lénker Maustast bewegen
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Feine Scrolling: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolléiert wéi d'Haptusiicht op eng bestëmmten Positioun scrollt, wann een op déi kléng Kaart klickt oder en Befehl fir ob en spezifescht Objet ze scrollen gëtt. Wann ugeschalt, gëtt bis dohin gescrollt, wann ausgeschalt, spréngt d'Vue op den Zielobjet
@@ -2374,7 +2384,7 @@ STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Wee-Sign
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einbahn-Wee-Signal (Elektresch){}En Einbahn-Signal erlaabt méi wéi een Zuch zur selwechter Zäit an engem Block ze sin, wann den Zuch en Wee op en sécheren Stop-Punkt reservéiren kann. Einbahn-Signaler kënnen net vun der falscher Säit duerchfuer ginn
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signal konvertéiren{}Wann gewielt, gëtt en geklickten Signal an dat gewielten Signal konvertéiert, Ctrl+Klick wiesselt tëscht de Varianten. Shift weist ongeféier Konvertéirungskäschten
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dicht vu Signaler beim Zéien
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Setzt Signaldicht erof
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Setzt Signaldistanz erof
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Setzt Signaldicht erop
 
 # Bridge selection window
@@ -2698,21 +2708,34 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 D'OpenTTD team
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}Biller pro Sekonn
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Unzuel Gameticks déi pro Sekonn simuléiert ginn.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Aktuell
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Mëttel
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} Biller/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} Biller/s
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Spill total:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Zuchticks:
 STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Stroossegefierer Ticken:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Linkgrafik-Verzögerung:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Graphikrendering:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Welt-Usiichten:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Video-output:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}  Gamescript:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Spill-Loop
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Wuerenhandling
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Zuchticks
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Stroossegefierer Ticken
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Schëffticker
 STR_FRAMETIME_CAPTION_SOUND                                     :Soundmixing
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Spill-Script
 ############ End of leave-in-this-order
 
 
@@ -2738,6 +2761,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detailer
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Keng Informatioun do
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Datei iwwerschreiwen
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Gëff dem Spillstand en Numm
 
@@ -2855,8 +2879,10 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versioun
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatibel Versioun: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palette: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Standard (S) / 32 bpp
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Legacy (W)
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameter: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Keng
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Keng Info verfügbar
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Datei net fonnt.
@@ -3002,6 +3028,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Gëff en
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Stied
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Keng -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Stad){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stiednimm - klick op den Numm fir d'Usiicht drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht vun der Stad
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 
@@ -3009,6 +3036,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Weltbev�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Stad)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Awunner: {ORANGE}{COMMA}{BLACK}  Haiser: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} leschte Mount: {ORANGE}{COMMA}{BLACK}  Max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Gidder gebraucht fir Stadwuesstem:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} gebraucht
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} gebraucht am Wanter
@@ -3109,6 +3137,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick op
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Storybuch
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globalt Storybuch
+STR_STORY_BOOK_SPECTATOR                                        :Globalt Storybuch
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Säit {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Géi op eng spezifësch Säit andems se aus der Dropdownlëscht ausgewielt gëtt
@@ -3307,12 +3336,13 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industri
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
-STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produktioun läschte Mount:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produktioun leschte Mount:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportéiert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Zentréiert d'Siicht op d'Industrie. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktiounslevel: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}D'Industrie annoncéiert dass se zougemaach gëtt
 
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Brauch:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
@@ -3813,6 +3843,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Alter (Joer)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Brauch eng Revisioun
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Ëmmer
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Reschtlaafzäit (Joer)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maximal Zouverlässegkeet
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Wéi Gefierdaten verglach solle ginn
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :ass gläich
@@ -4497,6 +4528,7 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Original Transp
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Original Transport Tycoon Deluxe Windows Editioun Sound.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :E Soundpack ouni iergendee Sound.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Original Transport Tycoon Deluxe Windows Editioun Musik.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Original Transport Tycoon Deluxe DOS Editioun Musik.
 STR_BASEMUSIC_TTO_DESCRIPTION                                   :Original Transport Tycoon (Original/World Editor) DOS Editioun-Musik.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :E Musikpack ouni aktuell Musik.
 

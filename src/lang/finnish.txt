@@ -137,7 +137,7 @@ STR_ABBREV_OIL                                                  :{TINY_FONT}ÖL
 STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}KA
 STR_ABBREV_GOODS                                                :{TINY_FONT}TA
 STR_ABBREV_GRAIN                                                :{TINY_FONT}VL
-STR_ABBREV_WOOD                                                 :{TINY_FONT}PT
+STR_ABBREV_WOOD                                                 :{TINY_FONT}PU
 STR_ABBREV_IRON_ORE                                             :{TINY_FONT}RM
 STR_ABBREV_STEEL                                                :{TINY_FONT}TR
 STR_ABBREV_VALUABLES                                            :{TINY_FONT}AT
@@ -1075,7 +1075,7 @@ STR_SEA_LEVEL_LOW                                               :Matala
 STR_SEA_LEVEL_MEDIUM                                            :Keskitaso
 STR_SEA_LEVEL_HIGH                                              :Korkea
 STR_SEA_LEVEL_CUSTOM                                            :Oma
-STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Oma ({NUM}%)
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Oma ({NUM}{NBSP}%)
 
 STR_RIVERS_NONE                                                 :Ei yhtään
 STR_RIVERS_FEW                                                  :Vähän
@@ -1197,7 +1197,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Ajoneuvojen kii
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Valitsee ajoneuvojen käyttämän fysiikkamallin. "Alkuperäinen" malli hidastaa ajoneuvoja mäissä tasapuolisesta. "Realistinen" malli hidastaa ajoneuvoja mäissä niiden ominaisuuksista riippuen
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Mäkien jyrkkyys junille: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Mäkien jyrkkyys junille. Korkeammat arvot tekevät mäkien nousemisesta vaikeampaa
-STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}{NBSP}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Mäkien jyrkkyys ajoneuvoille: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Mäkien jyrkkyys ajoneuvoille. Korkeammat arvot tekevät mäkien nousemisesta vaikeampaa
 STR_CONFIG_SETTING_FORBID_90_DEG                                :90 asteen käännökset kielletty junilta ja laivoilta: {STRING}
@@ -1646,9 +1646,9 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Mitä suuremmak
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Välimatkan vaikutus kysyntään: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Mikäli asetuksen arvo on määritelty suuremmaksi kuin 0, alkuperäisen aseman A ja mahdollisen määränpään B välimatkalla on vaikutus A:sta B:hen lähetetyn rahdin määrään. Mitä kauempana B on A:sta, sitä vähemmän rahtia lähetetään. Mitä suuremmaksi tämä asetus on määritetty, sitä vähemmän rahtia lähetetään kaukana oleville ja enemmän lähellä oleville asemille.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Palautettavan rahdin määrä symmetrisessä tilassa: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Mikäli asetuksen arvoksi on määritetty alle 100%, symmetrinen jakauma toimii enemmän epäsymmetrisen jakauman tavoin ja vähemmän rahtia pakotetaan lähetettäväksi takaisin alkuperäiselle asemalle. Jos arvoksi määritetään 0%, symmetrinen jakauma toimii täysin epäsymmetrisen jakauman tavoin.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Mikäli asetuksen arvoksi on määritetty alle 100{NBSP}%, symmetrinen jakauma toimii enemmän epäsymmetrisen jakauman tavoin, ja vähemmän rahtia pakotetaan lähetettäväksi takaisin alkuperäiselle asemalle. Jos arvoksi määritetään 0{NBSP}%, symmetrinen jakauma toimii täysin epäsymmetrisen jakauman tavoin.
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Lyhyiden reittien kuormittuminen ennen vapaampien reittien käyttämistä: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Kahden aseman välillä on usein useita reittejä. Lyhintä reittiä käytetään ensisijaisesti, toisiksi lyhintä ensimmäisen kuormittuessa ja niin edelleen. Kuormitus määritellään arvioidun kapasiteetin ja suunnitellun käytön mukaan. Kaikkien reittien ollessa kuormittuneita reittejä aletaan ylikuormittamaan, suurimman kapasiteetin omaavista reiteista aloittaen. Algoritmi ei kuitenkaan aina arvioi kapasiteettia oikein. Tämä asetus mahdollistaa reitin kuormitustason määrittämisen ennen seuraavan reitin käyttämistä. Määritä arvoksi vähemmän kuin 100% välttääksesi ylikuormittuneita asemia jos kapasiteetti yliarvioidaan.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Kahden aseman välillä on usein useita reittejä. Lyhintä reittiä käytetään ensisijaisesti, toiseksi lyhintä ensimmäisen kuormittuessa ja niin edelleen. Kuormitus määritellään arvioidun kapasiteetin ja suunnitellun käytön mukaan. Kaikkien reittien ollessa kuormittuneita reittejä aletaan ylikuormittaa, suurimman kapasiteetin omaavista reiteista aloittaen. Algoritmi ei kuitenkaan aina arvioi kapasiteettia oikein. Tämä asetus mahdollistaa reitin kuormitustason määrittämisen ennen seuraavan reitin käyttämistä. Määritä arvoksi vähemmän kuin 100{NBSP}% välttääksesi ylikuormittuneita asemia, jos kapasiteetti yliarvioidaan.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Nopeuden yksikkö: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kun käyttöliittymässä näytetään nopeus, näytä se valittua yksikköä käyttäen
@@ -2858,7 +2858,7 @@ STR_GENERATION_WORLD                                            :{WHITE}Maailmaa
 STR_GENERATION_ABORT                                            :{BLACK}Peruuta
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Keskeytä maailman luominen
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Haluatko varmasti keskeyttää maan luomisen?
-STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% valmiina
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NBSP}% valmiina
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Maailman luominen
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Jokien luominen
@@ -3066,7 +3066,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Kunnat
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ei mitään -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (kaupunki){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Kaupunkien nimet – keskitä päänäkymä kaupunkiin napsauttamalla nimeä. Ctrl+Klik avaa uuden näkymäikkunan kaupungin sijaintiin
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Kuntien nimet – keskitä päänäkymä kuntaan napsauttamalla nimeä. Ctrl+Klik avaa uuden näkymäikkunan kunnan sijaintiin
 STR_TOWN_POPULATION                                             :{BLACK}Maailman asukasluku: {COMMA}
 
 # Town view window
@@ -3212,7 +3212,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Arviot
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näytä aseman arviot
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Kuukausittainen tarjonta ja paikallinen arvio:
-STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}{NBSP}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Järjestä
 STR_STATION_VIEW_WAITING_STATION                                :Asema: Odottaa
@@ -3367,8 +3367,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Teollisuusala
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ei mitään -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% kuljetettu)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% kuljetettu)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}{NBSP}% kuljetettu)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}{NBSP}% / {COMMA}{NBSP}% kuljetettu)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Teollisuusmuotojen nimet - kohdista päänäkymä teollisuuslaitokseen napsauttamalla nimeä. Ctrl+Klik avaa uuden näkymäikkunan teollisuuslaitoksen sijaintiin
 
@@ -3377,7 +3377,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Tuotto viime kuussa:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% kuljetettu)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Keskitä päänäkymä teollisuuden sijaintiin. Ctrl+Klik avaa uuden näkymäikkunan teollisuuden sijaintiin
-STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tuotantotaso: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tuotantotaso: {YELLOW}{COMMA}{NBSP}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Teollisuuslaitos ilmoittaa pikaisesta sulkeutumisestaan!
 
 STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Tarvitsee: {YELLOW}{STRING}{STRING}
@@ -3476,7 +3476,7 @@ STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Käyttö
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiteetti: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(sovitettava)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Suunniteltu: {GOLD}{NUM}{BLACK} Elinikä: {GOLD}{COMMA} vuo{P si tta}
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Enimmäisluotettavuus: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Enimmäisluotettavuus: {GOLD}{COMMA}{NBSP}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Hinta: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Paino: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Hinta: {GOLD}{CURRENCY_LONG}{BLACK} Nopeus: {GOLD}{VELOCITY}
@@ -3755,7 +3755,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Paino: {
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Maks. vetovoima: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Tuotto tänä vuonna: {LTBLUE}{CURRENCY_LONG} (viime vuonna: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Luotettavuus: {LTBLUE}{COMMA}%  {BLACK}Hajoamiset viime huollon jälkeen: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Luotettavuus: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Hajoamiset viime huollon jälkeen: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Rakennettu: {LTBLUE}{NUM}{BLACK} Arvo: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasiteetti: {LTBLUE}-{STRING}
@@ -3766,7 +3766,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasite
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Siirron arvo: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Huoltoväli: {LTBLUE}{COMMA}{NBSP}päivää{BLACK}   Viimeisin huolto: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Huoltoväli: {LTBLUE}{COMMA}%{BLACK}   Viime huolto: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Huoltoväli: {LTBLUE}{COMMA}{NBSP}%{BLACK}   Viime huolto: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kasvata huoltoväliä kymmenellä. Ctrl+Klik kasvattaa huoltoväliä viidellä
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Pienennä huoltoväliä kymmenellä. Ctrl+Klik vähentää huoltoväliä viidellä
 
