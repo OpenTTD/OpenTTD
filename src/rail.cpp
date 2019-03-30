@@ -262,13 +262,14 @@ RailTypes AddDateIntroducedRailTypes(RailTypes current, Date date)
 /**
  * Get the rail types the given company can build.
  * @param company the company to get the rail types for.
+ * @param introduces If true, include rail types introduced by other rail types
  * @return the rail types.
  */
-RailTypes GetCompanyRailtypes(CompanyID company)
+RailTypes GetCompanyRailtypes(CompanyID company, bool introduces)
 {
 	RailTypes rts = RAILTYPES_NONE;
 
-	Engine *e;
+	const Engine *e;
 	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
 		const EngineInfo *ei = &e->info;
 
@@ -278,12 +279,46 @@ RailTypes GetCompanyRailtypes(CompanyID company)
 
 			if (rvi->railveh_type != RAILVEH_WAGON) {
 				assert(rvi->railtype < RAILTYPE_END);
-				rts |= GetRailTypeInfo(rvi->railtype)->introduces_railtypes;
+				if (introduces) {
+					rts |= GetRailTypeInfo(rvi->railtype)->introduces_railtypes;
+				} else {
+					SetBit(rts, rvi->railtype);
+				}
 			}
 		}
 	}
 
-	return AddDateIntroducedRailTypes(rts, _date);
+	if (introduces) return AddDateIntroducedRailTypes(rts, _date);
+	return rts;
+}
+
+/**
+ * Get list of rail types, regardless of company availability.
+ * @param introduces If true, include rail types introduced by other rail types
+ * @return the rail types.
+ */
+RailTypes GetRailTypes(bool introduces)
+{
+	RailTypes rts = RAILTYPES_NONE;
+
+	const Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+		const EngineInfo *ei = &e->info;
+		if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) continue;
+
+		const RailVehicleInfo *rvi = &e->u.rail;
+		if (rvi->railveh_type != RAILVEH_WAGON) {
+			assert(rvi->railtype < RAILTYPE_END);
+			if (introduces) {
+				rts |= GetRailTypeInfo(rvi->railtype)->introduces_railtypes;
+			} else {
+				SetBit(rts, rvi->railtype);
+			}
+		}
+	}
+
+	if (introduces) return AddDateIntroducedRailTypes(rts, MAX_DAY);
+	return rts;
 }
 
 /**

@@ -1989,20 +1989,20 @@ void InitializeRailGUI()
  */
 DropDownList *GetRailTypeDropDownList(bool for_replacement, bool all_option)
 {
-	RailTypes used_railtypes = RAILTYPES_NONE;
-
-	/* Find the used railtypes. */
-	Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
-		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
-
-		used_railtypes |= GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes;
-	}
-
-	/* Get the date introduced railtypes as well. */
-	used_railtypes = AddDateIntroducedRailTypes(used_railtypes, MAX_DAY);
+	RailTypes used_railtypes;
+	RailTypes avail_railtypes;
 
 	const Company *c = Company::Get(_local_company);
+
+	/* Find the used railtypes. */
+	if (for_replacement) {
+		avail_railtypes = GetCompanyRailtypes(c->index, false);
+		used_railtypes  = GetRailTypes(false);
+	} else {
+		avail_railtypes = c->avail_railtypes;
+		used_railtypes  = GetRailTypes(true);
+	}
+
 	DropDownList *list = new DropDownList();
 
 	if (all_option) {
@@ -2030,9 +2030,9 @@ DropDownList *GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		StringID str = for_replacement ? rti->strings.replace_text : (rti->max_speed > 0 ? STR_TOOLBAR_RAILTYPE_VELOCITY : STR_JUST_STRING);
 		DropDownListParamStringItem *item;
 		if (for_replacement) {
-			item = new DropDownListParamStringItem(str, rt, !HasBit(c->avail_railtypes, rt));
+			item = new DropDownListParamStringItem(str, rt, !HasBit(avail_railtypes, rt));
 		} else {
-			DropDownListIconItem *iconitem = new DropDownListIconItem(rti->gui_sprites.build_x_rail, PAL_NONE, str, rt, !HasBit(c->avail_railtypes, rt));
+			DropDownListIconItem *iconitem = new DropDownListIconItem(rti->gui_sprites.build_x_rail, PAL_NONE, str, rt, !HasBit(avail_railtypes, rt));
 			iconitem->SetDimension(d);
 			item = iconitem;
 		}

@@ -455,7 +455,8 @@ bool ValParamRailtype(const RailType rail);
 RailTypes AddDateIntroducedRailTypes(RailTypes current, Date date);
 
 RailType GetBestRailtype(const CompanyID company);
-RailTypes GetCompanyRailtypes(const CompanyID c);
+RailTypes GetCompanyRailtypes(CompanyID company, bool introduces = true);
+RailTypes GetRailTypes(bool introduces);
 
 RailType GetRailTypeByLabel(RailTypeLabel label, bool allow_alternate_labels = true);
 
