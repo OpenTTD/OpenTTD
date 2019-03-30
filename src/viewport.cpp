@@ -983,9 +983,11 @@ enum TileHighlightType {
 	THT_NONE,
 	THT_WHITE,
 	THT_BLUE,
+	THT_RED,
 };
 
 const Station *_viewport_highlight_station; ///< Currently selected station for coverage area highlight
+const Town *_viewport_highlight_town;       ///< Currently selected town for coverage area highlight
 
 /**
  * Get tile highlight type of coverage area for a given tile.
@@ -997,6 +999,24 @@ static TileHighlightType GetTileHighlightType(TileIndex t)
 	if (_viewport_highlight_station != nullptr) {
 		if (IsTileType(t, MP_STATION) && GetStationIndex(t) == _viewport_highlight_station->index) return THT_WHITE;
 		if (_viewport_highlight_station->TileIsInCatchment(t)) return THT_BLUE;
+	}
+
+	if (_viewport_highlight_town != nullptr) {
+		if (IsTileType(t, MP_HOUSE)) {
+			if (GetTownIndex(t) == _viewport_highlight_town->index) {
+				TileHighlightType type = THT_RED;
+				for (const Station *st : _viewport_highlight_town->stations_near) {
+					if (st->owner != _current_company) continue;
+					if (st->TileIsInCatchment(t)) return THT_BLUE;
+				}
+				return type;
+			}
+		} else if (IsTileType(t, MP_STATION)) {
+			for (const Station *st : _viewport_highlight_town->stations_near) {
+				if (st->owner != _current_company) continue;
+				if (GetStationIndex(t) == st->index) return THT_WHITE;
+			}
+		}
 	}
 
 	return THT_NONE;
@@ -1014,6 +1034,7 @@ static void DrawTileHighlightType(const TileInfo *ti, TileHighlightType tht)
 		case THT_NONE: break;
 		case THT_WHITE: DrawTileSelectionRect(ti, PAL_NONE); break;
 		case THT_BLUE:  DrawTileSelectionRect(ti, PALETTE_SEL_TILE_BLUE); break;
+		case THT_RED:   DrawTileSelectionRect(ti, PALETTE_TILE_RED_PULSATING); break;
 	}
 }
 
@@ -1084,7 +1105,7 @@ draw_inner:
 	}
 
 	/* Check if it's inside the outer area? */
-	if (!is_redsq && tht == THT_NONE && _thd.outersize.x > 0 &&
+	if (!is_redsq && (tht == THT_NONE || tht == THT_RED) && _thd.outersize.x > 0 &&
 			IsInsideBS(ti->x, _thd.pos.x + _thd.offs.x, _thd.size.x + _thd.outersize.x) &&
 			IsInsideBS(ti->y, _thd.pos.y + _thd.offs.y, _thd.size.y + _thd.outersize.y)) {
 		/* Draw a blue rect. */
@@ -3388,6 +3409,10 @@ CommandCost CmdScrollViewport(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 static void MarkCatchmentTilesDirty()
 {
+	if (_viewport_highlight_town != nullptr) {
+		MarkWholeScreenDirty();
+		return;
+	}
 	if (_viewport_highlight_station != nullptr) {
 		if (_viewport_highlight_station->catchment_tiles.tile == INVALID_TILE) {
 			MarkWholeScreenDirty();
@@ -3403,19 +3428,43 @@ static void MarkCatchmentTilesDirty()
 
 /**
  * Select or deselect station for coverage area highlight.
+ * Selecting a station will deselect a town.
  * @param *st Station in question
  * @param sel Select or deselect given station
  */
 void SetViewportCatchmentStation(const Station *st, bool sel)
 {
 	if (_viewport_highlight_station != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station->index);
+	if (_viewport_highlight_town != nullptr) SetWindowDirty(WC_TOWN_VIEW, _viewport_highlight_town->index);
 	if (sel && _viewport_highlight_station != st) {
 		MarkCatchmentTilesDirty();
 		_viewport_highlight_station = st;
+		_viewport_highlight_town = nullptr;
 		MarkCatchmentTilesDirty();
 	} else if (!sel && _viewport_highlight_station == st) {
 		MarkCatchmentTilesDirty();
 		_viewport_highlight_station = nullptr;
 	}
 	if (_viewport_highlight_station != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station->index);
+}
+
+/**
+ * Select or deselect town for coverage area highlight.
+ * Selecting a town will deselect a station.
+ * @param *t Town in question
+ * @param sel Select or deselect given town
+ */
+void SetViewportCatchmentTown(const Town *t, bool sel)
+{
+	if (_viewport_highlight_town != nullptr) SetWindowDirty(WC_TOWN_VIEW, _viewport_highlight_town->index);
+	if (_viewport_highlight_station != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station->index);
+	if (sel && _viewport_highlight_town != t) {
+		_viewport_highlight_station = nullptr;
+		_viewport_highlight_town = t;
+		MarkWholeScreenDirty();
+	} else if (!sel && _viewport_highlight_town == t) {
+		_viewport_highlight_town = nullptr;
+		MarkWholeScreenDirty();
+	}
+	if (_viewport_highlight_town != nullptr) SetWindowDirty(WC_TOWN_VIEW, _viewport_highlight_town->index);
 }

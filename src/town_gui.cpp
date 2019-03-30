@@ -321,9 +321,22 @@ public:
 		this->SetWidgetDisabledState(WID_TV_CHANGE_NAME, _networking && !_network_server);
 	}
 
+	~TownViewWindow()
+	{
+		SetViewportCatchmentTown(Town::Get(this->window_number), false);
+	}
+
 	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_TV_CAPTION) SetDParam(0, this->town->index);
+	}
+
+	void OnPaint() override
+	{
+		extern const Town *_viewport_highlight_town;
+		this->SetWidgetLoweredState(WID_TV_CATCHMENT, _viewport_highlight_town == this->town);
+
+		this->DrawWidgets();
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
@@ -430,6 +443,10 @@ public:
 			case WID_TV_CHANGE_NAME: // rename
 				SetDParam(0, this->window_number);
 				ShowQueryString(STR_TOWN_NAME, STR_TOWN_VIEW_RENAME_TOWN_BUTTON, MAX_LENGTH_TOWN_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
+				break;
+
+			case WID_TV_CATCHMENT:
+				SetViewportCatchmentTown(Town::Get(this->window_number), !this->IsWidgetLowered(WID_TV_CATCHMENT));
 				break;
 
 			case WID_TV_EXPAND: { // expand town - only available on Scenario editor
@@ -552,6 +569,7 @@ static const NWidgetPart _nested_town_game_view_widgets[] = {
 			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_SHOW_AUTHORITY), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON, STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_CHANGE_NAME), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_BUTTON_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
 		EndContainer(),
+		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TV_CATCHMENT), SetMinimalSize(14, 12), SetFill(0, 1), SetDataTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };
