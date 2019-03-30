@@ -2445,6 +2445,8 @@ void UpdateTileSelection()
 	int x1;
 	int y1;
 
+	if (_thd.freeze) return;
+
 	HighLightStyle new_drawstyle = HT_NONE;
 	bool new_diagonal = false;
 

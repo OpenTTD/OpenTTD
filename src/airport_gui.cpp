@@ -79,6 +79,7 @@ struct BuildAirToolbarWindow : Window {
 
 	~BuildAirToolbarWindow()
 	{
+		if (this->IsWidgetLowered(WID_AT_AIRPORT)) SetViewportCatchmentStation(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0, false);
 	}
 
@@ -143,6 +144,8 @@ struct BuildAirToolbarWindow : Window {
 
 	void OnPlaceObjectAbort() override
 	{
+		if (this->IsWidgetLowered(WID_AT_AIRPORT)) SetViewportCatchmentStation(nullptr, true);
+
 		this->RaiseButtons();
 
 		DeleteWindowById(WC_BUILD_STATION, TRANSPORT_AIR);
