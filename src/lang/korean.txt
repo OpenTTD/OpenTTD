@@ -3501,7 +3501,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}차량 �
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}선박 구입
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}항공기 구입
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}선택된 차량을 구입합니다. SHIFT+클릭으로 예상 구입 가격을 볼 수 있습니다.
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}선택된 차량을 구입합니다. SHIFT+클릭으로 예상 구입 비용을 볼 수 있습니다.
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}선택한 차량을 구입합니다. Shift+클릭하면 예상 구입 비용을 볼 수 있습니다.
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}선택한 선박을 구입합니다. SHIFT+클릭으로 예상 구입 비용을 볼 수 있습니다.
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}선택한 항공기를 구입합니다. SHIFT+클릭으로 예상 구입 비용을 볼 수 있습니다.

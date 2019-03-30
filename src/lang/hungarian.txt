@@ -3095,6 +3095,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}A(z) '{0
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A(z) '{1:ENGINE}' rakomány/átalakítás információja a gyártás után különbözik a vételi listán találhatótól. Ez hibát okozhat az automatikus felújítás/lecserélés során az átalakításban
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' végtelen ciklust okozott a termelés folyamatnál
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}{1:HEX} visszatérő érték ismeretlen/érvénytelen {2:HEX} értékkel tért vissza
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' érvénytelen rakománytípussal tért vissza a termelési callback-ben: {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<érvénytelen rakomány>
@@ -3546,7 +3547,7 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ár: {GO
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitás: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajtott vagonok: {GOLD}+{POWER}{BLACK} Súly: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Átalakítható: {GOLD}{STRING}
-STR_PURCHASE_INFO_ALL_TYPES                                     :Minden rakomány típusra
+STR_PURCHASE_INFO_ALL_TYPES                                     :Minden rakománytípusra
 STR_PURCHASE_INFO_NONE                                          :Semmi
 STR_PURCHASE_INFO_ALL_BUT                                       :Mindenre, kivéve {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximális vonóerő: {GOLD}{FORCE}

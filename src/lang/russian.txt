@@ -3650,8 +3650,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новый ав
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} Вес: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорость: {GOLD}{VELOCITY}{BLACK} Мощность: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Скорость: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Скорость по океану: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Скорость по каналу/реке: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Скорость в море: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Скорость в каналах и реках: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Стоимость обслуживания: {GOLD}{CURRENCY_LONG}/год
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ёмкость: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(переоб.)
@@ -3680,10 +3680,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купи
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Купить
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Купить
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Купить выбранный локомотив/вагон. Shift+щелчок - оценка стоимости покупки.
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Купить выбранный автомобиль. Shift+щелчок - оценка стоимости покупки.
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Купить выбранный корабль. Shift+щелчок - оценка стоимости покупки.
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Купить выбранный авиатранспорт. Shift+щелчок - оценка стоимости покупки.
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Приобрести выбранный локомотив/вагон. Shift+щелчок покажет ориентировочную стоимость покупки.
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Приобрести выбранный автомобиль. Shift+щелчок покажет ориентировочную стоимость покупки.
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Приобрести выбранное судно. Shift+щелчок покажет ориентировочную стоимость покупки.
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Приобрести выбранное воздушное судно. Shift+щелчок покажет ориентировочную стоимость покупки.
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Переименовать
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Переименовать
