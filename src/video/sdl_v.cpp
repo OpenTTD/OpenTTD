@@ -223,6 +223,7 @@ static void GetVideoModes()
 		for (int i = 0; modes[i]; i++) {
 			uint w = modes[i]->w;
 			uint h = modes[i]->h;
+			if (w < 640 || h < 480) continue; // reject too small resolutions
 			int j;
 			for (j = 0; j < n; j++) {
 				if (_resolutions[j].width == w && _resolutions[j].height == h) break;
@@ -234,6 +235,7 @@ static void GetVideoModes()
 				if (++n == lengthof(_resolutions)) break;
 			}
 		}
+		if (n == 0) usererror("No usable screen resolutions found!\n");
 		_num_resolutions = n;
 		SortResolutions(_num_resolutions);
 	}
