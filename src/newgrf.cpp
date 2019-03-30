@@ -5688,7 +5688,7 @@ static void FeatureNewName(ByteReader *buf)
 	bool new_scheme = _cur.grffile->grf_version >= 7;
 
 	uint8 feature  = buf->ReadByte();
-	if (feature >= GSF_END) {
+	if (feature >= GSF_END && feature != 0x48) {
 		grfmsg(1, "FeatureNewName: Unsupported feature 0x%02X, skipping", feature);
 		return;
 	}
