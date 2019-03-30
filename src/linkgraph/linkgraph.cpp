@@ -139,7 +139,10 @@ void LinkGraph::RemoveNode(NodeID id)
 		node_edges[id] = node_edges[last_node];
 	}
 	Station::Get(this->nodes[last_node].station)->goods[this->cargo].node = id;
-	this->nodes.erase(this->nodes.begin() + id);
+	/* Erase node by swapping with the last element. Node index is referenced
+	 * directly from station goods entries so the order and position must remain. */
+	this->nodes[id] = this->nodes.back();
+	this->nodes.pop_back();
 	this->edges.EraseColumn(id);
 	/* Not doing EraseRow here, as having the extra invalid row doesn't hurt
 	 * and removing it would trigger a lot of memmove. The data has already
