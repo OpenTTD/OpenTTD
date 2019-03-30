@@ -81,15 +81,66 @@ int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageTyp
 }
 
 /**
+ * Find stations adjacent to the current tile highlight area, so that existing coverage
+ * area can be drawn.
+ */
+static void FindStationsAroundSelection()
+{
+	/* With distant join we don't know which station will be selected, so don't show any */
+	if (_ctrl_pressed) {
+		SetViewportCatchmentStation(nullptr, true);
+		return;
+	}
+
+	/* Tile area for TileHighlightData */
+	TileArea location(TileVirtXY(_thd.pos.x, _thd.pos.y), _thd.size.x / TILE_SIZE - 1, _thd.size.y / TILE_SIZE - 1);
+
+	/* Extended area by one tile */
+	uint x = TileX(location.tile);
+	uint y = TileY(location.tile);
+
+	int max_c = 1;
+	TileArea ta(TileXY(max<int>(0, x - max_c), max<int>(0, y - max_c)), TileXY(min<int>(MapMaxX(), x + location.w + max_c), min<int>(MapMaxY(), y + location.h + max_c)));
+
+	Station *adjacent = nullptr;
+
+	/* Direct loop instead of FindStationsAroundTiles as we are not interested in catchment area */
+	TILE_AREA_LOOP(tile, ta) {
+		if (IsTileType(tile, MP_STATION) && GetTileOwner(tile) == _local_company) {
+			Station *st = Station::GetByTile(tile);
+			if (st == nullptr) continue;
+			if (adjacent != nullptr && st != adjacent) {
+				/* Multiple nearby, distant join is required. */
+				adjacent = nullptr;
+				break;
+			}
+			adjacent = st;
+		}
+	}
+	SetViewportCatchmentStation(adjacent, true);
+}
+
+/**
  * Check whether we need to redraw the station coverage text.
  * If it is needed actually make the window for redrawing.
  * @param w the window to check.
  */
 void CheckRedrawStationCoverage(const Window *w)
 {
+	/* Test if ctrl state changed */
+	static bool _last_ctrl_pressed;
+	if (_ctrl_pressed != _last_ctrl_pressed) {
+		_thd.dirty = 0xff;
+		_last_ctrl_pressed = _ctrl_pressed;
+	}
+
 	if (_thd.dirty & 1) {
 		_thd.dirty &= ~1;
 		w->SetDirty();
+
+		if (_settings_client.gui.station_show_coverage && _thd.drawstyle == HT_RECT) {
+			FindStationsAroundSelection();
+		}
 	}
 }
 
@@ -2256,11 +2307,15 @@ struct SelectStationWindow : Window {
 		this->GetWidget<NWidgetCore>(WID_JS_CAPTION)->widget_data = T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CAPTION : STR_JOIN_STATION_CAPTION;
 		this->FinishInitNested(0);
 		this->OnInvalidateData(0);
+
+		_thd.freeze = true;
 	}
 
 	~SelectStationWindow()
 	{
 		if (_settings_client.gui.station_show_coverage) SetViewportCatchmentStation(nullptr, true);
+
+		_thd.freeze = false;
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
@@ -2349,6 +2404,23 @@ struct SelectStationWindow : Window {
 		FindStationsNearby<T>(this->area, true);
 		this->vscroll->SetCount((uint)_stations_nearby_list.size() + 1);
 		this->SetDirty();
+	}
+
+	void OnMouseOver(Point pt, int widget) override
+	{
+		if (widget != WID_JS_PANEL) {
+			SetViewportCatchmentStation(nullptr, true);
+			return;
+		}
+
+		/* Show coverage area of station under cursor */
+		uint st_index = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_JS_PANEL, WD_FRAMERECT_TOP);
+		if (st_index == 0 || st_index > _stations_nearby_list.size()) {
+			SetViewportCatchmentStation(nullptr, true);
+		} else {
+			st_index--;
+			SetViewportCatchmentStation(Station::Get(_stations_nearby_list[st_index]), true);
+		}
 	}
 };
 
