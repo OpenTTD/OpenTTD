@@ -315,7 +315,6 @@ CommandCost CmdCreateGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	if (flags & DC_EXEC) {
 		Group *g = new Group(_current_company);
-		ClrBit(g->flags, GroupFlags::GF_REPLACE_PROTECTION);
 		g->vehicle_type = vt;
 		g->parent = INVALID_GROUP;
 
@@ -323,10 +322,12 @@ CommandCost CmdCreateGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			const Company *c = Company::Get(_current_company);
 			g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
 			g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
+			if (c->settings.renew_keep_length) SetBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL);
 		} else {
 			g->parent = pg->index;
 			g->livery.colour1 = pg->livery.colour1;
 			g->livery.colour2 = pg->livery.colour2;
+			g->flags = pg->flags;
 		}
 
 		_new_group_id = g->index;

@@ -63,7 +63,8 @@ struct GroupStatistics {
 };
 
 enum GroupFlags : uint8 {
-	GF_REPLACE_PROTECTION, ///< If set to true, the global autoreplace has no effect on the group
+	GF_REPLACE_PROTECTION,    ///< If set to true, the global autoreplace has no effect on the group
+	GF_REPLACE_WAGON_REMOVAL, ///< If set, autoreplace will perform wagon removal on vehicles in this group.
 	GF_END,
 };
 
