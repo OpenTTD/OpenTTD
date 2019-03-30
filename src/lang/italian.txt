@@ -1208,6 +1208,8 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Consenti rimode
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Consente la rimodellazione del terreno sotto edifici e rotaie senza doverli rimuovere
 STR_CONFIG_SETTING_CATCHMENT                                    :Consenti aree di copertura più realistiche: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Usa aree di copertura di dimensioni differenti a seconda del tipo di stazione o aeroporto
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Le stazioni delle compagnie possono servire le industrie con stazioni neutrali: {STRING}
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Se abilitato, le industrie con una stazione incorporata (come le piattaforme petrolifere) possono essere servite anche dalle stazioni di proprietà delle compagnie costruite nelle vicinanze. Se disabilitato, queste industrie possono essere servite dalla loro stazione incorporata. Nessuna stazione vicina potrà servirle, né la stazione incorporata potrà servire altro che la sua industria.
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Consenti la rimozione di strade, ponti, etc. delle città: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Rende più facile la rimozione di infrastrutture ed edifici di proprietà delle città
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Lunghezza massima dei treni: {STRING}
@@ -1224,8 +1226,8 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Pendenza dei ri
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Pendenza salite per gli automezzi: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Pendenza dei riquadri inclinati percepita dagli automezzi. I valori più elevati rendono più difficile risalire le colline
-STR_CONFIG_SETTING_FORBID_90_DEG                                :Impedisci a treni e navi di curvare a 90 gradi: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Le curve a 90 gradi avvengono quando un binario orizzontale è seguito direttamente da un binario verticale nel riquadro adiacente, facendo sì che un treno che attraversa il bordo fra i riquadri curvi di 90 gradi invece dei 45 gradi delle altre combinazioni di binari. L'impostazione si applica anche al raggio di virata delle navi
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Impedisci ai treni di curvare a 90 gradi: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Le curve a 90 gradi avvengono quando un binario orizzontale è seguito direttamente da un binario verticale nel riquadro adiacente, facendo sì che un treno che attraversa il bordo fra i riquadri curvi di 90 gradi invece dei 45 gradi delle altre combinazioni di binari
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Consenti di unire stazioni non direttamente adiacenti: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Consente di aggiungere nuove parti a una stazione senza toccare direttamente le parti esistenti. Richiede l'uso di CTRL+clic per posizionare le nuove parti
 STR_CONFIG_SETTING_INFLATION                                    :Inflazione: {STRING}
@@ -1281,8 +1283,8 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :Fattore di velo
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Imposta la velocità relativa degli aeroplani in confronto agli altri tipi di veicolo, in modo da ridurre i ricavi del trasporto via aria
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Numero di incidenti aerei: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Imposta la probabilità del verificarsi di un incidente aereo
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nessuno
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Imposta la probabilità del verificarsi di un incidente aereo casuale.{}* Gli aerei grandi corrono comunque il rischio di schiantarsi quando atterrano nei piccoli aeroporti
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nessuno*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Ridotto
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normale
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Consenti fermate passanti sulle strade delle città: {STRING}
@@ -1607,6 +1609,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Abilitando ques
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Non permessa
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permessa
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permessa, disposizione strade personalizzata
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Generazione passeggeri e posta: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Quantità di carichi (passeggeri e posta) prodotta dalle case in relazione alla popolazione della città.{}Quadratica: Una città grande il doppio genera il quadruplo di passeggeri.{}Lineare: Una città grande il doppio genera il doppio di passeggeri.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Quadratica (originale)
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineare
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Collocazione di alberi durante la partita: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controlla la comparsa casuale di alberi durante una partita. Può influenzare le industrie che dipendono dalla crescita degli alberi, come le segherie
@@ -2157,7 +2163,7 @@ STR_NETWORK_CHAT_ALL                                            :[Tutti] {STRING
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Inserire il messaggio
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nessun dispositivo di rete trovato o compilato senza ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nessun dispositivo di rete trovato
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Impossibile trovare partite in rete
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Il server non ha risposto alla richiesta
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Impossibile connettersi a causa di file NewGRF differenti
@@ -3056,6 +3062,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}Informaz
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}I dati su carico e riadattamento di '{1:ENGINE}' sono diversi da quelli indicati prima della costruzione. Il rinnovo/rimpiazzo automatico potrebbe non riuscire
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha causato un ciclo infinito nel callback di produzione
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Il callback {1:HEX} ha restituito il risultato sconosciuto o non valido {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' ha restituito un tipo di carico non valido nel callback di produzione a {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<carico non valido>
@@ -3460,6 +3467,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Automezzi senza
 STR_GROUP_DEFAULT_SHIPS                                         :Navi senza gruppo
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeromobili senza gruppo
 
+STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruppi - fare clic su un gruppo per elencare tutti i suoi veicoli. Trascinare i gruppi per organizzarli in gerarchia.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Fare clic per creare un gruppo
@@ -3493,6 +3501,7 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuove navi
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nuovo aeromobile
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Costo: {GOLD}{CURRENCY_LONG}{BLACK} Peso: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Costo: {GOLD}{CURRENCY_LONG}{BLACK} (Costo riadattamento: {GOLD}{CURRENCY_LONG}{BLACK}) Peso: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocità: {GOLD}{VELOCITY}{BLACK} Potenza: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocità: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Velocità sull'oceano: {GOLD}{VELOCITY}
@@ -3503,8 +3512,10 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(riadattabile)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Progettato nel: {GOLD}{NUM}{BLACK} Vita: {GOLD}{COMMA} ann{P o i}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Affidabilità massima: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Costo: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Costo: {GOLD}{CURRENCY_LONG}{BLACK} (Costo riadattamento: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Costo: {GOLD}{CURRENCY_LONG}{BLACK} Velocità: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Costo: {GOLD}{CURRENCY_LONG}{BLACK} (Costo riadattamento: {GOLD}{CURRENCY_LONG}{BLACK}) Velocità: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacità: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoni motorizzati: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Riadattabile per: {GOLD}{STRING}
@@ -3525,12 +3536,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Compra v
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Compra nave
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Compra aeromobile
 
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Compra e riadatta veicolo
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Compra e riadatta veicolo
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Compra e riadatta nave
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Compra e riadatta aeromobile
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra il veicolo ferroviario selezionato. MAIUSC+clic mostra il costo stimato senza comprare
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra l'automezzo selezionato. MAIUSC+clic mostra il costo stimato senza comprare
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Compra la nave selezionata. MAIUSC+clic mostra il costo stimato senza comprare
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra l'aeromobile selezionato. MAIUSC+clic mostra il costo stimato senza comprare
 
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Compra e riadatta il veicolo ferroviario selezionato. MAIUSC+clic mostra il costo stimato senza comprare
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Compra e riadatta l'automezzo selezionato. MAIUSC+clic mostra il costo stimato senza comprare
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Compra e riadatta la nave selezionata. MAIUSC+clic mostra il costo stimato senza comprare
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Compra e riadatta l'aeromobile selezionato. MAIUSC+clic mostra il costo stimato senza comprare
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Rinomina
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Rinomina
@@ -4486,6 +4505,7 @@ STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Impossib
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Impossibile eliminare il gruppo...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Impossibile rinominare il gruppo...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Impossibile impostare il gruppo contenitore...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... non sono ammessi cicli nella gerarchia dei gruppi
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Impossibile rimuovere tutti i veicoli del gruppo...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Impossibile aggiungere il veicolo al gruppo...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Impossibile aggiungere veicoli condivisi al gruppo...
