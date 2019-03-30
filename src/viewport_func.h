@@ -95,7 +95,9 @@ static inline void MarkTileDirtyByTile(TileIndex tile, int bridge_level_offset =
 Point GetViewportStationMiddle(const ViewPort *vp, const Station *st);
 
 struct Station;
+struct Town;
 
 void SetViewportCatchmentStation(const Station *st, bool sel);
+void SetViewportCatchmentTown(const Town *t, bool sel);
 
 #endif /* VIEWPORT_FUNC_H */

@@ -1261,6 +1261,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TV_CENTER_VIEW,                        "WID_TV_CENTER_VIEW");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TV_SHOW_AUTHORITY,                     "WID_TV_SHOW_AUTHORITY");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TV_CHANGE_NAME,                        "WID_TV_CHANGE_NAME");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TV_CATCHMENT,                          "WID_TV_CATCHMENT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TV_EXPAND,                             "WID_TV_EXPAND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TV_DELETE,                             "WID_TV_DELETE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TF_NEW_TOWN,                           "WID_TF_NEW_TOWN");
