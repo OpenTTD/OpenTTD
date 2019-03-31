@@ -637,7 +637,6 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_CAPTION,                            "WID_QS_CAPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_TEXT,                               "WID_QS_TEXT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_WARNING,                            "WID_QS_WARNING");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_WARNINGBOX,                         "WID_QS_WARNINGBOX");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_DEFAULT,                            "WID_QS_DEFAULT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_CANCEL,                             "WID_QS_CANCEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_OK,                                 "WID_QS_OK");
