@@ -77,7 +77,7 @@ STR_CARGO_SINGULAR_COPPER_ORE                                   :Minério de Cob
 STR_CARGO_SINGULAR_MAIZE                                        :Milho
 STR_CARGO_SINGULAR_FRUIT                                        :Fruta
 STR_CARGO_SINGULAR_DIAMOND                                      :Diamantes
-STR_CARGO_SINGULAR_FOOD                                         :Alimentos
+STR_CARGO_SINGULAR_FOOD                                         :Alimento
 STR_CARGO_SINGULAR_PAPER                                        :Papel
 STR_CARGO_SINGULAR_GOLD                                         :Ouro
 STR_CARGO_SINGULAR_WATER                                        :Água
@@ -2915,8 +2915,8 @@ STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: 
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Padrão (D)
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Padrão (D) / 32 bpp
-STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Legacy (W)
-STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Legacy (W) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Antiga (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Antiga (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parâmetros: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Nenhum
 
