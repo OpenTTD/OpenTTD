@@ -19,6 +19,10 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li GSVehicle::BuildVehicleWithRefit
+ * \li GSVehicle::GetBuildWithRefitCapacity
+ *
  * \b 1.9.0
  *
  * API additions:

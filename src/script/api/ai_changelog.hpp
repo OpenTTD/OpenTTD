@@ -24,6 +24,8 @@
  * \li AIGroup::SetSecondaryColour
  * \li AIGroup::GetPrimaryColour
  * \li AIGroup::GetSecondaryColour
+ * \li AIVehicle::BuildVehicleWithRefit
+ * \li AIVehicle::GetBuildWithRefitCapacity
  *
  * \b 1.9.0
  *
