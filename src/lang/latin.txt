@@ -1005,6 +1005,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Praeses)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}Novum oppidum {1:TOWN} constructum expensis a {0:STRING} comparatis!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Novum oppidum nomine {TOWN} conditum!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Nov{G us a um i ae a} {STRING} construitur apud {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Nov{G us a um i ae a} {STRING} adsit{G 0 us a um i ae a} apud {TOWN}!
@@ -1176,11 +1177,16 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Magnitudo interfaciei
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Eligere magnitudinem interfaciei adhibendam
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Solita
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Simplex
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Duplex
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quadruplex
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Magnitudo Litterarum
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Eligere magnitudinem litterarum adhibendam
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Simplex
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Duplex
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quadruplex
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Fundamentum graphicum
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Eligere fundamentum graphicum adhibendum
@@ -1364,6 +1370,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Sinere terram p
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Sinere terram plasmare sub aedificia et vias; tum necesse non est aedificia viasve removere
 STR_CONFIG_SETTING_CATCHMENT                                    :Sinere magnitudines regionum acceptionis magis realisticas esse: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Si electa, aeroportus et alii stationum typi habent meliores regiones acceptionis
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Stationes societatum licet operari industriis quae proprias stationes habent: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Sinere plures vias, pontes, et cuniculos removere in oppidis: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Si electa, infrastructura et aedificia oppidorum sunt magis facilia remotu
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longitudo traminum maxima: {STRING}
@@ -1449,6 +1456,8 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non lice
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Tuitio infrastructurae: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Electa, infrastructura prodit expensa tuitionis. Expensa crescunt celerius quam pro portione magnitudini retis, ergo societates magnae affectantur magis quam parvae
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Societatis color initialis: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Eligere colorem initialem societatis
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportus numquam recedunt: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Electa, omnes aeroportuum typi permanent post introductionem
@@ -1761,6 +1770,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Electa, licet l
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Non licet
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Licet
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Licet, atque propria dispositio oppidi
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Productionis urbani modus: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Quot onera aedificia oppidorum faciunt.{}Modus quadraticus: Oppidum duplarum incolarum, quadruplex faciat vectores.{}Modus linearis: Oppidum duplarum incolarum, duplex faciat vectores.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Quadraticus (originalis)
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linearis
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Positio arborum in ludo: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Quomodo arbores apparent intra ludum. Forsitan industriae afficiuntur quibus necesse sunt arbores, e.g. castra lignatorum
@@ -2262,6 +2275,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Disiunge
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servatrum tutum est. Tesseram inscribe
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Societas tuta est. Tesseram inscribe
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Index clientum
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Index clientum
@@ -2902,6 +2916,7 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Framerate display window
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_CURRENT                                           :{WHITE}Currens
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
@@ -2938,6 +2953,8 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nulla in
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Series colans:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Superscribere Fasciculo
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Esne certus te velle superscribere huic fasciculo?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Inscribe nomen ludi
 
@@ -3055,7 +3072,12 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Editio: 
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Editio congrua minima: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Coloris tabula: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Solita (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Solita (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Antiqua (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Antiqua (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametra: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Nulla
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Nulla indicia parabilia
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Par fasciculus non inventus
@@ -3136,6 +3158,8 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectio post ter
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Opes GRF desideratae non parabiles (spiritus {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} neglectus est a {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Irrita/ignota dispositio spiritus (spiritus {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Nimis elementa in indice possessionum (spiritus {3:NUM}, elementum {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Revocatio productionis industriae irrita (spiritus {3:NUM}, "{2:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Maxime Cavendum Est!
@@ -3167,6 +3191,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Indicium oneris/reficiendi '{1:ENGINE}' post constructionem differt eo quod est in indice emptionis. Ergo fortasse autoredemptio/automutatio non possit reficere
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' facit ut versatur ad infinitum in revocatione productionis
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Revocatio {1:HEX} reddidit conlationem ignotam irritamve {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' reddidit onus irritum in revocatione productionis apud {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<onus irritum>
@@ -3310,6 +3335,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Preme in
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Librum Fabularum
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Librum Fabularum Universale
+STR_STORY_BOOK_SPECTATOR                                        :Librum Fabularum Universale
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Pagina {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Salire ad quamdam paginam eligendo eam in hac indice
@@ -3570,6 +3596,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Vehicula viaria
 STR_GROUP_DEFAULT_SHIPS                                         :Naves sine grege
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeroplana sine grege
 
+STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Greges - preme in gregem ut index vehiculorum huius gregis ostendeatur. Trahe poneque greges ut ordinentur.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Preme ut grex creatur
@@ -3603,6 +3630,7 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :Naves Novae
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Aeroplana Nova
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Pretium: {GOLD}{CURRENCY_LONG}{BLACK} Pondus: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Pretium: {GOLD}{CURRENCY_LONG}{BLACK} (Pretium Reficiendi: {GOLD}{CURRENCY_LONG}{BLACK}) Pondus: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocitas: {GOLD}{VELOCITY}{BLACK} Potestas: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocitas: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Velocitas in mare: {GOLD}{VELOCITY}
@@ -3613,12 +3641,15 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(refectabilis)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Productum: {GOLD}{NUM}{BLACK} Aetas: {GOLD}{COMMA} ann{P us i}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Constantia Maxima: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Pretium: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Pretium: {GOLD}{CURRENCY_LONG}{BLACK} (Pretium Reficiendi: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pondus: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Pretium: {GOLD}{CURRENCY_LONG}{BLACK} Velocitas: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Pretium: {GOLD}{CURRENCY_LONG}{BLACK} (Pretium Reficiendi: {GOLD}{CURRENCY_LONG}{BLACK}) Velocitas: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitas: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Currus Potentiati: {GOLD}+{POWER}{BLACK} Pondus: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refectabilis: {GOLD}{STRING.dat}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Omnibus onerum typis
+STR_PURCHASE_INFO_NONE                                          :Nulla
 STR_PURCHASE_INFO_ALL_BUT                                       :Omnibus praeterquam {CARGO_LIST.dat}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Vis Tractionis Maxima: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Max. distantia volatus: {GOLD}{COMMA} tegulas
@@ -4028,6 +4059,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :aetas (annorum)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :ministrandum
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :semper
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :aetas reliqua (anni)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Constantia maxima
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Quomodo valores electi componuntur indicio vehiculi
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :aequalis est
