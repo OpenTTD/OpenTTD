@@ -977,8 +977,6 @@ struct QueryStringWindow : public Window
 
 	void UpdateWarningStringSize()
 	{
-		NWidgetBase *text_wid = this->GetWidget<NWidgetBase>(WID_QS_WARNING);
-
 		if (this->flags & QSF_PASSWORD) {
 			assert(this->nested_root->smallest_x > 0);
 			this->warning_size.width = this->nested_root->current_x - (WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT);
