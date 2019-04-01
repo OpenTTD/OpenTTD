@@ -24,6 +24,7 @@
 #include <sys/stat.h>
 #include <errno.h>
 #include <timidity.h>
+#include "../mixer.h"
 
 #include "../safeguards.h"
 
@@ -46,6 +47,12 @@ static struct {
 /** Factory for the libtimidity driver. */
 static FMusicDriver_LibTimidity iFMusicDriver_LibTimidity;
 
+static void RenderLibtimidityStream(int16 *buffer, size_t samples)
+{
+	if (_midi.status != MIDI_PLAYING) return;
+	mid_song_read_wave(_midi.song, (sint8*)buffer, samples * 4);
+}
+
 const char *MusicDriver_LibTimidity::Start(const char * const *param)
 {
 	_midi.status = MIDI_STOPPED;
@@ -61,7 +68,9 @@ const char *MusicDriver_LibTimidity::Start(const char * const *param)
 	}
 	DEBUG(driver, 1, "successfully initialised timidity");
 
-	_midi.options.rate = 44100;
+	uint32 samplerate = MxSetMusicSource(RenderLibtimidityStream);
+
+	_midi.options.rate = samplerate;
 	_midi.options.format = MID_AUDIO_S16LSB;
 	_midi.options.channels = 2;
 	_midi.options.buffer_size = _midi.options.rate;
@@ -71,6 +80,7 @@ const char *MusicDriver_LibTimidity::Start(const char * const *param)
 
 void MusicDriver_LibTimidity::Stop()
 {
+	MxSetMusicSource(NULL);
 	if (_midi.status == MIDI_PLAYING) this->StopSong();
 	mid_exit();
 }
