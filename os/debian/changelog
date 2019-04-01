@@ -1,3 +1,21 @@
+openttd (1.9.0-0) unstable; urgency=low
+
+  * New upstream release 1.9.0
+
+ -- OpenTTD <info@openttd.org>  Mon, 01 Apr 2019 00:00:00 +0200
+
+openttd (1.9.0~RC2-0) unstable; urgency=low
+
+  * New upstream release 1.9.0-RC2
+
+ -- OpenTTD <info@openttd.org>  Sun, 24 Mar 2019 23:00:00 +0000
+
+openttd (1.9.0~RC1-0) unstable; urgency=low
+
+  * New upstream release 1.9.0-RC1
+
+ -- OpenTTD <info@openttd.org>  Sun, 3 Mar 2019 23:00:00 +0000
+
 openttd (1.9.0~beta3-0) unstable; urgency=low
 
   * New upstream release 1.9.0-beta3
