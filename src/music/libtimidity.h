@@ -17,25 +17,25 @@
 /** Music driver making use of libtimidity. */
 class MusicDriver_LibTimidity : public MusicDriver {
 public:
-	/* virtual */ const char *Start(const char * const *param);
+	const char *Start(const char * const *param) override;
 
-	/* virtual */ void Stop();
+	void Stop() override;
 
-	/* virtual */ void PlaySong(const MusicSongInfo &song);
+	void PlaySong(const MusicSongInfo &song) override;
 
-	/* virtual */ void StopSong();
+	void StopSong() override;
 
-	/* virtual */ bool IsSongPlaying();
+	bool IsSongPlaying() override;
 
-	/* virtual */ void SetVolume(byte vol);
-	/* virtual */ const char *GetName() const { return "libtimidity"; }
+	void SetVolume(byte vol) override;
+	const char *GetName() const override { return "libtimidity"; }
 };
 
 /** Factory for the libtimidity driver. */
 class FMusicDriver_LibTimidity : public DriverFactoryBase {
 public:
 	FMusicDriver_LibTimidity() : DriverFactoryBase(Driver::DT_MUSIC, 5, "libtimidity", "LibTimidity MIDI Driver") {}
-	/* virtual */ Driver *CreateInstance() const { return new MusicDriver_LibTimidity(); }
+	Driver *CreateInstance() const override { return new MusicDriver_LibTimidity(); }
 };
 
 #endif /* MUSIC_LIBTIMIDITY_H */
