@@ -6,7 +6,11 @@
 
 #include <squirrel.h>
 #include "sqpcheader.h"
+/* Isolate type macro from math.h, it clashes with some implementations. */
+#pragma push_macro("type")
+#undef type
 #include <math.h>
+#pragma pop_macro("type")
 #include "sqopcodes.h"
 #include "sqfuncproto.h"
 #include "sqvm.h"
