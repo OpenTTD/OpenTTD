@@ -1185,7 +1185,8 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Terrassement so
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Autoriser le terrassement sous les bâtiments et les voies sans les retirer
 STR_CONFIG_SETTING_CATCHMENT                                    :Autoriser des zones de desserte plus réalistes{NBSP}: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Les zones de desserte ont des tailles différentes selon les types de stations et d'aéroports
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Si activé, les industries avec une station intégré (comme les plateformes pétrolière) peuvent aussi être servi par les stations des compagnies construites à proximité. Si désactivé, ces industries peuvent uniquement être servi par leur station intégré. Aucune station de compagnie ne pourra servir cette industrie, et la station intégré ne pourra servir que pour cette industrie.
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Les stations des compagnies peuvent desservir les industries avec une station intégrée{NBSP}: {STRING}
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Si activé, les industries avec une station intégrée (comme les plateformes pétrolières) peuvent aussi être desservies par les stations des compagnies construites à proximité. Si désactivé, ces industries peuvent uniquement être desservies par leur station intégrée. Aucune station de compagnie ne pourra desservir cette industrie, et la station intégrée ne desservira que cette industrie.
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permettre le retrait de plus d'éléments possédés par une ville{NBSP}: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Simplifier le retrait d'éléments possédés par une ville
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longueur maximum des trains{NBSP}: {STRING}
@@ -1585,6 +1586,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Activer ce para
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Interdit
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Autorisé
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Autorisé, y compris l'agencement personnalisé des routes
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Génération des marchandises des villes{NBSP}: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Combien de marchandises sont produites par les maisons dans les villes, relativement à la population globale de la ville.{}Croissance quadratique{NBSP}: une ville deux fois plus grande génère quatre fois plus de passagers.{}Croissance linéaire{NBSP}: une ville deux fois plus grande génère deux fois plus de passagers.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Quadratique (original)
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linéaire
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Plantation d'arbres durant la partie{NBSP}: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Contrôle l'apparition aléatoire des arbres durant la partie. Cela peut affecter les industries qui dépendent de la croissance des arbres, par exemple les scieries
@@ -2135,7 +2140,7 @@ STR_NETWORK_CHAT_ALL                                            :[Tous] {STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Entrer le texte du clavardage
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Aucun périphérique réseau trouvé ou programme compilé sans ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Aucun périphérique réseau trouvé
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Aucune partie réseau n'a été trouvée
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Le serveur n'a pas répondu à la requête
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Échec de la connexion{NBSP}: NewGRF requis
@@ -3028,6 +3033,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}Le modul
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Les informations de cargaison/réaménagement pour "{1:ENGINE}" après sa construction sont différentes de celles de la liste d'achat. Cela peut causer un échec de réaménagement lors de l'auto-renouvellement/remplacement.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}"{1:STRING}" a causé une boucle infinie dans la fonction de rappel de production
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback {1:HEX} a retourné un résultat invalide {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' a renvoyé un type de cargaison invalide dans la fonction de rappel de production à {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<marchandise invalide>
@@ -3432,6 +3438,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Véhicules rout
 STR_GROUP_DEFAULT_SHIPS                                         :Navires non groupés
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aéronefs non groupés
 
+STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groupes - Cliquer sur un groupe pour lister tous les véhicules de ce groupe. Glisser et déposer les groupes pour les hiérarchiser.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Créer un groupe de véhicules
@@ -3465,6 +3472,7 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nouveaux navire
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nouvel aéronef
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} − Poids{NBSP}: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Coût{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} (Coût de réaménagement{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK}) Poids{NBSP}: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Vitesse{NBSP}: {GOLD}{VELOCITY}{BLACK} − Puissance{NBSP}: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Vitesse{NBSP}: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Vitesse sur l'océan{NBSP}: {GOLD}{VELOCITY}
@@ -3475,8 +3483,10 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(réaménageabl
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Conçu en{NBSP}: {GOLD}{NUM}{BLACK} − Durée de vie{NBSP}: {GOLD}{COMMA} an{P "" s}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilité max.{NBSP}: {GOLD}{COMMA}{NBSP}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Coût{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} (Coût de réaménagement{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Poids{NBSP}: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} − Vitesse{NBSP}: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Coût{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} (Coût de réaménagement{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK}) Vitesse{NBSP}: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacité{NBSP}: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wagons motorisés{NBSP}: {GOLD}+{POWER}{BLACK} − Poids{NBSP}: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Réaménageable pour{NBSP}: {GOLD}{STRING}
@@ -3498,14 +3508,19 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Acheter
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Acheter
 
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :Achat et réaménagement du véhicule
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Acheter et réaménager
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :Acheter et réaménager le bateau
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Acheter et réaménager
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Acheter le véhicule sélectionné.{}Shift-clic pour afficher seulement le coût estimé.
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Acheter le véhicule sélectionné.{}Shift-clic pour afficher seulement le coût estimé.
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Acheter le navire sélectionné.{}Shift-clic pour afficher seulement le coût estimé.
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Acheter l'aéronef sélectionné.{}Shift-clic pour afficher seulement le coût estimé.
 
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :Acheter et réaménager le véhicule ferroviaire sélectionné. Shift+Click montre une estimation du coût sans acheter le véhicule.
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Acheter et réaménager le véhicule sélectionné.{}Shift-clic pour afficher seulement le coût estimé.
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Acheter et réaménager le véhicule sélectionné.{}Shift-clic pour afficher seulement le coût estimé.
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Acheter et réaménager le navire sélectionné.{}Shift-clic pour afficher seulement le coût estimé.
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Acheter et réaménager l'aéronef sélectionné.{}Shift-clic pour afficher seulement le coût estimé.
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Renommer
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Renommer
@@ -4461,6 +4476,7 @@ STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Impossib
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Impossible de supprimer ce groupe...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Impossible de renommer le groupe...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Impossible de définir le groupe parent...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... les boucles ne sont pas autorisées dans la hiérarchie de groupe
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Impossible de retirer tous les véhicules de ce groupe...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Impossible d'ajouter le véhicule à ce groupe...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Impossible d'ajouter les véhicules partagés à ce groupe...
