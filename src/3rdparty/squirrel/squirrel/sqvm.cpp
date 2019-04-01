@@ -6,7 +6,10 @@
 
 #include <squirrel.h>
 #include "sqpcheader.h"
+#pragma push_macro("type")
+#undef type
 #include <math.h>
+#pragma pop_macro("type")
 #include "sqopcodes.h"
 #include "sqfuncproto.h"
 #include "sqvm.h"
