@@ -83,13 +83,12 @@ LanguageStrings::~LanguageStrings()
 LanguageStrings *ReadRawLanguageStrings(const char *file)
 {
 	LanguageStrings *ret = NULL;
-	FILE *fh = NULL;
 	try {
 		size_t to_read;
-		fh = FioFOpenFile(file, "rb", GAME_DIR, &to_read);
-		if (fh == NULL) {
-			return NULL;
-		}
+		FILE *fh = FioFOpenFile(file, "rb", GAME_DIR, &to_read);
+		if (fh == NULL) return NULL;
+
+		FileCloser fhClose(fh);
 
 		const char *langname = strrchr(file, PATHSEPCHAR);
 		if (langname == NULL) {
@@ -99,10 +98,7 @@ LanguageStrings *ReadRawLanguageStrings(const char *file)
 		}
 
 		/* Check for invalid empty filename */
-		if (*langname == '.' || *langname == 0) {
-			fclose(fh);
-			return NULL;
-		}
+		if (*langname == '.' || *langname == 0) return NULL;
 
 		ret = new LanguageStrings(langname, strchr(langname, '.'));
 
@@ -124,10 +120,8 @@ LanguageStrings *ReadRawLanguageStrings(const char *file)
 			}
 		}
 
-		fclose(fh);
 		return ret;
 	} catch (...) {
-		if (fh != NULL) fclose(fh);
 		delete ret;
 		return NULL;
 	}
@@ -246,7 +240,10 @@ public:
 	{
 		if (strcmp(filename, exclude) == 0) return true;
 
-		gs->raw_strings.push_back(ReadRawLanguageStrings(filename));
+		auto ls = ReadRawLanguageStrings(filename);
+		if (ls == NULL) return false;
+
+		gs->raw_strings.push_back(std::move(ls));
 		return true;
 	}
 };
@@ -267,9 +264,12 @@ GameStrings *LoadTranslations()
 	strecpy(e, "lang" PATHSEP "english.txt", lastof(filename));
 	if (!FioCheckFileExists(filename, GAME_DIR)) return NULL;
 
+	auto ls = ReadRawLanguageStrings(filename);
+	if (ls == NULL) return NULL;
+
 	GameStrings *gs = new GameStrings();
 	try {
-		gs->raw_strings.push_back(ReadRawLanguageStrings(filename));
+		gs->raw_strings.push_back(std::move(ls));
 
 		/* Scan for other language files */
 		LanguageScanner scanner(gs, filename);
