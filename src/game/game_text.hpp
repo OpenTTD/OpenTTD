@@ -29,12 +29,12 @@ struct LanguageStrings {
 
 /** Container for all the game strings. */
 struct GameStrings {
-	uint version;                  ///< The version of the language strings.
-	LanguageStrings *cur_language; ///< The current (compiled) language.
+	uint version;                                  ///< The version of the language strings.
+	std::shared_ptr<LanguageStrings> cur_language; ///< The current (compiled) language.
 
-	AutoDeleteSmallVector<LanguageStrings *> raw_strings;      ///< The raw strings per language, first must be English/the master language!.
-	AutoDeleteSmallVector<LanguageStrings *> compiled_strings; ///< The compiled strings per language, first must be English/the master language!.
-	StringList string_names;                                   ///< The names of the compiled strings.
+	std::vector<std::unique_ptr<LanguageStrings>> raw_strings;      ///< The raw strings per language, first must be English/the master language!.
+	std::vector<std::shared_ptr<LanguageStrings>> compiled_strings; ///< The compiled strings per language, first must be English/the master language!.
+	StringList string_names;                                        ///< The names of the compiled strings.
 
 	void Compile();
 };
