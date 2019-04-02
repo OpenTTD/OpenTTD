@@ -638,13 +638,13 @@ public:
 		this->utf16_to_utf8.push_back(0);
 	}
 
-	virtual ~IcuStringIterator()
+	~IcuStringIterator() override
 	{
 		delete this->char_itr;
 		delete this->word_itr;
 	}
 
-	virtual void SetString(const char *s)
+	void SetString(const char *s) override
 	{
 		const char *string_base = s;
 
@@ -681,7 +681,7 @@ public:
 		this->word_itr->first();
 	}
 
-	virtual size_t SetCurPosition(size_t pos)
+	size_t SetCurPosition(size_t pos) override
 	{
 		/* Convert incoming position to an UTF-16 string index. */
 		uint utf16_pos = 0;
@@ -699,7 +699,7 @@ public:
 		return this->utf16_to_utf8[this->char_itr->current()];
 	}
 
-	virtual size_t Next(IterType what)
+	size_t Next(IterType what) override
 	{
 		int32_t pos;
 		switch (what) {
@@ -731,7 +731,7 @@ public:
 		return pos == icu::BreakIterator::DONE ? END : this->utf16_to_utf8[pos];
 	}
 
-	virtual size_t Prev(IterType what)
+	size_t Prev(IterType what) override
 	{
 		int32_t pos;
 		switch (what) {

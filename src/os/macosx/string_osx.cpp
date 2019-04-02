@@ -54,13 +54,13 @@ public:
 	public:
 		CoreTextVisualRun(CTRunRef run, Font *font, const CoreTextParagraphLayoutFactory::CharType *buff);
 
-		virtual const GlyphID *GetGlyphs() const { return &this->glyphs[0]; }
-		virtual const float *GetPositions() const { return &this->positions[0]; }
-		virtual const int *GetGlyphToCharMap() const { return &this->glyph_to_char[0]; }
+		const GlyphID *GetGlyphs() const override { return &this->glyphs[0]; }
+		const float *GetPositions() const override { return &this->positions[0]; }
+		const int *GetGlyphToCharMap() const override { return &this->glyph_to_char[0]; }
 
-		virtual const Font *GetFont() const { return this->font;  }
-		virtual int GetLeading() const { return this->font->fc->GetHeight(); }
-		virtual int GetGlyphCount() const { return (int)this->glyphs.size(); }
+		const Font *GetFont() const override { return this->font;  }
+		int GetLeading() const override { return this->font->fc->GetHeight(); }
+		int GetGlyphCount() const override { return (int)this->glyphs.size(); }
 		int GetAdvance() const { return this->total_advance; }
 	};
 
@@ -83,12 +83,12 @@ public:
 			CFRelease(line);
 		}
 
-		virtual int GetLeading() const;
-		virtual int GetWidth() const;
-		virtual int CountRuns() const { return this->size();  }
-		virtual const VisualRun *GetVisualRun(int run) const { return this->at(run);  }
+		int GetLeading() const override;
+		int GetWidth() const override;
+		int CountRuns() const override { return this->size(); }
+		const VisualRun *GetVisualRun(int run) const override { return this->at(run);  }
 
-		int GetInternalCharLength(WChar c) const
+		int GetInternalCharLength(WChar c) const override
 		{
 			/* CoreText uses UTF-16 internally which means we need to account for surrogate pairs. */
 			return c >= 0x010000U ? 2 : 1;
@@ -100,17 +100,17 @@ public:
 		this->Reflow();
 	}
 
-	virtual ~CoreTextParagraphLayout()
+	~CoreTextParagraphLayout() override
 	{
 		CFRelease(this->typesetter);
 	}
 
-	virtual void Reflow()
+	void Reflow() override
 	{
 		this->cur_offset = 0;
 	}
 
-	virtual const Line *NextLine(int max_width);
+	const Line *NextLine(int max_width) override;
 };
 
 
