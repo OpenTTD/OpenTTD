@@ -156,7 +156,7 @@ bool NetworkAddress::IsFamily(int family)
  * @note netmask without /n assumes all bits need to match.
  * @return true if this IP is within the netmask.
  */
-bool NetworkAddress::IsInNetmask(char *netmask)
+bool NetworkAddress::IsInNetmask(const char *netmask)
 {
 	/* Resolve it if we didn't do it already */
 	if (!this->IsResolved()) this->GetAddress();
@@ -166,17 +166,16 @@ bool NetworkAddress::IsInNetmask(char *netmask)
 	NetworkAddress mask_address;
 
 	/* Check for CIDR separator */
-	char *chr_cidr = strchr(netmask, '/');
+	const char *chr_cidr = strchr(netmask, '/');
 	if (chr_cidr != NULL) {
 		int tmp_cidr = atoi(chr_cidr + 1);
 
 		/* Invalid CIDR, treat as single host */
 		if (tmp_cidr > 0 || tmp_cidr < cidr) cidr = tmp_cidr;
 
-		/* Remove and then replace the / so that NetworkAddress works on the IP portion */
-		*chr_cidr = '\0';
-		mask_address = NetworkAddress(netmask, 0, this->address.ss_family);
-		*chr_cidr = '/';
+		/* Remove the / so that NetworkAddress works on the IP portion */
+		std::string ip_str(netmask, chr_cidr - netmask);
+		mask_address = NetworkAddress(ip_str.c_str(), 0, this->address.ss_family);
 	} else {
 		mask_address = NetworkAddress(netmask, 0, this->address.ss_family);
 	}

@@ -84,7 +84,7 @@ static ErrorList _settings_error_list; ///< Errors while loading minimal setting
 
 
 typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const char *grpname, void *object);
-typedef void SettingDescProcList(IniFile *ini, const char *grpname, StringList *list);
+typedef void SettingDescProcList(IniFile *ini, const char *grpname, StringList &list);
 
 static bool IsSignedVarMemType(VarType vt);
 
@@ -718,16 +718,16 @@ static void IniSaveSettings(IniFile *ini, const SettingDesc *sd, const char *grp
  * @param grpname character string identifying the section-header of the ini file that will be parsed
  * @param list new list with entries of the given section
  */
-static void IniLoadSettingList(IniFile *ini, const char *grpname, StringList *list)
+static void IniLoadSettingList(IniFile *ini, const char *grpname, StringList &list)
 {
 	IniGroup *group = ini->GetGroup(grpname);
 
-	if (group == NULL || list == NULL) return;
+	if (group == NULL) return;
 
-	list->Clear();
+	list.clear();
 
 	for (const IniItem *item = group->item; item != NULL; item = item->next) {
-		if (item->name != NULL) list->push_back(stredup(item->name));
+		if (item->name != NULL) list.emplace_back(item->name);
 	}
 }
 
@@ -740,15 +740,15 @@ static void IniLoadSettingList(IniFile *ini, const char *grpname, StringList *li
  * @param list pointer to an string(pointer) array that will be used as the
  *             source to be saved into the relevant ini section
  */
-static void IniSaveSettingList(IniFile *ini, const char *grpname, StringList *list)
+static void IniSaveSettingList(IniFile *ini, const char *grpname, StringList &list)
 {
 	IniGroup *group = ini->GetGroup(grpname);
 
-	if (group == NULL || list == NULL) return;
+	if (group == NULL) return;
 	group->Clear();
 
-	for (char *iter : *list) {
-		group->GetItem(iter, true)->SetValue("");
+	for (const auto &iter : list) {
+		group->GetItem(iter.c_str(), true)->SetValue("");
 	}
 }
 
@@ -1699,9 +1699,9 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 		proc(ini, _currency_settings,"currency", &_custom_currency);
 		proc(ini, _company_settings, "company",  &_settings_client.company);
 
-		proc_list(ini, "server_bind_addresses", &_network_bind_list);
-		proc_list(ini, "servers", &_network_host_list);
-		proc_list(ini, "bans",    &_network_ban_list);
+		proc_list(ini, "server_bind_addresses", _network_bind_list);
+		proc_list(ini, "servers", _network_host_list);
+		proc_list(ini, "bans",    _network_ban_list);
 	}
 }
 
@@ -1767,21 +1767,20 @@ void SaveToConfig()
 
 /**
  * Get the list of known NewGrf presets.
- * @param[in,out] list Pointer to list for storing the preset names.
+ * @returns List of preset names.
  */
-void GetGRFPresetList(GRFPresetList *list)
+StringList GetGRFPresetList()
 {
-	list->Clear();
+	StringList list;
 
-	IniFile *ini = IniLoadConfig();
-	IniGroup *group;
-	for (group = ini->group; group != NULL; group = group->next) {
+	std::unique_ptr<IniFile> ini(IniLoadConfig());
+	for (IniGroup *group = ini->group; group != NULL; group = group->next) {
 		if (strncmp(group->name, "preset-", 7) == 0) {
-			list->push_back(stredup(group->name + 7));
+			list.emplace_back(group->name + 7);
 		}
 	}
 
-	delete ini;
+	return list;
 }
 
 /**

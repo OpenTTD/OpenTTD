@@ -14,6 +14,7 @@
 
 #include "core/smallvec_type.hpp"
 #include "company_type.h"
+#include "string_type.h"
 
 struct IniFile;
 
@@ -28,11 +29,7 @@ void SaveToConfig();
 void IniLoadWindowSettings(IniFile *ini, const char *grpname, void *desc);
 void IniSaveWindowSettings(IniFile *ini, const char *grpname, void *desc);
 
-/* Functions to load and save NewGRF settings to a separate
- * configuration file, used for presets. */
-typedef AutoFreeSmallVector<char *> GRFPresetList;
-
-void GetGRFPresetList(GRFPresetList *list);
+StringList GetGRFPresetList();
 struct GRFConfig *LoadGRFPresetFromConfig(const char *config_name);
 void SaveGRFPresetToConfig(const char *config_name, struct GRFConfig *config);
 void DeleteGRFPresetFromConfig(const char *config_name);

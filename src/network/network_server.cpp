@@ -2083,13 +2083,13 @@ uint NetworkServerKickOrBanIP(const char *ip, bool ban)
 	/* Add address to ban-list */
 	if (ban) {
 		bool contains = false;
-		for (char *iter : _network_ban_list) {
-			if (strcmp(iter, ip) == 0) {
+		for (const auto &iter : _network_ban_list) {
+			if (iter == ip) {
 				contains = true;
 				break;
 			}
 		}
-		if (!contains) _network_ban_list.push_back(stredup(ip));
+		if (!contains) _network_ban_list.emplace_back(ip);
 	}
 
 	uint n = 0;
@@ -2098,7 +2098,7 @@ uint NetworkServerKickOrBanIP(const char *ip, bool ban)
 	NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		if (cs->client_id == CLIENT_ID_SERVER) continue;
-		if (cs->client_address.IsInNetmask(const_cast<char *>(ip))) {
+		if (cs->client_address.IsInNetmask(ip)) {
 			NetworkServerKickClient(cs->client_id);
 			n++;
 		}

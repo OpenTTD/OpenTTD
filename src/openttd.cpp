@@ -445,8 +445,8 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
 
 		if (dedicated_host != NULL) {
-			_network_bind_list.Clear();
-			_network_bind_list.push_back(stredup(dedicated_host));
+			_network_bind_list.clear();
+			_network_bind_list.emplace_back(dedicated_host);
 		}
 		if (dedicated_port != 0) _settings_client.network.server_port = dedicated_port;
 
