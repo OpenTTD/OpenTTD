@@ -1987,7 +1987,7 @@ void InitializeRailGUI()
  * @param all_option Whether to add an 'all types' item.
  * @return The populated and sorted #DropDownList.
  */
-DropDownList *GetRailTypeDropDownList(bool for_replacement, bool all_option)
+DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 {
 	RailTypes used_railtypes;
 	RailTypes avail_railtypes;
@@ -2003,11 +2003,10 @@ DropDownList *GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		used_railtypes  = GetRailTypes(true);
 	}
 
-	DropDownList *list = new DropDownList();
+	DropDownList list;
 
 	if (all_option) {
-		DropDownListStringItem *item = new DropDownListStringItem(STR_REPLACE_ALL_RAILTYPE, INVALID_RAILTYPE, false);
-		list->push_back(item);
+		list.emplace_back(new DropDownListStringItem(STR_REPLACE_ALL_RAILTYPE, INVALID_RAILTYPE, false));
 	}
 
 	Dimension d = { 0, 0 };
@@ -2038,7 +2037,7 @@ DropDownList *GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		}
 		item->SetParam(0, rti->strings.menu_text);
 		item->SetParam(1, rti->max_speed);
-		list->push_back(item);
+		list.emplace_back(item);
 	}
 	return list;
 }

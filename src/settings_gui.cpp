@@ -122,20 +122,20 @@ static int GetCurRes()
 static void ShowCustCurrency();
 
 template <class T>
-static DropDownList *BuildSetDropDownList(int *selected_index, bool allow_selection)
+static DropDownList BuildSetDropDownList(int *selected_index, bool allow_selection)
 {
 	int n = T::GetNumSets();
 	*selected_index = T::GetIndexOfUsedSet();
 
-	DropDownList *list = new DropDownList();
+	DropDownList list;
 	for (int i = 0; i < n; i++) {
-		list->push_back(new DropDownListCharStringItem(T::GetSet(i)->name, i, !allow_selection && (*selected_index != i)));
+		list.emplace_back(new DropDownListCharStringItem(T::GetSet(i)->name, i, !allow_selection && (*selected_index != i)));
 	}
 
 	return list;
 }
 
-DropDownList *BuildMusicSetDropDownList(int *selected_index)
+DropDownList BuildMusicSetDropDownList(int *selected_index)
 {
 	return BuildSetDropDownList<BaseMusic>(selected_index, true);
 }
@@ -200,12 +200,11 @@ struct GameOptionsWindow : Window {
 	 * @param selected_index Currently selected item
 	 * @return the built dropdown list, or NULL if the widget has no dropdown menu.
 	 */
-	DropDownList *BuildDropDownList(int widget, int *selected_index) const
+	DropDownList BuildDropDownList(int widget, int *selected_index) const
 	{
-		DropDownList *list = NULL;
+		DropDownList list;
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN: { // Setup currencies dropdown
-				list = new DropDownList();
 				*selected_index = this->opt->locale.currency;
 				StringID *items = BuildCurrencyDropdown();
 				uint64 disabled = _game_mode == GM_MENU ? 0LL : ~GetMaskOfAllowedCurrencies();
@@ -213,18 +212,17 @@ struct GameOptionsWindow : Window {
 				/* Add non-custom currencies; sorted naturally */
 				for (uint i = 0; i < CURRENCY_END; items++, i++) {
 					if (i == CURRENCY_CUSTOM) continue;
-					list->push_back(new DropDownListStringItem(*items, i, HasBit(disabled, i)));
+					list.emplace_back(new DropDownListStringItem(*items, i, HasBit(disabled, i)));
 				}
-				QSortT(list->data(), list->size(), DropDownListStringItem::NatSortFunc);
+				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
 
 				/* Append custom currency at the end */
-				list->push_back(new DropDownListItem(-1, false)); // separator line
-				list->push_back(new DropDownListStringItem(STR_GAME_OPTIONS_CURRENCY_CUSTOM, CURRENCY_CUSTOM, HasBit(disabled, CURRENCY_CUSTOM)));
+				list.emplace_back(new DropDownListItem(-1, false)); // separator line
+				list.emplace_back(new DropDownListStringItem(STR_GAME_OPTIONS_CURRENCY_CUSTOM, CURRENCY_CUSTOM, HasBit(disabled, CURRENCY_CUSTOM)));
 				break;
 			}
 
 			case WID_GO_ROADSIDE_DROPDOWN: { // Setup road-side dropdown
-				list = new DropDownList();
 				*selected_index = this->opt->vehicle.road_side;
 				const StringID *items = _driveside_dropdown;
 				uint disabled = 0;
@@ -237,13 +235,12 @@ struct GameOptionsWindow : Window {
 				}
 
 				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					list->push_back(new DropDownListStringItem(*items, i, HasBit(disabled, i)));
+					list.emplace_back(new DropDownListStringItem(*items, i, HasBit(disabled, i)));
 				}
 				break;
 			}
 
 			case WID_GO_TOWNNAME_DROPDOWN: { // Setup townname dropdown
-				list = new DropDownList();
 				*selected_index = this->opt->game_creation.town_name;
 
 				int enabled_item = (_game_mode == GM_MENU || Town::GetNumItems() == 0) ? -1 : *selected_index;
@@ -251,71 +248,66 @@ struct GameOptionsWindow : Window {
 				/* Add and sort newgrf townnames generators */
 				for (int i = 0; i < _nb_grf_names; i++) {
 					int result = _nb_orig_names + i;
-					list->push_back(new DropDownListStringItem(_grf_names[i], result, enabled_item != result && enabled_item >= 0));
+					list.emplace_back(new DropDownListStringItem(_grf_names[i], result, enabled_item != result && enabled_item >= 0));
 				}
-				QSortT(list->data(), list->size(), DropDownListStringItem::NatSortFunc);
+				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
 
-				size_t newgrf_size = list->size();
+				size_t newgrf_size = list.size();
 				/* Insert newgrf_names at the top of the list */
 				if (newgrf_size > 0) {
-					list->push_back(new DropDownListItem(-1, false)); // separator line
+					list.emplace_back(new DropDownListItem(-1, false)); // separator line
 					newgrf_size++;
 				}
 
 				/* Add and sort original townnames generators */
 				for (int i = 0; i < _nb_orig_names; i++) {
-					list->push_back(new DropDownListStringItem(STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + i, i, enabled_item != i && enabled_item >= 0));
+					list.emplace_back(new DropDownListStringItem(STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + i, i, enabled_item != i && enabled_item >= 0));
 				}
-				QSortT(list->data() + newgrf_size, list->size() - newgrf_size, DropDownListStringItem::NatSortFunc);
+				std::sort(list.begin() + newgrf_size, list.end(), DropDownListStringItem::NatSortFunc);
 				break;
 			}
 
 			case WID_GO_AUTOSAVE_DROPDOWN: { // Setup autosave dropdown
-				list = new DropDownList();
 				*selected_index = _settings_client.gui.autosave;
 				const StringID *items = _autosave_dropdown;
 				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					list->push_back(new DropDownListStringItem(*items, i, false));
+					list.emplace_back(new DropDownListStringItem(*items, i, false));
 				}
 				break;
 			}
 
 			case WID_GO_LANG_DROPDOWN: { // Setup interface language dropdown
-				list = new DropDownList();
 				for (uint i = 0; i < _languages.size(); i++) {
 					if (&_languages[i] == _current_language) *selected_index = i;
-					list->push_back(new DropDownListStringItem(SPECSTR_LANGUAGE_START + i, i, false));
+					list.emplace_back(new DropDownListStringItem(SPECSTR_LANGUAGE_START + i, i, false));
 				}
-				QSortT(list->data(), list->size(), DropDownListStringItem::NatSortFunc);
+				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
 				break;
 			}
 
 			case WID_GO_RESOLUTION_DROPDOWN: // Setup resolution dropdown
 				if (_num_resolutions == 0) break;
 
-				list = new DropDownList();
 				*selected_index = GetCurRes();
 				for (int i = 0; i < _num_resolutions; i++) {
-					list->push_back(new DropDownListStringItem(SPECSTR_RESOLUTION_START + i, i, false));
+					list.emplace_back(new DropDownListStringItem(SPECSTR_RESOLUTION_START + i, i, false));
 				}
 				break;
 
 			case WID_GO_GUI_ZOOM_DROPDOWN: {
-				list = new DropDownList();
 				*selected_index = ZOOM_LVL_OUT_4X - _gui_zoom;
 				const StringID *items = _gui_zoom_dropdown;
 				for (int i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					list->push_back(new DropDownListStringItem(*items, i, _settings_client.gui.zoom_min > ZOOM_LVL_OUT_4X - i));
+					list.emplace_back(new DropDownListStringItem(*items, i, _settings_client.gui.zoom_min > ZOOM_LVL_OUT_4X - i));
 				}
 				break;
 			}
 
 			case WID_GO_FONT_ZOOM_DROPDOWN: {
-				list = new DropDownList();
 				*selected_index = ZOOM_LVL_OUT_4X - _font_zoom;
 				const StringID *items = _font_zoom_dropdown;
 				for (int i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					list->push_back(new DropDownListStringItem(*items, i, false));
+					list.emplace_back(new DropDownListStringItem(*items, i, false));
 				}
 				break;
 			}
@@ -331,9 +323,6 @@ struct GameOptionsWindow : Window {
 			case WID_GO_BASE_MUSIC_DROPDOWN:
 				list = BuildMusicSetDropDownList(selected_index);
 				break;
-
-			default:
-				return NULL;
 		}
 
 		return list;
@@ -429,17 +418,16 @@ struct GameOptionsWindow : Window {
 
 			default: {
 				int selected;
-				DropDownList *list = this->BuildDropDownList(widget, &selected);
-				if (list != NULL) {
+				DropDownList list = this->BuildDropDownList(widget, &selected);
+				if (!list.empty()) {
 					/* Find the biggest item for the default size. */
-					for (const DropDownListItem * const ddli : *list) {
+					for (const auto &ddli : list) {
 						Dimension string_dim;
 						int width = ddli->Width();
 						string_dim.width = width + padding.width;
 						string_dim.height = ddli->Height(width) + padding.height;
 						*size = maxdim(*size, string_dim);
 					}
-					delete list;
 				}
 			}
 		}
@@ -477,9 +465,9 @@ struct GameOptionsWindow : Window {
 
 			default: {
 				int selected;
-				DropDownList *list = this->BuildDropDownList(widget, &selected);
-				if (list != NULL) {
-					ShowDropDownList(this, list, selected, widget);
+				DropDownList list = this->BuildDropDownList(widget, &selected);
+				if (!list.empty()) {
+					ShowDropDownList(this, std::move(list), selected, widget);
 				} else {
 					if (widget == WID_GO_RESOLUTION_DROPDOWN) ShowErrorMessage(STR_ERROR_RESOLUTION_LIST_FAILED, INVALID_STRING_ID, WL_ERROR);
 				}
@@ -1952,28 +1940,25 @@ struct GameSettingsWindow : Window {
 		}
 	}
 
-	DropDownList *BuildDropDownList(int widget) const
+	DropDownList BuildDropDownList(int widget) const
 	{
-		DropDownList *list = NULL;
+		DropDownList list;
 		switch (widget) {
 			case WID_GS_RESTRICT_DROPDOWN:
-				list = new DropDownList();
-
 				for (int mode = 0; mode != RM_END; mode++) {
 					/* If we are in adv. settings screen for the new game's settings,
 					 * we don't want to allow comparing with new game's settings. */
 					bool disabled = mode == RM_CHANGED_AGAINST_NEW && settings_ptr == &_settings_newgame;
 
-					list->push_back(new DropDownListStringItem(_game_settings_restrict_dropdown[mode], mode, disabled));
+					list.emplace_back(new DropDownListStringItem(_game_settings_restrict_dropdown[mode], mode, disabled));
 				}
 				break;
 
 			case WID_GS_TYPE_DROPDOWN:
-				list = new DropDownList();
-				list->push_back(new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL, ST_ALL, false));
-				list->push_back(new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME, ST_GAME, false));
-				list->push_back(new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME, ST_COMPANY, false));
-				list->push_back(new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT, ST_CLIENT, false));
+				list.emplace_back(new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL, ST_ALL, false));
+				list.emplace_back(new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME, ST_GAME, false));
+				list.emplace_back(new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME, ST_COMPANY, false));
+				list.emplace_back(new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT, ST_CLIENT, false));
 				break;
 		}
 		return list;
@@ -2045,17 +2030,17 @@ struct GameSettingsWindow : Window {
 				break;
 
 			case WID_GS_RESTRICT_DROPDOWN: {
-				DropDownList *list = this->BuildDropDownList(widget);
-				if (list != NULL) {
-					ShowDropDownList(this, list, this->filter.mode, widget);
+				DropDownList list = this->BuildDropDownList(widget);
+				if (!list.empty()) {
+					ShowDropDownList(this, std::move(list), this->filter.mode, widget);
 				}
 				break;
 			}
 
 			case WID_GS_TYPE_DROPDOWN: {
-				DropDownList *list = this->BuildDropDownList(widget);
-				if (list != NULL) {
-					ShowDropDownList(this, list, this->filter.type, widget);
+				DropDownList list = this->BuildDropDownList(widget);
+				if (!list.empty()) {
+					ShowDropDownList(this, std::move(list), this->filter.type, widget);
 				}
 				break;
 			}
@@ -2128,12 +2113,12 @@ struct GameSettingsWindow : Window {
 					this->valuedropdown_entry = pe;
 					this->valuedropdown_entry->SetButtons(SEF_LEFT_DEPRESSED);
 
-					DropDownList *list = new DropDownList();
+					DropDownList list;
 					for (int i = sdb->min; i <= (int)sdb->max; i++) {
-						list->push_back(new DropDownListStringItem(sdb->str_val + i - sdb->min, i, false));
+						list.emplace_back(new DropDownListStringItem(sdb->str_val + i - sdb->min, i, false));
 					}
 
-					ShowDropDownListAt(this, list, value, -1, wi_rect, COLOUR_ORANGE, true);
+					ShowDropDownListAt(this, std::move(list), value, -1, wi_rect, COLOUR_ORANGE, true);
 				}
 			}
 			this->SetDirty();

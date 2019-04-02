@@ -376,12 +376,12 @@ struct NewGRFParametersWindow : public Window {
 							this->clicked_dropdown = true;
 							this->closing_dropdown = false;
 
-							DropDownList *list = new DropDownList();
+							DropDownList list;
 							for (uint32 i = par_info->min_value; i <= par_info->max_value; i++) {
-								list->push_back(new DropDownListCharStringItem(GetGRFStringFromGRFText(par_info->value_names.Find(i)->second), i, false));
+								list.emplace_back(new DropDownListCharStringItem(GetGRFStringFromGRFText(par_info->value_names.Find(i)->second), i, false));
 							}
 
-							ShowDropDownListAt(this, list, old_val, -1, wi_rect, COLOUR_ORANGE, true);
+							ShowDropDownListAt(this, std::move(list), old_val, -1, wi_rect, COLOUR_ORANGE, true);
 						}
 					}
 				} else if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
@@ -924,19 +924,19 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		switch (widget) {
 			case WID_NS_PRESET_LIST: {
-				DropDownList *list = new DropDownList();
+				DropDownList list;
 
 				/* Add 'None' option for clearing list */
-				list->push_back(new DropDownListStringItem(STR_NONE, -1, false));
+				list.emplace_back(new DropDownListStringItem(STR_NONE, -1, false));
 
 				for (uint i = 0; i < _grf_preset_list.size(); i++) {
 					if (_grf_preset_list[i] != NULL) {
-						list->push_back(new DropDownListCharStringItem(_grf_preset_list[i], i, false));
+						list.emplace_back(new DropDownListCharStringItem(_grf_preset_list[i], i, false));
 					}
 				}
 
 				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
-				ShowDropDownList(this, list, this->preset, WID_NS_PRESET_LIST);
+				ShowDropDownList(this, std::move(list), this->preset, WID_NS_PRESET_LIST);
 				break;
 			}
 

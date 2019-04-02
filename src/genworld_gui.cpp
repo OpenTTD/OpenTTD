@@ -282,14 +282,14 @@ static void LandscapeGenerationCallback(Window *w, bool confirmed)
 	if (confirmed) StartGeneratingLandscape((GenerateLandscapeWindowMode)w->window_number);
 }
 
-static DropDownList *BuildMapsizeDropDown()
+static DropDownList BuildMapsizeDropDown()
 {
-	DropDownList *list = new DropDownList();
+	DropDownList list;
 
 	for (uint i = MIN_MAP_SIZE_BITS; i <= MAX_MAP_SIZE_BITS; i++) {
 		DropDownListParamStringItem *item = new DropDownListParamStringItem(STR_JUST_INT, i, false);
 		item->SetParam(0, 1LL << i);
-		list->push_back(item);
+		list.emplace_back(item);
 	}
 
 	return list;

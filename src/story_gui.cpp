@@ -228,9 +228,9 @@ protected:
 	/**
 	 * Builds the page selector drop down list.
 	 */
-	DropDownList *BuildDropDownList() const
+	DropDownList BuildDropDownList() const
 	{
-		DropDownList *list = new DropDownList();
+		DropDownList list;
 		uint16 page_num = 1;
 		for (const StoryPage *p : this->story_pages) {
 			bool current_page = p->index == this->selected_page_id;
@@ -245,14 +245,8 @@ protected:
 				item = str_item;
 			}
 
-			list->push_back(item);
+			list.emplace_back(item);
 			page_num++;
-		}
-
-		/* Check if list is empty. */
-		if (list->size() == 0) {
-			delete list;
-			list = NULL;
 		}
 
 		return list;
@@ -611,8 +605,8 @@ public:
 	{
 		switch (widget) {
 			case WID_SB_SEL_PAGE: {
-				DropDownList *list = this->BuildDropDownList();
-				if (list != NULL) {
+				DropDownList list = this->BuildDropDownList();
+				if (!list.empty()) {
 					/* Get the index of selected page. */
 					int selected = 0;
 					for (uint16 i = 0; i < this->story_pages.size(); i++) {
@@ -621,7 +615,7 @@ public:
 						selected++;
 					}
 
-					ShowDropDownList(this, list, selected, widget);
+					ShowDropDownList(this, std::move(list), selected, widget);
 				}
 				break;
 			}

@@ -214,12 +214,12 @@ class BuildAirportWindow : public PickerWindowBase {
 	Scrollbar *vscroll;
 
 	/** Build a dropdown list of available airport classes */
-	static DropDownList *BuildAirportClassDropDown()
+	static DropDownList BuildAirportClassDropDown()
 	{
-		DropDownList *list = new DropDownList();
+		DropDownList list;
 
 		for (uint i = 0; i < AirportClass::GetClassCount(); i++) {
-			list->push_back(new DropDownListStringItem(AirportClass::Get((AirportClassID)i)->name, i, false));
+			list.emplace_back(new DropDownListStringItem(AirportClass::Get((AirportClassID)i)->name, i, false));
 		}
 
 		return list;
