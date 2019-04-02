@@ -94,6 +94,16 @@ public:
 	 */
 	static void Load(int version);
 
+	/**
+	 * Get the current maximum number of opcodes for a GameScript before it's suspended.
+	 */
+	static uint GetMaxOpCodes();
+
+	/**
+	 * Set a maximum number of opcodes for a GameScript before it's suspended.
+	 */
+	static void SetMaxOpCodes(uint max_opcodes);
+
 	/** Wrapper function for GameScanner::GetConsoleList */
 	static char *GetConsoleList(char *p, const char *last, bool newest_only = false);
 	/** Wrapper function for GameScanner::GetConsoleLibraryList */
@@ -126,6 +136,7 @@ private:
 	static class GameScannerInfo *scanner_info;       ///< Scanner for Game scripts.
 	static class GameScannerLibrary *scanner_library; ///< Scanner for GS Libraries.
 	static class GameInfo *info;                      ///< Current selected GameInfo.
+	static uint max_opcodes;                          ///< Maximum number of opcodes before the GameScript is suspended
 };
 
 #endif /* GAME_HPP */

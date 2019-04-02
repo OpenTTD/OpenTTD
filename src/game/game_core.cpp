@@ -29,6 +29,7 @@
 /* static */ GameInstance *Game::instance = NULL;
 /* static */ GameScannerInfo *Game::scanner_info = NULL;
 /* static */ GameScannerLibrary *Game::scanner_library = NULL;
+/* static */ uint Game::max_opcodes = 0;
 
 /* static */ void Game::GameLoop()
 {
@@ -88,6 +89,7 @@
 	cur_company.Change(OWNER_DEITY);
 
 	Game::info = info;
+	Game::SetMaxOpCodes(_settings_game.script.script_max_opcode_till_suspend);
 	Game::instance = new GameInstance();
 	Game::instance->Initialize(info);
 
@@ -225,6 +227,16 @@
 		/* Read, but ignore, the load data */
 		GameInstance::LoadEmpty();
 	}
+}
+
+/* static */ uint Game::GetMaxOpCodes()
+{
+	return Game::max_opcodes;
+}
+
+/* static */ void Game::SetMaxOpCodes(uint max_opcodes)
+{
+	Game::max_opcodes = max_opcodes;
 }
 
 /* static */ char *Game::GetConsoleList(char *p, const char *last, bool newest_only)
