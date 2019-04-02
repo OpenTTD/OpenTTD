@@ -22,6 +22,7 @@
 #include "guitimer_func.h"
 #include "company_base.h"
 #include "ai/ai_info.hpp"
+#include "settings_func.h"
 
 #include "widgets/framerate_widget.h"
 #include "safeguards.h"
@@ -245,6 +246,16 @@ PerformanceMeasurer::~PerformanceMeasurer()
 			PerformanceMeasurer::SetInactive(PFE_ALLSCRIPTS);
 			return;
 		}
+
+		uint opcodes = GetGameSettings().script.script_max_opcode_till_suspend;
+		uint value = opcodes;
+		double avg = min(9999.99, _pf_data[this->elem].GetAverageDurationMilliseconds(8));
+		if (avg > GL_RATE) {
+			value = Clamp(opcodes - (avg - GL_RATE) * (avg - GL_RATE), 500, 250000);
+		} else if (avg > 0 && avg < GL_RATE / 3) {
+			value = Clamp(opcodes + (GL_RATE / 3) - avg, 500, 250000);
+		}
+		if (value != opcodes) IConsoleSetSetting("script.script_max_opcode_till_suspend", value);
 	}
 	_pf_data[this->elem].Add(this->start_time, GetPerformanceTimer());
 }
