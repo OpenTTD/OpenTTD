@@ -13,6 +13,8 @@
 #define STRING_TYPE_H
 
 #include "core/enum_type.hpp"
+#include <vector>
+#include <string>
 
 /** A non-breaking space. */
 #define NBSP "\xC2\xA0"
@@ -52,5 +54,9 @@ enum StringValidationSettings {
 	SVS_ALLOW_CONTROL_CODE         = 1 << 2, ///< Allow the special control codes.
 };
 DECLARE_ENUM_AS_BIT_SET(StringValidationSettings)
+
+
+/** Type for a list of strings. */
+typedef std::vector<std::string> StringList;
 
 #endif /* STRING_TYPE_H */

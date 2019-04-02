@@ -129,7 +129,7 @@ public:
 	}
 
 	bool IsFamily(int family);
-	bool IsInNetmask(char *netmask);
+	bool IsInNetmask(const char *netmask);
 
 	/**
 	 * Compare the address of this class with the address of another.

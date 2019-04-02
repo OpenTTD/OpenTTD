@@ -99,6 +99,4 @@ public:
 	}
 };
 
-typedef AutoFreeSmallVector<char*> StringList; ///< Type for a list of strings.
-
 #endif /* SMALLVEC_TYPE_HPP */

@@ -565,8 +565,6 @@ void ShowNewGRFTextfileWindow(TextfileType file_type, const GRFConfig *c)
 	new NewGRFTextfileWindow(file_type, c);
 }
 
-static GRFPresetList _grf_preset_list; ///< List of known NewGRF presets. @see GetGRFPresetList
-
 typedef std::map<uint32, const GRFConfig *> GrfIdMap; ///< Map of grfid to the grf config.
 
 /**
@@ -605,6 +603,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	StringFilter string_filter; ///< Filter for available grf.
 	QueryString filter_editbox; ///< Filter editbox;
 
+	StringList grf_presets;     ///< List of known NewGRF presets.
+
 	GRFConfig *actives;         ///< Temporary active grf list to which changes are made.
 	GRFConfig *active_sel;      ///< Selected active grf item.
 
@@ -632,7 +632,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->active_over = -1;
 
 		CopyGRFConfigList(&this->actives, *orig_list, false);
-		GetGRFPresetList(&_grf_preset_list);
+		this->grf_presets = GetGRFPresetList();
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_NS_SCROLLBAR);
@@ -673,7 +673,6 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		/* Remove the temporary copy of grf-list used in window */
 		ClearGRFConfigList(&this->actives);
-		_grf_preset_list.Clear();
 	}
 
 	/**
@@ -747,11 +746,9 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			case WID_NS_PRESET_LIST: {
 				Dimension d = GetStringBoundingBox(STR_NUM_CUSTOM);
-				for (uint i = 0; i < _grf_preset_list.size(); i++) {
-					if (_grf_preset_list[i] != NULL) {
-						SetDParamStr(0, _grf_preset_list[i]);
-						d = maxdim(d, GetStringBoundingBox(STR_JUST_RAW_STRING));
-					}
+				for (const auto &i : this->grf_presets) {
+					SetDParamStr(0, i.c_str());
+					d = maxdim(d, GetStringBoundingBox(STR_JUST_RAW_STRING));
 				}
 				d.width += padding.width;
 				*size = maxdim(d, *size);
@@ -783,7 +780,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 					SetDParam(0, STR_NUM_CUSTOM);
 				} else {
 					SetDParam(0, STR_JUST_RAW_STRING);
-					SetDParamStr(1, _grf_preset_list[this->preset]);
+					SetDParamStr(1, this->grf_presets[this->preset].c_str());
 				}
 				break;
 		}
@@ -929,10 +926,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				/* Add 'None' option for clearing list */
 				list.emplace_back(new DropDownListStringItem(STR_NONE, -1, false));
 
-				for (uint i = 0; i < _grf_preset_list.size(); i++) {
-					if (_grf_preset_list[i] != NULL) {
-						list.emplace_back(new DropDownListCharStringItem(_grf_preset_list[i], i, false));
-					}
+				for (uint i = 0; i < this->grf_presets.size(); i++) {
+					list.emplace_back(new DropDownListCharStringItem(this->grf_presets[i].c_str(), i, false));
 				}
 
 				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
@@ -949,14 +944,14 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			}
 
 			case WID_NS_PRESET_SAVE:
-				ShowSavePresetWindow((this->preset == -1) ? NULL : _grf_preset_list[this->preset]);
+				ShowSavePresetWindow((this->preset == -1) ? NULL : this->grf_presets[this->preset].c_str());
 				break;
 
 			case WID_NS_PRESET_DELETE:
 				if (this->preset == -1) return;
 
-				DeleteGRFPresetFromConfig(_grf_preset_list[this->preset]);
-				GetGRFPresetList(&_grf_preset_list);
+				DeleteGRFPresetFromConfig(this->grf_presets[this->preset].c_str());
+				this->grf_presets = GetGRFPresetList();
 				this->preset = -1;
 				this->InvalidateData();
 				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
@@ -1156,7 +1151,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->preset = index;
 
 		if (index != -1) {
-			this->actives = LoadGRFPresetFromConfig(_grf_preset_list[index]);
+			this->actives = LoadGRFPresetFromConfig(this->grf_presets[index].c_str());
 		}
 		this->avails.ForceRebuild();
 
@@ -1172,11 +1167,11 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		if (str == NULL) return;
 
 		SaveGRFPresetToConfig(str, this->actives);
-		GetGRFPresetList(&_grf_preset_list);
+		this->grf_presets = GetGRFPresetList();
 
 		/* Switch to this preset */
-		for (uint i = 0; i < _grf_preset_list.size(); i++) {
-			if (_grf_preset_list[i] != NULL && strcmp(_grf_preset_list[i], str) == 0) {
+		for (uint i = 0; i < this->grf_presets.size(); i++) {
+			if (this->grf_presets[i] == str) {
 				this->preset = i;
 				break;
 			}
@@ -2038,7 +2033,7 @@ static WindowDesc _save_preset_desc(
 /** Class for the save preset window. */
 struct SavePresetWindow : public Window {
 	QueryString presetname_editbox; ///< Edit box of the save preset.
-	GRFPresetList presets; ///< Available presets.
+	StringList presets; ///< Available presets.
 	Scrollbar *vscroll; ///< Pointer to the scrollbar widget.
 	int selected; ///< Selected entry in the preset list, or \c -1 if none selected.
 
@@ -2048,11 +2043,11 @@ struct SavePresetWindow : public Window {
 	 */
 	SavePresetWindow(const char *initial_text) : Window(&_save_preset_desc), presetname_editbox(32)
 	{
-		GetGRFPresetList(&this->presets);
+		this->presets = GetGRFPresetList();
 		this->selected = -1;
 		if (initial_text != NULL) {
 			for (uint i = 0; i < this->presets.size(); i++) {
-				if (!strcmp(initial_text, this->presets[i])) {
+				if (this->presets[i] == initial_text) {
 					this->selected = i;
 					break;
 				}
@@ -2083,7 +2078,7 @@ struct SavePresetWindow : public Window {
 				resize->height = FONT_HEIGHT_NORMAL + 2U;
 				size->height = 0;
 				for (uint i = 0; i < this->presets.size(); i++) {
-					Dimension d = GetStringBoundingBox(this->presets[i]);
+					Dimension d = GetStringBoundingBox(this->presets[i].c_str());
 					size->width = max(size->width, d.width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
 					resize->height = max(resize->height, d.height);
 				}
@@ -2108,7 +2103,7 @@ struct SavePresetWindow : public Window {
 				for (uint i = min_index; i < max_index; i++) {
 					if ((int)i == this->selected) GfxFillRect(r.left + 1, y, r.right - 1, y + step_height - 2, PC_DARK_BLUE);
 
-					const char *text = this->presets[i];
+					const char *text = this->presets[i].c_str();
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right, y + offset_y, text, ((int)i == this->selected) ? TC_WHITE : TC_SILVER);
 					y += step_height;
 				}
@@ -2124,7 +2119,7 @@ struct SavePresetWindow : public Window {
 				uint row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SVP_PRESET_LIST);
 				if (row < this->presets.size()) {
 					this->selected = row;
-					this->presetname_editbox.text.Assign(this->presets[row]);
+					this->presetname_editbox.text.Assign(this->presets[row].c_str());
 					this->SetWidgetDirty(WID_SVP_PRESET_LIST);
 					this->SetWidgetDirty(WID_SVP_EDITBOX);
 				}

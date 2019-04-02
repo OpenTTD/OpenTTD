@@ -1045,8 +1045,8 @@ void ShowNetworkGameWindow()
 	if (first) {
 		first = false;
 		/* Add all servers from the config file to our list. */
-		for (char *iter : _network_host_list) {
-			NetworkAddServer(iter);
+		for (const auto &iter : _network_host_list) {
+			NetworkAddServer(iter.c_str());
 		}
 	}
 

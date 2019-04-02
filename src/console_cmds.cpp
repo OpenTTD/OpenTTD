@@ -553,7 +553,7 @@ DEF_CONSOLE_CMD(ConUnBan)
 	/* Try by IP. */
 	uint index;
 	for (index = 0; index < _network_ban_list.size(); index++) {
-		if (strcmp(_network_ban_list[index], argv[1]) == 0) break;
+		if (_network_ban_list[index] == argv[1]) break;
 	}
 
 	/* Try by index. */
@@ -563,9 +563,8 @@ DEF_CONSOLE_CMD(ConUnBan)
 
 	if (index < _network_ban_list.size()) {
 		char msg[64];
-		seprintf(msg, lastof(msg), "Unbanned %s", _network_ban_list[index]);
+		seprintf(msg, lastof(msg), "Unbanned %s", _network_ban_list[index].c_str());
 		IConsolePrint(CC_DEFAULT, msg);
-		free(_network_ban_list[index]);
 		_network_ban_list.erase(_network_ban_list.begin() + index);
 	} else {
 		IConsolePrint(CC_DEFAULT, "Invalid list index or IP not in ban-list.");
@@ -585,8 +584,8 @@ DEF_CONSOLE_CMD(ConBanList)
 	IConsolePrint(CC_DEFAULT, "Banlist: ");
 
 	uint i = 1;
-	for (char *entry : _network_ban_list) {
-		IConsolePrintF(CC_DEFAULT, "  %d) %s", i, entry);
+	for (const auto &entry : _network_ban_list) {
+		IConsolePrintF(CC_DEFAULT, "  %d) %s", i, entry.c_str());
 	}
 
 	return true;

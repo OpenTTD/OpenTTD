@@ -632,8 +632,8 @@ void NetworkAddServer(const char *b)
  */
 void GetBindAddresses(NetworkAddressList *addresses, uint16 port)
 {
-	for (char *iter : _network_bind_list) {
-		addresses->emplace_back(iter, port);
+	for (const auto &iter : _network_bind_list) {
+		addresses->emplace_back(iter.c_str(), port);
 	}
 
 	/* No address, so bind to everything. */
@@ -647,10 +647,10 @@ void GetBindAddresses(NetworkAddressList *addresses, uint16 port)
  * by the function that generates the config file. */
 void NetworkRebuildHostList()
 {
-	_network_host_list.Clear();
+	_network_host_list.clear();
 
 	for (NetworkGameList *item = _network_game_list; item != NULL; item = item->next) {
-		if (item->manually) _network_host_list.push_back(stredup(item->address.GetAddressAsString(false)));
+		if (item->manually) _network_host_list.emplace_back(item->address.GetAddressAsString(false));
 	}
 }
 
