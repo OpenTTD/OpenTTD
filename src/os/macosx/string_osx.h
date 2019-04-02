@@ -30,10 +30,10 @@ class OSXStringIterator : public StringIterator {
 	size_t cur_pos; ///< Current iteration position.
 
 public:
-	virtual void SetString(const char *s);
-	virtual size_t SetCurPosition(size_t pos);
-	virtual size_t Next(IterType what);
-	virtual size_t Prev(IterType what);
+	void SetString(const char *s) override;
+	size_t SetCurPosition(size_t pos) override;
+	size_t Next(IterType what) override;
+	size_t Prev(IterType what) override;
 
 	static StringIterator *Create();
 };

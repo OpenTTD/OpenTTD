@@ -134,12 +134,12 @@ public:
 	public:
 		ICUVisualRun(const icu::ParagraphLayout::VisualRun *vr) : vr(vr) { }
 
-		const Font *GetFont() const          { return (const Font*)vr->getFont(); }
-		int GetGlyphCount() const            { return vr->getGlyphCount(); }
-		const GlyphID *GetGlyphs() const     { return vr->getGlyphs(); }
-		const float *GetPositions() const    { return vr->getPositions(); }
-		int GetLeading() const               { return vr->getLeading(); }
-		const int *GetGlyphToCharMap() const { return vr->getGlyphToCharMap(); }
+		const Font *GetFont() const override          { return (const Font*)vr->getFont(); }
+		int GetGlyphCount() const override            { return vr->getGlyphCount(); }
+		const GlyphID *GetGlyphs() const override     { return vr->getGlyphs(); }
+		const float *GetPositions() const override    { return vr->getPositions(); }
+		int GetLeading() const override               { return vr->getLeading(); }
+		const int *GetGlyphToCharMap() const override { return vr->getGlyphToCharMap(); }
 	};
 
 	/** A single line worth of VisualRuns. */
@@ -153,14 +153,14 @@ public:
 				this->push_back(new ICUVisualRun(l->getVisualRun(i)));
 			}
 		}
-		~ICULine() { delete l; }
+		~ICULine() override { delete l; }
 
-		int GetLeading() const { return l->getLeading(); }
-		int GetWidth() const   { return l->getWidth(); }
-		int CountRuns() const  { return l->countRuns(); }
-		const ParagraphLayouter::VisualRun *GetVisualRun(int run) const { return this->at(run); }
+		int GetLeading() const override { return l->getLeading(); }
+		int GetWidth() const override   { return l->getWidth(); }
+		int CountRuns() const override  { return l->countRuns(); }
+		const ParagraphLayouter::VisualRun *GetVisualRun(int run) const override { return this->at(run); }
 
-		int GetInternalCharLength(WChar c) const
+		int GetInternalCharLength(WChar c) const override
 		{
 			/* ICU uses UTF-16 internally which means we need to account for surrogate pairs. */
 			return Utf8CharLen(c) < 4 ? 1 : 2;
@@ -168,10 +168,10 @@ public:
 	};
 
 	ICUParagraphLayout(icu::ParagraphLayout *p) : p(p) { }
-	~ICUParagraphLayout() { delete p; }
-	void Reflow() { p->reflow(); }
+	~ICUParagraphLayout() override { delete p; }
+	void Reflow() override  { p->reflow(); }
 
-	ParagraphLayouter::Line *NextLine(int max_width)
+	ParagraphLayouter::Line *NextLine(int max_width) override
 	{
 		icu::ParagraphLayout::Line *l = p->nextLine(max_width);
 		return l == NULL ? NULL : new ICULine(l);
@@ -259,24 +259,24 @@ public:
 
 	public:
 		FallbackVisualRun(Font *font, const WChar *chars, int glyph_count, int x);
-		~FallbackVisualRun();
-		const Font *GetFont() const;
-		int GetGlyphCount() const;
-		const GlyphID *GetGlyphs() const;
-		const float *GetPositions() const;
-		int GetLeading() const;
-		const int *GetGlyphToCharMap() const;
+		~FallbackVisualRun() override;
+		const Font *GetFont() const override;
+		int GetGlyphCount() const override;
+		const GlyphID *GetGlyphs() const override;
+		const float *GetPositions() const override;
+		int GetLeading() const override;
+		const int *GetGlyphToCharMap() const override;
 	};
 
 	/** A single line worth of VisualRuns. */
 	class FallbackLine : public AutoDeleteSmallVector<FallbackVisualRun *>, public ParagraphLayouter::Line {
 	public:
-		int GetLeading() const;
-		int GetWidth() const;
-		int CountRuns() const;
-		const ParagraphLayouter::VisualRun *GetVisualRun(int run) const;
+		int GetLeading() const override;
+		int GetWidth() const override;
+		int CountRuns() const override;
+		const ParagraphLayouter::VisualRun *GetVisualRun(int run) const override;
 
-		int GetInternalCharLength(WChar c) const { return 1; }
+		int GetInternalCharLength(WChar c) const override { return 1; }
 	};
 
 	const WChar *buffer_begin; ///< Begin of the buffer.
@@ -284,8 +284,8 @@ public:
 	FontMap &runs;             ///< The fonts we have to use for this paragraph.
 
 	FallbackParagraphLayout(WChar *buffer, int length, FontMap &runs);
-	void Reflow();
-	const ParagraphLayouter::Line *NextLine(int max_width);
+	void Reflow() override;
+	const ParagraphLayouter::Line *NextLine(int max_width) override;
 };
 
 /**

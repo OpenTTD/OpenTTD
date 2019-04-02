@@ -90,30 +90,30 @@ public:
 
 	public:
 		UniscribeVisualRun(const UniscribeRun &range, int x);
-		virtual ~UniscribeVisualRun()
+		~UniscribeVisualRun() override
 		{
 			free(this->glyph_to_char);
 		}
 
-		virtual const GlyphID *GetGlyphs() const { return &this->glyphs[0]; }
-		virtual const float *GetPositions() const { return &this->positions[0]; }
-		virtual const int *GetGlyphToCharMap() const;
+		const GlyphID *GetGlyphs() const override { return &this->glyphs[0]; }
+		const float *GetPositions() const override { return &this->positions[0]; }
+		const int *GetGlyphToCharMap() const override;
 
-		virtual const Font *GetFont() const { return this->font;  }
-		virtual int GetLeading() const { return this->font->fc->GetHeight(); }
-		virtual int GetGlyphCount() const { return this->num_glyphs; }
+		const Font *GetFont() const override { return this->font;  }
+		int GetLeading() const override { return this->font->fc->GetHeight(); }
+		int GetGlyphCount() const override { return this->num_glyphs; }
 		int GetAdvance() const { return this->total_advance; }
 	};
 
 	/** A single line worth of VisualRuns. */
 	class UniscribeLine : public AutoDeleteSmallVector<UniscribeVisualRun *>, public ParagraphLayouter::Line {
 	public:
-		virtual int GetLeading() const;
-		virtual int GetWidth() const;
-		virtual int CountRuns() const { return (uint)this->size();  }
-		virtual const VisualRun *GetVisualRun(int run) const { return this->at(run);  }
+		int GetLeading() const override;
+		int GetWidth() const override;
+		int CountRuns() const override { return (uint)this->size();  }
+		const VisualRun *GetVisualRun(int run) const override { return this->at(run);  }
 
-		int GetInternalCharLength(WChar c) const
+		int GetInternalCharLength(WChar c) const override
 		{
 			/* Uniscribe uses UTF-16 internally which means we need to account for surrogate pairs. */
 			return c >= 0x010000U ? 2 : 1;
@@ -125,15 +125,15 @@ public:
 		this->Reflow();
 	}
 
-	virtual ~UniscribeParagraphLayout() {}
+	~UniscribeParagraphLayout() override {}
 
-	virtual void Reflow()
+	void Reflow() override
 	{
 		this->cur_range = this->ranges.begin();
 		this->cur_range_offset = 0;
 	}
 
-	virtual const Line *NextLine(int max_width);
+	const Line *NextLine(int max_width) override;
 };
 
 void UniscribeResetScriptCache(FontSize size)
