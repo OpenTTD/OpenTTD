@@ -89,9 +89,9 @@ class DropDownListIconItem : public DropDownListParamStringItem {
 public:
 	DropDownListIconItem(SpriteID sprite, PaletteID pal, StringID string, int result, bool masked);
 
-	/* virtual */ uint Height(uint width) const;
-	/* virtual */ uint Width() const;
-	/* virtual */ void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const;
+	uint Height(uint width) const override;
+	uint Width() const override;
+	void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const override;
 	void SetDimension(Dimension d);
 };
 
