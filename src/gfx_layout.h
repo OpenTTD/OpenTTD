@@ -137,7 +137,7 @@ public:
 		virtual int GetLeading() const = 0;
 		virtual int GetWidth() const = 0;
 		virtual int CountRuns() const = 0;
-		virtual const VisualRun *GetVisualRun(int run) const = 0;
+		virtual const VisualRun &GetVisualRun(int run) const = 0;
 		virtual int GetInternalCharLength(WChar c) const = 0;
 	};
 

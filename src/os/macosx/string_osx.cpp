@@ -53,6 +53,7 @@ public:
 
 	public:
 		CoreTextVisualRun(CTRunRef run, Font *font, const CoreTextParagraphLayoutFactory::CharType *buff);
+		CoreTextVisualRun(CoreTextVisualRun &&other) = default;
 
 		const GlyphID *GetGlyphs() const override { return &this->glyphs[0]; }
 		const float *GetPositions() const override { return &this->positions[0]; }
@@ -65,7 +66,7 @@ public:
 	};
 
 	/** A single line worth of VisualRuns. */
-	class CoreTextLine : public AutoDeleteSmallVector<CoreTextVisualRun *>, public ParagraphLayouter::Line {
+	class CoreTextLine : public std::vector<CoreTextVisualRun>, public ParagraphLayouter::Line {
 	public:
 		CoreTextLine(CTLineRef line, const FontMap &fontMapping, const CoreTextParagraphLayoutFactory::CharType *buff)
 		{
@@ -78,7 +79,7 @@ public:
 				auto map = fontMapping.begin();
 				while (map < fontMapping.end() - 1 && map->first <= chars.location) map++;
 
-				this->push_back(new CoreTextVisualRun(run, map->second, buff));
+				this->emplace_back(run, map->second, buff);
 			}
 			CFRelease(line);
 		}
@@ -86,7 +87,7 @@ public:
 		int GetLeading() const override;
 		int GetWidth() const override;
 		int CountRuns() const override { return this->size(); }
-		const VisualRun *GetVisualRun(int run) const override { return this->at(run);  }
+		const VisualRun &GetVisualRun(int run) const override { return this->at(run);  }
 
 		int GetInternalCharLength(WChar c) const override
 		{
