@@ -42,7 +42,7 @@
 struct PacketReader : LoadFilter {
 	static const size_t CHUNK = 32 * 1024;  ///< 32 KiB chunks of memory.
 
-	AutoFreeSmallVector<byte *> blocks;     ///< Buffer with blocks of allocated memory.
+	std::vector<byte *> blocks;             ///< Buffer with blocks of allocated memory.
 	byte *buf;                              ///< Buffer we're going to write to/read from.
 	byte *bufe;                             ///< End of the buffer we write to/read from.
 	byte **block;                           ///< The block we're reading from/writing to.
@@ -52,6 +52,13 @@ struct PacketReader : LoadFilter {
 	/** Initialise everything. */
 	PacketReader() : LoadFilter(NULL), buf(NULL), bufe(NULL), block(NULL), written_bytes(0), read_bytes(0)
 	{
+	}
+
+	~PacketReader() override
+	{
+		for (auto p : this->blocks) {
+			free(p);
+		}
 	}
 
 	/**
