@@ -126,13 +126,20 @@ struct ReadBuffer {
 
 /** Container for dumping the savegame (quickly) to memory. */
 struct MemoryDumper {
-	AutoFreeSmallVector<byte *> blocks; ///< Buffer with blocks of allocated memory.
-	byte *buf;                          ///< Buffer we're going to write to.
-	byte *bufe;                         ///< End of the buffer we write to.
+	std::vector<byte *> blocks; ///< Buffer with blocks of allocated memory.
+	byte *buf;                  ///< Buffer we're going to write to.
+	byte *bufe;                 ///< End of the buffer we write to.
 
 	/** Initialise our variables. */
 	MemoryDumper() : buf(NULL), bufe(NULL)
 	{
+	}
+
+	~MemoryDumper()
+	{
+		for (auto p : this->blocks) {
+			free(p);
+		}
 	}
 
 	/**
