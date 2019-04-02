@@ -251,7 +251,7 @@ PerformanceMeasurer::~PerformanceMeasurer()
 		}
 	}
 	if (this->elem >= PFE_GAMESCRIPT && this->elem <= PFE_AI14) {
-		uint active_scripts = Game::GetInstance() != NULL || !Game::GetInstance()->IsDead();
+		uint active_scripts = Game::GetInstance() != NULL && !Game::GetInstance()->IsDead();
 		Company *c;
 		FOR_ALL_COMPANIES(c) {
 			if (Company::IsValidAiID(c->index) && Company::Get(c->index)->ai_instance != NULL && !Company::Get(c->index)->ai_instance->IsDead()) {
