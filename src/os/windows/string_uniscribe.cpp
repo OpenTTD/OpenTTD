@@ -90,6 +90,7 @@ public:
 
 	public:
 		UniscribeVisualRun(const UniscribeRun &range, int x);
+		UniscribeVisualRun(UniscribeVisualRun &&other) noexcept;
 		~UniscribeVisualRun() override
 		{
 			free(this->glyph_to_char);
@@ -106,12 +107,12 @@ public:
 	};
 
 	/** A single line worth of VisualRuns. */
-	class UniscribeLine : public AutoDeleteSmallVector<UniscribeVisualRun *>, public ParagraphLayouter::Line {
+	class UniscribeLine : public std::vector<UniscribeVisualRun>, public ParagraphLayouter::Line {
 	public:
 		int GetLeading() const override;
 		int GetWidth() const override;
 		int CountRuns() const override { return (uint)this->size();  }
-		const VisualRun *GetVisualRun(int run) const override { return this->at(run);  }
+		const VisualRun &GetVisualRun(int run) const override { return this->at(run);  }
 
 		int GetInternalCharLength(WChar c) const override
 		{
@@ -424,7 +425,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 			if (!UniscribeShapeRun(this->text_buffer, run)) return NULL;
 		}
 
-		line->push_back(new UniscribeVisualRun(run, cur_pos));
+		line->emplace_back(run, cur_pos);
 		cur_pos += run.total_advance;
 	}
 
@@ -448,8 +449,8 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 int UniscribeParagraphLayout::UniscribeLine::GetLeading() const
 {
 	int leading = 0;
-	for (const UniscribeVisualRun *run : *this) {
-		leading = max(leading, run->GetLeading());
+	for (const auto &run : *this) {
+		leading = max(leading, run.GetLeading());
 	}
 
 	return leading;
@@ -462,8 +463,8 @@ int UniscribeParagraphLayout::UniscribeLine::GetLeading() const
 int UniscribeParagraphLayout::UniscribeLine::GetWidth() const
 {
 	int length = 0;
-	for (const UniscribeVisualRun *run : *this) {
-		length += run->GetAdvance();
+	for (const auto &run : *this) {
+		length += run.GetAdvance();
 	}
 
 	return length;
@@ -482,6 +483,14 @@ UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(const Uniscribe
 		advance += range.advances[i];
 	}
 	this->positions[this->num_glyphs * 2] = advance + x;
+}
+
+UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(UniscribeVisualRun&& other) noexcept
+								: glyphs(std::move(other.glyphs)), positions(std::move(other.positions)), char_to_glyph(std::move(other.char_to_glyph)),
+								  start_pos(other.start_pos), total_advance(other.total_advance), num_glyphs(other.num_glyphs), font(other.font)
+{
+	this->glyph_to_char = other.glyph_to_char;
+	other.glyph_to_char = NULL;
 }
 
 const int *UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCharMap() const
