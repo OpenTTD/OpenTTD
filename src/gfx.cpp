@@ -340,12 +340,12 @@ static void SetColourRemap(TextColour colour)
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-static int DrawLayoutLine(const ParagraphLayouter::Line *line, int y, int left, int right, StringAlignment align, bool underline, bool truncation)
+static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, int right, StringAlignment align, bool underline, bool truncation)
 {
-	if (line->CountRuns() == 0) return 0;
+	if (line.CountRuns() == 0) return 0;
 
-	int w = line->GetWidth();
-	int h = line->GetLeading();
+	int w = line.GetWidth();
+	int h = line.GetLeading();
 
 	/*
 	 * The following is needed for truncation.
@@ -376,7 +376,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line *line, int y, int left, 
 		 * another size would be chosen it won't have truncated too little for
 		 * the truncation dots.
 		 */
-		FontCache *fc = ((const Font*)line->GetVisualRun(0).GetFont())->fc;
+		FontCache *fc = ((const Font*)line.GetVisualRun(0).GetFont())->fc;
 		GlyphID dot_glyph = fc->MapCharToGlyph('.');
 		dot_width = fc->GetGlyphWidth(dot_glyph);
 		dot_sprite = fc->GetGlyph(dot_glyph);
@@ -421,8 +421,8 @@ static int DrawLayoutLine(const ParagraphLayouter::Line *line, int y, int left, 
 
 	TextColour colour = TC_BLACK;
 	bool draw_shadow = false;
-	for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
-		const ParagraphLayouter::VisualRun &run = line->GetVisualRun(run_index);
+	for (int run_index = 0; run_index < line.CountRuns(); run_index++) {
+		const ParagraphLayouter::VisualRun &run = line.GetVisualRun(run_index);
 		const Font *f = (const Font*)run.GetFont();
 
 		FontCache *fc = f->fc;
@@ -512,7 +512,7 @@ int DrawString(int left, int right, int top, const char *str, TextColour colour,
 	Layouter layout(str, INT32_MAX, colour, fontsize);
 	if (layout.size() == 0) return 0;
 
-	return DrawLayoutLine(layout.front(), top, left, right, align, underline, true);
+	return DrawLayoutLine(*layout.front(), top, left, right, align, underline, true);
 }
 
 /**
@@ -648,14 +648,14 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, const char *st
 	int last_line = top;
 	int first_line = bottom;
 
-	for (const ParagraphLayouter::Line *line : layout) {
+	for (const auto &line : layout) {
 
 		int line_height = line->GetLeading();
 		if (y >= top && y < bottom) {
 			last_line = y + line_height;
 			if (first_line > y) first_line = y;
 
-			DrawLayoutLine(line, y, left, right, align, underline, false);
+			DrawLayoutLine(*line, y, left, right, align, underline, false);
 		}
 		y += line_height;
 	}

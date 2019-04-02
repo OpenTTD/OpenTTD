@@ -83,6 +83,7 @@
 #include <cstdlib>
 #include <climits>
 #include <cassert>
+#include <memory>
 
 #ifndef SIZE_MAX
 	#define SIZE_MAX ((size_t)-1)

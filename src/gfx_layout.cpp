@@ -124,7 +124,7 @@ le_bool Font::getGlyphPoint(LEGlyphID glyph, le_int32 pointNumber, LEPoint &poin
 /**
  * Wrapper for doing layouts with ICU.
  */
-class ICUParagraphLayout : public AutoDeleteSmallVector<ParagraphLayouter::Line *>, public ParagraphLayouter {
+class ICUParagraphLayout : public ParagraphLayouter {
 	icu::ParagraphLayout *p; ///< The actual ICU paragraph layout.
 public:
 	/** Visual run contains data about the bit of text with the same font. */
@@ -171,10 +171,10 @@ public:
 	~ICUParagraphLayout() override { delete p; }
 	void Reflow() override  { p->reflow(); }
 
-	ParagraphLayouter::Line *NextLine(int max_width) override
+	std::unique_ptr<const Line> NextLine(int max_width) override
 	{
 		icu::ParagraphLayout::Line *l = p->nextLine(max_width);
-		return l == NULL ? NULL : new ICULine(l);
+		return std::unique_ptr<const Line>(l == NULL ? NULL : new ICULine(l));
 	}
 };
 
@@ -286,7 +286,7 @@ public:
 
 	FallbackParagraphLayout(WChar *buffer, int length, FontMap &runs);
 	void Reflow() override;
-	const ParagraphLayouter::Line *NextLine(int max_width) override;
+	std::unique_ptr<const Line> NextLine(int max_width) override;
 };
 
 /**
@@ -498,7 +498,7 @@ void FallbackParagraphLayout::Reflow()
  * @param max_width The maximum width of the string.
  * @return A Line, or NULL when at the end of the paragraph.
  */
-const ParagraphLayouter::Line *FallbackParagraphLayout::NextLine(int max_width)
+std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine(int max_width)
 {
 	/* Simple idea:
 	 *  - split a line at a newline character, or at a space where we can break a line.
@@ -506,13 +506,13 @@ const ParagraphLayouter::Line *FallbackParagraphLayout::NextLine(int max_width)
 	 */
 	if (this->buffer == NULL) return NULL;
 
-	FallbackLine *l = new FallbackLine();
+	std::unique_ptr<FallbackLine> l(new FallbackLine());
 
 	if (*this->buffer == '\0') {
 		/* Only a newline. */
 		this->buffer = NULL;
 		l->emplace_back(this->runs.front().second, this->buffer, 0, 0);
-		return l;
+		return std::move(l); // Not supposed to be needed, but clang-3.8 barfs otherwise.
 	}
 
 	int offset = this->buffer - this->buffer_begin;
@@ -562,7 +562,7 @@ const ParagraphLayouter::Line *FallbackParagraphLayout::NextLine(int max_width)
 					/* The character is wider than allowed width; don't know
 					 * what to do with this case... bail out! */
 					this->buffer = NULL;
-					return l;
+					return std::move(l); // Not supposed to be needed, but clang-3.8 barfs otherwise.
 				}
 
 				if (last_space == NULL) {
@@ -589,7 +589,7 @@ const ParagraphLayouter::Line *FallbackParagraphLayout::NextLine(int max_width)
 		int w = l->GetWidth();
 		l->emplace_back(iter->second, begin, last_char - begin, w);
 	}
-	return l;
+	return std::move(l); // Not supposed to be needed, but clang-3.8 barfs otherwise.
 }
 
 /**
@@ -730,12 +730,12 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 			}
 		}
 
-		/* Copy all lines into a local cache so we can reuse them later on more easily. */
-		const ParagraphLayouter::Line *l;
-		while ((l = line.layout->NextLine(maxw)) != NULL) {
-			this->push_back(l);
+		/* Move all lines into a local cache so we can reuse them later on more easily. */
+		for (;;) {
+			auto l = line.layout->NextLine(maxw);
+			if (l == NULL) break;
+			this->push_back(std::move(l));
 		}
-
 	} while (c != '\0');
 }
 
@@ -746,7 +746,7 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 Dimension Layouter::GetBounds()
 {
 	Dimension d = { 0, 0 };
-	for (const ParagraphLayouter::Line *l : *this) {
+	for (const auto &l : *this) {
 		d.width = max<uint>(d.width, l->GetWidth());
 		d.height += l->GetLeading();
 	}
@@ -775,7 +775,7 @@ Point Layouter::GetCharPosition(const char *ch) const
 
 	if (str == ch) {
 		/* Valid character. */
-		const ParagraphLayouter::Line *line = this->front();
+		const auto &line = this->front();
 
 		/* Pointer to the end-of-string/line marker? Return total line width. */
 		if (*ch == '\0' || *ch == '\n') {
@@ -808,7 +808,7 @@ Point Layouter::GetCharPosition(const char *ch) const
  */
 const char *Layouter::GetCharAtPosition(int x) const
 {
-	const ParagraphLayouter::Line *line = this->front();
+	const auto &line = this->front();
 
 	for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
 		const ParagraphLayouter::VisualRun &run = line->GetVisualRun(run_index);
