@@ -2709,34 +2709,30 @@ struct IndustryCargoesWindow : public Window {
 				break;
 
 			case WID_IC_CARGO_DROPDOWN: {
-				DropDownList *lst = new DropDownList;
+				DropDownList lst;
 				const CargoSpec *cs;
 				FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
-					lst->push_back(new DropDownListStringItem(cs->name, cs->Index(), false));
+					lst.emplace_back(new DropDownListStringItem(cs->name, cs->Index(), false));
 				}
-				if (lst->size() == 0) {
-					delete lst;
-					break;
+				if (!lst.empty()) {
+					int selected = (this->ind_cargo >= NUM_INDUSTRYTYPES) ? (int)(this->ind_cargo - NUM_INDUSTRYTYPES) : -1;
+					ShowDropDownList(this, std::move(lst), selected, WID_IC_CARGO_DROPDOWN, 0, true);
 				}
-				int selected = (this->ind_cargo >= NUM_INDUSTRYTYPES) ? (int)(this->ind_cargo - NUM_INDUSTRYTYPES) : -1;
-				ShowDropDownList(this, lst, selected, WID_IC_CARGO_DROPDOWN, 0, true);
 				break;
 			}
 
 			case WID_IC_IND_DROPDOWN: {
-				DropDownList *lst = new DropDownList;
+				DropDownList lst;
 				for (uint i = 0; i < NUM_INDUSTRYTYPES; i++) {
 					IndustryType ind = _sorted_industry_types[i];
 					const IndustrySpec *indsp = GetIndustrySpec(ind);
 					if (!indsp->enabled) continue;
-					lst->push_back(new DropDownListStringItem(indsp->name, ind, false));
+					lst.emplace_back(new DropDownListStringItem(indsp->name, ind, false));
 				}
-				if (lst->size() == 0) {
-					delete lst;
-					break;
+				if (!lst.empty()) {
+					int selected = (this->ind_cargo < NUM_INDUSTRYTYPES) ? (int)this->ind_cargo : -1;
+					ShowDropDownList(this, std::move(lst), selected, WID_IC_IND_DROPDOWN, 0, true);
 				}
-				int selected = (this->ind_cargo < NUM_INDUSTRYTYPES) ? (int)this->ind_cargo : -1;
-				ShowDropDownList(this, lst, selected, WID_IC_IND_DROPDOWN, 0, true);
 				break;
 			}
 		}

@@ -602,18 +602,18 @@ private:
 			}
 		}
 
-		DropDownList *list = new DropDownList();
+		DropDownList list;
 		if (default_livery != NULL) {
 			/* Add COLOUR_END to put the colour out of range, but also allow us to show what the default is */
 			default_col = (primary ? default_livery->colour1 : default_livery->colour2) + COLOUR_END;
-			list->push_back(new DropDownListColourItem(default_col, false));
+			list.emplace_back(new DropDownListColourItem(default_col, false));
 		}
 		for (uint i = 0; i < lengthof(_colour_dropdown); i++) {
-			list->push_back(new DropDownListColourItem(i, HasBit(used_colours, i)));
+			list.emplace_back(new DropDownListColourItem(i, HasBit(used_colours, i)));
 		}
 
 		byte sel = (default_livery == NULL || HasBit(livery->in_use, primary ? 0 : 1)) ? (primary ? livery->colour1 : livery->colour2) : default_col;
-		ShowDropDownList(this, list, sel, widget);
+		ShowDropDownList(this, std::move(list), sel, widget);
 	}
 
 	static int CDECL GroupNameSorter(const Group * const *a, const Group * const *b)

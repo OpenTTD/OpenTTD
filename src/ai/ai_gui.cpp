@@ -479,12 +479,12 @@ struct AISettingsWindow : public Window {
 							this->clicked_dropdown = true;
 							this->closing_dropdown = false;
 
-							DropDownList *list = new DropDownList();
+							DropDownList list;
 							for (int i = config_item.min_value; i <= config_item.max_value; i++) {
-								list->push_back(new DropDownListCharStringItem(config_item.labels->Find(i)->second, i, false));
+								list.emplace_back(new DropDownListCharStringItem(config_item.labels->Find(i)->second, i, false));
 							}
 
-							ShowDropDownListAt(this, list, old_val, -1, wi_rect, COLOUR_ORANGE, true);
+							ShowDropDownListAt(this, std::move(list), old_val, -1, wi_rect, COLOUR_ORANGE, true);
 						}
 					}
 				} else if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
