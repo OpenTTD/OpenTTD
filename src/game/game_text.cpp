@@ -23,6 +23,7 @@
 #include "table/strings.h"
 
 #include <stdarg.h>
+#include <memory>
 
 #include "../safeguards.h"
 
@@ -80,9 +81,8 @@ LanguageStrings::~LanguageStrings()
  * @param file The file to read from.
  * @return The raw strings, or NULL upon error.
  */
-LanguageStrings *ReadRawLanguageStrings(const char *file)
+std::unique_ptr<LanguageStrings> ReadRawLanguageStrings(const char *file)
 {
-	LanguageStrings *ret = NULL;
 	try {
 		size_t to_read;
 		FILE *fh = FioFOpenFile(file, "rb", GAME_DIR, &to_read);
@@ -100,7 +100,7 @@ LanguageStrings *ReadRawLanguageStrings(const char *file)
 		/* Check for invalid empty filename */
 		if (*langname == '.' || *langname == 0) return NULL;
 
-		ret = new LanguageStrings(langname, strchr(langname, '.'));
+		std::unique_ptr<LanguageStrings> ret(new LanguageStrings(langname, strchr(langname, '.')));
 
 		char buffer[2048];
 		while (to_read != 0 && fgets(buffer, sizeof(buffer), fh) != NULL) {
@@ -122,7 +122,6 @@ LanguageStrings *ReadRawLanguageStrings(const char *file)
 
 		return ret;
 	} catch (...) {
-		delete ret;
 		return NULL;
 	}
 }
@@ -140,8 +139,8 @@ struct StringListReader : StringReader {
 	 * @param master      Are we reading the master file?
 	 * @param translation Are we reading a translation?
 	 */
-	StringListReader(StringData &data, const LanguageStrings *strings, bool master, bool translation) :
-			StringReader(data, strings->language, master, translation), p(strings->lines.data()), end(p + strings->lines.size())
+	StringListReader(StringData &data, const LanguageStrings &strings, bool master, bool translation) :
+			StringReader(data, strings.language, master, translation), p(strings.lines.data()), end(p + strings.lines.size())
 	{
 	}
 
@@ -309,7 +308,7 @@ GameStrings *LoadTranslations()
 void GameStrings::Compile()
 {
 	StringData data(1);
-	StringListReader master_reader(data, this->raw_strings[0], true, false);
+	StringListReader master_reader(data, *this->raw_strings[0], true, false);
 	master_reader.ParseFile();
 	if (_errors != 0) throw std::exception();
 
@@ -318,13 +317,13 @@ void GameStrings::Compile()
 	StringNameWriter id_writer(&this->string_names);
 	id_writer.WriteHeader(data);
 
-	for (LanguageStrings *p : this->raw_strings) {
+	for (const auto &p : this->raw_strings) {
 		data.FreeTranslation();
-		StringListReader translation_reader(data, p, false, strcmp(p->language, "english") != 0);
+		StringListReader translation_reader(data, *p, false, strcmp(p->language, "english") != 0);
 		translation_reader.ParseFile();
 		if (_errors != 0) throw std::exception();
 
-		this->compiled_strings.push_back(new LanguageStrings(p->language));
+		this->compiled_strings.emplace_back(new LanguageStrings(p->language));
 		TranslationWriter writer(&this->compiled_strings.back()->lines);
 		writer.WriteLang(data);
 	}
@@ -392,7 +391,7 @@ void ReconsiderGameScriptLanguage()
 	assert(language != NULL);
 	language++;
 
-	for (LanguageStrings *p : _current_data->compiled_strings) {
+	for (auto &p : _current_data->compiled_strings) {
 		if (strcmp(p->language, language) == 0) {
 			_current_data->cur_language = p;
 			return;
