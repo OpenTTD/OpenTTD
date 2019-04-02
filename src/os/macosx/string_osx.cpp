@@ -111,7 +111,7 @@ public:
 		this->cur_offset = 0;
 	}
 
-	const Line *NextLine(int max_width) override;
+	std::unique_ptr<const Line> NextLine(int max_width) override;
 };
 
 
@@ -188,7 +188,7 @@ static CTRunDelegateCallbacks _sprite_font_callback = {
 	return typesetter != NULL ? new CoreTextParagraphLayout(typesetter, buff, length, fontMapping) : NULL;
 }
 
-/* virtual */ const CoreTextParagraphLayout::Line *CoreTextParagraphLayout::NextLine(int max_width)
+/* virtual */ std::unique_ptr<const ParagraphLayouter::Line> CoreTextParagraphLayout::NextLine(int max_width)
 {
 	if (this->cur_offset >= this->length) return NULL;
 
@@ -200,7 +200,7 @@ static CTRunDelegateCallbacks _sprite_font_callback = {
 	CTLineRef line = CTTypesetterCreateLine(this->typesetter, CFRangeMake(this->cur_offset, len));
 	this->cur_offset += len;
 
-	return line != NULL ? new CoreTextLine(line, this->font_map, this->text_buffer) : NULL;
+	return std::unique_ptr<const Line>(line != NULL ? new CoreTextLine(line, this->font_map, this->text_buffer) : NULL);
 }
 
 CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font *font, const CoreTextParagraphLayoutFactory::CharType *buff) : font(font)
@@ -244,8 +244,8 @@ CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font
 int CoreTextParagraphLayout::CoreTextLine::GetLeading() const
 {
 	int leading = 0;
-	for (const CoreTextVisualRun * const &run : *this) {
-		leading = max(leading, run->GetLeading());
+	for (const auto &run : *this) {
+		leading = max(leading, run.GetLeading());
 	}
 
 	return leading;
@@ -260,8 +260,8 @@ int CoreTextParagraphLayout::CoreTextLine::GetWidth() const
 	if (this->size() == 0) return 0;
 
 	int total_width = 0;
-	for (const CoreTextVisualRun * const &run : *this) {
-		total_width += run->GetAdvance();
+	for (const auto &run : *this) {
+		total_width += run.GetAdvance();
 	}
 
 	return total_width;

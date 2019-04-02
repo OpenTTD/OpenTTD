@@ -142,7 +142,7 @@ public:
 	};
 
 	virtual void Reflow() = 0;
-	virtual const Line *NextLine(int max_width) = 0;
+	virtual std::unique_ptr<const Line> NextLine(int max_width) = 0;
 };
 
 /**
@@ -150,7 +150,7 @@ public:
  *
  * It also accounts for the memory allocations and frees.
  */
-class Layouter : public AutoDeleteSmallVector<const ParagraphLayouter::Line *> {
+class Layouter : public std::vector<std::unique_ptr<const ParagraphLayouter::Line>> {
 	const char *string; ///< Pointer to the original string.
 
 	/** Key into the linecache */

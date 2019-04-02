@@ -134,7 +134,7 @@ public:
 		this->cur_range_offset = 0;
 	}
 
-	const Line *NextLine(int max_width) override;
+	std::unique_ptr<const Line> NextLine(int max_width) override;
 };
 
 void UniscribeResetScriptCache(FontSize size)
@@ -318,7 +318,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 	return new UniscribeParagraphLayout(ranges, buff);
 }
 
-/* virtual */ const ParagraphLayouter::Line *UniscribeParagraphLayout::NextLine(int max_width)
+/* virtual */ std::unique_ptr<const ParagraphLayouter::Line> UniscribeParagraphLayout::NextLine(int max_width)
 {
 	std::vector<UniscribeRun>::iterator start_run = this->cur_range;
 	std::vector<UniscribeRun>::iterator last_run = this->cur_range;
@@ -404,7 +404,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 	if (FAILED(ScriptLayout((int)bidi_level.size(), &bidi_level[0], &vis_to_log[0], NULL))) return NULL;
 
 	/* Create line. */
-	UniscribeLine *line = new UniscribeLine();
+	std::unique_ptr<UniscribeLine> line(new UniscribeLine());
 
 	int cur_pos = 0;
 	for (std::vector<INT>::iterator l = vis_to_log.begin(); l != vis_to_log.end(); l++) {
