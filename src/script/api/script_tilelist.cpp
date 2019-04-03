@@ -49,6 +49,32 @@ void ScriptTileList::RemoveTile(TileIndex tile)
 	this->RemoveItem(tile);
 }
 
+/**
+ * Helper to get list of tiles that will cover an industry's production or acceptance.
+ * @param i Industry in question
+ * @param radius Catchment radius to test
+ * @param bta BitmapTileArea to fill
+ */
+static void FillIndustryCatchment(const Industry *i, int radius, BitmapTileArea &bta)
+{
+	TILE_AREA_LOOP(cur_tile, i->location) {
+		if (!::IsTileType(cur_tile, MP_INDUSTRY) || ::GetIndustryIndex(cur_tile) != i->index) continue;
+
+		int tx = TileX(cur_tile);
+		int ty = TileY(cur_tile);
+		for (int y = -radius; y <= radius; y++) {
+			if (ty + y < 0 || ty + y > (int)MapMaxY()) continue;
+			for (int x = -radius; x <= radius; x++) {
+				if (tx + x < 0 || tx + x > (int)MapMaxX()) continue;
+				TileIndex tile = TileXY(tx + x, ty + y);
+				if (!IsValidTile(tile)) continue;
+				if (::IsTileType(tile, MP_INDUSTRY) && ::GetIndustryIndex(tile) == i->index) continue;
+				bta.SetTile(tile);
+			}
+		}
+	}
+}
+
 ScriptTileList_IndustryAccepting::ScriptTileList_IndustryAccepting(IndustryID industry_id, int radius)
 {
 	if (!ScriptIndustry::IsValidIndustry(industry_id) || radius <= 0) return;
@@ -66,12 +92,11 @@ ScriptTileList_IndustryAccepting::ScriptTileList_IndustryAccepting(IndustryID in
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
-	TileArea ta = TileArea(i->location).Expand(radius);
-	TILE_AREA_LOOP(cur_tile, ta) {
-		if (!::IsValidTile(cur_tile)) continue;
-		/* Exclude all tiles that belong to this industry */
-		if (::IsTileType(cur_tile, MP_INDUSTRY) && ::GetIndustryIndex(cur_tile) == industry_id) continue;
+	BitmapTileArea bta(TileArea(i->location).Expand(radius));
+	FillIndustryCatchment(i, radius, bta);
 
+	BitmapTileIterator it(bta);
+	for (TileIndex cur_tile = it; cur_tile != INVALID_TILE; cur_tile = ++it) {
 		/* Only add the tile if it accepts the cargo (sometimes just 1 tile of an
 		 *  industry triggers the acceptance). */
 		CargoArray acceptance = ::GetAcceptanceAroundTiles(cur_tile, 1, 1, radius);
@@ -102,12 +127,11 @@ ScriptTileList_IndustryProducing::ScriptTileList_IndustryProducing(IndustryID in
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
-	TileArea ta = TileArea(i->location).Expand(radius);
-	TILE_AREA_LOOP(cur_tile, ta) {
-		if (!::IsValidTile(cur_tile)) continue;
-		/* Exclude all tiles that belong to this industry */
-		if (::IsTileType(cur_tile, MP_INDUSTRY) && ::GetIndustryIndex(cur_tile) == industry_id) continue;
+	BitmapTileArea bta(TileArea(i->location).Expand(radius));
+	FillIndustryCatchment(i, radius, bta);
 
+	BitmapTileIterator it(bta);
+	for (TileIndex cur_tile = it; cur_tile != INVALID_TILE; cur_tile = ++it) {
 		this->AddTile(cur_tile);
 	}
 }
