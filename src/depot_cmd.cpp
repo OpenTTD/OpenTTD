@@ -15,10 +15,13 @@
 #include "company_func.h"
 #include "date_func.h"
 #include "string_func.h"
+#include "strings_func.h"
+#include "landscape.h"
 #include "town.h"
 #include "vehicle_gui.h"
 #include "vehiclelist.h"
 #include "window_func.h"
+#include "viewport_kdtree.h"
 
 #include "table/strings.h"
 
@@ -91,6 +94,8 @@ CommandCost CmdRenameDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	}
 
 	if (flags & DC_EXEC) {
+		/* _viewport_sign_kdtree does not need to be updated, only in-use depots can be renamed */
+
 		free(d->name);
 
 		if (reset) {
@@ -110,6 +115,28 @@ CommandCost CmdRenameDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	return CommandCost();
 }
 
+/** Update the virtual coords needed to draw the depot sign. */
+void Depot::UpdateVirtCoord()
+{
+	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
+
+	pt.y -= 32 * ZOOM_LVL_BASE;
+
+	SetDParam(0, this->type);
+	SetDParam(1, this->index);
+	this->sign.UpdatePosition(pt.x, pt.y, STR_VIEWPORT_DEPOT, STR_VIEWPORT_DEPOT_TINY);
+
+	SetWindowDirty(WC_VEHICLE_DEPOT, this->index);
+}
+
+/** Update the virtual coords needed to draw the depot sign for all depots. */
+void UpdateAllDepotVirtCoords()
+{
+	/* Only demolished depots have signs. */
+	Depot *d;
+	FOR_ALL_DEPOTS(d) if (!d->IsInUse()) d->UpdateVirtCoord();
+}
+
 void OnTick_Depot()
 {
 	if (_game_mode == GM_EDITOR) return;
@@ -118,6 +145,8 @@ void OnTick_Depot()
 	Depot *d;
 	FOR_ALL_DEPOTS(d) {
 		if ((_tick_counter + d->index) % DEPOT_REMOVAL_TICKS != 0) continue;
-		if (!d->IsInUse() && --d->delete_ctr == 0) delete d;
+		if (d->IsInUse() || --d->delete_ctr != 0) continue;
+		_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeDepot(d->index));
+		delete d;
 	}
 }

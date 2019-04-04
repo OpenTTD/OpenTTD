@@ -13,6 +13,7 @@
 #define DEPOT_BASE_H
 
 #include "depot_map.h"
+#include "viewport_type.h"
 #include "core/pool_type.hpp"
 
 typedef Pool<Depot, DepotID, 64, 64000> DepotPool;
@@ -28,6 +29,7 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	VehicleTypeByte type; ///< Type of the depot.
 	OwnerByte owner;      ///< Owner of the depot.
 	byte delete_ctr;      ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the depot is then deleted.
+	ViewportSign sign;    ///< NOSAVE: Dimensions of sign
 
 	Depot(TileIndex xy = INVALID_TILE, VehicleType type = VEH_INVALID, Owner owner = INVALID_OWNER)
 	{
@@ -68,15 +70,10 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 		return this->delete_ctr == 0;
 	}
 
-	/**
-	 * Cancel deletion of this depot (reuse it).
-	 * @param xy New location of the depot.
-	 * @see Depot::IsInUse
-	 * @see Depot::Disuse
-	 */
-
 	void Reuse(TileIndex xy);
 	void Disuse();
+
+	void UpdateVirtCoord();
 };
 
 #define FOR_ALL_DEPOTS_FROM(var, start) FOR_ALL_ITEMS_FROM(Depot, depot_index, var, start)
