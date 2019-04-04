@@ -449,7 +449,8 @@ void Station::RecomputeCatchment()
 		if (r == CA_NONE) continue;
 
 		/* This tile sub-loop doesn't need to test any tiles, they are simply added to the catchment set. */
-		TileArea ta2(TileXY(max<int>(TileX(tile) - r, 0), max<int>(TileY(tile) - r, 0)), TileXY(min<int>(TileX(tile) + r, MapMaxX()), min<int>(TileY(tile) + r, MapMaxY())));
+		TileArea ta2(tile, 1, 1);
+		ta2.Expand(r);
 		TILE_AREA_LOOP(tile2, ta2) this->catchment_tiles.SetTile(tile2);
 	}
 
