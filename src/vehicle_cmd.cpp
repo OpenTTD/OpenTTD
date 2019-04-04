@@ -31,6 +31,7 @@
 #include "ship.h"
 #include "newgrf.h"
 #include "company_base.h"
+#include "core/random_func.hpp"
 
 #include "table/strings.h"
 
@@ -131,6 +132,11 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	DoCommandFlag subflags = flags;
 	if (refitting) subflags |= DC_EXEC;
 
+	/* Vehicle construction needs random bits, so we have to save the random
+	 * seeds to prevent desyncs. */
+	SavedRandomSeeds saved_seeds;
+	if (flags != subflags) SaveRandomSeeds(&saved_seeds);
+
 	Vehicle *v = NULL;
 	switch (type) {
 		case VEH_TRAIN:    value.AddCost(CmdBuildRailVehicle(tile, subflags, e, GB(p1, 24, 8), &v)); break;
@@ -178,6 +184,8 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			DoCommand(0, v->index, 0, DC_EXEC, GetCmdSellVeh(v));
 		}
 	}
+
+	if (flags != subflags) RestoreRandomSeeds(saved_seeds);
 
 	return value;
 }
