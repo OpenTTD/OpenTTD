@@ -928,6 +928,14 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 	/* Additional text from NewGRF */
 	y = ShowAdditionalText(left, right, y, engine_number);
 
+	/* The NewGRF's name which the vehicle comes from */
+	const GRFConfig *config = GetGRFConfig(e->GetGRFID());
+	if (_settings_client.gui.show_newgrf_name && config != nullptr)
+	{
+		DrawString(left, right, y, config->GetName(), TC_BLACK);
+		y += FONT_HEIGHT_NORMAL;
+	}
+
 	return y;
 }
 
