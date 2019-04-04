@@ -509,8 +509,6 @@ static inline TrackBits GetAvailShipTracks(TileIndex tile, DiagDirection dir, Tr
 {
 	TrackBits tracks = GetTileShipTrackStatus(tile) & DiagdirReachesTracks(dir);
 
-	if (_settings_game.pf.forbid_90_deg) tracks &= ~TrackCrossesTracks(TrackdirToTrack(trackdir));
-
 	return tracks;
 }
 
