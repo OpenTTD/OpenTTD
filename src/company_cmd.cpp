@@ -805,10 +805,9 @@ void CompanyAdminRemove(CompanyID company_id, CompanyRemoveReason reason)
  * @param flags operation to perform
  * @param p1 various functionality
  * - bits 0..15: CompanyCtrlAction
- * - bits 16..24: CompanyID
- * @param p2 various depending on CompanyCtrlAction
- * - bits 0..31: ClientID (with CCA_NEW)
- * - bits 0..1: CompanyRemoveReason (with CCA_DELETE)
+ * - bits 16..23: CompanyID
+ * - bits 24..31: CompanyRemoveReason (with CCA_DELETE)
+ * @param p2 ClientID
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -882,7 +881,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		}
 
 		case CCA_DELETE: { // Delete a company
-			CompanyRemoveReason reason = (CompanyRemoveReason)GB(p2, 0, 2);
+			CompanyRemoveReason reason = (CompanyRemoveReason)GB(p1, 24, 8);
 			if (reason >= CRR_END) return CMD_ERROR;
 
 			Company *c = Company::GetIfValid(company_id);
