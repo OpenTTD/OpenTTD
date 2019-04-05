@@ -10,7 +10,6 @@
     <ProjectName>settingsgen</ProjectName>
     <ProjectGuid>{E9548DE9-F089-49B7-93A6-30BE2CC311C7}</ProjectGuid>
     <RootNamespace>settings</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
