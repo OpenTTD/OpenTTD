@@ -67,13 +67,17 @@ static const uint GEN_HASHX_BUCKET_BITS = 7;
 static const uint GEN_HASHY_BUCKET_BITS = 6;
 
 /* Compute hash for vehicle coord */
+#define GEN_HASHX_UNMASKED(x) ((x) >> (GEN_HASHX_BUCKET_BITS + ZOOM_LVL_SHIFT))
+#define GEN_HASHY_UNMASKED(y) ((y) >> (GEN_HASHY_BUCKET_BITS + ZOOM_LVL_SHIFT))
+#define GEN_MASK_HASHX(hx)     GB((hx), 0, GEN_HASHX_BITS)
+#define GEN_MASK_HASHY(hy)    (GB((hy), 0, GEN_HASHY_BITS) << GEN_HASHX_BITS)
 #define GEN_HASHX(x)    GB((x), GEN_HASHX_BUCKET_BITS + ZOOM_LVL_SHIFT, GEN_HASHX_BITS)
 #define GEN_HASHY(y)   (GB((y), GEN_HASHY_BUCKET_BITS + ZOOM_LVL_SHIFT, GEN_HASHY_BITS) << GEN_HASHX_BITS)
 #define GEN_HASH(x, y) (GEN_HASHY(y) + GEN_HASHX(x))
 
 /* Maximum size until hash repeats */
-static const int GEN_HASHX_SIZE = 1 << (GEN_HASHX_BUCKET_BITS + GEN_HASHX_BITS + ZOOM_LVL_SHIFT);
-static const int GEN_HASHY_SIZE = 1 << (GEN_HASHY_BUCKET_BITS + GEN_HASHY_BITS + ZOOM_LVL_SHIFT);
+static const int GEN_HASHX_UNMASKED_SIZE = 1 << GEN_HASHX_BITS;
+static const int GEN_HASHY_UNMASKED_SIZE = 1 << GEN_HASHY_BITS;
 
 /* Increments to reach next bucket in hash table */
 static const int GEN_HASHX_INC = 1;
@@ -1120,18 +1124,24 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 	/* The hash area to scan */
 	int xl, xu, yl, yu;
 
-	if (dpi->width + (MAX_VEHICLE_PIXEL_X * ZOOM_LVL_BASE) < GEN_HASHX_SIZE) {
-		xl = GEN_HASHX(l - MAX_VEHICLE_PIXEL_X * ZOOM_LVL_BASE);
-		xu = GEN_HASHX(r);
+	int xl_um = GEN_HASHX_UNMASKED(l - MAX_VEHICLE_PIXEL_X * ZOOM_LVL_BASE);
+	int xu_um = GEN_HASHX_UNMASKED(r);
+	/* compare after shifting and before truncation, so that lower bits don't affect the comparison result and wrap-around is detected */
+	if (xu_um - xl_um < GEN_HASHX_UNMASKED_SIZE) {
+		xl = GEN_MASK_HASHX(xl_um);
+		xu = GEN_MASK_HASHX(xu_um);
 	} else {
 		/* scan whole hash row */
 		xl = 0;
 		xu = GEN_HASHX_MASK;
 	}
 
-	if (dpi->height + (MAX_VEHICLE_PIXEL_Y * ZOOM_LVL_BASE) < GEN_HASHY_SIZE) {
-		yl = GEN_HASHY(t - MAX_VEHICLE_PIXEL_Y * ZOOM_LVL_BASE);
-		yu = GEN_HASHY(b);
+	int yl_um = GEN_HASHY_UNMASKED(t - MAX_VEHICLE_PIXEL_Y * ZOOM_LVL_BASE);
+	int yu_um = GEN_HASHY_UNMASKED(b);
+	/* compare after shifting and before truncation, so that lower bits don't affect the comparison result and wrap-around is detected */
+	if (yu_um - yl_um < GEN_HASHY_UNMASKED_SIZE) {
+		yl = GEN_MASK_HASHY(yl_um);
+		yu = GEN_MASK_HASHY(yu_um);
 	} else {
 		/* scan whole column */
 		yl = 0;
