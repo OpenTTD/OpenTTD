@@ -19,6 +19,9 @@
 #include "engine_base.h"
 #include "date_func.h"
 #include "landscape.h"
+#include "road.h"
+#include "road_func.h"
+#include "roadveh.h"
 
 #include "safeguards.h"
 
@@ -72,7 +75,7 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 							/* Always connective */
 							connective = true;
 						} else {
-							const RoadBits neighbor_rb = GetAnyRoadBits(neighbor_tile, ROADTYPE_ROAD) | GetAnyRoadBits(neighbor_tile, ROADTYPE_TRAM);
+							const RoadBits neighbor_rb = GetAnyRoadBits(neighbor_tile, RTT_ROAD) | GetAnyRoadBits(neighbor_tile, RTT_TRAM);
 
 							/* Accept only connective tiles */
 							connective = (neighbor_rb & mirrored_rb) != ROAD_NONE;
@@ -102,53 +105,236 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 }
 
 /**
- * Finds out, whether given company has all given RoadTypes available
+ * Finds out, whether given company has a given RoadType available for construction.
  * @param company ID of company
- * @param rts RoadTypes to test
- * @return true if company has all requested RoadTypes available
+ * @param roadtypet RoadType to test
+ * @return true if company has the requested RoadType available
  */
-bool HasRoadTypesAvail(const CompanyID company, const RoadTypes rts)
+bool HasRoadTypeAvail(const CompanyID company, RoadType roadtype)
 {
-	RoadTypes avail_roadtypes;
-
 	if (company == OWNER_DEITY || company == OWNER_TOWN || _game_mode == GM_EDITOR || _generating_world) {
-		avail_roadtypes = ROADTYPES_ROAD;
+		return true; // TODO: should there be a proper check?
 	} else {
-		Company *c = Company::GetIfValid(company);
+		const Company *c = Company::GetIfValid(company);
 		if (c == nullptr) return false;
-		avail_roadtypes = (RoadTypes)c->avail_roadtypes | ROADTYPES_ROAD; // road is available for always for everybody
+		return HasBit(c->avail_roadtypes & ~_roadtypes_hidden_mask, roadtype);
 	}
-	return (rts & ~avail_roadtypes) == 0;
+}
+
+static RoadTypes GetMaskForRoadTramType(RoadTramType rtt)
+{
+	return rtt == RTT_TRAM ? _roadtypes_type : ~_roadtypes_type;
+}
+
+/**
+ * Test if any buildable RoadType is available for a company.
+ * @param company the company in question
+ * @return true if company has any RoadTypes available
+ */
+bool HasAnyRoadTypesAvail(CompanyID company, RoadTramType rtt)
+{
+	return (Company::Get(company)->avail_roadtypes & ~_roadtypes_hidden_mask & GetMaskForRoadTramType(rtt)) != ROADTYPES_NONE;
 }
 
 /**
  * Validate functions for rail building.
- * @param rt road type to check.
+ * @param roadtype road type to check.
  * @return true if the current company may build the road.
  */
-bool ValParamRoadType(const RoadType rt)
+bool ValParamRoadType(RoadType roadtype)
 {
-	return HasRoadTypesAvail(_current_company, RoadTypeToRoadTypes(rt));
+	return roadtype != INVALID_ROADTYPE && HasRoadTypeAvail(_current_company, roadtype);
+}
+
+/**
+ * Add the road types that are to be introduced at the given date.
+ * @param rt      Roadtype
+ * @param current The currently available roadtypes.
+ * @param date    The date for the introduction comparisons.
+ * @return The road types that should be available when date
+ *         introduced road types are taken into account as well.
+ */
+RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, Date date)
+{
+	RoadTypes rts = current;
+
+	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
+		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
+		/* Unused road type. */
+		if (rti->label == 0) continue;
+
+		/* Not date introduced. */
+		if (!IsInsideMM(rti->introduction_date, 0, MAX_DAY)) continue;
+
+		/* Not yet introduced at this date. */
+		if (rti->introduction_date > date) continue;
+
+		/* Have we introduced all required roadtypes? */
+		RoadTypes required = rti->introduction_required_roadtypes;
+		if ((rts & required) != required) continue;
+
+		rts |= rti->introduces_roadtypes;
+	}
+
+	/* When we added roadtypes we need to run this method again; the added
+	 * roadtypes might enable more rail types to become introduced. */
+	return rts == current ? rts : AddDateIntroducedRoadTypes(rts, date);
 }
 
 /**
  * Get the road types the given company can build.
- * @param company the company to get the roadtypes for.
+ * @param company the company to get the road types for.
+ * @param introduces If true, include road types introduced by other road types
  * @return the road types.
  */
-RoadTypes GetCompanyRoadtypes(CompanyID company)
+RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces)
 {
-	RoadTypes rt = ROADTYPES_NONE;
+	RoadTypes rts = ROADTYPES_NONE;
 
-	Engine *e;
+	const Engine *e;
 	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
 		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
 				(HasBit(e->company_avail, company) || _date >= e->intro_date + DAYS_IN_YEAR)) {
-			SetBit(rt, HasBit(ei->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+			const RoadVehicleInfo *rvi = &e->u.road;
+			assert(rvi->roadtype < ROADTYPE_END);
+			if (introduces) {
+				rts |= GetRoadTypeInfo(rvi->roadtype)->introduces_roadtypes;
+			} else {
+				SetBit(rts, rvi->roadtype);
+			}
 		}
 	}
 
-	return rt;
+	if (introduces) return AddDateIntroducedRoadTypes(rts, _date);
+	return rts;
+}
+
+/**
+ * Get list of road types, regardless of company availability.
+ * @param introduces If true, include road types introduced by other road types
+ * @return the road types.
+ */
+RoadTypes GetRoadTypes(bool introduces)
+{
+	RoadTypes rts = ROADTYPES_NONE;
+
+	const Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+		const EngineInfo *ei = &e->info;
+		if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) continue;
+
+		const RoadVehicleInfo *rvi = &e->u.road;
+		assert(rvi->roadtype < ROADTYPE_END);
+		if (introduces) {
+			rts |= GetRoadTypeInfo(rvi->roadtype)->introduces_roadtypes;
+		} else {
+			SetBit(rts, rvi->roadtype);
+		}
+	}
+
+	if (introduces) return AddDateIntroducedRoadTypes(rts, MAX_DAY);
+	return rts;
+}
+
+/**
+ * Get the road type for a given label.
+ * @param label the roadtype label.
+ * @param allow_alternate_labels Search in the alternate label lists as well.
+ * @return the roadtype.
+ */
+RoadType GetRoadTypeByLabel(RoadTypeLabel label, bool allow_alternate_labels)
+{
+	/* Loop through each road type until the label is found */
+	for (RoadType r = ROADTYPE_BEGIN; r != ROADTYPE_END; r++) {
+		const RoadTypeInfo *rti = GetRoadTypeInfo(r);
+		if (rti->label == label) return r;
+	}
+
+	if (allow_alternate_labels) {
+		/* Test if any road type defines the label as an alternate. */
+		for (RoadType r = ROADTYPE_BEGIN; r != ROADTYPE_END; r++) {
+			const RoadTypeInfo *rti = GetRoadTypeInfo(r);
+			if (std::find(rti->alternate_labels.begin(), rti->alternate_labels.end(), label) != rti->alternate_labels.end()) return r;
+		}
+	}
+
+	/* No matching label was found, so it is invalid */
+	return INVALID_ROADTYPE;
+}
+
+/**
+ * Returns the available RoadSubTypes for the provided RoadType
+ * If the given company is valid then will be returned a list of the available sub types at the current date, while passing
+ * a deity company will make all the sub types available
+ * @param rt the RoadType to filter
+ * @param c the company ID to check the roadtype against
+ * @param any_date whether to return only currently introduced roadtypes or also future ones
+ * @returns the existing RoadSubTypes
+ */
+RoadTypes ExistingRoadTypes(CompanyID c)
+{
+	/* Check only players which can actually own vehicles, editor and gamescripts are considered deities */
+	if (c < OWNER_END) {
+		const Company *company = Company::GetIfValid(c);
+		if (company != nullptr) return company->avail_roadtypes;
+	}
+
+	RoadTypes known_roadtypes = ROADTYPES_NONE;
+
+	/* Find used roadtypes */
+	Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+		/* Check if the roadtype can be used in the current climate */
+		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
+
+		/* Check whether available for all potential companies */
+		if (e->company_avail != (CompanyMask)-1) continue;
+
+		known_roadtypes |= GetRoadTypeInfo(e->u.road.roadtype)->introduces_roadtypes;
+	}
+
+	/* Get the date introduced roadtypes as well. */
+	known_roadtypes = AddDateIntroducedRoadTypes(known_roadtypes, MAX_DAY);
+
+	return known_roadtypes;
+}
+
+/**
+ * Check whether we can build infrastructure for the given RoadType. This to disable building stations etc. when
+ * you are not allowed/able to have the RoadType yet.
+ * @param roadtype the roadtype to check this for
+ * @param company the company id to check this for
+ * @param any_date to check only existing vehicles or if it is possible to build them in the future
+ * @return true if there is any reason why you may build the infrastructure for the given roadtype
+ */
+bool CanBuildRoadTypeInfrastructure(RoadType roadtype, CompanyID company)
+{
+	if (_game_mode != GM_EDITOR && !Company::IsValidID(company)) return false;
+	if (!_settings_client.gui.disable_unsuitable_building) return true;
+	if (!HasAnyRoadTypesAvail(company, GetRoadTramType(roadtype))) return false;
+
+	RoadTypes roadtypes = ExistingRoadTypes(company);
+
+	/* Check if the filtered roadtypes does have the roadtype we are checking for
+	 * and if we can build new ones */
+	if (_settings_game.vehicle.max_roadveh > 0 && HasBit(roadtypes, roadtype)) {
+		/* Can we actually build the vehicle type? */
+		const Engine *e;
+		FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+			if (!HasBit(e->company_avail, company)) continue;
+			if (HasPowerOnRoad(e->u.road.roadtype, roadtype) || HasPowerOnRoad(roadtype, e->u.road.roadtype)) return true;
+		}
+		return false;
+	}
+
+	/* We should be able to build infrastructure when we have the actual vehicle type */
+	const Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_ROAD && (company == OWNER_DEITY || v->owner == company) &&
+			HasBit(roadtypes, RoadVehicle::From(v)->roadtype) && HasPowerOnRoad(RoadVehicle::From(v)->roadtype, roadtype)) return true;
+	}
+
+	return false;
 }

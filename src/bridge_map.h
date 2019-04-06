@@ -132,11 +132,11 @@ static inline void MakeBridgeRamp(TileIndex t, Owner o, BridgeType bridgetype, D
 	SetTileOwner(t, o);
 	_m[t].m2 = 0;
 	_m[t].m3 = 0;
-	_m[t].m4 = 0;
+	_m[t].m4 = INVALID_ROADTYPE;
 	_m[t].m5 = 1 << 7 | tt << 2 | d;
 	SB(_me[t].m6, 2, 4, bridgetype);
 	_me[t].m7 = 0;
-	_me[t].m8 = 0;
+	_me[t].m8 = INVALID_ROADTYPE << 6;
 }
 
 /**
@@ -147,14 +147,15 @@ static inline void MakeBridgeRamp(TileIndex t, Owner o, BridgeType bridgetype, D
  * @param owner_tram the new owner of the tram on the bridge
  * @param bridgetype the type of bridge this bridge ramp belongs to
  * @param d          the direction this ramp must be facing
- * @param rts        the road types of the bridge
+ * @param road_rt    the road type of the bridge
+ * @param tram_rt    the tram type of the bridge
  */
-static inline void MakeRoadBridgeRamp(TileIndex t, Owner o, Owner owner_road, Owner owner_tram, BridgeType bridgetype, DiagDirection d, RoadTypes rts)
+static inline void MakeRoadBridgeRamp(TileIndex t, Owner o, Owner owner_road, Owner owner_tram, BridgeType bridgetype, DiagDirection d, RoadType road_rt, RoadType tram_rt)
 {
 	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_ROAD);
-	SetRoadOwner(t, ROADTYPE_ROAD, owner_road);
-	if (owner_tram != OWNER_TOWN) SetRoadOwner(t, ROADTYPE_TRAM, owner_tram);
-	SetRoadTypes(t, rts);
+	SetRoadOwner(t, RTT_ROAD, owner_road);
+	if (owner_tram != OWNER_TOWN) SetRoadOwner(t, RTT_TRAM, owner_tram);
+	SetRoadTypes(t, road_rt, tram_rt);
 }
 
 /**

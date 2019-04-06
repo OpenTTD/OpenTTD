@@ -10,6 +10,7 @@
 /** @file town_cmd.cpp Handling of town tiles. */
 
 #include "stdafx.h"
+#include "road.h"
 #include "road_internal.h" /* Cleaning up road bits */
 #include "road_cmd.h"
 #include "landscape.h"
@@ -891,7 +892,38 @@ static RoadBits GetTownRoadBits(TileIndex tile)
 {
 	if (IsRoadDepotTile(tile) || IsStandardRoadStopTile(tile)) return ROAD_NONE;
 
-	return GetAnyRoadBits(tile, ROADTYPE_ROAD, true);
+	return GetAnyRoadBits(tile, RTT_ROAD, true);
+}
+
+RoadType GetTownRoadType(const Town *t)
+{
+	RoadType best_rt = ROADTYPE_ROAD;
+	const RoadTypeInfo *best = nullptr;
+	const uint16 assume_max_speed = 50;
+
+	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
+		if (RoadTypeIsTram(rt)) continue;
+
+		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
+
+		/* Unused road type. */
+		if (rti->label == 0) continue;
+
+		/* Can town build this road. */
+		if (!HasBit(rti->flags, ROTF_TOWN_BUILD)) continue;
+
+		/* Not yet introduced at this date. */
+		if (IsInsideMM(rti->introduction_date, 0, MAX_DAY) && rti->introduction_date > _date) continue;
+
+		if (best != nullptr) {
+			if ((rti->max_speed == 0 ? assume_max_speed : rti->max_speed) < (best->max_speed == 0 ? assume_max_speed : best->max_speed)) continue;
+		}
+
+		best_rt = rt;
+		best = rti;
+	}
+
+	return best_rt;
 }
 
 /**
@@ -950,7 +982,8 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 		/* No, try if we are able to build a road piece there.
 		 * If that fails clear the land, and if that fails exit.
 		 * This is to make sure that we can build a road here later. */
-		if (DoCommand(tile, ((dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? ROAD_Y : ROAD_X), 0, DC_AUTO, CMD_BUILD_ROAD).Failed() &&
+		RoadType rt = GetTownRoadType(t);
+		if (DoCommand(tile, ((dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? ROAD_Y : ROAD_X) | (rt << 4), 0, DC_AUTO, CMD_BUILD_ROAD).Failed() &&
 				DoCommand(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR).Failed()) {
 			return false;
 		}
@@ -1118,7 +1151,8 @@ static bool GrowTownWithExtraHouse(Town *t, TileIndex tile)
  */
 static bool GrowTownWithRoad(const Town *t, TileIndex tile, RoadBits rcmd)
 {
-	if (DoCommand(tile, rcmd, t->index, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD).Succeeded()) {
+	RoadType rt = GetTownRoadType(t);
+	if (DoCommand(tile, rcmd | (rt << 4), t->index, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD).Succeeded()) {
 		_grow_town_result = GROWTH_SUCCEED;
 		return true;
 	}
@@ -1181,14 +1215,46 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 		byte bridge_type = RandomRange(MAX_BRIDGES - 1);
 
 		/* Can we actually build the bridge? */
-		if (DoCommand(tile, bridge_tile, bridge_type | ROADTYPES_ROAD << 8 | TRANSPORT_ROAD << 15, CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_BRIDGE)), CMD_BUILD_BRIDGE).Succeeded()) {
-			DoCommand(tile, bridge_tile, bridge_type | ROADTYPES_ROAD << 8 | TRANSPORT_ROAD << 15, DC_EXEC | CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_BRIDGE)), CMD_BUILD_BRIDGE);
+		RoadType rt = GetTownRoadType(t);
+		if (DoCommand(tile, bridge_tile, bridge_type | rt << 8 | TRANSPORT_ROAD << 15, CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_BRIDGE)), CMD_BUILD_BRIDGE).Succeeded()) {
+			DoCommand(tile, bridge_tile, bridge_type | rt << 8 | TRANSPORT_ROAD << 15, DC_EXEC | CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_BRIDGE)), CMD_BUILD_BRIDGE);
 			_grow_town_result = GROWTH_SUCCEED;
 			return true;
 		}
 	}
 	/* Quit if it selecting an appropriate bridge type fails a large number of times. */
 	return false;
+}
+
+
+/**
+ * Checks whether at least one surrounding roads allows to build a house here
+ *
+ * @param t the tile where the house will be built
+ * @return true if at least one surrounding roadtype allows building houses here
+ */
+static inline bool RoadTypesAllowHouseHere(TileIndex t)
+{
+	static const TileIndexDiffC tiles[] = { {-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1} };
+	bool allow = false;
+
+	for (const TileIndexDiffC *ptr = tiles; ptr != endof(tiles); ++ptr) {
+		TileIndex cur_tile = t + ToTileIndexDiff(*ptr);
+		if (!IsValidTile(cur_tile)) continue;
+
+		if (!(IsTileType(cur_tile, MP_ROAD) || IsTileType(cur_tile, MP_STATION))) continue;
+		allow = true;
+
+		RoadType road_rt = GetRoadTypeRoad(cur_tile);
+		RoadType tram_rt = GetRoadTypeTram(cur_tile);
+		if (road_rt != INVALID_ROADTYPE && !HasBit(GetRoadTypeInfo(road_rt)->flags, ROTF_NO_HOUSES)) return true;
+		if (tram_rt != INVALID_ROADTYPE && !HasBit(GetRoadTypeInfo(tram_rt)->flags, ROTF_NO_HOUSES)) return true;
+	}
+
+	/* If no road was found surrounding the tile we can allow building the house since there is
+	 * nothing which forbids it, if a road was found but the execution reached this point, then
+	 * all the found roads don't allow houses to be built */
+	return !allow;
 }
 
 /**
@@ -1369,6 +1435,8 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 			}
 		}
 
+		allow_house &= RoadTypesAllowHouseHere(house_tile);
+
 		if (allow_house) {
 			/* Build a house, but not if there already is a house there. */
 			if (!IsTileType(house_tile, MP_HOUSE)) {
@@ -1508,14 +1576,14 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile)
 		}
 		tile = TileAddByDiagDir(tile, target_dir);
 
-		if (IsTileType(tile, MP_ROAD) && !IsRoadDepot(tile) && HasTileRoadType(tile, ROADTYPE_ROAD)) {
+		if (IsTileType(tile, MP_ROAD) && !IsRoadDepot(tile) && HasTileRoadType(tile, RTT_ROAD)) {
 			/* Don't allow building over roads of other cities */
-			if (IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN) && Town::GetByTile(tile) != t) {
+			if (IsRoadOwner(tile, RTT_ROAD, OWNER_TOWN) && Town::GetByTile(tile) != t) {
 				return false;
-			} else if (IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_NONE) && _game_mode == GM_EDITOR) {
+			} else if (IsRoadOwner(tile, RTT_ROAD, OWNER_NONE) && _game_mode == GM_EDITOR) {
 				/* If we are in the SE, and this road-piece has no town owner yet, it just found an
 				 * owner :) (happy happy happy road now) */
-				SetRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN);
+				SetRoadOwner(tile, RTT_ROAD, OWNER_TOWN);
 				SetTownIndex(tile, t->index);
 			}
 		}
@@ -1589,7 +1657,8 @@ static bool GrowTown(Town *t)
 			/* Only work with plain land that not already has a house */
 			if (!IsTileType(tile, MP_HOUSE) && IsTileFlat(tile)) {
 				if (DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR).Succeeded()) {
-					DoCommand(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
+					RoadType rt = GetTownRoadType(t);
+					DoCommand(tile, GenRandomRoadBits() | (rt << 4), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
 					cur_company.Restore();
 					return true;
 				}
@@ -2191,6 +2260,9 @@ static inline bool CanBuildHouseHere(TileIndex tile, bool noslope)
 	/* cannot build on these slopes... */
 	Slope slope = GetTileSlope(tile);
 	if ((noslope && slope != SLOPE_FLAT) || IsSteepSlope(slope)) return false;
+
+	/* at least one RoadTypes allow building the house here? */
+	if (!RoadTypesAllowHouseHere(tile)) return false;
 
 	/* building under a bridge? */
 	if (IsBridgeAbove(tile)) return false;

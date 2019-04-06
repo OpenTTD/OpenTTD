@@ -271,6 +271,7 @@ newgrf_industrytiles.h
 newgrf_object.h
 newgrf_properties.h
 newgrf_railtype.h
+newgrf_roadtype.h
 newgrf_sound.h
 newgrf_spritegroup.h
 newgrf_station.h
@@ -301,6 +302,7 @@ rail.h
 rail_gui.h
 rail_type.h
 rev.h
+road.h
 road_cmd.h
 road_func.h
 road_gui.h
@@ -666,6 +668,7 @@ table/pricebase.h
 table/railtypes.h
 table/road_land.h
 table/roadveh_movement.h
+table/roadtypes.h
 ../objs/settings/table/settings.h
 table/sprites.h
 table/station_land.h
@@ -978,6 +981,7 @@ newgrf_industries.cpp
 newgrf_industrytiles.cpp
 newgrf_object.cpp
 newgrf_railtype.cpp
+newgrf_roadtype.cpp
 newgrf_sound.cpp
 newgrf_spritegroup.cpp
 newgrf_station.cpp

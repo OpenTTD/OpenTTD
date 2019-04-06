@@ -708,7 +708,7 @@ void StartupEngines()
 	Company *c;
 	FOR_ALL_COMPANIES(c) {
 		c->avail_railtypes = GetCompanyRailtypes(c->index);
-		c->avail_roadtypes = GetCompanyRoadtypes(c->index);
+		c->avail_roadtypes = GetCompanyRoadTypes(c->index);
 	}
 
 	/* Invalidate any open purchase lists */
@@ -730,7 +730,8 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company)
 		assert(e->u.rail.railtype < RAILTYPE_END);
 		c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes | GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes, _date);
 	} else if (e->type == VEH_ROAD) {
-		SetBit(c->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+		assert(e->u.road.roadtype < ROADTYPE_END);
+		c->avail_roadtypes = AddDateIntroducedRoadTypes(c->avail_roadtypes | GetRoadTypeInfo(e->u.road.roadtype)->introduces_roadtypes, _date);
 	}
 
 	e->preview_company = INVALID_COMPANY;
@@ -810,6 +811,7 @@ void EnginesDailyLoop()
 	Company *c;
 	FOR_ALL_COMPANIES(c) {
 		c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes, _date);
+		c->avail_roadtypes = AddDateIntroducedRoadTypes(c->avail_roadtypes, _date);
 	}
 
 	if (_cur_year >= _year_engine_aging_stops) return;
@@ -951,7 +953,8 @@ static void NewVehicleAvailable(Engine *e)
 		FOR_ALL_COMPANIES(c) c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes | GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes, _date);
 	} else if (e->type == VEH_ROAD) {
 		/* maybe make another road type available */
-		FOR_ALL_COMPANIES(c) SetBit(c->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+		assert(e->u.road.roadtype < ROADTYPE_END);
+		FOR_ALL_COMPANIES(c) c->avail_roadtypes = AddDateIntroducedRoadTypes(c->avail_roadtypes | GetRoadTypeInfo(e->u.road.roadtype)->introduces_roadtypes, _date);
 	}
 
 	/* Only broadcast event if AIs are able to build this vehicle type. */
@@ -1097,6 +1100,11 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 		/* Check if the rail type is available to this company */
 		const Company *c = Company::Get(company);
 		if (((GetRailTypeInfo(e->u.rail.railtype))->compatible_railtypes & c->avail_railtypes) == 0) return false;
+	}
+	if (type == VEH_ROAD && company != OWNER_DEITY) {
+		/* Check if the road type is available to this company */
+		const Company *c = Company::Get(company);
+		if ((GetRoadTypeInfo(e->u.road.roadtype)->powered_roadtypes & c->avail_roadtypes) == ROADTYPES_NONE) return false;
 	}
 
 	return true;

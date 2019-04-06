@@ -43,6 +43,9 @@ struct CompanyInfrastructure {
 		for (RailType rt =  RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) total += this->rail[rt];
 		return total;
 	}
+
+	uint32 GetRoadTotal() const;
+	uint32 GetTramTotal() const;
 };
 
 typedef Pool<Company, CompanyID, 1, MAX_COMPANIES> CompanyPool;

@@ -45,7 +45,7 @@ RoadStop *RoadStop::GetNextRoadStop(const RoadVehicle *v) const
 {
 	for (RoadStop *rs = this->next; rs != nullptr; rs = rs->next) {
 		/* The vehicle cannot go to this roadstop (different roadtype) */
-		if ((GetRoadTypes(rs->xy) & v->compatible_roadtypes) == ROADTYPES_NONE) continue;
+		if (!HasTileAnyRoadType(rs->xy, v->compatible_roadtypes)) continue;
 		/* The vehicle is articulated and can therefore not go to a standard road stop. */
 		if (IsStandardRoadStopTile(rs->xy) && v->HasArticulatedPart()) continue;
 

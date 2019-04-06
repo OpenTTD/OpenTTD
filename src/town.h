@@ -299,4 +299,6 @@ static inline uint16 TownTicksToGameTicks(uint16 ticks) {
 
 extern CargoTypes _town_cargoes_accepted;
 
+RoadType GetTownRoadType(const Town *t);
+
 #endif /* TOWN_H */

@@ -131,11 +131,12 @@ void AfterLoadCompanyStats()
 				}
 
 				/* Iterate all present road types as each can have a different owner. */
-				RoadType rt;
-				FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
-					c = Company::GetIfValid(IsRoadDepot(tile) ? GetTileOwner(tile) : GetRoadOwner(tile, rt));
+				FOR_ALL_ROADTRAMTYPES(rtt) {
+					RoadType rt = GetRoadType(tile, rtt);
+					if (rt == INVALID_ROADTYPE) continue;
+					c = Company::GetIfValid(IsRoadDepot(tile) ? GetTileOwner(tile) : GetRoadOwner(tile, rtt));
 					/* A level crossings and depots have two road bits. */
-					if (c != nullptr) c->infrastructure.road[rt] += IsNormalRoad(tile) ? CountBits(GetRoadBits(tile, rt)) : 2;
+					if (c != nullptr) c->infrastructure.road[rt] += IsNormalRoad(tile) ? CountBits(GetRoadBits(tile, rtt)) : 2;
 				}
 				break;
 			}
@@ -153,9 +154,10 @@ void AfterLoadCompanyStats()
 					case STATION_BUS:
 					case STATION_TRUCK: {
 						/* Iterate all present road types as each can have a different owner. */
-						RoadType rt;
-						FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
-							c = Company::GetIfValid(GetRoadOwner(tile, rt));
+						FOR_ALL_ROADTRAMTYPES(rtt) {
+							RoadType rt = GetRoadType(tile, rtt);
+							if (rt == INVALID_ROADTYPE) continue;
+							c = Company::GetIfValid(GetRoadOwner(tile, rtt));
 							if (c != nullptr) c->infrastructure.road[rt] += 2; // A road stop has two road bits.
 						}
 						break;
@@ -210,9 +212,10 @@ void AfterLoadCompanyStats()
 
 						case TRANSPORT_ROAD: {
 							/* Iterate all present road types as each can have a different owner. */
-							RoadType rt;
-							FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
-								c = Company::GetIfValid(GetRoadOwner(tile, rt));
+							FOR_ALL_ROADTRAMTYPES(rtt) {
+								RoadType rt = GetRoadType(tile, rtt);
+								if (rt == INVALID_ROADTYPE) continue;
+								c = Company::GetIfValid(GetRoadOwner(tile, rtt));
 								if (c != nullptr) c->infrastructure.road[rt] += len * 2; // A full diagonal road has two road bits.
 							}
 							break;

@@ -211,13 +211,11 @@ template<bool Tfrom, bool Tvia>
 	if (!IsValidStation(station_id)) return false;
 	if (!ScriptRoad::IsRoadTypeAvailable(road_type)) return false;
 
-	::RoadTypes r = RoadTypeToRoadTypes((::RoadType)road_type);
-
 	for (const RoadStop *rs = ::Station::Get(station_id)->GetPrimaryRoadStop(ROADSTOP_BUS); rs != nullptr; rs = rs->next) {
-		if ((::GetRoadTypes(rs->xy) & r) != 0) return true;
+		if (HasBit(::GetPresentRoadTypes(rs->xy), (::RoadType)road_type)) return true;
 	}
 	for (const RoadStop *rs = ::Station::Get(station_id)->GetPrimaryRoadStop(ROADSTOP_TRUCK); rs != nullptr; rs = rs->next) {
-		if ((::GetRoadTypes(rs->xy) & r) != 0) return true;
+		if (HasBit(::GetPresentRoadTypes(rs->xy), (::RoadType)road_type)) return true;
 	}
 
 	return false;

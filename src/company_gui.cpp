@@ -30,6 +30,7 @@
 #include "core/geometry_func.hpp"
 #include "object_type.h"
 #include "rail.h"
+#include "road.h"
 #include "engine_base.h"
 #include "window_func.h"
 #include "road_func.h"
@@ -1783,6 +1784,10 @@ static const NWidgetPart _nested_company_infrastructure_widgets[] = {
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_ROAD_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TRAM_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TRAM_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_WATER_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_WATER_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
 			EndContainer(),
@@ -1819,7 +1824,7 @@ struct CompanyInfrastructureWindow : Window
 	void UpdateRailRoadTypes()
 	{
 		this->railtypes = RAILTYPES_NONE;
-		this->roadtypes = ROADTYPES_ROAD; // Road is always available.
+		this->roadtypes = ROADTYPES_NONE;
 
 		/* Find the used railtypes. */
 		Engine *e;
@@ -1832,14 +1837,16 @@ struct CompanyInfrastructureWindow : Window
 		/* Get the date introduced railtypes as well. */
 		this->railtypes = AddDateIntroducedRailTypes(this->railtypes, MAX_DAY);
 
-		/* Tram is only visible when there will be a tram. */
+		/* Find the used roadtypes. */
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
 			if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
-			if (!HasBit(e->info.misc_flags, EF_ROAD_TRAM)) continue;
 
-			this->roadtypes |= ROADTYPES_TRAM;
-			break;
+			this->roadtypes |= GetRoadTypeInfo(e->u.road.roadtype)->introduces_roadtypes;
 		}
+
+		/* Get the date introduced roadtypes as well. */
+		this->roadtypes = AddDateIntroducedRoadTypes(this->roadtypes, MAX_DAY);
+		this->roadtypes &= ~_roadtypes_hidden_mask;
 	}
 
 	/** Get total infrastructure maintenance cost. */
@@ -1854,8 +1861,11 @@ struct CompanyInfrastructureWindow : Window
 		}
 		total += SignalMaintenanceCost(c->infrastructure.signal);
 
-		if (HasBit(this->roadtypes, ROADTYPE_ROAD)) total += RoadMaintenanceCost(ROADTYPE_ROAD, c->infrastructure.road[ROADTYPE_ROAD]);
-		if (HasBit(this->roadtypes, ROADTYPE_TRAM)) total += RoadMaintenanceCost(ROADTYPE_TRAM, c->infrastructure.road[ROADTYPE_TRAM]);
+		uint32 road_total = c->infrastructure.GetRoadTotal();
+		uint32 tram_total = c->infrastructure.GetTramTotal();
+		for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
+			if (HasBit(this->roadtypes, rt)) total += RoadMaintenanceCost(rt, c->infrastructure.road[rt], RoadTypeIsRoad(rt) ? road_total : tram_total);
+		}
 
 		total += CanalMaintenanceCost(c->infrastructure.water);
 		total += StationMaintenanceCost(c->infrastructure.station);
@@ -1883,7 +1893,8 @@ struct CompanyInfrastructureWindow : Window
 
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT).width);
 
-				for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
+				RailType rt;
+				FOR_ALL_SORTED_RAILTYPES(rt) {
 					if (HasBit(this->railtypes, rt)) {
 						lines++;
 						SetDParam(0, GetRailTypeInfo(rt)->strings.name);
@@ -1899,18 +1910,19 @@ struct CompanyInfrastructureWindow : Window
 				break;
 			}
 
-			case WID_CI_ROAD_DESC: {
-				uint lines = 1;
+			case WID_CI_ROAD_DESC:
+			case WID_CI_TRAM_DESC: {
+				uint lines = 0;
 
-				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT).width);
+				size->width = max(size->width, GetStringBoundingBox(widget == WID_CI_ROAD_DESC ? STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT : STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT).width);
 
-				if (HasBit(this->roadtypes, ROADTYPE_ROAD)) {
-					lines++;
-					size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD).width + WD_FRAMERECT_LEFT);
-				}
-				if (HasBit(this->roadtypes, ROADTYPE_TRAM)) {
-					lines++;
-					size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY).width + WD_FRAMERECT_LEFT);
+				RoadType rt;
+				FOR_ALL_SORTED_ROADTYPES(rt) {
+					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_DESC)) {
+						lines++;
+						SetDParam(0, GetRoadTypeInfo(rt)->strings.name);
+						size->width = max(size->width, GetStringBoundingBox(STR_WHITE_STRING).width + WD_FRAMERECT_LEFT);
+					}
 				}
 
 				size->height = max(size->height, lines * FONT_HEIGHT_NORMAL);
@@ -1930,6 +1942,7 @@ struct CompanyInfrastructureWindow : Window
 
 			case WID_CI_RAIL_COUNT:
 			case WID_CI_ROAD_COUNT:
+			case WID_CI_TRAM_COUNT:
 			case WID_CI_WATER_COUNT:
 			case WID_CI_STATION_COUNT:
 			case WID_CI_TOTAL: {
@@ -1943,9 +1956,12 @@ struct CompanyInfrastructureWindow : Window
 				}
 				max_val = max(max_val, c->infrastructure.signal);
 				max_cost = max(max_cost, SignalMaintenanceCost(c->infrastructure.signal));
+				uint32 road_total = c->infrastructure.GetRoadTotal();
+				uint32 tram_total = c->infrastructure.GetTramTotal();
 				for (RoadType rt = ROADTYPE_BEGIN; rt < ROADTYPE_END; rt++) {
 					max_val = max(max_val, c->infrastructure.road[rt]);
-					max_cost = max(max_cost, RoadMaintenanceCost(rt, c->infrastructure.road[rt]));
+					max_cost = max(max_cost, RoadMaintenanceCost(rt, c->infrastructure.road[rt], RoadTypeIsRoad(rt) ? road_total : tram_total));
+
 				}
 				max_val = max(max_val, c->infrastructure.water);
 				max_cost = max(max_cost, CanalMaintenanceCost(c->infrastructure.water));
@@ -2041,26 +2057,32 @@ struct CompanyInfrastructureWindow : Window
 			}
 
 			case WID_CI_ROAD_DESC:
-				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT);
+			case WID_CI_TRAM_DESC: {
+				DrawString(r.left, r.right, y, widget == WID_CI_ROAD_DESC ? STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT : STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT);
 
-				if (this->roadtypes != ROADTYPES_NONE) {
-					if (HasBit(this->roadtypes, ROADTYPE_ROAD)) DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD);
-					if (HasBit(this->roadtypes, ROADTYPE_TRAM)) DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY);
-				} else {
-					/* No valid roadtypes. */
-					DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
+				/* Draw name of each valid roadtype. */
+				RoadType rt;
+				FOR_ALL_SORTED_ROADTYPES(rt) {
+					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_DESC)) {
+						SetDParam(0, GetRoadTypeInfo(rt)->strings.name);
+						DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_WHITE_STRING);
+					}
 				}
 
 				break;
+			}
 
 			case WID_CI_ROAD_COUNT:
-				if (HasBit(this->roadtypes, ROADTYPE_ROAD)) {
-					this->DrawCountLine(r, y, c->infrastructure.road[ROADTYPE_ROAD], RoadMaintenanceCost(ROADTYPE_ROAD, c->infrastructure.road[ROADTYPE_ROAD]));
-				}
-				if (HasBit(this->roadtypes, ROADTYPE_TRAM)) {
-					this->DrawCountLine(r, y, c->infrastructure.road[ROADTYPE_TRAM], RoadMaintenanceCost(ROADTYPE_TRAM, c->infrastructure.road[ROADTYPE_TRAM]));
+			case WID_CI_TRAM_COUNT: {
+				uint32 road_tram_total = widget == WID_CI_ROAD_COUNT ? c->infrastructure.GetRoadTotal() : c->infrastructure.GetTramTotal();
+				RoadType rt;
+				FOR_ALL_SORTED_ROADTYPES(rt) {
+					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_COUNT)) {
+						this->DrawCountLine(r, y, c->infrastructure.road[rt], RoadMaintenanceCost(rt, c->infrastructure.road[rt], road_tram_total));
+					}
 				}
 				break;
+			}
 
 			case WID_CI_WATER_DESC:
 				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT);

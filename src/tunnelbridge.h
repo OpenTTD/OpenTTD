@@ -13,6 +13,7 @@
 #define TUNNELBRIDGE_H
 
 #include "map_func.h"
+#include "tile_map.h"
 
 void MarkBridgeDirty(TileIndex begin, TileIndex end, DiagDirection direction, uint bridge_height);
 void MarkBridgeDirty(TileIndex tile);
@@ -31,6 +32,18 @@ static inline uint GetTunnelBridgeLength(TileIndex begin, TileIndex end)
 	int y2 = TileY(end);
 
 	return abs(x2 + y2 - x1 - y1) - 1;
+}
+
+/**
+ * Sets the ownership of the bridge/tunnel ramps
+ * @param begin The begin of the tunnel or bridge.
+ * @param end   The end of the tunnel or bridge.
+ * @param owner The new owner to set
+ */
+static inline void SetTunnelBridgeOwner(TileIndex begin, TileIndex end, Owner owner)
+{
+	SetTileOwner(begin, owner);
+	SetTileOwner(end, owner);
 }
 
 extern TileIndex _build_tunnel_endtile;

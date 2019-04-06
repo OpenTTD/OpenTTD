@@ -840,6 +840,9 @@
     <ClInclude Include="..\src\newgrf_railtype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\newgrf_roadtype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\newgrf_sound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -928,6 +931,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\rev.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\road.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\road_cmd.h">
@@ -1941,6 +1947,9 @@
     <ClInclude Include="..\src\table\roadveh_movement.h">
       <Filter>Tables</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\table\roadtypes.h">
+      <Filter>Tables</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\..\objs\settings\table\settings.h">
       <Filter>Tables</Filter>
     </ClInclude>
@@ -2770,6 +2779,9 @@
       <Filter>NewGRF</Filter>
     </ClCompile>
     <ClCompile Include="..\src\newgrf_railtype.cpp">
+      <Filter>NewGRF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\newgrf_roadtype.cpp">
       <Filter>NewGRF</Filter>
     </ClCompile>
     <ClCompile Include="..\src\newgrf_sound.cpp">

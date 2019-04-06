@@ -460,28 +460,51 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile, TileType t)
  */
 static inline uint32 GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 {
-	if (t == MP_STATION) {
-		switch (GetStationType(tile)) {
-			case STATION_RAIL:    return MKCOLOUR_XXXX(PC_VERY_DARK_BROWN);
-			case STATION_AIRPORT: return MKCOLOUR_XXXX(PC_RED);
-			case STATION_TRUCK:   return MKCOLOUR_XXXX(PC_ORANGE);
-			case STATION_BUS:     return MKCOLOUR_XXXX(PC_YELLOW);
-			case STATION_DOCK:    return MKCOLOUR_XXXX(PC_LIGHT_BLUE);
-			default:              return MKCOLOUR_FFFF;
+	switch (t) {
+		case MP_STATION:
+			switch (GetStationType(tile)) {
+				case STATION_RAIL:    return MKCOLOUR_XXXX(PC_VERY_DARK_BROWN);
+				case STATION_AIRPORT: return MKCOLOUR_XXXX(PC_RED);
+				case STATION_TRUCK:   return MKCOLOUR_XXXX(PC_ORANGE);
+				case STATION_BUS:     return MKCOLOUR_XXXX(PC_YELLOW);
+				case STATION_DOCK:    return MKCOLOUR_XXXX(PC_LIGHT_BLUE);
+				default:              return MKCOLOUR_FFFF;
+			}
+
+		case MP_RAILWAY: {
+			AndOr andor = {
+				MKCOLOUR_0XX0(GetRailTypeInfo(GetRailType(tile))->map_colour),
+				_smallmap_contours_andor[t].mand
+			};
+
+			const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+			return ApplyMask(cs->default_colour, &andor);
 		}
-	} else if (t == MP_RAILWAY) {
-		AndOr andor = {
-			MKCOLOUR_0XX0(GetRailTypeInfo(GetRailType(tile))->map_colour),
-			_smallmap_contours_andor[t].mand
-		};
 
-		const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-		return ApplyMask(cs->default_colour, &andor);
+		case MP_ROAD: {
+			const RoadTypeInfo *rti = nullptr;
+			if (GetRoadTypeRoad(tile) != INVALID_ROADTYPE) {
+				rti = GetRoadTypeInfo(GetRoadTypeRoad(tile));
+			} else {
+				rti = GetRoadTypeInfo(GetRoadTypeTram(tile));
+			}
+			if (rti != nullptr) {
+				AndOr andor = {
+					MKCOLOUR_0XX0(rti->map_colour),
+					_smallmap_contours_andor[t].mand
+				};
+
+				const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+				return ApplyMask(cs->default_colour, &andor);
+			}
+			FALLTHROUGH;
+		}
+
+		default:
+			/* Ground colour */
+			const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+			return ApplyMask(cs->default_colour, &_smallmap_contours_andor[t]);
 	}
-
-	/* Ground colour */
-	const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-	return ApplyMask(cs->default_colour, &_smallmap_contours_andor[t]);
 }
 
 /**

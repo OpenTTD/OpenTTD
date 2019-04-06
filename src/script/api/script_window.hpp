@@ -954,9 +954,11 @@ public:
 		WID_RV_INFO_TAB                              = ::WID_RV_INFO_TAB,                              ///< Info tab.
 		WID_RV_STOP_REPLACE                          = ::WID_RV_STOP_REPLACE,                          ///< Stop Replacing button.
 
+		/* Train/road only widgets */
+		WID_RV_RAIL_ROAD_TYPE_DROPDOWN               = ::WID_RV_RAIL_ROAD_TYPE_DROPDOWN,               ///< Dropdown menu about the rail/roadtype.
+
 		/* Train only widgets. */
 		WID_RV_TRAIN_ENGINEWAGON_DROPDOWN            = ::WID_RV_TRAIN_ENGINEWAGON_DROPDOWN,            ///< Dropdown to select engines and/or wagons.
-		WID_RV_TRAIN_RAILTYPE_DROPDOWN               = ::WID_RV_TRAIN_RAILTYPE_DROPDOWN,               ///< Dropdown menu about the railtype.
 		WID_RV_TRAIN_WAGONREMOVE_TOGGLE              = ::WID_RV_TRAIN_WAGONREMOVE_TOGGLE,              ///< Button to toggle removing wagons.
 	};
 
@@ -1170,6 +1172,8 @@ public:
 		WID_CI_RAIL_COUNT                            = ::WID_CI_RAIL_COUNT,                            ///< Count of rail.
 		WID_CI_ROAD_DESC                             = ::WID_CI_ROAD_DESC,                             ///< Description of road.
 		WID_CI_ROAD_COUNT                            = ::WID_CI_ROAD_COUNT,                            ///< Count of road.
+		WID_CI_TRAM_DESC                             = ::WID_CI_TRAM_DESC,                             ///< Description of tram.
+		WID_CI_TRAM_COUNT                            = ::WID_CI_TRAM_COUNT,                            ///< Count of tram.
 		WID_CI_WATER_DESC                            = ::WID_CI_WATER_DESC,                            ///< Description of water.
 		WID_CI_WATER_COUNT                           = ::WID_CI_WATER_COUNT,                           ///< Count of water.
 		WID_CI_STATION_DESC                          = ::WID_CI_STATION_DESC,                          ///< Description of station.
@@ -2125,6 +2129,7 @@ public:
 	/** Widgets of the #BuildRoadToolbarWindow class. */
 	enum RoadToolbarWidgets {
 		/* Name starts with RO instead of R, because of collision with RailToolbarWidgets */
+		WID_ROT_CAPTION                              = ::WID_ROT_CAPTION,                              ///< Caption of the window
 		WID_ROT_ROAD_X                               = ::WID_ROT_ROAD_X,                               ///< Build road in x-direction.
 		WID_ROT_ROAD_Y                               = ::WID_ROT_ROAD_Y,                               ///< Build road in y-direction.
 		WID_ROT_AUTOROAD                             = ::WID_ROT_AUTOROAD,                             ///< Autorail.
@@ -2136,6 +2141,7 @@ public:
 		WID_ROT_BUILD_BRIDGE                         = ::WID_ROT_BUILD_BRIDGE,                         ///< Build bridge.
 		WID_ROT_BUILD_TUNNEL                         = ::WID_ROT_BUILD_TUNNEL,                         ///< Build tunnel.
 		WID_ROT_REMOVE                               = ::WID_ROT_REMOVE,                               ///< Remove road.
+		WID_ROT_CONVERT_ROAD                         = ::WID_ROT_CONVERT_ROAD,                         ///< Convert road.
 	};
 
 	/** Widgets of the #BuildRoadDepotWindow class. */
@@ -2435,6 +2441,7 @@ public:
 		WID_TN_BUILDING_TOOLS_START                  = ::WID_TN_BUILDING_TOOLS_START,                  ///< Helper for the offset of the building tools
 		WID_TN_RAILS                                 = ::WID_TN_RAILS,                                 ///< Rail building menu.
 		WID_TN_ROADS                                 = ::WID_TN_ROADS,                                 ///< Road building menu.
+		WID_TN_TRAMS                                 = ::WID_TN_TRAMS,                                 ///< Tram building menu.
 		WID_TN_WATER                                 = ::WID_TN_WATER,                                 ///< Water building toolbar.
 		WID_TN_AIR                                   = ::WID_TN_AIR,                                   ///< Airport building toolbar.
 		WID_TN_LANDSCAPE                             = ::WID_TN_LANDSCAPE,                             ///< Landscaping toolbar.
@@ -2462,11 +2469,11 @@ public:
 		WID_TE_TOWN_GENERATE                         = ::WID_TE_TOWN_GENERATE,                         ///< Town building window.
 		WID_TE_INDUSTRY                              = ::WID_TE_INDUSTRY,                              ///< Industry building window.
 		WID_TE_ROADS                                 = ::WID_TE_ROADS,                                 ///< Road building menu.
+		WID_TE_TRAMS                                 = ::WID_TE_TRAMS,                                 ///< Tram building menu.
 		WID_TE_WATER                                 = ::WID_TE_WATER,                                 ///< Water building toolbar.
 		WID_TE_TREES                                 = ::WID_TE_TREES,                                 ///< Tree building toolbar.
 		WID_TE_SIGNS                                 = ::WID_TE_SIGNS,                                 ///< Sign building.
 		WID_TE_DATE_PANEL                            = ::WID_TE_DATE_PANEL,                            ///< Container for the date widgets.
-		/* The following three need to have the same actual widget number as the normal toolbar due to shared code. */
 		WID_TE_MUSIC_SOUND                           = ::WID_TE_MUSIC_SOUND,                           ///< Music/sound configuration menu.
 		WID_TE_HELP                                  = ::WID_TE_HELP,                                  ///< Help menu.
 		WID_TE_SWITCH_BAR                            = ::WID_TE_SWITCH_BAR,                            ///< Only available when toolbar has been split to switch between different subsets.

@@ -202,6 +202,7 @@ enum Commands {
 	CMD_REMOVE_LONG_ROAD,             ///< remove a complete road (not a "half" one)
 	CMD_BUILD_ROAD,                   ///< build a "half" road
 	CMD_BUILD_ROAD_DEPOT,             ///< build a road depot
+	CMD_CONVERT_ROAD,                 ///< convert a road type
 
 	CMD_BUILD_AIRPORT,                ///< build an airport
 

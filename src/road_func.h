@@ -13,29 +13,9 @@
 #define ROAD_FUNC_H
 
 #include "core/bitmath_func.hpp"
-#include "road_type.h"
+#include "road.h"
 #include "economy_func.h"
-
-/**
- * Iterate through each set RoadType in a RoadTypes value.
- * For more informations see FOR_EACH_SET_BIT_EX.
- *
- * @param var Loop index variable that stores fallowing set road type. Must be of type RoadType.
- * @param road_types The value to iterate through (any expression).
- *
- * @see FOR_EACH_SET_BIT_EX
- */
-#define FOR_EACH_SET_ROADTYPE(var, road_types) FOR_EACH_SET_BIT_EX(RoadType, var, RoadTypes, road_types)
-
-/**
- * Whether the given roadtype is valid.
- * @param rt the roadtype to check for validness
- * @return true if and only if valid
- */
-static inline bool IsValidRoadType(RoadType rt)
-{
-	return rt == ROADTYPE_ROAD || rt == ROADTYPE_TRAM;
-}
+#include "transparency.h"
 
 /**
  * Whether the given roadtype is valid.
@@ -46,32 +26,6 @@ static inline bool IsValidRoadBits(RoadBits r)
 {
 	return r < ROAD_END;
 }
-
-/**
- * Maps a RoadType to the corresponding RoadTypes value
- *
- * @param rt the roadtype to get the roadtypes from
- * @return the roadtypes with the given roadtype
- */
-static inline RoadTypes RoadTypeToRoadTypes(RoadType rt)
-{
-	assert(IsValidRoadType(rt));
-	return (RoadTypes)(1 << rt);
-}
-
-/**
- * Returns the RoadTypes which are not present in the given RoadTypes
- *
- * This function returns the complement of a given RoadTypes.
- *
- * @param r The given RoadTypes
- * @return The complement of the given RoadTypes
- */
-static inline RoadTypes ComplementRoadTypes(RoadTypes r)
-{
-	return (RoadTypes)(ROADTYPES_ALL ^ r);
-}
-
 
 /**
  * Calculate the complement of a RoadBits value
@@ -167,18 +121,44 @@ static inline RoadBits AxisToRoadBits(Axis a)
  * Calculates the maintenance cost of a number of road bits.
  * @param roadtype Road type to get the cost for.
  * @param num Number of road bits.
+ * @param total_num Total number of road bits of all road/tram-types.
  * @return Total cost.
  */
-static inline Money RoadMaintenanceCost(RoadType roadtype, uint32 num)
+static inline Money RoadMaintenanceCost(RoadType roadtype, uint32 num, uint32 total_num)
 {
-	assert(IsValidRoadType(roadtype));
-	return (_price[PR_INFRASTRUCTURE_ROAD] * (roadtype == ROADTYPE_TRAM ? 3 : 2) * num * (1 + IntSqrt(num))) >> 9; // 2 bits fraction for the multiplier and 7 bits scaling.
+	assert(roadtype < ROADTYPE_END);
+	return (_price[PR_INFRASTRUCTURE_ROAD] * GetRoadTypeInfo(roadtype)->maintenance_multiplier * num * (1 + IntSqrt(total_num))) >> 12;
 }
 
-bool HasRoadTypesAvail(const CompanyID company, const RoadTypes rts);
-bool ValParamRoadType(const RoadType rt);
-RoadTypes GetCompanyRoadtypes(const CompanyID company);
+/**
+ * Test if a road type has catenary
+ * @param roadtype Road type to test
+ */
+static inline bool HasRoadCatenary(RoadType roadtype)
+{
+	assert(roadtype < ROADTYPE_END);
+	return HasBit(GetRoadTypeInfo(roadtype)->flags, ROTF_CATENARY);
+}
+
+/**
+ * Test if we should draw road catenary
+ * @param roadtype Road type to test
+ */
+static inline bool HasRoadCatenaryDrawn(RoadType roadtype)
+{
+	return HasRoadCatenary(roadtype) && !IsInvisibilitySet(TO_CATENARY);
+}
+
+bool HasRoadTypeAvail(CompanyID company, RoadType roadtype);
+bool ValParamRoadType(RoadType roadtype);
+RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces = true);
+RoadTypes GetRoadTypes(bool introduces);
+RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, Date date);
 
 void UpdateLevelCrossing(TileIndex tile, bool sound = true);
+void UpdateCompanyRoadInfrastructure(RoadType rt, Owner o, int count);
+
+struct TileInfo;
+void DrawRoadOverlays(const TileInfo *ti, PaletteID pal, const RoadTypeInfo *road_rti, const RoadTypeInfo *tram_rit, uint road_offset, uint tram_offset);
 
 #endif /* ROAD_FUNC_H */

@@ -83,7 +83,7 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 	switch (vehicle_type) {
 		case ScriptVehicle::VT_ROAD:
 			type |= (TRANSPORT_ROAD << 15);
-			type |= (::RoadTypeToRoadTypes((::RoadType)ScriptObject::GetRoadType()) << 8);
+			type |= (ScriptRoad::GetCurrentRoadType() << 8);
 			break;
 		case ScriptVehicle::VT_RAIL:
 			type |= (TRANSPORT_RAIL << 15);
@@ -114,7 +114,7 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 	DiagDirection dir_1 = ::DiagdirBetweenTiles(end, start);
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	return ScriptObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (ScriptObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD, nullptr, &::_DoCommandReturnBuildBridge2);
+	return ScriptObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (ScriptRoad::GetCurrentRoadType() << 4), 0, CMD_BUILD_ROAD, nullptr, &::_DoCommandReturnBuildBridge2);
 }
 
 /* static */ bool ScriptBridge::_BuildBridgeRoad2()
@@ -126,7 +126,7 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 	DiagDirection dir_1 = ::DiagdirBetweenTiles(end, start);
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	return ScriptObject::DoCommand(end + ::TileOffsByDiagDir(dir_2), ::DiagDirToRoadBits(dir_1) | (ScriptObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD);
+	return ScriptObject::DoCommand(end + ::TileOffsByDiagDir(dir_2), ::DiagDirToRoadBits(dir_1) | (ScriptRoad::GetCurrentRoadType() << 4), 0, CMD_BUILD_ROAD);
 }
 
 /* static */ bool ScriptBridge::RemoveBridge(TileIndex tile)
