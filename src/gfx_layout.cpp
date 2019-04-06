@@ -208,7 +208,7 @@ public:
 		LEErrorCode status = LE_NO_ERROR;
 		/* ParagraphLayout does not copy "buff", so it must stay valid.
 		 * "runs" is copied according to the ICU source, but the documentation does not specify anything, so this might break somewhen. */
-		icu::ParagraphLayout *p = new icu::ParagraphLayout(buff, length, &runs, NULL, NULL, NULL, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, false, status);
+		icu::ParagraphLayout *p = new icu::ParagraphLayout(buff, length, &runs, NULL, NULL, NULL, _current_text_dir == TD_RTL ? 1 : 0, false, status);
 		if (status != LE_NO_ERROR) {
 			delete p;
 			return NULL;
