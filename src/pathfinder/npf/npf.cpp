@@ -43,6 +43,7 @@ struct AyStarUserData {
 	TransportType type;
 	RailTypes railtypes;
 	RoadTypes roadtypes;
+	uint subtype;
 };
 
 /** Indices into AyStarNode.userdata[] */
@@ -719,7 +720,7 @@ static DiagDirection GetDepotDirection(TileIndex tile, TransportType type)
 static DiagDirection GetSingleTramBit(TileIndex tile)
 {
 	if (IsNormalRoadTile(tile)) {
-		RoadBits rb = GetRoadBits(tile, ROADTYPE_TRAM);
+		RoadBits rb = GetRoadBits(tile, RTT_TRAM);
 		switch (rb) {
 			case ROAD_NW: return DIAGDIR_NW;
 			case ROAD_SW: return DIAGDIR_SW;
@@ -747,7 +748,7 @@ static DiagDirection GetTileSingleEntry(TileIndex tile, TransportType type, uint
 
 	if (type == TRANSPORT_ROAD) {
 		if (IsStandardRoadStopTile(tile)) return GetRoadStopDir(tile);
-		if (HasBit(subtype, ROADTYPE_TRAM)) return GetSingleTramBit(tile);
+		if ((RoadTramType)subtype == RTT_TRAM) return GetSingleTramBit(tile);
 	}
 
 	return INVALID_DIAGDIR;
@@ -785,13 +786,24 @@ static bool CanEnterTile(TileIndex tile, DiagDirection dir, AyStarUserData *user
 	if (!CanEnterTileOwnerCheck(user->owner, tile, dir)) return false;
 
 	/* check correct rail type (mono, maglev, etc) */
-	if (user->type == TRANSPORT_RAIL) {
-		RailType rail_type = GetTileRailType(tile);
-		if (!HasBit(user->railtypes, rail_type)) return false;
+	switch (user->type) {
+		case TRANSPORT_RAIL: {
+			RailType rail_type = GetTileRailType(tile);
+			if (!HasBit(user->railtypes, rail_type)) return false;
+			break;
+		}
+
+		case TRANSPORT_ROAD: {
+			RoadType road_type = GetRoadType(tile, (RoadTramType)user->subtype);
+			if (!HasBit(user->roadtypes, road_type)) return false;
+			break;
+		}
+
+		default: break;
 	}
 
 	/* Depots, standard roadstops and single tram bits can only be entered from one direction */
-	DiagDirection single_entry = GetTileSingleEntry(tile, user->type, user->roadtypes);
+	DiagDirection single_entry = GetTileSingleEntry(tile, user->type, user->subtype);
 	if (single_entry != INVALID_DIAGDIR && single_entry != ReverseDiagDir(dir)) return false;
 
 	return true;
@@ -813,7 +825,7 @@ static TrackdirBits GetDriveableTrackdirBits(TileIndex dst_tile, TileIndex src_t
 {
 	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(GetTileTrackStatus(dst_tile, type, subtype));
 
-	if (trackdirbits == TRACKDIR_BIT_NONE && type == TRANSPORT_ROAD && HasBit(subtype, ROADTYPE_TRAM)) {
+	if (trackdirbits == TRACKDIR_BIT_NONE && type == TRANSPORT_ROAD && (RoadTramType)subtype == RTT_TRAM) {
 		/* GetTileTrackStatus() returns 0 for single tram bits.
 		 * As we cannot change it there (easily) without breaking something, change it here */
 		switch (GetSingleTramBit(dst_tile)) {
@@ -863,7 +875,7 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
 
 	/* Information about the vehicle: TransportType (road/rail/water) and SubType (compatible rail/road types) */
 	TransportType type = user->type;
-	uint subtype = user->roadtypes;
+	uint subtype = user->subtype;
 
 	/* Initialize to 0, so we can jump out (return) somewhere an have no neighbours */
 	aystar->num_neighbours = 0;
@@ -894,11 +906,11 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
 		/* We leave src_tile in src_exitdir and reach dst_tile */
 		dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDiagDir(src_exitdir));
 
-		if (dst_tile != INVALID_TILE && !CanEnterTile(dst_tile, src_exitdir, user)) dst_tile = INVALID_TILE;
+		if (dst_tile != INVALID_TILE && IsNormalRoadTile(dst_tile) && !CanEnterTile(dst_tile, src_exitdir, user)) dst_tile = INVALID_TILE;
 
 		if (dst_tile == INVALID_TILE) {
 			/* We cannot enter the next tile. Road vehicles can reverse, others reach dead end */
-			if (type != TRANSPORT_ROAD || HasBit(subtype, ROADTYPE_TRAM)) return;
+			if (type != TRANSPORT_ROAD || (RoadTramType)subtype == RTT_TRAM) return;
 
 			dst_tile = src_tile;
 			src_trackdir = ReverseTrackdir(src_trackdir);
@@ -908,7 +920,7 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
 
 		if (trackdirbits == TRACKDIR_BIT_NONE) {
 			/* We cannot enter the next tile. Road vehicles can reverse, others reach dead end */
-			if (type != TRANSPORT_ROAD || HasBit(subtype, ROADTYPE_TRAM)) return;
+			if (type != TRANSPORT_ROAD || (RoadTramType)subtype == RTT_TRAM) return;
 
 			dst_tile = src_tile;
 			src_trackdir = ReverseTrackdir(src_trackdir);
@@ -1120,7 +1132,7 @@ FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penal
 {
 	Trackdir trackdir = v->GetVehicleTrackdir();
 
-	AyStarUserData user = { v->owner, TRANSPORT_ROAD, RAILTYPES_NONE, v->compatible_roadtypes };
+	AyStarUserData user = { v->owner, TRANSPORT_ROAD, RAILTYPES_NONE, v->compatible_roadtypes, GetRoadTramType(v->roadtype) };
 	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, INVALID_TILE, INVALID_TRACKDIR, false, nullptr, &user, 0, max_penalty);
 
 	if (ftd.best_bird_dist != 0) return FindDepotData();
@@ -1140,7 +1152,7 @@ Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDir
 	NPFFillWithOrderData(&fstd, v);
 	Trackdir trackdir = DiagDirToDiagTrackdir(enterdir);
 
-	AyStarUserData user = { v->owner, TRANSPORT_ROAD, RAILTYPES_NONE, v->compatible_roadtypes };
+	AyStarUserData user = { v->owner, TRANSPORT_ROAD, RAILTYPES_NONE, v->compatible_roadtypes, GetRoadTramType(v->roadtype) };
 	NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, &user);
 
 	assert(ftd.best_trackdir != INVALID_TRACKDIR);
@@ -1163,7 +1175,7 @@ Track NPFShipChooseTrack(const Ship *v, bool &path_found)
 
 	NPFFillWithOrderData(&fstd, v);
 
-	AyStarUserData user = { v->owner, TRANSPORT_WATER, RAILTYPES_NONE, ROADTYPES_NONE };
+	AyStarUserData user = { v->owner, TRANSPORT_WATER, RAILTYPES_NONE, ROADTYPES_NONE, 0 };
 	NPFFoundTargetData ftd = NPFRouteToStationOrTile(v->tile, trackdir, true, &fstd, &user);
 
 	assert(ftd.best_trackdir != INVALID_TRACKDIR);
@@ -1188,7 +1200,7 @@ bool NPFShipCheckReverse(const Ship *v)
 	assert(trackdir != INVALID_TRACKDIR);
 	assert(trackdir_rev != INVALID_TRACKDIR);
 
-	AyStarUserData user = { v->owner, TRANSPORT_WATER, RAILTYPES_NONE, ROADTYPES_NONE };
+	AyStarUserData user = { v->owner, TRANSPORT_WATER, RAILTYPES_NONE, ROADTYPES_NONE, 0 };
 	ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, false, v->tile, trackdir_rev, false, &fstd, &user);
 	/* If we didn't find anything, just keep on going straight ahead, otherwise take the reverse flag */
 	return ftd.best_bird_dist == 0 && NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE);
@@ -1206,7 +1218,7 @@ FindDepotData NPFTrainFindNearestDepot(const Train *v, int max_penalty)
 	fstd.reserve_path = false;
 
 	assert(trackdir != INVALID_TRACKDIR);
-	AyStarUserData user = { v->owner, TRANSPORT_RAIL, v->compatible_railtypes, ROADTYPES_NONE };
+	AyStarUserData user = { v->owner, TRANSPORT_RAIL, v->compatible_railtypes, ROADTYPES_NONE, 0 };
 	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, &fstd, &user, NPF_INFINITE_PENALTY, max_penalty);
 	if (ftd.best_bird_dist != 0) return FindDepotData();
 
@@ -1235,7 +1247,7 @@ bool NPFTrainFindNearestSafeTile(const Train *v, TileIndex tile, Trackdir trackd
 
 	/* perform a breadth first search. Target is nullptr,
 	 * since we are just looking for any safe tile...*/
-	AyStarUserData user = { v->owner, TRANSPORT_RAIL, railtypes, ROADTYPES_NONE };
+	AyStarUserData user = { v->owner, TRANSPORT_RAIL, railtypes, ROADTYPES_NONE, 0 };
 	return NPFRouteInternal(&start1, true, nullptr, false, &fstd, NPFFindSafeTile, NPFCalcZero, &user, 0, true).res_okay;
 }
 
@@ -1252,7 +1264,7 @@ bool NPFTrainCheckReverse(const Train *v)
 	assert(trackdir != INVALID_TRACKDIR);
 	assert(trackdir_rev != INVALID_TRACKDIR);
 
-	AyStarUserData user = { v->owner, TRANSPORT_RAIL, v->compatible_railtypes, ROADTYPES_NONE };
+	AyStarUserData user = { v->owner, TRANSPORT_RAIL, v->compatible_railtypes, ROADTYPES_NONE, 0 };
 	ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, &fstd, &user);
 	/* If we didn't find anything, just keep on going straight ahead, otherwise take the reverse flag */
 	return ftd.best_bird_dist == 0 && NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE);
@@ -1266,7 +1278,7 @@ Track NPFTrainChooseTrack(const Train *v, bool &path_found, bool reserve_track, 
 	PBSTileInfo origin = FollowTrainReservation(v);
 	assert(IsValidTrackdir(origin.trackdir));
 
-	AyStarUserData user = { v->owner, TRANSPORT_RAIL, v->compatible_railtypes, ROADTYPES_NONE };
+	AyStarUserData user = { v->owner, TRANSPORT_RAIL, v->compatible_railtypes, ROADTYPES_NONE, 0 };
 	NPFFoundTargetData ftd = NPFRouteToStationOrTile(origin.tile, origin.trackdir, true, &fstd, &user);
 
 	if (target != nullptr) {

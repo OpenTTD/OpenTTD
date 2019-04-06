@@ -22,6 +22,11 @@
  * API additions:
  * \li GSVehicle::BuildVehicleWithRefit
  * \li GSVehicle::GetBuildWithRefitCapacity
+ * \li GSRoad::GetName
+ * \li GSRoad::RoadVehCanRunOnRoad
+ * \li GSRoad::RoadVehHasPowerOnRoad
+ * \li GSRoad::ConvertRoadType
+ * \li GSRoad::GetMaxSpeed
  *
  * \b 1.9.0
  *
@@ -41,6 +46,9 @@
  * \b 1.8.0
  *
  * No changes
+ *
+ * API additions:
+ * \li GSRoad::ERR_ROADTYPE_DISALLOWS_CROSSING
  *
  * \b 1.7.0 - 1.7.2
  *

@@ -36,7 +36,7 @@ struct GroundVehicleCache {
 	uint16 cached_axle_resistance;  ///< Resistance caused by the axles of the vehicle (valid only for the first engine).
 
 	/* Cached acceleration values, recalculated on load and each time a vehicle is added to/removed from the consist. */
-	uint16 cached_max_track_speed;  ///< Maximum consist speed limited by track type (valid only for the first engine).
+	uint16 cached_max_track_speed;  ///< Maximum consist speed (in internal units) limited by track type (valid only for the first engine).
 	uint32 cached_power;            ///< Total power of the consist (valid only for the first engine).
 	uint32 cached_air_drag;         ///< Air drag coefficient of the vehicle (valid only for the first engine).
 

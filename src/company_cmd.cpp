@@ -562,7 +562,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	c->share_owners[0] = c->share_owners[1] = c->share_owners[2] = c->share_owners[3] = INVALID_OWNER;
 
 	c->avail_railtypes = GetCompanyRailtypes(c->index);
-	c->avail_roadtypes = GetCompanyRoadtypes(c->index);
+	c->avail_roadtypes = GetCompanyRoadTypes(c->index);
 	c->inaugurated_year = _cur_year;
 	RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false, false); // create a random company manager face
 
@@ -1164,4 +1164,30 @@ int CompanyServiceInterval(const Company *c, VehicleType type)
 		case VEH_AIRCRAFT: return vds->servint_aircraft;
 		case VEH_SHIP:     return vds->servint_ships;
 	}
+}
+
+/**
+ * Get total sum of all owned road bits.
+ * @return Combined total road road bits.
+ */
+uint32 CompanyInfrastructure::GetRoadTotal() const
+{
+	uint32 total = 0;
+	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
+		if (RoadTypeIsRoad(rt)) total += this->road[rt];
+	}
+	return total;
+}
+
+/**
+ * Get total sum of all owned tram bits.
+ * @return Combined total of tram road bits.
+ */
+uint32 CompanyInfrastructure::GetTramTotal() const
+{
+	uint32 total = 0;
+	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
+		if (RoadTypeIsTram(rt)) total += this->road[rt];
+	}
+	return total;
 }

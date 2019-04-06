@@ -39,6 +39,7 @@ enum ToolbarNormalWidgets {
 	WID_TN_BUILDING_TOOLS_START, ///< Helper for the offset of the building tools
 	WID_TN_RAILS         = WID_TN_BUILDING_TOOLS_START, ///< Rail building menu.
 	WID_TN_ROADS,         ///< Road building menu.
+	WID_TN_TRAMS,         ///< Tram building menu.
 	WID_TN_WATER,         ///< Water building toolbar.
 	WID_TN_AIR,           ///< Airport building toolbar.
 	WID_TN_LANDSCAPE,     ///< Landscaping toolbar.
@@ -66,6 +67,7 @@ enum ToolbarEditorWidgets {
 	WID_TE_TOWN_GENERATE, ///< Town building window.
 	WID_TE_INDUSTRY,      ///< Industry building window.
 	WID_TE_ROADS,         ///< Road building menu.
+	WID_TE_TRAMS,         ///< Tram building menu.
 	WID_TE_WATER,         ///< Water building toolbar.
 	WID_TE_TREES,         ///< Tree building toolbar.
 	WID_TE_SIGNS,         ///< Sign building.

@@ -18,6 +18,7 @@
 #include "vehicle_type.h"
 #include "economy_func.h"
 #include "rail.h"
+#include "road.h"
 #include "linkgraph/linkgraph_type.h"
 #include "industry_type.h"
 

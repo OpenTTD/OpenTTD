@@ -14,36 +14,37 @@
 
 #include "core/enum_type.hpp"
 
+typedef uint32 RoadTypeLabel;
+
+static const RoadTypeLabel ROADTYPE_ROAD_LABEL = 'ROAD';
+static const RoadTypeLabel ROADTYPE_TRAM_LABEL = 'TRAM';
+
 /**
  * The different roadtypes we support
  *
  * @note currently only ROADTYPE_ROAD and ROADTYPE_TRAM are supported.
  */
 enum RoadType {
-	ROADTYPE_BEGIN = 0,      ///< Used for iterations
-	ROADTYPE_ROAD = 0,       ///< Basic road type
-	ROADTYPE_TRAM = 1,       ///< Trams
-	ROADTYPE_END,            ///< Used for iterations
-	INVALID_ROADTYPE = 0xFF, ///< flag for invalid roadtype
+	ROADTYPE_BEGIN   = 0,    ///< Used for iterations
+	ROADTYPE_ROAD    = 0,    ///< Basic road type
+	ROADTYPE_TRAM    = 1,    ///< Trams
+	ROADTYPE_END     = 63,   ///< Used for iterations
+	INVALID_ROADTYPE = 63,   ///< flag for invalid roadtype
 };
 DECLARE_POSTFIX_INCREMENT(RoadType)
-template <> struct EnumPropsT<RoadType> : MakeEnumPropsT<RoadType, byte, ROADTYPE_BEGIN, ROADTYPE_END, INVALID_ROADTYPE, 2> {};
+template <> struct EnumPropsT<RoadType> : MakeEnumPropsT<RoadType, byte, ROADTYPE_BEGIN, ROADTYPE_END, INVALID_ROADTYPE, 6> {};
 
 /**
- * The different roadtypes we support, but then a bitmask of them
- * @note currently only roadtypes with ROADTYPE_ROAD and ROADTYPE_TRAM are supported.
+ * The different roadtypes we support, but then a bitmask of them.
+ * @note Must be treated as a uint64 type, narrowing it causes bit membership tests to give wrong results.
  */
-enum RoadTypes : byte {
+enum RoadTypes : uint64 {
 	ROADTYPES_NONE     = 0,                                ///< No roadtypes
 	ROADTYPES_ROAD     = 1 << ROADTYPE_ROAD,               ///< Road
 	ROADTYPES_TRAM     = 1 << ROADTYPE_TRAM,               ///< Trams
-	ROADTYPES_ALL      = ROADTYPES_ROAD | ROADTYPES_TRAM,  ///< Road + trams
-	ROADTYPES_END,                                         ///< Used for iterations?
-	INVALID_ROADTYPES  = 0xFF,                             ///< Invalid roadtypes
+	INVALID_ROADTYPES  = UINT64_MAX,                       ///< Invalid roadtypes
 };
 DECLARE_ENUM_AS_BIT_SET(RoadTypes)
-template <> struct EnumPropsT<RoadTypes> : MakeEnumPropsT<RoadTypes, byte, ROADTYPES_NONE, ROADTYPES_END, INVALID_ROADTYPES, 2> {};
-
 
 /**
  * Enumeration for the road parts on a tile.

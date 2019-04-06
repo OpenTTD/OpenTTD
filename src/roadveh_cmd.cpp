@@ -260,7 +260,10 @@ void RoadVehUpdateCache(RoadVehicle *v, bool same_length)
  */
 CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **ret)
 {
-	if (HasTileRoadType(tile, ROADTYPE_TRAM) != HasBit(e->info.misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE);
+	/* Check that the vehicle can drive on the road in question */
+	RoadType rt = e->u.road.roadtype;
+	const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
+	if (!HasTileAnyRoadType(tile, rti->powered_roadtypes)) return_cmd_error(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE);
 
 	if (flags & DC_EXEC) {
 		const RoadVehicleInfo *rvi = &e->u.road;
@@ -304,8 +307,8 @@ CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->random_bits = VehicleRandomBits();
 		v->SetFrontEngine();
 
-		v->roadtype = HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
-		v->compatible_roadtypes = RoadTypeToRoadTypes(v->roadtype);
+		v->roadtype = rt;
+		v->compatible_roadtypes = rti->powered_roadtypes;
 		v->gcache.cached_veh_length = VEHICLE_LENGTH;
 
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
@@ -437,16 +440,16 @@ void RoadVehicle::UpdateDeltaXY()
  */
 inline int RoadVehicle::GetCurrentMaxSpeed() const
 {
-	int max_speed = this->vcache.cached_max_speed;
+	int max_speed = this->gcache.cached_max_track_speed;
 
 	/* Limit speed to 50% while reversing, 75% in curves. */
 	for (const RoadVehicle *u = this; u != nullptr; u = u->Next()) {
 		if (_settings_game.vehicle.roadveh_acceleration_model == AM_REALISTIC) {
 			if (this->state <= RVSB_TRACKDIR_MASK && IsReversingRoadTrackdir((Trackdir)this->state)) {
-				max_speed = this->vcache.cached_max_speed / 2;
+				max_speed = this->gcache.cached_max_track_speed / 2;
 				break;
 			} else if ((u->direction & 1) == 0) {
-				max_speed = this->vcache.cached_max_speed * 3 / 4;
+				max_speed = this->gcache.cached_max_track_speed * 3 / 4;
 			}
 		}
 
@@ -691,7 +694,7 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 			st->had_vehicle_of_type |= HVOT_BUS;
 			SetDParam(0, st->index);
 			AddVehicleNewsItem(
-				v->roadtype == ROADTYPE_ROAD ? STR_NEWS_FIRST_BUS_ARRIVAL : STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL,
+				RoadTypeIsRoad(v->roadtype) ? STR_NEWS_FIRST_BUS_ARRIVAL : STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL,
 				(v->owner == _local_company) ? NT_ARRIVAL_COMPANY : NT_ARRIVAL_OTHER,
 				v->index,
 				st->index
@@ -705,7 +708,7 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 			st->had_vehicle_of_type |= HVOT_TRUCK;
 			SetDParam(0, st->index);
 			AddVehicleNewsItem(
-				v->roadtype == ROADTYPE_ROAD ? STR_NEWS_FIRST_TRUCK_ARRIVAL : STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL,
+				RoadTypeIsRoad(v->roadtype) ? STR_NEWS_FIRST_TRUCK_ARRIVAL : STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL,
 				(v->owner == _local_company) ? NT_ARRIVAL_COMPANY : NT_ARRIVAL_OTHER,
 				v->index,
 				st->index
@@ -783,7 +786,8 @@ static Vehicle *EnumFindVehBlockingOvertake(Vehicle *v, void *data)
  */
 static bool CheckRoadBlockedForOvertaking(OvertakeData *od)
 {
-	TrackStatus ts = GetTileTrackStatus(od->tile, TRANSPORT_ROAD, od->v->compatible_roadtypes);
+	if (!HasTileAnyRoadType(od->tile, od->v->compatible_roadtypes)) return true;
+	TrackStatus ts = GetTileTrackStatus(od->tile, TRANSPORT_ROAD, GetRoadTramType(od->v->roadtype));
 	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(ts);
 	TrackdirBits red_signals = TrackStatusToRedSignals(ts); // barred level crossing
 	TrackBits trackbits = TrackdirBitsToTrackBits(trackdirbits);
@@ -803,7 +807,7 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	od.u = u;
 
 	/* Trams can't overtake other trams */
-	if (v->roadtype == ROADTYPE_TRAM) return;
+	if (RoadTypeIsTram(v->roadtype)) return;
 
 	/* Don't overtake in stations */
 	if (IsTileType(v->tile, MP_STATION) || IsTileType(u->tile, MP_STATION)) return;
@@ -855,7 +859,7 @@ static void RoadZPosAffectSpeed(RoadVehicle *v, int old_z)
 		v->cur_speed = v->cur_speed * 232 / 256; // slow down by ~10%
 	} else {
 		uint16 spd = v->cur_speed + 2;
-		if (spd <= v->vcache.cached_max_speed) v->cur_speed = spd;
+		if (spd <= v->gcache.cached_max_track_speed) v->cur_speed = spd;
 	}
 }
 
@@ -884,12 +888,12 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 	Trackdir best_track;
 	bool path_found = true;
 
-	TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_ROAD, v->compatible_roadtypes);
+	TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_ROAD, GetRoadTramType(v->roadtype));
 	TrackdirBits red_signals = TrackStatusToRedSignals(ts); // crossing
 	TrackdirBits trackdirs = TrackStatusToTrackdirBits(ts);
 
 	if (IsTileType(tile, MP_ROAD)) {
-		if (IsRoadDepot(tile) && (!IsTileOwner(tile, v->owner) || GetRoadDepotDirection(tile) == enterdir || (GetRoadTypes(tile) & v->compatible_roadtypes) == 0)) {
+		if (IsRoadDepot(tile) && (!IsTileOwner(tile, v->owner) || GetRoadDepotDirection(tile) == enterdir)) {
 			/* Road depot owned by another company or with the wrong orientation */
 			trackdirs = TRACKDIR_BIT_NONE;
 		}
@@ -932,10 +936,10 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 
 	if (v->reverse_ctr != 0) {
 		bool reverse = true;
-		if (v->roadtype == ROADTYPE_TRAM) {
+		if (RoadTypeIsTram(v->roadtype)) {
 			/* Trams may only reverse on a tile if it contains at least the straight
 			 * trackbits or when it is a valid turning tile (i.e. one roadbit) */
-			RoadBits rb = GetAnyRoadBits(tile, ROADTYPE_TRAM);
+			RoadBits rb = GetAnyRoadBits(tile, RTT_TRAM);
 			RoadBits straight = AxisToRoadBits(DiagDirToAxis(enterdir));
 			reverse = ((rb & straight) == straight) ||
 			          (rb == DiagDirToRoadBits(enterdir));
@@ -1014,7 +1018,7 @@ static bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
 	v->direction = DiagDirToDir(dir);
 
 	Trackdir tdir = DiagDirToDiagTrackdir(dir);
-	const RoadDriveEntry *rdp = _road_drive_data[v->roadtype][(_settings_game.vehicle.road_side << RVS_DRIVE_SIDE) + tdir];
+	const RoadDriveEntry *rdp = _road_drive_data[GetRoadTramType(v->roadtype)][(_settings_game.vehicle.road_side << RVS_DRIVE_SIDE) + tdir];
 
 	int x = TileX(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].x & 0xF);
 	int y = TileY(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].y & 0xF);
@@ -1109,7 +1113,7 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
 	};
 	RoadBits required = required_roadbits[dir & 0x07];
 
-	if ((required & GetAnyRoadBits(tile, v->roadtype, true)) == ROAD_NONE) {
+	if ((required & GetAnyRoadBits(tile, GetRoadTramType(v->roadtype), true)) == ROAD_NONE) {
 		dir = INVALID_TRACKDIR;
 	}
 
@@ -1120,15 +1124,16 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
  * Can a tram track build without destruction on the given tile?
  * @param c the company that would be building the tram tracks
  * @param t the tile to build on.
+ * @param rt the tram type to build.
  * @param r the road bits needed.
  * @return true when a track track can be build on 't'
  */
-static bool CanBuildTramTrackOnTile(CompanyID c, TileIndex t, RoadBits r)
+static bool CanBuildTramTrackOnTile(CompanyID c, TileIndex t, RoadType rt, RoadBits r)
 {
 	/* The 'current' company is not necessarily the owner of the vehicle. */
 	Backup<CompanyID> cur_company(_current_company, c, FILE_LINE);
 
-	CommandCost ret = DoCommand(t, ROADTYPE_TRAM << 4 | r, 0, DC_NO_WATER, CMD_BUILD_ROAD);
+	CommandCost ret = DoCommand(t, rt << 4 | r, 0, DC_NO_WATER, CMD_BUILD_ROAD);
 
 	cur_company.Restore();
 	return ret.Succeeded();
@@ -1186,7 +1191,7 @@ bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 	/* Get move position data for next frame.
 	 * For a drive-through road stop use 'straight road' move data.
 	 * In this case v->state is masked to give the road stop entry direction. */
-	RoadDriveEntry rd = _road_drive_data[v->roadtype][(
+	RoadDriveEntry rd = _road_drive_data[GetRoadTramType(v->roadtype)][(
 		(HasBit(v->state, RVS_IN_DT_ROAD_STOP) ? v->state & RVSB_ROAD_STOP_TRACKDIR_MASK : v->state) +
 		(_settings_game.vehicle.road_side << RVS_DRIVE_SIDE)) ^ v->overtaking][v->frame + 1];
 
@@ -1196,7 +1201,11 @@ bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 
 		if (v->IsFrontEngine()) {
 			/* If this is the front engine, look for the right path. */
-			dir = RoadFindPathToDest(v, tile, (DiagDirection)(rd.x & 3));
+			if (HasTileAnyRoadType(tile, v->compatible_roadtypes)) {
+				dir = RoadFindPathToDest(v, tile, (DiagDirection)(rd.x & 3));
+			} else {
+				dir = _road_reverse_table[(DiagDirection)(rd.x & 3)];
+			}
 		} else {
 			dir = FollowPreviousRoadVehicle(v, prev, tile, (DiagDirection)(rd.x & 3), false);
 		}
@@ -1214,7 +1223,7 @@ again:
 			v->overtaking = 0;
 
 			/* Turning around */
-			if (v->roadtype == ROADTYPE_TRAM) {
+			if (RoadTypeIsTram(v->roadtype)) {
 				/* Determine the road bits the tram needs to be able to turn around
 				 * using the 'big' corner loop. */
 				RoadBits needed;
@@ -1227,7 +1236,8 @@ again:
 				}
 				if ((v->Previous() != nullptr && v->Previous()->tile == tile) ||
 						(v->IsFrontEngine() && IsNormalRoadTile(tile) && !HasRoadWorks(tile) &&
-							(needed & GetRoadBits(tile, ROADTYPE_TRAM)) != ROAD_NONE)) {
+							HasTileAnyRoadType(tile, v->compatible_roadtypes) &&
+							(needed & GetRoadBits(tile, RTT_TRAM)) != ROAD_NONE)) {
 					/*
 					 * Taking the 'big' corner for trams only happens when:
 					 * - The previous vehicle in this (articulated) tram chain is
@@ -1238,7 +1248,7 @@ again:
 					 *   going to cause the tram to split up.
 					 * - Or the front of the tram can drive over the next tile.
 					 */
-				} else if (!v->IsFrontEngine() || !CanBuildTramTrackOnTile(v->owner, tile, needed) || ((~needed & GetAnyRoadBits(v->tile, ROADTYPE_TRAM, false)) == ROAD_NONE)) {
+				} else if (!v->IsFrontEngine() || !CanBuildTramTrackOnTile(v->owner, tile, v->roadtype, needed) || ((~needed & GetAnyRoadBits(v->tile, RTT_TRAM, false)) == ROAD_NONE)) {
 					/*
 					 * Taking the 'small' corner for trams only happens when:
 					 * - We are not the from vehicle of an articulated tram.
@@ -1266,7 +1276,7 @@ again:
 		}
 
 		/* Get position data for first frame on the new tile */
-		const RoadDriveEntry *rdp = _road_drive_data[v->roadtype][(dir + (_settings_game.vehicle.road_side << RVS_DRIVE_SIDE)) ^ v->overtaking];
+		const RoadDriveEntry *rdp = _road_drive_data[GetRoadTramType(v->roadtype)][(dir + (_settings_game.vehicle.road_side << RVS_DRIVE_SIDE)) ^ v->overtaking];
 
 		int x = TileX(tile) * TILE_SIZE + rdp[start_frame].x;
 		int y = TileY(tile) * TILE_SIZE + rdp[start_frame].y;
@@ -1318,9 +1328,18 @@ again:
 		}
 
 		if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
+			TileIndex old_tile = v->tile;
+
 			v->tile = tile;
 			v->state = (byte)dir;
 			v->frame = start_frame;
+			RoadTramType rtt = GetRoadTramType(v->roadtype);
+			if (GetRoadType(old_tile, rtt) != GetRoadType(tile, rtt)) {
+				if (v->IsFrontEngine()) {
+					RoadVehUpdateCache(v);
+				}
+				v->First()->CargoChanged();
+			}
 		}
 		if (new_dir != v->direction) {
 			v->direction = new_dir;
@@ -1338,7 +1357,7 @@ again:
 		Trackdir dir;
 		uint turn_around_start_frame = RVC_TURN_AROUND_START_FRAME;
 
-		if (v->roadtype == ROADTYPE_TRAM && !IsRoadDepotTile(v->tile) && HasExactlyOneBit(GetAnyRoadBits(v->tile, ROADTYPE_TRAM, true))) {
+		if (RoadTypeIsTram(v->roadtype) && !IsRoadDepotTile(v->tile) && HasExactlyOneBit(GetAnyRoadBits(v->tile, RTT_TRAM, true))) {
 			/*
 			 * The tram is turning around with one tram 'roadbit'. This means that
 			 * it is using the 'big' corner 'drive data'. However, to support the
@@ -1370,7 +1389,7 @@ again:
 			return false;
 		}
 
-		const RoadDriveEntry *rdp = _road_drive_data[v->roadtype][(_settings_game.vehicle.road_side << RVS_DRIVE_SIDE) + dir];
+		const RoadDriveEntry *rdp = _road_drive_data[GetRoadTramType(v->roadtype)][(_settings_game.vehicle.road_side << RVS_DRIVE_SIDE) + dir];
 
 		int x = TileX(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].x;
 		int y = TileY(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].y;
@@ -1478,7 +1497,7 @@ again:
 				TileIndex next_tile = TileAddByDir(v->tile, v->direction);
 
 				/* Check if next inline bay is free and has compatible road. */
-				if (RoadStop::IsDriveThroughRoadStopContinuation(v->tile, next_tile) && (GetRoadTypes(next_tile) & v->compatible_roadtypes) != 0) {
+				if (RoadStop::IsDriveThroughRoadStopContinuation(v->tile, next_tile) && HasTileAnyRoadType(next_tile, v->compatible_roadtypes)) {
 					v->frame++;
 					v->x_pos = x;
 					v->y_pos = y;

@@ -32,15 +32,15 @@
  * @param straight_tunnel_bridge_entrance whether to return straight road bits for tunnels/bridges.
  * @return the road bits of the given tile
  */
-RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt, bool straight_tunnel_bridge_entrance)
+RoadBits GetAnyRoadBits(TileIndex tile, RoadTramType rtt, bool straight_tunnel_bridge_entrance)
 {
-	if (!HasTileRoadType(tile, rt)) return ROAD_NONE;
+	if (!MayHaveRoad(tile) || !HasTileRoadType(tile, rtt)) return ROAD_NONE;
 
 	switch (GetTileType(tile)) {
 		case MP_ROAD:
 			switch (GetRoadTileType(tile)) {
 				default:
-				case ROAD_TILE_NORMAL:   return GetRoadBits(tile, rt);
+				case ROAD_TILE_NORMAL:   return GetRoadBits(tile, rtt);
 				case ROAD_TILE_CROSSING: return GetCrossingRoadBits(tile);
 				case ROAD_TILE_DEPOT:    return DiagDirToRoadBits(GetRoadDepotDirection(tile));
 			}

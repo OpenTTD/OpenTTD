@@ -36,16 +36,21 @@ public:
 		/** Drive through roads can't be build on town owned roads */
 		ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD,           // [STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD]
 
-
 		/** One way roads can't have junctions */
 		ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS, // [STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION]
+
+		/** This roadtype cannot have crossings */
+		ERR_ROADTYPE_DISALLOWS_CROSSING,              // [STR_ERROR_CROSSING_DISALLOWED_ROAD]
+
+		/** No suitable road could be found */
+		ERR_UNSUITABLE_ROAD,                          // [STR_ERROR_NO_SUITABLE_ROAD, STR_ERROR_NO_SUITABLE_TRAMWAY, STR_ERROR_INCOMPATIBLE_ROAD]
 	};
 
 	/**
 	 * Types of road known to the game.
 	 */
 	enum RoadType {
-		/* Note: these values represent part of the in-game RoadType enum */
+		/* Note: these values represent part of the in-game static values */
 		ROADTYPE_ROAD    = ::ROADTYPE_ROAD,    ///< Build road objects.
 		ROADTYPE_TRAM    = ::ROADTYPE_TRAM,    ///< Build tram objects.
 
@@ -70,6 +75,14 @@ public:
 		BT_BUS_STOP,   ///< Build a bus stop
 		BT_TRUCK_STOP, ///< Build a truck stop
 	};
+
+	/**
+	 * Get the name of a road type.
+	 * @param road_type The road type to get the name of.
+	 * @pre IsRoadTypeAvailable(road_type).
+	 * @return The name the road type has.
+	 */
+	static char *GetName(RoadType road_type);
 
 	/**
 	 * Determines whether a busstop or a truckstop is needed to transport a certain cargo.
@@ -136,6 +149,41 @@ public:
 	 * @param road_type The RoadType to set.
 	 */
 	static void SetCurrentRoadType(RoadType road_type);
+
+	/**
+	 * Check if a road vehicle built for a road type can run on another road type.
+	 * @param engine_road_type The road type the road vehicle is built for.
+	 * @param track_road_type The road type you want to check.
+	 * @pre ScriptRoad::IsRoadTypeAvailable(engine_road_type).
+	 * @pre ScriptRoad::IsRoadTypeAvailable(road_road_type).
+	 * @return Whether a road vehicle built for 'engine_road_type' can run on 'road_road_type'.
+	 */
+	static bool RoadVehCanRunOnRoad(ScriptRoad::RoadType engine_road_type, ScriptRoad::RoadType road_road_type);
+
+	/**
+	 * Check if a road vehicle built for a road type has power on another road type.
+	 * @param engine_road_type The road type the road vehicle is built for.
+	 * @param road_road_type The road type you want to check.
+	 * @pre ScriptRoad::IsRoadTypeAvailable(engine_road_type).
+	 * @pre ScriptRoad::IsRoadTypeAvailable(road_road_type).
+	 * @return Whether a road vehicle built for 'engine_road_type' has power on 'road_road_type'.
+	 */
+	static bool RoadVehHasPowerOnRoad(ScriptRoad::RoadType engine_road_type, ScriptRoad::RoadType road_road_type);
+
+
+	/**
+	 * Convert the road on all tiles within a rectangle to another RoadType.
+	 * @param start_tile One corner of the rectangle.
+	 * @param end_tile The opposite corner of the rectangle.
+	 * @param road_type The RoadType you want to convert.
+	 * @pre ScriptMap::IsValidTile(start_tile).
+	 * @pre ScriptMap::IsValidTile(end_tile).
+	 * @pre IsRoadTypeAvailable(road_type).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @exception ScriptRoad::ERR_UNSUITABLE_ROAD
+	 * @return Whether at least some road has been converted successfully.
+	 */
+	static bool ConvertRoadType(TileIndex start_tile, TileIndex end_tile, RoadType road_type);
 
 	/**
 	 * Check if a given tile has RoadType.
@@ -482,16 +530,28 @@ public:
 
 	/**
 	 * Get the baseprice of building a road-related object.
-	 * @param roadtype the roadtype that is build (on)
+	 * @param roadtype the roadtype of the object to build
 	 * @param build_type the type of object to build
-	 * @pre IsRoadTypeAvailable(railtype)
+	 * @pre IsRoadTypeAvailable(roadtype)
 	 * @return The baseprice of building the given object.
 	 */
 	static Money GetBuildCost(RoadType roadtype, BuildType build_type);
 
 	/**
-	 * Get the maintenance cost factor of a roadtype.
-	 * @param roadtype The roadtype to get the maintenance factor of.
+	 * Get the maximum speed of road vehicles running on this roadtype.
+	 * @param road_type The roadtype to get the maximum speed of.
+	 * @pre IsRoadTypeAvailable(road_type)
+	 * @return The maximum speed road vehicles can run on this roadtype
+	 *   or 0 if there is no limit.
+	 * @note The speed is in OpenTTD's internal speed unit.
+	 *       This is mph / 0.8, which is roughly 0.5 km/h.
+	 *       To get km/h multiply this number by 2.01168.
+	 */
+	static int32 GetMaxSpeed(RoadType road_type);
+
+	/**
+	 * Get the maintenance cost factor of a road type.
+	 * @param roadtype The road type to get the maintenance factor of.
 	 * @pre IsRoadTypeAvailable(roadtype)
 	 * @return Maintenance cost factor of the roadtype.
 	 */

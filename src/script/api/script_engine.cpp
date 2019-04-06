@@ -224,7 +224,7 @@
 	if (!IsValidEngine(engine_id)) return ScriptRoad::ROADTYPE_INVALID;
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_ROAD) return ScriptRoad::ROADTYPE_INVALID;
 
-	return HasBit(::EngInfo(engine_id)->misc_flags, EF_ROAD_TRAM) ? ScriptRoad::ROADTYPE_TRAM : ScriptRoad::ROADTYPE_ROAD;
+	return (ScriptRoad::RoadType)(uint)::RoadVehInfo(engine_id)->roadtype;
 }
 
 /* static */ ScriptRail::RailType ScriptEngine::GetRailType(EngineID engine_id)

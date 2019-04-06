@@ -33,12 +33,12 @@
 		case MP_WATER: return IsCoast(tile);
 		case MP_ROAD:
 			/* Tram bits aren't considered buildable */
-			if (::GetRoadTypes(tile) != ROADTYPES_ROAD) return false;
+			if (::GetRoadTypeTram(tile) != INVALID_ROADTYPE) return false;
 			/* Depots and crossings aren't considered buildable */
 			if (::GetRoadTileType(tile) != ROAD_TILE_NORMAL) return false;
-			if (!HasExactlyOneBit(::GetRoadBits(tile, ROADTYPE_ROAD))) return false;
-			if (::IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN)) return true;
-			if (::IsRoadOwner(tile, ROADTYPE_ROAD, ScriptObject::GetCompany())) return true;
+			if (!HasExactlyOneBit(::GetRoadBits(tile, RTT_ROAD))) return false;
+			if (::IsRoadOwner(tile, RTT_ROAD, OWNER_TOWN)) return true;
+			if (::IsRoadOwner(tile, RTT_ROAD, ScriptObject::GetCompany())) return true;
 			return false;
 	}
 }
@@ -201,7 +201,12 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, UINT32_MAX)) != TRACKDIR_BIT_NONE;
+	if (transport_type == TRANSPORT_ROAD) {
+		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 0)) != TRACKDIR_BIT_NONE ||
+				::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 1)) != TRACKDIR_BIT_NONE;
+	} else {
+		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 0)) != TRACKDIR_BIT_NONE;
+	}
 }
 
 /* static */ int32 ScriptTile::GetCargoAcceptance(TileIndex tile, CargoID cargo_type, int width, int height, int radius)

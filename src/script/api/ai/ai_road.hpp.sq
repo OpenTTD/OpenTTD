@@ -26,6 +26,8 @@ void SQAIRoad_Register(Squirrel *engine)
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION,       "ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD,           "ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS, "ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS");
+	SQAIRoad.DefSQConst(engine, ScriptRoad::ERR_ROADTYPE_DISALLOWS_CROSSING,              "ERR_ROADTYPE_DISALLOWS_CROSSING");
+	SQAIRoad.DefSQConst(engine, ScriptRoad::ERR_UNSUITABLE_ROAD,                          "ERR_UNSUITABLE_ROAD");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ROADTYPE_ROAD,                                "ROADTYPE_ROAD");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ROADTYPE_TRAM,                                "ROADTYPE_TRAM");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ROADTYPE_INVALID,                             "ROADTYPE_INVALID");
@@ -40,12 +42,19 @@ void SQAIRoad_Register(Squirrel *engine)
 	ScriptError::RegisterErrorMap(STR_ERROR_DRIVE_THROUGH_DIRECTION,          ScriptRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION);
 	ScriptError::RegisterErrorMap(STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD,       ScriptRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD);
 	ScriptError::RegisterErrorMap(STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION, ScriptRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS);
+	ScriptError::RegisterErrorMap(STR_ERROR_CROSSING_DISALLOWED_ROAD,         ScriptRoad::ERR_ROADTYPE_DISALLOWS_CROSSING);
+	ScriptError::RegisterErrorMap(STR_ERROR_NO_SUITABLE_ROAD,                 ScriptRoad::ERR_UNSUITABLE_ROAD);
+	ScriptError::RegisterErrorMap(STR_ERROR_NO_SUITABLE_TRAMWAY,              ScriptRoad::ERR_UNSUITABLE_ROAD);
+	ScriptError::RegisterErrorMap(STR_ERROR_INCOMPATIBLE_ROAD,                ScriptRoad::ERR_UNSUITABLE_ROAD);
 
 	ScriptError::RegisterErrorMapString(ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS,                   "ERR_ROAD_WORKS_IN_PROGRESS");
 	ScriptError::RegisterErrorMapString(ScriptRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION,       "ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION");
 	ScriptError::RegisterErrorMapString(ScriptRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD,           "ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD");
 	ScriptError::RegisterErrorMapString(ScriptRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS, "ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS");
+	ScriptError::RegisterErrorMapString(ScriptRoad::ERR_ROADTYPE_DISALLOWS_CROSSING,              "ERR_ROADTYPE_DISALLOWS_CROSSING");
+	ScriptError::RegisterErrorMapString(ScriptRoad::ERR_UNSUITABLE_ROAD,                          "ERR_UNSUITABLE_ROAD");
 
+	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::GetName,                        "GetName",                        2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::GetRoadVehicleTypeForCargo,     "GetRoadVehicleTypeForCargo",     2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::IsRoadTile,                     "IsRoadTile",                     2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::IsRoadDepotTile,                "IsRoadDepotTile",                2, ".i");
@@ -54,6 +63,9 @@ void SQAIRoad_Register(Squirrel *engine)
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::IsRoadTypeAvailable,            "IsRoadTypeAvailable",            2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::GetCurrentRoadType,             "GetCurrentRoadType",             1, ".");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::SetCurrentRoadType,             "SetCurrentRoadType",             2, ".i");
+	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::RoadVehCanRunOnRoad,            "RoadVehCanRunOnRoad",            3, ".ii");
+	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::RoadVehHasPowerOnRoad,          "RoadVehHasPowerOnRoad",          3, ".ii");
+	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::ConvertRoadType,                "ConvertRoadType",                4, ".iii");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::HasRoadType,                    "HasRoadType",                    3, ".ii");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::AreRoadTilesConnected,          "AreRoadTilesConnected",          3, ".ii");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::CanBuildConnectedRoadParts,     "CanBuildConnectedRoadParts",     5, ".iaii");
@@ -74,6 +86,7 @@ void SQAIRoad_Register(Squirrel *engine)
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::RemoveRoadDepot,                "RemoveRoadDepot",                2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::RemoveRoadStation,              "RemoveRoadStation",              2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::GetBuildCost,                   "GetBuildCost",                   3, ".ii");
+	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::GetMaxSpeed,                    "GetMaxSpeed",                    2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::GetMaintenanceCostFactor,       "GetMaintenanceCostFactor",       2, ".i");
 
 	SQAIRoad.PostRegister(engine);

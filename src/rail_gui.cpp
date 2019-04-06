@@ -2042,5 +2042,11 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		item->SetParam(1, rti->max_speed);
 		list.emplace_back(item);
 	}
+
+	if (list.size() == 0) {
+		/* Empty dropdowns are not allowed */
+		list.emplace_back(new DropDownListStringItem(STR_NONE, INVALID_RAILTYPE, true));
+	}
+
 	return list;
 }

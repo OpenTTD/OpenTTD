@@ -90,7 +90,8 @@
 	company = ScriptCompany::ResolveCompanyID(company);
 	if (company == ScriptCompany::COMPANY_INVALID || (::RoadType)roadtype >= ROADTYPE_END || !_settings_game.economy.infrastructure_maintenance) return 0;
 
-	return ::RoadMaintenanceCost((::RoadType)roadtype, ::Company::Get((::CompanyID)company)->infrastructure.road[roadtype]);
+	const ::Company *c = ::Company::Get((::CompanyID)company);
+	return ::RoadMaintenanceCost((::RoadType)roadtype, c->infrastructure.road[roadtype], RoadTypeIsRoad((::RoadType)roadtype) ? c->infrastructure.GetRoadTotal() : c->infrastructure.GetTramTotal());
 }
 
 /* static */ Money ScriptInfrastructure::GetMonthlyInfrastructureCosts(ScriptCompany::CompanyID company, Infrastructure infra_type)
@@ -114,8 +115,9 @@
 
 		case INFRASTRUCTURE_ROAD: {
 			Money cost;
+			uint32 road_total = c->infrastructure.GetRoadTotal();
 			for (::RoadType rt = ::ROADTYPE_BEGIN; rt != ::ROADTYPE_END; rt++) {
-				cost += RoadMaintenanceCost(rt, c->infrastructure.road[rt]);
+				cost += RoadMaintenanceCost(rt, c->infrastructure.road[rt], road_total);
 			}
 			return cost;
 		}

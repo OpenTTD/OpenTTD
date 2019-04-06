@@ -1014,8 +1014,8 @@ void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selecte
 struct BuildVehicleWindow : Window {
 	VehicleType vehicle_type;                   ///< Type of vehicles shown in the window.
 	union {
-		RailType railtype;   ///< Rail type to show, or #RAILTYPE_END.
-		RoadTypes roadtypes; ///< Road type to show, or #ROADTYPES_ALL.
+		RailType railtype;   ///< Rail type to show, or #INVALID_RAILTYPE.
+		RoadType roadtype;   ///< Road type to show, or #INVALID_ROADTYPE.
 	} filter;                                   ///< Filter to apply.
 	bool descending_sort_order;                 ///< Sort direction, @see _engine_sort_direction
 	byte sort_criteria;                         ///< Current sort criterium.
@@ -1050,7 +1050,8 @@ struct BuildVehicleWindow : Window {
 	BuildVehicleWindow(WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc)
 	{
 		this->vehicle_type = type;
-		this->window_number = tile == INVALID_TILE ? (int)type : tile;
+		this->listview_mode = tile == INVALID_TILE;
+		this->window_number = this->listview_mode ? (int)type : tile;
 
 		this->sel_engine = INVALID_ENGINE;
 
@@ -1058,19 +1059,7 @@ struct BuildVehicleWindow : Window {
 		this->descending_sort_order = _engine_sort_last_order[type];
 		this->show_hidden_engines   = _engine_sort_show_hidden_engines[type];
 
-		switch (type) {
-			default: NOT_REACHED();
-			case VEH_TRAIN:
-				this->filter.railtype = (tile == INVALID_TILE) ? RAILTYPE_END : GetRailType(tile);
-				break;
-			case VEH_ROAD:
-				this->filter.roadtypes = (tile == INVALID_TILE) ? ROADTYPES_ALL : GetRoadTypes(tile);
-			case VEH_SHIP:
-			case VEH_AIRCRAFT:
-				break;
-		}
-
-		this->listview_mode = (this->window_number <= VEH_END);
+		this->UpdateFilterByTile();
 
 		this->CreateNestedTree();
 
@@ -1111,6 +1100,36 @@ struct BuildVehicleWindow : Window {
 			this->SelectEngine(this->eng_list[0]);
 		} else {
 			this->SelectEngine(INVALID_ENGINE);
+		}
+	}
+
+	/** Set the filter type according to the depot type */
+	void UpdateFilterByTile()
+	{
+		switch (this->vehicle_type) {
+			default: NOT_REACHED();
+			case VEH_TRAIN:
+				if (this->listview_mode) {
+					this->filter.railtype = INVALID_RAILTYPE;
+				} else {
+					this->filter.railtype = GetRailType(this->window_number);
+				}
+				break;
+
+			case VEH_ROAD:
+				if (this->listview_mode) {
+					this->filter.roadtype = INVALID_ROADTYPE;
+				} else {
+					this->filter.roadtype = GetRoadTypeRoad(this->window_number);
+					if (this->filter.roadtype == INVALID_ROADTYPE) {
+						this->filter.roadtype = GetRoadTypeTram(this->window_number);
+					}
+				}
+				break;
+
+			case VEH_SHIP:
+			case VEH_AIRCRAFT:
+				break;
 		}
 	}
 
@@ -1223,8 +1242,6 @@ struct BuildVehicleWindow : Window {
 		int num_engines = 0;
 		int num_wagons  = 0;
 
-		this->filter.railtype = (this->listview_mode) ? RAILTYPE_END : GetRailType(this->window_number);
-
 		this->eng_list.clear();
 
 		/* Make list of all available train engines and wagons.
@@ -1237,7 +1254,7 @@ struct BuildVehicleWindow : Window {
 			EngineID eid = e->index;
 			const RailVehicleInfo *rvi = &e->u.rail;
 
-			if (this->filter.railtype != RAILTYPE_END && !HasPowerOnRail(rvi->railtype, this->filter.railtype)) continue;
+			if (this->filter.railtype != INVALID_RAILTYPE && !HasPowerOnRail(rvi->railtype, this->filter.railtype)) continue;
 			if (!IsEngineBuildable(eid, VEH_TRAIN, _local_company)) continue;
 
 			/* Filter now! So num_engines and num_wagons is valid */
@@ -1280,7 +1297,8 @@ struct BuildVehicleWindow : Window {
 			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
-			if (!HasBit(this->filter.roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
+			if (this->filter.roadtype != INVALID_ROADTYPE && !HasPowerOnRoad(e->u.road.roadtype, this->filter.roadtype)) continue;
+
 			this->eng_list.push_back(eid);
 
 			if (eid == this->sel_engine) sel_id = eid;
@@ -1338,6 +1356,10 @@ struct BuildVehicleWindow : Window {
 	void GenerateBuildList()
 	{
 		if (!this->eng_list.NeedRebuild()) return;
+
+		/* Update filter type in case the road/railtype of the depot got converted */
+		this->UpdateFilterByTile();
+
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
 			case VEH_TRAIN:
@@ -1459,6 +1481,9 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_CAPTION:
 				if (this->vehicle_type == VEH_TRAIN && !this->listview_mode) {
 					const RailtypeInfo *rti = GetRailTypeInfo(this->filter.railtype);
+					SetDParam(0, rti->strings.build_caption);
+				} else if (this->vehicle_type == VEH_ROAD && !this->listview_mode) {
+					const RoadTypeInfo *rti = GetRoadTypeInfo(this->filter.roadtype);
 					SetDParam(0, rti->strings.build_caption);
 				} else {
 					SetDParam(0, (this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUY_VEHICLE_TRAIN_ALL_CAPTION) + this->vehicle_type);

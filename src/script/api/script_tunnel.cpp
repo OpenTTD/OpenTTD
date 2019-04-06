@@ -90,7 +90,7 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance *instance)
 	uint type = 0;
 	if (vehicle_type == ScriptVehicle::VT_ROAD) {
 		type |= (TRANSPORT_ROAD << 8);
-		type |= ::RoadTypeToRoadTypes((::RoadType)ScriptObject::GetRoadType());
+		type |= ScriptRoad::GetCurrentRoadType();
 	} else {
 		type |= (TRANSPORT_RAIL << 8);
 		type |= ScriptRail::GetCurrentRailType();
