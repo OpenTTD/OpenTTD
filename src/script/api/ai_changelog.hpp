@@ -31,6 +31,9 @@
  * \li AIRoad::RoadVehHasPowerOnRoad
  * \li AIRoad::ConvertRoadType
  * \li AIRoad::GetMaxSpeed
+ * \li AIEngine::CanRunOnRoad
+ * \li AIEngine::HasPowerOnRoad
+ * \li AIRoadTypeList::RoadTypeList
  *
  * \b 1.9.0
  *

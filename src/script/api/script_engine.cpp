@@ -15,6 +15,7 @@
 #include "../../company_base.h"
 #include "../../strings_func.h"
 #include "../../rail.h"
+#include "../../road.h"
 #include "../../engine_base.h"
 #include "../../engine_func.h"
 #include "../../articulated_vehicles.h"
@@ -217,6 +218,20 @@
 	if (!ScriptRail::IsRailTypeAvailable(track_rail_type)) return false;
 
 	return ::HasPowerOnRail((::RailType)::RailVehInfo(engine_id)->railtype, (::RailType)track_rail_type);
+}
+
+/* static */ bool ScriptEngine::CanRunOnRoad(EngineID engine_id, ScriptRoad::RoadType road_type)
+{
+	return HasPowerOnRoad(engine_id, road_type);
+}
+
+/* static */ bool ScriptEngine::HasPowerOnRoad(EngineID engine_id, ScriptRoad::RoadType road_type)
+{
+	if (!IsValidEngine(engine_id)) return false;
+	if (GetVehicleType(engine_id) != ScriptVehicle::VT_ROAD) return false;
+	if (!ScriptRoad::IsRoadTypeAvailable(road_type)) return false;
+
+	return ::HasPowerOnRoad((::RoadType)::RoadVehInfo(engine_id)->roadtype, (::RoadType)road_type);
 }
 
 /* static */ ScriptRoad::RoadType ScriptEngine::GetRoadType(EngineID engine_id)

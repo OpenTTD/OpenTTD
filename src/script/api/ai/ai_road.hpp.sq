@@ -31,6 +31,8 @@ void SQAIRoad_Register(Squirrel *engine)
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ROADTYPE_ROAD,                                "ROADTYPE_ROAD");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ROADTYPE_TRAM,                                "ROADTYPE_TRAM");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ROADTYPE_INVALID,                             "ROADTYPE_INVALID");
+	SQAIRoad.DefSQConst(engine, ScriptRoad::ROADTRAMTYPES_ROAD,                           "ROADTRAMTYPES_ROAD");
+	SQAIRoad.DefSQConst(engine, ScriptRoad::ROADTRAMTYPES_TRAM,                           "ROADTRAMTYPES_TRAM");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ROADVEHTYPE_BUS,                              "ROADVEHTYPE_BUS");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::ROADVEHTYPE_TRUCK,                            "ROADVEHTYPE_TRUCK");
 	SQAIRoad.DefSQConst(engine, ScriptRoad::BT_ROAD,                                      "BT_ROAD");
@@ -86,6 +88,7 @@ void SQAIRoad_Register(Squirrel *engine)
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::RemoveRoadDepot,                "RemoveRoadDepot",                2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::RemoveRoadStation,              "RemoveRoadStation",              2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::GetBuildCost,                   "GetBuildCost",                   3, ".ii");
+	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::GetRoadTramType,                "GetRoadTramType",                2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::GetMaxSpeed,                    "GetMaxSpeed",                    2, ".i");
 	SQAIRoad.DefSQStaticMethod(engine, &ScriptRoad::GetMaintenanceCostFactor,       "GetMaintenanceCostFactor",       2, ".i");
 

@@ -825,6 +825,7 @@ script/api/script_order.hpp
 script/api/script_rail.hpp
 script/api/script_railtypelist.hpp
 script/api/script_road.hpp
+script/api/script_roadtypelist.hpp
 script/api/script_sign.hpp
 script/api/script_signlist.hpp
 script/api/script_station.hpp
@@ -893,6 +894,7 @@ script/api/script_order.cpp
 script/api/script_rail.cpp
 script/api/script_railtypelist.cpp
 script/api/script_road.cpp
+script/api/script_roadtypelist.cpp
 script/api/script_sign.cpp
 script/api/script_signlist.cpp
 script/api/script_station.cpp

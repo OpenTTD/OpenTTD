@@ -62,6 +62,7 @@
 #include "../script/api/ai/ai_rail.hpp.sq"
 #include "../script/api/ai/ai_railtypelist.hpp.sq"
 #include "../script/api/ai/ai_road.hpp.sq"
+#include "../script/api/ai/ai_roadtypelist.hpp.sq"
 #include "../script/api/ai/ai_sign.hpp.sq"
 #include "../script/api/ai/ai_signlist.hpp.sq"
 #include "../script/api/ai/ai_station.hpp.sq"
@@ -167,6 +168,7 @@ void AIInstance::RegisterAPI()
 	SQAIRail_Register(this->engine);
 	SQAIRailTypeList_Register(this->engine);
 	SQAIRoad_Register(this->engine);
+	SQAIRoadTypeList_Register(this->engine);
 	SQAISign_Register(this->engine);
 	SQAISignList_Register(this->engine);
 	SQAIStation_Register(this->engine);

@@ -97,7 +97,7 @@
 {
 	if (!ScriptMap::IsValidTile(tile)) return false;
 	if (!IsRoadTypeAvailable(road_type)) return false;
-	return ::GetAnyRoadBits(tile, GetRoadTramType((::RoadType)road_type), false) != ROAD_NONE;
+	return ::GetAnyRoadBits(tile, ::GetRoadTramType((::RoadType)road_type), false) != ROAD_NONE;
 }
 
 /* static */ bool ScriptRoad::AreRoadTilesConnected(TileIndex t1, TileIndex t2)
@@ -109,7 +109,7 @@
 	/* Tiles not neighbouring */
 	if ((abs((int)::TileX(t1) - (int)::TileX(t2)) + abs((int)::TileY(t1) - (int)::TileY(t2))) != 1) return false;
 
-	RoadTramType rtt = GetRoadTramType(ScriptObject::GetRoadType());
+	RoadTramType rtt = ::GetRoadTramType(ScriptObject::GetRoadType());
 	RoadBits r1 = ::GetAnyRoadBits(t1, rtt); // TODO
 	RoadBits r2 = ::GetAnyRoadBits(t2, rtt); // TODO
 
@@ -625,6 +625,11 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 		case BT_TRUCK_STOP: return ::GetPrice(PR_BUILD_STATION_TRUCK, 1, nullptr);
 		default: return -1;
 	}
+}
+
+/* static */ ScriptRoad::RoadTramTypes ScriptRoad::GetRoadTramType(RoadType roadtype)
+{
+	return (RoadTramTypes)(1 << ::GetRoadTramType((::RoadType)roadtype));
 }
 
 /* static */ int32 ScriptRoad::GetMaxSpeed(RoadType road_type)
