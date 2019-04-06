@@ -494,9 +494,7 @@ CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad)
 {
 	CargoArray produced;
 	std::set<IndustryID> industries;
-
-	TileArea ta(tile, w, h);
-	ta.Expand(rad);
+	TileArea ta = TileArea(tile, w, h).Expand(rad);
 
 	/* Loop over all tiles to get the produced cargo of
 	 * everything except industries */
@@ -536,8 +534,7 @@ CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, Cargo
 	CargoArray acceptance;
 	if (always_accepted != nullptr) *always_accepted = 0;
 
-	TileArea ta(tile, w, h);
-	ta.Expand(rad);
+	TileArea ta = TileArea(tile, w, h).Expand(rad);
 
 	TILE_AREA_LOOP(tile, ta) {
 		/* Ignore industry if it has a neutral station. */
@@ -3830,8 +3827,7 @@ void FindStationsAroundTiles(const TileArea &location, StationList * const stati
 	/* Scan an area around the building covering the maximum possible station
 	 * to find the possible nearby stations. */
 	uint max_c = _settings_game.station.modified_catchment ? MAX_CATCHMENT : CA_UNMODIFIED;
-	TileArea ta = location;
-	ta.Expand(max_c);
+	TileArea ta = TileArea(location).Expand(max_c);
 	TILE_AREA_LOOP(tile, ta) {
 		if (IsTileType(tile, MP_STATION)) seen_stations.insert(GetStationIndex(tile));
 	}

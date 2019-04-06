@@ -66,8 +66,7 @@ ScriptTileList_IndustryAccepting::ScriptTileList_IndustryAccepting(IndustryID in
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
-	TileArea ta(i->location);
-	ta.Expand(radius);
+	TileArea ta = TileArea(i->location).Expand(radius);
 	TILE_AREA_LOOP(cur_tile, ta) {
 		if (!::IsValidTile(cur_tile)) continue;
 		/* Exclude all tiles that belong to this industry */
@@ -103,8 +102,7 @@ ScriptTileList_IndustryProducing::ScriptTileList_IndustryProducing(IndustryID in
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
-	TileArea ta(i->location);
-	ta.Expand(radius);
+	TileArea ta = TileArea(i->location).Expand(radius);
 	TILE_AREA_LOOP(cur_tile, ta) {
 		if (!::IsValidTile(cur_tile)) continue;
 		/* Exclude all tiles that belong to this industry */

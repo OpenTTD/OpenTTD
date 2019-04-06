@@ -156,8 +156,7 @@ Industry::~Industry()
 	}
 
 	if (GetIndustrySpec(this->type)->behaviour & INDUSTRYBEH_PLANT_FIELDS) {
-		TileArea ta(this->location.tile, 0, 0);
-		ta.Expand(21);
+		TileArea ta = TileArea(this->location.tile, 0, 0).Expand(21);
 
 		/* Remove the farmland and convert it to regular tiles over time. */
 		TILE_AREA_LOOP(tile_cur, ta) {
@@ -1595,8 +1594,7 @@ static CommandCost CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, int t
 	/* On a large map with many industries, it may be faster to check an area. */
 	static const int dmax = 14;
 	if (Industry::GetNumItems() > (size_t) (dmax * dmax * 2)) {
-		TileArea tile_area(tile, 1, 1);
-		tile_area.Expand(dmax);
+		TileArea tile_area = TileArea(tile, 1, 1).Expand(dmax);
 		TILE_AREA_LOOP(atile, tile_area) {
 			if (GetTileType(atile) == MP_INDUSTRY) {
 				const Industry *i2 = Industry::GetByTile(atile);
