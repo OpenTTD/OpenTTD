@@ -2632,6 +2632,28 @@ void ClearDockingTilesCheckingNeighbours(TileIndex tile)
 }
 
 /**
+ * Check if a dock tile can be docked from the given direction.
+ * @param t Tile index of dock.
+ * @param d DiagDirection adjacent to dock being tested.
+ * @return True iff the dock can be docked from the given direction.
+ */
+bool IsValidDockingDirectionForDock(TileIndex t, DiagDirection d)
+{
+	assert(IsDockTile(t));
+
+	/** Bitmap of valid directions for each dock tile part. */
+	static const uint8 _valid_docking_tile[] = {
+		0, 0, 0, 0,                        // No docking against the slope part.
+		1 << DIAGDIR_NE | 1 << DIAGDIR_SW, // Docking permitted at the end
+		1 << DIAGDIR_NW | 1 << DIAGDIR_SE, // of the flat piers.
+	};
+
+	StationGfx gfx = GetStationGfx(t);
+	assert(gfx < lengthof(_valid_docking_tile));
+	return HasBit(_valid_docking_tile[gfx], d);
+}
+
+/**
  * Find the part of a dock that is land-based
  * @param t Dock tile to find land part of
  * @return tile of land part of dock
