@@ -218,6 +218,28 @@ public:
 	static bool HasPowerOnRail(EngineID engine_id, ScriptRail::RailType track_rail_type);
 
 	/**
+	 * Check if a road vehicle can run on a RoadType.
+	 * @param engine_id The engine to check.
+	 * @param road_type Another RoadType.
+	 * @pre IsValidEngine(engine_id).
+	 * @pre GetVehicleType(engine_id) == ScriptVehicle::VT_ROAD.
+	 * @pre ScriptRoad::IsRoadTypeAvailable(road_type).
+	 * @return Whether an engine of type 'engine_id' can run on 'road_type'.
+	 */
+	static bool CanRunOnRoad(EngineID engine_id, ScriptRoad::RoadType road_type);
+
+	/**
+	 * Check if a road vehicle has power on a RoadType.
+	 * @param engine_id The engine to check.
+	 * @param road_type Another RoadType.
+	 * @pre IsValidEngine(engine_id).
+	 * @pre GetVehicleType(engine_id) == ScriptVehicle::VT_ROAD.
+	 * @pre ScriptRoad::IsRoadTypeAvailable(road_type).
+	 * @return Whether an engine of type 'engine_id' has power on 'road_type'.
+	 */
+	static bool HasPowerOnRoad(EngineID engine_id, ScriptRoad::RoadType road_type);
+
+	/**
 	 * Get the RoadType of the engine.
 	 * @param engine_id The engine to get the RoadType of.
 	 * @pre IsValidEngine(engine_id).

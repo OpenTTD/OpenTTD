@@ -1092,6 +1092,7 @@
     <ClInclude Include="..\src\script\api\script_rail.hpp" />
     <ClInclude Include="..\src\script\api\script_railtypelist.hpp" />
     <ClInclude Include="..\src\script\api\script_road.hpp" />
+    <ClInclude Include="..\src\script\api\script_roadtypelist.hpp" />
     <ClInclude Include="..\src\script\api\script_sign.hpp" />
     <ClInclude Include="..\src\script\api\script_signlist.hpp" />
     <ClInclude Include="..\src\script\api\script_station.hpp" />
@@ -1158,6 +1159,7 @@
     <ClCompile Include="..\src\script\api\script_rail.cpp" />
     <ClCompile Include="..\src\script\api\script_railtypelist.cpp" />
     <ClCompile Include="..\src\script\api\script_road.cpp" />
+    <ClCompile Include="..\src\script\api\script_roadtypelist.cpp" />
     <ClCompile Include="..\src\script\api\script_sign.cpp" />
     <ClCompile Include="..\src\script\api\script_signlist.cpp" />
     <ClCompile Include="..\src\script\api\script_station.cpp" />

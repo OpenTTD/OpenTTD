@@ -13,6 +13,7 @@
 #define SCRIPT_ROAD_HPP
 
 #include "script_tile.hpp"
+#include "../../../road.h"
 
 /**
  * Class that handles all road related functions.
@@ -56,6 +57,14 @@ public:
 
 		/* Custom added value, only valid for this API */
 		ROADTYPE_INVALID = -1,                 ///< Invalid RoadType.
+	};
+
+	/**
+	 * Road/tram types
+	 */
+	enum RoadTramTypes {
+		ROADTRAMTYPES_ROAD = ::RTTB_ROAD, ///< Road road types.
+		ROADTRAMTYPES_TRAM = ::RTTB_TRAM, ///< Tram road types.
 	};
 
 	/**
@@ -536,6 +545,13 @@ public:
 	 * @return The baseprice of building the given object.
 	 */
 	static Money GetBuildCost(RoadType roadtype, BuildType build_type);
+
+	/**
+	 * Test if a road type is for road or trams.
+	 * @param roadtype the roadtype to test.
+	 * @return RoadTramTypes of the road types.
+	 */
+	static RoadTramTypes GetRoadTramType(RoadType roadtype);
 
 	/**
 	 * Get the maximum speed of road vehicles running on this roadtype.
