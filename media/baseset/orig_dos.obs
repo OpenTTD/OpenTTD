@@ -5,7 +5,7 @@
 name              = original_dos
 shortname         = TTDO
 version           = 0
-!! description STR_BASESOUNDS_DOS_DESCRIPTION
+@description_STR_BASESOUNDS_DOS_DESCRIPTION@
 
 [files]
 samples      = SAMPLE.CAT

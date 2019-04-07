@@ -5,7 +5,7 @@
 name              = original_windows
 shortname         = TTDW
 version           = 1
-!! description STR_BASEMUSIC_WIN_DESCRIPTION
+@description_STR_BASEMUSIC_WIN_DESCRIPTION@
 
 [files]
 theme = GM_TT00.GM
