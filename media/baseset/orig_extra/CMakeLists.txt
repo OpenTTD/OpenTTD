@@ -3,12 +3,12 @@
 # This is mainly because not many people have both of these tools installed,
 # so it is cheaper to cache them in git, and only regenerate when you are
 # working on it / have the tools installed.
-if (NFORENUM_FOUND AND GRFCODEC_FOUND)
-    include(CreateGrfCommand REQUIRED)
+if (GRFCODEC_FOUND)
+    include(CreateGrfCommand)
     create_grf_command(
         # We share some files with 'openttd' grf
         ${CMAKE_CURRENT_SOURCE_DIR}/../openttd/airports.png
         ${CMAKE_CURRENT_SOURCE_DIR}/../openttd/canals.png
         ${CMAKE_CURRENT_SOURCE_DIR}/../openttd/chars.png
     )
-endif (NFORENUM_FOUND AND GRFCODEC_FOUND)
+endif (GRFCODEC_FOUND)

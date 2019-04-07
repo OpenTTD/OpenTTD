@@ -20,13 +20,13 @@ set(BASESET_OTHER_SOURCE_FILES
 )
 
 # Done by the subdirectories, if nforenum / grfcodec is installed
-if (NFORENUM_FOUND AND GRFCODEC_FOUND)
+if (GRFCODEC_FOUND)
     set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/openttd.grf PROPERTIES GENERATED TRUE)
     set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/orig_extra.grf PROPERTIES GENERATED TRUE)
 
     list(APPEND BASESET_BINARY_FILES openttd.grf)
     list(APPEND BASESET_BINARY_FILES orig_extra.grf)
-endif (NFORENUM_FOUND AND GRFCODEC_FOUND)
+endif (GRFCODEC_FOUND)
 
 set(BASESET_EXTRAGRF_FILE ${CMAKE_CURRENT_SOURCE_DIR}/orig_extra.grf)
 
