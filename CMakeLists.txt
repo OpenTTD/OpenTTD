@@ -224,3 +224,5 @@ endif (CMAKE_SIZEOF_VOID_P EQUAL 8)
 
 include(CreateRegression)
 create_regression()
+
+include(InstallAndPackage)

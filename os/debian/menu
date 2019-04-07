@@ -1,2 +1,0 @@
-?package(openttd):needs="X11" section="Games/Simulation" title="OpenTTD"\
-command="/usr/games/openttd" icon="/usr/share/pixmaps/openttd.32.xpm"
