@@ -930,7 +930,9 @@ static CallBackFunction MenuClickBuildRoad(int index)
 
 static CallBackFunction ToolbarBuildWaterClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_WATER, STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION, 1);
+	DropDownList list;
+	list.emplace_back(new DropDownListIconItem(SPR_IMG_BUILD_CANAL, PAL_NONE, STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION, 0, false));
+	ShowDropDownList(w, std::move(list), 0, WID_TN_WATER, 140, true, true);
 	return CBF_NONE;
 }
 
@@ -950,7 +952,9 @@ static CallBackFunction MenuClickBuildWater(int index)
 
 static CallBackFunction ToolbarBuildAirClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_AIR, STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION, 1);
+	DropDownList list;
+	list.emplace_back(new DropDownListIconItem(SPR_IMG_AIRPORT, PAL_NONE, STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION, 0, false));
+	ShowDropDownList(w, std::move(list), 0, WID_TN_AIR, 140, true, true);
 	return CBF_NONE;
 }
 
@@ -970,7 +974,11 @@ static CallBackFunction MenuClickBuildAir(int index)
 
 static CallBackFunction ToolbarForestClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_LANDSCAPE, STR_LANDSCAPING_MENU_LANDSCAPING, 3);
+	DropDownList list;
+	list.emplace_back(new DropDownListIconItem(SPR_IMG_LANDSCAPING, PAL_NONE, STR_LANDSCAPING_MENU_LANDSCAPING, 0, false));
+	list.emplace_back(new DropDownListIconItem(SPR_IMG_PLANTTREES, PAL_NONE, STR_LANDSCAPING_MENU_PLANT_TREES, 1, false));
+	list.emplace_back(new DropDownListIconItem(SPR_IMG_SIGN, PAL_NONE, STR_LANDSCAPING_MENU_PLACE_SIGN, 2, false));
+	ShowDropDownList(w, std::move(list), 0, WID_TN_LANDSCAPE, 100, true, true);
 	return CBF_NONE;
 }
 
