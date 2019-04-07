@@ -119,16 +119,21 @@ endif ()
 
 message(STATUS "Version string: ${REV_VERSION}")
 
-message(STATUS "Generating rev.cpp")
-configure_file("${CMAKE_SOURCE_DIR}/src/rev.cpp.in"
-        "${FIND_VERSION_BINARY_DIR}/rev.cpp")
+if (GENERATE_OTTDREV)
+    message(STATUS "Generating .ottdrev")
+    file(WRITE ${CMAKE_SOURCE_DIR}/.ottdrev "${REV_VERSION}\t${REV_ISODATE}\t${REV_MODIFIED}\t${REV_HASH}\t${REV_ISTAG}\t${REV_ISSTABLETAG}\t${REV_YEAR}\n")
+else (GENERATE_OTTDREV)
+    message(STATUS "Generating rev.cpp")
+    configure_file("${CMAKE_SOURCE_DIR}/src/rev.cpp.in"
+            "${FIND_VERSION_BINARY_DIR}/rev.cpp")
 
-if (WIN32)
-    message(STATUS "Generating ottdres.rc")
-    configure_file("${CMAKE_SOURCE_DIR}/src/os/windows/ottdres.rc.in"
-            "${FIND_VERSION_BINARY_DIR}/ottdres.rc")
-endif (WIN32)
+    if (WIN32)
+        message(STATUS "Generating ottdres.rc")
+        configure_file("${CMAKE_SOURCE_DIR}/src/os/windows/ottdres.rc.in"
+                "${FIND_VERSION_BINARY_DIR}/ottdres.rc")
+    endif (WIN32)
 
-message(STATUS "Generating CPackProperties.cmake")
-configure_file("${CMAKE_SOURCE_DIR}/CPackProperties.cmake.in"
-        "${CPACK_BINARY_DIR}/CPackProperties.cmake" @ONLY)
+    message(STATUS "Generating CPackProperties.cmake")
+    configure_file("${CMAKE_SOURCE_DIR}/CPackProperties.cmake.in"
+            "${CPACK_BINARY_DIR}/CPackProperties.cmake" @ONLY)
+endif (GENERATE_OTTDREV)

@@ -14,23 +14,34 @@ jobs:
   strategy:
     matrix:
       Win32:
-        BuildPlatform: 'Win32'
+        BuildArch: 'Win32'
+        VcpkgTargetTriplet: 'x86-windows-static'
       Win64:
-        BuildPlatform: 'x64'
+        BuildArch: 'x64'
+        VcpkgTargetTriplet: 'x64-windows-static'
 
   steps:
   - template: azure-pipelines/templates/ci-git-rebase.yml
   - template: azure-pipelines/templates/windows-dependencies.yml
   - template: azure-pipelines/templates/ci-opengfx.yml
+    parameters:
+      SharedFolder: C:/Users/Public/Documents/OpenTTD
   - template: azure-pipelines/templates/windows-build.yml
     parameters:
-      BuildPlatform: $(BuildPlatform)
-      BuildConfiguration: Debug
-  - script: |
-      call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86
-      cd projects
-      call regression.bat
+      BuildArch: $(BuildArch)
+      VcpkgTargetTriplet: $(VcpkgTargetTriplet)
+      BuildConfiguration: 'Debug'
+  - task: VSBuild@1
+    displayName: 'Prepare regression files'
+    inputs:
+      solution: build/regression_files.vcxproj
+      configuration: 'Debug'
+  - task: VSBuild@1
     displayName: 'Test'
+    inputs:
+      solution: build/RUN_TESTS.vcxproj
+      configuration: 'Debug'
+
 
 - job: linux
   displayName: 'Linux'
@@ -49,7 +60,10 @@ jobs:
   steps:
   - template: azure-pipelines/templates/ci-git-rebase.yml
   # The dockers already have the dependencies installed
-  # The dockers already have OpenGFX installed
+  - template: azure-pipelines/templates/ci-opengfx.yml
+    parameters:
+      SharedFolder: /usr/local/share/games/openttd
+      PrefixCommand: sudo
   - template: azure-pipelines/templates/linux-build.yml
     parameters:
       Image: compile-farm-ci
@@ -67,6 +81,13 @@ jobs:
   - template: azure-pipelines/templates/ci-git-rebase.yml
   - template: azure-pipelines/templates/osx-dependencies.yml
   - template: azure-pipelines/templates/ci-opengfx.yml
+    parameters:
+      SharedFolder: /Library/Application Support/OpenTTD
+      PrefixCommand: sudo
   - template: azure-pipelines/templates/osx-build.yml
-  - script: 'make regression'
+  - script: |
+      set -ex
+
+      cd build
+      CTEST_OUTPUT_ON_FAILURE=1 make test
     displayName: 'Test'

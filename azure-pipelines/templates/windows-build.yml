@@ -1,11 +1,16 @@
 parameters:
-  BuildPlatform: ''
+  BuildArch: ''
+  VcpkgTargetTriplet: ''
+  BuildConfiguration: ''
 
 steps:
+- task: CMake@1
+  displayName: 'Configure'
+  inputs:
+    cmakeArgs: '.. -G "Visual Studio 15 2017" -A ${{ parameters.BuildArch }} -DCMAKE_TOOLCHAIN_FILE="c:\vcpkg\scripts\buildsystems\vcpkg.cmake" -DVCPKG_TARGET_TRIPLET="${{ parameters.VcpkgTargetTriplet }}"'
 - task: VSBuild@1
   displayName: 'Build'
   inputs:
-    solution: 'projects/openttd_vs141.sln'
-    platform: ${{ parameters.BuildPlatform }}
+    solution: build/openttd.vcxproj
     configuration: ${{ parameters.BuildConfiguration }}
     maximumCpuCount: true
