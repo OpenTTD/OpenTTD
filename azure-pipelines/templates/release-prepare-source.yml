@@ -17,7 +17,9 @@ steps:
       git checkout -B ${BUILD_SOURCEBRANCHNAME}
     fi
 
-    ./findversion.sh > .ottdrev
+    # Generate .ottdrev, which contains the version information
+    cmake -DGENERATE_OTTDREV=1 -P cmake/scripts/FindVersion.cmake
+
     ./azure-pipelines/changelog.sh > .changelog
     TZ='UTC' date +"%Y-%m-%d %H:%M UTC" > .release_date
     cat .ottdrev | cut -f 1 -d$'\t' > .version

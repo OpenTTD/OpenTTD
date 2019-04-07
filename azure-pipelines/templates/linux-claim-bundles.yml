@@ -1,5 +1,5 @@
 steps:
 # Because we run the compile in a docker (under root), we are not owner
 # of the 'bundles' folder. Fix that by executing a chown on it.
-- bash: sudo chown -R $(id -u):$(id -g) bundles
+- bash: sudo chown -R $(id -u):$(id -g) build/bundles
   displayName: 'Claim bundles folder back'

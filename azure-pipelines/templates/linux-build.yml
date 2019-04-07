@@ -28,9 +28,12 @@ steps:
   inputs:
     command: 'Run an image'
     imageName: openttd/${{ parameters.Image }}:${{ parameters.Tag }}
-    volumes: '$(Build.SourcesDirectory):$(Build.SourcesDirectory)'
+    volumes: |
+      $(Build.SourcesDirectory):$(Build.SourcesDirectory)
+      /usr/local/share/games/openttd:/usr/local/share/games/openttd
     workingDirectory: '$(Build.SourcesDirectory)'
     containerCommand: ${{ parameters.ContainerCommand }}
     runInBackground: false
     envVars: |
       TARGET_BRANCH
+      CTEST_OUTPUT_ON_FAILURE=1

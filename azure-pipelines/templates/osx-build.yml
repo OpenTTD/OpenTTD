@@ -1,5 +1,9 @@
 steps:
-- script: './configure PKG_CONFIG_PATH=/usr/local/lib/pkgconfig --enable-static'
-  displayName: 'Configure'
-- script: 'make -j2'
+- script: |
+    set -ex
+
+    mkdir build
+    cd build
+    cmake ..
+    make -j2
   displayName: 'Build'
