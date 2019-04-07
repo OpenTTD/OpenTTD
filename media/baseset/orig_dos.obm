@@ -5,7 +5,7 @@
 name              = original_dos
 shortname         = TTDD
 version           = 1
-!! description STR_BASEMUSIC_DOS_DESCRIPTION
+@description_STR_BASEMUSIC_DOS_DESCRIPTION@
 
 [files]
 theme = gm.cat

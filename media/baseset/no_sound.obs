@@ -5,7 +5,7 @@ name              = NoSound
 shortname         = NULL
 version           = 2
 fallback          = true
-!! description STR_BASESOUNDS_NONE_DESCRIPTION
+@description_STR_BASESOUNDS_NONE_DESCRIPTION@
 
 [files]
 samples      =

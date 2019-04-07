@@ -5,7 +5,7 @@
 name              = original_tto
 shortname         = TTOD
 version           = 1
-!! description STR_BASEMUSIC_TTO_DESCRIPTION
+@description_STR_BASEMUSIC_TTO_DESCRIPTION@
 
 [files]
 theme = gm-tto.cat
