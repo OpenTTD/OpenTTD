@@ -7,8 +7,6 @@
 
 /** @file string_uniscribe.cpp Functions related to laying out text on Win32. */
 
-#if defined(WITH_UNISCRIBE)
-
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "string_uniscribe.h"
@@ -620,5 +618,3 @@ const int *UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCharMap() con
 
 	return this->utf16_to_utf8[this->cur_pos];
 }
-
-#endif /* defined(WITH_UNISCRIBE) */

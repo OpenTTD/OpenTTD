@@ -7,8 +7,6 @@
 
 /** @file xaudio2_s.cpp XAudio2 sound driver. */
 
-#ifdef WITH_XAUDIO2
-
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../driver.h"
@@ -267,5 +265,3 @@ void SoundDriver_XAudio2::Stop()
 	FreeLibrary(_xaudio_dll_handle);
 	CoUninitialize();
 }
-
-#endif
