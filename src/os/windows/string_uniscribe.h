@@ -10,8 +10,6 @@
 #ifndef STRING_UNISCRIBE_H
 #define STRING_UNISCRIBE_H
 
-#if defined(WITH_UNISCRIBE)
-
 #include "../../gfx_layout.h"
 #include "../../string_base.h"
 #include <vector>
@@ -84,7 +82,5 @@ public:
 	size_t Next(IterType what) override;
 	size_t Prev(IterType what) override;
 };
-
-#endif /* defined(WITH_UNISCRIBE) */
 
 #endif /* STRING_UNISCRIBE_H */
