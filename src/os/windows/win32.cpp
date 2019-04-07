@@ -79,7 +79,7 @@ bool LoadLibraryList(Function proc[], const char *dll)
 void ShowOSErrorBox(const char *buf, bool system)
 {
 	MyShowCursor(true);
-	MessageBox(GetActiveWindow(), OTTD2FS(buf), _T("Error!"), MB_ICONSTOP);
+	MessageBox(GetActiveWindow(), OTTD2FS(buf), _T("Error!"), MB_ICONSTOP | MB_TASKMODAL);
 }
 
 void OSOpenBrowser(const char *url)
