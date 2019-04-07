@@ -37,7 +37,7 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_DEFAULT
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-100                     ICON    DISCARDABLE     "../../../media/openttd.ico"
+100                     ICON    DISCARDABLE     "${CMAKE_SOURCE_DIR}/os/windows/openttd.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -77,8 +77,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,11,0,!!ISODATE!!
- PRODUCTVERSION 1,11,0,!!ISODATE!!
+ FILEVERSION 1,11,0,${REV_ISODATE}
+ PRODUCTVERSION 1,11,0,${REV_ISODATE}
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -96,14 +96,14 @@ BEGIN
             VALUE "Comments", "This program is licensed under the GNU General Public License version 2.\0"
             VALUE "CompanyName", "OpenTTD Development Team\0"
             VALUE "FileDescription", "OpenTTD\0"
-            VALUE "FileVersion", "!!VERSION!!\0"
+            VALUE "FileVersion", "${REV_VERSION}\0"
             VALUE "InternalName", "openttd\0"
-            VALUE "LegalCopyright", "Copyright \xA9 OpenTTD Developers 2002-!!YEAR!!. All Rights Reserved.\0"
+            VALUE "LegalCopyright", "Copyright \xA9 OpenTTD Developers 2002-${REV_YEAR}. All Rights Reserved.\0"
             VALUE "LegalTrademarks", "\0"
             VALUE "OriginalFilename", "openttd.exe\0"
             VALUE "PrivateBuild", "\0"
             VALUE "ProductName", "OpenTTD\0"
-            VALUE "ProductVersion", "!!VERSION!!\0"
+            VALUE "ProductVersion", "${REV_VERSION}\0"
             VALUE "SpecialBuild", "-\0"
         END
     END
@@ -116,7 +116,7 @@ END
 #endif    // !_MAC
 
 #ifdef __MINGW32__
-1 24 "..\\..\\..\\projects\\dpi_aware.manifest"
+1 24 "${CMAKE_SOURCE_DIR}/os/windows/openttd.manifest"
 #endif
 
 #endif    // Neutral (Default) resources
