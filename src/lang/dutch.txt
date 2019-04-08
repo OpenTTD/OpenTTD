@@ -98,7 +98,7 @@ STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}passagier{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} kolen
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}zak{P "" ken} post
-STR_QUANTITY_OIL                                                :{VOLUME_LONG} Vaten olie
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} vaten olie
 STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}stuk{P "" s} vee
 STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}krat{P "" ten} goederen
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} graan
@@ -2856,7 +2856,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Verander
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Bezig met wereldontwikkeling...
 STR_GENERATION_ABORT                                            :{BLACK}Stop
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Stop Wereldontwikkeling
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Wereldontwikkeling stoppen
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Weet je zeker dat je de actie wilt stoppen?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% compleet
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}

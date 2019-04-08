@@ -3120,7 +3120,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Nedostaju 
 STR_NEWGRF_BROKEN                                               :{WHITE}Ponašanje NewGRF '{0:STRING}' će vjerojatno uzrokovati deharmonizaciju i/ili rušenje igre
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Promijenjen status motoriziranog vagona za '{1:ENGINE}' kad vozilo nije u spremištu.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ovo mijenja dužinu vozila za '{1:ENGINE}' kada vozilo nije unutar spremišta
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Promijenilo je kapacitet vozila za '{1:ENGINE}' kada nije u spremšta ili se remontira
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Promijenilo je kapacitet vozila za '{1:ENGINE}' kada nije u spremištu ili se prenamjenjuje
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak'{VEHICLE}' koji pripada tvrtci '{COMPANY}' neispravne je dužine. Uzrok problema je vjerojatno u NewGRF datotekama. Igra će se možda deharmonizirati ili srušiti
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' daje netočne informacije
@@ -3903,9 +3903,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Nosivost
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prenamijeni)
 STR_REFIT_TITLE                                                 :{GOLD}Odaberi vrstu tereta za prijevoz:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova nosivost: {GOLD}{CARGO_LONG}{}{BLACK}Cijena prenamjene: {RED}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Novi kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Prihod od remonta: {GREEN}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Novi kapacitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Trošak remonta: {RED}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Novi kapacitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Prihod od remonta: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Novi kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Prihod od prenamjene: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Novi kapacitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cijena prenamjene: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Novi kapacitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Prihod od prenamjene: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Odaberi vozila za remont. Povlačenje mišem dopušta odabir više vozila. Klik na prazninu će označiti cijelo vozilo. Ctrl+Klik će označiti vozilo i niz koji slijedi.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Odaberi vrstu tereta koju će vlak prevoziti
