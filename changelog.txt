@@ -1,3 +1,13 @@
+1.9.1 (2019-04-08)
+------------------------------------------------------------------------
+- Fix #6564: Enforce types of arguments for station name strings (#7419)
+- Fix #7433: Don't use AirportSpec substitute if it's not enabled (#7435)
+- Fix #7447, #7466, #7476: Missing NewGRF strings due to Action 4 feature check skipping pseudo-feature 48 (#7449)
+- Fix #6222: Advanced sprite layout sometimes showed incorrect railtype ground tile. (#7460)
+- Fix #7439: CompanyRemoveReason overwritten by ClientID (#7465)
+- Fix: [Windows] Incorrect error handling could lead to cascading error windows (#7482)
+- Fix #7478: Don't remove NewGRF objects on company take-over. (#7483)
+
 1.9.0 (2019-04-01)
 ------------------------------------------------------------------------
 - Fix #7411: Use industry production callback (if used) on initial industry cargo generation (#7412)
