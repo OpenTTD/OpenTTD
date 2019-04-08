@@ -236,7 +236,14 @@ bool NetworkTCPSocketHandler::CanSendReceive()
 	FD_SET(this->sock, &write_fd);
 
 	tv.tv_sec = tv.tv_usec = 0; // don't block at all.
-	if (select(FD_SETSIZE, &read_fd, &write_fd, nullptr, &tv) < 0) return false;
+
+#ifndef __EMSCRIPTEN__
+	int nfds = FD_SETSIZE;
+#else /* !__EMSCRIPTEN__ */
+	/* Emscripten select supports only 64 nfds (Emscripten #1711) */
+	int nfds = 64;
+#endif /* __EMSCRIPTEN__ */
+	if (select(nfds, &read_fd, &write_fd, nullptr, &tv) < 0) return false;
 
 	this->writable = !!FD_ISSET(this->sock, &write_fd);
 	return FD_ISSET(this->sock, &read_fd) != 0;

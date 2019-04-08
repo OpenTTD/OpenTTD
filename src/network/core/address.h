@@ -129,11 +129,15 @@ public:
 	 */
 	int CompareTo(NetworkAddress &address)
 	{
+#ifdef __EMSCRIPTEN__
+		return strcmp(GetHostname(), address.GetHostname());
+#else /* __EMSCRIPTEN__ */
 		int r = this->GetAddressLength() - address.GetAddressLength();
 		if (r == 0) r = this->address.ss_family - address.address.ss_family;
 		if (r == 0) r = memcmp(&this->address, &address.address, this->address_length);
 		if (r == 0) r = this->GetPort() - address.GetPort();
 		return r;
+#endif /* __EMSCRIPTEN__ */
 	}
 
 	/**

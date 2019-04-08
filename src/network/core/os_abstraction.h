@@ -150,12 +150,16 @@ typedef unsigned long in_addr_t;
  */
 static inline bool SetNonBlocking(SOCKET d)
 {
+#ifdef __EMSCRIPTEN__
+	return true;
+#else /* __EMSCRIPTEN__ */
 #ifdef _WIN32
 	u_long nonblocking = 1;
-#else
+#else /* _WIN32 */
 	int nonblocking = 1;
-#endif
+#endif /* !_WIN32 */
 	return ioctlsocket(d, FIONBIO, &nonblocking) == 0;
+#endif /* !__EMSCRIPTEN__ */
 }
 
 /**
