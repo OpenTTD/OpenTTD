@@ -1120,7 +1120,7 @@ FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penal
 {
 	Trackdir trackdir = v->GetVehicleTrackdir();
 
-	AyStarUserData user = { v->owner, TRANSPORT_ROAD, INVALID_RAILTYPES, v->compatible_roadtypes };
+	AyStarUserData user = { v->owner, TRANSPORT_ROAD, RAILTYPES_NONE, v->compatible_roadtypes };
 	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, INVALID_TILE, INVALID_TRACKDIR, false, nullptr, &user, 0, max_penalty);
 
 	if (ftd.best_bird_dist != 0) return FindDepotData();
@@ -1140,7 +1140,7 @@ Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDir
 	NPFFillWithOrderData(&fstd, v);
 	Trackdir trackdir = DiagDirToDiagTrackdir(enterdir);
 
-	AyStarUserData user = { v->owner, TRANSPORT_ROAD, INVALID_RAILTYPES, v->compatible_roadtypes };
+	AyStarUserData user = { v->owner, TRANSPORT_ROAD, RAILTYPES_NONE, v->compatible_roadtypes };
 	NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, &user);
 
 	assert(ftd.best_trackdir != INVALID_TRACKDIR);
@@ -1163,7 +1163,7 @@ Track NPFShipChooseTrack(const Ship *v, bool &path_found)
 
 	NPFFillWithOrderData(&fstd, v);
 
-	AyStarUserData user = { v->owner, TRANSPORT_WATER, INVALID_RAILTYPES, ROADTYPES_NONE };
+	AyStarUserData user = { v->owner, TRANSPORT_WATER, RAILTYPES_NONE, ROADTYPES_NONE };
 	NPFFoundTargetData ftd = NPFRouteToStationOrTile(v->tile, trackdir, true, &fstd, &user);
 
 	assert(ftd.best_trackdir != INVALID_TRACKDIR);
@@ -1188,7 +1188,7 @@ bool NPFShipCheckReverse(const Ship *v)
 	assert(trackdir != INVALID_TRACKDIR);
 	assert(trackdir_rev != INVALID_TRACKDIR);
 
-	AyStarUserData user = { v->owner, TRANSPORT_WATER, INVALID_RAILTYPES, ROADTYPES_NONE };
+	AyStarUserData user = { v->owner, TRANSPORT_WATER, RAILTYPES_NONE, ROADTYPES_NONE };
 	ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, false, v->tile, trackdir_rev, false, &fstd, &user);
 	/* If we didn't find anything, just keep on going straight ahead, otherwise take the reverse flag */
 	return ftd.best_bird_dist == 0 && NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE);
