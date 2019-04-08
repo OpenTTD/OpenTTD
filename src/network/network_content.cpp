@@ -1029,37 +1029,39 @@ void ClientNetworkContentSocketHandler::Clear()
 
 void ClientNetworkContentSocketHandler::OnConnect(bool success)
 {
-	for (auto iter = this->callbacks.begin(); iter != this->callbacks.end(); /* nothing */) {
-		ContentCallback *cb = *iter;
+	for (size_t i = 0; i < this->callbacks.size(); /* nothing */) {
+		ContentCallback *cb = this->callbacks[i];
+		/* the callback may remove itself from this->callbacks */
 		cb->OnConnect(success);
-		if (iter != this->callbacks.end() && *iter == cb) iter++;
+		if (i != this->callbacks.size() && this->callbacks[i] == cb) i++;
 	}
 }
 
 void ClientNetworkContentSocketHandler::OnDisconnect()
 {
-	for (auto iter = this->callbacks.begin(); iter != this->callbacks.end(); /* nothing */) {
-		ContentCallback *cb = *iter;
+	for (size_t i = 0; i < this->callbacks.size(); /* nothing */) {
+		ContentCallback *cb = this->callbacks[i];
 		cb->OnDisconnect();
-		if (iter != this->callbacks.end() && *iter == cb) iter++;
+		if (i != this->callbacks.size() && this->callbacks[i] == cb) i++;
 	}
 }
 
 void ClientNetworkContentSocketHandler::OnReceiveContentInfo(const ContentInfo *ci)
 {
-	for (auto iter = this->callbacks.begin(); iter != this->callbacks.end(); /* nothing */) {
-		ContentCallback *cb = *iter;
+	for (size_t i = 0; i < this->callbacks.size(); /* nothing */) {
+		ContentCallback *cb = this->callbacks[i];
+		/* the callback may add items and/or remove itself from this->callbacks */
 		cb->OnReceiveContentInfo(ci);
-		if (iter != this->callbacks.end() && *iter == cb) iter++;
+		if (i != this->callbacks.size() && this->callbacks[i] == cb) i++;
 	}
 }
 
 void ClientNetworkContentSocketHandler::OnDownloadProgress(const ContentInfo *ci, int bytes)
 {
-	for (auto iter = this->callbacks.begin(); iter != this->callbacks.end(); /* nothing */) {
-		ContentCallback *cb = *iter;
+	for (size_t i = 0; i < this->callbacks.size(); /* nothing */) {
+		ContentCallback *cb = this->callbacks[i];
 		cb->OnDownloadProgress(ci, bytes);
-		if (iter != this->callbacks.end() && *iter == cb) iter++;
+		if (i != this->callbacks.size() && this->callbacks[i] == cb) i++;
 	}
 }
 
@@ -1070,9 +1072,10 @@ void ClientNetworkContentSocketHandler::OnDownloadComplete(ContentID cid)
 		ci->state = ContentInfo::ALREADY_HERE;
 	}
 
-	for (auto iter = this->callbacks.begin(); iter != this->callbacks.end(); /* nothing */) {
-		ContentCallback *cb = *iter;
+	for (size_t i = 0; i < this->callbacks.size(); /* nothing */) {
+		ContentCallback *cb = this->callbacks[i];
+		/* the callback may remove itself from this->callbacks */
 		cb->OnDownloadComplete(cid);
-		if (iter != this->callbacks.end() && *iter == cb) iter++;
+		if (i != this->callbacks.size() && this->callbacks[i] == cb) i++;
 	}
 }
