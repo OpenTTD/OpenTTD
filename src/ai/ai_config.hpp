@@ -30,7 +30,7 @@ public:
 
 	int GetSetting(const char *name) const override;
 	void SetSetting(const char *name, int value) override;
-	void AddRandomDeviation() override;
+	void AddRandomDeviation(bool all = true) override;
 
 	/**
 	 * When ever the AI Scanner is reloaded, all infos become invalid. This

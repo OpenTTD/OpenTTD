@@ -37,7 +37,7 @@ void ScriptConfig::Change(const char *name, int version, bool force_exact_match,
 				this->SetSetting((*it).name, InteractiveRandomRange((*it).max_value + 1 - (*it).min_value) + (*it).min_value);
 			}
 		}
-		this->AddRandomDeviation();
+		this->AddRandomDeviation(false);
 	}
 }
 
@@ -127,7 +127,7 @@ void ScriptConfig::ResetSettings()
 	this->settings.clear();
 }
 
-void ScriptConfig::AddRandomDeviation()
+void ScriptConfig::AddRandomDeviation(bool all)
 {
 	for (ScriptConfigItemList::const_iterator it = this->GetConfigList()->begin(); it != this->GetConfigList()->end(); it++) {
 		if ((*it).random_deviation != 0) {
