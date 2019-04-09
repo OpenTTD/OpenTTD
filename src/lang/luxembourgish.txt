@@ -226,8 +226,8 @@ STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filter String:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filter String
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filter-String:
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filter-String
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Filter d'Lëscht op e Wuert
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Wiel Gruppéierreihefollëg
@@ -675,6 +675,7 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Schalt d
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Weis d'Fënster fir Musik ze wielen
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Musik-Programm - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Lidder Index
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programm - '{STRING}'
@@ -995,6 +996,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Duebel
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Véierfach
 
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Schrëftgréisst
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Wiel d'Interface-Schrëftgréisst aus
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Duebel Gréisst
@@ -1356,6 +1358,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Mof
 STR_CONFIG_SETTING_SCROLLMODE                                   :Usiicht-Scrollverhalen: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Verhalen beim Scrolle vun der Kaart
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :D'Usiicht mat der rietser Maustast bewegen, Maus-Positioun gespaart
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :D'Kaart mat der rietser Maustast bewegen
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Kaart mat der lénker Maustast bewegen
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Feine Scrolling: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolléiert wéi d'Haptusiicht op eng bestëmmten Positioun scrollt, wann een op déi kléng Kaart klickt oder en Befehl fir ob en spezifescht Objet ze scrollen gëtt. Wann ugeschalt, gëtt bis dohin gescrollt, wann ausgeschalt, spréngt d'Vue op den Zielobjet
@@ -2707,7 +2710,10 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Biller pro Sekonn
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Unzuel Gameticks déi pro Sekonn simuléiert ginn.
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Grafikframerate: {STRING}
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Aktuelle Spillgeschw.-Faktor: {DECIMAL}x
 STR_FRAMERATE_CURRENT                                           :{WHITE}Aktuell
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Mëttel
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
@@ -2721,10 +2727,11 @@ STR_FRAMERATE_GAMELOOP                                          :{BLACK}Spill to
 STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Zuchticks:
 STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Stroossegefierer Ticken:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Linkgrafik-Verzögerung:
-STR_FRAMERATE_DRAWING                                           :{BLACK}Graphikrendering:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Grafikrendering:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Welt-Usiichten:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Video-output:
 STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}  Gamescript:
+STR_FRAMERATE_AI                                                :{BLACK}   KI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Spill-Loop
@@ -2732,7 +2739,11 @@ STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Wuerenhandling
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Zuchticks
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Stroossegefierer Ticken
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Schëffticker
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Weltticks
+STR_FRAMETIME_CAPTION_DRAWING                                   :Grafikrendering
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Weltusiicht-Rendering
 STR_FRAMETIME_CAPTION_SOUND                                     :Soundmixing
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :GS/KI Scripttotaler
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Spill-Script
 ############ End of leave-in-this-order
 
@@ -2759,6 +2770,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detailer
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Keng Informatioun do
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter-String:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Datei iwwerschreiwen
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Gëff dem Spillstand en Numm
@@ -3340,6 +3352,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Zentréi
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktiounslevel: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}D'Industrie annoncéiert dass se zougemaach gëtt
 
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produzéiert: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Brauch:
@@ -3442,6 +3455,7 @@ STR_PURCHASE_INFO_COST                                          :{BLACK}Käschte
 STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Käschten: {GOLD}{CURRENCY_LONG}{BLACK} (Embaukäschten: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewiicht: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Käschten: {GOLD}{CURRENCY_LONG}{BLACK} Geschw.: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Käschten: {GOLD}{CURRENCY_LONG}{BLACK} (Embaukäschten: {GOLD}{CURRENCY_LONG}{BLACK}) Geschw.: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazitéit: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ugedriwwen Waggonen: {GOLD}+{POWER}{BLACK} Gewiicht: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Embaubar zu: {GOLD}{STRING}
@@ -3462,6 +3476,8 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Schëff 
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Fliger kafen
 
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Gefierer kafen an embauen
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Gefierer kafen an embauen
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Schëff kafen an embauen
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Keeft den ungewielten Zuch. Shift+Klick weist ongeféier Käschten ouni Kaf
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Keeft dat ugewielte Stroossegefier. Shift+Klick weist ongeféier Käschten ouni Kaf
@@ -4423,6 +4439,7 @@ STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kann d'G
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Kann d'Grupp net läschen...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Kann d'Grupp net ëmbenennen...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Kann iwwergeuerdent Grupp net setzen...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... Schläifen an der Gruppenhierarchie si net erlabt
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Kann net all d'Gefierer aus der Grupp läschen...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Kann d'Gefier net bei d'Grupp bäisetzen...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Kann dei gedeelten Gefierer net bei d'Grupp bäisetzen...
