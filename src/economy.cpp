@@ -572,8 +572,10 @@ static void CompanyCheckBankrupt(Company *c)
 {
 	/*  If the company has money again, it does not go bankrupt */
 	if (c->money - c->current_loan >= -_economy.max_loan) {
+		int previous_months_of_bankruptcy = CeilDiv(c->months_of_bankruptcy, 3);
 		c->months_of_bankruptcy = 0;
 		c->bankrupt_asked = 0;
+		if (previous_months_of_bankruptcy != 0) CompanyAdminUpdate(c);
 		return;
 	}
 
@@ -642,10 +644,15 @@ static void CompanyCheckBankrupt(Company *c)
 			 * that changing the current company is okay. In case of single
 			 * player we are sure (the above check) that we are not the local
 			 * company and thus we won't be moved. */
-			if (!_networking || _network_server) DoCommandP(0, CCA_DELETE | (c->index << 16) | (CRR_BANKRUPT << 24), 0, CMD_COMPANY_CTRL);
+			if (!_networking || _network_server) {
+				DoCommandP(0, CCA_DELETE | (c->index << 16) | (CRR_BANKRUPT << 24), 0, CMD_COMPANY_CTRL);
+				return;
+			}
 			break;
 		}
 	}
+
+	if (CeilDiv(c->months_of_bankruptcy, 3) != CeilDiv(c->months_of_bankruptcy - 1, 3)) CompanyAdminUpdate(c);
 }
 
 /**
