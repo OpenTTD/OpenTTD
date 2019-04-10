@@ -49,7 +49,7 @@ public:
 	void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const override;
 	virtual StringID String() const { return this->string; }
 
-	static int NatSortFunc(std::unique_ptr<const DropDownListItem> const &first, std::unique_ptr<const DropDownListItem> const &second);
+	static bool NatSortFunc(std::unique_ptr<const DropDownListItem> const &first, std::unique_ptr<const DropDownListItem> const &second);
 };
 
 /**
