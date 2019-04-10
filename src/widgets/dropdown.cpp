@@ -51,12 +51,12 @@ void DropDownListStringItem::Draw(int left, int right, int top, int bottom, bool
  * @return true if \a first precedes \a second.
  * @warning All items in the list need to be derivates of DropDownListStringItem.
  */
-/* static */ int DropDownListStringItem::NatSortFunc(std::unique_ptr<const DropDownListItem> const &first, std::unique_ptr<const DropDownListItem> const &second)
+/* static */ bool DropDownListStringItem::NatSortFunc(std::unique_ptr<const DropDownListItem> const &first, std::unique_ptr<const DropDownListItem> const &second)
 {
 	char buffer1[512], buffer2[512];
 	GetString(buffer1, static_cast<const DropDownListStringItem*>(first.get())->String(), lastof(buffer1));
 	GetString(buffer2, static_cast<const DropDownListStringItem*>(second.get())->String(), lastof(buffer2));
-	return strnatcmp(buffer1, buffer2);
+	return strnatcmp(buffer1, buffer2) < 0;
 }
 
 StringID DropDownListParamStringItem::String() const
