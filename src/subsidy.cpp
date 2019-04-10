@@ -333,6 +333,7 @@ bool FindSubsidyTownCargoRoute()
 
 	/* Select a random town. */
 	const Town *src_town = Town::GetRandom();
+	if (src_town->cache.population < SUBSIDY_CARGO_MIN_POPULATION) return false;
 
 	CargoTypes town_cargo_produced = src_town->cargo_produced;
 
