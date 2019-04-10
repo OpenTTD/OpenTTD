@@ -95,7 +95,7 @@ static const NWidgetPart _nested_network_content_download_status_window_widgets[
 
 /** Window description for the download window */
 static WindowDesc _network_content_download_status_window_desc(
-	WDP_CENTER, NULL, 0, 0,
+	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_MODAL,
 	_nested_network_content_download_status_window_widgets, lengthof(_nested_network_content_download_status_window_widgets)
@@ -238,7 +238,7 @@ public:
 					break;
 
 				case CONTENT_TYPE_NEWGRF:
-					ScanNewGRFFiles(NULL);
+					ScanNewGRFFiles(nullptr);
 					break;
 
 				case CONTENT_TYPE_SCENARIO:
@@ -480,7 +480,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		}
 
 		/* previously selected item not in list anymore */
-		this->selected = NULL;
+		this->selected = nullptr;
 		this->list_pos = 0;
 	}
 
@@ -501,7 +501,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	/** Make sure that the currently selected content info is within the visible part of the matrix */
 	void ScrollToSelected()
 	{
-		if (this->selected == NULL) return;
+		if (this->selected == nullptr) return;
 
 		this->vscroll->ScrollTowards(this->list_pos);
 	}
@@ -521,7 +521,7 @@ public:
 			Window(desc),
 			auto_select(select_all),
 			filter_editbox(EDITBOX_MAX_SIZE),
-			selected(NULL),
+			selected(nullptr),
 			list_pos(0)
 	{
 		this->checkbox_size = maxdim(maxdim(GetSpriteSize(SPR_BOX_EMPTY), GetSpriteSize(SPR_BOX_CHECKED)), GetSpriteSize(SPR_BLOT));
@@ -685,7 +685,7 @@ public:
 		SetDParam(0, this->filesize_sum);
 		DrawString(r.left + DETAIL_LEFT, r.right - DETAIL_RIGHT, r.bottom - FONT_HEIGHT_NORMAL - WD_PAR_VSEP_NORMAL, STR_CONTENT_TOTAL_DOWNLOAD_SIZE);
 
-		if (this->selected == NULL) return;
+		if (this->selected == nullptr) return;
 
 		/* And fill the rest of the details when there's information to place there */
 		DrawStringMultiLine(r.left + WD_INSET_LEFT, r.right - WD_INSET_RIGHT, r.top + DETAIL_TITLE_HEIGHT / 2, r.top + DETAIL_TITLE_HEIGHT, STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED + this->selected->state, TC_FROMSTRING, SA_CENTER);
@@ -779,7 +779,7 @@ public:
 	void OnClick(Point pt, int widget, int click_count) override
 	{
 		if (widget >= WID_NCL_TEXTFILE && widget < WID_NCL_TEXTFILE + TFT_END) {
-			if (this->selected == NULL || this->selected->state != ContentInfo::ALREADY_HERE) return;
+			if (this->selected == nullptr || this->selected->state != ContentInfo::ALREADY_HERE) return;
 
 			ShowContentTextfileWindow((TextfileType)(widget - WID_NCL_TEXTFILE), this->selected);
 			return;
@@ -842,14 +842,14 @@ public:
 				break;
 
 			case WID_NCL_OPEN_URL:
-				if (this->selected != NULL) {
+				if (this->selected != nullptr) {
 					extern void OpenBrowser(const char *url);
 					OpenBrowser(this->selected->url);
 				}
 				break;
 
 			case WID_NCL_DOWNLOAD:
-				if (BringWindowToFrontById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD) == NULL) new NetworkContentDownloadStatusWindow();
+				if (BringWindowToFrontById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD) == nullptr) new NetworkContentDownloadStatusWindow();
 				break;
 
 			case WID_NCL_SEARCH_EXTERNAL:
@@ -893,7 +893,7 @@ public:
 			case WKC_SPACE:
 			case WKC_RETURN:
 				if (keycode == WKC_RETURN || !IsWidgetFocused(WID_NCL_FILTER)) {
-					if (this->selected != NULL) {
+					if (this->selected != nullptr) {
 						_network_content_client.ToggleSelectedState(this->selected);
 						this->content.ForceResort();
 						this->InvalidateData();
@@ -1005,13 +1005,13 @@ public:
 		}
 
 		/* If data == 2 then the status window caused this OnInvalidate */
-		this->SetWidgetDisabledState(WID_NCL_DOWNLOAD, this->filesize_sum == 0 || (FindWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD) != NULL && data != 2));
+		this->SetWidgetDisabledState(WID_NCL_DOWNLOAD, this->filesize_sum == 0 || (FindWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD) != nullptr && data != 2));
 		this->SetWidgetDisabledState(WID_NCL_UNSELECT, this->filesize_sum == 0);
 		this->SetWidgetDisabledState(WID_NCL_SELECT_ALL, !show_select_all);
 		this->SetWidgetDisabledState(WID_NCL_SELECT_UPDATE, !show_select_upgrade);
-		this->SetWidgetDisabledState(WID_NCL_OPEN_URL, this->selected == NULL || StrEmpty(this->selected->url));
+		this->SetWidgetDisabledState(WID_NCL_OPEN_URL, this->selected == nullptr || StrEmpty(this->selected->url));
 		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
-			this->SetWidgetDisabledState(WID_NCL_TEXTFILE + tft, this->selected == NULL || this->selected->state != ContentInfo::ALREADY_HERE || this->selected->GetTextfile(tft) == NULL);
+			this->SetWidgetDisabledState(WID_NCL_TEXTFILE + tft, this->selected == nullptr || this->selected->state != ContentInfo::ALREADY_HERE || this->selected->GetTextfile(tft) == nullptr);
 		}
 
 		this->GetWidget<NWidgetCore>(WID_NCL_CANCEL)->widget_data = this->filesize_sum == 0 ? STR_AI_SETTINGS_CLOSE : STR_AI_LIST_CANCEL;
@@ -1131,7 +1131,7 @@ static WindowDesc _network_content_list_desc(
 
 /**
  * Show the content list window with a given set of content
- * @param cv the content to show, or NULL when it has to search for itself
+ * @param cv the content to show, or nullptr when it has to search for itself
  * @param type1 the first type to (only) show or #CONTENT_TYPE_END to show all.
  * @param type2 the second type to (only) show in addition to type1. If type2 is != #CONTENT_TYPE_END, then also type1 should be != #CONTENT_TYPE_END.
  *   If type2 != #CONTENT_TYPE_END, then type1 != type2 must be true.
@@ -1141,7 +1141,7 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 #if defined(WITH_ZLIB)
 	std::bitset<CONTENT_TYPE_END> types;
 	_network_content_client.Clear();
-	if (cv == NULL) {
+	if (cv == nullptr) {
 		assert(type1 != CONTENT_TYPE_END || type2 == CONTENT_TYPE_END);
 		assert(type1 == CONTENT_TYPE_END || type1 != type2);
 		_network_content_client.RequestContentList(type1);
@@ -1154,11 +1154,11 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 	}
 
 	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST);
-	new NetworkContentListWindow(&_network_content_list_desc, cv != NULL, types);
+	new NetworkContentListWindow(&_network_content_list_desc, cv != nullptr, types);
 #else
 	ShowErrorMessage(STR_CONTENT_NO_ZLIB, STR_CONTENT_NO_ZLIB_SUB, WL_ERROR);
 	/* Connection failed... clean up the mess */
-	if (cv != NULL) {
+	if (cv != nullptr) {
 		for (ContentInfo *ci : *cv) delete ci;
 	}
 #endif /* WITH_ZLIB */

@@ -60,7 +60,7 @@ static void SetMIDITypeIfNeeded(const FSRef *ref)
 
 	assert(ref);
 
-	if (noErr != FSGetCatalogInfo(ref, kFSCatInfoNodeFlags | kFSCatInfoFinderInfo, &catalogInfo, NULL, NULL, NULL)) return;
+	if (noErr != FSGetCatalogInfo(ref, kFSCatInfoNodeFlags | kFSCatInfoFinderInfo, &catalogInfo, nullptr, nullptr, nullptr)) return;
 	if (!(catalogInfo.nodeFlags & kFSNodeIsDirectoryMask)) {
 		FileInfo * const info = (FileInfo *) catalogInfo.finderInfo;
 		if (info->fileType != MIDI_TYPE && !(info->finderFlags & kIsAlias)) {
@@ -94,8 +94,8 @@ static bool LoadMovieForMIDIFile(const char *path, Movie *moov)
 	short refnum = 0;
 	short resid  = 0;
 
-	assert(path != NULL);
-	assert(moov != NULL);
+	assert(path != nullptr);
+	assert(moov != nullptr);
 
 	DEBUG(driver, 2, "qtmidi: start loading '%s'...", path);
 
@@ -116,15 +116,15 @@ static bool LoadMovieForMIDIFile(const char *path, Movie *moov)
 		return false;
 	}
 
-	if (noErr != FSPathMakeRef((const UInt8 *) path, &fsref, NULL)) return false;
+	if (noErr != FSPathMakeRef((const UInt8 *) path, &fsref, nullptr)) return false;
 	SetMIDITypeIfNeeded(&fsref);
 
-	if (noErr != FSGetCatalogInfo(&fsref, kFSCatInfoNone, NULL, NULL, &fsspec, NULL)) return false;
+	if (noErr != FSGetCatalogInfo(&fsref, kFSCatInfoNone, nullptr, nullptr, &fsspec, nullptr)) return false;
 	if (OpenMovieFile(&fsspec, &refnum, fsRdPerm) != noErr) return false;
 	DEBUG(driver, 3, "qtmidi: '%s' successfully opened", path);
 
-	if (noErr != NewMovieFromFile(moov, refnum, &resid, NULL,
-				newMovieActive | newMovieDontAskUnresolvedDataRefs, NULL)) {
+	if (noErr != NewMovieFromFile(moov, refnum, &resid, nullptr,
+				newMovieActive | newMovieDontAskUnresolvedDataRefs, nullptr)) {
 		CloseMovieFile(refnum);
 		return false;
 	}
@@ -191,7 +191,7 @@ static int   _quicktime_state  = QT_STATE_IDLE; ///< Current player state.
 const char *MusicDriver_QtMidi::Start(const char * const *parm)
 {
 	InitQuickTimeIfNeeded();
-	return (_quicktime_started) ? NULL : "can't initialize QuickTime";
+	return (_quicktime_started) ? nullptr : "can't initialize QuickTime";
 }
 
 
@@ -215,7 +215,7 @@ bool MusicDriver_QtMidi::IsSongPlaying()
 			MoviesTask(_quicktime_movie, 0);
 			/* Check wether movie ended. */
 			if (IsMovieDone(_quicktime_movie) ||
-					(GetMovieTime(_quicktime_movie, NULL) >=
+					(GetMovieTime(_quicktime_movie, nullptr) >=
 					 GetMovieDuration(_quicktime_movie))) {
 				_quicktime_state = QT_STATE_STOP;
 			}

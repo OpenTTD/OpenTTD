@@ -36,7 +36,7 @@ struct Subsidy : SubsidyPool::PoolItem<&_subsidy_pool> {
 	inline Subsidy() { }
 
 	/**
-	 * (Empty) destructor has to be defined else operator delete might be called with NULL parameter
+	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
 	 */
 	inline ~Subsidy() { }
 

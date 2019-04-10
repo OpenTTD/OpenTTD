@@ -164,18 +164,18 @@ bool Textbuf::InsertChar(WChar key)
 bool Textbuf::InsertString(const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end)
 {
 	uint16 insertpos = (marked && this->marklength != 0) ? this->markpos : this->caretpos;
-	if (insert_location != NULL) {
+	if (insert_location != nullptr) {
 		insertpos = insert_location - this->buf;
 		if (insertpos > this->bytes) return false;
 
-		if (replacement_end != NULL) {
-			this->DeleteText(insertpos, replacement_end - this->buf, str == NULL);
+		if (replacement_end != nullptr) {
+			this->DeleteText(insertpos, replacement_end - this->buf, str == nullptr);
 		}
 	} else {
-		if (marked) this->DiscardMarkedText(str == NULL);
+		if (marked) this->DiscardMarkedText(str == nullptr);
 	}
 
-	if (str == NULL) return false;
+	if (str == nullptr) return false;
 
 	uint16 bytes = 0, chars = 0;
 	WChar c;
@@ -205,7 +205,7 @@ bool Textbuf::InsertString(const char *str, bool marked, const char *caret, cons
 
 	this->bytes += bytes;
 	this->chars += chars;
-	if (!marked && caret == NULL) this->caretpos += bytes;
+	if (!marked && caret == nullptr) this->caretpos += bytes;
 	assert(this->bytes <= this->max_bytes);
 	assert(this->chars <= this->max_chars);
 	this->buf[this->bytes - 1] = '\0'; // terminating zero

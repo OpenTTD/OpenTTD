@@ -342,8 +342,8 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	/* Check the tree type within the current climate */
 	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[_settings_game.game_creation.landscape], _tree_count_by_landscape[_settings_game.game_creation.landscape])) return CMD_ERROR;
 
-	Company *c = (_game_mode != GM_EDITOR) ? Company::GetIfValid(_current_company) : NULL;
-	int limit = (c == NULL ? INT32_MAX : GB(c->tree_limit, 16, 16));
+	Company *c = (_game_mode != GM_EDITOR) ? Company::GetIfValid(_current_company) : nullptr;
+	int limit = (c == nullptr ? INT32_MAX : GB(c->tree_limit, 16, 16));
 
 	TileArea ta(tile, p2);
 	TILE_AREA_LOOP(tile, ta) {
@@ -364,7 +364,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				if (flags & DC_EXEC) {
 					AddTreeCount(tile, 1);
 					MarkTileDirtyByTile(tile);
-					if (c != NULL) c->tree_limit -= 1 << 16;
+					if (c != nullptr) c->tree_limit -= 1 << 16;
 				}
 				/* 2x as expensive to add more trees to an existing tile */
 				cost.AddCost(_price[PR_BUILD_TREES] * 2);
@@ -419,7 +419,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 				if (_game_mode != GM_EDITOR && Company::IsValidID(_current_company)) {
 					Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
-					if (t != NULL) ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM, flags);
+					if (t != nullptr) ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM, flags);
 				}
 
 				if (flags & DC_EXEC) {
@@ -431,7 +431,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					/* Plant full grown trees in scenario editor */
 					PlantTreesOnTile(tile, treetype, 0, _game_mode == GM_EDITOR ? 3 : 0);
 					MarkTileDirtyByTile(tile);
-					if (c != NULL) c->tree_limit -= 1 << 16;
+					if (c != nullptr) c->tree_limit -= 1 << 16;
 
 					/* When planting rainforest-trees, set tropiczone to rainforest in editor. */
 					if (_game_mode == GM_EDITOR && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS)) {
@@ -552,7 +552,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlag flags)
 
 	if (Company::IsValidID(_current_company)) {
 		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
-		if (t != NULL) ChangeTownRating(t, RATING_TREE_DOWN_STEP, RATING_TREE_MINIMUM, flags);
+		if (t != nullptr) ChangeTownRating(t, RATING_TREE_DOWN_STEP, RATING_TREE_MINIMUM, flags);
 	}
 
 	num = GetTreeCount(tile);
@@ -803,15 +803,15 @@ extern const TileTypeProcs _tile_type_trees_procs = {
 	DrawTile_Trees,           // draw_tile_proc
 	GetSlopePixelZ_Trees,     // get_slope_z_proc
 	ClearTile_Trees,          // clear_tile_proc
-	NULL,                     // add_accepted_cargo_proc
+	nullptr,                     // add_accepted_cargo_proc
 	GetTileDesc_Trees,        // get_tile_desc_proc
 	GetTileTrackStatus_Trees, // get_tile_track_status_proc
-	NULL,                     // click_tile_proc
-	NULL,                     // animate_tile_proc
+	nullptr,                     // click_tile_proc
+	nullptr,                     // animate_tile_proc
 	TileLoop_Trees,           // tile_loop_proc
 	ChangeTileOwner_Trees,    // change_tile_owner_proc
-	NULL,                     // add_produced_cargo_proc
-	NULL,                     // vehicle_enter_tile_proc
+	nullptr,                     // add_produced_cargo_proc
+	nullptr,                     // vehicle_enter_tile_proc
 	GetFoundation_Trees,      // get_foundation_proc
 	TerraformTile_Trees,      // terraform_tile_proc
 };

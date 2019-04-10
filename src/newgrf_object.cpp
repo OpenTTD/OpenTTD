@@ -151,7 +151,7 @@ static uint32 GetObjectIDAtOffset(TileIndex tile, uint32 cur_grfid)
 	const ObjectSpec *spec = ObjectSpec::Get(o->type);
 
 	/* Default objects have no associated NewGRF file */
-	if (spec->grf_prop.grffile == NULL) {
+	if (spec->grf_prop.grffile == nullptr) {
 		return 0xFFFE; // Defined in another grf file
 	}
 
@@ -237,9 +237,9 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte local_id, uint32 grfid, 
 {
 	/* We get the town from the object, or we calculate the closest
 	 * town if we need to when there's no object. */
-	const Town *t = NULL;
+	const Town *t = nullptr;
 
-	if (this->obj == NULL) {
+	if (this->obj == nullptr) {
 		switch (variable) {
 			/* Allow these when there's no object. */
 			case 0x41:
@@ -325,7 +325,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte local_id, uint32 grfid, 
 		}
 
 		/* Land info of nearby tiles */
-		case 0x62: return GetNearbyObjectTileInformation(parameter, this->tile, this->obj == NULL ? INVALID_OBJECT : this->obj->index, this->ro.grffile->grf_version >= 8);
+		case 0x62: return GetNearbyObjectTileInformation(parameter, this->tile, this->obj == nullptr ? INVALID_OBJECT : this->obj->index, this->ro.grffile->grf_version >= 8);
 
 		/* Animation counter of nearby tile */
 		case 0x63: {
@@ -357,8 +357,8 @@ ObjectResolverObject::ObjectResolverObject(const ObjectSpec *spec, Object *obj, 
 		CallbackID callback, uint32 param1, uint32 param2)
 	: ResolverObject(spec->grf_prop.grffile, callback, param1, param2), object_scope(*this, obj, tile, view)
 {
-	this->town_scope = NULL;
-	this->root_spritegroup = (obj == NULL && spec->grf_prop.spritegroup[CT_PURCHASE_OBJECT] != NULL) ?
+	this->town_scope = nullptr;
+	this->root_spritegroup = (obj == nullptr && spec->grf_prop.spritegroup[CT_PURCHASE_OBJECT] != nullptr) ?
 			spec->grf_prop.spritegroup[CT_PURCHASE_OBJECT] : spec->grf_prop.spritegroup[0];
 }
 
@@ -374,15 +374,15 @@ ObjectResolverObject::~ObjectResolverObject()
  */
 TownScopeResolver *ObjectResolverObject::GetTown()
 {
-	if (this->town_scope == NULL) {
+	if (this->town_scope == nullptr) {
 		Town *t;
-		if (this->object_scope.obj != NULL) {
+		if (this->object_scope.obj != nullptr) {
 			t = this->object_scope.obj->town;
 		} else {
 			t = ClosestTownFromTile(this->object_scope.tile, UINT_MAX);
 		}
-		if (t == NULL) return NULL;
-		this->town_scope = new TownScopeResolver(*this, t, this->object_scope.obj == NULL);
+		if (t == nullptr) return nullptr;
+		this->town_scope = new TownScopeResolver(*this, t, this->object_scope.obj == nullptr);
 	}
 	return this->town_scope;
 }
@@ -395,7 +395,7 @@ TownScopeResolver *ObjectResolverObject::GetTown()
  * @param spec     The specification of the object / the entry point.
  * @param o        The object to call the callback for.
  * @param tile     The tile the callback is called for.
- * @param view     The view of the object (only used when o == NULL).
+ * @param view     The view of the object (only used when o == nullptr).
  * @return The result of the callback.
  */
 uint16 GetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, const ObjectSpec *spec, Object *o, TileIndex tile, uint8 view)
@@ -412,7 +412,7 @@ uint16 GetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, cons
  */
 static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, const ObjectSpec *spec)
 {
-	const DrawTileSprites *dts = group->ProcessRegisters(NULL);
+	const DrawTileSprites *dts = group->ProcessRegisters(nullptr);
 	PaletteID palette = ((spec->flags & OBJECT_FLAG_2CC_COLOUR) ? SPR_2CCMAP_BASE : PALETTE_RECOLOUR_START) + Object::GetByTile(ti->tile)->colour;
 
 	SpriteID image = dts->ground.sprite;
@@ -442,7 +442,7 @@ void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec)
 	ObjectResolverObject object(spec, o, ti->tile);
 
 	const SpriteGroup *group = object.Resolve();
-	if (group == NULL || group->type != SGT_TILELAYOUT) return;
+	if (group == nullptr || group->type != SGT_TILELAYOUT) return;
 
 	DrawTileLayout(ti, (const TileLayoutSpriteGroup *)group, spec);
 }
@@ -456,11 +456,11 @@ void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec)
  */
 void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8 view)
 {
-	ObjectResolverObject object(spec, NULL, INVALID_TILE, view);
+	ObjectResolverObject object(spec, nullptr, INVALID_TILE, view);
 	const SpriteGroup *group = object.Resolve();
-	if (group == NULL || group->type != SGT_TILELAYOUT) return;
+	if (group == nullptr || group->type != SGT_TILELAYOUT) return;
 
-	const DrawTileSprites *dts = ((const TileLayoutSpriteGroup *)group)->ProcessRegisters(NULL);
+	const DrawTileSprites *dts = ((const TileLayoutSpriteGroup *)group)->ProcessRegisters(nullptr);
 
 	PaletteID palette;
 	if (Company::IsValidID(_local_company)) {
@@ -518,7 +518,7 @@ struct ObjectAnimationBase : public AnimationBase<ObjectAnimationBase, ObjectSpe
 void AnimateNewObjectTile(TileIndex tile)
 {
 	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
-	if (spec == NULL || !(spec->flags & OBJECT_FLAG_ANIMATION)) return;
+	if (spec == nullptr || !(spec->flags & OBJECT_FLAG_ANIMATION)) return;
 
 	ObjectAnimationBase::AnimateTile(spec, Object::GetByTile(tile), tile, (spec->flags & OBJECT_FLAG_ANIM_RANDOM_BITS) != 0);
 }

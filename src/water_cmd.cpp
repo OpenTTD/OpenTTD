@@ -168,7 +168,7 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 		if (wc == WATER_CLASS_CANAL) {
 			/* If we clear the canal, we have to remove it from the infrastructure count as well. */
 			Company *c = Company::GetIfValid(o);
-			if (c != NULL) {
+			if (c != nullptr) {
 				c->infrastructure.water--;
 				DirtyCompanyInfrastructureWindows(c->index);
 			}
@@ -185,7 +185,7 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 	if (wc == WATER_CLASS_SEA && z > 0) {
 		/* Update company infrastructure count. */
 		Company *c = Company::GetIfValid(o);
-		if (c != NULL) {
+		if (c != nullptr) {
 			c->infrastructure.water++;
 			DirtyCompanyInfrastructureWindows(c->index);
 		}
@@ -227,7 +227,7 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 		delete Depot::GetByTile(tile);
 
 		Company *c = Company::GetIfValid(GetTileOwner(tile));
-		if (c != NULL) {
+		if (c != nullptr) {
 			c->infrastructure.water -= 2 * LOCK_DEPOT_TILE_FACTOR;
 			DirtyCompanyInfrastructureWindows(c->index);
 		}
@@ -293,7 +293,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 	if (flags & DC_EXEC) {
 		/* Update company infrastructure counts. */
 		Company *c = Company::GetIfValid(_current_company);
-		if (c != NULL) {
+		if (c != nullptr) {
 			/* Counts for the water. */
 			if (!IsWaterTile(tile - delta)) c->infrastructure.water++;
 			if (!IsWaterTile(tile + delta)) c->infrastructure.water++;
@@ -338,7 +338,7 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
 	if (flags & DC_EXEC) {
 		/* Remove middle part from company infrastructure count. */
 		Company *c = Company::GetIfValid(GetTileOwner(tile));
-		if (c != NULL) {
+		if (c != nullptr) {
 			c->infrastructure.water -= 3 * LOCK_DEPOT_TILE_FACTOR; // three parts of the lock.
 			DirtyCompanyInfrastructureWindows(c->index);
 		}
@@ -428,7 +428,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 					MakeRiver(tile, Random());
 					if (_game_mode == GM_EDITOR) {
 						TileIndex tile2 = tile;
-						CircularTileSearch(&tile2, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, NULL);
+						CircularTileSearch(&tile2, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
 					}
 					break;
 
@@ -931,11 +931,11 @@ static void FloodVehicle(Vehicle *v)
  * Flood a vehicle if we are allowed to flood it, i.e. when it is on the ground.
  * @param v    The vehicle to test for flooding.
  * @param data The z of level to flood.
- * @return NULL as we always want to remove everything.
+ * @return nullptr as we always want to remove everything.
  */
 static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
 {
-	if ((v->vehstatus & VS_CRASHED) != 0) return NULL;
+	if ((v->vehstatus & VS_CRASHED) != 0) return nullptr;
 
 	switch (v->type) {
 		default: break;
@@ -963,7 +963,7 @@ static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 /**
@@ -1321,14 +1321,14 @@ extern const TileTypeProcs _tile_type_water_procs = {
 	DrawTile_Water,           // draw_tile_proc
 	GetSlopePixelZ_Water,     // get_slope_z_proc
 	ClearTile_Water,          // clear_tile_proc
-	NULL,                     // add_accepted_cargo_proc
+	nullptr,                     // add_accepted_cargo_proc
 	GetTileDesc_Water,        // get_tile_desc_proc
 	GetTileTrackStatus_Water, // get_tile_track_status_proc
 	ClickTile_Water,          // click_tile_proc
-	NULL,                     // animate_tile_proc
+	nullptr,                     // animate_tile_proc
 	TileLoop_Water,           // tile_loop_proc
 	ChangeTileOwner_Water,    // change_tile_owner_proc
-	NULL,                     // add_produced_cargo_proc
+	nullptr,                     // add_produced_cargo_proc
 	VehicleEnter_Water,       // vehicle_enter_tile_proc
 	GetFoundation_Water,      // get_foundation_proc
 	TerraformTile_Water,      // terraform_tile_proc

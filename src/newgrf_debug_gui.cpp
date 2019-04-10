@@ -47,7 +47,7 @@
 #include "safeguards.h"
 
 /** The sprite picker. */
-NewGrfDebugSpritePicker _newgrf_debug_sprite_picker = { SPM_NONE, NULL, 0, std::vector<SpriteID>() };
+NewGrfDebugSpritePicker _newgrf_debug_sprite_picker = { SPM_NONE, nullptr, 0, std::vector<SpriteID>() };
 
 /**
  * Get the feature index related to the window number.
@@ -192,11 +192,11 @@ public:
 	 * Gets the first position of the array containing the persistent storage.
 	 * @param index Index of the item.
 	 * @param grfid Parameter for the PSA. Only required for items with parameters.
-	 * @return Pointer to the first position of the storage array or NULL if not present.
+	 * @return Pointer to the first position of the storage array or nullptr if not present.
 	 */
 	virtual const int32 *GetPSAFirstPosition(uint index, uint32 grfid) const
 	{
-		return NULL;
+		return nullptr;
 	}
 
 protected:
@@ -252,18 +252,18 @@ static inline GrfSpecFeature GetFeatureNum(uint window_number)
 /**
  * Get the NIFeature related to the window number.
  * @param window_number The window to get the NIFeature for.
- * @return the NIFeature, or NULL is there isn't one.
+ * @return the NIFeature, or nullptr is there isn't one.
  */
 static inline const NIFeature *GetFeature(uint window_number)
 {
 	GrfSpecFeature idx = GetFeatureNum(window_number);
-	return idx < GSF_FAKE_END ? _nifeatures[idx] : NULL;
+	return idx < GSF_FAKE_END ? _nifeatures[idx] : nullptr;
 }
 
 /**
  * Get the NIHelper related to the window number.
  * @param window_number The window to get the NIHelper for.
- * @pre GetFeature(window_number) != NULL
+ * @pre GetFeature(window_number) != nullptr
  * @return the NIHelper
  */
 static inline const NIHelper *GetFeatureHelper(uint window_number)
@@ -332,7 +332,7 @@ struct NewGRFInspectWindow : Window {
 			assert(this->HasChainIndex());
 			const Vehicle *v = Vehicle::Get(index);
 			v = v->Move(this->chain_index);
-			if (v != NULL) index = v->index;
+			if (v != nullptr) index = v->index;
 		}
 		return index;
 	}
@@ -348,7 +348,7 @@ struct NewGRFInspectWindow : Window {
 
 		const Vehicle *v = Vehicle::Get(::GetFeatureIndex(this->window_number));
 		v = v->Move(this->chain_index);
-		if (v == NULL) this->chain_index = 0;
+		if (v == nullptr) this->chain_index = 0;
 	}
 
 	NewGRFInspectWindow(WindowDesc *desc, WindowNumber wno) : Window(desc)
@@ -418,7 +418,7 @@ struct NewGRFInspectWindow : Window {
 				int total_width = 0;
 				int sel_start = 0;
 				int sel_end = 0;
-				for (const Vehicle *u = v->First(); u != NULL; u = u->Next()) {
+				for (const Vehicle *u = v->First(); u != nullptr; u = u->Next()) {
 					if (u == v) sel_start = total_width;
 					switch (u->type) {
 						case VEH_TRAIN: total_width += Train      ::From(u)->GetDisplayImageWidth(); break;
@@ -459,9 +459,9 @@ struct NewGRFInspectWindow : Window {
 		const void *base_spec = nih->GetSpec(index);
 
 		uint i = 0;
-		if (nif->variables != NULL) {
+		if (nif->variables != nullptr) {
 			this->DrawString(r, i++, "Variables:");
-			for (const NIVariable *niv = nif->variables; niv->name != NULL; niv++) {
+			for (const NIVariable *niv = nif->variables; niv->name != nullptr; niv++) {
 				bool avail = true;
 				uint param = HasVariableParameter(niv->var) ? NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][niv->var - 0x60] : 0;
 				uint value = nih->Resolve(index, niv->var, param, &avail);
@@ -478,7 +478,7 @@ struct NewGRFInspectWindow : Window {
 
 		uint psa_size = nih->GetPSASize(index, this->caller_grfid);
 		const int32 *psa = nih->GetPSAFirstPosition(index, this->caller_grfid);
-		if (psa_size != 0 && psa != NULL) {
+		if (psa_size != 0 && psa != nullptr) {
 			if (nih->PSAWithParameter()) {
 				this->DrawString(r, i++, "Persistent storage [%08X]:", BSWAP32(this->caller_grfid));
 			} else {
@@ -490,9 +490,9 @@ struct NewGRFInspectWindow : Window {
 			}
 		}
 
-		if (nif->properties != NULL) {
+		if (nif->properties != nullptr) {
 			this->DrawString(r, i++, "Properties:");
-			for (const NIProperty *nip = nif->properties; nip->name != NULL; nip++) {
+			for (const NIProperty *nip = nif->properties; nip->name != nullptr; nip++) {
 				const void *ptr = (const byte *)base + nip->offset;
 				uint value;
 				switch (nip->read_size) {
@@ -523,9 +523,9 @@ struct NewGRFInspectWindow : Window {
 			}
 		}
 
-		if (nif->callbacks != NULL) {
+		if (nif->callbacks != nullptr) {
 			this->DrawString(r, i++, "Callbacks:");
-			for (const NICallback *nic = nif->callbacks; nic->name != NULL; nic++) {
+			for (const NICallback *nic = nif->callbacks; nic->name != nullptr; nic++) {
 				if (nic->cb_bit != CBM_NO_BIT) {
 					const void *ptr = (const byte *)base_spec + nic->offset;
 					uint value;
@@ -571,7 +571,7 @@ struct NewGRFInspectWindow : Window {
 				if (this->HasChainIndex()) {
 					uint index = this->GetFeatureIndex();
 					Vehicle *v = Vehicle::Get(index);
-					if (v != NULL && v->Next() != NULL) {
+					if (v != nullptr && v->Next() != nullptr) {
 						this->chain_index++;
 						this->InvalidateData();
 					}
@@ -581,14 +581,14 @@ struct NewGRFInspectWindow : Window {
 			case WID_NGRFI_MAINPANEL: {
 				/* Does this feature have variables? */
 				const NIFeature *nif  = GetFeature(this->window_number);
-				if (nif->variables == NULL) return;
+				if (nif->variables == nullptr) return;
 
 				/* Get the line, make sure it's within the boundaries. */
 				int line = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NGRFI_MAINPANEL, TOP_OFFSET);
 				if (line == INT_MAX) return;
 
 				/* Find the variable related to the line */
-				for (const NIVariable *niv = nif->variables; niv->name != NULL; niv++, line--) {
+				for (const NIVariable *niv = nif->variables; niv->name != nullptr; niv++, line--) {
 					if (line != 1) continue; // 1 because of the "Variables:" line
 
 					if (!HasVariableParameter(niv->var)) break;
@@ -604,7 +604,7 @@ struct NewGRFInspectWindow : Window {
 	{
 		if (StrEmpty(str)) return;
 
-		NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][this->current_edit_param - 0x60] = strtol(str, NULL, 16);
+		NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][this->current_edit_param - 0x60] = strtol(str, nullptr, 16);
 		this->SetDirty();
 	}
 
@@ -625,7 +625,7 @@ struct NewGRFInspectWindow : Window {
 			this->ValidateChainIndex();
 			this->SetWidgetDisabledState(WID_NGRFI_VEH_PREV, this->chain_index == 0);
 			Vehicle *v = Vehicle::Get(this->GetFeatureIndex());
-			this->SetWidgetDisabledState(WID_NGRFI_VEH_NEXT, v == NULL || v->Next() == NULL);
+			this->SetWidgetDisabledState(WID_NGRFI_VEH_NEXT, v == nullptr || v->Next() == nullptr);
 		}
 	}
 };
@@ -756,7 +756,7 @@ void DeleteNewGRFInspectWindow(GrfSpecFeature feature, uint index)
 bool IsNewGRFInspectable(GrfSpecFeature feature, uint index)
 {
 	const NIFeature *nif = GetFeature(GetInspectWindowNumber(feature, index));
-	if (nif == NULL) return false;
+	if (nif == nullptr) return false;
 	return nif->helper->IsInspectable(index);
 }
 
@@ -883,7 +883,7 @@ struct SpriteAlignerWindow : Window {
 				DrawPixelInfo *old_dpi = _cur_dpi;
 				_cur_dpi = &new_dpi;
 
-				DrawSprite(this->current_sprite, PAL_NONE, x, y, NULL, ZOOM_LVL_GUI);
+				DrawSprite(this->current_sprite, PAL_NONE, x, y, nullptr, ZOOM_LVL_GUI);
 
 				_cur_dpi = old_dpi;
 

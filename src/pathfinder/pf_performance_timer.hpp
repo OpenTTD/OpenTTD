@@ -53,7 +53,7 @@ struct CPerfStartReal
 
 	inline CPerfStartReal(CPerformanceTimer& perf) : m_pperf(&perf)
 	{
-		if (m_pperf != NULL) m_pperf->Start();
+		if (m_pperf != nullptr) m_pperf->Start();
 	}
 
 	inline ~CPerfStartReal()
@@ -63,9 +63,9 @@ struct CPerfStartReal
 
 	inline void Stop()
 	{
-		if (m_pperf != NULL) {
+		if (m_pperf != nullptr) {
 			m_pperf->Stop();
-			m_pperf = NULL;
+			m_pperf = nullptr;
 		}
 	}
 };

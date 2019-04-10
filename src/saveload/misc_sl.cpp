@@ -36,7 +36,7 @@ void SaveViewportBeforeSaveGame()
 {
 	const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 
-	if (w != NULL) {
+	if (w != nullptr) {
 		_saved_scrollpos_x = w->viewport->scrollpos_x;
 		_saved_scrollpos_y = w->viewport->scrollpos_y;
 		_saved_scrollpos_zoom = w->viewport->zoom;
@@ -151,6 +151,6 @@ static void SaveLoad_VIEW()
 }
 
 extern const ChunkHandler _misc_chunk_handlers[] = {
-	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, NULL, Check_DATE, CH_RIFF},
-	{ 'VIEW', SaveLoad_VIEW, SaveLoad_VIEW, NULL, NULL,       CH_RIFF | CH_LAST},
+	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, nullptr, Check_DATE, CH_RIFF},
+	{ 'VIEW', SaveLoad_VIEW, SaveLoad_VIEW, nullptr, nullptr,       CH_RIFF | CH_LAST},
 };

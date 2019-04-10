@@ -48,7 +48,7 @@ protected:
 	 * Writes actually encountered error to the buffer.
 	 * @param buffer  The begin where to write at.
 	 * @param last    The last position in the buffer to write to.
-	 * @param message Message passed to use for possible errors. Can be NULL.
+	 * @param message Message passed to use for possible errors. Can be nullptr.
 	 * @return the position of the \c '\0' character after the buffer.
 	 */
 	virtual char *LogError(char *buffer, const char *last, const char *message) const = 0;

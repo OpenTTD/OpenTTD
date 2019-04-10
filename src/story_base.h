@@ -58,7 +58,7 @@ struct StoryPageElement : StoryPageElementPool::PoolItem<&_story_page_element_po
 	inline StoryPageElement() { }
 
 	/**
-	 * (Empty) destructor has to be defined else operator delete might be called with NULL parameter
+	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
 	 */
 	inline ~StoryPageElement() { free(this->text); }
 };
@@ -80,7 +80,7 @@ struct StoryPage : StoryPagePool::PoolItem<&_story_page_pool> {
 	inline StoryPage() { }
 
 	/**
-	 * (Empty) destructor has to be defined else operator delete might be called with NULL parameter
+	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
 	 */
 	inline ~StoryPage()
 	{

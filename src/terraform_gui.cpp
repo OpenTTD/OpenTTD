@@ -293,8 +293,8 @@ struct TerraformToolbarWindow : Window {
 static EventState TerraformToolbarGlobalHotkeys(int hotkey)
 {
 	if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
-	Window *w = ShowTerraformToolbar(NULL);
-	if (w == NULL) return ES_NOT_HANDLED;
+	Window *w = ShowTerraformToolbar(nullptr);
+	if (w == nullptr) return ES_NOT_HANDLED;
 	return w->OnHotkey(hotkey);
 }
 
@@ -353,14 +353,14 @@ static WindowDesc _terraform_desc(
 /**
  * Show the toolbar for terraforming in the game.
  * @param link The toolbar we might want to link to.
- * @return The allocated toolbar if the window was newly opened, else \c NULL.
+ * @return The allocated toolbar if the window was newly opened, else \c nullptr.
  */
 Window *ShowTerraformToolbar(Window *link)
 {
-	if (!Company::IsValidID(_local_company)) return NULL;
+	if (!Company::IsValidID(_local_company)) return nullptr;
 
 	Window *w;
-	if (link == NULL) {
+	if (link == nullptr) {
 		w = AllocateWindowDescFront<TerraformToolbarWindow>(&_terraform_desc, 0);
 		return w;
 	}
@@ -631,7 +631,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				break;
 
 			case WID_ETT_RESET_LANDSCAPE: // Reset landscape
-				ShowQuery(STR_QUERY_RESET_LANDSCAPE_CAPTION, STR_RESET_LANDSCAPE_CONFIRMATION_TEXT, NULL, ResetLandscapeConfirmationCallback);
+				ShowQuery(STR_QUERY_RESET_LANDSCAPE_CAPTION, STR_RESET_LANDSCAPE_CONFIRMATION_TEXT, nullptr, ResetLandscapeConfirmationCallback);
 				break;
 
 			default: NOT_REACHED();
@@ -720,7 +720,7 @@ static EventState TerraformToolbarEditorGlobalHotkeys(int hotkey)
 {
 	if (_game_mode != GM_EDITOR) return ES_NOT_HANDLED;
 	Window *w = ShowEditorTerraformToolbar();
-	if (w == NULL) return ES_NOT_HANDLED;
+	if (w == nullptr) return ES_NOT_HANDLED;
 	return w->OnHotkey(hotkey);
 }
 
@@ -747,7 +747,7 @@ static WindowDesc _scen_edit_land_gen_desc(
 
 /**
  * Show the toolbar for terraforming in the scenario editor.
- * @return The allocated toolbar if the window was newly opened, else \c NULL.
+ * @return The allocated toolbar if the window was newly opened, else \c nullptr.
  */
 Window *ShowEditorTerraformToolbar()
 {

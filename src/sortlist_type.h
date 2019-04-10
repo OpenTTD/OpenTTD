@@ -81,8 +81,8 @@ protected:
 
 public:
 	GUIList() :
-		sort_func_list(NULL),
-		filter_func_list(NULL),
+		sort_func_list(nullptr),
+		filter_func_list(nullptr),
 		flags(VL_FIRST_SORT),
 		sort_type(0),
 		filter_type(0),
@@ -296,7 +296,7 @@ public:
 	 */
 	bool Sort()
 	{
-		assert(this->sort_func_list != NULL);
+		assert(this->sort_func_list != nullptr);
 		return this->Sort(this->sort_func_list[this->sort_type]);
 	}
 
@@ -367,7 +367,7 @@ public:
 	 */
 	bool Filter(F filter_data)
 	{
-		if (this->filter_func_list == NULL) return false;
+		if (this->filter_func_list == nullptr) return false;
 		return this->Filter(this->filter_func_list[this->filter_type], filter_data);
 	}
 

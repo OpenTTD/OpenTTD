@@ -389,15 +389,15 @@ extern const TileTypeProcs _tile_type_clear_procs = {
 	DrawTile_Clear,           ///< draw_tile_proc
 	GetSlopePixelZ_Clear,     ///< get_slope_z_proc
 	ClearTile_Clear,          ///< clear_tile_proc
-	NULL,                     ///< add_accepted_cargo_proc
+	nullptr,                     ///< add_accepted_cargo_proc
 	GetTileDesc_Clear,        ///< get_tile_desc_proc
 	GetTileTrackStatus_Clear, ///< get_tile_track_status_proc
-	NULL,                     ///< click_tile_proc
-	NULL,                     ///< animate_tile_proc
+	nullptr,                     ///< click_tile_proc
+	nullptr,                     ///< animate_tile_proc
 	TileLoop_Clear,           ///< tile_loop_proc
 	ChangeTileOwner_Clear,    ///< change_tile_owner_proc
-	NULL,                     ///< add_produced_cargo_proc
-	NULL,                     ///< vehicle_enter_tile_proc
+	nullptr,                     ///< add_produced_cargo_proc
+	nullptr,                     ///< vehicle_enter_tile_proc
 	GetFoundation_Clear,      ///< get_foundation_proc
 	TerraformTile_Clear,      ///< terraform_tile_proc
 };

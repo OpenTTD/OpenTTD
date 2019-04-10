@@ -34,12 +34,12 @@ HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, NUM_HOUSES, INVALID_HOUSE_ID)
 /**
  * Retrieve the grf file associated with a house.
  * @param house_id House to query.
- * @return The associated GRF file (may be \c NULL).
+ * @return The associated GRF file (may be \c nullptr).
  */
 static const GRFFile *GetHouseSpecGrf(HouseID house_id)
 {
 	const HouseSpec *hs  = HouseSpec::Get(house_id);
-	return (hs != NULL) ? hs->grf_prop.grffile : NULL;
+	return (hs != nullptr) ? hs->grf_prop.grffile : nullptr;
 }
 
 /**
@@ -190,7 +190,7 @@ static bool SearchNearbyHouseID(TileIndex tile, void *user_data)
 	if (IsTileType(tile, MP_HOUSE)) {
 		HouseID house = GetHouseType(tile); // tile been examined
 		const HouseSpec *hs = HouseSpec::Get(house);
-		if (hs->grf_prop.grffile != NULL) { // must be one from a grf file
+		if (hs->grf_prop.grffile != nullptr) { // must be one from a grf file
 			SearchNearbyHouseData *nbhd = (SearchNearbyHouseData *)user_data;
 
 			TileIndex north_tile = tile + GetHouseNorthPart(house); // modifies 'house'!
@@ -214,7 +214,7 @@ static bool SearchNearbyHouseClass(TileIndex tile, void *user_data)
 	if (IsTileType(tile, MP_HOUSE)) {
 		HouseID house = GetHouseType(tile); // tile been examined
 		const HouseSpec *hs = HouseSpec::Get(house);
-		if (hs->grf_prop.grffile != NULL) { // must be one from a grf file
+		if (hs->grf_prop.grffile != nullptr) { // must be one from a grf file
 			SearchNearbyHouseData *nbhd = (SearchNearbyHouseData *)user_data;
 
 			TileIndex north_tile = tile + GetHouseNorthPart(house); // modifies 'house'!
@@ -238,7 +238,7 @@ static bool SearchNearbyHouseGRFID(TileIndex tile, void *user_data)
 	if (IsTileType(tile, MP_HOUSE)) {
 		HouseID house = GetHouseType(tile); // tile been examined
 		const HouseSpec *hs = HouseSpec::Get(house);
-		if (hs->grf_prop.grffile != NULL) { // must be one from a grf file
+		if (hs->grf_prop.grffile != nullptr) { // must be one from a grf file
 			SearchNearbyHouseData *nbhd = (SearchNearbyHouseData *)user_data;
 
 			TileIndex north_tile = tile + GetHouseNorthPart(house); // modifies 'house'!
@@ -320,7 +320,7 @@ static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, HouseI
 		/* Building counts for new houses with id = parameter. */
 		case 0x61: {
 			const HouseSpec *hs = HouseSpec::Get(this->house_id);
-			if (hs->grf_prop.grffile == NULL) return 0;
+			if (hs->grf_prop.grffile == nullptr) return 0;
 
 			HouseID new_house = _house_mngr.GetID(parameter, hs->grf_prop.grffile->grfid);
 			return new_house == INVALID_HOUSE_ID ? 0 : GetNumHouses(new_house, this->town);
@@ -462,7 +462,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 	HouseResolverObject object(house_id, ti->tile, Town::GetByTile(ti->tile));
 
 	const SpriteGroup *group = object.Resolve();
-	if (group != NULL && group->type == SGT_TILELAYOUT) {
+	if (group != nullptr && group->type == SGT_TILELAYOUT) {
 		/* Limit the building stage to the number of stages supplied. */
 		const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
 		byte stage = GetHouseBuildingStage(ti->tile);
@@ -488,7 +488,7 @@ struct HouseAnimationBase : public AnimationBase<HouseAnimationBase, HouseSpec, 
 void AnimateNewHouseTile(TileIndex tile)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
-	if (hs == NULL) return;
+	if (hs == nullptr) return;
 
 	HouseAnimationBase::AnimateTile(hs, Town::GetByTile(tile), tile, HasBit(hs->extra_flags, CALLBACK_1A_RANDOM_BITS));
 }
@@ -581,14 +581,14 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_rando
 	HouseID hid = GetHouseType(tile);
 	HouseSpec *hs = HouseSpec::Get(hid);
 
-	if (hs->grf_prop.spritegroup[0] == NULL) return;
+	if (hs->grf_prop.spritegroup[0] == nullptr) return;
 
 	HouseResolverObject object(hid, tile, Town::GetByTile(tile), CBID_RANDOM_TRIGGER);
 	object.waiting_triggers = GetHouseTriggers(tile) | trigger;
 	SetHouseTriggers(tile, object.waiting_triggers); // store now for var 5F
 
 	const SpriteGroup *group = object.Resolve();
-	if (group == NULL) return;
+	if (group == nullptr) return;
 
 	/* Store remaining triggers. */
 	SetHouseTriggers(tile, object.GetRemainingTriggers());

@@ -52,7 +52,7 @@ const char *MusicDriver_ExtMidi::Start(const char * const * parm)
 	if (StrEmpty(command)) command = EXTERNAL_PLAYER " " MIDI_ARG;
 #endif
 
-	/* Count number of arguments, but include 3 extra slots: 1st for command, 2nd for song title, and 3rd for terminating NULL. */
+	/* Count number of arguments, but include 3 extra slots: 1st for command, 2nd for song title, and 3rd for terminating nullptr. */
 	uint num_args = 3;
 	for (const char *t = command; *t != '\0'; t++) if (*t == ' ') num_args++;
 
@@ -63,7 +63,7 @@ const char *MusicDriver_ExtMidi::Start(const char * const * parm)
 	uint p = 1;
 	while (true) {
 		this->params[p] = strchr(this->params[p - 1], ' ');
-		if (this->params[p] == NULL) break;
+		if (this->params[p] == nullptr) break;
 
 		this->params[p][0] = '\0';
 		this->params[p]++;
@@ -75,7 +75,7 @@ const char *MusicDriver_ExtMidi::Start(const char * const * parm)
 
 	this->song[0] = '\0';
 	this->pid = -1;
-	return NULL;
+	return nullptr;
 }
 
 void MusicDriver_ExtMidi::Stop()
@@ -103,7 +103,7 @@ void MusicDriver_ExtMidi::StopSong()
 
 bool MusicDriver_ExtMidi::IsSongPlaying()
 {
-	if (this->pid != -1 && waitpid(this->pid, NULL, WNOHANG) == this->pid) {
+	if (this->pid != -1 && waitpid(this->pid, nullptr, WNOHANG) == this->pid) {
 		this->pid = -1;
 	}
 	if (this->pid == -1 && this->song[0] != '\0') this->DoPlay();
@@ -146,7 +146,7 @@ void MusicDriver_ExtMidi::DoStop()
 	 * 5 seconds = 5000 milliseconds, 10 ms per cycle => 500 cycles. */
 	for (int i = 0; i < 500; i++) {
 		kill(this->pid, SIGTERM);
-		if (waitpid(this->pid, NULL, WNOHANG) == this->pid) {
+		if (waitpid(this->pid, nullptr, WNOHANG) == this->pid) {
 			/* It has shut down, so we are done */
 			this->pid = -1;
 			return;
@@ -159,6 +159,6 @@ void MusicDriver_ExtMidi::DoStop()
 	/* Gracefully stopping failed. Do it the hard way
 	 * and wait till the process finally died. */
 	kill(this->pid, SIGKILL);
-	waitpid(this->pid, NULL, 0);
+	waitpid(this->pid, nullptr, 0);
 	this->pid = -1;
 }

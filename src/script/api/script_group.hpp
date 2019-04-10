@@ -71,7 +71,7 @@ public:
 	 * @param group_id The group to set the name for.
 	 * @param name The name for the group (can be either a raw string, or a ScriptText object).
 	 * @pre IsValidGroup(group_id).
-	 * @pre name != NULL && len(name) != 0
+	 * @pre name != nullptr && len(name) != 0
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if and only if the name was changed.
 	 */

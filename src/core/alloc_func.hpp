@@ -53,23 +53,23 @@ static inline void CheckAllocationConstraints(size_t num_elements)
  * @note the memory contains garbage data (i.e. possibly non-zero values).
  * @tparam T the type of the variable(s) to allocation.
  * @param num_elements the number of elements to allocate of the given type.
- * @return NULL when num_elements == 0, non-NULL otherwise.
+ * @return nullptr when num_elements == 0, non-nullptr otherwise.
  */
 template <typename T>
 static inline T *MallocT(size_t num_elements)
 {
 	/*
 	 * MorphOS cannot handle 0 elements allocations, or rather that always
-	 * returns NULL. So we do that for *all* allocations, thus causing it
+	 * returns nullptr. So we do that for *all* allocations, thus causing it
 	 * to behave the same on all OSes.
 	 */
-	if (num_elements == 0) return NULL;
+	if (num_elements == 0) return nullptr;
 
 	/* Ensure the size does not overflow. */
 	CheckAllocationConstraints<T>(num_elements);
 
 	T *t_ptr = (T*)malloc(num_elements * sizeof(T));
-	if (t_ptr == NULL) MallocError(num_elements * sizeof(T));
+	if (t_ptr == nullptr) MallocError(num_elements * sizeof(T));
 	return t_ptr;
 }
 
@@ -81,20 +81,20 @@ static inline T *MallocT(size_t num_elements)
  * @note the memory contains all zero values.
  * @tparam T the type of the variable(s) to allocation.
  * @param num_elements the number of elements to allocate of the given type.
- * @return NULL when num_elements == 0, non-NULL otherwise.
+ * @return nullptr when num_elements == 0, non-nullptr otherwise.
  */
 template <typename T>
 static inline T *CallocT(size_t num_elements)
 {
 	/*
 	 * MorphOS cannot handle 0 elements allocations, or rather that always
-	 * returns NULL. So we do that for *all* allocations, thus causing it
+	 * returns nullptr. So we do that for *all* allocations, thus causing it
 	 * to behave the same on all OSes.
 	 */
-	if (num_elements == 0) return NULL;
+	if (num_elements == 0) return nullptr;
 
 	T *t_ptr = (T*)calloc(num_elements, sizeof(T));
-	if (t_ptr == NULL) MallocError(num_elements * sizeof(T));
+	if (t_ptr == nullptr) MallocError(num_elements * sizeof(T));
 	return t_ptr;
 }
 
@@ -107,26 +107,26 @@ static inline T *CallocT(size_t num_elements)
  * @tparam T the type of the variable(s) to allocation.
  * @param t_ptr the previous allocation to extend/shrink.
  * @param num_elements the number of elements to allocate of the given type.
- * @return NULL when num_elements == 0, non-NULL otherwise.
+ * @return nullptr when num_elements == 0, non-nullptr otherwise.
  */
 template <typename T>
 static inline T *ReallocT(T *t_ptr, size_t num_elements)
 {
 	/*
 	 * MorphOS cannot handle 0 elements allocations, or rather that always
-	 * returns NULL. So we do that for *all* allocations, thus causing it
+	 * returns nullptr. So we do that for *all* allocations, thus causing it
 	 * to behave the same on all OSes.
 	 */
 	if (num_elements == 0) {
 		free(t_ptr);
-		return NULL;
+		return nullptr;
 	}
 
 	/* Ensure the size does not overflow. */
 	CheckAllocationConstraints<T>(num_elements);
 
 	t_ptr = (T*)realloc(static_cast<void *>(t_ptr), num_elements * sizeof(T));
-	if (t_ptr == NULL) ReallocError(num_elements * sizeof(T));
+	if (t_ptr == nullptr) ReallocError(num_elements * sizeof(T));
 	return t_ptr;
 }
 

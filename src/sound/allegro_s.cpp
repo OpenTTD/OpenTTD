@@ -22,18 +22,18 @@
 
 static FSoundDriver_Allegro iFSoundDriver_Allegro;
 /** The stream we are writing too */
-static AUDIOSTREAM *_stream = NULL;
+static AUDIOSTREAM *_stream = nullptr;
 /** The number of samples in the buffer */
 static int _buffer_size;
 
 void SoundDriver_Allegro::MainLoop()
 {
 	/* We haven't opened a stream yet */
-	if (_stream == NULL) return;
+	if (_stream == nullptr) return;
 
 	void *data = get_audio_stream_buffer(_stream);
 	/* We don't have to fill the stream yet */
-	if (data == NULL) return;
+	if (data == nullptr) return;
 
 	/* Mix the samples */
 	MxMixSamples(data, _buffer_size);
@@ -54,14 +54,14 @@ extern int _allegro_instance_count;
 
 const char *SoundDriver_Allegro::Start(const char * const *parm)
 {
-	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) {
+	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, nullptr)) {
 		DEBUG(driver, 0, "allegro: install_allegro failed '%s'", allegro_error);
 		return "Failed to set up Allegro";
 	}
 	_allegro_instance_count++;
 
 	/* Initialise the sound */
-	if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, NULL) != 0) {
+	if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, nullptr) != 0) {
 		DEBUG(driver, 0, "allegro: install_sound failed '%s'", allegro_error);
 		return "Failed to set up Allegro sound";
 	}
@@ -76,14 +76,14 @@ const char *SoundDriver_Allegro::Start(const char * const *parm)
 	_buffer_size = GetDriverParamInt(parm, "samples", 1024) * hz / 11025;
 	_stream = play_audio_stream(_buffer_size, 16, true, hz, 255, 128);
 	MxInitialize(hz);
-	return NULL;
+	return nullptr;
 }
 
 void SoundDriver_Allegro::Stop()
 {
-	if (_stream != NULL) {
+	if (_stream != nullptr) {
 		stop_audio_stream(_stream);
-		_stream = NULL;
+		_stream = nullptr;
 	}
 	remove_sound();
 

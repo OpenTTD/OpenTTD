@@ -178,7 +178,7 @@ void FixOldVehicles()
 
 	FOR_ALL_VEHICLES(v) {
 		if ((size_t)v->next == 0xFFFF) {
-			v->next = NULL;
+			v->next = nullptr;
 		} else {
 			v->next = Vehicle::GetIfValid((size_t)v->next);
 		}
@@ -452,7 +452,7 @@ static bool FixTTOEngines()
 		e->preview_company = INVALID_COMPANY;
 		e->preview_asked = (CompanyMask)-1;
 		e->preview_wait = 0;
-		e->name = NULL;
+		e->name = nullptr;
 	}
 
 	return true;
@@ -621,7 +621,7 @@ static const OldChunks order_chunk[] = {
 
 static bool LoadOldOrder(LoadgameState *ls, int num)
 {
-	if (!LoadChunk(ls, NULL, order_chunk)) return false;
+	if (!LoadChunk(ls, nullptr, order_chunk)) return false;
 
 	Order *o = new (num) Order();
 	o->AssignOrder(UnpackOldOrder(_old_order));
@@ -632,7 +632,7 @@ static bool LoadOldOrder(LoadgameState *ls, int num)
 		/* Relink the orders to each other (in the orders for one vehicle are behind each other,
 		 * with an invalid order (OT_NOTHING) as indication that it is the last order */
 		Order *prev = Order::GetIfValid(num - 1);
-		if (prev != NULL) prev->next = o;
+		if (prev != nullptr) prev->next = o;
 	}
 
 	return true;
@@ -646,7 +646,7 @@ static bool LoadOldAnimTileList(LoadgameState *ls, int num)
 		OCL_END ()
 	};
 
-	if (!LoadChunk(ls, NULL, anim_chunk)) return false;
+	if (!LoadChunk(ls, nullptr, anim_chunk)) return false;
 
 	/* The first zero in the loaded array indicates the end of the list. */
 	for (int i = 0; i < 256; i++) {
@@ -671,7 +671,7 @@ static bool LoadOldDepot(LoadgameState *ls, int num)
 	if (d->xy != 0) {
 		/* In some cases, there could be depots referencing invalid town. */
 		Town *t = Town::GetIfValid(RemapTownIndex(_old_town_index));
-		if (t == NULL) t = Town::GetRandom();
+		if (t == nullptr) t = Town::GetRandom();
 		d->town = t;
 	} else {
 		delete d;
@@ -876,7 +876,7 @@ static bool LoadOldCompanyYearly(LoadgameState *ls, int num)
 		if (_savegame_type == SGT_TTO && i == 6) {
 			_old_yearly = 0; // property maintenance
 		} else {
-			if (!LoadChunk(ls, NULL, _company_yearly_chunk)) return false;
+			if (!LoadChunk(ls, nullptr, _company_yearly_chunk)) return false;
 		}
 
 		c->yearly_expenses[num][i] = _old_yearly;
@@ -1106,8 +1106,8 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 	uint temp = ls->total_read;
 	bool res;
 
-	if (v == NULL) {
-		res = LoadChunk(ls, NULL, vehicle_empty_chunk);
+	if (v == nullptr) {
+		res = LoadChunk(ls, nullptr, vehicle_empty_chunk);
 	} else {
 		switch (v->type) {
 			default: SlErrorCorrupt("Invalid vehicle type");
@@ -1240,7 +1240,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			uint type = ReadByte(ls);
 			switch (type) {
 				default: return false;
-				case 0x00 /* VEH_INVALID  */: v = NULL;                                        break;
+				case 0x00 /* VEH_INVALID  */: v = nullptr;                                        break;
 				case 0x25 /* MONORAIL     */:
 				case 0x20 /* VEH_TRAIN    */: v = new (_current_vehicle_id) Train();           break;
 				case 0x21 /* VEH_ROAD     */: v = new (_current_vehicle_id) RoadVehicle();     break;
@@ -1251,7 +1251,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			}
 
 			if (!LoadChunk(ls, v, vehicle_chunk)) return false;
-			if (v == NULL) continue;
+			if (v == nullptr) continue;
 			v->refit_cap = v->cargo_cap;
 
 			SpriteID sprite = v->sprite_seq.seq[0].sprite;
@@ -1318,7 +1318,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			/* Read the vehicle type and allocate the right vehicle */
 			switch (ReadByte(ls)) {
 				default: SlErrorCorrupt("Invalid vehicle type");
-				case 0x00 /* VEH_INVALID */: v = NULL;                                        break;
+				case 0x00 /* VEH_INVALID */: v = nullptr;                                        break;
 				case 0x10 /* VEH_TRAIN   */: v = new (_current_vehicle_id) Train();           break;
 				case 0x11 /* VEH_ROAD    */: v = new (_current_vehicle_id) RoadVehicle();     break;
 				case 0x12 /* VEH_SHIP    */: v = new (_current_vehicle_id) Ship();            break;
@@ -1328,7 +1328,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			}
 
 			if (!LoadChunk(ls, v, vehicle_chunk)) return false;
-			if (v == NULL) continue;
+			if (v == nullptr) continue;
 
 			_old_vehicle_names[_current_vehicle_id] = RemapOldStringID(_old_string_id);
 
@@ -1756,9 +1756,9 @@ bool LoadTTDMain(LoadgameState *ls)
 	/* Load the biggest chunk */
 	SmallStackSafeStackAlloc<byte, OLD_MAP_SIZE * 2> map3;
 	_old_map3 = map3.data;
-	_old_vehicle_names = NULL;
+	_old_vehicle_names = nullptr;
 	try {
-		if (!LoadChunk(ls, NULL, main_chunk)) {
+		if (!LoadChunk(ls, nullptr, main_chunk)) {
 			DEBUG(oldloader, 0, "Loading failed");
 			free(_old_vehicle_names);
 			return false;
@@ -1803,7 +1803,7 @@ bool LoadTTOMain(LoadgameState *ls)
 	_old_vehicle_names = vehnames.data;
 
 	/* Load the biggest chunk */
-	if (!LoadChunk(ls, NULL, main_chunk)) {
+	if (!LoadChunk(ls, nullptr, main_chunk)) {
 		DEBUG(oldloader, 0, "Loading failed");
 		return false;
 	}

@@ -35,14 +35,14 @@ void GameScannerInfo::RegisterAPI(class Squirrel *engine)
 
 GameInfo *GameScannerInfo::FindInfo(const char *nameParam, int versionParam, bool force_exact_match)
 {
-	if (this->info_list.size() == 0) return NULL;
-	if (nameParam == NULL) return NULL;
+	if (this->info_list.size() == 0) return nullptr;
+	if (nameParam == nullptr) return nullptr;
 
 	char game_name[1024];
 	strecpy(game_name, nameParam, lastof(game_name));
 	strtolower(game_name);
 
-	GameInfo *info = NULL;
+	GameInfo *info = nullptr;
 	int version = -1;
 
 	if (versionParam == -1) {
@@ -51,7 +51,7 @@ GameInfo *GameScannerInfo::FindInfo(const char *nameParam, int versionParam, boo
 
 		/* If we didn't find a match Game script, maybe the user included a version */
 		char *e = strrchr(game_name, '.');
-		if (e == NULL) return NULL;
+		if (e == nullptr) return nullptr;
 		*e = '\0';
 		e++;
 		versionParam = atoi(e);
@@ -106,7 +106,7 @@ GameLibrary *GameScannerLibrary::FindLibrary(const char *library, int version)
 
 	/* Check if the library + version exists */
 	ScriptInfoList::iterator iter = this->info_list.find(library_name);
-	if (iter == this->info_list.end()) return NULL;
+	if (iter == this->info_list.end()) return nullptr;
 
 	return static_cast<GameLibrary *>((*iter).second);
 }

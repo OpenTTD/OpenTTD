@@ -549,7 +549,7 @@ public:
 
 	uint Reserve(uint max_move, VehicleCargoList *dest, TileIndex load_place, StationIDStack next);
 	uint Load(uint max_move, VehicleCargoList *dest, TileIndex load_place, StationIDStack next);
-	uint Truncate(uint max_move = UINT_MAX, StationCargoAmountMap *cargo_per_source = NULL);
+	uint Truncate(uint max_move = UINT_MAX, StationCargoAmountMap *cargo_per_source = nullptr);
 	uint Reroute(uint max_move, StationCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge);
 
 	/**

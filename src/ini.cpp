@@ -29,7 +29,7 @@
 
 /**
  * Create a new ini file with given group names.
- * @param list_group_names A \c NULL terminated list with group names that should be loaded as lists instead of variables. @see IGT_LIST
+ * @param list_group_names A \c nullptr terminated list with group names that should be loaded as lists instead of variables. @see IGT_LIST
  */
 IniFile::IniFile(const char * const *list_group_names) : IniLoadFile(list_group_names)
 {
@@ -52,23 +52,23 @@ bool IniFile::SaveToDisk(const char *filename)
 	strecpy(file_new, filename, lastof(file_new));
 	strecat(file_new, ".new", lastof(file_new));
 	FILE *f = fopen(file_new, "w");
-	if (f == NULL) return false;
+	if (f == nullptr) return false;
 
-	for (const IniGroup *group = this->group; group != NULL; group = group->next) {
+	for (const IniGroup *group = this->group; group != nullptr; group = group->next) {
 		if (group->comment) fputs(group->comment, f);
 		fprintf(f, "[%s]\n", group->name);
-		for (const IniItem *item = group->item; item != NULL; item = item->next) {
-			if (item->comment != NULL) fputs(item->comment, f);
+		for (const IniItem *item = group->item; item != nullptr; item = item->next) {
+			if (item->comment != nullptr) fputs(item->comment, f);
 
 			/* protect item->name with quotes if needed */
-			if (strchr(item->name, ' ') != NULL ||
+			if (strchr(item->name, ' ') != nullptr ||
 					item->name[0] == '[') {
 				fprintf(f, "\"%s\"", item->name);
 			} else {
 				fprintf(f, "%s", item->name);
 			}
 
-			fprintf(f, " = %s\n", item->value == NULL ? "" : item->value);
+			fprintf(f, " = %s\n", item->value == nullptr ? "" : item->value);
 		}
 	}
 	if (this->comment) fputs(this->comment, f);

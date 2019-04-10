@@ -39,8 +39,8 @@ DEFINE_POOL_METHOD(inline)::Pool(const char *name) :
 		checked(0),
 #endif /* OTTD_ASSERT */
 		cleaning(false),
-		data(NULL),
-		alloc_cache(NULL)
+		data(nullptr),
+		alloc_cache(nullptr)
 { }
 
 /**
@@ -71,7 +71,7 @@ DEFINE_POOL_METHOD(inline size_t)::FindFirstFree()
 	size_t index = this->first_free;
 
 	for (; index < this->first_unused; index++) {
-		if (this->data[index] == NULL) return index;
+		if (this->data[index] == nullptr) return index;
 	}
 
 	if (index < this->size) {
@@ -96,17 +96,17 @@ DEFINE_POOL_METHOD(inline size_t)::FindFirstFree()
  * @param size size of item
  * @param index index of item
  * @pre index < this->size
- * @pre this->Get(index) == NULL
+ * @pre this->Get(index) == nullptr
  */
 DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
 {
-	assert(this->data[index] == NULL);
+	assert(this->data[index] == nullptr);
 
 	this->first_unused = max(this->first_unused, index + 1);
 	this->items++;
 
 	Titem *item;
-	if (Tcache && this->alloc_cache != NULL) {
+	if (Tcache && this->alloc_cache != nullptr) {
 		assert(sizeof(Titem) == size);
 		item = (Titem *)this->alloc_cache;
 		this->alloc_cache = this->alloc_cache->next;
@@ -164,7 +164,7 @@ DEFINE_POOL_METHOD(void *)::GetNew(size_t size, size_t index)
 
 	if (index >= this->size) this->ResizeFor(index);
 
-	if (this->data[index] != NULL) {
+	if (this->data[index] != nullptr) {
 		SlErrorCorruptFmt("%s index " PRINTF_SIZE " already in use", this->name, index);
 	}
 
@@ -174,13 +174,13 @@ DEFINE_POOL_METHOD(void *)::GetNew(size_t size, size_t index)
 /**
  * Deallocates memory used by this index and marks item as free
  * @param index item to deallocate
- * @pre unit is allocated (non-NULL)
- * @note 'delete NULL' doesn't cause call of this function, so it is safe
+ * @pre unit is allocated (non-nullptr)
+ * @note 'delete nullptr' doesn't cause call of this function, so it is safe
  */
 DEFINE_POOL_METHOD(void)::FreeItem(size_t index)
 {
 	assert(index < this->size);
-	assert(this->data[index] != NULL);
+	assert(this->data[index] != nullptr);
 	if (Tcache) {
 		AllocCache *ac = (AllocCache *)this->data[index];
 		ac->next = this->alloc_cache;
@@ -188,7 +188,7 @@ DEFINE_POOL_METHOD(void)::FreeItem(size_t index)
 	} else {
 		free(this->data[index]);
 	}
-	this->data[index] = NULL;
+	this->data[index] = nullptr;
 	this->first_free = min(this->first_free, index);
 	this->items--;
 	if (!this->cleaning) Titem::PostDestructor(index);
@@ -199,16 +199,16 @@ DEFINE_POOL_METHOD(void)::CleanPool()
 {
 	this->cleaning = true;
 	for (size_t i = 0; i < this->first_unused; i++) {
-		delete this->Get(i); // 'delete NULL;' is very valid
+		delete this->Get(i); // 'delete nullptr;' is very valid
 	}
 	assert(this->items == 0);
 	free(this->data);
 	this->first_unused = this->first_free = this->size = 0;
-	this->data = NULL;
+	this->data = nullptr;
 	this->cleaning = false;
 
 	if (Tcache) {
-		while (this->alloc_cache != NULL) {
+		while (this->alloc_cache != nullptr) {
 			AllocCache *ac = this->alloc_cache;
 			this->alloc_cache = ac->next;
 			free(ac);

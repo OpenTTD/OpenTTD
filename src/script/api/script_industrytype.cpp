@@ -59,14 +59,14 @@
 
 /* static */ char *ScriptIndustryType::GetName(IndustryType industry_type)
 {
-	if (!IsValidIndustryType(industry_type)) return NULL;
+	if (!IsValidIndustryType(industry_type)) return nullptr;
 
 	return GetString(::GetIndustrySpec(industry_type)->name);
 }
 
 /* static */ ScriptList *ScriptIndustryType::GetProducedCargo(IndustryType industry_type)
 {
-	if (!IsValidIndustryType(industry_type)) return NULL;
+	if (!IsValidIndustryType(industry_type)) return nullptr;
 
 	const IndustrySpec *ins = ::GetIndustrySpec(industry_type);
 
@@ -80,7 +80,7 @@
 
 /* static */ ScriptList *ScriptIndustryType::GetAcceptedCargo(IndustryType industry_type)
 {
-	if (!IsValidIndustryType(industry_type)) return NULL;
+	if (!IsValidIndustryType(industry_type)) return nullptr;
 
 	const IndustrySpec *ins = ::GetIndustrySpec(industry_type);
 

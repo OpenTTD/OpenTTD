@@ -21,17 +21,17 @@
 void ScriptConfig::Change(const char *name, int version, bool force_exact_match, bool is_random)
 {
 	free(this->name);
-	this->name = (name == NULL) ? NULL : stredup(name);
-	this->info = (name == NULL) ? NULL : this->FindInfo(this->name, version, force_exact_match);
-	this->version = (info == NULL) ? -1 : info->GetVersion();
+	this->name = (name == nullptr) ? nullptr : stredup(name);
+	this->info = (name == nullptr) ? nullptr : this->FindInfo(this->name, version, force_exact_match);
+	this->version = (info == nullptr) ? -1 : info->GetVersion();
 	this->is_random = is_random;
-	if (this->config_list != NULL) delete this->config_list;
-	this->config_list = (info == NULL) ? NULL : new ScriptConfigItemList();
-	if (this->config_list != NULL) this->PushExtraConfigList();
+	if (this->config_list != nullptr) delete this->config_list;
+	this->config_list = (info == nullptr) ? nullptr : new ScriptConfigItemList();
+	if (this->config_list != nullptr) this->PushExtraConfigList();
 
 	this->ClearConfigList();
 
-	if (_game_mode == GM_NORMAL && this->info != NULL) {
+	if (_game_mode == GM_NORMAL && this->info != nullptr) {
 		/* If we're in an existing game and the Script is changed, set all settings
 		 *  for the Script that have the random flag to a random value. */
 		for (ScriptConfigItemList::const_iterator it = this->info->GetConfigList()->begin(); it != this->info->GetConfigList()->end(); it++) {
@@ -45,10 +45,10 @@ void ScriptConfig::Change(const char *name, int version, bool force_exact_match,
 
 ScriptConfig::ScriptConfig(const ScriptConfig *config)
 {
-	this->name = (config->name == NULL) ? NULL : stredup(config->name);
+	this->name = (config->name == nullptr) ? nullptr : stredup(config->name);
 	this->info = config->info;
 	this->version = config->version;
-	this->config_list = NULL;
+	this->config_list = nullptr;
 	this->is_random = config->is_random;
 
 	for (SettingValueList::const_iterator it = config->settings.begin(); it != config->settings.end(); it++) {
@@ -61,7 +61,7 @@ ScriptConfig::~ScriptConfig()
 {
 	free(this->name);
 	this->ResetSettings();
-	if (this->config_list != NULL) delete this->config_list;
+	if (this->config_list != nullptr) delete this->config_list;
 }
 
 ScriptInfo *ScriptConfig::GetInfo() const
@@ -71,8 +71,8 @@ ScriptInfo *ScriptConfig::GetInfo() const
 
 const ScriptConfigItemList *ScriptConfig::GetConfigList()
 {
-	if (this->info != NULL) return this->info->GetConfigList();
-	if (this->config_list == NULL) {
+	if (this->info != nullptr) return this->info->GetConfigList();
+	if (this->config_list == nullptr) {
 		this->config_list = new ScriptConfigItemList();
 		this->PushExtraConfigList();
 	}
@@ -106,10 +106,10 @@ int ScriptConfig::GetSetting(const char *name) const
 void ScriptConfig::SetSetting(const char *name, int value)
 {
 	/* You can only set Script specific settings if an Script is selected. */
-	if (this->info == NULL) return;
+	if (this->info == nullptr) return;
 
 	const ScriptConfigItem *config_item = this->info->GetConfigItem(name);
-	if (config_item == NULL) return;
+	if (config_item == nullptr) return;
 
 	value = Clamp(value, config_item->min_value, config_item->max_value);
 
@@ -140,7 +140,7 @@ void ScriptConfig::AddRandomDeviation()
 
 bool ScriptConfig::HasScript() const
 {
-	return this->info != NULL;
+	return this->info != nullptr;
 }
 
 bool ScriptConfig::IsRandom() const
@@ -163,18 +163,18 @@ void ScriptConfig::StringToSettings(const char *value)
 	char *value_copy = stredup(value);
 	char *s = value_copy;
 
-	while (s != NULL) {
+	while (s != nullptr) {
 		/* Analyze the string ('name=value,name=value\0') */
 		char *item_name = s;
 		s = strchr(s, '=');
-		if (s == NULL) break;
+		if (s == nullptr) break;
 		if (*s == '\0') break;
 		*s = '\0';
 		s++;
 
 		char *item_value = s;
 		s = strchr(s, ',');
-		if (s != NULL) {
+		if (s != nullptr) {
 			*s = '\0';
 			s++;
 		}
@@ -209,7 +209,7 @@ void ScriptConfig::SettingsToString(char *string, const char *last) const
 
 const char *ScriptConfig::GetTextfile(TextfileType type, CompanyID slot) const
 {
-	if (slot == INVALID_COMPANY || this->GetInfo() == NULL) return NULL;
+	if (slot == INVALID_COMPANY || this->GetInfo() == nullptr) return nullptr;
 
 	return ::GetTextfile(type, (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR, this->GetInfo()->GetMainScript());
 }

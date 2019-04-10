@@ -60,7 +60,7 @@ void CcPlaySound_SPLAT_WATER(const CommandCost &result, TileIndex tile, uint32 p
  * @param[out] tile_to   The tile till where to show a selection for the aqueduct.
  * @return The other end of the aqueduct, or otherwise a tile in line with the aqueduct to cause the right error message.
  */
-static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = NULL)
+static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = nullptr)
 {
 	int z;
 	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile_from, &z));
@@ -83,7 +83,7 @@ static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = N
 		if (length > max_length) break;
 
 		if (GetTileMaxZ(endtile) > z) {
-			if (tile_to != NULL) *tile_to = endtile;
+			if (tile_to != nullptr) *tile_to = endtile;
 			break;
 		}
 	}
@@ -287,7 +287,7 @@ static EventState DockToolbarGlobalHotkeys(int hotkey)
 {
 	if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
 	Window *w = ShowBuildDocksToolbar();
-	if (w == NULL) return ES_NOT_HANDLED;
+	if (w == nullptr) return ES_NOT_HANDLED;
 	return w->OnHotkey(hotkey);
 }
 
@@ -341,11 +341,11 @@ static WindowDesc _build_docks_toolbar_desc(
  *
  * If the terraform toolbar is linked to the toolbar, that window is also opened.
  *
- * @return newly opened water toolbar, or NULL if the toolbar could not be opened.
+ * @return newly opened water toolbar, or nullptr if the toolbar could not be opened.
  */
 Window *ShowBuildDocksToolbar()
 {
-	if (!Company::IsValidID(_local_company)) return NULL;
+	if (!Company::IsValidID(_local_company)) return nullptr;
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);
 	return AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_toolbar_desc, TRANSPORT_WATER);
@@ -382,7 +382,7 @@ static WindowDesc _build_docks_scen_toolbar_desc(
 /**
  * Open the build water toolbar window for the scenario editor.
  *
- * @return newly opened water toolbar, or NULL if the toolbar could not be opened.
+ * @return newly opened water toolbar, or nullptr if the toolbar could not be opened.
  */
 Window *ShowBuildDocksScenToolbar()
 {
@@ -475,7 +475,7 @@ static const NWidgetPart _nested_build_dock_station_widgets[] = {
 };
 
 static WindowDesc _build_dock_station_desc(
-	WDP_AUTO, NULL, 0, 0,
+	WDP_AUTO, nullptr, 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_build_dock_station_widgets, lengthof(_nested_build_dock_station_widgets)
@@ -568,7 +568,7 @@ static const NWidgetPart _nested_build_docks_depot_widgets[] = {
 };
 
 static WindowDesc _build_docks_depot_desc(
-	WDP_AUTO, NULL, 0, 0,
+	WDP_AUTO, nullptr, 0, 0,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_build_docks_depot_widgets, lengthof(_nested_build_docks_depot_widgets)

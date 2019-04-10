@@ -68,7 +68,7 @@ static Engine* CallocEngine()
  */
 static void FreeEngine(Engine *e)
 {
-	if (e != NULL) {
+	if (e != nullptr) {
 		e->~Engine();
 		free(e);
 	}
@@ -141,7 +141,7 @@ void CopyTempEngineData()
 		e->preview_wait        = se->preview_wait;
 		e->company_avail       = se->company_avail;
 		e->company_hidden      = se->company_hidden;
-		if (se->name != NULL) e->name = stredup(se->name);
+		if (se->name != nullptr) e->name = stredup(se->name);
 	}
 
 	/* Get rid of temporary data */
@@ -197,7 +197,7 @@ static void Load_EIDS()
 }
 
 extern const ChunkHandler _engine_chunk_handlers[] = {
-	{ 'EIDS', Save_EIDS, Load_EIDS, NULL, NULL, CH_ARRAY          },
-	{ 'ENGN', Save_ENGN, Load_ENGN, NULL, NULL, CH_ARRAY          },
-	{ 'ENGS', NULL,      Load_ENGS, NULL, NULL, CH_RIFF | CH_LAST },
+	{ 'EIDS', Save_EIDS, Load_EIDS, nullptr, nullptr, CH_ARRAY          },
+	{ 'ENGN', Save_ENGN, Load_ENGN, nullptr, nullptr, CH_ARRAY          },
+	{ 'ENGS', nullptr,      Load_ENGS, nullptr, nullptr, CH_RIFF | CH_LAST },
 };

@@ -45,7 +45,7 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // BE
 		return;
 	}
 
-	char *output_pointer = NULL;
+	char *output_pointer = nullptr;
 	int output_length = _netstat(sock, &output_pointer, 1);
 	if (output_length < 0) {
 		DEBUG(net, 0, "[core] error running _netstat");
@@ -94,9 +94,9 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // GE
 
 	if (getifaddrs(&ifap) != 0) return;
 
-	for (ifa = ifap; ifa != NULL; ifa = ifa->ifa_next) {
+	for (ifa = ifap; ifa != nullptr; ifa = ifa->ifa_next) {
 		if (!(ifa->ifa_flags & IFF_BROADCAST)) continue;
-		if (ifa->ifa_broadaddr == NULL) continue;
+		if (ifa->ifa_broadaddr == nullptr) continue;
 		if (ifa->ifa_broadaddr->sa_family != AF_INET) continue;
 
 		NetworkAddress addr(ifa->ifa_broadaddr, sizeof(sockaddr));
@@ -116,7 +116,7 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // Wi
 	INTERFACE_INFO *ifo = CallocT<INTERFACE_INFO>(num);
 
 	for (;;) {
-		if (WSAIoctl(sock, SIO_GET_INTERFACE_LIST, NULL, 0, ifo, num * sizeof(*ifo), &len, NULL, NULL) == 0) break;
+		if (WSAIoctl(sock, SIO_GET_INTERFACE_LIST, nullptr, 0, ifo, num * sizeof(*ifo), &len, nullptr, nullptr) == 0) break;
 		free(ifo);
 		if (WSAGetLastError() != WSAEFAULT) {
 			closesocket(sock);

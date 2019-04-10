@@ -118,7 +118,7 @@ public:
 		/* start at n.m_key.m_tile / n.m_key.m_td and walk to the end of segment */
 		TileIndex tile = n.m_key.m_tile;
 		Trackdir trackdir = n.m_key.m_td;
-		int parent_cost = (n.m_parent != NULL) ? n.m_parent->m_cost : 0;
+		int parent_cost = (n.m_parent != nullptr) ? n.m_parent->m_cost : 0;
 
 		for (;;) {
 			/* base tile cost depending on distance between edges */
@@ -381,13 +381,13 @@ public:
 		/* if path not found - return INVALID_TRACKDIR */
 		Trackdir next_trackdir = INVALID_TRACKDIR;
 		Node *pNode = Yapf().GetBestNode();
-		if (pNode != NULL) {
+		if (pNode != nullptr) {
 			uint steps = 0;
-			for (Node *n = pNode; n->m_parent != NULL; n = n->m_parent) steps++;
+			for (Node *n = pNode; n->m_parent != nullptr; n = n->m_parent) steps++;
 
 			/* path was found or at least suggested
 			 * walk through the path back to its origin */
-			while (pNode->m_parent != NULL) {
+			while (pNode->m_parent != nullptr) {
 				steps--;
 				if (pNode->GetIsChoice() && steps < YAPF_ROADVEH_PATH_CACHE_SEGMENTS) {
 					TrackdirByte td;
@@ -436,7 +436,7 @@ public:
 		if (!Yapf().FindPath(v)) return dist;
 
 		Node *pNode = Yapf().GetBestNode();
-		if (pNode != NULL) {
+		if (pNode != nullptr) {
 			/* path was found
 			 * get the path cost estimate */
 			dist = pNode->GetCostEstimate();

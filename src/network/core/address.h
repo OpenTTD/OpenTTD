@@ -84,7 +84,7 @@ public:
 		if (*hostname == '[') hostname++;
 		strecpy(this->hostname, StrEmpty(hostname) ? "" : hostname, lastof(this->hostname));
 		char *tmp = strrchr(this->hostname, ']');
-		if (tmp != NULL) *tmp = '\0';
+		if (tmp != nullptr) *tmp = '\0';
 
 		memset(&this->address, 0, sizeof(this->address));
 		this->address.ss_family = family;

@@ -69,9 +69,9 @@ assert_compile(lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_i
 const uint EngineOverrideManager::NUM_DEFAULT_ENGINES = _engine_counts[VEH_TRAIN] + _engine_counts[VEH_ROAD] + _engine_counts[VEH_SHIP] + _engine_counts[VEH_AIRCRAFT];
 
 Engine::Engine() :
-	name(NULL),
+	name(nullptr),
 	overrides_count(0),
-	overrides(NULL)
+	overrides(nullptr)
 {
 }
 
@@ -162,7 +162,7 @@ bool Engine::IsEnabled() const
 uint32 Engine::GetGRFID() const
 {
 	const GRFFile *file = this->GetGRF();
-	return file == NULL ? 0 : file->grfid;
+	return file == nullptr ? 0 : file->grfid;
 }
 
 /**
@@ -199,28 +199,28 @@ bool Engine::CanCarryCargo() const
 /**
  * Determines capacity of a given vehicle from scratch.
  * For aircraft the main capacity is determined. Mail might be present as well.
- * @param v Vehicle of interest; NULL in purchase list
+ * @param v Vehicle of interest; nullptr in purchase list
  * @param mail_capacity returns secondary cargo (mail) capacity of aircraft
  * @return Capacity
  */
 uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 {
-	assert(v == NULL || this->index == v->engine_type);
-	if (mail_capacity != NULL) *mail_capacity = 0;
+	assert(v == nullptr || this->index == v->engine_type);
+	if (mail_capacity != nullptr) *mail_capacity = 0;
 
 	if (!this->CanCarryCargo()) return 0;
 
 	bool new_multipliers = HasBit(this->info.misc_flags, EF_NO_DEFAULT_CARGO_MULTIPLIER);
 	CargoID default_cargo = this->GetDefaultCargoType();
-	CargoID cargo_type = (v != NULL) ? v->cargo_type : default_cargo;
+	CargoID cargo_type = (v != nullptr) ? v->cargo_type : default_cargo;
 
-	if (mail_capacity != NULL && this->type == VEH_AIRCRAFT && IsCargoInClass(cargo_type, CC_PASSENGERS)) {
+	if (mail_capacity != nullptr && this->type == VEH_AIRCRAFT && IsCargoInClass(cargo_type, CC_PASSENGERS)) {
 		*mail_capacity = GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity, v);
 	}
 
 	/* Check the refit capacity callback if we are not in the default configuration, or if we are using the new multiplier algorithm. */
 	if (HasBit(this->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY) &&
-			(new_multipliers || default_cargo != cargo_type || (v != NULL && v->cargo_subtype != 0))) {
+			(new_multipliers || default_cargo != cargo_type || (v != nullptr && v->cargo_subtype != 0))) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, this->index, v);
 		if (callback != CALLBACK_FAILED) return callback;
 	}
@@ -233,7 +233,7 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 			capacity = GetEngineProperty(this->index, PROP_TRAIN_CARGO_CAPACITY,        this->u.rail.capacity, v);
 
 			/* In purchase list add the capacity of the second head. Always use the plain property for this. */
-			if (v == NULL && this->u.rail.railveh_type == RAILVEH_MULTIHEAD) capacity += this->u.rail.capacity;
+			if (v == nullptr && this->u.rail.railveh_type == RAILVEH_MULTIHEAD) capacity += this->u.rail.capacity;
 			break;
 
 		case VEH_ROAD:
@@ -869,7 +869,7 @@ void ClearEnginesHiddenFlagOfCompany(CompanyID cid)
 CommandCost CmdSetVehicleVisibility(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Engine *e = Engine::GetIfValid(GB(p2, 0, 31));
-	if (e == NULL || _current_company >= MAX_COMPANIES) return CMD_ERROR;
+	if (e == nullptr || _current_company >= MAX_COMPANIES) return CMD_ERROR;
 	if (!IsEngineBuildable(e->index, e->type, _current_company)) return CMD_ERROR;
 
 	if ((flags & DC_EXEC) != 0) {
@@ -893,7 +893,7 @@ CommandCost CmdSetVehicleVisibility(TileIndex tile, DoCommandFlag flags, uint32 
 CommandCost CmdWantEnginePreview(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Engine *e = Engine::GetIfValid(p1);
-	if (e == NULL || !(e->flags & ENGINE_EXCLUSIVE_PREVIEW) || e->preview_company != _current_company) return CMD_ERROR;
+	if (e == nullptr || !(e->flags & ENGINE_EXCLUSIVE_PREVIEW) || e->preview_company != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) AcceptEnginePreview(p1, _current_company);
 
@@ -1021,7 +1021,7 @@ static bool IsUniqueEngineName(const char *name)
 	const Engine *e;
 
 	FOR_ALL_ENGINES(e) {
-		if (e->name != NULL && strcmp(e->name, name) == 0) return false;
+		if (e->name != nullptr && strcmp(e->name, name) == 0) return false;
 	}
 
 	return true;
@@ -1039,7 +1039,7 @@ static bool IsUniqueEngineName(const char *name)
 CommandCost CmdRenameEngine(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Engine *e = Engine::GetIfValid(p1);
-	if (e == NULL) return CMD_ERROR;
+	if (e == nullptr) return CMD_ERROR;
 
 	bool reset = StrEmpty(text);
 
@@ -1052,7 +1052,7 @@ CommandCost CmdRenameEngine(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		free(e->name);
 
 		if (reset) {
-			e->name = NULL;
+			e->name = nullptr;
 		} else {
 			e->name = stredup(text);
 		}
@@ -1077,7 +1077,7 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 	const Engine *e = Engine::GetIfValid(engine);
 
 	/* check if it's an engine that is in the engine array */
-	if (e == NULL) return false;
+	if (e == nullptr) return false;
 
 	/* check if it's an engine of specified type */
 	if (e->type != type) return false;
@@ -1113,7 +1113,7 @@ bool IsEngineRefittable(EngineID engine)
 	const Engine *e = Engine::GetIfValid(engine);
 
 	/* check if it's an engine that is in the engine array */
-	if (e == NULL) return false;
+	if (e == nullptr) return false;
 
 	if (!e->CanCarryCargo()) return false;
 

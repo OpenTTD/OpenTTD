@@ -32,7 +32,7 @@
 /**
  * This looks in the hash whether a node exists in the closed list.
  * @param node Node to search.
- * @return The #PathNode if it is available, else \c NULL
+ * @return The #PathNode if it is available, else \c nullptr
  */
 PathNode *AyStar::ClosedListIsInList(const AyStarNode *node)
 {
@@ -55,7 +55,7 @@ void AyStar::ClosedListAdd(const PathNode *node)
 /**
  * Check whether a node is in the open list.
  * @param node Node to search.
- * @return If the node is available, it is returned, else \c NULL is returned.
+ * @return If the node is available, it is returned, else \c nullptr is returned.
  */
 OpenListNode *AyStar::OpenListIsInList(const AyStarNode *node)
 {
@@ -65,13 +65,13 @@ OpenListNode *AyStar::OpenListIsInList(const AyStarNode *node)
 /**
  * Gets the best node from the open list.
  * It deletes the returned node from the open list.
- * @returns the best node available, or \c NULL of none is found.
+ * @returns the best node available, or \c nullptr of none is found.
  */
 OpenListNode *AyStar::OpenListPop()
 {
 	/* Return the item the Queue returns.. the best next OpenList item. */
 	OpenListNode *res = (OpenListNode*)this->openlist_queue.Pop();
-	if (res != NULL) {
+	if (res != nullptr) {
 		this->openlist_hash.DeleteValue(res->path.node.tile, res->path.node.direction);
 	}
 
@@ -105,7 +105,7 @@ void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 	OpenListNode *check;
 
 	/* Check the new node against the ClosedList */
-	if (this->ClosedListIsInList(current) != NULL) return;
+	if (this->ClosedListIsInList(current) != nullptr) return;
 
 	/* Calculate the G-value for this node */
 	new_g = this->CalculateG(this, current, parent);
@@ -131,7 +131,7 @@ void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 
 	/* Check if this item is already in the OpenList */
 	check = this->OpenListIsInList(current);
-	if (check != NULL) {
+	if (check != nullptr) {
 		uint i;
 		/* Yes, check if this g value is lower.. */
 		if (new_g > check->g) return;
@@ -167,11 +167,11 @@ int AyStar::Loop()
 	/* Get the best node from OpenList */
 	OpenListNode *current = this->OpenListPop();
 	/* If empty, drop an error */
-	if (current == NULL) return AYSTAR_EMPTY_OPENLIST;
+	if (current == nullptr) return AYSTAR_EMPTY_OPENLIST;
 
 	/* Check for end node and if found, return that code */
 	if (this->EndNodeCheck(this, current) == AYSTAR_FOUND_END_NODE && !CheckIgnoreFirstTile(&current->path)) {
-		if (this->FoundEndNode != NULL) {
+		if (this->FoundEndNode != nullptr) {
 			this->FoundEndNode(this, current);
 		}
 		free(current);
@@ -285,7 +285,7 @@ void AyStar::AddStartNode(AyStarNode *start_node, uint g)
 	printf("[AyStar] Starting A* Algorithm from node (%d, %d, %d)\n",
 		TileX(start_node->tile), TileY(start_node->tile), start_node->direction);
 #endif
-	this->OpenListAdd(NULL, start_node, 0, g);
+	this->OpenListAdd(nullptr, start_node, 0, g);
 }
 
 /**

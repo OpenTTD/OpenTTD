@@ -137,7 +137,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	SavedRandomSeeds saved_seeds;
 	if (flags != subflags) SaveRandomSeeds(&saved_seeds);
 
-	Vehicle *v = NULL;
+	Vehicle *v = nullptr;
 	switch (type) {
 		case VEH_TRAIN:    value.AddCost(CmdBuildRailVehicle(tile, subflags, e, GB(p1, 24, 8), &v)); break;
 		case VEH_ROAD:     value.AddCost(CmdBuildRoadVehicle(tile, subflags, e, GB(p1, 24, 8), &v)); break;
@@ -153,7 +153,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		}
 
 		if (refitting) {
-			value.AddCost(CmdRefitVehicle(tile, flags, v->index, cargo, NULL));
+			value.AddCost(CmdRefitVehicle(tile, flags, v->index, cargo, nullptr));
 		} else {
 			/* Fill in non-refitted capacities */
 			_returned_refit_capacity = e->GetDisplayDefaultCapacity(&_returned_mail_refit_capacity);
@@ -207,7 +207,7 @@ CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *v, uint16 data, uint3
 CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 20));
-	if (v == NULL) return CMD_ERROR;
+	if (v == nullptr) return CMD_ERROR;
 
 	Vehicle *front = v->First();
 
@@ -220,7 +220,7 @@ CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	/* Can we actually make the order backup, i.e. are there enough orders? */
 	if (p1 & MAKE_ORDER_BACKUP_FLAG &&
-			front->orders.list != NULL &&
+			front->orders.list != nullptr &&
 			!front->orders.list->IsShared() &&
 			!Order::CanAllocateItem(front->orders.list->GetNumOrders())) {
 		/* Only happens in exceptional cases when there aren't enough orders anyhow.
@@ -244,7 +244,7 @@ CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 /**
  * Helper to run the refit cost callback.
- * @param v The vehicle we are refitting, can be NULL.
+ * @param v The vehicle we are refitting, can be nullptr.
  * @param engine_type Which engine to refit
  * @param new_cid Cargo type we are refitting to.
  * @param new_subtype New cargo subtype.
@@ -257,7 +257,7 @@ static int GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID ne
 	const Engine *e = Engine::Get(engine_type);
 
 	/* Is this vehicle a NewGRF vehicle? */
-	if (e->GetGRF() != NULL) {
+	if (e->GetGRF() != nullptr) {
 		const CargoSpec *cs = CargoSpec::Get(new_cid);
 		uint32 param1 = (cs->classes << 16) | (new_subtype << 8) | e->GetGRF()->cargo_map[new_cid];
 
@@ -271,12 +271,12 @@ static int GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID ne
 	}
 
 	*auto_refit_allowed = e->info.refit_cost == 0;
-	return (v == NULL || v->cargo_type != new_cid) ? e->info.refit_cost : 0;
+	return (v == nullptr || v->cargo_type != new_cid) ? e->info.refit_cost : 0;
 }
 
 /**
  * Learn the price of refitting a certain engine
- * @param v The vehicle we are refitting, can be NULL.
+ * @param v The vehicle we are refitting, can be nullptr.
  * @param engine_type Which engine to refit
  * @param new_cid Cargo type we are refitting to.
  * @param new_subtype New cargo subtype.
@@ -358,7 +358,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 
 	v->InvalidateNewGRFCacheOfChain();
 	byte actual_subtype = new_subtype;
-	for (; v != NULL; v = (only_this ? NULL : v->Next())) {
+	for (; v != nullptr; v = (only_this ? nullptr : v->Next())) {
 		/* Reset actual_subtype for every new vehicle */
 		if (!v->IsArticulatedPart()) actual_subtype = new_subtype;
 
@@ -469,7 +469,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v = Vehicle::GetIfValid(p1);
-	if (v == NULL) return CMD_ERROR;
+	if (v == nullptr) return CMD_ERROR;
 
 	/* Don't allow disasters and sparks and such to be refitted.
 	 * We cannot check for IsPrimaryVehicle as autoreplace also refits in free wagon chains. */
@@ -560,7 +560,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if ((flags & DC_AUTOREPLACE) == 0) SetBit(p2, 0);
 
 	Vehicle *v = Vehicle::GetIfValid(p1);
-	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
+	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
@@ -652,7 +652,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 		if (!GenerateVehicleSortList(&list, vli)) return CMD_ERROR;
 	} else {
 		/* Get the list of vehicles in the depot */
-		BuildDepotVehicleList(vli.vtype, tile, &list, NULL);
+		BuildDepotVehicleList(vli.vtype, tile, &list, nullptr);
 	}
 
 	for (uint i = 0; i < list.size(); i++) {
@@ -751,7 +751,7 @@ static bool IsUniqueVehicleName(const char *name)
 	const Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->name != NULL && strcmp(v->name, name) == 0) return false;
+		if (v->name != nullptr && strcmp(v->name, name) == 0) return false;
 	}
 
 	return true;
@@ -821,11 +821,11 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	CommandCost total_cost(EXPENSES_NEW_VEHICLES);
 
 	Vehicle *v = Vehicle::GetIfValid(p1);
-	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
+	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;
 	Vehicle *v_front = v;
-	Vehicle *w = NULL;
-	Vehicle *w_front = NULL;
-	Vehicle *w_rear = NULL;
+	Vehicle *w = nullptr;
+	Vehicle *w_front = nullptr;
+	Vehicle *w_rear = nullptr;
 
 	/*
 	 * v_front is the front engine in the original vehicle
@@ -845,7 +845,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		int veh_counter = 0;
 		do {
 			veh_counter++;
-		} while ((v = v->Next()) != NULL);
+		} while ((v = v->Next()) != nullptr);
 
 		if (!Vehicle::CanAllocateItem(veh_counter)) {
 			return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
@@ -873,7 +873,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		if (cost.Failed()) {
 			/* Can't build a part, then sell the stuff we already made; clear up the mess */
-			if (w_front != NULL) DoCommand(w_front->tile, w_front->index | (1 << 20), 0, flags, GetCmdSellVeh(w_front));
+			if (w_front != nullptr) DoCommand(w_front->tile, w_front->index | (1 << 20), 0, flags, GetCmdSellVeh(w_front));
 			return cost;
 		}
 
@@ -906,7 +906,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			}
 			w_rear = w; // trains needs to know the last car in the train, so they can add more in next loop
 		}
-	} while (v->type == VEH_TRAIN && (v = v->GetNextVehicle()) != NULL);
+	} while (v->type == VEH_TRAIN && (v = v->GetNextVehicle()) != nullptr);
 
 	if ((flags & DC_EXEC) && v_front->type == VEH_TRAIN) {
 		/* for trains this needs to be the front engine due to the callback function */
@@ -932,7 +932,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	do {
 		do {
 			if (flags & DC_EXEC) {
-				assert(w != NULL);
+				assert(w != nullptr);
 
 				/* Find out what's the best sub type */
 				byte subtype = GetBestFittingSubType(v, w, v->cargo_type);
@@ -952,7 +952,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 				if (v->cargo_type != initial_cargo && initial_cargo != CT_INVALID) {
 					bool dummy;
-					total_cost.AddCost(GetRefitCost(NULL, v->engine_type, v->cargo_type, v->cargo_subtype, &dummy));
+					total_cost.AddCost(GetRefitCost(nullptr, v->engine_type, v->cargo_type, v->cargo_subtype, &dummy));
 				}
 			}
 
@@ -961,10 +961,10 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			} else {
 				break;
 			}
-		} while (v != NULL);
+		} while (v != nullptr);
 
 		if ((flags & DC_EXEC) && v->type == VEH_TRAIN) w = w->GetNextVehicle();
-	} while (v->type == VEH_TRAIN && (v = v->GetNextVehicle()) != NULL);
+	} while (v->type == VEH_TRAIN && (v = v->GetNextVehicle()) != nullptr);
 
 	if (flags & DC_EXEC) {
 		/*
@@ -975,7 +975,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		DoCommand(0, w_front->index | (p2 & 1 ? CO_SHARE : CO_COPY) << 30, v_front->index, flags, CMD_CLONE_ORDER);
 
 		/* Now clone the vehicle's name, if it has one. */
-		if (v_front->name != NULL) CloneVehicleName(v_front, w_front);
+		if (v_front->name != nullptr) CloneVehicleName(v_front, w_front);
 	}
 
 	/* Since we can't estimate the cost of cloning a vehicle accurately we must
@@ -1045,7 +1045,7 @@ CommandCost CmdSendVehicleToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1
 	}
 
 	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 20));
-	if (v == NULL) return CMD_ERROR;
+	if (v == nullptr) return CMD_ERROR;
 	if (!v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	return v->SendToDepot(flags, (DepotCommand)(p1 & DEPOT_COMMAND_MASK));
@@ -1063,7 +1063,7 @@ CommandCost CmdSendVehicleToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1
 CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v = Vehicle::GetIfValid(p1);
-	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
+	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
@@ -1077,7 +1077,7 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if (flags & DC_EXEC) {
 		free(v->name);
-		v->name = reset ? NULL : stredup(text);
+		v->name = reset ? nullptr : stredup(text);
 		InvalidateWindowClassesData(GetWindowClassForVehicleType(v->type), 1);
 		MarkWholeScreenDirty();
 	}
@@ -1101,7 +1101,7 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 CommandCost CmdChangeServiceInt(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v = Vehicle::GetIfValid(p1);
-	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
+	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;

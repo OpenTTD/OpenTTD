@@ -140,7 +140,7 @@ static void GetVideoModes()
 	set_gfx_mode(_fullscreen ? GFX_AUTODETECT_FULLSCREEN : GFX_AUTODETECT_WINDOWED, 640, 480, 0, 0);
 
 	GFX_MODE_LIST *mode_list = get_gfx_mode_list(gfx_driver->id);
-	if (mode_list == NULL) {
+	if (mode_list == nullptr) {
 		memcpy(_resolutions, default_resolutions, sizeof(default_resolutions));
 		_num_resolutions = lengthof(default_resolutions);
 		return;
@@ -243,7 +243,7 @@ static bool CreateMainSurface(uint w, uint h)
 bool VideoDriver_Allegro::ClaimMousePointer()
 {
 	select_mouse_cursor(MOUSE_CURSOR_NONE);
-	show_mouse(NULL);
+	show_mouse(nullptr);
 	disable_hardware_cursor();
 	return true;
 }
@@ -424,7 +424,7 @@ int _allegro_instance_count = 0;
 
 const char *VideoDriver_Allegro::Start(const char * const *parm)
 {
-	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) {
+	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, nullptr)) {
 		DEBUG(driver, 0, "allegro: install_allegro failed '%s'", allegro_error);
 		return "Failed to set up Allegro";
 	}
@@ -437,8 +437,8 @@ const char *VideoDriver_Allegro::Start(const char * const *parm)
 #if defined _DEBUG
 /* Allegro replaces SEGV/ABRT signals meaning that the debugger will never
  * be triggered, so rereplace the signals and make the debugger useful. */
-	signal(SIGABRT, NULL);
-	signal(SIGSEGV, NULL);
+	signal(SIGABRT, nullptr);
+	signal(SIGSEGV, nullptr);
 #endif
 
 	GetVideoModes();
@@ -448,7 +448,7 @@ const char *VideoDriver_Allegro::Start(const char * const *parm)
 	MarkWholeScreenDirty();
 	set_close_button_callback(HandleExitGameRequest);
 
-	return NULL;
+	return nullptr;
 }
 
 void VideoDriver_Allegro::Stop()
@@ -463,7 +463,7 @@ static uint32 GetTime()
 {
 	struct timeval tim;
 
-	gettimeofday(&tim, NULL);
+	gettimeofday(&tim, nullptr);
 	return tim.tv_usec / 1000 + tim.tv_sec * 1000;
 }
 #else

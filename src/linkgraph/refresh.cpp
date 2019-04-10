@@ -28,11 +28,11 @@
 /* static */ void LinkRefresher::Run(Vehicle *v, bool allow_merge, bool is_full_loading)
 {
 	/* If there are no orders we can't predict anything.*/
-	if (v->orders.list == NULL) return;
+	if (v->orders.list == nullptr) return;
 
 	/* Make sure the first order is a useful order. */
 	const Order *first = v->orders.list->GetNextDecisionNode(v->GetOrder(v->cur_implicit_order_index), 0);
-	if (first == NULL) return;
+	if (first == nullptr) return;
 
 	HopSet seen_hops;
 	LinkRefresher refresher(v, &seen_hops, allow_merge, is_full_loading);
@@ -75,7 +75,7 @@ LinkRefresher::LinkRefresher(Vehicle *vehicle, HopSet *seen_hops, bool allow_mer
 	memset(this->capacities, 0, sizeof(this->capacities));
 
 	/* Assemble list of capacities and set last loading stations to 0. */
-	for (Vehicle *v = this->vehicle; v != NULL; v = v->Next()) {
+	for (Vehicle *v = this->vehicle; v != nullptr; v = v->Next()) {
 		this->refit_capacities.push_back(RefitDesc(v->cargo_type, v->cargo_cap, v->refit_cap));
 		if (v->refit_cap > 0) {
 			assert(v->cargo_type < NUM_CARGO);
@@ -94,7 +94,7 @@ bool LinkRefresher::HandleRefit(CargoID refit_cargo)
 	this->cargo = refit_cargo;
 	RefitList::iterator refit_it = this->refit_capacities.begin();
 	bool any_refit = false;
-	for (Vehicle *v = this->vehicle; v != NULL; v = v->Next()) {
+	for (Vehicle *v = this->vehicle; v != nullptr; v = v->Next()) {
 		const Engine *e = Engine::Get(v->engine_type);
 		if (!HasBit(e->info.refit_mask, this->cargo)) {
 			++refit_it;
@@ -164,10 +164,10 @@ void LinkRefresher::ResetRefit()
  */
 const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next, uint8 flags, uint num_hops)
 {
-	/* next is good if it's either NULL (then the caller will stop the
+	/* next is good if it's either nullptr (then the caller will stop the
 	 * evaluation) or if it's not conditional and the caller allows it to be
 	 * chosen (by setting USE_NEXT). */
-	while (next != NULL && (!HasBit(flags, USE_NEXT) || next->IsType(OT_CONDITIONAL))) {
+	while (next != nullptr && (!HasBit(flags, USE_NEXT) || next->IsType(OT_CONDITIONAL))) {
 
 		/* After the first step any further non-conditional order is good,
 		 * regardless of previous USE_NEXT settings. The case of cur and next or
@@ -177,7 +177,7 @@ const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next
 		if (next->IsType(OT_CONDITIONAL)) {
 			const Order *skip_to = this->vehicle->orders.list->GetNextDecisionNode(
 					this->vehicle->orders.list->GetOrderAt(next->GetConditionSkipToOrder()), num_hops);
-			if (skip_to != NULL && num_hops < this->vehicle->orders.list->GetNumOrders()) {
+			if (skip_to != nullptr && num_hops < this->vehicle->orders.list->GetNumOrders()) {
 				/* Make copies of capacity tracking lists. There is potential
 				 * for optimization here: If the vehicle never refits we don't
 				 * need to copy anything. Also, if we've seen the branched link
@@ -204,7 +204,7 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 {
 	StationID next_station = next->GetDestination();
 	Station *st = Station::GetIfValid(cur->GetDestination());
-	if (st != NULL && next_station != INVALID_STATION && next_station != st->index) {
+	if (st != nullptr && next_station != INVALID_STATION && next_station != st->index) {
 		for (CargoID c = 0; c < NUM_CARGO; c++) {
 			/* Refresh the link and give it a minimum capacity. */
 
@@ -226,7 +226,7 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 			 * loading. Don't do that if the vehicle has been waiting for longer than the entire
 			 * order list is supposed to take, though. If that is the case the total duration is
 			 * probably far off and we'd greatly overestimate the capacity by increasing.*/
-			if (this->is_full_loading && this->vehicle->orders.list != NULL &&
+			if (this->is_full_loading && this->vehicle->orders.list != nullptr &&
 					st->index == vehicle->last_station_visited &&
 					this->vehicle->orders.list->GetTotalDuration() >
 					(Ticks)this->vehicle->current_order_time) {
@@ -260,7 +260,7 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
  */
 void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8 flags, uint num_hops)
 {
-	while (next != NULL) {
+	while (next != nullptr) {
 
 		if ((next->IsType(OT_GOTO_DEPOT) || next->IsType(OT_GOTO_STATION)) && next->IsRefit()) {
 			SetBit(flags, WAS_REFIT);
@@ -288,7 +288,7 @@ void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8 flag
 		}
 
 		next = this->PredictNextOrder(cur, next, flags, num_hops);
-		if (next == NULL) break;
+		if (next == nullptr) break;
 		Hop hop(cur->index, next->index, this->cargo);
 		if (this->seen_hops->find(hop) != this->seen_hops->end()) {
 			break;

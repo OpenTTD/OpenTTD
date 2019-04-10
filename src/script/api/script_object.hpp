@@ -69,7 +69,7 @@ protected:
 	/**
 	 * Executes a raw DoCommand for the script.
 	 */
-	static bool DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const char *text = NULL, Script_SuspendCallbackProc *callback = NULL);
+	static bool DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const char *text = nullptr, Script_SuspendCallbackProc *callback = nullptr);
 
 	/**
 	 * Sets the DoCommand costs counter to a value.

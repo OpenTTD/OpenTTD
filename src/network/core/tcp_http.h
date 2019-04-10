@@ -26,9 +26,9 @@ struct HTTPCallback {
 
 	/**
 	 * We're receiving data.
-	 * @param data   the received data, NULL when all data has been received.
+	 * @param data   the received data, nullptr when all data has been received.
 	 * @param length the amount of received data, 0 when all data has been received.
-	 * @note When NULL is sent the HTTP socket handler is closed/freed.
+	 * @note When nullptr is sent the HTTP socket handler is closed/freed.
 	 */
 	virtual void OnReceiveData(const char *data, size_t length) = 0;
 
@@ -68,7 +68,7 @@ public:
 	~NetworkHTTPSocketHandler();
 
 	static int Connect(char *uri, HTTPCallback *callback,
-			const char *data = NULL, int depth = 0);
+			const char *data = nullptr, int depth = 0);
 
 	static void HTTPReceive();
 };
@@ -91,7 +91,7 @@ public:
 	 */
 	NetworkHTTPContentConnecter(const NetworkAddress &address,
 			HTTPCallback *callback, const char *url,
-			const char *data = NULL, int depth = 0) :
+			const char *data = nullptr, int depth = 0) :
 		TCPConnecter(address),
 		callback(callback),
 		url(stredup(url)),
@@ -116,7 +116,7 @@ public:
 	{
 		new NetworkHTTPSocketHandler(s, this->callback, this->address.GetHostname(), this->url, this->data, this->depth);
 		/* We've relinquished control of data now. */
-		this->data = NULL;
+		this->data = nullptr;
 	}
 };
 

@@ -30,7 +30,7 @@ void FioSkipBytes(int n);
 /**
  * The search paths OpenTTD could search through.
  * At least one of the slots has to be filled with a path.
- * NULL paths tell that there is no such path for the
+ * nullptr paths tell that there is no such path for the
  * current operating system.
  */
 extern const char *_searchpaths[NUM_SEARCHPATHS];
@@ -42,14 +42,14 @@ extern const char *_searchpaths[NUM_SEARCHPATHS];
  */
 static inline bool IsValidSearchPath(Searchpath sp)
 {
-	return sp < NUM_SEARCHPATHS && _searchpaths[sp] != NULL;
+	return sp < NUM_SEARCHPATHS && _searchpaths[sp] != nullptr;
 }
 
 /** Iterator for all the search paths */
 #define FOR_ALL_SEARCHPATHS(sp) for (sp = SP_FIRST_DIR; sp < NUM_SEARCHPATHS; sp++) if (IsValidSearchPath(sp))
 
 void FioFCloseFile(FILE *f);
-FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, size_t *filesize = NULL);
+FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, size_t *filesize = nullptr);
 bool FioCheckFileExists(const char *filename, Subdirectory subdir);
 char *FioGetFullPath(char *buf, const char *last, Searchpath sp, Subdirectory subdir, const char *filename);
 char *FioFindFullPath(char *buf, const char *last, Subdirectory subdir, const char *filename);
@@ -107,7 +107,7 @@ public:
 		ALL      = BASESET | NEWGRF | AI | SCENARIO | GAME, ///< Scan for everything.
 	};
 
-	bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename = NULL) override;
+	bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename = nullptr) override;
 
 	bool AddFile(Subdirectory sd, const char *filename);
 

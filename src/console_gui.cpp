@@ -78,7 +78,7 @@ struct IConsoleLine {
 	static const IConsoleLine *Get(uint index)
 	{
 		const IConsoleLine *item = IConsoleLine::front;
-		while (index != 0 && item != NULL) {
+		while (index != 0 && item != nullptr) {
 			index--;
 			item = item->previous;
 		}
@@ -96,14 +96,14 @@ struct IConsoleLine {
 	static bool Truncate()
 	{
 		IConsoleLine *cur = IConsoleLine::front;
-		if (cur == NULL) return false;
+		if (cur == nullptr) return false;
 
 		int count = 1;
-		for (IConsoleLine *item = cur->previous; item != NULL; count++, cur = item, item = item->previous) {
+		for (IConsoleLine *item = cur->previous; item != nullptr; count++, cur = item, item = item->previous) {
 			if (item->time > _settings_client.gui.console_backlog_timeout &&
 					count > _settings_client.gui.console_backlog_length) {
 				delete item;
-				cur->previous = NULL;
+				cur->previous = nullptr;
 				return true;
 			}
 
@@ -119,12 +119,12 @@ struct IConsoleLine {
 	static void Reset()
 	{
 		delete IConsoleLine::front;
-		IConsoleLine::front = NULL;
+		IConsoleLine::front = nullptr;
 		IConsoleLine::size = 0;
 	}
 };
 
-/* static */ IConsoleLine *IConsoleLine::front = NULL;
+/* static */ IConsoleLine *IConsoleLine::front = nullptr;
 /* static */ int IConsoleLine::size  = 0;
 
 
@@ -162,7 +162,7 @@ static const struct NWidgetPart _nested_console_window_widgets[] = {
 };
 
 static WindowDesc _console_window_desc(
-	WDP_MANUAL, NULL, 0, 0,
+	WDP_MANUAL, nullptr, 0, 0,
 	WC_CONSOLE, WC_NONE,
 	0,
 	_nested_console_window_widgets, lengthof(_nested_console_window_widgets)
@@ -207,7 +207,7 @@ struct IConsoleWindow : Window
 
 		GfxFillRect(0, 0, this->width - 1, this->height - 1, PC_BLACK);
 		int ypos = this->height - this->line_height;
-		for (const IConsoleLine *print = IConsoleLine::Get(IConsoleWindow::scroll); print != NULL; print = print->previous) {
+		for (const IConsoleLine *print = IConsoleLine::Get(IConsoleWindow::scroll); print != nullptr; print = print->previous) {
 			SetDParamStr(0, print->buffer);
 			ypos = DrawStringMultiLine(5, right, -this->line_height, ypos, STR_JUST_RAW_STRING, print->colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - ICON_LINE_SPACING;
 			if (ypos < 0) break;
@@ -287,7 +287,7 @@ struct IConsoleWindow : Window
 				const char *cmd = IConsoleHistoryAdd(_iconsole_cmdline.buf);
 				IConsoleClearCommand();
 
-				if (cmd != NULL) IConsoleCmdExec(cmd);
+				if (cmd != nullptr) IConsoleCmdExec(cmd);
 				break;
 			}
 
@@ -335,7 +335,7 @@ struct IConsoleWindow : Window
 
 	const char *GetMarkedText(size_t *length) const override
 	{
-		if (_iconsole_cmdline.markend == 0) return NULL;
+		if (_iconsole_cmdline.markend == 0) return nullptr;
 
 		*length = _iconsole_cmdline.markend - _iconsole_cmdline.markpos;
 		return _iconsole_cmdline.buf + _iconsole_cmdline.markpos;
@@ -364,7 +364,7 @@ struct IConsoleWindow : Window
 	{
 		int delta = min(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
-		if (!IsInsideMM(pt.y, this->height - this->line_height, this->height)) return NULL;
+		if (!IsInsideMM(pt.y, this->height - this->line_height, this->height)) return nullptr;
 
 		return GetCharAtPosition(_iconsole_cmdline.buf, pt.x - delta);
 	}
@@ -459,10 +459,10 @@ static const char *IConsoleHistoryAdd(const char *cmd)
 	while (IsWhitespace(*cmd)) cmd++;
 
 	/* Do not put empty command in history */
-	if (StrEmpty(cmd)) return NULL;
+	if (StrEmpty(cmd)) return nullptr;
 
 	/* Do not put in history if command is same as previous */
-	if (_iconsole_history[0] == NULL || strcmp(_iconsole_history[0], cmd) != 0) {
+	if (_iconsole_history[0] == nullptr || strcmp(_iconsole_history[0], cmd) != 0) {
 		free(_iconsole_history[ICON_HISTORY_SIZE - 1]);
 		memmove(&_iconsole_history[1], &_iconsole_history[0], sizeof(_iconsole_history[0]) * (ICON_HISTORY_SIZE - 1));
 		_iconsole_history[0] = stredup(cmd);
@@ -479,10 +479,10 @@ static const char *IConsoleHistoryAdd(const char *cmd)
  */
 static void IConsoleHistoryNavigate(int direction)
 {
-	if (_iconsole_history[0] == NULL) return; // Empty history
+	if (_iconsole_history[0] == nullptr) return; // Empty history
 	_iconsole_historypos = Clamp(_iconsole_historypos + direction, -1, ICON_HISTORY_SIZE - 1);
 
-	if (direction > 0 && _iconsole_history[_iconsole_historypos] == NULL) _iconsole_historypos--;
+	if (direction > 0 && _iconsole_history[_iconsole_historypos] == nullptr) _iconsole_historypos--;
 
 	if (_iconsole_historypos == -1) {
 		_iconsole_cmdline.DeleteAll();

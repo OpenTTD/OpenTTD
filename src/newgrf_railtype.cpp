@@ -44,13 +44,13 @@
 			if (IsRailDepotTile(this->tile)) return Depot::GetByTile(this->tile)->build_date;
 			return _date;
 		case 0x44: {
-			const Town *t = NULL;
+			const Town *t = nullptr;
 			if (IsRailDepotTile(this->tile)) {
 				t = Depot::GetByTile(this->tile)->town;
 			} else if (IsLevelCrossingTile(this->tile)) {
 				t = ClosestTownFromTile(this->tile, UINT_MAX);
 			}
-			return t != NULL ? GetTownRadiusGroup(t, this->tile) : HZB_TOWN_EDGE;
+			return t != nullptr ? GetTownRadiusGroup(t, this->tile) : HZB_TOWN_EDGE;
 		}
 	}
 
@@ -64,12 +64,12 @@
 {
 	if (group->num_loading > 0) return group->loading[0];
 	if (group->num_loaded  > 0) return group->loaded[0];
-	return NULL;
+	return nullptr;
 }
 
 /**
  * Resolver object for rail types.
- * @param rti Railtype. NULL in NewGRF Inspect window.
+ * @param rti Railtype. nullptr in NewGRF Inspect window.
  * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
  * @param context Are we resolving sprites for the upper halftile, or on a bridge?
  * @param rtsg Railpart of interest
@@ -77,9 +77,9 @@
  * @param param2 Extra parameter (second parameter of the callback, except railtypes do not have callbacks).
  */
 RailTypeResolverObject::RailTypeResolverObject(const RailtypeInfo *rti, TileIndex tile, TileContext context, RailTypeSpriteGroup rtsg, uint32 param1, uint32 param2)
-	: ResolverObject(rti != NULL ? rti->grffile[rtsg] : NULL, CBID_NO_CALLBACK, param1, param2), railtype_scope(*this, tile, context)
+	: ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), railtype_scope(*this, tile, context)
 {
-	this->root_spritegroup = rti != NULL ? rti->group[rtsg] : NULL;
+	this->root_spritegroup = rti != nullptr ? rti->group[rtsg] : nullptr;
 }
 
 /**
@@ -88,18 +88,18 @@ RailTypeResolverObject::RailTypeResolverObject(const RailtypeInfo *rti, TileInde
  * @param tile The tile to get the sprite for.
  * @param rtsg The type of sprite to draw.
  * @param context Where are we drawing the tile?
- * @param[out] num_results If not NULL, return the number of sprites in the spriteset.
+ * @param[out] num_results If not nullptr, return the number of sprites in the spriteset.
  * @return The sprite to draw.
  */
 SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, TileContext context, uint *num_results)
 {
 	assert(rtsg < RTSG_END);
 
-	if (rti->group[rtsg] == NULL) return 0;
+	if (rti->group[rtsg] == nullptr) return 0;
 
 	RailTypeResolverObject object(rti, tile, context, rtsg);
 	const SpriteGroup *group = object.Resolve();
-	if (group == NULL || group->GetNumResults() == 0) return 0;
+	if (group == nullptr || group->GetNumResults() == 0) return 0;
 
 	if (num_results) *num_results = group->GetNumResults();
 
@@ -118,14 +118,14 @@ SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSp
  */
 SpriteID GetCustomSignalSprite(const RailtypeInfo *rti, TileIndex tile, SignalType type, SignalVariant var, SignalState state, bool gui)
 {
-	if (rti->group[RTSG_SIGNALS] == NULL) return 0;
+	if (rti->group[RTSG_SIGNALS] == nullptr) return 0;
 
 	uint32 param1 = gui ? 0x10 : 0x00;
 	uint32 param2 = (type << 16) | (var << 8) | state;
 	RailTypeResolverObject object(rti, tile, TCX_NORMAL, RTSG_SIGNALS, param1, param2);
 
 	const SpriteGroup *group = object.Resolve();
-	if (group == NULL || group->GetNumResults() == 0) return 0;
+	if (group == nullptr || group->GetNumResults() == 0) return 0;
 
 	return group->GetResult();
 }
@@ -139,7 +139,7 @@ SpriteID GetCustomSignalSprite(const RailtypeInfo *rti, TileIndex tile, SignalTy
 uint8 GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile)
 {
 	/* No rail type table present, return rail type as-is */
-	if (grffile == NULL || grffile->railtype_list.size() == 0) return railtype;
+	if (grffile == nullptr || grffile->railtype_list.size() == 0) return railtype;
 
 	/* Look for a matching rail type label in the table */
 	RailTypeLabel label = GetRailTypeInfo(railtype)->label;

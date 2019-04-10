@@ -319,7 +319,7 @@ static inline bool BmpRead24(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
 	uint32 header_size;
-	assert(info != NULL);
+	assert(info != nullptr);
 	MemSetT(info, 0);
 
 	/* Reading BMP header */
@@ -390,7 +390,7 @@ bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
  */
 bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
-	assert(info != NULL && data != NULL);
+	assert(info != nullptr && data != nullptr);
 
 	data->bitmap = CallocT<byte>(info->width * info->height * ((info->bpp == 24) ? 3 : 1));
 
@@ -413,7 +413,7 @@ bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 
 void BmpDestroyData(BmpData *data)
 {
-	assert(data != NULL);
+	assert(data != nullptr);
 	free(data->palette);
 	free(data->bitmap);
 }

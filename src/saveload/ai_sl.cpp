@@ -53,7 +53,7 @@ static void SaveReal_AIPL(int *index_ptr)
 	_ai_saveload_settings[0] = '\0';
 	config->SettingsToString(_ai_saveload_settings, lastof(_ai_saveload_settings));
 
-	SlObject(NULL, _ai_company);
+	SlObject(nullptr, _ai_company);
 	/* If the AI was active, store his data too */
 	if (Company::IsValidAiID(index)) AI::Save(index);
 }
@@ -62,7 +62,7 @@ static void Load_AIPL()
 {
 	/* Free all current data */
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-		AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->Change(NULL);
+		AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->Change(nullptr);
 	}
 
 	CompanyID index;
@@ -71,7 +71,7 @@ static void Load_AIPL()
 
 		_ai_saveload_is_random = 0;
 		_ai_saveload_version = -1;
-		SlObject(NULL, _ai_company);
+		SlObject(nullptr, _ai_company);
 
 		if (_networking && !_network_server) {
 			if (Company::IsValidAiID(index)) AIInstance::LoadEmpty();
@@ -81,7 +81,7 @@ static void Load_AIPL()
 		AIConfig *config = AIConfig::GetConfig(index, AIConfig::SSS_FORCE_GAME);
 		if (StrEmpty(_ai_saveload_name)) {
 			/* A random AI. */
-			config->Change(NULL, -1, false, true);
+			config->Change(nullptr, -1, false, true);
 		} else {
 			config->Change(_ai_saveload_name, _ai_saveload_version, false, _ai_saveload_is_random);
 			if (!config->HasScript()) {
@@ -125,5 +125,5 @@ static void Save_AIPL()
 }
 
 extern const ChunkHandler _ai_chunk_handlers[] = {
-	{ 'AIPL', Save_AIPL, Load_AIPL, NULL, NULL, CH_ARRAY | CH_LAST},
+	{ 'AIPL', Save_AIPL, Load_AIPL, nullptr, nullptr, CH_ARRAY | CH_LAST},
 };

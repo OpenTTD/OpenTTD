@@ -72,7 +72,7 @@ extern Dimension _cur_resolution;
 extern Palette _cur_palette; ///< Current palette
 
 void HandleKeypress(uint keycode, WChar key);
-void HandleTextInput(const char *str, bool marked = false, const char *caret = NULL, const char *insert_location = NULL, const char *replacement_end = NULL);
+void HandleTextInput(const char *str, bool marked = false, const char *caret = nullptr, const char *insert_location = nullptr, const char *replacement_end = nullptr);
 void HandleCtrlChanged();
 void HandleMouseEvents();
 void UpdateWindows();
@@ -88,9 +88,9 @@ static const int DRAW_STRING_BUFFER = 2048;
 void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
-Dimension GetSpriteSize(SpriteID sprid, Point *offset = NULL, ZoomLevel zoom = ZOOM_LVL_GUI);
-void DrawSpriteViewport(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub = NULL);
-void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub = NULL, ZoomLevel zoom = ZOOM_LVL_GUI);
+Dimension GetSpriteSize(SpriteID sprid, Point *offset = nullptr, ZoomLevel zoom = ZOOM_LVL_GUI);
+void DrawSpriteViewport(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub = nullptr);
+void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub = nullptr, ZoomLevel zoom = ZOOM_LVL_GUI);
 
 /** How to align the to-be drawn text. */
 enum StringAlignment {

@@ -45,5 +45,5 @@ static void Load_GOAL()
 }
 
 extern const ChunkHandler _goal_chunk_handlers[] = {
-	{ 'GOAL', Save_GOAL, Load_GOAL, NULL, NULL, CH_ARRAY | CH_LAST},
+	{ 'GOAL', Save_GOAL, Load_GOAL, nullptr, nullptr, CH_ARRAY | CH_LAST},
 };

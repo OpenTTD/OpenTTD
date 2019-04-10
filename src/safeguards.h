@@ -12,7 +12,7 @@
  *
  * Unsafe methods are, for example, strndup and strncpy because they may leave the
  * string without a null termination, but also strdup and strndup because they can
- * return NULL and then all strdups would need to be guarded against that instead
+ * return nullptr and then all strdups would need to be guarded against that instead
  * of using the current MallocT/ReallocT/CallocT technique of just giving the user
  * an error that too much memory was used instead of spreading that code though
  * the whole code base.

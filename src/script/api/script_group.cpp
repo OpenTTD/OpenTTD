@@ -25,12 +25,12 @@
 /* static */ bool ScriptGroup::IsValidGroup(GroupID group_id)
 {
 	const Group *g = ::Group::GetIfValid(group_id);
-	return g != NULL && g->owner == ScriptObject::GetCompany();
+	return g != nullptr && g->owner == ScriptObject::GetCompany();
 }
 
 /* static */ ScriptGroup::GroupID ScriptGroup::CreateGroup(ScriptVehicle::VehicleType vehicle_type, GroupID parent_group_id)
 {
-	if (!ScriptObject::DoCommand(0, (::VehicleType)vehicle_type, parent_group_id, CMD_CREATE_GROUP, NULL, &ScriptInstance::DoCommandReturnGroupID)) return GROUP_INVALID;
+	if (!ScriptObject::DoCommand(0, (::VehicleType)vehicle_type, parent_group_id, CMD_CREATE_GROUP, nullptr, &ScriptInstance::DoCommandReturnGroupID)) return GROUP_INVALID;
 
 	/* In case of test-mode, we return GroupID 0 */
 	return (ScriptGroup::GroupID)0;
@@ -55,7 +55,7 @@
 	CCountedPtr<Text> counter(name);
 
 	EnforcePrecondition(false, IsValidGroup(group_id));
-	EnforcePrecondition(false, name != NULL);
+	EnforcePrecondition(false, name != nullptr);
 	const char *text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_GROUP_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
@@ -65,7 +65,7 @@
 
 /* static */ char *ScriptGroup::GetName(GroupID group_id)
 {
-	if (!IsValidGroup(group_id)) return NULL;
+	if (!IsValidGroup(group_id)) return nullptr;
 
 	::SetDParam(0, group_id);
 	return GetString(STR_GROUP_NAME);

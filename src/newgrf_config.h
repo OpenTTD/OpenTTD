@@ -88,13 +88,13 @@ struct GRFIdentifier {
 	/**
 	 * Does the identification match the provided values?
 	 * @param grfid  Expected grfid.
-	 * @param md5sum Expected md5sum, may be \c NULL (in which case, do not check it).
+	 * @param md5sum Expected md5sum, may be \c nullptr (in which case, do not check it).
 	 * @return the object has the provided grfid and md5sum.
 	 */
 	inline bool HasGrfIdentifier(uint32 grfid, const uint8 *md5sum) const
 	{
 		if (this->grfid != grfid) return false;
-		if (md5sum == NULL) return true;
+		if (md5sum == nullptr) return true;
 		return memcmp(md5sum, this->md5sum, sizeof(this->md5sum)) == 0;
 	}
 };
@@ -151,7 +151,7 @@ struct GRFTextWrapper : public SimpleCountedObject {
 
 /** Information about GRF, used in the game and (part of it) in savegames */
 struct GRFConfig : ZeroedMemoryAllocator {
-	GRFConfig(const char *filename = NULL);
+	GRFConfig(const char *filename = nullptr);
 	GRFConfig(const GRFConfig &config);
 	~GRFConfig();
 
@@ -215,7 +215,7 @@ struct NewGRFScanCallback {
 size_t GRFGetSizeOfDataSection(FILE *f);
 
 void ScanNewGRFFiles(NewGRFScanCallback *callback);
-const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8 *md5sum = NULL, uint32 desired_version = 0);
+const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8 *md5sum = nullptr, uint32 desired_version = 0);
 GRFConfig *GetGRFConfig(uint32 grfid, uint32 mask = 0xFFFFFFFF);
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_only);
 void AppendStaticGRFConfigs(GRFConfig **dst);

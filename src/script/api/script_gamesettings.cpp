@@ -21,7 +21,7 @@
 {
 	uint i;
 	const SettingDesc *sd = GetSettingFromName(setting, &i);
-	return sd != NULL && sd->desc.cmd != SDT_STRING;
+	return sd != nullptr && sd->desc.cmd != SDT_STRING;
 }
 
 /* static */ int32 ScriptGameSettings::GetValue(const char *setting)

@@ -61,7 +61,7 @@ public:
 	 *  - For #NR_TOWN this parameter should be a valid townID (ScriptTown::IsValidTown).
 	 * @return True if the action succeeded.
 	 * @pre type must be #NT_ECONOMY, #NT_SUBSIDIES, or #NT_GENERAL.
-	 * @pre text != NULL.
+	 * @pre text != nullptr.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre The \a reference condition must be fulfilled.
 	 */

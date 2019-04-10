@@ -115,7 +115,7 @@ bool HasRoadTypesAvail(const CompanyID company, const RoadTypes rts)
 		avail_roadtypes = ROADTYPES_ROAD;
 	} else {
 		Company *c = Company::GetIfValid(company);
-		if (c == NULL) return false;
+		if (c == nullptr) return false;
 		avail_roadtypes = (RoadTypes)c->avail_roadtypes | ROADTYPES_ROAD; // road is available for always for everybody
 	}
 	return (rts & ~avail_roadtypes) == 0;

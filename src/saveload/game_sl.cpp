@@ -52,19 +52,19 @@ static void SaveReal_GSDT(int *index_ptr)
 	_game_saveload_settings[0] = '\0';
 	config->SettingsToString(_game_saveload_settings, lastof(_game_saveload_settings));
 
-	SlObject(NULL, _game_script);
+	SlObject(nullptr, _game_script);
 	Game::Save();
 }
 
 static void Load_GSDT()
 {
 	/* Free all current data */
-	GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME)->Change(NULL);
+	GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME)->Change(nullptr);
 
 	if ((CompanyID)SlIterateArray() == (CompanyID)-1) return;
 
 	_game_saveload_version = -1;
-	SlObject(NULL, _game_script);
+	SlObject(nullptr, _game_script);
 
 	if (_networking && !_network_server) {
 		GameInstance::LoadEmpty();
@@ -110,7 +110,7 @@ static void Load_GSDT()
 static void Save_GSDT()
 {
 	SlSetArrayIndex(0);
-	SlAutolength((AutolengthProc *)SaveReal_GSDT, NULL);
+	SlAutolength((AutolengthProc *)SaveReal_GSDT, nullptr);
 }
 
 extern GameStrings *_current_data;
@@ -134,10 +134,10 @@ static void SaveReal_GSTR(const LanguageStrings *ls)
 	_game_saveload_string  = ls->language;
 	_game_saveload_strings = (uint)ls->lines.size();
 
-	SlObject(NULL, _game_language_header);
+	SlObject(nullptr, _game_language_header);
 	for (const auto &i : ls->lines) {
 		_game_saveload_string = i.c_str();
-		SlObject(NULL, _game_language_string);
+		SlObject(nullptr, _game_language_string);
 	}
 }
 
@@ -147,22 +147,22 @@ static void Load_GSTR()
 	_current_data = new GameStrings();
 
 	while (SlIterateArray() != -1) {
-		_game_saveload_string = NULL;
-		SlObject(NULL, _game_language_header);
+		_game_saveload_string = nullptr;
+		SlObject(nullptr, _game_language_header);
 
-		std::unique_ptr<LanguageStrings> ls(new LanguageStrings(_game_saveload_string != NULL ? _game_saveload_string : ""));
+		std::unique_ptr<LanguageStrings> ls(new LanguageStrings(_game_saveload_string != nullptr ? _game_saveload_string : ""));
 		for (uint i = 0; i < _game_saveload_strings; i++) {
-			SlObject(NULL, _game_language_string);
-			ls->lines.emplace_back(_game_saveload_string != NULL ? _game_saveload_string : "");
+			SlObject(nullptr, _game_language_string);
+			ls->lines.emplace_back(_game_saveload_string != nullptr ? _game_saveload_string : "");
 		}
 
 		_current_data->raw_strings.push_back(std::move(ls));
 	}
 
-	/* If there were no strings in the savegame, set GameStrings to NULL */
+	/* If there were no strings in the savegame, set GameStrings to nullptr */
 	if (_current_data->raw_strings.size() == 0) {
 		delete _current_data;
-		_current_data = NULL;
+		_current_data = nullptr;
 		return;
 	}
 
@@ -172,7 +172,7 @@ static void Load_GSTR()
 
 static void Save_GSTR()
 {
-	if (_current_data == NULL) return;
+	if (_current_data == nullptr) return;
 
 	for (uint i = 0; i < _current_data->raw_strings.size(); i++) {
 		SlSetArrayIndex(i);
@@ -181,6 +181,6 @@ static void Save_GSTR()
 }
 
 extern const ChunkHandler _game_chunk_handlers[] = {
-	{ 'GSTR', Save_GSTR, Load_GSTR, NULL, NULL, CH_ARRAY },
-	{ 'GSDT', Save_GSDT, Load_GSDT, NULL, NULL, CH_ARRAY | CH_LAST},
+	{ 'GSTR', Save_GSTR, Load_GSTR, nullptr, nullptr, CH_ARRAY },
+	{ 'GSDT', Save_GSDT, Load_GSDT, nullptr, nullptr, CH_ARRAY | CH_LAST},
 };

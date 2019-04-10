@@ -46,10 +46,10 @@ struct OskWindow : public Window {
 	OskWindow(WindowDesc *desc, Window *parent, int button) : Window(desc)
 	{
 		this->parent = parent;
-		assert(parent != NULL);
+		assert(parent != nullptr);
 
 		NWidgetCore *par_wid = parent->GetWidget<NWidgetCore>(button);
-		assert(par_wid != NULL);
+		assert(par_wid != nullptr);
 
 		assert(parent->querystrings.Contains(button));
 		this->qs         = parent->querystrings.Find(button)->second;
@@ -166,7 +166,7 @@ struct OskWindow : public Window {
 				break;
 
 			case WID_OSK_OK:
-				if (this->qs->orig == NULL || strcmp(this->qs->text.buf, this->qs->orig) != 0) {
+				if (this->qs->orig == nullptr || strcmp(this->qs->text.buf, this->qs->orig) != 0) {
 					/* pass information by simulating a button press on parent window */
 					if (this->qs->ok_button >= 0) {
 						this->parent->OnClick(pt, this->qs->ok_button, 1);
@@ -427,7 +427,7 @@ void ShowOnScreenKeyboard(Window *parent, int button)
 void UpdateOSKOriginalText(const Window *parent, int button)
 {
 	OskWindow *osk = dynamic_cast<OskWindow *>(FindWindowById(WC_OSK, 0));
-	if (osk == NULL || osk->parent != parent || osk->text_btn != button) return;
+	if (osk == nullptr || osk->parent != parent || osk->text_btn != button) return;
 
 	free(osk->orig_str_buf);
 	osk->orig_str_buf = stredup(osk->qs->text.buf);
@@ -444,5 +444,5 @@ void UpdateOSKOriginalText(const Window *parent, int button)
 bool IsOSKOpenedFor(const Window *w, int button)
 {
 	OskWindow *osk = dynamic_cast<OskWindow *>(FindWindowById(WC_OSK, 0));
-	return osk != NULL && osk->parent == w && osk->text_btn == button;
+	return osk != nullptr && osk->parent == w && osk->text_btn == button;
 }

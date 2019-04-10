@@ -73,7 +73,7 @@ private:
 
 public:
 	/** Create a new buffer */
-	ReusableBuffer() : buffer(NULL), count(0) {}
+	ReusableBuffer() : buffer(nullptr), count(0) {}
 	/** Clear the buffer */
 	~ReusableBuffer() { free(this->buffer); }
 

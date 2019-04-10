@@ -26,7 +26,7 @@ TemporaryStorageArray<int32, 0x110> _temp_store;
 /**
  * ResolverObject (re)entry point.
  * This cannot be made a call to a virtual function because virtual functions
- * do not like NULL and checking for NULL *everywhere* is more cumbersome than
+ * do not like nullptr and checking for nullptr *everywhere* is more cumbersome than
  * this little helper function.
  * @param group the group to resolve for
  * @param object information needed to resolve the group
@@ -35,7 +35,7 @@ TemporaryStorageArray<int32, 0x110> _temp_store;
  */
 /* static */ const SpriteGroup *SpriteGroup::Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level)
 {
-	if (group == NULL) return NULL;
+	if (group == nullptr) return nullptr;
 	if (top_level) {
 		_temp_store.ClearChanges();
 	}
@@ -73,7 +73,7 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
 		case 0x7D: return _temp_store.GetValue(parameter);
 
 		case 0x7F:
-			if (object.grffile == NULL) return 0;
+			if (object.grffile == nullptr) return 0;
 			return object.grffile->GetParam(parameter);
 
 		default:
@@ -130,7 +130,7 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
  */
 /* virtual */ const SpriteGroup *ResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
-	return NULL;
+	return nullptr;
 }
 
 /**
@@ -207,7 +207,7 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 		bool available = true;
 		if (adjust->variable == 0x7E) {
 			const SpriteGroup *subgroup = SpriteGroup::Resolve(adjust->subroutine, object, false);
-			if (subgroup == NULL) {
+			if (subgroup == nullptr) {
 				value = CALLBACK_FAILED;
 			} else {
 				value = subgroup->GetCallbackResult();
@@ -293,24 +293,24 @@ const SpriteGroup *RealSpriteGroup::Resolve(ResolverObject &object) const
  * Process registers and the construction stage into the sprite layout.
  * The passed construction stage might get reset to zero, if it gets incorporated into the layout
  * during the preprocessing.
- * @param[in,out] stage Construction stage (0-3), or NULL if not applicable.
+ * @param[in,out] stage Construction stage (0-3), or nullptr if not applicable.
  * @return sprite layout to draw.
  */
 const DrawTileSprites *TileLayoutSpriteGroup::ProcessRegisters(uint8 *stage) const
 {
 	if (!this->dts.NeedsPreprocessing()) {
-		if (stage != NULL && this->dts.consistent_max_offset > 0) *stage = GetConstructionStageOffset(*stage, this->dts.consistent_max_offset);
+		if (stage != nullptr && this->dts.consistent_max_offset > 0) *stage = GetConstructionStageOffset(*stage, this->dts.consistent_max_offset);
 		return &this->dts;
 	}
 
 	static DrawTileSprites result;
-	uint8 actual_stage = stage != NULL ? *stage : 0;
+	uint8 actual_stage = stage != nullptr ? *stage : 0;
 	this->dts.PrepareLayout(0, 0, 0, actual_stage, false);
 	this->dts.ProcessRegisters(0, 0, false);
 	result.seq = this->dts.GetLayout(&result.ground);
 
 	/* Stage has been processed by PrepareLayout(), set it to zero. */
-	if (stage != NULL) *stage = 0;
+	if (stage != nullptr) *stage = 0;
 
 	return &result;
 }

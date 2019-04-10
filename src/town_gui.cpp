@@ -261,7 +261,7 @@ public:
 				int y = this->GetRowFromWidget(pt.y, WID_TA_COMMAND_LIST, 1, FONT_HEIGHT_NORMAL);
 				if (!IsInsideMM(y, 0, 5)) return;
 
-				y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_company, this->town), y + this->vscroll->GetPosition() - 1);
+				y = GetNthSetBit(GetMaskOfTownActions(nullptr, _local_company, this->town), y + this->vscroll->GetPosition() - 1);
 				if (y >= 0) {
 					this->sel_index = y;
 					this->SetDirty();
@@ -362,7 +362,7 @@ public:
 			uint cargo_text_right = r.right - WD_FRAMERECT_RIGHT - (rtl ? 20 : 0);
 
 			const CargoSpec *cargo = FindFirstCargoWithTownEffect((TownEffect)i);
-			assert(cargo != NULL);
+			assert(cargo != nullptr);
 
 			StringID string;
 
@@ -406,7 +406,7 @@ public:
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_NOISE_IN_TOWN);
 		}
 
-		if (this->town->text != NULL) {
+		if (this->town->text != nullptr) {
 			SetDParamStr(0, this->town->text);
 			DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y += FONT_HEIGHT_NORMAL, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
 		}
@@ -484,7 +484,7 @@ public:
 
 		if (_settings_game.economy.station_noise_level) aimed_height += FONT_HEIGHT_NORMAL;
 
-		if (this->town->text != NULL) {
+		if (this->town->text != nullptr) {
 			SetDParamStr(0, this->town->text);
 			aimed_height += GetStringHeight(STR_JUST_RAW_STRING, width - WD_FRAMERECT_LEFT - WD_FRAMERECT_RIGHT);
 		}
@@ -503,7 +503,7 @@ public:
 
 	void OnResize() override
 	{
-		if (this->viewport != NULL) {
+		if (this->viewport != nullptr) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_TV_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
 
@@ -526,9 +526,9 @@ public:
 
 	void OnQueryTextFinished(char *str) override
 	{
-		if (str == NULL) return;
+		if (str == nullptr) return;
 
-		DoCommandP(0, this->window_number, 0, CMD_RENAME_TOWN | CMD_MSG(STR_ERROR_CAN_T_RENAME_TOWN), NULL, str);
+		DoCommandP(0, this->window_number, 0, CMD_RENAME_TOWN | CMD_MSG(STR_ERROR_CAN_T_RENAME_TOWN), nullptr, str);
 	}
 };
 
@@ -662,7 +662,7 @@ private:
 			this->vscroll->SetCount((uint)this->towns.size()); // Update scrollbar as well.
 		}
 		/* Always sort the towns. */
-		this->last_town = NULL;
+		this->last_town = nullptr;
 		this->towns.Sort();
 		this->SetWidgetDirty(WID_TD_LIST); // Force repaint of the displayed towns.
 	}
@@ -829,7 +829,7 @@ public:
 				for (uint i = 0; i < this->towns.size(); i++) {
 					const Town *t = this->towns[i];
 
-					assert(t != NULL);
+					assert(t != nullptr);
 
 					SetDParam(0, t->index);
 					SetDParamMaxDigits(1, 8);
@@ -882,7 +882,7 @@ public:
 				if (id_v >= this->towns.size()) return; // click out of town bounds
 
 				const Town *t = this->towns[id_v];
-				assert(t != NULL);
+				assert(t != nullptr);
 				if (_ctrl_pressed) {
 					ShowExtraViewPortWindow(t->xy);
 				} else {
@@ -938,7 +938,7 @@ public:
 };
 
 Listing TownDirectoryWindow::last_sorting = {false, 0};
-const Town *TownDirectoryWindow::last_town = NULL;
+const Town *TownDirectoryWindow::last_town = nullptr;
 
 /** Names of the sorting functions. */
 const StringID TownDirectoryWindow::sorter_names[] = {
@@ -1111,7 +1111,7 @@ public:
 
 	void ExecuteFoundTownCommand(TileIndex tile, bool random, StringID errstr, CommandCallback cc)
 	{
-		const char *name = NULL;
+		const char *name = nullptr;
 
 		if (!this->townnamevalid) {
 			name = this->townname_editbox.text.buf;

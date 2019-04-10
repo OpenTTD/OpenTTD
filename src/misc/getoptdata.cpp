@@ -26,7 +26,7 @@ int GetOptData::GetOpt()
 	const OptionData *odata;
 
 	char *s = this->cont;
-	if (s == NULL) {
+	if (s == nullptr) {
 		if (this->numleft == 0) return -1; // No arguments left -> finished.
 
 		s = this->argv[0];
@@ -37,8 +37,8 @@ int GetOptData::GetOpt()
 
 		/* Is it a long option? */
 		for (odata = this->options; odata->flags != ODF_END; odata++) {
-			if (odata->longname != NULL && !strcmp(odata->longname, s)) { // Long options always use the entire argument.
-				this->cont = NULL;
+			if (odata->longname != nullptr && !strcmp(odata->longname, s)) { // Long options always use the entire argument.
+				this->cont = nullptr;
 				goto set_optval;
 			}
 		}
@@ -49,19 +49,19 @@ int GetOptData::GetOpt()
 	/* Is it a short option? */
 	for (odata = this->options; odata->flags != ODF_END; odata++) {
 		if (odata->shortname != '\0' && *s == odata->shortname) {
-			this->cont = (s[1] != '\0') ? s + 1 : NULL;
+			this->cont = (s[1] != '\0') ? s + 1 : nullptr;
 
 set_optval: // Handle option value of *odata .
-			this->opt = NULL;
+			this->opt = nullptr;
 			switch (odata->flags) {
 				case ODF_NO_VALUE:
 					return odata->id;
 
 				case ODF_HAS_VALUE:
 				case ODF_OPTIONAL_VALUE:
-					if (this->cont != NULL) { // Remainder of the argument is the option value.
+					if (this->cont != nullptr) { // Remainder of the argument is the option value.
 						this->opt = this->cont;
-						this->cont = NULL;
+						this->cont = nullptr;
 						return odata->id;
 					}
 					/* No more arguments, either return an error or a value-less option. */

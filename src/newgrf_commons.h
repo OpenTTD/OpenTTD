@@ -132,7 +132,7 @@ struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
 	 */
 	void Clone(const DrawTileSprites *source)
 	{
-		assert(source != NULL && this != source);
+		assert(source != nullptr && this != source);
 		this->ground = source->ground;
 		this->Clone(source->seq);
 	}
@@ -151,7 +151,7 @@ struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
 	 */
 	bool NeedsPreprocessing() const
 	{
-		return this->registers != NULL;
+		return this->registers != nullptr;
 	}
 
 	uint32 PrepareLayout(uint32 orig_offset, uint32 newgrf_ground_offset, uint32 newgrf_offset, uint constr_stage, bool separate_ground) const;
@@ -298,7 +298,7 @@ extern ObjectOverrideManager _object_mngr;
 uint32 GetTerrainType(TileIndex tile, TileContext context = TCX_NORMAL);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets = true, Axis axis = INVALID_AXIS);
 uint32 GetNearbyTileInformation(TileIndex tile, bool grf_version8);
-uint32 GetCompanyInfo(CompanyID owner, const struct Livery *l = NULL);
+uint32 GetCompanyInfo(CompanyID owner, const struct Livery *l = nullptr);
 CommandCost GetErrorMessageFromLocationCallbackResult(uint16 cb_res, const GRFFile *grffile, StringID default_error);
 
 void ErrorUnknownCallbackResult(uint32 grfid, uint16 cbid, uint16 cb_res);

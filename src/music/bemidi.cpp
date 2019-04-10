@@ -28,7 +28,7 @@ static FMusicDriver_BeMidi iFMusicDriver_BeMidi;
 
 const char *MusicDriver_BeMidi::Start(const char * const *parm)
 {
-	return NULL;
+	return nullptr;
 }
 
 void MusicDriver_BeMidi::Stop()

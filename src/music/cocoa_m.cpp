@@ -35,8 +35,8 @@
 static FMusicDriver_Cocoa iFMusicDriver_Cocoa;
 
 
-static MusicPlayer    _player = NULL;
-static MusicSequence  _sequence = NULL;
+static MusicPlayer    _player = nullptr;
+static MusicSequence  _sequence = nullptr;
 static MusicTimeStamp _seq_length = 0;
 static bool           _playing = false;
 static byte           _volume = 127;
@@ -45,12 +45,12 @@ static byte           _volume = 127;
 /** Set the volume of the current sequence. */
 static void DoSetVolume()
 {
-	if (_sequence == NULL) return;
+	if (_sequence == nullptr) return;
 
 	AUGraph graph;
 	MusicSequenceGetAUGraph(_sequence, &graph);
 
-	AudioUnit output_unit = NULL;
+	AudioUnit output_unit = nullptr;
 
 	/* Get output audio unit */
 	UInt32 node_count = 0;
@@ -82,7 +82,7 @@ static void DoSetVolume()
 		{
 #if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5)
 			ComponentDescription desc;
-			AUGraphGetNodeInfo(graph, node, &desc, NULL, NULL, &unit);
+			AUGraphGetNodeInfo(graph, node, &desc, nullptr, nullptr, &unit);
 			comp_type = desc.componentType;
 #endif
 		}
@@ -92,7 +92,7 @@ static void DoSetVolume()
 			break;
 		}
 	}
-	if (output_unit == NULL) {
+	if (output_unit == nullptr) {
 		DEBUG(driver, 1, "cocoa_m: Failed to get output node to set volume");
 		return;
 	}
@@ -109,7 +109,7 @@ const char *MusicDriver_Cocoa::Start(const char * const *parm)
 {
 	if (NewMusicPlayer(&_player) != noErr) return "failed to create music player";
 
-	return NULL;
+	return nullptr;
 }
 
 
@@ -131,8 +131,8 @@ bool MusicDriver_Cocoa::IsSongPlaying()
  */
 void MusicDriver_Cocoa::Stop()
 {
-	if (_player != NULL) DisposeMusicPlayer(_player);
-	if (_sequence != NULL) DisposeMusicSequence(_sequence);
+	if (_player != nullptr) DisposeMusicPlayer(_player);
+	if (_sequence != nullptr) DisposeMusicSequence(_sequence);
 }
 
 
@@ -148,9 +148,9 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 	DEBUG(driver, 2, "cocoa_m: trying to play '%s'", filename.c_str());
 
 	this->StopSong();
-	if (_sequence != NULL) {
+	if (_sequence != nullptr) {
 		DisposeMusicSequence(_sequence);
-		_sequence = NULL;
+		_sequence = nullptr;
 	}
 
 	if (filename.empty()) return;
@@ -190,7 +190,7 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 	CFRelease(url);
 
 	/* Construct audio graph */
-	AUGraph graph = NULL;
+	AUGraph graph = nullptr;
 
 	MusicSequenceGetAUGraph(_sequence, &graph);
 	AUGraphOpen(graph);
@@ -204,7 +204,7 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 	MusicSequenceGetTrackCount(_sequence, &num_tracks);
 	_seq_length = 0;
 	for (UInt32 i = 0; i < num_tracks; i++) {
-		MusicTrack     track = NULL;
+		MusicTrack     track = nullptr;
 		MusicTimeStamp track_length = 0;
 		UInt32         prop_size = sizeof(MusicTimeStamp);
 		MusicSequenceGetIndTrack(_sequence, i, &track);
@@ -230,7 +230,7 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 void MusicDriver_Cocoa::StopSong()
 {
 	MusicPlayerStop(_player);
-	MusicPlayerSetSequence(_player, NULL);
+	MusicPlayerSetSequence(_player, nullptr);
 	_playing = false;
 }
 

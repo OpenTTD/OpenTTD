@@ -69,7 +69,7 @@ extern IConsoleAlias *_iconsole_aliases; ///< List of registered aliases.
 void IConsoleClearBuffer();
 
 /* Commands */
-void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc, IConsoleHook *hook = NULL);
+void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc, IConsoleHook *hook = nullptr);
 void IConsoleAliasRegister(const char *name, const char *cmd);
 IConsoleCmd *IConsoleCmdGet(const char *name);
 IConsoleAlias *IConsoleAliasGet(const char *name);

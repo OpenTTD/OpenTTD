@@ -52,7 +52,7 @@ public:
 	 * Whether there is something pending in the send queue.
 	 * @return true when something is pending in the send queue.
 	 */
-	bool HasSendQueue() { return this->packet_queue != NULL; }
+	bool HasSendQueue() { return this->packet_queue != nullptr; }
 
 	NetworkTCPSocketHandler(SOCKET s = INVALID_SOCKET);
 	~NetworkTCPSocketHandler();

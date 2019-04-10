@@ -14,7 +14,7 @@
 
 #include "window_type.h"
 
-Window *ShowTerraformToolbar(Window *link = NULL);
+Window *ShowTerraformToolbar(Window *link = nullptr);
 Window *ShowEditorTerraformToolbar();
 
 #endif /* TERRAFORM_GUI_H */

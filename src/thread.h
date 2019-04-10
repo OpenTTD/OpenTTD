@@ -40,7 +40,7 @@ void SetCurrentThreadName(const char *name);
  * Start a new thread.
  * @tparam TFn Type of the function to call on the thread.
  * @tparam TArgs Type of the parameters of the thread function.
- * @param thr Pointer to a thread object; may be \c NULL if a detached thread is wanted.
+ * @param thr Pointer to a thread object; may be \c nullptr if a detached thread is wanted.
  * @param name Name of the thread.
  * @param _Fx Function to call on the thread.
  * @param _Ax Arguments for the thread function.
@@ -62,7 +62,7 @@ inline bool StartNewThread(std::thread *thr, const char *name, TFn&& _Fx, TArgs&
 				}
 			}, name, std::forward<TFn>(_Fx), std::forward<TArgs>(_Ax)...);
 
-		if (thr != NULL) {
+		if (thr != nullptr) {
 			*thr = std::move(t);
 		} else {
 			t.detach();

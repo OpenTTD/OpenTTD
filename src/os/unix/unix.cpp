@@ -84,7 +84,7 @@ bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
 	if (statvfs(path, &s) != 0) return false;
 	free = (uint64)s.f_frsize * s.f_bavail;
 #endif
-	if (tot != NULL) *tot = free;
+	if (tot != nullptr) *tot = free;
 	return true;
 }
 
@@ -130,9 +130,9 @@ static const char *GetLocalCode()
 #else
 	/* Strip locale (eg en_US.UTF-8) to only have UTF-8 */
 	const char *locale = GetCurrentLocale("LC_CTYPE");
-	if (locale != NULL) locale = strchr(locale, '.');
+	if (locale != nullptr) locale = strchr(locale, '.');
 
-	return (locale == NULL) ? "" : locale + 1;
+	return (locale == nullptr) ? "" : locale + 1;
 #endif
 }
 
@@ -158,7 +158,7 @@ static const char *convert_tofrom_fs(iconv_t convd, const char *name)
 
 	strecpy(outbuf, name, outbuf + outlen);
 
-	iconv(convd, NULL, NULL, NULL, NULL);
+	iconv(convd, nullptr, nullptr, nullptr, nullptr);
 	if (iconv(convd, &inbuf, &inlen, &outbuf, &outlen) == (size_t)(-1)) {
 		DEBUG(misc, 0, "[iconv] error converting '%s'. Errno %d", name, errno);
 	}
@@ -246,13 +246,13 @@ int CDECL main(int argc, char *argv[])
 	cocoaSetupAutoreleasePool();
 	/* This is passed if we are launched by double-clicking */
 	if (argc >= 2 && strncmp(argv[1], "-psn", 4) == 0) {
-		argv[1] = NULL;
+		argv[1] = nullptr;
 		argc = 1;
 	}
 #endif
 	CrashLog::InitialiseCrashLog();
 
-	SetRandomSeed(time(NULL));
+	SetRandomSeed(time(nullptr));
 
 	signal(SIGPIPE, SIG_IGN);
 
@@ -282,7 +282,7 @@ void OSOpenBrowser(const char *url)
 	const char *args[3];
 	args[0] = "xdg-open";
 	args[1] = url;
-	args[2] = NULL;
+	args[2] = nullptr;
 	execvp(args[0], const_cast<char * const *>(args));
 	DEBUG(misc, 0, "Failed to open url: %s", url);
 	exit(0);

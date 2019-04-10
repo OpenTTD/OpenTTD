@@ -94,7 +94,7 @@ public:
 		Clear();
 		/* free the memory block occupied by items */
 		free(((byte*)data) - HeaderSize);
-		data = NULL;
+		data = nullptr;
 	}
 
 	/** Clear (destroy) all items */

@@ -52,13 +52,13 @@ enum ViewportAutoscrolling {
 };
 
 static Point _drag_delta; ///< delta between mouse cursor and upper left corner of dragged window
-static Window *_mouseover_last_w = NULL; ///< Window of the last OnMouseOver event.
-static Window *_last_scroll_window = NULL; ///< Window of the last scroll event.
+static Window *_mouseover_last_w = nullptr; ///< Window of the last OnMouseOver event.
+static Window *_last_scroll_window = nullptr; ///< Window of the last scroll event.
 
 /** List of windows opened at the screen sorted from the front. */
-Window *_z_front_window = NULL;
+Window *_z_front_window = nullptr;
 /** List of windows opened at the screen sorted from the back. */
-Window *_z_back_window  = NULL;
+Window *_z_back_window  = nullptr;
 
 /** If false, highlight is white, otherwise the by the widget defined colour. */
 bool _window_highlight_colour = false;
@@ -85,7 +85,7 @@ SpecialMouseMode _special_mouse_mode; ///< Mode of the mouse.
  * List of all WindowDescs.
  * This is a pointer to ensure initialisation order with the various static WindowDesc instances.
  */
-static std::vector<WindowDesc*> *_window_descs = NULL;
+static std::vector<WindowDesc*> *_window_descs = nullptr;
 
 /** Config file to store WindowDesc */
 char *_windows_file;
@@ -108,7 +108,7 @@ WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_wi
 	default_width_trad(def_width_trad),
 	default_height_trad(def_height_trad)
 {
-	if (_window_descs == NULL) _window_descs = new std::vector<WindowDesc*>();
+	if (_window_descs == nullptr) _window_descs = new std::vector<WindowDesc*>();
 	_window_descs->push_back(this);
 }
 
@@ -145,7 +145,7 @@ void WindowDesc::LoadFromConfig()
 	IniFile *ini = new IniFile();
 	ini->LoadFromDisk(_windows_file, NO_DIRECTORY);
 	for (WindowDesc *wd : *_window_descs) {
-		if (wd->ini_key == NULL) continue;
+		if (wd->ini_key == nullptr) continue;
 		IniLoadWindowSettings(ini, wd->ini_key, wd);
 	}
 	delete ini;
@@ -156,8 +156,8 @@ void WindowDesc::LoadFromConfig()
  */
 static int CDECL DescSorter(WindowDesc * const *a, WindowDesc * const *b)
 {
-	if ((*a)->ini_key != NULL && (*b)->ini_key != NULL) return strcmp((*a)->ini_key, (*b)->ini_key);
-	return ((*b)->ini_key != NULL ? 1 : 0) - ((*a)->ini_key != NULL ? 1 : 0);
+	if ((*a)->ini_key != nullptr && (*b)->ini_key != nullptr) return strcmp((*a)->ini_key, (*b)->ini_key);
+	return ((*b)->ini_key != nullptr ? 1 : 0) - ((*a)->ini_key != nullptr ? 1 : 0);
 }
 
 /**
@@ -171,7 +171,7 @@ void WindowDesc::SaveToConfig()
 	IniFile *ini = new IniFile();
 	ini->LoadFromDisk(_windows_file, NO_DIRECTORY);
 	for (WindowDesc *wd : *_window_descs) {
-		if (wd->ini_key == NULL) continue;
+		if (wd->ini_key == nullptr) continue;
 		IniSaveWindowSettings(ini, wd->ini_key, wd);
 	}
 	ini->SaveToDisk(_windows_file);
@@ -183,7 +183,7 @@ void WindowDesc::SaveToConfig()
  */
 void Window::ApplyDefaults()
 {
-	if (this->nested_root != NULL && this->nested_root->GetWidgetOfType(WWT_STICKYBOX) != NULL) {
+	if (this->nested_root != nullptr && this->nested_root->GetWidgetOfType(WWT_STICKYBOX) != nullptr) {
 		if (this->window_desc->pref_sticky) this->flags |= WF_STICKY;
 	} else {
 		/* There is no stickybox; clear the preference in case someone tried to be funny */
@@ -215,7 +215,7 @@ void Window::DisableAllWidgetHighlight()
 {
 	for (uint i = 0; i < this->nested_array_size; i++) {
 		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(i);
-		if (nwid == NULL) continue;
+		if (nwid == nullptr) continue;
 
 		if (nwid->IsHighlighted()) {
 			nwid->SetHighlighted(TC_INVALID);
@@ -236,7 +236,7 @@ void Window::SetWidgetHighlight(byte widget_index, TextColour highlighted_colour
 	assert(widget_index < this->nested_array_size);
 
 	NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget_index);
-	if (nwid == NULL) return;
+	if (nwid == nullptr) return;
 
 	nwid->SetHighlighted(highlighted_colour);
 	this->SetWidgetDirty(widget_index);
@@ -249,7 +249,7 @@ void Window::SetWidgetHighlight(byte widget_index, TextColour highlighted_colour
 		bool valid = false;
 		for (uint i = 0; i < this->nested_array_size; i++) {
 			NWidgetBase *nwid = this->GetWidget<NWidgetBase>(i);
-			if (nwid == NULL) continue;
+			if (nwid == nullptr) continue;
 			if (!nwid->IsHighlighted()) continue;
 
 			valid = true;
@@ -269,7 +269,7 @@ bool Window::IsWidgetHighlighted(byte widget_index) const
 	assert(widget_index < this->nested_array_size);
 
 	const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget_index);
-	if (nwid == NULL) return false;
+	if (nwid == nullptr) return false;
 
 	return nwid->IsHighlighted();
 }
@@ -326,63 +326,63 @@ Scrollbar *Window::GetScrollbar(uint widnum)
 /**
  * Return the querystring associated to a editbox.
  * @param widnum Editbox widget index
- * @return QueryString or NULL.
+ * @return QueryString or nullptr.
  */
 const QueryString *Window::GetQueryString(uint widnum) const
 {
 	auto query = this->querystrings.Find(widnum);
-	return query != this->querystrings.end() ? query->second : NULL;
+	return query != this->querystrings.end() ? query->second : nullptr;
 }
 
 /**
  * Return the querystring associated to a editbox.
  * @param widnum Editbox widget index
- * @return QueryString or NULL.
+ * @return QueryString or nullptr.
  */
 QueryString *Window::GetQueryString(uint widnum)
 {
 	SmallMap<int, QueryString*>::Pair *query = this->querystrings.Find(widnum);
-	return query != this->querystrings.End() ? query->second : NULL;
+	return query != this->querystrings.End() ? query->second : nullptr;
 }
 
 /**
  * Get the current input text if an edit box has the focus.
- * @return The currently focused input text or NULL if no input focused.
+ * @return The currently focused input text or nullptr if no input focused.
  */
 /* virtual */ const char *Window::GetFocusedText() const
 {
-	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) {
+	if (this->nested_focus != nullptr && this->nested_focus->type == WWT_EDITBOX) {
 		return this->GetQueryString(this->nested_focus->index)->GetText();
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 /**
  * Get the string at the caret if an edit box has the focus.
- * @return The text at the caret or NULL if no edit box is focused.
+ * @return The text at the caret or nullptr if no edit box is focused.
  */
 /* virtual */ const char *Window::GetCaret() const
 {
-	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) {
+	if (this->nested_focus != nullptr && this->nested_focus->type == WWT_EDITBOX) {
 		return this->GetQueryString(this->nested_focus->index)->GetCaret();
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 /**
  * Get the range of the currently marked input text.
  * @param[out] length Length of the marked text.
- * @return Pointer to the start of the marked text or NULL if no text is marked.
+ * @return Pointer to the start of the marked text or nullptr if no text is marked.
  */
 /* virtual */ const char *Window::GetMarkedText(size_t *length) const
 {
-	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) {
+	if (this->nested_focus != nullptr && this->nested_focus->type == WWT_EDITBOX) {
 		return this->GetQueryString(this->nested_focus->index)->GetMarkedText(length);
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 /**
@@ -391,7 +391,7 @@ QueryString *Window::GetQueryString(uint widnum)
  */
 /* virtual */ Point Window::GetCaretPosition() const
 {
-	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) {
+	if (this->nested_focus != nullptr && this->nested_focus->type == WWT_EDITBOX) {
 		return this->GetQueryString(this->nested_focus->index)->GetCaretPosition(this, this->nested_focus->index);
 	}
 
@@ -407,7 +407,7 @@ QueryString *Window::GetQueryString(uint widnum)
  */
 /* virtual */ Rect Window::GetTextBoundingRect(const char *from, const char *to) const
 {
-	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) {
+	if (this->nested_focus != nullptr && this->nested_focus->type == WWT_EDITBOX) {
 		return this->GetQueryString(this->nested_focus->index)->GetBoundingRect(this, this->nested_focus->index, from, to);
 	}
 
@@ -418,15 +418,15 @@ QueryString *Window::GetQueryString(uint widnum)
 /**
  * Get the character that is rendered at a position by the focused edit box.
  * @param pt The position to test.
- * @return Pointer to the character at the position or NULL if no character is at the position.
+ * @return Pointer to the character at the position or nullptr if no character is at the position.
  */
 /* virtual */ const char *Window::GetTextCharacterAtPosition(const Point &pt) const
 {
-	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) {
+	if (this->nested_focus != nullptr && this->nested_focus->type == WWT_EDITBOX) {
 		return this->GetQueryString(this->nested_focus->index)->GetCharAtPosition(this, this->nested_focus->index, pt);
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 /**
@@ -438,8 +438,8 @@ void SetFocusedWindow(Window *w)
 	if (_focused_window == w) return;
 
 	/* Invalidate focused widget */
-	if (_focused_window != NULL) {
-		if (_focused_window->nested_focus != NULL) _focused_window->nested_focus->SetDirty(_focused_window);
+	if (_focused_window != nullptr) {
+		if (_focused_window->nested_focus != nullptr) _focused_window->nested_focus->SetDirty(_focused_window);
 	}
 
 	/* Remember which window was previously focused */
@@ -447,8 +447,8 @@ void SetFocusedWindow(Window *w)
 	_focused_window = w;
 
 	/* So we can inform it that it lost focus */
-	if (old_focused != NULL) old_focused->OnFocusLost();
-	if (_focused_window != NULL) _focused_window->OnFocus();
+	if (old_focused != nullptr) old_focused->OnFocusLost();
+	if (_focused_window != nullptr) _focused_window->OnFocus();
 }
 
 /**
@@ -458,12 +458,12 @@ void SetFocusedWindow(Window *w)
  */
 bool EditBoxInGlobalFocus()
 {
-	if (_focused_window == NULL) return false;
+	if (_focused_window == nullptr) return false;
 
 	/* The console does not have an edit box so a special case is needed. */
 	if (_focused_window->window_class == WC_CONSOLE) return true;
 
-	return _focused_window->nested_focus != NULL && _focused_window->nested_focus->type == WWT_EDITBOX;
+	return _focused_window->nested_focus != nullptr && _focused_window->nested_focus->type == WWT_EDITBOX;
 }
 
 /**
@@ -471,12 +471,12 @@ bool EditBoxInGlobalFocus()
  */
 void Window::UnfocusFocusedWidget()
 {
-	if (this->nested_focus != NULL) {
+	if (this->nested_focus != nullptr) {
 		if (this->nested_focus->type == WWT_EDITBOX) VideoDriver::GetInstance()->EditBoxLostFocus();
 
 		/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
 		this->nested_focus->SetDirty(this);
-		this->nested_focus = NULL;
+		this->nested_focus = nullptr;
 	}
 }
 
@@ -490,8 +490,8 @@ bool Window::SetFocusedWidget(int widget_index)
 	/* Do nothing if widget_index is already focused, or if it wasn't a valid widget. */
 	if ((uint)widget_index >= this->nested_array_size) return false;
 
-	assert(this->nested_array[widget_index] != NULL); // Setting focus to a non-existing widget is a bad idea.
-	if (this->nested_focus != NULL) {
+	assert(this->nested_array[widget_index] != nullptr); // Setting focus to a non-existing widget is a bad idea.
+	if (this->nested_focus != nullptr) {
 		if (this->GetWidget<NWidgetCore>(widget_index) == this->nested_focus) return false;
 
 		/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
@@ -507,7 +507,7 @@ bool Window::SetFocusedWidget(int widget_index)
  */
 void Window::OnFocusLost()
 {
-	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) VideoDriver::GetInstance()->EditBoxLostFocus();
+	if (this->nested_focus != nullptr && this->nested_focus->type == WWT_EDITBOX) VideoDriver::GetInstance()->EditBoxLostFocus();
 }
 
 /**
@@ -557,7 +557,7 @@ void CDECL Window::SetWidgetsLoweredState(bool lowered_stat, int widgets, ...)
 void Window::RaiseButtons(bool autoraise)
 {
 	for (uint i = 0; i < this->nested_array_size; i++) {
-		if (this->nested_array[i] == NULL) continue;
+		if (this->nested_array[i] == nullptr) continue;
 		WidgetType type = this->nested_array[i]->type;
 		if (((type & ~WWB_PUSHBUTTON) < WWT_LAST || type == NWID_PUSHBUTTON_DROPDOWN) &&
 				(!autoraise || (type & WWB_PUSHBUTTON) || type == WWT_EDITBOX) && this->IsWidgetLowered(i)) {
@@ -567,8 +567,8 @@ void Window::RaiseButtons(bool autoraise)
 	}
 
 	/* Special widgets without widget index */
-	NWidgetCore *wid = this->nested_root != NULL ? (NWidgetCore*)this->nested_root->GetWidgetOfType(WWT_DEFSIZEBOX) : NULL;
-	if (wid != NULL) {
+	NWidgetCore *wid = this->nested_root != nullptr ? (NWidgetCore*)this->nested_root->GetWidgetOfType(WWT_DEFSIZEBOX) : nullptr;
+	if (wid != nullptr) {
 		wid->SetLowered(false);
 		wid->SetDirty(this);
 	}
@@ -581,7 +581,7 @@ void Window::RaiseButtons(bool autoraise)
 void Window::SetWidgetDirty(byte widget_index) const
 {
 	/* Sometimes this function is called before the window is even fully initialized */
-	if (this->nested_array == NULL) return;
+	if (this->nested_array == nullptr) return;
 
 	this->nested_array[widget_index]->SetDirty(this);
 }
@@ -596,7 +596,7 @@ EventState Window::OnHotkey(int hotkey)
 	if (hotkey < 0) return ES_NOT_HANDLED;
 
 	NWidgetCore *nw = this->GetWidget<NWidgetCore>(hotkey);
-	if (nw == NULL || nw->IsDisabled()) return ES_NOT_HANDLED;
+	if (nw == nullptr || nw->IsDisabled()) return ES_NOT_HANDLED;
 
 	if (nw->type == WWT_EDITBOX) {
 		if (this->IsShaded()) return ES_NOT_HANDLED;
@@ -636,7 +636,7 @@ static void StartWindowSizing(Window *w, bool to_left);
 static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 {
 	NWidgetCore *nw = w->nested_root->GetWidgetFromPos(x, y);
-	WidgetType widget_type = (nw != NULL) ? nw->type : WWT_EMPTY;
+	WidgetType widget_type = (nw != nullptr) ? nw->type : WWT_EMPTY;
 
 	bool focused_widget_changed = false;
 	/* If clicked on a window that previously did dot have focus */
@@ -647,7 +647,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 		SetFocusedWindow(w);
 	}
 
-	if (nw == NULL) return; // exit if clicked outside of widgets
+	if (nw == nullptr) return; // exit if clicked outside of widgets
 
 	/* don't allow any interaction if the button has been disabled */
 	if (nw->IsDisabled()) return;
@@ -686,7 +686,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 
 		case WWT_EDITBOX: {
 			QueryString *query = w->GetQueryString(widget_index);
-			if (query != NULL) query->ClickEditBox(w, pt, widget_index, click_count, focused_widget_changed);
+			if (query != nullptr) query->ClickEditBox(w, pt, widget_index, click_count, focused_widget_changed);
 			break;
 		}
 
@@ -768,7 +768,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 static void DispatchRightClickEvent(Window *w, int x, int y)
 {
 	NWidgetCore *wid = w->nested_root->GetWidgetFromPos(x, y);
-	if (wid == NULL) return;
+	if (wid == nullptr) return;
 
 	Point pt = { x, y };
 
@@ -781,7 +781,7 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 	if (_settings_client.gui.right_mouse_wnd_close && w->nested_root->GetWidgetOfType(WWT_CLOSEBOX)) {
 		delete w;
 	} else if (_settings_client.gui.hover_delay_ms == 0 && !w->OnTooltip(pt, wid->index, TCC_RIGHT_CLICK) && wid->tool_tip != 0) {
-		GuiShowTooltips(w, wid->tool_tip, 0, NULL, TCC_RIGHT_CLICK);
+		GuiShowTooltips(w, wid->tool_tip, 0, nullptr, TCC_RIGHT_CLICK);
 	}
 }
 
@@ -796,7 +796,7 @@ static void DispatchHoverEvent(Window *w, int x, int y)
 	NWidgetCore *wid = w->nested_root->GetWidgetFromPos(x, y);
 
 	/* No widget to handle */
-	if (wid == NULL) return;
+	if (wid == nullptr) return;
 
 	Point pt = { x, y };
 
@@ -821,7 +821,7 @@ static void DispatchHoverEvent(Window *w, int x, int y)
  */
 static void DispatchMouseWheelEvent(Window *w, NWidgetCore *nwid, int wheel)
 {
-	if (nwid == NULL) return;
+	if (nwid == nullptr) return;
 
 	/* Using wheel on caption/shade-box shades or unshades the window. */
 	if (nwid->type == WWT_CAPTION || nwid->type == WWT_SHADEBOX) {
@@ -840,8 +840,8 @@ static void DispatchMouseWheelEvent(Window *w, NWidgetCore *nwid, int wheel)
 	}
 
 	/* Scroll the widget attached to the scrollbar. */
-	Scrollbar *sb = (nwid->scrollbar_index >= 0 ? w->GetScrollbar(nwid->scrollbar_index) : NULL);
-	if (sb != NULL && sb->GetCount() > sb->GetCapacity()) {
+	Scrollbar *sb = (nwid->scrollbar_index >= 0 ? w->GetScrollbar(nwid->scrollbar_index) : nullptr);
+	if (sb != nullptr && sb->GetCount() > sb->GetCapacity()) {
 		sb->UpdatePosition(wheel);
 		w->SetDirty();
 	}
@@ -1014,12 +1014,12 @@ void Window::ReInit(int rx, int ry)
  */
 void Window::SetShaded(bool make_shaded)
 {
-	if (this->shade_select == NULL) return;
+	if (this->shade_select == nullptr) return;
 
 	int desired = make_shaded ? SZSP_HORIZONTAL : 0;
 	if (this->shade_select->shown_plane != desired) {
 		if (make_shaded) {
-			if (this->nested_focus != NULL) this->UnfocusFocusedWidget();
+			if (this->nested_focus != nullptr) this->UnfocusFocusedWidget();
 			this->unshaded_size.width  = this->width;
 			this->unshaded_size.height = this->height;
 			this->shade_select->SetDisplayedPlane(desired);
@@ -1037,7 +1037,7 @@ void Window::SetShaded(bool make_shaded)
  * Find the Window whose parent pointer points to this window
  * @param w parent Window to find child of
  * @param wc Window class of the window to remove; #WC_INVALID if class does not matter
- * @return a Window pointer that is the child of \a w, or \c NULL otherwise
+ * @return a Window pointer that is the child of \a w, or \c nullptr otherwise
  */
 static Window *FindChildWindow(const Window *w, WindowClass wc)
 {
@@ -1046,7 +1046,7 @@ static Window *FindChildWindow(const Window *w, WindowClass wc)
 		if ((wc == WC_INVALID || wc == v->window_class) && v->parent == w) return v;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 /**
@@ -1056,7 +1056,7 @@ static Window *FindChildWindow(const Window *w, WindowClass wc)
 void Window::DeleteChildWindows(WindowClass wc) const
 {
 	Window *child = FindChildWindow(this, wc);
-	while (child != NULL) {
+	while (child != nullptr) {
 		delete child;
 		child = FindChildWindow(this, wc);
 	}
@@ -1073,20 +1073,20 @@ Window::~Window()
 	}
 
 	/* Prevent Mouseover() from resetting mouse-over coordinates on a non-existing window */
-	if (_mouseover_last_w == this) _mouseover_last_w = NULL;
+	if (_mouseover_last_w == this) _mouseover_last_w = nullptr;
 
 	/* We can't scroll the window when it's closed. */
-	if (_last_scroll_window == this) _last_scroll_window = NULL;
+	if (_last_scroll_window == this) _last_scroll_window = nullptr;
 
 	/* Make sure we don't try to access this window as the focused window when it doesn't exist anymore. */
 	if (_focused_window == this) {
 		this->OnFocusLost();
-		_focused_window = NULL;
+		_focused_window = nullptr;
 	}
 
 	this->DeleteChildWindows();
 
-	if (this->viewport != NULL) DeleteWindowViewport(this);
+	if (this->viewport != nullptr) DeleteWindowViewport(this);
 
 	this->SetDirty();
 
@@ -1109,7 +1109,7 @@ Window::~Window()
  * Find a window by its class and window number
  * @param cls Window class
  * @param number Number of the window within the window class
- * @return Pointer to the found window, or \c NULL if not available
+ * @return Pointer to the found window, or \c nullptr if not available
  */
 Window *FindWindowById(WindowClass cls, WindowNumber number)
 {
@@ -1118,14 +1118,14 @@ Window *FindWindowById(WindowClass cls, WindowNumber number)
 		if (w->window_class == cls && w->window_number == number) return w;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 /**
  * Find any window by its class. Useful when searching for a window that uses
  * the window number as a #WindowClass, like #WC_SEND_NETWORK_MSG.
  * @param cls Window class
- * @return Pointer to the found window, or \c NULL if not available
+ * @return Pointer to the found window, or \c nullptr if not available
  */
 Window *FindWindowByClass(WindowClass cls)
 {
@@ -1134,7 +1134,7 @@ Window *FindWindowByClass(WindowClass cls)
 		if (w->window_class == cls) return w;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 /**
@@ -1146,7 +1146,7 @@ Window *FindWindowByClass(WindowClass cls)
 void DeleteWindowById(WindowClass cls, WindowNumber number, bool force)
 {
 	Window *w = FindWindowById(cls, number);
-	if (force || w == NULL ||
+	if (force || w == nullptr ||
 			(w->flags & WF_STICKY) == 0) {
 		delete w;
 	}
@@ -1244,7 +1244,7 @@ Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 {
 	Window *w = FindWindowById(cls, number);
 
-	if (w != NULL) {
+	if (w != nullptr) {
 		if (w->IsShaded()) w->SetShaded(false); // Restore original window size if it was shaded.
 
 		w->SetWhiteBorder();
@@ -1357,17 +1357,17 @@ static uint GetWindowZPriority(WindowClass wc)
  */
 static void AddWindowToZOrdering(Window *w)
 {
-	assert(w->z_front == NULL && w->z_back == NULL);
+	assert(w->z_front == nullptr && w->z_back == nullptr);
 
-	if (_z_front_window == NULL) {
+	if (_z_front_window == nullptr) {
 		/* It's the only window. */
 		_z_front_window = _z_back_window = w;
-		w->z_front = w->z_back = NULL;
+		w->z_front = w->z_back = nullptr;
 	} else {
 		/* Search down the z-ordering for its location. */
 		Window *v = _z_front_window;
 		uint last_z_priority = UINT_MAX;
-		while (v != NULL && (v->window_class == WC_INVALID || GetWindowZPriority(v->window_class) > GetWindowZPriority(w->window_class))) {
+		while (v != nullptr && (v->window_class == WC_INVALID || GetWindowZPriority(v->window_class) > GetWindowZPriority(w->window_class))) {
 			if (v->window_class != WC_INVALID) {
 				/* Sanity check z-ordering, while we're at it. */
 				assert(last_z_priority >= GetWindowZPriority(v->window_class));
@@ -1377,15 +1377,15 @@ static void AddWindowToZOrdering(Window *w)
 			v = v->z_back;
 		}
 
-		if (v == NULL) {
+		if (v == nullptr) {
 			/* It's the new back window. */
 			w->z_front = _z_back_window;
-			w->z_back = NULL;
+			w->z_back = nullptr;
 			_z_back_window->z_back = w;
 			_z_back_window = w;
 		} else if (v == _z_front_window) {
 			/* It's the new front window. */
-			w->z_front = NULL;
+			w->z_front = nullptr;
 			w->z_back = _z_front_window;
 			_z_front_window->z_front = w;
 			_z_front_window = w;
@@ -1406,21 +1406,21 @@ static void AddWindowToZOrdering(Window *w)
  */
 static void RemoveWindowFromZOrdering(Window *w)
 {
-	if (w->z_front == NULL) {
+	if (w->z_front == nullptr) {
 		assert(_z_front_window == w);
 		_z_front_window = w->z_back;
 	} else {
 		w->z_front->z_back = w->z_back;
 	}
 
-	if (w->z_back == NULL) {
+	if (w->z_back == nullptr) {
 		assert(_z_back_window == w);
 		_z_back_window = w->z_front;
 	} else {
 		w->z_back->z_front = w->z_front;
 	}
 
-	w->z_front = w->z_back = NULL;
+	w->z_front = w->z_back = nullptr;
 }
 
 /**
@@ -1440,8 +1440,8 @@ static void BringWindowToFront(Window *w)
  * Initializes the data (except the position and initial size) of a new Window.
  * @param window_number Number being assigned to the new window
  * @return Window pointer of the newly created window
- * @pre If nested widgets are used (\a widget is \c NULL), #nested_root and #nested_array_size must be initialized.
- *      In addition, #nested_array is either \c NULL, or already initialized.
+ * @pre If nested widgets are used (\a widget is \c nullptr), #nested_root and #nested_array_size must be initialized.
+ *      In addition, #nested_array is either \c nullptr, or already initialized.
  */
 void Window::InitializeData(WindowNumber window_number)
 {
@@ -1450,12 +1450,12 @@ void Window::InitializeData(WindowNumber window_number)
 	this->SetWhiteBorder();
 	if (this->window_desc->default_pos == WDP_CENTER) this->flags |= WF_CENTERED;
 	this->owner = INVALID_OWNER;
-	this->nested_focus = NULL;
+	this->nested_focus = nullptr;
 	this->window_number = window_number;
 
 	this->OnInit();
 	/* Initialize nested widget tree. */
-	if (this->nested_array == NULL) {
+	if (this->nested_array == nullptr) {
 		this->nested_array = CallocT<NWidgetBase *>(this->nested_array_size);
 		this->nested_root->SetupSmallestSize(this, true);
 	} else {
@@ -1472,7 +1472,7 @@ void Window::InitializeData(WindowNumber window_number)
 	/* Give focus to the opened window unless a text box
 	 * of focused window has focus (so we don't interrupt typing). But if the new
 	 * window has a text box, then take focus anyway. */
-	if (!EditBoxInGlobalFocus() || this->nested_root->GetWidgetOfType(WWT_EDITBOX) != NULL) SetFocusedWindow(this);
+	if (!EditBoxInGlobalFocus() || this->nested_root->GetWidgetOfType(WWT_EDITBOX) != nullptr) SetFocusedWindow(this);
 
 	/* Insert the window into the correct location in the z-ordering. */
 	AddWindowToZOrdering(this);
@@ -1516,9 +1516,9 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height)
 		/* Think about the overlapping toolbars when determining the minimum window size */
 		int free_height = _screen.height;
 		const Window *wt = FindWindowById(WC_STATUS_BAR, 0);
-		if (wt != NULL) free_height -= wt->height;
+		if (wt != nullptr) free_height -= wt->height;
 		wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
-		if (wt != NULL) free_height -= wt->height;
+		if (wt != nullptr) free_height -= wt->height;
 
 		int enlarge_x = max(min(def_width  - this->width,  _screen.width - this->width),  0);
 		int enlarge_y = max(min(def_height - this->height, free_height   - this->height), 0);
@@ -1542,10 +1542,10 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height)
 	if (nx + this->width > _screen.width) nx -= (nx + this->width - _screen.width);
 
 	const Window *wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
-	ny = max(ny, (wt == NULL || this == wt || this->top == 0) ? 0 : wt->height);
+	ny = max(ny, (wt == nullptr || this == wt || this->top == 0) ? 0 : wt->height);
 	nx = max(nx, 0);
 
-	if (this->viewport != NULL) {
+	if (this->viewport != nullptr) {
 		this->viewport->left += nx - this->left;
 		this->viewport->top  += ny - this->top;
 	}
@@ -1652,7 +1652,7 @@ static Point GetAutoPlacePosition(int width, int height)
 
 	/* First attempt, try top-left of the screen */
 	const Window *main_toolbar = FindWindowByClass(WC_MAIN_TOOLBAR);
-	const int toolbar_y =  main_toolbar != NULL ? main_toolbar->height : 0;
+	const int toolbar_y =  main_toolbar != nullptr ? main_toolbar->height : 0;
 	if (IsGoodAutoPlace1(rtl ? _screen.width - width : 0, toolbar_y, width, height, toolbar_y, pt)) return pt;
 
 	/* Second attempt, try around all existing windows.
@@ -1716,7 +1716,7 @@ restart:
 Point GetToolbarAlignedWindowPosition(int window_width)
 {
 	const Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
-	assert(w != NULL);
+	assert(w != nullptr);
 	Point pt = { _current_text_dir == TD_RTL ? w->left : (w->left + w->width) - window_width, w->top + w->height };
 	return pt;
 }
@@ -1746,7 +1746,7 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int
 	int16 default_width  = max(desc->GetDefaultWidth(),  sm_width);
 	int16 default_height = max(desc->GetDefaultHeight(), sm_height);
 
-	if (desc->parent_cls != WC_NONE && (w = FindWindowById(desc->parent_cls, window_number)) != NULL) {
+	if (desc->parent_cls != WC_NONE && (w = FindWindowById(desc->parent_cls, window_number)) != nullptr) {
 		bool rtl = _current_text_dir == TD_RTL;
 		if (desc->parent_cls == WC_BUILD_TOOLBAR || desc->parent_cls == WC_SCEN_LAND_GEN) {
 			pt.x = w->left + (rtl ? w->width - default_width : 0);
@@ -1857,7 +1857,7 @@ Window::Window(WindowDesc *desc) : window_desc(desc), mouse_capture_widget(-1)
  * at the topmost window, obviously and work our way down to the bottom
  * @param x position x to query
  * @param y position y to query
- * @return a pointer to the found window if any, NULL otherwise
+ * @return a pointer to the found window if any, nullptr otherwise
  */
 Window *FindWindowFromPt(int x, int y)
 {
@@ -1868,7 +1868,7 @@ Window *FindWindowFromPt(int x, int y)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 /**
@@ -1878,11 +1878,11 @@ void InitWindowSystem()
 {
 	IConsoleClose();
 
-	_z_back_window = NULL;
-	_z_front_window = NULL;
-	_focused_window = NULL;
-	_mouseover_last_w = NULL;
-	_last_scroll_window = NULL;
+	_z_back_window = nullptr;
+	_z_front_window = nullptr;
+	_focused_window = nullptr;
+	_mouseover_last_w = nullptr;
+	_last_scroll_window = nullptr;
 	_scrolling_viewport = false;
 	_mouse_hovering = false;
 
@@ -1902,14 +1902,14 @@ void UnInitWindowSystem()
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) delete w;
 
-	for (w = _z_front_window; w != NULL; /* nothing */) {
+	for (w = _z_front_window; w != nullptr; /* nothing */) {
 		Window *to_del = w;
 		w = w->z_back;
 		free(to_del);
 	}
 
-	_z_front_window = NULL;
-	_z_back_window = NULL;
+	_z_front_window = nullptr;
+	_z_back_window = nullptr;
 }
 
 /**
@@ -1932,7 +1932,7 @@ static void DecreaseWindowCounters()
 			/* Unclick scrollbar buttons if they are pressed. */
 			for (uint i = 0; i < w->nested_array_size; i++) {
 				NWidgetBase *nwid = w->nested_array[i];
-				if (nwid != NULL && (nwid->type == NWID_HSCROLLBAR || nwid->type == NWID_VSCROLLBAR)) {
+				if (nwid != nullptr && (nwid->type == NWID_HSCROLLBAR || nwid->type == NWID_VSCROLLBAR)) {
 					NWidgetScrollbar *sb = static_cast<NWidgetScrollbar*>(nwid);
 					if (sb->disp_flags & (ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN)) {
 						sb->disp_flags &= ~(ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN);
@@ -1966,7 +1966,7 @@ static void HandlePlacePresize()
 	if (_special_mouse_mode != WSM_PRESIZE) return;
 
 	Window *w = _thd.GetCallbackWnd();
-	if (w == NULL) return;
+	if (w == nullptr) return;
 
 	Point pt = GetTileBelowCursor();
 	if (pt.x == -1) {
@@ -1988,7 +1988,7 @@ static EventState HandleMouseDragDrop()
 	if (_left_button_down && _cursor.delta.x == 0 && _cursor.delta.y == 0) return ES_HANDLED; // Dragging, but the mouse did not move.
 
 	Window *w = _thd.GetCallbackWnd();
-	if (w != NULL) {
+	if (w != nullptr) {
 		/* Send an event in client coordinates. */
 		Point pt;
 		pt.x = _cursor.pos.x - w->left;
@@ -2010,7 +2010,7 @@ static void HandleMouseOver()
 	Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
 	/* We changed window, put an OnMouseOver event to the last window */
-	if (_mouseover_last_w != NULL && _mouseover_last_w != w) {
+	if (_mouseover_last_w != nullptr && _mouseover_last_w != w) {
 		/* Reset mouse-over coordinates of previous window */
 		Point pt = { -1, -1 };
 		_mouseover_last_w->OnMouseOver(pt, 0);
@@ -2019,11 +2019,11 @@ static void HandleMouseOver()
 	/* _mouseover_last_w will get reset when the window is deleted, see DeleteWindow() */
 	_mouseover_last_w = w;
 
-	if (w != NULL) {
+	if (w != nullptr) {
 		/* send an event in client coordinates. */
 		Point pt = { _cursor.pos.x - w->left, _cursor.pos.y - w->top };
 		const NWidgetCore *widget = w->nested_root->GetWidgetFromPos(pt.x, pt.y);
-		if (widget != NULL) w->OnMouseOver(pt, widget->index);
+		if (widget != nullptr) w->OnMouseOver(pt, widget->index);
 	}
 }
 
@@ -2048,7 +2048,7 @@ enum PreventHideDirection {
  */
 static void PreventHiding(int *nx, int *ny, const Rect &rect, const Window *v, int px, PreventHideDirection dir)
 {
-	if (v == NULL) return;
+	if (v == nullptr) return;
 
 	int v_bottom = v->top + v->height;
 	int v_right = v->left + v->width;
@@ -2089,7 +2089,7 @@ static void EnsureVisibleCaption(Window *w, int nx, int ny)
 	/* Search for the title bar rectangle. */
 	Rect caption_rect;
 	const NWidgetBase *caption = w->nested_root->GetWidgetOfType(WWT_CAPTION);
-	if (caption != NULL) {
+	if (caption != nullptr) {
 		caption_rect.left   = caption->pos_x;
 		caption_rect.right  = caption->pos_x + caption->current_x;
 		caption_rect.top    = caption->pos_y;
@@ -2104,7 +2104,7 @@ static void EnsureVisibleCaption(Window *w, int nx, int ny)
 		PreventHiding(&nx, &ny, caption_rect, FindWindowById(WC_STATUS_BAR,   0), w->left, PHD_UP);
 	}
 
-	if (w->viewport != NULL) {
+	if (w->viewport != nullptr) {
 		w->viewport->left += nx - w->left;
 		w->viewport->top  += ny - w->top;
 	}
@@ -2162,7 +2162,7 @@ void ResizeWindow(Window *w, int delta_x, int delta_y, bool clamp_to_screen)
 int GetMainViewTop()
 {
 	Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
-	return (w == NULL) ? 0 : w->top + w->height;
+	return (w == nullptr) ? 0 : w->top + w->height;
 }
 
 /**
@@ -2173,7 +2173,7 @@ int GetMainViewTop()
 int GetMainViewBottom()
 {
 	Window *w = FindWindowById(WC_STATUS_BAR, 0);
-	return (w == NULL) ? _screen.height : w->top;
+	return (w == nullptr) ? _screen.height : w->top;
 }
 
 static bool _dragging_window; ///< A window is being dragged or resized.
@@ -2469,12 +2469,12 @@ static EventState HandleViewportScroll()
 	/* When we don't have a last scroll window we are starting to scroll.
 	 * When the last scroll window and this are not the same we went
 	 * outside of the window and should not left-mouse scroll anymore. */
-	if (_last_scroll_window == NULL) _last_scroll_window = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
+	if (_last_scroll_window == nullptr) _last_scroll_window = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
-	if (_last_scroll_window == NULL || !((_settings_client.gui.scroll_mode != VSM_MAP_LMB && _right_button_down) || scrollwheel_scrolling || (_settings_client.gui.scroll_mode == VSM_MAP_LMB && _left_button_down))) {
+	if (_last_scroll_window == nullptr || !((_settings_client.gui.scroll_mode != VSM_MAP_LMB && _right_button_down) || scrollwheel_scrolling || (_settings_client.gui.scroll_mode == VSM_MAP_LMB && _left_button_down))) {
 		_cursor.fix_at = false;
 		_scrolling_viewport = false;
-		_last_scroll_window = NULL;
+		_last_scroll_window = nullptr;
 		return ES_NOT_HANDLED;
 	}
 
@@ -2581,7 +2581,7 @@ static bool MaybeBringWindowToFront(Window *w)
 EventState Window::HandleEditBoxKey(int wid, WChar key, uint16 keycode)
 {
 	QueryString *query = this->GetQueryString(wid);
-	if (query == NULL) return ES_NOT_HANDLED;
+	if (query == nullptr) return ES_NOT_HANDLED;
 
 	int action = QueryString::ACTION_NOTHING;
 
@@ -2685,7 +2685,7 @@ void HandleKeypress(uint keycode, WChar key)
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
 		if (w->window_class == WC_MAIN_TOOLBAR) continue;
-		if (w->window_desc->hotkeys != NULL) {
+		if (w->window_desc->hotkeys != nullptr) {
 			int hotkey = w->window_desc->hotkeys->CheckMatch(keycode);
 			if (hotkey >= 0 && w->OnHotkey(hotkey) == ES_HANDLED) return;
 		}
@@ -2694,8 +2694,8 @@ void HandleKeypress(uint keycode, WChar key)
 
 	w = FindWindowById(WC_MAIN_TOOLBAR, 0);
 	/* When there is no toolbar w is null, check for that */
-	if (w != NULL) {
-		if (w->window_desc->hotkeys != NULL) {
+	if (w != nullptr) {
+		if (w->window_desc->hotkeys != nullptr) {
 			int hotkey = w->window_desc->hotkeys->CheckMatch(keycode);
 			if (hotkey >= 0 && w->OnHotkey(hotkey) == ES_HANDLED) return;
 		}
@@ -2725,7 +2725,7 @@ void HandleCtrlChanged()
 /* virtual */ void Window::InsertTextString(int wid, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end)
 {
 	QueryString *query = this->GetQueryString(wid);
-	if (query == NULL) return;
+	if (query == nullptr) return;
 
 	if (query->text.InsertString(str, marked, caret, insert_location, replacement_end) || marked) {
 		this->SetWidgetDirty(wid);
@@ -2767,11 +2767,11 @@ static void HandleAutoscroll()
 	int x = _cursor.pos.x;
 	int y = _cursor.pos.y;
 	Window *w = FindWindowFromPt(x, y);
-	if (w == NULL || w->flags & WF_DISABLE_VP_SCROLL) return;
+	if (w == nullptr || w->flags & WF_DISABLE_VP_SCROLL) return;
 	if (_settings_client.gui.auto_scrolling != VA_EVERY_VIEWPORT && w->window_class != WC_MAIN_WINDOW) return;
 
 	ViewPort *vp = IsPtInWindowViewport(w, x, y);
-	if (vp == NULL) return;
+	if (vp == nullptr) return;
 
 	x -= vp->left;
 	y -= vp->top;
@@ -2877,23 +2877,23 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	int x = _cursor.pos.x;
 	int y = _cursor.pos.y;
 	Window *w = FindWindowFromPt(x, y);
-	if (w == NULL) return;
+	if (w == nullptr) return;
 
 	if (click != MC_HOVER && !MaybeBringWindowToFront(w)) return;
 	ViewPort *vp = IsPtInWindowViewport(w, x, y);
 
 	/* Don't allow any action in a viewport if either in menu or when having a modal progress window */
-	if (vp != NULL && (_game_mode == GM_MENU || HasModalProgress())) return;
+	if (vp != nullptr && (_game_mode == GM_MENU || HasModalProgress())) return;
 
 	if (mousewheel != 0) {
 		/* Send mousewheel event to window, unless we're scrolling a viewport or the map */
-		if (!scrollwheel_scrolling || (vp == NULL && w->window_class != WC_SMALLMAP)) w->OnMouseWheel(mousewheel);
+		if (!scrollwheel_scrolling || (vp == nullptr && w->window_class != WC_SMALLMAP)) w->OnMouseWheel(mousewheel);
 
 		/* Dispatch a MouseWheelEvent for widgets if it is not a viewport */
-		if (vp == NULL) DispatchMouseWheelEvent(w, w->nested_root->GetWidgetFromPos(x - w->left, y - w->top), mousewheel);
+		if (vp == nullptr) DispatchMouseWheelEvent(w, w->nested_root->GetWidgetFromPos(x - w->left, y - w->top), mousewheel);
 	}
 
-	if (vp != NULL) {
+	if (vp != nullptr) {
 		if (scrollwheel_scrolling && !(w->flags & WF_DISABLE_VP_SCROLL)) {
 			_scrolling_viewport = true;
 			_cursor.fix_at = true;
@@ -2927,7 +2927,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 		}
 	}
 
-	if (vp == NULL || (w->flags & WF_DISABLE_VP_SCROLL)) {
+	if (vp == nullptr || (w->flags & WF_DISABLE_VP_SCROLL)) {
 		switch (click) {
 			case MC_LEFT:
 			case MC_DOUBLE_LEFT:
@@ -2935,7 +2935,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 				return;
 
 			default:
-				if (!scrollwheel_scrolling || w == NULL || w->window_class != WC_SMALLMAP) break;
+				if (!scrollwheel_scrolling || w == nullptr || w->window_class != WC_SMALLMAP) break;
 				/* We try to use the scrollwheel to scroll since we didn't touch any of the buttons.
 				 * Simulate a right button click so we can get started. */
 				FALLTHROUGH;
@@ -3046,7 +3046,7 @@ static void CheckSoftLimit()
 
 	for (;;) {
 		uint deletable_count = 0;
-		Window *w, *last_deletable = NULL;
+		Window *w, *last_deletable = nullptr;
 		FOR_ALL_WINDOWS_FROM_FRONT(w) {
 			if (w->window_class == WC_MAIN_WINDOW || IsVitalWindow(w) || (w->flags & WF_STICKY)) continue;
 
@@ -3057,7 +3057,7 @@ static void CheckSoftLimit()
 		/* We've not reached the soft limit yet. */
 		if (deletable_count <= _settings_client.gui.window_soft_limit) break;
 
-		assert(last_deletable != NULL);
+		assert(last_deletable != nullptr);
 		delete last_deletable;
 	}
 }
@@ -3074,7 +3074,7 @@ void InputLoop()
 	CheckSoftLimit();
 
 	/* Do the actual free of the deleted windows. */
-	for (Window *v = _z_front_window; v != NULL; /* nothing */) {
+	for (Window *v = _z_front_window; v != nullptr; /* nothing */) {
 		Window *w = v;
 		v = v->z_back;
 
@@ -3184,7 +3184,7 @@ void UpdateWindows()
 
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		/* Update viewport only if window is not shaded. */
-		if (w->viewport != NULL && !w->IsShaded()) UpdateViewportPosition(w);
+		if (w->viewport != nullptr && !w->IsShaded()) UpdateViewportPosition(w);
 	}
 	NetworkDrawChatMessage();
 	/* Redraw mouse cursor in case it was hidden */
@@ -3455,17 +3455,17 @@ void ReInitAllWindows()
 
 /**
  * (Re)position a window at the screen.
- * @param w       Window structure of the window, may also be \c NULL.
+ * @param w       Window structure of the window, may also be \c nullptr.
  * @param clss    The class of the window to position.
  * @param setting The actual setting used for the window's position.
  * @return X coordinate of left edge of the repositioned window.
  */
 static int PositionWindow(Window *w, WindowClass clss, int setting)
 {
-	if (w == NULL || w->window_class != clss) {
+	if (w == nullptr || w->window_class != clss) {
 		w = FindWindowById(clss, 0);
 	}
-	if (w == NULL) return 0;
+	if (w == nullptr) return 0;
 
 	int old_left = w->left;
 	switch (setting) {
@@ -3473,14 +3473,14 @@ static int PositionWindow(Window *w, WindowClass clss, int setting)
 		case 2:  w->left = _screen.width - w->width; break;
 		default: w->left = 0; break;
 	}
-	if (w->viewport != NULL) w->viewport->left += w->left - old_left;
+	if (w->viewport != nullptr) w->viewport->left += w->left - old_left;
 	SetDirtyBlocks(0, w->top, _screen.width, w->top + w->height); // invalidate the whole row
 	return w->left;
 }
 
 /**
  * (Re)position main toolbar window at the screen.
- * @param w Window structure of the main toolbar window, may also be \c NULL.
+ * @param w Window structure of the main toolbar window, may also be \c nullptr.
  * @return X coordinate of left edge of the repositioned toolbar window.
  */
 int PositionMainToolbar(Window *w)
@@ -3491,7 +3491,7 @@ int PositionMainToolbar(Window *w)
 
 /**
  * (Re)position statusbar window at the screen.
- * @param w Window structure of the statusbar window, may also be \c NULL.
+ * @param w Window structure of the statusbar window, may also be \c nullptr.
  * @return X coordinate of left edge of the repositioned statusbar.
  */
 int PositionStatusbar(Window *w)
@@ -3502,7 +3502,7 @@ int PositionStatusbar(Window *w)
 
 /**
  * (Re)position news message window at the screen.
- * @param w Window structure of the news message window, may also be \c NULL.
+ * @param w Window structure of the news message window, may also be \c nullptr.
  * @return X coordinate of left edge of the repositioned news message.
  */
 int PositionNewsMessage(Window *w)
@@ -3513,7 +3513,7 @@ int PositionNewsMessage(Window *w)
 
 /**
  * (Re)position network chat window at the screen.
- * @param w Window structure of the network chat window, may also be \c NULL.
+ * @param w Window structure of the network chat window, may also be \c nullptr.
  * @return X coordinate of left edge of the repositioned network chat window.
  */
 int PositionNetworkChatWindow(Window *w)
@@ -3532,7 +3532,7 @@ void ChangeVehicleViewports(VehicleID from_index, VehicleID to_index)
 {
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		if (w->viewport != NULL && w->viewport->follow_vehicle == from_index) {
+		if (w->viewport != nullptr && w->viewport->follow_vehicle == from_index) {
 			w->viewport->follow_vehicle = to_index;
 			w->SetDirty();
 		}

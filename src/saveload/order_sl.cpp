@@ -178,7 +178,7 @@ static void Load_ORDR()
 			/* The orders were built like this:
 			 * While the order is valid, set the previous will get its next pointer set */
 			Order *prev = Order::GetIfValid(order_index - 1);
-			if (prev != NULL) prev->next = o;
+			if (prev != nullptr) prev->next = o;
 		}
 	} else {
 		int index;
@@ -306,7 +306,7 @@ static void Ptrs_BKOR()
 }
 
 extern const ChunkHandler _order_chunk_handlers[] = {
-	{ 'BKOR', Save_BKOR, Load_BKOR, Ptrs_BKOR, NULL, CH_ARRAY},
-	{ 'ORDR', Save_ORDR, Load_ORDR, Ptrs_ORDR, NULL, CH_ARRAY},
-	{ 'ORDL', Save_ORDL, Load_ORDL, Ptrs_ORDL, NULL, CH_ARRAY | CH_LAST},
+	{ 'BKOR', Save_BKOR, Load_BKOR, Ptrs_BKOR, nullptr, CH_ARRAY},
+	{ 'ORDR', Save_ORDR, Load_ORDR, Ptrs_ORDR, nullptr, CH_ARRAY},
+	{ 'ORDL', Save_ORDL, Load_ORDL, Ptrs_ORDL, nullptr, CH_ARRAY | CH_LAST},
 };

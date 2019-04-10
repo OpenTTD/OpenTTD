@@ -20,37 +20,37 @@
  * Finds NetworkClientInfo given client-identifier,
  *  is used by other methods to resolve client-identifier.
  * @param client The client to get info structure for
- * @return A pointer to corresponding CI struct or NULL when not found.
+ * @return A pointer to corresponding CI struct or nullptr when not found.
  */
 static NetworkClientInfo *FindClientInfo(ScriptClient::ClientID client)
 {
-	if (client == ScriptClient::CLIENT_INVALID) return NULL;
-	if (!_networking) return NULL;
+	if (client == ScriptClient::CLIENT_INVALID) return nullptr;
+	if (!_networking) return nullptr;
 	return NetworkClientInfo::GetByClientID((::ClientID)client);
 }
 
 /* static */ ScriptClient::ClientID ScriptClient::ResolveClientID(ScriptClient::ClientID client)
 {
-	return (FindClientInfo(client) == NULL ? ScriptClient::CLIENT_INVALID : client);
+	return (FindClientInfo(client) == nullptr ? ScriptClient::CLIENT_INVALID : client);
 }
 
 /* static */ char *ScriptClient::GetName(ScriptClient::ClientID client)
 {
 	NetworkClientInfo *ci = FindClientInfo(client);
-	if (ci == NULL) return NULL;
+	if (ci == nullptr) return nullptr;
 	return stredup(ci->client_name);
 }
 
 /* static */ ScriptCompany::CompanyID ScriptClient::GetCompany(ScriptClient::ClientID client)
 {
 	NetworkClientInfo *ci = FindClientInfo(client);
-	if (ci == NULL) return ScriptCompany::COMPANY_INVALID;
+	if (ci == nullptr) return ScriptCompany::COMPANY_INVALID;
 	return (ScriptCompany::CompanyID)ci->client_playas;
 }
 
 /* static */ ScriptDate::Date ScriptClient::GetJoinDate(ScriptClient::ClientID client)
 {
 	NetworkClientInfo *ci = FindClientInfo(client);
-	if (ci == NULL) return ScriptDate::DATE_INVALID;
+	if (ci == nullptr) return ScriptDate::DATE_INVALID;
 	return (ScriptDate::Date)ci->join_date;
 }

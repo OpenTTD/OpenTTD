@@ -401,7 +401,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner == old_owner && IsCompanyBuildableVehicleType(v->type)) {
 				if (new_owner == INVALID_OWNER) {
-					if (v->Previous() == NULL) delete v;
+					if (v->Previous() == nullptr) delete v;
 				} else {
 					if (v->IsEngineCountable()) GroupStatistics::CountEngine(v, -1);
 					if (v->IsPrimaryVehicle()) GroupStatistics::CountVehicle(v, -1);
@@ -476,7 +476,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 				}
 
 				/* Invalidate the vehicle's cargo payment "owner cache". */
-				if (v->cargo_payment != NULL) v->cargo_payment->owner = NULL;
+				if (v->cargo_payment != nullptr) v->cargo_payment->owner = nullptr;
 			}
 		}
 
@@ -959,7 +959,7 @@ Money GetPrice(Price index, uint cost_factor, const GRFFile *grf_file, int shift
 	if (index >= PR_END) return 0;
 
 	Money cost = _price[index] * cost_factor;
-	if (grf_file != NULL) shift += grf_file->price_base_multipliers[index];
+	if (grf_file != nullptr) shift += grf_file->price_base_multipliers[index];
 
 	if (shift >= 0) {
 		cost <<= shift;
@@ -1180,7 +1180,7 @@ CargoPayment::~CargoPayment()
 {
 	if (this->CleaningPool()) return;
 
-	this->front->cargo_payment = NULL;
+	this->front->cargo_payment = nullptr;
 
 	if (this->visual_profit == 0 && this->visual_transfer == 0) return;
 
@@ -1211,7 +1211,7 @@ CargoPayment::~CargoPayment()
  */
 void CargoPayment::PayFinalDelivery(const CargoPacket *cp, uint count)
 {
-	if (this->owner == NULL) {
+	if (this->owner == nullptr) {
 		this->owner = Company::Get(this->front->owner);
 	}
 
@@ -1259,7 +1259,7 @@ void PrepareUnload(Vehicle *front_v)
 	/* Start unloading at the first possible moment */
 	front_v->load_unload_ticks = 1;
 
-	assert(front_v->cargo_payment == NULL);
+	assert(front_v->cargo_payment == nullptr);
 	/* One CargoPayment per vehicle and the vehicle limit equals the
 	 * limit in number of CargoPayments. Can't go wrong. */
 	assert_compile(CargoPaymentPool::MAX_SIZE == VehiclePool::MAX_SIZE);
@@ -1267,9 +1267,9 @@ void PrepareUnload(Vehicle *front_v)
 	front_v->cargo_payment = new CargoPayment(front_v);
 
 	StationIDStack next_station = front_v->GetNextStoppingStation();
-	if (front_v->orders.list == NULL || (front_v->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
+	if (front_v->orders.list == nullptr || (front_v->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
 		Station *st = Station::Get(front_v->last_station_visited);
-		for (Vehicle *v = front_v; v != NULL; v = v->Next()) {
+		for (Vehicle *v = front_v; v != nullptr; v = v->Next()) {
 			const GoodsEntry *ge = &st->goods[v->cargo_type];
 			if (v->cargo_cap > 0 && v->cargo.TotalCount() > 0) {
 				v->cargo.Stage(
@@ -1300,7 +1300,7 @@ static uint GetLoadAmount(Vehicle *v)
 
 	if (_settings_game.order.gradual_loading) {
 		uint16 cb_load_amount = CALLBACK_FAILED;
-		if (e->GetGRF() != NULL && e->GetGRF()->grf_version >= 8) {
+		if (e->GetGRF() != nullptr && e->GetGRF()->grf_version >= 8) {
 			/* Use callback 36 */
 			cb_load_amount = GetVehicleProperty(v, PROP_VEHICLE_LOAD_AMOUNT, CALLBACK_FAILED);
 		} else if (HasBit(e->info.callback_mask, CBM_VEHICLE_LOAD_AMOUNT)) {
@@ -1336,8 +1336,8 @@ static uint GetLoadAmount(Vehicle *v)
 template<class Taction>
 bool IterateVehicleParts(Vehicle *v, Taction action)
 {
-	for (Vehicle *w = v; w != NULL;
-			w = w->HasArticulatedPart() ? w->GetNextArticulatedPart() : NULL) {
+	for (Vehicle *w = v; w != nullptr;
+			w = w->HasArticulatedPart() ? w->GetNextArticulatedPart() : nullptr) {
 		if (!action(w)) return false;
 		if (w->type == VEH_TRAIN) {
 			Train *train = Train::From(w);
@@ -1564,8 +1564,8 @@ static void ReserveConsist(Station *st, Vehicle *u, CargoArray *consist_capleft,
 	/* If there is a cargo payment not all vehicles of the consist have tried to do the refit.
 	 * In that case, only reserve if it's a fixed refit and the equivalent of "articulated chain"
 	 * a vehicle belongs to already has the right cargo. */
-	bool must_reserve = !u->current_order.IsRefit() || u->cargo_payment == NULL;
-	for (Vehicle *v = u; v != NULL; v = v->Next()) {
+	bool must_reserve = !u->current_order.IsRefit() || u->cargo_payment == nullptr;
+	for (Vehicle *v = u; v != nullptr; v = v->Next()) {
 		assert(v->cargo_cap >= v->cargo.RemainingCount());
 
 		/* Exclude various ways in which the vehicle might not be the head of an equivalent of
@@ -1577,7 +1577,7 @@ static void ReserveConsist(Station *st, Vehicle *u, CargoArray *consist_capleft,
 				(must_reserve || u->current_order.GetRefitCargo() == v->cargo_type)) {
 			IterateVehicleParts(v, ReserveCargoAction(st, next_station));
 		}
-		if (consist_capleft == NULL || v->cargo_cap == 0) continue;
+		if (consist_capleft == nullptr || v->cargo_cap == 0) continue;
 		(*consist_capleft)[v->cargo_type] += v->cargo_cap - v->cargo.RemainingCount();
 	}
 }
@@ -1618,9 +1618,9 @@ static void LoadUnloadVehicle(Vehicle *front)
 	bool use_autorefit = front->current_order.IsRefit() && front->current_order.GetRefitCargo() == CT_AUTO_REFIT;
 	CargoArray consist_capleft;
 	if (_settings_game.order.improved_load && use_autorefit ?
-			front->cargo_payment == NULL : (front->current_order.GetLoadType() & OLFB_FULL_LOAD) != 0) {
+			front->cargo_payment == nullptr : (front->current_order.GetLoadType() & OLFB_FULL_LOAD) != 0) {
 		ReserveConsist(st, front,
-				(use_autorefit && front->load_unload_ticks != 0) ? &consist_capleft : NULL,
+				(use_autorefit && front->load_unload_ticks != 0) ? &consist_capleft : nullptr,
 				&next_station);
 	}
 
@@ -1652,7 +1652,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 	CargoPayment *payment = front->cargo_payment;
 
 	uint artic_part = 0; // Articulated part we are currently trying to load. (not counting parts without capacity)
-	for (Vehicle *v = front; v != NULL; v = v->Next()) {
+	for (Vehicle *v = front; v != nullptr; v = v->Next()) {
 		if (v == front || !v->Previous()->HasArticulatedPart()) artic_part = 0;
 		if (v->cargo_cap == 0) continue;
 		artic_part++;
@@ -1664,7 +1664,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 			uint amount_unloaded = _settings_game.order.gradual_loading ? min(cargo_count, GetLoadAmount(v)) : cargo_count;
 			bool remaining = false; // Are there cargo entities in this vehicle that can still be unloaded here?
 
-			assert(payment != NULL);
+			assert(payment != nullptr);
 			payment->SetCargo(v->cargo_type);
 
 			if (!HasBit(ge->status, GoodsEntry::GES_ACCEPTANCE) && v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER) > 0) {
@@ -1916,7 +1916,7 @@ void LoadUnloadStation(Station *st)
 	/* No vehicle is here... */
 	if (st->loading_vehicles.empty()) return;
 
-	Vehicle *last_loading = NULL;
+	Vehicle *last_loading = nullptr;
 	std::list<Vehicle *>::iterator iter;
 
 	/* Check if anything will be loaded at all. Otherwise we don't need to reserve either. */
@@ -1936,7 +1936,7 @@ void LoadUnloadStation(Station *st)
 	 * consist in a station which is not allowed to load yet because its
 	 * load_unload_ticks is still not 0.
 	 */
-	if (last_loading == NULL) return;
+	if (last_loading == nullptr) return;
 
 	for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end(); ++iter) {
 		Vehicle *v = *iter;
@@ -2018,7 +2018,7 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
 
 	/* Check if buying shares is allowed (protection against modified clients)
 	 * Cannot buy own shares */
-	if (c == NULL || !_settings_game.economy.allow_shares || _current_company == target_company) return CMD_ERROR;
+	if (c == nullptr || !_settings_game.economy.allow_shares || _current_company == target_company) return CMD_ERROR;
 
 	/* Protect new companies from hostile takeovers */
 	if (_cur_year - c->inaugurated_year < 6) return_cmd_error(STR_ERROR_PROTECTED);
@@ -2068,7 +2068,7 @@ CommandCost CmdSellShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1
 	Company *c = Company::GetIfValid(target_company);
 
 	/* Cannot sell own shares */
-	if (c == NULL || _current_company == target_company) return CMD_ERROR;
+	if (c == nullptr || _current_company == target_company) return CMD_ERROR;
 
 	/* Check if selling shares is allowed (protection against modified clients).
 	 * However, we must sell shares of companies being closed down. */
@@ -2107,7 +2107,7 @@ CommandCost CmdBuyCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 {
 	CompanyID target_company = (CompanyID)p1;
 	Company *c = Company::GetIfValid(target_company);
-	if (c == NULL) return CMD_ERROR;
+	if (c == nullptr) return CMD_ERROR;
 
 	/* Disable takeovers when not asked */
 	if (!HasBit(c->bankrupt_asked, _current_company)) return CMD_ERROR;

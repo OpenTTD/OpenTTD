@@ -23,14 +23,14 @@ class Text : public ScriptObject {
 public:
 	/**
 	 * Convert a ScriptText to a normal string.
-	 * @return A string (in a static buffer), or NULL.
+	 * @return A string (in a static buffer), or nullptr.
 	 * @api -all
 	 */
 	virtual const char *GetEncodedText() = 0;
 
 	/**
 	 * Convert a #ScriptText into a decoded normal string.
-	 * @return A string (in a static buffer), or NULL.
+	 * @return A string (in a static buffer), or nullptr.
 	 * @api -all
 	 */
 	const char *GetDecodedText();

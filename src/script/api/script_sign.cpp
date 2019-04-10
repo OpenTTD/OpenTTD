@@ -23,7 +23,7 @@
 /* static */ bool ScriptSign::IsValidSign(SignID sign_id)
 {
 	const Sign *si = ::Sign::GetIfValid(sign_id);
-	return si != NULL && (si->owner == ScriptObject::GetCompany() || si->owner == OWNER_DEITY);
+	return si != nullptr && (si->owner == ScriptObject::GetCompany() || si->owner == OWNER_DEITY);
 }
 
 /* static */ ScriptCompany::CompanyID ScriptSign::GetOwner(SignID sign_id)
@@ -38,7 +38,7 @@
 	CCountedPtr<Text> counter(name);
 
 	EnforcePrecondition(false, IsValidSign(sign_id));
-	EnforcePrecondition(false, name != NULL);
+	EnforcePrecondition(false, name != nullptr);
 	const char *text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_SIGN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
@@ -48,7 +48,7 @@
 
 /* static */ char *ScriptSign::GetName(SignID sign_id)
 {
-	if (!IsValidSign(sign_id)) return NULL;
+	if (!IsValidSign(sign_id)) return nullptr;
 
 	::SetDParam(0, sign_id);
 	return GetString(STR_SIGN_NAME);
@@ -73,7 +73,7 @@
 	CCountedPtr<Text> counter(name);
 
 	EnforcePrecondition(INVALID_SIGN, ::IsValidTile(location));
-	EnforcePrecondition(INVALID_SIGN, name != NULL);
+	EnforcePrecondition(INVALID_SIGN, name != nullptr);
 	const char *text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(INVALID_SIGN, text);
 	EnforcePreconditionCustomError(INVALID_SIGN, ::Utf8StringLength(text) < MAX_LENGTH_SIGN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);

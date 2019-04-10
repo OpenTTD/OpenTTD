@@ -99,7 +99,7 @@ void CDECL usererror(const char *s, ...)
 	va_end(va);
 
 	ShowOSErrorBox(buf, false);
-	if (VideoDriver::GetInstance() != NULL) VideoDriver::GetInstance()->Stop();
+	if (VideoDriver::GetInstance() != nullptr) VideoDriver::GetInstance()->Stop();
 
 	exit(1);
 }
@@ -118,7 +118,7 @@ void CDECL error(const char *s, ...)
 	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
 
-	if (VideoDriver::GetInstance() == NULL || VideoDriver::GetInstance()->HasGUI()) {
+	if (VideoDriver::GetInstance() == nullptr || VideoDriver::GetInstance()->HasGUI()) {
 		ShowOSErrorBox(buf, true);
 	}
 
@@ -242,7 +242,7 @@ static void WriteSavegameInfo(const char *name)
 
 	p = strecpy(p, "NewGRFs:\n", lastof(buf));
 	if (_load_check_data.HasNewGrfs()) {
-		for (GRFConfig *c = _load_check_data.grfconfig; c != NULL; c = c->next) {
+		for (GRFConfig *c = _load_check_data.grfconfig; c != nullptr; c = c->next) {
 			char md5sum[33];
 			md5sumToString(md5sum, lastof(md5sum), HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum);
 			p += seprintf(p, lastof(buf), "%08X %s %s\n", c->ident.grfid, md5sum, c->filename);
@@ -268,13 +268,13 @@ static void WriteSavegameInfo(const char *name)
 static void ParseResolution(Dimension *res, const char *s)
 {
 	const char *t = strchr(s, 'x');
-	if (t == NULL) {
+	if (t == nullptr) {
 		ShowInfoF("Invalid resolution '%s'", s);
 		return;
 	}
 
-	res->width  = max(strtoul(s, NULL, 0), 64UL);
-	res->height = max(strtoul(t + 1, NULL, 0), 64UL);
+	res->width  = max(strtoul(s, nullptr, 0), 64UL);
+	res->height = max(strtoul(t + 1, nullptr, 0), 64UL);
 }
 
 
@@ -347,11 +347,11 @@ static void LoadIntroGame(bool load_newgrfs = true)
 void MakeNewgameSettingsLive()
 {
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-		if (_settings_game.ai_config[c] != NULL) {
+		if (_settings_game.ai_config[c] != nullptr) {
 			delete _settings_game.ai_config[c];
 		}
 	}
-	if (_settings_game.game_config != NULL) {
+	if (_settings_game.game_config != nullptr) {
 		delete _settings_game.game_config;
 	}
 
@@ -361,16 +361,16 @@ void MakeNewgameSettingsLive()
 	_old_vds = _settings_client.company.vehicle;
 
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-		_settings_game.ai_config[c] = NULL;
-		if (_settings_newgame.ai_config[c] != NULL) {
+		_settings_game.ai_config[c] = nullptr;
+		if (_settings_newgame.ai_config[c] != nullptr) {
 			_settings_game.ai_config[c] = new AIConfig(_settings_newgame.ai_config[c]);
 			if (!AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->HasScript()) {
-				AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->Change(NULL);
+				AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->Change(nullptr);
 			}
 		}
 	}
-	_settings_game.game_config = NULL;
-	if (_settings_newgame.game_config != NULL) {
+	_settings_game.game_config = nullptr;
+	if (_settings_newgame.game_config != nullptr) {
 		_settings_game.game_config = new GameConfig(_settings_newgame.game_config);
 	}
 }
@@ -390,7 +390,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	uint32 generation_seed;            ///< Seed for the new game.
 	char *dedicated_host;              ///< Hostname for the dedicated server.
 	uint16 dedicated_port;             ///< Port for the dedicated server.
-	char *network_conn;                ///< Information about the server to connect to, or NULL.
+	char *network_conn;                ///< Information about the server to connect to, or nullptr.
 	const char *join_server_password;  ///< The password to join the server with.
 	const char *join_company_password; ///< The password to join the company with.
 	bool *save_config_ptr;             ///< The pointer to the save config setting.
@@ -403,8 +403,8 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	 */
 	AfterNewGRFScan(bool *save_config_ptr) :
 			startyear(INVALID_YEAR), generation_seed(GENERATE_NEW_SEED),
-			dedicated_host(NULL), dedicated_port(0), network_conn(NULL),
-			join_server_password(NULL), join_company_password(NULL),
+			dedicated_host(nullptr), dedicated_port(0), network_conn(nullptr),
+			join_server_password(nullptr), join_company_password(nullptr),
 			save_config_ptr(save_config_ptr), save_config(true)
 	{
 		/* Visual C++ 2015 fails compiling this line (AfterNewGRFScan::generation_seed undefined symbol)
@@ -444,7 +444,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		if (startyear != INVALID_YEAR) _settings_newgame.game_creation.starting_year = startyear;
 		if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
 
-		if (dedicated_host != NULL) {
+		if (dedicated_host != nullptr) {
 			_network_bind_list.clear();
 			_network_bind_list.emplace_back(dedicated_host);
 		}
@@ -458,15 +458,15 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		/* Make sure _settings is filled with _settings_newgame if we switch to a game directly */
 		if (_switch_mode != SM_NONE) MakeNewgameSettingsLive();
 
-		if (_network_available && network_conn != NULL) {
-			const char *port = NULL;
-			const char *company = NULL;
+		if (_network_available && network_conn != nullptr) {
+			const char *port = nullptr;
+			const char *company = nullptr;
 			uint16 rport = NETWORK_DEFAULT_PORT;
 			CompanyID join_as = COMPANY_NEW_COMPANY;
 
 			ParseConnectionString(&company, &port, network_conn);
 
-			if (company != NULL) {
+			if (company != nullptr) {
 				join_as = (CompanyID)atoi(company);
 
 				if (join_as != COMPANY_SPECTATOR) {
@@ -477,7 +477,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 					}
 				}
 			}
-			if (port != NULL) rport = atoi(port);
+			if (port != nullptr) rport = atoi(port);
 
 			LoadIntroGame();
 			_switch_mode = SM_NONE;
@@ -531,19 +531,19 @@ static const OptionData _options[] = {
  */
 int openttd_main(int argc, char *argv[])
 {
-	char *musicdriver = NULL;
-	char *sounddriver = NULL;
-	char *videodriver = NULL;
-	char *blitter = NULL;
-	char *graphics_set = NULL;
-	char *sounds_set = NULL;
-	char *music_set = NULL;
+	char *musicdriver = nullptr;
+	char *sounddriver = nullptr;
+	char *videodriver = nullptr;
+	char *blitter = nullptr;
+	char *graphics_set = nullptr;
+	char *sounds_set = nullptr;
+	char *music_set = nullptr;
 	Dimension resolution = {0, 0};
 	/* AfterNewGRFScan sets save_config to true after scanning completed. */
 	bool save_config = false;
 	AfterNewGRFScan *scanner = new AfterNewGRFScan(&save_config);
 	bool dedicated = false;
-	char *debuglog_conn = NULL;
+	char *debuglog_conn = nullptr;
 
 	extern bool _dedicated_forks;
 	_dedicated_forks = false;
@@ -553,7 +553,7 @@ int openttd_main(int argc, char *argv[])
 
 	_game_mode = GM_MENU;
 	_switch_mode = SM_MENU;
-	_config_file = NULL;
+	_config_file = nullptr;
 
 	GetOptData mgo(argc - 1, argv + 1, _options);
 	int ret = 0;
@@ -579,19 +579,19 @@ int openttd_main(int argc, char *argv[])
 			blitter = stredup("null");
 			dedicated = true;
 			SetDebugString("net=6");
-			if (mgo.opt != NULL) {
+			if (mgo.opt != nullptr) {
 				/* Use the existing method for parsing (openttd -n).
 				 * However, we do ignore the #company part. */
-				const char *temp = NULL;
-				const char *port = NULL;
+				const char *temp = nullptr;
+				const char *port = nullptr;
 				ParseConnectionString(&temp, &port, mgo.opt);
 				if (!StrEmpty(mgo.opt)) scanner->dedicated_host = mgo.opt;
-				if (port != NULL) scanner->dedicated_port = atoi(port);
+				if (port != nullptr) scanner->dedicated_port = atoi(port);
 			}
 			break;
 		case 'f': _dedicated_forks = true; break;
 		case 'n':
-			scanner->network_conn = mgo.opt; // optional IP parameter, NULL if unset
+			scanner->network_conn = mgo.opt; // optional IP parameter, nullptr if unset
 			break;
 		case 'l':
 			debuglog_conn = mgo.opt;
@@ -608,12 +608,12 @@ int openttd_main(int argc, char *argv[])
 #if defined(_WIN32)
 				CreateConsole();
 #endif
-				if (mgo.opt != NULL) SetDebugString(mgo.opt);
+				if (mgo.opt != nullptr) SetDebugString(mgo.opt);
 				break;
 			}
 		case 'e': _switch_mode = (_switch_mode == SM_LOAD_GAME || _switch_mode == SM_LOAD_SCENARIO ? SM_LOAD_SCENARIO : SM_EDITOR); break;
 		case 'g':
-			if (mgo.opt != NULL) {
+			if (mgo.opt != nullptr) {
 				_file_to_saveload.SetName(mgo.opt);
 				bool is_scenario = _switch_mode == SM_EDITOR || _switch_mode == SM_LOAD_SCENARIO;
 				_switch_mode = is_scenario ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
@@ -621,8 +621,8 @@ int openttd_main(int argc, char *argv[])
 
 				/* if the file doesn't exist or it is not a valid savegame, let the saveload code show an error */
 				const char *t = strrchr(_file_to_saveload.name, '.');
-				if (t != NULL) {
-					FiosType ft = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, t, NULL, NULL);
+				if (t != nullptr) {
+					FiosType ft = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, t, nullptr, nullptr);
 					if (ft != FIOS_TYPE_INVALID) _file_to_saveload.SetMode(ft);
 				}
 
@@ -663,7 +663,7 @@ int openttd_main(int argc, char *argv[])
 
 			goto exit_noshutdown;
 		}
-		case 'G': scanner->generation_seed = strtoul(mgo.opt, NULL, 10); break;
+		case 'G': scanner->generation_seed = strtoul(mgo.opt, nullptr, 10); break;
 		case 'c': free(_config_file); _config_file = stredup(mgo.opt); break;
 		case 'x': scanner->save_config = false; break;
 		case 'h':
@@ -729,10 +729,10 @@ int openttd_main(int argc, char *argv[])
 	InitWindowSystem();
 
 	BaseGraphics::FindSets();
-	if (graphics_set == NULL && BaseGraphics::ini_set != NULL) graphics_set = stredup(BaseGraphics::ini_set);
+	if (graphics_set == nullptr && BaseGraphics::ini_set != nullptr) graphics_set = stredup(BaseGraphics::ini_set);
 	if (!BaseGraphics::SetSet(graphics_set)) {
 		if (!StrEmpty(graphics_set)) {
-			BaseGraphics::SetSet(NULL);
+			BaseGraphics::SetSet(nullptr);
 
 			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND);
 			msg.SetDParamStr(0, graphics_set);
@@ -745,7 +745,7 @@ int openttd_main(int argc, char *argv[])
 	GfxInitPalettes();
 
 	DEBUG(misc, 1, "Loading blitter...");
-	if (blitter == NULL && _ini_blitter != NULL) blitter = stredup(_ini_blitter);
+	if (blitter == nullptr && _ini_blitter != nullptr) blitter = stredup(_ini_blitter);
 	_blitter_autodetected = StrEmpty(blitter);
 	/* Activate the initial blitter.
 	 * This is only some initial guess, after NewGRFs have been loaded SwitchNewGRFBlitter may switch to a different one.
@@ -754,9 +754,9 @@ int openttd_main(int argc, char *argv[])
 	 *  - Use 8bpp blitter otherwise.
 	 */
 	if (!_blitter_autodetected ||
-			(_support8bpp != S8BPP_NONE && (BaseGraphics::GetUsedSet() == NULL || BaseGraphics::GetUsedSet()->blitter == BLT_8BPP)) ||
-			BlitterFactory::SelectBlitter("32bpp-anim") == NULL) {
-		if (BlitterFactory::SelectBlitter(blitter) == NULL) {
+			(_support8bpp != S8BPP_NONE && (BaseGraphics::GetUsedSet() == nullptr || BaseGraphics::GetUsedSet()->blitter == BLT_8BPP)) ||
+			BlitterFactory::SelectBlitter("32bpp-anim") == nullptr) {
+		if (BlitterFactory::SelectBlitter(blitter) == nullptr) {
 			StrEmpty(blitter) ?
 				usererror("Failed to autoprobe blitter") :
 				usererror("Failed to select requested blitter '%s'; does it exist?", blitter);
@@ -764,7 +764,7 @@ int openttd_main(int argc, char *argv[])
 	}
 	free(blitter);
 
-	if (videodriver == NULL && _ini_videodriver != NULL) videodriver = stredup(_ini_videodriver);
+	if (videodriver == nullptr && _ini_videodriver != nullptr) videodriver = stredup(_ini_videodriver);
 	DriverFactoryBase::SelectDriver(videodriver, Driver::DT_VIDEO);
 	free(videodriver);
 
@@ -775,15 +775,15 @@ int openttd_main(int argc, char *argv[])
 
 	NetworkStartUp(); // initialize network-core
 
-	if (debuglog_conn != NULL && _network_available) {
-		const char *not_used = NULL;
-		const char *port = NULL;
+	if (debuglog_conn != nullptr && _network_available) {
+		const char *not_used = nullptr;
+		const char *port = nullptr;
 		uint16 rport;
 
 		rport = NETWORK_DEFAULT_DEBUGLOG_PORT;
 
 		ParseConnectionString(&not_used, &port, debuglog_conn);
-		if (port != NULL) rport = atoi(port);
+		if (port != nullptr) rport = atoi(port);
 
 		NetworkStartDebugLog(NetworkAddress(debuglog_conn, rport));
 	}
@@ -800,9 +800,9 @@ int openttd_main(int argc, char *argv[])
 	InitializeScreenshotFormats();
 
 	BaseSounds::FindSets();
-	if (sounds_set == NULL && BaseSounds::ini_set != NULL) sounds_set = stredup(BaseSounds::ini_set);
+	if (sounds_set == nullptr && BaseSounds::ini_set != nullptr) sounds_set = stredup(BaseSounds::ini_set);
 	if (!BaseSounds::SetSet(sounds_set)) {
-		if (StrEmpty(sounds_set) || !BaseSounds::SetSet(NULL)) {
+		if (StrEmpty(sounds_set) || !BaseSounds::SetSet(nullptr)) {
 			usererror("Failed to find a sounds set. Please acquire a sounds set for OpenTTD. See section 4.1 of README.md.");
 		} else {
 			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND);
@@ -813,9 +813,9 @@ int openttd_main(int argc, char *argv[])
 	free(sounds_set);
 
 	BaseMusic::FindSets();
-	if (music_set == NULL && BaseMusic::ini_set != NULL) music_set = stredup(BaseMusic::ini_set);
+	if (music_set == nullptr && BaseMusic::ini_set != nullptr) music_set = stredup(BaseMusic::ini_set);
 	if (!BaseMusic::SetSet(music_set)) {
-		if (StrEmpty(music_set) || !BaseMusic::SetSet(NULL)) {
+		if (StrEmpty(music_set) || !BaseMusic::SetSet(nullptr)) {
 			usererror("Failed to find a music set. Please acquire a music set for OpenTTD. See section 4.1 of README.md.");
 		} else {
 			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND);
@@ -825,11 +825,11 @@ int openttd_main(int argc, char *argv[])
 	}
 	free(music_set);
 
-	if (sounddriver == NULL && _ini_sounddriver != NULL) sounddriver = stredup(_ini_sounddriver);
+	if (sounddriver == nullptr && _ini_sounddriver != nullptr) sounddriver = stredup(_ini_sounddriver);
 	DriverFactoryBase::SelectDriver(sounddriver, Driver::DT_SOUND);
 	free(sounddriver);
 
-	if (musicdriver == NULL && _ini_musicdriver != NULL) musicdriver = stredup(_ini_musicdriver);
+	if (musicdriver == nullptr && _ini_musicdriver != nullptr) musicdriver = stredup(_ini_musicdriver);
 	DriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
 	free(musicdriver);
 
@@ -852,7 +852,7 @@ int openttd_main(int argc, char *argv[])
 
 	/* ScanNewGRFFiles now has control over the scanner. */
 	ScanNewGRFFiles(scanner);
-	scanner = NULL;
+	scanner = nullptr;
 
 	VideoDriver::GetInstance()->MainLoop();
 
@@ -897,7 +897,7 @@ exit_normal:
 	delete scanner;
 
 	extern FILE *_log_fd;
-	if (_log_fd != NULL) {
+	if (_log_fd != nullptr) {
 		fclose(_log_fd);
 	}
 
@@ -994,17 +994,17 @@ static void MakeNewEditorWorld()
  * @param fop mode of loading, always SLO_LOAD
  * @param newgm switch to this mode of loading fails due to some unknown error
  * @param subdir default directory to look for filename, set to 0 if not needed
- * @param lf Load filter to use, if NULL: use filename + subdir.
+ * @param lf Load filter to use, if nullptr: use filename + subdir.
  */
-bool SafeLoad(const char *filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = NULL)
+bool SafeLoad(const char *filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = nullptr)
 {
 	assert(fop == SLO_LOAD);
-	assert(dft == DFT_GAME_FILE || (lf == NULL && dft == DFT_OLD_GAME_FILE));
+	assert(dft == DFT_GAME_FILE || (lf == nullptr && dft == DFT_OLD_GAME_FILE));
 	GameMode ogm = _game_mode;
 
 	_game_mode = newgm;
 
-	switch (lf == NULL ? SaveOrLoad(filename, fop, dft, subdir) : LoadWithFilter(lf)) {
+	switch (lf == nullptr ? SaveOrLoad(filename, fop, dft, subdir) : LoadWithFilter(lf)) {
 		case SL_OK: return true;
 
 		case SL_REINIT:
@@ -1139,7 +1139,7 @@ void SwitchToMode(SwitchMode new_mode)
 
 		case SM_MENU: // Switch to game intro menu
 			LoadIntroGame();
-			if (BaseSounds::ini_set == NULL && BaseSounds::GetUsedSet()->fallback) {
+			if (BaseSounds::ini_set == nullptr && BaseSounds::GetUsedSet()->fallback) {
 				ShowErrorMessage(STR_WARNING_FALLBACK_SOUNDSET, INVALID_STRING_ID, WL_CRITICAL);
 				BaseSounds::ini_set = stredup(BaseSounds::GetUsedSet()->name);
 			}
@@ -1235,7 +1235,7 @@ static void CheckCaches()
 		if (v != v->First() || v->vehstatus & VS_CRASHED || !v->IsPrimaryVehicle()) continue;
 
 		uint length = 0;
-		for (const Vehicle *u = v; u != NULL; u = u->Next()) length++;
+		for (const Vehicle *u = v; u != nullptr; u = u->Next()) length++;
 
 		NewGRFCache        *grf_cache = CallocT<NewGRFCache>(length);
 		VehicleCache       *veh_cache = CallocT<VehicleCache>(length);
@@ -1243,7 +1243,7 @@ static void CheckCaches()
 		TrainCache         *tra_cache = CallocT<TrainCache>(length);
 
 		length = 0;
-		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
+		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			FillNewGRFVehicleCache(u);
 			grf_cache[length] = u->grf_cache;
 			veh_cache[length] = u->vcache;
@@ -1270,7 +1270,7 @@ static void CheckCaches()
 		}
 
 		length = 0;
-		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
+		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			FillNewGRFVehicleCache(u);
 			if (memcmp(&grf_cache[length], &u->grf_cache, sizeof(NewGRFCache)) != 0) {
 				DEBUG(desync, 2, "newgrf cache mismatch: type %i, vehicle %i, company %i, unit number %i, wagon %i", (int)v->type, v->index, (int)v->owner, v->unitnumber, length);

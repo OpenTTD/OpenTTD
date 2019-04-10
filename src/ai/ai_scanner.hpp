@@ -32,7 +32,7 @@ public:
 	 * @param nameParam The name of the AI.
 	 * @param versionParam The version of the AI, or -1 if you want the latest.
 	 * @param force_exact_match Only match name+version, never latest.
-	 * @return NULL if no match found, otherwise the AI that matched.
+	 * @return nullptr if no match found, otherwise the AI that matched.
 	 */
 	class AIInfo *FindInfo(const char *nameParam, int versionParam, bool force_exact_match);
 
@@ -60,7 +60,7 @@ public:
 	 * Find a library in the pool.
 	 * @param library The library name to find.
 	 * @param version The version the library should have.
-	 * @return The library if found, NULL otherwise.
+	 * @return The library if found, nullptr otherwise.
 	 */
 	class AILibrary *FindLibrary(const char *library, int version);
 

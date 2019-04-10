@@ -148,7 +148,7 @@ struct SetDateWindow : Window {
 				break;
 
 			case WID_SD_SET_DATE:
-				if (this->callback != NULL) this->callback(this, ConvertYMDToDate(this->date.year, this->date.month, this->date.day));
+				if (this->callback != nullptr) this->callback(this, ConvertYMDToDate(this->date.year, this->date.month, this->date.day));
 				delete this;
 				break;
 		}
@@ -197,7 +197,7 @@ static const NWidgetPart _nested_set_date_widgets[] = {
 
 /** Description of the date setting window. */
 static WindowDesc _set_date_desc(
-	WDP_CENTER, NULL, 0, 0,
+	WDP_CENTER, nullptr, 0, 0,
 	WC_SET_DATE, WC_NONE,
 	0,
 	_nested_set_date_widgets, lengthof(_nested_set_date_widgets)

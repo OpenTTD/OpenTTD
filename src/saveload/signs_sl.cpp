@@ -68,5 +68,5 @@ static void Load_SIGN()
 
 /** Chunk handlers related to signs. */
 extern const ChunkHandler _sign_chunk_handlers[] = {
-	{ 'SIGN', Save_SIGN, Load_SIGN, NULL, NULL, CH_ARRAY | CH_LAST},
+	{ 'SIGN', Save_SIGN, Load_SIGN, nullptr, nullptr, CH_ARRAY | CH_LAST},
 };

@@ -122,7 +122,7 @@ public:
 
 	void OnResize() override
 	{
-		if (this->viewport != NULL) {
+		if (this->viewport != nullptr) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_EV_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
 		}
@@ -172,7 +172,7 @@ void ShowExtraViewPortWindow(TileIndex tile)
 	int i = 0;
 
 	/* find next free window number for extra viewport */
-	while (FindWindowById(WC_EXTRA_VIEW_PORT, i) != NULL) i++;
+	while (FindWindowById(WC_EXTRA_VIEW_PORT, i) != nullptr) i++;
 
 	new ExtraViewportWindow(&_extra_view_port_desc, i, tile);
 }

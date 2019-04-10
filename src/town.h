@@ -61,7 +61,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint32 townnamegrfid;
 	uint16 townnametype;
 	uint32 townnameparts;
-	char *name;                    ///< Custom town name. If NULL, the town was not renamed and uses the generated name.
+	char *name;                    ///< Custom town name. If nullptr, the town was not renamed and uses the generated name.
 
 	byte flags;                    ///< See #TownFlags.
 
@@ -233,7 +233,7 @@ template <class T>
 void MakeDefaultName(T *obj)
 {
 	/* We only want to set names if it hasn't been set before, or when we're calling from afterload. */
-	assert(obj->name == NULL || obj->town_cn == UINT16_MAX);
+	assert(obj->name == nullptr || obj->town_cn == UINT16_MAX);
 
 	obj->town = ClosestTownFromTile(obj->xy, UINT_MAX);
 
@@ -257,7 +257,7 @@ void MakeDefaultName(T *obj)
 		T *lobj = T::GetIfValid(cid);
 
 		/* check only valid waypoints... */
-		if (lobj != NULL && obj != lobj) {
+		if (lobj != nullptr && obj != lobj) {
 			/* only objects within the same city and with the same type */
 			if (lobj->town == obj->town && lobj->IsOfType(obj)) {
 				/* if lobj->town_cn < next, uint will overflow to '+inf' */

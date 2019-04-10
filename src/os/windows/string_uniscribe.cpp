@@ -86,7 +86,7 @@ public:
 		int num_glyphs;
 		Font *font;
 
-		mutable int *glyph_to_char = NULL;
+		mutable int *glyph_to_char = nullptr;
 
 	public:
 		UniscribeVisualRun(const UniscribeRun &range, int x);
@@ -139,9 +139,9 @@ public:
 
 void UniscribeResetScriptCache(FontSize size)
 {
-	if (_script_cache[size] != NULL) {
+	if (_script_cache[size] != nullptr) {
 		ScriptFreeCache(&_script_cache[size]);
-		_script_cache[size] = NULL;
+		_script_cache[size] = nullptr;
 	}
 }
 
@@ -168,9 +168,9 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 	/* The char-to-glyph array is the same size as the input. */
 	range.char_to_glyph.resize(range.len);
 
-	HDC temp_dc = NULL;
-	HFONT old_font = NULL;
-	HFONT cur_font = NULL;
+	HDC temp_dc = nullptr;
+	HFONT old_font = nullptr;
+	HFONT cur_font = nullptr;
 
 	while (true) {
 		/* Shape the text run by determining the glyphs needed for display. */
@@ -217,9 +217,9 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 		} else if (hr == E_PENDING) {
 			/* Glyph data is not in cache, load native font. */
 			cur_font = HFontFromFont(range.font);
-			if (cur_font == NULL) return false; // Sorry, no dice.
+			if (cur_font == nullptr) return false; // Sorry, no dice.
 
-			temp_dc = CreateCompatibleDC(NULL);
+			temp_dc = CreateCompatibleDC(nullptr);
 			SetMapMode(temp_dc, MM_TEXT);
 			old_font = (HFONT)SelectObject(temp_dc, cur_font);
 		} else if (hr == USP_E_SCRIPT_NOT_IN_FONT && range.sa.eScript != SCRIPT_UNDEFINED) {
@@ -227,19 +227,19 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 			range.sa.eScript = SCRIPT_UNDEFINED;
 		} else {
 			/* Some unknown other error. */
-			if (temp_dc != NULL) {
+			if (temp_dc != nullptr) {
 				SelectObject(temp_dc, old_font);
 				DeleteObject(cur_font);
-				ReleaseDC(NULL, temp_dc);
+				ReleaseDC(nullptr, temp_dc);
 			}
 			return false;
 		}
 	}
 
-	if (temp_dc != NULL) {
+	if (temp_dc != nullptr) {
 		SelectObject(temp_dc, old_font);
 		DeleteObject(cur_font);
-		ReleaseDC(NULL, temp_dc);
+		ReleaseDC(nullptr, temp_dc);
 	}
 
 	return true;
@@ -280,16 +280,16 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 {
 	int32 length = buff_end - buff;
 	/* Can't layout an empty string. */
-	if (length == 0) return NULL;
+	if (length == 0) return nullptr;
 
 	/* Can't layout our in-built sprite fonts. */
 	for (auto const &pair : fontMapping) {
-		if (pair.second->fc->IsBuiltInFont()) return NULL;
+		if (pair.second->fc->IsBuiltInFont()) return nullptr;
 	}
 
 	/* Itemize text. */
 	std::vector<SCRIPT_ITEM> items = UniscribeItemizeString(buff, length);
-	if (items.size() == 0) return NULL;
+	if (items.size() == 0) return nullptr;
 
 	/* Build ranges from the items and the font map. A range is a run of text
 	 * that is part of a single item and formatted using a single font style. */
@@ -306,7 +306,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 
 			/* Shape the range. */
 			if (!UniscribeShapeRun(buff, ranges.back())) {
-				return NULL;
+				return nullptr;
 			}
 
 			/* If we are at the end of the current item, advance to the next item. */
@@ -323,7 +323,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 	std::vector<UniscribeRun>::iterator start_run = this->cur_range;
 	std::vector<UniscribeRun>::iterator last_run = this->cur_range;
 
-	if (start_run == this->ranges.end()) return NULL;
+	if (start_run == this->ranges.end()) return nullptr;
 
 	/* Add remaining width of the first run if it is a broken run. */
 	int cur_width = 0;
@@ -355,7 +355,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 		int last_cluster = this->cur_range_offset + 1;
 		for (std::vector<UniscribeRun>::iterator r = start_run; r != last_run; r++) {
 			log_attribs.resize(r->pos - start_run->pos + r->len);
-			if (FAILED(ScriptBreak(this->text_buffer + r->pos + start_offs, r->len - start_offs, &r->sa, &log_attribs[r->pos - start_run->pos + start_offs]))) return NULL;
+			if (FAILED(ScriptBreak(this->text_buffer + r->pos + start_offs, r->len - start_offs, &r->sa, &log_attribs[r->pos - start_run->pos + start_offs]))) return nullptr;
 
 			std::vector<int> dx(r->len);
 			ScriptGetLogicalWidths(&r->sa, r->len, (int)r->glyphs.size(), &r->advances[0], &r->char_to_glyph[0], &r->vis_attribs[0], &dx[0]);
@@ -401,7 +401,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 		bidi_level.push_back(r->sa.s.uBidiLevel);
 	}
 	std::vector<INT> vis_to_log(bidi_level.size());
-	if (FAILED(ScriptLayout((int)bidi_level.size(), &bidi_level[0], &vis_to_log[0], NULL))) return NULL;
+	if (FAILED(ScriptLayout((int)bidi_level.size(), &bidi_level[0], &vis_to_log[0], nullptr))) return nullptr;
 
 	/* Create line. */
 	std::unique_ptr<UniscribeLine> line(new UniscribeLine());
@@ -415,14 +415,14 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 		if (i_run == last_run - 1 && remaing_offset < (last_run - 1)->len) {
 			run.len = remaing_offset - 1;
 
-			if (!UniscribeShapeRun(this->text_buffer, run)) return NULL;
+			if (!UniscribeShapeRun(this->text_buffer, run)) return nullptr;
 		}
 		if (i_run == start_run && this->cur_range_offset > 0) {
 			assert(run.len - this->cur_range_offset > 0);
 			run.pos += this->cur_range_offset;
 			run.len -= this->cur_range_offset;
 
-			if (!UniscribeShapeRun(this->text_buffer, run)) return NULL;
+			if (!UniscribeShapeRun(this->text_buffer, run)) return nullptr;
 		}
 
 		line->emplace_back(run, cur_pos);
@@ -490,12 +490,12 @@ UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(UniscribeVisual
 								  start_pos(other.start_pos), total_advance(other.total_advance), num_glyphs(other.num_glyphs), font(other.font)
 {
 	this->glyph_to_char = other.glyph_to_char;
-	other.glyph_to_char = NULL;
+	other.glyph_to_char = nullptr;
 }
 
 const int *UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCharMap() const
 {
-	if (this->glyph_to_char == NULL) {
+	if (this->glyph_to_char == nullptr) {
 		this->glyph_to_char = CallocT<int>(this->GetGlyphCount());
 
 		/* The char to glyph array contains the first glyph index of the cluster that is associated

@@ -16,7 +16,7 @@
 #include "company_base.h"
 
 void RemoveAllEngineReplacement(EngineRenewList *erl);
-EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group, bool *replace_when_old = NULL);
+EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group, bool *replace_when_old = nullptr);
 CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID new_engine, GroupID group, bool replace_when_old, DoCommandFlag flags);
 CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, DoCommandFlag flags);
 
@@ -38,7 +38,7 @@ static inline void RemoveAllEngineReplacementForCompany(Company *c)
  * @return The engine type to replace with, or INVALID_ENGINE if no
  * replacement is in the list.
  */
-static inline EngineID EngineReplacementForCompany(const Company *c, EngineID engine, GroupID group, bool *replace_when_old = NULL)
+static inline EngineID EngineReplacementForCompany(const Company *c, EngineID engine, GroupID group, bool *replace_when_old = nullptr)
 {
 	return EngineReplacement(c->engine_renew_list, engine, group, replace_when_old);
 }

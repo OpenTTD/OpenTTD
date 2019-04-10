@@ -23,7 +23,7 @@
 /* static */ bool ScriptStation::IsValidStation(StationID station_id)
 {
 	const Station *st = ::Station::GetIfValid(station_id);
-	return st != NULL && (st->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY || st->owner == OWNER_NONE);
+	return st != nullptr && (st->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY || st->owner == OWNER_NONE);
 }
 
 /* static */ ScriptCompany::CompanyID ScriptStation::GetOwner(StationID station_id)
@@ -213,10 +213,10 @@ template<bool Tfrom, bool Tvia>
 
 	::RoadTypes r = RoadTypeToRoadTypes((::RoadType)road_type);
 
-	for (const RoadStop *rs = ::Station::Get(station_id)->GetPrimaryRoadStop(ROADSTOP_BUS); rs != NULL; rs = rs->next) {
+	for (const RoadStop *rs = ::Station::Get(station_id)->GetPrimaryRoadStop(ROADSTOP_BUS); rs != nullptr; rs = rs->next) {
 		if ((::GetRoadTypes(rs->xy) & r) != 0) return true;
 	}
-	for (const RoadStop *rs = ::Station::Get(station_id)->GetPrimaryRoadStop(ROADSTOP_TRUCK); rs != NULL; rs = rs->next) {
+	for (const RoadStop *rs = ::Station::Get(station_id)->GetPrimaryRoadStop(ROADSTOP_TRUCK); rs != nullptr; rs = rs->next) {
 		if ((::GetRoadTypes(rs->xy) & r) != 0) return true;
 	}
 

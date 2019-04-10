@@ -833,7 +833,7 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
  */
 static uint ShowAdditionalText(int left, int right, int y, EngineID engine)
 {
-	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, NULL);
+	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, nullptr);
 	if (callback == CALLBACK_FAILED || callback == 0x400) return y;
 	const GRFFile *grffile = Engine::Get(engine)->GetGRF();
 	if (callback > 0x400) {
@@ -1180,7 +1180,7 @@ struct BuildVehicleWindow : Window {
 
 		if (!this->listview_mode) {
 			/* Query for cost and refitted capacity */
-			CommandCost ret = DoCommand(this->window_number, this->sel_engine | (cargo << 24), 0, DC_QUERY_COST, GetCmdBuildVeh(this->vehicle_type), NULL);
+			CommandCost ret = DoCommand(this->window_number, this->sel_engine | (cargo << 24), 0, DC_QUERY_COST, GetCmdBuildVeh(this->vehicle_type), nullptr);
 			if (ret.Succeeded()) {
 				this->te.cost          = ret.GetCost() - e->GetCost();
 				this->te.capacity      = _returned_refit_capacity;
@@ -1316,7 +1316,7 @@ struct BuildVehicleWindow : Window {
 
 		this->eng_list.clear();
 
-		const Station *st = this->listview_mode ? NULL : Station::GetByTile(this->window_number);
+		const Station *st = this->listview_mode ? nullptr : Station::GetByTile(this->window_number);
 
 		/* Make list of all available planes.
 		 * Also check to see if the previously selected plane is still available,
@@ -1408,8 +1408,8 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_SHOW_HIDE: {
-				const Engine *e = (this->sel_engine == INVALID_ENGINE) ? NULL : Engine::Get(this->sel_engine);
-				if (e != NULL) {
+				const Engine *e = (this->sel_engine == INVALID_ENGINE) ? nullptr : Engine::Get(this->sel_engine);
+				if (e != nullptr) {
 					DoCommandP(0, 0, this->sel_engine | (e->IsHidden(_current_company) ? 0 : (1u << 31)), CMD_SET_VEHICLE_VISIBILITY);
 				}
 				break;
@@ -1477,8 +1477,8 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_SHOW_HIDE: {
-				const Engine *e = (this->sel_engine == INVALID_ENGINE) ? NULL : Engine::Get(this->sel_engine);
-				if (e != NULL && e->IsHidden(_local_company)) {
+				const Engine *e = (this->sel_engine == INVALID_ENGINE) ? nullptr : Engine::Get(this->sel_engine);
+				if (e != nullptr && e->IsHidden(_local_company)) {
 					SetDParam(0, STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + this->vehicle_type);
 				} else {
 					SetDParam(0, STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + this->vehicle_type);
@@ -1567,9 +1567,9 @@ struct BuildVehicleWindow : Window {
 
 	void OnQueryTextFinished(char *str) override
 	{
-		if (str == NULL) return;
+		if (str == nullptr) return;
 
-		DoCommandP(0, this->rename_engine, 0, CMD_RENAME_ENGINE | CMD_MSG(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type), NULL, str);
+		DoCommandP(0, this->rename_engine, 0, CMD_RENAME_ENGINE | CMD_MSG(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type), nullptr, str);
 	}
 
 	void OnDropdownSelect(int widget, int index) override

@@ -102,7 +102,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	uint Crash(bool flooded) override
 	{
 		/* Crashed vehicles aren't going up or down */
-		for (T *v = T::From(this); v != NULL; v = v->Next()) {
+		for (T *v = T::From(this); v != nullptr; v = v->Next()) {
 			ClrBit(v->gv_flags, GVF_GOINGUP_BIT);
 			ClrBit(v->gv_flags, GVF_GOINGDOWN_BIT);
 		}
@@ -117,7 +117,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	{
 		int64 incl = 0;
 
-		for (const T *u = T::From(this); u != NULL; u = u->Next()) {
+		for (const T *u = T::From(this); u != nullptr; u = u->Next()) {
 			if (HasBit(u->gv_flags, GVF_GOINGUP_BIT)) {
 				incl += u->gcache.cached_slope_resistance;
 			} else if (HasBit(u->gv_flags, GVF_GOINGDOWN_BIT)) {

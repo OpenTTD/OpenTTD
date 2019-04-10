@@ -17,7 +17,7 @@
 /** The music player that does nothing. */
 class MusicDriver_Null : public MusicDriver {
 public:
-	const char *Start(const char * const *param) override { return NULL; }
+	const char *Start(const char * const *param) override { return nullptr; }
 
 	void Stop() override { }
 

@@ -81,11 +81,11 @@ void SetCustomEngineSprites(EngineID engine, byte cargo, const struct SpriteGrou
 
 void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction direction, EngineImageType image_type, VehicleSpriteSeq *result);
 #define GetCustomVehicleSprite(v, direction, image_type, result) GetCustomEngineSprite(v->engine_type, v, direction, image_type, result)
-#define GetCustomVehicleIcon(et, direction, image_type, result) GetCustomEngineSprite(et, NULL, direction, image_type, result)
+#define GetCustomVehicleIcon(et, direction, image_type, result) GetCustomEngineSprite(et, nullptr, direction, image_type, result)
 
 void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, bool info_view, EngineImageType image_type, VehicleSpriteSeq *result);
 #define GetCustomRotorSprite(v, i, image_type, result) GetRotorOverrideSprite(v->engine_type, v, i, image_type, result)
-#define GetCustomRotorIcon(et, image_type, result) GetRotorOverrideSprite(et, NULL, true, image_type, result)
+#define GetCustomRotorIcon(et, image_type, result) GetRotorOverrideSprite(et, nullptr, true, image_type, result)
 
 /* Forward declaration of GRFFile, to avoid unnecessary inclusion of newgrf.h
  * elsewhere... */
@@ -100,7 +100,7 @@ bool UsesWagonOverride(const Vehicle *v);
 /* Handler to Evaluate callback 36. If the callback fails (i.e. most of the
  * time) orig_value is returned */
 uint GetVehicleProperty(const Vehicle *v, PropertyID property, uint orig_value);
-uint GetEngineProperty(EngineID engine, PropertyID property, uint orig_value, const Vehicle *v = NULL);
+uint GetEngineProperty(EngineID engine, PropertyID property, uint orig_value, const Vehicle *v = nullptr);
 
 enum VehicleTrigger {
 	VEHICLE_TRIGGER_NEW_CARGO     = 0x01,

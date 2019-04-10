@@ -82,8 +82,8 @@ static void CleanupGeneration()
 	/* Show all vital windows again, because we have hidden them */
 	if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
 	SetModalProgress(false);
-	_gw.proc     = NULL;
-	_gw.abortp   = NULL;
+	_gw.proc     = nullptr;
+	_gw.abortp   = nullptr;
 	_gw.threaded = false;
 
 	DeleteWindowByClass(WC_MODAL_PROGRESS);
@@ -171,7 +171,7 @@ static void _GenerateWorld()
 			if (_game_mode != GM_EDITOR) {
 				Game::StartNew();
 
-				if (Game::GetInstance() != NULL) {
+				if (Game::GetInstance() != nullptr) {
 					SetGeneratingWorldProgress(GWP_RUNSCRIPT, 2500);
 					_generating_world = true;
 					for (i = 0; i < 2500; i++) {
@@ -192,7 +192,7 @@ static void _GenerateWorld()
 
 		SetGeneratingWorldProgress(GWP_GAME_START, 1);
 		/* Call any callback */
-		if (_gw.proc != NULL) _gw.proc();
+		if (_gw.proc != nullptr) _gw.proc();
 		IncreaseGeneratingWorldProgress(GWP_GAME_START);
 
 		CleanupGeneration();
@@ -278,7 +278,7 @@ void HandleGeneratingWorldAbortion()
 	/* Clean up - in SE create an empty map, otherwise, go to intro menu */
 	_switch_mode = (_game_mode == GM_EDITOR) ? SM_EDITOR : SM_MENU;
 
-	if (_gw.abortp != NULL) _gw.abortp();
+	if (_gw.abortp != nullptr) _gw.abortp();
 
 	CleanupGeneration();
 
@@ -302,7 +302,7 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 	_gw.size_y = size_y;
 	SetModalProgress(true);
 	_gw.abort  = false;
-	_gw.abortp = NULL;
+	_gw.abortp = nullptr;
 	_gw.lc     = _local_company;
 	_gw.quit_thread   = false;
 	_gw.threaded      = true;
@@ -345,7 +345,7 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 	ShowGenerateWorldProgress();
 
 	/* Centre the view on the map */
-	if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) {
+	if (FindWindowById(WC_MAIN_WINDOW, 0) != nullptr) {
 		ScrollMainWindowToTile(TileXY(MapSizeX() / 2, MapSizeY() / 2), true);
 	}
 }

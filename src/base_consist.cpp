@@ -30,7 +30,7 @@ void BaseConsist::CopyConsistPropertiesFrom(const BaseConsist *src)
 	if (this == src) return;
 
 	free(this->name);
-	this->name = src->name != NULL ? stredup(src->name) : NULL;
+	this->name = src->name != nullptr ? stredup(src->name) : nullptr;
 
 	this->current_order_time = src->current_order_time;
 	this->lateness_counter = src->lateness_counter;

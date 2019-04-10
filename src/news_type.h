@@ -155,7 +155,7 @@ struct CompanyNewsInformation {
 	uint32 face; ///< The face of the president
 	byte colour; ///< The colour related to the company
 
-	void FillData(const struct Company *c, const struct Company *other = NULL);
+	void FillData(const struct Company *c, const struct Company *other = nullptr);
 };
 
 #endif /* NEWS_TYPE_H */

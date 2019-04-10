@@ -26,7 +26,7 @@ private:
 
 	HSQUIRRELVM vm;          ///< The VirtualMachine instance for squirrel
 	void *global_pointer;    ///< Can be set by who ever initializes Squirrel
-	SQPrintFunc *print_func; ///< Points to either NULL, or a custom print handler
+	SQPrintFunc *print_func; ///< Points to either nullptr, or a custom print handler
 	bool crashed;            ///< True if the squirrel script made an error.
 	int overdrawn_ops;       ///< The amount of operations we have overdrawn.
 	const char *APIName;     ///< Name of the API used for this squirrel.
@@ -93,7 +93,7 @@ public:
 	 * Adds a function to the stack. Depending on the current state this means
 	 *  either a method or a global function.
 	 */
-	void AddMethod(const char *method_name, SQFUNCTION proc, uint nparam = 0, const char *params = NULL, void *userdata = NULL, int size = 0);
+	void AddMethod(const char *method_name, SQFUNCTION proc, uint nparam = 0, const char *params = nullptr, void *userdata = nullptr, int size = 0);
 
 	/**
 	 * Adds a const to the stack. Depending on the current state this means
@@ -155,7 +155,7 @@ public:
 	 * @return False if the script crashed or returned a wrong type.
 	 */
 	bool CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT *ret, int suspend);
-	bool CallMethod(HSQOBJECT instance, const char *method_name, int suspend) { return this->CallMethod(instance, method_name, NULL, suspend); }
+	bool CallMethod(HSQOBJECT instance, const char *method_name, int suspend) { return this->CallMethod(instance, method_name, nullptr, suspend); }
 	bool CallStringMethodStrdup(HSQOBJECT instance, const char *method_name, const char **res, int suspend);
 	bool CallIntegerMethod(HSQOBJECT instance, const char *method_name, int *res, int suspend);
 	bool CallBoolMethod(HSQOBJECT instance, const char *method_name, bool *res, int suspend);

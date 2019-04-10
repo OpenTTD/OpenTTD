@@ -108,11 +108,11 @@ class Kdtree {
 		std::vector<T> elements = this->FreeSubtree(this->root);
 		elements.push_back(root_element);
 
-		if (include_element != NULL) {
+		if (include_element != nullptr) {
 			elements.push_back(*include_element);
 			initial_count++;
 		}
-		if (exclude_element != NULL) {
+		if (exclude_element != nullptr) {
 			typename std::vector<T>::iterator removed = std::remove(elements.begin(), elements.end(), *exclude_element);
 			elements.erase(removed, elements.end());
 			initial_count--;
@@ -377,7 +377,7 @@ public:
 	 */
 	void Rebuild()
 	{
-		this->Rebuild(NULL, NULL);
+		this->Rebuild(nullptr, nullptr);
 	}
 
 	/**
@@ -390,7 +390,7 @@ public:
 		if (this->Count() == 0) {
 			this->root = this->AddNode(element);
 		} else {
-			if (!this->IsUnbalanced() || !this->Rebuild(&element, NULL)) {
+			if (!this->IsUnbalanced() || !this->Rebuild(&element, nullptr)) {
 				this->InsertRecursive(element, this->root, 0);
 				this->IncrementUnbalanced();
 			}
@@ -408,7 +408,7 @@ public:
 	{
 		size_t count = this->Count();
 		if (count == 0) return;
-		if (!this->IsUnbalanced() || !this->Rebuild(NULL, &element)) {
+		if (!this->IsUnbalanced() || !this->Rebuild(nullptr, &element)) {
 			/* If the removed element is the root node, this modifies this->root */
 			this->root = this->RemoveRecursive(element, this->root, 0);
 			this->IncrementUnbalanced();

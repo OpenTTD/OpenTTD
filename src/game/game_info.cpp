@@ -55,8 +55,8 @@ template <> const char *GetClassName<GameInfo, ST_GS>() { return "GSInfo"; }
 /* static */ SQInteger GameInfo::Constructor(HSQUIRRELVM vm)
 {
 	/* Get the GameInfo */
-	SQUserPointer instance = NULL;
-	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, 0)) || instance == NULL) return sq_throwerror(vm, "Pass an instance of a child class of GameInfo to RegisterGame");
+	SQUserPointer instance = nullptr;
+	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, 0)) || instance == nullptr) return sq_throwerror(vm, "Pass an instance of a child class of GameInfo to RegisterGame");
 	GameInfo *info = (GameInfo *)instance;
 
 	SQInteger res = ScriptInfo::Constructor(vm, info);
@@ -82,7 +82,7 @@ template <> const char *GetClassName<GameInfo, ST_GS>() { return "GSInfo"; }
 	}
 
 	/* Remove the link to the real instance, else it might get deleted by RegisterGame() */
-	sq_setinstanceup(vm, 2, NULL);
+	sq_setinstanceup(vm, 2, nullptr);
 	/* Register the Game to the base system */
 	info->GetScanner()->RegisterScript(info);
 	return 0;
@@ -91,7 +91,7 @@ template <> const char *GetClassName<GameInfo, ST_GS>() { return "GSInfo"; }
 GameInfo::GameInfo() :
 	min_loadable_version(0),
 	is_developer_only(false),
-	api_version(NULL)
+	api_version(nullptr)
 {
 }
 

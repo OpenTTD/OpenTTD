@@ -374,7 +374,7 @@ public:
 	void FillNestedArray(NWidgetBase **array, uint length) override;
 
 	/** Return whether the container is empty. */
-	inline bool IsEmpty() { return head == NULL; }
+	inline bool IsEmpty() { return head == nullptr; }
 
 	NWidgetBase *GetWidgetOfType(WidgetType tp) override;
 
@@ -544,7 +544,7 @@ public:
  */
 class NWidgetBackground : public NWidgetCore {
 public:
-	NWidgetBackground(WidgetType tp, Colours colour, int index, NWidgetPIPContainer *child = NULL);
+	NWidgetBackground(WidgetType tp, Colours colour, int index, NWidgetPIPContainer *child = nullptr);
 	~NWidgetBackground();
 
 	void Add(NWidgetBase *nwid);

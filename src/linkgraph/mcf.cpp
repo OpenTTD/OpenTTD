@@ -104,7 +104,7 @@ public:
 	 * @param job Job to iterate on.
 	 */
 	GraphEdgeIterator(LinkGraphJob &job) : job(job),
-		i(NULL, NULL, INVALID_NODE), end(NULL, NULL, INVALID_NODE)
+		i(nullptr, nullptr, INVALID_NODE), end(nullptr, nullptr, INVALID_NODE)
 	{}
 
 	/**
@@ -262,7 +262,7 @@ void MultiCommodityFlow::Dijkstra(NodeID source_node, PathVector &paths)
 	Tedge_iterator iter(this->job);
 	uint size = this->job.Size();
 	AnnoSet annos;
-	paths.resize(size, NULL);
+	paths.resize(size, nullptr);
 	for (NodeID node = 0; node < size; ++node) {
 		Tannotation *anno = new Tannotation(node, node == source_node);
 		anno->UpdateAnnotation();
@@ -305,16 +305,16 @@ void MultiCommodityFlow::Dijkstra(NodeID source_node, PathVector &paths)
 void MultiCommodityFlow::CleanupPaths(NodeID source_id, PathVector &paths)
 {
 	Path *source = paths[source_id];
-	paths[source_id] = NULL;
+	paths[source_id] = nullptr;
 	for (PathVector::iterator i = paths.begin(); i != paths.end(); ++i) {
 		Path *path = *i;
-		if (path == NULL) continue;
+		if (path == nullptr) continue;
 		if (path->GetParent() == source) path->Detach();
-		while (path != source && path != NULL && path->GetFlow() == 0) {
+		while (path != source && path != nullptr && path->GetFlow() == 0) {
 			Path *parent = path->GetParent();
 			path->Detach();
 			if (path->GetNumChildren() == 0) {
-				paths[path->GetNode()] = NULL;
+				paths[path->GetNode()] = nullptr;
 				delete path;
 			}
 			path = parent;
@@ -404,7 +404,7 @@ bool MCF1stPass::EliminateCycles(PathVector &path, NodeID origin_id, NodeID next
 	/* this node has already been searched */
 	if (at_next_pos == Path::invalid_path) return false;
 
-	if (at_next_pos == NULL) {
+	if (at_next_pos == nullptr) {
 		/* Summarize paths; add up the paths with the same source and next hop
 		 * in one path each. */
 		PathList &paths = this->job[next_id].Paths();
@@ -450,7 +450,7 @@ bool MCF1stPass::EliminateCycles(PathVector &path, NodeID origin_id, NodeID next
 		 * could be found in this branch, thus it has to be searched again next
 		 * time we spot it.
 		 */
-		path[next_id] = found ? NULL : Path::invalid_path;
+		path[next_id] = found ? nullptr : Path::invalid_path;
 		return found;
 	}
 
@@ -474,11 +474,11 @@ bool MCF1stPass::EliminateCycles()
 {
 	bool cycles_found = false;
 	uint size = this->job.Size();
-	PathVector path(size, NULL);
+	PathVector path(size, nullptr);
 	for (NodeID node = 0; node < size; ++node) {
 		/* Starting at each node in the graph find all cycles involving this
 		 * node. */
-		std::fill(path.begin(), path.end(), (Path *)NULL);
+		std::fill(path.begin(), path.end(), (Path *)nullptr);
 		cycles_found |= this->EliminateCycles(path, node, node);
 	}
 	return cycles_found;
@@ -505,7 +505,7 @@ MCF1stPass::MCF1stPass(LinkGraphJob &job) : MultiCommodityFlow(job)
 				Edge edge = job[source][dest];
 				if (edge.UnsatisfiedDemand() > 0) {
 					Path *path = paths[dest];
-					assert(path != NULL);
+					assert(path != nullptr);
 					/* Generally only allow paths that don't exceed the
 					 * available capacity. But if no demand has been assigned
 					 * yet, make an exception and allow any valid path *once*. */

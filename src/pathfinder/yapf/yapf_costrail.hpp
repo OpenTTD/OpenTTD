@@ -251,7 +251,7 @@ public:
 	{
 		int cost = 0;
 		const Train *v = Yapf().GetVehicle();
-		assert(v != NULL);
+		assert(v != nullptr);
 		assert(v->type == VEH_TRAIN);
 		assert(v->gcache.cached_total_length != 0);
 		int missing_platform_length = CeilDiv(v->gcache.cached_total_length, TILE_SIZE) - platform_length;
@@ -285,7 +285,7 @@ public:
 		CPerfStart perf_cost(Yapf().m_perf_cost);
 
 		/* Does the node have some parent node? */
-		bool has_parent = (n.m_parent != NULL);
+		bool has_parent = (n.m_parent != nullptr);
 
 		/* Do we already have a cached segment? */
 		CachedData &segment = *n.m_segment;
@@ -606,7 +606,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			/* Station platform-length penalty. */
 			if ((end_segment_reason & ESRB_STATION) != ESRB_NONE) {
 				const BaseStation *st = BaseStation::GetByTile(n.GetLastTile());
-				assert(st != NULL);
+				assert(st != nullptr);
 				uint platform_length = st->GetPlatformLength(n.GetLastTile(), ReverseDiagDir(TrackdirToExitdir(n.GetLastTrackdir())));
 				/* Reduce the extra cost caused by passing-station penalty (each station receives it in the segment cost). */
 				extra_cost -= Yapf().PfGetSettings().rail_station_penalty * platform_length;
@@ -624,7 +624,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 	inline bool CanUseGlobalCache(Node &n) const
 	{
 		return !m_disable_cache
-			&& (n.m_parent != NULL)
+			&& (n.m_parent != nullptr)
 			&& (n.m_parent->m_num_signals_passed >= m_sig_look_ahead_costs.Size());
 	}
 

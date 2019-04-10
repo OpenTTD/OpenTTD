@@ -98,7 +98,7 @@ struct CompanyProperties {
 
 	// TODO: Change some of these member variables to use relevant INVALID_xxx constants
 	CompanyProperties()
-		: name_2(0), name_1(0), name(NULL), president_name_1(0), president_name_2(0), president_name(NULL),
+		: name_2(0), name_1(0), name(nullptr), president_name_1(0), president_name_2(0), president_name(nullptr),
 		  face(0), money(0), money_fraction(0), current_loan(0), colour(0), block_preview(0),
 		  location_of_HQ(0), last_build_coordinate(0), share_owners(), inaugurated_year(0),
 		  months_of_bankruptcy(0), bankrupt_asked(0), bankrupt_timeout(0), bankrupt_value(0),
@@ -137,7 +137,7 @@ struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {
 	static inline bool IsValidAiID(size_t index)
 	{
 		const Company *c = Company::GetIfValid(index);
-		return c != NULL && c->is_ai;
+		return c != nullptr && c->is_ai;
 	}
 
 	/**
@@ -149,7 +149,7 @@ struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {
 	static inline bool IsValidHumanID(size_t index)
 	{
 		const Company *c = Company::GetIfValid(index);
-		return c != NULL && !c->is_ai;
+		return c != nullptr && !c->is_ai;
 	}
 
 	/**

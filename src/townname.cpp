@@ -31,7 +31,7 @@ TownNameParams::TownNameParams(const Town *t) :
 		grfid(t->townnamegrfid), // by default, use supplied data
 		type(t->townnametype)
 {
-	if (t->townnamegrfid != 0 && GetGRFTownName(t->townnamegrfid) == NULL) {
+	if (t->townnamegrfid != 0 && GetGRFTownName(t->townnamegrfid) == nullptr) {
 		/* Fallback to english original */
 		this->grfid = 0;
 		this->type = SPECSTR_TOWNNAME_ENGLISH;
@@ -92,7 +92,7 @@ bool VerifyTownName(uint32 r, const TownNameParams *par, TownNames *town_names)
 	/* Check size and width */
 	if (Utf8StringLength(buf1) >= MAX_LENGTH_TOWN_NAME_CHARS) return false;
 
-	if (town_names != NULL) {
+	if (town_names != nullptr) {
 		if (town_names->find(buf1) != town_names->end()) return false;
 		town_names->insert(buf1);
 	} else {
@@ -101,7 +101,7 @@ bool VerifyTownName(uint32 r, const TownNameParams *par, TownNames *town_names)
 			/* We can't just compare the numbers since
 			 * several numbers may map to a single name. */
 			const char *buf = t->name;
-			if (buf == NULL) {
+			if (buf == nullptr) {
 				GetTownName(buf2, t, lastof(buf2));
 				buf = buf2;
 			}
@@ -504,8 +504,8 @@ static char *MakeFinnishTownName(char *buf, const char *last, uint32 seed)
 		char *end = buf - 1;
 		assert(end >= orig);
 		if (*end == 'i') *end = 'e';
-		if (strstr(orig, "a") != NULL || strstr(orig, "o") != NULL || strstr(orig, "u") != NULL ||
-				strstr(orig, "A") != NULL || strstr(orig, "O") != NULL || strstr(orig, "U")  != NULL) {
+		if (strstr(orig, "a") != nullptr || strstr(orig, "o") != nullptr || strstr(orig, "u") != nullptr ||
+				strstr(orig, "A") != nullptr || strstr(orig, "O") != nullptr || strstr(orig, "U")  != nullptr) {
 			buf = strecpy(buf, "la", last);
 		} else {
 			buf = strecpy(buf, "l\xC3\xA4", last);

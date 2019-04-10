@@ -183,9 +183,9 @@ static void Load_ITBL()
 }
 
 extern const ChunkHandler _industry_chunk_handlers[] = {
-	{ 'INDY', Save_INDY,     Load_INDY,     Ptrs_INDY, NULL, CH_ARRAY},
-	{ 'IIDS', Save_IIDS,     Load_IIDS,     NULL,      NULL, CH_ARRAY},
-	{ 'TIDS', Save_TIDS,     Load_TIDS,     NULL,      NULL, CH_ARRAY},
-	{ 'IBLD', LoadSave_IBLD, LoadSave_IBLD, NULL,      NULL, CH_RIFF},
-	{ 'ITBL', Save_ITBL,     Load_ITBL,     NULL,      NULL, CH_ARRAY | CH_LAST},
+	{ 'INDY', Save_INDY,     Load_INDY,     Ptrs_INDY, nullptr, CH_ARRAY},
+	{ 'IIDS', Save_IIDS,     Load_IIDS,     nullptr,      nullptr, CH_ARRAY},
+	{ 'TIDS', Save_TIDS,     Load_TIDS,     nullptr,      nullptr, CH_ARRAY},
+	{ 'IBLD', LoadSave_IBLD, LoadSave_IBLD, nullptr,      nullptr, CH_RIFF},
+	{ 'ITBL', Save_ITBL,     Load_ITBL,     nullptr,      nullptr, CH_ARRAY | CH_LAST},
 };

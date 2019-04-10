@@ -24,12 +24,12 @@
  */
 NetworkUDPSocketHandler::NetworkUDPSocketHandler(NetworkAddressList *bind)
 {
-	if (bind != NULL) {
+	if (bind != nullptr) {
 		for (NetworkAddress &addr : *bind) {
 			this->bind.push_back(addr);
 		}
 	} else {
-		/* As hostname NULL and port 0/NULL don't go well when
+		/* As hostname nullptr and port 0/nullptr don't go well when
 		 * resolving it we need to add an address for each of
 		 * the address families we support. */
 		this->bind.emplace_back(nullptr, 0, AF_INET);
@@ -176,13 +176,13 @@ void NetworkUDPSocketHandler::SendNetworkGameInfo(Packet *p, const NetworkGameIn
 		uint count = 0;
 
 		/* Count number of GRFs to send information about */
-		for (c = info->grfconfig; c != NULL; c = c->next) {
+		for (c = info->grfconfig; c != nullptr; c = c->next) {
 			if (!HasBit(c->flags, GCF_STATIC)) count++;
 		}
 		p->Send_uint8 (count); // Send number of GRFs
 
 		/* Send actual GRF Identifications */
-		for (c = info->grfconfig; c != NULL; c = c->next) {
+		for (c = info->grfconfig; c != nullptr; c = c->next) {
 			if (!HasBit(c->flags, GCF_STATIC)) this->SendGRFIdentifier(p, &c->ident);
 		}
 	}

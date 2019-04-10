@@ -154,11 +154,11 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 					default: NOT_REACHED();
 				}
 
-				/* When both pointers are NULL, we are just skipping data */
-				if (base_ptr == NULL && chunk->ptr == NULL) continue;
+				/* When both pointers are nullptr, we are just skipping data */
+				if (base_ptr == nullptr && chunk->ptr == nullptr) continue;
 
 				/* Writing to the var: bits 8 to 15 have the VAR type */
-				if (chunk->ptr == NULL) ptr = base_ptr + chunk->offset;
+				if (chunk->ptr == nullptr) ptr = base_ptr + chunk->offset;
 
 				/* Write the data */
 				switch (GetOldChunkVarType(chunk->type)) {
@@ -174,7 +174,7 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 				}
 
 				/* Increase pointer base for arrays when looping */
-				if (chunk->amount > 1 && chunk->ptr != NULL) ptr += CalcOldVarLen(chunk->type);
+				if (chunk->amount > 1 && chunk->ptr != nullptr) ptr += CalcOldVarLen(chunk->type);
 			}
 		}
 	}
@@ -259,7 +259,7 @@ static SavegameType DetermineOldSavegameType(FILE *f, char *title, const char *l
 		}
 	}
 
-	if (title != NULL) {
+	if (title != nullptr) {
 		switch (type) {
 			case SGT_TTO: title = strecpy(title, "(TTO) ", last);    break;
 			case SGT_TTD: title = strecpy(title, "(TTD) ", last);    break;
@@ -284,14 +284,14 @@ bool LoadOldSaveGame(const char *file)
 	/* Open file */
 	ls.file = FioFOpenFile(file, "rb", NO_DIRECTORY);
 
-	if (ls.file == NULL) {
+	if (ls.file == nullptr) {
 		DEBUG(oldloader, 0, "Cannot open file '%s'", file);
 		return false;
 	}
 
-	SavegameType type = DetermineOldSavegameType(ls.file, NULL, NULL);
+	SavegameType type = DetermineOldSavegameType(ls.file, nullptr, nullptr);
 
-	LoadOldMainProc *proc = NULL;
+	LoadOldMainProc *proc = nullptr;
 
 	switch (type) {
 		case SGT_TTO: proc = &LoadTTOMain; break;
@@ -303,7 +303,7 @@ bool LoadOldSaveGame(const char *file)
 
 	bool game_loaded;
 	try {
-		game_loaded = proc != NULL && proc(&ls);
+		game_loaded = proc != nullptr && proc(&ls);
 	} catch (...) {
 		game_loaded = false;
 	}
@@ -323,7 +323,7 @@ void GetOldSaveGameName(const char *file, char *title, const char *last)
 {
 	FILE *f = FioFOpenFile(file, "rb", NO_DIRECTORY);
 
-	if (f == NULL) {
+	if (f == nullptr) {
 		*title = '\0';
 		return;
 	}

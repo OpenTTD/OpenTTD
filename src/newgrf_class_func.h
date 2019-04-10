@@ -34,7 +34,7 @@ DEFINE_NEWGRF_CLASS_METHOD(void)::ResetClass()
 	this->ui_count  = 0;
 
 	free(this->spec);
-	this->spec = NULL;
+	this->spec = nullptr;
 }
 
 /** Reset the classes, i.e. clear everything. */
@@ -154,7 +154,7 @@ DEFINE_NEWGRF_CLASS_METHOD(Tid)::GetUIClass(uint index)
 DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetSpec(uint index) const
 {
 	/* If the custom spec isn't defined any more, then the GRF file probably was not loaded. */
-	return index < this->GetSpecCount() ? this->spec[index] : NULL;
+	return index < this->GetSpecCount() ? this->spec[index] : nullptr;
 }
 
 /**
@@ -191,7 +191,7 @@ DEFINE_NEWGRF_CLASS_METHOD(int)::GetUIFromIndex(int index) const
  * Retrieve a spec by GRF location.
  * @param grfid    GRF ID of spec.
  * @param local_id Index within GRF file of spec.
- * @param index    Pointer to return the index of the spec in its class. If NULL then not used.
+ * @param index    Pointer to return the index of the spec in its class. If nullptr then not used.
  * @return The spec.
  */
 DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, byte local_id, int *index)
@@ -201,15 +201,15 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, byte local_id,
 	for (Tid i = (Tid)0; i < Tmax; i++) {
 		for (j = 0; j < classes[i].count; j++) {
 			const Tspec *spec = classes[i].spec[j];
-			if (spec == NULL) continue;
+			if (spec == nullptr) continue;
 			if (spec->grf_prop.grffile->grfid == grfid && spec->grf_prop.local_id == local_id) {
-				if (index != NULL) *index = j;
+				if (index != nullptr) *index = j;
 				return spec;
 			}
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 #undef DEFINE_NEWGRF_CLASS_METHOD

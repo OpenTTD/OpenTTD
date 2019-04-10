@@ -39,7 +39,7 @@ static const char *default_sf[] = {
 	"/usr/share/sounds/sf2/TimGM6mb.sf2",
 	"/usr/share/sounds/sf2/FluidR3_GS.sf2",
 
-	NULL
+	nullptr
 };
 
 static void RenderMusicStream(int16 *buffer, size_t samples)
@@ -81,18 +81,18 @@ const char *MusicDriver_FluidSynth::Start(const char * const *param)
 		if (sfont_id == FLUID_FAILED) return "Could not open sound font";
 	}
 
-	_midi.player = NULL;
+	_midi.player = nullptr;
 
 	uint32 samplerate = MxSetMusicSource(RenderMusicStream);
 	fluid_synth_set_sample_rate(_midi.synth, samplerate);
 	DEBUG(driver, 1, "Fluidsynth: samplerate %.0f", (float)samplerate);
 
-	return NULL;
+	return nullptr;
 }
 
 void MusicDriver_FluidSynth::Stop()
 {
-	MxSetMusicSource(NULL);
+	MxSetMusicSource(nullptr);
 	this->StopSong();
 	delete_fluid_synth(_midi.synth);
 	delete_fluid_settings(_midi.settings);
@@ -117,13 +117,13 @@ void MusicDriver_FluidSynth::PlaySong(const MusicSongInfo &song)
 	if (fluid_player_add(_midi.player, filename.c_str()) != FLUID_OK) {
 		DEBUG(driver, 0, "Could not open music file");
 		delete_fluid_player(_midi.player);
-		_midi.player = NULL;
+		_midi.player = nullptr;
 		return;
 	}
 	if (fluid_player_play(_midi.player) != FLUID_OK) {
 		DEBUG(driver, 0, "Could not start midi player");
 		delete_fluid_player(_midi.player);
-		_midi.player = NULL;
+		_midi.player = nullptr;
 		return;
 	}
 }
@@ -138,7 +138,7 @@ void MusicDriver_FluidSynth::StopSong()
 	}
 	delete_fluid_player(_midi.player);
 	fluid_synth_system_reset(_midi.synth);
-	_midi.player = NULL;
+	_midi.player = nullptr;
 }
 
 bool MusicDriver_FluidSynth::IsSongPlaying()

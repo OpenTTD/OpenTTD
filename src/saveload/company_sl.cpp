@@ -111,7 +111,7 @@ void AfterLoadCompanyStats()
 		switch (GetTileType(tile)) {
 			case MP_RAILWAY:
 				c = Company::GetIfValid(GetTileOwner(tile));
-				if (c != NULL) {
+				if (c != nullptr) {
 					uint pieces = 1;
 					if (IsPlainRail(tile)) {
 						TrackBits bits = GetTrackBits(tile);
@@ -127,7 +127,7 @@ void AfterLoadCompanyStats()
 			case MP_ROAD: {
 				if (IsLevelCrossing(tile)) {
 					c = Company::GetIfValid(GetTileOwner(tile));
-					if (c != NULL) c->infrastructure.rail[GetRailType(tile)] += LEVELCROSSING_TRACKBIT_FACTOR;
+					if (c != nullptr) c->infrastructure.rail[GetRailType(tile)] += LEVELCROSSING_TRACKBIT_FACTOR;
 				}
 
 				/* Iterate all present road types as each can have a different owner. */
@@ -135,19 +135,19 @@ void AfterLoadCompanyStats()
 				FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
 					c = Company::GetIfValid(IsRoadDepot(tile) ? GetTileOwner(tile) : GetRoadOwner(tile, rt));
 					/* A level crossings and depots have two road bits. */
-					if (c != NULL) c->infrastructure.road[rt] += IsNormalRoad(tile) ? CountBits(GetRoadBits(tile, rt)) : 2;
+					if (c != nullptr) c->infrastructure.road[rt] += IsNormalRoad(tile) ? CountBits(GetRoadBits(tile, rt)) : 2;
 				}
 				break;
 			}
 
 			case MP_STATION:
 				c = Company::GetIfValid(GetTileOwner(tile));
-				if (c != NULL && GetStationType(tile) != STATION_AIRPORT && !IsBuoy(tile)) c->infrastructure.station++;
+				if (c != nullptr && GetStationType(tile) != STATION_AIRPORT && !IsBuoy(tile)) c->infrastructure.station++;
 
 				switch (GetStationType(tile)) {
 					case STATION_RAIL:
 					case STATION_WAYPOINT:
-						if (c != NULL && !IsStationTileBlocked(tile)) c->infrastructure.rail[GetRailType(tile)]++;
+						if (c != nullptr && !IsStationTileBlocked(tile)) c->infrastructure.rail[GetRailType(tile)]++;
 						break;
 
 					case STATION_BUS:
@@ -156,7 +156,7 @@ void AfterLoadCompanyStats()
 						RoadType rt;
 						FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
 							c = Company::GetIfValid(GetRoadOwner(tile, rt));
-							if (c != NULL) c->infrastructure.road[rt] += 2; // A road stop has two road bits.
+							if (c != nullptr) c->infrastructure.road[rt] += 2; // A road stop has two road bits.
 						}
 						break;
 					}
@@ -164,7 +164,7 @@ void AfterLoadCompanyStats()
 					case STATION_DOCK:
 					case STATION_BUOY:
 						if (GetWaterClass(tile) == WATER_CLASS_CANAL) {
-							if (c != NULL) c->infrastructure.water++;
+							if (c != nullptr) c->infrastructure.water++;
 						}
 						break;
 
@@ -176,7 +176,7 @@ void AfterLoadCompanyStats()
 			case MP_WATER:
 				if (IsShipDepot(tile) || IsLock(tile)) {
 					c = Company::GetIfValid(GetTileOwner(tile));
-					if (c != NULL) {
+					if (c != nullptr) {
 						if (IsShipDepot(tile)) c->infrastructure.water += LOCK_DEPOT_TILE_FACTOR;
 						if (IsLock(tile) && GetLockPart(tile) == LOCK_PART_MIDDLE) {
 							/* The middle tile specifies the owner of the lock. */
@@ -190,7 +190,7 @@ void AfterLoadCompanyStats()
 			case MP_OBJECT:
 				if (GetWaterClass(tile) == WATER_CLASS_CANAL) {
 					c = Company::GetIfValid(GetTileOwner(tile));
-					if (c != NULL) c->infrastructure.water++;
+					if (c != nullptr) c->infrastructure.water++;
 				}
 				break;
 
@@ -205,7 +205,7 @@ void AfterLoadCompanyStats()
 					switch (GetTunnelBridgeTransportType(tile)) {
 						case TRANSPORT_RAIL:
 							c = Company::GetIfValid(GetTileOwner(tile));
-							if (c != NULL) c->infrastructure.rail[GetRailType(tile)] += len;
+							if (c != nullptr) c->infrastructure.rail[GetRailType(tile)] += len;
 							break;
 
 						case TRANSPORT_ROAD: {
@@ -213,14 +213,14 @@ void AfterLoadCompanyStats()
 							RoadType rt;
 							FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
 								c = Company::GetIfValid(GetRoadOwner(tile, rt));
-								if (c != NULL) c->infrastructure.road[rt] += len * 2; // A full diagonal road has two road bits.
+								if (c != nullptr) c->infrastructure.road[rt] += len * 2; // A full diagonal road has two road bits.
 							}
 							break;
 						}
 
 						case TRANSPORT_WATER:
 							c = Company::GetIfValid(GetTileOwner(tile));
-							if (c != NULL) c->infrastructure.water += len;
+							if (c != nullptr) c->infrastructure.water += len;
 							break;
 
 						default:
@@ -414,7 +414,7 @@ static void SaveLoad_PLYR_common(Company *c, CompanyProperties *cprops)
 	int i;
 
 	SlObject(cprops, _company_desc);
-	if (c != NULL) {
+	if (c != nullptr) {
 		SlObject(c, _company_settings_desc);
 	} else {
 		char nothing;
@@ -444,7 +444,7 @@ static void SaveLoad_PLYR_common(Company *c, CompanyProperties *cprops)
 	/* Write each livery entry. */
 	int num_liveries = IsSavegameVersionBefore(SLV_63) ? LS_END - 4 : (IsSavegameVersionBefore(SLV_85) ? LS_END - 2: LS_END);
 	bool update_in_use = IsSavegameVersionBefore(SLV_GROUP_LIVERIES);
-	if (c != NULL) {
+	if (c != nullptr) {
 		for (i = 0; i < num_liveries; i++) {
 			SlObject(&c->livery[i], _company_livery_desc);
 			if (update_in_use && i != LS_DEFAULT) {
@@ -507,7 +507,7 @@ static void Check_PLYR()
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		CompanyProperties *cprops = new CompanyProperties();
-		SaveLoad_PLYR_common(NULL, cprops);
+		SaveLoad_PLYR_common(nullptr, cprops);
 
 		/* We do not load old custom names */
 		if (IsSavegameVersionBefore(SLV_84)) {
@@ -520,7 +520,7 @@ static void Check_PLYR()
 			}
 		}
 
-		if (cprops->name == NULL && !IsInsideMM(cprops->name_1, SPECSTR_COMPANY_NAME_START, SPECSTR_COMPANY_NAME_LAST + 1) &&
+		if (cprops->name == nullptr && !IsInsideMM(cprops->name_1, SPECSTR_COMPANY_NAME_START, SPECSTR_COMPANY_NAME_LAST + 1) &&
 				cprops->name_1 != STR_GAME_SAVELOAD_NOT_AVAILABLE && cprops->name_1 != STR_SV_UNNAMED &&
 				cprops->name_1 != SPECSTR_ANDCO_NAME && cprops->name_1 != SPECSTR_PRESIDENT_NAME &&
 				cprops->name_1 != SPECSTR_SILLY_NAME) {

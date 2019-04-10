@@ -789,7 +789,7 @@ static const DrawTileSeqStruct _station_display_datas_waypoint_Y[] = {
  * @param dtss  Sequence child sprites of the tile
  */
 #define TILE_SPRITE_LINE(img, dtss) { {img, PAL_NONE}, dtss },
-#define TILE_SPRITE_NULL() { {0, 0}, NULL },
+#define TILE_SPRITE_NULL() { {0, 0}, nullptr },
 
 extern const DrawTileSprites _station_display_datas_rail[] = {
 	TILE_SPRITE_LINE(SPR_RAIL_TRACK_X,               _station_display_datas_0)

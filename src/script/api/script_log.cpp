@@ -35,7 +35,7 @@
 
 /* static */ void ScriptLog::Log(ScriptLog::ScriptLogType level, const char *message)
 {
-	if (ScriptObject::GetLogPointer() == NULL) {
+	if (ScriptObject::GetLogPointer() == nullptr) {
 		ScriptObject::GetLogPointer() = new LogData();
 		LogData *log = (LogData *)ScriptObject::GetLogPointer();
 
@@ -59,7 +59,7 @@
 
 	/* Cut string after first \n */
 	char *p;
-	while ((p = strchr(log->lines[log->pos], '\n')) != NULL) {
+	while ((p = strchr(log->lines[log->pos], '\n')) != nullptr) {
 		*p = '\0';
 		break;
 	}

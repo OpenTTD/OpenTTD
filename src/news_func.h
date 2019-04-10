@@ -17,7 +17,7 @@
 #include "station_type.h"
 #include "industry_type.h"
 
-void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1 = NR_NONE, uint32 ref1 = UINT32_MAX, NewsReferenceType reftype2 = NR_NONE, uint32 ref2 = UINT32_MAX, void *free_data = NULL);
+void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1 = NR_NONE, uint32 ref1 = UINT32_MAX, NewsReferenceType reftype2 = NR_NONE, uint32 ref2 = UINT32_MAX, void *free_data = nullptr);
 
 static inline void AddCompanyNewsItem(StringID string, CompanyNewsInformation *cni)
 {
@@ -44,7 +44,7 @@ static inline void AddVehicleAdviceNewsItem(StringID string, VehicleID vehicle)
 	AddNewsItem(string, NT_ADVICE, NF_INCOLOUR | NF_SMALL | NF_VEHICLE_PARAM0, NR_VEHICLE, vehicle);
 }
 
-static inline void AddTileNewsItem(StringID string, NewsType type, TileIndex tile, void *free_data = NULL)
+static inline void AddTileNewsItem(StringID string, NewsType type, TileIndex tile, void *free_data = nullptr)
 {
 	AddNewsItem(string, type, NF_NO_TRANSPARENT | NF_SHADE | NF_THIN, NR_TILE, tile, NR_NONE, UINT32_MAX, free_data);
 }

@@ -81,7 +81,7 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Sign *si = Sign::GetIfValid(p1);
-	if (si == NULL) return CMD_ERROR;
+	if (si == nullptr) return CMD_ERROR;
 	if (si->owner == OWNER_DEITY && _current_company != OWNER_DEITY && _game_mode != GM_EDITOR) return CMD_ERROR;
 
 	/* Rename the signs when empty, otherwise remove it */

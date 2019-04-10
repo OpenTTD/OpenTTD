@@ -34,7 +34,7 @@ struct Goal : GoalPool::PoolItem<&_goal_pool> {
 	inline Goal() { }
 
 	/**
-	 * (Empty) destructor has to be defined else operator delete might be called with NULL parameter
+	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
 	 */
 	inline ~Goal() { free(this->text); free(this->progress); }
 };

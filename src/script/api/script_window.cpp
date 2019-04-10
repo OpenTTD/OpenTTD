@@ -34,10 +34,10 @@
 	if (ScriptGame::IsMultiplayer()) return false;
 
 	if (number == NUMBER_ALL) {
-		return (FindWindowByClass((::WindowClass)window) != NULL);
+		return (FindWindowByClass((::WindowClass)window) != nullptr);
 	}
 
-	return FindWindowById((::WindowClass)window, number) != NULL;
+	return FindWindowById((::WindowClass)window, number) != nullptr;
 }
 
 /* static */ void ScriptWindow::Highlight(WindowClass window, uint32 number, uint8 widget, TextColour colour)
@@ -56,6 +56,6 @@
 	}
 
 	const NWidgetBase *wid = w->GetWidget<NWidgetBase>(widget);
-	if (wid == NULL) return;
+	if (wid == nullptr) return;
 	w->SetWidgetHighlight(widget, (::TextColour)colour);
 }

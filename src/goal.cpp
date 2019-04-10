@@ -93,7 +93,7 @@ CommandCost CmdCreateGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		g->dst = p2;
 		g->company = company;
 		g->text = stredup(text);
-		g->progress = NULL;
+		g->progress = nullptr;
 		g->completed = false;
 
 		if (g->company == INVALID_COMPANY) {
@@ -187,7 +187,7 @@ CommandCost CmdSetGoalProgress(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		Goal *g = Goal::Get(p1);
 		free(g->progress);
 		if (StrEmpty(text)) {
-			g->progress = NULL;
+			g->progress = nullptr;
 		} else {
 			g->progress = stredup(text);
 		}

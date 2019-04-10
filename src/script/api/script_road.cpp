@@ -588,10 +588,10 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 	if (!ScriptRoad::IsRoadTypeAvailable(roadtype)) return -1;
 
 	switch (build_type) {
-		case BT_ROAD:       return ::GetPrice(PR_BUILD_ROAD, 1, NULL);
-		case BT_DEPOT:      return ::GetPrice(PR_BUILD_DEPOT_ROAD, 1, NULL);
-		case BT_BUS_STOP:   return ::GetPrice(PR_BUILD_STATION_BUS, 1, NULL);
-		case BT_TRUCK_STOP: return ::GetPrice(PR_BUILD_STATION_TRUCK, 1, NULL);
+		case BT_ROAD:       return ::GetPrice(PR_BUILD_ROAD, 1, nullptr);
+		case BT_DEPOT:      return ::GetPrice(PR_BUILD_DEPOT_ROAD, 1, nullptr);
+		case BT_BUS_STOP:   return ::GetPrice(PR_BUILD_STATION_BUS, 1, nullptr);
+		case BT_TRUCK_STOP: return ::GetPrice(PR_BUILD_STATION_TRUCK, 1, nullptr);
 		default: return -1;
 	}
 }

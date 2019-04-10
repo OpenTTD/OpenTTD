@@ -20,7 +20,7 @@
 #include "../safeguards.h"
 
 static FMusicDriver_Allegro iFMusicDriver_Allegro;
-static MIDI *_midi = NULL;
+static MIDI *_midi = nullptr;
 
 /**
  * There are multiple modules that might be using Allegro and
@@ -30,14 +30,14 @@ extern int _allegro_instance_count;
 
 const char *MusicDriver_Allegro::Start(const char * const *param)
 {
-	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) {
+	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, nullptr)) {
 		DEBUG(driver, 0, "allegro: install_allegro failed '%s'", allegro_error);
 		return "Failed to set up Allegro";
 	}
 	_allegro_instance_count++;
 
 	/* Initialise the sound */
-	if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, NULL) != 0) {
+	if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, nullptr) != 0) {
 		DEBUG(driver, 0, "allegro: install_sound failed '%s'", allegro_error);
 		return "Failed to set up Allegro sound";
 	}
@@ -48,13 +48,13 @@ const char *MusicDriver_Allegro::Start(const char * const *param)
 		return "No sound card found";
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void MusicDriver_Allegro::Stop()
 {
-	if (_midi != NULL) destroy_midi(_midi);
-	_midi = NULL;
+	if (_midi != nullptr) destroy_midi(_midi);
+	_midi = nullptr;
 
 	if (--_allegro_instance_count == 0) allegro_exit();
 }
@@ -63,12 +63,12 @@ void MusicDriver_Allegro::PlaySong(const MusicSongInfo &song)
 {
 	std::string filename = MidiFile::GetSMFFile(song);
 
-	if (_midi != NULL) destroy_midi(_midi);
+	if (_midi != nullptr) destroy_midi(_midi);
 	if (!filename.empty()) {
 		_midi = load_midi(filename.c_str());
 		play_midi(_midi, false);
 	} else {
-		_midi = NULL;
+		_midi = nullptr;
 	}
 }
 

@@ -47,7 +47,7 @@ void MoveBuoysToWaypoints()
 		VehicleType vt = ol->GetFirstSharedVehicle()->type;
 		if (vt != VEH_SHIP && vt != VEH_TRAIN) continue;
 
-		for (Order *o = ol->GetFirstOrder(); o != NULL; o = o->next) UpdateWaypointOrder(o);
+		for (Order *o = ol->GetFirstOrder(); o != nullptr; o = o->next) UpdateWaypointOrder(o);
 	}
 
 	Vehicle *v;
@@ -68,7 +68,7 @@ void MoveBuoysToWaypoints()
 		Town *town         = st->town;
 		StringID string_id = st->string_id;
 		char *name         = st->name;
-		st->name           = NULL;
+		st->name           = nullptr;
 		Date build_date    = st->build_date;
 		/* TTDPatch could use "buoys with rail station" for rail waypoints */
 		bool train         = st->train_station.tile != INVALID_TILE;
@@ -116,13 +116,13 @@ void AfterLoadStations()
 		for (uint i = 0; i < st->num_specs; i++) {
 			if (st->speclist[i].grfid == 0) continue;
 
-			st->speclist[i].spec = StationClass::GetByGrf(st->speclist[i].grfid, st->speclist[i].localidx, NULL);
+			st->speclist[i].spec = StationClass::GetByGrf(st->speclist[i].grfid, st->speclist[i].localidx, nullptr);
 		}
 
 		if (Station::IsExpected(st)) {
 			Station *sta = Station::From(st);
-			for (const RoadStop *rs = sta->bus_stops; rs != NULL; rs = rs->next) sta->bus_station.Add(rs->xy);
-			for (const RoadStop *rs = sta->truck_stops; rs != NULL; rs = rs->next) sta->truck_station.Add(rs->xy);
+			for (const RoadStop *rs = sta->bus_stops; rs != nullptr; rs = rs->next) sta->bus_station.Add(rs->xy);
+			for (const RoadStop *rs = sta->truck_stops; rs != nullptr; rs = rs->next) sta->truck_station.Add(rs->xy);
 		}
 
 		StationUpdateCachedTriggers(st);
@@ -544,11 +544,11 @@ static void Load_STNN()
 			for (CargoID i = 0; i < num_cargo; i++) {
 				SlObject(&st->goods[i], GetGoodsDesc());
 				FlowSaveLoad flow;
-				FlowStat *fs = NULL;
+				FlowStat *fs = nullptr;
 				StationID prev_source = INVALID_STATION;
 				for (uint32 j = 0; j < _num_flows; ++j) {
 					SlObject(&flow, _flow_desc);
-					if (fs == NULL || prev_source != flow.source) {
+					if (fs == nullptr || prev_source != flow.source) {
 						fs = &(st->goods[i].flows.insert(std::make_pair(flow.source, FlowStat(flow.via, flow.share, flow.restricted))).first->second);
 					} else {
 						fs->AppendShare(flow.via, flow.share, flow.restricted);
@@ -638,7 +638,7 @@ static void Ptrs_ROADSTOP()
 }
 
 extern const ChunkHandler _station_chunk_handlers[] = {
-	{ 'STNS', NULL,          Load_STNS,     Ptrs_STNS,     NULL, CH_ARRAY },
-	{ 'STNN', Save_STNN,     Load_STNN,     Ptrs_STNN,     NULL, CH_ARRAY },
-	{ 'ROAD', Save_ROADSTOP, Load_ROADSTOP, Ptrs_ROADSTOP, NULL, CH_ARRAY | CH_LAST},
+	{ 'STNS', nullptr,          Load_STNS,     Ptrs_STNS,     nullptr, CH_ARRAY },
+	{ 'STNN', Save_STNN,     Load_STNN,     Ptrs_STNN,     nullptr, CH_ARRAY },
+	{ 'ROAD', Save_ROADSTOP, Load_ROADSTOP, Ptrs_ROADSTOP, nullptr, CH_ARRAY | CH_LAST},
 };

@@ -78,7 +78,7 @@ static inline int MemCmpT(const T *ptr1, const T *ptr2, size_t num = 1)
 template <typename T>
 static inline void MemReverseT(T *ptr1, T *ptr2)
 {
-	assert(ptr1 != NULL && ptr2 != NULL);
+	assert(ptr1 != nullptr && ptr2 != nullptr);
 	assert(ptr1 < ptr2);
 
 	do {
@@ -95,7 +95,7 @@ static inline void MemReverseT(T *ptr1, T *ptr2)
 template <typename T>
 static inline void MemReverseT(T *ptr, size_t num)
 {
-	assert(ptr != NULL);
+	assert(ptr != nullptr);
 
 	MemReverseT(ptr, ptr + (num - 1));
 }

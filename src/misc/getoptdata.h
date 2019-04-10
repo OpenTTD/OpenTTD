@@ -25,12 +25,12 @@ struct OptionData {
 	byte id;              ///< Unique identification of this option data, often the same as #shortname.
 	char shortname;       ///< Short option letter if available, else use \c '\0'.
 	uint16 flags;         ///< Option data flags. @see OptionDataFlags
-	const char *longname; ///< Long option name including '-'/'--' prefix, use \c NULL if not available.
+	const char *longname; ///< Long option name including '-'/'--' prefix, use \c nullptr if not available.
 };
 
 /** Data storage for parsing command line options. */
 struct GetOptData {
-	char *opt;                 ///< Option value, if available (else \c NULL).
+	char *opt;                 ///< Option value, if available (else \c nullptr).
 	int numleft;               ///< Number of arguments left in #argv.
 	char **argv;               ///< Remaining command line arguments.
 	const OptionData *options; ///< Command line option descriptions.
@@ -43,11 +43,11 @@ struct GetOptData {
 	 * @param options Command line option descriptions.
 	 */
 	GetOptData(int argc, char **argv, const OptionData *options) :
-			opt(NULL),
+			opt(nullptr),
 			numleft(argc),
 			argv(argv),
 			options(options),
-			cont(NULL)
+			cont(nullptr)
 	{
 	}
 
@@ -58,7 +58,7 @@ struct GetOptData {
  * General macro for creating an option.
  * @param id        Identification of the option.
  * @param shortname Short option name. Use \c '\0' if not used.
- * @param longname  Long option name including leading '-' or '--'. Use \c NULL if not used.
+ * @param longname  Long option name including leading '-' or '--'. Use \c nullptr if not used.
  * @param flags     Flags of the option.
  */
 #define GETOPT_GENERAL(id, shortname, longname, flags) { id, shortname, flags, longname }
@@ -66,21 +66,21 @@ struct GetOptData {
 /**
  * Short option without value.
  * @param shortname Short option name. Use \c '\0' if not used.
- * @param longname  Long option name including leading '-' or '--'. Use \c NULL if not used.
+ * @param longname  Long option name including leading '-' or '--'. Use \c nullptr if not used.
  */
 #define GETOPT_NOVAL(shortname, longname) GETOPT_GENERAL(shortname, shortname, longname, ODF_NO_VALUE)
 
 /**
  * Short option with value.
  * @param shortname Short option name. Use \c '\0' if not used.
- * @param longname  Long option name including leading '-' or '--'. Use \c NULL if not used.
+ * @param longname  Long option name including leading '-' or '--'. Use \c nullptr if not used.
  */
 #define GETOPT_VALUE(shortname, longname) GETOPT_GENERAL(shortname, shortname, longname, ODF_HAS_VALUE)
 
 /**
  * Short option with optional value.
  * @param shortname Short option name. Use \c '\0' if not used.
- * @param longname  Long option name including leading '-' or '--'. Use \c NULL if not used.
+ * @param longname  Long option name including leading '-' or '--'. Use \c nullptr if not used.
  * @note Options with optional values are hopelessly ambiguous, eg "-opt -value", avoid them.
  */
 #define GETOPT_OPTVAL(shortname, longname) GETOPT_GENERAL(shortname, shortname, longname, ODF_OPTIONAL_VALUE)
@@ -90,23 +90,23 @@ struct GetOptData {
  * Short option without value.
  * @param shortname Short option name. Use \c '\0' if not used.
  */
-#define GETOPT_SHORT_NOVAL(shortname) GETOPT_NOVAL(shortname, NULL)
+#define GETOPT_SHORT_NOVAL(shortname) GETOPT_NOVAL(shortname, nullptr)
 
 /**
  * Short option with value.
  * @param shortname Short option name. Use \c '\0' if not used.
  */
-#define GETOPT_SHORT_VALUE(shortname) GETOPT_VALUE(shortname, NULL)
+#define GETOPT_SHORT_VALUE(shortname) GETOPT_VALUE(shortname, nullptr)
 
 /**
  * Short option with optional value.
  * @param shortname Short option name. Use \c '\0' if not used.
  * @note Options with optional values are hopelessly ambiguous, eg "-opt -value", avoid them.
  */
-#define GETOPT_SHORT_OPTVAL(shortname) GETOPT_OPTVAL(shortname, NULL)
+#define GETOPT_SHORT_OPTVAL(shortname) GETOPT_OPTVAL(shortname, nullptr)
 
 /** Option terminator. */
-#define GETOPT_END() { '\0', '\0', ODF_END, NULL}
+#define GETOPT_END() { '\0', '\0', ODF_END, nullptr}
 
 
 #endif /* GETOPTDATA_H */

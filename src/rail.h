@@ -270,7 +270,7 @@ public:
 	byte sorting_order;
 
 	/**
-	 * NewGRF providing the Action3 for the railtype. NULL if not available.
+	 * NewGRF providing the Action3 for the railtype. nullptr if not available.
 	 */
 	const GRFFile *grffile[RTSG_END];
 
@@ -281,7 +281,7 @@ public:
 
 	inline bool UsesOverlay() const
 	{
-		return this->group[RTSG_GROUND] != NULL;
+		return this->group[RTSG_GROUND] != nullptr;
 	}
 
 	/**

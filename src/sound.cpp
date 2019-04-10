@@ -30,7 +30,7 @@ static void OpenBankFile(const char *filename)
 	memset(_original_sounds, 0, sizeof(_original_sounds));
 
 	/* If there is no sound file (nosound set), don't load anything */
-	if (filename == NULL) return;
+	if (filename == nullptr) return;
 
 	FioOpenFile(SOUND_SLOT, filename, BASESET_DIR);
 	size_t pos = FioGetPos();
@@ -110,7 +110,7 @@ static void OpenBankFile(const char *filename)
 
 static bool SetBankSource(MixerChannel *mc, const SoundEntry *sound)
 {
-	assert(sound != NULL);
+	assert(sound != nullptr);
 
 	/* Check for valid sound size. */
 	if (sound->file_size == 0 || sound->file_size > ((size_t)-1) - 2) return false;
@@ -162,7 +162,7 @@ static void StartSound(SoundID sound_id, float pan, uint volume)
 	if (volume == 0) return;
 
 	SoundEntry *sound = GetSound(sound_id);
-	if (sound == NULL) return;
+	if (sound == nullptr) return;
 
 	/* NewGRF sound that wasn't loaded yet? */
 	if (sound->rate == 0 && sound->file_slot != 0) {
@@ -177,7 +177,7 @@ static void StartSound(SoundID sound_id, float pan, uint volume)
 	if (sound->rate == 0) return;
 
 	MixerChannel *mc = MxAllocateChannel();
-	if (mc == NULL) return;
+	if (mc == nullptr) return;
 
 	if (!SetBankSource(mc, sound)) return;
 
@@ -244,7 +244,7 @@ static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, in
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		const ViewPort *vp = w->viewport;
 
-		if (vp != NULL &&
+		if (vp != nullptr &&
 				left < vp->virtual_left + vp->virtual_width && right > vp->virtual_left &&
 				top < vp->virtual_top + vp->virtual_height && bottom > vp->virtual_top) {
 			int screen_x = (left + right) / 2 - vp->virtual_left;
@@ -304,14 +304,14 @@ template <class Tbase_set>
 template <class Tbase_set>
 /* static */ bool BaseMedia<Tbase_set>::DetermineBestSet()
 {
-	if (BaseMedia<Tbase_set>::used_set != NULL) return true;
+	if (BaseMedia<Tbase_set>::used_set != nullptr) return true;
 
-	const Tbase_set *best = NULL;
-	for (const Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != NULL; c = c->next) {
+	const Tbase_set *best = nullptr;
+	for (const Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != nullptr; c = c->next) {
 		/* Skip unusable sets */
 		if (c->GetNumMissing() != 0) continue;
 
-		if (best == NULL ||
+		if (best == nullptr ||
 				(best->fallback && !c->fallback) ||
 				best->valid_files < c->valid_files ||
 				(best->valid_files == c->valid_files &&
@@ -321,6 +321,6 @@ template <class Tbase_set>
 	}
 
 	BaseMedia<Tbase_set>::used_set = best;
-	return BaseMedia<Tbase_set>::used_set != NULL;
+	return BaseMedia<Tbase_set>::used_set != nullptr;
 }
 

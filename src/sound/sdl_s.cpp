@@ -54,7 +54,7 @@ const char *SoundDriver_SDL::Start(const char * const *parm)
 	MxInitialize(spec.freq);
 	SDL_OpenAudio(&spec, &spec);
 	SDL_PauseAudio(0);
-	return NULL;
+	return nullptr;
 }
 
 void SoundDriver_SDL::Stop()

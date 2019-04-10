@@ -76,7 +76,7 @@ ErrorMessageData::ErrorMessageData(const ErrorMessageData &data)
 {
 	*this = data;
 	for (size_t i = 0; i < lengthof(this->strings); i++) {
-		if (this->strings[i] != NULL) {
+		if (this->strings[i] != nullptr) {
 			this->strings[i] = stredup(this->strings[i]);
 			this->decode_params[i] = (size_t)this->strings[i];
 		}
@@ -357,7 +357,7 @@ void ShowFirstError()
 void UnshowCriticalError()
 {
 	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
-	if (_window_system_initialized && w != NULL) {
+	if (_window_system_initialized && w != nullptr) {
 		if (w->IsCritical()) _error_list.push_front(*w);
 		_window_system_initialized = false;
 		delete w;
@@ -377,7 +377,7 @@ void UnshowCriticalError()
  */
 void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x, int y, const GRFFile *textref_stack_grffile, uint textref_stack_size, const uint32 *textref_stack)
 {
-	assert(textref_stack_size == 0 || (textref_stack_grffile != NULL && textref_stack != NULL));
+	assert(textref_stack_size == 0 || (textref_stack_grffile != nullptr && textref_stack != nullptr));
 	if (summary_msg == STR_NULL) summary_msg = STR_EMPTY;
 
 	if (wl != WL_INFO) {
@@ -408,7 +408,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 	data.CopyOutDParams();
 
 	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
-	if (w != NULL && w->IsCritical()) {
+	if (w != nullptr && w->IsCritical()) {
 		/* A critical error is currently shown. */
 		if (wl == WL_CRITICAL) {
 			/* Push another critical error in the queue of errors,

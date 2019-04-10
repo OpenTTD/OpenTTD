@@ -101,7 +101,7 @@ ScriptVehicleList_SharedOrders::ScriptVehicleList_SharedOrders(VehicleID vehicle
 {
 	if (!ScriptVehicle::IsValidVehicle(vehicle_id)) return;
 
-	for (const Vehicle *v = Vehicle::Get(vehicle_id)->FirstShared(); v != NULL; v = v->NextShared()) {
+	for (const Vehicle *v = Vehicle::Get(vehicle_id)->FirstShared(); v != nullptr; v = v->NextShared()) {
 		this->AddItem(v->index);
 	}
 }

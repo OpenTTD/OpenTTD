@@ -71,7 +71,7 @@ int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap)
  *
  * Appends the source string to the destination string with respect of the
  * terminating null-character and and the last pointer to the last element
- * in the destination buffer. If the last pointer is set to NULL no
+ * in the destination buffer. If the last pointer is set to nullptr no
  * boundary check is performed.
  *
  * @note usage: strecat(dst, src, lastof(dst));
@@ -99,7 +99,7 @@ char *strecat(char *dst, const char *src, const char *last)
  *
  * Copies the source string to the destination buffer with respect of the
  * terminating null-character and the last pointer to the last element in
- * the destination buffer. If the last pointer is set to NULL no boundary
+ * the destination buffer. If the last pointer is set to nullptr no boundary
  * check is performed.
  *
  * @note usage: strecpy(dst, src, lastof(dst));
@@ -131,13 +131,13 @@ char *strecpy(char *dst, const char *src, const char *last)
 /**
  * Create a duplicate of the given string.
  * @param s    The string to duplicate.
- * @param last The last character that is safe to duplicate. If NULL, the whole string is duplicated.
+ * @param last The last character that is safe to duplicate. If nullptr, the whole string is duplicated.
  * @note The maximum length of the resulting string might therefore be last - s + 1.
  * @return The duplicate of the string.
  */
 char *stredup(const char *s, const char *last)
 {
-	size_t len = last == NULL ? strlen(s) : ttd_strnlen(s, last - s + 1);
+	size_t len = last == nullptr ? strlen(s) : ttd_strnlen(s, last - s + 1);
 	char *tmp = CallocT<char>(len + 1);
 	memcpy(tmp, s, len);
 	return tmp;
@@ -447,7 +447,7 @@ char *md5sumToString(char *buf, const char *last, const uint8 md5sum[16])
  */
 size_t Utf8Decode(WChar *c, const char *s)
 {
-	assert(c != NULL);
+	assert(c != nullptr);
 
 	if (!HasBit(s[0], 7)) {
 		/* Single byte character: 0xxxxxxx */
@@ -551,7 +551,7 @@ char *strcasestr(const char *haystack, const char *needle)
 		hay_len--;
 	}
 
-	return NULL;
+	return nullptr;
 }
 #endif /* DEFINE_STRCASESTR */
 
@@ -585,7 +585,7 @@ int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
 	}
 
 #ifdef WITH_ICU_I18N
-	if (_current_collator != NULL) {
+	if (_current_collator != nullptr) {
 		UErrorCode status = U_ZERO_ERROR;
 		int result = _current_collator->compareUTF8(s1, s2, status);
 		if (U_SUCCESS(status)) return result;
@@ -628,11 +628,11 @@ class IcuStringIterator : public StringIterator
 	std::vector<size_t> utf16_to_utf8; ///< Mapping from UTF-16 code point position to index in the UTF-8 source string.
 
 public:
-	IcuStringIterator() : char_itr(NULL), word_itr(NULL)
+	IcuStringIterator() : char_itr(nullptr), word_itr(nullptr)
 	{
 		UErrorCode status = U_ZERO_ERROR;
-		this->char_itr = icu::BreakIterator::createCharacterInstance(icu::Locale(_current_language != NULL ? _current_language->isocode : "en"), status);
-		this->word_itr = icu::BreakIterator::createWordInstance(icu::Locale(_current_language != NULL ? _current_language->isocode : "en"), status);
+		this->char_itr = icu::BreakIterator::createCharacterInstance(icu::Locale(_current_language != nullptr ? _current_language->isocode : "en"), status);
+		this->word_itr = icu::BreakIterator::createWordInstance(icu::Locale(_current_language != nullptr ? _current_language->isocode : "en"), status);
 
 		this->utf16_str.push_back('\0');
 		this->utf16_to_utf8.push_back(0);
@@ -779,7 +779,7 @@ class DefaultStringIterator : public StringIterator
 	size_t cur_pos;     ///< Current iteration position.
 
 public:
-	DefaultStringIterator() : string(NULL), len(0), cur_pos(0)
+	DefaultStringIterator() : string(nullptr), len(0), cur_pos(0)
 	{
 	}
 
@@ -792,7 +792,7 @@ public:
 
 	virtual size_t SetCurPosition(size_t pos)
 	{
-		assert(this->string != NULL && pos <= this->len);
+		assert(this->string != nullptr && pos <= this->len);
 		/* Sanitize in case we get a position inside an UTF-8 sequence. */
 		while (pos > 0 && IsUtf8Part(this->string[pos])) pos--;
 		return this->cur_pos = pos;
@@ -800,7 +800,7 @@ public:
 
 	virtual size_t Next(IterType what)
 	{
-		assert(this->string != NULL);
+		assert(this->string != nullptr);
 
 		/* Already at the end? */
 		if (this->cur_pos >= this->len) return END;
@@ -838,7 +838,7 @@ public:
 
 	virtual size_t Prev(IterType what)
 	{
-		assert(this->string != NULL);
+		assert(this->string != nullptr);
 
 		/* Already at the beginning? */
 		if (this->cur_pos == 0) return END;
@@ -878,7 +878,7 @@ public:
 /* static */ StringIterator *StringIterator::Create()
 {
 	StringIterator *i = OSXStringIterator::Create();
-	if (i != NULL) return i;
+	if (i != nullptr) return i;
 
 	return new DefaultStringIterator();
 }

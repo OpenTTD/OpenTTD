@@ -143,7 +143,7 @@ static StationID FindNearestHangar(const Aircraft *v)
 		if (v->acache.cached_max_range_sqr != 0) {
 			/* Check if our current destination can be reached from the depot airport. */
 			const Station *cur_dest = GetTargetAirportIfValid(v);
-			if (cur_dest != NULL && DistanceSquare(st->airport.tile, cur_dest->airport.tile) > v->acache.cached_max_range_sqr) continue;
+			if (cur_dest != nullptr && DistanceSquare(st->airport.tile, cur_dest->airport.tile) > v->acache.cached_max_range_sqr) continue;
 		}
 		if (distance < best || index == INVALID_STATION) {
 			best = distance;
@@ -295,7 +295,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *
 		v->cargo_type = e->GetDefaultCargoType();
 		u->cargo_type = CT_MAIL;
 
-		v->name = NULL;
+		v->name = nullptr;
 		v->last_station_visited = INVALID_STATION;
 		v->last_loading_station = INVALID_STATION;
 
@@ -379,7 +379,7 @@ bool Aircraft::FindClosestDepot(TileIndex *location, DestinationID *destination,
 {
 	const Station *st = GetTargetAirportIfValid(this);
 	/* If the station is not a valid airport or if it has no hangars */
-	if (st == NULL || !CanVehicleUseStation(this, st) || !st->airport.HasHangar()) {
+	if (st == nullptr || !CanVehicleUseStation(this, st) || !st->airport.HasHangar()) {
 		/* the aircraft has to search for a hangar on its own */
 		StationID station = FindNearestHangar(this);
 
@@ -388,8 +388,8 @@ bool Aircraft::FindClosestDepot(TileIndex *location, DestinationID *destination,
 		st = Station::Get(station);
 	}
 
-	if (location    != NULL) *location    = st->xy;
-	if (destination != NULL) *destination = st->index;
+	if (location    != nullptr) *location    = st->xy;
+	if (destination != nullptr) *destination = st->index;
 
 	return true;
 }
@@ -408,7 +408,7 @@ static void CheckIfAircraftNeedsService(Aircraft *v)
 
 	const Station *st = Station::Get(v->current_order.GetDestination());
 
-	assert(st != NULL);
+	assert(st != nullptr);
 
 	/* only goto depot if the target airport has a depot */
 	if (st->airport.HasHangar() && CanVehicleUseStation(v, st)) {
@@ -531,7 +531,7 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 	u->UpdatePositionAndViewport();
 
 	u = u->Next();
-	if (u != NULL) {
+	if (u != nullptr) {
 		u->x_pos = x;
 		u->y_pos = y;
 		u->z_pos = z + ROTOR_Z_OFFSET;
@@ -552,7 +552,7 @@ void HandleAircraftEnterHangar(Aircraft *v)
 	Aircraft *u = v->Next();
 	u->vehstatus |= VS_HIDDEN;
 	u = u->Next();
-	if (u != NULL) {
+	if (u != nullptr) {
 		u->vehstatus |= VS_HIDDEN;
 		u->cur_speed = 0;
 	}
@@ -725,8 +725,8 @@ void GetAircraftFlightLevelBounds(const Vehicle *v, int *min_level, int *max_lev
 	/* Make faster planes fly higher so that they can overtake slower ones */
 	base_altitude += min(20 * (v->vcache.cached_max_speed / 200) - 90, 0);
 
-	if (min_level != NULL) *min_level = base_altitude + AIRCRAFT_MIN_FLYING_ALTITUDE;
-	if (max_level != NULL) *max_level = base_altitude + AIRCRAFT_MAX_FLYING_ALTITUDE;
+	if (min_level != nullptr) *min_level = base_altitude + AIRCRAFT_MIN_FLYING_ALTITUDE;
+	if (max_level != nullptr) *max_level = base_altitude + AIRCRAFT_MAX_FLYING_ALTITUDE;
 }
 
 /**
@@ -801,8 +801,8 @@ template int GetAircraftFlightLevel(Aircraft *v, bool takeoff);
  */
 static byte AircraftGetEntryPoint(const Aircraft *v, const AirportFTAClass *apc, Direction rotation)
 {
-	assert(v != NULL);
-	assert(apc != NULL);
+	assert(v != nullptr);
+	assert(apc != nullptr);
 
 	/* In the case the station doesn't exit anymore, set target tile 0.
 	 * It doesn't hurt much, aircraft will go to next order, nearest hangar
@@ -810,7 +810,7 @@ static byte AircraftGetEntryPoint(const Aircraft *v, const AirportFTAClass *apc,
 	TileIndex tile = 0;
 
 	const Station *st = Station::GetIfValid(v->targetairport);
-	if (st != NULL) {
+	if (st != nullptr) {
 		/* Make sure we don't go to INVALID_TILE if the airport has been removed. */
 		tile = (st->airport.tile != INVALID_TILE) ? st->airport.tile : st->xy;
 	}
@@ -844,13 +844,13 @@ static bool AircraftController(Aircraft *v)
 {
 	int count;
 
-	/* NULL if station is invalid */
+	/* nullptr if station is invalid */
 	const Station *st = Station::GetIfValid(v->targetairport);
 	/* INVALID_TILE if there is no station */
 	TileIndex tile = INVALID_TILE;
 	Direction rotation = DIR_N;
 	uint size_x = 1, size_y = 1;
-	if (st != NULL) {
+	if (st != nullptr) {
 		if (st->airport.tile != INVALID_TILE) {
 			tile = st->airport.tile;
 			rotation = st->airport.rotation;
@@ -864,7 +864,7 @@ static bool AircraftController(Aircraft *v)
 	const AirportFTAClass *afc = tile == INVALID_TILE ? GetAirport(AT_DUMMY) : st->airport.GetFTA();
 
 	/* prevent going to INVALID_TILE if airport is deleted. */
-	if (st == NULL || st->airport.tile == INVALID_TILE) {
+	if (st == nullptr || st->airport.tile == INVALID_TILE) {
 		/* Jump into our "holding pattern" state machine if possible */
 		if (v->pos >= afc->nofelements) {
 			v->pos = v->previous_pos = AircraftGetEntryPoint(v, afc, DIR_N);
@@ -904,7 +904,7 @@ static bool AircraftController(Aircraft *v)
 				v->tile = 0;
 
 				int z_dest;
-				GetAircraftFlightLevelBounds(v, &z_dest, NULL);
+				GetAircraftFlightLevelBounds(v, &z_dest, nullptr);
 
 				/* Reached altitude? */
 				if (v->z_pos >= z_dest) {
@@ -921,7 +921,7 @@ static bool AircraftController(Aircraft *v)
 	if (amd.flag & AMED_HELI_LOWER) {
 		SetBit(v->flags, VAF_HELI_DIRECT_DESCENT);
 
-		if (st == NULL) {
+		if (st == nullptr) {
 			/* FIXME - AircraftController -> if station no longer exists, do not land
 			 * helicopter will circle until sign disappears, then go to next order
 			 * what to do when it is the only order left, right now it just stays in 1 place */
@@ -1127,7 +1127,7 @@ static bool HandleCrashedAircraft(Aircraft *v)
 	Station *st = GetTargetAirportIfValid(v);
 
 	/* make aircraft crash down to the ground */
-	if (v->crashed_counter < 500 && st == NULL && ((v->crashed_counter % 3) == 0) ) {
+	if (v->crashed_counter < 500 && st == nullptr && ((v->crashed_counter % 3) == 0) ) {
 		int z = GetSlopePixelZ(Clamp(v->x_pos, 0, MapMaxX() * TILE_SIZE), Clamp(v->y_pos, 0, MapMaxY() * TILE_SIZE));
 		v->z_pos -= 1;
 		if (v->z_pos == z) {
@@ -1158,7 +1158,7 @@ static bool HandleCrashedAircraft(Aircraft *v)
 		/* clear runway-in on all airports, set by crashing plane
 		 * small airports use AIRPORT_BUSY, city airports use RUNWAY_IN_OUT_block, etc.
 		 * but they all share the same number */
-		if (st != NULL) {
+		if (st != nullptr) {
 			CLRBITS(st->airport.flags, RUNWAY_IN_block);
 			CLRBITS(st->airport.flags, RUNWAY_IN_OUT_block); // commuter airport
 			CLRBITS(st->airport.flags, RUNWAY_IN2_block);    // intercontinental
@@ -1232,7 +1232,7 @@ void HandleMissingAircraftOrders(Aircraft *v)
 	 *    actually stops.
 	 */
 	const Station *st = GetTargetAirportIfValid(v);
-	if (st == NULL) {
+	if (st == nullptr) {
 		Backup<CompanyByte> cur_company(_current_company, v->owner, FILE_LINE);
 		CommandCost ret = DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_SEND_VEHICLE_TO_DEPOT);
 		cur_company.Restore();
@@ -1288,17 +1288,17 @@ static void CrashAirplane(Aircraft *v)
 	v->Next()->cargo.Truncate();
 	const Station *st = GetTargetAirportIfValid(v);
 	StringID newsitem;
-	if (st == NULL) {
+	if (st == nullptr) {
 		newsitem = STR_NEWS_PLANE_CRASH_OUT_OF_FUEL;
 	} else {
 		SetDParam(1, st->index);
 		newsitem = STR_NEWS_AIRCRAFT_CRASH;
 	}
 
-	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, v->tile, st == NULL ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING));
-	Game::NewEvent(new ScriptEventVehicleCrashed(v->index, v->tile, st == NULL ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING));
+	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, v->tile, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING));
+	Game::NewEvent(new ScriptEventVehicleCrashed(v->index, v->tile, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING));
 
-	AddVehicleNewsItem(newsitem, NT_ACCIDENT, v->index, st != NULL ? st->index : INVALID_STATION);
+	AddVehicleNewsItem(newsitem, NT_ACCIDENT, v->index, st != nullptr ? st->index : INVALID_STATION);
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 30);
 	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_12_EXPLOSION, v);
@@ -1392,8 +1392,8 @@ void AircraftNextAirportPos_and_Order(Aircraft *v)
 	}
 
 	const Station *st = GetTargetAirportIfValid(v);
-	const AirportFTAClass *apc = st == NULL ? GetAirport(AT_DUMMY) : st->airport.GetFTA();
-	Direction rotation = st == NULL ? DIR_N : st->airport.rotation;
+	const AirportFTAClass *apc = st == nullptr ? GetAirport(AT_DUMMY) : st->airport.GetFTA();
+	Direction rotation = st == nullptr ? DIR_N : st->airport.rotation;
 	v->pos = v->previous_pos = AircraftGetEntryPoint(v, apc, rotation);
 }
 
@@ -1418,7 +1418,7 @@ void AircraftLeaveHangar(Aircraft *v, Direction exit_dir)
 
 		/* Rotor blades */
 		u = u->Next();
-		if (u != NULL) {
+		if (u != nullptr) {
 			u->vehstatus &= ~VS_HIDDEN;
 			u->cur_speed = 80;
 		}
@@ -1605,7 +1605,7 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 		 * it is possible to choose from multiple landing runways, so loop until a free one is found */
 		byte landingtype = (v->subtype == AIR_HELICOPTER) ? HELILANDING : LANDING;
 		const AirportFTA *current = apc->layout[v->pos].next;
-		while (current != NULL) {
+		while (current != nullptr) {
 			if (current->heading == landingtype) {
 				/* save speed before, since if AirportHasBlock is false, it resets them to 0
 				 * we don't want that for plane in air
@@ -1761,7 +1761,7 @@ static bool AirportMove(Aircraft *v, const AirportFTAClass *apc)
 	v->previous_pos = v->pos; // save previous location
 
 	/* there is only one choice to move to */
-	if (current->next == NULL) {
+	if (current->next == nullptr) {
 		if (AirportSetBlocks(v, current, apc)) {
 			v->pos = current->next_position;
 			UpdateAircraftCache(v);
@@ -1780,7 +1780,7 @@ static bool AirportMove(Aircraft *v, const AirportFTAClass *apc)
 			return false;
 		}
 		current = current->next;
-	} while (current != NULL);
+	} while (current != nullptr);
 
 	DEBUG(misc, 0, "[Ap] cannot move further on Airport! (pos %d state %d) for vehicle %d", v->pos, v->state, v->index);
 	NOT_REACHED();
@@ -1830,7 +1830,7 @@ static bool AirportSetBlocks(Aircraft *v, const AirportFTA *current_pos, const A
 		 * this means more blocks should be checked/set */
 		const AirportFTA *current = current_pos;
 		if (current == reference) current = current->next;
-		while (current != NULL) {
+		while (current != nullptr) {
 			if (current->heading == current_pos->heading && current->block != 0) {
 				airport_flags |= current->block;
 				break;
@@ -1938,7 +1938,7 @@ static bool AirportFindFreeTerminal(Aircraft *v, const AirportFTAClass *apc)
 		const Station *st = Station::Get(v->targetairport);
 		const AirportFTA *temp = apc->layout[v->pos].next;
 
-		while (temp != NULL) {
+		while (temp != nullptr) {
 			if (temp->heading == 255) {
 				if (!(st->airport.flags & temp->block)) {
 					/* read which group do we want to go to?
@@ -2037,9 +2037,9 @@ static bool AircraftEventHandler(Aircraft *v, int loop)
 		/* Check the distance to the next destination. This code works because the target
 		 * airport is only updated after take off and not on the ground. */
 		Station *cur_st = Station::GetIfValid(v->targetairport);
-		Station *next_st = v->current_order.IsType(OT_GOTO_STATION) || v->current_order.IsType(OT_GOTO_DEPOT) ? Station::GetIfValid(v->current_order.GetDestination()) : NULL;
+		Station *next_st = v->current_order.IsType(OT_GOTO_STATION) || v->current_order.IsType(OT_GOTO_DEPOT) ? Station::GetIfValid(v->current_order.GetDestination()) : nullptr;
 
-		if (cur_st != NULL && cur_st->airport.tile != INVALID_TILE && next_st != NULL && next_st->airport.tile != INVALID_TILE) {
+		if (cur_st != nullptr && cur_st->airport.tile != INVALID_TILE && next_st != nullptr && next_st->airport.tile != INVALID_TILE) {
 			uint dist = DistanceSquare(cur_st->airport.tile, next_st->airport.tile);
 			AircraftHandleDestTooFar(v, dist > v->acache.cached_max_range_sqr);
 		}
@@ -2077,16 +2077,16 @@ bool Aircraft::Tick()
  * Returns aircraft's target station if v->target_airport
  * is a valid station with airport.
  * @param v vehicle to get target airport for
- * @return pointer to target station, NULL if invalid
+ * @return pointer to target station, nullptr if invalid
  */
 Station *GetTargetAirportIfValid(const Aircraft *v)
 {
 	assert(v->type == VEH_AIRCRAFT);
 
 	Station *st = Station::GetIfValid(v->targetairport);
-	if (st == NULL) return NULL;
+	if (st == nullptr) return nullptr;
 
-	return st->airport.tile == INVALID_TILE ? NULL : st;
+	return st->airport.tile == INVALID_TILE ? nullptr : st;
 }
 
 /**
