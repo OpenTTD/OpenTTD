@@ -424,6 +424,13 @@ enum CommandPauseLevel {
 	CMDPL_ALL_ACTIONS,     ///< All actions may be executed.
 };
 
+/** Demolition modes */
+enum DemolitionMode : byte {
+	DM_ALL,          ///< Demolish everything
+	DM_TREES,        ///< Demolish trees
+	DM_COMPANY_PROPS ///< Demolish company properties
+};
+
 /**
  * Defines the callback type for all command handler functions.
  *

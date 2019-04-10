@@ -38,6 +38,8 @@
 
 #include "safeguards.h"
 
+DemolitionMode _demolition_mode;
+
 void CcTerraform(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	if (result.Succeeded()) {
@@ -94,6 +96,52 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 	if (success && _settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT_OTHER, end);
 }
 
+struct DemolitionModeSelectionWindow : public PickerWindowBase {
+	DemolitionModeSelectionWindow(WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
+	{
+		this->InitNested(0);
+		this->LowerWidget(WID_DM_ALL);
+		_demolition_mode = DM_ALL;
+	}
+
+	void OnClick(Point pt, int widget, int click_count) override
+	{
+		this->RaiseWidget(_demolition_mode + WID_DM_ALL);
+		_demolition_mode = (DemolitionMode)(widget - WID_DM_ALL);
+		this->LowerWidget(_demolition_mode + WID_DM_ALL);
+		if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+		this->SetDirty();
+	}
+};
+
+/** Nested widget definition of the demolition mode selection window */
+static const NWidgetPart _nested_demolition_mode_selection_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DM_ALL), SetMinimalSize(22, 22),
+								SetFill(0, 1), SetDataTip(SPR_IMG_DYNAMITE, STR_DEMOLISH_EVERYTHING_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DM_TREES), SetMinimalSize(22, 22),
+								SetFill(0, 1), SetDataTip(SPR_IMG_PLANTTREES, STR_DEMOLISH_TREES_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DM_COMPANY_PROPS), SetMinimalSize(22, 22),
+								SetFill(0, 1), SetDataTip(SPR_IMG_SHOW_ROUTES, STR_DEMOLISH_COMPANY_PROPERTIES_TOOLTIP),
+	EndContainer(),
+};
+
+static WindowDesc _demolition_mode_selection_desc(
+	WDP_AUTO, nullptr, 0, 0,
+	WC_DEMOLITION_MODE_SELECTION, WC_SCEN_LAND_GEN,
+	WDF_CONSTRUCTION,
+	_nested_demolition_mode_selection_widgets, lengthof(_nested_demolition_mode_selection_widgets)
+);
+
+static void ShowDemolitionModeSelectionPicker(Window *parent)
+{
+	new DemolitionModeSelectionWindow(&_demolition_mode_selection_desc, parent);
+}
+
 /**
  * A central place to handle all X_AND_Y dragged GUI functions.
  * @param proc       Procedure related to the dragging
@@ -114,7 +162,7 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 
 	switch (proc) {
 		case DDSP_DEMOLISH_AREA:
-			DoCommandP(end_tile, start_tile, _ctrl_pressed ? 1 : 0, CMD_CLEAR_AREA | CMD_MSG(STR_ERROR_CAN_T_CLEAR_THIS_AREA), CcPlaySound_EXPLOSION);
+			DoCommandP(end_tile, start_tile, (_ctrl_pressed ? 1 : 0) | _demolition_mode << 1, CMD_CLEAR_AREA | CMD_MSG(STR_ERROR_CAN_T_CLEAR_THIS_AREA), CcPlaySound_EXPLOSION);
 			break;
 		case DDSP_RAISE_AND_LEVEL_AREA:
 			DoCommandP(end_tile, start_tile, LM_RAISE << 1 | (_ctrl_pressed ? 1 : 0), CMD_LEVEL_LAND | CMD_MSG(STR_ERROR_CAN_T_RAISE_LAND_HERE), CcTerraform);
@@ -191,8 +239,10 @@ struct TerraformToolbarWindow : Window {
 				break;
 
 			case WID_TT_DEMOLISH: // Demolish aka dynamite button
-				HandlePlacePushButton(this, WID_TT_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL);
-				this->last_user_action = widget;
+				if (HandlePlacePushButton(this, WID_TT_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL)) {
+					ShowDemolitionModeSelectionPicker(this);
+					this->last_user_action = widget;
+				}
 				break;
 
 			case WID_TT_BUY_LAND: // Buy land button
@@ -278,6 +328,7 @@ struct TerraformToolbarWindow : Window {
 	void OnPlaceObjectAbort() override
 	{
 		this->RaiseButtons();
+		DeleteWindowById(WC_DEMOLITION_MODE_SELECTION, 0);
 	}
 
 	static HotkeyList hotkeys;

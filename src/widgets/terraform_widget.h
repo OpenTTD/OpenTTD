@@ -44,4 +44,11 @@ enum EditorTerraformToolbarWidgets {
 	WID_ETT_RESET_LANDSCAPE,                     ///< Button for removing all company-owned property.
 };
 
+/** Widgets of the #DemolitionModeSelectionWindow class. */
+enum DemolitionModeSelectionWidgets {
+	WID_DM_ALL,           ///< Demolish everything
+	WID_DM_TREES,         ///< Demolish trees
+	WID_DM_COMPANY_PROPS, ///< Demolish company properties
+};
+
 #endif /* WIDGETS_TERRAFORM_WIDGET_H */

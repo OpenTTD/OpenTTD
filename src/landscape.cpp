@@ -736,6 +736,7 @@ CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
  * @param p1 start tile of area dragging
  * @param p2 various bitstuffed data.
  *  bit      0: Whether to use the Orthogonal (0) or Diagonal (1) iterator.
+ *  bit    1-2: Demolition mode.
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -750,10 +751,23 @@ CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	const Company *c = (flags & (DC_AUTO | DC_BANKRUPT)) ? nullptr : Company::GetIfValid(_current_company);
 	int limit = (c == nullptr ? INT32_MAX : GB(c->clear_limit, 16, 16));
+	const DemolitionMode demolition_mode = (DemolitionMode)GB(p2, 1, 2);
 
 	TileIterator *iter = HasBit(p2, 0) ? (TileIterator *)new DiagonalTileIterator(tile, p1) : new OrthogonalTileIterator(tile, p1);
 	for (; *iter != INVALID_TILE; ++(*iter)) {
 		TileIndex t = *iter;
+		switch (demolition_mode) {
+			case DM_ALL: /* Do nothing */
+				break;
+			case DM_TREES:
+				if (GetTileType(t) != MP_TREES) continue;
+				break;
+			case DM_COMPANY_PROPS:
+				if (IsTileType(t, MP_HOUSE) || IsTileType(t, MP_INDUSTRY) || GetTileOwner(t) != _local_company) continue;
+				break;
+			default:
+				return CMD_ERROR;
+		}
 		CommandCost ret = DoCommand(t, 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
 		if (ret.Failed()) {
 			last_error = ret;

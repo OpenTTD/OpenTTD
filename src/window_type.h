@@ -442,6 +442,12 @@ enum WindowClass {
 	WC_SCEN_LAND_GEN,
 
 	/**
+	 * Demolition selection mode; %Window numbers:
+	 *   - 0 = #DemolitionModeSelectionWidgets
+	 */
+	WC_DEMOLITION_MODE_SELECTION,
+
+	/**
 	 * Generate landscape (newgame); %Window numbers:
 	 *   - GLWM_SCENARIO = #CreateScenarioWidgets
 	 *   - #GenerateLandscapeWindowMode = #GenerateLandscapeWidgets
