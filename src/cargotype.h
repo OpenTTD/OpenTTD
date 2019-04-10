@@ -131,6 +131,7 @@ private:
 
 extern CargoTypes _cargo_mask;
 extern CargoTypes _standard_cargo_mask;
+extern CargoTypes _passengers_cargo_mask;
 
 void SetupCargoForClimate(LandscapeID l);
 CargoID GetCargoIDByLabel(CargoLabel cl);

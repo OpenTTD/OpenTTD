@@ -2997,6 +2997,12 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 						FALLTHROUGH;
 					case 0xFF: cs->town_effect = TE_NONE; break;
 				}
+
+				if (cs->town_effect == TE_PASSENGERS) {
+					SetBit(_passengers_cargo_mask, cid + i);
+				} else {
+					ClrBit(_passengers_cargo_mask, cid + i);
+				}
 				break;
 			}
 

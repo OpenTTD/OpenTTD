@@ -300,8 +300,28 @@ bool FindSubsidyPassengerRoute()
 	if (!Subsidy::CanAllocateItem()) return false;
 
 	const Town *src = Town::GetRandom();
-	if (src->cache.population < SUBSIDY_PAX_MIN_POPULATION ||
-			src->GetPercentTransported(CT_PASSENGERS) > SUBSIDY_MAX_PCT_TRANSPORTED) {
+	if (src->cache.population < SUBSIDY_PAX_MIN_POPULATION) return false;
+
+	/* Only passenger subsidies are handled here. */
+	CargoTypes town_cargo_produced = src->cargo_produced & _passengers_cargo_mask;
+
+	/* No cargo produced at all? */
+	if (town_cargo_produced == 0) return false;
+
+	/* Choose a random cargo that is produced in the town. */
+	uint8 cargo_number = RandomRange(CountBits(town_cargo_produced));
+	CargoID cid;
+	FOR_EACH_SET_CARGO_ID(cid, town_cargo_produced) {
+		if (cargo_number == 0) break;
+		cargo_number--;
+	}
+
+	if (!CargoSpec::Get(cid)->IsValid() ||
+			_settings_game.linkgraph.GetDistributionType(cid) != DT_MANUAL) {
+		return false;
+	}
+
+	if (src->GetPercentTransported(cid) > SUBSIDY_MAX_PCT_TRANSPORTED) {
 		return false;
 	}
 
@@ -311,9 +331,9 @@ bool FindSubsidyPassengerRoute()
 	}
 
 	if (DistanceManhattan(src->xy, dst->xy) > SUBSIDY_MAX_DISTANCE) return false;
-	if (CheckSubsidyDuplicate(CT_PASSENGERS, ST_TOWN, src->index, ST_TOWN, dst->index)) return false;
+	if (CheckSubsidyDuplicate(cid, ST_TOWN, src->index, ST_TOWN, dst->index)) return false;
 
-	CreateSubsidy(CT_PASSENGERS, ST_TOWN, src->index, ST_TOWN, dst->index);
+	CreateSubsidy(cid, ST_TOWN, src->index, ST_TOWN, dst->index);
 
 	return true;
 }
@@ -335,10 +355,8 @@ bool FindSubsidyTownCargoRoute()
 	const Town *src_town = Town::GetRandom();
 	if (src_town->cache.population < SUBSIDY_CARGO_MIN_POPULATION) return false;
 
-	CargoTypes town_cargo_produced = src_town->cargo_produced;
-
 	/* Passenger subsidies are not handled here. */
-	ClrBit(town_cargo_produced, CT_PASSENGERS);
+	CargoTypes town_cargo_produced = src_town->cargo_produced & ~_passengers_cargo_mask;
 
 	/* No cargo produced at all? */
 	if (town_cargo_produced == 0) return false;

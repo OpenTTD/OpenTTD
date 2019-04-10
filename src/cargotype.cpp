@@ -36,6 +36,11 @@ CargoTypes _cargo_mask;
 CargoTypes _standard_cargo_mask;
 
 /**
+ * Bitmask of cargo types that behave as passengers towards towns (TE_PASSENGERS)
+ */
+CargoTypes _passengers_cargo_mask;
+
+/**
  * Set up the default cargo types for the given landscape type.
  * @param l Landscape
  */
@@ -53,6 +58,7 @@ void SetupCargoForClimate(LandscapeID l)
 	}
 
 	_cargo_mask = 0;
+	_passengers_cargo_mask = 0;
 
 	for (CargoID i = 0; i < lengthof(_default_climate_cargo[l]); i++) {
 		CargoLabel cl = _default_climate_cargo[l][i];
@@ -74,6 +80,7 @@ void SetupCargoForClimate(LandscapeID l)
 
 				/* Populate the available cargo mask */
 				SetBit(_cargo_mask, i);
+				if (_default_cargo[j].town_effect == TE_PASSENGERS) SetBit(_passengers_cargo_mask, i);
 				break;
 			}
 		}
