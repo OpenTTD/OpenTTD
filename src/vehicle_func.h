@@ -60,7 +60,7 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_t
 void ViewportAddVehicles(DrawPixelInfo *dpi);
 
 void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRFBugs bug_type, bool critical);
-CommandCost TunnelBridgeIsFree(TileIndex tile, TileIndex endtile, const Vehicle *ignore = NULL);
+CommandCost TunnelBridgeIsFree(TileIndex tile, TileIndex endtile, const Vehicle *ignore = nullptr);
 
 void DecreaseVehicleValue(Vehicle *v);
 void CheckVehicleBreakdown(Vehicle *v);

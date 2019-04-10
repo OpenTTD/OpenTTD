@@ -149,7 +149,7 @@ static uint32 GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint32
 		}
 	}
 	/* Not an 'old type' tile */
-	if (ats->grf_prop.spritegroup[0] != NULL) { // tile has a spritegroup ?
+	if (ats->grf_prop.spritegroup[0] != nullptr) { // tile has a spritegroup ?
 		if (ats->grf_prop.grffile->grfid == cur_grfid) { // same airport, same grf ?
 			return ats->grf_prop.local_id;
 		} else {
@@ -162,7 +162,7 @@ static uint32 GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint32
 
 /* virtual */ uint32 AirportTileScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
 {
-	assert(this->st != NULL);
+	assert(this->st != nullptr);
 
 	extern uint32 GetRelativePosition(TileIndex tile, TileIndex ind_tile);
 
@@ -203,14 +203,14 @@ static uint32 GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint32
 
 /* virtual */ uint32 AirportTileScopeResolver::GetRandomBits() const
 {
-	return (this->st == NULL ? 0 : this->st->random_bits) | (this->tile == INVALID_TILE ? 0 : GetStationTileRandomBits(this->tile) << 16);
+	return (this->st == nullptr ? 0 : this->st->random_bits) | (this->tile == INVALID_TILE ? 0 : GetStationTileRandomBits(this->tile) << 16);
 }
 
 /**
  * Constructor of the resolver for airport tiles.
  * @param ats Specification of the airport tiles.
  * @param tile %Tile for the callback, only valid for airporttile callbacks.
- * @param st Station of the airport for which the callback is run, or \c NULL for build gui.
+ * @param st Station of the airport for which the callback is run, or \c nullptr for build gui.
  * @param callback Callback ID.
  * @param callback_param1 First parameter (var 10) of the callback.
  * @param callback_param2 Second parameter (var 18) of the callback.
@@ -230,7 +230,7 @@ uint16 GetAirportTileCallback(CallbackID callback, uint32 param1, uint32 param2,
 
 static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte colour, StationGfx gfx)
 {
-	const DrawTileSprites *dts = group->ProcessRegisters(NULL);
+	const DrawTileSprites *dts = group->ProcessRegisters(nullptr);
 
 	SpriteID image = dts->ground.sprite;
 	SpriteID pal   = dts->ground.pal;
@@ -261,7 +261,7 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, StationGfx gfx, const Airport
 
 	AirportTileResolverObject object(airts, ti->tile, st);
 	const SpriteGroup *group = object.Resolve();
-	if (group == NULL || group->type != SGT_TILELAYOUT) {
+	if (group == nullptr || group->type != SGT_TILELAYOUT) {
 		return false;
 	}
 
@@ -282,7 +282,7 @@ struct AirportTileAnimationBase : public AnimationBase<AirportTileAnimationBase,
 void AnimateAirportTile(TileIndex tile)
 {
 	const AirportTileSpec *ats = AirportTileSpec::GetByTile(tile);
-	if (ats == NULL) return;
+	if (ats == nullptr) return;
 
 	AirportTileAnimationBase::AnimateTile(ats, Station::GetByTile(tile), tile, HasBit(ats->animation_special_flags, 0));
 }

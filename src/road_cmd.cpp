@@ -136,7 +136,7 @@ CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, R
 	if (_cheats.magic_bulldozer.value) return CommandCost();
 
 	Town *t = ClosestTownFromTile(tile, UINT_MAX);
-	if (t == NULL) return CommandCost();
+	if (t == nullptr) return CommandCost();
 
 	/* check if you're allowed to remove the street owned by a town
 	 * removal allowance depends on difficulty setting */
@@ -227,7 +227,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			cost.AddCost(len * 2 * _price[PR_CLEAR_ROAD]);
 			if (flags & DC_EXEC) {
 				Company *c = Company::GetIfValid(GetRoadOwner(tile, rt));
-				if (c != NULL) {
+				if (c != nullptr) {
 					/* A full diagonal road tile has two road bits. */
 					c->infrastructure.road[rt] -= len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
 					DirtyCompanyInfrastructureWindows(c->index);
@@ -258,7 +258,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			cost.AddCost(_price[PR_CLEAR_ROAD] * 2);
 			if (flags & DC_EXEC) {
 				Company *c = Company::GetIfValid(GetRoadOwner(tile, rt));
-				if (c != NULL) {
+				if (c != nullptr) {
 					/* A full diagonal road tile has two road bits. */
 					c->infrastructure.road[rt] -= 2;
 					DirtyCompanyInfrastructureWindows(c->index);
@@ -319,7 +319,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 				}
 
 				Company *c = Company::GetIfValid(GetRoadOwner(tile, rt));
-				if (c != NULL) {
+				if (c != nullptr) {
 					c->infrastructure.road[rt] -= CountBits(pieces);
 					DirtyCompanyInfrastructureWindows(c->index);
 				}
@@ -333,7 +333,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 						if (rt == ROADTYPE_ROAD && IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN)) {
 							/* Update nearest-town index */
 							const Town *town = CalcClosestTownFromTile(tile);
-							SetTownIndex(tile, town == NULL ? INVALID_TOWN : town->index);
+							SetTownIndex(tile, town == nullptr ? INVALID_TOWN : town->index);
 						}
 						SetRoadBits(tile, ROAD_NONE, rt);
 						SetRoadTypes(tile, rts);
@@ -367,7 +367,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 
 			if (flags & DC_EXEC) {
 				Company *c = Company::GetIfValid(GetRoadOwner(tile, rt));
-				if (c != NULL) {
+				if (c != nullptr) {
 					/* A full diagonal road tile has two road bits. */
 					c->infrastructure.road[rt] -= 2;
 					DirtyCompanyInfrastructureWindows(c->index);
@@ -384,7 +384,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 					/* Update rail count for level crossings. The plain track should still be accounted
 					 * for, so only subtract the difference to the level crossing cost. */
 					c = Company::GetIfValid(GetTileOwner(tile));
-					if (c != NULL) {
+					if (c != nullptr) {
 						c->infrastructure.rail[GetRailType(tile)] -= LEVELCROSSING_TRACKBIT_FACTOR - 1;
 						DirtyCompanyInfrastructureWindows(c->index);
 					}
@@ -494,13 +494,13 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if ((Company::IsValidID(company) && p2 != 0) || (company == OWNER_TOWN && !Town::IsValidID(p2)) || (company == OWNER_DEITY && p2 != 0)) return CMD_ERROR;
 	if (company != OWNER_TOWN) {
 		const Town *town = CalcClosestTownFromTile(tile);
-		p2 = (town != NULL) ? town->index : INVALID_TOWN;
+		p2 = (town != nullptr) ? town->index : INVALID_TOWN;
 
 		if (company == OWNER_DEITY) {
 			company = OWNER_TOWN;
 
 			/* If we are not within a town, we are not owned by the town */
-			if (town == NULL || DistanceSquare(tile, town->xy) > town->cache.squared_town_zone_radius[HZB_TOWN_EDGE]) {
+			if (town == nullptr || DistanceSquare(tile, town->xy) > town->cache.squared_town_zone_radius[HZB_TOWN_EDGE]) {
 				company = OWNER_NONE;
 			}
 		}
@@ -633,7 +633,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				YapfNotifyTrackLayoutChange(tile, railtrack);
 				/* Update company infrastructure counts. A level crossing has two road bits. */
 				Company *c = Company::GetIfValid(company);
-				if (c != NULL) {
+				if (c != nullptr) {
 					c->infrastructure.road[rt] += 2;
 					if (rt != ROADTYPE_ROAD) c->infrastructure.road[ROADTYPE_ROAD] += 2;
 					DirtyCompanyInfrastructureWindows(company);
@@ -641,7 +641,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				/* Update rail count for level crossings. The plain track is already
 				 * counted, so only add the difference to the level crossing cost. */
 				c = Company::GetIfValid(GetTileOwner(tile));
-				if (c != NULL) {
+				if (c != nullptr) {
 					c->infrastructure.rail[GetRailType(tile)] += LEVELCROSSING_TRACKBIT_FACTOR - 1;
 					DirtyCompanyInfrastructureWindows(c->index);
 				}
@@ -783,7 +783,7 @@ do_clear:;
 
 		/* Update company infrastructure count. */
 		Company *c = Company::GetIfValid(GetRoadOwner(tile, rt));
-		if (c != NULL) {
+		if (c != nullptr) {
 			if (IsTileType(tile, MP_TUNNELBRIDGE)) num_pieces *= TUNNELBRIDGE_TRACKBIT_FACTOR;
 			c->infrastructure.road[rt] += num_pieces;
 			DirtyCompanyInfrastructureWindows(c->index);
@@ -1064,7 +1064,7 @@ static CommandCost RemoveRoadDepot(TileIndex tile, DoCommandFlag flags)
 
 	if (flags & DC_EXEC) {
 		Company *c = Company::GetIfValid(GetTileOwner(tile));
-		if (c != NULL) {
+		if (c != nullptr) {
 			/* A road depot has two road bits. */
 			c->infrastructure.road[FIND_FIRST_BIT(GetRoadTypes(tile))] -= 2;
 			DirtyCompanyInfrastructureWindows(c->index);
@@ -1449,7 +1449,7 @@ void UpdateNearestTownForRoadTiles(bool invalidate)
 			TownID tid = INVALID_TOWN;
 			if (!invalidate) {
 				const Town *town = CalcClosestTownFromTile(t);
-				if (town != NULL) tid = town->index;
+				if (town != nullptr) tid = town->index;
 			}
 			SetTownIndex(t, tid);
 		}
@@ -1522,7 +1522,7 @@ static void TileLoop_Road(TileIndex tile)
 	if (!HasRoadWorks(tile)) {
 		HouseZonesBits grp = HZB_TOWN_EDGE;
 
-		if (t != NULL) {
+		if (t != nullptr) {
 			grp = GetTownRadiusGroup(t, tile);
 
 			/* Show an animation to indicate road work */
@@ -1751,7 +1751,7 @@ static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int 
 				rv->state = RVSB_IN_DEPOT;
 				rv->vehstatus |= VS_HIDDEN;
 				rv->direction = ReverseDir(rv->direction);
-				if (rv->Next() == NULL) VehicleEnterDepot(rv->First());
+				if (rv->Next() == nullptr) VehicleEnterDepot(rv->First());
 				rv->tile = tile;
 
 				InvalidateWindowData(WC_VEHICLE_DEPOT, rv->tile);
@@ -1863,14 +1863,14 @@ extern const TileTypeProcs _tile_type_road_procs = {
 	DrawTile_Road,           // draw_tile_proc
 	GetSlopePixelZ_Road,     // get_slope_z_proc
 	ClearTile_Road,          // clear_tile_proc
-	NULL,                    // add_accepted_cargo_proc
+	nullptr,                    // add_accepted_cargo_proc
 	GetTileDesc_Road,        // get_tile_desc_proc
 	GetTileTrackStatus_Road, // get_tile_track_status_proc
 	ClickTile_Road,          // click_tile_proc
-	NULL,                    // animate_tile_proc
+	nullptr,                    // animate_tile_proc
 	TileLoop_Road,           // tile_loop_proc
 	ChangeTileOwner_Road,    // change_tile_owner_proc
-	NULL,                    // add_produced_cargo_proc
+	nullptr,                    // add_produced_cargo_proc
 	VehicleEnter_Road,       // vehicle_enter_tile_proc
 	GetFoundation_Road,      // get_foundation_proc
 	TerraformTile_Road,      // terraform_tile_proc

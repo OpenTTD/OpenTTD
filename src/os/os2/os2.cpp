@@ -102,7 +102,7 @@ bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
 	struct diskfree_t free;
 	char drive = path[0] - 'A' + 1;
 
-	if (tot != NULL && _getdiskfree(drive, &free) == 0) {
+	if (tot != nullptr && _getdiskfree(drive, &free) == 0) {
 		*tot = free.avail_clusters * free.sectors_per_cluster * free.bytes_per_sector;
 		return true;
 	}
@@ -119,7 +119,7 @@ bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
 		free = (uint64)s.f_frsize * s.f_bavail;
 	}
 #endif
-	if (tot != NULL) *tot = free;
+	if (tot != nullptr) *tot = free;
 	return true;
 #endif
 }
@@ -173,7 +173,7 @@ void ShowOSErrorBox(const char *buf, bool system)
 
 int CDECL main(int argc, char *argv[])
 {
-	SetRandomSeed(time(NULL));
+	SetRandomSeed(time(nullptr));
 
 	/* Make sure our arguments contain only valid UTF-8 characters. */
 	for (int i = 0; i < argc; i++) ValidateString(argv[i]);
@@ -191,7 +191,7 @@ bool GetClipboardContents(char *buffer, const char *last)
 	{
 		const char *text = (const char*)WinQueryClipbrdData(hab, CF_TEXT);
 
-		if (text != NULL)
+		if (text != nullptr)
 		{
 			strecpy(buffer, text, last);
 			WinCloseClipbrd(hab);

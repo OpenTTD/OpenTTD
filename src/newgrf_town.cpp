@@ -33,7 +33,7 @@
 			/* Check the persistent storage for the GrfID stored in register 100h. */
 			uint32 grfid = GetRegister(0x100);
 			if (grfid == 0xFFFFFFFF) {
-				if (this->ro.grffile == NULL) return 0;
+				if (this->ro.grffile == nullptr) return 0;
 				grfid = this->ro.grffile->grfid;
 			}
 
@@ -123,9 +123,9 @@
 {
 	if (this->readonly) return;
 
-	assert(this->t != NULL);
+	assert(this->t != nullptr);
 	/* We can't store anything if the caller has no #GRFFile. */
-	if (this->ro.grffile == NULL) return;
+	if (this->ro.grffile == nullptr) return;
 
 	/* Check the persistent storage for the GrfID stored in register 100h. */
 	uint32 grfid = GetRegister(0x100);

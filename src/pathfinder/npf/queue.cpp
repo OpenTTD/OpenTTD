@@ -37,7 +37,7 @@ void BinaryHeap::Clear(bool free_values)
 	uint j;
 
 	for (i = 0; i < this->blocks; i++) {
-		if (this->elements[i] == NULL) {
+		if (this->elements[i] == nullptr) {
 			/* No more allocated blocks */
 			break;
 		}
@@ -55,7 +55,7 @@ void BinaryHeap::Clear(bool free_values)
 		if (i != 0) {
 			/* Leave the first block of memory alone */
 			free(this->elements[i]);
-			this->elements[i] = NULL;
+			this->elements[i] = nullptr;
 		}
 	}
 	this->size = 0;
@@ -73,7 +73,7 @@ void BinaryHeap::Free(bool free_values)
 
 	this->Clear(free_values);
 	for (i = 0; i < this->blocks; i++) {
-		if (this->elements[i] == NULL) break;
+		if (this->elements[i] == nullptr) break;
 		free(this->elements[i]);
 	}
 	free(this->elements);
@@ -88,7 +88,7 @@ bool BinaryHeap::Push(void *item, int priority)
 	if (this->size == this->max_size) return false;
 	assert(this->size < this->max_size);
 
-	if (this->elements[this->size >> BINARY_HEAP_BLOCKSIZE_BITS] == NULL) {
+	if (this->elements[this->size >> BINARY_HEAP_BLOCKSIZE_BITS] == nullptr) {
 		/* The currently allocated blocks are full, allocate a new one */
 		assert((this->size & BINARY_HEAP_BLOCKSIZE_MASK) == 0);
 		this->elements[this->size >> BINARY_HEAP_BLOCKSIZE_BITS] = MallocT<BinaryHeapNode>(BINARY_HEAP_BLOCKSIZE);
@@ -195,7 +195,7 @@ void *BinaryHeap::Pop()
 {
 	void *result;
 
-	if (this->size == 0) return NULL;
+	if (this->size == 0) return nullptr;
 
 	/* The best item is always on top, so give that as result */
 	result = this->GetElement(1).item;
@@ -264,7 +264,7 @@ void Hash::Delete(bool free_values)
 			/* Free the first value */
 			if (free_values) free(this->buckets[i].value);
 			node = this->buckets[i].next;
-			while (node != NULL) {
+			while (node != nullptr) {
 				HashNode *prev = node;
 
 				node = node->next;
@@ -296,7 +296,7 @@ void Hash::PrintStatistics() const
 			const HashNode *node;
 
 			used_buckets++;
-			for (node = &this->buckets[i]; node != NULL; node = node->next) collision++;
+			for (node = &this->buckets[i]; node != nullptr; node = node->next) collision++;
 			if (collision > max_collision) max_collision = collision;
 		}
 		if (collision >= lengthof(usage)) collision = lengthof(usage) - 1;
@@ -351,7 +351,7 @@ void Hash::Clear(bool free_values)
 			/* Free the first value */
 			if (free_values) free(this->buckets[i].value);
 			node = this->buckets[i].next;
-			while (node != NULL) {
+			while (node != nullptr) {
 				HashNode *prev = node;
 
 				node = node->next;
@@ -365,32 +365,32 @@ void Hash::Clear(bool free_values)
 
 /**
  * Finds the node that that saves this key pair. If it is not
- * found, returns NULL. If it is found, *prev is set to the
+ * found, returns nullptr. If it is found, *prev is set to the
  * node before the one found, or if the node found was the first in the bucket
- * to NULL. If it is not found, *prev is set to the last HashNode in the
- * bucket, or NULL if it is empty. prev can also be NULL, in which case it is
+ * to nullptr. If it is not found, *prev is set to the last HashNode in the
+ * bucket, or nullptr if it is empty. prev can also be nullptr, in which case it is
  * not used for output.
  */
 HashNode *Hash::FindNode(uint key1, uint key2, HashNode** prev_out) const
 {
 	uint hash = this->hash(key1, key2);
-	HashNode *result = NULL;
+	HashNode *result = nullptr;
 
 	/* Check if the bucket is empty */
 	if (!this->buckets_in_use[hash]) {
-		if (prev_out != NULL) *prev_out = NULL;
-		result = NULL;
+		if (prev_out != nullptr) *prev_out = nullptr;
+		result = nullptr;
 	/* Check the first node specially */
 	} else if (this->buckets[hash].key1 == key1 && this->buckets[hash].key2 == key2) {
 		/* Save the value */
 		result = this->buckets + hash;
-		if (prev_out != NULL) *prev_out = NULL;
+		if (prev_out != nullptr) *prev_out = nullptr;
 	/* Check all other nodes */
 	} else {
 		HashNode *prev = this->buckets + hash;
 		HashNode *node;
 
-		for (node = prev->next; node != NULL; node = node->next) {
+		for (node = prev->next; node != nullptr; node = node->next) {
 			if (node->key1 == key1 && node->key2 == key2) {
 				/* Found it */
 				result = node;
@@ -398,14 +398,14 @@ HashNode *Hash::FindNode(uint key1, uint key2, HashNode** prev_out) const
 			}
 			prev = node;
 		}
-		if (prev_out != NULL) *prev_out = prev;
+		if (prev_out != nullptr) *prev_out = prev;
 	}
 	return result;
 }
 
 /**
  * Deletes the value with the specified key pair from the hash and returns
- * that value. Returns NULL when the value was not present. The value returned
+ * that value. Returns nullptr when the value was not present. The value returned
  * is _not_ free()'d!
  */
 void *Hash::DeleteValue(uint key1, uint key2)
@@ -414,15 +414,15 @@ void *Hash::DeleteValue(uint key1, uint key2)
 	HashNode *prev; // Used as output var for below function call
 	HashNode *node = this->FindNode(key1, key2, &prev);
 
-	if (node == NULL) {
+	if (node == nullptr) {
 		/* not found */
-		result = NULL;
-	} else if (prev == NULL) {
+		result = nullptr;
+	} else if (prev == nullptr) {
 		/* It is in the first node, we can't free that one, so we free
 		 * the next one instead (if there is any)*/
 		/* Save the value */
 		result = node->value;
-		if (node->next != NULL) {
+		if (node->next != nullptr) {
 			HashNode *next = node->next;
 			/* Copy the second to the first */
 			*node = *next;
@@ -443,20 +443,20 @@ void *Hash::DeleteValue(uint key1, uint key2)
 		/* Free the node */
 		free(node);
 	}
-	if (result != NULL) this->size--;
+	if (result != nullptr) this->size--;
 	return result;
 }
 
 /**
  * Sets the value associated with the given key pair to the given value.
- * Returns the old value if the value was replaced, NULL when it was not yet present.
+ * Returns the old value if the value was replaced, nullptr when it was not yet present.
  */
 void *Hash::Set(uint key1, uint key2, void *value)
 {
 	HashNode *prev;
 	HashNode *node = this->FindNode(key1, key2, &prev);
 
-	if (node != NULL) {
+	if (node != nullptr) {
 		/* Found it */
 		void *result = node->value;
 
@@ -464,7 +464,7 @@ void *Hash::Set(uint key1, uint key2, void *value)
 		return result;
 	}
 	/* It is not yet present, let's add it */
-	if (prev == NULL) {
+	if (prev == nullptr) {
 		/* The bucket is still empty */
 		uint hash = this->hash(key1, key2);
 		this->buckets_in_use[hash] = true;
@@ -474,21 +474,21 @@ void *Hash::Set(uint key1, uint key2, void *value)
 		node = MallocT<HashNode>(1);
 		prev->next = node;
 	}
-	node->next = NULL;
+	node->next = nullptr;
 	node->key1 = key1;
 	node->key2 = key2;
 	node->value = value;
 	this->size++;
-	return NULL;
+	return nullptr;
 }
 
 /**
- * Gets the value associated with the given key pair, or NULL when it is not
+ * Gets the value associated with the given key pair, or nullptr when it is not
  * present.
  */
 void *Hash::Get(uint key1, uint key2) const
 {
-	HashNode *node = this->FindNode(key1, key2, NULL);
+	HashNode *node = this->FindNode(key1, key2, nullptr);
 
-	return (node != NULL) ? node->value : NULL;
+	return (node != nullptr) ? node->value : nullptr;
 }

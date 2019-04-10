@@ -166,9 +166,9 @@
 /* static */ Money ScriptMarine::GetBuildCost(BuildType build_type)
 {
 	switch (build_type) {
-		case BT_DOCK:  return ::GetPrice(PR_BUILD_STATION_DOCK, 1, NULL);
-		case BT_DEPOT: return ::GetPrice(PR_BUILD_DEPOT_SHIP, 1, NULL);
-		case BT_BUOY:  return ::GetPrice(PR_BUILD_WAYPOINT_BUOY, 1, NULL);
+		case BT_DOCK:  return ::GetPrice(PR_BUILD_STATION_DOCK, 1, nullptr);
+		case BT_DEPOT: return ::GetPrice(PR_BUILD_DEPOT_SHIP, 1, nullptr);
+		case BT_BUOY:  return ::GetPrice(PR_BUILD_WAYPOINT_BUOY, 1, nullptr);
 		default: return -1;
 	}
 }

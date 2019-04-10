@@ -25,7 +25,7 @@ const char *NetworkAddress::GetHostname()
 {
 	if (StrEmpty(this->hostname) && this->address.ss_family != AF_UNSPEC) {
 		assert(this->address_length != 0);
-		getnameinfo((struct sockaddr *)&this->address, this->address_length, this->hostname, sizeof(this->hostname), NULL, 0, NI_NUMERICHOST);
+		getnameinfo((struct sockaddr *)&this->address, this->address_length, this->hostname, sizeof(this->hostname), nullptr, 0, NI_NUMERICHOST);
 	}
 	return this->hostname;
 }
@@ -131,7 +131,7 @@ const sockaddr_storage *NetworkAddress::GetAddress()
 		 * bothered to implement the specifications and allow '0' as value
 		 * that means "don't care whether it is SOCK_STREAM or SOCK_DGRAM".
 		 */
-		this->Resolve(this->address.ss_family, SOCK_STREAM, AI_ADDRCONFIG, NULL, ResolveLoopProc);
+		this->Resolve(this->address.ss_family, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ResolveLoopProc);
 		this->resolved = true;
 	}
 	return &this->address;
@@ -145,7 +145,7 @@ const sockaddr_storage *NetworkAddress::GetAddress()
 bool NetworkAddress::IsFamily(int family)
 {
 	if (!this->IsResolved()) {
-		this->Resolve(family, SOCK_STREAM, AI_ADDRCONFIG, NULL, ResolveLoopProc);
+		this->Resolve(family, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ResolveLoopProc);
 	}
 	return this->address.ss_family == family;
 }
@@ -167,7 +167,7 @@ bool NetworkAddress::IsInNetmask(const char *netmask)
 
 	/* Check for CIDR separator */
 	const char *chr_cidr = strchr(netmask, '/');
-	if (chr_cidr != NULL) {
+	if (chr_cidr != nullptr) {
 		int tmp_cidr = atoi(chr_cidr + 1);
 
 		/* Invalid CIDR, treat as single host */
@@ -232,7 +232,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	seprintf(port_name, lastof(port_name), "%u", this->GetPort());
 
 	bool reset_hostname = false;
-	/* Setting both hostname to NULL and port to 0 is not allowed.
+	/* Setting both hostname to nullptr and port to 0 is not allowed.
 	 * As port 0 means bind to any port, the other must mean that
 	 * we want to bind to 'all' IPs. */
 	if (StrEmpty(this->hostname) && this->address_length == 0 && this->GetPort() == 0) {
@@ -242,7 +242,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 		strecpy(this->hostname, fam == AF_INET ? "0.0.0.0" : "::", lastof(this->hostname));
 	}
 
-	int e = getaddrinfo(StrEmpty(this->hostname) ? NULL : this->hostname, port_name, &hints, &ai);
+	int e = getaddrinfo(StrEmpty(this->hostname) ? nullptr : this->hostname, port_name, &hints, &ai);
 
 	if (reset_hostname) strecpy(this->hostname, "", lastof(this->hostname));
 
@@ -255,18 +255,18 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	}
 
 	SOCKET sock = INVALID_SOCKET;
-	for (struct addrinfo *runp = ai; runp != NULL; runp = runp->ai_next) {
+	for (struct addrinfo *runp = ai; runp != nullptr; runp = runp->ai_next) {
 		/* When we are binding to multiple sockets, make sure we do not
 		 * connect to one with exactly the same address twice. That's
 		 * of course totally unneeded ;) */
-		if (sockets != NULL) {
+		if (sockets != nullptr) {
 			NetworkAddress address(runp->ai_addr, (int)runp->ai_addrlen);
 			if (sockets->Contains(address)) continue;
 		}
 		sock = func(runp);
 		if (sock == INVALID_SOCKET) continue;
 
-		if (sockets == NULL) {
+		if (sockets == nullptr) {
 			this->address_length = (int)runp->ai_addrlen;
 			assert(sizeof(this->address) >= runp->ai_addrlen);
 			memcpy(&this->address, runp->ai_addr, runp->ai_addrlen);
@@ -323,7 +323,7 @@ SOCKET NetworkAddress::Connect()
 {
 	DEBUG(net, 1, "Connecting to %s", this->GetAddressAsString());
 
-	return this->Resolve(AF_UNSPEC, SOCK_STREAM, AI_ADDRCONFIG, NULL, ConnectLoopProc);
+	return this->Resolve(AF_UNSPEC, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ConnectLoopProc);
 }
 
 /**
@@ -386,9 +386,9 @@ static SOCKET ListenLoopProc(addrinfo *runp)
  */
 void NetworkAddress::Listen(int socktype, SocketList *sockets)
 {
-	assert(sockets != NULL);
+	assert(sockets != nullptr);
 
-	/* Setting both hostname to NULL and port to 0 is not allowed.
+	/* Setting both hostname to nullptr and port to 0 is not allowed.
 	 * As port 0 means bind to any port, the other must mean that
 	 * we want to bind to 'all' IPs. */
 	if (this->address_length == 0 && this->address.ss_family == AF_UNSPEC &&

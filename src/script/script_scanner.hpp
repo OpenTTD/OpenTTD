@@ -73,7 +73,7 @@ public:
 	 * Find a script of a #ContentInfo
 	 * @param ci The information to compare to.
 	 * @param md5sum Whether to check the MD5 checksum.
-	 * @return A filename of a file of the content, else \c NULL.
+	 * @return A filename of a file of the content, else \c nullptr.
 	 */
 	const char *FindMainScript(const ContentInfo *ci, bool md5sum);
 

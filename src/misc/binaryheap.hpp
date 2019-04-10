@@ -72,7 +72,7 @@ public:
 	{
 		this->Clear();
 		free(this->data);
-		this->data = NULL;
+		this->data = nullptr;
 	}
 
 protected:

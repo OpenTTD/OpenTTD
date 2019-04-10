@@ -44,7 +44,7 @@
  * @param string The string that is checked.
  */
 #define EnforcePreconditionEncodedText(returnval, string)   \
-	if ((string) == NULL) { \
+	if ((string) == nullptr) { \
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_TOO_MANY_PARAMETERS); \
 		return returnval; \
 	} \

@@ -41,10 +41,10 @@ const char *GetDriverParam(const char * const *parm, const char *name)
 {
 	size_t len;
 
-	if (parm == NULL) return NULL;
+	if (parm == nullptr) return nullptr;
 
 	len = strlen(name);
-	for (; *parm != NULL; parm++) {
+	for (; *parm != nullptr; parm++) {
 		const char *p = *parm;
 
 		if (strncmp(p, name, len) == 0) {
@@ -52,7 +52,7 @@ const char *GetDriverParam(const char * const *parm, const char *name)
 			if (p[len] == '\0') return p + len;
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 
 /**
@@ -63,7 +63,7 @@ const char *GetDriverParam(const char * const *parm, const char *name)
  */
 bool GetDriverParamBool(const char * const *parm, const char *name)
 {
-	return GetDriverParam(parm, name) != NULL;
+	return GetDriverParam(parm, name) != nullptr;
 }
 
 /**
@@ -76,7 +76,7 @@ bool GetDriverParamBool(const char * const *parm, const char *name)
 int GetDriverParamInt(const char * const *parm, const char *name, int def)
 {
 	const char *p = GetDriverParam(parm, name);
-	return p != NULL ? atoi(p) : def;
+	return p != nullptr ? atoi(p) : def;
 }
 
 /**
@@ -120,8 +120,8 @@ bool DriverFactoryBase::SelectDriverImpl(const char *name, Driver::Type type)
 				Driver *newd = d->CreateInstance();
 				*GetActiveDriver(type) = newd;
 
-				const char *err = newd->Start(NULL);
-				if (err == NULL) {
+				const char *err = newd->Start(nullptr);
+				if (err == nullptr) {
 					DEBUG(driver, 1, "Successfully probed %s driver '%s'", GetDriverTypeName(type), d->name);
 					delete oldd;
 					return true;
@@ -141,8 +141,8 @@ bool DriverFactoryBase::SelectDriverImpl(const char *name, Driver::Type type)
 		/* Extract the driver name and put parameter list in parm */
 		strecpy(buffer, name, lastof(buffer));
 		parm = strchr(buffer, ':');
-		parms[0] = NULL;
-		if (parm != NULL) {
+		parms[0] = nullptr;
+		if (parm != nullptr) {
 			uint np = 0;
 			/* Tokenize the parm. */
 			do {
@@ -150,7 +150,7 @@ bool DriverFactoryBase::SelectDriverImpl(const char *name, Driver::Type type)
 				if (np < lengthof(parms) - 1) parms[np++] = parm;
 				while (*parm != '\0' && *parm != ',') parm++;
 			} while (*parm == ',');
-			parms[np] = NULL;
+			parms[np] = nullptr;
 		}
 
 		/* Find this driver */
@@ -168,7 +168,7 @@ bool DriverFactoryBase::SelectDriverImpl(const char *name, Driver::Type type)
 			Driver *newd = d->CreateInstance();
 
 			const char *err = newd->Start(parms);
-			if (err != NULL) {
+			if (err != nullptr) {
 				delete newd;
 				usererror("Unable to load driver '%s'. The error was: %s", d->name, err);
 			}

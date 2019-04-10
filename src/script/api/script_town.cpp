@@ -35,7 +35,7 @@
 
 /* static */ char *ScriptTown::GetName(TownID town_id)
 {
-	if (!IsValidTown(town_id)) return NULL;
+	if (!IsValidTown(town_id)) return nullptr;
 
 	::SetDParam(0, town_id);
 	return GetString(STR_TOWN_NAME);
@@ -45,8 +45,8 @@
 {
 	CCountedPtr<Text> counter(name);
 
-	const char *text = NULL;
-	if (name != NULL) {
+	const char *text = nullptr;
+	if (name != nullptr) {
 		text = name->GetDecodedText();
 		EnforcePreconditionEncodedText(false, text);
 		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
@@ -60,7 +60,7 @@
 {
 	CCountedPtr<Text> counter(text);
 
-	EnforcePrecondition(false, text != NULL);
+	EnforcePrecondition(false, text != nullptr);
 	const char *encoded_text = text->GetEncodedText();
 	EnforcePreconditionEncodedText(false, encoded_text);
 	EnforcePrecondition(false, IsValidTown(town_id));
@@ -257,7 +257,7 @@
 	if (ScriptObject::GetCompany() == OWNER_DEITY) return false;
 	if (!IsValidTown(town_id)) return false;
 
-	return HasBit(::GetMaskOfTownActions(NULL, ScriptObject::GetCompany(), ::Town::Get(town_id)), town_action);
+	return HasBit(::GetMaskOfTownActions(nullptr, ScriptObject::GetCompany(), ::Town::Get(town_id)), town_action);
 }
 
 /* static */ bool ScriptTown::PerformTownAction(TownID town_id, TownAction town_action)
@@ -293,8 +293,8 @@
 		layout = (RoadLayout) (byte)_settings_game.economy.town_layout;
 	}
 
-	const char *text = NULL;
-	if (name != NULL) {
+	const char *text = nullptr;
+	if (name != nullptr) {
 		text = name->GetDecodedText();
 		EnforcePreconditionEncodedText(false, text);
 		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);

@@ -29,7 +29,7 @@
 
 /* static */ char *ScriptCargo::GetCargoLabel(CargoID cargo_type)
 {
-	if (!IsValidCargo(cargo_type)) return NULL;
+	if (!IsValidCargo(cargo_type)) return nullptr;
 	const CargoSpec *cargo = ::CargoSpec::Get(cargo_type);
 
 	/* cargo->label is a uint32 packing a 4 character non-terminated string,

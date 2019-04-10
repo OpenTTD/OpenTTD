@@ -118,9 +118,9 @@ struct BaseSet {
 	 * @param isocode the isocode to search for
 	 * @return the description
 	 */
-	const char *GetDescription(const char *isocode = NULL) const
+	const char *GetDescription(const char *isocode = nullptr) const
 	{
-		if (isocode != NULL) {
+		if (isocode != nullptr) {
 			/* First the full ISO code */
 			for (const auto &pair : this->description) {
 				if (strcmp(pair.first, isocode) == 0) return pair.second;
@@ -151,17 +151,17 @@ struct BaseSet {
 	/**
 	 * Search a textfile file next to this base media.
 	 * @param type The type of the textfile to search for.
-	 * @return The filename for the textfile, \c NULL otherwise.
+	 * @return The filename for the textfile, \c nullptr otherwise.
 	 */
 	const char *GetTextfile(TextfileType type) const
 	{
 		for (uint i = 0; i < NUM_FILES; i++) {
 			const char *textfile = ::GetTextfile(type, BASESET_DIR, this->files[i].filename);
-			if (textfile != NULL) {
+			if (textfile != nullptr) {
 				return textfile;
 			}
 		}
-		return NULL;
+		return nullptr;
 	}
 };
 
@@ -231,7 +231,7 @@ template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::duplica
  * @param ci The content info to compare it to.
  * @param md5sum Should the MD5 checksum be tested as well?
  * @param s The list with sets.
- * @return The filename of the first file of the base set, or \c NULL if there is no match.
+ * @return The filename of the first file of the base set, or \c nullptr if there is no match.
  */
 template <class Tbase_set>
 const char *TryGetBaseSetFile(const ContentInfo *ci, bool md5sum, const Tbase_set *s);

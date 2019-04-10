@@ -48,8 +48,8 @@ struct LoadCheckData {
 	struct LoggedAction *gamelog_action;          ///< Gamelog actions
 	uint gamelog_actions;                         ///< Number of gamelog actions
 
-	LoadCheckData() : error_data(NULL), grfconfig(NULL),
-			grf_compatibility(GLC_NOT_FOUND), gamelog_action(NULL), gamelog_actions(0)
+	LoadCheckData() : error_data(nullptr), grfconfig(nullptr),
+			grf_compatibility(GLC_NOT_FOUND), gamelog_action(nullptr), gamelog_actions(0)
 	{
 		this->Clear();
 	}
@@ -77,7 +77,7 @@ struct LoadCheckData {
 	 */
 	bool HasNewGrfs()
 	{
-		return this->checkable && this->error == INVALID_STRING_ID && this->grfconfig != NULL;
+		return this->checkable && this->error == INVALID_STRING_ID && this->grfconfig != nullptr;
 	}
 
 	void Clear();

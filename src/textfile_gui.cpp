@@ -184,7 +184,7 @@ void TextfileWindow::SetupScrollbars()
 
 /* virtual */ const char *TextfileWindow::NextString()
 {
-	if (this->search_iterator >= this->lines.size()) return NULL;
+	if (this->search_iterator >= this->lines.size()) return nullptr;
 
 	return this->lines[this->search_iterator++];
 }
@@ -214,13 +214,13 @@ void TextfileWindow::SetupScrollbars()
  *              After the call, it contains the size of the uncompressed
  *              data.
  *
- * When decompressing fails, *bufp is set to NULL and *sizep to 0. The
+ * When decompressing fails, *bufp is set to nullptr and *sizep to 0. The
  * compressed buffer passed in is still freed in this case.
  */
 static void Gunzip(byte **bufp, size_t *sizep)
 {
 	static const int BLOCKSIZE  = 8192;
-	byte             *buf       = NULL;
+	byte             *buf       = nullptr;
 	size_t           alloc_size = 0;
 	z_stream         z;
 	int              res;
@@ -250,7 +250,7 @@ static void Gunzip(byte **bufp, size_t *sizep)
 		*sizep = alloc_size - z.avail_out;
 	} else {
 		/* Something went wrong */
-		*bufp = NULL;
+		*bufp = nullptr;
 		*sizep = 0;
 		free(buf);
 	}
@@ -270,13 +270,13 @@ static void Gunzip(byte **bufp, size_t *sizep)
  *              After the call, it contains the size of the uncompressed
  *              data.
  *
- * When decompressing fails, *bufp is set to NULL and *sizep to 0. The
+ * When decompressing fails, *bufp is set to nullptr and *sizep to 0. The
  * compressed buffer passed in is still freed in this case.
  */
 static void Xunzip(byte **bufp, size_t *sizep)
 {
 	static const int BLOCKSIZE  = 8192;
-	byte             *buf       = NULL;
+	byte             *buf       = nullptr;
 	size_t           alloc_size = 0;
 	lzma_stream      z = LZMA_STREAM_INIT;
 	int              res;
@@ -304,7 +304,7 @@ static void Xunzip(byte **bufp, size_t *sizep)
 		*sizep = alloc_size - z.avail_out;
 	} else {
 		/* Something went wrong */
-		*bufp = NULL;
+		*bufp = nullptr;
 		*sizep = 0;
 		free(buf);
 	}
@@ -317,14 +317,14 @@ static void Xunzip(byte **bufp, size_t *sizep)
  */
 /* virtual */ void TextfileWindow::LoadTextfile(const char *textfile, Subdirectory dir)
 {
-	if (textfile == NULL) return;
+	if (textfile == nullptr) return;
 
 	this->lines.clear();
 
 	/* Get text from file */
 	size_t filesize;
 	FILE *handle = FioFOpenFile(textfile, "rb", dir, &filesize);
-	if (handle == NULL) return;
+	if (handle == nullptr) return;
 
 	this->text = ReallocT(this->text, filesize);
 	size_t read = fread(this->text, 1, filesize, handle);
@@ -334,7 +334,7 @@ static void Xunzip(byte **bufp, size_t *sizep)
 
 #if defined(WITH_ZLIB) || defined(WITH_LIBLZMA)
 	const char *suffix = strrchr(textfile, '.');
-	if (suffix == NULL) return;
+	if (suffix == nullptr) return;
 #endif
 
 #if defined(WITH_ZLIB)
@@ -381,7 +381,7 @@ static void Xunzip(byte **bufp, size_t *sizep)
  * @param type The type of the textfile to search for.
  * @param dir The subdirectory to search in.
  * @param filename The filename of the content to look for.
- * @return The path to the textfile, \c NULL otherwise.
+ * @return The path to the textfile, \c nullptr otherwise.
  */
 const char *GetTextfile(TextfileType type, Subdirectory dir, const char *filename)
 {
@@ -394,13 +394,13 @@ const char *GetTextfile(TextfileType type, Subdirectory dir, const char *filenam
 
 	const char *prefix = prefixes[type];
 
-	if (filename == NULL) return NULL;
+	if (filename == nullptr) return nullptr;
 
 	static char file_path[MAX_PATH];
 	strecpy(file_path, filename, lastof(file_path));
 
 	char *slash = strrchr(file_path, PATHSEPCHAR);
-	if (slash == NULL) return NULL;
+	if (slash == nullptr) return nullptr;
 
 	static const char * const exts[] = {
 		"txt",
@@ -422,5 +422,5 @@ const char *GetTextfile(TextfileType type, Subdirectory dir, const char *filenam
 		seprintf(slash + 1, lastof(file_path), "%s.%s", prefix, exts[i]);
 		if (FioCheckFileExists(file_path, dir)) return file_path;
 	}
-	return NULL;
+	return nullptr;
 }

@@ -186,9 +186,9 @@ struct CheatEntry {
 static const CheatEntry _cheats_ui[] = {
 	{SLE_INT32, STR_CHEAT_MONEY,           &_money_cheat_amount,                    &_cheats.money.been_used,            &ClickMoneyCheat         },
 	{SLE_UINT8, STR_CHEAT_CHANGE_COMPANY,  &_local_company,                         &_cheats.switch_company.been_used,   &ClickChangeCompanyCheat },
-	{SLE_BOOL,  STR_CHEAT_EXTRA_DYNAMITE,  &_cheats.magic_bulldozer.value,          &_cheats.magic_bulldozer.been_used,  NULL                     },
-	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,         &_cheats.crossing_tunnels.been_used, NULL                     },
-	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,              &_cheats.no_jetcrash.been_used,      NULL                     },
+	{SLE_BOOL,  STR_CHEAT_EXTRA_DYNAMITE,  &_cheats.magic_bulldozer.value,          &_cheats.magic_bulldozer.been_used,  nullptr                     },
+	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,         &_cheats.crossing_tunnels.been_used, nullptr                     },
+	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,              &_cheats.no_jetcrash.been_used,      nullptr                     },
 	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,               &_cheats.setup_prod.been_used,       &ClickSetProdCheat       },
 	{SLE_UINT8, STR_CHEAT_EDIT_MAX_HL,     &_settings_game.construction.max_heightlevel, &_cheats.edit_max_hl.been_used, &ClickChangeMaxHlCheat   },
 	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &_cur_year,                              &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
@@ -365,7 +365,7 @@ struct CheatWindow : Window {
 		switch (ce->type) {
 			case SLE_BOOL:
 				value ^= 1;
-				if (ce->proc != NULL) ce->proc(value, 0);
+				if (ce->proc != nullptr) ce->proc(value, 0);
 				break;
 
 			default:
@@ -393,7 +393,7 @@ struct CheatWindow : Window {
 	void OnQueryTextFinished(char *str) override
 	{
 		/* Was 'cancel' pressed or nothing entered? */
-		if (str == NULL || StrEmpty(str)) return;
+		if (str == nullptr || StrEmpty(str)) return;
 
 		const CheatEntry *ce = &_cheats_ui[clicked_widget];
 		int oldvalue = (int32)ReadValue(ce->variable, ce->type);

@@ -392,7 +392,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 	StringID errmsg = INVALID_STRING_ID;
 	CommandCost ret = DoCommand(end, start, type, CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_BRIDGE)) | DC_QUERY_COST, CMD_BUILD_BRIDGE);
 
-	GUIBridgeList *bl = NULL;
+	GUIBridgeList *bl = nullptr;
 	if (ret.Failed()) {
 		errmsg = ret.GetErrorMessage();
 	} else {
@@ -427,7 +427,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 		}
 	}
 
-	if (bl != NULL && bl->size() != 0) {
+	if (bl != nullptr && bl->size() != 0) {
 		new BuildBridgeWindow(&_build_bridge_desc, start, end, type, bl);
 	} else {
 		delete bl;

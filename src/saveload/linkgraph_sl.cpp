@@ -64,7 +64,7 @@ const SaveLoad *GetLinkGraphJobDesc()
 		int setting = 0;
 		const SettingDesc *desc = GetSettingDescription(setting);
 		while (desc->save.cmd != SL_END) {
-			if (desc->desc.name != NULL && strncmp(desc->desc.name, prefix, prefixlen) == 0) {
+			if (desc->desc.name != nullptr && strncmp(desc->desc.name, prefix, prefixlen) == 0) {
 				SaveLoad sl = desc->save;
 				char *&address = reinterpret_cast<char *&>(sl.address);
 				address -= offset_gamesettings;
@@ -290,7 +290,7 @@ static void Ptrs_LGRS()
 }
 
 extern const ChunkHandler _linkgraph_chunk_handlers[] = {
-	{ 'LGRP', Save_LGRP, Load_LGRP, NULL,      NULL, CH_ARRAY },
-	{ 'LGRJ', Save_LGRJ, Load_LGRJ, NULL,      NULL, CH_ARRAY },
-	{ 'LGRS', Save_LGRS, Load_LGRS, Ptrs_LGRS, NULL, CH_LAST  }
+	{ 'LGRP', Save_LGRP, Load_LGRP, nullptr,      nullptr, CH_ARRAY },
+	{ 'LGRJ', Save_LGRJ, Load_LGRJ, nullptr,      nullptr, CH_ARRAY },
+	{ 'LGRS', Save_LGRS, Load_LGRS, Ptrs_LGRS, nullptr, CH_LAST  }
 };

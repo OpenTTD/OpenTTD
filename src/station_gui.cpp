@@ -296,7 +296,7 @@ protected:
 		if (!this->stations.Sort()) return;
 
 		/* Reset name sorter sort cache */
-		this->last_station = NULL;
+		this->last_station = nullptr;
 
 		/* Set the modified widget dirty */
 		this->SetWidgetDirty(WID_STL_LIST);
@@ -655,7 +655,7 @@ byte CompanyStationsWindow::facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_
 bool CompanyStationsWindow::include_empty = true;
 const CargoTypes CompanyStationsWindow::cargo_filter_max = ALL_CARGOTYPES;
 CargoTypes CompanyStationsWindow::cargo_filter = ALL_CARGOTYPES;
-const Station *CompanyStationsWindow::last_station = NULL;
+const Station *CompanyStationsWindow::last_station = nullptr;
 
 /* Available station sorting functions */
 GUIStationList::SortFunction * const CompanyStationsWindow::sorter_funcs[] = {
@@ -903,9 +903,9 @@ public:
 	}
 
 	/**
-	 * Retrieve a child for the given station. Return NULL if it doesn't exist.
+	 * Retrieve a child for the given station. Return nullptr if it doesn't exist.
 	 * @param station ID of the station the child we're looking for is associated with.
-	 * @return a child entry for the given station or NULL.
+	 * @return a child entry for the given station or nullptr.
 	 */
 	CargoDataEntry *Retrieve(StationID station) const
 	{
@@ -914,9 +914,9 @@ public:
 	}
 
 	/**
-	 * Retrieve a child for the given cargo. Return NULL if it doesn't exist.
+	 * Retrieve a child for the given cargo. Return nullptr if it doesn't exist.
 	 * @param cargo ID of the cargo the child we're looking for is associated with.
-	 * @return a child entry for the given cargo or NULL.
+	 * @return a child entry for the given cargo or nullptr.
 	 */
 	CargoDataEntry *Retrieve(CargoID cargo) const
 	{
@@ -1001,7 +1001,7 @@ private:
 };
 
 CargoDataEntry::CargoDataEntry() :
-	parent(NULL),
+	parent(nullptr),
 	station(INVALID_STATION),
 	num_children(0),
 	count(0),
@@ -1025,19 +1025,19 @@ CargoDataEntry::CargoDataEntry(StationID station, uint count, CargoDataEntry *pa
 {}
 
 CargoDataEntry::CargoDataEntry(StationID station) :
-	parent(NULL),
+	parent(nullptr),
 	station(station),
 	num_children(0),
 	count(0),
-	children(NULL)
+	children(nullptr)
 {}
 
 CargoDataEntry::CargoDataEntry(CargoID cargo) :
-	parent(NULL),
+	parent(nullptr),
 	cargo(cargo),
 	num_children(0),
 	count(0),
-	children(NULL)
+	children(nullptr)
 {}
 
 CargoDataEntry::~CargoDataEntry()
@@ -1051,14 +1051,14 @@ CargoDataEntry::~CargoDataEntry()
  */
 void CargoDataEntry::Clear()
 {
-	if (this->children != NULL) {
+	if (this->children != nullptr) {
 		for (CargoDataSet::iterator i = this->children->begin(); i != this->children->end(); ++i) {
 			assert(*i != this);
 			delete *i;
 		}
 		this->children->clear();
 	}
-	if (this->parent != NULL) this->parent->count -= this->count;
+	if (this->parent != nullptr) this->parent->count -= this->count;
 	this->count = 0;
 	this->num_children = 0;
 }
@@ -1107,7 +1107,7 @@ CargoDataEntry *CargoDataEntry::InsertOrRetrieve(Tid child_id)
 void CargoDataEntry::Update(uint count)
 {
 	this->count += count;
-	if (this->parent != NULL) this->parent->Update(count);
+	if (this->parent != nullptr) this->parent->Update(count);
 }
 
 /**
@@ -1116,7 +1116,7 @@ void CargoDataEntry::Update(uint count)
 void CargoDataEntry::IncrementSize()
 {
 	 ++this->num_children;
-	 if (this->parent != NULL) this->parent->IncrementSize();
+	 if (this->parent != nullptr) this->parent->IncrementSize();
 }
 
 void CargoDataEntry::Resort(CargoSortType type, SortOrder order)
@@ -1129,7 +1129,7 @@ void CargoDataEntry::Resort(CargoSortType type, SortOrder order)
 CargoDataEntry *CargoDataEntry::Retrieve(CargoDataSet::iterator i) const
 {
 	if (i == this->children->end()) {
-		return NULL;
+		return nullptr;
 	} else {
 		assert(this->children->value_comp().GetSortType() != ST_COUNT);
 		return *i;
@@ -1330,7 +1330,7 @@ struct StationViewWindow : public Window {
 		if (count == 0) return;
 		bool auto_distributed = _settings_game.linkgraph.GetDistributionType(cargo) != DT_MANUAL;
 		const CargoDataEntry *expand = &this->expanded_rows;
-		for (int i = 0; i < NUM_COLUMNS && expand != NULL; ++i) {
+		for (int i = 0; i < NUM_COLUMNS && expand != nullptr; ++i) {
 			switch (groupings[i]) {
 				case GR_CARGO:
 					assert(i == 0);
@@ -1571,13 +1571,13 @@ struct StationViewWindow : public Window {
 			StationID next = it.GetKey();
 
 			const CargoDataEntry *source_entry = source_dest->Retrieve(cp->SourceStation());
-			if (source_entry == NULL) {
+			if (source_entry == nullptr) {
 				this->ShowCargo(cargo, i, cp->SourceStation(), next, INVALID_STATION, cp->Count());
 				continue;
 			}
 
 			const CargoDataEntry *via_entry = source_entry->Retrieve(next);
-			if (via_entry == NULL) {
+			if (via_entry == nullptr) {
 				this->ShowCargo(cargo, i, cp->SourceStation(), next, INVALID_STATION, cp->Count());
 				continue;
 			}
@@ -1600,7 +1600,7 @@ struct StationViewWindow : public Window {
 	{
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 
-			if (this->cached_destinations.Retrieve(i) == NULL) {
+			if (this->cached_destinations.Retrieve(i) == nullptr) {
 				this->RecalcDestinations(i);
 			}
 
@@ -1620,13 +1620,13 @@ struct StationViewWindow : public Window {
 	{
 		std::list<StationID> stations;
 		const CargoDataEntry *parent = data->GetParent();
-		if (parent->GetParent() == NULL) {
+		if (parent->GetParent() == nullptr) {
 			this->displayed_rows.push_back(RowDisplay(&this->expanded_rows, data->GetCargo()));
 			return;
 		}
 
 		StationID next = data->GetStation();
-		while (parent->GetParent()->GetParent() != NULL) {
+		while (parent->GetParent()->GetParent() != nullptr) {
 			stations.push_back(parent->GetStation());
 			parent = parent->GetParent();
 		}
@@ -1764,7 +1764,7 @@ struct StationViewWindow : public Window {
 				DrawString(text_left, text_right, y, str);
 
 				if (column < NUM_COLUMNS - 1) {
-					const char *sym = NULL;
+					const char *sym = nullptr;
 					if (cd->GetNumChildren() > 0) {
 						sym = "-";
 					} else if (auto_distributed && str != STR_STATION_VIEW_RESERVED) {
@@ -1832,7 +1832,7 @@ struct StationViewWindow : public Window {
 
 			const LinkGraph *lg = LinkGraph::GetIfValid(ge->link_graph);
 			SetDParam(0, cs->name);
-			SetDParam(1, lg != NULL ? lg->Monthly((*lg)[ge->node].Supply()) : 0);
+			SetDParam(1, lg != nullptr ? lg->Monthly((*lg)[ge->node].Supply()) : 0);
 			SetDParam(2, STR_CARGO_RATING_APPALLING + (ge->rating >> 5));
 			SetDParam(3, ToPercent8(ge->rating));
 			DrawString(r.left + WD_FRAMERECT_LEFT + 6, r.right - WD_FRAMERECT_RIGHT - 6, y, STR_STATION_VIEW_CARGO_SUPPLY_RATING);
@@ -1849,7 +1849,7 @@ struct StationViewWindow : public Window {
 	template<class Tid>
 	void HandleCargoWaitingClick(CargoDataEntry *filter, Tid next)
 	{
-		if (filter->Retrieve(next) != NULL) {
+		if (filter->Retrieve(next) != nullptr) {
 			filter->Remove(next);
 		} else {
 			filter->InsertOrRetrieve(next);
@@ -2048,9 +2048,9 @@ struct StationViewWindow : public Window {
 
 	void OnQueryTextFinished(char *str) override
 	{
-		if (str == NULL) return;
+		if (str == nullptr) return;
 
-		DoCommandP(0, this->window_number, 0, CMD_RENAME_STATION | CMD_MSG(STR_ERROR_CAN_T_RENAME_STATION), NULL, str);
+		DoCommandP(0, this->window_number, 0, CMD_RENAME_STATION | CMD_MSG(STR_ERROR_CAN_T_RENAME_STATION), nullptr, str);
 	}
 
 	void OnResize() override
@@ -2201,13 +2201,13 @@ static const T *FindStationsNearby(TileArea ta, bool distant_join)
 	/* Only search tiles where we have a chance to stay within the station spread.
 	 * The complete check needs to be done in the callback as we don't know the
 	 * extent of the found station, yet. */
-	if (distant_join && min(ta.w, ta.h) >= _settings_game.station.station_spread) return NULL;
+	if (distant_join && min(ta.w, ta.h) >= _settings_game.station.station_spread) return nullptr;
 	uint max_dist = distant_join ? _settings_game.station.station_spread - min(ta.w, ta.h) : 1;
 
 	TileIndex tile = TileAddByDir(ctx.tile, DIR_N);
 	CircularTileSearch(&tile, max_dist, ta.w, ta.h, AddNearbyStation<T>, &ctx);
 
-	return NULL;
+	return nullptr;
 }
 
 static const NWidgetPart _nested_select_station_widgets[] = {
@@ -2360,7 +2360,7 @@ static bool StationJoinerNeeded(const CommandContainer &cmd, TileArea ta)
 	/* If a window is already opened and we didn't ctrl-click,
 	 * return true (i.e. just flash the old window) */
 	Window *selection_window = FindWindowById(WC_SELECT_STATION, 0);
-	if (selection_window != NULL) {
+	if (selection_window != nullptr) {
 		/* Abort current distant-join and start new one */
 		delete selection_window;
 		UpdateTileSelection();
@@ -2376,7 +2376,7 @@ static bool StationJoinerNeeded(const CommandContainer &cmd, TileArea ta)
 	 * If adjacent-stations is disabled and we are building next to a station, do not show the selection window.
 	 * but join the other station immediately. */
 	const T *st = FindStationsNearby<T>(ta, false);
-	return st == NULL && (_settings_game.station.adjacent_stations || _stations_nearby_list.size() == 0);
+	return st == nullptr && (_settings_game.station.adjacent_stations || _stations_nearby_list.size() == 0);
 }
 
 /**

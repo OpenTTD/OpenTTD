@@ -76,7 +76,7 @@ static void ShowIndustryCargoesWindow(IndustryType id);
  * Gets the string to display after the cargo name (using callback 37)
  * @param cargo the cargo for which the suffix is requested, meaning depends on presence of flag 18 in prop 1A
  * @param cst the cargo suffix type (for which window is it requested). @see CargoSuffixType
- * @param ind the industry (NULL if in fund window)
+ * @param ind the industry (nullptr if in fund window)
  * @param ind_type the industry type
  * @param indspec the industry spec
  * @param suffix is filled with the string to display
@@ -138,7 +138,7 @@ enum CargoSuffixInOut {
  * Gets all strings to display after the cargoes of industries (using callback 37)
  * @param use_input get suffixes for output cargoes or input cargoes?
  * @param cst the cargo suffix type (for which window is it requested). @see CargoSuffixType
- * @param ind the industry (NULL if in fund window)
+ * @param ind the industry (nullptr if in fund window)
  * @param ind_type the industry type
  * @param indspec the industry spec
  * @param cargoes array with cargotypes. for CT_INVALID no suffix will be determined
@@ -438,7 +438,7 @@ public:
 					CargoSuffix cargo_suffix[lengthof(indsp->accepts_cargo)];
 
 					/* Measure the accepted cargoes, if any. */
-					GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_FUND, NULL, this->index[i], indsp, indsp->accepts_cargo, cargo_suffix);
+					GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_FUND, nullptr, this->index[i], indsp, indsp->accepts_cargo, cargo_suffix);
 					std::string cargostring = this->MakeCargoListString(indsp->accepts_cargo, cargo_suffix, lengthof(indsp->accepts_cargo), STR_INDUSTRY_VIEW_REQUIRES_N_CARGO);
 					Dimension strdim = GetStringBoundingBox(cargostring.c_str());
 					if (strdim.width > max_minwidth) {
@@ -448,7 +448,7 @@ public:
 					d = maxdim(d, strdim);
 
 					/* Measure the produced cargoes, if any. */
-					GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_FUND, NULL, this->index[i], indsp, indsp->produced_cargo, cargo_suffix);
+					GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_FUND, nullptr, this->index[i], indsp, indsp->produced_cargo, cargo_suffix);
 					cargostring = this->MakeCargoListString(indsp->produced_cargo, cargo_suffix, lengthof(indsp->produced_cargo), STR_INDUSTRY_VIEW_PRODUCES_N_CARGO);
 					strdim = GetStringBoundingBox(cargostring.c_str());
 					if (strdim.width > max_minwidth) {
@@ -551,18 +551,18 @@ public:
 				CargoSuffix cargo_suffix[lengthof(indsp->accepts_cargo)];
 
 				/* Draw the accepted cargoes, if any. Otherwise, will print "Nothing". */
-				GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_FUND, NULL, this->selected_type, indsp, indsp->accepts_cargo, cargo_suffix);
+				GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_FUND, nullptr, this->selected_type, indsp, indsp->accepts_cargo, cargo_suffix);
 				std::string cargostring = this->MakeCargoListString(indsp->accepts_cargo, cargo_suffix, lengthof(indsp->accepts_cargo), STR_INDUSTRY_VIEW_REQUIRES_N_CARGO);
 				y = DrawStringMultiLine(left, right, y, bottom, cargostring.c_str());
 
 				/* Draw the produced cargoes, if any. Otherwise, will print "Nothing". */
-				GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_FUND, NULL, this->selected_type, indsp, indsp->produced_cargo, cargo_suffix);
+				GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_FUND, nullptr, this->selected_type, indsp, indsp->produced_cargo, cargo_suffix);
 				cargostring = this->MakeCargoListString(indsp->produced_cargo, cargo_suffix, lengthof(indsp->produced_cargo), STR_INDUSTRY_VIEW_PRODUCES_N_CARGO);
 				y = DrawStringMultiLine(left, right, y, bottom, cargostring.c_str());
 
 				/* Get the additional purchase info text, if it has not already been queried. */
 				if (HasBit(indsp->callback_mask, CBM_IND_FUND_MORE_TEXT)) {
-					uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, NULL, this->selected_type, INVALID_TILE);
+					uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, nullptr, this->selected_type, INVALID_TILE);
 					if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
 						if (callback_res > 0x400) {
 							ErrorUnknownCallbackResult(indsp->grf_prop.grffile->grfid, CBID_INDUSTRY_FUND_MORE_TEXT, callback_res);
@@ -589,12 +589,12 @@ public:
 				if (y < this->count) { // Is it within the boundaries of available data?
 					this->selected_index = y;
 					this->selected_type = this->index[y];
-					const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(this->selected_type);
+					const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? nullptr : GetIndustrySpec(this->selected_type);
 
 					this->SetDirty();
 
 					if (_thd.GetCallbackWnd() == this &&
-							((_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indsp != NULL && indsp->IsRawIndustry()) ||
+							((_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indsp != nullptr && indsp->IsRawIndustry()) ||
 							this->selected_type == INVALID_INDUSTRYTYPE ||
 							!this->enabled[this->selected_index])) {
 						/* Reset the button state if going to prospecting or "build many industries" */
@@ -717,8 +717,8 @@ public:
 		if (!gui_scope) return;
 		this->SetupArrays();
 
-		const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(this->selected_type);
-		if (indsp == NULL) this->enabled[this->selected_index] = _settings_game.difficulty.industry_density != ID_FUND_ONLY;
+		const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? nullptr : GetIndustrySpec(this->selected_type);
+		if (indsp == nullptr) this->enabled[this->selected_index] = _settings_game.difficulty.industry_density != ID_FUND_ONLY;
 		this->SetButtons();
 	}
 };
@@ -1048,7 +1048,7 @@ public:
 
 	void OnResize() override
 	{
-		if (this->viewport != NULL) {
+		if (this->viewport != nullptr) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_IV_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
 
@@ -1215,7 +1215,7 @@ protected:
 		}
 
 		if (!this->industries.Sort()) return;
-		IndustryDirectoryWindow::last_industry = NULL; // Reset name sorter sort cache
+		IndustryDirectoryWindow::last_industry = nullptr; // Reset name sorter sort cache
 		this->SetWidgetDirty(WID_ID_INDUSTRY_LIST); // Set the modified widget dirty
 	}
 
@@ -1493,7 +1493,7 @@ public:
 };
 
 Listing IndustryDirectoryWindow::last_sorting = {false, 0};
-const Industry *IndustryDirectoryWindow::last_industry = NULL;
+const Industry *IndustryDirectoryWindow::last_industry = nullptr;
 
 /* Available station sorting functions. */
 GUIIndustryList::SortFunction * const IndustryDirectoryWindow::sorter_funcs[] = {
@@ -1898,8 +1898,8 @@ struct CargoesField {
 
 	/**
 	 * Decide which cargo was clicked at in a #CFT_CARGO field.
-	 * @param left  Left industry neighbour if available (else \c NULL should be supplied).
-	 * @param right Right industry neighbour if available (else \c NULL should be supplied).
+	 * @param left  Left industry neighbour if available (else \c nullptr should be supplied).
+	 * @param right Right industry neighbour if available (else \c nullptr should be supplied).
 	 * @param pt    Click position in the cargo field.
 	 * @return Cargo clicked at, or #INVALID_CARGO if none.
 	 */
@@ -1929,7 +1929,7 @@ struct CargoesField {
 		/* row = 0 -> at first horizontal row, row = 1 -> second horizontal row, 2 = 3rd horizontal row. */
 		if (col == 0) {
 			if (this->u.cargo.supp_cargoes[row] != INVALID_CARGO) return this->u.cargo.vertical_cargoes[this->u.cargo.supp_cargoes[row]];
-			if (left != NULL) {
+			if (left != nullptr) {
 				if (left->type == CFT_INDUSTRY) return left->u.industry.other_produced[row];
 				if (left->type == CFT_CARGO_LABEL && !left->u.cargo_label.left_align) return left->u.cargo_label.cargoes[row];
 			}
@@ -1937,7 +1937,7 @@ struct CargoesField {
 		}
 		if (col == this->u.cargo.num_cargoes) {
 			if (this->u.cargo.cust_cargoes[row] != INVALID_CARGO) return this->u.cargo.vertical_cargoes[this->u.cargo.cust_cargoes[row]];
-			if (right != NULL) {
+			if (right != nullptr) {
 				if (right->type == CFT_INDUSTRY) return right->u.industry.other_accepted[row];
 				if (right->type == CFT_CARGO_LABEL && right->u.cargo_label.left_align) return right->u.cargo_label.cargoes[row];
 			}
@@ -2678,8 +2678,8 @@ struct IndustryCargoesWindow : public Window {
 						break;
 
 					case CFT_CARGO: {
-						CargoesField *lft = (fieldxy.x > 0) ? this->fields[fieldxy.y].columns + fieldxy.x - 1 : NULL;
-						CargoesField *rgt = (fieldxy.x < 4) ? this->fields[fieldxy.y].columns + fieldxy.x + 1 : NULL;
+						CargoesField *lft = (fieldxy.x > 0) ? this->fields[fieldxy.y].columns + fieldxy.x - 1 : nullptr;
+						CargoesField *rgt = (fieldxy.x < 4) ? this->fields[fieldxy.y].columns + fieldxy.x + 1 : nullptr;
 						CargoID cid = fld->CargoClickedAt(lft, rgt, xy);
 						if (cid != INVALID_CARGO) this->ComputeCargoDisplay(cid);
 						break;
@@ -2703,7 +2703,7 @@ struct IndustryCargoesWindow : public Window {
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 
 				if (this->IsWidgetLowered(WID_IC_NOTIFY)) {
-					if (FindWindowByClass(WC_SMALLMAP) == NULL) ShowSmallMap();
+					if (FindWindowByClass(WC_SMALLMAP) == nullptr) ShowSmallMap();
 					this->NotifySmallmap();
 				}
 				break;
@@ -2764,8 +2764,8 @@ struct IndustryCargoesWindow : public Window {
 		CargoID cid = INVALID_CARGO;
 		switch (fld->type) {
 			case CFT_CARGO: {
-				CargoesField *lft = (fieldxy.x > 0) ? this->fields[fieldxy.y].columns + fieldxy.x - 1 : NULL;
-				CargoesField *rgt = (fieldxy.x < 4) ? this->fields[fieldxy.y].columns + fieldxy.x + 1 : NULL;
+				CargoesField *lft = (fieldxy.x > 0) ? this->fields[fieldxy.y].columns + fieldxy.x - 1 : nullptr;
+				CargoesField *rgt = (fieldxy.x < 4) ? this->fields[fieldxy.y].columns + fieldxy.x + 1 : nullptr;
 				cid = fld->CargoClickedAt(lft, rgt, xy);
 				break;
 			}
@@ -2777,7 +2777,7 @@ struct IndustryCargoesWindow : public Window {
 
 			case CFT_INDUSTRY:
 				if (fld->u.industry.ind_type < NUM_INDUSTRYTYPES && (this->ind_cargo >= NUM_INDUSTRYTYPES || fieldxy.x != 2)) {
-					GuiShowTooltips(this, STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP, 0, NULL, close_cond);
+					GuiShowTooltips(this, STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP, 0, nullptr, close_cond);
 				}
 				return true;
 
@@ -2822,7 +2822,7 @@ static void ShowIndustryCargoesWindow(IndustryType id)
 	}
 
 	Window *w = BringWindowToFrontById(WC_INDUSTRY_CARGOES, 0);
-	if (w != NULL) {
+	if (w != nullptr) {
 		w->InvalidateData(id);
 		return;
 	}

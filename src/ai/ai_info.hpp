@@ -59,7 +59,7 @@ private:
 /** All static information from an AI library like name, version, etc. */
 class AILibrary : public ScriptInfo {
 public:
-	AILibrary() : ScriptInfo(), category(NULL) {};
+	AILibrary() : ScriptInfo(), category(nullptr) {};
 	~AILibrary();
 
 	/**

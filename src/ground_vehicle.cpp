@@ -30,7 +30,7 @@ void GroundVehicle<T, Type>::PowerChanged()
 	uint32 number_of_parts = 0;
 	uint16 max_track_speed = v->GetDisplayMaxSpeed();
 
-	for (const T *u = v; u != NULL; u = u->Next()) {
+	for (const T *u = v; u != nullptr; u = u->Next()) {
 		uint32 current_power = u->GetPower() + u->GetPoweredPartPower(u);
 		total_power += current_power;
 
@@ -83,7 +83,7 @@ void GroundVehicle<T, Type>::CargoChanged()
 	assert(this->First() == this);
 	uint32 weight = 0;
 
-	for (T *u = T::From(this); u != NULL; u = u->Next()) {
+	for (T *u = T::From(this); u != nullptr; u = u->Next()) {
 		uint32 current_weight = u->GetWeight();
 		weight += current_weight;
 		/* Slope steepness is in percent, result in N. */
@@ -198,7 +198,7 @@ bool GroundVehicle<T, Type>::IsChainInDepot() const
 	if (!IsDepotTypeTile(v->tile, (TransportType)Type) || v->cur_speed != 0) return false;
 
 	/* Check whether the rest is also already trying to enter the depot. */
-	for (; v != NULL; v = v->Next()) {
+	for (; v != nullptr; v = v->Next()) {
 		if (!v->T::IsInDepot() || v->tile != this->tile) return false;
 	}
 

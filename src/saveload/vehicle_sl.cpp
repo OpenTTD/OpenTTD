@@ -36,7 +36,7 @@ void ConnectMultiheadedTrains()
 	Train *v;
 
 	FOR_ALL_TRAINS(v) {
-		v->other_multiheaded_part = NULL;
+		v->other_multiheaded_part = nullptr;
 	}
 
 	FOR_ALL_TRAINS(v) {
@@ -56,8 +56,8 @@ void ConnectMultiheadedTrains()
 
 			bool sequential_matching = v->IsFrontEngine();
 
-			for (Train *u = v; u != NULL; u = u->GetNextVehicle()) {
-				if (u->other_multiheaded_part != NULL) continue; // we already linked this one
+			for (Train *u = v; u != nullptr; u = u->GetNextVehicle()) {
+				if (u->other_multiheaded_part != nullptr) continue; // we already linked this one
 
 				if (u->IsMultiheaded()) {
 					if (!u->IsEngine()) {
@@ -70,8 +70,8 @@ void ConnectMultiheadedTrains()
 					EngineID eid = u->engine_type;
 					Train *w;
 					if (sequential_matching) {
-						for (w = u->GetNextVehicle(); w != NULL; w = w->GetNextVehicle()) {
-							if (w->engine_type != eid || w->other_multiheaded_part != NULL || !w->IsMultiheaded()) continue;
+						for (w = u->GetNextVehicle(); w != nullptr; w = w->GetNextVehicle()) {
+							if (w->engine_type != eid || w->other_multiheaded_part != nullptr || !w->IsMultiheaded()) continue;
 
 							/* we found a car to partner with this engine. Now we will make sure it face the right way */
 							if (w->IsEngine()) {
@@ -82,8 +82,8 @@ void ConnectMultiheadedTrains()
 						}
 					} else {
 						uint stack_pos = 0;
-						for (w = u->GetNextVehicle(); w != NULL; w = w->GetNextVehicle()) {
-							if (w->engine_type != eid || w->other_multiheaded_part != NULL || !w->IsMultiheaded()) continue;
+						for (w = u->GetNextVehicle(); w != nullptr; w = w->GetNextVehicle()) {
+							if (w->engine_type != eid || w->other_multiheaded_part != nullptr || !w->IsMultiheaded()) continue;
 
 							if (w->IsEngine()) {
 								stack_pos++;
@@ -94,7 +94,7 @@ void ConnectMultiheadedTrains()
 						}
 					}
 
-					if (w != NULL) {
+					if (w != nullptr) {
 						w->other_multiheaded_part = u;
 						u->other_multiheaded_part = w;
 					} else {
@@ -118,7 +118,7 @@ void ConvertOldMultiheadToNew()
 
 	FOR_ALL_TRAINS(t) {
 		if (HasBit(t->subtype, 7) && ((t->subtype & ~0x80) == 0 || (t->subtype & ~0x80) == 4)) {
-			for (Train *u = t; u != NULL; u = u->Next()) {
+			for (Train *u = t; u != nullptr; u = u->Next()) {
 				const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
 
 				ClrBit(u->subtype, 7);
@@ -200,7 +200,7 @@ void UpdateOldAircraft()
 			if (a->subtype == AIR_HELICOPTER) a->Next()->Next()->cur_speed = 32;
 
 			/* set new position x,y,z */
-			GetAircraftFlightLevelBounds(a, &a->z_pos, NULL);
+			GetAircraftFlightLevelBounds(a, &a->z_pos, nullptr);
 			SetAircraftPosition(a, gp.x, gp.y, GetAircraftFlightLevel(a));
 		}
 	}
@@ -252,11 +252,11 @@ void AfterLoadVehicles(bool part_of_load)
 
 	FOR_ALL_VEHICLES(v) {
 		/* Reinstate the previous pointer */
-		if (v->Next() != NULL) v->Next()->previous = v;
-		if (v->NextShared() != NULL) v->NextShared()->previous_shared = v;
+		if (v->Next() != nullptr) v->Next()->previous = v;
+		if (v->NextShared() != nullptr) v->NextShared()->previous_shared = v;
 
 		if (part_of_load) v->fill_percent_te_id = INVALID_TE_ID;
-		v->first = NULL;
+		v->first = nullptr;
 		if (v->IsGroundVehicle()) v->GetGroundVehicleCache()->first_engine = INVALID_ENGINE;
 	}
 
@@ -272,9 +272,9 @@ void AfterLoadVehicles(bool part_of_load)
 		std::map<Order*, OrderList*> mapping;
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->orders.old != NULL) {
+			if (v->orders.old != nullptr) {
 				if (IsSavegameVersionBefore(SLV_105)) { // Pre-105 didn't save an OrderList
-					if (mapping[v->orders.old] == NULL) {
+					if (mapping[v->orders.old] == nullptr) {
 						/* This adds the whole shared vehicle chain for case b */
 
 						/* Creating an OrderList here is safe because the number of vehicles
@@ -290,7 +290,7 @@ void AfterLoadVehicles(bool part_of_load)
 						}
 					}
 				} else { // OrderList was saved as such, only recalculate not saved values
-					if (v->PreviousShared() == NULL) {
+					if (v->PreviousShared() == nullptr) {
 						v->orders.list->Initialize(v->orders.list->first, v);
 					}
 				}
@@ -300,8 +300,8 @@ void AfterLoadVehicles(bool part_of_load)
 
 	FOR_ALL_VEHICLES(v) {
 		/* Fill the first pointers */
-		if (v->Previous() == NULL) {
-			for (Vehicle *u = v; u != NULL; u = u->Next()) {
+		if (v->Previous() == nullptr) {
+			for (Vehicle *u = v; u != nullptr; u = u->Next()) {
 				u->first = v;
 			}
 		}
@@ -311,12 +311,12 @@ void AfterLoadVehicles(bool part_of_load)
 		if (IsSavegameVersionBefore(SLV_105)) {
 			/* Before 105 there was no order for shared orders, thus it messed up horribly */
 			FOR_ALL_VEHICLES(v) {
-				if (v->First() != v || v->orders.list != NULL || v->previous_shared != NULL || v->next_shared == NULL) continue;
+				if (v->First() != v || v->orders.list != nullptr || v->previous_shared != nullptr || v->next_shared == nullptr) continue;
 
 				/* As above, allocating OrderList here is safe. */
 				assert(OrderList::CanAllocateItem());
-				v->orders.list = new OrderList(NULL, v);
-				for (Vehicle *u = v; u != NULL; u = u->next_shared) {
+				v->orders.list = new OrderList(nullptr, v);
+				for (Vehicle *u = v; u != nullptr; u = u->next_shared) {
 					u->orders.list = v->orders.list;
 				}
 			}
@@ -392,9 +392,9 @@ void AfterLoadVehicles(bool part_of_load)
 	CheckValidVehicles();
 
 	FOR_ALL_VEHICLES(v) {
-		assert(v->first != NULL);
+		assert(v->first != nullptr);
 
-		v->trip_occupancy = CalcPercentVehicleFilled(v, NULL);
+		v->trip_occupancy = CalcPercentVehicleFilled(v, nullptr);
 
 		switch (v->type) {
 			case VEH_TRAIN: {
@@ -502,7 +502,7 @@ void FixupTrainLengths()
 			/* The vehicle center is now more to the front depending on vehicle length,
 			 * so we need to move all vehicles forward to cover the difference to the
 			 * old center, otherwise wagon spacing in trains would be broken upon load. */
-			for (Train *u = Train::From(v); u != NULL; u = u->Next()) {
+			for (Train *u = Train::From(v); u != nullptr; u = u->Next()) {
 				if (u->track == TRACK_BIT_DEPOT || (u->vehstatus & VS_CRASHED)) continue;
 
 				Train *next = u->Next();
@@ -514,7 +514,7 @@ void FixupTrainLengths()
 					if (!TrainController(u, next, false)) break;
 				}
 
-				if (next != NULL && done < diff && u->IsFrontEngine()) {
+				if (next != nullptr && done < diff && u->IsFrontEngine()) {
 					/* Pulling the front vehicle forwards failed, we either encountered a dead-end
 					 * or a red signal. To fix this, we try to move the whole train the required
 					 * space backwards and re-do the fix up of the front vehicle. */
@@ -530,14 +530,14 @@ void FixupTrainLengths()
 
 					/* We moved the first vehicle which is now the last. Move it back to the
 					 * original position as we will fix up the last vehicle later in the loop. */
-					for (int i = 0; i < done; i++) TrainController(u->Last(), NULL);
+					for (int i = 0; i < done; i++) TrainController(u->Last(), nullptr);
 
 					/* Move the train backwards to get space for the first vehicle. As the stopping
 					 * distance from a line end is rounded up, move the train one unit more to cater
 					 * for front vehicles with odd lengths. */
 					int moved;
 					for (moved = 0; moved < diff + 1; moved++) {
-						if (!TrainController(u, NULL, false)) break;
+						if (!TrainController(u, nullptr, false)) break;
 					}
 
 					/* Swap start<>end, start+1<>end-1, ... again. */
@@ -556,17 +556,17 @@ void FixupTrainLengths()
 
 					/* We moved one unit more backwards than needed for even-length front vehicles,
 					 * try to move that unit forward again. We don't care if this step fails. */
-					TrainController(u, NULL, false);
+					TrainController(u, nullptr, false);
 				}
 
 				/* If the next wagon is still in a depot, check if it shouldn't be outside already. */
-				if (next != NULL && next->track == TRACK_BIT_DEPOT) {
+				if (next != nullptr && next->track == TRACK_BIT_DEPOT) {
 					int d = TicksToLeaveDepot(u);
 					if (d <= 0) {
 						/* Next vehicle should have left the depot already, show it and pull forward. */
 						next->vehstatus &= ~VS_HIDDEN;
 						next->track = TrackToTrackBits(GetRailDepotTrack(next->tile));
-						for (int i = 0; i >= d; i--) TrainController(next, NULL);
+						for (int i = 0; i >= d; i--) TrainController(next, nullptr);
 					}
 				}
 			}
@@ -960,5 +960,5 @@ static void Ptrs_VEHS()
 }
 
 extern const ChunkHandler _veh_chunk_handlers[] = {
-	{ 'VEHS', Save_VEHS, Load_VEHS, Ptrs_VEHS, NULL, CH_SPARSE_ARRAY | CH_LAST},
+	{ 'VEHS', Save_VEHS, Load_VEHS, Ptrs_VEHS, nullptr, CH_SPARSE_ARRAY | CH_LAST},
 };

@@ -316,13 +316,13 @@ struct ScopeResolver {
 struct ResolverObject {
 	/**
 	 * Resolver constructor.
-	 * @param grffile NewGRF file associated with the object (or \c NULL if none).
+	 * @param grffile NewGRF file associated with the object (or \c nullptr if none).
 	 * @param callback Callback code being resolved (default value is #CBID_NO_CALLBACK).
 	 * @param callback_param1 First parameter (var 10) of the callback (only used when \a callback is also set).
 	 * @param callback_param2 Second parameter (var 18) of the callback (only used when \a callback is also set).
 	 */
 	ResolverObject(const GRFFile *grffile, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0)
-		: default_scope(*this), callback(callback), callback_param1(callback_param1), callback_param2(callback_param2), grffile(grffile), root_spritegroup(NULL)
+		: default_scope(*this), callback(callback), callback_param1(callback_param1), callback_param2(callback_param2), grffile(grffile), root_spritegroup(nullptr)
 	{
 		this->ResetState();
 	}
@@ -360,7 +360,7 @@ struct ResolverObject {
 	uint16 ResolveCallback()
 	{
 		const SpriteGroup *result = Resolve();
-		return result != NULL ? result->GetCallbackResult() : CALLBACK_FAILED;
+		return result != nullptr ? result->GetCallbackResult() : CALLBACK_FAILED;
 	}
 
 	virtual const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;

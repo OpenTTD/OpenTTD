@@ -66,7 +66,7 @@ public:
 	 * A crash log is always generated when it's generated.
 	 * @param ep the data related to the exception.
 	 */
-	CrashLogWindows(EXCEPTION_POINTERS *ep = NULL) :
+	CrashLogWindows(EXCEPTION_POINTERS *ep = nullptr) :
 		ep(ep)
 	{
 		this->crashlog[0] = '\0';
@@ -81,7 +81,7 @@ public:
 	static CrashLogWindows *current;
 };
 
-/* static */ CrashLogWindows *CrashLogWindows::current = NULL;
+/* static */ CrashLogWindows *CrashLogWindows::current = nullptr;
 
 /* virtual */ char *CrashLogWindows::LogOSVersion(char *buffer, const char *last) const
 {
@@ -114,7 +114,7 @@ public:
 			" Message:   %s\n\n",
 			(int)ep->ExceptionRecord->ExceptionCode,
 			(size_t)ep->ExceptionRecord->ExceptionAddress,
-			message == NULL ? "<none>" : message
+			message == nullptr ? "<none>" : message
 	);
 }
 
@@ -156,7 +156,7 @@ static void GetFileInfo(DebugFileInfo *dfi, const TCHAR *filename)
 	HANDLE file;
 	memset(dfi, 0, sizeof(*dfi));
 
-	file = CreateFile(filename, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, 0);
+	file = CreateFile(filename, GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING, 0, 0);
 	if (file != INVALID_HANDLE_VALUE) {
 		byte buffer[1024];
 		DWORD numread;
@@ -165,7 +165,7 @@ static void GetFileInfo(DebugFileInfo *dfi, const TCHAR *filename)
 		uint32 crc = (uint32)-1;
 
 		for (;;) {
-			if (ReadFile(file, buffer, sizeof(buffer), &numread, NULL) == 0 || numread == 0) {
+			if (ReadFile(file, buffer, sizeof(buffer), &numread, nullptr) == 0 || numread == 0) {
 				break;
 			}
 			filesize += numread;
@@ -174,7 +174,7 @@ static void GetFileInfo(DebugFileInfo *dfi, const TCHAR *filename)
 		dfi->size = filesize;
 		dfi->crc32 = crc ^ (uint32)-1;
 
-		if (GetFileTime(file, NULL, NULL, &write_time)) {
+		if (GetFileTime(file, nullptr, nullptr, &write_time)) {
 			FileTimeToSystemTime(&write_time, &dfi->file_time);
 		}
 		CloseHandle(file);
@@ -217,7 +217,7 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 		BOOL res;
 
 		HANDLE proc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId());
-		if (proc != NULL) {
+		if (proc != nullptr) {
 			res = EnumProcessModules(proc, modules, sizeof(modules), &needed);
 			CloseHandle(proc);
 			if (res) {
@@ -228,7 +228,7 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 			}
 		}
 	}
-	output = PrintModuleInfo(output, last, NULL);
+	output = PrintModuleInfo(output, last, nullptr);
 	return output + seprintf(output, last, "\n");
 }
 
@@ -362,7 +362,7 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 	if (LoadLibraryList((Function*)&proc, dbg_import)) {
 		/* Initialize symbol handler. */
 		HANDLE hCur = GetCurrentProcess();
-		proc.pSymInitialize(hCur, NULL, TRUE);
+		proc.pSymInitialize(hCur, nullptr, TRUE);
 		/* Load symbols only when needed, fail silently on errors, demangle symbol names. */
 		proc.pSymSetOptions(SYMOPT_DEFERRED_LOADS | SYMOPT_FAIL_CRITICAL_ERRORS | SYMOPT_UNDNAME);
 
@@ -399,7 +399,7 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 #else
 				IMAGE_FILE_MACHINE_I386,
 #endif
-				hCur, GetCurrentThread(), &frame, &ctx, NULL, proc.pSymFunctionTableAccess64, proc.pSymGetModuleBase64, NULL)) break;
+				hCur, GetCurrentThread(), &frame, &ctx, nullptr, proc.pSymFunctionTableAccess64, proc.pSymGetModuleBase64, nullptr)) break;
 
 			if (frame.AddrPC.Offset == frame.AddrReturn.Offset) {
 				buffer += seprintf(buffer, last, " <infinite loop>\n");
@@ -443,16 +443,16 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 {
 	int ret = 0;
 	HMODULE dbghelp = LoadLibrary(_T("dbghelp.dll"));
-	if (dbghelp != NULL) {
+	if (dbghelp != nullptr) {
 		typedef BOOL (WINAPI *MiniDumpWriteDump_t)(HANDLE, DWORD, HANDLE,
 				MINIDUMP_TYPE,
 				CONST PMINIDUMP_EXCEPTION_INFORMATION,
 				CONST PMINIDUMP_USER_STREAM_INFORMATION,
 				CONST PMINIDUMP_CALLBACK_INFORMATION);
 		MiniDumpWriteDump_t funcMiniDumpWriteDump = (MiniDumpWriteDump_t)GetProcAddress(dbghelp, "MiniDumpWriteDump");
-		if (funcMiniDumpWriteDump != NULL) {
+		if (funcMiniDumpWriteDump != nullptr) {
 			seprintf(filename, filename_last, "%scrash.dmp", _personal_dir);
-			HANDLE file  = CreateFile(OTTD2FS(filename), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, 0);
+			HANDLE file  = CreateFile(OTTD2FS(filename), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, 0, 0);
 			HANDLE proc  = GetCurrentProcess();
 			DWORD procid = GetCurrentProcessId();
 			MINIDUMP_EXCEPTION_INFORMATION mdei;
@@ -470,7 +470,7 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 			mdei.ExceptionPointers  = ep;
 			mdei.ClientPointers     = false;
 
-			funcMiniDumpWriteDump(proc, procid, file, MiniDumpWithDataSegs, &mdei, &musi, NULL);
+			funcMiniDumpWriteDump(proc, procid, file, MiniDumpWithDataSegs, &mdei, &musi, nullptr);
 			ret = 1;
 		} else {
 			ret = -1;
@@ -488,11 +488,11 @@ static void ShowCrashlogWindow();
  * Stack pointer for use when 'starting' the crash handler.
  * Not static as gcc's inline assembly needs it that way.
  */
-void *_safe_esp = NULL;
+void *_safe_esp = nullptr;
 
 static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 {
-	if (CrashLogWindows::current != NULL) {
+	if (CrashLogWindows::current != nullptr) {
 		CrashLog::AfterCrashLogCleanup();
 		ExitProcess(2);
 	}
@@ -501,7 +501,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		static const TCHAR _emergency_crash[] =
 			_T("A serious fault condition occurred in the game. The game will shut down.\n")
 			_T("As you loaded an emergency savegame no crash information will be generated.\n");
-		MessageBox(NULL, _emergency_crash, _T("Fatal Application Failure"), MB_ICONERROR);
+		MessageBox(nullptr, _emergency_crash, _T("Fatal Application Failure"), MB_ICONERROR);
 		ExitProcess(3);
 	}
 
@@ -510,7 +510,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 			_T("A serious fault condition occurred in the game. The game will shut down.\n")
 			_T("As you loaded an savegame for which you do not have the required NewGRFs\n")
 			_T("no crash information will be generated.\n");
-		MessageBox(NULL, _saveload_crash, _T("Fatal Application Failure"), MB_ICONERROR);
+		MessageBox(nullptr, _saveload_crash, _T("Fatal Application Failure"), MB_ICONERROR);
 		ExitProcess(3);
 	}
 
@@ -525,7 +525,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	/* Close any possible log files */
 	CloseConsoleLogIfActive();
 
-	if ((VideoDriver::GetInstance() == NULL || VideoDriver::GetInstance()->HasGUI()) && _safe_esp != NULL) {
+	if ((VideoDriver::GetInstance() == nullptr || VideoDriver::GetInstance()->HasGUI()) && _safe_esp != nullptr) {
 #ifdef _M_AMD64
 		ep->ContextRecord->Rip = (DWORD64)ShowCrashlogWindow;
 		ep->ContextRecord->Rsp = (DWORD64)_safe_esp;
@@ -542,7 +542,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 
 static void CDECL CustomAbort(int signal)
 {
-	RaiseException(0xE1212012, 0, 0, NULL);
+	RaiseException(0xE1212012, 0, 0, nullptr);
 }
 
 /* static */ void CrashLog::InitialiseCrashLog()
@@ -693,5 +693,5 @@ static void ShowCrashlogWindow()
 {
 	ShowCursor(TRUE);
 	ShowWindow(GetActiveWindow(), FALSE);
-	DialogBox(GetModuleHandle(NULL), MAKEINTRESOURCE(100), NULL, CrashDialogFunc);
+	DialogBox(GetModuleHandle(nullptr), MAKEINTRESOURCE(100), nullptr, CrashDialogFunc);
 }

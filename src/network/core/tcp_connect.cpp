@@ -33,7 +33,7 @@ TCPConnecter::TCPConnecter(const NetworkAddress &address) :
 	address(address)
 {
 	_tcp_connecters.push_back(this);
-	if (!StartNewThread(NULL, "ottd:tcp", &TCPConnecter::ThreadEntry, this)) {
+	if (!StartNewThread(nullptr, "ottd:tcp", &TCPConnecter::ThreadEntry, this)) {
 		this->Connect();
 	}
 }

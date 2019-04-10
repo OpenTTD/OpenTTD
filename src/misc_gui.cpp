@@ -168,10 +168,10 @@ public:
 		td.rail_speed = 0;
 		td.road_speed = 0;
 
-		td.grf = NULL;
+		td.grf = nullptr;
 
 		CargoArray acceptance;
-		AddAcceptedCargo(tile, acceptance, NULL);
+		AddAcceptedCargo(tile, acceptance, nullptr);
 		GetTileDesc(tile, &td);
 
 		uint line_nr = 0;
@@ -194,7 +194,7 @@ public:
 		/* Cost to clear/revenue when cleared */
 		StringID str = STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A;
 		Company *c = Company::GetIfValid(_local_company);
-		if (c != NULL) {
+		if (c != nullptr) {
 			assert(_current_company == _local_company);
 			CommandCost costclear = DoCommand(tile, 0, 0, DC_QUERY_COST, CMD_LANDSCAPE_CLEAR);
 			if (costclear.Succeeded()) {
@@ -223,7 +223,7 @@ public:
 
 		/* Local authority */
 		SetDParam(0, STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE);
-		if (t != NULL) {
+		if (t != nullptr) {
 			SetDParam(0, STR_TOWN_NAME);
 			SetDParam(1, t->index);
 		}
@@ -294,7 +294,7 @@ public:
 		}
 
 		/* NewGRF name */
-		if (td.grf != NULL) {
+		if (td.grf != nullptr) {
 			SetDParamStr(0, td.grf);
 			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_NEWGRF_NAME, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
@@ -382,7 +382,7 @@ static const NWidgetPart _nested_about_widgets[] = {
 };
 
 static WindowDesc _about_desc(
-	WDP_CENTER, NULL, 0, 0,
+	WDP_CENTER, nullptr, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
 	_nested_about_widgets, lengthof(_nested_about_widgets)
@@ -638,7 +638,7 @@ static const NWidgetPart _nested_tooltips_widgets[] = {
 };
 
 static WindowDesc _tool_tips_desc(
-	WDP_MANUAL, NULL, 0, 0, // Coordinates and sizes are not used,
+	WDP_MANUAL, nullptr, 0, 0, // Coordinates and sizes are not used,
 	WC_TOOLTIPS, WC_NONE,
 	WDF_NO_FOCUS,
 	_nested_tooltips_widgets, lengthof(_nested_tooltips_widgets)
@@ -880,7 +880,7 @@ Rect QueryString::GetBoundingRect(const Window *w, int wid, const char *from, co
  * @param w Window the edit box is in.
  * @param wid Widget index.
  * @param pt Position to test.
- * @return Pointer to the character at the position or NULL if no character is at the position.
+ * @return Pointer to the character at the position or nullptr if no character is at the position.
  */
 const char *QueryString::GetCharAtPosition(const Window *w, int wid, const Point &pt) const
 {
@@ -898,7 +898,7 @@ const char *QueryString::GetCharAtPosition(const Window *w, int wid, const Point
 	int top    = wi->pos_y + WD_FRAMERECT_TOP;
 	int bottom = wi->pos_y + wi->current_y - 1 - WD_FRAMERECT_BOTTOM;
 
-	if (!IsInsideMM(pt.y, top, bottom)) return NULL;
+	if (!IsInsideMM(pt.y, top, bottom)) return nullptr;
 
 	/* Clamp caret position to be inside our current width. */
 	const Textbuf *tb = &this->text;
@@ -990,10 +990,10 @@ struct QueryStringWindow : public Window
 
 	void OnOk()
 	{
-		if (this->editbox.orig == NULL || strcmp(this->editbox.text.buf, this->editbox.orig) != 0) {
-			/* If the parent is NULL, the editbox is handled by general function
+		if (this->editbox.orig == nullptr || strcmp(this->editbox.text.buf, this->editbox.orig) != 0) {
+			/* If the parent is nullptr, the editbox is handled by general function
 			 * HandleOnEditText */
-			if (this->parent != NULL) {
+			if (this->parent != nullptr) {
 				this->parent->OnQueryTextFinished(this->editbox.text.buf);
 			} else {
 				HandleOnEditText(this->editbox.text.buf);
@@ -1021,10 +1021,10 @@ struct QueryStringWindow : public Window
 
 	~QueryStringWindow()
 	{
-		if (!this->editbox.handled && this->parent != NULL) {
+		if (!this->editbox.handled && this->parent != nullptr) {
 			Window *parent = this->parent;
-			this->parent = NULL; // so parent doesn't try to delete us again
-			parent->OnQueryTextFinished(NULL);
+			this->parent = nullptr; // so parent doesn't try to delete us again
+			parent->OnQueryTextFinished(nullptr);
 		}
 	}
 };
@@ -1057,7 +1057,7 @@ static WindowDesc _query_string_desc(
  * @param caption StringID of text shown in caption of querywindow
  * @param maxsize maximum size in bytes or characters (including terminating '\0') depending on flags
  * @param parent pointer to a Window that will handle the events (ok/cancel) of this
- *        window. If NULL, results are handled by global function HandleOnEditText
+ *        window. If nullptr, results are handled by global function HandleOnEditText
  * @param afilter filters out unwanted character input
  * @param flags various flags, @see QueryStringFlags
  */
@@ -1094,7 +1094,7 @@ struct QueryWindow : public Window {
 
 	~QueryWindow()
 	{
-		if (this->proc != NULL) this->proc(this->parent, false);
+		if (this->proc != nullptr) this->proc(this->parent, false);
 	}
 
 	void SetStringParameters(int widget) const override
@@ -1138,11 +1138,11 @@ struct QueryWindow : public Window {
 				QueryCallbackProc *proc = this->proc;
 				Window *parent = this->parent;
 				/* Prevent the destructor calling the callback function */
-				this->proc = NULL;
+				this->proc = nullptr;
 				delete this;
-				if (proc != NULL) {
+				if (proc != nullptr) {
 					proc(parent, true);
-					proc = NULL;
+					proc = nullptr;
 				}
 				break;
 			}
@@ -1158,9 +1158,9 @@ struct QueryWindow : public Window {
 		switch (keycode) {
 			case WKC_RETURN:
 			case WKC_NUM_ENTER:
-				if (this->proc != NULL) {
+				if (this->proc != nullptr) {
 					this->proc(this->parent, true);
-					this->proc = NULL;
+					this->proc = nullptr;
 				}
 				FALLTHROUGH;
 
@@ -1187,7 +1187,7 @@ static const NWidgetPart _nested_query_widgets[] = {
 };
 
 static WindowDesc _query_desc(
-	WDP_CENTER, NULL, 0, 0,
+	WDP_CENTER, nullptr, 0, 0,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_MODAL,
 	_nested_query_widgets, lengthof(_nested_query_widgets)
@@ -1198,13 +1198,13 @@ static WindowDesc _query_desc(
  * The window is aligned to the centre of its parent.
  * @param caption string shown as window caption
  * @param message string that will be shown for the window
- * @param parent pointer to parent window, if this pointer is NULL the parent becomes
+ * @param parent pointer to parent window, if this pointer is nullptr the parent becomes
  * the main window WC_MAIN_WINDOW
  * @param callback callback function pointer to set in the window descriptor
  */
 void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallbackProc *callback)
 {
-	if (parent == NULL) parent = FindWindowById(WC_MAIN_WINDOW, 0);
+	if (parent == nullptr) parent = FindWindowById(WC_MAIN_WINDOW, 0);
 
 	const Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {

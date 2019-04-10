@@ -108,7 +108,7 @@ struct CanalResolverObject : public ResolverObject {
 
 /* virtual */ const SpriteGroup *CanalResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
-	if (group->num_loaded == 0) return NULL;
+	if (group->num_loaded == 0) return nullptr;
 
 	return group->loaded[0];
 }
@@ -138,7 +138,7 @@ SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
 {
 	CanalResolverObject object(feature, tile);
 	const SpriteGroup *group = object.Resolve();
-	if (group == NULL) return 0;
+	if (group == nullptr) return 0;
 
 	return group->GetResult();
 }

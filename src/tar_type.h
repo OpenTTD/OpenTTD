@@ -25,7 +25,7 @@ struct TarListEntry {
 	/* MSVC goes copying around this struct after initialisation, so it tries
 	 * to free filename, which isn't set at that moment... but because it
 	 * initializes the variable with garbage, it's going to segfault. */
-	TarListEntry() : filename(NULL), dirname(NULL) {}
+	TarListEntry() : filename(nullptr), dirname(nullptr) {}
 	~TarListEntry() { free(this->filename); free(this->dirname); }
 };
 

@@ -39,7 +39,7 @@ struct AnimationBase {
 	 */
 	static void AnimateTile(const Tspec *spec, Tobj *obj, TileIndex tile, bool random_animation, Textra extra_data = 0)
 	{
-		assert(spec != NULL);
+		assert(spec != nullptr);
 
 		/* Acquire the animation speed from the NewGRF. */
 		uint8 animation_speed = spec->animation.speed;

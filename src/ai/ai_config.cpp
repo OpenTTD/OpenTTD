@@ -31,7 +31,7 @@ ScriptConfigItem _start_date_config = {
 	AI::START_NEXT_DEVIATION,
 	30,
 	SCRIPTCONFIG_NONE,
-	NULL,
+	nullptr,
 	false
 };
 
@@ -52,7 +52,7 @@ AIConfig::AIConfig(const AIConfig *config) : ScriptConfig(config)
 	} else {
 		config = &_settings_game.ai_config[company];
 	}
-	if (*config == NULL) *config = new AIConfig();
+	if (*config == nullptr) *config = new AIConfig();
 	return *config;
 }
 
@@ -69,7 +69,7 @@ ScriptInfo *AIConfig::FindInfo(const char *name, int version, bool force_exact_m
 bool AIConfig::ResetInfo(bool force_exact_match)
 {
 	this->info = (ScriptInfo *)AI::FindInfo(this->name, force_exact_match ? this->version : -1, force_exact_match);
-	return this->info != NULL;
+	return this->info != nullptr;
 }
 
 void AIConfig::PushExtraConfigList()
@@ -90,7 +90,7 @@ void AIConfig::ClearConfigList()
 
 int AIConfig::GetSetting(const char *name) const
 {
-	if (this->info == NULL) {
+	if (this->info == nullptr) {
 		SettingValueList::const_iterator it = this->settings.find(name);
 		if (it == this->settings.end()) {
 			assert(strcmp("start_date", name) == 0);
@@ -111,7 +111,7 @@ int AIConfig::GetSetting(const char *name) const
 
 void AIConfig::SetSetting(const char *name, int value)
 {
-	if (this->info == NULL) {
+	if (this->info == nullptr) {
 		if (strcmp("start_date", name) != 0) return;
 		value = Clamp(value, AI::START_NEXT_MIN, AI::START_NEXT_MAX);
 

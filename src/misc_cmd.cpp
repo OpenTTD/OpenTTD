@@ -166,7 +166,7 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
 			ShowQuery(
 				STR_NEWGRF_UNPAUSE_WARNING_TITLE,
 				STR_NEWGRF_UNPAUSE_WARNING,
-				NULL,
+				nullptr,
 				AskUnsafeUnpauseCallback
 			);
 		} else {

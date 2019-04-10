@@ -292,7 +292,7 @@
 	if (!::IsValidTile(tile)) return INVALID_TOWN;
 
 	Town *town = ::ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
-	if (town == NULL) return INVALID_TOWN;
+	if (town == nullptr) return INVALID_TOWN;
 
 	return town->index;
 }
@@ -302,7 +302,7 @@
 	if (!::IsValidTile(tile)) return INVALID_TOWN;
 
 	Town *town = ::ClosestTownFromTile(tile, UINT_MAX);
-	if (town == NULL) return INVALID_TOWN;
+	if (town == nullptr) return INVALID_TOWN;
 
 	return town->index;
 }
@@ -310,14 +310,14 @@
 /* static */ Money ScriptTile::GetBuildCost(BuildType build_type)
 {
 	switch (build_type) {
-		case BT_FOUNDATION:   return ::GetPrice(PR_BUILD_FOUNDATION, 1, NULL);
-		case BT_TERRAFORM:    return ::GetPrice(PR_TERRAFORM, 1, NULL);
-		case BT_BUILD_TREES:  return ::GetPrice(PR_BUILD_TREES, 1, NULL);
-		case BT_CLEAR_GRASS:  return ::GetPrice(PR_CLEAR_GRASS, 1, NULL);
-		case BT_CLEAR_ROUGH:  return ::GetPrice(PR_CLEAR_ROUGH, 1, NULL);
-		case BT_CLEAR_ROCKY:  return ::GetPrice(PR_CLEAR_ROCKS, 1, NULL);
-		case BT_CLEAR_FIELDS: return ::GetPrice(PR_CLEAR_FIELDS, 1, NULL);
-		case BT_CLEAR_HOUSE:  return ::GetPrice(PR_CLEAR_HOUSE, 1, NULL);
+		case BT_FOUNDATION:   return ::GetPrice(PR_BUILD_FOUNDATION, 1, nullptr);
+		case BT_TERRAFORM:    return ::GetPrice(PR_TERRAFORM, 1, nullptr);
+		case BT_BUILD_TREES:  return ::GetPrice(PR_BUILD_TREES, 1, nullptr);
+		case BT_CLEAR_GRASS:  return ::GetPrice(PR_CLEAR_GRASS, 1, nullptr);
+		case BT_CLEAR_ROUGH:  return ::GetPrice(PR_CLEAR_ROUGH, 1, nullptr);
+		case BT_CLEAR_ROCKY:  return ::GetPrice(PR_CLEAR_ROCKS, 1, nullptr);
+		case BT_CLEAR_FIELDS: return ::GetPrice(PR_CLEAR_FIELDS, 1, nullptr);
+		case BT_CLEAR_HOUSE:  return ::GetPrice(PR_CLEAR_HOUSE, 1, nullptr);
 		default: return -1;
 	}
 }

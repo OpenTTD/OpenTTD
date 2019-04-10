@@ -23,7 +23,7 @@
  * @param name   the name of the item
  * @param last   the last element of the name of the item
  */
-IniItem::IniItem(IniGroup *parent, const char *name, const char *last) : next(NULL), value(NULL), comment(NULL)
+IniItem::IniItem(IniGroup *parent, const char *name, const char *last) : next(nullptr), value(nullptr), comment(nullptr)
 {
 	this->name = stredup(name, last);
 	str_validate(this->name, this->name + strlen(this->name));
@@ -58,7 +58,7 @@ void IniItem::SetValue(const char *value)
  * @param name   the name of the group
  * @param last   the last element of the name of the group
  */
-IniGroup::IniGroup(IniLoadFile *parent, const char *name, const char *last) : next(NULL), type(IGT_VARIABLES), item(NULL), comment(NULL)
+IniGroup::IniGroup(IniLoadFile *parent, const char *name, const char *last) : next(nullptr), type(IGT_VARIABLES), item(nullptr), comment(nullptr)
 {
 	this->name = stredup(name, last);
 	str_validate(this->name, this->name + strlen(this->name));
@@ -67,16 +67,16 @@ IniGroup::IniGroup(IniLoadFile *parent, const char *name, const char *last) : ne
 	*parent->last_group = this;
 	parent->last_group = &this->next;
 
-	if (parent->list_group_names != NULL) {
-		for (uint i = 0; parent->list_group_names[i] != NULL; i++) {
+	if (parent->list_group_names != nullptr) {
+		for (uint i = 0; parent->list_group_names[i] != nullptr; i++) {
 			if (strcmp(this->name, parent->list_group_names[i]) == 0) {
 				this->type = IGT_LIST;
 				return;
 			}
 		}
 	}
-	if (parent->seq_group_names != NULL) {
-		for (uint i = 0; parent->seq_group_names[i] != NULL; i++) {
+	if (parent->seq_group_names != nullptr) {
+		for (uint i = 0; parent->seq_group_names[i] != nullptr; i++) {
 			if (strcmp(this->name, parent->seq_group_names[i]) == 0) {
 				this->type = IGT_SEQUENCE;
 				return;
@@ -100,18 +100,18 @@ IniGroup::~IniGroup()
  * and create is true it creates a new item.
  * @param name   name of the item to find.
  * @param create whether to create an item when not found or not.
- * @return the requested item or NULL if not found.
+ * @return the requested item or nullptr if not found.
  */
 IniItem *IniGroup::GetItem(const char *name, bool create)
 {
-	for (IniItem *item = this->item; item != NULL; item = item->next) {
+	for (IniItem *item = this->item; item != nullptr; item = item->next) {
 		if (strcmp(item->name, name) == 0) return item;
 	}
 
-	if (!create) return NULL;
+	if (!create) return nullptr;
 
 	/* otherwise make a new one */
-	return new IniItem(this, name, NULL);
+	return new IniItem(this, name, nullptr);
 }
 
 /**
@@ -120,18 +120,18 @@ IniItem *IniGroup::GetItem(const char *name, bool create)
 void IniGroup::Clear()
 {
 	delete this->item;
-	this->item = NULL;
+	this->item = nullptr;
 	this->last_item = &this->item;
 }
 
 /**
  * Construct a new in-memory Ini file representation.
- * @param list_group_names A \c NULL terminated list with group names that should be loaded as lists instead of variables. @see IGT_LIST
- * @param seq_group_names  A \c NULL terminated list with group names that should be loaded as lists of names. @see IGT_SEQUENCE
+ * @param list_group_names A \c nullptr terminated list with group names that should be loaded as lists instead of variables. @see IGT_LIST
+ * @param seq_group_names  A \c nullptr terminated list with group names that should be loaded as lists of names. @see IGT_SEQUENCE
  */
 IniLoadFile::IniLoadFile(const char * const *list_group_names, const char * const *seq_group_names) :
-		group(NULL),
-		comment(NULL),
+		group(nullptr),
+		comment(nullptr),
 		list_group_names(list_group_names),
 		seq_group_names(seq_group_names)
 {
@@ -151,20 +151,20 @@ IniLoadFile::~IniLoadFile()
  * @param name name of the group to find.
  * @param len  the maximum length of said name (\c 0 means length of the string).
  * @param create_new Allow creation of group if it does not exist.
- * @return The requested group if it exists or was created, else \c NULL.
+ * @return The requested group if it exists or was created, else \c nullptr.
  */
 IniGroup *IniLoadFile::GetGroup(const char *name, size_t len, bool create_new)
 {
 	if (len == 0) len = strlen(name);
 
 	/* does it exist already? */
-	for (IniGroup *group = this->group; group != NULL; group = group->next) {
+	for (IniGroup *group = this->group; group != nullptr; group = group->next) {
 		if (!strncmp(group->name, name, len) && group->name[len] == 0) {
 			return group;
 		}
 	}
 
-	if (!create_new) return NULL;
+	if (!create_new) return nullptr;
 
 	/* otherwise make a new one */
 	IniGroup *group = new IniGroup(this, name, name + len - 1);
@@ -179,19 +179,19 @@ IniGroup *IniLoadFile::GetGroup(const char *name, size_t len, bool create_new)
 void IniLoadFile::RemoveGroup(const char *name)
 {
 	size_t len = strlen(name);
-	IniGroup *prev = NULL;
+	IniGroup *prev = nullptr;
 	IniGroup *group;
 
 	/* does it exist already? */
-	for (group = this->group; group != NULL; prev = group, group = group->next) {
+	for (group = this->group; group != nullptr; prev = group, group = group->next) {
 		if (strncmp(group->name, name, len) == 0) {
 			break;
 		}
 	}
 
-	if (group == NULL) return;
+	if (group == nullptr) return;
 
-	if (prev != NULL) {
+	if (prev != nullptr) {
 		prev->next = prev->next->next;
 		if (this->last_group == &group->next) this->last_group = &prev->next;
 	} else {
@@ -199,7 +199,7 @@ void IniLoadFile::RemoveGroup(const char *name)
 		if (this->last_group == &group->next) this->last_group = &this->group;
 	}
 
-	group->next = NULL;
+	group->next = nullptr;
 	delete group;
 }
 
@@ -214,15 +214,15 @@ void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 	assert(this->last_group == &this->group);
 
 	char buffer[1024];
-	IniGroup *group = NULL;
+	IniGroup *group = nullptr;
 
-	char *comment = NULL;
+	char *comment = nullptr;
 	uint comment_size = 0;
 	uint comment_alloc = 0;
 
 	size_t end;
 	FILE *in = this->OpenFile(filename, subdir, &end);
-	if (in == NULL) return;
+	if (in == nullptr) return;
 
 	end += ftell(in);
 
@@ -238,7 +238,7 @@ void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 		*e = '\0';
 
 		/* Skip comments and empty lines outside IGT_SEQUENCE groups. */
-		if ((group == NULL || group->type != IGT_SEQUENCE) && (*s == '#' || *s == ';' || *s == '\0')) {
+		if ((group == nullptr || group->type != IGT_SEQUENCE) && (*s == '#' || *s == ';' || *s == '\0')) {
 			uint ns = comment_size + (e - s + 1);
 			uint a = comment_alloc;
 			/* add to comment */
@@ -267,7 +267,7 @@ void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 				group->comment = stredup(comment, comment + comment_size - 1);
 				comment_size = 0;
 			}
-		} else if (group != NULL) {
+		} else if (group != nullptr) {
 			if (group->type == IGT_SEQUENCE) {
 				/* A sequence group, use the line as item name without further interpretation. */
 				IniItem *item = new IniItem(group, buffer, e - 1);
@@ -305,9 +305,9 @@ void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 			if (e > t && e[-1] == '\"') e--;
 			*e = '\0';
 
-			/* If the value was not quoted and empty, it must be NULL */
-			item->value = (!quoted && e == t) ? NULL : stredup(t);
-			if (item->value != NULL) str_validate(item->value, item->value + strlen(item->value));
+			/* If the value was not quoted and empty, it must be nullptr */
+			item->value = (!quoted && e == t) ? nullptr : stredup(t);
+			if (item->value != nullptr) str_validate(item->value, item->value + strlen(item->value));
 		} else {
 			/* it's an orphan item */
 			this->ReportFileError("ini: '", buffer, "' outside of group");

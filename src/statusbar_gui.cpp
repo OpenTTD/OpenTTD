@@ -149,7 +149,7 @@ struct StatusBarWindow : Window {
 			case WID_S_RIGHT: {
 				/* Draw company money, if any */
 				const Company *c = Company::GetIfValid(_local_company);
-				if (c != NULL) {
+				if (c != nullptr) {
 					SetDParam(0, c->money);
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_COMPANY_MONEY, TC_FROMSTRING, SA_HOR_CENTER);
 				}
@@ -164,7 +164,7 @@ struct StatusBarWindow : Window {
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_STATUSBAR_AUTOSAVE, TC_FROMSTRING, SA_HOR_CENTER);
 				} else if (_pause_mode != PM_UNPAUSED) {
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_STATUSBAR_PAUSED, TC_FROMSTRING, SA_HOR_CENTER);
-				} else if (this->ticker_scroll < TICKER_STOP && FindWindowById(WC_NEWS_WINDOW, 0) == NULL && _statusbar_news_item != NULL && _statusbar_news_item->string_id != 0) {
+				} else if (this->ticker_scroll < TICKER_STOP && FindWindowById(WC_NEWS_WINDOW, 0) == nullptr && _statusbar_news_item != nullptr && _statusbar_news_item->string_id != 0) {
 					/* Draw the scrolling news text */
 					if (!DrawScrollingStatusText(_statusbar_news_item, this->ticker_scroll, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom)) {
 						InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED);
@@ -248,7 +248,7 @@ static const NWidgetPart _nested_main_status_widgets[] = {
 };
 
 static WindowDesc _main_status_desc(
-	WDP_MANUAL, NULL, 0, 0,
+	WDP_MANUAL, nullptr, 0, 0,
 	WC_STATUS_BAR, WC_NONE,
 	WDF_NO_FOCUS,
 	_nested_main_status_widgets, lengthof(_nested_main_status_widgets)
@@ -260,7 +260,7 @@ static WindowDesc _main_status_desc(
 bool IsNewsTickerShown()
 {
 	const StatusBarWindow *w = dynamic_cast<StatusBarWindow*>(FindWindowById(WC_STATUS_BAR, 0));
-	return w != NULL && w->ticker_scroll < StatusBarWindow::TICKER_STOP;
+	return w != nullptr && w->ticker_scroll < StatusBarWindow::TICKER_STOP;
 }
 
 /**

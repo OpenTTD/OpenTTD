@@ -54,7 +54,7 @@ static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 void DisplaySplashImage()
 {
 	FILE *f = FioFOpenFile(SPLASH_IMAGE_FILE, "r", BASESET_DIR);
-	if (f == NULL) return;
+	if (f == nullptr) return;
 
 	png_byte header[8];
 	fread(header, sizeof(png_byte), 8, f);
@@ -63,23 +63,23 @@ void DisplaySplashImage()
 		return;
 	}
 
-	png_structp png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, (png_voidp) NULL, png_my_error, png_my_warning);
+	png_structp png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, (png_voidp) nullptr, png_my_error, png_my_warning);
 
-	if (png_ptr == NULL) {
+	if (png_ptr == nullptr) {
 		fclose(f);
 		return;
 	}
 
 	png_infop info_ptr = png_create_info_struct(png_ptr);
-	if (info_ptr == NULL) {
-		png_destroy_read_struct(&png_ptr, (png_infopp)NULL, (png_infopp)NULL);
+	if (info_ptr == nullptr) {
+		png_destroy_read_struct(&png_ptr, (png_infopp)nullptr, (png_infopp)nullptr);
 		fclose(f);
 		return;
 	}
 
 	png_infop end_info = png_create_info_struct(png_ptr);
-	if (end_info == NULL) {
-		png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
+	if (end_info == nullptr) {
+		png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)nullptr);
 		fclose(f);
 		return;
 	}
@@ -93,7 +93,7 @@ void DisplaySplashImage()
 	png_init_io(png_ptr, f);
 	png_set_sig_bytes(png_ptr, 8);
 
-	png_read_png(png_ptr, info_ptr, PNG_TRANSFORM_IDENTITY, NULL);
+	png_read_png(png_ptr, info_ptr, PNG_TRANSFORM_IDENTITY, nullptr);
 
 	uint width      = png_get_image_width(png_ptr, info_ptr);
 	uint height     = png_get_image_height(png_ptr, info_ptr);

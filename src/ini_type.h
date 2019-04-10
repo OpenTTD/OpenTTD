@@ -28,7 +28,7 @@ struct IniItem {
 	char *value;   ///< The value of this item
 	char *comment; ///< The comment associated with this item
 
-	IniItem(struct IniGroup *parent, const char *name, const char *last = NULL);
+	IniItem(struct IniGroup *parent, const char *name, const char *last = nullptr);
 	~IniItem();
 
 	void SetValue(const char *value);
@@ -43,7 +43,7 @@ struct IniGroup {
 	char *name;          ///< name of group
 	char *comment;       ///< comment for group
 
-	IniGroup(struct IniLoadFile *parent, const char *name, const char *last = NULL);
+	IniGroup(struct IniLoadFile *parent, const char *name, const char *last = nullptr);
 	~IniGroup();
 
 	IniItem *GetItem(const char *name, bool create);
@@ -55,10 +55,10 @@ struct IniLoadFile {
 	IniGroup *group;                      ///< the first group in the ini
 	IniGroup **last_group;                ///< the last group in the ini
 	char *comment;                        ///< last comment in file
-	const char * const *list_group_names; ///< NULL terminated list with group names that are lists
-	const char * const *seq_group_names;  ///< NULL terminated list with group names that are sequences.
+	const char * const *list_group_names; ///< nullptr terminated list with group names that are lists
+	const char * const *seq_group_names;  ///< nullptr terminated list with group names that are sequences.
 
-	IniLoadFile(const char * const *list_group_names = NULL, const char * const *seq_group_names = NULL);
+	IniLoadFile(const char * const *list_group_names = nullptr, const char * const *seq_group_names = nullptr);
 	virtual ~IniLoadFile();
 
 	IniGroup *GetGroup(const char *name, size_t len = 0, bool create_new = true);
@@ -71,7 +71,7 @@ struct IniLoadFile {
 	 * @param filename Name of the INI file.
 	 * @param subdir The subdir to load the file from.
 	 * @param[out] size Size of the opened file.
-	 * @return File handle of the opened file, or \c NULL.
+	 * @return File handle of the opened file, or \c nullptr.
 	 */
 	virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size) = 0;
 
@@ -86,7 +86,7 @@ struct IniLoadFile {
 
 /** Ini file that supports both loading and saving. */
 struct IniFile : IniLoadFile {
-	IniFile(const char * const *list_group_names = NULL);
+	IniFile(const char * const *list_group_names = nullptr);
 
 	bool SaveToDisk(const char *filename);
 

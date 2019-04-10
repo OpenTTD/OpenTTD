@@ -25,7 +25,7 @@ ScriptInfo::~ScriptInfo()
 	for (ScriptConfigItemList::iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
 		free((*it).name);
 		free((*it).description);
-		if (it->labels != NULL) {
+		if (it->labels != nullptr) {
 			for (auto &lbl_map : *(*it).labels) {
 				free(lbl_map.second);
 			}
@@ -85,7 +85,7 @@ bool ScriptInfo::CheckMethod(const char *name) const
 	/* Get location information of the scanner */
 	info->main_script = stredup(info->scanner->GetMainScript());
 	const char *tar_name = info->scanner->GetTarFile();
-	if (tar_name != NULL) info->tar_file = stredup(tar_name);
+	if (tar_name != nullptr) info->tar_file = stredup(tar_name);
 
 	/* Cache the data the info file gives us. */
 	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAuthor", &info->author, MAX_GET_OPS)) return SQ_ERROR;
@@ -111,7 +111,7 @@ bool ScriptInfo::CheckMethod(const char *name) const
 
 bool ScriptInfo::GetSettings()
 {
-	return this->engine->CallMethod(*this->SQ_instance, "GetSettings", NULL, MAX_GET_SETTING_OPS);
+	return this->engine->CallMethod(*this->SQ_instance, "GetSettings", nullptr, MAX_GET_SETTING_OPS);
 }
 
 SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
@@ -138,8 +138,8 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 
 			/* Don't allow '=' and ',' in configure setting names, as we need those
 			 *  2 chars to nicely store the settings as a string. */
-			while ((s = strchr(name, '=')) != NULL) *s = '_';
-			while ((s = strchr(name, ',')) != NULL) *s = '_';
+			while ((s = strchr(name, '=')) != nullptr) *s = '_';
+			while ((s = strchr(name, ',')) != nullptr) *s = '_';
 			config.name = name;
 			items |= 0x001;
 		} else if (strcmp(key, "description") == 0) {
@@ -233,18 +233,18 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 	if (SQ_FAILED(sq_getstring(vm, -2, &setting_name))) return SQ_ERROR;
 	ValidateString(setting_name);
 
-	ScriptConfigItem *config = NULL;
+	ScriptConfigItem *config = nullptr;
 	for (ScriptConfigItemList::iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
 		if (strcmp((*it).name, setting_name) == 0) config = &(*it);
 	}
 
-	if (config == NULL) {
+	if (config == nullptr) {
 		char error[1024];
 		seprintf(error, lastof(error), "Trying to add labels for non-defined setting '%s'", setting_name);
 		this->engine->ThrowError(error);
 		return SQ_ERROR;
 	}
-	if (config->labels != NULL) return SQ_ERROR;
+	if (config->labels != nullptr) return SQ_ERROR;
 
 	config->labels = new LabelMapping;
 
@@ -289,7 +289,7 @@ const ScriptConfigItem *ScriptInfo::GetConfigItem(const char *name) const
 	for (ScriptConfigItemList::const_iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
 		if (strcmp((*it).name, name) == 0) return &(*it);
 	}
-	return NULL;
+	return nullptr;
 }
 
 int ScriptInfo::GetSettingDefaultValue(const char *name) const

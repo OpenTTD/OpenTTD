@@ -239,10 +239,10 @@ void GameInstance::Died()
 	ShowAIDebugWindow(OWNER_DEITY);
 
 	const GameInfo *info = Game::GetInfo();
-	if (info != NULL) {
+	if (info != nullptr) {
 		ShowErrorMessage(STR_ERROR_AI_PLEASE_REPORT_CRASH, INVALID_STRING_ID, WL_WARNING);
 
-		if (info->GetURL() != NULL) {
+		if (info->GetURL() != nullptr) {
 			ScriptLog::Info("Please report the error to the following URL:");
 			ScriptLog::Info(info->GetURL());
 		}

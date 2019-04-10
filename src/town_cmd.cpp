@@ -163,7 +163,7 @@ void Town::PostDestructor(size_t index)
 	/* Give objects a new home! */
 	Object *o;
 	FOR_ALL_OBJECTS(o) {
-		if (o->town == NULL) o->town = CalcClosestTownFromTile(o->location.tile, UINT_MAX);
+		if (o->town == nullptr) o->town = CalcClosestTownFromTile(o->location.tile, UINT_MAX);
 	}
 }
 
@@ -182,11 +182,11 @@ void Town::InitializeLayout(TownLayout layout)
 
 /**
  * Return a random valid town.
- * @return random town, NULL if there are no towns
+ * @return random town, nullptr if there are no towns
  */
 /* static */ Town *Town::GetRandom()
 {
-	if (Town::GetNumItems() == 0) return NULL;
+	if (Town::GetNumItems() == 0) return nullptr;
 	int num = RandomRange((uint16)Town::GetNumItems());
 	size_t index = MAX_UVALUE(size_t);
 
@@ -259,7 +259,7 @@ static void DrawTile_Town(TileInfo *ti)
 		/* Houses don't necessarily need new graphics. If they don't have a
 		 * spritegroup associated with them, then the sprite for the substitute
 		 * house id is drawn instead. */
-		if (HouseSpec::Get(house_id)->grf_prop.spritegroup[0] != NULL) {
+		if (HouseSpec::Get(house_id)->grf_prop.spritegroup[0] != nullptr) {
 			DrawNewHouseTile(ti, house_id);
 			return;
 		} else {
@@ -316,7 +316,7 @@ static Foundation GetFoundation_Town(TileIndex tile, Slope tileh)
 	 */
 	if (hid >= NEW_HOUSE_OFFSET) {
 		const HouseSpec *hs = HouseSpec::Get(hid);
-		if (hs->grf_prop.spritegroup[0] != NULL && HasBit(hs->callback_mask, CBM_HOUSE_DRAW_FOUNDATIONS)) {
+		if (hs->grf_prop.spritegroup[0] != nullptr && HasBit(hs->callback_mask, CBM_HOUSE_DRAW_FOUNDATIONS)) {
 			uint32 callback_res = GetHouseCallback(CBID_HOUSE_DRAW_FOUNDATIONS, 0, 0, hid, Town::GetByTile(tile), tile);
 			if (callback_res != CALLBACK_FAILED && !ConvertBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_DRAW_FOUNDATIONS, callback_res)) return FOUNDATION_NONE;
 		}
@@ -752,7 +752,7 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 		td->str = STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION;
 	}
 
-	if (hs->grf_prop.grffile != NULL) {
+	if (hs->grf_prop.grffile != nullptr) {
 		const GRFConfig *gc = GetGRFConfig(hs->grf_prop.grffile->grfid);
 		td->grf = gc->GetName();
 	}
@@ -1683,12 +1683,12 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	/* Set the default cargo requirement for town growth */
 	switch (_settings_game.game_creation.landscape) {
 		case LT_ARCTIC:
-			if (FindFirstCargoWithTownEffect(TE_FOOD) != NULL) t->goal[TE_FOOD] = TOWN_GROWTH_WINTER;
+			if (FindFirstCargoWithTownEffect(TE_FOOD) != nullptr) t->goal[TE_FOOD] = TOWN_GROWTH_WINTER;
 			break;
 
 		case LT_TROPIC:
-			if (FindFirstCargoWithTownEffect(TE_FOOD) != NULL) t->goal[TE_FOOD] = TOWN_GROWTH_DESERT;
-			if (FindFirstCargoWithTownEffect(TE_WATER) != NULL) t->goal[TE_WATER] = TOWN_GROWTH_DESERT;
+			if (FindFirstCargoWithTownEffect(TE_FOOD) != nullptr) t->goal[TE_FOOD] = TOWN_GROWTH_DESERT;
+			if (FindFirstCargoWithTownEffect(TE_WATER) != nullptr) t->goal[TE_WATER] = TOWN_GROWTH_DESERT;
 			break;
 	}
 
@@ -1776,7 +1776,7 @@ static bool IsUniqueTownName(const char *name)
 	const Town *t;
 
 	FOR_ALL_TOWNS(t) {
-		if (t->name != NULL && strcmp(t->name, name) == 0) return false;
+		if (t->name != nullptr && strcmp(t->name, name) == 0) return false;
 	}
 
 	return true;
@@ -1857,7 +1857,7 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		Town *t;
 		if (random) {
 			t = CreateRandomTown(20, townnameparts, size, city, layout);
-			if (t == NULL) {
+			if (t == nullptr) {
 				cost = CommandCost(STR_ERROR_NO_SPACE_FOR_TOWN);
 			} else {
 				_new_town_id = t->index;
@@ -1869,13 +1869,13 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		UpdateNearestTownForRoadTiles(false);
 		old_generating_world.Restore();
 
-		if (t != NULL && !StrEmpty(text)) {
+		if (t != nullptr && !StrEmpty(text)) {
 			t->name = stredup(text);
 			t->UpdateVirtCoord();
 		}
 
 		if (_game_mode != GM_EDITOR) {
-			/* 't' can't be NULL since 'random' is false outside scenedit */
+			/* 't' can't be nullptr since 'random' is false outside scenedit */
 			assert(!random);
 
 			if (_current_company == OWNER_DEITY) {
@@ -2004,7 +2004,7 @@ static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layou
 	SpotData sp = { INVALID_TILE, 0, layout };
 
 	TileIndex coast = tile;
-	if (CircularTileSearch(&coast, 40, FindNearestEmptyLand, NULL)) {
+	if (CircularTileSearch(&coast, 40, FindNearestEmptyLand, nullptr)) {
 		CircularTileSearch(&coast, 10, FindFurthestFromWater, &sp);
 		return sp.tile;
 	}
@@ -2017,7 +2017,7 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 {
 	assert(_game_mode == GM_EDITOR || _generating_world); // These are the preconditions for CMD_DELETE_TOWN
 
-	if (!Town::CanAllocateItem()) return NULL;
+	if (!Town::CanAllocateItem()) return nullptr;
 
 	do {
 		/* Generate a tile index not too close from the edge */
@@ -2054,7 +2054,7 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 		assert(Town::CanAllocateItem());
 	} while (--attempts != 0);
 
-	return NULL;
+	return nullptr;
 }
 
 static const byte _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, normal, high
@@ -2086,7 +2086,7 @@ bool GenerateTowns(TownLayout layout)
 		/* Get a unique name for the town. */
 		if (!GenerateTownName(&townnameparts, &town_names)) continue;
 		/* try 20 times to create a random-sized town for the first loop. */
-		if (CreateRandomTown(20, townnameparts, TSZ_RANDOM, city, layout) != NULL) current_number++; // If creation was successful, raise a flag.
+		if (CreateRandomTown(20, townnameparts, TSZ_RANDOM, city, layout) != nullptr) current_number++; // If creation was successful, raise a flag.
 	} while (--total);
 
 	town_names.clear();
@@ -2099,7 +2099,7 @@ bool GenerateTowns(TownLayout layout)
 	/* If current_number is still zero at this point, it means that not a single town has been created.
 	 * So give it a last try, but now more aggressive */
 	if (GenerateTownName(&townnameparts) &&
-			CreateRandomTown(10000, townnameparts, TSZ_RANDOM, _settings_game.economy.larger_towns != 0, layout) != NULL) {
+			CreateRandomTown(10000, townnameparts, TSZ_RANDOM, _settings_game.economy.larger_towns != 0, layout) != nullptr) {
 		return true;
 	}
 
@@ -2608,7 +2608,7 @@ void ClearTownHouse(Town *t, TileIndex tile)
 CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Town *t = Town::GetIfValid(p1);
-	if (t == NULL) return CMD_ERROR;
+	if (t == nullptr) return CMD_ERROR;
 
 	bool reset = StrEmpty(text);
 
@@ -2619,7 +2619,7 @@ CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 	if (flags & DC_EXEC) {
 		free(t->name);
-		t->name = reset ? NULL : stredup(text);
+		t->name = reset ? nullptr : stredup(text);
 
 		t->UpdateVirtCoord();
 		InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 1);
@@ -2639,7 +2639,7 @@ const CargoSpec *FindFirstCargoWithTownEffect(TownEffect effect)
 	FOR_ALL_CARGOSPECS(cs) {
 		if (cs->town_effect == effect) return cs;
 	}
-	return NULL;
+	return nullptr;
 }
 
 /**
@@ -2662,11 +2662,11 @@ CommandCost CmdTownCargoGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	uint16 index = GB(p1, 0, 16);
 	Town *t = Town::GetIfValid(index);
-	if (t == NULL) return CMD_ERROR;
+	if (t == nullptr) return CMD_ERROR;
 
 	/* Validate if there is a cargo which is the requested TownEffect */
 	const CargoSpec *cargo = FindFirstCargoWithTownEffect(te);
-	if (cargo == NULL) return CMD_ERROR;
+	if (cargo == nullptr) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		t->goal[te] = p2;
@@ -2690,11 +2690,11 @@ CommandCost CmdTownSetText(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	Town *t = Town::GetIfValid(p1);
-	if (t == NULL) return CMD_ERROR;
+	if (t == nullptr) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		free(t->text);
-		t->text = StrEmpty(text) ? NULL : stredup(text);
+		t->text = StrEmpty(text) ? nullptr : stredup(text);
 		InvalidateWindowData(WC_TOWN_VIEW, p1);
 	}
 
@@ -2716,7 +2716,7 @@ CommandCost CmdTownGrowthRate(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	if (GB(p2, 16, 16) != 0) return CMD_ERROR;
 
 	Town *t = Town::GetIfValid(p1);
-	if (t == NULL) return CMD_ERROR;
+	if (t == nullptr) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		if (p2 == 0) {
@@ -2754,7 +2754,7 @@ CommandCost CmdExpandTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 {
 	if (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY) return CMD_ERROR;
 	Town *t = Town::GetIfValid(p1);
-	if (t == NULL) return CMD_ERROR;
+	if (t == nullptr) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		/* The more houses, the faster we grow */
@@ -2794,7 +2794,7 @@ CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 {
 	if (_game_mode != GM_EDITOR && !_generating_world) return CMD_ERROR;
 	Town *t = Town::GetIfValid(p1);
-	if (t == NULL) return CMD_ERROR;
+	if (t == nullptr) return CMD_ERROR;
 
 	/* Stations refer to towns. */
 	const Station *st;
@@ -2853,7 +2853,7 @@ CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 							try_clear = true;
 						} else {
 							/* Tell to find a new town. */
-							if (flags & DC_EXEC) o->town = NULL;
+							if (flags & DC_EXEC) o->town = nullptr;
 						}
 					}
 				}
@@ -3124,7 +3124,7 @@ static TownActionProc * const _town_action_proc[] = {
 
 /**
  * Get a list of available actions to do at a town.
- * @param nump if not NULL add put the number of available actions in it
+ * @param nump if not nullptr add put the number of available actions in it
  * @param cid the company that is querying the town
  * @param t the town that is queried
  * @return bitmasked value of enabled actions
@@ -3167,7 +3167,7 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
 		}
 	}
 
-	if (nump != NULL) *nump = num;
+	if (nump != nullptr) *nump = num;
 	return buttons;
 }
 
@@ -3185,9 +3185,9 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
 CommandCost CmdDoTownAction(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Town *t = Town::GetIfValid(p1);
-	if (t == NULL || p2 >= lengthof(_town_action_proc)) return CMD_ERROR;
+	if (t == nullptr || p2 >= lengthof(_town_action_proc)) return CMD_ERROR;
 
-	if (!HasBit(GetMaskOfTownActions(NULL, _current_company, t), p2)) return CMD_ERROR;
+	if (!HasBit(GetMaskOfTownActions(nullptr, _current_company, t), p2)) return CMD_ERROR;
 
 	CommandCost cost(EXPENSES_OTHER, _price[PR_TOWN_ACTION] * _town_action_costs[p2] >> 8);
 
@@ -3389,7 +3389,7 @@ CommandCost CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags
 	if (!Company::IsValidID(_current_company) || (flags & DC_NO_TEST_TOWN_RATING)) return CommandCost();
 
 	Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
-	if (t == NULL) return CommandCost();
+	if (t == nullptr) return CommandCost();
 
 	if (t->ratings[_current_company] > RATING_VERYPOOR) return CommandCost();
 
@@ -3401,25 +3401,25 @@ CommandCost CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags
  * Return the town closest to the given tile within \a threshold.
  * @param tile      Starting point of the search.
  * @param threshold Biggest allowed distance to the town.
- * @return Closest town to \a tile within \a threshold, or \c NULL if there is no such town.
+ * @return Closest town to \a tile within \a threshold, or \c nullptr if there is no such town.
  *
  * @note This function only uses distance, the #ClosestTownFromTile function also takes town ownership into account.
  */
 Town *CalcClosestTownFromTile(TileIndex tile, uint threshold)
 {
-	if (Town::GetNumItems() == 0) return NULL;
+	if (Town::GetNumItems() == 0) return nullptr;
 
 	TownID tid = _town_kdtree.FindNearest(TileX(tile), TileY(tile));
 	Town *town = Town::Get(tid);
 	if (DistanceManhattan(tile, town->xy) < threshold) return town;
-	return NULL;
+	return nullptr;
 }
 
 /**
  * Return the town closest (in distance or ownership) to a given tile, within a given threshold.
  * @param tile      Starting point of the search.
  * @param threshold Biggest allowed distance to the town.
- * @return Closest town to \a tile within \a threshold, or \c NULL if there is no such town.
+ * @return Closest town to \a tile within \a threshold, or \c nullptr if there is no such town.
  *
  * @note If you only care about distance, you can use the #CalcClosestTownFromTile function.
  */
@@ -3436,13 +3436,13 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 					/* in the case we are generating "many random towns", this value may be INVALID_TOWN */
 					if (_generating_world) return CalcClosestTownFromTile(tile, threshold);
 					assert(Town::GetNumItems() == 0);
-					return NULL;
+					return nullptr;
 				}
 
 				assert(Town::IsValidID(tid));
 				Town *town = Town::Get(tid);
 
-				if (DistanceManhattan(tile, town->xy) >= threshold) town = NULL;
+				if (DistanceManhattan(tile, town->xy) >= threshold) town = nullptr;
 
 				return town;
 			}
@@ -3505,7 +3505,7 @@ static int GetRating(const Town *t)
 void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
 {
 	/* if magic_bulldozer cheat is active, town doesn't penalize for removing stuff */
-	if (t == NULL || (flags & DC_NO_MODIFY_TOWN_RATING) ||
+	if (t == nullptr || (flags & DC_NO_MODIFY_TOWN_RATING) ||
 			!Company::IsValidID(_current_company) ||
 			(_cheats.magic_bulldozer.value && add < 0)) {
 		return;
@@ -3542,7 +3542,7 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
 CommandCost CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type)
 {
 	/* if magic_bulldozer cheat is active, town doesn't restrict your destructive actions */
-	if (t == NULL || !Company::IsValidID(_current_company) ||
+	if (t == nullptr || !Company::IsValidID(_current_company) ||
 			_cheats.magic_bulldozer.value || (flags & DC_NO_TEST_TOWN_RATING)) {
 		return CommandCost();
 	}
@@ -3635,12 +3635,12 @@ extern const TileTypeProcs _tile_type_town_procs = {
 	AddAcceptedCargo_Town,   // add_accepted_cargo_proc
 	GetTileDesc_Town,        // get_tile_desc_proc
 	GetTileTrackStatus_Town, // get_tile_track_status_proc
-	NULL,                    // click_tile_proc
+	nullptr,                    // click_tile_proc
 	AnimateTile_Town,        // animate_tile_proc
 	TileLoop_Town,           // tile_loop_proc
 	ChangeTileOwner_Town,    // change_tile_owner_proc
 	AddProducedCargo_Town,   // add_produced_cargo_proc
-	NULL,                    // vehicle_enter_tile_proc
+	nullptr,                    // vehicle_enter_tile_proc
 	GetFoundation_Town,      // get_foundation_proc
 	TerraformTile_Town,      // terraform_tile_proc
 };

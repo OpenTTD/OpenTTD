@@ -121,7 +121,7 @@ bool CargoDelivery::operator()(CargoPacket *cp)
 bool CargoLoad::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
-	if (cp_new == NULL) return false;
+	if (cp_new == nullptr) return false;
 	cp_new->SetLoadPlace(this->load_place);
 	this->source->RemoveFromCache(cp_new, cp_new->Count());
 	this->destination->Append(cp_new, VehicleCargoList::MTA_KEEP);
@@ -136,7 +136,7 @@ bool CargoLoad::operator()(CargoPacket *cp)
 bool CargoReservation::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
-	if (cp_new == NULL) return false;
+	if (cp_new == nullptr) return false;
 	cp_new->SetLoadPlace(this->load_place);
 	this->source->reserved_count += cp_new->Count();
 	this->source->RemoveFromCache(cp_new, cp_new->Count());
@@ -152,7 +152,7 @@ bool CargoReservation::operator()(CargoPacket *cp)
 bool CargoReturn::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
-	if (cp_new == NULL) cp_new = cp;
+	if (cp_new == nullptr) cp_new = cp;
 	assert(cp_new->Count() <= this->destination->reserved_count);
 	this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_LOAD, cp_new->Count());
 	this->destination->reserved_count -= cp_new->Count();
@@ -168,7 +168,7 @@ bool CargoReturn::operator()(CargoPacket *cp)
 bool CargoTransfer::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
-	if (cp_new == NULL) return false;
+	if (cp_new == nullptr) return false;
 	this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_TRANSFER, cp_new->Count());
 	/* No transfer credits here as they were already granted during Stage(). */
 	this->destination->Append(cp_new, cp_new->NextStation());
@@ -183,7 +183,7 @@ bool CargoTransfer::operator()(CargoPacket *cp)
 bool CargoShift::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
-	if (cp_new == NULL) cp_new = cp;
+	if (cp_new == nullptr) cp_new = cp;
 	this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_KEEP, cp_new->Count());
 	this->destination->Append(cp_new, VehicleCargoList::MTA_KEEP);
 	return cp_new == cp;
@@ -197,7 +197,7 @@ bool CargoShift::operator()(CargoPacket *cp)
 bool StationCargoReroute::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
-	if (cp_new == NULL) cp_new = cp;
+	if (cp_new == nullptr) cp_new = cp;
 	StationID next = this->ge->GetVia(cp_new->SourceStation(), this->avoid, this->avoid2);
 	assert(next != this->avoid && next != this->avoid2);
 	if (this->source != this->destination) {
@@ -220,7 +220,7 @@ bool StationCargoReroute::operator()(CargoPacket *cp)
 bool VehicleCargoReroute::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
-	if (cp_new == NULL) cp_new = cp;
+	if (cp_new == nullptr) cp_new = cp;
 	if (cp_new->NextStation() == this->avoid || cp_new->NextStation() == this->avoid2) {
 		cp->SetNextStation(this->ge->GetVia(cp_new->SourceStation(), this->avoid, this->avoid2));
 	}

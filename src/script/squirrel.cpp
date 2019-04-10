@@ -31,7 +31,7 @@ void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *so
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
 	engine->crashed = true;
 	SQPrintFunc *func = engine->print_func;
-	if (func == NULL) {
+	if (func == nullptr) {
 		DEBUG(misc, 0, "[Squirrel] Compile error: %s", buf);
 	} else {
 		(*func)(true, buf);
@@ -49,7 +49,7 @@ void Squirrel::ErrorPrintFunc(HSQUIRRELVM vm, const SQChar *s, ...)
 
 	/* Check if we have a custom print function */
 	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
-	if (func == NULL) {
+	if (func == nullptr) {
 		fprintf(stderr, "%s", buf);
 	} else {
 		(*func)(true, buf);
@@ -67,7 +67,7 @@ void Squirrel::RunError(HSQUIRRELVM vm, const SQChar *error)
 	seprintf(buf, lastof(buf), "Your script made an error: %s\n", error);
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
 	SQPrintFunc *func = engine->print_func;
-	if (func == NULL) {
+	if (func == nullptr) {
 		fprintf(stderr, "%s", buf);
 	} else {
 		(*func)(true, buf);
@@ -106,7 +106,7 @@ void Squirrel::PrintFunc(HSQUIRRELVM vm, const SQChar *s, ...)
 
 	/* Check if we have a custom print function */
 	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
-	if (func == NULL) {
+	if (func == nullptr) {
 		printf("%s", buf);
 	} else {
 		(*func)(false, buf);
@@ -234,8 +234,8 @@ bool Squirrel::CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT
 	}
 	/* Call the method */
 	sq_pushobject(this->vm, instance);
-	if (SQ_FAILED(sq_call(this->vm, 1, ret == NULL ? SQFalse : SQTrue, SQTrue, suspend))) return false;
-	if (ret != NULL) sq_getstackobj(vm, -1, ret);
+	if (SQ_FAILED(sq_call(this->vm, 1, ret == nullptr ? SQFalse : SQTrue, SQTrue, suspend))) return false;
+	if (ret != nullptr) sq_getstackobj(vm, -1, ret);
 	/* Reset the top, but don't do so for the script main function, as we need
 	 *  a correct stack when resuming. */
 	if (suspend == -1 || !this->IsSuspended()) sq_settop(this->vm, top);
@@ -305,7 +305,7 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool 
 		return false;
 	}
 
-	if (instance != NULL) {
+	if (instance != nullptr) {
 		/* Find our instance */
 		sq_getstackobj(vm, -1, instance);
 		/* Add a reference to it, so it survives for ever */
@@ -316,16 +316,16 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool 
 
 	/* Store it in the class */
 	sq_setinstanceup(vm, -1, real_instance);
-	if (release_hook != NULL) sq_setreleasehook(vm, -1, release_hook);
+	if (release_hook != nullptr) sq_setreleasehook(vm, -1, release_hook);
 
-	if (instance != NULL) sq_settop(vm, oldtop);
+	if (instance != nullptr) sq_settop(vm, oldtop);
 
 	return true;
 }
 
 bool Squirrel::CreateClassInstance(const char *class_name, void *real_instance, HSQOBJECT *instance)
 {
-	return Squirrel::CreateClassInstanceVM(this->vm, class_name, real_instance, instance, NULL);
+	return Squirrel::CreateClassInstanceVM(this->vm, class_name, real_instance, instance, nullptr);
 }
 
 Squirrel::Squirrel(const char *APIName) :
@@ -336,8 +336,8 @@ Squirrel::Squirrel(const char *APIName) :
 
 void Squirrel::Initialize()
 {
-	this->global_pointer = NULL;
-	this->print_func = NULL;
+	this->global_pointer = nullptr;
+	this->print_func = nullptr;
 	this->crashed = false;
 	this->overdrawn_ops = 0;
 	this->vm = sq_open(1024);
@@ -436,15 +436,15 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 	size_t size;
 	if (strncmp(this->GetAPIName(), "AI", 2) == 0) {
 		file = FioFOpenFile(filename, "rb", AI_DIR, &size);
-		if (file == NULL) file = FioFOpenFile(filename, "rb", AI_LIBRARY_DIR, &size);
+		if (file == nullptr) file = FioFOpenFile(filename, "rb", AI_LIBRARY_DIR, &size);
 	} else if (strncmp(this->GetAPIName(), "GS", 2) == 0) {
 		file = FioFOpenFile(filename, "rb", GAME_DIR, &size);
-		if (file == NULL) file = FioFOpenFile(filename, "rb", GAME_LIBRARY_DIR, &size);
+		if (file == nullptr) file = FioFOpenFile(filename, "rb", GAME_LIBRARY_DIR, &size);
 	} else {
 		NOT_REACHED();
 	}
 
-	if (file == NULL) {
+	if (file == nullptr) {
 		return sq_throwerror(vm, "cannot open the file");
 	}
 	unsigned short bom = 0;

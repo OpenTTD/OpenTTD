@@ -99,7 +99,7 @@ void FioSeekTo(size_t pos, int mode)
 static void FioRestoreFile(int slot)
 {
 	/* Do we still have the file open, or should we reopen it? */
-	if (_fio.handles[slot] == NULL) {
+	if (_fio.handles[slot] == nullptr) {
 		DEBUG(misc, 6, "Restoring file '%s' in slot '%d' from disk", _fio.filenames[slot], slot);
 		FioOpenFile(slot, _fio.filenames[slot]);
 	}
@@ -120,7 +120,7 @@ void FioSeekToFile(uint8 slot, size_t pos)
 	FioRestoreFile(slot);
 #endif /* LIMITED_FDS */
 	f = _fio.handles[slot];
-	assert(f != NULL);
+	assert(f != nullptr);
 	_fio.cur_fh = f;
 	_fio.filename = _fio.filenames[slot];
 	FioSeekTo(pos, SEEK_SET);
@@ -196,13 +196,13 @@ void FioReadBlock(void *ptr, size_t size)
  */
 static inline void FioCloseFile(int slot)
 {
-	if (_fio.handles[slot] != NULL) {
+	if (_fio.handles[slot] != nullptr) {
 		fclose(_fio.handles[slot]);
 
 		free(_fio.shortnames[slot]);
-		_fio.shortnames[slot] = NULL;
+		_fio.shortnames[slot] = nullptr;
 
-		_fio.handles[slot] = NULL;
+		_fio.handles[slot] = nullptr;
 #if defined(LIMITED_FDS)
 		_fio.open_handles--;
 #endif /* LIMITED_FDS */
@@ -229,7 +229,7 @@ static void FioFreeHandle()
 		slot = -1;
 		/* Find the file that is used the least */
 		for (i = 0; i < lengthof(_fio.handles); i++) {
-			if (_fio.handles[i] != NULL && _fio.usage_count[i] < count) {
+			if (_fio.handles[i] != nullptr && _fio.usage_count[i] < count) {
 				count = _fio.usage_count[i];
 				slot  = i;
 			}
@@ -255,7 +255,7 @@ void FioOpenFile(int slot, const char *filename, Subdirectory subdir)
 	FioFreeHandle();
 #endif /* LIMITED_FDS */
 	f = FioFOpenFile(filename, "rb", subdir);
-	if (f == NULL) usererror("Cannot open file '%s'", filename);
+	if (f == nullptr) usererror("Cannot open file '%s'", filename);
 	long pos = ftell(f);
 	if (pos < 0) usererror("Cannot read file '%s'", filename);
 
@@ -265,9 +265,9 @@ void FioOpenFile(int slot, const char *filename, Subdirectory subdir)
 
 	/* Store the filename without path and extension */
 	const char *t = strrchr(filename, PATHSEPCHAR);
-	_fio.shortnames[slot] = stredup(t == NULL ? filename : t);
+	_fio.shortnames[slot] = stredup(t == nullptr ? filename : t);
 	char *t2 = strrchr(_fio.shortnames[slot], '.');
-	if (t2 != NULL) *t2 = '\0';
+	if (t2 != nullptr) *t2 = '\0';
 	strtolower(_fio.shortnames[slot]);
 
 #if defined(LIMITED_FDS)
@@ -312,7 +312,7 @@ static TarLinkList _tar_linklist[NUM_SUBDIRS]; ///< List of directory links
 bool FioCheckFileExists(const char *filename, Subdirectory subdir)
 {
 	FILE *f = FioFOpenFile(filename, "rb", subdir);
-	if (f == NULL) return false;
+	if (f == nullptr) return false;
 
 	FioFCloseFile(f);
 	return true;
@@ -351,7 +351,7 @@ char *FioGetFullPath(char *buf, const char *last, Searchpath sp, Subdirectory su
  * @param last End of the destination buffer.
  * @param subdir Subdirectory to try.
  * @param filename Filename to look for.
- * @return \a buf containing the path if the path was found, else \c NULL.
+ * @return \a buf containing the path if the path was found, else \c nullptr.
  */
 char *FioFindFullPath(char *buf, const char *last, Subdirectory subdir, const char *filename)
 {
@@ -369,7 +369,7 @@ char *FioFindFullPath(char *buf, const char *last, Subdirectory subdir, const ch
 #endif
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 char *FioAppendDirectory(char *buf, const char *last, Searchpath sp, Subdirectory subdir)
@@ -407,7 +407,7 @@ static FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath s
 	wchar_t Lmode[5];
 	MultiByteToWideChar(CP_ACP, 0, mode, -1, Lmode, lengthof(Lmode));
 #endif
-	FILE *f = NULL;
+	FILE *f = nullptr;
 	char buf[MAX_PATH];
 
 	if (subdir == NO_DIRECTORY) {
@@ -417,16 +417,16 @@ static FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath s
 	}
 
 #if defined(_WIN32)
-	if (mode[0] == 'r' && GetFileAttributes(OTTD2FS(buf)) == INVALID_FILE_ATTRIBUTES) return NULL;
+	if (mode[0] == 'r' && GetFileAttributes(OTTD2FS(buf)) == INVALID_FILE_ATTRIBUTES) return nullptr;
 #endif
 
 	f = fopen(buf, mode);
 #if !defined(_WIN32)
-	if (f == NULL && strtolower(buf + ((subdir == NO_DIRECTORY) ? 0 : strlen(_searchpaths[sp]) - 1))) {
+	if (f == nullptr && strtolower(buf + ((subdir == NO_DIRECTORY) ? 0 : strlen(_searchpaths[sp]) - 1))) {
 		f = fopen(buf, mode);
 	}
 #endif
-	if (f != NULL && filesize != NULL) {
+	if (f != nullptr && filesize != nullptr) {
 		/* Find the size of the file */
 		fseek(f, 0, SEEK_END);
 		*filesize = ftell(f);
@@ -438,21 +438,21 @@ static FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath s
 /**
  * Opens a file from inside a tar archive.
  * @param entry The entry to open.
- * @param[out] filesize If not \c NULL, size of the opened file.
- * @return File handle of the opened file, or \c NULL if the file is not available.
+ * @param[out] filesize If not \c nullptr, size of the opened file.
+ * @return File handle of the opened file, or \c nullptr if the file is not available.
  * @note The file is read from within the tar file, and may not return \c EOF after reading the whole file.
  */
 FILE *FioFOpenFileTar(TarFileListEntry *entry, size_t *filesize)
 {
 	FILE *f = fopen(entry->tar_filename, "rb");
-	if (f == NULL) return f;
+	if (f == nullptr) return f;
 
 	if (fseek(f, entry->position, SEEK_SET) < 0) {
 		fclose(f);
-		return NULL;
+		return nullptr;
 	}
 
-	if (filesize != NULL) *filesize = entry->size;
+	if (filesize != nullptr) *filesize = entry->size;
 	return f;
 }
 
@@ -460,22 +460,22 @@ FILE *FioFOpenFileTar(TarFileListEntry *entry, size_t *filesize)
  * Opens a OpenTTD file somewhere in a personal or global directory.
  * @param filename Name of the file to open.
  * @param subdir Subdirectory to open.
- * @return File handle of the opened file, or \c NULL if the file is not available.
+ * @return File handle of the opened file, or \c nullptr if the file is not available.
  */
 FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, size_t *filesize)
 {
-	FILE *f = NULL;
+	FILE *f = nullptr;
 	Searchpath sp;
 
 	assert(subdir < NUM_SUBDIRS || subdir == NO_DIRECTORY);
 
 	FOR_ALL_SEARCHPATHS(sp) {
 		f = FioFOpenFileSp(filename, mode, sp, subdir, filesize);
-		if (f != NULL || subdir == NO_DIRECTORY) break;
+		if (f != nullptr || subdir == NO_DIRECTORY) break;
 	}
 
 	/* We can only use .tar in case of data-dir, and read-mode */
-	if (f == NULL && mode[0] == 'r' && subdir != NO_DIRECTORY) {
+	if (f == nullptr && mode[0] == 'r' && subdir != NO_DIRECTORY) {
 		static const uint MAX_RESOLVED_LENGTH = 2 * (100 + 100 + 155) + 1; // Enough space to hold two filenames plus link. See 'TarHeader'.
 		char resolved_name[MAX_RESOLVED_LENGTH];
 
@@ -508,11 +508,11 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 
 	/* Sometimes a full path is given. To support
 	 * the 'subdirectory' must be 'removed'. */
-	if (f == NULL && subdir != NO_DIRECTORY) {
+	if (f == nullptr && subdir != NO_DIRECTORY) {
 		switch (subdir) {
 			case BASESET_DIR:
 				f = FioFOpenFile(filename, mode, OLD_GM_DIR, filesize);
-				if (f != NULL) break;
+				if (f != nullptr) break;
 				FALLTHROUGH;
 			case NEWGRF_DIR:
 				f = FioFOpenFile(filename, mode, OLD_DATA_DIR, filesize);
@@ -536,7 +536,7 @@ void FioCreateDirectory(const char *name)
 	/* Ignore directory creation errors; they'll surface later on, and most
 	 * of the time they are 'directory already exists' errors anyhow. */
 #if defined(_WIN32)
-	CreateDirectory(OTTD2FS(name), NULL);
+	CreateDirectory(OTTD2FS(name), nullptr);
 #elif defined(OS2) && !defined(__INNOTEK_LIBC__)
 	mkdir(OTTD2FS(name));
 #else
@@ -573,7 +573,7 @@ bool AppendPathSeparator(char *buf, const char *last)
 const char *FioTarFirstDir(const char *tarname, Subdirectory subdir)
 {
 	TarList::iterator it = _tar_list[subdir].find(tarname);
-	if (it == _tar_list[subdir].end()) return NULL;
+	if (it == _tar_list[subdir].end()) return nullptr;
 	return (*it).second.dirname;
 }
 
@@ -675,7 +675,7 @@ bool TarScanner::AddFile(Subdirectory sd, const char *filename)
 bool TarScanner::AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
 {
 	/* No tar within tar. */
-	assert(tar_filename == NULL);
+	assert(tar_filename == nullptr);
 
 	/* The TAR-header, repeated for every file */
 	struct TarHeader {
@@ -708,11 +708,11 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 	 * a number of reasons we cannot open the file.
 	 * Most common case is when we simply have not
 	 * been given read access. */
-	if (f == NULL) return false;
+	if (f == nullptr) return false;
 
 	const char *dupped_filename = stredup(filename);
 	_tar_list[this->subdir][filename].filename = dupped_filename;
-	_tar_list[this->subdir][filename].dirname = NULL;
+	_tar_list[this->subdir][filename].dirname = nullptr;
 
 	TarLinkList links; ///< Temporary list to collect links
 
@@ -801,13 +801,13 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 				 * Note: The destination of links must not contain any directory-links. */
 				strecpy(dest, name, lastof(dest));
 				char *destpos = strrchr(dest, PATHSEPCHAR);
-				if (destpos == NULL) destpos = dest;
+				if (destpos == nullptr) destpos = dest;
 				*destpos = '\0';
 
 				char *pos = link;
 				while (*pos != '\0') {
 					char *next = strchr(pos, PATHSEPCHAR);
-					if (next == NULL) {
+					if (next == nullptr) {
 						next = pos + strlen(pos);
 					} else {
 						/* Terminate the substring up to the path separator character. */
@@ -826,7 +826,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 						/* Truncate 'dest' after last PATHSEPCHAR.
 						 * This assumes that the truncated part is a real directory and not a link. */
 						destpos = strrchr(dest, PATHSEPCHAR);
-						if (destpos == NULL) destpos = dest;
+						if (destpos == nullptr) destpos = dest;
 						*destpos = '\0';
 					} else {
 						/* Append at end of 'dest' */
@@ -856,7 +856,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 
 				/* Store the first directory name we detect */
 				DEBUG(misc, 6, "Found dir in tar: %s", name);
-				if (_tar_list[this->subdir][filename].dirname == NULL) _tar_list[this->subdir][filename].dirname = stredup(name);
+				if (_tar_list[this->subdir][filename].dirname == nullptr) _tar_list[this->subdir][filename].dirname = stredup(name);
 				break;
 
 			default:
@@ -911,13 +911,13 @@ bool ExtractTar(const char *tar_filename, Subdirectory subdir)
 	const char *dirname = (*it).second.dirname;
 
 	/* The file doesn't have a sub directory! */
-	if (dirname == NULL) return false;
+	if (dirname == nullptr) return false;
 
 	char filename[MAX_PATH];
 	strecpy(filename, tar_filename, lastof(filename));
 	char *p = strrchr(filename, PATHSEPCHAR);
 	/* The file's path does not have a separator? */
-	if (p == NULL) return false;
+	if (p == nullptr) return false;
 
 	p++;
 	strecpy(p, dirname, lastof(filename));
@@ -934,14 +934,14 @@ bool ExtractTar(const char *tar_filename, Subdirectory subdir)
 		/* First open the file in the .tar. */
 		size_t to_copy = 0;
 		FILE *in = FioFOpenFileTar(&(*it2).second, &to_copy);
-		if (in == NULL) {
+		if (in == nullptr) {
 			DEBUG(misc, 6, "Extracting %s failed; could not open %s", filename, tar_filename);
 			return false;
 		}
 
 		/* Now open the 'output' file. */
 		FILE *out = fopen(filename, "wb");
-		if (out == NULL) {
+		if (out == nullptr) {
 			DEBUG(misc, 6, "Extracting %s failed; could not open %s", filename, filename);
 			fclose(in);
 			return false;
@@ -993,12 +993,12 @@ static bool ChangeWorkingDirectoryToExecutable(const char *exe)
 	bool success = false;
 #ifdef WITH_COCOA
 	char *app_bundle = strchr(tmp, '.');
-	while (app_bundle != NULL && strncasecmp(app_bundle, ".app", 4) != 0) app_bundle = strchr(&app_bundle[1], '.');
+	while (app_bundle != nullptr && strncasecmp(app_bundle, ".app", 4) != 0) app_bundle = strchr(&app_bundle[1], '.');
 
-	if (app_bundle != NULL) *app_bundle = '\0';
+	if (app_bundle != nullptr) *app_bundle = '\0';
 #endif /* WITH_COCOA */
 	char *s = strrchr(tmp, PATHSEPCHAR);
-	if (s != NULL) {
+	if (s != nullptr) {
 		*s = '\0';
 		if (chdir(tmp) != 0) {
 			DEBUG(misc, 0, "Directory with the binary does not exist?");
@@ -1022,13 +1022,13 @@ static bool ChangeWorkingDirectoryToExecutable(const char *exe)
 bool DoScanWorkingDirectory()
 {
 	/* No working directory, so nothing to do. */
-	if (_searchpaths[SP_WORKING_DIR] == NULL) return false;
+	if (_searchpaths[SP_WORKING_DIR] == nullptr) return false;
 
 	/* Working directory is root, so do nothing. */
 	if (strcmp(_searchpaths[SP_WORKING_DIR], PATHSEP) == 0) return false;
 
 	/* No personal/home directory, so the working directory won't be that. */
-	if (_searchpaths[SP_PERSONAL_DIR] == NULL) return true;
+	if (_searchpaths[SP_PERSONAL_DIR] == nullptr) return true;
 
 	char tmp[MAX_PATH];
 	seprintf(tmp, lastof(tmp), "%s%s", _searchpaths[SP_WORKING_DIR], PERSONAL_DIR);
@@ -1044,7 +1044,7 @@ void DetermineBasePaths(const char *exe)
 {
 	char tmp[MAX_PATH];
 #if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
-	const char *xdg_data_home = xdgDataHome(NULL);
+	const char *xdg_data_home = xdgDataHome(nullptr);
 	seprintf(tmp, lastof(tmp), "%s" PATHSEP "%s", xdg_data_home,
 			PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR);
 	free(xdg_data_home);
@@ -1053,7 +1053,7 @@ void DetermineBasePaths(const char *exe)
 	_searchpaths[SP_PERSONAL_DIR_XDG] = stredup(tmp);
 #endif
 #if defined(OS2) || !defined(WITH_PERSONAL_DIR)
-	_searchpaths[SP_PERSONAL_DIR] = NULL;
+	_searchpaths[SP_PERSONAL_DIR] = nullptr;
 #else
 #ifdef __HAIKU__
 	BPath path;
@@ -1065,17 +1065,17 @@ void DetermineBasePaths(const char *exe)
 	 * variables in any way. It can also contain all kinds of
 	 * unvalidated data we rather not want internally. */
 	const char *homedir = getenv("HOME");
-	if (homedir != NULL) {
+	if (homedir != nullptr) {
 		homedir = stredup(homedir);
 	}
 
-	if (homedir == NULL) {
+	if (homedir == nullptr) {
 		const struct passwd *pw = getpwuid(getuid());
-		homedir = (pw == NULL) ? NULL : stredup(pw->pw_dir);
+		homedir = (pw == nullptr) ? nullptr : stredup(pw->pw_dir);
 	}
 #endif
 
-	if (homedir != NULL) {
+	if (homedir != nullptr) {
 		ValidateString(homedir);
 		seprintf(tmp, lastof(tmp), "%s" PATHSEP "%s", homedir, PERSONAL_DIR);
 		AppendPathSeparator(tmp, lastof(tmp));
@@ -1083,7 +1083,7 @@ void DetermineBasePaths(const char *exe)
 		_searchpaths[SP_PERSONAL_DIR] = stredup(tmp);
 		free(homedir);
 	} else {
-		_searchpaths[SP_PERSONAL_DIR] = NULL;
+		_searchpaths[SP_PERSONAL_DIR] = nullptr;
 	}
 #endif
 
@@ -1092,10 +1092,10 @@ void DetermineBasePaths(const char *exe)
 	AppendPathSeparator(tmp, lastof(tmp));
 	_searchpaths[SP_SHARED_DIR] = stredup(tmp);
 #else
-	_searchpaths[SP_SHARED_DIR] = NULL;
+	_searchpaths[SP_SHARED_DIR] = nullptr;
 #endif
 
-	if (getcwd(tmp, MAX_PATH) == NULL) *tmp = '\0';
+	if (getcwd(tmp, MAX_PATH) == nullptr) *tmp = '\0';
 	AppendPathSeparator(tmp, lastof(tmp));
 	_searchpaths[SP_WORKING_DIR] = stredup(tmp);
 
@@ -1103,14 +1103,14 @@ void DetermineBasePaths(const char *exe)
 
 	/* Change the working directory to that one of the executable */
 	if (ChangeWorkingDirectoryToExecutable(exe)) {
-		if (getcwd(tmp, MAX_PATH) == NULL) *tmp = '\0';
+		if (getcwd(tmp, MAX_PATH) == nullptr) *tmp = '\0';
 		AppendPathSeparator(tmp, lastof(tmp));
 		_searchpaths[SP_BINARY_DIR] = stredup(tmp);
 	} else {
-		_searchpaths[SP_BINARY_DIR] = NULL;
+		_searchpaths[SP_BINARY_DIR] = nullptr;
 	}
 
-	if (_searchpaths[SP_WORKING_DIR] != NULL) {
+	if (_searchpaths[SP_WORKING_DIR] != nullptr) {
 		/* Go back to the current working directory. */
 		if (chdir(_searchpaths[SP_WORKING_DIR]) != 0) {
 			DEBUG(misc, 0, "Failed to return to working directory!");
@@ -1118,7 +1118,7 @@ void DetermineBasePaths(const char *exe)
 	}
 
 #if !defined(GLOBAL_DATA_DIR)
-	_searchpaths[SP_INSTALLATION_DIR] = NULL;
+	_searchpaths[SP_INSTALLATION_DIR] = nullptr;
 #else
 	seprintf(tmp, lastof(tmp), "%s", GLOBAL_DATA_DIR);
 	AppendPathSeparator(tmp, lastof(tmp));
@@ -1128,7 +1128,7 @@ void DetermineBasePaths(const char *exe)
 extern void cocoaSetApplicationBundleDir();
 	cocoaSetApplicationBundleDir();
 #else
-	_searchpaths[SP_APPLICATION_BUNDLE_DIR] = NULL;
+	_searchpaths[SP_APPLICATION_BUNDLE_DIR] = nullptr;
 #endif
 }
 #endif /* defined(_WIN32) */
@@ -1148,7 +1148,7 @@ void DeterminePaths(const char *exe)
 #if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
 	char config_home[MAX_PATH];
 
-	const char *xdg_config_home = xdgConfigHome(NULL);
+	const char *xdg_config_home = xdgConfigHome(nullptr);
 	seprintf(config_home, lastof(config_home), "%s" PATHSEP "%s", xdg_config_home,
 			PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR);
 	free(xdg_config_home);
@@ -1163,19 +1163,19 @@ void DeterminePaths(const char *exe)
 	}
 
 	char *config_dir;
-	if (_config_file != NULL) {
+	if (_config_file != nullptr) {
 		config_dir = stredup(_config_file);
 		char *end = strrchr(config_dir, PATHSEPCHAR);
-		if (end == NULL) {
+		if (end == nullptr) {
 			config_dir[0] = '\0';
 		} else {
 			end[1] = '\0';
 		}
 	} else {
 		char personal_dir[MAX_PATH];
-		if (FioFindFullPath(personal_dir, lastof(personal_dir), BASE_DIR, "openttd.cfg") != NULL) {
+		if (FioFindFullPath(personal_dir, lastof(personal_dir), BASE_DIR, "openttd.cfg") != nullptr) {
 			char *end = strrchr(personal_dir, PATHSEPCHAR);
-			if (end != NULL) end[1] = '\0';
+			if (end != nullptr) end[1] = '\0';
 			config_dir = stredup(personal_dir);
 			_config_file = str_fmt("%sopenttd.cfg", config_dir);
 		} else {
@@ -1187,14 +1187,14 @@ void DeterminePaths(const char *exe)
 					SP_PERSONAL_DIR, SP_BINARY_DIR, SP_WORKING_DIR, SP_SHARED_DIR, SP_INSTALLATION_DIR
 				};
 
-			config_dir = NULL;
+			config_dir = nullptr;
 			for (uint i = 0; i < lengthof(new_openttd_cfg_order); i++) {
 				if (IsValidSearchPath(new_openttd_cfg_order[i])) {
 					config_dir = stredup(_searchpaths[new_openttd_cfg_order[i]]);
 					break;
 				}
 			}
-			assert(config_dir != NULL);
+			assert(config_dir != nullptr);
 #endif
 			_config_file = str_fmt("%sopenttd.cfg", config_dir);
 		}
@@ -1277,27 +1277,27 @@ void SanitizeFilename(char *filename)
  * @param filename Name of the file to load.
  * @param[out] lenp Length of loaded data.
  * @param maxsize Maximum size to load.
- * @return Pointer to new memory containing the loaded data, or \c NULL if loading failed.
+ * @return Pointer to new memory containing the loaded data, or \c nullptr if loading failed.
  * @note If \a maxsize less than the length of the file, loading fails.
  */
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 {
 	FILE *in = fopen(filename, "rb");
-	if (in == NULL) return NULL;
+	if (in == nullptr) return nullptr;
 
 	fseek(in, 0, SEEK_END);
 	size_t len = ftell(in);
 	fseek(in, 0, SEEK_SET);
 	if (len > maxsize) {
 		fclose(in);
-		return NULL;
+		return nullptr;
 	}
 	byte *mem = MallocT<byte>(len + 1);
 	mem[len] = 0;
 	if (fread(mem, len, 1, in) != 1) {
 		fclose(in);
 		free(mem);
-		return NULL;
+		return nullptr;
 	}
 	fclose(in);
 
@@ -1309,14 +1309,14 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
  * Helper to see whether a given filename matches the extension.
  * @param extension The extension to look for.
  * @param filename  The filename to look in for the extension.
- * @return True iff the extension is NULL, or the filename ends with it.
+ * @return True iff the extension is nullptr, or the filename ends with it.
  */
 static bool MatchesExtension(const char *extension, const char *filename)
 {
-	if (extension == NULL) return true;
+	if (extension == nullptr) return true;
 
 	const char *ext = strrchr(filename, extension[0]);
-	return ext != NULL && strcasecmp(ext, extension) == 0;
+	return ext != nullptr && strcasecmp(ext, extension) == 0;
 }
 
 /**
@@ -1337,9 +1337,9 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
 	struct dirent *dirent;
 	DIR *dir;
 
-	if (path == NULL || (dir = ttd_opendir(path)) == NULL) return 0;
+	if (path == nullptr || (dir = ttd_opendir(path)) == nullptr) return 0;
 
-	while ((dirent = readdir(dir)) != NULL) {
+	while ((dirent = readdir(dir)) != nullptr) {
 		const char *d_name = FS2OTTD(dirent->d_name);
 		char filename[MAX_PATH];
 
@@ -1355,7 +1355,7 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
 			num += ScanPath(fs, extension, filename, basepath_length, recursive);
 		} else if (S_ISREG(sb.st_mode)) {
 			/* File */
-			if (MatchesExtension(extension, filename) && fs->AddFile(filename, basepath_length, NULL)) num++;
+			if (MatchesExtension(extension, filename) && fs->AddFile(filename, basepath_length, nullptr)) num++;
 		}
 	}
 

@@ -29,7 +29,7 @@ void ShowStationViewWindow(StationID station);
 void UpdateAllStationVirtCoords();
 
 CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad);
-CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, CargoTypes *always_accepted = NULL);
+CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, CargoTypes *always_accepted = nullptr);
 
 void UpdateStationAcceptance(Station *st, bool show_msg);
 

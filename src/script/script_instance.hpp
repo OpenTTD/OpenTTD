@@ -52,7 +52,7 @@ public:
 	 * Find a library.
 	 * @param library The library name to find.
 	 * @param version The version the library should have.
-	 * @return The library if found, NULL otherwise.
+	 * @return The library if found, nullptr otherwise.
 	 */
 	virtual class ScriptInfo *FindLibrary(const char *library, int version) = 0;
 

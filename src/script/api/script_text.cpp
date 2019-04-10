@@ -63,7 +63,7 @@ ScriptText::~ScriptText()
 {
 	for (int i = 0; i < SCRIPT_TEXT_MAX_PARAMETERS; i++) {
 		free(this->params[i]);
-		if (this->paramt[i] != NULL) this->paramt[i]->Release();
+		if (this->paramt[i] != nullptr) this->paramt[i]->Release();
 	}
 }
 
@@ -72,11 +72,11 @@ SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 	if (parameter >= SCRIPT_TEXT_MAX_PARAMETERS) return SQ_ERROR;
 
 	free(this->params[parameter]);
-	if (this->paramt[parameter] != NULL) this->paramt[parameter]->Release();
+	if (this->paramt[parameter] != nullptr) this->paramt[parameter]->Release();
 
 	this->parami[parameter] = 0;
-	this->params[parameter] = NULL;
-	this->paramt[parameter] = NULL;
+	this->params[parameter] = nullptr;
+	this->paramt[parameter] = nullptr;
 
 	switch (sq_gettype(vm, -1)) {
 		case OT_STRING: {
@@ -97,7 +97,7 @@ SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 		}
 
 		case OT_INSTANCE: {
-			SQUserPointer real_instance = NULL;
+			SQUserPointer real_instance = nullptr;
 			HSQOBJECT instance;
 
 			sq_getstackobj(vm, -1, &instance);
@@ -112,7 +112,7 @@ SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 
 			/* Get the 'real' instance of this class */
 			sq_getinstanceup(vm, -1, &real_instance, 0);
-			if (real_instance == NULL) return SQ_ERROR;
+			if (real_instance == nullptr) return SQ_ERROR;
 
 			ScriptText *value = static_cast<ScriptText *>(real_instance);
 			value->AddRef();
@@ -183,7 +183,7 @@ const char *ScriptText::GetEncodedText()
 	static char buf[1024];
 	int param_count = 0;
 	this->_GetEncodedText(buf, lastof(buf), param_count);
-	return (param_count > SCRIPT_TEXT_MAX_PARAMETERS) ? NULL : buf;
+	return (param_count > SCRIPT_TEXT_MAX_PARAMETERS) ? nullptr : buf;
 }
 
 char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
@@ -191,12 +191,12 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
 	p += Utf8Encode(p, SCC_ENCODED);
 	p += seprintf(p, lastofp, "%X", this->string);
 	for (int i = 0; i < this->paramc; i++) {
-		if (this->params[i] != NULL) {
+		if (this->params[i] != nullptr) {
 			p += seprintf(p, lastofp, ":\"%s\"", this->params[i]);
 			param_count++;
 			continue;
 		}
-		if (this->paramt[i] != NULL) {
+		if (this->paramt[i] != nullptr) {
 			p += seprintf(p, lastofp, ":");
 			p = this->paramt[i]->_GetEncodedText(p, lastofp, param_count);
 			continue;
@@ -211,7 +211,7 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
 const char *Text::GetDecodedText()
 {
 	const char *encoded_text = this->GetEncodedText();
-	if (encoded_text == NULL) return NULL;
+	if (encoded_text == nullptr) return nullptr;
 
 	static char buf[1024];
 	::SetDParamStr(0, encoded_text);

@@ -103,7 +103,7 @@ static inline void NPFSetFlag(AyStarNode *node, NPFNodeFlag flag, bool value)
 
 bool CheckIgnoreFirstTile(const PathNode *node)
 {
-	return (node->parent == NULL && HasBit(node->node.user_data[NPF_NODE_FLAGS], NPF_FLAG_IGNORE_START_TILE));
+	return (node->parent == nullptr && HasBit(node->node.user_data[NPF_NODE_FLAGS], NPF_FLAG_IGNORE_START_TILE));
 }
 
 /**
@@ -192,7 +192,7 @@ static int32 NPFCalcStationOrTileHeuristic(AyStar *as, AyStarNode *current, Open
  * choice */
 static void NPFFillTrackdirChoice(AyStarNode *current, OpenListNode *parent)
 {
-	if (parent->path.parent == NULL) {
+	if (parent->path.parent == nullptr) {
 		Trackdir trackdir = current->direction;
 		/* This is a first order decision, so we'd better save the
 		 * direction we chose */
@@ -584,7 +584,7 @@ static const PathNode *FindSafePosition(PathNode *path, const Train *v)
 	/* If there is no signal, reserve the whole path. */
 	PathNode *sig = path;
 
-	for (; path->parent != NULL; path = path->parent) {
+	for (; path->parent != nullptr; path = path->parent) {
 		if (IsSafeWaitingPosition(v, path->node.tile, path->node.direction, true, _settings_game.pf.forbid_90_deg)) {
 			sig = path;
 		}
@@ -625,7 +625,7 @@ static void NPFSaveTargetData(AyStar *as, OpenListNode *current)
 	ftd->node = current->path.node;
 	ftd->res_okay = false;
 
-	if (as->user_target != NULL && ((NPFFindStationOrTileData*)as->user_target)->reserve_path && user->type == TRANSPORT_RAIL) {
+	if (as->user_target != nullptr && ((NPFFindStationOrTileData*)as->user_target)->reserve_path && user->type == TRANSPORT_RAIL) {
 		/* Path reservation is requested. */
 		const Train *v = Train::From(((NPFFindStationOrTileData *)as->user_target)->v);
 
@@ -647,7 +647,7 @@ static void NPFSaveTargetData(AyStar *as, OpenListNode *current)
 			if (!IsWaitingPositionFree(v, target->node.tile, target->node.direction, _settings_game.pf.forbid_90_deg)) return;
 		}
 
-		for (const PathNode *cur = target; cur->parent != NULL; cur = cur->parent) {
+		for (const PathNode *cur = target; cur->parent != nullptr; cur = cur->parent) {
 			if (!TryReserveRailTrack(cur->node.tile, TrackdirToTrack(cur->node.direction))) {
 				/* Reservation failed, undo. */
 				ClearPathReservation(target, cur);
@@ -957,7 +957,7 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
 
 /*
  * Plan a route to the specified target (which is checked by target_proc),
- * from start1 and if not NULL, from start2 as well. The type of transport we
+ * from start1 and if not nullptr, from start2 as well. The type of transport we
  * are checking is in type. reverse_penalty is applied to all routes that
  * originate from the second start node.
  * When we are looking for one specific target (optionally multiple tiles), we
@@ -989,7 +989,7 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start
 	NPFSetFlag(start1, NPF_FLAG_IGNORE_START_TILE, ignore_start_tile1);
 	NPFSetFlag(start1, NPF_FLAG_IGNORE_RESERVED, ignore_reserved);
 	_npf_aystar.AddStartNode(start1, 0);
-	if (start2 != NULL) {
+	if (start2 != nullptr) {
 		start2->user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
 		start2->user_data[NPF_NODE_FLAGS] = 0;
 		NPFSetFlag(start2, NPF_FLAG_IGNORE_START_TILE, ignore_start_tile2);
@@ -1017,10 +1017,10 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start
 	assert(r != AYSTAR_STILL_BUSY);
 
 	if (result.best_bird_dist != 0) {
-		if (target != NULL) {
+		if (target != nullptr) {
 			DEBUG(npf, 1, "Could not find route to tile 0x%X from 0x%X.", target->dest_coords, start1->tile);
 		} else {
-			/* Assumption: target == NULL, so we are looking for a depot */
+			/* Assumption: target == nullptr, so we are looking for a depot */
 			DEBUG(npf, 1, "Could not find route to a depot from tile 0x%X.", start1->tile);
 		}
 
@@ -1041,7 +1041,7 @@ static NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdi
 	start1.direction = trackdir1;
 	start2.direction = trackdir2;
 
-	return NPFRouteInternal(&start1, ignore_start_tile1, (IsValidTile(tile2) ? &start2 : NULL), ignore_start_tile2, target, NPFFindStationOrTile, NPFCalcStationOrTileHeuristic, user, 0);
+	return NPFRouteInternal(&start1, ignore_start_tile1, (IsValidTile(tile2) ? &start2 : nullptr), ignore_start_tile2, target, NPFFindStationOrTile, NPFCalcStationOrTileHeuristic, user, 0);
 }
 
 /* Will search from the given tile and direction, for a route to the given
@@ -1069,9 +1069,9 @@ static NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Tra
 	start1.direction = trackdir1;
 	start2.direction = trackdir2;
 
-	/* perform a breadth first search. Target is NULL,
+	/* perform a breadth first search. Target is nullptr,
 	 * since we are just looking for any depot...*/
-	return NPFRouteInternal(&start1, ignore_start_tile1, (IsValidTile(tile2) ? &start2 : NULL), ignore_start_tile2, target, NPFFindDepot, NPFCalcZero, user, reverse_penalty, false, max_penalty);
+	return NPFRouteInternal(&start1, ignore_start_tile1, (IsValidTile(tile2) ? &start2 : nullptr), ignore_start_tile2, target, NPFFindDepot, NPFCalcZero, user, reverse_penalty, false, max_penalty);
 }
 
 void InitializeNPF()
@@ -1121,7 +1121,7 @@ FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penal
 	Trackdir trackdir = v->GetVehicleTrackdir();
 
 	AyStarUserData user = { v->owner, TRANSPORT_ROAD, INVALID_RAILTYPES, v->compatible_roadtypes };
-	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, INVALID_TILE, INVALID_TRACKDIR, false, NULL, &user, 0, max_penalty);
+	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, INVALID_TILE, INVALID_TRACKDIR, false, nullptr, &user, 0, max_penalty);
 
 	if (ftd.best_bird_dist != 0) return FindDepotData();
 
@@ -1233,10 +1233,10 @@ bool NPFTrainFindNearestSafeTile(const Train *v, TileIndex tile, Trackdir trackd
 	RailTypes railtypes = v->compatible_railtypes;
 	if (override_railtype) railtypes |= GetRailTypeInfo(v->railtype)->compatible_railtypes;
 
-	/* perform a breadth first search. Target is NULL,
+	/* perform a breadth first search. Target is nullptr,
 	 * since we are just looking for any safe tile...*/
 	AyStarUserData user = { v->owner, TRANSPORT_RAIL, railtypes, ROADTYPES_NONE };
-	return NPFRouteInternal(&start1, true, NULL, false, &fstd, NPFFindSafeTile, NPFCalcZero, &user, 0, true).res_okay;
+	return NPFRouteInternal(&start1, true, nullptr, false, &fstd, NPFFindSafeTile, NPFCalcZero, &user, 0, true).res_okay;
 }
 
 bool NPFTrainCheckReverse(const Train *v)
@@ -1269,7 +1269,7 @@ Track NPFTrainChooseTrack(const Train *v, bool &path_found, bool reserve_track, 
 	AyStarUserData user = { v->owner, TRANSPORT_RAIL, v->compatible_railtypes, ROADTYPES_NONE };
 	NPFFoundTargetData ftd = NPFRouteToStationOrTile(origin.tile, origin.trackdir, true, &fstd, &user);
 
-	if (target != NULL) {
+	if (target != nullptr) {
 		target->tile = ftd.node.tile;
 		target->trackdir = (Trackdir)ftd.node.direction;
 		target->okay = ftd.res_okay;

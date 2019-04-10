@@ -169,14 +169,14 @@ struct WindowDesc : ZeroedMemoryAllocator {
 
 	WindowDesc(WindowPosition default_pos, const char *ini_key, int16 def_width_trad, int16 def_height_trad,
 			WindowClass window_class, WindowClass parent_class, uint32 flags,
-			const NWidgetPart *nwid_parts, int16 nwid_length, HotkeyList *hotkeys = NULL);
+			const NWidgetPart *nwid_parts, int16 nwid_length, HotkeyList *hotkeys = nullptr);
 
 	~WindowDesc();
 
 	WindowPosition default_pos;    ///< Preferred position of the window. @see WindowPosition()
 	WindowClass cls;               ///< Class of the window, @see WindowClass.
 	WindowClass parent_cls;        ///< Class of the parent window. @see WindowClass
-	const char *ini_key;           ///< Key to store window defaults in openttd.cfg. \c NULL if nothing shall be stored.
+	const char *ini_key;           ///< Key to store window defaults in openttd.cfg. \c nullptr if nothing shall be stored.
 	uint32 flags;                  ///< Flags. @see WindowDefaultFlag
 	const NWidgetPart *nwid_parts; ///< Nested widget parts describing the window.
 	int16 nwid_length;             ///< Length of the #nwid_parts array.
@@ -326,12 +326,12 @@ public:
 	Owner owner;        ///< The owner of the content shown in this window. Company colour is acquired from this variable.
 
 	ViewportData *viewport;          ///< Pointer to viewport data, if present.
-	const NWidgetCore *nested_focus; ///< Currently focused nested widget, or \c NULL if no nested widget has focus.
+	const NWidgetCore *nested_focus; ///< Currently focused nested widget, or \c nullptr if no nested widget has focus.
 	SmallMap<int, QueryString*> querystrings; ///< QueryString associated to WWT_EDITBOX widgets.
 	NWidgetBase *nested_root;        ///< Root of the nested tree.
 	NWidgetBase **nested_array;      ///< Array of pointers into the tree. Do not access directly, use #Window::GetWidget() instead.
 	uint nested_array_size;          ///< Size of the nested array.
-	NWidgetStacked *shade_select;    ///< Selection widget (#NWID_SELECTION) to use for shading the window. If \c NULL, window cannot shade.
+	NWidgetStacked *shade_select;    ///< Selection widget (#NWID_SELECTION) to use for shading the window. If \c nullptr, window cannot shade.
 	Dimension unshaded_size;         ///< Last known unshaded size (only valid while shaded).
 
 	int mouse_capture_widget;        ///< Widgetindex of current mouse capture widget (e.g. dragged scrollbar). -1 if no widget has mouse capture.
@@ -394,7 +394,7 @@ public:
 	inline void SetWidgetDisabledState(byte widget_index, bool disab_stat)
 	{
 		assert(widget_index < this->nested_array_size);
-		if (this->nested_array[widget_index] != NULL) this->GetWidget<NWidgetCore>(widget_index)->SetDisabled(disab_stat);
+		if (this->nested_array[widget_index] != nullptr) this->GetWidget<NWidgetCore>(widget_index)->SetDisabled(disab_stat);
 	}
 
 	/**
@@ -433,7 +433,7 @@ public:
 	 */
 	inline bool IsWidgetFocused(byte widget_index) const
 	{
-		return this->nested_focus != NULL && this->nested_focus->index == widget_index;
+		return this->nested_focus != nullptr && this->nested_focus->index == widget_index;
 	}
 
 	/**
@@ -525,7 +525,7 @@ public:
 	/** Is window shaded currently? */
 	inline bool IsShaded() const
 	{
-		return this->shade_select != NULL && this->shade_select->shown_plane == SZSP_HORIZONTAL;
+		return this->shade_select != nullptr && this->shade_select->shown_plane == SZSP_HORIZONTAL;
 	}
 
 	void SetShaded(bool make_shaded);
@@ -734,7 +734,7 @@ public:
 
 	/**
 	 * The query window opened from this window has closed.
-	 * @param str the new value of the string, NULL if the window
+	 * @param str the new value of the string, nullptr if the window
 	 *            was cancelled or an empty string when the default
 	 *            button was pressed, i.e. StrEmpty(str).
 	 */
@@ -818,14 +818,14 @@ public:
  * Get the nested widget with number \a widnum from the nested widget tree.
  * @tparam NWID Type of the nested widget.
  * @param widnum Widget number of the widget to retrieve.
- * @return The requested widget if it is instantiated, \c NULL otherwise.
+ * @return The requested widget if it is instantiated, \c nullptr otherwise.
  */
 template <class NWID>
 inline NWID *Window::GetWidget(uint widnum)
 {
-	if (widnum >= this->nested_array_size || this->nested_array[widnum] == NULL) return NULL;
+	if (widnum >= this->nested_array_size || this->nested_array[widnum] == nullptr) return nullptr;
 	NWID *nwid = dynamic_cast<NWID *>(this->nested_array[widnum]);
-	assert(nwid != NULL);
+	assert(nwid != nullptr);
 	return nwid;
 }
 
@@ -833,7 +833,7 @@ inline NWID *Window::GetWidget(uint widnum)
 template <>
 inline const NWidgetBase *Window::GetWidget<NWidgetBase>(uint widnum) const
 {
-	if (widnum >= this->nested_array_size) return NULL;
+	if (widnum >= this->nested_array_size) return nullptr;
 	return this->nested_array[widnum];
 }
 
@@ -841,7 +841,7 @@ inline const NWidgetBase *Window::GetWidget<NWidgetBase>(uint widnum) const
  * Get the nested widget with number \a widnum from the nested widget tree.
  * @tparam NWID Type of the nested widget.
  * @param widnum Widget number of the widget to retrieve.
- * @return The requested widget if it is instantiated, \c NULL otherwise.
+ * @return The requested widget if it is instantiated, \c nullptr otherwise.
  */
 template <class NWID>
 inline const NWID *Window::GetWidget(uint widnum) const
@@ -873,26 +873,26 @@ Window *FindWindowFromPt(int x, int y);
  * @param desc The pointer to the WindowDesc to be created
  * @param window_number the window number of the new window
  * @param return_existing If set, also return the window if it already existed.
- * @return %Window pointer of the newly created window, or the existing one if \a return_existing is set, or \c NULL.
+ * @return %Window pointer of the newly created window, or the existing one if \a return_existing is set, or \c nullptr.
  */
 template <typename Wcls>
 Wcls *AllocateWindowDescFront(WindowDesc *desc, int window_number, bool return_existing = false)
 {
 	Wcls *w = static_cast<Wcls *>(BringWindowToFrontById(desc->cls, window_number));
-	if (w != NULL) return return_existing ? w : NULL;
+	if (w != nullptr) return return_existing ? w : nullptr;
 	return new Wcls(desc, window_number);
 }
 
 void RelocateAllWindows(int neww, int newh);
 
-void GuiShowTooltips(Window *parent, StringID str, uint paramcount = 0, const uint64 params[] = NULL, TooltipCloseCondition close_tooltip = TCC_HOVER);
+void GuiShowTooltips(Window *parent, StringID str, uint paramcount = 0, const uint64 params[] = nullptr, TooltipCloseCondition close_tooltip = TCC_HOVER);
 
 /* widget.cpp */
 int GetWidgetFromPos(const Window *w, int x, int y);
 
 /** Iterate over all windows */
-#define FOR_ALL_WINDOWS_FROM_BACK_FROM(w, start)  for (w = start; w != NULL; w = w->z_front) if (w->window_class != WC_INVALID)
-#define FOR_ALL_WINDOWS_FROM_FRONT_FROM(w, start) for (w = start; w != NULL; w = w->z_back) if (w->window_class != WC_INVALID)
+#define FOR_ALL_WINDOWS_FROM_BACK_FROM(w, start)  for (w = start; w != nullptr; w = w->z_front) if (w->window_class != WC_INVALID)
+#define FOR_ALL_WINDOWS_FROM_FRONT_FROM(w, start) for (w = start; w != nullptr; w = w->z_back) if (w->window_class != WC_INVALID)
 #define FOR_ALL_WINDOWS_FROM_BACK(w)  FOR_ALL_WINDOWS_FROM_BACK_FROM(w, _z_back_window)
 #define FOR_ALL_WINDOWS_FROM_FRONT(w) FOR_ALL_WINDOWS_FROM_FRONT_FROM(w, _z_front_window)
 

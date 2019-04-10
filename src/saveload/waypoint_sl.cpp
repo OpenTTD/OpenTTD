@@ -88,7 +88,7 @@ void MoveWaypointsToBaseStations()
 			StationClass* stclass = StationClass::Get(STAT_CLASS_WAYP);
 			for (uint i = 0; i < stclass->GetSpecCount(); i++) {
 				const StationSpec *statspec = stclass->GetSpec(i);
-				if (statspec != NULL && statspec->grf_prop.grffile->grfid == wp.grfid && statspec->grf_prop.local_id == wp.localidx) {
+				if (statspec != nullptr && statspec->grf_prop.grffile->grfid == wp.grfid && statspec->grf_prop.local_id == wp.localidx) {
 					wp.spec = statspec;
 					break;
 				}
@@ -122,7 +122,7 @@ void MoveWaypointsToBaseStations()
 
 			SetRailStationReservation(t, reserved);
 
-			if (wp.spec != NULL) {
+			if (wp.spec != nullptr) {
 				SetCustomStationSpecIndex(t, AllocateSpecToStation(wp.spec, new_wp, true));
 			}
 			new_wp->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
@@ -136,7 +136,7 @@ void MoveWaypointsToBaseStations()
 	FOR_ALL_ORDER_LISTS(ol) {
 		if (ol->GetFirstSharedVehicle()->type != VEH_TRAIN) continue;
 
-		for (Order *o = ol->GetFirstOrder(); o != NULL; o = o->next) UpdateWaypointOrder(o);
+		for (Order *o = ol->GetFirstOrder(); o != nullptr; o = o->next) UpdateWaypointOrder(o);
 	}
 
 	Vehicle *v;
@@ -199,10 +199,10 @@ static void Ptrs_WAYP()
 			/* Only for versions 12 .. 122 */
 			if (!Town::IsValidID(wp.town_index)) {
 				/* Upon a corrupted waypoint we'll likely get here. The next step will be to
-				 * loop over all Ptrs procs to NULL the pointers. However, we don't know
-				 * whether we're in the NULL or "normal" Ptrs proc. So just clear the list
+				 * loop over all Ptrs procs to nullptr the pointers. However, we don't know
+				 * whether we're in the nullptr or "normal" Ptrs proc. So just clear the list
 				 * of old waypoints we constructed and then this waypoint (and the other
-				 * possibly corrupt ones) will not be queried in the NULL Ptrs proc run. */
+				 * possibly corrupt ones) will not be queried in the nullptr Ptrs proc run. */
 				_old_waypoints.clear();
 				SlErrorCorrupt("Referencing invalid Town");
 			}
@@ -215,5 +215,5 @@ static void Ptrs_WAYP()
 }
 
 extern const ChunkHandler _waypoint_chunk_handlers[] = {
-	{ 'CHKP', NULL, Load_WAYP, Ptrs_WAYP, NULL, CH_ARRAY | CH_LAST},
+	{ 'CHKP', nullptr, Load_WAYP, Ptrs_WAYP, nullptr, CH_ARRAY | CH_LAST},
 };

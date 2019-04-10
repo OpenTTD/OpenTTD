@@ -48,7 +48,7 @@ private:
 	 */
 	static Blitter **GetActiveBlitter()
 	{
-		static Blitter *s_blitter = NULL;
+		static Blitter *s_blitter = nullptr;
 		return &s_blitter;
 	}
 
@@ -58,8 +58,8 @@ protected:
 	 * @param name        The name of the blitter.
 	 * @param description A longer description for the blitter.
 	 * @param usable      Whether the blitter is usable (on the current computer). For example for disabling SSE blitters when the CPU can't handle them.
-	 * @pre name != NULL.
-	 * @pre description != NULL.
+	 * @pre name != nullptr.
+	 * @pre description != nullptr.
 	 * @pre There is no blitter registered with this name.
 	 */
 	BlitterFactory(const char *name, const char *description, bool usable = true) :
@@ -96,7 +96,7 @@ public:
 	static Blitter *SelectBlitter(const char *name)
 	{
 		BlitterFactory *b = GetBlitterFactory(name);
-		if (b == NULL) return NULL;
+		if (b == nullptr) return nullptr;
 
 		Blitter *newb = b->CreateInstance();
 		delete *GetActiveBlitter();
@@ -109,7 +109,7 @@ public:
 	/**
 	 * Get the blitter factory with the given name.
 	 * @param name the blitter factory to select.
-	 * @return The blitter factory, or NULL when there isn't one with the wanted name.
+	 * @return The blitter factory, or nullptr when there isn't one with the wanted name.
 	 */
 	static BlitterFactory *GetBlitterFactory(const char *name)
 	{
@@ -128,7 +128,7 @@ public:
 		}
 #endif /* defined(WITH_COCOA) */
 #endif /* defined(DEDICATED) */
-		if (GetBlitters().size() == 0) return NULL;
+		if (GetBlitters().size() == 0) return nullptr;
 		const char *bname = (StrEmpty(name)) ? default_blitter : name;
 
 		Blitters::iterator it = GetBlitters().begin();
@@ -138,7 +138,7 @@ public:
 				return b;
 			}
 		}
-		return NULL;
+		return nullptr;
 	}
 
 	/**

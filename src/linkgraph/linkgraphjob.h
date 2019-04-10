@@ -403,9 +403,9 @@ public:
 	 */
 	inline void Detach()
 	{
-		if (this->parent != NULL) {
+		if (this->parent != nullptr) {
 			this->parent->num_children--;
-			this->parent = NULL;
+			this->parent = nullptr;
 		}
 	}
 

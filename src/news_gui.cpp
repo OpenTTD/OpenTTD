@@ -41,23 +41,23 @@
 
 #include "safeguards.h"
 
-const NewsItem *_statusbar_news_item = NULL;
+const NewsItem *_statusbar_news_item = nullptr;
 
 static uint MIN_NEWS_AMOUNT = 30;      ///< preferred minimum amount of news messages
 static uint _total_news = 0;           ///< current number of news items
-NewsItem *_oldest_news = NULL;         ///< head of news items queue
-static NewsItem *_latest_news = NULL;  ///< tail of news items queue
+NewsItem *_oldest_news = nullptr;         ///< head of news items queue
+static NewsItem *_latest_news = nullptr;  ///< tail of news items queue
 
 /**
  * Forced news item.
  * Users can force an item by accessing the history or "last message".
  * If the message being shown was forced by the user, a pointer is stored
- * in _forced_news. Otherwise, \a _forced_news variable is NULL.
+ * in _forced_news. Otherwise, \a _forced_news variable is nullptr.
  */
-static const NewsItem *_forced_news = NULL;       ///< item the user has asked for
+static const NewsItem *_forced_news = nullptr;       ///< item the user has asked for
 
 /** Current news item (last item shown regularly). */
-static const NewsItem *_current_news = NULL;
+static const NewsItem *_current_news = nullptr;
 
 
 /**
@@ -93,7 +93,7 @@ static const NWidgetPart _nested_normal_news_widgets[] = {
 };
 
 static WindowDesc _normal_news_desc(
-	WDP_MANUAL, NULL, 0, 0,
+	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_normal_news_widgets, lengthof(_nested_normal_news_widgets)
@@ -120,7 +120,7 @@ static const NWidgetPart _nested_vehicle_news_widgets[] = {
 };
 
 static WindowDesc _vehicle_news_desc(
-	WDP_MANUAL, NULL, 0, 0,
+	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_vehicle_news_widgets, lengthof(_nested_vehicle_news_widgets)
@@ -148,7 +148,7 @@ static const NWidgetPart _nested_company_news_widgets[] = {
 };
 
 static WindowDesc _company_news_desc(
-	WDP_MANUAL, NULL, 0, 0,
+	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_company_news_widgets, lengthof(_nested_company_news_widgets)
@@ -171,7 +171,7 @@ static const NWidgetPart _nested_thin_news_widgets[] = {
 };
 
 static WindowDesc _thin_news_desc(
-	WDP_MANUAL, NULL, 0, 0,
+	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_thin_news_widgets, lengthof(_nested_thin_news_widgets)
@@ -195,7 +195,7 @@ static const NWidgetPart _nested_small_news_widgets[] = {
 };
 
 static WindowDesc _small_news_desc(
-	WDP_MANUAL, NULL, 0, 0,
+	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
 	_nested_small_news_widgets, lengthof(_nested_small_news_widgets)
@@ -251,8 +251,8 @@ NewsDisplay NewsTypeData::GetDisplay() const
 {
 	uint index;
 	const SettingDesc *sd = GetSettingFromName(this->name, &index);
-	assert(sd != NULL);
-	void *ptr = GetVariableAddress(NULL, &sd->save);
+	assert(sd != nullptr);
+	void *ptr = GetVariableAddress(nullptr, &sd->save);
 	return (NewsDisplay)ReadValue(ptr, sd->save.conv);
 }
 
@@ -269,7 +269,7 @@ struct NewsWindow : Window {
 	{
 		NewsWindow::duration = 16650;
 		const Window *w = FindWindowByClass(WC_SEND_NETWORK_MSG);
-		this->chat_height = (w != NULL) ? w->height : 0;
+		this->chat_height = (w != nullptr) ? w->height : 0;
 		this->status_height = FindWindowById(WC_STATUS_BAR, 0)->height;
 
 		this->flags |= WF_DISABLE_VP_SCROLL;
@@ -285,7 +285,7 @@ struct NewsWindow : Window {
 
 		/* Initialize viewport if it exists. */
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_N_VIEWPORT);
-		if (nvp != NULL) {
+		if (nvp != nullptr) {
 			nvp->InitializeViewport(this, ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
 			if (this->ni->flags & NF_NO_TRANSPARENT) nvp->disp_flags |= ND_NO_TRANSPARENCY;
 			if ((this->ni->flags & NF_INCOLOUR) == 0) {
@@ -433,7 +433,7 @@ struct NewsWindow : Window {
 			case WID_N_CLOSEBOX:
 				NewsWindow::duration = 0;
 				delete this;
-				_forced_news = NULL;
+				_forced_news = nullptr;
 				break;
 
 			case WID_N_CAPTION:
@@ -515,7 +515,7 @@ private:
 
 		int mintop = min(newtop, this->top);
 		int maxtop = max(newtop, this->top);
-		if (this->viewport != NULL) this->viewport->top += newtop - this->top;
+		if (this->viewport != nullptr) this->viewport->top += newtop - this->top;
 		this->top = newtop;
 
 		SetDirtyBlocks(this->left, mintop, this->left + this->width, maxtop + this->height);
@@ -572,18 +572,18 @@ static void ShowTicker(const NewsItem *ni)
 /** Initialize the news-items data structures */
 void InitNewsItemStructs()
 {
-	for (NewsItem *ni = _oldest_news; ni != NULL; ) {
+	for (NewsItem *ni = _oldest_news; ni != nullptr; ) {
 		NewsItem *next = ni->next;
 		delete ni;
 		ni = next;
 	}
 
 	_total_news = 0;
-	_oldest_news = NULL;
-	_latest_news = NULL;
-	_forced_news = NULL;
-	_current_news = NULL;
-	_statusbar_news_item = NULL;
+	_oldest_news = nullptr;
+	_latest_news = nullptr;
+	_forced_news = nullptr;
+	_current_news = nullptr;
+	_statusbar_news_item = nullptr;
 	NewsWindow::duration = 0;
 }
 
@@ -593,15 +593,15 @@ void InitNewsItemStructs()
  */
 static bool ReadyForNextItem()
 {
-	const NewsItem *ni = _forced_news == NULL ? _current_news : _forced_news;
-	if (ni == NULL) return true;
+	const NewsItem *ni = _forced_news == nullptr ? _current_news : _forced_news;
+	if (ni == nullptr) return true;
 
 	/* Ticker message
 	 * Check if the status bar message is still being displayed? */
 	if (IsNewsTickerShown()) return false;
 
 	/* neither newsticker nor newspaper are running */
-	return (NewsWindow::duration <= 0 || FindWindowById(WC_NEWS_WINDOW, 0) == NULL);
+	return (NewsWindow::duration <= 0 || FindWindowById(WC_NEWS_WINDOW, 0) == nullptr);
 }
 
 /** Move to the next news item */
@@ -609,12 +609,12 @@ static void MoveToNextItem()
 {
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED); // invalidate the statusbar
 	DeleteWindowById(WC_NEWS_WINDOW, 0); // close the newspapers window if shown
-	_forced_news = NULL;
-	_statusbar_news_item = NULL;
+	_forced_news = nullptr;
+	_statusbar_news_item = nullptr;
 
 	/* if we're not at the last item, then move on */
 	if (_current_news != _latest_news) {
-		_current_news = (_current_news == NULL) ? _oldest_news : _current_news->next;
+		_current_news = (_current_news == nullptr) ? _oldest_news : _current_news->next;
 		const NewsItem *ni = _current_news;
 		const NewsType type = ni->type;
 
@@ -674,16 +674,16 @@ void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceTy
 	CopyOutDParam(ni->params, 0, lengthof(ni->params));
 
 	if (_total_news++ == 0) {
-		assert(_oldest_news == NULL);
+		assert(_oldest_news == nullptr);
 		_oldest_news = ni;
-		ni->prev = NULL;
+		ni->prev = nullptr;
 	} else {
-		assert(_latest_news->next == NULL);
+		assert(_latest_news->next == nullptr);
 		_latest_news->next = ni;
 		ni->prev = _latest_news;
 	}
 
-	ni->next = NULL;
+	ni->next = nullptr;
 	_latest_news = ni;
 
 	SetWindowDirty(WC_MESSAGE_HISTORY, 0);
@@ -757,14 +757,14 @@ CommandCost CmdCustomNewsItem(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 static void DeleteNewsItem(NewsItem *ni)
 {
 	/* Delete the news from the news queue. */
-	if (ni->prev != NULL) {
+	if (ni->prev != nullptr) {
 		ni->prev->next = ni->next;
 	} else {
 		assert(_oldest_news == ni);
 		_oldest_news = ni->next;
 	}
 
-	if (ni->next != NULL) {
+	if (ni->next != nullptr) {
 		ni->next->prev = ni->prev;
 	} else {
 		assert(_latest_news == ni);
@@ -798,7 +798,7 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 {
 	NewsItem *ni = _oldest_news;
 
-	while (ni != NULL) {
+	while (ni != nullptr) {
 		NewsItem *next = ni->next;
 		if (((ni->reftype1 == NR_VEHICLE && ni->ref1 == vid) || (ni->reftype2 == NR_VEHICLE && ni->ref2 == vid)) &&
 				(news == INVALID_STRING_ID || ni->string_id == news)) {
@@ -817,7 +817,7 @@ void DeleteStationNews(StationID sid)
 {
 	NewsItem *ni = _oldest_news;
 
-	while (ni != NULL) {
+	while (ni != nullptr) {
 		NewsItem *next = ni->next;
 		if ((ni->reftype1 == NR_STATION && ni->ref1 == sid) || (ni->reftype2 == NR_STATION && ni->ref2 == sid)) {
 			DeleteNewsItem(ni);
@@ -834,7 +834,7 @@ void DeleteIndustryNews(IndustryID iid)
 {
 	NewsItem *ni = _oldest_news;
 
-	while (ni != NULL) {
+	while (ni != nullptr) {
 		NewsItem *next = ni->next;
 		if ((ni->reftype1 == NR_INDUSTRY && ni->ref1 == iid) || (ni->reftype2 == NR_INDUSTRY && ni->ref2 == iid)) {
 			DeleteNewsItem(ni);
@@ -850,7 +850,7 @@ void DeleteInvalidEngineNews()
 {
 	NewsItem *ni = _oldest_news;
 
-	while (ni != NULL) {
+	while (ni != nullptr) {
 		NewsItem *next = ni->next;
 		if ((ni->reftype1 == NR_ENGINE && (!Engine::IsValidID(ni->ref1) || !Engine::Get(ni->ref1)->IsEnabled())) ||
 				(ni->reftype2 == NR_ENGINE && (!Engine::IsValidID(ni->ref2) || !Engine::Get(ni->ref2)->IsEnabled()))) {
@@ -863,7 +863,7 @@ void DeleteInvalidEngineNews()
 static void RemoveOldNewsItems()
 {
 	NewsItem *next;
-	for (NewsItem *cur = _oldest_news; _total_news > MIN_NEWS_AMOUNT && cur != NULL; cur = next) {
+	for (NewsItem *cur = _oldest_news; _total_news > MIN_NEWS_AMOUNT && cur != nullptr; cur = next) {
 		next = cur->next;
 		if (_date - _news_type_data[cur->type].age * _settings_client.gui.news_message_timeout > cur->date) DeleteNewsItem(cur);
 	}
@@ -877,7 +877,7 @@ static void RemoveOldNewsItems()
  */
 void ChangeVehicleNews(VehicleID from_index, VehicleID to_index)
 {
-	for (NewsItem *ni = _oldest_news; ni != NULL; ni = ni->next) {
+	for (NewsItem *ni = _oldest_news; ni != nullptr; ni = ni->next) {
 		if (ni->reftype1 == NR_VEHICLE && ni->ref1 == from_index) ni->ref1 = to_index;
 		if (ni->reftype2 == NR_VEHICLE && ni->ref2 == from_index) ni->ref2 = to_index;
 		if (ni->flags & NF_VEHICLE_PARAM0 && ni->params[0] == from_index) ni->params[0] = to_index;
@@ -892,7 +892,7 @@ void NewsLoop()
 	/* There is no status bar, so no reason to show news;
 	 * especially important with the end game screen when
 	 * there is no status bar but possible news. */
-	if (FindWindowById(WC_STATUS_BAR, 0) == NULL) return;
+	if (FindWindowById(WC_STATUS_BAR, 0) == nullptr) return;
 
 	static byte _last_clean_month = 0;
 
@@ -915,7 +915,7 @@ static void ShowNewsMessage(const NewsItem *ni)
 	/* setup forced news item */
 	_forced_news = ni;
 
-	if (_forced_news != NULL) {
+	if (_forced_news != nullptr) {
 		DeleteWindowById(WC_NEWS_WINDOW, 0);
 		ShowNewspaper(ni);
 	}
@@ -924,19 +924,19 @@ static void ShowNewsMessage(const NewsItem *ni)
 /** Show previous news item */
 void ShowLastNewsMessage()
 {
-	const NewsItem *ni = NULL;
+	const NewsItem *ni = nullptr;
 	if (_total_news == 0) {
 		return;
-	} else if (_forced_news == NULL) {
+	} else if (_forced_news == nullptr) {
 		/* Not forced any news yet, show the current one, unless a news window is
 		 * open (which can only be the current one), then show the previous item */
-		if (_current_news == NULL) {
+		if (_current_news == nullptr) {
 			/* No news were shown yet resp. the last shown one was already deleted.
 			 * Threat this as if _forced_news reached _oldest_news; so, wrap around and start anew with the latest. */
 			ni = _latest_news;
 		} else {
 			const Window *w = FindWindowById(WC_NEWS_WINDOW, 0);
-			ni = (w == NULL || (_current_news == _oldest_news)) ? _current_news : _current_news->prev;
+			ni = (w == nullptr || (_current_news == _oldest_news)) ? _current_news : _current_news->prev;
 		}
 	} else if (_forced_news == _oldest_news) {
 		/* We have reached the oldest news, start anew with the latest */
@@ -953,7 +953,7 @@ void ShowLastNewsMessage()
 		}
 
 		ni = ni->prev;
-		if (ni == NULL) {
+		if (ni == nullptr) {
 			if (wrap) break;
 			/* We have reached the oldest news, start anew with the latest */
 			ni = _latest_news;
@@ -1054,7 +1054,7 @@ struct MessageHistoryWindow : Window {
 		NewsItem *ni = _latest_news;
 		for (int n = this->vscroll->GetPosition(); n > 0; n--) {
 			ni = ni->prev;
-			if (ni == NULL) return;
+			if (ni == nullptr) return;
 		}
 
 		/* Fill the widget with news items. */
@@ -1072,7 +1072,7 @@ struct MessageHistoryWindow : Window {
 			y += this->line_height;
 
 			ni = ni->prev;
-			if (ni == NULL) return;
+			if (ni == nullptr) return;
 		}
 	}
 
@@ -1091,11 +1091,11 @@ struct MessageHistoryWindow : Window {
 	{
 		if (widget == WID_MH_BACKGROUND) {
 			NewsItem *ni = _latest_news;
-			if (ni == NULL) return;
+			if (ni == nullptr) return;
 
 			for (int n = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_MH_BACKGROUND, WD_FRAMERECT_TOP, this->line_height); n > 0; n--) {
 				ni = ni->prev;
-				if (ni == NULL) return;
+				if (ni == nullptr) return;
 			}
 
 			ShowNewsMessage(ni);

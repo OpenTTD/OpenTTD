@@ -70,7 +70,7 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 	TYPE *prev_storage; ///< Memory to store "old" states so we can revert them on the performance of test cases for commands etc.
 
 	/** Simply construct the array */
-	PersistentStorageArray() : prev_storage(NULL)
+	PersistentStorageArray() : prev_storage(nullptr)
 	{
 		memset(this->storage, 0, sizeof(this->storage));
 	}
@@ -105,8 +105,8 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 
 		/* We do not have made a backup; lets do so */
 		if (AreChangesPersistent()) {
-			assert(this->prev_storage == NULL);
-		} else if (this->prev_storage == NULL) {
+			assert(this->prev_storage == nullptr);
+		} else if (this->prev_storage == nullptr) {
 			this->prev_storage = MallocT<TYPE>(SIZE);
 			memcpy(this->prev_storage, this->storage, sizeof(this->storage));
 
@@ -133,10 +133,10 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 
 	void ClearChanges()
 	{
-		if (this->prev_storage != NULL) {
+		if (this->prev_storage != nullptr) {
 			memcpy(this->storage, this->prev_storage, sizeof(this->storage));
 			free(this->prev_storage);
-			this->prev_storage = NULL;
+			this->prev_storage = nullptr;
 		}
 	}
 };

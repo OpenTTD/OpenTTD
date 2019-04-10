@@ -386,7 +386,7 @@ static const Direction _default_airports_rotation[] = {
 
 /** AirportSpec definition for airports without any depot. */
 #define AS_ND(ap_name, size_x, size_y, min_year, max_year, catchment, noise, maint_cost, ttdpatch_type, class_id, name, preview) \
-	AS_GENERIC(&_airportfta_##ap_name, _tile_table_##ap_name, _default_airports_rotation, lengthof(_tile_table_##ap_name), NULL, 0, \
+	AS_GENERIC(&_airportfta_##ap_name, _tile_table_##ap_name, _default_airports_rotation, lengthof(_tile_table_##ap_name), nullptr, 0, \
 		size_x, size_y, noise, catchment, min_year, max_year, maint_cost, ttdpatch_type, class_id, name, preview, true)
 
 /** AirportSpec definition for airports with at least one depot. */
@@ -405,12 +405,12 @@ extern const AirportSpec _origin_airport_specs[] = {
 	AS(helidepot,        2, 2,  1976, MAX_YEAR,  4,  2,  7, ATP_TTDP_SMALL,    APC_HELIPORT, STR_AIRPORT_HELIDEPOT,        SPR_AIRPORT_PREVIEW_HELIDEPOT),
 	AS(intercontinental, 9, 11, 2002, MAX_YEAR, 10, 25, 72, ATP_TTDP_LARGE,    APC_HUB,      STR_AIRPORT_INTERCONTINENTAL, SPR_AIRPORT_PREVIEW_INTERCONTINENTAL),
 	AS(helistation,      4, 2,  1980, MAX_YEAR,  4,  3, 14, ATP_TTDP_SMALL,    APC_HELIPORT, STR_AIRPORT_HELISTATION,      SPR_AIRPORT_PREVIEW_HELISTATION),
-	AS_GENERIC(&_airportfta_oilrig, NULL, _default_airports_rotation, 0, NULL, 0, 1, 1, 0, 4, 0, 0, 0, ATP_TTDP_OILRIG, APC_HELIPORT, STR_NULL, 0, false),
+	AS_GENERIC(&_airportfta_oilrig, nullptr, _default_airports_rotation, 0, nullptr, 0, 1, 1, 0, 4, 0, 0, 0, ATP_TTDP_OILRIG, APC_HELIPORT, STR_NULL, 0, false),
 };
 
 assert_compile(NEW_AIRPORT_OFFSET == lengthof(_origin_airport_specs));
 
-const AirportSpec AirportSpec::dummy = AS_GENERIC(&_airportfta_dummy, NULL, _default_airports_rotation, 0, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, 0, ATP_TTDP_LARGE, APC_BEGIN, STR_NULL, 0, false);
+const AirportSpec AirportSpec::dummy = AS_GENERIC(&_airportfta_dummy, nullptr, _default_airports_rotation, 0, nullptr, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, 0, ATP_TTDP_LARGE, APC_BEGIN, STR_NULL, 0, false);
 
 #undef AS
 #undef AS_ND

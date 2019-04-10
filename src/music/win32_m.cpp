@@ -396,7 +396,7 @@ const char *MusicDriver_Win32::Start(const char * const *parm)
 		if (timeBeginPeriod(_midi.time_period) == MMSYSERR_NOERROR) {
 			/* success */
 			DEBUG(driver, 2, "Win32-MIDI: Start: timer resolution is %d", (int)_midi.time_period);
-			return NULL;
+			return nullptr;
 		}
 	}
 	midiOutClose(_midi.midi_out);

@@ -140,7 +140,7 @@ void AddGenericCallback(uint8 feature, const GRFFile *file, const SpriteGroup *g
 
 /* virtual */ const SpriteGroup *GenericResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
-	if (group->num_loaded == 0) return NULL;
+	if (group->num_loaded == 0) return nullptr;
 
 	return group->loaded[0];
 }
@@ -150,7 +150,7 @@ void AddGenericCallback(uint8 feature, const GRFFile *file, const SpriteGroup *g
  * @param ai_callback Callback comes from the AI.
  * @param callback Callback ID.
  */
-GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callback) : ResolverObject(NULL, callback), generic_scope(*this, ai_callback)
+GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callback) : ResolverObject(nullptr, callback), generic_scope(*this, ai_callback)
 {
 }
 
@@ -162,7 +162,7 @@ GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callba
  * @param object  pre-populated resolver object
  * @param param1_grfv7 callback_param1 for GRFs up to version 7.
  * @param param1_grfv8 callback_param1 for GRFs from version 8 on.
- * @param[out] file Optionally returns the GRFFile which made the final decision for the callback result. May be NULL if not required.
+ * @param[out] file Optionally returns the GRFFile which made the final decision for the callback result. May be nullptr if not required.
  * @return callback value if successful or CALLBACK_FAILED
  */
 static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject &object, uint32 param1_grfv7, uint32 param1_grfv8, const GRFFile **file)
@@ -179,7 +179,7 @@ static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject &object, ui
 		if (result == CALLBACK_FAILED) continue;
 
 		/* Return NewGRF file if necessary */
-		if (file != NULL) *file = it->file;
+		if (file != nullptr) *file = it->file;
 
 		return result;
 	}
@@ -201,7 +201,7 @@ static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject &object, ui
  * @param event 'AI construction event' to pass to callback. (Variable 86)
  * @param count 'Construction number' to pass to callback. (Variable 87)
  * @param station_size 'Station size' to pass to callback. (Variable 88)
- * @param[out] file Optionally returns the GRFFile which made the final decision for the callback result. May be NULL if not required.
+ * @param[out] file Optionally returns the GRFFile which made the final decision for the callback result. May be nullptr if not required.
  * @return callback value if successful or CALLBACK_FAILED
  */
 uint16 GetAiPurchaseCallbackResult(uint8 feature, CargoID cargo_type, uint8 default_selection, IndustryType src_industry, IndustryType dst_industry, uint8 distance, AIConstructionEvent event, uint8 count, uint8 station_size, const GRFFile **file)

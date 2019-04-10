@@ -52,7 +52,7 @@ public:
 	 * @param station_id The basestation to set the name of.
 	 * @param name The new name of the station (can be either a raw string, or a ScriptText object).
 	 * @pre IsValidBaseStation(station_id).
-	 * @pre name != NULL && len(name) != 0.
+	 * @pre name != nullptr && len(name) != 0.
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.

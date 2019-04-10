@@ -24,7 +24,7 @@
 /* SMF reader based on description at: http://www.somascape.org/midi/tech/mfile.html */
 
 
-static MidiFile *_midifile_instance = NULL;
+static MidiFile *_midifile_instance = nullptr;
 
 /**
  * Owning byte buffer readable as a stream.
@@ -426,7 +426,7 @@ bool MidiFile::LoadFile(const char *filename)
 
 	bool success = false;
 	FILE *file = FioFOpenFile(filename, "rb", Subdirectory::BASESET_DIR);
-	if (file == NULL) return false;
+	if (file == nullptr) return false;
 
 	SMFHeader header;
 	if (!ReadSMFHeader(file, header)) goto cleanup;
@@ -815,7 +815,7 @@ bool MidiFile::LoadSong(const MusicSongInfo &song)
 		{
 			size_t songdatalen = 0;
 			byte *songdata = GetMusicCatEntryData(song.filename, song.cat_index, songdatalen);
-			if (songdata != NULL) {
+			if (songdata != nullptr) {
 				bool result = this->LoadMpsData(songdata, songdatalen);
 				free(songdata);
 				return result;
@@ -1024,7 +1024,7 @@ std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 	char basename[MAX_PATH];
 	{
 		const char *fnstart = strrchr(song.filename, PATHSEPCHAR);
-		if (fnstart == NULL) {
+		if (fnstart == nullptr) {
 			fnstart = song.filename;
 		} else {
 			fnstart++;
@@ -1054,7 +1054,7 @@ std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 	byte *data;
 	size_t datalen;
 	data = GetMusicCatEntryData(song.filename, song.cat_index, datalen);
-	if (data == NULL) return std::string();
+	if (data == nullptr) return std::string();
 
 	MidiFile midifile;
 	if (!midifile.LoadMpsData(data, datalen)) {
@@ -1082,7 +1082,7 @@ static bool CmdDumpSMF(byte argc, char *argv[])
 		return false;
 	}
 
-	if (_midifile_instance == NULL) {
+	if (_midifile_instance == nullptr) {
 		IConsolePrint(CC_ERROR, "There is no MIDI file loaded currently, make sure music is playing, and you're using a driver that works with raw MIDI.");
 		return false;
 	}
@@ -1120,7 +1120,7 @@ MidiFile::MidiFile()
 MidiFile::~MidiFile()
 {
 	if (_midifile_instance == this) {
-		_midifile_instance = NULL;
+		_midifile_instance = nullptr;
 	}
 }
 

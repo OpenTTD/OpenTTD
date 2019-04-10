@@ -135,7 +135,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 		Point pt = this->GetTopLeft(640, 480);
 
 		const Company *c = Company::GetIfValid(_local_company);
-		if (c == NULL) return;
+		if (c == nullptr) return;
 
 		/* We need to get performance from last year because the image is shown
 		 * at the start of the new year when these things have already been copied */
@@ -210,14 +210,14 @@ static const NWidgetPart _nested_highscore_widgets[] = {
 };
 
 static WindowDesc _highscore_desc(
-	WDP_MANUAL, NULL, 0, 0,
+	WDP_MANUAL, nullptr, 0, 0,
 	WC_HIGHSCORE, WC_NONE,
 	0,
 	_nested_highscore_widgets, lengthof(_nested_highscore_widgets)
 );
 
 static WindowDesc _endgame_desc(
-	WDP_MANUAL, NULL, 0, 0,
+	WDP_MANUAL, nullptr, 0, 0,
 	WC_ENDSCREEN, WC_NONE,
 	0,
 	_nested_highscore_widgets, lengthof(_nested_highscore_widgets)

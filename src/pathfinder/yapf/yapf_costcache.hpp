@@ -143,7 +143,7 @@ struct CSegmentCostCacheT : public CSegmentCostCacheBase {
 	inline Tsegment& Get(Key &key, bool *found)
 	{
 		Tsegment *item = m_map.Find(key);
-		if (item == NULL) {
+		if (item == nullptr) {
 			*found = false;
 			item = new (m_heap.Append()) Tsegment(key);
 			m_map.Push(*item);

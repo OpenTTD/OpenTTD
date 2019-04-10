@@ -39,9 +39,9 @@ static bool _all_modes;
 /** Whether the drawing is/may be done in a separate thread. */
 static bool _draw_threaded;
 /** Mutex to keep the access to the shared memory controlled. */
-static std::recursive_mutex *_draw_mutex = NULL;
+static std::recursive_mutex *_draw_mutex = nullptr;
 /** Signal to draw the next frame. */
-static std::condition_variable_any *_draw_signal = NULL;
+static std::condition_variable_any *_draw_signal = nullptr;
 /** Should we keep continue drawing? */
 static volatile bool _draw_continue;
 static Palette _local_palette;
@@ -111,7 +111,7 @@ static void UpdatePalette(bool init = false)
 		 * best mapping of shadow palette colors to real palette
 		 * colors from scratch.
 		 */
-		SDL_BlitSurface(_sdl_screen, NULL, _sdl_realscreen, NULL);
+		SDL_BlitSurface(_sdl_screen, nullptr, _sdl_realscreen, nullptr);
 		SDL_UpdateRect(_sdl_realscreen, 0, 0, 0, 0);
 	}
 }
@@ -158,7 +158,7 @@ static void DrawSurfaceToScreen()
 	_num_dirty_rects = 0;
 	if (n > MAX_DIRTY_RECTS) {
 		if (_sdl_screen != _sdl_realscreen) {
-			SDL_BlitSurface(_sdl_screen, NULL, _sdl_realscreen, NULL);
+			SDL_BlitSurface(_sdl_screen, nullptr, _sdl_realscreen, nullptr);
 		}
 		SDL_UpdateRect(_sdl_realscreen, 0, 0, 0, 0);
 	} else {
@@ -204,10 +204,10 @@ static const Dimension _default_resolutions[] = {
 
 static void GetVideoModes()
 {
-	SDL_Rect **modes = SDL_ListModes(NULL, SDL_SWSURFACE | SDL_FULLSCREEN);
-	if (modes == NULL) usererror("sdl: no modes available");
+	SDL_Rect **modes = SDL_ListModes(nullptr, SDL_SWSURFACE | SDL_FULLSCREEN);
+	if (modes == nullptr) usererror("sdl: no modes available");
 
-	_all_modes = (SDL_ListModes(NULL, SDL_SWSURFACE | (_fullscreen ? SDL_FULLSCREEN : 0)) == (void*)-1);
+	_all_modes = (SDL_ListModes(nullptr, SDL_SWSURFACE | (_fullscreen ? SDL_FULLSCREEN : 0)) == (void*)-1);
 	if (modes == (void*)-1) {
 		int n = 0;
 		for (uint i = 0; i < lengthof(_default_resolutions); i++) {
@@ -278,15 +278,15 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
 
 	char icon_path[MAX_PATH];
-	if (FioFindFullPath(icon_path, lastof(icon_path), BASESET_DIR, "openttd.32.bmp") != NULL) {
+	if (FioFindFullPath(icon_path, lastof(icon_path), BASESET_DIR, "openttd.32.bmp") != nullptr) {
 		/* Give the application an icon */
 		icon = SDL_LoadBMP(icon_path);
-		if (icon != NULL) {
+		if (icon != nullptr) {
 			/* Get the colourkey, which will be magenta */
 			uint32 rgbmap = SDL_MapRGB(icon->format, 255, 0, 255);
 
 			SDL_SetColorKey(icon, SDL_SRCCOLORKEY, rgbmap);
-			SDL_WM_SetIcon(icon, NULL);
+			SDL_WM_SetIcon(icon, nullptr);
 			SDL_FreeSurface(icon);
 		}
 	}
@@ -322,9 +322,9 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 	if (want_hwpalette) DEBUG(driver, 1, "SDL: requesting hardware palette");
 
 	/* Free any previously allocated shadow surface */
-	if (_sdl_screen != NULL && _sdl_screen != _sdl_realscreen) SDL_FreeSurface(_sdl_screen);
+	if (_sdl_screen != nullptr && _sdl_screen != _sdl_realscreen) SDL_FreeSurface(_sdl_screen);
 
-	if (_sdl_realscreen != NULL) {
+	if (_sdl_realscreen != nullptr) {
 		if (_requested_hwpalette != want_hwpalette) {
 			/* SDL (at least the X11 driver), reuses the
 			 * same window and palette settings when the bpp
@@ -349,7 +349,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 
 	/* DO NOT CHANGE TO HWSURFACE, IT DOES NOT WORK */
 	newscreen = SDL_SetVideoMode(w, h, bpp, SDL_SWSURFACE | (want_hwpalette ? SDL_HWPALETTE : 0) | (_fullscreen ? SDL_FULLSCREEN : SDL_RESIZABLE));
-	if (newscreen == NULL) {
+	if (newscreen == nullptr) {
 		DEBUG(driver, 0, "SDL: Couldn't allocate a window to draw on");
 		return false;
 	}
@@ -376,7 +376,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 		 */
 		DEBUG(driver, 1, "SDL: using shadow surface");
 		newscreen = SDL_CreateRGBSurface(SDL_SWSURFACE, w, h, bpp, 0, 0, 0, 0);
-		if (newscreen == NULL) {
+		if (newscreen == nullptr) {
 			DEBUG(driver, 0, "SDL: Couldn't allocate a shadow surface to draw on");
 			return false;
 		}
@@ -637,9 +637,9 @@ const char *VideoDriver_SDL::Start(const char * const *parm)
 	MarkWholeScreenDirty();
 	SetupKeyboard();
 
-	_draw_threaded = GetDriverParam(parm, "no_threads") == NULL && GetDriverParam(parm, "no_thread") == NULL;
+	_draw_threaded = GetDriverParam(parm, "no_threads") == nullptr && GetDriverParam(parm, "no_thread") == nullptr;
 
-	return NULL;
+	return nullptr;
 }
 
 void VideoDriver_SDL::SetupKeyboard()
@@ -673,7 +673,7 @@ void VideoDriver_SDL::MainLoop()
 		/* Initialise the mutex first, because that's the thing we *need*
 		 * directly in the newly created thread. */
 		_draw_mutex = new std::recursive_mutex();
-		if (_draw_mutex == NULL) {
+		if (_draw_mutex == nullptr) {
 			_draw_threaded = false;
 		} else {
 			draw_lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
@@ -688,8 +688,8 @@ void VideoDriver_SDL::MainLoop()
 				draw_lock.release();
 				delete _draw_mutex;
 				delete _draw_signal;
-				_draw_mutex = NULL;
-				_draw_signal = NULL;
+				_draw_mutex = nullptr;
+				_draw_signal = nullptr;
 			} else {
 				/* Wait till the draw mutex has started itself. */
 				_draw_signal->wait(*_draw_mutex);
@@ -757,26 +757,26 @@ void VideoDriver_SDL::MainLoop()
 
 			/* The gameloop is the part that can run asynchronously. The rest
 			 * except sleeping can't. */
-			if (_draw_mutex != NULL) draw_lock.unlock();
+			if (_draw_mutex != nullptr) draw_lock.unlock();
 
 			GameLoop();
 
-			if (_draw_mutex != NULL) draw_lock.lock();
+			if (_draw_mutex != nullptr) draw_lock.lock();
 
 			UpdateWindows();
 			_local_palette = _cur_palette;
 		} else {
 			/* Release the thread while sleeping */
-			if (_draw_mutex != NULL) draw_lock.unlock();
+			if (_draw_mutex != nullptr) draw_lock.unlock();
 			CSleep(1);
-			if (_draw_mutex != NULL) draw_lock.lock();
+			if (_draw_mutex != nullptr) draw_lock.lock();
 
 			NetworkDrawChatMessage();
 			DrawMouseCursor();
 		}
 
 		/* End of the critical part. */
-		if (_draw_mutex != NULL && !HasModalProgress()) {
+		if (_draw_mutex != nullptr && !HasModalProgress()) {
 			_draw_signal->notify_one();
 		} else {
 			/* Oh, we didn't have threads, then just draw unthreaded */
@@ -785,7 +785,7 @@ void VideoDriver_SDL::MainLoop()
 		}
 	}
 
-	if (_draw_mutex != NULL) {
+	if (_draw_mutex != nullptr) {
 		_draw_continue = false;
 		/* Sending signal if there is no thread blocked
 		 * is very valid and results in noop */
@@ -797,15 +797,15 @@ void VideoDriver_SDL::MainLoop()
 		delete _draw_mutex;
 		delete _draw_signal;
 
-		_draw_mutex = NULL;
-		_draw_signal = NULL;
+		_draw_mutex = nullptr;
+		_draw_signal = nullptr;
 	}
 }
 
 bool VideoDriver_SDL::ChangeResolution(int w, int h)
 {
 	std::unique_lock<std::recursive_mutex> lock;
-	if (_draw_mutex != NULL) lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
+	if (_draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
 
 	return CreateMainSurface(w, h);
 }
@@ -813,7 +813,7 @@ bool VideoDriver_SDL::ChangeResolution(int w, int h)
 bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 {
 	std::unique_lock<std::recursive_mutex> lock;
-	if (_draw_mutex != NULL) lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
+	if (_draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
 
 	_fullscreen = fullscreen;
 	GetVideoModes(); // get the list of available video modes
@@ -834,12 +834,12 @@ bool VideoDriver_SDL::AfterBlitterChange()
 
 void VideoDriver_SDL::AcquireBlitterLock()
 {
-	if (_draw_mutex != NULL) _draw_mutex->lock();
+	if (_draw_mutex != nullptr) _draw_mutex->lock();
 }
 
 void VideoDriver_SDL::ReleaseBlitterLock()
 {
-	if (_draw_mutex != NULL) _draw_mutex->unlock();
+	if (_draw_mutex != nullptr) _draw_mutex->unlock();
 }
 
 #endif /* WITH_SDL */

@@ -51,7 +51,7 @@ private:
 /** All static information from an Game library like name, version, etc. */
 class GameLibrary : public ScriptInfo {
 public:
-	GameLibrary() : ScriptInfo(), category(NULL) {};
+	GameLibrary() : ScriptInfo(), category(nullptr) {};
 	~GameLibrary();
 
 	/**

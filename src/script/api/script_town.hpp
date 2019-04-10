@@ -148,7 +148,7 @@ public:
 	/**
 	 * Rename a town.
 	 * @param town_id The town to rename
-	 * @param name The new name of the town. If NULL or an empty string is passed, the town name will be reset to the default name.
+	 * @param name The new name of the town. If nullptr or an empty string is passed, the town name will be reset to the default name.
 	 * @pre IsValidTown(town_id).
 	 * @return True if the action succeeded.
 	 * @api -ai
@@ -402,7 +402,7 @@ public:
 	 * @param size The town size of the new town.
 	 * @param city True if the new town should be a city.
 	 * @param layout The town layout of the new town.
-	 * @param name The name of the new town. Pass NULL to use a random town name.
+	 * @param name The name of the new town. Pass nullptr to use a random town name.
 	 * @game @pre no company mode in scope || ScriptSettings.GetValue("economy.found_town") != 0.
 	 * @ai @pre ScriptSettings.GetValue("economy.found_town") != 0.
 	 * @game @pre no company mode in scope || size != TOWN_SIZE_LARGE.

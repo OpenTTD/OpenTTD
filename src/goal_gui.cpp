@@ -223,7 +223,7 @@ struct GoalListWindow : public Window {
 						}
 
 						case GC_PROGRESS:
-							if (s->progress != NULL) {
+							if (s->progress != nullptr) {
 								SetDParamStr(0, s->progress);
 								StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
 								int progress_x = x;
@@ -282,7 +282,7 @@ struct GoalListWindow : public Window {
 		uint max_width = 0;
 		Goal *s;
 		FOR_ALL_GOALS(s) {
-			if (s->progress != NULL) {
+			if (s->progress != nullptr) {
 				SetDParamStr(0, s->progress);
 				StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
 				uint str_width = GetStringBoundingBox(str).width;
@@ -473,7 +473,7 @@ static const NWidgetPart _nested_goal_question_widgets[] = {
 };
 
 static WindowDesc _goal_question_list_desc(
-	WDP_CENTER, NULL, 0, 0,
+	WDP_CENTER, nullptr, 0, 0,
 	WC_GOAL_QUESTION, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_goal_question_widgets, lengthof(_nested_goal_question_widgets)

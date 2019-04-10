@@ -26,7 +26,7 @@
  * Create a new socket for the game connection.
  * @param s The socket to connect with.
  */
-NetworkGameSocketHandler::NetworkGameSocketHandler(SOCKET s) : info(NULL), client_id(INVALID_CLIENT_ID),
+NetworkGameSocketHandler::NetworkGameSocketHandler(SOCKET s) : info(nullptr), client_id(INVALID_CLIENT_ID),
 		last_frame(_frame_counter), last_frame_server(_frame_counter), last_packet(_realtime_tick)
 {
 	this->sock = s;
@@ -134,7 +134,7 @@ NetworkRecvStatus NetworkGameSocketHandler::HandlePacket(Packet *p)
 NetworkRecvStatus NetworkGameSocketHandler::ReceivePackets()
 {
 	Packet *p;
-	while ((p = this->ReceivePacket()) != NULL) {
+	while ((p = this->ReceivePacket()) != nullptr) {
 		NetworkRecvStatus res = HandlePacket(p);
 		delete p;
 		if (res != NETWORK_RECV_STATUS_OKAY) return res;

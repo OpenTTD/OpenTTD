@@ -29,8 +29,8 @@ uint _map_size_y;    ///< Size of the map along the Y
 uint _map_size;      ///< The number of tiles on the map
 uint _map_tile_mask; ///< _map_size - 1 (to mask the mapsize)
 
-Tile *_m = NULL;          ///< Tiles of the map
-TileExtended *_me = NULL; ///< Extended Tiles of the map
+Tile *_m = nullptr;          ///< Tiles of the map
+TileExtended *_me = nullptr; ///< Extended Tiles of the map
 
 
 /**
@@ -254,12 +254,12 @@ uint DistanceFromEdgeDir(TileIndex tile, DiagDirection dir)
  * @param proc: callback testing function pointer.
  * @param user_data to be passed to the callback function. Depends on the implementation
  * @return result of the search
- * @pre proc != NULL
+ * @pre proc != nullptr
  * @pre size > 0
  */
 bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, void *user_data)
 {
-	assert(proc != NULL);
+	assert(proc != nullptr);
 	assert(size > 0);
 
 	if (size % 2 == 1) {
@@ -292,12 +292,12 @@ bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, v
  * @param proc callback testing function pointer.
  * @param user_data to be passed to the callback function. Depends on the implementation
  * @return result of the search
- * @pre proc != NULL
+ * @pre proc != nullptr
  * @pre radius > 0
  */
 bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOnSearchProc proc, void *user_data)
 {
-	assert(proc != NULL);
+	assert(proc != nullptr);
 	assert(radius > 0);
 
 	uint x = TileX(*tile) + w + 1;

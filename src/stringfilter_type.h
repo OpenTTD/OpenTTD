@@ -47,9 +47,9 @@ private:
 public:
 	/**
 	 * Constructor for filter.
-	 * @param case_sensitive Pointer to a (usually static) variable controlling the case-sensitivity. NULL means always case-insensitive.
+	 * @param case_sensitive Pointer to a (usually static) variable controlling the case-sensitivity. nullptr means always case-insensitive.
 	 */
-	StringFilter(const bool *case_sensitive = NULL) : filter_buffer(NULL), word_matches(0), case_sensitive(case_sensitive) {}
+	StringFilter(const bool *case_sensitive = nullptr) : filter_buffer(nullptr), word_matches(0), case_sensitive(case_sensitive) {}
 	~StringFilter() { free(this->filter_buffer); }
 
 	void SetFilterTerm(const char *str);

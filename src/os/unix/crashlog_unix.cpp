@@ -68,7 +68,7 @@ class CrashLogUnix : public CrashLog {
 				" Message: %s\n\n",
 				strsignal(this->signum),
 				this->signum,
-				message == NULL ? "<none>" : message
+				message == nullptr ? "<none>" : message
 		);
 	}
 

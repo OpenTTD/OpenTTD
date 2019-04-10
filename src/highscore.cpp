@@ -129,7 +129,7 @@ void SaveToHighScore()
 {
 	FILE *fp = fopen(_highscore_file, "wb");
 
-	if (fp != NULL) {
+	if (fp != nullptr) {
 		uint i;
 		HighScore *hs;
 
@@ -159,7 +159,7 @@ void LoadFromHighScore()
 
 	memset(_highscore_table, 0, sizeof(_highscore_table));
 
-	if (fp != NULL) {
+	if (fp != nullptr) {
 		uint i;
 		HighScore *hs;
 

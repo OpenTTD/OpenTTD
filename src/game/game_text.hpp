@@ -23,7 +23,7 @@ struct LanguageStrings {
 	const char *language; ///< Name of the language (base filename).
 	StringList lines;     ///< The lines of the file to pass into the parser/encoder.
 
-	LanguageStrings(const char *language, const char *end = NULL);
+	LanguageStrings(const char *language, const char *end = nullptr);
 	~LanguageStrings();
 };
 

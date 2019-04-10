@@ -90,7 +90,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	Object *o = new Object();
 	o->type          = type;
 	o->location      = ta;
-	o->town          = town == NULL ? CalcClosestTownFromTile(tile) : town;
+	o->town          = town == nullptr ? CalcClosestTownFromTile(tile) : town;
 	o->build_date    = _date;
 	o->view          = view;
 
@@ -114,7 +114,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 		}
 	}
 
-	assert(o->town != NULL);
+	assert(o->town != nullptr);
 
 	TILE_AREA_LOOP(t, ta) {
 		WaterClass wc = (IsWaterTile(t) ? GetWaterClass(t) : WATER_CLASS_INVALID);
@@ -263,7 +263,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			uint16 callback = CALLBACK_FAILED;
 			if (HasBit(spec->callback_mask, CBM_OBJ_SLOPE_CHECK)) {
 				TileIndex diff = t - tile;
-				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t), TileY(diff) << 4 | TileX(diff), spec, NULL, t, view);
+				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t), TileY(diff) << 4 | TileX(diff), spec, nullptr, t, view);
 			}
 
 			if (callback == CALLBACK_FAILED) {
@@ -342,7 +342,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	}
 
 	if (flags & DC_EXEC) {
-		BuildObject(type, tile, _current_company, NULL, view);
+		BuildObject(type, tile, _current_company, nullptr, view);
 
 		/* Make sure the HQ starts at the right size. */
 		if (type == OBJECT_HQ) UpdateCompanyHQ(tile, hq_score);
@@ -366,7 +366,7 @@ static void DrawTile_Object(TileInfo *ti)
 	if ((spec->flags & OBJECT_FLAG_HAS_NO_FOUNDATION) == 0) DrawFoundation(ti, GetFoundation_Object(ti->tile, ti->tileh));
 
 	if (type < NEW_OBJECT_OFFSET) {
-		const DrawTileSprites *dts = NULL;
+		const DrawTileSprites *dts = nullptr;
 		Owner to = GetTileOwner(ti->tile);
 		PaletteID palette = to == OWNER_NONE ? PAL_NONE : COMPANY_SPRITE_COLOUR(to);
 
@@ -447,7 +447,7 @@ std::vector<ClearedObjectArea> _cleared_object_areas;
 /**
  * Find the entry in _cleared_object_areas which occupies a certain tile.
  * @param tile Tile of interest
- * @return Occupying entry, or NULL if none
+ * @return Occupying entry, or nullptr if none
  */
 ClearedObjectArea *FindClearedObject(TileIndex tile)
 {
@@ -457,7 +457,7 @@ ClearedObjectArea *FindClearedObject(TileIndex tile)
 		if (coa.area.Intersects(ta)) return &coa;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
@@ -567,7 +567,7 @@ static void GetTileDesc_Object(TileIndex tile, TileDesc *td)
 	td->owner[0] = GetTileOwner(tile);
 	td->build_date = Object::GetByTile(tile)->build_date;
 
-	if (spec->grf_prop.grffile != NULL) {
+	if (spec->grf_prop.grffile != nullptr) {
 		td->grf = GetGRFConfig(spec->grf_prop.grffile->grfid)->GetName();
 	}
 }
@@ -694,7 +694,7 @@ static bool TryBuildTransmitter()
 	int h;
 	if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h >= 4 && !IsBridgeAbove(tile)) {
 		TileIndex t = tile;
-		if (CircularTileSearch(&t, 9, HasTransmitter, NULL)) return false;
+		if (CircularTileSearch(&t, 9, HasTransmitter, nullptr)) return false;
 
 		BuildObject(OBJECT_TRANSMITTER, tile);
 		return true;
@@ -754,7 +754,7 @@ void GenerateObjects()
 
 				default:
 					uint8 view = RandomRange(spec->views);
-					if (CmdBuildObject(RandomTile(), DC_EXEC | DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, i, view, NULL).Succeeded()) amount--;
+					if (CmdBuildObject(RandomTile(), DC_EXEC | DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, i, view, nullptr).Succeeded()) amount--;
 					break;
 			}
 		}
@@ -840,8 +840,8 @@ extern const TileTypeProcs _tile_type_object_procs = {
 	AnimateTile_Object,          // animate_tile_proc
 	TileLoop_Object,             // tile_loop_proc
 	ChangeTileOwner_Object,      // change_tile_owner_proc
-	NULL,                        // add_produced_cargo_proc
-	NULL,                        // vehicle_enter_tile_proc
+	nullptr,                        // add_produced_cargo_proc
+	nullptr,                        // vehicle_enter_tile_proc
 	GetFoundation_Object,        // get_foundation_proc
 	TerraformTile_Object,        // terraform_tile_proc
 };

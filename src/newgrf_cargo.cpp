@@ -29,7 +29,7 @@ struct CargoResolverObject : public ResolverObject {
 	if (group->num_loaded > 0) return group->loaded[0];
 	if (group->num_loading > 0) return group->loading[0];
 
-	return NULL;
+	return nullptr;
 }
 
 /**
@@ -54,7 +54,7 @@ SpriteID GetCustomCargoSprite(const CargoSpec *cs)
 {
 	CargoResolverObject object(cs);
 	const SpriteGroup *group = object.Resolve();
-	if (group == NULL) return 0;
+	if (group == nullptr) return 0;
 
 	return group->GetResult();
 }

@@ -89,13 +89,13 @@ public:
 		Trackdir next_trackdir = INVALID_TRACKDIR; // this would mean "path not found"
 
 		Node *pNode = pf.GetBestNode();
-		if (pNode != NULL) {
+		if (pNode != nullptr) {
 			uint steps = 0;
-			for (Node *n = pNode; n->m_parent != NULL; n = n->m_parent) steps++;
+			for (Node *n = pNode; n->m_parent != nullptr; n = n->m_parent) steps++;
 
 			/* walk through the path back to the origin */
-			Node *pPrevNode = NULL;
-			while (pNode->m_parent != NULL) {
+			Node *pPrevNode = nullptr;
+			while (pNode->m_parent != nullptr) {
 				steps--;
 				if (steps > 0 && steps < YAPF_SHIP_PATH_CACHE_LENGTH) {
 					TrackdirByte td;
@@ -138,11 +138,11 @@ public:
 		if (!pf.FindPath(v)) return false;
 
 		Node *pNode = pf.GetBestNode();
-		if (pNode == NULL) return false;
+		if (pNode == nullptr) return false;
 
 		/* path was found
 		 * walk through the path back to the origin */
-		while (pNode->m_parent != NULL) {
+		while (pNode->m_parent != nullptr) {
 			pNode = pNode->m_parent;
 		}
 

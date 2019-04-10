@@ -25,12 +25,12 @@
 bool ScriptEventEnginePreview::IsEngineValid() const
 {
 	const Engine *e = ::Engine::GetIfValid(this->engine);
-	return e != NULL && e->IsEnabled();
+	return e != nullptr && e->IsEnabled();
 }
 
 char *ScriptEventEnginePreview::GetName()
 {
-	if (!this->IsEngineValid()) return NULL;
+	if (!this->IsEngineValid()) return nullptr;
 
 	::SetDParam(0, this->engine);
 	return GetString(STR_ENGINE_NAME);
@@ -132,13 +132,13 @@ ScriptEventAdminPort::~ScriptEventAdminPort()
 }
 
 #define SKIP_EMPTY(p) while (*(p) == ' ' || *(p) == '\n' || *(p) == '\r') (p)++;
-#define RETURN_ERROR(stack) { ScriptLog::Error("Received invalid JSON data from AdminPort."); if (stack != 0) sq_pop(vm, stack); return NULL; }
+#define RETURN_ERROR(stack) { ScriptLog::Error("Received invalid JSON data from AdminPort."); if (stack != 0) sq_pop(vm, stack); return nullptr; }
 
 SQInteger ScriptEventAdminPort::GetObject(HSQUIRRELVM vm)
 {
 	char *p = this->json;
 
-	if (this->ReadTable(vm, p) == NULL) {
+	if (this->ReadTable(vm, p) == nullptr) {
 		sq_pushnull(vm);
 		return 1;
 	}
@@ -189,18 +189,18 @@ char *ScriptEventAdminPort::ReadTable(HSQUIRRELVM vm, char *p)
 		if (*p++ != '"') RETURN_ERROR(1);
 
 		p = ReadString(vm, p);
-		if (p == NULL) {
+		if (p == nullptr) {
 			sq_pop(vm, 1);
-			return NULL;
+			return nullptr;
 		}
 
 		SKIP_EMPTY(p);
 		if (*p++ != ':') RETURN_ERROR(2);
 
 		p = this->ReadValue(vm, p);
-		if (p == NULL) {
+		if (p == nullptr) {
 			sq_pop(vm, 2);
-			return NULL;
+			return nullptr;
 		}
 
 		sq_rawset(vm, -3);
@@ -241,7 +241,7 @@ char *ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, char *p)
 		case '"': {
 			/* String */
 			p = ReadString(vm, ++p);
-			if (p == NULL) return NULL;
+			if (p == nullptr) return nullptr;
 
 			break;
 		}
@@ -249,7 +249,7 @@ char *ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, char *p)
 		case '{': {
 			/* Table */
 			p = this->ReadTable(vm, p);
-			if (p == NULL) return NULL;
+			if (p == nullptr) return nullptr;
 
 			break;
 		}
@@ -268,9 +268,9 @@ char *ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, char *p)
 
 			while (*p++ != ']') {
 				p = this->ReadValue(vm, p);
-				if (p == NULL) {
+				if (p == nullptr) {
 					sq_pop(vm, 1);
-					return NULL;
+					return nullptr;
 				}
 				sq_arrayappend(vm, -2);
 

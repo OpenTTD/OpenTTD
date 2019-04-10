@@ -53,8 +53,8 @@ static byte _stringwidth_table[FS_END][224]; ///< Cache containing width of ofte
 DrawPixelInfo *_cur_dpi;
 byte _colour_gradient[COLOUR_END][8];
 
-static void GfxMainBlitterViewport(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL, SpriteID sprite_id = SPR_CURSOR_MOUSE);
-static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL, SpriteID sprite_id = SPR_CURSOR_MOUSE, ZoomLevel zoom = ZOOM_LVL_NORMAL);
+static void GfxMainBlitterViewport(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE);
+static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE, ZoomLevel zoom = ZOOM_LVL_NORMAL);
 
 static ReusableBuffer<uint8> _cursor_backup;
 
@@ -76,7 +76,7 @@ static const uint DIRTY_BLOCK_HEIGHT   = 8;
 static const uint DIRTY_BLOCK_WIDTH    = 64;
 
 static uint _dirty_bytes_per_line = 0;
-static byte *_dirty_blocks = NULL;
+static byte *_dirty_blocks = nullptr;
 extern uint _dirty_block_colour;
 
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
@@ -367,7 +367,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 	truncation &= max_w < w;         // Whether we need to do truncation.
 	int dot_width = 0;               // Cache for the width of the dot.
-	const Sprite *dot_sprite = NULL; // Cache for the sprite of the dot.
+	const Sprite *dot_sprite = nullptr; // Cache for the sprite of the dot.
 
 	if (truncation) {
 		/*
@@ -734,11 +734,11 @@ Point GetCharPosInString(const char *str, const char *ch, FontSize start_fontsiz
  * @param str String to test.
  * @param x Position relative to the start of the string.
  * @param start_fontsize Font size to start the text with.
- * @return Pointer to the character at the position or NULL if there is no character at the position.
+ * @return Pointer to the character at the position or nullptr if there is no character at the position.
  */
 const char *GetCharAtPosition(const char *str, int x, FontSize start_fontsize)
 {
-	if (x < 0) return NULL;
+	if (x < 0) return nullptr;
 
 	Layouter layout(str, INT32_MAX, TC_FROMSTRING, start_fontsize);
 	return layout.GetCharAtPosition(x);
@@ -768,7 +768,7 @@ Dimension GetSpriteSize(SpriteID sprid, Point *offset, ZoomLevel zoom)
 {
 	const Sprite *sprite = GetSprite(sprid, ST_NORMAL);
 
-	if (offset != NULL) {
+	if (offset != nullptr) {
 		offset->x = UnScaleByZoom(sprite->x_offs, zoom);
 		offset->y = UnScaleByZoom(sprite->y_offs, zoom);
 	}
@@ -874,7 +874,7 @@ static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mo
 	x += sprite->x_offs;
 	y += sprite->y_offs;
 
-	if (sub == NULL) {
+	if (sub == nullptr) {
 		/* No clipping. */
 		bp.skip_left = 0;
 		bp.skip_top = 0;
@@ -1011,7 +1011,7 @@ void DoPaletteAnimations()
 	uint i;
 	uint j;
 
-	if (blitter != NULL && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
+	if (blitter != nullptr && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
 		palette_animation_counter = 0;
 	}
 
@@ -1096,7 +1096,7 @@ void DoPaletteAnimations()
 		if (j >= EPV_CYCLES_GLITTER_WATER) j -= EPV_CYCLES_GLITTER_WATER;
 	}
 
-	if (blitter != NULL && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
+	if (blitter != nullptr && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
 		palette_animation_counter = old_tc;
 	} else {
 		if (memcmp(old_val, &_cur_palette.palette[PALETTE_ANIM_START], sizeof(old_val)) != 0 && _cur_palette.count_dirty == 0) {
@@ -1203,7 +1203,7 @@ void ScreenSizeChanged()
 void UndrawMouseCursor()
 {
 	/* Don't undraw the mouse cursor if the screen is not ready */
-	if (_screen.dst_ptr == NULL) return;
+	if (_screen.dst_ptr == nullptr) return;
 
 	if (_cursor.visible) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
@@ -1216,7 +1216,7 @@ void UndrawMouseCursor()
 void DrawMouseCursor()
 {
 	/* Don't draw the mouse cursor if the screen is not ready */
-	if (_screen.dst_ptr == NULL) return;
+	if (_screen.dst_ptr == nullptr) return;
 
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
@@ -1578,7 +1578,7 @@ static void SwitchAnimatedCursor()
 {
 	const AnimCursor *cur = _cursor.animate_cur;
 
-	if (cur == NULL || cur->sprite == AnimCursor::LAST) cur = _cursor.animate_list;
+	if (cur == nullptr || cur->sprite == AnimCursor::LAST) cur = _cursor.animate_list;
 
 	SetCursorSprite(cur->sprite, _cursor.sprite_seq[0].pal);
 
@@ -1628,7 +1628,7 @@ void SetMouseCursor(CursorID sprite, PaletteID pal)
 void SetAnimatedMouseCursor(const AnimCursor *table)
 {
 	_cursor.animate_list = table;
-	_cursor.animate_cur = NULL;
+	_cursor.animate_cur = nullptr;
 	_cursor.sprite_seq[0].pal = PAL_NONE;
 	SwitchAnimatedCursor();
 }

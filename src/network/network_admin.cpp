@@ -234,12 +234,12 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientJoin(ClientID clien
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientInfo(const NetworkClientSocket *cs, const NetworkClientInfo *ci)
 {
 	/* Only send data when we're a proper client, not just someone trying to query the server. */
-	if (ci == NULL) return NETWORK_RECV_STATUS_OKAY;
+	if (ci == nullptr) return NETWORK_RECV_STATUS_OKAY;
 
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_CLIENT_INFO);
 
 	p->Send_uint32(ci->client_id);
-	p->Send_string(cs == NULL ? "" : const_cast<NetworkAddress &>(cs->client_address).GetHostname());
+	p->Send_string(cs == nullptr ? "" : const_cast<NetworkAddress &>(cs->client_address).GetHostname());
 	p->Send_string(ci->client_name);
 	p->Send_uint8 (ci->client_lang);
 	p->Send_uint32(ci->join_date);
@@ -734,16 +734,16 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet *p)
 			/* The admin is requesting client info. */
 			const NetworkClientSocket *cs;
 			if (d1 == UINT32_MAX) {
-				this->SendClientInfo(NULL, NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER));
+				this->SendClientInfo(nullptr, NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER));
 				FOR_ALL_CLIENT_SOCKETS(cs) {
 					this->SendClientInfo(cs, cs->GetInfo());
 				}
 			} else {
 				if (d1 == CLIENT_ID_SERVER) {
-					this->SendClientInfo(NULL, NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER));
+					this->SendClientInfo(nullptr, NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER));
 				} else {
 					cs = NetworkClientSocket::GetByClientID((ClientID)d1);
-					if (cs != NULL) this->SendClientInfo(cs, cs->GetInfo());
+					if (cs != nullptr) this->SendClientInfo(cs, cs->GetInfo());
 				}
 			}
 			break;
@@ -757,7 +757,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet *p)
 				}
 			} else {
 				company = Company::GetIfValid(d1);
-				if (company != NULL) this->SendCompanyInfo(company);
+				if (company != nullptr) this->SendCompanyInfo(company);
 			}
 			break;
 
@@ -884,7 +884,7 @@ void NetworkAdminClientError(ClientID client_id, NetworkErrorCode error_code)
  */
 void NetworkAdminCompanyInfo(const Company *company, bool new_company)
 {
-	if (company == NULL) {
+	if (company == nullptr) {
 		DEBUG(net, 1, "[admin] Empty company given for update");
 		return;
 	}
@@ -906,7 +906,7 @@ void NetworkAdminCompanyInfo(const Company *company, bool new_company)
  */
 void NetworkAdminCompanyUpdate(const Company *company)
 {
-	if (company == NULL) return;
+	if (company == nullptr) return;
 
 	ServerNetworkAdminSocketHandler *as;
 	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
@@ -992,7 +992,7 @@ void NetworkAdminGameScript(const char *json)
  */
 void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacket *cp)
 {
-	ClientID client_id = owner == NULL ? _network_own_client_id : owner->client_id;
+	ClientID client_id = owner == nullptr ? _network_own_client_id : owner->client_id;
 
 	ServerNetworkAdminSocketHandler *as;
 	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {

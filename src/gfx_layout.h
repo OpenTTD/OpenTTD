@@ -177,7 +177,7 @@ public:
 		FontState state_after;     ///< Font state after the line.
 		ParagraphLayouter *layout; ///< Layout of the line.
 
-		LineCacheItem() : buffer(NULL), layout(NULL) {}
+		LineCacheItem() : buffer(nullptr), layout(nullptr) {}
 		~LineCacheItem() { delete layout; free(buffer); }
 	};
 private:

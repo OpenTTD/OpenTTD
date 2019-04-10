@@ -86,14 +86,14 @@ bool RoadVehicle::IsBus() const
 
 /**
  * Get the width of a road vehicle image in the GUI.
- * @param offset Additional offset for positioning the sprite; set to NULL if not needed
+ * @param offset Additional offset for positioning the sprite; set to nullptr if not needed
  * @return Width in pixels
  */
 int RoadVehicle::GetDisplayImageWidth(Point *offset) const
 {
 	int reference_width = ROADVEHINFO_DEFAULT_VEHICLE_WIDTH;
 
-	if (offset != NULL) {
+	if (offset != nullptr) {
 		offset->x = ScaleGUITrad(reference_width) / 2;
 		offset->y = 0;
 	}
@@ -192,7 +192,7 @@ static uint GetRoadVehLength(const RoadVehicle *v)
 	uint length = VEHICLE_LENGTH;
 
 	uint16 veh_len = CALLBACK_FAILED;
-	if (e->GetGRF() != NULL && e->GetGRF()->grf_version >= 8) {
+	if (e->GetGRF() != nullptr && e->GetGRF()->grf_version >= 8) {
 		/* Use callback 36 */
 		veh_len = GetVehicleProperty(v, PROP_ROADVEH_SHORTEN_FACTOR, CALLBACK_FAILED);
 		if (veh_len != CALLBACK_FAILED && veh_len >= VEHICLE_LENGTH) ErrorUnknownCallbackResult(e->GetGRFID(), CBID_VEHICLE_LENGTH, veh_len);
@@ -223,7 +223,7 @@ void RoadVehUpdateCache(RoadVehicle *v, bool same_length)
 
 	v->gcache.cached_total_length = 0;
 
-	for (RoadVehicle *u = v; u != NULL; u = u->Next()) {
+	for (RoadVehicle *u = v; u != nullptr; u = u->Next()) {
 		/* Check the v->first cache. */
 		assert(u->First() == v);
 
@@ -315,7 +315,7 @@ CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->InvalidateNewGRFCacheOfChain();
 
 		/* Call various callbacks after the whole consist has been constructed */
-		for (RoadVehicle *u = v; u != NULL; u = u->Next()) {
+		for (RoadVehicle *u = v; u != nullptr; u = u->Next()) {
 			u->cargo_cap = u->GetEngine()->DetermineCapacity(u);
 			u->refit_cap = 0;
 			v->InvalidateNewGRFCache();
@@ -350,8 +350,8 @@ bool RoadVehicle::FindClosestDepot(TileIndex *location, DestinationID *destinati
 	FindDepotData rfdd = FindClosestRoadDepot(this, 0);
 	if (rfdd.best_length == UINT_MAX) return false;
 
-	if (location    != NULL) *location    = rfdd.tile;
-	if (destination != NULL) *destination = GetDepotIndex(rfdd.tile);
+	if (location    != nullptr) *location    = rfdd.tile;
+	if (destination != nullptr) *destination = GetDepotIndex(rfdd.tile);
 
 	return true;
 }
@@ -368,7 +368,7 @@ bool RoadVehicle::FindClosestDepot(TileIndex *location, DestinationID *destinati
 CommandCost CmdTurnRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	RoadVehicle *v = RoadVehicle::GetIfValid(p1);
-	if (v == NULL) return CMD_ERROR;
+	if (v == nullptr) return CMD_ERROR;
 
 	if (!v->IsPrimaryVehicle()) return CMD_ERROR;
 
@@ -397,7 +397,7 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 void RoadVehicle::MarkDirty()
 {
-	for (RoadVehicle *v = this; v != NULL; v = v->Next()) {
+	for (RoadVehicle *v = this; v != nullptr; v = v->Next()) {
 		v->colourmap = PAL_NONE;
 		v->UpdateViewport(true, false);
 	}
@@ -440,7 +440,7 @@ inline int RoadVehicle::GetCurrentMaxSpeed() const
 	int max_speed = this->vcache.cached_max_speed;
 
 	/* Limit speed to 50% while reversing, 75% in curves. */
-	for (const RoadVehicle *u = this; u != NULL; u = u->Next()) {
+	for (const RoadVehicle *u = this; u != nullptr; u = u->Next()) {
 		if (_settings_game.vehicle.roadveh_acceleration_model == AM_REALISTIC) {
 			if (this->state <= RVSB_TRACKDIR_MASK && IsReversingRoadTrackdir((Trackdir)this->state)) {
 				max_speed = this->vcache.cached_max_speed / 2;
@@ -467,8 +467,8 @@ static void DeleteLastRoadVeh(RoadVehicle *v)
 {
 	RoadVehicle *first = v->First();
 	Vehicle *u = v;
-	for (; v->Next() != NULL; v = v->Next()) u = v;
-	u->SetNext(NULL);
+	for (; v->Next() != nullptr; v = v->Next()) u = v;
+	u->SetNext(nullptr);
 	v->last_station_visited = first->last_station_visited; // for PreDestructor
 
 	/* Only leave the road stop when we're really gone. */
@@ -488,7 +488,7 @@ static void RoadVehSetRandomDirection(RoadVehicle *v)
 
 		v->direction = ChangeDir(v->direction, delta[r & 3]);
 		v->UpdateViewport(true, true);
-	} while ((v = v->Next()) != NULL);
+	} while ((v = v->Next()) != nullptr);
 }
 
 /**
@@ -504,7 +504,7 @@ static bool RoadVehIsCrashed(RoadVehicle *v)
 	} else if (v->crashed_ctr <= 45) {
 		if ((v->tick_counter & 7) == 0) RoadVehSetRandomDirection(v);
 	} else if (v->crashed_ctr >= 2220 && !(v->tick_counter & 0x1F)) {
-		bool ret = v->Next() != NULL;
+		bool ret = v->Next() != nullptr;
 		DeleteLastRoadVeh(v);
 		return ret;
 	}
@@ -516,7 +516,7 @@ static bool RoadVehIsCrashed(RoadVehicle *v)
  * Check routine whether a road and a train vehicle have collided.
  * @param v    %Train vehicle to test.
  * @param data Road vehicle to test.
- * @return %Train vehicle if the vehicles collided, else \c NULL.
+ * @return %Train vehicle if the vehicles collided, else \c nullptr.
  */
 static Vehicle *EnumCheckRoadVehCrashTrain(Vehicle *v, void *data)
 {
@@ -525,7 +525,7 @@ static Vehicle *EnumCheckRoadVehCrashTrain(Vehicle *v, void *data)
 	return (v->type == VEH_TRAIN &&
 			abs(v->z_pos - u->z_pos) <= 6 &&
 			abs(v->x_pos - u->x_pos) <= 4 &&
-			abs(v->y_pos - u->y_pos) <= 4) ? v : NULL;
+			abs(v->y_pos - u->y_pos) <= 4) ? v : nullptr;
 }
 
 uint RoadVehicle::Crash(bool flooded)
@@ -564,7 +564,7 @@ static void RoadVehCrash(RoadVehicle *v)
 
 static bool RoadVehCheckTrainCrash(RoadVehicle *v)
 {
-	for (RoadVehicle *u = v; u != NULL; u = u->Next()) {
+	for (RoadVehicle *u = v; u != nullptr; u = u->Next()) {
 		if (u->state == RVSB_WORMHOLE) continue;
 
 		TileIndex tile = u->tile;
@@ -641,7 +641,7 @@ static Vehicle *EnumCheckRoadVehClose(Vehicle *v, void *data)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 static RoadVehicle *RoadVehFindCloseTo(RoadVehicle *v, int x, int y, Direction dir, bool update_blocked_ctr = true)
@@ -649,7 +649,7 @@ static RoadVehicle *RoadVehFindCloseTo(RoadVehicle *v, int x, int y, Direction d
 	RoadVehFindData rvf;
 	RoadVehicle *front = v->First();
 
-	if (front->reverse_ctr != 0) return NULL;
+	if (front->reverse_ctr != 0) return nullptr;
 
 	rvf.x = x;
 	rvf.y = y;
@@ -670,10 +670,10 @@ static RoadVehicle *RoadVehFindCloseTo(RoadVehicle *v, int x, int y, Direction d
 	 * It can be disabled. */
 	if (rvf.best_diff == UINT_MAX) {
 		front->blocked_ctr = 0;
-		return NULL;
+		return nullptr;
 	}
 
-	if (update_blocked_ctr && ++front->blocked_ctr > 1480) return NULL;
+	if (update_blocked_ctr && ++front->blocked_ctr > 1480) return nullptr;
 
 	return RoadVehicle::From(rvf.best);
 }
@@ -772,7 +772,7 @@ static Vehicle *EnumFindVehBlockingOvertake(Vehicle *v, void *data)
 {
 	const OvertakeData *od = (OvertakeData*)data;
 
-	return (v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v) ? v : NULL;
+	return (v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v) ? v : nullptr;
 }
 
 /**
@@ -1006,7 +1006,7 @@ struct RoadDriveEntry {
 static bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
 {
 	/* Don't leave unless v and following wagons are in the depot. */
-	for (const RoadVehicle *u = v; u != NULL; u = u->Next()) {
+	for (const RoadVehicle *u = v; u != nullptr; u = u->Next()) {
 		if (u->state != RVSB_IN_DEPOT || u->tile != v->tile) return false;
 	}
 
@@ -1026,7 +1026,7 @@ static bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
 			return true;
 		}
 
-		if (RoadVehFindCloseTo(v, x, y, v->direction, false) != NULL) return true;
+		if (RoadVehFindCloseTo(v, x, y, v->direction, false) != nullptr) return true;
 
 		VehicleServiceInDepot(v);
 
@@ -1161,7 +1161,7 @@ bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 
 		if (v->IsFrontEngine()) {
 			const Vehicle *u = RoadVehFindCloseTo(v, gp.x, gp.y, v->direction);
-			if (u != NULL) {
+			if (u != nullptr) {
 				v->cur_speed = u->First()->cur_speed;
 				return false;
 			}
@@ -1225,7 +1225,7 @@ again:
 					case TRACKDIR_RVREV_SW: needed = ROAD_NE; break;
 					case TRACKDIR_RVREV_NW: needed = ROAD_SE; break;
 				}
-				if ((v->Previous() != NULL && v->Previous()->tile == tile) ||
+				if ((v->Previous() != nullptr && v->Previous()->tile == tile) ||
 						(v->IsFrontEngine() && IsNormalRoadTile(tile) && !HasRoadWorks(tile) &&
 							(needed & GetRoadBits(tile, ROADTYPE_TRAM)) != ROAD_NONE)) {
 					/*
@@ -1274,7 +1274,7 @@ again:
 		Direction new_dir = RoadVehGetSlidingDirection(v, x, y);
 		if (v->IsFrontEngine()) {
 			Vehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
-			if (u != NULL) {
+			if (u != nullptr) {
 				v->cur_speed = u->First()->cur_speed;
 				return false;
 			}
@@ -1376,7 +1376,7 @@ again:
 		int y = TileY(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].y;
 
 		Direction new_dir = RoadVehGetSlidingDirection(v, x, y);
-		if (v->IsFrontEngine() && RoadVehFindCloseTo(v, x, y, new_dir) != NULL) return false;
+		if (v->IsFrontEngine() && RoadVehFindCloseTo(v, x, y, new_dir) != nullptr) return false;
 
 		uint32 r = VehicleEnterTile(v, v->tile, x, y);
 		if (HasBit(r, VETS_CANNOT_ENTER)) {
@@ -1402,7 +1402,7 @@ again:
 	/* This vehicle is not in a wormhole and it hasn't entered a new tile. If
 	 * it's on a depot tile, check if it's time to activate the next vehicle in
 	 * the chain yet. */
-	if (v->Next() != NULL && IsRoadDepotTile(v->tile)) {
+	if (v->Next() != nullptr && IsRoadDepotTile(v->tile)) {
 		if (v->frame == v->gcache.cached_veh_length + RVC_DEPOT_START_FRAME) {
 			RoadVehLeaveDepot(v->Next(), false);
 		}
@@ -1419,7 +1419,7 @@ again:
 		 * Check for another vehicle to overtake */
 		RoadVehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
 
-		if (u != NULL) {
+		if (u != nullptr) {
 			u = u->First();
 			/* There is a vehicle in front overtake it if possible */
 			if (v->overtaking == 0) RoadVehCheckOvertake(v, u);
@@ -1569,7 +1569,7 @@ static bool RoadVehController(RoadVehicle *v)
 		j -= adv_spd;
 
 		RoadVehicle *u = v;
-		for (RoadVehicle *prev = NULL; u != NULL; prev = u, u = u->Next()) {
+		for (RoadVehicle *prev = nullptr; u != nullptr; prev = u, u = u->Next()) {
 			if (!IndividualRoadVehicleController(u, prev)) {
 				blocked = true;
 				break;
@@ -1586,7 +1586,7 @@ static bool RoadVehController(RoadVehicle *v)
 
 	v->SetLastSpeed();
 
-	for (RoadVehicle *u = v; u != NULL; u = u->Next()) {
+	for (RoadVehicle *u = v; u != nullptr; u = u->Next()) {
 		if ((u->vehstatus & VS_HIDDEN) != 0) continue;
 
 		u->UpdateViewport(false, false);

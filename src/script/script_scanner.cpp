@@ -28,19 +28,19 @@ bool ScriptScanner::AddFile(const char *filename, size_t basepath_length, const 
 {
 	free(this->main_script);
 	this->main_script = stredup(filename);
-	if (this->main_script == NULL) return false;
+	if (this->main_script == nullptr) return false;
 
 	free(this->tar_file);
-	if (tar_filename != NULL) {
+	if (tar_filename != nullptr) {
 		this->tar_file = stredup(tar_filename);
-		if (this->tar_file == NULL) return false;
+		if (this->tar_file == nullptr) return false;
 	} else {
-		this->tar_file = NULL;
+		this->tar_file = nullptr;
 	}
 
 	const char *end = this->main_script + strlen(this->main_script) + 1;
 	char *p = strrchr(this->main_script, PATHSEPCHAR);
-	if (p == NULL) {
+	if (p == nullptr) {
 		p = this->main_script;
 	} else {
 		/* Skip over the path separator character. We don't need that. */
@@ -58,9 +58,9 @@ bool ScriptScanner::AddFile(const char *filename, size_t basepath_length, const 
 }
 
 ScriptScanner::ScriptScanner() :
-	engine(NULL),
-	main_script(NULL),
-	tar_file(NULL)
+	engine(nullptr),
+	main_script(nullptr),
+	tar_file(nullptr)
 {
 }
 
@@ -203,7 +203,7 @@ struct ScriptFileChecksumCreator : FileScanner {
 
 		/* Open the file ... */
 		FILE *f = FioFOpenFile(filename, "rb", this->dir, &size);
-		if (f == NULL) return false;
+		if (f == nullptr) return false;
 
 		/* ... calculate md5sum... */
 		while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, f)) != 0 && size != 0) {
@@ -241,7 +241,7 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 	ScriptFileChecksumCreator checksum(dir);
 	const char *tar_filename = info->GetTarFile();
 	TarList::iterator iter;
-	if (tar_filename != NULL && (iter = _tar_list[dir].find(tar_filename)) != _tar_list[dir].end()) {
+	if (tar_filename != nullptr && (iter = _tar_list[dir].find(tar_filename)) != _tar_list[dir].end()) {
 		/* The main script is in a tar file, so find all files that
 		 * are in the same tar and add them to the MD5 checksumming. */
 		TarFileList::iterator tar;
@@ -251,7 +251,7 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 
 			/* Check the extension. */
 			const char *ext = strrchr(tar->first.c_str(), '.');
-			if (ext == NULL || strcasecmp(ext, ".nut") != 0) continue;
+			if (ext == nullptr || strcasecmp(ext, ".nut") != 0) continue;
 
 			checksum.AddFile(tar->first.c_str(), 0, tar_filename);
 		}
@@ -281,5 +281,5 @@ const char *ScriptScanner::FindMainScript(const ContentInfo *ci, bool md5sum)
 	for (ScriptInfoList::iterator it = this->info_list.begin(); it != this->info_list.end(); it++) {
 		if (IsSameScript(ci, md5sum, (*it).second, this->GetDirectory())) return (*it).second->GetMainScript();
 	}
-	return NULL;
+	return nullptr;
 }

@@ -595,7 +595,7 @@ assert_compile(lengthof(_effect_transparency_options) == EV_END);
  */
 EffectVehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type)
 {
-	if (!Vehicle::CanAllocateItem()) return NULL;
+	if (!Vehicle::CanAllocateItem()) return nullptr;
 
 	EffectVehicle *v = new EffectVehicle();
 	v->subtype = type;

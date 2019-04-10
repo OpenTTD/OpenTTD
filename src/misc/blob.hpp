@@ -86,9 +86,9 @@ public:
 	/** move constructor - take ownership of blob data */
 	inline ByteBlob(BlobHeader * const & src)
 	{
-		assert(src != NULL);
+		assert(src != nullptr);
 		header = src;
-		*const_cast<BlobHeader**>(&src) = NULL;
+		*const_cast<BlobHeader**>(&src) = nullptr;
 	}
 
 	/** destructor */
@@ -221,7 +221,7 @@ public:
 	/** append new bytes at the end of existing data bytes - reallocates if necessary */
 	inline void AppendRaw(const void *p, size_t num_bytes)
 	{
-		assert(p != NULL);
+		assert(p != nullptr);
 		if (num_bytes > 0) {
 			memcpy(Append(num_bytes), p, num_bytes);
 		}
@@ -317,8 +317,8 @@ public:
 
 		OnTransfer(const OnTransfer& src) : header(src.header)
 		{
-			assert(src.header != NULL);
-			*const_cast<typename base::BlobHeader**>(&src.header) = NULL;
+			assert(src.header != nullptr);
+			*const_cast<typename base::BlobHeader**>(&src.header) = nullptr;
 		}
 
 		OnTransfer(CBlobT& src) : header(src.header)
@@ -328,7 +328,7 @@ public:
 
 		~OnTransfer()
 		{
-			assert(header == NULL);
+			assert(header == nullptr);
 		}
 	};
 

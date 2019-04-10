@@ -120,7 +120,7 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 	}
 
 	FILE *f = fopen(name, "wb");
-	if (f == NULL) return false;
+	if (f == nullptr) return false;
 
 	/* Each scanline must be aligned on a 32bit boundary */
 	uint bytewidth = Align(w * bpp, 4); // bytes per line in file
@@ -268,18 +268,18 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	if (pixelformat != 8 && pixelformat != 32) return false;
 
 	f = fopen(name, "wb");
-	if (f == NULL) return false;
+	if (f == nullptr) return false;
 
 	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, const_cast<char *>(name), png_my_error, png_my_warning);
 
-	if (png_ptr == NULL) {
+	if (png_ptr == nullptr) {
 		fclose(f);
 		return false;
 	}
 
 	info_ptr = png_create_info_struct(png_ptr);
-	if (info_ptr == NULL) {
-		png_destroy_write_struct(&png_ptr, (png_infopp)NULL);
+	if (info_ptr == nullptr) {
+		png_destroy_write_struct(&png_ptr, (png_infopp)nullptr);
 		fclose(f);
 		return false;
 	}
@@ -311,7 +311,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	char *p = buf;
 	p += seprintf(p, lastof(buf), "Graphics set: %s (%u)\n", BaseGraphics::GetUsedSet()->name, BaseGraphics::GetUsedSet()->version);
 	p = strecpy(p, "NewGRFs:\n", lastof(buf));
-	for (const GRFConfig *c = _game_mode == GM_MENU ? NULL : _grfconfig; c != NULL; c = c->next) {
+	for (const GRFConfig *c = _game_mode == GM_MENU ? nullptr : _grfconfig; c != nullptr; c = c->next) {
 		p += seprintf(p, lastof(buf), "%08X ", BSWAP32(c->ident.grfid));
 		p = md5sumToString(p, lastof(buf), c->ident.md5sum);
 		p += seprintf(p, lastof(buf), " %s\n", c->filename);
@@ -319,7 +319,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	p = strecpy(p, "\nCompanies:\n", lastof(buf));
 	const Company *c;
 	FOR_ALL_COMPANIES(c) {
-		if (c->ai_info == NULL) {
+		if (c->ai_info == nullptr) {
 			p += seprintf(p, lastof(buf), "%2i: Human\n", (int)c->index);
 		} else {
 			p += seprintf(p, lastof(buf), "%2i: %s (v%d)\n", (int)c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
@@ -447,7 +447,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	if (pixelformat != 8 || w == 0) return false;
 
 	f = fopen(name, "wb");
-	if (f == NULL) return false;
+	if (f == nullptr) return false;
 
 	memset(&pcx, 0, sizeof(pcx));
 
@@ -701,7 +701,7 @@ static const char *MakeScreenshotName(const char *default_fn, const char *ext, b
 static bool MakeSmallScreenshot(bool crashlog)
 {
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
-	return sf->proc(MakeScreenshotName(SCREENSHOT_NAME, sf->extension, crashlog), CurrentScreenCallback, NULL, _screen.width, _screen.height,
+	return sf->proc(MakeScreenshotName(SCREENSHOT_NAME, sf->extension, crashlog), CurrentScreenCallback, nullptr, _screen.width, _screen.height,
 			BlitterFactory::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
 }
 
@@ -743,7 +743,7 @@ void SetupScreenshotViewport(ScreenshotType t, ViewPort *vp)
 	vp->top = 0;
 	vp->width  = UnScaleByZoom(vp->virtual_width,  vp->zoom);
 	vp->height = UnScaleByZoom(vp->virtual_height, vp->zoom);
-	vp->overlay = NULL;
+	vp->overlay = nullptr;
 }
 
 /**
@@ -800,7 +800,7 @@ bool MakeHeightmapScreenshot(const char *filename)
 		palette[i].b = i;
 	}
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
-	return sf->proc(filename, HeightmapCallback, NULL, MapSizeX(), MapSizeY(), 8, palette);
+	return sf->proc(filename, HeightmapCallback, nullptr, MapSizeX(), MapSizeY(), 8, palette);
 }
 
 /**
@@ -821,7 +821,7 @@ bool MakeScreenshot(ScreenshotType t, const char *name)
 	}
 
 	_screenshot_name[0] = '\0';
-	if (name != NULL) strecpy(_screenshot_name, name, lastof(_screenshot_name));
+	if (name != nullptr) strecpy(_screenshot_name, name, lastof(_screenshot_name));
 
 	bool ret;
 	switch (t) {

@@ -139,7 +139,7 @@ public:
 	/**
 	 * Set the name of your company.
 	 * @param name The new name of the company (can be either a raw string, or a ScriptText object).
-	 * @pre name != NULL && len(name) != 0.
+	 * @pre name != nullptr && len(name) != 0.
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.
 	 */
@@ -156,7 +156,7 @@ public:
 	/**
 	 * Set the name of your president.
 	 * @param name The new name of the president (can be either a raw string, or a ScriptText object).
-	 * @pre name != NULL && len(name) != 0.
+	 * @pre name != nullptr && len(name) != 0.
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.
 	 */

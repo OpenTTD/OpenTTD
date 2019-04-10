@@ -47,8 +47,8 @@ void ContentInfo::TransferFrom(ContentInfo *other)
 		free(this->dependencies);
 		free(this->tags);
 		memcpy(this, other, sizeof(ContentInfo));
-		other->dependencies = NULL;
-		other->tags = NULL;
+		other->dependencies = nullptr;
+		other->tags = nullptr;
 	}
 }
 
@@ -98,11 +98,11 @@ bool ContentInfo::IsValid() const
 /**
  * Search a textfile file next to this file in the content list.
  * @param type The type of the textfile to search for.
- * @return The filename for the textfile, \c NULL otherwise.
+ * @return The filename for the textfile, \c nullptr otherwise.
  */
 const char *ContentInfo::GetTextfile(TextfileType type) const
 {
-	if (this->state == INVALID) return NULL;
+	if (this->state == INVALID) return nullptr;
 	const char *tmp;
 	switch (this->type) {
 		default: NOT_REACHED();
@@ -120,7 +120,7 @@ const char *ContentInfo::GetTextfile(TextfileType type) const
 			break;
 		case CONTENT_TYPE_NEWGRF: {
 			const GRFConfig *gc = FindGRFConfig(BSWAP32(this->unique_id), FGCM_EXACT, this->md5sum);
-			tmp = gc != NULL ? gc->filename : NULL;
+			tmp = gc != nullptr ? gc->filename : nullptr;
 			break;
 		}
 		case CONTENT_TYPE_BASE_GRAPHICS:
@@ -138,7 +138,7 @@ const char *ContentInfo::GetTextfile(TextfileType type) const
 			tmp = FindScenario(this, true);
 			break;
 	}
-	if (tmp == NULL) return NULL;
+	if (tmp == nullptr) return nullptr;
 	return ::GetTextfile(type, GetContentInfoSubDir(this->type), tmp);
 }
 #endif /* OPENTTD_MSU */
@@ -209,7 +209,7 @@ bool NetworkContentSocketHandler::ReceivePackets()
 	Packet *p;
 	static const int MAX_PACKETS_TO_RECEIVE = 42;
 	int i = MAX_PACKETS_TO_RECEIVE;
-	while (--i != 0 && (p = this->ReceivePacket()) != NULL) {
+	while (--i != 0 && (p = this->ReceivePacket()) != nullptr) {
 		bool cont = this->HandlePacket(p);
 		delete p;
 		if (!cont) return true;

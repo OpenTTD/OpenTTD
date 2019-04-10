@@ -569,7 +569,7 @@ private:
 	{
 		uint32 used_colours = 0;
 		const Company *c;
-		const Livery *livery, *default_livery = NULL;
+		const Livery *livery, *default_livery = nullptr;
 		bool primary = widget == WID_SCL_PRI_COL_DROPDOWN;
 		byte default_col;
 
@@ -603,7 +603,7 @@ private:
 		}
 
 		DropDownList list;
-		if (default_livery != NULL) {
+		if (default_livery != nullptr) {
 			/* Add COLOUR_END to put the colour out of range, but also allow us to show what the default is */
 			default_col = (primary ? default_livery->colour1 : default_livery->colour2) + COLOUR_END;
 			list.emplace_back(new DropDownListColourItem(default_col, false));
@@ -612,13 +612,13 @@ private:
 			list.emplace_back(new DropDownListColourItem(i, HasBit(used_colours, i)));
 		}
 
-		byte sel = (default_livery == NULL || HasBit(livery->in_use, primary ? 0 : 1)) ? (primary ? livery->colour1 : livery->colour2) : default_col;
+		byte sel = (default_livery == nullptr || HasBit(livery->in_use, primary ? 0 : 1)) ? (primary ? livery->colour1 : livery->colour2) : default_col;
 		ShowDropDownList(this, std::move(list), sel, widget);
 	}
 
 	static int CDECL GroupNameSorter(const Group * const *a, const Group * const *b)
 	{
-		static const Group *last_group[2] = { NULL, NULL };
+		static const Group *last_group[2] = { nullptr, nullptr };
 		static char         last_name[2][64] = { "", "" };
 
 		if (*a != last_group[0]) {
@@ -1100,7 +1100,7 @@ static WindowDesc _select_company_livery_desc(
 void ShowCompanyLiveryWindow(CompanyID company, GroupID group)
 {
 	SelectCompanyLiveryWindow *w = (SelectCompanyLiveryWindow *)BringWindowToFrontById(WC_COMPANY_COLOUR, company);
-	if (w == NULL) {
+	if (w == nullptr) {
 		new SelectCompanyLiveryWindow(&_select_company_livery_desc, company, group);
 	} else if (group != INVALID_GROUP) {
 		w->SetSelectedGroup(company, group);
@@ -1711,10 +1711,10 @@ public:
 
 	void OnQueryTextFinished(char *str) override
 	{
-		if (str == NULL) return;
+		if (str == nullptr) return;
 		/* Set a new company manager face number */
 		if (!StrEmpty(str)) {
-			this->face = strtoul(str, NULL, 10);
+			this->face = strtoul(str, nullptr, 10);
 			ScaleAllCompanyManagerFaceBits(this->face);
 			ShowErrorMessage(STR_FACE_FACECODE_SET, INVALID_STRING_ID, WL_INFO);
 			this->UpdateData();
@@ -2633,17 +2633,17 @@ struct CompanyWindow : Window
 
 	void OnQueryTextFinished(char *str) override
 	{
-		if (str == NULL) return;
+		if (str == nullptr) return;
 
 		switch (this->query_widget) {
 			default: NOT_REACHED();
 
 			case WID_C_PRESIDENT_NAME:
-				DoCommandP(0, 0, 0, CMD_RENAME_PRESIDENT | CMD_MSG(STR_ERROR_CAN_T_CHANGE_PRESIDENT), NULL, str);
+				DoCommandP(0, 0, 0, CMD_RENAME_PRESIDENT | CMD_MSG(STR_ERROR_CAN_T_CHANGE_PRESIDENT), nullptr, str);
 				break;
 
 			case WID_C_COMPANY_NAME:
-				DoCommandP(0, 0, 0, CMD_RENAME_COMPANY | CMD_MSG(STR_ERROR_CAN_T_CHANGE_COMPANY_NAME), NULL, str);
+				DoCommandP(0, 0, 0, CMD_RENAME_COMPANY | CMD_MSG(STR_ERROR_CAN_T_CHANGE_COMPANY_NAME), nullptr, str);
 				break;
 
 			case WID_C_COMPANY_JOIN:
@@ -2796,7 +2796,7 @@ static const NWidgetPart _nested_buy_company_widgets[] = {
 };
 
 static WindowDesc _buy_company_desc(
-	WDP_AUTO, NULL, 0, 0,
+	WDP_AUTO, nullptr, 0, 0,
 	WC_BUY_COMPANY, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_buy_company_widgets, lengthof(_nested_buy_company_widgets)

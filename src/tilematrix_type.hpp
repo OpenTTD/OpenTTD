@@ -69,7 +69,7 @@ public:
 
 	T *data; ///< Pointer to data array.
 
-	TileMatrix() : area(INVALID_TILE, 0, 0), data(NULL) {}
+	TileMatrix() : area(INVALID_TILE, 0, 0), data(nullptr) {}
 
 	~TileMatrix()
 	{

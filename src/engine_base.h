@@ -83,7 +83,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 		return this->info.cargo_type;
 	}
 
-	uint DetermineCapacity(const Vehicle *v, uint16 *mail_capacity = NULL) const;
+	uint DetermineCapacity(const Vehicle *v, uint16 *mail_capacity = nullptr) const;
 
 	bool CanCarryCargo() const;
 
@@ -98,9 +98,9 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	 * @return The default capacity
 	 * @see GetDefaultCargoType
 	 */
-	uint GetDisplayDefaultCapacity(uint16 *mail_capacity = NULL) const
+	uint GetDisplayDefaultCapacity(uint16 *mail_capacity = nullptr) const
 	{
-		return this->DetermineCapacity(NULL, mail_capacity);
+		return this->DetermineCapacity(nullptr, mail_capacity);
 	}
 
 	Money GetRunningCost() const;

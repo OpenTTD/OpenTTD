@@ -106,7 +106,7 @@ struct FileStringReader : StringReader {
 			StringReader(data, file, master, translation)
 	{
 		this->fh = fopen(file, "rb");
-		if (this->fh == NULL) error("Could not open %s", file);
+		if (this->fh == nullptr) error("Could not open %s", file);
 	}
 
 	/** Free/close the file. */
@@ -135,7 +135,7 @@ struct FileStringReader : StringReader {
 void FileStringReader::HandlePragma(char *str)
 {
 	if (!memcmp(str, "id ", 3)) {
-		this->data.next_string_id = strtoul(str + 3, NULL, 0);
+		this->data.next_string_id = strtoul(str + 3, nullptr, 0);
 	} else if (!memcmp(str, "name ", 5)) {
 		strecpy(_lang.name, str + 5, lastof(_lang.name));
 	} else if (!memcmp(str, "ownname ", 8)) {
@@ -161,14 +161,14 @@ void FileStringReader::HandlePragma(char *str)
 		strecpy(_lang.digit_decimal_separator, strcmp(str, "{NBSP}") == 0 ? NBSP : str, lastof(_lang.digit_decimal_separator));
 	} else if (!memcmp(str, "winlangid ", 10)) {
 		const char *buf = str + 10;
-		long langid = strtol(buf, NULL, 16);
+		long langid = strtol(buf, nullptr, 16);
 		if (langid > (long)UINT16_MAX || langid < 0) {
 			error("Invalid winlangid %s", buf);
 		}
 		_lang.winlangid = (uint16)langid;
 	} else if (!memcmp(str, "grflangid ", 10)) {
 		const char *buf = str + 10;
-		long langid = strtol(buf, NULL, 16);
+		long langid = strtol(buf, nullptr, 16);
 		if (langid >= 0x7F || langid < 0) {
 			error("Invalid grflangid %s", buf);
 		}
@@ -180,7 +180,7 @@ void FileStringReader::HandlePragma(char *str)
 		for (;;) {
 			const char *s = ParseWord(&buf);
 
-			if (s == NULL) break;
+			if (s == nullptr) break;
 			if (_lang.num_genders >= MAX_NUM_GENDERS) error("Too many genders, max %d", MAX_NUM_GENDERS);
 			strecpy(_lang.genders[_lang.num_genders], s, lastof(_lang.genders[_lang.num_genders]));
 			_lang.num_genders++;
@@ -192,7 +192,7 @@ void FileStringReader::HandlePragma(char *str)
 		for (;;) {
 			const char *s = ParseWord(&buf);
 
-			if (s == NULL) break;
+			if (s == nullptr) break;
 			if (_lang.num_cases >= MAX_NUM_CASES) error("Too many cases, max %d", MAX_NUM_CASES);
 			strecpy(_lang.cases[_lang.num_cases], s, lastof(_lang.cases[_lang.num_cases]));
 			_lang.num_cases++;
@@ -205,10 +205,10 @@ void FileStringReader::HandlePragma(char *str)
 bool CompareFiles(const char *n1, const char *n2)
 {
 	FILE *f2 = fopen(n2, "rb");
-	if (f2 == NULL) return false;
+	if (f2 == nullptr) return false;
 
 	FILE *f1 = fopen(n1, "rb");
-	if (f1 == NULL) {
+	if (f1 == nullptr) {
 		fclose(f2);
 		error("can't open %s", n1);
 	}
@@ -246,7 +246,7 @@ struct FileWriter {
 		this->filename = stredup(filename);
 		this->fh = fopen(this->filename, "wb");
 
-		if (this->fh == NULL) {
+		if (this->fh == nullptr) {
 			error("Could not open %s", this->filename);
 		}
 	}
@@ -255,14 +255,14 @@ struct FileWriter {
 	void Finalise()
 	{
 		fclose(this->fh);
-		this->fh = NULL;
+		this->fh = nullptr;
 	}
 
 	/** Make sure the file is closed. */
 	virtual ~FileWriter()
 	{
 		/* If we weren't closed an exception was thrown, so remove the temporary file. */
-		if (fh != NULL) {
+		if (fh != nullptr) {
 			fclose(this->fh);
 			unlink(this->filename);
 		}
@@ -418,7 +418,7 @@ static const OptionData _opts[] = {
 	  GETOPT_NOVAL(     't',  "--todo"),
 	  GETOPT_NOVAL(     'w',  "--warning"),
 	  GETOPT_NOVAL(     'h',  "--help"),
-	GETOPT_GENERAL('h', '?',  NULL,               ODF_NO_VALUE),
+	GETOPT_GENERAL('h', '?',  nullptr,               ODF_NO_VALUE),
 	  GETOPT_VALUE(     's',  "--source_dir"),
 	  GETOPT_VALUE(     'd',  "--dest_dir"),
 	GETOPT_END(),
@@ -428,7 +428,7 @@ int CDECL main(int argc, char *argv[])
 {
 	char pathbuf[MAX_PATH];
 	const char *src_dir = ".";
-	const char *dest_dir = NULL;
+	const char *dest_dir = nullptr;
 
 	GetOptData mgo(argc - 1, argv + 1, _opts);
 	for (;;) {
@@ -512,7 +512,7 @@ int CDECL main(int argc, char *argv[])
 		}
 	}
 
-	if (dest_dir == NULL) dest_dir = src_dir; // if dest_dir is not specified, it equals src_dir
+	if (dest_dir == nullptr) dest_dir = src_dir; // if dest_dir is not specified, it equals src_dir
 
 	try {
 		/* strgen has two modes of operation. If no (free) arguments are passed
@@ -551,17 +551,17 @@ int CDECL main(int argc, char *argv[])
 
 				const char *translation = replace_pathsep(mgo.argv[i]);
 				const char *file = strrchr(translation, PATHSEPCHAR);
-				FileStringReader translation_reader(data, translation, false, file == NULL || strcmp(file + 1, "english.txt") != 0);
+				FileStringReader translation_reader(data, translation, false, file == nullptr || strcmp(file + 1, "english.txt") != 0);
 				translation_reader.ParseFile(); // target file
 				if (_errors != 0) return 1;
 
 				/* get the targetfile, strip any directories and append to destination path */
 				r = strrchr(mgo.argv[i], PATHSEPCHAR);
-				mkpath(pathbuf, lastof(pathbuf), dest_dir, (r != NULL) ? &r[1] : mgo.argv[i]);
+				mkpath(pathbuf, lastof(pathbuf), dest_dir, (r != nullptr) ? &r[1] : mgo.argv[i]);
 
 				/* rename the .txt (input-extension) to .lng */
 				r = strrchr(pathbuf, '.');
-				if (r == NULL || strcmp(r, ".txt") != 0) r = strchr(pathbuf, '\0');
+				if (r == nullptr || strcmp(r, ".txt") != 0) r = strchr(pathbuf, '\0');
 				strecpy(r, ".lng", lastof(pathbuf));
 
 				LanguageFileWriter writer(pathbuf);

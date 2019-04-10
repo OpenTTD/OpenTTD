@@ -87,7 +87,7 @@ static void WINAPI CheckForConsoleInput()
 	DWORD nb;
 	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
 	for (;;) {
-		ReadFile(hStdin, _win_console_thread_buffer, lengthof(_win_console_thread_buffer), &nb, NULL);
+		ReadFile(hStdin, _win_console_thread_buffer, lengthof(_win_console_thread_buffer), &nb, nullptr);
 		if (nb >= lengthof(_win_console_thread_buffer)) nb = lengthof(_win_console_thread_buffer) - 1;
 		_win_console_thread_buffer[nb] = '\0';
 
@@ -102,12 +102,12 @@ static void CreateWindowsConsoleThread()
 {
 	DWORD dwThreadId;
 	/* Create event to signal when console input is ready */
-	_hInputReady = CreateEvent(NULL, false, false, NULL);
-	_hWaitForInputHandling = CreateEvent(NULL, false, false, NULL);
-	if (_hInputReady == NULL || _hWaitForInputHandling == NULL) usererror("Cannot create console event!");
+	_hInputReady = CreateEvent(nullptr, false, false, nullptr);
+	_hWaitForInputHandling = CreateEvent(nullptr, false, false, nullptr);
+	if (_hInputReady == nullptr || _hWaitForInputHandling == nullptr) usererror("Cannot create console event!");
 
-	_hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)CheckForConsoleInput, NULL, 0, &dwThreadId);
-	if (_hThread == NULL) usererror("Cannot create console thread!");
+	_hThread = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)CheckForConsoleInput, nullptr, 0, &dwThreadId);
+	if (_hThread == nullptr) usererror("Cannot create console thread!");
 
 	DEBUG(driver, 2, "Windows console thread started");
 }
@@ -130,7 +130,7 @@ static void *_dedicated_video_mem;
 /* Whether a fork has been done. */
 bool _dedicated_forks;
 
-extern bool SafeLoad(const char *filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = NULL);
+extern bool SafeLoad(const char *filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = nullptr);
 
 static FVideoDriver_Dedicated iFVideoDriver_Dedicated;
 
@@ -138,7 +138,7 @@ static FVideoDriver_Dedicated iFVideoDriver_Dedicated;
 const char *VideoDriver_Dedicated::Start(const char * const *parm)
 {
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
-	_dedicated_video_mem = (bpp == 0) ? NULL : MallocT<byte>(_cur_resolution.width * _cur_resolution.height * (bpp / 8));
+	_dedicated_video_mem = (bpp == 0) ? nullptr : MallocT<byte>(_cur_resolution.width * _cur_resolution.height * (bpp / 8));
 
 	_screen.width  = _screen.pitch = _cur_resolution.width;
 	_screen.height = _cur_resolution.height;
@@ -164,7 +164,7 @@ const char *VideoDriver_Dedicated::Start(const char * const *parm)
 #endif
 
 	DEBUG(driver, 1, "Loading dedicated server");
-	return NULL;
+	return nullptr;
 }
 
 void VideoDriver_Dedicated::Stop()
@@ -192,14 +192,14 @@ static bool InputWaiting()
 	FD_SET(STDIN, &readfds);
 
 	/* don't care about writefds and exceptfds: */
-	return select(STDIN + 1, &readfds, NULL, NULL, &tv) > 0;
+	return select(STDIN + 1, &readfds, nullptr, nullptr, &tv) > 0;
 }
 
 static uint32 GetTime()
 {
 	struct timeval tim;
 
-	gettimeofday(&tim, NULL);
+	gettimeofday(&tim, nullptr);
 	return tim.tv_usec / 1000 + tim.tv_sec * 1000;
 }
 
@@ -226,7 +226,7 @@ static void DedicatedHandleKeyInput()
 	if (_exit_game) return;
 
 #if defined(UNIX) || defined(__OS2__)
-	if (fgets(input_line, lengthof(input_line), stdin) == NULL) return;
+	if (fgets(input_line, lengthof(input_line), stdin) == nullptr) return;
 #else
 	/* Handle console input, and signal console thread, it can accept input again */
 	assert_compile(lengthof(_win_console_thread_buffer) <= lengthof(input_line));

@@ -681,7 +681,7 @@ struct BuildRoadToolbarWindow : Window {
  */
 static EventState RoadToolbarGlobalHotkeys(int hotkey)
 {
-	Window *w = NULL;
+	Window *w = nullptr;
 	switch (_game_mode) {
 		case GM_NORMAL: {
 			extern RoadType _last_built_roadtype;
@@ -697,7 +697,7 @@ static EventState RoadToolbarGlobalHotkeys(int hotkey)
 			break;
 	}
 
-	if (w == NULL) return ES_NOT_HANDLED;
+	if (w == nullptr) return ES_NOT_HANDLED;
 	return w->OnHotkey(hotkey);
 }
 
@@ -804,11 +804,11 @@ static WindowDesc _build_tramway_desc(
  *
  * If the terraform toolbar is linked to the toolbar, that window is also opened.
  *
- * @return newly opened road toolbar, or NULL if the toolbar could not be opened.
+ * @return newly opened road toolbar, or nullptr if the toolbar could not be opened.
  */
 Window *ShowBuildRoadToolbar(RoadType roadtype)
 {
-	if (!Company::IsValidID(_local_company)) return NULL;
+	if (!Company::IsValidID(_local_company)) return nullptr;
 	_cur_roadtype = roadtype;
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);
@@ -852,7 +852,7 @@ static WindowDesc _build_road_scen_desc(
 
 /**
  * Show the road building toolbar in the scenario editor.
- * @return The just opened toolbar, or \c NULL if the toolbar was already open.
+ * @return The just opened toolbar, or \c nullptr if the toolbar was already open.
  */
 Window *ShowBuildRoadScenToolbar()
 {
@@ -940,7 +940,7 @@ static const NWidgetPart _nested_build_road_depot_widgets[] = {
 };
 
 static WindowDesc _build_road_depot_desc(
-	WDP_AUTO, NULL, 0, 0,
+	WDP_AUTO, nullptr, 0, 0,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_build_road_depot_widgets, lengthof(_nested_build_road_depot_widgets)
@@ -1100,7 +1100,7 @@ static const NWidgetPart _nested_road_station_picker_widgets[] = {
 };
 
 static WindowDesc _road_station_picker_desc(
-	WDP_AUTO, NULL, 0, 0,
+	WDP_AUTO, nullptr, 0, 0,
 	WC_BUS_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_road_station_picker_widgets, lengthof(_nested_road_station_picker_widgets)
@@ -1138,7 +1138,7 @@ static const NWidgetPart _nested_tram_station_picker_widgets[] = {
 };
 
 static WindowDesc _tram_station_picker_desc(
-	WDP_AUTO, NULL, 0, 0,
+	WDP_AUTO, nullptr, 0, 0,
 	WC_BUS_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_tram_station_picker_widgets, lengthof(_nested_tram_station_picker_widgets)

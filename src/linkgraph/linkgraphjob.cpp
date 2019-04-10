@@ -102,7 +102,7 @@ LinkGraphJob::~LinkGraphJob()
 
 		/* The station can have been deleted. Remove all flows originating from it then. */
 		Station *st = Station::GetIfValid(from.Station());
-		if (st == NULL) {
+		if (st == nullptr) {
 			this->EraseFlows(node_id);
 			continue;
 		}
@@ -122,7 +122,7 @@ LinkGraphJob::~LinkGraphJob()
 			if (from[it->first].Flow() == 0) continue;
 			StationID to = (*this)[it->first].Station();
 			Station *st2 = Station::GetIfValid(to);
-			if (st2 == NULL || st2->goods[this->Cargo()].link_graph != this->link_graph.index ||
+			if (st2 == nullptr || st2->goods[this->Cargo()].link_graph != this->link_graph.index ||
 					st2->goods[this->Cargo()].node != it->first ||
 					(*lg)[node_id][it->first].LastUpdate() == INVALID_DATE) {
 				/* Edge has been removed. Delete flows. */
@@ -240,7 +240,7 @@ void Path::Fork(Path *base, uint cap, int free_cap, uint dist)
  */
 uint Path::AddFlow(uint new_flow, LinkGraphJob &job, uint max_saturation)
 {
-	if (this->parent != NULL) {
+	if (this->parent != nullptr) {
 		LinkGraphJob::Edge edge = job[this->parent->node][this->node];
 		if (max_saturation != UINT_MAX) {
 			uint usable_cap = edge.Capacity() * max_saturation / 100;
@@ -270,6 +270,6 @@ Path::Path(NodeID n, bool source) :
 	capacity(source ? UINT_MAX : 0),
 	free_capacity(source ? INT_MAX : INT_MIN),
 	flow(0), node(n), origin(source ? n : INVALID_NODE),
-	num_children(0), parent(NULL)
+	num_children(0), parent(nullptr)
 {}
 

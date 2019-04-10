@@ -152,7 +152,7 @@ static inline bool IsCargoInClass(CargoID c, CargoClass cc)
 	return (CargoSpec::Get(c)->classes & cc) != 0;
 }
 
-#define FOR_ALL_CARGOSPECS_FROM(var, start) for (size_t cargospec_index = start; var = NULL, cargospec_index < CargoSpec::GetArraySize(); cargospec_index++) \
+#define FOR_ALL_CARGOSPECS_FROM(var, start) for (size_t cargospec_index = start; var = nullptr, cargospec_index < CargoSpec::GetArraySize(); cargospec_index++) \
 		if ((var = CargoSpec::Get(cargospec_index))->IsValid())
 #define FOR_ALL_CARGOSPECS(var) FOR_ALL_CARGOSPECS_FROM(var, 0)
 

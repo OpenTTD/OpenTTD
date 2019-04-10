@@ -88,8 +88,8 @@ namespace SQConvert {
 	template <> inline int Return<int64>       (HSQUIRRELVM vm, int64 res)       { sq_pushinteger(vm, res); return 1; }
 	template <> inline int Return<Money>       (HSQUIRRELVM vm, Money res)       { sq_pushinteger(vm, res); return 1; }
 	template <> inline int Return<bool>        (HSQUIRRELVM vm, bool res)        { sq_pushbool   (vm, res); return 1; }
-	template <> inline int Return<char *>      (HSQUIRRELVM vm, char *res)       { if (res == NULL) sq_pushnull(vm); else { sq_pushstring(vm, res, -1); free(res); } return 1; }
-	template <> inline int Return<const char *>(HSQUIRRELVM vm, const char *res) { if (res == NULL) sq_pushnull(vm); else { sq_pushstring(vm, res, -1); } return 1; }
+	template <> inline int Return<char *>      (HSQUIRRELVM vm, char *res)       { if (res == nullptr) sq_pushnull(vm); else { sq_pushstring(vm, res, -1); free(res); } return 1; }
+	template <> inline int Return<const char *>(HSQUIRRELVM vm, const char *res) { if (res == nullptr) sq_pushnull(vm); else { sq_pushstring(vm, res, -1); } return 1; }
 	template <> inline int Return<void *>      (HSQUIRRELVM vm, void *res)       { sq_pushuserpointer(vm, res); return 1; }
 	template <> inline int Return<HSQOBJECT>   (HSQUIRRELVM vm, HSQOBJECT res)   { sq_pushobject(vm, res); return 1; }
 
@@ -739,8 +739,8 @@ namespace SQConvert {
 	{
 		/* Find the amount of params we got */
 		int nparam = sq_gettop(vm);
-		SQUserPointer ptr = NULL;
-		SQUserPointer real_instance = NULL;
+		SQUserPointer ptr = nullptr;
+		SQUserPointer real_instance = nullptr;
 		HSQOBJECT instance;
 
 		/* Get the 'SQ' instance of this class */
@@ -759,7 +759,7 @@ namespace SQConvert {
 		sq_getinstanceup(vm, 1, &real_instance, 0);
 		/* Get the real function pointer */
 		sq_getuserdata(vm, nparam, &ptr, 0);
-		if (real_instance == NULL) return sq_throwerror(vm, "couldn't detect real instance of class for non-static call");
+		if (real_instance == nullptr) return sq_throwerror(vm, "couldn't detect real instance of class for non-static call");
 		/* Remove the userdata from the stack */
 		sq_pop(vm, 1);
 
@@ -781,8 +781,8 @@ namespace SQConvert {
 	{
 		/* Find the amount of params we got */
 		int nparam = sq_gettop(vm);
-		SQUserPointer ptr = NULL;
-		SQUserPointer real_instance = NULL;
+		SQUserPointer ptr = nullptr;
+		SQUserPointer real_instance = nullptr;
 		HSQOBJECT instance;
 
 		/* Get the 'SQ' instance of this class */
@@ -801,7 +801,7 @@ namespace SQConvert {
 		sq_getinstanceup(vm, 1, &real_instance, 0);
 		/* Get the real function pointer */
 		sq_getuserdata(vm, nparam, &ptr, 0);
-		if (real_instance == NULL) return sq_throwerror(vm, "couldn't detect real instance of class for non-static call");
+		if (real_instance == nullptr) return sq_throwerror(vm, "couldn't detect real instance of class for non-static call");
 		/* Remove the userdata from the stack */
 		sq_pop(vm, 1);
 
@@ -819,14 +819,14 @@ namespace SQConvert {
 	{
 		/* Find the amount of params we got */
 		int nparam = sq_gettop(vm);
-		SQUserPointer ptr = NULL;
+		SQUserPointer ptr = nullptr;
 
 		/* Get the real function pointer */
 		sq_getuserdata(vm, nparam, &ptr, 0);
 
 		try {
 			/* Delegate it to a template that can handle this specific function */
-			return HelperT<Tmethod>::SQCall((Tcls *)NULL, *(Tmethod *)ptr, vm);
+			return HelperT<Tmethod>::SQCall((Tcls *)nullptr, *(Tmethod *)ptr, vm);
 		} catch (SQInteger e) {
 			return e;
 		}
@@ -843,7 +843,7 @@ namespace SQConvert {
 	{
 		/* Find the amount of params we got */
 		int nparam = sq_gettop(vm);
-		SQUserPointer ptr = NULL;
+		SQUserPointer ptr = nullptr;
 
 		/* Get the real function pointer */
 		sq_getuserdata(vm, nparam, &ptr, 0);
@@ -862,7 +862,7 @@ namespace SQConvert {
 	static SQInteger DefSQDestructorCallback(SQUserPointer p, SQInteger size)
 	{
 		/* Remove the real instance too */
-		if (p != NULL) ((Tcls *)p)->Release();
+		if (p != nullptr) ((Tcls *)p)->Release();
 		return 0;
 	}
 
@@ -876,7 +876,7 @@ namespace SQConvert {
 	{
 		try {
 			/* Create the real instance */
-			Tcls *instance = HelperT<Tmethod>::SQConstruct((Tcls *)NULL, (Tmethod)NULL, vm);
+			Tcls *instance = HelperT<Tmethod>::SQConstruct((Tcls *)nullptr, (Tmethod)nullptr, vm);
 			sq_setinstanceup(vm, -Tnparam, instance);
 			sq_setreleasehook(vm, -Tnparam, DefSQDestructorCallback<Tcls>);
 			instance->AddRef();

@@ -115,7 +115,7 @@ static const NWidgetPart _nested_dropdown_menu_widgets[] = {
 };
 
 static WindowDesc _dropdown_desc(
-	WDP_MANUAL, NULL, 0, 0,
+	WDP_MANUAL, nullptr, 0, 0,
 	WC_DROPDOWN_MENU, WC_NONE,
 	WDF_NO_FOCUS,
 	_nested_dropdown_menu_widgets, lengthof(_nested_dropdown_menu_widgets)
@@ -200,7 +200,7 @@ struct DropdownWindow : Window {
 		this->SetDirty();
 
 		Window *w2 = FindWindowById(this->parent_wnd_class, this->parent_wnd_num);
-		if (w2 != NULL) {
+		if (w2 != nullptr) {
 			Point pt = _cursor.pos;
 			pt.x -= w2->left;
 			pt.y -= w2->top;
@@ -304,7 +304,7 @@ struct DropdownWindow : Window {
 	virtual void OnMouseLoop()
 	{
 		Window *w2 = FindWindowById(this->parent_wnd_class, this->parent_wnd_num);
-		if (w2 == NULL) {
+		if (w2 == nullptr) {
 			delete this;
 			return;
 		}
@@ -518,7 +518,7 @@ int HideDropDownMenu(Window *pw)
 		if (w->window_class != WC_DROPDOWN_MENU) continue;
 
 		DropdownWindow *dw = dynamic_cast<DropdownWindow*>(w);
-		assert(dw != NULL);
+		assert(dw != nullptr);
 		if (pw->window_class == dw->parent_wnd_class &&
 				pw->window_number == dw->parent_wnd_num) {
 			int parent_button = dw->parent_button;

@@ -31,7 +31,7 @@ struct BaseConsist {
 
 	uint16 vehicle_flags;               ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 
-	BaseConsist() : name(NULL) {}
+	BaseConsist() : name(nullptr) {}
 	virtual ~BaseConsist();
 
 	void CopyConsistPropertiesFrom(const BaseConsist *src);

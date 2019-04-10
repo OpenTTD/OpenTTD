@@ -22,8 +22,8 @@ static void Load_PRIC()
 {
 	/* Old games store 49 base prices, very old games store them as int32 */
 	int vt = IsSavegameVersionBefore(SLV_65) ? SLE_FILE_I32 : SLE_FILE_I64;
-	SlArray(NULL, 49, vt | SLE_VAR_NULL);
-	SlArray(NULL, 49, SLE_FILE_U16 | SLE_VAR_NULL);
+	SlArray(nullptr, 49, vt | SLE_VAR_NULL);
+	SlArray(nullptr, 49, SLE_FILE_U16 | SLE_VAR_NULL);
 }
 
 /** Cargo payment rates in pre 126 savegames */
@@ -31,8 +31,8 @@ static void Load_CAPR()
 {
 	uint num_cargo = IsSavegameVersionBefore(SLV_55) ? 12 : IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
 	int vt = IsSavegameVersionBefore(SLV_65) ? SLE_FILE_I32 : SLE_FILE_I64;
-	SlArray(NULL, num_cargo, vt | SLE_VAR_NULL);
-	SlArray(NULL, num_cargo, SLE_FILE_U16 | SLE_VAR_NULL);
+	SlArray(nullptr, num_cargo, vt | SLE_VAR_NULL);
+	SlArray(nullptr, num_cargo, SLE_FILE_U16 | SLE_VAR_NULL);
 }
 
 static const SaveLoad _economy_desc[] = {
@@ -101,8 +101,8 @@ static void Ptrs_CAPY()
 
 
 extern const ChunkHandler _economy_chunk_handlers[] = {
-	{ 'CAPY', Save_CAPY,     Load_CAPY,     Ptrs_CAPY, NULL, CH_ARRAY},
-	{ 'PRIC', NULL,          Load_PRIC,     NULL,      NULL, CH_RIFF | CH_AUTO_LENGTH},
-	{ 'CAPR', NULL,          Load_CAPR,     NULL,      NULL, CH_RIFF | CH_AUTO_LENGTH},
-	{ 'ECMY', Save_ECMY,     Load_ECMY,     NULL,      NULL, CH_RIFF | CH_LAST},
+	{ 'CAPY', Save_CAPY,     Load_CAPY,     Ptrs_CAPY, nullptr, CH_ARRAY},
+	{ 'PRIC', nullptr,          Load_PRIC,     nullptr,      nullptr, CH_RIFF | CH_AUTO_LENGTH},
+	{ 'CAPR', nullptr,          Load_CAPR,     nullptr,      nullptr, CH_RIFF | CH_AUTO_LENGTH},
+	{ 'ECMY', Save_ECMY,     Load_ECMY,     nullptr,      nullptr, CH_RIFF | CH_LAST},
 };

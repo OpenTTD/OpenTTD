@@ -89,7 +89,7 @@ struct SaveFilter {
 	 */
 	virtual void Finish()
 	{
-		if (this->chain != NULL) this->chain->Finish();
+		if (this->chain != nullptr) this->chain->Finish();
 	}
 };
 

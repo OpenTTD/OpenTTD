@@ -32,7 +32,7 @@ FILE *_iconsole_output_file;
 
 void IConsoleInit()
 {
-	_iconsole_output_file = NULL;
+	_iconsole_output_file = nullptr;
 	_redirect_console_to_client = INVALID_CLIENT_ID;
 	_redirect_console_to_admin  = INVALID_ADMIN_ID;
 
@@ -43,14 +43,14 @@ void IConsoleInit()
 
 static void IConsoleWriteToLogFile(const char *string)
 {
-	if (_iconsole_output_file != NULL) {
+	if (_iconsole_output_file != nullptr) {
 		/* if there is an console output file ... also print it there */
 		const char *header = GetLogPrefix();
 		if ((strlen(header) != 0 && fwrite(header, strlen(header), 1, _iconsole_output_file) != 1) ||
 				fwrite(string, strlen(string), 1, _iconsole_output_file) != 1 ||
 				fwrite("\n", 1, 1, _iconsole_output_file) != 1) {
 			fclose(_iconsole_output_file);
-			_iconsole_output_file = NULL;
+			_iconsole_output_file = nullptr;
 			IConsolePrintF(CC_DEFAULT, "cannot write to log file");
 		}
 	}
@@ -58,10 +58,10 @@ static void IConsoleWriteToLogFile(const char *string)
 
 bool CloseConsoleLogIfActive()
 {
-	if (_iconsole_output_file != NULL) {
+	if (_iconsole_output_file != nullptr) {
 		IConsolePrintF(CC_DEFAULT, "file output complete");
 		fclose(_iconsole_output_file);
-		_iconsole_output_file = NULL;
+		_iconsole_output_file = nullptr;
 		return true;
 	}
 
@@ -203,22 +203,22 @@ bool GetArgumentInteger(uint32 *value, const char *arg)
 template<class T>
 void IConsoleAddSorted(T **base, T *item_new)
 {
-	if (*base == NULL) {
+	if (*base == nullptr) {
 		*base = item_new;
 		return;
 	}
 
-	T *item_before = NULL;
+	T *item_before = nullptr;
 	T *item = *base;
 	/* The list is alphabetically sorted, insert the new item at the correct location */
-	while (item != NULL) {
+	while (item != nullptr) {
 		if (strcmp(item->name, item_new->name) > 0) break; // insert here
 
 		item_before = item;
 		item = item->next;
 	}
 
-	if (item_before == NULL) {
+	if (item_before == nullptr) {
 		*base = item_new;
 	} else {
 		item_before->next = item_new;
@@ -251,7 +251,7 @@ void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc, IConsoleHook *
 {
 	IConsoleCmd *item_new = MallocT<IConsoleCmd>(1);
 	item_new->name = RemoveUnderscores(stredup(name));
-	item_new->next = NULL;
+	item_new->next = nullptr;
 	item_new->proc = proc;
 	item_new->hook = hook;
 
@@ -261,16 +261,16 @@ void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc, IConsoleHook *
 /**
  * Find the command pointed to by its string
  * @param name command to be found
- * @return return Cmdstruct of the found command, or NULL on failure
+ * @return return Cmdstruct of the found command, or nullptr on failure
  */
 IConsoleCmd *IConsoleCmdGet(const char *name)
 {
 	IConsoleCmd *item;
 
-	for (item = _iconsole_cmds; item != NULL; item = item->next) {
+	for (item = _iconsole_cmds; item != nullptr; item = item->next) {
 		if (strcmp(item->name, name) == 0) return item;
 	}
-	return NULL;
+	return nullptr;
 }
 
 /**
@@ -280,7 +280,7 @@ IConsoleCmd *IConsoleCmdGet(const char *name)
  */
 void IConsoleAliasRegister(const char *name, const char *cmd)
 {
-	if (IConsoleAliasGet(name) != NULL) {
+	if (IConsoleAliasGet(name) != nullptr) {
 		IConsoleError("an alias with this name already exists; insertion aborted");
 		return;
 	}
@@ -289,7 +289,7 @@ void IConsoleAliasRegister(const char *name, const char *cmd)
 	char *cmd_aliased = stredup(cmd);
 	IConsoleAlias *item_new = MallocT<IConsoleAlias>(1);
 
-	item_new->next = NULL;
+	item_new->next = nullptr;
 	item_new->cmdline = cmd_aliased;
 	item_new->name = new_alias;
 
@@ -299,17 +299,17 @@ void IConsoleAliasRegister(const char *name, const char *cmd)
 /**
  * Find the alias pointed to by its string
  * @param name alias to be found
- * @return return Aliasstruct of the found alias, or NULL on failure
+ * @return return Aliasstruct of the found alias, or nullptr on failure
  */
 IConsoleAlias *IConsoleAliasGet(const char *name)
 {
 	IConsoleAlias *item;
 
-	for (item = _iconsole_aliases; item != NULL; item = item->next) {
+	for (item = _iconsole_aliases; item != nullptr; item = item->next) {
 		if (strcmp(item->name, name) == 0) return item;
 	}
 
-	return NULL;
+	return nullptr;
 }
 /**
  * An alias is just another name for a command, or for more commands
@@ -478,7 +478,7 @@ void IConsoleCmdExec(const char *cmdstr)
 		}
 	}
 
-	for (uint i = 0; i < lengthof(tokens) && tokens[i] != NULL; i++) {
+	for (uint i = 0; i < lengthof(tokens) && tokens[i] != nullptr; i++) {
 		DEBUG(console, 8, "Token %d is: '%s'", i, tokens[i]);
 	}
 
@@ -489,12 +489,12 @@ void IConsoleCmdExec(const char *cmdstr)
 	 */
 	RemoveUnderscores(tokens[0]);
 	IConsoleCmd *cmd = IConsoleCmdGet(tokens[0]);
-	if (cmd != NULL) {
-		ConsoleHookResult chr = (cmd->hook == NULL ? CHR_ALLOW : cmd->hook(true));
+	if (cmd != nullptr) {
+		ConsoleHookResult chr = (cmd->hook == nullptr ? CHR_ALLOW : cmd->hook(true));
 		switch (chr) {
 			case CHR_ALLOW:
 				if (!cmd->proc(t_index, tokens)) { // index started with 0
-					cmd->proc(0, NULL); // if command failed, give help
+					cmd->proc(0, nullptr); // if command failed, give help
 				}
 				return;
 
@@ -505,7 +505,7 @@ void IConsoleCmdExec(const char *cmdstr)
 
 	t_index--;
 	IConsoleAlias *alias = IConsoleAliasGet(tokens[0]);
-	if (alias != NULL) {
+	if (alias != nullptr) {
 		IConsoleAliasExec(alias, t_index, &tokens[1]);
 		return;
 	}

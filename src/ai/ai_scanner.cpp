@@ -23,7 +23,7 @@
 
 AIScannerInfo::AIScannerInfo() :
 	ScriptScanner(),
-	info_dummy(NULL)
+	info_dummy(nullptr)
 {
 }
 
@@ -94,14 +94,14 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 
 AIInfo *AIScannerInfo::FindInfo(const char *nameParam, int versionParam, bool force_exact_match)
 {
-	if (this->info_list.size() == 0) return NULL;
-	if (nameParam == NULL) return NULL;
+	if (this->info_list.size() == 0) return nullptr;
+	if (nameParam == nullptr) return nullptr;
 
 	char ai_name[1024];
 	strecpy(ai_name, nameParam, lastof(ai_name));
 	strtolower(ai_name);
 
-	AIInfo *info = NULL;
+	AIInfo *info = nullptr;
 	int version = -1;
 
 	if (versionParam == -1) {
@@ -110,7 +110,7 @@ AIInfo *AIScannerInfo::FindInfo(const char *nameParam, int versionParam, bool fo
 
 		/* If we didn't find a match AI, maybe the user included a version */
 		char *e = strrchr(ai_name, '.');
-		if (e == NULL) return NULL;
+		if (e == nullptr) return nullptr;
 		*e = '\0';
 		e++;
 		versionParam = atoi(e);
@@ -165,7 +165,7 @@ AILibrary *AIScannerLibrary::FindLibrary(const char *library, int version)
 
 	/* Check if the library + version exists */
 	ScriptInfoList::iterator iter = this->info_list.find(library_name);
-	if (iter == this->info_list.end()) return NULL;
+	if (iter == this->info_list.end()) return nullptr;
 
 	return static_cast<AILibrary *>((*iter).second);
 }

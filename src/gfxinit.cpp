@@ -120,7 +120,7 @@ static void LoadGrfFileIndexed(const char *filename, const SpriteID *index_tbl, 
  */
 void CheckExternalFiles()
 {
-	if (BaseGraphics::GetUsedSet() == NULL || BaseSounds::GetUsedSet() == NULL) return;
+	if (BaseGraphics::GetUsedSet() == nullptr || BaseSounds::GetUsedSet() == nullptr) return;
 
 	const GraphicsSet *used_set = BaseGraphics::GetUsedSet();
 
@@ -265,7 +265,7 @@ static bool SwitchNewGRFBlitter()
 	 */
 	uint depth_wanted_by_base = BaseGraphics::GetUsedSet()->blitter == BLT_32BPP ? 32 : 8;
 	uint depth_wanted_by_grf = _support8bpp == S8BPP_NONE ? 32 : 8;
-	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
+	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
 		if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND || HasBit(c->flags, GCF_INIT_ONLY)) continue;
 		if (c->palette & GRFP_BLT_32BPP) depth_wanted_by_grf = 32;
 	}
@@ -307,18 +307,18 @@ static bool SwitchNewGRFBlitter()
 			VideoDriver::GetInstance()->ReleaseBlitterLock();
 			return false;
 		}
-		if (BlitterFactory::GetBlitterFactory(repl_blitter) == NULL) continue;
+		if (BlitterFactory::GetBlitterFactory(repl_blitter) == nullptr) continue;
 
 		DEBUG(misc, 1, "Switching blitter from '%s' to '%s'... ", cur_blitter, repl_blitter);
 		Blitter *new_blitter = BlitterFactory::SelectBlitter(repl_blitter);
-		if (new_blitter == NULL) NOT_REACHED();
+		if (new_blitter == nullptr) NOT_REACHED();
 		DEBUG(misc, 1, "Successfully switched to %s.", repl_blitter);
 		break;
 	}
 
 	if (!VideoDriver::GetInstance()->AfterBlitterChange()) {
 		/* Failed to switch blitter, let's hope we can return to the old one. */
-		if (BlitterFactory::SelectBlitter(cur_blitter) == NULL || !VideoDriver::GetInstance()->AfterBlitterChange()) usererror("Failed to reinitialize video driver. Specify a fixed blitter in the config");
+		if (BlitterFactory::SelectBlitter(cur_blitter) == nullptr || !VideoDriver::GetInstance()->AfterBlitterChange()) usererror("Failed to reinitialize video driver. Specify a fixed blitter in the config");
 	}
 
 	VideoDriver::GetInstance()->ReleaseBlitterLock();
@@ -362,7 +362,7 @@ bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path, const char *ful
 
 		/* Get optional blitter information. */
 		item = metadata->GetItem("blitter", false);
-		this->blitter = (item != NULL && *item->value == '3') ? BLT_32BPP : BLT_8BPP;
+		this->blitter = (item != nullptr && *item->value == '3') ? BLT_32BPP : BLT_8BPP;
 	}
 	return ret;
 }
@@ -380,7 +380,7 @@ bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path, const char *ful
 {
 	size_t size = 0;
 	FILE *f = FioFOpenFile(file->filename, "rb", subdir, &size);
-	if (f == NULL) return MD5File::CR_NO_FILE;
+	if (f == nullptr) return MD5File::CR_NO_FILE;
 
 	size_t max = GRFGetSizeOfDataSection(f);
 
@@ -404,7 +404,7 @@ MD5File::ChecksumResult MD5File::CheckMD5(Subdirectory subdir, size_t max_size) 
 	size_t size;
 	FILE *f = FioFOpenFile(this->filename, "rb", subdir, &size);
 
-	if (f == NULL) return CR_NO_FILE;
+	if (f == nullptr) return CR_NO_FILE;
 
 	size = min(size, max_size);
 
@@ -434,14 +434,14 @@ template <class T, size_t Tnum_files, bool Tsearch_in_tars>
 template <class Tbase_set>
 /* static */ bool BaseMedia<Tbase_set>::DetermineBestSet()
 {
-	if (BaseMedia<Tbase_set>::used_set != NULL) return true;
+	if (BaseMedia<Tbase_set>::used_set != nullptr) return true;
 
-	const Tbase_set *best = NULL;
-	for (const Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != NULL; c = c->next) {
+	const Tbase_set *best = nullptr;
+	for (const Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != nullptr; c = c->next) {
 		/* Skip unusable sets */
 		if (c->GetNumMissing() != 0) continue;
 
-		if (best == NULL ||
+		if (best == nullptr ||
 				(best->fallback && !c->fallback) ||
 				best->valid_files < c->valid_files ||
 				(best->valid_files == c->valid_files && (
@@ -452,7 +452,7 @@ template <class Tbase_set>
 	}
 
 	BaseMedia<Tbase_set>::used_set = best;
-	return BaseMedia<Tbase_set>::used_set != NULL;
+	return BaseMedia<Tbase_set>::used_set != nullptr;
 }
 
 template <class Tbase_set>

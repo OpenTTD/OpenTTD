@@ -23,7 +23,7 @@ struct ScriptEventData {
 
 /* static */ void ScriptEventController::CreateEventPointer()
 {
-	assert(ScriptObject::GetEventPointer() == NULL);
+	assert(ScriptObject::GetEventPointer() == nullptr);
 
 	ScriptObject::GetEventPointer() = new ScriptEventData();
 }
@@ -45,7 +45,7 @@ struct ScriptEventData {
 
 /* static */ bool ScriptEventController::IsEventWaiting()
 {
-	if (ScriptObject::GetEventPointer() == NULL) ScriptEventController::CreateEventPointer();
+	if (ScriptObject::GetEventPointer() == nullptr) ScriptEventController::CreateEventPointer();
 	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
 
 	return !data->stack.empty();
@@ -53,10 +53,10 @@ struct ScriptEventData {
 
 /* static */ ScriptEvent *ScriptEventController::GetNextEvent()
 {
-	if (ScriptObject::GetEventPointer() == NULL) ScriptEventController::CreateEventPointer();
+	if (ScriptObject::GetEventPointer() == nullptr) ScriptEventController::CreateEventPointer();
 	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
 
-	if (data->stack.empty()) return NULL;
+	if (data->stack.empty()) return nullptr;
 
 	ScriptEvent *e = data->stack.front();
 	data->stack.pop();
@@ -65,7 +65,7 @@ struct ScriptEventData {
 
 /* static */ void ScriptEventController::InsertEvent(ScriptEvent *event)
 {
-	if (ScriptObject::GetEventPointer() == NULL) ScriptEventController::CreateEventPointer();
+	if (ScriptObject::GetEventPointer() == nullptr) ScriptEventController::CreateEventPointer();
 	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
 
 	event->AddRef();

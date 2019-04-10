@@ -53,27 +53,27 @@ struct CFollowTrackT
 	CPerformanceTimer  *m_pPerf;
 	RailTypes           m_railtypes;
 
-	inline CFollowTrackT(const VehicleType *v = NULL, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = NULL)
+	inline CFollowTrackT(const VehicleType *v = nullptr, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = nullptr)
 	{
 		Init(v, railtype_override, pPerf);
 	}
 
-	inline CFollowTrackT(Owner o, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = NULL)
+	inline CFollowTrackT(Owner o, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = nullptr)
 	{
-		m_veh = NULL;
+		m_veh = nullptr;
 		Init(o, railtype_override, pPerf);
 	}
 
 	inline void Init(const VehicleType *v, RailTypes railtype_override, CPerformanceTimer *pPerf)
 	{
-		assert(!IsRailTT() || (v != NULL && v->type == VEH_TRAIN));
+		assert(!IsRailTT() || (v != nullptr && v->type == VEH_TRAIN));
 		m_veh = v;
-		Init(v != NULL ? v->owner : INVALID_OWNER, IsRailTT() && railtype_override == INVALID_RAILTYPES ? Train::From(v)->compatible_railtypes : railtype_override, pPerf);
+		Init(v != nullptr ? v->owner : INVALID_OWNER, IsRailTT() && railtype_override == INVALID_RAILTYPES ? Train::From(v)->compatible_railtypes : railtype_override, pPerf);
 	}
 
 	inline void Init(Owner o, RailTypes railtype_override, CPerformanceTimer *pPerf)
 	{
-		assert(!IsRoadTT() || m_veh != NULL);
+		assert(!IsRoadTT() || m_veh != nullptr);
 		assert(!IsRailTT() || railtype_override != INVALID_RAILTYPES);
 		m_veh_owner = o;
 		m_pPerf = pPerf;
@@ -126,7 +126,7 @@ struct CFollowTrackT
 		m_err = EC_NONE;
 		assert(
 			((TrackStatusToTrackdirBits(
-				GetTileTrackStatus(m_old_tile, TT(), (IsRoadTT() && m_veh != NULL) ? RoadVehicle::From(m_veh)->compatible_roadtypes : 0)
+				GetTileTrackStatus(m_old_tile, TT(), (IsRoadTT() && m_veh != nullptr) ? RoadVehicle::From(m_veh)->compatible_roadtypes : 0)
 			) & TrackdirToTrackdirBits(m_old_td)) != 0) ||
 			(IsTram() && GetSingleTramBit(m_old_tile) != INVALID_DIAGDIR) // Disable the assertion for single tram bits
 		);
@@ -447,7 +447,7 @@ protected:
 
 public:
 	/** Helper for pathfinders - get min/max speed on the m_old_tile/m_old_td */
-	int GetSpeedLimit(int *pmin_speed = NULL) const
+	int GetSpeedLimit(int *pmin_speed = nullptr) const
 	{
 		int min_speed = 0;
 		int max_speed = INT_MAX; // no limit
@@ -465,7 +465,7 @@ public:
 		}
 
 		/* if min speed was requested, return it */
-		if (pmin_speed != NULL) *pmin_speed = min_speed;
+		if (pmin_speed != nullptr) *pmin_speed = min_speed;
 		return max_speed;
 	}
 };

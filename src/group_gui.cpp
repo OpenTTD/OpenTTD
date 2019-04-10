@@ -146,7 +146,7 @@ private:
 	/** Sort the groups by their name */
 	static int CDECL GroupNameSorter(const Group * const *a, const Group * const *b)
 	{
-		static const Group *last_group[2] = { NULL, NULL };
+		static const Group *last_group[2] = { nullptr, nullptr };
 		static char         last_name[2][64] = { "", "" };
 
 		if (*a != last_group[0]) {
@@ -780,7 +780,7 @@ public:
 
 			case WID_GL_REPLACE_PROTECTION: {
 				const Group *g = Group::GetIfValid(this->vli.index);
-				if (g != NULL) {
+				if (g != nullptr) {
 					DoCommandP(0, this->vli.index, (g->replace_protection ? 0 : 1) | (_ctrl_pressed << 1), CMD_SET_GROUP_REPLACE_PROTECTION);
 				}
 				break;
@@ -841,7 +841,7 @@ public:
 				uint id_g = this->group_sb->GetScrolledRowFromWidget(pt.y, this, WID_GL_LIST_GROUP, 0, this->tiny_step_height);
 				GroupID new_g = id_g >= this->groups.size() ? NEW_GROUP : this->groups[id_g]->index;
 
-				DoCommandP(0, new_g, vindex | (_ctrl_pressed ? 1 << 31 : 0), CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE), new_g == NEW_GROUP ? CcAddVehicleNewGroup : NULL);
+				DoCommandP(0, new_g, vindex | (_ctrl_pressed ? 1 << 31 : 0), CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE), new_g == NEW_GROUP ? CcAddVehicleNewGroup : nullptr);
 				break;
 			}
 
@@ -873,7 +873,7 @@ public:
 
 	void OnQueryTextFinished(char *str) override
 	{
-		if (str != NULL) DoCommandP(0, this->group_rename, 0, CMD_ALTER_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_RENAME), NULL, str);
+		if (str != nullptr) DoCommandP(0, this->group_rename, 0, CMD_ALTER_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_RENAME), nullptr, str);
 		this->group_rename = INVALID_GROUP;
 	}
 
@@ -1033,7 +1033,7 @@ void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type)
  * Finds a group list window determined by vehicle type and owner
  * @param vt vehicle type
  * @param owner owner of groups
- * @return pointer to VehicleGroupWindow, NULL if not found
+ * @return pointer to VehicleGroupWindow, nullptr if not found
  */
 static inline VehicleGroupWindow *FindVehicleGroupWindow(VehicleType vt, Owner owner)
 {
@@ -1054,7 +1054,7 @@ void CcCreateGroup(const CommandCost &result, TileIndex tile, uint32 p1, uint32 
 	assert(p1 <= VEH_AIRCRAFT);
 
 	VehicleGroupWindow *w = FindVehicleGroupWindow((VehicleType)p1, _current_company);
-	if (w != NULL) w->ShowRenameGroupWindow(_new_group_id, true);
+	if (w != nullptr) w->ShowRenameGroupWindow(_new_group_id, true);
 }
 
 /**
@@ -1084,5 +1084,5 @@ void DeleteGroupHighlightOfVehicle(const Vehicle *v)
 	if (_special_mouse_mode != WSM_DRAGDROP) return;
 
 	VehicleGroupWindow *w = FindVehicleGroupWindow(v->type, v->owner);
-	if (w != NULL) w->UnselectVehicle(v->index);
+	if (w != nullptr) w->UnselectVehicle(v->index);
 }

@@ -39,7 +39,7 @@
 
 /* static */ char *ScriptIndustry::GetName(IndustryID industry_id)
 {
-	if (!IsValidIndustry(industry_id)) return NULL;
+	if (!IsValidIndustry(industry_id)) return nullptr;
 
 	::SetDParam(0, industry_id);
 	return GetString(STR_INDUSTRY_NAME);

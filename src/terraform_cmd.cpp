@@ -278,7 +278,7 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 			/* Is the tile already cleared? */
 			const ClearedObjectArea *coa = FindClearedObject(tile);
-			bool indirectly_cleared = coa != NULL && coa->first_tile != tile;
+			bool indirectly_cleared = coa != nullptr && coa->first_tile != tile;
 
 			/* Check tiletype-specific things, and add extra-cost */
 			const bool curr_gen = _generating_world;
@@ -304,7 +304,7 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	}
 
 	Company *c = Company::GetIfValid(_current_company);
-	if (c != NULL && GB(c->terraform_limit, 16, 16) < ts.tile_to_new_height.size()) {
+	if (c != nullptr && GB(c->terraform_limit, 16, 16) < ts.tile_to_new_height.size()) {
 		return_cmd_error(STR_ERROR_TERRAFORM_LIMIT_REACHED);
 	}
 
@@ -326,7 +326,7 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			SetTileHeight(tile, (uint)height);
 		}
 
-		if (c != NULL) c->terraform_limit -= (uint32)ts.tile_to_new_height.size() << 16;
+		if (c != nullptr) c->terraform_limit -= (uint32)ts.tile_to_new_height.size() << 16;
 	}
 	return total_cost;
 }
@@ -371,7 +371,7 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	bool had_success = false;
 
 	const Company *c = Company::GetIfValid(_current_company);
-	int limit = (c == NULL ? INT32_MAX : GB(c->terraform_limit, 16, 16));
+	int limit = (c == nullptr ? INT32_MAX : GB(c->terraform_limit, 16, 16));
 	if (limit == 0) return_cmd_error(STR_ERROR_TERRAFORM_LIMIT_REACHED);
 
 	TileIterator *iter = HasBit(p2, 0) ? (TileIterator *)new DiagonalTileIterator(tile, p1) : new OrthogonalTileIterator(tile, p1);

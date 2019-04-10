@@ -32,7 +32,7 @@ ScriptStationList_Vehicle::ScriptStationList_Vehicle(VehicleID vehicle_id)
 
 	Vehicle *v = ::Vehicle::Get(vehicle_id);
 
-	for (Order *o = v->GetFirstOrder(); o != NULL; o = o->next) {
+	for (Order *o = v->GetFirstOrder(); o != nullptr; o = o->next) {
 		if (o->IsType(OT_GOTO_STATION)) this->AddItem(o->GetDestination());
 	}
 }
@@ -120,7 +120,7 @@ private:
 
 CargoCollector::CargoCollector(ScriptStationList_Cargo *parent,
 		StationID station_id, CargoID cargo, StationID other) :
-	list(parent), ge(NULL), other_station(other), last_key(INVALID_STATION), amount(0)
+	list(parent), ge(nullptr), other_station(other), last_key(INVALID_STATION), amount(0)
 {
 	if (!ScriptStation::IsValidStation(station_id)) return;
 	if (!ScriptCargo::IsValidCargo(cargo)) return;
@@ -176,7 +176,7 @@ template<ScriptStationList_Cargo::CargoSelector Tselector>
 void ScriptStationList_CargoWaiting::Add(StationID station_id, CargoID cargo, StationID other_station)
 {
 	CargoCollector collector(this, station_id, cargo, other_station);
-	if (collector.GE() == NULL) return;
+	if (collector.GE() == nullptr) return;
 
 	StationCargoList::ConstIterator iter = collector.GE()->cargo.Packets()->begin();
 	StationCargoList::ConstIterator end = collector.GE()->cargo.Packets()->end();
@@ -190,7 +190,7 @@ template<ScriptStationList_Cargo::CargoSelector Tselector>
 void ScriptStationList_CargoPlanned::Add(StationID station_id, CargoID cargo, StationID other_station)
 {
 	CargoCollector collector(this, station_id, cargo, other_station);
-	if (collector.GE() == NULL) return;
+	if (collector.GE() == nullptr) return;
 
 	FlowStatMap::const_iterator iter = collector.GE()->flows.begin();
 	FlowStatMap::const_iterator end = collector.GE()->flows.end();
@@ -215,7 +215,7 @@ ScriptStationList_CargoWaitingViaByFrom::ScriptStationList_CargoWaitingViaByFrom
 		StationID station_id, CargoID cargo, StationID via)
 {
 	CargoCollector collector(this, station_id, cargo, via);
-	if (collector.GE() == NULL) return;
+	if (collector.GE() == nullptr) return;
 
 	std::pair<StationCargoList::ConstIterator, StationCargoList::ConstIterator> range =
 			collector.GE()->cargo.Packets()->equal_range(via);
@@ -261,7 +261,7 @@ ScriptStationList_CargoPlannedFromByVia::ScriptStationList_CargoPlannedFromByVia
 		StationID station_id, CargoID cargo, StationID from)
 {
 	CargoCollector collector(this, station_id, cargo, from);
-	if (collector.GE() == NULL) return;
+	if (collector.GE() == nullptr) return;
 
 	FlowStatMap::const_iterator iter = collector.GE()->flows.find(from);
 	if (iter == collector.GE()->flows.end()) return;

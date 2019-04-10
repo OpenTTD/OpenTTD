@@ -155,8 +155,8 @@ struct DumpTarget {
 	{
 		static size_t type_id = ++LastTypeId();
 
-		if (s == NULL) {
-			/* No need to dump NULL struct. */
+		if (s == nullptr) {
+			/* No need to dump nullptr struct. */
 			WriteLine("%s = <null>", name);
 			return;
 		}

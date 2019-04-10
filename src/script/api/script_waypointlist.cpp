@@ -32,7 +32,7 @@ ScriptWaypointList_Vehicle::ScriptWaypointList_Vehicle(VehicleID vehicle_id)
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 
-	for (const Order *o = v->GetFirstOrder(); o != NULL; o = o->next) {
+	for (const Order *o = v->GetFirstOrder(); o != nullptr; o = o->next) {
 		if (o->IsType(OT_GOTO_WAYPOINT)) this->AddItem(o->GetDestination());
 	}
 }

@@ -29,11 +29,11 @@ static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine, G
 {
 	EngineRenew *er = (EngineRenew *)erl;
 
-	while (er != NULL) {
+	while (er != nullptr) {
 		if (er->from == engine && GroupIsInGroup(group, er->group_id)) return er;
 		er = er->next;
 	}
-	return NULL;
+	return nullptr;
 }
 
 /**
@@ -46,12 +46,12 @@ void RemoveAllEngineReplacement(EngineRenewList *erl)
 	EngineRenew *er = (EngineRenew *)(*erl);
 	EngineRenew *next;
 
-	while (er != NULL) {
+	while (er != nullptr) {
 		next = er->next;
 		delete er;
 		er = next;
 	}
-	*erl = NULL; // Empty list
+	*erl = nullptr; // Empty list
 }
 
 /**
@@ -66,12 +66,12 @@ void RemoveAllEngineReplacement(EngineRenewList *erl)
 EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group, bool *replace_when_old)
 {
 	const EngineRenew *er = GetEngineReplacement(erl, engine, group);
-	if (er == NULL && (group == DEFAULT_GROUP || (Group::IsValidID(group) && !Group::Get(group)->replace_protection))) {
+	if (er == nullptr && (group == DEFAULT_GROUP || (Group::IsValidID(group) && !Group::Get(group)->replace_protection))) {
 		/* We didn't find anything useful in the vehicle's own group so we will try ALL_GROUP */
 		er = GetEngineReplacement(erl, engine, ALL_GROUP);
 	}
-	if (replace_when_old != NULL) *replace_when_old = er == NULL ? false : er->replace_when_old;
-	return er == NULL ? INVALID_ENGINE : er->to;
+	if (replace_when_old != nullptr) *replace_when_old = er == nullptr ? false : er->replace_when_old;
+	return er == nullptr ? INVALID_ENGINE : er->to;
 }
 
 /**
@@ -88,7 +88,7 @@ CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, Engi
 {
 	/* Check if the old vehicle is already in the list */
 	EngineRenew *er = GetEngineReplacement(*erl, old_engine, group);
-	if (er != NULL) {
+	if (er != nullptr) {
 		if (flags & DC_EXEC) {
 			er->to = new_engine;
 			er->replace_when_old = replace_when_old;
@@ -122,12 +122,12 @@ CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, Engi
 CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, DoCommandFlag flags)
 {
 	EngineRenew *er = (EngineRenew *)(*erl);
-	EngineRenew *prev = NULL;
+	EngineRenew *prev = nullptr;
 
-	while (er != NULL) {
+	while (er != nullptr) {
 		if (er->from == engine && er->group_id == group) {
 			if (flags & DC_EXEC) {
-				if (prev == NULL) { // First element
+				if (prev == nullptr) { // First element
 					/* The second becomes the new first element */
 					*erl = (EngineRenewList)er->next;
 				} else {

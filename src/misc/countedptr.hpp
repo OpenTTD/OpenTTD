@@ -34,8 +34,8 @@ protected:
 	Tcls *m_pT;
 
 public:
-	/** default (NULL) construct or construct from a raw pointer */
-	inline CCountedPtr(Tcls *pObj = NULL) : m_pT(pObj)
+	/** default (nullptr) construct or construct from a raw pointer */
+	inline CCountedPtr(Tcls *pObj = nullptr) : m_pT(pObj)
 	{
 		AddRef();
 	}
@@ -56,16 +56,16 @@ protected:
 	/** add one ref to the underlaying object */
 	inline void AddRef()
 	{
-		if (m_pT != NULL) m_pT->AddRef();
+		if (m_pT != nullptr) m_pT->AddRef();
 	}
 
 public:
 	/** release smart pointer (and decrement ref count) if not null */
 	inline void Release()
 	{
-		if (m_pT != NULL) {
+		if (m_pT != nullptr) {
 			Tcls *pT = m_pT;
-			m_pT = NULL;
+			m_pT = nullptr;
 			pT->Release();
 		}
 	}
@@ -73,21 +73,21 @@ public:
 	/** dereference of smart pointer - const way */
 	inline const Tcls *operator->() const
 	{
-		assert(m_pT != NULL);
+		assert(m_pT != nullptr);
 		return m_pT;
 	}
 
 	/** dereference of smart pointer - non const way */
 	inline Tcls *operator->()
 	{
-		assert(m_pT != NULL);
+		assert(m_pT != nullptr);
 		return m_pT;
 	}
 
 	/** raw pointer casting operator - const way */
 	inline operator const Tcls*() const
 	{
-		assert(m_pT == NULL);
+		assert(m_pT == nullptr);
 		return m_pT;
 	}
 
@@ -100,7 +100,7 @@ public:
 	/** operator & to support output arguments */
 	inline Tcls** operator&()
 	{
-		assert(m_pT == NULL);
+		assert(m_pT == nullptr);
 		return &m_pT;
 	}
 
@@ -121,16 +121,16 @@ public:
 	/** assignment operator helper */
 	inline void Assign(Tcls *pT);
 
-	/** one way how to test for NULL value */
+	/** one way how to test for nullptr value */
 	inline bool IsNull() const
 	{
-		return m_pT == NULL;
+		return m_pT == nullptr;
 	}
 
-	/** another way how to test for NULL value */
+	/** another way how to test for nullptr value */
 	//inline bool operator == (const CCountedPtr &sp) const {return m_pT == sp.m_pT;}
 
-	/** yet another way how to test for NULL value */
+	/** yet another way how to test for nullptr value */
 	//inline bool operator != (const CCountedPtr &sp) const {return m_pT != sp.m_pT;}
 
 	/** assign pointer w/o incrementing ref count */
@@ -144,7 +144,7 @@ public:
 	inline Tcls *Detach()
 	{
 		Tcls *pT = m_pT;
-		m_pT = NULL;
+		m_pT = nullptr;
 		return pT;
 	}
 };
@@ -154,10 +154,10 @@ inline void CCountedPtr<Tcls_>::Assign(Tcls *pT)
 {
 	/* if they are the same, we do nothing */
 	if (pT != m_pT) {
-		if (pT != NULL) pT->AddRef();        // AddRef new pointer if any
+		if (pT != nullptr) pT->AddRef();        // AddRef new pointer if any
 		Tcls *pTold = m_pT;                  // save original ptr
 		m_pT = pT;                           // update m_pT to new value
-		if (pTold != NULL) pTold->Release(); // release old ptr if any
+		if (pTold != nullptr) pTold->Release(); // release old ptr if any
 	}
 }
 
