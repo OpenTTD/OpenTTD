@@ -1583,6 +1583,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verbueden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Erlaabt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Erlaabt, custom Stad-Layout
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Duerfwuerengeneratioun: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Wéivill Wuere produzéiert ginn, relativ zur Bevölkerung vum Duerf.{}Quadratesche Wuesstum: En duebel sou grousst Duerf, generéiert véier mol souvill Passagéier.{}Lineare Wuesstum: En duebel sou grousst Duerf, generéiert duebel souvill Passagéier.
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Bamplazéirung: {STRING}
@@ -2713,13 +2714,16 @@ STR_FRAMERATE_CAPTION                                           :{WHITE}Biller p
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Unzuel Gameticks déi pro Sekonn simuléiert ginn.
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Grafikframerate: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Unzuel u Videobiller déi pro Sekonn gerendert ginn.
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Aktuelle Spillgeschw.-Faktor: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Wéi séier d'Spill aktuell leeft, am Verglach mat der Geschw. vun der normaler Simulatioun.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Aktuell
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Mëttel
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} Biller/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} Biller/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} Biller/s
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2730,6 +2734,7 @@ STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Linkgr
 STR_FRAMERATE_DRAWING                                           :{BLACK}Grafikrendering:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Welt-Usiichten:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Video-output:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  GS/KI Total:
 STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}  Gamescript:
 STR_FRAMERATE_AI                                                :{BLACK}   KI {NUM} {STRING}
 ############ End of leave-in-this-order
@@ -2742,9 +2747,11 @@ STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Schëffticker
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Weltticks
 STR_FRAMETIME_CAPTION_DRAWING                                   :Grafikrendering
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Weltusiicht-Rendering
+STR_FRAMETIME_CAPTION_VIDEO                                     :Video-output
 STR_FRAMETIME_CAPTION_SOUND                                     :Soundmixing
 STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :GS/KI Scripttotaler
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Spill-Script
+STR_FRAMETIME_CAPTION_AI                                        :KI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2889,6 +2896,7 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versioun
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatibel Versioun: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palette: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Standard (S)
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Standard (S) / 32 bpp
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Legacy (W)
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameter: {SILVER}{STRING}
@@ -3047,7 +3055,7 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Stad)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Awunner: {ORANGE}{COMMA}{BLACK}  Haiser: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} leschte Mount: {ORANGE}{COMMA}{BLACK}  Max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Gidder gebraucht fir Stadwuesstem:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Gidder gebraucht fir Stadwuesstum:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} gebraucht
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} gebraucht am Wanter
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} geliwwert
@@ -3475,15 +3483,17 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Gefier k
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Schëff kafen
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Fliger kafen
 
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Gefierer kafen an embauen
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Gefierer kafen an embauen
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Schëff kafen an embauen
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Gefierer kafen an ëmbauen
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Gefierer kafen an ëmbauen
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Schëff kafen an ëmbauen
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Fligeren kafen an ëmbauen
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Keeft den ungewielten Zuch. Shift+Klick weist ongeféier Käschten ouni Kaf
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Keeft dat ugewielte Stroossegefier. Shift+Klick weist ongeféier Käschten ouni Kaf
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Keeft dat ugewielte Schëff. Shift+Klick weist ongeféier Käschten ouni Kaf
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Keeft den ungewielte Fliger. Shift+Klick weist ongeféier Käschten ouni Kaf
 
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Gewielte Fliger kafen an ëmbauen. Shift+Klick weist ongeféier Käschten ouni Kaf
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Ëmbenennen
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Ëmbenennen
@@ -3841,7 +3851,7 @@ STR_ORDER_DROP_TRANSFER                                         :Transferéieren
 STR_ORDER_DROP_NO_UNLOADING                                     :Net entlueden
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Wiesselt d'Entluedverhale vun dem ungewielten Optrag
 
-STR_ORDER_REFIT                                                 :{BLACK}Ëmbauen
+STR_ORDER_REFIT                                                 :{BLACK}Embauen
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wielt an wéi een Luedungstyp sollt emgebaut ginn. Ctrl+Klick fir den Ëmbau ze läschen
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Embauen an der Statioun
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Wiel wellëch Wuerentypen sollen auto-ersat ginn an dësem Optrag. Ctrl+Klick fir all Auto-Erneierungen wechzehuelen. Auto-Erneiern geht just wann d'Gefier ët erlaabt
@@ -3937,8 +3947,8 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Net entlueden 
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Keen Ent- an Belueden)
 
 STR_ORDER_AUTO_REFIT                                            :(Embauen op {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Voll lueden mat Embauen op {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Voll lueden mat all Wueren mat Embauen op {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Voll lueden mat ëmbauen op {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Voll lueden mat all Wueren mat ëmbauen op {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :(Entlueden an Wueren lueden mat Embauen op {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Entlueden an op voll Luedung waarden mat Embauen op {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Entlueden an waard op iergendeng Volluedung mat Embauen op {STRING})
