@@ -167,12 +167,12 @@ struct SmallMap : std::vector<SmallPair<T, U> > {
 
 	inline void SortByKey()
 	{
-		QSortT(std::vector<Pair>::data(), std::vector<Pair>::size(), KeySorter);
+		std::sort(std::vector<Pair>::begin(), std::vector<Pair>::end());
 	}
 
-	static int CDECL KeySorter(const Pair *a, const Pair *b)
+	bool operator< (const Pair &other) const
 	{
-		return a->first - b->first;
+		return (*this).first < other.first;
 	}
 };
 
