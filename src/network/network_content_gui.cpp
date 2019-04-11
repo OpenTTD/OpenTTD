@@ -405,28 +405,28 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	}
 
 	/** Sort content by name. */
-	static int CDECL NameSorter(const ContentInfo * const *a, const ContentInfo * const *b)
+	static bool NameSorter(const ContentInfo * const &a, const ContentInfo * const &b)
 	{
-		return strnatcmp((*a)->name, (*b)->name, true); // Sort by name (natural sorting).
+		return strnatcmp(a->name, b->name, true) < 0; // Sort by name (natural sorting).
 	}
 
 	/** Sort content by type. */
-	static int CDECL TypeSorter(const ContentInfo * const *a, const ContentInfo * const *b)
+	static bool TypeSorter(const ContentInfo * const &a, const ContentInfo * const &b)
 	{
 		int r = 0;
-		if ((*a)->type != (*b)->type) {
-			r = strnatcmp(content_type_strs[(*a)->type], content_type_strs[(*b)->type]);
+		if (a->type != b->type) {
+			r = strnatcmp(content_type_strs[a->type], content_type_strs[b->type]);
 		}
-		if (r == 0) r = NameSorter(a, b);
-		return r;
+		if (r == 0) return NameSorter(a, b);
+		return r < 0;
 	}
 
 	/** Sort content by state. */
-	static int CDECL StateSorter(const ContentInfo * const *a, const ContentInfo * const *b)
+	static bool StateSorter(const ContentInfo * const &a, const ContentInfo * const &b)
 	{
-		int r = (*a)->state - (*b)->state;
-		if (r == 0) r = TypeSorter(a, b);
-		return r;
+		int r = a->state - b->state;
+		if (r == 0) return TypeSorter(a, b);
+		return r < 0;
 	}
 
 	/** Sort the content list */

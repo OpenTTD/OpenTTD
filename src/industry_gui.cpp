@@ -1252,52 +1252,52 @@ protected:
 	}
 
 	/** Sort industries by name */
-	static int CDECL IndustryNameSorter(const Industry * const *a, const Industry * const *b)
+	static bool IndustryNameSorter(const Industry * const &a, const Industry * const &b)
 	{
 		static char buf_cache[96];
 		static char buf[96];
 
-		SetDParam(0, (*a)->index);
+		SetDParam(0, a->index);
 		GetString(buf, STR_INDUSTRY_NAME, lastof(buf));
 
-		if (*b != last_industry) {
-			last_industry = *b;
-			SetDParam(0, (*b)->index);
+		if (b != last_industry) {
+			last_industry = b;
+			SetDParam(0, b->index);
 			GetString(buf_cache, STR_INDUSTRY_NAME, lastof(buf_cache));
 		}
 
-		return strnatcmp(buf, buf_cache); // Sort by name (natural sorting).
+		return strnatcmp(buf, buf_cache) < 0; // Sort by name (natural sorting).
 	}
 
 	/** Sort industries by type and name */
-	static int CDECL IndustryTypeSorter(const Industry * const *a, const Industry * const *b)
+	static bool IndustryTypeSorter(const Industry * const &a, const Industry * const &b)
 	{
 		int it_a = 0;
-		while (it_a != NUM_INDUSTRYTYPES && (*a)->type != _sorted_industry_types[it_a]) it_a++;
+		while (it_a != NUM_INDUSTRYTYPES && a->type != _sorted_industry_types[it_a]) it_a++;
 		int it_b = 0;
-		while (it_b != NUM_INDUSTRYTYPES && (*b)->type != _sorted_industry_types[it_b]) it_b++;
+		while (it_b != NUM_INDUSTRYTYPES && b->type != _sorted_industry_types[it_b]) it_b++;
 		int r = it_a - it_b;
-		return (r == 0) ? IndustryNameSorter(a, b) : r;
+		return (r == 0) ? IndustryNameSorter(a, b) : r < 0;
 	}
 
 	/** Sort industries by production and name */
-	static int CDECL IndustryProductionSorter(const Industry * const *a, const Industry * const *b)
+	static bool IndustryProductionSorter(const Industry * const &a, const Industry * const &b)
 	{
 		uint prod_a = 0, prod_b = 0;
-		for (uint i = 0; i < lengthof((*a)->produced_cargo); i++) {
-			if ((*a)->produced_cargo[i] != CT_INVALID) prod_a += (*a)->last_month_production[i];
-			if ((*b)->produced_cargo[i] != CT_INVALID) prod_b += (*b)->last_month_production[i];
+		for (uint i = 0; i < lengthof(a->produced_cargo); i++) {
+			if (a->produced_cargo[i] != CT_INVALID) prod_a += a->last_month_production[i];
+			if (b->produced_cargo[i] != CT_INVALID) prod_b += b->last_month_production[i];
 		}
 		int r = prod_a - prod_b;
 
-		return (r == 0) ? IndustryTypeSorter(a, b) : r;
+		return (r == 0) ? IndustryTypeSorter(a, b) : r < 0;
 	}
 
 	/** Sort industries by transported cargo and name */
-	static int CDECL IndustryTransportedCargoSorter(const Industry * const *a, const Industry * const *b)
+	static bool IndustryTransportedCargoSorter(const Industry * const &a, const Industry * const &b)
 	{
-		int r = GetCargoTransportedSortValue(*a) - GetCargoTransportedSortValue(*b);
-		return (r == 0) ? IndustryNameSorter(a, b) : r;
+		int r = GetCargoTransportedSortValue(a) - GetCargoTransportedSortValue(b);
+		return (r == 0) ? IndustryNameSorter(a, b) : r < 0;
 	}
 
 	/**

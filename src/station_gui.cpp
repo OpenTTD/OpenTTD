@@ -209,85 +209,85 @@ protected:
 	}
 
 	/** Sort stations by their name */
-	static int CDECL StationNameSorter(const Station * const *a, const Station * const *b)
+	static bool StationNameSorter(const Station * const &a, const Station * const &b)
 	{
 		static char buf_cache[64];
 		char buf[64];
 
-		SetDParam(0, (*a)->index);
+		SetDParam(0, a->index);
 		GetString(buf, STR_STATION_NAME, lastof(buf));
 
-		if (*b != last_station) {
-			last_station = *b;
-			SetDParam(0, (*b)->index);
+		if (b != last_station) {
+			last_station = b;
+			SetDParam(0, b->index);
 			GetString(buf_cache, STR_STATION_NAME, lastof(buf_cache));
 		}
 
 		int r = strnatcmp(buf, buf_cache); // Sort by name (natural sorting).
-		if (r == 0) return (*a)->index - (*b)->index;
-		return r;
+		if (r == 0) return a->index < b->index;
+		return r < 0;
 	}
 
 	/** Sort stations by their type */
-	static int CDECL StationTypeSorter(const Station * const *a, const Station * const *b)
+	static bool StationTypeSorter(const Station * const &a, const Station * const &b)
 	{
-		return (*a)->facilities - (*b)->facilities;
+		return a->facilities < b->facilities;
 	}
 
 	/** Sort stations by their waiting cargo */
-	static int CDECL StationWaitingTotalSorter(const Station * const *a, const Station * const *b)
+	static bool StationWaitingTotalSorter(const Station * const &a, const Station * const &b)
 	{
 		int diff = 0;
 
 		CargoID j;
 		FOR_EACH_SET_CARGO_ID(j, cargo_filter) {
-			diff += (*a)->goods[j].cargo.TotalCount() - (*b)->goods[j].cargo.TotalCount();
+			diff += a->goods[j].cargo.TotalCount() - b->goods[j].cargo.TotalCount();
 		}
 
-		return diff;
+		return diff < 0;
 	}
 
 	/** Sort stations by their available waiting cargo */
-	static int CDECL StationWaitingAvailableSorter(const Station * const *a, const Station * const *b)
+	static bool StationWaitingAvailableSorter(const Station * const &a, const Station * const &b)
 	{
 		int diff = 0;
 
 		CargoID j;
 		FOR_EACH_SET_CARGO_ID(j, cargo_filter) {
-			diff += (*a)->goods[j].cargo.AvailableCount() - (*b)->goods[j].cargo.AvailableCount();
+			diff += a->goods[j].cargo.AvailableCount() - b->goods[j].cargo.AvailableCount();
 		}
 
-		return diff;
+		return diff < 0;
 	}
 
 	/** Sort stations by their rating */
-	static int CDECL StationRatingMaxSorter(const Station * const *a, const Station * const *b)
+	static bool StationRatingMaxSorter(const Station * const &a, const Station * const &b)
 	{
 		byte maxr1 = 0;
 		byte maxr2 = 0;
 
 		CargoID j;
 		FOR_EACH_SET_CARGO_ID(j, cargo_filter) {
-			if ((*a)->goods[j].HasRating()) maxr1 = max(maxr1, (*a)->goods[j].rating);
-			if ((*b)->goods[j].HasRating()) maxr2 = max(maxr2, (*b)->goods[j].rating);
+			if (a->goods[j].HasRating()) maxr1 = max(maxr1, a->goods[j].rating);
+			if (b->goods[j].HasRating()) maxr2 = max(maxr2, b->goods[j].rating);
 		}
 
-		return maxr1 - maxr2;
+		return maxr1 < maxr2;
 	}
 
 	/** Sort stations by their rating */
-	static int CDECL StationRatingMinSorter(const Station * const *a, const Station * const *b)
+	static bool StationRatingMinSorter(const Station * const &a, const Station * const &b)
 	{
 		byte minr1 = 255;
 		byte minr2 = 255;
 
 		for (CargoID j = 0; j < NUM_CARGO; j++) {
 			if (!HasBit(cargo_filter, j)) continue;
-			if ((*a)->goods[j].HasRating()) minr1 = min(minr1, (*a)->goods[j].rating);
-			if ((*b)->goods[j].HasRating()) minr2 = min(minr2, (*b)->goods[j].rating);
+			if (a->goods[j].HasRating()) minr1 = min(minr1, a->goods[j].rating);
+			if (b->goods[j].HasRating()) minr2 = min(minr2, b->goods[j].rating);
 		}
 
-		return -(minr1 - minr2);
+		return minr1 > minr2;
 	}
 
 	/** Sort the stations list */

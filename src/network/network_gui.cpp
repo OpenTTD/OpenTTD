@@ -277,10 +277,10 @@ protected:
 	}
 
 	/** Sort servers by name. */
-	static int CDECL NGameNameSorter(NetworkGameList * const *a, NetworkGameList * const *b)
+	static bool NGameNameSorter(NetworkGameList * const &a, NetworkGameList * const &b)
 	{
-		int r = strnatcmp((*a)->info.server_name, (*b)->info.server_name, true); // Sort by name (natural sorting).
-		return r == 0 ? (*a)->address.CompareTo((*b)->address) : r;
+		int r = strnatcmp(a->info.server_name, b->info.server_name, true); // Sort by name (natural sorting).
+		return r == 0 ? a->address.CompareTo(b->address) < 0: r < 0;
 	}
 
 	/**
@@ -288,60 +288,60 @@ protected:
 	 * server. If the two servers have the same amount, the one with the
 	 * higher maximum is preferred.
 	 */
-	static int CDECL NGameClientSorter(NetworkGameList * const *a, NetworkGameList * const *b)
+	static bool NGameClientSorter(NetworkGameList * const &a, NetworkGameList * const &b)
 	{
 		/* Reverse as per default we are interested in most-clients first */
-		int r = (*a)->info.clients_on - (*b)->info.clients_on;
+		int r = a->info.clients_on - b->info.clients_on;
 
-		if (r == 0) r = (*a)->info.clients_max - (*b)->info.clients_max;
-		if (r == 0) r = NGameNameSorter(a, b);
+		if (r == 0) r = a->info.clients_max - b->info.clients_max;
+		if (r == 0) return NGameNameSorter(a, b);
 
-		return r;
+		return r < 0;
 	}
 
 	/** Sort servers by map size */
-	static int CDECL NGameMapSizeSorter(NetworkGameList * const *a, NetworkGameList * const *b)
+	static bool NGameMapSizeSorter(NetworkGameList * const &a, NetworkGameList * const &b)
 	{
 		/* Sort by the area of the map. */
-		int r = ((*a)->info.map_height) * ((*a)->info.map_width) - ((*b)->info.map_height) * ((*b)->info.map_width);
+		int r = (a->info.map_height) * (a->info.map_width) - (b->info.map_height) * (b->info.map_width);
 
-		if (r == 0) r = (*a)->info.map_width - (*b)->info.map_width;
-		return (r != 0) ? r : NGameClientSorter(a, b);
+		if (r == 0) r = a->info.map_width - b->info.map_width;
+		return (r != 0) ? r < 0 : NGameClientSorter(a, b);
 	}
 
 	/** Sort servers by current date */
-	static int CDECL NGameDateSorter(NetworkGameList * const *a, NetworkGameList * const *b)
+	static bool NGameDateSorter(NetworkGameList * const &a, NetworkGameList * const &b)
 	{
-		int r = (*a)->info.game_date - (*b)->info.game_date;
-		return (r != 0) ? r : NGameClientSorter(a, b);
+		int r = a->info.game_date - b->info.game_date;
+		return (r != 0) ? r < 0 : NGameClientSorter(a, b);
 	}
 
 	/** Sort servers by the number of days the game is running */
-	static int CDECL NGameYearsSorter(NetworkGameList * const *a, NetworkGameList * const *b)
+	static bool NGameYearsSorter(NetworkGameList * const &a, NetworkGameList * const &b)
 	{
-		int r = (*a)->info.game_date - (*a)->info.start_date - (*b)->info.game_date + (*b)->info.start_date;
-		return (r != 0) ? r : NGameDateSorter(a, b);
+		int r = a->info.game_date - a->info.start_date - b->info.game_date + b->info.start_date;
+		return (r != 0) ? r < 0: NGameDateSorter(a, b);
 	}
 
 	/**
 	 * Sort servers by joinability. If both servers are the
 	 * same, prefer the non-passworded server first.
 	 */
-	static int CDECL NGameAllowedSorter(NetworkGameList * const *a, NetworkGameList * const *b)
+	static bool NGameAllowedSorter(NetworkGameList * const &a, NetworkGameList * const &b)
 	{
 		/* The servers we do not know anything about (the ones that did not reply) should be at the bottom) */
-		int r = StrEmpty((*a)->info.server_revision) - StrEmpty((*b)->info.server_revision);
+		int r = StrEmpty(a->info.server_revision) - StrEmpty(b->info.server_revision);
 
 		/* Reverse default as we are interested in version-compatible clients first */
-		if (r == 0) r = (*b)->info.version_compatible - (*a)->info.version_compatible;
+		if (r == 0) r = b->info.version_compatible - a->info.version_compatible;
 		/* The version-compatible ones are then sorted with NewGRF compatible first, incompatible last */
-		if (r == 0) r = (*b)->info.compatible - (*a)->info.compatible;
+		if (r == 0) r = b->info.compatible - a->info.compatible;
 		/* Passworded servers should be below unpassworded servers */
-		if (r == 0) r = (*a)->info.use_password - (*b)->info.use_password;
+		if (r == 0) r = a->info.use_password - b->info.use_password;
 		/* Finally sort on the number of clients of the server */
-		if (r == 0) r = -NGameClientSorter(a, b);
+		if (r == 0) return NGameClientSorter(a, b);
 
-		return r;
+		return r < 0;
 	}
 
 	/** Sort the server list */
