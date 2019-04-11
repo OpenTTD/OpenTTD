@@ -107,6 +107,7 @@ struct FiosItem {
 	uint64 mtime;
 	char title[64];
 	char name[MAX_PATH];
+	bool operator< (const FiosItem &other) const;
 };
 
 /** List of file information. */
@@ -226,7 +227,5 @@ void FiosMakeHeightmapName(char *buf, const char *name, const char *last);
 void FiosMakeSavegameName(char *buf, const char *name, const char *last);
 
 FiosType FiosGetSavegameListCallback(SaveLoadOperation fop, const char *file, const char *ext, char *title, const char *last);
-
-int CDECL CompareFiosItems(const FiosItem *a, const FiosItem *b);
 
 #endif /* FIOS_H */
