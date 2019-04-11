@@ -17,7 +17,7 @@ namespace SQConvert {
 	template <> inline ScriptWaypointList &GetParam(ForceType<ScriptWaypointList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptWaypointList *)instance; }
 	template <> inline const ScriptWaypointList *GetParam(ForceType<const ScriptWaypointList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptWaypointList *)instance; }
 	template <> inline const ScriptWaypointList &GetParam(ForceType<const ScriptWaypointList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptWaypointList *)instance; }
-	template <> inline int Return<ScriptWaypointList *>(HSQUIRRELVM vm, ScriptWaypointList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "WaypointList", res, NULL, DefSQDestructorCallback<ScriptWaypointList>, true); return 1; }
+	template <> inline int Return<ScriptWaypointList *>(HSQUIRRELVM vm, ScriptWaypointList *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "WaypointList", res, nullptr, DefSQDestructorCallback<ScriptWaypointList>, true); return 1; }
 } // namespace SQConvert
 
 namespace SQConvert {
@@ -26,5 +26,5 @@ namespace SQConvert {
 	template <> inline ScriptWaypointList_Vehicle &GetParam(ForceType<ScriptWaypointList_Vehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptWaypointList_Vehicle *)instance; }
 	template <> inline const ScriptWaypointList_Vehicle *GetParam(ForceType<const ScriptWaypointList_Vehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptWaypointList_Vehicle *)instance; }
 	template <> inline const ScriptWaypointList_Vehicle &GetParam(ForceType<const ScriptWaypointList_Vehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptWaypointList_Vehicle *)instance; }
-	template <> inline int Return<ScriptWaypointList_Vehicle *>(HSQUIRRELVM vm, ScriptWaypointList_Vehicle *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "WaypointList_Vehicle", res, NULL, DefSQDestructorCallback<ScriptWaypointList_Vehicle>, true); return 1; }
+	template <> inline int Return<ScriptWaypointList_Vehicle *>(HSQUIRRELVM vm, ScriptWaypointList_Vehicle *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "WaypointList_Vehicle", res, nullptr, DefSQDestructorCallback<ScriptWaypointList_Vehicle>, true); return 1; }
 } // namespace SQConvert

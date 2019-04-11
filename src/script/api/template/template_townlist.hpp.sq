@@ -17,7 +17,7 @@ namespace SQConvert {
 	template <> inline ScriptTownList &GetParam(ForceType<ScriptTownList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptTownList *)instance; }
 	template <> inline const ScriptTownList *GetParam(ForceType<const ScriptTownList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptTownList *)instance; }
 	template <> inline const ScriptTownList &GetParam(ForceType<const ScriptTownList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptTownList *)instance; }
-	template <> inline int Return<ScriptTownList *>(HSQUIRRELVM vm, ScriptTownList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "TownList", res, NULL, DefSQDestructorCallback<ScriptTownList>, true); return 1; }
+	template <> inline int Return<ScriptTownList *>(HSQUIRRELVM vm, ScriptTownList *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "TownList", res, nullptr, DefSQDestructorCallback<ScriptTownList>, true); return 1; }
 } // namespace SQConvert
 
 namespace SQConvert {
@@ -26,5 +26,5 @@ namespace SQConvert {
 	template <> inline ScriptTownEffectList &GetParam(ForceType<ScriptTownEffectList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptTownEffectList *)instance; }
 	template <> inline const ScriptTownEffectList *GetParam(ForceType<const ScriptTownEffectList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptTownEffectList *)instance; }
 	template <> inline const ScriptTownEffectList &GetParam(ForceType<const ScriptTownEffectList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptTownEffectList *)instance; }
-	template <> inline int Return<ScriptTownEffectList *>(HSQUIRRELVM vm, ScriptTownEffectList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "TownEffectList", res, NULL, DefSQDestructorCallback<ScriptTownEffectList>, true); return 1; }
+	template <> inline int Return<ScriptTownEffectList *>(HSQUIRRELVM vm, ScriptTownEffectList *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "TownEffectList", res, nullptr, DefSQDestructorCallback<ScriptTownEffectList>, true); return 1; }
 } // namespace SQConvert

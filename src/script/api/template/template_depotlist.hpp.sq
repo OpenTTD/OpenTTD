@@ -17,5 +17,5 @@ namespace SQConvert {
 	template <> inline ScriptDepotList &GetParam(ForceType<ScriptDepotList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptDepotList *)instance; }
 	template <> inline const ScriptDepotList *GetParam(ForceType<const ScriptDepotList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptDepotList *)instance; }
 	template <> inline const ScriptDepotList &GetParam(ForceType<const ScriptDepotList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptDepotList *)instance; }
-	template <> inline int Return<ScriptDepotList *>(HSQUIRRELVM vm, ScriptDepotList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "DepotList", res, NULL, DefSQDestructorCallback<ScriptDepotList>, true); return 1; }
+	template <> inline int Return<ScriptDepotList *>(HSQUIRRELVM vm, ScriptDepotList *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "DepotList", res, nullptr, DefSQDestructorCallback<ScriptDepotList>, true); return 1; }
 } // namespace SQConvert

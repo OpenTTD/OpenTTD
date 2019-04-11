@@ -17,5 +17,5 @@ namespace SQConvert {
 	template <> inline ScriptAccounting &GetParam(ForceType<ScriptAccounting &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptAccounting *)instance; }
 	template <> inline const ScriptAccounting *GetParam(ForceType<const ScriptAccounting *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptAccounting *)instance; }
 	template <> inline const ScriptAccounting &GetParam(ForceType<const ScriptAccounting &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptAccounting *)instance; }
-	template <> inline int Return<ScriptAccounting *>(HSQUIRRELVM vm, ScriptAccounting *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Accounting", res, NULL, DefSQDestructorCallback<ScriptAccounting>, true); return 1; }
+	template <> inline int Return<ScriptAccounting *>(HSQUIRRELVM vm, ScriptAccounting *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Accounting", res, nullptr, DefSQDestructorCallback<ScriptAccounting>, true); return 1; }
 } // namespace SQConvert

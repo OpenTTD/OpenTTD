@@ -17,5 +17,5 @@ namespace SQConvert {
 	template <> inline ScriptGroupList &GetParam(ForceType<ScriptGroupList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptGroupList *)instance; }
 	template <> inline const ScriptGroupList *GetParam(ForceType<const ScriptGroupList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptGroupList *)instance; }
 	template <> inline const ScriptGroupList &GetParam(ForceType<const ScriptGroupList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptGroupList *)instance; }
-	template <> inline int Return<ScriptGroupList *>(HSQUIRRELVM vm, ScriptGroupList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "GroupList", res, NULL, DefSQDestructorCallback<ScriptGroupList>, true); return 1; }
+	template <> inline int Return<ScriptGroupList *>(HSQUIRRELVM vm, ScriptGroupList *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "GroupList", res, nullptr, DefSQDestructorCallback<ScriptGroupList>, true); return 1; }
 } // namespace SQConvert

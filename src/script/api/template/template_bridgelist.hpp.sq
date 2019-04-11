@@ -17,7 +17,7 @@ namespace SQConvert {
 	template <> inline ScriptBridgeList &GetParam(ForceType<ScriptBridgeList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptBridgeList *)instance; }
 	template <> inline const ScriptBridgeList *GetParam(ForceType<const ScriptBridgeList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptBridgeList *)instance; }
 	template <> inline const ScriptBridgeList &GetParam(ForceType<const ScriptBridgeList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptBridgeList *)instance; }
-	template <> inline int Return<ScriptBridgeList *>(HSQUIRRELVM vm, ScriptBridgeList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "BridgeList", res, NULL, DefSQDestructorCallback<ScriptBridgeList>, true); return 1; }
+	template <> inline int Return<ScriptBridgeList *>(HSQUIRRELVM vm, ScriptBridgeList *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "BridgeList", res, nullptr, DefSQDestructorCallback<ScriptBridgeList>, true); return 1; }
 } // namespace SQConvert
 
 namespace SQConvert {
@@ -26,5 +26,5 @@ namespace SQConvert {
 	template <> inline ScriptBridgeList_Length &GetParam(ForceType<ScriptBridgeList_Length &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptBridgeList_Length *)instance; }
 	template <> inline const ScriptBridgeList_Length *GetParam(ForceType<const ScriptBridgeList_Length *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptBridgeList_Length *)instance; }
 	template <> inline const ScriptBridgeList_Length &GetParam(ForceType<const ScriptBridgeList_Length &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptBridgeList_Length *)instance; }
-	template <> inline int Return<ScriptBridgeList_Length *>(HSQUIRRELVM vm, ScriptBridgeList_Length *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "BridgeList_Length", res, NULL, DefSQDestructorCallback<ScriptBridgeList_Length>, true); return 1; }
+	template <> inline int Return<ScriptBridgeList_Length *>(HSQUIRRELVM vm, ScriptBridgeList_Length *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "BridgeList_Length", res, nullptr, DefSQDestructorCallback<ScriptBridgeList_Length>, true); return 1; }
 } // namespace SQConvert

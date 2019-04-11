@@ -21,5 +21,5 @@ namespace SQConvert {
 	template <> inline ScriptBaseStation &GetParam(ForceType<ScriptBaseStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptBaseStation *)instance; }
 	template <> inline const ScriptBaseStation *GetParam(ForceType<const ScriptBaseStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptBaseStation *)instance; }
 	template <> inline const ScriptBaseStation &GetParam(ForceType<const ScriptBaseStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptBaseStation *)instance; }
-	template <> inline int Return<ScriptBaseStation *>(HSQUIRRELVM vm, ScriptBaseStation *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "BaseStation", res, NULL, DefSQDestructorCallback<ScriptBaseStation>, true); return 1; }
+	template <> inline int Return<ScriptBaseStation *>(HSQUIRRELVM vm, ScriptBaseStation *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "BaseStation", res, nullptr, DefSQDestructorCallback<ScriptBaseStation>, true); return 1; }
 } // namespace SQConvert
