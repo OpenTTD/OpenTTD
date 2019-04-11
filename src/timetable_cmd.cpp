@@ -216,15 +216,12 @@ CommandCost CmdSetVehicleOnTime(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * Order vehicles based on their timetable. The vehicles will be sorted in order
  * they would reach the first station.
  *
- * @param ap First Vehicle pointer.
- * @param bp Second Vehicle pointer.
+ * @param a First Vehicle pointer.
+ * @param b Second Vehicle pointer.
  * @return Comparison value.
  */
-static int CDECL VehicleTimetableSorter(Vehicle * const *ap, Vehicle * const *bp)
+static bool VehicleTimetableSorter(Vehicle * const &a, Vehicle * const &b)
 {
-	const Vehicle *a = *ap;
-	const Vehicle *b = *bp;
-
 	VehicleOrderID a_order = a->cur_real_order_index;
 	VehicleOrderID b_order = b->cur_real_order_index;
 	int j = (int)b_order - (int)a_order;
@@ -242,15 +239,15 @@ static int CDECL VehicleTimetableSorter(Vehicle * const *ap, Vehicle * const *bp
 
 	/* First check the order index that accounted for loading, then just the raw one. */
 	int i = (int)b_order - (int)a_order;
-	if (i != 0) return i;
-	if (j != 0) return j;
+	if (i != 0) return i < 0;
+	if (j != 0) return j < 0;
 
 	/* Look at the time we spent in this order; the higher, the closer to its destination. */
 	i = b->current_order_time - a->current_order_time;
-	if (i != 0) return i;
+	if (i != 0) return i < 0;
 
 	/* If all else is equal, use some unique index to sort it the same way. */
-	return b->unitnumber - a->unitnumber;
+	return b->unitnumber < a->unitnumber;
 }
 
 /**
@@ -295,7 +292,7 @@ CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1,
 		int num_vehs = (uint)vehs.size();
 
 		if (num_vehs >= 2) {
-			QSortT(vehs.data(), vehs.size(), &VehicleTimetableSorter);
+			std::sort(vehs.begin(), vehs.end(), &VehicleTimetableSorter);
 		}
 
 		int idx = vehs.begin() - std::find(vehs.begin(), vehs.end(), v);
