@@ -69,9 +69,9 @@ protected:
 	}
 
 	/** Sort story pages by order value. */
-	static int CDECL PageOrderSorter(const StoryPage * const *a, const StoryPage * const *b)
+	static bool PageOrderSorter(const StoryPage * const &a, const StoryPage * const &b)
 	{
-		return (*a)->sort_value - (*b)->sort_value;
+		return a->sort_value < b->sort_value;
 	}
 
 	/** (Re)Build story page element list. */
@@ -98,9 +98,9 @@ protected:
 	}
 
 	/** Sort story page elements by order value. */
-	static int CDECL PageElementOrderSorter(const StoryPageElement * const *a, const StoryPageElement * const *b)
+	static bool PageElementOrderSorter(const StoryPageElement * const &a, const StoryPageElement * const &b)
 	{
-		return (*a)->sort_value - (*b)->sort_value;
+		return a->sort_value < b->sort_value;
 	}
 
 	/*

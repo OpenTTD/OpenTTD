@@ -49,8 +49,8 @@ struct Filtering {
 template <typename T, typename F = const char*>
 class GUIList : public std::vector<T> {
 public:
-	typedef int CDECL SortFunction(const T*, const T*); ///< Signature of sort function.
-	typedef bool CDECL FilterFunction(const T*, F);     ///< Signature of filter function.
+	typedef bool SortFunction(const T&, const T&);  ///< Signature of sort function.
+	typedef bool CDECL FilterFunction(const T*, F); ///< Signature of filter function.
 
 protected:
 	SortFunction * const *sort_func_list;     ///< the sort criteria functions
@@ -270,11 +270,11 @@ public:
 		if (this->flags & VL_FIRST_SORT) {
 			CLRBITS(this->flags, VL_FIRST_SORT);
 
-			QSortT(std::vector<T>::data(), std::vector<T>::size(), compare, desc);
+			std::sort(std::vector<T>::begin(), std::vector<T>::end(), [&](const T &a, const T &b) { return desc ? compare(b, a) : compare(a, b); });
 			return true;
 		}
 
-		GSortT(std::vector<T>::data(), std::vector<T>::size(), compare, desc);
+		std::sort(std::vector<T>::begin(), std::vector<T>::end(), [&](const T &a, const T &b) { return desc ? compare(b, a) : compare(a, b); });
 		return true;
 	}
 

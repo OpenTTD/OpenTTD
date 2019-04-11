@@ -72,21 +72,21 @@ struct SignList {
 	}
 
 	/** Sort signs by their name */
-	static int CDECL SignNameSorter(const Sign * const *a, const Sign * const *b)
+	static bool SignNameSorter(const Sign * const &a, const Sign * const &b)
 	{
 		/* Signs are very very rarely using the default text, but there can also be
 		 * a lot of them. Therefore a worthwhile performance gain can be made by
 		 * directly comparing Sign::name instead of going through the string
 		 * system for each comparison. */
-		const char *a_name = (*a)->name;
-		const char *b_name = (*b)->name;
+		const char *a_name = a->name;
+		const char *b_name = b->name;
 
 		if (a_name == nullptr) a_name = SignList::default_name;
 		if (b_name == nullptr) b_name = SignList::default_name;
 
 		int r = strnatcmp(a_name, b_name); // Sort by name (natural sorting).
 
-		return r != 0 ? r : ((*a)->index - (*b)->index);
+		return r != 0 ? r < 0 : (a->index < b->index);
 	}
 
 	void SortSignsList()

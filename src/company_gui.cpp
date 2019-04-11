@@ -616,26 +616,26 @@ private:
 		ShowDropDownList(this, std::move(list), sel, widget);
 	}
 
-	static int CDECL GroupNameSorter(const Group * const *a, const Group * const *b)
+	static bool GroupNameSorter(const Group * const &a, const Group * const &b)
 	{
 		static const Group *last_group[2] = { nullptr, nullptr };
 		static char         last_name[2][64] = { "", "" };
 
-		if (*a != last_group[0]) {
-			last_group[0] = *a;
-			SetDParam(0, (*a)->index);
+		if (a != last_group[0]) {
+			last_group[0] = a;
+			SetDParam(0, a->index);
 			GetString(last_name[0], STR_GROUP_NAME, lastof(last_name[0]));
 		}
 
-		if (*b != last_group[1]) {
-			last_group[1] = *b;
-			SetDParam(0, (*b)->index);
+		if (b != last_group[1]) {
+			last_group[1] = b;
+			SetDParam(0, b->index);
 			GetString(last_name[1], STR_GROUP_NAME, lastof(last_name[1]));
 		}
 
 		int r = strnatcmp(last_name[0], last_name[1]); // Sort by name (natural sorting).
-		if (r == 0) return (*a)->index - (*b)->index;
-		return r;
+		if (r == 0) return a->index < b->index;
+		return r < 0;
 	}
 
 	void AddChildren(GUIGroupList *source, GroupID parent, int indent)

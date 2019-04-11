@@ -668,54 +668,55 @@ private:
 	}
 
 	/** Sort by town name */
-	static int CDECL TownNameSorter(const Town * const *a, const Town * const *b)
+	static bool TownNameSorter(const Town * const &a, const Town * const &b)
 	{
 		static char buf_cache[64];
-		const Town *ta = *a;
-		const Town *tb = *b;
 		char buf[64];
 
-		SetDParam(0, ta->index);
+		SetDParam(0, a->index);
 		GetString(buf, STR_TOWN_NAME, lastof(buf));
 
 		/* If 'b' is the same town as in the last round, use the cached value
 		 * We do this to speed stuff up ('b' is called with the same value a lot of
 		 * times after each other) */
-		if (tb != last_town) {
-			last_town = tb;
-			SetDParam(0, tb->index);
+		if (b != last_town) {
+			last_town = b;
+			SetDParam(0, b->index);
 			GetString(buf_cache, STR_TOWN_NAME, lastof(buf_cache));
 		}
 
-		return strnatcmp(buf, buf_cache); // Sort by name (natural sorting).
+		return strnatcmp(buf, buf_cache) < 0; // Sort by name (natural sorting).
 	}
 
 	/** Sort by population (default descending, as big towns are of the most interest). */
-	static int CDECL TownPopulationSorter(const Town * const *a, const Town * const *b)
+	static bool TownPopulationSorter(const Town * const &a, const Town * const &b)
 	{
-		uint32 a_population = (*a)->cache.population;
-		uint32 b_population = (*b)->cache.population;
+		uint32 a_population = a->cache.population;
+		uint32 b_population = b->cache.population;
 		if (a_population == b_population) return TownDirectoryWindow::TownNameSorter(a, b);
-		return (a_population < b_population) ? -1 : 1;
+		return a_population < b_population;
 	}
 
 	/** Sort by town rating */
-	static int CDECL TownRatingSorter(const Town * const *a, const Town * const *b)
+	static bool TownRatingSorter(const Town * const &a, const Town * const &b)
 	{
-		int before = TownDirectoryWindow::last_sorting.order ? 1 : -1; // Value to get 'a' before 'b'.
+		bool before = !TownDirectoryWindow::last_sorting.order; // Value to get 'a' before 'b'.
 
 		/* Towns without rating are always after towns with rating. */
-		if (HasBit((*a)->have_ratings, _local_company)) {
-			if (HasBit((*b)->have_ratings, _local_company)) {
-				int16 a_rating = (*a)->ratings[_local_company];
-				int16 b_rating = (*b)->ratings[_local_company];
+		if (HasBit(a->have_ratings, _local_company)) {
+			if (HasBit(b->have_ratings, _local_company)) {
+				int16 a_rating = a->ratings[_local_company];
+				int16 b_rating = b->ratings[_local_company];
 				if (a_rating == b_rating) return TownDirectoryWindow::TownNameSorter(a, b);
-				return (a_rating < b_rating) ? -1 : 1;
+				return a_rating < b_rating;
 			}
 			return before;
 		}
-		if (HasBit((*b)->have_ratings, _local_company)) return -before;
-		return -before * TownDirectoryWindow::TownNameSorter(a, b); // Sort unrated towns always on ascending town name.
+		if (HasBit(b->have_ratings, _local_company)) return !before;
+
+		/* Sort unrated towns always on ascending town name. */
+		if (before) return TownDirectoryWindow::TownNameSorter(a, b);
+		return !TownDirectoryWindow::TownNameSorter(a, b);
 	}
 
 public:
