@@ -27,5 +27,5 @@ namespace SQConvert {
 	template <> inline ScriptCargo &GetParam(ForceType<ScriptCargo &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptCargo *)instance; }
 	template <> inline const ScriptCargo *GetParam(ForceType<const ScriptCargo *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptCargo *)instance; }
 	template <> inline const ScriptCargo &GetParam(ForceType<const ScriptCargo &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptCargo *)instance; }
-	template <> inline int Return<ScriptCargo *>(HSQUIRRELVM vm, ScriptCargo *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Cargo", res, NULL, DefSQDestructorCallback<ScriptCargo>, true); return 1; }
+	template <> inline int Return<ScriptCargo *>(HSQUIRRELVM vm, ScriptCargo *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Cargo", res, nullptr, DefSQDestructorCallback<ScriptCargo>, true); return 1; }
 } // namespace SQConvert

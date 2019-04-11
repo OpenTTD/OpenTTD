@@ -17,7 +17,7 @@ namespace SQConvert {
 	template <> inline ScriptIndustryList &GetParam(ForceType<ScriptIndustryList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptIndustryList *)instance; }
 	template <> inline const ScriptIndustryList *GetParam(ForceType<const ScriptIndustryList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptIndustryList *)instance; }
 	template <> inline const ScriptIndustryList &GetParam(ForceType<const ScriptIndustryList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptIndustryList *)instance; }
-	template <> inline int Return<ScriptIndustryList *>(HSQUIRRELVM vm, ScriptIndustryList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "IndustryList", res, NULL, DefSQDestructorCallback<ScriptIndustryList>, true); return 1; }
+	template <> inline int Return<ScriptIndustryList *>(HSQUIRRELVM vm, ScriptIndustryList *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "IndustryList", res, nullptr, DefSQDestructorCallback<ScriptIndustryList>, true); return 1; }
 } // namespace SQConvert
 
 namespace SQConvert {
@@ -26,7 +26,7 @@ namespace SQConvert {
 	template <> inline ScriptIndustryList_CargoAccepting &GetParam(ForceType<ScriptIndustryList_CargoAccepting &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptIndustryList_CargoAccepting *)instance; }
 	template <> inline const ScriptIndustryList_CargoAccepting *GetParam(ForceType<const ScriptIndustryList_CargoAccepting *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptIndustryList_CargoAccepting *)instance; }
 	template <> inline const ScriptIndustryList_CargoAccepting &GetParam(ForceType<const ScriptIndustryList_CargoAccepting &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptIndustryList_CargoAccepting *)instance; }
-	template <> inline int Return<ScriptIndustryList_CargoAccepting *>(HSQUIRRELVM vm, ScriptIndustryList_CargoAccepting *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "IndustryList_CargoAccepting", res, NULL, DefSQDestructorCallback<ScriptIndustryList_CargoAccepting>, true); return 1; }
+	template <> inline int Return<ScriptIndustryList_CargoAccepting *>(HSQUIRRELVM vm, ScriptIndustryList_CargoAccepting *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "IndustryList_CargoAccepting", res, nullptr, DefSQDestructorCallback<ScriptIndustryList_CargoAccepting>, true); return 1; }
 } // namespace SQConvert
 
 namespace SQConvert {
@@ -35,5 +35,5 @@ namespace SQConvert {
 	template <> inline ScriptIndustryList_CargoProducing &GetParam(ForceType<ScriptIndustryList_CargoProducing &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptIndustryList_CargoProducing *)instance; }
 	template <> inline const ScriptIndustryList_CargoProducing *GetParam(ForceType<const ScriptIndustryList_CargoProducing *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptIndustryList_CargoProducing *)instance; }
 	template <> inline const ScriptIndustryList_CargoProducing &GetParam(ForceType<const ScriptIndustryList_CargoProducing &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptIndustryList_CargoProducing *)instance; }
-	template <> inline int Return<ScriptIndustryList_CargoProducing *>(HSQUIRRELVM vm, ScriptIndustryList_CargoProducing *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "IndustryList_CargoProducing", res, NULL, DefSQDestructorCallback<ScriptIndustryList_CargoProducing>, true); return 1; }
+	template <> inline int Return<ScriptIndustryList_CargoProducing *>(HSQUIRRELVM vm, ScriptIndustryList_CargoProducing *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "IndustryList_CargoProducing", res, nullptr, DefSQDestructorCallback<ScriptIndustryList_CargoProducing>, true); return 1; }
 } // namespace SQConvert

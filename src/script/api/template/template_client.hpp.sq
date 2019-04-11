@@ -21,5 +21,5 @@ namespace SQConvert {
 	template <> inline ScriptClient &GetParam(ForceType<ScriptClient &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptClient *)instance; }
 	template <> inline const ScriptClient *GetParam(ForceType<const ScriptClient *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptClient *)instance; }
 	template <> inline const ScriptClient &GetParam(ForceType<const ScriptClient &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptClient *)instance; }
-	template <> inline int Return<ScriptClient *>(HSQUIRRELVM vm, ScriptClient *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Client", res, NULL, DefSQDestructorCallback<ScriptClient>, true); return 1; }
+	template <> inline int Return<ScriptClient *>(HSQUIRRELVM vm, ScriptClient *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Client", res, nullptr, DefSQDestructorCallback<ScriptClient>, true); return 1; }
 } // namespace SQConvert

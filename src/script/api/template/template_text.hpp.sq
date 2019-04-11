@@ -25,6 +25,6 @@ namespace SQConvert {
 		if (sq_gettype(vm, index) == OT_STRING) {
 			return new RawText(GetParam(ForceType<const char *>(), vm, index, ptr));
 		}
-		return NULL;
+		return nullptr;
 	}
 } // namespace SQConvert

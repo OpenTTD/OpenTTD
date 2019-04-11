@@ -31,5 +31,5 @@ namespace SQConvert {
 	template <> inline ScriptTile &GetParam(ForceType<ScriptTile &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptTile *)instance; }
 	template <> inline const ScriptTile *GetParam(ForceType<const ScriptTile *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptTile *)instance; }
 	template <> inline const ScriptTile &GetParam(ForceType<const ScriptTile &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptTile *)instance; }
-	template <> inline int Return<ScriptTile *>(HSQUIRRELVM vm, ScriptTile *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Tile", res, NULL, DefSQDestructorCallback<ScriptTile>, true); return 1; }
+	template <> inline int Return<ScriptTile *>(HSQUIRRELVM vm, ScriptTile *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Tile", res, nullptr, DefSQDestructorCallback<ScriptTile>, true); return 1; }
 } // namespace SQConvert

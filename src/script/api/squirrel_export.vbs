@@ -62,7 +62,7 @@ Function DumpClassTemplates(name, file)
 	file.WriteLine "	template <> inline const " & name & " *GetParam(ForceType<const " & name & " *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (" & name & " *)instance; }"
 	file.WriteLine "	template <> inline const " & name & " &GetParam(ForceType<const " & name & " &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(" & name & " *)instance; }"
 	If name = "ScriptEvent" Then
-		file.WriteLine "	template <> inline int Return<" & name & " *>(HSQUIRRELVM vm, " & name & " *res) { if (res == NULL) { sq_pushnull(vm); return 1; } Squirrel::CreateClassInstanceVM(vm, " & Chr(34) & realname & Chr(34) & ", res, NULL, DefSQDestructorCallback<" & name & ">, true); return 1; }"
+		file.WriteLine "	template <> inline int Return<" & name & " *>(HSQUIRRELVM vm, " & name & " *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } Squirrel::CreateClassInstanceVM(vm, " & Chr(34) & realname & Chr(34) & ", res, nullptr, DefSQDestructorCallback<" & name & ">, true); return 1; }"
 	ElseIf name = "ScriptText" Then
 		file.WriteLine ""
 		file.WriteLine "	template <> inline Text *GetParam(ForceType<Text *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) {"
@@ -72,10 +72,10 @@ Function DumpClassTemplates(name, file)
 		file.WriteLine "		if (sq_gettype(vm, index) == OT_STRING) {"
 		file.WriteLine "			return new RawText(GetParam(ForceType<const char *>(), vm, index, ptr));"
 		file.WriteLine "		}"
-		file.WriteLine "		return NULL;"
+		file.WriteLine "		return nullptr;"
 		file.WriteLine "	}"
 	Else
-		file.WriteLine "	template <> inline int Return<" & name & " *>(HSQUIRRELVM vm, " & name & " *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, " & Chr(34) & realname & Chr(34) & ", res, NULL, DefSQDestructorCallback<" & name & ">, true); return 1; }"
+		file.WriteLine "	template <> inline int Return<" & name & " *>(HSQUIRRELVM vm, " & name & " *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, " & Chr(34) & realname & Chr(34) & ", res, nullptr, DefSQDestructorCallback<" & name & ">, true); return 1; }"
 	End If
 End Function
 

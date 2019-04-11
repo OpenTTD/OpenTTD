@@ -17,5 +17,5 @@ namespace SQConvert {
 	template <> inline ScriptMap &GetParam(ForceType<ScriptMap &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptMap *)instance; }
 	template <> inline const ScriptMap *GetParam(ForceType<const ScriptMap *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptMap *)instance; }
 	template <> inline const ScriptMap &GetParam(ForceType<const ScriptMap &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptMap *)instance; }
-	template <> inline int Return<ScriptMap *>(HSQUIRRELVM vm, ScriptMap *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Map", res, NULL, DefSQDestructorCallback<ScriptMap>, true); return 1; }
+	template <> inline int Return<ScriptMap *>(HSQUIRRELVM vm, ScriptMap *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Map", res, nullptr, DefSQDestructorCallback<ScriptMap>, true); return 1; }
 } // namespace SQConvert

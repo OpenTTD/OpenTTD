@@ -21,5 +21,5 @@ namespace SQConvert {
 	template <> inline ScriptDate &GetParam(ForceType<ScriptDate &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptDate *)instance; }
 	template <> inline const ScriptDate *GetParam(ForceType<const ScriptDate *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptDate *)instance; }
 	template <> inline const ScriptDate &GetParam(ForceType<const ScriptDate &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptDate *)instance; }
-	template <> inline int Return<ScriptDate *>(HSQUIRRELVM vm, ScriptDate *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Date", res, NULL, DefSQDestructorCallback<ScriptDate>, true); return 1; }
+	template <> inline int Return<ScriptDate *>(HSQUIRRELVM vm, ScriptDate *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Date", res, nullptr, DefSQDestructorCallback<ScriptDate>, true); return 1; }
 } // namespace SQConvert
