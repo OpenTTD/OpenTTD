@@ -14,6 +14,7 @@
 
 #include "../driver.h"
 #include "../core/geometry_type.hpp"
+#include <vector>
 
 /** The base of all video drivers. */
 class VideoDriver : public Driver {
@@ -101,8 +102,7 @@ public:
 };
 
 extern char *_ini_videodriver;
-extern int _num_resolutions;
-extern Dimension _resolutions[32];
+extern std::vector<Dimension> _resolutions;
 extern Dimension _cur_resolution;
 extern bool _rightclick_emulate;
 

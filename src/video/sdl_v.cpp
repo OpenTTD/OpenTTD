@@ -27,6 +27,7 @@
 #include <SDL.h>
 #include <mutex>
 #include <condition_variable>
+#include <algorithm>
 
 #include "../safeguards.h"
 
@@ -207,53 +208,40 @@ static void GetVideoModes()
 	SDL_Rect **modes = SDL_ListModes(nullptr, SDL_SWSURFACE | SDL_FULLSCREEN);
 	if (modes == nullptr) usererror("sdl: no modes available");
 
+	_resolutions.clear();
+
 	_all_modes = (SDL_ListModes(nullptr, SDL_SWSURFACE | (_fullscreen ? SDL_FULLSCREEN : 0)) == (void*)-1);
 	if (modes == (void*)-1) {
-		int n = 0;
 		for (uint i = 0; i < lengthof(_default_resolutions); i++) {
 			if (SDL_VideoModeOK(_default_resolutions[i].width, _default_resolutions[i].height, 8, SDL_FULLSCREEN) != 0) {
-				_resolutions[n] = _default_resolutions[i];
-				if (++n == lengthof(_resolutions)) break;
+				_resolutions.push_back(_default_resolutions[i]);
 			}
 		}
-		_num_resolutions = n;
 	} else {
-		int n = 0;
 		for (int i = 0; modes[i]; i++) {
 			uint w = modes[i]->w;
 			uint h = modes[i]->h;
 			if (w < 640 || h < 480) continue; // reject too small resolutions
-			int j;
-			for (j = 0; j < n; j++) {
-				if (_resolutions[j].width == w && _resolutions[j].height == h) break;
-			}
-
-			if (j == n) {
-				_resolutions[j].width  = w;
-				_resolutions[j].height = h;
-				if (++n == lengthof(_resolutions)) break;
-			}
+			if (std::find(_resolutions.begin(), _resolutions.end(), Dimension(w, h)) != _resolutions.end()) continue;
+			_resolutions.emplace_back(w, h);
 		}
-		if (n == 0) usererror("No usable screen resolutions found!\n");
-		_num_resolutions = n;
-		SortResolutions(_num_resolutions);
+		if (_resolutions.empty()) usererror("No usable screen resolutions found!\n");
+		SortResolutions();
 	}
 }
 
 static void GetAvailableVideoMode(uint *w, uint *h)
 {
 	/* All modes available? */
-	if (_all_modes || _num_resolutions == 0) return;
+	if (_all_modes || _resolutions.empty()) return;
 
 	/* Is the wanted mode among the available modes? */
-	for (int i = 0; i != _num_resolutions; i++) {
-		if (*w == _resolutions[i].width && *h == _resolutions[i].height) return;
-	}
+	if (std::find(_resolutions.begin(), _resolutions.end(), Dimension(*w, *h)) != _resolutions.end()) return;
 
 	/* Use the closest possible resolution */
-	int best = 0;
+	uint best = 0;
 	uint delta = Delta(_resolutions[0].width, *w) * Delta(_resolutions[0].height, *h);
-	for (int i = 1; i != _num_resolutions; ++i) {
+	for (uint i = 1; i != _resolutions.size(); ++i) {
 		uint newdelta = Delta(_resolutions[i].width, *w) * Delta(_resolutions[i].height, *h);
 		if (newdelta < delta) {
 			best = i;
@@ -817,7 +805,7 @@ bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 
 	_fullscreen = fullscreen;
 	GetVideoModes(); // get the list of available video modes
-	bool ret = _num_resolutions != 0 && CreateMainSurface(_cur_resolution.width, _cur_resolution.height);
+	bool ret = !_resolutions.empty() && CreateMainSurface(_cur_resolution.width, _cur_resolution.height);
 
 	if (!ret) {
 		/* switching resolution failed, put back full_screen to original status */

@@ -66,8 +66,7 @@ extern bool _right_button_clicked;
 extern DrawPixelInfo _screen;
 extern bool _screen_disable_anim;   ///< Disable palette animation (important for 32bpp-anim blitter during giant screenshot)
 
-extern int _num_resolutions;
-extern Dimension _resolutions[32];
+extern std::vector<Dimension> _resolutions;
 extern Dimension _cur_resolution;
 extern Palette _cur_palette; ///< Current palette
 
@@ -162,7 +161,7 @@ void SetAnimatedMouseCursor(const AnimCursor *table);
 void CursorTick();
 void UpdateCursorSize();
 bool ChangeResInGame(int w, int h);
-void SortResolutions(int count);
+void SortResolutions();
 bool ToggleFullScreen(bool fs);
 
 /* gfx.cpp */

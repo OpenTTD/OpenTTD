@@ -18,18 +18,17 @@
 
 #include "safeguards.h"
 
-char *_ini_videodriver;     ///< The video driver a stored in the configuration file.
-int _num_resolutions;       ///< The number of resolutions.
-Dimension _resolutions[32]; ///< List of resolutions.
-Dimension _cur_resolution;  ///< The current resolution.
-bool _rightclick_emulate;   ///< Whether right clicking is emulated.
+char *_ini_videodriver;              ///< The video driver a stored in the configuration file.
+std::vector<Dimension> _resolutions; ///< List of resolutions.
+Dimension _cur_resolution;           ///< The current resolution.
+bool _rightclick_emulate;            ///< Whether right clicking is emulated.
 
-char *_ini_sounddriver;     ///< The sound driver a stored in the configuration file.
+char *_ini_sounddriver;              ///< The sound driver a stored in the configuration file.
 
-char *_ini_musicdriver;     ///< The music driver a stored in the configuration file.
+char *_ini_musicdriver;              ///< The music driver a stored in the configuration file.
 
-char *_ini_blitter;         ///< The blitter as stored in the configuration file.
-bool _blitter_autodetected; ///< Was the blitter autodetected or specified by the user?
+char *_ini_blitter;                  ///< The blitter as stored in the configuration file.
+bool _blitter_autodetected;          ///< Was the blitter autodetected or specified by the user?
 
 /**
  * Get a string parameter the list of parameters.
