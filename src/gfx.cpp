@@ -1691,20 +1691,13 @@ bool ChangeResInGame(int width, int height)
 bool ToggleFullScreen(bool fs)
 {
 	bool result = VideoDriver::GetInstance()->ToggleFullscreen(fs);
-	if (_fullscreen != fs && _num_resolutions == 0) {
+	if (_fullscreen != fs && _resolutions.empty()) {
 		DEBUG(driver, 0, "Could not find a suitable fullscreen resolution");
 	}
 	return result;
 }
 
-static int CDECL compare_res(const Dimension *pa, const Dimension *pb)
+void SortResolutions()
 {
-	int x = pa->width - pb->width;
-	if (x != 0) return x;
-	return pa->height - pb->height;
-}
-
-void SortResolutions(int count)
-{
-	QSortT(_resolutions, count, &compare_res);
+	std::sort(_resolutions.begin(), _resolutions.end());
 }

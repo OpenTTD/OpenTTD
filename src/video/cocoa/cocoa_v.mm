@@ -234,13 +234,13 @@ static void setupApplication()
 }
 
 
-static int CDECL ModeSorter(const OTTD_Point *p1, const OTTD_Point *p2)
+static bool ModeSorter(const OTTD_Point &p1, const OTTD_Point &p2)
 {
-	if (p1->x < p2->x) return -1;
-	if (p1->x > p2->x) return +1;
-	if (p1->y < p2->y) return -1;
-	if (p1->y > p2->y) return +1;
-	return 0;
+	if (p1.x < p2.x) return true;
+	if (p1.x > p2.x) return false;
+	if (p1.y < p2.y) return true;
+	if (p1.y > p2.y) return false;
+	return false;
 }
 
 static void QZ_GetDisplayModeInfo(CFArrayRef modes, CFIndex i, int &bpp, uint16 &width, uint16 &height)
@@ -326,7 +326,7 @@ uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_i
 	}
 
 	/* Sort list smallest to largest */
-	QSortT(modes, count, &ModeSorter);
+	std::sort(modes, modes + count, ModeSorter);
 
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
 	if (MacOSVersionIsAtLeast(10, 6, 0)) CFRelease(mode_list);
@@ -363,12 +363,10 @@ static void QZ_UpdateVideoModes()
 	OTTD_Point modes[32];
 	uint count = _cocoa_subdriver->ListModes(modes, lengthof(modes));
 
+	_resolutions.clear();
 	for (uint i = 0; i < count; i++) {
-		_resolutions[i].width  = modes[i].x;
-		_resolutions[i].height = modes[i].y;
+		_resolutions.emplace_back(modes[i].x, modes[i].y);
 	}
-
-	_num_resolutions = count;
 }
 
 /**

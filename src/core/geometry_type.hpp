@@ -29,6 +29,20 @@ struct Point {
 struct Dimension {
 	uint width;
 	uint height;
+
+	Dimension(uint w = 0, uint h = 0) : width(w), height(h) {};
+
+	bool operator< (const Dimension &other) const
+	{
+		int x = (*this).width - other.width;
+		if (x != 0) return x < 0;
+		return (*this).height < other.height;
+	}
+
+	bool operator== (const Dimension &other) const
+	{
+		return (*this).width == other.width && (*this).height == other.height;
+	}
 };
 
 /** Specification of a rectangle with absolute coordinates of all edges */

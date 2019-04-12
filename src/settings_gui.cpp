@@ -104,17 +104,14 @@ static inline StringID TownName(int town_name)
 
 /**
  * Get index of the current screen resolution.
- * @return Index of the current screen resolution if it is a known resolution, #_num_resolutions otherwise.
+ * @return Index of the current screen resolution if it is a known resolution, _resolutions.size() otherwise.
  */
-static int GetCurRes()
+static uint GetCurRes()
 {
-	int i;
+	uint i;
 
-	for (i = 0; i != _num_resolutions; i++) {
-		if ((int)_resolutions[i].width == _screen.width &&
-				(int)_resolutions[i].height == _screen.height) {
-			break;
-		}
+	for (i = 0; i != _resolutions.size(); i++) {
+		if (_resolutions[i] == Dimension(_screen.width, _screen.height)) break;
 	}
 	return i;
 }
@@ -286,10 +283,10 @@ struct GameOptionsWindow : Window {
 			}
 
 			case WID_GO_RESOLUTION_DROPDOWN: // Setup resolution dropdown
-				if (_num_resolutions == 0) break;
+				if (_resolutions.empty()) break;
 
 				*selected_index = GetCurRes();
-				for (int i = 0; i < _num_resolutions; i++) {
+				for (uint i = 0; i < _resolutions.size(); i++) {
 					list.emplace_back(new DropDownListStringItem(SPECSTR_RESOLUTION_START + i, i, false));
 				}
 				break;
@@ -336,7 +333,7 @@ struct GameOptionsWindow : Window {
 			case WID_GO_TOWNNAME_DROPDOWN:   SetDParam(0, TownName(this->opt->game_creation.town_name)); break;
 			case WID_GO_AUTOSAVE_DROPDOWN:   SetDParam(0, _autosave_dropdown[_settings_client.gui.autosave]); break;
 			case WID_GO_LANG_DROPDOWN:       SetDParamStr(0, _current_language->own_name); break;
-			case WID_GO_RESOLUTION_DROPDOWN: SetDParam(0, GetCurRes() == _num_resolutions ? STR_GAME_OPTIONS_RESOLUTION_OTHER : SPECSTR_RESOLUTION_START + GetCurRes()); break;
+			case WID_GO_RESOLUTION_DROPDOWN: SetDParam(0, GetCurRes() == _resolutions.size() ? STR_GAME_OPTIONS_RESOLUTION_OTHER : SPECSTR_RESOLUTION_START + GetCurRes()); break;
 			case WID_GO_GUI_ZOOM_DROPDOWN:   SetDParam(0, _gui_zoom_dropdown[ZOOM_LVL_OUT_4X - _gui_zoom]); break;
 			case WID_GO_FONT_ZOOM_DROPDOWN:  SetDParam(0, _font_zoom_dropdown[ZOOM_LVL_OUT_4X - _font_zoom]); break;
 			case WID_GO_BASE_GRF_DROPDOWN:   SetDParamStr(0, BaseGraphics::GetUsedSet()->name); break;
@@ -535,7 +532,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_RESOLUTION_DROPDOWN: // Change resolution
-				if (index < _num_resolutions && ChangeResInGame(_resolutions[index].width, _resolutions[index].height)) {
+				if ((uint)index < _resolutions.size() && ChangeResInGame(_resolutions[index].width, _resolutions[index].height)) {
 					this->SetDirty();
 				}
 				break;

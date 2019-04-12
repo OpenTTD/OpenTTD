@@ -29,6 +29,7 @@
 #include <imm.h>
 #include <mutex>
 #include <condition_variable>
+#include <algorithm>
 
 #include "../safeguards.h"
 
@@ -1085,45 +1086,29 @@ static const Dimension default_resolutions[] = {
 
 static void FindResolutions()
 {
-	uint n = 0;
 	uint i;
 	DEVMODEA dm;
 
 	/* Check modes for the relevant fullscreen bpp */
 	uint bpp = _support8bpp != S8BPP_HARDWARE ? 32 : BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
+	_resolutions.clear();
+
 	/* XXX - EnumDisplaySettingsW crashes with unicows.dll on Windows95
 	 * Doesn't really matter since we don't pass a string anyways, but still
 	 * a letdown */
 	for (i = 0; EnumDisplaySettingsA(nullptr, i, &dm) != 0; i++) {
-		if (dm.dmBitsPerPel == bpp &&
-				dm.dmPelsWidth >= 640 && dm.dmPelsHeight >= 480) {
-			uint j;
-
-			for (j = 0; j < n; j++) {
-				if (_resolutions[j].width == dm.dmPelsWidth && _resolutions[j].height == dm.dmPelsHeight) break;
-			}
-
-			/* In the previous loop we have checked already existing/added resolutions if
-			 * they are the same as the new ones. If this is not the case (j == n); we have
-			 * looped all and found none, add the new one to the list. If we have reached the
-			 * maximum amount of resolutions, then quit querying the display */
-			if (j == n) {
-				_resolutions[j].width  = dm.dmPelsWidth;
-				_resolutions[j].height = dm.dmPelsHeight;
-				if (++n == lengthof(_resolutions)) break;
-			}
-		}
+		if (dm.dmBitsPerPel != bpp || dm.dmPelsWidth < 640 || dm.dmPelsHeight < 480) continue;
+		if (std::find(_resolutions.begin(), _resolutions.end(), Dimension(dm.dmPelsWidth, dm.dmPelsHeight)) != _resolutions.end()) continue;
+		_resolutions.emplace_back(dm.dmPelsWidth, dm.dmPelsHeight);
 	}
 
 	/* We have found no resolutions, show the default list */
-	if (n == 0) {
-		memcpy(_resolutions, default_resolutions, sizeof(default_resolutions));
-		n = lengthof(default_resolutions);
+	if (_resolutions.empty()) {
+		_resolutions.assign(std::begin(default_resolutions), std::end(default_resolutions));
 	}
 
-	_num_resolutions = n;
-	SortResolutions(_num_resolutions);
+	SortResolutions();
 }
 
 static FVideoDriver_Win32 iFVideoDriver_Win32;
