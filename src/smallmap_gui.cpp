@@ -210,7 +210,7 @@ void BuildLinkStatsLegend()
 	memset(_legend_linkstats, 0, sizeof(_legend_linkstats));
 
 	uint i = 0;
-	for (; i < _sorted_cargo_specs_size; ++i) {
+	for (; i < _sorted_cargo_specs.size(); ++i) {
 		const CargoSpec *cs = _sorted_cargo_specs[i];
 
 		_legend_linkstats[i].legend = cs->name;
