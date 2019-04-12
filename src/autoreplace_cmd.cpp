@@ -78,11 +78,6 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 			if (HasBit(e_from->info.misc_flags, EF_ROAD_TRAM) != HasBit(e_to->info.misc_flags, EF_ROAD_TRAM)) return false;
 			break;
 
-		case VEH_AIRCRAFT:
-			/* make sure that we do not replace a plane with a helicopter or vice versa */
-			if ((e_from->u.air.subtype & AIR_CTOL) != (e_to->u.air.subtype & AIR_CTOL)) return false;
-			break;
-
 		default: break;
 	}
 
