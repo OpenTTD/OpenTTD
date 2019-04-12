@@ -230,6 +230,8 @@ static void GenericPlaceSignals(TileIndex tile)
 
 		/* Map the setting cycle_signal_types to the lower and upper allowed signal type. */
 		static const uint cycle_bounds[] = {SIGTYPE_NORMAL | (SIGTYPE_LAST_NOPBS << 3), SIGTYPE_PBS | (SIGTYPE_LAST << 3), SIGTYPE_NORMAL | (SIGTYPE_LAST << 3)};
+		/* If block signals are hidden from UI, override and only allow cycling path signals */
+		int cycle_selection = _settings_client.gui.show_blocksignals ? _settings_client.gui.cycle_signal_types : 1;
 
 		/* various bitstuffed elements for CmdBuildSingleSignal() */
 		uint32 p1 = track;
@@ -240,13 +242,13 @@ static void GenericPlaceSignals(TileIndex tile)
 			SB(p1, 4, 1, _cur_signal_variant);
 			SB(p1, 5, 3, _cur_signal_type);
 			SB(p1, 8, 1, _convert_signal_button);
-			SB(p1, 9, 6, cycle_bounds[_settings_client.gui.cycle_signal_types]);
+			SB(p1, 9, 6, cycle_bounds[cycle_selection]);
 		} else {
 			SB(p1, 3, 1, _ctrl_pressed);
 			SB(p1, 4, 1, (_cur_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC));
-			SB(p1, 5, 3, _default_signal_type[_settings_client.gui.default_signal_type]);
+			SB(p1, 5, 3, (_settings_client.gui.show_blocksignals ? _default_signal_type[_settings_client.gui.default_signal_type] : SIGTYPE_PBS));
 			SB(p1, 8, 1, 0);
-			SB(p1, 9, 6, cycle_bounds[_settings_client.gui.cycle_signal_types]);
+			SB(p1, 9, 6, cycle_bounds[cycle_selection]);
 		}
 
 		DoCommandP(tile, p1, 0, CMD_BUILD_SIGNALS |
@@ -582,6 +584,9 @@ struct BuildRailToolbarWindow : Window {
 			case WID_RAT_BUILD_SIGNALS: {
 				this->last_user_action = widget;
 				bool started = HandlePlacePushButton(this, WID_RAT_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, HT_RECT);
+				if (!_settings_client.gui.show_blocksignals && _cur_signal_type < SIGTYPE_PBS) {
+					_cur_signal_type = SIGTYPE_PBS;
+				}
 				if (started && _settings_client.gui.enable_signal_gui != _ctrl_pressed) {
 					ShowSignalBuilder(this);
 				}
@@ -1551,6 +1556,25 @@ public:
 		} else if (IsInsideMM(widget, WID_BS_SEMAPHORE_NORM, WID_BS_ELECTRIC_PBS_OWAY + 1)) {
 			size->width = max(size->width, this->sig_sprite_size.width + WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT);
 			size->height = max(size->height, this->sig_sprite_size.height + WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM);
+		}
+
+		if (!_settings_client.gui.show_blocksignals) {
+			switch (widget) {
+				case WID_BS_SEMAPHORE_NORM:
+				case WID_BS_SEMAPHORE_ENTRY:
+				case WID_BS_SEMAPHORE_EXIT:
+				case WID_BS_SEMAPHORE_COMBO:
+				case WID_BS_ELECTRIC_NORM:
+				case WID_BS_ELECTRIC_ENTRY:
+				case WID_BS_ELECTRIC_EXIT:
+				case WID_BS_ELECTRIC_COMBO:
+					*size = Dimension{ 0, 0 };
+					*resize = *size;
+					*fill = *size;
+					break;
+				default:
+					break;
+			}
 		}
 	}
 
