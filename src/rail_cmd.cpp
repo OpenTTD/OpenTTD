@@ -44,8 +44,7 @@
 typedef std::vector<Train *> TrainList;
 
 RailtypeInfo _railtypes[RAILTYPE_END];
-RailType _sorted_railtypes[RAILTYPE_END];
-uint8 _sorted_railtypes_size;
+std::vector<RailType> _sorted_railtypes;
 RailTypes _railtypes_hidden_mask;
 
 /** Enum holding the signal offset in the sprite sheet according to the side it is representing. */
@@ -130,9 +129,9 @@ void ResolveRailTypeGUISprites(RailtypeInfo *rti)
  * @param second The railtype to compare.
  * @return True iff the first should be sorted before the second.
  */
-static int CDECL CompareRailTypes(const RailType *first, const RailType *second)
+static bool CompareRailTypes(const RailType &first, const RailType &second)
 {
-	return GetRailTypeInfo(*first)->sorting_order - GetRailTypeInfo(*second)->sorting_order;
+	return GetRailTypeInfo(first)->sorting_order < GetRailTypeInfo(second)->sorting_order;
 }
 
 /**
@@ -146,13 +145,13 @@ void InitRailTypes()
 		if (HasBit(rti->flags, RTF_HIDDEN)) SetBit(_railtypes_hidden_mask, rt);
 	}
 
-	_sorted_railtypes_size = 0;
+	_sorted_railtypes.clear();
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
 		if (_railtypes[rt].label != 0 && !HasBit(_railtypes_hidden_mask, rt)) {
-			_sorted_railtypes[_sorted_railtypes_size++] = rt;
+			_sorted_railtypes.push_back(rt);
 		}
 	}
-	QSortT(_sorted_railtypes, _sorted_railtypes_size, CompareRailTypes);
+	std::sort(_sorted_railtypes.begin(), _sorted_railtypes.end(), CompareRailTypes);
 }
 
 /**
