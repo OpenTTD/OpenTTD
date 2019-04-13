@@ -192,8 +192,6 @@ struct WindowDesc : ZeroedMemoryAllocator {
 	static void LoadFromConfig();
 	static void SaveToConfig();
 
-	bool operator< (WindowDesc * const &other) const;
-
 private:
 	int16 default_width_trad;      ///< Preferred initial width of the window (pixels at 1x zoom).
 	int16 default_height_trad;     ///< Preferred initial height of the window (pixels at 1x zoom).
