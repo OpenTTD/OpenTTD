@@ -200,7 +200,7 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 	}
 
 	Waypoint *wp = nullptr;
-	TileArea new_location(TileArea(start_tile, width, height));
+	TileArea new_location(start_tile, width, height);
 	CommandCost ret = FindJoiningWaypoint(est, station_to_join, adjacent, new_location, &wp);
 	if (ret.Failed()) return ret;
 

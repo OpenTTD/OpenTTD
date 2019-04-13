@@ -101,9 +101,7 @@ bool IsHangar(TileIndex t)
 template <class T>
 CommandCost GetStationAround(TileArea ta, StationID closest_station, CompanyID company, T **st)
 {
-	ta.tile -= TileDiffXY(1, 1);
-	ta.w    += 2;
-	ta.h    += 2;
+	ta.Expand(1);
 
 	/* check around to see if there are any stations there owned by the company */
 	TILE_AREA_LOOP(tile_cur, ta) {
@@ -495,25 +493,8 @@ static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *c
 CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad)
 {
 	CargoArray produced;
-
-	int x = TileX(tile);
-	int y = TileY(tile);
-
-	/* expand the region by rad tiles on each side
-	 * while making sure that we remain inside the board. */
-	int x2 = min(x + w + rad, MapSizeX());
-	int x1 = max(x - rad, 0);
-
-	int y2 = min(y + h + rad, MapSizeY());
-	int y1 = max(y - rad, 0);
-
-	assert(x1 < x2);
-	assert(y1 < y2);
-	assert(w > 0);
-	assert(h > 0);
-
 	std::set<IndustryID> industries;
-	TileArea ta(TileXY(x1, y1), TileXY(x2 - 1, y2 - 1));
+	TileArea ta = TileArea(tile, w, h).Expand(rad);
 
 	/* Loop over all tiles to get the produced cargo of
 	 * everything except industries */
@@ -553,30 +534,13 @@ CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, Cargo
 	CargoArray acceptance;
 	if (always_accepted != nullptr) *always_accepted = 0;
 
-	int x = TileX(tile);
-	int y = TileY(tile);
+	TileArea ta = TileArea(tile, w, h).Expand(rad);
 
-	/* expand the region by rad tiles on each side
-	 * while making sure that we remain inside the board. */
-	int x2 = min(x + w + rad, MapSizeX());
-	int y2 = min(y + h + rad, MapSizeY());
-	int x1 = max(x - rad, 0);
-	int y1 = max(y - rad, 0);
+	TILE_AREA_LOOP(tile, ta) {
+		/* Ignore industry if it has a neutral station. */
+		if (!_settings_game.station.serve_neutral_industries && IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile)->neutral_station != nullptr) continue;
 
-	assert(x1 < x2);
-	assert(y1 < y2);
-	assert(w > 0);
-	assert(h > 0);
-
-	for (int yc = y1; yc != y2; yc++) {
-		for (int xc = x1; xc != x2; xc++) {
-			TileIndex tile = TileXY(xc, yc);
-
-			/* Ignore industry if it has a neutral station. */
-			if (!_settings_game.station.serve_neutral_industries && IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile)->neutral_station != nullptr) continue;
-
-			AddAcceptedCargo(tile, acceptance, always_accepted);
-		}
+		AddAcceptedCargo(tile, acceptance, always_accepted);
 	}
 
 	return acceptance;
@@ -3858,15 +3822,12 @@ void FindStationsAroundTiles(const TileArea &location, StationList * const stati
 	}
 
 	/* Not using, or don't have a nearby stations list, so we need to scan. */
-	uint x = TileX(location.tile);
-	uint y = TileY(location.tile);
-
 	std::set<StationID> seen_stations;
 
 	/* Scan an area around the building covering the maximum possible station
 	 * to find the possible nearby stations. */
 	uint max_c = _settings_game.station.modified_catchment ? MAX_CATCHMENT : CA_UNMODIFIED;
-	TileArea ta(TileXY(max<int>(0, x - max_c), max<int>(0, y - max_c)), TileXY(min<int>(MapMaxX(), x + location.w + max_c), min<int>(MapMaxY(), y + location.h + max_c)));
+	TileArea ta = TileArea(location).Expand(max_c);
 	TILE_AREA_LOOP(tile, ta) {
 		if (IsTileType(tile, MP_STATION)) seen_stations.insert(GetStationIndex(tile));
 	}
