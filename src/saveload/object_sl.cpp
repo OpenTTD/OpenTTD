@@ -74,6 +74,6 @@ static void Load_OBID()
 }
 
 extern const ChunkHandler _object_chunk_handlers[] = {
-	{ 'OBID', Save_OBID, Load_OBID, nullptr,      nullptr, CH_ARRAY },
+	{ 'OBID', Save_OBID, Load_OBID, nullptr,   nullptr, CH_ARRAY },
 	{ 'OBJS', Save_OBJS, Load_OBJS, Ptrs_OBJS, nullptr, CH_ARRAY | CH_LAST},
 };

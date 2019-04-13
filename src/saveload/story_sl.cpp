@@ -103,5 +103,5 @@ static void Load_STORY_PAGE()
 
 extern const ChunkHandler _story_page_chunk_handlers[] = {
 	{ 'STPE', Save_STORY_PAGE_ELEMENT, Load_STORY_PAGE_ELEMENT, nullptr, nullptr, CH_ARRAY},
-	{ 'STPA', Save_STORY_PAGE, Load_STORY_PAGE, nullptr, nullptr, CH_ARRAY | CH_LAST},
+	{ 'STPA', Save_STORY_PAGE,         Load_STORY_PAGE,         nullptr, nullptr, CH_ARRAY | CH_LAST},
 };
