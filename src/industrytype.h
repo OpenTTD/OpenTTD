@@ -12,6 +12,7 @@
 #ifndef INDUSTRYTYPE_H
 #define INDUSTRYTYPE_H
 
+#include <array>
 #include "map_type.h"
 #include "slope_type.h"
 #include "industry_type.h"
@@ -179,7 +180,7 @@ extern IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
 /* industry_gui.cpp */
 void SortIndustryTypes();
 /* Industry types sorted alphabetically by name. */
-extern IndustryType _sorted_industry_types[NUM_INDUSTRYTYPES];
+extern std::array<IndustryType, NUM_INDUSTRYTYPES> _sorted_industry_types;
 
 /**
  * Do industry gfx ID translation for NewGRFs.

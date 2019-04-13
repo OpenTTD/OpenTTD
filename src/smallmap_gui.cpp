@@ -178,8 +178,7 @@ void BuildIndustriesLegend()
 	uint j = 0;
 
 	/* Add each name */
-	for (uint i = 0; i < NUM_INDUSTRYTYPES; i++) {
-		IndustryType ind = _sorted_industry_types[i];
+	for (IndustryType ind : _sorted_industry_types) {
 		const IndustrySpec *indsp = GetIndustrySpec(ind);
 		if (indsp->enabled) {
 			_legend_from_industries[j].legend = indsp->name;

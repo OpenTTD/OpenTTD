@@ -183,23 +183,23 @@ static inline void GetAllCargoSuffixes(CargoSuffixInOut use_input, CargoSuffixTy
 	}
 }
 
-IndustryType _sorted_industry_types[NUM_INDUSTRYTYPES]; ///< Industry types sorted by name.
+std::array<IndustryType, NUM_INDUSTRYTYPES> _sorted_industry_types; ///< Industry types sorted by name.
 
 /** Sort industry types by their name. */
-static int CDECL IndustryTypeNameSorter(const IndustryType *a, const IndustryType *b)
+static bool IndustryTypeNameSorter(const IndustryType &a, const IndustryType &b)
 {
 	static char industry_name[2][64];
 
-	const IndustrySpec *indsp1 = GetIndustrySpec(*a);
+	const IndustrySpec *indsp1 = GetIndustrySpec(a);
 	GetString(industry_name[0], indsp1->name, lastof(industry_name[0]));
 
-	const IndustrySpec *indsp2 = GetIndustrySpec(*b);
+	const IndustrySpec *indsp2 = GetIndustrySpec(b);
 	GetString(industry_name[1], indsp2->name, lastof(industry_name[1]));
 
 	int r = strnatcmp(industry_name[0], industry_name[1]); // Sort by name (natural sorting).
 
 	/* If the names are equal, sort by industry type. */
-	return (r != 0) ? r : (*a - *b);
+	return (r != 0) ? r < 0 : (a < b);
 }
 
 /**
@@ -213,7 +213,7 @@ void SortIndustryTypes()
 	}
 
 	/* Sort industry types by name. */
-	QSortT(_sorted_industry_types, NUM_INDUSTRYTYPES, &IndustryTypeNameSorter);
+	std::sort(_sorted_industry_types.begin(), _sorted_industry_types.end(), IndustryTypeNameSorter);
 }
 
 /**
@@ -302,8 +302,7 @@ class BuildIndustryWindow : public Window {
 		 * The tests performed after the enabled allow to load the industries
 		 * In the same way they are inserted by grf (if any)
 		 */
-		for (uint i = 0; i < NUM_INDUSTRYTYPES; i++) {
-			IndustryType ind = _sorted_industry_types[i];
+		for (IndustryType ind : _sorted_industry_types) {
 			const IndustrySpec *indsp = GetIndustrySpec(ind);
 			if (indsp->enabled) {
 				/* Rule is that editor mode loads all industries.
@@ -2723,8 +2722,7 @@ struct IndustryCargoesWindow : public Window {
 
 			case WID_IC_IND_DROPDOWN: {
 				DropDownList lst;
-				for (uint i = 0; i < NUM_INDUSTRYTYPES; i++) {
-					IndustryType ind = _sorted_industry_types[i];
+				for (IndustryType ind : _sorted_industry_types) {
 					const IndustrySpec *indsp = GetIndustrySpec(ind);
 					if (!indsp->enabled) continue;
 					lst.emplace_back(new DropDownListStringItem(indsp->name, ind, false));
@@ -2811,10 +2809,10 @@ const int IndustryCargoesWindow::VERT_TEXT_PADDING = 5; ///< Vertical padding ar
 static void ShowIndustryCargoesWindow(IndustryType id)
 {
 	if (id >= NUM_INDUSTRYTYPES) {
-		for (uint i = 0; i < NUM_INDUSTRYTYPES; i++) {
-			const IndustrySpec *indsp = GetIndustrySpec(_sorted_industry_types[i]);
+		for (IndustryType ind : _sorted_industry_types) {
+			const IndustrySpec *indsp = GetIndustrySpec(ind);
 			if (indsp->enabled) {
-				id = _sorted_industry_types[i];
+				id = ind;
 				break;
 			}
 		}
