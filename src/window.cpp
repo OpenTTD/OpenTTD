@@ -154,10 +154,10 @@ void WindowDesc::LoadFromConfig()
 /**
  * Sort WindowDesc by ini_key.
  */
-bool WindowDesc::operator< (WindowDesc * const &other) const
+static bool DescSorter(WindowDesc* const &a, WindowDesc* const &b)
 {
-	if (this->ini_key != nullptr && other->ini_key != nullptr) return strcmp(this->ini_key, other->ini_key) < 0;
-	return this->ini_key != nullptr;
+	if (a->ini_key != nullptr && b->ini_key != nullptr) return strcmp(a->ini_key, b->ini_key) < 0;
+	return a->ini_key != nullptr;
 }
 
 /**
@@ -166,7 +166,7 @@ bool WindowDesc::operator< (WindowDesc * const &other) const
 void WindowDesc::SaveToConfig()
 {
 	/* Sort the stuff to get a nice ini file on first write */
-	std::sort(_window_descs->begin(), _window_descs->end());
+	std::sort(_window_descs->begin(), _window_descs->end(), DescSorter);
 
 	IniFile *ini = new IniFile();
 	ini->LoadFromDisk(_windows_file, NO_DIRECTORY);

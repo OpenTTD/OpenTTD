@@ -164,16 +164,6 @@ struct SmallMap : std::vector<SmallPair<T, U> > {
 		n.first = key;
 		return n.second;
 	}
-
-	inline void SortByKey()
-	{
-		std::sort(std::vector<Pair>::begin(), std::vector<Pair>::end());
-	}
-
-	bool operator< (const Pair &other) const
-	{
-		return (*this).first < other.first;
-	}
 };
 
 #endif /* SMALLMAP_TYPE_HPP */
