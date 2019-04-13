@@ -75,7 +75,9 @@ static void UpdatePalette(bool init = false)
 		pal[i].unused = 0;
 	}
 
-	SDL_SetColors(_sdl_screen, pal, _local_palette.first_dirty, _local_palette.count_dirty);
+	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 8) {
+		SDL_SetColors(_sdl_screen, pal, _local_palette.first_dirty, _local_palette.count_dirty);
+	}
 
 	if (_sdl_screen != _sdl_realscreen && init) {
 		/* When using a shadow surface, also set our palette on the real screen. This lets SDL
@@ -717,6 +719,9 @@ void VideoDriver_SDL::MainLoop()
 			_fast_forward = 0;
 		}
 
+		if (_sdl_screen == _sdl_realscreen)
+			SDL_LockSurface(_sdl_realscreen);
+
 		cur_ticks = SDL_GetTicks();
 		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode) || cur_ticks < prev_cur_ticks) {
 			_realtime_tick += cur_ticks - last_cur_ticks;
@@ -762,6 +767,9 @@ void VideoDriver_SDL::MainLoop()
 			NetworkDrawChatMessage();
 			DrawMouseCursor();
 		}
+
+		if (_sdl_screen == _sdl_realscreen)
+			SDL_UnlockSurface(_sdl_realscreen);
 
 		/* End of the critical part. */
 		if (_draw_mutex != nullptr && !HasModalProgress()) {
