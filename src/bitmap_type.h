@@ -34,6 +34,14 @@ public:
 		this->h = 0;
 	}
 
+	BitmapTileArea(const TileArea &ta)
+	{
+		this->tile = ta.tile;
+		this->w = ta.w;
+		this->h = ta.h;
+		this->data.resize(Index(this->w, this->h));
+	}
+
 	/**
 	 * Reset and clear the BitmapTileArea.
 	 */
