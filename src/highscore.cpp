@@ -79,9 +79,9 @@ int8 SaveHighScoreValue(const Company *c)
 }
 
 /** Sort all companies given their performance */
-static int CDECL HighScoreSorter(const Company * const *a, const Company * const *b)
+static bool HighScoreSorter(const Company * const &a, const Company * const &b)
 {
-	return (*b)->old_economy[0].performance_history - (*a)->old_economy[0].performance_history;
+	return b->old_economy[0].performance_history < a->old_economy[0].performance_history;
 }
 
 /**
@@ -98,7 +98,7 @@ int8 SaveHighScoreValueNetwork()
 	/* Sort all active companies with the highest score first */
 	FOR_ALL_COMPANIES(c) cl[count++] = c;
 
-	QSortT(cl, count, &HighScoreSorter);
+	std::sort(std::begin(cl), std::begin(cl) + count, HighScoreSorter);
 
 	{
 		uint i;
