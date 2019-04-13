@@ -1478,6 +1478,7 @@ STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Choose which se
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Easy
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Medium
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Hard
+STR_CONFIG_SETTING_AI_PROFILE_CUSTOM                            :Custom
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Allow AIs in multiplayer: {STRING2}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Allow AI computer players to participate in multiplayer games

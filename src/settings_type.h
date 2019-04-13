@@ -29,11 +29,10 @@ enum SettingsProfile {
 	SP_EASY = SP_BEGIN,                       ///< Easy difficulty.
 	SP_MEDIUM,                                ///< Medium difficulty.
 	SP_HARD,                                  ///< Hard difficulty.
+	SP_CUSTOM,                                ///< Custom difficulty.
 
 	SP_END,                                   ///< End of setting profiles.
-
-	SP_CUSTOM = SP_END,                       ///< No profile, special "custom" highscore.
-	SP_SAVED_HIGHSCORE_END,                   ///< End of saved highscore tables.
+	SP_SAVED_HIGHSCORE_END = SP_END,          ///< End of saved highscore tables.
 
 	SP_MULTIPLAYER = SP_SAVED_HIGHSCORE_END,  ///< Special "multiplayer" highscore. Not saved, always specific to the current game.
 	SP_HIGHSCORE_END,                         ///< End of highscore tables.

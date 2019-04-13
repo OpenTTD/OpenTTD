@@ -98,7 +98,7 @@ int AIConfig::GetSetting(const char *name) const
 				case SP_EASY:   return AI::START_NEXT_EASY;
 				case SP_MEDIUM: return AI::START_NEXT_MEDIUM;
 				case SP_HARD:   return AI::START_NEXT_HARD;
-				case SP_CUSTOM: return AI::START_NEXT_MEDIUM;
+				case SP_CUSTOM: return AI::START_NEXT_CUSTOM;
 				default: NOT_REACHED();
 			}
 		}
