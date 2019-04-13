@@ -418,7 +418,7 @@ static const OptionData _opts[] = {
 	  GETOPT_NOVAL(     't',  "--todo"),
 	  GETOPT_NOVAL(     'w',  "--warning"),
 	  GETOPT_NOVAL(     'h',  "--help"),
-	GETOPT_GENERAL('h', '?',  nullptr,               ODF_NO_VALUE),
+	GETOPT_GENERAL('h', '?',  nullptr,            ODF_NO_VALUE),
 	  GETOPT_VALUE(     's',  "--source_dir"),
 	  GETOPT_VALUE(     'd',  "--dest_dir"),
 	GETOPT_END(),
