@@ -16,7 +16,6 @@
 #include "window_func.h"
 #include "vehicle_base.h"
 #include "cmd_helper.h"
-#include "core/sort_func.hpp"
 
 #include "table/strings.h"
 

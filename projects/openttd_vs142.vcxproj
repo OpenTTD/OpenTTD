@@ -742,7 +742,6 @@
     <ClInclude Include="..\src\core\smallmatrix_type.hpp" />
     <ClInclude Include="..\src\core\smallstack_type.hpp" />
     <ClInclude Include="..\src\core\smallvec_type.hpp" />
-    <ClInclude Include="..\src\core\sort_func.hpp" />
     <ClInclude Include="..\src\core\string_compare_type.hpp" />
     <ClCompile Include="..\src\aircraft_gui.cpp" />
     <ClCompile Include="..\src\airport_gui.cpp" />

@@ -13,7 +13,6 @@
 #define SMALLMAP_TYPE_HPP
 
 #include "smallvec_type.hpp"
-#include "sort_func.hpp"
 
 /**
  * Simple pair of data. Both types have to be POD ("Plain Old Data")!

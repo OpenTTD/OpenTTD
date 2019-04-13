@@ -447,7 +447,6 @@ core/smallmap_type.hpp
 core/smallmatrix_type.hpp
 core/smallstack_type.hpp
 core/smallvec_type.hpp
-core/sort_func.hpp
 core/string_compare_type.hpp
 
 # GUI Source Code

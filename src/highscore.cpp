@@ -17,7 +17,6 @@
 #include "string_func.h"
 #include "strings_func.h"
 #include "table/strings.h"
-#include "core/sort_func.hpp"
 #include "debug.h"
 
 #include "safeguards.h"
