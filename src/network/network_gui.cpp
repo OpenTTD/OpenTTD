@@ -63,18 +63,18 @@ static const StringID _lan_internet_types_dropdown[] = {
 	INVALID_STRING_ID
 };
 
-static StringID _language_dropdown[NETLANG_COUNT + 1] = {STR_NULL};
+static std::vector<StringID> _language_dropdown;
 
 void SortNetworkLanguages()
 {
 	/* Init the strings */
-	if (_language_dropdown[0] == STR_NULL) {
-		for (int i = 0; i < NETLANG_COUNT; i++) _language_dropdown[i] = STR_NETWORK_LANG_ANY + i;
-		_language_dropdown[NETLANG_COUNT] = INVALID_STRING_ID;
+	if (_language_dropdown.empty()) {
+		for (int i = 0; i < NETLANG_COUNT; i++) _language_dropdown.emplace_back(STR_NETWORK_LANG_ANY + i);
+		_language_dropdown.emplace_back(INVALID_STRING_ID);
 	}
 
 	/* Sort the strings (we don't move 'any' and the 'invalid' one) */
-	QSortT(_language_dropdown + 1, NETLANG_COUNT - 1, &StringIDSorter);
+	std::sort(_language_dropdown.begin() + 1, _language_dropdown.end() - 1, StringIDSorter);
 }
 
 /**
@@ -1172,13 +1172,13 @@ struct NetworkStartServerWindow : public Window {
 
 			case WID_NSS_LANGUAGE_BTN: { // Language
 				uint sel = 0;
-				for (uint i = 0; i < lengthof(_language_dropdown) - 1; i++) {
+				for (uint i = 0; i < _language_dropdown.size() - 1; i++) {
 					if (_language_dropdown[i] == STR_NETWORK_LANG_ANY + _settings_client.network.server_lang) {
 						sel = i;
 						break;
 					}
 				}
-				ShowDropDownMenu(this, _language_dropdown, sel, WID_NSS_LANGUAGE_BTN, 0, 0);
+				ShowDropDownMenu(this, _language_dropdown.data(), sel, WID_NSS_LANGUAGE_BTN, 0, 0);
 				break;
 			}
 
