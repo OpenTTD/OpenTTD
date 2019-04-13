@@ -709,16 +709,13 @@ bool GRFFileScanner::AddFile(const char *filename, size_t basepath_length, const
 
 /**
  * Simple sorter for GRFS
- * @param p1 the first GRFConfig *
- * @param p2 the second GRFConfig *
- * @return the same strcmp would return for the name of the NewGRF.
+ * @param c1 the first GRFConfig *
+ * @param c2 the second GRFConfig *
+ * @return true if the name of first NewGRF is before the name of the second.
  */
-static int CDECL GRFSorter(GRFConfig * const *p1, GRFConfig * const *p2)
+static bool GRFSorter(GRFConfig * const &c1, GRFConfig * const &c2)
 {
-	const GRFConfig *c1 = *p1;
-	const GRFConfig *c2 = *p2;
-
-	return strnatcmp(c1->GetName(), c2->GetName());
+	return strnatcmp(c1->GetName(), c2->GetName()) < 0;
 }
 
 /**
@@ -740,24 +737,22 @@ void DoScanNewGRFFiles(NewGRFScanCallback *callback)
 		/* Sort the linked list using quicksort.
 		 * For that we first have to make an array, then sort and
 		 * then remake the linked list. */
-		GRFConfig **to_sort = MallocT<GRFConfig*>(num);
+		std::vector<GRFConfig *> to_sort;
 
 		uint i = 0;
 		for (GRFConfig *p = _all_grfs; p != nullptr; p = p->next, i++) {
-			to_sort[i] = p;
+			to_sort.push_back(p);
 		}
 		/* Number of files is not necessarily right */
 		num = i;
 
-		QSortT(to_sort, num, &GRFSorter);
+		std::sort(to_sort.begin(), to_sort.end(), GRFSorter);
 
 		for (i = 1; i < num; i++) {
 			to_sort[i - 1]->next = to_sort[i];
 		}
 		to_sort[num - 1]->next = nullptr;
 		_all_grfs = to_sort[0];
-
-		free(to_sort);
 
 		NetworkAfterNewGRFScan();
 	}
