@@ -117,38 +117,4 @@ public:
 	inline void operator delete[](void *ptr) { free(ptr); }
 };
 
-/**
- * A smart pointer class that free()'s the pointer on destruction.
- * @tparam T Storage type.
- */
-template <typename T>
-class AutoFreePtr
-{
-	T *ptr; ///< Stored pointer.
-
-public:
-	AutoFreePtr(T *ptr) : ptr(ptr) {}
-	~AutoFreePtr() { free(this->ptr); }
-
-	/**
-	 * Take ownership of a new pointer and free the old one if needed.
-	 * @param ptr NEw pointer.
-	 */
-	inline void Assign(T *ptr)
-	{
-		free(this->ptr);
-		this->ptr = ptr;
-	}
-
-	/** Dereference pointer. */
-	inline T *operator ->() { return this->ptr; }
-	/** Dereference pointer. */
-	inline const T *operator ->() const { return this->ptr; }
-
-	/** Cast to underlaying regular pointer. */
-	inline operator T *() { return this->ptr; }
-	/** Cast to underlaying regular pointer. */
-	inline operator const T *() const { return this->ptr; }
-};
-
 #endif /* ALLOC_TYPE_HPP */
