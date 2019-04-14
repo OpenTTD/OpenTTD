@@ -31,6 +31,7 @@
 #include "../core/smallvec_type.hpp"
 #include "saveload_internal.h"
 #include "oldloader.h"
+#include <array>
 
 #include "table/strings.h"
 #include "../table/engines.h"
@@ -1754,8 +1755,8 @@ bool LoadTTDMain(LoadgameState *ls)
 	_read_ttdpatch_flags = false;
 
 	/* Load the biggest chunk */
-	SmallStackSafeStackAlloc<byte, OLD_MAP_SIZE * 2> map3;
-	_old_map3 = map3.data;
+	std::array<byte, OLD_MAP_SIZE * 2> map3;
+	_old_map3 = map3.data();
 	_old_vehicle_names = nullptr;
 	try {
 		if (!LoadChunk(ls, nullptr, main_chunk)) {
@@ -1797,10 +1798,10 @@ bool LoadTTOMain(LoadgameState *ls)
 
 	_read_ttdpatch_flags = false;
 
-	SmallStackSafeStackAlloc<byte, 103 * sizeof(Engine)> engines; // we don't want to call Engine constructor here
-	_old_engines = (Engine *)engines.data;
-	SmallStackSafeStackAlloc<StringID, 800> vehnames;
-	_old_vehicle_names = vehnames.data;
+	std::array<byte, 103 * sizeof(Engine)> engines; // we don't want to call Engine constructor here
+	_old_engines = (Engine *)engines.data();
+	std::array<StringID, 800> vehnames;
+	_old_vehicle_names = vehnames.data();
 
 	/* Load the biggest chunk */
 	if (!LoadChunk(ls, nullptr, main_chunk)) {
