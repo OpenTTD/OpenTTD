@@ -15,49 +15,6 @@
 #include "alloc_func.hpp"
 
 /**
- * A small 'wrapper' for allocations that can be done on most OSes on the
- * stack, but are just too large to fit in the stack on devices with a small
- * stack such as the NDS.
- * So when it is possible a stack allocation is made, otherwise a heap
- * allocation is made and this is freed once the struct goes out of scope.
- * @param T      the type to make the allocation for
- * @param length the amount of items to allocate
- */
-template <typename T, size_t length>
-struct SmallStackSafeStackAlloc {
-	/** Storing the data on the stack */
-	T data[length];
-
-	/**
-	 * Gets a pointer to the data stored in this wrapper.
-	 * @return the pointer.
-	 */
-	inline operator T *()
-	{
-		return data;
-	}
-
-	/**
-	 * Gets a pointer to the data stored in this wrapper.
-	 * @return the pointer.
-	 */
-	inline T *operator -> ()
-	{
-		return data;
-	}
-
-	/**
-	 * Gets a pointer to the last data element stored in this wrapper.
-	 * @note needed because endof does not work properly for pointers.
-	 * @return the 'endof' pointer.
-	 */
-	inline T *EndOf()
-	{
-		return endof(data);
-	}
-};
-
-/**
  * A reusable buffer that can be used for places that temporary allocate
  * a bit of memory and do that very often, or for places where static
  * memory is allocated that might need to be reallocated sometimes.
