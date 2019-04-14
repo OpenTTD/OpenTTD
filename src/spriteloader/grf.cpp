@@ -69,8 +69,8 @@ static bool WarnCorruptSprite(uint8 file_slot, size_t file_pos, int line)
  */
 bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type, int64 num, byte type, ZoomLevel zoom_lvl, byte colour_fmt, byte container_format)
 {
-	AutoFreePtr<byte> dest_orig(MallocT<byte>(num));
-	byte *dest = dest_orig;
+	std::unique_ptr<byte[]> dest_orig(new byte[num]);
+	byte *dest = dest_orig.get();
 	const int64 dest_size = num;
 
 	/* Read the file, which has some kind of compression */
@@ -89,7 +89,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t fi
 		} else {
 			/* Copy bytes from earlier in the sprite */
 			const uint data_offset = ((code & 7) << 8) | FioReadByte();
-			if (dest - data_offset < dest_orig) return WarnCorruptSprite(file_slot, file_pos, __LINE__);
+			if (dest - data_offset < dest_orig.get()) return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 			int size = -(code >> 3);
 			num -= size;
 			if (num < 0) return WarnCorruptSprite(file_slot, file_pos, __LINE__);
@@ -123,10 +123,10 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t fi
 			}
 
 			/* Go to that row */
-			dest = dest_orig + offset;
+			dest = dest_orig.get() + offset;
 
 			do {
-				if (dest + (container_format >= 2 && sprite->width > 256 ? 4 : 2) > dest_orig + dest_size) {
+				if (dest + (container_format >= 2 && sprite->width > 256 ? 4 : 2) > dest_orig.get() + dest_size) {
 					return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 				}
 
@@ -152,7 +152,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t fi
 
 				data = &sprite->data[y * sprite->width + skip];
 
-				if (skip + length > sprite->width || dest + length * bpp > dest_orig + dest_size) {
+				if (skip + length > sprite->width || dest + length * bpp > dest_orig.get() + dest_size) {
 					return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 				}
 
@@ -188,7 +188,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t fi
 			warning_level = 6;
 		}
 
-		dest = dest_orig;
+		dest = dest_orig.get();
 
 		for (int i = 0; i < sprite->width * sprite->height; i++) {
 			byte *pixel = &dest[i * bpp];
