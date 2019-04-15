@@ -468,6 +468,8 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_TIMES_NAMES,                       "WID_FRW_TIMES_NAMES");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_TIMES_CURRENT,                     "WID_FRW_TIMES_CURRENT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_TIMES_AVERAGE,                     "WID_FRW_TIMES_AVERAGE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_ALLOCSIZE,                         "WID_FRW_ALLOCSIZE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_SEL_MEMORY,                        "WID_FRW_SEL_MEMORY");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FRW_SCROLLBAR,                         "WID_FRW_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FGW_CAPTION,                           "WID_FGW_CAPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_FGW_GRAPH,                             "WID_FGW_GRAPH");
