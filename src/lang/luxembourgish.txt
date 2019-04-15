@@ -3493,6 +3493,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Keeft da
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Keeft dat ugewielte Schëff. Shift+Klick weist ongeféier Käschten ouni Kaf
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Keeft den ungewielte Fliger. Shift+Klick weist ongeféier Käschten ouni Kaf
 
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Gewielten Zuch/Waggon kafen an ëmbauen. Shift+Klick weist ongeféier Käschten ouni Kaf
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Gewielte Fliger kafen an ëmbauen. Shift+Klick weist ongeféier Käschten ouni Kaf
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Ëmbenennen
