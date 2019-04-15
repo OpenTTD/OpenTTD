@@ -230,6 +230,7 @@ void AIInstance::Died()
 
 void AIInstance::LoadDummyScript()
 {
+	ScriptAllocatorScope alloc_scope(this->engine);
 	extern void Script_CreateDummy(HSQUIRRELVM vm, StringID string, const char *type);
 	Script_CreateDummy(this->engine->GetVM(), STR_ERROR_AI_NO_AI_FOUND, "AI");
 }

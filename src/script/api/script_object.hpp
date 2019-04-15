@@ -18,6 +18,7 @@
 
 #include "script_types.hpp"
 #include "../script_suspend.hpp"
+#include "../squirrel.hpp"
 
 /**
  * The callback function for Mode-classes.
@@ -48,6 +49,7 @@ protected:
 		~ActiveInstance();
 	private:
 		ScriptInstance *last_active;    ///< The active instance before we go instantiated.
+		ScriptAllocatorScope alc_scope; ///< Keep the correct allocator for the script instance activated
 
 		static ScriptInstance *active;  ///< The global current active instance.
 	};

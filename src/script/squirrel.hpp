@@ -20,7 +20,11 @@ enum ScriptType {
 	ST_GS, ///< The script is for Game scripts.
 };
 
+struct ScriptAllocator;
+
 class Squirrel {
+	friend class ScriptAllocatorScope;
+
 private:
 	typedef void (SQPrintFunc)(bool error_msg, const SQChar *message);
 
@@ -30,6 +34,7 @@ private:
 	bool crashed;            ///< True if the squirrel script made an error.
 	int overdrawn_ops;       ///< The amount of operations we have overdrawn.
 	const char *APIName;     ///< Name of the API used for this squirrel.
+	std::unique_ptr<ScriptAllocator> allocator; ///< Allocator object used by this script.
 
 	/**
 	 * The internal RunError handler. It looks up the real error and calls RunError with it.
@@ -272,6 +277,31 @@ public:
 	 * Completely reset the engine; start from scratch.
 	 */
 	void Reset();
+
+	/**
+	 * Get number of bytes allocated by this VM.
+	 */
+	size_t GetAllocatedMemory() const noexcept;
+};
+
+
+extern ScriptAllocator *_squirrel_allocator;
+
+class ScriptAllocatorScope {
+	ScriptAllocator *old_allocator;
+
+public:
+	ScriptAllocatorScope(const Squirrel *engine)
+	{
+		this->old_allocator = _squirrel_allocator;
+		/* This may get called with a nullptr engine, in case of a crashed script */
+		_squirrel_allocator = engine != nullptr ? engine->allocator.get() : nullptr;
+	}
+
+	~ScriptAllocatorScope()
+	{
+		_squirrel_allocator = this->old_allocator;
+	}
 };
 
 #endif /* SQUIRREL_HPP */
