@@ -711,7 +711,7 @@ void OnTick_Companies()
 		if (c->bankrupt_asked != 0) HandleBankruptcyTakeover(c);
 	}
 
-	if (_next_competitor_start == 0) {
+	if (_next_competitor_start == 0 || _next_competitor_start == AI::START_NEXT_MAX * DAY_TICKS) {
 		/* AI::GetStartNextTime() can return 0. */
 		_next_competitor_start = max(1, AI::GetStartNextTime() * DAY_TICKS);
 	}

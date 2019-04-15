@@ -315,8 +315,8 @@
 		if (!Company::IsValidID(c)) return AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->GetSetting("start_date");
 	}
 
-	/* Currently no AI can be started, check again in a year. */
-	return DAYS_IN_YEAR;
+	/* Currently no AI can be started. Return a value higher than the maximum allowed for "start_date". */
+	return AI::START_NEXT_MAX + 1;
 }
 
 /* static */ char *AI::GetConsoleList(char *p, const char *last, bool newest_only)
