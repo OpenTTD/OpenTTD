@@ -198,6 +198,8 @@ public:
 	 */
 	bool IsSleeping() { return this->suspend != 0; }
 
+	size_t GetAllocatedMemory() const;
+
 protected:
 	class Squirrel *engine;               ///< A wrapper around the squirrel vm.
 	const char *versionAPI;               ///< Current API used by this script.
@@ -241,6 +243,7 @@ private:
 	int suspend;                          ///< The amount of ticks to suspend this script before it's allowed to continue.
 	bool is_paused;                       ///< Is the script paused? (a paused script will not be executed until unpaused)
 	Script_SuspendCallbackProc *callback; ///< Callback that should be called in the next tick the script runs.
+	size_t last_allocated_memory;         ///< Last known allocated memory value (for display for crashed scripts)
 
 	/**
 	 * Call the script Load function if it exists and data was loaded

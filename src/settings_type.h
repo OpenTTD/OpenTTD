@@ -339,6 +339,7 @@ struct AISettings {
 struct ScriptSettings {
 	uint8  settings_profile;                 ///< difficulty profile to set initial settings of scripts, esp. random AIs
 	uint32 script_max_opcode_till_suspend;   ///< max opcode calls till scripts will suspend
+	uint32 script_max_memory_megabytes;      ///< limit on memory a single script instance may have allocated
 };
 
 /** Settings related to the new pathfinder. */

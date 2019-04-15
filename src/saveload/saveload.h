@@ -300,6 +300,8 @@ enum SaveLoadVersion : uint16 {
 	SLV_TREES_WATER_CLASS,                  ///< 213  PR#7405 WaterClass update for tree tiles.
 	SLV_ROAD_TYPES,                         ///< 214  PR#6811 NewGRF road types.
 
+	SLV_SCRIPT_MEMLIMIT,                    ///< 215  PR#7516 Limit on AI/GS memory consumption.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 

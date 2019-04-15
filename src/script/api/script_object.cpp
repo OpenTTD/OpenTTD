@@ -38,7 +38,7 @@ static ScriptStorage *GetStorage()
 
 /* static */ ScriptInstance *ScriptObject::ActiveInstance::active = nullptr;
 
-ScriptObject::ActiveInstance::ActiveInstance(ScriptInstance *instance)
+ScriptObject::ActiveInstance::ActiveInstance(ScriptInstance *instance) : alc_scope(instance->engine)
 {
 	this->last_active = ScriptObject::ActiveInstance::active;
 	ScriptObject::ActiveInstance::active = instance;

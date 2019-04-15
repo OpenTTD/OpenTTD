@@ -153,6 +153,8 @@ void ScriptInstance::Died()
 	DEBUG(script, 0, "The script died unexpectedly.");
 	this->is_dead = true;
 
+	this->last_allocated_memory = this->GetAllocatedMemory(); // Update cache
+
 	if (this->instance != nullptr) this->engine->ReleaseObject(this->instance);
 	delete this->engine;
 	this->instance = nullptr;
@@ -697,4 +699,10 @@ void ScriptInstance::InsertEvent(class ScriptEvent *event)
 	ScriptObject::ActiveInstance active(this);
 
 	ScriptEventController::InsertEvent(event);
+}
+
+size_t ScriptInstance::GetAllocatedMemory() const
+{
+	if (this->engine == nullptr) return this->last_allocated_memory;
+	return this->engine->GetAllocatedMemory();
 }
