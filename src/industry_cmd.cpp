@@ -1226,6 +1226,29 @@ static CommandCost CheckNewIndustry_Forest(TileIndex tile)
 }
 
 /**
+ * Check if a tile is within a distance from map edges, scaled by map dimensions independently.
+ * Each dimension is checked independently, and dimensions smaller than 256 are not scaled.
+ * @param tile Which tile to check distance of.
+ * @param maxdist Normal distance on a 256x256 map.
+ * @return True if the tile is near the map edge.
+ */
+static bool CheckScaledDistanceFromEdge(TileIndex tile, uint maxdist)
+{
+	uint maxdist_x = maxdist;
+	uint maxdist_y = maxdist;
+
+	if (MapSizeX() > 256) maxdist_x *= MapSizeX() / 256;
+	if (MapSizeY() > 256) maxdist_y *= MapSizeY() / 256;
+
+	if (DistanceFromEdgeDir(tile, DIAGDIR_NE) < maxdist_x) return true;
+	if (DistanceFromEdgeDir(tile, DIAGDIR_NW) < maxdist_y) return true;
+	if (DistanceFromEdgeDir(tile, DIAGDIR_SW) < maxdist_x) return true;
+	if (DistanceFromEdgeDir(tile, DIAGDIR_SE) < maxdist_y) return true;
+
+	return false;
+}
+
+/**
  * Check the conditions of #CHECK_REFINERY (Industry should be positioned near edge of the map).
  * @param tile %Tile to perform the checking.
  * @return Succeeded or failed command.
@@ -1233,7 +1256,8 @@ static CommandCost CheckNewIndustry_Forest(TileIndex tile)
 static CommandCost CheckNewIndustry_OilRefinery(TileIndex tile)
 {
 	if (_game_mode == GM_EDITOR) return CommandCost();
-	if (DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _settings_game.game_creation.oil_refinery_limit) return CommandCost();
+
+	if (CheckScaledDistanceFromEdge(TILE_ADDXY(tile, 1, 1), _settings_game.game_creation.oil_refinery_limit)) return CommandCost();
 
 	return_cmd_error(STR_ERROR_CAN_ONLY_BE_POSITIONED);
 }
@@ -1248,8 +1272,9 @@ extern bool _ignore_restrictions;
 static CommandCost CheckNewIndustry_OilRig(TileIndex tile)
 {
 	if (_game_mode == GM_EDITOR && _ignore_restrictions) return CommandCost();
+
 	if (TileHeight(tile) == 0 &&
-			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _settings_game.game_creation.oil_refinery_limit) return CommandCost();
+			CheckScaledDistanceFromEdge(TILE_ADDXY(tile, 1, 1), _settings_game.game_creation.oil_refinery_limit)) return CommandCost();
 
 	return_cmd_error(STR_ERROR_CAN_ONLY_BE_POSITIONED);
 }

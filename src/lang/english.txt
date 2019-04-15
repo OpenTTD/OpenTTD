@@ -1326,8 +1326,8 @@ STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terrain type: {
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis only) Hilliness of the landscape
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industry density: {STRING2}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Set how many industries should be generated and what level should be maintained during the game
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum distance from edge for Oil refineries: {STRING2}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Oil refineries are only constructed near the map border, that is at the coast for island maps
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum distance from edge for Oil industries: {STRING2}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limit for how far from the map border oil refineries and oil rigs can be constructed. On island maps this ensures they are near the coast. On maps larger than 256 tiles, this value is scaled up.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snow line height: {STRING2}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Control at what height snow starts in sub-arctic landscape. Snow also affects industry generation and town growth requirements
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Roughness of terrain: {STRING2}
