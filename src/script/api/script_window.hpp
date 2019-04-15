@@ -1309,6 +1309,8 @@ public:
 		WID_FRW_TIMES_NAMES                          = ::WID_FRW_TIMES_NAMES,
 		WID_FRW_TIMES_CURRENT                        = ::WID_FRW_TIMES_CURRENT,
 		WID_FRW_TIMES_AVERAGE                        = ::WID_FRW_TIMES_AVERAGE,
+		WID_FRW_ALLOCSIZE                            = ::WID_FRW_ALLOCSIZE,
+		WID_FRW_SEL_MEMORY                           = ::WID_FRW_SEL_MEMORY,
 		WID_FRW_SCROLLBAR                            = ::WID_FRW_SCROLLBAR,
 	};
 

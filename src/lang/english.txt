@@ -2742,6 +2742,7 @@ STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Current 
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}How fast the game is currently running, compared to the expected speed at normal simulation rate.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Current
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Average
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memory
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Data based on {COMMA} measurements
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
@@ -2749,6 +2750,9 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} frames/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} frames/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} frames/s
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!

@@ -22,6 +22,9 @@
 #include "guitimer_func.h"
 #include "company_base.h"
 #include "ai/ai_info.hpp"
+#include "ai/ai_instance.hpp"
+#include "game/game.hpp"
+#include "game/game_instance.hpp"
 
 #include "widgets/framerate_widget.h"
 #include "safeguards.h"
@@ -365,6 +368,9 @@ static const NWidgetPart _framerate_window_widgets[] = {
 					NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_NAMES), SetScrollbar(WID_FRW_SCROLLBAR),
 					NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_CURRENT), SetScrollbar(WID_FRW_SCROLLBAR),
 					NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_TIMES_AVERAGE), SetScrollbar(WID_FRW_SCROLLBAR),
+					NWidget(NWID_SELECTION, INVALID_COLOUR, WID_FRW_SEL_MEMORY),
+						NWidget(WWT_EMPTY, COLOUR_GREY, WID_FRW_ALLOCSIZE), SetScrollbar(WID_FRW_SCROLLBAR),
+					EndContainer(),
 				EndContainer(),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_FRW_INFO_DATA_POINTS), SetDataTip(STR_FRAMERATE_DATA_POINTS, 0x0),
 			EndContainer(),
@@ -378,6 +384,7 @@ static const NWidgetPart _framerate_window_widgets[] = {
 
 struct FramerateWindow : Window {
 	bool small;
+	bool showing_memory;
 	GUITimer next_update;
 	int num_active;
 	int num_displayed;
@@ -424,6 +431,7 @@ struct FramerateWindow : Window {
 	{
 		this->InitNested(number);
 		this->small = this->IsShaded();
+		this->showing_memory = true;
 		this->UpdateData();
 		this->num_displayed = this->num_active;
 		this->next_update.SetInterval(100);
@@ -453,6 +461,7 @@ struct FramerateWindow : Window {
 	void UpdateData()
 	{
 		double gl_rate = _pf_data[PFE_GAMELOOP].GetRate();
+		bool have_script = false;
 		this->rate_gameloop.SetRate(gl_rate, _pf_data[PFE_GAMELOOP].expected_rate);
 		this->speed_gameloop.SetRate(gl_rate / _pf_data[PFE_GAMELOOP].expected_rate, 1.0);
 		if (this->small) return; // in small mode, this is everything needed
@@ -463,7 +472,16 @@ struct FramerateWindow : Window {
 		for (PerformanceElement e = PFE_FIRST; e < PFE_MAX; e++) {
 			this->times_shortterm[e].SetTime(_pf_data[e].GetAverageDurationMilliseconds(8), MILLISECONDS_PER_TICK);
 			this->times_longterm[e].SetTime(_pf_data[e].GetAverageDurationMilliseconds(NUM_FRAMERATE_POINTS), MILLISECONDS_PER_TICK);
-			if (_pf_data[e].num_valid > 0) new_active++;
+			if (_pf_data[e].num_valid > 0) {
+				new_active++;
+				if (e == PFE_GAMESCRIPT || e >= PFE_AI0) have_script = true;
+			}
+		}
+
+		if (this->showing_memory != have_script) {
+			NWidgetStacked *plane = this->GetWidget<NWidgetStacked>(WID_FRW_SEL_MEMORY);
+			plane->SetDisplayedPlane(have_script ? 0 : SZSP_VERTICAL);
+			this->showing_memory = have_script;
 		}
 
 		if (new_active != this->num_active) {
@@ -545,7 +563,8 @@ struct FramerateWindow : Window {
 			}
 
 			case WID_FRW_TIMES_CURRENT:
-			case WID_FRW_TIMES_AVERAGE: {
+			case WID_FRW_TIMES_AVERAGE:
+			case WID_FRW_ALLOCSIZE: {
 				*size = GetStringBoundingBox(STR_FRAMERATE_CURRENT + (widget - WID_FRW_TIMES_CURRENT));
 				SetDParam(0, 999999);
 				SetDParam(1, 2);
@@ -575,6 +594,37 @@ struct FramerateWindow : Window {
 			} else {
 				values[e].InsertDParams(0);
 				DrawString(r.left, r.right, y, values[e].strid, TC_FROMSTRING, SA_RIGHT);
+				y += FONT_HEIGHT_NORMAL;
+				drawable--;
+				if (drawable == 0) break;
+			}
+		}
+	}
+
+	void DrawElementAllocationsColumn(const Rect &r) const
+	{
+		const Scrollbar *sb = this->GetScrollbar(WID_FRW_SCROLLBAR);
+		uint16 skip = sb->GetPosition();
+		int drawable = this->num_displayed;
+		int y = r.top;
+		DrawString(r.left, r.right, y, STR_FRAMERATE_MEMORYUSE, TC_FROMSTRING, SA_CENTER, true);
+		y += FONT_HEIGHT_NORMAL + VSPACING;
+		for (PerformanceElement e : DISPLAY_ORDER_PFE) {
+			if (_pf_data[e].num_valid == 0) continue;
+			if (skip > 0) {
+				skip--;
+			} else if (e == PFE_GAMESCRIPT || e >= PFE_AI0) {
+				if (e == PFE_GAMESCRIPT) {
+					SetDParam(0, Game::GetInstance()->GetAllocatedMemory());
+				} else {
+					SetDParam(0, Company::Get(e - PFE_AI0)->ai_instance->GetAllocatedMemory());
+				}
+				DrawString(r.left, r.right, y, STR_FRAMERATE_BYTES_GOOD, TC_FROMSTRING, SA_RIGHT);
+				y += FONT_HEIGHT_NORMAL;
+				drawable--;
+				if (drawable == 0) break;
+			} else {
+				/* skip non-script */
 				y += FONT_HEIGHT_NORMAL;
 				drawable--;
 				if (drawable == 0) break;
@@ -617,6 +667,9 @@ struct FramerateWindow : Window {
 			case WID_FRW_TIMES_AVERAGE:
 				/* Render averages of all recorded values */
 				DrawElementTimesColumn(r, STR_FRAMERATE_AVERAGE, this->times_longterm);
+				break;
+			case WID_FRW_ALLOCSIZE:
+				DrawElementAllocationsColumn(r);
 				break;
 		}
 	}
