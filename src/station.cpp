@@ -421,10 +421,10 @@ void Station::RecomputeCatchment()
 		this->catchment_tiles.Reset();
 		return;
 	}
-	this->catchment_tiles.Initialize(GetCatchmentRect());
 
 	if (!_settings_game.station.serve_neutral_industries && this->industry != nullptr) {
 		/* Station is associated with an industry, so we only need to deliver to that industry. */
+		this->catchment_tiles.Initialize(this->industry->location);
 		TILE_AREA_LOOP(tile, this->industry->location) {
 			if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == this->industry->index) {
 				this->catchment_tiles.SetTile(tile);
@@ -439,6 +439,8 @@ void Station::RecomputeCatchment()
 		this->industries_near.insert(this->industry);
 		return;
 	}
+
+	this->catchment_tiles.Initialize(GetCatchmentRect());
 
 	/* Loop finding all station tiles */
 	TileArea ta(TileXY(this->rect.left, this->rect.top), TileXY(this->rect.right, this->rect.bottom));
