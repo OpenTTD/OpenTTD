@@ -46,6 +46,7 @@ projects/*.VC.db
 projects/*.VC.opendb
 src/rev.cpp
 src/os/windows/ottdres.rc
+.vscode/
 
 /Makefile*
 !/Makefile.msvc
