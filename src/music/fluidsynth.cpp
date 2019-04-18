@@ -39,6 +39,9 @@ static const char *default_sf[] = {
 	"/usr/share/sounds/sf2/TimGM6mb.sf2",
 	"/usr/share/sounds/sf2/FluidR3_GS.sf2",
 
+	/* Flatpak */
+	"/app/share/sounds/sf2/FluidR3_GM.sf2",
+
 	nullptr
 };
 
