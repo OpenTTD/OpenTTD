@@ -111,8 +111,11 @@ void SetLocalCompany(CompanyID new_company)
 
 	_current_company = _local_company = new_company;
 
-	/* Delete any construction windows... */
-	DeleteConstructionWindows();
+	/* Recreate company windows */
+	if (Company::IsValidID(new_company))
+	{
+		InvalidateCompanyWindows(Company::Get(new_company));
+	}
 
 	/* ... and redraw the whole screen. */
 	MarkWholeScreenDirty();
