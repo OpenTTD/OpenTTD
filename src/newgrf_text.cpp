@@ -528,6 +528,9 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newline
 						d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_DATE_LONG + code - 0x16);
 						break;
 
+					case 0x1F: d += Utf8Encode(d, SCC_PUSH_COLOUR); break;
+					case 0x20: d += Utf8Encode(d, SCC_POP_COLOUR);  break;
+
 					default:
 						grfmsg(1, "missing handler for extended format code");
 						break;
