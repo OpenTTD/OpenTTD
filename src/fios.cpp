@@ -52,16 +52,15 @@ extern void GetOldSaveGameName(const char *file, char *title, const char *last);
  */
 bool FiosItem::operator< (const FiosItem &other) const
 {
-	bool r = false;
+	int r = false;
 
 	if ((_savegame_sort_order & SORT_BY_NAME) == 0 && (*this).mtime != other.mtime) {
-		r = (*this).mtime < other.mtime;
+		r = (*this).mtime - other.mtime;
 	} else {
-		r = strcasecmp((*this).title, other.title) < 0;
+		r = strcasecmp((*this).title, other.title);
 	}
-
-	if (_savegame_sort_order & SORT_DESCENDING) r = !r;
-	return r;
+	if (r == 0) return false;
+	return (_savegame_sort_order & SORT_DESCENDING) ? r > 0 : r < 0;
 }
 
 FileList::~FileList()
