@@ -1999,15 +1999,17 @@ static bool CheckClickOnViewportSign(const ViewPort *vp, int x, int y, const Vie
  */
 static bool CheckClickOnViewportSign(const ViewPort *vp, int x, int y)
 {
+	if (_game_mode == GM_MENU) return false;
+
 	x = ScaleByZoom(x - vp->left, vp->zoom) + vp->virtual_left;
 	y = ScaleByZoom(y - vp->top, vp->zoom) + vp->virtual_top;
 
 	Rect search_rect{ x - 1, y - 1, x + 1, y + 1 };
 	search_rect = ExpandRectWithViewportSignMargins(search_rect, vp->zoom);
 
-	bool show_stations = HasBit(_display_opt, DO_SHOW_STATION_NAMES) && _game_mode != GM_MENU;
-	bool show_waypoints = HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES) && _game_mode != GM_MENU;
-	bool show_towns = HasBit(_display_opt, DO_SHOW_TOWN_NAMES) && _game_mode != GM_MENU;
+	bool show_stations = HasBit(_display_opt, DO_SHOW_STATION_NAMES) && !IsInvisibilitySet(TO_SIGNS);
+	bool show_waypoints = HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES) && !IsInvisibilitySet(TO_SIGNS);
+	bool show_towns = HasBit(_display_opt, DO_SHOW_TOWN_NAMES);
 	bool show_signs = HasBit(_display_opt, DO_SHOW_SIGNS) && !IsInvisibilitySet(TO_SIGNS);
 	bool show_competitors = HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS);
 
