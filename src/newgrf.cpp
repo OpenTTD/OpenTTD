@@ -5480,7 +5480,8 @@ static void RailTypeMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	uint8 *railtypes = AllocaM(uint8, idcount);
 	for (uint i = 0; i < idcount; i++) {
-		railtypes[i] = _cur.grffile->railtype_map[buf->ReadByte()];
+		uint8 id = buf->ReadByte();
+		railtypes[i] = id < RAILTYPE_END ? _cur.grffile->railtype_map[id] : INVALID_RAILTYPE;
 	}
 
 	uint8 cidcount = buf->ReadByte();
