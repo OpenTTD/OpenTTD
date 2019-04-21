@@ -61,7 +61,7 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 
 	Town *town;                     ///< The town this station is associated with
 	OwnerByte owner;                ///< The owner of this station
-	StationFacilityByte facilities; ///< The facilities that this station has
+	StationFacility facilities;     ///< The facilities that this station has
 
 	uint8 num_specs;                ///< Number of specs in the speclist
 	StationSpecList *speclist;      ///< List of station specs of this station
