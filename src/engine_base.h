@@ -148,7 +148,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 struct EngineIDMapping {
 	uint32 grfid;          ///< The GRF ID of the file the entity belongs to
 	uint16 internal_id;    ///< The internal ID within the GRF file
-	VehicleTypeByte type;  ///< The engine type
+	VehicleType type;      ///< The engine type
 	uint8  substitute_id;  ///< The (original) entity ID to use if this GRF is not available (currently not used)
 };
 

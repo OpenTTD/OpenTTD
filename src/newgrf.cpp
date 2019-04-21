@@ -657,7 +657,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 	_engine_mngr.push_back({
 			scope_grfid, // Note: this is INVALID_GRFID if dynamic_engines is disabled, so no reservation
 			internal_id,
-			{static_cast<byte>(type)},
+			type,
 			static_cast<uint8>(min(internal_id, _engine_counts[type])) // substitute_id == _engine_counts[subtype] means "no substitute"
 	});
 

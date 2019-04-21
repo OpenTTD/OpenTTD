@@ -65,17 +65,17 @@ struct GroupStatistics {
 
 /** Group data. */
 struct Group : GroupPool::PoolItem<&_group_pool> {
-	char *name;                             ///< Group Name
-	OwnerByte owner;                        ///< Group Owner
-	VehicleTypeByte vehicle_type;           ///< Vehicle type of the group
+	char *name;                 ///< Group Name
+	OwnerByte owner;            ///< Group Owner
+	VehicleType vehicle_type;   ///< Vehicle type of the group
 
-	bool replace_protection;                ///< If set to true, the global autoreplace have no effect on the group
-	Livery livery;                          ///< Custom colour scheme for vehicles in this group
-	GroupStatistics statistics;             ///< NOSAVE: Statistics and caches on the vehicles in the group.
+	bool replace_protection;    ///< If set to true, the global autoreplace have no effect on the group
+	Livery livery;              ///< Custom colour scheme for vehicles in this group
+	GroupStatistics statistics; ///< NOSAVE: Statistics and caches on the vehicles in the group.
 
-	bool folded;                            ///< NOSAVE: Is this group folded in the group view?
+	bool folded;                ///< NOSAVE: Is this group folded in the group view?
 
-	GroupID parent;                         ///< Parent group
+	GroupID parent;             ///< Parent group
 
 	Group(CompanyID owner = INVALID_COMPANY);
 	~Group();
