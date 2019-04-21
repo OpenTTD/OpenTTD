@@ -485,7 +485,7 @@ struct EconomySettings {
 	TownLayoutByte town_layout;              ///< select town layout, @see TownLayout
 	TownCargoGenMode town_cargogen_mode;     ///< algorithm for generating cargo from houses, @see TownCargoGenMode
 	bool   allow_town_roads;                 ///< towns are allowed to build roads (always allowed when generating world / in SE)
-	TownFoundingByte found_town;             ///< town founding, @see TownFounding
+	TownFounding found_town;                 ///< town founding.
 	bool   station_noise_level;              ///< build new airports when the town noise level is still within accepted limits
 	uint16 town_noise_population[3];         ///< population to base decision on noise evaluation (@see town_council_tolerance)
 	bool   allow_town_level_crossings;       ///< towns are allowed to build level crossings
