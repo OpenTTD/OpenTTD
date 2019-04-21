@@ -94,16 +94,14 @@ template <> struct EnumPropsT<TownLayout> : MakeEnumPropsT<TownLayout, byte, TL_
 /** It needs to be 8bits, because we save and load it as such */
 typedef SimpleTinyEnumT<TownLayout, byte> TownLayoutByte; // typedefing-enumification of TownLayout
 
-/** Town founding setting values */
-enum TownFounding {
+/** Town founding setting values. It needs to be 8bits, because we save and load it as such */
+enum TownFounding : byte {
 	TF_BEGIN = 0,     ///< Used for iterations and limit testing
 	TF_FORBIDDEN = 0, ///< Forbidden
 	TF_ALLOWED,       ///< Allowed
 	TF_CUSTOM_LAYOUT, ///< Allowed, with custom town layout
 	TF_END,           ///< Used for iterations and limit testing
 };
-/** It needs to be 8bits, because we save and load it as such */
-typedef SimpleTinyEnumT<TownFounding, byte> TownFoundingByte;
 
 /** Town cargo generation modes */
 enum TownCargoGenMode : byte {
