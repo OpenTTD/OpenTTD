@@ -36,12 +36,11 @@ enum VehicleRailFlags {
 };
 
 /** Modes for ignoring signals. */
-enum TrainForceProceeding {
+enum TrainForceProceeding : byte {
 	TFP_NONE   = 0,    ///< Normal operation.
 	TFP_STUCK  = 1,    ///< Proceed till next signal, but ignore being stuck till then. This includes force leaving depots.
 	TFP_SIGNAL = 2,    ///< Ignore next signal, after the signal ignore being stuck.
 };
-typedef SimpleTinyEnumT<TrainForceProceeding, byte> TrainForceProceedingByte;
 
 /** Flags for Train::ConsistChanged */
 enum ConsistChangeFlags {
@@ -95,7 +94,7 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 
 	uint16 flags;
 	TrackBitsByte track;
-	TrainForceProceedingByte force_proceed;
+	TrainForceProceeding force_proceed;
 	RailTypeByte railtype;
 	RailTypes compatible_railtypes;
 
