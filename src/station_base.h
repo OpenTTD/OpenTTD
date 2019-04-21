@@ -470,7 +470,7 @@ public:
 
 	BitmapTileArea catchment_tiles; ///< NOSAVE: Set of individual tiles covered by catchment area
 
-	StationHadVehicleOfTypeByte had_vehicle_of_type;
+	StationHadVehicleOfType had_vehicle_of_type;
 
 	byte time_since_load;
 	byte time_since_unload;
