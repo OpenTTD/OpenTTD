@@ -15,17 +15,17 @@
 #include <type_traits>
 
 /** Some enums need to have allowed incrementing (i.e. StationClassID) */
-#define DECLARE_POSTFIX_INCREMENT(type) \
-	inline type operator ++(type& e, int) \
+#define DECLARE_POSTFIX_INCREMENT(enum_type) \
+	inline enum_type operator ++(enum_type& e, int) \
 	{ \
-		type e_org = e; \
-		e = (type)((int)e + 1); \
+		enum_type e_org = e; \
+		e = (enum_type)((std::underlying_type<enum_type>::type)e + 1); \
 		return e_org; \
 	} \
-	inline type operator --(type& e, int) \
+	inline enum_type operator --(enum_type& e, int) \
 	{ \
-		type e_org = e; \
-		e = (type)((int)e - 1); \
+		enum_type e_org = e; \
+		e = (enum_type)((std::underlying_type<enum_type>::type)e - 1); \
 		return e_org; \
 	}
 
