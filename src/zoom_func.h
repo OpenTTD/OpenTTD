@@ -23,7 +23,6 @@
  */
 static inline int ScaleByZoom(int value, ZoomLevel zoom)
 {
-	assert(zoom >= 0);
 	return value << zoom;
 }
 
@@ -36,7 +35,6 @@ static inline int ScaleByZoom(int value, ZoomLevel zoom)
  */
 static inline int UnScaleByZoom(int value, ZoomLevel zoom)
 {
-	assert(zoom >= 0);
 	return (value + (1 << zoom) - 1) >> zoom;
 }
 
@@ -48,7 +46,6 @@ static inline int UnScaleByZoom(int value, ZoomLevel zoom)
  */
 static inline int ScaleByZoomLower(int value, ZoomLevel zoom)
 {
-	assert(zoom >= 0);
 	return value << zoom;
 }
 
@@ -60,7 +57,6 @@ static inline int ScaleByZoomLower(int value, ZoomLevel zoom)
  */
 static inline int UnScaleByZoomLower(int value, ZoomLevel zoom)
 {
-	assert(zoom >= 0);
 	return value >> zoom;
 }
 
