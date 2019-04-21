@@ -19,8 +19,8 @@ typedef uint32 VehicleID;
 
 static const int GROUND_ACCELERATION = 9800; ///< Acceleration due to gravity, 9.8 m/s^2
 
-/** Available vehicle types. */
-enum VehicleType {
+/** Available vehicle types. It needs to be 8bits, because we save and load it as such */
+enum VehicleType : byte {
 	VEH_BEGIN,
 
 	VEH_TRAIN = VEH_BEGIN,        ///< %Train vehicle type.
@@ -39,8 +39,6 @@ enum VehicleType {
 DECLARE_POSTFIX_INCREMENT(VehicleType)
 /** Helper information for extract tool. */
 template <> struct EnumPropsT<VehicleType> : MakeEnumPropsT<VehicleType, byte, VEH_TRAIN, VEH_END, VEH_INVALID, 3> {};
-/** It needs to be 8bits, because we save and load it as such */
-typedef SimpleTinyEnumT<VehicleType, byte> VehicleTypeByte;
 
 struct Vehicle;
 struct Train;
@@ -53,7 +51,7 @@ struct DisasterVehicle;
 /** Base vehicle class. */
 struct BaseVehicle
 {
-	VehicleTypeByte type;    ///< Type of vehicle
+	VehicleType type; ///< Type of vehicle
 };
 
 static const VehicleID INVALID_VEHICLE = 0xFFFFF; ///< Constant representing a non-existing vehicle.
