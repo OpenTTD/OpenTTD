@@ -30,7 +30,7 @@ extern byte _trees_tick_ctr;
 /* Keep track of current game position */
 int _saved_scrollpos_x;
 int _saved_scrollpos_y;
-ZoomLevelByte _saved_scrollpos_zoom;
+ZoomLevel _saved_scrollpos_zoom;
 
 void SaveViewportBeforeSaveGame()
 {
