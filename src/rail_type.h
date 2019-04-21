@@ -50,14 +50,12 @@ typedef TinyEnumT<RailType> RailTypeByte;
  * The different railtypes we support, but then a bitmask of them.
  * @note Must be treated as a uint64 type, narrowing it causes bit membership tests to give wrong results, as in bug #6951.
  */
-enum RailTypes : uint64 {
-	RAILTYPES_NONE     = 0,                      ///< No rail types
-	RAILTYPES_RAIL     = 1 << RAILTYPE_RAIL,     ///< Non-electrified rails
-	RAILTYPES_ELECTRIC = 1 << RAILTYPE_ELECTRIC, ///< Electrified rails
-	RAILTYPES_MONO     = 1 << RAILTYPE_MONO,     ///< Monorail!
-	RAILTYPES_MAGLEV   = 1 << RAILTYPE_MAGLEV,   ///< Ever fast maglev
-	INVALID_RAILTYPES  = UINT64_MAX,             ///< Invalid railtypes
-};
-DECLARE_ENUM_AS_BIT_SET(RailTypes)
+typedef uint64 RailTypes;
+static const RailTypes RAILTYPES_NONE     = 0;                         ///< No rail types
+static const RailTypes RAILTYPES_RAIL     = 1ULL << RAILTYPE_RAIL;     ///< Non-electrified rails
+static const RailTypes RAILTYPES_ELECTRIC = 1ULL << RAILTYPE_ELECTRIC; ///< Electrified rails
+static const RailTypes RAILTYPES_MONO     = 1ULL << RAILTYPE_MONO;     ///< Monorail!
+static const RailTypes RAILTYPES_MAGLEV   = 1ULL << RAILTYPE_MAGLEV;   ///< Ever fast maglev
+static const RailTypes INVALID_RAILTYPES  = UINT64_MAX;                ///< Invalid railtypes
 
 #endif /* RAIL_TYPE_H */
