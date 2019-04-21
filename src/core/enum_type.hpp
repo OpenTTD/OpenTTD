@@ -12,6 +12,8 @@
 #ifndef ENUM_TYPE_HPP
 #define ENUM_TYPE_HPP
 
+#include <type_traits>
+
 /** Some enums need to have allowed incrementing (i.e. StationClassID) */
 #define DECLARE_POSTFIX_INCREMENT(type) \
 	inline type operator ++(type& e, int) \
@@ -31,13 +33,13 @@
 
 /** Operators to allow to work with enum as with type safe bit set in C++ */
 # define DECLARE_ENUM_AS_BIT_SET(mask_t) \
-	inline mask_t operator | (mask_t m1, mask_t m2) {return (mask_t)((int)m1 | m2);} \
-	inline mask_t operator & (mask_t m1, mask_t m2) {return (mask_t)((int)m1 & m2);} \
-	inline mask_t operator ^ (mask_t m1, mask_t m2) {return (mask_t)((int)m1 ^ m2);} \
+	inline mask_t operator | (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 | m2);} \
+	inline mask_t operator & (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 & m2);} \
+	inline mask_t operator ^ (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 ^ m2);} \
 	inline mask_t& operator |= (mask_t& m1, mask_t m2) {m1 = m1 | m2; return m1;} \
 	inline mask_t& operator &= (mask_t& m1, mask_t m2) {m1 = m1 & m2; return m1;} \
 	inline mask_t& operator ^= (mask_t& m1, mask_t m2) {m1 = m1 ^ m2; return m1;} \
-	inline mask_t operator ~(mask_t m) {return (mask_t)(~(int)m);}
+	inline mask_t operator ~(mask_t m) {return (mask_t)(~(std::underlying_type<mask_t>::type)m);}
 
 
 /**
