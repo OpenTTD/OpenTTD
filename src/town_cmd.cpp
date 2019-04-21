@@ -177,7 +177,7 @@ void Town::InitializeLayout(TownLayout layout)
 		return;
 	}
 
-	this->layout = TileHash(TileX(this->xy), TileY(this->xy)) % (NUM_TLS - 1);
+	this->layout = static_cast<TownLayout>(TileHash(TileX(this->xy), TileY(this->xy)) % (NUM_TLS - 1));
 }
 
 /**

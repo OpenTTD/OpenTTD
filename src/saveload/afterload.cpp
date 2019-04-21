@@ -2110,7 +2110,7 @@ bool AfterLoadGame()
 			_settings_game.economy.town_layout = TL_BETTER_ROADS;
 		} else {
 			_settings_game.economy.allow_town_roads = true;
-			_settings_game.economy.town_layout = _settings_game.economy.town_layout - 1;
+			_settings_game.economy.town_layout = static_cast<TownLayout>(_settings_game.economy.town_layout - 1);
 		}
 
 		/* Initialize layout of all towns. Older versions were using different
@@ -2129,7 +2129,7 @@ bool AfterLoadGame()
 				case 5: layout = 1; break;
 				case 0: layout = 2; break;
 			}
-			t->layout = layout - 1;
+			t->layout = static_cast<TownLayout>(layout - 1);
 		}
 	}
 

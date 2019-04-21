@@ -90,16 +90,16 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	CargoTypes cargo_accepted_total; ///< NOSAVE: Bitmap of all cargoes accepted by houses in this town.
 	StationList stations_near;       ///< NOSAVE: List of nearby stations.
 
-	uint16 time_until_rebuild;     ///< time until we rebuild a house
+	uint16 time_until_rebuild;       ///< time until we rebuild a house
 
-	uint16 grow_counter;           ///< counter to count when to grow, value is smaller than or equal to growth_rate
-	uint16 growth_rate;            ///< town growth rate
+	uint16 grow_counter;             ///< counter to count when to grow, value is smaller than or equal to growth_rate
+	uint16 growth_rate;              ///< town growth rate
 
-	byte fund_buildings_months;    ///< fund buildings program in action?
-	byte road_build_months;        ///< fund road reconstruction in action?
+	byte fund_buildings_months;      ///< fund buildings program in action?
+	byte road_build_months;          ///< fund road reconstruction in action?
 
-	bool larger_town;              ///< if this is a larger town and should grow more quickly
-	TownLayoutByte layout;         ///< town specific road layout
+	bool larger_town;                ///< if this is a larger town and should grow more quickly
+	TownLayout layout;               ///< town specific road layout
 
 	std::list<PersistentStorage *> psa_list;
 
