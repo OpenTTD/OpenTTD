@@ -147,7 +147,7 @@ typedef Money Prices[PR_END]; ///< Prices of everything. @see Price
 typedef int8 PriceMultipliers[PR_END];
 
 /** Types of expenses. */
-enum ExpensesType {
+enum ExpensesType : byte {
 	EXPENSES_CONSTRUCTION =  0,   ///< Construction costs.
 	EXPENSES_NEW_VEHICLES,        ///< New vehicles.
 	EXPENSES_TRAIN_RUN,           ///< Running costs trains.
@@ -167,7 +167,6 @@ enum ExpensesType {
 
 /** Define basic enum properties for ExpensesType */
 template <> struct EnumPropsT<ExpensesType> : MakeEnumPropsT<ExpensesType, byte, EXPENSES_CONSTRUCTION, EXPENSES_END, INVALID_EXPENSES, 8> {};
-typedef TinyEnumT<ExpensesType> ExpensesTypeByte; ///< typedefing-enumification of ExpensesType
 
 /**
  * Categories of a price bases.
