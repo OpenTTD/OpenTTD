@@ -22,7 +22,7 @@ extern GoalPool _goal_pool;
 /** Struct about goals, current and completed */
 struct Goal : GoalPool::PoolItem<&_goal_pool> {
 	CompanyID company; ///< Goal is for a specific company; INVALID_COMPANY if it is global
-	GoalTypeByte type; ///< Type of the goal
+	GoalType type;     ///< Type of the goal
 	GoalTypeID dst;    ///< Index of type
 	char *text;        ///< Text of the goal.
 	char *progress;    ///< Progress text of the goal.
