@@ -29,15 +29,13 @@
 /* Default of 4MB spritecache */
 uint _sprite_cache_size = 4;
 
-typedef SimpleTinyEnumT<SpriteType, byte> SpriteTypeByte;
-
 struct SpriteCache {
 	void *ptr;
 	size_t file_pos;
 	uint32 id;
 	uint16 file_slot;
 	int16 lru;
-	SpriteTypeByte type; ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
+	SpriteType type;     ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
 	bool warned;         ///< True iff the user has been warned about incorrect use of this sprite
 	byte container_ver;  ///< Container version of the GRF the sprite is from.
 };
