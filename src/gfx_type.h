@@ -294,7 +294,7 @@ enum PaletteType {
 };
 
 /** Types of sprites that might be loaded */
-enum SpriteType {
+enum SpriteType : byte {
 	ST_NORMAL   = 0,      ///< The most basic (normal) sprite
 	ST_MAPGEN   = 1,      ///< Special sprite for the map generator
 	ST_FONT     = 2,      ///< A sprite used for fonts
