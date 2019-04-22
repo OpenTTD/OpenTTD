@@ -18,7 +18,7 @@ static const uint32 GOAL_QUESTION_BUTTON_COUNT = 18; ///< Amount of buttons avai
 static const byte   GOAL_QUESTION_TYPE_COUNT   =  4; ///< Amount of question types.
 
 /** Types of goal destinations */
-enum GoalType {
+enum GoalType : byte {
 	GT_NONE,         ///< Destination is not linked
 	GT_TILE,         ///< Destination is a tile
 	GT_INDUSTRY,     ///< Destination is an industry
@@ -26,7 +26,6 @@ enum GoalType {
 	GT_COMPANY,      ///< Destination is a company
 	GT_STORY_PAGE,   ///< Destination is a story page
 };
-typedef SimpleTinyEnumT<GoalType, byte> GoalTypeByte; ///< The GoalType packed into a byte for savegame purposes.
 
 typedef uint32 GoalTypeID; ///< Contains either tile, industry ID, town ID or company ID (or INVALID_GOALTYPE)
 static const GoalTypeID INVALID_GOALTYPE = 0xFFFFFFFF; ///< Invalid/unknown index of GoalType
