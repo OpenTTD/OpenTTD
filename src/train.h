@@ -95,7 +95,7 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 	uint16 flags;
 	TrackBitsByte track;
 	TrainForceProceeding force_proceed;
-	RailTypeByte railtype;
+	RailType railtype;
 	RailTypes compatible_railtypes;
 
 	/** Ticks waiting in front of a signal, ticks being stuck or a counter for forced proceeding through signals. */

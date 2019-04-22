@@ -1014,8 +1014,8 @@ void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selecte
 struct BuildVehicleWindow : Window {
 	VehicleType vehicle_type;                   ///< Type of vehicles shown in the window.
 	union {
-		RailTypeByte railtype;              ///< Rail type to show, or #RAILTYPE_END.
-		RoadTypes roadtypes;                ///< Road type to show, or #ROADTYPES_ALL.
+		RailType railtype;   ///< Rail type to show, or #RAILTYPE_END.
+		RoadTypes roadtypes; ///< Road type to show, or #ROADTYPES_ALL.
 	} filter;                                   ///< Filter to apply.
 	bool descending_sort_order;                 ///< Sort direction, @see _engine_sort_direction
 	byte sort_criteria;                         ///< Current sort criterium.
