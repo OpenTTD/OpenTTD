@@ -98,9 +98,7 @@ public:
 			while (pNode->m_parent != nullptr) {
 				steps--;
 				if (steps > 0 && steps < YAPF_SHIP_PATH_CACHE_LENGTH) {
-					TrackdirByte td;
-					td = pNode->GetTrackdir();
-					path_cache.push_front(td);
+					path_cache.push_front(pNode->GetTrackdir());
 				}
 				pPrevNode = pNode;
 				pNode = pNode->m_parent;
