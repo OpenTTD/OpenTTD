@@ -493,16 +493,16 @@ struct EconomySettings {
 };
 
 struct LinkGraphSettings {
-	uint16 recalc_time;                         ///< time (in days) for recalculating each link graph component.
-	uint16 recalc_interval;                     ///< time (in days) between subsequent checks for link graphs to be calculated.
-	DistributionTypeByte distribution_pax;      ///< distribution type for passengers
-	DistributionTypeByte distribution_mail;     ///< distribution type for mail
-	DistributionTypeByte distribution_armoured; ///< distribution type for armoured cargo class
-	DistributionTypeByte distribution_default;  ///< distribution type for all other goods
-	uint8 accuracy;                             ///< accuracy when calculating things on the link graph. low accuracy => low running time
-	uint8 demand_size;                          ///< influence of supply ("station size") on the demand function
-	uint8 demand_distance;                      ///< influence of distance between stations on the demand function
-	uint8 short_path_saturation;                ///< percentage up to which short paths are saturated before saturating most capacious paths
+	uint16 recalc_time;                     ///< time (in days) for recalculating each link graph component.
+	uint16 recalc_interval;                 ///< time (in days) between subsequent checks for link graphs to be calculated.
+	DistributionType distribution_pax;      ///< distribution type for passengers
+	DistributionType distribution_mail;     ///< distribution type for mail
+	DistributionType distribution_armoured; ///< distribution type for armoured cargo class
+	DistributionType distribution_default;  ///< distribution type for all other goods
+	uint8 accuracy;                         ///< accuracy when calculating things on the link graph. low accuracy => low running time
+	uint8 demand_size;                      ///< influence of supply ("station size") on the demand function
+	uint8 demand_distance;                  ///< influence of distance between stations on the demand function
+	uint8 short_path_saturation;            ///< percentage up to which short paths are saturated before saturating most capacious paths
 
 	inline DistributionType GetDistributionType(CargoID cargo) const {
 		if (IsCargoInClass(cargo, CC_PASSENGERS)) return this->distribution_pax;
