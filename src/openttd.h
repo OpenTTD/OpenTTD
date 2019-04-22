@@ -54,7 +54,7 @@ extern SwitchMode _switch_mode;
 extern bool _exit_game;
 
 /** Modes of pausing we've got */
-enum PauseMode {
+enum PauseMode : byte {
 	PM_UNPAUSED              = 0,      ///< A normal unpaused game
 	PM_PAUSED_NORMAL         = 1 << 0, ///< A game normally paused
 	PM_PAUSED_SAVELOAD       = 1 << 1, ///< A game paused for saving/loading
@@ -67,10 +67,9 @@ enum PauseMode {
 	PMB_PAUSED_NETWORK = PM_PAUSED_ACTIVE_CLIENTS | PM_PAUSED_JOIN,
 };
 DECLARE_ENUM_AS_BIT_SET(PauseMode)
-typedef SimpleTinyEnumT<PauseMode, byte> PauseModeByte;
 
 /** The current pause mode */
-extern PauseModeByte _pause_mode;
+extern PauseMode _pause_mode;
 
 void AskExitGame();
 void AskExitToGameMenu();
