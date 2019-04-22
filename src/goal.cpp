@@ -79,7 +79,7 @@ CommandCost CmdCreateGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 		case GT_STORY_PAGE: {
 			if (!StoryPage::IsValidID(p2)) return CMD_ERROR;
-			CompanyByte story_company = StoryPage::Get(p2)->company;
+			CompanyID story_company = StoryPage::Get(p2)->company;
 			if (company == INVALID_COMPANY ? story_company != INVALID_COMPANY : story_company != INVALID_COMPANY && story_company != company) return CMD_ERROR;
 			break;
 		}

@@ -764,7 +764,7 @@ bool FloodHalftile(TileIndex t)
 
 		TrackBits to_remove = lower_track & rail_bits;
 		if (to_remove != 0) {
-			Backup<CompanyByte> cur_company(_current_company, OWNER_WATER, FILE_LINE);
+			Backup<CompanyID> cur_company(_current_company, OWNER_WATER, FILE_LINE);
 			flooded = DoCommand(t, 0, FIND_FIRST_BIT(to_remove), DC_EXEC, CMD_REMOVE_SINGLE_RAIL).Succeeded();
 			cur_company.Restore();
 			if (!flooded) return flooded; // not yet floodable

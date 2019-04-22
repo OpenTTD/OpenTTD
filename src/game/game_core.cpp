@@ -45,7 +45,7 @@
 
 	Game::frame_counter++;
 
-	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 	cur_company.Change(OWNER_DEITY);
 	Game::instance->GameLoop();
 	cur_company.Restore();
@@ -84,7 +84,7 @@
 
 	config->AnchorUnchangeableSettings();
 
-	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 	cur_company.Change(OWNER_DEITY);
 
 	Game::info = info;
@@ -98,7 +98,7 @@
 
 /* static */ void Game::Uninitialize(bool keepConfig)
 {
-	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 
 	delete Game::instance;
 	Game::instance = nullptr;
@@ -158,7 +158,7 @@
 	}
 
 	/* Queue the event */
-	Backup<CompanyByte> cur_company(_current_company, OWNER_DEITY, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, OWNER_DEITY, FILE_LINE);
 	Game::instance->InsertEvent(event);
 	cur_company.Restore();
 
@@ -207,7 +207,7 @@
 /* static */ void Game::Save()
 {
 	if (Game::instance != nullptr && (!_networking || _network_server)) {
-		Backup<CompanyByte> cur_company(_current_company, OWNER_DEITY, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, OWNER_DEITY, FILE_LINE);
 		Game::instance->Save();
 		cur_company.Restore();
 	} else {
@@ -218,7 +218,7 @@
 /* static */ void Game::Load(int version)
 {
 	if (Game::instance != nullptr && (!_networking || _network_server)) {
-		Backup<CompanyByte> cur_company(_current_company, OWNER_DEITY, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, OWNER_DEITY, FILE_LINE);
 		Game::instance->Load(version);
 		cur_company.Restore();
 	} else {

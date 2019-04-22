@@ -810,7 +810,7 @@ struct AIConfigWindow : public Window {
 		if (_game_mode != GM_NORMAL) {
 			return slot > 0 && slot <= GetGameSettings().difficulty.max_no_competitors;
 		}
-		if (Company::IsValidID(slot) || slot < 0) return false;
+		if (Company::IsValidID(slot)) return false;
 
 		int max_slot = GetGameSettings().difficulty.max_no_competitors;
 		for (CompanyID cid = COMPANY_FIRST; cid < (CompanyID)max_slot && cid < MAX_COMPANIES; cid++) {

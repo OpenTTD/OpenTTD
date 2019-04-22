@@ -1027,7 +1027,7 @@ void CallVehicleTicks()
 		}
 	}
 
-	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 	for (auto &it : _vehicles_to_autoreplace) {
 		v = it.first;
 		/* Autoreplace needs the current company set as the vehicle owner */
@@ -1514,7 +1514,7 @@ void VehicleEnterDepot(Vehicle *v)
 		}
 
 		if (v->current_order.IsRefit()) {
-			Backup<CompanyByte> cur_company(_current_company, v->owner, FILE_LINE);
+			Backup<CompanyID> cur_company(_current_company, v->owner, FILE_LINE);
 			CommandCost cost = DoCommand(v->tile, v->index, v->current_order.GetRefitCargo() | 0xFF << 8, DC_EXEC, GetCmdRefitVeh(v));
 			cur_company.Restore();
 

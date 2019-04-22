@@ -72,7 +72,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	/* Company ratings. */
 	CompanyMask have_ratings;      ///< which companies have a rating
 	uint8 unwanted[MAX_COMPANIES]; ///< how many months companies aren't wanted by towns (bribe)
-	CompanyByte exclusivity;       ///< which company has exclusivity
+	CompanyID exclusivity;         ///< which company has exclusivity
 	uint8 exclusive_counter;       ///< months till the exclusivity expires
 	int16 ratings[MAX_COMPANIES];  ///< ratings of each company for this town
 

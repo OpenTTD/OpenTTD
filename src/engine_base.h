@@ -34,7 +34,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint16 duration_phase_3;    ///< Third reliability phase on months, decaying to #reliability_final.
 	byte flags;                 ///< Flags of the engine. @see EngineFlags
 	CompanyMask preview_asked;  ///< Bit for each company which has already been offered a preview.
-	CompanyByte preview_company;///< Company which is currently being offered a preview \c INVALID_COMPANY means no company.
+	CompanyID preview_company;  ///< Company which is currently being offered a preview \c INVALID_COMPANY means no company.
 	byte preview_wait;          ///< Daily countdown timer for timeout of offering the engine to the #preview_company company.
 	CompanyMask company_avail;  ///< Bit for each company whether the engine is available for that company.
 	CompanyMask company_hidden; ///< Bit for each company whether the engine is normally hidden in the build gui for that company.
@@ -118,7 +118,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	 * @param c Company to check.
 	 * @return \c true iff the engine is hidden in the GUI for the given company.
 	 */
-	inline bool IsHidden(CompanyByte c) const
+	inline bool IsHidden(CompanyID c) const
 	{
 		return c < MAX_COMPANIES && HasBit(this->company_hidden, c);
 	}

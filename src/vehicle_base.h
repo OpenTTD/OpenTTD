@@ -270,7 +270,7 @@ public:
 	int32 z_pos;                        ///< z coordinate.
 	Direction direction;                ///< facing
 
-	OwnerByte owner;                    ///< Which company owns the vehicle?
+	Owner owner;                        ///< Which company owns the vehicle?
 	/**
 	 * currently displayed sprite index
 	 * 0xfd == custom sprite, 0xfe == custom second head sprite

@@ -24,7 +24,7 @@ extern SubsidyPool _subsidy_pool;
 struct Subsidy : SubsidyPool::PoolItem<&_subsidy_pool> {
 	CargoID cargo_type;      ///< Cargo type involved in this subsidy, CT_INVALID for invalid subsidy
 	byte remaining;          ///< Remaining months when this subsidy is valid
-	CompanyByte awarded;     ///< Subsidy is awarded to this company; INVALID_COMPANY if it's not awarded to anyone
+	CompanyID awarded;       ///< Subsidy is awarded to this company; INVALID_COMPANY if it's not awarded to anyone
 	SourceTypeByte src_type; ///< Source of subsidised path (ST_INDUSTRY or ST_TOWN)
 	SourceTypeByte dst_type; ///< Destination of subsidised path (ST_INDUSTRY or ST_TOWN)
 	SourceID src;            ///< Index of source. Either TownID or IndustryID
