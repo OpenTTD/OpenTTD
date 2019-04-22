@@ -1465,7 +1465,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			 * whether we are not going to a depot as there are three
 			 * cases where the full load flag can be active and only
 			 * one case where the flag is used for depot orders. In the
-			 * other cases for the OrderTypeByte the flags are not used,
+			 * other cases for the OrderType the flags are not used,
 			 * so do not care and those orders should not be active
 			 * when this function is called.
 			 */

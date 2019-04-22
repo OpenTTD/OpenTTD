@@ -33,8 +33,8 @@ static const OrderID INVALID_ORDER = 0xFFFFFF;
  */
 static const uint IMPLICIT_ORDER_ONLY_CAP = 32;
 
-/** Order types */
-enum OrderType {
+/** Order types. It needs to be 8bits, because we save and load it as such */
+enum OrderType : byte {
 	OT_BEGIN         = 0,
 	OT_NOTHING       = 0,
 	OT_GOTO_STATION  = 1,
@@ -44,13 +44,9 @@ enum OrderType {
 	OT_DUMMY         = 5,
 	OT_GOTO_WAYPOINT = 6,
 	OT_CONDITIONAL   = 7,
-	OT_IMPLICIT     = 8,
+	OT_IMPLICIT      = 8,
 	OT_END
 };
-
-/** It needs to be 8bits, because we save and load it as such */
-typedef SimpleTinyEnumT<OrderType, byte> OrderTypeByte;
-
 
 /**
  * Flags related to the unloading order.
