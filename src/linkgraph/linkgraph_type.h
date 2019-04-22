@@ -21,7 +21,7 @@ static const LinkGraphID INVALID_LINK_GRAPH_JOB = UINT16_MAX;
 typedef uint16 NodeID;
 static const NodeID INVALID_NODE = UINT16_MAX;
 
-enum DistributionType {
+enum DistributionType : byte {
 	DT_BEGIN = 0,
 	DT_MIN = 0,
 	DT_MANUAL = 0,           ///< Manual distribution. No link graph calculations are run.
@@ -37,7 +37,6 @@ enum DistributionType {
  * Define basic enum properties
  */
 template <> struct EnumPropsT<DistributionType> : MakeEnumPropsT<DistributionType, byte, DT_BEGIN, DT_END, DT_NUM> {};
-typedef TinyEnumT<DistributionType> DistributionTypeByte; // typedefing-enumification of DistributionType
 
 /**
  * Special modes for updating links. 'Restricted' means that vehicles with
