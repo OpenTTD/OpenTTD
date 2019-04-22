@@ -145,12 +145,11 @@ public:
 
 
 /** Types of cargo source and destination */
-enum SourceType {
+enum SourceType : byte {
 	ST_INDUSTRY,     ///< Source/destination is an industry
 	ST_TOWN,         ///< Source/destination is a town
 	ST_HEADQUARTERS, ///< Source/destination are company headquarters
 };
-typedef SimpleTinyEnumT<SourceType, byte> SourceTypeByte; ///< The SourceType packed into a byte for savegame purposes.
 
 typedef uint16 SourceID; ///< Contains either industry ID, town ID or company ID (or INVALID_SOURCE)
 static const SourceID INVALID_SOURCE = 0xFFFF; ///< Invalid/unknown index of source
