@@ -23,7 +23,7 @@
  * your viewport and not rotated by 45 degrees left or right to get
  * a "north" used in you games.
  */
-enum Direction {
+enum Direction : byte {
 	DIR_BEGIN = 0,          ///< Used to iterate
 	DIR_N   = 0,            ///< North
 	DIR_NE  = 1,            ///< Northeast
@@ -42,7 +42,6 @@ DECLARE_POSTFIX_INCREMENT(Direction)
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<Direction> : MakeEnumPropsT<Direction, byte, DIR_BEGIN, DIR_END, INVALID_DIR, 3> {};
-typedef TinyEnumT<Direction> DirectionByte; ///< typedefing-enumification of Direction
 
 
 /**
@@ -77,7 +76,7 @@ enum DirDiff {
  *
  * This enumeration is used for the 4 direction of the tile-edges.
  */
-enum DiagDirection {
+enum DiagDirection : byte {
 	DIAGDIR_BEGIN = 0,      ///< Used for iterations
 	DIAGDIR_NE  = 0,        ///< Northeast, upper right on your monitor
 	DIAGDIR_SE  = 1,        ///< Southeast
@@ -92,7 +91,6 @@ DECLARE_POSTFIX_INCREMENT(DiagDirection)
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<DiagDirection> : MakeEnumPropsT<DiagDirection, byte, DIAGDIR_BEGIN, DIAGDIR_END, INVALID_DIAGDIR, 2> {};
-typedef TinyEnumT<DiagDirection> DiagDirectionByte; ///< typedefing-enumification of DiagDirection
 
 
 /**

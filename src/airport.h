@@ -130,10 +130,10 @@ static const uint64
 
 /** A single location on an airport where aircraft can move to. */
 struct AirportMovingData {
-	int16 x;                 ///< x-coordinate of the destination.
-	int16 y;                 ///< y-coordinate of the destination.
-	uint16 flag;             ///< special flags when moving towards the destination.
-	DirectionByte direction; ///< Direction to turn the aircraft after reaching the destination.
+	int16 x;             ///< x-coordinate of the destination.
+	int16 y;             ///< y-coordinate of the destination.
+	uint16 flag;         ///< special flags when moving towards the destination.
+	Direction direction; ///< Direction to turn the aircraft after reaching the destination.
 };
 
 AirportMovingData RotateAirportMovingData(const AirportMovingData *orig, Direction rotation, uint num_tiles_x, uint num_tiles_y);

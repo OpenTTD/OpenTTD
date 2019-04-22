@@ -79,7 +79,7 @@ struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	byte previous_pos;             ///< Previous desired position of the aircraft.
 	StationID targetairport;       ///< Airport to go to next.
 	byte state;                    ///< State of the airport. @see AirportMovementStates
-	DirectionByte last_direction;
+	Direction last_direction;
 	byte number_consecutive_turns; ///< Protection to prevent the aircraft of making a lot of turns in order to reach a specific point.
 	byte turn_counter;             ///< Ticks between each turn to prevent > 45 degree turns.
 	byte flags;                    ///< Aircraft flags. @see AirVehicleFlags

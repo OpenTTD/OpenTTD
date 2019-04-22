@@ -34,7 +34,7 @@ struct AirportFTAbuildup {
  * @param flags Movement flags.
  * @param dir   Direction.
  */
-#define AMD(x, y, flags, dir) { x, y, flags, {dir} }
+#define AMD(x, y, flags, dir) { x, y, flags, dir }
 
 /** Dummy airport. */
 static const AirportMovingData _airport_moving_data_dummy[] = {
