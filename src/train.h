@@ -93,7 +93,7 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 	uint16 crash_anim_pos; ///< Crash animation counter.
 
 	uint16 flags;
-	TrackBitsByte track;
+	TrackBits track;
 	TrainForceProceeding force_proceed;
 	RailType railtype;
 	RailTypes compatible_railtypes;

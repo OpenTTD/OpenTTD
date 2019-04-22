@@ -20,13 +20,13 @@
 void GetShipSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 WaterClass GetEffectiveWaterClass(TileIndex tile);
 
-typedef std::deque<TrackdirByte> ShipPathCache;
+typedef std::deque<Trackdir> ShipPathCache;
 
 /**
  * All ships have this type.
  */
 struct Ship FINAL : public SpecializedVehicle<Ship, VEH_SHIP> {
-	TrackBitsByte state;    ///< The "track" the ship is following.
+	TrackBits state;        ///< The "track" the ship is following.
 	ShipPathCache path;     ///< Cached path.
 	DirectionByte rotation; ///< Visible direction.
 	int16 rotation_x_pos;   ///< NOSAVE: X Position before rotation.
