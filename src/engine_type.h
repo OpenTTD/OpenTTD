@@ -44,7 +44,7 @@ struct RailVehicleInfo {
 	byte image_index;
 	RailVehicleTypes railveh_type;
 	byte cost_factor;               ///< Purchase cost factor;      For multiheaded engines the sum of both engine prices.
-	RailTypeByte railtype;
+	RailType railtype;
 	uint16 max_speed;               ///< Maximum speed (1 unit = 1/1.6 mph = 1 km-ish/h)
 	uint16 power;                   ///< Power of engine (hp);      For multiheaded engines the sum of both engine powers.
 	uint16 weight;                  ///< Weight of vehicle (tons);  For multiheaded engines the weight of each single engine.
