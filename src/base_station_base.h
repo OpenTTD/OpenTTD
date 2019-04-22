@@ -60,7 +60,7 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	StringID string_id;             ///< Default name (town area) of station
 
 	Town *town;                     ///< The town this station is associated with
-	OwnerByte owner;                ///< The owner of this station
+	Owner owner;                    ///< The owner of this station
 	StationFacility facilities;     ///< The facilities that this station has
 
 	uint8 num_specs;                ///< Number of specs in the speclist

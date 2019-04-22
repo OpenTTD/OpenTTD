@@ -66,7 +66,7 @@ struct GroupStatistics {
 /** Group data. */
 struct Group : GroupPool::PoolItem<&_group_pool> {
 	char *name;                 ///< Group Name
-	OwnerByte owner;            ///< Group Owner
+	Owner owner;                ///< Group Owner
 	VehicleType vehicle_type;   ///< Vehicle type of the group
 
 	bool replace_protection;    ///< If set to true, the global autoreplace have no effect on the group

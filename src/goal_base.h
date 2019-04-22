@@ -21,12 +21,12 @@ extern GoalPool _goal_pool;
 
 /** Struct about goals, current and completed */
 struct Goal : GoalPool::PoolItem<&_goal_pool> {
-	CompanyByte company; ///< Goal is for a specific company; INVALID_COMPANY if it is global
-	GoalTypeByte type;   ///< Type of the goal
-	GoalTypeID dst;      ///< Index of type
-	char *text;          ///< Text of the goal.
-	char *progress;      ///< Progress text of the goal.
-	bool completed;      ///< Is the goal completed or not?
+	CompanyID company; ///< Goal is for a specific company; INVALID_COMPANY if it is global
+	GoalTypeByte type; ///< Type of the goal
+	GoalTypeID dst;    ///< Index of type
+	char *text;        ///< Text of the goal.
+	char *progress;    ///< Progress text of the goal.
+	bool completed;    ///< Is the goal completed or not?
 
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)

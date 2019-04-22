@@ -858,8 +858,7 @@ DEF_CONSOLE_CMD(ConNetworkReconnect)
 		default:
 			/* From a user pov 0 is a new company, internally it's different and all
 			 * companies are offset by one to ease up on users (eg companies 1-8 not 0-7) */
-			playas--;
-			if (playas < COMPANY_FIRST || playas >= MAX_COMPANIES) return false;
+			if (playas < COMPANY_FIRST + 1 || playas > MAX_COMPANIES + 1) return false;
 			break;
 	}
 

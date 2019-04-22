@@ -52,7 +52,7 @@
 	}
 	config->AnchorUnchangeableSettings();
 
-	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
 	Company *c = Company::Get(company);
 
 	c->ai_info = info;
@@ -76,7 +76,7 @@
 	assert(_settings_game.difficulty.competitor_speed <= 4);
 	if ((AI::frame_counter & ((1 << (4 - _settings_game.difficulty.competitor_speed)) - 1)) != 0) return;
 
-	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 	const Company *c;
 	FOR_ALL_COMPANIES(c) {
 		if (c->is_ai) {
@@ -107,7 +107,7 @@
 	if (_networking && !_network_server) return;
 	PerformanceMeasurer::SetInactive((PerformanceElement)(PFE_AI0 + company));
 
-	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
 	Company *c = Company::Get(company);
 
 	delete c->ai_instance;
@@ -127,7 +127,7 @@
 	 * for the server owner to unpause the script again. */
 	if (_network_dedicated) return;
 
-	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
 	Company::Get(company)->ai_instance->Pause();
 
 	cur_company.Restore();
@@ -135,7 +135,7 @@
 
 /* static */ void AI::Unpause(CompanyID company)
 {
-	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
 	Company::Get(company)->ai_instance->Unpause();
 
 	cur_company.Restore();
@@ -143,7 +143,7 @@
 
 /* static */ bool AI::IsPaused(CompanyID company)
 {
-	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
 	bool paused = Company::Get(company)->ai_instance->IsPaused();
 
 	cur_company.Restore();
@@ -253,7 +253,7 @@
 	}
 
 	/* Queue the event */
-	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
 	Company::Get(_current_company)->ai_instance->InsertEvent(event);
 	cur_company.Restore();
 
@@ -285,7 +285,7 @@
 		Company *c = Company::GetIfValid(company);
 		assert(c != nullptr && c->ai_instance != nullptr);
 
-		Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
 		c->ai_instance->Save();
 		cur_company.Restore();
 	} else {
@@ -299,7 +299,7 @@
 		Company *c = Company::GetIfValid(company);
 		assert(c != nullptr && c->ai_instance != nullptr);
 
-		Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
 		c->ai_instance->Load(version);
 		cur_company.Restore();
 	} else {

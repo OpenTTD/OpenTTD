@@ -660,7 +660,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 		return_dcpi(CMD_ERROR);
 	}
 
-	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 	if (exec_as_spectator) cur_company.Change(COMPANY_SPECTATOR);
 
 	bool test_and_exec_can_differ = (cmd_flags & CMD_NO_TEST) != 0;

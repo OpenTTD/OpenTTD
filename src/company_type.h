@@ -17,7 +17,7 @@
 /**
  * Enum for all companies/owners.
  */
-enum Owner {
+enum Owner : byte {
 	/* All companies below MAX_COMPANIES are playable
 	 * companies, above, they are special, computer controlled 'companies' */
 	OWNER_BEGIN     = 0x00, ///< First owner
@@ -45,10 +45,8 @@ static const uint MAX_HISTORY_QUARTERS            = 24; ///< The maximum number 
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<Owner> : MakeEnumPropsT<Owner, byte, OWNER_BEGIN, OWNER_END, INVALID_OWNER> {};
-typedef TinyEnumT<Owner> OwnerByte;
 
 typedef Owner CompanyID;
-typedef OwnerByte CompanyByte;
 
 typedef uint16 CompanyMask;
 

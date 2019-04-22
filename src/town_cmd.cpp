@@ -599,7 +599,7 @@ static void TileLoop_Town(TileIndex tile)
 		}
 	}
 
-	Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
 
 	if ((hs->building_flags & BUILDING_HAS_1_TILE) &&
 			HasBit(t->flags, TOWN_IS_GROWING) &&
@@ -1566,7 +1566,7 @@ static bool GrowTown(Town *t)
 	};
 
 	/* Current "company" is a town */
-	Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
 
 	TileIndex tile = t->xy; // The tile we are working with ATM
 
@@ -2042,7 +2042,7 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 		 * placement is so bad it couldn't grow at all */
 		if (t->cache.population > 0) return t;
 
-		Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
 		CommandCost rc = DoCommand(t->xy, t->index, 0, DC_EXEC, CMD_DELETE_TOWN);
 		cur_company.Restore();
 		assert(rc.Succeeded());
@@ -2940,7 +2940,7 @@ static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlag flags)
  */
 static bool TryClearTile(TileIndex tile)
 {
-	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 	CommandCost r = DoCommand(tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR);
 	cur_company.Restore();
 	return r.Succeeded();
@@ -3012,7 +3012,7 @@ static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
 	if (!CircularTileSearch(&tile, 9, SearchTileForStatue, &statue_data)) return_cmd_error(STR_ERROR_STATUE_NO_SUITABLE_PLACE);
 
 	if (flags & DC_EXEC) {
-		Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
+		Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 		DoCommand(statue_data.best_position, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 		cur_company.Restore();
 		BuildObject(OBJECT_STATUE, statue_data.best_position, _current_company, t);

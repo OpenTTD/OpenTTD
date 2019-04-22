@@ -1232,7 +1232,7 @@ void NetworkClientRequestMove(CompanyID company_id, const char *pass)
  */
 void NetworkClientsToSpectators(CompanyID cid)
 {
-	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 	/* If our company is changing owner, go to spectators */
 	if (cid == _local_company) SetLocalCompany(COMPANY_SPECTATOR);
 

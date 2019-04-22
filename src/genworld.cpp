@@ -97,7 +97,7 @@ static void CleanupGeneration()
 static void _GenerateWorld()
 {
 	/* Make sure everything is done via OWNER_NONE. */
-	Backup<CompanyByte> _cur_company(_current_company, OWNER_NONE, FILE_LINE);
+	Backup<CompanyID> _cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
 	std::unique_lock<std::mutex> lock(_modal_progress_work_mutex, std::defer_lock);
 	try {

@@ -72,7 +72,7 @@ struct CompanyProperties {
 	TileIndex location_of_HQ;        ///< Northern tile of HQ; #INVALID_TILE when there is none.
 	TileIndex last_build_coordinate; ///< Coordinate of the last build thing by this company.
 
-	OwnerByte share_owners[4];       ///< Owners of the 4 shares of the company. #INVALID_OWNER if nobody has bought them yet.
+	Owner share_owners[4];           ///< Owners of the 4 shares of the company. #INVALID_OWNER if nobody has bought them yet.
 
 	Year inaugurated_year;           ///< Year of starting the company.
 

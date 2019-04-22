@@ -291,14 +291,14 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	/* We need to set _current_company to old_owner before we try to move
 	 * the client. This is needed as it needs to know whether "you" really
 	 * are the current local company. */
-	Backup<CompanyByte> cur_company(_current_company, old_owner, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, old_owner, FILE_LINE);
 	/* In all cases, make spectators of clients connected to that company */
 	if (_networking) NetworkClientsToSpectators(old_owner);
 	if (old_owner == _local_company) {
 		/* Single player cheated to AI company.
 		 * There are no spectators in single player, so we must pick some other company. */
 		assert(!_networking);
-		Backup<CompanyByte> cur_company2(_current_company, FILE_LINE);
+		Backup<CompanyID> cur_company2(_current_company, FILE_LINE);
 		Company *c;
 		FOR_ALL_COMPANIES(c) {
 			if (c->index != old_owner) {
@@ -332,7 +332,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		}
 
 		/* Sell all the shares that people have on this company */
-		Backup<CompanyByte> cur_company2(_current_company, FILE_LINE);
+		Backup<CompanyID> cur_company2(_current_company, FILE_LINE);
 		c = Company::Get(old_owner);
 		for (i = 0; i < 4; i++) {
 			cur_company2.Change(c->share_owners[i]);
@@ -665,7 +665,7 @@ static void CompaniesGenStatistics()
 		CompanyCheckBankrupt(c);
 	}
 
-	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 
 	if (!_settings_game.economy.infrastructure_maintenance) {
 		Station *st;
@@ -835,7 +835,7 @@ static void CompaniesPayInterest()
 {
 	const Company *c;
 
-	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 	FOR_ALL_COMPANIES(c) {
 		cur_company.Change(c->index);
 
@@ -1191,7 +1191,7 @@ CargoPayment::~CargoPayment()
 
 	if (this->visual_profit == 0 && this->visual_transfer == 0) return;
 
-	Backup<CompanyByte> cur_company(_current_company, this->front->owner, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, this->front->owner, FILE_LINE);
 
 	SubtractMoneyFromCompany(CommandCost(this->front->GetExpenseType(true), -this->route_profit));
 	this->front->profit_this_year += (this->visual_profit + this->visual_transfer) << 8;
@@ -1478,7 +1478,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 	Vehicle *v_start = v->GetFirstEnginePart();
 	if (!IterateVehicleParts(v_start, IsEmptyAction())) return;
 
-	Backup<CompanyByte> cur_company(_current_company, v->owner, FILE_LINE);
+	Backup<CompanyID> cur_company(_current_company, v->owner, FILE_LINE);
 
 	CargoTypes refit_mask = v->GetEngine()->info.refit_mask;
 
@@ -2042,7 +2042,7 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
 
 	cost.AddCost(CalculateCompanyValue(c) >> 2);
 	if (flags & DC_EXEC) {
-		OwnerByte *b = c->share_owners;
+		Owner *b = c->share_owners;
 
 		while (*b != COMPANY_SPECTATOR) b++; // share owners is guaranteed to contain at least one COMPANY_SPECTATOR
 		*b = _current_company;
@@ -2089,7 +2089,7 @@ CommandCost CmdSellShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1
 	cost = -(cost - (cost >> 7));
 
 	if (flags & DC_EXEC) {
-		OwnerByte *b = c->share_owners;
+		Owner *b = c->share_owners;
 		while (*b != _current_company) b++; // share owners is guaranteed to contain company
 		*b = COMPANY_SPECTATOR;
 		InvalidateWindowData(WC_COMPANY, target_company);

@@ -36,7 +36,7 @@ struct OldWaypoint {
 	uint8 localidx;
 	uint32 grfid;
 	const StationSpec *spec;
-	OwnerByte owner;
+	Owner owner;
 
 	size_t new_index;
 };
