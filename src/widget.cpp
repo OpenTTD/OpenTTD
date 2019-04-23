@@ -2634,7 +2634,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(*dest);
 				if (nwrb != NULL) {
 					assert(parts->u.xy.x >= 0 && parts->u.xy.y >= 0);
-					nwrb->SetMinimalSize(parts->u.xy.x, parts->u.xy.y);
+					nwrb->SetMinimalSize(ScaleGUITrad(parts->u.xy.x), ScaleGUITrad(parts->u.xy.y));
 				}
 				break;
 			}
@@ -2664,7 +2664,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 			}
 
 			case WPT_PADDING:
-				if (*dest != NULL) (*dest)->SetPadding(parts->u.padding.top, parts->u.padding.right, parts->u.padding.bottom, parts->u.padding.left);
+				if (*dest != NULL) (*dest)->SetPadding(ScaleGUITrad(parts->u.padding.top), ScaleGUITrad(parts->u.padding.right), ScaleGUITrad(parts->u.padding.bottom), ScaleGUITrad(parts->u.padding.left));
 				break;
 
 			case WPT_PIPSPACE: {
