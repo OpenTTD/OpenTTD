@@ -331,6 +331,11 @@ struct NewsWindow : Window {
 				*size = maxdim(*size, GetSpriteSize(SPR_GRADIENT));
 				break;
 
+			case WID_N_MGR_NAME:
+				SetDParamStr(0, static_cast<const CompanyNewsInformation *>(this->ni->free_data)->president_name);
+				str = STR_JUST_RAW_STRING;
+				break;
+
 			case WID_N_MESSAGE:
 				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
 				str = this->ni->string_id;
