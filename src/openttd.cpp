@@ -62,6 +62,7 @@
 #include "town.h"
 #include "subsidy_func.h"
 #include "gfx_layout.h"
+#include "viewport_func.h"
 #include "viewport_sprite_sorter.h"
 #include "framerate_type.h"
 
@@ -339,6 +340,7 @@ static void LoadIntroGame(bool load_newgrfs = true)
 		SetLocalCompany(COMPANY_FIRST);
 	}
 
+	FixTitleGameZoom();
 	_pause_mode = PM_UNPAUSED;
 	_cursor.fix_at = false;
 
