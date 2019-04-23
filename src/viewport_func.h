@@ -34,6 +34,7 @@ void MarkAllViewportsDirty(int left, int top, int right, int bottom);
 bool DoZoomInOutWindow(ZoomStateChange how, Window *w);
 void ZoomInOrOutToCursorWindow(bool in, Window * w);
 Point GetTileZoomCenterWindow(bool in, Window * w);
+void FixTitleGameZoom();
 void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte widget_zoom_out);
 
 /**

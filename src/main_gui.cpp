@@ -199,6 +199,16 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 	}
 }
 
+void FixTitleGameZoom()
+{
+	if (_game_mode != GM_MENU) return;
+
+	ViewPort *vp = FindWindowByClass(WC_MAIN_WINDOW)->viewport;
+	vp->zoom = _gui_zoom;
+	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
+	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
+}
+
 static const struct NWidgetPart _nested_main_window_widgets[] = {
 	NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_M_VIEWPORT), SetResize(1, 1),
 };
