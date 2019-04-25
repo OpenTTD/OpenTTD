@@ -17,6 +17,6 @@
 void ShowLastNewsMessage();
 void ShowMessageHistory();
 
-extern NewsItem *_oldest_news;
+extern NewsItem *_latest_news;
 
 #endif /* NEWS_GUI_H */
