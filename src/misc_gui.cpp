@@ -1003,7 +1003,7 @@ struct QueryStringWindow : public Window
 		}
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget != WID_QS_WARNING) return;
 
