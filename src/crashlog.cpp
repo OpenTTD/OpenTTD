@@ -303,7 +303,7 @@ char *CrashLog::LogGamelog(char *buffer, const char *last) const
 }
 
 /**
- * Writes any recent news messages to the buffer.
+ * Writes up to 32 recent news messages to the buffer, with the most recent first.
  * @param buffer The begin where to write at.
  * @param last   The last position in the buffer to write to.
  * @return the position of the \c '\0' character after the buffer.
@@ -312,7 +312,8 @@ char *CrashLog::LogRecentNews(char *buffer, const char *last) const
 {
 	buffer += seprintf(buffer, last, "Recent news messages:\n");
 
-	for (NewsItem *news = _oldest_news; news != NULL; news = news->next) {
+	int i = 0;
+	for (NewsItem *news = _latest_news; i < 32 && news != NULL; news = news->prev, i++) {
 		YearMonthDay ymd;
 		ConvertDateToYMD(news->date, &ymd);
 		buffer += seprintf(buffer, last, "(%i-%02i-%02i) StringID: %u, Type: %u, Ref1: %u, %u, Ref2: %u, %u\n",
