@@ -2193,7 +2193,7 @@ struct NetworkCompanyPasswordWindow : public Window {
 		}
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget != WID_NCP_WARNING) return;
 
