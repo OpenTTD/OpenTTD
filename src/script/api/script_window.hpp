@@ -2282,7 +2282,8 @@ public:
 		WID_SV_SCROLLBAR                             = ::WID_SV_SCROLLBAR,                             ///< Scrollbar.
 		WID_SV_ACCEPT_RATING_LIST                    = ::WID_SV_ACCEPT_RATING_LIST,                    ///< List of accepted cargoes / rating of cargoes.
 		WID_SV_LOCATION                              = ::WID_SV_LOCATION,                              ///< 'Location' button.
-		WID_SV_ACCEPTS_RATINGS                       = ::WID_SV_ACCEPTS_RATINGS,                       ///< 'Accepts' / 'Ratings' button.
+		WID_SV_ACCEPTS                               = ::WID_SV_ACCEPTS,                               ///< 'Accepts' button.
+		WID_SV_RATINGS                               = ::WID_SV_RATINGS,                               ///< 'Ratings' button.
 		WID_SV_RENAME                                = ::WID_SV_RENAME,                                ///< 'Rename' button.
 		WID_SV_CLOSE_AIRPORT                         = ::WID_SV_CLOSE_AIRPORT,                         ///< 'Close airport' button.
 		WID_SV_TRAINS                                = ::WID_SV_TRAINS,                                ///< List of scheduled trains button.

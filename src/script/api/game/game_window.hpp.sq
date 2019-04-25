@@ -1110,7 +1110,8 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_SCROLLBAR,                          "WID_SV_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_ACCEPT_RATING_LIST,                 "WID_SV_ACCEPT_RATING_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_LOCATION,                           "WID_SV_LOCATION");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_ACCEPTS_RATINGS,                    "WID_SV_ACCEPTS_RATINGS");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_ACCEPTS,                            "WID_SV_ACCEPTS");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_RATINGS,                            "WID_SV_RATINGS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_RENAME,                             "WID_SV_RENAME");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_CLOSE_AIRPORT,                      "WID_SV_CLOSE_AIRPORT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_TRAINS,                             "WID_SV_TRAINS");
