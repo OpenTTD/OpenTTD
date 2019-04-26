@@ -4029,16 +4029,9 @@ void DeleteOilRig(TileIndex tile)
 
 	MakeWaterKeepingClass(tile, OWNER_NONE);
 
-	st->dock_tile = INVALID_TILE;
-	st->airport.Clear();
-	st->facilities &= ~(FACIL_AIRPORT | FACIL_DOCK);
-	st->airport.flags = 0;
-
-	st->rect.AfterRemoveTile(st, tile);
-
-	st->UpdateVirtCoord();
-	st->RecomputeCatchment();
-	if (!st->IsInUse()) delete st;
+	/* The oil rig station is not supposed to be shared with anything else */
+	assert(st->facilities == (FACIL_AIRPORT | FACIL_DOCK) && st->airport.type == AT_OILRIG);
+	delete st;
 }
 
 static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_owner)
