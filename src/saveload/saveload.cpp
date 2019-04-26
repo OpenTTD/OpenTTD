@@ -2887,36 +2887,3 @@ void FileToSaveLoad::SetTitle(const char *title)
 {
 	strecpy(this->title, title, lastof(this->title));
 }
-
-#if 0
-/**
- * Function to get the type of the savegame by looking at the file header.
- * NOTICE: Not used right now, but could be used if extensions of savegames are garbled
- * @param file Savegame to be checked
- * @return SL_OLD_LOAD or SL_LOAD of the file
- */
-int GetSavegameType(char *file)
-{
-	const SaveLoadFormat *fmt;
-	uint32 hdr;
-	FILE *f;
-	int mode = SL_OLD_LOAD;
-
-	f = fopen(file, "rb");
-	if (fread(&hdr, sizeof(hdr), 1, f) != 1) {
-		DEBUG(sl, 0, "Savegame is obsolete or invalid format");
-		mode = SL_LOAD; // don't try to get filename, just show name as it is written
-	} else {
-		/* see if we have any loader for this type. */
-		for (fmt = _saveload_formats; fmt != endof(_saveload_formats); fmt++) {
-			if (fmt->tag == hdr) {
-				mode = SL_LOAD; // new type of savegame
-				break;
-			}
-		}
-	}
-
-	fclose(f);
-	return mode;
-}
-#endif
