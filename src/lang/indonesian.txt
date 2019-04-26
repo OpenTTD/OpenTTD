@@ -476,6 +476,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Ambil gambar
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ambil gambar dengan diperbesar
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Ambil gambar dengan perbesaran normal
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ambil gambar keseluruhan peta
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Tampilkan laju bingkai
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Penjajar Sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Hidup/Matikan kotak batas
@@ -1572,6 +1573,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Mengaktifkan se
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Dilarang
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Diijinkan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Diijinkan, layout kota sendiri
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Seberapa banyak kargo dihasilkan oleh rumah di kota , relatif terhadap keseluruhan populasi kota.{}Pertumbuhan kuadrat: Kota yang membesar dua kali menghasilkan penumpang empat kali lipat.{}Pertumbuhan linier: Kota yang membesar dua kali menghasilkan penumpang dua kali lipat.
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linier
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Penempatan pohon dalam permainan: {STRING}
@@ -3377,6 +3379,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Kendaraan tanpa
 STR_GROUP_DEFAULT_SHIPS                                         :Kapal tanpa kelompok
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Pesawat tanpa kelompok
 
+STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Kelompok - Klik salah satu untuk melihat daftar kendaraan pada kelompok tersebut
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik untuk membuat kelompok
