@@ -1004,12 +1004,15 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
 
 					if (RoadTypeIsRoad(rt) && !HasPowerOnRoad(rt, road_rt)) return_cmd_error(STR_ERROR_NO_SUITABLE_ROAD);
 
+					if (GetDisallowedRoadDirections(cur_tile) != DRD_NONE) {
+						CommandCost ret = CheckOwnership(road_owner);
+						if (ret.Failed()) return ret;
+					}
+
 					cost.AddCost(RoadBuildCost(road_rt) * (2 - num_pieces));
 				} else if (RoadTypeIsRoad(rt)) {
 					cost.AddCost(RoadBuildCost(rt) * 2);
 				}
-
-				if (GetDisallowedRoadDirections(cur_tile) != DRD_NONE) return_cmd_error(STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD);
 
 				/* There is a tram, check if we can build road+tram stop over it. */
 				RoadType tram_rt = GetRoadType(cur_tile, RTT_TRAM);
