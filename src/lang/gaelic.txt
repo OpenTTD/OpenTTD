@@ -4496,7 +4496,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... tha 
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... tha comhair an rathaid cearr
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... chan urrainn dha dh’oiseanan a bhith aig stèiseanan draibhidh troimhe
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... chan urrainn dha ghoibhlean a bhith aig stèiseanan draibhidh troimhe
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... rathad aon-shligheach no bacte
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Cha ghabh pàirt dhen stèisean toirt air falbh...

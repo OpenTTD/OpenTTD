@@ -4249,7 +4249,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... jala
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... menghadap pada arah yang salah
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... terminal lintas-lalu tak bisa memiliki sudut
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... terminal lintas-lalu tak bisa memiliki simpangan
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... jalannya satu arah atau terhalang
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Tidak dapat menghapus bagian dari stasiun...

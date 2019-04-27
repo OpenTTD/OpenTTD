@@ -4276,7 +4276,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... é u
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... rua na direção errada
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... paradas "drive-thru" não podem ter esquinas
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... paradas "drive-thru" não podem ter junções
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... rua é mão única ou está bloqueada
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Impossível remover parte da estação...

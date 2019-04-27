@@ -4507,7 +4507,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... эт
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... неверное направление дороги
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... на проходных остановках нельзя делать повороты
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... на проходных остановках нельзя делать перекрёстки
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... дорога односторонняя или заблокирована
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Невозможно удалить часть станции...
