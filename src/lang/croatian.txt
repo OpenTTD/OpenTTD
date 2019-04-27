@@ -4438,7 +4438,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ovo 
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... cesta je orijentirana u krivom smjeru
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... prolazne postaje ne mogu imati zavoje
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... prolazne postaje ne mogu imati raskrižja
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... cesta je jednosmjerna ili je blokirana
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nije moguće ukloniti dio postaje...

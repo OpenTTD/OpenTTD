@@ -4456,7 +4456,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ця
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... дорога не в тому напрямку
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... проїзні зупинки не можуть мати поворотів
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... проїзні зупинки не можуть мати перехресть
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... дорога одностороння або заблокована
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Не можна зруйнувати частину станції...

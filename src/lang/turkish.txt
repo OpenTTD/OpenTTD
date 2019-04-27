@@ -4314,7 +4314,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... bu y
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... yol yanlış yönde
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... yol üstü duraklar köşe üzerine inşa edilemez
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... yol üstü duraklar kavşak üzerine inşa edilemez
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... yol tek yön ya da engellenmiş
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}İstasyonun parçasi kaldırılamaz...

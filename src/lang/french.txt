@@ -4361,7 +4361,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... cett
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... mauvaise orientation de la route
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... les arrêts ne peuvent pas avoir de virages
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... les arrêts ne peuvent pas avoir de jonctions
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... la route est à sens unique ou bloquée
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Impossible de supprimer une partie de la gare...

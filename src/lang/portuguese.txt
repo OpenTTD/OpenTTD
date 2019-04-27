@@ -4340,7 +4340,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... esta
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... estrada orientada na direcção incorrecta
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... estações de passagem não podem ter curvas
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... estações de passagem não podem ter cruzamentos
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... estrada de sentido único ou bloqueada
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Não é possível remover parte da estação...
