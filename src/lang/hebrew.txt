@@ -4275,7 +4275,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... כב
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}הכביש פונה לכיוון לא נכון...
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... לתחנות "על הדרך" לא יכולות להיות פינות
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... לתחנות "על הדרך" לא יכולות להיות צמתים
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... הדרך חד כיוונית או חסומה
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}... לא ניתן לבטל חלק מהתחנה

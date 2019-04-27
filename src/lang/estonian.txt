@@ -4284,7 +4284,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... see 
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... tee on vales suunas
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... nurgad ei saa läbisõidupeatustes olla
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... ristmikud ei saa olla läbisõidupeatustes
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... tee on ühesuunaline või blokeeritud
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Siinset jaamablokki ei saa lammutada...

@@ -4302,7 +4302,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... dies
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... Straße verläuft in die falsche Richtung
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... Bus- und Lkw-Haltestellen können nicht um die Kurve gehen
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... Bus- und Lkw-Haltestellen können keine Abzweigung haben
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}...Einbahnstraße oder blockierter Weg
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Dieser Teil der Station kann nicht entfernt werden...
