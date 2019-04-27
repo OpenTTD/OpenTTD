@@ -995,9 +995,12 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
 						if (ret.Failed()) return ret;
 					}
 					num_roadbits += CountBits(GetRoadBits(cur_tile, ROADTYPE_ROAD));
-				}
 
-				if (GetDisallowedRoadDirections(cur_tile) != DRD_NONE) return_cmd_error(STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD);
+					if (GetDisallowedRoadDirections(cur_tile) != DRD_NONE) {
+						CommandCost ret = CheckOwnership(road_owner);
+						if (ret.Failed()) return ret;
+					}
+				}
 
 				/* There is a tram, check if we can build road+tram stop over it. */
 				if (HasBit(cur_rts, ROADTYPE_TRAM)) {
