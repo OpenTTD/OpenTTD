@@ -174,7 +174,7 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // !G
 					(r.ifr_flags & IFF_BROADCAST) &&
 					ioctl(sock, SIOCGIFBRDADDR, &r) != -1) {
 				NetworkAddress addr(&r.ifr_broadaddr, sizeof(sockaddr));
-				if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const& elem) -> bool { return elem == addr; })) *broadcast->Append() = addr;
+				if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const& elem) -> bool { return elem == addr; })) broadcast->push_back(addr);
 			}
 		}
 
