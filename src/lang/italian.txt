@@ -4372,7 +4372,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ques
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... strada rivolta nella direzione sbagliata
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... le fermate passanti non possono trovarsi in curva
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... le fermate passanti non possono avere raccordi
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... la strada è bloccata o a senso unico
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Impossibile rimuovere parte della stazione...

@@ -4341,7 +4341,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... esta
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... carretera en el sentido incorrecto
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... las estaciones y paradas intermedias no pueden ponerse sobre esquinas
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... las estaciones y paradas intermedias no pueden ponerse sobre intersecciones
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... la carretera está bloqueada o es de un solo sentido
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}No se puede quitar parte de la estación...

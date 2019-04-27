@@ -4451,7 +4451,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... αυ
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... ο δρόμος βλέπει σε λάθος κατεύθυνση
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... οι μη τερματικοί σταθμοί δε μπορούν να έχουν στροφές
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... οι μη τερματικοί σταθμοί δε μπορούν να έχουν διασταυρώσεις
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... ο δρόμος είναι μονόδρομος η μπλοκαρισμένος
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Δεν μπορεί να αφαιρεθεί μέρος του σταθμού...

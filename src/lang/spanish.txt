@@ -4272,7 +4272,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... esta
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... carretera en la dirección incorrecta
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... las estaciones de autobús de paso no pueden tener esquinas
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... las estaciones de autobús de paso no pueden tener intersecciones
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... carretera de un solo sentido o bloqueada
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}No se puede retirar parte de la estación...

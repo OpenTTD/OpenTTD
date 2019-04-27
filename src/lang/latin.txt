@@ -4500,7 +4500,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... via 
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... viae directio non convenit
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... stationi perviae non licet esse curva
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... stationi perviae non licet compita habere
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... via est monodromus vel obstructa
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Non licet partem stationis removere...

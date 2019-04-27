@@ -4305,7 +4305,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... dett
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vägen pekar i fel riktning
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... genomfartshållplatser kan inte ha gatuhörn
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... genomfartshållplatser kan inte ha korsningar
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... vägen är enkelriktad eller blockerad
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan ej ta bort del av station...
