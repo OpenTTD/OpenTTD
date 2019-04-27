@@ -363,6 +363,8 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Выбе
 STR_BUTTON_SORT_BY                                              :{BLACK}Сортировка
 STR_BUTTON_LOCATION                                             :{BLACK}Обзор
 STR_BUTTON_RENAME                                               :{BLACK}Переименовать
+STR_BUTTON_CATCHMENT                                            :{BLACK}Покрытие
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Переключить видимость области покрытия
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрыть окно
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Окна можно перетаскивать, схватив за заголовок
@@ -391,6 +393,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Если
 STR_BUTTON_DEFAULT                                              :{BLACK}По умолчанию
 STR_BUTTON_CANCEL                                               :{BLACK}Отмена
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Внимание: администраторы сервера могут увидеть ваш пароль.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .

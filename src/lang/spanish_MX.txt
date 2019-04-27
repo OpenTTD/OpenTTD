@@ -238,6 +238,8 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Elegir c
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar por
 STR_BUTTON_LOCATION                                             :{BLACK}Ubicación
 STR_BUTTON_RENAME                                               :{BLACK}Cambiar nombre
+STR_BUTTON_CATCHMENT                                            :{BLACK}Cobertura
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Mostrar u ocultar área de cobertura
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Cerrar ventana
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título de la ventana (arrastrar para mover)
@@ -266,6 +268,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Activar 
 STR_BUTTON_DEFAULT                                              :{BLACK}Predeterminado
 STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
 STR_BUTTON_OK                                                   :{BLACK}Aceptar
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Advertencia: los administradores del servidor tienen acceso al texto escrito aquí
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :|1234567890'¿\qwertyuiop´+asdfghjklñ{}<zxcvbnm,.- .
