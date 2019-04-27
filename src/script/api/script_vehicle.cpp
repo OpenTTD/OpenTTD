@@ -374,6 +374,48 @@
 	return ::Vehicle::Get(vehicle_id)->GetDisplayProfitLastYear();
 }
 
+/* static */ int32 ScriptVehicle::GetEfficiencyThisYear(VehicleID vehicle_id)
+{
+	if (!IsValidVehicle(vehicle_id)) return -1;
+
+	return ::Vehicle::Get(vehicle_id)->GetEfficiencyThisYear();
+}
+
+/* static */ int32 ScriptVehicle::GetEfficiencyLastYear(VehicleID vehicle_id)
+{
+	if (!IsValidVehicle(vehicle_id)) return -1;
+
+	return ::Vehicle::Get(vehicle_id)->GetEfficiencyLastYear();
+}
+
+/* static */ int32 ScriptVehicle::GetCargoTilesPotentialThisYear(VehicleID vehicle_id)
+{
+	if (!IsValidVehicle(vehicle_id)) return -1;
+
+	return ::Vehicle::Get(vehicle_id)->potential_cargotiles_this_year;
+}
+
+/* static */ int32 ScriptVehicle::GetCargoTilesPotentialLastYear(VehicleID vehicle_id)
+{
+	if (!IsValidVehicle(vehicle_id)) return -1;
+
+	return ::Vehicle::Get(vehicle_id)->potential_cargotiles_last_year;
+}
+
+/* static */ int32 ScriptVehicle::GetCargoTilesDeliveredThisYear(VehicleID vehicle_id)
+{
+	if (!IsValidVehicle(vehicle_id)) return -1;
+
+	return ::Vehicle::Get(vehicle_id)->delivered_cargotiles_this_year;
+}
+
+/* static */ int32 ScriptVehicle::GetCargoTilesDeliveredLastYear(VehicleID vehicle_id)
+{
+	if (!IsValidVehicle(vehicle_id)) return -1;
+
+	return ::Vehicle::Get(vehicle_id)->delivered_cargotiles_last_year;
+}
+
 /* static */ Money ScriptVehicle::GetCurrentValue(VehicleID vehicle_id)
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;

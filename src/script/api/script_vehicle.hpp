@@ -257,6 +257,63 @@ public:
 
 
 	/**
+	 * Get the efficiency rating this year of a vehicle.
+	 * @param vehicle_id The vehicle to get the efficiency rating of.
+	 * @pre IsValidVehicle(vehicle_id)
+	 * @return Efficiency rating in percent.
+	 * @note The rating value is typically 0..100, but may go above 100 in certain cases.
+	 */
+	static int32 GetEfficiencyThisYear(VehicleID vehicle_id);
+
+	/**
+	 * Get the efficiency rating last year of a vehicle.
+	 * @param vehicle_id The vehicle to get the efficiency rating of.
+	 * @pre IsValidVehicle(vehicle_id)
+	 * @return Efficiency rating in percent.
+	 * @note The rating value is typically 0..100, but may go above 100 in certain cases.
+	 */
+	static int32 GetEfficiencyLastYear(VehicleID vehicle_id);
+
+	/**
+	 * Get the cargo-tiles potential this year for a vehicle.
+	 * @param vehicle_id The vehicle to get the cargo-tiles for.
+	 * @pre IsValidVehicle(vehicle_id)
+	 * @return Capacity multiplied by distance actually travelled so far this year.
+	 * @note This value updates as long as the vehicle is moving or idling.
+	 * @api -ai
+	 */
+	static int32 GetCargoTilesPotentialThisYear(VehicleID vehicle_id);
+
+	/**
+	 * Get the cargo-tiles potential last year for a vehicle.
+	 * @param vehicle_id The vehicle to get the cargo-tiles for.
+	 * @pre IsValidVehicle(vehicle_id)
+	 * @return Capacity multiplied by distance actually travelled last year.
+	 * @api -ai
+	 */
+	static int32 GetCargoTilesPotentialLastYear(VehicleID vehicle_id);
+
+	/**
+	 * Get the cargo-tiles delivred this year for a vehicle.
+	 * @param vehicle_id The vehicle to get the cargo-tiles for.
+	 * @pre IsValidVehicle(vehicle_id)
+	 * @return Units of cargo delivered multiplied by distance from pick-up to drop-off.
+	 * @note This value updates every time the vehicle unloads cargo.
+	 * @api -ai
+	 */
+	static int32 GetCargoTilesDeliveredThisYear(VehicleID vehicle_id);
+
+	/**
+	 * Get the cargo-tiles delivred last year for a vehicle.
+	 * @param vehicle_id The vehicle to get the cargo-tiles for.
+	 * @pre IsValidVehicle(vehicle_id)
+	 * @return Units of cargo delivered multiplied by distance from pick-up to drop-off.
+	 * @api -ai
+	 */
+	static int32 GetCargoTilesDeliveredLastYear(VehicleID vehicle_id);
+
+
+	/**
 	 * Get the current value of a vehicle.
 	 * @param vehicle_id The vehicle to get the value of.
 	 * @pre IsValidVehicle(vehicle_id).

@@ -206,6 +206,24 @@ public:
 	static Money GetProfitLastYear(GroupID group_id);
 
 	/**
+	 * Get the efficiency rating this year of a group.
+	 * @param group_id The group to get the efficiency rating of.
+	 * @pre IsValidGroup(group_id).
+	 * @return Efficiency rating in percent.
+	 * @note The rating value is typically 0..100, but may go above 100 in certain cases.
+	 */
+	static int32 GetEfficiencyThisYear(GroupID group_id);
+
+	/**
+	 * Get the efficiency rating last year of a group.
+	 * @param group_id The group to get the efficiency rating of.
+	 * @pre IsValidGroup(group_id).
+	 * @return Efficiency rating in percent.
+	 * @note The rating value is typically 0..100, but may go above 100 in certain cases.
+	 */
+	static int32 GetEfficiencyLastYear(GroupID group_id);
+
+	/**
 	 * Get the current vehicle usage of a group.
 	 * @param group_id The group to get the current usage of.
 	 * @pre IsValidGroup(group_id).

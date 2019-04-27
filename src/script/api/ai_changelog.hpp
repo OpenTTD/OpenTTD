@@ -27,8 +27,12 @@
  * \li AIGroup::SetSecondaryColour
  * \li AIGroup::GetPrimaryColour
  * \li AIGroup::GetSecondaryColour
+ * \li AIGroup::GetEfficiencyThisYear
+ * \li AIGroup::GetEfficiencyLastYear
  * \li AIVehicle::BuildVehicleWithRefit
  * \li AIVehicle::GetBuildWithRefitCapacity
+ * \li AIVehicle::GetEfficiencyThisYear
+ * \li AIVehicle::GetEfficiencyLastYear
  * \li AIRoad::GetName
  * \li AIRoad::RoadVehCanRunOnRoad
  * \li AIRoad::RoadVehHasPowerOnRoad

@@ -148,20 +148,26 @@
 	return ScriptObject::DoCommand(0, group_id << 16, (::INVALID_ENGINE << 16) | engine_id, CMD_SET_AUTOREPLACE);
 }
 
-/* static */ Money ScriptGroup::GetProfitThisYear(GroupID group_id)
+template <typename T, typename Func>
+T SumVehiclesInGroup(GroupID group_id, Func func)
 {
-	if (!IsValidGroup(group_id)) return -1;
-
-	Money profit = 0;
+	T result{};
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->group_id != group_id) continue;
 		if (!v->IsPrimaryVehicle()) continue;
 
-		profit += v->GetDisplayProfitThisYear();
+		result += func(v);
 	}
 
-	return profit;
+	return result;
+}
+
+/* static */ Money ScriptGroup::GetProfitThisYear(GroupID group_id)
+{
+	if (!IsValidGroup(group_id)) return -1;
+
+	return SumVehiclesInGroup<Money>(group_id, [](const Vehicle *v) { return v->GetDisplayProfitThisYear(); });
 }
 
 /* static */ Money ScriptGroup::GetProfitLastYear(GroupID group_id)
@@ -171,23 +177,46 @@
 	return ::Group::Get(group_id)->statistics.profit_last_year;
 }
 
+struct EfficiencyRating {
+	OverflowSafeInt32 potential;
+	OverflowSafeInt32 delivered;
+
+	EfficiencyRating &operator += (const EfficiencyRating &other)
+	{
+		this->potential += other.potential;
+		this->delivered += other.delivered;
+		return *this;
+	}
+
+	int32 GetPercent() const
+	{
+		if (this->potential == 0) return 0;
+		return this->delivered * 100 / this->potential;
+	}
+};
+
+/* static */ int32 ScriptGroup::GetEfficiencyThisYear(GroupID group_id)
+{
+	if (!IsValidGroup(group_id)) return -1;
+
+	return SumVehiclesInGroup<EfficiencyRating>(group_id, [](const Vehicle *v) { return EfficiencyRating{ v->potential_cargotiles_this_year, v->delivered_cargotiles_this_year }; }).GetPercent();
+}
+
+/* static */ int32 ScriptGroup::GetEfficiencyLastYear(GroupID group_id)
+{
+	if (!IsValidGroup(group_id)) return -1;
+
+	return SumVehiclesInGroup<EfficiencyRating>(group_id, [](const Vehicle *v) { return EfficiencyRating{ v->potential_cargotiles_last_year, v->delivered_cargotiles_last_year }; }).GetPercent();
+}
+
 /* static */ uint32 ScriptGroup::GetCurrentUsage(GroupID group_id)
 {
 	if (!IsValidGroup(group_id)) return -1;
 
-	uint32 occupancy = 0;
-	uint32 vehicle_count = 0;
-
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->group_id != group_id) continue;
-		if (!v->IsPrimaryVehicle()) continue;
-
-		occupancy += v->trip_occupancy;
-		vehicle_count++;
-	}
-
+	uint32 vehicle_count = ::Group::Get(group_id)->statistics.num_vehicle;
 	if (vehicle_count == 0) return -1;
 
+	uint32 occupancy = SumVehiclesInGroup<uint32>(group_id, [](const Vehicle *v) { return v->trip_occupancy; });
 	return occupancy / vehicle_count;
 }
 
