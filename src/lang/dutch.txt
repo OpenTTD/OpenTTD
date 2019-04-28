@@ -237,6 +237,8 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selectee
 STR_BUTTON_SORT_BY                                              :{BLACK}Sorteren op
 STR_BUTTON_LOCATION                                             :{BLACK}Locatie
 STR_BUTTON_RENAME                                               :{BLACK}Hernoemen
+STR_BUTTON_CATCHMENT                                            :{BLACK}Dekking
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Schakelt weergave van dekkingsgebied om
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Venster sluiten
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vensternaam - sleep om venster te verplaatsen
@@ -265,6 +267,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Wanneer 
 STR_BUTTON_DEFAULT                                              :{BLACK}Standaard
 STR_BUTTON_CANCEL                                               :{BLACK}Annuleren
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Waarschuwing: het kan zijn dat serverbeheerders tekst niet kunnen lezen die hier wordt ingevoerd.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
