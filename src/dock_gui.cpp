@@ -105,7 +105,7 @@ struct BuildDocksToolbarWindow : Window {
 
 	~BuildDocksToolbarWindow()
 	{
-		if (this->IsWidgetLowered(WID_DT_STATION)) SetViewportCatchmentStation(nullptr, true);
+		if (_game_mode != GM_EDITOR && this->IsWidgetLowered(WID_DT_STATION)) SetViewportCatchmentStation(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0, false);
 	}
 
@@ -249,7 +249,7 @@ struct BuildDocksToolbarWindow : Window {
 
 	void OnPlaceObjectAbort() override
 	{
-		if (this->IsWidgetLowered(WID_DT_STATION)) SetViewportCatchmentStation(nullptr, true);
+		if (_game_mode != GM_EDITOR && this->IsWidgetLowered(WID_DT_STATION)) SetViewportCatchmentStation(nullptr, true);
 
 		this->RaiseButtons();
 

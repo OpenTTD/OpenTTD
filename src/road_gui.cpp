@@ -327,7 +327,7 @@ struct BuildRoadToolbarWindow : Window {
 
 	~BuildRoadToolbarWindow()
 	{
-		if (this->IsWidgetLowered(WID_ROT_BUS_STATION) || this->IsWidgetLowered(WID_ROT_TRUCK_STATION)) SetViewportCatchmentStation(nullptr, true);
+		if (_game_mode != GM_EDITOR && (this->IsWidgetLowered(WID_ROT_BUS_STATION) || this->IsWidgetLowered(WID_ROT_TRUCK_STATION))) SetViewportCatchmentStation(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0, false);
 	}
 
@@ -546,7 +546,7 @@ struct BuildRoadToolbarWindow : Window {
 
 	void OnPlaceObjectAbort() override
 	{
-		if (this->IsWidgetLowered(WID_ROT_BUS_STATION) || this->IsWidgetLowered(WID_ROT_TRUCK_STATION)) SetViewportCatchmentStation(nullptr, true);
+		if (_game_mode != GM_EDITOR && (this->IsWidgetLowered(WID_ROT_BUS_STATION) || this->IsWidgetLowered(WID_ROT_TRUCK_STATION))) SetViewportCatchmentStation(nullptr, true);
 
 		this->RaiseButtons();
 		this->SetWidgetsDisabledState(true,
