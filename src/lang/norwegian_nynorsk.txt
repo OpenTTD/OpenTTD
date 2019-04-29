@@ -472,9 +472,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gøym konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :AI- / Spelscriptfeilsøking
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjermdump
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Fullt forstørra skjermbilete
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Normalt skjermbilete
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stort skjermfoto
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteforskyver
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Syne/gøym markeringsramme

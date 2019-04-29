@@ -193,6 +193,8 @@ namespace SQConvert {
 	template <> inline int Return<ScriptWindow::BuildRoadDepotWidgets>(HSQUIRRELVM vm, ScriptWindow::BuildRoadDepotWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::BuildRoadStationWidgets GetParam(ForceType<ScriptWindow::BuildRoadStationWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::BuildRoadStationWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::BuildRoadStationWidgets>(HSQUIRRELVM vm, ScriptWindow::BuildRoadStationWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptWindow::ScreenshotWindowWidgets GetParam(ForceType<ScriptWindow::ScreenshotWindowWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::ScreenshotWindowWidgets)tmp; }
+	template <> inline int Return<ScriptWindow::ScreenshotWindowWidgets>(HSQUIRRELVM vm, ScriptWindow::ScreenshotWindowWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::GameOptionsWidgets GetParam(ForceType<ScriptWindow::GameOptionsWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::GameOptionsWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::GameOptionsWidgets>(HSQUIRRELVM vm, ScriptWindow::GameOptionsWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::GameSettingsWidgets GetParam(ForceType<ScriptWindow::GameSettingsWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::GameSettingsWidgets)tmp; }

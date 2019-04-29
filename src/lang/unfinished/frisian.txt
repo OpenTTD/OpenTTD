@@ -470,9 +470,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Skeakel console oan/ût
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/Gamescript debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Skermôfbylding
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Tichtby helle skermôfbylding
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Standerdzoom skermôfbylding
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skermôfbylding fan 'e hiele wrâld
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Oer 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Flakken rjochtsje
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Skeakel seleksjekaders oan/út

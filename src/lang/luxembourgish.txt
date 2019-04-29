@@ -473,9 +473,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsole un/aus
 STR_ABOUT_MENU_AI_DEBUG                                         :KI / Spill-Script Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Voll eragezoomte Screenshot
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Standard Zoom Screenshot
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot vun der ganzer Kaart
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Biller pro Sekonn uweisen
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Iwwert 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite Alignéirer

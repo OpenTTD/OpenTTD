@@ -444,8 +444,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Вклучи конзола
 STR_ABOUT_MENU_AI_DEBUG                                         :АИ / игри сценарио де-бубачки
 STR_ABOUT_MENU_SCREENSHOT                                       :Слика од екранот
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Зумира екранот
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Целата сајтот екранот
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :За 'ОтвориTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :самовила усогласат
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Вклучи одблеснува кутии
