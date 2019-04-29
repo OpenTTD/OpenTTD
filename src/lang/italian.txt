@@ -480,9 +480,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Apri/chiudi console
 STR_ABOUT_MENU_AI_DEBUG                                         :Debug IA/Script
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Screenshot con zoom massimo
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Screenshot con zoom predefinito
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot intera mappa
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Mostra frame rate
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Informazioni su 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Strumento allineamento sprite

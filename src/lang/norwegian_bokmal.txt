@@ -480,9 +480,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vis/skjul konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/Spillskript-feilsøking
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjermbilde
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Fullt forstørret skjermbilde
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Normalt forstørret skjermbilde
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skjermbilde av hele kartet
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Vis bildehastighet
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteforskyver

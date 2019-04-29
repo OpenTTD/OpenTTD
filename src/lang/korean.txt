@@ -479,9 +479,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :콘솔 켜기/끄기
 STR_ABOUT_MENU_AI_DEBUG                                         :인공지능/게임 스크립트 디버그
 STR_ABOUT_MENU_SCREENSHOT                                       :스크린샷 찍기
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :스크린샷 찍기 (지금 보고 있는 영역)
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :스크린샷 찍기 (창을 제외한 게임 화면만)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :스크린샷 찍기 (지도 전체)
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :프레임레이트 보기
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'에 대해서
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :스프라이트 정렬도구

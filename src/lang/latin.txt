@@ -661,9 +661,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Monstrare celareve consolam
 STR_ABOUT_MENU_AI_DEBUG                                         :Emendatio IA/Ludi scriptorum
 STR_ABOUT_MENU_SCREENSHOT                                       :Imago conspectus
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Imago conspectus maxime amplificata
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Imago conspectus solite amplificata
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Imago cunctae tabulae geographicae
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :De 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Norma spiritus
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Monstrare celareve arcas finitionum

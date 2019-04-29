@@ -478,9 +478,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Console in-uitschakelen
 STR_ABOUT_MENU_AI_DEBUG                                         :Probleemoplossing AI/spelscript
 STR_ABOUT_MENU_SCREENSHOT                                       :Schermfoto
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ingezoomde schermfoto
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Schermfoto met standaardzoom
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Schermfoto van de hele kaart
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Framesnelheid weergeven
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Over 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-uitlijner

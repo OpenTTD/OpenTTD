@@ -603,9 +603,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Вкл./відкл. консоль
 STR_ABOUT_MENU_AI_DEBUG                                         :Налагодження АІ / Ігрового Скрипта
 STR_ABOUT_MENU_SCREENSHOT                                       :Знімок екрану
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Знімок екрану з максимальним збільшенням
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Знімок екрану зі стандартним збільшенням
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Знімок всієї карти
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Швидкість генерації гри
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Про гру 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Вирівнювання спрайтів

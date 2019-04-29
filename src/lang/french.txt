@@ -479,9 +479,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Afficher/Cacher la console
 STR_ABOUT_MENU_AI_DEBUG                                         :Débogage de scripts
 STR_ABOUT_MENU_SCREENSHOT                                       :Copie d'écran
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Copie d'écran au zoom maximum
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Copie d'écran au zoom par défaut
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Copie d'écran de la carte entière
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Afficher la fréquence d'images
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :À propos d'OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alignement de sprite

@@ -623,9 +623,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vklopi/Izklopi konzolo
 STR_ABOUT_MENU_AI_DEBUG                                         :Razhročevanje UI / skript
 STR_ABOUT_MENU_SCREENSHOT                                       :Zajemi sliko
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zajemi približano sliko
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Zajem slike pri privzeti povečavi
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zajemi celostno sliko
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Uravnavanje sličice
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Vklop/izklop okvirjev

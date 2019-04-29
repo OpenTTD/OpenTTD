@@ -470,9 +470,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toglu Consol
 STR_ABOUT_MENU_AI_DEBUG                                         :Dadnamu AI / Sgript Gêm
 STR_ABOUT_MENU_SCREENSHOT                                       :Ciplun
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ciplun lefel mwyhád uchaf
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Ciplun pellter rhagosodedig
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ciplun o'r map cyfan
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Gwybodaeth am 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Aliniwr corluniau
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Toglo bocsys ffinio

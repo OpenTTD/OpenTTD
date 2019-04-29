@@ -470,9 +470,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Consolă pornit/oprit
 STR_ABOUT_MENU_AI_DEBUG                                         :Depanare Inteligenţă Artificială / Script Joc
 STR_ABOUT_MENU_SCREENSHOT                                       :Capturează ecranul
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captură mărită
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Mărimea implicită a capturii
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Capturează toată harta
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Arată FPS
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Despre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Aliniere imagini

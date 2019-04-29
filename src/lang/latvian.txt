@@ -470,9 +470,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Atvērt/aizvērt konsoli
 STR_ABOUT_MENU_AI_DEBUG                                         :MI/spēles skriptu atkļūdošana
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekrānuzņēmums
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pilnībā pietuvināts ekrānuzņēmums
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Noklusējuma mēroga ekrānuzņēmums
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Visas kartes ekrānuzņēmums
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Rādīt kadru ātrumu
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Par 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Gariņu līdzinātājs

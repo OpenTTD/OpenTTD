@@ -459,9 +459,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :باز و بسته کردن کنسول
 STR_ABOUT_MENU_AI_DEBUG                                         :خطایابی هوش مصنوعی
 STR_ABOUT_MENU_SCREENSHOT                                       :تصویر از بازی
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :عکس از صفحه تمام بزرگنمایی شده
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :اندازه پیش فرض عکس برداری از صفحه
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :تصویر از همه نقشه
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' درباره
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :تراز کردن تصویر گرافیکی
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :باز/بسته کردن محدوده جعبه ها

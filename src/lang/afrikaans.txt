@@ -471,9 +471,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Skakel terminaal
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/Spel skript ontfout
 STR_ABOUT_MENU_SCREENSHOT                                       :Skermskoot
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ten volle vergrote skermskoot
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Basiese groote skermskoot
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Hele kaart Skermkiekie (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Oor 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :"Sprite" rigter
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :skakel beperkte bokse

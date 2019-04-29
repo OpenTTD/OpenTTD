@@ -527,9 +527,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Lülita konsool sisse/välja
 STR_ABOUT_MENU_AI_DEBUG                                         :Arvutivea otsing
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekraanitõmmis
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Suurendatud ekraanitõmmis
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Tavasuurendusega ekraanitõmmis
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Terve kaardi ekraanitõmmis
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Näita kaadrisagedust
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' kohta
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner

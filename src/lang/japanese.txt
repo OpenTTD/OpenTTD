@@ -470,9 +470,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :―――――
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :コンソールの表示切替
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/ゲームスクリプトのデバッグ
 STR_ABOUT_MENU_SCREENSHOT                                       :スクリーンショット撮影(現在のズーム)
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :スクリーンショット撮影(最大ズーム)
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :スクリーンショット撮影(標準ズーム)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :スクリーンショット撮影(マップ全体)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :OpenTTDについて
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :スプライトを整列
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :バウンディングボックスの表示切替

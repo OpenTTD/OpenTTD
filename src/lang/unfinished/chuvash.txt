@@ -272,7 +272,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Сасӑ/Юрӑ
 ############ range for about menu starts
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_SCREENSHOT                                       :Экран сӑнӗ
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Яланхилле экран сӑнӗ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' çинчен
 ############ range ends here
 

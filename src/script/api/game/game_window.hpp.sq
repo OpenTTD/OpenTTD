@@ -138,6 +138,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_SAVE_PRESET,                            "WC_SAVE_PRESET");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_FRAMERATE_DISPLAY,                      "WC_FRAMERATE_DISPLAY");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_FRAMETIME_GRAPH,                        "WC_FRAMETIME_GRAPH");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_SCREENSHOT,                             "WC_SCREENSHOT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_INVALID,                                "WC_INVALID");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::TC_BLUE,                                   "TC_BLUE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::TC_SILVER,                                 "TC_SILVER");
@@ -1028,6 +1029,11 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BROS_LT_OFF,                           "WID_BROS_LT_OFF");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BROS_LT_ON,                            "WID_BROS_LT_ON");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BROS_INFO,                             "WID_BROS_INFO");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SC_TAKE,                               "WID_SC_TAKE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SC_TAKE_ZOOMIN,                        "WID_SC_TAKE_ZOOMIN");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SC_TAKE_DEFAULTZOOM,                   "WID_SC_TAKE_DEFAULTZOOM");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SC_TAKE_WORLD,                         "WID_SC_TAKE_WORLD");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SC_TAKE_HEIGHTMAP,                     "WID_SC_TAKE_HEIGHTMAP");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BACKGROUND,                         "WID_GO_BACKGROUND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_CURRENCY_DROPDOWN,                  "WID_GO_CURRENCY_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_DISTANCE_DROPDOWN,                  "WID_GO_DISTANCE_DROPDOWN");

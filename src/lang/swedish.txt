@@ -478,9 +478,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Visa/dölj konsolen
 STR_ABOUT_MENU_AI_DEBUG                                         :Felsökning av AI / spelskript
 STR_ABOUT_MENU_SCREENSHOT                                       :Skärmdump
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Fullt inzoomad skärmdump
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Normalt inzoomad skärmdump
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skärmdump av hela kartan
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Visa bildfrekvens
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Justering av spriteobjekt

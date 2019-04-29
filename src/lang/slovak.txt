@@ -534,9 +534,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Zobraziť / skryť konzolu
 STR_ABOUT_MENU_AI_DEBUG                                         :Umelá inteligencia / Ladenie skriptov
 STR_ABOUT_MENU_SCREENSHOT                                       :Snímka
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Plne priblížená snímka
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Snímka s predvoleným priblížením
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Veľká snímka celej mapy
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O hre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite zarovnávač
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Prepnúť okrajové boxy

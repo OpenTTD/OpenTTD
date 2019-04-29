@@ -541,9 +541,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Átváltás konzolra
 STR_ABOUT_MENU_AI_DEBUG                                         :MI / Játékszkript nyomkövetés
 STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Teljes nagyítású képmentés
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Alapértelmezett nagyítású képmentés
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Képmentés teljes térképről
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :FPS ablak
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Az 'OpenTTD'-ről
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite elhelyező

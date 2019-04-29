@@ -409,6 +409,7 @@
     <ClCompile Include="..\src\rev.cpp" />
     <ClCompile Include="..\src\road.cpp" />
     <ClCompile Include="..\src\roadstop.cpp" />
+    <ClCompile Include="..\src\screenshot_gui.cpp" />
     <ClCompile Include="..\src\screenshot.cpp" />
     <ClCompile Include="..\src\settings.cpp" />
     <ClCompile Include="..\src\signal.cpp" />
@@ -625,8 +626,10 @@
     <ClInclude Include="..\src\roadveh.h" />
     <ClInclude Include="..\src\safeguards.h" />
     <ClInclude Include="..\src\screenshot.h" />
+    <ClInclude Include="..\src\screenshot_gui.h" />
     <ClInclude Include="..\src\sound\sdl_s.h" />
     <ClInclude Include="..\src\video\sdl_v.h" />
+    <ClInclude Include="..\src\video\sdl2_v.h" />
     <ClInclude Include="..\src\settings_func.h" />
     <ClInclude Include="..\src\settings_gui.h" />
     <ClInclude Include="..\src\settings_internal.h" />
@@ -845,6 +848,7 @@
     <ClInclude Include="..\src\widgets\osk_widget.h" />
     <ClInclude Include="..\src\widgets\rail_widget.h" />
     <ClInclude Include="..\src\widgets\road_widget.h" />
+    <ClInclude Include="..\src\widgets\screenshot_widget.h" />
     <ClInclude Include="..\src\widgets\settings_widget.h" />
     <ClInclude Include="..\src\widgets\sign_widget.h" />
     <ClInclude Include="..\src\widgets\smallmap_widget.h" />
@@ -1326,6 +1330,7 @@
     <ClCompile Include="..\src\video\dedicated_v.cpp" />
     <ClCompile Include="..\src\video\null_v.cpp" />
     <ClCompile Include="..\src\video\sdl_v.cpp" />
+    <ClCompile Include="..\src\video\sdl2_v.cpp" />
     <ClCompile Include="..\src\video\win32_v.cpp" />
     <ClCompile Include="..\src\music\dmusic.cpp" />
     <ClCompile Include="..\src\music\null_m.cpp" />
@@ -1333,6 +1338,7 @@
     <ClCompile Include="..\src\music\win32_m.cpp" />
     <ClCompile Include="..\src\sound\null_s.cpp" />
     <ClCompile Include="..\src\sound\sdl_s.cpp" />
+    <ClCompile Include="..\src\sound\sdl2_s.cpp" />
     <ClCompile Include="..\src\sound\win32_s.cpp" />
     <ClCompile Include="..\src\sound\xaudio2_s.cpp" />
     <ClCompile Include="..\src\os\windows\crashlog_win.cpp" />

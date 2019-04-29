@@ -658,9 +658,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toglaich a' chonsoil
 STR_ABOUT_MENU_AI_DEBUG                                         :Dì-bhugaich IF/sgriobt geama
 STR_ABOUT_MENU_SCREENSHOT                                       :Glacadh-sgrìn
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Glacadh-sgrìn le sùmadh a-steach as motha
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Glacadh-sgrìn le sùmadh a-steach bunaiteach
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Glacadh-sgrìn leis a' mhapa shlàn
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Mu dheidhinn “OpenTTD"
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Co-thaobhaichear nan sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Toglaich bogsaichean-iadhaidh

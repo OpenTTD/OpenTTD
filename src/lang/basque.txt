@@ -464,9 +464,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsola aktibatu
 STR_ABOUT_MENU_AI_DEBUG                                         :IA/Joko script-aren garbitzailea
 STR_ABOUT_MENU_SCREENSHOT                                       :Pantailan dagoenaren argazkia hartu (Ctrl+S)
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pantailan dagoenaren argazkia hartu zoom-a guztiz erabiliz
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :zoom lehenetsikoarekin pantaila-argazkia
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Mapa osoaren argazkia hartu (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'-ri buruz
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :"Sprit" lerrokatzailea
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Kaxen neurriak aldatu

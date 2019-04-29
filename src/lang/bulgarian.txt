@@ -471,9 +471,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Показване/скриване на конзола
 STR_ABOUT_MENU_AI_DEBUG                                         :ИИ дебъг
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Напълно увеличен в кадъра.
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Увеличение по подразбиране
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Огромен Screenshot
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Показване на честотата на кадрите
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Относно 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Подравнител на спрайтове

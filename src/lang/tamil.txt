@@ -468,9 +468,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :முனையத்தை மாற்று
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/வரிவடிவம் சரிபார்
 STR_ABOUT_MENU_SCREENSHOT                                       :திரைபிடிப்பு
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :முழுமையாக பெரிதாக்கிய நிலையில் திரைப்பிடிப்பு செய்
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :பெரிதாக்கிய நிலையில் திரைப்பிடிப்பு செய்
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :முழு வரைபடத்தையும் திரைபிடிப்பு செய்
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :பிரேம் வீதத்தைக் காட்டு
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' பற்றி
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :ஸ்ரைட்டு அலைனர்

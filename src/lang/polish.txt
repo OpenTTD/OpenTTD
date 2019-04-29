@@ -857,9 +857,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Przełącz konsolę
 STR_ABOUT_MENU_AI_DEBUG                                         :Debugowanie SI / Game Script
 STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut ekranu
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zrzut ekranu z pełnym przybliżeniem
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Zrzut ekranu z przybliżeniem domyślnym
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zrzut ekranu całej mapy
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Pokaż ilość klatek na sekundę
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Info o 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite'ów
