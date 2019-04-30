@@ -2408,7 +2408,7 @@ struct SelectStationWindow : Window {
 
 	void OnMouseOver(Point pt, int widget) override
 	{
-		if (widget != WID_JS_PANEL) {
+		if (widget != WID_JS_PANEL || T::EXPECTED_FACIL == FACIL_WAYPOINT) {
 			SetViewportCatchmentStation(nullptr, true);
 			return;
 		}
