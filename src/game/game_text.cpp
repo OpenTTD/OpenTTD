@@ -304,7 +304,7 @@ GameStrings *LoadTranslations()
 /** Compile the language. */
 void GameStrings::Compile()
 {
-	StringData data(1);
+	StringData data(32);
 	StringListReader master_reader(data, *this->raw_strings[0], true, false);
 	master_reader.ParseFile();
 	if (_errors != 0) throw std::exception();
