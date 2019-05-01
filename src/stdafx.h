@@ -284,13 +284,15 @@
 
 /* MSVCRT of course has to have a different syntax for long long *sigh* */
 #if defined(_MSC_VER) || defined(__MINGW32__)
-	#define OTTD_PRINTF64 "%I64d"
-	#define OTTD_PRINTFHEX64 "%I64x"
-	#define PRINTF_SIZE "%Iu"
+#   define OTTD_PRINTF64 "%I64d"
+#   define OTTD_PRINTFHEX64 "%I64x"
+#   define PRINTF_SIZE "%Iu"
+#   define PRINTF_SIZEX "%IX"
 #else
-	#define OTTD_PRINTF64 "%lld"
-	#define OTTD_PRINTFHEX64 "%llx"
-	#define PRINTF_SIZE "%zu"
+#   define OTTD_PRINTF64 "%lld"
+#   define OTTD_PRINTFHEX64 "%llx"
+#   define PRINTF_SIZE "%zu"
+#   define PRINTF_SIZEX "%zX"
 #endif
 
 typedef unsigned char byte;
