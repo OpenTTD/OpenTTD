@@ -29,12 +29,12 @@ struct LangString {
 	char *name;            ///< Name of the string.
 	char *english;         ///< English text.
 	char *translated;      ///< Translated text.
-	uint16 hash_next;      ///< Next hash entry.
-	uint16 index;          ///< The index in the language file.
+	size_t hash_next;      ///< Next hash entry.
+	size_t index;          ///< The index in the language file.
 	int line;              ///< Line of string in source-file.
 	Case *translated_case; ///< Cases of the translation.
 
-	LangString(const char *name, const char *english, int index, int line);
+	LangString(const char *name, const char *english, size_t index, int line);
 	~LangString();
 	void FreeTranslation();
 };
@@ -42,10 +42,10 @@ struct LangString {
 /** Information about the currently known strings. */
 struct StringData {
 	LangString **strings; ///< Array of all known strings.
-	uint16 *hash_heads;   ///< Hash table for the strings.
+	size_t *hash_heads;   ///< Hash table for the strings.
 	size_t tabs;          ///< The number of 'tabs' of strings.
 	size_t max_strings;   ///< The maximum number of strings.
-	int next_string_id;   ///< The next string ID to allocate.
+	size_t next_string_id;///< The next string ID to allocate.
 
 	StringData(size_t tabs);
 	~StringData();
