@@ -58,7 +58,7 @@ Case::~Case()
  * @param index   The index in the string table.
  * @param line    The line this string was found on.
  */
-LangString::LangString(const char *name, const char *english, int index, int line) :
+LangString::LangString(const char *name, const char *english, size_t index, int line) :
 		name(stredup(name)), english(stredup(english)), translated(NULL),
 		hash_next(0), index(index), line(line), translated_case(NULL)
 {
@@ -90,7 +90,7 @@ void LangString::FreeTranslation()
 StringData::StringData(size_t tabs) : tabs(tabs), max_strings(tabs * TAB_SIZE)
 {
 	this->strings = CallocT<LangString *>(max_strings);
-	this->hash_heads = CallocT<uint16>(max_strings);
+	this->hash_heads = CallocT<size_t>(max_strings);
 	this->next_string_id = 0;
 }
 
@@ -144,9 +144,9 @@ void StringData::Add(const char *s, LangString *ls)
  */
 LangString *StringData::Find(const char *s)
 {
-	int idx = this->hash_heads[this->HashStr(s)];
+	size_t idx = this->hash_heads[this->HashStr(s)];
 
-	while (--idx >= 0) {
+	while (idx-- > 0) {
 		LangString *ls = this->strings[idx];
 
 		if (strcmp(ls->name, s) == 0) return ls;
@@ -764,7 +764,7 @@ void StringReader::HandleString(char *str)
 		}
 
 		if (this->data.strings[this->data.next_string_id] != NULL) {
-			strgen_error("String ID 0x%X for '%s' already in use by '%s'", this->data.next_string_id, str, this->data.strings[this->data.next_string_id]->name);
+			strgen_error("String ID 0x" PRINTF_SIZEX " for '%s' already in use by '%s'", this->data.next_string_id, str, this->data.strings[this->data.next_string_id]->name);
 			return;
 		}
 
@@ -830,10 +830,14 @@ void StringReader::ParseFile()
 	strecpy(_lang.digit_decimal_separator, ".", lastof(_lang.digit_decimal_separator));
 
 	_cur_line = 1;
-	while (this->ReadLine(buf, lastof(buf)) != NULL) {
+	while (this->data.next_string_id < this->data.max_strings && this->ReadLine(buf, lastof(buf)) != NULL) {
 		rstrip(buf);
 		this->HandleString(buf);
 		_cur_line++;
+	}
+
+	if (this->data.next_string_id == this->data.max_strings) {
+		strgen_error("Too many strings, maximum allowed is " PRINTF_SIZE, this->data.max_strings);
 	}
 }
 
