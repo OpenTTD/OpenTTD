@@ -38,10 +38,14 @@ jobs:
 
   strategy:
     matrix:
-      commit-checker: {}
-      linux-amd64-clang-3.8: {}
-      linux-amd64-gcc-6: {}
-      linux-i386-gcc-6: {}
+      commit-checker:
+        Tag: 'commit-checker'
+      linux-amd64-clang-3.8:
+        Tag: 'linux-amd64-clang-3.8'
+      linux-amd64-gcc-6:
+        Tag: 'linux-amd64-gcc-6'
+      linux-i386-gcc-6:
+        Tag: 'linux-i386-gcc-6'
 
   steps:
   - template: azure-pipelines/templates/ci-git-rebase.yml
@@ -50,7 +54,7 @@ jobs:
   - template: azure-pipelines/templates/linux-build.yml
     parameters:
       Image: compile-farm-ci
-      Tag: $(Agent.JobName)
+      Tag: $(Tag)
 
 - job: macos
   displayName: 'MacOS'
