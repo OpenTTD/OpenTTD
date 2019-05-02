@@ -24,7 +24,7 @@ steps:
   ${{ if eq(parameters.Image, 'compile-farm-ci') }}:
     displayName: 'Build and test'
     # Run the commit-checker only if it is a Pull Request
-    condition: and(succeeded(), or(ne(variables['Agent.JobName'], 'commit-checker'), eq(variables['Build.Reason'], 'PullRequest')))
+    condition: and(succeeded(), or(not(contains(variables['Agent.JobName'], 'commit-checker')), eq(variables['Build.Reason'], 'PullRequest')))
   inputs:
     command: 'Run an image'
     imageName: openttd/${{ parameters.Image }}:${{ parameters.Tag }}
