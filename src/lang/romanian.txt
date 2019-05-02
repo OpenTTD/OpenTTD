@@ -2378,6 +2378,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Comutator pentru construcţie/înlăturare şosele
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Comută construcţie/înlăturare pentru şine de tramvai
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientarea autobazei
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Alege orientarea autobazei
@@ -3337,10 +3338,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Noi Vehicule El
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Noi vehicule monoşină
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Noi vehicule pe Pernă Magnetică
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Vehicule pe şine
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Autovehicule noi
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Vehicule pe şine
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nave noi
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Aeronavă nouă
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Greutate: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteză: {GOLD}{VELOCITY}{BLACK} Putere: {GOLD}{POWER}
@@ -3488,12 +3492,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Eşti p
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mesaj de la producătorul de vehicule
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Am creat un nou tip de {STRING}. Aţi fi interesaţi de folosirea exclusivă pentru un an a acestui vehicul, astfel ca noi să-i putem observa performanţele înaintea lansării oficiale?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotivă
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :autovehicul
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :aeronavă
-STR_ENGINE_PREVIEW_SHIP                                         :navă
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotivă monoşină
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotivă pernă magnetică
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :autovehicul
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :aeronavă
+STR_ENGINE_PREVIEW_SHIP                                         :navă
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY_LONG} Greutate: {WEIGHT_SHORT}{}Vitezã: {VELOCITY}  Putere: {POWER}{}Cost de rulare: {CURRENCY_LONG}/an{}Capacitate: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY_LONG} Greutate: {WEIGHT_SHORT}{}Viteză: {VELOCITY}  Putere: {POWER}  Ef. T. Max.: {6:FORCE}{}Cost rulaj: {4:CURRENCY_LONG}/an{}Capacitate: {5:CARGO_LONG}
@@ -3535,6 +3542,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Vehicule ferovi
 STR_REPLACE_ELRAIL_VEHICLES                                     :Vehicule Electrificate pe Sine
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vehicule Monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Vehicule Pernă Magnetică
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retragere vagoane: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fă optiunea de autoînlocuire să păstreze identică lungimea unui tren prin eliminarea vagoanelor (începând din faţă) dacă înlocuirea locomotivei ar face trenul mai lung

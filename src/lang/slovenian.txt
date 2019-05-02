@@ -2550,6 +2550,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Zgradi p
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Preklopi gradnja/rušenje cestnih konstrukcij
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Preklop gradi/odstrani za tramvaj progo
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Smer garaže
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Izberi smer garaže
@@ -3504,10 +3505,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nova električn
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nova enotirna vozila
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nova magnetna vozila
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nova tirna vozila
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nova cestna vozila
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nova tirna vozila
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nove ladje
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nova letala
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Teža: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hitrost: {GOLD}{VELOCITY}{BLACK} Moč: {GOLD}{POWER}
@@ -3655,12 +3659,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Priprav
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Sporočilo od proizvajalca vozila
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Na novo smo izdelali {STRING} - ali te zanima enoletna izključna pravica do{}uporabe tega vozila, preden ga ponudimo{}na trgu?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :železniška lokomotiva
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :cestno vozilo
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :letalo
-STR_ENGINE_PREVIEW_SHIP                                         :ladja
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :enotirna lokomotiva
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magnetna lokomotiva
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :cestno vozilo
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :letalo
+STR_ENGINE_PREVIEW_SHIP                                         :ladja
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Teža: {WEIGHT_SHORT}{}Hitrost: {VELOCITY}  Moč: {POWER}{}Cena delovanja: {CURRENCY_LONG}/leto{}Zmogljivost: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Teža: {WEIGHT_SHORT}{}Hitrost: {VELOCITY}  Moč: {POWER}  Max. T.E.: {6:FORCE}{}Stroški: {4:CURRENCY_LONG}/yr{}Zmogljivost: {5:CARGO_LONG}
@@ -3702,6 +3709,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Tirna vozila
 STR_REPLACE_ELRAIL_VEHICLES                                     :Električna tirna vozila
 STR_REPLACE_MONORAIL_VEHICLES                                   :Enotirna vozila
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetna tirna vozila
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranitev vagonov: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Dovoli samozamenjavi, da z odstranitvijo vagonov, začenši na začetku, ohrani isto dolžino vlaka, če bi ga menjava lokomotive podaljšala

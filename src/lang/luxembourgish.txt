@@ -2426,6 +2426,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tramtunn
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Wiesselt bauen/ofrappen vu Stroossekonstruktiounen
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Wiesselt tëscht bauen/ofrappen beim Trambau
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Ausriichtung vum Stroossendepot
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Wielt d'Stroossendepot Ausriichtung
@@ -3441,10 +3442,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nei Elektrozich
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nei Monorailgefierer
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nei Magnéitbunngefierer
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nei Zich
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nei Stroossegefierer
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nei Zich
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nei Schëffer
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Neie Fliger
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Käschten: {GOLD}{CURRENCY_LONG}{BLACK} Gewiicht: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Käschten: {GOLD}{CURRENCY_LONG}{BLACK} (Embaukäschten: {GOLD}{CURRENCY_LONG}{BLACK}) Gewiicht: {GOLD}{WEIGHT_SHORT}
@@ -3602,12 +3606,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du verk
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Meldung vum Gefierkonstrukteur
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mir hunn elo en neien {STRING} gebaut - bass du dorun interesséiert dëst Gefier 1 Joer exklusiv ze notzen, fir ze testen op et komplett maarträif ass?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :Lokomotiv
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :Stroossegefier
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :Fliger
-STR_ENGINE_PREVIEW_SHIP                                         :Schëff
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :Monorail Lokomotiv
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Magnéitbunnlokomotiv
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :Stroossegefier
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :Fliger
+STR_ENGINE_PREVIEW_SHIP                                         :Schëff
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Käschten: {CURRENCY_LONG} Gewiicht: {WEIGHT_SHORT}{}Geschwindegkeet: {VELOCITY}  Kraaft: {POWER}{}Betribskäschten {CURRENCY_LONG}/Jr{}Kapazitéit: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Käschten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Geschw.: {VELOCITY}  Kraaft: {POWER}  Max. T.E.: {6:FORCE}{}Betribskäschten: {4:CURRENCY_LONG}/Jr{}Kapazitéit: {5:CARGO_LONG}
@@ -3653,6 +3660,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Zich
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektresch Zich
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail Gefierer
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnéitbunn Gefierer
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon raushuelen: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Mécht dass d'automatescht Austauschen d'Längt vum Zuch behält, an dem e Waggonen (vu lénks un) wechhëllt, wann d'Lok den Zuch ze laang mécht

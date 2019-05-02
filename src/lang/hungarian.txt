@@ -300,6 +300,8 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Szűrés
 STR_BUTTON_SORT_BY                                              :{BLACK}Rendezés
 STR_BUTTON_LOCATION                                             :{BLACK}Megnéz
 STR_BUTTON_RENAME                                               :{BLACK}Átnevez
+STR_BUTTON_CATCHMENT                                            :{BLACK}Lefedett terület
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Az állomás által lefedett terület mutatása
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Ablak bezárása
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Ablak címsora - húzd ezt a mozgatáshoz
@@ -328,6 +330,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ezzel a 
 STR_BUTTON_DEFAULT                                              :{BLACK}Alapértelmezett
 STR_BUTTON_CANCEL                                               :{BLACK}Mégsem
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Figyelem: A szerver adminjai láthatják az itt beírt szöveget.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :0123456789öüóqwertzuiopőúasdfghjkléáűíyxcvbnm,.- .
@@ -2496,6 +2499,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Villamos
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Építés és felszedés közötti váltás utaknál
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Építés és bontás közötti váltás villamospályáknál
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Garázs helyzete
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Garázs helyzetének kiválasztása
@@ -3527,10 +3531,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Új villamos va
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Új egysínű járművek
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Új Maglev járművek
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Új vasúti járművek
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Új közúti járművek
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Új vasúti járművek
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Új hajók
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Új repülőgépek
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ár: {GOLD}{CURRENCY_LONG}{BLACK} Súly: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Ár: {GOLD}{CURRENCY_LONG}{BLACK} (Átalakítás költsége: {GOLD}{CURRENCY_LONG}{BLACK}) Súly: {GOLD}{WEIGHT_SHORT}
@@ -3691,12 +3698,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Biztosa
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Üzenet egy járműgyártótól
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Most készültek el egy új {STRING} tervei - érdekelne a jármű egy éves kizárólagos használata, hogy megnézhessük a képességeit, mielőtt mindenki számára elérhetővé tesszük?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :vasúti mozdony
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :közúti jármű
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :repülőgép
-STR_ENGINE_PREVIEW_SHIP                                         :hajó
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :egysínű mozdony
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Maglev mozdony
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :közúti jármű
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :repülőgép
+STR_ENGINE_PREVIEW_SHIP                                         :hajó
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Ár: {CURRENCY_LONG} Súly: {WEIGHT_SHORT}{}Sebesség: {VELOCITY} Teljesítmény: {POWER}{}Üzemeltetés: {CURRENCY_LONG}/év{}Kapacitás: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Ár: {CURRENCY_LONG} Súly: {WEIGHT_SHORT}{}Sebesség: {VELOCITY} Teljesítmény: {POWER} Maximális vonóerő: {6:FORCE}{}Üzemeltetés: {4:CURRENCY_LONG}/év{}Kapacitás: {5:CARGO_LONG}
@@ -3742,6 +3752,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Normál vasúti
 STR_REPLACE_ELRAIL_VEHICLES                                     :Villamosított vasúti járművek
 STR_REPLACE_MONORAIL_VEHICLES                                   :Egysínű Vasutak
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Járművek
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon törlés: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automatikus cserénél a szerelvény hosszának a megtartása vagonok eltávolításával (mozdony utántól kezdve), ha a csere után a szerelvény hosszabb lenne

@@ -628,6 +628,7 @@ STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},
 
 # Road construction toolbar
 
+
 # Road depot construction window
 
 # Road vehicle station construction window
@@ -848,6 +849,9 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 # Build vehicle window
 
 
+############ range for vehicle availability starts
+############ range for vehicle availability ends
+
 
 
 
@@ -887,7 +891,11 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 # Engine preview window
 
 
+
+
+
 # Autoreplace window
+
 
 
 

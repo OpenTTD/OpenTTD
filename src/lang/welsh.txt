@@ -2399,6 +2399,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Adeiladu
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}toglu adeiladu/clirio ar gyfer adeiladu ffyrdd
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Toglu adeiladu/dileu ar gyfer adeiladu tramffordd
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Cyfeiriad Depo Ffordd
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Dewiswch gyfeiriad depo cerbyd ffordd
@@ -3361,10 +3362,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Cerbydau Rheilf
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Cerbydau Monoreilffordd Newydd
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Cerbydau Maglef Newydd
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Cerbydau Rheilffordd Newydd
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Cerbydau Ffordd Newydd
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Cerbydau Rheilffordd Newydd
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Llongau Newydd
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Awyrennau Newydd
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Pwysau: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Cyflymder: {GOLD}{VELOCITY}{BLACK} Pŵer: {GOLD}{POWER}
@@ -3513,12 +3517,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Rydych 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Neges gan wneuthurwr cerbydau
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Rydyn ni newydd gynllunio {STRING} newydd - a fyddai gennych chi ddiddordeb mewn cael defnydd cyfyngol o'r cerbyd hwn am flwyddyn er mwyn i ni gael profi ei berfformiad cyn y bydd ar gael i bawb?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :trên
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :cerbyd ffordd
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :awyren
-STR_ENGINE_PREVIEW_SHIP                                         :llong
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :trên monoreilffordd
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :trên maglef
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :cerbyd ffordd
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :awyren
+STR_ENGINE_PREVIEW_SHIP                                         :llong
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Côst: {CURRENCY_LONG} Pwysau: {WEIGHT_SHORT}{}Cyflymder: {VELOCITY}  Pŵer: {POWER}{}Côst Rhedeg: {CURRENCY_LONG}/bl{}Gallu cludo: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY_LONG} Pwysau: {WEIGHT_SHORT}{}Cyflymder: {VELOCITY}  Pŵer: {POWER}  Grym Uchaf: {6:FORCE}{}Cost Rhedeg: {4:CURRENCY_LONG}/bl{}Cynhwysedd: {5:CARGO_LONG}
@@ -3564,6 +3571,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Cerbydau Rheilf
 STR_REPLACE_ELRAIL_VEHICLES                                     :Cerbydau Rheilffordd Drydan
 STR_REPLACE_MONORAIL_VEHICLES                                   :Cerbydau Monoreilffordd
 STR_REPLACE_MAGLEV_VEHICLES                                     :Cerbydau Maglef
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Tynnu wagenni: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gwneud i awtoddisodli gadw hyd y trên yr un peth drwy dynnu wagenni (gan ddechrau yn y blaen), os byddai newid yr injan yn gwneud y trên yn hirach

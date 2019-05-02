@@ -2345,6 +2345,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}สร�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}สลับโหมด สร้าง/ลบ ถนน
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}สลับโหมด สร้าง/ลบ รางสำหรับรถราง
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}ทิศทางของอู่รถ
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}เลือกทิศทางของอู่รถ
@@ -3280,10 +3281,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :รถไฟฟ
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :รถไฟฟ้ารางเดี่ยวใหม่
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Maglev (รถไฟพลังแม่เหล็ก) ใหม่
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :ประเถทไฟที่สามารถซื้อได้
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :ประเถทรถที่สามารถซื้อได้
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :ประเถทไฟที่สามารถซื้อได้
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :ประเถทเรือที่สามารถซื้อได้
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :ประเถทอากาศยานที่สามารถซื้อได้
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}มูลค่า: {GOLD}{CURRENCY_LONG}{BLACK} น้ำหนัก: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}ความเร็ว: {GOLD}{VELOCITY}{BLACK} พลังขับเคลื่อน: {GOLD}{POWER}
@@ -3423,12 +3427,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}คุ�
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}ข้อความจากผู้ผลิตยานพาหนะ
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}เราได้ออกแบบ {STRING} ใหม่ - หากคุณต้องการที่จะนำไปทดลองใช้ เราจะให้คุณนำไปใช้งานก่อนที่จะนำออกไปจำหน่ายในตลาดปกติ{}คุณต้องการนำไปทดลองใช้หรือไม่ ?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :หัวรถจักร
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ยานพาหนะทางบก
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :อากาศยาน
-STR_ENGINE_PREVIEW_SHIP                                         :ยานพาหนะทางน้ำ
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :รถไฟรางเดี่ยว
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :รถไฟรางแม่เหล็กไฟฟ้า
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ยานพาหนะทางบก
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :อากาศยาน
+STR_ENGINE_PREVIEW_SHIP                                         :ยานพาหนะทางน้ำ
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}มูลค่า: {CURRENCY_LONG} น้ำหนัก: {WEIGHT_SHORT}{}ความเร็ว: {VELOCITY}พลังขับเคลื่อน: {POWER}{}ค่าปฏิบัติการ: {CURRENCY_LONG}/ปี{}ความจุ: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}มูลค่า: {CURRENCY_LONG} น้ำหนัก: {WEIGHT_SHORT}{}ความเร็ว: {VELOCITY}พลังขับเคลื่อน: {POWER}  กำัลังลากจูงสูงสุด: {6:FORCE}{}ค่าปฎิบัติการ: {4:CURRENCY_LONG}/ปี{}ความจุ: {5:CARGO_LONG}
@@ -3466,6 +3473,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :ยานพา
 STR_REPLACE_ELRAIL_VEHICLES                                     :ยานพาหนะที่ใช้ไฟฟ้า
 STR_REPLACE_MONORAIL_VEHICLES                                   :ยานพาหนะประเภทรถไฟรางเดี่ยว
 STR_REPLACE_MAGLEV_VEHICLES                                     :รถไฟพลังงานแม่แหล็ก
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}ขายรถพ่วง: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}ทำให้การแทนที่ขบวนรถไฟทำให้ความยาวของขบวนยังเท่าเดิม

@@ -2001,6 +2001,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Konstruu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Konstrui tramtunelon. Baskulu inter konstrui/(kosto)taksi per maljuskliga klavo
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Ĉu konstrui ĉu forigi por vojkonstruado
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Direkto de la stratveturila garaĝo
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Elekti direkton de la stratveturila garaĝo
@@ -2791,10 +2792,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Novaj Elektraj 
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Novaj Unurelaj Veturiloj
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Novaj Maglevaj Veturiloj
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Novaj stratveturiloj
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novaj stratveturiloj
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Novaj stratveturiloj
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novaj Ŝipoj
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Novaj Aviadiloj
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosto: {GOLD}{CURRENCY_LONG}{BLACK} Pezo: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rapido: {GOLD}{VELOCITY}{BLACK} Forto: {GOLD}{POWER}
@@ -2936,12 +2940,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vi vend
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mesaĝo de veturil-produktanto
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Nova {STRING} estas inventita - ĉu vi ŝatus jaron ekskluzive uzi la veturilon, por ke ni povu vidi ĝian funkciadon antaŭ ol ĝi estos plene havebla?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :fervoja lokomotivo
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :stratveturilo
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :aviadilo
-STR_ENGINE_PREVIEW_SHIP                                         :ŝipo
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :unurellokomotivo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magleva lokomotivo
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :stratveturilo
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :aviadilo
+STR_ENGINE_PREVIEW_SHIP                                         :ŝipo
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosto: {CURRENCY_LONG} Pezo: {WEIGHT_SHORT}{}Rapido: {VELOCITY}  Forto: {POWER}{}Irkosto: po {CURRENCY_LONG} jare{}Kapablo: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kosto: {CURRENCY_LONG} Pezo: {WEIGHT_SHORT}{}Rapido: {VELOCITY}  Povo: {POWER}  Maks. T.E.: {6:FORCE}{}Irkosto: {4:CURRENCY_LONG}/jaro{}Kapacito: {5:CARGO_LONG}
@@ -2975,6 +2982,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Relaj Veturiloj
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektraj Relaj Veturiloj
 STR_REPLACE_MONORAIL_VEHICLES                                   :Unurelaj Veturiloj
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevaj Veturiloj
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagonforigo: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ĉe aŭtomata anstataŭigo tenu saman longecon de la trajno per forigo de vagonoj (defronte), se per nova maŝino la trajno plilongiĝas

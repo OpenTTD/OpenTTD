@@ -2531,6 +2531,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Izgradi 
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Aktiviraj izgradnju/uklanjanje za izgradnju ceste
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Aktiviraj izgradnju/uklanjanje za izgradnju tramvaja
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Smjer cestovnog spremišta
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Odaberi smjer spremišta cestovnih vozila
@@ -3562,10 +3563,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nova električn
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nova jednotračna željeznička vozila
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nova vozila Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nova pružna vozila
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nova cestovna vozila
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nova pružna vozila
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novi brodovi
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Novi zrakoplov
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cijena: {GOLD}{CURRENCY_LONG}{BLACK} Težina {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Cijena : {GOLD}{CURRENCY_LONG}{BLACK} (Cijena prenamjene: {GOLD}{CURRENCY_LONG}{BLACK}) Težina: {GOLD}{WEIGHT_SHORT}
@@ -3726,12 +3730,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Upravo 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Poruka od proizvođača vozila
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Upravo smo dizajnirali novi {STRING} - jeste li zainteresirani za jednogodišnje ekskluzivno pravo uporabe ovog vozila, kako bi vidjeli kako se vozilo ponaša prije nego što postane univerzalno dostupno?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :željeznička lokomotiva
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :cestovno vozilo
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :zrakoplov
-STR_ENGINE_PREVIEW_SHIP                                         :brod
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :jednotračna željeznička lokomotiva
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev lokomotiva
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :cestovno vozilo
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :zrakoplov
+STR_ENGINE_PREVIEW_SHIP                                         :brod
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cijena: {CURRENCY_LONG} Težina: {WEIGHT_SHORT}{}Brzina: {VELOCITY} Snaga: {POWER}{}Trošak uporabe: {CURRENCY_LONG}/god{}Kapacitet: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Trošak: {CURRENCY_LONG} Težina: {WEIGHT_SHORT}{}Brzina: {VELOCITY}  Snaga: {POWER}  Maks. T.E.: {6:FORCE}{}Trošak uporabe: {4:CURRENCY_LONG}/god{}Nosivost: {5:CARGO_LONG}
@@ -3777,6 +3784,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Pružna vozila
 STR_REPLACE_ELRAIL_VEHICLES                                     :Električna pružna vozila
 STR_REPLACE_MONORAIL_VEHICLES                                   :Jednotračna vozila
 STR_REPLACE_MAGLEV_VEHICLES                                     :Željeznička vozila Maglev
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Uklanjanje vagona: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automatska zamjena zadržava istu dužinu vlaka tako da ukloni suvišne vagone (počevši od naprijed), ako bi zamjena lokomotive učinila vlak dužim

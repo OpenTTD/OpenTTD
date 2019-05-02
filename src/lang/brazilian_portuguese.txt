@@ -2414,6 +2414,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Alternar construir/remover para contrução rodoviária
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Alternar construir/remover linhas de bonde e sinais
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientação da Garagem
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selecionar a orientação da garagem
@@ -3417,10 +3418,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nova Locomotiva
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nova Locomotiva Monotrilho
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nova Locomotiva Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Trens
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novos Automóveis
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Trens
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novas Embarcações
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nova Aeronave
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Preço: {GOLD}{CURRENCY_LONG}{BLACK} Peso: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK} Potência: {GOLD}{POWER}
@@ -3569,12 +3573,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Você e
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensagem de um fabricante de veículos
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Projetamos um novo {STRING} - estaria interessado em um ano de exclusividade do uso deste veículo, de modo a que possamos avaliar a sua performance antes de o disponibilizar para todos ?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotiva ferroviária
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :automóvel
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :aeronave
-STR_ENGINE_PREVIEW_SHIP                                         :embarcação
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotiva monotrilho
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotiva maglev
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :automóvel
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :aeronave
+STR_ENGINE_PREVIEW_SHIP                                         :embarcação
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Preço: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade: {VELOCITY}  Potência: {POWER}{}Custo de manutenção: {CURRENCY_LONG}/ano{}Capacidade: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Preço: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Vel.: {VELOCITY}  Potência: {POWER}  Tração Máx: {6:FORCE}{}Custo de manutenção: {4:CURRENCY_LONG}/yr{}Capacidade: {5:CARGO_LONG}
@@ -3620,6 +3627,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Trens
 STR_REPLACE_ELRAIL_VEHICLES                                     :Locomotivas Elétricas
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monotrilho
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevs
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remoção de vagões: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Faz autosubstituição manter o tamanho do trem removendo vagões (começando pela frente), se ao substituir a locomotiva o trem ficar maior

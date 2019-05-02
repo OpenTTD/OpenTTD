@@ -2104,6 +2104,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}ساخت
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK} تغییر بین ساخت/حذف جاده
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}تغییر حالت بین ساخت/جذف برای ساخت و ساز تراموا
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}جهت گاراژ خودروی جاده ای
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}جهت گاراژ خودرو جاده ای را انتخاب نمایید
@@ -2942,9 +2943,12 @@ STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :قطار جدی
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :قطار جدید مونوریل
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :قطار جدید ریل مغناطیسی
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :وسایل ریل خط آهن
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :ماشین های جدید
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :وسایل ریل خط آهن
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :هواپیمای جدید
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}سرعت در اقیانوس: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}سرعت در کانال/رودخانه: {GOLD}{VELOCITY}
@@ -3035,12 +3039,15 @@ STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}نمای
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}پیغام از سازنده ی وسیله نقلیه
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}ما به تازگی {STRING} را طراحی کرده ایم- آیا مایلید در یک سال اولان را به شگل انحصاری مورد تست قرار دهید تا نحوه عملکرد وسیله را قبل از عرضه ی جهانی مورد بررسی قرار دهیم؟
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :لوکوموتیو راه آهن
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ماشین جاده ای
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :هواپیما
-STR_ENGINE_PREVIEW_SHIP                                         :کشتی
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :لوکوموتیو مونوریل
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :لوکوموتیو ریل مغناطیسی
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ماشین جاده ای
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :هواپیما
+STR_ENGINE_PREVIEW_SHIP                                         :کشتی
 
 
 # Autoreplace window
@@ -3059,6 +3066,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}برای
 
 
 STR_REPLACE_ELRAIL_VEHICLES                                     :وسایل نقلیه ریلی برقی
+
 
 
 # Vehicle view

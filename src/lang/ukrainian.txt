@@ -2563,6 +2563,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Побу
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Будувати/зруйнувати дорогу
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Будувати/демонтувати колію
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Орієнтація депо
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Виберіть орієнтацію депо
@@ -3591,10 +3592,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Новий ел
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Новий монорейковий поїзд
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Новий магнітний поїзд
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Нові потяги
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Нові автомобілі
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Нові потяги
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Нові кораблі
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нові літаки
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ціна: {GOLD}{CURRENCY_LONG}{BLACK} Вага: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Швидкість: {GOLD}{VELOCITY}{BLACK} Потужність: {GOLD}{POWER}
@@ -3744,12 +3748,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Ви в
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Повідомлення від виробника транспорту
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Ми розробили новий {STRING} - чи бажаєте ексклюзивно користуватись ним протягом року, так ми побачимо, як він зарекомендує себе, перед тим як буде доступним для всіх?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :локомотив
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомобіль
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :літак
-STR_ENGINE_PREVIEW_SHIP                                         :корабель
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорейковий локомотив
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :магнітний локомотив
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомобіль
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :літак
+STR_ENGINE_PREVIEW_SHIP                                         :корабель
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Ціна: {CURRENCY_LONG} Вага: {WEIGHT_SHORT}{}Швидкість: {VELOCITY}{}Потужність: {POWER}{}Вартість експлуатації: {CURRENCY_LONG}/рік{}Місткість: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Вартість: {CURRENCY_LONG} Вага: {WEIGHT_SHORT}{}Швидкість: {VELOCITY}  Потужність: {POWER}  Макс. тяга: {6:FORCE}{}Вартість експлуатації: {4:CURRENCY_LONG}/рік{}Місткість: {5:CARGO_LONG}
@@ -3795,6 +3802,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Неелект�
 STR_REPLACE_ELRAIL_VEHICLES                                     :Електрифіковані поїзди
 STR_REPLACE_MONORAIL_VEHICLES                                   :Монорейкові поїзди
 STR_REPLACE_MAGLEV_VEHICLES                                     :Магнітні поїзди
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Ліквідація зайвих вагонів: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозволити автооновленню видаляти вагони, зберігаючи довжину потягу (починаючи спереду), якщо оновлення робить поїзд довшим

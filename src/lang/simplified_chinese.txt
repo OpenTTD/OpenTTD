@@ -2406,6 +2406,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}建设�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}建设/拆除 公路
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}建设/拆除 电车轨道
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}汽车车库的方向……
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}选择汽车车库方向
@@ -3381,10 +3382,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :购买电气化
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :购买单轨列车
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :购买磁悬浮列车
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :新列车
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :购买汽车
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :新列车
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :购买船只
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :购买飞机
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}售价：{GOLD}{CURRENCY_LONG}{BLACK} 重量：{GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}
@@ -3533,12 +3537,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}你将�
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}来自供货商的消息
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}我们新近设计了一款{STRING}{}您愿意在产品正式上市前试用一年吗？
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :火车机车
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :汽车
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :飞机
-STR_ENGINE_PREVIEW_SHIP                                         :船只
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :单轨机车
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :磁悬浮机车
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :汽车
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :飞机
+STR_ENGINE_PREVIEW_SHIP                                         :船只
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}售价：{CURRENCY_LONG} 重量：{WEIGHT_SHORT}{}速度：{VELOCITY}  功率：{POWER}{}运行费用：{CURRENCY_LONG}/年{}运载能力： {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}售价：{CURRENCY_LONG} 重量：{WEIGHT_SHORT}{}速度：{VELOCITY}  功率：{POWER}  最大牵引力：{6:FORCE}{}运行费用{4:CURRENCY_LONG}/年{}运载能力：{5:CARGO_LONG}
@@ -3584,6 +3591,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :普通列车
 STR_REPLACE_ELRAIL_VEHICLES                                     :电力机车
 STR_REPLACE_MONORAIL_VEHICLES                                   :单轨列车
 STR_REPLACE_MAGLEV_VEHICLES                                     :磁悬浮列车
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}清理挂车：{ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}当车辆升级可能造成列车变长时{}自动从最前面的挂车去掉若干节以保证列车长度不变

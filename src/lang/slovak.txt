@@ -2464,6 +2464,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Postavi�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Prepnúť stavbu/odstraňovanie cesty
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Prepnúť stavbu/odstraňovanie električkovej dráhy
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientacia garaze
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Zvoľte orientáciu garáže
@@ -3418,10 +3419,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nové elektrick
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nové jednokoľajové vlaky
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nové magnetické vlaky
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Železnicne vozidlá
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nové automobily
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Železnicne vozidlá
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nové lode
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nove Lietadlo
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Hmotnosť: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rýchlosť: {GOLD}{VELOCITY}{BLACK} Výkon: {GOLD}{POWER}
@@ -3569,12 +3573,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Chystá
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Správa od výrobcu dopravných prostriedkov
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Práve sme navrhli nov{G "ý" "ú" "é"} {STRING} - máte záujem o právo exkluzívneho používania na 1 rok? Chceme otestovať vlastnosti tohto modelu pred jeho uvedením na trh.
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=z}železničná lokomotíva
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}automobil
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=s}lietadlo
-STR_ENGINE_PREVIEW_SHIP                                         :{G=z}loď
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=z}jednokoľajová lokomotíva
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=z}magnetická lokomotíva
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}automobil
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=s}lietadlo
+STR_ENGINE_PREVIEW_SHIP                                         :{G=z}loď
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Hmotnosť: {WEIGHT_SHORT}{}Rýchlosť: {VELOCITY}  Výkon: {POWER}{}Prevádzkové náklady: {CURRENCY_LONG}/rok{}Kapacita: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Hmotnosť: {WEIGHT_SHORT}{}Rýchlosť: {VELOCITY}  Sila: {POWER}  Max. T.E.: {6:FORCE}{}Prevádzkové náklady: {4:CURRENCY_LONG}/yr{}Kapacita: {5:CARGO_LONG}
@@ -3615,6 +3622,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Lokomotívy
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrické lokomotívy
 STR_REPLACE_MONORAIL_VEHICLES                                   :Lokomotíva pre jednokoľajku
 STR_REPLACE_MAGLEV_VEHICLES                                     :Lokomotíva pre magnetickú dráhu
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstránenie vagónu: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Zachovanie pôvodnej dĺžky vlaku, odstránením vagónov (odpredu), keď by funkcia automatickej zmeny rušňa vlak predĺžila

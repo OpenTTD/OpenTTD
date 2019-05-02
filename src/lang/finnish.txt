@@ -2435,6 +2435,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Rakenna 
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Tien rakentaminen/siirtäminen päälle/pois
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Vaihda raitiotien rakentamisen ja purkamisen välillä
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Autovarikon suunta
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Valitse autovarikon suunta
@@ -3466,10 +3467,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Uusi sähköjun
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Uusi yksiraidejuna
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Uusi Maglev-juna
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Uudet junat
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Uusia ajoneuvoja
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Uudet junat
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Uusia laivoja
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Uusi lentokone
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Hinta: {GOLD}{CURRENCY_LONG}{BLACK} Paino: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Hinta: {GOLD}{CURRENCY_LONG}{BLACK} (Sovituskustannus: {GOLD}{CURRENCY_LONG}{BLACK}) Paino: {GOLD}{WEIGHT_SHORT}
@@ -3630,12 +3634,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Olet my
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Viesti kulkuneuvovalmistajalta
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Olemme juuri suunnitelleet uuden {STRING} – oletteko kiinnostunut vuoden yksinoikeutetusta kokeilusta, jotta näemme miten tuote suoriutuu ennen kuin julkistamme sen yleiseen käyttöön?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :veturin
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ajoneuvon
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :lentokoneen
-STR_ENGINE_PREVIEW_SHIP                                         :laivan
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :yksiraiteisen veturin
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-veturin
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ajoneuvon
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :lentokoneen
+STR_ENGINE_PREVIEW_SHIP                                         :laivan
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Hinta: {CURRENCY_LONG} Paino: {WEIGHT_SHORT}{}Nopeus: {VELOCITY}  Teho: {POWER}{}Käyttökustannukset: {CURRENCY_LONG}/vuosi{}Kapasiteetti: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Hinta: {CURRENCY_LONG} Paino: {WEIGHT_SHORT}{}Nopeus: {VELOCITY}  Teho: {POWER}  Maks. vetovoima: {6:FORCE}{}Käyttökustannukset: {4:CURRENCY_LONG}/v{}Kapasiteetti: {5:CARGO_LONG}
@@ -3681,6 +3688,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Junat
 STR_REPLACE_ELRAIL_VEHICLES                                     :Sähköjunat
 STR_REPLACE_MONORAIL_VEHICLES                                   :Yksiraiteiset
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev-junat
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaunun poisto: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaattikorvauksessa junapituus pidetään samana poistamalla vaunuja (edestä) jos veturi pidentäisi junaa

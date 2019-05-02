@@ -1031,6 +1031,7 @@ STR_BRIDGE_NAME_WOODEN                                          :लाकडी
 
 # Road construction toolbar
 
+
 # Road depot construction window
 
 # Road vehicle station construction window
@@ -1312,8 +1313,11 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :सगळे �
 # Build vehicle window
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :नवीन रस्त्यावरचे वाहन
+
+############ range for vehicle availability starts
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :नवीन जहाज
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :नवीन विमान
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}किंमत: {GOLD}{CURRENCY_LONG}{BLACK} वजन: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}गती: {GOLD}{VELOCITY}{BLACK} शक्ती: {GOLD}{POWER}
@@ -1356,6 +1360,9 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 
 
 # Engine preview window
+
+
+
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :विमान
 STR_ENGINE_PREVIEW_SHIP                                         :जहाज
 
@@ -1363,6 +1370,7 @@ STR_ENGINE_PREVIEW_SHIP                                         :जहाज
 # Autoreplace window
 STR_REPLACE_VEHICLE_SHIP                                        :जहाज
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :विमान
+
 
 
 

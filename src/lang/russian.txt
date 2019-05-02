@@ -2611,6 +2611,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Стро
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Строительство/удаление автомобильных дорог и станций
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Строительство/удаление трамвайных путей и станций
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Направление гаража
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Выбор ориентации гаража
@@ -3646,10 +3647,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Новый эл
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Новый монорельсовый поезд
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Новый магниторельсовый поезд
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Новый поезд
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Новый автомобиль
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Новый поезд
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Новый корабль
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новый авиатранспорт
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} Вес: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} (Стоимость переоборудования: {GOLD}{CURRENCY_LONG}{BLACK}) Вес: {GOLD}{WEIGHT_SHORT}
@@ -3810,18 +3814,21 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Вес�
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Сообщение от производителя транспорта
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Мы создали новую модель {STRING.gen}. Заинтересованы ли вы в его годовом эксклюзивном использовании для проверки перед запуском в серийное производство?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :ж/д локомотив
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.gen                      :ж/д локомотива
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомобиль
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.gen                             :автомобиля
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :воздушное судно
-STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :воздушного судна
-STR_ENGINE_PREVIEW_SHIP                                         :корабль
-STR_ENGINE_PREVIEW_SHIP.gen                                     :корабля
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорельсовый локомотив
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.gen                      :монорельсового локомотива
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :магниторельсовый локомотив
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.gen                        :магниторельсового локомотива
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомобиль
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.gen                             :автомобиля
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :воздушное судно
+STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :воздушного судна
+STR_ENGINE_PREVIEW_SHIP                                         :корабль
+STR_ENGINE_PREVIEW_SHIP.gen                                     :корабля
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цена: {CURRENCY_LONG} Вес: {WEIGHT_SHORT}{}Скорость: {VELOCITY}  Мощность: {POWER}{}Стоимость обслуж.: {CURRENCY_LONG}/год{}Ёмкость: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цена: {CURRENCY_LONG} Вес: {WEIGHT_SHORT}{}Скорость: {VELOCITY}  Мощность: {POWER}  Макс. ТУ: {6:FORCE}{}Стоимость обслуж.: {4:CURRENCY_LONG}/год{}Ёмкость: {5:CARGO_LONG}
@@ -3871,6 +3878,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Поезда
 STR_REPLACE_ELRAIL_VEHICLES                                     :Электропоезда
 STR_REPLACE_MONORAIL_VEHICLES                                   :Монорельсовые
 STR_REPLACE_MAGLEV_VEHICLES                                     :Магнитные
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Удаление вагонов: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Разрешить при автозамене сохранять длину поездов путём удаления вагонов (начиная с головы поезда), если при автозамене локомотива увеличится длина поезда.

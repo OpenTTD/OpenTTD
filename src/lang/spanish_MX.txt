@@ -2434,6 +2434,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Quitar carretera
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Quitar carriles de tranvía
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientación del depósito
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Elegir la orientación del depósito de vehículos de carretera
@@ -3465,10 +3466,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nuevos trenes e
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuevos monorrieles
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nuevos trenes maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nuevos trenes
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuevos vehículos de carretera
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nuevos trenes
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuevos barcos
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nuevas aeronaves
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Costo: {GOLD}{CURRENCY_LONG}{BLACK} Peso: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Costo: {GOLD}{CURRENCY_LONG}{BLACK} (Costo de reformación: {GOLD}{CURRENCY_LONG}{BLACK}) Peso: {GOLD}{WEIGHT_SHORT}
@@ -3629,12 +3633,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Se vend
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensaje del fabricante de vehículos
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Hemos diseñado un{G "" a} nuev{G o a} {STRING}. ¿Le interesaría el uso exclusivo de este vehículo por un año para que podamos probar su desempeño antes de lanzarlo al público?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotora
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}vehículo de carretera
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}aeronave
-STR_ENGINE_PREVIEW_SHIP                                         :{G=m}barco
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotora de monorriel
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}locomotora maglev
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}vehículo de carretera
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}aeronave
+STR_ENGINE_PREVIEW_SHIP                                         :{G=m}barco
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidad: {VELOCITY}  Potencia: {POWER}{}Costo de operación: {CURRENCY_LONG}/año{}Capacidad: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidad: {VELOCITY}  Potencia: {POWER}  Máx. F.T.: {6:FORCE}{}Costo de operación: {4:CURRENCY_LONG}/año{}Capacidad: {5:CARGO_LONG}
@@ -3680,6 +3687,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Trenes
 STR_REPLACE_ELRAIL_VEHICLES                                     :Trenes eléctricos
 STR_REPLACE_MONORAIL_VEHICLES                                   :Trenes de monorriel
 STR_REPLACE_MAGLEV_VEHICLES                                     :Trenes maglev
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Quitar vagón: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Hacer que el reemplazo automático mantenga la longitud del tren quitando vagones (empezando por el frente), si el cambio de locomotora produce un tren más largo

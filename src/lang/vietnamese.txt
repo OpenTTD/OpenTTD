@@ -2413,6 +2413,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Xây h�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Bật chế độ xây/phá đường bộ
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Bật chế độ xây/phá đường xe điện
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Hướng Của Xưởng Ôtô
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Chọn hướng đặt xưởng xe ôtô
@@ -3420,10 +3421,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Tàu Điện M�
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Tàu Đơn Ray Mới
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Tàu Đệm Từ Mới
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Tàu Hỏa Mới
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Xe Cộ Mới
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Tàu Hỏa Mới
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Tàu Mới
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Máy Bay Mới
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Chi phí: {GOLD}{CURRENCY_LONG}{BLACK} Tải trọng: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Tốc độ: {GOLD}{VELOCITY}{BLACK} Công suất: {GOLD}{POWER}
@@ -3572,12 +3576,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Bạn �
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Thông cáo từ nhà sản xuất phương tiện vận tải
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Chúng tôi vừa thiết kế một {STRING} mới - bạn có muốn mua nó trước khi chúng tôi hoàn thiện 1 năm, để chúng tôi đánh giá nó trước khi bán rộng rãi?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :đầu máy tầu hoả
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ôtô
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :máy bay
-STR_ENGINE_PREVIEW_SHIP                                         :tàu thuỷ
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :đầu máy ray đơn
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :đầu máy đệm từ
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ôtô
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :máy bay
+STR_ENGINE_PREVIEW_SHIP                                         :tàu thuỷ
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Giá thành: {CURRENCY_LONG} Tải trọng: {WEIGHT_SHORT}{}Tốc độ: {VELOCITY}  Công suất: {POWER}{}Chi phí hoạt động: {CURRENCY_LONG}/năm{}Sức chứa: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Giá: {CURRENCY_LONG} Nặng: {WEIGHT_SHORT}{}Tốc độ: {VELOCITY}  Công suất: {POWER}  Max. T.E.: {6:FORCE}{}Giá vận hành: {4:CURRENCY_LONG}/yr{}Năng suất: {5:CARGO_LONG}
@@ -3623,6 +3630,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Đầu máy/toa
 STR_REPLACE_ELRAIL_VEHICLES                                     :Đầu máy/toa xe điện
 STR_REPLACE_MONORAIL_VEHICLES                                   :Đầu máy ray đơn
 STR_REPLACE_MAGLEV_VEHICLES                                     :Đầu máy đệm từ
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Xoá bỏ toa xe: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Tự động thay thế sẽ giữ nguyên độ dài đoàn tàu bằng cách bỏ bớt toa xe (bỏ từ phía đầu), nếu như việc thay thế đầu máy làm đoàn tàu dài hơn.

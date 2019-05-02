@@ -2798,6 +2798,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Zbuduj t
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Przełącz buduj/usuń dla konstrukcji dróg
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Przełącz buduj/usuń dla konstrukcji tramwajowej
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Ukierunkowanie zajezdni samochodowej
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Wybierz umiejscowienie zajezdni samochodowej
@@ -3800,10 +3801,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nowe elektryczn
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nowe pociągi jednoszynowe
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nowe pociągi Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nowe Pojazdy Szynowe
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nowy pojazd drogowy
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nowe Pojazdy Szynowe
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nowe statki
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nowy samolot
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Koszt: {GOLD}{CURRENCY_LONG}{BLACK} Masa: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Prędkość: {GOLD}{VELOCITY}{BLACK} Moc: {GOLD}{POWER}
@@ -3953,18 +3957,21 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Sprzeda
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Wiadomość od producenta pojazdów
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Właśnie zaprojektowaliśmy now{G y ą e} {STRING.b} - czy jesteś zainteresowany w rocznej wyłączności na użycie tego pojazdu, żebyśmy mogli zobaczyć przed wypuszczeniem na rynek jak się sprawuje?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotywa
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.b                        :lokomotywę
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}pojazd
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.b                               :pojazd
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}samolot
-STR_ENGINE_PREVIEW_AIRCRAFT.b                                   :samolot
-STR_ENGINE_PREVIEW_SHIP                                         :{G=m}statek
-STR_ENGINE_PREVIEW_SHIP.b                                       :statek
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}lokomotywa jednoszynowa
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.b                        :lokomotywę jednoszynową
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}lokomotywa Maglev
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.b                          :lokomotywę Maglev
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}pojazd
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.b                               :pojazd
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}samolot
+STR_ENGINE_PREVIEW_AIRCRAFT.b                                   :samolot
+STR_ENGINE_PREVIEW_SHIP                                         :{G=m}statek
+STR_ENGINE_PREVIEW_SHIP.b                                       :statek
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Koszt utrzymania: {CURRENCY_LONG}/rok{}Ładowność: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}  Maksymalna siła pociągowa: {6:FORCE}{}Koszt utrzymania: {4:CURRENCY_LONG}/rok{}Ładowność: {5:CARGO_LONG}
@@ -4010,6 +4017,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Kolej
 STR_REPLACE_ELRAIL_VEHICLES                                     :Kolej elektryczna
 STR_REPLACE_MONORAIL_VEHICLES                                   :Kolej jednoszynowa
 STR_REPLACE_MAGLEV_VEHICLES                                     :Kolej Maglev
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usunięcie wagonów: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymiana zachowuje długość pociągu poprzez usuwanie wagonów (począwszy od początku), jeśli wymiana lokomotywy spowoduje wydłużenie pociągu

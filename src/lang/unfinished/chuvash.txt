@@ -860,6 +860,7 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вер�
 
 # Road construction toolbar
 
+
 # Road depot construction window
 
 # Road vehicle station construction window
@@ -1138,6 +1139,9 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 # Build vehicle window
 
 
+############ range for vehicle availability starts
+############ range for vehicle availability ends
+
 
 
 
@@ -1175,7 +1179,11 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 # Engine preview window
 
 
+
+
+
 # Autoreplace window
+
 
 
 

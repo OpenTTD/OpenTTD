@@ -342,6 +342,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}화면�
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}화면을 축소합니다.
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}철도 시설을 건설합니다.
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}도로 시설을 건설합니다.
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}전찻길 건설
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}항만 시설을 건설합니다.
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}항공 시설을 건설합니다.
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}땅 올리기/내리기, 나무 심기 등의 일를 하기 위한 지형편집창을 엽니다.
@@ -362,6 +363,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}지형�
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}도시를 생성합니다.
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}산업시설을 건설합니다.
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}도로를 건설합니다.
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}전찻길 건설
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}나무를 심습니다. SHIFT 키를 사용하면 예상 가격을 볼 수 있습니다.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}팻말을 답니다.
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}오브젝트를 설치합니다. SHIFT 키를 사용하면 예상 가격을 볼 수 있습니다.
@@ -1411,7 +1413,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :짧은 (2012.01
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :국제표준규격 (2012-01-01)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :게임 시작 시 자동으로 일시정지: {STRING}
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :이 설정을 켜면, 새로은 게임을 시작할 때 지도를 더욱 자세히 살펴볼 수 있도록 게임을 자동으로 일시정시합니다.
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :이 설정을 켜면, 새로운 게임을 시작할 때 지도를 더욱 자세히 살펴볼 수 있도록 게임을 자동으로 일시정지합니다.
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :일시 정지 상태에서 가능한 행동: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :게임이 일시 정지된 동안에 할 수 있는 행동을 선택합니다.
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :아무 것도 못 함
@@ -2348,7 +2350,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}신호�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}철교를 짓습니다. SHIFT 키를 사용하면 예상 가격을 볼 수 있습니다.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}터널을 짓습니다. SHIFT 키를 사용하면 예상 가격을 볼 수 있습니다.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}선로, 신호기, 경유지, 역 등의 철도 시설 건설/철거 모드를 켜거나 끌 수 있습니다. CTRL 키를 누르고 있어도 선로에서 경유지와 역을 제거할 수 있습니다.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}철도의 타입을 변경/업그레이드 합니다. SHIFT 키를 사용하면 예상 가격을 볼 수 있습니다.
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}철도 선로 종류를 변경하거나 업그레이드 합니다. SHIFT 키를 사용하면 예상 가격을 볼 수 있습니다.
 
 STR_RAIL_NAME_RAILROAD                                          :철도
 STR_RAIL_NAME_ELRAIL                                            :전기철도
@@ -2435,6 +2437,11 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}터널�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}전차 터널을 짓습니다. SHIFT 키를 사용하면 예상 가격을 볼 수 있습니다.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}도로 제거툴 켜기/끄기
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}전찻길 건설/제거 툴 켜기/끄기
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}도로 종류를 변경하거나 업그레이드 합니다. SHIFT 키를 사용하면 예상 가격을 볼 수 있습니다.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}전차 선로 종류를 변경하거나 업그레이드 합니다. SHIFT 키를 사용하면 예상 가격을 볼 수 있습니다.
+
+STR_ROAD_NAME_ROAD                                              :도로
+STR_ROAD_NAME_TRAM                                              :전찻길
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}차고지 방향 선택
@@ -2619,8 +2626,11 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}받을 수 있는 화물: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}철도 종류: {LTBLUE}{STRING}
-STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}선로의 제한 속력: {LTBLUE}{VELOCITY}
-STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}도로 속도 제한: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}도로 종류: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}전차 종류: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}선로 제한 속력: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}도로 제한 속력: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}전차 제한 속력: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :암석
@@ -3360,6 +3370,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}철도 기반시설:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}신호기
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}도로 기반시설:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}전찻길:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}해운 기반시설:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}운하
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}정거장 시설:
@@ -3467,10 +3478,15 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :새 전기 열�
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :새 모노레일 열차
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :새 자기부상열차
 
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :새 자동차
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :새 전차 차량
+
+############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :새 열차
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :새 차량
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :새 자동차/전차
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :새 선박
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :새 항공기
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}가격: {GOLD}{CURRENCY_LONG}{BLACK} 중량: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}가격: {GOLD}{CURRENCY_LONG}{BLACK} (개조 가격: {GOLD}{CURRENCY_LONG}{BLACK}) 무게: {GOLD}{WEIGHT_SHORT}
@@ -3529,7 +3545,7 @@ STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}이름 �
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}이름 지정
 
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}열차의 차량 이름을 변경합니다.
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}차량의 차종명을 변경합니다.
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}차종의 이름을 변경합니다.
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}선박의 차량 이름을 변경합니다.
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}항공기의 차량 이름을 변경합니다.
 
@@ -3549,7 +3565,7 @@ STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}숨김 �
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}숨김 처리한 항공기를 목록에 보여주거나 숨깁니다.
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}열차의 차량 이름을 변경합니다.
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}차종명을 변경합니다.
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}차종 이름을 변경합니다.
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}선박의 차량 이름을 변경합니다.
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}항공기의 차량 이름을 변경합니다.
 
@@ -3631,12 +3647,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}이 안
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}차량 개발자로부터의 메시지
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}저희는 이제 막 새로운 {STRING}{G 0 "을" "를"} 개발했습니다. 1년 먼저 이 차량을 사용하셔서 모두에게 공개되기 전에 잘 작동하는지 확인해주시겠습니까?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}철도 기관차
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=f}자동차/전차
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}항공기
-STR_ENGINE_PREVIEW_SHIP                                         :{G=m}선박
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :전기선로 기관차
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}모노레일 기관차
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}자기부상열차
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=f}자동차/전차
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :전차 차량
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}항공기
+STR_ENGINE_PREVIEW_SHIP                                         :{G=m}선박
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}가격: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속력: {VELOCITY}  힘: {POWER}{}유지비: {CURRENCY_LONG}/년{}수송량: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}가격: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속력: {VELOCITY}  힘: {POWER}  최대 견인력: {6:FORCE}{}유지비: {4:CURRENCY_LONG}/년{}수송량: {5:CARGO_LONG}
@@ -3675,13 +3696,18 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}기관�
 STR_REPLACE_ENGINES                                             :기관차
 STR_REPLACE_WAGONS                                              :화물차
 STR_REPLACE_ALL_RAILTYPE                                        :모든 철도 차량
+STR_REPLACE_ALL_ROADTYPE                                        :모든 자동차
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}교체할 기관차의 철도 종류를 고르세요
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}교체할 기관차의 선로 종류를 고르세요
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}교체할 엔진의 도로 종류를 고르세요.
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}왼쪽의 선택한 기관차가 어떤 기관차로 교체되고 있는지 표시합니다.
 STR_REPLACE_RAIL_VEHICLES                                       :철도 차량
 STR_REPLACE_ELRAIL_VEHICLES                                     :전기철도 차량
 STR_REPLACE_MONORAIL_VEHICLES                                   :모노레일 차량
 STR_REPLACE_MAGLEV_VEHICLES                                     :자기부상 차량
+
+STR_REPLACE_ROAD_VEHICLES                                       :자동차
+STR_REPLACE_TRAM_VEHICLES                                       :전차 차량
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물차 제거: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동 교체시 열차의 길이가 교체 전보다 길어지면 앞쪽부터 화물칸를 제거하여 열차의 전체 길이가 달라지지 않도록 합니다.
@@ -4332,7 +4358,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}다른 �
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}다른 공항과 너무 가깝습니다!
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}역 이름을 바꿀 수 없습니다...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... 여기는 도시 소유의 도로 입니다
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... 도로의 방향과 일치하지 않습니다.
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... 도로의 방향과 일치하지 않습니다
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... 도로 통과 정류장은 곡선도로에 건설할 수 없습니다.
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... 도로 통과 정류장은 교차로에 건설할 수 없습니다.
 STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... 도로가 일방통행이거나 막혔습니다
@@ -4405,16 +4431,17 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}신호�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}알맞지 않은 선로입니다.
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}선로를 먼저 제거하십시오.
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}도로가 일방통행이거나 막혔습니다
-STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}이 철도 타입에서는 건널목을 만들 수 없습니다.
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}이 선로에는 건널목을 만들 수 없습니다.
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}이 도로에는 건널목을 만들 수 없습니다.
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}여기에 신호기를 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}여기에 선로를 건설할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}이 선로를 철거할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}이곳의 신호기를 제거할 수 없습니다...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}이곳의 신호기를 변환할 수 없습니다...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}이곳의 신호기를 바꿀 수 없습니다...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... 선로가 없습니다.
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... 신호기가 없습니다.
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}이 선로의 형식을 바꿀 수 없습니다...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}이곳의 선로를 바꿀 수 없습니다...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}도로를 먼저 제거하십시오
@@ -4425,6 +4452,12 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}도로�
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}이 전찻길을 철거할 수 없습니다...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... 도로가 없습니다.
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... 전찻길이 없습니다.
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}이곳의 도로를 바꿀 수 없습니다...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}이곳의 전찻길을 바꿀 수 없습니다...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}사용 가능한 도로가 없습니다
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}사용 가능한 전찻길이 없습니다
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... 적합하지 않은 도로입니다
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... 호환 불가능한 전찻길입니다
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}여기에 운하를 건설할 수 없습니다...
@@ -4460,31 +4493,31 @@ STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}여기�
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}터널 입구에 알맞지 않은 장소입니다
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}터널을 먼저 제거하십시오
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}도중에 다른 터널이 있습니다
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}터널이 지도 맨끝을 통과합니다
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}터널을 지도 맨 끝까지 건설할 수 없습니다
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}지형 문제로 터널의 반대쪽 출구를 만들 수 없습니다
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... 터널이 너무 깁니다!
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... 오브젝트가 너무 많습니다.
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... 오브젝트가 너무 많습니다
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}오브젝트를 건설할 수 없습니다...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}중간에 오브젝트가 있습니다
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 중간에 회사 본사가 있습니다.
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 중간에 회사 본사가 있습니다
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}이 지역을 매입할 수 없습니다...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... 이미 소유중입니다!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}그룹을 만들 수 없습니다...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}이 그룹을 지울 수 없습니다...
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}그룹의 이름을 바꿀 수 없습니다.
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}그룹의 이름을 바꿀 수 없습니다
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}상위 그룹으로 설정할 수 없습니다...
-STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... 상위 그룹을 하위 그룹 아래로 옮길 수 없습니다.
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}이 그룹의 모든 차량을 제거할 수 없습니다.
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... 상위 그룹을 하위 그룹 아래로 옮길 수 없습니다
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}이 그룹의 모든 차량을 제거할 수 없습니다
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}이 그룹에 차량을 추가할 수 없습니다...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}이 그룹에 공유된 차량을 추가할 수 없습니다...
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}중간에 열차가 있습니다
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}중간에 차량이 있습니다.
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}중간에 차량이 있습니다
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}중간에 선박이 있습니다
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}중간에 항공기가 있습니다
 
@@ -4493,15 +4526,15 @@ STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}차량�
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}선박을 개조할 수 없습니다...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}항공기를 개조할 수 없습니다...
 
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}열차 이름을 지정할 수 없습니다...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}차량의 이름을 지정할 수 없습니다...
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}열차 이름을 바꿀 수 없습니다...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}차량의 이름을 바꿀 수 없습니다...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}선박의 이름을 바꿀 수 없습니다...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}항공기의 이름을 지정할 수 없습니다...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}항공기의 이름을 바꿀 수 없습니다...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}열차를 운행/정지시킬 수 없습니다...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}차량을 운행/정지시킬 수 없습니다...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}선박을 운행/중지시킬 수 없습니다...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}항공기를 운행/중지시킬 수 없습니다...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}선박을 운행/정지시킬 수 없습니다...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}항공기를 운행/정지시킬 수 없습니다...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}열차를 차량기지로 보낼 수 없습니다...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}차량을 차고지로 보낼 수 없습니다...
@@ -4514,7 +4547,7 @@ STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}선박�
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}항공기를 구입할 수 없습니다...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}열차의 차량 이름을 다시 지정할 수 없습니다...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}차종명을 다시 지정할 수 없습니다...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}차종의 이름을 바꿀 수 없습니다...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}선박의 차량 이름을 다시 지정할 수 없습니다...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}항공기의 차량 이름을 다시 지정할 수 없습니다...
 
@@ -4523,15 +4556,15 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}차량�
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}선박을 팔 수 없습니다...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}항공기를 팔 수 없습니다...
 
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}이 열차는 사용할 수 없는 상태입니다.
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}이 차량은 사용할 수 없는 상태입니다.
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}이 선박은 사용할 수 없는 상태입니다.
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}이 항공기는 사용할 수 없는 상태입니다.
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}이 열차는 사용할 수 없는 상태입니다
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}이 차량은 사용할 수 없는 상태입니다
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}이 선박은 사용할 수 없는 상태입니다
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}이 항공기는 사용할 수 없는 상태입니다
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}게임에 차량이 너무 많습니다!
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}정비 간격 설정을 바꿀 수 없습니다...
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 차량이 파괴되었습니다.
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 차량이 파괴되었습니다
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}사용할 수 있는 차량이 모두 없어질 것입니다
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}NewGRF 설정을 변경하십시오
@@ -4543,12 +4576,12 @@ STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}너무 �
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}열차를 회차시킬 수 없습니다...
 STR_ERROR_TRAIN_START_NO_POWER                                  :동력차가 없습니다
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}차량을 U턴시킬 수 없습니다...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}차량을 유턴시킬 수 없습니다...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}항공기가 운항중입니다
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}더이상 경로를 지정할 공간이 없습니다
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}더 이상 경로를 지정할 공간이 없습니다
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}경로가 너무 많습니다!
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}새 경로를 삽입할 수 없습니다...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}이 경로를 제거할 수 없습니다...
@@ -4557,8 +4590,8 @@ STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}이 경�
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}현재 경로를 건너 뛸 수 없습니다...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}선택한 경로로 건너 뛸 수 없습니다...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... 차량이 모든 정거장에 갈 수 없습니다
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... 차량이 그 정거장에 갈 수 없습니다.
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... 경로를 공유하고 있는 차량이 그 정거장에 갈 수 없습니다.
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... 차량이 그 정거장에 갈 수 없습니다
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... 경로를 공유하고 있는 차량이 그 정거장에 갈 수 없습니다
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}경로를 공유할 수 없습니다...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}경로 공유를 중단할 수 없습니다...
@@ -4568,8 +4601,8 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... 항�
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}차량의 시간표를 정할 수 없습니다...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}차량은 정거장에서만 기다릴 수 있습니다.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}이 차량은 이 정거장에 서지 않습니다.
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}차량은 정거장에서만 기다릴 수 있습니다
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}이 차량은 이 정거장에 서지 않습니다
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... 팻말 수가 너무 많습니다
@@ -4583,14 +4616,14 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :트랜스포트
 # Translatable descriptions in media/baseset/*.ob* files
 STR_BASEGRAPHICS_DOS_DESCRIPTION                                :오리지널 트랜스포트 타이쿤 디럭스 도스 에디션의 그래픽입니다.
 STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :오리지널 트랜스포트 타이쿤 디럭스 도스 에디션(독일)의 그래픽입니다.
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :오리지널 트랜스포트 타이쿤 디럭스 윈도 에디션의 그래픽입니다.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :오리지널 트랜스포트 타이쿤 디럭스 Windows 에디션의 그래픽입니다.
 STR_BASESOUNDS_DOS_DESCRIPTION                                  :오리지널 트랜스포트 타이쿤 디럭스 도스 에디션의 효과음입니다.
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :오리지널 트랜스포트 타이쿤 디럭스 윈도 에디션의 효과음입니다.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :오리지널 트랜스포트 타이쿤 디럭스 Windows 에디션의 효과음입니다.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :아무런 효과음도 없는 효과음 팩입니다.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :오리지널 트랜스포트 타이쿤 디럭스 윈도 에디션의 음악입니다.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :오리지널 트랜스포트 타이쿤 디럭스 Windows 에디션의 음악입니다.
 STR_BASEMUSIC_DOS_DESCRIPTION                                   :오리지널 트랜스포트 타이쿤 디럭스 DOS 에디션의 음악입니다.
 STR_BASEMUSIC_TTO_DESCRIPTION                                   :오리지널 트랜스포트 타이쿤 (오리지널/월드 에디터) DOS 에디션의 음악입니다.
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :실제 음악이 없는 음악 목록입니다.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :실제 음악이 없는 음악 팩입니다.
 
 ##id 0x2000
 # Town building names
@@ -4626,7 +4659,7 @@ STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :쇼핑몰
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :이글루
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :천막
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :찻잔 집
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :돼지 저금통
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :돼지 은행
 
 ##id 0x4800
 # industry names
@@ -4685,7 +4718,7 @@ STR_SV_STNAME_EAST                                              :동{STRING}
 STR_SV_STNAME_WEST                                              :서{STRING}
 STR_SV_STNAME_CENTRAL                                           :{STRING}중앙
 STR_SV_STNAME_TRANSFER                                          :{STRING} 환승
-STR_SV_STNAME_HALT                                              :{STRING} 정류장
+STR_SV_STNAME_HALT                                              :{STRING} 간이역
 STR_SV_STNAME_VALLEY                                            :{STRING} 계곡
 STR_SV_STNAME_HEIGHTS                                           :{STRING} 언덕
 STR_SV_STNAME_WOODS                                             :{STRING} 숲
@@ -4794,10 +4827,10 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :장난감 수�
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :건전지 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :탄산음료 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :플라스틱 수송차량
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (전기)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (전기)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (전기)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (전기)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 '레비아탄' (전기)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 '사이클롭스' (전기)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 '페가수스' (전기)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 '키메라' (전기)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :승객 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :우편 수송차량

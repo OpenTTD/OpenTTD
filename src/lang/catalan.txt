@@ -2431,6 +2431,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construe
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Intercanvia funció construeix/treu per la construcció de carreteres
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Canvia construeix/treu de la construcció de vies de tramvia
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientació de la cotxera
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Seleccioneu l'orientació desitjada de la cotxera per a vehicles de carretera.
@@ -3460,10 +3461,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Compra de nous 
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Compra de nous vehicles monorail
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Compra de nous vehicles Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Compra de nous vehicles sobre vies
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Compra de nous vehicles de carretera
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Compra de nous vehicles sobre vies
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Compra de nous vaixells
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Compra de noves aeronaus
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Pes: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocitat: {GOLD}{VELOCITY}{BLACK} Potència: {GOLD}{POWER}
@@ -3613,12 +3617,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Estàs 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Missatge del fabricant de vehicles
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Acabem de dissenyar {G un una} {G nou nova} {STRING}. Esteu interessats en fer ús exclusiu d'aquest vehicle durant un any, per veure com va, abans del seu llançament mundial?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=Femenin}locomotora de tren
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=Masculin}automòbil
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=Masculin}avió
-STR_ENGINE_PREVIEW_SHIP                                         :{G=Masculin}vaixell
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=Femenin}locomotora de monorail
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=Femenin}locomotora de maglev
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=Masculin}automòbil
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=Masculin}avió
+STR_ENGINE_PREVIEW_SHIP                                         :{G=Masculin}vaixell
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY_LONG} Pes: {WEIGHT_SHORT}{}Velocitat: {VELOCITY}  Potència: {POWER}{}Cost de circulació: {CURRENCY_LONG}/any{}Capacitat: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY_LONG} Pes: {WEIGHT_SHORT}{}Velocitat: {VELOCITY} Potència: {POWER} Màx. E.T.: {6:FORCE}{}Cost d'utilització: {4:CURRENCY_LONG}/any{}Capacitat: {5:CARGO_LONG}
@@ -3664,6 +3671,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Trens de Vapor 
 STR_REPLACE_ELRAIL_VEHICLES                                     :Trens Elèctrics
 STR_REPLACE_MONORAIL_VEHICLES                                   :Trens monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Trens maglev
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la substitució automàtica mantingui la llargada del tren eliminant vagons (començant pel front), si substituint la màquina el tren es fa més llarg

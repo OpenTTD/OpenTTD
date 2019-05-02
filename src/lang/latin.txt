@@ -2631,6 +2631,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Struere 
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Mutare inter vias struendas/removendas
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Mutare inter ferrivias stratarias struendas/removendas
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Directio receptaculi viarii
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Eligere directionem receptaculi viarii
@@ -3622,10 +3623,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Vehicula Ferriv
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Vehicula Monoorbitalia Nova
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Vehicula Maglev Nova
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Vehicula Ferriviaria Nova
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Vehicula Viaria Nova
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Vehicula Ferriviaria Nova
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Naves Novae
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Aeroplana Nova
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Pretium: {GOLD}{CURRENCY_LONG}{BLACK} Pondus: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Pretium: {GOLD}{CURRENCY_LONG}{BLACK} (Pretium Reficiendi: {GOLD}{CURRENCY_LONG}{BLACK}) Pondus: {GOLD}{WEIGHT_SHORT}
@@ -3786,12 +3790,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Omnia v
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Nuntium a fabricatore vehiculorum
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Nuper fabricamus nov{G um am um os as a} {STRING} - visne uti hoc vehiculo unum annum, ut videamus quomodo operatur antequam omnibus venum damus?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}hamaxam
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}vehiculum viarium
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}aeroplanum
-STR_ENGINE_PREVIEW_SHIP                                         :{G=f}navem
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}hamaxam monoorbitalem
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}hamaxam maglev
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}vehiculum viarium
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}aeroplanum
+STR_ENGINE_PREVIEW_SHIP                                         :{G=f}navem
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Pretium: {CURRENCY_LONG} Pondus: {WEIGHT_SHORT}{}Velocitas: {VELOCITY}  Potestas: {POWER}{}Pretium Operandi: {CURRENCY_LONG} per annum{}Capacitas: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Pretium: {CURRENCY_LONG} Pondus: {WEIGHT_SHORT}{}Velocitas: {VELOCITY}  Potestas: {POWER}  V.T. Max.: {6:FORCE}{}Pretium Operandi: {4:CURRENCY_LONG} per annum{}Capacitas: {5:CARGO_LONG}
@@ -3837,6 +3844,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Vehicula Ferriv
 STR_REPLACE_ELRAIL_VEHICLES                                     :Vehicula Ferriviaria Electrica
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vehicula Monoorbitalia
 STR_REPLACE_MAGLEV_VEHICLES                                     :Vehicula Maglev
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Ablatio curruum: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Facere ut automutatio longitudinem traminis contineat ablatione curruum (primo primorum), si tramen longius fiat mutatione hamaxae

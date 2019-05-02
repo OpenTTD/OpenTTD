@@ -341,6 +341,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Inzoomen
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Uitzoomen
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Spoorwegen bouwen
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Wegen bouwen
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Tramsporen bouwen
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Dokken en havens bouwen
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Vliegvelden bouwen
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Hiermee open je de landschapsbalk om land te verhogen/verlagen, bomen te planten, enz.
@@ -361,6 +362,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landscha
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stadsontwikkeling
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrieontwikkeling
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Wegenbouw
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Tramsporen bouwen
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Bomen planten. Shift schakelt tussen planten/inschatting van de kosten
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Bord plaatsen
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Object plaatsen. Shift schakelt tussen bouwen/inschatting van de kosten
@@ -2416,7 +2418,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Buis, silicium
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Wegen bouwen
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Bouw tramsporen
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramsporen bouwen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Weg bouwen. Ctrl schakelt tussen bouwen/verwijderen van de weg. Shift schakelt tussen bouwen/inschatting van de kosten.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bouw tramsporen. Ctrl schakelt tussen bouwen/verwijderen van tramsporen. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Wegen bouwen met de automatische methode. Ctrl schakelt tussen bouwen/verwijderen van de weg. Shift schakelt tussen bouwen/inschatting van de kosten.
@@ -2434,6 +2436,11 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Wegtunne
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tramtunnel bouwen. Shift schakelt tussen bouwen/inschatting van de kosten.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Kies tussen bouwen en verwijderen bij wegenbouw
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Kies tussen bouwen en verwijderen bij tramspooraanleg
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converteer/opwaardeer het type weg. Shift schakelt tussen bouwen/inschatting van de kosten.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converteer/opwaardeer het type tram. Shift schakelt tussen bouwen/inschatting van de kosten.
+
+STR_ROAD_NAME_ROAD                                              :Weg
+STR_ROAD_NAME_TRAM                                              :Tramspoor
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Richting van garage
@@ -2618,8 +2625,11 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Geaccepteerde vracht: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Spoortype: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Wegtype: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Tramtype: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Spoorsnelheidslimiet: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Snelheidslimiet weg: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Tramsnelheidslimiet: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rotsen
@@ -3359,6 +3369,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastr
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Spoordelen:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Seinen
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Wegdelen:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Tramdelen:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Watertegels:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanalen
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stations:
@@ -3466,10 +3477,15 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nieuwe elektris
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nieuwe monorailvoertuigen
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nieuwe zweefspoorvoertuigen
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nieuwe spoorvoertuigen
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nieuwe wegvoertuigen
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Nieuwe trams
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nieuwe spoorvoertuigen
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Nieuwe wegvoertuigen
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nieuwe schepen
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nieuwe vliegtuigen
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY_LONG}{BLACK} Gewicht: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Kosten: {GOLD}{CURRENCY_LONG}{BLACK} (ombouwkosten: {GOLD}{CURRENCY_LONG}{BLACK}) Gewicht: {GOLD}{WEIGHT_SHORT}
@@ -3630,12 +3646,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Je staa
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Bericht van voertuigenfabrikant
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}We hebben zojuist een nieuwe {STRING} ontworpen - ben je geïnteresseerd in een jaar lang exclusief gebruik van dit voertuig, zodat we kunnen zien of het goed werkt voordat we het wereldwijd beschikbaar maken?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :spoorlocomotief
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :wegvoertuig
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :vliegtuig
-STR_ENGINE_PREVIEW_SHIP                                         :schip
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrische locomotief
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monoraillocomotief
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :zweeflocomotief
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :wegvoertuig
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tram
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :vliegtuig
+STR_ENGINE_PREVIEW_SHIP                                         :schip
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Snelheid: {VELOCITY}  Kracht: {POWER}{}Lopende kosten: {CURRENCY_LONG}/jr{}Capaciteit: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kosten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Snelheid: {VELOCITY}  Kracht: {POWER}  Max. T.E.: {6:FORCE}{}Lopende kosten: {4:CURRENCY_LONG}/yr{}Capaciteit: {5:CARGO_LONG}
@@ -3674,13 +3695,18 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wissel t
 STR_REPLACE_ENGINES                                             :Motoren
 STR_REPLACE_WAGONS                                              :Wagons
 STR_REPLACE_ALL_RAILTYPE                                        :Alle treinen
+STR_REPLACE_ALL_ROADTYPE                                        :Alle wegvoertuigen
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecteer een spoortype waar je locomotieven voor wilt vervangen
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Kies het type weg waar je voertuigen voor wilt vervangen
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geeft weer waarmee de links geselecteerde locomotief vervangen wordt
 STR_REPLACE_RAIL_VEHICLES                                       :Spoorvoertuigen
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrische spoorvoertuigen
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorailvoertuigen
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magneetzweefspoorvoertuigen
+
+STR_REPLACE_ROAD_VEHICLES                                       :Wegvoertuigen
+STR_REPLACE_TRAM_VEHICLES                                       :Trams
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
@@ -4040,7 +4066,7 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Tijd wissen
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Verwijder de tijdsduur die de geselecteerde order mag duren
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Wijzig Maximumsnelheid
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Maximumsnelheid wijzigen
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Wijzig de maximumsnelheid voor de gekozen order
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Snelheidslimiet wissen
@@ -4405,6 +4431,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Geen bru
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Moet spoor eerst verwijderen
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Weg is eenrichtingsverkeer of geblokkeerd
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Gelijkvloerse kruisingen zijn niet toegestaan voor dit type spoor
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Gelijkvloerse kruisingen zijn niet toegestaan voor dit type weg
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan hier geen seinen plaatsen...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan hier geen spoor leggen...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan hier geen spoor verwijderen...
@@ -4424,6 +4451,12 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kan hier
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kan de tramrails hier niet verwijderen...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...er is geen weg
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...er is geen tramlijn
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Kan wegtype hier niet converteren...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Kan tramtype hier niet converteren...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Geen geschikte weg
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Geen geschikt tramspoor
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... weg niet geschikt
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... treinspoor niet geschikt
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan hier geen kanaal bouwen...

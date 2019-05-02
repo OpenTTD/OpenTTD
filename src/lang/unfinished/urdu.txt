@@ -1975,6 +1975,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}ٹرام
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}سڑک کی تعمیر / خاتمے میں تدویم کریں
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}ٹرام وے کی تعمیر / خاتمے میں تدویم کریں
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}گاڑیوں کے ڈپو کا رخ
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}گاڑیوں کے ڈپو کا رخ منتخب کریں
@@ -2344,7 +2345,10 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}گروپ
 
 # Build vehicle window
 
+
+############ range for vehicle availability starts
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :نیا طیارہ
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}پہنچ: {GOLD}{COMMA} ٹائلیں
 
@@ -2401,10 +2405,14 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 # Engine preview window
 
 
+
+
+
 # Autoreplace window
 
 STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}استعمالکردہ گاڑیاں
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}میسر گاڑیاں
+
 
 
 

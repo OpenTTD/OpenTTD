@@ -2397,6 +2397,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bou tonn
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Skakel bou/verwydering van pad konstruksie
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Skakel bou/verwyder vir tremweg konstruksie
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Pad Depot Oriëntering
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Kies pad voertuig depot orientasie
@@ -3351,10 +3352,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nuwe Elektries 
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuwe monospoor voertuie
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nuwe Maglev Voertuie
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Spoorweg Voertuie
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuwe Pad Voertuie
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Spoorweg Voertuie
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuwe Skepe
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nuwe Vliegtuig
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Koste: {GOLD}{CURRENCY_LONG}{BLACK} Gewig: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Spoed: {GOLD}{VELOCITY}{BLACK} Krag: {GOLD}{POWER}
@@ -3502,12 +3506,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}U staan
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Boodskap van voertuig fabrikant
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Ons het sopas 'n nuwe {STRING} ontwerp, sal jy belangstel om hierdie voertuig eksklusief vir 'n jaar te gebruik. Hierdie word gedoen om te kyk hoe die voertuig doen voordat hy wereld wyd in produksie gesit word?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :spoorweg lokomotief
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :padvoertuig
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :vliegtuig
-STR_ENGINE_PREVIEW_SHIP                                         :skip
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monospoor lokomotief
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev lokomotief
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :padvoertuig
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :vliegtuig
+STR_ENGINE_PREVIEW_SHIP                                         :skip
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Koste: {CURRENCY_LONG} Massa: {WEIGHT_SHORT}{}Spoed: {VELOCITY}  Krag: {POWER}{}Loopkoste: {CURRENCY_LONG}/jr{}Kapasitiet: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Koste: {CURRENCY_LONG} Gewig: {WEIGHT_SHORT}{}Spoed: {VELOCITY}  Krag: {POWER}  Maks. Treg Krag: {6:FORCE}{}Lopende Koste: {4:CURRENCY_LONG}/jaar{}Kapasitiet: {5:CARGO_LONG}
@@ -3548,6 +3555,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Treine
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektriese treine
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monospoor voertuie
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Voertuie
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wa verwydering: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Maak autovervanging die lengte van 'n trein dieselfde hou deur verwydering waens (deur voor te begin), indien die enjin vervanging die trein langer sal maak

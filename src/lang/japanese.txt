@@ -2396,6 +2396,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}軌道�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}道路の建設/撤去を切り替えます
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}軌道の建設/撤去を切り替えます
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}車庫建設
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}車庫の向きを選択します
@@ -3352,10 +3353,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :新規機関車
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :新規モノレール車両
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :新規リニア車両
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :新規列車
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :新規車両
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :新規列車
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :新規船舶
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :新規航空機
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}価格: {GOLD}{CURRENCY_LONG}{BLACK} 重量: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}最高速度: {GOLD}{VELOCITY}{BLACK} 出力: {GOLD}{POWER}
@@ -3503,12 +3507,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}庫内�
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}製造会社からのメッセージ
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}弊社は新たに{STRING}を設計致しました。{}実地でのパフォーマンスなどを検討する為、貴社に独占モニター権を提供したいと考えておりますがいかがでしょうか?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :列車
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :車両
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :航空機
-STR_ENGINE_PREVIEW_SHIP                                         :船舶
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :モノレール列車
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :リニア列車
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :車両
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :航空機
+STR_ENGINE_PREVIEW_SHIP                                         :船舶
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}価格: {CURRENCY_LONG} 重量: {WEIGHT_SHORT}{}最高速度: {VELOCITY}{}出力: {POWER}{}運用費: {CURRENCY_LONG}/年{}収容量: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}価格: {CURRENCY_LONG} 重量: {WEIGHT_SHORT}{}最高速度: {VELOCITY} 出力: {POWER} 最大牽引力: {6:FORCE}{}運用費: {4:CURRENCY_LONG}/年{}収容量 {5:CARGO_LONG}
@@ -3550,6 +3557,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :機関車(非�
 STR_REPLACE_ELRAIL_VEHICLES                                     :機関車(電化)/電車
 STR_REPLACE_MONORAIL_VEHICLES                                   :モノレール車両
 STR_REPLACE_MAGLEV_VEHICLES                                     :リニア車両
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}列車の短縮: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}機関車の交換で列車長が長くなる場合、列車長を維持する為に客車/貨車を減らすことができます。外されるのは従属部分の先頭からになります

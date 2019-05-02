@@ -2539,6 +2539,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Κατα
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για αυτοκινητόδρομους
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Εναλλαγή κτισίματος/αφαίρεσης της κατασκευής τροχιόδρομου
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Προσανατολισμός Σταθμού Οχημάτων
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Επιλογή προσανατολισμού αμαξοστασίου οχημάτων
@@ -3569,10 +3570,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Νέα Οχήμ
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Νέα Οχήματα Μονοτρόχιου
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Νέα Οχήματα Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Νέα Οχήματα Σιδηρόδρομου
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Νέα Οχήματα Δρόμου
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Νέα Οχήματα Σιδηρόδρομου
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Νέα Πλοία
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Νέα Αεροσκάφη
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Κόστος: {GOLD}{CURRENCY_LONG}{BLACK} Βάρος: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Κόστος: {GOLD}{CURRENCY_LONG}{BLACK} (Κόστος μετατροπής: {GOLD}{CURRENCY_LONG}{BLACK}) Βάρος: {GOLD}{WEIGHT_SHORT}
@@ -3733,18 +3737,21 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Πρό�
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Μήνυμα από κατασκευαστή οχημάτων
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Μόλις ολοκληρώσαμε την σχεδίαση {G ενός μίας ενός} {G νέου νέας νέου} {STRING.geniki} - θα ενδιαφερόσασταν για ενός έτους αποκλειστικής χρήσης αυτού του οχήματος, για να δούμε την απόδοση του πριν το κάνουμε ευρέως διαθέσιμο;
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}ατμομηχανή
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.geniki                   :ατμομηχανής
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}οχήματος δρόμου
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.geniki                          :Οχήματος δρόμου
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}αεροσκάφους
-STR_ENGINE_PREVIEW_AIRCRAFT.geniki                              :αεροσκάφους
-STR_ENGINE_PREVIEW_SHIP                                         :{G=n}πλοίου
-STR_ENGINE_PREVIEW_SHIP.geniki                                  :πλοίου
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}μηχανής μονοτρόχιου
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.geniki                   :μηχανής monorail
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}μηχανής maglev
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.geniki                     :μηχανής maglev
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}οχήματος δρόμου
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.geniki                          :Οχήματος δρόμου
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}αεροσκάφους
+STR_ENGINE_PREVIEW_AIRCRAFT.geniki                              :αεροσκάφους
+STR_ENGINE_PREVIEW_SHIP                                         :{G=n}πλοίου
+STR_ENGINE_PREVIEW_SHIP.geniki                                  :πλοίου
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Δύναμη Κινητήρα: {POWER}{}Λειτουργικό κόστος: {CURRENCY_LONG}/έτος{}Χωρητικότητα: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Δύναμη Κινητήρα: {POWER}  Μεγ. Ε.Δ: {6:FORCE}{}Λειτουργικό Κόστος: {4:CURRENCY_LONG}/έτος{}Χωρητικότητα: {5:CARGO_LONG}
@@ -3790,6 +3797,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Οχήματα 
 STR_REPLACE_ELRAIL_VEHICLES                                     :Οχήματα Ηλεκτρικού Σιδηροδρόμου
 STR_REPLACE_MONORAIL_VEHICLES                                   :Οχήματα Μονοτρόχιου
 STR_REPLACE_MAGLEV_VEHICLES                                     :Οχήματα Maglev
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Αφαίρεση βαγονιού: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Υποχρεώνει την αυτόματη αντικατάσταση να διατηρεί σταθερό το μήκος του τρένου αφαιρώντας βαγόνια (ξεκινώντας από μπροστά), όταν η αντικατάσταση της μηχανής κάνει το τρένο μεγαλύτερο

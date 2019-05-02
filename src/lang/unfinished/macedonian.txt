@@ -1088,6 +1088,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Изгр
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Изгради трамвајски мост
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Изгради трамвајски тунел
 
+
 # Road depot construction window
 
 # Road vehicle station construction window
@@ -1449,8 +1450,11 @@ STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Испрати 
 
 # Build vehicle window
 
+
+############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Шински возила
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нов авион
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Опсег: {GOLD}{COMMA} плочки
 
@@ -1503,11 +1507,15 @@ STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Цент
 # Engine preview window
 
 
+
+
+
 # Autoreplace window
 STR_REPLACE_VEHICLE_TRAIN                                       :Воз
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Патно возило
 STR_REPLACE_VEHICLE_SHIP                                        :Брод
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Летало
+
 
 
 

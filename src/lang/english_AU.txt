@@ -2371,6 +2371,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Build tr
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Toggle build/remove for road construction
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Toggle build/remove for tramway construction
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Road Depot Orientation
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Select road vehicle depot orientation
@@ -3317,10 +3318,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :New Electric Ra
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :New Monorail Vehicles
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :New Maglev Vehicles
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :New Rail Vehicles
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :New Road Vehicles
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :New Rail Vehicles
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :New Ships
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :New Aircraft
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Weight: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK} Power: {GOLD}{POWER}
@@ -3456,12 +3460,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}You are
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Message from vehicle manufacturer
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}We have just designed a new {STRING} - would you be interested in a year's exclusive use of this vehicle, so we can see how it performs before making it universally available?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :railway locomotive
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :road vehicle
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :aircraft
-STR_ENGINE_PREVIEW_SHIP                                         :ship
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail locomotive
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev locomotive
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :road vehicle
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :aircraft
+STR_ENGINE_PREVIEW_SHIP                                         :ship
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY_LONG} Weight: {WEIGHT_SHORT}{}Speed: {VELOCITY}  Power: {POWER}{}Running Cost: {CURRENCY_LONG}/yr{}Capacity: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY_LONG} Weight: {WEIGHT_SHORT}{}Speed: {VELOCITY}  Power: {POWER}  Max. T.E.: {6:FORCE}{}Running Cost: {4:CURRENCY_LONG}/yr{}Capacity: {5:CARGO_LONG}
@@ -3498,6 +3505,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Rail Vehicles
 STR_REPLACE_ELRAIL_VEHICLES                                     :Electrified Rail Vehicles
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail Vehicles
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Vehicles
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon removal: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing wagons (starting at the front), if replacing the engine would make the train longer

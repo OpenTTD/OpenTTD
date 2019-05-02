@@ -2419,6 +2419,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bygg sp�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Växla mellan att bygga/riva väg
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Växla mellan att bygga/riva spårväg
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Riktning för vägfordonsdepå
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Välj riktning för vägfordonsdepå
@@ -3440,10 +3441,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nya elektriska 
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nytt monorailfordon
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nytt maglevfordon
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nya rälsfordon
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nytt Vägfordon
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nya rälsfordon
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nytt skepp
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nytt flygplan
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY_LONG}{BLACK} Vikt: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK} Kraft: {GOLD}{POWER}
@@ -3593,12 +3597,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du är 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Meddelande från fordonstillverkare
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har just designat ett nytt {STRING} - är du intresserad av ett års exklusiv användning av detta fordon, så vi kan se hur det presterar innan vi gör det allmänt tillgängligt?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :järnvägslok
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :vägfordon
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :flygplan
-STR_ENGINE_PREVIEW_SHIP                                         :skepp
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail-lok
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-lok
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :vägfordon
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :flygplan
+STR_ENGINE_PREVIEW_SHIP                                         :skepp
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kostnad: {CURRENCY_LONG} Vikt: {WEIGHT_SHORT}{}Hastighet: {VELOCITY}  Kraft {POWER}{}Löpande kostnad: {CURRENCY_LONG}/år{}Kapacitet: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostnad: {CURRENCY_LONG} Vikt: {WEIGHT_SHORT}{}Hastighet: {VELOCITY}  Effekt: {POWER}  Max. T.E.: {6:FORCE}{}Löpande kostnad: {4:CURRENCY_LONG}/år{}Kapacitet: {5:CARGO_LONG}
@@ -3644,6 +3651,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Järnvägsfordo
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektriska järnvägsfordon
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail-fordon
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevfordon
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagnborttagning: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gör så att automatiskt utbyte behåller ett tågs längd genom att ta bort vagnar (med början längst fram) om utbytandet av loket skulle göra tåget längre

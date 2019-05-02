@@ -2246,6 +2246,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Grafa sp
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Skipta á milli byggja/fjarlægja fyrir vegagerð
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Skipta á milli þess að leggja leggja og fjarlægja sporvagnaspor
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Bifreiðaskýli
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Veldu legu bifreiðaskýlis
@@ -3139,10 +3140,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nýjir rafdrifn
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nýir einteinungsvagnar
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nýir segulsvifvagnar
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Ný járnbrautarlest
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Bifreiðaúrval
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Ný járnbrautarlest
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Skipaúrval
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Flugvélaúrval
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Verð: {GOLD}{CURRENCY_LONG}{BLACK} Þyngd: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hámarkshraði: {GOLD}{VELOCITY}{BLACK} Afl: {GOLD}{POWER}
@@ -3278,12 +3282,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Þú er
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Skilaboð frá farartækisframleiðanda
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Við höfum hannað nýja {STRING} - hefðir þú áhuga á árs einkaleyfi á notkun þessa farartækis, svo að við getum athugað frammistöðu þess?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lest
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :bifreið
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :flugvél
-STR_ENGINE_PREVIEW_SHIP                                         :sjóferju
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :einteinungs eimreið
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Segulsvifvagn
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :bifreið
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :flugvél
+STR_ENGINE_PREVIEW_SHIP                                         :sjóferju
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Verð: {CURRENCY_LONG} Þyngd: {WEIGHT_SHORT}{}Hraði: {VELOCITY}  Afl: {POWER}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári{}Burðargeta: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Verð: {CURRENCY_LONG} Þyngd: {WEIGHT_SHORT}{}Hámarskhraði: {VELOCITY}  Afl: {POWER}  Hámarks kraftur: {6:FORCE}{}Running Cost: {4:CURRENCY_LONG}/ári{}Burðargeta: {5:CARGO_LONG}
@@ -3320,6 +3327,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Járnbrautavagn
 STR_REPLACE_ELRAIL_VEHICLES                                     :Rafdrifnir lestarvagnar
 STR_REPLACE_MONORAIL_VEHICLES                                   :Einteinungsvagnar
 STR_REPLACE_MAGLEV_VEHICLES                                     :Segulsvifvagnar
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Selja lestarvagna: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Heldur lengd lestar með því að fjarlægja vagna (framan frá), ef útskipting dráttarvagna myndi lengja hana

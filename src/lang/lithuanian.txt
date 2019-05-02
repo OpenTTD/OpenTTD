@@ -2615,6 +2615,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Statyti 
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Aktyvinti automobilių kelių ir stotelių šalinimo veikseną
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Aktyvinti tramvajaus bėgių ir stotelių šalinimo veikseną
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Pasirinkite garažo kryptį
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Pasirinkite automobilių garažo kryptį
@@ -3569,10 +3570,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nauji elektrini
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nauji vienbėgiai lokomotyvai
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nauji „Maglev“ lokomotyvai
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nauji lokomotyvai
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nauji automobiliai
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nauji lokomotyvai
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nauji laivai
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nauji lėktuvai
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kaina: {GOLD}{CURRENCY_LONG}{BLACK} Svoris: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Greitis: {GOLD}{VELOCITY}{BLACK} Galia: {GOLD}{POWER}
@@ -3720,6 +3724,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Ar tikr
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Žinutė nuo transporto priemonių gamintojo
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mes ką tik sukūrėme naują {STRING.ka}! Ar norėtumėte vienerius metus išskirtinėmis teisėmis bandyti šią transporto priemonę, kol dar nepradėta jos serijinė gamyba?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotyvas
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.kas                      :lokomotyvas
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.ko                       :lokomotyvo
@@ -3727,27 +3732,6 @@ STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.kam                      :lokomotyvui
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.ka                       :lokomotyvą
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.kuo                      :lokomotyvu
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.kur                      :lokomotyve
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :automobilis
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.kas                             :automobilis
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.ko                              :automobilio
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.kam                             :automobiliui
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.ka                              :automobilį
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.kuo                             :automobiliu
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.kur                             :automobilyje
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :lėktuvas
-STR_ENGINE_PREVIEW_AIRCRAFT.kas                                 :lėktuvas
-STR_ENGINE_PREVIEW_AIRCRAFT.ko                                  :lėktuvo
-STR_ENGINE_PREVIEW_AIRCRAFT.kam                                 :lėktuvui
-STR_ENGINE_PREVIEW_AIRCRAFT.ka                                  :lėktuvą
-STR_ENGINE_PREVIEW_AIRCRAFT.kuo                                 :lėktuvu
-STR_ENGINE_PREVIEW_AIRCRAFT.kur                                 :lėktuve
-STR_ENGINE_PREVIEW_SHIP                                         :laivas
-STR_ENGINE_PREVIEW_SHIP.kas                                     :laivas
-STR_ENGINE_PREVIEW_SHIP.ko                                      :laivo
-STR_ENGINE_PREVIEW_SHIP.kam                                     :laivui
-STR_ENGINE_PREVIEW_SHIP.ka                                      :laivą
-STR_ENGINE_PREVIEW_SHIP.kuo                                     :laivu
-STR_ENGINE_PREVIEW_SHIP.kur                                     :laive
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :vienbėgis lokomotyvas
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.kas                      :vienbėgis lokomotyvas
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.ko                       :vienbėgio lokomotyvo
@@ -3762,6 +3746,29 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.kam                        :„Maglev“ lo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.ka                         :„Maglev“ lokomotyvą
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.kuo                        :„Maglev“ lokomotyvu
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.kur                        :„Maglev“ lokomotyve
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :automobilis
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.kas                             :automobilis
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.ko                              :automobilio
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.kam                             :automobiliui
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.ka                              :automobilį
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.kuo                             :automobiliu
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.kur                             :automobilyje
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :lėktuvas
+STR_ENGINE_PREVIEW_AIRCRAFT.kas                                 :lėktuvas
+STR_ENGINE_PREVIEW_AIRCRAFT.ko                                  :lėktuvo
+STR_ENGINE_PREVIEW_AIRCRAFT.kam                                 :lėktuvui
+STR_ENGINE_PREVIEW_AIRCRAFT.ka                                  :lėktuvą
+STR_ENGINE_PREVIEW_AIRCRAFT.kuo                                 :lėktuvu
+STR_ENGINE_PREVIEW_AIRCRAFT.kur                                 :lėktuve
+STR_ENGINE_PREVIEW_SHIP                                         :laivas
+STR_ENGINE_PREVIEW_SHIP.kas                                     :laivas
+STR_ENGINE_PREVIEW_SHIP.ko                                      :laivo
+STR_ENGINE_PREVIEW_SHIP.kam                                     :laivui
+STR_ENGINE_PREVIEW_SHIP.ka                                      :laivą
+STR_ENGINE_PREVIEW_SHIP.kuo                                     :laivu
+STR_ENGINE_PREVIEW_SHIP.kur                                     :laive
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kaina: {CURRENCY_LONG} Svoris: {WEIGHT_SHORT}{}Greitis: {VELOCITY}  Galia: {POWER}{}Eksploatavimo išlaidos: {CURRENCY_LONG} per metus{}Talpa: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kaina: {CURRENCY_LONG} Svoris: {WEIGHT_SHORT}{}Greitis: {VELOCITY}  Galia: {POWER}  Maks. T.E.: {6:FORCE}{}Einamosios išlaidos: {4:CURRENCY_LONG}/yr{}Talpa: {5:CARGO_LONG}
@@ -3804,6 +3811,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Paprasti trauki
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrifikuoti Traukiniai
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vienbegiai traukiniai
 STR_REPLACE_MAGLEV_VEHICLES                                     :„Maglev“ traukiniai
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagono pašalinimas: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Pakeitimo metu išlaikyti traukinio ilgį atjungiant vagonus (pradedant nuo priekio), jeigu pakeitus garvežį traukinys pailgėtų

@@ -2459,6 +2459,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Ehita tr
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Lülitu maanteede ehitamise ja lammutamise vahel
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Lülitu trammitee ehitamise ja lammutamise vahel
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Depoo suund
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Vali depoole suund
@@ -3429,10 +3430,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Uus elektriraud
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Uus monorelsssõiduk
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Uus magnethõljuksõiduk
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Rööbassõidukid
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Uued mootorsõidukid
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Rööbassõidukid
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Uued laevad
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Uus lennuk
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Hind: {GOLD}{CURRENCY_LONG}{BLACK} Tühimass: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Tippkiirus: {GOLD}{VELOCITY}{BLACK} Võimsus: {GOLD}{POWER}
@@ -3580,12 +3584,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Sa oled
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Teade veovahendite tootjalt
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Me töötasime välja uue {STRING}. Kas te oleksite huvitatud selle ainuõiguslikust katsetamisest järgneva aasta jooksul, et me saaksime jälgida kuidas see toimib?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :raudteevedur
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :mootorsõiduk
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :lennuk
-STR_ENGINE_PREVIEW_SHIP                                         :laev
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorelssvedur
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magnethõljukvedur
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :mootorsõiduk
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :lennuk
+STR_ENGINE_PREVIEW_SHIP                                         :laev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Hind: {CURRENCY_LONG} Tühimass: {WEIGHT_SHORT}{}Tippkiirus: {VELOCITY}  Võimsus: {POWER}{}Käituskulud: {CURRENCY_LONG}/aastas{}Kandevõime: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Hind: {CURRENCY_LONG} Tühimass: {WEIGHT_SHORT}{}Kiirus: {VELOCITY}  Võimsus: {POWER}  Veojõud: {6:FORCE}{}Käituskulud: {4:CURRENCY_LONG}/aasta{}Mahutavus: {5:CARGO_LONG}
@@ -3629,6 +3636,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Raudteesõiduki
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrirongid
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorelssveerem
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnethõljukveerem
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagunite eemaldus: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Sunni automaatset asendust hoidma rongi pikkust selleks (eest alustades) veeremit eemaldades, juhul kui uus vagun muudaks rongi pikemaks.

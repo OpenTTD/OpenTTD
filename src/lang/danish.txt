@@ -2432,6 +2432,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Byg en s
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Skift mellem bygning/fjernelse af veje
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Skift mellem bygning/fjernelse af sporveje
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Retning af værksted
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Vælg retning for værksted
@@ -3462,10 +3463,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nye elektriske 
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nye monorailkøretøjer
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nye magnetskinnekøretøjer
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Jernbanekøretøjer
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nye køretøjer
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Jernbanekøretøjer
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nye skibe
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nyt fly
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Pris: {GOLD}{CURRENCY_LONG}{BLACK} Vægt: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighed: {GOLD}{VELOCITY}{BLACK} Styrke: {GOLD}{POWER}
@@ -3615,12 +3619,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er v
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Besked fra køretøjsfabrikken
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har lige designet et nyt {STRING} - er du interesseret i et års ekslusiv testkørsel, så vi kan se hvordan det klarer sig inden vi gør det frit tilgængeligt?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :jernbanelokomotiv
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :vejkøretøj
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :fly
-STR_ENGINE_PREVIEW_SHIP                                         :skib
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monoraillokomotiv
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magnettog
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :vejkøretøj
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :fly
+STR_ENGINE_PREVIEW_SHIP                                         :skib
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Pris: {CURRENCY_LONG} Vægt: {WEIGHT_SHORT}{}Hastighed: {VELOCITY}  Styrke: {POWER}{}Driftsomkostninger: {CURRENCY_LONG}/år{}Kapacitet: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Pris: {CURRENCY_LONG} Vægt: {WEIGHT_SHORT}{}Hastighed: {VELOCITY}  Hestekræfter: {POWER}  Maks. Trækkraft: {6:FORCE}{}Driftsomkostning: {4:CURRENCY_LONG}/år{}Kapacitet: {5:CARGO_LONG}
@@ -3666,6 +3673,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Jernbane
 STR_REPLACE_ELRAIL_VEHICLES                                     :Eltog
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetskinnetog
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Fjern vogn: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Få autoudskift til at bevare længden af tog ved at fjerne vogne (startende fra fronten), hvis autoudskiftningen gør toget længere.

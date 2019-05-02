@@ -2739,6 +2739,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Буда
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Будаўніцтва/выдаленьне аўтамабільных дарогаў
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Будаўніцтва/выдаленьне трамвайных каляінаў
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Кірунак гаража
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Выберыце кірунак гаража
@@ -3707,10 +3708,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Новы эле
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Новы монарэйкавы цягнік
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Новы маґнітарэйкавы цягнік
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Новы цягнiк
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Новы аўтамабiль
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Новы цягнiк
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Новы карабель
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новы авiятранспарт
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Кошт: {GOLD}{CURRENCY_LONG}{BLACK} Вага: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Хуткасьць: {GOLD}{VELOCITY}{BLACK} Магутнасьць: {GOLD}{POWER}
@@ -3859,24 +3863,27 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Уве�
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Паведамленьне ад вытворцы транспарту
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Мы стварылі новую мадэль {STRING.gen}. Цi зацікаўлены Вы ў яе гадавым эксклюзіўным выкарыстаньні для праверкі перад запускам у масавую вытворчасьць?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=m}чыгуначны лякаматыў
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.gen                      :чыгуначнага лакаматыва
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.acc                      :чыгуначны лякаматыў
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}аўтамабiль
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.gen                             :аўтамабiля
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.acc                             :аўтамабіль
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}авiятранспарт
-STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :авiятранспарту
-STR_ENGINE_PREVIEW_AIRCRAFT.acc                                 :авіятранспарт
-STR_ENGINE_PREVIEW_SHIP                                         :{G=m}карабель
-STR_ENGINE_PREVIEW_SHIP.gen                                     :карабля
-STR_ENGINE_PREVIEW_SHIP.acc                                     :карабель
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=m}монарэйкавы лякаматыў
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.gen                      :монарэйкавага лякаматыва
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.acc                      :монарэйкавы лякаматыў
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=m}маґнітарэйкавы лякаматыў
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.gen                        :магнiтарэйкавага лякаматыва
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.acc                        :магнітарэйкавы лякаматыў
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}аўтамабiль
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.gen                             :аўтамабiля
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.acc                             :аўтамабіль
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}авiятранспарт
+STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :авiятранспарту
+STR_ENGINE_PREVIEW_AIRCRAFT.acc                                 :авіятранспарт
+STR_ENGINE_PREVIEW_SHIP                                         :{G=m}карабель
+STR_ENGINE_PREVIEW_SHIP.gen                                     :карабля
+STR_ENGINE_PREVIEW_SHIP.acc                                     :карабель
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Кошт: {CURRENCY_LONG} Вага: {WEIGHT_SHORT}{}Хуткасьць: {VELOCITY}  Магутнасьць: {POWER}{}Кошт абслуг.: {CURRENCY_LONG}/год{}Ёмістасьць: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Кошт: {CURRENCY_LONG} Вага: {WEIGHT_SHORT}{}Хуткасьць: {VELOCITY}  Магутнасьць: {POWER}  Макс. ЦН: {6:FORCE}{}Кошт абслуг.: {4:CURRENCY_LONG}/год{}Ёмістасьць: {5:CARGO_LONG}
@@ -3930,6 +3937,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Чыгунач�
 STR_REPLACE_ELRAIL_VEHICLES                                     :Чыгуначны транспарт на электрацязе
 STR_REPLACE_MONORAIL_VEHICLES                                   :Монарэйкавыя ТС
 STR_REPLACE_MAGLEV_VEHICLES                                     :Маґнітныя ТС
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Выдаленьне ваґонаў: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дазволіць пры аўтазамене захоўваць даўжыню цягнікоў шляхам выдаленьня ваґонаў (пачынаючы з галавы цягніка), калі пры аўтазамене лякаматыва павялічыцца даўжыня цягніка.

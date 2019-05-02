@@ -2163,6 +2163,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Rør, silikon
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Vegagerð
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Sporvogna bygging
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Akfars goymslu ætt
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Vel hvønn veg akfars goymslan skal venda
@@ -2981,10 +2982,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nýggj ravmagns
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nýggj einsporaði jarnbreyta flutningstól
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nýggj maglev flutningstól
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nýggj jarnbreyta flutningstól
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nýggj akfør
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nýggj jarnbreyta flutningstól
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nýggj skip
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nýggj flogfør
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnaður: {GOLD}{CURRENCY_LONG}{BLACK} Vekt: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ferð: {GOLD}{VELOCITY}{BLACK} Megi: {GOLD}{POWER}
@@ -3120,12 +3124,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Tú er 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Boð frá framleiðarinum av flutningstólinum
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vit hava júst sniðgivi eitt nýtt {STRING} - hevði tú havt áhuga í einkarrættindum at nýtt hetta flutningstóli í eitt ár, so vit kunnu síggja hvussu ta virkar áðrenn vit gera ta tøkt á marknaðinum?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :jarnbreyta lokomotiv
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}akfar
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}flogfar
-STR_ENGINE_PREVIEW_SHIP                                         :skip
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :einsporað lokomotiv
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev lokomotiv
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}akfar
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}flogfar
+STR_ENGINE_PREVIEW_SHIP                                         :skip
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kostnaður: {CURRENCY_LONG} Vekt: {WEIGHT_SHORT}{}Ferð: {VELOCITY}  Megi: {POWER}{}Rakstrar kostnaður: {CURRENCY_LONG}/ár{}Pláss: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostnaður: {CURRENCY_LONG} Vekt: {WEIGHT_SHORT}{}Ferð: {VELOCITY}  Megi: {POWER}  Maks. D.Ó.: {6:FORCE}{}Rakstrar kostnaður: {4:CURRENCY_LONG}/ár{}Pláss: {5:CARGO_LONG}
@@ -3162,6 +3169,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Jarnbreyta flut
 STR_REPLACE_ELRAIL_VEHICLES                                     :Ravmagns jarnbreyta flutningstól
 STR_REPLACE_MONORAIL_VEHICLES                                   :Einsporaði jarnbreyta flutningstól
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev flutningstól
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vogn burturrudding: {ORANGE}{STRING}
 

@@ -2143,6 +2143,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bina ter
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Bina atau buang untuk pembinaan jalanraya
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Bina atau buang untuk pembinaan laluan trem
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Penghalaan Depoh Kenderaan Jalanraya
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Pilih penghalaan depoh kenderaan jalanraya
@@ -3049,10 +3050,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Keretapi Elektr
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Monorel Baru
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Maglev Baru
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Keretapi Baru
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Kenderaan Jalanraya Baru
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Keretapi Baru
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Kapal Baru
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Pesawat Baru
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kos: {GOLD}{CURRENCY_LONG}{BLACK} Berat: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Kelajuan: {GOLD}{VELOCITY}{BLACK} Kuasa: {GOLD}{POWER}
@@ -3200,12 +3204,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Anda ak
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Pesanan daripada pengusaha kenderaan
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Kami baru sahaja mereka {STRING} yang baru - adakah anda berminat untuk menggunakan kenderaan ini secara eksklusif, supaya kami dapat menilai tahap kelancarannya sebelum kami menjualnya kepada pihak awam?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :keretapi
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :kenderaan jalanraya
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :pesawat
-STR_ENGINE_PREVIEW_SHIP                                         :kapal
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :keretapi monorel
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :keretapi maglev
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :kenderaan jalanraya
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :pesawat
+STR_ENGINE_PREVIEW_SHIP                                         :kapal
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kos: {CURRENCY_LONG} Berat: {WEIGHT_SHORT}{}Kelajuan: {VELOCITY}  Kuasa: {POWER}{}Kos Pengendalian: {CURRENCY_LONG}/thn{}Kapasiti: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kos: {CURRENCY_LONG} Berat: {WEIGHT_SHORT}{}Kelajuan: {VELOCITY}  Kuasa: {POWER}  Maks. E.K.: {6:FORCE}{}Kos Pengendalian: {4:CURRENCY_LONG}/thn{}Kapasiti: {5:CARGO_LONG}
@@ -3239,6 +3246,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Kenderaan keret
 STR_REPLACE_ELRAIL_VEHICLES                                     :Kenderaan Keretapi Elektrik
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorel Kenderaan
 STR_REPLACE_MAGLEV_VEHICLES                                     :Kenderaan Maglev
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Penghapusan wagon: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Membuat penukaran secara automatik menyimpan kepanjangan keretapi yang sama dengan mengeluarkan gerabak (bermula dari bahagian hadapan), sekiranya menyebabkan kereta api lebih panjang

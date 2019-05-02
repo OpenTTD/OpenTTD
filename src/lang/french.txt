@@ -238,6 +238,8 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Choisir 
 STR_BUTTON_SORT_BY                                              :{BLACK}Trier par
 STR_BUTTON_LOCATION                                             :{BLACK}Emplacement
 STR_BUTTON_RENAME                                               :{BLACK}Renommer
+STR_BUTTON_CATCHMENT                                            :{BLACK}Couverture
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Basculer l'affichage de la zone couverte
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fermer la fenêtre
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titre de fenêtre - Faire glisser pour déplacer la fenêtre
@@ -266,6 +268,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}En activ
 STR_BUTTON_DEFAULT                                              :{BLACK}Défaut
 STR_BUTTON_CANCEL                                               :{BLACK}Annuler
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Attention{NBSP}: Les administrateurs du serveur pourraient lire tout texte entré ici.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :²&é"'(-è_çà)= azertyuiop^$qsdfghjklmù*<wxcvbn,;:!
@@ -339,6 +342,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom ava
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom arrière
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construction ferroviaire
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Construction routière
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Construction de tramways
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construction navale
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construction aéronautique
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Ouvrir la barre d'outils de terraformation pour relever/abaisser du terrain, planter des arbres, etc.
@@ -359,6 +363,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Créatio
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Création des villes
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Création des industries
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construction routière
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construction de tramway
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planter des arbres.{}Shift pour afficher seulement le coût estimé.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Placer un panneau
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Placer un objet.{}Shift pour afficher seulement le coût estimé.
@@ -2432,6 +2437,11 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construire un tunnel pour tramways.{}Shift pour afficher seulement le coût estimé.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Alterner entre construire et détruire des routes
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Alterner entre construire et retirer des voies de tramways
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Convertir/Améliorer le type de route.{}Shift pour afficher seulement le coût estimé.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Convertir/Améliorer le type de voie de tramway.{}Shift pour afficher seulement le coût estimé.
+
+STR_ROAD_NAME_ROAD                                              :Route
+STR_ROAD_NAME_TRAM                                              :Tramway
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientation du dépôt
@@ -2616,8 +2626,11 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF{N
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Cargaison acceptée{NBSP}: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Type de rail{NBSP}: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Type de route{NBSP}: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Type de tram{NBSP}: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Vitesse limite de la voie{NBSP}: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Vitesse limite de la route{NBSP}: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Vitesse limite de la voie{NBSP}: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Roches
@@ -3357,6 +3370,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastr
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Morceaux de voie ferrée{NBSP}:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signaux
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Morceaux de route{NBSP}:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Morceaux de voie de tramway{NBSP}:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Cases d'eau{NBSP}:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canaux
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stations{NBSP}:
@@ -3464,10 +3478,15 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nouveaux véhic
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nouveaux véhicules monorail
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nouveaux véhicules magnétiques
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Véhicules sur rail
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nouveaux véhicules
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Nouveaux tramways
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Véhicules sur rail
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Nouveaux véhicules routiers
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nouveaux navires
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nouvel aéronef
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} − Poids{NBSP}: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Coût{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} (Coût de réaménagement{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK}) Poids{NBSP}: {GOLD}{WEIGHT_SHORT}
@@ -3628,12 +3647,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vous ê
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Communiqué du fabriquant de véhicules
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Nous venons juste d'inventer{NBSP}: {STRING} - Voulez-vous l'exclusivité de ce véhicule pendant un an, afin que nous puissions le tester avant sa mise sur le marché{NBSP}?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotive
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}véhicule
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m2}aéronef
-STR_ENGINE_PREVIEW_SHIP                                         :{G=m}navire
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}locomotive électrique
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotive monorail
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}locomotive Maglev
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}véhicule
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :{G=m}tramway
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m2}aéronef
+STR_ENGINE_PREVIEW_SHIP                                         :{G=m}navire
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prix{NBSP}: {CURRENCY_LONG} − Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY} − Puissance{NBSP}: {POWER}{}Coûts d'entretien{NBSP}: {CURRENCY_LONG}/an{}Capacité{NBSP}: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Prix{NBSP}: {CURRENCY_LONG} − Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY} − Puissance{NBSP}: {POWER}{}Effort de traction max.{NBSP}: {6:FORCE}{}Coûts d'entretien{NBSP}: {4:CURRENCY_LONG}/an{}Capacité{NBSP}: {5:CARGO_LONG}
@@ -3672,13 +3696,18 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Alterner
 STR_REPLACE_ENGINES                                             :Locomotives
 STR_REPLACE_WAGONS                                              :Wagons
 STR_REPLACE_ALL_RAILTYPE                                        :Tous le véhicules sur rail
+STR_REPLACE_ALL_ROADTYPE                                        :Tous les véhicules routiers
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choisir un type de rail pour le remplacement de locomotives
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Choisir un type de route pour le remplacement de véhicules
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Ceci affiche par quel type de véhicule sera remplacé celui sélectionné à gauche, si possible
 STR_REPLACE_RAIL_VEHICLES                                       :Véhicules sur rail
 STR_REPLACE_ELRAIL_VEHICLES                                     :Véhicules électriques sur rail
 STR_REPLACE_MONORAIL_VEHICLES                                   :Véhicules sur monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Véhicules Maglev
+
+STR_REPLACE_ROAD_VEHICLES                                       :Véhicules routiers
+STR_REPLACE_TRAM_VEHICLES                                       :Tramways
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrait de wagon{NBSP}: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Si l'autoremplacement de la locomotive provoque un accroissement de la longueur du train, alors sa longueur initiale sera retrouvée en retirant automatiquement des wagons (d'abord par la tête)
@@ -4402,7 +4431,8 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Vous dev
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Aucuns rails convenables
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Vous devez d'abord enlever les rails
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}La route est à sens unique ou bloquée
-STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Les passages à niveau ne sont pas authorisés pour ce type de rails
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Les passages à niveau ne sont pas autorisés pour ce type de rail
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Les passages à niveau ne sont pas autorisés pour ce type de route
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Impossible de construire des signaux ici...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossible de construire des rails ici...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Impossible de retirer les rails d'ici...
@@ -4422,6 +4452,12 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Impossible de retirer la section de voie de tramway d'ici...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... il n'y a pas de route
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... il n'y a pas de tramway
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Impossible de convertir le type de route...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Impossible de convertir le type de voie de tramway...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Aucune route convenable
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Aucune voie de tramway convenable
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... route incompatible
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... voie de tramway incompatible
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Impossible de construire un canal ici...

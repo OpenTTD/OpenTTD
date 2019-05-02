@@ -701,6 +701,7 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas:
 
 # Road construction toolbar
 
+
 # Road depot construction window
 
 # Road vehicle station construction window
@@ -976,6 +977,9 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupigita aer
 # Build vehicle window
 
 
+############ range for vehicle availability starts
+############ range for vehicle availability ends
+
 
 
 
@@ -1015,11 +1019,15 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 # Engine preview window
 
 
+
+
+
 # Autoreplace window
 STR_REPLACE_VEHICLE_TRAIN                                       :Treno
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Voy-vehilo
 STR_REPLACE_VEHICLE_SHIP                                        :Navo
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronavo
+
 
 
 

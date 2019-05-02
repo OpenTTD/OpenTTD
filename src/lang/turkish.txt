@@ -2425,6 +2425,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tramvay 
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Yol yap/sil arasında geçiş yap
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Tramvay yapımı/yıkımı
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Garaj Yönü
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Garaj yönünü seç
@@ -3449,10 +3450,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Yeni Elektrikli
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Yeni Monoray
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Yeni Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Trenler
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Yeni Karayolu Araçları
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Trenler
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Yeni gemi
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Yeni Hava Aracı
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Fiyat: {GOLD}{CURRENCY_LONG}{BLACK} Ağırlık: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hız: {GOLD}{VELOCITY}{BLACK} Güç: {GOLD}{POWER}
@@ -3602,12 +3606,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Garajda
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Araç üreticisinden mesaj
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Yeni bir {STRING} tasarladık - bizim için bunu bir yıl denemeyi kabul ediyor musunuz?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotif
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :karayolu aracı
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :uçak
-STR_ENGINE_PREVIEW_SHIP                                         :gemi
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monoray lokomotifi
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev lokomotifi
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :karayolu aracı
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :uçak
+STR_ENGINE_PREVIEW_SHIP                                         :gemi
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Fiyat: {CURRENCY_LONG} Ağırlık: {WEIGHT_SHORT}{}Hız: {VELOCITY}  Güç: {POWER}{}İşletme Gideri: {CURRENCY_LONG}/yıl{}Kapasite: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Maliyet: {CURRENCY_LONG} Ağırlık: {WEIGHT_SHORT}{}Hız: {VELOCITY}  Güç: {POWER}  Azami Tork: {6:FORCE}{}İşletme Gideri: {4:CURRENCY_LONG}/yıl{}Kapasite: {5:CARGO_LONG}
@@ -3653,6 +3660,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Demiryolu Araç
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrikli Trenler
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monoray Araçları
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Araçları
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon kaldırma: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Otomatik yenilemede tren boyutunun artması gerekiyorsa vagonları kaldır (en önden başlayarak yeterli sayıda vagon silinir)

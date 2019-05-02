@@ -2465,6 +2465,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Costruis
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Seleziona fra costruzione/rimozione di strade
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Seleziona fra costruzione/rimozione di tranvie
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientamento deposito
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Seleziona l'orientamento del deposito automezzi
@@ -3496,10 +3497,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nuovi veicoli f
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuovi veicoli monorotaia
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nuovi veicoli maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Veicoli ferroviari
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuovi automezzi
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Veicoli ferroviari
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuove navi
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nuovo aeromobile
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Costo: {GOLD}{CURRENCY_LONG}{BLACK} Peso: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Costo: {GOLD}{CURRENCY_LONG}{BLACK} (Costo riadattamento: {GOLD}{CURRENCY_LONG}{BLACK}) Peso: {GOLD}{WEIGHT_SHORT}
@@ -3660,12 +3664,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Stai pe
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Messaggio da un costruttore di veicoli
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Abbiamo appena progettato un{G "" "" a} nuov{G o o a} {STRING} - È interessato ad un anno di uso esclusivo di questo veicolo, in modo da permetterci di valutarne le prestazioni prima di renderlo disponibile sul mercato?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}automezzo
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}aeromobile
-STR_ENGINE_PREVIEW_SHIP                                         :{G=f}nave
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}motrice monorotaia
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}motrice maglev
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}automezzo
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}aeromobile
+STR_ENGINE_PREVIEW_SHIP                                         :{G=f}nave
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}{}Costo d'esercizio: {CURRENCY_LONG}/anno{}Capacità: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}{}  S.T. max.: {6:FORCE}{}Costo d'esercizio: {4:CURRENCY_LONG}/anno{}Capacità: {5:CARGO_LONG}
@@ -3711,6 +3718,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Veicoli ferrovi
 STR_REPLACE_ELRAIL_VEHICLES                                     :Veicoli ferroviari elettrici
 STR_REPLACE_MONORAIL_VEHICLES                                   :Veicoli monorotaia
 STR_REPLACE_MAGLEV_VEHICLES                                     :Veicoli maglev
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimozione vagoni: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fa sì che il rimpiazzamento automatico mantenga costante la lunghezza dei treni rimuovendo vagoni (iniziando dalla testa) nel caso in cui la sostituzione della locomotiva rendesse il treno più lungo

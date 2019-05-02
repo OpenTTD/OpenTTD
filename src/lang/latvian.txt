@@ -2341,6 +2341,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Būvēt 
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Pārslēgties starp ceļa būvēšanas/nojaukšanas režīmiem
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Pārslēgt būvēt/novākt tramvaju būvei
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Autotransporta depo virziens
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Izvēlēties autotransporta depo virzienu
@@ -3294,10 +3295,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Jauni elektrifi
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Jauni viensliedes vilcieni
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Jauni magleva vilcieni
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Jauni vilcieni
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Jauni autotransporta līdzekļi
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Jauni vilcieni
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Jauni kuģi
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Jauns lidaparāts
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Svars: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ātrums: {GOLD}{VELOCITY}{BLACK} Jauda: {GOLD}{POWER}
@@ -3445,12 +3449,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Jūs gr
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Ziņojums no transportlīdzekļu ražotāja
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mēs tikko esam izstrādājuši jaunu transportlīdzekli - {STRING}. Vai esat ieinteresēts iegūt izņēmuma tiesības izmantot šo transportlīdzekli uz vienu gadu, lai mēs redzētu tā iespējas pirms padaram pieejamu visiem?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :dzelzceļa lokomotīve
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :autotransporta līdzeklis
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :lidaparāts
-STR_ENGINE_PREVIEW_SHIP                                         :kuģis
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :viensliedes lokomotīve
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magleva lokomotīve
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :autotransporta līdzeklis
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :lidaparāts
+STR_ENGINE_PREVIEW_SHIP                                         :kuģis
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Svars: {WEIGHT_SHORT}{}Ātrums: {VELOCITY} Jauda: {POWER}{}Kārtējās izmaksas: {CURRENCY_LONG} gadā{}Ietilpība:  {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Svars: {WEIGHT_SHORT}{}Ātrums: {VELOCITY}  Jauda: {POWER}  Maks. spēks: {6:FORCE}{}Kārtējās izmaksas: {4:CURRENCY_LONG} gadā{}Ietilpība: {5:CARGO_LONG}
@@ -3489,6 +3496,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Sliežu transpo
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrificētā dzelzceļa transportlīdzekļi
 STR_REPLACE_MONORAIL_VEHICLES                                   :Viensliedes transportlīdzekļi
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magleva transportlīdzekļi
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagona noņemšana: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automātiskā aizvietošana saglabās esošo vilciena garumu noņemot vagonus (sākot no priekšgala), ja mainot lokomotīvi tas kļūtu garāks

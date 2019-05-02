@@ -2342,6 +2342,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Пост
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Премахване на асфалтов път
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Превключване строене/разрушаване на трамвайни консктрукции
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Ориентация на гараж
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Ориентация на гараж
@@ -3283,10 +3284,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Нови еле
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Нови Машини за Монорелсов път
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Нови Машини за Магниторелсов път
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Нови ЖП превозни средства
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Нова кола
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Нови ЖП превозни средства
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Нови Кораби
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нова летателна машина
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} Тегло: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорост: {GOLD}{VELOCITY}{BLACK} Мощност: {GOLD}{POWER}
@@ -3434,12 +3438,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Иск�
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Съобщение от производител
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Създадохме нов {STRING}.{}Интересувате ли се от изключителното право да използвате това ПС за една година, за да видим как то работи преди да го пуснем на пазара за масова употреба?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :локомотив за двурелсов път
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомобил
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :самолет
-STR_ENGINE_PREVIEW_SHIP                                         :кораб
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :локомотив за еднорелсов път
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :локомотив за магниторелсов път
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомобил
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :самолет
+STR_ENGINE_PREVIEW_SHIP                                         :кораб
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цена: {CURRENCY_LONG} Тегло: {WEIGHT_SHORT}{}Скорост: {VELOCITY}  Мощност: {POWER}{}Разход: {CURRENCY_LONG}/г.{}Капацитет: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цена: {CURRENCY_LONG} Тегло: {WEIGHT_SHORT}{}Скорост: {VELOCITY}  Мощност: {POWER}  Макс. Т.С.: {6:FORCE}{}Експлоатационни разходи: {4:CURRENCY_LONG}/год.{}Вместимост: {5:CARGO_LONG}
@@ -3482,6 +3489,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :ЖП влако
 STR_REPLACE_ELRAIL_VEHICLES                                     :Електрически локомотиви
 STR_REPLACE_MONORAIL_VEHICLES                                   :Монорелсови локомотиви
 STR_REPLACE_MAGLEV_VEHICLES                                     :Маглев влакове
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Премахване на вагон: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Автоматичната замяна ще запази дължината на влака като премахне вагони (започвайки от предните), ако замяната довежда до по-дълъг влак.

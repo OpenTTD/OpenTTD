@@ -2200,6 +2200,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bou in t
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Wikselje tusken bou en fuortheljen fan dyken
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Wikselje tusken bou en fuortheljen fan tramwei
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Autodepot rjochting
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Kies rjochting foar autodepot
@@ -3087,8 +3088,11 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nije elektryske
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nije Maglev Treinen
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nije Weinen
+
+############ range for vehicle availability starts
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nije Skepen
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nije fleantugen
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK} Kracht: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Snelheid: {GOLD}{VELOCITY}
@@ -3198,12 +3202,15 @@ STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Klik om 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Berjocht fan fiertúgenfabrikant
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Wy hawwe sakrekt in nije {STRING} ûntwurpen - bisto ynteressearre yn in jier lang eksklusyf gebrûk fan dit fiertúch, sadat wy kinne sjen oft it goed wurket foardat wy it wrâldwiid beskikber meitsjen?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotyf
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :wein
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :fleantúch
-STR_ENGINE_PREVIEW_SHIP                                         :skip
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail lokomotyf
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglevlokomotyf
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :wein
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :fleantúch
+STR_ENGINE_PREVIEW_SHIP                                         :skip
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Snelheid: {VELOCITY}  Kracht: {POWER}{}Underhâldskosten: {CURRENCY_LONG}/jr{}Kapasiteit: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kosten: {CURRENCY_LONG} Maks. Faasje: {VELOCITY}{}Kapasiteit: {CARGO_LONG}{}Underhâldskosten: {CURRENCY_LONG}/jr
@@ -3226,6 +3233,7 @@ STR_REPLACE_VEHICLES_WHEN_OLD                                   :Ferfang allinec
 
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail weinen
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev treinen
+
 
 
 # Vehicle view

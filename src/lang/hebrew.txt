@@ -2422,6 +2422,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}בנה �
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}שנה מצב בנה/הסר כבישים
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}שנה מצב בנה\מחק למבני חשמלית
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}כיוון המוסך
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}כיוון המוסך
@@ -3415,10 +3416,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :רכבות חש
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          ::רכבות חד-פס חדשות
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :רכבות פס מגנטי חדשות
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :רכבות זמינות
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :כלי רכב חדשים
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :רכבות זמינות
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :כלי שייט חדשים
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :כלי טייס חדש
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{GOLD}{1:WEIGHT_SHORT}{BLACK} :משקל {GOLD}{0:CURRENCY_LONG}{BLACK} :מחיר
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}מהירות: {GOLD}{VELOCITY}{BLACK} הספק: {GOLD}{POWER}
@@ -3567,12 +3571,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}?אתה
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}הודעה מיצרן הרכב
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}?חדש/ה! האם אתה מעוניין לבחון כלי זה באופן בלעדי לפני הוצאתו לשוק {STRING} זה עתה סיימנו את תכנונו של
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :קטר רכבת
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :כלי רכב
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :כלי טיס
-STR_ENGINE_PREVIEW_SHIP                                         :כלי שייט
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :קטר חד-פס
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :קטר פס מגנטי
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :כלי רכב
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :כלי טיס
+STR_ENGINE_PREVIEW_SHIP                                         :כלי שייט
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}{1:WEIGHT_SHORT} :משקל  {NBSP}{0:CURRENCY_LONG}  :מחיר{}  {NBSP}{3:POWER} :עצמת מנוע   {NBSP}{2:VELOCITY} :מהירות {NBSP}{}{5:CARGO_LONG} : קיבולת {NBSP} לשנה  {NBSP}{4:CURRENCY_LONG} :עלות תפעולית
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}עלות: {CURRENCY_LONG} משקל: {WEIGHT_SHORT}{}מהירות: {VELOCITY}  הספק: {POWER}  מקסימלי T.E.: {6:FORCE}{}עלות תפעולית: {4:CURRENCY_LONG}/לשנה{}קיבולת: {5:CARGO_LONG}
@@ -3618,6 +3625,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :רכבות
 STR_REPLACE_ELRAIL_VEHICLES                                     :רכבות חשמליות
 STR_REPLACE_MONORAIL_VEHICLES                                   :רכבות חד-פס
 STR_REPLACE_MAGLEV_VEHICLES                                     :רכבות פס-מגנטי
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{ORANGE}{STRING}{BLACK} : הסרת קרונות
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}שמור על האורך המקורי של הרכבת בעת שימוש בהחלפה אוטומטית, במידה והקטר מאריך את הרכבת הסר קרונות מתחילת הרכבת

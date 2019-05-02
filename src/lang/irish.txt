@@ -2396,6 +2396,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tóg tol
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Athraigh idir tógáil/baint agus bóithre á dtógáil
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Athraigh idir tógáil/baint agus trambhealaí á dtógáil
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Treosuíomh an Iosta Bhóthair
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Roghnaigh treosuíomh an iosta feithiclí bóthair
@@ -3350,10 +3351,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Feithiclí Iarn
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Feithiclí Aonráille Nua
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Feithiclí Maglev Nua
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Feithiclí Iarnróid Nua
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Feithiclí Bóthair Nua
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Feithiclí Iarnróid Nua
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Longa Nua
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Aerárthaigh Nua
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Costas: {GOLD}{CURRENCY_LONG}{BLACK} Meáchan: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Luas: {GOLD}{VELOCITY}{BLACK} Cumhacht: {GOLD}{POWER}
@@ -3501,12 +3505,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Tá tú
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Teachtaireacht ó dhéantóir feithiclí
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Táimid díreach tar éis {STRING} nua a dhearadh - an mbeadh suim agat úsáid eisiach a bhaint as ar feadh bliana, le go mbeimid in ann a fheiceáil mar a fheidhmíonn sé sula gcuirfimid ar fáil do chách é?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :inneall gluaiste iarnróid
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :feithicil bóthair
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :aerárthach
-STR_ENGINE_PREVIEW_SHIP                                         :long
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :inneall gluaiste aonráille
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :inneall gluaiste maglev
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :feithicil bóthair
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :aerárthach
+STR_ENGINE_PREVIEW_SHIP                                         :long
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Costas {CURRENCY_LONG} Meáchan: {WEIGHT_SHORT}{}Luas: {VELOCITY}  Cumhacht: {POWER}{}Costas Coinneála {CURRENCY_LONG}/bl{}Toilleadh: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costas: {CURRENCY_LONG} Meáchan: {WEIGHT_SHORT}{}Luas: {VELOCITY}  Cumhacht: {POWER}  T.E. uasta: {6:FORCE}{}Costas Coinneála: {4:CURRENCY_LONG}/bl{}Toilleadh: {5:CARGO_LONG}
@@ -3547,6 +3554,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Feithiclí Iarn
 STR_REPLACE_ELRAIL_VEHICLES                                     :Feithiclí Iarnróid Leictreacha
 STR_REPLACE_MONORAIL_VEHICLES                                   :Feithiclí Aonráille
 STR_REPLACE_MAGLEV_VEHICLES                                     :Feithiclí Maglev
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaigíní a bhaint: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ceangail ar uath-athsholáthar fad na traenach a choinneáil mar an gcéanna trí vaigíní a bhaint (ag tosú ag an tosach), má tharlaíonn sé go mbeadh an traein níos faide tar éis an t-inneall a athsholáthar.

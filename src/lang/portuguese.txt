@@ -2433,6 +2433,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Alternar entre construir/remover estradas
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Alternar construir/remover linhas de eléctricos e sinais
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientação do Depósito
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Seleccionar a orientação do depósito
@@ -3464,10 +3465,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Novos Veículos
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Novos Veículos Monocarril
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Novos Veículos Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Novos Veículos Ferroviários
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novos Veículos Rodoviários
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Novos Veículos Ferroviários
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novos Barcos
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nova Aeronave
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Custo: {GOLD}{CURRENCY_LONG}{BLACK} Peso: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Custo: {GOLD}{CURRENCY_LONG}{BLACK} (Custo da conversão: {GOLD}{CURRENCY_LONG}{BLACK}) Peso: {GOLD}{WEIGHT_SHORT}
@@ -3628,12 +3632,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Está p
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensagem de um fabricante de veículos
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Projectámos um novo modelo de {STRING} - gostaria de ter um ano de exclusividade de uso deste veículo, de modo a que possamos avaliar o seu desempenho antes de o disponibilizar globalmente?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotiva ferroviária
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :veículo rodoviário
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :aeronave
-STR_ENGINE_PREVIEW_SHIP                                         :barco
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotiva monocarril
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotiva maglev
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :veículo rodoviário
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :aeronave
+STR_ENGINE_PREVIEW_SHIP                                         :barco
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade Máx.: {VELOCITY}  Potência: {POWER}{}Custo de Circulação: {CURRENCY_LONG}/ano{}Capacidade: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade Máx.: {VELOCITY}  Potência: {POWER}  F.T. Máx.: {6:FORCE}{}Custo de Circulação: {4:CURRENCY_LONG}/ano{}Capacidade: {5:CARGO_LONG}
@@ -3679,6 +3686,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Comboios
 STR_REPLACE_ELRAIL_VEHICLES                                     :Comboios eléctricos
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monocarris
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevs
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remover vagões: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Forçar a substituição automática a manter o comprimento do comboio, removendo vagões (do início), nas situações em que a substituição da locomotiva pode resultar num comboio mais comprido.

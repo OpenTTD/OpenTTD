@@ -2396,6 +2396,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}挖掘�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}切換鋪設／移除公路
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}切換鋪設電車軌
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}車廠方向
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}選擇車廠方向
@@ -3350,10 +3351,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :新購電氣化
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :新購單軌車輛
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :新購磁浮車輛
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :新購鐵路列車
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :新購車輛
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :新購鐵路列車
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :新購船舶
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :新購飛機
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}費用：{GOLD}{CURRENCY_LONG}{BLACK} 載重：{GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}
@@ -3501,12 +3505,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}您正�
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}運輸工具製造商的訊息
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}我們剛設計了一種新{STRING} - 您有興趣獨家使用它一年，讓我們在正式上市之前先 觀察它的表現嗎？
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :鐵路機車頭
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :車輛
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :飛機
-STR_ENGINE_PREVIEW_SHIP                                         :船舶
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :單軌機車頭
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :磁浮機車頭
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :車輛
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :飛機
+STR_ENGINE_PREVIEW_SHIP                                         :船舶
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}費用：{CURRENCY_LONG} 載重：{WEIGHT_SHORT}{}速度：{VELOCITY}  功率：{POWER}{}營運成本：{CURRENCY_LONG} / 年{}容量：{CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}費用：{CURRENCY_LONG} 載重：{WEIGHT_SHORT}{}速度：{VELOCITY}  功率：{POWER}  最大牽引力：{6:FORCE}{}營運成本：{4:CURRENCY_LONG}/年{}容量：{5:CARGO_LONG}
@@ -3547,6 +3554,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :列車
 STR_REPLACE_ELRAIL_VEHICLES                                     :電氣化列車
 STR_REPLACE_MONORAIL_VEHICLES                                   :單軌列車
 STR_REPLACE_MAGLEV_VEHICLES                                     :磁浮列車
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}移除車廂：{ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}如果替換後的車廂較長的話，讓自動替換功能移除多餘的車廂 (從頭開始) 以便維持列車長度

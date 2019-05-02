@@ -2604,6 +2604,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Izgradnj
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Uključi građenje/rušenje drumskih puteva
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Uključi građenje/rušenje tramvajskih građevina
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orijentacija drumskog depoa
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Izbor orijentacije drumskog depoa
@@ -3568,10 +3569,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nova Železnič
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nova Jednošinska Vozila
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nova Maglev Vozila
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Šinska Vozila
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nova Drumska Vozila
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Šinska Vozila
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novi Brodovi
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nove Letilice
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Težina: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Brzina: {GOLD}{VELOCITY}{BLACK} Snaga: {GOLD}{POWER}
@@ -3720,18 +3724,21 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Upravo 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Poruka od proizvođača vozila
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Upravo smo završili projektovanje nov{G og e og} {STRING.aku} - da li ste zainteresovani za jednogodišnja eksluzivna prava upotrebe ovog vozila, kako bi smo proverili radne osobine pre puštanja u masovnu proizvodnju?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=srednji}železničko vučno vozilo
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.aku                      :železničkog vučnog vozila
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=srednji}drumsko vozilo
-STR_ENGINE_PREVIEW_ROAD_VEHICLE.aku                             :drumskog vozila
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=ženski}letilica
-STR_ENGINE_PREVIEW_AIRCRAFT.aku                                 :letilice
-STR_ENGINE_PREVIEW_SHIP                                         :{G=muški}brod
-STR_ENGINE_PREVIEW_SHIP.aku                                     :broda
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=srednji}jednopružno žel. vučno vozilo
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.aku                      :jednopružnog žel. vučnog vozila
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=srednji}megnetno žel. vučno vozilo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.aku                        :magnetnog žel. vučnog vozila
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=srednji}drumsko vozilo
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.aku                             :drumskog vozila
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=ženski}letilica
+STR_ENGINE_PREVIEW_AIRCRAFT.aku                                 :letilice
+STR_ENGINE_PREVIEW_SHIP                                         :{G=muški}brod
+STR_ENGINE_PREVIEW_SHIP.aku                                     :broda
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Težina: {WEIGHT_SHORT}{}Brzina: {VELOCITY}  Snaga: {POWER}{}Cena Održavanja: {CURRENCY_LONG}/god.{}Nosivost: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Težina: {WEIGHT_SHORT}{}Brzina: {VELOCITY}  Snaga: {POWER}  Najveća vučna snaga: {6:FORCE}{}Cena Održavanja: {4:CURRENCY_LONG}/god{}Nosivost: {5:CARGO_LONG}
@@ -3787,6 +3794,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Šinska Vozila
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrošinska Vozila
 STR_REPLACE_MONORAIL_VEHICLES                                   :Jednošinska Vozila
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetnošinska Vozila
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Ukanjanje vagona: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ukoliko bi se zamenom kompozicija produžila, automatska obnova će ukloniti vagone (sa početka) kako bi se zadržala dužina kompozicije

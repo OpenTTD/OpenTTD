@@ -2400,6 +2400,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Constru�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Intecambiar construír/eliminar para a construción de estradas
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Cambia entre construír/quitar para a construción de tranvías
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientación do depósito de estrada
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Seleciona-la orientación do depósito de vehículos de estrada
@@ -3362,10 +3363,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Novos vehículo
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Novos vehículos de monorraíl
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Novos vehículos de levitación magnética (Maglev)
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Novos vehículos ferroviarios
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novos vehículos de estrada
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Novos vehículos ferroviarios
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novos barcos
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Novas aeronaves
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Custo: {GOLD}{CURRENCY_LONG}{BLACK} Peso: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK} Potencia: {GOLD}{POWER}
@@ -3514,12 +3518,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vas ven
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensaxe dun fabricante de vehículos
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Acabamos de deseñar un novo {STRING} - Interésache probar este vehículo en exclusiva durante un ano, para ve-lo seu rendemento antes de facelo universalmente dispoñíbel?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotora de ferrocarril
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :vehículo de estrada
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :avión
-STR_ENGINE_PREVIEW_SHIP                                         :barco
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotora de monorraíl
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotora de maglev
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :vehículo de estrada
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :avión
+STR_ENGINE_PREVIEW_SHIP                                         :barco
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade: {VELOCITY}  Potencia: {POWER}{}Custo operativo: {CURRENCY_LONG}/ano{}Capacidade: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade: {VELOCITY}  Potencia: {POWER}  Esforzo tractor máximo: {6:FORCE}{}Custo operativo: {4:CURRENCY_LONG}/ano{}Capacidade: {5:CARGO_LONG}
@@ -3565,6 +3572,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Vehículos ferr
 STR_REPLACE_ELRAIL_VEHICLES                                     :Vehículos de ferrocarril eléctrico
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vehículos de monorraíl
 STR_REPLACE_MAGLEV_VEHICLES                                     :Vehículos maglev
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Eliminar os vagóns: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Facer que a autosubstitución manteña a lonxitude do tren quitando vagóns (empezando pola cabeza), se ao substituír a locomotora o tren se fixera máis longo.

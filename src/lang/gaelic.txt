@@ -2620,6 +2620,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tog tuna
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Toglaich togail/toirt air falbh airson togail rathaidean
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Toglaich togail/tort air falbh airson slighean trama
 
+
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Comhair na garaids
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tagh comhair na garaids
@@ -3636,10 +3637,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Carbadan-rèile
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Carbadan aona-rèile ùra
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Carbadan magnaiteach ùra
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Carbadan-rèile ùra
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Carbadan-rathaid ùra
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Carbadan-rèile ùra
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Longan ùra
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Carbadan-adhair ùra
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cosgais: {GOLD}{CURRENCY_LONG}{BLACK} Cuideam: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Luaths: {GOLD}{VELOCITY}{BLACK} Cumhachd: {GOLD}{POWER}
@@ -3789,12 +3793,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Tha thu
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Brath bho dhèanadair a' charbaid
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Tha sinn air {STRING} ùr a dhealbhadh - a bheil ùidh agaibh ann ’s nach cleachd ach sibh fhèin e fad bliadhna ach am faic sinn dè cho math ’s a dh’obraicheas e mus reic sinn don a h-uile duine e?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :einnsean-rèile
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :carbad-rathaid
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :carbad-adhair
-STR_ENGINE_PREVIEW_SHIP                                         :{G=f}long
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :einnsean aona-rèile
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :einnsean magnaiteach
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :carbad-rathaid
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :carbad-adhair
+STR_ENGINE_PREVIEW_SHIP                                         :{G=f}long
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cosgais: {CURRENCY_LONG} Cuideam: {WEIGHT_SHORT}{}Luaths: {VELOCITY}  Cumhachd: {POWER}{}Cosgaisean ruith: {CURRENCY_LONG}/bliadhna{}Tomhas-lìonaidh: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cosgais: {CURRENCY_LONG} Cuideam: {WEIGHT_SHORT}{}Luaths: {VELOCITY}  Cumhachd: {POWER}  Neart: {6:FORCE}{}Cosgaisean ruith: {4:CURRENCY_LONG}/bliadhna{}Tomhas-lìonaidh: {5:CARGO_LONG}
@@ -3840,6 +3847,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Carbadan-rèile
 STR_REPLACE_ELRAIL_VEHICLES                                     :Carbadan-rèile dealain
 STR_REPLACE_MONORAIL_VEHICLES                                   :Carbadan aona-rèile
 STR_REPLACE_MAGLEV_VEHICLES                                     :Carbadan magnaiteach
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}A' toirt air falbh carbad: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Glèidh faide aig trèan nuair a thèid fhèin-leasachadh le toirt air falbh nan carbadan (bho thoiseach na trèan a-mach) ma dh'fhàsas an trèan nas fhaide le einnsean ùr
