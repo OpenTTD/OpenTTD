@@ -211,7 +211,7 @@ protected:
 	/**
 	 * Does common checks and asks the question.
 	 */
-	static bool DoQuestion(uint16 uniqueid, uint8 target, bool is_client, Text *question, QuestionType type, int buttons);
+	static bool DoQuestion(uint16 uniqueid, uint32 target, bool is_client, Text *question, QuestionType type, uint32 buttons);
 };
 
 #endif /* SCRIPT_GOAL_HPP */
