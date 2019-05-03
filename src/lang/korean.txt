@@ -3688,7 +3688,7 @@ STR_REPLACE_VEHICLES_WHEN_OLD                                   :오래된 차�
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}왼쪽에서 선택한 기관차를 오른쪽의 새 기관차로 교체하려면 누르세요
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}교체 안 됨
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}차량이 선택되지 않았음
-STR_REPLACE_REPLACING_WHEN_OLD                                  :낡으면 {ENGINE}{G "으" ""}로 교체
+STR_REPLACE_REPLACING_WHEN_OLD                                  :낡으면 {ENGINE}{G 0 "으" ""}로 교체
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}차량 교체 중지
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}왼쪽에서 선택한 기관차의 차량교체를 중지하려면 이 버튼을 누르세요
 
