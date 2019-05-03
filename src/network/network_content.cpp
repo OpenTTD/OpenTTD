@@ -574,7 +574,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 	if (this->http_response_index == -1) {
 		if (data != nullptr) {
 			/* Append the rest of the response. */
-			memcpy(grow(this->http_response, (uint)length), data, length);
+			this->http_response.insert(this->http_response.end(), data, data + length);
 			return;
 		} else {
 			/* Make sure the response is properly terminated. */
