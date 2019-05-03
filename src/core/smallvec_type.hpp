@@ -52,21 +52,4 @@ int find_index(std::vector<T> const& vec, T const& item)
 	return -1;
 }
 
-/**
- * Helper function to append N default-constructed elements and get a pointer to the first new element
- * Consider using std::back_inserter in new code
- *
- * @param vec A reference to the vector to be extended
- * @param num Number of elements to be default-constructed
- *
- * @return Pointer to the first new element
- */
-template <typename T>
-T* grow(std::vector<T>& vec, std::size_t num)
-{
-	std::size_t const pos = vec.size();
-	vec.resize(pos + num);
-	return vec.data() + pos;
-}
-
 #endif /* SMALLVEC_TYPE_HPP */
