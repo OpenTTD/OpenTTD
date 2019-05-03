@@ -32,9 +32,9 @@ static std::vector<SoundEntry> _sounds;
  */
 SoundEntry *AllocateSound(uint num)
 {
-	SoundEntry *sound = grow(_sounds, num);
-	MemSetT(sound, 0, num);
-	return sound;
+	size_t pos = _sounds.size();
+	_sounds.insert(_sounds.end(), num, SoundEntry());
+	return &_sounds[pos];
 }
 
 
