@@ -113,7 +113,7 @@ public:
 
 	/**
 	 * Read bytes into a buffer.
-	 * @param[out] dest buffer to copy info
+	 * @param[out] dest buffer to copy into
 	 * @param length number of bytes to read
 	 * @return true if the requested number of bytes were available
 	 */
@@ -122,6 +122,21 @@ public:
 		if (this->IsEnd()) return false;
 		if (this->buflen - this->pos < length) return false;
 		memcpy(dest, this->buf + this->pos, length);
+		this->pos += length;
+		return true;
+	}
+
+	/**
+	 * Read bytes into a MidiFile::DataBlock.
+	 * @param[out] dest DataBlock to copy into
+	 * @param length number of bytes to read
+	 * @return true if the requested number of bytes were available
+	 */
+	bool ReadDataBlock(MidiFile::DataBlock *dest, size_t length)
+	{
+		if (this->IsEnd()) return false;
+		if (this->buflen - this->pos < length) return false;
+		dest->data.insert(dest->data.end(), this->buf + this->pos, this->buf + this->pos + length);
 		this->pos += length;
 		return true;
 	}
@@ -208,7 +223,6 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 			/* Regular channel message */
 			last_status = status;
 		running_status:
-			byte *data;
 			switch (status & 0xF0) {
 				case MIDIST_NOTEOFF:
 				case MIDIST_NOTEON:
@@ -216,20 +230,19 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 				case MIDIST_CONTROLLER:
 				case MIDIST_PITCHBEND:
 					/* 3 byte messages */
-					data = grow(block->data, 3);
-					data[0] = status;
-					if (!chunk.ReadBuffer(&data[1], 2)) {
+					block->data.push_back(status);
+					if (!chunk.ReadDataBlock(block, 2)) {
 						return false;
 					}
 					break;
 				case MIDIST_PROGCHG:
 				case MIDIST_CHANPRESS:
 					/* 2 byte messages */
-					data = grow(block->data, 2);
-					data[0] = status;
-					if (!chunk.ReadByte(data[1])) {
+					block->data.push_back(status);
+					if (!chunk.ReadByte(buf[0])) {
 						return false;
 					}
+					block->data.push_back(buf[0]);
 					break;
 				default:
 					NOT_REACHED();
@@ -266,12 +279,11 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 			if (!chunk.ReadVariableLength(length)) {
 				return false;
 			}
-			byte *data = grow(block->data, length + 1);
-			data[0] = 0xF0;
-			if (!chunk.ReadBuffer(data + 1, length)) {
+			block->data.push_back(0xF0);
+			if (!chunk.ReadDataBlock(block, length)) {
 				return false;
 			}
-			if (data[length] != 0xF7) {
+			if (block->data.back() != 0xF7) {
 				/* Engage Casio weirdo mode - convert to normal sysex */
 				running_sysex = true;
 				block->data.push_back(0xF7);
@@ -284,8 +296,7 @@ static bool ReadTrackChunk(FILE *file, MidiFile &target)
 			if (!chunk.ReadVariableLength(length)) {
 				return false;
 			}
-			byte *data = grow(block->data, length);
-			if (!chunk.ReadBuffer(data, length)) {
+			if (!chunk.ReadDataBlock(block, length)) {
 				return false;
 			}
 		} else {
@@ -335,8 +346,7 @@ static bool FixupMidiData(MidiFile &target)
 			merged_blocks.push_back(block);
 			last_ticktime = block.ticktime;
 		} else {
-			byte *datadest = grow(merged_blocks.back().data, block.data.size());
-			memcpy(datadest, block.data.data(), block.data.size());
+			merged_blocks.back().data.insert(merged_blocks.back().data.end(), block.data.begin(), block.data.end());
 		}
 	}
 	std::swap(merged_blocks, target.blocks);
