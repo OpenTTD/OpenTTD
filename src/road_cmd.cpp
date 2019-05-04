@@ -85,8 +85,8 @@ void ResolveRoadTypeGUISprites(RoadTypeInfo *rti)
 {
 	SpriteID cursors_base = GetCustomRoadSprite(rti, INVALID_TILE, ROTSG_CURSORS);
 	if (cursors_base != 0) {
-		rti->gui_sprites.build_x_road = cursors_base +  0;
-		rti->gui_sprites.build_y_road = cursors_base +  1;
+		rti->gui_sprites.build_y_road = cursors_base +  0;
+		rti->gui_sprites.build_x_road = cursors_base +  1;
 		rti->gui_sprites.auto_road    = cursors_base +  2;
 		rti->gui_sprites.build_depot  = cursors_base +  3;
 		rti->gui_sprites.build_tunnel = cursors_base +  4;
