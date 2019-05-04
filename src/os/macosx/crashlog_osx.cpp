@@ -203,7 +203,7 @@ public:
 		char message[1024];
 		seprintf(message, lastof(message),
 				 "Please send the generated crash information and the last (auto)save to the developers. "
-				 "This will greatly help debugging. The correct place to do this is http://bugs.openttd.org.\n\n"
+				 "This will greatly help debugging. The correct place to do this is https://github.com/OpenTTD/OpenTTD/issues.\n\n"
 				 "Generated file(s):\n%s\n%s\n%s",
 				 this->filename_log, this->filename_save, this->filename_screenshot);
 
