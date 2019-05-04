@@ -2618,8 +2618,11 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Cargamento aceptado: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tipo de vía: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Tipo de carretera: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Tipo de tranvía: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Límite de velocidad de ferrocarril: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Límite de velocidad de carretera: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Velocidad límite de tranvía: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rocas
@@ -3359,6 +3362,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infraest
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Tramos de vías férreas:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Señales
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Tramos de carretera:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Tramos de tranvía:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Casillas de agua:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canales
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Estaciones:
@@ -3467,9 +3471,11 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuevos monorrie
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nuevos trenes maglev
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuevos vehículos de carretera
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Nuevos tranvías
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nuevos trenes
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Nuevos vehículos de carretera
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuevos barcos
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nuevas aeronaves
 ############ range for vehicle availability ends
@@ -3635,10 +3641,12 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensaje 
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Hemos diseñado un{G "" a} nuev{G o a} {STRING}. ¿Le interesaría el uso exclusivo de este vehículo por un año para que podamos probar su desempeño antes de lanzarlo al público?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotora
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :locomotora eléctrica
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotora de monorriel
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}locomotora maglev
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}vehículo de carretera
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tranvía
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}aeronave
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}barco
@@ -3680,6 +3688,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Cambiar 
 STR_REPLACE_ENGINES                                             :Locomotoras
 STR_REPLACE_WAGONS                                              :Vagones
 STR_REPLACE_ALL_RAILTYPE                                        :Todos los vehículos ferroviarios
+STR_REPLACE_ALL_ROADTYPE                                        :Todos los vehículos de carretera
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Elegir el tipo de vías férreas para las que se desea reemplazar locomotoras
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostrar el vehículo que reemplazará al otro de la izquierda
@@ -4412,6 +4421,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tramo de
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Primero se debe quitar el tramo de vías férreas
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Carretera de un solo sentido o bloqueada
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}No se permiten pasos a nivel para este tipo de vías férreas
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}No se permiten pasos a nivel para este tipo de carretera
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}No se pueden instalar señales aquí...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}No se pueden construir vías férreas aquí...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}No se pueden quitar vías férreas de aquí...
@@ -4431,6 +4441,12 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}No se pu
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}No se puede quitar tranvía de aquí...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... no hay carretera
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... no hay tranvía
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}No es posible transformar esta carretera...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}No es posible transformar esta vía de tranvía...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Carretera no apta
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Tranvía no apto
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... carretera no compatible
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... tranvía no compatible
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}No se pueden construir canales aquí...

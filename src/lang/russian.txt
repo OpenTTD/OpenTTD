@@ -467,6 +467,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Приб
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Отдалить
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Строительство железных дорог
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Строительство автомобильных дорог
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Строительство трамвайных путей
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Строительство водных коммуникаций
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Строительство аэропортов
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Открыть панель ландшафта для изменения рельефа, посадки деревьев и т.д.
@@ -487,6 +488,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Созд
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Создание городов
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Создание предприятий
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Строительство автомобильных дорог
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Строительство трамвайных путей
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Посадить деревья. При нажатом Shift - оценка стоимости высадки.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Поставить метку
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Разместить объект. При нажатом Shift - оценка стоимости строительства.
@@ -1579,8 +1581,8 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Показыв�
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Показывать ожидаемое время прибытия и отправления в графиках движения
 STR_CONFIG_SETTING_QUICKGOTO                                    :Быстрое создание заданий транспорта: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Открывать окно маршрута с нажатой кнопкой «Следовать»
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Тип рельсов по умолчанию (после старта/загрузки): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Тип рельсов, выбираемый по умолчанию после старта или загрузки игры.{}«Первые доступные» - самый старый тип рельсов.{}«Последние доступные» - самый новый тип.{}«Наиболее используемые» - тип рельсов, наиболее широко используемых в игре.
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Тип ж/д путей по умолчанию (после старта/загрузки): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Тип железнодорожных путей, выбираемый по умолчанию после старта или загрузки игры.{}«Первые доступные» - самый старый тип рельсов.{}«Последние доступные» - самый новый тип.{}«Наиболее используемые» - тип рельсов, наиболее широко используемых в игре.
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :первые доступные
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :последние доступные
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :наиболее используемые
@@ -2799,8 +2801,10 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Принимает: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Тип ж/д полотна: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Тип трамвайных путей: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Макс. скорость ж/д: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Макс. скорость авто: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Ограничение скорости трамваев: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Камни
@@ -3540,6 +3544,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Инфр
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Ж/д участки:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Сигналы
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Дорожные участки:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Трамвайные участки:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Водные участки:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Каналы
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Станции:
@@ -3648,6 +3653,7 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Новый мо
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Новый магниторельсовый поезд
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Новый автомобиль
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Новые трамваи
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Новый поезд
@@ -3824,6 +3830,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.gen                        :магнито�
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомобиль
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.gen                             :автомобиля
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :трамвай
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :воздушное судно
 STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :воздушного судна
@@ -3854,8 +3861,8 @@ STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Здес
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Доступные ТС
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Здесь перечислены модели транспортных средств, доступные для замены
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выбор типа транспорта для замены
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбор типа транспорта, на который следует заменить
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выбор заменяемой модели транспортного средства
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбор заменяющей модели транспортного средства
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Начать замену
 STR_REPLACE_VEHICLES_NOW                                        :Начать замену всех ТС
@@ -3873,12 +3880,14 @@ STR_REPLACE_WAGONS                                              :Вагоны
 STR_REPLACE_ALL_RAILTYPE                                        :Весь ж/д транспорт
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Тип ж/д транспорта, подлежащего замене
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Выбор вида транспорта для замены
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Транспорт, на который происходит замена
 STR_REPLACE_RAIL_VEHICLES                                       :Поезда
 STR_REPLACE_ELRAIL_VEHICLES                                     :Электропоезда
 STR_REPLACE_MONORAIL_VEHICLES                                   :Монорельсовые
 STR_REPLACE_MAGLEV_VEHICLES                                     :Магнитные
 
+STR_REPLACE_ROAD_VEHICLES                                       :Автотранспорт
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Удаление вагонов: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Разрешить при автозамене сохранять длину поездов путём удаления вагонов (начиная с головы поезда), если при автозамене локомотива увеличится длина поезда.
@@ -4603,6 +4612,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Нет �
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Сначала удалите рельсы
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дорога односторонняя или заблокирована
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Через этот вид рельсов запрещено строить переезды
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Пересечение дорог такого типа недопустимо
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Здесь невозможно поставить сигнал...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Здесь невозможно проложить рельсы...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Не удалось удалить рельсы...
@@ -4622,6 +4632,10 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Не у�
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не удалось удалить трамвайные пути...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... здесь нет дороги
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... здесь нет трамвайных путей
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Невозможно сменить тип трамвайных рельсов...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Нет подходящего дорожного полотна
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... несовместимый тип дороги
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... несовместимый тип трамвайных путей
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Здесь невозможно построить канал...
