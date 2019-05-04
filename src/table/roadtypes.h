@@ -36,7 +36,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 			SPR_CURSOR_ROAD_NWSE,
 			SPR_CURSOR_AUTOROAD,
 			SPR_CURSOR_ROAD_DEPOT,
-			SPR_CURSOR_TUNNEL_RAIL,
+			SPR_CURSOR_ROAD_TUNNEL,
 			SPR_CURSOR_CONVERT_ROAD,
 		},
 
@@ -116,7 +116,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 			SPR_CURSOR_TRAMWAY_NWSE,
 			SPR_CURSOR_AUTOTRAM,
 			SPR_CURSOR_ROAD_DEPOT,
-			SPR_CURSOR_TUNNEL_RAIL,
+			SPR_CURSOR_ROAD_TUNNEL,
 			SPR_CURSOR_CONVERT_TRAM,
 		},
 
