@@ -437,6 +437,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Približ
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Udalji pogled
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Izgradi željezničku prugu
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Izgradi ceste
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Izgradi tramvajsku prugu
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Izgradi pristaništa za brodove
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Izgradi zračne luke
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvori alatnu traku za krajolik kako bi spustio/izdignuo zemlju, posadio drveće, itd.
@@ -457,6 +458,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Stvaranj
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stvaranje gradova
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Stvaranje industrije
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Izgradnja ceste
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Izgradnja tramvajske pruge
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Posadi drveće. Shift mijenja prikaz građenje/procjena troškova.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Postavi znak
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Postavi objekt. Shift mijenja prikaz građenje/procjena troškova.
@@ -2530,7 +2532,11 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Izgradi 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Izgradi tramvajski tunel. Shift mijenja prikaz građenje/procjena troškova.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Aktiviraj izgradnju/uklanjanje za izgradnju ceste
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Aktiviraj izgradnju/uklanjanje za izgradnju tramvaja
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Pretvori/nadogradi vrstu ceste. Shift mijenja prikaz građenje/procjena troškova.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Pretvori/nadogradi vrstu tramvajske pruge. Shift mijenja prikaz građenje/procjena troškova.
 
+STR_ROAD_NAME_ROAD                                              :Cesta
+STR_ROAD_NAME_TRAM                                              :Tramvajska pruga
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Smjer cestovnog spremišta
@@ -2715,8 +2721,11 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Prihvaćeni teret: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Vrsta željeznice: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Vrsta ceste: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Vrsta tramvaja: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Najveća brzina željeznice: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Ograničenje brzine na cesti: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Limit brzine tramvaja: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Stijenje
@@ -3456,6 +3465,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastr
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Dijelovi pruge:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signali
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Dijelovi ceste:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Dijelovi tramvaja:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Polje s vodom:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanali
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Postaje:
@@ -3564,9 +3574,11 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nova jednotrač
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nova vozila Maglev
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nova cestovna vozila
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Novi tramvaji
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nova pružna vozila
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Nova cestovna vozila
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novi brodovi
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Novi zrakoplov
 ############ range for vehicle availability ends
@@ -3732,10 +3744,12 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Poruka o
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Upravo smo dizajnirali novi {STRING} - jeste li zainteresirani za jednogodišnje ekskluzivno pravo uporabe ovog vozila, kako bi vidjeli kako se vozilo ponaša prije nego što postane univerzalno dostupno?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :željeznička lokomotiva
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :lokomotiva za elektrificiranu željeznicu
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :jednotračna željeznička lokomotiva
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev lokomotiva
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :cestovno vozilo
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramvaj
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :zrakoplov
 STR_ENGINE_PREVIEW_SHIP                                         :brod
@@ -3777,14 +3791,18 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Prebaci 
 STR_REPLACE_ENGINES                                             :Lokomotive
 STR_REPLACE_WAGONS                                              :Vagoni
 STR_REPLACE_ALL_RAILTYPE                                        :Sva pružna vozila
+STR_REPLACE_ALL_ROADTYPE                                        :Sva cestovna vozila
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Odaberite vrstu željeznice za koju želite zamijeniti lokomotive
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Odaberite vrstu ceste za koju želite zamijeniti vozila
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Prikazuje sa kojom se lokomotivom zamjenjuje lijevo odabrana lokomotiva, ako postoji koji
 STR_REPLACE_RAIL_VEHICLES                                       :Pružna vozila
 STR_REPLACE_ELRAIL_VEHICLES                                     :Električna pružna vozila
 STR_REPLACE_MONORAIL_VEHICLES                                   :Jednotračna vozila
 STR_REPLACE_MAGLEV_VEHICLES                                     :Željeznička vozila Maglev
 
+STR_REPLACE_ROAD_VEHICLES                                       :Cestovna vozila
+STR_REPLACE_TRAM_VEHICLES                                       :Tramvaji
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Uklanjanje vagona: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automatska zamjena zadržava istu dužinu vlaka tako da ukloni suvišne vagone (počevši od naprijed), ako bi zamjena lokomotive učinila vlak dužim
@@ -4508,6 +4526,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nije pri
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Najprije je potrebno ukloniti željezničku prugu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Cesta je jednosmjerna ili je blokirana
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Pružni prijelazi nisu dopušteni za ovu vrstu pruge
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Pružni prijelazi nisu dopušteni za ovu vrstu ceste
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Ovdje nije moguće postaviti signale...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Ovdje nije moguće izgraditi željezničke tračnice...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nije moguće ukloniti željezničku prugu odavde...
@@ -4527,6 +4546,12 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nije mog
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nije moguće ukloniti tramvaj odavde...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... nema ceste
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... nema tramvajske pruge
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Ovdje nije moguće pretvoriti cestu...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Ovdje nije moguće pretvoriti tramvajsku prugu...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Nema prikladne ceste
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nema prikladne tramvajske pruge
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... nekompatibilna cesta
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... nekompatibilna tramvajska pruga
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ovdje nije moguće izgraditi kanale...
