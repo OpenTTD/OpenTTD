@@ -19,6 +19,7 @@
 #include "zoom_type.h"
 #include "gfx_layout.h"
 #include "zoom_func.h"
+#include "fileio_func.h"
 
 #include "table/sprites.h"
 #include "table/control_codes.h"
@@ -948,6 +949,8 @@ void Win32FontCache::ClearFontCache()
  */
 static void LoadWin32Font(FontSize fs)
 {
+	static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
+
 	FreeTypeSubSetting *settings = nullptr;
 	switch (fs) {
 		default: NOT_REACHED();
@@ -961,20 +964,59 @@ static void LoadWin32Font(FontSize fs)
 
 	LOGFONT logfont;
 	MemSetT(&logfont, 0);
-	if (settings->os_handle != nullptr) logfont = *(const LOGFONT *)settings->os_handle;
+	logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
+	logfont.lfCharSet = DEFAULT_CHARSET;
+	logfont.lfOutPrecision = OUT_OUTLINE_PRECIS;
+	logfont.lfClipPrecision = CLIP_DEFAULT_PRECIS;
+
+	if (settings->os_handle != nullptr) {
+		logfont = *(const LOGFONT *)settings->os_handle;
+	} else if (strchr(settings->font, '.') != nullptr && FileExists(settings->font)) {
+		/* Might be a font file name, try load it. */
+		TCHAR fontPath[MAX_PATH];
+		convert_to_fs(settings->font, fontPath, lengthof(fontPath), false);
+
+		if (AddFontResourceEx(fontPath, FR_PRIVATE, 0) != 0) {
+			/* Try a nice little undocumented function first for getting the internal font name.
+			 * Some documentation is fount at: http://www.undocprint.org/winspool/getfontresourceinfo */
+			typedef BOOL(WINAPI * PFNGETFONTRESOURCEINFO)(LPCTSTR, LPDWORD, LPVOID, DWORD);
+#ifdef UNICODE
+			static PFNGETFONTRESOURCEINFO GetFontResourceInfo = (PFNGETFONTRESOURCEINFO)GetProcAddress(GetModuleHandle(_T("Gdi32")), "GetFontResourceInfoW");
+#else
+			static PFNGETFONTRESOURCEINFO GetFontResourceInfo = (PFNGETFONTRESOURCEINFO)GetProcAddress(GetModuleHandle(_T("Gdi32")), "GetFontResourceInfoA");
+#endif
+
+			if (GetFontResourceInfo != nullptr) {
+				/* Try to query an array of LOGFONTs that describe the file. */
+				DWORD len = 0;
+				if (GetFontResourceInfo(fontPath, &len, nullptr, 2) && len >= sizeof(LOGFONT)) {
+					LOGFONT *buf = (LOGFONT *)AllocaM(byte, len);
+					if (GetFontResourceInfo(fontPath, &len, buf, 2)) {
+						logfont = *buf; // Just use first entry.
+					}
+				}
+			}
+
+			/* No dice yet. Use the file name as the font face name, hoping it matches. */
+			if (logfont.lfFaceName[0] == 0) {
+				TCHAR fname[_MAX_FNAME];
+				_tsplitpath(fontPath, nullptr, nullptr, fname, nullptr);
+
+				_tcsncpy_s(logfont.lfFaceName, lengthof(logfont.lfFaceName), fname, _TRUNCATE);
+				logfont.lfWeight = strcasestr(settings->font, " bold") != nullptr || strcasestr(settings->font, "-bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
+			}
+		} else {
+			ShowInfoF("Unable to load file '%s' for %s font, using default windows font selection instead", settings->font, SIZE_TO_NAME[fs]);
+		}
+	}
 
 	if (logfont.lfFaceName[0] == 0) {
 		logfont.lfWeight = strcasestr(settings->font, " bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
-		logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
-		logfont.lfCharSet = DEFAULT_CHARSET;
-		logfont.lfOutPrecision = OUT_OUTLINE_PRECIS;
-		logfont.lfClipPrecision = CLIP_DEFAULT_PRECIS;
 		convert_to_fs(settings->font, logfont.lfFaceName, lengthof(logfont.lfFaceName), false);
 	}
 
 	HFONT font = CreateFontIndirect(&logfont);
 	if (font == nullptr) {
-		static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
 		ShowInfoF("Unable to use '%s' for %s font, Win32 reported error 0x%lX, using sprite font instead", settings->font, SIZE_TO_NAME[fs], GetLastError());
 		return;
 	}
