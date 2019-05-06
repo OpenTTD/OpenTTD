@@ -646,55 +646,17 @@ void VideoDriver_SDL::Stop()
 	}
 }
 
-void VideoDriver_SDL::MainLoop()
+void VideoDriver_SDL::LoopOnce()
 {
-	uint32 cur_ticks = SDL_GetTicks();
-	uint32 last_cur_ticks = cur_ticks;
-	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
-	uint32 mod;
-	int numkeys;
-	Uint8 *keys;
+		uint32 mod;
+		int numkeys;
+		Uint8 *keys;
 
-	CheckPaletteAnim();
-
-	std::thread draw_thread;
-	std::unique_lock<std::recursive_mutex> draw_lock;
-	if (_draw_threaded) {
-		/* Initialise the mutex first, because that's the thing we *need*
-		 * directly in the newly created thread. */
-		_draw_mutex = new std::recursive_mutex();
-		if (_draw_mutex == nullptr) {
-			_draw_threaded = false;
-		} else {
-			draw_lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
-			_draw_signal = new std::condition_variable_any();
-			_draw_continue = true;
-
-			_draw_threaded = StartNewThread(&draw_thread, "ottd:draw-sdl", &DrawSurfaceToScreenThread);
-
-			/* Free the mutex if we won't be able to use it. */
-			if (!_draw_threaded) {
-				draw_lock.unlock();
-				draw_lock.release();
-				delete _draw_mutex;
-				delete _draw_signal;
-				_draw_mutex = nullptr;
-				_draw_signal = nullptr;
-			} else {
-				/* Wait till the draw mutex has started itself. */
-				_draw_signal->wait(*_draw_mutex);
-			}
-		}
-	}
-
-	DEBUG(driver, 1, "SDL: using %sthreads", _draw_threaded ? "" : "no ");
-
-	for (;;) {
 		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
 		InteractiveRandom(); // randomness
 
 		while (PollEvent() == -1) {}
-		if (_exit_game) break;
+		if (_exit_game) return;
 
 		mod = SDL_GetModState();
 #if SDL_VERSION_ATLEAST(1, 3, 0)
@@ -779,6 +741,48 @@ void VideoDriver_SDL::MainLoop()
 			CheckPaletteAnim();
 			DrawSurfaceToScreen();
 		}
+}
+
+void VideoDriver_SDL::MainLoop()
+{
+	cur_ticks = SDL_GetTicks();
+	last_cur_ticks = cur_ticks;
+	next_tick = cur_ticks + MILLISECONDS_PER_TICK;
+
+	CheckPaletteAnim();
+
+	if (_draw_threaded) {
+		/* Initialise the mutex first, because that's the thing we *need*
+		 * directly in the newly created thread. */
+		_draw_mutex = new std::recursive_mutex();
+		if (_draw_mutex == nullptr) {
+			_draw_threaded = false;
+		} else {
+			draw_lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
+			_draw_signal = new std::condition_variable_any();
+			_draw_continue = true;
+
+			_draw_threaded = StartNewThread(&draw_thread, "ottd:draw-sdl", &DrawSurfaceToScreenThread);
+
+			/* Free the mutex if we won't be able to use it. */
+			if (!_draw_threaded) {
+				draw_lock.unlock();
+				draw_lock.release();
+				delete _draw_mutex;
+				delete _draw_signal;
+				_draw_mutex = nullptr;
+				_draw_signal = nullptr;
+			} else {
+				/* Wait till the draw mutex has started itself. */
+				_draw_signal->wait(*_draw_mutex);
+			}
+		}
+	}
+
+	DEBUG(driver, 1, "SDL: using %sthreads", _draw_threaded ? "" : "no ");
+
+	while (!_exit_game) {
+		LoopOnce();
 	}
 
 	if (_draw_mutex != nullptr) {
