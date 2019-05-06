@@ -2412,6 +2412,10 @@ static void SaveFileStart()
 	_sl.saveinprogress = true;
 }
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 /** Update the gui accordingly when saving is done and release locks on saveload. */
 static void SaveFileDone()
 {
@@ -2420,6 +2424,10 @@ static void SaveFileDone()
 
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SAVELOAD_FINISH);
 	_sl.saveinprogress = false;
+
+#ifdef __EMSCRIPTEN__
+	EM_ASM(if (window["save_data"]) save_data());
+#endif
 }
 
 /** Set the error message from outside of the actual loading/saving of the game (AfterLoadGame and friends) */
