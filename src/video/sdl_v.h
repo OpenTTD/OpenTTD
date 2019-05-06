@@ -14,8 +14,16 @@
 
 #include "video_driver.hpp"
 
+#ifdef __EMSCRIPTEN__
+void em_loop(void *arg);
+#endif
+
 /** The SDL video driver. */
 class VideoDriver_SDL : public VideoDriver {
+#ifdef __EMSCRIPTEN__
+	friend void em_loop(void *arg);
+#endif
+
 public:
 	const char *Start(const char * const *param) override;
 

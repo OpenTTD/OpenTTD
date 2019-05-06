@@ -646,6 +646,16 @@ void VideoDriver_SDL::Stop()
 	}
 }
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+
+void em_loop(void *arg)
+{
+	VideoDriver_SDL *drv = (VideoDriver_SDL*)arg;
+	drv->LoopOnce();
+}
+#endif
+
 void VideoDriver_SDL::LoopOnce()
 {
 		uint32 mod;
@@ -721,10 +731,12 @@ void VideoDriver_SDL::LoopOnce()
 			UpdateWindows();
 			_local_palette = _cur_palette;
 		} else {
+#ifndef __EMSCRIPTEN__
 			/* Release the thread while sleeping */
 			if (_draw_mutex != nullptr) draw_lock.unlock();
 			CSleep(1);
 			if (_draw_mutex != nullptr) draw_lock.lock();
+#endif
 
 			NetworkDrawChatMessage();
 			DrawMouseCursor();
@@ -781,9 +793,13 @@ void VideoDriver_SDL::MainLoop()
 
 	DEBUG(driver, 1, "SDL: using %sthreads", _draw_threaded ? "" : "no ");
 
+#ifndef __EMSCRIPTEN__
 	while (!_exit_game) {
 		LoopOnce();
 	}
+#else
+	emscripten_set_main_loop_arg(em_loop, this, 0, 1);
+#endif
 
 	if (_draw_mutex != nullptr) {
 		_draw_continue = false;
