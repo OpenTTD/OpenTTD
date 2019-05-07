@@ -404,6 +404,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Közelí
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Távolítás
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Vasúti pálya építése
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Út építése
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Villamospálya építése
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Vízi út építése
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Repülőtér építése
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Nyisd meg a tájrendező ablakot a talaj emeléséhez vagy süllyesztéséhez, faültetéshez stb.
@@ -424,6 +425,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Táj sze
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Település-generálás
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Gazdasági épület-generálás
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Út építése
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Villamospálya építése
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Faültetés. Shift lenyomásával megmutatja a becsült építési költséget
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Felirat lerakása
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objektum elhelyezése. Shift lenyomásával megmutatja a várható költséget
@@ -2498,7 +2500,11 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Közúti
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Villamos-alagút építése. Shift lenyomásával megmutatja a becsült építési költséget
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Építés és felszedés közötti váltás utaknál
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Építés és bontás közötti váltás villamospályáknál
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Út átalakítása a kiválasztott típusra. Shift lenyomásával megmutatja a becsült építési költséget
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Villamospálya átalakítása a kiválasztott típusra. Shift lenyomásával megmutatja a becsült építési költséget
 
+STR_ROAD_NAME_ROAD                                              :Út
+STR_ROAD_NAME_TRAM                                              :Villamospálya
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Garázs helyzete
@@ -2683,8 +2689,11 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Elfogad: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Vasút típusa: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Út típusa: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Villamospálya típusa: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Vasúti pályasebesség: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Közúti sebességkorlátozás: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Villamosok sebességkorlátozása: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kövek
@@ -3424,6 +3433,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Vasúti elemek:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Vasúti jelzők
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Közúti elemek:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Villamospálya elemek:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vízi elemek:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Csatornák
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Állomások:
@@ -3532,9 +3542,11 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Új egysínű j
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Új Maglev járművek
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Új közúti járművek
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Új villamosok
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Új vasúti járművek
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Új közúti járművek
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Új hajók
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Új repülőgépek
 ############ range for vehicle availability ends
@@ -3700,10 +3712,12 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Üzenet 
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Most készültek el egy új {STRING} tervei - érdekelne a jármű egy éves kizárólagos használata, hogy megnézhessük a képességeit, mielőtt mindenki számára elérhetővé tesszük?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :vasúti mozdony
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :villamos vasúti mozdony
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :egysínű mozdony
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Maglev mozdony
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :közúti jármű
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :villamos
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :repülőgép
 STR_ENGINE_PREVIEW_SHIP                                         :hajó
@@ -3745,14 +3759,18 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Váltás
 STR_REPLACE_ENGINES                                             :Mozdonyok
 STR_REPLACE_WAGONS                                              :Vagonok
 STR_REPLACE_ALL_RAILTYPE                                        :Minden vasúti jármű
+STR_REPLACE_ALL_ROADTYPE                                        :Minden típus
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Cserélendő egységek vasúttípusának kiválasztása
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Cserélendő járművek úttípusának kiválasztása
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Megmutatja, hogy melyik bal oldali egységet akarod kicserélni
 STR_REPLACE_RAIL_VEHICLES                                       :Normál vasúti járművek
 STR_REPLACE_ELRAIL_VEHICLES                                     :Villamosított vasúti járművek
 STR_REPLACE_MONORAIL_VEHICLES                                   :Egysínű Vasutak
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Járművek
 
+STR_REPLACE_ROAD_VEHICLES                                       :Közúti járművek
+STR_REPLACE_TRAM_VEHICLES                                       :Villamosok
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon törlés: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automatikus cserénél a szerelvény hosszának a megtartása vagonok eltávolításával (mozdony utántól kezdve), ha a csere után a szerelvény hosszabb lenne
@@ -4476,6 +4494,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nincs me
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Előbb le kell rombolnod a vasúti pályát
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}... az út egyirányú vagy blokkolt
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Ehhez a síntipushoz nem megengedett vasúti átjárók építése
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Ehhez az úttípushoz nem megengedett vasúti átjárók építése
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nem helyezhetsz ide jelzőt...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nem építhetsz ide vasúti pályát...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nem szedheted fel innen a vasúti pályát...
@@ -4495,6 +4514,12 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nem romb
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Innen nem lehet villamospályát eltávolítani...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... nincs itt út
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... nincs itt villamospálya
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Nem lehet itt az út típusát átalakítani...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Nem lehet itt a villamospálya típusát átalakítani...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Nincs megfelelő út
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nincs megfelelő villamospálya
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... nem kompatibilis az út
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... nem kompatibilis a villamospálya
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ide nem lehet csatornát építeni...

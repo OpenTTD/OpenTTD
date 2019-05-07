@@ -237,6 +237,7 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Angre kr
 STR_BUTTON_SORT_BY                                              :{BLACK}Sortera efter
 STR_BUTTON_LOCATION                                             :{BLACK}Plats
 STR_BUTTON_RENAME                                               :{BLACK}Byt namn
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Växla visning av upptagningsområde
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Stäng fönster
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fönstertitel - dra för att flytta fönstret
@@ -265,6 +266,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}När den
 STR_BUTTON_DEFAULT                                              :{BLACK}Standardinställning
 STR_BUTTON_CANCEL                                               :{BLACK}Avbryt
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Varning: Serveradministratörer kan ha möjlighet att läsa text som skrivs här.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -466,6 +468,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Ljud/musik
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Senaste meddelandet/nyheten
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meddelandehistorik
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Ta bort alla meddelanden
 ############ range ends here
 
 ############ range for about menu starts
@@ -988,13 +991,16 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Välj vi
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annan
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Gränssnittstorlek
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Välj vilken gränssnittsstorlek som används
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Välj vilken gränssnittsstorlek som ska användas
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dubbel storlek
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Fyrdubbel storlek
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Storlek på typsnitt
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Välj vilken storlek som ska användas på gränssnittets typsnitt
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dubbel storlek
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikpaket som standard
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Välj vilket grafikpaket som ska användas som standard
@@ -1194,8 +1200,8 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Lutningsgrad f�
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Sluttningars lutningsgrad för vägfordon: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Lutningsgrad för lutande rutor för vägfordon. Högre värden gör det svårare att komma upp för en backe
-STR_CONFIG_SETTING_FORBID_90_DEG                                :Förbjud tåg och skepp att göra 90° svängar: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-graderssvängar inträffar då ett horisontellt spår följs direkt av ett vertikalt spår på angränsande ruta och därmed gör så att tåget svänger 90-grader om de kör längs med spåret. Detta i motsats till andra kombinationer av spårbitar där tåget svänger 45 grader i taget. Denna inställning påverkar även svängradien för fartyg
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Förbjud tåg att göra 90°-svängar: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-graderssvängar inträffar då ett horisontellt spår följs direkt av ett vertikalt spår på angränsande ruta, vilket tvingar tåget att svänga 90 grader om det kör utefter spåret. Detta i motsats till andra kombinationer av spårbitar där tåget svänger 45 grader i taget.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Tillåt att stationer som inte är byggda direkt brevid varandra slås ihop: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Tillåt att lägga till delar till en station utan att de är i direktkontakt med existerande delar. Kräver Ctrl+klick vid placering av nya stationsdelar.
 STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STRING}
@@ -1251,8 +1257,8 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :Hastighetsfakto
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Ställ in relativ hastighet för flygplan relativt övriga fordonstyper. Detta reducerar inkomsterna för flygtransporter.
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Antal flygplanskrascher: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Ställ in hur stor risken för en flygolycka ska vara
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Inga
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Ställ in hur stor sannolikheten för en slumpmässig flygkrasch ska vara.{}* Stora flygplan löper alltid en risk att krascha när de landar på små flygfält
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Inga*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reducerad
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillåt genomfartshållplatser på stadsägda vägar: {STRING}
@@ -1577,6 +1583,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Om denna instä
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Förbjuden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tillåten
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tillåten, vanlig stads-layout
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linjär
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Placering av träd i spelläge: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontrollera den slumpmässiga uppkomsten av träd under spelets gång. Detta kan påverka industrier som är beroende av växande träd, till exempel sågverk
@@ -2078,6 +2085,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koppla i
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servern är skyddad. Ange lösenord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Företaget är skyddat. Ange lösenord
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Klientlista
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klientlista
@@ -2126,7 +2134,7 @@ STR_NETWORK_CHAT_ALL                                            :[Alla] {STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Mata in text för nätverkschat
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Inget nätverkskort funnet eller så är spelet kompilerat utan ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Inget nätverkskort funnet
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Kunde inte hitta några nätverksspel
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Servern svarade inte på förfrågan
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kunde inte ansluta på grund av att NewGRF är omaka
@@ -2418,6 +2426,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bygg vä
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bygg spårvägstunnel. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Växla mellan att bygga/riva väg
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Växla mellan att bygga/riva spårväg
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Konvertera/Uppgradera spårvagnstyp. Shift växlar mellan att bygga/visa beräknad kostnad
 
 
 # Road depot construction window
@@ -2605,6 +2614,7 @@ STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STR
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Spårtyp: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Hastighetsgräns för järnvägsspår: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Hastighetsbegränsning på väg: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Hastighetsgräns för spårvagnar: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Stenar
@@ -2736,6 +2746,7 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Grafikå
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Vyfönster:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Videoutmatning:
 STR_FRAMERATE_SOUND                                             :{BLACK}Ljudmixning:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} Spelskript:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Spel-loop
@@ -2750,6 +2761,7 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Grafikåtergivn
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Återgivning av vyer
 STR_FRAMETIME_CAPTION_VIDEO                                     :Videoutmatning
 STR_FRAMETIME_CAPTION_SOUND                                     :Ljudmixning
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Spelskript
 ############ End of leave-in-this-order
 
 
@@ -3108,6 +3120,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Muta d
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Mål
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globala mål
+STR_GOALS_SPECTATOR                                             :Globala mål
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globala mål:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Inga -
@@ -3445,6 +3458,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nytt Vägfordon
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nya rälsfordon
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Nya vägfordon
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nytt skepp
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nytt flygplan
 ############ range for vehicle availability ends
@@ -3460,6 +3474,7 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(anpassningsbar
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designår: {GOLD}{NUM}{BLACK} Livslängd: {GOLD}{COMMA} år
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. tillförlitlighet: {GOLD}{COMMA} %
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kostnad: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Kostnad: {GOLD}{CURRENCY_LONG}{BLACK} (Anpassningskostnad: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vikt: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY_LONG}{BLACK} Hastighet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitet: {GOLD}{CARGO_LONG}, {CARGO_LONG}
@@ -3482,12 +3497,16 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Köp for
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Köp skepp
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Köp flygplan
 
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Köp och anpassa fordon
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Köp och anpassa fordon
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Köp och anpassa flygplan
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Köp markerad tågvagn. Shift+klick visar kostnad utan att köpa
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Köp markerat vägfordon. Shift+klick visar kostnad utan att köpa
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Köp markerat skepp. Shift+klick visar kostnad utan att köpa
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Köp markerat flygplan. Shift+klick visar kostnad utan att köpa
 
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Köp och anpassa markerat flygplan. Shift+klick visar kostnad utan att köpa
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Byt namn på
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Byt namn på
@@ -3599,6 +3618,7 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Meddelan
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har just designat ett nytt {STRING} - är du intresserad av ett års exklusiv användning av detta fordon, så vi kan se hur det presterar innan vi gör det allmänt tillgängligt?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :järnvägslok
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrifierat järnvägslok
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail-lok
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-lok
 
@@ -3644,6 +3664,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Växla m
 STR_REPLACE_ENGINES                                             :Lok
 STR_REPLACE_WAGONS                                              :Vagnar
 STR_REPLACE_ALL_RAILTYPE                                        :Alla järnvägsfordon
+STR_REPLACE_ALL_ROADTYPE                                        :Alla vägfordon
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Välj vilken järnvägstyp du vill byta ut lok för
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Visa vilket fordon det vänstra fordonet byts ut till, om något
@@ -3652,6 +3673,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Elektriska jär
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail-fordon
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevfordon
 
+STR_REPLACE_ROAD_VEHICLES                                       :Vägfordon
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagnborttagning: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gör så att automatiskt utbyte behåller ett tågs längd genom att ta bort vagnar (med början längst fram) om utbytandet av loket skulle göra tåget längre
@@ -3794,7 +3816,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacite
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Anpassa)
 STR_REFIT_TITLE                                                 :{GOLD}Välj godstyp att frakta:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Anpassningens kostnad: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Kostnad för anpassning: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Inkomstens vinst: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kostnad för anpassning: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}. {GOLD}{CARGO_LONG}{}{BLACK}Inkomstens vinst: {GREEN}{CURRENCY_LONG}
@@ -4375,6 +4397,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Inget pa
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Måste ta bort järnväg först
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vägen är enkelriktad eller blockerad
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Plankorsningar är inte tillåtna för denna typ av spår
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Plankorsningar är inte tillåtna för denna vägtyp
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan inte bygga signaler här...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan inte bygga järnvägsspår här...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan inte ta bort järnvägspår här...
@@ -4394,6 +4417,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kan inte
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kan inte ta bort spårvagnsrälsen härifrån...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... det finns ingen väg
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... det finns ingen spårvagnsräls
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Kan inte konvertera vägtyp här...
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan inte bygga kanaler här...

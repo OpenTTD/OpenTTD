@@ -1866,7 +1866,7 @@ STR_LIVERY_PASSENGER_SHIP                                       :Passagiersschip
 STR_LIVERY_FREIGHT_SHIP                                         :Vrachtschip
 STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Klein vliegtuig
-STR_LIVERY_LARGE_PLANE                                          :Groot Vliegtuig
+STR_LIVERY_LARGE_PLANE                                          :Groot vliegtuig
 STR_LIVERY_PASSENGER_TRAM                                       :Passagierstram
 STR_LIVERY_FREIGHT_TRAM                                         :Vrachttram
 
@@ -3131,7 +3131,7 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Gemeentebestuur
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Begin een kleine reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begin een middelgrote reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begin een grote reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financier een herstelling van het wegennetwerk. Veroorzaakt tot 6 maanden lang een aanzienlijke verstoring van het wegverkeer.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financier een reconstructie van het wegennetwerk. Veroorzaakt tot 6 maanden lang een aanzienlijke verstoring van het wegverkeer.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Een standbeeld bouwen ter ere van jouw bedrijf.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}De bouw van nieuwe commerciële gebouwen in de stad financieren.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}1 jaar exclusieve transportrechten kopen in deze plaats. Het gemeentebestuur staat alleen passagiers en vracht toe bij jouw stations.{}Kosten: {CURRENCY_LONG}
