@@ -197,15 +197,19 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 				}
 				for (int i = 0; i < range.len; i++) {
 					if (buff[range.pos + i] >= SCC_SPRITE_START && buff[range.pos + i] <= SCC_SPRITE_END) {
-						range.ft_glyphs[range.char_to_glyph[i]] = range.font->fc->MapCharToGlyph(buff[range.pos + i]);
-						range.offsets[range.char_to_glyph[i]].dv = range.font->fc->GetAscender() - range.font->fc->GetGlyph(range.ft_glyphs[range.char_to_glyph[i]])->height - 1; // Align sprite glyphs to font baseline.
+						auto pos = range.char_to_glyph[i];
+						range.ft_glyphs[pos] = range.font->fc->MapCharToGlyph(buff[range.pos + i]);
+						range.offsets[pos].dv = range.font->fc->GetAscender() - range.font->fc->GetGlyph(range.ft_glyphs[pos])->height - 1; // Align sprite glyphs to font baseline.
+						range.advances[pos] = range.font->fc->GetGlyphWidth(range.ft_glyphs[pos]);
 					}
 				}
 
-				/* FreeType and GDI/Uniscribe seems to occasionally disagree over the width of a glyph. */
 				range.total_advance = 0;
 				for (size_t i = 0; i < range.advances.size(); i++) {
+#ifdef WITH_FREETYPE
+					/* FreeType and GDI/Uniscribe seems to occasionally disagree over the width of a glyph. */
 					if (range.advances[i] > 0 && range.ft_glyphs[i] != 0xFFFF) range.advances[i] = range.font->fc->GetGlyphWidth(range.ft_glyphs[i]);
+#endif
 					range.total_advance += range.advances[i];
 				}
 				break;
