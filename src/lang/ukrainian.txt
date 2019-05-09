@@ -463,6 +463,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Збіл
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Зменшити
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Будувати залізницю
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Будувати дороги
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Будувати трамвайну колію
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Будувати порти
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Будувати аеропорти
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Змінити ландшафт
@@ -483,6 +484,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Ство
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Створення міст
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Створення виробництва
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Будівництво доріг
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Будівництво трамвайних колій
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Насадження дерев. Утримуйте Shift для показу витрат на висаджування
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Встановити позначку
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Встановити об'єкт. Утримуйте Shift для показу витрат на розміщення
@@ -567,7 +569,7 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Будівни�
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Будівництво автомобільних доріг
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Будівництво трамвайних доріг
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Будівництво трамвайних колій
 ############ range ends here
 
 ############ range for waterways construction menu starts
@@ -2544,7 +2546,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Трубчас�
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Автомобільне будівництво
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Трамвайне будівництво
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Будівництво трамвайних колій
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Будувати дорогу. Ctrl переключає побудову/знесення для будівництва доріг. Утримуйте Shift для показу витрат
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Будувати трамвайну колію. Ctrl переключає побудову/знесення для будівництва трамвайної колії. Утримуйте Shift для показу витрат на будівництво
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Будувати дорогу в режимі Автобудування. Ctrl переключає побудову/знесення для будівництва доріг. Утримуйте Shift для показу витрат на будівництво
@@ -2562,6 +2564,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Буду
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Побудувати трамвайний тунель. Утримуйте Shift для показу витрат на придбання
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Будувати/зруйнувати дорогу
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Будувати/демонтувати колію
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Модернізувати дорогу. Утримуйте Shift для показу витрат на модернізацію
 
 
 # Road depot construction window
@@ -2747,6 +2750,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Приймає: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Тип зал.колії: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Тип дороги: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Ліміт швидкості залізниці: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Ліміт швидкості авто: {LTBLUE}{VELOCITY}
 
@@ -3565,6 +3569,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Незгруп�
 STR_GROUP_DEFAULT_SHIPS                                         :Незгруповані кораблі
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Незгруповані літаки
 
+STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Групи - клацніть мишою на групі, щоб побачити список транспорту цієї групи. Перетягуйте групи, щоб змінити ієрархію.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Клацніть мишою, щоб створити групу
@@ -4471,7 +4476,7 @@ STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Споч
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Спочатку зруйнуйте зупинку
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Спочатку зруйнуйте вантажну станцію
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Спочатку треба знести пасажирську трамвайну станцію
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Спочатку треба знести вантажну трамвайну станцію
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Спочатку зруйнуйте товарну трамвайну станцію
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Спочатку зруйнуйте порт
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Спочатку зруйнуйте аеропорт
 
@@ -4526,6 +4531,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Неві
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Спочатку приберіть колію
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дорога з одностороннім рухом або блокована
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Переїзди для такого виду колії є забороненими
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Переїзди для такого виду дороги є забороненими
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Неможливо будувати сигнали тут...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Неможливо будувати колію тут...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Неможливо прибрати колію звідси...
@@ -4545,6 +4551,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Немо
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не можна прибрати трамвайну колію звідси...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... тут немає дороги
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... тут немає трамвайних шляхів
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Тут не можна модернізувати дорогу...
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Неможливо будувати канал тут...
@@ -4597,6 +4604,7 @@ STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Не м�
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Не можна стерти групу...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Не можна перейменувати групу...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Неможливо встановити головну групу...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... ієрархія груп не може містити циклів
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Не можна позбутися всього транспорту цієї групи...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Не можна додати цей транспорт у групу...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Не можна додати спільний транспорт у групу...
