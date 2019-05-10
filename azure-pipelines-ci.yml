@@ -25,6 +25,7 @@ jobs:
   - template: azure-pipelines/templates/windows-build.yml
     parameters:
       BuildPlatform: $(BuildPlatform)
+      BuildConfiguration: Debug
   - script: |
       call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86
       cd projects
