@@ -369,6 +369,7 @@ public:
 		this->groups.ForceRebuild();
 		this->groups.NeedResort();
 		this->BuildGroupList(vli.company);
+		this->group_sb->SetCount((uint)this->groups.size());
 
 		this->GetWidget<NWidgetCore>(WID_GL_CAPTION)->widget_data = STR_VEHICLE_LIST_TRAIN_CAPTION + this->vli.vtype;
 		this->GetWidget<NWidgetCore>(WID_GL_LIST_VEHICLE)->tool_tip = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vli.vtype;
@@ -992,6 +993,35 @@ public:
 	{
 		if (this->vehicle_sel == vehicle) ResetObjectToPlace();
 	}
+
+	/**
+	 * Selects the specified group in the list
+	 *
+	 * @param g_id The ID of the group to be selected
+	 */
+	void SelectGroup(const GroupID g_id)
+	{
+		if (g_id == INVALID_GROUP || g_id == this->vli.index) return;
+
+		this->vli.index = g_id;
+		if (g_id != ALL_GROUP && g_id != DEFAULT_GROUP) {
+			const Group *g = Group::Get(g_id);
+			int id_g = find_index(this->groups, g);
+			// The group's branch is maybe collapsed, so try to expand it
+			if (id_g == -1) {
+				for (auto pg = Group::GetIfValid(g->parent); pg != nullptr; pg = Group::GetIfValid(pg->parent)) {
+					pg->folded = false;
+				}
+				this->groups.ForceRebuild();
+				this->BuildGroupList(this->owner);
+				id_g = find_index(this->groups, g);
+			}
+			this->group_sb->ScrollTowards(id_g);
+		}
+		this->vehicles.ForceRebuild();
+		this->SetDirty();
+	}
+
 };
 
 
