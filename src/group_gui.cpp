@@ -734,6 +734,10 @@ public:
 
 				this->vehicle_sel = v->index;
 
+				if (_ctrl_pressed) {
+					this->SelectGroup(v->group_id);
+				}
+
 				SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
 				SetMouseCursorVehicle(v, EIT_IN_LIST);
 				_cursor.vehchain = true;
