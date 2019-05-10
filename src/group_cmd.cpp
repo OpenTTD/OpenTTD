@@ -536,7 +536,7 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	if (new_g == NEW_GROUP) {
 		/* Create new group. */
-		CommandCost ret = CmdCreateGroup(0, flags, v->type, 0, NULL);
+		CommandCost ret = CmdCreateGroup(0, flags, v->type, INVALID_GROUP, NULL);
 		if (ret.Failed()) return ret;
 
 		new_g = _new_group_id;
