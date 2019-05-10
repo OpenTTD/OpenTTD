@@ -7,5 +7,5 @@ steps:
   inputs:
     solution: 'projects/openttd_vs141.sln'
     platform: ${{ parameters.BuildPlatform }}
-    configuration: Release
+    configuration: ${{ parameters.BuildConfiguration }}
     maximumCpuCount: true
