@@ -2698,7 +2698,11 @@ public:
 				}
 				break;
 			case WID_VV_SHOW_DETAILS: // show details
-				ShowVehicleDetailsWindow(v);
+				if (_ctrl_pressed) {
+					ShowCompanyGroupForVehicle(v);
+				} else {
+					ShowVehicleDetailsWindow(v);
+				}
 				break;
 			case WID_VV_CLONE: // clone vehicle
 				/* Suppress the vehicle GUI when share-cloning.

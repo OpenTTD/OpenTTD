@@ -1047,18 +1047,31 @@ static WindowDesc _train_group_desc(
  * Show the group window for the given company and vehicle type.
  * @param company The company to show the window for.
  * @param vehicle_type The type of vehicle to show it for.
+ * @param group The group to be selected. Defaults to INVALID_GROUP.
+ * @param need_existing_window Whether the existing window is needed. Defaults to false.
  */
-void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type)
+void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type, GroupID group = INVALID_GROUP, bool need_existing_window = false)
 {
 	if (!Company::IsValidID(company)) return;
 
-	WindowNumber num = VehicleListIdentifier(VL_GROUP_LIST, vehicle_type, company).Pack();
+	const WindowNumber num = VehicleListIdentifier(VL_GROUP_LIST, vehicle_type, company).Pack();
+	VehicleGroupWindow *w;
 	if (vehicle_type == VEH_TRAIN) {
-		AllocateWindowDescFront<VehicleGroupWindow>(&_train_group_desc, num);
+		w = AllocateWindowDescFront<VehicleGroupWindow>(&_train_group_desc, num, need_existing_window);
 	} else {
 		_other_group_desc.cls = GetWindowClassForVehicleType(vehicle_type);
-		AllocateWindowDescFront<VehicleGroupWindow>(&_other_group_desc, num);
+		w = AllocateWindowDescFront<VehicleGroupWindow>(&_other_group_desc, num, need_existing_window);
 	}
+	if (w != nullptr) w->SelectGroup(group);
+}
+
+/**
+ * Show the group window for the given vehicle.
+ * @param v The vehicle to show the window for.
+ */
+void ShowCompanyGroupForVehicle(const Vehicle *v)
+{
+	ShowCompanyGroup(v->owner, v->type, v->group_id, true);
 }
 
 /**
