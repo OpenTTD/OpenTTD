@@ -2612,7 +2612,11 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Стро
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Строительство трамвайных туннелей. При нажатом Shift - оценка стоимости строительства.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Строительство/удаление автомобильных дорог и станций
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Строительство/удаление трамвайных путей и станций
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Реконструкция/изменение типа дорожного полотна. С нажатым Shift - оценка стоимости строительства.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Реконструкция трамвайных путей. С нажатым Shift - оценка стоимости строительства.
 
+STR_ROAD_NAME_ROAD                                              :Автомобильная дорога
+STR_ROAD_NAME_TRAM                                              :Трамвайные пути
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Направление гаража
@@ -2801,6 +2805,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Принимает: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Тип ж/д полотна: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Тип дорожного полотна: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Тип трамвайных путей: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Макс. скорость ж/д: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Макс. скорость авто: {LTBLUE}{VELOCITY}
@@ -2839,9 +2844,9 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Ж/д путь 
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Ж/д путь с маршрутным и односторонним маршрутным сигналами
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Ж/д депо
 
-STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Дорога
-STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Дорога с уличным освещением
-STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Дорога с озеленением
+STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Автодорога
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Освещённая автодорога
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Автодорога с озеленением
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Гараж
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Железнодорожный переезд
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Трамвайные пути
@@ -3657,8 +3662,9 @@ STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Новые тр
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Новый поезд
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Новый дорожный транспорт
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Новый корабль
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новый авиатранспорт
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новое воздушное судно
 ############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} Вес: {GOLD}{WEIGHT_SHORT}
@@ -3823,6 +3829,8 @@ STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Мы со
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :ж/д локомотив
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.gen                      :ж/д локомотива
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :электровоз
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE.gen                        :электровоза
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорельсовый локомотив
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.gen                      :монорельсового локомотива
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :магниторельсовый локомотив
@@ -3831,6 +3839,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.gen                        :магнито�
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомобиль
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.gen                             :автомобиля
 STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :трамвай
+STR_ENGINE_PREVIEW_TRAM_VEHICLE.gen                             :трамвая
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :воздушное судно
 STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :воздушного судна
@@ -3878,6 +3887,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Пере
 STR_REPLACE_ENGINES                                             :Локомотивы
 STR_REPLACE_WAGONS                                              :Вагоны
 STR_REPLACE_ALL_RAILTYPE                                        :Весь ж/д транспорт
+STR_REPLACE_ALL_ROADTYPE                                        :Весь дорожный транспорт
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Тип ж/д транспорта, подлежащего замене
 STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Выбор вида транспорта для замены
@@ -3888,6 +3898,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Монорел�
 STR_REPLACE_MAGLEV_VEHICLES                                     :Магнитные
 
 STR_REPLACE_ROAD_VEHICLES                                       :Автотранспорт
+STR_REPLACE_TRAM_VEHICLES                                       :Трамваи
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Удаление вагонов: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Разрешить при автозамене сохранять длину поездов путём удаления вагонов (начиная с головы поезда), если при автозамене локомотива увеличится длина поезда.
@@ -4631,8 +4642,10 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Не у�
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не удалось удалить трамвайные пути...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... здесь нет дороги
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... здесь нет трамвайных путей
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Здесь невозможно изменить тип дорожного полотна...
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Невозможно сменить тип трамвайных рельсов...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Нет подходящего дорожного полотна
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Нет подходящих трамвайных путей
 STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... несовместимый тип дороги
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... несовместимый тип трамвайных путей
 

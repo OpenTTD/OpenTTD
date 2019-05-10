@@ -290,8 +290,8 @@ STR_SORT_BY_PRODUCTION                                          :생산
 STR_SORT_BY_TYPE                                                :종류
 STR_SORT_BY_TRANSPORTED                                         :수송량
 STR_SORT_BY_NUMBER                                              :번호
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :작년 수익
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :올해 수익
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :작년 이익
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :올해 이익
 STR_SORT_BY_AGE                                                 :연령
 STR_SORT_BY_RELIABILITY                                         :신뢰도
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :화물당 총 수송량
@@ -625,15 +625,15 @@ STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}이 회�
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}차량:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}역:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}최소 이익:
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}최소 수입:
-STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}최대 수입:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}최소 수익:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}최대 수익:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}수송량:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}화물:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}재정:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}대출:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}종합:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}작년에 수익을 낸 차량의 수를 나타냅니다. 자동차/전차, 열차, 선박, 항공기를 포함합니다.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}작년에 이익을 낸 차량의 수를 나타냅니다. 자동차/전차, 열차, 선박, 항공기를 포함합니다.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}현재 영업 중인 역사의 수를 나타냅니다. 기차역, 버스 정류장, 공항 등은 같은 역으로 묶여있어도 따로 집계됩니다.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}가장 낮은 수입을 가진 차량의 이익입니다. (2년 이상된 차량만 계산)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}지난 12분기 동안 최소 이익을 달성한 차량이 벌어들인 돈의 양입니다.
@@ -863,7 +863,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} : 차량이 매우 낡아 교체가 시급합니다
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} : 다음 목적지로 가는 경로를 찾을 수 없습니다.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} : 아직 다음 목적지에 도착하지 못했습니다.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY_LONG} 입니다.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 이익이 {CURRENCY_LONG} 입니다.
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}거리가 너무 멀어서 {VEHICLE}이 다음 목적지에 도착할 수 없습니다
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}경로 상에 있던 개조에 실패하여 {VEHICLE}의 운행을 멈췄습니다.
@@ -1262,7 +1262,7 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :멀티 플레�
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :화물 무게가중치 (무거운 열차를 구현할 때 사용): {STRING}배
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :열차가 싣고 있는 화물이 열차 속력에 미치는 영향에 대해 설정합니다. 값을 높게 설정하면 화물을 수송하는데 더 큰 힘이 필요합니다. (특히 언덕을 오를 때 심해집니다)
 STR_CONFIG_SETTING_PLANE_SPEED                                  :항공기 속력 조절: {STRING}
-STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :항공 수송에 대한 수익을 제한하기 위해, 다른 운송 수단의 속력을 1로 보았을 때의 항공기의 속력 비율을 설정합니다.
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :항공 수송에 대한 수입을 제한하기 위해, 다른 운송 수단의 속력을 1로 보았을 때의 항공기의 속력 비율을 설정합니다.
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :(실제 속력) x {COMMA}분의 1
 STR_CONFIG_SETTING_PLANE_CRASHES                                :항공기 추락 빈도수: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :항공기 충돌 사고가 일어날 수 있는지 여부를 설정합니다.{}* 대형 항공기는 소형 공항에 착륙할 때 항상 충돌 사고를 일으킬 가능성이 있습니다.
@@ -1412,7 +1412,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :긴 (2012년 1�
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :짧은 (2012.01.01)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :국제표준규격 (2012-01-01)
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :게임 시작 시 자동으로 일시정지: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :게임 시작 시 자동으로 일시 정지: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :이 설정을 켜면, 새로운 게임을 시작할 때 지도를 더욱 자세히 살펴볼 수 있도록 게임을 자동으로 일시정지합니다.
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :일시 정지 상태에서 가능한 행동: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :게임이 일시 정지된 동안에 할 수 있는 행동을 선택합니다.
@@ -3027,7 +3027,7 @@ STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}파일�
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}대체할 수 있는 GRF를 불러왔습니다
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}없는 GRF 파일은 비활성화됩니다
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파일 없음
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지 해제 시 오류가 발생하거나 게임이 종료될 수 있으며, 이와 관련된 버그 리포트는 접수받지 않습니다.{}정말로 일시정지를 해제하시겠습니까?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시 정지 해제 시 오류가 발생하거나 게임이 종료될 수 있으며, 이와 관련된 버그 리포트는 접수받지 않습니다.{}정말로 일시 정지를 해제하시겠습니까?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :없음
@@ -3287,7 +3287,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}경유�
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY}의 재정 {BLACK}{COMPANY_NUM}
-STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}지출/수입
+STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}수입/지출
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}건설
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}신규 차량 구입
@@ -3416,7 +3416,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}차량 -
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}올해 수입: {CURRENCY_LONG} (작년: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}올해 이익: {CURRENCY_LONG} (작년: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :사용 가능한 열차
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :사용 가능한 차량
@@ -3467,8 +3467,8 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 �
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 이름 설정
 
-STR_GROUP_PROFIT_THIS_YEAR                                      :올해 수익:
-STR_GROUP_PROFIT_LAST_YEAR                                      :작년 수익:
+STR_GROUP_PROFIT_THIS_YEAR                                      :올해 이익:
+STR_GROUP_PROFIT_LAST_YEAR                                      :작년 이익:
 STR_GROUP_OCCUPANCY                                             :현재 사용량:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -3798,7 +3798,7 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}최고 �
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: {LTBLUE}{WEIGHT_SHORT} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고 속력: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}무게: {LTBLUE}{WEIGHT_SHORT} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고 속력: {LTBLUE}{VELOCITY} {BLACK}최고 견인력: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}올해 수익: {LTBLUE}{CURRENCY_LONG} (작년: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}올해 이익: {LTBLUE}{CURRENCY_LONG} (작년: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY_LONG}
