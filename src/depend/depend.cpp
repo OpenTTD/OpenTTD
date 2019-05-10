@@ -507,6 +507,9 @@ private:
  */
 const char *GeneratePath(const char *dirname, const char *filename, bool local)
 {
+	/* Ignore C++ standard library headers. */
+	if (strchr(filename, '.') == nullptr) return nullptr;
+
 	if (local) {
 		if (access(filename, R_OK) == 0) return strdup(filename);
 
