@@ -2142,7 +2142,7 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeStation(StationID id)
 	item.id.station = id;
 
 	const Station *st = Station::Get(id);
-	Point pt = RemapCoords2(TileX(st->xy) * TILE_SIZE, TileY(st->xy) * TILE_SIZE);
+	Point pt = RemapCoords(TileX(st->xy) * TILE_SIZE, TileY(st->xy) * TILE_SIZE, GetTileMaxZ(st->xy) * TILE_HEIGHT);
 
 	pt.y -= 32 * ZOOM_LVL_BASE;
 	if ((st->facilities & FACIL_AIRPORT) && st->airport.type == AT_OILRIG) pt.y -= 16 * ZOOM_LVL_BASE;
@@ -2163,7 +2163,7 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeWaypoint(StationID id)
 	item.id.station = id;
 
 	const Waypoint *st = Waypoint::Get(id);
-	Point pt = RemapCoords2(TileX(st->xy) * TILE_SIZE, TileY(st->xy) * TILE_SIZE);
+	Point pt = RemapCoords(TileX(st->xy) * TILE_SIZE, TileY(st->xy) * TILE_SIZE, GetTileMaxZ(st->xy) * TILE_HEIGHT);
 
 	pt.y -= 32 * ZOOM_LVL_BASE;
 
