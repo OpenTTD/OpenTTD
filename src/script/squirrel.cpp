@@ -93,6 +93,7 @@ struct ScriptAllocator {
 	{
 		if (p == nullptr) return;
 		free(p);
+		this->allocated_size -= size;
 
 #ifdef SCRIPT_DEBUG_ALLOCATIONS
 		assert(this->allocations.at(p) == size);
