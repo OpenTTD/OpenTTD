@@ -1640,6 +1640,9 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Разреши�
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Разрешить игрокам, управляемым компьютером, участвовать в сетевых играх
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Количество операций перед остановкой скрипта: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Максимальное количество операций, которое скрипт может выполнить за один цикл
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Макс. объём памяти для скрипта: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Объём памяти, который может использовать скрипт. При превышении этого объёма скрипт будет принудительно завершён. Для больших карт это значение, возможно, потребуется увеличить.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} Мбайт
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Интервал обслуживания в процентах: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Выберите, должно ли техническое обслуживание транспорта выполняться через определённые промежутки времени, либо при снижении надёжности транспортного средства на определённый процент от максимума
@@ -2919,6 +2922,7 @@ STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Теку
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Фактическая скорость игры
 STR_FRAMERATE_CURRENT                                           :{WHITE}Сейчас
 STR_FRAMERATE_AVERAGE                                           :{WHITE}В среднем
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Объём памяти
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Данные по {COMMA} измерени{P ю ям ям}
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} мс
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} мс
@@ -2926,6 +2930,9 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} кадр{P "" а ов}/с
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} кадр{P "" а ов}/с
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} кадр{P "" а ов}/с
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} мс
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} с
 ############ Leave those lines in this order!!
