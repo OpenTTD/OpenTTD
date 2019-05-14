@@ -17,6 +17,7 @@
 #include "../script/squirrel.hpp"
 #include "script_scanner.hpp"
 #include "script_info.hpp"
+#include "script_fatalerror.hpp"
 
 #include "../network/network_content.h"
 #include "../3rdparty/md5/md5.h"
@@ -52,8 +53,12 @@ bool ScriptScanner::AddFile(const char *filename, size_t basepath_length, const 
 	if (!FioCheckFileExists(filename, this->subdir) || !FioCheckFileExists(this->main_script, this->subdir)) return false;
 
 	this->ResetEngine();
-	this->engine->LoadScript(filename);
-
+	try {
+		this->engine->LoadScript(filename);
+	} catch (Script_FatalError e) {
+		DEBUG(script, 0, "Fatal error '%s' when trying to load the script '%s'.", e.GetErrorMessage(), filename);
+		return false;
+	}
 	return true;
 }
 
