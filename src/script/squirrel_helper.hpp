@@ -766,7 +766,7 @@ namespace SQConvert {
 		try {
 			/* Delegate it to a template that can handle this specific function */
 			return HelperT<Tmethod>::SQCall((Tcls *)real_instance, *(Tmethod *)ptr, vm);
-		} catch (SQInteger e) {
+		} catch (SQInteger &e) {
 			return e;
 		}
 	}
@@ -827,7 +827,7 @@ namespace SQConvert {
 		try {
 			/* Delegate it to a template that can handle this specific function */
 			return HelperT<Tmethod>::SQCall((Tcls *)nullptr, *(Tmethod *)ptr, vm);
-		} catch (SQInteger e) {
+		} catch (SQInteger &e) {
 			return e;
 		}
 	}
@@ -881,7 +881,7 @@ namespace SQConvert {
 			sq_setreleasehook(vm, -Tnparam, DefSQDestructorCallback<Tcls>);
 			instance->AddRef();
 			return 0;
-		} catch (SQInteger e) {
+		} catch (SQInteger &e) {
 			return e;
 		}
 	}
@@ -903,7 +903,7 @@ namespace SQConvert {
 			sq_setreleasehook(vm, -nparam, DefSQDestructorCallback<Tcls>);
 			instance->AddRef();
 			return 0;
-		} catch (SQInteger e) {
+		} catch (SQInteger &e) {
 			return e;
 		}
 	}
