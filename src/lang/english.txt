@@ -938,6 +938,9 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari (
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranian Rial (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :New Russian Ruble (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexican Peso (MXN)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :New Taiwan Dollar (NTD)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinese Renminbi (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar (HKD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Road vehicles
