@@ -60,6 +60,9 @@ enum Currencies {
 	CURRENCY_IRR,       ///< Iranian Rial
 	CURRENCY_RUB,       ///< New Russian Ruble
 	CURRENCY_MXN,       ///< Mexican Peso
+	CURRENCY_NTD,       ///< New Taiwan Dollar
+	CURRENCY_CNY,       ///< Chinese Renminbi
+	CURRENCY_HKD,       ///< Hong Kong Dollar
 	CURRENCY_END,       ///< always the last item
 };
 
