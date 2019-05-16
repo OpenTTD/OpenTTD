@@ -1489,6 +1489,9 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permettre les I
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Autorise les Intelligences Artificielles à participer aux parties multijoueurs
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Nombre d'opcodes avant d'interrompre les scripts{NBSP}: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Nombre maximum d'opérations qu'un script peut effectuer en un tour
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Utilisation max de la mémoire par script{NBSP}: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Quantité de mémoire qu'un seul script peut consommer avant d'être terminé de force. Peut nécessiter d'être augmenté pour les grandes cartes.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} Mio
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Les intervalles de service sont en pourcentage{NBSP}: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Choisir si l'entretien des véhicule est activé par le temps passé depuis le dernier entretien ou par la fiabilité passant sous un pourcentage de la fiabilité maximum
@@ -2740,6 +2743,7 @@ STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Facteur 
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}À quelle vitesse le jeu tourne actuellement, comparé à la vitesse attendue pour la simulation normale.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Actuel
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Moyen
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Mémoire
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Données basées sur {COMMA} mesures
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
@@ -2747,6 +2751,9 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} images/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} images/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} images/s
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!

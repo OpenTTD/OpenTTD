@@ -1436,7 +1436,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :처음 사용 �
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :가장 최근에 개발된 철도
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :가장 많이 사용한 것
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :차량의 다음 진행 경로 보여주기: {STRING}
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :열차가 경로기반 폐색으로 진입할 수 없는 문제를 해결하기 위해 열차가 진행할 경로를 별도의 색으로 표시합니다.
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :열차가 경로 탐색 기능 때문에 폐색으로 진입할 수 없는 문제를 해결하기 위해, 열차가 진행할 경로를 별도의 어두운 색으로 표시합니다.
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :건설 도구를 사용 후 계속 유지: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :다리, 터널 등의 건설 도구를 사용 후에도 계속 열어둔 채로 놔둡니다.
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :재정 창에서 비용을 종류별로 묶어서 표시: {STRING}
@@ -1489,6 +1489,9 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :멀티플레이
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :멀티 플레이 게임에서 인공지능 컴퓨터 플레이어가 참여하는 것을 허용합니다.
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :게임 스크립트가 중지되기 직전에 계산할 수 있는 최대 횟수: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :게임 스크립트가 한 단계에서 계산할 수 있는 최대 계산 횟수를 설정합니다.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :스크립트당 최대 메모리 사용량: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :강제로 종료되기 전에 단일 스크립트가 사용할 수 있는 메모리의 양입니다. 크기가 큰 맵에서는 값을 크게 설정해야할 수도 있습니다.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :신뢰도에 따른 정비 설정: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :차량 점검 방식을 "마지막 점검 이후 지난 시간 (또는) 최대 신뢰도에 대한 차량 신뢰도의 일정 퍼센트 하락 여부" 중에 하나로 선택합니다.
@@ -2740,6 +2743,7 @@ STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}현재 �
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}현재 게임이 일반적인 시뮬레이션 비율 속도에 비해 얼마나 빠르게 구동되고 있는지를 보여줍니다.
 STR_FRAMERATE_CURRENT                                           :{WHITE}현재
 STR_FRAMERATE_AVERAGE                                           :{WHITE}평균
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}메모리
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}{COMMA}개의 값을 기반으로 측정한 데이터
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{BLACK} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
@@ -2747,6 +2751,9 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} 프레임/초
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} 프레임/초
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} 프레임/초
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA}초
 ############ Leave those lines in this order!!
