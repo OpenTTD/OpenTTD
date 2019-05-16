@@ -1744,53 +1744,59 @@ static void LoadUnloadVehicle(Vehicle *front)
 		/* if last speed is 0, we treat that as if no vehicle has ever visited the station. */
 		ge->last_speed = min(t, 255);
 		ge->last_age = min(_cur_year - front->build_year, 255);
-		ge->time_since_pickup = 0;
 
 		assert(v->cargo_cap >= v->cargo.StoredCount());
-		/* If there's goods waiting at the station, and the vehicle
-		 * has capacity for it, load it on the vehicle. */
+		/* Capacity available for loading more cargo. */
 		uint cap_left = v->cargo_cap - v->cargo.StoredCount();
-		if (cap_left > 0 && (v->cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0 || ge->cargo.AvailableCount() > 0) && MayLoadUnderExclusiveRights(st, v)) {
-			if (v->cargo.StoredCount() == 0) TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
-			if (_settings_game.order.gradual_loading) cap_left = min(cap_left, GetLoadAmount(v));
 
-			uint loaded = ge->cargo.Load(cap_left, &v->cargo, st->xy, next_station);
-			if (v->cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0) {
-				/* Remember if there are reservations left so that we don't stop
-				 * loading before they're loaded. */
-				SetBit(reservation_left, v->cargo_type);
-			}
+		if (cap_left > 0) {
+			/* If vehicle can load cargo, reset time_since_pickup. */
+			ge->time_since_pickup = 0;
 
-			/* Store whether the maximum possible load amount was loaded or not.*/
-			if (loaded == cap_left) {
-				SetBit(full_load_amount, v->cargo_type);
-			} else {
-				ClrBit(full_load_amount, v->cargo_type);
-			}
+			/* If there's goods waiting at the station, and the vehicle
+			 * has capacity for it, load it on the vehicle. */
+			if ((v->cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0 || ge->cargo.AvailableCount() > 0) && MayLoadUnderExclusiveRights(st, v)) {
+				if (v->cargo.StoredCount() == 0) TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
+				if (_settings_game.order.gradual_loading) cap_left = min(cap_left, GetLoadAmount(v));
 
-			/* TODO: Regarding this, when we do gradual loading, we
-			 * should first unload all vehicles and then start
-			 * loading them. Since this will cause
-			 * VEHICLE_TRIGGER_EMPTY to be called at the time when
-			 * the whole vehicle chain is really totally empty, the
-			 * completely_emptied assignment can then be safely
-			 * removed; that's how TTDPatch behaves too. --pasky */
-			if (loaded > 0) {
-				completely_emptied = false;
-				anything_loaded = true;
-
-				st->time_since_load = 0;
-				st->last_vehicle_type = v->type;
-
-				if (ge->cargo.TotalCount() == 0) {
-					TriggerStationRandomisation(st, st->xy, SRT_CARGO_TAKEN, v->cargo_type);
-					TriggerStationAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
-					AirportAnimationTrigger(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);
+				uint loaded = ge->cargo.Load(cap_left, &v->cargo, st->xy, next_station);
+				if (v->cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0) {
+					/* Remember if there are reservations left so that we don't stop
+					 * loading before they're loaded. */
+					SetBit(reservation_left, v->cargo_type);
 				}
 
-				new_load_unload_ticks += loaded;
+				/* Store whether the maximum possible load amount was loaded or not.*/
+				if (loaded == cap_left) {
+					SetBit(full_load_amount, v->cargo_type);
+				} else {
+					ClrBit(full_load_amount, v->cargo_type);
+				}
 
-				dirty_vehicle = dirty_station = true;
+				/* TODO: Regarding this, when we do gradual loading, we
+				 * should first unload all vehicles and then start
+				 * loading them. Since this will cause
+				 * VEHICLE_TRIGGER_EMPTY to be called at the time when
+				 * the whole vehicle chain is really totally empty, the
+				 * completely_emptied assignment can then be safely
+				 * removed; that's how TTDPatch behaves too. --pasky */
+				if (loaded > 0) {
+					completely_emptied = false;
+					anything_loaded = true;
+
+					st->time_since_load = 0;
+					st->last_vehicle_type = v->type;
+
+					if (ge->cargo.TotalCount() == 0) {
+						TriggerStationRandomisation(st, st->xy, SRT_CARGO_TAKEN, v->cargo_type);
+						TriggerStationAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
+						AirportAnimationTrigger(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);
+					}
+
+					new_load_unload_ticks += loaded;
+
+					dirty_vehicle = dirty_station = true;
+				}
 			}
 		}
 
