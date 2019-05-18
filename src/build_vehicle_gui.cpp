@@ -685,7 +685,7 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 			DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT_SPEED);
 		} else {
 			SetDParam(0, e->GetCost());
-			SetDParam(2, e->GetDisplayMaxSpeed());
+			SetDParam(1, e->GetDisplayMaxSpeed());
 			DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
 		}
 		y += FONT_HEIGHT_NORMAL;
