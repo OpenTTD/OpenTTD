@@ -1584,6 +1584,9 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Dopusti UI u mr
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Dopusti UI računalnim-igračima da sudjeluju u igrama za više igrača
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#op-kodova prije prekida skripte: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Najveći broj računalnih koraka koje skripta može poduzeti u jednom krugu
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Maksimalno korištenje memorije po skripti: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Koliko memorija svaka pojedina skripta može iskoristiti prije nego bude prisilno zatvorena. Ova postavka treba biti povećana za velike mape.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Servisni su intervali u postotcima: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Odaberi hoće li servis vozila potaknuti količina vremana koja je prošla od zadnjeg servisa ili postotni pad u odnosu na najveću pouzdanost
@@ -2835,6 +2838,7 @@ STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Trenutni
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Koliko brzo se igra izvodi trenutno u usporedbi sa očekivanom brzinom u uobičajenoj simulaciji.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Trenutno
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Prosječno
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memorija
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Podaci bazirani na {COMMA} mjerama
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
@@ -2842,6 +2846,9 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} sličica/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} sličica/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} sličica/s
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
