@@ -111,7 +111,7 @@ std::unique_ptr<LanguageStrings> ReadRawLanguageStrings(const char *file)
 			while (i > 0 && (buffer[i - 1] == '\r' || buffer[i - 1] == '\n' || buffer[i - 1] == ' ')) i--;
 			buffer[i] = '\0';
 
-			ret->lines.emplace_back(buffer, buffer + to_read - 1);
+			ret->lines.emplace_back(buffer, i);
 
 			if (len > to_read) {
 				to_read = 0;
