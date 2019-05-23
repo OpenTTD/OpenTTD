@@ -1552,6 +1552,9 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Számítógépe
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Számítógép által irányított játékosok részvételének engedélyezése többjátékos játékokban
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Szkriptek felfüggesztéséhez szükséges opcode mennyiség: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Egy kör alatti maximális számítási lépések száma, amit egy szkript kiszámíthat
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :A szkriptek maximális memóriahasználata: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Mennyi memóriát használhat egy adott szkript, mielőtt leállításra kerül. Nagy térképek esetén lehet, hogy ezt az értéket növelni kell.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Javítási intervallumok százalékban: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :A járművek javítási módjának kiválasztása, hogy az utolsó javítás óta eltelt idő, vagy a maximális megbízhatósághoz képesti százalékos csökkenés alapján kerüljelek javításra
@@ -2803,6 +2806,7 @@ STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}A játé
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Milyen gyorsan fut a játék, viszonyítva az elvárt sebességhez normál játéksebesség esetén.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Pillanatnyi
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Átlagos
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memória
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Adatok {COMMA} mérés alapján
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
@@ -2810,6 +2814,9 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} frame/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} frame/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} frame/s
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
