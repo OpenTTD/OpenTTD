@@ -341,6 +341,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Lähenn�
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Loitonna näkymää
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Rakenna rautateitä
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Rakenna teitä
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Rakenna raitioteitä
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Rakenna satamia
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Rakenna lentokenttiä
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Avaa maastonmuokkaustyökalupalkki maan kohottamiseen/madaltamiseen, puiden istuttamiseen, jne.
@@ -361,6 +362,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Maaston 
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Kuntien luonti
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Teollisuuden luonti
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Tienrakennus
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Raitiotien rakentaminen
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Istuta puita. Shift vaihtaa istutustilan ja kustannusarvion välillä
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Sijoita kyltti
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Sijoita objekti. Shift vaihtaa rakennustilan ja kustannusarvion välillä
@@ -1486,6 +1488,9 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Salli tekoälyt
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Sallii tietokonepelaajien osallistumisen moninpeleihin
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodet ennen skriptin pysäyttämistä: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Suurin sallittu määrä laskutoimituksia, jonka skripti voi suorittaa yhden vuoron aikana
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Skriptikohtainen muistinkäyttö enintään: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Kuinka paljon muistia yksittäinen skripti saa käyttää, ennen kuin se pakotetaan lopettamaan. Jos kartta on iso, tätä arvoa voi joutua suurentamaan.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Huoltovälit ovat prosentteina: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Määritä, aiheuttaako edellisestä huollosta kulunut aika vai luotettavuuden laskeminen kulkuneuvon huoltamisen
@@ -2434,7 +2439,11 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Rakenna 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Rakenna raitiotietunneli. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Tien rakentaminen/siirtäminen päälle/pois
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Vaihda raitiotien rakentamisen ja purkamisen välillä
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Muunna tai päivitä tien tyyppi. Shift vaihtaa muuntotilan ja kustannusarvion välillä
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Muunna tai päivitä raitiotien tyyppi. Shift vaihtaa muuntotilan ja kustannusarvion välillä
 
+STR_ROAD_NAME_ROAD                                              :Tie
+STR_ROAD_NAME_TRAM                                              :Raitiotie
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Autovarikon suunta
@@ -2619,8 +2628,11 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Vastaanottaa rahtia: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Raidetyyppi: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Tien tyyppi: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Raitiotien tyyppi: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Radan nopeusrajoitus: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Tien nopeusrajoitus: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Raitiotien nopeusrajoitus: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kalliota
@@ -2730,6 +2742,7 @@ STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Pelin ny
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Pelin tämänhetkinen nopeus verrattuna normaalilla simulaationopeudella odotettavissa olevaan
 STR_FRAMERATE_CURRENT                                           :{WHITE}Nykyinen
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Keskiarvo
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Muisti
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Data perustuu {COMMA} mittaukseen
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
@@ -2737,6 +2750,9 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} kuvaa/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} kuvaa/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} kuvaa/s
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -3360,6 +3376,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Rautatiepalat:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Opastimet
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Teiden palat:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Raitiotiepalat:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vesiruudut:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanavat
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Asemat:
@@ -3468,9 +3485,11 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Uusi yksiraidej
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Uusi Maglev-juna
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Uusia ajoneuvoja
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Uusia raitiovaunuja
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Uudet junat
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Uusia ajoneuvoja
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Uusia laivoja
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Uusi lentokone
 ############ range for vehicle availability ends
@@ -3636,10 +3655,12 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Viesti k
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Olemme juuri suunnitelleet uuden {STRING} – oletteko kiinnostunut vuoden yksinoikeutetusta kokeilusta, jotta näemme miten tuote suoriutuu ennen kuin julkistamme sen yleiseen käyttöön?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :veturin
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :sähköradan veturi
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :yksiraiteisen veturin
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-veturin
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ajoneuvon
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :raitiovaunu
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :lentokoneen
 STR_ENGINE_PREVIEW_SHIP                                         :laivan
@@ -3681,14 +3702,18 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Vaihda t
 STR_REPLACE_ENGINES                                             :Veturit
 STR_REPLACE_WAGONS                                              :Vaunut
 STR_REPLACE_ALL_RAILTYPE                                        :Kaikki junat
+STR_REPLACE_ALL_ROADTYPE                                        :Kaikki ajoneuvot
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Valitse rautatietyyppi, jolle veturikorvaukset tehdään.
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Valitse tien tyyppi, jolle ajoneuvojen korvaukset tehdään
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Näyttää, millä vasemmalta valittu veturi korvataan, jos millään.
 STR_REPLACE_RAIL_VEHICLES                                       :Junat
 STR_REPLACE_ELRAIL_VEHICLES                                     :Sähköjunat
 STR_REPLACE_MONORAIL_VEHICLES                                   :Yksiraiteiset
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev-junat
 
+STR_REPLACE_ROAD_VEHICLES                                       :Ajoneuvot
+STR_REPLACE_TRAM_VEHICLES                                       :Raitiovaunut
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaunun poisto: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaattikorvauksessa junapituus pidetään samana poistamalla vaunuja (edestä) jos veturi pidentäisi junaa
@@ -4412,6 +4437,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ei kelvo
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Rautatie pitää poistaa ensin.
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Tie on yksisuuntainen tai suljettu
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Tasoristeykset eivät ole sallittu tälle raidetyypille
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Tasoristeykset eivät ole sallittuja tälle tietyypille
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Opastinta ei voi rakentaa.
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Rautatietä ei voi rakentaa.
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Rautatietä ei voi poistaa.
@@ -4431,6 +4457,12 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Tietä e
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tästä ei voi poistaa raitiotietä.
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... tässä ei ole tietä
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... tässä ei ole raitiotietä
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Tien tyyppiä ei voi muuntaa tässä...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Raitiotien tyyppiä ei voi muuntaa tässä...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Ei sopivaa tietä
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Ei sopivaa raitiotietä
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... yhteensopimaton tie
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... yhteensopimaton raitiotie
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kanaalia ei voi rakentaa tähän...
