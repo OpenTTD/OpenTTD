@@ -972,7 +972,7 @@ struct SpriteAlignerWindow : Window {
 					this->offs_start_map.Insert(this->current_sprite, XyOffs(spr->x_offs, spr->y_offs));
 				}
 				switch (widget) {
-					/* Move ten units at a time if ctrl is pressed. */
+					/* Move eight units at a time if ctrl is pressed. */
 					case WID_SA_UP:    spr->y_offs -= _ctrl_pressed ? 8 : 1; break;
 					case WID_SA_DOWN:  spr->y_offs += _ctrl_pressed ? 8 : 1; break;
 					case WID_SA_LEFT:  spr->x_offs -= _ctrl_pressed ? 8 : 1; break;
@@ -986,7 +986,7 @@ struct SpriteAlignerWindow : Window {
 
 			case WID_SA_RESET_REL:
 				/* Reset the starting offsets for the current sprite. */
-				this->offs_start_map.erase(this->offs_start_map.begin() + this->current_sprite);
+				this->offs_start_map.Erase(this->current_sprite);
 				this->SetDirty();
 				break;
 		}
