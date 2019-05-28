@@ -240,7 +240,7 @@ class Kdtree {
 		NOT_REACHED(); // a.first == b.first: same element must not be inserted twice
 	}
 	/** Search a sub-tree for the element nearest to a given point */
-	node_distance FindNearestRecursive(CoordT xy[2], size_t node_idx, int level) const
+	node_distance FindNearestRecursive(CoordT xy[2], size_t node_idx, int level, DistT limit = std::numeric_limits<DistT>::max()) const
 	{
 		/* Dimension index of current level */
 		int dim = level % 2;
@@ -261,11 +261,13 @@ class Kdtree {
 			best = SelectNearestNodeDistance(best, this->FindNearestRecursive(xy, next, level + 1));
 		}
 
+		limit = min(best.second, limit);
+
 		/* Check if the distance from current best is worse than distance from target to splitting line,
 		 * if it is we also need to check the other side of the split. */
 		size_t opposite = (xy[dim] >= c) ? n.left : n.right; // reverse of above
-		if (opposite != INVALID_NODE && best.second >= abs((int)xy[dim] - (int)c)) {
-			node_distance other_candidate = this->FindNearestRecursive(xy, opposite, level + 1);
+		if (opposite != INVALID_NODE && limit >= abs((int)xy[dim] - (int)c)) {
+			node_distance other_candidate = this->FindNearestRecursive(xy, opposite, level + 1, limit);
 			best = SelectNearestNodeDistance(best, other_candidate);
 		}
 
