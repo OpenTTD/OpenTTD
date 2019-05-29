@@ -593,38 +593,46 @@ void InitNewsItemStructs()
 }
 
 /**
- * Are we ready to show another news item?
- * Only if nothing is in the newsticker and no newspaper is displayed
+ * Are we ready to show another ticker item?
+ * Only if nothing is in the newsticker is displayed
  */
-static bool ReadyForNextItem()
+static bool ReadyForNextTickerItem()
 {
-	const NewsItem *ni = _forced_news == nullptr ? _current_news : _forced_news;
+	const NewsItem *ni = _statusbar_news_item;
 	if (ni == nullptr) return true;
 
 	/* Ticker message
 	 * Check if the status bar message is still being displayed? */
 	if (IsNewsTickerShown()) return false;
+	return true;
+}
+
+/**
+ * Are we ready to show another news item?
+ * Only if no newspaper is displayed
+ */
+static bool ReadyForNextNewsItem()
+{
+	const NewsItem *ni = _forced_news == nullptr ? _current_news : _forced_news;
+	if (ni == nullptr) return true;
 
 	/* neither newsticker nor newspaper are running */
 	return (NewsWindow::duration <= 0 || FindWindowById(WC_NEWS_WINDOW, 0) == nullptr);
 }
 
-/** Move to the next news item */
-static void MoveToNextItem()
+/** Move to the next ticker item */
+static void MoveToNextTickerItem()
 {
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED); // invalidate the statusbar
-	DeleteWindowById(WC_NEWS_WINDOW, 0); // close the newspapers window if shown
-	_forced_news = nullptr;
-	_statusbar_news_item = nullptr;
 
 	/* if we're not at the last item, then move on */
-	if (_current_news != _latest_news) {
-		_current_news = (_current_news == nullptr) ? _oldest_news : _current_news->next;
-		const NewsItem *ni = _current_news;
+	while (_statusbar_news_item != _latest_news) {
+		_statusbar_news_item = (_statusbar_news_item == nullptr) ? _oldest_news : _statusbar_news_item->next;
+		const NewsItem *ni = _statusbar_news_item;
 		const NewsType type = ni->type;
 
 		/* check the date, don't show too old items */
-		if (_date - _news_type_data[type].age > ni->date) return;
+		if (_date - _news_type_data[type].age > ni->date) continue;
 
 		switch (_news_type_data[type].GetDisplay()) {
 			default: NOT_REACHED();
@@ -635,6 +643,36 @@ static void MoveToNextItem()
 			case ND_SUMMARY: // Summary - show ticker
 				ShowTicker(ni);
 				break;
+
+			case ND_FULL: // Full - show newspaper, skipped here
+				continue;
+		}
+		return;
+	}
+}
+
+/** Move to the next news item */
+static void MoveToNextNewsItem()
+{
+	DeleteWindowById(WC_NEWS_WINDOW, 0); // close the newspapers window if shown
+	_forced_news = nullptr;
+
+	/* if we're not at the last item, then move on */
+	while (_current_news != _latest_news) {
+		_current_news = (_current_news == nullptr) ? _oldest_news : _current_news->next;
+		const NewsItem *ni = _current_news;
+		const NewsType type = ni->type;
+
+		/* check the date, don't show too old items */
+		if (_date - _news_type_data[type].age > ni->date) continue;
+
+		switch (_news_type_data[type].GetDisplay()) {
+			default: NOT_REACHED();
+			case ND_OFF: // Off - show nothing only a small reminder in the status bar, skipped here
+				continue;
+
+			case ND_SUMMARY: // Summary - show ticker, skipped here
+				continue;
 
 			case ND_FULL: // Full - show newspaper
 				ShowNewspaper(ni);
@@ -778,14 +816,23 @@ static void DeleteNewsItem(NewsItem *ni)
 
 	_total_news--;
 
-	if (_forced_news == ni || _current_news == ni || _statusbar_news_item == ni) {
+	if (_forced_news == ni || _current_news == ni) {
 		/* When we're the current news, go to the previous item first;
 		 * we just possibly made that the last news item. */
 		if (_current_news == ni) _current_news = ni->prev;
 
 		/* About to remove the currently forced item (shown as newspapers) ||
-		 * about to remove the currently displayed item (newspapers, ticker, or just a reminder) */
-		MoveToNextItem();
+		 * about to remove the currently displayed item (newspapers) */
+		MoveToNextNewsItem();
+	}
+
+	if (_statusbar_news_item == ni) {
+		/* When we're the current news, go to the previous item first;
+		 * we just possibly made that the last news item. */
+		_statusbar_news_item = ni->prev;
+
+		/* About to remove the currently displayed item (ticker, or just a reminder) */
+		MoveToNextTickerItem();
 	}
 
 	delete ni;
@@ -906,7 +953,8 @@ void NewsLoop()
 		_last_clean_month = _cur_month;
 	}
 
-	if (ReadyForNextItem()) MoveToNextItem();
+	if (ReadyForNextTickerItem()) MoveToNextTickerItem();
+	if (ReadyForNextNewsItem()) MoveToNextNewsItem();
 }
 
 /** Do a forced show of a specific message */
