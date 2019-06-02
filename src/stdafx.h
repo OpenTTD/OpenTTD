@@ -233,6 +233,13 @@
 #		endif
 #	endif
 
+	/* liblzma from vcpkg (before 5.2.4-2) used to patch lzma.h to define LZMA_API_STATIC for static builds */
+#	if defined(WITH_LIBLZMA)
+#		if !defined(LZMA_API_STATIC)
+#			define LZMA_API_STATIC
+#		endif
+#	endif
+
 	#define strcasecmp stricmp
 	#define strncasecmp strnicmp
 	#define strtoull _strtoui64
