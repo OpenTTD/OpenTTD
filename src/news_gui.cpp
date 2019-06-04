@@ -34,6 +34,7 @@
 #include "company_base.h"
 #include "settings_internal.h"
 #include "guitimer_func.h"
+#include "group_gui.h"
 
 #include "widgets/news_widget.h"
 
@@ -469,6 +470,19 @@ struct NewsWindow : Window {
 				}
 				break;
 		}
+	}
+
+	bool OnRightClick(Point pt, int widget) override
+	{
+		switch (widget) {
+			default:
+				if (this->ni->reftype1 == NR_VEHICLE) {
+					const Vehicle *v = Vehicle::Get(this->ni->ref1);
+					ShowCompanyGroupForVehicle(v);
+				}
+				return true;
+		}
+		return false;
 	}
 
 	EventState OnKeyPress(WChar key, uint16 keycode) override
