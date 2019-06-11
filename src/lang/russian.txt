@@ -1083,6 +1083,9 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузинс�
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Иранский риал (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Российский новый рубль (RUR)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Мексиканский песо (MXN)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Новый тайваньский доллар (NTD)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Китайский юань (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Гонконгский доллар (HKD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Движение автомобилей

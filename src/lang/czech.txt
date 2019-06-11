@@ -264,6 +264,7 @@ STR_COLOUR_ORANGE                                               :Oranžová
 STR_COLOUR_BROWN                                                :Hnědá
 STR_COLOUR_GREY                                                 :Šedá
 STR_COLOUR_WHITE                                                :Bílá
+STR_COLOUR_RANDOM                                               :Náhodná
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}m{P íle íle il}/h
@@ -310,6 +311,7 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vyber t�
 STR_BUTTON_SORT_BY                                              :{BLACK}Řadit podle
 STR_BUTTON_LOCATION                                             :{BLACK}Umístění
 STR_BUTTON_RENAME                                               :{BLACK}Přejmenovat
+STR_BUTTON_CATCHMENT                                            :{BLACK}Pokrytí
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zavřít okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titulek okna - tahej pro posun okna
@@ -411,6 +413,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Přiblí
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Oddálit pohled
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Budovat železnici
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Budovat silniční síť
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Výstavba tramvajových tratí
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Budovat vodní cesty
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Stavět letiště
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otevřít nástrojovou lištu na úpravu terénu, výsadbu stromů, atd.
@@ -539,6 +542,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Zvuk/Hudba
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Poslední zpráva nebo článek
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historie zpráv
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Smazat všechny zprávy
 ############ range ends here
 
 ############ range for about menu starts
@@ -1014,6 +1018,8 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Vlastní...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgijské Lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íránský Riál (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ruský rubl (RUB)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nový taiwanský dolar (NTD)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongský dolar (HKD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Silniční vozidla jezdí
@@ -1077,6 +1083,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dvojnásobná v
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Čtyřnásobná velikost
 
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Běžné
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Základní sada grafiky
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvol základní sadu grafiky
@@ -1260,6 +1267,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Povolit srovná
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Povoluje změnu terénu pod budovami a tratěmi bez jejich odstranění
 STR_CONFIG_SETTING_CATCHMENT                                    :Povolit u oblasti pokrytí realističtější velikost: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Rozdílná velikost oblasti pokrytí u různých stanic a letišť
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Pokud je zapnuto, průmysl s vlastní stanicí (např. ropné plošiny) může být obsluhován i prostřednictvím společnostmi vlastněných stanic v okolí. Pokud je vypnuto, tento průmysl může být obsluhován pouze prostřednictvím vlastní stanice. Společnostmi vlastněné stanice v okolí nebudou moci tento průmysl obsluhovat a vlastní stanice tohoto průmyslu nebude moci obsluhovat žádný jiný průmysl ani domy v okolí.
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Povolit bourání více městských silnic, mostů a tunelů: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Usnadňuje odstranění městských staveb a silnic
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximální délka vlaků: {STRING}
@@ -1429,6 +1437,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Barva terénu n
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :zelená
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :tmavě zelená
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :fialová
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Pohyb v mapě pomocí pravého tlačítka myši, poloha myši uzamčena
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Plynulé posouvání po mapě: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ovládá jak se hlavní pohled posouvá na specifické místo na mapě, kliknutím na minimapu nebo spuštěním příkazu na posun na specifický objekt na mapě. Pokud zapnuto, pohled se posouvá plynule, pokud vypnuto, skáče pohled přímo na cílové místo
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Ukázat rozměry při použití stavebních nástrojů: {STRING}
@@ -1549,6 +1558,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Povolit AI v s�
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Umožňuje AI počítačem řízeným hráčům připojit se do hry s více hráči
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes před skripty než budou pozastaveny: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximální počet výpočetních kroků, které může skript vykonat za jeden tah
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervaly servisů v procentech: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Vyber, jestli potřebu návštěvy servisu určuje čas od poslední návštěvy nebo určitý pokles % spolehlivosti od jejího maxima.
@@ -1651,6 +1661,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Povoluje hráč
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Zakázáno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Povoleno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Povoleno s výběrem rozložení a velikosti města
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kvadratický (původní)
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Umístění stromů ve hře: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Náhodné umisťování stromů během hry. Může ovlivnit průmysl závisející na růstu stromů, například pily.
@@ -2491,6 +2502,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Postavit
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Postavit tramvajový tunel. Stisknutý Shift pro zobrazení odhadu ceny
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Stavět nebo bourat silnici nebo zastávku
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Přepínání mezi výstavbou a bouráním tramvajové tratě
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Změnit nebo vylepšit typ silnice (na tento). Stisknutý Shift pro zobrazení odhadu ceny
 
 
 # Road depot construction window
@@ -2682,6 +2694,8 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Přijímané zboží: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Druh kolejí: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Typ silnice: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Typ tramvaje: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Rychlostní omezení tratě: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Rychlostní omezení silnice: {LTBLUE}{VELOCITY}
 
@@ -2787,20 +2801,33 @@ STR_FRAMERATE_CAPTION                                           :{WHITE}Počet s
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Počet snímků videa vykreslovaných za sekundu.
 STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Aktuální činitel rychlosti hry: {DECIMAL}x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Rychlost, kterou hra právě běží, v porovnání s očekávanou rychlostí při běžné rychlosti simulace.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Aktuální
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Průměr
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Podle {COMMA} měření
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} sním{P "ek" "ky" "ků"}/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} sním{P "ek" "ky" "ků"}/s
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GL_ECONOMY                                        :{WHITE}  Manipulace s nákladem:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Zpoždění grafu spojení:
 STR_FRAMERATE_DRAWING                                           :{WHITE}Vykreslování grafiky:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Pohledy:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Video:
+STR_FRAMERATE_SOUND                                             :{BLACK}Míchání zvuků:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Herní skript:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Herní smyčka
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manipulace s nákladem
 STR_FRAMETIME_CAPTION_DRAWING                                   :Vykreslování grafiky
 STR_FRAMETIME_CAPTION_SOUND                                     :Míchání zvuků
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Herní skript
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2826,6 +2853,8 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Vlastnos
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Není dostupná žádná informace
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}Grafiky: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtr:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Přepsat soubor
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Zadej jméno pro uloženou hru
 
@@ -2944,6 +2973,7 @@ STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Minimál
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametry: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Žádný
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Informace nejsou k dispozici
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nenalezen odpovídající soubor
@@ -3197,6 +3227,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kliknut�
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Kniha příběhů
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globální kniha příběhů
+STR_STORY_BOOK_SPECTATOR                                        :Globální kniha příběhů
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Strana {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Skoč na určitou stranu vybranou v tomto seznamu
@@ -3399,6 +3430,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Vystřed
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produkce: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Průmysl oznámila blížící se uzavření!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Vyžaduje: {YELLOW}{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Vyžaduje:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
@@ -3452,6 +3484,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Nezařazená si
 STR_GROUP_DEFAULT_SHIPS                                         :Nezařazené lodě
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Nezařazená letadla
 
+STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Skupiny - Kliknutím na skupinu se zobrazí seznam vozidel ve skupině. Přetáhnutím skupin je uspořádáš.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Kliknutím vytvoříš skupinu
@@ -3479,6 +3512,7 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nové lokomotiv
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nové lokomotivy a vagony Maglev
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nová silniční vozidla
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Nové tramvaje
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nová železniční vozidla
@@ -3499,6 +3533,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spo
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Rychlost: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} (Cena přestavby: {GOLD}{CURRENCY_LONG}{BLACK}) Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Poháněné vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refitovatelné na: {GOLD}{STRING}
@@ -3518,12 +3553,17 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Koupit v
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Koupit loď
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Koupit letadlo
 
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Koupit a přestavět vozidlo
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kup označený vagon/lokomotivu. Stisknutý Shift pro zobrazení odhadu ceny
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Koupit označené vozidlo. Stisknutý Shift pro zobrazení odhadu ceny
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Koupit označenou loď. Stisknutý Shift pro zobrazení odhadu ceny
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Koupit označené letadlo. Stisknutý Shift pro zobrazení odhadu ceny
 
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :Koupit a přestavět označený vagon/lokomotivu. Stiskněte Shift pro zobrazení odhadu ceny.
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Koupit a přestavět označené vozidlo. Stiskněte Shift pro zobrazení odhadu ceny.
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Koupit a přestavět označenou loď. Stiskněte Shift pro zobrazení odhadu ceny.
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Koupit a přestavět označené letadlo. Stiskněte Shift pro zobrazení odhadu ceny.
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Přejmenovat
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Přejmenovat
@@ -3636,12 +3676,14 @@ STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Právě j
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotiva
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.acc                      :lokomotivu
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrická lokomotiva
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}lokomotiva pro monorail
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.acc                      :lokomotivu pro monorail
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}lokomotiva Maglev
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.acc                        :lokomotivu Maglev
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}silniční vozidlo
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramvaj
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}letadlo
 STR_ENGINE_PREVIEW_SHIP                                         :{G=f}loď
@@ -3683,6 +3725,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Přepne 
 STR_REPLACE_ENGINES                                             :lokomotivy
 STR_REPLACE_WAGONS                                              :vagony
 STR_REPLACE_ALL_RAILTYPE                                        :Všechna drážní vozidla
+STR_REPLACE_ALL_ROADTYPE                                        :Všechna silniční vozidla
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber typ kolejí, pro které chceš měnit lokomotivy
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tady je zobrazeno, za jakou lokomotivu se ta v levém seznamu vyměňuje
@@ -3691,6 +3734,8 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrické lok
 STR_REPLACE_MONORAIL_VEHICLES                                   :Lokomotivy pro monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Lokomotivy Maglev
 
+STR_REPLACE_ROAD_VEHICLES                                       :Silniční vozidla
+STR_REPLACE_TRAM_VEHICLES                                       :Tramvaje
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odebírání vagonů: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce automatického vylepšování vlaků může udržovat stejnou délku vlaku odstraňovaním vagonů (od začátku vlaku), pokud by změna mašiny vlak prodloužila
@@ -4412,7 +4457,8 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Je nutn�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Žádné použitelné koleje
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Je nutné nejprve odstranit koleje
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Silnice je jednosměrná nebo zablokovaná
-STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Železniční přejezd není povolen pro tento typ kolejí
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Tento typ kolejí nedovoluje výstavbu železničních přejezdů
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Tento typ silnice nedovoluje výstavbu železničních přejezdů.
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Zde nelze postavit semafory...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Zde nelze postavit koleje...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Odsud nelze odstranit koleje...
@@ -4432,6 +4478,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Odsud ne
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Odsud nelze odstranit tramvajovou trať...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... není zde žádná silnice
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... není zde žádná tramvajová trať
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Zde nelze změnit typ silnice...
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Zde nelze postavit průplav...
