@@ -939,6 +939,9 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :그루지야 �
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :이란 리알 (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :신 러시아 루블 (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :멕시코 페소 (MXN)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :신 타이완 달러 (NTD)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :중국 위안 (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :홍콩 달러 (HKD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}차량 통행 방식
