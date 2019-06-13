@@ -693,8 +693,8 @@ private:
 	/** Sort by town name */
 	static bool TownNameSorter(const Town * const &a, const Town * const &b)
 	{
-		static char buf_cache[MAX_LENGTH_TOWN_NAME_CHARS];
-		char buf[MAX_LENGTH_TOWN_NAME_CHARS];
+		static char buf_cache[MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH];
+		char buf[MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH];
 
 		SetDParam(0, a->index);
 		GetString(buf, STR_TOWN_NAME, lastof(buf));
@@ -963,7 +963,7 @@ public:
 	 */
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
-		char buf[MAX_LENGTH_TOWN_NAME_CHARS];
+		char buf[MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH];
 
 		switch (data) {
 			case TDIWD_FORCE_REBUILD:
