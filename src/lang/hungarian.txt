@@ -1002,6 +1002,9 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Grúz Lari (GEL
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iráni Riál (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Új Orosz Rubel (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexikói Peso (MXN)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Új Tajvani Dollár (NTD)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kínai Renminbi (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongi Dollár (HKD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Közúti járművek
