@@ -1034,6 +1034,9 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski Lari 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski Rial (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nove ruske rublje (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksički Pesos (MXN)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Novi Tajvanski Dolar (NTD)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kineski Renminbi (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkonški Dolar (HKD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cestovna vozila
