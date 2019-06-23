@@ -343,6 +343,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zooma la
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zooma la visuale indietro
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Costruisci ferrovie
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Costruisci strade
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Costruisci tranvie
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Costruisci trasporti su acqua
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Costruisci aeroporti
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Apre la barra di modellazione del terreno per alzare/abbassare il terreno, piantare alberi, etc.
@@ -363,6 +364,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generazi
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generazione città
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generazione industrie
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Costruzione strade
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Costruzione tranvie
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Pianta alberi. MAIUSC alterna fra costruzione e stima dei costi
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Posiziona cartello
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Posiziona oggetto. MAIUSC alterna fra costruzione e stima dei costi
@@ -938,6 +940,9 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari georgiano 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial iraniano (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nuovo rublo russo (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso messicano (MXN)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nuovo dollaro taiwanese (NTD)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi cinese (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dollaro di Hong Kong (HKD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automezzi
@@ -1510,6 +1515,9 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Consenti le IA 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Consente ai giocatori controllati dal computer di partecipare alle partite multigiocatore
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Numero massimo di opcode prima della sospensione degli script: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Numero massimo di passi elementari che uno script può eseguire in una volta sola
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Uso massimo di memoria per gli script: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Quantità massima di memoria che un singolo script può consumare prima di essere terminato forzatamente. Può essere necessario aumentarla per le mappe grandi
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Gli intervalli di manutenzione sono in percentuale: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Determina se la manutenzione dei veicoli è controllata dal tempo trascorso dall'ultima manutenzione piuttosto che dalla riduzione dell'affidabilità di una certa frazione di quella massima
@@ -2464,7 +2472,11 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Costruis
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Costruisce un tunnel tranviario. MAIUSC alterna fra costruzione e stima dei costi
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Seleziona fra costruzione/rimozione di strade
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Seleziona fra costruzione/rimozione di tranvie
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converte/aggiorna il tipo di strada. MAIUSC alterna fra costruzione e stima dei costi
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converte/aggiorna il tipo di tram. MAIUSC alterna fra costruzione e stima dei costi
 
+STR_ROAD_NAME_ROAD                                              :Strada
+STR_ROAD_NAME_TRAM                                              :Tranvia
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientamento deposito
@@ -2649,8 +2661,11 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carichi accettati: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tipo di rotaie: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Tipo di strada: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Tipo di tram: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Limite di velocità rotaie: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Limite di velocità strada: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Limite di velocità tram: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rocce
@@ -2760,6 +2775,7 @@ STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Fattore 
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Prestazioni correnti della partita, confrontate con le prestazioni attese alla velocità di giorno normale.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Corrente
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Media
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memoria
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Dati basati su {COMMA} misurazioni
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
@@ -2767,6 +2783,9 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} frame/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} frame/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} frame/s
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -3390,6 +3409,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastr
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Segmenti ferroviari:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Segnali
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Segmenti stradali:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Segmenti tram:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Riquadri d'acqua:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canali
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stazioni:
@@ -3497,10 +3517,12 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nuovi veicoli f
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuovi veicoli monorotaia
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nuovi veicoli maglev
 
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuovi automezzi
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuovi veicoli stradali
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Nuovi veicoli tranviari
 
 ############ range for vehicle availability starts
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Veicoli ferroviari
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nuovi veicoli ferroviari
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Nuovi veicoli stradali
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuove navi
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nuovo aeromobile
 ############ range for vehicle availability ends
@@ -3666,10 +3688,12 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Messaggi
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Abbiamo appena progettato un{G "" "" a} nuov{G o o a} {STRING} - È interessato ad un anno di uso esclusivo di questo veicolo, in modo da permetterci di valutarne le prestazioni prima di renderlo disponibile sul mercato?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}locomotiva elettrica
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}motrice monorotaia
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}motrice maglev
 
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}automezzo
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}veicolo stradale
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :{G=m}veicolo tranviario
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}aeromobile
 STR_ENGINE_PREVIEW_SHIP                                         :{G=f}nave
@@ -3711,14 +3735,18 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Scambia 
 STR_REPLACE_ENGINES                                             :Locomotive
 STR_REPLACE_WAGONS                                              :Vagoni
 STR_REPLACE_ALL_RAILTYPE                                        :Tutti i veicoli ferroviari
+STR_REPLACE_ALL_ROADTYPE                                        :Tutti i veicoli stradali
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selezionare il tipo di rotaie per il quale si desidera rimpiazzare le locomotive
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Selezionare il tipo di strada per il quale si desidera rimpiazzare i veicoli
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra con quale locomotiva sarà rimpiazzato il modello eventualmente selezionato a sinistra
 STR_REPLACE_RAIL_VEHICLES                                       :Veicoli ferroviari
 STR_REPLACE_ELRAIL_VEHICLES                                     :Veicoli ferroviari elettrici
 STR_REPLACE_MONORAIL_VEHICLES                                   :Veicoli monorotaia
 STR_REPLACE_MAGLEV_VEHICLES                                     :Veicoli maglev
 
+STR_REPLACE_ROAD_VEHICLES                                       :Veicoli stradali
+STR_REPLACE_TRAM_VEHICLES                                       :Veicoli tranviari
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimozione vagoni: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fa sì che il rimpiazzamento automatico mantenga costante la lunghezza dei treni rimuovendo vagoni (iniziando dalla testa) nel caso in cui la sostituzione della locomotiva rendesse il treno più lungo
@@ -4442,6 +4470,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tipo di 
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Bisogna rimuovere i binari prima
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}La strada è bloccata o a senso unico
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Passaggi a livello non consentiti per questo tipo di rotaia
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Passaggi a livello non consentiti per questo tipo di strada
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Impossibile costruire i segnali qui...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossibile costruire i binari qui...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Impossibile rimuovere i binari da qui...
@@ -4461,6 +4490,12 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Impossibile rimuovere la tranvia da qui...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... strada non presente
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... tranvia non presente
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Impossibile convertire il tipo di strada qui...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Impossibile convertire il tipo di tram qui...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Nessuna strada adatta
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nessuna tranvia adatta
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... strada non compatibile
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... tranvia non compatibile
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Impossibile costruire qui il canale...
