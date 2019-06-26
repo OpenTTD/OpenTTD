@@ -996,7 +996,7 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
 					}
 					num_roadbits += CountBits(GetRoadBits(cur_tile, ROADTYPE_ROAD));
 
-					if (GetDisallowedRoadDirections(cur_tile) != DRD_NONE) {
+					if (GetDisallowedRoadDirections(cur_tile) != DRD_NONE && road_owner != OWNER_TOWN) {
 						CommandCost ret = CheckOwnership(road_owner);
 						if (ret.Failed()) return ret;
 					}
