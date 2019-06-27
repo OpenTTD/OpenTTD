@@ -44,18 +44,19 @@ typedef BOOL (WINAPI *PFNTRACKMOUSEEVENT)(LPTRACKMOUSEEVENT lpEventTrack);
 static PFNTRACKMOUSEEVENT _pTrackMouseEvent = nullptr;
 
 static struct {
-	HWND main_wnd;
-	HBITMAP dib_sect;
-	void *buffer_bits;
-	HPALETTE gdi_palette;
-	RECT update_rect;
-	int width;
-	int height;
-	int width_org;
-	int height_org;
-	bool fullscreen;
-	bool has_focus;
-	bool running;
+	HWND main_wnd;        ///< Handle to system window
+	HBITMAP dib_sect;     ///< System bitmap object referencing our rendering buffer
+	void *buffer_bits;    ///< Internal rendering buffer
+	HPALETTE gdi_palette; ///< Palette object for 8bpp blitter
+	RECT update_rect;     ///< Current dirty rect, scaled to system coordinates
+	int width;            ///< Width in pixels of our display surface (unscaled)
+	int height;           ///< Height in pixels of our display surface (unscaled)
+	int width_org;        ///< Original monitor resolution width, before we changed it
+	int height_org;       ///< Original monitor resolution height, before we changed it
+	int scale;            ///< Current upscale factor for display, always 1 in fullscreen
+	bool fullscreen;      ///< Whether to use (true) fullscreen mode
+	bool has_focus;       ///< Does our window have system focus?
+	bool running;         ///< Is the main loop running?
 } _wnd;
 
 bool _force_full_redraw;
@@ -74,6 +75,8 @@ static std::condition_variable_any *_draw_signal = nullptr;
 static volatile bool _draw_continue;
 /** Local copy of the palette for use in the drawing thread. */
 static Palette _local_palette;
+/** User supplied scale parameter to video driver */
+static int _scale_parameter;
 
 static void MakePalette()
 {
@@ -220,7 +223,11 @@ int RedrawScreenDebug()
 
 	old_bmp = (HBITMAP)SelectObject(dc2, _wnd.dib_sect);
 	old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
-	BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
+	if (_wnd.scale == 1) {
+		BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
+	} else {
+		StretchBlt(dc, 0, 0, _wnd.width * _wnd.scale, _wnd.height * _wnd.scale, dc2, 0, 0, _wnd.width, _wnd.height, SRCCOPY);
+	}
 	SelectPalette(dc, old_palette, TRUE);
 	SelectObject(dc2, old_bmp);
 	DeleteDC(dc2);
@@ -263,6 +270,8 @@ static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT_PTR event, DW
 bool VideoDriver_Win32::MakeWindow(bool full_screen)
 {
 	_fullscreen = full_screen;
+	/* full_screen is whether the new window should be fullscreen,
+	 * _wnd.fullscreen is whether the current window is */
 
 	/* recreate window? */
 	if ((full_screen || _wnd.fullscreen) && _wnd.main_wnd) {
@@ -270,8 +279,14 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 		_wnd.main_wnd = 0;
 	}
 
+	/* Initially use the user-supplied 'scale' parameter */
+	_wnd.scale = _scale_parameter;
+
 	if (full_screen) {
 		DEVMODE settings;
+
+		/* The 'scale' parameter has no effect on fullscreen modes */
+		_wnd.scale = 1;
 
 		memset(&settings, 0, sizeof(settings));
 		settings.dmSize = sizeof(settings);
@@ -317,18 +332,18 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 	{
 		RECT r;
 		DWORD style, showstyle;
-		int w, h;
+		int w, h; // scaled window client area dimensions
 
 		showstyle = SW_SHOWNORMAL;
 		_wnd.fullscreen = full_screen;
 		if (_wnd.fullscreen) {
 			style = WS_POPUP;
-			SetRect(&r, 0, 0, _wnd.width_org, _wnd.height_org);
+			SetRect(&r, 0, 0, _wnd.width_org * _wnd.scale, _wnd.height_org * _wnd.scale);
 		} else {
 			style = WS_OVERLAPPEDWINDOW;
 			/* On window creation, check if we were in maximize mode before */
 			if (_window_maximize) showstyle = SW_SHOWMAXIMIZED;
-			SetRect(&r, 0, 0, _wnd.width, _wnd.height);
+			SetRect(&r, 0, 0, _wnd.width * _wnd.scale, _wnd.height * _wnd.scale);
 		}
 
 		AdjustWindowRect(&r, style, FALSE);
@@ -386,7 +401,11 @@ static void PaintWindow(HDC dc)
 		_cur_palette.count_dirty = 0;
 	}
 
-	BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
+	if (_wnd.scale == 1) {
+		BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
+	} else {
+		StretchBlt(dc, 0, 0, _wnd.width * _wnd.scale, _wnd.height * _wnd.scale, dc2, 0, 0, _wnd.width, _wnd.height, SRCCOPY);
+	}
 	SelectPalette(dc, old_palette, TRUE);
 	SelectObject(dc2, old_bmp);
 	DeleteDC(dc2);
@@ -402,7 +421,8 @@ static void PaintWindowThread()
 	_draw_signal->wait(*_draw_mutex);
 
 	while (_draw_continue) {
-		/* Convert update region from logical to device coordinates. */
+		/* Convert update region from logical to device coordinates.
+		 * The region is already in scaled coordinates. */
 		POINT pt = {0, 0};
 		ClientToScreen(_wnd.main_wnd, &pt);
 		OffsetRect(&_wnd.update_rect, pt.x, pt.y);
@@ -505,8 +525,8 @@ static void SetCompositionPos(HWND hwnd)
 		if (EditBoxInGlobalFocus()) {
 			/* Get caret position. */
 			Point pt = _focused_window->GetCaretPosition();
-			cf.ptCurrentPos.x = _focused_window->left + pt.x;
-			cf.ptCurrentPos.y = _focused_window->top  + pt.y;
+			cf.ptCurrentPos.x = (_focused_window->left + pt.x) * _wnd.scale;
+			cf.ptCurrentPos.y = (_focused_window->top  + pt.y) * _wnd.scale;
 		} else {
 			cf.ptCurrentPos.x = 0;
 			cf.ptCurrentPos.y = 0;
@@ -527,18 +547,18 @@ static void SetCandidatePos(HWND hwnd)
 
 		if (EditBoxInGlobalFocus()) {
 			Point pt = _focused_window->GetCaretPosition();
-			cf.ptCurrentPos.x = _focused_window->left + pt.x;
-			cf.ptCurrentPos.y = _focused_window->top  + pt.y;
+			cf.ptCurrentPos.x = (_focused_window->left + pt.x) * _wnd.scale;
+			cf.ptCurrentPos.y = (_focused_window->top  + pt.y) * _wnd.scale;
 			if (_focused_window->window_class == WC_CONSOLE) {
-				cf.rcArea.left   = _focused_window->left;
-				cf.rcArea.top    = _focused_window->top;
-				cf.rcArea.right  = _focused_window->left + _focused_window->width;
-				cf.rcArea.bottom = _focused_window->top  + _focused_window->height;
+				cf.rcArea.left   = (_focused_window->left) * _wnd.scale;
+				cf.rcArea.top    = (_focused_window->top) * _wnd.scale;
+				cf.rcArea.right  = (_focused_window->left + _focused_window->width) * _wnd.scale;
+				cf.rcArea.bottom = (_focused_window->top  + _focused_window->height) * _wnd.scale;
 			} else {
-				cf.rcArea.left   = _focused_window->left + _focused_window->nested_focus->pos_x;
-				cf.rcArea.top    = _focused_window->top  + _focused_window->nested_focus->pos_y;
-				cf.rcArea.right  = cf.rcArea.left + _focused_window->nested_focus->current_x;
-				cf.rcArea.bottom = cf.rcArea.top  + _focused_window->nested_focus->current_y;
+				cf.rcArea.left   = (_focused_window->left + _focused_window->nested_focus->pos_x) * _wnd.scale;
+				cf.rcArea.top    = (_focused_window->top  + _focused_window->nested_focus->pos_y) * _wnd.scale;
+				cf.rcArea.right  = (cf.rcArea.left + _focused_window->nested_focus->current_x) * _wnd.scale;
+				cf.rcArea.bottom = (cf.rcArea.top  + _focused_window->nested_focus->current_y) * _wnd.scale;
 			}
 		} else {
 			cf.ptCurrentPos.x = 0;
@@ -751,10 +771,11 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 				}
 			}
 
-			if (_cursor.UpdateCursorPosition(x, y, false)) {
+			if (_cursor.UpdateCursorPosition(x / _wnd.scale, y / _wnd.scale, false)) {
+				/* Warp back to previous position */
 				POINT pt;
-				pt.x = _cursor.pos.x;
-				pt.y = _cursor.pos.y;
+				pt.x = _cursor.pos.x * _wnd.scale;
+				pt.y = _cursor.pos.y * _wnd.scale;
 				ClientToScreen(hwnd, &pt);
 				SetCursorPos(pt.x, pt.y);
 			}
@@ -887,11 +908,12 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 				 * switched to fullscreen from a maximized state */
 				_window_maximize = (wParam == SIZE_MAXIMIZED || (_window_maximize && _fullscreen));
 				if (_window_maximize || _fullscreen) _bck_resolution = _cur_resolution;
-				ClientSizeChanged(LOWORD(lParam), HIWORD(lParam));
+				ClientSizeChanged(LOWORD(lParam) / _wnd.scale, HIWORD(lParam) / _wnd.scale);
 			}
 			return 0;
 
 		case WM_SIZING: {
+			/* Adjust the drag rectangle of the window, taking scale into account */
 			RECT *r = (RECT*)lParam;
 			RECT r2;
 			int w, h;
@@ -901,8 +923,10 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 			w = r->right - r->left - (r2.right - r2.left);
 			h = r->bottom - r->top - (r2.bottom - r2.top);
-			w = max(w, 64);
-			h = max(h, 64);
+			w = (w + _wnd.scale / 2) / _wnd.scale * _wnd.scale;
+			h = (h + _wnd.scale / 2) / _wnd.scale * _wnd.scale;
+			w = max(w, 64 * _wnd.scale);
+			h = max(h, 64 * _wnd.scale);
 			SetRect(&r2, 0, 0, w, h);
 
 			AdjustWindowRect(&r2, GetWindowLong(hwnd, GWL_STYLE), FALSE);
@@ -1115,6 +1139,9 @@ const char *VideoDriver_Win32::Start(const char * const *parm)
 {
 	memset(&_wnd, 0, sizeof(_wnd));
 
+	_scale_parameter = GetDriverParamInt(parm, "scale", 1);
+	_scale_parameter = Clamp(_scale_parameter, 1, 4);
+
 	RegisterWndClass();
 
 	MakePalette();
@@ -1149,7 +1176,7 @@ void VideoDriver_Win32::Stop()
 
 void VideoDriver_Win32::MakeDirty(int left, int top, int width, int height)
 {
-	RECT r = { left, top, left + width, top + height };
+	RECT r = { left * _wnd.scale, top * _wnd.scale, (left + width) * _wnd.scale, (top + height) * _wnd.scale };
 
 	InvalidateRect(_wnd.main_wnd, &r, FALSE);
 }
