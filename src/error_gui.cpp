@@ -72,9 +72,11 @@ static WindowDesc _errmsg_face_desc(
  * Copy the given data into our instance.
  * @param data The data to copy.
  */
-ErrorMessageData::ErrorMessageData(const ErrorMessageData &data)
+ErrorMessageData::ErrorMessageData(const ErrorMessageData &data) :
+	duration(data.duration), textref_stack_grffile(data.textref_stack_grffile), textref_stack_size(data.textref_stack_size),
+	summary_msg(data.summary_msg), detailed_msg(data.detailed_msg), position(data.position), face(data.face)
 {
-	*this = data;
+	memcpy(this->textref_stack, data.textref_stack, sizeof(this->textref_stack));
 	for (size_t i = 0; i < lengthof(this->strings); i++) {
 		if (this->strings[i] != nullptr) {
 			this->strings[i] = stredup(this->strings[i]);

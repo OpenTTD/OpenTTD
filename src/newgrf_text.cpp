@@ -18,6 +18,10 @@
  */
 
 #include "stdafx.h"
+
+#include <algorithm>
+#include <array>
+
 #include "newgrf.h"
 #include "strings_func.h"
 #include "newgrf_storage.h"
@@ -812,22 +816,14 @@ void CleanUpStrings()
 }
 
 struct TextRefStack {
-	byte stack[0x30];
+	std::array<byte, 0x30> stack;
 	byte position;
 	const GRFFile *grffile;
 	bool used;
 
 	TextRefStack() : position(0), grffile(nullptr), used(false) {}
 
-	TextRefStack(const TextRefStack &stack) :
-		position(stack.position),
-		grffile(stack.grffile),
-		used(stack.used)
-	{
-		memcpy(this->stack, stack.stack, sizeof(this->stack));
-	}
-
-	uint8  PopUnsignedByte()  { assert(this->position < lengthof(this->stack)); return this->stack[this->position++]; }
+	uint8  PopUnsignedByte()  { assert(this->position < this->stack.size()); return this->stack[this->position++]; }
 	int8   PopSignedByte()    { return (int8)this->PopUnsignedByte(); }
 
 	uint16 PopUnsignedWord()
@@ -865,9 +861,8 @@ struct TextRefStack {
 		if (this->position >= 2) {
 			this->position -= 2;
 		} else {
-			for (int i = lengthof(stack) - 1; i >= this->position + 2; i--) {
-				this->stack[i] = this->stack[i - 2];
-			}
+			// Rotate right 2 positions
+			std::rotate(this->stack.rbegin(), this->stack.rbegin() + 2, this->stack.rend());
 		}
 		this->stack[this->position]     = GB(word, 0, 8);
 		this->stack[this->position + 1] = GB(word, 8, 8);
@@ -939,12 +934,12 @@ void StartTextRefStackUsage(const GRFFile *grffile, byte numEntries, const uint3
 
 	_newgrf_textrefstack.ResetStack(grffile);
 
-	byte *p = _newgrf_textrefstack.stack;
+	auto stack_it = _newgrf_textrefstack.stack.begin();
 	for (uint i = 0; i < numEntries; i++) {
 		uint32 value = values != nullptr ? values[i] : _temp_store.GetValue(0x100 + i);
 		for (uint j = 0; j < 32; j += 8) {
-			*p = GB(value, j, 8);
-			p++;
+			*stack_it = GB(value, j, 8);
+			stack_it++;
 		}
 	}
 }
