@@ -502,14 +502,14 @@ SQObject SQFuncState::CreateString(const SQChar *s,SQInteger len)
 {
 	SQObjectPtr ns(SQString::Create(_sharedstate,s,len));
 	_table(_strings)->NewSlot(ns,(SQInteger)1);
-	return ns;
+	return std::move(ns);
 }
 
 SQObject SQFuncState::CreateTable()
 {
 	SQObjectPtr nt(SQTable::Create(_sharedstate,0));
 	_table(_strings)->NewSlot(nt,(SQInteger)1);
-	return nt;
+	return std::move(nt);
 }
 
 SQFunctionProto *SQFuncState::BuildProto()
