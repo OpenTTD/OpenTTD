@@ -41,8 +41,8 @@ jobs:
     matrix:
       commit-checker:
         Tag: 'commit-checker'
-      linux-amd64-clang-3.8:
-        Tag: 'linux-amd64-clang-3.8'
+      linux-amd64-clang-3.9:
+        Tag: 'linux-amd64-clang-3.9'
       linux-amd64-gcc-6:
         Tag: 'linux-amd64-gcc-6'
       linux-i386-gcc-6:
