@@ -135,7 +135,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	/* Vehicle construction needs random bits, so we have to save the random
 	 * seeds to prevent desyncs. */
 	SavedRandomSeeds saved_seeds;
-	if (flags != subflags) SaveRandomSeeds(&saved_seeds);
+	SaveRandomSeeds(&saved_seeds);
 
 	Vehicle *v = nullptr;
 	switch (type) {
@@ -185,6 +185,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		}
 	}
 
+	/* Only restore if we actually did some refitting */
 	if (flags != subflags) RestoreRandomSeeds(saved_seeds);
 
 	return value;
