@@ -91,15 +91,6 @@ public:
 		this->SetPort(port);
 	}
 
-	/**
-	 * Make a clone of another address
-	 * @param address the address to clone
-	 */
-	NetworkAddress(const NetworkAddress &address)
-	{
-		memcpy(this, &address, sizeof(*this));
-	}
-
 	const char *GetHostname();
 	void GetAddressAsString(char *buffer, const char *last, bool with_family = true);
 	const char *GetAddressAsString(bool with_family = true);

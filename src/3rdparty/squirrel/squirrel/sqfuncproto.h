@@ -20,12 +20,6 @@ struct SQOuterVar
 		_src=src;
 		_type=t;
 	}
-	SQOuterVar(const SQOuterVar &ov)
-	{
-		_type=ov._type;
-		_src=ov._src;
-		_name=ov._name;
-	}
 	SQOuterType _type;
 	SQObjectPtr _name;
 	SQObjectPtr _src;
@@ -34,13 +28,6 @@ struct SQOuterVar
 struct SQLocalVarInfo
 {
 	SQLocalVarInfo():_start_op(0),_end_op(0), _pos(0){}
-	SQLocalVarInfo(const SQLocalVarInfo &lvi)
-	{
-		_name=lvi._name;
-		_start_op=lvi._start_op;
-		_end_op=lvi._end_op;
-		_pos=lvi._pos;
-	}
 	SQObjectPtr _name;
 	SQUnsignedInteger _start_op;
 	SQUnsignedInteger _end_op;
