@@ -1,3 +1,29 @@
+1.9.2 (2019-07-07)
+------------------------------------------------------------------------
+- Change: Set default setting in server browser of "Advertised" to "Yes" (#7568)
+- Change: Allow building road stops over self-owned one-way/blocked road (#7547)
+- Fix #7463: Promote scroll mode setting to basic category (#7586)
+- Fix: Inconsistent GUI scaling (#7539)
+- Fix #7491: Send company update admin message when bankruptcy counter changes (#7492)
+- Fix #7553: Check bounds when loading strings (#7554)
+- Fix: Really increase the maximum number of GameScript texts to 64k (#7555)
+- Fix: Crash when attempting to load old save game with GRFs set (#7546)
+- Fix #6507: Don't try to load invalid depots from older savegames (#7546)
+- Fix: Railtype bits were moved too late, leading to rails under bridges losing their type (#7546)
+- Fix: Bounds check access to railtype_map (#7529)
+- Fix: Spurious errors when using more than 32 railtypes (#7533)
+- Fix #7633: Allow zero-cost track conversion to succeed (#7634)
+- Fix #7577: Check if linkgraph station index is valid before dereferencing (#7583)
+- Fix #7224: Drag and drop vehicle group creation does not work correctly (#7581)
+- Fix #7570: Show Github URL in the crashlog window (#7571)
+- Fix: Clicking on scrollbar 'thumb' moved position up instantly (#7549)
+- Fix #7255: Prevent crashlog corruption by only printing the 32 most recent news messages (#7542)
+- Fix #5685: Check for free wagons in ScriptVehicleList (#7617)
+- Fix: Make GSGoal.QuestionClient work correctly at least for clients with ID < 2**16 (#7560)
+- Fix #6666: Mismatched parentheses in RTL languages (#7480)
+- Fix: [Windows] Various reliability and correctness improvements to MIDI on Windows (#7620)
+
+
 1.9.1 (2019-04-08)
 ------------------------------------------------------------------------
 - Fix #6564: Enforce types of arguments for station name strings (#7419)
@@ -7,6 +33,7 @@
 - Fix #7439: CompanyRemoveReason overwritten by ClientID (#7465)
 - Fix: [Windows] Incorrect error handling could lead to cascading error windows (#7482)
 - Fix #7478: Don't remove NewGRF objects on company take-over. (#7483)
+
 
 1.9.0 (2019-04-01)
 ------------------------------------------------------------------------
