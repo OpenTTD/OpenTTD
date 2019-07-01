@@ -2345,6 +2345,7 @@ CommandCost CmdConvertRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost error = CommandCost((rtt == RTT_TRAM) ? STR_ERROR_NO_SUITABLE_TRAMWAY : STR_ERROR_NO_SUITABLE_ROAD); // by default, there is no road to convert.
+	bool found_convertible_road = false; // whether we actually did convert any road/tram (see bug #7633)
 
 	TileIterator *iter = new OrthogonalTileIterator(area_start, area_end);
 	for (; (tile = *iter) != INVALID_TILE; ++(*iter)) {
@@ -2400,6 +2401,7 @@ CommandCost CmdConvertRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			}
 
 			uint num_pieces = CountBits(GetAnyRoadBits(tile, rtt));;
+			found_convertible_road = true;
 			cost.AddCost(num_pieces * RoadConvertCost(from_type, to_type));
 
 			if (flags & DC_EXEC) { // we can safely convert, too
@@ -2446,6 +2448,7 @@ CommandCost CmdConvertRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			/* There are 2 pieces on *every* tile of the bridge or tunnel */
 			uint num_pieces = (GetTunnelBridgeLength(tile, endtile) + 2) * 2;
+			found_convertible_road = true;
 			cost.AddCost(num_pieces * RoadConvertCost(from_type, to_type));
 
 			if (flags & DC_EXEC) {
@@ -2481,7 +2484,7 @@ CommandCost CmdConvertRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	}
 
 	delete iter;
-	return (cost.GetCost() == 0) ? error : cost;
+	return found_convertible_road ? cost : error;
 }
 
 
