@@ -3772,7 +3772,7 @@ STR_VEHICLE_STATUS_CRASHED                                      :{RED}충돌!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}고장
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}정지함
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}멈추는 중, {VELOCITY}
-STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}기관차 없음
+STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}동력 없음
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}빈 경로 탐색중
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}다음 목적지가 너무 멀리 있습니다
 
