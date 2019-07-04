@@ -538,19 +538,19 @@ static void TransmitChannelMsg(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, by
 	}
 }
 
-static void TransmitSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, byte *&msg_start, size_t &remaining)
+static void TransmitSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, const byte *&msg_start, size_t &remaining)
 {
 	/* Find end of message. */
-	byte *msg_end = msg_start;
+	const byte *msg_end = msg_start;
 	while (*msg_end != MIDIST_ENDSYSEX) msg_end++;
 	msg_end++; // Also include SysEx end byte.
 
-	if (buffer->PackUnstructured(rt, 0, msg_end - msg_start, msg_start) == E_OUTOFMEMORY) {
+	if (buffer->PackUnstructured(rt, 0, msg_end - msg_start, const_cast<LPBYTE>(msg_start)) == E_OUTOFMEMORY) {
 		/* Buffer is full, clear it and try again. */
 		_port->PlayBuffer(buffer);
 		buffer->Flush();
 
-		buffer->PackUnstructured(rt, 0, msg_end - msg_start, msg_start);
+		buffer->PackUnstructured(rt, 0, msg_end - msg_start, const_cast<LPBYTE>(msg_start));
 	}
 
 	/* Update position in buffer. */
@@ -558,9 +558,11 @@ static void TransmitSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, byte *&
 	msg_start = msg_end;
 }
 
-static void TransmitSysexConst(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, byte *msg_start, size_t length)
+static void TransmitStandardSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, MidiSysexMessage msg)
 {
-	TransmitSysex(buffer, rt, msg_start, length);
+	size_t length = 0;
+	const byte *data = MidiGetStandardSysexMessage(msg, length);
+	TransmitSysex(buffer, rt, data, length);
 }
 
 /** Transmit 'Note off' messages to all MIDI channels. */
@@ -571,26 +573,15 @@ static void TransmitNotesOff(IDirectMusicBuffer *buffer, REFERENCE_TIME block_ti
 		TransmitChannelMsg(_buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_SUSTAINSW, 0);
 		TransmitChannelMsg(_buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_MODE_RESETALLCTRL, 0);
 	}
-	/* Explicitly flush buffer to make sure the note off messages are processed
-	 * before we send any additional control messages. */
+
+	/* Performing a GM reset stops all sound and resets all parameters. */
+	TransmitStandardSysex(_buffer, block_time + 20, MidiSysexMessage::ResetGM);
+	TransmitStandardSysex(_buffer, block_time + 30, MidiSysexMessage::RolandSetReverb);
+
+	/* Explicitly flush buffer to make sure the messages are processed,
+	 * as we want sound to stop immediately. */
 	_port->PlayBuffer(_buffer);
 	_buffer->Flush();
-
-	/* Some songs change the "Pitch bend range" registered parameter. If
-	 * this doesn't get reset, everything else will start sounding wrong. */
-	for (int ch = 0; ch < 16; ch++) {
-		/* Running status, only need status for first message
-		 * Select RPN 00.00, set value to 02.00, and de-select again */
-		TransmitChannelMsg(_buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_RPN_SELECT_LO, 0x00);
-		TransmitChannelMsg(_buffer, block_time + 10, MIDICT_RPN_SELECT_HI, 0x00);
-		TransmitChannelMsg(_buffer, block_time + 10, MIDICT_DATAENTRY, 0x02);
-		TransmitChannelMsg(_buffer, block_time + 10, MIDICT_DATAENTRY_LO, 0x00);
-		TransmitChannelMsg(_buffer, block_time + 10, MIDICT_RPN_SELECT_LO, 0x7F);
-		TransmitChannelMsg(_buffer, block_time + 10, MIDICT_RPN_SELECT_HI, 0x7F);
-
-		_port->PlayBuffer(_buffer);
-		_buffer->Flush();
-	}
 
 	/* Wait until message time has passed. */
 	Sleep(Clamp((block_time - cur_time) / MS_TO_REFTIME, 5, 1000));
@@ -615,13 +606,6 @@ static void MidiThreadProc(void *)
 
 	REFERENCE_TIME cur_time;
 	clock->GetTime(&cur_time);
-
-	/* Standard "Enable General MIDI" message */
-	static byte gm_enable_sysex[] = { 0xF0, 0x7E, 0x00, 0x09, 0x01, 0xF7 };
-	TransmitSysexConst(_buffer, cur_time, &gm_enable_sysex[0], sizeof(gm_enable_sysex));
-	/* Roland-specific reverb room control, used by the original game */
-	static byte roland_reverb_sysex[] = { 0xF0, 0x41, 0x10, 0x42, 0x12, 0x40, 0x01, 0x30, 0x02, 0x04, 0x00, 0x40, 0x40, 0x00, 0x00, 0x09, 0xF7 };
-	TransmitSysexConst(_buffer, cur_time, &roland_reverb_sysex[0], sizeof(roland_reverb_sysex));
 
 	_port->PlayBuffer(_buffer);
 	_buffer->Flush();
@@ -665,7 +649,7 @@ static void MidiThreadProc(void *)
 					_playback.do_start = false;
 				}
 
-				/* Turn all notes off in case we are seeking between music titles. */
+				/* Reset playback device between songs. */
 				clock->GetTime(&cur_time);
 				TransmitNotesOff(_buffer, block_time, cur_time);
 
@@ -751,7 +735,7 @@ static void MidiThreadProc(void *)
 				block_time = playback_start_time + block.realtime * MIDITIME_TO_REFTIME;
 				DEBUG(driver, 9, "DMusic thread: Streaming block " PRINTF_SIZE " (cur=" OTTD_PRINTF64 ", block=" OTTD_PRINTF64 ")", current_block, (long long)(current_time / MS_TO_REFTIME), (long long)(block_time / MS_TO_REFTIME));
 
-				byte *data = block.data.Begin();
+				const byte *data = block.data.Begin();
 				size_t remaining = block.data.Length();
 				byte last_status = 0;
 				while (remaining > 0) {
