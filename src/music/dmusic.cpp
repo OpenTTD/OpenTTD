@@ -574,26 +574,15 @@ static void TransmitNotesOff(IDirectMusicBuffer *buffer, REFERENCE_TIME block_ti
 		TransmitChannelMsg(_buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_SUSTAINSW, 0);
 		TransmitChannelMsg(_buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_MODE_RESETALLCTRL, 0);
 	}
-	/* Explicitly flush buffer to make sure the note off messages are processed
-	 * before we send any additional control messages. */
+
+	/* Performing a GM reset stops all sound and resets all parameters. */
+	TransmitStandardSysex(_buffer, block_time + 20, MidiSysexMessage::ResetGM);
+	TransmitStandardSysex(_buffer, block_time + 30, MidiSysexMessage::RolandSetReverb);
+
+	/* Explicitly flush buffer to make sure the messages are processed,
+	 * as we want sound to stop immediately. */
 	_port->PlayBuffer(_buffer);
 	_buffer->Flush();
-
-	/* Some songs change the "Pitch bend range" registered parameter. If
-	 * this doesn't get reset, everything else will start sounding wrong. */
-	for (int ch = 0; ch < 16; ch++) {
-		/* Running status, only need status for first message
-		 * Select RPN 00.00, set value to 02.00, and de-select again */
-		TransmitChannelMsg(_buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_RPN_SELECT_LO, 0x00);
-		TransmitChannelMsg(_buffer, block_time + 10, MIDICT_RPN_SELECT_HI, 0x00);
-		TransmitChannelMsg(_buffer, block_time + 10, MIDICT_DATAENTRY, 0x02);
-		TransmitChannelMsg(_buffer, block_time + 10, MIDICT_DATAENTRY_LO, 0x00);
-		TransmitChannelMsg(_buffer, block_time + 10, MIDICT_RPN_SELECT_LO, 0x7F);
-		TransmitChannelMsg(_buffer, block_time + 10, MIDICT_RPN_SELECT_HI, 0x7F);
-
-		_port->PlayBuffer(_buffer);
-		_buffer->Flush();
-	}
 
 	/* Wait until message time has passed. */
 	Sleep(Clamp((block_time - cur_time) / MS_TO_REFTIME, 5, 1000));
@@ -618,11 +607,6 @@ static void MidiThreadProc()
 
 	REFERENCE_TIME cur_time;
 	clock->GetTime(&cur_time);
-
-	/* Standard "Enable General MIDI" message */
-	TransmitStandardSysex(_buffer, block_time + 20, MidiSysexMessage::ResetGM);
-	/* Roland-specific reverb room control, used by the original game */
-	TransmitStandardSysex(_buffer, block_time + 30, MidiSysexMessage::RolandSetReverb);
 
 	_port->PlayBuffer(_buffer);
 	_buffer->Flush();
@@ -666,7 +650,7 @@ static void MidiThreadProc()
 					_playback.do_start = false;
 				}
 
-				/* Turn all notes off in case we are seeking between music titles. */
+				/* Reset playback device between songs. */
 				clock->GetTime(&cur_time);
 				TransmitNotesOff(_buffer, block_time, cur_time);
 
