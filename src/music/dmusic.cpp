@@ -559,9 +559,11 @@ static void TransmitSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, const b
 	msg_start = msg_end;
 }
 
-static void TransmitSysexConst(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, const byte *msg_start, size_t length)
+static void TransmitStandardSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, MidiSysexMessage msg)
 {
-	TransmitSysex(buffer, rt, msg_start, length);
+	size_t length = 0;
+	const byte *data = MidiGetStandardSysexMessage(msg, length);
+	TransmitSysex(buffer, rt, data, length);
 }
 
 /** Transmit 'Note off' messages to all MIDI channels. */
@@ -618,11 +620,9 @@ static void MidiThreadProc()
 	clock->GetTime(&cur_time);
 
 	/* Standard "Enable General MIDI" message */
-	static byte gm_enable_sysex[] = { 0xF0, 0x7E, 0x00, 0x09, 0x01, 0xF7 };
-	TransmitSysexConst(_buffer, cur_time, &gm_enable_sysex[0], sizeof(gm_enable_sysex));
+	TransmitStandardSysex(_buffer, block_time + 20, MidiSysexMessage::ResetGM);
 	/* Roland-specific reverb room control, used by the original game */
-	static byte roland_reverb_sysex[] = { 0xF0, 0x41, 0x10, 0x42, 0x12, 0x40, 0x01, 0x30, 0x02, 0x04, 0x00, 0x40, 0x40, 0x00, 0x00, 0x09, 0xF7 };
-	TransmitSysexConst(_buffer, cur_time, &roland_reverb_sysex[0], sizeof(roland_reverb_sysex));
+	TransmitStandardSysex(_buffer, block_time + 30, MidiSysexMessage::RolandSetReverb);
 
 	_port->PlayBuffer(_buffer);
 	_buffer->Flush();

@@ -27,6 +27,37 @@
 static MidiFile *_midifile_instance = nullptr;
 
 /**
+ * Retrieve a well-known MIDI system exclusive message.
+ * @param msg Which sysex message to retrieve
+ * @param[out] length Receives the length of the returned buffer
+ * @return Pointer to byte buffer with sysex message
+ */
+const byte *MidiGetStandardSysexMessage(MidiSysexMessage msg, size_t &length)
+{
+	static byte reset_gm_sysex[] = { 0xF0, 0x7E, 0x00, 0x09, 0x01, 0xF7 };
+	static byte reset_gs_sysex[] = { 0xF0, 0x41, 0x10, 0x42, 0x12, 0x40, 0x00, 0x7F, 0x00, 0x41, 0xF7 };
+	static byte reset_xg_sysex[] = { 0xF0, 0x43, 0x10, 0x4C, 0x00, 0x00, 0x7E, 0x00, 0xF7 };
+	static byte roland_reverb_sysex[] = { 0xF0, 0x41, 0x10, 0x42, 0x12, 0x40, 0x01, 0x30, 0x02, 0x04, 0x00, 0x40, 0x40, 0x00, 0x00, 0x09, 0xF7 };
+
+	switch (msg) {
+		case MidiSysexMessage::ResetGM:
+			length = lengthof(reset_gm_sysex);
+			return reset_gm_sysex;
+		case MidiSysexMessage::ResetGS:
+			length = lengthof(reset_gs_sysex);
+			return reset_gs_sysex;
+		case MidiSysexMessage::ResetXG:
+			length = lengthof(reset_xg_sysex);
+			return reset_xg_sysex;
+		case MidiSysexMessage::RolandSetReverb:
+			length = lengthof(roland_reverb_sysex);
+			return roland_reverb_sysex;
+		default:
+			NOT_REACHED();
+	}
+}
+
+/**
  * Owning byte buffer readable as a stream.
  * RAII-compliant to make teardown in error situations easier.
  */
