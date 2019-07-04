@@ -43,7 +43,7 @@ static struct {
 
 	MidiFile current_file;           ///< file currently being played from
 	PlaybackSegment current_segment; ///< segment info for current playback
-	size_t playback_start_time;      ///< timestamp current file began playback
+	DWORD playback_start_time;       ///< timestamp current file began playback
 	size_t current_block;            ///< next block index to send
 	MidiFile next_file;              ///< upcoming file to play
 	PlaybackSegment next_segment;    ///< segment info for upcoming file
@@ -199,7 +199,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 					 * The delay compensation is needed to avoid time-compression of following messages.
 					 */
 					DEBUG(driver, 2, "Win32-MIDI: timer: start from block %d (ticktime %d, realtime %.3f, bytes %d)", (int)bl, (int)block.ticktime, ((int)block.realtime) / 1000.0, (int)preload_bytes);
-					_midi.playback_start_time -= block.realtime / 1000 - preload_bytes * 1000 / 3125;
+					_midi.playback_start_time -= block.realtime / 1000 - (DWORD)(preload_bytes * 1000 / 3125);
 					break;
 				}
 			}
@@ -209,7 +209,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 
 	/* play pending blocks */
 	DWORD current_time = timeGetTime();
-	size_t playback_time = current_time - _midi.playback_start_time;
+	DWORD playback_time = current_time - _midi.playback_start_time;
 	while (_midi.current_block < _midi.current_file.blocks.size()) {
 		MidiFile::DataBlock &block = _midi.current_file.blocks[_midi.current_block];
 
