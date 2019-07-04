@@ -312,10 +312,14 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 void MusicDriver_Win32::PlaySong(const MusicSongInfo &song)
 {
 	DEBUG(driver, 2, "Win32-MIDI: PlaySong: entry");
+
+	MidiFile new_song;
+	if (!new_song.LoadSong(song)) return;
+	DEBUG(driver, 2, "Win32-MIDI: PlaySong: Loaded song");
+
 	std::lock_guard mutex_lock(_midi.lock);
 
-	if (!_midi.next_file.LoadSong(song)) return;
-
+	_midi.next_file.MoveFrom(new_song);
 	_midi.next_segment.start = song.override_start;
 	_midi.next_segment.end = song.override_end;
 	_midi.next_segment.loop = song.loop;
