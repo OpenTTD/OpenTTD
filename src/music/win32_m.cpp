@@ -181,8 +181,8 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 	/* skip beginning of file? */
 	if (_midi.current_segment.start > 0 && _midi.current_block == 0 && _midi.current_segment.start_block == 0) {
 		/* find first block after start time and pretend playback started earlier
-		* this is to allow all blocks prior to the actual start to still affect playback,
-		* as they may contain important controller and program changes */
+		 * this is to allow all blocks prior to the actual start to still affect playback,
+		 * as they may contain important controller and program changes */
 		size_t preload_bytes = 0;
 		for (size_t bl = 0; bl < _midi.current_file.blocks.size(); bl++) {
 			MidiFile::DataBlock &block = _midi.current_file.blocks[bl];
