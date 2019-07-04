@@ -74,10 +74,10 @@ static void TransmitChannelMsg(byte status, byte p1, byte p2 = 0)
 	midiOutShortMsg(_midi.midi_out, status | (p1 << 8) | (p2 << 16));
 }
 
-static void TransmitSysex(byte *&msg_start, size_t &remaining)
+static void TransmitSysex(const byte *&msg_start, size_t &remaining)
 {
 	/* find end of message */
-	byte *msg_end = msg_start;
+	const byte *msg_end = msg_start;
 	while (*msg_end != MIDIST_ENDSYSEX) msg_end++;
 	msg_end++; /* also include sysex end byte */
 
@@ -98,7 +98,7 @@ static void TransmitSysex(byte *&msg_start, size_t &remaining)
 	msg_start = msg_end;
 }
 
-static void TransmitSysexConst(byte *msg_start, size_t length)
+static void TransmitSysexConst(const byte *msg_start, size_t length)
 {
 	TransmitSysex(msg_start, length);
 }
@@ -226,7 +226,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 			break;
 		}
 
-		byte *data = block.data.data();
+		const byte *data = block.data.data();
 		size_t remaining = block.data.size();
 		byte last_status = 0;
 		while (remaining > 0) {

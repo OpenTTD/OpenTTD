@@ -539,19 +539,19 @@ static void TransmitChannelMsg(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, by
 	}
 }
 
-static void TransmitSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, byte *&msg_start, size_t &remaining)
+static void TransmitSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, const byte *&msg_start, size_t &remaining)
 {
 	/* Find end of message. */
-	byte *msg_end = msg_start;
+	const byte *msg_end = msg_start;
 	while (*msg_end != MIDIST_ENDSYSEX) msg_end++;
 	msg_end++; // Also include SysEx end byte.
 
-	if (buffer->PackUnstructured(rt, 0, msg_end - msg_start, msg_start) == E_OUTOFMEMORY) {
+	if (buffer->PackUnstructured(rt, 0, msg_end - msg_start, const_cast<LPBYTE>(msg_start)) == E_OUTOFMEMORY) {
 		/* Buffer is full, clear it and try again. */
 		_port->PlayBuffer(buffer);
 		buffer->Flush();
 
-		buffer->PackUnstructured(rt, 0, msg_end - msg_start, msg_start);
+		buffer->PackUnstructured(rt, 0, msg_end - msg_start, const_cast<LPBYTE>(msg_start));
 	}
 
 	/* Update position in buffer. */
@@ -559,7 +559,7 @@ static void TransmitSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, byte *&
 	msg_start = msg_end;
 }
 
-static void TransmitSysexConst(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, byte *msg_start, size_t length)
+static void TransmitSysexConst(IDirectMusicBuffer *buffer, REFERENCE_TIME rt, const byte *msg_start, size_t length)
 {
 	TransmitSysex(buffer, rt, msg_start, length);
 }
@@ -752,7 +752,7 @@ static void MidiThreadProc()
 				block_time = playback_start_time + block.realtime * MIDITIME_TO_REFTIME;
 				DEBUG(driver, 9, "DMusic thread: Streaming block " PRINTF_SIZE " (cur=" OTTD_PRINTF64 ", block=" OTTD_PRINTF64 ")", current_block, (long long)(current_time / MS_TO_REFTIME), (long long)(block_time / MS_TO_REFTIME));
 
-				byte *data = block.data.data();
+				const byte *data = block.data.data();
 				size_t remaining = block.data.size();
 				byte last_status = 0;
 				while (remaining > 0) {
