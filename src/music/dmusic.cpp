@@ -41,6 +41,9 @@
 static const int MS_TO_REFTIME = 1000 * 10; ///< DirectMusic time base is 100 ns.
 static const int MIDITIME_TO_REFTIME = 10;  ///< Time base of the midi file reader is 1 us.
 
+/** The output and port objects are torn down and re-created this often */
+static const REFERENCE_TIME TIME_BETWEEN_RESETS = 60 * 60 * 1000 * MS_TO_REFTIME;
+
 
 #define FOURCC_INFO  mmioFOURCC('I','N','F','O')
 #define FOURCC_fmt   mmioFOURCC('f','m','t',' ')
@@ -134,6 +137,9 @@ static struct {
 	int preload_time; ///< preload time for music blocks.
 	byte new_volume;  ///< volume setting to change to
 
+	int port;         ///< port index to use
+	const char *dls;  ///< name of DLS file to use (nullptr if default)
+
 	MidiFile next_file;           ///< upcoming file to play
 	PlaybackSegment next_segment; ///< segment info for upcoming file
 } _playback;
@@ -153,6 +159,9 @@ static IDirectMusicPort *_port = nullptr;
 static IDirectMusicBuffer *_buffer = nullptr;
 /** List of downloaded DLS instruments. */
 static std::vector<IDirectMusicDownload *> _dls_downloads;
+
+static void ReleaseDMusicObjects();
+static const char *CreateDMusicObjects();
 
 
 static FMusicDriver_DMusic iFMusicDriver_DMusic;
@@ -592,6 +601,11 @@ static void MidiThreadProc()
 {
 	DEBUG(driver, 2, "DMusic: Entering playback thread");
 
+	if (FAILED(CoInitializeEx(nullptr, COINITBASE_MULTITHREADED))) {
+		DEBUG(driver, 0, "DMusic: Playback thread could not initialise COM");
+		return;
+	}
+
 	REFERENCE_TIME last_volume_time = 0; // timestamp of the last volume change
 	REFERENCE_TIME block_time = 0;       // timestamp of the last block sent to the port
 	REFERENCE_TIME playback_start_time;  // timestamp current file began playback
@@ -600,6 +614,7 @@ static void MidiThreadProc()
 	size_t current_block = 0;            // next block index to send
 	byte current_volume = 0;             // current effective volume setting
 	byte channel_volumes[16];            // last seen volume controller values in raw data
+	REFERENCE_TIME last_reset;           // when was the output port last fully reset?
 
 	/* Get pointer to the reference clock of our output port. */
 	IReferenceClock *clock;
@@ -607,6 +622,7 @@ static void MidiThreadProc()
 
 	REFERENCE_TIME cur_time;
 	clock->GetTime(&cur_time);
+	last_reset = cur_time;
 
 	_port->PlayBuffer(_buffer);
 	_buffer->Flush();
@@ -637,6 +653,20 @@ static void MidiThreadProc()
 
 		if (wfso == WAIT_OBJECT_0) {
 			if (_playback.do_start) {
+				clock->GetTime(&cur_time);
+				/* Every so often, tear down the output objects and re-create everything.
+				 * It seems the MS softsynth can deteriorate after long, continuous playback, causing broken sound.
+				 * Work around those issues by starting over once in a while. */
+				if (cur_time - last_reset > TIME_BETWEEN_RESETS) {
+					DEBUG(driver, 2, "DMusic thread: Re-creating output port");
+					clock->Release();
+					CreateDMusicObjects();
+					_port->GetLatencyClock(&clock);
+					clock->GetTime(&cur_time);
+					last_reset = cur_time;
+					last_volume_time = block_time = 0;
+				}
+
 				DEBUG(driver, 2, "DMusic thread: Starting playback");
 				{
 					/* New scope to limit the time the mutex is locked. */
@@ -835,6 +865,8 @@ static void MidiThreadProc()
 	Sleep(_playback.preload_time * 4);
 
 	clock->Release();
+
+	CoUninitialize();
 }
 
 static void * DownloadArticulationData(int base_offset, void *data, const std::vector<CONNECTION> &artic)
@@ -1072,111 +1104,12 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 	return nullptr;
 }
 
-
-const char *MusicDriver_DMusic::Start(const char * const *parm)
+static void ReleaseDMusicObjects()
 {
-	/* Initialize COM */
-	if (FAILED(CoInitializeEx(nullptr, COINITBASE_MULTITHREADED))) return "COM initialization failed";
-
-	/* Create the DirectMusic object */
-	if (FAILED(CoCreateInstance(
-				CLSID_DirectMusic,
-				nullptr,
-				CLSCTX_INPROC,
-				IID_IDirectMusic,
-				(LPVOID*)&_music
-			))) {
-		return "Failed to create the music object";
-	}
-
-	/* Assign sound output device. */
-	if (FAILED(_music->SetDirectSound(nullptr, nullptr))) return "Can't set DirectSound interface";
-
-	/* MIDI events need to be send to the synth in time before their playback time
-	 * has come. By default, we try send any events at least 50 ms before playback. */
-	_playback.preload_time = GetDriverParamInt(parm, "preload", 50);
-
-	int pIdx = GetDriverParamInt(parm, "port", -1);
-	if (_debug_driver_level > 0) {
-		/* Print all valid output ports. */
-		char desc[DMUS_MAX_DESCRIPTION];
-
-		DMUS_PORTCAPS caps;
-		MemSetT(&caps, 0);
-		caps.dwSize = sizeof(DMUS_PORTCAPS);
-
-		DEBUG(driver, 1, "Detected DirectMusic ports:");
-		for (int i = 0; _music->EnumPort(i, &caps) == S_OK; i++) {
-			if (caps.dwClass == DMUS_PC_OUTPUTCLASS) {
-				/* Description is UNICODE even for ANSI build. */
-				DEBUG(driver, 1, " %d: %s%s", i, convert_from_fs(caps.wszDescription, desc, lengthof(desc)), i == pIdx ? " (selected)" : "");
-			}
-		}
-	}
-
-	GUID guidPort;
-	if (pIdx >= 0) {
-		/* Check if the passed port is a valid port. */
-		DMUS_PORTCAPS caps;
-		MemSetT(&caps, 0);
-		caps.dwSize = sizeof(DMUS_PORTCAPS);
-		if (FAILED(_music->EnumPort(pIdx, &caps))) return "Supplied port parameter is not a valid port";
-		if (caps.dwClass != DMUS_PC_OUTPUTCLASS) return "Supplied port parameter is not an output port";
-		guidPort = caps.guidPort;
-	} else {
-		if (FAILED(_music->GetDefaultPort(&guidPort))) return "Can't query default music port";
-	}
-
-	/* Create new port. */
-	DMUS_PORTPARAMS params;
-	MemSetT(&params, 0);
-	params.dwSize = sizeof(DMUS_PORTPARAMS);
-	params.dwValidParams = DMUS_PORTPARAMS_CHANNELGROUPS;
-	params.dwChannelGroups = 1;
-	if (FAILED(_music->CreatePort(guidPort, &params, &_port, nullptr))) return "Failed to create port";
-	/* Activate port. */
-	if (FAILED(_port->Activate(TRUE))) return "Failed to activate port";
-
-	/* Create playback buffer. */
-	DMUS_BUFFERDESC desc;
-	MemSetT(&desc, 0);
-	desc.dwSize = sizeof(DMUS_BUFFERDESC);
-	desc.guidBufferFormat = KSDATAFORMAT_SUBTYPE_DIRECTMUSIC;
-	desc.cbBuffer = 1024;
-	if (FAILED(_music->CreateMusicBuffer(&desc, &_buffer, nullptr))) return "Failed to create music buffer";
-
-	/* On soft-synths (e.g. the default DirectMusic one), we might need to load a wavetable set to get music. */
-	const char *dls = LoadDefaultDLSFile(GetDriverParam(parm, "dls"));
-	if (dls != nullptr) return dls;
-
-	/* Create playback thread and synchronization primitives. */
-	_thread_event = CreateEvent(nullptr, FALSE, FALSE, nullptr);
-	if (_thread_event == nullptr) return "Can't create thread shutdown event";
-
-	if (!StartNewThread(&_dmusic_thread, "ottd:dmusic", &MidiThreadProc)) return "Can't create MIDI output thread";
-
-	return nullptr;
-}
-
-
-MusicDriver_DMusic::~MusicDriver_DMusic()
-{
-	this->Stop();
-}
-
-
-void MusicDriver_DMusic::Stop()
-{
-	if (_dmusic_thread.joinable()) {
-		_playback.shutdown = true;
-		SetEvent(_thread_event);
-		_dmusic_thread.join();
-	}
-
 	/* Unloaded any instruments we loaded. */
 	if (_dls_downloads.size() > 0) {
 		IDirectMusicPortDownload *download_port = nullptr;
-		_port->QueryInterface(IID_IDirectMusicPortDownload, (LPVOID *)&download_port);
+		_port->QueryInterface(IID_IDirectMusicPortDownload, (LPVOID *)& download_port);
 
 		/* Instruments refer to waves. As the waves are at the beginning of the download list,
 		 * do the unload from the back so that references are cleared properly. */
@@ -1204,6 +1137,124 @@ void MusicDriver_DMusic::Stop()
 		_music->Release();
 		_music = nullptr;
 	}
+
+}
+
+static const char *CreateDMusicObjects()
+{
+	bool is_first = _music == nullptr;
+
+	ReleaseDMusicObjects();
+
+	/* Create the DirectMusic object */
+	if (FAILED(CoCreateInstance(
+		CLSID_DirectMusic,
+		nullptr,
+		CLSCTX_INPROC,
+		IID_IDirectMusic,
+		(LPVOID *)& _music
+	))) {
+		return "Failed to create the music object";
+	}
+
+	/* Assign sound output device. */
+	if (FAILED(_music->SetDirectSound(nullptr, nullptr))) return "Can't set DirectSound interface";
+
+	if (_debug_driver_level > 0 && is_first) {
+		/* Print all valid output ports. */
+		char desc[DMUS_MAX_DESCRIPTION];
+
+		DMUS_PORTCAPS caps;
+		MemSetT(&caps, 0);
+		caps.dwSize = sizeof(DMUS_PORTCAPS);
+
+		DEBUG(driver, 1, "Detected DirectMusic ports:");
+		for (int i = 0; _music->EnumPort(i, &caps) == S_OK; i++) {
+			if (caps.dwClass == DMUS_PC_OUTPUTCLASS) {
+				/* Description is UNICODE even for ANSI build. */
+				DEBUG(driver, 1, " %d: %s%s", i, convert_from_fs(caps.wszDescription, desc, lengthof(desc)), i == _playback.port ? " (selected)" : "");
+			}
+		}
+	}
+
+	GUID guidPort;
+	if (_playback.port >= 0) {
+		/* Check if the passed port is a valid port. */
+		DMUS_PORTCAPS caps;
+		MemSetT(&caps, 0);
+		caps.dwSize = sizeof(DMUS_PORTCAPS);
+		if (FAILED(_music->EnumPort(_playback.port, &caps))) return "Supplied port parameter is not a valid port";
+		if (caps.dwClass != DMUS_PC_OUTPUTCLASS) return "Supplied port parameter is not an output port";
+		guidPort = caps.guidPort;
+	} else {
+		if (FAILED(_music->GetDefaultPort(&guidPort))) return "Can't query default music port";
+	}
+
+	/* Create new port. */
+	DMUS_PORTPARAMS params;
+	MemSetT(&params, 0);
+	params.dwSize = sizeof(DMUS_PORTPARAMS);
+	params.dwValidParams = DMUS_PORTPARAMS_CHANNELGROUPS;
+	params.dwChannelGroups = 1;
+	if (FAILED(_music->CreatePort(guidPort, &params, &_port, nullptr))) return "Failed to create port";
+	/* Activate port. */
+	if (FAILED(_port->Activate(TRUE))) return "Failed to activate port";
+
+	/* Create playback buffer. */
+	DMUS_BUFFERDESC desc;
+	MemSetT(&desc, 0);
+	desc.dwSize = sizeof(DMUS_BUFFERDESC);
+	desc.guidBufferFormat = KSDATAFORMAT_SUBTYPE_DIRECTMUSIC;
+	desc.cbBuffer = 1024;
+	if (FAILED(_music->CreateMusicBuffer(&desc, &_buffer, nullptr))) return "Failed to create music buffer";
+
+	/* On soft-synths (e.g. the default DirectMusic one), we might need to load a wavetable set to get music. */
+	const char *dls = LoadDefaultDLSFile(_playback.dls);
+	if (dls != nullptr) return dls;
+
+	return nullptr;
+}
+
+const char *MusicDriver_DMusic::Start(const char * const *parm)
+{
+	/* Initialize COM */
+	if (FAILED(CoInitializeEx(nullptr, COINITBASE_MULTITHREADED))) return "COM initialization failed";
+
+	/* Read out driver parameters */
+	_playback.port = GetDriverParamInt(parm, "port", -1);
+	_playback.dls = GetDriverParam(parm, "dls");
+	/* MIDI events need to be send to the synth in time before their playback time
+	 * has come. By default, we try send any events at least 50 ms before playback. */
+	_playback.preload_time = GetDriverParamInt(parm, "preload", 50);
+
+	const char *error = CreateDMusicObjects();
+	if (error != nullptr) return error;
+
+	/* Create playback thread and synchronization primitives. */
+	_thread_event = CreateEvent(nullptr, FALSE, FALSE, nullptr);
+	if (_thread_event == nullptr) return "Can't create thread shutdown event";
+
+	if (!StartNewThread(&_dmusic_thread, "ottd:dmusic", &MidiThreadProc)) return "Can't create MIDI output thread";
+
+	return nullptr;
+}
+
+
+MusicDriver_DMusic::~MusicDriver_DMusic()
+{
+	this->Stop();
+}
+
+
+void MusicDriver_DMusic::Stop()
+{
+	if (_dmusic_thread.joinable()) {
+		_playback.shutdown = true;
+		SetEvent(_thread_event);
+		_dmusic_thread.join();
+	}
+
+	ReleaseDMusicObjects();
 
 	CloseHandle(_thread_event);
 
