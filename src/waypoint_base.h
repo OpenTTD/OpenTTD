@@ -27,6 +27,8 @@ struct Waypoint FINAL : SpecializedStation<Waypoint, true> {
 
 	void UpdateVirtCoord() override;
 
+	void MoveSign(TileIndex new_xy) override;
+
 	inline bool TileBelongsToRailStation(TileIndex tile) const override
 	{
 		return IsRailWaypointTile(tile) && GetStationIndex(tile) == this->index;
