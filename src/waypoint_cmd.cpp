@@ -48,6 +48,21 @@ void Waypoint::UpdateVirtCoord()
 }
 
 /**
+ * Move the waypoint main coordinate somewhere else.
+ * @param new_xy new tile location of the sign
+ */
+void Waypoint::MoveSign(TileIndex new_xy)
+{
+	if (this->xy == new_xy) return;
+
+	_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeWaypoint(this->index));
+
+	this->BaseStation::MoveSign(new_xy);
+
+	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeWaypoint(this->index));
+}
+
+/**
  * Find a deleted waypoint close to a tile.
  * @param tile to search from
  * @param str  the string to get the 'type' of
