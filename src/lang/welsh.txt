@@ -1800,6 +1800,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Newid y 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Galluogi newid graddfeydd cynhyrchu: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Cynllun Lliw
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Dangos cynllun lliw cyffredinol
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Dangos cynllun lliw trenau
@@ -2684,6 +2685,7 @@ STR_ABOUT_VERSION                                               :{BLACK}fersiwn 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 Y tîm OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Nifer o fframiau fideo a lunir bob eiliad.
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
@@ -3792,6 +3794,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Oed (blynyddoed
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Angen gwasanaeth
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Bob tro
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Oes yn weddill (blynyddoedd)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Dibynadwyedd uchafsymol
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Sut i gymharu'r data cerbyd i'r gwerth a roddwyd
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :yn hafal i
@@ -4475,6 +4478,7 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Effeithiau sain
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Effeithiau sain gwreiddiol fersiwn Windows o Transport Tycoon Deluxe.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Pecyn sain heb unrhyw effeithiau sain ynddo.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Cerddoriaeth gwreiddiol fersion Windows o Transport Tycoon Deluxe.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Cerddoriaeth gwreiddiol Transport Tycoon Deluxe (fersiwn DOS).
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Pecyn cerddoriaeth heb unrhyw gerddoriaeth ynddo.
 
 ##id 0x2000
