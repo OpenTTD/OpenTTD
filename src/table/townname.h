@@ -768,7 +768,7 @@ static const char * const _name_french_real[] = {
 	"Le Puy",
 	"Vichy",
 	"St. Valery",
-	"Beaujolais",
+	"Villefranche-sur-Sa\xC3\xB4ne",
 	"Reims",
 	"Albi",
 	"Paris",
