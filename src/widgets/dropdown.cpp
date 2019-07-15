@@ -482,6 +482,19 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, int button, 
 	ShowDropDownListAt(w, std::move(list), selected, button, wi_rect, wi_colour, auto_width, instant_close);
 }
 
+void ShowDropDownMenu(Window* w, const std::vector<StringID>& strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask, uint width)
+{
+	DropDownList list;
+
+	for (uint i = 0; i < strings.size(); i++) {
+		if (!HasBit(hidden_mask, i)) {
+			list.emplace_back(new DropDownListStringItem(strings[i], i, HasBit(disabled_mask, i)));
+		}
+	}
+
+	if (!list.empty()) ShowDropDownList(w, std::move(list), selected, button, width);
+}
+
 /**
  * Show a dropdown menu window near a widget of the parent window.
  * The result code of the items is their index in the \a strings list.
@@ -495,16 +508,13 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, int button, 
  */
 void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask, uint width)
 {
-	DropDownList list;
-
+	std::vector<StringID> vec;
 	for (uint i = 0; strings[i] != INVALID_STRING_ID; i++) {
-		if (!HasBit(hidden_mask, i)) {
-			list.emplace_back(new DropDownListStringItem(strings[i], i, HasBit(disabled_mask, i)));
-		}
+		vec.push_back(strings[i]);
 	}
-
-	if (!list.empty()) ShowDropDownList(w, std::move(list), selected, button, width);
+	ShowDropDownMenu(w, vec, selected, button, disabled_mask, hidden_mask, width);
 }
+
 
 /**
  * Delete the drop-down menu from window \a pw

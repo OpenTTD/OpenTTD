@@ -13,6 +13,7 @@
 #define ENGINE_GUI_H
 
 #include "engine_type.h"
+#include "group_type.h"
 #include "sortlist_type.h"
 #include "gfx_type.h"
 #include "vehicle_type.h"
@@ -36,10 +37,11 @@ extern bool _engine_sort_direction;
 extern byte _engine_sort_last_criteria[];
 extern bool _engine_sort_last_order[];
 extern bool _engine_sort_show_hidden_engines[];
-extern const StringID _engine_sort_listing[][12];
-extern EngList_SortTypeFunction * const _engine_sort_functions[][11];
+extern const StringID _engine_sort_listing[][15];
+extern EngList_SortTypeFunction * const _engine_sort_functions[][14];
 
 uint GetEngineListHeight(VehicleType type);
+void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList* eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group);
 void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selected, int button);
 
 #endif /* ENGINE_GUI_H */

@@ -316,6 +316,8 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Cargo capacity
 STR_SORT_BY_RANGE                                               :Range
 STR_SORT_BY_POPULATION                                          :Population
 STR_SORT_BY_RATING                                              :Rating
+STR_SORT_BY_PRICE_BY_CAPACITY                                   :Price/capacity
+STR_SORT_BY_LENGTH_BY_CAPACITY                                  :Length/capacity
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause game
@@ -5128,3 +5130,36 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+
+STR_BUILD_VEHICLE_SMART                                         :Smart build vehicle menu
+STR_BUILD_VEHICLE_SMART_HELPTEXT                                :Smart build vehicle menu
+STR_BUILD_VEHICLE_DETAIL                                        :{BLACK}Detail
+STR_BUILD_VEHICLE_DETAIL_TOOLTIP                                :{BLACK}Extended options for comfortable unit select
+STR_BUILD_VEHICLE_AUTO_TRAIN                                    :{BLACK}Take the train parameters from the from
+STR_BUILD_VEHICLE_AUTO_TRAIN_TOOLTIP                            :{BLACK}Take parameters from the first train from the depot (maximum weight, available speed, train length)
+STR_BUILD_VEHICLE_FILTER                                        :{BLACK}Use filters...
+STR_BUILD_VEHICLE_FILTER_TOOLTIP                                :{BLACK}Open filters panel
+STR_BUILD_VEHICLE_INCLINE_LABEL                                 :{BLACK}Allow slopes:
+STR_BUILD_VEHICLE_INCLINE_EDITOR                                :{ORANGE}{NUM}%
+STR_BUILD_VEHICLE_INCLINE_TOOLTIP                               :{BLACK}An opportunity to overcome the incline
+STR_BUILD_VEHICLE_LOCOMOTIVES                                   :{BLACK}Locomotives
+STR_BUILD_VEHICLE_RAILCARS                                      :{BLACK}Railcars
+STR_BUILD_VEHICLE_WAGONS                                        :{BLACK}Wagons
+STR_BUILD_VEHICLE_TRAIN_WEIGHT_LABEL                            :{BLACK}Train weight:
+STR_BUILD_VEHICLE_TRAIN_WEIGHT_EDITOR                           :{ORANGE}{WEIGHT_SHORT}
+STR_BUILD_VEHICLE_TRAIN_WEIGHT_TOOLTIP                          :{BLACK}Preferred train weight (without locomotive)
+STR_BUILD_VEHICLE_EDIT_TRAIN_WEIGHT                             :{BLACK}Enter preferred train weight
+STR_BUILD_VEHICLE_CARGO_FILTER_LABEL                            :{BLACK}Cargo filter:
+STR_BUILD_VEHICLE_CARGO_FILTER_LABEL_TOOLTIP                    :{BLACK}Cargo filter
+STR_BUILD_VEHICLE_TRAIN_SPEED_LABEL                             :{BLACK}Train speed:
+STR_BUILD_VEHICLE_TRAIN_SPEED_EDITOR                            :{ORANGE}{VELOCITY}
+STR_BUILD_VEHICLE_TRAIN_SPEED_TOOLTIP                           :{BLACK}Preferred train speed
+STR_BUILD_VEHICLE_EDIT_TRAIN_SPEED                              :{BLACK}Enter preferred train speed
+STR_BUILD_VEHICLE_TRAIN_LENGTH_LABEL                            :{BLACK}Train length:
+STR_BUILD_VEHICLE_TRAIN_LENGTH_EDITOR                           :{ORANGE}{NUM}
+STR_BUILD_VEHICLE_TRAIN_LENGTH_TOOLTIP                          :{BLACK}Expected train length (power calculation for overcoming inclines)
+STR_BUILD_VEHICLE_EDIT_TRAIN_LENGTH                             :{BLACK}Enter expected train length
+STR_BUILD_VEHICLE_SLOPE_LENGTH_LABEL                            :{BLACK}Slope length:
+STR_BUILD_VEHICLE_SLOPE_LENGTH_EDITOR                           :{ORANGE}{NUM}
+STR_BUILD_VEHICLE_SLOPE_LENGTH_TOOLTIP                          :{BLACK}Expected slope length (power calculation for overcoming inclines)
+STR_BUILD_VEHICLE_EDIT_SLOPE_LENGTH                             :{BLACK}Enter expected slope length

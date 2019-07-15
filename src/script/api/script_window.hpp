@@ -1000,6 +1000,26 @@ public:
 		WID_BV_SHOW_HIDE                             = ::WID_BV_SHOW_HIDE,                             ///< Button to hide or show the selected engine.
 		WID_BV_BUILD_SEL                             = ::WID_BV_BUILD_SEL,                             ///< Build button.
 		WID_BV_RENAME                                = ::WID_BV_RENAME,                                ///< Rename button.
+		// build vehicle smart:
+		WID_BV_FILTER_BUTTON                         = ::WID_BV_FILTER_BUTTON,                         ///< Show filters panel.
+		WID_BV_FILTER_CONTAINER                      = ::WID_BV_FILTER_CONTAINER,                      ///< Filters container.
+		WID_BV_RAIL_WAGON                            = ::WID_BV_RAIL_WAGON,                            ///< Show/hide wagons.
+		WID_BV_RAIL_MOTOR_WAGON                      = ::WID_BV_RAIL_MOTOR_WAGON,                      ///< Show/hide motor-wagons.
+		WID_BV_RAIL_LOCOMOTIVE                       = ::WID_BV_RAIL_LOCOMOTIVE,                       ///< Show/hide locomotive.
+		WID_BV_RAIL_WEIGHT_INCREASE                  = ::WID_BV_RAIL_WEIGHT_INCREASE,                  ///< Increase train weight.
+		WID_BV_RAIL_WEIGHT_DECREASE                  = ::WID_BV_RAIL_WEIGHT_DECREASE,                  ///< Decrease train weight.
+		WID_BV_RAIL_WEIGHT_EDIT                      = ::WID_BV_RAIL_WEIGHT_EDIT,                      ///< Edit train weight directly.
+		WID_BV_RAIL_SPEED_INCREASE                   = ::WID_BV_RAIL_SPEED_INCREASE,                   ///< Increase train speed.
+		WID_BV_RAIL_SPEED_DECREASE                   = ::WID_BV_RAIL_SPEED_DECREASE,                   ///< Decrease train speed.
+		WID_BV_RAIL_SPEED_EDIT                       = ::WID_BV_RAIL_SPEED_EDIT,                       ///< Edit train speed directly.
+		WID_BV_TRAIN_LENGTH_INCREASE                 = ::WID_BV_TRAIN_LENGTH_INCREASE,                 ///< Increase train length.
+		WID_BV_TRAIN_LENGTH_DECREASE                 = ::WID_BV_TRAIN_LENGTH_DECREASE,                 ///< Decrease train length.
+		WID_BV_TRAIN_LENGTH_EDIT                     = ::WID_BV_TRAIN_LENGTH_EDIT,                     ///< Edit train length directly.
+		WID_BV_SLOPE_LENGTH_INCREASE                 = ::WID_BV_SLOPE_LENGTH_INCREASE,                 ///< Increase slope length.
+		WID_BV_SLOPE_LENGTH_DECREASE                 = ::WID_BV_SLOPE_LENGTH_DECREASE,                 ///< Decrease slope length.
+		WID_BV_SLOPE_LENGTH_EDIT                     = ::WID_BV_SLOPE_LENGTH_EDIT,                     ///< Edit slope length directly.
+		WID_BV_SLOPE                                 = ::WID_BV_SLOPE,                                 ///< Calculate the effect of the slopes.
+		WID_BV_TRAIN_FROM_DEPOT                      = ::WID_BV_TRAIN_FROM_DEPOT,                      ///< Take settings from train in depot.
 	};
 
 	/* automatically generated from ../../widgets/cheat_widget.h */

@@ -174,6 +174,68 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 		 * vehicle. */
 		return this->gcache.cached_veh_length / 2 + (this->Next() != nullptr ? this->Next()->gcache.cached_veh_length + 1 : 0) / 2;
 	}
+	/**
+	* @return max weight (with cargo) of all train
+	*/
+	uint16 GetSummaryMaxWeight() const
+	{
+		uint16 weight = 0;
+		for (Train* u = this->First(); u != NULL; u = u->Next()) {
+			weight += u->GetMaxWeight();
+		}
+		return weight;
+	}
+
+	/**
+	* @return current length of all train in tile units.
+	*/
+	uint16 GetSummaryLength() const
+	{
+		uint16 length = 0;
+		for (Train* u = this->First(); u != NULL; u = u->Next()) {
+			length += u->GetLength();
+		}
+		return length;
+	}
+
+	/**
+	* @return current weight of all train
+	*/
+	uint16 GetSummaryWeight() const
+	{
+		uint16 weight = 0;
+		for (Train* u = this->First(); u != NULL; u = u->Next()) {
+			weight += u->GetWeight();
+		}
+		return weight;
+	}
+
+	/**
+	* @return length value from the engine in tile units.
+	*/
+	inline uint16 GetLength() const
+	{
+		return VEHICLE_LENGTH - this->GetEngine()->u.rail.shorten_factor;
+	}
+
+	/**
+	* Allows to know the weight value that this vehicle will use.
+	* @return Weight value from the engine in tonnes.
+	*/
+	inline uint16 GetWeight() const
+	{
+		return this->GetCustomWeight(this->cargo.StoredCount());
+	}
+
+	inline uint16 GetMinWeight() const
+	{
+		return this->GetCustomWeight(0);
+	}
+
+	inline uint16 GetMaxWeight() const
+	{
+		return this->GetCustomWeight(this->cargo_cap);
+	}
 
 protected: // These functions should not be called outside acceleration code.
 
@@ -212,9 +274,9 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the weight value that this vehicle will use.
 	 * @return Weight value from the engine in tonnes.
 	 */
-	inline uint16 GetWeight() const
+	uint16 GetCustomWeight(uint16 cargo_amount) const
 	{
-		uint16 weight = (CargoSpec::Get(this->cargo_type)->weight * this->cargo.StoredCount() * FreightWagonMult(this->cargo_type)) / 16;
+		uint16 weight = (CargoSpec::Get(this->cargo_type)->weight * cargo_amount * FreightWagonMult(this->cargo_type)) / 16;
 
 		/* Vehicle weight is not added for articulated parts. */
 		if (!this->IsArticulatedPart()) {

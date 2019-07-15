@@ -1552,6 +1552,7 @@ static SettingsContainer &GetSettingsTree()
 
 			SettingsPage *construction = interface->Add(new SettingsPage(STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION));
 			{
+				construction->Add(new SettingEntry("gui.build_vehicle_smart_gui"));
 				construction->Add(new SettingEntry("gui.link_terraform_toolbar"));
 				construction->Add(new SettingEntry("gui.enable_signal_gui"));
 				construction->Add(new SettingEntry("gui.persistent_buildingtools"));

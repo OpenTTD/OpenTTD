@@ -151,6 +151,8 @@ struct GUISettings {
 	uint16 console_backlog_timeout;          ///< the minimum amount of time items should be in the console backlog before they will be removed in ~3 seconds granularity.
 	uint16 console_backlog_length;           ///< the minimum amount of items in the console backlog before items will be removed.
 
+	bool build_vehicle_smart_gui;            ///< build vehicle smart gui
+
 	uint8  station_gui_group_order;          ///< the order of grouping cargo entries in the station gui
 	uint8  station_gui_sort_by;              ///< sort cargo entries in the station gui by station name or amount
 	uint8  station_gui_sort_order;           ///< the sort order of entries in the station gui - ascending or descending
