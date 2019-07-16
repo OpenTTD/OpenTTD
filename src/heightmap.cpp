@@ -300,11 +300,8 @@ static bool ReadHeightMap(DetailedFileType dft, const char *filename, uint *x, u
 {
 	switch (dft) {
 		default:
-			NOT_REACHED();
-
 		case DFT_HEIGHTMAP_EHM:
-			assert(false); // SFTODO!
-			*((char *) 0) = 0; // SFTODO!
+			NOT_REACHED();
 
 #ifdef WITH_PNG
 		case DFT_HEIGHTMAP_PNG:
