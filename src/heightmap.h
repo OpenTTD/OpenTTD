@@ -14,8 +14,6 @@
 
 #include "fileio_type.h"
 
-bool GetHeightmapDimensions(DetailedFileType dft, const char *filename, uint *x, uint *y);
-void LoadHeightmap(DetailedFileType dft, const char *filename);
 void FlatEmptyWorld(byte tile_height);
 void FixSlopes();
 
