@@ -317,14 +317,14 @@ static bool ReadHeightMap(DetailedFileType dft, const char *filename, uint *x, u
  * @param file_path Full path to the legacy heightmap to load.
  * @param file_name Name of the file.
  */
-void ExtendedHeightmap::LoadLegacyHeightmap(char *file_path, char *file_name)
+void ExtendedHeightmap::LoadLegacyHeightmap(DetailedFileType dft, char *file_path, char *file_name)
 {
 	/* Try to load the legacy heightmap first. */
 	HeightmapLayer *height_layer = new HeightmapLayer();
 	height_layer->type = HLT_HEIGHTMAP;
 	height_layer->information = NULL;
 
-	if (!ReadHeightMap(file_path, &height_layer->width, &height_layer->height, &height_layer->information)) {
+	if (!ReadHeightMap(dft, file_path, &height_layer->width, &height_layer->height, &height_layer->information)) {
 		free(height_layer->information);
 		delete height_layer;
 		return;

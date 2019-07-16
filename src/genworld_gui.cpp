@@ -852,7 +852,7 @@ static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 
 	if (mode == GLWM_HEIGHTMAP) {
 		_extended_heightmap_gui = new ExtendedHeightmap();
-		_extended_heightmap_gui->LoadLegacyHeightmap(_file_to_saveload.name, _file_to_saveload.title);
+		_extended_heightmap_gui->LoadLegacyHeightmap(_file_to_saveload.detail_ftype,_file_to_saveload.name, _file_to_saveload.title);
 		/* If the extended heightmap is not valid, it means there was a problem loading the heightmap. */
 		if (!_extended_heightmap_gui->IsValid()) {
 			delete _extended_heightmap_gui;
