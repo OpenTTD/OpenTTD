@@ -1460,10 +1460,10 @@ WriteTar::~WriteTar()
 bool WriteTar::StartWriteTar(const char *tar_fname, const char *dir_name, const char *dir_entry)
 {
 	free(this->dir_name);
-	this->dir_name = strdup(dir_name);
+	this->dir_name = stredup(dir_name);
 
 	free(this->dir_entry);
-	this->dir_entry = strdup(dir_entry);
+	this->dir_entry = stredup(dir_entry);
 
 	this->fp = fopen(tar_fname, "wb");
 	if (this->fp == NULL) return false;
@@ -1497,9 +1497,9 @@ void WriteTar::StartWriteFile(const char *fname)
 {
 	memset(&this->header, 0, sizeof(this->header));
 
-	ttd_strlcpy(this->header.name, this->dir_entry, lengthof(this->header.name));
-	AppendPathSeparator(this->header.name, lengthof(this->header.name));
-	ttd_strlcat(this->header.name, fname, lengthof(this->header.name));
+	strecpy(this->header.name, this->dir_entry, lastof(this->header.name));
+	AppendPathSeparator(this->header.name, lastof(this->header.name));
+	strecat(this->header.name, fname, lastof(this->header.name));
 
 	this->MakeOctalValue(this->header.mode, 0664, lengthof(this->header.mode));
 	this->MakeOctalValue(this->header.uid,  1000, lengthof(this->header.uid));
@@ -1509,8 +1509,8 @@ void WriteTar::StartWriteFile(const char *fname)
 	this->header.typeflag = '0';
 	memcpy(this->header.magic, "ustar ", 6); // '\0' is not written
 	this->header.version[0] = '0';
-	ttd_strlcpy(this->header.uname, "user", lengthof(this->header.uname));
-	ttd_strlcpy(this->header.gname, "user", lengthof(this->header.gname));
+	strecpy(this->header.uname, "user", lastof(this->header.uname));
+	strecpy(this->header.gname, "user", lastof(this->header.gname));
 
 	this->WriteZeroes(512); // Write dummy block as place holder of the file header block.
 

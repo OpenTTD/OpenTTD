@@ -17,7 +17,7 @@
 #include "heightmap_layer_type.h"
 #include "heightmap_layer_base.h"
 
-typedef SmallMap<HeightmapLayerType, HeightmapLayer *, 1> HeightmapLayerMap;
+typedef SmallMap<HeightmapLayerType, HeightmapLayer *> HeightmapLayerMap;
 
 struct ExtendedHeightmap {
 	HeightmapLayerMap layers; ///< Map of layers.
