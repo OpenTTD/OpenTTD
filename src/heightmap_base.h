@@ -34,6 +34,7 @@ struct ExtendedHeightmap {
 	bool freeform_edges;         ///< True if the extended heightmap should have freeform edges. This is always true except for legacy heightmaps, which will use the current setting value. This value will not be exposed to the extended heightmap property section in the metadata file.
 
 	/* Extended heightmap load. */
+	void LoadExtendedHeightmap(char *file_path, char *file_name);
 	void LoadLegacyHeightmap(DetailedFileType dft, char *file_path, char *file_name);
 
 	/* Map creation methods. */

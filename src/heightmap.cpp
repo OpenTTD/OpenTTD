@@ -314,7 +314,19 @@ static bool ReadHeightMap(DetailedFileType dft, const char *filename, uint *x, u
 }
 
 /**
+ * Allows to create an extended heightmap from a .ehm file (a tar file containing special
+ * files).
+ * @param file_path Full path to the .ehm file to load.
+ * @param file_name Name of the file.
+ */
+void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
+{
+	assert(false); // SFTODO!
+}
+
+/**
  * Allows to create an extended heightmap from a single height layer in png or bmp format.
+ * @param dft Type of legacy heightmap to load.
  * @param file_path Full path to the legacy heightmap to load.
  * @param file_name Name of the file.
  */

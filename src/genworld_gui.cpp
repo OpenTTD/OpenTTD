@@ -851,16 +851,17 @@ static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 	_settings_newgame.game_creation.generation_seed = InteractiveRandom();
 
 	if (mode == GLWM_HEIGHTMAP) {
+		_extended_heightmap_gui = new ExtendedHeightmap();
 		if (_file_to_saveload.detail_ftype == DFT_HEIGHTMAP_EHM) {
-			assert(false); // SFTODO!
+			_extended_heightmap_gui->LoadExtendedHeightmap(_file_to_saveload.name, _file_to_saveload.title);
 		} else {
-			_extended_heightmap_gui = new ExtendedHeightmap();
-			_extended_heightmap_gui->LoadLegacyHeightmap(_file_to_saveload.detail_ftype,_file_to_saveload.name, _file_to_saveload.title);
-			/* If the extended heightmap is not valid, it means there was a problem loading the heightmap. */
-			if (!_extended_heightmap_gui->IsValid()) {
-				delete _extended_heightmap_gui;
-				return;
-			}
+			_extended_heightmap_gui->LoadLegacyHeightmap(_file_to_saveload.detail_ftype, _file_to_saveload.name, _file_to_saveload.title);
+		}
+		// SFTODO: Make sure LoadExtendedHeightmap() leaves the extended heightmap invalid if appropriate
+		/* If the extended heightmap is not valid, it means there was a problem loading the heightmap. */
+		if (!_extended_heightmap_gui->IsValid()) {
+			delete _extended_heightmap_gui;
+			return;
 		}
 	}
 
