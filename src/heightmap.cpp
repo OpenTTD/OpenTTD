@@ -525,6 +525,119 @@ void FlatEmptyWorld(byte tile_height)
 }
 
 /**
+ * Creates an OpenTTD map based on the information contained in the extended heightmap.
+ */
+void ExtendedHeightmap::CreateMap()
+{
+	/* The extended heightmap should be valid before we actually start applying data to the OpenTTD map. */
+	assert(this->IsValid());
+
+	/* The game map size must have been set up at this point, and the extended heightmap must be correctly initialized. */
+	assert((this->rotation == HM_COUNTER_CLOCKWISE && this->width == MapSizeX() && this->height == MapSizeY()) ||
+			(this->rotation == HM_CLOCKWISE && this->width == MapSizeY() && this->height == MapSizeX()));
+
+	/* Apply general extended heightmap properties to the current map. */
+	_settings_game.construction.freeform_edges = this->freeform_edges;
+
+	/* Apply all layers. */
+	this->ApplyLayers();
+}
+
+/**
+ * Applies all layers to the current map, in the right order.
+ */
+void ExtendedHeightmap::ApplyLayers()
+{
+	/* The height layer must always go first. */
+	const HeightmapLayer *height_layer = this->layers[HLT_HEIGHTMAP];
+
+	/* Create the terrain with the height specified by the layer. */
+	this->ApplyHeightLayer(height_layer);
+}
+
+/**
+ * Applies the height layer to the current map.
+ * @todo Check if the scaling process can be generalized somehow.
+ */
+void ExtendedHeightmap::ApplyHeightLayer(const HeightmapLayer *height_layer)
+{
+	/* This function is meant for heightmap layers only. */
+	assert(height_layer->type == HLT_HEIGHTMAP);
+
+	/* Defines the detail of the aspect ratio (to avoid doubles) */
+	const uint num_div = 16384;
+
+	uint row, col;
+	uint row_pad = 0, col_pad = 0;
+	uint img_scale;
+	uint img_row, img_col;
+	TileIndex tile;
+
+	if ((height_layer->width * num_div) / height_layer->height > ((this->width * num_div) / this->height)) {
+		/* Image is wider than map - center vertically */
+		img_scale = (this->width * num_div) / height_layer->width;
+		row_pad = (1 + this->height - ((height_layer->height * img_scale) / num_div)) / 2;
+	} else {
+		/* Image is taller than map - center horizontally */
+		img_scale = (this->height * num_div) / height_layer->height;
+		col_pad = (1 + this->width - ((height_layer->width * img_scale) / num_div)) / 2;
+	}
+
+	if (this->freeform_edges) {
+		for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
+		for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(0, y));
+	}
+
+	/* Form the landscape */
+	for (row = 0; row < this->height; row++) {
+		for (col = 0; col < this->width; col++) {
+			switch (this->rotation) {
+				case HM_COUNTER_CLOCKWISE: tile = TileXY(col, row); break;
+
+				case HM_CLOCKWISE:         tile = TileXY(row, col); break;
+
+				default: NOT_REACHED();
+			}
+
+			/* Check if current tile is within the 1-pixel map edge or padding regions */
+			if ((!this->freeform_edges && DistanceFromEdge(tile) <= 1) ||
+					(row < row_pad) || (row >= (this->height - row_pad - (_settings_game.construction.freeform_edges ? 0 : 1))) ||
+					(col < col_pad) || (col >= (this->width  - col_pad - (_settings_game.construction.freeform_edges ? 0 : 1)))) {
+				SetTileHeight(tile, 0);
+			} else {
+				/* Use nearest neighbour resizing to scale map data.
+				 *  We rotate the map 45 degrees (counter)clockwise */
+				img_row = (((row - row_pad) * num_div) / img_scale);
+				switch (this->rotation) {
+					case HM_COUNTER_CLOCKWISE:
+						img_col = (((this->width - 1 - col - col_pad) * num_div) / img_scale);
+						break;
+
+					case HM_CLOCKWISE:
+						img_col = (((col - col_pad) * num_div) / img_scale);
+						break;
+
+					default: NOT_REACHED();
+				}
+
+				assert(img_row < height_layer->height);
+				assert(img_col < height_layer->width);
+
+				uint tile_height = height_layer->information[img_row * height_layer->width + img_col] * num_div;
+				/* Colour scales from 0 to 255, OpenTTD height scales from min_map_desired_height to max_map_desired_height */
+				tile_height = (tile_height * ((max_map_desired_height + 1) - min_map_desired_height) + min_map_desired_height * num_div) / 256;
+				SetTileHeight(tile, tile_height / num_div);
+			}
+			/* Only clear the tiles within the map area. */
+			if (TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY() &&
+					(!this->freeform_edges || (TileX(tile) != 0 && TileY(tile) != 0))) {
+				MakeClear(tile, CLEAR_GRASS, 3);
+			}
+		}
+	}
+}
+
+/**
  * Checks if an extended heightmap can be used for generating an OpenTTD map.
  * @return False if the extended heightmap fails to met any of the conditions required for generating a valid OpenTTD map. True otherwise.
  */
