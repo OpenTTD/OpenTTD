@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include "heightmap.h"
 #include "heightmap_type.h"
+#include "heightmap_base.h"
 #include "clear_map.h"
 #include "void_map.h"
 #include "error.h"
@@ -521,4 +522,16 @@ void FlatEmptyWorld(byte tile_height)
 
 	FixSlopes();
 	MarkWholeScreenDirty();
+}
+
+/**
+ * Checks if an extended heightmap can be used for generating an OpenTTD map.
+ * @return False if the extended heightmap fails to met any of the conditions required for generating a valid OpenTTD map. True otherwise.
+ */
+bool ExtendedHeightmap::IsValid()
+{
+	/* All extended heightmaps must have a height layer. */
+	if (this->layers[HLT_HEIGHTMAP] == NULL) return false;
+
+	return true;
 }

@@ -31,6 +31,9 @@ struct ExtendedHeightmap {
 	uint height;                 ///< The extended heightmap will be scaled to this height.
 	HeightmapRotation rotation;  ///< Indicates the preferred orientation for the extended heightmap.
 	bool freeform_edges;         ///< True if the extended heightmap should have freeform edges. This is always true except for legacy heightmaps, which will use the current setting value. This value will not be exposed to the extended heightmap property section in the metadata file.
+
+	/* Other functions. */
+	bool IsValid();
 };
 
 #endif /* HEIGHTMAP_BASE_H */
