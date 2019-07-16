@@ -187,6 +187,7 @@ const char *FiosBrowseTo(const FiosItem *item)
 		case FIOS_TYPE_OLDFILE:
 		case FIOS_TYPE_SCENARIO:
 		case FIOS_TYPE_OLD_SCENARIO:
+		case FIOS_TYPE_EHM:
 		case FIOS_TYPE_PNG:
 		case FIOS_TYPE_BMP:
 			return item->name;
@@ -554,6 +555,8 @@ static FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const char *
 	 */
 
 	FiosType type = FIOS_TYPE_INVALID;
+
+	if (strcasecmp(ext, ".ehm") == 0) type = FIOS_TYPE_EHM;
 
 #ifdef WITH_PNG
 	if (strcasecmp(ext, ".png") == 0) type = FIOS_TYPE_PNG;
