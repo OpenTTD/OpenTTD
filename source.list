@@ -38,6 +38,7 @@ gfx_layout.cpp
 goal.cpp
 ground_vehicle.cpp
 heightmap.cpp
+heightmap_layer.cpp
 highscore.cpp
 hotkeys.cpp
 ini.cpp
@@ -210,6 +211,8 @@ group_type.h
 gui.h
 guitimer_func.h
 heightmap.h
+heightmap_layer_base.h
+heightmap_layer_type.h
 heightmap_type.h
 highscore.h
 hotkeys.h
