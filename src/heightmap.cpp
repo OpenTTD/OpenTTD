@@ -525,6 +525,37 @@ void FlatEmptyWorld(byte tile_height)
 }
 
 /**
+ * Allows to create an extended heightmap from a single height layer in png or bmp format.
+ * @param file_path Full path to the legacy heightmap to load.
+ * @param file_name Name of the file.
+ */
+void ExtendedHeightmap::LoadLegacyHeightmap(char *file_path, char *file_name)
+{
+	/* Try to load the legacy heightmap first. */
+	HeightmapLayer *height_layer = new HeightmapLayer();
+	height_layer->type = HLT_HEIGHTMAP;
+	height_layer->information = NULL;
+
+	if (!ReadHeightMap(file_path, &height_layer->width, &height_layer->height, &height_layer->information)) {
+		free(height_layer->information);
+		delete height_layer;
+		return;
+	}
+
+	this->layers[HLT_HEIGHTMAP] = height_layer;
+
+	/* Initialize all extended heightmap parameters to be consistent with the old behavior. */
+	strecpy(this->filename, file_name, lastof(this->filename));
+	this->max_map_height = 255;
+	this->min_map_desired_height = 0;
+	this->max_map_desired_height = 15;
+	this->width = height_layer->width;
+	this->height = height_layer->height;
+	this->rotation = (HeightmapRotation) _settings_newgame.game_creation.heightmap_rotation;
+	this->freeform_edges = _settings_newgame.construction.freeform_edges;
+}
+
+/**
  * Creates an OpenTTD map based on the information contained in the extended heightmap.
  */
 void ExtendedHeightmap::CreateMap()
