@@ -33,6 +33,7 @@
 #include "error.h"
 #include "game/game.hpp"
 #include "game/game_instance.hpp"
+#include "heightmap_base.h"
 #include "string_func.h"
 #include "thread.h"
 
@@ -60,6 +61,9 @@ GenWorldInfo _gw;
 
 /** Whether we are generating the map or not. */
 bool _generating_world;
+
+/** Extended heightmap to use during map generation. */
+ExtendedHeightmap *_extended_heightmap = NULL;
 
 /**
  * Tells if the world generation is done in a thread or not.

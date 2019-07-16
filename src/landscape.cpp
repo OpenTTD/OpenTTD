@@ -31,6 +31,7 @@
 #include "object_base.h"
 #include "company_func.h"
 #include "pathfinder/npf/aystar.h"
+#include "heightmap_base.h"
 #include "saveload/saveload.h"
 #include "framerate_type.h"
 #include <list>
@@ -78,6 +79,8 @@ extern const byte _slope_to_sprite_offset[32] = {
 	0, 1, 2, 3, 4, 5, 6,  7, 8, 9, 10, 11, 12, 13, 14, 0,
 	0, 0, 0, 0, 0, 0, 0, 16, 0, 0,  0, 17,  0, 15, 18, 0,
 };
+
+extern ExtendedHeightmap *_extended_heightmap;
 
 /**
  * Description of the snow line throughout the year.
@@ -1306,7 +1309,8 @@ void GenerateLandscape(byte mode)
 
 	if (mode == GWM_HEIGHTMAP) {
 		SetGeneratingWorldProgress(GWP_LANDSCAPE, steps + GLS_HEIGHTMAP);
-		LoadHeightmap(_file_to_saveload.detail_ftype, _file_to_saveload.name);
+		assert(_extended_heightmap != NULL);
+		_extended_heightmap->CreateMap();
 		IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 	} else if (_settings_game.game_creation.land_generator == LG_TERRAGENESIS) {
 		SetGeneratingWorldProgress(GWP_LANDSCAPE, steps + GLS_TERRAGENESIS);

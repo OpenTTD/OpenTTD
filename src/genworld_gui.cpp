@@ -39,6 +39,7 @@
 
 extern void MakeNewgameSettingsLive();
 
+extern ExtendedHeightmap *_extended_heightmap;
 ExtendedHeightmap *_extended_heightmap_gui;
 
 static void LandscapeHeightmapGenerationCallback(Window *w, bool confirmed);
@@ -287,7 +288,17 @@ static void StartGeneratingLandscape(GenerateLandscapeWindowMode mode)
  * Begins map generation, using the data contained in an extended heightmap.
  */
 static void StartGeneratingLandscapeFromExtendedHeightmap() {
-	delete _extended_heightmap_gui;
+	/* Set the final values that the extended heightmap will use for some settings. */
+	_extended_heightmap_gui->rotation = (HeightmapRotation) _settings_newgame.game_creation.heightmap_rotation;
+	if (_extended_heightmap_gui->rotation) {
+		_extended_heightmap_gui->height = 1 << _settings_newgame.game_creation.map_x;
+		_extended_heightmap_gui->width  = 1 << _settings_newgame.game_creation.map_y;
+	} else {
+		_extended_heightmap_gui->width  = 1 << _settings_newgame.game_creation.map_x;
+		_extended_heightmap_gui->height = 1 << _settings_newgame.game_creation.map_y;
+	}
+
+	_extended_heightmap = _extended_heightmap_gui;
 	_extended_heightmap_gui = NULL;
 	StartGeneratingLandscape(GLWM_HEIGHTMAP);
 }
