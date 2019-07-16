@@ -43,6 +43,9 @@ int GetSlopePixelZ(int x, int y);
 int GetSlopePixelZOutsideMap(int x, int y);
 void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2);
 
+void FlatEmptyWorld(byte tile_height);
+void FixSlopes();
+
 /**
  * Determine the Z height of a corner relative to TileZ.
  *

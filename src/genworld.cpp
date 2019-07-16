@@ -16,7 +16,6 @@
 #include "gfxinit.h"
 #include "window_func.h"
 #include "network/network.h"
-#include "heightmap.h"
 #include "viewport_func.h"
 #include "date_func.h"
 #include "engine_func.h"

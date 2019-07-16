@@ -10,7 +10,6 @@
 /** @file genworld_gui.cpp GUI to configure and show progress during map generation. */
 
 #include "stdafx.h"
-#include "heightmap.h"
 #include "heightmap_type.h"
 #include "heightmap_base.h"
 #include "debug.h"

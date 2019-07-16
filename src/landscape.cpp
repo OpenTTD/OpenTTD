@@ -12,7 +12,6 @@
 /** @defgroup SnowLineGroup Snowline functions and data structures */
 
 #include "stdafx.h"
-#include "heightmap.h"
 #include "clear_map.h"
 #include "spritecache.h"
 #include "viewport_func.h"
@@ -32,6 +31,7 @@
 #include "company_func.h"
 #include "pathfinder/npf/aystar.h"
 #include "heightmap_base.h"
+#include "gfx_func.h"
 #include "saveload/saveload.h"
 #include "framerate_type.h"
 #include <list>
@@ -1403,4 +1403,81 @@ void CallLandscapeTick()
 
 	OnTick_Companies();
 	OnTick_LinkGraph();
+}
+
+/**
+ * Make an empty world where all tiles are of height 'tile_height'.
+ * @param tile_height of the desired new empty world
+ */
+void FlatEmptyWorld(byte tile_height)
+{
+	int edge_distance = _settings_game.construction.freeform_edges ? 0 : 2;
+	for (uint row = edge_distance; row < MapSizeY() - edge_distance; row++) {
+		for (uint col = edge_distance; col < MapSizeX() - edge_distance; col++) {
+			SetTileHeight(TileXY(col, row), tile_height);
+		}
+	}
+
+	FixSlopes();
+	MarkWholeScreenDirty();
+}
+
+/**
+ * This function takes care of the fact that land in OpenTTD can never differ
+ * more than 1 in height.
+ */
+void FixSlopes()
+{
+	uint width, height;
+	int row, col;
+	byte current_tile;
+
+	/* Adjust height difference to maximum one horizontal/vertical change. */
+	width   = MapSizeX();
+	height  = MapSizeY();
+
+	/* Top and left edge */
+	for (row = 0; (uint)row < height; row++) {
+		for (col = 0; (uint)col < width; col++) {
+			current_tile = MAX_TILE_HEIGHT;
+			if (col != 0) {
+				/* Find lowest tile; either the top or left one */
+				current_tile = TileHeight(TileXY(col - 1, row)); // top edge
+			}
+			if (row != 0) {
+				if (TileHeight(TileXY(col, row - 1)) < current_tile) {
+					current_tile = TileHeight(TileXY(col, row - 1)); // left edge
+				}
+			}
+
+			/* Does the height differ more than one? */
+			if (TileHeight(TileXY(col, row)) >= (uint)current_tile + 2) {
+				/* Then change the height to be no more than one */
+				SetTileHeight(TileXY(col, row), current_tile + 1);
+			}
+		}
+	}
+
+	/* Bottom and right edge */
+	for (row = height - 1; row >= 0; row--) {
+		for (col = width - 1; col >= 0; col--) {
+			current_tile = MAX_TILE_HEIGHT;
+			if ((uint)col != width - 1) {
+				/* Find lowest tile; either the bottom and right one */
+				current_tile = TileHeight(TileXY(col + 1, row)); // bottom edge
+			}
+
+			if ((uint)row != height - 1) {
+				if (TileHeight(TileXY(col, row + 1)) < current_tile) {
+					current_tile = TileHeight(TileXY(col, row + 1)); // right edge
+				}
+			}
+
+			/* Does the height differ more than one? */
+			if (TileHeight(TileXY(col, row)) >= (uint)current_tile + 2) {
+				/* Then change the height to be no more than one */
+				SetTileHeight(TileXY(col, row), current_tile + 1);
+			}
+		}
+	}
 }
