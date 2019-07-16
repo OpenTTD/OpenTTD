@@ -211,6 +211,7 @@ group_type.h
 gui.h
 guitimer_func.h
 heightmap.h
+heightmap_base.h
 heightmap_layer_base.h
 heightmap_layer_type.h
 heightmap_type.h
