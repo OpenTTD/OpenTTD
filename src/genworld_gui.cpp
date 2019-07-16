@@ -11,6 +11,7 @@
 
 #include "stdafx.h"
 #include "heightmap.h"
+#include "heightmap_type.h"
 #include "debug.h"
 #include "genworld.h"
 #include "network/network.h"

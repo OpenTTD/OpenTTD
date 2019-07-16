@@ -11,6 +11,7 @@
 
 #include "stdafx.h"
 #include "heightmap.h"
+#include "heightmap_type.h"
 #include "clear_map.h"
 #include "void_map.h"
 #include "error.h"

@@ -210,6 +210,7 @@ group_type.h
 gui.h
 guitimer_func.h
 heightmap.h
+heightmap_type.h
 highscore.h
 hotkeys.h
 house.h
