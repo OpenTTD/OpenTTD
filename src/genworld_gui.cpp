@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include "heightmap.h"
 #include "heightmap_type.h"
+#include "heightmap_base.h"
 #include "debug.h"
 #include "genworld.h"
 #include "network/network.h"
@@ -37,6 +38,10 @@
 
 
 extern void MakeNewgameSettingsLive();
+
+ExtendedHeightmap *_extended_heightmap_gui;
+
+static void LandscapeHeightmapGenerationCallback(Window *w, bool confirmed);
 
 /** Enum for the modes we can generate in. */
 enum GenerateLandscapeWindowMode {
@@ -278,9 +283,13 @@ static void StartGeneratingLandscape(GenerateLandscapeWindowMode mode)
 	}
 }
 
-static void LandscapeGenerationCallback(Window *w, bool confirmed)
-{
-	if (confirmed) StartGeneratingLandscape((GenerateLandscapeWindowMode)w->window_number);
+/**
+ * Begins map generation, using the data contained in an extended heightmap.
+ */
+static void StartGeneratingLandscapeFromExtendedHeightmap() {
+	delete _extended_heightmap_gui;
+	_extended_heightmap_gui = NULL;
+	StartGeneratingLandscape(GLWM_HEIGHTMAP);
 }
 
 static DropDownList BuildMapsizeDropDown()
@@ -311,9 +320,6 @@ assert_compile(lengthof(_num_inds) == ID_END + 1);
 
 struct GenerateLandscapeWindow : public Window {
 	uint widget_id;
-	uint x;
-	uint y;
-	char name[64];
 	GenerateLandscapeWindowMode mode;
 
 	GenerateLandscapeWindow(WindowDesc *desc, WindowNumber number = 0) : Window(desc)
@@ -379,11 +385,11 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_HEIGHTMAP_SIZE_TEXT:
 				if (_settings_newgame.game_creation.heightmap_rotation == HM_CLOCKWISE) {
-					SetDParam(0, this->y);
-					SetDParam(1, this->x);
+					SetDParam(0, _extended_heightmap_gui->height);
+					SetDParam(1, _extended_heightmap_gui->width);
 				} else {
-					SetDParam(0, this->x);
-					SetDParam(1, this->y);
+					SetDParam(0, _extended_heightmap_gui->width);
+					SetDParam(1, _extended_heightmap_gui->height);
 				}
 				break;
 		}
@@ -467,8 +473,8 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_HEIGHTMAP_SIZE_TEXT:
-				SetDParam(0, this->x);
-				SetDParam(1, this->y);
+				SetDParam(0, _extended_heightmap_gui->width);
+				SetDParam(1, _extended_heightmap_gui->height);
 				*size = maxdim(*size, GetStringBoundingBox(STR_MAPGEN_HEIGHTMAP_SIZE));
 				break;
 
@@ -523,7 +529,7 @@ struct GenerateLandscapeWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GL_HEIGHTMAP_NAME_TEXT: {
-				DrawString(r.left, r.right, r.top, this->name, TC_ORANGE);
+				DrawString(r.left, r.right, r.top, _extended_heightmap_gui->filename, TC_ORANGE);
 				break;
 			}
 		}
@@ -556,26 +562,31 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_GENERATE_BUTTON: { // Generate
-				/* Get rotated map size. */
-				uint map_x;
-				uint map_y;
-				if (_settings_newgame.game_creation.heightmap_rotation == HM_CLOCKWISE) {
-					map_x = this->y;
-					map_y = this->x;
-				} else {
-					map_x = this->x;
-					map_y = this->y;
-				}
-				if (mode == GLWM_HEIGHTMAP &&
-						(map_x * 2 < (1U << _settings_newgame.game_creation.map_x) ||
+				if (mode == GLWM_HEIGHTMAP) {
+					/* Get rotated map size. */
+					uint map_x;
+					uint map_y;
+
+					if (_settings_newgame.game_creation.heightmap_rotation == HM_CLOCKWISE) {
+						map_x = _extended_heightmap_gui->height;
+						map_y = _extended_heightmap_gui->width;
+					} else {
+						map_x = _extended_heightmap_gui->width;
+						map_y = _extended_heightmap_gui->height;
+					}
+
+					if (map_x * 2 < (1U << _settings_newgame.game_creation.map_x) ||
 						map_x / 2 > (1U << _settings_newgame.game_creation.map_x) ||
 						map_y * 2 < (1U << _settings_newgame.game_creation.map_y) ||
-						map_y / 2 > (1U << _settings_newgame.game_creation.map_y))) {
-					ShowQuery(
-						STR_WARNING_HEIGHTMAP_SCALE_CAPTION,
-						STR_WARNING_HEIGHTMAP_SCALE_MESSAGE,
-						this,
-						LandscapeGenerationCallback);
+						map_y / 2 > (1U << _settings_newgame.game_creation.map_y)) {
+						ShowQuery(
+							STR_WARNING_HEIGHTMAP_SCALE_CAPTION,
+							STR_WARNING_HEIGHTMAP_SCALE_MESSAGE,
+							this,
+							LandscapeHeightmapGenerationCallback);
+					} else {
+						StartGeneratingLandscapeFromExtendedHeightmap();
+					}
 				} else {
 					StartGeneratingLandscape(mode);
 				}
@@ -824,21 +835,23 @@ static WindowDesc _heightmap_load_desc(
 
 static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 {
-	uint x = 0;
-	uint y = 0;
-
 	DeleteWindowByClass(WC_GENERATE_LANDSCAPE);
 
 	/* Generate a new seed when opening the window */
 	_settings_newgame.game_creation.generation_seed = InteractiveRandom();
 
 	if (mode == GLWM_HEIGHTMAP) {
-		/* If the function returns negative, it means there was a problem loading the heightmap */
-		if (!GetHeightmapDimensions(_file_to_saveload.detail_ftype, _file_to_saveload.name, &x, &y)) return;
+		_extended_heightmap_gui = new ExtendedHeightmap();
+		_extended_heightmap_gui->LoadLegacyHeightmap(_file_to_saveload.name, _file_to_saveload.title);
+		/* If the extended heightmap is not valid, it means there was a problem loading the heightmap. */
+		if (!_extended_heightmap_gui->IsValid()) {
+			delete _extended_heightmap_gui;
+			return;
+		}
 	}
 
 	WindowDesc *desc = (mode == GLWM_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc;
-	GenerateLandscapeWindow *w = AllocateWindowDescFront<GenerateLandscapeWindow>(desc, mode, true);
+	AllocateWindowDescFront<GenerateLandscapeWindow>(desc, mode);
 
 	if (mode == GLWM_HEIGHTMAP) {
 		w->x = x;
@@ -865,6 +878,16 @@ void ShowHeightmapLoad()
 void StartScenarioEditor()
 {
 	StartGeneratingLandscape(GLWM_SCENARIO);
+}
+
+/**
+ * Callback used for displaying a warning popup when a heightmap is being resized too much.
+ * @param w Window that started the callback.
+ * @param confirmed Whether the popup received a confirmation or not.
+ */
+static void LandscapeHeightmapGenerationCallback(Window *w, bool confirmed)
+{
+	if (confirmed) StartGeneratingLandscapeFromExtendedHeightmap();
 }
 
 /**
