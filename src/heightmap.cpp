@@ -332,14 +332,15 @@ void ExtendedHeightmap::LoadLegacyHeightmap(DetailedFileType dft, char *file_pat
 
 	this->layers[HLT_HEIGHTMAP] = height_layer;
 
-	/* Initialize all extended heightmap parameters to be consistent with the old behavior. */
+	/* Initialize some extended heightmap parameters to be consistent with the old behavior.
+	 * The dialog hasn't been shown to the user yet so we can't initialize everything. */
 	strecpy(this->filename, file_name, lastof(this->filename));
-	this->max_map_height = 255;
+	this->max_map_height = 255; // EHTODO: not currently used
 	this->min_map_desired_height = 0;
-	this->max_map_desired_height = 15;
+	this->max_map_desired_height = 1; // placeholder; _settings_game.construction.max_heightlevel is not set based on dialog yet
 	this->width = height_layer->width;
 	this->height = height_layer->height;
-	this->rotation = (HeightmapRotation) _settings_newgame.game_creation.heightmap_rotation;
+	this->rotation = HM_CLOCKWISE; // placeholder; _settings_newgame.game_creation.heightmap_rotation is not set based on dialog yet
 	this->freeform_edges = _settings_newgame.construction.freeform_edges;
 }
 
@@ -350,6 +351,13 @@ void ExtendedHeightmap::CreateMap()
 {
 	/* The extended heightmap should be valid before we actually start applying data to the OpenTTD map. */
 	assert(this->IsValid());
+
+	/* The relevant dialog has been shown to the user now so we can populate these members. */
+	// EHTODO: This is for legacy heightmap support, but we probably need to
+	// do something similar for these (as well as other) members for
+	// extended heightmaps.
+	this->max_map_desired_height = _settings_game.construction.max_heightlevel;
+	this->rotation = (HeightmapRotation) _settings_newgame.game_creation.heightmap_rotation;
 
 	/* The game map size must have been set up at this point, and the extended heightmap must be correctly initialized. */
 	assert((this->rotation == HM_COUNTER_CLOCKWISE && this->width == MapSizeX() && this->height == MapSizeY()) ||
@@ -442,9 +450,29 @@ void ExtendedHeightmap::ApplyHeightLayer(const HeightmapLayer *height_layer)
 				assert(img_row < height_layer->height);
 				assert(img_col < height_layer->width);
 
-				uint tile_height = height_layer->information[img_row * height_layer->width + img_col] * num_div;
-				/* Colour scales from 0 to 255, OpenTTD height scales from min_map_desired_height to max_map_desired_height */
-				tile_height = (tile_height * ((max_map_desired_height + 1) - min_map_desired_height) + min_map_desired_height * num_div) / 256;
+				uint tile_height = height_layer->information[img_row * height_layer->width + img_col];
+				// If min_map_desired_height is 0 we use the same approach as legacy heightmaps, where 0 is sea
+				// and anything above it is land. We need this for compatibility with legacy heightmaps,
+				// because simply scaling the greyscale value into the range [min_map_desired_height, max_map_desired_height]
+				// will map very-small-but-non-zero greyscales to sea, which may have a dramatic effect on the resulting map.
+				// EHTODO: This might be worth tweaking, e.g. perhaps for extended heightmaps we always use the new-style
+				// calculation, or maybe we use the new-style calculation iff there's a water layer in the extended heightmap.
+				// I think it's likely to be clearer what's the right thing to do when water layer support is added, as it
+				// forces some other questions to be addressed like "what happens if this code decides a tile is sea when
+				// the water layer says it's land? (and vice versa)" and "how robust are the extended heightmap designer's
+				// intentions for sea/land in the face of the user changing the number of heightlevels?".
+				if (min_map_desired_height == 0) {
+					/* 0 is sea level.
+					 * Other grey scales are scaled evenly to the available height levels > 0.
+					 * (The coastline is independent from the number of height levels) */
+					if (tile_height > 0) {
+						tile_height = (1 + (tile_height - 1) * max_map_desired_height / 255) * num_div;
+					}
+				} else {
+					/* Colour scales from 0 to 255, OpenTTD height scales from min_map_desired_height to max_map_desired_height */
+					// EHTODO: Should the divisor be 255 not 256? It doesn't really matter I guess
+					tile_height = ((tile_height * num_div) * ((max_map_desired_height + 1) - min_map_desired_height) + min_map_desired_height * num_div) / 256;
+				}
 				SetTileHeight(tile, tile_height / num_div);
 			}
 			/* Only clear the tiles within the map area. */
