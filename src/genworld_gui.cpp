@@ -863,12 +863,6 @@ static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 	WindowDesc *desc = (mode == GLWM_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc;
 	AllocateWindowDescFront<GenerateLandscapeWindow>(desc, mode);
 
-	if (mode == GLWM_HEIGHTMAP) {
-		w->x = x;
-		w->y = y;
-		strecpy(w->name, _file_to_saveload.title, lastof(w->name));
-	}
-
 	SetWindowDirty(WC_GENERATE_LANDSCAPE, mode);
 }
 
