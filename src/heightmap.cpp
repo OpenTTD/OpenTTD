@@ -404,11 +404,11 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	}
 
 	/* Try to load the heightmap layer. */
-	IniGroup *heightmap_group = metadata.GetGroup("height_layer", 0, false);
-	assert(heightmap_group != nullptr); // SFTODO!
+	IniGroup *height_layer_group = metadata.GetGroup("height_layer", 0, false);
+	assert(height_layer_group != nullptr); // SFTODO!
 	// EHTODO: It's probably not a big deal, but do we need to sanitise heightmap_filename so a malicious .ehm file can't
 	// access random files on the filesystem?
-	IniItem *heightmap_filename = heightmap_group->GetItem("file", false);
+	IniItem *heightmap_filename = height_layer_group->GetItem("file", false);
 	assert(heightmap_filename != nullptr); // SFTODO!
 	HeightmapLayer *height_layer = new HeightmapLayer();
 	height_layer->type = HLT_HEIGHTMAP;
@@ -435,11 +435,17 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	}
 	free(heightmap_filename2);
 
+	IniItem *max_desired_height = height_layer_group->GetItem("max_desired_height", false);
+	if (max_desired_height == nullptr) {
+		this->max_map_desired_height = _settings_newgame.construction.max_heightlevel;
+	} else {
+		this->max_map_desired_height = atoi(max_desired_height->value); // SFTODO NO ERROR CHECKING!
+	}
+
 	// The user will get the chance to override some of these settings later in the dialog, but we want to offer them the
 	// values recommended by the extended heightmap as a default.
 	this->max_map_height = 255 /* SFTODO TAKE FROM METADATA */; // EHTODO: not currently used
 	this->min_map_desired_height = 0 /* SFTODO TAKE FROM METADATA */;
-	this->max_map_desired_height = 15 /* SFTODO TAKE FROM METADATA */;
 	if ((metadata_width == 0) && (metadata_height == 0)) {
 #if 0 // SFTODO!?
 		// If there's no width/height metadata, take the size of the heightmap layer and adjust for the rotation.
@@ -494,14 +500,14 @@ void ExtendedHeightmap::LoadLegacyHeightmap(DetailedFileType dft, char *file_pat
 	this->layers[HLT_HEIGHTMAP] = height_layer;
 
 	/* Initialize some extended heightmap parameters to be consistent with the old behavior.
-	 * The dialog hasn't been shown to the user yet so we can't initialize everything. */
+	 * The dialog hasn't been shown to the user yet so we can't initialize everything. SFTODO LAST SENTENCE PROBABLY NOT NEEDED/TRUE ANY MORE. */
 	strecpy(this->filename, file_name, lastof(this->filename));
 	this->max_map_height = 255; // EHTODO: not currently used
 	this->min_map_desired_height = 0;
-	this->max_map_desired_height = 1; // placeholder; _settings_game.construction.max_heightlevel is not set based on dialog yet
+	this->max_map_desired_height = _settings_newgame.construction.max_heightlevel;
 	this->width = height_layer->width;
 	this->height = height_layer->height;
-	this->rotation = HM_CLOCKWISE; // placeholder; _settings_newgame.game_creation.heightmap_rotation is not set based on dialog yet
+	this->rotation = static_cast<HeightmapRotation>(_settings_newgame.game_creation.heightmap_rotation);
 	this->landscape = static_cast<LandscapeType>(_settings_newgame.game_creation.landscape);
 	this->freeform_edges = _settings_newgame.construction.freeform_edges;
 }
