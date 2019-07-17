@@ -1,0 +1,8 @@
+[extended_heightmap]
+format_version=1
+orientation=ccw
+climate=temperate
+
+[height_layer]
+file=vertical-gradient-32-256x256.png
+max_desired_height=16

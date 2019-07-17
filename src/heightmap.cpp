@@ -442,9 +442,15 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		this->max_map_desired_height = atoi(max_desired_height->value); // SFTODO NO ERROR CHECKING!
 	}
 
+	IniItem *max_height = height_layer_group->GetItem("max_height", false);
+	if (max_height == nullptr) {
+		this->max_map_height = 255;
+	} else {
+		this->max_map_height = atoi(max_height->value); // SFTODO NO ERROR CHECKING!
+	}
+
 	// The user will get the chance to override some of these settings later in the dialog, but we want to offer them the
 	// values recommended by the extended heightmap as a default.
-	this->max_map_height = 255 /* SFTODO TAKE FROM METADATA */; // EHTODO: not currently used
 	this->min_map_desired_height = 0 /* SFTODO TAKE FROM METADATA */;
 	if ((metadata_width == 0) && (metadata_height == 0)) {
 #if 0 // SFTODO!?
@@ -502,7 +508,6 @@ void ExtendedHeightmap::LoadLegacyHeightmap(DetailedFileType dft, char *file_pat
 	/* Initialize some extended heightmap parameters to be consistent with the old behavior.
 	 * The dialog hasn't been shown to the user yet so we can't initialize everything. SFTODO LAST SENTENCE PROBABLY NOT NEEDED/TRUE ANY MORE. */
 	strecpy(this->filename, file_name, lastof(this->filename));
-	this->max_map_height = 255; // EHTODO: not currently used
 	this->min_map_desired_height = 0;
 	this->max_map_desired_height = _settings_newgame.construction.max_heightlevel;
 	this->width = height_layer->width;
@@ -619,6 +624,9 @@ void ExtendedHeightmap::ApplyHeightLayer(const HeightmapLayer *height_layer)
 				assert(img_col < height_layer->width);
 
 				uint tile_height = height_layer->information[img_row * height_layer->width + img_col];
+				if (tile_height > max_map_height) {
+					assert(false); // SFTODO PROPER ERROR
+				}
 				// If min_map_desired_height is 0 we use the same approach as legacy heightmaps, where 0 is sea
 				// and anything above it is land. We need this for compatibility with legacy heightmaps,
 				// because simply scaling the greyscale value into the range [min_map_desired_height, max_map_desired_height]
@@ -634,12 +642,11 @@ void ExtendedHeightmap::ApplyHeightLayer(const HeightmapLayer *height_layer)
 					 * Other grey scales are scaled evenly to the available height levels > 0.
 					 * (The coastline is independent from the number of height levels) */
 					if (tile_height > 0) {
-						tile_height = (1 + (tile_height - 1) * max_map_desired_height / 255) * num_div;
+						tile_height = (1 + (tile_height - 1) * max_map_desired_height / max_map_height) * num_div;
 					}
 				} else {
-					/* Colour scales from 0 to 255, OpenTTD height scales from min_map_desired_height to max_map_desired_height */
-					// EHTODO: Should the divisor be 255 not 256? It doesn't really matter I guess
-					tile_height = ((tile_height * num_div) * ((max_map_desired_height + 1) - min_map_desired_height) + min_map_desired_height * num_div) / 256;
+					/* Colour scales from 0 to max_map_height, OpenTTD height scales from min_map_desired_height to max_map_desired_height */
+					tile_height = ((tile_height * num_div) * ((max_map_desired_height + 1) - min_map_desired_height) + min_map_desired_height * num_div) / (max_map_height + 1);
 				}
 				SetTileHeight(tile, tile_height / num_div);
 			}
