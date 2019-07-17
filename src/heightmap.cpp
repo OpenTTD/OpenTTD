@@ -357,14 +357,20 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 
 	// SFTODO: SHOULD THIS BE "rotation" NOT "orientation"? WIKI HAS BOTH IN VARIOUS PLACES...
 	IniItem *rotation = extended_heightmap_group->GetItem("orientation", false);
-	assert(rotation != nullptr); // SFTODO! THIS IS OK AND WE SHOULD DEFAULT TO WHATEVER IS IN _settings_newgame.construction.blah
-	// SFTODO: CASE SENSITIVITY!?
-	if (strcmp(rotation->value, "ccw") == 0) {
-		this->rotation = HM_COUNTER_CLOCKWISE;
-	} else if (strcmp(rotation->value, "cw") == 0) {
-		this->rotation = HM_CLOCKWISE;
+	if (rotation == nullptr) {
+		// EHTODO: Because we take whatever happens to be the default, in practice an extended heightmap
+		// creator should always specify a rotation if they are also specifying an explicit height and/or
+		// width and the heightmap layer is non-square, otherwise the rotation may be sub-optimal.
+		this->rotation = static_cast<HeightmapRotation>(_settings_newgame.game_creation.heightmap_rotation);
 	} else {
-		assert(false); // SFTODO!
+		// SFTODO: CASE SENSITIVITY!?
+		if (strcmp(rotation->value, "ccw") == 0) {
+			this->rotation = HM_COUNTER_CLOCKWISE;
+		} else if (strcmp(rotation->value, "cw") == 0) {
+			this->rotation = HM_CLOCKWISE;
+		} else {
+			assert(false); // SFTODO!
+		}
 	}
 	std::cout << "SFTODOQ9: " << static_cast<int>(this->rotation) << std::endl;
 
@@ -434,8 +440,29 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	this->max_map_height = 255 /* SFTODO TAKE FROM METADATA */; // EHTODO: not currently used
 	this->min_map_desired_height = 0 /* SFTODO TAKE FROM METADATA */;
 	this->max_map_desired_height = 15 /* SFTODO TAKE FROM METADATA */;
-	this->width = (metadata_width != 0) ? metadata_width : height_layer->width;
-	this->height = (metadata_height != 0) ? metadata_height : height_layer->height;
+	if ((metadata_width == 0) && (metadata_height == 0)) {
+#if 0 // SFTODO!?
+		// If there's no width/height metadata, take the size of the heightmap layer and adjust for the rotation.
+		// This gives the "best" result.
+		if (this->rotation == HM_CLOCKWISE) {
+			this->width = height_layer->height;
+			this->height = height_layer->width;
+		} else {
+			this->width = height_layer->width;
+			this->height = height_layer->height;
+		}
+#else
+		// If there's no width/height metadata, take the size of the height layer.
+		this->width = height_layer->width;
+		this->height = height_layer->height;
+#endif
+	} else {
+		// If the extended heightmap creator specified a height and/or width, they know best. This is why
+		// they should also specify a rotation if they are specifying height/width and have a non-square
+		// height layer.
+		this->width = (metadata_width != 0) ? metadata_width : height_layer->width;
+		this->height = (metadata_height != 0) ? metadata_height : height_layer->height;
+	}
 	// SFTODO: DELETE this->rotation = HM_CLOCKWISE /* SFTODO TAKE FROM METADATA */; // SFTODO PROB OUTDATED COMMENT: placeholder; _settings_newgame.game_creation.heightmap_rotation is not set based on dialog yet
 	this->freeform_edges = _settings_newgame.construction.freeform_edges /* SFTODO TAKE FROM METADATA */;
 
