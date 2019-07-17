@@ -9,6 +9,7 @@
 
 /** @file heightmap.cpp Creating of maps from heightmaps. */
 
+#include <iostream> // SFTODO TEMP
 #include "stdafx.h"
 #include "heightmap_type.h"
 #include "heightmap_base.h"
@@ -321,6 +322,17 @@ static bool ReadHeightMap(DetailedFileType dft, const char *filename, uint *x, u
  */
 void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 {
+	TarScanner ts;
+	std::cout << "SFTODOX1: " << file_path << std::endl;
+	std::cout << "SFTODOX2: " << file_name << std::endl;
+	// SFTODO: I am probably using TarScanner completely wrong, passing BASE_DIR is essentially arbitrary (NO_DIRECTORY is not a valid option as it's after NUM_SUBDIRS)
+	bool ok = ts.AddFile(BASE_DIR, file_path);
+	assert(ok); // SFTODO: NEED TO CHECK RETURN VALUE PROPERLY
+	size_t filesize;
+	// SFTODO: I am probably using TarScanner completely wrong, having to pass "./" at start of filename seems a bit iffy
+	FILE *f = FioFOpenFile("./metadata.txt", "r", BASE_DIR, &filesize);
+	assert(f != nullptr); // SFTODO: NEED TO CHECK RETURN VALUE PROPERLY
+	std::cout << "SFTODOX3: " << filesize << std::endl;
 	assert(false); // SFTODO!
 }
 
