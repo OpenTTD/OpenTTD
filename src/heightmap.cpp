@@ -337,22 +337,82 @@ struct MetadataIniFile : IniLoadFile {
  */
 void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 {
+	strecpy(this->filename, file_name, lastof(this->filename));
+
 	TarScanner ts;
 	std::cout << "SFTODOX1: " << file_path << std::endl;
 	std::cout << "SFTODOX2: " << file_name << std::endl;
 	// SFTODO: I am probably using TarScanner completely wrong, passing BASE_DIR is essentially arbitrary (NO_DIRECTORY is not a valid option as it's after NUM_SUBDIRS)
-	bool ok = ts.AddFile(BASE_DIR, file_path);
+	// SFTODO: OK, TRYING HEIGHTMAP_DIR TO MAKE READHEIGHTMAP WORK
+	bool ok = ts.AddFile(HEIGHTMAP_DIR, file_path);
 	assert(ok); // SFTODO: NEED TO CHECK RETURN VALUE PROPERLY
 	MetadataIniFile metadata;
 	// SFTODO: I am probably using TarScanner completely wrong, having to pass "./" at start of filename seems a bit iffy
-	metadata.LoadFromDisk("./metadata.txt", BASE_DIR);
+	metadata.LoadFromDisk("./metadata.txt", HEIGHTMAP_DIR);
 	IniGroup *extended_heightmap_group = metadata.GetGroup("extended_heightmap", 0, false);
 	assert(extended_heightmap_group != nullptr); // SFTODO!
 	IniItem *format_version = extended_heightmap_group->GetItem("format_version", false);
 	assert(format_version != nullptr); // SFTODO!
 	assert(strcmp(format_version->value, "1") == 0); // SFTODO!
+	// SFTODO: SHOULD THIS BE "rotation" NOT "orientation"? WIKI HAS BOTH IN VARIOUS PLACES...
+	IniItem *rotation = extended_heightmap_group->GetItem("orientation", false);
+	assert(rotation != nullptr); // SFTODO! THIS IS OK AND WE SHOULD DEFAULT TO WHATEVER IS IN _settings_newgame.construction.blah
+	// SFTODO: CASE SENSITIVITY!?
+	if (strcmp(rotation->value, "ccw") == 0) {
+		this->rotation = HM_COUNTER_CLOCKWISE;
+	} else if (strcmp(rotation->value, "cw") == 0) {
+		this->rotation = HM_CLOCKWISE;
+	} else {
+		assert(false); // SFTODO!
+	}
+	std::cout << "SFTODOQ9: " << static_cast<int>(this->rotation) << std::endl;
 
-	assert(false); // SFTODO!
+	/* Try to load the heightmap layer. */
+	IniGroup *heightmap_group = metadata.GetGroup("height_layer", 0, false);
+	assert(heightmap_group != nullptr); // SFTODO!
+	// EHTODO: It's probably not a big deal, but do we need to sanitise heightmap_filename so a malicious .ehm file can't
+	// access random files on the filesystem?
+	IniItem *heightmap_filename = heightmap_group->GetItem("file", false);
+	assert(heightmap_filename != nullptr); // SFTODO!
+	HeightmapLayer *height_layer = new HeightmapLayer();
+	height_layer->type = HLT_HEIGHTMAP;
+	height_layer->information = NULL;
+	char *ext = strrchr(heightmap_filename->value, '.');
+	assert(ext != nullptr); // SFTODO!
+	// SFTODO: CASE SENSITIVITY
+	DetailedFileType heightmap_dft;
+	if (strcmp(ext, ".png") == 0) {
+		heightmap_dft = DFT_HEIGHTMAP_PNG;
+	} else if (strcmp(ext, ".bmp") == 0) {
+		heightmap_dft = DFT_HEIGHTMAP_BMP;
+	} else {
+		assert(false); // SFTODO
+	}
+	// SFTODO: TEMP HACK BECAUSE I'M PROBBLY MISUSING TARSCANNER
+	char *heightmap_filename2 = str_fmt("./%s", heightmap_filename->value);
+	if (!ReadHeightMap(heightmap_dft, heightmap_filename2, &height_layer->width, &height_layer->height, &height_layer->information)) {
+		free(heightmap_filename2);
+		free(height_layer->information);
+		delete height_layer;
+		assert(false); // SFTODO!
+		return;
+	}
+	free(heightmap_filename2);
+
+	// The user will get the chance to override some of these settings later in the dialog, but we want to offer them the
+	// values recommended by the extended heightmap as a default.
+	this->max_map_height = 255 /* SFTODO TAKE FROM METADATA */; // EHTODO: not currently used
+	this->min_map_desired_height = 0 /* SFTODO TAKE FROM METADATA */;
+	this->max_map_desired_height = 15 /* SFTODO TAKE FROM METADATA */;
+	this->width = height_layer->width;
+	this->height = height_layer->height;
+	// SFTODO: DELETE this->rotation = HM_CLOCKWISE /* SFTODO TAKE FROM METADATA */; // SFTODO PROB OUTDATED COMMENT: placeholder; _settings_newgame.game_creation.heightmap_rotation is not set based on dialog yet
+	this->freeform_edges = _settings_newgame.construction.freeform_edges /* SFTODO TAKE FROM METADATA */;
+
+	//assert(false); // SFTODO!
+
+	/* Now we've loaded everything, populate the layers in this object. SFTODO: BEST APPROACH? */
+	this->layers[HLT_HEIGHTMAP] = height_layer;
 }
 
 /**

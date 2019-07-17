@@ -9,6 +9,7 @@
 
 /** @file genworld_gui.cpp GUI to configure and show progress during map generation. */
 
+#include <iostream> // SFTODO
 #include "stdafx.h"
 #include "heightmap_type.h"
 #include "heightmap_base.h"
@@ -289,6 +290,7 @@ static void StartGeneratingLandscape(GenerateLandscapeWindowMode mode)
 static void StartGeneratingLandscapeFromExtendedHeightmap() {
 	/* Set the final values that the extended heightmap will use for some settings. */
 	_extended_heightmap_gui->rotation = (HeightmapRotation) _settings_newgame.game_creation.heightmap_rotation;
+	std::cout << "SFTODOQ9C " << static_cast<int>(_extended_heightmap_gui->rotation) << std::endl;
 	if (_extended_heightmap_gui->rotation) {
 		_extended_heightmap_gui->height = 1 << _settings_newgame.game_creation.map_x;
 		_extended_heightmap_gui->width  = 1 << _settings_newgame.game_creation.map_y;
@@ -344,6 +346,20 @@ struct GenerateLandscapeWindow : public Window {
 		this->SetWidgetDisabledState(WID_GL_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
 		this->SetWidgetDisabledState(WID_GL_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
 		this->SetWidgetDisabledState(WID_GL_TREE_PULLDOWN,     _game_mode == GM_EDITOR);
+
+		// EHTODO: Is this correct? I think updating _settings_newgame means the values will persist the next
+		// time a new game is started. This may be OK.
+		// SFTODO: WE MAY NEED TO DO SOMETHING TO MAKE SURE THESE PARAMETERS ARE COPIED BACK INTO _extended_heightmap_gui WHEN THE USER DISMISSES THE DIALOG - STARTGENERATINGLANDSCAPEBLAH() IS PROBABLY THE PLCE TO DO THIS, THINK IT ALREADY DOES SOME
+		if (mode == GLWM_HEIGHTMAP) {
+			// EHTODO: Some parameters (e.g. min_map_desired_height) are not shown on the dialog. Apart from anything else,
+			// this probably opens the possibility for the user to create invalid things by editing, e.g. making max_map_desired_height < min_map_desired_height.
+			_settings_newgame.construction.max_heightlevel = _extended_heightmap_gui->max_map_desired_height;
+			// _settings_newgame.game_creation.snow_line_height = _extended_heightmap_gui->SFTODO;
+			std::cout << "SFTODOQ9B " << static_cast<int>(_extended_heightmap_gui->rotation) << std::endl;
+			_settings_newgame.game_creation.heightmap_rotation = _extended_heightmap_gui->rotation;
+			// _settings_newgame.game_creation.landscape = _extended_heightmap_gui->SFTODO;
+			// SFTODO: OTHERS
+		}
 
 		this->OnInvalidateData();
 	}
