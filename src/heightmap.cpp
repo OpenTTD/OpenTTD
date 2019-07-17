@@ -21,6 +21,7 @@
 #include "gfx_func.h"
 #include "fios.h"
 #include "fileio_func.h"
+#include "ini_type.h" // SFTODO!?
 
 #include "table/strings.h"
 
@@ -314,6 +315,20 @@ static bool ReadHeightMap(DetailedFileType dft, const char *filename, uint *x, u
 	}
 }
 
+// SFTODO: MOVE/COMMENT
+struct MetadataIniFile : IniLoadFile {
+        virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size) {
+		// SFTODO: SHOULD I BE PASSING "b" FLAG?? IniFile::OpenFile() DOES, SO BLINDLY COPYING THIS FOR NOW...
+		return FioFOpenFile(filename, "rb", subdir, size);
+	}
+
+	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post)
+        {
+		std::cout << "SFTODOERROR: " << pre << buffer << post << std::endl;
+                assert(false); // SFTODO!
+        }
+};
+
 /**
  * Allows to create an extended heightmap from a .ehm file (a tar file containing special
  * files).
@@ -328,11 +343,15 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	// SFTODO: I am probably using TarScanner completely wrong, passing BASE_DIR is essentially arbitrary (NO_DIRECTORY is not a valid option as it's after NUM_SUBDIRS)
 	bool ok = ts.AddFile(BASE_DIR, file_path);
 	assert(ok); // SFTODO: NEED TO CHECK RETURN VALUE PROPERLY
-	size_t filesize;
+	MetadataIniFile metadata;
 	// SFTODO: I am probably using TarScanner completely wrong, having to pass "./" at start of filename seems a bit iffy
-	FILE *f = FioFOpenFile("./metadata.txt", "r", BASE_DIR, &filesize);
-	assert(f != nullptr); // SFTODO: NEED TO CHECK RETURN VALUE PROPERLY
-	std::cout << "SFTODOX3: " << filesize << std::endl;
+	metadata.LoadFromDisk("./metadata.txt", BASE_DIR);
+	IniGroup *extended_heightmap_group = metadata.GetGroup("extended_heightmap", 0, false);
+	assert(extended_heightmap_group != nullptr); // SFTODO!
+	IniItem *format_version = extended_heightmap_group->GetItem("format_version", false);
+	assert(format_version != nullptr); // SFTODO!
+	assert(strcmp(format_version->value, "1") == 0); // SFTODO!
+
 	assert(false); // SFTODO!
 }
 
