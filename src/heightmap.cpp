@@ -368,6 +368,24 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	}
 	std::cout << "SFTODOQ9: " << static_cast<int>(this->rotation) << std::endl;
 
+	IniItem *climate = extended_heightmap_group->GetItem("climate", false);
+	if (climate == nullptr) {
+		this->landscape = static_cast<LandscapeType>(_settings_newgame.game_creation.landscape);
+	} else {
+		// SFTODO: CASE SENSITIVITY!?
+		if (strcmp(climate->value, "temperate") == 0) {
+			this->landscape = LT_TEMPERATE;
+		} else if (strcmp(climate->value, "arctic") == 0) {
+			this->landscape = LT_ARCTIC;
+		} else if (strcmp(climate->value, "tropical") == 0) {
+			this->landscape = LT_TROPIC;
+		} else if (strcmp(climate->value, "toyland") == 0) {
+			this->landscape = LT_TOYLAND;
+		} else {
+			assert(false); // SFTODO!
+		}
+	}
+
 	uint metadata_width = 0;
 	uint metadata_height = 0;
 	IniItem *width = extended_heightmap_group->GetItem("width", false);
@@ -457,6 +475,7 @@ void ExtendedHeightmap::LoadLegacyHeightmap(DetailedFileType dft, char *file_pat
 	this->width = height_layer->width;
 	this->height = height_layer->height;
 	this->rotation = HM_CLOCKWISE; // placeholder; _settings_newgame.game_creation.heightmap_rotation is not set based on dialog yet
+	this->landscape = static_cast<LandscapeType>(_settings_newgame.game_creation.landscape);
 	this->freeform_edges = _settings_newgame.construction.freeform_edges;
 }
 

@@ -290,6 +290,8 @@ static void StartGeneratingLandscape(GenerateLandscapeWindowMode mode)
 static void StartGeneratingLandscapeFromExtendedHeightmap() {
 	/* Set the final values that the extended heightmap will use for some settings. */
 	_extended_heightmap_gui->rotation = (HeightmapRotation) _settings_newgame.game_creation.heightmap_rotation;
+	_extended_heightmap_gui->landscape = static_cast<LandscapeType>(_settings_newgame.game_creation.landscape);
+
 	std::cout << "SFTODOQ9C " << static_cast<int>(_extended_heightmap_gui->rotation) << std::endl;
 	if (_extended_heightmap_gui->rotation) {
 		_extended_heightmap_gui->height = 1 << _settings_newgame.game_creation.map_x;
@@ -361,6 +363,7 @@ struct GenerateLandscapeWindow : public Window {
 			// SFTODO: SOMEWHERE WE SHOULD BE CHECKING IF _extended_heightmap_gui->{width,height} ARE BOTH POWERS OF 2 AND ERRORING IF NOT
 			_settings_newgame.game_creation.map_x = FindLastBit(_extended_heightmap_gui->width);
 			_settings_newgame.game_creation.map_y = FindLastBit(_extended_heightmap_gui->height);
+			_settings_newgame.game_creation.landscape = _extended_heightmap_gui->landscape;
 			// SFTODO: OTHERS
 			// SFTODO: I NEED A NON-SQUARE TEST CASE TO HELP TEST ROTATION IS BEING HANDLED CORRECTLY ESP WRT X/Y DIMENSIONS
 		}
