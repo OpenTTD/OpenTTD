@@ -6,3 +6,4 @@ climate=arctic
 [height_layer]
 file=vertical-gradient-256x256.png
 max_desired_height=16
+snowline_height=4

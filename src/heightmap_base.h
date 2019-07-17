@@ -29,6 +29,7 @@ struct ExtendedHeightmap {
 	byte max_map_height;         ///< This property indicates the maximum height level of the values defined in the extended heightmap.
 	byte min_map_desired_height; ///< Indicates the minimum height of the resulting OpenTTD map.
 	byte max_map_desired_height; ///< Indicates the maximum height of the resulting OpenTTD map.
+	byte snow_line_height;       ///< Indicates the snowline height for the resulting OpenTTD map.
 	uint width;                  ///< The extended heightmap will be scaled to this width.
 	uint height;                 ///< The extended heightmap will be scaled to this height.
 	HeightmapRotation rotation;  ///< Indicates the preferred orientation for the extended heightmap.

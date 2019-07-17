@@ -435,6 +435,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	}
 	free(heightmap_filename2);
 
+	// SFTODONOW: max_desired_height IS *NOT* BEING COPIED AROUND CORRECTLY AT VARIOUS POINTS - NEED TO DEBUG THIS, I DON'T THINK IT WORKED IN PREVIOUS COMMIT EITHER - OTHER STUFF MAY BE BROKEN TOO, I DON'T HAVE ANY REASON TO THINK IT IS BUT THEN AGAIN I'M SURE THIS USED TO WORK TOO...
 	IniItem *max_desired_height = height_layer_group->GetItem("max_desired_height", false);
 	if (max_desired_height == nullptr) {
 		this->max_map_desired_height = _settings_newgame.construction.max_heightlevel;
@@ -447,6 +448,13 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		this->max_map_height = 255;
 	} else {
 		this->max_map_height = atoi(max_height->value); // SFTODO NO ERROR CHECKING!
+	}
+
+	IniItem *snow_line_height = height_layer_group->GetItem("snowline_height", false);
+	if (snow_line_height == nullptr) {
+		this->snow_line_height = _settings_newgame.game_creation.snow_line_height;
+	} else {
+		this->snow_line_height = atoi(snow_line_height->value); // SFTODO NO ERROR CHECKING!
 	}
 
 	// The user will get the chance to override some of these settings later in the dialog, but we want to offer them the
@@ -476,7 +484,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		this->height = (metadata_height != 0) ? metadata_height : height_layer->height;
 	}
 	// SFTODO: DELETE this->rotation = HM_CLOCKWISE /* SFTODO TAKE FROM METADATA */; // SFTODO PROB OUTDATED COMMENT: placeholder; _settings_newgame.game_creation.heightmap_rotation is not set based on dialog yet
-	this->freeform_edges = _settings_newgame.construction.freeform_edges /* SFTODO TAKE FROM METADATA */;
+	this->freeform_edges = true; // EHTODO: comment on struct definition says this is always true except for legacy heightmaps - OK?
 
 	//assert(false); // SFTODO!
 
@@ -508,8 +516,10 @@ void ExtendedHeightmap::LoadLegacyHeightmap(DetailedFileType dft, char *file_pat
 	/* Initialize some extended heightmap parameters to be consistent with the old behavior.
 	 * The dialog hasn't been shown to the user yet so we can't initialize everything. SFTODO LAST SENTENCE PROBABLY NOT NEEDED/TRUE ANY MORE. */
 	strecpy(this->filename, file_name, lastof(this->filename));
+	this->max_map_height = 255;
 	this->min_map_desired_height = 0;
 	this->max_map_desired_height = _settings_newgame.construction.max_heightlevel;
+	this->snow_line_height = _settings_newgame.game_creation.snow_line_height;
 	this->width = height_layer->width;
 	this->height = height_layer->height;
 	this->rotation = static_cast<HeightmapRotation>(_settings_newgame.game_creation.heightmap_rotation);
@@ -525,12 +535,14 @@ void ExtendedHeightmap::CreateMap()
 	/* The extended heightmap should be valid before we actually start applying data to the OpenTTD map. */
 	assert(this->IsValid());
 
+#if 0 // SFTODO: I THINK THIS IS "DUPLICATING" (INCOMPLETELY) THE CODE IN StartGeneratingLandscapeFromExtendedHeightmap - DELETE IF THIS WORKS OK
 	/* The relevant dialog has been shown to the user now so we can populate these members. */
 	// EHTODO: This is for legacy heightmap support, but we probably need to
 	// do something similar for these (as well as other) members for
 	// extended heightmaps.
 	this->max_map_desired_height = _settings_game.construction.max_heightlevel;
 	this->rotation = (HeightmapRotation) _settings_newgame.game_creation.heightmap_rotation;
+#endif
 
 	/* The game map size must have been set up at this point, and the extended heightmap must be correctly initialized. */
 	assert((this->rotation == HM_COUNTER_CLOCKWISE && this->width == MapSizeX() && this->height == MapSizeY()) ||
