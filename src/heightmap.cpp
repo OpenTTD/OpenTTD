@@ -625,7 +625,8 @@ void ExtendedHeightmap::ApplyHeightLayer(const HeightmapLayer *height_layer)
 
 				uint tile_height = height_layer->information[img_row * height_layer->width + img_col];
 				if (tile_height > max_map_height) {
-					assert(false); // SFTODO PROPER ERROR
+					// EHTODO: log any kind of warning!?
+					tile_height = max_map_height;
 				}
 				// If min_map_desired_height is 0 we use the same approach as legacy heightmaps, where 0 is sea
 				// and anything above it is land. We need this for compatibility with legacy heightmaps,
