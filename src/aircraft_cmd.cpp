@@ -133,7 +133,7 @@ static StationID FindNearestHangar(const Aircraft *v)
 	const Station *next_dest;
 	if (max_range != 0) {
 		if (v->current_order.IsType(OT_GOTO_STATION) ||
-			(v->current_order.IsType(OT_GOTO_DEPOT) && v->current_order.GetDepotActionType() != ODATFB_NEAREST_DEPOT)) {
+				(v->current_order.IsType(OT_GOTO_DEPOT) && v->current_order.GetDepotActionType() != ODATFB_NEAREST_DEPOT)) {
 			last_dest = Station::GetIfValid(v->last_station_visited);
 			next_dest = Station::GetIfValid(v->current_order.GetDestination());
 		} else {
