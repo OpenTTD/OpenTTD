@@ -5,4 +5,4 @@ climate=arctic
 
 [height_layer]
 file=vertical-gradient-256x256.png
-max_height=16
+max_desired_height=16

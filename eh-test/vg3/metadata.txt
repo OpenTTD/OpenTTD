@@ -5,4 +5,4 @@ climate=tropical
 
 [height_layer]
 file=horizontal-gradient-valley-512x256.png
-max_height=15
+max_desired_height=15

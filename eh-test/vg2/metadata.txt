@@ -7,4 +7,4 @@ climate=temperate
 
 [height_layer]
 file=vertical-gradient-256x256.png
-max_height=32
+max_desired_height=32
