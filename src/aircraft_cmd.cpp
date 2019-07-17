@@ -126,6 +126,21 @@ static StationID FindNearestHangar(const Aircraft *v)
 	StationID index = INVALID_STATION;
 	TileIndex vtile = TileVirtXY(v->x_pos, v->y_pos);
 	const AircraftVehicleInfo *avi = AircraftVehInfo(v->engine_type);
+	uint max_range = v->acache.cached_max_range_sqr;
+
+	/* Determine destinations where it's coming from and where it's heading to */
+	const Station *last_dest;
+	const Station *next_dest;
+	if (max_range != 0) {
+		last_dest = GetTargetAirportIfValid(v);
+		if (v->current_order.IsType(OT_GOTO_STATION) ||
+			(v->current_order.IsType(OT_GOTO_DEPOT) && v->current_order.GetDepotActionType() != ODATFB_NEAREST_DEPOT)) {
+			next_dest = Station::GetIfValid(v->current_order.GetDestination());
+			if (next_dest == last_dest) last_dest = Station::GetIfValid(v->last_station_visited);
+		} else {
+			next_dest = Station::GetIfValid(v->GetNextStoppingStation().value);
+		}
+	}
 
 	FOR_ALL_STATIONS(st) {
 		if (st->owner != v->owner || !(st->facilities & FACIL_AIRPORT) || !st->airport.HasHangar()) continue;
@@ -138,27 +153,15 @@ static StationID FindNearestHangar(const Aircraft *v)
 		/* the plane won't land at any helicopter station */
 		if (!(afc->flags & AirportFTAClass::AIRPLANES) && (avi->subtype & AIR_CTOL)) continue;
 
-		/* v->tile can't be used here, when aircraft is flying v->tile is set to 0 */
-		uint distance = DistanceSquare(vtile, st->airport.tile);
-
-		uint max_range = v->acache.cached_max_range_sqr;
+		/* Check if our last and next destinations can be reached from the depot airport. */
 		if (max_range != 0) {
-			/* Determine destinations */
-			const Station *last_dest = GetTargetAirportIfValid(v);
-			const Station *next_dest;
-			if (v->current_order.IsType(OT_GOTO_STATION) ||
-					(v->current_order.IsType(OT_GOTO_DEPOT) && v->current_order.GetDepotActionType() != ODATFB_NEAREST_DEPOT)) {
-				next_dest = Station::GetIfValid(v->current_order.GetDestination());
-				if (next_dest == last_dest) last_dest = Station::GetIfValid(v->last_station_visited);
-			} else {
-				next_dest = Station::GetIfValid(v->GetNextStoppingStation().value);
-			}
-
-			/* Check if our last and next destinations can be reached from the depot airport. */
 			uint last_dist = last_dest != nullptr && last_dest->airport.tile != INVALID_TILE ? DistanceSquare(st->airport.tile, last_dest->airport.tile) : 0;
 			uint next_dist = next_dest != nullptr && next_dest->airport.tile != INVALID_TILE ? DistanceSquare(st->airport.tile, next_dest->airport.tile) : 0;
 			if (last_dist > max_range || next_dist > max_range) continue;
 		}
+
+		/* v->tile can't be used here, when aircraft is flying v->tile is set to 0 */
+		uint distance = DistanceSquare(vtile, st->airport.tile);
 		if (distance < best || index == INVALID_STATION) {
 			best = distance;
 			index = st->index;
