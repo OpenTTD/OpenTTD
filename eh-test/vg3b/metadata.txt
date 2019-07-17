@@ -1,0 +1,8 @@
+[extended_heightmap]
+format_version=1
+orientation=cw
+climate=tropical
+
+[height_layer]
+min_desired_height=1
+file=horizontal-gradient-valley-512x256.png

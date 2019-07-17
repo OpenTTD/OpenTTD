@@ -435,7 +435,13 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	}
 	free(heightmap_filename2);
 
-	// SFTODONOW: max_desired_height IS *NOT* BEING COPIED AROUND CORRECTLY AT VARIOUS POINTS - NEED TO DEBUG THIS, I DON'T THINK IT WORKED IN PREVIOUS COMMIT EITHER - OTHER STUFF MAY BE BROKEN TOO, I DON'T HAVE ANY REASON TO THINK IT IS BUT THEN AGAIN I'M SURE THIS USED TO WORK TOO...
+	IniItem *min_desired_height = height_layer_group->GetItem("min_desired_height", false);
+	if (min_desired_height == nullptr) {
+		this->min_map_desired_height = 0;
+	} else {
+		this->min_map_desired_height = atoi(min_desired_height->value); // SFTODO NO ERROR CHECKING!
+	}
+
 	IniItem *max_desired_height = height_layer_group->GetItem("max_desired_height", false);
 	if (max_desired_height == nullptr) {
 		this->max_map_desired_height = _settings_newgame.construction.max_heightlevel;
@@ -458,9 +464,6 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		this->snow_line_height = atoi(snow_line_height->value); // SFTODO NO ERROR CHECKING!
 	}
 
-	// The user will get the chance to override some of these settings later in the dialog, but we want to offer them the
-	// values recommended by the extended heightmap as a default.
-	this->min_map_desired_height = 0 /* SFTODO TAKE FROM METADATA */;
 	if ((metadata_width == 0) && (metadata_height == 0)) {
 #if 0 // SFTODO!?
 		// If there's no width/height metadata, take the size of the heightmap layer and adjust for the rotation.
@@ -656,13 +659,13 @@ void ExtendedHeightmap::ApplyHeightLayer(const HeightmapLayer *height_layer)
 					 * Other grey scales are scaled evenly to the available height levels > 0.
 					 * (The coastline is independent from the number of height levels) */
 					if (tile_height > 0) {
-						tile_height = (1 + (tile_height - 1) * max_map_desired_height / max_map_height) * num_div;
+						tile_height = (1 + (tile_height - 1) * max_map_desired_height / max_map_height);
 					}
 				} else {
 					/* Colour scales from 0 to max_map_height, OpenTTD height scales from min_map_desired_height to max_map_desired_height */
-					tile_height = ((tile_height * num_div) * ((max_map_desired_height + 1) - min_map_desired_height) + min_map_desired_height * num_div) / (max_map_height + 1);
+					tile_height = min_map_desired_height + ((tile_height * (max_map_desired_height - min_map_desired_height)) / max_map_height);
 				}
-				SetTileHeight(tile, tile_height / num_div);
+				SetTileHeight(tile, tile_height);
 			}
 			/* Only clear the tiles within the map area. */
 			if (TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY() &&
