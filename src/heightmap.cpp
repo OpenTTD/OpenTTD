@@ -442,6 +442,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	} else {
 		this->max_map_desired_height = atoi(max_desired_height->value); // SFTODO NO ERROR CHECKING!
 	}
+	std::cout << "SFTODOX1 " << static_cast<int>(this->max_map_desired_height) << std::endl;
 
 	IniItem *max_height = height_layer_group->GetItem("max_height", false);
 	if (max_height == nullptr) {

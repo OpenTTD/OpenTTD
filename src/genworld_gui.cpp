@@ -289,7 +289,8 @@ static void StartGeneratingLandscape(GenerateLandscapeWindowMode mode)
  */
 static void StartGeneratingLandscapeFromExtendedHeightmap() {
 	/* Set the final values that the extended heightmap will use for some settings. */
-	_extended_heightmap_gui->max_map_desired_height = _settings_game.construction.max_heightlevel;
+	_extended_heightmap_gui->max_map_desired_height = _settings_newgame.construction.max_heightlevel;
+	std::cout << "SFTODOX4 " << static_cast<int>(_extended_heightmap_gui->max_map_desired_height) << std::endl;
 	_extended_heightmap_gui->snow_line_height = _settings_newgame.game_creation.snow_line_height;
 	_extended_heightmap_gui->rotation = static_cast<HeightmapRotation>(_settings_newgame.game_creation.heightmap_rotation);
 	_extended_heightmap_gui->landscape = static_cast<LandscapeType>(_settings_newgame.game_creation.landscape);
@@ -358,6 +359,7 @@ struct GenerateLandscapeWindow : public Window {
 			// EHTODO: Some parameters (e.g. min_map_desired_height) are not shown on the dialog. Apart from anything else,
 			// this probably opens the possibility for the user to create invalid things by editing, e.g. making max_map_desired_height < min_map_desired_height.
 			_settings_newgame.construction.max_heightlevel = _extended_heightmap_gui->max_map_desired_height;
+			std::cout << "SFTODOX3 " << static_cast<int>(_extended_heightmap_gui->max_map_desired_height) << std::endl;
 			_settings_newgame.game_creation.snow_line_height = _extended_heightmap_gui->snow_line_height;
 			std::cout << "SFTODOQ9B " << static_cast<int>(_extended_heightmap_gui->rotation) << std::endl;
 			_settings_newgame.game_creation.heightmap_rotation = _extended_heightmap_gui->rotation;
