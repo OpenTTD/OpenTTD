@@ -354,6 +354,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	IniItem *format_version = extended_heightmap_group->GetItem("format_version", false);
 	assert(format_version != nullptr); // SFTODO!
 	assert(strcmp(format_version->value, "1") == 0); // SFTODO!
+
 	// SFTODO: SHOULD THIS BE "rotation" NOT "orientation"? WIKI HAS BOTH IN VARIOUS PLACES...
 	IniItem *rotation = extended_heightmap_group->GetItem("orientation", false);
 	assert(rotation != nullptr); // SFTODO! THIS IS OK AND WE SHOULD DEFAULT TO WHATEVER IS IN _settings_newgame.construction.blah
@@ -366,6 +367,17 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		assert(false); // SFTODO!
 	}
 	std::cout << "SFTODOQ9: " << static_cast<int>(this->rotation) << std::endl;
+
+	uint metadata_width = 0;
+	uint metadata_height = 0;
+	IniItem *width = extended_heightmap_group->GetItem("width", false);
+	if (width != nullptr) {
+		metadata_width = atoi(width->value); // SFTODO: NO ERROR CHECKING!
+	}
+	IniItem *height = extended_heightmap_group->GetItem("height", false);
+	if (height != nullptr) {
+		metadata_height = atoi(height->value); // SFTODO: NO ERROR CHECKING!
+	}
 
 	/* Try to load the heightmap layer. */
 	IniGroup *heightmap_group = metadata.GetGroup("height_layer", 0, false);
@@ -404,8 +416,8 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	this->max_map_height = 255 /* SFTODO TAKE FROM METADATA */; // EHTODO: not currently used
 	this->min_map_desired_height = 0 /* SFTODO TAKE FROM METADATA */;
 	this->max_map_desired_height = 15 /* SFTODO TAKE FROM METADATA */;
-	this->width = height_layer->width;
-	this->height = height_layer->height;
+	this->width = (metadata_width != 0) ? metadata_width : height_layer->width;
+	this->height = (metadata_height != 0) ? metadata_height : height_layer->height;
 	// SFTODO: DELETE this->rotation = HM_CLOCKWISE /* SFTODO TAKE FROM METADATA */; // SFTODO PROB OUTDATED COMMENT: placeholder; _settings_newgame.game_creation.heightmap_rotation is not set based on dialog yet
 	this->freeform_edges = _settings_newgame.construction.freeform_edges /* SFTODO TAKE FROM METADATA */;
 

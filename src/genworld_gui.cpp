@@ -358,7 +358,11 @@ struct GenerateLandscapeWindow : public Window {
 			std::cout << "SFTODOQ9B " << static_cast<int>(_extended_heightmap_gui->rotation) << std::endl;
 			_settings_newgame.game_creation.heightmap_rotation = _extended_heightmap_gui->rotation;
 			// _settings_newgame.game_creation.landscape = _extended_heightmap_gui->SFTODO;
+			// SFTODO: SOMEWHERE WE SHOULD BE CHECKING IF _extended_heightmap_gui->{width,height} ARE BOTH POWERS OF 2 AND ERRORING IF NOT
+			_settings_newgame.game_creation.map_x = FindLastBit(_extended_heightmap_gui->width);
+			_settings_newgame.game_creation.map_y = FindLastBit(_extended_heightmap_gui->height);
 			// SFTODO: OTHERS
+			// SFTODO: I NEED A NON-SQUARE TEST CASE TO HELP TEST ROTATION IS BEING HANDLED CORRECTLY ESP WRT X/Y DIMENSIONS
 		}
 
 		this->OnInvalidateData();
@@ -410,6 +414,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: SetDParam(0, _rotation[_settings_newgame.game_creation.heightmap_rotation]); break;
 
 			case WID_GL_HEIGHTMAP_SIZE_TEXT:
+				// SFTODO: SHOULD WE SHOW THE HEIGHT LAYER'S NATIVE SIZE HERE INSTEAD?
 				if (_settings_newgame.game_creation.heightmap_rotation == HM_CLOCKWISE) {
 					SetDParam(0, _extended_heightmap_gui->height);
 					SetDParam(1, _extended_heightmap_gui->width);
@@ -499,7 +504,9 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_HEIGHTMAP_SIZE_TEXT:
-				SetDParam(0, _extended_heightmap_gui->width);
+				//assert(false); // SFTODO: THIS HAS NO ROTATION CODE UNLIKE OTHER CASE FOR WID_GL_HEIGHTMAP_SIZE_TEXT, IS IT EXECUTED? YES
+				// SFTODO: SHOULD WE SHOW THE HEIGHT LAYER'S NATIVE SIZE HERE INSTEAD?
+				SetDParam(0, 999 /* SFTODO!? _extended_heightmap_gui->width */);
 				SetDParam(1, _extended_heightmap_gui->height);
 				*size = maxdim(*size, GetStringBoundingBox(STR_MAPGEN_HEIGHTMAP_SIZE));
 				break;

@@ -1,8 +1,10 @@
 [extended_heightmap]
 format_version=1
-orientation=ccw
-climate=arctic
+width=512
+height=512
+orientation=cw
+climate=temperate
 
 [height_layer]
 file=vertical-gradient-256x256.png
-max_height=16
+max_height=32
