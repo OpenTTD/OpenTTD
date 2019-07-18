@@ -9,6 +9,7 @@
 
 /** @file console_cmds.cpp Implementation of the console hooks. */
 
+#include <time.h>
 #include "stdafx.h"
 #include "console_internal.h"
 #include "debug.h"
@@ -1312,6 +1313,21 @@ DEF_CONSOLE_CMD(ConGetDate)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConGetSysDate)
+{
+	if (argc == 0) {
+		IConsoleHelp("Returns the current date (day-month-year) of your system. Usage: 'getsysdate'");
+		return true;
+	}
+
+	time_t t;
+	struct tm * timeinfo;
+	time(&t);
+	timeinfo = localtime(&t);
+	IConsolePrintF(CC_DEFAULT, "System Date: %d/%d/%d %d:%d:%d", timeinfo->tm_year + 1900, timeinfo->tm_mon, timeinfo->tm_mday, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
+	return true;
+}
+
 
 DEF_CONSOLE_CMD(ConAlias)
 {
@@ -1925,6 +1941,7 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("restart",      ConRestart);
 	IConsoleCmdRegister("getseed",      ConGetSeed);
 	IConsoleCmdRegister("getdate",      ConGetDate);
+	IConsoleCmdRegister("getsysdate",   ConGetSysDate);
 	IConsoleCmdRegister("quit",         ConExit);
 	IConsoleCmdRegister("resetengines", ConResetEngines, ConHookNoNetwork);
 	IConsoleCmdRegister("reset_enginepool", ConResetEnginePool, ConHookNoNetwork);
