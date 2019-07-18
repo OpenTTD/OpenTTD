@@ -18,6 +18,7 @@
 #include "heightmap_layer_type.h"
 #include "heightmap_layer_base.h"
 #include "landscape_type.h"
+#include "tile_type.h"
 
 typedef SmallMap<HeightmapLayerType, HeightmapLayer *> HeightmapLayerMap;
 
@@ -49,6 +50,7 @@ struct ExtendedHeightmap {
 
 	/* Other functions. */
 	bool IsValid();
+	TileIndex TileForBitmapXY(uint x, uint y);
 };
 
 #endif /* HEIGHTMAP_BASE_H */

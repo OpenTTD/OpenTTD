@@ -769,3 +769,35 @@ bool ExtendedHeightmap::IsValid()
 
 	return true;
 }
+
+/**
+ * Converts a "bitmap coordinate" (origin at lower left) to an OpenTTD TileIndex.
+ * @param x bitmap x coordinate
+ * @param y bitmap y coordinate
+ * @return TileIndex corresponding to bitmap pixel (x, y)
+ */
+TileIndex ExtendedHeightmap::TileForBitmapXY(uint x, uint y)
+{
+	assert(x < width);
+	assert(y < height);
+
+	std::cout << "SFTODOQA8 " << x << " " << y << std::endl;
+	if (this->rotation == HM_CLOCKWISE) {
+		std::swap(x, y);
+		// SFTODO: TEST THIS WITH NON-SQUARE ROTATIONS
+		y = height - y;
+	}
+
+	// A 512x512 heightmap gives a 510x510 OpenTTD map; adjust for this.
+	// EHTODO: This is not necessarily optimal, look at heightmap->map generation and think about it. We might want to offset x and/or y by one in some direction before clamping. (Careful about unsigned 0 wrapping to large positive if we offset by -1.)
+	// SFTODO: NEED TO TEST THIS WORKS CORRECTLY WITH ROTATION OF NON-SQUARE HEIGHTMAPS
+	x = Clamp(x, 0, MapMaxX());
+	y = Clamp(y, 0, MapMaxY());
+
+	// OpenTTD map coordinates have the origin at the top right of the bitmap, so adjust for this.
+	x = MapMaxX() - x; // SFTODO: TEST THIS WITH ROTATION
+	y = MapMaxY() - y; // SFTODO: TEST THIS WITH ROTATION
+	std::cout << "SFTODOQA9 " << x << " " << y << std::endl;
+
+	return TileXY(x, y);
+}

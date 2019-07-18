@@ -2206,8 +2206,6 @@ bool GenerateTowns(TownLayout layout)
 
 	SetGeneratingWorldProgress(GWP_TOWN, total);
 
-	extern ExtendedHeightmap *_extended_heightmap; // SFTODO MOVE IF KEEP
-
 	if (town_layer != nullptr) {
 		for (const auto &town : town_layer->towns) {
 			IncreaseGeneratingWorldProgress(GWP_TOWN);
@@ -2217,8 +2215,9 @@ bool GenerateTowns(TownLayout layout)
 				return false;
 			}
 			// SFTODO: NEED TO SCALE X/Y AND ALSO FLIP THEM IF WE'RE IN CLOCKWISE ORIENTATION - I ALSO THINK WE NEED TO ADJUST FOR OPENTTD'S ORIGIN BEING IN A DIFFERENT CORNER THAN OUR LOWER-LEFT-OF-PNG ORIGIN REGARDLESS OF CLOCKWISE/COUNTERCLOCKWISE
+			// SFTODO: I THINK A GOOD WAY TO HANDLE SCALING IS FOR THE EHM CODE TO ITERATE OVER ALL THE LAYERS AND CALL A VIRTUAL SCALE() FN - IF THAT RETURNS BOOL FALSE, IT MEANS THE LAYER COULDn'T BE SCALED AND EHM IS NOT VALID - THAT WAY I CAN THEN "FORGET" ABOUT SCALING IN HERE (EG I WON'T HAVE TO REMEMBER TO APPLY SCALE FACTOR EVERY TIME I ACCESS A MEMBER OF TOWNS)
 			// EHTODO: It might be nice to have an option "posfuzz=n" item support in the town list, and use the circular tile walk function to try all locations within n units of the specified position if we can't create exactly where requested.
-			Town *t = CreateSpecificTown(TileXY(town.posx, town.posy), town.name, 0, TSZ_SMALL /* SFTODOSIZE */, false /* SFTODOCITY */, TL_RANDOM /* SFTODO */);
+			Town *t = CreateSpecificTown(_extended_heightmap->TileForBitmapXY(town.posx, town.posy), town.name, 0, TSZ_SMALL /* SFTODOSIZE */, false /* SFTODOCITY */, TL_RANDOM /* SFTODO */);
 			std::cout << "SFTODOPP2" << std::endl;
 			if (t == nullptr) {
 				std::cout << "FAILED TO CREATE TOWN:" << town.name << std::endl; // SFTODO!
