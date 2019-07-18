@@ -9,6 +9,7 @@
 
 /** @file town_cmd.cpp Handling of town tiles. */
 
+#include <iostream> // SFTODO TEMP
 #include "stdafx.h"
 #include "road.h"
 #include "road_internal.h" /* Cleaning up road bits */
@@ -50,6 +51,7 @@
 #include "object_base.h"
 #include "ai/ai.hpp"
 #include "game/game.hpp"
+#include "heightmap_base.h" // SFTODO!?
 
 #include "table/strings.h"
 #include "table/town_land.h"
@@ -2082,10 +2084,48 @@ static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layou
 	return INVALID_TILE;
 }
 
-static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size, bool city, TownLayout layout)
+static Town *CreateSpecificTown(TileIndex tile, const std::string &townname, uint32 townnameparts, TownSize size, bool city, TownLayout layout)
 {
 	assert(_game_mode == GM_EDITOR || _generating_world); // These are the preconditions for CMD_DELETE_TOWN
 
+	/* Make sure town can be placed here */
+	if (TownCanBePlacedHere(tile).Failed()) return nullptr;
+
+	if (!townname.empty()) {
+		if (Utf8StringLength(townname.c_str()) >= MAX_LENGTH_TOWN_NAME_CHARS) return nullptr;
+		if (!IsUniqueTownName(townname.c_str())) return nullptr;
+	}
+
+	/* Allocate a town struct */
+	Town *t = new Town(tile);
+
+	DoCreateTown(t, tile, townnameparts, size, city, layout, false);
+
+	/* if the population is still 0 at the point, then the
+	 * placement is so bad it couldn't grow at all */
+	if (t->cache.population > 0) {
+		if (!townname.empty()) {
+			t->name = stredup(townname.c_str());
+			t->UpdateVirtCoord();
+		}
+		return t;
+	}
+
+	Backup<CompanyID> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
+	CommandCost rc = DoCommand(t->xy, t->index, 0, DC_EXEC, CMD_DELETE_TOWN);
+	cur_company.Restore();
+	assert(rc.Succeeded());
+
+	/* We already know that we can allocate a single town when
+	 * entering this function. However, we create and delete
+	 * a town which "resets" the allocation checks. As such we
+	 * need to check again when assertions are enabled. */
+	assert(Town::CanAllocateItem());
+	return nullptr;
+}
+
+static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size, bool city, TownLayout layout)
+{
 	if (!Town::CanAllocateItem()) return nullptr;
 
 	do {
@@ -2099,6 +2139,7 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 			if (tile == INVALID_TILE) continue;
 		}
 
+#if 0 // SFTODO: DELETE
 		/* Make sure town can be placed here */
 		if (TownCanBePlacedHere(tile).Failed()) continue;
 
@@ -2121,6 +2162,10 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 		 * a town which "resets" the allocation checks. As such we
 		 * need to check again when assertions are enabled. */
 		assert(Town::CanAllocateItem());
+#else
+		Town *t = CreateSpecificTown(tile, "", townnameparts, size, city, layout);
+		if (t != nullptr) return t;
+#endif
 	} while (--attempts != 0);
 
 	return nullptr;
@@ -2137,28 +2182,76 @@ static const byte _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, no
  */
 bool GenerateTowns(TownLayout layout)
 {
+	extern ExtendedHeightmap *_extended_heightmap; // SFTODO MOVE IF KEEP
+
+	const TownLayer *town_layer = nullptr;
+	// SFTODO: _extended_heightmap REMAINS NON-NULL AFTER ABANDONING AN EH GAME - IF YOU THEN GO AND CHOOSE "NEW GAME" IT WILL GENERATE THE EH TOWNS NOT THE RANDOM ONES IT SHOULD
+	if (_extended_heightmap != nullptr) {
+		town_layer = static_cast<TownLayer*>(_extended_heightmap->layers[HLT_TOWN]);
+	}
+
 	uint current_number = 0;
 	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_towns : 0;
-	uint total = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : ScaleByMapSize(_num_initial_towns[difficulty] + (Random() & 7));
+	uint total;
+	if (town_layer != nullptr) {
+		total = town_layer->towns.size();
+	} else if (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) {
+		total = _settings_game.game_creation.custom_town_number;
+	} else {
+		total = ScaleByMapSize(_num_initial_towns[difficulty] + (Random() & 7));
+	}
 	total = min(TownPool::MAX_SIZE, total);
 	uint32 townnameparts;
 	TownNames town_names;
 
 	SetGeneratingWorldProgress(GWP_TOWN, total);
 
-	/* First attempt will be made at creating the suggested number of towns.
-	 * Note that this is really a suggested value, not a required one.
-	 * We would not like the system to lock up just because the user wanted 100 cities on a 64*64 map, would we? */
-	do {
-		bool city = (_settings_game.economy.larger_towns != 0 && Chance16(1, _settings_game.economy.larger_towns));
-		IncreaseGeneratingWorldProgress(GWP_TOWN);
-		/* Get a unique name for the town. */
-		if (!GenerateTownName(&townnameparts, &town_names)) continue;
-		/* try 20 times to create a random-sized town for the first loop. */
-		if (CreateRandomTown(20, townnameparts, TSZ_RANDOM, city, layout) != nullptr) current_number++; // If creation was successful, raise a flag.
-	} while (--total);
+	extern ExtendedHeightmap *_extended_heightmap; // SFTODO MOVE IF KEEP
 
-	town_names.clear();
+	if (town_layer != nullptr) {
+		for (const auto &town : town_layer->towns) {
+			IncreaseGeneratingWorldProgress(GWP_TOWN);
+			std::cout << "SFTODOPP1" << std::endl;
+			if (!Town::CanAllocateItem()) {
+				assert(false); // SFTODO PROPER ERROR
+				return false;
+			}
+			// SFTODO: NEED TO SCALE X/Y AND ALSO FLIP THEM IF WE'RE IN CLOCKWISE ORIENTATION - I ALSO THINK WE NEED TO ADJUST FOR OPENTTD'S ORIGIN BEING IN A DIFFERENT CORNER THAN OUR LOWER-LEFT-OF-PNG ORIGIN REGARDLESS OF CLOCKWISE/COUNTERCLOCKWISE
+			// EHTODO: It might be nice to have an option "posfuzz=n" item support in the town list, and use the circular tile walk function to try all locations within n units of the specified position if we can't create exactly where requested.
+			Town *t = CreateSpecificTown(TileXY(town.posx, town.posy), town.name, 0, TSZ_SMALL /* SFTODOSIZE */, false /* SFTODOCITY */, TL_RANDOM /* SFTODO */);
+			std::cout << "SFTODOPP2" << std::endl;
+			if (t == nullptr) {
+				std::cout << "FAILED TO CREATE TOWN:" << town.name << std::endl; // SFTODO!
+				// SFTODO!? PERHAPS CREATE AN "XXX:TOWNNAME" SIGN?
+			}
+		}
+
+		if (Town::GetNumItems() == 0) {
+			assert(false); // SFTODO PROPER ERROR
+			return false;
+		}
+
+		/* Build the town k-d tree again to make sure it's well balanced */
+		RebuildTownKdtree();
+
+		return true;
+	}
+
+	if (town_layer == nullptr) {
+		/* First attempt will be made at creating the suggested number of towns.
+		 * Note that this is really a suggested value, not a required one.
+		 * We would not like the system to lock up just because the user wanted 100 cities on a 64*64 map, would we? */
+		do {
+			bool city = (_settings_game.economy.larger_towns != 0 && Chance16(1, _settings_game.economy.larger_towns));
+			IncreaseGeneratingWorldProgress(GWP_TOWN);
+			/* Get a unique name for the town. */
+			if (!GenerateTownName(&townnameparts, &town_names)) continue;
+			/* try 20 times to create a random-sized town for the first loop. */
+			if (CreateRandomTown(20, townnameparts, TSZ_RANDOM, city, layout) != nullptr) current_number++; // If creation was successful, raise a flag.
+		} while (--total);
+
+		town_names.clear();
+	}
 
 	/* Build the town k-d tree again to make sure it's well balanced */
 	RebuildTownKdtree();

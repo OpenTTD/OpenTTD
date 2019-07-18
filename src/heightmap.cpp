@@ -618,7 +618,9 @@ void ExtendedHeightmap::CreateMap()
 	this->ApplyLayers();
 }
 
+#if 0 // SFTODO DELETE
 extern CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text); // SFTODO HACK!
+#endif
 
 /**
  * Applies all layers to the current map, in the right order.
@@ -633,6 +635,7 @@ void ExtendedHeightmap::ApplyLayers()
 
 	// SFTODO: WE SHOULD PROBABLY ADD AN 'EXTENDED HEIGHT MAP' OPTION TO THE TOWN GENERATION IN THE DIALOG, AND SELECT THAT BY DEFAULT IF WE HAVE A TOWNS LAYER, AND IF THAT IS IN FORCE WE SHOULD INHIBIT AUTO-GENERATION OF TOWNS - THIS WILL ALLOW THE USER TO SUPPLEMENT THE TOWN LAYER IF THEY REALLY WANT, BUT IT WON'T HAPPEN BY DEFAULT
 
+#if 0 // SFTODO DELETE
 	const TownLayer *town_layer = static_cast<TownLayer*>(this->layers[HLT_TOWN]);
 	if (town_layer) {
 		for (const auto &town : town_layer->towns) {
@@ -647,6 +650,7 @@ void ExtendedHeightmap::ApplyLayers()
 			}
 		}
 	}
+#endif
 }
 
 /**

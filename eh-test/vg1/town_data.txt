@@ -8,8 +8,8 @@ layout=3x3
 
 [town]
 name=Upper Righton
-posx=250
-posy=250
+posx=240
+posy=240
 building=5
 city=false
 layout=2x2
