@@ -2866,6 +2866,17 @@ STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Change m
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Change snow line height
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Change starting year
 
+STR_MAPGEN_HEIGHTMAP_ERROR_OPENING_EHM				:Error opening extended heightmap
+STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_METADATA			:Error parsing extended heightmap metadata
+STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_EXTENDED_HEIGHTMAP_GROUP	:"extended_heightmap" group not found in extended heightmap metadata
+STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_FORMAT_VERSION		:"format_version" not found in extended heightmap metadata
+STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_VERSION			:Extended heightmap metadata is in an unsupported format
+STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_ROTATION			:Invalid rotation in extended heightmap metadata
+STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_CLIMATE			:Invalid climate in extended heightmap metadata
+STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_HEIGHT_LAYER_GROUP		:"height_layer" group not found in extended heightmap
+STR_MAPGEN_HEIGHTMAP_ERROR_NO_HEIGHT_LAYER_EXTENSION		:No extension present on height layer filename
+STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_HEIGHT_LAYER_EXTENSION	:Unsupported height layer type
+
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenario Type
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Flat land

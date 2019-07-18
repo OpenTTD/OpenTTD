@@ -317,6 +317,10 @@ static bool ReadHeightMap(DetailedFileType dft, const char *filename, uint *x, u
 
 // SFTODO: MOVE/COMMENT
 struct MetadataIniFile : IniLoadFile {
+	bool error;
+
+	MetadataIniFile() : error(false) {}
+
         virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size) {
 		// SFTODO: SHOULD I BE PASSING "b" FLAG?? IniFile::OpenFile() DOES, SO BLINDLY COPYING THIS FOR NOW...
 		return FioFOpenFile(filename, "rb", subdir, size);
@@ -324,8 +328,9 @@ struct MetadataIniFile : IniLoadFile {
 
 	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post)
         {
+		// EHTODO: Is there any way I can include pre/buffer/post in the error message?
 		std::cout << "SFTODOERROR: " << pre << buffer << post << std::endl;
-                assert(false); // SFTODO!
+		error = true;
         }
 };
 
@@ -344,16 +349,31 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	std::cout << "SFTODOX2: " << file_name << std::endl;
 	// SFTODO: I am probably using TarScanner completely wrong, passing BASE_DIR is essentially arbitrary (NO_DIRECTORY is not a valid option as it's after NUM_SUBDIRS)
 	// SFTODO: OK, TRYING HEIGHTMAP_DIR TO MAKE READHEIGHTMAP WORK
-	bool ok = ts.AddFile(HEIGHTMAP_DIR, file_path);
-	assert(ok); // SFTODO: NEED TO CHECK RETURN VALUE PROPERLY
+	if (!ts.AddFile(HEIGHTMAP_DIR, file_path)) {
+		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_OPENING_EHM, INVALID_STRING_ID, WL_ERROR);
+		return;
+	}
 	MetadataIniFile metadata;
 	// SFTODO: I am probably using TarScanner completely wrong, having to pass "./" at start of filename seems a bit iffy
 	metadata.LoadFromDisk("./metadata.txt", HEIGHTMAP_DIR);
+	if (metadata.error) {
+		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_METADATA, INVALID_STRING_ID, WL_ERROR);
+		return;
+	}
 	IniGroup *extended_heightmap_group = metadata.GetGroup("extended_heightmap", 0, false);
-	assert(extended_heightmap_group != nullptr); // SFTODO!
+	if (extended_heightmap_group == nullptr) {
+		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_EXTENDED_HEIGHTMAP_GROUP, INVALID_STRING_ID, WL_ERROR);
+		return;
+	}
 	IniItem *format_version = extended_heightmap_group->GetItem("format_version", false);
-	assert(format_version != nullptr); // SFTODO!
-	assert(strcmp(format_version->value, "1") == 0); // SFTODO!
+	if (format_version == nullptr) {
+		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_FORMAT_VERSION, INVALID_STRING_ID, WL_ERROR);
+		return;
+	}
+	if (strcmp(format_version->value, "1") != 0) {
+		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_VERSION, INVALID_STRING_ID, WL_ERROR);
+		return;
+	}
 
 	// SFTODO: SHOULD THIS BE "rotation" NOT "orientation"? WIKI HAS BOTH IN VARIOUS PLACES...
 	IniItem *rotation = extended_heightmap_group->GetItem("orientation", false);
@@ -369,7 +389,8 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		} else if (strcmp(rotation->value, "cw") == 0) {
 			this->rotation = HM_CLOCKWISE;
 		} else {
-			assert(false); // SFTODO!
+			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_ROTATION, INVALID_STRING_ID, WL_ERROR);
+			return;
 		}
 	}
 	std::cout << "SFTODOQ9: " << static_cast<int>(this->rotation) << std::endl;
@@ -388,7 +409,8 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		} else if (strcmp(climate->value, "toyland") == 0) {
 			this->landscape = LT_TOYLAND;
 		} else {
-			assert(false); // SFTODO!
+			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_CLIMATE, INVALID_STRING_ID, WL_ERROR);
+			return;
 		}
 	}
 
@@ -405,7 +427,10 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 
 	/* Try to load the heightmap layer. */
 	IniGroup *height_layer_group = metadata.GetGroup("height_layer", 0, false);
-	assert(height_layer_group != nullptr); // SFTODO!
+	if (height_layer_group == nullptr) {
+		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_HEIGHT_LAYER_GROUP, INVALID_STRING_ID, WL_ERROR);
+		return;
+	}
 	// EHTODO: It's probably not a big deal, but do we need to sanitise heightmap_filename so a malicious .ehm file can't
 	// access random files on the filesystem?
 	IniItem *heightmap_filename = height_layer_group->GetItem("file", false);
@@ -414,7 +439,10 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	height_layer->type = HLT_HEIGHTMAP;
 	height_layer->information = NULL;
 	char *ext = strrchr(heightmap_filename->value, '.');
-	assert(ext != nullptr); // SFTODO!
+	if (ext == nullptr) {
+		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_NO_HEIGHT_LAYER_EXTENSION, INVALID_STRING_ID, WL_ERROR);
+		return;
+	}
 	// SFTODO: CASE SENSITIVITY
 	DetailedFileType heightmap_dft;
 	if (strcmp(ext, ".png") == 0) {
@@ -422,18 +450,19 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	} else if (strcmp(ext, ".bmp") == 0) {
 		heightmap_dft = DFT_HEIGHTMAP_BMP;
 	} else {
-		assert(false); // SFTODO
+		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_HEIGHT_LAYER_EXTENSION, INVALID_STRING_ID, WL_ERROR);
+		return;
 	}
 	// SFTODO: TEMP HACK BECAUSE I'M PROBBLY MISUSING TARSCANNER
 	char *heightmap_filename2 = str_fmt("./%s", heightmap_filename->value);
-	if (!ReadHeightMap(heightmap_dft, heightmap_filename2, &height_layer->width, &height_layer->height, &height_layer->information)) {
-		free(heightmap_filename2);
+	bool ok = ReadHeightMap(heightmap_dft, heightmap_filename2, &height_layer->width, &height_layer->height, &height_layer->information);
+	free(heightmap_filename2);
+	if (!ok) {
+		// ReadHeightMap() will have displayed an error itself
 		free(height_layer->information);
 		delete height_layer;
-		assert(false); // SFTODO!
 		return;
 	}
-	free(heightmap_filename2);
 
 	IniItem *min_desired_height = height_layer_group->GetItem("min_desired_height", false);
 	if (min_desired_height == nullptr) {
@@ -489,8 +518,6 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	}
 	// SFTODO: DELETE this->rotation = HM_CLOCKWISE /* SFTODO TAKE FROM METADATA */; // SFTODO PROB OUTDATED COMMENT: placeholder; _settings_newgame.game_creation.heightmap_rotation is not set based on dialog yet
 	this->freeform_edges = true; // EHTODO: comment on struct definition says this is always true except for legacy heightmaps - OK?
-
-	//assert(false); // SFTODO!
 
 	/* Now we've loaded everything, populate the layers in this object. SFTODO: BEST APPROACH? */
 	this->layers[HLT_HEIGHTMAP] = height_layer;
