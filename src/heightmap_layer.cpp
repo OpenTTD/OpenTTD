@@ -60,9 +60,21 @@ TownLayer::TownLayer(uint width, uint height, const char *file)
 			return;
 		}
 		std::cout << "SFTODOA1 " << name->value << std::endl; // SFTODO TEMP
-	}
 
-	assert(false); // SFTODO!
+		IniItem *posx = town_group->GetItem("posx", false);
+		if (posx == nullptr) {
+			assert(false); // SFTODO PROPER ERROR HANDLING
+			return;
+		}
+		IniItem *posy = town_group->GetItem("posy", false);
+		if (posy == nullptr) {
+			assert(false); // SFTODO PROPER ERROR HANDLING
+			return;
+		}
+
+		// SFTODO: USE OF ATOI() MEANS NO ERROR CHECKING
+		this->towns.emplace_back(name->value, atoi(posx->value), atoi(posy->value));
+	}
 
 	this->valid = true; // SFTODO: MAKE SURE THIS IS LAST LINE OF CTOR!
 }
