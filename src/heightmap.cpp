@@ -519,8 +519,13 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	// SFTODO: DELETE this->rotation = HM_CLOCKWISE /* SFTODO TAKE FROM METADATA */; // SFTODO PROB OUTDATED COMMENT: placeholder; _settings_newgame.game_creation.heightmap_rotation is not set based on dialog yet
 	this->freeform_edges = true; // EHTODO: comment on struct definition says this is always true except for legacy heightmaps - OK?
 
+	// SFTODO: NO LATER THAN THIS POINT, I SHOULD DO OTHER VALIDATION (EG MIN HEIGHT < MAX HEIGHT AND STUFF LIKE THAT)
+
 	/* Now we've loaded everything, populate the layers in this object. SFTODO: BEST APPROACH? */
 	this->layers[HLT_HEIGHTMAP] = height_layer;
+
+	assert(IsValid());
+
 }
 
 /**
