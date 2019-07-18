@@ -23,6 +23,8 @@
 #include "fios.h"
 #include "fileio_func.h"
 #include "ini_type.h" // SFTODO!?
+#include "command_func.h" // SFTODO!?
+#include "strings_func.h" // SFTODO!?
 
 #include "table/strings.h"
 
@@ -616,6 +618,8 @@ void ExtendedHeightmap::CreateMap()
 	this->ApplyLayers();
 }
 
+extern CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text); // SFTODO HACK!
+
 /**
  * Applies all layers to the current map, in the right order.
  */
@@ -626,6 +630,23 @@ void ExtendedHeightmap::ApplyLayers()
 
 	/* Create the terrain with the height specified by the layer. */
 	this->ApplyHeightLayer(height_layer);
+
+	// SFTODO: WE SHOULD PROBABLY ADD AN 'EXTENDED HEIGHT MAP' OPTION TO THE TOWN GENERATION IN THE DIALOG, AND SELECT THAT BY DEFAULT IF WE HAVE A TOWNS LAYER, AND IF THAT IS IN FORCE WE SHOULD INHIBIT AUTO-GENERATION OF TOWNS - THIS WILL ALLOW THE USER TO SUPPLEMENT THE TOWN LAYER IF THEY REALLY WANT, BUT IT WON'T HAPPEN BY DEFAULT
+
+	const TownLayer *town_layer = static_cast<TownLayer*>(this->layers[HLT_TOWN]);
+	if (town_layer) {
+		for (const auto &town : town_layer->towns) {
+			// SFTODO: NEED TO SCALE X/Y AND ALSO FLIP THEM IF WE'RE IN CLOCKWISE ORIENTATION
+			uint32 p1 = TSZ_SMALL; // SFTODO: SET THESE FLAGS APPROPRIATELY
+			CommandCost result = CmdFoundTown(TileXY(town.posx, town.posy), DC_EXEC, p1, 0, town.name.c_str());
+			if (result.Failed()) {
+				char buffer[256];
+				GetString(buffer, result.GetErrorMessage(), lastof(buffer));
+				std::cout << "TOWN:" << town.name << ": " << buffer << std::endl; // SFTODO!
+				// SFTODO!? PERHAPS CREATE AN "XXX:TOWNNAME" SIGN?
+			}
+		}
+	}
 }
 
 /**
