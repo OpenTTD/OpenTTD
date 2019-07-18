@@ -525,7 +525,6 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	this->layers[HLT_HEIGHTMAP] = height_layer;
 
 	assert(IsValid());
-
 }
 
 /**
