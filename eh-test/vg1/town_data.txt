@@ -2,7 +2,7 @@
 name=Central City
 posx=128
 posy=128
-buildings=32
+size=large
 city=true
 layout=3x3
 
@@ -10,6 +10,29 @@ layout=3x3
 name=Upper Righton
 posx=240
 posy=240
-building=5
+size=small
 city=false
 layout=2x2
+
+[town]
+name=Topleft Town
+posx=16
+posy=240
+size=medium
+city=false
+layout=original
+
+[town]
+name=Lower Leftby
+posx=16
+posy=16
+size=large
+layout=better
+
+[town]
+name=Bottomrightsville
+posx=240
+posy=16
+size=small
+city=true
+layout=random

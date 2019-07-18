@@ -66,14 +66,71 @@ TownLayer::TownLayer(uint width, uint height, const char *file)
 			assert(false); // SFTODO PROPER ERROR HANDLING
 			return;
 		}
+
 		IniItem *posy = town_group->GetItem("posy", false);
 		if (posy == nullptr) {
 			assert(false); // SFTODO PROPER ERROR HANDLING
 			return;
 		}
 
+		IniItem *size_item = town_group->GetItem("size", false);
+		if (size_item == nullptr) {
+			assert(false); // SFTODO PROPER ERROR HANDLING
+			return;
+		}
+		// SFTODO: CASE SENSITIVITY
+		TownSize size;
+		if (strcmp(size_item->value, "small") == 0) {
+			size = TSZ_SMALL;
+		} else if (strcmp(size_item->value, "medium") == 0) {
+			size = TSZ_MEDIUM;
+		} else if (strcmp(size_item->value, "large") == 0) {
+			size = TSZ_LARGE;
+		} else if (strcmp(size_item->value, "random") == 0) {
+			size = TSZ_RANDOM;
+		} else {
+			assert(false); // SFTODO PROPER ERROR HANDLING
+			return;
+		}
+
+		bool is_city = false;
+		IniItem *city = town_group->GetItem("city", false);
+		if (city != nullptr) {
+			// SFTODO: CASE SENSITIVITY?
+			if (strcmp(city->value, "false") == 0) {
+				is_city = false;
+			} else if (strcmp(city->value, "true") == 0) {
+				is_city = true;
+			} else {
+				assert(false); // SFTODO PROPER ERROR HANDLING
+				return;
+			}
+		}
+
+		IniItem *layout_item = town_group->GetItem("layout", false);
+		if (layout_item == nullptr) {
+			assert(false); // SFTODO PROPER ERROR HANDLING
+			return;
+		}
+		TownLayout layout;
+		// SFTODO: CASE SENSITIVITY
+		if (strcmp(layout_item->value, "original") == 0) {
+			layout = TL_ORIGINAL;
+		} else if (strcmp(layout_item->value, "better") == 0) {
+			layout = TL_BETTER_ROADS;
+		} else if (strcmp(layout_item->value, "2x2") == 0) {
+			layout = TL_2X2_GRID;
+		} else if (strcmp(layout_item->value, "3x3") == 0) {
+			layout = TL_3X3_GRID;
+		} else if (strcmp(layout_item->value, "random") == 0) {
+			layout = TL_RANDOM;
+		} else {
+			assert(false); // SFTODO PROPER ERROR HANDLING
+			return;
+		}
+
 		// SFTODO: USE OF ATOI() MEANS NO ERROR CHECKING
-		this->towns.emplace_back(name->value, atoi(posx->value), atoi(posy->value));
+		this->towns.emplace_back(name->value, atoi(posx->value), atoi(posy->value), size, is_city, layout);
 	}
 
 	this->valid = true; // SFTODO: MAKE SURE THIS IS LAST LINE OF CTOR!
