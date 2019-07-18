@@ -345,6 +345,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	strecpy(this->filename, file_name, lastof(this->filename));
 
 	TarScanner ts;
+	ts.Reset(HEIGHTMAP_DIR); // SFTODO: COMPLETE HACK
 	std::cout << "SFTODOX1: " << file_path << std::endl;
 	std::cout << "SFTODOX2: " << file_name << std::endl;
 	// SFTODO: I am probably using TarScanner completely wrong, passing BASE_DIR is essentially arbitrary (NO_DIRECTORY is not a valid option as it's after NUM_SUBDIRS)

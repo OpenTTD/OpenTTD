@@ -663,6 +663,12 @@ uint TarScanner::DoScan(Subdirectory sd)
 	return num;
 }
 
+void TarScanner::Reset(Subdirectory sd)
+{
+	_tar_filelist[sd].clear();
+	_tar_list[sd].clear();
+}
+
 /**
  * Add a single file to the scanned files of a tar, circumventing the scanning code.
  * @param sd       The sub directory the file is in.
