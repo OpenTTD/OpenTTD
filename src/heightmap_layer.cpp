@@ -53,6 +53,15 @@ TownLayer::TownLayer(uint width, uint height, const char *file)
 		return;
 	}
 
+	for (IniGroup *town_group = ini.group; town_group != nullptr; town_group = town_group->next) {
+		IniItem *name = town_group->GetItem("name", false);
+		if (name == nullptr) {
+			assert(false); // SFTODO PROPER ERROR HANDLING
+			return;
+		}
+		std::cout << "SFTODOA1 " << name->value << std::endl; // SFTODO TEMP
+	}
+
 	assert(false); // SFTODO!
 
 	this->valid = true; // SFTODO: MAKE SURE THIS IS LAST LINE OF CTOR!

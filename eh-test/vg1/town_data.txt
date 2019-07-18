@@ -5,3 +5,11 @@ posy=128
 buildings=32
 city=true
 layout=3x3
+
+[town]
+name=Upper Righton
+posx=250
+poxy=250
+building=5
+city=false
+layout=2x2
