@@ -18,6 +18,8 @@
 enum HeightmapLayerType {
 	/** Height layers are 8 bit grayscale images that describe the height of each point of the map as a number in the [0, 255] interval. */
 	HLT_HEIGHTMAP,
+	/** Town layers are a textual representation of the towns on the map. */
+	HLT_TOWN
 };
 
 #endif /* HEIGHTMAP_LAYER_TYPE_H */

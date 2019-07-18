@@ -11,6 +11,7 @@
 
 #include <iostream> // SFTODO TEMP
 #include "stdafx.h"
+#include <memory> // SFTODO?
 #include "heightmap_type.h"
 #include "heightmap_base.h"
 #include "clear_map.h"
@@ -343,6 +344,7 @@ struct MetadataIniFile : IniLoadFile {
 void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 {
 	strecpy(this->filename, file_name, lastof(this->filename));
+	this->freeform_edges = true; // EHTODO: comment on struct definition says this is always true except for legacy heightmaps - OK?
 
 	TarScanner ts;
 	ts.Reset(HEIGHTMAP_DIR); // SFTODO: COMPLETE HACK
@@ -436,9 +438,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	// access random files on the filesystem?
 	IniItem *heightmap_filename = height_layer_group->GetItem("file", false);
 	assert(heightmap_filename != nullptr); // SFTODO!
-	HeightmapLayer *height_layer = new HeightmapLayer();
-	height_layer->type = HLT_HEIGHTMAP;
-	height_layer->information = NULL;
+	std::auto_ptr<HeightmapLayer> height_layer(new HeightmapLayer(HLT_HEIGHTMAP));
 	char *ext = strrchr(heightmap_filename->value, '.');
 	if (ext == nullptr) {
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_NO_HEIGHT_LAYER_EXTENSION, INVALID_STRING_ID, WL_ERROR);
@@ -460,8 +460,6 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	free(heightmap_filename2);
 	if (!ok) {
 		// ReadHeightMap() will have displayed an error itself
-		free(height_layer->information);
-		delete height_layer;
 		return;
 	}
 
@@ -517,13 +515,42 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		this->width = (metadata_width != 0) ? metadata_width : height_layer->width;
 		this->height = (metadata_height != 0) ? metadata_height : height_layer->height;
 	}
-	// SFTODO: DELETE this->rotation = HM_CLOCKWISE /* SFTODO TAKE FROM METADATA */; // SFTODO PROB OUTDATED COMMENT: placeholder; _settings_newgame.game_creation.heightmap_rotation is not set based on dialog yet
-	this->freeform_edges = true; // EHTODO: comment on struct definition says this is always true except for legacy heightmaps - OK?
+
+	/* Try to load the town layer. */
+	std::auto_ptr<TownLayer> town_layer;
+	IniGroup *town_layer_group = metadata.GetGroup("town_layer", 0, false);
+	if (town_layer_group != nullptr) {
+		IniItem *town_layer_width = town_layer_group->GetItem("width", false);
+		if (town_layer_width == nullptr) {
+			assert(false); // SFTODO PROPER ERROR
+		}
+		IniItem *town_layer_height = town_layer_group->GetItem("height", false);
+		if (town_layer_height == nullptr) {
+			assert(false); // SFTODO PROPER ERROR
+		}
+		IniItem *town_layer_file = town_layer_group->GetItem("file", false);
+		if (town_layer_file == nullptr) {
+			assert(false); // SFTODO PROPER ERROR
+		}
+
+		// SFTODO: NO ERROR CHECKING HERE DUE TO USE OF ATOI()
+		town_layer = std::auto_ptr<TownLayer>(new TownLayer(atoi(town_layer_width->value), atoi(town_layer_height->value), town_layer_file->value));
+		if (!town_layer->valid) {
+			// TownLayer()'s constructor will have reported the error
+			return;
+		}
+	}
+
+
+
 
 	// SFTODO: NO LATER THAN THIS POINT, I SHOULD DO OTHER VALIDATION (EG MIN HEIGHT < MAX HEIGHT AND STUFF LIKE THAT)
 
 	/* Now we've loaded everything, populate the layers in this object. SFTODO: BEST APPROACH? */
-	this->layers[HLT_HEIGHTMAP] = height_layer;
+	this->layers[HLT_HEIGHTMAP] = height_layer.release();
+	if (town_layer.get() != nullptr) {
+		this->layers[HLT_TOWN] = town_layer.release();
+	}
 
 	assert(IsValid());
 }
@@ -537,9 +564,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 void ExtendedHeightmap::LoadLegacyHeightmap(DetailedFileType dft, char *file_path, char *file_name)
 {
 	/* Try to load the legacy heightmap first. */
-	HeightmapLayer *height_layer = new HeightmapLayer();
-	height_layer->type = HLT_HEIGHTMAP;
-	height_layer->information = NULL;
+	HeightmapLayer *height_layer = new HeightmapLayer(HLT_HEIGHTMAP);
 
 	if (!ReadHeightMap(dft, file_path, &height_layer->width, &height_layer->height, &height_layer->information)) {
 		free(height_layer->information);

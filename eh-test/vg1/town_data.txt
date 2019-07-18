@@ -1,0 +1,7 @@
+[town]
+name=Central City
+posx=128
+posy=128
+buildings=32
+city=true
+layout=3x3

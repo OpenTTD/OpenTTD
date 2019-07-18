@@ -15,3 +15,15 @@
 HeightmapLayer::~HeightmapLayer() {
 	free(this->information);
 }
+
+// SFTODO: THIS DERIVED CLASS SHOULD PROBABLY HAVE ITS OWN FILE
+
+TownLayer::TownLayer(uint width, uint height, const char *file)
+: HeightmapLayer(HLT_TOWN, width, height), valid(false)
+{
+	this->valid = true; // SFTODO: MAKE SURE THIS IS LAST LINE OF CTOR!
+}
+
+TownLayer::~TownLayer()
+{
+}

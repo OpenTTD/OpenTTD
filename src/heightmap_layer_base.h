@@ -17,12 +17,22 @@
 
 /** This class is used to represent each one of the layers that can compose an extended heightmap. */
 struct HeightmapLayer {
+	HeightmapLayerType type; ///< Type of the layer.
 	uint width;              ///< Width of the layer.
 	uint height;             ///< Height of the layer.
-	HeightmapLayerType type; ///< Type of the layer.
 	byte *information;       ///< Information contained in the layer.
 
-	~HeightmapLayer();
+	HeightmapLayer(HeightmapLayerType type_, uint width_ = 0, uint height_ = 0, byte *information_ = nullptr)
+	: type(type_), width(width_), height(height_), information(information_) {}
+
+	virtual ~HeightmapLayer();
+};
+
+// SFTODO: This derived class should probably have its own file
+struct TownLayer : HeightmapLayer {
+	bool valid;		///< true iff constructor succeeded
+	TownLayer(uint width, uint height, const char *file);
+	~TownLayer();
 };
 
 #endif /* HEIGHTMAP_LAYER_BASE_H */
