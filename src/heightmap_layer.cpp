@@ -9,18 +9,52 @@
 
 /** @file heightmap_layer.cpp Base implementation of heightmap layers. */
 
+#include <iostream> // SFTODO TEMP
 #include "stdafx.h"
 #include "heightmap_layer_base.h"
+#include "ini_type.h" // SFTODO: MOVE THIS IF/WHEN TOWNINIFILE MOVES INTO ANOTHER FILE
+#include "fileio_func.h" // SFTODO: MOVE THIS IF/WHEN TOWNINIFILE MOVES INTO ANOTHER FILE
+#include "string_func.h" // SFTODO: MOVE THIS IF/WHEN TOWNINIFILE MOVES INTO ANOTHER FILE
 
 HeightmapLayer::~HeightmapLayer() {
 	free(this->information);
 }
 
-// SFTODO: THIS DERIVED CLASS SHOULD PROBABLY HAVE ITS OWN FILE
+// SFTODO: THIS SHOULD PROBABLY LIVE IN A SEPARATE FILE, OR AT LEAST IN THE CPP FILE CONTAINING TOWNLAYER
+struct TownIniFile : IniLoadFile {
+	bool error;
+
+	TownIniFile() : error(false) {}
+
+        virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size) {
+		// SFTODO: SHOULD I BE PASSING "b" FLAG?? IniFile::OpenFile() DOES, SO BLINDLY COPYING THIS FOR NOW...
+		return FioFOpenFile(filename, "rb", subdir, size);
+	}
+
+	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post)
+        {
+		// EHTODO: Is there any way I can include pre/buffer/post in the error message?
+		std::cout << "SFTODOERROR: " << pre << buffer << post << std::endl;
+		error = true;
+        }
+};
+
+// SFTODO: DERIVED CLASS TOWNLAYER SHOULD PROBABLY HAVE ITS OWN FILE
 
 TownLayer::TownLayer(uint width, uint height, const char *file)
 : HeightmapLayer(HLT_TOWN, width, height), valid(false)
 {
+	TownIniFile ini;
+	// SFTODO: I am probably using TarScanner completely wrong, having to pass "./" at start of filename seems a bit iffy
+	char *file2 = str_fmt("./%s", file);
+	ini.LoadFromDisk(file2, HEIGHTMAP_DIR);
+	if (ini.error) {
+		assert(false); // SFTODO PROPER ERROR HANDLING
+		return;
+	}
+
+	assert(false); // SFTODO!
+
 	this->valid = true; // SFTODO: MAKE SURE THIS IS LAST LINE OF CTOR!
 }
 
