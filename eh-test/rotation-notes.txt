@@ -1,0 +1,7 @@
+Playing around with vanilla OpenTTD 1.9.1, using horizontal-gradient-valley-512x256.png:
+Map size: 256x512 (default) Rotation: Clockwise (default) -> Size: 256x512, lowest corner of map with query tool is 254x510, heightmap fills map clockwise
+Map size: 256x512 (default) Rotation: Counter clockwise (changed) -> Size: 512x256, lowest corner with query tool is 254x510, heightmap is a thin strip in centre counter-clockwise
+Map size: 256x512 (default) Rotation: Counter clockwise (default) -> identical, suggesting "changed" vs "default" is unimportant
+Map size: 512x256 (changed) Rotation: Counter clockwise (default) -> Size: 512x256, lowest corner with query tool is 510x254, heightmap fills map counter-clockwise
+
+"Size:" (the read-only bit) seems to be the heightmap dimensions, swapped round if the rotation is "Clockwise"

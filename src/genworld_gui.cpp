@@ -303,9 +303,16 @@ static void StartGeneratingLandscapeFromExtendedHeightmap() {
 		_extended_heightmap_gui->width  = 1 << _settings_newgame.game_creation.map_x;
 		_extended_heightmap_gui->height = 1 << _settings_newgame.game_creation.map_y;
 	}
+	std::cout << "SFTODO: StartGeneratingLandscapeFromExtendedHeightmap EHM WIDTH " << _extended_heightmap_gui->width << " EHM HEIGHT " << _extended_heightmap_gui->height << std::endl;
+
+#if 0 // SFTODO: IT'S TOO EARLY - THE MAP SIZES HAVEN'T BEEN SET UP YET
+        /* Now the user has had a chance to adjust the parameters, transform the layers for rotation and scale. */
+	_extended_heightmap_gui->Transform();
+#endif
 
 	_extended_heightmap = _extended_heightmap_gui;
 	_extended_heightmap_gui = NULL;
+
 	StartGeneratingLandscape(GLWM_HEIGHTMAP);
 }
 
@@ -365,11 +372,14 @@ struct GenerateLandscapeWindow : public Window {
 			_settings_newgame.game_creation.heightmap_rotation = _extended_heightmap_gui->rotation;
 			// _settings_newgame.game_creation.landscape = _extended_heightmap_gui->SFTODO;
 			// SFTODO: SOMEWHERE WE SHOULD BE CHECKING IF _extended_heightmap_gui->{width,height} ARE BOTH POWERS OF 2 AND ERRORING IF NOT
+			std::cout << "SFTODO ABOUT TO INIT MAP X/Y IN GLW WIDTH " << _extended_heightmap_gui->width << " HEIGHT " << _extended_heightmap_gui->height << std::endl;
 			_settings_newgame.game_creation.map_x = FindLastBit(_extended_heightmap_gui->width);
 			_settings_newgame.game_creation.map_y = FindLastBit(_extended_heightmap_gui->height);
+#if 1 // SFTODO
 			if (_extended_heightmap_gui->rotation == HM_CLOCKWISE) {
 				std::swap(_settings_newgame.game_creation.map_x, _settings_newgame.game_creation.map_y);
 			}
+#endif
 			_settings_newgame.game_creation.landscape = _extended_heightmap_gui->landscape;
 			// SFTODO: OTHERS
 			// SFTODO: I NEED A NON-SQUARE TEST CASE TO HELP TEST ROTATION IS BEING HANDLED CORRECTLY ESP WRT X/Y DIMENSIONS
@@ -617,6 +627,7 @@ struct GenerateLandscapeWindow : public Window {
 						map_x = _extended_heightmap_gui->width;
 						map_y = _extended_heightmap_gui->height;
 					}
+					std::cout << "SFTODO: MAP X " << map_x << " MAP Y " << map_y << std::endl;
 
 					if (map_x * 2 < (1U << _settings_newgame.game_creation.map_x) ||
 						map_x / 2 > (1U << _settings_newgame.game_creation.map_x) ||

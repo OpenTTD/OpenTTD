@@ -385,7 +385,8 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	if (rotation == nullptr) {
 		// EHTODO: Because we take whatever happens to be the default, in practice an extended heightmap
 		// creator should always specify a rotation if they are also specifying an explicit height and/or
-		// width and the heightmap layer is non-square, otherwise the rotation may be sub-optimal.
+		// width and the heightmap layer is non-square, otherwise the rotation may be sub-optimal. It may
+		// simply be best to make this property mandatory.
 		this->rotation = static_cast<HeightmapRotation>(_settings_newgame.game_creation.heightmap_rotation);
 	} else {
 		// SFTODO: CASE SENSITIVITY!?
@@ -513,10 +514,14 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	} else {
 		// If the extended heightmap creator specified a height and/or width, they know best. This is why
 		// they should also specify a rotation if they are specifying height/width and have a non-square
-		// height layer.
+		// height layer. EHTODO: We should probably say you have to specify all of height+width+rotation or
+		// none of them. Or maybe we should say if you don't specify a rotation, this code will choose one
+		// for you rather than going with whatever happens to be the current default value (though if heightmap is square we can use whatever the default is).
 		this->width = (metadata_width != 0) ? metadata_width : height_layer->width;
 		this->height = (metadata_height != 0) ? metadata_height : height_layer->height;
 	}
+
+	std::cout << "SFTODO: AT THIS PROBABLY TOO EARLY POINT EHM WIDTH IS " << this->width << ", HEIGHT IS " << this->height << std::endl;
 
 	/* Try to load the town layer. */
 	std::auto_ptr<TownLayer> town_layer;
@@ -553,6 +558,18 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	if (town_layer.get() != nullptr) {
 		this->layers[HLT_TOWN] = town_layer.release();
 	}
+
+#if 0 // SFTODO: IT'S FAR TOO EARLY TO DO THIS - THE USER *HASN'T* HAD THE CHANCE YET
+	/* Now the user has had a chance to adjust the parameters, scale the layers. */
+	for (auto &layer : this->layers) {
+		if (!layer.second->Scale(this->rotation, this->width, this->height)) {
+			assert(false); // SFTODO PROPER ERROR
+			// Remove the height layer to make the extended heightmap invalid.
+			delete this->layers[HLT_HEIGHTMAP]; this->layers.Erase(HLT_HEIGHTMAP);
+			return;
+		}
+	}
+#endif
 
 	assert(IsValid());
 }
@@ -610,9 +627,13 @@ void ExtendedHeightmap::CreateMap()
 	/* The game map size must have been set up at this point, and the extended heightmap must be correctly initialized. */
 	assert((this->rotation == HM_COUNTER_CLOCKWISE && this->width == MapSizeX() && this->height == MapSizeY()) ||
 			(this->rotation == HM_CLOCKWISE && this->width == MapSizeY() && this->height == MapSizeX()));
+	std::cout << "SFTODO: MAP SIZES ARE NOW SET UP - PRESUMABLY COULDN'T TRUST THEM UP TO THIS POINT" << std::endl;
 
 	/* Apply general extended heightmap properties to the current map. */
 	_settings_game.construction.freeform_edges = this->freeform_edges;
+
+	/* Now the properties are final, transform the layers for rotation and scale. */
+        this->Transform();
 
 	/* Apply all layers. */
 	this->ApplyLayers();
@@ -776,16 +797,19 @@ bool ExtendedHeightmap::IsValid()
  * @param y bitmap y coordinate
  * @return TileIndex corresponding to bitmap pixel (x, y)
  */
+// SFTODO: This is probably only useful for the non-bitmap layers, in which case it should be renamed
+// SFTODO: THINK THIS FN SHOULD BE DELETED NOW
 TileIndex ExtendedHeightmap::TileForBitmapXY(uint x, uint y)
 {
+	std::cout << "SFTODOQA8 " << x << " " << y << " " << width << " " << height << std::endl;
+
 	assert(x < width);
 	assert(y < height);
 
-	std::cout << "SFTODOQA8 " << x << " " << y << std::endl;
 	if (this->rotation == HM_CLOCKWISE) {
 		std::swap(x, y);
 		// SFTODO: TEST THIS WITH NON-SQUARE ROTATIONS
-		y = height - y;
+		y = width - y;
 	}
 
 	// A 512x512 heightmap gives a 510x510 OpenTTD map; adjust for this.
@@ -800,4 +824,13 @@ TileIndex ExtendedHeightmap::TileForBitmapXY(uint x, uint y)
 	std::cout << "SFTODOQA9 " << x << " " << y << std::endl;
 
 	return TileXY(x, y);
+}
+
+// SFTODO: DOXYGEN COMMENT
+void ExtendedHeightmap::Transform()
+{
+	std::cout << "SFTODO ExtendedHeightmap::Transform rotation " << this->rotation << " width " << this->width << " height " << this->height << std::endl;
+	for (auto &layer : this->layers) {
+		layer.second->Transform(this->rotation, this->width, this->height);
+	}
 }

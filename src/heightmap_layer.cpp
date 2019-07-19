@@ -129,7 +129,9 @@ TownLayer::TownLayer(uint width, uint height, const char *file)
 			return;
 		}
 
-		// SFTODO: USE OF ATOI() MEANS NO ERROR CHECKING
+		// SFTODO: USE OF ATOI() MEANS NO ERROR CHECKING - EXCEPT THIS SUPER CRUDE BIT OF EXTRA
+		assert(atoi(posx->value) < width);
+		assert(atoi(posy->value) < height);
 		this->towns.emplace_back(name->value, atoi(posx->value), atoi(posy->value), size, is_city, layout);
 	}
 
@@ -138,4 +140,47 @@ TownLayer::TownLayer(uint width, uint height, const char *file)
 
 TownLayer::~TownLayer()
 {
+}
+
+// SFTODO: RENAME THIS "TRANSFORM"
+void TownLayer::Transform(HeightmapRotation rotation, uint target_width, uint target_height)
+{
+	std::cout << "SFTODO TownLayer::Transform rotation " << rotation << " target_width " << target_width << " this->width " << this->width << " target_height " << target_height << " this->height " << this->height << std::endl;
+#if 0 // SFTODO
+	if (rotation == HM_CLOCKWISE) {
+		std::swap(this->width, this->height);
+	}
+#endif
+#if 0 // SFTODO: MOVE INTO TOWN::SCALE
+		auto newx = this->y;
+		this->y = (this->width - 1) - this->x;
+		this->x = newx;
+	}
+#endif
+
+	int num_width = 1;
+	int num_height = 1;
+	int div_width = 1;
+	int div_height = 1;
+	if (this->width < target_width) {
+		num_width = target_width / this->width;
+	}
+	else if (this->width > target_width) {
+		div_width = this->width / target_width;
+	}
+	if (this->height < target_height) {
+		num_height = target_height / this->height;
+	}
+	else if (this->height > target_height) {
+		div_height = this->height / target_height;
+	}
+
+	this->width = target_width;
+	this->height = target_height;
+
+	std::cout << "SFTODOK1 " << num_width << " " << num_height << " " << div_width << " " << div_height << std::endl;
+	for (auto &town : towns) {
+		// SFTODO: THIS ALSO NEEDS TO TAKE INTO ACCOUNT THAT EG A 512X512 BITMAP GIVES A 510X510 MAP
+		town.Transform(rotation, this->width, num_width, num_height, div_width, div_height);
+	}
 }

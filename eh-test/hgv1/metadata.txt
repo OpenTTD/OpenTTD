@@ -5,3 +5,8 @@ climate=tropical
 
 [height_layer]
 file=horizontal-gradient-valley-512x256.png
+
+[town_layer]
+width=512
+height=256
+file=town_data.txt

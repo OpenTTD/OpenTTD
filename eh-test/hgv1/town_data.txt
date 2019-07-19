@@ -1,0 +1,38 @@
+[town]
+name=Central City
+posx=256
+posy=128
+size=large
+city=true
+layout=3x3
+
+[town]
+name=Upper Righton
+posx=480
+posy=240
+size=small
+city=false
+layout=2x2
+
+[town]
+name=Topleft Town
+posx=16
+posy=240
+size=medium
+city=false
+layout=original
+
+[town]
+name=Lower Leftby
+posx=16
+posy=16
+size=large
+layout=better
+
+[town]
+name=Bottomrightsville
+posx=480
+posy=16
+size=small
+city=true
+layout=random

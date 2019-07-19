@@ -51,6 +51,7 @@ struct ExtendedHeightmap {
 	/* Other functions. */
 	bool IsValid();
 	TileIndex TileForBitmapXY(uint x, uint y);
+	void Transform();
 };
 
 #endif /* HEIGHTMAP_BASE_H */
