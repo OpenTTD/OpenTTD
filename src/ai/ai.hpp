@@ -26,13 +26,12 @@ public:
 	/**
 	 * The default months AIs start after each other.
 	 */
-	enum StartNext {
-		START_NEXT_EASY   = DAYS_IN_YEAR * 2,
-		START_NEXT_MEDIUM = DAYS_IN_YEAR,
-		START_NEXT_HARD   = DAYS_IN_YEAR / 2,
-		START_NEXT_MIN    = 0,
-		START_NEXT_MAX    = 3600,
-		START_NEXT_DEVIATION = 60,
+	enum StartDelay {
+		START_DELAY           = DAYS_IN_YEAR * 2,
+		START_DELAY_MIN       = 0,
+		START_DELAY_MAX       = 3600,
+		START_DELAY_DEVIATION = 60,
+		START_DELAY_STEP_SIZE = 30
 	};
 
 	/**

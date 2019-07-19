@@ -329,6 +329,7 @@ struct ConstructionSettings {
 /** Settings related to the AI. */
 struct AISettings {
 	bool   ai_in_multiplayer;                ///< so we allow AIs in multiplayer
+	uint16 ai_start_delay;                   ///< days AIs start after each other
 	bool   ai_disable_veh_train;             ///< disable types for AI
 	bool   ai_disable_veh_roadveh;           ///< disable types for AI
 	bool   ai_disable_veh_aircraft;          ///< disable types for AI

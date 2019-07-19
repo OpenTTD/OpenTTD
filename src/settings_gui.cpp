@@ -1760,6 +1760,7 @@ static SettingsContainer &GetSettingsTree()
 				npc->Add(new SettingEntry("script.script_max_memory_megabytes"));
 				npc->Add(new SettingEntry("difficulty.competitor_speed"));
 				npc->Add(new SettingEntry("ai.ai_in_multiplayer"));
+				npc->Add(new SettingEntry("ai.ai_start_delay"));
 				npc->Add(new SettingEntry("ai.ai_disable_veh_train"));
 				npc->Add(new SettingEntry("ai.ai_disable_veh_roadveh"));
 				npc->Add(new SettingEntry("ai.ai_disable_veh_aircraft"));
