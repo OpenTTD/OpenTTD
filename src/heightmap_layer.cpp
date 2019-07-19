@@ -12,16 +12,15 @@
 #include <iostream> // SFTODO TEMP
 #include "stdafx.h"
 #include "heightmap_layer_base.h"
-#include "ini_type.h" // SFTODO: MOVE THIS IF/WHEN TOWNINIFILE MOVES INTO ANOTHER FILE
-#include "fileio_func.h" // SFTODO: MOVE THIS IF/WHEN TOWNINIFILE MOVES INTO ANOTHER FILE
-#include "string_func.h" // SFTODO: MOVE THIS IF/WHEN TOWNINIFILE MOVES INTO ANOTHER FILE
+#include "ini_type.h"
+#include "fileio_func.h"
+#include "string_func.h"
 
 HeightmapLayer::~HeightmapLayer() {
 	free(this->information);
 }
 
-// SFTODO: THIS SHOULD PROBABLY LIVE IN A SEPARATE FILE, OR AT LEAST IN THE CPP FILE CONTAINING TOWNLAYER
-/** Class for parsing town layer in an extended heightmap. */
+/** Class for parsing the town layer in an extended heightmap. */
 struct TownIniFile : IniLoadFile {
 	bool error;
 
@@ -39,8 +38,15 @@ struct TownIniFile : IniLoadFile {
         }
 };
 
-// SFTODO: DERIVED CLASS TOWNLAYER SHOULD PROBABLY HAVE ITS OWN FILE
-
+/**
+ * Construct a TownLayer object for use within an extended heightmap.
+ * The basic properties are supplied as arguments (which the caller obtains from the top-level metadata.txt)
+ * and the towns themselves are parsed from the supplied file.
+ * @param width layer width
+ * @param height layer height
+ * @param default_radius default 'radius' value to use for towns which don't specify their own
+ * @param file town file
+ */
 TownLayer::TownLayer(uint width, uint height, uint default_radius, const char *file)
 : HeightmapLayer(HLT_TOWN, width, height), valid(false)
 {

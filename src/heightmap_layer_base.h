@@ -13,12 +13,10 @@
 #define HEIGHTMAP_LAYER_BASE_H
 
 #include "stdafx.h"
-#include <iostream> // SFTODO TEMP
 #include "heightmap_layer_type.h"
-#include <vector> // SFTODO MOVE WHEN I MOVE CODE USING THIS
-#include "town_type.h" // SFTODO MOVE WHEN MOVE CODE USING THIS
-#include "heightmap_type.h" // SFTODO MOVE WHEN MOVE CODE USING THIS
-#include "map_func.h" // SFTODO MOVE WHEN MOVE CODE USING THIS, MAYBE TEMP
+#include <vector>
+#include "town_type.h"
+#include "heightmap_type.h"
 
 /** This class is used to represent each one of the layers that can compose an extended heightmap. */
 struct HeightmapLayer {
@@ -33,14 +31,12 @@ struct HeightmapLayer {
 	virtual ~HeightmapLayer();
 };
 
-// SFTODO: This probably needs moving to its own file, or at least the file containing TownLayer when it moves
+/** This class is used to represent a town on the town layer of an extended heightmap. */
 struct HeightmapTown {
 	std::string name;  ///< Name of the town.
 	uint posx;	   ///< Desired X position of the town on heightmap.
 	uint posy;         ///< Desired Y position of the town on heightmap.
 	uint radius;       ///< Accepted radius to search for suitable position on hightmap from (posx, posy).
-	uint mapx; // SFTODO COMMENT - NO, DELETE
-	uint mapy; // SFTODO COMMENT - NO, DELETE
 	TownSize size;     ///< Size of the town.
 	bool city;         ///< Is this a city?
 	TownLayout layout; ///< Layout of the town.
@@ -49,9 +45,9 @@ struct HeightmapTown {
 	: name(name_), posx(posx_), posy(posy_), radius(radius_), size(size_), city(city_), layout(layout_) {}
 };
 
-// SFTODO: This derived class should probably have its own file
+/** This class is used to represent a town layer in an extended heightmap. */
 struct TownLayer : HeightmapLayer {
-	bool valid;				///< true iff constructor succeeded
+	bool valid;				///< true iff constructor succeeded.
 	std::vector<HeightmapTown> towns;	///< List of towns in the layer.
 
 	TownLayer(uint width, uint height, uint default_radius, const char *file);
