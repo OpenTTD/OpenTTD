@@ -2093,16 +2093,11 @@ static Town *CreateSpecificTown(TileIndex tile, const std::string &townname, uin
 {
 	assert(_game_mode == GM_EDITOR || _generating_world); // These are the preconditions for CMD_DELETE_TOWN
 
-#if 0 // SFTODO
-	/* Make sure town can be placed here */
-	if (TownCanBePlacedHere(tile).Failed()) return nullptr;
-#else
 	/* Make sure town can be placed here */
 	if (TownCanBePlacedHere(tile).Failed()) {
 		if (!CircularTileSearch(&tile, 10 /* SFTODO MAKE CONFIGURABLE BY USER - MAYBE AT TOWN_LAYER LEVEL WITH AN OVERRIDE PER TOWN */, TownCanBePlacedHereWrapper, nullptr)) return nullptr;
 		std::cout << "SFTODO: CREATING TOWN " << townname << " AT SEARCHED LOCATION" << std::endl;
 	}
-#endif
 
 	if (!townname.empty()) {
 		if (Utf8StringLength(townname.c_str()) >= MAX_LENGTH_TOWN_NAME_CHARS) return nullptr;
@@ -2152,33 +2147,8 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 			if (tile == INVALID_TILE) continue;
 		}
 
-#if 0 // SFTODO: DELETE
-		/* Make sure town can be placed here */
-		if (TownCanBePlacedHere(tile).Failed()) continue;
-
-		/* Allocate a town struct */
-		Town *t = new Town(tile);
-
-		DoCreateTown(t, tile, townnameparts, size, city, layout, false);
-
-		/* if the population is still 0 at the point, then the
-		 * placement is so bad it couldn't grow at all */
-		if (t->cache.population > 0) return t;
-
-		Backup<CompanyID> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
-		CommandCost rc = DoCommand(t->xy, t->index, 0, DC_EXEC, CMD_DELETE_TOWN);
-		cur_company.Restore();
-		assert(rc.Succeeded());
-
-		/* We already know that we can allocate a single town when
-		 * entering this function. However, we create and delete
-		 * a town which "resets" the allocation checks. As such we
-		 * need to check again when assertions are enabled. */
-		assert(Town::CanAllocateItem());
-#else
 		Town *t = CreateSpecificTown(tile, "", townnameparts, size, city, layout);
 		if (t != nullptr) return t;
-#endif
 	} while (--attempts != 0);
 
 	return nullptr;
@@ -2222,26 +2192,27 @@ bool GenerateTowns(TownLayout layout)
 			IncreaseGeneratingWorldProgress(GWP_TOWN);
 			std::cout << "SFTODOPP1" << std::endl;
 			if (!Town::CanAllocateItem()) {
-				assert(false); // SFTODO PROPER ERROR
 				return false;
 			}
-			// SFTODO: NEED TO SCALE X/Y AND ALSO FLIP THEM IF WE'RE IN CLOCKWISE ORIENTATION - I ALSO THINK WE NEED TO ADJUST FOR OPENTTD'S ORIGIN BEING IN A DIFFERENT CORNER THAN OUR LOWER-LEFT-OF-PNG ORIGIN REGARDLESS OF CLOCKWISE/COUNTERCLOCKWISE
-			// SFTODO: I THINK A GOOD WAY TO HANDLE SCALING IS FOR THE EHM CODE TO ITERATE OVER ALL THE LAYERS AND CALL A VIRTUAL SCALE() FN - IF THAT RETURNS BOOL FALSE, IT MEANS THE LAYER COULDn'T BE SCALED AND EHM IS NOT VALID - THAT WAY I CAN THEN "FORGET" ABOUT SCALING IN HERE (EG I WON'T HAVE TO REMEMBER TO APPLY SCALE FACTOR EVERY TIME I ACCESS A MEMBER OF TOWNS)
-			// EHTODO: It might be nice to have an option "posfuzz=n" item support in the town list, and use the circular tile walk function to try all locations within n units of the specified position if we can't create exactly where requested.
-			// SFTODO DELETE Town *t = CreateSpecificTown(_extended_heightmap->TileForBitmapXY(town.posx, town.posy), town.name, 0, town.size, town.city, town.layout);
+			// EHTODO: It might be nice to have an option "posfuzz=n" item support in the town list, and use the circular tile walk function to try all locations within n units of the specified position if we can't create exactly where requested. Maybe call it "posradius"?
 			TileIndex tile = _extended_heightmap->TransformedTileXY(town_layer, town.posx, town.posy);
 			if (tile != INVALID_TILE) {
 				Town *t = CreateSpecificTown(tile, town.name, 0, town.size, town.city, town.layout);
 				std::cout << "SFTODOPP2" << std::endl;
 				if (t == nullptr) {
+					// EHTODO: What can/should we do to indicate this? Creating an "XXX: TownName" sign at this
+					// location might be an option. Perhaps have a debug flag in the metadata which enables/disables
+					// this kind of thing? Is there any kind of debug log where we can show warnings which the user
+					// (scenario designer, in practice) can go look at if they want?
 					std::cout << "FAILED TO CREATE TOWN:" << town.name << std::endl; // SFTODO!
-					// SFTODO!? PERHAPS CREATE AN "XXX:TOWNNAME" SIGN?
 				}
 			}
 		}
 
 		if (Town::GetNumItems() == 0) {
-			assert(false); // SFTODO PROPER ERROR
+			if (_game_mode != GM_EDITOR) {
+				ShowErrorMessage(STR_ERROR_COULD_NOT_CREATE_TOWN, INVALID_STRING_ID, WL_CRITICAL);
+			}
 			return false;
 		}
 
