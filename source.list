@@ -42,6 +42,7 @@ heightmap_layer.cpp
 highscore.cpp
 hotkeys.cpp
 ini.cpp
+ini_helper.cpp
 ini_load.cpp
 landscape.cpp
 linkgraph/demands.cpp
