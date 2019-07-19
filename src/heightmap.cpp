@@ -12,6 +12,7 @@
 #include <iostream> // SFTODO TEMP
 #include "stdafx.h"
 #include <memory> // SFTODO?
+#include <map> // SFTODO?
 #include "heightmap_type.h"
 #include "heightmap_base.h"
 #include "clear_map.h"
@@ -375,6 +376,29 @@ static bool GetStrGroupItem(IniGroup *group, const char *item_name, const char *
 }
 
 // SFTODO: DOXYGEN
+typedef std::map<std::string, uint> EnumGroupMap;
+static const uint ENUM_GROUP_NO_DEFAULT = 0xffff;
+static bool GetEnumGroupItem(IniGroup *group, const char *item_name, uint default_value, const EnumGroupMap &lookup, uint *result)
+{
+	const char *item_value;
+	if (!GetStrGroupItem(group, item_name, (default_value == ENUM_GROUP_NO_DEFAULT) ? nullptr : "", &item_value)) return false;
+	if (*item_value == '\0') {
+		*result = default_value;
+		return true;
+	}
+	// SFTODO: CASE SENSITIVITY?
+	auto it = lookup.find(std::string(item_value));
+	if (it == lookup.end()) {
+		SetDParamStr(0, group->name);
+		SetDParamStr(1, item_name);
+		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_INVALID_ENUM, INVALID_STRING_ID, WL_ERROR);
+		return false;
+	}
+	*result = it->second;
+	return true;
+}
+
+// SFTODO: DOXYGEN
 static bool GetUIntGroupItemWithValidation(IniGroup *group, const char *item_name, const char *default_value, uint max_valid, uint *result)
 {
 	const char *item_value;
@@ -445,44 +469,25 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 
 	// EHTODO: Should this be "rotation" or "orientation"? Wiki uses both in different places... I've used
 	// rotation for the variable as that matches the enum name HeightmapRotation.
-	IniItem *rotation = extended_heightmap_group->GetItem("orientation", false);
-	if (rotation == nullptr) {
-		// EHTODO: Because we take whatever happens to be the default, in practice an extended heightmap
-		// creator should always specify a rotation if they are also specifying an explicit height and/or
-		// width and the heightmap layer is non-square, otherwise the rotation may be sub-optimal. It may
-		// simply be best to make this property mandatory.
-		this->rotation = static_cast<HeightmapRotation>(_settings_newgame.game_creation.heightmap_rotation);
-	} else {
-		// SFTODO: CASE SENSITIVITY!?
-		if (strcmp(rotation->value, "ccw") == 0) {
-			this->rotation = HM_COUNTER_CLOCKWISE;
-		} else if (strcmp(rotation->value, "cw") == 0) {
-			this->rotation = HM_CLOCKWISE;
-		} else {
-			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_ROTATION, INVALID_STRING_ID, WL_ERROR);
-			return;
-		}
-	}
-	std::cout << "SFTODOQ9: " << static_cast<int>(this->rotation) << std::endl;
+	static EnumGroupMap rotation_lookup({
+		{"ccw", HM_COUNTER_CLOCKWISE},
+		{"cw",  HM_CLOCKWISE}});
+	uint rotation;
+	// EHTODO: Because we take whatever happens to be the default, in practice an extended heightmap
+	// creator should always specify a rotation if they are also specifying an explicit height and/or
+	// width and the heightmap layer is non-square, otherwise the rotation may be sub-optimal. It may
+	// simply be best to make this property mandatory.
+	if (!GetEnumGroupItem(extended_heightmap_group, "orientation", _settings_newgame.game_creation.heightmap_rotation, rotation_lookup, &rotation)) return;
+	this->rotation = static_cast<HeightmapRotation>(rotation);
 
-	IniItem *climate = extended_heightmap_group->GetItem("climate", false);
-	if (climate == nullptr) {
-		this->landscape = static_cast<LandscapeType>(_settings_newgame.game_creation.landscape);
-	} else {
-		// SFTODO: CASE SENSITIVITY!?
-		if (strcmp(climate->value, "temperate") == 0) {
-			this->landscape = LT_TEMPERATE;
-		} else if (strcmp(climate->value, "arctic") == 0) {
-			this->landscape = LT_ARCTIC;
-		} else if (strcmp(climate->value, "tropical") == 0) {
-			this->landscape = LT_TROPIC;
-		} else if (strcmp(climate->value, "toyland") == 0) {
-			this->landscape = LT_TOYLAND;
-		} else {
-			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_CLIMATE, INVALID_STRING_ID, WL_ERROR);
-			return;
-		}
-	}
+	static EnumGroupMap climate_lookup({
+		{"temperate", LT_TEMPERATE},
+		{"arctic",    LT_ARCTIC},
+		{"tropical",  LT_TROPIC},
+		{"toyland",   LT_TOYLAND}});
+	uint climate;
+	if (!GetEnumGroupItem(extended_heightmap_group, "climate", _settings_newgame.game_creation.landscape, climate_lookup, &climate)) return;
+	this->landscape = static_cast<LandscapeType>(climate);
 
 	uint metadata_width = 0;
 	uint metadata_height = 0;
