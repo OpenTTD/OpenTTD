@@ -12,9 +12,12 @@
 #include <iostream> // SFTODO TEMP
 #include "stdafx.h"
 #include "heightmap_layer_base.h"
-#include "ini_type.h"
+#include "error.h"
 #include "fileio_func.h"
+#include "ini_type.h"
 #include "string_func.h"
+
+#include "table/strings.h"
 
 HeightmapLayer::~HeightmapLayer() {
 	free(this->information);
@@ -55,27 +58,27 @@ TownLayer::TownLayer(uint width, uint height, uint default_radius, const char *f
 	ini.LoadFromDisk(file2, HEIGHTMAP_DIR);
 	free(file2);
 	if (ini.error) {
-		assert(false); // SFTODO PROPER ERROR HANDLING
+		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_TOWN_FILE, INVALID_STRING_ID, WL_ERROR);
 		return;
 	}
 
 	for (IniGroup *town_group = ini.group; town_group != nullptr; town_group = town_group->next) {
 		IniItem *name = town_group->GetItem("name", false);
 		if (name == nullptr) {
-			assert(false); // SFTODO PROPER ERROR HANDLING
+			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_TOWN_NAME, INVALID_STRING_ID, WL_ERROR);
 			return;
 		}
 		std::cout << "SFTODOA1 " << name->value << std::endl; // SFTODO TEMP
 
 		IniItem *posx = town_group->GetItem("posx", false);
 		if (posx == nullptr) {
-			assert(false); // SFTODO PROPER ERROR HANDLING
+			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_POSX, INVALID_STRING_ID, WL_ERROR);
 			return;
 		}
 
 		IniItem *posy = town_group->GetItem("posy", false);
 		if (posy == nullptr) {
-			assert(false); // SFTODO PROPER ERROR HANDLING
+			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_POSY, INVALID_STRING_ID, WL_ERROR);
 			return;
 		}
 
@@ -87,7 +90,7 @@ TownLayer::TownLayer(uint width, uint height, uint default_radius, const char *f
 
 		IniItem *size_item = town_group->GetItem("size", false);
 		if (size_item == nullptr) {
-			assert(false); // SFTODO PROPER ERROR HANDLING
+			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_SIZE, INVALID_STRING_ID, WL_ERROR);
 			return;
 		}
 		// SFTODO: CASE SENSITIVITY
@@ -101,7 +104,7 @@ TownLayer::TownLayer(uint width, uint height, uint default_radius, const char *f
 		} else if (strcmp(size_item->value, "random") == 0) {
 			size = TSZ_RANDOM;
 		} else {
-			assert(false); // SFTODO PROPER ERROR HANDLING
+			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_SIZE, INVALID_STRING_ID, WL_ERROR);
 			return;
 		}
 
@@ -114,14 +117,14 @@ TownLayer::TownLayer(uint width, uint height, uint default_radius, const char *f
 			} else if (strcmp(city->value, "true") == 0) {
 				is_city = true;
 			} else {
-				assert(false); // SFTODO PROPER ERROR HANDLING
+				ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_CITY, INVALID_STRING_ID, WL_ERROR);
 				return;
 			}
 		}
 
 		IniItem *layout_item = town_group->GetItem("layout", false);
 		if (layout_item == nullptr) {
-			assert(false); // SFTODO PROPER ERROR HANDLING
+			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_LAYOUT, INVALID_STRING_ID, WL_ERROR);
 			return;
 		}
 		TownLayout layout;
@@ -137,7 +140,7 @@ TownLayer::TownLayer(uint width, uint height, uint default_radius, const char *f
 		} else if (strcmp(layout_item->value, "random") == 0) {
 			layout = TL_RANDOM;
 		} else {
-			assert(false); // SFTODO PROPER ERROR HANDLING
+			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_LAYOUT, INVALID_STRING_ID, WL_ERROR);
 			return;
 		}
 

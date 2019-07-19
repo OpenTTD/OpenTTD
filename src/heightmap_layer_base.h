@@ -36,7 +36,7 @@ struct HeightmapTown {
 	std::string name;  ///< Name of the town.
 	uint posx;	   ///< Desired X position of the town on heightmap.
 	uint posy;         ///< Desired Y position of the town on heightmap.
-	uint radius;       ///< Accepted radius to search for suitable position on hightmap from (posx, posy).
+	uint radius;       ///< Radius to search for suitable position on heightmap from (posx, posy).
 	TownSize size;     ///< Size of the town.
 	bool city;         ///< Is this a city?
 	TownLayout layout; ///< Layout of the town.

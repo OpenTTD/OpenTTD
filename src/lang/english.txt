@@ -2876,6 +2876,15 @@ STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_CLIMATE			:Invalid climate in extended height
 STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_HEIGHT_LAYER_GROUP		:"height_layer" group not found in extended heightmap
 STR_MAPGEN_HEIGHTMAP_ERROR_NO_HEIGHT_LAYER_EXTENSION		:No extension present on height layer filename
 STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_HEIGHT_LAYER_EXTENSION	:Unsupported height layer type
+STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_TOWN_FILE			:Error parsing extended heightmap town file
+STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_TOWN_NAME			:Town with no "name" in extended heightmap town file
+STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_POSX				:Town with no "posx" in extended heightmap town file
+STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_POSY				:Town with no "posy" in extended heightmap town file
+STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_SIZE				:Town with no "size" in extended heightmap town file
+STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_SIZE				:Town with invalid "size" in extended heightmap town file
+STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_CITY				:Town with invalid "city" in extended heightmap town file
+STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_LAYOUT			:Town with no "layout" in extended heightmap town file
+STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_LAYOUT			:Town with invalid "layout" in extended heightmap town file
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenario Type
