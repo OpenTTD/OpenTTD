@@ -40,8 +40,8 @@ struct HeightmapTown {
 	std::string name;  ///< Name of the town.
 	uint posx;	   ///< X position of the town on heightmap.
 	uint posy;         ///< Y position of the town on heightmap.
-	uint mapx; // SFTODO COMMENT
-	uint mapy; // SFTODO COMMENT
+	uint mapx; // SFTODO COMMENT - NO, DELETE
+	uint mapy; // SFTODO COMMENT - NO, DELETE
 	TownSize size;     ///< Size of the town.
 	bool city;         ///< Is this a city?
 	TownLayout layout; ///< Layout of the town.

@@ -674,24 +674,11 @@ void ExtendedHeightmap::ApplyLayers()
 #endif
 }
 
-/**
- * Applies the height layer to the current map.
- * @todo Check if the scaling process can be generalized somehow.
- */
-void ExtendedHeightmap::ApplyHeightLayer(const HeightmapLayer *height_layer)
+// SFTODO: DOXYGEN
+void ExtendedHeightmap::GetScaleFactorsForLayer(const HeightmapLayer *height_layer, uint &img_scale, uint &row_pad, uint &col_pad)
 {
-	/* This function is meant for heightmap layers only. */
-	assert(height_layer->type == HLT_HEIGHTMAP);
-
-	/* Defines the detail of the aspect ratio (to avoid doubles) */
-	const uint num_div = 16384;
-
-	uint row, col;
-	uint row_pad = 0, col_pad = 0;
-	uint img_scale;
-	uint img_row, img_col;
-	TileIndex tile;
-
+	row_pad = 0;
+	col_pad = 0;
 	if ((height_layer->width * num_div) / height_layer->height > ((this->width * num_div) / this->height)) {
 		/* Image is wider than map - center vertically */
 		img_scale = (this->width * num_div) / height_layer->width;
@@ -701,6 +688,62 @@ void ExtendedHeightmap::ApplyHeightLayer(const HeightmapLayer *height_layer)
 		img_scale = (this->height * num_div) / height_layer->height;
 		col_pad = (1 + this->width - ((height_layer->width * img_scale) / num_div)) / 2;
 	}
+}
+
+// SFTODO: DOXYGEN
+TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *height_layer, uint posx, uint posy)
+{
+	assert(posx < height_layer->width);
+	assert(posy < height_layer->height);
+
+	// (posx, posy) coordinates use the lower left corner as (0, 0). The following code is an inversion
+	// of the logic in ApplyHeightLayer() so we want to work in terms of the internal bitmap
+	// coordinates which have the upper left corner as (0, 0).
+	const uint img_col = posx;
+	const uint img_row = height_layer->height - 1 - posy;
+
+	uint img_scale;
+	uint row_pad;
+	uint col_pad;
+	// SFTODO: WE WILL PROBABLY CALL THIS FAR TOO MUCH, BUT LET'S GET IT RIGHT BEFORE WE MAKE IT FAST...
+	this->GetScaleFactorsForLayer(height_layer, img_scale, row_pad, col_pad);
+
+	// SFTODO INVERSION WIP
+	uint row = row_pad + ((img_row * img_scale) / num_div);
+	uint col;
+	switch (this->rotation) {
+		case HM_COUNTER_CLOCKWISE:
+			col = this->width - 1 - col_pad - ((img_col * img_scale) / num_div);
+			return TileXY(col, row);
+			break;
+
+		case HM_CLOCKWISE:
+			col = col_pad + ((img_col * img_scale) / num_div);
+			return TileXY(row, col);
+			break;
+
+		default: NOT_REACHED();
+	}
+
+	// SFTODO WE PROBABLY NEED TO RETURN TILE_INVALID IF THERE'S NO TILE CORRESPONDING TO OUR INPUT X/Y (DUE TO THE 512x512->510x510 ISSUE)
+}
+
+/**
+ * Applies the height layer to the current map.
+ * @todo Check if the scaling process can be generalized somehow.
+ */
+void ExtendedHeightmap::ApplyHeightLayer(const HeightmapLayer *height_layer)
+{
+	/* This function is meant for heightmap layers only. */
+	assert(height_layer->type == HLT_HEIGHTMAP);
+
+	uint row, col;
+	uint row_pad, col_pad;
+	uint img_scale;
+	uint img_row, img_col;
+	TileIndex tile;
+
+	GetScaleFactorsForLayer(height_layer, img_scale, row_pad, col_pad);
 
 	if (this->freeform_edges) {
 		for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
@@ -829,6 +872,7 @@ TileIndex ExtendedHeightmap::TileForBitmapXY(uint x, uint y)
 // SFTODO: DOXYGEN COMMENT
 void ExtendedHeightmap::Transform()
 {
+	return; // SFTODO DON'T WANT ANY OF THIS LOGIC ANY MORE, DELETE LATER
 	std::cout << "SFTODO ExtendedHeightmap::Transform rotation " << this->rotation << " width " << this->width << " height " << this->height << std::endl;
 	for (auto &layer : this->layers) {
 		layer.second->Transform(this->rotation, this->width, this->height);

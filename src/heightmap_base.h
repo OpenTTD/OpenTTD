@@ -37,6 +37,9 @@ struct ExtendedHeightmap {
 	LandscapeType landscape;     ///< Indicates the preferred climate for the extended heightmap.
 	bool freeform_edges;         ///< True if the extended heightmap should have freeform edges. This is always true except for legacy heightmaps, which will use the current setting value. This value will not be exposed to the extended heightmap property section in the metadata file.
 
+	/* Defines the detail of the aspect ratio (to avoid doubles) */
+	static const uint num_div = 16384;
+
 	/* Extended heightmap load. */
 	void LoadExtendedHeightmap(char *file_path, char *file_name);
 	void LoadLegacyHeightmap(DetailedFileType dft, char *file_path, char *file_name);
@@ -46,6 +49,8 @@ struct ExtendedHeightmap {
 	void ApplyLayers();
 
 	/* Layer apply methods. */
+	void GetScaleFactorsForLayer(const HeightmapLayer *layer, uint &img_scale, uint &row_pad, uint &col_pad);
+	TileIndex TransformedTileXY(const HeightmapLayer *height_layer, uint posx, uint posy);
 	void ApplyHeightLayer(const HeightmapLayer *height_layer);
 
 	/* Other functions. */

@@ -2180,7 +2180,7 @@ static const byte _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, no
  * @param layout which towns will be set to, when created
  * @return true if towns have been successfully created
  */
-// SFTODO: THIS IS *NOT* CURRENTLY CALLED WHEN LOADING AN EHM INTO SCENARIO EDITOR, BUT IT PROBABLY SHOULD BE (IFF WE ARE LOADING EXTENDED HEIGHTMAP)
+// SFTODO: THIS IS *NOT* CURRENTLY CALLED WHEN LOADING AN EHM INTO SCENARIO EDITOR, BUT IT PROBABLY SHOULD BE (IFF WE ARE LOADING EXTENDED HEIGHTMAP) - PROBABLY BE BEST IF POSSIBLE TO MOVE THIS LOGIC INTO APPLYLAYERS()
 bool GenerateTowns(TownLayout layout)
 {
 	extern ExtendedHeightmap *_extended_heightmap; // SFTODO MOVE IF KEEP
@@ -2219,7 +2219,7 @@ bool GenerateTowns(TownLayout layout)
 			// SFTODO: I THINK A GOOD WAY TO HANDLE SCALING IS FOR THE EHM CODE TO ITERATE OVER ALL THE LAYERS AND CALL A VIRTUAL SCALE() FN - IF THAT RETURNS BOOL FALSE, IT MEANS THE LAYER COULDn'T BE SCALED AND EHM IS NOT VALID - THAT WAY I CAN THEN "FORGET" ABOUT SCALING IN HERE (EG I WON'T HAVE TO REMEMBER TO APPLY SCALE FACTOR EVERY TIME I ACCESS A MEMBER OF TOWNS)
 			// EHTODO: It might be nice to have an option "posfuzz=n" item support in the town list, and use the circular tile walk function to try all locations within n units of the specified position if we can't create exactly where requested.
 			// SFTODO DELETE Town *t = CreateSpecificTown(_extended_heightmap->TileForBitmapXY(town.posx, town.posy), town.name, 0, town.size, town.city, town.layout);
-			Town *t = CreateSpecificTown(TileXY(town.mapx, town.mapy), town.name, 0, town.size, town.city, town.layout);
+			Town *t = CreateSpecificTown(_extended_heightmap->TransformedTileXY(town_layer, town.posx, town.posy), town.name, 0, town.size, town.city, town.layout);
 			std::cout << "SFTODOPP2" << std::endl;
 			if (t == nullptr) {
 				std::cout << "FAILED TO CREATE TOWN:" << town.name << std::endl; // SFTODO!
