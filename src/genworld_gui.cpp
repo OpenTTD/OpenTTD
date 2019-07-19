@@ -359,6 +359,9 @@ struct GenerateLandscapeWindow : public Window {
 		this->SetWidgetDisabledState(WID_GL_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
 		this->SetWidgetDisabledState(WID_GL_TREE_PULLDOWN,     _game_mode == GM_EDITOR);
 
+		/* Stop any extended heightmap from a previous game carrying over. */
+		_extended_heightmap = nullptr;
+
 		// EHTODO: Is this correct? I think updating _settings_newgame means the values will persist the next
 		// time a new game is started. This may be OK.
 		// SFTODO: WE MAY NEED TO DO SOMETHING TO MAKE SURE THESE PARAMETERS ARE COPIED BACK INTO _extended_heightmap_gui WHEN THE USER DISMISSES THE DIALOG - STARTGENERATINGLANDSCAPEBLAH() IS PROBABLY THE PLCE TO DO THIS, THINK IT ALREADY DOES SOME

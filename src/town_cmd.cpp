@@ -2196,8 +2196,7 @@ static const byte _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, no
 bool GenerateTowns(TownLayout layout)
 {
 	const TownLayer *town_layer = nullptr;
-	// SFTODO: _extended_heightmap REMAINS NON-NULL AFTER ABANDONING AN EH GAME - IF YOU THEN GO AND CHOOSE "NEW GAME" IT WILL GENERATE THE EH TOWNS NOT THE RANDOM ONES IT SHOULD
-	extern ExtendedHeightmap *_extended_heightmap; // SFTODO MOVE IF KEEP
+	extern ExtendedHeightmap *_extended_heightmap;
 	if (_extended_heightmap != nullptr) {
 		town_layer = static_cast<TownLayer*>(_extended_heightmap->layers[HLT_TOWN]);
 	}
