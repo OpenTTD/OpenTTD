@@ -632,9 +632,6 @@ void ExtendedHeightmap::CreateMap()
 	/* Apply general extended heightmap properties to the current map. */
 	_settings_game.construction.freeform_edges = this->freeform_edges;
 
-	/* Now the properties are final, transform the layers for rotation and scale. */
-        this->Transform();
-
 	/* Apply all layers. */
 	this->ApplyLayers();
 }
@@ -650,6 +647,9 @@ void ExtendedHeightmap::ApplyLayers()
 {
 	/* The height layer must always go first. */
 	const HeightmapLayer *height_layer = this->layers[HLT_HEIGHTMAP];
+
+	/* Determine scale factors based on the height layer. */
+	this->CalculateScaleFactors();
 
 	/* Create the terrain with the height specified by the layer. */
 	this->ApplyHeightLayer(height_layer);
@@ -676,18 +676,20 @@ void ExtendedHeightmap::ApplyLayers()
 
 // SFTODO: DOXYGEN
 // SFTODO: RENAME height_layer TO heightmap_layer HERE? NOT SURE ABOUT THIS CASE YET...
-void ExtendedHeightmap::GetScaleFactorsForLayer(const HeightmapLayer *height_layer, uint &img_scale, uint &row_pad, uint &col_pad)
+void ExtendedHeightmap::CalculateScaleFactors()
 {
-	row_pad = 0;
-	col_pad = 0;
+	const HeightmapLayer *height_layer = this->layers[HLT_HEIGHTMAP];
+
+	this->row_pad = 0;
+	this->col_pad = 0;
 	if ((height_layer->width * num_div) / height_layer->height > ((this->width * num_div) / this->height)) {
 		/* Image is wider than map - center vertically */
-		img_scale = (this->width * num_div) / height_layer->width;
-		row_pad = (1 + this->height - ((height_layer->height * img_scale) / num_div)) / 2;
+		this->img_scale = (this->width * num_div) / height_layer->width;
+		this->row_pad = (1 + this->height - ((height_layer->height * this->img_scale) / num_div)) / 2;
 	} else {
 		/* Image is taller than map - center horizontally */
-		img_scale = (this->height * num_div) / height_layer->height;
-		col_pad = (1 + this->width - ((height_layer->width * img_scale) / num_div)) / 2;
+		this->img_scale = (this->height * num_div) / height_layer->height;
+		this->col_pad = (1 + this->width - ((height_layer->width * this->img_scale) / num_div)) / 2;
 	}
 }
 
@@ -698,18 +700,13 @@ TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *heightmap_l
 	assert(posx < heightmap_layer->width);
 	assert(posy < heightmap_layer->height);
 
-	uint img_scale;
-	uint row_pad;
-	uint col_pad;
-	// SFTODO: WE WILL PROBABLY CALL THIS FAR TOO MUCH, BUT LET'S GET IT RIGHT BEFORE WE MAKE IT FAST...
-	const HeightmapLayer *height_layer = this->layers[HLT_HEIGHTMAP];
-	// SFTODO: IF WE DO ALWAYS PASS THE HEIGHT LAYER INTO GSFFL() WE CAN STOP PASSING IT AT ALL
-	this->GetScaleFactorsForLayer(height_layer, img_scale, row_pad, col_pad);
-
 	// The height layer never distorts; it may be rotated and scaled, but it maintains its aspect
 	// ratio. Other layers may have a different aspect ratio than the height layer, and they need
-	// to be stretched to match the height layer before any further processing.
+	// to be stretched to match the height layer before any further processing. (If we didn't allow
+	// different aspect ratios, we could ignore the height layer here and just run the calculations
+	// from CalculateScaleFactors() using this layer's width/height.)
 	if (heightmap_layer->type != HLT_HEIGHTMAP) {
+		const HeightmapLayer *height_layer = this->layers[HLT_HEIGHTMAP];
 		posx = (posx * height_layer->width) / heightmap_layer->width;
 		posy = (posy * height_layer->height) / heightmap_layer->height;
 		std::cout << "SFTODOWW DISTORY-ONLY TRANSFORM POSX " << posx << " POSY " << posy << std::endl;
@@ -722,19 +719,19 @@ TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *heightmap_l
 	const uint img_row = heightmap_layer->height - 1 - posy;
 
 	// SFTODO INVERSION WIP
-	uint row = row_pad + ((img_row * img_scale) / num_div);
+	uint row = this->row_pad + ((img_row * this->img_scale) / num_div);
 	uint col;
 	uint mapx;
 	uint mapy;
 	switch (this->rotation) {
 		case HM_COUNTER_CLOCKWISE:
-			col = this->width - 1 - col_pad - ((img_col * img_scale) / num_div);
+			col = this->width - 1 - this->col_pad - ((img_col * this->img_scale) / num_div);
 			mapx = col;
 			mapy = row;
 			break;
 
 		case HM_CLOCKWISE:
-			col = col_pad + ((img_col * img_scale) / num_div);
+			col = this->col_pad + ((img_col * this->img_scale) / num_div);
 			mapx = row;
 			mapy = col;
 			break;
@@ -758,12 +755,8 @@ void ExtendedHeightmap::ApplyHeightLayer(const HeightmapLayer *height_layer)
 	assert(height_layer->type == HLT_HEIGHTMAP);
 
 	uint row, col;
-	uint row_pad, col_pad;
-	uint img_scale;
 	uint img_row, img_col;
 	TileIndex tile;
-
-	GetScaleFactorsForLayer(height_layer, img_scale, row_pad, col_pad);
 
 	if (this->freeform_edges) {
 		for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
@@ -783,20 +776,20 @@ void ExtendedHeightmap::ApplyHeightLayer(const HeightmapLayer *height_layer)
 
 			/* Check if current tile is within the 1-pixel map edge or padding regions */
 			if ((!this->freeform_edges && DistanceFromEdge(tile) <= 1) ||
-					(row < row_pad) || (row >= (this->height - row_pad - (_settings_game.construction.freeform_edges ? 0 : 1))) ||
-					(col < col_pad) || (col >= (this->width  - col_pad - (_settings_game.construction.freeform_edges ? 0 : 1)))) {
+					(row < this->row_pad) || (row >= (this->height - this->row_pad - (_settings_game.construction.freeform_edges ? 0 : 1))) ||
+					(col < this->col_pad) || (col >= (this->width  - this->col_pad - (_settings_game.construction.freeform_edges ? 0 : 1)))) {
 				SetTileHeight(tile, 0);
 			} else {
 				/* Use nearest neighbour resizing to scale map data.
 				 *  We rotate the map 45 degrees (counter)clockwise */
-				img_row = (((row - row_pad) * num_div) / img_scale);
+				img_row = (((row - this->row_pad) * num_div) / this->img_scale);
 				switch (this->rotation) {
 					case HM_COUNTER_CLOCKWISE:
-						img_col = (((this->width - 1 - col - col_pad) * num_div) / img_scale);
+						img_col = (((this->width - 1 - col - this->col_pad) * num_div) / this->img_scale);
 						break;
 
 					case HM_CLOCKWISE:
-						img_col = (((col - col_pad) * num_div) / img_scale);
+						img_col = (((col - this->col_pad) * num_div) / this->img_scale);
 						break;
 
 					default: NOT_REACHED();
@@ -852,49 +845,4 @@ bool ExtendedHeightmap::IsValid()
 	if (this->layers[HLT_HEIGHTMAP] == NULL) return false;
 
 	return true;
-}
-
-/**
- * Converts a "bitmap coordinate" (origin at lower left) to an OpenTTD TileIndex.
- * @param x bitmap x coordinate
- * @param y bitmap y coordinate
- * @return TileIndex corresponding to bitmap pixel (x, y)
- */
-// SFTODO: This is probably only useful for the non-bitmap layers, in which case it should be renamed
-// SFTODO: THINK THIS FN SHOULD BE DELETED NOW
-TileIndex ExtendedHeightmap::TileForBitmapXY(uint x, uint y)
-{
-	std::cout << "SFTODOQA8 " << x << " " << y << " " << width << " " << height << std::endl;
-
-	assert(x < width);
-	assert(y < height);
-
-	if (this->rotation == HM_CLOCKWISE) {
-		std::swap(x, y);
-		// SFTODO: TEST THIS WITH NON-SQUARE ROTATIONS
-		y = width - y;
-	}
-
-	// A 512x512 heightmap gives a 510x510 OpenTTD map; adjust for this.
-	// EHTODO: This is not necessarily optimal, look at heightmap->map generation and think about it. We might want to offset x and/or y by one in some direction before clamping. (Careful about unsigned 0 wrapping to large positive if we offset by -1.)
-	// SFTODO: NEED TO TEST THIS WORKS CORRECTLY WITH ROTATION OF NON-SQUARE HEIGHTMAPS
-	x = Clamp(x, 0, MapMaxX());
-	y = Clamp(y, 0, MapMaxY());
-
-	// OpenTTD map coordinates have the origin at the top right of the bitmap, so adjust for this.
-	x = MapMaxX() - x; // SFTODO: TEST THIS WITH ROTATION
-	y = MapMaxY() - y; // SFTODO: TEST THIS WITH ROTATION
-	std::cout << "SFTODOQA9 " << x << " " << y << std::endl;
-
-	return TileXY(x, y);
-}
-
-// SFTODO: DOXYGEN COMMENT
-void ExtendedHeightmap::Transform()
-{
-	return; // SFTODO DON'T WANT ANY OF THIS LOGIC ANY MORE, DELETE LATER
-	std::cout << "SFTODO ExtendedHeightmap::Transform rotation " << this->rotation << " width " << this->width << " height " << this->height << std::endl;
-	for (auto &layer : this->layers) {
-		layer.second->Transform(this->rotation, this->width, this->height);
-	}
 }

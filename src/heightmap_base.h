@@ -37,6 +37,11 @@ struct ExtendedHeightmap {
 	LandscapeType landscape;     ///< Indicates the preferred climate for the extended heightmap.
 	bool freeform_edges;         ///< True if the extended heightmap should have freeform edges. This is always true except for legacy heightmaps, which will use the current setting value. This value will not be exposed to the extended heightmap property section in the metadata file.
 
+	/* Scale factors. */
+	uint row_pad;
+	uint col_pad;
+	uint img_scale;
+
 	/* Defines the detail of the aspect ratio (to avoid doubles) */
 	static const uint num_div = 16384;
 
@@ -49,14 +54,12 @@ struct ExtendedHeightmap {
 	void ApplyLayers();
 
 	/* Layer apply methods. */
-	void GetScaleFactorsForLayer(const HeightmapLayer *layer, uint &img_scale, uint &row_pad, uint &col_pad);
+	void CalculateScaleFactors();
 	TileIndex TransformedTileXY(const HeightmapLayer *height_layer, uint posx, uint posy);
 	void ApplyHeightLayer(const HeightmapLayer *height_layer);
 
 	/* Other functions. */
 	bool IsValid();
-	TileIndex TileForBitmapXY(uint x, uint y);
-	void Transform();
 };
 
 #endif /* HEIGHTMAP_BASE_H */
