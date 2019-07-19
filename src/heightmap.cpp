@@ -693,6 +693,7 @@ void ExtendedHeightmap::GetScaleFactorsForLayer(const HeightmapLayer *height_lay
 // SFTODO: DOXYGEN
 TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *height_layer, uint posx, uint posy)
 {
+	std::cout << "SFTODOWW BEFORE TRANSFORM POSX " << posx << " POSY " << posy << std::endl;
 	assert(posx < height_layer->width);
 	assert(posy < height_layer->height);
 
@@ -711,21 +712,28 @@ TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *height_laye
 	// SFTODO INVERSION WIP
 	uint row = row_pad + ((img_row * img_scale) / num_div);
 	uint col;
+	uint mapx;
+	uint mapy;
 	switch (this->rotation) {
 		case HM_COUNTER_CLOCKWISE:
 			col = this->width - 1 - col_pad - ((img_col * img_scale) / num_div);
-			return TileXY(col, row);
+			mapx = col;
+			mapy = row;
 			break;
 
 		case HM_CLOCKWISE:
 			col = col_pad + ((img_col * img_scale) / num_div);
-			return TileXY(row, col);
+			mapx = row;
+			mapy = col;
 			break;
 
 		default: NOT_REACHED();
 	}
 
 	// SFTODO WE PROBABLY NEED TO RETURN TILE_INVALID IF THERE'S NO TILE CORRESPONDING TO OUR INPUT X/Y (DUE TO THE 512x512->510x510 ISSUE)
+
+	std::cout << "AFTER TRANSFORM MAPX " << mapx << " MAPY " << mapy << std::endl;
+	return TileXY(mapx, mapy);
 }
 
 /**

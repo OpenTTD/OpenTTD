@@ -2084,12 +2084,25 @@ static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layou
 	return INVALID_TILE;
 }
 
+static bool TownCanBePlacedHereWrapper(TileIndex tile, void *)
+{
+	return TownCanBePlacedHere(tile).Succeeded();
+}
+
 static Town *CreateSpecificTown(TileIndex tile, const std::string &townname, uint32 townnameparts, TownSize size, bool city, TownLayout layout)
 {
 	assert(_game_mode == GM_EDITOR || _generating_world); // These are the preconditions for CMD_DELETE_TOWN
 
+#if 0 // SFTODO
 	/* Make sure town can be placed here */
 	if (TownCanBePlacedHere(tile).Failed()) return nullptr;
+#else
+	/* Make sure town can be placed here */
+	if (TownCanBePlacedHere(tile).Failed()) {
+		if (!CircularTileSearch(&tile, 10 /* SFTODO MAKE CONFIGURABLE BY USER - MAYBE AT TOWN_LAYER LEVEL WITH AN OVERRIDE PER TOWN */, TownCanBePlacedHereWrapper, nullptr)) return nullptr;
+		std::cout << "SFTODO: CREATING TOWN " << townname << " AT SEARCHED LOCATION" << std::endl;
+	}
+#endif
 
 	if (!townname.empty()) {
 		if (Utf8StringLength(townname.c_str()) >= MAX_LENGTH_TOWN_NAME_CHARS) return nullptr;
