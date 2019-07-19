@@ -36,16 +36,17 @@ struct HeightmapLayer {
 // SFTODO: This probably needs moving to its own file, or at least the file containing TownLayer when it moves
 struct HeightmapTown {
 	std::string name;  ///< Name of the town.
-	uint posx;	   ///< X position of the town on heightmap.
-	uint posy;         ///< Y position of the town on heightmap.
+	uint posx;	   ///< Desired X position of the town on heightmap.
+	uint posy;         ///< Desired Y position of the town on heightmap.
+	uint radius;       ///< Accepted radius to search for suitable position on hightmap from (posx, posy).
 	uint mapx; // SFTODO COMMENT - NO, DELETE
 	uint mapy; // SFTODO COMMENT - NO, DELETE
 	TownSize size;     ///< Size of the town.
 	bool city;         ///< Is this a city?
 	TownLayout layout; ///< Layout of the town.
 
-	HeightmapTown(std::string name_, uint posx_, uint posy_, TownSize size_, bool city_, TownLayout layout_)
-	: name(name_), posx(posx_), posy(posy_), size(size_), city(city_), layout(layout_) {}
+	HeightmapTown(std::string name_, uint posx_, uint posy_, uint radius_, TownSize size_, bool city_, TownLayout layout_)
+	: name(name_), posx(posx_), posy(posy_), radius(radius_), size(size_), city(city_), layout(layout_) {}
 };
 
 // SFTODO: This derived class should probably have its own file
@@ -53,7 +54,7 @@ struct TownLayer : HeightmapLayer {
 	bool valid;				///< true iff constructor succeeded
 	std::vector<HeightmapTown> towns;	///< List of towns in the layer.
 
-	TownLayer(uint width, uint height, const char *file);
+	TownLayer(uint width, uint height, uint default_radius, const char *file);
 	~TownLayer();
 };
 

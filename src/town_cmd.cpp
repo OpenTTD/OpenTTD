@@ -2089,14 +2089,13 @@ static bool TownCanBePlacedHereWrapper(TileIndex tile, void *)
 	return TownCanBePlacedHere(tile).Succeeded();
 }
 
-static Town *CreateSpecificTown(TileIndex tile, const std::string &townname, uint32 townnameparts, TownSize size, bool city, TownLayout layout)
+static Town *CreateSpecificTown(TileIndex tile, uint radius, const std::string &townname, uint32 townnameparts, TownSize size, bool city, TownLayout layout)
 {
 	assert(_game_mode == GM_EDITOR || _generating_world); // These are the preconditions for CMD_DELETE_TOWN
 
 	/* Make sure town can be placed here */
-	if (TownCanBePlacedHere(tile).Failed()) {
-		if (!CircularTileSearch(&tile, 10 /* SFTODO MAKE CONFIGURABLE BY USER - MAYBE AT TOWN_LAYER LEVEL WITH AN OVERRIDE PER TOWN */, TownCanBePlacedHereWrapper, nullptr)) return nullptr;
-		std::cout << "SFTODO: CREATING TOWN " << townname << " AT SEARCHED LOCATION" << std::endl;
+	if (TownCanBePlacedHere(tile).Failed() && (radius > 0)) {
+		if (!CircularTileSearch(&tile, radius, TownCanBePlacedHereWrapper, nullptr)) return nullptr;
 	}
 
 	if (!townname.empty()) {
@@ -2147,7 +2146,7 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 			if (tile == INVALID_TILE) continue;
 		}
 
-		Town *t = CreateSpecificTown(tile, "", townnameparts, size, city, layout);
+		Town *t = CreateSpecificTown(tile, 0, "", townnameparts, size, city, layout);
 		if (t != nullptr) return t;
 	} while (--attempts != 0);
 
@@ -2194,10 +2193,14 @@ bool GenerateTowns(TownLayout layout)
 			if (!Town::CanAllocateItem()) {
 				return false;
 			}
-			// EHTODO: It might be nice to have an option "posfuzz=n" item support in the town list, and use the circular tile walk function to try all locations within n units of the specified position if we can't create exactly where requested. Maybe call it "posradius"?
 			TileIndex tile = _extended_heightmap->TransformedTileXY(town_layer, town.posx, town.posy);
 			if (tile != INVALID_TILE) {
-				Town *t = CreateSpecificTown(tile, town.name, 0, town.size, town.city, town.layout);
+				// EHTODO: town.radius is not scaled yet; perhaps it should be. Need to be careful to
+				// scale it appropriately taking into account the overall extended heighmap size and
+				// the original size of the town layer. We need to respect anything the user specified
+				// explictly but if the town layer has been scaled from the user's specified size then
+				// we should probably scale based on that "extra" scaling.
+				Town *t = CreateSpecificTown(tile, town.radius, town.name, 0, town.size, town.city, town.layout);
 				std::cout << "SFTODOPP2" << std::endl;
 				if (t == nullptr) {
 					// EHTODO: What can/should we do to indicate this? Creating an "XXX: TownName" sign at this

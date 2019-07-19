@@ -318,14 +318,13 @@ static bool ReadHeightMap(DetailedFileType dft, const char *filename, uint *x, u
 	}
 }
 
-// SFTODO: MOVE/COMMENT
+/** Class for parsing metadata.txt in an extended heightmap. */
 struct MetadataIniFile : IniLoadFile {
 	bool error;
 
 	MetadataIniFile() : error(false) {}
 
         virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size) {
-		// SFTODO: SHOULD I BE PASSING "b" FLAG?? IniFile::OpenFile() DOES, SO BLINDLY COPYING THIS FOR NOW...
 		return FioFOpenFile(filename, "rb", subdir, size);
 	}
 
@@ -348,12 +347,13 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	strecpy(this->filename, file_name, lastof(this->filename));
 	this->freeform_edges = true; // EHTODO: comment on struct definition says this is always true except for legacy heightmaps - OK?
 
+	// EHTODO: I am sure I'm misusing TarScanner; it seems to be oriented around scanning for tar files, but I want to use it to
+	// access a specific tar file. What I have here seems to work, but it doesn't feel right. I have to put "./" at the start of
+	// filenames within the tar file to be able to access them, this may be normal but I'm not sure.
 	TarScanner ts;
-	ts.Reset(HEIGHTMAP_DIR); // SFTODO: COMPLETE HACK
+	ts.Reset(HEIGHTMAP_DIR);
 	std::cout << "SFTODOX1: " << file_path << std::endl;
 	std::cout << "SFTODOX2: " << file_name << std::endl;
-	// SFTODO: I am probably using TarScanner completely wrong, passing BASE_DIR is essentially arbitrary (NO_DIRECTORY is not a valid option as it's after NUM_SUBDIRS)
-	// SFTODO: OK, TRYING HEIGHTMAP_DIR TO MAKE READHEIGHTMAP WORK
 	if (!ts.AddFile(HEIGHTMAP_DIR, file_path)) {
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_OPENING_EHM, INVALID_STRING_ID, WL_ERROR);
 		return;
@@ -539,9 +539,14 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		if (town_layer_file == nullptr) {
 			assert(false); // SFTODO PROPER ERROR
 		}
+		uint default_radius = 5;
+		IniItem *default_radius_item = town_layer_group->GetItem("radius", false);
+		if (default_radius_item != nullptr) {
+			default_radius = atoi(default_radius_item->value); // SFTODO NO ERROR CHECKING
+		}
 
 		// SFTODO: NO ERROR CHECKING HERE DUE TO USE OF ATOI()
-		town_layer = std::auto_ptr<TownLayer>(new TownLayer(atoi(town_layer_width->value), atoi(town_layer_height->value), town_layer_file->value));
+		town_layer = std::auto_ptr<TownLayer>(new TownLayer(atoi(town_layer_width->value), atoi(town_layer_height->value), default_radius, town_layer_file->value));
 		if (!town_layer->valid) {
 			// TownLayer()'s constructor will have reported the error
 			return;
@@ -637,10 +642,6 @@ void ExtendedHeightmap::CreateMap()
 	// things like towns here? For the moment I've tried to avoid excessive refactoring in this respect.
 	this->ApplyLayers();
 }
-
-#if 0 // SFTODO DELETE
-extern CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text); // SFTODO HACK!
-#endif
 
 /**
  * Applies all layers to the current map, in the right order.

@@ -21,13 +21,13 @@ HeightmapLayer::~HeightmapLayer() {
 }
 
 // SFTODO: THIS SHOULD PROBABLY LIVE IN A SEPARATE FILE, OR AT LEAST IN THE CPP FILE CONTAINING TOWNLAYER
+/** Class for parsing town layer in an extended heightmap. */
 struct TownIniFile : IniLoadFile {
 	bool error;
 
 	TownIniFile() : error(false) {}
 
         virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size) {
-		// SFTODO: SHOULD I BE PASSING "b" FLAG?? IniFile::OpenFile() DOES, SO BLINDLY COPYING THIS FOR NOW...
 		return FioFOpenFile(filename, "rb", subdir, size);
 	}
 
@@ -41,13 +41,13 @@ struct TownIniFile : IniLoadFile {
 
 // SFTODO: DERIVED CLASS TOWNLAYER SHOULD PROBABLY HAVE ITS OWN FILE
 
-TownLayer::TownLayer(uint width, uint height, const char *file)
+TownLayer::TownLayer(uint width, uint height, uint default_radius, const char *file)
 : HeightmapLayer(HLT_TOWN, width, height), valid(false)
 {
 	TownIniFile ini;
-	// SFTODO: I am probably using TarScanner completely wrong, having to pass "./" at start of filename seems a bit iffy
 	char *file2 = str_fmt("./%s", file);
 	ini.LoadFromDisk(file2, HEIGHTMAP_DIR);
+	free(file2);
 	if (ini.error) {
 		assert(false); // SFTODO PROPER ERROR HANDLING
 		return;
@@ -71,6 +71,12 @@ TownLayer::TownLayer(uint width, uint height, const char *file)
 		if (posy == nullptr) {
 			assert(false); // SFTODO PROPER ERROR HANDLING
 			return;
+		}
+
+		IniItem *radius_item = town_group->GetItem("radius", false);
+		uint radius = default_radius;
+		if (radius_item != nullptr) {
+			radius = atoi(radius_item->value); // SFTODO NO ERROR CHECKING!
 		}
 
 		IniItem *size_item = town_group->GetItem("size", false);
@@ -132,7 +138,7 @@ TownLayer::TownLayer(uint width, uint height, const char *file)
 		// SFTODO: USE OF ATOI() MEANS NO ERROR CHECKING - EXCEPT THIS SUPER CRUDE BIT OF EXTRA
 		assert(atoi(posx->value) < width);
 		assert(atoi(posy->value) < height);
-		this->towns.emplace_back(name->value, atoi(posx->value), atoi(posy->value), size, is_city, layout);
+		this->towns.emplace_back(name->value, atoi(posx->value), atoi(posy->value), radius, size, is_city, layout);
 	}
 
 	this->valid = true; // SFTODO: MAKE SURE THIS IS LAST LINE OF CTOR!
