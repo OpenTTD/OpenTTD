@@ -2870,7 +2870,6 @@ STR_MAPGEN_HEIGHTMAP_ERROR_OPENING_EHM				:Error opening extended heightmap
 STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_METADATA			:Error parsing extended heightmap metadata
 STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_FORMAT_VERSION		:"format_version" not found in extended heightmap metadata
 STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_VERSION			:Extended heightmap metadata is in an unsupported format
-STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_HEIGHT_LAYER_FILE		:No "file" in extended heightmap height layer
 STR_MAPGEN_HEIGHTMAP_ERROR_NO_HEIGHT_LAYER_EXTENSION		:No extension present on height layer filename
 STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_HEIGHT_LAYER_EXTENSION	:Unsupported height layer type
 STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_TOWN_FILE			:Error parsing extended heightmap town file

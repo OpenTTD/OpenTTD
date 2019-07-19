@@ -377,11 +377,11 @@ static bool GetStrGroupItem(IniGroup *group, const char *item_name, const char *
 
 // SFTODO: DOXYGEN
 typedef std::map<std::string, uint> EnumGroupMap;
-static const uint ENUM_GROUP_NO_DEFAULT = 0xffff;
+static const uint GET_ITEM_NO_DEFAULT = 0xffff;
 static bool GetEnumGroupItem(IniGroup *group, const char *item_name, uint default_value, const EnumGroupMap &lookup, uint *result)
 {
 	const char *item_value;
-	if (!GetStrGroupItem(group, item_name, (default_value == ENUM_GROUP_NO_DEFAULT) ? nullptr : "", &item_value)) return false;
+	if (!GetStrGroupItem(group, item_name, (default_value == GET_ITEM_NO_DEFAULT) ? nullptr : "", &item_value)) return false;
 	if (*item_value == '\0') {
 		*result = default_value;
 		return true;
@@ -399,10 +399,14 @@ static bool GetEnumGroupItem(IniGroup *group, const char *item_name, uint defaul
 }
 
 // SFTODO: DOXYGEN
-static bool GetUIntGroupItemWithValidation(IniGroup *group, const char *item_name, const char *default_value, uint max_valid, uint *result)
+static bool GetUIntGroupItemWithValidation(IniGroup *group, const char *item_name, uint default_value, uint max_valid, uint *result)
 {
 	const char *item_value;
-	if (!GetStrGroupItem(group, item_name, default_value, &item_value)) return false;
+	if (!GetStrGroupItem(group, item_name, (default_value == GET_ITEM_NO_DEFAULT) ? nullptr : "", &item_value)) return false;
+	if (*item_value == '\0') {
+		*result = default_value;
+		return true;
+	}
 
 	for (const char *p = item_value; *p != '\0'; ++p) {
 		if (!isdigit(static_cast<unsigned char>(*p))) {
@@ -424,6 +428,16 @@ static bool GetUIntGroupItemWithValidation(IniGroup *group, const char *item_nam
 	}
 
 	*result = u;
+	return true;
+}
+
+// SFTODO: DOXYGEN
+static bool GetByteGroupItemWithValidation(IniGroup *group, const char *item_name, uint default_value, uint max_valid, byte *result)
+{
+	assert(max_valid <= 255);
+	uint result_uint;
+	if (!GetUIntGroupItemWithValidation(group, item_name, default_value, max_valid, &result_uint)) return false;
+	*result = static_cast<byte>(result_uint);
 	return true;
 }
 
@@ -489,29 +503,20 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	if (!GetEnumGroupItem(extended_heightmap_group, "climate", _settings_newgame.game_creation.landscape, climate_lookup, &climate)) return;
 	this->landscape = static_cast<LandscapeType>(climate);
 
-	uint metadata_width = 0;
-	uint metadata_height = 0;
-	IniItem *width = extended_heightmap_group->GetItem("width", false);
-	if (width != nullptr) {
-		metadata_width = atoi(width->value); // SFTODO: NO ERROR CHECKING!
-	}
-	IniItem *height = extended_heightmap_group->GetItem("height", false);
-	if (height != nullptr) {
-		metadata_height = atoi(height->value); // SFTODO: NO ERROR CHECKING!
-	}
+	uint metadata_width;
+	if (!GetUIntGroupItemWithValidation(extended_heightmap_group, "width", 0, SFTODOMAXMAXDIMENSION, &metadata_width)) return;
+	uint metadata_height;
+	if (!GetUIntGroupItemWithValidation(extended_heightmap_group, "height", 0, SFTODOMAXMAXDIMENSION, &metadata_height)) return;
 
 	/* Try to load the heightmap layer. */
 	IniGroup *height_layer_group;
 	if (!GetGroup(metadata, "height_layer", false, &height_layer_group)) return;
 	// EHTODO: It's probably not a big deal, but do we need to sanitise heightmap_filename so a malicious .ehm file can't
 	// access random files on the filesystem?
-	IniItem *heightmap_filename = height_layer_group->GetItem("file", false);
-	if (heightmap_filename == nullptr) {
-		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_HEIGHT_LAYER_FILE, INVALID_STRING_ID, WL_ERROR);
-		return;
-	}
+	const char *heightmap_filename;
+	if (!GetStrGroupItem(height_layer_group, "file", nullptr, &heightmap_filename)) return;
 	std::auto_ptr<HeightmapLayer> height_layer(new HeightmapLayer(HLT_HEIGHTMAP));
-	char *ext = strrchr(heightmap_filename->value, '.');
+	const char *ext = strrchr(heightmap_filename, '.');
 	if (ext == nullptr) {
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_NO_HEIGHT_LAYER_EXTENSION, INVALID_STRING_ID, WL_ERROR);
 		return;
@@ -526,7 +531,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_HEIGHT_LAYER_EXTENSION, INVALID_STRING_ID, WL_ERROR);
 		return;
 	}
-	char *heightmap_filename2 = str_fmt("./%s", heightmap_filename->value);
+	char *heightmap_filename2 = str_fmt("./%s", heightmap_filename);
 	bool ok = ReadHeightMap(heightmap_dft, heightmap_filename2, &height_layer->width, &height_layer->height, &height_layer->information);
 	free(heightmap_filename2);
 	if (!ok) {
@@ -534,34 +539,14 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		return;
 	}
 
-	IniItem *min_desired_height = height_layer_group->GetItem("min_desired_height", false);
-	if (min_desired_height == nullptr) {
-		this->min_map_desired_height = 0;
-	} else {
-		this->min_map_desired_height = atoi(min_desired_height->value); // SFTODO NO ERROR CHECKING!
-	}
-
-	IniItem *max_desired_height = height_layer_group->GetItem("max_desired_height", false);
-	if (max_desired_height == nullptr) {
-		this->max_map_desired_height = _settings_newgame.construction.max_heightlevel;
-	} else {
-		this->max_map_desired_height = atoi(max_desired_height->value); // SFTODO NO ERROR CHECKING!
-	}
+	if (!GetByteGroupItemWithValidation(height_layer_group, "max_desired_height", 15, MAX_TILE_HEIGHT, &this->max_map_desired_height)) return;
 	std::cout << "SFTODOX1 " << static_cast<int>(this->max_map_desired_height) << std::endl;
 
-	IniItem *max_height = height_layer_group->GetItem("max_height", false);
-	if (max_height == nullptr) {
-		this->max_map_height = 255;
-	} else {
-		this->max_map_height = atoi(max_height->value); // SFTODO NO ERROR CHECKING!
-	}
+	if (!GetByteGroupItemWithValidation(height_layer_group, "min_desired_height", 0, this->max_map_desired_height - 2, &this->min_map_desired_height)) return;
 
-	IniItem *snow_line_height = height_layer_group->GetItem("snowline_height", false);
-	if (snow_line_height == nullptr) {
-		this->snow_line_height = _settings_newgame.game_creation.snow_line_height;
-	} else {
-		this->snow_line_height = atoi(snow_line_height->value); // SFTODO NO ERROR CHECKING!
-	}
+	if (!GetByteGroupItemWithValidation(height_layer_group, "max_height", 255, 255, &this->max_map_height)) return;
+
+	if (!GetByteGroupItemWithValidation(height_layer_group, "snowline_height", _settings_newgame.game_creation.snow_line_height, this->max_map_desired_height, &this->snow_line_height)) return;
 
 	if ((metadata_width == 0) && (metadata_height == 0)) {
 		// If there's no width/height metadata, take the size of the height layer.
@@ -585,13 +570,13 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	IniGroup *town_layer_group = nullptr;
 	if (GetGroup(metadata, "town_layer", true, &town_layer_group)) {
 		uint town_layer_width;
-		if (!GetUIntGroupItemWithValidation(town_layer_group, "width", nullptr, SFTODOMAXMAXDIMENSION, &town_layer_width)) return;
+		if (!GetUIntGroupItemWithValidation(town_layer_group, "width", GET_ITEM_NO_DEFAULT, SFTODOMAXMAXDIMENSION, &town_layer_width)) return;
 		uint town_layer_height;
-		if (!GetUIntGroupItemWithValidation(town_layer_group, "height", nullptr, SFTODOMAXMAXDIMENSION, &town_layer_height)) return;
+		if (!GetUIntGroupItemWithValidation(town_layer_group, "height", GET_ITEM_NO_DEFAULT, SFTODOMAXMAXDIMENSION, &town_layer_height)) return;
 		const char *town_layer_file;
 		if (!GetStrGroupItem(town_layer_group, "file", nullptr, &town_layer_file)) return;
 		uint default_radius;
-		if (!GetUIntGroupItemWithValidation(town_layer_group, "radius", "5", 32, &default_radius)) return;
+		if (!GetUIntGroupItemWithValidation(town_layer_group, "radius", 5, 32, &default_radius)) return;
 
 		town_layer = std::auto_ptr<TownLayer>(new TownLayer(town_layer_width, town_layer_height, default_radius, town_layer_file));
 		if (!town_layer->valid) {
