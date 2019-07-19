@@ -675,6 +675,7 @@ void ExtendedHeightmap::ApplyLayers()
 }
 
 // SFTODO: DOXYGEN
+// SFTODO: RENAME height_layer TO heightmap_layer HERE? NOT SURE ABOUT THIS CASE YET...
 void ExtendedHeightmap::GetScaleFactorsForLayer(const HeightmapLayer *height_layer, uint &img_scale, uint &row_pad, uint &col_pad)
 {
 	row_pad = 0;
@@ -691,23 +692,34 @@ void ExtendedHeightmap::GetScaleFactorsForLayer(const HeightmapLayer *height_lay
 }
 
 // SFTODO: DOXYGEN
-TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *height_layer, uint posx, uint posy)
+TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *heightmap_layer, uint posx, uint posy)
 {
 	std::cout << "SFTODOWW BEFORE TRANSFORM POSX " << posx << " POSY " << posy << std::endl;
-	assert(posx < height_layer->width);
-	assert(posy < height_layer->height);
-
-	// (posx, posy) coordinates use the lower left corner as (0, 0). The following code is an inversion
-	// of the logic in ApplyHeightLayer() so we want to work in terms of the internal bitmap
-	// coordinates which have the upper left corner as (0, 0).
-	const uint img_col = posx;
-	const uint img_row = height_layer->height - 1 - posy;
+	assert(posx < heightmap_layer->width);
+	assert(posy < heightmap_layer->height);
 
 	uint img_scale;
 	uint row_pad;
 	uint col_pad;
 	// SFTODO: WE WILL PROBABLY CALL THIS FAR TOO MUCH, BUT LET'S GET IT RIGHT BEFORE WE MAKE IT FAST...
+	const HeightmapLayer *height_layer = this->layers[HLT_HEIGHTMAP];
+	// SFTODO: IF WE DO ALWAYS PASS THE HEIGHT LAYER INTO GSFFL() WE CAN STOP PASSING IT AT ALL
 	this->GetScaleFactorsForLayer(height_layer, img_scale, row_pad, col_pad);
+
+	// The height layer never distorts; it may be rotated and scaled, but it maintains its aspect
+	// ratio. Other layers may have a different aspect ratio than the height layer, and they need
+	// to be stretched to match the height layer before any further processing.
+	if (heightmap_layer->type != HLT_HEIGHTMAP) {
+		posx = (posx * height_layer->width) / heightmap_layer->width;
+		posy = (posy * height_layer->height) / heightmap_layer->height;
+		std::cout << "SFTODOWW DISTORY-ONLY TRANSFORM POSX " << posx << " POSY " << posy << std::endl;
+	}
+
+	// (posx, posy) coordinates use the lower left corner as (0, 0). The following code is an inversion
+	// of the logic in ApplyHeightLayer() so we want to work in terms of the internal bitmap
+	// coordinates which have the upper left corner as (0, 0).
+	const uint img_col = posx;
+	const uint img_row = heightmap_layer->height - 1 - posy;
 
 	// SFTODO INVERSION WIP
 	uint row = row_pad + ((img_row * img_scale) / num_div);
