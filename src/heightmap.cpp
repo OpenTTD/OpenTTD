@@ -739,7 +739,9 @@ TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *heightmap_l
 		default: NOT_REACHED();
 	}
 
-	// SFTODO WE PROBABLY NEED TO RETURN TILE_INVALID IF THERE'S NO TILE CORRESPONDING TO OUR INPUT X/Y (DUE TO THE 512x512->510x510 ISSUE)
+	// Because (for example) a 512x512 heightmap only gives a 510x510 map, (mapx, mapy) may not lie within
+	// the map bounds.
+	if ((mapx > MapMaxX()) || (mapy > MapMaxY())) return INVALID_TILE;
 
 	std::cout << "AFTER TRANSFORM MAPX " << mapx << " MAPY " << mapy << std::endl;
 	return TileXY(mapx, mapy);
