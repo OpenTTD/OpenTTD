@@ -2193,13 +2193,11 @@ static const byte _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, no
  * @param layout which towns will be set to, when created
  * @return true if towns have been successfully created
  */
-// SFTODO: THIS IS *NOT* CURRENTLY CALLED WHEN LOADING AN EHM INTO SCENARIO EDITOR, BUT IT PROBABLY SHOULD BE (IFF WE ARE LOADING EXTENDED HEIGHTMAP) - PROBABLY BE BEST IF POSSIBLE TO MOVE THIS LOGIC INTO APPLYLAYERS()
 bool GenerateTowns(TownLayout layout)
 {
-	extern ExtendedHeightmap *_extended_heightmap; // SFTODO MOVE IF KEEP
-
 	const TownLayer *town_layer = nullptr;
 	// SFTODO: _extended_heightmap REMAINS NON-NULL AFTER ABANDONING AN EH GAME - IF YOU THEN GO AND CHOOSE "NEW GAME" IT WILL GENERATE THE EH TOWNS NOT THE RANDOM ONES IT SHOULD
+	extern ExtendedHeightmap *_extended_heightmap; // SFTODO MOVE IF KEEP
 	if (_extended_heightmap != nullptr) {
 		town_layer = static_cast<TownLayer*>(_extended_heightmap->layers[HLT_TOWN]);
 	}

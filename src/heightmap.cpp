@@ -633,6 +633,8 @@ void ExtendedHeightmap::CreateMap()
 	_settings_game.construction.freeform_edges = this->freeform_edges;
 
 	/* Apply all layers. */
+	// EHTODO: Currently this is called via GenerateLandscape(); is it really appropriate to generate non-landscape
+	// things like towns here? For the moment I've tried to avoid excessive refactoring in this respect.
 	this->ApplyLayers();
 }
 

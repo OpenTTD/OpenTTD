@@ -138,13 +138,17 @@ static void _GenerateWorld()
 			GenerateLandscape(_gw.mode);
 			GenerateClearTile();
 
-			/* only generate towns, tree and industries in newgame mode. */
-			if (_game_mode != GM_EDITOR) {
+			/* Only generate towns, tree and industries in newgame mode, or if they're part of an extended
+			 * heightmap (as ultimately the scenario editor should be able to be used to edit these). */
+			extern ExtendedHeightmap *_extended_heightmap;
+			if ((_game_mode != GM_EDITOR) || ((_extended_heightmap != nullptr) && (_extended_heightmap->layers[HLT_TOWN] != nullptr))) {
 				if (!GenerateTowns(_settings_game.economy.town_layout)) {
 					_cur_company.Restore();
 					HandleGeneratingWorldAbortion();
 					return;
 				}
+			}
+			if (_game_mode != GM_EDITOR) {
 				GenerateIndustries();
 				GenerateObjects();
 				GenerateTrees();
