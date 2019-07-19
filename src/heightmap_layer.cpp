@@ -150,7 +150,7 @@ TownLayer::TownLayer(uint width, uint height, uint default_radius, const char *f
 		this->towns.emplace_back(name->value, atoi(posx->value), atoi(posy->value), radius, size, is_city, layout);
 	}
 
-	this->valid = true; // SFTODO: MAKE SURE THIS IS LAST LINE OF CTOR!
+	this->valid = true;
 }
 
 TownLayer::~TownLayer()

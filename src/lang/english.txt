@@ -2874,6 +2874,7 @@ STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_VERSION			:Extended heightmap metadata is
 STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_ROTATION			:Invalid rotation in extended heightmap metadata
 STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_CLIMATE			:Invalid climate in extended heightmap metadata
 STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_HEIGHT_LAYER_GROUP		:"height_layer" group not found in extended heightmap
+STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_HEIGHT_LAYER_FILE		:No "file" in extended heightmap height layer
 STR_MAPGEN_HEIGHTMAP_ERROR_NO_HEIGHT_LAYER_EXTENSION		:No extension present on height layer filename
 STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_HEIGHT_LAYER_EXTENSION	:Unsupported height layer type
 STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_TOWN_FILE			:Error parsing extended heightmap town file
@@ -2885,6 +2886,13 @@ STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_SIZE				:Town with invalid "size" in extended
 STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_CITY				:Town with invalid "city" in extended heightmap town file
 STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_LAYOUT			:Town with no "layout" in extended heightmap town file
 STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_LAYOUT			:Town with invalid "layout" in extended heightmap town file
+STR_MAPGEN_HEIGHTMAP_ERROR_TOWN_LAYER_INVALID_MISSING		:Extended heightmap "town_layer" group has missing or invalid "{RAW_STRING}"
+# The following should not be translated as they refer to keywords in text files
+STR_MAPGEN_HEIGHTMAP_LITERAL_WIDTH				:width
+# SFTODO: ABOVE MAY NOT BE NEEDED
+STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_MISSING_ITEM			:Extended heightmap "{RAW_STRING}" group has missing "{RAW_STRING}"
+STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_NONNUMERIC_ITEM		:Extended heightmap "{RAW_STRING}" group has non-numeric "{RAW_STRING}"
+STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_ITEM_TOO_LARGE			:Extended heightmap "{RAW_STRING}" group has "{RAW_STRING}" too large (maximum {NUM})
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenario Type

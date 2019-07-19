@@ -29,6 +29,7 @@
 #include "table/strings.h"
 
 #include "safeguards.h"
+#define SFTODOMAXMAXDIMENSION 4096 // SFTODO SUPER TEMP JUST SO I HAVE A PLACEHOLDER TO USE, VALUE PROB NOT CORRECT AND PROB SHOULDN'T BE A #DEFINE
 
 /**
  * Convert RGB colours to Grayscale using 29.9% Red, 58.7% Green, 11.4% Blue
@@ -336,6 +337,59 @@ struct MetadataIniFile : IniLoadFile {
         }
 };
 
+// SFTODO DOXYGEN
+static bool GetStrGroupItem(IniGroup *group, const char *item_name, const char *default_value, const char **result)
+{
+	assert(item_name != nullptr);
+	assert(result != nullptr);
+
+	IniItem *item = group->GetItem(item_name, false);
+	const char *item_value;
+	if (item == nullptr) {
+		if (default_value == nullptr) {
+			SetDParamStr(0, group->name);
+			SetDParamStr(1, item_name);
+			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_MISSING_ITEM, INVALID_STRING_ID, WL_ERROR);
+			return false;
+		}
+		item_value = default_value;
+	} else {
+		item_value = item->value;
+	}
+
+	*result = item_value;
+	return true;
+}
+
+// SFTODO: DOXYGEN
+static bool GetUIntGroupItemWithValidation(IniGroup *group, const char *item_name, const char *default_value, uint max_valid, uint *result)
+{
+	const char *item_value;
+	if (!GetStrGroupItem(group, item_name, default_value, &item_value)) return false;
+
+	for (const char *p = item_value; *p != '\0'; ++p) {
+		if (!isdigit(static_cast<unsigned char>(*p))) {
+			SetDParamStr(0, group->name);
+			SetDParamStr(1, item_name);
+			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_NONNUMERIC_ITEM, INVALID_STRING_ID, WL_ERROR);
+			return false;
+		}
+	}
+
+	uint u = static_cast<uint>(strtoul(item_value, nullptr, 10));
+	std::cout << "SFTODOU " << u << std::endl;
+	if (u > max_valid) {
+		SetDParamStr(0, group->name);
+		SetDParamStr(1, item_name);
+		SetDParam(2, u);
+		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_ITEM_TOO_LARGE, INVALID_STRING_ID, WL_ERROR);
+		return false;
+	}
+
+	*result = u;
+	return true;
+}
+
 /**
  * Allows to create an extended heightmap from a .ehm file (a tar file containing special
  * files).
@@ -345,7 +399,7 @@ struct MetadataIniFile : IniLoadFile {
 void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 {
 	strecpy(this->filename, file_name, lastof(this->filename));
-	this->freeform_edges = true; // EHTODO: comment on struct definition says this is always true except for legacy heightmaps - OK?
+	this->freeform_edges = true;
 
 	// EHTODO: I am sure I'm misusing TarScanner; it seems to be oriented around scanning for tar files, but I want to use it to
 	// access a specific tar file. What I have here seems to work, but it doesn't feel right. I have to put "./" at the start of
@@ -359,7 +413,6 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		return;
 	}
 	MetadataIniFile metadata;
-	// SFTODO: I am probably using TarScanner completely wrong, having to pass "./" at start of filename seems a bit iffy
 	metadata.LoadFromDisk("./metadata.txt", HEIGHTMAP_DIR);
 	if (metadata.error) {
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_METADATA, INVALID_STRING_ID, WL_ERROR);
@@ -380,7 +433,8 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		return;
 	}
 
-	// SFTODO: SHOULD THIS BE "rotation" NOT "orientation"? WIKI HAS BOTH IN VARIOUS PLACES...
+	// EHTODO: Should this be "rotation" or "orientation"? Wiki uses both in different places... I've used
+	// rotation for the variable as that matches the enum name HeightmapRotation.
 	IniItem *rotation = extended_heightmap_group->GetItem("orientation", false);
 	if (rotation == nullptr) {
 		// EHTODO: Because we take whatever happens to be the default, in practice an extended heightmap
@@ -440,7 +494,10 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	// EHTODO: It's probably not a big deal, but do we need to sanitise heightmap_filename so a malicious .ehm file can't
 	// access random files on the filesystem?
 	IniItem *heightmap_filename = height_layer_group->GetItem("file", false);
-	assert(heightmap_filename != nullptr); // SFTODO!
+	if (heightmap_filename == nullptr) {
+		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_HEIGHT_LAYER_FILE, INVALID_STRING_ID, WL_ERROR);
+		return;
+	}
 	std::auto_ptr<HeightmapLayer> height_layer(new HeightmapLayer(HLT_HEIGHTMAP));
 	char *ext = strrchr(heightmap_filename->value, '.');
 	if (ext == nullptr) {
@@ -457,7 +514,6 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_HEIGHT_LAYER_EXTENSION, INVALID_STRING_ID, WL_ERROR);
 		return;
 	}
-	// SFTODO: TEMP HACK BECAUSE I'M PROBBLY MISUSING TARSCANNER
 	char *heightmap_filename2 = str_fmt("./%s", heightmap_filename->value);
 	bool ok = ReadHeightMap(heightmap_dft, heightmap_filename2, &height_layer->width, &height_layer->height, &height_layer->information);
 	free(heightmap_filename2);
@@ -496,27 +552,16 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	}
 
 	if ((metadata_width == 0) && (metadata_height == 0)) {
-#if 0 // SFTODO!?
-		// If there's no width/height metadata, take the size of the heightmap layer and adjust for the rotation.
-		// This gives the "best" result.
-		if (this->rotation == HM_CLOCKWISE) {
-			this->width = height_layer->height;
-			this->height = height_layer->width;
-		} else {
-			this->width = height_layer->width;
-			this->height = height_layer->height;
-		}
-#else
 		// If there's no width/height metadata, take the size of the height layer.
 		this->width = height_layer->width;
 		this->height = height_layer->height;
-#endif
 	} else {
 		// If the extended heightmap creator specified a height and/or width, they know best. This is why
 		// they should also specify a rotation if they are specifying height/width and have a non-square
 		// height layer. EHTODO: We should probably say you have to specify all of height+width+rotation or
 		// none of them. Or maybe we should say if you don't specify a rotation, this code will choose one
-		// for you rather than going with whatever happens to be the current default value (though if heightmap is square we can use whatever the default is).
+		// for you rather than going with whatever happens to be the current default value (though if
+		// heightmap is square we can use whatever the default is).
 		this->width = (metadata_width != 0) ? metadata_width : height_layer->width;
 		this->height = (metadata_height != 0) ? metadata_height : height_layer->height;
 	}
@@ -527,26 +572,16 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	std::auto_ptr<TownLayer> town_layer;
 	IniGroup *town_layer_group = metadata.GetGroup("town_layer", 0, false);
 	if (town_layer_group != nullptr) {
-		IniItem *town_layer_width = town_layer_group->GetItem("width", false);
-		if (town_layer_width == nullptr) {
-			assert(false); // SFTODO PROPER ERROR
-		}
-		IniItem *town_layer_height = town_layer_group->GetItem("height", false);
-		if (town_layer_height == nullptr) {
-			assert(false); // SFTODO PROPER ERROR
-		}
-		IniItem *town_layer_file = town_layer_group->GetItem("file", false);
-		if (town_layer_file == nullptr) {
-			assert(false); // SFTODO PROPER ERROR
-		}
-		uint default_radius = 5;
-		IniItem *default_radius_item = town_layer_group->GetItem("radius", false);
-		if (default_radius_item != nullptr) {
-			default_radius = atoi(default_radius_item->value); // SFTODO NO ERROR CHECKING
-		}
+		uint town_layer_width;
+		if (!GetUIntGroupItemWithValidation(town_layer_group, "width", nullptr, SFTODOMAXMAXDIMENSION, &town_layer_width)) return;
+		uint town_layer_height;
+		if (!GetUIntGroupItemWithValidation(town_layer_group, "height", nullptr, SFTODOMAXMAXDIMENSION, &town_layer_height)) return;
+		const char *town_layer_file;
+		if (!GetStrGroupItem(town_layer_group, "file", nullptr, &town_layer_file)) return;
+		uint default_radius;
+		if (!GetUIntGroupItemWithValidation(town_layer_group, "radius", "5", 32, &default_radius)) return;
 
-		// SFTODO: NO ERROR CHECKING HERE DUE TO USE OF ATOI()
-		town_layer = std::auto_ptr<TownLayer>(new TownLayer(atoi(town_layer_width->value), atoi(town_layer_height->value), default_radius, town_layer_file->value));
+		town_layer = std::auto_ptr<TownLayer>(new TownLayer(town_layer_width, town_layer_height, default_radius, town_layer_file));
 		if (!town_layer->valid) {
 			// TownLayer()'s constructor will have reported the error
 			return;
