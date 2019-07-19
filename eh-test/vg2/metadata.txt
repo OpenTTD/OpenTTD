@@ -8,3 +8,8 @@ climate=temperate
 [height_layer]
 file=vertical-gradient-256x256.png
 max_desired_height=32
+
+[town_layer]
+width=256
+height=256
+file=town_data.txt
