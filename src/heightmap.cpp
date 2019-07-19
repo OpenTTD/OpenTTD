@@ -338,6 +338,19 @@ struct MetadataIniFile : IniLoadFile {
 };
 
 // SFTODO DOXYGEN
+static bool GetGroup(IniLoadFile &ini_file, const char *group_name, bool optional, IniGroup **result)
+{
+	IniGroup *group = ini_file.GetGroup(group_name, 0, false);
+	if ((group == nullptr) && !optional) {
+		SetDParamStr(0, group_name);
+		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_MISSING, INVALID_STRING_ID, WL_ERROR);
+		return false;
+	}
+	*result = group;
+	return true;
+}
+
+// SFTODO DOXYGEN
 static bool GetStrGroupItem(IniGroup *group, const char *item_name, const char *default_value, const char **result)
 {
 	assert(item_name != nullptr);
@@ -418,11 +431,8 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_METADATA, INVALID_STRING_ID, WL_ERROR);
 		return;
 	}
-	IniGroup *extended_heightmap_group = metadata.GetGroup("extended_heightmap", 0, false);
-	if (extended_heightmap_group == nullptr) {
-		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_EXTENDED_HEIGHTMAP_GROUP, INVALID_STRING_ID, WL_ERROR);
-		return;
-	}
+	IniGroup *extended_heightmap_group;
+	if (!GetGroup(metadata, "extended_heightmap", false, &extended_heightmap_group)) return;
 	IniItem *format_version = extended_heightmap_group->GetItem("format_version", false);
 	if (format_version == nullptr) {
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_FORMAT_VERSION, INVALID_STRING_ID, WL_ERROR);
@@ -486,11 +496,8 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	}
 
 	/* Try to load the heightmap layer. */
-	IniGroup *height_layer_group = metadata.GetGroup("height_layer", 0, false);
-	if (height_layer_group == nullptr) {
-		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_HEIGHT_LAYER_GROUP, INVALID_STRING_ID, WL_ERROR);
-		return;
-	}
+	IniGroup *height_layer_group;
+	if (!GetGroup(metadata, "height_layer", false, &height_layer_group)) return;
 	// EHTODO: It's probably not a big deal, but do we need to sanitise heightmap_filename so a malicious .ehm file can't
 	// access random files on the filesystem?
 	IniItem *heightmap_filename = height_layer_group->GetItem("file", false);
@@ -570,8 +577,8 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 
 	/* Try to load the town layer. */
 	std::auto_ptr<TownLayer> town_layer;
-	IniGroup *town_layer_group = metadata.GetGroup("town_layer", 0, false);
-	if (town_layer_group != nullptr) {
+	IniGroup *town_layer_group = nullptr;
+	if (GetGroup(metadata, "town_layer", true, &town_layer_group)) {
 		uint town_layer_width;
 		if (!GetUIntGroupItemWithValidation(town_layer_group, "width", nullptr, SFTODOMAXMAXDIMENSION, &town_layer_width)) return;
 		uint town_layer_height;

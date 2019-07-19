@@ -2868,7 +2868,6 @@ STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Change s
 
 STR_MAPGEN_HEIGHTMAP_ERROR_OPENING_EHM				:Error opening extended heightmap
 STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_METADATA			:Error parsing extended heightmap metadata
-STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_EXTENDED_HEIGHTMAP_GROUP	:"extended_heightmap" group not found in extended heightmap metadata
 STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_FORMAT_VERSION		:"format_version" not found in extended heightmap metadata
 STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_VERSION			:Extended heightmap metadata is in an unsupported format
 STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_ROTATION			:Invalid rotation in extended heightmap metadata
@@ -2890,6 +2889,7 @@ STR_MAPGEN_HEIGHTMAP_ERROR_TOWN_LAYER_INVALID_MISSING		:Extended heightmap "town
 # The following should not be translated as they refer to keywords in text files
 STR_MAPGEN_HEIGHTMAP_LITERAL_WIDTH				:width
 # SFTODO: ABOVE MAY NOT BE NEEDED
+STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_MISSING			:Extended heightmap "{RAW_STRING}" group is missing
 STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_MISSING_ITEM			:Extended heightmap "{RAW_STRING}" group has missing "{RAW_STRING}"
 STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_NONNUMERIC_ITEM		:Extended heightmap "{RAW_STRING}" group has non-numeric "{RAW_STRING}"
 STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_ITEM_TOO_LARGE			:Extended heightmap "{RAW_STRING}" group has "{RAW_STRING}" too large (maximum {NUM})
