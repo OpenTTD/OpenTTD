@@ -336,10 +336,18 @@ struct MetadataIniFile : IniLoadFile {
         }
 };
 
-// SFTODO: DOXYGEN
+/**
+ * Check to see if map/layer dimensions are valid and generate an error message if they're not.
+ *
+ * @param name ini file group name (which won't be translated) for use in the error message
+ * @param width width of map/layer
+ * @param height height of map/layer
+ * @return true if dimensions are valid, false if not
+ */
 static bool DimensionsValid(const char *name, uint width, uint height)
 {
-	if ((width < MIN_MAP_SIZE) || (width > MAX_MAP_SIZE) || (height < MIN_MAP_SIZE) || (height > MAX_MAP_SIZE)) {
+	if ((width  < MIN_MAP_SIZE) || (width  > MAX_MAP_SIZE) || (FindFirstBit(width ) != FindLastBit(width )) ||
+	    (height < MIN_MAP_SIZE) || (height > MAX_MAP_SIZE) || (FindFirstBit(height) != FindLastBit(height))) {
 		SetDParam(0, width);
 		SetDParam(1, height);
 		SetDParamStr(2, name);
@@ -520,8 +528,7 @@ void ExtendedHeightmap::LoadLegacyHeightmap(DetailedFileType dft, char *file_pat
 
 	this->layers[HLT_HEIGHTMAP] = height_layer;
 
-	/* Initialize some extended heightmap parameters to be consistent with the old behavior.
-	 * The dialog hasn't been shown to the user yet so we can't initialize everything. SFTODO LAST SENTENCE PROBABLY NOT NEEDED/TRUE ANY MORE. */
+	/* Initialize some extended heightmap parameters to be consistent with the old behavior. */
 	strecpy(this->filename, file_name, lastof(this->filename));
 	this->max_map_height = 255;
 	this->min_map_desired_height = 0;

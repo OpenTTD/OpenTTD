@@ -365,7 +365,6 @@ struct GenerateLandscapeWindow : public Window {
 			_settings_newgame.game_creation.snow_line_height = _extended_heightmap_gui->snow_line_height;
 			std::cout << "SFTODOQ9B " << static_cast<int>(_extended_heightmap_gui->rotation) << std::endl;
 			_settings_newgame.game_creation.heightmap_rotation = _extended_heightmap_gui->rotation;
-			// SFTODO: SOMEWHERE WE SHOULD BE CHECKING IF _extended_heightmap_gui->{width,height} ARE BOTH POWERS OF 2 AND ERRORING IF NOT
 			std::cout << "SFTODO ABOUT TO INIT MAP X/Y IN GLW WIDTH " << _extended_heightmap_gui->width << " HEIGHT " << _extended_heightmap_gui->height << std::endl;
 			_settings_newgame.game_creation.map_x = FindLastBit(_extended_heightmap_gui->width);
 			_settings_newgame.game_creation.map_y = FindLastBit(_extended_heightmap_gui->height);
