@@ -1225,6 +1225,12 @@ static bool MaxNoAIsChange(int32 i)
 	return true;
 }
 
+static bool AIStartDelayChange(int32 i)
+{
+	InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_AI);
+	return true;
+}
+
 /**
  * Check whether the road side may be changed.
  * @param p1 unused

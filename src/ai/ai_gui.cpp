@@ -11,6 +11,7 @@
 #include "../table/sprites.h"
 #include "../error.h"
 #include "../settings_gui.h"
+#include "../settings_internal.h"
 #include "../querystring_gui.h"
 #include "../stringfilter_type.h"
 #include "../company_base.h"
@@ -678,6 +679,12 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_MAUVE, WID_AIC_BACKGROUND),
 		NWidget(NWID_VERTICAL), SetPIP(4, 4, 4),
 			NWidget(NWID_HORIZONTAL), SetPIP(7, 0, 7),
+				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_SD_DECREASE), SetFill(0, 1), SetDataTip(AWV_DECREASE, STR_NULL),
+				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_SD_INCREASE), SetFill(0, 1), SetDataTip(AWV_INCREASE, STR_NULL),
+				NWidget(NWID_SPACER), SetMinimalSize(6, 0),
+				NWidget(WWT_TEXT, COLOUR_MAUVE, WID_AIC_START_DELAY), SetDataTip(STR_AI_CONFIG_START_DELAY, STR_AI_CONFIG_START_DELAY_TOOLTIP), SetFill(1, 0), SetPadding(1, 0, 0, 0),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL), SetPIP(7, 0, 7),
 				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_DECREASE), SetFill(0, 1), SetDataTip(AWV_DECREASE, STR_NULL),
 				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_INCREASE), SetFill(0, 1), SetDataTip(AWV_INCREASE, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(6, 0),
@@ -725,6 +732,7 @@ static WindowDesc _ai_config_desc(
  */
 struct AIConfigWindow : public Window {
 	CompanyID selected_slot; ///< The currently selected AI slot or \c INVALID_COMPANY.
+	AIConfigWidgets widget;  ///< corresponding widget to setting for which a value-entering window has been opened.
 	int line_height;         ///< Height of a single AI-name line.
 	Scrollbar *vscroll;      ///< Cache of the vertical scrollbar.
 
@@ -733,6 +741,7 @@ struct AIConfigWindow : public Window {
 		this->InitNested(WN_GAME_OPTIONS_AI); // Initializes 'this->line_height' as a side effect.
 		this->vscroll = this->GetScrollbar(WID_AIC_SCROLLBAR);
 		this->selected_slot = INVALID_COMPANY;
+		this->widget = WID_AIC_BACKGROUND;
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_AIC_LIST);
 		this->vscroll->SetCapacity(nwi->current_y / this->line_height);
 		this->vscroll->SetCount(MAX_COMPANIES);
@@ -750,6 +759,10 @@ struct AIConfigWindow : public Window {
 		switch (widget) {
 			case WID_AIC_NUMBER:
 				SetDParam(0, GetGameSettings().difficulty.max_no_competitors);
+				break;
+			case WID_AIC_START_DELAY:
+				SetDParam(0, STR_CONFIG_SETTING_AI_START_DELAY_VALUE);
+				SetDParam(1, GetGameSettings().ai.ai_start_delay);
 				break;
 			case WID_AIC_CHANGE:
 				switch (selected_slot) {
@@ -869,9 +882,29 @@ struct AIConfigWindow : public Window {
 			return;
 		}
 
+		if (widget < WID_AIC_DECREASE || widget > WID_AIC_START_DELAY) {
+			DeleteChildWindows(WC_QUERY_STRING);
+		}
+
 		switch (widget) {
+			case WID_AIC_SD_DECREASE:
+			case WID_AIC_SD_INCREASE: {
+				if (this->widget != WID_AIC_START_DELAY) DeleteChildWindows(WC_QUERY_STRING);
+
+				int new_value;
+				if (widget == WID_AIC_SD_DECREASE) {
+					new_value = max((int)AI::START_DELAY_MIN, GetGameSettings().ai.ai_start_delay - AI::START_DELAY_STEP_SIZE);
+				} else {
+					new_value = min(AI::START_DELAY_MAX, GetGameSettings().ai.ai_start_delay + AI::START_DELAY_STEP_SIZE);
+				}
+				IConsoleSetSetting("ai.ai_start_delay", new_value);
+				break;
+			}
+
 			case WID_AIC_DECREASE:
 			case WID_AIC_INCREASE: {
+				if (this->widget != WID_AIC_NUMBER) DeleteChildWindows(WC_QUERY_STRING);
+
 				int new_value;
 				if (widget == WID_AIC_DECREASE) {
 					new_value = max(0, GetGameSettings().difficulty.max_no_competitors - 1);
@@ -879,6 +912,21 @@ struct AIConfigWindow : public Window {
 					new_value = min(MAX_COMPANIES - 1, GetGameSettings().difficulty.max_no_competitors + 1);
 				}
 				IConsoleSetSetting("difficulty.max_no_competitors", new_value);
+				break;
+			}
+
+			case WID_AIC_START_DELAY:
+			case WID_AIC_NUMBER: {
+				/* Display a query box so users can enter a custom value. */
+				this->widget = (AIConfigWidgets)widget;
+				int old_val;
+				if (widget == WID_AIC_NUMBER) {
+					old_val = GetGameSettings().difficulty.max_no_competitors;
+				} else {
+					old_val = GetGameSettings().ai.ai_start_delay;
+				}
+				SetDParam(0, old_val);
+				ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 5, this, CS_NUMERAL, widget == WID_AIC_NUMBER ? QSF_NONE : QSF_ENABLE_DEFAULT);
 				break;
 			}
 
@@ -936,6 +984,23 @@ struct AIConfigWindow : public Window {
 		}
 	}
 
+	void OnQueryTextFinished(char *str) override
+	{
+		/* The user pressed cancel */
+		if (str == nullptr) return;
+
+		int32 value;
+		if (StrEmpty(str)) {
+			if (widget == WID_AIC_NUMBER) return;
+			uint dummy;
+			value = (int32)(size_t)ReadDefaultValue(GetSettingFromName("ai.ai_start_delay", &dummy));
+		} else {
+			value = atoi(str);
+		}
+		IConsoleSetSetting(widget == WID_AIC_NUMBER ? "difficulty.max_no_competitors" : "ai.ai_start_delay", value);
+		this->SetDirty();
+	}
+
 	/**
 	 * Some data on this window has become invalid.
 	 * @param data Information about the changed data.
@@ -949,6 +1014,8 @@ struct AIConfigWindow : public Window {
 
 		if (!gui_scope) return;
 
+		this->SetWidgetDisabledState(WID_AIC_SD_DECREASE, GetGameSettings().ai.ai_start_delay == AI::START_DELAY_MIN);
+		this->SetWidgetDisabledState(WID_AIC_SD_INCREASE, GetGameSettings().ai.ai_start_delay == AI::START_DELAY_MAX);
 		this->SetWidgetDisabledState(WID_AIC_DECREASE, GetGameSettings().difficulty.max_no_competitors == 0);
 		this->SetWidgetDisabledState(WID_AIC_INCREASE, GetGameSettings().difficulty.max_no_competitors == MAX_COMPANIES - 1);
 		this->SetWidgetDisabledState(WID_AIC_CHANGE, (this->selected_slot == OWNER_DEITY && _game_mode == GM_NORMAL) || this->selected_slot == INVALID_COMPANY);

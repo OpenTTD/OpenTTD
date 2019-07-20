@@ -692,6 +692,23 @@ void ShowGameOptions()
 static int SETTING_HEIGHT = 11;    ///< Height of a single setting in the tree view in pixels
 static const int LEVEL_WIDTH = 15; ///< Indenting width of a sub-page in pixels
 
+int64 ReadDefaultValue(const SettingDesc *sd)
+{
+	uint dummy;
+	if (GetSettingFromName("ai.ai_start_delay", &dummy) != sd) {
+		/* Read the default value. */
+		return ReadValue(&sd->desc.def, sd->save.conv);
+	} else {
+		switch (GetGameSettings().script.settings_profile) {
+			case SP_EASY:   return AI::START_DELAY_EASY;
+			case SP_MEDIUM: return AI::START_DELAY_MEDIUM;
+			case SP_HARD:   return AI::START_DELAY_HARD;
+			case SP_CUSTOM: return AI::START_DELAY_CUSTOM;
+			default: NOT_REACHED();
+		}
+	}
+}
+
 /**
  * Flags for #SettingEntry
  * @note The #SEF_BUTTONS_MASK matches expectations of the formal parameter 'state' of #DrawArrowButtons
@@ -1026,7 +1043,7 @@ bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
 		/* This entry shall only be visible, if the value deviates from its default value. */
 
 		/* Read the default value. */
-		filter_value = ReadValue(&sd->desc.def, sd->save.conv);
+		filter_value = ReadDefaultValue(sd);
 	} else {
 		assert(mode == RM_CHANGED_AGAINST_NEW);
 		/* This entry shall only be visible, if the value deviates from
@@ -1992,7 +2009,7 @@ struct GameSettingsWindow : Window {
 					DrawString(r.left, r.right, y, STR_CONFIG_SETTING_TYPE);
 					y += FONT_HEIGHT_NORMAL;
 
-					int32 default_value = ReadValue(&sd->desc.def, sd->save.conv);
+					int32 default_value = ReadDefaultValue(sd);
 					this->last_clicked->SetValueDParams(0, default_value);
 					DrawString(r.left, r.right, y, STR_CONFIG_SETTING_DEFAULT_VALUE);
 					y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
@@ -2223,7 +2240,7 @@ struct GameSettingsWindow : Window {
 			/* Save the correct currency-translated value */
 			if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
 		} else {
-			value = (int32)(size_t)sd->desc.def;
+			value = (int32)(size_t)ReadDefaultValue(sd);
 		}
 
 		if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {

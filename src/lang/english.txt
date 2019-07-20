@@ -1486,8 +1486,8 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Hard
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Allow AIs in multiplayer: {STRING2}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Allow AI computer players to participate in multiplayer games
-STR_CONFIG_SETTING_AI_START_DELAY                               :Number of days to start an AI after the previous one (give or take): {STRING2}
-STR_CONFIG_SETTING_AI_START_DELAY_HELPTEXT                      :If the number of days is different than zero, a random deviation of 60 days is added, and the actual value in-game will be 'number_of_days + random(-60 days, 60 days)', with a minimum of 1 day and a maximum of 3600 days. If the number of days is zero, the AI(s) will start immediately.
+STR_CONFIG_SETTING_AI_START_DELAY                               :Start delay between AIs (give or take): {STRING2}
+STR_CONFIG_SETTING_AI_START_DELAY_HELPTEXT                      :Number of days to wait before starting an AI, or subsequent AI(s) after the previous one.{}If the number of days is different than zero, a random deviation of 60 days is added, and the actual value in-game will be 'number_of_days + random(-60 days, 60 days)', with a minimum of 1 day and a maximum of 3600 days.{}If the number of days is zero, the AI(s) will start immediately.{}The default value for this setting is based on the value selected for 'Default settings profile'.
 STR_CONFIG_SETTING_AI_START_DELAY_VALUE                         :{COMMA}{NBSP}day{P 0 "" s}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes before scripts are suspended: {STRING2}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximum number of computation steps that a script can take in one turn
@@ -4148,6 +4148,8 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/Game
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Game Script Configuration
+STR_AI_CONFIG_START_DELAY                                       :{LTBLUE}Start delay between AIs (give or take): {ORANGE}{STRING1}
+STR_AI_CONFIG_START_DELAY_TOOLTIP                               :{BLACK}Number of days to wait before starting an AI, or subsequent AI(s) after the previous one.{}If the number of days is different than zero, a random deviation of 60 days is added, and the actual value in-game will be 'number_of_days + random(-60 days, 60 days)', with a minimum of 1 day and a maximum of 3600 days.{}If the number of days is zero, the AI(s) will start immediately.{}The default value for this setting is based on the value selected for 'Default settings profile'.
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}The Game Script that will be loaded in the next game
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}The AIs that will be loaded in the next game
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Human player

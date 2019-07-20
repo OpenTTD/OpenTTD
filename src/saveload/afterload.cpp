@@ -3126,6 +3126,16 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_AI_START_DELAY)) {
+		switch (_settings_game.script.settings_profile) {
+			case SP_EASY:   _settings_game.ai.ai_start_delay = AI::START_DELAY_EASY;   break;
+			case SP_MEDIUM: _settings_game.ai.ai_start_delay = AI::START_DELAY_MEDIUM; break;
+			case SP_HARD:   _settings_game.ai.ai_start_delay = AI::START_DELAY_HARD;   break;
+			case SP_CUSTOM: _settings_game.ai.ai_start_delay = AI::START_DELAY_CUSTOM; break;
+			default: NOT_REACHED();
+		}
+	}
+
 	/* Compute station catchment areas. This is needed here in case UpdateStationAcceptance is called below. */
 	Station::RecomputeCatchmentForAll();
 

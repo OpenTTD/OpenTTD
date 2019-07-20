@@ -172,6 +172,9 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIS_ACCEPT,                            "WID_AIS_ACCEPT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIS_RESET,                             "WID_AIS_RESET");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_BACKGROUND,                        "WID_AIC_BACKGROUND");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_SD_DECREASE,                       "WID_AIC_SD_DECREASE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_SD_INCREASE,                       "WID_AIC_SD_INCREASE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_START_DELAY,                       "WID_AIC_START_DELAY");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_DECREASE,                          "WID_AIC_DECREASE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_INCREASE,                          "WID_AIC_INCREASE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_NUMBER,                            "WID_AIC_NUMBER");

@@ -126,5 +126,6 @@ const SettingDesc *GetSettingFromName(const char *name, uint *i);
 bool SetSettingValue(uint index, int32 value, bool force_newgame = false);
 bool SetSettingValue(uint index, const char *value, bool force_newgame = false);
 void SetCompanySetting(uint index, int32 value);
+int64 ReadDefaultValue(const SettingDesc *sd);
 
 #endif /* SETTINGS_INTERNAL_H */

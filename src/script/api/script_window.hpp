@@ -880,6 +880,9 @@ public:
 	/** Widgets of the #AIConfigWindow class. */
 	enum AIConfigWidgets {
 		WID_AIC_BACKGROUND                           = ::WID_AIC_BACKGROUND,                           ///< Window background.
+		WID_AIC_SD_DECREASE                          = ::WID_AIC_SD_DECREASE,                          ///< Decrease the start delay.
+		WID_AIC_SD_INCREASE                          = ::WID_AIC_SD_INCREASE,                          ///< Increase the start delay.
+		WID_AIC_START_DELAY                          = ::WID_AIC_START_DELAY,                          ///< Days to wait before starting an AI.
 		WID_AIC_DECREASE                             = ::WID_AIC_DECREASE,                             ///< Decrease the number of AIs.
 		WID_AIC_INCREASE                             = ::WID_AIC_INCREASE,                             ///< Increase the number of AIs.
 		WID_AIC_NUMBER                               = ::WID_AIC_NUMBER,                               ///< Number of AIs.
