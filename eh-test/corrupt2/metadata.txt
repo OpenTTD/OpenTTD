@@ -1,0 +1,14 @@
+[extended_heightmap]
+format_version=1
+orientation=ccw
+climate=arctic
+
+[height_layer]
+file=vertical-gradient-256x256.png
+max_desired_height=16
+snowline_height=4
+
+[town_layer]
+width=256
+height=256
+file=town_data.txt

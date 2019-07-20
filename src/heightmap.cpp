@@ -322,6 +322,9 @@ static bool ReadHeightMap(DetailedFileType dft, const char *filename, uint *x, u
 /** Class for parsing metadata.txt in an extended heightmap. */
 struct MetadataIniFile : IniLoadFile {
 	bool error;
+	std::string pre;
+	std::string buffer;
+	std::string post;
 
 	MetadataIniFile() : error(false) {}
 
@@ -331,9 +334,12 @@ struct MetadataIniFile : IniLoadFile {
 
 	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post)
         {
-		// EHTODO: Is there any way I can include pre/buffer/post in the error message?
-		std::cout << "SFTODOERROR: " << pre << buffer << post << std::endl;
-		error = true;
+		if (!this->error) {
+			this->error = true;
+			this->pre = pre;
+			this->buffer = buffer;
+			this->post = post;
+		}
         }
 };
 
@@ -383,6 +389,9 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	MetadataIniFile metadata;
 	metadata.LoadFromDisk("./metadata.txt", HEIGHTMAP_DIR);
 	if (metadata.error) {
+		SetDParamStr(0, metadata.pre.c_str());
+		SetDParamStr(1, metadata.buffer.c_str());
+		SetDParamStr(2, metadata.post.c_str());
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_METADATA, INVALID_STRING_ID, WL_ERROR);
 		return;
 	}

@@ -17,6 +17,7 @@
 #include "ini_helper.h"
 #include "ini_type.h"
 #include "string_func.h"
+#include "strings_func.h"
 
 #include "table/strings.h"
 
@@ -27,6 +28,9 @@ HeightmapLayer::~HeightmapLayer() {
 /** Class for parsing the town layer in an extended heightmap. */
 struct TownIniFile : IniLoadFile {
 	bool error;
+	std::string pre;
+	std::string buffer;
+	std::string post;
 
 	TownIniFile() : error(false) {}
 
@@ -36,9 +40,12 @@ struct TownIniFile : IniLoadFile {
 
 	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post)
         {
-		// EHTODO: Is there any way I can include pre/buffer/post in the error message?
-		std::cout << "SFTODOERROR: " << pre << buffer << post << std::endl;
-		error = true;
+		if (!this->error) {
+			this->error = true;
+			this->pre = pre;
+			this->buffer = buffer;
+			this->post = post;
+		}
         }
 };
 
@@ -59,6 +66,9 @@ TownLayer::TownLayer(uint width, uint height, uint default_radius, const char *f
 	ini.LoadFromDisk(file2, HEIGHTMAP_DIR);
 	free(file2);
 	if (ini.error) {
+		SetDParamStr(0, ini.pre.c_str());
+		SetDParamStr(1, ini.buffer.c_str());
+		SetDParamStr(2, ini.post.c_str());
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_TOWN_FILE, INVALID_STRING_ID, WL_ERROR);
 		return;
 	}
