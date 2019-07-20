@@ -11,7 +11,7 @@
 
 #include <iostream> // SFTODO TEMP
 #include "stdafx.h"
-#include <memory> // SFTODO? SHOULD I DITCH AUTO_PTR AND JUST FREE MEMORY MANUALLY?
+#include <memory>
 #include "heightmap_type.h"
 #include "heightmap_base.h"
 #include "bmp.h"
