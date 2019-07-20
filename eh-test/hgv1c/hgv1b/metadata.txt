@@ -1,17 +1,13 @@
 [extended_heightmap]
 format_version=1
-climate=tropical
-width=256
-height=512
 orientation=cw
+climate=tropical
 
 [height_layer]
-min_desired_height=20
-max_desired_height=30
+min_desired_height=1
 file=horizontal-gradient-valley-512x256.png
 
 [town_layer]
 width=256
 height=256
 file=town_data.txt
-radius=64

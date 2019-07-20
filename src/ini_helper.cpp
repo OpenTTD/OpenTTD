@@ -140,7 +140,7 @@ bool GetUIntGroupItemWithValidation(IniGroup *group, const char *item_name, uint
 	if (u > max_valid) {
 		SetDParamStr(0, group->name);
 		SetDParamStr(1, item_name);
-		SetDParam(2, u);
+		SetDParam(2, max_valid);
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_ITEM_TOO_LARGE, INVALID_STRING_ID, WL_ERROR);
 		return false;
 	}

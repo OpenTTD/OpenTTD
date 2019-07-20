@@ -85,7 +85,7 @@ TownLayer::TownLayer(uint width, uint height, uint default_radius, const char *f
 		if (!GetUIntGroupItemWithValidation(town_group, "posy", GET_ITEM_NO_DEFAULT, height - 1, &posy)) return;
 
 		uint radius;
-		if (!GetUIntGroupItemWithValidation(town_group, "radius", default_radius, 32, &radius)) return;
+		if (!GetUIntGroupItemWithValidation(town_group, "radius", default_radius, 64, &radius)) return;
 
 		static EnumGroupMap size_lookup({
 			{"small",  TSZ_SMALL},

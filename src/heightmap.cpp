@@ -410,10 +410,6 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		{"ccw", HM_COUNTER_CLOCKWISE},
 		{"cw",  HM_CLOCKWISE}});
 	uint rotation;
-	// EHTODO: Because we take whatever happens to be the default, in practice an extended heightmap
-	// creator should always specify a rotation if they are also specifying an explicit height and/or
-	// width and the heightmap layer is non-square, otherwise the rotation may be sub-optimal. It may
-	// simply be best to make this property mandatory.
 	if (!GetEnumGroupItem(extended_heightmap_group, "orientation", _settings_newgame.game_creation.heightmap_rotation, rotation_lookup, &rotation)) return;
 	this->rotation = static_cast<HeightmapRotation>(rotation);
 
@@ -470,20 +466,8 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 
 	if (!GetByteGroupItemWithValidation(height_layer_group, "snowline_height", _settings_newgame.game_creation.snow_line_height, this->max_map_desired_height, &this->snow_line_height)) return;
 
-	if ((metadata_width == 0) && (metadata_height == 0)) {
-		// If there's no width/height metadata, take the size of the height layer.
-		this->width = height_layer->width;
-		this->height = height_layer->height;
-	} else {
-		// If the extended heightmap creator specified a height and/or width, they know best. This is why
-		// they should also specify a rotation if they are specifying height/width and have a non-square
-		// height layer. EHTODO: We should probably say you have to specify all of height+width+rotation or
-		// none of them. Or maybe we should say if you don't specify a rotation, this code will choose one
-		// for you rather than going with whatever happens to be the current default value (though if
-		// heightmap is square we can use whatever the default is).
-		this->width = (metadata_width != 0) ? metadata_width : height_layer->width;
-		this->height = (metadata_height != 0) ? metadata_height : height_layer->height;
-	}
+	this->width = (metadata_width != 0) ? metadata_width : height_layer->width;
+	this->height = (metadata_height != 0) ? metadata_height : height_layer->height;
 	if (!DimensionsValid(extended_heightmap_group->name, this->width, this->height)) return;
 
 	std::cout << "SFTODO: AT THIS PROBABLY TOO EARLY POINT EHM WIDTH IS " << this->width << ", HEIGHT IS " << this->height << std::endl;
@@ -499,7 +483,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		const char *town_layer_file;
 		if (!GetStrGroupItem(town_layer_group, "file", nullptr, &town_layer_file)) return;
 		uint default_radius;
-		if (!GetUIntGroupItemWithValidation(town_layer_group, "radius", 5, 32, &default_radius)) return;
+		if (!GetUIntGroupItemWithValidation(town_layer_group, "radius", 5, 64, &default_radius)) return;
 
 		if (!DimensionsValid(town_layer_group->name, town_layer_width, town_layer_height)) return;
 
