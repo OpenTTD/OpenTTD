@@ -219,6 +219,9 @@
     <ClCompile Include="..\src\heightmap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\heightmap_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\highscore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -226,6 +229,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ini.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ini_helper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ini_load.cpp">
@@ -654,7 +660,16 @@
     <ClInclude Include="..\src\guitimer_func.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\heightmap.h">
+    <ClInclude Include="..\src\heightmap_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\heightmap_layer_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\heightmap_layer_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\heightmap_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\highscore.h">

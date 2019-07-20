@@ -377,9 +377,11 @@
     <ClCompile Include="..\src\goal.cpp" />
     <ClCompile Include="..\src\ground_vehicle.cpp" />
     <ClCompile Include="..\src\heightmap.cpp" />
+    <ClCompile Include="..\src\heightmap_layer.cpp" />
     <ClCompile Include="..\src\highscore.cpp" />
     <ClCompile Include="..\src\hotkeys.cpp" />
     <ClCompile Include="..\src\ini.cpp" />
+    <ClCompile Include="..\src\ini_helper.cpp" />
     <ClCompile Include="..\src\ini_load.cpp" />
     <ClCompile Include="..\src\landscape.cpp" />
     <ClCompile Include="..\src\linkgraph\demands.cpp" />
@@ -522,7 +524,10 @@
     <ClInclude Include="..\src\group_type.h" />
     <ClInclude Include="..\src\gui.h" />
     <ClInclude Include="..\src\guitimer_func.h" />
-    <ClInclude Include="..\src\heightmap.h" />
+    <ClInclude Include="..\src\heightmap_base.h" />
+    <ClInclude Include="..\src\heightmap_layer_base.h" />
+    <ClInclude Include="..\src\heightmap_layer_type.h" />
+    <ClInclude Include="..\src\heightmap_type.h" />
     <ClInclude Include="..\src\highscore.h" />
     <ClInclude Include="..\src\hotkeys.h" />
     <ClInclude Include="..\src\house.h" />
