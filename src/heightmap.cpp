@@ -475,7 +475,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	/* Try to load the town layer. */
 	std::auto_ptr<TownLayer> town_layer;
 	IniGroup *town_layer_group = nullptr;
-	if (GetGroup(metadata, "town_layer", true, &town_layer_group)) {
+	if (GetGroup(metadata, "town_layer", true, &town_layer_group) && (town_layer_group != nullptr)) {
 		uint town_layer_width;
 		if (!GetUIntGroupItemWithValidation(town_layer_group, "width", GET_ITEM_NO_DEFAULT, MAX_MAP_SIZE, &town_layer_width)) return;
 		uint town_layer_height;
