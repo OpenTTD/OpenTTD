@@ -340,6 +340,7 @@ assert_compile(lengthof(_num_inds) == ID_END + 1);
 struct GenerateLandscapeWindow : public Window {
 	uint widget_id;
 	GenerateLandscapeWindowMode mode;
+	byte min_max_heightlevel;
 
 	GenerateLandscapeWindow(WindowDesc *desc, WindowNumber number = 0) : Window(desc)
 	{
@@ -358,8 +359,9 @@ struct GenerateLandscapeWindow : public Window {
 		_extended_heightmap = nullptr;
 
 		if (mode == GLWM_HEIGHTMAP) {
-			// EHTODO: Some parameters (e.g. min_map_desired_height) are not shown on the dialog. Apart from anything else,
-			// this probably opens the possibility for the user to create invalid things by editing, e.g. making max_map_desired_height < min_map_desired_height.
+			// We need to prevent the user lowering max_map_desired_height below min_map_desired_height.
+			// EHTODO: Currently min_map_desired_height is not visible or editable in this dialog.
+			this->min_max_heightlevel = max(_extended_heightmap_gui->min_map_desired_height, static_cast<byte>(MIN_MAX_HEIGHTLEVEL));
 			_settings_newgame.construction.max_heightlevel = _extended_heightmap_gui->max_map_desired_height;
 			std::cout << "SFTODOX3 " << static_cast<int>(_extended_heightmap_gui->max_map_desired_height) << std::endl;
 			_settings_newgame.game_creation.snow_line_height = _extended_heightmap_gui->snow_line_height;
@@ -372,6 +374,8 @@ struct GenerateLandscapeWindow : public Window {
 				std::swap(_settings_newgame.game_creation.map_x, _settings_newgame.game_creation.map_y);
 			}
 			_settings_newgame.game_creation.landscape = _extended_heightmap_gui->landscape;
+		} else {
+			this->min_max_heightlevel = MIN_MAX_HEIGHTLEVEL;
 		}
 
 		this->OnInvalidateData();
@@ -471,7 +475,7 @@ struct GenerateLandscapeWindow : public Window {
 		this->SetWidgetDisabledState(WID_GL_SNOW_LEVEL_TEXT, _settings_newgame.game_creation.landscape != LT_ARCTIC);
 
 		/* Update availability of decreasing / increasing start date and snow level */
-		this->SetWidgetDisabledState(WID_GL_MAX_HEIGHTLEVEL_DOWN, _settings_newgame.construction.max_heightlevel <= MIN_MAX_HEIGHTLEVEL);
+		this->SetWidgetDisabledState(WID_GL_MAX_HEIGHTLEVEL_DOWN, _settings_newgame.construction.max_heightlevel <= this->min_max_heightlevel);
 		this->SetWidgetDisabledState(WID_GL_MAX_HEIGHTLEVEL_UP, _settings_newgame.construction.max_heightlevel >= MAX_MAX_HEIGHTLEVEL);
 		this->SetWidgetDisabledState(WID_GL_START_DATE_DOWN, _settings_newgame.game_creation.starting_year <= MIN_YEAR);
 		this->SetWidgetDisabledState(WID_GL_START_DATE_UP,   _settings_newgame.game_creation.starting_year >= MAX_YEAR);
@@ -639,7 +643,7 @@ struct GenerateLandscapeWindow : public Window {
 				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
 					this->HandleButtonClick(widget);
 
-					_settings_newgame.construction.max_heightlevel = Clamp(_settings_newgame.construction.max_heightlevel + widget - WID_GL_MAX_HEIGHTLEVEL_TEXT, MIN_MAX_HEIGHTLEVEL, MAX_MAX_HEIGHTLEVEL);
+					_settings_newgame.construction.max_heightlevel = Clamp(_settings_newgame.construction.max_heightlevel + widget - WID_GL_MAX_HEIGHTLEVEL_TEXT, this->min_max_heightlevel, MAX_MAX_HEIGHTLEVEL);
 					this->InvalidateData();
 				}
 				_left_button_clicked = false;
@@ -833,7 +837,7 @@ struct GenerateLandscapeWindow : public Window {
 		switch (this->widget_id) {
 			case WID_GL_MAX_HEIGHTLEVEL_TEXT:
 				this->SetWidgetDirty(WID_GL_MAX_HEIGHTLEVEL_TEXT);
-				_settings_newgame.construction.max_heightlevel = Clamp(value, MIN_MAX_HEIGHTLEVEL, MAX_MAX_HEIGHTLEVEL);
+				_settings_newgame.construction.max_heightlevel = Clamp(value, this->min_max_heightlevel, MAX_MAX_HEIGHTLEVEL);
 				break;
 
 			case WID_GL_START_DATE_TEXT:
