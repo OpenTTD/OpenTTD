@@ -572,7 +572,6 @@ void ExtendedHeightmap::ApplyLayers()
 	this->ApplyHeightLayer(height_layer);
 
 	/* Town generation is handled in GenerateTowns(). */
-	// EHTODO: Not here as such - we should grey out the town size option in the dialog iff the .ehm has a town layer
 }
 
 /**
