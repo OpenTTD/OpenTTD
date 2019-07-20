@@ -2094,7 +2094,8 @@ static Town *CreateSpecificTown(TileIndex tile, uint radius, const std::string &
 	assert(_game_mode == GM_EDITOR || _generating_world); // These are the preconditions for CMD_DELETE_TOWN
 
 	/* Make sure town can be placed here */
-	if (TownCanBePlacedHere(tile).Failed() && (radius > 0)) {
+	if (TownCanBePlacedHere(tile).Failed()) {
+		if (radius == 0) return nullptr;
 		if (!CircularTileSearch(&tile, radius, TownCanBePlacedHereWrapper, nullptr)) return nullptr;
 	}
 
