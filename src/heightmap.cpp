@@ -14,21 +14,22 @@
 #include <memory> // SFTODO?
 #include "heightmap_type.h"
 #include "heightmap_base.h"
-#include "clear_map.h"
-#include "void_map.h"
-#include "error.h"
-#include "saveload/saveload.h"
 #include "bmp.h"
-#include "gfx_func.h"
-#include "fios.h"
+#include "clear_map.h"
+#include "error.h"
 #include "fileio_func.h"
-#include "ini_type.h"
+#include "fios.h"
+#include "gfx_func.h"
 #include "ini_helper.h"
-//#include "command_func.h" // SFTODO!?
+#include "ini_type.h"
+#include "saveload/saveload.h"
+#include "string_func.h"
+#include "void_map.h"
 
 #include "table/strings.h"
 
 #include "safeguards.h"
+
 #define SFTODOMAXMAXDIMENSION 4096 // SFTODO SUPER TEMP JUST SO I HAVE A PLACEHOLDER TO USE, VALUE PROB NOT CORRECT AND PROB SHOULDN'T BE A #DEFINE
 
 /**
@@ -414,11 +415,10 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_NO_HEIGHT_LAYER_EXTENSION, INVALID_STRING_ID, WL_ERROR);
 		return;
 	}
-	// SFTODO: CASE SENSITIVITY
 	DetailedFileType heightmap_dft;
-	if (strcmp(ext, ".png") == 0) {
+	if (strnatcmp(ext, ".png") == 0) {
 		heightmap_dft = DFT_HEIGHTMAP_PNG;
-	} else if (strcmp(ext, ".bmp") == 0) {
+	} else if (strnatcmp(ext, ".bmp") == 0) {
 		heightmap_dft = DFT_HEIGHTMAP_BMP;
 	} else {
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_HEIGHT_LAYER_EXTENSION, INVALID_STRING_ID, WL_ERROR);
