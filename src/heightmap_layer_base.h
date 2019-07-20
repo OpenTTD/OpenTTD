@@ -51,7 +51,7 @@ struct TownLayer : HeightmapLayer {
 	std::vector<HeightmapTown> towns;	///< List of towns in the layer.
 
 	TownLayer(uint width, uint height, uint default_radius, const char *file);
-	~TownLayer();
+	/* virtual */ ~TownLayer();
 };
 
 #endif /* HEIGHTMAP_LAYER_BASE_H */

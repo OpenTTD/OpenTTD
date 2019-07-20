@@ -63,7 +63,6 @@ TownLayer::TownLayer(uint width, uint height, uint default_radius, const char *f
 		return;
 	}
 
-	// SFTODO: NOT HERE - WE SHOULD VALIDATE WIDTH AND HEIGHT OF ALL LAYERS ARE POWERS OF 2 AND NOT SMALLER THAN 64 oR WHATEVER LOWER LIMIT IS
 	for (IniGroup *town_group = ini.group; town_group != nullptr; town_group = town_group->next) {
 		const char *name;
 		if (!GetStrGroupItem(town_group, "name", nullptr, &name)) return;

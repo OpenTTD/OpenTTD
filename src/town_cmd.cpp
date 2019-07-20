@@ -51,7 +51,7 @@
 #include "object_base.h"
 #include "ai/ai.hpp"
 #include "game/game.hpp"
-#include "heightmap_base.h" // SFTODO!?
+#include "heightmap_base.h"
 
 #include "table/strings.h"
 #include "table/town_land.h"

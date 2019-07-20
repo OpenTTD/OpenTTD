@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include "ini_helper.h"
 #include "error.h"
+#include "strings_func.h"
 
 #include "table/strings.h"
 
