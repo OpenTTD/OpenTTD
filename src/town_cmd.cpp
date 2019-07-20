@@ -9,7 +9,6 @@
 
 /** @file town_cmd.cpp Handling of town tiles. */
 
-#include <iostream> // SFTODO TEMP
 #include "stdafx.h"
 #include "road.h"
 #include "road_internal.h" /* Cleaning up road bits */
@@ -2190,7 +2189,6 @@ bool GenerateTowns(TownLayout layout)
 	if (town_layer != nullptr) {
 		for (const auto &town : town_layer->towns) {
 			IncreaseGeneratingWorldProgress(GWP_TOWN);
-			std::cout << "SFTODOPP1" << std::endl;
 			if (!Town::CanAllocateItem()) {
 				return false;
 			}
@@ -2202,13 +2200,11 @@ bool GenerateTowns(TownLayout layout)
 				// explictly but if the town layer has been scaled from the user's specified size then
 				// we should probably scale based on that "extra" scaling.
 				Town *t = CreateSpecificTown(tile, town.radius, town.name, 0, town.size, town.city, town.layout);
-				std::cout << "SFTODOPP2" << std::endl;
 				if (t == nullptr) {
 					// EHTODO: What can/should we do to indicate this? Creating an "XXX: TownName" sign at this
 					// location might be an option. Perhaps have a debug flag in the metadata which enables/disables
 					// this kind of thing? Is there any kind of debug log where we can show warnings which the user
 					// (scenario designer, in practice) can go look at if they want?
-					std::cout << "FAILED TO CREATE TOWN:" << town.name << std::endl; // SFTODO!
 				}
 			}
 		}

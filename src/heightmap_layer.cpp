@@ -9,7 +9,6 @@
 
 /** @file heightmap_layer.cpp Base implementation of heightmap layers. */
 
-#include <iostream> // SFTODO TEMP
 #include "stdafx.h"
 #include "heightmap_layer_base.h"
 #include "error.h"
@@ -76,7 +75,6 @@ TownLayer::TownLayer(uint width, uint height, uint default_radius, const char *f
 	for (IniGroup *town_group = ini.group; town_group != nullptr; town_group = town_group->next) {
 		const char *name;
 		if (!GetStrGroupItem(town_group, "name", nullptr, &name)) return;
-		std::cout << "SFTODOA1 " << name << std::endl; // SFTODO TEMP
 
 		uint posx;
 		if (!GetUIntGroupItemWithValidation(town_group, "posx", GET_ITEM_NO_DEFAULT, width - 1, &posx)) return;

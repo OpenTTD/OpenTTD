@@ -9,7 +9,6 @@
 
 /** @file heightmap.cpp Creating of maps from heightmaps. */
 
-#include <iostream> // SFTODO TEMP
 #include "stdafx.h"
 #include <memory>
 #include "heightmap_type.h"
@@ -380,8 +379,6 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	// filenames within the tar file to be able to access them, this may be normal but I'm not sure.
 	TarScanner ts;
 	ts.Reset(HEIGHTMAP_DIR);
-	std::cout << "SFTODOX1: " << file_path << std::endl;
-	std::cout << "SFTODOX2: " << file_name << std::endl;
 	if (!ts.AddFile(HEIGHTMAP_DIR, file_path)) {
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_OPENING_EHM, INVALID_STRING_ID, WL_ERROR);
 		return;
@@ -458,7 +455,6 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	}
 
 	if (!GetByteGroupItemWithValidation(height_layer_group, "max_desired_height", 15, MAX_TILE_HEIGHT, &this->max_map_desired_height)) return;
-	std::cout << "SFTODOX1 " << static_cast<int>(this->max_map_desired_height) << std::endl;
 
 	if (!GetByteGroupItemWithValidation(height_layer_group, "min_desired_height", 0, this->max_map_desired_height - 2, &this->min_map_desired_height)) return;
 
@@ -469,8 +465,6 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	this->width = (metadata_width != 0) ? metadata_width : height_layer->width;
 	this->height = (metadata_height != 0) ? metadata_height : height_layer->height;
 	if (!DimensionsValid(extended_heightmap_group->name, this->width, this->height)) return;
-
-	std::cout << "SFTODO: AT THIS PROBABLY TOO EARLY POINT EHM WIDTH IS " << this->width << ", HEIGHT IS " << this->height << std::endl;
 
 	/* Try to load the town layer. */
 	std::auto_ptr<TownLayer> town_layer;
@@ -546,7 +540,6 @@ void ExtendedHeightmap::CreateMap()
 	/* The game map size must have been set up at this point, and the extended heightmap must be correctly initialized. */
 	assert((this->rotation == HM_COUNTER_CLOCKWISE && this->width == MapSizeX() && this->height == MapSizeY()) ||
 			(this->rotation == HM_CLOCKWISE && this->width == MapSizeY() && this->height == MapSizeX()));
-	std::cout << "SFTODO: MAP SIZES ARE NOW SET UP - PRESUMABLY COULDN'T TRUST THEM UP TO THIS POINT" << std::endl;
 
 	/* Apply general extended heightmap properties to the current map. */
 	_settings_game.construction.freeform_edges = this->freeform_edges;
@@ -608,7 +601,6 @@ void ExtendedHeightmap::CalculateScaleFactors()
  */
 TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *heightmap_layer, uint posx, uint posy)
 {
-	std::cout << "SFTODOWW BEFORE TRANSFORM POSX " << posx << " POSY " << posy << std::endl;
 	assert(posx < heightmap_layer->width);
 	assert(posy < heightmap_layer->height);
 
@@ -621,7 +613,6 @@ TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *heightmap_l
 		const HeightmapLayer *height_layer = this->layers[HLT_HEIGHTMAP];
 		posx = (posx * height_layer->width) / heightmap_layer->width;
 		posy = (posy * height_layer->height) / heightmap_layer->height;
-		std::cout << "SFTODOWW DISTORT-ONLY TRANSFORM POSX " << posx << " POSY " << posy << std::endl;
 	}
 
 	// (posx, posy) coordinates use the lower left corner as (0, 0). The following code is an inversion
@@ -654,7 +645,6 @@ TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *heightmap_l
 	// the map bounds.
 	if ((mapx > MapMaxX()) || (mapy > MapMaxY())) return INVALID_TILE;
 
-	std::cout << "AFTER TRANSFORM MAPX " << mapx << " MAPY " << mapy << std::endl;
 	return TileXY(mapx, mapy);
 }
 

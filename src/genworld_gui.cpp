@@ -9,7 +9,6 @@
 
 /** @file genworld_gui.cpp GUI to configure and show progress during map generation. */
 
-#include <iostream> // SFTODO
 #include "stdafx.h"
 #include "heightmap_type.h"
 #include "heightmap_base.h"
@@ -290,12 +289,10 @@ static void StartGeneratingLandscape(GenerateLandscapeWindowMode mode)
 static void StartGeneratingLandscapeFromExtendedHeightmap() {
 	/* Set the final values that the extended heightmap will use for some settings. */
 	_extended_heightmap_gui->max_map_desired_height = _settings_newgame.construction.max_heightlevel;
-	std::cout << "SFTODOX4 " << static_cast<int>(_extended_heightmap_gui->max_map_desired_height) << std::endl;
 	_extended_heightmap_gui->snow_line_height = _settings_newgame.game_creation.snow_line_height;
 	_extended_heightmap_gui->rotation = static_cast<HeightmapRotation>(_settings_newgame.game_creation.heightmap_rotation);
 	_extended_heightmap_gui->landscape = static_cast<LandscapeType>(_settings_newgame.game_creation.landscape);
 
-	std::cout << "SFTODOQ9C " << static_cast<int>(_extended_heightmap_gui->rotation) << std::endl;
 	if (_extended_heightmap_gui->rotation) {
 		_extended_heightmap_gui->height = 1 << _settings_newgame.game_creation.map_x;
 		_extended_heightmap_gui->width  = 1 << _settings_newgame.game_creation.map_y;
@@ -303,7 +300,6 @@ static void StartGeneratingLandscapeFromExtendedHeightmap() {
 		_extended_heightmap_gui->width  = 1 << _settings_newgame.game_creation.map_x;
 		_extended_heightmap_gui->height = 1 << _settings_newgame.game_creation.map_y;
 	}
-	std::cout << "SFTODO: StartGeneratingLandscapeFromExtendedHeightmap EHM WIDTH " << _extended_heightmap_gui->width << " EHM HEIGHT " << _extended_heightmap_gui->height << std::endl;
 
 	_extended_heightmap = _extended_heightmap_gui;
 	_extended_heightmap_gui = NULL;
@@ -363,11 +359,8 @@ struct GenerateLandscapeWindow : public Window {
 			// EHTODO: Currently min_map_desired_height is not visible or editable in this dialog.
 			this->min_max_heightlevel = max(_extended_heightmap_gui->min_map_desired_height, static_cast<byte>(MIN_MAX_HEIGHTLEVEL));
 			_settings_newgame.construction.max_heightlevel = _extended_heightmap_gui->max_map_desired_height;
-			std::cout << "SFTODOX3 " << static_cast<int>(_extended_heightmap_gui->max_map_desired_height) << std::endl;
 			_settings_newgame.game_creation.snow_line_height = _extended_heightmap_gui->snow_line_height;
-			std::cout << "SFTODOQ9B " << static_cast<int>(_extended_heightmap_gui->rotation) << std::endl;
 			_settings_newgame.game_creation.heightmap_rotation = _extended_heightmap_gui->rotation;
-			std::cout << "SFTODO ABOUT TO INIT MAP X/Y IN GLW WIDTH " << _extended_heightmap_gui->width << " HEIGHT " << _extended_heightmap_gui->height << std::endl;
 			_settings_newgame.game_creation.map_x = FindLastBit(_extended_heightmap_gui->width);
 			_settings_newgame.game_creation.map_y = FindLastBit(_extended_heightmap_gui->height);
 			if (_extended_heightmap_gui->rotation == HM_CLOCKWISE) {
@@ -619,7 +612,6 @@ struct GenerateLandscapeWindow : public Window {
 						map_x = _extended_heightmap_gui->width;
 						map_y = _extended_heightmap_gui->height;
 					}
-					std::cout << "SFTODO: MAP X " << map_x << " MAP Y " << map_y << std::endl;
 
 					if (map_x * 2 < (1U << _settings_newgame.game_creation.map_x) ||
 						map_x / 2 > (1U << _settings_newgame.game_creation.map_x) ||
