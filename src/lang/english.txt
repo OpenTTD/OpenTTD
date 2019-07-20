@@ -2868,20 +2868,15 @@ STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Change s
 
 STR_MAPGEN_HEIGHTMAP_ERROR_OPENING_EHM				:Error opening extended heightmap
 STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_METADATA			:Error parsing extended heightmap metadata
-STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_FORMAT_VERSION		:"format_version" not found in extended heightmap metadata
 STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_VERSION			:Extended heightmap metadata is in an unsupported format
 STR_MAPGEN_HEIGHTMAP_ERROR_NO_HEIGHT_LAYER_EXTENSION		:No extension present on height layer filename
 STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_HEIGHT_LAYER_EXTENSION	:Unsupported height layer type
 STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_TOWN_FILE			:Error parsing extended heightmap town file
-# SFTODO STR_MAPGEN_HEIGHTMAP_ERROR_TOWN_LAYER_INVALID_MISSING		:Extended heightmap "town_layer" group has missing or invalid "{RAW_STRING}"
-# The following should not be translated as they refer to keywords in text files
-# SFTODO STR_MAPGEN_HEIGHTMAP_LITERAL_WIDTH				:width
-# SFTODO: ABOVE MAY NOT BE NEEDED
 STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_MISSING			:Extended heightmap "{RAW_STRING}" group is missing
-STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_MISSING_ITEM			:Extended heightmap "{RAW_STRING}" group has missing "{RAW_STRING}"
-STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_NONNUMERIC_ITEM		:Extended heightmap "{RAW_STRING}" group has non-numeric "{RAW_STRING}"
-STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_ITEM_TOO_LARGE			:Extended heightmap "{RAW_STRING}" group has "{RAW_STRING}" too large (maximum {NUM})
-STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_INVALID_ENUM			:Extended heightmap "{RAW_STRING}" group has invalid "{RAW_STRING}"
+STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_MISSING_ITEM			:Extended heightmap "{RAW_STRING}" group has missing item "{RAW_STRING}"
+STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_NONNUMERIC_ITEM		:Extended heightmap "{RAW_STRING}" group has non-numeric item "{RAW_STRING}"
+STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_ITEM_TOO_LARGE			:Extended heightmap "{RAW_STRING}" group has too large a value for item "{RAW_STRING}" (maximum is {NUM})
+STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_INVALID_ENUM			:Extended heightmap "{RAW_STRING}" group has invalid item "{RAW_STRING}"
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenario Type

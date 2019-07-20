@@ -367,12 +367,9 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	}
 	IniGroup *extended_heightmap_group;
 	if (!GetGroup(metadata, "extended_heightmap", false, &extended_heightmap_group)) return;
-	IniItem *format_version = extended_heightmap_group->GetItem("format_version", false);
-	if (format_version == nullptr) {
-		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_FORMAT_VERSION, INVALID_STRING_ID, WL_ERROR);
-		return;
-	}
-	if (strcmp(format_version->value, "1") != 0) {
+	const char *format_version;
+	if (!GetStrGroupItem(extended_heightmap_group, "format_version", nullptr, &format_version)) return;
+	if (strcmp(format_version, "1") != 0) {
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_VERSION, INVALID_STRING_ID, WL_ERROR);
 		return;
 	}
@@ -492,19 +489,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		this->layers[HLT_TOWN] = town_layer.release();
 	}
 
-#if 0 // SFTODO: IT'S FAR TOO EARLY TO DO THIS - THE USER *HASN'T* HAD THE CHANCE YET
-	/* Now the user has had a chance to adjust the parameters, scale the layers. */
-	for (auto &layer : this->layers) {
-		if (!layer.second->Scale(this->rotation, this->width, this->height)) {
-			assert(false); // SFTODO PROPER ERROR
-			// Remove the height layer to make the extended heightmap invalid.
-			delete this->layers[HLT_HEIGHTMAP]; this->layers.Erase(HLT_HEIGHTMAP);
-			return;
-		}
-	}
-#endif
-
-	assert(IsValid());
+	assert(this->IsValid());
 }
 
 /**
@@ -547,15 +532,6 @@ void ExtendedHeightmap::CreateMap()
 {
 	/* The extended heightmap should be valid before we actually start applying data to the OpenTTD map. */
 	assert(this->IsValid());
-
-#if 0 // SFTODO: I THINK THIS IS "DUPLICATING" (INCOMPLETELY) THE CODE IN StartGeneratingLandscapeFromExtendedHeightmap - DELETE IF THIS WORKS OK
-	/* The relevant dialog has been shown to the user now so we can populate these members. */
-	// EHTODO: This is for legacy heightmap support, but we probably need to
-	// do something similar for these (as well as other) members for
-	// extended heightmaps.
-	this->max_map_desired_height = _settings_game.construction.max_heightlevel;
-	this->rotation = (HeightmapRotation) _settings_newgame.game_creation.heightmap_rotation;
-#endif
 
 	/* The game map size must have been set up at this point, and the extended heightmap must be correctly initialized. */
 	assert((this->rotation == HM_COUNTER_CLOCKWISE && this->width == MapSizeX() && this->height == MapSizeY()) ||
