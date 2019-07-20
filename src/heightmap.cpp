@@ -22,9 +22,9 @@
 #include "gfx_func.h"
 #include "fios.h"
 #include "fileio_func.h"
-#include "ini_type.h" // SFTODO?!
-#include "ini_helper.h" // SFTODO!?
-#include "command_func.h" // SFTODO!?
+#include "ini_type.h"
+#include "ini_helper.h"
+//#include "command_func.h" // SFTODO!?
 
 #include "table/strings.h"
 
@@ -561,28 +561,13 @@ void ExtendedHeightmap::ApplyLayers()
 	/* Create the terrain with the height specified by the layer. */
 	this->ApplyHeightLayer(height_layer);
 
-	// SFTODO: WE SHOULD PROBABLY ADD AN 'EXTENDED HEIGHT MAP' OPTION TO THE TOWN GENERATION IN THE DIALOG, AND SELECT THAT BY DEFAULT IF WE HAVE A TOWNS LAYER, AND IF THAT IS IN FORCE WE SHOULD INHIBIT AUTO-GENERATION OF TOWNS - THIS WILL ALLOW THE USER TO SUPPLEMENT THE TOWN LAYER IF THEY REALLY WANT, BUT IT WON'T HAPPEN BY DEFAULT
-
-#if 0 // SFTODO DELETE
-	const TownLayer *town_layer = static_cast<TownLayer*>(this->layers[HLT_TOWN]);
-	if (town_layer) {
-		for (const auto &town : town_layer->towns) {
-			// SFTODO: NEED TO SCALE X/Y AND ALSO FLIP THEM IF WE'RE IN CLOCKWISE ORIENTATION
-			uint32 p1 = TSZ_SMALL; // SFTODO: SET THESE FLAGS APPROPRIATELY
-			CommandCost result = CmdFoundTown(TileXY(town.posx, town.posy), DC_EXEC, p1, 0, town.name.c_str());
-			if (result.Failed()) {
-				char buffer[256];
-				GetString(buffer, result.GetErrorMessage(), lastof(buffer));
-				std::cout << "TOWN:" << town.name << ": " << buffer << std::endl; // SFTODO!
-				// SFTODO!? PERHAPS CREATE AN "XXX:TOWNNAME" SIGN?
-			}
-		}
-	}
-#endif
+	/* Town generation is handled in GenerateTowns(). */
+	// EHTODO: Not here as such - we should grey out the town size option in the dialog iff the .ehm has a town layer
 }
 
-// SFTODO: DOXYGEN
-// SFTODO: RENAME height_layer TO heightmap_layer HERE? NOT SURE ABOUT THIS CASE YET...
+/**
+ * Calculate and cache the scale factors to adjust the height layer to fit the chosen map dimensions.
+ */
 void ExtendedHeightmap::CalculateScaleFactors()
 {
 	const HeightmapLayer *height_layer = this->layers[HLT_HEIGHTMAP];
@@ -600,7 +585,18 @@ void ExtendedHeightmap::CalculateScaleFactors()
 	}
 }
 
-// SFTODO: DOXYGEN
+/**
+ * Transform a "bitmap coordinate" (posx, posy) from a specific heightmap layer to a TileIndex used to
+ * access the main map.
+ *
+ * @note This may return INVALID_TILE for some inputs, because the map derived from a heightmap is slightly
+ * smaller in both dimensions.
+ *
+ * @param heightmap_layer the heightmap layer posx and posy are associated with
+ * @param posx X coordinate within heightmap_layer
+ * @param posy Y coordinate within heightmap_layer
+ * @returns TileIndex for the corresponding map tile, or INVALID_TILE if there isn't one
+ */
 TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *heightmap_layer, uint posx, uint posy)
 {
 	std::cout << "SFTODOWW BEFORE TRANSFORM POSX " << posx << " POSY " << posy << std::endl;
@@ -616,7 +612,7 @@ TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *heightmap_l
 		const HeightmapLayer *height_layer = this->layers[HLT_HEIGHTMAP];
 		posx = (posx * height_layer->width) / heightmap_layer->width;
 		posy = (posy * height_layer->height) / heightmap_layer->height;
-		std::cout << "SFTODOWW DISTORY-ONLY TRANSFORM POSX " << posx << " POSY " << posy << std::endl;
+		std::cout << "SFTODOWW DISTORT-ONLY TRANSFORM POSX " << posx << " POSY " << posy << std::endl;
 	}
 
 	// (posx, posy) coordinates use the lower left corner as (0, 0). The following code is an inversion
@@ -625,7 +621,6 @@ TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *heightmap_l
 	const uint img_col = posx;
 	const uint img_row = heightmap_layer->height - 1 - posy;
 
-	// SFTODO INVERSION WIP
 	uint row = this->row_pad + ((img_row * this->img_scale) / num_div);
 	uint col;
 	uint mapx;

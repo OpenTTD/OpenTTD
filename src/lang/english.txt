@@ -2869,8 +2869,8 @@ STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Change s
 STR_MAPGEN_HEIGHTMAP_ERROR_OPENING_EHM				:Error opening extended heightmap
 STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_METADATA			:Error parsing extended heightmap metadata
 STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_VERSION			:Extended heightmap metadata is in an unsupported format
-STR_MAPGEN_HEIGHTMAP_ERROR_NO_HEIGHT_LAYER_EXTENSION		:No extension present on height layer filename
-STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_HEIGHT_LAYER_EXTENSION	:Unsupported height layer type
+STR_MAPGEN_HEIGHTMAP_ERROR_NO_HEIGHT_LAYER_EXTENSION		:No extension present on extended heightmap height layer filename
+STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_HEIGHT_LAYER_EXTENSION	:Unsupported height layer type in extended heightmap
 STR_MAPGEN_HEIGHTMAP_ERROR_PARSING_TOWN_FILE			:Error parsing extended heightmap town file
 STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_MISSING			:Extended heightmap "{RAW_STRING}" group is missing
 STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_MISSING_ITEM			:Extended heightmap "{RAW_STRING}" group has missing item "{RAW_STRING}"
