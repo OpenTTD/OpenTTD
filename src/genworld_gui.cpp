@@ -351,7 +351,7 @@ struct GenerateLandscapeWindow : public Window {
 		this->mode = (GenerateLandscapeWindowMode)this->window_number;
 
 		/* Disable town, industry and trees in SE */
-		this->SetWidgetDisabledState(WID_GL_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
+		this->SetWidgetDisabledState(WID_GL_TOWN_PULLDOWN,     (_game_mode == GM_EDITOR) || ((mode == GLWM_HEIGHTMAP) && (_extended_heightmap_gui->layers[HLT_TOWN] != nullptr)));
 		this->SetWidgetDisabledState(WID_GL_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
 		this->SetWidgetDisabledState(WID_GL_TREE_PULLDOWN,     _game_mode == GM_EDITOR);
 
@@ -392,7 +392,9 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_SNOW_LEVEL_TEXT:      SetDParam(0, _settings_newgame.game_creation.snow_line_height); break;
 
 			case WID_GL_TOWN_PULLDOWN:
-				if (_game_mode == GM_EDITOR) {
+				if (mode == GLWM_HEIGHTMAP && (_extended_heightmap_gui->layers[HLT_TOWN] != nullptr)) {
+					SetDParam(0, STR_NUM_CUSTOM);
+				} else if (_game_mode == GM_EDITOR) {
 					SetDParam(0, STR_CONFIG_SETTING_OFF);
 				} else if (_settings_newgame.difficulty.number_towns == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
 					SetDParam(0, STR_NUM_CUSTOM_NUMBER);
