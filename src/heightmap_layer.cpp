@@ -14,6 +14,7 @@
 #include "heightmap_layer_base.h"
 #include "error.h"
 #include "fileio_func.h"
+#include "ini_helper.h"
 #include "ini_type.h"
 #include "string_func.h"
 
@@ -62,92 +63,45 @@ TownLayer::TownLayer(uint width, uint height, uint default_radius, const char *f
 		return;
 	}
 
+	// SFTODO: NOT HERE - WE SHOULD VALIDATE WIDTH AND HEIGHT OF ALL LAYERS ARE POWERS OF 2 AND NOT SMALLER THAN 64 oR WHATEVER LOWER LIMIT IS
 	for (IniGroup *town_group = ini.group; town_group != nullptr; town_group = town_group->next) {
-		IniItem *name = town_group->GetItem("name", false);
-		if (name == nullptr) {
-			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_TOWN_NAME, INVALID_STRING_ID, WL_ERROR);
-			return;
-		}
-		std::cout << "SFTODOA1 " << name->value << std::endl; // SFTODO TEMP
+		const char *name;
+		if (!GetStrGroupItem(town_group, "name", nullptr, &name)) return;
+		std::cout << "SFTODOA1 " << name << std::endl; // SFTODO TEMP
 
-		IniItem *posx = town_group->GetItem("posx", false);
-		if (posx == nullptr) {
-			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_POSX, INVALID_STRING_ID, WL_ERROR);
-			return;
-		}
+		uint posx;
+		if (!GetUIntGroupItemWithValidation(town_group, "posx", GET_ITEM_NO_DEFAULT, width - 1, &posx)) return;
 
-		IniItem *posy = town_group->GetItem("posy", false);
-		if (posy == nullptr) {
-			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_POSY, INVALID_STRING_ID, WL_ERROR);
-			return;
-		}
+		uint posy;
+		if (!GetUIntGroupItemWithValidation(town_group, "posy", GET_ITEM_NO_DEFAULT, height - 1, &posy)) return;
 
-		IniItem *radius_item = town_group->GetItem("radius", false);
-		uint radius = default_radius;
-		if (radius_item != nullptr) {
-			radius = atoi(radius_item->value); // SFTODO NO ERROR CHECKING!
-		}
+		uint radius;
+		if (!GetUIntGroupItemWithValidation(town_group, "radius", default_radius, 32, &radius)) return;
 
-		IniItem *size_item = town_group->GetItem("size", false);
-		if (size_item == nullptr) {
-			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_SIZE, INVALID_STRING_ID, WL_ERROR);
-			return;
-		}
-		// SFTODO: CASE SENSITIVITY
-		TownSize size;
-		if (strcmp(size_item->value, "small") == 0) {
-			size = TSZ_SMALL;
-		} else if (strcmp(size_item->value, "medium") == 0) {
-			size = TSZ_MEDIUM;
-		} else if (strcmp(size_item->value, "large") == 0) {
-			size = TSZ_LARGE;
-		} else if (strcmp(size_item->value, "random") == 0) {
-			size = TSZ_RANDOM;
-		} else {
-			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_SIZE, INVALID_STRING_ID, WL_ERROR);
-			return;
-		}
+		static EnumGroupMap size_lookup({
+			{"small",  TSZ_SMALL},
+			{"medium", TSZ_MEDIUM},
+			{"large",  TSZ_LARGE},
+			{"random", TSZ_RANDOM}});
+		uint size;
+		if (!GetEnumGroupItem(town_group, "size", GET_ITEM_NO_DEFAULT, size_lookup, &size)) return;
 
-		bool is_city = false;
-		IniItem *city = town_group->GetItem("city", false);
-		if (city != nullptr) {
-			// SFTODO: CASE SENSITIVITY?
-			if (strcmp(city->value, "false") == 0) {
-				is_city = false;
-			} else if (strcmp(city->value, "true") == 0) {
-				is_city = true;
-			} else {
-				ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_CITY, INVALID_STRING_ID, WL_ERROR);
-				return;
-			}
-		}
+		static EnumGroupMap bool_lookup({
+			{"false", false},
+			{"true", true}});
+		uint is_city;
+		if (!GetEnumGroupItem(town_group, "city", false, bool_lookup, &is_city)) return;
 
-		IniItem *layout_item = town_group->GetItem("layout", false);
-		if (layout_item == nullptr) {
-			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_MISSING_LAYOUT, INVALID_STRING_ID, WL_ERROR);
-			return;
-		}
-		TownLayout layout;
-		// SFTODO: CASE SENSITIVITY
-		if (strcmp(layout_item->value, "original") == 0) {
-			layout = TL_ORIGINAL;
-		} else if (strcmp(layout_item->value, "better") == 0) {
-			layout = TL_BETTER_ROADS;
-		} else if (strcmp(layout_item->value, "2x2") == 0) {
-			layout = TL_2X2_GRID;
-		} else if (strcmp(layout_item->value, "3x3") == 0) {
-			layout = TL_3X3_GRID;
-		} else if (strcmp(layout_item->value, "random") == 0) {
-			layout = TL_RANDOM;
-		} else {
-			ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_LAYOUT, INVALID_STRING_ID, WL_ERROR);
-			return;
-		}
+		static EnumGroupMap layout_lookup({
+			{"original", TL_ORIGINAL},
+			{"better",   TL_BETTER_ROADS},
+			{"2x2",      TL_2X2_GRID},
+			{"3x3",      TL_3X3_GRID},
+			{"random",   TL_RANDOM}});
+		uint layout;
+		if (!GetEnumGroupItem(town_group, "layout", TL_RANDOM, layout_lookup, &layout)) return;
 
-		// SFTODO: USE OF ATOI() MEANS NO ERROR CHECKING - EXCEPT THIS SUPER CRUDE BIT OF EXTRA
-		assert(atoi(posx->value) < width);
-		assert(atoi(posy->value) < height);
-		this->towns.emplace_back(name->value, atoi(posx->value), atoi(posy->value), radius, size, is_city, layout);
+		this->towns.emplace_back(name, posx, posy, radius, static_cast<TownSize>(size), is_city, static_cast<TownLayout>(layout));
 	}
 
 	this->valid = true;
