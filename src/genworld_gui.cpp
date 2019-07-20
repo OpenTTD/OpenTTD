@@ -305,11 +305,6 @@ static void StartGeneratingLandscapeFromExtendedHeightmap() {
 	}
 	std::cout << "SFTODO: StartGeneratingLandscapeFromExtendedHeightmap EHM WIDTH " << _extended_heightmap_gui->width << " EHM HEIGHT " << _extended_heightmap_gui->height << std::endl;
 
-#if 0 // SFTODO: IT'S TOO EARLY - THE MAP SIZES HAVEN'T BEEN SET UP YET
-        /* Now the user has had a chance to adjust the parameters, transform the layers for rotation and scale. */
-	_extended_heightmap_gui->Transform();
-#endif
-
 	_extended_heightmap = _extended_heightmap_gui;
 	_extended_heightmap_gui = NULL;
 
@@ -362,9 +357,6 @@ struct GenerateLandscapeWindow : public Window {
 		/* Stop any extended heightmap from a previous game carrying over. */
 		_extended_heightmap = nullptr;
 
-		// EHTODO: Is this correct? I think updating _settings_newgame means the values will persist the next
-		// time a new game is started. This may be OK.
-		// SFTODO: WE MAY NEED TO DO SOMETHING TO MAKE SURE THESE PARAMETERS ARE COPIED BACK INTO _extended_heightmap_gui WHEN THE USER DISMISSES THE DIALOG - STARTGENERATINGLANDSCAPEBLAH() IS PROBABLY THE PLCE TO DO THIS, THINK IT ALREADY DOES SOME
 		if (mode == GLWM_HEIGHTMAP) {
 			// EHTODO: Some parameters (e.g. min_map_desired_height) are not shown on the dialog. Apart from anything else,
 			// this probably opens the possibility for the user to create invalid things by editing, e.g. making max_map_desired_height < min_map_desired_height.
@@ -373,19 +365,14 @@ struct GenerateLandscapeWindow : public Window {
 			_settings_newgame.game_creation.snow_line_height = _extended_heightmap_gui->snow_line_height;
 			std::cout << "SFTODOQ9B " << static_cast<int>(_extended_heightmap_gui->rotation) << std::endl;
 			_settings_newgame.game_creation.heightmap_rotation = _extended_heightmap_gui->rotation;
-			// _settings_newgame.game_creation.landscape = _extended_heightmap_gui->SFTODO;
 			// SFTODO: SOMEWHERE WE SHOULD BE CHECKING IF _extended_heightmap_gui->{width,height} ARE BOTH POWERS OF 2 AND ERRORING IF NOT
 			std::cout << "SFTODO ABOUT TO INIT MAP X/Y IN GLW WIDTH " << _extended_heightmap_gui->width << " HEIGHT " << _extended_heightmap_gui->height << std::endl;
 			_settings_newgame.game_creation.map_x = FindLastBit(_extended_heightmap_gui->width);
 			_settings_newgame.game_creation.map_y = FindLastBit(_extended_heightmap_gui->height);
-#if 1 // SFTODO
 			if (_extended_heightmap_gui->rotation == HM_CLOCKWISE) {
 				std::swap(_settings_newgame.game_creation.map_x, _settings_newgame.game_creation.map_y);
 			}
-#endif
 			_settings_newgame.game_creation.landscape = _extended_heightmap_gui->landscape;
-			// SFTODO: OTHERS
-			// SFTODO: I NEED A NON-SQUARE TEST CASE TO HELP TEST ROTATION IS BEING HANDLED CORRECTLY ESP WRT X/Y DIMENSIONS
 		}
 
 		this->OnInvalidateData();
@@ -437,7 +424,6 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: SetDParam(0, _rotation[_settings_newgame.game_creation.heightmap_rotation]); break;
 
 			case WID_GL_HEIGHTMAP_SIZE_TEXT:
-				// SFTODO: SHOULD WE SHOW THE HEIGHT LAYER'S NATIVE SIZE HERE INSTEAD?
 				if (_settings_newgame.game_creation.heightmap_rotation == HM_CLOCKWISE) {
 					SetDParam(0, _extended_heightmap_gui->height);
 					SetDParam(1, _extended_heightmap_gui->width);
@@ -527,8 +513,6 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_HEIGHTMAP_SIZE_TEXT:
-				//assert(false); // SFTODO: THIS HAS NO ROTATION CODE UNLIKE OTHER CASE FOR WID_GL_HEIGHTMAP_SIZE_TEXT, IS IT EXECUTED? YES
-				// SFTODO: SHOULD WE SHOW THE HEIGHT LAYER'S NATIVE SIZE HERE INSTEAD?
 				SetDParam(0, _extended_heightmap_gui->width);
 				SetDParam(1, _extended_heightmap_gui->height);
 				*size = maxdim(*size, GetStringBoundingBox(STR_MAPGEN_HEIGHTMAP_SIZE));
@@ -904,7 +888,6 @@ static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 		} else {
 			_extended_heightmap_gui->LoadLegacyHeightmap(_file_to_saveload.detail_ftype, _file_to_saveload.name, _file_to_saveload.title);
 		}
-		// SFTODO: Make sure LoadExtendedHeightmap() leaves the extended heightmap invalid if appropriate
 		/* If the extended heightmap is not valid, it means there was a problem loading the heightmap. */
 		if (!_extended_heightmap_gui->IsValid()) {
 			delete _extended_heightmap_gui;

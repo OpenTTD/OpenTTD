@@ -114,7 +114,7 @@ public:
 	/** Do the scan for Tars. */
 	static uint DoScan(TarScanner::Mode mode);
 
-	// SFTODO: I added this function, it's a massive hack; I am sure I'm not using TarScanner correctly.
+	// EHTODO: I added this function, it's a massive hack; I am sure I'm not using TarScanner correctly.
 	void Reset(Subdirectory sd);
 };
 

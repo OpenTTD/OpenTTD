@@ -2877,6 +2877,7 @@ STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_MISSING_ITEM			:Extended heightmap "{RAW_STRING
 STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_NONNUMERIC_ITEM		:Extended heightmap "{RAW_STRING}" group has non-numeric item "{RAW_STRING}"
 STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_ITEM_TOO_LARGE			:Extended heightmap "{RAW_STRING}" group has too large a value for item "{RAW_STRING}" (maximum is {NUM})
 STR_MAPGEN_HEIGHTMAP_ERROR_GROUP_INVALID_ENUM			:Extended heightmap "{RAW_STRING}" group has invalid item "{RAW_STRING}"
+STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_DIMENSIONS			:Extended heightmap dimensions {NUM}x{NUM} for group "{RAW_STRING}" are invalid
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenario Type

@@ -30,8 +30,6 @@
 
 #include "safeguards.h"
 
-#define SFTODOMAXMAXDIMENSION 4096 // SFTODO SUPER TEMP JUST SO I HAVE A PLACEHOLDER TO USE, VALUE PROB NOT CORRECT AND PROB SHOULDN'T BE A #DEFINE
-
 /**
  * Convert RGB colours to Grayscale using 29.9% Red, 58.7% Green, 11.4% Blue
  *  (average luminosity formula, NTSC Colour Space)
@@ -338,6 +336,19 @@ struct MetadataIniFile : IniLoadFile {
         }
 };
 
+// SFTODO: DOXYGEN
+static bool DimensionsValid(const char *name, uint width, uint height)
+{
+	if ((width < MIN_MAP_SIZE) || (width > MAX_MAP_SIZE) || (height < MIN_MAP_SIZE) || (height > MAX_MAP_SIZE)) {
+		SetDParam(0, width);
+		SetDParam(1, height);
+		SetDParamStr(2, name);
+		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_INVALID_DIMENSIONS, INVALID_STRING_ID, WL_ERROR);
+		return false;
+	}
+	return true;
+}
+
 /**
  * Allows to create an extended heightmap from a .ehm file (a tar file containing special
  * files).
@@ -398,9 +409,9 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	this->landscape = static_cast<LandscapeType>(climate);
 
 	uint metadata_width;
-	if (!GetUIntGroupItemWithValidation(extended_heightmap_group, "width", 0, SFTODOMAXMAXDIMENSION, &metadata_width)) return;
+	if (!GetUIntGroupItemWithValidation(extended_heightmap_group, "width", 0, MAX_MAP_SIZE, &metadata_width)) return;
 	uint metadata_height;
-	if (!GetUIntGroupItemWithValidation(extended_heightmap_group, "height", 0, SFTODOMAXMAXDIMENSION, &metadata_height)) return;
+	if (!GetUIntGroupItemWithValidation(extended_heightmap_group, "height", 0, MAX_MAP_SIZE, &metadata_height)) return;
 
 	/* Try to load the heightmap layer. */
 	IniGroup *height_layer_group;
@@ -455,6 +466,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		this->width = (metadata_width != 0) ? metadata_width : height_layer->width;
 		this->height = (metadata_height != 0) ? metadata_height : height_layer->height;
 	}
+	if (!DimensionsValid(extended_heightmap_group->name, this->width, this->height)) return;
 
 	std::cout << "SFTODO: AT THIS PROBABLY TOO EARLY POINT EHM WIDTH IS " << this->width << ", HEIGHT IS " << this->height << std::endl;
 
@@ -463,13 +475,15 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	IniGroup *town_layer_group = nullptr;
 	if (GetGroup(metadata, "town_layer", true, &town_layer_group)) {
 		uint town_layer_width;
-		if (!GetUIntGroupItemWithValidation(town_layer_group, "width", GET_ITEM_NO_DEFAULT, SFTODOMAXMAXDIMENSION, &town_layer_width)) return;
+		if (!GetUIntGroupItemWithValidation(town_layer_group, "width", GET_ITEM_NO_DEFAULT, MAX_MAP_SIZE, &town_layer_width)) return;
 		uint town_layer_height;
-		if (!GetUIntGroupItemWithValidation(town_layer_group, "height", GET_ITEM_NO_DEFAULT, SFTODOMAXMAXDIMENSION, &town_layer_height)) return;
+		if (!GetUIntGroupItemWithValidation(town_layer_group, "height", GET_ITEM_NO_DEFAULT, MAX_MAP_SIZE, &town_layer_height)) return;
 		const char *town_layer_file;
 		if (!GetStrGroupItem(town_layer_group, "file", nullptr, &town_layer_file)) return;
 		uint default_radius;
 		if (!GetUIntGroupItemWithValidation(town_layer_group, "radius", 5, 32, &default_radius)) return;
+
+		if (!DimensionsValid(town_layer_group->name, town_layer_width, town_layer_height)) return;
 
 		town_layer = std::auto_ptr<TownLayer>(new TownLayer(town_layer_width, town_layer_height, default_radius, town_layer_file));
 		if (!town_layer->valid) {
@@ -478,12 +492,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		}
 	}
 
-
-
-
-	// SFTODO: NO LATER THAN THIS POINT, I SHOULD DO OTHER VALIDATION (EG MIN HEIGHT < MAX HEIGHT AND STUFF LIKE THAT)
-
-	/* Now we've loaded everything, populate the layers in this object. SFTODO: BEST APPROACH? */
+	/* Now we've loaded everything, populate the layers in this object. This way it won't be valid if we returned earlier. */
 	this->layers[HLT_HEIGHTMAP] = height_layer.release();
 	if (town_layer.get() != nullptr) {
 		this->layers[HLT_TOWN] = town_layer.release();
