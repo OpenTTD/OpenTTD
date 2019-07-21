@@ -94,7 +94,7 @@ bool GetEnumGroupItem(IniGroup *group, const char *item_name, uint default_value
 		return true;
 	}
 	// EHTODO: This will be case-sensitive. Does that matter? If it does, what's the nicest way to handle it? Just iterate
-	// through the map ourselves (it won't be huge) and use strnatcmp() to compare item_value with each key in turn?
+	// through the map ourselves (it won't be huge) and use strcasecmp() to compare item_value with each key in turn?
 	auto it = lookup.find(std::string(item_value));
 	if (it == lookup.end()) {
 		SetDParamStr(0, group->name);

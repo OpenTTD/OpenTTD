@@ -355,7 +355,7 @@ struct GenerateLandscapeWindow : public Window {
 		_extended_heightmap = nullptr;
 
 		if (mode == GLWM_HEIGHTMAP) {
-			// We need to prevent the user lowering max_map_desired_height below min_map_desired_height.
+			/* We need to prevent the user lowering max_map_desired_height below min_map_desired_height. */
 			// EHTODO: Currently min_map_desired_height is not visible or editable in this dialog.
 			this->min_max_heightlevel = max(_extended_heightmap_gui->min_map_desired_height, static_cast<byte>(MIN_MAX_HEIGHTLEVEL));
 			_settings_newgame.construction.max_heightlevel = _extended_heightmap_gui->max_map_desired_height;

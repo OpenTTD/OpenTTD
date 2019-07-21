@@ -438,9 +438,9 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 		return;
 	}
 	DetailedFileType heightmap_dft;
-	if (strnatcmp(ext, ".png") == 0) {
+	if (strcasecmp(ext, ".png") == 0) {
 		heightmap_dft = DFT_HEIGHTMAP_PNG;
-	} else if (strnatcmp(ext, ".bmp") == 0) {
+	} else if (strcasecmp(ext, ".bmp") == 0) {
 		heightmap_dft = DFT_HEIGHTMAP_BMP;
 	} else {
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_UNSUPPORTED_HEIGHT_LAYER_EXTENSION, INVALID_STRING_ID, WL_ERROR);
@@ -450,7 +450,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	bool ok = ReadHeightMap(heightmap_dft, heightmap_filename2, &height_layer->width, &height_layer->height, &height_layer->information);
 	free(heightmap_filename2);
 	if (!ok) {
-		// ReadHeightMap() will have displayed an error itself
+		/* ReadHeightMap() will have displayed an error itself. */
 		return;
 	}
 
@@ -483,7 +483,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 
 		town_layer = std::auto_ptr<TownLayer>(new TownLayer(town_layer_width, town_layer_height, default_radius, town_layer_file));
 		if (!town_layer->valid) {
-			// TownLayer()'s constructor will have reported the error
+			/* TownLayer()'s constructor will have reported the error. */
 			return;
 		}
 	}
@@ -604,20 +604,24 @@ TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *heightmap_l
 	assert(posx < heightmap_layer->width);
 	assert(posy < heightmap_layer->height);
 
-	// The height layer never distorts; it may be rotated and scaled, but it maintains its aspect
-	// ratio. Other layers may have a different aspect ratio than the height layer, and they need
-	// to be stretched to match the height layer before any further processing. (If we didn't allow
-	// different aspect ratios, we could ignore the height layer here and just run the calculations
-	// from CalculateScaleFactors() using this layer's width/height.)
+	/**
+	 * The height layer never distorts; it may be rotated and scaled, but it maintains its aspect
+	 * ratio. Other layers may have a different aspect ratio than the height layer, and they need
+	 * to be stretched to match the height layer before any further processing. (If we didn't allow
+	 * different aspect ratios, we could ignore the height layer here and just run the calculations
+	 * from CalculateScaleFactors() using this layer's width/height.)
+	 */
 	if (heightmap_layer->type != HLT_HEIGHTMAP) {
 		const HeightmapLayer *height_layer = this->layers[HLT_HEIGHTMAP];
 		posx = (posx * height_layer->width) / heightmap_layer->width;
 		posy = (posy * height_layer->height) / heightmap_layer->height;
 	}
 
-	// (posx, posy) coordinates use the lower left corner as (0, 0). The following code is an inversion
-	// of the logic in ApplyHeightLayer() so we want to work in terms of the internal bitmap
-	// coordinates which have the upper left corner as (0, 0).
+	/**
+	 * (posx, posy) coordinates use the lower left corner as (0, 0). The following code is an inversion
+	 * of the logic in ApplyHeightLayer() so we want to work in terms of the internal bitmap
+	 * coordinates which have the upper left corner as (0, 0).
+	 */
 	const uint img_col = posx;
 	const uint img_row = heightmap_layer->height - 1 - posy;
 
@@ -641,8 +645,7 @@ TileIndex ExtendedHeightmap::TransformedTileXY(const HeightmapLayer *heightmap_l
 		default: NOT_REACHED();
 	}
 
-	// Because (for example) a 512x512 heightmap only gives a 510x510 map, (mapx, mapy) may not lie within
-	// the map bounds.
+	/* Because (for example) a 512x512 heightmap only gives a 510x510 map, (mapx, mapy) may not lie within the map bounds. */
 	if ((mapx > MapMaxX()) || (mapy > MapMaxY())) return INVALID_TILE;
 
 	return TileXY(mapx, mapy);
@@ -706,10 +709,12 @@ void ExtendedHeightmap::ApplyHeightLayer(const HeightmapLayer *height_layer)
 					// EHTODO: log any kind of warning!?
 					tile_height = max_map_height;
 				}
-				// If min_map_desired_height is 0 we use the same approach as legacy heightmaps, where 0 is sea
-				// and anything above it is land. We need this for compatibility with legacy heightmaps,
-				// because simply scaling the greyscale value into the range [min_map_desired_height, max_map_desired_height]
-				// will map very-small-but-non-zero greyscales to sea, which may have a dramatic effect on the resulting map.
+				/**
+				 * If min_map_desired_height is 0 we use the same approach as legacy heightmaps, where 0 is sea
+				 * and anything above it is land. We need this for compatibility with legacy heightmaps,
+				 * because simply scaling the greyscale value into the range [min_map_desired_height, max_map_desired_height]
+				 * will map very-small-but-non-zero greyscales to sea, which may have a dramatic effect on the resulting map.
+				 */
 				// EHTODO: This might be worth tweaking, e.g. perhaps for extended heightmaps we always use the new-style
 				// calculation, or maybe we use the new-style calculation iff there's a water layer in the extended heightmap.
 				// I think it's likely to be clearer what's the right thing to do when water layer support is added, as it
