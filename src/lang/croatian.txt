@@ -4293,7 +4293,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skripta Igre
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zatvori
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetiraj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Broj dana za start ovog UI-ja nakon prethodnog (otprilike): {ORANGE}{STRING}
 
 
 # Textfile window

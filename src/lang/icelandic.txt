@@ -3770,7 +3770,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Leikja forskrif
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Loka
 STR_AI_SETTINGS_RESET                                           :{BLACK}Frumstilla
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Hversu mörgum dögum eftir síðustu gervigreind á að hlaða þessari (sirka): {ORANGE}{STRING}
 
 
 # Textfile window

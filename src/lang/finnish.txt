@@ -4194,7 +4194,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Peliskripti
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulje
 STR_AI_SETTINGS_RESET                                           :{BLACK}Palauta
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Päiviä edellisen tekoälyn aloittamisesta tämän tekoälyn aloittamiseen (arvio): {ORANGE}{STRING}
 
 
 # Textfile window

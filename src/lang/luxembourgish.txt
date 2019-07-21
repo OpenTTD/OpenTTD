@@ -4196,7 +4196,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spill-Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zoumaachen
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Unzuel un Deeg wou des KI gestart gëtt no der leschter: {ORANGE}{STRING}
 
 
 # Textfile window

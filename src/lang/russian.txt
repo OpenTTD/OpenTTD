@@ -4389,7 +4389,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Игровой 
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрыть
 STR_AI_SETTINGS_RESET                                           :{BLACK}Сброс
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Запускать этот ИИ через {ORANGE}{STRING} д{P 0:1 ень ня ней} после предыдущего
 
 
 # Textfile window

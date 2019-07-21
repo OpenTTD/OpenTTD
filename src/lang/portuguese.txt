@@ -4162,7 +4162,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de jogo
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Repor
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Número de dias para iniciar esta IA depois da anterior (aproximadamente): {ORANGE}{STRING}
 
 
 # Textfile window

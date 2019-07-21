@@ -4260,7 +4260,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Játékszkript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Bezárás
 STR_AI_SETTINGS_RESET                                           :{BLACK}Visszaállítás
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Az előző MI indításától eltelt napok száma ezen MI indításáig (megközelítőleg): {ORANGE}{STRING}
 
 
 # Textfile window

@@ -4038,7 +4038,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Sgript Gêm
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cau
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ailosod
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Nifer o ddiwrnodau i aros wedi dechrau AI blaenorol cyn dechrau hon (fwy neu lai): {ORANGE}{STRING}
 
 
 # Textfile window

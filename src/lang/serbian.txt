@@ -4244,7 +4244,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skripta Partije
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zatvori
 STR_AI_SETTINGS_RESET                                           :{BLACK}Poništi
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Broj dana za pokretanje ove VI posle prethodne (otprilike): {ORANGE}{STRING}
 
 
 # Textfile window

@@ -4248,7 +4248,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Δέσμη Εν
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Κλείσιμο
 STR_AI_SETTINGS_RESET                                           :{BLACK}Επαναφορά
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Αριθμός ημερών για την εκκίνηση της επόμενης AI μετά από τη προηγούμενη (περίπου): {ORANGE}{STRING}
 
 
 # Textfile window

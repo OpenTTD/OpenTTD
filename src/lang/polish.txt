@@ -4583,7 +4583,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zamknij
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetuj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Liczba dni, aby aktywować tą SI po uruchomieniu poprzedniej (zwiększ lub zmniejsz): {ORANGE}{STRING}
 
 
 # Textfile window

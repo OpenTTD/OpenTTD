@@ -4076,7 +4076,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :סקריפט מ
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}סגור
 STR_AI_SETTINGS_RESET                                           :{BLACK}אתחל
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :מספר הימים להתחלת שחקן מחשב זה אחרי הקודם (פחות או יותר): {ORANGE}{STRING}
 
 
 # Textfile window

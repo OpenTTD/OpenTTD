@@ -4208,7 +4208,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spēles skripts
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Aizvērt
 STR_AI_SETTINGS_RESET                                           :{BLACK}Atiestatīt
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Aptuvenais dienu skaits, līdz palaist šo MI pēc iepriekšējā: {ORANGE}{STRING}
 
 
 # Textfile window

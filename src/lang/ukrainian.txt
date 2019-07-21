@@ -4308,7 +4308,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Ігровий 
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрити
 STR_AI_SETTINGS_RESET                                           :{BLACK}Скидання
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Кількість днів до запуску цього АІ після запуску попереднього АІ: {ORANGE}{STRING}
 
 
 # Textfile window

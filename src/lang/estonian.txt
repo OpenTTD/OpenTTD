@@ -4115,7 +4115,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulge
 STR_AI_SETTINGS_RESET                                           :{BLACK}Nulli
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Päevade arv eelmise tehismõistuse alustamisest pärast mida antud tehismõistus alustab (umbkaudne): {ORANGE}{STRING}
 
 
 # Textfile window

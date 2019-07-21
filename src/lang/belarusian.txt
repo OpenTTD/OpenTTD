@@ -4387,7 +4387,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Гульнёв�
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрыць
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ськід
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Колькасьць дзён да старту гэтага AI/ШI пасьля папярэдняга: {ORANGE}{STRING}
 
 
 # Textfile window

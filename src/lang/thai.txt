@@ -3917,7 +3917,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}ปิด
 STR_AI_SETTINGS_RESET                                           :{BLACK}เริ่มใหม่
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :จำนวนที่จะให้เริ่มต้น AI นี้หลังจากที่มีการเริ่มต้น AI ก่อนหน้านี้ไป: {ORANGE}{STRING}
 
 
 # Textfile window

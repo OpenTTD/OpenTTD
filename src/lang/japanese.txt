@@ -4005,7 +4005,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :ゲームスク
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}閉じる
 STR_AI_SETTINGS_RESET                                           :{BLACK}リセット
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :AI企業の設立間隔(倒産/買収後): {ORANGE}{STRING}
 
 
 # Textfile window

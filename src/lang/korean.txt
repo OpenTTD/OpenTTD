@@ -4198,7 +4198,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :게임 스크�
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}닫기
 STR_AI_SETTINGS_RESET                                           :{BLACK}초기화
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :이전 인공지능 이후 이 인공지능이 나타나기 위한 날짜수: {ORANGE}약 {STRING}일
 
 
 # Textfile window

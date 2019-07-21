@@ -3529,7 +3529,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spæl Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Lat aftur
 STR_AI_SETTINGS_RESET                                           :{BLACK}Endurstilla
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Tali av døgum til hetta AI byrjar aftaná tað fyrra (umleið): {ORANGE}{STRING}
 
 
 # Textfile window

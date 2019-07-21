@@ -4226,7 +4226,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Chiudi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reimposta
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Giorni da attendere per l'avvio di questa IA dopo la precedente (approssimativo): {ORANGE}{STRING}
 
 
 # Textfile window
