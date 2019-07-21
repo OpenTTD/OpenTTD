@@ -14,6 +14,7 @@
 
 #include "stdafx.h"
 #include "heightmap_layer_type.h"
+#include <string>
 #include <vector>
 #include "town_type.h"
 #include "heightmap_type.h"
