@@ -431,7 +431,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	// access random files on the filesystem?
 	const char *heightmap_filename;
 	if (!GetStrGroupItem(height_layer_group, "file", nullptr, &heightmap_filename)) return;
-	std::auto_ptr<HeightmapLayer> height_layer(new HeightmapLayer(HLT_HEIGHTMAP));
+	std::unique_ptr<HeightmapLayer> height_layer(new HeightmapLayer(HLT_HEIGHTMAP));
 	const char *ext = strrchr(heightmap_filename, '.');
 	if (ext == nullptr) {
 		ShowErrorMessage(STR_MAPGEN_HEIGHTMAP_ERROR_NO_HEIGHT_LAYER_EXTENSION, INVALID_STRING_ID, WL_ERROR);
@@ -467,7 +467,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 	if (!DimensionsValid(extended_heightmap_group->name, this->width, this->height)) return;
 
 	/* Try to load the town layer. */
-	std::auto_ptr<TownLayer> town_layer;
+	std::unique_ptr<TownLayer> town_layer;
 	IniGroup *town_layer_group = nullptr;
 	if (GetGroup(metadata, "town_layer", true, &town_layer_group) && (town_layer_group != nullptr)) {
 		uint town_layer_width;
@@ -481,7 +481,7 @@ void ExtendedHeightmap::LoadExtendedHeightmap(char *file_path, char *file_name)
 
 		if (!DimensionsValid(town_layer_group->name, town_layer_width, town_layer_height)) return;
 
-		town_layer = std::auto_ptr<TownLayer>(new TownLayer(town_layer_width, town_layer_height, default_radius, town_layer_file));
+		town_layer.reset(new TownLayer(town_layer_width, town_layer_height, default_radius, town_layer_file));
 		if (!town_layer->valid) {
 			/* TownLayer()'s constructor will have reported the error. */
 			return;
