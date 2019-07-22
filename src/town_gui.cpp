@@ -31,6 +31,7 @@
 #include "townname_func.h"
 #include "core/geometry_func.hpp"
 #include "genworld.h"
+#include "stringfilter_type.h"
 #include "widgets/dropdown_func.h"
 
 #include "widgets/town_widget.h"
@@ -636,7 +637,7 @@ static const NWidgetPart _nested_town_directory_widgets[] = {
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TD_SORT_ORDER), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
 				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_TD_SORT_CRITERIA), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIA),
-				NWidget(WWT_PANEL, COLOUR_BROWN), SetResize(1, 0), EndContainer(),
+				NWidget(WWT_EDITBOX, COLOUR_BROWN, WID_TD_FILTER), SetFill(35, 12), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_BROWN, WID_TD_LIST), SetMinimalSize(196, 0), SetDataTip(0x0, STR_TOWN_DIRECTORY_LIST_TOOLTIP),
 							SetFill(1, 0), SetResize(0, 10), SetScrollbar(WID_TD_SCROLLBAR), EndContainer(),
@@ -661,6 +662,9 @@ private:
 	/* Constants for sorting towns */
 	static const StringID sorter_names[];
 	static GUITownList::SortFunction * const sorter_funcs[];
+
+	StringFilter string_filter;             ///< Filter for towns
+	QueryString townname_editbox;           ///< Filter editbox
 
 	GUITownList towns;
 
@@ -689,8 +693,8 @@ private:
 	/** Sort by town name */
 	static bool TownNameSorter(const Town * const &a, const Town * const &b)
 	{
-		static char buf_cache[64];
-		char buf[64];
+		static char buf_cache[MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH];
+		char buf[MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH];
 
 		SetDParam(0, a->index);
 		GetString(buf, STR_TOWN_NAME, lastof(buf));
@@ -739,7 +743,7 @@ private:
 	}
 
 public:
-	TownDirectoryWindow(WindowDesc *desc) : Window(desc)
+	TownDirectoryWindow(WindowDesc *desc) : Window(desc), townname_editbox(MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_TOWN_NAME_CHARS)
 	{
 		this->CreateNestedTree();
 
@@ -751,6 +755,9 @@ public:
 		this->BuildSortTownList();
 
 		this->FinishInitNested(0);
+
+		this->querystrings[WID_TD_FILTER] = &this->townname_editbox;
+		this->townname_editbox.cancel_button = QueryString::ACTION_CLEAR;
 	}
 
 	void SetStringParameters(int widget) const override
@@ -941,6 +948,14 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_TD_LIST);
 	}
 
+	virtual void OnEditboxChanged(int wid)
+	{
+		if (wid == WID_TD_FILTER) {
+			this->string_filter.SetFilterTerm(this->townname_editbox.text.buf);
+			this->InvalidateData(TDIWD_FILTER_CHANGES);
+		}
+	}
+
 	/**
 	 * Some data on this window has become invalid.
 	 * @param data Information about the changed data.
@@ -948,11 +963,41 @@ public:
 	 */
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
-		if (data == 0) {
-			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
-			this->towns.ForceRebuild();
-		} else {
-			this->towns.ForceResort();
+		char buf[MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH];
+
+		switch (data) {
+			case TDIWD_FORCE_REBUILD:
+				/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
+				this->towns.ForceRebuild();
+				break;
+
+			case TDIWD_FILTER_CHANGES:
+				if (this->string_filter.IsEmpty()) {
+					this->towns.ForceRebuild();
+				} else {
+					this->towns.clear();
+
+					const Town *t;
+					FOR_ALL_TOWNS(t) {
+						this->string_filter.ResetState();
+
+						SetDParam(0, t->index);
+						GetString(buf, STR_TOWN_NAME, lastof(buf));
+
+						this->string_filter.AddLine(buf);
+						if (this->string_filter.GetState()) this->towns.push_back(t);
+					}
+
+					this->towns.SetListing(this->last_sorting);
+					this->towns.ForceResort();
+					this->towns.Sort();
+					this->towns.shrink_to_fit();
+					this->towns.RebuildDone();
+					this->vscroll->SetCount(this->towns.size()); // Update scrollbar as well.
+				}
+				break;
+			default:
+				this->towns.ForceResort();
 		}
 	}
 };

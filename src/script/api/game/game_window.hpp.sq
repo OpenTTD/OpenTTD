@@ -1254,6 +1254,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TE_SWITCH_BAR,                         "WID_TE_SWITCH_BAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TD_SORT_ORDER,                         "WID_TD_SORT_ORDER");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TD_SORT_CRITERIA,                      "WID_TD_SORT_CRITERIA");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TD_FILTER,                             "WID_TD_FILTER");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TD_LIST,                               "WID_TD_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TD_SCROLLBAR,                          "WID_TD_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TD_WORLD_POPULATION,                   "WID_TD_WORLD_POPULATION");

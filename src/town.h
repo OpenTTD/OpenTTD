@@ -158,6 +158,12 @@ enum TownRatingCheckType {
 	TOWN_RATING_CHECK_TYPE_COUNT, ///< Number of town checking action types.
 };
 
+/** Special values for town list window for the data parameter of #InvalidateWindowData. */
+enum TownDirectoryInvalidateWindowData {
+	TDIWD_FORCE_REBUILD,
+	TDIWD_FILTER_CHANGES,        ///< The filename filter has changed (via the editbox)
+};
+
 /**
  * This enum is used in conjunction with town->flags.
  * IT simply states what bit is used for.

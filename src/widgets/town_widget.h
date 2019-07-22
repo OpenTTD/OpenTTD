@@ -16,6 +16,7 @@
 enum TownDirectoryWidgets {
 	WID_TD_SORT_ORDER,       ///< Direction of sort dropdown.
 	WID_TD_SORT_CRITERIA,    ///< Criteria of sort dropdown.
+	WID_TD_FILTER,           ///< Filter of name.
 	WID_TD_LIST,             ///< List of towns.
 	WID_TD_SCROLLBAR,        ///< Scrollbar for the town list.
 	WID_TD_WORLD_POPULATION, ///< The world's population.
