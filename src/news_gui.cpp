@@ -16,6 +16,7 @@
 #include "vehicle_base.h"
 #include "vehicle_func.h"
 #include "vehicle_gui.h"
+#include "roadveh.h"
 #include "station_base.h"
 #include "industry.h"
 #include "town.h"
@@ -32,6 +33,7 @@
 #include "company_base.h"
 #include "settings_internal.h"
 #include "guitimer_func.h"
+#include "group_gui.h"
 
 #include "widgets/news_widget.h"
 
@@ -181,6 +183,8 @@ static const NWidgetPart _nested_small_news_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, WID_N_CLOSEBOX),
 		NWidget(WWT_EMPTY, COLOUR_LIGHT_BLUE, WID_N_CAPTION), SetFill(1, 0),
+		NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_N_SHOW_GROUP), SetMinimalSize(14, 11), SetResize(1, 0),
+				SetDataTip(STR_NULL /* filled in later */, STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP),
 	EndContainer(),
 
 	/* Main part */
@@ -279,6 +283,27 @@ struct NewsWindow : Window {
 		/* For company news with a face we have a separate headline in param[0] */
 		if (desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->widget_data = this->ni->params[0];
 
+		NWidgetCore *nwid = this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP);
+		if (ni->reftype1 == NR_VEHICLE && nwid != nullptr) {
+			const Vehicle *v = Vehicle::Get(ni->ref1);
+			switch (v->type) {
+				case VEH_TRAIN:
+					nwid->widget_data = STR_TRAIN;
+					break;
+				case VEH_ROAD:
+					nwid->widget_data = RoadVehicle::From(v)->IsBus() ? STR_BUS : STR_LORRY;
+					break;
+				case VEH_SHIP:
+					nwid->widget_data = STR_SHIP;
+					break;
+				case VEH_AIRCRAFT:
+					nwid->widget_data = STR_PLANE;
+					break;
+				default:
+					break; // Do nothing
+			}
+		}
+
 		this->FinishInitNested(0);
 
 		/* Initialize viewport if it exists. */
@@ -354,6 +379,24 @@ struct NewsWindow : Window {
 				str = GetEngineInfoString(engine);
 				break;
 			}
+
+			case WID_N_SHOW_GROUP:
+				if (this->ni->reftype1 == NR_VEHICLE) {
+					Dimension d2 = GetStringBoundingBox(this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP)->widget_data);
+					d2.height += WD_CAPTIONTEXT_TOP + WD_CAPTIONTEXT_BOTTOM;
+					d2.width += WD_CAPTIONTEXT_LEFT + WD_CAPTIONTEXT_RIGHT;
+					*size = d2;
+				} else {
+					/* Hide 'Show group window' button if this news is not about a vehicle. */
+					size->width = 0;
+					size->height = 0;
+					resize->width = 0;
+					resize->height = 0;
+					fill->width = 0;
+					fill->height = 0;
+				}
+				return;
+
 			default:
 				return; // Do nothing
 		}
@@ -449,6 +492,12 @@ struct NewsWindow : Window {
 			case WID_N_VIEWPORT:
 				break; // Ignore clicks
 
+			case WID_N_SHOW_GROUP:
+				if (this->ni->reftype1 == NR_VEHICLE) {
+					const Vehicle *v = Vehicle::Get(this->ni->ref1);
+					ShowCompanyGroupForVehicle(v);
+				}
+				break;
 			default:
 				if (this->ni->reftype1 == NR_VEHICLE) {
 					const Vehicle *v = Vehicle::Get(this->ni->ref1);
