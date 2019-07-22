@@ -83,7 +83,8 @@ struct RoadFilter {
 };
 
 struct VehicleFilter {
-	bool descending_sort_order = false;
+	RailType railtype;   ///< Rail type to show, or #INVALID_RAILTYPE.
+	RoadType roadtype;   ///< Road type to show, or #INVALID_ROADTYPE.
 	bool show_hidden_engines = false;  ///< State of the 'show hidden engines' button.
 	CargoFilter cargo;
 	RailFilter rail;
@@ -104,15 +105,15 @@ int SmartChangeValue(int value, int delta, int min, int max) {
 	int power = 1;
 	delta = Clamp(delta, -1, 1);
 
-	if (value >= 8) power = 2;
-	if (value >= 20) power = 5;
-	if (value >= 40) power = 10;
-	if (value >= 80) power = 20;
-	if (value >= 200) power = 50;
-	if (value >= 400) power = 100;
-	if (value >= 800) power = 200;
-	if (value >= 2000) power = 500;
-	if (value >= 4000) power = 1000;
+	if (value >= 10) power = 1;
+	if (value >= 20) power = 2;
+	if (value >= 40) power = 5;
+	if (value >= 80) power = 10;
+	if (value >= 200) power = 20;
+	if (value >= 400) power = 50;
+	if (value >= 800) power = 100;
+	if (value >= 2000) power = 200;
+	if (value >= 4000) power = 500;
 
 	int basic = value / power + delta;
 	return Clamp(basic * power, min, max);
@@ -200,14 +201,12 @@ static const NWidgetPart _nested_build_vehicle_smart_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_BV_CAPTION), SetDataTip(STR_WHITE_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BV_FILTER_BUTTON), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BUILD_VEHICLE_FILTER, STR_BUILD_VEHICLE_FILTER_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	/* Filters... */
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BV_FILTER_BUTTON), SetResize(1, 0), SetFill(1, 0), SetMinimalSize(80, 20), SetDataTip(STR_BUILD_VEHICLE_FILTER, STR_BUILD_VEHICLE_FILTER_TOOLTIP),
-	EndContainer(),
+	/* Filters container... */
 	NWidget(NWID_SELECTION, COLOUR_GREY, WID_BV_FILTER_CONTAINER),
 		NWidget(WWT_PANEL, COLOUR_GREY),
 			NWidget(NWID_VERTICAL),
@@ -1328,9 +1327,8 @@ bool IsEnginePassFilter(const VehicleFilter& filter, const Engine* engine) {
 	}
 	if (is_wagon) {
 		// speed in km/h
-		uint speed = engine->GetDisplayMaxSpeed();
-
-		if (rail_filter.train.speed > speed) return false;
+		uint max_speed = engine->GetDisplayMaxSpeed();
+		if (max_speed != 0 && rail_filter.train.speed > max_speed) return false;
 	}
 	if (is_locomotive && rail_filter.train.weight > 0 && rail_filter.train.speed > 0) {
 		// speed in km/h
@@ -1363,13 +1361,9 @@ bool IsEnginePassFilter(const VehicleFilter& filter, const Engine* engine) {
 /** GUI for building vehicles. */
 struct BuildVehicleWindow : Window {
 	VehicleType vehicle_type;                   ///< Type of vehicles shown in the window.
-	union {
-		RailType railtype;   ///< Rail type to show, or #INVALID_RAILTYPE.
-		RoadType roadtype;   ///< Road type to show, or #INVALID_ROADTYPE.
-	} filter;                                   ///< Filter to apply.
+	VehicleFilter filter;                       ///< Smart filter to apply.
 	bool descending_sort_order;                 ///< Sort direction, @see _engine_sort_direction
 	byte sort_criteria;                         ///< Current sort criterium.
-	bool show_hidden_engines;                   ///< State of the 'show hidden engines' button.
 	bool listview_mode;                         ///< If set, only display the available vehicles and do not show a 'build' button.
 	EngineID sel_engine;                        ///< Currently selected engine, or #INVALID_ENGINE
 	EngineID rename_engine;                     ///< Engine being renamed.
@@ -1409,11 +1403,10 @@ struct BuildVehicleWindow : Window {
 
 		this->sort_criteria         = _engine_sort_last_criteria[type];
 		this->descending_sort_order = _engine_sort_last_order[type];
-		this->show_hidden_engines   = _engine_sort_show_hidden_engines[type];
 
-		VehicleFilter& filter = _engine_sort_filter[this->vehicle_type];
-		filter.descending_sort_order = this->descending_sort_order;
-		filter.show_hidden_engines = this->show_hidden_engines;
+		/* Load filter for this vehicle (copy) */
+		this->filter = _engine_sort_filter[this->vehicle_type];
+		this->filter.show_hidden_engines = _engine_sort_show_hidden_engines[type];
 
 		this->UpdateFilterByTile();
 
@@ -1441,7 +1434,7 @@ struct BuildVehicleWindow : Window {
 		widget = this->GetWidget<NWidgetCore>(WID_BV_SHOW_HIDDEN_ENGINES);
 		widget->widget_data = STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN + type;
 		widget->tool_tip    = STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP + type;
-		widget->SetLowered(this->show_hidden_engines);
+		widget->SetLowered(this->filter.show_hidden_engines);
 
 		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 10 : 9) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
@@ -1459,17 +1452,6 @@ struct BuildVehicleWindow : Window {
 		}
 		InvalidateData();
 	}
-
-
-	const VehicleFilter& getFilter() const {
-		if (this->vehicle_type < 0 || this->vehicle_type >= sizeof _engine_sort_filter) throw "Invalid vehicle type: " + this->vehicle_type;
-		return _engine_sort_filter[this->vehicle_type];
-	};
-
-	VehicleFilter& setFilter() {
-		if (this->vehicle_type < 0 || this->vehicle_type >= sizeof _engine_sort_filter) throw "Invalid vehicle type: " + this->vehicle_type;
-		return _engine_sort_filter[this->vehicle_type];
-	};
 
 	/** Set the filter type according to the depot type */
 	void UpdateFilterByTile()
@@ -1541,7 +1523,7 @@ struct BuildVehicleWindow : Window {
 			}
 		}
 		CargoID cargo = this->cargo_filter[this->cargo_filter_criteria];
-		this->setFilter().cargo.type = cargo;
+		this->filter.cargo.type = cargo;
 	//this->eng_list.SetFilterFuncs(_filter_funcs);
 	//this->eng_list.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
 	}
@@ -1619,7 +1601,6 @@ struct BuildVehicleWindow : Window {
 		int num_wagons  = 0;
 
 		const bool is_smart_menu = IsSmartMenu();
-		VehicleFilter& filter = _engine_sort_filter[this->vehicle_type];
 		this->eng_list.clear();
 
 		/* Make list of all available train engines and wagons.
@@ -1628,14 +1609,14 @@ struct BuildVehicleWindow : Window {
 		 * when engines become obsolete and are removed */
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
-			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
+			if (!this->filter.show_hidden_engines && e->IsHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			const RailVehicleInfo *rvi = &e->u.rail;
 
 			if (this->filter.railtype != INVALID_RAILTYPE && !HasPowerOnRail(rvi->railtype, this->filter.railtype)) continue;
 			if (!IsEngineBuildable(eid, VEH_TRAIN, _local_company)) continue;
 
-			if (is_smart_menu && _engine_use_filters && !IsEnginePassFilter(filter, e)) continue;
+			if (is_smart_menu && _engine_use_filters && !IsEnginePassFilter(this->filter, e)) continue;
 
 			/* Filter now! So num_engines and num_wagons is valid */
 			if (!is_smart_menu && !FilterSingleEngine(eid)) continue;
@@ -1674,7 +1655,7 @@ struct BuildVehicleWindow : Window {
 
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
-			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
+			if (!this->filter.show_hidden_engines && e->IsHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
 			if (this->filter.roadtype != INVALID_ROADTYPE && !HasPowerOnRoad(e->u.road.roadtype, this->filter.roadtype)) continue;
@@ -1694,7 +1675,7 @@ struct BuildVehicleWindow : Window {
 
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_SHIP) {
-			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
+			if (!this->filter.show_hidden_engines && e->IsHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
 			this->eng_list.push_back(eid);
@@ -1719,7 +1700,7 @@ struct BuildVehicleWindow : Window {
 		 * when planes become obsolete and are removed */
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_AIRCRAFT) {
-			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
+			if (!this->filter.show_hidden_engines && e->IsHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_company)) continue;
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
@@ -1739,6 +1720,11 @@ struct BuildVehicleWindow : Window {
 
 		/* Update filter type in case the road/railtype of the depot got converted */
 		this->UpdateFilterByTile();
+
+		/* Save filter for this vehicle (copy) */
+		_engine_sort_filter[this->vehicle_type] = this->filter;
+		_engine_sort_show_hidden_engines[this->vehicle_type] = this->filter.show_hidden_engines;
+		_engine_sort_direction = this->descending_sort_order;
 
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
@@ -1760,7 +1746,6 @@ struct BuildVehicleWindow : Window {
 
 		this->FilterEngineList();
 
-		_engine_sort_direction = this->descending_sort_order;
 		EngList_Sort(&this->eng_list, _engine_sort_functions[this->vehicle_type][this->sort_criteria]);
 
 		this->eng_list.shrink_to_fit();
@@ -1769,7 +1754,6 @@ struct BuildVehicleWindow : Window {
 
 	void OnClick(Point pt, int widget, int click_count) override
 	{
-		VehicleFilter& filter = this->setFilter();
 		switch (widget) {
 			case WID_BV_FILTER_BUTTON:
 				_engine_use_filters = !_engine_use_filters;
@@ -1780,33 +1764,33 @@ struct BuildVehicleWindow : Window {
 				this->InvalidateData(INVALIDATE_FLAG_TRAIN);
 				break;
 			case WID_BV_SLOPE:
-				filter.rail.slope_used = !filter.rail.slope_used;
+				this->filter.rail.slope_used = !this->filter.rail.slope_used;
 				this->InvalidateData(INVALIDATE_FLAG_ENGINE_LIST);
 				break;
 			case WID_BV_RAIL_WEIGHT_EDIT:
-				SetDParam(0, filter.rail.train.weight);
+				SetDParam(0, this->filter.rail.train.weight);
 				this->widget_for_query = WID_BV_RAIL_WEIGHT_EDIT;
 				ShowQueryString(STR_JUST_INT, STR_BUILD_VEHICLE_EDIT_TRAIN_WEIGHT, 8, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 			case WID_BV_RAIL_WEIGHT_DECREASE:
-				filter.rail.train.weight = SmartChangeValue(filter.rail.train.weight, -1, 1, 50000);
+				this->filter.rail.train.weight = SmartChangeValue(this->filter.rail.train.weight, -1, 1, 50000);
 				this->InvalidateData(INVALIDATE_FLAG_ENGINE_LIST);
 				break;
 			case WID_BV_RAIL_WEIGHT_INCREASE:
-				filter.rail.train.weight = SmartChangeValue(filter.rail.train.weight, 1, 1, 50000);
+				this->filter.rail.train.weight = SmartChangeValue(this->filter.rail.train.weight, 1, 1, 50000);
 				this->InvalidateData(INVALIDATE_FLAG_ENGINE_LIST);
 				break;
 			case WID_BV_RAIL_SPEED_EDIT:
-				SetDParam(0, filter.rail.train.speed);
+				SetDParam(0, this->filter.rail.train.speed);
 				this->widget_for_query = WID_BV_RAIL_SPEED_EDIT;
 				ShowQueryString(STR_JUST_INT, STR_BUILD_VEHICLE_EDIT_TRAIN_SPEED, 8, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 			case WID_BV_RAIL_SPEED_DECREASE:
-				filter.rail.train.speed = SmartChangeValue(filter.rail.train.speed, -1, 1, 3000);
+				this->filter.rail.train.speed = SmartChangeValue(this->filter.rail.train.speed, -1, 1, 3000);
 				this->InvalidateData(INVALIDATE_FLAG_ENGINE_LIST);
 				break;
 			case WID_BV_RAIL_SPEED_INCREASE:
-				filter.rail.train.speed = SmartChangeValue(filter.rail.train.speed, 1, 1, 3000);
+				this->filter.rail.train.speed = SmartChangeValue(this->filter.rail.train.speed, 1, 1, 3000);
 				this->InvalidateData(INVALIDATE_FLAG_ENGINE_LIST);
 				break;
 			case WID_BV_TRAIN_LENGTH_EDIT:
@@ -1828,45 +1812,43 @@ struct BuildVehicleWindow : Window {
 				ShowQueryString(STR_JUST_INT, STR_BUILD_VEHICLE_EDIT_SLOPE_LENGTH, 3, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 			case WID_BV_SLOPE_LENGTH_DECREASE:
-				filter.rail.slope_length = SmartChangeValue(filter.rail.slope_length, -1, 1, 999);
+				this->filter.rail.slope_length = SmartChangeValue(this->filter.rail.slope_length, -1, 1, 999);
 				this->InvalidateData(INVALIDATE_FLAG_ENGINE_LIST);
 				break;
 			case WID_BV_SLOPE_LENGTH_INCREASE:
-				filter.rail.slope_length = SmartChangeValue(filter.rail.slope_length, 1, 1, 999);
+				this->filter.rail.slope_length = SmartChangeValue(this->filter.rail.slope_length, 1, 1, 999);
 				this->InvalidateData(INVALIDATE_FLAG_ENGINE_LIST);
 				break;
 			case WID_BV_RAIL_WAGON:
-				filter.rail.wagon = true;
-				filter.rail.motor_wagon = false;
-				filter.rail.locomotive = false;
+				this->filter.rail.wagon = true;
+				this->filter.rail.motor_wagon = false;
+				this->filter.rail.locomotive = false;
 				this->InvalidateData(INVALIDATE_FLAG_REBUILD_ENGINE_SORTERS);
 				break;
 			case WID_BV_RAIL_MOTOR_WAGON:
-				filter.rail.motor_wagon = true;
-				filter.rail.wagon = false;
-				filter.rail.locomotive = false;
+				this->filter.rail.motor_wagon = true;
+				this->filter.rail.wagon = false;
+				this->filter.rail.locomotive = false;
 				this->InvalidateData(INVALIDATE_FLAG_REBUILD_ENGINE_SORTERS);
 				break;
 			case WID_BV_RAIL_LOCOMOTIVE:
-				filter.rail.locomotive = true;
-				filter.rail.wagon = false;
-				filter.rail.motor_wagon = false;
+				this->filter.rail.locomotive = true;
+				this->filter.rail.wagon = false;
+				this->filter.rail.motor_wagon = false;
 				this->InvalidateData(INVALIDATE_FLAG_REBUILD_ENGINE_SORTERS);
 				break;
 			case WID_BV_SORT_ASCENDING_DESCENDING:
 				this->descending_sort_order ^= true;
 				_engine_sort_last_order[this->vehicle_type] = this->descending_sort_order;
-				filter.descending_sort_order = descending_sort_order;
+				this->descending_sort_order = descending_sort_order;
 				this->eng_list.ForceRebuild();
 				this->SetDirty();
 				break;
 
 			case WID_BV_SHOW_HIDDEN_ENGINES:
-				this->show_hidden_engines ^= true;
-				_engine_sort_show_hidden_engines[this->vehicle_type] = this->show_hidden_engines;
-				filter.show_hidden_engines = show_hidden_engines;
+				this->filter.show_hidden_engines ^= true;
 				this->eng_list.ForceRebuild();
-				this->SetWidgetLoweredState(widget, this->show_hidden_engines);
+				this->SetWidgetLoweredState(widget, this->filter.show_hidden_engines);
 				this->SetDirty();
 				break;
 
@@ -1935,21 +1917,20 @@ struct BuildVehicleWindow : Window {
 		if (data & INVALIDATE_FLAG_TRAIN) {
 			if (!this->listview_mode) {
 				TileIndex tile = this->window_number;
-				this->setFilter().rail.train = GetTrainFilterFromDepot(tile);
+				this->filter.rail.train = GetTrainFilterFromDepot(tile);
 				data |= INVALIDATE_FLAG_ENGINE_LIST;
 			}
 		}
 
 
-		const VehicleFilter& filter = this->getFilter();
 		if (this->IsSmartMenu()) {
 			if (this->vehicle_type == VehicleType::VEH_TRAIN) {
-				bool wagon_used = filter.rail.wagon;
-				bool motor_wagon_used = filter.rail.motor_wagon;
-				bool locomotive_used = filter.rail.locomotive;
-				bool slope_used = filter.rail.slope_used && filter.rail.slope_length > 0 && filter.rail.train.length > 0;
-				bool lock_cargo = !filter.rail.wagon && !filter.rail.motor_wagon;
-				bool lock_slope = !filter.rail.locomotive && !filter.rail.motor_wagon;
+				bool wagon_used = this->filter.rail.wagon;
+				bool motor_wagon_used = this->filter.rail.motor_wagon;
+				bool locomotive_used = this->filter.rail.locomotive;
+				bool slope_used = this->filter.rail.slope_used && this->filter.rail.slope_length > 0 && this->filter.rail.train.length > 0;
+				bool lock_cargo = !this->filter.rail.wagon && !this->filter.rail.motor_wagon;
+				bool lock_slope = !this->filter.rail.locomotive && !this->filter.rail.motor_wagon;
 				bool power_for_slope_used = (motor_wagon_used || locomotive_used) && slope_used;
 
 				this->SetWidgetLoweredState(WID_BV_RAIL_WAGON, wagon_used);
@@ -1971,7 +1952,7 @@ struct BuildVehicleWindow : Window {
 			}
 			this->SetWidgetLoweredState(WID_BV_FILTER_BUTTON, _engine_use_filters);
 		}
-		this->SetWidgetLoweredState(WID_BV_SHOW_HIDDEN_ENGINES, filter.show_hidden_engines);
+		this->SetWidgetLoweredState(WID_BV_SHOW_HIDDEN_ENGINES, this->filter.show_hidden_engines);
 		this->SetWidgetDisabledState(WID_BV_SHOW_HIDE, this->sel_engine == INVALID_ENGINE);
 
 		/* When switching to original acceleration model for road vehicles, clear the selected sort criteria if it is not available now. */
@@ -1992,19 +1973,19 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_RAIL_WEIGHT_EDIT:
-				SetDParam(0, getFilter().rail.train.weight);
+				SetDParam(0, this->filter.rail.train.weight);
 				break;
 
 			case WID_BV_RAIL_SPEED_EDIT:
-				SetDParam(0, getFilter().rail.train.speed);
+				SetDParam(0, this->filter.rail.train.speed);
 				break;
 
 			case WID_BV_TRAIN_LENGTH_EDIT:
-				SetDParam(0, getFilter().rail.train.length);
+				SetDParam(0, this->filter.rail.train.length);
 				break;
 
 			case WID_BV_SLOPE_LENGTH_EDIT:
-				SetDParam(0, getFilter().rail.slope_length);
+				SetDParam(0, this->filter.rail.slope_length);
 				break;
 
 			case WID_BV_CAPTION:
@@ -2046,16 +2027,16 @@ struct BuildVehicleWindow : Window {
 				SetDParam(0, _settings_game.vehicle.train_slope_steepness);
 				break;
 			case WID_BV_RAIL_WEIGHT_EDIT:
-				SetDParam(0, getFilter().rail.train.weight);
+				SetDParam(0, this->filter.rail.train.weight);
 				break;
 			case WID_BV_RAIL_SPEED_EDIT:
-				SetDParam(0, getFilter().rail.train.speed);
+				SetDParam(0, this->filter.rail.train.speed);
 				break;
 			case WID_BV_TRAIN_LENGTH_EDIT:
-				SetDParam(0, getFilter().rail.train.length);
+				SetDParam(0, this->filter.rail.train.length);
 				break;
 			case WID_BV_SLOPE_LENGTH_EDIT:
-				SetDParam(0, getFilter().rail.slope_length);
+				SetDParam(0, this->filter.rail.slope_length);
 				break;
 			case WID_BV_LIST:
 				resize->height = GetEngineListHeight(this->vehicle_type);
@@ -2134,30 +2115,29 @@ struct BuildVehicleWindow : Window {
 	void OnQueryTextFinished(char *str) override
 	{
 		if (str == nullptr) return;
-		VehicleFilter& filter = _engine_sort_filter[this->vehicle_type];
 
 		switch (this->widget_for_query) {
 		case WID_BV_RAIL_SPEED_EDIT:
 			if (!StrEmpty(str)) {
-				filter.rail.train.speed = atoi(str);
+				this->filter.rail.train.speed = atoi(str);
 				this->InvalidateData(INVALIDATE_FLAG_ENGINE_LIST);
 			}
 			break;
 		case WID_BV_RAIL_WEIGHT_EDIT:
 			if (!StrEmpty(str)) {
-				filter.rail.train.weight = atoi(str);
+				this->filter.rail.train.weight = atoi(str);
 				this->InvalidateData(INVALIDATE_FLAG_ENGINE_LIST);
 			}
 			break;
 		case WID_BV_TRAIN_LENGTH_EDIT:
 			if (!StrEmpty(str)) {
-				filter.rail.train.length = atoi(str);
+				this->filter.rail.train.length = atoi(str);
 				this->InvalidateData(INVALIDATE_FLAG_ENGINE_LIST);
 			}
 			break;
 		case WID_BV_SLOPE_LENGTH_EDIT:
 			if (!StrEmpty(str)) {
-				filter.rail.slope_length = atoi(str);
+				this->filter.rail.slope_length = atoi(str);
 				this->InvalidateData(INVALIDATE_FLAG_ENGINE_LIST);
 			}
 			break;
@@ -2187,7 +2167,7 @@ struct BuildVehicleWindow : Window {
 					/* deactivate filter if criteria is 'Show All', activate it otherwise */
 					EngineID current = sel_engine;
 					CargoID cargo = this->cargo_filter[this->cargo_filter_criteria];
-					this->setFilter().cargo.type = cargo;
+					this->filter.cargo.type = cargo;
 				//this->eng_list.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
 				//this->eng_list.ForceRebuild();
 					this->InvalidateData();

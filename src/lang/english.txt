@@ -5135,9 +5135,9 @@ STR_BUILD_VEHICLE_SMART                                         :Smart build veh
 STR_BUILD_VEHICLE_SMART_HELPTEXT                                :Smart build vehicle menu
 STR_BUILD_VEHICLE_DETAIL                                        :{BLACK}Detail
 STR_BUILD_VEHICLE_DETAIL_TOOLTIP                                :{BLACK}Extended options for comfortable unit select
-STR_BUILD_VEHICLE_AUTO_TRAIN                                    :{BLACK}Take the train parameters from the from
+STR_BUILD_VEHICLE_AUTO_TRAIN                                    :{BLACK}Take the train parameters from the depot
 STR_BUILD_VEHICLE_AUTO_TRAIN_TOOLTIP                            :{BLACK}Take parameters from the first train from the depot (maximum weight, available speed, train length)
-STR_BUILD_VEHICLE_FILTER                                        :{BLACK}Use filters...
+STR_BUILD_VEHICLE_FILTER                                        :{BLACK}Filter
 STR_BUILD_VEHICLE_FILTER_TOOLTIP                                :{BLACK}Open filters panel
 STR_BUILD_VEHICLE_INCLINE_LABEL                                 :{BLACK}Allow slopes:
 STR_BUILD_VEHICLE_INCLINE_EDITOR                                :{ORANGE}{NUM}%
