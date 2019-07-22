@@ -872,6 +872,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_N_VEH_NAME,                            "WID_N_VEH_NAME");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_N_VEH_SPR,                             "WID_N_VEH_SPR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_N_VEH_INFO,                            "WID_N_VEH_INFO");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_N_SHOW_GROUP,                          "WID_N_SHOW_GROUP");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MH_STICKYBOX,                          "WID_MH_STICKYBOX");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MH_BACKGROUND,                         "WID_MH_BACKGROUND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MH_SCROLLBAR,                          "WID_MH_SCROLLBAR");

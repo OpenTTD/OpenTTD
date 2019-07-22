@@ -33,6 +33,7 @@ enum NewsWidgets {
 	WID_N_VEH_NAME,    ///< Name of the new vehicle.
 	WID_N_VEH_SPR,     ///< Graphical display of the new vehicle.
 	WID_N_VEH_INFO,    ///< Some technical data of the new vehicle.
+	WID_N_SHOW_GROUP,  ///< Show vehicle's group
 };
 
 /** Widgets of the #MessageHistoryWindow class. */
