@@ -370,6 +370,26 @@ const char *MusicDriver_Win32::Start(const char * const *parm)
 
 	int resolution = GetDriverParamInt(parm, "resolution", 5);
 	int port = GetDriverParamInt(parm, "port", -1);
+	const char *portname = GetDriverParam(parm, "portname");
+
+	/* Enumerate ports either for selecting port by name, or for debug output */
+	if (portname != nullptr || _debug_driver_level > 0) {
+		uint numports = midiOutGetNumDevs();
+		DEBUG(driver, 1, "Win32-MIDI: Found %d output devices:", numports);
+		for (uint tryport = 0; tryport < numports; tryport++) {
+			MIDIOUTCAPS moc{};
+			if (midiOutGetDevCaps(tryport, &moc, sizeof(moc)) == MMSYSERR_NOERROR) {
+				char tryportname[128];
+				convert_from_fs(moc.szPname, tryportname, lengthof(tryportname));
+
+				/* Compare requested and detected port name.
+				 * If multiple ports have the same name, this will select the last matching port, and the debug output will be confusing. */
+				if (portname != nullptr && strncmp(tryportname, portname, lengthof(tryportname)) == 0) port = tryport;
+
+				DEBUG(driver, 1, "MIDI port %2d: %s%s", tryport, tryportname, (tryport == port) ? " [selected]" : "");
+			}
+		}
+	}
 
 	UINT devid;
 	if (port < 0) {
