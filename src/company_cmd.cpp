@@ -35,6 +35,7 @@
 #include "game/game.hpp"
 #include "goal_base.h"
 #include "story_base.h"
+#include "network/social_presence.h"
 #include "widgets/statusbar_widget.h"
 
 #include "table/strings.h"
@@ -120,7 +121,17 @@ void SetLocalCompany(CompanyID new_company)
 	/* ... and redraw the whole screen. */
 	MarkWholeScreenDirty();
 	InvalidateWindowClassesData(WC_SIGN_LIST, -1);
+
 	InvalidateWindowClassesData(WC_GOALS_LIST);
+
+	if (_local_company == COMPANY_SPECTATOR || _local_company == OWNER_NONE) {
+		SocialEnterSpectate();
+	} else {
+		char company_name[128];
+		SetDParam(0, _local_company);
+		GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
+		SocialEnterCompany(company_name, _local_company);
+	}
 }
 
 /**

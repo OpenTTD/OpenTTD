@@ -22,6 +22,7 @@
 #include "network.h"
 #include "network_client.h"
 #include "network_base.h"
+#include "social_presence.h"
 
 #include "../widgets/network_chat_widget.h"
 
@@ -554,4 +555,15 @@ void ShowNetworkChatQueryWindow(DestType type, int dest)
 {
 	DeleteWindowByClass(WC_SEND_NETWORK_MSG);
 	new NetworkChatWindow(&_chat_window_desc, type, dest);
+}
+
+
+void SocialHandleJoinRequest(void *join_request_cookie, const std::string &friend_name)
+{
+	// TODO
+}
+
+void SocialCancelJoinRequest(void *join_request_cookie)
+{
+	// TODO
 }

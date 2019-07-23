@@ -30,6 +30,7 @@
 #include "../map_type.h"
 #include "../guitimer_func.h"
 #include "../zoom_func.h"
+#include "social_presence.h"
 
 #include "../widgets/network_widget.h"
 
@@ -1339,6 +1340,8 @@ struct NetworkLobbyWindow : public Window {
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_NL_SCROLLBAR);
 		this->FinishInitNested(WN_NETWORK_WINDOW_LOBBY);
+
+		SocialBeginEnterMultiplayer(server->info.server_name, "");
 	}
 
 	CompanyID NetworkLobbyFindCompanyIndex(byte pos) const
@@ -2220,4 +2223,9 @@ void ShowNetworkCompanyPasswordWindow(Window *parent)
 	DeleteWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
 
 	new NetworkCompanyPasswordWindow(&_network_company_password_window_desc, parent);
+}
+
+void SocialJoinRequestedGame(const std::string &server_cookie)
+{
+	// TODO
 }

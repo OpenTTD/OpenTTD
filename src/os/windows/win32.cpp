@@ -30,6 +30,7 @@
 #include <sys/stat.h>
 #include "../../language.h"
 #include "../../thread.h"
+#include "../../network/social_plugin_api.h"
 #include <array>
 
 #include "../../safeguards.h"
@@ -769,3 +770,43 @@ void SetCurrentThreadName(const char *threadName)
 #else
 void SetCurrentThreadName(const char *) {}
 #endif
+
+
+OpenTTD_SocialPluginInit SocialLoadPlugin()
+{
+	const HKEY root_keys[] = { HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE };
+
+	for (HKEY root : root_keys) {
+		HKEY reg;
+		if (RegOpenKey(HKEY_CURRENT_USER, _T("SOFTWARE\\OpenTTD"), &reg) == ERROR_SUCCESS) {
+			DWORD value_type = REG_NONE;
+			TCHAR value[MAX_PATH]{};
+			DWORD value_len = sizeof(value); // yes size in bytes, not length
+			if (RegQueryValueEx(reg, _T("SocialPresencePlugin"), nullptr, &value_type, reinterpret_cast<LPBYTE>(value), &value_len) == ERROR_SUCCESS) {
+				RegCloseKey(reg);
+
+				TCHAR plugin_name[MAX_PATH]{};
+				value[lengthof(value) - 1] = _T('\0');
+				if (value_type == REG_EXPAND_SZ) {
+					TCHAR expand_value[MAX_PATH];
+					ExpandEnvironmentStrings(value, plugin_name, lengthof(plugin_name));
+				} else if (value_type == REG_SZ) {
+					MemCpyT(plugin_name, value, lengthof(plugin_name));
+				} else {
+					continue;
+				}
+
+				HMODULE plugin_library = LoadLibrary(plugin_name);
+				if (plugin_library != nullptr) {
+					OpenTTD_SocialPluginInit init_addr = (OpenTTD_SocialPluginInit)GetProcAddress(plugin_library, "SocialInit");
+					if (init_addr != nullptr) return init_addr;
+					FreeLibrary(plugin_library);
+				}
+			} else {
+				RegCloseKey(reg);
+			}
+		}
+	}
+
+	return nullptr;
+}
