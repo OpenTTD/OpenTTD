@@ -1341,7 +1341,7 @@ struct NetworkLobbyWindow : public Window {
 		this->vscroll = this->GetScrollbar(WID_NL_SCROLLBAR);
 		this->FinishInitNested(WN_NETWORK_WINDOW_LOBBY);
 
-		SocialBeginEnterMultiplayer(server->info.server_name, "");
+		SocialBeginEnterMultiplayer(server->info.server_name, server->address.GetAddressAsString(false));
 	}
 
 	CompanyID NetworkLobbyFindCompanyIndex(byte pos) const

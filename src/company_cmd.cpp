@@ -94,6 +94,14 @@ void Company::PostDestructor(size_t index)
 	InvalidateWindowData(WC_ERRMSG, 0);
 }
 
+static void SocialUpdateCompanyName()
+{
+	char company_name[128];
+	SetDParam(0, _local_company);
+	GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
+	SocialEnterCompany(company_name, _local_company);
+}
+
 /**
  * Sets the local company and updates the settings that are set on a
  * per-company basis to reflect the core's state in the GUI.
@@ -127,10 +135,7 @@ void SetLocalCompany(CompanyID new_company)
 	if (_local_company == COMPANY_SPECTATOR || _local_company == OWNER_NONE) {
 		SocialEnterSpectate();
 	} else {
-		char company_name[128];
-		SetDParam(0, _local_company);
-		GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
-		SocialEnterCompany(company_name, _local_company);
+		SocialUpdateCompanyName();
 	}
 }
 
@@ -385,6 +390,7 @@ set_name:;
 		c->name_2 = strp;
 
 		MarkWholeScreenDirty();
+		if (c->index == _local_company) SocialUpdateCompanyName();
 
 		if (c->is_ai) {
 			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
@@ -1095,6 +1101,7 @@ CommandCost CmdRenameCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		}
 		MarkWholeScreenDirty();
 		CompanyAdminUpdate(c);
+		if (_current_company == _local_company) SocialUpdateCompanyName();
 	}
 
 	return CommandCost();

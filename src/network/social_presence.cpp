@@ -101,6 +101,7 @@ void SocialEnterSpectate()
 void SocialExitGameplay()
 {
 	if (_social_loaded) _social_api.exit_gameplay();
+	_social_multiplayer_status.server_cookie.clear();
 }
 
 void SocialRespondJoinRequest(void *join_request_cookie, SocialJoinRequestResponse response)
