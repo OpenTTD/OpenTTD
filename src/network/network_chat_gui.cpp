@@ -558,12 +558,117 @@ void ShowNetworkChatQueryWindow(DestType type, int dest)
 }
 
 
+
+struct SocialJoinRequestWindow : public Window {
+	void *join_request_cookie;
+	std::string friend_name;
+	bool handled;
+
+	static std::map<WindowNumber, SocialJoinRequestWindow *> _join_request_windows;
+	static WindowNumber _next_wnum;
+
+	SocialJoinRequestWindow(WindowDesc *desc, void *join_request_cookie, const std::string &friend_name)
+		: Window(desc), join_request_cookie(join_request_cookie), friend_name(friend_name)
+	{
+		this->InitNested(_next_wnum++);
+
+		this->handled = false;
+		_join_request_windows[this->window_number] = this;
+	}
+
+	~SocialJoinRequestWindow()
+	{
+		if (!this->handled) SocialRespondJoinRequest(this->join_request_cookie, SocialJoinRequestResponse::Ignore);
+
+		_join_request_windows.erase(this->window_number);
+	}
+
+	static void CancelRequest(void *join_request_cookie)
+	{
+		for (auto &jrw : _join_request_windows) {
+			if (jrw.second->join_request_cookie == join_request_cookie) {
+				delete jrw.second;
+				break;
+			}
+		}
+	}
+
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	{
+		switch (widget) {
+			case WID_SJR_MESSAGE:
+			{
+				int text_width = max(0, (int)size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT);
+				SetDParamStr(0, this->friend_name.c_str());
+				size->height = WD_FRAMERECT_TOP + GetStringHeight(STR_SOCIAL_JOIN_REQUEST_TEXT, text_width) + WD_FRAMERECT_BOTTOM;
+				break;
+			}
+		}
+	}
+
+	void DrawWidget(const Rect &r, int widget) const override
+	{
+		switch (widget) {
+			case WID_SJR_MESSAGE:
+				SetDParamStr(0, this->friend_name.c_str());
+				DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM, STR_SOCIAL_JOIN_REQUEST_TEXT, TC_FROMSTRING, SA_CENTER);
+				break;
+		}
+	}
+
+	void OnClick(Point pt, int widget, int click_count) override
+	{
+		switch (widget) {
+			case WID_SJR_ACCEPT: /* Send */
+				SocialRespondJoinRequest(this->join_request_cookie, SocialJoinRequestResponse::Accept);
+				this->handled = true;
+				delete this;
+				break;
+
+			case WID_SJR_REJECT: /* Cancel */
+				SocialRespondJoinRequest(this->join_request_cookie, SocialJoinRequestResponse::Reject);
+				this->handled = true;
+				delete this;
+				break;
+		}
+	}
+};
+std::map<WindowNumber, SocialJoinRequestWindow *> SocialJoinRequestWindow::_join_request_windows{};
+WindowNumber SocialJoinRequestWindow::_next_wnum = 0;
+
+
+/** The widgets of the join request window. */
+static const NWidgetPart _nested_join_request_window_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_SOCIAL_JOIN_REQUEST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_NC_BACKGROUND),
+		NWidget(NWID_VERTICAL), SetPIP(8, 15, 8),
+			NWidget(WWT_EMPTY, COLOUR_GREY, WID_SJR_MESSAGE), SetMinimalSize(236, 32),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(20, 29, 20),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_SJR_ACCEPT), SetDataTip(STR_SOCIAL_JOIN_REQUEST_ACCEPT, STR_SOCIAL_JOIN_REQUEST_ACCEPT_TOOLTIP), SetFill(2, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SJR_REJECT), SetDataTip(STR_SOCIAL_JOIN_REQUEST_REJECT, STR_SOCIAL_JOIN_REQUEST_REJECT_TOOLTIP), SetFill(2, 0),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
+/** The description of the join request window. */
+static WindowDesc _join_request_window_desc(
+	WDP_CENTER, nullptr, 0, 0,
+	WC_SOCIAL_JOIN_REQUEST, WC_NONE,
+	0,
+	_nested_join_request_window_widgets, lengthof(_nested_join_request_window_widgets)
+);
+
+
 void SocialHandleJoinRequest(void *join_request_cookie, const std::string &friend_name)
 {
-	// TODO
+	new SocialJoinRequestWindow(&_join_request_window_desc, join_request_cookie, friend_name);
 }
 
 void SocialCancelJoinRequest(void *join_request_cookie)
 {
-	// TODO
+	SocialJoinRequestWindow::CancelRequest(join_request_cookie);
 }

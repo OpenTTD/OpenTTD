@@ -31,6 +31,7 @@
 #include "../guitimer_func.h"
 #include "../zoom_func.h"
 #include "social_presence.h"
+#include "../error.h"
 
 #include "../widgets/network_widget.h"
 
@@ -2227,5 +2228,19 @@ void ShowNetworkCompanyPasswordWindow(Window *parent)
 
 void SocialJoinRequestedGame(const std::string &server_cookie)
 {
-	// TODO
+	/* If player is not on main menu, don't connect. Don't want to interrupt any current game. */
+	if (_game_mode != GM_MENU) {
+		ShowErrorMessage(STR_SOCIAL_ERROR_CANNOT_JOIN, STR_NONE, WL_WARNING);
+		return;
+	}
+
+	/* Okay let's try to join! */
+	const char *company;
+	const char *port;
+	char *server_cookie_cstr = stredup(server_cookie.c_str());
+	ParseConnectionString(&company, &port, server_cookie_cstr);
+	NetworkAddress addr(server_cookie_cstr, atoi(port));
+	free(server_cookie_cstr);
+
+	NetworkClientConnectGame(addr, COMPANY_SPECTATOR);
 }

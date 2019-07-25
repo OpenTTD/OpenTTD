@@ -799,7 +799,6 @@ OpenTTD_SocialPluginInit SocialLoadPlugin()
 				TCHAR plugin_name[MAX_PATH]{};
 				value[lengthof(value) - 1] = _T('\0');
 				if (value_type == REG_EXPAND_SZ) {
-					TCHAR expand_value[MAX_PATH];
 					ExpandEnvironmentStrings(value, plugin_name, lengthof(plugin_name));
 				} else if (value_type == REG_SZ) {
 					MemCpyT(plugin_name, value, lengthof(plugin_name));
