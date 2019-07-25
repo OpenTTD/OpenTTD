@@ -21,6 +21,7 @@ enum class SocialJoinRequestResponse {
 	Ignore,
 };
 
+
 /* Functions implemented by social plug-in */
 
 /** Main loop calls this to detect and initialise social plug-in */

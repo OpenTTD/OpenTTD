@@ -772,9 +772,20 @@ void SetCurrentThreadName(const char *) {}
 #endif
 
 
+/* * Stuff for social presence implementation * */
+
+std::string _social_launch_command;
+
 OpenTTD_SocialPluginInit SocialLoadPlugin()
 {
 	const HKEY root_keys[] = { HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE };
+
+	{
+		TCHAR filename[MAX_PATH];
+		DWORD filename_len = GetModuleFileName(nullptr, filename, lengthof(filename));
+		if (filename_len == lengthof(filename)) return nullptr; // buffer too small
+		_social_launch_command = "\"" + std::string(FS2OTTD(filename), filename_len) + "\"";
+	}
 
 	for (HKEY root : root_keys) {
 		HKEY reg;
@@ -798,8 +809,10 @@ OpenTTD_SocialPluginInit SocialLoadPlugin()
 
 				HMODULE plugin_library = LoadLibrary(plugin_name);
 				if (plugin_library != nullptr) {
+					DEBUG(misc, 1, "Social: Loaded plugin '%s'", plugin_name);
 					OpenTTD_SocialPluginInit init_addr = (OpenTTD_SocialPluginInit)GetProcAddress(plugin_library, "SocialInit");
 					if (init_addr != nullptr) return init_addr;
+					DEBUG(misc, 1, "Social: Not a valid plugin library, init function not found");
 					FreeLibrary(plugin_library);
 				}
 			} else {

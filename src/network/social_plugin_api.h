@@ -39,7 +39,7 @@ extern "C" {
 /* Various constants for the API */
 enum {
 	/** Version number of the API defined in this header, must be passed to the init functions */
-	OTTD_SOCIAL_PLUGIN_API_VERSION = 1,
+	OTTD_SOCIAL_PLUGIN_API_VERSION = 2,
 };
 
 /** Response values for join requests */
@@ -80,12 +80,16 @@ struct OpenTTD_SocialPluginCallbacks {
 	void (*cancel_join_request)(void *join_request_cookie);
 	/** Inform OpenTTD that the local user requested to join another player's game and was accepted */
 	void (*join_requested_game)(const char *server_cookie);
+	/** String indicating the launch command for OpenTTD, the plugin must make a copy of this to its own memory */
+	const char *launch_command;
 };
 
 /**
  * Type of the init function the plug-in is expected to export from its dynamic library.
  * On platforms where this method of initialisation is inconvenient, a different method can be used.
  * The plugin must verify the api_version passed by OpenTTD is supported before filling the api struct.
+ * @note The launch_command field of callbacks must point to a valid C string for the duration of this call,
+ *       but may be freed after the call returns.
  * @param[in]  api_version  The API version OpenTTD uses.
  * @param[out] api          Structure the plugin must fill with function pointers.
  * @param[in]  callbacks    Function pointers for the plug-in to call back into OpenTTD. These will stay valid until shutdown.

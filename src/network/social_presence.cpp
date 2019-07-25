@@ -13,6 +13,8 @@
 #include <string>
 #include "social_presence.h"
 #include "social_plugin_api.h"
+#include "../debug.h"
+#include "../video/video_driver.hpp"
 
 
 static bool _social_loaded = false;
@@ -24,8 +26,11 @@ static struct {
 	std::string server_cookie;
 } _social_multiplayer_status;
 
+
 /* Implemented by platform */
 extern OpenTTD_SocialPluginInit SocialLoadPlugin();
+/* Implemented by platform, must be set at latest during SocialLoadPlugin */
+extern std::string _social_launch_command;
 
 
 static void Callback_handle_join_request(void *join_request_cookie, const char *friend_name)
@@ -46,17 +51,21 @@ static void Callback_join_requested_game(const char *server_cookie)
 
 void SocialStartup()
 {
+	if (!VideoDriver::GetInstance()->HasGUI()) return;
 	if (_social_loaded) return;
 
+	DEBUG(misc, 2, "Social: Detecting plugin");
 	OpenTTD_SocialPluginInit init = SocialLoadPlugin();
 
 	_social_callbacks.handle_join_request = Callback_handle_join_request;
 	_social_callbacks.cancel_join_request = Callback_cancel_join_request;
 	_social_callbacks.join_requested_game = Callback_join_requested_game;
+	_social_callbacks.launch_command = _social_launch_command.c_str();
 
 	if (init != nullptr) {
 		_social_loaded = init(OTTD_SOCIAL_PLUGIN_API_VERSION, &_social_api, &_social_callbacks) != 0;
 	}
+	DEBUG(misc, 2, "Social: %s", _social_loaded ? "Plugin successfully loaded" : "No valid plugin detected");
 }
 
 void SocialShutdown()
