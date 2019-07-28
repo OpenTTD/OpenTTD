@@ -1673,7 +1673,7 @@ static char *GetSpecialNameString(char *buff, int ind, StringParameters *args, c
 	}
 
 	/* resolution size? */
-	if (IsInsideMM(ind, (SPECSTR_RESOLUTION_START - 0x70E4), (SPECSTR_RESOLUTION_END - 0x70E4) + 1)) {
+	if (IsInsideBS(ind, (SPECSTR_RESOLUTION_START - 0x70E4), _resolutions.size())) {
 		int i = ind - (SPECSTR_RESOLUTION_START - 0x70E4);
 		buff += seprintf(
 			buff, last, "%ux%u", _resolutions[i].width, _resolutions[i].height
