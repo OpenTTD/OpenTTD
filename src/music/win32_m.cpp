@@ -328,7 +328,7 @@ void MusicDriver_Win32::PlaySong(const MusicSongInfo &song)
 	if (!new_song.LoadSong(song)) return;
 	DEBUG(driver, 2, "Win32-MIDI: PlaySong: Loaded song");
 
-	std::lock_guard mutex_lock(_midi.lock);
+	std::lock_guard<std::mutex> mutex_lock(_midi.lock);
 
 	_midi.next_file.MoveFrom(new_song);
 	_midi.next_segment.start = song.override_start;
@@ -348,7 +348,7 @@ void MusicDriver_Win32::PlaySong(const MusicSongInfo &song)
 void MusicDriver_Win32::StopSong()
 {
 	DEBUG(driver, 2, "Win32-MIDI: StopSong: entry");
-	std::lock_guard mutex_lock(_midi.lock);
+	std::lock_guard<std::mutex> mutex_lock(_midi.lock);
 	DEBUG(driver, 2, "Win32-MIDI: StopSong: setting flag");
 	_midi.do_stop = true;
 }
@@ -360,7 +360,7 @@ bool MusicDriver_Win32::IsSongPlaying()
 
 void MusicDriver_Win32::SetVolume(byte vol)
 {
-	std::lock_guard mutex_lock(_midi.lock);
+	std::lock_guard<std::mutex> mutex_lock(_midi.lock);
 	_midi.new_volume = vol;
 }
 
@@ -422,7 +422,7 @@ const char *MusicDriver_Win32::Start(const char * const *parm)
 
 void MusicDriver_Win32::Stop()
 {
-	std::lock_guard mutex_lock(_midi.lock);
+	std::lock_guard<std::mutex> mutex_lock(_midi.lock);
 
 	if (_midi.timer_id) {
 		timeKillEvent(_midi.timer_id);
