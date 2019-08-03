@@ -241,6 +241,10 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 	for (int j = 0; j < 4 && *str != '\0'; j++, str++) id |= *str << (8 * j);
 
 	if (id != ci->unique_id) return false;
+	char script_version[6];
+	memset(script_version, 0, sizeof(script_version));
+	seprintf(script_version, lastof(script_version) - 1, "%u", info->GetVersion());
+	if (strcasecmp(script_version, ci->version) != 0) return false;
 	if (!md5sum) return true;
 
 	ScriptFileChecksumCreator checksum(dir);
