@@ -9,7 +9,6 @@
 
 /** @file console_cmds.cpp Implementation of the console hooks. */
 
-#include <time.h>
 #include "stdafx.h"
 #include "console_internal.h"
 #include "debug.h"
@@ -40,6 +39,7 @@
 #include "engine_base.h"
 #include "game/game.hpp"
 #include "table/strings.h"
+#include <time.h>
 
 #include "safeguards.h"
 
@@ -1321,10 +1321,9 @@ DEF_CONSOLE_CMD(ConGetSysDate)
 	}
 
 	time_t t;
-	struct tm * timeinfo;
 	time(&t);
-	timeinfo = localtime(&t);
-	IConsolePrintF(CC_DEFAULT, "System Date: %d/%d/%d %d:%d:%d", timeinfo->tm_year + 1900, timeinfo->tm_mon, timeinfo->tm_mday, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
+	auto timeinfo = localtime(&t);
+	IConsolePrintF(CC_DEFAULT, "System Date: %d-%02d-%02d %d:%d:%d", timeinfo->tm_year + 1900, timeinfo->tm_mon + 1, timeinfo->tm_mday, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
 	return true;
 }
 
