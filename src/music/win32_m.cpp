@@ -83,7 +83,7 @@ static void TransmitSysex(const byte *&msg_start, size_t &remaining)
 
 	/* prepare header */
 	MIDIHDR *hdr = CallocT<MIDIHDR>(1);
-	hdr->lpData = (LPSTR)msg_start;
+	hdr->lpData = reinterpret_cast<LPSTR>(const_cast<byte *>(msg_start));
 	hdr->dwBufferLength = msg_end - msg_start;
 	if (midiOutPrepareHeader(_midi.midi_out, hdr, sizeof(*hdr)) == MMSYSERR_NOERROR) {
 		/* transmit - just point directly into the data buffer */
