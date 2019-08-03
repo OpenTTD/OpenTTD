@@ -1309,7 +1309,7 @@ DEF_CONSOLE_CMD(ConGetDate)
 
 	YearMonthDay ymd;
 	ConvertDateToYMD(_date, &ymd);
-	IConsolePrintF(CC_DEFAULT, "Date: %d-%d-%d", ymd.day, ymd.month + 1, ymd.year);
+	IConsolePrintF(CC_DEFAULT, "Date: %d-%02d-%02d", ymd.day, ymd.month + 1, ymd.year);
 	return true;
 }
 
