@@ -1303,13 +1303,13 @@ DEF_CONSOLE_CMD(ConGetSeed)
 DEF_CONSOLE_CMD(ConGetDate)
 {
 	if (argc == 0) {
-		IConsoleHelp("Returns the current date (day-month-year) of the game. Usage: 'getdate'");
+		IConsoleHelp("Returns the current date (year-month-day) of the game. Usage: 'getdate'");
 		return true;
 	}
 
 	YearMonthDay ymd;
 	ConvertDateToYMD(_date, &ymd);
-	IConsolePrintF(CC_DEFAULT, "Date: %02d-%02d-%04d", ymd.day, ymd.month + 1, ymd.year);
+	IConsolePrintF(CC_DEFAULT, "Date: %04d-%02d-%02d", ymd.year, ymd.month + 1, ymd.day);
 	return true;
 }
 
