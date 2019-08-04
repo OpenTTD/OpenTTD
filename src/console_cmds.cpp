@@ -1309,21 +1309,21 @@ DEF_CONSOLE_CMD(ConGetDate)
 
 	YearMonthDay ymd;
 	ConvertDateToYMD(_date, &ymd);
-	IConsolePrintF(CC_DEFAULT, "Date: %d-%02d-%02d", ymd.day, ymd.month + 1, ymd.year);
+	IConsolePrintF(CC_DEFAULT, "Date: %02d-%02d-%04d", ymd.day, ymd.month + 1, ymd.year);
 	return true;
 }
 
 DEF_CONSOLE_CMD(ConGetSysDate)
 {
 	if (argc == 0) {
-		IConsoleHelp("Returns the current date (day-month-year) of your system. Usage: 'getsysdate'");
+		IConsoleHelp("Returns the current date (year-month-day) of your system. Usage: 'getsysdate'");
 		return true;
 	}
 
 	time_t t;
 	time(&t);
 	auto timeinfo = localtime(&t);
-	IConsolePrintF(CC_DEFAULT, "System Date: %d-%02d-%02d %d:%d:%d", timeinfo->tm_year + 1900, timeinfo->tm_mon + 1, timeinfo->tm_mday, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
+	IConsolePrintF(CC_DEFAULT, "System Date: %04d-%02d-%02d %02d:%02d:%02d", timeinfo->tm_year + 1900, timeinfo->tm_mon + 1, timeinfo->tm_mday, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
 	return true;
 }
 
