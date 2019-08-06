@@ -367,12 +367,12 @@ static inline T ROR(const T x, const uint8 n)
 	 * (since it will use hardware swapping if available).
 	 * Even though they should return uint16 and uint32, we get
 	 * warnings if we don't cast those (why?) */
-	#define BSWAP32(x) ((uint32)CFSwapInt32(x))
-	#define BSWAP16(x) ((uint16)CFSwapInt16(x))
+#	define BSWAP32(x) (static_cast<uint32>(CFSwapInt32(x)))
+#	define BSWAP16(x) (static_cast<uint16>(CFSwapInt16(x)))
 #elif defined(_MSC_VER)
 	/* MSVC has intrinsics for swapping, resulting in faster code */
-	#define BSWAP32(x) (_byteswap_ulong(x))
-	#define BSWAP16(x) (_byteswap_ushort(x))
+#	define BSWAP32(x) (_byteswap_ulong(x))
+#	define BSWAP16(x) (_byteswap_ushort(x))
 #else
 	/**
 	 * Perform a 32 bits endianness bitswap on x.
@@ -383,7 +383,7 @@ static inline T ROR(const T x, const uint8 n)
 	{
 #if !defined(__ICC) && defined(__GNUC__) && ((__GNUC__ > 4) || ((__GNUC__ == 4)  && __GNUC_MINOR__ >= 3))
 		/* GCC >= 4.3 provides a builtin, resulting in faster code */
-		return (uint32)__builtin_bswap32((int32)x);
+		return static_cast<uint32>(__builtin_bswap32(static_cast<int32>(x)));
 #else
 		return ((x >> 24) & 0xFF) | ((x >> 8) & 0xFF00) | ((x << 8) & 0xFF0000) | ((x << 24) & 0xFF000000);
 #endif /* defined(__GNUC__) */
