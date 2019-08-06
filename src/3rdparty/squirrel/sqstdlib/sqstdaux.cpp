@@ -1,48 +1,31 @@
 /* see copyright notice in squirrel.h */
-
-#include "../../../stdafx.h"
-
 #include <squirrel.h>
 #include <sqstdaux.h>
-
-#include "../../../safeguards.h"
+#include <assert.h>
 
 void sqstd_printcallstack(HSQUIRRELVM v)
 {
-	SQPRINTFUNCTION pf = sq_getprintfunc(v);
+	SQPRINTFUNCTION pf = sq_geterrorfunc(v);
 	if(pf) {
 		SQStackInfos si;
 		SQInteger i;
-		SQBool b;
 		SQFloat f;
 		const SQChar *s;
 		SQInteger level=1; //1 is to skip this function that is level 0
 		const SQChar *name=0;
 		SQInteger seq=0;
-		pf(v,"\nCALLSTACK\n");
+		pf(v,_SC("\nCALLSTACK\n"));
 		while(SQ_SUCCEEDED(sq_stackinfos(v,level,&si)))
 		{
-			const SQChar *fn="unknown";
-			const SQChar *src="unknown";
+			const SQChar *fn=_SC("unknown");
+			const SQChar *src=_SC("unknown");
 			if(si.funcname)fn=si.funcname;
-			if(si.source) {
-				/* We don't want to bother users with absolute paths to all AI files.
-				 * Since the path only reaches NoAI code in a formatted string we have
-				 * to strip it here. Let's hope nobody installs openttd in a subdirectory
-				 * of a directory named /ai/. */
-				src = strstr(si.source, "\\ai\\");
-				if (!src) src = strstr(si.source, "/ai/");
-				if (src) {
-					src += 4;
-				} else {
-					src = si.source;
-				}
-			}
-			pf(v,"*FUNCTION [%s()] %s line [%d]\n",fn,src,si.line);
+			if(si.source)src=si.source;
+			pf(v,_SC("*FUNCTION [%s()] %s line [%d]\n"),fn,src,si.line);
 			level++;
 		}
 		level=0;
-		pf(v,"\nLOCALS\n");
+		pf(v,_SC("\nLOCALS\n"));
 
 		for(level=0;level<10;level++){
 			seq=0;
@@ -52,56 +35,56 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 				switch(sq_gettype(v,-1))
 				{
 				case OT_NULL:
-					pf(v,"[%s] NULL\n",name);
+					pf(v,_SC("[%s] NULL\n"),name);
 					break;
 				case OT_INTEGER:
 					sq_getinteger(v,-1,&i);
-					pf(v,"[%s] %d\n",name,i);
+					pf(v,_SC("[%s] %d\n"),name,i);
 					break;
 				case OT_FLOAT:
 					sq_getfloat(v,-1,&f);
-					pf(v,"[%s] %.14g\n",name,f);
+					pf(v,_SC("[%s] %.14g\n"),name,f);
 					break;
 				case OT_USERPOINTER:
-					pf(v,"[%s] USERPOINTER\n",name);
+					pf(v,_SC("[%s] USERPOINTER\n"),name);
 					break;
 				case OT_STRING:
 					sq_getstring(v,-1,&s);
-					pf(v,"[%s] \"%s\"\n",name,s);
+					pf(v,_SC("[%s] \"%s\"\n"),name,s);
 					break;
 				case OT_TABLE:
-					pf(v,"[%s] TABLE\n",name);
+					pf(v,_SC("[%s] TABLE\n"),name);
 					break;
 				case OT_ARRAY:
-					pf(v,"[%s] ARRAY\n",name);
+					pf(v,_SC("[%s] ARRAY\n"),name);
 					break;
 				case OT_CLOSURE:
-					pf(v,"[%s] CLOSURE\n",name);
+					pf(v,_SC("[%s] CLOSURE\n"),name);
 					break;
 				case OT_NATIVECLOSURE:
-					pf(v,"[%s] NATIVECLOSURE\n",name);
+					pf(v,_SC("[%s] NATIVECLOSURE\n"),name);
 					break;
 				case OT_GENERATOR:
-					pf(v,"[%s] GENERATOR\n",name);
+					pf(v,_SC("[%s] GENERATOR\n"),name);
 					break;
 				case OT_USERDATA:
-					pf(v,"[%s] USERDATA\n",name);
+					pf(v,_SC("[%s] USERDATA\n"),name);
 					break;
 				case OT_THREAD:
-					pf(v,"[%s] THREAD\n",name);
+					pf(v,_SC("[%s] THREAD\n"),name);
 					break;
 				case OT_CLASS:
-					pf(v,"[%s] CLASS\n",name);
+					pf(v,_SC("[%s] CLASS\n"),name);
 					break;
 				case OT_INSTANCE:
-					pf(v,"[%s] INSTANCE\n",name);
+					pf(v,_SC("[%s] INSTANCE\n"),name);
 					break;
 				case OT_WEAKREF:
-					pf(v,"[%s] WEAKREF\n",name);
+					pf(v,_SC("[%s] WEAKREF\n"),name);
 					break;
 				case OT_BOOL:{
-					sq_getbool(v,-1,&b);
-					pf(v,"[%s] %s\n",name,b?"true":"false");
+					sq_getinteger(v,-1,&i);
+					pf(v,_SC("[%s] %s\n"),name,i?_SC("true"):_SC("false"));
 							 }
 					break;
 				default: assert(0); break;
@@ -114,15 +97,15 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 
 static SQInteger _sqstd_aux_printerror(HSQUIRRELVM v)
 {
-	SQPRINTFUNCTION pf = sq_getprintfunc(v);
+	SQPRINTFUNCTION pf = sq_geterrorfunc(v);
 	if(pf) {
 		const SQChar *sErr = 0;
 		if(sq_gettop(v)>=1) {
 			if(SQ_SUCCEEDED(sq_getstring(v,2,&sErr)))	{
-				pf(v,"\nAN ERROR HAS OCCURRED [%s]\n",sErr);
+				pf(v,_SC("\nAN ERROR HAS OCCURED [%s]\n"),sErr);
 			}
 			else{
-				pf(v,"\nAN ERROR HAS OCCURRED [unknown]\n");
+				pf(v,_SC("\nAN ERROR HAS OCCURED [unknown]\n"));
 			}
 			sqstd_printcallstack(v);
 		}
@@ -132,9 +115,9 @@ static SQInteger _sqstd_aux_printerror(HSQUIRRELVM v)
 
 void _sqstd_compiler_error(HSQUIRRELVM v,const SQChar *sErr,const SQChar *sSource,SQInteger line,SQInteger column)
 {
-	SQPRINTFUNCTION pf = sq_getprintfunc(v);
+	SQPRINTFUNCTION pf = sq_geterrorfunc(v);
 	if(pf) {
-		pf(v,"%s line = (%d) column = (%d) : error %s\n",sSource,line,column,sErr);
+		pf(v,_SC("%s line = (%d) column = (%d) : error %s\n"),sSource,line,column,sErr);
 	}
 }
 

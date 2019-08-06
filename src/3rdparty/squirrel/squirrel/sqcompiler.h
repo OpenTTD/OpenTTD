@@ -8,7 +8,7 @@ struct SQVM;
 #define	TK_STRING_LITERAL	259
 #define	TK_INTEGER	260
 #define	TK_FLOAT	261
-#define	TK_DELEGATE	262
+#define	TK_BASE	262
 #define	TK_DELETE	263
 #define	TK_EQ	264
 #define	TK_NE	265
@@ -51,15 +51,15 @@ struct SQVM;
 #define TK_THIS 302
 #define TK_PLUSPLUS 303
 #define TK_MINUSMINUS 304
-#define TK_PARENT 305
+#define TK_3WAYSCMP 305
 #define TK_USHIFTR 306
 #define TK_CLASS 307
 #define TK_EXTENDS 308
 #define TK_CONSTRUCTOR 310
 #define TK_INSTANCEOF 311
 #define TK_VARPARAMS 312
-#define TK_VARGC 313
-#define TK_VARGV 314
+//#define TK_VARGC 313
+//#define TK_VARGV 314
 #define TK_TRUE 315
 #define TK_FALSE 316
 #define TK_MULEQ 317
@@ -71,12 +71,7 @@ struct SQVM;
 #define TK_ENUM 323
 #define TK_CONST 324
 
-/* MSVC doesn't like NORETURN for function prototypes, but we kinda need it for GCC. */
-#if defined(_MSC_VER)
-typedef void(*CompilerErrorFunc)(void *ud, const SQChar *s);
-#else
-typedef NORETURN void(*CompilerErrorFunc)(void *ud, const SQChar *s);
-#endif
 
+typedef void(*CompilerErrorFunc)(void *ud, const SQChar *s);
 bool Compile(SQVM *vm, SQLEXREADFUNC rg, SQUserPointer up, const SQChar *sourcename, SQObjectPtr &out, bool raiseerror, bool lineinfo);
 #endif //_SQCOMPILER_H_

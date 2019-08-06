@@ -6,6 +6,10 @@
 #include <crtdbg.h>
 #endif
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
 #include <new>
 //squirrel stuff
 #include <squirrel.h>

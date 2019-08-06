@@ -4,6 +4,12 @@
 
 #include "squtils.h"
 
+#ifdef _SQ64
+#define UINT_MINUS_ONE (0xFFFFFFFFFFFFFFFF)
+#else
+#define UINT_MINUS_ONE (0xFFFFFFFF)
+#endif
+
 #define SQ_CLOSURESTREAM_HEAD (('S'<<24)|('Q'<<16)|('I'<<8)|('R'))
 #define SQ_CLOSURESTREAM_PART (('P'<<24)|('A'<<16)|('R'<<8)|('T'))
 #define SQ_CLOSURESTREAM_TAIL (('T'<<24)|('A'<<16)|('I'<<8)|('L'))
@@ -32,35 +38,61 @@ enum SQMetaMethod{
 	MT_LAST = 18
 };
 
-#define MM_ADD		"_add"
-#define MM_SUB		"_sub"
-#define MM_MUL		"_mul"
-#define MM_DIV		"_div"
-#define MM_UNM		"_unm"
-#define MM_MODULO	"_modulo"
-#define MM_SET		"_set"
-#define MM_GET		"_get"
-#define MM_TYPEOF	"_typeof"
-#define MM_NEXTI	"_nexti"
-#define MM_CMP		"_cmp"
-#define MM_CALL		"_call"
-#define MM_CLONED	"_cloned"
-#define MM_NEWSLOT	"_newslot"
-#define MM_DELSLOT	"_delslot"
-#define MM_TOSTRING	"_tostring"
-#define MM_NEWMEMBER "_newmember"
-#define MM_INHERITED "_inherited"
+#define MM_ADD		_SC("_add")
+#define MM_SUB		_SC("_sub")
+#define MM_MUL		_SC("_mul")
+#define MM_DIV		_SC("_div")
+#define MM_UNM		_SC("_unm")
+#define MM_MODULO	_SC("_modulo")
+#define MM_SET		_SC("_set")
+#define MM_GET		_SC("_get")
+#define MM_TYPEOF	_SC("_typeof")
+#define MM_NEXTI	_SC("_nexti")
+#define MM_CMP		_SC("_cmp")
+#define MM_CALL		_SC("_call")
+#define MM_CLONED	_SC("_cloned")
+#define MM_NEWSLOT	_SC("_newslot")
+#define MM_DELSLOT	_SC("_delslot")
+#define MM_TOSTRING	_SC("_tostring")
+#define MM_NEWMEMBER _SC("_newmember")
+#define MM_INHERITED _SC("_inherited")
+
+
+#define _CONSTRUCT_VECTOR(type,size,ptr) { \
+	for(SQInteger n = 0; n < ((SQInteger)size); n++) { \
+			new (&ptr[n]) type(); \
+		} \
+}
+
+#define _DESTRUCT_VECTOR(type,size,ptr) { \
+	for(SQInteger nl = 0; nl < ((SQInteger)size); nl++) { \
+			ptr[nl].~type(); \
+	} \
+}
+
+#define _COPY_VECTOR(dest,src,size) { \
+	for(SQInteger _n_ = 0; _n_ < ((SQInteger)size); _n_++) { \
+		dest[_n_] = src[_n_]; \
+	} \
+}
+
+#define _NULL_SQOBJECT_VECTOR(vec,size) { \
+	for(SQInteger _n_ = 0; _n_ < ((SQInteger)size); _n_++) { \
+		vec[_n_].Null(); \
+	} \
+}
 
 #define MINPOWER2 4
 
 struct SQRefCounted
 {
+	SQUnsignedInteger _uiRef;
+	struct SQWeakRef *_weakref;
 	SQRefCounted() { _uiRef = 0; _weakref = NULL; }
 	virtual ~SQRefCounted();
 	SQWeakRef *GetWeakRef(SQObjectType type);
-	SQUnsignedInteger _uiRef;
-	struct SQWeakRef *_weakref;
 	virtual void Release()=0;
+
 };
 
 struct SQWeakRef : SQRefCounted
@@ -78,7 +110,7 @@ struct SQObjectPtr;
 			unval.pRefCounted->_uiRef++; \
 		}
 
-#define __Release(type,unval) if(ISREFCOUNTED(type) && ((--unval.pRefCounted->_uiRef)<=0))	\
+#define __Release(type,unval) if(ISREFCOUNTED(type) && ((--unval.pRefCounted->_uiRef)==0))	\
 		{	\
 			unval.pRefCounted->Release();	\
 		}
@@ -116,17 +148,61 @@ struct SQObjectPtr;
 #define _instance(obj) ((obj)._unVal.pInstance)
 #define _delegable(obj) ((SQDelegable *)(obj)._unVal.pDelegable)
 #define _weakref(obj) ((obj)._unVal.pWeakRef)
+#define _outer(obj) ((obj)._unVal.pOuter)
 #define _refcounted(obj) ((obj)._unVal.pRefCounted)
 #define _rawval(obj) ((obj)._unVal.raw)
 
 #define _stringval(obj) (obj)._unVal.pString->_val
-#define _userdataval(obj) (obj)._unVal.pUserData->_val
+#define _userdataval(obj) ((SQUserPointer)sq_aligning((obj)._unVal.pUserData + 1))
 
 #define tofloat(num) ((type(num)==OT_INTEGER)?(SQFloat)_integer(num):_float(num))
-#define tointeger(num) (	(type(num)==OT_FLOAT)?(SQInteger)_float(num):_integer(num))
+#define tointeger(num) ((type(num)==OT_FLOAT)?(SQInteger)_float(num):_integer(num))
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+#if defined(SQUSEDOUBLE) && !defined(_SQ64) || !defined(SQUSEDOUBLE) && defined(_SQ64)
+#define SQ_REFOBJECT_INIT()	SQ_OBJECT_RAWINIT()
+#else
+#define SQ_REFOBJECT_INIT()
+#endif
 
-/////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////
+#define _REF_TYPE_DECL(type,_class,sym) \
+	SQObjectPtr(_class * x) \
+	{ \
+		SQ_OBJECT_RAWINIT() \
+		_type=type; \
+		_unVal.sym = x; \
+		assert(_unVal.pTable); \
+		_unVal.pRefCounted->_uiRef++; \
+	} \
+	inline SQObjectPtr& operator=(_class *x) \
+	{  \
+		SQObjectType tOldType; \
+		SQObjectValue unOldVal; \
+		tOldType=_type; \
+		unOldVal=_unVal; \
+		_type = type; \
+		SQ_REFOBJECT_INIT() \
+		_unVal.sym = x; \
+		_unVal.pRefCounted->_uiRef++; \
+		__Release(tOldType,unOldVal); \
+		return *this; \
+	}
+
+#define _SCALAR_TYPE_DECL(type,_class,sym) \
+	SQObjectPtr(_class x) \
+	{ \
+		SQ_OBJECT_RAWINIT() \
+		_type=type; \
+		_unVal.sym = x; \
+	} \
+	inline SQObjectPtr& operator=(_class x) \
+	{  \
+		__Release(_type,_unVal); \
+		_type = type; \
+		SQ_OBJECT_RAWINIT() \
+		_unVal.sym = x; \
+		return *this; \
+	}
 struct SQObjectPtr : public SQObject
 {
 	SQObjectPtr()
@@ -137,168 +213,54 @@ struct SQObjectPtr : public SQObject
 	}
 	SQObjectPtr(const SQObjectPtr &o)
 	{
-		SQ_OBJECT_RAWINIT()
-		_type=o._type;
-		_unVal=o._unVal;
+		_type = o._type;
+		_unVal = o._unVal;
 		__AddRef(_type,_unVal);
 	}
 	SQObjectPtr(const SQObject &o)
 	{
-		SQ_OBJECT_RAWINIT()
-		_type=o._type;
-		_unVal=o._unVal;
+		_type = o._type;
+		_unVal = o._unVal;
 		__AddRef(_type,_unVal);
 	}
-	SQObjectPtr(SQTable *pTable)
-	{
-		SQ_OBJECT_RAWINIT()
-		_type=OT_TABLE;
-		_unVal.pTable=pTable;
-		assert(_unVal.pTable);
-		__AddRef(_type,_unVal);
-	}
-	SQObjectPtr(SQClass *pClass)
-	{
-		SQ_OBJECT_RAWINIT()
-		_type=OT_CLASS;
-		_unVal.pClass=pClass;
-		assert(_unVal.pClass);
-		__AddRef(_type,_unVal);
-	}
-	SQObjectPtr(SQInstance *pInstance)
-	{
-		SQ_OBJECT_RAWINIT()
-		_type=OT_INSTANCE;
-		_unVal.pInstance=pInstance;
-		assert(_unVal.pInstance);
-		__AddRef(_type,_unVal);
-	}
-	SQObjectPtr(SQArray *pArray)
-	{
-		SQ_OBJECT_RAWINIT()
-		_type=OT_ARRAY;
-		_unVal.pArray=pArray;
-		assert(_unVal.pArray);
-		__AddRef(_type,_unVal);
-	}
-	SQObjectPtr(SQClosure *pClosure)
-	{
-		SQ_OBJECT_RAWINIT()
-		_type=OT_CLOSURE;
-		_unVal.pClosure=pClosure;
-		assert(_unVal.pClosure);
-		__AddRef(_type,_unVal);
-	}
-	SQObjectPtr(SQGenerator *pGenerator)
-	{
-		SQ_OBJECT_RAWINIT()
-		_type=OT_GENERATOR;
-		_unVal.pGenerator=pGenerator;
-		assert(_unVal.pGenerator);
-		__AddRef(_type,_unVal);
-	}
-	SQObjectPtr(SQNativeClosure *pNativeClosure)
-	{
-		SQ_OBJECT_RAWINIT()
-		_type=OT_NATIVECLOSURE;
-		_unVal.pNativeClosure=pNativeClosure;
-		assert(_unVal.pNativeClosure);
-		__AddRef(_type,_unVal);
-	}
-	SQObjectPtr(SQString *pString)
-	{
-		SQ_OBJECT_RAWINIT()
-		_type=OT_STRING;
-		_unVal.pString=pString;
-		assert(_unVal.pString);
-		__AddRef(_type,_unVal);
-	}
-	SQObjectPtr(SQUserData *pUserData)
-	{
-		SQ_OBJECT_RAWINIT()
-		_type=OT_USERDATA;
-		_unVal.pUserData=pUserData;
-		assert(_unVal.pUserData);
-		__AddRef(_type,_unVal);
-	}
-	SQObjectPtr(SQVM *pThread)
-	{
-		SQ_OBJECT_RAWINIT()
-		_type=OT_THREAD;
-		_unVal.pThread=pThread;
-		assert(_unVal.pThread);
-		__AddRef(_type,_unVal);
-	}
-	SQObjectPtr(SQWeakRef *pWeakRef)
-	{
-		SQ_OBJECT_RAWINIT()
-		_type=OT_WEAKREF;
-		_unVal.pWeakRef=pWeakRef;
-		assert(_unVal.pWeakRef);
-		__AddRef(_type,_unVal);
-	}
-	SQObjectPtr(SQFunctionProto *pFunctionProto)
-	{
-		SQ_OBJECT_RAWINIT()
-		_type=OT_FUNCPROTO;
-		_unVal.pFunctionProto=pFunctionProto;
-		assert(_unVal.pFunctionProto);
-		__AddRef(_type,_unVal);
-	}
-	SQObjectPtr(SQInteger nInteger)
-	{
-		SQ_OBJECT_RAWINIT()
-		_type=OT_INTEGER;
-		_unVal.nInteger=nInteger;
-	}
-	SQObjectPtr(SQFloat fFloat)
-	{
-		SQ_OBJECT_RAWINIT()
-		_type=OT_FLOAT;
-		_unVal.fFloat=fFloat;
-	}
+	_REF_TYPE_DECL(OT_TABLE,SQTable,pTable)
+	_REF_TYPE_DECL(OT_CLASS,SQClass,pClass)
+	_REF_TYPE_DECL(OT_INSTANCE,SQInstance,pInstance)
+	_REF_TYPE_DECL(OT_ARRAY,SQArray,pArray)
+	_REF_TYPE_DECL(OT_CLOSURE,SQClosure,pClosure)
+	_REF_TYPE_DECL(OT_NATIVECLOSURE,SQNativeClosure,pNativeClosure)
+	_REF_TYPE_DECL(OT_OUTER,SQOuter,pOuter)
+	_REF_TYPE_DECL(OT_GENERATOR,SQGenerator,pGenerator)
+	_REF_TYPE_DECL(OT_STRING,SQString,pString)
+	_REF_TYPE_DECL(OT_USERDATA,SQUserData,pUserData)
+	_REF_TYPE_DECL(OT_WEAKREF,SQWeakRef,pWeakRef)
+	_REF_TYPE_DECL(OT_THREAD,SQVM,pThread)
+	_REF_TYPE_DECL(OT_FUNCPROTO,SQFunctionProto,pFunctionProto)
+
+	_SCALAR_TYPE_DECL(OT_INTEGER,SQInteger,nInteger)
+	_SCALAR_TYPE_DECL(OT_FLOAT,SQFloat,fFloat)
+	_SCALAR_TYPE_DECL(OT_USERPOINTER,SQUserPointer,pUserPointer)
+
 	SQObjectPtr(bool bBool)
 	{
 		SQ_OBJECT_RAWINIT()
 		_type = OT_BOOL;
 		_unVal.nInteger = bBool?1:0;
 	}
-	SQObjectPtr(SQUserPointer pUserPointer)
+	inline SQObjectPtr& operator=(bool b)
 	{
+		__Release(_type,_unVal);
 		SQ_OBJECT_RAWINIT()
-		_type=OT_USERPOINTER;
-		_unVal.pUserPointer=pUserPointer;
+		_type = OT_BOOL;
+		_unVal.nInteger = b?1:0;
+		return *this;
 	}
+
 	~SQObjectPtr()
 	{
 		__Release(_type,_unVal);
 	}
-	inline void Null()
-	{
-		SQObjectType tOldType;
-		SQObjectValue unOldVal;
-		tOldType = _type;
-		unOldVal = _unVal;
-		_type = OT_NULL;
-		_unVal.pUserPointer = NULL;
-		__Release(tOldType,unOldVal);
-	}
-	inline SQObjectPtr& operator=(SQInteger i)
-	{
-		__Release(_type,_unVal);
-		SQ_OBJECT_RAWINIT()
-		_unVal.nInteger = i;
-		_type = OT_INTEGER;
-		return *this;
-	}
-	inline SQObjectPtr& operator=(SQFloat f)
-	{
-		__Release(_type,_unVal);
-		SQ_OBJECT_RAWINIT()
-		_unVal.fFloat = f;
-		_type = OT_FLOAT;
-		return *this;
-	}
+
 	inline SQObjectPtr& operator=(const SQObjectPtr& obj)
 	{
 		SQObjectType tOldType;
@@ -323,9 +285,18 @@ struct SQObjectPtr : public SQObject
 		__Release(tOldType,unOldVal);
 		return *this;
 	}
+	inline void Null()
+	{
+		SQObjectType tOldType = _type;
+		SQObjectValue unOldVal = _unVal;
+		_type = OT_NULL;
+		_unVal.raw = (SQRawObjectVal)NULL;
+		__Release(tOldType ,unOldVal);
+	}
 	private:
 		SQObjectPtr(const SQChar *){} //safety
 };
+
 
 inline void _Swap(SQObject &a,SQObject &b)
 {
@@ -336,6 +307,7 @@ inline void _Swap(SQObject &a,SQObject &b)
 	b._type = tOldType;
 	b._unVal = unOldVal;
 }
+
 /////////////////////////////////////////////////////////////////////////////////////
 #ifndef NO_GARBAGE_COLLECTOR
 #define MARK_FLAG 0x80000000
@@ -343,6 +315,7 @@ struct SQCollectable : public SQRefCounted {
 	SQCollectable *_next;
 	SQCollectable *_prev;
 	SQSharedState *_sharedstate;
+	virtual SQObjectType GetType()=0;
 	virtual void Release()=0;
 	virtual void Mark(SQCollectable **chain)=0;
 	void UnMark();

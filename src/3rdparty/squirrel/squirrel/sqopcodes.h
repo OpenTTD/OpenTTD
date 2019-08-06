@@ -18,8 +18,24 @@ enum CmpOP {
 	CMP_G = 0,
 	CMP_GE = 2,
 	CMP_L = 3,
-	CMP_LE = 4
+	CMP_LE = 4,
+	CMP_3W = 5
 };
+
+enum NewObjectType {
+	NOT_TABLE = 0,
+	NOT_ARRAY = 1,
+	NOT_CLASS = 2
+};
+
+enum AppendArrayType {
+	AAT_STACK = 0,
+	AAT_LITERAL = 1,
+	AAT_INT = 2,
+	AAT_FLOAT = 3,
+	AAT_BOOL = 4
+};
+
 enum SQOpcode
 {
 	_OP_LINE=				0x00,
@@ -39,25 +55,26 @@ enum SQOpcode
 	_OP_GET=				0x0E,
 	_OP_EQ=					0x0F,
 	_OP_NE=					0x10,
-	_OP_ARITH=				0x11,
-	_OP_BITW=				0x12,
-	_OP_RETURN=				0x13,
-	_OP_LOADNULLS=			0x14,
-	_OP_LOADROOTTABLE=		0x15,
-	_OP_LOADBOOL=			0x16,
-	_OP_DMOVE=				0x17,
-	_OP_JMP=				0x18,
-	_OP_JNZ=				0x19,
-	_OP_JZ=					0x1A,
-	_OP_LOADFREEVAR=		0x1B,
-	_OP_VARGC=				0x1C,
-	_OP_GETVARGV=			0x1D,
-	_OP_NEWTABLE=			0x1E,
-	_OP_NEWARRAY=			0x1F,
-	_OP_APPENDARRAY=		0x20,
-	_OP_GETPARENT=			0x21,
-	_OP_COMPARITH=			0x22,
-	_OP_COMPARITHL=			0x23,
+	_OP_ADD=				0x11,
+	_OP_SUB=				0x12,
+	_OP_MUL=				0x13,
+	_OP_DIV=				0x14,
+	_OP_MOD=				0x15,
+	_OP_BITW=				0x16,
+	_OP_RETURN=				0x17,
+	_OP_LOADNULLS=			0x18,
+	_OP_LOADROOT=			0x19,
+	_OP_LOADBOOL=			0x1A,
+	_OP_DMOVE=				0x1B,
+	_OP_JMP=				0x1C,
+	//_OP_JNZ=				0x1D,
+	_OP_JCMP=				0x1D,
+	_OP_JZ=					0x1E,
+	_OP_SETOUTER=			0x1F,
+	_OP_GETOUTER=			0x20,
+	_OP_NEWOBJ=				0x21,
+	_OP_APPENDARRAY=		0x22,
+	_OP_COMPARITH=			0x23,
 	_OP_INC=				0x24,
 	_OP_INCL=				0x25,
 	_OP_PINC=				0x26,
@@ -75,15 +92,14 @@ enum SQOpcode
 	_OP_RESUME=				0x32,
 	_OP_FOREACH=			0x33,
 	_OP_POSTFOREACH=		0x34,
-	_OP_DELEGATE=			0x35,
-	_OP_CLONE=				0x36,
-	_OP_TYPEOF=				0x37,
-	_OP_PUSHTRAP=			0x38,
-	_OP_POPTRAP=			0x39,
-	_OP_THROW=				0x3A,
-	_OP_CLASS=				0x3B,
-	_OP_NEWSLOTA=			0x3C,
-	_OP_SCOPE_END=		0x3D,
+	_OP_CLONE=				0x35,
+	_OP_TYPEOF=				0x36,
+	_OP_PUSHTRAP=			0x37,
+	_OP_POPTRAP=			0x38,
+	_OP_THROW=				0x39,
+	_OP_NEWSLOTA=			0x3A,
+	_OP_GETBASE=			0x3B,
+	_OP_CLOSE=				0x3C,
 };
 
 struct SQInstructionDesc {
@@ -92,7 +108,8 @@ struct SQInstructionDesc {
 
 struct SQInstruction
 {
-	SQInstruction(SQOpcode _op=_OP_SCOPE_END,SQInteger a0=0,SQInteger a1=0,SQInteger a2=0,SQInteger a3=0)
+	SQInstruction(){};
+	SQInstruction(SQOpcode _op,SQInteger a0=0,SQInteger a1=0,SQInteger a2=0,SQInteger a3=0)
 	{	op = _op;
 		_arg0 = (unsigned char)a0;_arg1 = (SQInt32)a1;
 		_arg2 = (unsigned char)a2;_arg3 = (unsigned char)a3;

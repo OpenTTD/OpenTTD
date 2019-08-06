@@ -167,10 +167,6 @@ void Squirrel::ErrorPrintFunc(HSQUIRRELVM vm, const SQChar *s, ...)
 
 void Squirrel::RunError(HSQUIRRELVM vm, const SQChar *error)
 {
-	/* Set the print function to something that prints to stderr */
-	SQPRINTFUNCTION pf = sq_getprintfunc(vm);
-	sq_setprintfunc(vm, &Squirrel::ErrorPrintFunc);
-
 	/* Check if we have a custom print function */
 	SQChar buf[1024];
 	seprintf(buf, lastof(buf), "Your script made an error: %s\n", error);
@@ -182,10 +178,8 @@ void Squirrel::RunError(HSQUIRRELVM vm, const SQChar *error)
 		(*func)(true, buf);
 	}
 
-	/* Print below the error the stack, so the users knows what is happening */
+	/* Print below the error the stack, so the user knows what is happening */
 	sqstd_printcallstack(vm);
-	/* Reset the old print function */
-	sq_setprintfunc(vm, pf);
 }
 
 SQInteger Squirrel::_RunError(HSQUIRRELVM vm)
@@ -480,7 +474,7 @@ void Squirrel::Initialize()
 	sq_setcompilererrorhandler(this->vm, &Squirrel::CompileError);
 	sq_notifyallexceptions(this->vm, SQTrue);
 	/* Set a good print-function */
-	sq_setprintfunc(this->vm, &Squirrel::PrintFunc);
+	sq_setprintfunc(this->vm, &Squirrel::PrintFunc, &Squirrel::ErrorPrintFunc);
 	/* Handle runtime-errors ourself, so we can display it nicely */
 	sq_newclosure(this->vm, &Squirrel::_RunError, 0);
 	sq_seterrorhandler(this->vm);
@@ -514,14 +508,16 @@ public:
 	}
 };
 
-static WChar _io_file_lexfeed_ASCII(SQUserPointer file)
+static SQInteger _io_file_lexfeed_ASCII(SQUserPointer file)
 {
 	unsigned char c;
-	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return c;
+	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) {
+		return static_cast<SQInteger>(c);
+	}
 	return 0;
 }
 
-static WChar _io_file_lexfeed_UTF8(SQUserPointer file)
+static SQInteger _io_file_lexfeed_UTF8(SQUserPointer file)
 {
 	char buffer[5];
 
@@ -535,24 +531,26 @@ static WChar _io_file_lexfeed_UTF8(SQUserPointer file)
 
 	/* Convert the character, and when definitely invalid, bail out as well. */
 	WChar c;
-	if (Utf8Decode(&c, buffer) != len) return -1;
+	if (Utf8Decode(&c, buffer) != len) {
+		return -1;
+	}
 
-	return c;
+	return static_cast<SQInteger>(c);
 }
 
-static WChar _io_file_lexfeed_UCS2_no_swap(SQUserPointer file)
+static SQInteger _io_file_lexfeed_UCS2_no_swap(SQUserPointer file)
 {
 	unsigned short c;
-	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return (WChar)c;
+	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return static_cast<SQInteger>(c);
 	return 0;
 }
 
-static WChar _io_file_lexfeed_UCS2_swap(SQUserPointer file)
+static SQInteger _io_file_lexfeed_UCS2_swap(SQUserPointer file)
 {
 	unsigned short c;
 	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) {
 		c = ((c >> 8) & 0x00FF)| ((c << 8) & 0xFF00);
-		return (WChar)c;
+		return static_cast<SQInteger>(c);
 	}
 	return 0;
 }

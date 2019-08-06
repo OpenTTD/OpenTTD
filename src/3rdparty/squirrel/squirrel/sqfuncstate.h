@@ -21,6 +21,7 @@ struct SQFuncState
 	SQInstruction &GetInstruction(SQInteger pos){return _instructions[pos];}
 	void PopInstructions(SQInteger size){for(SQInteger i=0;i<size;i++)_instructions.pop_back();}
 	void SetStackSize(SQInteger n);
+	SQInteger CountOuters(SQInteger stacksize);
 	void SnoozeOpt(){_optimization=false;}
 	void AddDefaultParam(SQInteger trg) { _defaultparams.push_back(trg); }
 	SQInteger GetDefaultParamCount() { return _defaultparams.size(); }
@@ -29,8 +30,9 @@ struct SQFuncState
 	SQInteger GetNumericConstant(const SQFloat cons);
 	SQInteger PushLocalVariable(const SQObject &name);
 	void AddParameter(const SQObject &name);
-	void AddOuterValue(const SQObject &name);
+	//void AddOuterValue(const SQObject &name);
 	SQInteger GetLocalVariable(const SQObject &name);
+	void MarkLocalAsOuter(SQInteger pos);
 	SQInteger GetOuterVariable(const SQObject &name);
 	SQInteger GenerateCode();
 	SQInteger GetStackSize();
@@ -42,6 +44,7 @@ struct SQFuncState
 	SQInteger PopTarget();
 	SQInteger TopTarget();
 	SQInteger GetUpTarget(SQInteger n);
+	void DiscardTarget();
 	bool IsLocal(SQUnsignedInteger stkpos);
 	SQObject CreateString(const SQChar *s,SQInteger len = -1);
 	SQObject CreateTable();
@@ -66,11 +69,13 @@ struct SQFuncState
 	SQInteger _nliterals;
 	SQLineInfoVec _lineinfos;
 	SQFuncState *_parent;
+	SQIntVec _scope_blocks;
 	SQIntVec _breaktargets;
 	SQIntVec _continuetargets;
 	SQIntVec _defaultparams;
 	SQInteger _lastline;
 	SQInteger _traps; //contains number of nested exception traps
+	SQInteger _outers;
 	bool _optimization;
 	SQSharedState *_sharedstate;
 	sqvector<SQFuncState*> _childstates;
@@ -78,6 +83,7 @@ struct SQFuncState
 private:
 	CompilerErrorFunc _errfunc;
 	void *_errtarget;
+	SQSharedState *_ss;
 };
 
 

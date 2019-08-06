@@ -18,6 +18,7 @@ public:
 	}
 #ifndef NO_GARBAGE_COLLECTOR
 	void Mark(SQCollectable **chain);
+	SQObjectType GetType() {return OT_ARRAY;}
 #endif
 	void Finalize(){
 		_values.resize(0);
@@ -53,9 +54,14 @@ public:
 		//nothing to iterate anymore
 		return -1;
 	}
-	SQArray *Clone(){SQArray *anew=Create(_opt_ss(this),Size()); anew->_values.copy(_values); return anew; }
+	SQArray *Clone(){SQArray *anew=Create(_opt_ss(this),0); anew->_values.copy(_values); return anew; }
 	SQInteger Size() const {return _values.size();}
-	void Resize(SQInteger size,SQObjectPtr &fill = _null_) { _values.resize(size,fill); ShrinkIfNeeded(); }
+	void Resize(SQInteger size)
+	{
+		SQObjectPtr _null;
+		Resize(size,_null);
+	}
+	void Resize(SQInteger size,SQObjectPtr &fill) { _values.resize(size,fill); ShrinkIfNeeded(); }
 	void Reserve(SQInteger size) { _values.reserve(size); }
 	void Append(const SQObject &o){_values.push_back(o);}
 	void Extend(const SQArray *a);
@@ -82,6 +88,7 @@ public:
 	{
 		sq_delete(this,SQArray);
 	}
+
 	SQObjectPtrVec _values;
 };
 #endif //_SQARRAY_H_
