@@ -74,7 +74,7 @@ static void DedicatedSignalHandler(int sig)
 # include <time.h>
 # include <tchar.h>
 # include "../os/windows/win32.h"
-# include "../thread.h"
+
 static HANDLE _hInputReady, _hWaitForInputHandling;
 static HANDLE _hThread; // Thread to close
 static char _win_console_thread_buffer[200];
