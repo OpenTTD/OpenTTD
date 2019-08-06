@@ -283,7 +283,16 @@
 {
 	if (!_networking || _network_server) {
 		Company *c = Company::GetIfValid(company);
-		assert(c != nullptr && c->ai_instance != nullptr);
+
+		assert(c != nullptr);
+		if (c->ai_instance == nullptr) {
+			/* c->ai_instance can be null if this was a network client
+			 * that's been disconnected from the server. So, it
+			 * doesn't have access to the ai instance. Just save an
+			 * empty instance. */
+			AIInstance::SaveEmpty();
+			return;
+		}
 
 		Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
 		c->ai_instance->Save();
