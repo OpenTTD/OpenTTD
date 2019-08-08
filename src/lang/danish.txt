@@ -358,6 +358,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landskab
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Bygenerering
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrigenerering
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Bygning af vej
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Sporvejskonstruktion
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant træer. Shift skifter mellem at bygge og vise prisoverslag.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Placér skilt
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Placér objekt. Shift viser tidsestimat
@@ -2432,6 +2433,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Byg en s
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Skift mellem bygning/fjernelse af veje
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Skift mellem bygning/fjernelse af sporveje
 
+STR_ROAD_NAME_TRAM                                              :Sporvej
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Retning af værksted
