@@ -1589,7 +1589,20 @@ static void NetworkCheckRestartMap()
 	if (_settings_client.network.restart_game_year != 0 && _cur_year >= _settings_client.network.restart_game_year) {
 		DEBUG(net, 0, "Auto-restarting map. Year %d reached", _cur_year);
 
-		StartNewGameWithoutGUI(GENERATE_NEW_SEED);
+		_settings_newgame.game_creation.generation_seed = GENERATE_NEW_SEED;
+		switch(_file_to_saveload.abstract_ftype) {
+			case FT_SAVEGAME:
+			case FT_SCENARIO:
+				_switch_mode = SM_LOAD_GAME;
+				break;
+
+			case FT_HEIGHTMAP:
+				_switch_mode = SM_START_HEIGHTMAP;
+				break;
+
+			default:
+				_switch_mode = SM_NEWGAME;
+		}
 	}
 }
 
