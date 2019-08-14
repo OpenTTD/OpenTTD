@@ -605,24 +605,24 @@ public:
 				this->InvalidateData(SLIWD_RESCAN_FILES);
 				break;
 
-			case WID_SL_LOAD_BUTTON:
-				if (this->selected != nullptr && !_load_check_data.HasErrors()) {
-					const char *name = FiosBrowseTo(this->selected);
-					_file_to_saveload.SetMode(this->selected->type);
-					_file_to_saveload.SetName(name);
-					_file_to_saveload.SetTitle(this->selected->title);
+			case WID_SL_LOAD_BUTTON: {
+				if (this->selected == nullptr || _load_check_data.HasErrors()) break;
 
-					if (this->abstract_filetype == FT_HEIGHTMAP) {
-						delete this;
-						ShowHeightmapLoad();
+				const char *name = FiosBrowseTo(this->selected);
+				_file_to_saveload.SetMode(this->selected->type);
+				_file_to_saveload.SetName(name);
+				_file_to_saveload.SetTitle(this->selected->title);
 
-					} else if (!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs()) {
-						_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
-						ClearErrorMessages();
-						delete this;
-					}
+				if (this->abstract_filetype == FT_HEIGHTMAP) {
+					delete this;
+					ShowHeightmapLoad();
+				} else if (!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs()) {
+					_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+					ClearErrorMessages();
+					delete this;
 				}
 				break;
+			}
 
 			case WID_SL_NEWGRF_INFO:
 				if (_load_check_data.HasNewGrfs()) {
@@ -651,43 +651,44 @@ public:
 				const FiosItem *file = this->fios_items.Get(y);
 
 				const char *name = FiosBrowseTo(file);
-				if (name != nullptr) {
-					if (click_count == 1) {
-						if (this->selected != file) {
-							this->selected = file;
-							_load_check_data.Clear();
-
-							if (GetDetailedFileType(file->type) == DFT_GAME_FILE) {
-								/* Other detailed file types cannot be checked before. */
-								SaveOrLoad(name, SLO_CHECK, DFT_GAME_FILE, NO_DIRECTORY, false);
-							}
-
-							this->InvalidateData(SLIWD_SELECTION_CHANGES);
-						}
-						if (this->fop == SLO_SAVE) {
-							/* Copy clicked name to editbox */
-							this->filename_editbox.text.Assign(file->title);
-							this->SetWidgetDirty(WID_SL_SAVE_OSK_TITLE);
-						}
-					} else if (!_load_check_data.HasErrors()) {
-						this->selected = file;
-						if (this->fop == SLO_LOAD) {
-							if (this->abstract_filetype == FT_SAVEGAME || this->abstract_filetype == FT_SCENARIO) {
-								this->OnClick(pt, WID_SL_LOAD_BUTTON, 1);
-							} else {
-								assert(this->abstract_filetype == FT_HEIGHTMAP);
-								_file_to_saveload.SetMode(file->type);
-								_file_to_saveload.SetName(name);
-								_file_to_saveload.SetTitle(file->title);
-
-								delete this;
-								ShowHeightmapLoad();
-							}
-						}
-					}
-				} else {
+				if (name == nullptr) {
 					/* Changed directory, need refresh. */
 					this->InvalidateData(SLIWD_RESCAN_FILES);
+					break;
+				}
+
+				if (click_count == 1) {
+					if (this->selected != file) {
+						this->selected = file;
+						_load_check_data.Clear();
+
+						if (GetDetailedFileType(file->type) == DFT_GAME_FILE) {
+							/* Other detailed file types cannot be checked before. */
+							SaveOrLoad(name, SLO_CHECK, DFT_GAME_FILE, NO_DIRECTORY, false);
+						}
+
+						this->InvalidateData(SLIWD_SELECTION_CHANGES);
+					}
+					if (this->fop == SLO_SAVE) {
+						/* Copy clicked name to editbox */
+						this->filename_editbox.text.Assign(file->title);
+						this->SetWidgetDirty(WID_SL_SAVE_OSK_TITLE);
+					}
+				} else if (!_load_check_data.HasErrors()) {
+					this->selected = file;
+					if (this->fop == SLO_LOAD) {
+						if (this->abstract_filetype == FT_SAVEGAME || this->abstract_filetype == FT_SCENARIO) {
+							this->OnClick(pt, WID_SL_LOAD_BUTTON, 1);
+						} else {
+							assert(this->abstract_filetype == FT_HEIGHTMAP);
+							_file_to_saveload.SetMode(file->type);
+							_file_to_saveload.SetName(name);
+							_file_to_saveload.SetTitle(file->title);
+
+							delete this;
+							ShowHeightmapLoad();
+						}
+					}
 				}
 				break;
 			}
