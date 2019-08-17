@@ -205,12 +205,18 @@ const char *FiosBrowseTo(const FiosItem *item)
  */
 static void FiosMakeFilename(char *buf, const char *path, const char *name, const char *ext, const char *last)
 {
-	const char *period;
+	if (path != nullptr) {
+		const char *buf_start = buf;
+		buf = strecpy(buf, path, last);
+		/* Remove trailing path separator, if present */
+		if (buf > buf_start && buf[-1] == PATHSEPCHAR) buf--;
+	}
 
 	/* Don't append the extension if it is already there */
-	period = strrchr(name, '.');
+	const char *period = strrchr(name, '.');
 	if (period != nullptr && strcasecmp(period, ext) == 0) ext = "";
-	seprintf(buf, last, "%s" PATHSEP "%s%s", path, name, ext);
+
+	seprintf(buf, last, PATHSEP "%s%s", name, ext);
 }
 
 /**
