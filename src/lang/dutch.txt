@@ -3122,6 +3122,8 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Plaats hernoeme
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE} Gemeenteraad van {TOWN}
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Zone
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Zone weergeven binnen de gemeentegrenzen
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Reputatie van transportbedrijven:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Beschikbare acties:
