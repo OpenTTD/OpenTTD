@@ -306,6 +306,13 @@ int MacOSStringCompare(const char *s1, const char *s2)
 	CFStringRef cf1 = CFStringCreateWithCString(kCFAllocatorDefault, s1, kCFStringEncodingUTF8);
 	CFStringRef cf2 = CFStringCreateWithCString(kCFAllocatorDefault, s2, kCFStringEncodingUTF8);
 
+	/* If any CFString could not be created (e.g., due to UTF8 invalid chars), return OS unsupported functionality */
+	if (cf1 == nullptr || cf2 == nullptr) {
+		if (cf1 != nullptr) CFRelease(cf1);
+		if (cf2 != nullptr) CFRelease(cf2);
+		return 0;
+	}
+
 	CFComparisonResult res = CFStringCompareWithOptionsAndLocale(cf1, cf2, CFRangeMake(0, CFStringGetLength(cf1)), flags, _osx_locale);
 
 	CFRelease(cf1);
