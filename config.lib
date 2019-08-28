@@ -1059,18 +1059,8 @@ check_params() {
 		fi
 	fi
 
-	if [ -d "$ROOT_DIR/.svn" ] && [ -n "`svn help 2>/dev/null`" ]; then
-		log 1 "checking revision... svn detection"
-	elif [ -d "$ROOT_DIR/../.svn" ] && [ -n "`svn help 2>/dev/null`" ] && [ -n "`LC_ALL=C svn info $ROOT_DIR/.. | grep '^URL:.*tags$'`" ]; then
-		# subversion changed its behaviour; now not all folders have a .svn folder,
-		# but only the root folder. Since making tags requires a (sparse) checkout
-		# of the tags folder, the folder of the tag does not have a .svn folder
-		# anymore and this fails to detect the subversion repository checkout.
-		log 1 "checking revision... svn detection (tag)"
-	elif [ -d "$ROOT_DIR/.git" ] && [ -n "`git help 2>/dev/null`" ]; then
+	if { [ -d "$ROOT_DIR/.git" ] || [ -f "$ROOT_DIR/.git" ]; } && [ -n "`git help 2>/dev/null`" ]; then
 		log 1 "checking revision... git detection"
-	elif [ -d "$ROOT_DIR/.hg" ] && [ -n "`HGPLAIN= hg help 2>/dev/null`" ]; then
-		log 1 "checking revision... hg detection"
 	elif [ -f "$ROOT_DIR/.ottdrev" ]; then
 		log 1 "checking revision... source tarball"
 	else
