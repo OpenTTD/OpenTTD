@@ -24,6 +24,7 @@
 #include "tilehighlight_func.h"
 #include "network/network.h"
 #include "station_base.h"
+#include "industry.h"
 #include "waypoint_base.h"
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
@@ -389,11 +390,17 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 		return order;
 	}
 
-	if (IsTileType(tile, MP_STATION)) {
-		StationID st_index = GetStationIndex(tile);
-		const Station *st = Station::Get(st_index);
+	/* check for station or industry with neutral station */
+	if (IsTileType(tile, MP_STATION) || IsTileType(tile, MP_INDUSTRY)) {
+		const Station *st = nullptr;
 
-		if (st->owner == _local_company || st->owner == OWNER_NONE) {
+		if (IsTileType(tile, MP_STATION)){
+			st = Station::GetByTile(tile);
+		} else {
+			const Industry *in = Industry::GetByTile(tile);
+			st = in->neutral_station;
+		}
+		if (st != nullptr && (st->owner == _local_company || st->owner == OWNER_NONE)) {
 			byte facil;
 			switch (v->type) {
 				case VEH_SHIP:     facil = FACIL_DOCK;    break;
@@ -403,6 +410,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				default: NOT_REACHED();
 			}
 			if (st->facilities & facil) {
+				StationID st_index = GetStationIndex(st->xy);
 				order.MakeGoToStation(st_index);
 				if (_ctrl_pressed) order.SetLoadType(OLF_FULL_LOAD_ANY);
 				if (_settings_client.gui.new_nonstop && v->IsGroundVehicle()) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
