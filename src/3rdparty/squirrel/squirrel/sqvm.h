@@ -49,7 +49,7 @@ typedef sqvector<CallInfo> CallInfoVec;
 public:
 	void DebugHookProxy(SQInteger type, const SQChar * sourcename, SQInteger line, const SQChar * funcname);
 	static void _DebugHookProxy(HSQUIRRELVM v, SQInteger type, const SQChar * sourcename, SQInteger line, const SQChar * funcname);
-	enum ExecutionType { ET_CALL, ET_RESUME_GENERATOR, ET_RESUME_VM,ET_RESUME_THROW_VM };
+	enum ExecutionType { ET_CALL, ET_RESUME_GENERATOR, ET_RESUME_VM, ET_RESUME_THROW_VM, ET_RESUME_OPENTTD };
 	SQVM(SQSharedState *ss);
 	~SQVM();
 	bool Init(SQVM *friendvm, SQInteger stacksize);
@@ -60,7 +60,7 @@ public:
 	bool StartCall(SQClosure *closure, SQInteger target, SQInteger nargs, SQInteger stackbase, bool tailcall);
 	bool CreateClassInstance(SQClass *theclass, SQObjectPtr &inst, SQObjectPtr &constructor);
 	//call a generic closure pure SQUIRREL or NATIVE
-	bool Call(SQObjectPtr &closure, SQInteger nparams, SQInteger stackbase, SQObjectPtr &outres,SQBool raiseerror);
+	bool Call(SQObjectPtr &closure, SQInteger nparams, SQInteger stackbase, SQObjectPtr &outres,SQBool raiseerror,SQBool can_suspend);
 	SQRESULT Suspend();
 
 	void CallDebugHook(SQInteger type,SQInteger forcedline=0);
@@ -107,6 +107,7 @@ public:
 	//_INLINE bool LOCAL_INC(SQInteger op,SQObjectPtr &target, SQObjectPtr &a, SQObjectPtr &incr);
 	_INLINE bool PLOCAL_INC(SQInteger op,SQObjectPtr &target, SQObjectPtr &a, SQObjectPtr &incr);
 	_INLINE bool DerefInc(SQInteger op,SQObjectPtr &target, SQObjectPtr &self, SQObjectPtr &key, SQObjectPtr &incr, bool postfix,SQInteger arg0);
+	void ClearStack(SQInteger last_top);
 #ifdef _DEBUG_DUMP
 	void dumpstack(SQInteger stackbase=-1, bool dumpall = false);
 #endif
@@ -173,6 +174,20 @@ public:
 	SQBool _suspended_root;
 	SQInteger _suspended_target;
 	SQInteger _suspended_traps;
+
+	SQBool _can_suspend;
+	SQInteger _ops_till_suspend;
+	SQBool _in_stackoverflow;
+
+	bool ShouldSuspend()
+	{
+		return _can_suspend && _ops_till_suspend <= 0;
+	}
+
+	void DecreaseOps(SQInteger amount)
+	{
+		if (_ops_till_suspend - amount < _ops_till_suspend) _ops_till_suspend -= amount;
+	}
 };
 
 struct AutoDec{
@@ -194,6 +209,12 @@ inline SQObjectPtr &stack_get(HSQUIRRELVM v,SQInteger idx){return ((idx>=0)?(v->
 #define PUSH_CALLINFO(v,nci){ \
 	SQInteger css = v->_callsstacksize; \
 	if(css == v->_alloccallsstacksize) { \
+		if (v->_callsstacksize > 65535 && !v->_in_stackoverflow) { \
+			v->_in_stackoverflow = true; \
+			v->Raise_Error("stack overflow");\
+			v->CallErrorHandler(v->_lasterror);\
+			return false;\
+		}\
 		v->GrowCallStack(); \
 	} \
 	v->ci = &v->_callsstack[css]; \

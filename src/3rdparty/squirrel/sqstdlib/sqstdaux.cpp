@@ -1,7 +1,11 @@
 /* see copyright notice in squirrel.h */
+#include "../../../stdafx.h"
+
 #include <squirrel.h>
 #include <sqstdaux.h>
 #include <assert.h>
+
+#include "../../../safeguards.h"
 
 void sqstd_printcallstack(HSQUIRRELVM v)
 {
@@ -20,7 +24,19 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 			const SQChar *fn=_SC("unknown");
 			const SQChar *src=_SC("unknown");
 			if(si.funcname)fn=si.funcname;
-			if(si.source)src=si.source;
+			if(si.source) {
+				/* We don't want to bother users with absolute paths to all AI files.
+				 * Since the path only reaches NoAI code in a formatted string we have
+				 * to strip it here. Let's hope nobody installs openttd in a subdirectory
+				 * of a directory named /ai/. */
+				src = strstr(si.source, "\\ai\\");
+				if (!src) src = strstr(si.source, "/ai/");
+				if (src) {
+					src += 4;
+				} else {
+					src = si.source;
+				}
+			}
 			pf(v,_SC("*FUNCTION [%s()] %s line [%d]\n"),fn,src,si.line);
 			level++;
 		}

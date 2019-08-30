@@ -1,0 +1,4 @@
+This folder contains a modified version of Squirrel that is tailored to meet
+the needs of OpenTTD.
+We have based this modification on the version as described in:
+include/squirrel.h

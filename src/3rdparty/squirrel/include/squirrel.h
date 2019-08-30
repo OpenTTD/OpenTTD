@@ -22,6 +22,8 @@ THE SOFTWARE.
 #ifndef _SQUIRREL_H_
 #define _SQUIRREL_H_
 
+#include "../../../string_type.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -65,11 +67,7 @@ typedef float SQFloat;
 #endif
 
 #if defined(SQUSEDOUBLE) && !defined(_SQ64) || !defined(SQUSEDOUBLE) && defined(_SQ64)
-#ifdef _MSC_VER
 typedef __int64 SQRawObjectVal; //must be 64bits
-#else
-typedef long long SQRawObjectVal; //must be 64bits
-#endif
 #define SQ_OBJECT_RAWINIT() { _unVal.raw = 0; }
 #else
 typedef SQUnsignedInteger SQRawObjectVal; //is 32 bits on 32 bits builds and 64 bits otherwise
@@ -106,45 +104,6 @@ struct SQInstance;
 struct SQDelegable;
 struct SQOuter;
 
-#ifdef _UNICODE
-#define SQUNICODE
-#endif
-
-#ifdef SQUNICODE
-#if (defined(_MSC_VER) && _MSC_VER >= 1400) // 1400 = VS8
-
-#if !defined(_NATIVE_WCHAR_T_DEFINED) //this is if the compiler considers wchar_t as native type
-#define wchar_t unsigned short
-#endif
-
-#else
-typedef unsigned short wchar_t;
-#endif
-
-typedef wchar_t SQChar;
-#define _SC(a) L##a
-#define	scstrcmp	wcscmp
-#define scsprintf	swprintf
-#define scstrlen	wcslen
-#define scstrtod	wcstod
-#ifdef _SQ64
-#define scstrtol	_wcstoi64
-#else
-#define scstrtol	wcstol
-#endif
-#define scatoi		_wtoi
-#define scstrtoul	wcstoul
-#define scvsprintf	vswprintf
-#define scstrstr	wcsstr
-#define scisspace	iswspace
-#define scisdigit	iswdigit
-#define scisxdigit	iswxdigit
-#define scisalpha	iswalpha
-#define sciscntrl	iswcntrl
-#define scisalnum	iswalnum
-#define scprintf	wprintf
-#define MAX_CHAR 0xFFFF
-#else
 typedef char SQChar;
 #define _SC(a) a
 #define	scstrcmp	strcmp
@@ -172,7 +131,6 @@ typedef char SQChar;
 #define scisalnum	isalnum
 #define scprintf	printf
 #define MAX_CHAR 0xFF
-#endif
 
 #ifdef _SQ64
 #define _PRINT_INT_PREC _SC("ll")
@@ -181,7 +139,7 @@ typedef char SQChar;
 #define _PRINT_INT_FMT _SC("%d")
 #endif
 
-#define SQUIRREL_VERSION	_SC("Squirrel 3.0.7 stable")
+#define SQUIRREL_VERSION	_SC("Squirrel 3.0.7 stable - With custom OpenTTD modifications")
 #define SQUIRREL_COPYRIGHT	_SC("Copyright (C) 2003-2015 Alberto Demichelis")
 #define SQUIRREL_AUTHOR		_SC("Alberto Demichelis")
 #define SQUIRREL_VERSION_NUMBER	307
@@ -314,6 +272,7 @@ typedef struct tagSQFunctionInfo {
 }SQFunctionInfo;
 
 /*vm*/
+SQUIRREL_API bool sq_can_suspend(HSQUIRRELVM v);
 SQUIRREL_API HSQUIRRELVM sq_open(SQInteger initialstacksize);
 SQUIRREL_API HSQUIRRELVM sq_newthread(HSQUIRRELVM friendvm, SQInteger initialstacksize);
 SQUIRREL_API void sq_seterrorhandler(HSQUIRRELVM v);
@@ -324,9 +283,12 @@ SQUIRREL_API void sq_setprintfunc(HSQUIRRELVM v, SQPRINTFUNCTION printfunc,SQPRI
 SQUIRREL_API SQPRINTFUNCTION sq_getprintfunc(HSQUIRRELVM v);
 SQUIRREL_API SQPRINTFUNCTION sq_geterrorfunc(HSQUIRRELVM v);
 SQUIRREL_API SQRESULT sq_suspendvm(HSQUIRRELVM v);
+SQUIRREL_API bool sq_resumecatch(HSQUIRRELVM v, int suspend = -1);
+SQUIRREL_API bool sq_resumeerror(HSQUIRRELVM v);
 SQUIRREL_API SQRESULT sq_wakeupvm(HSQUIRRELVM v,SQBool resumedret,SQBool retval,SQBool raiseerror,SQBool throwerror);
 SQUIRREL_API SQInteger sq_getvmstate(HSQUIRRELVM v);
 SQUIRREL_API SQInteger sq_getversion();
+SQUIRREL_API void sq_decreaseops(HSQUIRRELVM v, int amount);
 
 /*compiler*/
 SQUIRREL_API SQRESULT sq_compile(HSQUIRRELVM v,SQLEXREADFUNC read,SQUserPointer p,const SQChar *sourcename,SQBool raiseerror);
@@ -427,7 +389,7 @@ SQUIRREL_API SQRESULT sq_getweakrefval(HSQUIRRELVM v,SQInteger idx);
 SQUIRREL_API SQRESULT sq_clear(HSQUIRRELVM v,SQInteger idx);
 
 /*calls*/
-SQUIRREL_API SQRESULT sq_call(HSQUIRRELVM v,SQInteger params,SQBool retval,SQBool raiseerror);
+SQUIRREL_API SQRESULT sq_call(HSQUIRRELVM v,SQInteger params,SQBool retval,SQBool raiseerror, int suspend = -1);
 SQUIRREL_API SQRESULT sq_resume(HSQUIRRELVM v,SQBool retval,SQBool raiseerror);
 SQUIRREL_API const SQChar *sq_getlocal(HSQUIRRELVM v,SQUnsignedInteger level,SQUnsignedInteger idx);
 SQUIRREL_API SQRESULT sq_getcallee(HSQUIRRELVM v);

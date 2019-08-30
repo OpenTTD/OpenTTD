@@ -291,6 +291,7 @@ struct SQObjectPtr : public SQObject
 		SQObjectValue unOldVal = _unVal;
 		_type = OT_NULL;
 		_unVal.raw = (SQRawObjectVal)NULL;
+		_unVal.pUserPointer = NULL;
 		__Release(tOldType ,unOldVal);
 	}
 	private:

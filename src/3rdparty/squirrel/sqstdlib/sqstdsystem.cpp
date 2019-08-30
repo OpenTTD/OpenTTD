@@ -5,20 +5,11 @@
 #include <stdio.h>
 #include <sqstdsystem.h>
 
-#ifdef SQUNICODE
-#include <wchar.h>
-#define scgetenv _wgetenv
-#define scsystem _wsystem
-#define scasctime _wasctime
-#define scremove _wremove
-#define screname _wrename
-#else
 #define scgetenv getenv
 #define scsystem system
 #define scasctime asctime
 #define scremove remove
 #define screname rename
-#endif
 
 static SQInteger _system_getenv(HSQUIRRELVM v)
 {
@@ -106,7 +97,7 @@ static SQInteger _system_date(HSQUIRRELVM v)
 		return sq_throwerror(v,_SC("crt api failure"));
 	sq_newtable(v);
 	_set_integer_slot(v, _SC("sec"), date->tm_sec);
-	_set_integer_slot(v, _SC("min"), date->tm_min);
+	set_integer_slot(v, _SC("min"), date->tm_min);
 	_set_integer_slot(v, _SC("hour"), date->tm_hour);
 	_set_integer_slot(v, _SC("day"), date->tm_mday);
 	_set_integer_slot(v, _SC("month"), date->tm_mon);

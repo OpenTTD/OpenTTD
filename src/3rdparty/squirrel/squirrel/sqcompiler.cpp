@@ -1,6 +1,8 @@
 /*
 	see copyright notice in squirrel.h
 */
+#include "../../../stdafx.h"
+
 #include "sqpcheader.h"
 #ifndef NO_COMPILER
 #include <stdarg.h>

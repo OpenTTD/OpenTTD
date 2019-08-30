@@ -1,6 +1,8 @@
 /*
 	see copyright notice in squirrel.h
 */
+#include "../../../stdafx.h"
+
 #include "sqpcheader.h"
 #include "sqvm.h"
 #include "sqstring.h"
@@ -82,6 +84,16 @@ SQInteger sq_getvmstate(HSQUIRRELVM v)
 		if(v->_callsstacksize != 0) return SQ_VMSTATE_RUNNING;
 		else return SQ_VMSTATE_IDLE;
 	}
+}
+
+void sq_decreaseops(HSQUIRRELVM v, int amount)
+{
+	v->DecreaseOps(amount);
+}
+
+bool sq_can_suspend(HSQUIRRELVM v)
+{
+	return v->_nnativecalls <= 2;
 }
 
 void sq_seterrorhandler(HSQUIRRELVM v)
@@ -891,10 +903,16 @@ SQRESULT sq_setdelegate(HSQUIRRELVM v,SQInteger idx)
 	switch(type) {
 	case OT_TABLE:
 		if(type(mt) == OT_TABLE) {
-			if(!_table(self)->SetDelegate(_table(mt))) return sq_throwerror(v, _SC("delagate cycle")); v->Pop();}
-		else if(type(mt)==OT_NULL) {
-			_table(self)->SetDelegate(NULL); v->Pop(); }
-		else return sq_aux_invalidtype(v,type);
+			if(!_table(self)->SetDelegate(_table(mt))) {
+				return sq_throwerror(v, _SC("delagate cycle"));
+			}
+			v->Pop();
+		} else if(type(mt)==OT_NULL) {
+			_table(self)->SetDelegate(NULL);
+			v->Pop();
+		} else {
+			return sq_aux_invalidtype(v,type);
+		}
 		break;
 	case OT_USERDATA:
 		if(type(mt)==OT_TABLE) {
@@ -1071,6 +1089,7 @@ SQRESULT sq_resume(HSQUIRRELVM v,SQBool retval,SQBool raiseerror)
 {
 	if(type(v->GetUp(-1))==OT_GENERATOR){
 		v->PushNull(); //retval
+		v->_can_suspend = false;
 		if(!v->Execute(v->GetUp(-2),0,v->_top,v->GetUp(-1),raiseerror,SQVM::ET_RESUME_GENERATOR))
 		{v->Raise_Error(v->_lasterror); return SQ_ERROR;}
 		if(!retval)
@@ -1080,10 +1099,13 @@ SQRESULT sq_resume(HSQUIRRELVM v,SQBool retval,SQBool raiseerror)
 	return sq_throwerror(v,_SC("only generators can be resumed"));
 }
 
-SQRESULT sq_call(HSQUIRRELVM v,SQInteger params,SQBool retval,SQBool raiseerror)
+SQRESULT sq_call(HSQUIRRELVM v,SQInteger params,SQBool retval,SQBool raiseerror, int suspend)
 {
 	SQObjectPtr res;
-	if(v->Call(v->GetUp(-(params+1)),params,v->_top-params,res,raiseerror?true:false)){
+	v->_can_suspend = suspend >= 0;
+	if (v->_can_suspend) v->_ops_till_suspend = suspend;
+
+	if(v->Call(v->GetUp(-(params+1)),params,v->_top-params,res,raiseerror?true:false,v->_can_suspend)){
 
 		if(!v->_suspended) {
 			v->Pop(params);//pop closure and args
@@ -1119,6 +1141,7 @@ SQRESULT sq_wakeupvm(HSQUIRRELVM v,SQBool wakeupret,SQBool retval,SQBool raiseer
 		}
 		v->Pop();
 	} else if(target != -1) { v->GetAt(v->_stackbase+v->_suspended_target).Null(); }
+	v->_can_suspend = false;
 	SQObjectPtr dummy;
 	if(!v->Execute(dummy,-1,-1,ret,raiseerror,throwerror?SQVM::ET_RESUME_THROW_VM : SQVM::ET_RESUME_VM)) {
 		return SQ_ERROR;
@@ -1126,6 +1149,24 @@ SQRESULT sq_wakeupvm(HSQUIRRELVM v,SQBool wakeupret,SQBool retval,SQBool raiseer
 	if(retval)
 		v->Push(ret);
 	return SQ_OK;
+}
+
+bool sq_resumecatch(HSQUIRRELVM v, int suspend)
+{
+	SQObjectPtr ret;
+	v->_can_suspend = suspend >= 0;
+	if (v->_can_suspend) v->_ops_till_suspend = suspend;
+	SQObjectPtr dummy;
+	return v->Execute(dummy, -1, -1, ret, SQTrue, SQVM::ET_RESUME_OPENTTD);
+}
+
+bool sq_resumeerror(HSQUIRRELVM v)
+{
+	SQObjectPtr ret;
+	v->_can_suspend = true;
+	v->_ops_till_suspend = 1;
+	SQObjectPtr dummy;
+	return v->Execute(dummy, -1, -1, ret, SQTrue, SQVM::ET_RESUME_THROW_VM);
 }
 
 void sq_setreleasehook(HSQUIRRELVM v,SQInteger idx,SQRELEASEHOOK hook)

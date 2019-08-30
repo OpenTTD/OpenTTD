@@ -2,11 +2,7 @@
 #ifndef _SQLEXER_H_
 #define _SQLEXER_H_
 
-#ifdef SQUNICODE
-typedef SQChar LexChar;
-#else
 typedef	unsigned char LexChar;
-#endif
 
 struct SQLexer
 {

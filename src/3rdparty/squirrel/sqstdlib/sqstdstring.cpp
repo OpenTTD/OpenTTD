@@ -7,17 +7,10 @@
 #include <ctype.h>
 #include <assert.h>
 
-#ifdef SQUNICODE
-#define scstrchr wcschr
-#define scsnprintf wsnprintf
-#define scatoi _wtoi
-#define scstrtok wcstok
-#else
 #define scstrchr strchr
 #define scsnprintf snprintf
 #define scatoi atoi
 #define scstrtok strtok
-#endif
 #define MAX_FORMAT_LEN	20
 #define MAX_WFORMAT_LEN	3
 #define ADDITIONAL_FORMAT_SPACE (100*sizeof(SQChar))
@@ -63,6 +56,21 @@ static SQInteger validate_format(HSQUIRRELVM v, SQChar *fmt, const SQChar *src, 
 	memcpy(&fmt[1],&src[start],((n-start)+1)*sizeof(SQChar));
 	fmt[(n-start)+2] = '\0';
 	return n;
+}
+
+/*
+ * Little hack to remove the "format not a string literal, argument types not checked" warning.
+ * This check has been added to OpenTTD to make sure that nobody passes wrong string literals,
+ * but three lines in Squirrel have a little problem with those. Therefor we use this hack
+ * which basically uses vsnprintf instead of sprintf as vsnprintf is not testing for the right
+ * string literal at compile time.
+ */
+static void _append_string(SQInteger &i, SQChar *dest, SQInteger allocated, const SQChar *fmt, ...)
+{
+	va_list va;
+	va_start(va, fmt);
+	i += vsnprintf(&dest[i],allocated-i,fmt,va);
+	va_end(va);
 }
 
 SQRESULT sqstd_format(HSQUIRRELVM v,SQInteger nformatstringidx,SQInteger *outlen,SQChar **output)
@@ -135,9 +143,9 @@ SQRESULT sqstd_format(HSQUIRRELVM v,SQInteger nformatstringidx,SQInteger *outlen
 			allocated += addlen + sizeof(SQChar);
 			dest = sq_getscratchpad(v,allocated);
 			switch(valtype) {
-			case 's': i += scsprintf(&dest[i],fmt,ts); break;
-			case 'i': i += scsprintf(&dest[i],fmt,ti); break;
-			case 'f': i += scsprintf(&dest[i],fmt,tf); break;
+			case 's': _append_string(i,dest,allocated,fmt,ts); break;
+			case 'i': _append_string(i,dest,allocated,fmt,ti); break;
+			case 'f': _append_string(i,dest,allocated,fmt,tf); break;
 			};
 			nparam ++;
 		}

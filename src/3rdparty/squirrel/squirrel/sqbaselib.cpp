@@ -1,6 +1,8 @@
 /*
 	see copyright notice in squirrel.h
 */
+#include "../../../stdafx.h"
+
 #include "sqpcheader.h"
 #include "sqvm.h"
 #include "sqstring.h"
@@ -1090,7 +1092,7 @@ SQRegFunction SQSharedState::_thread_default_delegate_funcz[] = {
 	{_SC("weakref"),obj_delegate_weakref,1, NULL },
 	{_SC("getstackinfos"),thread_getstackinfos,2, _SC("vn")},
 	{_SC("tostring"),default_delegate_tostring,1, _SC(".")},
-	{0,0},
+	{0,0,0,0},
 };
 
 static SQInteger class_getattributes(HSQUIRRELVM v)
@@ -1157,7 +1159,7 @@ SQRegFunction SQSharedState::_class_default_delegate_funcz[] = {
 	{_SC("getbase"),class_getbase,1, _SC("y")},
 	{_SC("newmember"),class_newmember,-3, _SC("y")},
 	{_SC("rawnewmember"),class_rawnewmember,-3, _SC("y")},
-	{0,0}
+	{0,0,0,0}
 };
 
 
@@ -1175,7 +1177,7 @@ SQRegFunction SQSharedState::_instance_default_delegate_funcz[] = {
 	{_SC("rawin"),container_rawexists,2, _SC("x")},
 	{_SC("weakref"),obj_delegate_weakref,1, NULL },
 	{_SC("tostring"),default_delegate_tostring,1, _SC(".")},
-	{0,0}
+	{0,0,0,0}
 };
 
 static SQInteger weakref_ref(HSQUIRRELVM v)
@@ -1189,5 +1191,5 @@ SQRegFunction SQSharedState::_weakref_default_delegate_funcz[] = {
 	{_SC("ref"),weakref_ref,1, _SC("r")},
 	{_SC("weakref"),obj_delegate_weakref,1, NULL },
 	{_SC("tostring"),default_delegate_tostring,1, _SC(".")},
-	{0,0}
+	{0,0,0,0}
 };
