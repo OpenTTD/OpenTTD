@@ -71,10 +71,10 @@ static const AirportMovingData _airport_moving_data_country[22] = {
 };
 
 /** Commuter Airfield (small) 5x4. */
-static const AirportMovingData _airport_moving_data_commuter[37] = {
+static const AirportMovingData _airport_moving_data_commuter[38] = {
 	AMD(   69,    3, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar
 	AMD(   72,   22, 0,                               DIR_N ), // 01 Taxi to right outside depot
-	AMD(    8,   22, AMED_EXACTPOS,                   DIR_SW), // 01 Taxi to right outside depot
+	AMD(    8,   22, AMED_EXACTPOS,                   DIR_SW), // 02 Taxi to right outside depot
 	AMD(   24,   36, AMED_EXACTPOS,                   DIR_SE), // 03 Terminal 1
 	AMD(   40,   36, AMED_EXACTPOS,                   DIR_SE), // 04 Terminal 2
 	AMD(   56,   36, AMED_EXACTPOS,                   DIR_SE), // 05 Terminal 3
@@ -108,8 +108,9 @@ static const AirportMovingData _airport_moving_data_commuter[37] = {
 	AMD(   48,    8, AMED_HELI_RAISE,                 DIR_N ), // 32 Takeoff Helipad2
 	AMD(   64,   22, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 33 Go to position for Hangarentrance in air
 	AMD(   64,   22, AMED_HELI_LOWER,                 DIR_N ), // 34 Land in front of hangar
-	AMD(   40,    8, AMED_EXACTPOS,                   DIR_N ), // pre-helitakeoff helipad 1
-	AMD(   56,    8, AMED_EXACTPOS,                   DIR_N ), // pre-helitakeoff helipad 2
+	AMD(   40,    8, AMED_EXACTPOS,                   DIR_N ), // 35 pre-helitakeoff helipad 1
+	AMD(   56,    8, AMED_EXACTPOS,                   DIR_N ), // 36 pre-helitakeoff helipad 2
+	AMD(   64,   25, AMED_HELI_RAISE,                 DIR_N ), // 37 Take off in front of hangar
 };
 
 /** City Airport (large) 6x6. */
@@ -453,8 +454,8 @@ static const HangarTileTable _airport_depots_commuter[] = { {{4, 0}, DIR_SE, 0} 
 static const byte _airport_terminal_commuter[] = { 1, 3 };
 static const byte _airport_entries_commuter[] = {22, 21, 24, 23};
 static const AirportFTAbuildup _airport_fta_commuter[] = {
-	{  0, HANGAR, NOTHING_block, 1 }, { 0, HELITAKEOFF, HELIPAD2_block, 1 }, { 0, 0, 0, 1 },
-	{  1, 255, TAXIWAY_BUSY_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, TAKEOFF, 0, 11 }, { 1, TERM1, TAXIWAY_BUSY_block, 10 }, { 1, TERM2, TAXIWAY_BUSY_block, 10 }, { 1, TERM3, TAXIWAY_BUSY_block, 10 }, { 1, HELIPAD1, TAXIWAY_BUSY_block, 10 }, { 1, HELIPAD2, TAXIWAY_BUSY_block, 10 }, { 1, HELITAKEOFF, TAXIWAY_BUSY_block, 10 }, { 1, 0, 0, 0 },
+	{  0, HANGAR, NOTHING_block, 1 }, { 0, HELITAKEOFF, TAXIWAY_BUSY_block, 1 }, { 0, 0, 0, 1 },
+	{  1, 255, TAXIWAY_BUSY_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, TAKEOFF, 0, 11 }, { 1, TERM1, TAXIWAY_BUSY_block, 10 }, { 1, TERM2, TAXIWAY_BUSY_block, 10 }, { 1, TERM3, TAXIWAY_BUSY_block, 10 }, { 1, HELIPAD1, TAXIWAY_BUSY_block, 10 }, { 1, HELIPAD2, TAXIWAY_BUSY_block, 10 }, { 1, HELITAKEOFF, TAXIWAY_BUSY_block, 37 }, { 1, 0, 0, 0 },
 	{  2, 255, AIRPORT_ENTRANCE_block, 2 }, { 2, HANGAR, 0, 8 }, { 2, TERM1, 0, 8 }, { 2, TERM2, 0, 8 }, { 2, TERM3, 0, 8 }, { 2, HELIPAD1, 0, 8 }, { 2, HELIPAD2, 0, 8 }, { 2, HELITAKEOFF, 0, 8 }, { 2, 0, 0, 2 },
 	{  3, TERM1, TERM1_block, 8 }, { 3, HANGAR, 0, 8 }, { 3, TAKEOFF, 0, 8 }, { 3, 0, 0, 3 },
 	{  4, TERM2, TERM2_block, 9 }, { 4, HANGAR, 0, 9 }, { 4, TAKEOFF, 0, 9 }, { 4, 0, 0, 4 },
@@ -463,7 +464,7 @@ static const AirportFTAbuildup _airport_fta_commuter[] = {
 	{  7, HELIPAD2, HELIPAD2_block, 7 }, { 7, HANGAR, TAXIWAY_BUSY_block, 10 }, { 7, HELITAKEOFF, 0, 36 },
 	{  8, 255, TAXIWAY_BUSY_block, 8 }, { 8, TAKEOFF, TAXIWAY_BUSY_block, 9 }, { 8, HANGAR, TAXIWAY_BUSY_block, 9 }, { 8, TERM1, TERM1_block, 3 }, { 8, 0, TAXIWAY_BUSY_block, 9 },
 	{  9, 255, TAXIWAY_BUSY_block, 9 }, { 9, TAKEOFF, TAXIWAY_BUSY_block, 10 }, { 9, HANGAR, TAXIWAY_BUSY_block, 10 }, { 9, TERM2, TERM2_block, 4 }, { 9, HELIPAD1, HELIPAD1_block, 6 }, { 9, HELITAKEOFF, HELIPAD1_block, 6 }, { 9, TERM1, TAXIWAY_BUSY_block, 8 }, { 9, 0, TAXIWAY_BUSY_block, 10 },
-	{ 10, 255, TAXIWAY_BUSY_block, 10 }, { 10, TERM3, TERM3_block, 5 }, { 10, HELIPAD1, 0, 9 }, { 10, HELIPAD2, HELIPAD2_block, 7 }, { 10, HELITAKEOFF, HELIPAD2_block, 7 }, { 10, TAKEOFF, TAXIWAY_BUSY_block, 1 }, { 10, HANGAR, TAXIWAY_BUSY_block, 1 }, { 10, 0, TAXIWAY_BUSY_block, 9 },
+	{ 10, 255, TAXIWAY_BUSY_block, 10 }, { 10, TERM3, TERM3_block, 5 }, { 10, HELIPAD1, 0, 9 }, { 10, HELIPAD2, HELIPAD2_block, 7 }, { 10, HELITAKEOFF, 0, 1 }, { 10, TAKEOFF, TAXIWAY_BUSY_block, 1 }, { 10, HANGAR, TAXIWAY_BUSY_block, 1 }, { 10, 0, TAXIWAY_BUSY_block, 9 },
 	{ 11, 0, OUT_WAY_block, 12 },
 	/* takeoff */
 	{ 12, TAKEOFF, RUNWAY_IN_OUT_block, 13 },
@@ -496,6 +497,7 @@ static const AirportFTAbuildup _airport_fta_commuter[] = {
 	{ 34, 0, TAXIWAY_BUSY_block, 1 },
 	{ 35, 0, HELIPAD1_block, 31 },
 	{ 36, 0, HELIPAD2_block, 32 },
+	{ 37, HELITAKEOFF, NOTHING_block, 0 },
 	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
 };
 
