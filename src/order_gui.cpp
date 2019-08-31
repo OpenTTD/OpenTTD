@@ -394,7 +394,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	if (IsTileType(tile, MP_STATION) || IsTileType(tile, MP_INDUSTRY)) {
 		const Station *st = nullptr;
 
-		if (IsTileType(tile, MP_STATION)){
+		if (IsTileType(tile, MP_STATION)) {
 			st = Station::GetByTile(tile);
 		} else {
 			const Industry *in = Industry::GetByTile(tile);
