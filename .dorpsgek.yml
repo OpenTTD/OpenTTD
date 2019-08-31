@@ -1,13 +1,13 @@
 notifications:
+  global:
+    irc:
+      - openttd
+      - openttd.notice
+
   push:
-    irc:
-      - openttd
-      - openttd.notice
+    only:
+    - master
+    only-by:
+    - DorpsGek
   pull-request:
-    irc:
-      - openttd
-      - openttd.notice
   issue:
-    irc:
-      - openttd
-      - openttd.notice
