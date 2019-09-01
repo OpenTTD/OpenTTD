@@ -34,6 +34,7 @@
  * \li AIEngine::CanRunOnRoad
  * \li AIEngine::HasPowerOnRoad
  * \li AIRoadTypeList::RoadTypeList
+ * \li AIEventVehicleAutoReplaced
  *
  * Other changes:
  * \li AITile::DemolishTile works without a selected company
