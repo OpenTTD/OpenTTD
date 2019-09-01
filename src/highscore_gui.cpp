@@ -22,6 +22,7 @@
 #include "company_base.h"
 #include "strings_func.h"
 #include "hotkeys.h"
+#include "zoom_func.h"
 
 #include "widgets/highscore_widget.h"
 
@@ -132,7 +133,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 	virtual void OnPaint()
 	{
 		this->SetupHighScoreEndWindow();
-		Point pt = this->GetTopLeft(640, 480);
+		Point pt = this->GetTopLeft(ScaleGUITrad(640), ScaleGUITrad(480));
 
 		const Company *c = Company::GetIfValid(_local_company);
 		if (c == NULL) return;
@@ -143,11 +144,11 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 			SetDParam(0, c->index);
 			SetDParam(1, c->index);
 			SetDParam(2, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history));
-			DrawStringMultiLine(pt.x + 15, pt.x + 640 - 25, pt.y + 90, pt.y + 160, STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(pt.x + ScaleGUITrad(15), pt.x + ScaleGUITrad(640) - ScaleGUITrad(25), pt.y + ScaleGUITrad(90), pt.y + ScaleGUITrad(160), STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS, TC_FROMSTRING, SA_CENTER);
 		} else {
 			SetDParam(0, c->index);
 			SetDParam(1, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history));
-			DrawStringMultiLine(pt.x + 36, pt.x + 640, pt.y + 140, pt.y + 206, STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(pt.x + ScaleGUITrad(36), pt.x + ScaleGUITrad(640), pt.y + ScaleGUITrad(140), pt.y + ScaleGUITrad(206), STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS, TC_FROMSTRING, SA_CENTER);
 		}
 	}
 };
@@ -182,24 +183,24 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		const HighScore *hs = _highscore_table[this->window_number];
 
 		this->SetupHighScoreEndWindow();
-		Point pt = this->GetTopLeft(640, 480);
+		Point pt = this->GetTopLeft(ScaleGUITrad(640), ScaleGUITrad(480));
 
 		SetDParam(0, ORIGINAL_END_YEAR);
-		DrawStringMultiLine(pt.x + 70, pt.x + 570, pt.y, pt.y + 140, !_networking ? STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED : STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(pt.x + ScaleGUITrad(70), pt.x + ScaleGUITrad(570), pt.y, pt.y + ScaleGUITrad(140), !_networking ? STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED : STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME, TC_FROMSTRING, SA_CENTER);
 
 		/* Draw Highscore peepz */
 		for (uint8 i = 0; i < lengthof(_highscore_table[0]); i++) {
 			SetDParam(0, i + 1);
-			DrawString(pt.x + 40, pt.x + 600, pt.y + 140 + (i * 55), STR_HIGHSCORE_POSITION);
+			DrawString(pt.x + ScaleGUITrad(40), pt.x + ScaleGUITrad(600), pt.y + ScaleGUITrad(140 + i * 55), STR_HIGHSCORE_POSITION);
 
 			if (hs[i].company[0] != '\0') {
 				TextColour colour = (this->rank == i) ? TC_RED : TC_BLACK; // draw new highscore in red
 
 				SetDParamStr(0, hs[i].company);
-				DrawString(pt.x + 71, pt.x + 569, pt.y + 140 + (i * 55), STR_JUST_BIG_RAW_STRING, colour);
+				DrawString(pt.x + ScaleGUITrad(71), pt.x + ScaleGUITrad(569), pt.y + ScaleGUITrad(140 + i * 55), STR_JUST_BIG_RAW_STRING, colour);
 				SetDParam(0, hs[i].title);
 				SetDParam(1, hs[i].score);
-				DrawString(pt.x + 71, pt.x + 569, pt.y + 140 + FONT_HEIGHT_LARGE + (i * 55), STR_HIGHSCORE_STATS, colour);
+				DrawString(pt.x + ScaleGUITrad(71), pt.x + ScaleGUITrad(569), pt.y + ScaleGUITrad(140) + FONT_HEIGHT_LARGE + ScaleGUITrad(i * 55), STR_HIGHSCORE_STATS, colour);
 			}
 		}
 	}
