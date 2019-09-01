@@ -1259,6 +1259,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TD_SCROLLBAR,                          "WID_TD_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TD_WORLD_POPULATION,                   "WID_TD_WORLD_POPULATION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TA_CAPTION,                            "WID_TA_CAPTION");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TA_ZONE_BUTTON,                        "WID_TA_ZONE_BUTTON");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TA_RATING_INFO,                        "WID_TA_RATING_INFO");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TA_COMMAND_LIST,                       "WID_TA_COMMAND_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TA_SCROLLBAR,                          "WID_TA_SCROLLBAR");
