@@ -409,11 +409,11 @@ static const AirportMovingData _airport_moving_data_oilrig[9] = {
 /////**********Movement Machine on Airports*********************///////
 static const byte _airport_entries_dummy[] = {0, 1, 2, 3};
 static const AirportFTAbuildup _airport_fta_dummy[] = {
-	{ 0, 0, 0, 3},
-	{ 1, 0, 0, 0},
-	{ 2, 0, 0, 1},
-	{ 3, 0, 0, 2},
-	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
+	{ 0, TO_ALL, 0, 3},
+	{ 1, TO_ALL, 0, 0},
+	{ 2, TO_ALL, 0, 1},
+	{ 3, TO_ALL, 0, 2},
+	{ MAX_ELEMENTS, TO_ALL, 0, 0 } // end marker. DO NOT REMOVE
 };
 
 /* First element of terminals array tells us how many depots there are (to know size of array)
@@ -423,11 +423,11 @@ static const byte _airport_terminal_country[] = {1, 2};
 static const byte _airport_entries_country[] = {16, 15, 18, 17};
 static const AirportFTAbuildup _airport_fta_country[] = {
 	{  0, HANGAR, NOTHING_block, 1 },
-	{  1, 255, AIRPORT_BUSY_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, TERM1, TERM1_block, 2 }, { 1, TERM2, 0, 4 }, { 1, HELITAKEOFF, 0, 19 }, { 1, 0, 0, 6 },
+	{  1, 255, AIRPORT_BUSY_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, TERM1, TERM1_block, 2 }, { 1, TERM2, 0, 4 }, { 1, HELITAKEOFF, 0, 19 }, { 1, TO_ALL, 0, 6 },
 	{  2, TERM1, TERM1_block, 1 },
 	{  3, TERM2, TERM2_block, 5 },
 	{  4, 255, AIRPORT_BUSY_block, 0 }, { 4, TERM2, 0, 5 }, { 4, HANGAR, 0, 1 }, { 4, TAKEOFF, 0, 6 }, { 4, HELITAKEOFF, 0, 1 },
-	{  5, 255, AIRPORT_BUSY_block, 0 }, { 5, TERM2, TERM2_block, 3 }, { 5, 0, 0, 4 },
+	{  5, 255, AIRPORT_BUSY_block, 0 }, { 5, TERM2, TERM2_block, 3 }, { 5, TO_ALL, 0, 4 },
 	{  6, 0, AIRPORT_BUSY_block, 7 },
 	/* takeoff */
 	{  7, TAKEOFF, AIRPORT_BUSY_block, 8 },
@@ -436,83 +436,83 @@ static const AirportFTAbuildup _airport_fta_country[] = {
 	/* landing */
 	{ 10, FLYING, NOTHING_block, 15 }, { 10, LANDING, 0, 11 }, { 10, HELILANDING, 0, 20 },
 	{ 11, LANDING, AIRPORT_BUSY_block, 12 },
-	{ 12, 0, AIRPORT_BUSY_block, 13 },
-	{ 13, ENDLANDING, AIRPORT_BUSY_block, 14 }, { 13, TERM2, 0, 5 }, { 13, 0, 0, 14 },
-	{ 14, 0, AIRPORT_BUSY_block, 1 },
+	{ 12, TO_ALL, AIRPORT_BUSY_block, 13 },
+	{ 13, ENDLANDING, AIRPORT_BUSY_block, 14 }, { 13, TERM2, 0, 5 }, { 13, TO_ALL, 0, 14 },
+	{ 14, TO_ALL, AIRPORT_BUSY_block, 1 },
 	/* In air */
-	{ 15, 0, NOTHING_block, 16 },
-	{ 16, 0, NOTHING_block, 17 },
-	{ 17, 0, NOTHING_block, 18 },
-	{ 18, 0, NOTHING_block, 10 },
+	{ 15, TO_ALL, NOTHING_block, 16 },
+	{ 16, TO_ALL, NOTHING_block, 17 },
+	{ 17, TO_ALL, NOTHING_block, 18 },
+	{ 18, TO_ALL, NOTHING_block, 10 },
 	{ 19, HELITAKEOFF, NOTHING_block, 0 },
 	{ 20, HELILANDING, AIRPORT_BUSY_block, 21 },
 	{ 21, HELIENDLANDING, AIRPORT_BUSY_block, 1 },
-	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
+	{ MAX_ELEMENTS, TO_ALL, 0, 0 } // end marker. DO NOT REMOVE
 };
 
 static const HangarTileTable _airport_depots_commuter[] = { {{4, 0}, DIR_SE, 0} };
 static const byte _airport_terminal_commuter[] = { 1, 3 };
 static const byte _airport_entries_commuter[] = {22, 21, 24, 23};
 static const AirportFTAbuildup _airport_fta_commuter[] = {
-	{  0, HANGAR, NOTHING_block, 1 }, { 0, HELITAKEOFF, TAXIWAY_BUSY_block, 1 }, { 0, 0, 0, 1 },
-	{  1, 255, TAXIWAY_BUSY_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, TAKEOFF, 0, 11 }, { 1, TERM1, TAXIWAY_BUSY_block, 10 }, { 1, TERM2, TAXIWAY_BUSY_block, 10 }, { 1, TERM3, TAXIWAY_BUSY_block, 10 }, { 1, HELIPAD1, TAXIWAY_BUSY_block, 10 }, { 1, HELIPAD2, TAXIWAY_BUSY_block, 10 }, { 1, HELITAKEOFF, TAXIWAY_BUSY_block, 37 }, { 1, 0, 0, 0 },
-	{  2, 255, AIRPORT_ENTRANCE_block, 2 }, { 2, HANGAR, 0, 8 }, { 2, TERM1, 0, 8 }, { 2, TERM2, 0, 8 }, { 2, TERM3, 0, 8 }, { 2, HELIPAD1, 0, 8 }, { 2, HELIPAD2, 0, 8 }, { 2, HELITAKEOFF, 0, 8 }, { 2, 0, 0, 2 },
-	{  3, TERM1, TERM1_block, 8 }, { 3, HANGAR, 0, 8 }, { 3, TAKEOFF, 0, 8 }, { 3, 0, 0, 3 },
-	{  4, TERM2, TERM2_block, 9 }, { 4, HANGAR, 0, 9 }, { 4, TAKEOFF, 0, 9 }, { 4, 0, 0, 4 },
-	{  5, TERM3, TERM3_block, 10 }, { 5, HANGAR, 0, 10 }, { 5, TAKEOFF, 0, 10 }, { 5, 0, 0, 5 },
+	{  0, HANGAR, NOTHING_block, 1 }, { 0, HELITAKEOFF, TAXIWAY_BUSY_block, 1 }, { 0, TO_ALL, 0, 1 },
+	{  1, 255, TAXIWAY_BUSY_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, TAKEOFF, 0, 11 }, { 1, TERM1, TAXIWAY_BUSY_block, 10 }, { 1, TERM2, TAXIWAY_BUSY_block, 10 }, { 1, TERM3, TAXIWAY_BUSY_block, 10 }, { 1, HELIPAD1, TAXIWAY_BUSY_block, 10 }, { 1, HELIPAD2, TAXIWAY_BUSY_block, 10 }, { 1, HELITAKEOFF, TAXIWAY_BUSY_block, 37 }, { 1, TO_ALL, 0, 0 },
+	{  2, 255, AIRPORT_ENTRANCE_block, 2 }, { 2, HANGAR, 0, 8 }, { 2, TERM1, 0, 8 }, { 2, TERM2, 0, 8 }, { 2, TERM3, 0, 8 }, { 2, HELIPAD1, 0, 8 }, { 2, HELIPAD2, 0, 8 }, { 2, HELITAKEOFF, 0, 8 }, { 2, TO_ALL, 0, 2 },
+	{  3, TERM1, TERM1_block, 8 }, { 3, HANGAR, 0, 8 }, { 3, TAKEOFF, 0, 8 }, { 3, TO_ALL, 0, 3 },
+	{  4, TERM2, TERM2_block, 9 }, { 4, HANGAR, 0, 9 }, { 4, TAKEOFF, 0, 9 }, { 4, TO_ALL, 0, 4 },
+	{  5, TERM3, TERM3_block, 10 }, { 5, HANGAR, 0, 10 }, { 5, TAKEOFF, 0, 10 }, { 5, TO_ALL, 0, 5 },
 	{  6, HELIPAD1, HELIPAD1_block, 6 }, { 6, HANGAR, TAXIWAY_BUSY_block, 9 }, { 6, HELITAKEOFF, 0, 35 },
 	{  7, HELIPAD2, HELIPAD2_block, 7 }, { 7, HANGAR, TAXIWAY_BUSY_block, 10 }, { 7, HELITAKEOFF, 0, 36 },
-	{  8, 255, TAXIWAY_BUSY_block, 8 }, { 8, TAKEOFF, TAXIWAY_BUSY_block, 9 }, { 8, HANGAR, TAXIWAY_BUSY_block, 9 }, { 8, TERM1, TERM1_block, 3 }, { 8, 0, TAXIWAY_BUSY_block, 9 },
-	{  9, 255, TAXIWAY_BUSY_block, 9 }, { 9, TAKEOFF, TAXIWAY_BUSY_block, 10 }, { 9, HANGAR, TAXIWAY_BUSY_block, 10 }, { 9, TERM2, TERM2_block, 4 }, { 9, HELIPAD1, HELIPAD1_block, 6 }, { 9, HELITAKEOFF, HELIPAD1_block, 6 }, { 9, TERM1, TAXIWAY_BUSY_block, 8 }, { 9, 0, TAXIWAY_BUSY_block, 10 },
-	{ 10, 255, TAXIWAY_BUSY_block, 10 }, { 10, TERM3, TERM3_block, 5 }, { 10, HELIPAD1, 0, 9 }, { 10, HELIPAD2, HELIPAD2_block, 7 }, { 10, HELITAKEOFF, 0, 1 }, { 10, TAKEOFF, TAXIWAY_BUSY_block, 1 }, { 10, HANGAR, TAXIWAY_BUSY_block, 1 }, { 10, 0, TAXIWAY_BUSY_block, 9 },
-	{ 11, 0, OUT_WAY_block, 12 },
+	{  8, 255, TAXIWAY_BUSY_block, 8 }, { 8, TAKEOFF, TAXIWAY_BUSY_block, 9 }, { 8, HANGAR, TAXIWAY_BUSY_block, 9 }, { 8, TERM1, TERM1_block, 3 }, { 8, TO_ALL, TAXIWAY_BUSY_block, 9 },
+	{  9, 255, TAXIWAY_BUSY_block, 9 }, { 9, TAKEOFF, TAXIWAY_BUSY_block, 10 }, { 9, HANGAR, TAXIWAY_BUSY_block, 10 }, { 9, TERM2, TERM2_block, 4 }, { 9, HELIPAD1, HELIPAD1_block, 6 }, { 9, HELITAKEOFF, HELIPAD1_block, 6 }, { 9, TERM1, TAXIWAY_BUSY_block, 8 }, { 9, TO_ALL, TAXIWAY_BUSY_block, 10 },
+	{ 10, 255, TAXIWAY_BUSY_block, 10 }, { 10, TERM3, TERM3_block, 5 }, { 10, HELIPAD1, 0, 9 }, { 10, HELIPAD2, HELIPAD2_block, 7 }, { 10, HELITAKEOFF, 0, 1 }, { 10, TAKEOFF, TAXIWAY_BUSY_block, 1 }, { 10, HANGAR, TAXIWAY_BUSY_block, 1 }, { 10, TO_ALL, TAXIWAY_BUSY_block, 9 },
+	{ 11, TO_ALL, OUT_WAY_block, 12 },
 	/* takeoff */
 	{ 12, TAKEOFF, RUNWAY_IN_OUT_block, 13 },
-	{ 13, 0, RUNWAY_IN_OUT_block, 14 },
+	{ 13, TO_ALL, RUNWAY_IN_OUT_block, 14 },
 	{ 14, STARTTAKEOFF, RUNWAY_IN_OUT_block, 15 },
 	{ 15, ENDTAKEOFF, NOTHING_block, 0 },
 	/* landing */
 	{ 16, FLYING, NOTHING_block, 21 }, { 16, LANDING, IN_WAY_block, 17 }, { 16, HELILANDING, 0, 25 },
 	{ 17, LANDING, RUNWAY_IN_OUT_block, 18 },
-	{ 18, 0, RUNWAY_IN_OUT_block, 19 },
-	{ 19, 0, RUNWAY_IN_OUT_block, 20 },
+	{ 18, TO_ALL, RUNWAY_IN_OUT_block, 19 },
+	{ 19, TO_ALL, RUNWAY_IN_OUT_block, 20 },
 	{ 20, ENDLANDING, IN_WAY_block, 2 },
 	/* In Air */
-	{ 21, 0, NOTHING_block, 22 },
-	{ 22, 0, NOTHING_block, 23 },
-	{ 23, 0, NOTHING_block, 24 },
-	{ 24, 0, NOTHING_block, 16 },
+	{ 21, TO_ALL, NOTHING_block, 22 },
+	{ 22, TO_ALL, NOTHING_block, 23 },
+	{ 23, TO_ALL, NOTHING_block, 24 },
+	{ 24, TO_ALL, NOTHING_block, 16 },
 	/* Helicopter -- stay in air in special place as a buffer to choose from helipads */
 	{ 25, HELILANDING, PRE_HELIPAD_block, 26 },
 	{ 26, HELIENDLANDING, PRE_HELIPAD_block, 26 }, { 26, HELIPAD1, 0, 27 }, { 26, HELIPAD2, 0, 28 }, { 26, HANGAR, 0, 33 },
-	{ 27, 0, NOTHING_block, 29 }, // helipad1 approach
-	{ 28, 0, NOTHING_block, 30 },
+	{ 27, TO_ALL, NOTHING_block, 29 }, // helipad1 approach
+	{ 28, TO_ALL, NOTHING_block, 30 },
 	/* landing */
 	{ 29, 255, NOTHING_block, 0 }, { 29, HELIPAD1, HELIPAD1_block, 6 },
 	{ 30, 255, NOTHING_block, 0 }, { 30, HELIPAD2, HELIPAD2_block, 7 },
 	/* Helicopter -- takeoff */
 	{ 31, HELITAKEOFF, NOTHING_block, 0 },
 	{ 32, HELITAKEOFF, NOTHING_block, 0 },
-	{ 33, 0, TAXIWAY_BUSY_block, 34 }, // need to go to hangar when waiting in air
-	{ 34, 0, TAXIWAY_BUSY_block, 1 },
-	{ 35, 0, HELIPAD1_block, 31 },
-	{ 36, 0, HELIPAD2_block, 32 },
+	{ 33, TO_ALL, TAXIWAY_BUSY_block, 34 }, // need to go to hangar when waiting in air
+	{ 34, TO_ALL, TAXIWAY_BUSY_block, 1 },
+	{ 35, TO_ALL, HELIPAD1_block, 31 },
+	{ 36, TO_ALL, HELIPAD2_block, 32 },
 	{ 37, HELITAKEOFF, NOTHING_block, 0 },
-	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
+	{ MAX_ELEMENTS, TO_ALL, 0, 0 } // end marker. DO NOT REMOVE
 };
 
 static const HangarTileTable _airport_depots_city[] = { {{5, 0}, DIR_SE, 0} };
 static const byte _airport_terminal_city[] = { 1, 3 };
 static const byte _airport_entries_city[] = {26, 29, 27, 28};
 static const AirportFTAbuildup _airport_fta_city[] = {
-	{  0, HANGAR, NOTHING_block, 1 }, { 0, TAKEOFF, OUT_WAY_block, 1 }, { 0, 0, 0, 1 },
-	{  1, 255, TAXIWAY_BUSY_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, TERM2, 0, 6 }, { 1, TERM3, 0, 6 }, { 1, 0, 0, 7 }, // for all else, go to 7
-	{  2, TERM1, TERM1_block, 7 }, { 2, TAKEOFF, OUT_WAY_block, 7 }, { 2, 0, 0, 7 },
-	{  3, TERM2, TERM2_block, 5 }, { 3, TAKEOFF, OUT_WAY_block, 6 }, { 3, 0, 0, 6 },
-	{  4, TERM3, TERM3_block, 5 }, { 4, TAKEOFF, OUT_WAY_block, 5 }, { 4, 0, 0, 5 },
-	{  5, 255, TAXIWAY_BUSY_block, 0 }, { 5, TERM2, TERM2_block, 3 }, { 5, TERM3, TERM3_block, 4 }, { 5, 0, 0, 6 },
-	{  6, 255, TAXIWAY_BUSY_block, 0 }, { 6, TERM2, TERM2_block, 3 }, { 6, TERM3, 0, 5 }, { 6, HANGAR, 0, 1 }, { 6, 0, 0, 7 },
-	{  7, 255, TAXIWAY_BUSY_block, 0 }, { 7, TERM1, TERM1_block, 2 }, { 7, TAKEOFF, OUT_WAY_block, 8 }, { 7, HELITAKEOFF, 0, 22 }, { 7, HANGAR, 0, 1 }, { 7, 0, 0, 6 },
+	{  0, HANGAR, NOTHING_block, 1 }, { 0, TAKEOFF, OUT_WAY_block, 1 }, { 0, TO_ALL, 0, 1 },
+	{  1, 255, TAXIWAY_BUSY_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, TERM2, 0, 6 }, { 1, TERM3, 0, 6 }, { 1, TO_ALL, 0, 7 }, // for all else, go to 7
+	{  2, TERM1, TERM1_block, 7 }, { 2, TAKEOFF, OUT_WAY_block, 7 }, { 2, TO_ALL, 0, 7 },
+	{  3, TERM2, TERM2_block, 5 }, { 3, TAKEOFF, OUT_WAY_block, 6 }, { 3, TO_ALL, 0, 6 },
+	{  4, TERM3, TERM3_block, 5 }, { 4, TAKEOFF, OUT_WAY_block, 5 }, { 4, TO_ALL, 0, 5 },
+	{  5, 255, TAXIWAY_BUSY_block, 0 }, { 5, TERM2, TERM2_block, 3 }, { 5, TERM3, TERM3_block, 4 }, { 5, TO_ALL, 0, 6 },
+	{  6, 255, TAXIWAY_BUSY_block, 0 }, { 6, TERM2, TERM2_block, 3 }, { 6, TERM3, 0, 5 }, { 6, HANGAR, 0, 1 }, { 6, TO_ALL, 0, 7 },
+	{  7, 255, TAXIWAY_BUSY_block, 0 }, { 7, TERM1, TERM1_block, 2 }, { 7, TAKEOFF, OUT_WAY_block, 8 }, { 7, HELITAKEOFF, 0, 22 }, { 7, HANGAR, 0, 1 }, { 7, TO_ALL, 0, 6 },
 	{  8, 0, OUT_WAY_block, 9 },
 	{  9, 0, RUNWAY_IN_OUT_block, 10 },
 	/* takeoff */
@@ -522,24 +522,24 @@ static const AirportFTAbuildup _airport_fta_city[] = {
 	/* landing */
 	{ 13, FLYING, NOTHING_block, 18 }, { 13, LANDING, 0, 14 }, { 13, HELILANDING, 0, 23 },
 	{ 14, LANDING, RUNWAY_IN_OUT_block, 15 },
-	{ 15, 0, RUNWAY_IN_OUT_block, 17 },
-	{ 16, 0, RUNWAY_IN_OUT_block, 17 }, // not used, left for compatibility
+	{ 15, TO_ALL, RUNWAY_IN_OUT_block, 17 },
+	{ 16, TO_ALL, RUNWAY_IN_OUT_block, 17 }, // not used, left for compatibility
 	{ 17, ENDLANDING, IN_WAY_block, 7 },
 	/* In Air */
-	{ 18, 0, NOTHING_block, 25 },
-	{ 19, 0, NOTHING_block, 20 },
-	{ 20, 0, NOTHING_block, 21 },
-	{ 21, 0, NOTHING_block, 13 },
+	{ 18, TO_ALL, NOTHING_block, 25 },
+	{ 19, TO_ALL, NOTHING_block, 20 },
+	{ 20, TO_ALL, NOTHING_block, 21 },
+	{ 21, TO_ALL, NOTHING_block, 13 },
 	/* helicopter */
 	{ 22, HELITAKEOFF, NOTHING_block, 0 },
 	{ 23, HELILANDING, IN_WAY_block, 24 },
 	{ 24, HELIENDLANDING, IN_WAY_block, 17 },
-	{ 25, 0, NOTHING_block, 20},
-	{ 26, 0, NOTHING_block, 19},
-	{ 27, 0, NOTHING_block, 28},
-	{ 28, 0, NOTHING_block, 19},
-	{ 29, 0, NOTHING_block, 26},
-	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
+	{ 25, TO_ALL, NOTHING_block, 20},
+	{ 26, TO_ALL, NOTHING_block, 19},
+	{ 27, TO_ALL, NOTHING_block, 28},
+	{ 28, TO_ALL, NOTHING_block, 19},
+	{ 29, TO_ALL, NOTHING_block, 26},
+	{ MAX_ELEMENTS, TO_ALL, 0, 0 } // end marker. DO NOT REMOVE
 };
 
 static const HangarTileTable _airport_depots_metropolitan[] = { {{5, 0}, DIR_SE, 0} };
@@ -547,13 +547,13 @@ static const byte _airport_terminal_metropolitan[] = { 1, 3 };
 static const byte _airport_entries_metropolitan[] = {20, 19, 22, 21};
 static const AirportFTAbuildup _airport_fta_metropolitan[] = {
 	{  0, HANGAR, NOTHING_block, 1 },
-	{  1, 255, TAXIWAY_BUSY_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, TERM2, 0, 6 }, { 1, TERM3, 0, 6 }, { 1, 0, 0, 7 }, // for all else, go to 7
+	{  1, 255, TAXIWAY_BUSY_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, TERM2, 0, 6 }, { 1, TERM3, 0, 6 }, { 1, TO_ALL, 0, 7 }, // for all else, go to 7
 	{  2, TERM1, TERM1_block, 7 },
 	{  3, TERM2, TERM2_block, 6 },
 	{  4, TERM3, TERM3_block, 5 },
-	{  5, 255, TAXIWAY_BUSY_block, 0 }, { 5, TERM2, TERM2_block, 3 }, { 5, TERM3, TERM3_block, 4 }, { 5, 0, 0, 6 },
-	{  6, 255, TAXIWAY_BUSY_block, 0 }, { 6, TERM2, TERM2_block, 3 }, { 6, TERM3, 0, 5 }, { 6, HANGAR, 0, 1 }, { 6, 0, 0, 7 },
-	{  7, 255, TAXIWAY_BUSY_block, 0 }, { 7, TERM1, TERM1_block, 2 }, { 7, TAKEOFF, 0, 8 }, { 7, HELITAKEOFF, 0, 23 }, { 7, HANGAR, 0, 1 }, { 7, 0, 0, 6 },
+	{  5, 255, TAXIWAY_BUSY_block, 0 }, { 5, TERM2, TERM2_block, 3 }, { 5, TERM3, TERM3_block, 4 }, { 5, TO_ALL, 0, 6 },
+	{  6, 255, TAXIWAY_BUSY_block, 0 }, { 6, TERM2, TERM2_block, 3 }, { 6, TERM3, 0, 5 }, { 6, HANGAR, 0, 1 }, { 6, TO_ALL, 0, 7 },
+	{  7, 255, TAXIWAY_BUSY_block, 0 }, { 7, TERM1, TERM1_block, 2 }, { 7, TAKEOFF, 0, 8 }, { 7, HELITAKEOFF, 0, 23 }, { 7, HANGAR, 0, 1 }, { 7, TO_ALL, 0, 6 },
 	{  8, 0, OUT_WAY_block, 9 },
 	{  9, 0, RUNWAY_OUT_block, 10 },
 	/* takeoff */
@@ -563,86 +563,86 @@ static const AirportFTAbuildup _airport_fta_metropolitan[] = {
 	/* landing */
 	{ 13, FLYING, NOTHING_block, 19 }, { 13, LANDING, 0, 14 }, { 13, HELILANDING, 0, 25 },
 	{ 14, LANDING, RUNWAY_IN_block, 15 },
-	{ 15, 0, RUNWAY_IN_block, 16 },
+	{ 15, TO_ALL, RUNWAY_IN_block, 16 },
 	{ 16, 255, RUNWAY_IN_block, 0 }, { 16, ENDLANDING, IN_WAY_block, 17 },
 	{ 17, 255, RUNWAY_OUT_block, 0 }, { 17, ENDLANDING, IN_WAY_block, 18 },
 	{ 18, ENDLANDING, IN_WAY_block, 27 },
 	/* In Air */
-	{ 19, 0, NOTHING_block, 20 },
-	{ 20, 0, NOTHING_block, 21 },
-	{ 21, 0, NOTHING_block, 22 },
-	{ 22, 0, NOTHING_block, 13 },
+	{ 19, TO_ALL, NOTHING_block, 20 },
+	{ 20, TO_ALL, NOTHING_block, 21 },
+	{ 21, TO_ALL, NOTHING_block, 22 },
+	{ 22, TO_ALL, NOTHING_block, 13 },
 	/* helicopter */
-	{ 23, 0, NOTHING_block, 24 },
+	{ 23, TO_ALL, NOTHING_block, 24 },
 	{ 24, HELITAKEOFF, NOTHING_block, 0 },
 	{ 25, HELILANDING, IN_WAY_block, 26 },
 	{ 26, HELIENDLANDING, IN_WAY_block, 18 },
-	{ 27, 255, TAXIWAY_BUSY_block, 27 }, { 27, TERM1, TERM1_block, 2 }, { 27, 0, 0, 7 },
-	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
+	{ 27, 255, TAXIWAY_BUSY_block, 27 }, { 27, TERM1, TERM1_block, 2 }, { 27, TO_ALL, 0, 7 },
+	{ MAX_ELEMENTS, TO_ALL, 0, 0 } // end marker. DO NOT REMOVE
 };
 
 static const HangarTileTable _airport_depots_international[] = { {{0, 3}, DIR_SE, 0}, {{6, 1}, DIR_SE, 1} };
 static const byte _airport_terminal_international[] = { 2, 3, 3 };
 static const byte _airport_entries_international[] = { 38, 37, 40, 39 };
 static const AirportFTAbuildup _airport_fta_international[] = {
-	{  0, HANGAR, NOTHING_block, 2 }, { 0, 255, TERM_GROUP1_block, 0 }, { 0, 255, TERM_GROUP2_ENTER1_block, 1 }, { 0, HELITAKEOFF, HELIPAD1_block, 2 }, { 0, 0, 0, 2 },
-	{  1, HANGAR, NOTHING_block, 3 }, { 1, 255, HANGAR2_AREA_block, 1 }, { 1, HELITAKEOFF, HELIPAD2_block, 3 }, { 1, 0, 0, 3 },
-	{  2, 255, AIRPORT_ENTRANCE_block, 0 }, { 2, HANGAR, 0, 0 }, { 2, TERM4, 0, 12 }, { 2, TERM5, 0, 12 }, { 2, TERM6, 0, 12 }, { 2, HELIPAD1, 0, 12 }, { 2, HELIPAD2, 0, 12 }, { 2, HELITAKEOFF, 0, 12 }, { 2, 0, 0, 23 },
-	{  3, 255, HANGAR2_AREA_block, 0 }, { 3, HANGAR, 0, 1 }, { 3, 0, 0, 18 },
-	{  4, TERM1, TERM1_block, 23 }, { 4, HANGAR, AIRPORT_ENTRANCE_block, 23 }, { 4, 0, 0, 23 },
-	{  5, TERM2, TERM2_block, 24 }, { 5, HANGAR, AIRPORT_ENTRANCE_block, 24 }, { 5, 0, 0, 24 },
-	{  6, TERM3, TERM3_block, 25 }, { 6, HANGAR, AIRPORT_ENTRANCE_block, 25 }, { 6, 0, 0, 25 },
-	{  7, TERM4, TERM4_block, 16 }, { 7, HANGAR, HANGAR2_AREA_block, 16 }, { 7, 0, 0, 16 },
-	{  8, TERM5, TERM5_block, 17 }, { 8, HANGAR, HANGAR2_AREA_block, 17 }, { 8, 0, 0, 17 },
-	{  9, TERM6, TERM6_block, 18 }, { 9, HANGAR, HANGAR2_AREA_block, 18 }, { 9, 0, 0, 18 },
+	{  0, HANGAR, NOTHING_block, 2 }, { 0, 255, TERM_GROUP1_block, 0 }, { 0, 255, TERM_GROUP2_ENTER1_block, 1 }, { 0, HELITAKEOFF, HELIPAD1_block, 2 }, { 0, TO_ALL, 0, 2 },
+	{  1, HANGAR, NOTHING_block, 3 }, { 1, 255, HANGAR2_AREA_block, 1 }, { 1, HELITAKEOFF, HELIPAD2_block, 3 }, { 1, TO_ALL, 0, 3 },
+	{  2, 255, AIRPORT_ENTRANCE_block, 0 }, { 2, HANGAR, 0, 0 }, { 2, TERM4, 0, 12 }, { 2, TERM5, 0, 12 }, { 2, TERM6, 0, 12 }, { 2, HELIPAD1, 0, 12 }, { 2, HELIPAD2, 0, 12 }, { 2, HELITAKEOFF, 0, 12 }, { 2, TO_ALL, 0, 23 },
+	{  3, 255, HANGAR2_AREA_block, 0 }, { 3, HANGAR, 0, 1 }, { 3, TO_ALL, 0, 18 },
+	{  4, TERM1, TERM1_block, 23 }, { 4, HANGAR, AIRPORT_ENTRANCE_block, 23 }, { 4, TO_ALL, 0, 23 },
+	{  5, TERM2, TERM2_block, 24 }, { 5, HANGAR, AIRPORT_ENTRANCE_block, 24 }, { 5, TO_ALL, 0, 24 },
+	{  6, TERM3, TERM3_block, 25 }, { 6, HANGAR, AIRPORT_ENTRANCE_block, 25 }, { 6, TO_ALL, 0, 25 },
+	{  7, TERM4, TERM4_block, 16 }, { 7, HANGAR, HANGAR2_AREA_block, 16 }, { 7, TO_ALL, 0, 16 },
+	{  8, TERM5, TERM5_block, 17 }, { 8, HANGAR, HANGAR2_AREA_block, 17 }, { 8, TO_ALL, 0, 17 },
+	{  9, TERM6, TERM6_block, 18 }, { 9, HANGAR, HANGAR2_AREA_block, 18 }, { 9, TO_ALL, 0, 18 },
 	{ 10, HELIPAD1, HELIPAD1_block, 10 }, { 10, HANGAR, HANGAR2_AREA_block, 16 }, { 10, HELITAKEOFF, 0, 47 },
 	{ 11, HELIPAD2, HELIPAD2_block, 11 }, { 11, HANGAR, HANGAR2_AREA_block, 17 }, { 11, HELITAKEOFF, 0, 48 },
-	{ 12, 0, TERM_GROUP2_ENTER1_block, 13 },
-	{ 13, 0, TERM_GROUP2_ENTER1_block, 14 },
-	{ 14, 0, TERM_GROUP2_ENTER2_block, 15 },
-	{ 15, 0, TERM_GROUP2_ENTER2_block, 16 },
-	{ 16, 255, TERM_GROUP2_block, 0 }, { 16, TERM4, TERM4_block, 7 }, { 16, HELIPAD1, HELIPAD1_block, 10 }, { 16, HELITAKEOFF, HELIPAD1_block, 10 }, { 16, 0, 0, 17 },
-	{ 17, 255, TERM_GROUP2_block, 0 }, { 17, TERM5, TERM5_block, 8 }, { 17, TERM4, 0, 16 }, { 17, HELIPAD1, 0, 16 }, { 17, HELIPAD2, HELIPAD2_block, 11 }, { 17, HELITAKEOFF, HELIPAD2_block, 11 }, { 17, 0, 0, 18 },
-	{ 18, 255, TERM_GROUP2_block, 0 }, { 18, TERM6, TERM6_block, 9 }, { 18, TAKEOFF, 0, 19 }, { 18, HANGAR, HANGAR2_AREA_block, 3 }, { 18, 0, 0, 17 },
-	{ 19, 0, TERM_GROUP2_EXIT1_block, 20 },
-	{ 20, 0, TERM_GROUP2_EXIT1_block, 21 },
-	{ 21, 0, TERM_GROUP2_EXIT2_block, 22 },
-	{ 22, 0, TERM_GROUP2_EXIT2_block, 26 },
-	{ 23, 255, TERM_GROUP1_block, 0 }, { 23, TERM1, TERM1_block, 4 }, { 23, HANGAR, AIRPORT_ENTRANCE_block, 2 }, { 23, 0, 0, 24 },
-	{ 24, 255, TERM_GROUP1_block, 0 }, { 24, TERM2, TERM2_block, 5 }, { 24, TERM1, 0, 23 }, { 24, HANGAR, 0, 23 }, { 24, 0, 0, 25 },
-	{ 25, 255, TERM_GROUP1_block, 0 }, { 25, TERM3, TERM3_block, 6 }, { 25, TAKEOFF, 0, 26 }, { 25, 0, 0, 24 },
-	{ 26, 255, TAXIWAY_BUSY_block, 0 }, { 26, TAKEOFF, 0, 27 }, { 26, 0, 0, 25 },
-	{ 27, 0, OUT_WAY_block, 28 },
+	{ 12, TO_ALL, TERM_GROUP2_ENTER1_block, 13 },
+	{ 13, TO_ALL, TERM_GROUP2_ENTER1_block, 14 },
+	{ 14, TO_ALL, TERM_GROUP2_ENTER2_block, 15 },
+	{ 15, TO_ALL, TERM_GROUP2_ENTER2_block, 16 },
+	{ 16, 255, TERM_GROUP2_block, 0 }, { 16, TERM4, TERM4_block, 7 }, { 16, HELIPAD1, HELIPAD1_block, 10 }, { 16, HELITAKEOFF, HELIPAD1_block, 10 }, { 16, TO_ALL, 0, 17 },
+	{ 17, 255, TERM_GROUP2_block, 0 }, { 17, TERM5, TERM5_block, 8 }, { 17, TERM4, 0, 16 }, { 17, HELIPAD1, 0, 16 }, { 17, HELIPAD2, HELIPAD2_block, 11 }, { 17, HELITAKEOFF, HELIPAD2_block, 11 }, { 17, TO_ALL, 0, 18 },
+	{ 18, 255, TERM_GROUP2_block, 0 }, { 18, TERM6, TERM6_block, 9 }, { 18, TAKEOFF, 0, 19 }, { 18, HANGAR, HANGAR2_AREA_block, 3 }, { 18, TO_ALL, 0, 17 },
+	{ 19, TO_ALL, TERM_GROUP2_EXIT1_block, 20 },
+	{ 20, TO_ALL, TERM_GROUP2_EXIT1_block, 21 },
+	{ 21, TO_ALL, TERM_GROUP2_EXIT2_block, 22 },
+	{ 22, TO_ALL, TERM_GROUP2_EXIT2_block, 26 },
+	{ 23, 255, TERM_GROUP1_block, 0 }, { 23, TERM1, TERM1_block, 4 }, { 23, HANGAR, AIRPORT_ENTRANCE_block, 2 }, { 23, TO_ALL, 0, 24 },
+	{ 24, 255, TERM_GROUP1_block, 0 }, { 24, TERM2, TERM2_block, 5 }, { 24, TERM1, 0, 23 }, { 24, HANGAR, 0, 23 }, { 24, TO_ALL, 0, 25 },
+	{ 25, 255, TERM_GROUP1_block, 0 }, { 25, TERM3, TERM3_block, 6 }, { 25, TAKEOFF, 0, 26 }, { 25, TO_ALL, 0, 24 },
+	{ 26, 255, TAXIWAY_BUSY_block, 0 }, { 26, TAKEOFF, 0, 27 }, { 26, TO_ALL, 0, 25 },
+	{ 27, TO_ALL, OUT_WAY_block, 28 },
 	/* takeoff */
 	{ 28, TAKEOFF, OUT_WAY_block, 29 },
-	{ 29, 0, RUNWAY_OUT_block, 30 },
+	{ 29, TO_ALL, RUNWAY_OUT_block, 30 },
 	{ 30, STARTTAKEOFF, NOTHING_block, 31 },
 	{ 31, ENDTAKEOFF, NOTHING_block, 0 },
 	/* landing */
 	{ 32, FLYING, NOTHING_block, 37 }, { 32, LANDING, 0, 33 }, { 32, HELILANDING, 0, 41 },
 	{ 33, LANDING, RUNWAY_IN_block, 34 },
-	{ 34, 0, RUNWAY_IN_block, 35 },
-	{ 35, 0, RUNWAY_IN_block, 36 },
-	{ 36, ENDLANDING, IN_WAY_block, 36 }, { 36, 255, TERM_GROUP1_block, 0 }, { 36, 255, TERM_GROUP2_ENTER1_block, 1 }, { 36, TERM4, 0, 12 }, { 36, TERM5, 0, 12 }, { 36, TERM6, 0, 12 }, { 36, 0, 0, 2 },
+	{ 34, TO_ALL, RUNWAY_IN_block, 35 },
+	{ 35, TO_ALL, RUNWAY_IN_block, 36 },
+	{ 36, ENDLANDING, IN_WAY_block, 36 }, { 36, 255, TERM_GROUP1_block, 0 }, { 36, 255, TERM_GROUP2_ENTER1_block, 1 }, { 36, TERM4, 0, 12 }, { 36, TERM5, 0, 12 }, { 36, TERM6, 0, 12 }, { 36, TO_ALL, 0, 2 },
 	/* In Air */
-	{ 37, 0, NOTHING_block, 38 },
-	{ 38, 0, NOTHING_block, 39 },
-	{ 39, 0, NOTHING_block, 40 },
-	{ 40, 0, NOTHING_block, 32 },
+	{ 37, TO_ALL, NOTHING_block, 38 },
+	{ 38, TO_ALL, NOTHING_block, 39 },
+	{ 39, TO_ALL, NOTHING_block, 40 },
+	{ 40, TO_ALL, NOTHING_block, 32 },
 	/* Helicopter -- stay in air in special place as a buffer to choose from helipads */
 	{ 41, HELILANDING, PRE_HELIPAD_block, 42 },
 	{ 42, HELIENDLANDING, PRE_HELIPAD_block, 42 }, { 42, HELIPAD1, 0, 43 }, { 42, HELIPAD2, 0, 44 }, { 42, HANGAR, 0, 49 },
-	{ 43, 0, NOTHING_block, 45 },
-	{ 44, 0, NOTHING_block, 46 },
+	{ 43, TO_ALL, NOTHING_block, 45 },
+	{ 44, TO_ALL, NOTHING_block, 46 },
 	/* landing */
 	{ 45, 255, NOTHING_block, 0 }, { 45, HELIPAD1, HELIPAD1_block, 10 },
 	{ 46, 255, NOTHING_block, 0 }, { 46, HELIPAD2, HELIPAD2_block, 11 },
 	/* Helicopter -- takeoff */
 	{ 47, HELITAKEOFF, NOTHING_block, 0 },
 	{ 48, HELITAKEOFF, NOTHING_block, 0 },
-	{ 49, 0, HANGAR2_AREA_block, 50 }, // need to go to hangar when waiting in air
-	{ 50, 0, HANGAR2_AREA_block, 3 },
-	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
+	{ 49, TO_ALL, HANGAR2_AREA_block, 50 }, // need to go to hangar when waiting in air
+	{ 50, TO_ALL, HANGAR2_AREA_block, 3 },
+	{ MAX_ELEMENTS, TO_ALL, 0, 0 } // end marker. DO NOT REMOVE
 };
 
 /* intercontinental */
@@ -650,92 +650,92 @@ static const HangarTileTable _airport_depots_intercontinental[] = { {{0, 5}, DIR
 static const byte _airport_terminal_intercontinental[] = { 2, 4, 4 };
 static const byte _airport_entries_intercontinental[] = { 44, 43, 46, 45 };
 static const AirportFTAbuildup _airport_fta_intercontinental[] = {
-	{  0, HANGAR, NOTHING_block, 2 }, { 0, 255, HANGAR1_AREA_block | TERM_GROUP1_block, 0 }, { 0, 255, HANGAR1_AREA_block | TERM_GROUP1_block, 1 }, { 0, TAKEOFF, HANGAR1_AREA_block | TERM_GROUP1_block, 2 }, { 0, 0, 0, 2 },
-	{  1, HANGAR, NOTHING_block, 3 }, { 1, 255, HANGAR2_AREA_block, 1 }, { 1, 255, HANGAR2_AREA_block, 0 }, { 1, 0, 0, 3 },
-	{  2, 255, HANGAR1_AREA_block, 0 }, { 2, 255, TERM_GROUP1_block, 0 }, { 2, 255, TERM_GROUP1_block, 1 }, { 2, HANGAR, 0, 0 }, { 2, TAKEOFF, TERM_GROUP1_block, 27 }, { 2, TERM5, 0, 26 }, { 2, TERM6, 0, 26 }, { 2, TERM7, 0, 26 }, { 2, TERM8, 0, 26 }, { 2, HELIPAD1, 0, 26 }, { 2, HELIPAD2, 0, 26 }, { 2, HELITAKEOFF, 0, 74 }, { 2, 0, 0, 27 },
-	{  3, 255, HANGAR2_AREA_block, 0 }, { 3, HANGAR, 0, 1 }, { 3, HELITAKEOFF, 0, 75 }, {3, TAKEOFF, 0, 59}, { 3, 0, 0, 20 },
-	{  4, TERM1, TERM1_block, 26 }, { 4, HANGAR, HANGAR1_AREA_block | TERM_GROUP1_block, 26 }, { 4, 0, 0, 26 },
-	{  5, TERM2, TERM2_block, 27 }, { 5, HANGAR, HANGAR1_AREA_block | TERM_GROUP1_block, 27 }, { 5, 0, 0, 27 },
-	{  6, TERM3, TERM3_block, 28 }, { 6, HANGAR, HANGAR1_AREA_block | TERM_GROUP1_block, 28 }, { 6, 0, 0, 28 },
-	{  7, TERM4, TERM4_block, 29 }, { 7, HANGAR, HANGAR1_AREA_block | TERM_GROUP1_block, 29 }, { 7, 0, 0, 29 },
-	{  8, TERM5, TERM5_block, 18 }, { 8, HANGAR, HANGAR2_AREA_block, 18 }, { 8, 0, 0, 18 },
-	{  9, TERM6, TERM6_block, 19 }, { 9, HANGAR, HANGAR2_AREA_block, 19 }, { 9, 0, 0, 19 },
-	{ 10, TERM7, TERM7_block, 20 }, { 10, HANGAR, HANGAR2_AREA_block, 20 }, { 10, 0, 0, 20 },
-	{ 11, TERM8, TERM8_block, 21 }, { 11, HANGAR, HANGAR2_AREA_block, 21 }, { 11, 0, 0, 21 },
+	{  0, HANGAR, NOTHING_block, 2 }, { 0, 255, HANGAR1_AREA_block | TERM_GROUP1_block, 0 }, { 0, 255, HANGAR1_AREA_block | TERM_GROUP1_block, 1 }, { 0, TAKEOFF, HANGAR1_AREA_block | TERM_GROUP1_block, 2 }, { 0, TO_ALL, 0, 2 },
+	{  1, HANGAR, NOTHING_block, 3 }, { 1, 255, HANGAR2_AREA_block, 1 }, { 1, 255, HANGAR2_AREA_block, 0 }, { 1, TO_ALL, 0, 3 },
+	{  2, 255, HANGAR1_AREA_block, 0 }, { 2, 255, TERM_GROUP1_block, 0 }, { 2, 255, TERM_GROUP1_block, 1 }, { 2, HANGAR, 0, 0 }, { 2, TAKEOFF, TERM_GROUP1_block, 27 }, { 2, TERM5, 0, 26 }, { 2, TERM6, 0, 26 }, { 2, TERM7, 0, 26 }, { 2, TERM8, 0, 26 }, { 2, HELIPAD1, 0, 26 }, { 2, HELIPAD2, 0, 26 }, { 2, HELITAKEOFF, 0, 74 }, { 2, TO_ALL, 0, 27 },
+	{  3, 255, HANGAR2_AREA_block, 0 }, { 3, HANGAR, 0, 1 }, { 3, HELITAKEOFF, 0, 75 }, {3, TAKEOFF, 0, 59}, { 3, TO_ALL, 0, 20 },
+	{  4, TERM1, TERM1_block, 26 }, { 4, HANGAR, HANGAR1_AREA_block | TERM_GROUP1_block, 26 }, { 4, TO_ALL, 0, 26 },
+	{  5, TERM2, TERM2_block, 27 }, { 5, HANGAR, HANGAR1_AREA_block | TERM_GROUP1_block, 27 }, { 5, TO_ALL, 0, 27 },
+	{  6, TERM3, TERM3_block, 28 }, { 6, HANGAR, HANGAR1_AREA_block | TERM_GROUP1_block, 28 }, { 6, TO_ALL, 0, 28 },
+	{  7, TERM4, TERM4_block, 29 }, { 7, HANGAR, HANGAR1_AREA_block | TERM_GROUP1_block, 29 }, { 7, TO_ALL, 0, 29 },
+	{  8, TERM5, TERM5_block, 18 }, { 8, HANGAR, HANGAR2_AREA_block, 18 }, { 8, TO_ALL, 0, 18 },
+	{  9, TERM6, TERM6_block, 19 }, { 9, HANGAR, HANGAR2_AREA_block, 19 }, { 9, TO_ALL, 0, 19 },
+	{ 10, TERM7, TERM7_block, 20 }, { 10, HANGAR, HANGAR2_AREA_block, 20 }, { 10, TO_ALL, 0, 20 },
+	{ 11, TERM8, TERM8_block, 21 }, { 11, HANGAR, HANGAR2_AREA_block, 21 }, { 11, TO_ALL, 0, 21 },
 	{ 12, HELIPAD1, HELIPAD1_block, 12 }, { 12, HANGAR, 0, 70 }, { 12, HELITAKEOFF, 0, 72 },
 	{ 13, HELIPAD2, HELIPAD2_block, 13 }, { 13, HANGAR, 0, 71 }, { 13, HELITAKEOFF, 0, 73 },
-	{ 14, 0, TERM_GROUP2_ENTER1_block, 15 },
-	{ 15, 0, TERM_GROUP2_ENTER1_block, 16 },
-	{ 16, 0, TERM_GROUP2_ENTER2_block, 17 },
-	{ 17, 0, TERM_GROUP2_ENTER2_block, 18 },
-	{ 18, 255, TERM_GROUP2_block, 0 }, { 18, TERM5, TERM5_block, 8 }, { 18, TAKEOFF, 0, 19 }, { 18, HELITAKEOFF, HELIPAD1_block, 19 }, { 18, 0, TERM_GROUP2_EXIT1_block, 19 },
-	{ 19, 255, TERM_GROUP2_block, 0 }, { 19, TERM6, TERM6_block, 9 }, { 19, TERM5, 0, 18 }, { 19, TAKEOFF, 0, 57 }, { 19, HELITAKEOFF, HELIPAD1_block, 20 }, { 19, 0, TERM_GROUP2_EXIT1_block, 20 }, // add exit to runway out 2
-	{ 20, 255, TERM_GROUP2_block, 0 }, { 20, TERM7, TERM7_block, 10 }, { 20, TERM5, 0, 19 }, { 20, TERM6, 0, 19 }, { 20, HANGAR, HANGAR2_AREA_block, 3 }, { 20, TAKEOFF, 0, 19 }, { 20, 0, TERM_GROUP2_EXIT1_block, 21 },
-	{ 21, 255, TERM_GROUP2_block, 0 }, { 21, TERM8, TERM8_block, 11 }, { 21, HANGAR, HANGAR2_AREA_block, 20 }, { 21, TERM5, 0, 20 }, { 21, TERM6, 0, 20 }, { 21, TERM7, 0, 20 }, { 21, TAKEOFF, 0, 20 }, { 21, 0, TERM_GROUP2_EXIT1_block, 22 },
-	{ 22, 255, TERM_GROUP2_block, 0 }, { 22, HANGAR, 0, 21 }, { 22, TERM5, 0, 21 }, { 22, TERM6, 0, 21 }, { 22, TERM7, 0, 21 }, { 22, TERM8, 0, 21 }, { 22, TAKEOFF, 0, 21 }, { 22, 0, 0, 23 },
-	{ 23, 0, TERM_GROUP2_EXIT1_block, 70 },
-	{ 24, 0, TERM_GROUP2_EXIT2_block, 25 },
-	{ 25, 255, TERM_GROUP2_EXIT2_block, 0 }, { 25, HANGAR, HANGAR1_AREA_block | TERM_GROUP1_block, 29 }, { 25, 0, 0, 29 },
-	{ 26, 255, TERM_GROUP1_block, 0 }, { 26, TERM1, TERM1_block, 4 }, { 26, HANGAR, HANGAR1_AREA_block, 27 }, { 26, TERM5, TERM_GROUP2_ENTER1_block, 14 }, { 26, TERM6, TERM_GROUP2_ENTER1_block, 14 }, { 26, TERM7, TERM_GROUP2_ENTER1_block, 14 }, { 26, TERM8, TERM_GROUP2_ENTER1_block, 14 }, { 26, HELIPAD1, TERM_GROUP2_ENTER1_block, 14 }, { 26, HELIPAD2, TERM_GROUP2_ENTER1_block, 14 }, { 26, HELITAKEOFF, TERM_GROUP2_ENTER1_block, 14 }, { 26, 0, 0, 27 },
-	{ 27, 255, TERM_GROUP1_block, 0 }, { 27, TERM2, TERM2_block, 5 }, { 27, HANGAR, HANGAR1_AREA_block, 2 }, { 27, TERM1, 0, 26 }, { 27, TERM5, 0, 26 }, { 27, TERM6, 0, 26 }, { 27, TERM7, 0, 26 }, { 27, TERM8, 0, 26 }, { 27, HELIPAD1, 0, 14 }, { 27, HELIPAD2, 0, 14 }, { 27, 0, 0, 28 },
-	{ 28, 255, TERM_GROUP1_block, 0 }, { 28, TERM3, TERM3_block, 6 }, { 28, HANGAR, HANGAR1_AREA_block, 27 }, { 28, TERM1, 0, 27 }, { 28, TERM2, 0, 27 }, { 28, TERM4, 0, 29 }, { 28, TERM5, 0, 14 }, { 28, TERM6, 0, 14 }, { 28, TERM7, 0, 14 }, { 28, TERM8, 0, 14 }, { 28, HELIPAD1, 0, 14 }, { 28, HELIPAD2, 0, 14 }, { 28, 0, 0, 29 },
-	{ 29, 255, TERM_GROUP1_block, 0 }, { 29, TERM4, TERM4_block, 7 }, { 29, HANGAR, HANGAR1_AREA_block, 27 }, { 29, TAKEOFF, 0, 30 }, { 29, 0, 0, 28 },
-	{ 30, 0, OUT_WAY_block2, 31 },
-	{ 31, 0, OUT_WAY_block, 32 },
+	{ 14, TO_ALL, TERM_GROUP2_ENTER1_block, 15 },
+	{ 15, TO_ALL, TERM_GROUP2_ENTER1_block, 16 },
+	{ 16, TO_ALL, TERM_GROUP2_ENTER2_block, 17 },
+	{ 17, TO_ALL, TERM_GROUP2_ENTER2_block, 18 },
+	{ 18, 255, TERM_GROUP2_block, 0 }, { 18, TERM5, TERM5_block, 8 }, { 18, TAKEOFF, 0, 19 }, { 18, HELITAKEOFF, HELIPAD1_block, 19 }, { 18, TO_ALL, TERM_GROUP2_EXIT1_block, 19 },
+	{ 19, 255, TERM_GROUP2_block, 0 }, { 19, TERM6, TERM6_block, 9 }, { 19, TERM5, 0, 18 }, { 19, TAKEOFF, 0, 57 }, { 19, HELITAKEOFF, HELIPAD1_block, 20 }, { 19, TO_ALL, TERM_GROUP2_EXIT1_block, 20 }, // add exit to runway out 2
+	{ 20, 255, TERM_GROUP2_block, 0 }, { 20, TERM7, TERM7_block, 10 }, { 20, TERM5, 0, 19 }, { 20, TERM6, 0, 19 }, { 20, HANGAR, HANGAR2_AREA_block, 3 }, { 20, TAKEOFF, 0, 19 }, { 20, TO_ALL, TERM_GROUP2_EXIT1_block, 21 },
+	{ 21, 255, TERM_GROUP2_block, 0 }, { 21, TERM8, TERM8_block, 11 }, { 21, HANGAR, HANGAR2_AREA_block, 20 }, { 21, TERM5, 0, 20 }, { 21, TERM6, 0, 20 }, { 21, TERM7, 0, 20 }, { 21, TAKEOFF, 0, 20 }, { 21, TO_ALL, TERM_GROUP2_EXIT1_block, 22 },
+	{ 22, 255, TERM_GROUP2_block, 0 }, { 22, HANGAR, 0, 21 }, { 22, TERM5, 0, 21 }, { 22, TERM6, 0, 21 }, { 22, TERM7, 0, 21 }, { 22, TERM8, 0, 21 }, { 22, TAKEOFF, 0, 21 }, { 22, TO_ALL, 0, 23 },
+	{ 23, TO_ALL, TERM_GROUP2_EXIT1_block, 70 },
+	{ 24, TO_ALL, TERM_GROUP2_EXIT2_block, 25 },
+	{ 25, 255, TERM_GROUP2_EXIT2_block, 0 }, { 25, HANGAR, HANGAR1_AREA_block | TERM_GROUP1_block, 29 }, { 25, TO_ALL, 0, 29 },
+	{ 26, 255, TERM_GROUP1_block, 0 }, { 26, TERM1, TERM1_block, 4 }, { 26, HANGAR, HANGAR1_AREA_block, 27 }, { 26, TERM5, TERM_GROUP2_ENTER1_block, 14 }, { 26, TERM6, TERM_GROUP2_ENTER1_block, 14 }, { 26, TERM7, TERM_GROUP2_ENTER1_block, 14 }, { 26, TERM8, TERM_GROUP2_ENTER1_block, 14 }, { 26, HELIPAD1, TERM_GROUP2_ENTER1_block, 14 }, { 26, HELIPAD2, TERM_GROUP2_ENTER1_block, 14 }, { 26, HELITAKEOFF, TERM_GROUP2_ENTER1_block, 14 }, { 26, TO_ALL, 0, 27 },
+	{ 27, 255, TERM_GROUP1_block, 0 }, { 27, TERM2, TERM2_block, 5 }, { 27, HANGAR, HANGAR1_AREA_block, 2 }, { 27, TERM1, 0, 26 }, { 27, TERM5, 0, 26 }, { 27, TERM6, 0, 26 }, { 27, TERM7, 0, 26 }, { 27, TERM8, 0, 26 }, { 27, HELIPAD1, 0, 14 }, { 27, HELIPAD2, 0, 14 }, { 27, TO_ALL, 0, 28 },
+	{ 28, 255, TERM_GROUP1_block, 0 }, { 28, TERM3, TERM3_block, 6 }, { 28, HANGAR, HANGAR1_AREA_block, 27 }, { 28, TERM1, 0, 27 }, { 28, TERM2, 0, 27 }, { 28, TERM4, 0, 29 }, { 28, TERM5, 0, 14 }, { 28, TERM6, 0, 14 }, { 28, TERM7, 0, 14 }, { 28, TERM8, 0, 14 }, { 28, HELIPAD1, 0, 14 }, { 28, HELIPAD2, 0, 14 }, { 28, TO_ALL, 0, 29 },
+	{ 29, 255, TERM_GROUP1_block, 0 }, { 29, TERM4, TERM4_block, 7 }, { 29, HANGAR, HANGAR1_AREA_block, 27 }, { 29, TAKEOFF, 0, 30 }, { 29, TO_ALL, 0, 28 },
+	{ 30, TO_ALL, OUT_WAY_block2, 31 },
+	{ 31, TO_ALL, OUT_WAY_block, 32 },
 	/* takeoff */
 	{ 32, TAKEOFF, RUNWAY_OUT_block, 33 },
-	{ 33, 0, RUNWAY_OUT_block, 34 },
+	{ 33, TO_ALL, RUNWAY_OUT_block, 34 },
 	{ 34, STARTTAKEOFF, NOTHING_block, 35 },
 	{ 35, ENDTAKEOFF, NOTHING_block, 0 },
 	/* landing */
-	{ 36, 0, 0, 0 },
+	{ 36, TO_ALL, 0, 0 },
 	{ 37, LANDING, RUNWAY_IN_block, 38 },
-	{ 38, 0, RUNWAY_IN_block, 39 },
-	{ 39, 0, RUNWAY_IN_block, 40 },
+	{ 38, TO_ALL, RUNWAY_IN_block, 39 },
+	{ 39, TO_ALL, RUNWAY_IN_block, 40 },
 	{ 40, ENDLANDING, RUNWAY_IN_block, 41 },
-	{ 41, 0, IN_WAY_block, 42 },
-	{ 42, 255, IN_WAY_block, 0 }, { 42, 255, TERM_GROUP1_block, 0 }, { 42, 255, TERM_GROUP1_block, 1 }, { 42, HANGAR, 0, 2 }, { 42, 0, 0, 26 },
+	{ 41, TO_ALL, IN_WAY_block, 42 },
+	{ 42, 255, IN_WAY_block, 0 }, { 42, 255, TERM_GROUP1_block, 0 }, { 42, 255, TERM_GROUP1_block, 1 }, { 42, HANGAR, 0, 2 }, { 42, TO_ALL, 0, 26 },
 	/* In Air */
-	{ 43, 0, 0, 44 },
-	{ 44, FLYING, 0, 45 }, { 44, HELILANDING, 0, 47 }, { 44, LANDING, 0, 69 }, { 44, 0, 0, 45 },
-	{ 45, 0, 0, 46 },
-	{ 46, FLYING, 0, 43 }, { 46, LANDING, 0, 76 }, { 46, 0, 0, 43 },
+	{ 43, TO_ALL, 0, 44 },
+	{ 44, FLYING, 0, 45 }, { 44, HELILANDING, 0, 47 }, { 44, LANDING, 0, 69 }, { 44, TO_ALL, 0, 45 },
+	{ 45, TO_ALL, 0, 46 },
+	{ 46, FLYING, 0, 43 }, { 46, LANDING, 0, 76 }, { 46, TO_ALL, 0, 43 },
 	/* Helicopter -- stay in air in special place as a buffer to choose from helipads */
 	{ 47, HELILANDING, PRE_HELIPAD_block, 48 },
 	{ 48, HELIENDLANDING, PRE_HELIPAD_block, 48 }, { 48, HELIPAD1, 0, 49 }, { 48, HELIPAD2, 0, 50 }, { 48, HANGAR, 0, 55 },
-	{ 49, 0, NOTHING_block, 51 },
-	{ 50, 0, NOTHING_block, 52 },
+	{ 49, TO_ALL, NOTHING_block, 51 },
+	{ 50, TO_ALL, NOTHING_block, 52 },
 	/* landing */
-	{ 51, 255, NOTHING_block, 0 }, { 51, HELIPAD1, HELIPAD1_block, 12 }, { 51, HANGAR, 0, 55 }, { 51, 0, 0, 12 },
-	{ 52, 255, NOTHING_block, 0 }, { 52, HELIPAD2, HELIPAD2_block, 13 }, { 52, HANGAR, 0, 55 }, { 52, 0, 0, 13 },
+	{ 51, 255, NOTHING_block, 0 }, { 51, HELIPAD1, HELIPAD1_block, 12 }, { 51, HANGAR, 0, 55 }, { 51, TO_ALL, 0, 12 },
+	{ 52, 255, NOTHING_block, 0 }, { 52, HELIPAD2, HELIPAD2_block, 13 }, { 52, HANGAR, 0, 55 }, { 52, TO_ALL, 0, 13 },
 	/* Helicopter -- takeoff */
 	{ 53, HELITAKEOFF, NOTHING_block, 0 },
 	{ 54, HELITAKEOFF, NOTHING_block, 0 },
-	{ 55, 0, HANGAR2_AREA_block, 56 }, // need to go to hangar when waiting in air
-	{ 56, 0, HANGAR2_AREA_block, 3 },
+	{ 55, TO_ALL, HANGAR2_AREA_block, 56 }, // need to go to hangar when waiting in air
+	{ 56, TO_ALL, HANGAR2_AREA_block, 3 },
 	/* runway 2 out support */
-	{ 57, 255, OUT_WAY2_block, 0 }, { 57, TAKEOFF, 0, 58 }, { 57, 0, 0, 58 },
-	{ 58, 0, OUT_WAY2_block, 59 },
+	{ 57, 255, OUT_WAY2_block, 0 }, { 57, TAKEOFF, 0, 58 }, { 57, TO_ALL, 0, 58 },
+	{ 58, TO_ALL, OUT_WAY2_block, 59 },
 	{ 59, TAKEOFF, RUNWAY_OUT2_block, 60 }, // takeoff
-	{ 60, 0, RUNWAY_OUT2_block, 61 },
+	{ 60, TO_ALL, RUNWAY_OUT2_block, 61 },
 	{ 61, STARTTAKEOFF, NOTHING_block, 62 },
 	{ 62, ENDTAKEOFF, NOTHING_block, 0 },
 	/* runway 2 in support */
 	{ 63, LANDING, RUNWAY_IN2_block, 64 },
-	{ 64, 0, RUNWAY_IN2_block, 65 },
-	{ 65, 0, RUNWAY_IN2_block, 66 },
-	{ 66, ENDLANDING, RUNWAY_IN2_block, 0 }, { 66, 255, 0, 1 }, { 66, 255, 0, 0 }, { 66, 0, 0, 67 },
-	{ 67, 0, IN_WAY2_block, 68 },
-	{ 68, 255, IN_WAY2_block, 0 }, { 68, 255, TERM_GROUP2_block, 1 }, { 68, 255, TERM_GROUP1_block, 0 }, { 68, HANGAR, HANGAR2_AREA_block, 22 }, { 68, 0, 0, 22 },
-	{ 69, 255, RUNWAY_IN2_block, 0 }, { 69, 0, RUNWAY_IN2_block, 63 },
-	{ 70, 255, TERM_GROUP2_EXIT1_block, 0 }, { 70, HELIPAD1, HELIPAD1_block, 12 }, { 70, HELITAKEOFF, HELIPAD1_block, 12 }, { 70, 0, 0, 71 },
-	{ 71, 255, TERM_GROUP2_EXIT1_block, 0 }, { 71, HELIPAD2, HELIPAD2_block, 13 }, { 71, HELITAKEOFF, HELIPAD1_block, 12 }, { 71, 0, 0, 24 },
-	{ 72, 0, HELIPAD1_block, 53 },
-	{ 73, 0, HELIPAD2_block, 54 },
+	{ 64, TO_ALL, RUNWAY_IN2_block, 65 },
+	{ 65, TO_ALL, RUNWAY_IN2_block, 66 },
+	{ 66, ENDLANDING, RUNWAY_IN2_block, 0 }, { 66, 255, 0, 1 }, { 66, 255, 0, 0 }, { 66, TO_ALL, 0, 67 },
+	{ 67, TO_ALL, IN_WAY2_block, 68 },
+	{ 68, 255, IN_WAY2_block, 0 }, { 68, 255, TERM_GROUP2_block, 1 }, { 68, 255, TERM_GROUP1_block, 0 }, { 68, HANGAR, HANGAR2_AREA_block, 22 }, { 68, TO_ALL, 0, 22 },
+	{ 69, 255, RUNWAY_IN2_block, 0 }, { 69, TO_ALL, RUNWAY_IN2_block, 63 },
+	{ 70, 255, TERM_GROUP2_EXIT1_block, 0 }, { 70, HELIPAD1, HELIPAD1_block, 12 }, { 70, HELITAKEOFF, HELIPAD1_block, 12 }, { 70, TO_ALL, 0, 71 },
+	{ 71, 255, TERM_GROUP2_EXIT1_block, 0 }, { 71, HELIPAD2, HELIPAD2_block, 13 }, { 71, HELITAKEOFF, HELIPAD1_block, 12 }, { 71, TO_ALL, 0, 24 },
+	{ 72, TO_ALL, HELIPAD1_block, 53 },
+	{ 73, TO_ALL, HELIPAD2_block, 54 },
 	{ 74, HELITAKEOFF, NOTHING_block, 0 },
 	{ 75, HELITAKEOFF, NOTHING_block, 0 },
-	{ 76, 255, RUNWAY_IN_block, 0 }, { 76, 0, RUNWAY_IN_block, 37 },
-	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
+	{ 76, 255, RUNWAY_IN_block, 0 }, { 76, TO_ALL, RUNWAY_IN_block, 37 },
+	{ MAX_ELEMENTS, TO_ALL, 0, 0 } // end marker. DO NOT REMOVE
 };
 
 
@@ -748,11 +748,11 @@ static const AirportFTAbuildup _airport_fta_heliport[] = {
 	{ 3, HELILANDING, AIRPORT_BUSY_block, 4 },
 	{ 4, HELIENDLANDING, AIRPORT_BUSY_block, 4 }, { 4, HELIPAD1, HELIPAD1_block, 0 }, { 4, HELITAKEOFF, 0, 2 },
 	/* In Air */
-	{ 5, 0, NOTHING_block, 6 },
-	{ 6, 0, NOTHING_block, 7 },
-	{ 7, 0, NOTHING_block, 8 },
+	{ 5, TO_ALL, NOTHING_block, 6 },
+	{ 6, TO_ALL, NOTHING_block, 7 },
+	{ 7, TO_ALL, NOTHING_block, 8 },
 	{ 8, FLYING, NOTHING_block, 5 }, { 8, HELILANDING, HELIPAD1_block, 2 }, // landing
-	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
+	{ MAX_ELEMENTS, TO_ALL, 0, 0 } // end marker. DO NOT REMOVE
 };
 #define _airport_entries_oilrig _airport_entries_heliport
 #define _airport_fta_oilrig _airport_fta_heliport
@@ -762,7 +762,7 @@ static const HangarTileTable _airport_depots_helidepot[] = { {{1, 0}, DIR_SE, 0}
 static const byte _airport_entries_helidepot[] = { 4, 4, 4, 4 };
 static const AirportFTAbuildup _airport_fta_helidepot[] = {
 	{  0, HANGAR, NOTHING_block, 1 },
-	{  1, 255, HANGAR2_AREA_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, HELIPAD1, HELIPAD1_block, 14 }, { 1, HELITAKEOFF, 0, 15 }, { 1, 0, 0, 0 },
+	{  1, 255, HANGAR2_AREA_block, 0 }, { 1, HANGAR, 0, 0 }, { 1, HELIPAD1, HELIPAD1_block, 14 }, { 1, HELITAKEOFF, 0, 15 }, { 1, TO_ALL, 0, 0 },
 	{  2, FLYING, NOTHING_block, 3 }, { 2, HELILANDING, PRE_HELIPAD_block, 7 }, { 2, HANGAR, 0, 12 }, { 2, HELITAKEOFF, NOTHING_block, 16 },
 	/* In Air */
 	{  3, 0, NOTHING_block, 4 },
@@ -771,63 +771,63 @@ static const AirportFTAbuildup _airport_fta_helidepot[] = {
 	{  6, 0, NOTHING_block, 2 },
 	/* Helicopter -- stay in air in special place as a buffer to choose from helipads */
 	{  7, HELILANDING, PRE_HELIPAD_block, 8 },
-	{  8, HELIENDLANDING, PRE_HELIPAD_block, 8 }, { 8, HELIPAD1, 0, 9 }, { 8, HANGAR, 0, 12 }, { 8, 0, 0, 2 },
+	{  8, HELIENDLANDING, PRE_HELIPAD_block, 8 }, { 8, HELIPAD1, 0, 9 }, { 8, HANGAR, 0, 12 }, { 8, TO_ALL, 0, 2 },
 	{  9, 0, NOTHING_block, 10 },
 	/* landing */
-	{ 10, 255, NOTHING_block, 10 }, { 10, HELIPAD1, HELIPAD1_block, 14 }, { 10, HANGAR, 0, 1 }, { 10, 0, 0, 14 },
+	{ 10, 255, NOTHING_block, 10 }, { 10, HELIPAD1, HELIPAD1_block, 14 }, { 10, HANGAR, 0, 1 }, { 10, TO_ALL, 0, 14 },
 	/* Helicopter -- takeoff */
 	{ 11, HELITAKEOFF, NOTHING_block, 0 },
-	{ 12, 0, HANGAR2_AREA_block, 13 }, // need to go to hangar when waiting in air
-	{ 13, 0, HANGAR2_AREA_block, 1 },
+	{ 12, TO_ALL, HANGAR2_AREA_block, 13 }, // need to go to hangar when waiting in air
+	{ 13, TO_ALL, HANGAR2_AREA_block, 1 },
 	{ 14, HELIPAD1, HELIPAD1_block, 14 }, { 14, HANGAR, 0, 1 }, { 14, HELITAKEOFF, 0, 17 },
 	{ 15, HELITAKEOFF, NOTHING_block, 0 }, // takeoff outside depot
 	{ 16, HELITAKEOFF, 0, 14 },
-	{ 17, 0, NOTHING_block, 11 },
-	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
+	{ 17, TO_ALL, NOTHING_block, 11 },
+	{ MAX_ELEMENTS, TO_ALL, 0, 0 } // end marker. DO NOT REMOVE
 };
 
 /* helistation */
 static const HangarTileTable _airport_depots_helistation[] = { {{0, 0}, DIR_SE, 0} };
 static const byte _airport_entries_helistation[] = { 25, 25, 25, 25 };
 static const AirportFTAbuildup _airport_fta_helistation[] = {
-	{  0, HANGAR, NOTHING_block, 8 },    { 0, HELIPAD1, 0, 1 }, { 0, HELIPAD2, 0, 1 }, { 0, HELIPAD3, 0, 1 }, { 0, HELITAKEOFF, 0, 1 }, { 0, 0, 0, 0 },
-	{  1, 255, HANGAR2_AREA_block, 0 },  { 1, HANGAR, 0, 0 }, { 1, HELITAKEOFF, 0, 3 }, { 1, 0, 0, 4 },
+	{  0, HANGAR, NOTHING_block, 8 },    { 0, HELIPAD1, 0, 1 }, { 0, HELIPAD2, 0, 1 }, { 0, HELIPAD3, 0, 1 }, { 0, HELITAKEOFF, 0, 1 }, { 0, TO_ALL, 0, 0 },
+	{  1, 255, HANGAR2_AREA_block, 0 },  { 1, HANGAR, 0, 0 }, { 1, HELITAKEOFF, 0, 3 }, { 1, TO_ALL, 0, 4 },
 	/* landing */
-	{  2, FLYING, NOTHING_block, 28 },   { 2, HELILANDING, 0, 15 }, { 2, 0, 0, 28 },
+	{  2, FLYING, NOTHING_block, 28 },   { 2, HELILANDING, 0, 15 }, { 2, TO_ALL, 0, 28 },
 	/* helicopter side */
 	{  3, HELITAKEOFF, NOTHING_block, 0 }, // helitakeoff outside hangar2
-	{  4, 255, TAXIWAY_BUSY_block, 0 },  { 4, HANGAR, HANGAR2_AREA_block, 1 }, { 4, HELITAKEOFF, 0, 1 }, { 4, 0, 0, 5 },
-	{  5, 255, TAXIWAY_BUSY_block, 0 },  { 5, HELIPAD1, HELIPAD1_block, 6 }, { 5, HELIPAD2, HELIPAD2_block, 7 }, { 5, HELIPAD3, HELIPAD3_block, 8 }, { 5, 0, 0, 4 },
-	{  6, HELIPAD1, HELIPAD1_block, 5 }, { 6, HANGAR, HANGAR2_AREA_block, 5 }, { 6, HELITAKEOFF, 0, 9 }, { 6, 0, 0, 6 },
-	{  7, HELIPAD2, HELIPAD2_block, 5 }, { 7, HANGAR, HANGAR2_AREA_block, 5 }, { 7, HELITAKEOFF, 0, 10 }, { 7, 0, 0, 7 },
-	{  8, HELIPAD3, HELIPAD3_block, 5 }, { 8, HANGAR, HANGAR2_AREA_block, 5 }, { 8, HELITAKEOFF, 0, 11 }, { 8, 0, 0, 8 },
+	{  4, 255, TAXIWAY_BUSY_block, 0 },  { 4, HANGAR, HANGAR2_AREA_block, 1 }, { 4, HELITAKEOFF, 0, 1 }, { 4, TO_ALL, 0, 5 },
+	{  5, 255, TAXIWAY_BUSY_block, 0 },  { 5, HELIPAD1, HELIPAD1_block, 6 }, { 5, HELIPAD2, HELIPAD2_block, 7 }, { 5, HELIPAD3, HELIPAD3_block, 8 }, { 5, TO_ALL, 0, 4 },
+	{  6, HELIPAD1, HELIPAD1_block, 5 }, { 6, HANGAR, HANGAR2_AREA_block, 5 }, { 6, HELITAKEOFF, 0, 9 }, { 6, TO_ALL, 0, 6 },
+	{  7, HELIPAD2, HELIPAD2_block, 5 }, { 7, HANGAR, HANGAR2_AREA_block, 5 }, { 7, HELITAKEOFF, 0, 10 }, { 7, TO_ALL, 0, 7 },
+	{  8, HELIPAD3, HELIPAD3_block, 5 }, { 8, HANGAR, HANGAR2_AREA_block, 5 }, { 8, HELITAKEOFF, 0, 11 }, { 8, TO_ALL, 0, 8 },
 	{  9, 0, HELIPAD1_block, 12 },
-	{ 10, 0, HELIPAD2_block, 13 },
-	{ 11, 0, HELIPAD3_block, 14 },
+	{ 10, TO_ALL, HELIPAD2_block, 13 },
+	{ 11, TO_ALL, HELIPAD3_block, 14 },
 	{ 12, HELITAKEOFF, NOTHING_block, 0 },
 	{ 13, HELITAKEOFF, NOTHING_block, 0 },
 	{ 14, HELITAKEOFF, NOTHING_block, 0 },
 	/* heli - in flight moves */
 	{ 15, HELILANDING, PRE_HELIPAD_block, 16 },
 	{ 16, HELIENDLANDING, PRE_HELIPAD_block, 16 }, { 16, HELIPAD1, 0, 17 }, { 16, HELIPAD2, 0, 18 }, { 16, HELIPAD3, 0, 19 }, { 16, HANGAR, 0, 23 },
-	{ 17, 0, NOTHING_block, 20 },
-	{ 18, 0, NOTHING_block, 21 },
-	{ 19, 0, NOTHING_block, 22 },
+	{ 17, TO_ALL, NOTHING_block, 20 },
+	{ 18, TO_ALL, NOTHING_block, 21 },
+	{ 19, TO_ALL, NOTHING_block, 22 },
 	/* heli landing */
-	{ 20, 255, NOTHING_block, 0 }, { 20, HELIPAD1, HELIPAD1_block, 6 }, { 20, HANGAR, 0, 23 }, { 20, 0, 0, 6 },
-	{ 21, 255, NOTHING_block, 0 }, { 21, HELIPAD2, HELIPAD2_block, 7 }, { 21, HANGAR, 0, 23 }, { 21, 0, 0, 7 },
-	{ 22, 255, NOTHING_block, 0 }, { 22, HELIPAD3, HELIPAD3_block, 8 }, { 22, HANGAR, 0, 23 }, { 22, 0, 0, 8 },
-	{ 23, 0, HANGAR2_AREA_block, 24 }, // need to go to helihangar when waiting in air
-	{ 24, 0, HANGAR2_AREA_block, 1 },
-	{ 25, 0, NOTHING_block, 26 },
-	{ 26, 0, NOTHING_block, 27 },
-	{ 27, 0, NOTHING_block, 2 },
-	{ 28, 0, NOTHING_block, 29 },
-	{ 29, 0, NOTHING_block, 30 },
-	{ 30, 0, NOTHING_block, 31 },
-	{ 31, 0, NOTHING_block, 32 },
-	{ 32, 0, NOTHING_block, 25 },
-	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
+	{ 20, 255, NOTHING_block, 0 }, { 20, HELIPAD1, HELIPAD1_block, 6 }, { 20, HANGAR, 0, 23 }, { 20, TO_ALL, 0, 6 },
+	{ 21, 255, NOTHING_block, 0 }, { 21, HELIPAD2, HELIPAD2_block, 7 }, { 21, HANGAR, 0, 23 }, { 21, TO_ALL, 0, 7 },
+	{ 22, 255, NOTHING_block, 0 }, { 22, HELIPAD3, HELIPAD3_block, 8 }, { 22, HANGAR, 0, 23 }, { 22, TO_ALL, 0, 8 },
+	{ 23, TO_ALL, HANGAR2_AREA_block, 24 }, // need to go to helihangar when waiting in air
+	{ 24, TO_ALL, HANGAR2_AREA_block, 1 },
+	{ 25, TO_ALL, NOTHING_block, 26 },
+	{ 26, TO_ALL, NOTHING_block, 27 },
+	{ 27, TO_ALL, NOTHING_block, 2 },
+	{ 28, TO_ALL, NOTHING_block, 29 },
+	{ 29, TO_ALL, NOTHING_block, 30 },
+	{ 30, TO_ALL, NOTHING_block, 31 },
+	{ 31, TO_ALL, NOTHING_block, 32 },
+	{ 32, TO_ALL, NOTHING_block, 25 },
+	{ MAX_ELEMENTS, TO_ALL, 0, 0 } // end marker. DO NOT REMOVE
 };
 
 #endif /* AIRPORT_MOVEMENT_H */
