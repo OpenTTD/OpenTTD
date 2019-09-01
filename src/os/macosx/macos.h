@@ -40,4 +40,17 @@ bool IsMonospaceFont(CFStringRef name);
 
 void MacOSSetThreadName(const char *name);
 
+
+/** Deleter that calls CFRelease rather than deleting the pointer. */
+template <typename T> struct CFDeleter {
+	void operator()(T *p)
+	{
+		if (p) ::CFRelease(p);
+	}
+};
+
+/** Specialisation of std::unique_ptr for CoreFoundation objects. */
+template <typename T>
+using CFAutoRelease = std::unique_ptr<typename std::remove_pointer<T>::type, CFDeleter<typename std::remove_pointer<T>::type>>;
+
 #endif /* MACOS_H */

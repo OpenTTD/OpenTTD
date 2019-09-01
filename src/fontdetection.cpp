@@ -394,7 +394,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	/* Get font reference from name. */
 	UInt8 file_path[PATH_MAX];
 	OSStatus os_err = -1;
-	CFStringRef name = CFStringCreateWithCString(kCFAllocatorDefault, font_name, kCFStringEncodingUTF8);
+	CFAutoRelease<CFStringRef> name(CFStringCreateWithCString(kCFAllocatorDefault, font_name, kCFStringEncodingUTF8));
 
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
 	if (MacOSVersionIsAtLeast(10, 6, 0)) {
@@ -402,28 +402,21 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		 * something, no matter the name. As such, we can't use it to check for existence.
 		 * We instead query the list of all font descriptors that match the given name which
 		 * does not do this stupid name fallback. */
-		CTFontDescriptorRef name_desc = CTFontDescriptorCreateWithNameAndSize(name, 0.0);
-		CFSetRef mandatory_attribs = CFSetCreate(kCFAllocatorDefault, (const void **)&kCTFontNameAttribute, 1, &kCFTypeSetCallBacks);
-		CFArrayRef descs = CTFontDescriptorCreateMatchingFontDescriptors(name_desc, mandatory_attribs);
-		CFRelease(mandatory_attribs);
-		CFRelease(name_desc);
-		CFRelease(name);
+		CFAutoRelease<CTFontDescriptorRef> name_desc(CTFontDescriptorCreateWithNameAndSize(name.get(), 0.0));
+		CFAutoRelease<CFSetRef> mandatory_attribs(CFSetCreate(kCFAllocatorDefault, (const void **)&kCTFontNameAttribute, 1, &kCFTypeSetCallBacks));
+		CFAutoRelease<CFArrayRef> descs(CTFontDescriptorCreateMatchingFontDescriptors(name_desc.get(), mandatory_attribs.get()));
 
 		/* Loop over all matches until we can get a path for one of them. */
-		for (CFIndex i = 0; descs != nullptr && i < CFArrayGetCount(descs) && os_err != noErr; i++) {
-			CTFontRef font = CTFontCreateWithFontDescriptor((CTFontDescriptorRef)CFArrayGetValueAtIndex(descs, i), 0.0, nullptr);
-			CFURLRef fontURL = (CFURLRef)CTFontCopyAttribute(font, kCTFontURLAttribute);
-			if (CFURLGetFileSystemRepresentation(fontURL, true, file_path, lengthof(file_path))) os_err = noErr;
-			CFRelease(font);
-			CFRelease(fontURL);
+		for (CFIndex i = 0; descs.get() != nullptr && i < CFArrayGetCount(descs.get()) && os_err != noErr; i++) {
+			CFAutoRelease<CTFontRef> font(CTFontCreateWithFontDescriptor((CTFontDescriptorRef)CFArrayGetValueAtIndex(descs.get(), i), 0.0, nullptr));
+			CFAutoRelease<CFURLRef> fontURL((CFURLRef)CTFontCopyAttribute(font.get(), kCTFontURLAttribute));
+			if (CFURLGetFileSystemRepresentation(fontURL.get(), true, file_path, lengthof(file_path))) os_err = noErr;
 		}
-		if (descs != nullptr) CFRelease(descs);
 	} else
 #endif
 	{
 #if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_6)
-		ATSFontRef font = ATSFontFindFromName(name, kATSOptionFlagsDefault);
-		CFRelease(name);
+		ATSFontRef font = ATSFontFindFromName(name.get(), kATSOptionFlagsDefault);
 		if (font == kInvalidFont) return err;
 
 		/* Get a file system reference for the font. */
@@ -480,31 +473,28 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 			if (sep != nullptr) *sep = '\0';
 		}
 
-		/* Create a font descriptor matching the wanted language and latin (english) glyphs. */
+		/* Create a font descriptor matching the wanted language and latin (english) glyphs.
+		 * Can't use CFAutoRelease here for everything due to the way the dictionary has to be created. */
 		CFStringRef lang_codes[2];
 		lang_codes[0] = CFStringCreateWithCString(kCFAllocatorDefault, lang, kCFStringEncodingUTF8);
 		lang_codes[1] = CFSTR("en");
 		CFArrayRef lang_arr = CFArrayCreate(kCFAllocatorDefault, (const void **)lang_codes, lengthof(lang_codes), &kCFTypeArrayCallBacks);
-		CFDictionaryRef lang_attribs = CFDictionaryCreate(kCFAllocatorDefault, (const void**)&kCTFontLanguagesAttribute, (const void **)&lang_arr, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
-		CTFontDescriptorRef lang_desc = CTFontDescriptorCreateWithAttributes(lang_attribs);
+		CFAutoRelease<CFDictionaryRef> lang_attribs(CFDictionaryCreate(kCFAllocatorDefault, (const void**)&kCTFontLanguagesAttribute, (const void **)&lang_arr, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks));
+		CFAutoRelease<CTFontDescriptorRef> lang_desc(CTFontDescriptorCreateWithAttributes(lang_attribs.get()));
 		CFRelease(lang_arr);
-		CFRelease(lang_attribs);
 		CFRelease(lang_codes[0]);
 
 		/* Get array of all font descriptors for the wanted language. */
-		CFSetRef mandatory_attribs = CFSetCreate(kCFAllocatorDefault, (const void **)&kCTFontLanguagesAttribute, 1, &kCFTypeSetCallBacks);
-		CFArrayRef descs = CTFontDescriptorCreateMatchingFontDescriptors(lang_desc, mandatory_attribs);
-		CFRelease(mandatory_attribs);
-		CFRelease(lang_desc);
+		CFAutoRelease<CFSetRef> mandatory_attribs(CFSetCreate(kCFAllocatorDefault, (const void **)&kCTFontLanguagesAttribute, 1, &kCFTypeSetCallBacks));
+		CFAutoRelease<CFArrayRef> descs(CTFontDescriptorCreateMatchingFontDescriptors(lang_desc.get(), mandatory_attribs.get()));
 
-		for (CFIndex i = 0; descs != nullptr && i < CFArrayGetCount(descs); i++) {
-			CTFontDescriptorRef font = (CTFontDescriptorRef)CFArrayGetValueAtIndex(descs, i);
+		for (CFIndex i = 0; descs.get() != nullptr && i < CFArrayGetCount(descs.get()); i++) {
+			CTFontDescriptorRef font = (CTFontDescriptorRef)CFArrayGetValueAtIndex(descs.get(), i);
 
 			/* Get font traits. */
-			CFDictionaryRef traits = (CFDictionaryRef)CTFontDescriptorCopyAttribute(font, kCTFontTraitsAttribute);
+			CFAutoRelease<CFDictionaryRef> traits((CFDictionaryRef)CTFontDescriptorCopyAttribute(font, kCTFontTraitsAttribute));
 			CTFontSymbolicTraits symbolic_traits;
-			CFNumberGetValue((CFNumberRef)CFDictionaryGetValue(traits, kCTFontSymbolicTrait), kCFNumberIntType, &symbolic_traits);
-			CFRelease(traits);
+			CFNumberGetValue((CFNumberRef)CFDictionaryGetValue(traits.get(), kCTFontSymbolicTrait), kCFNumberIntType, &symbolic_traits);
 
 			/* Skip symbol fonts and vertical fonts. */
 			if ((symbolic_traits & kCTFontClassMaskTrait) == (CTFontStylisticClass)kCTFontSymbolicClass || (symbolic_traits & kCTFontVerticalTrait)) continue;
@@ -515,9 +505,8 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 
 			/* Get font name. */
 			char name[128];
-			CFStringRef font_name = (CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontDisplayNameAttribute);
-			CFStringGetCString(font_name, name, lengthof(name), kCFStringEncodingUTF8);
-			CFRelease(font_name);
+			CFAutoRelease<CFStringRef> font_name((CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontDisplayNameAttribute));
+			CFStringGetCString(font_name.get(), name, lengthof(name), kCFStringEncodingUTF8);
 
 			/* There are some special fonts starting with an '.' and the last
 			 * resort font that aren't usable. Skip them. */
@@ -531,7 +520,6 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 				break;
 			}
 		}
-		if (descs != nullptr) CFRelease(descs);
 	} else
 #endif
 	{
