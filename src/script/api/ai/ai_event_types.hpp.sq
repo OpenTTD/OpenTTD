@@ -405,3 +405,19 @@ void SQAIEventRoadReconstruction_Register(Squirrel *engine)
 
 	SQAIEventRoadReconstruction.PostRegister(engine);
 }
+
+
+template <> const char *GetClassName<ScriptEventVehicleAutoReplaced, ST_AI>() { return "AIEventVehicleAutoReplaced"; }
+
+void SQAIEventVehicleAutoReplaced_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptEventVehicleAutoReplaced, ST_AI> SQAIEventVehicleAutoReplaced("AIEventVehicleAutoReplaced");
+	SQAIEventVehicleAutoReplaced.PreRegister(engine, "AIEvent");
+
+	SQAIEventVehicleAutoReplaced.DefSQStaticMethod(engine, &ScriptEventVehicleAutoReplaced::Convert, "Convert", 2, ".x");
+
+	SQAIEventVehicleAutoReplaced.DefSQMethod(engine, &ScriptEventVehicleAutoReplaced::GetOldVehicleID, "GetOldVehicleID", 1, "x");
+	SQAIEventVehicleAutoReplaced.DefSQMethod(engine, &ScriptEventVehicleAutoReplaced::GetNewVehicleID, "GetNewVehicleID", 1, "x");
+
+	SQAIEventVehicleAutoReplaced.PostRegister(engine);
+}

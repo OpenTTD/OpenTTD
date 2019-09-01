@@ -50,6 +50,7 @@ void SQGSEvent_Register(Squirrel *engine)
 	SQGSEvent.DefSQConst(engine, ScriptEvent::ET_GOAL_QUESTION_ANSWER,        "ET_GOAL_QUESTION_ANSWER");
 	SQGSEvent.DefSQConst(engine, ScriptEvent::ET_EXCLUSIVE_TRANSPORT_RIGHTS,  "ET_EXCLUSIVE_TRANSPORT_RIGHTS");
 	SQGSEvent.DefSQConst(engine, ScriptEvent::ET_ROAD_RECONSTRUCTION,         "ET_ROAD_RECONSTRUCTION");
+	SQGSEvent.DefSQConst(engine, ScriptEvent::ET_VEHICLE_AUTOREPLACED,        "ET_VEHICLE_AUTOREPLACED");
 
 	SQGSEvent.DefSQMethod(engine, &ScriptEvent::GetEventType, "GetEventType", 1, "x");
 

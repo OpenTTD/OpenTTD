@@ -266,3 +266,12 @@ namespace SQConvert {
 	template <> inline const ScriptEventRoadReconstruction &GetParam(ForceType<const ScriptEventRoadReconstruction &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventRoadReconstruction *)instance; }
 	template <> inline int Return<ScriptEventRoadReconstruction *>(HSQUIRRELVM vm, ScriptEventRoadReconstruction *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EventRoadReconstruction", res, nullptr, DefSQDestructorCallback<ScriptEventRoadReconstruction>, true); return 1; }
 } // namespace SQConvert
+
+namespace SQConvert {
+	/* Allow ScriptEventVehicleAutoReplaced to be used as Squirrel parameter */
+	template <> inline ScriptEventVehicleAutoReplaced *GetParam(ForceType<ScriptEventVehicleAutoReplaced *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptEventVehicleAutoReplaced *)instance; }
+	template <> inline ScriptEventVehicleAutoReplaced &GetParam(ForceType<ScriptEventVehicleAutoReplaced &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventVehicleAutoReplaced *)instance; }
+	template <> inline const ScriptEventVehicleAutoReplaced *GetParam(ForceType<const ScriptEventVehicleAutoReplaced *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptEventVehicleAutoReplaced *)instance; }
+	template <> inline const ScriptEventVehicleAutoReplaced &GetParam(ForceType<const ScriptEventVehicleAutoReplaced &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventVehicleAutoReplaced *)instance; }
+	template <> inline int Return<ScriptEventVehicleAutoReplaced *>(HSQUIRRELVM vm, ScriptEventVehicleAutoReplaced *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EventVehicleAutoReplaced", res, nullptr, DefSQDestructorCallback<ScriptEventVehicleAutoReplaced>, true); return 1; }
+} // namespace SQConvert

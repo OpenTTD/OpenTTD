@@ -34,6 +34,7 @@
  * \li AIEngine::CanRunOnRoad
  * \li AIEngine::HasPowerOnRoad
  * \li AIRoadTypeList::RoadTypeList
+ * \li AIEventVehicleAutoReplaced
  *
  * \b 1.9.0
  *
