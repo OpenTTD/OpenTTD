@@ -161,13 +161,12 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 	}
 
 	const char *os_file = OTTD2FS(filename.c_str());
-	CFURLRef url = CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, (const UInt8*)os_file, strlen(os_file), false);
+	CFAutoRelease<CFURLRef> url(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, (const UInt8*)os_file, strlen(os_file), false));
 
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 	if (MacOSVersionIsAtLeast(10, 5, 0)) {
-		if (MusicSequenceFileLoad(_sequence, url, kMusicSequenceFile_AnyType, 0) != noErr) {
+		if (MusicSequenceFileLoad(_sequence, url.get(), kMusicSequenceFile_AnyType, 0) != noErr) {
 			DEBUG(driver, 0, "cocoa_m: Failed to load MIDI file");
-			CFRelease(url);
 			return;
 		}
 	} else
@@ -175,19 +174,16 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 	{
 #if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5)
 		FSRef ref_file;
-		if (!CFURLGetFSRef(url, &ref_file)) {
+		if (!CFURLGetFSRef(url.get(), &ref_file)) {
 			DEBUG(driver, 0, "cocoa_m: Failed to make FSRef");
-			CFRelease(url);
 			return;
 		}
 		if (MusicSequenceLoadSMFWithFlags(_sequence, &ref_file, 0) != noErr) {
 			DEBUG(driver, 0, "cocoa_m: Failed to load MIDI file old style");
-			CFRelease(url);
 			return;
 		}
 #endif
 	}
-	CFRelease(url);
 
 	/* Construct audio graph */
 	AUGraph graph = nullptr;
