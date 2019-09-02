@@ -480,10 +480,8 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 		char resolved_name[MAX_RESOLVED_LENGTH];
 
 		/* Filenames in tars are always forced to be lowercase */
-		strecpy(resolved_name, filename, lastof(resolved_name));
+		size_t resolved_len = strecpy(resolved_name, filename, lastof(resolved_name)) - resolved_name;
 		strtolower(resolved_name);
-
-		size_t resolved_len = strlen(resolved_name);
 
 		/* Resolve ONE directory link */
 		for (TarLinkList::iterator link = _tar_linklist[subdir].begin(); link != _tar_linklist[subdir].end(); link++) {
