@@ -445,7 +445,6 @@ public:
 	 * Destroy everything on the given tile.
 	 * @param tile The tile to demolish.
 	 * @pre ScriptMap::IsValidTile(tile).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @return True if and only if the tile was demolished.
 	 */

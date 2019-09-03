@@ -35,6 +35,9 @@
  * \li AIEngine::HasPowerOnRoad
  * \li AIRoadTypeList::RoadTypeList
  *
+ * Other changes:
+ * \li AITile::DemolishTile works without a selected company
+ *
  * \b 1.9.0
  *
  * API additions:
