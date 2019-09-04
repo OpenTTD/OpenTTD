@@ -113,7 +113,7 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 	if (colorSpace == NULL) {
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 		if (MacOSVersionIsAtLeast(10, 5, 0)) {
-			colorSpace = CGDisplayCopyColorSpace(CGMainDisplayID());
+			colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
 		} else
 #endif
 		{
@@ -289,7 +289,9 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
 							styleMask:style
 							backing:NSBackingStoreBuffered
 							defer:NO ];
-
+		if ([ this->window respondsToSelector:@selector(setColorSpace:) ]) {
+			[ this->window setColorSpace:[ [ [ NSColorSpace alloc ] initWithCGColorSpace:QZ_GetCorrectColorSpace() ] autorelease ] ];
+		}
 		if (this->window == nil) {
 			DEBUG(driver, 0, "Could not create the Cocoa window.");
 			this->setup = false;
