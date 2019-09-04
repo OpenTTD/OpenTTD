@@ -9,5 +9,6 @@ notifications:
     - master
     only-by:
     - DorpsGek
+  commit-comment:
   pull-request:
   issue:
