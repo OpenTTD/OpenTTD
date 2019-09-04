@@ -963,6 +963,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Direktor)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} sponzorirana gradnja novega mesta {TOWN}!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Novo mesto z imenom {TOWN} je bilo zgrajeno!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Na novo se gradi {STRING} blizu mesta {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Postavlja se {STRING} blizu mesta {TOWN}!
@@ -1951,6 +1952,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Spremeni
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Omogoči spreminjanje proizvodnih vrednosti: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Barvna shema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Prikaz glavnih barvnih shem
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Prikaz barvnih shem vlakov
@@ -3928,6 +3930,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Starost (leta)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Potrebuje servis
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Vedno
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Preostala življenjska doba (let)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Največja zanesljivost
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kako primerjati podatke vozila na podano vrednost
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :je enaka
@@ -4611,6 +4614,7 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originalni zvok
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originalni zvoki Transport Tycoon Deluxe različice oken(windows).
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Zvočni paket brez zvoka.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originalna glasba Transport Tycoon Deluxe različice oken(windows).
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Originalna glasba Transport Tycoon Deluxe DOS različice
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Glasbeni paket z vključeno glasbo.
 
 ##id 0x2000
