@@ -1,9 +1,9 @@
 # Version numbers to update
 !define APPV_MAJOR 1
 !define APPV_MINOR 9
-!define APPV_MAINT 2
+!define APPV_MAINT 3
 !define APPV_BUILD 0
-!define APPV_EXTRA ""
+!define APPV_EXTRA "-RC1"
 
 !define APPNAME "OpenTTD"   ; Define application name
 !define APPVERSION "${APPV_MAJOR}.${APPV_MINOR}.${APPV_MAINT}${APPV_EXTRA}"  ; Define application version
