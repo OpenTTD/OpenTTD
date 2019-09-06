@@ -1,3 +1,17 @@
+1.9.3-RC1 (2019-09-07)
+------------------------------------------------------------------------
+- Add: Can now click industries to make orders to their neutral station (e.g. oil rig) (#7709)
+- Fix #7644: [OSX] Poor framerate on certain systems (#7721)
+- Fix #7702: Highscore screen UI scaling (#7714)
+- Fix #7704: [OSX] Handle malformed UTF8 strings, leading to crashes in server browser (#7705)
+- Fix #7188: [AI] Possible crash when reloading an AI in multiplayer games (#7701, #7725)
+- Fix: RemoveAirport function now returns 'Aircraft in the way' error message when occupied (#7690)
+- Fix: Spelling in running costs setting help text (#7686)
+- Fix #7655: 'Decrease' buttons in cheat window not working properly with UI scaling (#7669)
+- Fix: [GS] Could not create elements on Storybook pages with ID > 255 (#7657)
+- Fix #7626: Allow building road stops over town-owned one-way roads, instead of crashing (#7627)
+
+
 1.9.2 (2019-07-07)
 ------------------------------------------------------------------------
 - Change: Set default setting in server browser of "Advertised" to "Yes" (#7568)
