@@ -684,7 +684,10 @@ bool ScriptInstance::DoCommandCallback(const CommandCost &result, TileIndex tile
 {
 	ScriptObject::ActiveInstance active(this);
 
-	if (!ScriptObject::CheckLastCommand(tile, p1, p2, cmd)) return false;
+	if (!ScriptObject::CheckLastCommand(tile, p1, p2, cmd)) {
+		DEBUG(script, 1, "DoCommandCallback terminating a script, last command does not match expected command");
+		return false;
+	}
 
 	ScriptObject::SetLastCommandRes(result.Succeeded());
 
