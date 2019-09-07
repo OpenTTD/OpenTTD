@@ -1,3 +1,62 @@
+1.9.3 (2019-09-16)
+------------------------------------------------------------------------
+- Change: Use natural sort when sorting the file list (#7727)
+- Fix #7479: Don't close construction windows when changing client name (#7728)
+- Fix #7731: Files sorting by modification time on Windows XP (#7731)
+- Fix #7644: [OSX] Better solution for colourspace/performance issues (#7741)
+
+
+1.9.3-RC1 (2019-09-07)
+------------------------------------------------------------------------
+- Add: Can now click industries to make orders to their neutral station (e.g. oil rig) (#7709)
+- Fix #7644: [OSX] Poor framerate on certain systems (#7721)
+- Fix #7702: Highscore screen UI scaling (#7714)
+- Fix #7704: [OSX] Handle malformed UTF8 strings, leading to crashes in server browser (#7705)
+- Fix #7188: [AI] Possible crash when reloading an AI in multiplayer games (#7701, #7725)
+- Fix: RemoveAirport function now returns 'Aircraft in the way' error message when occupied (#7690)
+- Fix: Spelling in running costs setting help text (#7686)
+- Fix #7655: 'Decrease' buttons in cheat window not working properly with UI scaling (#7669)
+- Fix: [GS] Could not create elements on Storybook pages with ID > 255 (#7657)
+- Fix #7626: Allow building road stops over town-owned one-way roads, instead of crashing (#7627)
+
+
+1.9.2 (2019-07-07)
+------------------------------------------------------------------------
+- Change: Set default setting in server browser of "Advertised" to "Yes" (#7568)
+- Change: Allow building road stops over self-owned one-way/blocked road (#7547)
+- Fix #7463: Promote scroll mode setting to basic category (#7586)
+- Fix: Inconsistent GUI scaling (#7539)
+- Fix #7491: Send company update admin message when bankruptcy counter changes (#7492)
+- Fix #7553: Check bounds when loading strings (#7554)
+- Fix: Really increase the maximum number of GameScript texts to 64k (#7555)
+- Fix: Crash when attempting to load old save game with GRFs set (#7546)
+- Fix #6507: Don't try to load invalid depots from older savegames (#7546)
+- Fix: Railtype bits were moved too late, leading to rails under bridges losing their type (#7546)
+- Fix: Bounds check access to railtype_map (#7529)
+- Fix: Spurious errors when using more than 32 railtypes (#7533)
+- Fix #7633: Allow zero-cost track conversion to succeed (#7634)
+- Fix #7577: Check if linkgraph station index is valid before dereferencing (#7583)
+- Fix #7224: Drag and drop vehicle group creation does not work correctly (#7581)
+- Fix #7570: Show Github URL in the crashlog window (#7571)
+- Fix: Clicking on scrollbar 'thumb' moved position up instantly (#7549)
+- Fix #7255: Prevent crashlog corruption by only printing the 32 most recent news messages (#7542)
+- Fix #5685: Check for free wagons in ScriptVehicleList (#7617)
+- Fix: Make GSGoal.QuestionClient work correctly at least for clients with ID < 2**16 (#7560)
+- Fix #6666: Mismatched parentheses in RTL languages (#7480)
+- Fix: [Windows] Various reliability and correctness improvements to MIDI on Windows (#7620)
+
+
+1.9.1 (2019-04-08)
+------------------------------------------------------------------------
+- Fix #6564: Enforce types of arguments for station name strings (#7419)
+- Fix #7433: Don't use AirportSpec substitute if it's not enabled (#7435)
+- Fix #7447, #7466, #7476: Missing NewGRF strings due to Action 4 feature check skipping pseudo-feature 48 (#7449)
+- Fix #6222: Advanced sprite layout sometimes showed incorrect railtype ground tile. (#7460)
+- Fix #7439: CompanyRemoveReason overwritten by ClientID (#7465)
+- Fix: [Windows] Incorrect error handling could lead to cascading error windows (#7482)
+- Fix #7478: Don't remove NewGRF objects on company take-over. (#7483)
+
+
 1.9.0 (2019-04-01)
 ------------------------------------------------------------------------
 - Fix #7411: Use industry production callback (if used) on initial industry cargo generation (#7412)
