@@ -3492,8 +3492,8 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nuovi veicoli f
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuovi veicoli monorotaia
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nuovi veicoli maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Veicoli ferroviari
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuovi automezzi
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nuovi veicoli ferroviari
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuovi veicoli stradali
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuove navi
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nuovo aeromobile
 
@@ -3644,7 +3644,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Stai pe
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Messaggio da un costruttore di veicoli
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Abbiamo appena progettato un{G "" "" a} nuov{G o o a} {STRING} - È interessato ad un anno di uso esclusivo di questo veicolo, in modo da permetterci di valutarne le prestazioni prima di renderlo disponibile sul mercato?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}automezzo
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}veicolo stradale
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}aeromobile
 STR_ENGINE_PREVIEW_SHIP                                         :{G=f}nave
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}motrice monorotaia

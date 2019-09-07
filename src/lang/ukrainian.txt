@@ -567,7 +567,7 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Будівни�
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Будівництво автомобільних доріг
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Будівництво трамвайних доріг
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Будівництво трамвайних колій
 ############ range ends here
 
 ############ range for waterways construction menu starts
@@ -2543,7 +2543,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Трубчас�
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Автомобільне будівництво
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Трамвайне будівництво
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Будівництво трамвайних колій
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Будувати дорогу. Ctrl переключає побудову/знесення для будівництва доріг. Утримуйте Shift для показу витрат
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Будувати трамвайну колію. Ctrl переключає побудову/знесення для будівництва трамвайної колії. Утримуйте Shift для показу витрат на будівництво
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Будувати дорогу в режимі Автобудування. Ctrl переключає побудову/знесення для будівництва доріг. Утримуйте Shift для показу витрат на будівництво
@@ -4461,7 +4461,7 @@ STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Споч
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Спочатку зруйнуйте зупинку
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Спочатку зруйнуйте вантажну станцію
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Спочатку треба знести пасажирську трамвайну станцію
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Спочатку треба знести вантажну трамвайну станцію
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Спочатку зруйнуйте товарну трамвайну станцію
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Спочатку зруйнуйте порт
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Спочатку зруйнуйте аеропорт
 

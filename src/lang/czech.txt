@@ -264,6 +264,7 @@ STR_COLOUR_ORANGE                                               :Oranžová
 STR_COLOUR_BROWN                                                :Hnědá
 STR_COLOUR_GREY                                                 :Šedá
 STR_COLOUR_WHITE                                                :Bílá
+STR_COLOUR_RANDOM                                               :Náhodná
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}m{P íle íle il}/h
@@ -539,6 +540,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Zvuk/Hudba
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Poslední zpráva nebo článek
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historie zpráv
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Smazat všechny zprávy
 ############ range ends here
 
 ############ range for about menu starts
@@ -1077,6 +1079,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dvojnásobná v
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Čtyřnásobná velikost
 
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Běžné
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Základní sada grafiky
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvol základní sadu grafiky
@@ -1429,6 +1432,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Barva terénu n
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :zelená
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :tmavě zelená
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :fialová
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Pohyb v mapě pomocí pravého tlačítka myši, poloha myši uzamčena
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Plynulé posouvání po mapě: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ovládá jak se hlavní pohled posouvá na specifické místo na mapě, kliknutím na minimapu nebo spuštěním příkazu na posun na specifický objekt na mapě. Pokud zapnuto, pohled se posouvá plynule, pokud vypnuto, skáče pohled přímo na cílové místo
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Ukázat rozměry při použití stavebních nástrojů: {STRING}
@@ -2791,7 +2795,10 @@ STR_FRAMERATE_CAPTION                                           :{WHITE}Počet s
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Počet snímků videa vykreslovaných za sekundu.
 STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Aktuální činitel rychlosti hry: {DECIMAL}x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Rychlost, kterou hra právě běží, v porovnání s očekávanou rychlostí při běžné rychlosti simulace.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Aktuální
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Průměr
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Podle {COMMA} měření
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{WHITE} ms
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} sním{P "ek" "ky" "ků"}/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} sním{P "ek" "ky" "ků"}/s
@@ -2799,12 +2806,20 @@ STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COM
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GL_ECONOMY                                        :{WHITE}  Manipulace s nákladem:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Zpoždění grafu spojení:
 STR_FRAMERATE_DRAWING                                           :{WHITE}Vykreslování grafiky:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Pohledy:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Video:
+STR_FRAMERATE_SOUND                                             :{BLACK}Míchání zvuků:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Herní skript:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Herní smyčka
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manipulace s nákladem
 STR_FRAMETIME_CAPTION_DRAWING                                   :Vykreslování grafiky
 STR_FRAMETIME_CAPTION_SOUND                                     :Míchání zvuků
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Herní skript
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2830,6 +2845,8 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Vlastnos
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Není dostupná žádná informace
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}Grafiky: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtr:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Přepsat soubor
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Zadej jméno pro uloženou hru
 
@@ -2948,6 +2965,7 @@ STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Minimál
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametry: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Žádný
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Informace nejsou k dispozici
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nenalezen odpovídající soubor
@@ -3201,6 +3219,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kliknut�
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Kniha příběhů
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globální kniha příběhů
+STR_STORY_BOOK_SPECTATOR                                        :Globální kniha příběhů
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Strana {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Skoč na určitou stranu vybranou v tomto seznamu
@@ -3405,6 +3424,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Vystřed
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produkce: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Průmysl oznámila blížící se uzavření!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Vyžaduje: {YELLOW}{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Vyžaduje:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}

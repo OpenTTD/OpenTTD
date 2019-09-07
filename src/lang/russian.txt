@@ -1574,8 +1574,8 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Показыв�
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Показывать ожидаемое время прибытия и отправления в графиках движения
 STR_CONFIG_SETTING_QUICKGOTO                                    :Быстрое создание заданий транспорта: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Открывать окно маршрута с нажатой кнопкой «Следовать»
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Тип рельсов по умолчанию (после старта/загрузки): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Тип рельсов, выбираемый по умолчанию после старта или загрузки игры.{}«Первые доступные» - самый старый тип рельсов.{}«Последние доступные» - самый новый тип.{}«Наиболее используемые» - тип рельсов, наиболее широко используемых в игре.
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Тип ж/д путей по умолчанию (после старта/загрузки): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Тип железнодорожных путей, выбираемый по умолчанию после старта или загрузки игры.{}«Первые доступные» - самый старый тип рельсов.{}«Последние доступные» - самый новый тип.{}«Наиболее используемые» - тип рельсов, наиболее широко используемых в игре.
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :первые доступные
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :последние доступные
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :наиболее используемые
@@ -2830,9 +2830,9 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Ж/д путь 
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Ж/д путь с маршрутным и односторонним маршрутным сигналами
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Ж/д депо
 
-STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Дорога
-STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Дорога с уличным освещением
-STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Дорога с озеленением
+STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Автодорога
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Освещённая автодорога
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Автодорога с озеленением
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Гараж
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Железнодорожный переезд
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Трамвайные пути
@@ -3301,7 +3301,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Про�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Установить статую в честь вашей компании.{}Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Профинансировать строительство новых коммерческих зданий в городе.{}Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Купить годовые эксклюзивные права на транспортные перевозки в городе. Администрация разрешит пользоваться ТОЛЬКО вашими станциями.{}Цена: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Дать взятку городской администрации для повышения рейтинга. Существует риск санкций, если факт взятки раскроется.{}Цена: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Дать взятку городской администрации для повышения рейтинга. Существует риск санкций, если факт подкупа раскроется.{}Цена: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Задачи компании «{COMPANY}»
@@ -3645,7 +3645,7 @@ STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Новый ма
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Новый поезд
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Новый автомобиль
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Новый корабль
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новый авиатранспорт
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новое воздушное судно
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} Вес: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорость: {GOLD}{VELOCITY}{BLACK} Мощность: {GOLD}{POWER}
@@ -3830,8 +3830,8 @@ STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Здес
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Доступные ТС
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Здесь перечислены модели транспортных средств, доступные для замены
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выбор типа транспорта для замены
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбор типа транспорта, на который следует заменить
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выбор заменяемой модели транспортного средства
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбор заменяющей модели транспортного средства
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Начать замену
 STR_REPLACE_VEHICLES_NOW                                        :Начать замену всех ТС
