@@ -651,6 +651,7 @@ terms for Bootstrap documentation.
 - Ulf Hermann (fonsinchen) - Cargo Distribution (since 1.3)
 - Christoph Elsenhans (frosch) - General coding (since 0.6)
 - Loïc Guilloux (glx) - Windows Expert (since 0.4.5)
+- Charles Pigott (LordAro) - General / Correctness police (since 1.9)
 - Michael Lutz (michi_cc) - Path based signals (since 0.7)
 - Niels Martin Hansen (nielsm) - Music system, general coding (since 1.9)
 - Owen Rudge (orudge) - Forum host, OS/2 port (since 0.1)
