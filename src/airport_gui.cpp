@@ -42,7 +42,7 @@ static void ShowBuildAirportPicker(Window *parent);
 
 SpriteID GetCustomAirportSprite(const AirportSpec *as, byte layout);
 
-void CcBuildAirport(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+void CcBuildAirport(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	if (result.Failed()) return;
 

@@ -222,8 +222,9 @@ void SortIndustryTypes()
  * @param tile   Tile where the industry is placed.
  * @param p1     Additional data of the #CMD_BUILD_INDUSTRY command.
  * @param p2     Additional data of the #CMD_BUILD_INDUSTRY command.
+ * @param cmd    Unused.
  */
-void CcBuildIndustry(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+void CcBuildIndustry(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	if (result.Succeeded()) return;
 
