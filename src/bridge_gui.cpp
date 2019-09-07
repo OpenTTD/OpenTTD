@@ -57,8 +57,9 @@ typedef GUIList<BuildBridgeData> GUIBridgeList; ///< List of bridges, used in #B
  * - p2 = (bit  0- 7) - bridge type (hi bh)
  * - p2 = (bit  8-13) - rail type or road types.
  * - p2 = (bit 15-16) - transport type.
+ * @param cmd unused
  */
-void CcBuildBridge(const CommandCost &result, TileIndex end_tile, uint32 p1, uint32 p2)
+void CcBuildBridge(const CommandCost &result, TileIndex end_tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	if (result.Failed()) return;
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_27_BLACKSMITH_ANVIL, end_tile);

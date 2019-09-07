@@ -46,6 +46,11 @@ private:
 	uint last_error;                 ///< The last error of the command.
 	bool last_command_res;           ///< The last result of the command.
 
+	TileIndex last_tile;             ///< The last tile passed to a command.
+	uint32 last_p1;                  ///< The last p1 passed to a command.
+	uint32 last_p2;                  ///< The last p2 passed to a command.
+	uint32 last_cmd;                 ///< The last cmd passed to a command.
+
 	VehicleID new_vehicle_id;        ///< The ID of the new Vehicle.
 	SignID new_sign_id;              ///< The ID of the new Sign.
 	GroupID new_group_id;            ///< The ID of the new Group.
@@ -73,6 +78,10 @@ public:
 		last_cost         (0),
 		last_error        (STR_NULL),
 		last_command_res  (true),
+		last_tile         (INVALID_TILE),
+		last_p1           (0),
+		last_p2           (0),
+		last_cmd          (CMD_END),
 		new_vehicle_id    (0),
 		new_sign_id       (0),
 		new_group_id      (0),

@@ -597,7 +597,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	}
 
 	if (!estimate_only && !only_sending && callback != NULL) {
-		callback(res, tile, p1, p2);
+		callback(res, tile, p1, p2, cmd);
 	}
 
 	return res.Succeeded();
