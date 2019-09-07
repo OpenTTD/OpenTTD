@@ -226,8 +226,8 @@ STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filter String:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filter String
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filter-String:
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filter-String
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Filter d'Lëscht op e Wuert
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Wiel Gruppéierreihefollëg
@@ -675,6 +675,7 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Schalt d
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Weis d'Fënster fir Musik ze wielen
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Musik-Programm - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Lidder Index
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programm - '{STRING}'
@@ -995,6 +996,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Duebel
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Véierfach
 
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Schrëftgréisst
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Wiel d'Interface-Schrëftgréisst aus
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Duebel Gréisst
@@ -1355,6 +1357,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Mof
 STR_CONFIG_SETTING_SCROLLMODE                                   :Usiicht-Scrollverhalen: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Verhalen beim Scrolle vun der Kaart
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :D'Usiicht mat der rietser Maustast bewegen, Maus-Positioun gespaart
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :D'Kaart mat der rietser Maustast bewegen
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Kaart mat der lénker Maustast bewegen
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Feine Scrolling: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolléiert wéi d'Haptusiicht op eng bestëmmten Positioun scrollt, wann een op déi kléng Kaart klickt oder en Befehl fir ob en spezifescht Objet ze scrollen gëtt. Wann ugeschalt, gëtt bis dohin gescrollt, wann ausgeschalt, spréngt d'Vue op den Zielobjet
@@ -2709,13 +2712,19 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Biller pro Sekonn
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Unzuel Gameticks déi pro Sekonn simuléiert ginn.
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Grafikframerate: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Unzuel u Videobiller déi pro Sekonn gerendert ginn.
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Aktuelle Spillgeschw.-Faktor: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Wéi séier d'Spill aktuell leeft, am Verglach mat der Geschw. vun der normaler Simulatioun.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Aktuell
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Mëttel
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} Biller/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} Biller/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} Biller/s
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2723,10 +2732,12 @@ STR_FRAMERATE_GAMELOOP                                          :{BLACK}Spill to
 STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Zuchticks:
 STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Stroossegefierer Ticken:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Linkgrafik-Verzögerung:
-STR_FRAMERATE_DRAWING                                           :{BLACK}Graphikrendering:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Grafikrendering:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Welt-Usiichten:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Video-output:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  GS/KI Total:
 STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}  Gamescript:
+STR_FRAMERATE_AI                                                :{BLACK}   KI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Spill-Loop
@@ -2734,8 +2745,14 @@ STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Wuerenhandling
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Zuchticks
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Stroossegefierer Ticken
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Schëffticker
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Weltticks
+STR_FRAMETIME_CAPTION_DRAWING                                   :Grafikrendering
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Weltusiicht-Rendering
+STR_FRAMETIME_CAPTION_VIDEO                                     :Video-output
 STR_FRAMETIME_CAPTION_SOUND                                     :Soundmixing
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :GS/KI Scripttotaler
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Spill-Script
+STR_FRAMETIME_CAPTION_AI                                        :KI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2761,6 +2778,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detailer
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Keng Informatioun do
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter-String:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Datei iwwerschreiwen
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Gëff dem Spillstand en Numm
@@ -2879,6 +2897,7 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versioun
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatibel Versioun: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palette: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Standard (S)
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Standard (S) / 32 bpp
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Legacy (W)
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameter: {SILVER}{STRING}
@@ -3037,7 +3056,7 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Stad)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Awunner: {ORANGE}{COMMA}{BLACK}  Haiser: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} leschte Mount: {ORANGE}{COMMA}{BLACK}  Max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Gidder gebraucht fir Stadwuesstem:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Gidder gebraucht fir Stadwuesstum:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} gebraucht
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} gebraucht am Wanter
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} geliwwert
@@ -3342,6 +3361,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Zentréi
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktiounslevel: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}D'Industrie annoncéiert dass se zougemaach gëtt
 
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produzéiert: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Brauch:
@@ -3820,7 +3840,7 @@ STR_ORDER_DROP_TRANSFER                                         :Transferéieren
 STR_ORDER_DROP_NO_UNLOADING                                     :Net entlueden
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Wiesselt d'Entluedverhale vun dem ungewielten Optrag
 
-STR_ORDER_REFIT                                                 :{BLACK}Ëmbauen
+STR_ORDER_REFIT                                                 :{BLACK}Embauen
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wielt an wéi een Luedungstyp sollt emgebaut ginn. Ctrl+Klick fir den Ëmbau ze läschen
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Embauen an der Statioun
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Wiel wellëch Wuerentypen sollen auto-ersat ginn an dësem Optrag. Ctrl+Klick fir all Auto-Erneierungen wechzehuelen. Auto-Erneiern geht just wann d'Gefier ët erlaabt
@@ -3916,8 +3936,8 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Net entlueden 
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Keen Ent- an Belueden)
 
 STR_ORDER_AUTO_REFIT                                            :(Embauen op {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Voll lueden mat Embauen op {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Voll lueden mat all Wueren mat Embauen op {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Voll lueden mat ëmbauen op {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Voll lueden mat all Wueren mat ëmbauen op {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :(Entlueden an Wueren lueden mat Embauen op {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Entlueden an op voll Luedung waarden mat Embauen op {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Entlueden an waard op iergendeng Volluedung mat Embauen op {STRING})

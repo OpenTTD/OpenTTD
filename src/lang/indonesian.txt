@@ -464,6 +464,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Suara/musik
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Pesan/Berita terakhir
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berita Lampau
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Hapus semua pesan
 ############ range ends here
 
 ############ range for about menu starts
@@ -475,6 +476,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Ambil gambar
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ambil gambar dengan diperbesar
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Ambil gambar dengan perbesaran normal
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ambil gambar keseluruhan peta
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Tampilkan laju bingkai
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Penjajar Sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Hidup/Matikan kotak batas
@@ -989,7 +991,10 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Kali dua
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Kali empat
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Ukuran font
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :4 kali
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set Grafik Dasar
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih grafik dasar yang digunakan
@@ -1221,7 +1226,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Tujuan baru sta
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Biasanya, kendaraan akan berhenti di setiap stasiun yang di lewati. Dengan mengaktifkan pengaturan ini, maka kendaraan akan melewati semua stasiun dalam perjalanan ke tujuan akhir. Perhatikan, bahwa pengaturan ini hanya mendefinisikan nilai default. Perintah individu dapat diatur
 STR_CONFIG_SETTING_STOP_LOCATION                                :Order kereta yang baru aslinya berhenti {STRING} dari stasiun
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Tempat kereta akan berhenti di peron stasiun. 'Dekat akhir' berarti dekat dengan titik masuk, 'tengah' berarti di tengah-tengah peron, dan 'jauh dari akhir' berarti jauh dari titik masuk
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :hampir selesai
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :tepi terdekat
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :tengah
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :jauh di belakang
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Geser tampilan saat mouse ada di tepi: {STRING}
@@ -1258,6 +1263,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tidak di
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Pemeliharaan Infrastruktur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Jika dinyalakan, infrastruktur membutuhkan biaya pemeliharaan. Biaya berkembang secara proporsional sesuai dengan ukuran jaringan, lebih berdampak pada perusahaan besar dari pada perusahaan kecil
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Pilih warna awal perusahaan
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Bandara tidak kedaluarsa: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Menyalakan setelan ini membuat semua jenis bandara tetap ada selamanya sejak pendesainanya
@@ -1812,6 +1818,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ubah tah
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktifkan modifikasi nilai produksi: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Skema Warna
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Tampilkan skema warna umum
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Tampilkan skema warna kereta
@@ -2698,6 +2705,7 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Framerate display window
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Rata simulasi: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Jumlah detak permainan tersimulasi per detik.
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Beberapa cepat permainan lagi berjalan, dibanding dengan kecepatan diharapkan memakai rata simulasi biasa.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Sekarang
 STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Data tergantung oleh ukuran {COMMA}
@@ -2714,6 +2722,7 @@ STR_FRAMERATE_GL_SHIPS                                          :{WHITE} Titik k
 STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE} Titik pesawat:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE} Titik dunia:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE} Viewport dunia:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Keluaran Video:
 STR_FRAMERATE_SOUND                                             :{WHITE}Mixing suara:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
@@ -2724,6 +2733,7 @@ STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Titik kapal
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Titik pesawat
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Titik dunia
 STR_FRAMETIME_CAPTION_SOUND                                     :Mixing suara
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2913,6 +2923,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite s
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Lanjutkan ke sprite normal sebelumnya, lewati sembarang sprite bayangan/warna ulang/huruf dan pembungkus saat mulai
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Mewakili sprite yang sedang dipilih. Penjajaran diabaikan ketika sprite ini digambar
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pindahkan sprite, mengubah offset X dan Y
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Reset relatif
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Pilih sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Pilih sebuah sprite di manapun pada layar
 
@@ -3146,11 +3157,11 @@ STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Tampilka
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Menerima: {WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Stasiun memiliki hak transportasi eksklusif di kota ini
-STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} beli hak transportasi eksklusif di kota ini
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} memiliki hak transportasi eksklusif di kota ini
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Peringkat
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Tampilkna peringkat dari stasiun
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Asupan bulanan dan penilaian tempatan:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Asupan bulanan dan peringkat layanan:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Pengelompokkan
