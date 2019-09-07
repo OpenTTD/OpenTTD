@@ -56,7 +56,7 @@ int CDECL CompareFiosItems(const FiosItem *da, const FiosItem *db)
 	if ((_savegame_sort_order & SORT_BY_NAME) == 0 && da->mtime != db->mtime) {
 		r = da->mtime < db->mtime ? -1 : 1;
 	} else {
-		r = strcasecmp(da->title, db->title);
+		r = strnatcmp(da->title, db->title);
 	}
 
 	if (_savegame_sort_order & SORT_DESCENDING) r = -r;
