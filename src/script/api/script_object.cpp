@@ -23,6 +23,7 @@
 #include "../script_instance.hpp"
 #include "../script_fatalerror.hpp"
 #include "script_error.hpp"
+#include "../../debug.h"
 
 #include "../../safeguards.h"
 
@@ -85,18 +86,22 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 
 /* static */ void ScriptObject::SetLastCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
-	GetStorage()->last_tile = tile;
-	GetStorage()->last_p1 = p1;
-	GetStorage()->last_p2 = p2;
-	GetStorage()->last_cmd = cmd;
+	ScriptStorage *s = GetStorage();
+	DEBUG(script, 6, "SetLastCommand company=%02d tile=%06x p1=%08x p2=%08x cmd=%d", s->root_company, tile, p1, p2, cmd);
+	s->last_tile = tile;
+	s->last_p1 = p1;
+	s->last_p2 = p2;
+	s->last_cmd = cmd & CMD_ID_MASK;
 }
 
 /* static */ bool ScriptObject::CheckLastCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
-	if (GetStorage()->last_tile != tile) return false;
-	if (GetStorage()->last_p1 != p1) return false;
-	if (GetStorage()->last_p2 != p2) return false;
-	if (GetStorage()->last_cmd != cmd) return false;
+	ScriptStorage *s = GetStorage();
+	DEBUG(script, 6, "CheckLastCommand company=%02d tile=%06x p1=%08x p2=%08x cmd=%d", s->root_company, tile, p1, p2, cmd);
+	if (s->last_tile != tile) return false;
+	if (s->last_p1 != p1) return false;
+	if (s->last_p2 != p2) return false;
+	if (s->last_cmd != (cmd & CMD_ID_MASK)) return false;
 	return true;
 }
 
