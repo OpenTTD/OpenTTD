@@ -680,9 +680,11 @@ SQInteger ScriptInstance::GetOpsTillSuspend()
 	return this->engine->GetOpsTillSuspend();
 }
 
-void ScriptInstance::DoCommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+bool ScriptInstance::DoCommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	ScriptObject::ActiveInstance active(this);
+
+	if (!ScriptObject::CheckLastCommand(tile, p1, p2, cmd)) return false;
 
 	ScriptObject::SetLastCommandRes(result.Succeeded());
 
@@ -692,6 +694,10 @@ void ScriptInstance::DoCommandCallback(const CommandCost &result, TileIndex tile
 		ScriptObject::IncreaseDoCommandCosts(result.GetCost());
 		ScriptObject::SetLastCost(result.GetCost());
 	}
+
+	ScriptObject::SetLastCommand(INVALID_TILE, 0, 0, CMD_END);
+
+	return true;
 }
 
 void ScriptInstance::InsertEvent(class ScriptEvent *event)

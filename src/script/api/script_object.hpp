@@ -74,6 +74,16 @@ protected:
 	static bool DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const char *text = nullptr, Script_SuspendCallbackProc *callback = nullptr);
 
 	/**
+	 * Store the latest command executed by the script.
+	 */
+	static void SetLastCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd);
+
+	/**
+	 * Check if it's the latest command executed by the script.
+	 */
+	static bool CheckLastCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd);
+
+	/**
 	 * Sets the DoCommand costs counter to a value.
 	 */
 	static void SetDoCommandCosts(Money value);

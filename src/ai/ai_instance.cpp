@@ -251,8 +251,9 @@ ScriptInfo *AIInstance::FindLibrary(const char *library, int version)
  * @param tile The tile on which the command was executed.
  * @param p1 p1 as given to DoCommandPInternal.
  * @param p2 p2 as given to DoCommandPInternal.
+ * @param cmd cmd as given to DoCommandPInternal.
  */
-void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	/*
 	 * The company might not exist anymore. Check for this.
@@ -263,8 +264,9 @@ void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 	const Company *c = Company::GetIfValid(_current_company);
 	if (c == nullptr || c->ai_instance == nullptr) return;
 
-	c->ai_instance->DoCommandCallback(result, tile, p1, p2);
-	c->ai_instance->Continue();
+	if (c->ai_instance->DoCommandCallback(result, tile, p1, p2, cmd)) {
+		c->ai_instance->Continue();
+	}
 }
 
 CommandCallback *AIInstance::GetDoCommandCallback()
