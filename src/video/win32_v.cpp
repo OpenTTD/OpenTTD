@@ -47,9 +47,10 @@ static PFNTRACKMOUSEEVENT _pTrackMouseEvent = nullptr;
 
 static struct {
 	HWND main_wnd;
-	HBITMAP dib_sect;
+	LPBITMAPINFO dib_info;
 	void *buffer_bits;
 	HPALETTE gdi_palette;
+	HCOLORSPACE colour_space;
 	RECT update_rect;
 	int width;
 	int height;
@@ -97,21 +98,29 @@ static void MakePalette()
 	_cur_palette.first_dirty = 0;
 	_cur_palette.count_dirty = 256;
 	_local_palette = _cur_palette;
+
+	// Make sRGB colour space for drawing.
+	LOGCOLORSPACE lcs;
+	MemSetT(&lcs, 0);
+
+	lcs.lcsSignature = LCS_SIGNATURE;
+	lcs.lcsVersion = 0x400;
+	lcs.lcsSize = sizeof(lcs);
+	lcs.lcsIntent = LCS_GM_GRAPHICS;
+	lcs.lcsCSType = LCS_sRGB;
+
+	_wnd.colour_space = CreateColorSpace(&lcs);
+	if (_wnd.colour_space == nullptr) usererror("Can't create sRGB colour space!\n");
 }
 
-static void UpdatePalette(HDC dc, uint start, uint count)
+static void UpdatePalette(RGBQUAD rgb[], uint start, uint count)
 {
-	RGBQUAD rgb[256];
-	uint i;
-
-	for (i = 0; i != count; i++) {
-		rgb[i].rgbRed   = _local_palette.palette[start + i].r;
-		rgb[i].rgbGreen = _local_palette.palette[start + i].g;
-		rgb[i].rgbBlue  = _local_palette.palette[start + i].b;
+	for (uint i = start; i < start + count; i++) {
+		rgb[i].rgbRed   = _local_palette.palette[i].r;
+		rgb[i].rgbGreen = _local_palette.palette[i].g;
+		rgb[i].rgbBlue  = _local_palette.palette[i].b;
 		rgb[i].rgbReserved = 0;
 	}
-
-	SetDIBColorTable(dc, start, count, rgb);
 }
 
 bool VideoDriver_Win32::ClaimMousePointer()
@@ -210,22 +219,21 @@ static void ClientSizeChanged(int w, int h)
  * It allows you to redraw the screen from within the MSVC debugger */
 int RedrawScreenDebug()
 {
-	HDC dc, dc2;
 	static int _fooctr;
-	HBITMAP old_bmp;
-	HPALETTE old_palette;
 
 	UpdateWindows();
 
-	dc = GetDC(_wnd.main_wnd);
-	dc2 = CreateCompatibleDC(dc);
+	HDC dc = GetDC(_wnd.main_wnd);
 
-	old_bmp = (HBITMAP)SelectObject(dc2, _wnd.dib_sect);
-	old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
-	BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
+	HPALETTE old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
+
+	HCOLORSPACE old_cs = SetColorSpace(dc, _wnd.colour_space);
+	SetICMMode(dc, ICM_ON);
+	SetDIBitsToDevice(dc, 0, 0, _wnd.width, _wnd.height, 0, 0, 0, _wnd.height, _wnd.buffer_bits, _wnd.dib_info, DIB_RGB_COLORS);
+	SetColorSpace(dc, old_cs);
+	SetICMMode(dc, ICM_OFF);
+
 	SelectPalette(dc, old_palette, TRUE);
-	SelectObject(dc2, old_bmp);
-	DeleteDC(dc2);
 	ReleaseDC(_wnd.main_wnd, dc);
 
 	return _fooctr++;
@@ -363,8 +371,6 @@ static void PaintWindow(HDC dc)
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
-	HDC dc2 = CreateCompatibleDC(dc);
-	HBITMAP old_bmp = (HBITMAP)SelectObject(dc2, _wnd.dib_sect);
 	HPALETTE old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
 
 	if (_cur_palette.count_dirty != 0) {
@@ -372,7 +378,7 @@ static void PaintWindow(HDC dc)
 
 		switch (blitter->UsePaletteAnimation()) {
 			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
-				UpdatePalette(dc2, _local_palette.first_dirty, _local_palette.count_dirty);
+				UpdatePalette(_wnd.dib_info->bmiColors, _local_palette.first_dirty, _local_palette.count_dirty);
 				break;
 
 			case Blitter::PALETTE_ANIMATION_BLITTER:
@@ -388,10 +394,14 @@ static void PaintWindow(HDC dc)
 		_cur_palette.count_dirty = 0;
 	}
 
-	BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
+	// Draw assuming colours are sRGB.
+	HCOLORSPACE old_cs = SetColorSpace(dc, _wnd.colour_space);
+	SetICMMode(dc, ICM_ON);
+	SetDIBitsToDevice(dc, 0, 0, _wnd.width, _wnd.height, 0, 0, 0, _wnd.height, _wnd.buffer_bits, _wnd.dib_info, DIB_RGB_COLORS);
+	SetColorSpace(dc, old_cs);
+	SetICMMode(dc, ICM_OFF);
+
 	SelectPalette(dc, old_palette, TRUE);
-	SelectObject(dc2, old_bmp);
-	DeleteDC(dc2);
 }
 
 static void PaintWindowThread()
@@ -1033,8 +1043,6 @@ static void RegisterWndClass()
 
 static bool AllocateDibSection(int w, int h, bool force)
 {
-	BITMAPINFO *bi;
-	HDC dc;
 	uint bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
 	w = max(w, 64);
@@ -1044,7 +1052,9 @@ static bool AllocateDibSection(int w, int h, bool force)
 
 	if (!force && w == _screen.width && h == _screen.height) return false;
 
-	bi = (BITMAPINFO*)alloca(sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
+	if (_wnd.dib_info == nullptr) _wnd.dib_info = (BITMAPINFO *)MallocT<byte>(sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);;
+
+	BITMAPINFO *bi = _wnd.dib_info;
 	memset(bi, 0, sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
 	bi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
 
@@ -1055,15 +1065,13 @@ static bool AllocateDibSection(int w, int h, bool force)
 	bi->bmiHeader.biBitCount = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 	bi->bmiHeader.biCompression = BI_RGB;
 
-	if (_wnd.dib_sect) DeleteObject(_wnd.dib_sect);
+	UpdatePalette(bi->bmiColors, 0, 256);
 
-	dc = GetDC(0);
-	_wnd.dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, (VOID**)&_wnd.buffer_bits, nullptr, 0);
-	if (_wnd.dib_sect == nullptr) usererror("CreateDIBSection failed");
-	ReleaseDC(0, dc);
+	int pitch = (bpp == 8) ? Align(w, 4) : w;
+	_wnd.buffer_bits = ReallocT((byte *)_wnd.buffer_bits, w * pitch * bpp / 8);
 
 	_screen.width = w;
-	_screen.pitch = (bpp == 8) ? Align(w, 4) : w;
+	_screen.pitch = pitch;
 	_screen.height = h;
 	_screen.dst_ptr = _wnd.buffer_bits;
 
@@ -1142,8 +1150,10 @@ const char *VideoDriver_Win32::Start(const char * const *parm)
 void VideoDriver_Win32::Stop()
 {
 	DeleteObject(_wnd.gdi_palette);
-	DeleteObject(_wnd.dib_sect);
 	DestroyWindow(_wnd.main_wnd);
+	DeleteColorSpace(_wnd.colour_space);
+	free(_wnd.dib_info);
+	free(_wnd.buffer_bits);
 
 	if (_wnd.fullscreen) ChangeDisplaySettings(nullptr, 0);
 	MyShowCursor(true);
