@@ -180,11 +180,11 @@ static const AirportMovingData _airport_moving_data_metropolitan[28] = {
 };
 
 /** International Airport (international) - 2 runways, 6 terminals, dedicated helipad. */
-static const AirportMovingData _airport_moving_data_international[51] = {
+static const AirportMovingData _airport_moving_data_international[53] = {
 	AMD(    7,   55, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar 1
 	AMD(  100,   21, AMED_EXACTPOS,                   DIR_SE), // 01 In Hangar 2
-	AMD(    7,   70, 0,                               DIR_N ), // 02 Taxi to right outside depot
-	AMD(  100,   36, 0,                               DIR_N ), // 03 Taxi to right outside depot
+	AMD(    7,   70, 0,                               DIR_N ), // 02 Taxi to right outside depot (Hangar 1)
+	AMD(  100,   36, 0,                               DIR_N ), // 03 Taxi to right outside depot (Hangar 2)
 	AMD(   38,   70, AMED_EXACTPOS,                   DIR_SW), // 04 Terminal 1
 	AMD(   38,   54, AMED_EXACTPOS,                   DIR_SW), // 05 Terminal 2
 	AMD(   38,   38, AMED_EXACTPOS,                   DIR_SW), // 06 Terminal 3
@@ -233,6 +233,8 @@ static const AirportMovingData _airport_moving_data_international[51] = {
 	AMD(  104,   55, AMED_HELI_RAISE,                 DIR_N ), // 48 Takeoff Helipad2
 	AMD(  104,   32, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 49 Go to position for Hangarentrance in air
 	AMD(  104,   32, AMED_HELI_LOWER,                 DIR_N ), // 50 Land in HANGAR2_AREA to go to hangar
+	AMD(    7,   70, AMED_HELI_RAISE,                 DIR_N ), // 51 Takeoff from HANGAR1_AREA
+	AMD(  100,   36, AMED_HELI_RAISE,                 DIR_N ), // 52 Takeoff from HANGAR2_AREA
 };
 
 /** Intercontinental Airport - 4 runways, 8 terminals, 2 dedicated helipads. */
@@ -585,10 +587,10 @@ static const HangarTileTable _airport_depots_international[] = { {{0, 3}, DIR_SE
 static const byte _airport_terminal_international[] = { 2, 3, 3 };
 static const byte _airport_entries_international[] = { 38, 37, 40, 39 };
 static const AirportFTAbuildup _airport_fta_international[] = {
-	{  0, HANGAR, NOTHING_block, 2 }, { 0, TERMGROUP, TERM_GROUP1_block, 0 }, { 0, TERMGROUP, TERM_GROUP2_ENTER1_block, 1 }, { 0, HELITAKEOFF, HELIPAD1_block, 2 }, { 0, TO_ALL, 0, 2 },
-	{  1, HANGAR, NOTHING_block, 3 }, { 1, TERMGROUP, HANGAR2_AREA_block, 1 }, { 1, HELITAKEOFF, HELIPAD2_block, 3 }, { 1, TO_ALL, 0, 3 },
-	{  2, TERMGROUP, AIRPORT_ENTRANCE_block, 0 }, { 2, HANGAR, 0, 0 }, { 2, TERM4, 0, 12 }, { 2, TERM5, 0, 12 }, { 2, TERM6, 0, 12 }, { 2, HELIPAD1, 0, 12 }, { 2, HELIPAD2, 0, 12 }, { 2, HELITAKEOFF, 0, 12 }, { 2, TO_ALL, 0, 23 },
-	{  3, TERMGROUP, HANGAR2_AREA_block, 0 }, { 3, HANGAR, 0, 1 }, { 3, TO_ALL, 0, 18 },
+	{  0, HANGAR, NOTHING_block, 2 }, { 0, TERMGROUP, TERM_GROUP1_block, 0 }, { 0, TERMGROUP, TERM_GROUP2_ENTER1_block, 1 }, { 0, HELITAKEOFF, AIRPORT_ENTRANCE_block, 2 }, { 0, TO_ALL, 0, 2 },
+	{  1, HANGAR, NOTHING_block, 3 }, { 1, TERMGROUP, HANGAR2_AREA_block, 1 }, { 1, HELITAKEOFF, HANGAR2_AREA_block, 3 }, { 1, TO_ALL, 0, 3 },
+	{  2, TERMGROUP, AIRPORT_ENTRANCE_block, 0 }, { 2, HANGAR, 0, 0 }, { 2, TERM4, 0, 12 }, { 2, TERM5, 0, 12 }, { 2, TERM6, 0, 12 }, { 2, HELIPAD1, 0, 12 }, { 2, HELIPAD2, 0, 12 }, { 2, HELITAKEOFF, 0, 51 }, { 2, TO_ALL, 0, 23 },
+	{  3, TERMGROUP, HANGAR2_AREA_block, 0 }, { 3, HANGAR, 0, 1 }, { 3, HELITAKEOFF, 0, 52 }, { 3, TO_ALL, 0, 18 },
 	{  4, TERM1, TERM1_block, 23 }, { 4, HANGAR, AIRPORT_ENTRANCE_block, 23 }, { 4, TO_ALL, 0, 23 },
 	{  5, TERM2, TERM2_block, 24 }, { 5, HANGAR, AIRPORT_ENTRANCE_block, 24 }, { 5, TO_ALL, 0, 24 },
 	{  6, TERM3, TERM3_block, 25 }, { 6, HANGAR, AIRPORT_ENTRANCE_block, 25 }, { 6, TO_ALL, 0, 25 },
@@ -642,6 +644,8 @@ static const AirportFTAbuildup _airport_fta_international[] = {
 	{ 48, HELITAKEOFF, NOTHING_block, 0 },
 	{ 49, TO_ALL, HANGAR2_AREA_block, 50 }, // need to go to hangar when waiting in air
 	{ 50, TO_ALL, HANGAR2_AREA_block, 3 },
+	{ 51, HELITAKEOFF, NOTHING_block, 0 },
+	{ 52, HELITAKEOFF, NOTHING_block, 0 },
 	{ MAX_ELEMENTS, TO_ALL, 0, 0 } // end marker. DO NOT REMOVE
 };
 
