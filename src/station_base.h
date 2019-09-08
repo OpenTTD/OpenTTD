@@ -248,7 +248,7 @@ struct GoodsEntry {
 	byte last_speed;
 
 	/**
-	 * Age in years (up to 255) of the last vehicle that tried to load this cargo.
+	 * Years (up to 255) since introduction of the last vehicle type that tried to load this cargo.
 	 * This does not imply there was any cargo to load.
 	 */
 	byte last_age;

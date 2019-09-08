@@ -1767,7 +1767,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 		/* if last speed is 0, we treat that as if no vehicle has ever visited the station. */
 		ge->last_speed = min(t, 255);
-		ge->last_age = min(_cur_year - front->build_year, 255);
+		ge->last_age = Clamp((_date - front->GetEngine()->intro_date) / DAYS_IN_YEAR, 0, 255);
 		ge->time_since_pickup = 0;
 
 		assert(v->cargo_cap >= v->cargo.StoredCount());

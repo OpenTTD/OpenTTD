@@ -3548,9 +3548,9 @@ static void UpdateStationRating(Station *st)
 			if (Company::IsValidID(st->owner) && HasBit(st->town->statues, st->owner)) rating += 26;
 
 			byte age = ge->last_age;
-			if (age < 3) rating += 10;
-			if (age < 2) rating += 10;
-			if (age < 1) rating += 13;
+			if (age < 10) rating += 10;
+			if (age < 5) rating += 10;
+			if (age < 2) rating += 13;
 
 			{
 				int or_ = ge->rating; // old rating
