@@ -104,9 +104,12 @@ void SetLocalCompany(CompanyID new_company)
 	/* company could also be COMPANY_SPECTATOR or OWNER_NONE */
 	assert(Company::IsValidID(new_company) || new_company == COMPANY_SPECTATOR || new_company == OWNER_NONE);
 
+	/* If actually changing to another company, several windows need closing */
+	bool switching_company = _local_company != new_company;
+
 #ifdef ENABLE_NETWORK
 	/* Delete the chat window, if you were team chatting. */
-	InvalidateWindowData(WC_SEND_NETWORK_MSG, DESTTYPE_TEAM, _local_company);
+	if (switching_company) InvalidateWindowData(WC_SEND_NETWORK_MSG, DESTTYPE_TEAM, _local_company);
 #endif
 
 	assert(IsLocalCompany());
@@ -114,7 +117,7 @@ void SetLocalCompany(CompanyID new_company)
 	_current_company = _local_company = new_company;
 
 	/* Delete any construction windows... */
-	DeleteConstructionWindows();
+	if (switching_company) DeleteConstructionWindows();
 
 	/* ... and redraw the whole screen. */
 	MarkWholeScreenDirty();
