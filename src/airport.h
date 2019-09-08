@@ -60,29 +60,30 @@ enum AirportMovingDataFlags {
 
 /** Movement States on Airports (headings target) */
 enum AirportMovementStates {
-	TO_ALL         =  0, ///< Go in this direction for every target.
-	HANGAR         =  1, ///< Heading for hangar.
-	TERM1          =  2, ///< Heading for terminal 1.
-	TERM2          =  3, ///< Heading for terminal 2.
-	TERM3          =  4, ///< Heading for terminal 3.
-	TERM4          =  5, ///< Heading for terminal 4.
-	TERM5          =  6, ///< Heading for terminal 5.
-	TERM6          =  7, ///< Heading for terminal 6.
-	HELIPAD1       =  8, ///< Heading for helipad 1.
-	HELIPAD2       =  9, ///< Heading for helipad 2.
-	TAKEOFF        = 10, ///< Airplane wants to leave the airport.
-	STARTTAKEOFF   = 11, ///< Airplane has arrived at a runway for take-off.
-	ENDTAKEOFF     = 12, ///< Airplane has reached end-point of the take-off runway.
-	HELITAKEOFF    = 13, ///< Helicopter wants to leave the airport.
-	FLYING         = 14, ///< %Vehicle is flying in the air.
-	LANDING        = 15, ///< Airplane wants to land.
-	ENDLANDING     = 16, ///< Airplane wants to finish landing.
-	HELILANDING    = 17, ///< Helicopter wants to land.
-	HELIENDLANDING = 18, ///< Helicopter wants to finish landing.
-	TERM7          = 19, ///< Heading for terminal 7.
-	TERM8          = 20, ///< Heading for terminal 8.
-	HELIPAD3       = 21, ///< Heading for helipad 3.
-	MAX_HEADINGS   = 21, ///< Last valid target to head for.
+	TO_ALL         =   0, ///< Go in this direction for every target.
+	HANGAR         =   1, ///< Heading for hangar.
+	TERM1          =   2, ///< Heading for terminal 1.
+	TERM2          =   3, ///< Heading for terminal 2.
+	TERM3          =   4, ///< Heading for terminal 3.
+	TERM4          =   5, ///< Heading for terminal 4.
+	TERM5          =   6, ///< Heading for terminal 5.
+	TERM6          =   7, ///< Heading for terminal 6.
+	HELIPAD1       =   8, ///< Heading for helipad 1.
+	HELIPAD2       =   9, ///< Heading for helipad 2.
+	TAKEOFF        =  10, ///< Airplane wants to leave the airport.
+	STARTTAKEOFF   =  11, ///< Airplane has arrived at a runway for take-off.
+	ENDTAKEOFF     =  12, ///< Airplane has reached end-point of the take-off runway.
+	HELITAKEOFF    =  13, ///< Helicopter wants to leave the airport.
+	FLYING         =  14, ///< %Vehicle is flying in the air.
+	LANDING        =  15, ///< Airplane wants to land.
+	ENDLANDING     =  16, ///< Airplane wants to finish landing.
+	HELILANDING    =  17, ///< Helicopter wants to land.
+	HELIENDLANDING =  18, ///< Helicopter wants to finish landing.
+	TERM7          =  19, ///< Heading for terminal 7.
+	TERM8          =  20, ///< Heading for terminal 8.
+	HELIPAD3       =  21, ///< Heading for helipad 3.
+	MAX_HEADINGS   =  21, ///< Last valid target to head for.
+	TERMGROUP      = 255, ///< Aircraft is looking for a free terminal in a terminalgroup.
 };
 
 /** Movement Blocks on Airports blocks (eg_airport_flags). */
