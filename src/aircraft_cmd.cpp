@@ -1925,8 +1925,8 @@ static uint GetNumTerminals(const AirportFTAClass *apc)
 static bool AirportFindFreeTerminal(Aircraft *v, const AirportFTAClass *apc)
 {
 	/* example of more terminalgroups
-	 * {0,HANGAR,NOTHING_block,1}, {0,255,TERM_GROUP1_block,0}, {0,255,TERM_GROUP2_ENTER_block,1}, {0,0,N,1},
-	 * Heading 255 denotes a group. We see 2 groups here:
+	 * {0,HANGAR,NOTHING_block,1}, {0,TERMGROUP,TERM_GROUP1_block,0}, {0,TERMGROUP,TERM_GROUP2_ENTER_block,1}, {0,0,N,1},
+	 * Heading TERMGROUP denotes a group. We see 2 groups here:
 	 * 1. group 0 -- TERM_GROUP1_block (check block)
 	 * 2. group 1 -- TERM_GROUP2_ENTER_block (check block)
 	 * First in line is checked first, group 0. If the block (TERM_GROUP1_block) is free, it
@@ -1939,7 +1939,7 @@ static bool AirportFindFreeTerminal(Aircraft *v, const AirportFTAClass *apc)
 		const AirportFTA *temp = apc->layout[v->pos].next;
 
 		while (temp != nullptr) {
-			if (temp->heading == 255) {
+			if (temp->heading == TERMGROUP) {
 				if (!(st->airport.flags & temp->block)) {
 					/* read which group do we want to go to?
 					 * (the first free group) */
