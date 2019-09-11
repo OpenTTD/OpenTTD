@@ -300,13 +300,29 @@ bool FiosFileScanner::AddFile(const char *filename, size_t basepath_length, cons
 
 	FiosItem *fios = file_list.Append();
 #ifdef _WIN32
-	struct _stat sb;
-	if (_tstat(OTTD2FS(filename), &sb) == 0) {
+	// Retrieve the file modified date using GetFileTime rather than stat to work around an obscure MSVC bug that affects Windows XP
+	HANDLE fh = CreateFile(OTTD2FS(filename), GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, nullptr, OPEN_EXISTING, 0, nullptr);
+
+	if (fh != INVALID_HANDLE_VALUE) {
+		FILETIME ft;
+		ULARGE_INTEGER ft_int64;
+
+		if (GetFileTime(fh, nullptr, nullptr, &ft) != 0) {
+			ft_int64.HighPart = ft.dwHighDateTime;
+			ft_int64.LowPart = ft.dwLowDateTime;
+
+			// Convert from hectonanoseconds since 01/01/1601 to seconds since 01/01/1970
+			fios->mtime = ft_int64.QuadPart / 10000000ULL - 11644473600ULL;
+		} else {
+			fios->mtime = 0;
+		}
+
+		CloseHandle(fh);
 #else
 	struct stat sb;
 	if (stat(filename, &sb) == 0) {
-#endif
 		fios->mtime = sb.st_mtime;
+#endif
 	} else {
 		fios->mtime = 0;
 	}
