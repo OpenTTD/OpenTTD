@@ -678,6 +678,7 @@ static void MoveToNextNewsItem()
 				ShowNewspaper(ni);
 				break;
 		}
+		return;
 	}
 }
 
