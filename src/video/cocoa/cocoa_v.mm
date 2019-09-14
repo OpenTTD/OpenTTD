@@ -1360,6 +1360,11 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 		[ e release ];
 	}
 }
+/** The colour profile of the screen the window is on changed. */
+- (void)windowDidChangeScreenProfile:(NSNotification *)aNotification
+{
+	if (!driver->setup) driver->WindowResized();
+}
 
 @end
 
