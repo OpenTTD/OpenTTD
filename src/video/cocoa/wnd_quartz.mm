@@ -106,35 +106,6 @@ public:
 };
 
 
-static CGColorSpaceRef QZ_GetCorrectColorSpace()
-{
-	static CGColorSpaceRef colorSpace = NULL;
-
-	if (colorSpace == NULL) {
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-		if (MacOSVersionIsAtLeast(10, 5, 0)) {
-			colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
-		} else
-#endif
-		{
-#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5) && !defined(HAVE_OSX_1011_SDK)
-			CMProfileRef sysProfile;
-			if (CMGetSystemProfile(&sysProfile) == noErr) {
-				colorSpace = CGColorSpaceCreateWithPlatformColorSpace(sysProfile);
-				CMCloseProfile(sysProfile);
-			}
-#endif
-		}
-
-		if (colorSpace == NULL) colorSpace = CGColorSpaceCreateDeviceRGB();
-
-		if (colorSpace == NULL) error("Could not get system colour space. You might need to recalibrate your monitor.");
-	}
-
-	return colorSpace;
-}
-
-
 @implementation OTTD_QuartzView
 
 - (void)setDriver:(WindowQuartzSubdriver*)drv
@@ -289,9 +260,7 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
 							styleMask:style
 							backing:NSBackingStoreBuffered
 							defer:NO ];
-		if ([ this->window respondsToSelector:@selector(setColorSpace:) ]) {
-			[ this->window setColorSpace:[ [ [ NSColorSpace alloc ] initWithCGColorSpace:QZ_GetCorrectColorSpace() ] autorelease ] ];
-		}
+
 		if (this->window == nil) {
 			DEBUG(driver, 0, "Could not create the Cocoa window.");
 			this->setup = false;
@@ -598,20 +567,36 @@ bool WindowQuartzSubdriver::WindowResized()
 	this->window_width = (int)newframe.size.width;
 	this->window_height = (int)newframe.size.height;
 
+	/* Get screen colour space. */
+	CGColorSpaceRef color_space = NULL;
+
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
+	if ([ this->window respondsToSelector:@selector(colorSpace) ]) {
+		color_space = [ [ this->window colorSpace ] CGColorSpace ];
+		CGColorSpaceRetain(color_space);
+	}
+#endif
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+	if (color_space == NULL && MacOSVersionIsAtLeast(10, 5, 0)) color_space = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
+#endif
+	if (color_space == NULL) color_space = CGColorSpaceCreateDeviceRGB();
+	if (color_space == NULL) error("Could not get system colour space. You might need to recalibrate your monitor.");
+
 	/* Create Core Graphics Context */
 	free(this->window_buffer);
 	this->window_buffer = (uint32*)malloc(this->window_width * this->window_height * 4);
 
 	CGContextRelease(this->cgcontext);
 	this->cgcontext = CGBitmapContextCreate(
-		this->window_buffer,        // data
+		this->window_buffer,       // data
 		this->window_width,        // width
 		this->window_height,       // height
 		8,                         // bits per component
 		this->window_width * 4,    // bytes per row
-		QZ_GetCorrectColorSpace(), // color space
+		color_space,               // color space
 		kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Host
 	);
+	CGColorSpaceRelease(color_space);
 
 	assert(this->cgcontext != NULL);
 	CGContextSetShouldAntialias(this->cgcontext, FALSE);
