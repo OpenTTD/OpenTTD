@@ -271,6 +271,7 @@ uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_i
 
 - (BOOL)windowShouldClose:(id)sender;
 - (void)windowDidEnterFullScreen:(NSNotification *)aNotification;
+- (void)windowDidChangeScreenProfile:(NSNotification *)aNotification;
 @end
 
 
