@@ -1,3 +1,11 @@
+1.9.3 (2019-09-16)
+------------------------------------------------------------------------
+- Change: Use natural sort when sorting the file list (#7727)
+- Fix #7479: Don't close construction windows when changing client name (#7728)
+- Fix #7731: Files sorting by modification time on Windows XP (#7731)
+- Fix #7644: [OSX] Better solution for colourspace/performance issues (#7741)
+
+
 1.9.3-RC1 (2019-09-07)
 ------------------------------------------------------------------------
 - Add: Can now click industries to make orders to their neutral station (e.g. oil rig) (#7709)
