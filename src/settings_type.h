@@ -484,6 +484,8 @@ struct EconomySettings {
 	uint8  larger_towns;                     ///< the number of cities to build. These start off larger and grow twice as fast
 	uint8  initial_city_size;                ///< multiplier for the initial size of the cities compared to towns
 	TownLayout town_layout;                  ///< select town layout, @see TownLayout
+	TownSpacing town_min_spacing;            ///< smallest minimal distance between parallel roads for towns
+	TownSpacing town_max_spacing;            ///< largest minimal distance between parallel roads for towns
 	TownCargoGenMode town_cargogen_mode;     ///< algorithm for generating cargo from houses, @see TownCargoGenMode
 	bool   allow_town_roads;                 ///< towns are allowed to build roads (always allowed when generating world / in SE)
 	TownFounding found_town;                 ///< town founding.

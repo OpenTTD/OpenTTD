@@ -365,4 +365,18 @@ static inline int DivAwayFromZero(int a, uint b)
 
 uint32 IntSqrt(uint32 num);
 
+/**
+ * Computes the smallest nonnegative number r with a = q*b + r.
+ * (remainder of integer division with rounding towards -infinity)
+ * We can't rely on % giving sane results for negative a.
+ * @param a Numerator
+ * @param b Denominator
+ * @return Remainder
+ */
+static inline uint Mod(int a, uint b)
+{
+	if (a >= 0) return ((uint)a)%b;
+	return b-(((uint)(-a-1))%b)-1;
+}
+
 #endif /* MATH_FUNC_HPP */

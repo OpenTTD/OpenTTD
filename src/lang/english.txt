@@ -1580,11 +1580,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :All
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Road layout for new towns: {STRING2}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Layout for the road network of towns
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Better roads
-STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
-STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 grid
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :natural
+STR_CONFIG_SETTING_TOWN_LAYOUT_GRID                             :grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Random
+STR_CONFIG_SETTING_MIN_TOWN_SPACING                             :Smallest minimum distance beetween parallel roads: {STRING2}
+STR_CONFIG_SETTING_MAX_TOWN_SPACING                             :Largest minimum distance beetween parallel roads: {STRING2}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Towns are allowed to build roads: {STRING2}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Allow towns to build roads for growth. Disable to prevent town authorities from building roads themselves
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Towns are allowed to build level crossings: {STRING2}

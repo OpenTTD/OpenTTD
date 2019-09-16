@@ -1698,6 +1698,8 @@ static SettingsContainer &GetSettingsTree()
 			genworld->Add(new SettingEntry("economy.larger_towns"));
 			genworld->Add(new SettingEntry("economy.initial_city_size"));
 			genworld->Add(new SettingEntry("economy.town_layout"));
+			genworld->Add(new SettingEntry("economy.town_min_spacing"));
+			genworld->Add(new SettingEntry("economy.town_max_spacing"));
 			genworld->Add(new SettingEntry("difficulty.industry_density"));
 			genworld->Add(new SettingEntry("gui.pause_on_newgame"));
 		}

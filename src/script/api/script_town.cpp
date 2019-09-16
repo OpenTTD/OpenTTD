@@ -287,7 +287,7 @@
 	EnforcePrecondition(false, size == TOWN_SIZE_SMALL || size == TOWN_SIZE_MEDIUM || size == TOWN_SIZE_LARGE)
 	EnforcePrecondition(false, size != TOWN_SIZE_LARGE || ScriptObject::GetCompany() == OWNER_DEITY);
 	if (ScriptObject::GetCompany() == OWNER_DEITY || _settings_game.economy.found_town == TF_CUSTOM_LAYOUT) {
-		EnforcePrecondition(false, layout == ROAD_LAYOUT_ORIGINAL || layout == ROAD_LAYOUT_BETTER_ROADS || layout == ROAD_LAYOUT_2x2 || layout == ROAD_LAYOUT_3x3);
+		EnforcePrecondition(false, layout == ROAD_LAYOUT_NATURAL || layout == ROAD_LAYOUT_GRID);
 	} else {
 		/* The layout parameter is ignored for AIs when custom layouts is disabled. */
 		layout = (RoadLayout) (byte)_settings_game.economy.town_layout;

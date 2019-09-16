@@ -100,6 +100,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	bool larger_town;                ///< if this is a larger town and should grow more quickly
 	TownLayout layout;               ///< town specific road layout
+	TownSpacing spacing;             ///< minimum distance between parallel roads
 
 	bool show_zone;                  ///< NOSAVE: mark town to show the local authority zone in the viewports
 
@@ -114,7 +115,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	/** Destroy the town. */
 	~Town();
 
-	void InitializeLayout(TownLayout layout);
+	void InitializeLayout(TownLayout layout, TownSpacing spacing);
 
 	/**
 	 * Calculate the max town noise.
@@ -204,7 +205,7 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags);
 HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile);
 void SetTownRatingTestMode(bool mode);
 uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t);
-bool GenerateTowns(TownLayout layout);
+bool GenerateTowns(TownLayout layout, TownSpacing spacing);
 const CargoSpec *FindFirstCargoWithTownEffect(TownEffect effect);
 
 /** Town actions of a company. */

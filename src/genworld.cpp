@@ -137,7 +137,7 @@ static void _GenerateWorld()
 
 			/* only generate towns, tree and industries in newgame mode. */
 			if (_game_mode != GM_EDITOR) {
-				if (!GenerateTowns(_settings_game.economy.town_layout)) {
+				if (!GenerateTowns(_settings_game.economy.town_layout, TS_RANDOM)) {
 					_cur_company.Restore();
 					HandleGeneratingWorldAbortion();
 					return;

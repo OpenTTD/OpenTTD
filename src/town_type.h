@@ -79,15 +79,17 @@ enum Ratings {
 /** Town Layouts. It needs to be 8bits, because we save and load it as such */
 enum TownLayout : byte {
 	TL_BEGIN = 0,
-	TL_ORIGINAL = 0,     ///< Original algorithm (min. 1 distance between roads)
-	TL_BETTER_ROADS,     ///< Extended original algorithm (min. 2 distance between roads)
-	TL_2X2_GRID,         ///< Geometric 2x2 grid algorithm
-	TL_3X3_GRID,         ///< Geometric 3x3 grid algorithm
+	TL_NATURAL = 0,      ///< Original algorithm
+	TL_GRID,             ///< Geometric grid algorithm
 
 	TL_RANDOM,           ///< Random town layout
 
 	NUM_TLS,             ///< Number of town layouts
 };
+typedef byte TownSpacing;
+static const TownSpacing TS_RANDOM = 0;
+static const TownSpacing MAX_TOWN_SPACING = 6;
+
 template <> struct EnumPropsT<TownLayout> : MakeEnumPropsT<TownLayout, byte, TL_BEGIN, NUM_TLS, NUM_TLS, 3> {};
 
 /** Town founding setting values. It needs to be 8bits, because we save and load it as such */

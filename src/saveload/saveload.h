@@ -303,6 +303,8 @@ enum SaveLoadVersion : uint16 {
 	SLV_SCRIPT_MEMLIMIT,                    ///< 215  PR#7516 Limit on AI/GS memory consumption.
 	SLV_MULTITILE_DOCKS,                    ///< 216  PR#7380 Multiple docks per station.
 
+	SLV_TOWN_SPACING,
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 

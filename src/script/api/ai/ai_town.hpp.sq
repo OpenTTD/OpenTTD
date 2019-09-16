@@ -39,10 +39,8 @@ void SQAITown_Register(Squirrel *engine)
 	SQAITown.DefSQConst(engine, ScriptTown::TOWN_RATING_EXCELLENT,        "TOWN_RATING_EXCELLENT");
 	SQAITown.DefSQConst(engine, ScriptTown::TOWN_RATING_OUTSTANDING,      "TOWN_RATING_OUTSTANDING");
 	SQAITown.DefSQConst(engine, ScriptTown::TOWN_RATING_INVALID,          "TOWN_RATING_INVALID");
-	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_ORIGINAL,         "ROAD_LAYOUT_ORIGINAL");
-	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_BETTER_ROADS,     "ROAD_LAYOUT_BETTER_ROADS");
-	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_2x2,              "ROAD_LAYOUT_2x2");
-	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_3x3,              "ROAD_LAYOUT_3x3");
+	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_NATURAL,          "ROAD_LAYOUT_NATURAL");
+	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_GRID,             "ROAD_LAYOUT_GRID");
 	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_INVALID,          "ROAD_LAYOUT_INVALID");
 	SQAITown.DefSQConst(engine, ScriptTown::TOWN_SIZE_SMALL,              "TOWN_SIZE_SMALL");
 	SQAITown.DefSQConst(engine, ScriptTown::TOWN_SIZE_MEDIUM,             "TOWN_SIZE_MEDIUM");

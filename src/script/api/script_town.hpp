@@ -96,10 +96,8 @@ public:
 	 */
 	enum RoadLayout {
 		/* Note: these values represent part of the in-game TownLayout enum */
-		ROAD_LAYOUT_ORIGINAL      = ::TL_ORIGINAL,     ///< Original algorithm (min. 1 distance between roads).
-		ROAD_LAYOUT_BETTER_ROADS  = ::TL_BETTER_ROADS, ///< Extended original algorithm (min. 2 distance between roads).
-		ROAD_LAYOUT_2x2           = ::TL_2X2_GRID,     ///< Geometric 2x2 grid algorithm
-		ROAD_LAYOUT_3x3           = ::TL_3X3_GRID,     ///< Geometric 3x3 grid algorithm
+		ROAD_LAYOUT_NATURAL       = ::TL_NATURAL,     ///TODO: compatibility
+		ROAD_LAYOUT_GRID          = ::TL_GRID,
 
 		/* Custom added value, only valid for this API */
 		ROAD_LAYOUT_INVALID       = -1,                ///< The layout for invalid towns.

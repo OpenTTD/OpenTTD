@@ -2155,7 +2155,7 @@ bool AfterLoadGame()
 		/* allow_town_roads is added, set it if town_layout wasn't TL_NO_ROADS */
 		if (_settings_game.economy.town_layout == 0) { // was TL_NO_ROADS
 			_settings_game.economy.allow_town_roads = false;
-			_settings_game.economy.town_layout = TL_BETTER_ROADS;
+			_settings_game.economy.town_layout = TL_NATURAL;
 		} else {
 			_settings_game.economy.allow_town_roads = true;
 			_settings_game.economy.town_layout = static_cast<TownLayout>(_settings_game.economy.town_layout - 1);
@@ -3205,6 +3205,32 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_127)) {
 		Station *st;
 		FOR_ALL_STATIONS(st) UpdateStationAcceptance(st, false);
+	}
+
+	if (IsSavegameVersionBefore(SLV_TOWN_SPACING)) {
+		/* Town spacing parameter has been added */
+		Town *t;
+		FOR_ALL_TOWNS(t) {
+			switch (t->layout) {
+				default: NOT_REACHED();
+				case 0: /* TL_ORIGINAL */
+					t->layout = TL_NATURAL;
+					t->spacing = 1;
+					break;
+				case 1: /* TL_BETTER_ROADS */
+					t->layout = TL_NATURAL;
+					t->spacing = 2;
+					break;
+				case 2: /* TL_2x2_GRID */
+					t->layout = TL_GRID;
+					t->spacing = 2;
+					break;
+				case 3: /* TL_3x3_GRID */
+					t->layout = TL_GRID;
+					t->spacing = 3;
+					break;
+			}
+		}
 	}
 
 	/* Road stops is 'only' updating some caches */
