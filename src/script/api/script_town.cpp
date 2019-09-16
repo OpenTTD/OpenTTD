@@ -278,7 +278,7 @@
 	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, houses, CMD_EXPAND_TOWN);
 }
 
-/* static */ bool ScriptTown::FoundTown(TileIndex tile, TownSize size, bool city, RoadLayout layout, Text *name)
+/* static */ bool ScriptTown::FoundTown(TileIndex tile, TownSize size, bool city, RoadLayout layout, unsigned int spacing, Text *name)
 {
 	CCountedPtr<Text> counter(name);
 
@@ -287,10 +287,17 @@
 	EnforcePrecondition(false, size == TOWN_SIZE_SMALL || size == TOWN_SIZE_MEDIUM || size == TOWN_SIZE_LARGE)
 	EnforcePrecondition(false, size != TOWN_SIZE_LARGE || ScriptObject::GetCompany() == OWNER_DEITY);
 	if (ScriptObject::GetCompany() == OWNER_DEITY || _settings_game.economy.found_town == TF_CUSTOM_LAYOUT) {
-		EnforcePrecondition(false, layout == ROAD_LAYOUT_ORIGINAL || layout == ROAD_LAYOUT_BETTER_ROADS || layout == ROAD_LAYOUT_2x2 || layout == ROAD_LAYOUT_3x3);
+		EnforcePrecondition(false, layout == ROAD_LAYOUT_NATURAL || layout == ROAD_LAYOUT_GRID);
+		EnforcePrecondition(false, spacing <= MAX_TOWN_SPACING);
 	} else {
 		/* The layout parameter is ignored for AIs when custom layouts is disabled. */
-		layout = (RoadLayout) (byte)_settings_game.economy.town_layout;
+		TownLayoutSetting layout_setting = _settings_game.economy.town_layout;
+		if (layout_setting == TLS_RANDOM) {
+			layout_setting = static_cast<TownLayoutSetting>(TileHash(TileX(tile), TileY(tile)) % (NUM_TLS - 1));
+		}
+		TownLayoutSpacing layout_spacing = SettingToLayoutSpacing(layout_setting);
+		layout = static_cast<RoadLayout>(layout_spacing.layout);
+		spacing = layout_spacing.spacing;
 	}
 
 	const char *text = nullptr;
@@ -305,7 +312,7 @@
 		return false;
 	}
 
-	return ScriptObject::DoCommand(tile, size | (city ? 1 << 2 : 0) | layout << 3, townnameparts, CMD_FOUND_TOWN, text);
+	return ScriptObject::DoCommand(tile, size | (city ? 1 << 2 : 0) | layout << 3 | spacing << 7, townnameparts, CMD_FOUND_TOWN, text);
 }
 
 /* static */ ScriptTown::TownRating ScriptTown::GetRating(TownID town_id, ScriptCompany::CompanyID company_id)

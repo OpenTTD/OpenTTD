@@ -159,19 +159,6 @@ void Town::PostDestructor(size_t index)
 }
 
 /**
- * Assigns town layout. If Random, generates one based on TileHash.
- */
-void Town::InitializeLayout(TownLayout layout)
-{
-	if (layout != TL_RANDOM) {
-		this->layout = layout;
-		return;
-	}
-
-	this->layout = static_cast<TownLayout>(TileHash(TileX(this->xy), TileY(this->xy)) % (NUM_TLS - 1));
-}
-
-/**
  * Return a random valid town.
  * @return random town, nullptr if there are no towns
  */
@@ -222,7 +209,7 @@ enum TownGrowthResult {
 };
 
 static bool BuildTownHouse(Town *t, TileIndex tile);
-static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size, bool city, TownLayout layout);
+static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size, bool city, TownLayout layout, TownSpacing spacing);
 
 static void TownDrawHouseLift(const TileInfo *ti)
 {
@@ -918,7 +905,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 	}
 
 	Slope cur_slope = _settings_game.construction.build_on_slopes ? GetFoundationSlope(tile) : GetTileSlope(tile);
-	bool ret = !IsNeighborRoadTile(tile, dir, t->layout == TL_ORIGINAL ? 1 : 2);
+	bool ret = !IsNeighborRoadTile(tile, dir, t->spacing);
 	if (cur_slope == SLOPE_FLAT) return ret;
 
 	/* If the tile is not a slope in the right direction, then
@@ -985,14 +972,9 @@ static RoadBits GetTownRoadGridElement(Town *t, TileIndex tile, DiagDirection di
 	switch (t->layout) {
 		default: NOT_REACHED();
 
-		case TL_2X2_GRID:
-			if ((grid_pos.x % 3) == 0) rcmd |= ROAD_Y;
-			if ((grid_pos.y % 3) == 0) rcmd |= ROAD_X;
-			break;
-
-		case TL_3X3_GRID:
-			if ((grid_pos.x % 4) == 0) rcmd |= ROAD_Y;
-			if ((grid_pos.y % 4) == 0) rcmd |= ROAD_X;
+		case TL_GRID:
+			if ((grid_pos.x % (t->spacing + 1)) == 0) rcmd |= ROAD_Y;
+			if ((grid_pos.y % (t->spacing + 1)) == 0) rcmd |= ROAD_X;
 			break;
 	}
 
@@ -1268,14 +1250,12 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		switch (t1->layout) {
 			default: NOT_REACHED();
 
-			case TL_3X3_GRID:
-			case TL_2X2_GRID:
+			case TL_GRID:
 				rcmd = GetTownRoadGridElement(t1, tile, target_dir);
 				if (rcmd == ROAD_NONE) return;
 				break;
 
-			case TL_BETTER_ROADS:
-			case TL_ORIGINAL:
+			case TL_NATURAL:
 				if (!IsRoadAllowedHere(t1, tile, target_dir)) return;
 
 				DiagDirection source_dir = ReverseDiagDir(target_dir);
@@ -1315,13 +1295,11 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		switch (t1->layout) {
 			default: NOT_REACHED();
 
-			case TL_3X3_GRID:
-			case TL_2X2_GRID:
+			case TL_GRID:
 				rcmd = GetTownRoadGridElement(t1, tile, target_dir);
 				break;
 
-			case TL_BETTER_ROADS:
-			case TL_ORIGINAL:
+			case TL_NATURAL:
 				rcmd = DiagDirToRoadBits(ReverseDiagDir(target_dir));
 				break;
 		}
@@ -1382,23 +1360,17 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		if (!IsValidTile(house_tile)) return;
 
 		if (target_dir != DIAGDIR_END && (_settings_game.economy.allow_town_roads || _generating_world)) {
+			if (t1->spacing > 2) GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir));
+
 			switch (t1->layout) {
 				default: NOT_REACHED();
 
-				case TL_3X3_GRID: // Use 2x2 grid afterwards!
-					GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir));
-					FALLTHROUGH;
-
-				case TL_2X2_GRID:
+				case TL_GRID:
 					rcmd = GetTownRoadGridElement(t1, tile, target_dir);
 					allow_house = (rcmd & target_rb) == ROAD_NONE;
 					break;
 
-				case TL_BETTER_ROADS: // Use original afterwards!
-					GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir));
-					FALLTHROUGH;
-
-				case TL_ORIGINAL:
+				case TL_NATURAL:
 					/* Allow a house at the edge. 60% chance or
 					 * always ok if no road allowed. */
 					rcmd = target_rb;
@@ -1501,21 +1473,19 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile)
 	assert(tile < MapSize());
 
 	/* Number of times to search.
-	 * Better roads, 2X2 and 3X3 grid grow quite fast so we give
+	 * spaced out and grid towns grow quite fast so we give
 	 * them a little handicap. */
 	switch (t->layout) {
-		case TL_BETTER_ROADS:
-			_grow_town_result = 10 + t->cache.num_houses * 2 / 9;
+		case TL_NATURAL:
+			_grow_town_result = 10 + t->cache.num_houses * ((t->spacing > 1) ? 2 : 4) / 9;
 			break;
 
-		case TL_3X3_GRID:
-		case TL_2X2_GRID:
+		case TL_GRID:
 			_grow_town_result = 10 + t->cache.num_houses * 1 / 9;
 			break;
 
 		default:
-			_grow_town_result = 10 + t->cache.num_houses * 4 / 9;
-			break;
+			NOT_REACHED();
 	}
 
 	do {
@@ -1706,7 +1676,7 @@ static void UpdateTownGrowth(Town *t);
  * @param layout the (road) layout of the town
  * @param manual was the town placed manually?
  */
-static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize size, bool city, TownLayout layout, bool manual)
+static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize size, bool city, TownLayout layout, TownSpacing spacing, bool manual)
 {
 	t->xy = tile;
 	t->cache.num_houses = 0;
@@ -1758,7 +1728,8 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->UpdateVirtCoord();
 	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, TDIWD_FORCE_REBUILD);
 
-	t->InitializeLayout(layout);
+	t->spacing = spacing;
+	t->layout = layout;
 
 	t->larger_town = city;
 
@@ -1829,6 +1800,7 @@ static bool IsUniqueTownName(const char *name)
  *               2 true iff it should be a city
  *            3..5 town road layout (@see TownLayout)
  *               6 use random location (randomize \c tile )
+ *            7..9 town road spacing (@see TownSpacing)
  * @param p2 town name parts
  * @param text Custom name for the town. If empty, the town name parts will be used.
  * @return the cost of this operation or an error
@@ -1838,20 +1810,23 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	TownSize size = Extract<TownSize, 0, 2>(p1);
 	bool city = HasBit(p1, 2);
 	TownLayout layout = Extract<TownLayout, 3, 3>(p1);
+	TownSpacing spacing = GB(p1, 7, 3);
 	TownNameParams par(_settings_game.game_creation.town_name);
 	bool random = HasBit(p1, 6);
 	uint32 townnameparts = p2;
 
 	if (size >= TSZ_END) return CMD_ERROR;
-	if (layout >= NUM_TLS) return CMD_ERROR;
+	if (layout >= NUM_TL) return CMD_ERROR;
+	if (spacing > MAX_TOWN_SPACING) return CMD_ERROR;
 
 	/* Some things are allowed only in the scenario editor and for game scripts. */
 	if (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY) {
 		if (_settings_game.economy.found_town == TF_FORBIDDEN) return CMD_ERROR;
 		if (size == TSZ_LARGE) return CMD_ERROR;
 		if (random) return CMD_ERROR;
-		if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT && layout != _settings_game.economy.town_layout) {
-			return CMD_ERROR;
+		if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT && _settings_game.economy.town_layout != TLS_RANDOM) {
+			TownLayoutSpacing layout_spacing = SettingToLayoutSpacing(_settings_game.economy.town_layout);
+			if (layout_spacing.layout != layout || layout_spacing.spacing != spacing) return CMD_ERROR;
 		}
 	} else if (_current_company == OWNER_DEITY && random) {
 		/* Random parameter is not allowed for Game Scripts. */
@@ -1895,7 +1870,7 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		UpdateNearestTownForRoadTiles(true);
 		Town *t;
 		if (random) {
-			t = CreateRandomTown(20, townnameparts, size, city, layout);
+			t = CreateRandomTown(20, townnameparts, size, city, layout, spacing);
 			if (t == nullptr) {
 				cost = CommandCost(STR_ERROR_NO_SPACE_FOR_TOWN);
 			} else {
@@ -1903,7 +1878,7 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			}
 		} else {
 			t = new Town(tile);
-			DoCreateTown(t, tile, townnameparts, size, city, layout, true);
+			DoCreateTown(t, tile, townnameparts, size, city, layout, spacing, true);
 		}
 		UpdateNearestTownForRoadTiles(false);
 		old_generating_world.Restore();
@@ -1947,13 +1922,11 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
  * @param layout which town layout algo is in effect
  * @return the adjusted tile
  */
-static TileIndex AlignTileToGrid(TileIndex tile, TownLayout layout)
+static TileIndex AlignTileToGrid(TileIndex tile, TownLayout layout, TownSpacing spacing)
 {
-	switch (layout) {
-		case TL_2X2_GRID: return TileXY(TileX(tile) - TileX(tile) % 3, TileY(tile) - TileY(tile) % 3);
-		case TL_3X3_GRID: return TileXY(TileX(tile) & ~3, TileY(tile) & ~3);
-		default:          return tile;
-	}
+	if (layout != TL_GRID) return tile;
+
+	return TileXY(TileX(tile) - TileX(tile) % (spacing + 1), TileY(tile) - TileY(tile) % (spacing + 1));
 }
 
 /**
@@ -1965,13 +1938,11 @@ static TileIndex AlignTileToGrid(TileIndex tile, TownLayout layout)
  * @param layout which town layout algo is in effect
  * @return true if the tile is in the correct location
  */
-static bool IsTileAlignedToGrid(TileIndex tile, TownLayout layout)
+static bool IsTileAlignedToGrid(TileIndex tile, TownLayout layout, TownSpacing spacing)
 {
-	switch (layout) {
-		case TL_2X2_GRID: return TileX(tile) % 3 == 0 && TileY(tile) % 3 == 0;
-		case TL_3X3_GRID: return TileX(tile) % 4 == 0 && TileY(tile) % 4 == 0;
-		default:          return true;
-	}
+	if (layout != TL_GRID) return true;
+
+	return TileX(tile) % (spacing + 1) == 0 && TileY(tile) % (spacing + 1) == 0;
 }
 
 /**
@@ -1981,6 +1952,7 @@ struct SpotData {
 	TileIndex tile; ///< holds the tile that was found
 	uint max_dist;  ///< holds the distance that tile is from the water
 	TownLayout layout; ///< tells us what kind of town we're building
+	TownSpacing spacing; ///< tells us what size of grid the town uses
 };
 
 /**
@@ -2006,7 +1978,7 @@ static bool FindFurthestFromWater(TileIndex tile, void *user_data)
 
 	if (IsTileType(tile, MP_CLEAR) &&
 			IsTileFlat(tile) &&
-			IsTileAlignedToGrid(tile, sp->layout) &&
+			IsTileAlignedToGrid(tile, sp->layout, sp->spacing) &&
 			dist > sp->max_dist) {
 		sp->tile = tile;
 		sp->max_dist = dist;
@@ -2038,9 +2010,9 @@ static bool FindNearestEmptyLand(TileIndex tile, void *user_data)
  * @param layout the road layout to search for
  * @return tile that was found
  */
-static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layout)
+static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layout, TownSpacing spacing)
 {
-	SpotData sp = { INVALID_TILE, 0, layout };
+	SpotData sp = { INVALID_TILE, 0, layout, spacing };
 
 	TileIndex coast = tile;
 	if (CircularTileSearch(&coast, 40, FindNearestEmptyLand, nullptr)) {
@@ -2052,7 +2024,7 @@ static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layou
 	return INVALID_TILE;
 }
 
-static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size, bool city, TownLayout layout)
+static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size, bool city, TownLayout layout, TownSpacing spacing)
 {
 	assert(_game_mode == GM_EDITOR || _generating_world); // These are the preconditions for CMD_DELETE_TOWN
 
@@ -2060,12 +2032,19 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 
 	do {
 		/* Generate a tile index not too close from the edge */
-		TileIndex tile = AlignTileToGrid(RandomTile(), layout);
+		TileIndex tile = AlignTileToGrid(RandomTile(), layout, spacing);
+
+		if (layout == TL_RANDOM) {
+			TownLayoutSetting layout_setting = static_cast<TownLayoutSetting>(TileHash(TileX(tile), TileY(tile)) % (NUM_TLS - 1));
+			TownLayoutSpacing layout_spacing = SettingToLayoutSpacing(layout_setting);
+			layout = layout_spacing.layout;
+			spacing = layout_spacing.spacing;
+		}
 
 		/* if we tried to place the town on water, slide it over onto
 		 * the nearest likely-looking spot */
 		if (IsTileType(tile, MP_WATER)) {
-			tile = FindNearestGoodCoastalTownSpot(tile, layout);
+			tile = FindNearestGoodCoastalTownSpot(tile, layout, spacing);
 			if (tile == INVALID_TILE) continue;
 		}
 
@@ -2075,7 +2054,7 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 		/* Allocate a town struct */
 		Town *t = new Town(tile);
 
-		DoCreateTown(t, tile, townnameparts, size, city, layout, false);
+		DoCreateTown(t, tile, townnameparts, size, city, layout, spacing, false);
 
 		/* if the population is still 0 at the point, then the
 		 * placement is so bad it couldn't grow at all */
@@ -2105,7 +2084,7 @@ static const byte _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, no
  * @param layout which towns will be set to, when created
  * @return true if towns have been successfully created
  */
-bool GenerateTowns(TownLayout layout)
+bool GenerateTowns(TownLayoutSetting layout_setting)
 {
 	uint current_number = 0;
 	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_towns : 0;
@@ -2113,6 +2092,8 @@ bool GenerateTowns(TownLayout layout)
 	total = min(TownPool::MAX_SIZE, total);
 	uint32 townnameparts;
 	TownNames town_names;
+
+	TownLayoutSpacing layout_spacing = SettingToLayoutSpacing(layout_setting);
 
 	SetGeneratingWorldProgress(GWP_TOWN, total);
 
@@ -2125,7 +2106,7 @@ bool GenerateTowns(TownLayout layout)
 		/* Get a unique name for the town. */
 		if (!GenerateTownName(&townnameparts, &town_names)) continue;
 		/* try 20 times to create a random-sized town for the first loop. */
-		if (CreateRandomTown(20, townnameparts, TSZ_RANDOM, city, layout) != nullptr) current_number++; // If creation was successful, raise a flag.
+		if (CreateRandomTown(20, townnameparts, TSZ_RANDOM, city, layout_spacing.layout, layout_spacing.spacing) != nullptr) current_number++; // If creation was successful, raise a flag.
 	} while (--total);
 
 	town_names.clear();
@@ -2138,7 +2119,7 @@ bool GenerateTowns(TownLayout layout)
 	/* If current_number is still zero at this point, it means that not a single town has been created.
 	 * So give it a last try, but now more aggressive */
 	if (GenerateTownName(&townnameparts) &&
-			CreateRandomTown(10000, townnameparts, TSZ_RANDOM, _settings_game.economy.larger_towns != 0, layout) != nullptr) {
+			CreateRandomTown(10000, townnameparts, TSZ_RANDOM, _settings_game.economy.larger_towns != 0, layout_spacing.layout, layout_spacing.spacing) != nullptr) {
 		return true;
 	}
 
@@ -2148,6 +2129,49 @@ bool GenerateTowns(TownLayout layout)
 	}
 
 	return false;  // we are still without a town? we failed, simply
+}
+
+/**
+ * Convert a TownLayoutSetting to a TownLayout and TownSpacing.
+ * @param layout_setting The TownLayoutSetting to convert.
+ */
+TownLayoutSpacing SettingToLayoutSpacing(TownLayoutSetting layout_setting)
+{
+	TownLayoutSpacing layout_spacing = {};
+
+	switch (layout_setting) {
+		case TLS_ORIGINAL:
+			layout_spacing.layout = TL_NATURAL;
+			layout_spacing.spacing = 1;
+			break;
+
+		case TLS_BETTER_ROADS:
+			layout_spacing.layout = TL_NATURAL;
+			layout_spacing.spacing = 2;
+			break;
+
+		case TLS_2X2_GRID:
+			layout_spacing.layout = TL_GRID;
+			layout_spacing.spacing = 2;
+			break;
+
+		case TLS_3X3_GRID:
+			layout_spacing.layout = TL_GRID;
+			layout_spacing.spacing = 3;
+			break;
+
+		case TLS_RANDOM:
+			layout_spacing.layout = TL_RANDOM;
+			/* This value will be overwritten when TL_RANDOM is resolved to a
+			 * real layout. */
+			layout_spacing.spacing = 2;
+			break;
+
+		default:
+			NOT_REACHED();
+	}
+
+	return layout_spacing;
 }
 
 
@@ -2297,25 +2321,17 @@ static bool CheckFree2x2Area(TileIndex tile, int z, bool noslope)
  */
 static inline bool TownLayoutAllowsHouseHere(Town *t, TileIndex tile)
 {
-	/* Allow towns everywhere when we don't build roads */
+	/* Allow towns everywhere when we don't build roads. */
 	if (!_settings_game.economy.allow_town_roads && !_generating_world) return true;
 
+	/* Allow a house everywhere if we are not building a grid. */
+	if (t->layout != TL_GRID) return true;
+
+	/* Don't allow houses on the axis of the grid. */
 	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile);
-
-	switch (t->layout) {
-		case TL_2X2_GRID:
-			if ((grid_pos.x % 3) == 0 || (grid_pos.y % 3) == 0) return false;
-			break;
-
-		case TL_3X3_GRID:
-			if ((grid_pos.x % 4) == 0 || (grid_pos.y % 4) == 0) return false;
-			break;
-
-		default:
-			break;
-	}
-
-	return true;
+	grid_pos.x = grid_pos.x % (t->spacing + 1);
+	grid_pos.y = grid_pos.y % (t->spacing + 1);
+	return grid_pos.x != 0 && grid_pos.y != 0;
 }
 
 
@@ -2328,29 +2344,20 @@ static inline bool TownLayoutAllowsHouseHere(Town *t, TileIndex tile)
  */
 static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile)
 {
-	/* Allow towns everywhere when we don't build roads */
+	/* Allow towns everywhere when we don't build roads. */
 	if (!_settings_game.economy.allow_town_roads && !_generating_world) return true;
 
-	/* Compute relative position of tile. (Positive offsets are towards north) */
+	/* Allow a house everywhere if we are not building a grid. */
+	if (t->layout != TL_GRID) return true;
+
+	/* Can never build a 2x2 house on a 1 spaced grid. */
+	if (t->spacing == 1) return false;
+
+	/* Don't allow 2x2 houses to overlap the grid. */
 	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile);
-
-	switch (t->layout) {
-		case TL_2X2_GRID:
-			grid_pos.x %= 3;
-			grid_pos.y %= 3;
-			if ((grid_pos.x != 2 && grid_pos.x != -1) ||
-				(grid_pos.y != 2 && grid_pos.y != -1)) return false;
-			break;
-
-		case TL_3X3_GRID:
-			if ((grid_pos.x & 3) < 2 || (grid_pos.y & 3) < 2) return false;
-			break;
-
-		default:
-			break;
-	}
-
-	return true;
+	grid_pos.x = grid_pos.x % (t->spacing + 1);
+	grid_pos.y = grid_pos.y % (t->spacing + 1);
+	return grid_pos.x != 0 && grid_pos.y != 0 && grid_pos.x != t->spacing && grid_pos.y != t->spacing;
 }
 
 

@@ -1094,7 +1094,7 @@ static const NWidgetPart _nested_found_town_widgets[] = {
 struct FoundTownWindow : Window {
 private:
 	TownSize town_size;     ///< Selected town size
-	TownLayout town_layout; ///< Selected town layout
+	TownLayoutSetting town_layout; ///< Selected town layout
 	bool city;              ///< Are we building a city?
 	QueryString townname_editbox; ///< Townname editbox
 	bool townnamevalid;     ///< Is generated town name valid?
@@ -1211,7 +1211,7 @@ public:
 
 			case WID_TF_LAYOUT_ORIGINAL: case WID_TF_LAYOUT_BETTER: case WID_TF_LAYOUT_GRID2:
 			case WID_TF_LAYOUT_GRID3: case WID_TF_LAYOUT_RANDOM:
-				this->town_layout = (TownLayout)(widget - WID_TF_LAYOUT_ORIGINAL);
+				this->town_layout = (TownLayoutSetting)(widget - WID_TF_LAYOUT_ORIGINAL);
 				this->UpdateButtons(false);
 				break;
 		}

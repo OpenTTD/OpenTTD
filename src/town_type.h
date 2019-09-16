@@ -74,19 +74,40 @@ enum Ratings {
 	RATING_BRIBE_DOWN_TO = -50        // XXX SHOULD BE SOMETHING LOWER?
 };
 
+enum TownLayoutSetting : byte {
+	TLS_BEGIN = 0,
+	TLS_ORIGINAL = 0,     ///< Original algorithm (min. 1 distance between roads)
+	TLS_BETTER_ROADS,     ///< Extended original algorithm (min. 2 distance between roads)
+	TLS_2X2_GRID,         ///< Geometric 2x2 grid algorithm
+	TLS_3X3_GRID,         ///< Geometric 3x3 grid algorithm
+
+	TLS_RANDOM,           ///< Random town layout
+
+	NUM_TLS,              ///< Number of town layouts
+};
+template <> struct EnumPropsT<TownLayoutSetting> : MakeEnumPropsT<TownLayoutSetting, byte, TLS_BEGIN, NUM_TLS, NUM_TLS, 3> {};
+
 /** Town Layouts. It needs to be 8bits, because we save and load it as such */
 enum TownLayout : byte {
 	TL_BEGIN = 0,
-	TL_ORIGINAL = 0,     ///< Original algorithm (min. 1 distance between roads)
-	TL_BETTER_ROADS,     ///< Extended original algorithm (min. 2 distance between roads)
-	TL_2X2_GRID,         ///< Geometric 2x2 grid algorithm
-	TL_3X3_GRID,         ///< Geometric 3x3 grid algorithm
+	TL_NATURAL = 0,      ///< Original algorithm
+	TL_GRID,             ///< Geometric grid algorithm
 
 	TL_RANDOM,           ///< Random town layout
 
-	NUM_TLS,             ///< Number of town layouts
+	NUM_TL,              ///< Number of town layouts
 };
-template <> struct EnumPropsT<TownLayout> : MakeEnumPropsT<TownLayout, byte, TL_BEGIN, NUM_TLS, NUM_TLS, 3> {};
+template <> struct EnumPropsT<TownLayout> : MakeEnumPropsT<TownLayout, byte, TL_BEGIN, NUM_TL, NUM_TL, 3> {};
+
+/** Town layout spacing. */
+typedef byte TownSpacing;
+static const TownSpacing MAX_TOWN_SPACING = 6;
+assert_compile(MAX_TOWN_SPACING < (1 << 3)); // DoCommand assigns 3 bits to MAX_TOWN_SPACING.
+
+typedef struct TownLayoutSpacing {
+	TownLayout layout;
+	TownSpacing spacing;
+} TownLayoutSpacing;
 
 /** Town founding setting values. It needs to be 8bits, because we save and load it as such */
 enum TownFounding : byte {

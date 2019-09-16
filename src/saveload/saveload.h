@@ -321,6 +321,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_END_PATCHPACKS = 286,               ///< 286  Last known patchpack to use a version just above ours.
 
 	SLV_GS_INDUSTRY_CONTROL,                ///< 287  PR#7912 and PR#8115 GS industry control.
+	SLV_TOWN_LAYOUT_SPACING,                ///< 288  PR#???? Rework of town layout + spacing.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

@@ -56,6 +56,7 @@ namespace SQConvert {
 	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3> struct HasVoidReturnT<Tretval (*)(Targ1, Targ2, Targ3)> : IsVoidT<Tretval> {};
 	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4> struct HasVoidReturnT<Tretval (*)(Targ1, Targ2, Targ3, Targ4)> : IsVoidT<Tretval> {};
 	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5> struct HasVoidReturnT<Tretval (*)(Targ1, Targ2, Targ3, Targ4, Targ5)> : IsVoidT<Tretval> {};
+	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5, typename Targ6> struct HasVoidReturnT<Tretval (*)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6)> : IsVoidT<Tretval> {};
 	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5, typename Targ6, typename Targ7, typename Targ8, typename Targ9, typename Targ10> struct HasVoidReturnT<Tretval (*)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6, Targ7, Targ8, Targ9, Targ10)> : IsVoidT<Tretval> {};
 	/* methods */
 	template <class Tcls, typename Tretval> struct HasVoidReturnT<Tretval (Tcls::*)()> : IsVoidT<Tretval> {};
@@ -64,6 +65,7 @@ namespace SQConvert {
 	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3> struct HasVoidReturnT<Tretval (Tcls::*)(Targ1, Targ2, Targ3)> : IsVoidT<Tretval> {};
 	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4> struct HasVoidReturnT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4)> : IsVoidT<Tretval> {};
 	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5> struct HasVoidReturnT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4, Targ5)> : IsVoidT<Tretval> {};
+	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5, typename Targ6> struct HasVoidReturnT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6)> : IsVoidT<Tretval> {};
 	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5, typename Targ6, typename Targ7, typename Targ8, typename Targ9, typename Targ10> struct HasVoidReturnT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6, Targ7, Targ8, Targ9, Targ10)> : IsVoidT<Tretval> {};
 
 
@@ -605,6 +607,101 @@ namespace SQConvert {
 				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
 				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
 				GetParam(ForceType<Targ5>(), vm, 6, &ptr)
+			);
+
+			return inst;
+		}
+	};
+
+	/**
+	 * The real C++ caller for function with return value and 6 params.
+	 */
+	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5, typename Targ6>
+	struct HelperT<Tretval (*)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6), false> {
+		static int SQCall(void *instance, Tretval (*func)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6), HSQUIRRELVM vm)
+		{
+			SQAutoFreePointers ptr;
+			Tretval ret = (*func)(
+				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
+				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
+				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
+				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
+				GetParam(ForceType<Targ5>(), vm, 6, &ptr),
+				GetParam(ForceType<Targ6>(), vm, 7, &ptr)
+			);
+			return Return(vm, ret);
+		}
+	};
+
+	/**
+	 * The real C++ caller for function with no return value and 6 params.
+	 */
+	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5, typename Targ6>
+	struct HelperT<Tretval (*)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6), true> {
+		static int SQCall(void *instance, Tretval (*func)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6), HSQUIRRELVM vm)
+		{
+			SQAutoFreePointers ptr;
+			(*func)(
+				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
+				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
+				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
+				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
+				GetParam(ForceType<Targ5>(), vm, 6, &ptr),
+				GetParam(ForceType<Targ6>(), vm, 7, &ptr)
+			);
+			return 0;
+		}
+	};
+
+	/**
+	 * The real C++ caller for method with return value and 6 params.
+	 */
+	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5, typename Targ6>
+	struct HelperT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6), false> {
+		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6), HSQUIRRELVM vm)
+		{
+			SQAutoFreePointers ptr;
+			Tretval ret = (instance->*func)(
+				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
+				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
+				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
+				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
+				GetParam(ForceType<Targ5>(), vm, 6, &ptr),
+				GetParam(ForceType<Targ6>(), vm, 7, &ptr)
+			);
+			return Return(vm, ret);
+		}
+	};
+
+	/**
+	 * The real C++ caller for method with no return value and 6 params.
+	 */
+	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5, typename Targ6>
+	struct HelperT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6), true> {
+		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6), HSQUIRRELVM vm)
+		{
+			SQAutoFreePointers ptr;
+			(instance->*func)(
+				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
+				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
+				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
+				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
+				GetParam(ForceType<Targ5>(), vm, 6, &ptr),
+				GetParam(ForceType<Targ6>(), vm, 7, &ptr)
+			);
+			return 0;
+		}
+
+		static Tcls *SQConstruct(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6), HSQUIRRELVM vm)
+		{
+			SQAutoFreePointers ptr;
+			Tcls *inst = new Tcls(
+				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
+				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
+				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
+				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
+				GetParam(ForceType<Targ5>(), vm, 6, &ptr),
+				GetParam(ForceType<Targ6>(), vm, 7, &ptr)
 			);
 
 			return inst;

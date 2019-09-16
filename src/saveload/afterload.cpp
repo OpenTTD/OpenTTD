@@ -2113,17 +2113,17 @@ bool AfterLoadGame()
 		/* allow_town_roads is added, set it if town_layout wasn't TL_NO_ROADS */
 		if (_settings_game.economy.town_layout == 0) { // was TL_NO_ROADS
 			_settings_game.economy.allow_town_roads = false;
-			_settings_game.economy.town_layout = TL_BETTER_ROADS;
+			_settings_game.economy.town_layout = TLS_BETTER_ROADS;
 		} else {
 			_settings_game.economy.allow_town_roads = true;
-			_settings_game.economy.town_layout = static_cast<TownLayout>(_settings_game.economy.town_layout - 1);
+			_settings_game.economy.town_layout = static_cast<TownLayoutSetting>(_settings_game.economy.town_layout - 1);
 		}
 
 		/* Initialize layout of all towns. Older versions were using different
 		 * generator for random town layout, use it if needed. */
 		for (Town *t : Town::Iterate()) {
-			if (_settings_game.economy.town_layout != TL_RANDOM) {
-				t->layout = _settings_game.economy.town_layout;
+			if (_settings_game.economy.town_layout != TLS_RANDOM) {
+				t->layout = static_cast<TownLayout>(_settings_game.economy.town_layout);
 				continue;
 			}
 
@@ -3139,6 +3139,15 @@ bool AfterLoadGame()
 	/* Station acceptance is some kind of cache */
 	if (IsSavegameVersionBefore(SLV_127)) {
 		for (Station *st : Station::Iterate()) UpdateStationAcceptance(st, false);
+	}
+
+	if (IsSavegameVersionBefore(SLV_TOWN_LAYOUT_SPACING)) {
+		/* Town spacing parameter has been added */
+		for (Town *t : Town::Iterate()) {
+			TownLayoutSpacing layout_setting = SettingToLayoutSpacing(static_cast<TownLayoutSetting>(t->layout));
+			t->layout = layout_setting.layout;
+			t->spacing = layout_setting.spacing;
+		}
 	}
 
 	/* Road stops is 'only' updating some caches */
