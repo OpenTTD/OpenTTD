@@ -164,7 +164,9 @@ struct DrawPixelInfo {
 union Colour {
 	uint32 data; ///< Conversion of the channel information to a 32 bit number.
 	struct {
-#if TTD_ENDIAN == TTD_BIG_ENDIAN
+#if defined(__EMSCRIPTEN__)
+		uint8 r, g, b, a;
+#elif TTD_ENDIAN == TTD_BIG_ENDIAN
 		uint8 a, r, g, b; ///< colour channels in BE order
 #else
 		uint8 b, g, r, a; ///< colour channels in LE order
@@ -179,7 +181,9 @@ union Colour {
 	 * @param a The channel for the alpha/transparency.
 	 */
 	Colour(uint8 r, uint8 g, uint8 b, uint8 a = 0xFF) :
-#if TTD_ENDIAN == TTD_BIG_ENDIAN
+#if defined(__EMSCRIPTEN__)
+		r(r), g(g), b(b), a(a)
+#elif TTD_ENDIAN == TTD_BIG_ENDIAN
 		a(a), r(r), g(g), b(b)
 #else
 		b(b), g(g), r(r), a(a)
