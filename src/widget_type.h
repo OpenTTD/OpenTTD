@@ -174,8 +174,8 @@ public:
 	uint current_x;       ///< Current horizontal size (after resizing).
 	uint current_y;       ///< Current vertical size (after resizing).
 
-	uint pos_x;           ///< Horizontal position of top-left corner of the widget in the window.
-	uint pos_y;           ///< Vertical position of top-left corner of the widget in the window.
+	int pos_x;            ///< Horizontal position of top-left corner of the widget in the window.
+	int pos_y;            ///< Vertical position of top-left corner of the widget in the window.
 
 	NWidgetBase *next;    ///< Pointer to next widget in container. Managed by parent container widget.
 	NWidgetBase *prev;    ///< Pointer to previous widget in container. Managed by parent container widget.
