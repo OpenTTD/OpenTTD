@@ -84,6 +84,8 @@ static const Year MIN_YEAR = 0;
 
 /** The default starting year */
 static const Year DEF_START_YEAR = 1950;
+/** The default scoring end year */
+static const Year DEF_END_YEAR = ORIGINAL_END_YEAR - 1;
 
 /**
  * MAX_YEAR, nicely rounded value of the number of years that can

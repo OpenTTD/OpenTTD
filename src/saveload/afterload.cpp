@@ -747,6 +747,15 @@ bool AfterLoadGame()
 		_settings_game.linkgraph.distribution_default = DT_MANUAL;
 	}
 
+	if (IsSavegameVersionBefore(SLV_105)) {
+		extern int32 _old_ending_year_slv_105; // in date.cpp
+		_settings_game.game_creation.ending_year = _old_ending_year_slv_105 - 1;
+	} else if (IsSavegameVersionBefore(SLV_ENDING_YEAR)) {
+		/* Ending year was a GUI setting before SLV_105, was removed in revision 683b65ee1 (svn r14755). */
+		/* This also converts scenarios, both when loading them into the editor, and when starting a new game. */
+		_settings_game.game_creation.ending_year = DEF_END_YEAR;
+	}
+
 	/* Load the sprites */
 	GfxLoadSprites();
 	LoadStringWidthTable();
