@@ -27,6 +27,8 @@ Date      _date;       ///< Current date in days (day counter)
 DateFract _date_fract; ///< Fractional part of the day.
 uint16 _tick_counter;  ///< Ever incrementing (and sometimes wrapping) tick counter for setting off various events
 
+int32 _old_ending_year_slv_105; ///< Old ending year for savegames before SLV_105
+
 /**
  * Set the date.
  * @param date  New date
@@ -197,8 +199,8 @@ static void OnNewYear()
 
 	if (_cur_year == _settings_client.gui.semaphore_build_before) ResetSignalVariant();
 
-	/* check if we reached end of the game */
-	if (_cur_year == ORIGINAL_END_YEAR) {
+	/* check if we reached end of the game (end of ending year) */
+	if (_cur_year == _settings_game.game_creation.ending_year + 1) {
 		ShowEndGameChart();
 	/* check if we reached the maximum year, decrement dates by a year */
 	} else if (_cur_year == MAX_YEAR + 1) {
