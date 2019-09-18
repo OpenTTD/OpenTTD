@@ -939,6 +939,9 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari georgiano 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial iraní (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nuevo rublo ruso (RUR)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso mexicano (MXN)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nuevo dólar taiwanés (NTD)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Yuan chino (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar honkonés (HKD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vehículos de carretera
@@ -1190,6 +1193,8 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir modifi
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Modificar el terreno debajo de edificios y vías de tren sin quitarlos
 STR_CONFIG_SETTING_CATCHMENT                                    :Permitir cambiar el tamaño del área de recolección a una forma más real: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Las áreas de recolección se adecúan a diferentes tamaños, según los tipos de estaciones y aeropuertos
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Las estaciones privadas pueden dar servicio a industrias con estaciones neutrales: {STRING}
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Si se activa, las industrias con estaciones integradas (ej. plataformas petrolíferas) podrán aceptar cargamento de estaciones privadas construidas cerca. Si se desactiva, tales industrias solo recibirán cargamento en sus propias estaciones. No aceptarán cargamento de estaciones de compañías, y la estación integrada no brindará servicio a nada más que su industria
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir quitar mayor cantidad de carreteras, puentes y túneles de los pueblos: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Hacer más fácil eliminar infraestructura y edificios que sean propiedad de los pueblos
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longitud máxima de trenes: {STRING}
@@ -1322,8 +1327,8 @@ STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipo de terreno
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Solo TerraGenesis) Colinas del terreno
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidad industrial: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Número de industrias a generar y nivel a mantener durante el juego
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distancia máxima de refinerías de petróleo con los bordes del mapa: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Las refinerías de petróleo se construyen cerca del borde del mapa, el cual es costa en mapas con borde marítimo
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distancia máxima de industrias petrolíferas al borde del mapa: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Distancia límite desde el borde del mapa a partir del cual se pueden construir refinerías y plataformas de petróleo. En mapas con forma de isla esto garantiza que se ubiquen cerca de la costa. En mapas de más de 256 casillas el valor se amplía.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Nivel de inicio de nieve: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :En los mapas de clima Subártico, la elevación a la cual la nieve comienza. La nieve también afecta la generación de industrias y los requisitos de crecimiento de los pueblos
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregularidad del terreno: {STRING}
@@ -3118,6 +3123,8 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Cambiar nombre
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Ayuntamiento de {TOWN}
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Jurisdicción
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Mostrar área dentro de jurisdicción local
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Evaluación de empresas de transporte:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Acciones disponibles:
