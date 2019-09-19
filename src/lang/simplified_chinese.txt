@@ -235,6 +235,8 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}选择�
 STR_BUTTON_SORT_BY                                              :{BLACK}排序
 STR_BUTTON_LOCATION                                             :{BLACK}定位
 STR_BUTTON_RENAME                                               :{BLACK}重命名
+STR_BUTTON_CATCHMENT                                            :{BLACK}覆盖范围
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}显示覆盖范围
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}关闭窗口
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}窗口标题 - 拖动这里可以移动该窗口
@@ -989,6 +991,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :正常大小
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :两倍大小
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :四倍大小
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}选择此字体大小
 
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基础图形组
@@ -1465,6 +1468,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :联机游戏时
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :“打开”时联机游戏允许电脑玩家
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :可允许的最大的代码量(如超过则会令脚本被禁用):{STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :脚本在一个回合中可进行计算步数的最大值
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :每个脚本的内存上限: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :保养周期(百分数)： {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :选择触发车辆保养的条件，距离上一次保养的时间或者与最高可靠性的百分比
@@ -3584,6 +3588,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}可以�
 STR_REPLACE_ENGINES                                             :机车
 STR_REPLACE_WAGONS                                              :挂车
 STR_REPLACE_ALL_RAILTYPE                                        :所有铁路车辆
+STR_REPLACE_ALL_ROADTYPE                                        :所有道路载具
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}选择要更新的车辆对应的铁路类型
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}显示用来替换左侧被选定车辆的新车辆
@@ -4332,6 +4337,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}不能�
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}无法移除此处的电车道...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... 这里没有道路
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... 这里没有电车轨道
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}无法转换道路类型
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}不能在这里兴建运河……
