@@ -42,6 +42,7 @@ static struct {
 	MidiState status;
 	uint32 song_length;
 	uint32 song_position;
+	byte volume;
 } _midi; ///< Metadata about the midi we're playing.
 
 /** Factory for the libtimidity driver. */
@@ -57,6 +58,7 @@ const char *MusicDriver_LibTimidity::Start(const char * const *param)
 {
 	_midi.status = MIDI_STOPPED;
 	_midi.song = NULL;
+	_midi.volume = 127;
 
 	if (mid_init(param == NULL ? NULL : const_cast<char *>(param[0])) < 0) {
 		/* If init fails, it can be because no configuration was found.
@@ -107,6 +109,7 @@ void MusicDriver_LibTimidity::PlaySong(const MusicSongInfo &song)
 		return;
 	}
 
+	SetVolume(_midi.volume);
 	mid_song_start(_midi.song);
 	_midi.status = MIDI_PLAYING;
 }
@@ -134,5 +137,6 @@ bool MusicDriver_LibTimidity::IsSongPlaying()
 
 void MusicDriver_LibTimidity::SetVolume(byte vol)
 {
-	if (_midi.song != NULL) mid_song_set_volume(_midi.song, vol);
+	_midi.volume = vol;
+	if (_midi.song != NULL) mid_song_set_volume(_midi.song, vol * 100 / 127);
 }
