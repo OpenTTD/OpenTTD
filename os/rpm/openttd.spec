@@ -91,7 +91,7 @@ Group:          Amusements/Games/Strategy/Other
 Requires:       %{name}
 Conflicts:      %{name}-dedicated
 
-BuildRequires:  SDL-devel
+BuildRequires:  SDL2-devel
 BuildRequires:  fontconfig-devel
 
 %if 0%{?rhel_version} != 600

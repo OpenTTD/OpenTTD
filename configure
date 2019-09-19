@@ -110,6 +110,7 @@ AWKCOMMAND='
 
 		if ($0 == "ALLEGRO"     && "'$allegro_config'" == "")      { next; }
 		if ($0 == "SDL"         && "'$sdl_config'" == "")          { next; }
+		if ($0 == "SDL2"        && "'$sdl2_config'" == "")         { next; }
 		if ($0 == "PNG"         && "'$png_config'" == "")          { next; }
 		if ($0 == "OSX"         && "'$os'" != "OSX")               { next; }
 		if ($0 == "OS2"         && "'$os'" != "OS2")               { next; }

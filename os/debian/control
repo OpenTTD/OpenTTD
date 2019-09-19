@@ -3,7 +3,7 @@ Section: games
 Priority: optional
 Maintainer: Matthijs Kooijman <matthijs@stdin.nl>
 Uploaders: Jordi Mallach <jordi@debian.org>
-Build-Depends: debhelper (>= 7.0.50), libsdl-dev, zlib1g-dev, libpng-dev, libfreetype6-dev, libfontconfig-dev, libicu-dev, liblzma-dev, liblzo2-dev
+Build-Depends: debhelper (>= 7.0.50), libsdl2-dev, zlib1g-dev, libpng-dev, libfreetype6-dev, libfontconfig-dev, libicu-dev, liblzma-dev, liblzo2-dev
 Standards-Version: 3.8.4
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/openttd.git
 Vcs-Git: git://anonscm.debian.org/collab-maint/openttd.git
