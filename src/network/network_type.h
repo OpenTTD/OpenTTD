@@ -38,7 +38,7 @@ enum NetworkVehicleType {
 };
 
 /** 'Unique' identifier to be given to clients */
-enum ClientID {
+enum ClientID : uint32 {
 	INVALID_CLIENT_ID = 0, ///< Client is not part of anything
 	CLIENT_ID_SERVER  = 1, ///< Servers always have this ID
 	CLIENT_ID_FIRST   = 2, ///< The first client ID
