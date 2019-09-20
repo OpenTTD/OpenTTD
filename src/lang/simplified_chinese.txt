@@ -189,6 +189,7 @@ STR_COLOUR_ORANGE                                               :橘黄色
 STR_COLOUR_BROWN                                                :棕　色
 STR_COLOUR_GREY                                                 :浅灰色
 STR_COLOUR_WHITE                                                :白　色
+STR_COLOUR_DEFAULT                                              :默认
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}英里/小时
@@ -265,6 +266,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}如启�
 STR_BUTTON_DEFAULT                                              :{BLACK}默认
 STR_BUTTON_CANCEL                                               :{BLACK}取消
 STR_BUTTON_OK                                                   :{BLACK}确定
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}注意：服务器管理员可以看到你所输入的文字
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -929,6 +931,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :南非兰特（
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :自定义…
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :格鲁吉亚拉里(GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :伊朗里亚尔(IRR)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :新台币 (NTD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}汽车行驶
@@ -2410,6 +2413,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}建设�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}建设/拆除 公路
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}建设/拆除 电车轨道
 
+STR_ROAD_NAME_TRAM                                              :电车轨道
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}汽车车库的方向……
@@ -2697,14 +2701,18 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}帧率
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}模拟速率: {STRING}
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}帧率：{STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}每秒渲染更新的图像帧。
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}当前游戏速度：{DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}当前游戏运行速度，与正常速度之比率
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} fps
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} fps
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} fps
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 ############ Leave those lines in this order!!
 STR_FRAMERATE_VIDEO                                             :{BLACK}视频输出：
@@ -2855,6 +2863,7 @@ STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}最低�
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 码：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}调色板: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}参数：{SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :无
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}没有可用的信息
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}没有找到对应的文件
@@ -3308,6 +3317,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}将屏�
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生产程度: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}此工业已经宣布即刻停业倒闭!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}需要: {YELLOW}{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} 等待中{STRING}
@@ -3395,6 +3405,7 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :购买飞机
 ############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}售价：{GOLD}{CURRENCY_LONG}{BLACK} 重量：{GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}售价: {GOLD}{CURRENCY_LONG}{BLACK} (改装花费: {GOLD}{CURRENCY_LONG}{BLACK}) 重量: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}在海洋上的速度： {GOLD}{VELOCITY}
@@ -3683,6 +3694,7 @@ STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} �
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最大速度：{LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}最高速度： {LTBLUE}{VELOCITY} {BLACK}飞机种类： {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}最大速度: {LTBLUE}{VELOCITY} {BLACK}飞机类型: {LTBLUE}{STRING} {BLACK}续航里程: {LTBLUE}{COMMA} 格
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最大速度：{LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最大速度：{LTBLUE}{VELOCITY} {BLACK}最大牵引力：{LTBLUE}{FORCE}
 
