@@ -1072,7 +1072,7 @@ bool UsesWagonOverride(const Vehicle *v)
  * @param param1   First parameter of the callback
  * @param param2   Second parameter of the callback
  * @param engine   Engine type of the vehicle to evaluate the callback for
- * @param v        The vehicle to evaluate the callback for, or nullptr if it doesnt exist yet
+ * @param v        The vehicle to evaluate the callback for, or nullptr if it doesn't exist yet
  * @return The value the callback returned, or CALLBACK_FAILED if it failed
  */
 uint16 GetVehicleCallback(CallbackID callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v)
