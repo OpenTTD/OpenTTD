@@ -1513,7 +1513,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 			break;
 
 		/* SL_WRITEBYTE writes a value to the savegame to identify the type of an object.
-		 * When loading, the value is read explictly with SlReadByte() to determine which
+		 * When loading, the value is read explicitly with SlReadByte() to determine which
 		 * object description to use. */
 		case SL_WRITEBYTE:
 			switch (_sl.action) {

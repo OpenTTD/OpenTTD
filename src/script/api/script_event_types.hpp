@@ -799,7 +799,7 @@ private:
 
 /**
  * Event AircraftDestTooFar, indicating the next destination of an aircraft is too far away.
- * This event can be trigger when the current oder of an aircraft changes, usually either when
+ * This event can be trigger when the current order of an aircraft changes, usually either when
  * loading is done or when switch manually.
  * @api ai
  */

@@ -263,7 +263,7 @@ protected:
 	/**
 	 * Counts how many pixels of height that are used by Date and Title
 	 * (excluding marginal after Title, as each body element has
-	 * an empty row before the elment).
+	 * an empty row before the element).
 	 * @param max_width Available width to display content.
 	 * @return the height in pixels.
 	 */
@@ -412,7 +412,7 @@ public:
 		this->vscroll = this->GetScrollbar(WID_SB_SCROLLBAR);
 		this->vscroll->SetStepSize(FONT_HEIGHT_NORMAL);
 
-		/* Initalize page sort. */
+		/* Initialize page sort. */
 		this->story_pages.SetSortFuncs(StoryBookWindow::page_sorter_funcs);
 		this->story_pages.ForceRebuild();
 		this->BuildStoryPageList();

@@ -6,7 +6,7 @@
 #include "linkgraphjob_base.h"
 
 /**
- * Stateless, thread safe initialization hander. Initializes node and edge
+ * Stateless, thread safe initialization handler. Initializes node and edge
  * annotations.
  */
 class InitHandler : public ComponentHandler {

@@ -250,7 +250,7 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 /**
  * Iterate over orders starting at \a cur and \a next and refresh links
  * associated with them. \a cur and \a next can be equal. If they're not they
- * must be "neigbours" in their order list, which means \a next must be directly
+ * must be "neighbours" in their order list, which means \a next must be directly
  * reachable from \a cur without passing any further OT_GOTO_STATION or
  * OT_IMPLICIT orders in between.
  * @param cur Current order being evaluated.

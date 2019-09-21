@@ -23,7 +23,7 @@ private:
 };
 
 /**
- * Stateless, thread safe demand hander. Doesn't do anything but call DemandCalculator.
+ * Stateless, thread safe demand handler. Doesn't do anything but call DemandCalculator.
  */
 class DemandHandler : public ComponentHandler {
 public:

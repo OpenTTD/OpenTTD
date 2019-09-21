@@ -395,7 +395,7 @@ void VehicleCargoList::AgeCargo()
 }
 
 /**
- * Sets loaded_at_xy to the current station for all cargo to be transfered.
+ * Sets loaded_at_xy to the current station for all cargo to be transferred.
  * This is done when stopping or skipping while the vehicle is unloading. In
  * that case the vehicle will get part of its transfer credits early and it may
  * get more transfer credits than it's entitled to.

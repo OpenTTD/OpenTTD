@@ -249,7 +249,7 @@ DEF_CONSOLE_CMD(ConResetTile)
  * Scroll to a tile on the map.
  * param x tile number or tile x coordinate.
  * param y optional y coordinate.
- * @note When only one argument is given it is intepreted as the tile number.
+ * @note When only one argument is given it is interpreted as the tile number.
  *       When two arguments are given, they are interpreted as the tile's x
  *       and y coordinates.
  * @return True when either console help was shown or a proper amount of parameters given.

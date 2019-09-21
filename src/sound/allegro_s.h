@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file allegro_s.h Base fo playing sound via Allegro. */
+/** @file allegro_s.h Base for playing sound via Allegro. */
 
 #ifndef SOUND_ALLEGRO_H
 #define SOUND_ALLEGRO_H

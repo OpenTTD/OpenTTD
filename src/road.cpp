@@ -41,9 +41,9 @@ static bool IsPossibleCrossing(const TileIndex tile, Axis ax)
 }
 
 /**
- * Clean up unnecessary RoadBits of a planed tile.
+ * Clean up unnecessary RoadBits of a planned tile.
  * @param tile current tile
- * @param org_rb planed RoadBits
+ * @param org_rb planned RoadBits
  * @return optimised RoadBits
  */
 RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
@@ -96,7 +96,7 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 				}
 			}
 
-			/* If the neighbor tile is inconnective, remove the planed road connection to it */
+			/* If the neighbor tile is inconnective, remove the planned road connection to it */
 			if (!connective) org_rb ^= target_rb;
 		}
 	}

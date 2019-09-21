@@ -397,7 +397,7 @@ const Order *OrderList::GetNextDecisionNode(const Order *next, uint hops) const
  * @param v The vehicle we're looking at.
  * @param first Order to start searching at or nullptr to start at cur_implicit_order_index + 1.
  * @param hops Number of orders we have already looked at.
- * @return Next stoppping station or INVALID_STATION.
+ * @return Next stopping station or INVALID_STATION.
  * @pre The vehicle is currently loading and v->last_station_visited is meaningful.
  * @note This function may draw a random number. Don't use it from the GUI.
  */

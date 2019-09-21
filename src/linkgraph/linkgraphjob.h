@@ -415,7 +415,7 @@ public:
 protected:
 
 	/**
-	 * Some boundaries to clamp agains in order to avoid integer overflows.
+	 * Some boundaries to clamp against in order to avoid integer overflows.
 	 */
 	enum PathCapacityBoundaries {
 		PATH_CAP_MULTIPLIER = 16,

@@ -14,7 +14,7 @@
  * holding everything that the newgrf action 04 will send over to OpenTTD.
  * One of the biggest problems is that Dynamic lang Array uses ISO codes
  * as way to identifying current user lang, while newgrf uses bit shift codes
- * not related to ISO.  So equivalence functionnality had to be set.
+ * not related to ISO.  So equivalence functionality had to be set.
  */
 
 #include "stdafx.h"

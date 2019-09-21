@@ -79,7 +79,7 @@ public:
 	/**
 	 * Get the currently marked text.
 	 * @param[out] length Length of the marked text.
-	 * @return Begining of the marked area or nullptr if no text is marked.
+	 * @return Beginning of the marked area or nullptr if no text is marked.
 	 */
 	const char *GetMarkedText(size_t *length) const
 	{

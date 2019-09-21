@@ -918,7 +918,7 @@ struct FrametimeGraphWindow : Window {
 					}
 				}
 			}
-			/* Draw divison lines and labels for the horizontal axis */
+			/* Draw division lines and labels for the horizontal axis */
 			for (uint division = horz_divisions; division > 0; division--) {
 				int x = Scinterlate(x_zero, x_max, 0, (int)horz_divisions, (int)horz_divisions - (int)division);
 				GfxDrawLine(x, y_max, x, y_zero, c_grid);

@@ -248,7 +248,7 @@ static byte MapAircraftMovementState(const Aircraft *v)
 			return AMS_TTDP_TO_INWAY;
 
 		case HELILANDING:
-		case HELIENDLANDING: // Helicoptor is decending.
+		case HELIENDLANDING: // Helicoptor is descending.
 			if (amdflag & AMED_HELI_LOWER) {
 				return afc->delta_z == 0 ?
 					AMS_TTDP_HELI_LAND_AIRPORT : AMS_TTDP_HELI_LAND_HELIPORT;

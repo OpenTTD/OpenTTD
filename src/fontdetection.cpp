@@ -399,7 +399,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
 	if (MacOSVersionIsAtLeast(10, 6, 0)) {
 		/* Simply creating the font using CTFontCreateWithNameAndSize will *always* return
-		 * something, no matter the name. As such, we can't use it to check for existance.
+		 * something, no matter the name. As such, we can't use it to check for existence.
 		 * We instead query the list of all font descriptors that match the given name which
 		 * does not do this stupid name fallback. */
 		CTFontDescriptorRef name_desc = CTFontDescriptorCreateWithNameAndSize(name, 0.0);

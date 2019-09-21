@@ -22,7 +22,7 @@ class LinkGraphOverlay;
  * Data structure for viewport, display of a part of the world
  */
 struct ViewPort {
-	int left;    ///< Screen coordinate left egde of the viewport
+	int left;    ///< Screen coordinate left edge of the viewport
 	int top;     ///< Screen coordinate top edge of the viewport
 	int width;   ///< Screen width of the viewport
 	int height;  ///< Screen height of the viewport

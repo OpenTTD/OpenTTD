@@ -238,7 +238,7 @@ protected:
 
 	int lock_offset; ///< Left offset for lock icon.
 	int blot_offset; ///< Left offset for green/yellow/red compatibility icon.
-	int flag_offset; ///< Left offset for langauge flag icon.
+	int flag_offset; ///< Left offset for language flag icon.
 
 	/**
 	 * (Re)build the GUI network game list (a.k.a. this->servers) as some

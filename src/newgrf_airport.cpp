@@ -132,7 +132,7 @@ bool AirportSpec::IsAvailable() const
 
 /**
  * Check if the airport would be within the map bounds at the given tile.
- * @param table Selected layout table. This affects airport rotation, and therefore dimenions.
+ * @param table Selected layout table. This affects airport rotation, and therefore dimensions.
  * @param tile Top corner of the airport.
  * @return true iff the airport would be within the map bounds at the given tile.
  */

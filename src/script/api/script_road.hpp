@@ -219,7 +219,7 @@ public:
 	static bool AreRoadTilesConnected(TileIndex tile_from, TileIndex tile_to);
 
 	/**
-	 * Lookup function for building road parts independend on whether the
+	 * Lookup function for building road parts independent of whether the
 	 *  "building on slopes" setting is enabled or not.
 	 *  This implementation can be used for abstract reasoning about a tile as
 	 *  it needs the slope and existing road parts of the tile as information.
@@ -250,10 +250,10 @@ public:
 	static int32 CanBuildConnectedRoadParts(ScriptTile::Slope slope, struct Array *existing, TileIndex start, TileIndex end);
 
 	/**
-	 * Lookup function for building road parts independend on whether the
+	 * Lookup function for building road parts independent of whether the
 	 *  "building on slopes" setting is enabled or not.
 	 *  This implementation can be used for reasoning about an existing tile.
-	 * @param tile The the tile to examine.
+	 * @param tile The tile to examine.
 	 * @param start The tile from where "tile" will be entered.
 	 * @param end The tile from where "tile" will be exited.
 	 * @pre start != end.

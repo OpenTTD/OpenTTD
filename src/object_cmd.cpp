@@ -789,7 +789,7 @@ static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_ow
 
 	if (do_clear) {
 		ReallyClearObjectTile(Object::GetByTile(tile));
-		/* When clearing objects, they may turn into canal, which may require transfering ownership. */
+		/* When clearing objects, they may turn into canal, which may require transferring ownership. */
 		ChangeTileOwner(tile, old_owner, new_owner);
 	}
 }

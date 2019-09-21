@@ -650,7 +650,7 @@ void NewGRFSpriteLayout::AllocateRegisters()
 /**
  * Prepares a sprite layout before resolving action-1-2-3 chains.
  * Integrates offsets into the layout and determines which chains to resolve.
- * @note The function uses statically allocated temporary storage, which is reused everytime when calling the function.
+ * @note The function uses statically allocated temporary storage, which is reused every time when calling the function.
  *       That means, you have to use the sprite layout before calling #PrepareLayout() the next time.
  * @param orig_offset          Offset to apply to non-action-1 sprites.
  * @param newgrf_ground_offset Offset to apply to action-1 ground sprites.

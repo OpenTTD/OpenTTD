@@ -162,7 +162,7 @@ bool CargoReturn::operator()(CargoPacket *cp)
 
 /**
  * Transfers some cargo from a vehicle to a station.
- * @param cp Packet to be transfered.
+ * @param cp Packet to be transferred.
  * @return True if the packet was completely reserved, false if part of it was.
  */
 bool CargoTransfer::operator()(CargoPacket *cp)

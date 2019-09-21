@@ -141,7 +141,7 @@ struct GRFFile : ZeroedMemoryAllocator {
 
 	struct LanguageMap *language_map; ///< Mappings related to the languages.
 
-	int traininfo_vehicle_pitch;  ///< Vertical offset for draing train images in depot GUI and vehicle details
+	int traininfo_vehicle_pitch;  ///< Vertical offset for drawing train images in depot GUI and vehicle details
 	uint traininfo_vehicle_width; ///< Width (in pixels) of a 8/8 train vehicle in depot GUI and vehicle details
 
 	uint32 grf_features;                     ///< Bitset of GrfSpecFeature the grf uses
