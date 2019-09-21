@@ -50,7 +50,7 @@ RES := $(shell if [ ! -f $(CONFIG_CACHE_SOURCE_LIST) ] || [ -n "`cmp $(CONFIG_CA
 
 all: config.pwd config.cache
 ifdef DISTCC
-	@if [ -z "`echo '$(MFLAGS)' | grep '\-j'`" ]; then echo; echo "WARNING: you enabled distcc support, but you don't seem to be using the -jN paramter"; echo; fi
+	@if [ -z "`echo '$(MFLAGS)' | grep '\-j'`" ]; then echo; echo "WARNING: you enabled distcc support, but you don't seem to be using the -jN parameter"; echo; fi
 endif
 	@for dir in $(DIRS); do \
 		$(MAKE) -C $$dir all || exit 1; \

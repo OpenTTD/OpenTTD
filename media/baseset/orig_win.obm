@@ -90,7 +90,7 @@ GM_TT19.GM = Funk Central
 GM_TT20.GM = Jammit
 GM_TT21.GM = Movin' On
 
-; MIDI timecodes where the playback should attemp to start and stop short.
+; MIDI timecodes where the playback should attempt to start and stop short.
 ; This is to allow fixing undesired silences in original MIDI files.
 ; However not all music drivers may support this.
 [timingtrim]

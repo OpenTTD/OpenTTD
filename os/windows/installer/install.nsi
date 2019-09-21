@@ -143,7 +143,7 @@ Section "!OpenTTD" Section1
 	Push "$INSTDIR\scripts\README.md"
 	Call unix2dos
 
-	; Copy some documention files
+	; Copy some documentation files
 	SetOutPath "$INSTDIR\docs\"
 	File ${PATH_ROOT}docs\multiplayer.txt
 	Push "$INSTDIR\docs\multiplayer.txt"

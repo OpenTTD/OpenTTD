@@ -30,7 +30,7 @@ Table of contents
   in the same way, and trees always grow the same.
 
   In OpenTTD multiplayer synchronisation works by creating a savegame
-  when clients join, and then transfering that savegame to the client,
+  when clients join, and then transferring that savegame to the client,
   so it has the complete gamestate at a fixed point in time.
 
   Afterwards clients only receive 'commands', that is: Stuff which is
@@ -81,7 +81,7 @@ Table of contents
   that a vehicle picks the left line instead of the right line at
   a junction on one client.
 
-  The important thing here is, that noone notices when a Desync
+  The important thing here is, that no one notices when a Desync
   occurs. The desync client will continue to simulate the gamestate
   and execute commands from the server. Once the gamestate differs
   it will increasingly spiral out of control: If a vehicle picks a
@@ -108,7 +108,7 @@ Table of contents
   indication on when the Desync happened. The Desync may after
   all have occurred long ago, and just did not affect the checksum
   up to now. The checksum may have matched 10 times or more
-  since the Desync happend, and only now the Desync has spiraled
+  since the Desync happened, and only now the Desync has spiraled
   enough to finally affect the checksum. (There was once a desync
   which was only noticed by the checksum after 20 game years.)
 
@@ -140,7 +140,7 @@ Table of contents
 
 2.1) Cache debugging
 ---- ---------------
-  Desyncs which are caused by inproper cache validation can
+  Desyncs which are caused by improper cache validation can
   often be found by enabling cache validation:
    - Start OpenTTD with '-d desync=2'.
    - This will enable validation of caches every tick.

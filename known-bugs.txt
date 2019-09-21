@@ -220,7 +220,7 @@ Entry- and exit signals are not dragged [#4378]:
 Station build date is incorrect [#4415]:
         The tile query tool will show the date of the last (re)construction
         at the station and not the date of the first construction. This is
-        due to compatability reasons with NewGRFs and the fact that it is
+        due to compatibility reasons with NewGRFs and the fact that it is
         wrong to say that the station is built in a particular year when it
         was completely destroyed/rebuilt later on.
         The tile query tool can be fixed by changing the "Build date" text
@@ -404,7 +404,7 @@ Some houses and industries are not affected by transparency [#5817]:
 Involuntary cargo exchange with cargodist via neutral station [#6114]:
         When two players serve a neutral station at an industry, a cross-company
         chain for cargo flow can and will be established which can only be
-        interrupted if one of the players stops competing for the ressources of
+        interrupted if one of the players stops competing for the resources of
         that industry. There is an easy fix for this: If you are loading at the
         shared station make the order "no unload" and if you're unloading make
         it "no load". Cargodist will then figure out that it should not create

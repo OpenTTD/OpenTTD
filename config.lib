@@ -538,8 +538,8 @@ check_params() {
 
 	# Export some variables to be used by pkg-config
 	#
-	# PKG_CONFIG_LIBDIR variable musn't be set if we are not willing to
-	# override the default pkg-config search path, it musn't be an empty
+	# PKG_CONFIG_LIBDIR variable mustn't be set if we are not willing to
+	# override the default pkg-config search path, it mustn't be an empty
 	# string. If the variable is empty (e.g. when an empty string comes
 	# from config.cache) then unset it. This way the "don't override" state
 	# will be properly preserved when (re)configuring.
@@ -1389,7 +1389,7 @@ make_compiler_cflags() {
 
 		if [ $cc_version -ge 402 ]; then
 			# GCC 4.2+ automatically assumes that signed overflows do
-			# not occur in signed arithmetics, whereas we are not
+			# not occur in signed arithmetic, whereas we are not
 			# sure that they will not happen. It furthermore complains
 			# about its own optimized code in some places.
 			flags="$flags -fno-strict-overflow"
@@ -3136,7 +3136,7 @@ detect_sse_capable_architecture() {
 	else
 		# It was forced, so it should be found.
 		if [ "$with_sse" != "1" ]; then
-			log 1 "configure: error: SSE couln't be found"
+			log 1 "configure: error: SSE couldn't be found"
 			log 1 "configure: error: you force enabled SSE, but it seems unavailable"
 			exit 1
 		fi

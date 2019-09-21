@@ -1033,7 +1033,7 @@ openttd (0.4.0-1) unstable; urgency=low
 openttd (0.3.6-1) unstable; urgency=low
 
   * New upstream release
-  * Modifed Makefile to install xpm icon and scenarios in /usr/share/games/openttd/
+  * Modified Makefile to install xpm icon and scenarios in /usr/share/games/openttd/
   * Added openttd.32.xpm, openttd.64.xpm was too big
 
  -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Tue, 25 Jan 2005 19:21:08 +0100
