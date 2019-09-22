@@ -800,7 +800,7 @@ private:
 /**
  * Event AircraftDestTooFar, indicating the next destination of an aircraft is too far away.
  * This event can be triggered when the current order of an aircraft changes, usually either when
- * loading is done or when switch manually.
+ * loading is done or when switched manually.
  * @api ai
  */
 class ScriptEventAircraftDestTooFar : public ScriptEvent {
