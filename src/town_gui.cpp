@@ -965,7 +965,7 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_TD_LIST);
 	}
 
-	virtual void OnEditboxChanged(int wid)
+	void OnEditboxChanged(int wid) override
 	{
 		if (wid == WID_TD_FILTER) {
 			this->string_filter.SetFilterTerm(this->townname_editbox.text.buf);
