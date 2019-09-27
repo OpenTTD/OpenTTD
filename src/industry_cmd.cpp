@@ -1126,9 +1126,18 @@ static void ProduceIndustryGoods(Industry *i)
 		uint32 r;
 		uint num;
 		if (Chance16R(1, 14, r) && (num = indsp->number_of_sounds) != 0 && _settings_client.sound.ambient) {
-			SndPlayTileFx(
-				(SoundFx)(indsp->random_sounds[((r >> 16) * num) >> 16]),
-				i->location.tile);
+			bool playsound = false;
+			for (size_t j = 0; j < lengthof(i->last_month_production); j++) {
+				if (i->last_month_production[j] > 0) {
+					playsound = true;
+					break;
+				}
+			}
+
+			if (playsound)
+				SndPlayTileFx(
+					(SoundFx)(indsp->random_sounds[((r >> 16) * num) >> 16]),
+					i->location.tile);
 		}
 	}
 
