@@ -369,7 +369,7 @@ const char *MusicDriver_Win32::Start(const char * const *parm)
 	DEBUG(driver, 2, "Win32-MIDI: Start: initializing");
 
 	int resolution = GetDriverParamInt(parm, "resolution", 5);
-	int port = GetDriverParamInt(parm, "port", -1);
+	uint port = (uint)GetDriverParamInt(parm, "port", UINT_MAX);
 	const char *portname = GetDriverParam(parm, "portname");
 
 	/* Enumerate ports either for selecting port by name, or for debug output */
@@ -392,7 +392,7 @@ const char *MusicDriver_Win32::Start(const char * const *parm)
 	}
 
 	UINT devid;
-	if (port < 0) {
+	if (port == UINT_MAX) {
 		devid = MIDI_MAPPER;
 	} else {
 		devid = (UINT)port;
