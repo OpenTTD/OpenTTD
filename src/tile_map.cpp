@@ -76,8 +76,8 @@ Slope GetTileSlope(TileIndex tile, int *h)
 /**
  * Return the slope of a given tile, also for tiles outside the map (virtual "black" tiles).
  *
- * @param x X coordinate of the tile to compute slope of, may be ouside the map.
- * @param y Y coordinate of the tile to compute slope of, may be ouside the map.
+ * @param x X coordinate of the tile to compute slope of, may be outside the map.
+ * @param y Y coordinate of the tile to compute slope of, may be outside the map.
  * @param h If not \c nullptr, pointer to storage of z height.
  * @return Slope of the tile, except for the HALFTILE part.
  */

@@ -352,8 +352,8 @@ int GetSlopePixelZ(int x, int y)
  * Return world \c z coordinate of a given point of a tile,
  * also for tiles outside the map (virtual "black" tiles).
  *
- * @param x World X coordinate in tile "units", may be ouside the map.
- * @param y World Y coordinate in tile "units", may be ouside the map.
+ * @param x World X coordinate in tile "units", may be outside the map.
+ * @param y World Y coordinate in tile "units", may be outside the map.
  * @return World Z coordinate at tile ground level, including slopes and foundations.
  */
 int GetSlopePixelZOutsideMap(int x, int y)

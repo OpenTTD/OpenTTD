@@ -292,7 +292,7 @@ public:
 	}
 
 	/**
-	 * Read the currenty processed string.
+	 * Read the currently processed string.
 	 * @return the string, can be nullptr.
 	 */
 	const char *GetString() const

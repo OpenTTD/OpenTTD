@@ -286,7 +286,7 @@ protected:
 	typedef CargoList<VehicleCargoList, CargoPacketList> Parent;
 
 	Money feeder_share;                     ///< Cache for the feeder share.
-	uint action_counts[NUM_MOVE_TO_ACTION]; ///< Counts of cargo to be transfered, delivered, kept and loaded.
+	uint action_counts[NUM_MOVE_TO_ACTION]; ///< Counts of cargo to be transferred, delivered, kept and loaded.
 
 	template<class Taction>
 	void ShiftCargo(Taction action);

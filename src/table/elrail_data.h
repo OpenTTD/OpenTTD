@@ -412,7 +412,7 @@ static const SortableSpriteStruct RailCatenarySpriteData_Tunnel[] = {
  * Identifiers for Wires:
  * <ol><li>Direction of the wire</li>
  * <li>Slope of the tile for diagonals, placement inside the track for horiz/vertical pieces</li>
- * <li>Place where a pylon shoule be</li></ol>
+ * <li>Place where a pylon should be</li></ol>
  * Identifiers for Pylons:
  * <ol><li>Direction of the wire</li>
  * <li>Slope of the tile</li>

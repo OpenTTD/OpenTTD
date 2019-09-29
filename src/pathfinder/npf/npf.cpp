@@ -998,7 +998,7 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
  * When we are looking for one specific target (optionally multiple tiles), we
  * should use a good heuristic to perform aystar search. When we search for
  * multiple targets that are spread around, we should perform a breadth first
- * search by specifiying CalcZero as our heuristic.
+ * search by specifying CalcZero as our heuristic.
  */
 static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start_tile1, AyStarNode *start2, bool ignore_start_tile2, NPFFindStationOrTileData *target, AyStar_EndNodeCheck target_proc, AyStar_CalculateH heuristic_proc, AyStarUserData *user, uint reverse_penalty, bool ignore_reserved = false, int max_penalty = 0)
 {

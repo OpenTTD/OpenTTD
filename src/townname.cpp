@@ -124,7 +124,7 @@ bool GenerateTownName(uint32 *townnameparts, TownNames *town_names)
 	TownNameParams par(_settings_game.game_creation.town_name);
 
 	/* This function is called very often without entering the gameloop
-	 * inbetween. So reset layout cache to prevent it from growing too big. */
+	 * in between. So reset layout cache to prevent it from growing too big. */
 	Layouter::ReduceLineCache();
 
 	/* Do not set i too low, since when we run out of names, we loop

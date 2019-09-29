@@ -114,7 +114,7 @@ const char *MusicDriver_Cocoa::Start(const char * const *parm)
 
 
 /**
- * Checks wether the player is active.
+ * Checks whether the player is active.
  */
 bool MusicDriver_Cocoa::IsSongPlaying()
 {

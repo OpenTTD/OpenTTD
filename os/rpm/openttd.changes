@@ -46,7 +46,7 @@ Sat May  1 15:59:32 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
 Thu Apr  1 08:53:54 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
 
 - upstream update 1.0.0 (finally!)
-  * completely independend game but still working also
+  * completely independent game but still working also
     with ttd original gaphics, sounds and music
 - Add: Recommends openmsx
 - requires lzo2
@@ -54,7 +54,7 @@ Thu Apr  1 08:53:54 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
 -------------------------------------------------------------------
 Fri Dec 18 2009 Marcel Gmür <ammler@openttdcoop.org> - 0.7.4
 
-- support for differen branches
+- support for different branches
 - easy support for dedicated branch
 - let openttd build system make the dektop file
 - split the package to data and gui

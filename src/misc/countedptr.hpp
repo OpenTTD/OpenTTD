@@ -53,7 +53,7 @@ public:
 	}
 
 protected:
-	/** add one ref to the underlaying object */
+	/** add one ref to the underlying object */
 	inline void AddRef()
 	{
 		if (m_pT != nullptr) m_pT->AddRef();

@@ -46,9 +46,9 @@ cat ai/regression/tst_*/main.nut | tr ';' '\n' | awk '
 			}
 		}
 	}
-	# We want to remove everything before the FIRST occurence of AI.
-	# If we do not remove any other occurences of AI from the string
-	# we will remove everything before the LAST occurence of AI, so
+	# We want to remove everything before the FIRST occurrence of AI.
+	# If we do not remove any other occurrences of AI from the string
+	# we will remove everything before the LAST occurrence of AI, so
 	# do some little magic to make it work the way we want.
 	sub("AI", "AXXXXY")
 	gsub("AI", "AXXXXX")

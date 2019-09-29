@@ -3101,7 +3101,7 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 			/* Drive-through stop */
 			uint sprite_offset = 5 - image;
 
-			/* Road underlay takes precendence over tram */
+			/* Road underlay takes precedence over tram */
 			if (rti->UsesOverlay()) {
 				SpriteID ground = GetCustomRoadSprite(rti, INVALID_TILE, ROTSG_GROUND);
 				DrawSprite(ground + sprite_offset, PAL_NONE, x, y);

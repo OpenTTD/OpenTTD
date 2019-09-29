@@ -33,7 +33,7 @@ static size_t ConvertLandscape(const char *value);
  *    Thse are for members in the struct described by the current
  *    #SettingDesc list / .ini file.  Here, 'base' specifies type of the
  *    struct while 'var' points out the member of the struct (the actual
- *    struct to store it in is implicitely defined by the #SettingDesc
+ *    struct to store it in is implicitly defined by the #SettingDesc
  *    list / .ini file preamble the entry is in).
  *
  * The something part defines the type of variable to store. There are a

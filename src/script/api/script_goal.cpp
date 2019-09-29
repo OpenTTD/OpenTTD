@@ -84,7 +84,7 @@
 	EnforcePrecondition(false, IsValidGoal(goal_id));
 	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
 
-	/* Ensure null as used for emtpy string. */
+	/* Ensure null as used for empty string. */
 	if (progress != nullptr && StrEmpty(progress->GetEncodedText())) {
 		progress = nullptr;
 	}

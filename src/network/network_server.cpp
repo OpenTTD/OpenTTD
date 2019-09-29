@@ -1206,7 +1206,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet *p)
 
 	/* The client is trying to catch up with the server */
 	if (this->status == STATUS_PRE_ACTIVE) {
-		/* The client is not yet catched up? */
+		/* The client is not yet caught up? */
 		if (frame + DAY_TICKS < _frame_counter) return NETWORK_RECV_STATUS_OKAY;
 
 		/* Now he is! Unpause the game */

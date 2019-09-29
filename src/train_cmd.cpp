@@ -1280,7 +1280,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		 *     b) the 'next' part is an engine that becomes a front engine.
 		 *     c) there is no 'next' part, nothing else happens
 		 *  5) non front engine gets moved and becomes a new train, nothing else happens
-		 *  6) non front engine gets moved within a train / to another train, nothing hapens
+		 *  6) non front engine gets moved within a train / to another train, nothing happens
 		 *  7) wagon gets moved, nothing happens
 		 */
 		if (src == original_src_head && src->IsEngine() && !src->IsFrontEngine()) {

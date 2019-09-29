@@ -92,7 +92,7 @@ public:
 	 * Create a new story page element.
 	 * @param story_page_id The page id of the story page which the page element should be appended to.
 	 * @param type Which page element type to create.
-	 * @param reference A reference value to the object that is refered to by some page element types. When type is SPET_GOAL, this is the goal ID. When type is SPET_LOCATION, this is the TileIndex.
+	 * @param reference A reference value to the object that is referred to by some page element types. When type is SPET_GOAL, this is the goal ID. When type is SPET_LOCATION, this is the TileIndex.
 	 * @param text The body text of page elements that allow custom text. (SPET_TEXT and SPET_LOCATION)
 	 * @return The new StoryPageElementID, or STORY_PAGE_ELEMENT_INVALID if it failed.
 	 * @pre No ScriptCompanyMode may be in scope.
@@ -107,7 +107,7 @@ public:
 	/**
 	 * Update the content of a page element
 	 * @param story_page_element_id The page id of the story page which the page element should be appended to.
-	 * @param reference A reference value to the object that is refered to by some page element types. See also NewElement.
+	 * @param reference A reference value to the object that is referred to by some page element types. See also NewElement.
 	 * @param text The body text of page elements that allow custom text. See also NewElement.
 	 * @return True if the action succeeded.
 	 * @pre No ScriptCompanyMode may be in scope.

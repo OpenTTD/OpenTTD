@@ -186,7 +186,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: [Win32] Right mouse scrolling didn't work properly with the Windows 10 Fall Creators Update [FS#6629] (r27935)
 - Fix: Forest, candyfloss forest and battery farm skipped the first animation frame [FS#6639] (r27932)
 - Fix: Glyphs in range U+0020 to U+00FF may only be defined in orig_extra.grf, not in openttd.grf [FS#6620] (r27915)
-- Fix: 'unban' console command was not handling IPv6 adresses properly (r27914, r27913)
+- Fix: 'unban' console command was not handling IPv6 addresses properly (r27914, r27913)
 - Fix: Keep the 'link' between industry chain and smallmap windows whenever possible [FS#6585] (r27905)
 - Fix: When the last vehicle is removed from a shared orders group, hide the 'Stop sharing' button in the vehicle orders window [FS#6593] (r27904)
 - Fix: Tooltip of 'increase service interval' said 'decrease' [FS#6606] (r27895)
@@ -292,7 +292,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: [Build] Force sorting to be locale independent, so files are always ordered the same and by that token better diff-able (r27562, r27558)
 - Fix: Typos in comments and string (r27561, r27560)
 - Fix: [Build] bashism that caused different CFLAGS with bash vs dash (r27557)
-- Fix: Use a more appropiate sound effect for convert-rail (r27547)
+- Fix: Use a more appropriate sound effect for convert-rail (r27547)
 - Fix: Remove SetFill from vehicle GUI buttons, so that the viewport is resized instead of them in case of long window titles (r27546)
 - Fix: [Script] Generation of API wrappers (r27545, r27544, r27543)
 - Fix: [Windows] ICU got disabled for Windows builds, breaking RTL support [FS#6427] (r27542)
@@ -3183,7 +3183,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: Improve corner case order handling: mark order as done only when actually done, obey non-stop orders, do only stop/refit at the depot in the order (r16240, r16228, r16199, r16198, r16187)
 - Fix: [NoAI] Use the stop/non-stop intermediate orderflags AIs can give for goto-depot orders (r16239)
 - Fix: [NewGRF] ActionB should use the online parameters from GRFFile instead of the initial user-specified values from GRFConfig. Also use the values as they were set when the ActionB was executed, not as they are set when the message is shown (r16223)
-- Fix: Possible crashes when quiting OpenTTD or forcing resizes/redraws of the screen during map generation [FS#2862] (r16220)
+- Fix: Possible crashes when quitting OpenTTD or forcing resizes/redraws of the screen during map generation [FS#2862] (r16220)
 - Fix: Shared orders without orders were not properly converted causing corrupt/invalid orders when loading pre 0.7 savegames [FS#2878] (r16214)
 - Fix: Hardcoded (old sized) MAX_COMPANIES constant (r16182)
 - Fix: [Squirrel] The traps variable was not restored, causing try/catch blocks to be 'forgotten' during a suspend (r16181)
@@ -3191,7 +3191,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: Forbid joining AI companies via the 'move' and 'join' console commands/multiplayer lobby (r16176, r16175)
 - Fix: [NoAI] AIOrder::GetOrderDestination and AIOrder::GetOrderFlags did not work on ORDER_CURRENT when the vehicle was loading/leaving in a station (r16165)
 - Fix: [NoAI] Change WAYPOINT_INVALID to 0xFFFF from -1 as that is the value the AIs got (due to casting) (r16150)
-- Fix: The overflowsafe type did not like dividing by int64 larger than MAX_INT32 causing division by negative numbers and small anomolies when drawing graphs [FS#2855] (r16130)
+- Fix: The overflowsafe type did not like dividing by int64 larger than MAX_INT32 causing division by negative numbers and small anomalies when drawing graphs [FS#2855] (r16130)
 - Fix: Road was removed when both the Remove button was active and Ctrl was pressed [FS#2582] (r16119)
 - Fix: [NoAI] Make sure AIOrder::GetDestination always returns a tile belonging to the station (16109)
 - Fix: [NoAI] When giving an aircraft a goto-hangar order do not let it be a normal goto-station order (r16108)
@@ -3647,7 +3647,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: Inconsistent use of 8/15-bitness of NewGRF callback results with respect to TTDP's implementation of the specification (r12819, r12818, r12759)
 - Fix: Possible out of bounds array access (r12809)
 - Fix: Enforce autorenew values range in command (r12808)
-- Fix: Vehicles could break down during loading and keep loading. The intention of the break down code is not to break down when having zero speed, therefor break downs now do not happen when loading [FS#1938] (r12795)
+- Fix: Vehicles could break down during loading and keep loading. The intention of the break down code is not to break down when having zero speed, therefore break downs now do not happen when loading [FS#1938] (r12795)
 - Fix: [OSX] In some rare cases when using an uncalibrated monitor the system colour space could not be retrieved. Show an error when this happens instead of just trying an assertion (r12776)
 - Fix: Slope checking for NewGRFs failed (r12759)
 - Fix: Check the TILE_NOT_SLOPED flag of the _north_ tile of multi-tile houses to decide if autoslope is allowed (r12717)
@@ -3755,7 +3755,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Feature: Separate catenary transparency settings from building transparency settings (r12103)
 - Feature: Allow locking individual transparency settings so they will not be changed by pressing 'x' (r12102)
 - Feature: Add some missing VarAction2 variables (r12124)
-- Feature: Make snow appear on rail tiles dependant on track height, not on height of the lowest part of the tile (r12098)
+- Feature: Make snow appear on rail tiles dependent on track height, not on height of the lowest part of the tile (r12098)
 - Feature: [NewGRF] Specify the purchase, rail and road description of a bridge (r12069)
 - Feature: [NewGRF] Add support for var 12, Variational Action 2 (r12045)
 - Feature: Allow trees on shore (r12029)
@@ -4036,7 +4036,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Feature: Add support for variable snow lines in the arctic climate, supplied by NewGRF files (r9371)
 - Feature: [NewGRF] Add support for newhouses (r9315)
 - Feature: [NewGRF] Add support for Action 13, which allows you to translate GRF-specific texts. The translations will only be shown if you are using a language with a GRF language id and if a string has not already been set specifically for the language you are using (r9037)
-- Feature: Translation dependant formatting of dates (r8906)
+- Feature: Translation dependent formatting of dates (r8906)
 - Feature: If an action 7/9 leads to skipping the rest of the file, disable the NewGRF if an action 8 has not been encountered yet (r8831)
 - Feature: Stop loading and disable the current NewGRF if a fatal error message in Action B is encountered. Also be more strict on the values accepted (r8830)
 - Feature: Build aircraft windows will no longer show aircraft that cannot use the airport in question (r8771)
@@ -4157,7 +4157,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: Do not display income/expenses when they do not belong to a 'valid' tile, like the money cheat and giving money [FS#1175] (r11021)
 - Fix: One could not give money when (s)he had too much money [FS#1174] (r11020)
 - Fix: Disallow buying/selling shares in your own company or a bankrupt company [FS#1169] (r11018)
-- Fix: Crash when quiting the game in one of the end score windows [FS#1218] (r11071)
+- Fix: Crash when quitting the game in one of the end score windows [FS#1218] (r11071)
 
 
 0.5.3-RC3 (2007-08-30)
@@ -4289,7 +4289,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 
 0.5.1-RC1 (2007-03-20)
 ------------------------------------------------------------------------
-- Feature: Translation dependant formatting of dates (r8906)
+- Feature: Translation dependent formatting of dates (r8906)
 - Feature: Kick inactive initial network connections after some time [FS#115] (r9038, r9061)
 - Feature: Add an extra news group for opening and closing of industries (r9097)
 - Codechange: Disable shares by default and increase the default maximum distance from edge for oil refineries (r9339)
@@ -5252,7 +5252,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: Wrong pathfinding when northern station tile is missing
 - Fix: You cannot take ownership of an oilrig by building right next to it
 - Fix: [Makefile] Fixed issue where sdl-config was needed even on systems without SDL
-- Fix: [SDL] Performance fix fo palette animation and mouse jumping
+- Fix: [SDL] Performance fix for palette animation and mouse jumping
 - Fix: [SDL] Same resolution was displayed more than once in game options
 - Fix: [SDL] Smoother mouse and performance fix, like in the Windows video driver
 - Fix: Wrong trains you can buy with scenarios [SF#963056]

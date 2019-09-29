@@ -554,7 +554,7 @@ bool DoCommandP(const CommandContainer *container, bool my_cmd)
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, bool my_cmd)
 {
 	/* Cost estimation is generally only done when the
-	 * local user presses shift while doing somthing.
+	 * local user presses shift while doing something.
 	 * However, in case of incoming network commands,
 	 * map generation or the pause button we do want
 	 * to execute. */

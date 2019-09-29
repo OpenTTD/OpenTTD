@@ -231,7 +231,7 @@ void UpdateAllVirtCoords()
  * This is not done directly in AfterLoadGame because these
  * functions require that all saveload conversions have been
  * done. As people tend to add savegame conversion stuff after
- * the intialization of the windows and caches quite some bugs
+ * the initialization of the windows and caches quite some bugs
  * had been made.
  * Moving this out of there is both cleaner and less bug-prone.
  */

@@ -1706,7 +1706,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 				dirty_station = true;
 
 				if (!ge->HasRating()) {
-					/* Upon transfering cargo, make sure the station has a rating. Fake a pickup for the
+					/* Upon transferring cargo, make sure the station has a rating. Fake a pickup for the
 					 * first unload to prevent the cargo from quickly decaying after the initial drop. */
 					ge->time_since_pickup = 0;
 					SetBit(ge->status, GoodsEntry::GES_RATING);

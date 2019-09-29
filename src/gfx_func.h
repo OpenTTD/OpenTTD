@@ -31,7 +31,7 @@
  * VideoDriver::MakeDirty and it is truncated back to an empty rectangle. At some
  * later point (which is uninteresting, too) the video driver
  * repaints all these saved rectangle instead of the whole screen and drop the
- * rectangle informations. Then a new round begins by marking objects "dirty".
+ * rectangle information. Then a new round begins by marking objects "dirty".
  *
  * @see VideoDriver::MakeDirty
  * @see _invalid_rect

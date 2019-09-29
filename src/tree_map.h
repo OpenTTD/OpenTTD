@@ -100,8 +100,8 @@ static inline TreeGround GetTreeGround(TileIndex t)
  * that this value doesn't count the number of trees on a tile, use
  * #GetTreeCount instead. This function instead returns some kind of
  * groundtype of the tile. As the map-array is finite in size and
- * the informations about the trees must be saved somehow other
- * informations about a tile must be saved somewhere encoded in the
+ * the information about the trees must be saved somehow other
+ * information about a tile must be saved somewhere encoded in the
  * tile. So this function returns the density of a tile for sub arctic
  * and sub tropical games. This means for sub arctic the type of snowline
  * (0 to 3 for all 4 types of snowtiles) and for sub tropical the value
@@ -264,7 +264,7 @@ static inline void SetTreeCounter(TileIndex t, uint c)
 /**
  * Make a tree-tile.
  *
- * This functions change the tile to a tile with trees and all informations which belongs to it.
+ * This functions change the tile to a tile with trees and all information which belongs to it.
  *
  * @param t The tile to make a tree-tile from
  * @param type The type of the tree

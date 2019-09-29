@@ -104,7 +104,7 @@ public:
 	byte grf_container_ver;   ///< Container format of the current GRF file.
 
 	/* Kind of return values when processing certain actions */
-	int skip_sprites;         ///< Number of psuedo sprites to skip before processing the next one. (-1 to skip to end of file)
+	int skip_sprites;         ///< Number of pseudo sprites to skip before processing the next one. (-1 to skip to end of file)
 
 	/* Currently referenceable spritegroups */
 	SpriteGroup *spritegroups[MAX_SPRITEGROUP + 1];
@@ -550,7 +550,7 @@ StringID MapGRFStringID(uint32 grfid, StringID str)
 {
 	if (IsInsideMM(str, 0xD800, 0xE000)) {
 		/* General text provided by NewGRF.
-		 * In the specs this is called the 0xDCxx range (misc presistent texts),
+		 * In the specs this is called the 0xDCxx range (misc persistent texts),
 		 * but we meanwhile extended the range to 0xD800-0xDFFF.
 		 * Note: We are not involved in the "persistent" business, since we do not store
 		 * any NewGRF strings in savegames. */
@@ -843,7 +843,7 @@ static void ReadSpriteLayoutRegisters(ByteReader *buf, TileLayoutFlags flags, bo
  * @param num_building_sprites Number of building sprites to read
  * @param use_cur_spritesets   Whether to use currently referenceable action 1 sets.
  * @param feature              GrfSpecFeature to use spritesets from.
- * @param allow_var10          Whether the spritelayout may specifiy var10 values for resolving multiple action-1-2-3 chains
+ * @param allow_var10          Whether the spritelayout may specify var10 values for resolving multiple action-1-2-3 chains
  * @param no_z_position        Whether bounding boxes have no Z offset
  * @param dts                  Layout container to output into
  * @return True on error (GRF was disabled).
@@ -3460,7 +3460,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 					indsp->grf_prop.local_id = indid + i;
 					indsp->grf_prop.subst_id = subs_id;
 					indsp->grf_prop.grffile = _cur.grffile;
-					/* If the grf industry needs to check its surounding upon creation, it should
+					/* If the grf industry needs to check its surrounding upon creation, it should
 					 * rely on callbacks, not on the original placement functions */
 					indsp->check_proc = CHECK_NOTHING;
 				}
@@ -6205,7 +6205,7 @@ static void GraphicsNew(ByteReader *buf)
 		return;
 	}
 
-	/* Load at most max_sprites sprites. Skip remaining sprites. (for compatibility with TTDP and future extentions) */
+	/* Load at most max_sprites sprites. Skip remaining sprites. (for compatibility with TTDP and future extensions) */
 	uint16 skip_num = SanitizeSpriteOffset(num, offset, action5_type->max_sprites, action5_type->name);
 	SpriteID replace = action5_type->sprite_base + offset;
 
@@ -6825,7 +6825,7 @@ static void GRFLoadError(ByteReader *buf)
 {
 	/* <0B> <severity> <language-id> <message-id> [<message...> 00] [<data...>] 00 [<parnum>]
 	 *
-	 * B severity      00: notice, contine loading grf file
+	 * B severity      00: notice, continue loading grf file
 	 *                 01: warning, continue loading grf file
 	 *                 02: error, but continue loading grf file, and attempt
 	 *                     loading grf again when loading or starting next game
@@ -7004,7 +7004,7 @@ static uint32 GetPatchVariable(uint8 param)
 		 */
 		case 0x13: {
 			byte map_bits = 0;
-			byte log_X = MapLogX() - 6; // substraction is required to make the minimal size (64) zero based
+			byte log_X = MapLogX() - 6; // subtraction is required to make the minimal size (64) zero based
 			byte log_Y = MapLogY() - 6;
 			byte max_edge = max(log_X, log_Y);
 
@@ -7297,7 +7297,7 @@ static void ParamSet(ByteReader *buf)
 			}
 			break;
 
-		case 0x0A: // Signed divison
+		case 0x0A: // Signed division
 			if (src2 == 0) {
 				res = src1;
 			} else {
@@ -9800,7 +9800,7 @@ void LoadNewGRF(uint load_index, uint file_index, uint num_baseset)
 	/*
 	 * Reset the status of all files, so we can 'retry' to load them.
 	 * This is needed when one for example rearranges the NewGRFs in-game
-	 * and a previously disabled NewGRF becomes useable. If it would not
+	 * and a previously disabled NewGRF becomes usable. If it would not
 	 * be reset, the NewGRF would remain disabled even though it should
 	 * have been enabled.
 	 */

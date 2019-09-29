@@ -1132,7 +1132,7 @@ static void DrawBridgeRoadBits(TileIndex head_tile, int x, int y, int z, int off
 	static const SpriteID front_offsets[6]   = {  97,  98, 103, 106, 104, 105 };
 
 	if (head || !IsInvisibilitySet(TO_BRIDGES)) {
-		/* Road underlay takes precendence over tram */
+		/* Road underlay takes precedence over tram */
 		trans_back[0] = !head && IsTransparencySet(TO_BRIDGES);
 		if (road_rti != nullptr) {
 			if (road_rti->UsesOverlay()) {
@@ -1166,7 +1166,7 @@ static void DrawBridgeRoadBits(TileIndex head_tile, int x, int y, int z, int off
 			}
 		}
 
-		/* Road catenary takes precendence over tram */
+		/* Road catenary takes precedence over tram */
 		trans_back[3] = IsTransparencySet(TO_CATENARY);
 		trans_front[0] = IsTransparencySet(TO_CATENARY);
 		if (road_rti != nullptr && HasRoadCatenaryDrawn(road_rt)) {
@@ -1289,7 +1289,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 			DrawRoadOverlays(ti, PAL_NONE, road_rti, tram_rti, sprite_offset, sprite_offset);
 
-			/* Road catenary takes precendence over tram */
+			/* Road catenary takes precedence over tram */
 			SpriteID catenary_sprite_base = 0;
 			if (road_rti != nullptr && HasRoadCatenaryDrawn(road_rt)) {
 				catenary_sprite_base = GetCustomRoadSprite(road_rti, ti->tile, ROTSG_CATENARY_FRONT);

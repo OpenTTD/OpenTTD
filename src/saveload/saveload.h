@@ -267,7 +267,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_186,                                ///< 186   25833 Objects storage
 	SLV_187,                                ///< 187   25899 Linkgraph - restricted flows
 	SLV_188,                                ///< 188   26169 v1.4  FS#5831 Unify RV travel time
-	SLV_189,                                ///< 189   26450 Heirarchical vehicle subgroups
+	SLV_189,                                ///< 189   26450 Hierarchical vehicle subgroups
 
 	SLV_190,                                ///< 190   26547 Separate order travel and wait times
 	SLV_191,                                ///< 191   26636 FS#6026 Fix disaster vehicle storage (No bump)
@@ -283,7 +283,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_EXTEND_CARGOTYPES,                  ///< 199  PR#6802 Extend cargotypes to 64
 
 	SLV_EXTEND_RAILTYPES,                   ///< 200  PR#6805 Extend railtypes to 64, adding uint16 to map array.
-	SLV_EXTEND_PERSISTENT_STORAGE,          ///< 201  PR#6885 Extend NewGRF persistant storages.
+	SLV_EXTEND_PERSISTENT_STORAGE,          ///< 201  PR#6885 Extend NewGRF persistent storages.
 	SLV_EXTEND_INDUSTRY_CARGO_SLOTS,        ///< 202  PR#6867 Increase industry cargo slots to 16 in, 16 out
 	SLV_SHIP_PATH_CACHE,                    ///< 203  PR#7072 Add path cache for ships
 	SLV_SHIP_ROTATION,                      ///< 204  PR#7065 Add extra rotation stages for ships.

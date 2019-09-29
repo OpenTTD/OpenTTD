@@ -19,7 +19,7 @@
 
 /**
  * Iterate through each set Track in a TrackBits value.
- * For more informations see FOR_EACH_SET_BIT_EX.
+ * For more information see FOR_EACH_SET_BIT_EX.
  *
  * @param var Loop index variable that stores fallowing set track. Must be of type Track.
  * @param track_bits The value to iterate through (any expression).
@@ -127,7 +127,7 @@ static inline TrackdirBits TrackdirToTrackdirBits(Trackdir trackdir)
 /**
  * Removes first Track from TrackBits and returns it
  *
- * This function searchs for the first bit in the TrackBits,
+ * This function searches for the first bit in the TrackBits,
  * remove this bit from the parameter and returns the found
  * bit as Track value. It returns INVALID_TRACK if the
  * parameter was TRACK_BIT_NONE or INVALID_TRACK_BIT. This
@@ -647,7 +647,7 @@ static inline bool IsDiagonalTrackdir(Trackdir trackdir)
 
 /**
  * Checks if the given tracks overlap, ie form a crossing. Basically this
- * means when there is more than one track on the tile, exept when there are
+ * means when there is more than one track on the tile, except when there are
  * two parallel tracks.
  * @param  bits The tracks present.
  * @return Whether the tracks present overlap in any way.

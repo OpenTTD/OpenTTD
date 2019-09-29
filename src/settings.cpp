@@ -1741,7 +1741,7 @@ void LoadFromConfig(bool minimal)
 
 		ValidateSettings();
 
-		/* Display sheduled errors */
+		/* Display scheduled errors */
 		extern void ScheduleErrorMessage(ErrorList &datas);
 		ScheduleErrorMessage(_settings_error_list);
 		if (FindWindowById(WC_ERRMSG, 0) == nullptr) ShowFirstError();

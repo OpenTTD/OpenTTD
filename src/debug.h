@@ -85,7 +85,7 @@ const char *GetDebugString();
  * TIC() / TOC() creates its own block, so make sure not the mangle
  *  it with another block.
  *
- * The output is counted in CPU cycles, and not comparable accross
+ * The output is counted in CPU cycles, and not comparable across
  *  machines. Mainly useful for local optimisations.
  **/
 #define TIC() {\

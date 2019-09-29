@@ -27,10 +27,10 @@
  * All sprites which are described here are referenced only one to a handful of times
  * throughout the code. When introducing new sprite enums, use meaningful names.
  * Don't be lazy and typing, and only use abbreviations when their meaning is clear or
- * the length of the enum would get out of hand. In that case EXPLAIN THE ABBREVATION
+ * the length of the enum would get out of hand. In that case EXPLAIN THE ABBREVIATION
  * IN THIS FILE, and perhaps add some comments in the code where it is used.
  * Now, don't whine about this being too much typing work if the enums are like
- * 30 characters in length. If your editor doen't help you simplifying your work,
+ * 30 characters in length. If your editor doesn't help you simplifying your work,
  * get a proper editor. If your Operating Systems don't have any decent editors,
  * get a proper Operating System.
  *

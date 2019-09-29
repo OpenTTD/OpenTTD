@@ -42,7 +42,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	Colour *dst = (Colour *)bp->dst + bp->top * bp->pitch + bp->left;
 	uint16 *anim = this->anim_buf + this->ScreenToAnimOffset((uint32 *)bp->dst) + bp->top * this->anim_buf_pitch + bp->left;
 
-	const byte *remap = bp->remap; // store so we don't have to access it via bp everytime
+	const byte *remap = bp->remap; // store so we don't have to access it via bp every time
 
 	for (int y = 0; y < bp->height; y++) {
 		Colour *dst_ln = dst + bp->pitch;

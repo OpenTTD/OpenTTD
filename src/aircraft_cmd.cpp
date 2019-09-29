@@ -1815,7 +1815,7 @@ static bool AirportHasBlock(Aircraft *v, const AirportFTA *current_pos, const Ai
  * "reserve" a block for the plane
  * @param v airplane that requires the operation
  * @param current_pos of the vehicle in the list of blocks
- * @param apc airport on which block is requsted to be set
+ * @param apc airport on which block is requested to be set
  * @returns true on success. Eg, next block was free and we have occupied it
  */
 static bool AirportSetBlocks(Aircraft *v, const AirportFTA *current_pos, const AirportFTAClass *apc)

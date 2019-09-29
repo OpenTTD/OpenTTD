@@ -119,7 +119,7 @@ WindowDesc::~WindowDesc()
 
 /**
  * Determine default width of window.
- * This is either a stored user preferred size, or the build-in default.
+ * This is either a stored user preferred size, or the built-in default.
  * @return Width in pixels.
  */
 int16 WindowDesc::GetDefaultWidth() const
@@ -129,7 +129,7 @@ int16 WindowDesc::GetDefaultWidth() const
 
 /**
  * Determine default height of window.
- * This is either a stored user preferred size, or the build-in default.
+ * This is either a stored user preferred size, or the built-in default.
  * @return Height in pixels.
  */
 int16 WindowDesc::GetDefaultHeight() const

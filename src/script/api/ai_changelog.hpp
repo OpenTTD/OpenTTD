@@ -313,7 +313,7 @@
  *     destination it its catchment area. One industry tile or one town house
  *     is enough as long as station accepts the cargo. Awarded subsidies are no
  *     longer bound to stations used for first delivery, any station can be
- *     used for loading and unloading as long as cargo is transfered from
+ *     used for loading and unloading as long as cargo is transferred from
  *     source to destination.
  * \li Make AIEngine:CanRefitCargo() not report refittability to mail by
  *     default for aircraft. It is not necessarily true. This means that even

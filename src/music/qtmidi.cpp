@@ -156,7 +156,7 @@ static void InitQuickTimeIfNeeded()
 	if (_quicktime_started) return;
 
 	DEBUG(driver, 2, "qtmidi: initializing Quicktime");
-	/* Be polite: check wether QuickTime is available and initialize it. */
+	/* Be polite: check whether QuickTime is available and initialize it. */
 	_quicktime_started =
 		(noErr == Gestalt(gestaltQuickTime, &dummy)) &&
 		(noErr == EnterMovies());
@@ -215,7 +215,7 @@ bool MusicDriver_QtMidi::IsSongPlaying()
 
 		case QT_STATE_PLAY:
 			MoviesTask(_quicktime_movie, 0);
-			/* Check wether movie ended. */
+			/* Check whether movie ended. */
 			if (IsMovieDone(_quicktime_movie) ||
 					(GetMovieTime(_quicktime_movie, nullptr) >=
 					 GetMovieDuration(_quicktime_movie))) {

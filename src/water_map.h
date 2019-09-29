@@ -28,8 +28,8 @@ enum WaterTileTypeBitLayout {
 
 	WBL_COAST_FLAG        = 0,   ///< Flag for coast.
 
-	WBL_LOCK_ORIENT_BEGIN = 0,   ///< Start of lock orientiation bitfield.
-	WBL_LOCK_ORIENT_COUNT = 2,   ///< Length of lock orientiation bitfield.
+	WBL_LOCK_ORIENT_BEGIN = 0,   ///< Start of lock orientation bitfield.
+	WBL_LOCK_ORIENT_COUNT = 2,   ///< Length of lock orientation bitfield.
 	WBL_LOCK_PART_BEGIN   = 2,   ///< Start of lock part bitfield.
 	WBL_LOCK_PART_COUNT   = 2,   ///< Length of lock part bitfield.
 

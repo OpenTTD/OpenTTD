@@ -688,9 +688,9 @@ static void MoveToNextNewsItem()
  * @param type news category
  * @param flags display flags for the news
  * @param reftype1 Type of ref1
- * @param ref1     Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleteing the news when the object is deleted.
+ * @param ref1     Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
  * @param reftype2 Type of ref2
- * @param ref2     Reference 2 to some object: Used for scrolling after clicking on the news, and for deleteing the news when the object is deleted.
+ * @param ref2     Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
  * @param free_data Pointer to data that must be freed once the news message is cleared
  *
  * @see NewsSubtype

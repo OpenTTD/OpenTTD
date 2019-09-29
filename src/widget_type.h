@@ -247,7 +247,7 @@ public:
 	uint min_y; ///< Minimal vertical size of only this widget.
 };
 
-/** Nested widget flags that affect display and interaction withe 'real' widgets. */
+/** Nested widget flags that affect display and interaction with 'real' widgets. */
 enum NWidgetDisplay {
 	/* Generic. */
 	NDB_LOWERED         = 0, ///< Widget is lowered (pressed down) bit.
