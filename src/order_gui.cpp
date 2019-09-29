@@ -410,8 +410,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				default: NOT_REACHED();
 			}
 			if (st->facilities & facil) {
-				StationID st_index = GetStationIndex(st->xy);
-				order.MakeGoToStation(st_index);
+				order.MakeGoToStation(st->index);
 				if (_ctrl_pressed) order.SetLoadType(OLF_FULL_LOAD_ANY);
 				if (_settings_client.gui.new_nonstop && v->IsGroundVehicle()) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 				order.SetStopLocation(v->type == VEH_TRAIN ? (OrderStopLocation)(_settings_client.gui.stop_location) : OSL_PLATFORM_FAR_END);
