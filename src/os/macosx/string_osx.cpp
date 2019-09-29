@@ -284,7 +284,7 @@ void MacOSSetCurrentLocaleName(const char *iso_code)
 
 	if (_osx_locale != nullptr) CFRelease(_osx_locale);
 
-	CFStringRef iso = CFStringCreateWithCString(kCFAllocatorNull, iso_code, kCFStringEncodingUTF8);
+	CFStringRef iso = CFStringCreateWithCString(kCFAllocatorDefault, iso_code, kCFStringEncodingUTF8);
 	_osx_locale = CFLocaleCreate(kCFAllocatorDefault, iso);
 	CFRelease(iso);
 }
