@@ -34,11 +34,13 @@
 #include "../debug.h"
 #include "../base_media_base.h"
 
-#define Rect  OTTDRect
-#define Point OTTDPoint
+#define Rect  OTTD_Rect
+#define Point OTTD_Point
+#define WindowClass OTTD_WindowClass
 #include <QuickTime/QuickTime.h>
 #undef Rect
 #undef Point
+#undef WindowClass
 
 #include "../safeguards.h"
 
