@@ -485,7 +485,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura con ace
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Captura con acercamiento predeterminado
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de mapa completo
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Mostrar FPS
-STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Acerca de 'OpenTTD'
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Acerca de OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador de sprites
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Activar cajas delimitadoras
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Activar coloreado de bloques modificados
@@ -3050,7 +3050,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Es posib
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Cambió el estado 'vagón con motor' para '{1:ENGINE}' cuando no estaba dentro de un depósito
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}cambió la longitud del vehículo para '{1:ENGINE}' cuando no estaba dentro de un depósito
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Cambió la capacidad del vehículo para '{1:ENGINE}' cuando no estaba dentro de un depósito o mientras no se estaba reformando
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud no válida. Puede ser debido a problemas con los NewGRF. El juego puede fallar
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren {VEHICLE} de {COMPANY} tiene una longitud no válida. Quizá es por problemas de los NewGRF, y puede provocar que el juego falle
 
 STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' da información incorrecta
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La información de cargamento o reequipamiento para '{1:ENGINE}' difiere de la lista de compra después de la construcción. Esto puede causar que la renovación y el reemplazo automático no haga el reequipamiento correcta
