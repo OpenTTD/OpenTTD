@@ -39,7 +39,7 @@ STR_CARGO_PLURAL_WOOD                                           :Bois
 STR_CARGO_PLURAL_IRON_ORE                                       :Minerai de fer
 STR_CARGO_PLURAL_STEEL                                          :Acier
 STR_CARGO_PLURAL_VALUABLES                                      :Objets de valeur
-STR_CARGO_PLURAL_COPPER_ORE                                     :Cuivre
+STR_CARGO_PLURAL_COPPER_ORE                                     :Minerai de cuivre
 STR_CARGO_PLURAL_MAIZE                                          :Maïs
 STR_CARGO_PLURAL_FRUIT                                          :Fruits
 STR_CARGO_PLURAL_DIAMONDS                                       :Diamants
@@ -73,7 +73,7 @@ STR_CARGO_SINGULAR_WOOD                                         :Bois
 STR_CARGO_SINGULAR_IRON_ORE                                     :Minerai de fer
 STR_CARGO_SINGULAR_STEEL                                        :Acier
 STR_CARGO_SINGULAR_VALUABLES                                    :Objets de valeur
-STR_CARGO_SINGULAR_COPPER_ORE                                   :Cuivre
+STR_CARGO_SINGULAR_COPPER_ORE                                   :Minerai de cuivre
 STR_CARGO_SINGULAR_MAIZE                                        :Maïs
 STR_CARGO_SINGULAR_FRUIT                                        :Fruit
 STR_CARGO_SINGULAR_DIAMOND                                      :Diamant
@@ -107,7 +107,7 @@ STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} d
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de minerai de fer
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} d'acier
 STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}sac{P "" s} d'objets de valeur
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de cuivre
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de minerai de cuivre
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de maïs
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fruits
 STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}sac{P "" s} de diamants

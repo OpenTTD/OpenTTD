@@ -235,6 +235,7 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Pilih kr
 STR_BUTTON_SORT_BY                                              :{BLACK}Urutkan
 STR_BUTTON_LOCATION                                             :{BLACK}Lokasi
 STR_BUTTON_RENAME                                               :{BLACK}Ubah nama
+STR_BUTTON_CATCHMENT                                            :{BLACK}Jangkauan
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tutup window
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Judul Jendela - klik dan tahan disini untuk memindahkan jendela
@@ -2719,6 +2720,7 @@ STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE} Titik k
 STR_FRAMERATE_GL_SHIPS                                          :{WHITE} Titik kapal:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE} Titik pesawat:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE} Titik dunia:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Render grafis:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE} Viewport dunia:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Keluaran Video:
 STR_FRAMERATE_SOUND                                             :{WHITE}Mixing suara:

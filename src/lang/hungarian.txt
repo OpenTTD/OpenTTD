@@ -1390,8 +1390,8 @@ STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tereptípus: {S
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :A térkép domborzata
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Gazdasági épületek száma: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Mennyi gazdasági épület legyen, és mennyire legyenek fenntartva a játék folyamán
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Olajfúró tornyok maximális távolsága a térkép szélétől: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olajfinomítók csak a térkép határaihoz közel építhetőek, ami sziget jellegű térképeknél a partvidék
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Olajfinomítók és olajfúró tornyok maximális távolsága a térkép szélétől: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Megadhatod, hogy a térkép szélétől milyen messze épülhetnek olajfinomítók és olajfúró tornyok. Sziget jellegű térképek esetén így a part közelében fognak épülni. 256 mezőnél szélesebb, ill. hosszabb térképek esetén ez az érték felszorzódik.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Hóhatár magassága: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Ezzel a beállítással szabályozhatod a szub-arktikus táj hóhatárát. A hó befolyással lehet a gazdasági épületek generálására és a települések növekedésére.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :A terep durvasága: {STRING}
@@ -3186,6 +3186,8 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Város átnevez
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} önkormányzata
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Terület
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}A helyi önkormányzathoz tartozó terület mutatása
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Vélemény a szállítási vállalatokról:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Lehetséges intézkedések:
