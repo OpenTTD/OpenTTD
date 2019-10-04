@@ -3371,13 +3371,13 @@ static ChangeInfoResult IgnoreIndustryProperty(int prop, ByteReader *buf)
 /**
  * Validate the industry layout; e.g. to prevent duplicate tiles.
  * @param layout The layout to check.
- * @param size The size of the layout.
  * @return True if the layout is deemed valid.
  */
-static bool ValidateIndustryLayout(const IndustryTileTable *layout, int size)
+static bool ValidateIndustryLayout(const IndustryTileLayout &layout)
 {
-	for (int i = 0; i < size - 1; i++) {
-		for (int j = i + 1; j < size; j++) {
+	const size_t size = layout.size();
+	for (size_t i = 0; i < size - 1; i++) {
+		for (size_t j = i + 1; j < size; j++) {
 			if (layout[i].ti.x == layout[j].ti.x &&
 					layout[i].ti.y == layout[j].ti.y) {
 				return false;
@@ -3385,20 +3385,6 @@ static bool ValidateIndustryLayout(const IndustryTileTable *layout, int size)
 		}
 	}
 	return true;
-}
-
-/** Clean the tile table of the IndustrySpec if it's needed. */
-static void CleanIndustryTileTable(IndustrySpec *ind)
-{
-	if (HasBit(ind->cleanup_flag, CLEAN_TILELAYOUT) && ind->table != nullptr) {
-		for (int j = 0; j < ind->num_table; j++) {
-			/* remove the individual layouts */
-			free(ind->table[j]);
-		}
-		/* remove the layouts pointers */
-		free(ind->table);
-		ind->table = nullptr;
-	}
 }
 
 /**
@@ -3452,10 +3438,10 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				 * Only need to do it once. If ever it is called again, it should not
 				 * do anything */
 				if (*indspec == nullptr) {
-					*indspec = CallocT<IndustrySpec>(1);
+					*indspec = new IndustrySpec;
 					indsp = *indspec;
 
-					memcpy(indsp, &_origin_industry_specs[subs_id], sizeof(_industry_specs[subs_id]));
+					*indsp = _origin_industry_specs[subs_id];
 					indsp->enabled = true;
 					indsp->grf_prop.local_id = indid + i;
 					indsp->grf_prop.subst_id = subs_id;
@@ -3481,112 +3467,101 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 			}
 
 			case 0x0A: { // Set industry layout(s)
-				byte new_num_layouts = buf->ReadByte(); // Number of layaouts
-				/* We read the total size in bytes, but we can't rely on the
-				 * newgrf to provide a sane value. First assume the value is
-				 * sane but later on we make sure we enlarge the array if the
-				 * newgrf contains more data. Each tile uses either 3 or 5
-				 * bytes, so to play it safe we assume 3. */
-				uint32 def_num_tiles = buf->ReadDWord() / 3 + 1;
-				IndustryTileTable **tile_table = CallocT<IndustryTileTable*>(new_num_layouts); // Table with tiles to compose an industry
-				IndustryTileTable *itt = CallocT<IndustryTileTable>(def_num_tiles); // Temporary array to read the tile layouts from the GRF
-				uint size;
-				const IndustryTileTable *copy_from;
+				byte new_num_layouts = buf->ReadByte();
+				uint32 definition_size = buf->ReadDWord();
+				uint32 bytes_read = 0;
+				std::vector<IndustryTileLayout> new_layouts;
+				IndustryTileLayout layout;
 
-				try {
-					for (byte j = 0; j < new_num_layouts; j++) {
-						for (uint k = 0;; k++) {
-							if (k >= def_num_tiles) {
-								grfmsg(3, "IndustriesChangeInfo: Incorrect size for industry tile layout definition for industry %u.", indid);
-								/* Size reported by newgrf was not big enough so enlarge the array. */
-								def_num_tiles *= 2;
-								itt = ReallocT<IndustryTileTable>(itt, def_num_tiles);
-							}
+				for (byte j = 0; j < new_num_layouts; j++) {
+					layout.clear();
 
-							itt[k].ti.x = buf->ReadByte(); // Offsets from northermost tile
-
-							if (itt[k].ti.x == 0xFE && k == 0) {
-								/* This means we have to borrow the layout from an old industry */
-								IndustryType type = buf->ReadByte();  // industry holding required layout
-								byte laynbr = buf->ReadByte();        // layout number to borrow
-
-								copy_from = _origin_industry_specs[type].table[laynbr];
-								for (size = 1;; size++) {
-									if (copy_from[size - 1].ti.x == -0x80 && copy_from[size - 1].ti.y == 0) break;
-								}
-								break;
-							}
-
-							itt[k].ti.y = buf->ReadByte(); // Or table definition finalisation
-
-							if (itt[k].ti.x == 0 && itt[k].ti.y == 0x80) {
-								/*  Not the same terminator.  The one we are using is rather
-								 x = -80, y = x .  So, adjust it. */
-								itt[k].ti.x = -0x80;
-								itt[k].ti.y =  0;
-								itt[k].gfx  =  0;
-
-								size = k + 1;
-								copy_from = itt;
-								break;
-							}
-
-							itt[k].gfx = buf->ReadByte();
-
-							if (itt[k].gfx == 0xFE) {
-								/* Use a new tile from this GRF */
-								int local_tile_id = buf->ReadWord();
-
-								/* Read the ID from the _industile_mngr. */
-								int tempid = _industile_mngr.GetID(local_tile_id, _cur.grffile->grfid);
-
-								if (tempid == INVALID_INDUSTRYTILE) {
-									grfmsg(2, "IndustriesChangeInfo: Attempt to use industry tile %u with industry id %u, not yet defined. Ignoring.", local_tile_id, indid);
-								} else {
-									/* Declared as been valid, can be used */
-									itt[k].gfx = tempid;
-								}
-							} else if (itt[k].gfx == 0xFF) {
-								itt[k].ti.x = (int8)GB(itt[k].ti.x, 0, 8);
-								itt[k].ti.y = (int8)GB(itt[k].ti.y, 0, 8);
-
-								/* When there were only 256x256 maps, TileIndex was a uint16 and
-								 * itt[k].ti was just a TileIndexDiff that was added to it.
-								 * As such negative "x" values were shifted into the "y" position.
-								 *   x = -1, y = 1 -> x = 255, y = 0
-								 * Since GRF version 8 the position is interpreted as pair of independent int8.
-								 * For GRF version < 8 we need to emulate the old shifting behaviour.
-								 */
-								if (_cur.grffile->grf_version < 8 && itt[k].ti.x < 0) itt[k].ti.y += 1;
-							}
+					for (uint k = 0;; k++) {
+						if (bytes_read >= definition_size) {
+							grfmsg(3, "IndustriesChangeInfo: Incorrect size for industry tile layout definition for industry %u.", indid);
+							/* Avoid warning twice */
+							definition_size = UINT32_MAX;
 						}
 
-						if (!ValidateIndustryLayout(copy_from, size)) {
-							/* The industry layout was not valid, so skip this one. */
-							grfmsg(1, "IndustriesChangeInfo: Invalid industry layout for industry id %u. Ignoring", indid);
-							new_num_layouts--;
-							j--;
-						} else {
-							tile_table[j] = CallocT<IndustryTileTable>(size);
-							memcpy(tile_table[j], copy_from, sizeof(*copy_from) * size);
+						layout.push_back(IndustryTileLayoutTile{});
+						IndustryTileLayoutTile &it = layout.back();
+
+						it.ti.x = buf->ReadByte(); // Offsets from northermost tile
+						++bytes_read;
+
+						if (it.ti.x == 0xFE && k == 0) {
+							/* This means we have to borrow the layout from an old industry */
+							IndustryType type = buf->ReadByte();
+							byte laynbr = buf->ReadByte();
+							bytes_read += 2;
+
+							if (type >= lengthof(_origin_industry_specs)) {
+								grfmsg(1, "IndustriesChangeInfo: Invalid original industry number for layout import, industry %u", indid);
+								DisableGrf(STR_NEWGRF_ERROR_INVALID_ID);
+								return CIR_DISABLED;
+							}
+							if (laynbr >= _origin_industry_specs[type].layouts.size()) {
+								grfmsg(1, "IndustriesChangeInfo: Invalid original industry layout index for layout import, industry %u", indid);
+								DisableGrf(STR_NEWGRF_ERROR_INVALID_ID);
+								return CIR_DISABLED;
+							}
+							layout = _origin_industry_specs[type].layouts[laynbr];
+							break;
+						}
+
+						it.ti.y = buf->ReadByte(); // Or table definition finalisation
+						++bytes_read;
+
+						if (it.ti.x == 0 && it.ti.y == 0x80) {
+							/* Terminator, remove and finish up */
+							layout.pop_back();
+							break;
+						}
+
+						it.gfx = buf->ReadByte();
+						++bytes_read;
+
+						if (it.gfx == 0xFE) {
+							/* Use a new tile from this GRF */
+							int local_tile_id = buf->ReadWord();
+							bytes_read += 2;
+
+							/* Read the ID from the _industile_mngr. */
+							int tempid = _industile_mngr.GetID(local_tile_id, _cur.grffile->grfid);
+
+							if (tempid == INVALID_INDUSTRYTILE) {
+								grfmsg(2, "IndustriesChangeInfo: Attempt to use industry tile %u with industry id %u, not yet defined. Ignoring.", local_tile_id, indid);
+							} else {
+								/* Declared as been valid, can be used */
+								it.gfx = tempid;
+							}
+						} else if (it.gfx == 0xFF) {
+							it.ti.x = (int8)GB(it.ti.x, 0, 8);
+							it.ti.y = (int8)GB(it.ti.y, 0, 8);
+
+							/* When there were only 256x256 maps, TileIndex was a uint16 and
+								* it.ti was just a TileIndexDiff that was added to it.
+								* As such negative "x" values were shifted into the "y" position.
+								*   x = -1, y = 1 -> x = 255, y = 0
+								* Since GRF version 8 the position is interpreted as pair of independent int8.
+								* For GRF version < 8 we need to emulate the old shifting behaviour.
+								*/
+							if (_cur.grffile->grf_version < 8 && it.ti.x < 0) it.ti.y += 1;
 						}
 					}
-				} catch (...) {
-					for (int i = 0; i < new_num_layouts; i++) {
-						free(tile_table[i]);
+
+					if (!ValidateIndustryLayout(layout)) {
+						/* The industry layout was not valid, so skip this one. */
+						grfmsg(1, "IndustriesChangeInfo: Invalid industry layout for industry id %u. Ignoring", indid);
+						new_num_layouts--;
+						j--;
+					} else {
+						new_layouts.push_back(layout);
 					}
-					free(tile_table);
-					free(itt);
-					throw;
 				}
 
-				/* Clean the tile table if it was already set by a previous prop A. */
-				CleanIndustryTileTable(indsp);
 				/* Install final layout construction in the industry spec */
-				indsp->num_table = new_num_layouts;
-				indsp->table = tile_table;
-				SetBit(indsp->cleanup_flag, CLEAN_TILELAYOUT);
-				free(itt);
+				indsp->layouts = new_layouts;
 				break;
 			}
 
@@ -8498,17 +8473,7 @@ static void ResetCustomIndustries()
 		if (industryspec != nullptr) {
 			for (uint i = 0; i < NUM_INDUSTRYTYPES_PER_GRF; i++) {
 				IndustrySpec *ind = industryspec[i];
-				if (ind == nullptr) continue;
-
-				/* We need to remove the sounds array */
-				if (HasBit(ind->cleanup_flag, CLEAN_RANDOMSOUNDS)) {
-					free(ind->random_sounds);
-				}
-
-				/* We need to remove the tiles layouts */
-				CleanIndustryTileTable(ind);
-
-				free(ind);
+				delete ind;
 			}
 
 			free(industryspec);

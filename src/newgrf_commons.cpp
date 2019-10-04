@@ -279,7 +279,7 @@ void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 	}
 
 	/* Now that we know we can use the given id, copy the spec to its final destination... */
-	memcpy(&_industry_specs[ind_id], inds, sizeof(*inds));
+	_industry_specs[ind_id] = *inds;
 	/* ... and mark it as usable*/
 	_industry_specs[ind_id].enabled = true;
 }
