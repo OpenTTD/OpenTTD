@@ -77,6 +77,7 @@ ErrorMessageData::ErrorMessageData(const ErrorMessageData &data) :
 	summary_msg(data.summary_msg), detailed_msg(data.detailed_msg), position(data.position), face(data.face)
 {
 	memcpy(this->textref_stack, data.textref_stack, sizeof(this->textref_stack));
+	memcpy(this->decode_params, data.decode_params, sizeof(this->decode_params));
 	for (size_t i = 0; i < lengthof(this->strings); i++) {
 		if (this->strings[i] != nullptr) {
 			this->strings[i] = stredup(this->strings[i]);
