@@ -980,7 +980,9 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Lõuna-Aafrika 
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Omatehtud...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruusia lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iraani rial (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Uus Vene rubla (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mehhiko Peeso (MXN)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kongi dollar (HKD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Sõidukid
@@ -1043,7 +1045,9 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Tavaline
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Topeltsuurus
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Ruudu suurus
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Vali kasutatav liideseelementide suurus
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Ruudu suurus
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Alusgraafika kogu
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valib kasutatava alusgraafika kogu
@@ -2642,6 +2646,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Lennujaa
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Vastuvõetavad veosed: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Trammi tüüp: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Raudtee kiiruspiirang: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Lubatud piirkiirus: {LTBLUE}{VELOCITY}
 
@@ -2744,6 +2749,7 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Kaadrisagedus
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Simuleeritud mänguhetkede arv sekundis.
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Renderdatud videokaadrite arv sekundis.
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Keskmine
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
@@ -2753,6 +2759,7 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} kaadrit/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} kaadrit/s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Mängutsükli lõppkokkuvõte:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Õhusõiduki sammud:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Ahelgraafiku viide:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Graafika renderdamine:
@@ -3423,6 +3430,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Eemalda kõik s
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rühma nime vahetamine
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Kasum sellel aastal:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Uued rööbassõidukid
@@ -3451,6 +3459,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Parim te
 STR_PURCHASE_INFO_COST                                          :{BLACK}Hind: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Mass: {GOLD}{WEIGHT_SHORT} {WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Hind: {GOLD}{CURRENCY_LONG}{BLACK} Tippkiirus: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Hind: {GOLD}{CURRENCY_LONG}{BLACK} (Ümberseadistamise maksumus: {GOLD}{CURRENCY_LONG}{BLACK}) Kiirus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kandevõime: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Kiirendavad vagunid: {GOLD}+{POWER}{BLACK} Mass: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Ümberseadistatav: {GOLD}{STRING}
@@ -3637,6 +3646,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrirongid
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorelssveerem
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnethõljukveerem
 
+STR_REPLACE_ROAD_VEHICLES                                       :Maanteesõidukid
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagunite eemaldus: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Sunni automaatset asendust hoidma rongi pikkust selleks (eest alustades) veeremit eemaldades, juhul kui uus vagun muudaks rongi pikemaks.
@@ -4377,6 +4387,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Siinset 
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Siinset trammiteed ei saa lammutada...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... siin pole autoteed
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... siin pole trammiteed
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... sobimatu tee
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Siia ei saa kanaleid ehitada...
@@ -4539,6 +4550,7 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Algse Transport
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Algse Transport Tycoon Deluxe Windowsi versiooni helid.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Helikogu ilma helideta.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Algse Transport Tycoon Deluxe Windowsi versiooni muusika.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Algse Transport Tycoon Deluxe DOSi versiooni muusika.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Muusikakogu ilma muusikata.
 
 ##id 0x2000
