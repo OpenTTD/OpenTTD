@@ -1,0 +1,59 @@
+name: Commit checker
+
+on:
+  pull_request:
+
+jobs:
+  commit-checker:
+    name: Commit checker
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout pull-request commits only
+      id: checkout
+      run: |
+        set -x
+
+        PR_NUMBER=$(jq --raw-output .pull_request.number "${GITHUB_EVENT_PATH}")
+        OWNER=$(jq --raw-output .repository.owner.login "${GITHUB_EVENT_PATH}")
+        REPOSITORY=$(jq --raw-output .repository.name "${GITHUB_EVENT_PATH}")
+
+        git version
+        git init
+        git remote add origin https://github.com/${OWNER}/${REPOSITORY}
+        git config --local gc.auto 0
+
+        # Query GitHub API to find out what the first parent of this pull-request is
+        FIRST_REF=$(curl -X POST --fail -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Content-Type: application/json" https://api.github.com/graphql \
+          -d '{"query": "query { repository(owner: \"'${OWNER}'\", name:\"'${REPOSITORY}'\") { pullRequest(number: '${PR_NUMBER}') { commits(first: 1) { nodes { commit { parents(first: 1) { nodes { oid } } } } } } } }"}' \
+          | jq .data.repository.pullRequest.commits.nodes[0].commit.parents.nodes[0].oid | cut -d\" -f2)
+
+        if [ -z "${FIRST_REF}" ]; then
+          echo "::error::Couldn't find first commit in Pull Request"
+          exit 1
+        fi
+
+        # In a later step we want to know the reference again
+        echo "::set-output name=first-ref::${FIRST_REF}"
+
+        # Fetch only the commits between the first and last commit
+        git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin ${FIRST_REF}
+        git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --negotiation-tip=${FIRST_REF} origin +refs/pull/${PR_NUMBER}/head:pull/${PR_NUMBER}/commits-only
+
+        git checkout pull/${PR_NUMBER}/commits-only
+
+        # Just to show which commits we are going to evaluate.
+        # The last commit is the first commit not part of this Pull Request.
+        git log --oneline
+
+    - name: Checkout commit-checker
+      uses: actions/checkout@v2
+      with:
+        repository: OpenTTD/OpenTTD-git-hooks
+        path: git-hooks
+        ref: master
+
+    - name: Check commits
+      run: |
+        HOOKS_DIR=./git-hooks/hooks GIT_DIR=.git ./git-hooks/hooks/check-commits.sh ${{ steps.checkout.outputs.first-ref }}..HEAD
+        echo "Commit checks passed"
