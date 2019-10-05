@@ -1,0 +1,45 @@
+name: Commit checker
+
+on:
+  pull_request:
+
+jobs:
+  commit-checker:
+    name: Commit checker
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 4
+
+    - name: Get pull-request commits
+      run: |
+        set -x
+        # actions/checkout did a merge checkout of the pull-request. As such, the first
+        # commit is the merge commit. This means that on HEAD^ is the base branch, and
+        # on HEAD^2 are the commits from the pull-request. We now check if those trees
+        # have a common parent. If not, we fetch a few more commits till we do. In result,
+        # the log between HEAD^ and HEAD^2 will be the commits in the pull-request.
+        DEPTH=4
+        while [ -z "$(git merge-base HEAD^ HEAD^2)" ]; do
+            git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --deepen=${DEPTH} origin HEAD
+            DEPTH=$(( ${DEPTH} * 4 ))
+        done
+
+        # Just to show which commits we are going to evaluate.
+        git log --oneline HEAD^..HEAD^2
+
+    - name: Checkout commit-checker
+      uses: actions/checkout@v2
+      with:
+        repository: OpenTTD/OpenTTD-git-hooks
+        path: git-hooks
+        ref: master
+
+    - name: Check commits
+      run: |
+        set -x
+        HOOKS_DIR=./git-hooks/hooks GIT_DIR=.git ./git-hooks/hooks/check-commits.sh HEAD^..HEAD^2
+        echo "Commit checks passed"
