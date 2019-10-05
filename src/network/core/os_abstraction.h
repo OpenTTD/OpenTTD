@@ -31,6 +31,11 @@
 /* Windows has some different names for some types */
 typedef unsigned long in_addr_t;
 
+/* Handle cross-compilation with --build=*-*-cygwin --host=*-*-mingw32 */
+#if defined(__MINGW32__) && !defined(AI_ADDRCONFIG)
+#	define AI_ADDRCONFIG               0x00000400
+#endif
+
 #if !(defined(__MINGW32__) || defined(__CYGWIN__))
 	/* Windows has some different names for some types */
 	typedef SSIZE_T ssize_t;
