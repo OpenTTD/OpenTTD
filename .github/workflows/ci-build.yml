@@ -1,0 +1,138 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+    - master
+
+jobs:
+  linux:
+    name: Linux
+
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler: [clang, gcc]
+        include:
+          - compiler: clang
+            cxxcompiler: clang++
+          - compiler: gcc
+            cxxcompiler: g++
+    env:
+      CTEST_OUTPUT_ON_FAILURE: 1
+      CC: ${{ matrix.compiler }}
+      CXX: ${{ matrix.cxxcompiler }}
+
+    steps:
+    - name: Install dependencies
+      run: |
+        sudo apt-get install -y --no-install-recommends \
+          libfontconfig-dev \
+          libicu-dev \
+          liblzma-dev \
+          liblzo2-dev \
+          libsdl1.2-dev \
+          libsdl2-dev \
+          libxdg-basedir-dev \
+          zlib1g-dev \
+          # EOF
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Get OpenGFX
+      run: |
+        mkdir -p ~/.local/share/openttd/baseset
+        cd ~/.local/share/openttd/baseset
+        curl -L https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip -o opengfx-all.zip
+        unzip opengfx-all.zip
+        rm -f opengfx-all.zip
+
+    - name: CMake
+      run: mkdir build && cd build && cmake ..
+
+    - name: Build
+      run: cd build && make -j2
+
+    - name: Test
+      run: cd build && make -j2 test
+
+  windows:
+    name: Windows
+
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [x86, x64]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Prepare vcpkg (with cache)
+      uses: lukka/run-vcpkg@v4
+      with:
+        vcpkgDirectory: 'c:/vcpkg'
+        doNotUpdateVcpkg: true
+        vcpkgArguments: 'liblzma libpng lzo zlib'
+        vcpkgTriplet: '${{ matrix.arch }}-windows-static'
+
+    - name: 'Build'
+      uses: lukka/run-cmake@v3
+      with:
+        cmakeListsOrSettingsJson: CMakeListsTxtBasic
+        useVcpkgToolchainFile: true
+        buildDirectory: '${{ runner.workspace }}/build'
+
+    - name: Install OpenGFX
+      run: |
+        mkdir -p "C:/Users/Public/Documents/OpenTTD/baseset"
+        cd "C:/Users/Public/Documents/OpenTTD/baseset"
+        curl -L https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip -o opengfx-all.zip
+        unzip opengfx-all.zip
+        rm -f opengfx-all.zip
+      shell: bash
+
+    - name: Test
+      run: |
+        cd ${{ runner.workspace }}/build
+        ctest -C Debug
+
+  macos:
+    name: Mac OS
+
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+    env:
+      CTEST_OUTPUT_ON_FAILURE: 1
+      MACOSX_DEPLOYMENT_TARGET: 10.9
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: brew install pkg-config lzo xz libpng freetype
+      env:
+        HOMEBREW_NO_AUTO_UPDATE: 1
+
+    - name: Install OpenGFX
+      run: |
+        mkdir -p ~/Documents/OpenTTD/baseset
+        cd ~/Documents//OpenTTD/baseset
+        curl -L https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip -o opengfx-all.zip
+        unzip opengfx-all.zip
+        rm -f opengfx-all.zip
+
+    - name: CMake
+      run: mkdir build && cd build && cmake ..
+
+    - name: Build
+      run: cd build && make -j2
+
+    - name: Test
+      run: cd build && make -j2 test
