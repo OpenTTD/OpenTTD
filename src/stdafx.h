@@ -21,7 +21,10 @@
 	#include <unistd.h>
 	#define _GNU_SOURCE
 	#define TROUBLED_INTS
-	#include <strings.h>
+#endif
+
+#if defined(__HAIKU__) || defined(__CYGWIN__)
+#	include <strings.h> /* strncasecmp */
 #endif
 
 /* It seems that we need to include stdint.h before anything else
@@ -98,7 +101,7 @@
 	#define strcasecmp stricmp
 #endif
 
-#if defined(SUNOS) || defined(HPUX)
+#if defined(SUNOS) || defined(HPUX) || defined(__CYGWIN__)
 	#include <alloca.h>
 #endif
 
@@ -137,7 +140,7 @@
 	#include <malloc.h>
 #endif /* __WATCOMC__ */
 
-#if defined(__MINGW32__) || defined(__CYGWIN__)
+#if defined(__MINGW32__)
 	#include <malloc.h> // alloca()
 #endif
 
@@ -305,7 +308,7 @@
 typedef unsigned char byte;
 
 /* This is already defined in unix, but not in QNX Neutrino (6.x)*/
-#if (!defined(UNIX) && !defined(__CYGWIN__) && !defined(__HAIKU__)) || defined(__QNXNTO__)
+#if (!defined(UNIX) && !defined(__HAIKU__)) || defined(__QNXNTO__)
 	typedef unsigned int uint;
 #endif
 
