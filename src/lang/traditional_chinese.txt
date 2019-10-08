@@ -1797,6 +1797,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}變更�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}允許修改產量：{ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} 的配色
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}顯示通用配色
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}顯示列車配色
