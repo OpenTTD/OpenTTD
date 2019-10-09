@@ -1124,13 +1124,12 @@ static void ProduceIndustryGoods(Industry *i)
 	/* play a sound? */
 	if ((i->counter & 0x3F) == 0) {
 		uint32 r;
-		uint num;
-		if (Chance16R(1, 14, r) && (num = indsp->number_of_sounds) != 0 && _settings_client.sound.ambient) {
+		if (Chance16R(1, 14, r) && indsp->number_of_sounds != 0 && _settings_client.sound.ambient) {
 			for (size_t j = 0; j < lengthof(i->last_month_production); j++) {
 				if (i->last_month_production[j] > 0) {
 					/* Play sound since last month had production */
 					SndPlayTileFx(
-						(SoundFx)(indsp->random_sounds[((r >> 16) * num) >> 16]),
+						(SoundFx)(indsp->random_sounds[((r >> 16) * indsp->number_of_sounds) >> 16]),
 						i->location.tile);
 					break;
 				}
