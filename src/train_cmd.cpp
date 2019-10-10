@@ -34,6 +34,7 @@
 #include "zoom_func.h"
 #include "newgrf_debug.h"
 #include "framerate_type.h"
+#include "timetable.h"
 
 #include "table/strings.h"
 #include "table/train_cmd.h"
@@ -3075,6 +3076,22 @@ static Vehicle *CheckTrainAtSignal(Vehicle *v, void *data)
 }
 
 /**
+ * Update the vehicle's wait counter and consider reporting long delays. Time is money!
+ * @param v Vehicle to consider reporting to the user
+ */
+static void HandleTrainDelay(Train *v, Date threshold)
+{
+	if (v->owner != _local_company) return;
+	if (!_settings_client.gui.delay_vehicle_warn) return;
+	if (v->vehstatus & (VS_STOPPED | VS_CRASHED)) return;
+	if (v->wait_counter % (threshold * DAY_TICKS * 2) == 0) {
+		SetDParam(0, v->index);
+		SetTimetableParams(1, 2, v->wait_counter);
+		AddVehicleAdviceNewsItem(STR_NEWS_TRAIN_IS_DELAYED, v->index);
+	}
+}
+
+/**
  * Move a vehicle chain one movement stop forwards.
  * @param v First vehicle to move.
  * @param nomove Stop moving this and all following vehicles.
@@ -3175,16 +3192,19 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 						/* Don't handle stuck trains here. */
 						if (HasBit(v->flags, VRF_TRAIN_STUCK)) return false;
 
+						++v->wait_counter;
 						if (!HasSignalOnTrackdir(gp.new_tile, ReverseTrackdir(i))) {
 							v->cur_speed = 0;
 							v->subspeed = 0;
 							v->progress = 255; // make sure that every bit of acceleration will hit the signal again, so speed stays 0.
-							if (!_settings_game.pf.reverse_at_signals || ++v->wait_counter < _settings_game.pf.wait_oneway_signal * DAY_TICKS * 2) return false;
+							if (!_settings_game.pf.reverse_at_signals) HandleTrainDelay(v, _settings_game.pf.wait_oneway_signal);
+							if (!_settings_game.pf.reverse_at_signals || v->wait_counter < _settings_game.pf.wait_oneway_signal * DAY_TICKS * 2) return false;
 						} else if (HasSignalOnTrackdir(gp.new_tile, i)) {
 							v->cur_speed = 0;
 							v->subspeed = 0;
 							v->progress = 255; // make sure that every bit of acceleration will hit the signal again, so speed stays 0.
-							if (!_settings_game.pf.reverse_at_signals || ++v->wait_counter < _settings_game.pf.wait_twoway_signal * DAY_TICKS * 2) {
+							if (!_settings_game.pf.reverse_at_signals) HandleTrainDelay(v, _settings_game.pf.wait_twoway_signal);
+							if (!_settings_game.pf.reverse_at_signals || v->wait_counter < _settings_game.pf.wait_twoway_signal * DAY_TICKS * 2) {
 								DiagDirection exitdir = TrackdirToExitdir(i);
 								TileIndex o_tile = TileAddByDiagDir(gp.new_tile, exitdir);
 
@@ -3199,10 +3219,13 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 						 * reversing of stuck trains is disabled, don't reverse.
 						 * This does not apply if the reason for reversing is a one-way
 						 * signal blocking us, because a train would then be stuck forever. */
-						if (!_settings_game.pf.reverse_at_signals && !HasOnewaySignalBlockingTrackdir(gp.new_tile, i) &&
-								UpdateSignalsOnSegment(v->tile, enterdir, v->owner) == SIGSEG_PBS) {
-							v->wait_counter = 0;
-							return false;
+						if (!_settings_game.pf.reverse_at_signals) {
+							if (!HasOnewaySignalBlockingTrackdir(gp.new_tile, i) &&
+									UpdateSignalsOnSegment(v->tile, enterdir, v->owner) == SIGSEG_PBS) {
+								v->wait_counter = 0;
+								return false;
+							}
+							HandleTrainDelay(v, _settings_game.pf.wait_for_pbs_path);
 						}
 						goto reverse_train_direction;
 					} else {
@@ -3789,7 +3812,11 @@ static bool TrainLocoHandler(Train *v, bool mode)
 		if (!turn_around && v->wait_counter % _settings_game.pf.path_backoff_interval != 0 && v->force_proceed == TFP_NONE) return true;
 		if (!TryPathReserve(v)) {
 			/* Still stuck. */
-			if (turn_around) ReverseTrainDirection(v);
+			if (turn_around) {
+				ReverseTrainDirection(v);
+			} else if (!HasBit(v->flags, VRF_TRAIN_STUCK)) {
+				HandleTrainDelay(v, _settings_game.pf.wait_for_pbs_path);
+			}
 
 			if (HasBit(v->flags, VRF_TRAIN_STUCK) && v->wait_counter > 2 * _settings_game.pf.wait_for_pbs_path * DAY_TICKS) {
 				/* Show message to player. */
