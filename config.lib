@@ -2405,16 +2405,17 @@ detect_sdl() {
 		log 1 "checking SDL... disabled"
 
 		sdl_config=""
+		sdl2_config=""
 		return 0
 	fi
 
-	if [ "$with_sdl" = "2" ] && [ "$with_cocoa" = "2" ]; then
+	if [ "$with_sdl" != "1" ] && [ "$with_cocoa" = "2" ]; then
 		log 1 "configure: error: it is impossible to compile both SDL and COCOA"
 		log 1 "configure: error: please deselect one of them and try again"
 		exit 1
 	fi
 
-	if [ "$with_sdl" = "2" ] && [ "$enable_dedicated" != "0" ]; then
+	if [ "$with_sdl" != "1" ] && [ "$enable_dedicated" != "0" ]; then
 		log 1 "configure: error: it is impossible to compile a dedicated with SDL"
 		log 1 "configure: error: please deselect one of them and try again"
 		exit 1
@@ -2424,6 +2425,7 @@ detect_sdl() {
 		log 1 "checking SDL... dedicated server, skipping"
 
 		sdl_config=""
+		sdl2_config=""
 		return 0
 	fi
 
@@ -2443,10 +2445,16 @@ detect_sdl() {
 
 	if [ $with_sdl = "sdl1" ]; then
 		detect_pkg_config "2" "sdl" "sdl_config" "1.2"
-	elif [ $with_sdl = "sdl2" ] || [ -x `which sdl2-config` ]; then
+	elif [ $with_sdl = "sdl2" ]; then
 		detect_pkg_config "2" "sdl2" "sdl2_config" "2.0"
 	else
-		detect_pkg_config "$with_sdl" "sdl" "sdl_config" "1.2"
+		sdl2_config=""
+		if [ -x `which sdl2-config` ]; then
+			detect_pkg_config "$with_sdl" "sdl2" "sdl2_config" "2.0"
+		fi
+		if [ -z "$sdl2_config" ]; then
+			detect_pkg_config "$with_sdl" "sdl" "sdl_config" "1.2"
+		fi
 	fi
 }
 
