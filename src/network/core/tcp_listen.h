@@ -142,8 +142,7 @@ public:
 	{
 		assert(sockets.size() == 0);
 
-		NetworkAddressList addresses;
-		GetBindAddresses(&addresses, port);
+		NetworkAddressList addresses = GetBindAddresses(port);
 
 		for (NetworkAddress &address : addresses) {
 			address.Listen(SOCK_STREAM, &sockets);

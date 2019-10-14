@@ -22,13 +22,9 @@
  * Create an UDP socket but don't listen yet.
  * @param bind the addresses to bind to.
  */
-NetworkUDPSocketHandler::NetworkUDPSocketHandler(NetworkAddressList *bind)
+NetworkUDPSocketHandler::NetworkUDPSocketHandler(const NetworkAddressList &bind) : bind(bind)
 {
-	if (bind != nullptr) {
-		for (NetworkAddress &addr : *bind) {
-			this->bind.push_back(addr);
-		}
-	} else {
+	if (this->bind.empty()) {
 		/* As hostname nullptr and port 0/nullptr don't go well when
 		 * resolving it we need to add an address for each of
 		 * the address families we support. */

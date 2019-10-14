@@ -627,19 +627,21 @@ void NetworkAddServer(const char *b)
 
 /**
  * Get the addresses to bind to.
- * @param addresses the list to write to.
  * @param port the port to bind to.
+ * @return the list of addresses to bind to.
  */
-void GetBindAddresses(NetworkAddressList *addresses, uint16 port)
+NetworkAddressList GetBindAddresses(uint16 port)
 {
+	NetworkAddressList addresses;
 	for (const auto &iter : _network_bind_list) {
-		addresses->emplace_back(iter.c_str(), port);
+		addresses.emplace_back(iter.c_str(), port);
 	}
 
 	/* No address, so bind to everything. */
-	if (addresses->size() == 0) {
-		addresses->emplace_back("", port);
+	if (addresses.empty()) {
+		addresses.emplace_back("", port);
 	}
+	return addresses;
 }
 
 /* Generates the list of manually added hosts from NetworkGameList and
@@ -1082,7 +1084,7 @@ void NetworkStartUp()
 
 	NetworkInitialize();
 	DEBUG(net, 3, "[core] network online, multiplayer available");
-	NetworkFindBroadcastIPs(&_broadcast_list);
+	_broadcast_list = NetworkFindBroadcastIPs();
 }
 
 /** This shuts the network down */

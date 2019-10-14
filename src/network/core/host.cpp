@@ -20,7 +20,7 @@
  * This function is implemented multiple times for multiple targets.
  * @param broadcast the list of broadcasts to write into.
  */
-static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast);
+static NetworkAddressList NetworkFindBroadcastIPsInternal();
 
 #if defined(__HAIKU__) /* doesn't have neither getifaddrs or net/if.h */
 /* Based on Andrew Bachmann's netstat+.c. Big thanks to him! */
@@ -36,20 +36,22 @@ int seek_past_header(char **pos, const char *header)
 	return B_OK;
 }
 
-static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // BEOS implementation
+static NetworkAddressList NetworkFindBroadcastIPsInternal() // BEOS implementation
 {
+	NetworkAddressList broadcast;
+
 	int sock = socket(AF_INET, SOCK_DGRAM, 0);
 
 	if (sock < 0) {
 		DEBUG(net, 0, "[core] error creating socket");
-		return;
+		return broadcast;
 	}
 
 	char *output_pointer = nullptr;
 	int output_length = _netstat(sock, &output_pointer, 1);
 	if (output_length < 0) {
 		DEBUG(net, 0, "[core] error running _netstat");
-		return;
+		return broadcast;
 	}
 
 	char **output = &output_pointer;
@@ -76,7 +78,7 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // BE
 				memset(&address, 0, sizeof(address));
 				((sockaddr_in*)&address)->sin_addr.s_addr = htonl(ip | ~netmask);
 				NetworkAddress addr(address, sizeof(sockaddr));
-				if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const& elem) -> bool { return elem == addr; })) broadcast->push_back(addr);
+				if (std::find(broadcast.begin(), broadcast.end(), addr) == broadcast.end()) broadcast.push_back(addr);
 			}
 			if (read < 0) {
 				break;
@@ -85,14 +87,16 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // BE
 		}
 		closesocket(sock);
 	}
+	return broadcast;
 }
 
 #elif defined(HAVE_GETIFADDRS)
-static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // GETIFADDRS implementation
+static NetworkAddressList NetworkFindBroadcastIPsInternal() // GETIFADDRS implementation
 {
+	NetworkAddressList broadcast;
 	struct ifaddrs *ifap, *ifa;
 
-	if (getifaddrs(&ifap) != 0) return;
+	if (getifaddrs(&ifap) != 0) return broadcast;
 
 	for (ifa = ifap; ifa != nullptr; ifa = ifa->ifa_next) {
 		if (!(ifa->ifa_flags & IFF_BROADCAST)) continue;
@@ -100,27 +104,29 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // GE
 		if (ifa->ifa_broadaddr->sa_family != AF_INET) continue;
 
 		NetworkAddress addr(ifa->ifa_broadaddr, sizeof(sockaddr));
-		if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const& elem) -> bool { return elem == addr; })) broadcast->push_back(addr);
+		if (std::find(broadcast.begin(), broadcast.end(), addr) == broadcast.end()) broadcast.push_back(addr);
 	}
 	freeifaddrs(ifap);
+	return broadcast;
 }
 
 #elif defined(_WIN32)
-static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // Win32 implementation
+static NetworkAddressList NetworkFindBroadcastIPsInternal() // Win32 implementation
 {
+	NetworkAddressList broadcast;
+
 	SOCKET sock = socket(AF_INET, SOCK_DGRAM, 0);
-	if (sock == INVALID_SOCKET) return;
+	if (sock == INVALID_SOCKET) return broadcast;
 
 	DWORD len = 0;
 	int num = 2;
 	INTERFACE_INFO *ifo = CallocT<INTERFACE_INFO>(num);
-
 	for (;;) {
 		if (WSAIoctl(sock, SIO_GET_INTERFACE_LIST, nullptr, 0, ifo, num * sizeof(*ifo), &len, nullptr, nullptr) == 0) break;
 		free(ifo);
 		if (WSAGetLastError() != WSAEFAULT) {
 			closesocket(sock);
-			return;
+			return broadcast;
 		}
 		num *= 2;
 		ifo = CallocT<INTERFACE_INFO>(num);
@@ -136,19 +142,22 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // Wi
 		memcpy(&address, &ifo[j].iiAddress.Address, sizeof(sockaddr));
 		((sockaddr_in*)&address)->sin_addr.s_addr = ifo[j].iiAddress.AddressIn.sin_addr.s_addr | ~ifo[j].iiNetmask.AddressIn.sin_addr.s_addr;
 		NetworkAddress addr(address, sizeof(sockaddr));
-		if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const& elem) -> bool { return elem == addr; })) broadcast->push_back(addr);
+		if (std::find(broadcast.begin(), broadcast.end(), addr) == broadcast.end()) broadcast.push_back(addr);
 	}
 
 	free(ifo);
 	closesocket(sock);
+	return broadcast;
 }
 
 #else /* not HAVE_GETIFADDRS */
 
 #include "../../string_func.h"
 
-static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // !GETIFADDRS implementation
+static NetworkAddressList NetworkFindBroadcastIPsInternal() // !GETIFADDRS implementation
 {
+	NetworkAddressList broadcast;
+
 	SOCKET sock = socket(AF_INET, SOCK_DGRAM, 0);
 	if (sock == INVALID_SOCKET) return;
 
@@ -159,7 +168,7 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // !G
 	ifconf.ifc_buf = buf;
 	if (ioctl(sock, SIOCGIFCONF, &ifconf) == -1) {
 		closesocket(sock);
-		return;
+		return broadcast;
 	}
 
 	const char *buf_end = buf + ifconf.ifc_len;
@@ -174,7 +183,7 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // !G
 					(r.ifr_flags & IFF_BROADCAST) &&
 					ioctl(sock, SIOCGIFBRDADDR, &r) != -1) {
 				NetworkAddress addr(&r.ifr_broadaddr, sizeof(sockaddr));
-				if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const& elem) -> bool { return elem == addr; })) broadcast->push_back(addr);
+				if (std::find(broadcast.begin(), broadcast.end(), addr) == broadcast.end()) broadcast.push_back(addr);
 			}
 		}
 
@@ -185,23 +194,24 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // !G
 	}
 
 	closesocket(sock);
+	return broadcast;
 }
 #endif /* all NetworkFindBroadcastIPsInternals */
 
 /**
- * Find the IPv4 broadcast addresses; IPv6 uses a completely different
- * strategy for broadcasting.
- * @param broadcast the list of broadcasts to write into.
+ * Find the IPv4 broadcast addresses; IPv6 uses a completely different strategy for broadcasting.
+ * @return the list of broadcasts to write into.
  */
-void NetworkFindBroadcastIPs(NetworkAddressList *broadcast)
+NetworkAddressList NetworkFindBroadcastIPs()
 {
-	NetworkFindBroadcastIPsInternal(broadcast);
+	NetworkAddressList broadcast = NetworkFindBroadcastIPsInternal();
 
 	/* Now display to the debug all the detected ips */
 	DEBUG(net, 3, "Detected broadcast addresses:");
 	int i = 0;
-	for (NetworkAddress &addr : *broadcast) {
+	for (NetworkAddress &addr : broadcast) {
 		addr.SetPort(NETWORK_DEFAULT_PORT);
-		DEBUG(net, 3, "%d) %s", i++, addr.GetHostname());
+		DEBUG(net, 3, "(%d) %s", i++, addr.GetHostname());
 	}
+	return broadcast;
 }

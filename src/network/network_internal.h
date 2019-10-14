@@ -137,7 +137,7 @@ extern CompanyMask _network_company_passworded;
 
 void NetworkTCPQueryServer(NetworkAddress address);
 
-void GetBindAddresses(NetworkAddressList *addresses, uint16 port);
+NetworkAddressList GetBindAddresses(uint16 port);
 void NetworkAddServer(const char *b);
 void NetworkRebuildHostList();
 void UpdateNetworkGameWindow();

@@ -16,6 +16,6 @@
 
 #include "address.h"
 
-void NetworkFindBroadcastIPs(NetworkAddressList *broadcast);
+NetworkAddressList NetworkFindBroadcastIPs();
 
 #endif /* NETWORK_CORE_HOST_H */

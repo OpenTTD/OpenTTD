@@ -96,7 +96,7 @@ public:
 	 * Create the socket.
 	 * @param addresses The addresses to bind on.
 	 */
-	MasterNetworkUDPSocketHandler(NetworkAddressList *addresses) : NetworkUDPSocketHandler(addresses) {}
+	MasterNetworkUDPSocketHandler(const NetworkAddressList &addresses) : NetworkUDPSocketHandler(addresses) {}
 	virtual ~MasterNetworkUDPSocketHandler() {}
 };
 
@@ -128,7 +128,7 @@ public:
 	 * Create the socket.
 	 * @param addresses The addresses to bind on.
 	 */
-	ServerNetworkUDPSocketHandler(NetworkAddressList *addresses) : NetworkUDPSocketHandler(addresses) {}
+	ServerNetworkUDPSocketHandler(const NetworkAddressList &addresses) : NetworkUDPSocketHandler(addresses) {}
 	virtual ~ServerNetworkUDPSocketHandler() {}
 };
 
@@ -301,6 +301,7 @@ protected:
 	void Receive_SERVER_NEWGRFS(Packet *p, NetworkAddress *client_addr) override;
 	void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config) override;
 public:
+	ClientNetworkUDPSocketHandler(const NetworkAddressList &bind) : NetworkUDPSocketHandler(bind) {}
 	virtual ~ClientNetworkUDPSocketHandler() {}
 };
 
@@ -630,15 +631,9 @@ void NetworkUDPInitialize()
 
 	std::lock_guard<std::mutex> lock(_network_udp_mutex);
 
-	_udp_client_socket = new ClientNetworkUDPSocketHandler();
-
-	NetworkAddressList server;
-	GetBindAddresses(&server, _settings_client.network.server_port);
-	_udp_server_socket = new ServerNetworkUDPSocketHandler(&server);
-
-	server.clear();
-	GetBindAddresses(&server, 0);
-	_udp_master_socket = new MasterNetworkUDPSocketHandler(&server);
+	_udp_client_socket = new ClientNetworkUDPSocketHandler({});
+	_udp_server_socket = new ServerNetworkUDPSocketHandler(GetBindAddresses(_settings_client.network.server_port));
+	_udp_master_socket = new MasterNetworkUDPSocketHandler(GetBindAddresses(0));
 
 	_network_udp_server = false;
 	_network_udp_broadcast = 0;

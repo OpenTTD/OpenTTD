@@ -229,7 +229,7 @@ protected:
 	 */
 	virtual void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config) { NOT_REACHED(); }
 public:
-	NetworkUDPSocketHandler(NetworkAddressList *bind = nullptr);
+	NetworkUDPSocketHandler(const NetworkAddressList &bind);
 
 	/** On destructing of this class, the socket needs to be closed */
 	virtual ~NetworkUDPSocketHandler() { this->Close(); }
