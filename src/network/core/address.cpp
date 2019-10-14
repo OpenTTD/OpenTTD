@@ -21,11 +21,12 @@
  * IPv4 dotted representation is given.
  * @return the hostname
  */
-const char *NetworkAddress::GetHostname()
+const char *NetworkAddress::GetHostname() const
 {
 	if (StrEmpty(this->hostname) && this->address.ss_family != AF_UNSPEC) {
 		assert(this->address_length != 0);
-		getnameinfo((struct sockaddr *)&this->address, this->address_length, this->hostname, sizeof(this->hostname), nullptr, 0, NI_NUMERICHOST);
+		NetworkAddress *self = const_cast<NetworkAddress *>(this);
+		getnameinfo((struct sockaddr *)&self->address, self->address_length, self->hostname, sizeof(self->hostname), nullptr, 0, NI_NUMERICHOST);
 	}
 	return this->hostname;
 }
@@ -76,7 +77,7 @@ void NetworkAddress::SetPort(uint16 port)
  * @param last the last element in the buffer
  * @param with_family whether to add the family (e.g. IPvX).
  */
-void NetworkAddress::GetAddressAsString(char *buffer, const char *last, bool with_family)
+void NetworkAddress::GetAddressAsString(char *buffer, const char *last, bool with_family) const
 {
 	if (this->GetAddress()->ss_family == AF_INET6) buffer = strecpy(buffer, "[", last);
 	buffer = strecpy(buffer, this->GetHostname(), last);
@@ -100,7 +101,7 @@ void NetworkAddress::GetAddressAsString(char *buffer, const char *last, bool wit
  * @return the address
  * @note NOT thread safe
  */
-const char *NetworkAddress::GetAddressAsString(bool with_family)
+const char *NetworkAddress::GetAddressAsString(bool with_family) const
 {
 	/* 6 = for the : and 5 for the decimal port number */
 	static char buf[NETWORK_HOSTNAME_LENGTH + 6 + 7];
@@ -123,7 +124,7 @@ static SOCKET ResolveLoopProc(addrinfo *runp)
  * Get the address in its internal representation.
  * @return the address
  */
-const sockaddr_storage *NetworkAddress::GetAddress()
+const sockaddr_storage *NetworkAddress::GetAddress() const
 {
 	if (!this->IsResolved()) {
 		/* Here we try to resolve a network address. We use SOCK_STREAM as
@@ -131,7 +132,7 @@ const sockaddr_storage *NetworkAddress::GetAddress()
 		 * bothered to implement the specifications and allow '0' as value
 		 * that means "don't care whether it is SOCK_STREAM or SOCK_DGRAM".
 		 */
-		this->Resolve(this->address.ss_family, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ResolveLoopProc);
+		const_cast<NetworkAddress *>(this)->Resolve(this->address.ss_family, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ResolveLoopProc);
 		this->resolved = true;
 	}
 	return &this->address;
@@ -142,10 +143,10 @@ const sockaddr_storage *NetworkAddress::GetAddress()
  * @param family the family to check against
  * @return true if it is of the given family
  */
-bool NetworkAddress::IsFamily(int family)
+bool NetworkAddress::IsFamily(int family) const
 {
 	if (!this->IsResolved()) {
-		this->Resolve(family, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ResolveLoopProc);
+		const_cast<NetworkAddress *>(this)->Resolve(family, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ResolveLoopProc);
 	}
 	return this->address.ss_family == family;
 }
@@ -156,7 +157,7 @@ bool NetworkAddress::IsFamily(int family)
  * @note netmask without /n assumes all bits need to match.
  * @return true if this IP is within the netmask.
  */
-bool NetworkAddress::IsInNetmask(const char *netmask)
+bool NetworkAddress::IsInNetmask(const char *netmask) const
 {
 	/* Resolve it if we didn't do it already */
 	if (!this->IsResolved()) this->GetAddress();

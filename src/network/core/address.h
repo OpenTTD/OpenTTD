@@ -29,9 +29,9 @@ typedef SmallMap<NetworkAddress, SOCKET> SocketList;    ///< Type for a mapping 
 class NetworkAddress {
 private:
 	char hostname[NETWORK_HOSTNAME_LENGTH]; ///< The hostname
-	int address_length;                     ///< The length of the resolved address
-	sockaddr_storage address;               ///< The resolved address
-	bool resolved;                          ///< Whether the address has been (tried to be) resolved
+	mutable int address_length;             ///< The length of the resolved address
+	mutable sockaddr_storage address;       ///< The resolved address
+	mutable bool resolved;                  ///< Whether the address has been (tried to be) resolved
 
 	/**
 	 * Helper function to resolve something to a socket.
@@ -91,16 +91,16 @@ public:
 		this->SetPort(port);
 	}
 
-	const char *GetHostname();
-	void GetAddressAsString(char *buffer, const char *last, bool with_family = true);
-	const char *GetAddressAsString(bool with_family = true);
-	const sockaddr_storage *GetAddress();
+	const char *GetHostname() const;
+	void GetAddressAsString(char *buffer, const char *last, bool with_family = true) const;
+	const char *GetAddressAsString(bool with_family = true) const;
+	const sockaddr_storage *GetAddress() const;
 
 	/**
 	 * Get the (valid) length of the address.
 	 * @return the length
 	 */
-	int GetAddressLength()
+	int GetAddressLength() const
 	{
 		/* Resolve it if we didn't do it already */
 		if (!this->IsResolved()) this->GetAddress();
@@ -119,15 +119,15 @@ public:
 		return this->resolved;
 	}
 
-	bool IsFamily(int family);
-	bool IsInNetmask(const char *netmask);
+	bool IsFamily(int family) const;
+	bool IsInNetmask(const char *netmask) const;
 
 	/**
 	 * Compare the address of this class with the address of another.
 	 * @param address the other address.
 	 * @return < 0 if address is less, 0 if equal and > 0 if address is more
 	 */
-	int CompareTo(NetworkAddress &address)
+	int CompareTo(const NetworkAddress &address) const
 	{
 		int r = this->GetAddressLength() - address.GetAddressLength();
 		if (r == 0) r = this->address.ss_family - address.address.ss_family;
@@ -141,35 +141,25 @@ public:
 	 * @param address the other address.
 	 * @return true if both match.
 	 */
-	bool operator == (NetworkAddress &address)
+	bool operator == (const NetworkAddress &address) const
 	{
 		return this->CompareTo(address) == 0;
-	}
-
-	/**
-	 * Compare the address of this class with the address of another.
-	 * @param address the other address.
-	 * @return true if both match.
-	 */
-	bool operator == (NetworkAddress &address) const
-	{
-		return const_cast<NetworkAddress*>(this)->CompareTo(address) == 0;
 	}
 	/**
 	 * Compare the address of this class with the address of another.
 	 * @param address the other address.
 	 * @return true if both do not match.
 	 */
-	bool operator != (NetworkAddress address) const
+	bool operator != (const NetworkAddress address) const
 	{
-		return const_cast<NetworkAddress*>(this)->CompareTo(address) != 0;
+		return this->CompareTo(address) != 0;
 	}
 
 	/**
 	 * Compare the address of this class with the address of another.
 	 * @param address the other address.
 	 */
-	bool operator < (NetworkAddress &address)
+	bool operator < (const NetworkAddress &address) const
 	{
 		return this->CompareTo(address) < 0;
 	}
