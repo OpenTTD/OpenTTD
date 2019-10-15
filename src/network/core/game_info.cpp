@@ -16,6 +16,8 @@
 #include "../../date_func.h"
 #include "../../debug.h"
 #include "../../map_func.h"
+#include "../../game/game.hpp"
+#include "../../game/game_info.hpp"
 #include "../../settings_type.h"
 #include "../../string_func.h"
 #include "../../rev.h"
@@ -195,6 +197,11 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info)
 	/* Update the documentation in game_info.h on changes
 	 * to the NetworkGameInfo wire-protocol! */
 
+	/* NETWORK_GAME_INFO_VERSION = 5 */
+	GameInfo *game_info = Game::GetInfo();
+	p->Send_uint32(game_info == nullptr ? -1 : (uint32)game_info->GetVersion());
+	p->Send_string(game_info == nullptr ? "" : game_info->GetName());
+
 	/* NETWORK_GAME_INFO_VERSION = 4 */
 	{
 		/* Only send the GRF Identification (GRF_ID and MD5 checksum) of
@@ -260,6 +267,12 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info)
 	 * to the NetworkGameInfo wire-protocol! */
 
 	switch (game_info_version) {
+		case 5: {
+			info->gamescript_version = (int)p->Recv_uint32();
+			info->gamescript_name = p->Recv_string(NETWORK_NAME_LENGTH);
+			FALLTHROUGH;
+		}
+
 		case 4: {
 			GRFConfig **dst = &info->grfconfig;
 			uint i;

@@ -675,6 +675,13 @@ public:
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_CURRENT_DATE); // current date
 			y += FONT_HEIGHT_NORMAL;
 
+			if (sel->info.gamescript_version != -1) {
+				SetDParamStr(0, sel->info.gamescript_name);
+				SetDParam(1, sel->info.gamescript_version);
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_GAMESCRIPT); // gamescript name and version
+				y += FONT_HEIGHT_NORMAL;
+			}
+
 			y += WD_PAR_VSEP_NORMAL;
 
 			if (!sel->info.compatible) {
