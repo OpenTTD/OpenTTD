@@ -80,6 +80,8 @@ struct NetworkServerGameInfo {
 	byte spectators_on;          ///< How many spectators do we have?
 	byte spectators_max;         ///< Max spectators allowed on server
 	byte landscape;              ///< The used landscape
+	int gamescript_version;      ///< Version of the gamescript.
+	std::string gamescript_name; ///< Name of the gamescript.
 };
 
 /**

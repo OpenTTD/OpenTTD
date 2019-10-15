@@ -22,6 +22,8 @@
 #include "../network_func.h"
 #include "../network.h"
 #include "packet.h"
+#include "../../game/game.hpp"
+#include "../../game/game_info.hpp"
 
 #include "../../safeguards.h"
 
@@ -190,10 +192,15 @@ static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config, std::strin
  */
 void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, GameInfoNewGRFMode newgrf_mode)
 {
-	p->Send_uint8 (NETWORK_GAME_INFO_VERSION);
+	p->Send_uint8(NETWORK_GAME_INFO_VERSION);
 
 	/* Update the documentation in game_info.h on changes
 	 * to the NetworkGameInfo wire-protocol! */
+
+	/* NETWORK_GAME_INFO_VERSION = 6 */
+	GameInfo *game_info = Game::GetInfo();
+	p->Send_uint32(game_info == nullptr ? -1 : (uint32)game_info->GetVersion());
+	p->Send_string(game_info == nullptr ? "" : game_info->GetName());
 
 	/* NETWORK_GAME_INFO_VERSION = 5 */
 	assert(info->join_key.empty() || info->join_key[0] == '+');
@@ -269,6 +276,12 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info)
 
 	GameInfoNewGRFMode newgrf_mode = GAME_INFO_NEWGRF_MODE_SHORT;
 	switch (game_info_version) {
+		case 6: {
+			info->gamescript_version = (int)p->Recv_uint32();
+			info->gamescript_name = p->Recv_string(NETWORK_NAME_LENGTH);
+			FALLTHROUGH;
+		}
+
 		case 5: {
 			std::string join_key = p->Recv_string(NETWORK_JOIN_KEY_LENGTH);
 			info->join_key = join_key.empty() ? "" : "+" + join_key;
