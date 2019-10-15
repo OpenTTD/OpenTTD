@@ -30,6 +30,8 @@
 #include "../strings_func.h"
 #include "table/strings.h"
 #include <mutex>
+#include "../game/game.hpp"
+#include "../game/game_info.hpp"
 
 #include "core/udp.h"
 
@@ -123,6 +125,7 @@ protected:
 	void Receive_CLIENT_FIND_SERVER(Packet *p, NetworkAddress *client_addr) override;
 	void Receive_CLIENT_DETAIL_INFO(Packet *p, NetworkAddress *client_addr) override;
 	void Receive_CLIENT_GET_NEWGRFS(Packet *p, NetworkAddress *client_addr) override;
+	void Receive_CLIENT_GET_GAMESCRIPT(Packet *p, NetworkAddress *client_addr) override;
 public:
 	/**
 	 * Create the socket.
@@ -291,6 +294,30 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_GET_NEWGRFS(Packet *p, Networ
 	this->SendPacket(&packet, client_addr);
 }
 
+/**
+ * A client has requested the name of GameScript.
+ */
+void ServerNetworkUDPSocketHandler::Receive_CLIENT_GET_GAMESCRIPT(Packet *p, NetworkAddress *client_addr)
+{
+	DEBUG(net, 6, "[udp] gamescript data request from %s", client_addr->GetAddressAsString());
+
+	GameInfo *info = Game::GetInfo();
+
+	Packet packet(PACKET_UDP_SERVER_GAMESCRIPT);
+	if(info == NULL){
+		packet.Send_uint8(0);
+	}
+	else{
+		packet.Send_uint8(1);
+		packet.Send_uint32((uint32)info->GetVersion());
+		packet.Send_string(info->GetShortName());
+		packet.Send_string(info->GetName());
+	}
+
+	this->SendPacket(&packet, client_addr);
+}
+
+
 ///*** Communication with servers (we are client) ***/
 
 /** Helper class for handling all client side communication. */
@@ -299,6 +326,7 @@ protected:
 	void Receive_SERVER_RESPONSE(Packet *p, NetworkAddress *client_addr) override;
 	void Receive_MASTER_RESPONSE_LIST(Packet *p, NetworkAddress *client_addr) override;
 	void Receive_SERVER_NEWGRFS(Packet *p, NetworkAddress *client_addr) override;
+  void Receive_SERVER_GAMESCRIPT(Packet *p, NetworkAddress *client_addr) override;
 	void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config) override;
 public:
 	virtual ~ClientNetworkUDPSocketHandler() {}
@@ -435,6 +463,25 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_NEWGRFS(Packet *p, NetworkAdd
 			AddGRFTextToList(&unknown_name->text, name);
 		}
 	}
+}
+
+/** The return of the client's request of the names of GameScript */
+void ClientNetworkUDPSocketHandler::Receive_SERVER_GAMESCRIPT(Packet *p, NetworkAddress *client_addr)
+{
+	uint8 num_gs;
+
+	DEBUG(net, 6, "[udp] gamescript data reply from %s", client_addr->GetAddressAsString());
+
+	num_gs = p->Recv_uint8();
+	if (num_gs != 1) return;
+
+	int version = (int)p->Recv_uint32();
+
+	char shortname[8];
+	char name[NETWORK_GRF_NAME_LENGTH];
+
+	p->Recv_string(shortname, sizeof(shortname));
+	p->Recv_string(name, sizeof(name));
 }
 
 void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config)

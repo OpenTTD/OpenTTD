@@ -32,6 +32,8 @@ enum PacketUDPType {
 	PACKET_UDP_CLIENT_GET_NEWGRFS,   ///< Requests the name for a list of GRFs (GRF_ID and MD5)
 	PACKET_UDP_SERVER_NEWGRFS,       ///< Sends the list of NewGRF's requested.
 	PACKET_UDP_MASTER_SESSION_KEY,   ///< Sends a fresh session key to the client
+	PACKET_UDP_CLIENT_GET_GAMESCRIPT,///< Requests the name of a game script
+	PACKET_UDP_SERVER_GAMESCRIPT,    ///< Sends the gamescript info
 	PACKET_UDP_END,                  ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -209,6 +211,24 @@ protected:
 	 * @param client_addr The origin of the packet.
 	 */
 	virtual void Receive_SERVER_NEWGRFS(Packet *p, NetworkAddress *client_addr);
+
+	/**
+	 * The client requests information about GameScript.
+	 * @param p           The received packet.
+	 * @param client_addr The origin of the packet.
+	 */
+	virtual void Receive_CLIENT_GET_GAMESCRIPT(Packet *p, NetworkAddress *client_addr);
+
+	/**
+	 * The server returns information about gamescript.
+	 * uint8      Numer of GameScripts (0 or 1).
+	 * uint32     Version of GameScript
+	 * string     Short name of GameScript (4 bytes)
+	 * string     The name of the GameScript.
+	 * @param p           The received packet.
+	 * @param client_addr The origin of the packet.
+	 */
+	virtual void Receive_SERVER_GAMESCRIPT(Packet *p, NetworkAddress *client_addr);
 
 	/**
 	 * The master server sends us a session key.

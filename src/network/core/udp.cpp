@@ -311,6 +311,8 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, NetworkAddress *client_
 		case PACKET_UDP_SERVER_UNREGISTER:    this->Receive_SERVER_UNREGISTER(p, client_addr);    break;
 		case PACKET_UDP_CLIENT_GET_NEWGRFS:   this->Receive_CLIENT_GET_NEWGRFS(p, client_addr);   break;
 		case PACKET_UDP_SERVER_NEWGRFS:       this->Receive_SERVER_NEWGRFS(p, client_addr);       break;
+		case PACKET_UDP_CLIENT_GET_GAMESCRIPT: this->Receive_CLIENT_GET_GAMESCRIPT(p, client_addr); break;
+		case PACKET_UDP_SERVER_GAMESCRIPT:    this->Receive_SERVER_GAMESCRIPT(p, client_addr);    break;
 		case PACKET_UDP_MASTER_SESSION_KEY:   this->Receive_MASTER_SESSION_KEY(p, client_addr);   break;
 
 		default:
@@ -344,4 +346,6 @@ void NetworkUDPSocketHandler::Receive_MASTER_RESPONSE_LIST(Packet *p, NetworkAdd
 void NetworkUDPSocketHandler::Receive_SERVER_UNREGISTER(Packet *p, NetworkAddress *client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_SERVER_UNREGISTER, client_addr); }
 void NetworkUDPSocketHandler::Receive_CLIENT_GET_NEWGRFS(Packet *p, NetworkAddress *client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_CLIENT_GET_NEWGRFS, client_addr); }
 void NetworkUDPSocketHandler::Receive_SERVER_NEWGRFS(Packet *p, NetworkAddress *client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_SERVER_NEWGRFS, client_addr); }
+void NetworkUDPSocketHandler::Receive_CLIENT_GET_GAMESCRIPT(Packet *p, NetworkAddress *client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_CLIENT_GET_GAMESCRIPT, client_addr); }
+void NetworkUDPSocketHandler::Receive_SERVER_GAMESCRIPT(Packet *p, NetworkAddress *client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_SERVER_GAMESCRIPT , client_addr); }
 void NetworkUDPSocketHandler::Receive_MASTER_SESSION_KEY(Packet *p, NetworkAddress *client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_MASTER_SESSION_KEY, client_addr); }
