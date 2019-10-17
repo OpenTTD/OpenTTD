@@ -3956,7 +3956,7 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}La valeu
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Entrer la valeur à comparer
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Suivant
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Sauter l'ordre courant et passer au suivant.{}Ctrl-clic pour sauter l'ordre sélectionné.
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Sauter l'ordre courant et passer au suivant.{}Ctrl-clic pour sauter à l'ordre sélectionné.
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Supprimer
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Supprimer l'ordre sélectionné
