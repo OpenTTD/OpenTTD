@@ -3,6 +3,8 @@
 ## Table of contents
 
 - 1.0) [About](#10-about)
+    - 1.1) [Compiling OpenTTD](#11-compiling-openttd)
+    - 1.2) [Contributing to OpenTTD](#12-contributing-to-openttd)
 - 2.0) [Contacting](#20-contacting)
     - 2.1) [Reporting bugs](#21-reporting-bugs)
     - 2.2) [Reporting desyncs](#22-reporting-desyncs)
@@ -16,15 +18,11 @@
     - 5.1) [Logging of potentially dangerous actions](#51-logging-of-potentially-dangerous-actions)
     - 5.2) [Frame rate and performance metrics](#52-frame-rate-and-performance-metrics)
 - 6.0) [Configuration file](#60-configuration-file)
-- 7.0) [Compiling](#70-compiling)
-    - 7.1) [Required/optional libraries](#71-requiredoptional-libraries)
-    - 7.2) [Supported compilers](#72-supported-compilers)
-    - 7.3) [Compilation of base sets](#73-compilation-of-base-sets)
-- 8.0) [Translating](#80-translating)
-    - 8.1) [Translation](#81-translation)
-    - 8.2) [Previewing](#82-previewing)
-- 9.0) [Troubleshooting](#90-troubleshooting)
-- 10.0) [Licensing](#100-licensing)
+- 7.0) [Translating](#70-translating)
+    - 7.1) [Translation](#71-translation)
+    - 7.2) [Previewing](#72-previewing)
+- 8.0) [Troubleshooting](#80-troubleshooting)
+- 9.0) [Licensing](#90-licensing)
 - X.X) [Credits](#xx-credits)
 
 ## 1.0) About
@@ -36,6 +34,14 @@ game as closely as possible while extending it with new features.
 OpenTTD is licensed under the GNU General Public License version 2.0,
 but includes some 3rd party software under different licenses. See the
 section "Licensing" below for details.
+
+## 1.1) Compiling OpenTTD
+
+Instructions for compiling OpenTTD can be found in [./COMPILING.md](COMPILING.md)
+
+## 1.2) Contributing to OpenTTD
+
+We welcome contributors to OpenTTD.  More information for contributors can be found in [./CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## 2.0) Contacting
 
@@ -511,106 +517,7 @@ When you cannot find openttd.cfg you should look in the directories as
 described in section 4.2. If you do not have an openttd.cfg OpenTTD will
 create one after closing.
 
-## 7.0) Compiling
-
-### Windows:
-
-You need Microsoft Visual Studio 2015 Update 3 or more recent. Open the project file
-and it should build automatically. In case you want to build with SDL support
-you need to add WITH_SDL to the project settings.
-
-PNG (WITH_PNG), ZLIB (WITH_ZLIB), LZO (WITH_LZO), Freetype (WITH_FREETYPE) and
-libLZMA (WITH_LIBLZMA) support is enabled by default. For these to work you need their
-development files. To get them just use vcpkg from https://github.com/Microsoft/vcpkg
-using x86-windows-static and x64-windows-static triplets.
-For more help with VS see docs/Readme_Windows_MSVC.md.
-
-You can also build it using the Makefile with MSYS/MinGW or Cygwin/MinGW.
-Please read the Makefile for more information.
-
-### Solaris, FreeBSD, OpenBSD:
-
-Use '`gmake`', but do a '`./configure`' before the first build.
-
-### Linux/Unix:
-
-OpenTTD can be built with GNU '`make`'. On non-GNU systems it is called '`gmake`'.
-However, for the first build one has to do a '`./configure`' first.
-
-### macOS:
-
-Use '`make`' or Xcode (which will then call make for you)
-This will give you a binary for your CPU type (PPC/Intel)
-However, for the first build one has to do a '`./configure`' first.
-To make a universal binary type '`./configure --enabled-universal`'
-instead of '`./configure`'.
-
-### Haiku:
-
-Use '`make`', but do a '`./configure`' before the first build.
-
-### OS/2:
-
-A comprehensive GNU build environment is required to build the OS/2 version.
-See the docs/Readme_OS2.txt file for more information.
-
-### 7.1) Required/optional libraries
-
-The following libraries are used by OpenTTD for:
-
-- libSDL/liballegro: hardware access (video, sound, mouse)
-- zlib: (de)compressing of old (0.3.0-1.0.5) savegames, content downloads,
-   heightmaps
-- liblzo2: (de)compressing of old (pre 0.3.0) savegames
-- liblzma: (de)compressing of savegames (1.1.0 and later)
-- libpng: making screenshots and loading heightmaps
-- libfreetype: loading generic fonts and rendering them
-- libfontconfig: searching for fonts, resolving font names to actual fonts
-- libicu: handling of right-to-left scripts (e.g. Arabic and Persian) and
-   natural sorting of strings.
-
-OpenTTD does not require any of the libraries to be present, but without
-liblzma you cannot open most recent savegames and without zlib you cannot
-open most older savegames or use the content downloading system.
-Without libSDL/liballegro on non-Windows and non-macOS machines you have
-no graphical user interface; you would be building a dedicated server.
-
-### 7.2) Supported compilers
-
-The following compilers are known to compile OpenTTD:
-
-- Microsoft Visual C++ (MSVC) 2015, 2017 and 2019.
-- GNU Compiler Collection (GCC) 4.8 - 9.
-- Clang/LLVM 3.9 - 8
-
-The following compilers are known not to compile OpenTTD:
-
-In general, this is because these old versions do not (fully) support modern
-C++11 language features.
-
-- Microsoft Visual C++ (MSVC) 2013 and earlier.
-- GNU Compiler Collection (GCC) 4.7 and earlier.
-- Clang/LLVM 3.8 and earlier.
-
-If any of these, or any other, compilers can compile OpenTTD, let us know.
-Pull requests to support more compilers are welcome.
-
-### 7.3) Compilation of base sets
-
-To recompile the extra graphics needed to play with the original Transport
-Tycoon Deluxe graphics you need GRFCodec (which includes NFORenum) as well.
-GRFCodec can be found at https://www.openttd.org/download-grfcodec.
-The compilation of these extra graphics does generally not happen, unless
-you remove the graphics file using '`make maintainer-clean`'.
-
-Re-compilation of the base sets, thus also use of '`--maintainer-clean`' can
-leave the repository in a modified state as different grfcodec versions can
-cause binary differences in the resulting grf. Also translations might have
-been added for the base sets which are not yet included in the base set
-information files. Use the configure option '`--without-grfcodec`' to avoid
-modification of the base set files by the build process.
-
-## 8.0) Translating
+## 7.0) Translating
 
 See https://www.openttd.org/development for up-to-date information.
 
@@ -625,7 +532,7 @@ Please contact the translations manager (https://www.openttd.org/contact)
 before beginning the translation process! This avoids double work, as
 someone else may have already started translating to the same language.
 
-### 8.1) Translation
+### 7.1) Translation
 
 So, now that you have notified the development team about your intention to
 translate (You did, right? Of course you did.) you can pick up english.txt
@@ -643,7 +550,7 @@ Note: Do not alter the following parts of the file:
 - Lines beginning with ## (such as ##id), other than the first two lines
    of the file
 
-### 8.2) Previewing
+### 7.2) Previewing
 
 In order to view the translation in the game, you need to compile your language
 file with the strgen utility. As this utility is tailored to a specific OpenTTD
@@ -663,7 +570,7 @@ should also be.
 
 That is all! You should now be able to select the language in the game options.
 
-## 9.0) Troubleshooting
+## 8.0) Troubleshooting
 
 To see all startup options available to you, start OpenTTD with the
 '`./openttd -h`' option. This might help you tweak some of the settings.
@@ -708,7 +615,7 @@ or [GRFCrawler](https://grfcrawler.tt-forums.net). Put the NewGRF files in
 OpenTTD's newgrf folder (see section 4.2 'OpenTTD directories') and rescan the
 list of available NewGRFs. Once you have all missing files, you are set to go.
 
-## 10.0) Licensing
+## 9.0) Licensing
 
 OpenTTD is licensed under the GNU General Public License version 2.0. For
 the complete license text, see the file 'COPYING'. This license applies
