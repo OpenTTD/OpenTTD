@@ -1,28 +1,28 @@
-Multiplayer manual for OpenTTD
+# Multiplayer manual for OpenTTD
+
 Last updated:    2011-02-16
-------------------------------------------------------------------------
 
 
-Table of contents
------------------
-1.0) Starting a server
-2.0) Connecting to a server
- * 2.1) Connecting to a server over the console
-3.0) Playing internet games
-4.0) Tips for servers
- * 4.1) Imposing landscaping limits
-5.0) Some useful things
-6.0) Troubleshooting
+## Table of contents
+
+- 1.0) [Starting a server](#10-starting-a-server)
+- 2.0) [Connecting to a server](#20-connecting-to-a-server)
+    - 2.1) [Connecting to a server over the console](#21-connecting-to-a-server-over-the-console)
+- 3.0) [Playing internet games](#30-playing-internet-games)
+- 4.0) [Tips for servers](#40-tips-for-servers)
+    - 4.1)[Imposing landscaping limits](#41-imposing-landscaping-limits)
+- 5.0) [Some useful things](#50-some-useful-things)
+- 6.0) [Troubleshooting](#60-troubleshooting)
 
 
-1.0) Starting a server
----- -----------------
+## 1.0) Starting a server
+
  - Make sure that you have your firewall of the computer as well as possible
    routers or modems of the server configured such that:
-   * port 3979 is free for both UDP and TCP connections in- and outgoing
-   * port 3978 is free outbound for UDP in order to advertise with the master
+    - port 3979 is free for both UDP and TCP connections in- and outgoing
+    - port 3978 is free outbound for UDP in order to advertise with the master
      server (if desired). Otherwise you'll have to tell players your IP.
-   * port 3977 if use of the admin interface is desired (see admin_network.txt)
+    - port 3977 if use of the admin interface is desired (see admin_network.txt)
  - Click "multiplayer" on the startup screen
  - Click "start server"
  - Type in a game name
@@ -33,42 +33,36 @@ Table of contents
  - Start playing
 
 
-2.0) Connecting to a server
----- ----------------------
- - Click "multiplayer" on the startup screen
+## 2.0) Connecting to a server
 
+ - Click "multiplayer" on the startup screen
  - If you want to connect to any network game in your LAN click on 'LAN', then
    on 'Find Server'
  - If you want to see which servers all online on the Internet, click on
    'Internet' and 'Find Server'
-
  - If there were more than one server
-   - select one in the list below the buttons
-   - click on 'join game'
-
+    - select one in the list below the buttons
+    - click on 'join game'
  - If you want to play and you have the ip or hostname of the game server you
    want connect to.
-   - click add server
-   - type in the ip address or hostname
-   - if you want to add a port use :<port>
-
+    - click add server
+    - type in the ip address or hostname
+    - if you want to add a port use :<port>
  - Now you can select a company and press: "Join company", to help that company
- - Or you can press "Spectate game", to spectate the game
- - Or you can press "New company", and start your own company (if there are
+    - Or you can press "Spectate game", to spectate the game
+    - Or you can press "New company", and start your own company (if there are
    slots free)
-
  - You see a progressbar how far you are with joining the server.
-
  - Happy playing
 
-2.1) Connecting to a server over the console
----- ---------------------------------------
+## 2.1) Connecting to a server over the console
+
  - Open the console and type in the following command:
-    connect <ip/host>:<port>#<company-no>
+    connect `<ip/host>:<port>#<company-no>`
 
 
-3.0) Playing internet games
----- ----------------------
+## 3.0) Playing internet games
+
  - Servers with a red dot behind it have a different version then you have. You
    will not be able to join those servers.
 
@@ -98,8 +92,8 @@ Table of contents
    NB: changing frame_freq has more effect on the bandwidth then sync_freq.
 
 
-4.0) Tips for servers
----- ----------------
+## 4.0) Tips for servers
+
  - You can launch a dedicated server by adding -D as parameter.
  - In UNIX like systems, you can fork your dedicated server by adding -f as
    parameter.
@@ -155,8 +149,8 @@ Table of contents
    maximum memory usage for packets is:
        #max_clients * #max_clients * bytes_per_frame * 10 KiB.
 
-4.1) Imposing landscaping limits
----- ---------------------------
+### 4.1) Imposing landscaping limits
+
  - You can impose limits on companies by the following 4 settings:
    - terraform_per_64k_frames
    - terraform_frame_burst
@@ -196,8 +190,8 @@ Table of contents
    affected by the above settings.
 
 
-5.0) Some useful things
----- ------------------
+## 5.0) Some useful things
+
  - You can protect your company so nobody else can join uninvited. To do this,
    set a password in your Company Screen
 
@@ -209,8 +203,8 @@ Table of contents
  - Servers can now kick players, so don't make them use it!
 
 
-6.0) Troubleshooting
----- ---------------
+## 6.0) Troubleshooting
+
  - My advertising server does not show up in list at servers.openttd.org
      Run openttd with the '-d net=2' parameter. That will show which incoming
      communication is received, whether the replies from the master server or

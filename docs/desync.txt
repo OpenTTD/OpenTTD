@@ -1,25 +1,24 @@
-Some explanations about Desyncs
+# Some explanations about Desyncs
+
 Last updated: 2014-02-23
-------------------------------------------------------------------------
+
+## Table of contents
+
+- 1.0) Desync theory
+    - 1.1) [OpenTTD multiplayer architecture](#11-openttd-multiplayer-architecture)
+    - 1.2) [What is a Desync and how is it detected](#12-what-is-a-desync-and-how-is-it-detected)
+    - 1.3) [Typical causes of Desyncs](#13-typical-causes-of-desyncs)
+- 2.0) What to do in case of a Desync
+    - 2.1) [Cache debugging](#21-cache-debugging)
+    - 2.2) [Desync recording](#22-desync-recording)
+- 3.0) Evaluating the Desync records
+    - 3.1) [Replaying](#31-replaying)
+    - 3.2) [Evaluation of the replay](#32-evaluation-of-the-replay)
+    - 3.3) [Comparing savegames](#33-comparing-savegames)
 
 
-Table of contents
------------------
-1.0) Desync theory
- * 1.1) OpenTTD multiplayer architecture
- * 1.2) What is a Desync and how is it detected
- * 1.3) Typical causes of Desyncs
-2.0) What to do in case of a Desync
- * 2.1) Cache debugging
- * 2.2) Desync recording
-3.0) Evaluating the Desync records
- * 3.1) Replaying
- * 3.2) Evaluation the replay
- * 3.3) Comparing savegames
+## 1.1) OpenTTD multiplayer architecture
 
-
-1.1) OpenTTD multiplayer architecture
----- --------------------------------
   OpenTTD has a huge gamestate, which changes all of the time.
   The savegame contains the complete gamestate at a specific point
   in time. But this state changes completely each tick: Vehicles move
@@ -69,8 +68,8 @@ Table of contents
      clients, which execute the command simultaneously in the same
      network frame in the same order.
 
-1.2) What is a Desync and how is it detected
----- ---------------------------------------
+## 1.2) What is a Desync and how is it detected
+
   In the ideal case all clients have the same gamestate as the server
   and run in sync. That is, vehicle movement is the same on all
   clients, and commands are executed the same everywhere and
@@ -112,8 +111,8 @@ Table of contents
   enough to finally affect the checksum. (There was once a desync
   which was only noticed by the checksum after 20 game years.)
 
-1.3) Typical causes of Desyncs
----- -------------------------
+## 1.3) Typical causes of Desyncs
+
   Desyncs can be caused by the following scenarios:
    - The savegame does not describe the complete gamestate.
       - Some information which affects the progression of the
@@ -138,8 +137,8 @@ Table of contents
         using commands.
 
 
-2.1) Cache debugging
----- ---------------
+## 2.1) Cache debugging
+
   Desyncs which are caused by improper cache validation can
   often be found by enabling cache validation:
    - Start OpenTTD with '-d desync=2'.
@@ -151,8 +150,8 @@ Table of contents
 
   Mind that this type of debugging can also be done in singleplayer.
 
-2.2) Desync recording
----- ----------------
+## 2.2) Desync recording
+
   If you have a server, which happens to encounter Desyncs often,
   you can enable recording of the gamestate alterations. This
   will later allow the replay the gamestate and locate the Desync
@@ -180,8 +179,8 @@ Table of contents
   However, they also take a lot of disk space.
 
 
-3.1) Replaying
----- ---------
+## 3.1) Replaying
+
   To replay a Desync recording, you need these files:
    - The savegame from when the server was started, resp.
      the automatically created savegame from when the map
@@ -201,8 +200,8 @@ Table of contents
      This replays the server log and creates new 'commands-out.log'
      and 'dmp_cmds_*.sav' in your autosave folder.
 
-3.2) Evaluation the replay
----- ---------------------
+## 3.2) Evaluation of the replay
+
   The replaying will also compare the checksums which are part of
   the 'commands-out.log' with the replayed gamestate.
   If they differ, it will trigger a 'NOT_REACHED'.
@@ -242,8 +241,8 @@ Table of contents
   dates, and the original log will contain the chat, but otherwise they
   should match.
 
-3.2) Comparing savegames
----- -------------------
+## 3.3) Comparing savegames
+
   The binary form of the savegames from the original server and from
   your replay will always differ:
    - The savegame contains paths to used NewGRF files.
