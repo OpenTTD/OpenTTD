@@ -1,13 +1,13 @@
-Some clarifications about the link graph
-----------------------------------------
+# Some clarifications about the link graph
 
-InitializeLinkGraphs joins all threads, so if the game is abandoned
+`InitializeLinkGraphs` joins all threads, so if the game is abandoned
 with some threads still running, they're joined as soon as the next game
-(possibly the title game) is started. See also InitializeGame.
+(possibly the title game) is started. See also `InitializeGame`.
 
 The MCF (multi-commodity flow) algorithm can be quite CPU-hungry as it's
 NP-hard and takes exponential time (though with a very small constant
 factor) in the number of nodes.
+
 This is why it is run in a separate thread where possible. However after
 some time the thread is joined and if it hasn't finished by then the game
 will hang. This problem gets worse if we are running on a platform without
