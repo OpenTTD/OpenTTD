@@ -289,6 +289,17 @@ public:
 	 * @see ScriptOrder::GetOrderDistance
 	 */
 	static uint GetMaximumOrderDistance(EngineID engine_id);
+
+	/**
+	 * Allow the engine to be used by a company regardles of its introduction date.
+	 * @param engine_id The engine to enable.
+	 * @param company_id The company to allow using the engine.
+	 * @pre IsValidEngine(engine_id).
+	 * @pre ScriptCompany.ResolveCompanyID(company_id) != ScriptCompany::COMPANY_INVALID.
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool EnableForCompany(EngineID engine_id, ScriptCompany::CompanyID company_id);
 };
 
 #endif /* SCRIPT_ENGINE_HPP */

@@ -107,6 +107,7 @@ CommandProc CmdIncreaseLoan;
 CommandProc CmdDecreaseLoan;
 
 CommandProc CmdWantEnginePreview;
+CommandProc CmdEnableEngine;
 
 CommandProc CmdRenameVehicle;
 CommandProc CmdRenameEngine;
@@ -271,6 +272,7 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdDecreaseLoan,                                   0, CMDT_MONEY_MANAGEMENT      ), // CMD_DECREASE_LOAN
 
 	DEF_CMD(CmdWantEnginePreview,                              0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_WANT_ENGINE_PREVIEW
+	DEF_CMD(CmdEnableEngine,                           CMD_DEITY, CMDT_VEHICLE_MANAGEMENT    ), // CMD_ENABLE_ENGINE
 
 	DEF_CMD(CmdRenameVehicle,                                  0, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_VEHICLE
 	DEF_CMD(CmdRenameEngine,                          CMD_SERVER, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_ENGINE

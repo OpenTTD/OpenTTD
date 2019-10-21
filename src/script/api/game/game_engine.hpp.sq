@@ -48,6 +48,7 @@ void SQGSEngine_Register(Squirrel *engine)
 	SQGSEngine.DefSQStaticMethod(engine, &ScriptEngine::IsArticulated,           "IsArticulated",           2, ".i");
 	SQGSEngine.DefSQStaticMethod(engine, &ScriptEngine::GetPlaneType,            "GetPlaneType",            2, ".i");
 	SQGSEngine.DefSQStaticMethod(engine, &ScriptEngine::GetMaximumOrderDistance, "GetMaximumOrderDistance", 2, ".i");
+	SQGSEngine.DefSQStaticMethod(engine, &ScriptEngine::EnableForCompany,        "EnableForCompany",        3, ".ii");
 
 	SQGSEngine.PostRegister(engine);
 }
