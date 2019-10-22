@@ -186,9 +186,9 @@ You may also want the guide to [compiling OpenTTD](./COMPILING.md).
 
 ## Project goals
 
-### What are the goals of the offical branch?
+### What are the goals of the official branch?
 
-The main goals of the offical branch are:
+The main goals of the official branch are:
 
 - Stay faithful to the original gameplay from Transport Tycoon Deluxe
 - Improve the user interface
@@ -226,7 +226,7 @@ In general the game should allow anything that doesn't violate basic rules, but 
 For example, players are not prevented from starting vehicles without orders, but will receive a warning about vehicles having too few orders.
 This lack of limitation has led to players challenging themselves to create networks where all vehicles have no orders, increasing gameplay possibilities.
 
-### I do not agree with the goals of the offical branch, what can I do instead?
+### I do not agree with the goals of the official branch, what can I do instead?
 
 Fork!  There is a rich history of experimental patches for OpenTTD.
 
