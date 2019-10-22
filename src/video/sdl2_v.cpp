@@ -307,7 +307,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 	_sdl_realscreen = newscreen;
 
 	if (bpp == 8) {
-		newscreen = SDL_CreateRGBSurfaceWithFormat(0, w, h, 8, SDL_PIXELFORMAT_INDEX8);
+		newscreen = SDL_CreateRGBSurface(0, w, h, 8, 0, 0, 0, 0);
 
 		if (newscreen == nullptr) {
 			DEBUG(driver, 0, "SDL2: Couldn't allocate shadow surface: %s", SDL_GetError());
