@@ -1625,7 +1625,13 @@ public:
 				if (id_v >= this->vehicles.size()) return; // click out of list bound
 
 				const Vehicle *v = this->vehicles[id_v];
-				if (!VehicleClicked(v)) ShowVehicleViewWindow(v);
+				if (!VehicleClicked(v)) {
+					if (_ctrl_pressed) {
+						ShowCompanyGroupForVehicle(v);
+					} else {
+						ShowVehicleViewWindow(v);
+					}
+				}
 				break;
 			}
 
