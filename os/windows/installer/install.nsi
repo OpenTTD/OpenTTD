@@ -145,8 +145,8 @@ Section "!OpenTTD" Section1
 
 	; Copy some documentation files
 	SetOutPath "$INSTDIR\docs\"
-	File ${PATH_ROOT}docs\multiplayer.txt
-	Push "$INSTDIR\docs\multiplayer.txt"
+	File ${PATH_ROOT}docs\multiplayer.md
+	Push "$INSTDIR\docs\multiplayer.md"
 	Call unix2dos
 
 	; Copy the rest of the stuff
@@ -218,7 +218,7 @@ Section "!OpenTTD" Section1
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Changelog.lnk" "$INSTDIR\Changelog.txt"
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Known-bugs.lnk" "$INSTDIR\known-bugs.txt"
 	CreateDirectory "$SMPROGRAMS\$SHORTCUTS\Docs"
-	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Docs\Multiplayer.lnk" "$INSTDIR\docs\multiplayer.txt"
+	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Docs\Multiplayer.lnk" "$INSTDIR\docs\multiplayer.md"
 	CreateDirectory "$SMPROGRAMS\$SHORTCUTS\Scripts"
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Scripts\Readme.lnk" "$INSTDIR\scripts\README.md"
 	!insertmacro MUI_STARTMENU_WRITE_END
