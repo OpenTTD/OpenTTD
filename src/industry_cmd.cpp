@@ -2019,7 +2019,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 					/* Start with a random layout */
 					size_t layout = RandomRange((uint32)num_layouts);
 					/* Check now each layout, starting with the random one */
-					for (int j = 0; j < num_layouts; j++) {
+					for (size_t j = 0; j < num_layouts; j++) {
 						layout = (layout + 1) % num_layouts;
 						ret = CreateNewIndustryHelper(tile, it, flags, indspec, layout, random_var8f, random_initial_bits, cur_company.GetOriginalValue(), _current_company == OWNER_DEITY ? IACT_RANDOMCREATION : IACT_PROSPECTCREATION, &ind);
 						if (ret.Succeeded()) break;
@@ -2030,11 +2030,11 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			cur_company.Restore();
 		}
 	} else {
-		int layout = GB(p1, 8, 8);
+		size_t layout = GB(p1, 8, 8);
 		if (layout >= num_layouts) return CMD_ERROR;
 
 		/* Check subsequently each layout, starting with the given layout in p1 */
-		for (int i = 0; i < num_layouts; i++) {
+		for (size_t i = 0; i < num_layouts; i++) {
 			layout = (layout + 1) % num_layouts;
 			ret = CreateNewIndustryHelper(tile, it, flags, indspec, layout, random_var8f, random_initial_bits, _current_company, _current_company == OWNER_DEITY ? IACT_RANDOMCREATION : IACT_USERCREATION, &ind);
 			if (ret.Succeeded()) break;
