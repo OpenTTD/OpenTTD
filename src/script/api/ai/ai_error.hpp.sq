@@ -56,8 +56,10 @@ void SQAIError_Register(Squirrel *engine)
 
 	ScriptError::RegisterErrorMap(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY,          ScriptError::ERR_NOT_ENOUGH_CASH);
 	ScriptError::RegisterErrorMap(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS,      ScriptError::ERR_LOCAL_AUTHORITY_REFUSES);
+	ScriptError::RegisterErrorMap(STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE,              ScriptError::ERR_LOCAL_AUTHORITY_REFUSES);
 	ScriptError::RegisterErrorMap(STR_ERROR_ALREADY_BUILT,                              ScriptError::ERR_ALREADY_BUILT);
 	ScriptError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST,                 ScriptError::ERR_ALREADY_BUILT);
+	ScriptError::RegisterErrorMap(STR_ERROR_TREE_ALREADY_HERE,                          ScriptError::ERR_ALREADY_BUILT);
 	ScriptError::RegisterErrorMap(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED,                ScriptError::ERR_AREA_NOT_CLEAR);
 	ScriptError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST,                 ScriptError::ERR_AREA_NOT_CLEAR);
 	ScriptError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_RAILROAD,                     ScriptError::ERR_AREA_NOT_CLEAR);
@@ -86,6 +88,7 @@ void SQAIError_Register(Squirrel *engine)
 	ScriptError::RegisterErrorMap(STR_ERROR_SHIP_IN_THE_WAY,                            ScriptError::ERR_VEHICLE_IN_THE_WAY);
 	ScriptError::RegisterErrorMap(STR_ERROR_AIRCRAFT_IN_THE_WAY,                        ScriptError::ERR_VEHICLE_IN_THE_WAY);
 	ScriptError::RegisterErrorMap(STR_ERROR_SITE_UNSUITABLE,                            ScriptError::ERR_SITE_UNSUITABLE);
+	ScriptError::RegisterErrorMap(STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE,           ScriptError::ERR_SITE_UNSUITABLE);
 	ScriptError::RegisterErrorMap(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP,                   ScriptError::ERR_TOO_CLOSE_TO_EDGE);
 	ScriptError::RegisterErrorMap(STR_ERROR_STATION_TOO_SPREAD_OUT,                     ScriptError::ERR_STATION_TOO_SPREAD_OUT);
 
