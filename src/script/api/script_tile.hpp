@@ -40,6 +40,9 @@ public:
 
 		/** There is a tunnel underneath */
 		ERR_EXCAVATION_WOULD_DAMAGE,           // [STR_ERROR_EXCAVATION_WOULD_DAMAGE]
+
+		/** Reached the limit for terraforming/clearing/planting */
+		ERR_LIMIT_REACHED,                     // [STR_ERROR_TERRAFORM_LIMIT_REACHED, STR_ERROR_CLEARING_LIMIT_REACHED, STR_ERROR_TREE_PLANT_LIMIT_REACHED]
 	};
 
 	/**
