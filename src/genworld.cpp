@@ -135,11 +135,17 @@ static void _GenerateWorld()
 			GenerateLandscape(_gw.mode);
 			GenerateClearTile();
 
-			/* only generate towns, tree and industries in newgame mode. */
+			/* Only generate towns, tree and industries in newgame mode. */
 			if (_game_mode != GM_EDITOR) {
 				if (!GenerateTowns(_settings_game.economy.town_layout)) {
 					_cur_company.Restore();
 					HandleGeneratingWorldAbortion();
+					BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);
+					if (_network_dedicated) {
+						/* Exit the game to prevent a return to main menu.  */
+						DEBUG(net, 0, "Generating map failed, aborting");
+						_exit_game = true;
+					}
 					return;
 				}
 				GenerateIndustries();
