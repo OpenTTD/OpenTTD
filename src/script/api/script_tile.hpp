@@ -40,7 +40,7 @@ public:
 		/** The area was already flat */
 		ERR_AREA_ALREADY_FLAT,                 // [STR_ERROR_ALREADY_LEVELLED]
 
-		/** There is a tunnel underneed */
+		/** There is a tunnel underneath */
 		ERR_EXCAVATION_WOULD_DAMAGE,           // [STR_ERROR_EXCAVATION_WOULD_DAMAGE]
 	};
 
@@ -351,7 +351,7 @@ public:
 	 * @pre width > 0.
 	 * @pre height > 0.
 	 * @pre radius >= 0.
-	 * @return Value below 8 means no acceptance; the more the better.
+	 * @return Value below 8 mean no acceptance; the more the better.
 	 */
 	static int32 GetCargoAcceptance(TileIndex tile, CargoID cargo_type, int width, int height, int radius);
 
