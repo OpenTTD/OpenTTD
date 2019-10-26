@@ -351,7 +351,7 @@ public:
 	 * @pre width > 0.
 	 * @pre height > 0.
 	 * @pre radius >= 0.
-	 * @return Value below 8 mean no acceptance; the more the better.
+	 * @return Values below 8 mean no acceptance; the more the better.
 	 */
 	static int32 GetCargoAcceptance(TileIndex tile, CargoID cargo_type, int width, int height, int radius);
 
