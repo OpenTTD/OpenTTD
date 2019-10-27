@@ -1557,6 +1557,8 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activar econom�
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Al activarse, habrá cambios de producción en las industrias más frecuentemente y en escala menor. Si se usa un NewGRF con industrias adicionales esta opción generalmente no tiene efecto
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permitir comprar acciones de otras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Al activarse, se pueden comprar y vender acciones de otras empresas. Las acciones de una empresa solamente estarán disponibles cuando la empresa cumpla una edad determinada
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Edad mínima de la empresa para intercambiar acciones: {STRING}
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Estabelcer la edad mínima que debe tener una empresa para que otros puedan comprarle y venderle acciones.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentaje de la utilidad total a pagar por transferencias de carga: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentaje de utilidad cedida a los transportes intermedios en sistemas de transferencia de carga, dando un mayor control sobre la utilidad de cada vehículo
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Al arrastrar, colocar señales cada: {STRING}
