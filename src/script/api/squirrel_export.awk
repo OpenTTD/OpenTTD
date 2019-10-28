@@ -1,5 +1,3 @@
-# $Id$
-
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -53,9 +51,6 @@ function dump_class_templates(name)
 
 function dump_fileheader()
 {
-	# Break the Id tag, so SVN doesn't replace it
-	print "/* $I" "d$ */" CR
-	print "" CR
 	print "/*" CR
 	print " * This file is part of OpenTTD." CR
 	print " * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2." CR

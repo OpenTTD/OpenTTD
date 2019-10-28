@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# $Id$
-
 if ! [ -f ai/regression/run.sh ]; then
 	echo "Make sure you are in the root of OpenTTD before starting this script."
 	exit 1
