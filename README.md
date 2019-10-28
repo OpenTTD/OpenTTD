@@ -618,7 +618,7 @@ list of available NewGRFs. Once you have all missing files, you are set to go.
 ## 9.0) Licensing
 
 OpenTTD is licensed under the GNU General Public License version 2.0. For
-the complete license text, see the file 'COPYING'. This license applies
+the complete license text, see the file 'COPYING.md'. This license applies
 to all files in this distribution, except as noted below.
 
 The squirrel implementation in src/3rdparty/squirrel is licensed under

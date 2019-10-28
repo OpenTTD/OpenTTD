@@ -71,7 +71,7 @@
 <!-- page 1: introductory page -->
 <PAGE INDEX="1" TYPE="README">
 <NEXTBUTTON TARGET=2>~Next</NEXTBUTTON>
-<README EXTRACTFROMPCK="1">README.TXT</README>
+<README EXTRACTFROMPCK="1">README.md</README>
 <TEXT>Welcome to the OpenTTD installer. This program will install OpenTTD 1.0 on your system. Before we begin the installation process, please take a moment to read the following document.
 
 Select "Next" to continue, or "Cancel" to abort installation.</TEXT>
@@ -80,7 +80,7 @@ Select "Next" to continue, or "Cancel" to abort installation.</TEXT>
 <!-- page 2: licence page -->
 <PAGE INDEX="2" TYPE="README">
 <NEXTBUTTON TARGET=3>~Next</NEXTBUTTON>
-<README EXTRACTFROMPCK="1">COPYING</README>
+<README EXTRACTFROMPCK="1">COPYING.md</README>
 <TEXT>OpenTTD is licenced under the GNU General Public License. The text of the licence is below.
 
 Select "Next" if you agree to this licence.
