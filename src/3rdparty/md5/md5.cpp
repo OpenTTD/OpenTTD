@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /** @file md5.cpp Creating MD5 checksums of files. */
 
 /*

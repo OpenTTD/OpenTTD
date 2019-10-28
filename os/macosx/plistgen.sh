@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# $Id$
-
 # sets VERSION to the value if RELEASE if there are any,
 # otherwise it sets VERSION to revision number
 if [ "$3" ]; then

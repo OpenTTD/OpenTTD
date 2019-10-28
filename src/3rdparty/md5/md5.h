@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /** @file md5.h Functions to create MD5 checksums. */
 
 /*

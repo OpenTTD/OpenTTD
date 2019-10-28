@@ -1,5 +1,3 @@
-/* $Id$ */
-
 class Regression extends AIController {
 	function Start();
 };

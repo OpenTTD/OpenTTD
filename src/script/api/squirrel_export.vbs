@@ -1,7 +1,5 @@
 Option Explicit
 
-' $Id$
-'
 ' This file is part of OpenTTD.
 ' OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 ' OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -82,9 +80,6 @@ End Function
 Function DumpFileheader(api, file)
 	Dim re
 	Set re = New RegExp
-	' Break the Id tag, so SVN doesn't replace it
-	file.WriteLine "/* $I" & "d$ */"
-	file.WriteLine ""
 	file.WriteLine "/*"
 	file.WriteLine " * This file is part of OpenTTD."
 	file.WriteLine " * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2."
