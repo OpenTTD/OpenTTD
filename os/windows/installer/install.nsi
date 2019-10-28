@@ -63,7 +63,7 @@ Var CDDRIVE
 !define MUI_ABORTWARNING
 !define MUI_WELCOMEPAGE_TITLE_3LINES
 !insertmacro MUI_PAGE_WELCOME
-!insertmacro MUI_PAGE_LICENSE "..\..\..\COPYING"
+!insertmacro MUI_PAGE_LICENSE "..\..\..\COPYING.md"
 
 !define MUI_COMPONENTSPAGE_SMALLDESC
 !insertmacro MUI_PAGE_COMPONENTS
@@ -156,8 +156,8 @@ Section "!OpenTTD" Section1
 	File ${PATH_ROOT}changelog.txt
 	Push "$INSTDIR\changelog.txt"
 	Call unix2dos
-	File ${PATH_ROOT}COPYING
-	Push "$INSTDIR\COPYING"
+	File ${PATH_ROOT}COPYING.md
+	Push "$INSTDIR\COPYING.md"
 	Call unix2dos
 	File ${PATH_ROOT}README.md
 	Push "$INSTDIR\README.md"
@@ -392,7 +392,7 @@ Section "Uninstall"
 	Delete "$INSTDIR\README.md"
 	Delete "$INSTDIR\known-bugs.txt"
 	Delete "$INSTDIR\openttd.exe"
-	Delete "$INSTDIR\COPYING"
+	Delete "$INSTDIR\COPYING.md"
 	Delete "$INSTDIR\INSTALL.LOG"
 	Delete "$INSTDIR\crash.log"
 	Delete "$INSTDIR\crash.dmp"

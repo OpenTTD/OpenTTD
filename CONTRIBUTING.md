@@ -243,7 +243,7 @@ Patchpack discussions and related topics may be found in community sites such as
 
 ### License
 
-By contributing your code, you agree to license your contribution under the [GPL v2](https://github.com/OpenTTD/OpenTTD/blob/master/COPYING).
+By contributing your code, you agree to license your contribution under the [GPL v2](https://github.com/OpenTTD/OpenTTD/blob/master/COPYING.md).
 
 
 ### Privacy Notice

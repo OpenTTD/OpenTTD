@@ -69,10 +69,10 @@ endif
 	$(Q)cp "$(BIN_DIR)/baseset/opntitle.dat"  "$(BASESET_DIR)/"
 	$(Q)cp "$(BIN_DIR)/baseset/"*.obm         "$(BASESET_DIR)/"
 	$(Q)cp "$(BIN_DIR)/lang/"*.lng            "$(LANG_DIR)/"
-	$(Q)cp "$(ROOT_DIR)/README.md"           "$(BUNDLE_DIR)/"
-	$(Q)cp "$(ROOT_DIR)/COPYING"              "$(BUNDLE_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/README.md"            "$(BUNDLE_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/COPYING.md"           "$(BUNDLE_DIR)/"
 	$(Q)cp "$(ROOT_DIR)/known-bugs.txt"       "$(BUNDLE_DIR)/"
-	$(Q)cp "$(ROOT_DIR)/docs/multiplayer.md" "$(BUNDLE_DIR)/docs/"
+	$(Q)cp "$(ROOT_DIR)/docs/multiplayer.md"  "$(BUNDLE_DIR)/docs/"
 	$(Q)cp "$(ROOT_DIR)/changelog.txt"        "$(BUNDLE_DIR)/"
 ifdef MAN_DIR
 	$(Q)mkdir -p "$(BUNDLE_DIR)/man/"
@@ -88,7 +88,7 @@ ifdef MENU_DIR
 	$(Q)sed s/=openttd/=$(BINARY_NAME)/g "$(BUNDLE_DIR)/media/openttd.desktop" > "$(ROOT_DIR)/media/openttd.desktop.install"
 endif
 ifeq ($(TTD), openttd.exe)
-	$(Q)unix2dos "$(BUNDLE_DIR)/docs/"* "$(BUNDLE_DIR)/README.md" "$(BUNDLE_DIR)/COPYING" "$(BUNDLE_DIR)/changelog.txt" "$(BUNDLE_DIR)/known-bugs.txt"
+	$(Q)unix2dos "$(BUNDLE_DIR)/docs/"* "$(BUNDLE_DIR)/README.md" "$(BUNDLE_DIR)/COPYING.md" "$(BUNDLE_DIR)/changelog.txt" "$(BUNDLE_DIR)/known-bugs.txt"
 endif
 
 ### Packing the current bundle into several compressed file formats ###
@@ -153,7 +153,7 @@ bundle_dmg: bundle
 bundle_exe: all
 	@echo '[BUNDLE] Creating $(BUNDLE_NAME).exe'
 	$(Q)mkdir -p "$(BUNDLES_DIR)"
-	$(Q)unix2dos "$(ROOT_DIR)/docs/"* "$(ROOT_DIR)/README.md" "$(ROOT_DIR)/COPYING" "$(ROOT_DIR)/changelog.txt" "$(ROOT_DIR)/known-bugs.txt"
+	$(Q)unix2dos "$(ROOT_DIR)/docs/"* "$(ROOT_DIR)/README.md" "$(ROOT_DIR)/COPYING.md" "$(ROOT_DIR)/changelog.txt" "$(ROOT_DIR)/known-bugs.txt"
 	$(Q)cd $(ROOT_DIR)/os/windows/installer && makensis.exe //DVERSION_INCLUDE=version_$(PLATFORM).txt install.nsi
 	$(Q)mv $(ROOT_DIR)/os/windows/installer/*$(PLATFORM).exe "$(BUNDLES_DIR)/$(BUNDLE_NAME).exe"
 
@@ -190,7 +190,7 @@ ifndef DO_NOT_INSTALL_CHANGELOG
 endif
 ifndef DO_NOT_INSTALL_LICENSE
 	$(Q)install -d "$(INSTALL_DOC_DIR)"
-	$(Q)install -m 644 "$(BUNDLE_DIR)/COPYING" "$(INSTALL_DOC_DIR)"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/COPYING.md" "$(INSTALL_DOC_DIR)"
 endif
 	$(Q)install -m 644 "$(BUNDLE_DIR)/media/openttd.32.xpm" "$(INSTALL_ICON_DIR)/${BINARY_NAME}.32.xpm"
 ifdef ICON_THEME_DIR
