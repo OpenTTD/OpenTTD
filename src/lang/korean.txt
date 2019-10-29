@@ -1557,6 +1557,8 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :부드러운 �
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :이 설정을 켜면, 1차 산업시설의 생산량이 소량으로 자주 변하게 됩니다. NewGRF로 추가한 산업시설에는 적용되지 않습니다.
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :다른 회사의 지분을 사는 것을 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :이 설정을 켜면, 회사의 지분을 거래할 수 있게 됩니다. 회사의 지분을 거래하려면 해당 회사가 어느 정도 오래되어야 합니다.
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :지분 거래를 허용할 최소 회사 나이: {STRING}
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :지분을 사고 팔기 위해 필요한 회사의 최소 나이를 설정합니다.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :환승시 벌어들이는 중간 수익의 비율: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :더 많은 수익을 내기 위해, 수송 관계상 중간 구간에게 주어진 수익의 비율을 설정합니다.
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :신호기를 드래그로 설치하는 경우: {STRING}
