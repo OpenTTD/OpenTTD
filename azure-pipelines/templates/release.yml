@@ -119,14 +119,14 @@ jobs:
           Tag: 'linux-ubuntu-bionic-i386-gcc'
         linux-ubuntu-bionic-amd64-gcc:
           Tag: 'linux-ubuntu-bionic-amd64-gcc'
-        linux-debian-jessie-i386-gcc:
-          Tag: 'linux-debian-jessie-i386-gcc'
-        linux-debian-jessie-amd64-gcc:
-          Tag: 'linux-debian-jessie-amd64-gcc'
         linux-debian-stretch-i386-gcc:
           Tag: 'linux-debian-stretch-i386-gcc'
         linux-debian-stretch-amd64-gcc:
           Tag: 'linux-debian-stretch-amd64-gcc'
+        linux-debian-buster-i386-gcc:
+          Tag: 'linux-debian-buster-i386-gcc'
+        linux-debian-buster-amd64-gcc:
+          Tag: 'linux-debian-buster-amd64-gcc'
 
     steps:
     - template: release-fetch-source.yml
