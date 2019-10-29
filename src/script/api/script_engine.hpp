@@ -291,7 +291,7 @@ public:
 	static uint GetMaximumOrderDistance(EngineID engine_id);
 
 	/**
-	 * Allow the engine to be used by a company regardles of its introduction date.
+	 * Allows a company to use an engine before its intro date or after retirement.
 	 * @param engine_id The engine to enable.
 	 * @param company_id The company to allow using the engine.
 	 * @pre IsValidEngine(engine_id).
@@ -300,6 +300,18 @@ public:
 	 * @api -ai
 	 */
 	static bool EnableForCompany(EngineID engine_id, ScriptCompany::CompanyID company_id);
+
+	/**
+	 * Forbids a company to use an engine before its natural retirement.
+	 * @param engine_id The engine to disable.
+	 * @param company_id The company to forbid using the engine.
+	 * @pre IsValidEngine(engine_id).
+	 * @pre ScriptCompany.ResolveCompanyID(company_id) != ScriptCompany::COMPANY_INVALID.
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool DisableForCompany(EngineID engine_id, ScriptCompany::CompanyID company_id);
+
 };
 
 #endif /* SCRIPT_ENGINE_HPP */

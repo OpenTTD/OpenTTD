@@ -240,7 +240,7 @@ enum Commands {
 	CMD_DECREASE_LOAN,                ///< decrease the loan from the bank
 
 	CMD_WANT_ENGINE_PREVIEW,          ///< confirm the preview of an engine
-	CMD_ENABLE_ENGINE,                ///< enable engine for a company
+	CMD_ENGINE_CTRL,                  ///< control availability of the engine for companies
 
 	CMD_RENAME_VEHICLE,               ///< rename a whole vehicle
 	CMD_RENAME_ENGINE,                ///< rename a engine (in the engine list)

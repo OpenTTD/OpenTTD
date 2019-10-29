@@ -27,6 +27,8 @@
  * \li GSRoad::RoadVehHasPowerOnRoad
  * \li GSRoad::ConvertRoadType
  * \li GSRoad::GetMaxSpeed
+ * \li GSEngine::EnableForCompany
+ * \li GSEngine::DisableForCompany
  *
  * \b 1.9.0
  *

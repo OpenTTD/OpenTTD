@@ -745,6 +745,22 @@ static void EnableEngineForCompany(EngineID eid, CompanyID company)
 }
 
 /**
+ * Forbids engine \a eid to be used by a company \a company.
+ * @param eid The engine to disable.
+ * @param company The company to forbid using the engine.
+ */
+static void DisableEngineForCompany(EngineID eid, CompanyID company)
+{
+	Engine *e = Engine::Get(eid);
+
+	ClrBit(e->company_avail, company);
+
+	if (company == _local_company) {
+		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
+	}
+}
+
+/**
  * Company \a company accepts engine \a eid for preview.
  * @param eid Engine being accepted (is under preview).
  * @param company Current company previewing the engine.
@@ -917,20 +933,32 @@ CommandCost CmdWantEnginePreview(TileIndex tile, DoCommandFlag flags, uint32 p1,
 }
 
 /**
- * Allow a specific company to use an engine
+ * Allow or forbid a specific company to use an engine
  * @param tile unused
  * @param flags operation to perform
  * @param p1 engine id
- * @param p2 company id
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit  0 - 7) - Company to allow/forbid the use of an engine.
+ * - p2 = (bit 31) - 0 to forbid, 1 to allow.
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdEnableEngine(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdEngineCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
-	if (!Engine::IsValidID(p1) || !Company::IsValidID(p2)) return CMD_ERROR;
+	EngineID engine_id = (EngineID)p1;
+	CompanyID company_id = (CompanyID)GB(p2, 0, 8);
+	bool allow = HasBit(p2, 31);
 
-	if (flags & DC_EXEC) EnableEngineForCompany((EngineID)p1, (CompanyID)p2);
+	if (!Engine::IsValidID(engine_id) || !Company::IsValidID(company_id)) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		if (allow) {
+			EnableEngineForCompany(engine_id, company_id);
+		} else {
+			DisableEngineForCompany(engine_id, company_id);
+		}
+	}
 
 	return CommandCost();
 }
