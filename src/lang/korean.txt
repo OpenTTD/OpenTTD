@@ -254,10 +254,10 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}스크�
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}직사각형 모양의 영역에 있는 건물과 땅 등을 부숩니다. CTRL 키를 누른 채로 사용하면 대각선 영역 선택이 가능합니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 
 # Show engines button
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}숨겨진 차량 보기
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}숨겨진 차량 보기
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}숨겨진 차량 보기
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}숨겨진 차량 보기
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}숨긴 차량 보기
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}숨긴 차량 보기
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}숨긴 선박 보기
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}숨긴 항공기 보기
 
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}이 버튼을 누르면 숨겨진 열차 차량도 구매 목록에 모두 표시합니다.
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}이 버튼을 누르면 숨겨진 자동차/전차 차량도 구매 목록에 모두 표시합니다.
@@ -605,7 +605,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}특정 �
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}회사 성취도 순위
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :{G=f}기사
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :{G=f}교통 매니저
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :{G=f}교통망 관리자
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :{G=f}수송 조정자
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :{G=f}노선 관리자
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :{G=m}임원
@@ -634,7 +634,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}대출:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}종합:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}작년에 이익을 낸 차량의 수를 나타냅니다. 자동차/전차, 열차, 선박, 항공기를 포함합니다.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}현재 영업 중인 역사의 수를 나타냅니다. 기차역, 버스 정류장, 공항 등은 같은 역으로 묶여있어도 따로 집계됩니다.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}현재 영업 중인 역사의 수를 나타냅니다. 기차역, 버스 정류장, 공항 등은 같은 역으로 묶여있어도 별도로 집계됩니다
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}가장 낮은 수입을 가진 차량의 이익입니다. (2년 이상된 차량만 계산)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}지난 12분기 동안 최소 이익을 달성한 차량이 벌어들인 돈의 양입니다.
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}지난 12분기 동안 최대 이익을 달성한 차량이 벌어들인 돈의 양입니다.
