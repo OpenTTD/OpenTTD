@@ -29,7 +29,7 @@ include /usr/share/dpkg/buildflags.mk
 # to be explicit about the dependencies, in case we're not running in a
 # clean build root.
 override_dh_auto_configure:
-	./configure $(CROSS) --prefix-dir=/usr --install-dir=debian/openttd --without-allegro --with-zlib --with-sdl --with-png --with-freetype --with-fontconfig --with-icu --with-liblzo2 --with-lzma --without-xdg-basedir --without-iconv --disable-strip CFLAGS="$(CFLAGS) $(CPPFLAGS)" CXXFLAGS="$(CXXFLAGS) $(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" CFLAGS_BUILD="$(CFLAGS) $(CPPFLAGS)" CXXFLAGS_BUILD="$(CXXFLAGS) $(CPPFLAGS)" LDFLAGS_BUILD="$(LDFLAGS)"
+	./configure $(CROSS) --prefix-dir=/usr --install-dir=debian/openttd --without-allegro --with-zlib --with-sdl --with-png --with-freetype --with-fontconfig --with-icu-sort --with-liblzo2 --with-lzma --without-xdg-basedir --without-iconv --disable-strip CFLAGS="$(CFLAGS) $(CPPFLAGS)" CXXFLAGS="$(CXXFLAGS) $(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" CFLAGS_BUILD="$(CFLAGS) $(CPPFLAGS)" CXXFLAGS_BUILD="$(CXXFLAGS) $(CPPFLAGS)" LDFLAGS_BUILD="$(LDFLAGS)"
 
 # Do some extra installation
 override_dh_auto_install:
