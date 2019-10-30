@@ -11,7 +11,6 @@
 - Feature: Improved performance for road vehicle pathfinding (#7261)
 - Feature: Option to show local authority boundary of towns (#7025)
 - Feature: Experimental method of town cargo generation that scales linearly with population (#6965)
-- Feature: [NewGRF] Houses and industries can accept/produce up to 16 different cargo types (#6867, #6872)
 - Feature: [NewGRF] RoadTypes (NRT) (#6811)
 - Add: [Win32] Select MIDI device by port name (#7666)
 - Add: 'getsysdate' console command (#7658)
