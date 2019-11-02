@@ -91,6 +91,10 @@ void ScriptInstance::Initialize(const char *main_script, const char *instance_na
 		/* Create the main-class */
 		this->instance = new SQObject();
 		if (!this->engine->CreateClassInstance(instance_name, this->controller, this->instance)) {
+			/* If CreateClassInstance has returned false instance has not been
+			 * registered with squirrel, so avoid trying to Release it by clearing it now */
+			delete this->instance;
+			this->instance = nullptr;
 			this->Died();
 			return;
 		}
@@ -156,6 +160,7 @@ void ScriptInstance::Died()
 	this->last_allocated_memory = this->GetAllocatedMemory(); // Update cache
 
 	if (this->instance != nullptr) this->engine->ReleaseObject(this->instance);
+	delete this->instance;
 	delete this->engine;
 	this->instance = nullptr;
 	this->engine = nullptr;
