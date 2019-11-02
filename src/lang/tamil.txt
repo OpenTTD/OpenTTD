@@ -189,6 +189,7 @@ STR_COLOUR_ORANGE                                               :ஆரஞ்ச
 STR_COLOUR_BROWN                                                :பழுப்பு
 STR_COLOUR_GREY                                                 :சாம்பல்
 STR_COLOUR_WHITE                                                :வெள்ளை
+STR_COLOUR_RANDOM                                               :ஏதோவொரு
 STR_COLOUR_DEFAULT                                              :இயல்பிருப்பு
 
 # Units used in OpenTTD
@@ -460,6 +461,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :ஒலி/இ�
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :கடைசி செய்தி/செய்தி அறிவிக்கை
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :செய்தி வரலாறு
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :எல்லா செய்திகளையும் நீக்கு
 ############ range ends here
 
 ############ range for about menu starts
@@ -853,6 +855,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}பார்வைப் படம் {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}பார்படத்திற்கு மாற்றவும்
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}பிரதான பார்வையை மாற்றவும்
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}ஆட்டத்தின் அமைப்புகள்
@@ -928,6 +931,7 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :கடலன்
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}தானாக சேமி
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}தானியங்கி விளையாட்டு சேமிப்பு இடைவெளியைத் தேர்ந்தெடுக்கவும்
 
 ############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Off
@@ -1277,6 +1281,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :அனைத்
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :அனைத்து செயல்கள் நிலமாற்றங்கள் தவிர்த்து
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :அனைத்து செயல்கள்
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :வாகனப் பட்டியலினைப் பயன்படுத்தவும்: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :வாகனங்களை ஏற்றுவதற்கு அல்லது இறக்குவதற்கு மேலே ஏற்றுதல் குறிகாட்டிகள் காட்டப்படுகிறதா என்பதைத் தேர்ந்தெடுக்கவும்
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :கால அட்டவணைகளில் காலங்களைக் காட்டவும்: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :வாகன கட்டளைகளை விரிவாக உருவாக்கவும்: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :முதலில் கிடைக்கும்
@@ -1398,6 +1403,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :இயலாத
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :அனுமதிக்கப்படுகிறது
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :அனுமதிக்கப்படுகிறது, ஆனால் மாற்றியமைக்கப்பட்ட நகர அமைப்பு
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :நகரத்தின் சரக்கு உற்பத்தி: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :இருபடி (அசல்)
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :ஆட்டத்தின் போது மரங்களை நடுதல்: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :விளையாட்டின் போது மரங்களின் சீரற்ற தோற்றத்தைக் கட்டுப்படுத்தவும். இது மர வளர்ச்சியை நம்பியுள்ள தொழில்களை பாதிக்கலாம், எடுத்துக்காட்டாக மரம் வெட்டுதல் ஆலைகள்
@@ -1533,6 +1539,7 @@ STR_INTRO_QUIT                                                  :{BLACK}வெ�
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}புதிய ஆட்டத்தினைத் தொடங்கும். Ctrl+Click அழுத்தினால் வரைபட அமைப்புவடிவாக்கம் தவிர்க்கப்படும்
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}பதிவு செய்யப்பட்ட விளையாட்டை ஏற்று
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}புதிய ஆட்டத்தினைத் தொடங்கு, உயர்படத்தினை நிலப்பரப்பிற்கு பயன்படுத்தி
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}புதிய பல்வீரர் ஆட்டத்தினைத் தொடங்கவும்
 
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}'உபதுருவ' நிலப்பரப்புப் பாணியைத் தேர்ந்தெடுக்கவும்
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}'மிதவெப்பமண்டல' நிலப்பரப்புப் பாணியைத் தேர்ந்தெடுக்கவும்
@@ -1636,7 +1643,7 @@ STR_FACE_LOAD_TOOLTIP                                           :{BLACK}பி�
 STR_FACE_FACECODE                                               :{BLACK}விளையாடுபவர் முக எண்
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}நிறுவனரின் முக எண்னை பார் அல்லது அமை
 STR_FACE_FACECODE_SET                                           :{WHITE}புதிய முக எண் குறி அமைக்கப்பட்டது
-STR_FACE_SAVE                                                   :{BLACK}சேமி\
+STR_FACE_SAVE                                                   :{BLACK}சேமி
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}பிடித்த முகத்தினைப் பதிவுசெய்
 STR_FACE_EUROPEAN                                               :{BLACK}ஐரோப்பிய
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}ஐரோப்பிய முகங்களினைத் தேர்ந்தெடுக்கவும்
@@ -1670,6 +1677,7 @@ STR_FACE_EARRING                                                :கம்மல
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Tie அல்லது காதணியை மாற்றவும்
 
 # Network server list
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}பல்வீரர்
 STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}விளம்பரப்படுத்தப்பட்ட
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :இல்லை
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :ஆம்
@@ -2179,6 +2187,7 @@ STR_AIRPORT_HELISTATION                                         :வானூர
 
 STR_AIRPORT_CLASS_SMALL                                         :சிறிய விமான நிலையங்கள்
 STR_AIRPORT_CLASS_LARGE                                         :பெரிய விமான நிலையங்கள்
+STR_AIRPORT_CLASS_HUB                                           :விமான நடுவங்கள்
 STR_AIRPORT_CLASS_HELIPORTS                                     :ஹெலிகாப்டர் நிலையங்கள்
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}ஒலி இரைச்சல்: {GOLD}{COMMA}
@@ -2297,6 +2306,7 @@ STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STR
 STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}அமிழ் தண்டூர்தி வகை: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}இரயில் வேகத் தடை: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}சாலை வேகத்தடை: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}டிராம் வேக வரம்பு: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :கற்கள்
@@ -2396,18 +2406,23 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD குழுமம்
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}பிரேம் வீதம்
+STR_FRAMERATE_AVERAGE                                           :{WHITE}சராசரி
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}நினைவாற்றல்
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} நுண்ணொடி
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
 STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
 STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} இணைப்பு வரைபட தாமதம்:
 STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  GS/AI மொத்தம்:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :சரக்கு கையாளுதல்
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :சாலை வாகனத்தின் பயண நேரம்
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :விளையாட்டின் ஸ்கிரிப்ட்
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2555,6 +2570,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}இந்�
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Preset-ஐ பதிவுசெய்
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Preset இற்கு ஒரு பெயரினை இடு
+STR_SAVE_PRESET_SAVE                                            :{BLACK}சேமி
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF குணாதிசயங்களை மாற்று
@@ -2687,6 +2703,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :நகரத்
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} நகராட்சி
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}மண்டலம்
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}போக்குவரத்து நிறுவன தரங்கள்:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}செயற்பாடுகள்:
@@ -3004,6 +3021,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :அனைத்
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}குழுவின் பெயரினை மாற்றவும்
 
+STR_GROUP_OCCUPANCY                                             :தற்போதைய பயன்பாடு:
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :புது இரயில் வாகனங்கள்
@@ -3150,6 +3168,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}நீ�
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}வாகன உற்பத்தியாலரிடமிருந்து ஓர் தகவல்
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :இரயில்வே வாகனம்
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :மின்சார இரயில்
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :மோனோ இரயில் வாகனம்
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :மேக்லெவ் வாகனம்
 
@@ -3386,6 +3405,7 @@ STR_ORDER_DROP_SERVICE_DEPOT                                    :தேவைப
 STR_ORDER_DROP_HALT_DEPOT                                       :நிறுத்து
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}பழுது சரிபார்த்தல் இல்லையெனில் இந்தக் கட்டளையினை தவிற்கவும்
 
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}அடிப்படை ஜம்பிங் செய்ய வாகனத் தரவு
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :சுமை அளவு
@@ -3951,6 +3971,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... இ�
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}குழுவை உருவாக்க முடியாது...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}இந்தக் குழுவினை நீக்க முடியாது...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}குழுவின் பெயரினை மாற்ற இயலாது...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}பெற்றோர் குழுவை அமைக்க முடியாது ...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}இந்தக் குழுவில் உள்ள அனைத்து வாகனங்களையும் நீக்க இயலாது...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}வாகனத்தினை இந்தக் குழுவில் இணைக்க இயலாது...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}பகிரப்பட்ட வாகனத்தினை இந்தக் குழுவில் இணைக்க இயலாது...
