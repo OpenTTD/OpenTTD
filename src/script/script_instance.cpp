@@ -89,7 +89,7 @@ void ScriptInstance::Initialize(const char *main_script, const char *instance_na
 		}
 
 		/* Create the main-class */
-		this->instance = MallocT<SQObject>(1);
+		this->instance = new SQObject();
 		if (!this->engine->CreateClassInstance(instance_name, this->controller, this->instance)) {
 			this->Died();
 			return;
@@ -139,7 +139,7 @@ ScriptInstance::~ScriptInstance()
 	if (engine != nullptr) delete this->engine;
 	delete this->storage;
 	delete this->controller;
-	free(this->instance);
+	delete this->instance;
 }
 
 void ScriptInstance::Continue()
