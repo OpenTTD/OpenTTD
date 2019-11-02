@@ -4172,6 +4172,10 @@ void DeleteOilRig(TileIndex tile)
 
 	/* The oil rig station is not supposed to be shared with anything else */
 	assert(st->facilities == (FACIL_AIRPORT | FACIL_DOCK) && st->airport.type == AT_OILRIG);
+	if (st->industry != nullptr && st->industry->neutral_station == st) {
+		/* Don't leave dangling neutral station pointer */
+		st->industry->neutral_station = nullptr;
+	}
 	delete st;
 }
 

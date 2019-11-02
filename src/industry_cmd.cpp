@@ -146,6 +146,8 @@ Industry::~Industry()
 	 * Also we must not decrement industry counts in that case. */
 	if (this->location.w == 0) return;
 
+	const bool has_neutral_station = this->neutral_station != nullptr;
+
 	TILE_AREA_LOOP(tile_cur, this->location) {
 		if (IsTileType(tile_cur, MP_INDUSTRY)) {
 			if (GetIndustryIndex(tile_cur) == this->index) {
@@ -159,7 +161,7 @@ Industry::~Industry()
 		}
 	}
 
-	if (this->neutral_station != nullptr) {
+	if (has_neutral_station) {
 		/* Remove possible docking tiles */
 		TILE_AREA_LOOP(tile_cur, this->location) {
 			ClearDockingTilesCheckingNeighbours(tile_cur);
