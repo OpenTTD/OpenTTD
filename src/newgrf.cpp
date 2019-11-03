@@ -6560,12 +6560,12 @@ static void SkipIf(ByteReader *buf)
 	 * conditions, except the following conditions, which ignore the parameter:
 	 * * 0x0B, 0x0C (cargo availability)
 	 * * 0x0D, 0x0E (Rail type availability)
-	 * * 0x0F, 0x10, 0x11, 0x12 (Road type availability)
+	 * * 0x0F, 0x10 (Road type availability)
 	 * So, when the condition type is one of those, the specific variable
 	 * 0x88 code is skipped, so the "general" code for the cargo
 	 * availability conditions kicks in.
 	 */
-	if (param == 0x88 && (condtype < 0x0B || condtype > 0x12)) {
+	if (param == 0x88 && (condtype < 0x0B || condtype > 0x10)) {
 		/* GRF ID checks */
 
 		GRFConfig *c = GetGRFConfig(cond_val, mask);
@@ -6631,10 +6631,6 @@ static void SkipIf(ByteReader *buf)
 			case 0x0F: result = GetRoadTypeByLabel(BSWAP32(cond_val)) == INVALID_ROADTYPE;
 				break;
 			case 0x10: result = GetRoadTypeByLabel(BSWAP32(cond_val)) != INVALID_ROADTYPE;
-				break;
-			case 0x11: result = GetRoadTypeByLabel(BSWAP32(cond_val)) == INVALID_ROADTYPE;
-				break;
-			case 0x12: result = GetRoadTypeByLabel(BSWAP32(cond_val)) != INVALID_ROADTYPE;
 				break;
 
 			default: grfmsg(1, "SkipIf: Unsupported condition type %02X. Ignoring", condtype); return;
