@@ -3127,6 +3127,13 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_FIX_ROADVEH_PATH_CACHE_ORIGIN)) {
+		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
+			rv->path.origin_td = INVALID_TRACKDIR;
+			rv->path.origin_tile = INVALID_TILE;
+		}
+	}
+
 	/* Compute station catchment areas. This is needed here in case UpdateStationAcceptance is called below. */
 	Station::RecomputeCatchmentForAll();
 

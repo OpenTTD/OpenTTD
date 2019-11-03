@@ -402,6 +402,8 @@ public:
 			Node &best_next_node = *pNode;
 			assert(best_next_node.GetTile() == tile);
 			next_trackdir = best_next_node.GetTrackdir();
+			path_cache.origin_td = next_trackdir;
+			path_cache.origin_tile = tile;
 			/* remove last element for the special case when tile == dest_tile */
 			if (path_found && !path_cache.empty() && tile == v->dest_tile) {
 				path_cache.td.pop_back();

@@ -83,6 +83,8 @@ void RoadVehUpdateCache(RoadVehicle *v, bool same_length = false);
 void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 
 struct RoadVehPathCache {
+	Trackdir origin_td = INVALID_TRACKDIR;
+	TileIndex origin_tile = INVALID_TILE;
 	std::deque<Trackdir> td;
 	std::deque<TileIndex> tile;
 
@@ -96,6 +98,8 @@ struct RoadVehPathCache {
 
 	inline void clear()
 	{
+		this->origin_td = INVALID_TRACKDIR;
+		this->origin_tile = INVALID_TILE;
 		this->td.clear();
 		this->tile.clear();
 	}

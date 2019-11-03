@@ -964,6 +964,9 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 	/* Attempt to follow cached path. */
 	if (!v->path.empty()) {
 		if (v->path.tile.front() != tile) {
+			if (IsValidTile(v->path.origin_tile) && v->path.origin_tile == tile && HasBit(trackdirs, v->path.origin_td)) {
+				return_track(v->path.origin_td);
+			}
 			/* Vehicle didn't expect a choice here, invalidate its path. */
 			v->path.clear();
 		} else {
@@ -973,6 +976,8 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 				v->path.td.pop_front();
 				v->path.tile.pop_front();
 				return_track(trackdir);
+			} else if (IsValidTile(v->path.origin_tile) && v->path.origin_tile == tile && HasBit(trackdirs, v->path.origin_td)) {
+				return_track(v->path.origin_td);
 			}
 
 			/* Vehicle expected a choice which is no longer available. */
