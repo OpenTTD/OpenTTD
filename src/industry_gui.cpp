@@ -1315,25 +1315,41 @@ protected:
 		static CargoSuffix cargo_suffix[lengthof(i->produced_cargo)];
 		GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_DIR, i, i->type, indsp, i->produced_cargo, cargo_suffix);
 
-		/* Industry productions */
+		/* Get industry productions (CargoID, production, suffix, transported) */
+		typedef std::tuple<CargoID, uint16, const char*, uint> CargoInfo;
+		std::vector<CargoInfo> cargos;
+
 		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
 			if (i->produced_cargo[j] == CT_INVALID) continue;
-			SetDParam(p++, i->produced_cargo[j]);
-			SetDParam(p++, i->last_month_production[j]);
-			SetDParamStr(p++, cargo_suffix[j].text);
+			cargos.emplace_back(i->produced_cargo[j], i->last_month_production[j], cargo_suffix[j].text, ToPercent8(i->last_month_pct_transported[j]));
 		}
 
-		/* Transported productions */
-		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-			if (i->produced_cargo[j] == CT_INVALID) continue;
-			SetDParam(p++, ToPercent8(i->last_month_pct_transported[j]));
+		/* Sort by descending production, then descending transported */
+		std::sort(cargos.begin(), cargos.end(), [](const CargoInfo a, const CargoInfo b) {
+			if (std::get<1>(a) != std::get<1>(b)) return std::get<1>(a) > std::get<1>(b);
+			return std::get<3>(a) > std::get<3>(b);
+		});
+
+		/* Display first 3 cargos */
+		for (size_t j = 0; j < min<size_t>(3, cargos.size()); j++) {
+			CargoInfo ci = cargos[j];
+			SetDParam(p++, STR_INDUSTRY_DIRECTORY_ITEM_INFO);
+			SetDParam(p++, std::get<0>(ci));
+			SetDParam(p++, std::get<1>(ci));
+			SetDParamStr(p++, std::get<2>(ci));
+			SetDParam(p++, std::get<3>(ci));
 		}
+
+		/* Undisplayed cargos if any */
+		SetDParam(p++, cargos.size() - 3);
 
 		/* Drawing the right string */
-		switch (p) {
-			case 1:  return STR_INDUSTRY_DIRECTORY_ITEM_NOPROD;
-			case 5:  return STR_INDUSTRY_DIRECTORY_ITEM;
-			default: return STR_INDUSTRY_DIRECTORY_ITEM_TWO;
+		switch (cargos.size()) {
+			case 0: return STR_INDUSTRY_DIRECTORY_ITEM_NOPROD;
+			case 1: return STR_INDUSTRY_DIRECTORY_ITEM_PROD1;
+			case 2: return STR_INDUSTRY_DIRECTORY_ITEM_PROD2;
+			case 3: return STR_INDUSTRY_DIRECTORY_ITEM_PROD3;
+			default: return STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE;
 		}
 	}
 
