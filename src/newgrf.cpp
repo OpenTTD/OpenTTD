@@ -6589,6 +6589,33 @@ static void SkipIf(ByteReader *buf)
 				result = rt != INVALID_ROADTYPE && RoadTypeIsTram(rt);
 				break;
 			}
+			case 0x13: {
+				uint r1 = GB(cond_val, 0, 8);
+				uint r2 = GB(cond_val, 8, 8);
+				if (r1 >= _cur.grffile->railtype_list.size() || r2 >= _cur.grffile->railtype_list.size()) {
+					grfmsg(1, "SkipIf: value out of range %08X. Ignoring", cond_val);
+					result = false;
+					break;
+				}
+				RailType rt1 = GetRailTypeByLabel(_cur.grffile->railtype_list[r1]);
+				RailType rt2 = GetRailTypeByLabel(_cur.grffile->railtype_list[r2]);
+				result = rt1 != INVALID_RAILTYPE && rt2 != INVALID_RAILTYPE && rt1 == rt2;
+				break;
+			}
+			case 0x14: {
+				uint r1 = GB(cond_val, 0, 8);
+				uint r2 = GB(cond_val, 8, 8);
+				if (r1 >= _cur.grffile->railtype_list.size() || r2 >= _cur.grffile->railtype_list.size()) {
+					grfmsg(1, "SkipIf: value out of range %08X. Ignoring", cond_val);
+					result = false;
+					break;
+				}
+				RailType rt1 = GetRailTypeByLabel(_cur.grffile->railtype_list[r1]);
+				RailType rt2 = GetRailTypeByLabel(_cur.grffile->railtype_list[r2]);
+				result = rt1 != INVALID_RAILTYPE && rt2 != INVALID_RAILTYPE && rt1 != rt2;
+				break;
+			}
+
 			default: grfmsg(1, "SkipIf: Unsupported condition type %02X. Ignoring", condtype); return;
 		}
 	} else if (param == 0x88) {
