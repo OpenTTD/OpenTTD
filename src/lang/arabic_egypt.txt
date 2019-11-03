@@ -2797,8 +2797,6 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}نحن �
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}صناعات
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}-بدون-
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW}({COMMA}% صدرت)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW}({COMMA}%/{COMMA}% صدرت)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}اسماء المصانع - اضغط على اسم المصنع لتوسيط الشاشة عليه. اضغط + كنترول لفتح شاشة عرض جديدة لمنطقة المصنع.
 

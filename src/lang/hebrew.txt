@@ -3322,8 +3322,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}תעשיות
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- אין -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{YELLOW}(שונעו {NBSP}{3:COMMA}%){BLACK} ({1:CARGO_LONG}{2:STRING}) {ORANGE}{0:INDUSTRY}
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{YELLOW}(שונעו {NBSP} {6:COMMA}%/{5:COMMA}%) {BLACK} ({3:CARGO_LONG}{4:STRING}/{1:CARGO_LONG}{2:STRING}) {ORANGE}{0:INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}רשימת תעשיות - לחץ על שם כדי להתמקד בתעשייה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום התעשייה
 
