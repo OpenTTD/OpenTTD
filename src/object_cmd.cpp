@@ -559,6 +559,14 @@ static void AddAcceptedCargo_Object(TileIndex tile, CargoArray &acceptance, Carg
 	SetBit(*always_accepted, CT_MAIL);
 }
 
+static void AddProducedCargo_Object(TileIndex tile, CargoArray &produced)
+{
+	if (!IsObjectType(tile, OBJECT_HQ)) return;
+
+	produced[CT_PASSENGERS]++;
+	produced[CT_MAIL]++;
+}
+
 
 static void GetTileDesc_Object(TileIndex tile, TileDesc *td)
 {
@@ -840,7 +848,7 @@ extern const TileTypeProcs _tile_type_object_procs = {
 	AnimateTile_Object,          // animate_tile_proc
 	TileLoop_Object,             // tile_loop_proc
 	ChangeTileOwner_Object,      // change_tile_owner_proc
-	nullptr,                        // add_produced_cargo_proc
+	AddProducedCargo_Object,     // add_produced_cargo_proc
 	nullptr,                        // vehicle_enter_tile_proc
 	GetFoundation_Object,        // get_foundation_proc
 	TerraformTile_Object,        // terraform_tile_proc
