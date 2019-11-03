@@ -6557,13 +6557,15 @@ static void SkipIf(ByteReader *buf)
 
 	/*
 	 * Parameter (variable in specs) 0x88 can only have GRF ID checking
-	 * conditions, except conditions 0x0B, 0x0C (cargo availability) and
-	 * 0x0D, 0x0E (Rail type availability) as those ignore the parameter.
+	 * conditions, except the following conditions, which ignore the parameter:
+	 * * 0x0B, 0x0C (cargo availability)
+	 * * 0x0D, 0x0E (Rail type availability)
+	 * * 0x0F, 0x10, 0x11, 0x12 (Road type availability)
 	 * So, when the condition type is one of those, the specific variable
 	 * 0x88 code is skipped, so the "general" code for the cargo
 	 * availability conditions kicks in.
 	 */
-	if (param == 0x88 && (condtype < 0x0B || condtype > 0x0E)) {
+	if (param == 0x88 && (condtype < 0x0B || condtype > 0x12)) {
 		/* GRF ID checks */
 
 		GRFConfig *c = GetGRFConfig(cond_val, mask);
