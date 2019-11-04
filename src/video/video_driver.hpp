@@ -94,6 +94,11 @@ public:
 	virtual void EditBoxLostFocus() {}
 
 	/**
+	 * An edit box gained the input focus
+	 */
+	virtual void EditBoxGainedFocus() {}
+
+	/**
 	 * Get the currently active instance of the video driver.
 	 */
 	static VideoDriver *GetInstance() {
