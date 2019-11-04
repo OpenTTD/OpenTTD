@@ -428,18 +428,7 @@ static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, WChar *character)
 	}
 
 	/* check scancode for BACKQUOTE key, because we want the key left of "1", not anything else (on non-US keyboards) */
-#if defined(_WIN32) || defined(__OS2__)
-	if (sym->scancode == 41) key = WKC_BACKQUOTE;
-#elif defined(__APPLE__)
-	if (sym->scancode == 10) key = WKC_BACKQUOTE;
-#elif defined(__SVR4) && defined(__sun)
-	if (sym->scancode == 60) key = WKC_BACKQUOTE;
-	if (sym->scancode == 49) key = WKC_BACKSPACE;
-#elif defined(__sgi__)
-	if (sym->scancode == 22) key = WKC_BACKQUOTE;
-#else
-	if (sym->scancode == 49) key = WKC_BACKQUOTE;
-#endif
+	if (sym->scancode == SDL_SCANCODE_GRAVE) key = WKC_BACKQUOTE;
 
 	/* META are the command keys on mac */
 	if (sym->mod & KMOD_GUI)   key |= WKC_META;
