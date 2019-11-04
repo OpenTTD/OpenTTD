@@ -23,6 +23,7 @@
 #include "../core/math_func.hpp"
 #include "../fileio_func.h"
 #include "../framerate_type.h"
+#include "../window_func.h"
 #include "sdl2_v.h"
 #include <SDL.h>
 #include <mutex>
@@ -354,6 +355,29 @@ bool VideoDriver_SDL::ClaimMousePointer()
 	return true;
 }
 
+/**
+ * This is called to indicate that an edit box has gained focus, text input mode should be enabled.
+ */
+void VideoDriver_SDL::EditBoxGainedFocus()
+{
+	if (!this->edit_box_focused) {
+		SDL_StartTextInput();
+		this->edit_box_focused = true;
+	}
+}
+
+/**
+ * This is called to indicate that an edit box has lost focus, text input mode should be disabled.
+ */
+void VideoDriver_SDL::EditBoxLostFocus()
+{
+	if (this->edit_box_focused) {
+		SDL_StopTextInput();
+		this->edit_box_focused = false;
+	}
+}
+
+
 struct VkMapping {
 	SDL_Keycode vk_from;
 	byte vk_count;
@@ -444,7 +468,6 @@ static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, WChar *character)
 
 	/* The mod keys have no character. Prevent '?' */
 	if (sym->mod & KMOD_GUI ||
-		sym->mod & KMOD_SHIFT ||
 		sym->mod & KMOD_CTRL ||
 		sym->mod & KMOD_ALT ||
 		unprintable) {
@@ -550,7 +573,8 @@ int VideoDriver_SDL::PollEvent()
 				uint keycode = ConvertSdlKeyIntoMy(&ev.key.keysym, &character);
 				// Only handle non-text keys here. Text is handled in
 				// SDL_TEXTINPUT below.
-				if (keycode == WKC_DELETE ||
+				if (!this->edit_box_focused ||
+					keycode == WKC_DELETE ||
 					keycode == WKC_NUM_ENTER ||
 					keycode == WKC_LEFT ||
 					keycode == WKC_RIGHT ||
@@ -559,7 +583,6 @@ int VideoDriver_SDL::PollEvent()
 					keycode == WKC_HOME ||
 					keycode == WKC_END ||
 					keycode & WKC_META ||
-					keycode & WKC_SHIFT ||
 					keycode & WKC_CTRL ||
 					keycode & WKC_ALT ||
 					(keycode >= WKC_F1 && keycode <= WKC_F12) ||
@@ -570,12 +593,17 @@ int VideoDriver_SDL::PollEvent()
 			break;
 
 		case SDL_TEXTINPUT: {
-			WChar character;
+			if (!this->edit_box_focused) break;
 			SDL_Keycode kc = SDL_GetKeyFromName(ev.text.text);
 			uint keycode = ConvertSdlKeycodeIntoMy(kc);
 
-			Utf8Decode(&character, ev.text.text);
-			HandleKeypress(keycode, character);
+			if (keycode == WKC_BACKQUOTE && FocusedWindowIsConsole()) {
+				WChar character;
+				Utf8Decode(&character, ev.text.text);
+				HandleKeypress(keycode, character);
+			} else {
+				HandleTextInput(ev.text.text);
+			}
 			break;
 		}
 		case SDL_WINDOWEVENT: {
@@ -627,6 +655,9 @@ const char *VideoDriver_SDL::Start(const char * const *parm)
 	MarkWholeScreenDirty();
 
 	_draw_threaded = GetDriverParam(parm, "no_threads") == nullptr && GetDriverParam(parm, "no_thread") == nullptr;
+
+	SDL_StopTextInput();
+	this->edit_box_focused = false;
 
 	return nullptr;
 }

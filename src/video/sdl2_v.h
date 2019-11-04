@@ -37,10 +37,19 @@ public:
 
 	bool ClaimMousePointer() override;
 
+	void EditBoxGainedFocus() override;
+
+	void EditBoxLostFocus() override;
+
 	const char *GetName() const override { return "sdl"; }
 private:
 	int PollEvent();
 	bool CreateMainSurface(uint w, uint h, bool resize);
+
+	/**
+	 * This is true to indicate that keyboard input is in text input mode, and SDL_TEXTINPUT events are enabled.
+	 */
+	bool edit_box_focused;
 };
 
 /** Factory for the SDL video driver. */
