@@ -374,6 +374,11 @@ struct IConsoleWindow : Window
 		this->Scroll(-wheel);
 	}
 
+	void OnFocus() override
+	{
+		VideoDriver::GetInstance()->EditBoxGainedFocus();
+	}
+
 	void OnFocusLost() override
 	{
 		VideoDriver::GetInstance()->EditBoxLostFocus();

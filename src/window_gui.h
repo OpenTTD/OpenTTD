@@ -592,10 +592,7 @@ public:
 	 */
 	virtual void SetStringParameters(int widget) const {}
 
-	/**
-	 * Called when window gains focus
-	 */
-	virtual void OnFocus() {}
+	virtual void OnFocus();
 
 	virtual void OnFocusLost();
 
