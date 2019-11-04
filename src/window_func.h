@@ -55,6 +55,7 @@ void DeleteWindowById(WindowClass cls, WindowNumber number, bool force = true);
 void DeleteWindowByClass(WindowClass cls);
 
 bool EditBoxInGlobalFocus();
+bool FocusedWindowIsConsole();
 Point GetCaretPosition();
 
 #endif /* WINDOW_FUNC_H */
