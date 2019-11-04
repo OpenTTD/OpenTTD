@@ -358,40 +358,43 @@ struct VkMapping {
 	SDL_Keycode vk_from;
 	byte vk_count;
 	byte map_to;
+	bool unprintable;
 };
 
-#define AS(x, z) {x, 0, z}
-#define AM(x, y, z, w) {x, (byte)(y - x), z}
+#define AS(x, z) {x, 0, z, false}
+#define AM(x, y, z, w) {x, (byte)(y - x), z, false}
+#define AS_UP(x, z) {x, 0, z, true}
+#define AM_UP(x, y, z, w) {x, (byte)(y - x), z, true}
 
 static const VkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
-	AS(SDLK_PAGEUP,   WKC_PAGEUP),
-	AS(SDLK_PAGEDOWN, WKC_PAGEDOWN),
-	AS(SDLK_UP,     WKC_UP),
-	AS(SDLK_DOWN,   WKC_DOWN),
-	AS(SDLK_LEFT,   WKC_LEFT),
-	AS(SDLK_RIGHT,  WKC_RIGHT),
+	AS_UP(SDLK_PAGEUP,   WKC_PAGEUP),
+	AS_UP(SDLK_PAGEDOWN, WKC_PAGEDOWN),
+	AS_UP(SDLK_UP,     WKC_UP),
+	AS_UP(SDLK_DOWN,   WKC_DOWN),
+	AS_UP(SDLK_LEFT,   WKC_LEFT),
+	AS_UP(SDLK_RIGHT,  WKC_RIGHT),
 
-	AS(SDLK_HOME,   WKC_HOME),
-	AS(SDLK_END,    WKC_END),
+	AS_UP(SDLK_HOME,   WKC_HOME),
+	AS_UP(SDLK_END,    WKC_END),
 
-	AS(SDLK_INSERT, WKC_INSERT),
-	AS(SDLK_DELETE, WKC_DELETE),
+	AS_UP(SDLK_INSERT, WKC_INSERT),
+	AS_UP(SDLK_DELETE, WKC_DELETE),
 
 	/* Map letters & digits */
 	AM(SDLK_a, SDLK_z, 'A', 'Z'),
 	AM(SDLK_0, SDLK_9, '0', '9'),
 
-	AS(SDLK_ESCAPE,    WKC_ESC),
-	AS(SDLK_PAUSE,     WKC_PAUSE),
-	AS(SDLK_BACKSPACE, WKC_BACKSPACE),
+	AS_UP(SDLK_ESCAPE,    WKC_ESC),
+	AS_UP(SDLK_PAUSE,     WKC_PAUSE),
+	AS_UP(SDLK_BACKSPACE, WKC_BACKSPACE),
 
 	AS(SDLK_SPACE,     WKC_SPACE),
 	AS(SDLK_RETURN,    WKC_RETURN),
 	AS(SDLK_TAB,       WKC_TAB),
 
 	/* Function keys */
-	AM(SDLK_F1, SDLK_F12, WKC_F1, WKC_F12),
+	AM_UP(SDLK_F1, SDLK_F12, WKC_F1, WKC_F12),
 
 	/* Numeric part. */
 	AM(SDLK_KP_0, SDLK_KP_9, '0', '9'),
@@ -420,10 +423,12 @@ static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, WChar *character)
 {
 	const VkMapping *map;
 	uint key = 0;
+	bool unprintable = false;
 
 	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
 		if ((uint)(sym->sym - map->vk_from) <= map->vk_count) {
 			key = sym->sym - map->vk_from + map->map_to;
+			unprintable = map->unprintable;
 			break;
 		}
 	}
@@ -441,7 +446,8 @@ static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, WChar *character)
 	if (sym->mod & KMOD_GUI ||
 		sym->mod & KMOD_SHIFT ||
 		sym->mod & KMOD_CTRL ||
-		sym->mod & KMOD_ALT) {
+		sym->mod & KMOD_ALT ||
+		unprintable) {
 		*character = WKC_NONE;
 	} else {
 		*character = sym->sym;
