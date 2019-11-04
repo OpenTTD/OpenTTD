@@ -467,6 +467,15 @@ bool EditBoxInGlobalFocus()
 }
 
 /**
+ * Check if a console is focused.
+ * @return returns true if the focused window is a console, else false
+ */
+bool FocusedWindowIsConsole()
+{
+	return _focused_window && _focused_window->window_class == WC_CONSOLE;
+}
+
+/**
  * Makes no widget on this window have focus. The function however doesn't change which window has focus.
  */
 void Window::UnfocusFocusedWidget()
