@@ -365,7 +365,8 @@ struct VkMapping {
 
 static const VkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
-	AM(SDLK_PAGEUP, SDLK_PAGEDOWN, WKC_PAGEUP, WKC_PAGEDOWN),
+	AS(SDLK_PAGEUP,   WKC_PAGEUP),
+	AS(SDLK_PAGEDOWN, WKC_PAGEDOWN),
 	AS(SDLK_UP,     WKC_UP),
 	AS(SDLK_DOWN,   WKC_DOWN),
 	AS(SDLK_LEFT,   WKC_LEFT),
