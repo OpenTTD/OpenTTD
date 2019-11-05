@@ -606,6 +606,7 @@ void MaybeStartNewCompany()
 		uint count = CountBits(ais_to_start);
 		if (_networking && current_companies + count >= _settings_client.network.max_companies) break;
 		if (current_ais + count >= (uint)_settings_game.difficulty.max_no_competitors) break;
+		if (current_companies + count >= MAX_COMPANIES) break;
 
 		CompanyID company = AI::GetStartNextCompany(count);
 		assert(company != INVALID_COMPANY);
