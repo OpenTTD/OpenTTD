@@ -31,28 +31,52 @@ DATE=$(cat .release_date | tr ' ' T | sed 's/TUTC/:00-00:00/')
 VERSION=$(cat .version)
 BASE="openttd-${VERSION}"
 
-echo "name: ${NAME}" >> manifest.yaml
+echo "name: ${NAME}" > manifest.yaml
 echo "date: ${DATE}" >> manifest.yaml
 echo "base: ${BASE}-" >> manifest.yaml
-echo "files:" >> manifest.yaml
 
 error=""
-for i in $(ls ${FOLDER} | grep -v ".txt$\|.md$\|sum$" | sort); do
-    if [ -n "$(echo $i | grep pdb.xz)" ]; then continue; fi
-    if [ -n "$(echo $i | grep dbg.deb)" ]; then continue; fi
 
-    if [ ! -e ${FOLDER}/$i.md5sum ] || [ ! -e ${FOLDER}/$i.sha1sum ] || [ ! -e ${FOLDER}/$i.sha256sum ]; then
-        echo "ERROR: missing checksum file for ${i}" 1>&2
-        error="y"
-        continue
-    fi
+FILES=
+DEV_FILES=
+for filename in $(ls ${FOLDER} | grep -v ".txt$\|.md$\|sum$" | sort); do
+    case ${filename} in
+        *dbg.deb |\
+        *pdb.xz  )
+            DEV_FILES+=" ${filename}"
+            ;;
 
-    echo "- id: $i" >> manifest.yaml
-    echo "  size: $(stat -c"%s" ${FOLDER}/$i)" >> manifest.yaml
-    echo "  md5sum: $(cat ${FOLDER}/$i.md5sum | cut -d\  -f1)" >> manifest.yaml
-    echo "  sha1sum: $(cat ${FOLDER}/$i.sha1sum | cut -d\  -f1)" >> manifest.yaml
-    echo "  sha256sum: $(cat ${FOLDER}/$i.sha256sum | cut -d\  -f1)" >> manifest.yaml
+        *)
+            FILES+=" ${filename}"
+            ;;
+    esac
 done
+
+# output_files key filename...
+function output_files {
+    if [ "$#" -lt 2 ]; then return; fi
+    key=$1
+    echo "${key}:" >> manifest.yaml
+    shift
+    while (( "$#" )); do
+        filename=$1
+        if [ ! -e ${FOLDER}/${filename}.md5sum ] || [ ! -e ${FOLDER}/${filename}.sha1sum ] || [ ! -e ${FOLDER}/${filename}.sha256sum ]; then
+            echo "ERROR: missing checksum file for ${filename}" 1>&2
+            error="y"
+            continue
+        fi
+
+        echo "- id: ${filename}" >> manifest.yaml
+        echo "  size: $(stat -c"%s" ${FOLDER}/${filename})" >> manifest.yaml
+        echo "  md5sum: $(cat ${FOLDER}/${filename}.md5sum | cut -d\  -f1)" >> manifest.yaml
+        echo "  sha1sum: $(cat ${FOLDER}/${filename}.sha1sum | cut -d\  -f1)" >> manifest.yaml
+        echo "  sha256sum: $(cat ${FOLDER}/${filename}.sha256sum | cut -d\  -f1)" >> manifest.yaml
+        shift
+    done
+}
+
+output_files files ${FILES}
+output_files dev_files ${DEV_FILES}
 
 if [ -n "${error}" ]; then
     echo "ERROR: exiting due to earlier errors" 1>&2
