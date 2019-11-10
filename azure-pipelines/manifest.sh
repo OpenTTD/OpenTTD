@@ -41,6 +41,8 @@ FILES=
 DEV_FILES=
 for filename in $(ls ${FOLDER} | grep -v ".txt$\|.md$\|sum$" | sort); do
     case ${filename} in
+        *docs*   |\
+        *source* |\
         *dbg.deb |\
         *pdb.xz  )
             DEV_FILES+=" ${filename}"
