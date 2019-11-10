@@ -927,6 +927,8 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Tùy chọn...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgia (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Đồng Rúp Nga mới (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso México (MXN)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Tân Đài tệ (NTD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Xe cộ
@@ -1811,6 +1813,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Thay đ�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cho phép khả năng sửa giá trị sản xuất: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Cách Phối Màu Mới
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Hiển thị phối màu chung
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Hiển thị phối màu tàu hỏa
@@ -2371,7 +2374,7 @@ STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Đèn t�
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Đèn tín hiệu giành đường một chiều (điện){}Đèn tín hiệu giành đường cho phép nhiều hơn 1 đoàn tàu có thể đi vào 1 khu vực khoá, nếu như mỗi đoàn tàu có thể giành lấy một con đường tới một điểm đến một cách an toàn. Đèn tín hiệu giành đường tiêu chuẩn cho thể cho phép đi qua từ phía sau của đèn.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Chuyển đổi đèn tín hiệu{}Khi sử dụng, nháy vào đèn hiệu đang có, sẽ chuyển đổi loại đèn đã chọn, Ctrl+Click sẽ đổi loại đèn. Shift để hiện chi phí dự tính
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Mật độ khi kéo chuỗi đèn hiệu
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Giảm mật độ kéo chuỗi đèn hiệu
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Giảm khoảng cách kéo chuỗi đèn hiệu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Tăng mật độ kéo chuỗi đèn hiệu
 
 # Bridge selection window
@@ -3062,6 +3065,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Đổi tên đ�
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Chính quyền địa phương {TOWN}
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Khu vực
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Uy tín công ty vận tải:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Các thao tác:
