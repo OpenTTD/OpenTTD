@@ -45,11 +45,11 @@ for filename in $(ls ${FOLDER} | grep -v ".txt$\|.md$\|sum$" | sort); do
         *source* |\
         *dbg.deb |\
         *pdb.xz  )
-            DEV_FILES+=" ${filename}"
+            DEV_FILES="${DEV_FILES} ${filename}"
             ;;
 
         *)
-            FILES+=" ${filename}"
+            FILES="${FILES} ${filename}"
             ;;
     esac
 done
