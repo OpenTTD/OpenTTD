@@ -1640,7 +1640,9 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Počáteční d
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Plynulé změny ekonomiky (více menších změn): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Pokud je zapnuto, produkce průmyslu se mění častěji ale změny jsou menší. Toto nastavení většinou nemá vliv na průmysl, který je přidaný novou grafikou
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Povolit kupování podílu z ostatních společností: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Pokud je zapnuto, umožní kupovaní podílů ve společnostech. Podíly jsou k dispozici pouze u společností určitého stáří
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Pokud je zapnuto, umožní kupovaní akcií ve společnostech. Akcie jsou k dispozici pouze u společností od určitého stáří
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimální stáří společnosti pro obchod s akciemi: {STRING}
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Určuje stáří společnosti, od kterého mohou ostatní společnosti kupovat a prodávat její akcie.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Podíl ze zisku při překládce: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procentuální podíl příjmu, který je předán mezistanicím v překládacích systémech, předá větší kontrolu nad příjmem
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Při tažení umisťovat návěstidla každých: {STRING}
@@ -3113,6 +3115,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čtení konce p
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Požadované zdroje GRF nejsou dostupné (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} byla vypnuta {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neplatný/neznámý sprite layout formát (sprite {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Příliš mnoho prvků v seznamu hodnot vlastností (sprite {3:NUM}, vlastnost {4:HEX})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varování!
@@ -3469,6 +3472,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastr
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Železniční oblasti:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Semafory
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Silniční oblasti:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Tramvajové tratě:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vodní oblasti:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Průplavy
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stanice:
