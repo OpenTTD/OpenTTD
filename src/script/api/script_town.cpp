@@ -58,9 +58,11 @@
 {
 	CCountedPtr<Text> counter(text);
 
-	EnforcePrecondition(false, text != nullptr);
-	const char *encoded_text = text->GetEncodedText();
-	EnforcePreconditionEncodedText(false, encoded_text);
+	const char *encoded_text = nullptr;
+	if (text != nullptr) {
+		encoded_text = text->GetEncodedText();
+		EnforcePreconditionEncodedText(false, encoded_text);
+	}
 	EnforcePrecondition(false, IsValidTown(town_id));
 
 	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, 0, CMD_TOWN_SET_TEXT, encoded_text);
