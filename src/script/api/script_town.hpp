@@ -146,7 +146,7 @@ public:
 	/**
 	 * Rename a town.
 	 * @param town_id The town to rename
-	 * @param name The new name of the town. If nullptr or an empty string is passed, the town name will be reset to the default name.
+	 * @param name The new name of the town. If null is passed, the town name will be reset to the default name.
 	 * @pre IsValidTown(town_id).
 	 * @return True if the action succeeded.
 	 * @api -ai
@@ -156,7 +156,7 @@ public:
 	/**
 	 * Set the custom text of a town, shown in the GUI.
 	 * @param town_id The town to set the custom text of.
-	 * @param text The text to set it to (can be either a raw string, or a ScriptText object).
+	 * @param text The text to set it to (can be either a raw string, or a ScriptText object). If null is passed, the text will be removed.
 	 * @pre IsValidTown(town_id).
 	 * @return True if the action succeeded.
 	 * @api -ai
