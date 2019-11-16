@@ -1555,6 +1555,8 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Permettre une �
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Lorsqu'il est activé, la production des industries change plus souvent, et plus faiblement. Ce paramètre est généralement sans effets si les types d'industries sont fournis par un NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permettre d'acheter des actions d'autres compagnies{NBSP}: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Lorsqu'il est activé, l'achat et la vente des parts de compagnie sont autorisées. Les parts ne seront disponibles que pour les compagnies ayant atteint un certain âge
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Âge minimum de la compagnie pour la vente d'actions{NBSP}: {STRING}
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Définir l'âge minimum qu'une compagnie doit avoir pour que les autres puissent acheter ou vendre ses parts.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Pourcentage du profit de branche à payer dans les systèmes multimodaux{NBSP}: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Pourcentage du profit donné aux branches intermédiaires dans les systèmes multimodaux, donnant plus de contrôle sur les profits
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Espacement des signaux en mode glisser-déposer{NBSP}: {STRING}
@@ -3391,7 +3393,12 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industries
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}− Aucune −
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transporté{P "" s}){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} et {NUM} autre{P "" s}...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Noms des industries - Cliquer sur un nom pour centrer la vue principale sur l'industrie. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie.
 
 # Industry view
