@@ -55,12 +55,12 @@ for filename in $(ls ${FOLDER} | grep -v ".txt$\|.md$\|sum$" | sort); do
 done
 
 # output_files key filename...
-function output_files {
+output_files() {
     if [ "$#" -lt 2 ]; then return; fi
     key=$1
     echo "${key}:" >> manifest.yaml
     shift
-    while (( "$#" )); do
+    while [ "$#" -gt 0 ]; do
         filename=$1
         if [ ! -e ${FOLDER}/${filename}.md5sum ] || [ ! -e ${FOLDER}/${filename}.sha1sum ] || [ ! -e ${FOLDER}/${filename}.sha256sum ]; then
             echo "ERROR: missing checksum file for ${filename}" 1>&2
