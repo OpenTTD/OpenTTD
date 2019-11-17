@@ -156,7 +156,7 @@ STR_ABBREV_SWEETS                                               :{TINY_FONT}사
 STR_ABBREV_COLA                                                 :{TINY_FONT}콜
 STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}솜
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}거
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}태
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}토
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}건
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}플
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}탄
@@ -3393,7 +3393,12 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}산업시설
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}(없음)
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% 수송됨){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} 및 {NUM}종의 화물
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}산업시설 이름 - 산업시설로 이동하려면 이름을 클릭하세요. CTRL+클릭하면 이 산업시설의 위치를 기준으로 새로운 외부 화면을 엽니다
 
 # Industry view

@@ -261,6 +261,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Khi bậ
 STR_BUTTON_DEFAULT                                              :{BLACK}Mặc định
 STR_BUTTON_CANCEL                                               :{BLACK}Thôi
 STR_BUTTON_OK                                                   :{BLACK}Đồng ý
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Chú ý: quản trị máy chủ có thể đọc mọi dòng chữ nhập ở đây.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -354,6 +355,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Tạo đ
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Tạo thị trấn
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tạo nhà máy
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Xây dựng đường
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Xây dựng đường xe điện
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng cây. Nhấn Shift để xem chi phí dự tính
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tạo bảng ký hiệu
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Đặt đối tượng. Nhấn Shift để xem chi phí dự tính
@@ -991,6 +993,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Bình thường
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Gấp 2 lần
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Gấp 4 lần
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Cỡ chữ
 
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Gói đồ họa
@@ -1260,6 +1263,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Không t
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Phí bảo trì cơ sở hạ tầng: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Khi mở, thì hạ tầng công ty sẽ sinh ra chi phí bảo trì. Chi phí sẽ tăng theo mạng lưới giao thông bạn xây dựng, và sẽ tiêu tốn của công ty lớn nhiều hơn công ty nhỏ
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Thay đổi màu sắc mặc định khi bắt đầu công ty
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Sân bay không bao giờ thành đồ cổ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bật tùy chọn này cho phép tất cả các loại sân bay không bị lỗi thời
@@ -1532,6 +1536,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Nền kinh tế
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Nếu bật, sản lượng của nhà máy sẽ thay đổi thường xuyên hơn, và thay đổi với mức độ nhỏ hơn. Thiết lập này sẽ không có tác dụng nếu kiểu nhà máy định nghĩa bởi NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Cho phép mua cổ phần của các công ty khác: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Nếu bật, cho phép mua và bán cổ phần công ty. Cổ phần chỉ có thể mua bán nếu công ty đã tồn tại một thời gian nhất định nào đó
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Đặt số tuổi tối thiểu của công ty để cho các bên khác có thể mua và bán cổ phần
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Tỉ lệ lợi tức cổ phiếu chi trả cho môi giới: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Tỉ lệ thu nhập cho mỗi trung gian trên hệ thống vận tải, cho phép điều chỉnh thu nhập
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Khi kéo, đặt đèn tín hiệu mỗi: {STRING}
@@ -2709,6 +2714,7 @@ STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Chỉ s�
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Tốc độ chạy game hiện tại, so với tốc độ bình thường
 STR_FRAMERATE_CURRENT                                           :{WHITE}Hiện tại
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Trung bình
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Bộ nhớ
 STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Dữ liệu được tính theo số đo {COMMA}
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
@@ -2731,6 +2737,7 @@ STR_FRAMERATE_DRAWING                                           :{WHITE}Cách v�
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE} Khung nhìn toàn bản đồ:
 STR_FRAMERATE_VIDEO                                             :Nguồn xuất hình:
 STR_FRAMERATE_SOUND                                             :{WHITE}Trộn âm thanh:
+STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Vòng lặp khung hình game
@@ -2999,6 +3006,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Danh mục hàng hoá/cải biến được cho '{1:ENGINE}' khác với danh mục mua được sau khi đã có. Việc này khiến cho việc tự thay thế hay là tự cải biến không chính xác.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' gây ra một vòng lặp vô tận khi gọi hàm callback.
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Hàm callback {1:HEX} gửi trả kết quả sai/không rõ {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' trả về loại hàng hoá sản xuất không hợp lệ khi gọi lại tại {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<sai kiểu hàng>
@@ -3066,6 +3074,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Đổi tên đ�
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Chính quyền địa phương {TOWN}
 STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Khu vực
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Hiện vùng sáng nằm trong phạm vi của chính quyền địa phương
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Uy tín công ty vận tải:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Các thao tác:
@@ -3331,7 +3340,10 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Nhà máy
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Không Có -
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% đã vận chuyển){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} và hơn {NUM}...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Tên các nhà máy - nháy vào tên để xem vị trí nhà máy. Ctrl+Click mở cửa sổ mới để xem
 
 # Industry view
@@ -3342,6 +3354,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Xem vị
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Mức sản lượng: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Nhà máy này đã thông báo sắp đóng cửa!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Yêu cầu: {YELLOW}{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Cần cung cấp:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
@@ -3400,6 +3413,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Nhóm - 
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Ấn vào để tạo nhóm
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Xoá nhóm đã chọn
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Đổi tên nhóm
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Thay đổi phục trang cho nhóm được chọn
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Không để nhóm này tự thay thế (thiết lập chung) khi hết hạn
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Xóa Nhóm
@@ -3623,6 +3637,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Chuyển
 STR_REPLACE_ENGINES                                             :Đầu máy
 STR_REPLACE_WAGONS                                              :Toa xe
 STR_REPLACE_ALL_RAILTYPE                                        :Tất cả toa xe đầu máy
+STR_REPLACE_ALL_ROADTYPE                                        :Tất cả các xe ô-tô
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Chọn kiểu đường ray bạn muốn thay thế
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Hiện thị đầu máy nào đang được thay thế, nếu có
@@ -3631,6 +3646,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Đầu máy/toa
 STR_REPLACE_MONORAIL_VEHICLES                                   :Đầu máy ray đơn
 STR_REPLACE_MAGLEV_VEHICLES                                     :Đầu máy đệm từ
 
+STR_REPLACE_TRAM_VEHICLES                                       :Các xe điện
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Xoá bỏ toa xe: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Tự động thay thế sẽ giữ nguyên độ dài đoàn tàu bằng cách bỏ bớt toa xe (bỏ từ phía đầu), nếu như việc thay thế đầu máy làm đoàn tàu dài hơn.
@@ -3851,6 +3867,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Tuổi phương
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Yêu cầu bảo trì
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Luôn luôn
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Thời gian sử dụng còn lại (năm)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Mức độ tin cậy tối đa
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Cách so sánh dữ kiện của phương tiện với giá trị cho trước
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :bằng với
@@ -4353,6 +4370,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Không c
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Phải phá bỏ đường ray trước
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Đường một chiều hoặc bị chặn
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Đường giao nhau không cho phép với loại ray này
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Tạo đường dốc khác độ cao không được phép với loại đường này
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Không thể xây đèn hiệu ở đây...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Không thể xây đường ray ở đây...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Không thể phá bỏ đường ray ở đây...
@@ -4372,6 +4390,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Không t
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Không thể phá dỡ đường xe điện ở đây...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... không có đường bộ
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... không có đường ray xe điện
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... đường không tương thích
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Không thể xây kênh đào ở đây...
