@@ -313,6 +313,10 @@ void GRFParameterInfo::SetValue(struct GRFConfig *config, uint32 value)
 void GRFParameterInfo::Finalize()
 {
 	this->complete_labels = true;
+	if (this->min_value > this->max_value) {
+		grfmsg(2, "StaticGRFInfo: incoherent min/max values, forcing default value");
+		this->min_value = this->max_value = this->def_value;
+	}
 	for (uint32 value = this->min_value; value <= this->max_value; value++) {
 		if (!this->value_names.Contains(value)) {
 			this->complete_labels = false;
