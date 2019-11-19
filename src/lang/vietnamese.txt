@@ -233,6 +233,7 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Chọn t
 STR_BUTTON_SORT_BY                                              :{BLACK}Sắp xếp bởi
 STR_BUTTON_LOCATION                                             :{BLACK}Vị trí
 STR_BUTTON_RENAME                                               :{BLACK}Đổi tên
+STR_BUTTON_CATCHMENT                                            :{BLACK}Vùng che phủ
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Đóng cửa sổ
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tiêu đề cửa sổ - kéo nó để di chuyển cửa số
@@ -335,6 +336,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Thu nh�
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Nới rộng tầm nhìn
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Lắp đường ray
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Xây đường
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Xây dựng đường xe điện
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Xây bến cảng
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Xây sân bay
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Mở thanh địa hình để nâng cao/hạ thấp ô đất, trồng cây, etc.
@@ -464,6 +466,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Âm thanh/nhạ
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Thư/bản tin cuối cùng
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Thông báo cũ
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Xoá tất cả thông điệp
 ############ range ends here
 
 ############ range for about menu starts
@@ -931,6 +934,7 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Đồng Rúp Nga mới (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso México (MXN)
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Tân Đài tệ (NTD)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Nhân dân tệ TQ (CNY)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Xe cộ
@@ -995,6 +999,8 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Gấp 4 lần
 
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Cỡ chữ
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Phóng to gấp đôi
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Phóng nhân bốn
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Gói đồ họa
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Chọn gói đồ họa để sử dụng
@@ -1263,6 +1269,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Không t
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Phí bảo trì cơ sở hạ tầng: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Khi mở, thì hạ tầng công ty sẽ sinh ra chi phí bảo trì. Chi phí sẽ tăng theo mạng lưới giao thông bạn xây dựng, và sẽ tiêu tốn của công ty lớn nhiều hơn công ty nhỏ
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Màu bắt đầu của công ty: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Thay đổi màu sắc mặc định khi bắt đầu công ty
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Sân bay không bao giờ thành đồ cổ: {STRING}
@@ -1474,6 +1481,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Cho phép AI �
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Cho phép người chơi AI (máy tính) được tham gia trong ván chơi nhiều người
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#mã lệnh trước kịch bản tạm ngưng: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Số lượng tối đa các tính toán mà một kịch bản AI được phép chạy mỗi lần
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Tần suất bảo trì theo đơn vị phần trăm: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Lựa chọn liệu rằng việc bảo trì phương tiện sẽ được tiến hành sau một khoảng thời gian nhất định hay là độ tin cậy bị giảm xuống bao nhiều phần trăm so với mức tối đa
@@ -1536,6 +1544,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Nền kinh tế
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Nếu bật, sản lượng của nhà máy sẽ thay đổi thường xuyên hơn, và thay đổi với mức độ nhỏ hơn. Thiết lập này sẽ không có tác dụng nếu kiểu nhà máy định nghĩa bởi NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Cho phép mua cổ phần của các công ty khác: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Nếu bật, cho phép mua và bán cổ phần công ty. Cổ phần chỉ có thể mua bán nếu công ty đã tồn tại một thời gian nhất định nào đó
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Tuổi công ty tối thiểu để bán cổ phần: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Đặt số tuổi tối thiểu của công ty để cho các bên khác có thể mua và bán cổ phần
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Tỉ lệ lợi tức cổ phiếu chi trả cho môi giới: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Tỉ lệ thu nhập cho mỗi trung gian trên hệ thống vận tải, cho phép điều chỉnh thu nhập
@@ -1577,6 +1586,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Bật tùy ch�
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :không cho phép
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :cho phép
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :cho phép, tùy chọn bố trí đô thị
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Tỉ lệ bình phương (nguyên bản)
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Tuyến tính
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Trồng cây trong trò chơi: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Điều khiển sự xuất hiện tự dộng của cây cối khi đang chơi. Điều này có thể ảnh hưởng đến những nhà máy dựa vào cây cối, ví dự như nhà máy chế biến gỗgỗ
@@ -2419,6 +2430,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Xây h�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Bật chế độ xây/phá đường bộ
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Bật chế độ xây/phá đường xe điện
 
+STR_ROAD_NAME_TRAM                                              :Đường xe điện
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Hướng Của Xưởng Ôtô
@@ -2603,6 +2615,8 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Hàng hoá chấp nhận: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Kiểu đường ray: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Kiểu đường: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Kiểu xe điện: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Giới hạn tốc độ đường ray: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Hạn chế tốc độ đường bộ: {LTBLUE}{VELOCITY}
 
@@ -2722,6 +2736,8 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{WHITE} khung/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{WHITE} khung/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{WHITE} khung/s
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2737,6 +2753,7 @@ STR_FRAMERATE_DRAWING                                           :{WHITE}Cách v�
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE} Khung nhìn toàn bản đồ:
 STR_FRAMERATE_VIDEO                                             :Nguồn xuất hình:
 STR_FRAMERATE_SOUND                                             :{WHITE}Trộn âm thanh:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Tổng số GS/AI:
 STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
@@ -2752,6 +2769,7 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Cách vẽ đ�
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Khung vẽ cả bản đồ game
 STR_FRAMETIME_CAPTION_VIDEO                                     :Ngõ xuất hình
 STR_FRAMETIME_CAPTION_SOUND                                     :Trộn âm thanh
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2777,6 +2795,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Chi Ti�
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Không có thông tin gì cả.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Ghi đè file
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Nhập tên của ván chơi để lưu
 
@@ -2894,7 +2913,10 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Phiên b
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Phiên bản phù hợp tối thiểu: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Bảng màu: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Mặc định (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Kiểu cũ (W)
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Tham số: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Không
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Không có thông tin gì cả
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}File hợp lệ không có
@@ -2975,6 +2997,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Đọc quá gi�
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Dữ liệu GRF theo yêu cầu không hợp lệ (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} bị tắt bởi {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Định dạng Sprite không hợp lệ hoặc chưa định nghĩa (sprite {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Có quá phần trong danh sách tài sản (sprite {3:NUM}, tài sản {4:HEX})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Chú Ý!
@@ -3103,6 +3126,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Đút l
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Mục Tiêu Của {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Mục Tiêu Chung
+STR_GOALS_SPECTATOR                                             :Các mục tiêu chung
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Các mục tiêu chung:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Không -
@@ -3355,6 +3379,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Mức s�
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Nhà máy này đã thông báo sắp đóng cửa!
 
 STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Yêu cầu: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Sản lượng: {YELLOW}{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Cần cung cấp:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
@@ -3436,9 +3461,11 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Tàu Đơn Ray 
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Tàu Đệm Từ Mới
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Xe Cộ Mới
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Kiểu xe điện mới
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Tàu Hỏa Mới
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Thêm xe ô-tô mới
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Tàu Mới
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Máy Bay Mới
 ############ range for vehicle availability ends
@@ -3454,6 +3481,7 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(cải biến �
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Thiết kế: {GOLD}{NUM}{BLACK} Niên hạn: {GOLD}{COMMA} năm
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Độ tin cậy tối đa: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Giá thành: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Giá: {GOLD}{CURRENCY_LONG}{BLACK} (Giá cải biến: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Tải trọng: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Giá thành: {GOLD}{CURRENCY_LONG}{BLACK} Tốc độ: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Sức chứa: {GOLD}{CARGO_LONG}, {CARGO_LONG}
@@ -3475,12 +3503,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Mua P.Ti
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Mua tàu
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Mua Máy Bay
 
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Mua và cải biến ô-tô
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Mua và cải biến máy bay
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Mua tàu hỏa đã ấn định. Shift+Click để xem giá mua dự tính
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Mua xe đã ấn định. Shift+Click để xem giá mua dự tính
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Mua tàu đã ấn định. Shift+Click để xem giá mua dự tính
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Mua máy bay đã ấn định. Shift+Click để xem giá mua dự tính
 
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Mua và cải biến tàu thuỷ đã chọn. Shift+Click để dự tính giá mà không mua
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Thay tên
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Thay tên
@@ -3640,6 +3671,7 @@ STR_REPLACE_ALL_RAILTYPE                                        :Tất cả toa 
 STR_REPLACE_ALL_ROADTYPE                                        :Tất cả các xe ô-tô
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Chọn kiểu đường ray bạn muốn thay thế
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Chọn loại đường bạn muốn thay ô-tô thành vậy
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Hiện thị đầu máy nào đang được thay thế, nếu có
 STR_REPLACE_RAIL_VEHICLES                                       :Đầu máy/toa tàu hoả
 STR_REPLACE_ELRAIL_VEHICLES                                     :Đầu máy/toa xe điện
@@ -4390,7 +4422,10 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Không t
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Không thể phá dỡ đường xe điện ở đây...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... không có đường bộ
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... không có đường ray xe điện
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Không thể chuyển đổi loại đường ở đây...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Không thể chuyển đổi kiểu xe điện ở đây...
 STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... đường không tương thích
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... xe điện không phù hợp
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Không thể xây kênh đào ở đây...
@@ -4443,6 +4478,7 @@ STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Không t
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Không thể xoá bỏ nhóm...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Không thể đổi tên nhóm...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Không thể thiết đặt nhóm cha...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... lặp ở trong nhóm phân cấp là không được
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Không thể bỏ các phương tiện trong nhóm này...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Không thể thêm phương tiện vào nhóm này...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Không thể thêm phương tiện được chia sẻ vào nhóm...
