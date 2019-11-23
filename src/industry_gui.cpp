@@ -1475,6 +1475,18 @@ protected:
 			return std::get<3>(a) > std::get<3>(b);
 		});
 
+		/* If the produced cargo filter is active then move the filtered cargo to the beginning of the list,
+		 * because this is the one the player interested in, and that way it is not hidden in the 'n' more cargos */
+		const CargoID cid = this->cargo_filter[this->produced_cargo_filter_criteria];
+		if (cid != CF_ANY && cid != CF_NONE) {
+			auto filtered_ci = std::find_if(cargos.begin(), cargos.end(), [cid](const CargoInfo& ci) -> bool {
+				return std::get<0>(ci) == cid;
+			});
+			if (filtered_ci != cargos.end()) {
+				std::rotate(cargos.begin(), filtered_ci, filtered_ci + 1);
+			}
+		}
+
 		/* Display first 3 cargos */
 		for (size_t j = 0; j < min<size_t>(3, cargos.size()); j++) {
 			CargoInfo ci = cargos[j];
