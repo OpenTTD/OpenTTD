@@ -588,6 +588,8 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_IV_DISPLAY,                            "WID_IV_DISPLAY");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_ID_DROPDOWN_ORDER,                     "WID_ID_DROPDOWN_ORDER");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_ID_DROPDOWN_CRITERIA,                  "WID_ID_DROPDOWN_CRITERIA");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_ID_FILTER_BY_ACC_CARGO,                "WID_ID_FILTER_BY_ACC_CARGO");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_ID_FILTER_BY_PROD_CARGO,               "WID_ID_FILTER_BY_PROD_CARGO");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_ID_INDUSTRY_LIST,                      "WID_ID_INDUSTRY_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_ID_SCROLLBAR,                          "WID_ID_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_IC_CAPTION,                            "WID_IC_CAPTION");
