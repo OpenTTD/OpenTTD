@@ -485,7 +485,8 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
  * @param right  The right most position to draw on.
  * @param top    The top most position to draw on.
  * @param str    String to draw.
- * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in
+ *               table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
  * @param align  The alignment of the string when drawing left-to-right. In the
  *               case a right-to-left language is chosen this is inverted so it
  *               will be drawn in the right direction.
@@ -520,7 +521,8 @@ int DrawString(int left, int right, int top, const char *str, TextColour colour,
  * @param right  The right most position to draw on.
  * @param top    The top most position to draw on.
  * @param str    String to draw.
- * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in
+ *               table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
  * @param align  The alignment of the string when drawing left-to-right. In the
  *               case a right-to-left language is chosen this is inverted so it
  *               will be drawn in the right direction.
@@ -608,7 +610,8 @@ Dimension GetStringMultiLineBoundingBox(const char *str, const Dimension &sugges
  * @param top    The top most position to draw on.
  * @param bottom The bottom most position to draw on.
  * @param str    String to draw.
- * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in
+ *               table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
  * @param align  The horizontal and vertical alignment of the string.
  * @param underline Whether to underline all strings
  * @param fontsize The size of the initial characters.
@@ -669,7 +672,8 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, const char *st
  * @param top    The top most position to draw on.
  * @param bottom The bottom most position to draw on.
  * @param str    String to draw.
- * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in
+ *               table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
  * @param align  The horizontal and vertical alignment of the string.
  * @param underline Whether to underline all strings
  * @param fontsize The size of the initial characters.
@@ -747,7 +751,8 @@ const char *GetCharAtPosition(const char *str, int x, FontSize start_fontsize)
  * @param c           Character (glyph) to draw
  * @param x           X position to draw character
  * @param y           Y position to draw character
- * @param colour      Colour to use, see DoDrawString() for details
+ * @param colour      Colour to use, for details see _string_colourmap in
+ *                    table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
  */
 void DrawCharCentered(WChar c, int x, int y, TextColour colour)
 {

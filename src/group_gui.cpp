@@ -792,7 +792,7 @@ public:
 
 		switch (widget) {
 			case WID_GL_ALL_VEHICLES: // All vehicles
-			case WID_GL_DEFAULT_VEHICLES: // Ungroupd vehicles
+			case WID_GL_DEFAULT_VEHICLES: // Ungrouped vehicles
 				if (g->parent != INVALID_GROUP) {
 					DoCommandP(0, this->group_sel | (1 << 16), INVALID_GROUP, CMD_ALTER_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_SET_PARENT));
 				}
