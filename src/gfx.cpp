@@ -316,7 +316,7 @@ static void SetColourRemap(TextColour colour)
 	 * would be invisible at best, but it actually makes it illegible. */
 	bool no_shade   = (colour & TC_NO_SHADE) != 0 || colour == TC_BLACK;
 	bool raw_colour = (colour & TC_IS_PALETTE_COLOUR) != 0;
-	colour &= ~(TC_NO_SHADE | TC_IS_PALETTE_COLOUR);
+	colour &= ~(TC_NO_SHADE | TC_IS_PALETTE_COLOUR | TC_FORCED);
 
 	_string_colourremap[1] = raw_colour ? (byte)colour : _string_colourmap[colour];
 	_string_colourremap[2] = no_shade ? 0 : 1;

@@ -46,7 +46,7 @@ struct FontState {
 	inline void SetColour(TextColour c)
 	{
 		assert(c >= TC_BLUE && c <= TC_BLACK);
-		this->cur_colour = c;
+		if ((this->cur_colour & TC_FORCED) == 0) this->cur_colour = c;
 	}
 
 	/**
