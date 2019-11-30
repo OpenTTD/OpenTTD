@@ -415,7 +415,7 @@ void Station::GetTileArea(TileArea *ta, StationType type) const
  */
 void Station::UpdateVirtCoord()
 {
-	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
+	Point pt = RemapCoords(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE, GetTileMaxZ(this->xy) * TILE_HEIGHT);
 
 	pt.y -= 32 * ZOOM_LVL_BASE;
 	if ((this->facilities & FACIL_AIRPORT) && this->airport.type == AT_OILRIG) pt.y -= 16 * ZOOM_LVL_BASE;
