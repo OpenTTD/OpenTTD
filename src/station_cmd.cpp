@@ -411,6 +411,16 @@ void Station::GetTileArea(TileArea *ta, StationType type) const
 }
 
 /**
+ * Update the position of the viewport sign.
+ * Note that this function hides the base class function.
+ */
+void StationViewportSign::UpdatePosition(int center, int top, StringID str, StringID str_small)
+{
+	this->kdtree_valid = true;
+	this->ViewportSign::UpdatePosition(center, top, str, str_small);
+}
+
+/**
  * Update the virtual coords needed to draw the station sign.
  */
 void Station::UpdateVirtCoord()
@@ -420,9 +430,13 @@ void Station::UpdateVirtCoord()
 	pt.y -= 32 * ZOOM_LVL_BASE;
 	if ((this->facilities & FACIL_AIRPORT) && this->airport.type == AT_OILRIG) pt.y -= 16 * ZOOM_LVL_BASE;
 
+	if (this->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeStation(this->index));
+
 	SetDParam(0, this->index);
 	SetDParam(1, this->facilities);
 	this->sign.UpdatePosition(pt.x, pt.y, STR_VIEWPORT_STATION);
+
+	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation(this->index));
 
 	SetWindowDirty(WC_STATION_VIEW, this->index);
 }
@@ -435,13 +449,11 @@ void Station::MoveSign(TileIndex new_xy)
 {
 	if (this->xy == new_xy) return;
 
-	_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeStation(this->index));
 	_station_kdtree.Remove(this->index);
 
 	this->BaseStation::MoveSign(new_xy);
 
 	_station_kdtree.Insert(this->index);
-	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation(this->index));
 }
 
 /** Update the virtual coords needed to draw the station sign for all stations. */
@@ -692,7 +704,6 @@ static CommandCost BuildStationPart(Station **st, DoCommandFlag flags, bool reus
 		if (flags & DC_EXEC) {
 			*st = new Station(area.tile);
 			_station_kdtree.Insert((*st)->index);
-			_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation((*st)->index));
 
 			(*st)->town = ClosestTownFromTile(area.tile, UINT_MAX);
 			(*st)->string_id = GenerateStationName(*st, area.tile, name_class);
@@ -4157,7 +4168,6 @@ void BuildOilRig(TileIndex tile)
 	st->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
 
 	st->UpdateVirtCoord();
-	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation(st->index));
 	st->RecomputeCatchment();
 	UpdateStationAcceptance(st, false);
 }

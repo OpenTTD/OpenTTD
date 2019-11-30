@@ -2178,13 +2178,9 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeStation(StationID id)
 	item.id.station = id;
 
 	const Station *st = Station::Get(id);
-	Point pt = RemapCoords(TileX(st->xy) * TILE_SIZE, TileY(st->xy) * TILE_SIZE, GetTileMaxZ(st->xy) * TILE_HEIGHT);
-
-	pt.y -= 32 * ZOOM_LVL_BASE;
-	if ((st->facilities & FACIL_AIRPORT) && st->airport.type == AT_OILRIG) pt.y -= 16 * ZOOM_LVL_BASE;
-
-	item.center = pt.x;
-	item.top = pt.y;
+	assert(st->sign.kdtree_valid);
+	item.center = st->sign.center;
+	item.top = st->sign.top;
 
 	/* Assume the sign can be a candidate for drawing, so measure its width */
 	_viewport_sign_maxwidth = max<int>(_viewport_sign_maxwidth, st->sign.width_normal);
@@ -2199,12 +2195,9 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeWaypoint(StationID id)
 	item.id.station = id;
 
 	const Waypoint *st = Waypoint::Get(id);
-	Point pt = RemapCoords(TileX(st->xy) * TILE_SIZE, TileY(st->xy) * TILE_SIZE, GetTileMaxZ(st->xy) * TILE_HEIGHT);
-
-	pt.y -= 32 * ZOOM_LVL_BASE;
-
-	item.center = pt.x;
-	item.top = pt.y;
+	assert(st->sign.kdtree_valid);
+	item.center = st->sign.center;
+	item.top = st->sign.top;
 
 	/* Assume the sign can be a candidate for drawing, so measure its width */
 	_viewport_sign_maxwidth = max<int>(_viewport_sign_maxwidth, st->sign.width_normal);
@@ -2264,12 +2257,12 @@ void RebuildViewportKdtree()
 
 	const Station *st;
 	FOR_ALL_STATIONS(st) {
-		items.push_back(ViewportSignKdtreeItem::MakeStation(st->index));
+		if (st->sign.kdtree_valid) items.push_back(ViewportSignKdtreeItem::MakeStation(st->index));
 	}
 
 	const Waypoint *wp;
 	FOR_ALL_WAYPOINTS(wp) {
-		items.push_back(ViewportSignKdtreeItem::MakeWaypoint(wp->index));
+		if (wp->sign.kdtree_valid) items.push_back(ViewportSignKdtreeItem::MakeWaypoint(wp->index));
 	}
 
 	const Town *town;
