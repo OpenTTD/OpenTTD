@@ -19,12 +19,12 @@ typedef Pool<Sign, SignID, 16, 64000> SignPool;
 extern SignPool _sign_pool;
 
 struct Sign : SignPool::PoolItem<&_sign_pool> {
-	char *name;
-	ViewportSign sign;
-	int32        x;
-	int32        y;
-	int32        z;
-	Owner        owner; // placed by this company. Anyone can delete them though. OWNER_NONE for gray signs from old games.
+	char               *name;
+	TrackedViewportSign sign;
+	int32               x;
+	int32               y;
+	int32               z;
+	Owner               owner; // placed by this company. Anyone can delete them though. OWNER_NONE for gray signs from old games.
 
 	Sign(Owner owner = INVALID_OWNER);
 	~Sign();

@@ -2234,12 +2234,9 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeSign(SignID id)
 	item.id.sign = id;
 
 	const Sign *sign = Sign::Get(id);
-	Point pt = RemapCoords(sign->x, sign->y, sign->z);
-
-	pt.y -= 6 * ZOOM_LVL_BASE;
-
-	item.center = pt.x;
-	item.top = pt.y;
+	assert(sign->sign.kdtree_valid);
+	item.center = sign->sign.center;
+	item.top = sign->sign.top;
 
 	/* Assume the sign can be a candidate for drawing, so measure its width */
 	_viewport_sign_maxwidth = max<int>(_viewport_sign_maxwidth, sign->sign.width_normal);
@@ -2272,7 +2269,7 @@ void RebuildViewportKdtree()
 
 	const Sign *sign;
 	FOR_ALL_SIGNS(sign) {
-		items.push_back(ViewportSignKdtreeItem::MakeSign(sign->index));
+		if (sign->sign.kdtree_valid) items.push_back(ViewportSignKdtreeItem::MakeSign(sign->index));
 	}
 
 	_viewport_sign_kdtree.Build(items.begin(), items.end());
