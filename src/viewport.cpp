@@ -2212,14 +2212,9 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeTown(TownID id)
 	item.id.town = id;
 
 	const Town *town = Town::Get(id);
-	/* Avoid using RemapCoords2, it has dependency on the foundations status of the tile, and that can be unavailable during saveload, leading to crashes.
-	 * Instead "fake" foundations by taking the highest Z coordinate of any corner of the tile. */
-	Point pt = RemapCoords(TileX(town->xy) * TILE_SIZE, TileY(town->xy) * TILE_SIZE, GetTileMaxZ(town->xy) * TILE_HEIGHT);
-
-	pt.y -= 24 * ZOOM_LVL_BASE;
-
-	item.center = pt.x;
-	item.top = pt.y;
+	assert(town->cache.sign.kdtree_valid);
+	item.center = town->cache.sign.center;
+	item.top = town->cache.sign.top;
 
 	/* Assume the sign can be a candidate for drawing, so measure its width */
 	_viewport_sign_maxwidth = max<int>(_viewport_sign_maxwidth, town->cache.sign.width_normal);
@@ -2264,7 +2259,7 @@ void RebuildViewportKdtree()
 
 	const Town *town;
 	FOR_ALL_TOWNS(town) {
-		items.push_back(ViewportSignKdtreeItem::MakeTown(town->index));
+		if (town->cache.sign.kdtree_valid) items.push_back(ViewportSignKdtreeItem::MakeTown(town->index));
 	}
 
 	const Sign *sign;
