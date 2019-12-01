@@ -3455,6 +3455,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Gazdasági épületek
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nincs -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Gazdasági épületek neve - a névre kattintva a fő nézetet a választott objektumra irányíthatod. Ctrl+kattintással új látképet nyit a gazdasági épület pozíciójára
 
 # Industry view
