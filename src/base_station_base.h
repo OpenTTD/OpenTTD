@@ -51,7 +51,7 @@ struct StationRect : public Rect {
 /** Base class for all station-ish types */
 struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	TileIndex xy;                   ///< Base tile of the station
-	ViewportSign sign;              ///< NOSAVE: Dimensions of sign
+	TrackedViewportSign sign;       ///< NOSAVE: Dimensions of sign
 	byte delete_ctr;                ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the waypoint is then is deleted.
 
 	char *name;                     ///< Custom name
