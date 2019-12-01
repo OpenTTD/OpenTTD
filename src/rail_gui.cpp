@@ -565,99 +565,106 @@ struct BuildRailToolbarWindow : Window {
 		return this->Window::GetWidgetString(widget, stringid);
 	}
 
+	/**
+	 * Returns corresponding cursor for provided button.
+	 * @param widget Widget ID of the button.
+	 * @return Corresponding cursor ID.
+	 */
+	CursorID GetCursorForWidget(WidgetID widget)
+	{
+		switch (widget) {
+			case WID_RAT_BUILD_NS: return GetRailTypeInfo(_cur_railtype)->cursor.rail_ns;
+			case WID_RAT_BUILD_X: return GetRailTypeInfo(_cur_railtype)->cursor.rail_swne;
+			case WID_RAT_BUILD_EW: return GetRailTypeInfo(_cur_railtype)->cursor.rail_ew;
+			case WID_RAT_BUILD_Y: return GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse;
+			case WID_RAT_AUTORAIL: return GetRailTypeInfo(_cur_railtype)->cursor.autorail;
+			case WID_RAT_DEMOLISH: return ANIMCURSOR_DEMOLISH;
+			case WID_RAT_BUILD_DEPOT: return GetRailTypeInfo(_cur_railtype)->cursor.depot;
+			case WID_RAT_BUILD_WAYPOINT: return SPR_CURSOR_WAYPOINT;
+			case WID_RAT_BUILD_STATION: return SPR_CURSOR_RAIL_STATION;
+			case WID_RAT_BUILD_SIGNALS: return ANIMCURSOR_BUILDSIGNALS;
+			case WID_RAT_BUILD_BRIDGE: return SPR_CURSOR_BRIDGE;
+			case WID_RAT_BUILD_TUNNEL: return GetRailTypeInfo(_cur_railtype)->cursor.tunnel;
+			case WID_RAT_CONVERT_RAIL: return GetRailTypeInfo(_cur_railtype)->cursor.convert;
+			default: NOT_REACHED();
+		}
+	}
+
+	/**
+	 * Returns corresponding high light style for provided button.
+	 * @param widget Widget ID of the button.
+	 * @return Corresponding high light style.
+	 */
+	HighLightStyle GetHighLightStyleForWidget(WidgetID widget)
+	{
+		switch (widget) {
+			case WID_RAT_BUILD_NS: return HT_LINE | HT_DIR_VL;
+			case WID_RAT_BUILD_X: return HT_LINE | HT_DIR_X;
+			case WID_RAT_BUILD_EW: return HT_LINE | HT_DIR_HL;
+			case WID_RAT_BUILD_Y: return HT_LINE | HT_DIR_Y;
+			case WID_RAT_AUTORAIL: return HT_RAIL;
+			case WID_RAT_DEMOLISH: return HT_RECT | HT_DIAGONAL;
+			case WID_RAT_BUILD_DEPOT: return HT_RECT;
+			case WID_RAT_BUILD_WAYPOINT: return HT_RECT;
+			case WID_RAT_BUILD_STATION: return HT_RECT;
+			case WID_RAT_BUILD_SIGNALS: return HT_RECT;
+			case WID_RAT_BUILD_BRIDGE: return HT_RECT;
+			case WID_RAT_BUILD_TUNNEL: return HT_SPECIAL;
+			case WID_RAT_CONVERT_RAIL: return HT_RECT | HT_DIAGONAL;
+			default: NOT_REACHED();
+		}
+	}
+
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget < WID_RAT_BUILD_NS) return;
 
 		_remove_button_clicked = false;
+
+		if (widget == WID_RAT_REMOVE) {
+			BuildRailClick_Remove(this);
+			if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
+			return;
+		}
+
+		this->last_user_action = widget;
+		bool started = HandlePlacePushButton(this, widget, this->GetCursorForWidget(widget), this->GetHighLightStyleForWidget(widget));
+
 		switch (widget) {
-			case WID_RAT_BUILD_NS:
-				HandlePlacePushButton(this, WID_RAT_BUILD_NS, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, HT_LINE | HT_DIR_VL);
-				this->last_user_action = widget;
-				break;
-
-			case WID_RAT_BUILD_X:
-				HandlePlacePushButton(this, WID_RAT_BUILD_X, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, HT_LINE | HT_DIR_X);
-				this->last_user_action = widget;
-				break;
-
-			case WID_RAT_BUILD_EW:
-				HandlePlacePushButton(this, WID_RAT_BUILD_EW, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, HT_LINE | HT_DIR_HL);
-				this->last_user_action = widget;
-				break;
-
-			case WID_RAT_BUILD_Y:
-				HandlePlacePushButton(this, WID_RAT_BUILD_Y, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, HT_LINE | HT_DIR_Y);
-				this->last_user_action = widget;
-				break;
-
-			case WID_RAT_AUTORAIL:
-				HandlePlacePushButton(this, WID_RAT_AUTORAIL, GetRailTypeInfo(_cur_railtype)->cursor.autorail, HT_RAIL);
-				this->last_user_action = widget;
-				break;
-
-			case WID_RAT_DEMOLISH:
-				HandlePlacePushButton(this, WID_RAT_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL);
-				this->last_user_action = widget;
-				break;
-
 			case WID_RAT_BUILD_DEPOT:
-				if (HandlePlacePushButton(this, WID_RAT_BUILD_DEPOT, GetRailTypeInfo(_cur_railtype)->cursor.depot, HT_RECT)) {
+				if (started) {
 					ShowBuildTrainDepotPicker(this);
-					this->last_user_action = widget;
 				}
 				break;
 
 			case WID_RAT_BUILD_WAYPOINT:
-				this->last_user_action = widget;
-				if (HandlePlacePushButton(this, WID_RAT_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, HT_RECT)) {
+				if (started) {
 					ShowBuildWaypointPicker(this);
 				}
 				break;
 
 			case WID_RAT_BUILD_STATION:
-				if (HandlePlacePushButton(this, WID_RAT_BUILD_STATION, SPR_CURSOR_RAIL_STATION, HT_RECT)) {
+				if (started) {
 					ShowStationBuilder(this);
-					this->last_user_action = widget;
 				}
 				break;
 
 			case WID_RAT_BUILD_SIGNALS: {
-				this->last_user_action = widget;
-				bool started = HandlePlacePushButton(this, WID_RAT_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, HT_RECT);
 				if (started != _ctrl_pressed) {
 					ShowSignalBuilder(this);
 				}
 				break;
 			}
-
-			case WID_RAT_BUILD_BRIDGE:
-				HandlePlacePushButton(this, WID_RAT_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, HT_RECT);
-				this->last_user_action = widget;
-				break;
-
-			case WID_RAT_BUILD_TUNNEL:
-				HandlePlacePushButton(this, WID_RAT_BUILD_TUNNEL, GetRailTypeInfo(_cur_railtype)->cursor.tunnel, HT_SPECIAL);
-				this->last_user_action = widget;
-				break;
-
-			case WID_RAT_REMOVE:
-				BuildRailClick_Remove(this);
-				break;
-
-			case WID_RAT_CONVERT_RAIL:
-				HandlePlacePushButton(this, WID_RAT_CONVERT_RAIL, GetRailTypeInfo(_cur_railtype)->cursor.convert, HT_RECT | HT_DIAGONAL);
-				this->last_user_action = widget;
-				break;
-
-			default: NOT_REACHED();
 		}
+
 		this->UpdateRemoveWidgetStatus(widget);
 		if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
 	}
 
 	EventState OnHotkey(int hotkey) override
 	{
+		if (IsSpecialHotkey(hotkey)) return this->ChangeRailTypeOnHotkey(hotkey);
 		MarkTileDirtyByTile(TileVirtXY(_thd.pos.x, _thd.pos.y)); // redraw tile selection
 		return Window::OnHotkey(hotkey);
 	}
@@ -832,6 +839,29 @@ struct BuildRailToolbarWindow : Window {
 	}
 
 	/**
+	 * Selects new RailType based on SpecialHotkeys and order defined in _sorted_railtypes.
+	 * @param hotkey Defines what action to perform.
+	 * @return ES_HANDLED if hotkey was accepted.
+	 */
+	EventState ChangeRailTypeOnHotkey(int hotkey)
+	{
+		auto [index, step] = GetListIndexStep(SpecialListHotkeys(hotkey), _sorted_railtypes, this->railtype);
+
+		while (!HasRailTypeAvail(_local_company, _sorted_railtypes[index])) {
+			index = (index + step) % _sorted_railtypes.size();
+		}
+
+		_last_built_railtype = _cur_railtype = _sorted_railtypes[index];
+		this->ModifyRailType(_last_built_railtype);
+
+		/* Update cursor and all sub windows. */
+		if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_user_action), PAL_NONE);
+		for (WindowClass cls : {WC_BUILD_STATION, WC_BUILD_SIGNAL, WC_BUILD_WAYPOINT, WC_BUILD_DEPOT}) SetWindowDirty(cls, TRANSPORT_RAIL);
+
+		return ES_HANDLED;
+	}
+
+	/**
 	 * Handler for global hotkeys of the BuildRailToolbarWindow.
 	 * @param hotkey Hotkey
 	 * @return ES_HANDLED if hotkey was accepted.
@@ -859,6 +889,10 @@ struct BuildRailToolbarWindow : Window {
 		Hotkey('T', "tunnel", WID_RAT_BUILD_TUNNEL),
 		Hotkey('R', "remove", WID_RAT_REMOVE),
 		Hotkey('C', "convert", WID_RAT_CONVERT_RAIL),
+		Hotkey(WKC_L_BRACKET, "prev_railtype", to_underlying(SpecialListHotkeys::PreviousItem)),
+		Hotkey(WKC_R_BRACKET, "next_railtype", to_underlying(SpecialListHotkeys::NextItem)),
+		Hotkey(WKC_L_BRACKET | WKC_CTRL, "first_railtype", to_underlying(SpecialListHotkeys::FirstItem)),
+		Hotkey(WKC_R_BRACKET | WKC_CTRL, "last_railtype", to_underlying(SpecialListHotkeys::LastItem)),
 	}, RailToolbarGlobalHotkeys};
 };
 
