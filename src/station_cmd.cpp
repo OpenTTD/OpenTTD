@@ -411,16 +411,6 @@ void Station::GetTileArea(TileArea *ta, StationType type) const
 }
 
 /**
- * Update the position of the viewport sign.
- * Note that this function hides the base class function.
- */
-void StationViewportSign::UpdatePosition(int center, int top, StringID str, StringID str_small)
-{
-	this->kdtree_valid = true;
-	this->ViewportSign::UpdatePosition(center, top, str, str_small);
-}
-
-/**
  * Update the virtual coords needed to draw the station sign.
  */
 void Station::UpdateVirtCoord()

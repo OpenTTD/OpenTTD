@@ -48,20 +48,10 @@ struct StationRect : public Rect {
 	StationRect& operator = (const Rect &src);
 };
 
-struct StationViewportSign : ViewportSign {
-	bool kdtree_valid; ///< Are the sign data valid for use with the _viewport_sign_kdtree?
-
-	void UpdatePosition(int center, int top, StringID str, StringID str_small = STR_NULL);
-
-	StationViewportSign() : kdtree_valid{ false }
-	{
-	}
-};
-
 /** Base class for all station-ish types */
 struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	TileIndex xy;                   ///< Base tile of the station
-	StationViewportSign sign;       ///< NOSAVE: Dimensions of sign
+	TrackedViewportSign sign;       ///< NOSAVE: Dimensions of sign
 	byte delete_ctr;                ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the waypoint is then is deleted.
 
 	char *name;                     ///< Custom name

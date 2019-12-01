@@ -53,6 +53,26 @@ struct ViewportSign {
 	void MarkDirty(ZoomLevel maxzoom = ZOOM_LVL_MAX) const;
 };
 
+/** Specialised ViewportSign that tracks whether it is valid for entering into a Kdtree */
+struct TrackedViewportSign : ViewportSign {
+	bool kdtree_valid; ///< Are the sign data valid for use with the _viewport_sign_kdtree?
+
+	/**
+	 * Update the position of the viewport sign.
+	 * Note that this function hides the base class function.
+	 */
+	void UpdatePosition(int center, int top, StringID str, StringID str_small = STR_NULL)
+	{
+		this->kdtree_valid = true;
+		this->ViewportSign::UpdatePosition(center, top, str, str_small);
+	}
+
+
+	TrackedViewportSign() : kdtree_valid{ false }
+	{
+	}
+};
+
 /**
  * Directions of zooming.
  * @see DoZoomInOutWindow
