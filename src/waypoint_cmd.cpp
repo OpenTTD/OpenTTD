@@ -38,7 +38,7 @@
  */
 void Waypoint::UpdateVirtCoord()
 {
-	Point pt = RemapCoords(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE, GetTileMaxZ(this->xy) * TILE_HEIGHT);
+	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
 	if (this->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeWaypoint(this->index));
 
 	SetDParam(0, this->index);
