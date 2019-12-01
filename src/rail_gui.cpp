@@ -437,6 +437,17 @@ static void HandleAutoSignalPlacement()
 
 /** Rail toolbar management class. */
 struct BuildRailToolbarWindow : Window {
+	/**
+	* Indexes for special hotkeys.
+	* Values have to differ from members of #RailToolbarWidgets because they are also used as ids for hotkeys.
+	*/
+	enum class SpecialHotkeys : int {
+		PreviousRailtype = WID_RAT_END, ///< Hotkey to select previous railtype.
+		NextRailtype, ///< Hotkey to select next railtype.
+		FirstRailtype, ///< Hotkey to select first railtype.
+		LastRailtype, ///< Hotkey to select last railtype.
+	};
+
 	RailType railtype = INVALID_RAILTYPE; ///< Rail type to build.
 	WidgetID last_user_action = INVALID_WIDGET; ///< Last started user action.
 
@@ -658,6 +669,7 @@ struct BuildRailToolbarWindow : Window {
 
 	EventState OnHotkey(int hotkey) override
 	{
+		if (hotkey >= WID_RAT_END) return this->ChangeRailTypeOnHotkey(hotkey);
 		MarkTileDirtyByTile(TileVirtXY(_thd.pos.x, _thd.pos.y)); // redraw tile selection
 		return Window::OnHotkey(hotkey);
 	}
@@ -832,6 +844,53 @@ struct BuildRailToolbarWindow : Window {
 	}
 
 	/**
+	* Selects new RailType based on SpecialHotkeys and order defined in _sorted_railtypes.
+	* @param hotkey Defines what action to perform.
+	* @return ES_HANDLED if hotkey was accepted.
+	*/
+	EventState ChangeRailTypeOnHotkey(int hotkey)
+	{
+		int index = 0;
+		int direction = 1;
+
+		switch(SpecialHotkeys(hotkey)) {
+			default: NOT_REACHED();
+			case SpecialHotkeys::FirstRailtype:
+				index = _sorted_railtypes.size() - 1;
+				break;
+
+			case SpecialHotkeys::LastRailtype:
+				direction = -1;
+				break;
+
+			case SpecialHotkeys::PreviousRailtype:
+				direction = -1;
+				index = _sorted_railtypes.size() - 1;
+				[[fallthrough]];
+
+			case SpecialHotkeys::NextRailtype:
+				while (_sorted_railtypes[index] != this->railtype) {
+					index += direction;
+					assert(index >= 0 && index < int(_sorted_railtypes.size()));
+				}
+				break;
+		}
+
+		do {
+			index += direction;
+			if (index >= int(_sorted_railtypes.size())) {
+				index = 0;
+			} else if (index < 0) {
+				index = _sorted_railtypes.size() - 1;
+			}
+		} while (!HasRailTypeAvail(_local_company, _sorted_railtypes[index]));
+
+		_last_built_railtype = _cur_railtype = _sorted_railtypes[index];
+		this->ModifyRailType(_last_built_railtype);
+		return ES_HANDLED;
+	}
+
+	/**
 	 * Handler for global hotkeys of the BuildRailToolbarWindow.
 	 * @param hotkey Hotkey
 	 * @return ES_HANDLED if hotkey was accepted.
@@ -859,6 +918,10 @@ struct BuildRailToolbarWindow : Window {
 		Hotkey('T', "tunnel", WID_RAT_BUILD_TUNNEL),
 		Hotkey('R', "remove", WID_RAT_REMOVE),
 		Hotkey('C', "convert", WID_RAT_CONVERT_RAIL),
+		Hotkey(WKC_L_BRACKET, "prev_railtype", to_underlying(SpecialHotkeys::PreviousRailtype)),
+		Hotkey(WKC_R_BRACKET, "next_railtype", to_underlying(SpecialHotkeys::NextRailtype)),
+		Hotkey(WKC_L_BRACKET | WKC_CTRL, "first_railtype", to_underlying(SpecialHotkeys::FirstRailtype)),
+		Hotkey(WKC_R_BRACKET | WKC_CTRL, "last_railtype", to_underlying(SpecialHotkeys::LastRailtype)),
 	}, RailToolbarGlobalHotkeys};
 };
 
