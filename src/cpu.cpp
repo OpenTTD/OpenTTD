@@ -16,7 +16,7 @@
 
 /* rdtsc for MSC_VER, uses simple inline assembly, or _rdtsc
  * from external win64.asm because VS2005 does not support inline assembly */
-#if defined(_MSC_VER) && !defined(RDTSC_AVAILABLE)
+#if defined(_MSC_VER) && (defined(_M_IX86) || defined(_M_X64)) && !defined(RDTSC_AVAILABLE)
 #include <intrin.h>
 uint64 ottd_rdtsc()
 {
@@ -85,7 +85,7 @@ uint64 ottd_rdtsc() {return 0;}
  * Other platforms/architectures don't have CPUID, so zero the info and then
  * most (if not all) of the features are set as if they do not exist.
  */
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) && (defined(_M_IX86) || defined(_M_X64))
 void ottd_cpuid(int info[4], int type)
 {
 	__cpuid(info, type);
