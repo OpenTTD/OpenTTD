@@ -259,7 +259,7 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 		ep->ContextRecord->Rip,
 		ep->ContextRecord->EFlags
 	);
-#else
+#elif defined(_M_IX86)
 	buffer += seprintf(buffer, last,
 		" EAX: %.8X EBX: %.8X ECX: %.8X EDX: %.8X\n"
 		" ESI: %.8X EDI: %.8X EBP: %.8X ESP: %.8X\n"
@@ -275,13 +275,57 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 		(int)ep->ContextRecord->Eip,
 		(int)ep->ContextRecord->EFlags
 	);
+#elif defined(_M_ARM64)
+	buffer += seprintf(buffer, last,
+		" X0:  %.16I64X X1:  %.16I64X X2:  %.16I64X X3:  %.16I64X\n"
+		" X4:  %.16I64X X5:  %.16I64X X6:  %.16I64X X7:  %.16I64X\n"
+		" X8:  %.16I64X X9:  %.16I64X X10: %.16I64X X11: %.16I64X\n"
+		" X12: %.16I64X X13: %.16I64X X14: %.16I64X X15: %.16I64X\n"
+		" X16: %.16I64X X17: %.16I64X X18: %.16I64X X19: %.16I64X\n"
+		" X20: %.16I64X X21: %.16I64X X22: %.16I64X X23: %.16I64X\n"
+		" X24: %.16I64X X25: %.16I64X X26: %.16I64X X27: %.16I64X\n"
+		" X28: %.16I64X Fp:  %.16I64X Lr:  %.16I64X\n",
+		ep->ContextRecord->X0,
+		ep->ContextRecord->X1,
+		ep->ContextRecord->X2,
+		ep->ContextRecord->X3,
+		ep->ContextRecord->X4,
+		ep->ContextRecord->X5,
+		ep->ContextRecord->X6,
+		ep->ContextRecord->X7,
+		ep->ContextRecord->X8,
+		ep->ContextRecord->X9,
+		ep->ContextRecord->X10,
+		ep->ContextRecord->X11,
+		ep->ContextRecord->X12,
+		ep->ContextRecord->X13,
+		ep->ContextRecord->X14,
+		ep->ContextRecord->X15,
+		ep->ContextRecord->X16,
+		ep->ContextRecord->X17,
+		ep->ContextRecord->X18,
+		ep->ContextRecord->X19,
+		ep->ContextRecord->X20,
+		ep->ContextRecord->X21,
+		ep->ContextRecord->X22,
+		ep->ContextRecord->X23,
+		ep->ContextRecord->X24,
+		ep->ContextRecord->X25,
+		ep->ContextRecord->X26,
+		ep->ContextRecord->X27,
+		ep->ContextRecord->X28,
+		ep->ContextRecord->Fp,
+		ep->ContextRecord->Lr
+	);
 #endif
 
 	buffer += seprintf(buffer, last, "\n Bytes at instruction pointer:\n");
 #ifdef _M_AMD64
 	byte *b = (byte*)ep->ContextRecord->Rip;
-#else
+#elif defined(_M_IX86)
 	byte *b = (byte*)ep->ContextRecord->Eip;
+#elif defined(_M_ARM64)
+	byte *b = (byte*)ep->ContextRecord->Pc;
 #endif
 	for (int i = 0; i != 24; i++) {
 		if (IsBadReadPtr(b, 1)) {
@@ -299,8 +343,10 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 	buffer += seprintf(buffer, last, "Stack trace:\n");
 #ifdef _M_AMD64
 	uint32 *b = (uint32*)ep->ContextRecord->Rsp;
-#else
+#elif defined(_M_IX86)
 	uint32 *b = (uint32*)ep->ContextRecord->Esp;
+#elif defined(_M_ARM64)
+	uint32 *b = (uint32*)ep->ContextRecord->Sp;
 #endif
 	for (int j = 0; j != 24; j++) {
 		for (int i = 0; i != 8; i++) {
@@ -371,10 +417,14 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 		frame.AddrPC.Offset = ep->ContextRecord->Rip;
 		frame.AddrFrame.Offset = ep->ContextRecord->Rbp;
 		frame.AddrStack.Offset = ep->ContextRecord->Rsp;
-#else
+#elif defined(_M_IX86)
 		frame.AddrPC.Offset = ep->ContextRecord->Eip;
 		frame.AddrFrame.Offset = ep->ContextRecord->Ebp;
 		frame.AddrStack.Offset = ep->ContextRecord->Esp;
+#elif defined(_M_ARM64)
+		frame.AddrPC.Offset = ep->ContextRecord->Pc;
+		frame.AddrFrame.Offset = ep->ContextRecord->Fp;
+		frame.AddrStack.Offset = ep->ContextRecord->Sp;
 #endif
 		frame.AddrPC.Mode = AddrModeFlat;
 		frame.AddrFrame.Mode = AddrModeFlat;
@@ -527,9 +577,12 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 #ifdef _M_AMD64
 		ep->ContextRecord->Rip = (DWORD64)ShowCrashlogWindow;
 		ep->ContextRecord->Rsp = (DWORD64)_safe_esp;
-#else
+#elif defined(_M_IX86)
 		ep->ContextRecord->Eip = (DWORD)ShowCrashlogWindow;
 		ep->ContextRecord->Esp = (DWORD)_safe_esp;
+#elif defined(_M_ARM64)
+		ep->ContextRecord->Pc = (DWORD64)ShowCrashlogWindow;
+		ep->ContextRecord->Sp = (DWORD64)_safe_esp;
 #endif
 		return EXCEPTION_CONTINUE_EXECUTION;
 	}
@@ -545,7 +598,7 @@ static void CDECL CustomAbort(int signal)
 
 /* static */ void CrashLog::InitialiseCrashLog()
 {
-#ifdef _M_AMD64
+#if defined(_M_AMD64) || defined(_M_ARM64)
 	CONTEXT ctx;
 	RtlCaptureContext(&ctx);
 
@@ -553,7 +606,11 @@ static void CDECL CustomAbort(int signal)
 	 * function. As we are simulating a function call with the safe ESP value,
 	 * we need to subtract 8 for the imaginary return address otherwise stack
 	 * alignment would be wrong in the called function. */
+#if defined(_M_ARM64)
+	_safe_esp = (void *)(ctx.Sp - 8);
+#else
 	_safe_esp = (void *)(ctx.Rsp - 8);
+#endif
 #else
 #if defined(_MSC_VER)
 	_asm {
