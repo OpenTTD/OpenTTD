@@ -22,8 +22,8 @@ typedef uint8  Day;   ///< Type for the day of the month, note: 1 based, first d
 /**
  * 1 day is 74 ticks; _date_fract used to be uint16 and incremented by 885. On
  *                    an overflow the new day begun and 65535 / 885 = 74.
- * 1 tick is approximately 30 ms.
- * 1 day is thus about 2 seconds (74 * 30 = 2220) on a machine that can run OpenTTD normally
+ * 1 tick is approximately 27 ms.
+ * 1 day is thus about 2 seconds (74 * 27 = 1998) on a machine that can run OpenTTD normally
  */
 static const int DAY_TICKS         =  74; ///< ticks per day
 static const int DAYS_IN_YEAR      = 365; ///< days per year

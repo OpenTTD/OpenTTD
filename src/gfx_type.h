@@ -313,8 +313,12 @@ enum SpriteType : byte {
 	ST_INVALID  = 4,      ///< Pseudosprite or other unusable sprite, used only internally
 };
 
-/** The number of milliseconds per game tick. */
-static const uint MILLISECONDS_PER_TICK = 30;
+/**
+ * The number of milliseconds per game tick.
+ * The value 27 together with a day length of 74 ticks makes one day 1998 milliseconds, almost exactly 2 seconds.
+ * With a 2 second day, one standard month is 1 minute, and one standard year is slightly over 12 minutes.
+ */
+static const uint MILLISECONDS_PER_TICK = 27;
 
 /** Information about the currently used palette. */
 struct Palette {
