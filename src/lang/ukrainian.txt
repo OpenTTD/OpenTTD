@@ -360,6 +360,8 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Обер
 STR_BUTTON_SORT_BY                                              :{BLACK}Сортувати
 STR_BUTTON_LOCATION                                             :{BLACK}Показати
 STR_BUTTON_RENAME                                               :{BLACK}Назва
+STR_BUTTON_CATCHMENT                                            :{BLACK}Покриття
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Вкл./викл. відображення області покриття
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрити вікно
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок вікна - потягніть для переміщення вікна
@@ -388,6 +390,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}нати
 STR_BUTTON_DEFAULT                                              :{BLACK}Стандартно
 STR_BUTTON_CANCEL                                               :{BLACK}Відміна
 STR_BUTTON_OK                                                   :{BLACK}Так
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Попередження: Адміністратори серверів можуть мати можливість читати будь-який текст, введений тут.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\йцукенгшщзхїфівапролджє  ячсмитьбю. .
@@ -1061,6 +1064,9 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузинс�
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Іранський ріал (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Російський новий рубель (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Мексиканське песо (MXN)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Новий тайваньський долар (NTD)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Китайські ренміні (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Гонконгський долар (HKD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Сторона руху транспорту
@@ -1447,7 +1453,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Тільки T
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Густота підприємств: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Встановіть кількість підприємств, що будуть створені і кількість підприємств, що існуватимуть впродовж гри
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Макс. відстань від краю карти до нафтопереробних заводів: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Нафтопереробні заводи завжди будуються не далеко від краю карти або узбережжя.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Обмеження того, наскільки далеко може бути побудований кордон нафтопереробних заводів та нафтових установок. На островних картах це гарантує, що вони знаходяться біля узбережжя. На картах більше 256 плиток це значення збільшується.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Рівень снігової шапки: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Контроль висоти, вище якої лежить сніг в субарктичному ландшафті. Сніг впливає на генерування підприємств та на умови росту міст
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Грубість ландшафту: {STRING}
@@ -1611,6 +1617,9 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Дозволи�
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Дозволяє участь віртуальних гравців у колективній грі
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Максимально допустима кількість #opcodes: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Максимально допустима кількість розрахунків, що можуть виконати скрипти віртуальних гравців впродовж одного ходу.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Максимальне використаня пам'яті скриптом: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Скільки пам'яті може зайняти один сценарій до примусового припинення. Це може знадобитися збільшити для великих карт.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Інтервали техогляду вказано у відсотках: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Налаштування способу визначення необхідності проведення техогляду: через вказаний проміжок часу після попереднього техогляду чи коли поточна надійність транспортного засобу стане нижчою від максимальної його надійності на вказаний процент.
@@ -1673,6 +1682,8 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Стабіль�
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :При включенні обсяги виробництва підприємств змінюються часто, але не дуже суттєво. Зазвичай ця опція не впливає на підприємства, додані за допомогою NewGRF.
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Дозволити придбання акції інших компаній: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :При включенні дозволяє придбання та продаж акцій команій. Акції компанії стають доступними після досягнення деякого віку.
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Мінімальний вік компанії для торгівлі акціями: {STRING}
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Встановіть мінімальний вік компанії, щоб інші могли купувати та продавати акції у них.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Відсоток прибутку за часткове перевезення: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Налаштування проценту прибутку, що нараховується за часткове перевезення вантажу. За допомогою даної опції можна контролювати розподіл прибутків між учасниками багатоланкових перевезень.
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :При протягуванні встановлювати сигнали через {STRING}
@@ -2267,7 +2278,7 @@ STR_NETWORK_CHAT_ALL                                            :[Всім] {STR
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Введіть текст для мережевого чату
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Не знайдено мережевого пристрою або скомпільовано без ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Не знайдено мережевого пристрою
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Не знайдено жодної мережевої гри
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Сервер не відповів на запит
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Не можна з'єднатись внаслідок неспівпадання NewGRF
@@ -2563,7 +2574,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Побу
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Будувати/зруйнувати дорогу
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Будувати/демонтувати колію
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Модернізувати дорогу. Утримуйте Shift для показу витрат на модернізацію
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Convert/Перетворення / оновлення типу трамваю. Shift перемикає будівництво / показ кошторису витрат
 
+STR_ROAD_NAME_ROAD                                              :Дорога
+STR_ROAD_NAME_TRAM                                              :Трамвай
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Орієнтація депо
@@ -2749,8 +2763,10 @@ STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Прий
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Тип зал.колії: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Тип дороги: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Тип трамваю: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Ліміт швидкості залізниці: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Ліміт швидкості авто: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Обмеження швидкості руху трамваїв: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Каміння
@@ -2860,6 +2876,7 @@ STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Наяв
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK} Як швидко гра біжить в даний час, в порівнянні з очікуваною швидкістю при звичайній швидкості моделювання.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Зараз
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Середнє
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Пам'ять
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Дані отримано з {COMMA} вимірюван {P "ня" "нь" "нь" }
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} мс
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
@@ -2867,6 +2884,9 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} кадрів/сек
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} кадр{P "" "и" "ів"}/сек
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} кадрів/сек
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} мс
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} с
 ############ Leave those lines in this order!!
@@ -3134,6 +3154,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Недосту�
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} був вимкнений {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Некоректний або невідомий формат розміщення спрайтів (спрайт {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Дуже багато елементів у списку значень (спрайт {3:NUM}, властивість {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Невірна обробка продукції підприємства (спрайт {3:NUM}, "{2:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Обережно!
@@ -3165,6 +3186,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Інформація про вантаж/переобладнання для '{1:ENGINE}' відрізняється від списку покупки після побудови. Це може спричинити невідповідності під час автооновлення/заміни
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' спричинив нескінченний цикл у виклику виробництва
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Виклик {1:HEX} повернув невідомий/неправильний результат {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}'повернув недійсний тип вантажу у виробничому зворотному режимі о {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<невідомий вантаж>
@@ -3231,6 +3253,8 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Перейме�
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} - місцева влада
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Зона
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Показати зону в межах місцевих повноважень
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Рейтинги компаній:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Доступні дії:
@@ -3488,6 +3512,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Інфр
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Залізничні ділянки:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}З сигналами
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Дорожні ділянки:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Трамвайні вагони:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Судноплавні ділянки:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Канали
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Станції:
@@ -3498,7 +3523,12 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Підприємства
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- немає -
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% перевезено){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} і {NUM} ще...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Назви підприємств - клацніть мишою на назву, щоб показати підприємство у центрі екрану. Ctrl+клац мишою відкриває нове вікно з видом на підприємство
 
 # Industry view
@@ -3594,14 +3624,17 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Новий мо
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Новий магнітний поїзд
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Нові автомобілі
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Нові трамваї
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Нові потяги
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Нові автомобілі
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Нові кораблі
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нові літаки
 ############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ціна: {GOLD}{CURRENCY_LONG}{BLACK} Вага: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Ціна: {GOLD}{CURRENCY_LONG}{BLACK} (Вартість переобладнання: {GOLD}{CURRENCY_LONG}{BLACK}) Вага: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Швидкість: {GOLD}{VELOCITY}{BLACK} Потужність: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Швидкість: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Швидкість в океані: {GOLD}{VELOCITY}
@@ -3612,8 +3645,10 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(змінюєт
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Рік випуску: {GOLD}{NUM}{BLACK} Вік: {GOLD}{COMMA} р{P ік оки оків}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Надійність: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Ціна: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Ціна: {GOLD}{CURRENCY_LONG}{BLACK} (Вартість переобладнання:: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вага: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ціна: {GOLD}{CURRENCY_LONG}{BLACK} Швидкість: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Ціна: {GOLD}{CURRENCY_LONG}{BLACK} (Вартість переобладнання: {GOLD}{CURRENCY_LONG}{BLACK}) Швидкість: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Місткість: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Потужність: {GOLD}+{POWER}{BLACK} Вага: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Може бути переобладненим на: {GOLD}{STRING}
@@ -3634,12 +3669,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купи
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Купити
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Купити
 
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Купити і переобладнати авто
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Купити і переобладнати авто
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Купіть і переобладнайте корабель
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Купуйте та переобладнайте літаки
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Купити вибраний поїзд. Утримуйте Shift для показу витрат на придбання
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Купити вибране авто. Утримуйте Shift для показу витрат на придбання
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Купити вибраний корабель. Утримуйте Shift для показу витрат на придбання
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Купити вибраний літак. Утримуйте Shift для показу витрат на придбання
 
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Придбайте та переобладнайте виділений поїзд. Shift + Click показує орієнтовну вартість без покупки
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Придбайте та переобладнайте авто. Shift + Click показує орієнтовну вартість без покупки
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Придбайте та переобладнайте виділене судно. Shift + Click показує орієнтовну вартість без покупки
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Придбайте та переобладнайте виділені літаки. Shift + Click показує орієнтовну вартість без покупки
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Назва
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Зміна назви
@@ -3751,10 +3794,12 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Пові
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Ми розробили новий {STRING} - чи бажаєте ексклюзивно користуватись ним протягом року, так ми побачимо, як він зарекомендує себе, перед тим як буде доступним для всіх?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :локомотив
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :електрифікований залізничний локомотив
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорейковий локомотив
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :магнітний локомотив
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомобіль
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :трамваї
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :літак
 STR_ENGINE_PREVIEW_SHIP                                         :корабель
@@ -3796,14 +3841,18 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Пере
 STR_REPLACE_ENGINES                                             :Локомотиви
 STR_REPLACE_WAGONS                                              :Вагони
 STR_REPLACE_ALL_RAILTYPE                                        :Весь з/д транспорт
+STR_REPLACE_ALL_ROADTYPE                                        :Всі автомобілі
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якого ви збираєтесь оновити потяги
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Виберіть тип дороги, на який хочете замінити двигуни
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Показує, яким потягом буде замінено потяг, вибраний ліворуч
 STR_REPLACE_RAIL_VEHICLES                                       :Неелектрифіковані поїзди
 STR_REPLACE_ELRAIL_VEHICLES                                     :Електрифіковані поїзди
 STR_REPLACE_MONORAIL_VEHICLES                                   :Монорейкові поїзди
 STR_REPLACE_MAGLEV_VEHICLES                                     :Магнітні поїзди
 
+STR_REPLACE_ROAD_VEHICLES                                       :Авто
+STR_REPLACE_TRAM_VEHICLES                                       :Трамвайні транспортні засоби
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Ліквідація зайвих вагонів: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозволити автооновленню видаляти вагони, зберігаючи довжину потягу (починаючи спереду), якщо оновлення робить поїзд довшим
@@ -4548,6 +4597,11 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не м�
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... тут немає дороги
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... тут немає трамвайних шляхів
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Тут не можна модернізувати дорогу...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Тут не можна перетворити тип трамваю ...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Немає підходящої дороги
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Немає підходящої трамвайної колії
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... несумісна дорога
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... несумісний трамвай
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Неможливо будувати канал тут...
