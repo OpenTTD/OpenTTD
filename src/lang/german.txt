@@ -994,6 +994,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Doppelt
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Vierfach
 
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Doppelt
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisgrafiken
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zu benutzendes Set an Basisgrafiken auswählen
@@ -1474,6 +1475,8 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :KI im Mehrspiel
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Erlaube die Teilnahme von Computerspielern im Mehrspielermodus
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Rechenoperationen, bevor das Skript angehalten wird: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximale Anzahl Rechenschritte, die ein Skript in einer Runde zur Verfügung hat
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Maximaler Arbeitsspeicher pro Script: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Wie viel Arbeitsspeicher ein Script maximal benutzen darf bevor es terminiert wird. Diese Wert muss eventuell vergrößert werden für größere Maps.
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Wartungsintervalle in Prozent: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Lege fest, ob Fahrzeuge zur Wartung geschickt werden basierend auf der verstrichenen Zeit seit der letzten Wartung oder dem Absinken der Zuverlässigkeit auf einen gewissen Prozentsatz der maximalen Zuverlässigkeit des Fahrzeugtyps
@@ -1576,6 +1579,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Erlaube Spieler
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verboten
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Erlaubt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Erlaubt, mit wählbarem Straßenbauplan
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Platzierung von Bäumen während des Spiels: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Lege das Ausmaß des zufälligen Baumwachstums während des Spiels fest. Dies kann Industrien wie die Sägemühle beeinflussen, welche auf nachwachsende Bäume angewiesen sind
@@ -2418,6 +2422,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Straßen
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Zwischen Bau und Abriss der Straße umschalten
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Zwischen Bau und Abriss von Straßenbahngleisen umschalten
 
+STR_ROAD_NAME_TRAM                                              :Straßenbahngleis
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Ausrichtung Depot
@@ -3079,6 +3084,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Stadt umbenenne
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Stadtverwaltung {TOWN}
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Zeige Zone der Stadtverwaltung
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Bewertung der Transportfirma:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Verfügbare Maßnahmen:
@@ -3345,6 +3351,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrien
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Keine -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen - Klick auf den Namen zentriert Hauptansicht auf die Industrie. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Industrie
 
 # Industry view
@@ -3411,6 +3418,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Ungruppierte St
 STR_GROUP_DEFAULT_SHIPS                                         :Ungruppierte Schiffe
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ungruppierte Flugzeuge
 
+STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruppen - Klick auf eine Gruppe zeigt Liste aller Fahrzeuge der Gruppe an
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Neue Gruppe erstellen
@@ -3459,6 +3467,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Zuv
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosten: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY_LONG}{BLACK} Geschw.: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Kosten: {GOLD}{CURRENCY_LONG}{BLACK} (Kosten der Umrüstung: {GOLD}{CURRENCY_LONG}{BLACK}) Geschwindigkeit: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazität: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Angetriebene Waggons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Umrüstbar auf: {GOLD}{STRING}
@@ -3649,6 +3658,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :elektrische Sch
 STR_REPLACE_MONORAIL_VEHICLES                                   :Einschienenbahn
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetschwebebahn
 
+STR_REPLACE_TRAM_VEHICLES                                       :Straßenbahnfahrzeuge
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon-Entfernung: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ursprüngliche Länge des Zugs beibehalten, indem (vorne beginnend) Waggons entfernt werden, falls das Ersetzen der Lokomotive den Zug verlängern würde
@@ -4391,6 +4401,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Diese St
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Straßenbahngleise können hier nicht entfernt werden...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...hier ist keine Straße
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...hier ist kein Straßenbahngleis
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Straßenbahngleistyp kann hier nicht geändert werden...
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kanal kann hier nicht gebaut werden...
