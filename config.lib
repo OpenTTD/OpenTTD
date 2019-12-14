@@ -1516,12 +1516,20 @@ make_cflags_and_ldflags() {
 			# extensions in a way that breaks build with at least ICC.
 			# This requires -O1 or more, so debug level 3 (-O0) is excluded.
 			CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=2"
+			if [ "$os" = "MINGW" ]; then
+				# Prevent undefined references when _FORTIFY_SOURCE > 0
+				LDFLAGS="$LDFLAGS -fstack-protector"
+			fi
 		fi
 
 		cc_build_is_gcc=`basename "$cc_build" | grep "gcc" 2>/dev/null`
 		if [ -n "$cc_build_is_gcc" ]; then
 			# Just add -O1 to the tools needed for building.
 			CFLAGS_BUILD="$CFLAGS_BUILD -D_FORTIFY_SOURCE=2 -O1"
+			if [ "$os" = "MINGW" ]; then
+				# Prevent undefined references when _FORTIFY_SOURCE > 0
+				LDFLAGS_BUILD="$LDFLAGS_BUILD -fstack-protector"
+			fi
 		fi
 	fi
 
