@@ -315,8 +315,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 		p += seprintf(p, lastof(buf), " %s\n", c->filename);
 	}
 	p = strecpy(p, "\nCompanies:\n", lastof(buf));
-	const Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (const Company *c : Company::Iterate()) {
 		if (c->ai_info == nullptr) {
 			p += seprintf(p, lastof(buf), "%2i: Human\n", (int)c->index);
 		} else {

@@ -101,8 +101,7 @@ void GroupStatistics::Clear()
 /* static */ void GroupStatistics::UpdateAfterLoad()
 {
 	/* Set up the engine count for all companies */
-	Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (Company *c : Company::Iterate()) {
 		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
 			c->group_all[type].Clear();
 			c->group_default[type].Clear();
@@ -123,7 +122,7 @@ void GroupStatistics::Clear()
 		if (v->IsPrimaryVehicle()) GroupStatistics::CountVehicle(v, 1);
 	}
 
-	FOR_ALL_COMPANIES(c) {
+	for (const Company *c : Company::Iterate()) {
 		GroupStatistics::UpdateAutoreplace(c->index);
 	}
 }
@@ -183,8 +182,7 @@ void GroupStatistics::Clear()
 /* static */ void GroupStatistics::UpdateProfits()
 {
 	/* Set up the engine count for all companies */
-	Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (Company *c : Company::Iterate()) {
 		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
 			c->group_all[type].ClearProfits();
 			c->group_default[type].ClearProfits();

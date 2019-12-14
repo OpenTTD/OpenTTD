@@ -1207,14 +1207,13 @@ static void CheckCaches()
 
 	/* Check company infrastructure cache. */
 	std::vector<CompanyInfrastructure> old_infrastructure;
-	Company *c;
-	FOR_ALL_COMPANIES(c) old_infrastructure.push_back(c->infrastructure);
+	for (const Company *c : Company::Iterate()) old_infrastructure.push_back(c->infrastructure);
 
 	extern void AfterLoadCompanyStats();
 	AfterLoadCompanyStats();
 
 	i = 0;
-	FOR_ALL_COMPANIES(c) {
+	for (const Company *c : Company::Iterate()) {
 		if (MemCmpT(old_infrastructure.data() + i, &c->infrastructure) != 0) {
 			DEBUG(desync, 2, "infrastructure cache mismatch: company %i", (int)c->index);
 		}

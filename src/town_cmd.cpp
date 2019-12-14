@@ -3294,8 +3294,7 @@ static void ForAllStationsNearTown(Town *t, Func func)
 static void UpdateTownRating(Town *t)
 {
 	/* Increase company ratings if they're low */
-	const Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (const Company *c : Company::Iterate()) {
 		if (t->ratings[c->index] < RATING_GROWTH_MAXIMUM) {
 			t->ratings[c->index] = min((int)RATING_GROWTH_MAXIMUM, t->ratings[c->index] + RATING_GROWTH_UP_STEP);
 		}
@@ -3451,9 +3450,7 @@ static void UpdateTownAmounts(Town *t)
 
 static void UpdateTownUnwanted(Town *t)
 {
-	const Company *c;
-
-	FOR_ALL_COMPANIES(c) {
+	for (const Company *c : Company::Iterate()) {
 		if (t->unwanted[c->index] > 0) t->unwanted[c->index]--;
 	}
 }

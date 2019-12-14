@@ -94,8 +94,7 @@ CompanyManagerFace ConvertFromOldCompanyManagerFace(uint32 face)
 void AfterLoadCompanyStats()
 {
 	/* Reset infrastructure statistics to zero. */
-	Company *c;
-	FOR_ALL_COMPANIES(c) MemSetT(&c->infrastructure, 0);
+	for (Company *c : Company::Iterate()) MemSetT(&c->infrastructure, 0);
 
 	/* Collect airport count. */
 	Station *st;
@@ -105,6 +104,7 @@ void AfterLoadCompanyStats()
 		}
 	}
 
+	Company *c;
 	for (TileIndex tile = 0; tile < MapSize(); tile++) {
 		switch (GetTileType(tile)) {
 			case MP_RAILWAY:
@@ -486,8 +486,7 @@ static void SaveLoad_PLYR(Company *c)
 
 static void Save_PLYR()
 {
-	Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (Company *c : Company::Iterate()) {
 		SlSetArrayIndex(c->index);
 		SlAutolength((AutolengthProc*)SaveLoad_PLYR, c);
 	}
@@ -534,8 +533,7 @@ static void Check_PLYR()
 
 static void Ptrs_PLYR()
 {
-	Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (Company *c : Company::Iterate()) {
 		SlObject(c, _company_settings_desc);
 	}
 }

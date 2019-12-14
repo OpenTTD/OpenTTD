@@ -87,13 +87,12 @@ static bool HighScoreSorter(const Company * const &a, const Company * const &b)
  */
 int8 SaveHighScoreValueNetwork()
 {
-	const Company *c;
 	const Company *cl[MAX_COMPANIES];
 	uint count = 0;
 	int8 company = -1;
 
 	/* Sort all active companies with the highest score first */
-	FOR_ALL_COMPANIES(c) cl[count++] = c;
+	for (const Company *c : Company::Iterate()) cl[count++] = c;
 
 	std::sort(std::begin(cl), std::begin(cl) + count, HighScoreSorter);
 

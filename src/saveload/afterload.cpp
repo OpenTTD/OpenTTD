@@ -243,8 +243,7 @@ static void InitializeWindowsAndCaches()
 	UpdateAllVirtCoords();
 	ResetViewportAfterLoadGame();
 
-	Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (Company *c : Company::Iterate()) {
 		/* For each company, verify (while loading a scenario) that the inauguration date is the current year and set it
 		 * accordingly if it is not the case.  No need to set it on companies that are not been used already,
 		 * thus the MIN_YEAR (which is really nothing more than Zero, initialized value) test */
@@ -644,8 +643,7 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_84)) {
-		Company *c;
-		FOR_ALL_COMPANIES(c) {
+		for (Company *c : Company::Iterate()) {
 			c->name = CopyFromOldName(c->name_1);
 			if (c->name != nullptr) c->name_1 = STR_SV_UNNAMED;
 			c->president_name = CopyFromOldName(c->president_name_1);
@@ -678,8 +676,7 @@ bool AfterLoadGame()
 		}
 
 		/* the same applies to Company::location_of_HQ */
-		Company *c;
-		FOR_ALL_COMPANIES(c) {
+		for (Company *c : Company::Iterate()) {
 			if (c->location_of_HQ == 0 || (IsSavegameVersionBefore(SLV_4) && c->location_of_HQ == 0xFFFF)) {
 				c->location_of_HQ = INVALID_TILE;
 			}
@@ -800,8 +797,7 @@ bool AfterLoadGame()
 
 	/* Make sure there is an AI attached to an AI company */
 	{
-		Company *c;
-		FOR_ALL_COMPANIES(c) {
+		for (const Company *c : Company::Iterate()) {
 			if (c->is_ai && c->ai_instance == nullptr) AI::StartNew(c->index);
 		}
 	}
@@ -1000,8 +996,7 @@ bool AfterLoadGame()
 	/* From version 16.0, we included autorenew on engines, which are now saved, but
 	 *  of course, we do need to initialize them for older savegames. */
 	if (IsSavegameVersionBefore(SLV_16)) {
-		Company *c;
-		FOR_ALL_COMPANIES(c) {
+		for (Company *c : Company::Iterate()) {
 			c->engine_renew_list            = nullptr;
 			c->settings.engine_renew        = false;
 			c->settings.engine_renew_months = 6;
@@ -1014,7 +1009,7 @@ bool AfterLoadGame()
 		 * becomes company 0, unless we are in the scenario editor where all the
 		 * companies are 'invalid'.
 		 */
-		c = Company::GetIfValid(COMPANY_FIRST);
+		Company *c = Company::GetIfValid(COMPANY_FIRST);
 		if (!_network_dedicated && c != nullptr) {
 			c->settings = _settings_client.company;
 		}
@@ -1349,8 +1344,7 @@ bool AfterLoadGame()
 	 * replaced, shall keep their old length. In all prior versions, just default
 	 * to false */
 	if (IsSavegameVersionBefore(SLV_16, 1)) {
-		Company *c;
-		FOR_ALL_COMPANIES(c) c->settings.renew_keep_length = false;
+		for (Company *c : Company::Iterate()) c->settings.renew_keep_length = false;
 	}
 
 	if (IsSavegameVersionBefore(SLV_123)) {
@@ -1413,12 +1407,10 @@ bool AfterLoadGame()
 	YapfNotifyTrackLayoutChange(INVALID_TILE, INVALID_TRACK);
 
 	if (IsSavegameVersionBefore(SLV_34)) {
-		Company *c;
-		FOR_ALL_COMPANIES(c) ResetCompanyLivery(c);
+		for (Company *c : Company::Iterate()) ResetCompanyLivery(c);
 	}
 
-	Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (Company *c : Company::Iterate()) {
 		c->avail_railtypes = GetCompanyRailtypes(c->index);
 		c->avail_roadtypes = GetCompanyRoadTypes(c->index);
 	}
@@ -1440,7 +1432,7 @@ bool AfterLoadGame()
 		FOR_ALL_STATIONS(st)  st->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
 		FOR_ALL_WAYPOINTS(wp) wp->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
 		FOR_ALL_ENGINES(e)    e->intro_date       += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		FOR_ALL_COMPANIES(c)  c->inaugurated_year += ORIGINAL_BASE_YEAR;
+		for (Company *c : Company::Iterate()) c->inaugurated_year += ORIGINAL_BASE_YEAR;
 		FOR_ALL_INDUSTRIES(i) i->last_prod_year   += ORIGINAL_BASE_YEAR;
 
 		FOR_ALL_VEHICLES(v) {
@@ -1592,7 +1584,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_49)) FOR_ALL_COMPANIES(c) c->face = ConvertFromOldCompanyManagerFace(c->face);
+	if (IsSavegameVersionBefore(SLV_49)) for (Company *c : Company::Iterate()) c->face = ConvertFromOldCompanyManagerFace(c->face);
 
 	if (IsSavegameVersionBefore(SLV_52)) {
 		for (TileIndex t = 0; t < map_size; t++) {
@@ -1792,7 +1784,7 @@ bool AfterLoadGame()
 		 *      *really* old revisions of OTTD; else it is already set in InitializeCompanies())
 		 * 2) shares that are owned by inactive companies or self
 		 *     (caused by cheating clients in earlier revisions) */
-		FOR_ALL_COMPANIES(c) {
+		for (Company *c : Company::Iterate()) {
 			for (uint i = 0; i < 4; i++) {
 				CompanyID company = c->share_owners[i];
 				if (company == INVALID_COMPANY) continue;
@@ -2061,8 +2053,7 @@ bool AfterLoadGame()
 		}
 
 		/* More companies ... */
-		Company *c;
-		FOR_ALL_COMPANIES(c) {
+		for (Company *c : Company::Iterate()) {
 			if (c->bankrupt_asked == 0xFF) c->bankrupt_asked = 0xFFFF;
 		}
 
@@ -2199,8 +2190,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_120)) {
 		extern VehicleDefaultSettings _old_vds;
-		Company *c;
-		FOR_ALL_COMPANIES(c) {
+		for (Company *c : Company::Iterate()) {
 			c->settings.vehicle = _old_vds;
 		}
 	}
@@ -2663,8 +2653,7 @@ bool AfterLoadGame()
 		}
 
 		/* Introduced terraform/clear limits. */
-		Company *c;
-		FOR_ALL_COMPANIES(c) {
+		for (Company *c : Company::Iterate()) {
 			c->terraform_limit = _settings_game.construction.terraform_frame_burst << 16;
 			c->clear_limit     = _settings_game.construction.clear_frame_burst << 16;
 		}
@@ -2923,8 +2912,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_175)) {
 		/* Introduced tree planting limit. */
-		Company *c;
-		FOR_ALL_COMPANIES(c) c->tree_limit = _settings_game.construction.tree_frame_burst << 16;
+		for (Company *c : Company::Iterate()) c->tree_limit = _settings_game.construction.tree_frame_burst << 16;
 	}
 
 	if (IsSavegameVersionBefore(SLV_177)) {
@@ -2933,7 +2921,7 @@ bool AfterLoadGame()
 		if (_economy.inflation_payment > MAX_INFLATION) _economy.inflation_payment = MAX_INFLATION;
 
 		/* We have to convert the quarters of bankruptcy into months of bankruptcy */
-		FOR_ALL_COMPANIES(c) {
+		for (Company *c : Company::Iterate()) {
 			c->months_of_bankruptcy = 3 * c->months_of_bankruptcy;
 		}
 	}

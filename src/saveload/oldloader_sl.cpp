@@ -459,8 +459,7 @@ static bool FixTTOEngines()
 
 static void FixTTOCompanies()
 {
-	Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (Company *c : Company::Iterate()) {
 		c->cur_economy.company_value = CalculateCompanyValue(c); // company value history is zeroed
 	}
 }

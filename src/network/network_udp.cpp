@@ -198,8 +198,7 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_DETAIL_INFO(Packet *p, Networ
 
 		for (;;) {
 			int free = SEND_MTU - packet.size;
-			Company *company;
-			FOR_ALL_COMPANIES(company) {
+			for (const Company *company : Company::Iterate()) {
 				char company_name[NETWORK_COMPANY_NAME_LENGTH];
 				SetDParam(0, company->index);
 				GetString(company_name, STR_COMPANY_NAME, company_name + max_cname_length - 1);
@@ -214,9 +213,8 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_DETAIL_INFO(Packet *p, Networ
 		}
 	}
 
-	Company *company;
 	/* Go through all the companies */
-	FOR_ALL_COMPANIES(company) {
+	for (const Company *company : Company::Iterate()) {
 		/* Send the information */
 		this->SendCompanyInformation(&packet, company, &company_stats[company->index], max_cname_length);
 	}

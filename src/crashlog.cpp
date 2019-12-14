@@ -193,8 +193,7 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 	);
 
 	buffer += seprintf(buffer, last, "AI Configuration (local: %i) (current: %i):\n", (int)_local_company, (int)_current_company);
-	const Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (const Company *c : Company::Iterate()) {
 		if (c->ai_info == nullptr) {
 			buffer += seprintf(buffer, last, " %2i: Human\n", (int)c->index);
 		} else {
