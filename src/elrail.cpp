@@ -591,7 +591,6 @@ void DrawRailCatenary(const TileInfo *ti)
 
 bool SettingsDisableElrail(int32 p1)
 {
-	Company *c;
 	Train *t;
 	bool disable = (p1 != 0);
 
@@ -632,7 +631,7 @@ bool SettingsDisableElrail(int32 p1)
 		}
 	}
 
-	FOR_ALL_COMPANIES(c) c->avail_railtypes = GetCompanyRailtypes(c->index);
+	for (Company *c : Company::Iterate()) c->avail_railtypes = GetCompanyRailtypes(c->index);
 
 	/* This resets the _last_built_railtype, which will be invalid for electric
 	 * rails. It may have unintended consequences if that function is ever

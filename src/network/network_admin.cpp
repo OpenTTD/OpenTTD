@@ -399,8 +399,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyRemove(CompanyID c
 /** Send economic information of all companies. */
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyEconomy()
 {
-	const Company *company;
-	FOR_ALL_COMPANIES(company) {
+	for (const Company *company : Company::Iterate()) {
 		/* Get the income. */
 		Money income = 0;
 		for (uint i = 0; i < lengthof(company->yearly_expenses[0]); i++) {
@@ -438,10 +437,8 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyStats()
 	NetworkCompanyStats company_stats[MAX_COMPANIES];
 	NetworkPopulateCompanyStats(company_stats);
 
-	const Company *company;
-
 	/* Go through all the companies. */
-	FOR_ALL_COMPANIES(company) {
+	for (const Company *company : Company::Iterate()) {
 		Packet *p = new Packet(ADMIN_PACKET_SERVER_COMPANY_STATS);
 
 		/* Send the information. */
@@ -748,13 +745,12 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet *p)
 
 		case ADMIN_UPDATE_COMPANY_INFO:
 			/* The admin is asking for company info. */
-			const Company *company;
 			if (d1 == UINT32_MAX) {
-				FOR_ALL_COMPANIES(company) {
+				for (const Company *company : Company::Iterate()) {
 					this->SendCompanyInfo(company);
 				}
 			} else {
-				company = Company::GetIfValid(d1);
+				const Company *company = Company::GetIfValid(d1);
 				if (company != nullptr) this->SendCompanyInfo(company);
 			}
 			break;

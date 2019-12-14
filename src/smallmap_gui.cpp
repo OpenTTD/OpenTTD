@@ -333,8 +333,7 @@ void BuildOwnerLegend()
 	_legend_land_owners[1].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].default_colour;
 
 	int i = NUM_NO_COMPANY_ENTRIES;
-	const Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (const Company *c : Company::Iterate()) {
 		_legend_land_owners[i].colour = _colour_gradient[c->colour][5];
 		_legend_land_owners[i].company = c->index;
 		_legend_land_owners[i].show_on_map = true;

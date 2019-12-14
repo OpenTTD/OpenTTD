@@ -149,8 +149,7 @@ public:
 		uint exclusive_left = rtl ? right - icon_width - exclusive_width - 2 : left + icon_width + 2;
 
 		/* Draw list of companies */
-		const Company *c;
-		FOR_ALL_COMPANIES(c) {
+		for (const Company *c : Company::Iterate()) {
 			if ((HasBit(this->town->have_ratings, c->index) || this->town->exclusivity == c->index)) {
 				DrawCompanyIcon(c->index, icon_left, y + icon_y_offset);
 

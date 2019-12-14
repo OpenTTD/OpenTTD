@@ -380,10 +380,9 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyInfo()
 
 	/* Now send the data */
 
-	Company *company;
 	Packet *p;
 
-	FOR_ALL_COMPANIES(company) {
+	for (const Company *company : Company::Iterate()) {
 		p = new Packet(PACKET_SERVER_COMPANY_INFO);
 
 		p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
@@ -1619,7 +1618,6 @@ static void NetworkCheckRestartMap()
 static void NetworkAutoCleanCompanies()
 {
 	const NetworkClientInfo *ci;
-	const Company *c;
 	bool clients_in_company[MAX_COMPANIES];
 	int vehicles_in_company[MAX_COMPANIES];
 
@@ -1648,7 +1646,7 @@ static void NetworkAutoCleanCompanies()
 	}
 
 	/* Go through all the companies */
-	FOR_ALL_COMPANIES(c) {
+	for (const Company *c : Company::Iterate()) {
 		/* Skip the non-active once */
 		if (c->is_ai) continue;
 

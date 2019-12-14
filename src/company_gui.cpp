@@ -574,7 +574,7 @@ private:
 
 		/* Disallow other company colours for the primary colour */
 		if (this->livery_class < LC_GROUP_RAIL && HasBit(this->sel, LS_DEFAULT) && primary) {
-			FOR_ALL_COMPANIES(c) {
+			for (const Company *c : Company::Iterate()) {
 				if (c->index != _local_company) SetBit(used_colours, c->colour);
 			}
 		}
@@ -2396,9 +2396,7 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_DESC_OWNERS: {
-				const Company *c2;
-
-				FOR_ALL_COMPANIES(c2) {
+				for (const Company *c2 : Company::Iterate()) {
 					SetDParamMaxValue(0, 75);
 					SetDParam(1, c2->index);
 
@@ -2500,10 +2498,9 @@ struct CompanyWindow : Window
 			}
 
 			case WID_C_DESC_OWNERS: {
-				const Company *c2;
 				uint y = r.top;
 
-				FOR_ALL_COMPANIES(c2) {
+				for (const Company *c2 : Company::Iterate()) {
 					uint amt = GetAmountOwnedBy(c, c2->index);
 					if (amt != 0) {
 						SetDParam(0, amt * 25);

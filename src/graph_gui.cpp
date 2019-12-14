@@ -567,8 +567,7 @@ public:
 		}
 
 		byte nums = 0;
-		const Company *c;
-		FOR_ALL_COMPANIES(c) {
+		for (const Company *c : Company::Iterate()) {
 			nums = min(this->num_vert_lines, max(nums, c->num_valid_stat_ent));
 		}
 
@@ -592,7 +591,7 @@ public:
 
 		int numd = 0;
 		for (CompanyID k = COMPANY_FIRST; k < MAX_COMPANIES; k++) {
-			c = Company::GetIfValid(k);
+			const Company *c = Company::GetIfValid(k);
 			if (c != nullptr) {
 				this->colours[numd] = _colour_gradient[c->colour][6];
 				for (int j = this->num_on_x_axis, i = 0; --j >= 0;) {
@@ -1136,8 +1135,7 @@ private:
 
 		this->companies.clear();
 
-		const Company *c;
-		FOR_ALL_COMPANIES(c) {
+		for (const Company *c : Company::Iterate()) {
 			this->companies.push_back(c);
 		}
 
@@ -1219,8 +1217,7 @@ public:
 		this->icon_width = d.width + 2;
 		this->line_height = max<int>(d.height + 2, FONT_HEIGHT_NORMAL);
 
-		const Company *c;
-		FOR_ALL_COMPANIES(c) {
+		for (const Company *c : Company::Iterate()) {
 			SetDParam(0, c->index);
 			SetDParam(1, c->index);
 			SetDParam(2, _performance_titles[widest_title]);
@@ -1299,8 +1296,7 @@ struct PerformanceRatingDetailWindow : Window {
 	{
 		/* Update all company stats with the current data
 		 * (this is because _score_info is not saved to a savegame) */
-		Company *c;
-		FOR_ALL_COMPANIES(c) {
+		for (Company *c : Company::Iterate()) {
 			UpdateCompanyRatingAndValue(c, false);
 		}
 
@@ -1497,8 +1493,7 @@ struct PerformanceRatingDetailWindow : Window {
 		}
 
 		if (this->company == INVALID_COMPANY) {
-			const Company *c;
-			FOR_ALL_COMPANIES(c) {
+			for (const Company *c : Company::Iterate()) {
 				this->company = c->index;
 				break;
 			}

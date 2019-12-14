@@ -500,8 +500,7 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 		_generating_world = true;
 
 		/* Delete all companies */
-		Company *c;
-		FOR_ALL_COMPANIES(c) {
+		for (Company *c : Company::Iterate()) {
 			ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);
 			delete c;
 		}

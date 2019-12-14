@@ -168,9 +168,6 @@ struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {
 	static void PostDestructor(size_t index);
 };
 
-#define FOR_ALL_COMPANIES_FROM(var, start) FOR_ALL_ITEMS_FROM(Company, company_index, var, start)
-#define FOR_ALL_COMPANIES(var) FOR_ALL_COMPANIES_FROM(var, 0)
-
 Money CalculateCompanyValue(const Company *c, bool including_loan = true);
 
 extern uint _next_competitor_start;

@@ -297,8 +297,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		 * There are no spectators in single player, so we must pick some other company. */
 		assert(!_networking);
 		Backup<CompanyID> cur_company2(_current_company, FILE_LINE);
-		Company *c;
-		FOR_ALL_COMPANIES(c) {
+		for (const Company *c : Company::Iterate()) {
 			if (c->index != old_owner) {
 				SetLocalCompany(c->index);
 				break;
@@ -313,11 +312,10 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	assert(old_owner != new_owner);
 
 	{
-		Company *c;
 		uint i;
 
 		/* See if the old_owner had shares in other companies */
-		FOR_ALL_COMPANIES(c) {
+		for (const Company *c : Company::Iterate()) {
 			for (i = 0; i < 4; i++) {
 				if (c->share_owners[i] == old_owner) {
 					/* Sell his shares */
@@ -331,7 +329,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 
 		/* Sell all the shares that people have on this company */
 		Backup<CompanyID> cur_company2(_current_company, FILE_LINE);
-		c = Company::Get(old_owner);
+		const Company *c = Company::Get(old_owner);
 		for (i = 0; i < 4; i++) {
 			cur_company2.Change(c->share_owners[i]);
 			if (_current_company != INVALID_OWNER) {
@@ -658,8 +656,7 @@ static void CompanyCheckBankrupt(Company *c)
 static void CompaniesGenStatistics()
 {
 	/* Check for bankruptcy each month */
-	Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (Company *c : Company::Iterate()) {
 		CompanyCheckBankrupt(c);
 	}
 
@@ -674,7 +671,7 @@ static void CompaniesGenStatistics()
 		}
 	} else {
 		/* Improved monthly infrastructure costs. */
-		FOR_ALL_COMPANIES(c) {
+		for (const Company *c : Company::Iterate()) {
 			cur_company.Change(c->index);
 
 			CommandCost cost(EXPENSES_PROPERTY);
@@ -700,7 +697,7 @@ static void CompaniesGenStatistics()
 	/* Only run the economic statics and update company stats every 3rd month (1st of quarter). */
 	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, _cur_month)) return;
 
-	FOR_ALL_COMPANIES(c) {
+	for (Company *c : Company::Iterate()) {
 		/* Drop the oldest history off the end */
 		std::copy_backward(c->old_economy, c->old_economy + MAX_HISTORY_QUARTERS - 1, c->old_economy + MAX_HISTORY_QUARTERS);
 		c->old_economy[0] = c->cur_economy;
@@ -833,10 +830,8 @@ void RecomputePrices()
 /** Let all companies pay the monthly interest on their loan. */
 static void CompaniesPayInterest()
 {
-	const Company *c;
-
 	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
-	FOR_ALL_COMPANIES(c) {
+	for (const Company *c : Company::Iterate()) {
 		cur_company.Change(c->index);
 
 		/* Over a year the paid interest should be "loan * interest percentage",
