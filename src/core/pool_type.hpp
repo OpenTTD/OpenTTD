@@ -12,6 +12,7 @@
 
 #include "smallvec_type.hpp"
 #include "enum_type.hpp"
+#include <functional>
 
 /** Various types of a pool. */
 enum PoolType {
@@ -137,12 +138,56 @@ struct Pool : PoolBase {
 	}
 
 	/**
+	 * Iterator to iterate all valid T of a pool
+	 * @tparam T Type of the class/struct that is going to be iterated
+	 */
+	template <class T>
+	struct PoolIterator {
+		typedef T value_type;
+		typedef T* pointer;
+		typedef T& reference;
+		typedef size_t difference_type;
+		typedef std::forward_iterator_tag iterator_category;
+
+		explicit PoolIterator(size_t index, std::function<bool(size_t)> filter = nullptr) : index(index), filter(filter)
+		{
+			if (this->filter == nullptr) this->filter = [](size_t) { return true; };
+			this->ValidateIndex();
+		};
+
+		bool operator!=(const PoolIterator &other) const { return this->index != other.index; }
+		T * operator*() const { return T::Get(this->index); }
+		PoolIterator & operator++() { this->index++; this->ValidateIndex(); return *this; }
+
+	private:
+		size_t index;
+		std::function<bool(size_t)> filter;
+		void ValidateIndex() { while (this->index < T::GetPoolSize() && !(T::IsValidID(this->index) && this->filter(this->index))) this->index++; }
+	};
+
+	/*
+	 * Iterable ensemble of all valid T
+	 * @tparam T Type of the class/struct that is going to be iterated
+	 */
+	template <class T>
+	struct IterateWrapper {
+		size_t from;
+		std::function<bool(size_t)> filter;
+		IterateWrapper(size_t from = 0, std::function<bool(size_t)> filter = nullptr) : from(from), filter(filter) {}
+		PoolIterator<T> begin() { return PoolIterator<T>(this->from, this->filter); }
+		PoolIterator<T> end() { return PoolIterator<T>(T::GetPoolSize()); }
+	};
+
+	/**
 	 * Base class for all PoolItems
 	 * @tparam Tpool The pool this item is going to be part of
 	 */
 	template <struct Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tpool_type, Tcache, Tzero> *Tpool>
 	struct PoolItem {
 		Tindex index; ///< Index of this pool item
+
+		/** Type of the pool this item is going to be part of */
+		typedef struct Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tpool_type, Tcache, Tzero> Pool;
 
 		/**
 		 * Allocates space for new Titem
@@ -284,6 +329,13 @@ struct Pool : PoolBase {
 		 * @note it's called only when !CleaningPool()
 		 */
 		static inline void PostDestructor(size_t index) { }
+
+		/**
+		 * Returns an iterable ensemble of all valid Titem
+		 * @param from index of the first Titem to consider
+		 * @return an iterable ensemble of all valid Titem
+		 */
+		static Pool::IterateWrapper<Titem> Iterate(size_t from = 0) { return Pool::IterateWrapper<Titem>(from); }
 	};
 
 private:
