@@ -124,8 +124,7 @@ class ReplaceVehicleWindow : public Window {
 		GUIEngineList *list = &this->engines[side];
 		list->clear();
 
-		const Engine *e;
-		FOR_ALL_ENGINES_OF_TYPE(e, type) {
+		for (const Engine *e : Engine::IterateType(type)) {
 			if (!draw_left && !this->show_hidden_engines && e->IsHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			switch (type) {

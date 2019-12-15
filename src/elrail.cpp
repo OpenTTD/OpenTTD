@@ -599,8 +599,7 @@ bool SettingsDisableElrail(int32 p1)
 	const RailType new_railtype = disable ? RAILTYPE_RAIL : RAILTYPE_ELECTRIC;
 
 	/* walk through all train engines */
-	Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+	for (Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		RailVehicleInfo *rv_info = &e->u.rail;
 		/* if it is an electric rail engine and its railtype is the wrong one */
 		if (rv_info->engclass == 2 && rv_info->railtype == old_railtype) {

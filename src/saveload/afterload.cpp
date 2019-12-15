@@ -1413,7 +1413,6 @@ bool AfterLoadGame()
 	/* Time starts at 0 instead of 1920.
 	 * Account for this in older games by adding an offset */
 	if (IsSavegameVersionBefore(SLV_31)) {
-		Engine *e;
 		Industry *i;
 		Vehicle *v;
 
@@ -1422,7 +1421,7 @@ bool AfterLoadGame()
 
 		for (Station *st : Station::Iterate())   st->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
 		for (Waypoint *wp : Waypoint::Iterate()) wp->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		FOR_ALL_ENGINES(e)    e->intro_date       += DAYS_TILL_ORIGINAL_BASE_YEAR;
+		for (Engine *e : Engine::Iterate())      e->intro_date       += DAYS_TILL_ORIGINAL_BASE_YEAR;
 		for (Company *c : Company::Iterate()) c->inaugurated_year += ORIGINAL_BASE_YEAR;
 		FOR_ALL_INDUSTRIES(i) i->last_prod_year   += ORIGINAL_BASE_YEAR;
 
@@ -2044,8 +2043,7 @@ bool AfterLoadGame()
 			if (c->bankrupt_asked == 0xFF) c->bankrupt_asked = 0xFFFF;
 		}
 
-		Engine *e;
-		FOR_ALL_ENGINES(e) {
+		for (Engine *e : Engine::Iterate()) {
 			if (e->company_avail == 0xFF) e->company_avail = 0xFFFF;
 		}
 

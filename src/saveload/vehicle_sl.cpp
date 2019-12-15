@@ -215,11 +215,10 @@ static void CheckValidVehicles()
 	size_t total_engines = Engine::GetPoolSize();
 	EngineID first_engine[4] = { INVALID_ENGINE, INVALID_ENGINE, INVALID_ENGINE, INVALID_ENGINE };
 
-	Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) { first_engine[VEH_TRAIN] = e->index; break; }
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) { first_engine[VEH_ROAD] = e->index; break; }
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_SHIP) { first_engine[VEH_SHIP] = e->index; break; }
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_AIRCRAFT) { first_engine[VEH_AIRCRAFT] = e->index; break; }
+	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) { first_engine[VEH_TRAIN] = e->index; break; }
+	for (const Engine *e : Engine::IterateType(VEH_ROAD)) { first_engine[VEH_ROAD] = e->index; break; }
+	for (const Engine *e : Engine::IterateType(VEH_SHIP)) { first_engine[VEH_SHIP] = e->index; break; }
+	for (const Engine *e : Engine::IterateType(VEH_AIRCRAFT)) { first_engine[VEH_AIRCRAFT] = e->index; break; }
 
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {

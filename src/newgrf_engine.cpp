@@ -1236,8 +1236,7 @@ void CommitVehicleListOrderChanges()
 {
 	/* Pre-sort engines by scope-grfid and local index */
 	std::vector<EngineID> ordering;
-	Engine *e;
-	FOR_ALL_ENGINES(e) {
+	for (const Engine *e : Engine::Iterate()) {
 		ordering.push_back(e->index);
 	}
 	std::sort(ordering.begin(), ordering.end(), EnginePreSort);

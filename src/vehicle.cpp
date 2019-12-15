@@ -1779,8 +1779,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type, byte subtype)
 	/* We can build vehicle infrastructure when we may build the vehicle type */
 	if (max > 0) {
 		/* Can we actually build the vehicle type? */
-		const Engine *e;
-		FOR_ALL_ENGINES_OF_TYPE(e, type) {
+		for (const Engine *e : Engine::IterateType(type)) {
 			if (type == VEH_ROAD && GetRoadTramType(e->u.road.roadtype) != (RoadTramType)subtype) continue;
 			if (HasBit(e->company_avail, _local_company)) return true;
 		}
