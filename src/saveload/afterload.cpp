@@ -266,8 +266,7 @@ static void InitializeWindowsAndCaches()
 			i->psa->tile = i->location.tile;
 		}
 	}
-	Station *s;
-	FOR_ALL_STATIONS(s) {
+	for (Station *s : Station::Iterate()) {
 		if (s->airport.psa != nullptr) {
 			s->airport.psa->feature = GSF_AIRPORTS;
 			s->airport.psa->tile = s->airport.tile;
@@ -587,14 +586,13 @@ bool AfterLoadGame()
 	 * recompute the width and height. Doing this unconditionally for all old
 	 * savegames simplifies the code. */
 	if (IsSavegameVersionBefore(SLV_2)) {
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			st->train_station.w = st->train_station.h = 0;
 		}
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (!IsTileType(t, MP_STATION)) continue;
 			if (_m[t].m5 > 7) continue; // is it a rail station tile?
-			st = Station::Get(_m[t].m2);
+			Station *st = Station::Get(_m[t].m2);
 			assert(st->train_station.tile != 0);
 			int dx = TileX(t) - TileX(st->train_station.tile);
 			int dy = TileY(t) - TileY(st->train_station.tile);
@@ -650,8 +648,7 @@ bool AfterLoadGame()
 			if (c->president_name != nullptr) c->president_name_1 = SPECSTR_PRESIDENT_NAME;
 		}
 
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			st->name = CopyFromOldName(st->string_id);
 			/* generating new name would be too much work for little effect, use the station name fallback */
 			if (st->name != nullptr) st->string_id = STR_SV_STNAME_FALLBACK;
@@ -669,8 +666,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_106)) {
 		/* no station is determined by 'tile == INVALID_TILE' now (instead of '0') */
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			if (st->airport.tile       == 0) st->airport.tile = INVALID_TILE;
 			if (st->train_station.tile == 0) st->train_station.tile   = INVALID_TILE;
 		}
@@ -784,8 +780,7 @@ bool AfterLoadGame()
 	 * here as AfterLoadVehicles can check it indirectly via the newgrf
 	 * code. */
 	if (IsSavegameVersionBefore(SLV_139)) {
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			if (st->airport.tile != INVALID_TILE && st->airport.type == 15) {
 				st->airport.type = AT_OILRIG;
 			}
@@ -1398,8 +1393,7 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_26)) {
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			st->last_vehicle_type = VEH_INVALID;
 		}
 	}
@@ -1420,8 +1414,6 @@ bool AfterLoadGame()
 	/* Time starts at 0 instead of 1920.
 	 * Account for this in older games by adding an offset */
 	if (IsSavegameVersionBefore(SLV_31)) {
-		Station *st;
-		Waypoint *wp;
 		Engine *e;
 		Industry *i;
 		Vehicle *v;
@@ -1429,8 +1421,8 @@ bool AfterLoadGame()
 		_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
 		_cur_year += ORIGINAL_BASE_YEAR;
 
-		FOR_ALL_STATIONS(st)  st->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		FOR_ALL_WAYPOINTS(wp) wp->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
+		for (Station *st : Station::Iterate())   st->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
+		for (Waypoint *wp : Waypoint::Iterate()) wp->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
 		FOR_ALL_ENGINES(e)    e->intro_date       += DAYS_TILL_ORIGINAL_BASE_YEAR;
 		for (Company *c : Company::Iterate()) c->inaugurated_year += ORIGINAL_BASE_YEAR;
 		FOR_ALL_INDUSTRIES(i) i->last_prod_year   += ORIGINAL_BASE_YEAR;
@@ -1565,8 +1557,7 @@ bool AfterLoadGame()
 	/* Buoys do now store the owner of the previous water tile, which can never
 	 * be OWNER_NONE. So replace OWNER_NONE with OWNER_WATER. */
 	if (IsSavegameVersionBefore(SLV_46)) {
-		Waypoint *wp;
-		FOR_ALL_WAYPOINTS(wp) {
+		for (Waypoint *wp : Waypoint::Iterate()) {
 			if ((wp->facilities & FACIL_DOCK) != 0 && IsTileOwner(wp->xy, OWNER_NONE) && TileHeight(wp->xy) == 0) SetTileOwner(wp->xy, OWNER_WATER);
 		}
 	}
@@ -1624,8 +1615,7 @@ bool AfterLoadGame()
 	} else if (IsSavegameVersionBefore(SLV_59)) {
 		/* For some reason non-loading vehicles could be in the station's loading vehicle list */
 
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			std::list<Vehicle *>::iterator iter;
 			for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end();) {
 				Vehicle *v = *iter;
@@ -1704,8 +1694,7 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_74)) {
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			for (CargoID c = 0; c < NUM_CARGO; c++) {
 				st->goods[c].last_speed = 0;
 				if (st->goods[c].cargo.AvailableCount() != 0) SetBit(st->goods[c].status, GoodsEntry::GES_RATING);
@@ -2037,8 +2026,7 @@ bool AfterLoadGame()
 
 		/* Station can get named based on an industry type, but the current ones
 		 * are not, so mark them as if they are not named by an industry. */
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			st->indtype = IT_INVALID;
 		}
 	}
@@ -2174,8 +2162,7 @@ bool AfterLoadGame()
 		/* There could be (deleted) stations with invalid owner, set owner to OWNER NONE.
 		 * The conversion affects oil rigs and buoys too, but it doesn't matter as
 		 * they have st->owner == OWNER_NONE already. */
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			if (!Company::IsValidID(st->owner)) st->owner = OWNER_NONE;
 		}
 	}
@@ -2213,8 +2200,7 @@ bool AfterLoadGame()
 		 * However, some 0.7 versions might have cargo payment. For those we just
 		 * add cargopayment for the vehicles that don't have it.
 		 */
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			std::list<Vehicle *>::iterator iter;
 			for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end(); ++iter) {
 				/* There are always as many CargoPayments as Vehicles. We need to make the
@@ -2252,8 +2238,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_124) && !IsSavegameVersionBefore(SLV_1)) {
 		/* The train station tile area was added, but for really old (TTDPatch) it's already valid. */
-		Waypoint *wp;
-		FOR_ALL_WAYPOINTS(wp) {
+		for (Waypoint *wp : Waypoint::Iterate()) {
 			if (wp->facilities & FACIL_TRAIN) {
 				wp->train_station.tile = wp->xy;
 				wp->train_station.w = 1;
@@ -2443,8 +2428,7 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_140)) {
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			if (st->airport.tile != INVALID_TILE) {
 				st->airport.w = st->airport.GetSpec()->size_x;
 				st->airport.h = st->airport.GetSpec()->size_y;
@@ -2548,12 +2532,11 @@ bool AfterLoadGame()
 		 * renumber those. First set all affected waypoints to the
 		 * highest possible number to get them numbered in the
 		 * order they have in the pool. */
-		Waypoint *wp;
-		FOR_ALL_WAYPOINTS(wp) {
+		for (Waypoint *wp : Waypoint::Iterate()) {
 			if (wp->name != nullptr) wp->town_cn = UINT16_MAX;
 		}
 
-		FOR_ALL_WAYPOINTS(wp) {
+		for (Waypoint* wp : Waypoint::Iterate()) {
 			if (wp->name != nullptr) MakeDefaultName(wp);
 		}
 	}
@@ -2806,8 +2789,7 @@ bool AfterLoadGame()
 		}
 
 		if (!IsSavegameVersionBefore(SLV_145)) {
-			Station *st;
-			FOR_ALL_STATIONS(st) {
+			for (Station *st : Station::Iterate()) {
 				if (!(st->facilities & FACIL_AIRPORT)) continue;
 				assert(st->airport.psa != nullptr);
 
@@ -3142,8 +3124,7 @@ bool AfterLoadGame()
 		_settings_game.station.serve_neutral_industries = true;
 
 		/* Link oil rigs to their industry and back. */
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			if (IsTileType(st->xy, MP_STATION) && IsOilRig(st->xy)) {
 				/* Industry tile is always adjacent during construction by TileDiffXY(0, 1) */
 				st->industry = Industry::GetByTile(st->xy + TileDiffXY(0, 1));
@@ -3178,8 +3159,7 @@ bool AfterLoadGame()
 		}
 
 		/* Scan for docking tiles */
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			if (st->ship_station.tile != INVALID_TILE) UpdateStationDockingTiles(st);
 		}
 	}
@@ -3189,8 +3169,7 @@ bool AfterLoadGame()
 
 	/* Station acceptance is some kind of cache */
 	if (IsSavegameVersionBefore(SLV_127)) {
-		Station *st;
-		FOR_ALL_STATIONS(st) UpdateStationAcceptance(st, false);
+		for (Station *st : Station::Iterate()) UpdateStationAcceptance(st, false);
 	}
 
 	/* Road stops is 'only' updating some caches */

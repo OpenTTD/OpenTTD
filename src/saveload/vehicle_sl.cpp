@@ -165,8 +165,7 @@ void ConvertOldMultiheadToNew()
 void UpdateOldAircraft()
 {
 	/* set airport_flags to 0 for all airports just to be sure */
-	Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (Station *st : Station::Iterate()) {
 		st->airport.flags = 0; // reset airport
 	}
 

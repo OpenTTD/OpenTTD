@@ -251,8 +251,7 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 	bool indtypes[NUM_INDUSTRYTYPES];
 	memset(indtypes, 0, sizeof(indtypes));
 
-	const Station *s;
-	FOR_ALL_STATIONS(s) {
+	for (const Station *s : Station::Iterate()) {
 		if (s != st && s->town == t) {
 			if (s->indtype != IT_INVALID) {
 				indtypes[s->indtype] = true;
@@ -449,9 +448,7 @@ void Station::MoveSign(TileIndex new_xy)
 /** Update the virtual coords needed to draw the station sign for all stations. */
 void UpdateAllStationVirtCoords()
 {
-	BaseStation *st;
-
-	FOR_ALL_BASE_STATIONS(st) {
+	for (BaseStation *st : BaseStation::Iterate()) {
 		st->UpdateVirtCoord();
 	}
 }
@@ -2212,11 +2209,10 @@ Town *AirportGetNearestTown(const AirportSpec *as, const TileIterator &it, uint 
 void UpdateAirportsNoise()
 {
 	Town *t;
-	const Station *st;
 
 	FOR_ALL_TOWNS(t) t->noise_reached = 0;
 
-	FOR_ALL_STATIONS(st) {
+	for (const Station *st : Station::Iterate()) {
 		if (st->airport.tile != INVALID_TILE && st->airport.type != AT_OILRIG) {
 			const AirportSpec *as = st->airport.GetSpec();
 			AirportTileIterator it(st);
@@ -2293,8 +2289,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	} else {
 		Town *t = ClosestTownFromTile(tile, UINT_MAX);
 		uint num = 0;
-		const Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (const Station *st : Station::Iterate()) {
 			if (st->town == t && (st->facilities & FACIL_AIRPORT) && st->airport.type != AT_OILRIG) num++;
 		}
 		if (num >= 2) {
@@ -3824,8 +3819,7 @@ void OnTick_Station()
 {
 	if (_game_mode == GM_EDITOR) return;
 
-	BaseStation *st;
-	FOR_ALL_BASE_STATIONS(st) {
+	for (BaseStation *st : BaseStation::Iterate()) {
 		StationHandleSmallTick(st);
 
 		/* Clean up the link graph about once a week. */
@@ -3848,9 +3842,7 @@ void OnTick_Station()
 /** Monthly loop for stations. */
 void StationMonthlyLoop()
 {
-	Station *st;
-
-	FOR_ALL_STATIONS(st) {
+	for (Station *st : Station::Iterate()) {
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			GoodsEntry *ge = &st->goods[i];
 			SB(ge->status, GoodsEntry::GES_LAST_MONTH, 1, GB(ge->status, GoodsEntry::GES_CURRENT_MONTH, 1));
@@ -3922,9 +3914,7 @@ static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceT
 
 static bool IsUniqueStationName(const char *name)
 {
-	const Station *st;
-
-	FOR_ALL_STATIONS(st) {
+	for (const Station *st : Station::Iterate()) {
 		if (st->name != nullptr && strcmp(st->name, name) == 0) return false;
 	}
 

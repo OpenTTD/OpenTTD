@@ -112,10 +112,9 @@ Money CalculateCompanyValue(const Company *c, bool including_loan)
 {
 	Owner owner = c->index;
 
-	Station *st;
 	uint num = 0;
 
-	FOR_ALL_STATIONS(st) {
+	for (const Station *st : Station::Iterate()) {
 		if (st->owner == owner) num += CountBits((byte)st->facilities);
 	}
 
@@ -188,9 +187,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 	/* Count stations */
 	{
 		uint num = 0;
-		const Station *st;
-
-		FOR_ALL_STATIONS(st) {
+		for (const Station *st : Station::Iterate()) {
 			/* Only count stations that are actually serviced */
 			if (st->owner == owner && (st->time_since_load <= 20 || st->time_since_unload <= 20)) num += CountBits((byte)st->facilities);
 		}
@@ -514,8 +511,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.airport += Company::Get(old_owner)->infrastructure.airport;
 
 	/* convert owner of stations (including deleted ones, but excluding buoys) */
-	Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (Station *st : Station::Iterate()) {
 		if (st->owner == old_owner) {
 			/* if a company goes bankrupt, set owner to OWNER_NONE so the sign doesn't disappear immediately
 			 * also, drawing station window would cause reading invalid company's colour */
@@ -524,8 +520,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	}
 
 	/* do the same for waypoints (we need to do this here so deleted waypoints are converted too) */
-	Waypoint *wp;
-	FOR_ALL_WAYPOINTS(wp) {
+	for (Waypoint *wp : Waypoint::Iterate()) {
 		if (wp->owner == old_owner) {
 			wp->owner = new_owner == INVALID_OWNER ? OWNER_NONE : new_owner;
 		}
@@ -663,8 +658,7 @@ static void CompaniesGenStatistics()
 	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 
 	if (!_settings_game.economy.infrastructure_maintenance) {
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (const Station *st : Station::Iterate()) {
 			cur_company.Change(st->owner);
 			CommandCost cost(EXPENSES_PROPERTY, _price[PR_STATION_VALUE] >> 1);
 			SubtractMoneyFromCompany(cost);

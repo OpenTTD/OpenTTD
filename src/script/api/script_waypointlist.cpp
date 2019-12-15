@@ -17,8 +17,7 @@
 
 ScriptWaypointList::ScriptWaypointList(ScriptWaypoint::WaypointType waypoint_type)
 {
-	const Waypoint *wp;
-	FOR_ALL_WAYPOINTS(wp) {
+	for (const Waypoint *wp : Waypoint::Iterate()) {
 		if ((wp->facilities & waypoint_type) &&
 				(wp->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY || wp->owner == OWNER_NONE)) this->AddItem(wp->index);
 	}

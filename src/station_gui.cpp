@@ -229,8 +229,7 @@ protected:
 
 		this->stations.clear();
 
-		const Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (const Station *st : Station::Iterate()) {
 			if (st->owner == owner || (st->owner == OWNER_NONE && HasStationInUse(st->index, true, owner))) {
 				if (this->facilities & st->facilities) { // only stations with selected facilities
 					int num_waiting_cargo = 0;
@@ -2242,8 +2241,7 @@ static const T *FindStationsNearby(TileArea ta, bool distant_join)
 	}
 
 	/* Look for deleted stations */
-	const BaseStation *st;
-	FOR_ALL_BASE_STATIONS(st) {
+	for (const BaseStation *st : BaseStation::Iterate()) {
 		if (T::IsExpected(st) && !st->IsInUse() && st->owner == _local_company) {
 			/* Include only within station spread (yes, it is strictly less than) */
 			if (max(DistanceMax(ta.tile, st->xy), DistanceMax(TILE_ADDXY(ta.tile, ta.w - 1, ta.h - 1), st->xy)) < _settings_game.station.station_spread) {

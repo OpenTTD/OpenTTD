@@ -70,10 +70,10 @@ void Waypoint::MoveSign(TileIndex new_xy)
  */
 static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile, StringID str, CompanyID cid)
 {
-	Waypoint *wp, *best = nullptr;
+	Waypoint *best = nullptr;
 	uint thres = 8;
 
-	FOR_ALL_WAYPOINTS(wp) {
+	for (Waypoint *wp : Waypoint::Iterate()) {
 		if (!wp->IsInUse() && wp->string_id == str && wp->owner == cid) {
 			uint cur_dist = DistanceManhattan(tile, wp->xy);
 
@@ -397,9 +397,7 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
  */
 static bool IsUniqueWaypointName(const char *name)
 {
-	const Waypoint *wp;
-
-	FOR_ALL_WAYPOINTS(wp) {
+	for (const Waypoint *wp : Waypoint::Iterate()) {
 		if (wp->name != nullptr && strcmp(wp->name, name) == 0) return false;
 	}
 

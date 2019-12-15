@@ -67,10 +67,4 @@ struct Waypoint FINAL : SpecializedStation<Waypoint, true> {
 	}
 };
 
-/**
- * Iterate over all waypoints.
- * @param var The variable used for iteration.
- */
-#define FOR_ALL_WAYPOINTS(var) FOR_ALL_BASE_STATIONS_OF_TYPE(Waypoint, var)
-
 #endif /* WAYPOINT_BASE_H */

@@ -2872,8 +2872,7 @@ CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	if (t == nullptr) return CMD_ERROR;
 
 	/* Stations refer to towns. */
-	const Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (const Station *st : Station::Iterate()) {
 		if (st->town == t) {
 			/* Non-oil rig stations are always a problem. */
 			if (!(st->facilities & FACIL_AIRPORT) || st->airport.type != AT_OILRIG) return CMD_ERROR;
@@ -3159,8 +3158,7 @@ static CommandCost TownActionBribe(Town *t, DoCommandFlag flags)
 			t->unwanted[_current_company] = 6;
 
 			/* set all close by station ratings to 0 */
-			Station *st;
-			FOR_ALL_STATIONS(st) {
+			for (Station *st : Station::Iterate()) {
 				if (st->town == t && st->owner == _current_company) {
 					for (CargoID i = 0; i < NUM_CARGO; i++) st->goods[i].rating = 0;
 				}

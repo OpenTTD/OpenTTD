@@ -1547,7 +1547,6 @@ void NetworkSocketHandler::SendCompanyInformation(Packet *p, const Company *c, c
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 {
 	const Vehicle *v;
-	const Station *s;
 
 	memset(stats, 0, sizeof(*stats) * MAX_COMPANIES);
 
@@ -1566,7 +1565,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 	}
 
 	/* Go through all stations and count the types of stations */
-	FOR_ALL_STATIONS(s) {
+	for (const Station *s : Station::Iterate()) {
 		if (Company::IsValidID(s->owner)) {
 			NetworkCompanyStats *npi = &stats[s->owner];
 

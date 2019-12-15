@@ -947,8 +947,7 @@ void CallVehicleTicks()
 
 	{
 		PerformanceMeasurer framerate(PFE_GL_ECONOMY);
-		Station *st;
-		FOR_ALL_STATIONS(st) LoadUnloadStation(st);
+		for (Station *st : Station::Iterate()) LoadUnloadStation(st);
 	}
 	PerformanceAccumulator::Reset(PFE_GL_TRAINS);
 	PerformanceAccumulator::Reset(PFE_GL_ROADVEHS);

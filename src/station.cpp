@@ -42,8 +42,7 @@ StationKdtree _station_kdtree(Kdtree_StationXYFunc);
 void RebuildStationKdtree()
 {
 	std::vector<StationID> stids;
-	BaseStation *st;
-	FOR_ALL_STATIONS(st) {
+	for (const Station *st : Station::Iterate()) {
 		stids.push_back(st->index);
 	}
 	_station_kdtree.Build(stids.begin(), stids.end());
@@ -480,8 +479,7 @@ void Station::RecomputeCatchment()
  */
 /* static */ void Station::RecomputeCatchmentForAll()
 {
-	Station *st;
-	FOR_ALL_STATIONS(st) { st->RecomputeCatchment(); }
+	for (Station *st : Station::Iterate()) { st->RecomputeCatchment(); }
 }
 
 /************************************************************************/
@@ -660,8 +658,7 @@ Money AirportMaintenanceCost(Owner owner)
 {
 	Money total_cost = 0;
 
-	const Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (const Station *st : Station::Iterate()) {
 		if (st->owner == owner && (st->facilities & FACIL_AIRPORT)) {
 			total_cost += _price[PR_INFRASTRUCTURE_AIRPORT] * st->airport.GetSpec()->maintenance_cost;
 		}
