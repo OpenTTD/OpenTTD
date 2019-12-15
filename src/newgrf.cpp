@@ -8555,8 +8555,7 @@ void ResetNewGRFData()
 	_gted = CallocT<GRFTempEngineData>(Engine::GetPoolSize());
 
 	/* Fill rail type label temporary data for default trains */
-	Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		_gted[e->index].railtypelabel = GetRailTypeInfo(e->u.rail.railtype)->label;
 	}
 
@@ -8772,9 +8771,7 @@ static const CargoLabel * const _default_refitmasks[] = {
  */
 static void CalculateRefitMasks()
 {
-	Engine *e;
-
-	FOR_ALL_ENGINES(e) {
+	for (Engine *e : Engine::Iterate()) {
 		EngineID engine = e->index;
 		EngineInfo *ei = &e->info;
 		bool only_defaultcargo; ///< Set if the vehicle shall carry only the default cargo
@@ -8888,9 +8885,7 @@ static void FinaliseCanals()
 /** Check for invalid engines */
 static void FinaliseEngineArray()
 {
-	Engine *e;
-
-	FOR_ALL_ENGINES(e) {
+	for (Engine *e : Engine::Iterate()) {
 		if (e->GetGRF() == nullptr) {
 			const EngineIDMapping &eid = _engine_mngr[e->index];
 			if (eid.grfid != INVALID_GRFID || eid.internal_id != eid.substitute_id) {
@@ -9684,8 +9679,7 @@ static void AfterLoadGRFs()
 	InitRailTypes();
 	InitRoadTypes();
 
-	Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+	for (Engine *e : Engine::IterateType(VEH_ROAD)) {
 		if (_gted[e->index].rv_max_speed != 0) {
 			/* Set RV maximum speed from the mph/0.8 unit value */
 			e->u.road.max_speed = _gted[e->index].rv_max_speed * 4;
@@ -9717,7 +9711,7 @@ static void AfterLoadGRFs()
 		e->info.climates = 0;
 	}
 
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+	for (Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		RailType railtype = GetRailTypeByLabel(_gted[e->index].railtypelabel);
 		if (railtype == INVALID_RAILTYPE) {
 			/* Rail type is not available, so disable this engine */

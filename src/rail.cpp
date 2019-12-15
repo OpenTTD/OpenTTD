@@ -267,8 +267,7 @@ RailTypes GetCompanyRailtypes(CompanyID company, bool introduces)
 {
 	RailTypes rts = RAILTYPES_NONE;
 
-	const Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
@@ -299,8 +298,7 @@ RailTypes GetRailTypes(bool introduces)
 {
 	RailTypes rts = RAILTYPES_NONE;
 
-	const Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		const EngineInfo *ei = &e->info;
 		if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) continue;
 

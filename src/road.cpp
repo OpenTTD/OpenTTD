@@ -189,8 +189,7 @@ RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces)
 {
 	RoadTypes rts = ROADTYPES_NONE;
 
-	const Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+	for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
 		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
@@ -218,8 +217,7 @@ RoadTypes GetRoadTypes(bool introduces)
 {
 	RoadTypes rts = ROADTYPES_NONE;
 
-	const Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+	for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
 		const EngineInfo *ei = &e->info;
 		if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) continue;
 
@@ -282,8 +280,7 @@ RoadTypes ExistingRoadTypes(CompanyID c)
 	RoadTypes known_roadtypes = ROADTYPES_NONE;
 
 	/* Find used roadtypes */
-	Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+	for (Engine *e : Engine::IterateType(VEH_ROAD)) {
 		/* Check if the roadtype can be used in the current climate */
 		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
 
@@ -319,8 +316,7 @@ bool CanBuildRoadTypeInfrastructure(RoadType roadtype, CompanyID company)
 	 * and if we can build new ones */
 	if (_settings_game.vehicle.max_roadveh > 0 && HasBit(roadtypes, roadtype)) {
 		/* Can we actually build the vehicle type? */
-		const Engine *e;
-		FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+		for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
 			if (!HasBit(e->company_avail, company)) continue;
 			if (HasPowerOnRoad(e->u.road.roadtype, roadtype) || HasPowerOnRoad(roadtype, e->u.road.roadtype)) return true;
 		}

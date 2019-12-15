@@ -141,6 +141,17 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	}
 
 	uint32 GetGRFID() const;
+
+	/**
+	 * Returns an iterable ensemble of all valid engines of the given type
+	 * @param vt the VehicleType for engines to be valid
+	 * @param from index of the first engine to consider
+	 * @return an iterable ensemble of all valid engines of the given type
+	 */
+	static Pool::IterateWrapper<Engine> IterateType(VehicleType vt, size_t from = 0)
+	{
+		return Pool::IterateWrapper<Engine>(from, [vt](size_t index) { return Engine::Get(index)->type == vt; });
+	}
 };
 
 struct EngineIDMapping {
@@ -164,11 +175,6 @@ struct EngineOverrideManager : std::vector<EngineIDMapping> {
 };
 
 extern EngineOverrideManager _engine_mngr;
-
-#define FOR_ALL_ENGINES_FROM(var, start) FOR_ALL_ITEMS_FROM(Engine, engine_index, var, start)
-#define FOR_ALL_ENGINES(var) FOR_ALL_ENGINES_FROM(var, 0)
-
-#define FOR_ALL_ENGINES_OF_TYPE(e, engine_type) FOR_ALL_ENGINES(e) if (e->type == engine_type)
 
 static inline const EngineInfo *EngInfo(EngineID e)
 {

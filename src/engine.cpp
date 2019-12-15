@@ -618,8 +618,7 @@ void SetYearEngineAgingStops()
 	/* Determine last engine aging year, default to 2050 as previously. */
 	_year_engine_aging_stops = 2050;
 
-	const Engine *e;
-	FOR_ALL_ENGINES(e) {
+	for (const Engine *e : Engine::Iterate()) {
 		const EngineInfo *ei = &e->info;
 
 		/* Exclude certain engines */
@@ -694,11 +693,10 @@ void StartupOneEngine(Engine *e, Date aging_date)
  */
 void StartupEngines()
 {
-	Engine *e;
 	/* Aging of vehicles stops, so account for that when starting late */
 	const Date aging_date = min(_date, ConvertYMDToDate(_year_engine_aging_stops, 0, 1));
 
-	FOR_ALL_ENGINES(e) {
+	for (Engine *e : Engine::Iterate()) {
 		StartupOneEngine(e, aging_date);
 	}
 
@@ -811,8 +809,7 @@ void EnginesDailyLoop()
 
 	if (_cur_year >= _year_engine_aging_stops) return;
 
-	Engine *e;
-	FOR_ALL_ENGINES(e) {
+	for (Engine *e : Engine::Iterate()) {
 		EngineID i = e->index;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) {
 			if (e->preview_company != INVALID_COMPANY) {
@@ -848,8 +845,7 @@ void EnginesDailyLoop()
  */
 void ClearEnginesHiddenFlagOfCompany(CompanyID cid)
 {
-	Engine *e;
-	FOR_ALL_ENGINES(e) {
+	for (Engine *e : Engine::Iterate()) {
 		SB(e->company_hidden, cid, 1, 0);
 	}
 }
@@ -973,8 +969,7 @@ static void NewVehicleAvailable(Engine *e)
 void EnginesMonthlyLoop()
 {
 	if (_cur_year < _year_engine_aging_stops) {
-		Engine *e;
-		FOR_ALL_ENGINES(e) {
+		for (Engine *e : Engine::Iterate()) {
 			/* Age the vehicle */
 			if ((e->flags & ENGINE_AVAILABLE) && e->age != MAX_DAY) {
 				e->age++;
@@ -1015,9 +1010,7 @@ void EnginesMonthlyLoop()
  */
 static bool IsUniqueEngineName(const char *name)
 {
-	const Engine *e;
-
-	FOR_ALL_ENGINES(e) {
+	for (const Engine *e : Engine::Iterate()) {
 		if (e->name != nullptr && strcmp(e->name, name) == 0) return false;
 	}
 
@@ -1138,10 +1131,9 @@ bool IsEngineRefittable(EngineID engine)
  */
 void CheckEngines()
 {
-	const Engine *e;
 	Date min_date = INT32_MAX;
 
-	FOR_ALL_ENGINES(e) {
+	for (const Engine *e : Engine::Iterate()) {
 		if (!e->IsEnabled()) continue;
 
 		/* We have an available engine... yay! */

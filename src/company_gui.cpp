@@ -1825,8 +1825,7 @@ struct CompanyInfrastructureWindow : Window
 		this->roadtypes = ROADTYPES_NONE;
 
 		/* Find the used railtypes. */
-		Engine *e;
-		FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+		for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 			if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
 
 			this->railtypes |= GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes;
@@ -1836,7 +1835,7 @@ struct CompanyInfrastructureWindow : Window
 		this->railtypes = AddDateIntroducedRailTypes(this->railtypes, MAX_DAY);
 
 		/* Find the used roadtypes. */
-		FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+		for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
 			if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
 
 			this->roadtypes |= GetRoadTypeInfo(e->u.road.roadtype)->introduces_roadtypes;
