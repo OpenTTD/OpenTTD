@@ -822,8 +822,7 @@ bool AfterLoadGame()
 	}
 
 	/* Fix the cache for cargo payments. */
-	CargoPayment *cp;
-	FOR_ALL_CARGO_PAYMENTS(cp) {
+	for (CargoPayment *cp : CargoPayment::Iterate()) {
 		cp->front->cargo_payment = cp;
 		cp->current_station = cp->front->last_station_visited;
 	}
