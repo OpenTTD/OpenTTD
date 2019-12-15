@@ -384,10 +384,9 @@ CommandCost CmdDeleteGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		/* If we set an autoreplace for the group we delete, remove it. */
 		if (_current_company < MAX_COMPANIES) {
 			Company *c;
-			EngineRenew *er;
 
 			c = Company::Get(_current_company);
-			FOR_ALL_ENGINE_RENEWS(er) {
+			for (EngineRenew *er : EngineRenew::Iterate()) {
 				if (er->group_id == g->index) RemoveEngineReplacementForCompany(c, er->from, g->index, flags);
 			}
 		}
