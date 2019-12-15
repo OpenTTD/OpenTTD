@@ -72,8 +72,7 @@ static const SaveLoad _cargopayment_desc[] = {
 
 static void Save_CAPY()
 {
-	CargoPayment *cp;
-	FOR_ALL_CARGO_PAYMENTS(cp) {
+	for (CargoPayment *cp : CargoPayment::Iterate()) {
 		SlSetArrayIndex(cp->index);
 		SlObject(cp, _cargopayment_desc);
 	}
@@ -91,8 +90,7 @@ static void Load_CAPY()
 
 static void Ptrs_CAPY()
 {
-	CargoPayment *cp;
-	FOR_ALL_CARGO_PAYMENTS(cp) {
+	for (CargoPayment *cp : CargoPayment::Iterate()) {
 		SlObject(cp, _cargopayment_desc);
 	}
 }
