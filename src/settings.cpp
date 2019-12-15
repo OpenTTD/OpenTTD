@@ -1233,8 +1233,7 @@ static bool CheckFreeformEdges(int32 p1)
 				return false;
 			}
 		}
-		BaseStation *st;
-		FOR_ALL_BASE_STATIONS(st) {
+		for (const BaseStation *st : BaseStation::Iterate()) {
 			/* Check if there is a non-deleted buoy on the northern border. */
 			if (st->IsInUse() && (TileX(st->xy) == 0 || TileY(st->xy) == 0)) {
 				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_EMPTY, INVALID_STRING_ID, WL_ERROR);

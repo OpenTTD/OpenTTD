@@ -2247,13 +2247,11 @@ void RebuildViewportKdtree()
 	std::vector<ViewportSignKdtreeItem> items;
 	items.reserve(BaseStation::GetNumItems() + Town::GetNumItems() + Sign::GetNumItems());
 
-	const Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (const Station *st : Station::Iterate()) {
 		if (st->sign.kdtree_valid) items.push_back(ViewportSignKdtreeItem::MakeStation(st->index));
 	}
 
-	const Waypoint *wp;
-	FOR_ALL_WAYPOINTS(wp) {
+	for (const Waypoint *wp : Waypoint::Iterate()) {
 		if (wp->sign.kdtree_valid) items.push_back(ViewportSignKdtreeItem::MakeWaypoint(wp->index));
 	}
 

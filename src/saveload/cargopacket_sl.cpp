@@ -42,8 +42,7 @@
 		 * station where the goods came from is already removed, the source
 		 * information is lost. In that case we set it to the position of this
 		 * station */
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			for (CargoID c = 0; c < NUM_CARGO; c++) {
 				GoodsEntry *ge = &st->goods[c];
 
@@ -72,8 +71,7 @@
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) v->cargo.InvalidateCache();
 
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			for (CargoID c = 0; c < NUM_CARGO; c++) st->goods[c].cargo.InvalidateCache();
 		}
 	}

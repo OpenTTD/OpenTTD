@@ -346,8 +346,7 @@
 	}
 
 	int num = 0;
-	const Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (const Station *st : Station::Iterate()) {
 		if (st->town == t && (st->facilities & FACIL_AIRPORT) && st->airport.type != AT_OILRIG) num++;
 	}
 	return max(0, 2 - num);

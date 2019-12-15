@@ -525,8 +525,6 @@ public:
 	void GetTileArea(TileArea *ta, StationType type) const override;
 };
 
-#define FOR_ALL_STATIONS(var) FOR_ALL_BASE_STATIONS_OF_TYPE(Station, var)
-
 /** Iterator to iterate over all tiles belonging to an airport. */
 class AirportTileIterator : public OrthogonalTileIterator {
 private:

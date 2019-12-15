@@ -1313,8 +1313,7 @@ static void CheckCaches()
 		assert(memcmp(&v->cargo, buff, sizeof(VehicleCargoList)) == 0);
 	}
 
-	Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (Station *st : Station::Iterate()) {
 		for (CargoID c = 0; c < NUM_CARGO; c++) {
 			byte buff[sizeof(StationCargoList)];
 			memcpy(buff, &st->goods[c].cargo, sizeof(StationCargoList));

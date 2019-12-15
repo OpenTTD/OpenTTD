@@ -97,8 +97,7 @@ void AfterLoadCompanyStats()
 	for (Company *c : Company::Iterate()) MemSetT(&c->infrastructure, 0);
 
 	/* Collect airport count. */
-	Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (const Station *st : Station::Iterate()) {
 		if ((st->facilities & FACIL_AIRPORT) && Company::IsValidID(st->owner)) {
 			Company::Get(st->owner)->infrastructure.airport++;
 		}

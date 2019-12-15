@@ -57,8 +57,7 @@ void MoveBuoysToWaypoints()
 	}
 
 	/* Now make the stations waypoints */
-	Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (Station *st : Station::Iterate()) {
 		if ((st->had_vehicle_of_type & HVOT_WAYPOINT) == 0) continue;
 
 		StationID index    = st->index;
@@ -109,8 +108,7 @@ void MoveBuoysToWaypoints()
 void AfterLoadStations()
 {
 	/* Update the speclists of all stations to point to the currently loaded custom stations. */
-	BaseStation *st;
-	FOR_ALL_BASE_STATIONS(st) {
+	for (BaseStation *st : BaseStation::Iterate()) {
 		for (uint i = 0; i < st->num_specs; i++) {
 			if (st->speclist[i].grfid == 0) continue;
 
@@ -376,8 +374,7 @@ static void Ptrs_STNS()
 	if (!IsSavegameVersionBefore(SLV_123)) return;
 
 	uint num_cargo = IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
-	Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (Station *st : Station::Iterate()) {
 		if (!IsSavegameVersionBefore(SLV_68)) {
 			for (CargoID i = 0; i < num_cargo; i++) {
 				GoodsEntry *ge = &st->goods[i];
@@ -514,9 +511,8 @@ static void RealSave_STNN(BaseStation *bst)
 
 static void Save_STNN()
 {
-	BaseStation *st;
 	/* Write the stations */
-	FOR_ALL_BASE_STATIONS(st) {
+	for (BaseStation *st : BaseStation::Iterate()) {
 		SlSetArrayIndex(st->index);
 		SlAutolength((AutolengthProc*)RealSave_STNN, st);
 	}
@@ -588,8 +584,7 @@ static void Ptrs_STNN()
 	if (IsSavegameVersionBefore(SLV_123)) return;
 
 	uint num_cargo = IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
-	Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (Station *st : Station::Iterate()) {
 		for (CargoID i = 0; i < num_cargo; i++) {
 			GoodsEntry *ge = &st->goods[i];
 			if (IsSavegameVersionBefore(SLV_183)) {
@@ -606,8 +601,7 @@ static void Ptrs_STNN()
 		SlObject(st, _station_desc);
 	}
 
-	Waypoint *wp;
-	FOR_ALL_WAYPOINTS(wp) {
+	for (Waypoint *wp : Waypoint::Iterate()) {
 		SlObject(wp, _waypoint_desc);
 	}
 }
