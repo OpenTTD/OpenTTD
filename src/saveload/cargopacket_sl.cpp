@@ -58,8 +58,7 @@
 
 	if (IsSavegameVersionBefore(SLV_120)) {
 		/* CargoPacket's source should be either INVALID_STATION or a valid station */
-		CargoPacket *cp;
-		FOR_ALL_CARGOPACKETS(cp) {
+		for (CargoPacket *cp : CargoPacket::Iterate()) {
 			if (!Station::IsValidID(cp->source)) cp->source = INVALID_STATION;
 		}
 	}
@@ -112,9 +111,7 @@ const SaveLoad *GetCargoPacketDesc()
  */
 static void Save_CAPA()
 {
-	CargoPacket *cp;
-
-	FOR_ALL_CARGOPACKETS(cp) {
+	for (CargoPacket *cp : CargoPacket::Iterate()) {
 		SlSetArrayIndex(cp->index);
 		SlObject(cp, GetCargoPacketDesc());
 	}

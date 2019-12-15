@@ -193,19 +193,6 @@ public:
 };
 
 /**
- * Iterate over all _valid_ cargo packets from the given start.
- * @param var   Variable used as "iterator".
- * @param start Cargo packet ID of the first packet to iterate over.
- */
-#define FOR_ALL_CARGOPACKETS_FROM(var, start) FOR_ALL_ITEMS_FROM(CargoPacket, cargopacket_index, var, start)
-
-/**
- * Iterate over all _valid_ cargo packets from the begin of the pool.
- * @param var   Variable used as "iterator".
- */
-#define FOR_ALL_CARGOPACKETS(var) FOR_ALL_CARGOPACKETS_FROM(var, 0)
-
-/**
  * Simple collection class for a list of cargo packets.
  * @tparam Tinst Actual instantiation of this cargo list.
  */
