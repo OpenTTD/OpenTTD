@@ -28,9 +28,7 @@
  */
 static bool IsUniqueDepotName(const char *name)
 {
-	const Depot *d;
-
-	FOR_ALL_DEPOTS(d) {
+	for (const Depot *d : Depot::Iterate()) {
 		if (d->name != nullptr && strcmp(d->name, name) == 0) return false;
 	}
 

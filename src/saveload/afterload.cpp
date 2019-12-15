@@ -2330,8 +2330,7 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_128)) {
-		const Depot *d;
-		FOR_ALL_DEPOTS(d) {
+		for (const Depot *d : Depot::Iterate()) {
 			/* At some point, invalid depots were saved into the game (possibly those removed in the past?)
 			 * Remove them here, so they don't cause issues further down the line */
 			if (!IsDepotTile(d->xy)) {
@@ -2445,15 +2444,13 @@ bool AfterLoadGame()
 		/* We need to properly number/name the depots.
 		 * The first step is making sure none of the depots uses the
 		 * 'default' names, after that we can assign the names. */
-		Depot *d;
-		FOR_ALL_DEPOTS(d) d->town_cn = UINT16_MAX;
+		for (Depot *d : Depot::Iterate()) d->town_cn = UINT16_MAX;
 
-		FOR_ALL_DEPOTS(d) MakeDefaultName(d);
+		for (Depot* d : Depot::Iterate()) MakeDefaultName(d);
 	}
 
 	if (IsSavegameVersionBefore(SLV_142)) {
-		Depot *d;
-		FOR_ALL_DEPOTS(d) d->build_date = _date;
+		for (Depot *d : Depot::Iterate()) d->build_date = _date;
 	}
 
 	/* In old versions it was possible to remove an airport while a plane was

@@ -2883,8 +2883,7 @@ CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	}
 
 	/* Depots refer to towns. */
-	const Depot *d;
-	FOR_ALL_DEPOTS(d) {
+	for (const Depot *d : Depot::Iterate()) {
 		if (d->town == t) return CMD_ERROR;
 	}
 
