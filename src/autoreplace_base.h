@@ -41,7 +41,4 @@ struct EngineRenew : EngineRenewPool::PoolItem<&_enginerenew_pool> {
 	~EngineRenew() {}
 };
 
-#define FOR_ALL_ENGINE_RENEWS_FROM(var, start) FOR_ALL_ITEMS_FROM(EngineRenew, enginerenew_index, var, start)
-#define FOR_ALL_ENGINE_RENEWS(var) FOR_ALL_ENGINE_RENEWS_FROM(var, 0)
-
 #endif /* AUTOREPLACE_BASE_H */
