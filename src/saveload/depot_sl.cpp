@@ -30,9 +30,7 @@ static const SaveLoad _depot_desc[] = {
 
 static void Save_DEPT()
 {
-	Depot *depot;
-
-	FOR_ALL_DEPOTS(depot) {
+	for (Depot *depot : Depot::Iterate()) {
 		SlSetArrayIndex(depot->index);
 		SlObject(depot, _depot_desc);
 	}
@@ -53,9 +51,7 @@ static void Load_DEPT()
 
 static void Ptrs_DEPT()
 {
-	Depot *depot;
-
-	FOR_ALL_DEPOTS(depot) {
+	for (Depot *depot : Depot::Iterate()) {
 		SlObject(depot, _depot_desc);
 		if (IsSavegameVersionBefore(SLV_141)) depot->town = Town::Get((size_t)depot->town);
 	}

@@ -144,7 +144,6 @@ void Ship::GetImage(Direction direction, EngineImageType image_type, VehicleSpri
 static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
 {
 	/* Find the closest depot */
-	const Depot *depot;
 	const Depot *best_depot = nullptr;
 	/* If we don't have a maximum distance, i.e. distance = 0,
 	 * we want to find any depot so the best distance of no
@@ -153,7 +152,7 @@ static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
 	 * further away than max_distance can safely be ignored. */
 	uint best_dist = max_distance == 0 ? UINT_MAX : max_distance + 1;
 
-	FOR_ALL_DEPOTS(depot) {
+	for (const Depot *depot : Depot::Iterate()) {
 		TileIndex tile = depot->xy;
 		if (IsShipDepotTile(tile) && IsTileOwner(tile, v->owner)) {
 			uint dist = DistanceManhattan(tile, v->tile);

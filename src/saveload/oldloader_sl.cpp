@@ -109,8 +109,7 @@ static void FixTTDMapArray()
 
 static void FixTTDDepots()
 {
-	const Depot *d;
-	FOR_ALL_DEPOTS_FROM(d, 252) {
+	for (const Depot *d : Depot::Iterate(252)) {
 		if (!IsDepotTile(d->xy) || GetDepotIndex(d->xy) != d->index) {
 			/** Workaround for SVXConverter bug, depots 252-255 could be invalid */
 			delete d;

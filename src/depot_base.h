@@ -44,7 +44,4 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	}
 };
 
-#define FOR_ALL_DEPOTS_FROM(var, start) FOR_ALL_ITEMS_FROM(Depot, depot_index, var, start)
-#define FOR_ALL_DEPOTS(var) FOR_ALL_DEPOTS_FROM(var, 0)
-
 #endif /* DEPOT_BASE_H */

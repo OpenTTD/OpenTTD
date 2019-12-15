@@ -38,8 +38,7 @@ ScriptDepotList::ScriptDepotList(ScriptTile::TransportType transport_type)
 	}
 
 	/* Handle 'standard' depots. */
-	const Depot *depot;
-	FOR_ALL_DEPOTS(depot) {
+	for (const Depot *depot : Depot::Iterate()) {
 		if ((::GetTileOwner(depot->xy) == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && ::IsTileType(depot->xy, tile_type)) this->AddItem(depot->xy);
 	}
 }
