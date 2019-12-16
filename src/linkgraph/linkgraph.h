@@ -534,6 +534,4 @@ protected:
 	EdgeMatrix edges;      ///< Edges in the component.
 };
 
-#define FOR_ALL_LINK_GRAPHS(var) FOR_ALL_ITEMS_FROM(LinkGraph, link_graph_index, var, 0)
-
 #endif /* LINKGRAPH_H */
