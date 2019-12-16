@@ -26,8 +26,7 @@ static const SaveLoad _goals_desc[] = {
 
 static void Save_GOAL()
 {
-	Goal *s;
-	FOR_ALL_GOALS(s) {
+	for (Goal *s : Goal::Iterate()) {
 		SlSetArrayIndex(s->index);
 		SlObject(s, _goals_desc);
 	}

@@ -532,8 +532,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	}
 
 	/* Remove Game Script created Goals, CargoMonitors and Story pages. */
-	Goal *g;
-	FOR_ALL_GOALS(g) {
+	for (Goal *g : Goal::Iterate()) {
 		if (g->company == old_owner) delete g;
 	}
 

@@ -66,8 +66,7 @@ struct GoalListWindow : public Window {
 
 		int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GOAL_LIST, WD_FRAMERECT_TOP);
 		int num = 0;
-		const Goal *s;
-		FOR_ALL_GOALS(s) {
+		for (const Goal *s : Goal::Iterate()) {
 			if (s->company == INVALID_COMPANY) {
 				y--;
 				if (y == 0) {
@@ -86,7 +85,7 @@ struct GoalListWindow : public Window {
 		y -= 2; // "Company specific goals:" line.
 		if (y < 0) return;
 
-		FOR_ALL_GOALS(s) {
+		for (const Goal *s : Goal::Iterate()) {
 			if (s->company == this->window_number) {
 				y--;
 				if (y == 0) {
@@ -158,8 +157,7 @@ struct GoalListWindow : public Window {
 		/* Count number of (non) awarded goals. */
 		uint num_global = 0;
 		uint num_company = 0;
-		const Goal *s;
-		FOR_ALL_GOALS(s) {
+		for (const Goal *s : Goal::Iterate()) {
 			if (s->company == INVALID_COMPANY) {
 				num_global++;
 			} else if (s->company == this->window_number) {
@@ -207,8 +205,7 @@ struct GoalListWindow : public Window {
 		bool rtl = _current_text_dir == TD_RTL;
 
 		uint num = 0;
-		const Goal *s;
-		FOR_ALL_GOALS(s) {
+		for (const Goal *s : Goal::Iterate()) {
 			if (global_section ? s->company == INVALID_COMPANY : (s->company == this->window_number && s->company != INVALID_COMPANY)) {
 				if (IsInsideMM(pos, 0, cap)) {
 					switch (column) {
@@ -278,8 +275,7 @@ struct GoalListWindow : public Window {
 
 		/* Calculate progress column width. */
 		uint max_width = 0;
-		Goal *s;
-		FOR_ALL_GOALS(s) {
+		for (const Goal *s : Goal::Iterate()) {
 			if (s->progress != nullptr) {
 				SetDParamStr(0, s->progress);
 				StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
