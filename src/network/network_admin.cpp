@@ -94,8 +94,7 @@ ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
 /** Send the packets for the server sockets. */
 /* static */ void ServerNetworkAdminSocketHandler::Send()
 {
-	ServerNetworkAdminSocketHandler *as;
-	FOR_ALL_ADMIN_SOCKETS(as) {
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::Iterate()) {
 		if (as->status == ADMIN_STATUS_INACTIVE && as->realtime_connect + ADMIN_AUTHORISATION_TIMEOUT < _realtime_tick) {
 			DEBUG(net, 1, "[admin] Admin did not send its authorisation within %d seconds", ADMIN_AUTHORISATION_TIMEOUT / 1000);
 			as->CloseConnection(true);
@@ -727,17 +726,16 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet *p)
 
 		case ADMIN_UPDATE_CLIENT_INFO:
 			/* The admin is requesting client info. */
-			const NetworkClientSocket *cs;
 			if (d1 == UINT32_MAX) {
 				this->SendClientInfo(nullptr, NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER));
-				FOR_ALL_CLIENT_SOCKETS(cs) {
+				for (const NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 					this->SendClientInfo(cs, cs->GetInfo());
 				}
 			} else {
 				if (d1 == CLIENT_ID_SERVER) {
 					this->SendClientInfo(nullptr, NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER));
 				} else {
-					cs = NetworkClientSocket::GetByClientID((ClientID)d1);
+					const NetworkClientSocket *cs = NetworkClientSocket::GetByClientID((ClientID)d1);
 					if (cs != nullptr) this->SendClientInfo(cs, cs->GetInfo());
 				}
 			}
@@ -817,8 +815,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet *p)
  */
 void NetworkAdminClientInfo(const NetworkClientSocket *cs, bool new_client)
 {
-	ServerNetworkAdminSocketHandler *as;
-	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
 			as->SendClientInfo(cs, cs->GetInfo());
 			if (new_client) {
@@ -834,8 +831,7 @@ void NetworkAdminClientInfo(const NetworkClientSocket *cs, bool new_client)
  */
 void NetworkAdminClientUpdate(const NetworkClientInfo *ci)
 {
-	ServerNetworkAdminSocketHandler *as;
-	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
 			as->SendClientUpdate(ci);
 		}
@@ -848,8 +844,7 @@ void NetworkAdminClientUpdate(const NetworkClientInfo *ci)
  */
 void NetworkAdminClientQuit(ClientID client_id)
 {
-	ServerNetworkAdminSocketHandler *as;
-	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
 			as->SendClientQuit(client_id);
 		}
@@ -863,8 +858,7 @@ void NetworkAdminClientQuit(ClientID client_id)
  */
 void NetworkAdminClientError(ClientID client_id, NetworkErrorCode error_code)
 {
-	ServerNetworkAdminSocketHandler *as;
-	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
 			as->SendClientError(client_id, error_code);
 		}
@@ -883,8 +877,7 @@ void NetworkAdminCompanyInfo(const Company *company, bool new_company)
 		return;
 	}
 
-	ServerNetworkAdminSocketHandler *as;
-	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_COMPANY_INFO] != ADMIN_FREQUENCY_AUTOMATIC) continue;
 
 		as->SendCompanyInfo(company);
@@ -902,8 +895,7 @@ void NetworkAdminCompanyUpdate(const Company *company)
 {
 	if (company == nullptr) return;
 
-	ServerNetworkAdminSocketHandler *as;
-	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_COMPANY_INFO] != ADMIN_FREQUENCY_AUTOMATIC) continue;
 
 		as->SendCompanyUpdate(company);
@@ -917,8 +909,7 @@ void NetworkAdminCompanyUpdate(const Company *company)
  */
 void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bcrr)
 {
-	ServerNetworkAdminSocketHandler *as;
-	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		as->SendCompanyRemove(company_id, bcrr);
 	}
 }
@@ -931,8 +922,7 @@ void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_i
 {
 	if (from_admin) return;
 
-	ServerNetworkAdminSocketHandler *as;
-	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_CHAT] & ADMIN_FREQUENCY_AUTOMATIC) {
 			as->SendChat(action, desttype, client_id, msg, data);
 		}
@@ -957,8 +947,7 @@ void NetworkServerSendAdminRcon(AdminIndex admin_index, TextColour colour_code, 
  */
 void NetworkAdminConsole(const char *origin, const char *string)
 {
-	ServerNetworkAdminSocketHandler *as;
-	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_CONSOLE] & ADMIN_FREQUENCY_AUTOMATIC) {
 			as->SendConsole(origin, string);
 		}
@@ -971,8 +960,7 @@ void NetworkAdminConsole(const char *origin, const char *string)
  */
 void NetworkAdminGameScript(const char *json)
 {
-	ServerNetworkAdminSocketHandler *as;
-	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_GAMESCRIPT] & ADMIN_FREQUENCY_AUTOMATIC) {
 			as->SendGameScript(json);
 		}
@@ -988,8 +976,7 @@ void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacke
 {
 	ClientID client_id = owner == nullptr ? _network_own_client_id : owner->client_id;
 
-	ServerNetworkAdminSocketHandler *as;
-	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_CMD_LOGGING] & ADMIN_FREQUENCY_AUTOMATIC) {
 			as->SendCmdLogging(client_id, cp);
 		}
@@ -1001,8 +988,7 @@ void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacke
  */
 void ServerNetworkAdminSocketHandler::WelcomeAll()
 {
-	ServerNetworkAdminSocketHandler *as;
-	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		as->SendWelcome();
 	}
 }
@@ -1013,8 +999,7 @@ void ServerNetworkAdminSocketHandler::WelcomeAll()
  */
 void NetworkAdminUpdate(AdminUpdateFrequency freq)
 {
-	ServerNetworkAdminSocketHandler *as;
-	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		for (int i = 0; i < ADMIN_UPDATE_END; i++) {
 			if (as->update_frequency[i] & freq) {
 				/* Update the admin for the required details */

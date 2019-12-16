@@ -336,8 +336,7 @@ struct NetworkChatWindow : public Window {
 		/* First, try clients */
 		if (*item < MAX_CLIENT_SLOTS) {
 			/* Skip inactive clients */
-			NetworkClientInfo *ci;
-			FOR_ALL_CLIENT_INFOS_FROM(ci, *item) {
+			for (NetworkClientInfo *ci : NetworkClientInfo::Iterate(*item)) {
 				*item = ci->index;
 				return ci->client_name;
 			}

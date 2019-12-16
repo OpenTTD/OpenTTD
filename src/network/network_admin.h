@@ -82,28 +82,18 @@ public:
 	{
 		return "admin";
 	}
+
+	/**
+	 * Returns an iterable ensemble of all active admin sockets
+	 * @param from index of the first socket to consider
+	 * @return an iterable ensemble of all active admin sockets
+	 */
+	static Pool::IterateWrapper<ServerNetworkAdminSocketHandler> IterateActive(size_t from = 0)
+	{
+		return Pool::IterateWrapper<ServerNetworkAdminSocketHandler>(from,
+			[](size_t index) { return ServerNetworkAdminSocketHandler::Get(index)->GetAdminStatus() == ADMIN_STATUS_ACTIVE; });
+	}
 };
-
-/**
- * Iterate over all the sockets from a given starting point.
- * @param var The variable to iterate with.
- * @param start The start of the iteration.
- */
-#define FOR_ALL_ADMIN_SOCKETS_FROM(var, start) FOR_ALL_ITEMS_FROM(ServerNetworkAdminSocketHandler, adminsocket_index, var, start)
-
-/**
- * Iterate over all the sockets.
- * @param var The variable to iterate with.
- */
-#define FOR_ALL_ADMIN_SOCKETS(var) FOR_ALL_ADMIN_SOCKETS_FROM(var, 0)
-
-/**
- * Iterate over all the active sockets.
- * @param var The variable to iterate with.
- */
-#define FOR_ALL_ACTIVE_ADMIN_SOCKETS(var) \
-	FOR_ALL_ADMIN_SOCKETS(var) \
-		if (var->GetAdminStatus() == ADMIN_STATUS_ACTIVE)
 
 void NetworkAdminClientInfo(const NetworkClientSocket *cs, bool new_client = false);
 void NetworkAdminClientUpdate(const NetworkClientInfo *ci);
