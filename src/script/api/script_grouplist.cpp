@@ -15,8 +15,7 @@
 
 ScriptGroupList::ScriptGroupList()
 {
-	Group *g;
-	FOR_ALL_GROUPS(g) {
+	for (const Group *g : Group::Iterate()) {
 		if (g->owner == ScriptObject::GetCompany()) this->AddItem(g->index);
 	}
 }

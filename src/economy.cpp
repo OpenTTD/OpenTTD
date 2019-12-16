@@ -410,8 +410,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	if (new_owner == INVALID_OWNER) {
 		RemoveAllGroupsForCompany(old_owner);
 	} else {
-		Group *g;
-		FOR_ALL_GROUPS(g) {
+		for (Group *g : Group::Iterate()) {
 			if (g->owner == old_owner) g->owner = new_owner;
 		}
 	}

@@ -658,8 +658,7 @@ private:
 			GUIGroupList list;
 			VehicleType vtype = (VehicleType)(this->livery_class - LC_GROUP_RAIL);
 
-			const Group *g;
-			FOR_ALL_GROUPS(g) {
+			for (const Group *g : Group::Iterate()) {
 				if (g->owner == owner && g->vehicle_type == vtype) {
 					list.push_back(g);
 				}
@@ -750,8 +749,7 @@ public:
 				}
 
 				/* And group names */
-				const Group *g;
-				FOR_ALL_GROUPS(g) {
+				for (const Group *g : Group::Iterate()) {
 					if (g->owner == (CompanyID)this->window_number) {
 						SetDParam(0, g->index);
 						d = maxdim(d, GetStringBoundingBox(STR_GROUP_NAME));
