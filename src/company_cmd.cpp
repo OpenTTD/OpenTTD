@@ -517,8 +517,7 @@ void ResetCompanyLivery(Company *c)
 		c->livery[scheme].colour2 = c->colour;
 	}
 
-	Group *g;
-	FOR_ALL_GROUPS(g) {
+	for (Group *g : Group::Iterate()) {
 		if (g->owner == c->index) {
 			g->livery.in_use  = 0;
 			g->livery.colour1 = c->colour;

@@ -31,9 +31,7 @@ static const SaveLoad _group_desc[] = {
 
 static void Save_GRPS()
 {
-	Group *g;
-
-	FOR_ALL_GROUPS(g) {
+	for (Group *g : Group::Iterate()) {
 		SlSetArrayIndex(g->index);
 		SlObject(g, _group_desc);
 	}

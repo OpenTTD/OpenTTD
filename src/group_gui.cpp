@@ -178,8 +178,7 @@ private:
 
 		GUIGroupList list;
 
-		const Group *g;
-		FOR_ALL_GROUPS(g) {
+		for (const Group *g : Group::Iterate()) {
 			if (g->owner == owner && g->vehicle_type == this->vli.vtype) {
 				list.push_back(g);
 			}
