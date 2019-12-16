@@ -228,17 +228,15 @@ static void Load_LGRS()
 void AfterLoadLinkGraphs()
 {
 	if (IsSavegameVersionBefore(SLV_191)) {
-		LinkGraph *lg;
-		FOR_ALL_LINK_GRAPHS(lg) {
+		for (LinkGraph *lg : LinkGraph::Iterate()) {
 			for (NodeID node_id = 0; node_id < lg->Size(); ++node_id) {
 				const Station *st = Station::GetIfValid((*lg)[node_id].Station());
 				if (st != nullptr) (*lg)[node_id].UpdateLocation(st->xy);
 			}
 		}
 
-		LinkGraphJob *lgj;
-		FOR_ALL_LINK_GRAPH_JOBS(lgj) {
-			lg = &(const_cast<LinkGraph &>(lgj->Graph()));
+		for (LinkGraphJob *lgj : LinkGraphJob::Iterate()) {
+			LinkGraph *lg = &(const_cast<LinkGraph &>(lgj->Graph()));
 			for (NodeID node_id = 0; node_id < lg->Size(); ++node_id) {
 				const Station *st = Station::GetIfValid((*lg)[node_id].Station());
 				if (st != nullptr) (*lg)[node_id].UpdateLocation(st->xy);
@@ -254,8 +252,7 @@ void AfterLoadLinkGraphs()
  */
 static void Save_LGRP()
 {
-	LinkGraph *lg;
-	FOR_ALL_LINK_GRAPHS(lg) {
+	for (LinkGraph *lg : LinkGraph::Iterate()) {
 		SlSetArrayIndex(lg->index);
 		SlAutolength((AutolengthProc*)DoSave_LGRP, lg);
 	}
@@ -266,8 +263,7 @@ static void Save_LGRP()
  */
 static void Save_LGRJ()
 {
-	LinkGraphJob *lgj;
-	FOR_ALL_LINK_GRAPH_JOBS(lgj) {
+	for (LinkGraphJob *lgj : LinkGraphJob::Iterate()) {
 		SlSetArrayIndex(lgj->index);
 		SlAutolength((AutolengthProc*)DoSave_LGRJ, lgj);
 	}
