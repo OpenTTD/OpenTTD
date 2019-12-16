@@ -15,17 +15,14 @@
 
 ScriptIndustryList::ScriptIndustryList()
 {
-	Industry *i;
-	FOR_ALL_INDUSTRIES(i) {
+	for (const Industry *i : Industry::Iterate()) {
 		this->AddItem(i->index);
 	}
 }
 
 ScriptIndustryList_CargoAccepting::ScriptIndustryList_CargoAccepting(CargoID cargo_id)
 {
-	const Industry *i;
-
-	FOR_ALL_INDUSTRIES(i) {
+	for (const Industry *i : Industry::Iterate()) {
 		for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
 			if (i->accepts_cargo[j] == cargo_id) this->AddItem(i->index);
 		}
@@ -34,9 +31,7 @@ ScriptIndustryList_CargoAccepting::ScriptIndustryList_CargoAccepting(CargoID car
 
 ScriptIndustryList_CargoProducing::ScriptIndustryList_CargoProducing(CargoID cargo_id)
 {
-	const Industry *i;
-
-	FOR_ALL_INDUSTRIES(i) {
+	for (const Industry *i : Industry::Iterate()) {
 		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
 			if (i->produced_cargo[j] == cargo_id) this->AddItem(i->index);
 		}

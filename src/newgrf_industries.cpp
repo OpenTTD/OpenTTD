@@ -91,8 +91,7 @@ uint32 GetIndustryIDAtOffset(TileIndex tile, const Industry *i, uint32 cur_grfid
 static uint32 GetClosestIndustry(TileIndex tile, IndustryType type, const Industry *current)
 {
 	uint32 best_dist = UINT32_MAX;
-	const Industry *i;
-	FOR_ALL_INDUSTRIES(i) {
+	for (const Industry *i : Industry::Iterate()) {
 		if (i->type != type || i == current) continue;
 
 		best_dist = min(best_dist, DistanceManhattan(tile, i->location.tile));
@@ -145,8 +144,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 	} else {
 		/* Count only those who match the same industry type and layout filter
 		 * Unfortunately, we have to do it manually */
-		const Industry *i;
-		FOR_ALL_INDUSTRIES(i) {
+		for (const Industry *i : Industry::Iterate()) {
 			if (i->type == ind_index && i != current && (i->selected_layout == layout_filter || layout_filter == 0) && (!town_filter || i->town == current->town)) {
 				closest_dist = min(closest_dist, DistanceManhattan(current->location.tile, i->location.tile));
 				count++;

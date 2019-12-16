@@ -77,10 +77,8 @@ static const SaveLoad _industry_desc[] = {
 
 static void Save_INDY()
 {
-	Industry *ind;
-
 	/* Write the industries */
-	FOR_ALL_INDUSTRIES(ind) {
+	for (Industry *ind : Industry::Iterate()) {
 		SlSetArrayIndex(ind->index);
 		SlObject(ind, _industry_desc);
 	}
@@ -129,9 +127,7 @@ static void Load_TIDS()
 
 static void Ptrs_INDY()
 {
-	Industry *i;
-
-	FOR_ALL_INDUSTRIES(i) {
+	for (Industry *i : Industry::Iterate()) {
 		SlObject(i, _industry_desc);
 	}
 }
