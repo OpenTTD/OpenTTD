@@ -471,7 +471,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Apagar todas as
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informações do terreno
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Mostrar/ocultar consola
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Mostrar/Ocultar consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuração da IA/Scripts de Jogo
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de ecrã
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura com resolução máxima
@@ -2260,7 +2260,7 @@ STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... não
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gráficos base
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :IA
-STR_CONTENT_TYPE_AI_LIBRARY                                     :Livraria IA
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Biblioteca IA
 STR_CONTENT_TYPE_SCENARIO                                       :Cenário
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa de alturas
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons base
@@ -2337,13 +2337,13 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construir Magle
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir linha férrea. Ctrl alterna a construção/remoção de linha férrea. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir caminhos-de-ferro usando o modo automático. Ctrl alterna a construção/remoção de caminhos-de-ferro. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito ferroviário (para compra e manutenção de comboios). Shift alterna contruir/mostrar custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converter linha em ponto de controlo. Ctrl permite juntar pontos de controlo. Shift alterna contruir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converter linha em ponto de controlo. Ctrl permite juntar pontos de controlo. Shift alterna construir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais ferroviários. Ctrl alterna entre sinais clássicos/luminosos{}Arrastar constrói sinais ao longo de uma linha recta de carris. Ctrl constrói sinais até a próxima junção ou sinal{}Ctrl+Clique alterna entre abrir a janela de selecção de sinais. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar entre construir/remover linha férrea, sinais, pontos de passagem e estações. Fixar o Ctrl também remove a linha férrea de pontos de passagem e estações
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de linha. Shift alterna contruir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de linha. Shift alterna construir/mostrar custo estimado
 
 STR_RAIL_NAME_RAILROAD                                          :Caminhos-de-ferro
 STR_RAIL_NAME_ELRAIL                                            :Caminhos-de-ferro elétricos
@@ -2351,7 +2351,7 @@ STR_RAIL_NAME_MONORAIL                                          :Monocarril
 STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientação do Depósito
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientação do depósito
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Seleccionar a orientação do depósito
 
 # Rail waypoint construction window
@@ -2383,12 +2383,12 @@ STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal Combinado (semáforo){}O sinal combinado funciona como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pré-sinais.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal (semáforo){}Os sinais permitem que vários comboios utilizem a mesma linha desde que consigam chegar aos seus destinos em segurança. Sinais normais podem ser passados no sentido contrário.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal de sentido único (semáforo){}Os sinais permitem que vários comboios utilizem a mesma linha desde que consigam chegar aos seus destinos em segurança. Os comboios não podem passar no sentido oposto dos sinais.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal Normal(eléctrico){}Este é o tipo mais básico de sinal, que só permite um comboio dentro da mesma linha ferroviária ao mesmo tempo.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de Entrada (eléctrico){}Verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de Saída (eléctrico){}Funciona da mesma forma que o sinal normal mas é necessário para conseguir a cor correcta nos pré-sinais de entrada e combinado.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal Combinado (eléctrico){}O sinal combinado funciona simplesmente como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pré-sinais
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal Normal(eléctrico){}Este é o tipo mais básico de sinal. Permite apenas a passagem de um comboio de cada vez dentro da mesma divisão de linha.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de entrada (eléctrico){}Apresenta-se verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de saída (eléctrico){}Funciona da mesma forma que o sinal normal, mas é necessário para ativar a cor correta nos pré-sinais de entrada e combinado.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal combinado (eléctrico){}O sinal combinado funciona simultaneamente como um sinal de entrada e de saída. Isto permite construir ramificações complexas de pré-sinais.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal (eléctrico){}Os sinais permitem que vários comboios entrem na mesma linha ao mesmo tempo, desde que consigam chegar ao seu destino em segurança. Sinais padrão podem ser passados no sentido contrário.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal de sentido único (eléctrico){}Um sinal de trajecto permite que mais de um comboio passe ao mesmo tempo um sinal se, o comboio conseguir reservar um caminho para onde posteriormente possa parar sem prejudicar o seguinte. Sinais de um único sentido não podem ser passados no sentido contrário.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal de sentido único (eléctrico){}Um sinal de trajeto que permite que mais de um comboio passe simultaneamente uma divisão de linha, desde que consiga reservar um caminho para onde possa parar posteriormente sem prejudicar o seguinte. Os sinais de sentido único não podem ser cruzados no sentido contrário.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversão de Sinal{}Quando seleccionado, ao fazer clique num sinal existente este será convertido no tipo e variante de sinal seleccionado, Ctrl+clique irá comutar a variante existente. Shift+Clique mostra estimativa do custo de conversão
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distância de arrasto de sinais
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Reduzir distância de arrasto de sinais
@@ -2430,10 +2430,12 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para eléctricos. Shift alterna contruir/mostrar custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Alternar entre construir/remover estradas
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Alternar construir/remover linhas de eléctricos e sinais
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converter/Atualizar tipo de estrada. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converter/Atualizar tipo de carril para eléctricos. Shift alterna construir/mostrar custo estimado
 
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientação do Depósito
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientação do depósito
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Seleccionar a orientação do depósito
 STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientação do depósito para eléctricos
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Escolher a orientação do depósito de eléctricos
@@ -2515,7 +2517,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissores
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolha um tipo de árvore para plantar. Se o quadrado já tiver uma árvore, serão adicionadas mais árvores de difrentes tipos independentemente do tipo selecionado
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores de tipo aleatório
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Colocar árvores de tipo aleatório. Shift alterna contruir/mostrar custo estimado
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Colocar árvores de tipo aleatório. Shift alterna construir/mostrar custo estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plantar Aleatoriamente
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantar árvores aleatoriamente no terreno
 
@@ -4406,6 +4408,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tipo de 
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Deverá remover a linha férrea primeiro
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Estrada de sentido único ou bloqueada
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Passagens de nível não são permitidas para este tipo de linha
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Passagens de nível não são permitidas para este tipo de estrada
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Não é possível construir sinais aqui...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Não é possível construir linha férrea aqui...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Não é possível remover linha férrea daqui...
@@ -4425,6 +4428,8 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Não é 
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Não é possível remover carris para eléctricos deste local...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... não há estrada
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... não há carris para eléctricos
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Não é possível converter aqui o tipo de estrada...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Não é possível converter aqui o tipo de carril para eléctricos...
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Não é possível construir canais aqui...
@@ -4588,8 +4593,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Sons originais 
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Sons originais da edição Windows de Transport Tycoon Deluxe.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Um conjunto de sons vazio.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Música original da edição Windows de Transport Tycoon Deluxe.
-STR_BASEMUSIC_DOS_DESCRIPTION                                   :Música original da edição DOS do Transport Tycoon Deluxe.
-STR_BASEMUSIC_TTO_DESCRIPTION                                   :Música original da edição DOS do Transport Tycoon (Original/Editor de Mundo)
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Música original da edição DOS de Transport Tycoon Deluxe.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Música original da edição DOS de Transport Tycoon (Original/Editor de Mundo)
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Um conjunto de música vazio.
 
 ##id 0x2000

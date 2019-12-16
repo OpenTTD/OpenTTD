@@ -1178,6 +1178,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Landschaftsbau 
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Erlaube Erdbauarbeiten unter Gebäuden oder Infrastruktur ohne sie zu entfernen
 STR_CONFIG_SETTING_CATCHMENT                                    :Verschiedene Stationstypen haben unterschiedlich große Einzugsgebiete: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Wird diese Option eingeschaltet, besitzen unterschiedliche Stationsarten bzw. Flughäfen unterschiedlich große Einzugsgebiete
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Falls aktiv, können Industrien mit integrierter Haltestelle (wie Ölbohrtürme) auch von nahegelegenen Stationen der Spieler bedient werden. Falls inaktive, können diese Industrien ausschließlich mittels ihrer eigenen Stationen bedient werden. Die integrierten Stationen bedienen dabei keine anderen Industrien in der Nähe
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Entfernung von weiteren Straßen, Brücken usw. erlauben: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Erlaubt einfacheres Entfernen von städtischer Infrastruktur und Gebäuden
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximale Zuglänge: {STRING}
@@ -1579,6 +1580,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Erlaube Spieler
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verboten
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Erlaubt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Erlaubt, mit wählbarem Straßenbauplan
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Quadratisch (orginal)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Platzierung von Bäumen während des Spiels: {STRING}
@@ -2081,6 +2083,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Trennen
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server ist geschützt. Passwort eingeben:
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma ist geschützt. Passwort eingeben:
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Teilnehmerliste
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Teilnehmerliste
@@ -2422,6 +2425,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Straßen
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Zwischen Bau und Abriss der Straße umschalten
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Zwischen Bau und Abriss von Straßenbahngleisen umschalten
 
+STR_ROAD_NAME_ROAD                                              :Straße
 STR_ROAD_NAME_TRAM                                              :Straßenbahngleis
 
 # Road depot construction window
@@ -2609,6 +2613,7 @@ STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STR
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Gleistyp: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Höchstgeschwindigkeit Schiene: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Höchstgeschwindigkeit Straße: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Höchstgeschwindigkeit Straßenbahn: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Felsen
@@ -2725,6 +2730,7 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} Bilder/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} Bilder/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} Bilder/s
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2740,6 +2746,7 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Grafik-R
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}Kartenansichten:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Videoausgabe:
 STR_FRAMERATE_SOUND                                             :{BLACK}Sound-Abmischung:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Script:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Spielschleife
@@ -3084,6 +3091,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Stadt umbenenne
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Stadtverwaltung {TOWN}
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Zone
 STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Zeige Zone der Stadtverwaltung
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Bewertung der Transportfirma:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
@@ -3605,6 +3613,7 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Nachrich
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Wir haben {G "einen" "eine" "ein" ""} neue{G n "" s ""} {0:STRING} entwickelt.{}Besteht Interesse, {G 0 den die das die} {0:STRING} ein Jahr lang exklusiv zu nutzen, so dass wir die Funktionen testen können, bevor {G 0 er sie es sie} allgemein zur Verfügung gestellt {G 0 wird wird wird werden}?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=w}Lokomotive
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :Elektrifizierte Lokomotive
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=w}Einschienenbahn
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=w}Magnetschwebebahn
 
