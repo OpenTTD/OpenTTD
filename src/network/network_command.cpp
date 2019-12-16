@@ -238,8 +238,7 @@ static void DistributeCommandPacket(CommandPacket &cp, const NetworkClientSocket
 	CommandCallback *callback = cp.callback;
 	cp.frame = _frame_counter_max + 1;
 
-	NetworkClientSocket *cs;
-	FOR_ALL_CLIENT_SOCKETS(cs) {
+	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->status >= NetworkClientSocket::STATUS_MAP) {
 			/* Callbacks are only send back to the client who sent them in the
 			 *  first place. This filters that out. */
@@ -249,8 +248,8 @@ static void DistributeCommandPacket(CommandPacket &cp, const NetworkClientSocket
 		}
 	}
 
-	cp.callback = (cs != owner) ? nullptr : callback;
-	cp.my_cmd = (cs == owner);
+	cp.callback = (nullptr != owner) ? nullptr : callback;
+	cp.my_cmd = (nullptr == owner);
 	_local_execution_queue.Append(&cp);
 }
 
@@ -283,8 +282,7 @@ void NetworkDistributeCommands()
 	DistributeQueue(&_local_wait_queue, nullptr);
 
 	/* Then send the queues of the others. */
-	NetworkClientSocket *cs;
-	FOR_ALL_CLIENT_SOCKETS(cs) {
+	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		DistributeQueue(&cs->incoming_queue, cs);
 	}
 }

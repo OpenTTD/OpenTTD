@@ -99,8 +99,7 @@ extern void StateGameLoop();
  */
 bool HasClients()
 {
-	NetworkClientSocket *cs;
-	FOR_ALL_CLIENT_SOCKETS(cs) return true;
+	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) return true;
 
 	return false;
 }
@@ -121,9 +120,7 @@ NetworkClientInfo::~NetworkClientInfo()
  */
 /* static */ NetworkClientInfo *NetworkClientInfo::GetByClientID(ClientID client_id)
 {
-	NetworkClientInfo *ci;
-
-	FOR_ALL_CLIENT_INFOS(ci) {
+	for (NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
 		if (ci->client_id == client_id) return ci;
 	}
 
@@ -137,9 +134,7 @@ NetworkClientInfo::~NetworkClientInfo()
  */
 /* static */ ServerNetworkGameSocketHandler *ServerNetworkGameSocketHandler::GetByClientID(ClientID client_id)
 {
-	NetworkClientSocket *cs;
-
-	FOR_ALL_CLIENT_SOCKETS(cs) {
+	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->client_id == client_id) return cs;
 	}
 
@@ -148,10 +143,9 @@ NetworkClientInfo::~NetworkClientInfo()
 
 byte NetworkSpectatorCount()
 {
-	const NetworkClientInfo *ci;
 	byte count = 0;
 
-	FOR_ALL_CLIENT_INFOS(ci) {
+	for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
 		if (ci->client_playas == COMPANY_SPECTATOR) count++;
 	}
 
@@ -408,10 +402,9 @@ static void CheckPauseHelper(bool pause, PauseMode pm)
  */
 static uint NetworkCountActiveClients()
 {
-	const NetworkClientSocket *cs;
 	uint count = 0;
 
-	FOR_ALL_CLIENT_SOCKETS(cs) {
+	for (const NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->status != NetworkClientSocket::STATUS_ACTIVE) continue;
 		if (!Company::IsValidID(cs->GetInfo()->client_playas)) continue;
 		count++;
@@ -439,8 +432,7 @@ static void CheckMinActiveClients()
  */
 static bool NetworkHasJoiningClient()
 {
-	const NetworkClientSocket *cs;
-	FOR_ALL_CLIENT_SOCKETS(cs) {
+	for (const NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->status >= NetworkClientSocket::STATUS_AUTHORIZED && cs->status < NetworkClientSocket::STATUS_ACTIVE) return true;
 	}
 
@@ -527,14 +519,12 @@ void NetworkClose(bool close_admins)
 {
 	if (_network_server) {
 		if (close_admins) {
-			ServerNetworkAdminSocketHandler *as;
-			FOR_ALL_ADMIN_SOCKETS(as) {
+			for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::Iterate()) {
 				as->CloseConnection(true);
 			}
 		}
 
-		NetworkClientSocket *cs;
-		FOR_ALL_CLIENT_SOCKETS(cs) {
+		for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 			cs->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 		}
 		ServerNetworkGameSocketHandler::CloseListeners();
@@ -768,14 +758,12 @@ bool NetworkServerStart()
 void NetworkReboot()
 {
 	if (_network_server) {
-		NetworkClientSocket *cs;
-		FOR_ALL_CLIENT_SOCKETS(cs) {
+		for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 			cs->SendNewGame();
 			cs->SendPackets();
 		}
 
-		ServerNetworkAdminSocketHandler *as;
-		FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+		for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 			as->SendNewGame();
 			as->SendPackets();
 		}
@@ -794,15 +782,13 @@ void NetworkReboot()
 void NetworkDisconnect(bool blocking, bool close_admins)
 {
 	if (_network_server) {
-		NetworkClientSocket *cs;
-		FOR_ALL_CLIENT_SOCKETS(cs) {
+		for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 			cs->SendShutdown();
 			cs->SendPackets();
 		}
 
 		if (close_admins) {
-			ServerNetworkAdminSocketHandler *as;
-			FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
+			for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 				as->SendShutdown();
 				as->SendPackets();
 			}
