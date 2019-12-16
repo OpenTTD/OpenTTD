@@ -1203,8 +1203,7 @@ protected:
 		if (this->industries.NeedRebuild()) {
 			this->industries.clear();
 
-			const Industry *i;
-			FOR_ALL_INDUSTRIES(i) {
+			for (const Industry *i : Industry::Iterate()) {
 				this->industries.push_back(i);
 			}
 

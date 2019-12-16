@@ -133,8 +133,7 @@ void RebuildSubsidisedSourceAndDestinationCache()
 	Town *t;
 	FOR_ALL_TOWNS(t) t->cache.part_of_subsidy = POS_NONE;
 
-	Industry *i;
-	FOR_ALL_INDUSTRIES(i) i->part_of_subsidy = POS_NONE;
+	for (Industry *i : Industry::Iterate()) i->part_of_subsidy = POS_NONE;
 
 	const Subsidy *s;
 	FOR_ALL_SUBSIDIES(s) {

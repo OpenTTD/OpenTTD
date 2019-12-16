@@ -745,9 +745,9 @@ static void Disaster_Airplane_Init()
 {
 	if (!Vehicle::CanAllocateItem(2)) return;
 
-	Industry *i, *found = nullptr;
+	Industry *found = nullptr;
 
-	FOR_ALL_INDUSTRIES(i) {
+	for (Industry *i : Industry::Iterate()) {
 		if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_AIRPLANE_ATTACKS) &&
 				(found == nullptr || Chance16(1, 2))) {
 			found = i;
@@ -771,9 +771,9 @@ static void Disaster_Helicopter_Init()
 {
 	if (!Vehicle::CanAllocateItem(3)) return;
 
-	Industry *i, *found = nullptr;
+	Industry *found = nullptr;
 
-	FOR_ALL_INDUSTRIES(i) {
+	for (Industry *i : Industry::Iterate()) {
 		if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CHOPPER_ATTACKS) &&
 				(found == nullptr || Chance16(1, 2))) {
 			found = i;
@@ -858,9 +858,7 @@ static void Disaster_CoalMine_Init()
 	uint m;
 
 	for (m = 0; m < 15; m++) {
-		const Industry *i;
-
-		FOR_ALL_INDUSTRIES(i) {
+		for (const Industry *i : Industry::Iterate()) {
 			if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CAN_SUBSIDENCE) && --index < 0) {
 				SetDParam(0, i->town->index);
 				AddTileNewsItem(STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE, NT_ACCIDENT, i->location.tile + TileDiffXY(1, 1)); // keep the news, even when the mine closes

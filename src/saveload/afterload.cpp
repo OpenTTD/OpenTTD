@@ -259,8 +259,7 @@ static void InitializeWindowsAndCaches()
 	}
 
 	/* Identify owners of persistent storage arrays */
-	Industry *i;
-	FOR_ALL_INDUSTRIES(i) {
+	for (Industry *i : Industry::Iterate()) {
 		if (i->psa != nullptr) {
 			i->psa->feature = GSF_INDUSTRIES;
 			i->psa->tile = i->location.tile;
@@ -1413,7 +1412,6 @@ bool AfterLoadGame()
 	/* Time starts at 0 instead of 1920.
 	 * Account for this in older games by adding an offset */
 	if (IsSavegameVersionBefore(SLV_31)) {
-		Industry *i;
 		Vehicle *v;
 
 		_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
@@ -1423,7 +1421,7 @@ bool AfterLoadGame()
 		for (Waypoint *wp : Waypoint::Iterate()) wp->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
 		for (Engine *e : Engine::Iterate())      e->intro_date       += DAYS_TILL_ORIGINAL_BASE_YEAR;
 		for (Company *c : Company::Iterate()) c->inaugurated_year += ORIGINAL_BASE_YEAR;
-		FOR_ALL_INDUSTRIES(i) i->last_prod_year   += ORIGINAL_BASE_YEAR;
+		for (Industry *i : Industry::Iterate())  i->last_prod_year   += ORIGINAL_BASE_YEAR;
 
 		FOR_ALL_VEHICLES(v) {
 			v->date_of_last_service += DAYS_TILL_ORIGINAL_BASE_YEAR;
@@ -1435,8 +1433,6 @@ bool AfterLoadGame()
 	 *  To give this prettiness to old savegames, we remove all farmfields and
 	 *  plant new ones. */
 	if (IsSavegameVersionBefore(SLV_32)) {
-		Industry *i;
-
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (IsTileType(t, MP_CLEAR) && IsClearGround(t, CLEAR_FIELDS)) {
 				/* remove fields */
@@ -1444,7 +1440,7 @@ bool AfterLoadGame()
 			}
 		}
 
-		FOR_ALL_INDUSTRIES(i) {
+		for (Industry *i : Industry::Iterate()) {
 			uint j;
 
 			if (GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_PLANT_ON_BUILT) {
@@ -1660,8 +1656,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_70)) {
 		/* Added variables to support newindustries */
-		Industry *i;
-		FOR_ALL_INDUSTRIES(i) i->founder = OWNER_NONE;
+		for (Industry *i : Industry::Iterate()) i->founder = OWNER_NONE;
 	}
 
 	/* From version 82, old style canals (above sealevel (0), WATER owner) are no longer supported.
@@ -1701,9 +1696,8 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_78)) {
-		Industry *i;
 		uint j;
-		FOR_ALL_INDUSTRIES(i) {
+		for (Industry * i : Industry::Iterate()) {
 			const IndustrySpec *indsp = GetIndustrySpec(i->type);
 			for (j = 0; j < lengthof(i->produced_cargo); j++) {
 				i->produced_cargo[j] = indsp->produced_cargo[j];
@@ -2760,8 +2754,7 @@ bool AfterLoadGame()
 		/* Before savegame version 161, persistent storages were not stored in a pool. */
 
 		if (!IsSavegameVersionBefore(SLV_76)) {
-			Industry *ind;
-			FOR_ALL_INDUSTRIES(ind) {
+			for (Industry *ind : Industry::Iterate()) {
 				assert(ind->psa != nullptr);
 
 				/* Check if the old storage was empty. */
@@ -3044,8 +3037,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_EXTEND_INDUSTRY_CARGO_SLOTS)) {
 		/* Make sure added industry cargo slots are cleared */
-		Industry *i;
-		FOR_ALL_INDUSTRIES(i) {
+		for (Industry *i : Industry::Iterate()) {
 			for (size_t ci = 2; ci < lengthof(i->produced_cargo); ci++) {
 				i->produced_cargo[ci] = CT_INVALID;
 				i->produced_cargo_waiting[ci] = 0;
@@ -3127,8 +3119,7 @@ bool AfterLoadGame()
 		}
 	} else {
 		/* Link neutral station back to industry, as this is not saved. */
-		Industry *ind;
-		FOR_ALL_INDUSTRIES(ind) if (ind->neutral_station != nullptr) ind->neutral_station->industry = ind;
+		for (Industry *ind : Industry::Iterate()) if (ind->neutral_station != nullptr) ind->neutral_station->industry = ind;
 	}
 
 	if (IsSavegameVersionBefore(SLV_TREES_WATER_CLASS)) {
