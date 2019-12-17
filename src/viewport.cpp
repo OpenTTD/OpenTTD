@@ -2260,8 +2260,7 @@ void RebuildViewportKdtree()
 		if (town->cache.sign.kdtree_valid) items.push_back(ViewportSignKdtreeItem::MakeTown(town->index));
 	}
 
-	const Sign *sign;
-	FOR_ALL_SIGNS(sign) {
+	for (const Sign *sign : Sign::Iterate()) {
 		if (sign->sign.kdtree_valid) items.push_back(ViewportSignKdtreeItem::MakeSign(sign->index));
 	}
 

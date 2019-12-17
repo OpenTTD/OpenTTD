@@ -32,9 +32,7 @@ static const SaveLoad _sign_desc[] = {
 /** Save all signs */
 static void Save_SIGN()
 {
-	Sign *si;
-
-	FOR_ALL_SIGNS(si) {
+	for (Sign *si : Sign::Iterate()) {
 		SlSetArrayIndex(si->index);
 		SlObject(si, _sign_desc);
 	}

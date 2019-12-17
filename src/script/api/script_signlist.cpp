@@ -16,8 +16,7 @@
 
 ScriptSignList::ScriptSignList()
 {
-	Sign *s;
-	FOR_ALL_SIGNS(s) {
+	for (const Sign *s : Sign::Iterate()) {
 		if (ScriptSign::IsValidSign(s->index)) this->AddItem(s->index);
 	}
 }
