@@ -32,10 +32,6 @@ enum RailType : byte {
 	RAILTYPE_MAGLEV   = 3,          ///< Maglev
 	RAILTYPE_END      = 64,         ///< Used for iterations
 	INVALID_RAILTYPE  = 0xFF,       ///< Flag for invalid railtype
-
-	DEF_RAILTYPE_FIRST = RAILTYPE_END, ///< Default railtype: first available
-	DEF_RAILTYPE_LAST,                 ///< Default railtype: last available
-	DEF_RAILTYPE_MOST_USED,            ///< Default railtype: most used
 };
 
 /** Allow incrementing of Track variables */
