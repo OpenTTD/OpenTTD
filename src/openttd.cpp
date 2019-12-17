@@ -1221,8 +1221,7 @@ static void CheckCaches()
 	}
 
 	/* Strict checking of the road stop cache entries */
-	const RoadStop *rs;
-	FOR_ALL_ROADSTOPS(rs) {
+	for (const RoadStop *rs : RoadStop::Iterate()) {
 		if (IsStandardRoadStopTile(rs->xy)) continue;
 
 		assert(rs->GetEntry(DIAGDIR_NE) != rs->GetEntry(DIAGDIR_NW));
