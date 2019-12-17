@@ -40,8 +40,7 @@ static void UpdateWaypointOrder(Order *o)
 void MoveBuoysToWaypoints()
 {
 	/* Buoy orders become waypoint orders */
-	OrderList *ol;
-	FOR_ALL_ORDER_LISTS(ol) {
+	for (OrderList *ol : OrderList::Iterate()) {
 		VehicleType vt = ol->GetFirstSharedVehicle()->type;
 		if (vt != VEH_SHIP && vt != VEH_TRAIN) continue;
 

@@ -1451,10 +1451,9 @@ bool AfterLoadGame()
 
 	/* Setting no refit flags to all orders in savegames from before refit in orders were added */
 	if (IsSavegameVersionBefore(SLV_36)) {
-		Order *order;
 		Vehicle *v;
 
-		FOR_ALL_ORDERS(order) {
+		for (Order *order : Order::Iterate()) {
 			order->SetRefit(CT_NO_REFIT);
 		}
 
@@ -1724,8 +1723,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_93)) {
 		/* Rework of orders. */
-		Order *order;
-		FOR_ALL_ORDERS(order) order->ConvertFromOldSavegame();
+		for (Order *order : Order::Iterate()) order->ConvertFromOldSavegame();
 
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
@@ -1736,13 +1734,13 @@ bool AfterLoadGame()
 
 			v->current_order.ConvertFromOldSavegame();
 			if (v->type == VEH_ROAD && v->IsPrimaryVehicle() && v->FirstShared() == v) {
+				Order* order;
 				FOR_VEHICLE_ORDERS(v, order) order->SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 			}
 		}
 	} else if (IsSavegameVersionBefore(SLV_94)) {
 		/* Unload and transfer are now mutual exclusive. */
-		Order *order;
-		FOR_ALL_ORDERS(order) {
+		for (Order *order : Order::Iterate()) {
 			if ((order->GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == (OUFB_UNLOAD | OUFB_TRANSFER)) {
 				order->SetUnloadType(OUFB_TRANSFER);
 				order->SetLoadType(OLFB_NO_LOAD);
@@ -2160,8 +2158,7 @@ bool AfterLoadGame()
 
 	/* Trains could now stop in a specific location. */
 	if (IsSavegameVersionBefore(SLV_117)) {
-		Order *o;
-		FOR_ALL_ORDERS(o) {
+		for (Order *o : Order::Iterate()) {
 			if (o->IsType(OT_GOTO_STATION)) o->SetStopLocation(OSL_PLATFORM_FAR_END);
 		}
 	}
@@ -3014,8 +3011,7 @@ bool AfterLoadGame()
 #ifndef DEBUG_DUMP_COMMANDS
 		/* Note: We cannot use CleanPool since that skips part of the destructor
 		 * and then leaks un-reachable Orders in the order pool. */
-		OrderBackup *ob;
-		FOR_ALL_ORDER_BACKUPS(ob) {
+		for (OrderBackup *ob : OrderBackup::Iterate()) {
 			delete ob;
 		}
 #endif

@@ -102,8 +102,7 @@ void OrderBackup::DoRestore(Vehicle *v)
 {
 	/* Don't use reset as that broadcasts over the network to reset the variable,
 	 * which is what we are doing at the moment. */
-	OrderBackup *ob;
-	FOR_ALL_ORDER_BACKUPS(ob) {
+	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		if (ob->user == user) delete ob;
 	}
 	if (OrderBackup::CanAllocateItem()) {
@@ -119,8 +118,7 @@ void OrderBackup::DoRestore(Vehicle *v)
  */
 /* static */ void OrderBackup::Restore(Vehicle *v, uint32 user)
 {
-	OrderBackup *ob;
-	FOR_ALL_ORDER_BACKUPS(ob) {
+	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		if (v->tile != ob->tile || ob->user != user) continue;
 
 		ob->DoRestore(v);
@@ -136,8 +134,7 @@ void OrderBackup::DoRestore(Vehicle *v)
  */
 /* static */ void OrderBackup::ResetOfUser(TileIndex tile, uint32 user)
 {
-	OrderBackup *ob;
-	FOR_ALL_ORDER_BACKUPS(ob) {
+	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		if (ob->user == user && (ob->tile == tile || tile == INVALID_TILE)) delete ob;
 	}
 }
@@ -169,9 +166,8 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 {
 	assert(_network_server);
 
-	OrderBackup *ob;
-	FOR_ALL_ORDER_BACKUPS(ob) {
-		/* If it's not an backup of us, so ignore it. */
+	for (OrderBackup *ob : OrderBackup::Iterate()) {
+		/* If it's not a backup of us, ignore it. */
 		if (ob->user != user) continue;
 
 		DoCommandP(0, 0, user, CMD_CLEAR_ORDER_BACKUP);
@@ -193,9 +189,8 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	 * default is just plain and simple: 0. */
 	uint32 user = _networking && !_network_server ? _network_own_client_id : CLIENT_ID_SERVER;
 
-	OrderBackup *ob;
-	FOR_ALL_ORDER_BACKUPS(ob) {
-		/* If it's not an backup of us, so ignore it. */
+	for (OrderBackup *ob : OrderBackup::Iterate()) {
+		/* If it's not a backup of us, ignore it. */
 		if (ob->user != user) continue;
 		/* If it's not for our chosen tile either, ignore it. */
 		if (t != INVALID_TILE && t != ob->tile) continue;
@@ -219,8 +214,7 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  */
 /* static */ void OrderBackup::ClearGroup(GroupID group)
 {
-	OrderBackup *ob;
-	FOR_ALL_ORDER_BACKUPS(ob) {
+	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		if (ob->group == group) ob->group = DEFAULT_GROUP;
 	}
 }
@@ -235,8 +229,7 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 /* static */ void OrderBackup::ClearVehicle(const Vehicle *v)
 {
 	assert(v != nullptr);
-	OrderBackup *ob;
-	FOR_ALL_ORDER_BACKUPS(ob) {
+	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		if (ob->clone == v) {
 			/* Get another item in the shared list. */
 			ob->clone = (v->FirstShared() == v) ? v->NextShared() : v->FirstShared();
@@ -256,8 +249,7 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  */
 /* static */ void OrderBackup::RemoveOrder(OrderType type, DestinationID destination, bool hangar)
 {
-	OrderBackup *ob;
-	FOR_ALL_ORDER_BACKUPS(ob) {
+	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		for (Order *order = ob->orders; order != nullptr; order = order->next) {
 			OrderType ot = order->GetType();
 			if (ot == OT_GOTO_DEPOT && (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) continue;
