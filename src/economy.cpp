@@ -345,8 +345,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		Company::Get(old_owner)->money = UINT64_MAX >> 2; // jackpot ;p
 	}
 
-	Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
+	for (Subsidy *s : Subsidy::Iterate()) {
 		if (s->awarded == old_owner) {
 			if (new_owner == INVALID_OWNER) {
 				delete s;
