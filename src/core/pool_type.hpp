@@ -363,10 +363,4 @@ private:
 	void FreeItem(size_t index);
 };
 
-#define FOR_ALL_ITEMS_FROM(type, iter, var, start) \
-	for (size_t iter = start; var = nullptr, iter < type::GetPoolSize(); iter++) \
-		if ((var = type::Get(iter)) != nullptr)
-
-#define FOR_ALL_ITEMS(type, iter, var) FOR_ALL_ITEMS_FROM(type, iter, var, 0)
-
 #endif /* POOL_TYPE_HPP */
