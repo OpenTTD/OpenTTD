@@ -1927,17 +1927,20 @@ static void SetDefaultRailGui()
 			/* No rail, just get the first available one */
 			FALLTHROUGH;
 		}
-		case 0:
+		case 0: {
 			/* Use first available type */
-			rt = RAILTYPE_BEGIN;
-			while (rt < RAILTYPE_END && !HasRailtypeAvail(_local_company, rt)) rt++;
+			std::vector<RailType>::const_iterator it = std::find_if(_sorted_railtypes.begin(), _sorted_railtypes.end(),
+					[](RailType r){ return HasRailtypeAvail(_local_company, r); });
+			rt = it != _sorted_railtypes.end() ? *it : RAILTYPE_BEGIN;
 			break;
-
-		case 1:
+		}
+		case 1: {
 			/* Use last available type */
-			rt = GetBestRailtype(_local_company);
+			std::vector<RailType>::const_reverse_iterator it = std::find_if(_sorted_railtypes.rbegin(), _sorted_railtypes.rend(),
+					[](RailType r){ return HasRailtypeAvail(_local_company, r); });
+			rt = it != _sorted_railtypes.rend() ? *it : RAILTYPE_BEGIN;
 			break;
-
+		}
 		default:
 			NOT_REACHED();
 	}

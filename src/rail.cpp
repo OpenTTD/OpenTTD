@@ -209,21 +209,6 @@ bool ValParamRailtype(const RailType rail)
 }
 
 /**
- * Returns the "best" railtype a company can build.
- * As the AI doesn't know what the BEST one is, we have our own priority list
- * here. When adding new railtypes, modify this function
- * @param company the company "in action"
- * @return The "best" railtype a company has available
- */
-RailType GetBestRailtype(const CompanyID company)
-{
-	if (HasRailtypeAvail(company, RAILTYPE_MAGLEV)) return RAILTYPE_MAGLEV;
-	if (HasRailtypeAvail(company, RAILTYPE_MONO)) return RAILTYPE_MONO;
-	if (HasRailtypeAvail(company, RAILTYPE_ELECTRIC)) return RAILTYPE_ELECTRIC;
-	return RAILTYPE_RAIL;
-}
-
-/**
  * Add the rail types that are to be introduced at the given date.
  * @param current The currently available railtypes.
  * @param date    The date for the introduction comparisons.
