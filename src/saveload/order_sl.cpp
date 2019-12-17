@@ -123,9 +123,7 @@ const SaveLoad *GetOrderDescription()
 
 static void Save_ORDR()
 {
-	Order *order;
-
-	FOR_ALL_ORDERS(order) {
+	for (Order *order : Order::Iterate()) {
 		SlSetArrayIndex(order->index);
 		SlObject(order, GetOrderDescription());
 	}
@@ -166,8 +164,8 @@ static void Load_ORDR()
 		}
 
 		/* Update all the next pointer */
-		Order *o;
-		FOR_ALL_ORDERS(o) {
+		for (Order *o : Order::Iterate()) {
+			size_t order_index = o->index;
 			/* Delete invalid orders */
 			if (o->IsType(OT_NOTHING)) {
 				delete o;
@@ -197,9 +195,7 @@ static void Ptrs_ORDR()
 	/* Orders from old savegames have pointers corrected in Load_ORDR */
 	if (IsSavegameVersionBefore(SLV_5, 2)) return;
 
-	Order *o;
-
-	FOR_ALL_ORDERS(o) {
+	for (Order *o : Order::Iterate()) {
 		SlObject(o, GetOrderDescription());
 	}
 }
@@ -216,9 +212,7 @@ const SaveLoad *GetOrderListDescription()
 
 static void Save_ORDL()
 {
-	OrderList *list;
-
-	FOR_ALL_ORDER_LISTS(list) {
+	for (OrderList *list : OrderList::Iterate()) {
 		SlSetArrayIndex(list->index);
 		SlObject(list, GetOrderListDescription());
 	}
@@ -238,9 +232,7 @@ static void Load_ORDL()
 
 static void Ptrs_ORDL()
 {
-	OrderList *list;
-
-	FOR_ALL_ORDER_LISTS(list) {
+	for (OrderList *list : OrderList::Iterate()) {
 		SlObject(list, GetOrderListDescription());
 	}
 }
@@ -277,8 +269,7 @@ static void Save_BKOR()
 	 * normal games this information isn't needed. */
 	if (!_networking || !_network_server) return;
 
-	OrderBackup *ob;
-	FOR_ALL_ORDER_BACKUPS(ob) {
+	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		SlSetArrayIndex(ob->index);
 		SlObject(ob, GetOrderBackupDescription());
 	}
@@ -297,8 +288,7 @@ void Load_BKOR()
 
 static void Ptrs_BKOR()
 {
-	OrderBackup *ob;
-	FOR_ALL_ORDER_BACKUPS(ob) {
+	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		SlObject(ob, GetOrderBackupDescription());
 	}
 }

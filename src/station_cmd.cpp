@@ -3664,9 +3664,8 @@ void DeleteStaleLinks(Station *from)
 				if (auto_distributed) {
 					/* Have all vehicles refresh their next hops before deciding to
 					 * remove the node. */
-					OrderList *l;
 					std::vector<Vehicle *> vehicles;
-					FOR_ALL_ORDER_LISTS(l) {
+					for (OrderList *l : OrderList::Iterate()) {
 						bool found_from = false;
 						bool found_to = false;
 						for (Order *order = l->GetFirstOrder(); order != nullptr; order = order->next) {
