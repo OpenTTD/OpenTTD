@@ -29,8 +29,7 @@ static const SaveLoad _subsidies_desc[] = {
 
 static void Save_SUBS()
 {
-	Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
+	for (Subsidy *s : Subsidy::Iterate()) {
 		SlSetArrayIndex(s->index);
 		SlObject(s, _subsidies_desc);
 	}

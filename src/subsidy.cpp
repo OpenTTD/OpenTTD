@@ -135,8 +135,7 @@ void RebuildSubsidisedSourceAndDestinationCache()
 
 	for (Industry *i : Industry::Iterate()) i->part_of_subsidy = POS_NONE;
 
-	const Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
+	for (const Subsidy *s : Subsidy::Iterate()) {
 		SetPartOfSubsidyFlag(s->src_type, s->src, POS_SRC);
 		SetPartOfSubsidyFlag(s->dst_type, s->dst, POS_DST);
 	}
@@ -151,8 +150,7 @@ void DeleteSubsidyWith(SourceType type, SourceID index)
 {
 	bool dirty = false;
 
-	Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
+	for (Subsidy *s : Subsidy::Iterate()) {
 		if ((s->src_type == type && s->src == index) || (s->dst_type == type && s->dst == index)) {
 			delete s;
 			dirty = true;
@@ -176,8 +174,7 @@ void DeleteSubsidyWith(SourceType type, SourceID index)
  */
 static bool CheckSubsidyDuplicate(CargoID cargo, SourceType src_type, SourceID src, SourceType dst_type, SourceID dst)
 {
-	const Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
+	for (const Subsidy *s : Subsidy::Iterate()) {
 		if (s->cargo_type == cargo &&
 				s->src_type == src_type && s->src == src &&
 				s->dst_type == dst_type && s->dst == dst) {
@@ -471,8 +468,7 @@ void SubsidyMonthlyLoop()
 {
 	bool modified = false;
 
-	Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
+	for (Subsidy *s : Subsidy::Iterate()) {
 		if (--s->remaining == 0) {
 			if (!s->IsAwarded()) {
 				Pair reftype = SetupSubsidyDecodeParam(s, true);
@@ -564,8 +560,7 @@ bool CheckSubsidised(CargoID cargo_type, CompanyID company, SourceType src_type,
 	 * which are destination of subsidised path. Do that only if needed */
 	std::vector<const Town *> towns_near;
 	if (!st->rect.IsEmpty()) {
-		Subsidy *s;
-		FOR_ALL_SUBSIDIES(s) {
+		for (const Subsidy *s : Subsidy::Iterate()) {
 			/* Don't create the cache if there is no applicable subsidy with town as destination */
 			if (s->dst_type != ST_TOWN) continue;
 			if (s->cargo_type != cargo_type || s->src_type != src_type || s->src != src) continue;
@@ -585,8 +580,7 @@ bool CheckSubsidised(CargoID cargo_type, CompanyID company, SourceType src_type,
 
 	/* Check if there's a (new) subsidy that applies. There can be more subsidies triggered by this delivery!
 	 * Think about the case that subsidies are A->B and A->C and station has both B and C in its catchment area */
-	Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
+	for (Subsidy *s : Subsidy::Iterate()) {
 		if (s->cargo_type == cargo_type && s->src_type == src_type && s->src == src && (!s->IsAwarded() || s->awarded == company)) {
 			switch (s->dst_type) {
 				case ST_INDUSTRY:

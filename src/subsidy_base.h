@@ -58,7 +58,4 @@ static const uint SUBSIDY_CARGO_MIN_POPULATION = 900; ///< Min. population of de
 static const uint SUBSIDY_MAX_PCT_TRANSPORTED  =  42; ///< Subsidy will be created only for towns/industries with less % transported
 static const uint SUBSIDY_MAX_DISTANCE         =  70; ///< Max. length of subsidised route (DistanceManhattan)
 
-#define FOR_ALL_SUBSIDIES_FROM(var, start) FOR_ALL_ITEMS_FROM(Subsidy, subsidy_index, var, start)
-#define FOR_ALL_SUBSIDIES(var) FOR_ALL_SUBSIDIES_FROM(var, 0)
-
 #endif /* SUBSIDY_BASE_H */

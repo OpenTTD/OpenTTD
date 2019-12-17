@@ -15,8 +15,7 @@
 
 ScriptSubsidyList::ScriptSubsidyList()
 {
-	const Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
+	for (const Subsidy *s : Subsidy::Iterate()) {
 		this->AddItem(s->index);
 	}
 }

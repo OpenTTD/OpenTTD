@@ -2219,8 +2219,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_125)) {
 		/* Convert old subsidies */
-		Subsidy *s;
-		FOR_ALL_SUBSIDIES(s) {
+		for (Subsidy *s : Subsidy::Iterate()) {
 			if (s->remaining < 12) {
 				/* Converting nonawarded subsidy */
 				s->remaining = 12 - s->remaining; // convert "age" to "remaining"
