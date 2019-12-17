@@ -202,14 +202,12 @@ static void OnNewYear()
 		ShowEndGameChart();
 	/* check if we reached the maximum year, decrement dates by a year */
 	} else if (_cur_year == MAX_YEAR + 1) {
-		Vehicle *v;
 		int days_this_year;
 
 		_cur_year--;
 		days_this_year = IsLeapYear(_cur_year) ? DAYS_IN_LEAP_YEAR : DAYS_IN_YEAR;
 		_date -= days_this_year;
-		FOR_ALL_VEHICLES(v) v->date_of_last_service -= days_this_year;
-
+		for (Vehicle *v : Vehicle::Iterate()) v->date_of_last_service -= days_this_year;
 		for (LinkGraph *lg : LinkGraph::Iterate()) lg->ShiftDates(-days_this_year);
 
 		/* Because the _date wraps here, and text-messages expire by game-days, we have to clean out

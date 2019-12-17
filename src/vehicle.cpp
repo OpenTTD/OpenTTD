@@ -670,16 +670,14 @@ static void UpdateVehicleViewportHash(Vehicle *v, int x, int y)
 
 void ResetVehicleHash()
 {
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) { v->hash_tile_current = nullptr; }
+	for (Vehicle *v : Vehicle::Iterate()) { v->hash_tile_current = nullptr; }
 	memset(_vehicle_viewport_hash, 0, sizeof(_vehicle_viewport_hash));
 	memset(_vehicle_tile_hash, 0, sizeof(_vehicle_tile_hash));
 }
 
 void ResetVehicleColourMap()
 {
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) { v->colourmap = PAL_NONE; }
+	for (Vehicle *v : Vehicle::Iterate()) { v->colourmap = PAL_NONE; }
 }
 
 /**
@@ -954,8 +952,8 @@ void CallVehicleTicks()
 	PerformanceAccumulator::Reset(PFE_GL_SHIPS);
 	PerformanceAccumulator::Reset(PFE_GL_AIRCRAFT);
 
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
+		size_t vehicle_index = v->index;
 		/* Vehicle could be deleted in this tick */
 		if (!v->Tick()) {
 			assert(Vehicle::Get(vehicle_index) == nullptr);
@@ -1026,7 +1024,7 @@ void CallVehicleTicks()
 
 	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 	for (auto &it : _vehicles_to_autoreplace) {
-		v = it.first;
+		Vehicle *v = it.first;
 		/* Autoreplace needs the current company set as the vehicle owner */
 		cur_company.Change(v->owner);
 
@@ -1166,7 +1164,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
  */
 Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 {
-	Vehicle *found = nullptr, *v;
+	Vehicle *found = nullptr;
 	uint dist, best_dist = UINT_MAX;
 
 	if ((uint)(x -= vp->left) >= (uint)vp->width || (uint)(y -= vp->top) >= (uint)vp->height) return nullptr;
@@ -1174,7 +1172,7 @@ Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 	x = ScaleByZoom(x, vp->zoom) + vp->virtual_left;
 	y = ScaleByZoom(y, vp->zoom) + vp->virtual_top;
 
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		if ((v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0 &&
 				x >= v->coord.left && x <= v->coord.right &&
 				y >= v->coord.top && y <= v->coord.bottom) {
@@ -1688,8 +1686,7 @@ VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y
 FreeUnitIDGenerator::FreeUnitIDGenerator(VehicleType type, CompanyID owner) : cache(nullptr), maxid(0), curid(0)
 {
 	/* Find maximum */
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->type == type && v->owner == owner) {
 			this->maxid = max<UnitID>(this->maxid, v->unitnumber);
 		}
@@ -1703,7 +1700,7 @@ FreeUnitIDGenerator::FreeUnitIDGenerator(VehicleType type, CompanyID owner) : ca
 	this->cache = CallocT<bool>(this->maxid + 2);
 
 	/* Fill the cache */
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->type == type && v->owner == owner) {
 			this->cache[v->unitnumber] = true;
 		}
@@ -1787,8 +1784,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type, byte subtype)
 	}
 
 	/* We should be able to build infrastructure when we have the actual vehicle type */
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (type == VEH_ROAD && GetRoadTramType(RoadVehicle::From(v)->roadtype) != (RoadTramType)subtype) continue;
 		if (v->owner == _local_company && v->type == type) return true;
 	}
@@ -2745,8 +2741,7 @@ void Vehicle::RemoveFromShared()
 
 void VehiclesYearlyLoop()
 {
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v->IsPrimaryVehicle()) {
 			/* show warning if vehicle is not generating enough income last 2 years (corresponds to a red icon in the vehicle list) */
 			Money profit = v->GetDisplayProfitThisYear();

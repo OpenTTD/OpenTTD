@@ -1025,8 +1025,7 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		InvalidateWindowData(WC_SMALLMAP, 0, 1);
 
 		/* Company colour data is indirectly cached. */
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			if (v->owner == _current_company) v->InvalidateNewGRFCache();
 		}
 

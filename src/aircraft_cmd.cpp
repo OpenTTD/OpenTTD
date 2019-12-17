@@ -2113,8 +2113,7 @@ void UpdateAirplanesOnNewStation(const Station *st)
 	const AirportFTAClass *ap = st->airport.GetFTA();
 	Direction rotation = st->airport.tile == INVALID_TILE ? DIR_N : st->airport.rotation;
 
-	Aircraft *v;
-	FOR_ALL_AIRCRAFT(v) {
+	for (Aircraft *v : Aircraft::Iterate()) {
 		if (!v->IsNormalAircraft() || v->targetairport != st->index) continue;
 		assert(v->state == FLYING);
 

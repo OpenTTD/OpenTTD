@@ -136,11 +136,6 @@ struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	}
 };
 
-/**
- * Macro for iterating over all aircraft.
- */
-#define FOR_ALL_AIRCRAFT(var) FOR_ALL_VEHICLES_OF_TYPE(Aircraft, var)
-
 void GetRotorImage(const Aircraft *v, EngineImageType image_type, VehicleSpriteSeq *result);
 
 Station *GetTargetAirportIfValid(const Aircraft *v);

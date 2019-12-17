@@ -71,10 +71,9 @@ byte FreightWagonMult(CargoID cargo)
 /** Checks if lengths of all rail vehicles are valid. If not, shows an error message. */
 void CheckTrainsLengths()
 {
-	const Train *v;
 	bool first = true;
 
-	FOR_ALL_TRAINS(v) {
+	for (const Train *v : Train::Iterate()) {
 		if (v->First() == v && !(v->vehstatus & VS_CRASHED)) {
 			for (const Train *u = v, *w = v->Next(); w != nullptr; u = w, w = w->Next()) {
 				if (u->track != TRACK_BIT_DEPOT) {
@@ -641,8 +640,7 @@ static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const 
 		CheckConsistencyOfArticulatedVehicle(v);
 
 		/* Try to connect the vehicle to one of free chains of wagons. */
-		Train *w;
-		FOR_ALL_TRAINS(w) {
+		for (Train *w : Train::Iterate()) {
 			if (w->tile == tile &&              ///< Same depot
 					w->IsFreeWagon() &&             ///< A free wagon chain
 					w->engine_type == e->index &&   ///< Same type
@@ -660,8 +658,7 @@ static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const 
 /** Move all free vehicles in the depot to the train */
 static void NormalizeTrainVehInDepot(const Train *u)
 {
-	const Train *v;
-	FOR_ALL_TRAINS(v) {
+	for (const Train *v : Train::Iterate()) {
 		if (v->IsFreeWagon() && v->tile == u->tile &&
 				v->track == TRACK_BIT_DEPOT) {
 			if (DoCommand(0, v->index | 1 << 20, u->index, DC_EXEC,
@@ -796,8 +793,7 @@ static Train *FindGoodVehiclePos(const Train *src)
 	EngineID eng = src->engine_type;
 	TileIndex tile = src->tile;
 
-	Train *dst;
-	FOR_ALL_TRAINS(dst) {
+	for (Train *dst : Train::Iterate()) {
 		if (dst->IsFreeWagon() && dst->tile == tile && !(dst->vehstatus & VS_CRASHED)) {
 			/* check so all vehicles in the line have the same engine. */
 			Train *t = dst;

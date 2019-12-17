@@ -57,10 +57,4 @@ struct Ship FINAL : public SpecializedVehicle<Ship, VEH_SHIP> {
 
 bool IsShipDestinationTile(TileIndex tile, StationID station);
 
-/**
- * Iterate over all ships.
- * @param var The variable used for iteration.
- */
-#define FOR_ALL_SHIPS(var) FOR_ALL_VEHICLES_OF_TYPE(Ship, var)
-
 #endif /* SHIP_H */

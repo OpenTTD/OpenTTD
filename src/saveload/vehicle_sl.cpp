@@ -31,13 +31,11 @@
  */
 void ConnectMultiheadedTrains()
 {
-	Train *v;
-
-	FOR_ALL_TRAINS(v) {
+	for (Train *v : Train::Iterate()) {
 		v->other_multiheaded_part = nullptr;
 	}
 
-	FOR_ALL_TRAINS(v) {
+	for (Train *v : Train::Iterate()) {
 		if (v->IsFrontEngine() || v->IsFreeWagon()) {
 			/* Two ways to associate multiheaded parts to each other:
 			 * sequential-matching: Trains shall be arranged to look like <..>..<..>..<..>..
@@ -111,10 +109,9 @@ void ConnectMultiheadedTrains()
  */
 void ConvertOldMultiheadToNew()
 {
-	Train *t;
-	FOR_ALL_TRAINS(t) SetBit(t->subtype, 7); // indicates that it's the old format and needs to be converted in the next loop
+	for (Train *t : Train::Iterate()) SetBit(t->subtype, 7); // indicates that it's the old format and needs to be converted in the next loop
 
-	FOR_ALL_TRAINS(t) {
+	for (Train *t : Train::Iterate()) {
 		if (HasBit(t->subtype, 7) && ((t->subtype & ~0x80) == 0 || (t->subtype & ~0x80) == 4)) {
 			for (Train *u = t; u != nullptr; u = u->Next()) {
 				const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
@@ -169,8 +166,7 @@ void UpdateOldAircraft()
 		st->airport.flags = 0; // reset airport
 	}
 
-	Aircraft *a;
-	FOR_ALL_AIRCRAFT(a) {
+	for (Aircraft *a : Aircraft::Iterate()) {
 		/* airplane has another vehicle with subtype 4 (shadow), helicopter also has 3 (rotor)
 		 * skip those */
 		if (a->IsNormalAircraft()) {
@@ -220,8 +216,7 @@ static void CheckValidVehicles()
 	for (const Engine *e : Engine::IterateType(VEH_SHIP)) { first_engine[VEH_SHIP] = e->index; break; }
 	for (const Engine *e : Engine::IterateType(VEH_AIRCRAFT)) { first_engine[VEH_AIRCRAFT] = e->index; break; }
 
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		/* Test if engine types match */
 		switch (v->type) {
 			case VEH_TRAIN:
@@ -244,9 +239,7 @@ extern byte _age_cargo_skip_counter; // From misc_sl.cpp
 /** Called after load to update coordinates */
 void AfterLoadVehicles(bool part_of_load)
 {
-	Vehicle *v;
-
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		/* Reinstate the previous pointer */
 		if (v->Next() != nullptr) v->Next()->previous = v;
 		if (v->NextShared() != nullptr) v->NextShared()->previous_shared = v;
@@ -267,7 +260,7 @@ void AfterLoadVehicles(bool part_of_load)
 		 */
 		std::map<Order*, OrderList*> mapping;
 
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			if (v->orders.old != nullptr) {
 				if (IsSavegameVersionBefore(SLV_105)) { // Pre-105 didn't save an OrderList
 					if (mapping[v->orders.old] == nullptr) {
@@ -294,7 +287,7 @@ void AfterLoadVehicles(bool part_of_load)
 		}
 	}
 
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		/* Fill the first pointers */
 		if (v->Previous() == nullptr) {
 			for (Vehicle *u = v; u != nullptr; u = u->Next()) {
@@ -306,7 +299,7 @@ void AfterLoadVehicles(bool part_of_load)
 	if (part_of_load) {
 		if (IsSavegameVersionBefore(SLV_105)) {
 			/* Before 105 there was no order for shared orders, thus it messed up horribly */
-			FOR_ALL_VEHICLES(v) {
+			for (Vehicle *v : Vehicle::Iterate()) {
 				if (v->First() != v || v->orders.list != nullptr || v->previous_shared != nullptr || v->next_shared == nullptr) continue;
 
 				/* As above, allocating OrderList here is safe. */
@@ -320,8 +313,7 @@ void AfterLoadVehicles(bool part_of_load)
 
 		if (IsSavegameVersionBefore(SLV_157)) {
 			/* The road vehicle subtype was converted to a flag. */
-			RoadVehicle *rv;
-			FOR_ALL_ROADVEHICLES(rv) {
+			for (RoadVehicle *rv : RoadVehicle::Iterate()) {
 				if (rv->subtype == 0) {
 					/* The road vehicle is at the front. */
 					rv->SetFrontEngine();
@@ -337,7 +329,7 @@ void AfterLoadVehicles(bool part_of_load)
 
 		if (IsSavegameVersionBefore(SLV_160)) {
 			/* In some old savegames there might be some "crap" stored. */
-			FOR_ALL_VEHICLES(v) {
+			for (Vehicle *v : Vehicle::Iterate()) {
 				if (!v->IsPrimaryVehicle() && v->type != VEH_DISASTER) {
 					v->current_order.Free();
 					v->unitnumber = 0;
@@ -347,14 +339,14 @@ void AfterLoadVehicles(bool part_of_load)
 
 		if (IsSavegameVersionBefore(SLV_162)) {
 			/* Set the vehicle-local cargo age counter from the old global counter. */
-			FOR_ALL_VEHICLES(v) {
+			for (Vehicle *v : Vehicle::Iterate()) {
 				v->cargo_age_counter = _age_cargo_skip_counter;
 			}
 		}
 
 		if (IsSavegameVersionBefore(SLV_180)) {
 			/* Set service interval flags */
-			FOR_ALL_VEHICLES(v) {
+			for (Vehicle *v : Vehicle::Iterate()) {
 				if (!v->IsPrimaryVehicle()) continue;
 
 				const Company *c = Company::Get(v->owner);
@@ -367,13 +359,11 @@ void AfterLoadVehicles(bool part_of_load)
 
 		if (IsSavegameVersionBefore(SLV_SHIP_ROTATION)) {
 			/* Ship rotation added */
-			Ship *s;
-			FOR_ALL_SHIPS(s) {
+			for (Ship *s : Ship::Iterate()) {
 				s->rotation = s->direction;
 			}
 		} else {
-			Ship *s;
-			FOR_ALL_SHIPS(s) {
+			for (Ship *s : Ship::Iterate()) {
 				if (s->rotation == s->direction) continue;
 				/* In case we are rotating on gameload, set the rotation position to
 				 * the current position, otherwise the applied workaround offset would
@@ -387,7 +377,7 @@ void AfterLoadVehicles(bool part_of_load)
 
 	CheckValidVehicles();
 
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		assert(v->first != nullptr);
 
 		v->trip_occupancy = CalcPercentVehicleFilled(v, nullptr);
@@ -432,7 +422,7 @@ void AfterLoadVehicles(bool part_of_load)
 
 	/* Stop non-front engines */
 	if (part_of_load && IsSavegameVersionBefore(SLV_112)) {
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			if (v->type == VEH_TRAIN) {
 				Train *t = Train::From(v);
 				if (!t->IsFrontEngine()) {
@@ -450,7 +440,7 @@ void AfterLoadVehicles(bool part_of_load)
 		}
 	}
 
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		switch (v->type) {
 			case VEH_ROAD:
 			case VEH_TRAIN:
@@ -494,8 +484,7 @@ void FixupTrainLengths()
 {
 	/* Vehicle center was moved from 4 units behind the front to half the length
 	 * behind the front. Move vehicles so they end up on the same spot. */
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v->type == VEH_TRAIN && v->IsPrimaryVehicle()) {
 			/* The vehicle center is now more to the front depending on vehicle length,
 			 * so we need to move all vehicles forward to cover the difference to the
@@ -892,9 +881,8 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 /** Will be called when the vehicles need to be saved. */
 static void Save_VEHS()
 {
-	Vehicle *v;
 	/* Write the vehicles */
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		SlSetArrayIndex(v->index);
 		SlObject(v, GetVehicleDescription(v->type));
 	}
@@ -951,8 +939,7 @@ void Load_VEHS()
 
 static void Ptrs_VEHS()
 {
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		SlObject(v, GetVehicleDescription(v->type));
 	}
 }

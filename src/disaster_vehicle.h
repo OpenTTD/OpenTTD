@@ -51,10 +51,4 @@ struct DisasterVehicle FINAL : public SpecializedVehicle<DisasterVehicle, VEH_DI
 	bool Tick();
 };
 
-/**
- * Iterate over disaster vehicles.
- * @param var The variable used to iterate over.
- */
-#define FOR_ALL_DISASTERVEHICLES(var) FOR_ALL_VEHICLES_OF_TYPE(DisasterVehicle, var)
-
 #endif /* DISASTER_VEHICLE_H */

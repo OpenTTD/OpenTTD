@@ -20,8 +20,7 @@
 
 ScriptVehicleList::ScriptVehicleList()
 {
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if ((v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::Train::From(v)->IsFreeWagon()))) this->AddItem(v->index);
 	}
 }
@@ -30,8 +29,7 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(StationID station_id)
 {
 	if (!ScriptBaseStation::IsValidBaseStation(station_id)) return;
 
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if ((v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && v->IsPrimaryVehicle()) {
 			const Order *order;
 
@@ -81,8 +79,7 @@ ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 			return;
 	}
 
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if ((v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && v->IsPrimaryVehicle() && v->type == type) {
 			const Order *order;
 
@@ -109,8 +106,7 @@ ScriptVehicleList_Group::ScriptVehicleList_Group(GroupID group_id)
 {
 	if (!ScriptGroup::IsValidGroup((ScriptGroup::GroupID)group_id)) return;
 
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->owner == ScriptObject::GetCompany() && v->IsPrimaryVehicle()) {
 			if (v->group_id == group_id) this->AddItem(v->index);
 		}
@@ -121,8 +117,7 @@ ScriptVehicleList_DefaultGroup::ScriptVehicleList_DefaultGroup(ScriptVehicle::Ve
 {
 	if (vehicle_type < ScriptVehicle::VT_RAIL || vehicle_type > ScriptVehicle::VT_AIR) return;
 
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->owner == ScriptObject::GetCompany() && v->IsPrimaryVehicle()) {
 			if (v->type == (::VehicleType)vehicle_type && v->group_id == ScriptGroup::GROUP_DEFAULT) this->AddItem(v->index);
 		}

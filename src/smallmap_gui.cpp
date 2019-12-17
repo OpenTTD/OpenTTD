@@ -876,8 +876,7 @@ void SmallMapWindow::DrawSmallMapColumn(void *dst, uint xc, uint yc, int pitch, 
  */
 void SmallMapWindow::DrawVehicles(const DrawPixelInfo *dpi, Blitter *blitter) const
 {
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->type == VEH_EFFECT) continue;
 		if (v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) continue;
 

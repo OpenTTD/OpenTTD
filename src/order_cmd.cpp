@@ -1800,14 +1800,12 @@ void CheckOrders(const Vehicle *v)
  */
 void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination, bool hangar)
 {
-	Vehicle *v;
-
 	/* Aircraft have StationIDs for depot orders and never use DepotIDs
 	 * This fact is handled specially below
 	 */
 
 	/* Go through all vehicles */
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		Order *order;
 
 		order = &v->current_order;

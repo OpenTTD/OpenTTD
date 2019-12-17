@@ -172,9 +172,7 @@ static StringID *_old_vehicle_names;
  */
 void FixOldVehicles()
 {
-	Vehicle *v;
-
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		if ((size_t)v->next == 0xFFFF) {
 			v->next = nullptr;
 		} else {
@@ -384,8 +382,7 @@ static bool FixTTOEngines()
 		233, 234, 235, 236, 237, 238, 253
 	};
 
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v->engine_type >= lengthof(tto_to_ttd)) return false;
 		v->engine_type = tto_to_ttd[v->engine_type];
 	}
