@@ -1921,11 +1921,7 @@ static void SetDefaultRailGui()
 				}
 			}
 
-			rt = RAILTYPE_RAIL;
-			for (RailType r = RAILTYPE_ELECTRIC; r < RAILTYPE_END; r++) {
-				if (count[r] >= count[rt]) rt = r;
-			}
-
+			rt = static_cast<RailType>(std::max_element(count + RAILTYPE_BEGIN, count + RAILTYPE_END) - count);
 			if (count[rt] > 0) break;
 
 			/* No rail, just get the first available one */
@@ -1933,7 +1929,7 @@ static void SetDefaultRailGui()
 		}
 		case 0:
 			/* Use first available type */
-			rt = RAILTYPE_RAIL;
+			rt = RAILTYPE_BEGIN;
 			while (rt < RAILTYPE_END && !HasRailtypeAvail(_local_company, rt)) rt++;
 			break;
 
