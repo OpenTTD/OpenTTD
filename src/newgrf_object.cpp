@@ -186,8 +186,7 @@ static uint32 GetNearbyObjectTileInformation(byte parameter, TileIndex tile, Obj
 static uint32 GetClosestObject(TileIndex tile, ObjectType type, const Object *current)
 {
 	uint32 best_dist = UINT32_MAX;
-	const Object *o;
-	FOR_ALL_OBJECTS(o) {
+	for (const Object *o : Object::Iterate()) {
 		if (o->type != type || o == current) continue;
 
 		best_dist = min(best_dist, DistanceManhattan(tile, o->location.tile));
