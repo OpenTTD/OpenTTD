@@ -2255,8 +2255,7 @@ void RebuildViewportKdtree()
 		if (wp->sign.kdtree_valid) items.push_back(ViewportSignKdtreeItem::MakeWaypoint(wp->index));
 	}
 
-	const Town *town;
-	FOR_ALL_TOWNS(town) {
+	for (const Town *town : Town::Iterate()) {
 		if (town->cache.sign.kdtree_valid) items.push_back(ViewportSignKdtreeItem::MakeTown(town->index));
 	}
 

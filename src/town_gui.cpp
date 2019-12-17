@@ -689,8 +689,7 @@ private:
 		if (this->towns.NeedRebuild()) {
 			this->towns.clear();
 
-			const Town *t;
-			FOR_ALL_TOWNS(t) {
+			for (const Town *t : Town::Iterate()) {
 				this->towns.push_back(t);
 			}
 
@@ -991,8 +990,7 @@ public:
 				} else {
 					this->towns.clear();
 
-					const Town *t;
-					FOR_ALL_TOWNS(t) {
+					for (const Town *t : Town::Iterate()) {
 						this->string_filter.ResetState();
 
 						SetDParam(0, t->index);

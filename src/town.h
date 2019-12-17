@@ -185,9 +185,6 @@ TileIndexDiff GetHouseNorthPart(HouseID &house);
 
 Town *CalcClosestTownFromTile(TileIndex tile, uint threshold = UINT_MAX);
 
-#define FOR_ALL_TOWNS_FROM(var, start) FOR_ALL_ITEMS_FROM(Town, town_index, var, start)
-#define FOR_ALL_TOWNS(var) FOR_ALL_TOWNS_FROM(var, 0)
-
 void ResetHouses();
 
 void ClearTownHouse(Town *t, TileIndex tile);

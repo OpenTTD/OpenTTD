@@ -83,8 +83,7 @@ void InitializeBuildingCounts()
 {
 	memset(&_building_counts, 0, sizeof(_building_counts));
 
-	Town *t;
-	FOR_ALL_TOWNS(t) {
+	for (Town *t : Town::Iterate()) {
 		memset(&t->cache.building_counts, 0, sizeof(t->cache.building_counts));
 	}
 }

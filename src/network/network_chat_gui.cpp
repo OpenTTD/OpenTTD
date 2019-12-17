@@ -347,9 +347,7 @@ struct NetworkChatWindow : public Window {
 		 * Not that the following assumes all town indices are adjacent, ie no
 		 * towns have been deleted. */
 		if (*item < (uint)MAX_CLIENT_SLOTS + Town::GetPoolSize()) {
-			const Town *t;
-
-			FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_SLOTS) {
+			for (const Town *t : Town::Iterate(*item - MAX_CLIENT_SLOTS)) {
 				/* Get the town-name via the string-system */
 				SetDParam(0, t->index);
 				GetString(chat_tab_temp_buffer, STR_TOWN_NAME, lastof(chat_tab_temp_buffer));
