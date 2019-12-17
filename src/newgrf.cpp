@@ -4553,8 +4553,6 @@ static ChangeInfoResult RoadTypeReserveInfo(uint id, int numinfo, int prop, Byte
 				break;
 
 			case 0x10: // Road Type flags
-			case 0x12: // Station graphic
-			case 0x15: // Acceleration model
 			case 0x16: // Map colour
 			case 0x1A: // Sort order
 				buf->ReadByte();
