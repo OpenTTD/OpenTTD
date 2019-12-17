@@ -173,8 +173,7 @@ void UpdateCompanyHQ(TileIndex tile, uint score)
  */
 void UpdateObjectColours(const Company *c)
 {
-	Object *obj;
-	FOR_ALL_OBJECTS(obj) {
+	for (Object *obj : Object::Iterate()) {
 		Owner owner = GetTileOwner(obj->location.tile);
 		/* Not the current owner, so colour doesn't change. */
 		if (owner != c->index) continue;

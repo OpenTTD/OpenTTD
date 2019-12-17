@@ -253,8 +253,7 @@ static void InitializeWindowsAndCaches()
 	}
 
 	/* Count number of objects per type */
-	Object *o;
-	FOR_ALL_OBJECTS(o) {
+	for (Object *o : Object::Iterate()) {
 		Object::IncTypeCount(o->type);
 	}
 
@@ -2474,8 +2473,7 @@ bool AfterLoadGame()
 
 	/* Add (random) colour to all objects. */
 	if (IsSavegameVersionBefore(SLV_148)) {
-		Object *o;
-		FOR_ALL_OBJECTS(o) {
+		for (Object *o : Object::Iterate()) {
 			Owner owner = GetTileOwner(o->location.tile);
 			o->colour = (owner == OWNER_NONE) ? Random() & 0xF : Company::Get(owner)->livery->colour1;
 		}

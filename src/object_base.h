@@ -78,9 +78,6 @@ protected:
 	static uint16 counts[NUM_OBJECTS]; ///< Number of objects per type ingame
 };
 
-#define FOR_ALL_OBJECTS_FROM(var, start) FOR_ALL_ITEMS_FROM(Object, object_index, var, start)
-#define FOR_ALL_OBJECTS(var) FOR_ALL_OBJECTS_FROM(var, 0)
-
 /**
  * Keeps track of removed objects during execution/testruns of commands.
  */

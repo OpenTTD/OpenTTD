@@ -115,8 +115,7 @@ Town::~Town()
 	for (const Industry *i : Industry::Iterate()) assert(i->town != this);
 
 	/* ... and no object is related to us. */
-	const Object *o;
-	FOR_ALL_OBJECTS(o) assert(o->town != this);
+	for (const Object *o : Object::Iterate()) assert(o->town != this);
 
 	/* Check no tile is related to us. */
 	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
@@ -159,8 +158,7 @@ void Town::PostDestructor(size_t index)
 	UpdateNearestTownForRoadTiles(false);
 
 	/* Give objects a new home! */
-	Object *o;
-	FOR_ALL_OBJECTS(o) {
+	for (Object *o : Object::Iterate()) {
 		if (o->town == nullptr) o->town = CalcClosestTownFromTile(o->location.tile, UINT_MAX);
 	}
 }
