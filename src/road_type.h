@@ -14,9 +14,6 @@
 
 typedef uint32 RoadTypeLabel;
 
-static const RoadTypeLabel ROADTYPE_ROAD_LABEL = 'ROAD';
-static const RoadTypeLabel ROADTYPE_TRAM_LABEL = 'TRAM';
-
 /**
  * The different roadtypes we support
  *
