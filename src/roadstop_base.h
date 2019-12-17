@@ -188,7 +188,4 @@ private:
 	}
 };
 
-#define FOR_ALL_ROADSTOPS_FROM(var, start) FOR_ALL_ITEMS_FROM(RoadStop, roadstop_index, var, start)
-#define FOR_ALL_ROADSTOPS(var) FOR_ALL_ROADSTOPS_FROM(var, 0)
-
 #endif /* ROADSTOP_BASE_H */
