@@ -914,8 +914,7 @@ void SmallMapWindow::DrawVehicles(const DrawPixelInfo *dpi, Blitter *blitter) co
  */
 void SmallMapWindow::DrawTowns(const DrawPixelInfo *dpi) const
 {
-	const Town *t;
-	FOR_ALL_TOWNS(t) {
+	for (const Town *t : Town::Iterate()) {
 		/* Remap the town coordinate */
 		Point pt = this->RemapTile(TileX(t->xy), TileY(t->xy));
 		int x = pt.x - this->subscroll - (t->cache.sign.width_small >> 1);

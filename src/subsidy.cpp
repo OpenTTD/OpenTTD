@@ -130,8 +130,7 @@ static inline void SetPartOfSubsidyFlag(SourceType type, SourceID index, PartOfS
 /** Perform a full rebuild of the subsidies cache. */
 void RebuildSubsidisedSourceAndDestinationCache()
 {
-	Town *t;
-	FOR_ALL_TOWNS(t) t->cache.part_of_subsidy = POS_NONE;
+	for (Town *t : Town::Iterate()) t->cache.part_of_subsidy = POS_NONE;
 
 	for (Industry *i : Industry::Iterate()) i->part_of_subsidy = POS_NONE;
 

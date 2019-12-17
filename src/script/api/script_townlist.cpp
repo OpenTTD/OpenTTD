@@ -15,8 +15,7 @@
 
 ScriptTownList::ScriptTownList()
 {
-	Town *t;
-	FOR_ALL_TOWNS(t) {
+	for (const Town *t : Town::Iterate()) {
 		this->AddItem(t->index);
 	}
 }

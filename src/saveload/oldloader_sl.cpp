@@ -152,10 +152,8 @@ static uint32 RemapOldTownName(uint32 townnameparts, byte old_town_name_type)
 
 static void FixOldTowns()
 {
-	Town *town;
-
 	/* Convert town-names if needed */
-	FOR_ALL_TOWNS(town) {
+	for (Town *town : Town::Iterate()) {
 		if (IsInsideMM(town->townnametype, 0x20C1, 0x20C3)) {
 			town->townnametype = SPECSTR_TOWNNAME_ENGLISH + _settings_game.game_creation.town_name;
 			town->townnameparts = RemapOldTownName(town->townnameparts, _settings_game.game_creation.town_name);

@@ -169,9 +169,7 @@ static void ConvertTownOwner()
 /* since savegame version 4.1, exclusive transport rights are stored at towns */
 static void UpdateExclusiveRights()
 {
-	Town *t;
-
-	FOR_ALL_TOWNS(t) {
+	for (Town *t : Town::Iterate()) {
 		t->exclusivity = INVALID_COMPANY;
 	}
 
@@ -270,8 +268,7 @@ static void InitializeWindowsAndCaches()
 			s->airport.psa->tile = s->airport.tile;
 		}
 	}
-	Town *t;
-	FOR_ALL_TOWNS(t) {
+	for (Town *t : Town::Iterate()) {
 		for (std::list<PersistentStorage *>::iterator it = t->psa_list.begin(); it != t->psa_list.end(); ++it) {
 			(*it)->feature = GSF_FAKE_TOWNS;
 			(*it)->tile = t->xy;
@@ -651,8 +648,7 @@ bool AfterLoadGame()
 			if (st->name != nullptr) st->string_id = STR_SV_STNAME_FALLBACK;
 		}
 
-		Town *t;
-		FOR_ALL_TOWNS(t) {
+		for (Town *t : Town::Iterate()) {
 			t->name = CopyFromOldName(t->townnametype);
 			if (t->name != nullptr) t->townnametype = SPECSTR_TOWNNAME_START + _settings_game.game_creation.town_name;
 		}
@@ -980,8 +976,7 @@ bool AfterLoadGame()
 	/* From version 9.0, we update the max passengers of a town (was sometimes negative
 	 *  before that. */
 	if (IsSavegameVersionBefore(SLV_9)) {
-		Town *t;
-		FOR_ALL_TOWNS(t) UpdateTownMaxPass(t);
+		for (Town *t : Town::Iterate()) UpdateTownMaxPass(t);
 	}
 
 	/* From version 16.0, we included autorenew on engines, which are now saved, but
@@ -1570,9 +1565,7 @@ bool AfterLoadGame()
 	 * fast was added in version 54. From version 56 this is now saved in the
 	 * town as cities can be built specifically in the scenario editor. */
 	if (IsSavegameVersionBefore(SLV_56)) {
-		Town *t;
-
-		FOR_ALL_TOWNS(t) {
+		for (Town *t : Town::Iterate()) {
 			if (_settings_game.economy.larger_towns != 0 && (t->index % _settings_game.economy.larger_towns) == 0) {
 				t->larger_town = true;
 			}
@@ -2018,8 +2011,7 @@ bool AfterLoadGame()
 			if (e->company_avail == 0xFF) e->company_avail = 0xFFFF;
 		}
 
-		Town *t;
-		FOR_ALL_TOWNS(t) {
+		for (Town *t : Town::Iterate()) {
 			if (t->have_ratings == 0xFF) t->have_ratings = 0xFFFF;
 			for (uint i = 8; i != MAX_COMPANIES; i++) t->ratings[i] = RATING_INITIAL;
 		}
@@ -2108,8 +2100,7 @@ bool AfterLoadGame()
 
 		/* Initialize layout of all towns. Older versions were using different
 		 * generator for random town layout, use it if needed. */
-		Town *t;
-		FOR_ALL_TOWNS(t) {
+		for (Town *t : Town::Iterate()) {
 			if (_settings_game.economy.town_layout != TL_RANDOM) {
 				t->layout = _settings_game.economy.town_layout;
 				continue;
@@ -2791,9 +2782,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_164)) FixupTrainLengths();
 
 	if (IsSavegameVersionBefore(SLV_165)) {
-		Town *t;
-
-		FOR_ALL_TOWNS(t) {
+		for (Town *t : Town::Iterate()) {
 			/* Set the default cargo requirement for town growth */
 			switch (_settings_game.game_creation.landscape) {
 				case LT_ARCTIC:
@@ -2827,8 +2816,7 @@ bool AfterLoadGame()
 			Town::Get(GetTownIndex(t))->cargo_accepted.Add(t);
 		}
 
-		Town *town;
-		FOR_ALL_TOWNS(town) {
+		for (Town *town : Town::Iterate()) {
 			UpdateTownCargoes(town);
 		}
 	}
@@ -2984,8 +2972,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_198)) {
 		/* Convert towns growth_rate and grow_counter to ticks */
-		Town *t;
-		FOR_ALL_TOWNS(t) {
+		for (Town *t : Town::Iterate()) {
 			/* 0x8000 = TOWN_GROWTH_RATE_CUSTOM previously */
 			if (t->growth_rate & 0x8000) SetBit(t->flags, TOWN_CUSTOM_GROWTH);
 			if (t->growth_rate != TOWN_GROWTH_RATE_NONE) {

@@ -94,8 +94,7 @@ bool VerifyTownName(uint32 r, const TownNameParams *par, TownNames *town_names)
 		if (town_names->find(buf1) != town_names->end()) return false;
 		town_names->insert(buf1);
 	} else {
-		const Town *t;
-		FOR_ALL_TOWNS(t) {
+		for (const Town *t : Town::Iterate()) {
 			/* We can't just compare the numbers since
 			 * several numbers may map to a single name. */
 			const char *buf = t->name;

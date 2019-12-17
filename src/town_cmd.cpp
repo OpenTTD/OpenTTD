@@ -67,8 +67,7 @@ TownKdtree _town_kdtree(&Kdtree_TownXYFunc);
 void RebuildTownKdtree()
 {
 	std::vector<TownID> townids;
-	Town *town;
-	FOR_ALL_TOWNS(town) {
+	for (const Town *town : Town::Iterate()) {
 		townids.push_back(town->index);
 	}
 	_town_kdtree.Build(townids.begin(), townids.end());
@@ -408,9 +407,7 @@ void Town::UpdateVirtCoord()
 /** Update the virtual coords needed to draw the town sign for all towns. */
 void UpdateAllTownVirtCoords()
 {
-	Town *t;
-
-	FOR_ALL_TOWNS(t) {
+	for (Town *t : Town::Iterate()) {
 		t->UpdateVirtCoord();
 	}
 }
@@ -437,9 +434,7 @@ static void ChangePopulation(Town *t, int mod)
 uint32 GetWorldPopulation()
 {
 	uint32 pop = 0;
-	const Town *t;
-
-	FOR_ALL_TOWNS(t) pop += t->cache.population;
+	for (const Town *t : Town::Iterate()) pop += t->cache.population;
 	return pop;
 }
 
@@ -844,10 +839,9 @@ void UpdateTownCargoes(Town *t)
 /** Updates the bitmap of all cargoes accepted by houses. */
 void UpdateTownCargoBitmap()
 {
-	Town *town;
 	_town_cargoes_accepted = 0;
 
-	FOR_ALL_TOWNS(town) {
+	for (const Town *town : Town::Iterate()) {
 		_town_cargoes_accepted |= town->cargo_accepted_total;
 	}
 }
@@ -874,8 +868,7 @@ void OnTick_Town()
 {
 	if (_game_mode == GM_EDITOR) return;
 
-	Town *t;
-	FOR_ALL_TOWNS(t) {
+	for (Town *t : Town::Iterate()) {
 		TownTickHandler(t);
 	}
 }
@@ -1842,9 +1835,7 @@ static CommandCost TownCanBePlacedHere(TileIndex tile)
  */
 static bool IsUniqueTownName(const char *name)
 {
-	const Town *t;
-
-	FOR_ALL_TOWNS(t) {
+	for (const Town *t : Town::Iterate()) {
 		if (t->name != nullptr && strcmp(t->name, name) == 0) return false;
 	}
 
@@ -3642,9 +3633,7 @@ CommandCost CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType
 
 void TownsMonthlyLoop()
 {
-	Town *t;
-
-	FOR_ALL_TOWNS(t) {
+	for (Town *t : Town::Iterate()) {
 		if (t->road_build_months != 0) t->road_build_months--;
 
 		if (t->exclusive_counter != 0) {

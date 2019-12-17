@@ -1188,8 +1188,7 @@ static void CheckCaches()
 
 	/* Check the town caches. */
 	std::vector<TownCache> old_town_caches;
-	Town *t;
-	FOR_ALL_TOWNS(t) {
+	for (const Town *t : Town::Iterate()) {
 		old_town_caches.push_back(t->cache);
 	}
 
@@ -1198,7 +1197,7 @@ static void CheckCaches()
 	RebuildSubsidisedSourceAndDestinationCache();
 
 	uint i = 0;
-	FOR_ALL_TOWNS(t) {
+	for (Town *t : Town::Iterate()) {
 		if (MemCmpT(old_town_caches.data() + i, &t->cache) != 0) {
 			DEBUG(desync, 2, "town cache mismatch: town %i", (int)t->index);
 		}

@@ -24,12 +24,11 @@
  */
 void RebuildTownCaches()
 {
-	Town *town;
 	InitializeBuildingCounts();
 	RebuildTownKdtree();
 
 	/* Reset town population and num_houses */
-	FOR_ALL_TOWNS(town) {
+	for (Town *town : Town::Iterate()) {
 		town->cache.population = 0;
 		town->cache.num_houses = 0;
 	}
@@ -38,7 +37,7 @@ void RebuildTownCaches()
 		if (!IsTileType(t, MP_HOUSE)) continue;
 
 		HouseID house_id = GetHouseType(t);
-		town = Town::GetByTile(t);
+		Town *town = Town::GetByTile(t);
 		IncreaseBuildingCount(town, house_id);
 		if (IsHouseCompleted(t)) town->cache.population += HouseSpec::Get(house_id)->population;
 
@@ -47,7 +46,7 @@ void RebuildTownCaches()
 	}
 
 	/* Update the population and num_house dependent values */
-	FOR_ALL_TOWNS(town) {
+	for (Town *town : Town::Iterate()) {
 		UpdateTownRadius(town);
 		UpdateTownCargoes(town);
 	}
@@ -263,9 +262,7 @@ static void RealSave_Town(Town *t)
 
 static void Save_TOWN()
 {
-	Town *t;
-
-	FOR_ALL_TOWNS(t) {
+	for (Town *t : Town::Iterate()) {
 		SlSetArrayIndex(t->index);
 		SlAutolength((AutolengthProc*)RealSave_Town, t);
 	}
@@ -311,8 +308,7 @@ static void Ptrs_TOWN()
 	/* Don't run when savegame version lower than 161. */
 	if (IsSavegameVersionBefore(SLV_161)) return;
 
-	Town *t;
-	FOR_ALL_TOWNS(t) {
+	for (Town *t : Town::Iterate()) {
 		SlObject(t, _town_desc);
 	}
 }
