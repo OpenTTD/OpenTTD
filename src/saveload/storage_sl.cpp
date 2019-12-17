@@ -36,10 +36,8 @@ static void Load_PSAC()
 /** Save persistent storage data. */
 static void Save_PSAC()
 {
-	PersistentStorage *ps;
-
 	/* Write the industries */
-	FOR_ALL_STORAGES(ps) {
+	for (PersistentStorage *ps : PersistentStorage::Iterate()) {
 		ps->ClearChanges();
 		SlSetArrayIndex(ps->index);
 		SlObject(ps, _storage_desc);
