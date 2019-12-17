@@ -2033,8 +2033,7 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 		delete cur_stop;
 
 		/* Make sure no vehicle is going to the old roadstop */
-		RoadVehicle *v;
-		FOR_ALL_ROADVEHICLES(v) {
+		for (RoadVehicle *v : RoadVehicle::Iterate()) {
 			if (v->First() == v && v->current_order.IsType(OT_GOTO_STATION) &&
 					v->dest_tile == tile) {
 				v->SetDestTile(v->GetOrderStationLocation(st->index));
@@ -2380,8 +2379,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
-	const Aircraft *a;
-	FOR_ALL_AIRCRAFT(a) {
+	for (const Aircraft *a : Aircraft::Iterate()) {
 		if (!a->IsNormalAircraft()) continue;
 		if (a->targetairport == st->index && a->state != FLYING) {
 			return_cmd_error(STR_ERROR_AIRCRAFT_IN_THE_WAY);
@@ -2480,8 +2478,7 @@ CommandCost CmdOpenCloseAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  */
 bool HasStationInUse(StationID station, bool include_company, CompanyID company)
 {
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if ((v->owner == company) == include_company) {
 			const Order *order;
 			FOR_VEHICLE_ORDERS(v, order) {
@@ -2721,8 +2718,7 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 		 * will be selected and in case of no appropriate order it will just
 		 * wander around the world. */
 		if (!(st->facilities & FACIL_DOCK)) {
-			Ship *s;
-			FOR_ALL_SHIPS(s) {
+			for (Ship *s : Ship::Iterate()) {
 				if (s->current_order.IsType(OT_LOADING) && s->current_order.GetDestination() == st->index) {
 					s->LeaveStation();
 				}

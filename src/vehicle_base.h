@@ -972,19 +972,6 @@ public:
 };
 
 /**
- * Iterate over all vehicles from a given point.
- * @param var   The variable used to iterate over.
- * @param start The vehicle to start the iteration at.
- */
-#define FOR_ALL_VEHICLES_FROM(var, start) FOR_ALL_ITEMS_FROM(Vehicle, vehicle_index, var, start)
-
-/**
- * Iterate over all vehicles.
- * @param var The variable used to iterate over.
- */
-#define FOR_ALL_VEHICLES(var) FOR_ALL_VEHICLES_FROM(var, 0)
-
-/**
  * Class defining several overloaded accessors so we don't
  * have to cast vehicle types that often
  */
@@ -1146,14 +1133,14 @@ struct SpecializedVehicle : public Vehicle {
 			this->Vehicle::UpdateViewport(true);
 		}
 	}
-};
 
-/**
- * Iterate over all vehicles of a particular type.
- * @param name The type of vehicle to iterate over.
- * @param var  The variable used to iterate over.
- */
-#define FOR_ALL_VEHICLES_OF_TYPE(name, var) FOR_ALL_ITEMS_FROM(name, vehicle_index, var, 0) if (var->type == name::EXPECTED_TYPE)
+	/**
+	 * Returns an iterable ensemble of all valid vehicles of type T
+	 * @param from index of the first vehicle to consider
+	 * @return an iterable ensemble of all valid vehicles of type T
+	 */
+	static Pool::IterateWrapper<T> Iterate(size_t from = 0) { return Pool::IterateWrapper<T>(from); }
+};
 
 /** Generates sequence of free UnitID numbers */
 struct FreeUnitIDGenerator {

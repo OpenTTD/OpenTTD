@@ -113,8 +113,7 @@ void GroupStatistics::Clear()
 		g->statistics.Clear();
 	}
 
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (!v->IsEngineCountable()) continue;
 
 		GroupStatistics::CountEngine(v, 1);
@@ -193,8 +192,7 @@ void GroupStatistics::Clear()
 		g->statistics.ClearProfits();
 	}
 
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->IsPrimaryVehicle() && v->age > VEHICLE_PROFIT_MIN_AGE) GroupStatistics::VehicleReachedProfitAge(v);
 	}
 }
@@ -267,8 +265,7 @@ const Livery *GetParentLivery(const Group *g)
 void PropagateChildLivery(const Group *g)
 {
 	/* Company colour data is indirectly cached. */
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v->group_id == g->index && (!v->IsGroundVehicle() || v->IsFrontEngine())) {
 			for (Vehicle *u = v; u != nullptr; u = u->Next()) {
 				u->colourmap = PAL_NONE;
@@ -573,11 +570,9 @@ CommandCost CmdAddSharedVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32
 	if (!Group::IsValidID(id_g) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		Vehicle *v;
-
 		/* Find the first front engine which belong to the group id_g
 		 * then add all shared vehicles of this front engine to the group id_g */
-		FOR_ALL_VEHICLES(v) {
+		for (const Vehicle *v : Vehicle::Iterate()) {
 			if (v->type == type && v->IsPrimaryVehicle()) {
 				if (v->group_id != id_g) continue;
 
@@ -613,10 +608,8 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint3
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		Vehicle *v;
-
 		/* Find each Vehicle that belongs to the group old_g and add it to the default group */
-		FOR_ALL_VEHICLES(v) {
+		for (const Vehicle *v : Vehicle::Iterate()) {
 			if (v->IsPrimaryVehicle()) {
 				if (v->group_id != old_g) continue;
 

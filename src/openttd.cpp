@@ -1230,8 +1230,7 @@ static void CheckCaches()
 		rs->GetEntry(DIAGDIR_NW)->CheckIntegrity(rs);
 	}
 
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		extern void FillNewGRFVehicleCache(const Vehicle *v);
 		if (v != v->First() || v->vehstatus & VS_CRASHED || !v->IsPrimaryVehicle()) continue;
 
@@ -1306,7 +1305,7 @@ static void CheckCaches()
 	}
 
 	/* Check whether the caches are still valid */
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		byte buff[sizeof(VehicleCargoList)];
 		memcpy(buff, &v->cargo, sizeof(VehicleCargoList));
 		v->cargo.InvalidateCache();

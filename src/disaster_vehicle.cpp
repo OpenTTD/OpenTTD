@@ -331,8 +331,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		v->current_order.SetDestination(1);
 
 		uint n = 0; // Total number of targetable road vehicles.
-		RoadVehicle *u;
-		FOR_ALL_ROADVEHICLES(u) {
+		for (const RoadVehicle *u : RoadVehicle::Iterate()) {
 			if (u->IsFrontEngine()) n++;
 		}
 
@@ -343,14 +342,16 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		}
 
 		n = RandomRange(n); // Choose one of them.
-		FOR_ALL_ROADVEHICLES(u) {
+		for (const RoadVehicle *u : RoadVehicle::Iterate()) {
 			/* Find (n+1)-th road vehicle. */
-			if (u->IsFrontEngine() && (n-- == 0)) break;
+			if (u->IsFrontEngine() && (n-- == 0)) {
+				/* Target it. */
+				v->dest_tile = u->index;
+				v->age = 0;
+				break;
+			}
 		}
 
-		/* Target it. */
-		v->dest_tile = u->index;
-		v->age = 0;
 		return true;
 	} else {
 		/* Target a vehicle */
@@ -540,8 +541,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 
 		v->current_order.SetDestination(2);
 
-		Vehicle *target;
-		FOR_ALL_VEHICLES(target) {
+		for (Vehicle *target : Vehicle::Iterate()) {
 			if (target->IsGroundVehicle()) {
 				if (Delta(target->x_pos, v->x_pos) + Delta(target->y_pos, v->y_pos) <= 12 * (int)TILE_SIZE) {
 					target->breakdown_ctr = 5;
@@ -937,8 +937,7 @@ void StartupDisasters()
  */
 void ReleaseDisastersTargetingIndustry(IndustryID i)
 {
-	DisasterVehicle *v;
-	FOR_ALL_DISASTERVEHICLES(v) {
+	for (DisasterVehicle *v : DisasterVehicle::Iterate()) {
 		/* primary disaster vehicles that have chosen target */
 		if (v->subtype == ST_AIRPLANE || v->subtype == ST_HELICOPTER) {
 			/* if it has chosen target, and it is this industry (yes, dest_tile is IndustryID here), set order to "leaving map peacefully" */
@@ -953,8 +952,7 @@ void ReleaseDisastersTargetingIndustry(IndustryID i)
  */
 void ReleaseDisastersTargetingVehicle(VehicleID vehicle)
 {
-	DisasterVehicle *v;
-	FOR_ALL_DISASTERVEHICLES(v) {
+	for (DisasterVehicle *v : DisasterVehicle::Iterate()) {
 		/* primary disaster vehicles that have chosen target */
 		if (v->subtype == ST_SMALL_UFO) {
 			if (v->current_order.GetDestination() != 0 && v->dest_tile == vehicle) {

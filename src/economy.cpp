@@ -120,8 +120,7 @@ Money CalculateCompanyValue(const Company *c, bool including_loan)
 
 	Money value = num * _price[PR_STATION_VALUE] * 25;
 
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->owner != owner) continue;
 
 		if (v->type == VEH_TRAIN ||
@@ -156,12 +155,11 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 
 	/* Count vehicles */
 	{
-		Vehicle *v;
 		Money min_profit = 0;
 		bool min_profit_first = true;
 		uint num = 0;
 
-		FOR_ALL_VEHICLES(v) {
+		for (const Vehicle *v : Vehicle::Iterate()) {
 			if (v->owner != owner) continue;
 			if (IsCompanyBuildableVehicleType(v->type) && v->IsPrimaryVehicle()) {
 				if (v->profit_last_year > 0) num++; // For the vehicle score only count profitable vehicles
@@ -390,8 +388,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	}
 
 	{
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			if (v->owner == old_owner && IsCompanyBuildableVehicleType(v->type)) {
 				if (new_owner == INVALID_OWNER) {
 					if (v->Previous() == nullptr) delete v;
@@ -435,8 +432,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			old_company->settings.vehicle.servint_ispercent = new_company->settings.vehicle.servint_ispercent;
 		}
 
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			if (v->owner == old_owner && IsCompanyBuildableVehicleType(v->type)) {
 				assert(new_owner != INVALID_OWNER);
 

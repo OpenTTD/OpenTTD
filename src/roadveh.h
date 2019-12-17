@@ -319,6 +319,4 @@ protected: // These functions should not be called outside acceleration code.
 	}
 };
 
-#define FOR_ALL_ROADVEHICLES(var) FOR_ALL_VEHICLES_OF_TYPE(RoadVehicle, var)
-
 #endif /* ROADVEH_H */

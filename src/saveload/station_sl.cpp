@@ -47,8 +47,7 @@ void MoveBuoysToWaypoints()
 		for (Order *o = ol->GetFirstOrder(); o != nullptr; o = o->next) UpdateWaypointOrder(o);
 	}
 
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		VehicleType vt = v->type;
 		if (vt != VEH_SHIP && vt != VEH_TRAIN) continue;
 

@@ -97,8 +97,7 @@ Station::~Station()
 		this->loading_vehicles.front()->LeaveStation();
 	}
 
-	Aircraft *a;
-	FOR_ALL_AIRCRAFT(a) {
+	for (Aircraft *a : Aircraft::Iterate()) {
 		if (!a->IsNormalAircraft()) continue;
 		if (a->targetairport == this->index) a->targetairport = INVALID_STATION;
 	}
@@ -122,8 +121,7 @@ Station::~Station()
 		}
 	}
 
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		/* Forget about this station if this station is removed */
 		if (v->last_station_visited == this->index) {
 			v->last_station_visited = INVALID_STATION;

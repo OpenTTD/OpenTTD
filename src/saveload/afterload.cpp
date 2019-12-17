@@ -278,8 +278,7 @@ static void InitializeWindowsAndCaches()
 			(*it)->tile = t->xy;
 		}
 	}
-	RoadVehicle *rv;
-	FOR_ALL_ROADVEHICLES(rv) {
+	for (RoadVehicle *rv : RoadVehicle::Iterate()) {
 		if (rv->IsFrontEngine()) {
 			rv->CargoChanged();
 		}
@@ -436,8 +435,8 @@ static void FixOwnerOfRailTrack(TileIndex t)
 	assert(!Company::IsValidID(GetTileOwner(t)) && (IsLevelCrossingTile(t) || IsPlainRailTile(t)));
 
 	/* remove leftover rail piece from crossing (from very old savegames) */
-	Train *v = nullptr, *w;
-	FOR_ALL_TRAINS(w) {
+	Train *v = nullptr;
+	for (Train *w : Train::Iterate()) {
 		if (w->tile == t) {
 			v = w;
 			break;
@@ -1175,8 +1174,6 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_42)) {
-		Vehicle *v;
-
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (MayHaveBridgeAbove(t)) ClearBridgeMiddle(t);
 			if (IsBridgeTile(t)) {
@@ -1230,7 +1227,7 @@ bool AfterLoadGame()
 			}
 		}
 
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle* v : Vehicle::Iterate()) {
 			if (!v->IsGroundVehicle()) continue;
 			if (IsBridgeTile(v->tile)) {
 				DiagDirection dir = GetTunnelBridgeDirection(v->tile);
@@ -1289,8 +1286,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_24)) {
 		RailType min_rail = RAILTYPE_ELECTRIC;
 
-		Train *v;
-		FOR_ALL_TRAINS(v) {
+		for (Train *v : Train::Iterate()) {
 			RailType rt = RailVehInfo(v->engine_type)->railtype;
 
 			v->railtype = rt;
@@ -1327,7 +1323,7 @@ bool AfterLoadGame()
 			}
 		}
 
-		FOR_ALL_TRAINS(v) {
+		for (Train *v : Train::Iterate()) {
 			if (v->IsFrontEngine() || v->IsFreeWagon()) v->ConsistChanged(CCF_TRACK);
 		}
 
@@ -1384,8 +1380,7 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_25)) {
-		RoadVehicle *rv;
-		FOR_ALL_ROADVEHICLES(rv) {
+		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
 			rv->vehstatus &= ~0x40;
 		}
 	}
@@ -1412,8 +1407,6 @@ bool AfterLoadGame()
 	/* Time starts at 0 instead of 1920.
 	 * Account for this in older games by adding an offset */
 	if (IsSavegameVersionBefore(SLV_31)) {
-		Vehicle *v;
-
 		_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
 		_cur_year += ORIGINAL_BASE_YEAR;
 
@@ -1423,7 +1416,7 @@ bool AfterLoadGame()
 		for (Company *c : Company::Iterate()) c->inaugurated_year += ORIGINAL_BASE_YEAR;
 		for (Industry *i : Industry::Iterate())  i->last_prod_year   += ORIGINAL_BASE_YEAR;
 
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			v->date_of_last_service += DAYS_TILL_ORIGINAL_BASE_YEAR;
 			v->build_year += ORIGINAL_BASE_YEAR;
 		}
@@ -1451,13 +1444,11 @@ bool AfterLoadGame()
 
 	/* Setting no refit flags to all orders in savegames from before refit in orders were added */
 	if (IsSavegameVersionBefore(SLV_36)) {
-		Vehicle *v;
-
 		for (Order *order : Order::Iterate()) {
 			order->SetRefit(CT_NO_REFIT);
 		}
 
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			v->current_order.SetRefit(CT_NO_REFIT);
 		}
 	}
@@ -1536,13 +1527,12 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_45)) {
-		Vehicle *v;
 		/* Originally just the fact that some cargo had been paid for was
 		 * stored to stop people cheating and cashing in several times. This
 		 * wasn't enough though as it was cleared when the vehicle started
 		 * loading again, even if it didn't actually load anything, so now the
 		 * amount that has been paid is stored. */
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			ClrBit(v->vehicle_flags, 2);
 		}
 	}
@@ -1556,9 +1546,8 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_50)) {
-		Aircraft *v;
 		/* Aircraft units changed from 8 mph to 1 km-ish/h */
-		FOR_ALL_AIRCRAFT(v) {
+		for (Aircraft *v : Aircraft::Iterate()) {
 			if (v->subtype <= AIR_AIRCRAFT) {
 				const AircraftVehicleInfo *avi = AircraftVehInfo(v->engine_type);
 				v->cur_speed *= 128;
@@ -1592,9 +1581,8 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_57)) {
-		Vehicle *v;
 		/* Added a FIFO queue of vehicles loading at stations */
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			if ((v->type != VEH_TRAIN || Train::From(v)->IsFrontEngine()) &&  // for all locs
 					!(v->vehstatus & (VS_STOPPED | VS_CRASHED)) && // not stopped or crashed
 					v->current_order.IsType(OT_LOADING)) {         // loading
@@ -1645,8 +1633,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_69)) {
 		/* In some old savegames a bit was cleared when it should not be cleared */
-		RoadVehicle *rv;
-		FOR_ALL_ROADVEHICLES(rv) {
+		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
 			if (rv->state == 250 || rv->state == 251) {
 				SetBit(rv->state, 2);
 			}
@@ -1725,8 +1712,7 @@ bool AfterLoadGame()
 		/* Rework of orders. */
 		for (Order *order : Order::Iterate()) order->ConvertFromOldSavegame();
 
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			if (v->orders.list != nullptr && v->orders.list->GetFirstOrder() != nullptr && v->orders.list->GetFirstOrder()->IsType(OT_NOTHING)) {
 				v->orders.list->FreeChain();
 				v->orders.list = nullptr;
@@ -1747,8 +1733,7 @@ bool AfterLoadGame()
 			}
 		}
 
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			if ((v->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == (OUFB_UNLOAD | OUFB_TRANSFER)) {
 				v->current_order.SetUnloadType(OUFB_TRANSFER);
 				v->current_order.SetLoadType(OLFB_NO_LOAD);
@@ -1897,8 +1882,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_88)) {
 		/* Profits are now with 8 bit fract */
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			v->profit_this_year <<= 8;
 			v->profit_last_year <<= 8;
 			v->running_ticks = 0;
@@ -1919,8 +1903,7 @@ bool AfterLoadGame()
 		GroupStatistics::UpdateAfterLoad(); // Ensure statistics pool is initialised before trying to delete vehicles
 		/* Remove all trams from savegames without tram support.
 		 * There would be trams without tram track under causing crashes sooner or later. */
-		RoadVehicle *v;
-		FOR_ALL_ROADVEHICLES(v) {
+		for (RoadVehicle *v : RoadVehicle::Iterate()) {
 			if (v->First() == v && HasBit(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM)) {
 				ShowErrorMessage(STR_WARNING_LOADGAME_REMOVED_TRAMS, INVALID_STRING_ID, WL_CRITICAL);
 				delete v;
@@ -1991,8 +1974,7 @@ bool AfterLoadGame()
 
 	/* Reserve all tracks trains are currently on. */
 	if (IsSavegameVersionBefore(SLV_101)) {
-		const Train *t;
-		FOR_ALL_TRAINS(t) {
+		for (const Train *t : Train::Iterate()) {
 			if (t->First() == t) t->ReserveTrackUnderConsist();
 		}
 	}
@@ -2022,8 +2004,7 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_104)) {
-		Aircraft *a;
-		FOR_ALL_AIRCRAFT(a) {
+		for (Aircraft *a : Aircraft::Iterate()) {
 			/* Set engine_type of shadow and rotor */
 			if (!a->IsNormalAircraft()) {
 				a->engine_type = a->First()->engine_type;
@@ -2172,8 +2153,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_121)) {
 		/* Delete small ufos heading for non-existing vehicles */
-		Vehicle *v;
-		FOR_ALL_DISASTERVEHICLES(v) {
+		for (Vehicle *v : DisasterVehicle::Iterate()) {
 			if (v->subtype == 2 /* ST_SMALL_UFO */ && v->current_order.GetDestination() != 0) {
 				const Vehicle *u = Vehicle::GetIfValid(v->dest_tile);
 				if (u == nullptr || u->type != VEH_ROAD || !RoadVehicle::From(u)->IsFrontEngine()) {
@@ -2335,8 +2315,7 @@ bool AfterLoadGame()
 	/* The behaviour of force_proceed has been changed. Now
 	 * it counts signals instead of some random time out. */
 	if (IsSavegameVersionBefore(SLV_131)) {
-		Train *t;
-		FOR_ALL_TRAINS(t) {
+		for (Train *t : Train::Iterate()) {
 			if (t->force_proceed != TFP_NONE) {
 				t->force_proceed = TFP_STUCK;
 			}
@@ -2366,13 +2345,11 @@ bool AfterLoadGame()
 
 	/* Wait counter and load/unload ticks got split. */
 	if (IsSavegameVersionBefore(SLV_136)) {
-		Aircraft *a;
-		FOR_ALL_AIRCRAFT(a) {
+		for (Aircraft *a : Aircraft::Iterate()) {
 			a->turn_counter = a->current_order.IsType(OT_LOADING) ? 0 : a->load_unload_ticks;
 		}
 
-		Train *t;
-		FOR_ALL_TRAINS(t) {
+		for (Train *t : Train::Iterate()) {
 			t->wait_counter = t->current_order.IsType(OT_LOADING) ? 0 : t->load_unload_ticks;
 		}
 	}
@@ -2447,8 +2424,7 @@ bool AfterLoadGame()
 	 * For old savegames with such aircraft we just throw them in the air and
 	 * treat the aircraft like they were flying already. */
 	if (IsSavegameVersionBefore(SLV_146)) {
-		Aircraft *v;
-		FOR_ALL_AIRCRAFT(v) {
+		for (Aircraft *v : Aircraft::Iterate()) {
 			if (!v->IsNormalAircraft()) continue;
 			Station *st = GetTargetAirportIfValid(v);
 			if (st == nullptr && v->state != FLYING) {
@@ -2532,8 +2508,7 @@ bool AfterLoadGame()
 		/* The moment vehicles go from hidden to visible changed. This means
 		 * that vehicles don't always get visible anymore causing things to
 		 * get messed up just after loading the savegame. This fixes that. */
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			/* Not all vehicle types can be inside a tunnel. Furthermore,
 			 * testing IsTunnelTile() for invalid tiles causes a crash. */
 			if (!v->IsGroundVehicle()) continue;
@@ -2596,8 +2571,7 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_153)) {
-		RoadVehicle *rv;
-		FOR_ALL_ROADVEHICLES(rv) {
+		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
 			if (rv->state == RVSB_IN_DEPOT || rv->state == RVSB_WORMHOLE) continue;
 
 			bool loading = rv->current_order.IsType(OT_LOADING) || rv->current_order.IsType(OT_LEAVESTATION);
@@ -2612,8 +2586,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_156)) {
 		/* The train's pathfinder lost flag got moved. */
-		Train *t;
-		FOR_ALL_TRAINS(t) {
+		for (Train *t : Train::Iterate()) {
 			if (!HasBit(t->flags, 5)) continue;
 
 			ClrBit(t->flags, 5);
@@ -2628,8 +2601,7 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_158)) {
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			switch (v->type) {
 				case VEH_TRAIN: {
 					Train *t = Train::From(v);
@@ -2713,7 +2685,7 @@ bool AfterLoadGame()
 		}
 
 		/* Fill Vehicle::cur_real_order_index */
-		FOR_ALL_VEHICLES(v) {
+		for (Vehicle *v : Vehicle::Iterate()) {
 			if (!v->IsPrimaryVehicle()) continue;
 
 			/* Older versions are less strict with indices being in range and fix them on the fly */
@@ -2733,8 +2705,7 @@ bool AfterLoadGame()
 		 * will keep reversing disabled, otherwise it'll be turned on. */
 		_settings_game.pf.reverse_at_signals = IsSavegameVersionBefore(SLV_100) || (_settings_game.pf.wait_oneway_signal != 255 && _settings_game.pf.wait_twoway_signal != 255 && _settings_game.pf.wait_for_pbs_path != 255);
 
-		Train *t;
-		FOR_ALL_TRAINS(t) {
+		for (Train *t : Train::Iterate()) {
 			_settings_game.vehicle.max_train_length = max<uint8>(_settings_game.vehicle.max_train_length, CeilDiv(t->gcache.cached_total_length, TILE_SIZE));
 		}
 	}
@@ -2899,9 +2870,8 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_182)) {
-		Aircraft *v;
 		/* Aircraft acceleration variable was bonkers */
-		FOR_ALL_AIRCRAFT(v) {
+		for (Aircraft *v : Aircraft::Iterate()) {
 			if (v->subtype <= AIR_AIRCRAFT) {
 				const AircraftVehicleInfo *avi = AircraftVehInfo(v->engine_type);
 				v->acceleration = avi->acceleration;
@@ -2945,10 +2915,9 @@ bool AfterLoadGame()
 		 * Now they have the same length, but that means that trailing articulated parts will
 		 * take longer to go through the curve than the parts in front which already left the courve.
 		 * So, make articulated parts catch up. */
-		RoadVehicle *v;
 		bool roadside = _settings_game.vehicle.road_side == 1;
 		std::vector<uint> skip_frames;
-		FOR_ALL_ROADVEHICLES(v) {
+		for (RoadVehicle *v : RoadVehicle::Iterate()) {
 			if (!v->IsFrontEngine()) continue;
 			skip_frames.clear();
 			TileIndex prev_tile = v->tile;
@@ -3062,8 +3031,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_SHIPS_STOP_IN_LOCKS)) {
 		/* Move ships from lock slope to upper or lower position. */
-		Ship *s;
-		FOR_ALL_SHIPS(s) {
+		for (Ship *s : Ship::Iterate()) {
 			/* Suitable tile? */
 			if (!IsTileType(s->tile, MP_WATER) || !IsLock(s->tile) || GetLockPart(s->tile) != LOCK_PART_MIDDLE) continue;
 

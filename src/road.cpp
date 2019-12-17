@@ -324,8 +324,7 @@ bool CanBuildRoadTypeInfrastructure(RoadType roadtype, CompanyID company)
 	}
 
 	/* We should be able to build infrastructure when we have the actual vehicle type */
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->type == VEH_ROAD && (company == OWNER_DEITY || v->owner == company) &&
 			HasBit(roadtypes, RoadVehicle::From(v)->roadtype) && HasPowerOnRoad(RoadVehicle::From(v)->roadtype, roadtype)) return true;
 	}

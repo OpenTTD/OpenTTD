@@ -1534,12 +1534,10 @@ void NetworkSocketHandler::SendCompanyInformation(Packet *p, const Company *c, c
  */
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 {
-	const Vehicle *v;
-
 	memset(stats, 0, sizeof(*stats) * MAX_COMPANIES);
 
 	/* Go through all vehicles and count the type of vehicles */
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (!Company::IsValidID(v->owner) || !v->IsPrimaryVehicle()) continue;
 		byte type = 0;
 		switch (v->type) {
@@ -1623,8 +1621,7 @@ static void NetworkAutoCleanCompanies()
 	if (_settings_client.network.autoclean_novehicles != 0) {
 		memset(vehicles_in_company, 0, sizeof(vehicles_in_company));
 
-		const Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
+		for (const Vehicle *v : Vehicle::Iterate()) {
 			if (!Company::IsValidID(v->owner) || !v->IsPrimaryVehicle()) continue;
 			vehicles_in_company[v->owner]++;
 		}

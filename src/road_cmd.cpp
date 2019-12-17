@@ -182,8 +182,7 @@ RoadType AllocateRoadType(RoadTypeLabel label, RoadTramType rtt)
  */
 bool RoadVehiclesAreBuilt()
 {
-	const RoadVehicle *rv;
-	FOR_ALL_ROADVEHICLES(rv) return true;
+	for (const RoadVehicle *rv : RoadVehicle::Iterate()) return true;
 
 	return false;
 }
@@ -456,8 +455,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 				if (HasRoadWorks(tile)) {
 					/* flooding tile with road works, don't forget to remove the effect vehicle too */
 					assert(_current_company == OWNER_WATER);
-					EffectVehicle *v;
-					FOR_ALL_EFFECTVEHICLES(v) {
+					for (EffectVehicle *v : EffectVehicle::Iterate()) {
 						if (TileVirtXY(v->x_pos, v->y_pos) == tile) {
 							delete v;
 						}

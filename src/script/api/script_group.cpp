@@ -154,8 +154,7 @@
 
 	Money profit = 0;
 
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->group_id != group_id) continue;
 		if (!v->IsPrimaryVehicle()) continue;
 
@@ -179,8 +178,7 @@
 	uint32 occupancy = 0;
 	uint32 vehicle_count = 0;
 
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->group_id != group_id) continue;
 		if (!v->IsPrimaryVehicle()) continue;
 

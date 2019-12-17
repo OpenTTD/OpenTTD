@@ -526,8 +526,7 @@ EngineID EngineOverrideManager::GetID(VehicleType type, uint16 grf_local_id, uin
  */
 bool EngineOverrideManager::ResetToCurrentNewGRFConfig()
 {
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (IsCompanyBuildableVehicleType(v)) return false;
 	}
 
@@ -765,8 +764,7 @@ static CompanyID GetPreviewCompany(Engine *e)
 				c->old_economy[0].performance_history > best_hist) {
 
 			/* Check whether the company uses similar vehicles */
-			Vehicle *v;
-			FOR_ALL_VEHICLES(v) {
+			for (const Vehicle *v : Vehicle::Iterate()) {
 				if (v->owner != c->index || v->type != e->type) continue;
 				if (!v->GetEngine()->CanCarryCargo() || !HasBit(cargomask, v->cargo_type)) continue;
 
@@ -900,7 +898,6 @@ CommandCost CmdWantEnginePreview(TileIndex tile, DoCommandFlag flags, uint32 p1,
  */
 static void NewVehicleAvailable(Engine *e)
 {
-	Vehicle *v;
 	EngineID index = e->index;
 
 	/* In case the company didn't build the vehicle during the intro period,
@@ -914,7 +911,7 @@ static void NewVehicleAvailable(Engine *e)
 			/* We assume the user did NOT build it.. prove me wrong ;) */
 			c->block_preview = 20;
 
-			FOR_ALL_VEHICLES(v) {
+			for (const Vehicle *v : Vehicle::Iterate()) {
 				if (v->type == VEH_TRAIN || v->type == VEH_ROAD || v->type == VEH_SHIP ||
 						(v->type == VEH_AIRCRAFT && Aircraft::From(v)->IsNormalAircraft())) {
 					if (v->owner == c->index && v->engine_type == index) {

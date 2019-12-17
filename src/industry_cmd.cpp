@@ -2502,9 +2502,8 @@ static int WhoCanServiceIndustry(Industry *ind)
 {
 	if (ind->stations_near.size() == 0) return 0; // No stations found at all => nobody services
 
-	const Vehicle *v;
 	int result = 0;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		/* Is it worthwhile to try this vehicle? */
 		if (v->owner != _local_company && result != 0) continue;
 
