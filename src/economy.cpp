@@ -533,8 +533,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	ClearCargoPickupMonitoring(old_owner);
 	ClearCargoDeliveryMonitoring(old_owner);
 
-	StoryPage *sp;
-	FOR_ALL_STORY_PAGES(sp) {
+	for (StoryPage *sp : StoryPage::Iterate()) {
 		if (sp->company == old_owner) delete sp;
 	}
 

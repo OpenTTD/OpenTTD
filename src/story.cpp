@@ -157,8 +157,7 @@ CommandCost CmdCreateStoryPageElement(TileIndex tile, DoCommandFlag flags, uint3
 
 	/* Allow at most 128 elements per page. */
 	uint16 element_count = 0;
-	StoryPageElement *iter;
-	FOR_ALL_STORY_PAGE_ELEMENTS(iter) {
+	for (StoryPageElement *iter : StoryPageElement::Iterate()) {
 		if (iter->page == page_id) element_count++;
 	}
 	if (element_count >= 128) return CMD_ERROR;
@@ -317,8 +316,7 @@ CommandCost CmdRemoveStoryPage(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (flags & DC_EXEC) {
 		StoryPage *p = StoryPage::Get(page_id);
 
-		StoryPageElement *pe;
-		FOR_ALL_STORY_PAGE_ELEMENTS(pe) {
+		for (StoryPageElement *pe : StoryPageElement::Iterate()) {
 			if (pe->page == p->index) {
 				delete pe;
 			}

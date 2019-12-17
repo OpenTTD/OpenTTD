@@ -52,8 +52,7 @@ protected:
 		if (this->story_pages.NeedRebuild()) {
 			this->story_pages.clear();
 
-			const StoryPage *p;
-			FOR_ALL_STORY_PAGES(p) {
+			for (const StoryPage *p : StoryPage::Iterate()) {
 				if (this->IsPageAvailable(p)) {
 					this->story_pages.push_back(p);
 				}
@@ -80,8 +79,7 @@ protected:
 
 			const StoryPage *p = GetSelPage();
 			if (p != nullptr) {
-				const StoryPageElement *pe;
-				FOR_ALL_STORY_PAGE_ELEMENTS(pe) {
+				for (const StoryPageElement *pe : StoryPageElement::Iterate()) {
 					if (pe->page == p->index) {
 						this->story_page_elements.push_back(pe);
 					}
