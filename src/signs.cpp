@@ -59,9 +59,7 @@ void Sign::UpdateVirtCoord()
 /** Update the coordinates of all signs */
 void UpdateAllSignVirtCoords()
 {
-	Sign *si;
-
-	FOR_ALL_SIGNS(si) {
+	for (Sign *si : Sign::Iterate()) {
 		si->UpdateVirtCoord();
 	}
 }

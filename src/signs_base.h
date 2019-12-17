@@ -32,7 +32,4 @@ struct Sign : SignPool::PoolItem<&_sign_pool> {
 	void UpdateVirtCoord();
 };
 
-#define FOR_ALL_SIGNS_FROM(var, start) FOR_ALL_ITEMS_FROM(Sign, sign_index, var, start)
-#define FOR_ALL_SIGNS(var) FOR_ALL_SIGNS_FROM(var, 0)
-
 #endif /* SIGNS_BASE_H */

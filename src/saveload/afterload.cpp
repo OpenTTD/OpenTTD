@@ -1990,8 +1990,7 @@ bool AfterLoadGame()
 		UpdateNearestTownForRoadTiles(false);
 
 		/* signs with invalid owner left from older savegames */
-		Sign *si;
-		FOR_ALL_SIGNS(si) {
+		for (Sign *si : Sign::Iterate()) {
 			if (si->owner != OWNER_NONE && !Company::IsValidID(si->owner)) si->owner = OWNER_NONE;
 		}
 

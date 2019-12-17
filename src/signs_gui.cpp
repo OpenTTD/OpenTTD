@@ -60,8 +60,7 @@ struct SignList {
 
 		this->signs.clear();
 
-		const Sign *si;
-		FOR_ALL_SIGNS(si) this->signs.push_back(si);
+		for (const Sign *si : Sign::Iterate()) this->signs.push_back(si);
 
 		this->signs.SetFilterState(true);
 		this->FilterSignList();
