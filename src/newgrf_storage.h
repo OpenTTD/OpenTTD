@@ -230,7 +230,4 @@ struct PersistentStorage : PersistentStorageArray<int32, 256>, PersistentStorage
 
 assert_compile(cpp_lengthof(OldPersistentStorage, storage) <= cpp_lengthof(PersistentStorage, storage));
 
-#define FOR_ALL_STORAGES_FROM(var, start) FOR_ALL_ITEMS_FROM(PersistentStorage, storage_index, var, start)
-#define FOR_ALL_STORAGES(var) FOR_ALL_STORAGES_FROM(var, 0)
-
 #endif /* NEWGRF_STORAGE_H */
