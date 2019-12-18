@@ -182,9 +182,7 @@ RoadType AllocateRoadType(RoadTypeLabel label, RoadTramType rtt)
  */
 bool RoadVehiclesAreBuilt()
 {
-	for (const RoadVehicle *rv : RoadVehicle::Iterate()) return true;
-
-	return false;
+	return !RoadVehicle::Iterate().empty();
 }
 
 /**

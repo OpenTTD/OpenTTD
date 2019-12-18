@@ -155,7 +155,8 @@ struct Pool : PoolBase {
 			this->ValidateIndex();
 		};
 
-		bool operator!=(const PoolIterator &other) const { return this->index != other.index; }
+		bool operator==(const PoolIterator &other) const { return this->index == other.index; }
+		bool operator!=(const PoolIterator &other) const { return !(*this == other); }
 		T * operator*() const { return T::Get(this->index); }
 		PoolIterator & operator++() { this->index++; this->ValidateIndex(); return *this; }
 
@@ -176,6 +177,7 @@ struct Pool : PoolBase {
 		IterateWrapper(size_t from = 0, std::function<bool(size_t)> filter = nullptr) : from(from), filter(filter) {}
 		PoolIterator<T> begin() { return PoolIterator<T>(this->from, this->filter); }
 		PoolIterator<T> end() { return PoolIterator<T>(T::GetPoolSize()); }
+		bool empty() { return this->begin() == this->end(); }
 	};
 
 	/**

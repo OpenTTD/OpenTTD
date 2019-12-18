@@ -99,9 +99,7 @@ extern void StateGameLoop();
  */
 bool HasClients()
 {
-	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) return true;
-
-	return false;
+	return !NetworkClientSocket::Iterate().empty();
 }
 
 /**
