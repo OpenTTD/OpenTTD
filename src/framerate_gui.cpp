@@ -184,6 +184,7 @@ namespace {
 		PerformanceData(1),                     // PFE_ACC_GL_SHIPS
 		PerformanceData(1),                     // PFE_ACC_GL_AIRCRAFT
 		PerformanceData(1),                     // PFE_GL_LANDSCAPE
+		PerformanceData(1),                     // PFE_GL_NEWGRFCB
 		PerformanceData(1),                     // PFE_GL_LINKGRAPH
 		PerformanceData(GL_RATE),               // PFE_DRAWING
 		PerformanceData(1),                     // PFE_ACC_DRAWWORLD
@@ -314,6 +315,7 @@ static const PerformanceElement DISPLAY_ORDER_PFE[PFE_MAX] = {
 	PFE_GL_SHIPS,
 	PFE_GL_AIRCRAFT,
 	PFE_GL_LANDSCAPE,
+	PFE_GL_NEWGRFCB,
 	PFE_ALLSCRIPTS,
 	PFE_GAMESCRIPT,
 	PFE_AI0,
@@ -1030,6 +1032,7 @@ void ConPrintFramerate()
 		"  GL ship ticks",
 		"  GL aircraft ticks",
 		"  GL landscape ticks",
+		"  GL NewGRF callbacks",
 		"  GL link graph delays",
 		"Drawing",
 		"  Viewport drawing",

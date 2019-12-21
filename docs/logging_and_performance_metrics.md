@@ -71,6 +71,8 @@ The following is an explanation of the different statistics:
 - *World ticks* - Time spent on other world/landscape processing. This
   includes towns growing, building animations, updates of farmland and trees,
   and station rating updates.
+- *NewGRF callbacks* - Time spent executing NewGRF dynamic callbacks.
+  This is the sum of all callbacks across all NewGRFs active in the game.
 - *GS/AI total*, *Game script*, and *AI players* - Time spent running logic
   for game scripts and AI players. The total may show as less than the current
   sum of the individual scripts, this is because AI players at lower

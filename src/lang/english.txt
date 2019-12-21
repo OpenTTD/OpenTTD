@@ -2768,6 +2768,7 @@ STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Road v
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Ship ticks:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Aircraft ticks:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  World ticks:
+STR_FRAMERATE_GL_NEWGRFCB                                       :{BLACK}  NewGRF callbacks:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Link graph delay:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Graphics rendering:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  World viewports:
@@ -2785,6 +2786,7 @@ STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Road vehicle ti
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ship ticks
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Aircraft ticks
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :World ticks
+STR_FRAMETIME_CAPTION_GL_NEWGRFCB                               :NewGRF callbacks
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Link graph delay
 STR_FRAMETIME_CAPTION_DRAWING                                   :Graphics rendering
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :World viewport rendering

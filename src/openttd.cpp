@@ -1336,6 +1336,7 @@ void StateGameLoop()
 		PerformanceMeasurer::Paused(PFE_GL_SHIPS);
 		PerformanceMeasurer::Paused(PFE_GL_AIRCRAFT);
 		PerformanceMeasurer::Paused(PFE_GL_LANDSCAPE);
+		PerformanceMeasurer::Paused(PFE_GL_NEWGRFCB);
 
 		UpdateLandscapingLimits();
 #ifndef DEBUG_DUMP_COMMANDS
@@ -1346,6 +1347,7 @@ void StateGameLoop()
 
 	PerformanceMeasurer framerate(PFE_GAMELOOP);
 	PerformanceAccumulator::Reset(PFE_GL_LANDSCAPE);
+	PerformanceAccumulator::Reset(PFE_GL_NEWGRFCB);
 	if (HasModalProgress()) return;
 
 	Layouter::ReduceLineCache();
