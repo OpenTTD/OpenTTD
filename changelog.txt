@@ -1,3 +1,28 @@
+1.10.0-beta2 (2019-12-25)
+------------------------------------------------------------------------
+- Feature: [Script] More error mappings (#7857)
+- Feature: Ctrl+Click on a vehicle in the vehicle group window selects and scrolls to the vehicle's group (#7800)
+- Feature: Ctrl+Click on the vehicle details button in the vehicle view window opens the vehicle group window focused on the vehicle (#7800)
+- Feature: Add a button to the vehicle advisory news window to open the vehicle's group window (#7800)
+- Feature: Ctrl+Click on a vehicle in the vehicle list window opens the vehicle group window focused on the vehicle's group (#7800)
+- Fix: Custom sea level default value is now equal to minimum value (#7866)
+- Fix: [NewGRF] Various tracktype fixes (#7863)
+- Fix: Infrastructure total update when removing tram road stop (#7856)
+- Fix #7847: Use ViewportSign coordinates for sign Kdtree coordinates (#7849)
+- Fix #7836: Check coherency of NewGRF parameter min/max (#7840)
+- Fix #7673: [Script] Allow removal of custom town text (#7834)
+- Fix: Crash when displaying an error message at map edges (#7833)
+- Fix #7783, #7816: [SDL2] Fix input handling in edit context (#7825)
+- Fix #7697: Tile query on HQs did not display cargo correctly (#7824)
+- Fix #7820: Possible game crash when removing oil rig (#7821)
+- Fix #7606: Rare crash when trying to clean up a crashed script (#7819)
+- Fix #7784: [SDL2] up/down/home/end key behaviour (#7815)
+- Fix #7631: 16 out cargo support for industry directory (#7809)
+- Fix #7646: Crash on random map generation failure (#7805)
+- Fix #7430: Only reset time since pickup when train visits station if it has room to load (#7595)
+- Fix #5405: Aircraft could route to depots outside their range (#7104)
+
+
 1.10.0-beta1 (2019-10-29)
 ------------------------------------------------------------------------
 - Feature: Configurable minimum age for companies before allowing share trading (#7780)
