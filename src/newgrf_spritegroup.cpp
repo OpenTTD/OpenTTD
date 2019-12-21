@@ -12,7 +12,6 @@
 #include "debug.h"
 #include "newgrf_spritegroup.h"
 #include "core/pool_func.hpp"
-#include "framerate_type.h"
 
 #include "safeguards.h"
 
@@ -36,12 +35,9 @@ TemporaryStorageArray<int32, 0x110> _temp_store;
 {
 	if (group == nullptr) return nullptr;
 	if (top_level) {
-		PerformanceAccumulator pfe(PFE_GL_NEWGRFCB); // only measure top-level calls, to avoid double measurements
 		_temp_store.ClearChanges();
-		return group->Resolve(object);
-	} else {
-		return group->Resolve(object);
 	}
+	return group->Resolve(object);
 }
 
 RealSpriteGroup::~RealSpriteGroup()
