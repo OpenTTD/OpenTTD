@@ -1,3 +1,9 @@
+openttd (1.10.0~beta2-0) unstable; urgency=low
+
+  * New upstream release 1.10.0-beta2
+
+ -- OpenTTD <info@openttd.org>  Wed, 25 Dec 2019 00:00:00 +0000
+
 openttd (1.10.0~beta1-0) unstable; urgency=low
 
   * New upstream release 1.10.0-beta1
