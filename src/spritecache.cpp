@@ -146,6 +146,17 @@ uint GetOriginFileSlot(SpriteID sprite)
 }
 
 /**
+ * Get the GRF-local sprite id of a given sprite.
+ * @param sprite The sprite to look at.
+ * @return The GRF-local sprite id.
+ */
+uint32 GetSpriteLocalID(SpriteID sprite)
+{
+	if (!SpriteExists(sprite)) return 0;
+	return GetSpriteCache(sprite)->id;
+}
+
+/**
  * Count the sprites which originate from a specific file slot in a range of SpriteIDs.
  * @param file_slot FIOS file slot.
  * @param begin First sprite in range.

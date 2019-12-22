@@ -1907,11 +1907,10 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 
 		if (_newgrf_profiler != nullptr) {
 			IConsoleWarning("NewGRF profiling already active, aborting current session.");
-			delete _newgrf_profiler;
-			_newgrf_profiler = nullptr;
+			_newgrf_profiler.reset();
 		}
 
-		_newgrf_profiler = new NewGRFProfiler(files[grfnum - 1], _date + numdays);
+		_newgrf_profiler.reset(new NewGRFProfiler(files[grfnum - 1], _date + numdays));
 		return true;
 	} else {
 		return false;

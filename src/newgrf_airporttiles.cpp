@@ -220,6 +220,16 @@ AirportTileResolverObject::AirportTileResolverObject(const AirportTileSpec *ats,
 	this->root_spritegroup = ats->grf_prop.spritegroup[0];
 }
 
+GrfSpecFeature AirportTileResolverObject::GetFeature() const
+{
+	return GSF_AIRPORTTILES;
+}
+
+uint32 AirportTileResolverObject::GetLocalID() const
+{
+	return this->tiles_scope.ats->grf_prop.local_id;
+}
+
 uint16 GetAirportTileCallback(CallbackID callback, uint32 param1, uint32 param2, const AirportTileSpec *ats, Station *st, TileIndex tile, int extra_data = 0)
 {
 	AirportTileResolverObject object(ats, tile, st, callback, param1, param2);

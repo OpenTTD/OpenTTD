@@ -245,8 +245,7 @@ static void OnNewMonth()
 static void OnNewDay()
 {
 	if (_newgrf_profiler != nullptr && _newgrf_profiler->profile_end_date <= _date) {
-		delete _newgrf_profiler;
-		_newgrf_profiler = nullptr;
+		_newgrf_profiler.reset();
 	}
 
 	if (_network_server) NetworkServerDailyLoop();

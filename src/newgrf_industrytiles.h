@@ -39,6 +39,7 @@ struct IndustryTileScopeResolver : public ScopeResolver {
 struct IndustryTileResolverObject : public ResolverObject {
 	IndustryTileScopeResolver indtile_scope; ///< Scope resolver for the industry tile.
 	IndustriesScopeResolver ind_scope;       ///< Scope resolver for the industry owning the tile.
+	IndustryGfx gfx;
 
 	IndustryTileResolverObject(IndustryGfx gfx, TileIndex tile, Industry *indus,
 			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
@@ -51,6 +52,9 @@ struct IndustryTileResolverObject : public ResolverObject {
 			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
+
+	GrfSpecFeature GetFeature() const override;
+	uint32 GetLocalID() const override;
 };
 
 bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const IndustryTileSpec *inds);

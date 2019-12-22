@@ -139,9 +139,20 @@ IndustryTileResolverObject::IndustryTileResolverObject(IndustryGfx gfx, TileInde
 			CallbackID callback, uint32 callback_param1, uint32 callback_param2)
 	: ResolverObject(GetIndTileGrffile(gfx), callback, callback_param1, callback_param2),
 	indtile_scope(*this, indus, tile),
-	ind_scope(*this, tile, indus, indus->type)
+	ind_scope(*this, tile, indus, indus->type),
+	gfx(gfx)
 {
 	this->root_spritegroup = GetIndustryTileSpec(gfx)->grf_prop.spritegroup[0];
+}
+
+GrfSpecFeature IndustryTileResolverObject::GetFeature() const
+{
+	return GSF_INDUSTRYTILES;
+}
+
+uint32 IndustryTileResolverObject::GetLocalID() const
+{
+	return GetIndustryTileSpec(gfx)->grf_prop.local_id;
 }
 
 static void IndustryDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte rnd_colour, byte stage, IndustryGfx gfx)

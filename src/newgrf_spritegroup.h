@@ -399,6 +399,11 @@ struct ResolverObject {
 		this->used_triggers = 0;
 		memset(this->reseed, 0, sizeof(this->reseed));
 	}
+
+	/** Get the feature number being resolved for. */
+	virtual GrfSpecFeature GetFeature() const { return GSF_INVALID; }
+	/** Get the GRF local id of the item being resolved for. */
+	virtual uint32 GetLocalID() const { return 0; }
 };
 
 #endif /* NEWGRF_SPRITEGROUP_H */

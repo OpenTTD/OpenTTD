@@ -58,6 +58,9 @@ struct AirportResolverObject : public ResolverObject {
 	}
 
 	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
+
+	GrfSpecFeature GetFeature() const override;
+	uint32 GetLocalID() const override;
 };
 
 /**
@@ -224,6 +227,16 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 	if (group->num_loading > 0) return group->loading[0];
 
 	return nullptr;
+}
+
+GrfSpecFeature AirportResolverObject::GetFeature() const
+{
+	return GSF_AIRPORTS;
+}
+
+uint32 AirportResolverObject::GetLocalID() const
+{
+	return AirportSpec::Get(this->airport_scope.airport_id)->grf_prop.local_id;
 }
 
 /* virtual */ uint32 AirportScopeResolver::GetRandomBits() const

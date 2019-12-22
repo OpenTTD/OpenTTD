@@ -12,12 +12,13 @@
 #include "fileio_func.h"
 #include "string_func.h"
 #include "console_func.h"
+#include "spritecache.h"
 
 #include <chrono>
 #include <time.h>
 
 
-NewGRFProfiler *_newgrf_profiler;
+std::unique_ptr<NewGRFProfiler> _newgrf_profiler;
 
 
 /**
@@ -25,7 +26,7 @@ NewGRFProfiler *_newgrf_profiler;
  * @param grffile   The GRF file to collect profiling data on
  * @param end_date  Game date to end profiling on
  */
-NewGRFProfiler::NewGRFProfiler(const GRFFile *grffile, Date end_date) : grffile(grffile), profile_end_date(end_date)
+NewGRFProfiler::NewGRFProfiler(const GRFFile *grffile, Date end_date) : grffile{ grffile }, profile_end_date{ end_date }, cur_call{}
 {
 	IConsolePrintF(TC_LIGHT_BROWN, "Beginning profile of NewGRF %s", grffile->filename);
 }
@@ -41,9 +42,9 @@ NewGRFProfiler::~NewGRFProfiler()
 	FILE *f = FioFOpenFile(filename.c_str(), "wt", Subdirectory::NO_DIRECTORY);
 	FileCloser fcloser(f);
 
-	fputs("Tick,Sprite,CallbackID,Microseconds,Subs,Result\n", f);
+	fputs("Tick,Sprite,Feature,Item,CallbackID,Microseconds,Subs,Result\n", f);
 	for (const Call &c : this->calls) {
-		fprintf(f, "%u,%u,0x%x,%u,%u,%u\n", c.tick, c.root_sprite, (uint)c.cb, c.time, c.subs, c.result);
+		fprintf(f, "%u,%u,0x%X,%d,0x%X,%u,%u,%u\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result);
 	}
 }
 
@@ -59,6 +60,8 @@ void NewGRFProfiler::BeginResolve(const ResolverObject &resolver)
 	this->cur_call.time = (uint32)time_point_cast<microseconds>(high_resolution_clock::now()).time_since_epoch().count();
 	this->cur_call.tick = _tick_counter;
 	this->cur_call.cb = resolver.callback;
+	this->cur_call.feat = resolver.GetFeature();
+	this->cur_call.item = resolver.GetLocalID();
 }
 
 /**
@@ -74,7 +77,7 @@ void NewGRFProfiler::EndResolve(const SpriteGroup *result)
 	} else if (result->type == SGT_CALLBACK) {
 		this->cur_call.result = static_cast<const CallbackResultSpriteGroup *>(result)->result;
 	} else if (result->type == SGT_RESULT) {
-		this->cur_call.result = static_cast<const ResultSpriteGroup *>(result)->sprite;
+		this->cur_call.result = GetSpriteLocalID(static_cast<const ResultSpriteGroup *>(result)->sprite);
 	} else {
 		this->cur_call.result = result->nfo_line;
 	}

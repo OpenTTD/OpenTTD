@@ -109,7 +109,7 @@ Usage:
 
 - `newgrf_profile` - show a list of loaded GRFs and their index numbers.
 - `newgrf_profile <grf-num> <days>` - Begin profiling the GRF and run profiling
-  for that many in-game days. Automarically writes a CSV file to the screenshot
+  for that many in-game days. Automatically writes a CSV file to the screenshot
   folder at the end.
 
 Only one GRF can be profiled at a time. Trying to start a second profiling

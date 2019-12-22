@@ -18,6 +18,7 @@
 
 #include <vector>
 #include <string>
+#include <memory>
 
 /**
  * Callback profiler for NewGRF development
@@ -34,13 +35,14 @@ struct NewGRFProfiler {
 
 	/** Measurement of a single sprite group resolution */
 	struct Call {
-		uint32 root_sprite; ///< Pseudo-sprite index in GRF file
-		uint32 result;      ///< Result of callback
-		uint32 subs;        ///< Sub-calls to other sprite groups
-		uint32 time;        ///< Time taken for resolution (microseconds)
-		uint16 tick;        ///< Game tick
-		CallbackID cb;      ///< Callback ID
-
+		uint32 root_sprite;  ///< Pseudo-sprite index in GRF file
+		uint32 item;         ///< Local ID of item being resolved for
+		uint32 result;       ///< Result of callback
+		uint32 subs;         ///< Sub-calls to other sprite groups
+		uint32 time;         ///< Time taken for resolution (microseconds)
+		uint16 tick;         ///< Game tick
+		CallbackID cb;       ///< Callback ID
+		GrfSpecFeature feat; ///< GRF feature being resolved for
 	};
 
 	const GRFFile *grffile;  ///< Which GRF is being profiled
@@ -49,6 +51,6 @@ struct NewGRFProfiler {
 	std::vector<Call> calls; ///< All calls collected so far
 };
 
-extern NewGRFProfiler *_newgrf_profiler;
+extern std::unique_ptr<NewGRFProfiler> _newgrf_profiler;
 
 #endif /* NEWGRF_PROFILING_H */
