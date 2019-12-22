@@ -26,7 +26,7 @@ static const uint DEF_MAX_HEIGHTLEVEL = 30;                    ///< Default maxi
 static const uint MAX_MAX_HEIGHTLEVEL = MAX_TILE_HEIGHT;       ///< Upper bound of maximum allowed heightlevel (in the construction settings)
 
 static const uint MIN_SNOWLINE_HEIGHT = 2;                     ///< Minimum snowline height
-static const uint DEF_SNOWLINE_HEIGHT = 15;                    ///< Default snowline height
+static const uint DEF_SNOWLINE_HEIGHT = 7;                     ///< Default snowline height
 static const uint MAX_SNOWLINE_HEIGHT = (MAX_TILE_HEIGHT - 2); ///< Maximum allowed snowline height
 
 
