@@ -66,7 +66,7 @@
 /** List of all loaded GRF files */
 static std::vector<GRFFile *> _grf_files;
 
-std::vector<GRFFile *> GetAllGRFFiles()
+const std::vector<GRFFile *> &GetAllGRFFiles()
 {
 	return _grf_files;
 }

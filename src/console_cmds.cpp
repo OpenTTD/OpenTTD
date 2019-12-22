@@ -1882,8 +1882,8 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		return true;
 	}
 
-	extern std::vector<GRFFile *> GetAllGRFFiles();
-	std::vector<GRFFile *> files = GetAllGRFFiles();
+	extern const std::vector<GRFFile *> &GetAllGRFFiles();
+	const std::vector<GRFFile *> &files = GetAllGRFFiles();
 
 	if (argc == 1) {
 		IConsolePrint(TC_LIGHT_BROWN, "Active GRF files:");
