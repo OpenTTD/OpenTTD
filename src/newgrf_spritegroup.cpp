@@ -36,17 +36,20 @@ TemporaryStorageArray<int32, 0x110> _temp_store;
 {
 	if (group == nullptr) return nullptr;
 
-	if (_newgrf_profiler == nullptr || _newgrf_profiler->grffile != object.grffile) {
+	const GRFFile *grf = object.grffile;
+	auto profiler = std::find_if(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](const NewGRFProfiler &pr) { return pr.grffile == grf; });
+
+	if (profiler == _newgrf_profilers.end() || !profiler->active) {
 		if (top_level) _temp_store.ClearChanges();
 		return group->Resolve(object);
 	} else if (top_level) {
-		_newgrf_profiler->BeginResolve(object);
+		profiler->BeginResolve(object);
 		_temp_store.ClearChanges();
 		const SpriteGroup *result = group->Resolve(object);
-		_newgrf_profiler->EndResolve(result);
+		profiler->EndResolve(result);
 		return result;
 	} else {
-		_newgrf_profiler->RecursiveResolve();
+		profiler->RecursiveResolve();
 		return group->Resolve(object);
 	}
 }

@@ -18,7 +18,8 @@
 #include <time.h>
 
 
-std::unique_ptr<NewGRFProfiler> _newgrf_profiler;
+std::vector<NewGRFProfiler> _newgrf_profilers;
+Date _newgrf_profile_end_date;
 
 
 /**
@@ -26,9 +27,8 @@ std::unique_ptr<NewGRFProfiler> _newgrf_profiler;
  * @param grffile   The GRF file to collect profiling data on
  * @param end_date  Game date to end profiling on
  */
-NewGRFProfiler::NewGRFProfiler(const GRFFile *grffile, Date end_date) : grffile{ grffile }, profile_end_date{ end_date }, cur_call{}
+NewGRFProfiler::NewGRFProfiler(const GRFFile *grffile) : grffile{ grffile }, active{ false }, cur_call{}
 {
-	IConsolePrintF(TC_LIGHT_BROWN, "Beginning profile of NewGRF %s", grffile->filename);
 }
 
 /**
@@ -36,16 +36,6 @@ NewGRFProfiler::NewGRFProfiler(const GRFFile *grffile, Date end_date) : grffile{
  */
 NewGRFProfiler::~NewGRFProfiler()
 {
-	std::string filename = this->GetOutputFilename();
-	IConsolePrintF(TC_LIGHT_BROWN, "Finished profile of NewGRF, writing %u events to %s", (uint)this->calls.size(), filename.c_str());
-
-	FILE *f = FioFOpenFile(filename.c_str(), "wt", Subdirectory::NO_DIRECTORY);
-	FileCloser fcloser(f);
-
-	fputs("Tick,Sprite,Feature,Item,CallbackID,Microseconds,Depth,Result\n", f);
-	for (const Call &c : this->calls) {
-		fprintf(f, "%u,%u,0x%X,%d,0x%X,%u,%u,%u\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result);
-	}
 }
 
 /**
@@ -93,6 +83,36 @@ void NewGRFProfiler::RecursiveResolve()
 	this->cur_call.subs += 1;
 }
 
+void NewGRFProfiler::Start()
+{
+	this->Abort();
+	this->active = true;
+}
+
+void NewGRFProfiler::Finish()
+{
+	if (!this->active) return;
+
+	std::string filename = this->GetOutputFilename();
+	IConsolePrintF(TC_LIGHT_BROWN, "Finished profile of NewGRF %08X, writing %u events to %s", this->grffile->grfid, (uint)this->calls.size(), filename.c_str());
+
+	FILE *f = FioFOpenFile(filename.c_str(), "wt", Subdirectory::NO_DIRECTORY);
+	FileCloser fcloser(f);
+
+	fputs("Tick,Sprite,Feature,Item,CallbackID,Microseconds,Depth,Result\n", f);
+	for (const Call &c : this->calls) {
+		fprintf(f, "%u,%u,0x%X,%d,0x%X,%u,%u,%u\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result);
+	}
+
+	this->Abort();
+}
+
+void NewGRFProfiler::Abort()
+{
+	this->active = false;
+	this->calls.clear();
+}
+
 /**
  * Get name of the file that will be written.
  * @return File name of profiling output file.
@@ -105,7 +125,7 @@ std::string NewGRFProfiler::GetOutputFilename() const
 	strftime(timestamp, lengthof(timestamp), "%Y%m%d-%H%M", localtime(&write_time));
 
 	char filepath[MAX_PATH] = {};
-	seprintf(filepath, lastof(filepath), "%sgrfprofile-%s.csv", FiosGetScreenshotDir(), timestamp);
+	seprintf(filepath, lastof(filepath), "%sgrfprofile-%s-%08X.csv", FiosGetScreenshotDir(), timestamp, this->grffile->grfid);
 
 	return std::string(filepath);
 }

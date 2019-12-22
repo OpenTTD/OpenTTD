@@ -24,13 +24,16 @@
  * Callback profiler for NewGRF development
  */
 struct NewGRFProfiler {
-	NewGRFProfiler(const GRFFile *grffile, Date end_date);
+	NewGRFProfiler(const GRFFile *grffile);
 	~NewGRFProfiler();
 
 	void BeginResolve(const ResolverObject &resolver);
 	void EndResolve(const SpriteGroup *result);
 	void RecursiveResolve();
 
+	void Start();
+	void Finish();
+	void Abort();
 	std::string GetOutputFilename() const;
 
 	/** Measurement of a single sprite group resolution */
@@ -46,11 +49,12 @@ struct NewGRFProfiler {
 	};
 
 	const GRFFile *grffile;  ///< Which GRF is being profiled
-	Date profile_end_date;   ///< Game date to end this profiling session
+	bool active;             ///< Is this profiler collecting data
 	Call cur_call;           ///< Data for current call in progress
 	std::vector<Call> calls; ///< All calls collected so far
 };
 
-extern std::unique_ptr<NewGRFProfiler> _newgrf_profiler;
+extern std::vector<NewGRFProfiler> _newgrf_profilers;
+extern Date _newgrf_profile_end_date;
 
 #endif /* NEWGRF_PROFILING_H */

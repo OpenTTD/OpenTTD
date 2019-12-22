@@ -70,7 +70,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	_thd.redsq = INVALID_TILE;
 	if (reset_settings) MakeNewgameSettingsLive();
 
-	_newgrf_profiler.reset();
+	_newgrf_profilers.clear();
 
 	if (reset_date) {
 		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
