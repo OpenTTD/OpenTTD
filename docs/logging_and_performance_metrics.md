@@ -99,3 +99,40 @@ The following is an explanation of the different statistics:
 If the frame rate window is shaded, the title bar will instead show just the
 current simulation rate and the game speed factor.
 
+## 3.0) NewGRF callback profiling
+
+NewGRF developers can profile callback chains via the `newgrf_profile`
+console command. The command enables a profiling mode where every sprite
+request is measured and logged, and written to a CSV file in the end.
+
+Usage:
+
+- `newgrf_profile` - show a list of loaded GRFs and their index numbers.
+- `newgrf_profile <grf-num> <days>` - Begin profiling the GRF and run profiling
+  for that many in-game days. Automarically writes a CSV file to the screenshot
+  folder at the end.
+
+Only one GRF can be profiled at a time. Trying to start a second profiling
+session will abort the first.
+
+The CSV file contains one line per sprite request during the profiling. It can
+get very large, especially on large games with many objects from the GRF.
+Start profiling short periods such as 3 or 7 days, and watch the file sizes.
+
+The produced CSV file contains the following fields:
+
+- *Tick* - Game tick counter, this may wrap to zero during recording.
+  Mainly useful to distinguish events from separate ticks.
+- *Sprite* - Index of the root Action 2 sprite in the GRF file. This is
+  the sprite group being resolved.
+- *CallbackID* - The type of callback being resolved. ID 0 is regular graphics
+  lookup. See the `newgrf_callbacks.h` file in the OpenTTD source code for the
+  full list of callback IDs.
+- *Microseconds* - Total time spent to resolve the Action 2, in microseconds.
+- *Subs* - Number of recursive Action 2 lookups were made during resolution.
+  Value zero means the sprite group resolved directly.
+- *Result* - Result of the callback resolution. For lookups that result in
+  a sprite, this is the index of the base action 2 in the GRF file. For
+  callbacks that give a numeric result, this is the callback result value.
+  For lookups that result in an industry production or tilelayout, this
+  is the sprite index of the action 2 defining the production/tilelayout.

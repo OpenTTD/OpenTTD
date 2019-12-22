@@ -43,7 +43,7 @@ TemporaryStorageArray<int32, 0x110> _temp_store;
 		_newgrf_profiler->BeginResolve(object);
 		_temp_store.ClearChanges();
 		const SpriteGroup *result = group->Resolve(object);
-		_newgrf_profiler->EndResolve();
+		_newgrf_profiler->EndResolve(result);
 		return result;
 	} else {
 		_newgrf_profiler->RecursiveResolve();

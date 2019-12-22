@@ -41,9 +41,9 @@ NewGRFProfiler::~NewGRFProfiler()
 	FILE *f = FioFOpenFile(filename.c_str(), "wt", Subdirectory::NO_DIRECTORY);
 	FileCloser fcloser(f);
 
-	fputs("Tick,Sprite,CallbackID,Microseconds,Subs\n", f);
+	fputs("Tick,Sprite,CallbackID,Microseconds,Subs,Result\n", f);
 	for (const Call &c : this->calls) {
-		fprintf(f, "%u,%u,%u,%u,%u\n", c.tick, c.nfo_line, (uint)c.cb, c.time, c.subs);
+		fprintf(f, "%u,%u,0x%x,%u,%u,%u\n", c.tick, c.root_sprite, (uint)c.cb, c.time, c.subs, c.result);
 	}
 }
 
@@ -54,7 +54,7 @@ NewGRFProfiler::~NewGRFProfiler()
 void NewGRFProfiler::BeginResolve(const ResolverObject &resolver)
 {
 	using namespace std::chrono;
-	this->cur_call.nfo_line = resolver.root_spritegroup->nfo_line;
+	this->cur_call.root_sprite = resolver.root_spritegroup->nfo_line;
 	this->cur_call.subs = 0;
 	this->cur_call.time = (uint32)time_point_cast<microseconds>(high_resolution_clock::now()).time_since_epoch().count();
 	this->cur_call.tick = _tick_counter;
@@ -64,10 +64,21 @@ void NewGRFProfiler::BeginResolve(const ResolverObject &resolver)
 /**
  * Capture the completion of a sprite group resolution.
  */
-void NewGRFProfiler::EndResolve()
+void NewGRFProfiler::EndResolve(const SpriteGroup *result)
 {
 	using namespace std::chrono;
 	this->cur_call.time = (uint32)time_point_cast<microseconds>(high_resolution_clock::now()).time_since_epoch().count() - this->cur_call.time;
+
+	if (result == nullptr) {
+		this->cur_call.result = 0;
+	} else if (result->type == SGT_CALLBACK) {
+		this->cur_call.result = static_cast<const CallbackResultSpriteGroup *>(result)->result;
+	} else if (result->type == SGT_RESULT) {
+		this->cur_call.result = static_cast<const ResultSpriteGroup *>(result)->sprite;
+	} else {
+		this->cur_call.result = result->nfo_line;
+	}
+
 	this->calls.push_back(this->cur_call);
 }
 

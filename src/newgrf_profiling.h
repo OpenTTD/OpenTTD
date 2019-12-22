@@ -27,18 +27,19 @@ struct NewGRFProfiler {
 	~NewGRFProfiler();
 
 	void BeginResolve(const ResolverObject &resolver);
-	void EndResolve();
+	void EndResolve(const SpriteGroup *result);
 	void RecursiveResolve();
 
 	std::string GetOutputFilename() const;
 
 	/** Measurement of a single sprite group resolution */
 	struct Call {
-		uint32 nfo_line; ///< Pseudo-sprite index in GRF file
-		uint32 subs;     ///< Sub-calls to other sprite groups
-		uint32 time;     ///< Time taken for resolution (microseconds)
-		uint16 tick;     ///< Game tick
-		CallbackID cb;   ///< Callback ID
+		uint32 root_sprite; ///< Pseudo-sprite index in GRF file
+		uint32 result;      ///< Result of callback
+		uint32 subs;        ///< Sub-calls to other sprite groups
+		uint32 time;        ///< Time taken for resolution (microseconds)
+		uint16 tick;        ///< Game tick
+		CallbackID cb;      ///< Callback ID
 
 	};
 
