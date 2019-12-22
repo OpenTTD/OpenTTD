@@ -102,22 +102,32 @@ current simulation rate and the game speed factor.
 ## 3.0) NewGRF callback profiling
 
 NewGRF developers can profile callback chains via the `newgrf_profile`
-console command. The command enables a profiling mode where every sprite
+console command. The command controls a profiling mode where every sprite
 request is measured and logged, and written to a CSV file in the end.
+
+The NewGRF developer tools need to be enabled for the command to function.
 
 Usage:
 
 - `newgrf_profile` - show a list of loaded GRFs and their index numbers.
-- `newgrf_profile <grf-num> <days>` - Begin profiling the GRF and run profiling
-  for that many in-game days. Automatically writes a CSV file to the screenshot
-  folder at the end.
+- `newgrf_profile add <grf-num>...` - Select one or more GRFs for profiling.
+- `newgrf_profile rem <grf-num>...` - Remove one or more GRFs from profiling.
+- `newgrf_profile rem all` - Remove all GRFs from profiling.
+- `newgrf_profile start [<num-days>]` - Begin profiling the selected GRFs,
+  you can optionally specify a number of in-game days to automatically stop
+  profiling after.
+- `newgrf_profile stop` - Finish profiling and write the collected data to CSV
+  files in the screenshot folder.
+- `newgrf_profile abort` - Cancel active profiling and discard collected data.
+  Selected GRFs remain selected.
 
-Only one GRF can be profiled at a time. Trying to start a second profiling
-session will abort the first.
+Profiling only works during game or in the editor, it's not possible to
+profile across the main menu, world generation, or loading savegames.
 
-The CSV file contains one line per sprite request during the profiling. It can
-get very large, especially on large games with many objects from the GRF.
-Start profiling short periods such as 3 or 7 days, and watch the file sizes.
+The CSV files contain one line per sprite request during the profiling.
+They can get very large, especially on large games with many objects from
+the GRF. Start profiling short periods such as 3 or 7 days, and watch the
+file sizes.
 
 The produced CSV file contains the following fields:
 
