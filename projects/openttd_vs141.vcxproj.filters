@@ -834,6 +834,9 @@
     <ClInclude Include="..\src\newgrf_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\newgrf_profiling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\newgrf_properties.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -967,6 +970,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\video\sdl_v.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\video\sdl2_v.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\settings_func.h">
@@ -2784,6 +2790,9 @@
     <ClCompile Include="..\src\newgrf_object.cpp">
       <Filter>NewGRF</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\newgrf_profiling.cpp">
+      <Filter>NewGRF</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\newgrf_railtype.cpp">
       <Filter>NewGRF</Filter>
     </ClCompile>
@@ -3066,6 +3075,9 @@
     <ClCompile Include="..\src\video\sdl_v.cpp">
       <Filter>Video</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\video\sdl2_v.cpp">
+      <Filter>Video</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\video\win32_v.cpp">
       <Filter>Video</Filter>
     </ClCompile>
@@ -3085,6 +3097,9 @@
       <Filter>Sound</Filter>
     </ClCompile>
     <ClCompile Include="..\src\sound\sdl_s.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sound\sdl2_s.cpp">
       <Filter>Sound</Filter>
     </ClCompile>
     <ClCompile Include="..\src\sound\win32_s.cpp">

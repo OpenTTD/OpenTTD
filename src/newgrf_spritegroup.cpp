@@ -11,6 +11,7 @@
 #include <algorithm>
 #include "debug.h"
 #include "newgrf_spritegroup.h"
+#include "newgrf_profiling.h"
 #include "core/pool_func.hpp"
 
 #include "safeguards.h"
@@ -34,10 +35,20 @@ TemporaryStorageArray<int32, 0x110> _temp_store;
 /* static */ const SpriteGroup *SpriteGroup::Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level)
 {
 	if (group == nullptr) return nullptr;
-	if (top_level) {
+
+	if (_newgrf_profiler == nullptr || _newgrf_profiler->grffile != object.grffile) {
+		if (top_level) _temp_store.ClearChanges();
+		return group->Resolve(object);
+	} else if (top_level) {
+		_newgrf_profiler->BeginResolve(object);
 		_temp_store.ClearChanges();
+		const SpriteGroup *result = group->Resolve(object);
+		_newgrf_profiler->EndResolve();
+		return result;
+	} else {
+		_newgrf_profiler->RecursiveResolve();
+		return group->Resolve(object);
 	}
-	return group->Resolve(object);
 }
 
 RealSpriteGroup::~RealSpriteGroup()

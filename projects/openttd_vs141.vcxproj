@@ -582,6 +582,7 @@
     <ClInclude Include="..\src\newgrf_industries.h" />
     <ClInclude Include="..\src\newgrf_industrytiles.h" />
     <ClInclude Include="..\src\newgrf_object.h" />
+    <ClInclude Include="..\src\newgrf_profiling.h" />
     <ClInclude Include="..\src\newgrf_properties.h" />
     <ClInclude Include="..\src\newgrf_railtype.h" />
     <ClInclude Include="..\src\newgrf_roadtype.h" />
@@ -627,6 +628,7 @@
     <ClInclude Include="..\src\screenshot.h" />
     <ClInclude Include="..\src\sound\sdl_s.h" />
     <ClInclude Include="..\src\video\sdl_v.h" />
+    <ClInclude Include="..\src\video\sdl2_v.h" />
     <ClInclude Include="..\src\settings_func.h" />
     <ClInclude Include="..\src\settings_gui.h" />
     <ClInclude Include="..\src\settings_internal.h" />
@@ -1232,6 +1234,7 @@
     <ClCompile Include="..\src\newgrf_industries.cpp" />
     <ClCompile Include="..\src\newgrf_industrytiles.cpp" />
     <ClCompile Include="..\src\newgrf_object.cpp" />
+    <ClCompile Include="..\src\newgrf_profiling.cpp" />
     <ClCompile Include="..\src\newgrf_railtype.cpp" />
     <ClCompile Include="..\src\newgrf_roadtype.cpp" />
     <ClCompile Include="..\src\newgrf_sound.cpp" />
@@ -1326,6 +1329,7 @@
     <ClCompile Include="..\src\video\dedicated_v.cpp" />
     <ClCompile Include="..\src\video\null_v.cpp" />
     <ClCompile Include="..\src\video\sdl_v.cpp" />
+    <ClCompile Include="..\src\video\sdl2_v.cpp" />
     <ClCompile Include="..\src\video\win32_v.cpp" />
     <ClCompile Include="..\src\music\dmusic.cpp" />
     <ClCompile Include="..\src\music\null_m.cpp" />
@@ -1333,6 +1337,7 @@
     <ClCompile Include="..\src\music\win32_m.cpp" />
     <ClCompile Include="..\src\sound\null_s.cpp" />
     <ClCompile Include="..\src\sound\sdl_s.cpp" />
+    <ClCompile Include="..\src\sound\sdl2_s.cpp" />
     <ClCompile Include="..\src\sound\win32_s.cpp" />
     <ClCompile Include="..\src\sound\xaudio2_s.cpp" />
     <ClCompile Include="..\src\os\windows\crashlog_win.cpp" />

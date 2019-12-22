@@ -33,6 +33,7 @@
 #include "ai/ai.hpp"
 #include "ai/ai_config.hpp"
 #include "newgrf.h"
+#include "newgrf_profiling.h"
 #include "console_func.h"
 #include "engine_base.h"
 #include "game/game.hpp"
@@ -1872,6 +1873,51 @@ DEF_CONSOLE_CMD(ConNewGRFReload)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConNewGRFProfile)
+{
+	if (argc == 0) {
+		IConsoleHelp("Collect a callback profiling session from a NewGRF for a number of in-game days.");
+		IConsoleHelp("Usage: newgrf_profile [<grf-num> <num-days>]");
+		IConsoleHelp("Run without parameters to get a list of active NewGRFs and their grf-num");
+		return true;
+	}
+
+	extern std::vector<GRFFile *> GetAllGRFFiles();
+	std::vector<GRFFile *> files = GetAllGRFFiles();
+
+	if (argc == 1) {
+		IConsolePrint(TC_LIGHT_BROWN, "Active GRF files:");
+		int i = 1;
+		for (GRFFile *grf : files) {
+			IConsolePrintF(TC_LIGHT_BROWN, "%d: %s", i, grf->filename);
+			i++;
+		}
+		return true;
+	} else if (argc == 3) {
+		int grfnum = atoi(argv[1]);
+		int numdays = atoi(argv[2]);
+		if (grfnum < 1 || grfnum > files.size()) {
+			IConsoleError("Invalid grf-num, use newgrf_profile without parameters to show a list.");
+			return false;
+		}
+		if (numdays < 1) {
+			IConsoleError("Invalid number of days, must be 1 or more days to profile for.");
+			return false;
+		}
+
+		if (_newgrf_profiler != nullptr) {
+			IConsoleWarning("NewGRF profiling already active, aborting current session.");
+			delete _newgrf_profiler;
+			_newgrf_profiler = nullptr;
+		}
+
+		_newgrf_profiler = new NewGRFProfiler(files[grfnum - 1], _date + numdays);
+		return true;
+	} else {
+		return false;
+	}
+}
+
 #ifdef _DEBUG
 /******************
  *  debug commands
@@ -2051,4 +2097,5 @@ void IConsoleStdLibRegister()
 
 	/* NewGRF development stuff */
 	IConsoleCmdRegister("reload_newgrfs",  ConNewGRFReload, ConHookNewGRFDeveloperTool);
+	IConsoleCmdRegister("newgrf_profile",  ConNewGRFProfile, ConHookNewGRFDeveloperTool);
 }

@@ -56,13 +56,14 @@ extern SpriteGroupPool _spritegroup_pool;
 /* Common wrapper for all the different sprite group types */
 struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
 protected:
-	SpriteGroup(SpriteGroupType type) : type(type) {}
+	SpriteGroup(SpriteGroupType type) : nfo_line(0), type(type) {}
 	/** Base sprite group resolver */
 	virtual const SpriteGroup *Resolve(ResolverObject &object) const { return this; };
 
 public:
 	virtual ~SpriteGroup() {}
 
+	uint32 nfo_line;
 	SpriteGroupType type;
 
 	virtual SpriteID GetResult() const { return 0; }
