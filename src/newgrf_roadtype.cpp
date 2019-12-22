@@ -67,10 +67,15 @@
 
 GrfSpecFeature RoadTypeResolverObject::GetFeature() const
 {
-	return GSF_ROADTYPES; // FIXME: when is this GSF_TRAMTYPES instead?
+	RoadType rt = GetRoadTypeByLabel(this->roadtype_scope.rti->label, false);
+	switch (GetRoadTramType(rt)) {
+		case RTT_ROAD: return GSF_ROADTYPES;
+		case RTT_TRAM: return GSF_TRAMTYPES;
+		default: return GSF_INVALID;
+	}
 }
 
-uint32 RoadTypeResolverObject::GetLocalID() const
+uint32 RoadTypeResolverObject::GetDebugID() const
 {
 	return this->roadtype_scope.rti->label;
 }

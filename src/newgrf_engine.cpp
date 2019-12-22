@@ -957,7 +957,7 @@ GrfSpecFeature VehicleResolverObject::GetFeature() const
 	}
 }
 
-uint32 VehicleResolverObject::GetLocalID() const
+uint32 VehicleResolverObject::GetDebugID() const
 {
 	return Engine::Get(this->self_scope.self_type)->grf_prop.local_id;
 }

@@ -494,7 +494,7 @@ GrfSpecFeature IndustriesResolverObject::GetFeature() const
 	return GSF_INDUSTRIES;
 }
 
-uint32 IndustriesResolverObject::GetLocalID() const
+uint32 IndustriesResolverObject::GetDebugID() const
 {
 	return GetIndustrySpec(this->industries_scope.type)->grf_prop.local_id;
 }

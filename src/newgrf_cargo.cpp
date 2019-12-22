@@ -22,7 +22,7 @@ struct CargoResolverObject : public ResolverObject {
 	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
 
 	GrfSpecFeature GetFeature() const override;
-	uint32 GetLocalID() const override;
+	uint32 GetDebugID() const override;
 };
 
 /* virtual */ const SpriteGroup *CargoResolverObject::ResolveReal(const RealSpriteGroup *group) const
@@ -40,9 +40,9 @@ GrfSpecFeature CargoResolverObject::GetFeature() const
 	return GSF_CARGOES;
 }
 
-uint32 CargoResolverObject::GetLocalID() const
+uint32 CargoResolverObject::GetDebugID() const
 {
-	return this->cargospec->label; // Not quite the same as ID, but should work
+	return this->cargospec->label;
 }
 
 /**

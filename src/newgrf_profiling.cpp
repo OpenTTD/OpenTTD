@@ -42,7 +42,7 @@ NewGRFProfiler::~NewGRFProfiler()
 	FILE *f = FioFOpenFile(filename.c_str(), "wt", Subdirectory::NO_DIRECTORY);
 	FileCloser fcloser(f);
 
-	fputs("Tick,Sprite,Feature,Item,CallbackID,Microseconds,Subs,Result\n", f);
+	fputs("Tick,Sprite,Feature,Item,CallbackID,Microseconds,Depth,Result\n", f);
 	for (const Call &c : this->calls) {
 		fprintf(f, "%u,%u,0x%X,%d,0x%X,%u,%u,%u\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result);
 	}
@@ -61,7 +61,7 @@ void NewGRFProfiler::BeginResolve(const ResolverObject &resolver)
 	this->cur_call.tick = _tick_counter;
 	this->cur_call.cb = resolver.callback;
 	this->cur_call.feat = resolver.GetFeature();
-	this->cur_call.item = resolver.GetLocalID();
+	this->cur_call.item = resolver.GetDebugID();
 }
 
 /**

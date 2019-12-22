@@ -400,10 +400,17 @@ struct ResolverObject {
 		memset(this->reseed, 0, sizeof(this->reseed));
 	}
 
-	/** Get the feature number being resolved for. */
+	/**
+	 * Get the feature number being resolved for.
+	 * This function is mainly intended for the callback profiling feature.
+	 */
 	virtual GrfSpecFeature GetFeature() const { return GSF_INVALID; }
-	/** Get the GRF local id of the item being resolved for. */
-	virtual uint32 GetLocalID() const { return 0; }
+	/**
+	 * Get an identifier for the item being resolved.
+	 * This function is mainly intended for the callback profiling feature,
+	 * and should return an identifier recognisable by the NewGRF developer.
+	 */
+	virtual uint32 GetDebugID() const { return 0; }
 };
 
 #endif /* NEWGRF_SPRITEGROUP_H */

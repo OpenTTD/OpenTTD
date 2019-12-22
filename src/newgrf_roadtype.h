@@ -43,7 +43,7 @@ struct RoadTypeResolverObject : public ResolverObject {
 	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
 
 	GrfSpecFeature GetFeature() const override;
-	uint32 GetLocalID() const override;
+	uint32 GetDebugID() const override;
 };
 
 SpriteID GetCustomRoadSprite(const RoadTypeInfo *rti, TileIndex tile, RoadTypeSpriteGroup rtsg, TileContext context = TCX_NORMAL, uint *num_results = nullptr);

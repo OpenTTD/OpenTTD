@@ -54,7 +54,7 @@ struct IndustryTileResolverObject : public ResolverObject {
 	}
 
 	GrfSpecFeature GetFeature() const override;
-	uint32 GetLocalID() const override;
+	uint32 GetDebugID() const override;
 };
 
 bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const IndustryTileSpec *inds);

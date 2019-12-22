@@ -29,6 +29,8 @@ struct GenericScopeResolver : public ScopeResolver {
 	uint8 count;
 	uint8 station_size;
 
+	uint8 feature;
+
 	/**
 	 * Generic scope resolver.
 	 * @param ro Surrounding resolver.
@@ -36,7 +38,7 @@ struct GenericScopeResolver : public ScopeResolver {
 	 */
 	GenericScopeResolver(ResolverObject &ro, bool ai_callback)
 		: ScopeResolver(ro), cargo_type(0), default_selection(0), src_industry(0), dst_industry(0), distance(0),
-		event(), count(0), station_size(0), ai_callback(ai_callback)
+		event(), count(0), station_size(0), feature(GSF_INVALID), ai_callback(ai_callback)
 	{
 	}
 
@@ -62,6 +64,16 @@ struct GenericResolverObject : public ResolverObject {
 	}
 
 	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
+
+	GrfSpecFeature GetFeature() const override
+	{
+		return (GrfSpecFeature)this->generic_scope.feature;
+	}
+
+	uint32 GetDebugID() const override
+	{
+		return 0;
+	}
 };
 
 struct GenericCallback {
@@ -226,6 +238,7 @@ uint16 GetAiPurchaseCallbackResult(uint8 feature, CargoID cargo_type, uint8 defa
 	object.generic_scope.event             = event;
 	object.generic_scope.count             = count;
 	object.generic_scope.station_size      = station_size;
+	object.generic_scope.feature           = feature;
 
 	uint16 callback = GetGenericCallbackResult(feature, object, 0, 0, file);
 	if (callback != CALLBACK_FAILED) callback = GB(callback, 0, 8);
@@ -247,6 +260,7 @@ void AmbientSoundEffectCallback(TileIndex tile)
 
 	/* Prepare resolver object. */
 	GenericResolverObject object(false, CBID_SOUNDS_AMBIENT_EFFECT);
+	object.generic_scope.feature = GSF_SOUNDFX;
 
 	uint32 param1_v7 = GetTileType(tile) << 28 | Clamp(TileHeight(tile), 0, 15) << 24 | GB(r, 16, 8) << 16 | GetTerrainType(tile);
 	uint32 param1_v8 = GetTileType(tile) << 24 | GetTileZ(tile) << 16 | GB(r, 16, 8) << 8 | (HasTileWaterClass(tile) ? GetWaterClass(tile) : 0) << 3 | GetTerrainType(tile);

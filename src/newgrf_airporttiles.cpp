@@ -225,7 +225,7 @@ GrfSpecFeature AirportTileResolverObject::GetFeature() const
 	return GSF_AIRPORTTILES;
 }
 
-uint32 AirportTileResolverObject::GetLocalID() const
+uint32 AirportTileResolverObject::GetDebugID() const
 {
 	return this->tiles_scope.ats->grf_prop.local_id;
 }

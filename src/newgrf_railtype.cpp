@@ -70,7 +70,7 @@ GrfSpecFeature RailTypeResolverObject::GetFeature() const
 	return GSF_RAILTYPES;
 }
 
-uint32 RailTypeResolverObject::GetLocalID() const
+uint32 RailTypeResolverObject::GetDebugID() const
 {
 	return this->railtype_scope.rti->label;
 }

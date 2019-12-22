@@ -67,7 +67,7 @@ GrfSpecFeature HouseResolverObject::GetFeature() const
 	return GSF_HOUSES;
 }
 
-uint32 HouseResolverObject::GetLocalID() const
+uint32 HouseResolverObject::GetDebugID() const
 {
 	return HouseSpec::Get(this->house_scope.house_id)->grf_prop.local_id;
 }

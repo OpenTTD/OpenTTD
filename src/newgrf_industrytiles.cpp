@@ -150,7 +150,7 @@ GrfSpecFeature IndustryTileResolverObject::GetFeature() const
 	return GSF_INDUSTRYTILES;
 }
 
-uint32 IndustryTileResolverObject::GetLocalID() const
+uint32 IndustryTileResolverObject::GetDebugID() const
 {
 	return GetIndustryTileSpec(gfx)->grf_prop.local_id;
 }

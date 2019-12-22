@@ -52,7 +52,7 @@ struct CanalResolverObject : public ResolverObject {
 	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
 
 	GrfSpecFeature GetFeature() const override;
-	uint32 GetLocalID() const override;
+	uint32 GetDebugID() const override;
 };
 
 /* virtual */ uint32 CanalScopeResolver::GetRandomBits() const
@@ -121,9 +121,9 @@ GrfSpecFeature CanalResolverObject::GetFeature() const
 	return GSF_CANALS;
 }
 
-uint32 CanalResolverObject::GetLocalID() const
+uint32 CanalResolverObject::GetDebugID() const
 {
-	return 0; // TODO? not sure there is one/this is possible
+	return this->feature;
 }
 
 /**

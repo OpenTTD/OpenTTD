@@ -125,11 +125,15 @@ The produced CSV file contains the following fields:
   Mainly useful to distinguish events from separate ticks.
 - *Sprite* - Index of the root Action 2 sprite in the GRF file. This is
   the sprite group being resolved.
+- *Feature* - NewGRF feature number the sprite group is being resolved for.
+  This will be 0xFF for AI purchase selection and ambient sound callbacks.
+- *Item* - The id of the item within the GRF. For cargotypes, railtypes,
+  roadtypes, and tramtypes, this is the integer representation of the label.
 - *CallbackID* - The type of callback being resolved. ID 0 is regular graphics
   lookup. See the `newgrf_callbacks.h` file in the OpenTTD source code for the
   full list of callback IDs.
 - *Microseconds* - Total time spent to resolve the Action 2, in microseconds.
-- *Subs* - Number of recursive Action 2 lookups were made during resolution.
+- *Depth* - Number of recursive Action 2 lookups were made during resolution.
   Value zero means the sprite group resolved directly.
 - *Result* - Result of the callback resolution. For lookups that result in
   a sprite, this is the index of the base action 2 in the GRF file. For

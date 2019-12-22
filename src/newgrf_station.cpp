@@ -532,7 +532,7 @@ GrfSpecFeature StationResolverObject::GetFeature() const
 	return GSF_STATIONS;
 }
 
-uint32 StationResolverObject::GetLocalID() const
+uint32 StationResolverObject::GetDebugID() const
 {
 	return this->station_scope.statspec->grf_prop.local_id;
 }

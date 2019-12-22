@@ -60,7 +60,7 @@ struct AirportResolverObject : public ResolverObject {
 	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
 
 	GrfSpecFeature GetFeature() const override;
-	uint32 GetLocalID() const override;
+	uint32 GetDebugID() const override;
 };
 
 /**
@@ -234,7 +234,7 @@ GrfSpecFeature AirportResolverObject::GetFeature() const
 	return GSF_AIRPORTS;
 }
 
-uint32 AirportResolverObject::GetLocalID() const
+uint32 AirportResolverObject::GetDebugID() const
 {
 	return AirportSpec::Get(this->airport_scope.airport_id)->grf_prop.local_id;
 }

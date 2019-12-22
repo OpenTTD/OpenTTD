@@ -389,7 +389,7 @@ GrfSpecFeature ObjectResolverObject::GetFeature() const
 	return GSF_OBJECTS;
 }
 
-uint32 ObjectResolverObject::GetLocalID() const
+uint32 ObjectResolverObject::GetDebugID() const
 {
 	return this->object_scope.spec->grf_prop.local_id;
 }
