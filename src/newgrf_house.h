@@ -64,6 +64,9 @@ struct HouseResolverObject : public ResolverObject {
 			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
+
+	GrfSpecFeature GetFeature() const override;
+	uint32 GetLocalID() const override;
 };
 
 /**

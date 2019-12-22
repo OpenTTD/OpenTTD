@@ -527,6 +527,16 @@ uint32 Waypoint::GetNewGRFVariable(const ResolverObject &object, byte variable, 
 	return group->loading[0];
 }
 
+GrfSpecFeature StationResolverObject::GetFeature() const
+{
+	return GSF_STATIONS;
+}
+
+uint32 StationResolverObject::GetLocalID() const
+{
+	return this->station_scope.statspec->grf_prop.local_id;
+}
+
 /**
  * Resolver for stations.
  * @param statspec Station (type) specification.

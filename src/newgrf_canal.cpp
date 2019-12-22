@@ -13,6 +13,7 @@
 #include "newgrf_canal.h"
 #include "water.h"
 #include "water_map.h"
+#include "spritecache.h"
 
 #include "safeguards.h"
 
@@ -35,6 +36,7 @@ struct CanalScopeResolver : public ScopeResolver {
 /** Resolver object for canals. */
 struct CanalResolverObject : public ResolverObject {
 	CanalScopeResolver canal_scope;
+	CanalFeature feature;
 
 	CanalResolverObject(CanalFeature feature, TileIndex tile,
 			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
@@ -48,6 +50,9 @@ struct CanalResolverObject : public ResolverObject {
 	}
 
 	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
+
+	GrfSpecFeature GetFeature() const override;
+	uint32 GetLocalID() const override;
 };
 
 /* virtual */ uint32 CanalScopeResolver::GetRandomBits() const
@@ -111,6 +116,16 @@ struct CanalResolverObject : public ResolverObject {
 	return group->loaded[0];
 }
 
+GrfSpecFeature CanalResolverObject::GetFeature() const
+{
+	return GSF_CANALS;
+}
+
+uint32 CanalResolverObject::GetLocalID() const
+{
+	return 0; // TODO? not sure there is one/this is possible
+}
+
 /**
  * Canal resolver constructor.
  * @param feature Which canal feature we want.
@@ -121,7 +136,7 @@ struct CanalResolverObject : public ResolverObject {
  */
 CanalResolverObject::CanalResolverObject(CanalFeature feature, TileIndex tile,
 		CallbackID callback, uint32 callback_param1, uint32 callback_param2)
-		: ResolverObject(_water_feature[feature].grffile, callback, callback_param1, callback_param2), canal_scope(*this, tile)
+		: ResolverObject(_water_feature[feature].grffile, callback, callback_param1, callback_param2), canal_scope(*this, tile), feature(feature)
 {
 	this->root_spritegroup = _water_feature[feature].group;
 }

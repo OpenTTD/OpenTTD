@@ -18,6 +18,7 @@
 struct RailTypeScopeResolver : public ScopeResolver {
 	TileIndex tile;      ///< Tracktile. For track on a bridge this is the southern bridgehead.
 	TileContext context; ///< Are we resolving sprites for the upper halftile, or on a bridge?
+	const RailtypeInfo *rti;
 
 	/**
 	 * Constructor of the railtype scope resolvers.
@@ -25,8 +26,8 @@ struct RailTypeScopeResolver : public ScopeResolver {
 	 * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
 	 * @param context Are we resolving sprites for the upper halftile, or on a bridge?
 	 */
-	RailTypeScopeResolver(ResolverObject &ro, TileIndex tile, TileContext context)
-		: ScopeResolver(ro), tile(tile), context(context)
+	RailTypeScopeResolver(ResolverObject &ro, const RailtypeInfo *rti, TileIndex tile, TileContext context)
+		: ScopeResolver(ro), tile(tile), context(context), rti(rti)
 	{
 	}
 
@@ -49,6 +50,9 @@ struct RailTypeResolverObject : public ResolverObject {
 	}
 
 	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
+
+	GrfSpecFeature GetFeature() const override;
+	uint32 GetLocalID() const override;
 };
 
 SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, TileContext context = TCX_NORMAL, uint *num_results = nullptr);

@@ -946,6 +946,22 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 	return in_motion ? group->loaded[set] : group->loading[set];
 }
 
+GrfSpecFeature VehicleResolverObject::GetFeature() const
+{
+	switch (Engine::Get(this->self_scope.self_type)->type) {
+		case VEH_TRAIN: return GSF_TRAINS;
+		case VEH_ROAD: return GSF_ROADVEHICLES;
+		case VEH_SHIP: return GSF_SHIPS;
+		case VEH_AIRCRAFT: return GSF_AIRCRAFT;
+		default: return GSF_INVALID;
+	}
+}
+
+uint32 VehicleResolverObject::GetLocalID() const
+{
+	return Engine::Get(this->self_scope.self_type)->grf_prop.local_id;
+}
+
 /**
  * Get the grf file associated with an engine type.
  * @param engine_type Engine to query.

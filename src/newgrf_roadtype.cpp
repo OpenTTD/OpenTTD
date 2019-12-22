@@ -65,16 +65,27 @@
 	return nullptr;
 }
 
+GrfSpecFeature RoadTypeResolverObject::GetFeature() const
+{
+	return GSF_ROADTYPES; // FIXME: when is this GSF_TRAMTYPES instead?
+}
+
+uint32 RoadTypeResolverObject::GetLocalID() const
+{
+	return this->roadtype_scope.rti->label;
+}
+
 /**
  * Constructor of the roadtype scope resolvers.
  * @param ro Surrounding resolver.
  * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
  * @param context Are we resolving sprites for the upper halftile, or on a bridge?
  */
-RoadTypeScopeResolver::RoadTypeScopeResolver(ResolverObject &ro, TileIndex tile, TileContext context) : ScopeResolver(ro)
+RoadTypeScopeResolver::RoadTypeScopeResolver(ResolverObject &ro, const RoadTypeInfo *rti, TileIndex tile, TileContext context) : ScopeResolver(ro)
 {
 	this->tile = tile;
 	this->context = context;
+	this->rti = rti;
 }
 
 /**
@@ -87,7 +98,7 @@ RoadTypeScopeResolver::RoadTypeScopeResolver(ResolverObject &ro, TileIndex tile,
  * @param param2 Extra parameter (second parameter of the callback, except roadtypes do not have callbacks).
  */
 RoadTypeResolverObject::RoadTypeResolverObject(const RoadTypeInfo *rti, TileIndex tile, TileContext context, RoadTypeSpriteGroup rtsg, uint32 param1, uint32 param2)
-	: ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), roadtype_scope(*this, tile, context)
+	: ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), roadtype_scope(*this, rti, tile, context)
 {
 	this->root_spritegroup = rti != nullptr ? rti->group[rtsg] : nullptr;
 }
