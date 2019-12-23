@@ -87,11 +87,17 @@ void NewGRFProfiler::Start()
 {
 	this->Abort();
 	this->active = true;
+	this->start_tick = _tick_counter;
 }
 
-void NewGRFProfiler::Finish()
+uint32 NewGRFProfiler::Finish()
 {
-	if (!this->active) return;
+	if (!this->active) return 0;
+
+	if (this->calls.empty()) {
+		IConsolePrintF(TC_LIGHT_BROWN, "Finished profile of NewGRF [%08X], no events collected, not writing a file", this->grffile->grfid);
+		return 0;
+	}
 
 	std::string filename = this->GetOutputFilename();
 	IConsolePrintF(TC_LIGHT_BROWN, "Finished profile of NewGRF [%08X], writing %u events to %s", this->grffile->grfid, (uint)this->calls.size(), filename.c_str());
@@ -99,12 +105,17 @@ void NewGRFProfiler::Finish()
 	FILE *f = FioFOpenFile(filename.c_str(), "wt", Subdirectory::NO_DIRECTORY);
 	FileCloser fcloser(f);
 
+	uint32 total_microseconds = 0;
+
 	fputs("Tick,Sprite,Feature,Item,CallbackID,Microseconds,Depth,Result\n", f);
 	for (const Call &c : this->calls) {
 		fprintf(f, "%u,%u,0x%X,%d,0x%X,%u,%u,%u\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result);
+		total_microseconds += c.time;
 	}
 
 	this->Abort();
+
+	return total_microseconds;
 }
 
 void NewGRFProfiler::Abort()
@@ -128,4 +139,24 @@ std::string NewGRFProfiler::GetOutputFilename() const
 	seprintf(filepath, lastof(filepath), "%sgrfprofile-%s-%08X.csv", FiosGetScreenshotDir(), timestamp, this->grffile->grfid);
 
 	return std::string(filepath);
+}
+
+uint32 NewGRFProfiler::FinishAll()
+{
+	int max_ticks = 0;
+	uint32 total_microseconds = 0;
+	for (NewGRFProfiler &pr : _newgrf_profilers) {
+		if (pr.active) {
+			total_microseconds += pr.Finish();
+			max_ticks = max(max_ticks, _tick_counter - pr.start_tick);
+		}
+	}
+
+	if (total_microseconds > 0 && max_ticks > 0) {
+		IConsolePrintF(TC_LIGHT_BROWN, "Total NewGRF callback processing: %u microseconds over %d ticks", total_microseconds, max_ticks);
+	}
+
+	_newgrf_profile_end_date = MAX_DAY;
+
+	return total_microseconds;
 }

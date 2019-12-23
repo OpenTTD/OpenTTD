@@ -32,9 +32,11 @@ struct NewGRFProfiler {
 	void RecursiveResolve();
 
 	void Start();
-	void Finish();
+	uint32 Finish();
 	void Abort();
 	std::string GetOutputFilename() const;
+
+	static uint32 FinishAll();
 
 	/** Measurement of a single sprite group resolution */
 	struct Call {
@@ -50,6 +52,7 @@ struct NewGRFProfiler {
 
 	const GRFFile *grffile;  ///< Which GRF is being profiled
 	bool active;             ///< Is this profiler collecting data
+	uint16 start_tick;       ///< Tick number this profiler was started on
 	Call cur_call;           ///< Data for current call in progress
 	std::vector<Call> calls; ///< All calls collected so far
 };

@@ -1897,7 +1897,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 
 	/* "list" sub-command */
 	if (argc == 1 || strncasecmp(argv[1], "lis", 3) == 0) {
-		IConsolePrint(TC_LIGHT_BROWN, "Active GRF files:");
+		IConsolePrint(TC_LIGHT_BROWN, "Loaded GRF files:");
 		int i = 1;
 		for (GRFFile *grf : files) {
 			auto profiler = std::find_if(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; });
@@ -1986,9 +1986,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 
 	/* "stop" sub-command */
 	if (strncasecmp(argv[1], "sto", 3) == 0) {
-		for (NewGRFProfiler &pr : _newgrf_profilers) {
-			if (pr.active) pr.Finish();
-		}
+		NewGRFProfiler::FinishAll();
 		return true;
 	}
 
@@ -1997,6 +1995,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		for (NewGRFProfiler &pr : _newgrf_profilers) {
 			pr.Abort();
 		}
+		_newgrf_profile_end_date = MAX_DAY;
 		return true;
 	}
 
