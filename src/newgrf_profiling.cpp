@@ -94,7 +94,7 @@ void NewGRFProfiler::Finish()
 	if (!this->active) return;
 
 	std::string filename = this->GetOutputFilename();
-	IConsolePrintF(TC_LIGHT_BROWN, "Finished profile of NewGRF %08X, writing %u events to %s", this->grffile->grfid, (uint)this->calls.size(), filename.c_str());
+	IConsolePrintF(TC_LIGHT_BROWN, "Finished profile of NewGRF [%08X], writing %u events to %s", this->grffile->grfid, (uint)this->calls.size(), filename.c_str());
 
 	FILE *f = FioFOpenFile(filename.c_str(), "wt", Subdirectory::NO_DIRECTORY);
 	FileCloser fcloser(f);

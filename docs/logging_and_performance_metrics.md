@@ -107,19 +107,8 @@ request is measured and logged, and written to a CSV file in the end.
 
 The NewGRF developer tools need to be enabled for the command to function.
 
-Usage:
-
-- `newgrf_profile` - show a list of loaded GRFs and their index numbers.
-- `newgrf_profile add <grf-num>...` - Select one or more GRFs for profiling.
-- `newgrf_profile rem <grf-num>...` - Remove one or more GRFs from profiling.
-- `newgrf_profile rem all` - Remove all GRFs from profiling.
-- `newgrf_profile start [<num-days>]` - Begin profiling the selected GRFs,
-  you can optionally specify a number of in-game days to automatically stop
-  profiling after.
-- `newgrf_profile stop` - Finish profiling and write the collected data to CSV
-  files in the screenshot folder.
-- `newgrf_profile abort` - Cancel active profiling and discard collected data.
-  Selected GRFs remain selected.
+View the syntax for the command in-game with the console command
+`help newgrf_profile`.
 
 Profiling only works during game or in the editor, it's not possible to
 profile across the main menu, world generation, or loading savegames.

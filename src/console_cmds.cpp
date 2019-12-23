@@ -1876,13 +1876,13 @@ DEF_CONSOLE_CMD(ConNewGRFReload)
 DEF_CONSOLE_CMD(ConNewGRFProfile)
 {
 	if (argc == 0) {
-		IConsoleHelp("Collect a callback profiling session from a NewGRF for a number of in-game days.");
+		IConsoleHelp("Collect performance data about NewGRF sprite requests and callbacks.");
 		IConsoleHelp("Usage: newgrf_profile [list]");
 		IConsoleHelp("  List all NewGRFs that can be profiled, and their status.");
-		IConsoleHelp("Usage: newgrf_profile add <grf-num>...");
+		IConsoleHelp("Usage: newgrf_profile select <grf-num>...");
 		IConsoleHelp("  Select one or more GRFs for profiling.");
-		IConsoleHelp("Usage: newgrf_profile rem <grf-num>...");
-		IConsoleHelp("  Deselect one or more GRFs from profiling. Use the keyword \"all\" instead of a GRF number to remove all.");
+		IConsoleHelp("Usage: newgrf_profile unselect <grf-num>...");
+		IConsoleHelp("  Unselect one or more GRFs from profiling. Use the keyword \"all\" instead of a GRF number to unselect all. Removing an active profiler aborts data collection.");
 		IConsoleHelp("Usage: newgrf_profile start [<num-days>]");
 		IConsoleHelp("  Begin profiling all selected GRFs. If a number of days is provided, profiling stops after that many in-game days.");
 		IConsoleHelp("Usage: newgrf_profile stop");
@@ -1895,18 +1895,24 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 	extern const std::vector<GRFFile *> &GetAllGRFFiles();
 	const std::vector<GRFFile *> &files = GetAllGRFFiles();
 
-	if (argc == 1 || strcasecmp(argv[1], "list") == 0) {
+	/* "list" sub-command */
+	if (argc == 1 || strncasecmp(argv[1], "lis", 3) == 0) {
 		IConsolePrint(TC_LIGHT_BROWN, "Active GRF files:");
 		int i = 1;
 		for (GRFFile *grf : files) {
-			bool active = std::any_of(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; });
-			IConsolePrintF(active ? TC_LIGHT_BLUE : TC_LIGHT_BROWN, "%d: [%08X] %s%s", i, grf->grfid, grf->filename, active ? " (selected)" : "");
+			auto profiler = std::find_if(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; });
+			bool selected = profiler != _newgrf_profilers.end();
+			bool active = selected && profiler->active;
+			TextColour tc = active ? TC_GREEN : selected ? TC_LIGHT_BLUE : TC_LIGHT_BROWN;
+			const char *statustext = active ? " (active)" : selected ? " (selected)" : "";
+			IConsolePrintF(tc, "%d: [%08X] %s%s", i, grf->grfid, grf->filename, statustext);
 			i++;
 		}
 		return true;
 	}
 
-	if (strcasecmp(argv[1], "add") == 0 && argc >= 3) {
+	/* "select" sub-command */
+	if (strncasecmp(argv[1], "sel", 3) == 0 && argc >= 3) {
 		for (size_t argnum = 2; argnum < argc; ++argnum) {
 			int grfnum = atoi(argv[argnum]);
 			if (grfnum < 1 || grfnum > files.size()) {
@@ -1915,7 +1921,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			}
 			GRFFile *grf = files[grfnum - 1];
 			if (std::any_of(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; })) {
-				IConsolePrintF(TC_YELLOW, "GRF number %d (GRFID %08X) is already selected for profiling.", grfnum, grf->grfid);
+				IConsolePrintF(TC_YELLOW, "GRF number %d [%08X] is already selected for profiling.", grfnum, grf->grfid);
 				continue;
 			}
 			_newgrf_profilers.emplace_back(grf);
@@ -1923,7 +1929,8 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		return true;
 	}
 
-	if (strncasecmp(argv[1], "rem", 3) == 0 && argc >= 3) {
+	/* "unselect" sub-command */
+	if (strncasecmp(argv[1], "uns", 3) == 0 && argc >= 3) {
 		for (size_t argnum = 2; argnum < argc; ++argnum) {
 			if (strcasecmp(argv[argnum], "all") == 0) {
 				_newgrf_profilers.clear();
@@ -1941,7 +1948,8 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		return true;
 	}
 
-	if (strcasecmp(argv[1], "start") == 0) {
+	/* "start" sub-command */
+	if (strncasecmp(argv[1], "sta", 3) == 0) {
 		std::string grfids;
 		size_t started = 0;
 		for (NewGRFProfiler &pr : _newgrf_profilers) {
@@ -1950,8 +1958,8 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 				started++;
 
 				if (!grfids.empty()) grfids += ", ";
-				char grfidstr[10]{ 0 };
-				seprintf(grfidstr, lastof(grfidstr), "%08X", pr.grffile->grfid);
+				char grfidstr[12]{ 0 };
+				seprintf(grfidstr, lastof(grfidstr), "[%08X]", pr.grffile->grfid);
 				grfids += grfidstr;
 			}
 		}
@@ -1976,14 +1984,16 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		return true;
 	}
 
-	if (strcasecmp(argv[1], "stop") == 0) {
+	/* "stop" sub-command */
+	if (strncasecmp(argv[1], "sto", 3) == 0) {
 		for (NewGRFProfiler &pr : _newgrf_profilers) {
 			if (pr.active) pr.Finish();
 		}
 		return true;
 	}
 
-	if (strcasecmp(argv[1], "abort") == 0) {
+	/* "abort" sub-command */
+	if (strncasecmp(argv[1], "abo", 3) == 0) {
 		for (NewGRFProfiler &pr : _newgrf_profilers) {
 			pr.Abort();
 		}
