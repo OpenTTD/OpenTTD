@@ -235,7 +235,7 @@ static height_t TGPGetMaxHeight()
 	};
 
 	int max_height_from_table = max_height[_settings_game.difficulty.terrain_type][min(MapLogX(), MapLogY()) - MIN_MAP_SIZE_BITS];
-	return I2H(min(max_height_from_table, _settings_game.construction.max_heightlevel));
+	return I2H(min(max_height_from_table, _settings_game.construction.max_heightlevel + 1));
 }
 
 /**
