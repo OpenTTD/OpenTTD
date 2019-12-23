@@ -452,6 +452,7 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Sendajo
 
 
 
+
 # Extra view window
 
 # Game options window

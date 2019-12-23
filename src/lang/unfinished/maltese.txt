@@ -386,6 +386,7 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 
 
 
+
 # Extra view window
 
 # Game options window

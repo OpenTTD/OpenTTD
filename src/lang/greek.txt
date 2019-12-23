@@ -972,6 +972,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ένα νέο {STRING} είναι πλέον διαθέσιμο!  -  {ENGINE}
 
+
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}Ο σταθμός {STATION} δεν δέχεται πια {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Ο σταθμός {STATION} δεν δέχεται πια ούτε {STRING} ούτε {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}Ο σταθμός {STATION} τώρα δέχεται {STRING}

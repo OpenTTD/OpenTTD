@@ -839,6 +839,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}புதிய {STRING} இப்போது கிடைக்கும்!  -  {ENGINE}
 
+
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} இனிமேல் {STRING} ஏற்றுக்கொள்ளாது
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} இனிமேல் {STRING} அல்லது {STRING} ஏற்றுக்கொள்ளாது
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} இப்போது {STRING} ஏற்றுக்கொள்கிறது

@@ -685,6 +685,7 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 
 
 
+
 # Extra view window
 
 # Game options window

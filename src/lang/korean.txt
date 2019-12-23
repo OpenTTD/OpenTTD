@@ -871,6 +871,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}신형 {STRING}{G 0 "을" "를"} 사용할 수 있습니다!  -  {ENGINE}
 
+
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION}에서 더 이상 {STRING}{G 1 "을" "를"} 받지 않습니다.
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION}에서 더 이상 {STRING}/{STRING}{G 2 "을" "를"} 받지 않습니다.
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION}에서 이제 {STRING}{G 1 "을" "를"} 받을 수 있습니다.

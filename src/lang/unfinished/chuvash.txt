@@ -466,6 +466,7 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Пӗлт
 
 
 
+
 # Extra view window
 
 # Game options window

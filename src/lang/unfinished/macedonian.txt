@@ -776,6 +776,7 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 
 
 
+
 # Extra view window
 
 # Game options window
