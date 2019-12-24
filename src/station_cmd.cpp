@@ -2179,7 +2179,7 @@ Town *AirportGetNearestTown(const AirportSpec *as, const TileIterator &it, uint 
 
 	mindist = UINT_MAX - 1; // prevent overflow
 
-	TileIterator *copy = it.Clone();
+	std::unique_ptr<TileIterator> copy(it.Clone());
 	for (TileIndex cur_tile = *copy; cur_tile != INVALID_TILE; cur_tile = ++*copy) {
 		if (TileX(cur_tile) == perimeter_min_x || TileX(cur_tile) == perimeter_max_x || TileY(cur_tile) == perimeter_min_y || TileY(cur_tile) == perimeter_max_y) {
 			Town *t = CalcClosestTownFromTile(cur_tile, mindist + 1);
@@ -2193,7 +2193,6 @@ Town *AirportGetNearestTown(const AirportSpec *as, const TileIterator &it, uint 
 			}
 		}
 	}
-	delete copy;
 
 	return nearest;
 }
