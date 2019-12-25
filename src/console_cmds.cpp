@@ -1915,7 +1915,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 	if (strncasecmp(argv[1], "sel", 3) == 0 && argc >= 3) {
 		for (size_t argnum = 2; argnum < argc; ++argnum) {
 			int grfnum = atoi(argv[argnum]);
-			if (grfnum < 1 || grfnum > files.size()) {
+			if (grfnum < 1 || grfnum > (int)files.size()) { // safe cast, files.size() should not be larger than a few hundred in the most extreme cases
 				IConsolePrintF(TC_YELLOW, "GRF number %d out of range, not added.", grfnum);
 				continue;
 			}
@@ -1937,7 +1937,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 				break;
 			}
 			int grfnum = atoi(argv[argnum]);
-			if (grfnum < 1 || grfnum > files.size()) {
+			if (grfnum < 1 || grfnum > (int)files.size()) {
 				IConsolePrintF(CC_WARNING, "GRF number %d out of range, not removing.", grfnum);
 				continue;
 			}
