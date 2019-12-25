@@ -95,12 +95,12 @@ uint32 NewGRFProfiler::Finish()
 	if (!this->active) return 0;
 
 	if (this->calls.empty()) {
-		IConsolePrintF(TC_LIGHT_BROWN, "Finished profile of NewGRF [%08X], no events collected, not writing a file", this->grffile->grfid);
+		IConsolePrintF(TC_LIGHT_BROWN, "Finished profile of NewGRF [%08X], no events collected, not writing a file", BSWAP32(this->grffile->grfid));
 		return 0;
 	}
 
 	std::string filename = this->GetOutputFilename();
-	IConsolePrintF(TC_LIGHT_BROWN, "Finished profile of NewGRF [%08X], writing %u events to %s", this->grffile->grfid, (uint)this->calls.size(), filename.c_str());
+	IConsolePrintF(TC_LIGHT_BROWN, "Finished profile of NewGRF [%08X], writing %u events to %s", BSWAP32(this->grffile->grfid), (uint)this->calls.size(), filename.c_str());
 
 	FILE *f = FioFOpenFile(filename.c_str(), "wt", Subdirectory::NO_DIRECTORY);
 	FileCloser fcloser(f);
@@ -136,7 +136,7 @@ std::string NewGRFProfiler::GetOutputFilename() const
 	strftime(timestamp, lengthof(timestamp), "%Y%m%d-%H%M", localtime(&write_time));
 
 	char filepath[MAX_PATH] = {};
-	seprintf(filepath, lastof(filepath), "%sgrfprofile-%s-%08X.csv", FiosGetScreenshotDir(), timestamp, this->grffile->grfid);
+	seprintf(filepath, lastof(filepath), "%sgrfprofile-%s-%08X.csv", FiosGetScreenshotDir(), timestamp, BSWAP32(this->grffile->grfid));
 
 	return std::string(filepath);
 }

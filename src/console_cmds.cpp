@@ -1905,7 +1905,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			bool active = selected && profiler->active;
 			TextColour tc = active ? TC_GREEN : selected ? TC_LIGHT_BLUE : TC_LIGHT_BROWN;
 			const char *statustext = active ? " (active)" : selected ? " (selected)" : "";
-			IConsolePrintF(tc, "%d: [%08X] %s%s", i, grf->grfid, grf->filename, statustext);
+			IConsolePrintF(tc, "%d: [%08X] %s%s", i, BSWAP32(grf->grfid), grf->filename, statustext);
 			i++;
 		}
 		return true;
@@ -1921,7 +1921,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			}
 			GRFFile *grf = files[grfnum - 1];
 			if (std::any_of(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; })) {
-				IConsolePrintF(TC_YELLOW, "GRF number %d [%08X] is already selected for profiling.", grfnum, grf->grfid);
+				IConsolePrintF(TC_YELLOW, "GRF number %d [%08X] is already selected for profiling.", grfnum, BSWAP32(grf->grfid));
 				continue;
 			}
 			_newgrf_profilers.emplace_back(grf);
@@ -1959,7 +1959,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 
 				if (!grfids.empty()) grfids += ", ";
 				char grfidstr[12]{ 0 };
-				seprintf(grfidstr, lastof(grfidstr), "[%08X]", pr.grffile->grfid);
+				seprintf(grfidstr, lastof(grfidstr), "[%08X]", BSWAP32(pr.grffile->grfid));
 				grfids += grfidstr;
 			}
 		}
