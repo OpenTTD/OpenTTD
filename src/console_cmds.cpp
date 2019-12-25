@@ -1876,7 +1876,7 @@ DEF_CONSOLE_CMD(ConNewGRFReload)
 DEF_CONSOLE_CMD(ConNewGRFProfile)
 {
 	if (argc == 0) {
-		IConsoleHelp("Collect performance data about NewGRF sprite requests and callbacks.");
+		IConsoleHelp("Collect performance data about NewGRF sprite requests and callbacks. Sub-commands can be abbreviated.");
 		IConsoleHelp("Usage: newgrf_profile [list]");
 		IConsoleHelp("  List all NewGRFs that can be profiled, and their status.");
 		IConsoleHelp("Usage: newgrf_profile select <grf-num>...");
@@ -1938,7 +1938,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			}
 			int grfnum = atoi(argv[argnum]);
 			if (grfnum < 1 || grfnum > (int)files.size()) {
-				IConsolePrintF(CC_WARNING, "GRF number %d out of range, not removing.", grfnum);
+				IConsolePrintF(TC_YELLOW, "GRF number %d out of range, not removing.", grfnum);
 				continue;
 			}
 			GRFFile *grf = files[grfnum - 1];
