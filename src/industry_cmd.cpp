@@ -1295,7 +1295,7 @@ static CommandCost CheckNewIndustry_OilRig(TileIndex tile)
 static CommandCost CheckNewIndustry_Farm(TileIndex tile)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
-		if (GetTileZ(tile) + 2 >= HighestSnowLine()) {
+		if (GetTileMaxZ(tile) + 2 >= HighestSnowLine()) {
 			return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 		}
 	}
