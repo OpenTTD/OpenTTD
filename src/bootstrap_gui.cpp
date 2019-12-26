@@ -11,7 +11,7 @@
 #include "base_media_base.h"
 #include "blitter/factory.hpp"
 
-#if defined(WITH_FREETYPE)
+#if defined(WITH_FREETYPE) || defined(WITH_UNISCRIBE)
 
 #include "core/geometry_func.hpp"
 #include "fontcache.h"
@@ -218,7 +218,7 @@ bool HandleBootstrap()
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) goto failure;
 
 	/* If there is no network or no freetype, then there is nothing we can do. Go straight to failure. */
-#if defined(WITH_FREETYPE) && (defined(WITH_FONTCONFIG) || defined(_WIN32) || defined(__APPLE__))
+#if (defined(_WIN32) && defined(WITH_UNISCRIBE)) || (defined(WITH_FREETYPE) && (defined(WITH_FONTCONFIG) || defined(__APPLE__)))
 	if (!_network_available) goto failure;
 
 	/* First tell the game we're bootstrapping. */
