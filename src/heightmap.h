@@ -25,5 +25,6 @@ bool GetHeightmapDimensions(DetailedFileType dft, const char *filename, uint *x,
 void LoadHeightmap(DetailedFileType dft, const char *filename);
 void FlatEmptyWorld(byte tile_height);
 void FixSlopes();
+void DetermineSnowLineHeight(int flat_world_height = -1);
 
 #endif /* HEIGHTMAP_H */

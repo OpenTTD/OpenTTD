@@ -964,6 +964,58 @@ static void GenerateTerrain(int type, uint flag)
 	}
 }
 
+/**
+ * Automatically determine the value for snow line height and set it.
+ * @param flat_world_height value >= 0: generating a flat world of this height.
+ *                          value == -1: not generating a flat world.
+ */
+void DetermineSnowLineHeight(int flat_world_height)
+{
+	if (flat_world_height >= 0) { // generating a flat world
+		/* This doesn't require the extensive computations below */
+		int max_value = std::min(MAX_SNOWLINE_HEIGHT, std::max(MIN_SNOWLINE_HEIGHT, (uint)(flat_world_height - 2)));
+		uint half_max_value = max_value / 2 + max_value % 2;
+		_settings_game.game_creation.snow_line_height = std::max(MIN_SNOWLINE_HEIGHT, half_max_value);
+	}
+
+	if (flat_world_height == -1) { // generating landscape
+		int highest_height = 0;
+
+		/* Create an array to count the number of tiles for each height. */
+		uint height_hist[MAX_TILE_HEIGHT + 1] = {};
+		for (uint t = 0; t < MapSize(); t++) {
+			int height = TileHeight(t);
+			height_hist[height]++;
+			if (height > highest_height) highest_height = height;
+		}
+
+		/* Determine the snow line height and make it so that it's at most
+		 * 50% of the land mass above sea. */
+		int half_landmass = (MapSize() - height_hist[0]) / 2;
+		int tile_count = 0, snow_line_height = 1;
+		while (tile_count < half_landmass && snow_line_height <= highest_height) {
+			tile_count += height_hist[snow_line_height];
+			snow_line_height++;
+		}
+
+		/* Farms can only generate below 'snow_line_height - 2' which limits
+		 * minimum snow_line_height to 'snow_line_height - 2 > 0', thus '3'.
+		 * @see CheckNewIndustry_Farm
+		 */
+		uint farm_h = std::max(MIN_SNOWLINE_HEIGHT, (uint)3);
+
+		/* Forests can only generate at a minimum of 'snow_line_height + 2'
+		 * which limits maximum snow_line_height to 'highest_height - 2'.
+		 * @see CheckNewIndustry_Forest
+		 */
+		uint forest_h = std::min(MAX_SNOWLINE_HEIGHT, (uint)(highest_height - 2));
+
+		if (farm_h > forest_h) forest_h = farm_h;
+
+		_settings_game.game_creation.snow_line_height = Clamp(snow_line_height, farm_h, forest_h);
+	}
+}
+
 
 #include "table/genland.h"
 
@@ -1372,6 +1424,7 @@ void GenerateLandscape(byte mode)
 	ConvertGroundTilesIntoWaterTiles();
 	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
+	if (_settings_game.game_creation.landscape == LT_ARCTIC) DetermineSnowLineHeight();
 	if (_settings_game.game_creation.landscape == LT_TROPIC) CreateDesertOrRainForest();
 
 	CreateRivers();

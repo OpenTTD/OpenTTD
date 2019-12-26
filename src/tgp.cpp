@@ -244,6 +244,10 @@ static height_t TGPGetMaxHeight()
 		if (_settings_game.difficulty.terrain_type > 0) {
 			max_height_from_table -= max_height[_settings_game.difficulty.terrain_type - 1][map_size_bucket];
 		}
+		/* Farms can only generate below 'snow_line_height - 2', and Forests can only generate at a minimum of 'snow_line_height + 2'.
+		 * Ensuring a minimum value of 6 solves this (0 -> Farm, 3 -> snow line height, 5 -> Forest). Since the value is not inclusive,
+		 * it becomes 6. */
+		max_height_from_table = std::max<uint>(6, max_height_from_table);
 	}
 	/* Tropic needs tropical forest to have all industries, so make sure we allow TGP to generate this high.
 	 * Tropic forest always starts at 1/4th of the max height. */

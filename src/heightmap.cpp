@@ -517,5 +517,6 @@ void FlatEmptyWorld(byte tile_height)
 	}
 
 	FixSlopes();
+	if (_settings_game.game_creation.landscape == LT_ARCTIC) DetermineSnowLineHeight(tile_height);
 	MarkWholeScreenDirty();
 }
