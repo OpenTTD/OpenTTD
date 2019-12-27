@@ -127,7 +127,9 @@ static void _GenerateWorld()
 			/* Make the map the height of the setting */
 			if (_game_mode != GM_MENU) FlatEmptyWorld(_settings_game.game_creation.se_flat_world_height);
 
-			ConvertGroundTilesIntoWaterTiles();
+			if (!_settings_game.construction.freeform_edges || _settings_game.game_creation.se_flat_world_height == 0) {
+				ConvertGroundTilesIntoWaterTiles();
+			}
 			IncreaseGeneratingWorldProgress(GWP_OBJECT);
 		} else {
 			GenerateLandscape(_gw.mode);
