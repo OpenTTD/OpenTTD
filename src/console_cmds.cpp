@@ -1897,13 +1897,13 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 
 	/* "list" sub-command */
 	if (argc == 1 || strncasecmp(argv[1], "lis", 3) == 0) {
-		IConsolePrint(TC_LIGHT_BROWN, "Loaded GRF files:");
+		IConsolePrint(CC_INFO, "Loaded GRF files:");
 		int i = 1;
 		for (GRFFile *grf : files) {
 			auto profiler = std::find_if(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; });
 			bool selected = profiler != _newgrf_profilers.end();
 			bool active = selected && profiler->active;
-			TextColour tc = active ? TC_GREEN : selected ? TC_LIGHT_BLUE : TC_LIGHT_BROWN;
+			TextColour tc = active ? TC_LIGHT_BLUE : selected ? TC_GREEN : CC_INFO;
 			const char *statustext = active ? " (active)" : selected ? " (selected)" : "";
 			IConsolePrintF(tc, "%d: [%08X] %s%s", i, BSWAP32(grf->grfid), grf->filename, statustext);
 			i++;
@@ -1916,12 +1916,12 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		for (size_t argnum = 2; argnum < argc; ++argnum) {
 			int grfnum = atoi(argv[argnum]);
 			if (grfnum < 1 || grfnum > (int)files.size()) { // safe cast, files.size() should not be larger than a few hundred in the most extreme cases
-				IConsolePrintF(TC_YELLOW, "GRF number %d out of range, not added.", grfnum);
+				IConsolePrintF(CC_WARNING, "GRF number %d out of range, not added.", grfnum);
 				continue;
 			}
 			GRFFile *grf = files[grfnum - 1];
 			if (std::any_of(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; })) {
-				IConsolePrintF(TC_YELLOW, "GRF number %d [%08X] is already selected for profiling.", grfnum, BSWAP32(grf->grfid));
+				IConsolePrintF(CC_WARNING, "GRF number %d [%08X] is already selected for profiling.", grfnum, BSWAP32(grf->grfid));
 				continue;
 			}
 			_newgrf_profilers.emplace_back(grf);
@@ -1938,7 +1938,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			}
 			int grfnum = atoi(argv[argnum]);
 			if (grfnum < 1 || grfnum > (int)files.size()) {
-				IConsolePrintF(TC_YELLOW, "GRF number %d out of range, not removing.", grfnum);
+				IConsolePrintF(CC_WARNING, "GRF number %d out of range, not removing.", grfnum);
 				continue;
 			}
 			GRFFile *grf = files[grfnum - 1];
@@ -1964,7 +1964,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			}
 		}
 		if (started > 0) {
-			IConsolePrintF(TC_LIGHT_BROWN, "Started profiling for GRFID%s %s", (started > 1) ? "s" : "", grfids.c_str());
+			IConsolePrintF(CC_DEBUG, "Started profiling for GRFID%s %s", (started > 1) ? "s" : "", grfids.c_str());
 			if (argc >= 3) {
 				int days = max(atoi(argv[2]), 1);
 				_newgrf_profile_end_date = _date + days;
@@ -1972,14 +1972,14 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 				char datestrbuf[32]{ 0 };
 				SetDParam(0, _newgrf_profile_end_date);
 				GetString(datestrbuf, STR_JUST_DATE_ISO, lastof(datestrbuf));
-				IConsolePrintF(TC_LIGHT_BROWN, "Profiling will automatically stop on game date %s", datestrbuf);
+				IConsolePrintF(CC_DEBUG, "Profiling will automatically stop on game date %s", datestrbuf);
 			} else {
 				_newgrf_profile_end_date = MAX_DAY;
 			}
 		} else if (_newgrf_profilers.empty()) {
-			IConsolePrintF(TC_YELLOW, "No GRFs selected for profiling, did not start.");
+			IConsolePrintF(CC_WARNING, "No GRFs selected for profiling, did not start.");
 		} else {
-			IConsolePrintF(TC_YELLOW, "Did not start profiling for any GRFs, all selected GRFs are already profiling.");
+			IConsolePrintF(CC_WARNING, "Did not start profiling for any GRFs, all selected GRFs are already profiling.");
 		}
 		return true;
 	}
