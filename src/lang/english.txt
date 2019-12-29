@@ -3477,6 +3477,8 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Click to
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Delete the selected group
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Rename the selected group
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Change livery of the selected group
+STR_GROUP_EXPAND_ALL                                            :{BLACK}Expand all
+STR_GROUP_COLLAPSE_ALL                                          :{BLACK}Collapse all
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Click to protect this group from global autoreplace
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Delete Group
