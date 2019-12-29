@@ -540,16 +540,18 @@ CommandCost CmdCreateGroupAutogenName(TileIndex tile, DoCommandFlag flags, uint3
 	static char str[71] = { "" };  // 5 + 31 + 3 + 31 + 1: ["cargo abbreviation"] "town/station name max. length" - "town/station name max. length""\0"
 
 	StringID cargo_abbreviation_si = INVALID_STRING_ID;
+	StringID cargo_name = INVALID_STRING_ID;
 
 	for (Vehicle *u = v; u != nullptr; u = u->Next()) {
 		if (u->cargo_cap == 0) continue;
 
 		const CargoSpec *cs = CargoSpec::Get(u->cargo_type);
 		cargo_abbreviation_si = cs->abbrev;
+		cargo_name = cs->name;
 		break;
 	}
 
-	if (cargo_abbreviation_si == INVALID_STRING_ID) return_cmd_error(STR_ERROR_GROUP_CAN_T_CREATE_NAME);
+	if (cargo_abbreviation_si == INVALID_STRING_ID || cargo_name == INVALID_STRING_ID) return_cmd_error(STR_ERROR_GROUP_CAN_T_CREATE_NAME);
 
 	// Remove the 'tiny font' formatting
 	static char buf[7] = { "" }; // 3 + 2 + 2 : TINYFONT + cargo abbreviation + "\0\0"
@@ -606,7 +608,27 @@ CommandCost CmdCreateGroupAutogenName(TileIndex tile, DoCommandFlag flags, uint3
 
 	if (Utf8StringLength(str) >= MAX_LENGTH_GROUP_NAME_CHARS) return CMD_ERROR;
 
-	CommandCost ret = CmdCreateGroup(0, flags, v->type, p2, nullptr);
+	static char ca_str[64] = { "" };
+	SetDParam(0, cargo_name);
+	GetString(ca_str, STR_JUST_STRING, lastof(ca_str));
+
+	GroupID pg = p2;
+	if (pg == INVALID_GROUP) {
+		for (const Group *g : Group::Iterate()) {
+			if (g->vehicle_type == v->type && g->owner == _current_company && !g->name.empty() && strnatcmp(ca_str, g->name.c_str()) == 0) {
+				pg = g->index;
+				break;
+			}
+		}
+		if (pg == INVALID_GROUP) {
+			CommandCost ret = CmdCreateGroup(0, flags, v->type, INVALID_GROUP, nullptr);
+			if (ret.Failed()) return ret;
+			pg = _new_group_id;
+			CmdAlterGroup(0, flags, pg, 0, ca_str);
+		}
+	}
+
+	CommandCost ret = CmdCreateGroup(0, flags, v->type, pg, nullptr);
 
 	if (ret.Failed()) return ret;
 
@@ -630,6 +652,36 @@ CommandCost CmdCreateGroupAutogenName(TileIndex tile, DoCommandFlag flags, uint3
 		/* Update the Replace Vehicle Windows */
 		SetWindowDirty(WC_REPLACE_VEHICLE, v->type);
 		InvalidateWindowData(GetWindowClassForVehicleType(v->type), VehicleListIdentifier(VL_GROUP_LIST, v->type, _current_company).Pack());
+	}
+
+	return CommandCost();
+}
+
+/**
+* Create groups for all vehicles of a certain type that are not yet in any group.
+* @param tile unused
+* @param flags type of operation
+* @param p1   The ID of the company whos vehicles should be auto-grouped.
+* @param p2   The VehicleType of the vehicles that should be auto-grouped.
+* @param text unused
+* @return the cost of this operation or an error
+*/
+CommandCost CmdAutoGroupVehicles(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	CompanyID company_id = (CompanyID)p1;
+	VehicleType vehicle_type = (VehicleType)p2;
+
+	assert(Company::GetIfValid(company_id) != nullptr);
+
+	if (flags & DC_EXEC) {
+		for (const Vehicle *v : Vehicle::Iterate()) {
+			if (v->type == vehicle_type && v->IsPrimaryVehicle() && v->owner == company_id && v->group_id == DEFAULT_GROUP) {
+				DoCommand(0, v->index | (1 << 31), INVALID_GROUP, flags, CMD_CREATE_GROUP_AUTOGEN_NAME);
+			}
+		}
+
+		InvalidateWindowData(GetWindowClassForVehicleType(vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, vehicle_type, _current_company).Pack());
+		InvalidateWindowClassesData(GetWindowClassForVehicleType(vehicle_type));
 	}
 
 	return CommandCost();

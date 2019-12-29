@@ -32,6 +32,7 @@ enum GroupListWidgets {
 	WID_GL_LIVERY_GROUP,             ///< Group livery button.
 	WID_GL_COLLAPSE_ALL_GROUPS,      ///< Collapse all groups button.
 	WID_GL_EXPAND_ALL_GROUPS,        ///< Expand all groups button.
+	WID_GL_AUTO_GROUP,               ///< Auto group all ungrouped vehicles.
 	WID_GL_REPLACE_PROTECTION,       ///< Replace protection button.
 	WID_GL_INFO,                     ///< Group info.
 };

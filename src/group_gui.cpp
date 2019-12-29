@@ -68,6 +68,8 @@ static const NWidgetPart _nested_group_widgets[] = {
 						SetDataTip(SPR_IMG_ZOOMOUT, STR_GROUP_COLLAPSE_ALL),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_GL_EXPAND_ALL_GROUPS), SetFill(0, 1),
 						SetDataTip(SPR_IMG_ZOOMIN, STR_GROUP_EXPAND_ALL),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_GL_AUTO_GROUP), SetFill(0, 1),
+						SetDataTip(SPR_CLONE_TRAIN, STR_AUTO_GROUP_TOOLTIP),
 				NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), EndContainer(),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_GL_REPLACE_PROTECTION), SetFill(0, 1),
 						SetDataTip(SPR_GROUP_REPLACE_OFF_TRAIN, STR_GROUP_REPLACE_PROTECTION_TOOLTIP),
@@ -404,6 +406,7 @@ public:
 		this->GetWidget<NWidgetCore>(WID_GL_RENAME_GROUP)->widget_data += this->vli.vtype;
 		this->GetWidget<NWidgetCore>(WID_GL_DELETE_GROUP)->widget_data += this->vli.vtype;
 		this->GetWidget<NWidgetCore>(WID_GL_LIVERY_GROUP)->widget_data += this->vli.vtype;
+		this->GetWidget<NWidgetCore>(WID_GL_AUTO_GROUP)->widget_data += this->vli.vtype;
 		this->GetWidget<NWidgetCore>(WID_GL_REPLACE_PROTECTION)->widget_data += this->vli.vtype;
 
 		this->FinishInitNested(window_number);
@@ -550,6 +553,7 @@ public:
 
 		/* Disable all lists management button when the list is empty */
 		this->SetWidgetsDisabledState(this->vehicles.size() == 0 || _local_company != this->vli.company,
+				WID_GL_AUTO_GROUP,
 				WID_GL_STOP_ALL,
 				WID_GL_START_ALL,
 				WID_GL_MANAGE_VEHICLES_DROPDOWN,
@@ -799,6 +803,15 @@ public:
 			case WID_GL_EXPAND_ALL_GROUPS:
 				this->SetAllGroupsFoldState(false);
 				break;
+
+			case WID_GL_AUTO_GROUP: {
+				DoCommandP(0, vli.company, vli.vtype, CMD_AUTO_GROUP_VEHICLES, nullptr);
+
+				this->vehicle_sel = INVALID_VEHICLE;
+				this->group_over = INVALID_GROUP;
+				this->SetDirty();
+				break;
+			}
 
 			case WID_GL_AVAILABLE_VEHICLES:
 				ShowBuildVehicleWindow(INVALID_TILE, this->vli.vtype);
