@@ -26,7 +26,7 @@ enum GroupListWidgets {
 	WID_GL_DEFAULT_VEHICLES,         ///< Default vehicles entry.
 	WID_GL_LIST_GROUP,               ///< List of the groups.
 	WID_GL_LIST_GROUP_SCROLLBAR,     ///< Scrollbar for the list.
-	WID_GL_CREATE_GROUP,             ///< Create group button.
+	WID_GL_CREATE_GROUP,             ///< Create group button. In the case of drag and drop create a group with vehicle specific name and add the vehicle to it.
 	WID_GL_DELETE_GROUP,             ///< Delete group button.
 	WID_GL_RENAME_GROUP,             ///< Rename group button.
 	WID_GL_LIVERY_GROUP,             ///< Group livery button.

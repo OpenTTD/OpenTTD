@@ -897,6 +897,16 @@ public:
 				}
 				break;
 			}
+			case WID_GL_CREATE_GROUP: {
+				const VehicleID vindex = this->vehicle_sel;
+				this->vehicle_sel = INVALID_VEHICLE;
+				this->group_over = INVALID_GROUP;
+				this->SetDirty();
+
+				DoCommandP(0, vindex | (_ctrl_pressed ? 1 << 31 : 0), this->vli.index, CMD_CREATE_GROUP_AUTOGEN_NAME | CMD_MSG(STR_ERROR_GROUP_CAN_T_CREATE_AUTOGEN_NAME),  nullptr);
+
+				break;
+			}
 		}
 	}
 

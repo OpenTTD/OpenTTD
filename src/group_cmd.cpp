@@ -10,17 +10,24 @@
 #include "stdafx.h"
 #include "cmd_helper.h"
 #include "command_func.h"
+#include "town.h"
 #include "train.h"
+#include "station_base.h"
 #include "vehiclelist.h"
 #include "vehicle_func.h"
 #include "autoreplace_base.h"
 #include "autoreplace_func.h"
+#include "strings_func.h"
 #include "string_func.h"
 #include "company_func.h"
 #include "core/pool_func.hpp"
 #include "order_backup.h"
+#include "strings_func.h"
 
 #include "table/strings.h"
+
+#include <algorithm>
+#include <vector>
 
 #include "safeguards.h"
 
@@ -493,6 +500,139 @@ static void AddVehicleToGroup(Vehicle *v, GroupID new_g)
 	}
 
 	GroupStatistics::CountVehicle(v, 1);
+}
+
+/**
+ * Create a new group, rename it with an automatically generated name and add vehicle to this group
+ * @param tile unused
+ * @param flags type of operation
+ * @param p1   vehicle to add to a group
+ *   - p1 bit 0-19 : VehicleID
+ *   - p1 bit   31 : Add shared vehicles as well.
+ * @param p2   parent groupid
+ * @param text unused
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdCreateGroupAutogenName(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 20));
+
+	if (v == nullptr) return CMD_ERROR;
+
+	if (v->owner != _current_company || !v->IsPrimaryVehicle()) return CMD_ERROR;
+
+	/* Get the essential orders */
+	std::vector<Order *> unique_orders;
+
+	Order *order;
+	FOR_VEHICLE_ORDERS(v, order) {
+		if (order->IsType(OT_GOTO_STATION)) {
+			if (std::find_if(unique_orders.begin(), unique_orders.end(), [order](Order *o) { return o->GetDestination() == order->GetDestination(); }) == unique_orders.end()) {
+				unique_orders.push_back(order);
+			}
+		}
+	}
+
+	if (unique_orders.empty()) return_cmd_error(STR_ERROR_GROUP_CAN_T_CREATE_NAME);
+
+	/* Create the name */
+
+	static char str[71] = { "" };  // 5 + 31 + 3 + 31 + 1: ["cargo abbreviation"] "town/station name max. length" - "town/station name max. length""\0"
+
+	StringID cargo_abbreviation_si = INVALID_STRING_ID;
+
+	for (Vehicle *u = v; u != nullptr; u = u->Next()) {
+		if (u->cargo_cap == 0) continue;
+
+		const CargoSpec *cs = CargoSpec::Get(u->cargo_type);
+		cargo_abbreviation_si = cs->abbrev;
+		break;
+	}
+
+	if (cargo_abbreviation_si == INVALID_STRING_ID) return_cmd_error(STR_ERROR_GROUP_CAN_T_CREATE_NAME);
+
+	// Remove the 'tiny font' formatting
+	static char buf[7] = { "" }; // 3 + 2 + 2 : TINYFONT + cargo abbreviation + "\0\0"
+	SetDParam(0, cargo_abbreviation_si);
+	GetString(buf, STR_JUST_STRING, lastof(buf));
+	const char *cargo_abbreviation = SkipGarbage(buf);
+
+	if (_settings_client.gui.autogen_group_name == 1) { // Use station names
+
+		static char stationname_first[MAX_LENGTH_STATION_NAME_CHARS] = { "" };
+		static char stationname_last[MAX_LENGTH_STATION_NAME_CHARS] = { "" };
+
+		SetDParam(0, unique_orders.front()->GetDestination());
+		GetString(stationname_first, STR_STATION_NAME, lastof(stationname_first));
+
+		SetDParam(0, unique_orders.back()->GetDestination());
+		GetString(stationname_last, STR_STATION_NAME, lastof(stationname_last));
+
+		SetDParamStr(0, cargo_abbreviation);
+		SetDParam(1, unique_orders.front()->GetDestination());
+		SetDParam(2, unique_orders.back()->GetDestination());
+		GetString(str, STR_GROUP_AUTOGEN_NAME_STATION, lastof(str));
+
+	} else { //Use town names
+
+		Station *station_first = Station::GetIfValid(unique_orders.front()->GetDestination());
+		Station *station_last = Station::GetIfValid(unique_orders.back()->GetDestination());
+
+		if (station_last == nullptr || station_first == nullptr) return_cmd_error(STR_ERROR_GROUP_CAN_T_CREATE_NAME);
+
+		Town *town_first = station_first->town;
+		Town *town_last = station_last->town;
+
+		if (town_first->index == town_last->index) { // First and last station belong to the same town
+			SetDParamStr(0, cargo_abbreviation);
+			SetDParam(1, town_first->index);
+			GetString(str, STR_GROUP_AUTOGEN_NAME_TOWN_LOCAL, lastof(str));
+		} else {
+			static char townname_first[MAX_LENGTH_TOWN_NAME_CHARS] = { "" };
+			static char townname_last[MAX_LENGTH_TOWN_NAME_CHARS] = { "" };
+
+			SetDParam(0, town_first->index);
+			GetString(townname_first, STR_TOWN_NAME, lastof(townname_first));
+
+			SetDParam(0, town_last->index);
+			GetString(townname_last, STR_TOWN_NAME, lastof(townname_last));
+
+			SetDParamStr(0, cargo_abbreviation);
+			SetDParam(1, town_first->index);
+			SetDParam(2, town_last->index );
+			GetString(str, STR_GROUP_AUTOGEN_NAME_TOWN, lastof(str));
+		}
+	}
+
+	if (Utf8StringLength(str) >= MAX_LENGTH_GROUP_NAME_CHARS) return CMD_ERROR;
+
+	CommandCost ret = CmdCreateGroup(0, flags, v->type, p2, nullptr);
+
+	if (ret.Failed()) return ret;
+
+	GroupID new_g = _new_group_id;
+	CmdAlterGroup(0, flags, new_g, 0, str);
+
+	if (flags & DC_EXEC) {
+		AddVehicleToGroup(v, new_g);
+
+		if (HasBit(p1, 31)) {
+			/* Add vehicles in the shared order list as well. */
+			for (Vehicle *u = v->FirstShared(); u != nullptr; u = u->NextShared()) {
+				if (u->group_id != new_g) {
+					AddVehicleToGroup(u, new_g);
+				}
+			}
+		}
+
+		GroupStatistics::UpdateAutoreplace(v->owner);
+
+		/* Update the Replace Vehicle Windows */
+		SetWindowDirty(WC_REPLACE_VEHICLE, v->type);
+		InvalidateWindowData(GetWindowClassForVehicleType(v->type), VehicleListIdentifier(VL_GROUP_LIST, v->type, _current_company).Pack());
+	}
+
+	return CommandCost();
 }
 
 /**
