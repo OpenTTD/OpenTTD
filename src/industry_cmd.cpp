@@ -1822,6 +1822,11 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 				break;
 			}
 			CargoID cargo = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
+			/* Industries without "unlimited" cargo types support depend on the specific order/slots of cargo types.
+			 * They need to be able to blank out specific slots without aborting the callback sequence,
+			 * and solve this by returning undefined cargo indexes. Skip these. */
+			if (cargo == CT_INVALID && !(indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED)) continue;
+			/* Verify valid cargo */
 			if (std::find(indspec->accepts_cargo, endof(indspec->accepts_cargo), cargo) == endof(indspec->accepts_cargo)) {
 				/* Cargo not in spec, error in NewGRF */
 				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_INPUT_CARGO_TYPES, res);
@@ -1849,6 +1854,9 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 				break;
 			}
 			CargoID cargo = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
+			/* Allow older GRFs to skip slots. */
+			if (cargo == CT_INVALID && !(indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED)) continue;
+			/* Verify valid cargo */
 			if (std::find(indspec->produced_cargo, endof(indspec->produced_cargo), cargo) == endof(indspec->produced_cargo)) {
 				/* Cargo not in spec, error in NewGRF */
 				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_OUTPUT_CARGO_TYPES, res);
