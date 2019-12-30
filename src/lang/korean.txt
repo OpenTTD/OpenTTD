@@ -871,6 +871,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}신형 {STRING}{G 0 "을" "를"} 사용할 수 있습니다!  -  {ENGINE}
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}이 차량이 속한 차량 그룹 목록 열기
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION}에서 더 이상 {STRING}{G 1 "을" "를"} 받지 않습니다.
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION}에서 더 이상 {STRING}/{STRING}{G 2 "을" "를"} 받지 않습니다.
@@ -1552,6 +1553,10 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :전체 메시�
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :컬러로 된 뉴스가 시작되는 해: {STRING}년
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :신문이 컬러로 나오게 되는 연도를 설정합니다. 이 연도 이전까지는 신문이 흑백으로 나옵니다.
 STR_CONFIG_SETTING_STARTING_YEAR                                :시작 연도: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR                                  :게임 종료 연도: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :점수를 기록할 게임 종료 연도를 설정합니다. 이 연도가 지나면, 회사의 점수가 고득점 순위표에 기록되어 표시됩니다. 하지만 플레이어는 계속해서 게임을 진행할 수 있습니다.{}이 값이 시작 연도보다 이전으로 설정되어 있다면, 고득점 순위표는 나타나지 않습니다.
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :안 함
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :부드러운 경제 변화 사용 (자주, 조금씩 변화): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :이 설정을 켜면, 1차 산업시설의 생산량이 소량으로 자주 변하게 됩니다. NewGRF로 추가한 산업시설에는 적용되지 않습니다.
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :다른 회사의 지분을 사는 것을 허용: {STRING}
