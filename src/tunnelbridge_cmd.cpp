@@ -551,12 +551,12 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		YapfNotifyTrackLayoutChange(tile_start, track);
 	}
 
-	/* for human player that builds the bridge he gets a selection to choose from bridges (DC_QUERY_COST)
-	 * It's unnecessary to execute this command every time for every bridge. So it is done only
-	 * and cost is computed in "bridge_gui.c". For AI, Towns this has to be of course calculated
-	 */
+	/* Human players that build bridges get a selection to choose from (DC_QUERY_COST)
+	 * It's unnecessary to execute this command every time for every bridge.
+	 * So it is done only for humans and cost is computed in bridge_gui.cpp.
+	 * For (non-spectated) AI, Towns this has to be of course calculated. */
 	Company *c = Company::GetIfValid(company);
-	if (!(flags & DC_QUERY_COST) || (c != nullptr && c->is_ai)) {
+	if (!(flags & DC_QUERY_COST) || (c != nullptr && c->is_ai && company != _local_company)) {
 		bridge_len += 2; // begin and end tiles/ramps
 
 		switch (transport_type) {
