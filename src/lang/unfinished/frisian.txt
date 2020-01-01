@@ -3575,6 +3575,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selektea
 STR_AI_LIST_CANCEL                                              :{BLACK}Annulearje
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Skript net feroare
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI

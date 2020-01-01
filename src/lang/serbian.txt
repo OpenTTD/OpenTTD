@@ -4239,6 +4239,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izabira 
 STR_AI_LIST_CANCEL                                              :{BLACK}Otkaži
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne menja skriptu
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametri
 STR_AI_SETTINGS_CAPTION_AI                                      :VI

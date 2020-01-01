@@ -3524,6 +3524,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vel undi
 STR_AI_LIST_CANCEL                                              :{BLACK}Angra
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ikki broyta scripti
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametur
 STR_AI_SETTINGS_CAPTION_AI                                      :AI

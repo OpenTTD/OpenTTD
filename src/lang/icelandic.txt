@@ -3765,6 +3765,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Velja me
 STR_AI_LIST_CANCEL                                              :{BLACK}Hætta við
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Hætta við breytingar forskriftar
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} breytur
 STR_AI_SETTINGS_CAPTION_AI                                      :Gervigreindar

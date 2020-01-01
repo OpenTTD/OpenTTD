@@ -3627,6 +3627,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}கு�
 STR_AI_LIST_CANCEL                                              :{BLACK}இரத்து செய்
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}வரிவடிவத்தினை மாற்றாதே
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} குணாதிசயங்கள்
 STR_AI_SETTINGS_CAPTION_AI                                      :AI

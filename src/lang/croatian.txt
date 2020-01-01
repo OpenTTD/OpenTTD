@@ -4267,6 +4267,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Odaberi 
 STR_AI_LIST_CANCEL                                              :{BLACK}Odustani
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemoj mijenjati skriptu
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametri
 STR_AI_SETTINGS_CAPTION_AI                                      :UI

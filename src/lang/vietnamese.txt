@@ -4171,6 +4171,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Chấp n
 STR_AI_LIST_CANCEL                                              :{BLACK}Huỷ bỏ
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Không đổi tập lệnh
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Các Thông Số
 STR_AI_SETTINGS_CAPTION_AI                                      :AI

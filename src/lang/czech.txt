@@ -4260,6 +4260,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vybrat o
 STR_AI_LIST_CANCEL                                              :{BLACK}Zrušit
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Neměňte skript
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametry
 STR_AI_SETTINGS_CAPTION_AI                                      :AI

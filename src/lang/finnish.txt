@@ -867,6 +867,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Uusi {STRING} on nyt saatavilla! – {ENGINE}
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Avaa ryhmäikkuna kulkuneuvon ryhmään kohdistettuna
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ei ota enää vastaan {STRING}.
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} ei ota enää vastaan {STRING} tai {STRING}.
@@ -1548,6 +1549,10 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Täysi
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Värilliset uutiset ilmestyvät: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Vuosi, jonka jälkeen sanomalehdet ovat värillisiä. Ennen tätä vuotta sanomalehdet käyttävät mustavalkoisia kuvia
 STR_CONFIG_SETTING_STARTING_YEAR                                :Aloitusvuosi: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Pistelaskun päättymisvuosi: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Pelin päättymisvuosi pisteiden laskemista varten. Tämän vuoden lopussa talletetaan yhtiön pistemäärä ja näytetään ennätysluettelo; pelaajat voivat jatkaa pelaamista tämän jälkeenkin.{}Jos päättymisvuosi on ennen alkamisvuotta, ennätyksiä ei näytetä koskaan.
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Ei koskaan
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Tasainen talous (enemmän pieniä muutoksia): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Mikäli käytössä, teollisuuden tuotanto muuttuu useammin ja vähemmän kerrallaan. Tällä asetuksella ei ole yleensä vaikutusta mikäli teollisuustyypit ovat NewGRF:n tarjoamia
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Salli toisten yhtiöiden osakkeiden ostaminen: {STRING}
@@ -4170,6 +4175,13 @@ STR_AI_LIST_ACCEPT                                              :{BLACK}Hyväksy
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Valitse korostettu skripti
 STR_AI_LIST_CANCEL                                              :{BLACK}Peruuta
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Älä vaihda skriptiä
+
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Ota kuvakaappaus
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Tavallinen kuvakaappaus
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Täysin lähennetty kuvakaappaus
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Kuvakaappaus oletuslähennyksellä
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Koko kartan kuvakaappaus
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Korkeuskartan kuvakaappaus
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametrit

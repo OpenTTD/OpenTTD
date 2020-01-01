@@ -3997,6 +3997,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Roghnaig
 STR_AI_LIST_CANCEL                                              :{BLACK}Cuir ar ceal
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ná hathraigh an AI
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paraiméadair {STRING}
 STR_AI_SETTINGS_CAPTION_AI                                      :AI

@@ -1153,6 +1153,7 @@ STR_AI_CONFIG_CHANGE_NONE                                       :
 
 
 
+
 # AI Parameters
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

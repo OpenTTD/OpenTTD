@@ -3873,6 +3873,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Piztutak
 STR_AI_LIST_CANCEL                                              :{BLACK}Ezeztatu
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ez aldatu script-a
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametroak
 STR_AI_SETTINGS_CAPTION_AI                                      :IA

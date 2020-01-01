@@ -4177,6 +4177,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Sélecti
 STR_AI_LIST_CANCEL                                              :{BLACK}Annuler
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne pas modifier le script
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paramètres
 STR_AI_SETTINGS_CAPTION_AI                                      :IA

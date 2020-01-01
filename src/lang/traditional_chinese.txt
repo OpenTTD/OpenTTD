@@ -3998,6 +3998,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}選擇�
 STR_AI_LIST_CANCEL                                              :{BLACK}取消
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}不改變腳本
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} 參數
 STR_AI_SETTINGS_CAPTION_AI                                      :AI

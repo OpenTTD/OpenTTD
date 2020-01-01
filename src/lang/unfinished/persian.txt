@@ -3287,6 +3287,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}انتخ
 STR_AI_LIST_CANCEL                                              :{BLACK}لغو
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}کد را تغییر نده
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} پارامترها
 STR_AI_SETTINGS_CAPTION_AI                                      :هوش مصنوعی(AI)

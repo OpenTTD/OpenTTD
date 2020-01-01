@@ -4172,6 +4172,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Gemarkee
 STR_AI_LIST_CANCEL                                              :{BLACK}Annuleren
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Script niet wijzigen
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI

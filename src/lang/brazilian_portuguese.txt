@@ -4072,6 +4072,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selecion
 STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Não mudar o script
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parâmetros
 STR_AI_SETTINGS_CAPTION_AI                                      :{G=f}IA

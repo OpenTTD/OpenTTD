@@ -3998,6 +3998,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Kies bel
 STR_AI_LIST_CANCEL                                              :{BLACK}Kanseleer
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Moenie skrif verander nie
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI

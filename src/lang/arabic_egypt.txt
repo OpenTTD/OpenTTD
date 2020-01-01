@@ -3484,6 +3484,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK} اخت�
 STR_AI_LIST_CANCEL                                              :{BLACK} الغاء
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK} لا تغير الذكاء الصناعي
 
+
 # AI Parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK} اغلاق
 STR_AI_SETTINGS_RESET                                           :{BLACK} اعادة ضبط

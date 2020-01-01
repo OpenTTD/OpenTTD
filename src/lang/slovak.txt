@@ -4065,6 +4065,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vybrať 
 STR_AI_LIST_CANCEL                                              :{BLACK}Zrušiť
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemeniť skript
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametre
 STR_AI_SETTINGS_CAPTION_AI                                      :Imelá inteligencia

@@ -4106,6 +4106,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Wiel de 
 STR_AI_LIST_CANCEL                                              :{BLACK}Ofbriechen
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Script net änneren
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameter
 STR_AI_SETTINGS_CAPTION_AI                                      :KI

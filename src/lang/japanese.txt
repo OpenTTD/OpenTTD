@@ -4000,6 +4000,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}選択�
 STR_AI_LIST_CANCEL                                              :{BLACK}キャンセル
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}スクリプトを変更しません
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} パラメータ
 STR_AI_SETTINGS_CAPTION_AI                                      :AI

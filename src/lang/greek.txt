@@ -4243,6 +4243,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Αποδ
 STR_AI_LIST_CANCEL                                              :{BLACK}Άκυρωση
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Να μην γίνει αλλαγή δέσμης ενεργειών
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Παράμετροι
 STR_AI_SETTINGS_CAPTION_AI                                      :AI

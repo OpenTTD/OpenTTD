@@ -4112,6 +4112,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}选择�
 STR_AI_LIST_CANCEL                                              :{BLACK}取消
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}不修改本 AI
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} 参数
 STR_AI_SETTINGS_CAPTION_AI                                      :AI

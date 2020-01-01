@@ -3983,6 +3983,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Alege sc
 STR_AI_LIST_CANCEL                                              :{BLACK}Anulează
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nu schimba scriptul
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametrii
 STR_AI_SETTINGS_CAPTION_AI                                      :IA

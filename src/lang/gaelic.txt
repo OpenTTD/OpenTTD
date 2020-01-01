@@ -4292,6 +4292,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Cleachd 
 STR_AI_LIST_CANCEL                                              :{BLACK}Sguir dheth
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Na atharraich an sgriobt
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paramadairean aig {STRING}
 STR_AI_SETTINGS_CAPTION_AI                                      :IF

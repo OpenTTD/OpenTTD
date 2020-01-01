@@ -4029,6 +4029,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Dewis y 
 STR_AI_LIST_CANCEL                                              :{BLACK}Canslo
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Peidio newid y sgript
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paramedrau
 STR_AI_SETTINGS_CAPTION_AI                                      :AI

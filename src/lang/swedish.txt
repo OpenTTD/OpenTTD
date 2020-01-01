@@ -4162,6 +4162,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Välj ma
 STR_AI_LIST_CANCEL                                              :{BLACK}Avbryt
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ändra inte datorspelare
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} parametrar
 STR_AI_SETTINGS_CAPTION_AI                                      :Datorspelarens

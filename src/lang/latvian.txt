@@ -3934,6 +3934,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izvēlē
 STR_AI_LIST_CANCEL                                              :{BLACK}Atcelt
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemainīt skriptu
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} parametri
 STR_AI_SETTINGS_CAPTION_AI                                      :MI

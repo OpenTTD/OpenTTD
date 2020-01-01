@@ -4229,6 +4229,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}A kijel�
 STR_AI_LIST_CANCEL                                              :{BLACK}Mégsem
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne változtassa a szkriptet
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paraméterek
 STR_AI_SETTINGS_CAPTION_AI                                      :MI

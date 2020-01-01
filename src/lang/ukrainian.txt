@@ -4302,6 +4302,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Вибр
 STR_AI_LIST_CANCEL                                              :{BLACK}Відміна
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не міняти скрипт
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Параметри
 STR_AI_SETTINGS_CAPTION_AI                                      :АІ

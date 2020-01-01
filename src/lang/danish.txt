@@ -4121,6 +4121,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vælg ma
 STR_AI_LIST_CANCEL                                              :{BLACK}Afbryd
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Skift ikke script'et
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametre
 STR_AI_SETTINGS_CAPTION_AI                                      :AI

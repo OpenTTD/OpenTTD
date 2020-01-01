@@ -4368,6 +4368,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Выбр
 STR_AI_LIST_CANCEL                                              :{BLACK}Отмена
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не менять скрипт
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметры {STRING}
 STR_AI_SETTINGS_CAPTION_AI                                      :ИИ

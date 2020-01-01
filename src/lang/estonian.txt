@@ -4090,6 +4090,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vali esi
 STR_AI_LIST_CANCEL                                              :{BLACK}Loobu
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ära skripti muuda
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameetrid
 STR_AI_SETTINGS_CAPTION_AI                                      :Tehismõistus

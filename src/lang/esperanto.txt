@@ -3384,6 +3384,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Elekti e
 STR_AI_LIST_CANCEL                                              :{BLACK}Nuligi
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne ŝanĝu AI-on
 
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametroj
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
