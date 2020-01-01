@@ -939,6 +939,7 @@ static CallBackFunction ToolbarBuildWaterClick(Window *w)
 	DropDownList list;
 	list.emplace_back(new DropDownListIconItem(SPR_IMG_BUILD_CANAL, PAL_NONE, STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION, 0, false));
 	ShowDropDownList(w, std::move(list), 0, WID_TN_WATER, 140, true, true);
+	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
 
@@ -961,6 +962,7 @@ static CallBackFunction ToolbarBuildAirClick(Window *w)
 	DropDownList list;
 	list.emplace_back(new DropDownListIconItem(SPR_IMG_AIRPORT, PAL_NONE, STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION, 0, false));
 	ShowDropDownList(w, std::move(list), 0, WID_TN_AIR, 140, true, true);
+	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
 
@@ -985,6 +987,7 @@ static CallBackFunction ToolbarForestClick(Window *w)
 	list.emplace_back(new DropDownListIconItem(SPR_IMG_PLANTTREES, PAL_NONE, STR_LANDSCAPING_MENU_PLANT_TREES, 1, false));
 	list.emplace_back(new DropDownListIconItem(SPR_IMG_SIGN, PAL_NONE, STR_LANDSCAPING_MENU_PLACE_SIGN, 2, false));
 	ShowDropDownList(w, std::move(list), 0, WID_TN_LANDSCAPE, 100, true, true);
+	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
 
