@@ -263,7 +263,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Activar 
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Activar para mostrar también las aeronaves ocultas
 
 # Query window
-STR_BUTTON_DEFAULT                                              :{BLACK}Predeterminado
+STR_BUTTON_DEFAULT                                              :{BLACK}Por defecto
 STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
 STR_BUTTON_OK                                                   :{BLACK}Aceptar
 STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Advertencia: los administradores del servidor tienen acceso al texto escrito aquí
@@ -1115,7 +1115,7 @@ STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrar 
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Desplegar todo
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Plegar todo
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(no hay explicación disponible)
-STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor predeterminado: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor por defecto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de opción: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Opción de cliente (no se almacena en partidas guardadas, afecta todas las partidas)
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Opción de partida (se almacena en las partidas guardadas, afecta solamente partidas nuevas)
@@ -1125,11 +1125,11 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Opción de empr
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoría:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Mostrar lista con opciones predeterminadas
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringir lista de opciones a los filtros predefinidos
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Básico (mostrar solo las opciones más esenciales)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avanzado (mostrar la mayoría de las opciones)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Experto (mostrar todas las opciones, incluso las avanzadas)
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Opciones con un valor diferente al predeterminado
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Opciones con un valor diferente al valor por defecto
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Opciones con un valor diferente a las opciones de partida nueva
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restringir la lista a ciertos tipos de opciones
@@ -1237,7 +1237,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :A la derecha
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostrar ventana de finanzas al final del año: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si se activa, la ventana de finanzas aparecerá al final de cada año para permitir realizar una inspección más fácil del estado financiero de la empresa
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Toda nueva orden es 'Sin paradas' por defecto: {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Generalmente, un tren se detendrá en cada estación por la que pase. Si se activa esta opción, pasará sin detenerse a través de todas las estaciones hasta llegar a su destino. Esta opción solamente define el valor predeterminado de las órdenes nuevas. Es posible especificar para cada orden el comportamiento deseado
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Un vehículo hace parada en cada estación por la que pasa, pero al activar esta opción el vehículo seguirá de largo hasta llegar a su destino. Esta opción solamente define el valor por defecto para nuevas órdenes, pero cada orden individual puede ajustarse según la acción deseada
 STR_CONFIG_SETTING_STOP_LOCATION                                :Todos los nuevos trenes paran por defecto en el {STRING} del andén
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :En qué parte predeterminada del andén se detendrán los trenes. En el 'principio' el tren se detiene cerca del punto de entrada, en el 'mitad' se detiene en el punto medio del andén y en el 'fondo' se detiene lejos del punto de entrada. Esta opción solamente define el valor predeterminado de las órdenes nuevas. Es posible especificar para cada orden el comportamiento deseado
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :principio
@@ -1479,7 +1479,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Activar esta op
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactivar barcos para la computadora: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activar esta opción deshabilita la construcción de barcos por jugadores no humanos
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Perfil predeterminado: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE                                   :Perfil por defecto: {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Perfil para los jugadores no humanos aleatorios, o para los valores iniciales al añadir un nuevo jugador no humano o un script de juego
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Fácil
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Intermedio
@@ -1550,6 +1550,10 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Noticias a color aparecen en el año: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Año en el que los periódicos comenzarán a imprimirse a color. Antes de ese año, apacerán en blanco y negro
 STR_CONFIG_SETTING_STARTING_YEAR                                :Fecha de inicio: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Año de fin de juego: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Año en el que se termina el juego para registrar la puntuación de la empresa y mostrar la tabla de puntuaciones, aunque el jugador puede continuar el juego.{}Cualquier fecha anterior al año de incio hará que la tabla de puntuaciones nunca se muestre.
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activar economía fácil (cambios más pequeños): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Al activarse, habrá cambios de producción en las industrias más frecuentemente y en escala menor. Si se usa un NewGRF con industrias adicionales esta opción generalmente no tiene efecto
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permitir comprar acciones de otras empresas: {STRING}
@@ -1567,7 +1571,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Señales mecán
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Año a partir del cual se usarán señales eléctricas. Antes de ese año se usarán señales mecánicas, las cuales funcionan igual pero tienen distinto aspecto
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activar interfaz de señales: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Mostrar una ventana para elegir los tipos de señales a instalar. Si no se activa, se instalan las señales y se selecciona un tipo determinado mediante Ctrl+Clic, sin que aparezca ninguna interfaz
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipo de señal predeterminada a instalar: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipo de señal a instalar por defecto: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipo de señal predeterminada a utilizar
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Señales de tramo
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Señales de ruta
@@ -1665,7 +1669,7 @@ STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Con un valor di
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Cantidad de cargamento a devolver en modo simétrico: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Establecer un valor menor de 100% hará que la distribución simétrica de cargamento sea más asimétrica. Se enviará menos cargamento de regreso forzosamente si una cantidad determinada es enviada a una estación. Si se fija a 0%, la distribución simétrica será como una distribución asimétrica
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Nivel de saturación de rutas cortas antes de cambiar a rutas de mayor capacidad: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Entre dos estaciones usualmente hay más de una ruta posible. Se intentarán saturar las rutas más cotas primero, luego las que le siguen, y así sucesivamente. La saturación está determinada por una estimación de capacidad y uso planificado. Una vez que se hayan saturado todas las rutas, si todavía hay demanda se sobrecargarán los caminos empezando por aquellos de mayor capacidad. El algoritmo no siempre estimará la capacidad de forma precisa. Esta opción permite especificar el porcentaje de saturación que debe tener una ruta en el primer análisis antes de pasar a la siguiente ruta. Ponerlo a menos de 100% permite evitar estaciones sobrecargadas en el caso de que se sobreestimen las capacidades
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Entre dos estaciones usualmente hay más de una ruta posible. Se intentarán saturar las rutas más cortas primero, luego las que les siguen, y así sucesivamente. La saturación está determinada por una estimación de capacidad y uso planificado. Una vez que se hayan saturado todas las rutas, si todavía hay demanda se sobrecargarán los caminos empezando por aquellos de mayor capacidad. El algoritmo no siempre estimará la capacidad de forma precisa. Esta opción permite especificar el porcentaje de saturación que debe tener una ruta en el primer análisis antes de pasar a la siguiente ruta. Ponerlo a menos de 100% permite evitar estaciones sobrecargadas en el caso de que se sobreestimen las capacidades
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unidades de velocidad: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Cada vez que se muestre una velocidad en la interfaz de usuario, se emplearán las unidades elegidas
@@ -2126,7 +2130,7 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introduc
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No guardar la contraseña introducida
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Asignar a la empresa la nueva contraseña
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Contraseña de la empresa
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Contraseña predeterminada de la empresa
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Contraseña por defecto de la empresa
 STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Usar la contraseña de esta empresa para cualquier otra nueva empresa
 
 # Network company info join/password
@@ -4173,6 +4177,12 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Elegir e
 STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}No cambiar de script
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Tomar captura de pantalla
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Captura normal
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Acercamiento máximo
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Acercamiento por defecto
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Mapa completo
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Mapa de alturas
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parámetros {STRING}
@@ -4257,7 +4267,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Solament
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura de pantalla gigante
-STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}La captura de pantalla tendrá una resolución {COMMA}×{COMMA} pixeles. Realizar la captura puede llevar un tiempo. ¿Continuar?
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}La captura de pantalla tendrá una resolución {COMMA}×{COMMA} pixeles, y puede tardar un poco en realizarse. ¿Continuar?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de pantalla guardada exitosamente en '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}¡La captura de pantalla falló!

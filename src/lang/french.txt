@@ -4177,6 +4177,12 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Sélecti
 STR_AI_LIST_CANCEL                                              :{BLACK}Annuler
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne pas modifier le script
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Faire une capture d'écran
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Capture d'écran normale
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Capture d'écran au zoom maximum
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Capture d'écran sans zoom
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Capture d'écran de toute la carte
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Capture d'écran de la carte d'altitude
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paramètres
