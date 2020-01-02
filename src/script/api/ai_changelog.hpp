@@ -19,6 +19,8 @@
  *
  * API additions:
  * \li AIPriorityQueue
+ * \li AIGroup::CreateGroupAutogenName
+ * \li AIGroup::AutoGroupVehicles
  *
  * \b 1.10.0
  *
