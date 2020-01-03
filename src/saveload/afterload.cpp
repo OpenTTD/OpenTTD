@@ -2963,6 +2963,16 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_190)) {
+		for (Order *order : Order::Iterate()) {
+			order->SetTravelTimetabled(order->GetTravelTime() > 0);
+			order->SetWaitTimetabled(order->GetWaitTime() > 0);
+		}
+		for (OrderList *orderlist : OrderList::Iterate()) {
+			orderlist->RecalculateTimetableDuration();
+		}
+	}
+
 	/*
 	 * Only keep order-backups for network clients (and when replaying).
 	 * If we are a network server or not networking, then we just loaded a previously

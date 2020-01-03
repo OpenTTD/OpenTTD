@@ -281,6 +281,8 @@ public:
 
 	void Initialize(Order *chain, Vehicle *v);
 
+	void RecalculateTimetableDuration();
+
 	/**
 	 * Get the first order of the order chain.
 	 * @return the first order of the chain.

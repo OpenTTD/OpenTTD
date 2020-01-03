@@ -296,14 +296,14 @@ void OrderList::Initialize(Order *chain, Vehicle *v)
 	this->num_manual_orders = 0;
 	this->num_vehicles = 1;
 	this->timetable_duration = 0;
-	this->total_duration = 0;
 
 	for (Order *o = this->first; o != nullptr; o = o->next) {
 		++this->num_orders;
 		if (!o->IsType(OT_IMPLICIT)) ++this->num_manual_orders;
-		this->timetable_duration += o->GetTimetabledWait() + o->GetTimetabledTravel();
 		this->total_duration += o->GetWaitTime() + o->GetTravelTime();
 	}
+
+	this->RecalculateTimetableDuration();
 
 	for (Vehicle *u = this->first_shared->PreviousShared(); u != nullptr; u = u->PreviousShared()) {
 		++this->num_vehicles;
@@ -311,6 +311,18 @@ void OrderList::Initialize(Order *chain, Vehicle *v)
 	}
 
 	for (const Vehicle *u = v->NextShared(); u != nullptr; u = u->NextShared()) ++this->num_vehicles;
+}
+
+/**
+ * Recomputes Timetable duration.
+ * Split out into a separate function so it can be used by afterload.
+ */
+void OrderList::RecalculateTimetableDuration()
+{
+	this->timetable_duration = 0;
+	for (Order *o = this->first; o != nullptr; o = o->next) {
+		this->timetable_duration += o->GetTimetabledWait() + o->GetTimetabledTravel();
+	}
 }
 
 /**
