@@ -310,13 +310,11 @@ protected:
 			case SPET_TEXT:
 				SetDParamStr(0, pe.text);
 				return GetStringHeight(STR_BLACK_RAW_STRING, max_width);
-				break;
 
 			case SPET_GOAL:
 			case SPET_LOCATION: {
 				Dimension sprite_dim = GetSpriteSize(GetPageElementSprite(pe));
 				return sprite_dim.height;
-				break;
 			}
 
 			case SPET_BUTTON_PUSH:
@@ -568,7 +566,7 @@ public:
 					DrawFrameRect(hmargin, y_offset, right - x - hmargin, y_offset + height + tmargin + bmargin, COLOUR_MAUVE, FrameFlags::FR_NONE); // TODO: draw lowered if tile/vehicle tool is active
 
 					SetDParamStr(0, pe->text);
-					DrawString(hmargin + WD_BEVEL_LEFT, right - x - hmargin - WD_BEVEL_RIGHT, y_offset + tmargin, STR_JUST_RAW_STRING, TC_BLACK, SA_CENTER) + WD_BEVEL_BOTTOM;
+					DrawString(hmargin + WD_BEVEL_LEFT, right - x - hmargin - WD_BEVEL_RIGHT, y_offset + tmargin, STR_JUST_RAW_STRING, TC_WHITE, SA_CENTER) + WD_BEVEL_BOTTOM;
 					y_offset += height + tmargin + bmargin;
 					break;
 				}
