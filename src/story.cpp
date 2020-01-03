@@ -21,6 +21,10 @@
 #include "goal_base.h"
 #include "window_func.h"
 #include "gui.h"
+#include "vehicle_base.h"
+#include "game/game.hpp"
+#include "script/api/script_story_page.hpp"
+#include "script/api/script_event_types.hpp"
 
 #include "safeguards.h"
 
@@ -359,6 +363,47 @@ CommandCost CmdRemoveStoryPageElement(TileIndex tile, DoCommandFlag flags, uint3
 		delete pe;
 
 		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
+	}
+
+	return CommandCost();
+}
+
+/**
+ * Clicked/used a button on a story page.
+ * @param tile   Tile selected, for tile selection buttons, otherwise unused.
+ * @param flags  Type of operation.
+ * @param p1     Bit 0..15 = story page element id of button.
+ * @param p2     ID of selected item for buttons that select an item (e.g. vehicle), otherwise unused.
+ * @param text   Unused.
+ * @return The cost of the operation, or an error.
+ */
+CommandCost CmdStoryPageButton(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	StoryPageElementID page_element_id = (StoryPageElementID)GB(p1, 0, 16);
+
+	if (!StoryPageElement::IsValidID(page_element_id)) return CMD_ERROR;
+	const StoryPageElement *const pe = StoryPageElement::Get(page_element_id);
+
+	/* Check the player belongs to the company that owns the page. */
+	const StoryPage *const sp = StoryPage::Get(pe->page);
+	if (sp->company != INVALID_COMPANY && sp->company != _current_company) return CMD_ERROR;
+
+	switch (pe->type) {
+		case SPET_BUTTON_PUSH:
+			/* No validation required */
+			if (flags & DC_EXEC) Game::NewEvent(new ScriptEventStoryPageButtonClick(_current_company, pe->page, page_element_id));
+			break;
+		case SPET_BUTTON_TILE:
+			if (!IsValidTile(tile)) return CMD_ERROR;
+			if (flags & DC_EXEC) Game::NewEvent(new ScriptEventStoryPageTileSelect(_current_company, pe->page, page_element_id, tile));
+			break;
+		case SPET_BUTTON_VEHICLE:
+			if (!Vehicle::IsValidID(p2)) return CMD_ERROR;
+			if (flags & DC_EXEC) Game::NewEvent(new ScriptEventStoryPageVehicleSelect(_current_company, pe->page, page_element_id, (VehicleID)p2));
+			break;
+		default:
+			/* Invalid page element type, not a button. */
+			return CMD_ERROR;
 	}
 
 	return CommandCost();

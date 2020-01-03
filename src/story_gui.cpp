@@ -24,6 +24,7 @@
 #include "window_func.h"
 #include "company_base.h"
 #include "tilehighlight_func.h"
+#include "vehicle_base.h"
 
 #include "widgets/story_widget.h"
 
@@ -410,6 +411,8 @@ protected:
 				this->active_button_id = pe.index;
 				this->SetTimeout();
 				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
+
+				DoCommandP(0, pe.index, 0, CMD_STORY_PAGE_BUTTON);
 				break;
 
 			case SPET_BUTTON_TILE:
@@ -776,10 +779,11 @@ public:
 			return;
 		}
 
+		DoCommandP(tile, pe->index, 0, CMD_STORY_PAGE_BUTTON);
 		ResetObjectToPlace();
 	}
 
-	bool OnVehicleSelect(const struct Vehicle *v) override
+	bool OnVehicleSelect(const Vehicle *v) override
 	{
 		const StoryPageElement *const pe = StoryPageElement::GetIfValid(this->active_button_id);
 		if (pe == nullptr || pe->type != SPET_BUTTON_VEHICLE) {
@@ -789,6 +793,7 @@ public:
 			return false;
 		}
 
+		DoCommandP(0, pe->index, v->index, CMD_STORY_PAGE_BUTTON);
 		ResetObjectToPlace();
 		return true;
 	}

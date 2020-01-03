@@ -1105,13 +1105,13 @@ private:
 class ScriptEventStoryPageButtonClick : public ScriptEvent {
 public:
 	/**
-	 * @param client_id   Which client triggered the event.
+	 * @param company_id  Which company triggered the event.
 	 * @param page_id     Which page was the clicked button on.
 	 * @param element_id  Which button element was clicked.
 	 */
-	ScriptEventStoryPageButtonClick(ClientID client_id, StoryPageID page_id, StoryPageElementID element_id) :
+	ScriptEventStoryPageButtonClick(CompanyID company_id, StoryPageID page_id, StoryPageElementID element_id) :
 		ScriptEvent(ET_STORYPAGE_BUTTON_CLICK),
-		client_id((ScriptClient::ClientID)client_id),
+		company_id((ScriptCompany::CompanyID)company_id),
 		page_id(page_id),
 		element_id(element_id)
 	{ }
@@ -1123,8 +1123,8 @@ public:
 	 */
 	static ScriptEventStoryPageButtonClick *Convert(ScriptEvent *instance) { return (ScriptEventStoryPageButtonClick *)instance; }
 
-	/** Get the ClientID of the player that clicked the story page button. */
-	ScriptClient::ClientID GetClientID() { return this->client_id; }
+	/** Get the CompanyID of the player that selected a tile. */
+	ScriptCompany::CompanyID GetCompanyID() { return this->company_id; }
 
 	/** Get the StoryPageID of the storybook page the clicked button is located on. */
 	StoryPageID GetStoryPageID() { return this->page_id; }
@@ -1133,7 +1133,7 @@ public:
 	StoryPageElementID GetElementID() { return this->element_id; }
 
 private:
-	ScriptClient::ClientID client_id;
+	ScriptCompany::CompanyID company_id;
 	StoryPageID page_id;
 	StoryPageElementID element_id;
 };
@@ -1145,14 +1145,14 @@ private:
 class ScriptEventStoryPageTileSelect : public ScriptEvent {
 public:
 	/**
-	 * @param client_id   Which client triggered the event.
+	 * @param company_id  Which company triggered the event.
 	 * @param page_id     Which page is the used selection button on.
 	 * @param element_id  Which button element was used to select the tile.
 	 * @param tile_index  Which tile was selected by the player.
 	 */
-	ScriptEventStoryPageTileSelect(ClientID client_id, StoryPageID page_id, StoryPageElementID element_id, TileIndex tile_index) :
-		ScriptEvent(ET_STORYPAGE_BUTTON_CLICK),
-		client_id((ScriptClient::ClientID)client_id),
+	ScriptEventStoryPageTileSelect(CompanyID company_id, StoryPageID page_id, StoryPageElementID element_id, TileIndex tile_index) :
+		ScriptEvent(ET_STORYPAGE_TILE_SELECT),
+		company_id((ScriptCompany::CompanyID)company_id),
 		page_id(page_id),
 		element_id(element_id),
 		tile_index(tile_index)
@@ -1165,8 +1165,8 @@ public:
 	 */
 	static ScriptEventStoryPageTileSelect *Convert(ScriptEvent *instance) { return (ScriptEventStoryPageTileSelect *)instance; }
 
-	/** Get the ClientID of the player that selected a tile. */
-	ScriptClient::ClientID GetClientID() { return this->client_id; }
+	/** Get the CompanyID of the player that selected a tile. */
+	ScriptCompany::CompanyID GetCompanyID() { return this->company_id; }
 
 	/** Get the StoryPageID of the storybook page the used selection button is located on. */
 	StoryPageID GetStoryPageID() { return this->page_id; }
@@ -1178,7 +1178,7 @@ public:
 	TileIndex GetTile() { return this->tile_index; }
 
 private:
-	ScriptClient::ClientID client_id;
+	ScriptCompany::CompanyID company_id;
 	StoryPageID page_id;
 	StoryPageElementID element_id;
 	TileIndex tile_index;
@@ -1191,14 +1191,14 @@ private:
 class ScriptEventStoryPageVehicleSelect : public ScriptEvent {
 public:
 	/**
-	 * @param client_id   Which client triggered the event.
+	 * @param company_id  Which company triggered the event.
 	 * @param page_id     Which page is the used selection button on.
 	 * @param element_id  Which button element was used to select the tile.
 	 * @param vehicle_id  Which vehicle was selected by the player.
 	 */
-	ScriptEventStoryPageVehicleSelect(ClientID client_id, StoryPageID page_id, StoryPageElementID element_id, VehicleID vehicle_id) :
-		ScriptEvent(ET_STORYPAGE_BUTTON_CLICK),
-		client_id((ScriptClient::ClientID)client_id),
+	ScriptEventStoryPageVehicleSelect(CompanyID company_id, StoryPageID page_id, StoryPageElementID element_id, VehicleID vehicle_id) :
+		ScriptEvent(ET_STORYPAGE_VEHICLE_SELECT),
+		company_id((ScriptCompany::CompanyID)company_id),
 		page_id(page_id),
 		element_id(element_id),
 		vehicle_id(vehicle_id)
@@ -1211,8 +1211,8 @@ public:
 	 */
 	static ScriptEventStoryPageVehicleSelect *Convert(ScriptEvent *instance) { return (ScriptEventStoryPageVehicleSelect *)instance; }
 
-	/** Get the ClientID of the player that selected a vehicle. */
-	ScriptClient::ClientID GetClientID() { return this->client_id; }
+	/** Get the CompanyID of the player that selected a tile. */
+	ScriptCompany::CompanyID GetCompanyID() { return this->company_id; }
 
 	/** Get the StoryPageID of the storybook page the used selection button is located on. */
 	StoryPageID GetStoryPageID() { return this->page_id; }
@@ -1224,7 +1224,7 @@ public:
 	VehicleID GetVehicleID() { return this->vehicle_id; }
 
 private:
-	ScriptClient::ClientID client_id;
+	ScriptCompany::CompanyID company_id;
 	StoryPageID page_id;
 	StoryPageElementID element_id;
 	VehicleID vehicle_id;

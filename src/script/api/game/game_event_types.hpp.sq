@@ -319,7 +319,7 @@ void SQGSEventStoryPageButtonClick_Register(Squirrel *engine)
 
 	SQGSEventStoryPageButtonClick.DefSQStaticMethod(engine, &ScriptEventStoryPageButtonClick::Convert, "Convert", 2, ".x");
 
-	SQGSEventStoryPageButtonClick.DefSQMethod(engine, &ScriptEventStoryPageButtonClick::GetClientID,    "GetClientID",    1, "x");
+	SQGSEventStoryPageButtonClick.DefSQMethod(engine, &ScriptEventStoryPageButtonClick::GetCompanyID,   "GetCompanyID",   1, "x");
 	SQGSEventStoryPageButtonClick.DefSQMethod(engine, &ScriptEventStoryPageButtonClick::GetStoryPageID, "GetStoryPageID", 1, "x");
 	SQGSEventStoryPageButtonClick.DefSQMethod(engine, &ScriptEventStoryPageButtonClick::GetElementID,   "GetElementID",   1, "x");
 
@@ -336,7 +336,7 @@ void SQGSEventStoryPageTileSelect_Register(Squirrel *engine)
 
 	SQGSEventStoryPageTileSelect.DefSQStaticMethod(engine, &ScriptEventStoryPageTileSelect::Convert, "Convert", 2, ".x");
 
-	SQGSEventStoryPageTileSelect.DefSQMethod(engine, &ScriptEventStoryPageTileSelect::GetClientID,    "GetClientID",    1, "x");
+	SQGSEventStoryPageTileSelect.DefSQMethod(engine, &ScriptEventStoryPageTileSelect::GetCompanyID,   "GetCompanyID",   1, "x");
 	SQGSEventStoryPageTileSelect.DefSQMethod(engine, &ScriptEventStoryPageTileSelect::GetStoryPageID, "GetStoryPageID", 1, "x");
 	SQGSEventStoryPageTileSelect.DefSQMethod(engine, &ScriptEventStoryPageTileSelect::GetElementID,   "GetElementID",   1, "x");
 	SQGSEventStoryPageTileSelect.DefSQMethod(engine, &ScriptEventStoryPageTileSelect::GetTile,        "GetTile",        1, "x");
@@ -354,7 +354,7 @@ void SQGSEventStoryPageVehicleSelect_Register(Squirrel *engine)
 
 	SQGSEventStoryPageVehicleSelect.DefSQStaticMethod(engine, &ScriptEventStoryPageVehicleSelect::Convert, "Convert", 2, ".x");
 
-	SQGSEventStoryPageVehicleSelect.DefSQMethod(engine, &ScriptEventStoryPageVehicleSelect::GetClientID,    "GetClientID",    1, "x");
+	SQGSEventStoryPageVehicleSelect.DefSQMethod(engine, &ScriptEventStoryPageVehicleSelect::GetCompanyID,   "GetCompanyID",   1, "x");
 	SQGSEventStoryPageVehicleSelect.DefSQMethod(engine, &ScriptEventStoryPageVehicleSelect::GetStoryPageID, "GetStoryPageID", 1, "x");
 	SQGSEventStoryPageVehicleSelect.DefSQMethod(engine, &ScriptEventStoryPageVehicleSelect::GetElementID,   "GetElementID",   1, "x");
 	SQGSEventStoryPageVehicleSelect.DefSQMethod(engine, &ScriptEventStoryPageVehicleSelect::GetVehicleID,   "GetVehicleID",   1, "x");
