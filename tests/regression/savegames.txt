@@ -1,0 +1,6 @@
+Savegames included in the regression tests
+
+* opntitle.sav
+  Version: 4.2
+  Copy of the master title game. Very old, good for testing. The opntitle.dat
+  original is loaded by OTTD regardless, but have it here as a base case.
