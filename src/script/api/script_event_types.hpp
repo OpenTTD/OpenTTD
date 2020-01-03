@@ -1098,4 +1098,136 @@ private:
 	VehicleID new_id; ///< The vehicle that has been created in replacement.
 };
 
+/**
+ * Event StoryPageButtonClick, indicating a player clicked a push button on a storybook page.
+ * @api game
+ */
+class ScriptEventStoryPageButtonClick : public ScriptEvent {
+public:
+	/**
+	 * @param client_id   Which client triggered the event.
+	 * @param page_id     Which page was the clicked button on.
+	 * @param element_id  Which button element was clicked.
+	 */
+	ScriptEventStoryPageButtonClick(ClientID client_id, StoryPageID page_id, StoryPageElementID element_id) :
+		ScriptEvent(ET_STORYPAGE_BUTTON_CLICK),
+		client_id((ScriptClient::ClientID)client_id),
+		page_id(page_id),
+		element_id(element_id)
+	{ }
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventStoryPageButtonClick *Convert(ScriptEvent *instance) { return (ScriptEventStoryPageButtonClick *)instance; }
+
+	/** Get the ClientID of the player that clicked the story page button. */
+	ScriptClient::ClientID GetClientID() { return this->client_id; }
+
+	/** Get the StoryPageID of the storybook page the clicked button is located on. */
+	StoryPageID GetStoryPageID() { return this->page_id; }
+
+	/** Get the StoryPageElementID of the button element that was clicked. */
+	StoryPageElementID GetElementID() { return this->element_id; }
+
+private:
+	ScriptClient::ClientID client_id;
+	StoryPageID page_id;
+	StoryPageElementID element_id;
+};
+
+/**
+ * Event StoryPageTileSelect, indicating a player clicked a tile selection button on a storybook page, and selected a tile.
+ * @api game
+ */
+class ScriptEventStoryPageTileSelect : public ScriptEvent {
+public:
+	/**
+	 * @param client_id   Which client triggered the event.
+	 * @param page_id     Which page is the used selection button on.
+	 * @param element_id  Which button element was used to select the tile.
+	 * @param tile_index  Which tile was selected by the player.
+	 */
+	ScriptEventStoryPageTileSelect(ClientID client_id, StoryPageID page_id, StoryPageElementID element_id, TileIndex tile_index) :
+		ScriptEvent(ET_STORYPAGE_BUTTON_CLICK),
+		client_id((ScriptClient::ClientID)client_id),
+		page_id(page_id),
+		element_id(element_id),
+		tile_index(tile_index)
+	{ }
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventStoryPageTileSelect *Convert(ScriptEvent *instance) { return (ScriptEventStoryPageTileSelect *)instance; }
+
+	/** Get the ClientID of the player that selected a tile. */
+	ScriptClient::ClientID GetClientID() { return this->client_id; }
+
+	/** Get the StoryPageID of the storybook page the used selection button is located on. */
+	StoryPageID GetStoryPageID() { return this->page_id; }
+
+	/** Get the StoryPageElementID of the selection button used to select the tile. */
+	StoryPageElementID GetElementID() { return this->element_id; }
+
+	/** Get the TileIndex of the tile the player selected */
+	TileIndex GetTile() { return this->tile_index; }
+
+private:
+	ScriptClient::ClientID client_id;
+	StoryPageID page_id;
+	StoryPageElementID element_id;
+	TileIndex tile_index;
+};
+
+/**
+ * Event StoryPageTileSelect, indicating a player clicked a tile selection button on a storybook page, and selected a tile.
+ * @api game
+ */
+class ScriptEventStoryPageVehicleSelect : public ScriptEvent {
+public:
+	/**
+	 * @param client_id   Which client triggered the event.
+	 * @param page_id     Which page is the used selection button on.
+	 * @param element_id  Which button element was used to select the tile.
+	 * @param vehicle_id  Which vehicle was selected by the player.
+	 */
+	ScriptEventStoryPageVehicleSelect(ClientID client_id, StoryPageID page_id, StoryPageElementID element_id, VehicleID vehicle_id) :
+		ScriptEvent(ET_STORYPAGE_BUTTON_CLICK),
+		client_id((ScriptClient::ClientID)client_id),
+		page_id(page_id),
+		element_id(element_id),
+		vehicle_id(vehicle_id)
+	{ }
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventStoryPageVehicleSelect *Convert(ScriptEvent *instance) { return (ScriptEventStoryPageVehicleSelect *)instance; }
+
+	/** Get the ClientID of the player that selected a vehicle. */
+	ScriptClient::ClientID GetClientID() { return this->client_id; }
+
+	/** Get the StoryPageID of the storybook page the used selection button is located on. */
+	StoryPageID GetStoryPageID() { return this->page_id; }
+
+	/** Get the StoryPageElementID of the selection button used to select the vehicle. */
+	StoryPageElementID GetElementID() { return this->element_id; }
+
+	/** Get the VehicleID of the vehicle the player selected */
+	VehicleID GetVehicleID() { return this->vehicle_id; }
+
+private:
+	ScriptClient::ClientID client_id;
+	StoryPageID page_id;
+	StoryPageElementID element_id;
+	VehicleID vehicle_id;
+};
+
 #endif /* SCRIPT_EVENT_TYPES_HPP */

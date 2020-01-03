@@ -308,3 +308,56 @@ void SQGSEventRoadReconstruction_Register(Squirrel *engine)
 
 	SQGSEventRoadReconstruction.PostRegister(engine);
 }
+
+
+template <> const char *GetClassName<ScriptEventStoryPageButtonClick, ST_GS>() { return "GSEventStoryPageButtonClick"; }
+
+void SQGSEventStoryPageButtonClick_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptEventStoryPageButtonClick, ST_GS> SQGSEventStoryPageButtonClick("GSEventStoryPageButtonClick");
+	SQGSEventStoryPageButtonClick.PreRegister(engine, "GSEvent");
+
+	SQGSEventStoryPageButtonClick.DefSQStaticMethod(engine, &ScriptEventStoryPageButtonClick::Convert, "Convert", 2, ".x");
+
+	SQGSEventStoryPageButtonClick.DefSQMethod(engine, &ScriptEventStoryPageButtonClick::GetClientID,    "GetClientID",    1, "x");
+	SQGSEventStoryPageButtonClick.DefSQMethod(engine, &ScriptEventStoryPageButtonClick::GetStoryPageID, "GetStoryPageID", 1, "x");
+	SQGSEventStoryPageButtonClick.DefSQMethod(engine, &ScriptEventStoryPageButtonClick::GetElementID,   "GetElementID",   1, "x");
+
+	SQGSEventStoryPageButtonClick.PostRegister(engine);
+}
+
+
+template <> const char *GetClassName<ScriptEventStoryPageTileSelect, ST_GS>() { return "GSEventStoryPageTileSelect"; }
+
+void SQGSEventStoryPageTileSelect_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptEventStoryPageTileSelect, ST_GS> SQGSEventStoryPageTileSelect("GSEventStoryPageTileSelect");
+	SQGSEventStoryPageTileSelect.PreRegister(engine, "GSEvent");
+
+	SQGSEventStoryPageTileSelect.DefSQStaticMethod(engine, &ScriptEventStoryPageTileSelect::Convert, "Convert", 2, ".x");
+
+	SQGSEventStoryPageTileSelect.DefSQMethod(engine, &ScriptEventStoryPageTileSelect::GetClientID,    "GetClientID",    1, "x");
+	SQGSEventStoryPageTileSelect.DefSQMethod(engine, &ScriptEventStoryPageTileSelect::GetStoryPageID, "GetStoryPageID", 1, "x");
+	SQGSEventStoryPageTileSelect.DefSQMethod(engine, &ScriptEventStoryPageTileSelect::GetElementID,   "GetElementID",   1, "x");
+	SQGSEventStoryPageTileSelect.DefSQMethod(engine, &ScriptEventStoryPageTileSelect::GetTile,        "GetTile",        1, "x");
+
+	SQGSEventStoryPageTileSelect.PostRegister(engine);
+}
+
+
+template <> const char *GetClassName<ScriptEventStoryPageVehicleSelect, ST_GS>() { return "GSEventStoryPageVehicleSelect"; }
+
+void SQGSEventStoryPageVehicleSelect_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptEventStoryPageVehicleSelect, ST_GS> SQGSEventStoryPageVehicleSelect("GSEventStoryPageVehicleSelect");
+	SQGSEventStoryPageVehicleSelect.PreRegister(engine, "GSEvent");
+
+	SQGSEventStoryPageVehicleSelect.DefSQStaticMethod(engine, &ScriptEventStoryPageVehicleSelect::Convert, "Convert", 2, ".x");
+
+	SQGSEventStoryPageVehicleSelect.DefSQMethod(engine, &ScriptEventStoryPageVehicleSelect::GetClientID,    "GetClientID",    1, "x");
+	SQGSEventStoryPageVehicleSelect.DefSQMethod(engine, &ScriptEventStoryPageVehicleSelect::GetStoryPageID, "GetStoryPageID", 1, "x");
+	SQGSEventStoryPageVehicleSelect.DefSQMethod(engine, &ScriptEventStoryPageVehicleSelect::GetElementID,   "GetElementID",   1, "x");
+	SQGSEventStoryPageVehicleSelect.DefSQMethod(engine, &ScriptEventStoryPageVehicleSelect::GetVehicleID,   "GetVehicleID",   1, "x");
+
+	SQGSEventStoryPageVehicleSelect.PostRegister(engine);
+}
