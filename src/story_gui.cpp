@@ -318,6 +318,12 @@ protected:
 				return sprite_dim.height;
 				break;
 			}
+
+			case SPET_BUTTON_PUSH:
+			case SPET_BUTTON_TILE:
+			case SPET_BUTTON_VEHICLE:
+				return FONT_HEIGHT_NORMAL + WD_BEVEL_TOP + WD_BEVEL_BOTTOM + WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM;
+
 			default:
 				NOT_REACHED();
 		}
@@ -394,6 +400,18 @@ protected:
 
 			case SPET_GOAL:
 				ShowGoalsList((CompanyID)this->window_number);
+				break;
+
+			case SPET_BUTTON_PUSH:
+				/* TODO: send event to GS */
+				break;
+
+			case SPET_BUTTON_TILE:
+				/* TODO: allow player to select tile */
+				break;
+
+			case SPET_BUTTON_VEHICLE:
+				/* TODO: allow player to select vehicle */
 				break;
 
 			default:
@@ -539,6 +557,21 @@ public:
 					SetDParamStr(0, pe->text);
 					DrawActionElement(y_offset, right - x, line_height, GetPageElementSprite(*pe));
 					break;
+
+				case SPET_BUTTON_PUSH:
+				case SPET_BUTTON_TILE:
+				case SPET_BUTTON_VEHICLE: {
+					const int height = FONT_HEIGHT_NORMAL;
+					const int tmargin = WD_BEVEL_TOP + WD_FRAMETEXT_TOP;
+					const int bmargin = WD_BEVEL_BOTTOM + WD_FRAMETEXT_BOTTOM;
+					const int hmargin = (right - x) / 5;
+					DrawFrameRect(hmargin, y_offset, right - x - hmargin, y_offset + height + tmargin + bmargin, COLOUR_MAUVE, FrameFlags::FR_NONE); // TODO: draw lowered if tile/vehicle tool is active
+
+					SetDParamStr(0, pe->text);
+					DrawString(hmargin + WD_BEVEL_LEFT, right - x - hmargin - WD_BEVEL_RIGHT, y_offset + tmargin, STR_JUST_RAW_STRING, TC_BLACK, SA_CENTER) + WD_BEVEL_BOTTOM;
+					y_offset += height + tmargin + bmargin;
+					break;
+				}
 
 				default: NOT_REACHED();
 			}
