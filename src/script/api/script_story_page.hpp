@@ -57,9 +57,12 @@ public:
 	 * Story page element types.
 	 */
 	enum StoryPageElementType {
-		SPET_TEXT = ::SPET_TEXT,         ///< An element that displays a block of text.
-		SPET_LOCATION = ::SPET_LOCATION, ///< An element that displays a single line of text along with a button to view the referenced location.
-		SPET_GOAL = ::SPET_GOAL,         ///< An element that displays a goal.
+		SPET_TEXT = ::SPET_TEXT,                     ///< An element that displays a block of text.
+		SPET_LOCATION = ::SPET_LOCATION,             ///< An element that displays a single line of text along with a button to view the referenced location.
+		SPET_GOAL = ::SPET_GOAL,                     ///< An element that displays a goal.
+		SPET_BUTTON_PUSH = ::SPET_BUTTON_PUSH,       ///< A push button that triggers an immediate event.
+		SPET_BUTTON_TILE = ::SPET_BUTTON_TILE,       ///< A button that allows the player to select a tile, and triggers an event with the tile.
+		SPET_BUTTON_VEHICLE = ::SPET_BUTTON_VEHICLE, ///< A button that allows the player to select a vehicle, and triggers an event wih the vehicle.
 	};
 
 	/**

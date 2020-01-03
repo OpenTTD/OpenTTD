@@ -24,6 +24,9 @@ void SQGSStoryPage_Register(Squirrel *engine)
 	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPET_TEXT,                  "SPET_TEXT");
 	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPET_LOCATION,              "SPET_LOCATION");
 	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPET_GOAL,                  "SPET_GOAL");
+	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPET_BUTTON_PUSH,           "SPET_BUTTON_PUSH");
+	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPET_BUTTON_TILE,           "SPET_BUTTON_TILE");
+	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPET_BUTTON_VEHICLE,        "SPET_BUTTON_VEHICLE");
 
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::IsValidStoryPage,        "IsValidStoryPage",        2, ".i");
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::IsValidStoryPageElement, "IsValidStoryPageElement", 2, ".i");
