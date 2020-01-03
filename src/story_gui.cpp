@@ -23,6 +23,7 @@
 #include "viewport_func.h"
 #include "window_func.h"
 #include "company_base.h"
+#include "tilehighlight_func.h"
 
 #include "widgets/story_widget.h"
 
@@ -42,6 +43,8 @@ protected:
 	GUIStoryPageElementList story_page_elements; ///< Sorted list of page elements that belong to the current page.
 	StoryPageID selected_page_id;      ///< Pool index of selected page.
 	char selected_generic_title[255];  ///< If the selected page doesn't have a custom title, this buffer is used to store a generic page title.
+
+	StoryPageElementID active_button_id; ///< Which button element the player is currently using
 
 	static GUIStoryPageList::SortFunction * const page_sorter_funcs[];
 	static GUIStoryPageElementList::SortFunction * const page_element_sorter_funcs[];
@@ -173,6 +176,8 @@ protected:
 
 		this->story_page_elements.ForceRebuild();
 		this->BuildStoryPageElementList();
+
+		if (this->active_button_id != INVALID_STORY_PAGE_ELEMENT) ResetObjectToPlace();
 
 		this->vscroll->SetCount(this->GetContentHeight());
 		this->SetWidgetDirty(WID_SB_SCROLLBAR);
@@ -401,15 +406,32 @@ protected:
 				break;
 
 			case SPET_BUTTON_PUSH:
-				/* TODO: send event to GS */
+				if (this->active_button_id != INVALID_STORY_PAGE_ELEMENT) ResetObjectToPlace();
+				this->active_button_id = pe.index;
+				this->SetTimeout();
+				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 				break;
 
 			case SPET_BUTTON_TILE:
-				/* TODO: allow player to select tile */
+				if (this->active_button_id == pe.index) {
+					ResetObjectToPlace();
+					this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+				} else {
+					SetObjectToPlaceWnd(SPR_CURSOR_QUERY, PAL_NONE, HT_RECT, this);
+					this->active_button_id = pe.index;
+				}
+				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 				break;
 
 			case SPET_BUTTON_VEHICLE:
-				/* TODO: allow player to select vehicle */
+				if (this->active_button_id == pe.index) {
+					ResetObjectToPlace();
+					this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+				} else {
+					SetObjectToPlaceWnd(SPR_CURSOR_QUERY, PAL_NONE, HT_VEHICLE, this);
+					this->active_button_id = pe.index;
+				}
+				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 				break;
 
 			default:
@@ -438,6 +460,8 @@ public:
 		this->selected_generic_title[0] = '\0';
 		this->selected_page_id = INVALID_STORY_PAGE;
 
+		this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+
 		this->OnInvalidateData(-1);
 	}
 
@@ -459,6 +483,8 @@ public:
 	void SetSelectedPage(uint16 page_index)
 	{
 		if (this->selected_page_id != page_index) {
+			if (this->active_button_id) ResetObjectToPlace();
+			this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
 			this->selected_page_id = page_index;
 			this->RefreshSelectedPage();
 			this->UpdatePrevNextDisabledState();
@@ -563,10 +589,12 @@ public:
 					const int tmargin = WD_BEVEL_TOP + WD_FRAMETEXT_TOP;
 					const int bmargin = WD_BEVEL_BOTTOM + WD_FRAMETEXT_BOTTOM;
 					const int hmargin = (right - x) / 5;
-					DrawFrameRect(hmargin, y_offset, right - x - hmargin, y_offset + height + tmargin + bmargin, COLOUR_MAUVE, FrameFlags::FR_NONE); // TODO: draw lowered if tile/vehicle tool is active
+					const FrameFlags frame = this->active_button_id == pe->index ? FR_LOWERED : FR_NONE;
+
+					DrawFrameRect(hmargin, y_offset, right - x - hmargin, y_offset + height + tmargin + bmargin, COLOUR_MAUVE, frame);
 
 					SetDParamStr(0, pe->text);
-					DrawString(hmargin + WD_BEVEL_LEFT, right - x - hmargin - WD_BEVEL_RIGHT, y_offset + tmargin, STR_JUST_RAW_STRING, TC_WHITE, SA_CENTER) + WD_BEVEL_BOTTOM;
+					DrawString(hmargin + WD_BEVEL_LEFT, right - x - hmargin - WD_BEVEL_RIGHT, y_offset + tmargin, STR_JUST_RAW_STRING, TC_WHITE, SA_CENTER);
 					y_offset += height + tmargin + bmargin;
 					break;
 				}
@@ -730,6 +758,45 @@ public:
 		} else if (data >= 0 && this->selected_page_id == data) {
 			this->RefreshSelectedPage();
 		}
+	}
+
+	void OnTimeout() override
+	{
+		this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+		this->SetWidgetDirty(WID_SB_PAGE_PANEL);
+	}
+
+	void OnPlaceObject(Point pt, TileIndex tile) override
+	{
+		const StoryPageElement *const pe = StoryPageElement::GetIfValid(this->active_button_id);
+		if (pe == nullptr || pe->type != SPET_BUTTON_TILE) {
+			ResetObjectToPlace();
+			this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+			this->SetWidgetDirty(WID_SB_PAGE_PANEL);
+			return;
+		}
+
+		ResetObjectToPlace();
+	}
+
+	bool OnVehicleSelect(const struct Vehicle *v) override
+	{
+		const StoryPageElement *const pe = StoryPageElement::GetIfValid(this->active_button_id);
+		if (pe == nullptr || pe->type != SPET_BUTTON_VEHICLE) {
+			ResetObjectToPlace();
+			this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+			this->SetWidgetDirty(WID_SB_PAGE_PANEL);
+			return false;
+		}
+
+		ResetObjectToPlace();
+		return true;
+	}
+
+	void OnPlaceObjectAbort() override
+	{
+		this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+		this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 	}
 };
 
