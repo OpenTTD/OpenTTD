@@ -1785,7 +1785,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type, byte subtype)
 
 	/* We should be able to build infrastructure when we have the actual vehicle type */
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (type == VEH_ROAD && GetRoadTramType(RoadVehicle::From(v)->roadtype) != (RoadTramType)subtype) continue;
+		if (v->type == VEH_ROAD && GetRoadTramType(RoadVehicle::From(v)->roadtype) != (RoadTramType)subtype) continue;
 		if (v->owner == _local_company && v->type == type) return true;
 	}
 
