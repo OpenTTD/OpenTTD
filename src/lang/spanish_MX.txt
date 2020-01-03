@@ -243,8 +243,8 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Cerrar v
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título de la ventana (arrastrar para mover)
 STR_TOOLTIP_SHADE                                               :{BLACK}Ocultar ventana (mostrar solo título)
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar información de depuración de NewGRF
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Cambiar al tamaño predeterminado de la ventana. Ctrl+Clic guarda el tamaño actual como nuevo tamaño predeterminado
-STR_TOOLTIP_STICKY                                              :{BLACK}Excluir esta ventana de la función 'Cerrar todas las ventanas' (tecla Supr). Ctrl+Clic guarda esta preferencia como opción predeterminada
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Cambiar al tamaño por defecto de la ventana. Ctrl+Clic guarda el tamaño actual como nuevo tamaño por defecto
+STR_TOOLTIP_STICKY                                              :{BLACK}Excluir esta ventana de la función de la tecla "Cerrar todas las ventanas". Ctrl+Clic guarda esta preferencia como opción por defecto
 STR_TOOLTIP_RESIZE                                              :{BLACK}Arrastrar para cambiar el tamaño de esta ventana
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Cambiar entre tamaño de ventana grande o pequeño
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplazamiento (mueve la lista arriba o abajo)
@@ -1239,7 +1239,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si se activa, l
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Toda nueva orden es 'Sin paradas' por defecto: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Un vehículo hace parada en cada estación por la que pasa, pero al activar esta opción el vehículo seguirá de largo hasta llegar a su destino. Esta opción solamente define el valor por defecto para nuevas órdenes, pero cada orden individual puede ajustarse según la acción deseada
 STR_CONFIG_SETTING_STOP_LOCATION                                :Todos los nuevos trenes paran por defecto en el {STRING} del andén
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :En qué parte predeterminada del andén se detendrán los trenes. En el 'principio' el tren se detiene cerca del punto de entrada, en el 'mitad' se detiene en el punto medio del andén y en el 'fondo' se detiene lejos del punto de entrada. Esta opción solamente define el valor predeterminado de las órdenes nuevas. Es posible especificar para cada orden el comportamiento deseado
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Altura por defecto del andén a la que para un tren: en el "principio" el tren para cerca de la entrada; en el "centro", el tren para en medio del andén; en el "fondo", el tren para cerca de la salida. Esta opción solamente define el valor por defecto para nuevas órdenes, pero cada orden individual puede ajustarse según la acción deseada
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :principio
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :centro
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :fondo
@@ -1430,8 +1430,8 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar salidas
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostrar tiempos anticipados de llegadas y salidas en los itinerarios
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creación rápida de órdenes para vehículos: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Elegir automáticamente la opción 'Ir a' al abrir la ventana de órdenes
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo predeterminado de vías férreas al iniciar o cargar un juego: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo predeterminado de vías de tren al iniciar o cargar un juego. 'Primero disponible' elige el tipo más viejo, 'Último disponible' elige el tipo más nuevo y 'Más usado' elige el tipo de mayor uso al momento
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo de vías por defecto al iniciar o cargar un juego: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo de vías de tren por defecto al iniciar o cargar un juego. "Primero disponible" elige el tipo más viejo, "Último disponible" elige el tipo más nuevo y "Más usado" elige el tipo de mayor uso al momento
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primero disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Más usado
@@ -1495,16 +1495,16 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervalo de mantenimiento en porcentajes: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Escoger si el mantenimiento de vehículos comenzará debido al tiempo pasado desde el último mantenimiento o por una reducción de la fiabilidad menor de un porcentaje determinado
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de mantenimiento predeterminado para trenes: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Intervalo de mantenimiento predeterminado para nuevos trenes, en caso de no definirse otro explícitamente
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de mantenimiento por defecto para trenes: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Intervalo de mantenimiento por defecto para nuevos trenes, en caso de no definirse otro explícitamente
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}día{P 0 "" s}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deshabilitado
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo de mantenimiento predeterminado para vehículos de carretera: {STRING}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Intervalo de mantenimiento predeterminado para nuevos vehículos de carretera, en caso de no definirse otro explícitamente
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo de mantenimiento predeterminado para aeronaves: {STRING}
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Intervalo de mantenimiento predeterminado para nuevas aeronaves, en caso de no definirse otro explícitamente
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalo de mantenimiento predeterminado para barcos: {STRING}
-STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Intervalo de mantenimiento predeterminado para nuevos barcos, en caso de no definirse otro explícitamente
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo de mantenimiento por defecto para vehículos de carretera: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Intervalo de mantenimiento por defecto para nuevos vehículos de carretera, en caso de no definirse otro explícitamente
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo de mantenimiento por defecto para aeronaves: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Intervalo de mantenimiento por defecto para nuevas aeronaves, en caso de no definirse otro explícitamente
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalo de mantenimiento por defecto para barcos: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Intervalo de mantenimiento por defecto para nuevos barcos, en caso de no definirse otro explícitamente
 STR_CONFIG_SETTING_NOSERVICE                                    :Desactivar mantenimiento si las averías están desactivadas: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Al activarse, los vehículos no recibirán mantenimiento si no pueden averiarse
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activar límites de velocidad para vagones: {STRING}
@@ -1572,7 +1572,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Año a partir d
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activar interfaz de señales: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Mostrar una ventana para elegir los tipos de señales a instalar. Si no se activa, se instalan las señales y se selecciona un tipo determinado mediante Ctrl+Clic, sin que aparezca ninguna interfaz
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipo de señal a instalar por defecto: {STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipo de señal predeterminada a utilizar
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipo de señal por defecto
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Señales de tramo
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Señales de ruta
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Señales de ruta de un sentido
@@ -2388,7 +2388,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construi
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Mostrar el tipo de estación elegida
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Construir el tipo de estación elegida
 
-STR_STATION_CLASS_DFLT                                          :Estación predeterminada
+STR_STATION_CLASS_DFLT                                          :Estación por defecto
 STR_STATION_CLASS_WAYP                                          :Puntos guías
 
 # Signal window
@@ -2805,7 +2805,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Guardar 
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Cargar mapa
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Cargar mapa de alturas
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Guardar mapa de alturas
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clic para ir a la carpeta de guardado predeterminada
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clic para ir a la carpeta de guardado por defecto
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} libres
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades de almacenamiento, carpetas y partidas guardadas
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nombre elegido para la partida a guardar
@@ -3833,7 +3833,7 @@ STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Incremen
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Reducir intervalo de mantenimiento 10 días. Ctrl+Clic para reducir el intervalo de mantenimiento 5 días
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Cambiar tipo de intervalo de mantenimiento
-STR_VEHICLE_DETAILS_DEFAULT                                     :Predeterminado
+STR_VEHICLE_DETAILS_DEFAULT                                     :Por defecto
 STR_VEHICLE_DETAILS_DAYS                                        :Días
 STR_VEHICLE_DETAILS_PERCENT                                     :Porcentaje
 
@@ -4134,7 +4134,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostrar 
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de juego
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Analizar el registro del script de juego
 
-STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró IA apropiada para cargar.{}Esta es una IA predeterminada que no realiza ninguna acción.{}Se pueden descargar nuevas IA a través del sistema de 'Contenido en línea'
+STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró ninguna IA apropiada para cargar.{}Esta es una IA estándar que no hace nada.{}Se pueden descargar nuevas IA desde el "Contenido en línea"
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno de los scripts ejecutados ha fallado. Por favor, informa del fallo al autor del script con una captura de la ventana de depuración
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La ventana de depuración de scripts solo está disponible para el servidor
 
