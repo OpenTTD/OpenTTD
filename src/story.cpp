@@ -49,6 +49,9 @@ static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElement
 {
 	switch (type) {
 		case SPET_TEXT:
+		case SPET_BUTTON_PUSH:
+		case SPET_BUTTON_TILE:
+		case SPET_BUTTON_VEHICLE:
 			if (StrEmpty(text)) return false;
 			break;
 		case SPET_LOCATION:
@@ -79,6 +82,9 @@ static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32 reference
 {
 	switch (pe.type) {
 		case SPET_TEXT:
+		case SPET_BUTTON_PUSH:
+		case SPET_BUTTON_TILE:
+		case SPET_BUTTON_VEHICLE:
 			pe.text = stredup(text);
 			break;
 		case SPET_LOCATION:
