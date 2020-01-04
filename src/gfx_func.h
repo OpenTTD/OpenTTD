@@ -222,4 +222,10 @@ static const uint8 PC_GREEN              = 0xD0;           ///< Green palette co
 static const uint8 PC_DARK_BLUE          = 0x9D;           ///< Dark blue palette colour.
 static const uint8 PC_LIGHT_BLUE         = 0x98;           ///< Light blue palette colour.
 
+static const uint8 PC_ROUGH_LAND         = 0x52;           ///< Dark green palette colour for rough land.
+static const uint8 PC_GRASS_LAND         = 0x54;           ///< Dark green palette colour for grass land.
+static const uint8 PC_BARE_LAND          = 0x37;           ///< Brown palette colour for bare land.
+static const uint8 PC_FIELDS             = 0x25;           ///< Light brown palette colour for fields.
+static const uint8 PC_TREES              = 0x57;           ///< Green palette colour for trees.
+static const uint8 PC_WATER              = 0xC9;           ///< Dark blue palette colour for water.
 #endif /* GFX_FUNC_H */

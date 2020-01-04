@@ -41,6 +41,7 @@ struct ScreenshotWindow : Window {
 			case WID_SC_TAKE_DEFAULTZOOM: st = SC_DEFAULTZOOM; break;
 			case WID_SC_TAKE_WORLD:       st = SC_WORLD;       break;
 			case WID_SC_TAKE_HEIGHTMAP:   st = SC_HEIGHTMAP;   break;
+			case WID_SC_TAKE_MINIMAP:     st = SC_MINIMAP;     break;
 		}
 		TakeScreenshot(st);
 	}
@@ -87,6 +88,7 @@ static const NWidgetPart _nested_screenshot[] = {
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SC_TAKE_DEFAULTZOOM), SetFill(1, 1), SetDataTip(STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT, 0), SetMinimalTextLines(2, 0),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SC_TAKE_WORLD), SetFill(1, 1), SetDataTip(STR_SCREENSHOT_WORLD_SCREENSHOT, 0), SetMinimalTextLines(2, 0),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SC_TAKE_HEIGHTMAP), SetFill(1, 1), SetDataTip(STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT, 0), SetMinimalTextLines(2, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SC_TAKE_MINIMAP), SetFill(1, 1), SetDataTip(STR_SCREENSHOT_MINIMAP_SCREENSHOT, 0), SetMinimalTextLines(2, 0),
 	EndContainer(),
 };
 
