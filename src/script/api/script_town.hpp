@@ -424,6 +424,30 @@ public:
 	static TownRating GetRating(TownID town_id, ScriptCompany::CompanyID company_id);
 
 	/**
+	 * Get the accurate rating of a company within a town.
+	 * @param town_id The town to get the rating for.
+	 * @param company_id The company to get the rating for.
+	 * @pre IsValidTown(town_id).
+	 * @pre ScriptCompany.ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID.
+	 * @return The rating as a number between -1000 (worst) and 1000 (best).
+	 * @api -ai
+	 */
+	static int GetDetailedRating(TownID town_id, ScriptCompany::CompanyID company_id);
+
+	/**
+	 * Change the rating of a company within a town.
+	 * @param town_id The town to change the rating in.
+	 * @param company_id The company to change the rating for.
+	 * @param delta How much to change rating by (range -1000 to +1000).
+	 * @return True if the rating was changed.
+	 * @pre IsValidTown(town_id).
+	 * @pre ScriptCompany.ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID.
+	 * @pre no company mode in scope
+	 * @api -ai
+	 */
+	static bool ChangeRating(TownID town_id, ScriptCompany::CompanyID company_id, int delta);
+
+	/**
 	 * Get the maximum level of noise that still can be added by airports
 	 *  before the town start to refuse building a new airport.
 	 * @param town_id The town to get the allowed noise from.

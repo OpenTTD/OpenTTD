@@ -336,6 +336,33 @@
 	}
 }
 
+/* static */ int ScriptTown::GetDetailedRating(TownID town_id, ScriptCompany::CompanyID company_id)
+{
+	if (!IsValidTown(town_id)) return TOWN_RATING_INVALID;
+	ScriptCompany::CompanyID company = ScriptCompany::ResolveCompanyID(company_id);
+	if (company == ScriptCompany::COMPANY_INVALID) return TOWN_RATING_INVALID;
+
+	const Town *t = ::Town::Get(town_id);
+	return t->ratings[company];
+}
+
+/* static */ bool ScriptTown::ChangeRating(TownID town_id, ScriptCompany::CompanyID company_id, int delta)
+{
+	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforcePrecondition(false, IsValidTown(town_id));
+	ScriptCompany::CompanyID company = ScriptCompany::ResolveCompanyID(company_id);
+	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
+
+	const Town *t = ::Town::Get(town_id);
+	int16 new_rating = Clamp(t->ratings[company] + delta, RATING_MINIMUM, RATING_MAXIMUM);
+	if (new_rating == t->ratings[company]) return false;
+
+	uint16 p2 = 0;
+	memcpy(&p2, &new_rating, sizeof(p2));
+
+	return ScriptObject::DoCommand(0, town_id | (company_id << 16), p2, CMD_TOWN_RATING);
+}
+
 /* static */ int ScriptTown::GetAllowedNoise(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
