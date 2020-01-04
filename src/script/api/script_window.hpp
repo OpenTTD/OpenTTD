@@ -2186,6 +2186,7 @@ public:
 		WID_SC_TAKE_DEFAULTZOOM                      = ::WID_SC_TAKE_DEFAULTZOOM,                      ///< Button for taking a screenshot at normal zoom
 		WID_SC_TAKE_WORLD                            = ::WID_SC_TAKE_WORLD,                            ///< Button for taking a screenshot of the whole world
 		WID_SC_TAKE_HEIGHTMAP                        = ::WID_SC_TAKE_HEIGHTMAP,                        ///< Button for taking a heightmap "screenshot"
+		WID_SC_TAKE_MINIMAP                          = ::WID_SC_TAKE_MINIMAP,                          ///< Button for taking a minimap screenshot
 	};
 
 	/* automatically generated from ../../widgets/settings_widget.h */
