@@ -271,6 +271,7 @@ private:
 	FileList fios_items;          ///< Save game list.
 	FiosItem o_dir;               ///< Original dir (home dir for this browser)
 	const FiosItem *selected;     ///< Selected game in #fios_items, or \c nullptr.
+	const FiosItem *highlighted;  ///< Item in fios_items highlighted by mouse pointer, or \c nullptr.
 	Scrollbar *vscroll;
 
 	StringFilter string_filter; ///< Filter for available games.
@@ -445,6 +446,8 @@ public:
 
 					if (item == this->selected) {
 						GfxFillRect(r.left + 1, y, r.right, y + this->resize.step_height, PC_DARK_BLUE);
+					} else if (item == this->highlighted) {
+						GfxFillRect(r.left + 1, y, r.right, y + this->resize.step_height, PC_VERY_DARK_BLUE);
 					}
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, item->title, _fios_colours[GetDetailedFileType(item->type)]);
 					y += this->resize.step_height;
@@ -711,6 +714,33 @@ public:
 				/* Note, this is also called via the OSK; and we need to lower the button. */
 				this->HandleButtonClick(WID_SL_SAVE_GAME);
 				break;
+		}
+	}
+
+	void OnMouseLoop() override
+	{
+		const Point pt{ _cursor.pos.x - this->left, _cursor.pos.y - this->top };
+		const int widget = GetWidgetFromPos(this, pt.x, pt.y);
+
+		if (widget == WID_SL_DRIVES_DIRECTORIES_LIST) {
+			int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SL_DRIVES_DIRECTORIES_LIST, WD_FRAMERECT_TOP);
+			if (y == INT_MAX) return;
+
+			/* Get the corresponding non-filtered out item from the list */
+			int i = 0;
+			while (i <= y) {
+				if (!this->fios_items_shown[i]) y++;
+				i++;
+			}
+			const FiosItem *file = this->fios_items.Get(y);
+
+			if (file != this->highlighted) {
+				this->highlighted = file;
+				this->SetWidgetDirty(WID_SL_DRIVES_DIRECTORIES_LIST);
+			}
+		} else if (this->highlighted != nullptr) {
+			this->highlighted = nullptr;
+			this->SetWidgetDirty(WID_SL_DRIVES_DIRECTORIES_LIST);
 		}
 	}
 
