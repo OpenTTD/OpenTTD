@@ -269,7 +269,7 @@ private:
 	AbstractFileType abstract_filetype; /// Type of file to select.
 	SaveLoadOperation fop;        ///< File operation to perform.
 	FileList fios_items;          ///< Save game list.
-	FiosItem o_dir;
+	FiosItem o_dir;               ///< Original dir (home dir for this browser)
 	const FiosItem *selected;     ///< Selected game in #fios_items, or \c nullptr.
 	Scrollbar *vscroll;
 
