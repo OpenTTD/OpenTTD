@@ -219,6 +219,7 @@ static const uint8 PC_VERY_LIGHT_YELLOW  = 0x45;           ///< Almost-white yel
 
 static const uint8 PC_GREEN              = 0xD0;           ///< Green palette colour.
 
+static const uint8 PC_VERY_DARK_BLUE     = 0x9A;           ///< Almost-black blue palette colour.
 static const uint8 PC_DARK_BLUE          = 0x9D;           ///< Dark blue palette colour.
 static const uint8 PC_LIGHT_BLUE         = 0x98;           ///< Light blue palette colour.
 
