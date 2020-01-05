@@ -1312,6 +1312,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Näytä kunnan 
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Näytä kuntien asukasluvut kartalla
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Viivojen paksuus kuvaajissa: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Viivan leveys kuvaajissa. Ohut viiva on tarkasti luettavissa kun taas paksumpi viiva on helpompi nähdä ja sen värit ovat helpommin havaittavissa
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Näytä NewGRF:n nimi liikennevälineikkunassa
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lisää liikennevälinevalikoimaikkunaan rivin, joka näyttää, mistä NewGRF:stä valittu liikenneväline on peräisin.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Maasto: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Maasto vaikuttaa useisiin pelin peruselementteihin, kuten rahtiin ja kuntien kasvuedellytyksiin. NewGRF:t ja peliskriptit voivat kuitenkin vaikuttaa tarkemmin pelin kulkuun
@@ -4182,6 +4184,7 @@ STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Täysin 
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Kuvakaappaus oletuslähennyksellä
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Koko kartan kuvakaappaus
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Korkeuskartan kuvakaappaus
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Pienoiskartan kuvakaappaus
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametrit
