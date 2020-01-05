@@ -893,12 +893,8 @@ static Owner GetMinimapOwner(TileIndex tile)
 
 static void MinimapScreenCallback(void *userdata, void *buf, uint y, uint pitch, uint n)
 {
-	uint32 *ubuf;
-	uint num, row, col;
-	byte val;
-	byte owner_colours[OWNER_END + 1];
-
 	/* Fill with the company colours */
+	byte owner_colours[OWNER_END + 1];
 	for (const Company *c : Company::Iterate()) {
 		owner_colours[c->index] = MKCOLOUR(_colour_gradient[c->colour][5]);
 	}
@@ -910,15 +906,15 @@ static void MinimapScreenCallback(void *userdata, void *buf, uint y, uint pitch,
 	owner_colours[OWNER_DEITY]   = PC_DARK_GREY; // industry
 	owner_colours[OWNER_END]     = PC_BLACK;
 
-	ubuf = (uint32 *)buf;
-	num = (pitch * n);
+	uint32 *ubuf = (uint32 *)buf;
+	uint num = (pitch * n);
 	for (uint i = 0; i < num; i++) {
-		row = y + (int)(i / pitch);
-		col = (MapSizeX() - 1) - (i % pitch);
+		uint row = y + (int)(i / pitch);
+		uint col = (MapSizeX() - 1) - (i % pitch);
 
 		TileIndex tile = TileXY(col, row);
 		Owner o = GetMinimapOwner(tile);
-		val = owner_colours[o];
+		byte val = owner_colours[o];
 
 		uint32 colour_buf = 0;
 		colour_buf  = (_cur_palette.palette[val].b << 0);
@@ -926,7 +922,7 @@ static void MinimapScreenCallback(void *userdata, void *buf, uint y, uint pitch,
 		colour_buf |= (_cur_palette.palette[val].r << 16);
 
 		*ubuf = colour_buf;
-		*ubuf++;   // Skip alpha
+		ubuf++;   // Skip alpha
 	}
 }
 
