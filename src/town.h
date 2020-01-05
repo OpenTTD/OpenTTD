@@ -162,6 +162,7 @@ enum TownRatingCheckType {
 enum TownDirectoryInvalidateWindowData {
 	TDIWD_FORCE_REBUILD,
 	TDIWD_FILTER_CHANGES,        ///< The filename filter has changed (via the editbox)
+	TDIWD_FORCE_RESORT,
 };
 
 /**
