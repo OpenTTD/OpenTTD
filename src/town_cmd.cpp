@@ -153,7 +153,7 @@ Town::~Town()
  */
 void Town::PostDestructor(size_t index)
 {
-	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 0);
+	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, TDIWD_FORCE_REBUILD);
 	UpdateNearestTownForRoadTiles(false);
 
 	/* Give objects a new home! */
@@ -423,7 +423,7 @@ static void ChangePopulation(Town *t, int mod)
 	InvalidateWindowData(WC_TOWN_VIEW, t->index); // Cargo requirements may appear/vanish for small populations
 	if (_settings_client.gui.population_in_label) t->UpdateVirtCoord();
 
-	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 1);
+	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, TDIWD_FORCE_RESORT);
 }
 
 /**
@@ -1777,7 +1777,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->townnameparts = townnameparts;
 
 	t->UpdateVirtCoord();
-	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 0);
+	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, TDIWD_FORCE_REBUILD);
 
 	t->InitializeLayout(layout);
 
@@ -2685,7 +2685,7 @@ CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		t->name = reset ? nullptr : stredup(text);
 
 		t->UpdateVirtCoord();
-		InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 1);
+		InvalidateWindowData(WC_TOWN_DIRECTORY, 0, TDIWD_FORCE_RESORT);
 		UpdateAllStationVirtCoords();
 	}
 	return CommandCost();
