@@ -1955,6 +1955,12 @@ static void TileLoop_Road(TileIndex tile)
 
 			if (old_rb != new_rb) {
 				RemoveRoad(tile, DC_EXEC | DC_AUTO | DC_NO_WATER, (old_rb ^ new_rb), RTT_ROAD, true);
+
+				/* If new_rb is 0, there are now no road pieces left and the tile is no longer a road tile */
+				if (new_rb == 0) {
+					MarkTileDirtyByTile(tile);
+					return;
+				}
 			}
 		}
 
