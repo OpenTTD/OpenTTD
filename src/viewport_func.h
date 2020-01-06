@@ -74,6 +74,7 @@ bool ScrollMainWindowToTile(TileIndex tile, bool instant = false);
 bool ScrollMainWindowTo(int x, int y, int z = -1, bool instant = false);
 
 void UpdateAllVirtCoords();
+void ClearAllCachedNames();
 
 extern Point _tile_fract_coords;
 

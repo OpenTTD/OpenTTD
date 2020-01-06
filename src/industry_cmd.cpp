@@ -2319,6 +2319,21 @@ void Industry::RecomputeProductionMultipliers()
 	}
 }
 
+void Industry::FillCachedName() const
+{
+	char buf[256];
+	int64 args_array[] = { this->index };
+	StringParameters tmp_params(args_array);
+	char *end = GetStringWithArgs(buf, STR_INDUSTRY_NAME, &tmp_params, lastof(buf));
+	this->cached_name.assign(buf, end);
+}
+
+void ClearAllIndustryCachedNames()
+{
+	for (Industry *ind : Industry::Iterate()) {
+		ind->cached_name.clear();
+	}
+}
 
 /**
  * Set the #probability and #min_number fields for the industry type \a it for a running game.

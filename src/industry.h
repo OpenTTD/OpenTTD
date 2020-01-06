@@ -62,6 +62,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	PartOfSubsidy part_of_subsidy; ///< NOSAVE: is this industry a source/destination of a subsidy?
 	StationList stations_near;     ///< NOSAVE: List of nearby stations.
+	mutable std::string cached_name; ///< NOSAVE: Cache of the resolved name of the industry
 
 	Owner founder;                 ///< Founder of the industry
 	Date construction_date;        ///< Date of the construction of the industry
@@ -157,9 +158,20 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 		memset(&counts, 0, sizeof(counts));
 	}
 
+	inline const char *GetCachedName() const
+	{
+		if (this->cached_name.empty()) this->FillCachedName();
+		return this->cached_name.c_str();
+	}
+
+private:
+	void FillCachedName() const;
+
 protected:
 	static uint16 counts[NUM_INDUSTRYTYPES]; ///< Number of industries per type ingame
 };
+
+void ClearAllIndustryCachedNames();
 
 void PlantRandomFarmField(const Industry *i);
 

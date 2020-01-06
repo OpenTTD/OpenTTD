@@ -453,6 +453,22 @@ void UpdateAllStationVirtCoords()
 	}
 }
 
+void BaseStation::FillCachedName() const
+{
+	char buf[MAX_LENGTH_STATION_NAME_CHARS * MAX_CHAR_LENGTH];
+	int64 args_array[] = { this->index };
+	StringParameters tmp_params(args_array);
+	char *end = GetStringWithArgs(buf, Waypoint::IsExpected(this) ? STR_WAYPOINT_NAME : STR_STATION_NAME, &tmp_params, lastof(buf));
+	this->cached_name.assign(buf, end);
+}
+
+void ClearAllStationCachedNames()
+{
+	for (BaseStation *st : BaseStation::Iterate()) {
+		st->cached_name.clear();
+	}
+}
+
 /**
  * Get a mask of the cargo types that the station accepts.
  * @param st Station to query
@@ -3933,6 +3949,7 @@ CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	}
 
 	if (flags & DC_EXEC) {
+		st->cached_name.clear();
 		free(st->name);
 		st->name = reset ? nullptr : stredup(text);
 
