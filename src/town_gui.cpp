@@ -994,6 +994,10 @@ public:
 				this->towns.ForceRebuild();
 				break;
 
+			case TDIWD_POPULATION_CHANGE:
+				if (this->towns.SortType() == 1) this->towns.ForceResort();
+				break;
+
 			default:
 				this->towns.ForceResort();
 		}

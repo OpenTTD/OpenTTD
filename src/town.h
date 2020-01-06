@@ -161,6 +161,7 @@ enum TownRatingCheckType {
 /** Special values for town list window for the data parameter of #InvalidateWindowData. */
 enum TownDirectoryInvalidateWindowData {
 	TDIWD_FORCE_REBUILD,
+	TDIWD_POPULATION_CHANGE,
 	TDIWD_FORCE_RESORT,
 };
 
