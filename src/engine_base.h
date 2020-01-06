@@ -142,15 +142,21 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 
 	uint32 GetGRFID() const;
 
+	struct EngineTypeFilter {
+		VehicleType vt;
+
+		bool operator() (size_t index) { return Engine::Get(index)->type == this->vt; }
+	};
+
 	/**
 	 * Returns an iterable ensemble of all valid engines of the given type
 	 * @param vt the VehicleType for engines to be valid
 	 * @param from index of the first engine to consider
 	 * @return an iterable ensemble of all valid engines of the given type
 	 */
-	static Pool::IterateWrapper<Engine> IterateType(VehicleType vt, size_t from = 0)
+	static Pool::IterateWrapperFiltered<Engine, EngineTypeFilter> IterateType(VehicleType vt, size_t from = 0)
 	{
-		return Pool::IterateWrapper<Engine>(from, [vt](size_t index) { return Engine::Get(index)->type == vt; });
+		return Pool::IterateWrapperFiltered<Engine, EngineTypeFilter>(from, EngineTypeFilter{ vt });
 	}
 };
 
