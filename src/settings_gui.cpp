@@ -526,6 +526,7 @@ struct GameOptionsWindow : Window {
 				ReadLanguagePack(&_languages[index]);
 				DeleteWindowByClass(WC_QUERY_STRING);
 				CheckForMissingGlyphs();
+				ClearAllCachedNames();
 				UpdateAllVirtCoords();
 				ReInitAllWindows();
 				break;

@@ -222,6 +222,13 @@ void UpdateAllVirtCoords()
 	RebuildViewportKdtree();
 }
 
+void ClearAllCachedNames()
+{
+	ClearAllStationCachedNames();
+	ClearAllTownCachedNames();
+	ClearAllIndustryCachedNames();
+}
+
 /**
  * Initialization of the windows and several kinds of caches.
  * This is not done directly in AfterLoadGame because these
@@ -238,6 +245,7 @@ static void InitializeWindowsAndCaches()
 	SetupColoursAndInitialWindow();
 
 	/* Update coordinates of the signs. */
+	ClearAllCachedNames();
 	UpdateAllVirtCoords();
 	ResetViewportAfterLoadGame();
 
