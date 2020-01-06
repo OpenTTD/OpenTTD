@@ -374,6 +374,13 @@
 	return ::Vehicle::Get(vehicle_id)->GetDisplayProfitLastYear();
 }
 
+/* static */ Money ScriptVehicle::GetProfitLifetime(VehicleID vehicle_id)
+{
+	if (!IsValidVehicle(vehicle_id)) return -1;
+
+	return ::Vehicle::Get(vehicle_id)->GetDisplayProfitLifetime();
+}
+
 /* static */ Money ScriptVehicle::GetCurrentValue(VehicleID vehicle_id)
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;

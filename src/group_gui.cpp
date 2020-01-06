@@ -402,7 +402,7 @@ public:
 				max_icon_height = max(max_icon_height, GetSpriteSize(this->GetWidget<NWidgetCore>(WID_GL_REPLACE_PROTECTION)->widget_data).height);
 
 				/* ... minus the height of the group info ... */
-				max_icon_height += (FONT_HEIGHT_NORMAL * 3) + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				max_icon_height += (FONT_HEIGHT_NORMAL * 4) + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
 				/* Get a multiple of tiny_step_height of that amount */
 				size->height = Ceil(size->height - max_icon_height, tiny_step_height);
@@ -438,7 +438,7 @@ public:
 			}
 
 			case WID_GL_INFO: {
-				size->height = (FONT_HEIGHT_NORMAL * 3) + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				size->height = (FONT_HEIGHT_NORMAL * 4) + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				break;
 			}
 		}
@@ -569,6 +569,7 @@ public:
 			case WID_GL_INFO: {
 				Money this_year = 0;
 				Money last_year = 0;
+				Money lifetime = 0;
 				uint32 occupancy = 0;
 				size_t vehicle_count = this->vehicles.size();
 
@@ -578,6 +579,7 @@ public:
 
 					this_year += v->GetDisplayProfitThisYear();
 					last_year += v->GetDisplayProfitLastYear();
+					lifetime += v->GetDisplayProfitLifetime();
 					occupancy += v->trip_occupancy;
 				}
 
@@ -592,6 +594,11 @@ public:
 				y += FONT_HEIGHT_NORMAL;
 				DrawString(left, right, y, STR_GROUP_PROFIT_LAST_YEAR, TC_BLACK);
 				SetDParam(0, last_year);
+				DrawString(left, right, y, STR_JUST_CURRENCY_LONG, TC_BLACK, SA_RIGHT);
+
+				y += FONT_HEIGHT_NORMAL;
+				DrawString(left, right, y, STR_GROUP_LIFETIME_PROFIT, TC_BLACK);
+				SetDParam(0, lifetime);
 				DrawString(left, right, y, STR_JUST_CURRENCY_LONG, TC_BLACK, SA_RIGHT);
 
 				y += FONT_HEIGHT_NORMAL;
@@ -663,7 +670,8 @@ public:
 				break;
 
 			case WID_GL_SORT_BY_DROPDOWN: // Select sorting criteria dropdown menu
-				ShowDropDownMenu(this, this->vehicle_sorter_names, this->vehicles.SortType(),  WID_GL_SORT_BY_DROPDOWN, 0, (this->vli.vtype == VEH_TRAIN || this->vli.vtype == VEH_ROAD) ? 0 : (1 << 10));
+				ShowDropDownMenu(this, this->vehicle_sorter_names, this->vehicles.SortType(), WID_GL_SORT_BY_DROPDOWN, 0,
+						(this->vli.vtype == VEH_TRAIN || this->vli.vtype == VEH_ROAD) ? 0 : this->vehicle_sorter_non_ground_veh_disable_mask);
 				return;
 
 			case WID_GL_ALL_VEHICLES: // All vehicles button

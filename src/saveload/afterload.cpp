@@ -3125,6 +3125,13 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Set lifetime vehicle profit the same as last year */
+	if (IsSavegameVersionBefore(SLV_LIFETIME_PROFIT)) {
+		for (Vehicle *v : Vehicle::Iterate()) {
+			v->profit_lifetime = v->profit_last_year;
+		}
+	}
+
 	/* Compute station catchment areas. This is needed here in case UpdateStationAcceptance is called below. */
 	Station::RecomputeCatchmentForAll();
 

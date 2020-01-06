@@ -206,6 +206,14 @@ public:
 	static Money GetProfitLastYear(GroupID group_id);
 
 	/**
+	 * Get the lifetime profit of a group.
+	 * @param group_id The group to get the profit of.
+	 * @pre IsValidGroup(group_id).
+	 * @return The current lifetime profit the group has.
+	 */
+	static Money GetProfitLifetime(GroupID group_id);
+
+	/**
 	 * Get the current vehicle usage of a group.
 	 * @param group_id The group to get the current usage of.
 	 * @pre IsValidGroup(group_id).

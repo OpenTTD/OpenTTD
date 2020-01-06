@@ -290,6 +290,7 @@ STR_SORT_BY_TRANSPORTED                                         :Transported
 STR_SORT_BY_NUMBER                                              :Number
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit last year
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit this year
+STR_SORT_BY_PROFIT_LIFETIME                                     :Lifetime profit
 STR_SORT_BY_AGE                                                 :Age
 STR_SORT_BY_RELIABILITY                                         :Reliability
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total capacity per cargo type
@@ -3436,7 +3437,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Road veh
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ships - click on ship for information
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aircraft - click on aircraft for information
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit this year: {CURRENCY_LONG} (last year: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR_LIFETIME            :{TINY_FONT}{BLACK}Profit this year: {CURRENCY_LONG} (last year: {CURRENCY_LONG}, lifetime: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Available Trains
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Available Vehicles
@@ -3489,6 +3490,7 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rename a
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Profit this year:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Profit last year:
+STR_GROUP_LIFETIME_PROFIT                                       :Lifetime profit:
 STR_GROUP_OCCUPANCY                                             :Current usage:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -3818,7 +3820,7 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Max. spe
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Weight: {LTBLUE}{WEIGHT_SHORT} {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Weight: {LTBLUE}{WEIGHT_SHORT} {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit this year: {LTBLUE}{CURRENCY_LONG} (last year: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_LIFETIME            :{BLACK}Profit this year: {LTBLUE}{CURRENCY_LONG} (last year: {CURRENCY_LONG}, lifetime: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliability: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Built: {LTBLUE}{NUM}{BLACK} Value: {LTBLUE}{CURRENCY_LONG}

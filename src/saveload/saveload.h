@@ -304,6 +304,8 @@ enum SaveLoadVersion : uint16 {
 	SLV_ENDING_YEAR,                        ///< 218  PR#7747 v1.10 Configurable ending year.
 	SLV_REMOVE_TOWN_CARGO_CACHE,            ///< 219  PR#8258 Remove town cargo acceptance and production caches.
 
+	SLV_LIFETIME_PROFIT,                    ///< 220  PR#7919 Lifetime profit.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 

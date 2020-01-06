@@ -2756,6 +2756,7 @@ void VehiclesYearlyLoop()
 			}
 
 			v->profit_last_year = v->profit_this_year;
+			v->profit_lifetime += v->profit_this_year;
 			v->profit_this_year = 0;
 			SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 		}

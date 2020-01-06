@@ -255,6 +255,14 @@ public:
 	 */
 	static Money GetProfitLastYear(VehicleID vehicle_id);
 
+	/**
+	 * Get the lifetime profit of a vehicle.
+	 * @param vehicle_id The vehicle to get the profit of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The current lifetime profit the vehicle has.
+	 */
+	static Money GetProfitLifetime(VehicleID vehicle_id);
+
 
 	/**
 	 * Get the current value of a vehicle.
