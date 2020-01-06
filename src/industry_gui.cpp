@@ -1251,7 +1251,6 @@ class IndustryDirectoryWindow : public Window {
 protected:
 	/* Runtime saved values */
 	static Listing last_sorting;
-	static const Industry *last_industry;
 
 	/* Constants for sorting stations */
 	static const StringID sorter_names[];
@@ -1350,8 +1349,6 @@ protected:
 			this->industries.RebuildDone();
 		}
 
-		IndustryDirectoryWindow::last_industry = nullptr; // Reset name sorter sort cache
-
 		auto filter = std::make_pair(this->cargo_filter[this->accepted_cargo_filter_criteria],
 		                             this->cargo_filter[this->produced_cargo_filter_criteria]);
 
@@ -1398,19 +1395,7 @@ protected:
 	/** Sort industries by name */
 	static bool IndustryNameSorter(const Industry * const &a, const Industry * const &b)
 	{
-		static char buf_cache[96];
-		static char buf[96];
-
-		SetDParam(0, a->index);
-		GetString(buf, STR_INDUSTRY_NAME, lastof(buf));
-
-		if (b != last_industry) {
-			last_industry = b;
-			SetDParam(0, b->index);
-			GetString(buf_cache, STR_INDUSTRY_NAME, lastof(buf_cache));
-		}
-
-		int r = strnatcmp(buf, buf_cache); // Sort by name (natural sorting).
+		int r = strnatcmp(a->GetCachedName(), b->GetCachedName()); // Sort by name (natural sorting).
 		if (r == 0) return a->index < b->index;
 		return r < 0;
 	}
@@ -1726,7 +1711,6 @@ public:
 };
 
 Listing IndustryDirectoryWindow::last_sorting = {false, 0};
-const Industry *IndustryDirectoryWindow::last_industry = nullptr;
 
 /* Available station sorting functions. */
 GUIIndustryList::SortFunction * const IndustryDirectoryWindow::sorter_funcs[] = {

@@ -671,7 +671,6 @@ struct TownDirectoryWindow : public Window {
 private:
 	/* Runtime saved values */
 	static Listing last_sorting;
-	static const Town *last_town;
 
 	/* Constants for sorting towns */
 	static const StringID sorter_names[];
@@ -710,7 +709,6 @@ private:
 			this->vscroll->SetCount((uint)this->towns.size()); // Update scrollbar as well.
 		}
 		/* Always sort the towns. */
-		this->last_town = nullptr;
 		this->towns.Sort();
 		this->SetWidgetDirty(WID_TD_LIST); // Force repaint of the displayed towns.
 	}
@@ -718,22 +716,7 @@ private:
 	/** Sort by town name */
 	static bool TownNameSorter(const Town * const &a, const Town * const &b)
 	{
-		static char buf_cache[MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH];
-		char buf[MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH];
-
-		SetDParam(0, a->index);
-		GetString(buf, STR_TOWN_NAME, lastof(buf));
-
-		/* If 'b' is the same town as in the last round, use the cached value
-		 * We do this to speed stuff up ('b' is called with the same value a lot of
-		 * times after each other) */
-		if (b != last_town) {
-			last_town = b;
-			SetDParam(0, b->index);
-			GetString(buf_cache, STR_TOWN_NAME, lastof(buf_cache));
-		}
-
-		return strnatcmp(buf, buf_cache) < 0; // Sort by name (natural sorting).
+		return strnatcmp(a->GetCachedName(), b->GetCachedName()) < 0; // Sort by name (natural sorting).
 	}
 
 	/** Sort by population (default descending, as big towns are of the most interest). */
@@ -1005,7 +988,6 @@ public:
 };
 
 Listing TownDirectoryWindow::last_sorting = {false, 0};
-const Town *TownDirectoryWindow::last_town = nullptr;
 
 /** Names of the sorting functions. */
 const StringID TownDirectoryWindow::sorter_names[] = {
