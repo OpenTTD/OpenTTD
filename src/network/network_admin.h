@@ -83,15 +83,18 @@ public:
 		return "admin";
 	}
 
+	struct ServerNetworkAdminSocketHandlerFilter {
+		bool operator() (size_t index) { return ServerNetworkAdminSocketHandler::Get(index)->GetAdminStatus() == ADMIN_STATUS_ACTIVE; }
+	};
+
 	/**
 	 * Returns an iterable ensemble of all active admin sockets
 	 * @param from index of the first socket to consider
 	 * @return an iterable ensemble of all active admin sockets
 	 */
-	static Pool::IterateWrapper<ServerNetworkAdminSocketHandler> IterateActive(size_t from = 0)
+	static Pool::IterateWrapperFiltered<ServerNetworkAdminSocketHandler, ServerNetworkAdminSocketHandlerFilter> IterateActive(size_t from = 0)
 	{
-		return Pool::IterateWrapper<ServerNetworkAdminSocketHandler>(from,
-			[](size_t index) { return ServerNetworkAdminSocketHandler::Get(index)->GetAdminStatus() == ADMIN_STATUS_ACTIVE; });
+		return Pool::IterateWrapperFiltered<ServerNetworkAdminSocketHandler, ServerNetworkAdminSocketHandlerFilter>(from, ServerNetworkAdminSocketHandlerFilter{});
 	}
 };
 

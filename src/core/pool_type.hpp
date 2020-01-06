@@ -12,7 +12,6 @@
 
 #include "smallvec_type.hpp"
 #include "enum_type.hpp"
-#include <functional>
 
 /** Various types of a pool. */
 enum PoolType {
@@ -149,9 +148,8 @@ struct Pool : PoolBase {
 		typedef size_t difference_type;
 		typedef std::forward_iterator_tag iterator_category;
 
-		explicit PoolIterator(size_t index, std::function<bool(size_t)> filter = nullptr) : index(index), filter(filter)
+		explicit PoolIterator(size_t index) : index(index)
 		{
-			if (this->filter == nullptr) this->filter = [](size_t) { return true; };
 			this->ValidateIndex();
 		};
 
@@ -162,8 +160,7 @@ struct Pool : PoolBase {
 
 	private:
 		size_t index;
-		std::function<bool(size_t)> filter;
-		void ValidateIndex() { while (this->index < T::GetPoolSize() && !(T::IsValidID(this->index) && this->filter(this->index))) this->index++; }
+		void ValidateIndex() { while (this->index < T::GetPoolSize() && !(T::IsValidID(this->index))) this->index++; }
 	};
 
 	/*
@@ -173,10 +170,51 @@ struct Pool : PoolBase {
 	template <class T>
 	struct IterateWrapper {
 		size_t from;
-		std::function<bool(size_t)> filter;
-		IterateWrapper(size_t from = 0, std::function<bool(size_t)> filter = nullptr) : from(from), filter(filter) {}
-		PoolIterator<T> begin() { return PoolIterator<T>(this->from, this->filter); }
+		IterateWrapper(size_t from = 0) : from(from) {}
+		PoolIterator<T> begin() { return PoolIterator<T>(this->from); }
 		PoolIterator<T> end() { return PoolIterator<T>(T::GetPoolSize()); }
+		bool empty() { return this->begin() == this->end(); }
+	};
+
+	/**
+	 * Iterator to iterate all valid T of a pool
+	 * @tparam T Type of the class/struct that is going to be iterated
+	 */
+	template <class T, class F>
+	struct PoolIteratorFiltered {
+		typedef T value_type;
+		typedef T* pointer;
+		typedef T& reference;
+		typedef size_t difference_type;
+		typedef std::forward_iterator_tag iterator_category;
+
+		explicit PoolIteratorFiltered(size_t index, F filter) : index(index), filter(filter)
+		{
+			this->ValidateIndex();
+		};
+
+		bool operator==(const PoolIteratorFiltered &other) const { return this->index == other.index; }
+		bool operator!=(const PoolIteratorFiltered &other) const { return !(*this == other); }
+		T * operator*() const { return T::Get(this->index); }
+		PoolIteratorFiltered & operator++() { this->index++; this->ValidateIndex(); return *this; }
+
+	private:
+		size_t index;
+		F filter;
+		void ValidateIndex() { while (this->index < T::GetPoolSize() && !(T::IsValidID(this->index) && this->filter(this->index))) this->index++; }
+	};
+
+	/*
+	 * Iterable ensemble of all valid T
+	 * @tparam T Type of the class/struct that is going to be iterated
+	 */
+	template <class T, class F>
+	struct IterateWrapperFiltered {
+		size_t from;
+		F filter;
+		IterateWrapperFiltered(size_t from, F filter) : from(from), filter(filter) {}
+		PoolIteratorFiltered<T, F> begin() { return PoolIteratorFiltered<T, F>(this->from, this->filter); }
+		PoolIteratorFiltered<T, F> end() { return PoolIteratorFiltered<T, F>(T::GetPoolSize(), this->filter); }
 		bool empty() { return this->begin() == this->end(); }
 	};
 
