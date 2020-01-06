@@ -867,6 +867,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}New {STRING} now available!  -  {ENGINE}
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Open the group window focused on the vehicle's group
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} no longer accepts {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} no longer accepts {STRING} or {STRING}
@@ -1311,6 +1312,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Show town popul
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Display the population of towns in their label on the map
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Thickness of lines in graphs: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Width of the line in the graphs. A thin line is more precisely readable, a thicker line is easier to see and colors are easier to distinguish
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Show the NewGRF's name in the build vehicle window
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Add a line to the build vehicle window, showing which NewGRF the selected vehicle comes from.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landscape: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landscapes define basic gameplay scenarios with different cargos and town growth requirements. NewGRF and Game Scripts allow finer control though
@@ -1322,8 +1325,8 @@ STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terrain type: {
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis only) Hilliness of the landscape
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industry density: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Set how many industries should be generated and what level should be maintained during the game
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum distance from edge for Oil refineries: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Oil refineries are only constructed near the map border, that is at the coast for island maps
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum distance from edge for Oil industries: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limit for how far from the map border oil refineries and oil rigs can be constructed. On island maps this ensures they are near the coast. On maps larger than 256 tiles, this value is scaled up.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snow line height: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Control at what height snow starts in sub-arctic landscape. Snow also affects industry generation and town growth requirements
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Roughness of terrain: {STRING}
@@ -1548,10 +1551,16 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Full
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Colored news appears in: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Year that the newspaper announcements get printed in color. Before this year, it uses monochrome black/white
 STR_CONFIG_SETTING_STARTING_YEAR                                :Starting year: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Scoring end year: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Year the game ends for scoring purposes. At the end of this year, the company's score is recorded and the high-score screen is displayed, but the players can continue playing after that.{}If this is before the starting year, the high-score screen is never displayed.
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Never
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Enable smooth economy (more, smaller changes): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :When enabled, industry production changes more often, and in smaller steps. This setting has usually no effect, if industry types are provided by a NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Allow buying shares from other companies: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :When enabled, allow buying and selling of company shares. Shares will only be available for companies reaching a certain age
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimum company age to trade shares: {STRING}
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Set the minimum age of a company for others to be able to buy and sell shares from them.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentage of leg profit to pay in feeder systems: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentage of income given to the intermediate legs in feeder systems, giving more control over the income
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :When dragging, place signals every: {STRING}
@@ -3118,6 +3127,8 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Rename Town
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} local authority
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Zone
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Show zone within local authority boundaries
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transport company ratings:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Actions available:
@@ -4162,6 +4173,13 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Select h
 STR_AI_LIST_CANCEL                                              :{BLACK}Cancel
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Don't change the script
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Take a screenshot
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normal screenshot
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Fully zoomed in screenshot
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Default zoom screenshot
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Whole map screenshot
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Heightmap screenshot
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap screenshot
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameters

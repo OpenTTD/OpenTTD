@@ -1313,6 +1313,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :도시 이름 �
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :도시 이름 옆에 도시의 인구 수를 표시합니다.
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :그래프 선의 두께: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :그래프의 선 두께를 설정합니다. 얇으면 자세히 볼 수 있고, 두꺼우면 눈에 확 들어오며 색상을 분간하기가 편해집니다.
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :차량 구입 창에 NewGRF 이름 표시
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :차량 구입 창 맨 아래 줄에, 이 차량이 어떤 NewGRF에서 추가되는 지 해당 NewGRF의 이름을 표시해줍니다.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :지형: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :지형에 따라 화물과 도시 성장 요구 조건이 다른 게임 플레이 시나리오가 만들어집니다. NewGRF과 게임 스크립트를 통해 세밀한 조절이 가능합니다.
@@ -3403,6 +3405,10 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} 및 {NUM}종의 화물
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}산업시설 이름 - 산업시설로 이동하려면 이름을 클릭하세요. CTRL+클릭하면 이 산업시설의 위치를 기준으로 새로운 외부 화면을 엽니다
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}받는 화물: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}생산 화물: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :모든 화물
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :없음
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -4183,6 +4189,7 @@ STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}최대 �
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}기본 확대 스크린 샷 (UI 없음)
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}지도 전체 스크린 샷
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}높이맵 스크린 샷
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}미니맵 스크린 샷
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} 매개 변수
