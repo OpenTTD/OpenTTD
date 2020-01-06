@@ -197,4 +197,12 @@ struct IndustryBuildData {
 
 extern IndustryBuildData _industry_builder;
 
+
+/** Special values for the industry list window for the data parameter of #InvalidateWindowData. */
+enum IndustryDirectoryInvalidateWindowData {
+	IDIWD_FORCE_REBUILD,
+	IDIWD_PRODUCTION_CHANGE,
+	IDIWD_FORCE_RESORT,
+};
+
 #endif /* INDUSTRY_H */

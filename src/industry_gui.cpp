@@ -1708,11 +1708,19 @@ public:
 	 */
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
-		if (data == 0) {
-			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
-			this->industries.ForceRebuild();
-		} else {
-			this->industries.ForceResort();
+		switch (data) {
+			case IDIWD_FORCE_REBUILD:
+				/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
+				this->industries.ForceRebuild();
+				break;
+
+			case IDIWD_PRODUCTION_CHANGE:
+				if (this->industries.SortType() == 2) this->industries.ForceResort();
+				break;
+
+			default:
+				this->industries.ForceResort();
+				break;
 		}
 	}
 };
