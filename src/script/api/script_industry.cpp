@@ -16,6 +16,7 @@
 #include "../../station_base.h"
 #include "../../newgrf_industries.h"
 #include "table/strings.h"
+#include <numeric>
 
 #include "../../safeguards.h"
 
@@ -203,4 +204,40 @@
 	if (!IsValidIndustry(industry_id)) return INVALID_INDUSTRYTYPE;
 
 	return ::Industry::Get(industry_id)->type;
+}
+
+int32 ScriptIndustry::GetLastProductionYear(IndustryID industry_id)
+{
+	Industry *i = Industry::GetIfValid(industry_id);
+	if (i == nullptr) return 0;
+	return i->last_prod_year;
+}
+
+ScriptDate::Date ScriptIndustry::GetCargoLastAcceptedDate(IndustryID industry_id, CargoID cargo_type)
+{
+	Industry *i = Industry::GetIfValid(industry_id);
+	if (i == nullptr) return ScriptDate::DATE_INVALID;
+
+	if (cargo_type == CT_INVALID) {
+		return (ScriptDate::Date)std::accumulate(std::begin(i->last_cargo_accepted_at), std::end(i->last_cargo_accepted_at), 0, [](Date a, Date b) { return std::max(a, b); });
+	} else {
+		int index = i->GetCargoAcceptedIndex(cargo_type);
+		if (index < 0) return ScriptDate::DATE_INVALID;
+		return (ScriptDate::Date)i->last_cargo_accepted_at[index];
+	}
+}
+
+uint32 ScriptIndustry::GetControlFlags(IndustryID industry_id)
+{
+	Industry *i = Industry::GetIfValid(industry_id);
+	if (i == nullptr) return 0;
+	return i->ctlflags;
+}
+
+bool ScriptIndustry::SetControlFlags(IndustryID industry_id, uint32 control_flags)
+{
+	if (ScriptObject::GetCompany() != OWNER_DEITY) return false;
+	if (!IsValidIndustry(industry_id)) return false;
+
+	return ScriptObject::DoCommand(0, industry_id, 0 | ((control_flags & ::INDCTL_MASK) << 8), CMD_INDUSTRY_CTRL);
 }
