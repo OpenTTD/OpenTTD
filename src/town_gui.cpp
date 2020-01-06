@@ -686,8 +686,6 @@ private:
 	void BuildSortTownList()
 	{
 		if (this->towns.NeedRebuild()) {
-			char buf[MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH];
-
 			this->towns.clear();
 
 			for (const Town *t : Town::Iterate()) {
@@ -696,11 +694,7 @@ private:
 					continue;
 				}
 				this->string_filter.ResetState();
-
-				SetDParam(0, t->index);
-				GetString(buf, STR_TOWN_NAME, lastof(buf));
-
-				this->string_filter.AddLine(buf);
+				this->string_filter.AddLine(t->GetCachedName());
 				if (this->string_filter.GetState()) this->towns.push_back(t);
 			}
 
