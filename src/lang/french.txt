@@ -1310,7 +1310,6 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Afficher la pop
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Afficher la population des villes dans leur label sur la carte
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Épaisseur des lignes dans les graphiques{NBSP}: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Épaisseur de la ligne dans les graphiques. Une ligne fine est lisible plus précisément, une ligne épaisse est plus facile à voir et les couleurs sont plus facile à distinguer
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Afficher le nom du NewGRF dans la fenêtre d'achat des véhicules
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Ajoute une ligne à la fenêtre d'achat des véhicules, montrant de quel NewGRF provient le véhicule sélectionné.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Paysage{NBSP}: {STRING}
