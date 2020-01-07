@@ -3178,8 +3178,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Errepide
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Itsasontziak - klikatu itsasontzian xehetasunak ikusteko
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Hegazkinak - klikatu hegazkinean xehetasunak ikusteko
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Urte honetako irabaziak: {CURRENCY_LONG} (iaz: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tren eskuragarriak
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Errepide ibilgailu eskuragarriak
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Itsasontzi eskuragarriak
@@ -3520,7 +3518,6 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Gehienez
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pisua: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potentzia: {LTBLUE}{POWER}{BLACK} Gehienezko abiadura: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pisua: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potentzia: {LTBLUE}{POWER}{BLACK} Gehienezko abiadura: {LTBLUE}{VELOCITY} {BLACK}Gehienezko trakzio indarra: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Irabaziak aurten: {LTBLUE}{CURRENCY_LONG} (iaz: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fidagarritasuna: {LTBLUE}{COMMA}%  {BLACK}Matxurak azken mantenimendutik: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Sortua: {LTBLUE}{NUM}{BLACK} Balioa: {LTBLUE}{CURRENCY_LONG}

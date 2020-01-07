@@ -3281,8 +3281,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}車輛 -
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}船舶 - 點選船舶顯示詳細資料
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飛機 - 點選飛機顯示詳細資料
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}今年盈利：{CURRENCY_LONG} (去年盈利：{CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :可用列車
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :可用車輛
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :可用船舶
@@ -3630,7 +3628,6 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最高�
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}載重：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最高速度：{LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}載重：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最高速度：{LTBLUE}{VELOCITY} {BLACK}最大牽引力：{LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年盈利：{LTBLUE}{CURRENCY_LONG} (去年盈利：{CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}可靠度：{LTBLUE}{COMMA}%  {BLACK}上次維護後的故障次數：{LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}興建於：{LTBLUE}{NUM}{BLACK} 價值：{LTBLUE}{CURRENCY_LONG}

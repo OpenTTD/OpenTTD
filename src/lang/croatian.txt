@@ -3524,8 +3524,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Cestovna
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Brodovi - klikni na brod za informacije
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Zrakoplov - klikni na zrakoplov za informacije
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Ovogodišnja dobit: {CURRENCY_LONG} (prošlogodišnja: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostupni vlakovi
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Dostupna vozila
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Dostupni brodovi
@@ -3906,7 +3904,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Maks. br
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY} {BLACK}Najveća vučna sila: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Dobit ove godine: {LTBLUE}{CURRENCY_LONG} (prošle godine: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pouzdanost: {LTBLUE}{COMMA}%  {BLACK}Broj kvarova od posljednjeg servisa: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Izgrađen: {LTBLUE}{NUM}{BLACK} Vrijednost: {LTBLUE}{CURRENCY_LONG}

@@ -3278,8 +3278,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Autovehi
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Nave - click pe navă pentru informaţii
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronavă - clic pe aeronavă pentru informaţii
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit anul acesta: {CURRENCY_LONG} (anul trecut: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenuri disponibile
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehicule disponibile
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Nave disponibile
@@ -3633,7 +3631,6 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Viteză 
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Greutate: {LTBLUE}{WEIGHT_SHORT} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteză max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Greutate: {LTBLUE}{WEIGHT_SHORT} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteză max.: {LTBLUE}{VELOCITY} {BLACK}Efort tractiv: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit pe anul curent: {LTBLUE}{CURRENCY_LONG} (anul precedent: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Eficienţă: {LTBLUE}{COMMA}%  {BLACK}Defecţiuni de la ultimul service: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construit: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY_LONG}

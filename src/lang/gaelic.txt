@@ -3557,8 +3557,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Carbadan
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Longan - briog air long airson fiosrachaidh
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Carbadan-adhair - briog air carbad airson fiosrachaidh
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Prothaid am bliadhna: {CURRENCY_LONG} (an-uiridh: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trèanaichean ri làimh
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Carbadan ri làimh
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Longan ri làimh
@@ -3918,7 +3916,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Luaths a
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Cuideam: {LTBLUE}{WEIGHT_SHORT} {BLACK}Cumhachd: {LTBLUE}{POWER}{BLACK} Luaths as motha: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Cuideam: {LTBLUE}{WEIGHT_SHORT} {BLACK}Cumhachd: {LTBLUE}{POWER}{BLACK} Luaths as motha: {LTBLUE}{VELOCITY} {BLACK}Neart as motha: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Prothaid am bliadhna: {LTBLUE}{CURRENCY_LONG} (an-uiridh: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Earbsachd: {LTBLUE}{COMMA}%  {BLACK}{P 1 Briseadh Briseadh Brisidhean Briseadh} bhon obair-ghlèidhidh mu dheireadh: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Air a {G 0 thogail togail}: {LTBLUE}{NUM}{BLACK} Luach: {LTBLUE}{CURRENCY_LONG}

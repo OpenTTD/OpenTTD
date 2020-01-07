@@ -3396,8 +3396,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Padvoert
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skepe - klik op skip vir inligting
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Vliegtuie - klik op vliegtuig vir inligting
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Wins die jaar: {CURRENCY_LONG} (verlede jaar: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Beskikbare treine
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Beskikbare Voertuie
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Beskikbare Skepe
@@ -3775,7 +3773,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Maks. sp
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewig: {LTBLUE}{WEIGHT_SHORT} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Maks. spoed: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Massa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Maks. spoed: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Wins hierdie jaar: {LTBLUE}{CURRENCY_LONG} (vorige jaar: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Betroubaarheid: {LTBLUE}{COMMA}%  {BLACK}Hoeveel keer onklaar sedert laaste diens: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY_LONG}

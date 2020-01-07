@@ -3431,8 +3431,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Cestna v
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ladje - klikni na ladjo za informacije
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Letalo - klikni na letalo za informacije
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Dobiček letos: {CURRENCY_LONG} (lani: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Vlaki na voljo
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vozila na voljo
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Ladje na voljo
@@ -3780,7 +3778,6 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. hit
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Teža: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Teža: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Letošnji dobiček: {LTBLUE}{CURRENCY_LONG} (lani: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Zanesljivost: {LTBLUE}{COMMA}%  {BLACK}Okvare po zadnjem servisu: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Zgrajeno: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY_LONG}

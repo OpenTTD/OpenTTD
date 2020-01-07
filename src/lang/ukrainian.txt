@@ -3559,8 +3559,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Авто
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Кораблі - натисніть для інформації
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Літаки - натисніть на літак для інформації
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прибуток цього року: {CURRENCY_LONG} (торік: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Доступні поїзди
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Доступні автомобілі
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Доступні кораблі
@@ -3941,7 +3939,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Макс
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Макс. тяга: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Дохід цього року: {LTBLUE}{CURRENCY_LONG} (торік: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Аварії після останнього техогляду: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Побудований: {LTBLUE}{NUM}{BLACK} Вартість: {LTBLUE}{CURRENCY_LONG}

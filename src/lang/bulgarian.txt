@@ -3242,8 +3242,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Коли
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Кораби - натисни върху кораб за информация
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Самолет - натиснете върху самолет за информация
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Печалба тази година: {CURRENCY_LONG} (минала година: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Налични влакове
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Налични коли
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Налични кораби
@@ -3602,7 +3600,6 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Тегло: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощност: {LTBLUE}{POWER}{BLACK} Макс. Скорост: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Тегло: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощност: {LTBLUE}{POWER}{BLACK} Макс. Скорост: {LTBLUE}{VELOCITY} {BLACK}Макс. Т.С.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Печалба за тази година: {LTBLUE}{CURRENCY_LONG} (за миналата: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надеждност: {LTBLUE}{COMMA}%  {BLACK}Разваляния от последното сервизиране: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{G=m}{LTBLUE}{ENGINE} {BLACK}Построен: {LTBLUE}{NUM}{BLACK} Стойност: {LTBLUE}{CURRENCY_LONG}

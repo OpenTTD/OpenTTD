@@ -3489,8 +3489,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Οχήμ
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Πλοία - πατήστε στο πλοίο για πληροφορίες
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Αεροσκάφη - πατήστε στο αεροσκάφος για πληροφορίες
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Κέρδος αυτό το έτος: {CURRENCY_LONG} (προηγούμενο έτος: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Διαθέσιμα Τρένα
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Διαθέσιμα Οχήματα
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Διαθέσιμα Πλοία
@@ -3868,7 +3866,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Μεγ. 
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Βάρος: {LTBLUE}{WEIGHT_SHORT} {BLACK}Δύναμη Κινητήρα: {LTBLUE}{POWER}{BLACK} Μέγ. Ταχύτητα: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Βάρος: {LTBLUE}{WEIGHT_SHORT} {BLACK}Δύναμη Κινητήρα: {LTBLUE}{POWER}{BLACK} Μέγ. Ταχύτητα: {LTBLUE}{VELOCITY} {BLACK}Μέγ. Ε.Δ: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Κέρδη αυτό το έτος: {LTBLUE}{CURRENCY_LONG} (προηγούμενου έτους: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Αξιοπιστία: {LTBLUE}{COMMA}%  {BLACK}Καταρρεύσεις μετά από την τελευταία επισκευή: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Κατασκευή: {LTBLUE}{NUM}{BLACK} Αξία: {LTBLUE}{CURRENCY_LONG}

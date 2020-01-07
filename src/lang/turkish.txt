@@ -3429,8 +3429,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Karayolu
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Gemiler - bilgi için gemiye tıkla
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Uçak - ayrıntılı bilgi için uçağı tıkla
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Bu seneki kar: {CURRENCY_LONG} (geçen sene: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Kullanılabilir Trenler
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Kullanılabilir Araçlar
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Kullanılabilir Gemiler
@@ -3811,7 +3809,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Azami h�
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_SHORT} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Azami Hız: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_SHORT} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Azami Hız: {LTBLUE}{VELOCITY} {BLACK}Azami Tork: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Bu yılki kar: {LTBLUE}{CURRENCY_LONG} (geçen yıl: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Güvenilirlik: {LTBLUE}{COMMA}%  {BLACK}Son bakımdan beri bozulma sayısı: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Üretim: {LTBLUE}{NUM}{BLACK} Değer: {LTBLUE}{CURRENCY_LONG}

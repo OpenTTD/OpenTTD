@@ -3427,8 +3427,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Stroosse
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schëffer - klick op d'Schëff fir Informatiounen
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Fliger - klick op de Fliger fir Informatiounen
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit dëst Joer: {CURRENCY_LONG} (lescht Joer: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Verfügbar Zich
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Verfügbar Gefierer
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Verfügbar Schëffer
@@ -3809,7 +3807,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Max. Ges
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewiicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraaft: {LTBLUE}{POWER}{BLACK} Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewiicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraaft: {LTBLUE}{POWER}{BLACK} Max. Geschwindegkeet: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit dëst Joer: {LTBLUE}{CURRENCY_LONG} (lescht Joer: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Zouverlässegkeet: {LTBLUE}{COMMA}%  {BLACK}Pannen säit leschter Revisioun: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebaut: {LTBLUE}{NUM}{BLACK} Wäert: {LTBLUE}{CURRENCY_LONG}

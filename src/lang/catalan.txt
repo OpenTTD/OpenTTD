@@ -3429,8 +3429,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Automòb
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Vaixells - clica en un vaixell per més informació
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Avió - clica sobre l'avió per més informació
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Benefici enguany: {CURRENCY_LONG} (darrer any: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trens disponibles
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehicles disponibles
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Vaixells disponibles
@@ -3811,7 +3809,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Velocita
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pes: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potència: {LTBLUE}{POWER}{BLACK} Vel. Màx: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pes: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potència: {LTBLUE}{POWER}{BLACK} Vel. màx: {LTBLUE}{VELOCITY} {BLACK}E.T. màx.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Benefici d'aquest any: {LTBLUE}{CURRENCY_LONG} (darrer any: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des de la darrera revisió: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Fabricat: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}

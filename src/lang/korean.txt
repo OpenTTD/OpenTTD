@@ -3437,8 +3437,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}차량 -
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}올해 이익: {CURRENCY_LONG} (작년: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :사용 가능한 열차
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :사용 가능한 차량
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :사용 가능한 선박
@@ -3819,7 +3817,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}최고 �
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: {LTBLUE}{WEIGHT_SHORT} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고 속력: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}무게: {LTBLUE}{WEIGHT_SHORT} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고 속력: {LTBLUE}{VELOCITY} {BLACK}최고 견인력: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}올해 이익: {LTBLUE}{CURRENCY_LONG} (작년: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후 고장 횟수: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY_LONG}

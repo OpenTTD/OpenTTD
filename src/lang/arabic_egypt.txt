@@ -2808,8 +2808,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}العر
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}السفن - اضغط على السفينة للتفاصيل
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}الطائرات - اضغط على الطائرة للمعلومات
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK} دخل السنة الحالية : {CURRENCY_LONG} السنة السابقة : {CURRENCY_LONG}
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :القطارات المتاحة
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :العربات المتاحة
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :السفن المتاحة
@@ -3135,7 +3133,6 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK} الس�
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK} الوزن {LTBLUE}{WEIGHT_SHORT} {BLACK} الطاقة {LTBLUE}{POWER}{BLACK} السرعى القصوى {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK} الوزن {LTBLUE}{WEIGHT_SHORT} {BLACK} القوة {LTBLUE}{POWER}{BLACK} السرعة القصوى {LTBLUE}{VELOCITY} {BLACK} قوة السحب القصوى {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK} دخل هذة السنة {LTBLUE}{CURRENCY_LONG} السنة السابقة - {CURRENCY_LONG}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK} الاعتمادية {LTBLUE}{COMMA} % {BLACK} الاعطال منذ اخر صيانة {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK} بني {LTBLUE}{NUM}{BLACK} القيمة {LTBLUE}{CURRENCY_LONG}

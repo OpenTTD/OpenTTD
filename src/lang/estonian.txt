@@ -3372,8 +3372,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Veokid -
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Laevad - info saamiseks klõpsa laevale
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lennuk - info saamiseks vajuta lennukile
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Kasum sellel aastal: {CURRENCY_LONG} (eelneval: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Saadaval rongid
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Saadaval sõidukid
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Saadaval laevad
@@ -3729,7 +3727,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Tippkiir
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Tühimass: {LTBLUE}{WEIGHT_SHORT} {BLACK}Võimsus: {LTBLUE}{POWER}{BLACK} Tippkiirus: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Tühimass: {LTBLUE}{WEIGHT_SHORT} {BLACK}Võimsus: {LTBLUE}{POWER}{BLACK} Tippkiirus: {LTBLUE}{VELOCITY} {BLACK}Veojõud: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Kasum sel aastal: {LTBLUE}{CURRENCY_LONG} (eelmisel: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Tehnoseisund: {LTBLUE}{COMMA}%  {BLACK}Rikkeid eelmisest hooldusest: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Valmistatud: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY_LONG}

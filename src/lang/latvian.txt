@@ -3439,8 +3439,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Autotran
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Kuģi - klikšķināt uz kuģa, lai uzzinātu vairāk
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lidaparāts - klikšķināt uz lidaparāta, lai uzzinātu vairāk
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Peļņa šogad: {CURRENCY_LONG} (pērn: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Pieejamie vilcieni
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Pieejamie transportlīdzekļi
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Pieejamie kuģi
@@ -3821,7 +3819,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Maks. ā
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Svars: {LTBLUE}{WEIGHT_SHORT} {BLACK}Jauda: {LTBLUE}{POWER}{BLACK} Maks. ātrums: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Svars: {LTBLUE}{WEIGHT_SHORT} {BLACK}Jauda: {LTBLUE}{POWER}{BLACK} Maks. ātrums: {LTBLUE}{VELOCITY} {BLACK}Maks. spēks: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Peļņa šogad: {LTBLUE}{CURRENCY_LONG} (pagājušajā gadā: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Drošums: {LTBLUE}{COMMA}%  {BLACK}Ķibeles kopš pēdējās apkopes: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Uzbūvēts: {LTBLUE}{NUM}{BLACK} Vērtība: {LTBLUE}{CURRENCY_LONG}

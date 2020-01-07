@@ -3608,8 +3608,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Авто
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Корабли - щёлкните для получения информации
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авиатранспорт - щёлкните для получения информации
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прибыль в этом году: {CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Доступные поезда
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Доступные автомобили
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Доступные суда
@@ -4002,7 +4000,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Макс
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вес: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вес: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Макс. ТУ: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надёжность: {LTBLUE}{COMMA}%  {BLACK}Поломок с последнего осмотра: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY_LONG}

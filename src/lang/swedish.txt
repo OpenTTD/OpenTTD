@@ -3428,8 +3428,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vägford
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skepp - klicka på skepp för information
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flygplan - Klicka på flygplan för information
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Vinst detta år: {CURRENCY_LONG} (förra året: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tillgängliga tåg
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Tillgängliga fordon
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Tillgängliga skepp
@@ -3810,7 +3808,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Maxhasti
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vikt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maxhastiget: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vikt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maxhastiget: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY_LONG} (förra året: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste servicen: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY_LONG}

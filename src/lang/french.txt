@@ -3437,8 +3437,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Véhicul
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Navires - Cliquer sur un navire pour obtenir des informations
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aéronef - Cliquer sur un aéronef pour obtenir des informations
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit cette année{NBSP}: {CURRENCY_LONG} (année précédente{NBSP}: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trains disponibles
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Véhicules disponibles
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Navires disponibles
@@ -3819,7 +3817,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Vitesse 
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Poids{NBSP}: {LTBLUE}{NBSP}{WEIGHT_SHORT} − {BLACK}Puissance{NBSP}: {LTBLUE}{NBSP}{POWER}{BLACK} − Vitesse max.{NBSP}: {LTBLUE}{NBSP}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Poids{NBSP}: {LTBLUE}{WEIGHT_SHORT}{BLACK} − Puissance{NBSP}: {LTBLUE}{POWER}{BLACK} − Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}{BLACK} − E.T. max.{NBSP}: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit cette année{NBSP}: {LTBLUE}{CURRENCY_LONG} (année précédente{NBSP}: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilité{NBSP}: {LTBLUE}{COMMA}{NBSP}%{BLACK} − Pannes depuis le dernier entretien{NBSP}: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}{BLACK} − Construit en{NBSP}: {LTBLUE}{NUM}{BLACK} − Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}

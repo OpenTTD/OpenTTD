@@ -2891,8 +2891,6 @@ STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}قطار
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}کشتی ها - برای اطلاعات بیشتر روی کشتی کلیک کنید
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}سود امسال : {CURRENCY_LONG} (سود پارسال: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :قطارهای موجود
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :خودروهای موجود
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :کشتی های موجود

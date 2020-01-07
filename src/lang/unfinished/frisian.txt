@@ -3026,8 +3026,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Weinen -
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skepen - klik op skip foar ynformaasje
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Fleantúgen - klik op fleantúch foar ynformaasje
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Fertsjinste dit jier: {CURRENCY_LONG} (ferline jier: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Beskikbere Treinen
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Beskikbere Weinen
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Beskikbere Skepen

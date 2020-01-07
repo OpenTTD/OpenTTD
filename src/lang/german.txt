@@ -3396,8 +3396,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Straßen
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schiffe - für Einzelheiten auf das Schiff klicken
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flugzeuge - für Einzelheiten auf das Flugzeug klicken
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Gewinn im laufenden Jahr: {CURRENCY_LONG} (vergangenes Jahr: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Verfügbare Züge
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Verfügbare Fahrzeuge
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Verfügbare Schiffe
@@ -3775,7 +3773,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Max. Ges
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Leistung: {LTBLUE}{POWER}{BLACK} Max. Geschw.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Leistung: {LTBLUE}{POWER}{BLACK} Max. Geschw.: {LTBLUE}{VELOCITY} {BLACK}Max. Zugkraft: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Gewinn dieses Jahr: {LTBLUE}{CURRENCY_LONG} (letztes Jahr: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}%  {BLACK}Pannen seit der letzten Wartung: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY_LONG}

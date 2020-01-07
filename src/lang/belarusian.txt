@@ -3711,8 +3711,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Аўта
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Караблi: клікніце для атрыманьня даведкі
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Самалёты: клікніце для атрыманьня даведкі
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прыбытак сёлета: {CURRENCY_LONG} (летась: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Даступныя цягнiкi
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Даступныя аўтамабiлi
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Даступныя караблi
@@ -4103,7 +4101,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Макс
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Магутнасьць: {LTBLUE}{POWER}{BLACK} Макс. хуткасьць: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Магутнасьць: {LTBLUE}{POWER}{BLACK} Макс. хуткасьць: {LTBLUE}{VELOCITY} {BLACK}Макс. ЦН: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Прыбытак сёлета: {LTBLUE}{CURRENCY_LONG} (летась: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надзейнасьць: {LTBLUE}{COMMA}%  {BLACK}Паломак з апошняга агляду: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Пабудаваны ў: {LTBLUE}{NUM} г.{BLACK} Кошт: {LTBLUE}{CURRENCY_LONG}

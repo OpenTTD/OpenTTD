@@ -3436,8 +3436,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Ajoneuvo
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Laivat – napsauta laivaa saadaksesi tietoja
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lentokoneet – napsauta lentokonetta saadaksesi tietoja
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Tuotto tänä vuonna: {CURRENCY_LONG} (viime vuonna: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Käytettävissä olevat junat
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Käytettävissä olevat ajoneuvot
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Käytettävissä olevat laivat
@@ -3818,7 +3816,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Huippuno
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Maks. vetovoima: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Tuotto tänä vuonna: {LTBLUE}{CURRENCY_LONG} (viime vuonna: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Luotettavuus: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Hajoamiset viime huollon jälkeen: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Rakennettu: {LTBLUE}{NUM}{BLACK} Arvo: {LTBLUE}{CURRENCY_LONG}

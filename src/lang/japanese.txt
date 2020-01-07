@@ -3277,8 +3277,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}車両 -
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}船舶 - 情報を見るには船舶をクリックします
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}航空機 - 情報を見るには航空機をクリックします
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}収益(今年): {CURRENCY_LONG} (収益(去年): {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :購入可能な列車
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :購入可能な車両
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :購入可能な船舶
@@ -3626,7 +3624,6 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最高�
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量: {LTBLUE}{WEIGHT_SHORT}　{BLACK}出力: {LTBLUE}{POWER}{BLACK}　最高速度: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量: {LTBLUE}{WEIGHT_SHORT}　{BLACK}出力: {LTBLUE}{POWER}{BLACK}　最高速度: {LTBLUE}{VELOCITY}　{BLACK}最大牽引力: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年の収益: {LTBLUE}{CURRENCY_LONG}(昨年: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}信頼度: {LTBLUE}{COMMA}%　{BLACK}点検後の故障数: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}　{BLACK}購入年: {LTBLUE}{NUM}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}

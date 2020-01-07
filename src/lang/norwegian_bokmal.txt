@@ -3429,8 +3429,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Kjøret�
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skip - klikk på skip for mer informasjon
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Luftfartøy - klikk på luftfartøy for mer informasjon
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Fortjeneste i år: {CURRENCY_LONG} (i fjor: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tilgjengelige tog
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Tilgjengelige kjøretøy
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Tilgjengelige skip
@@ -3811,7 +3809,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Topphast
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Topphastighet: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Topphastighet: {LTBLUE}{VELOCITY} {BLACK}Maks trekkraft: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Fortjeneste i år: {LTBLUE}{CURRENCY_LONG} (i fjor: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pålitelighet: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Havarier siden siste vedlikehold: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Bygget: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY_LONG}

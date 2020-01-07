@@ -3296,8 +3296,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Cerbydau
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Llongau - cliciwch ar long am wybodaeth
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Awyrennau - cliciwch ar awyren am wybodaeth
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Elw eleni: {CURRENCY_LONG} (llynedd: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenau sydd ar gael
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Cerbydau sydd ar gael
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Llongau sydd ar gael
@@ -3658,7 +3656,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Cyflym. 
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pwys: {LTBLUE}{WEIGHT_SHORT} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pwys: {LTBLUE}{WEIGHT_SHORT} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Elw eleni: {LTBLUE}{CURRENCY_LONG} (llynedd: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Toriadau ers gwasanaeth olaf: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Codi: {LTBLUE}{NUM}{BLACK} Pris: {LTBLUE}{CURRENCY_LONG}

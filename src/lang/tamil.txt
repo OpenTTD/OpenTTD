@@ -3053,8 +3053,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}சா�
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}கப்பல்கள் - கப்பலின் விவரங்கள் அறிய சொடுக்கவும்
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}விமானங்கள் - விமானத்தின் விவரங்கள் அறிய சொடுக்கவும்
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}இந்த ஆண்டின் இலாபம்: {CURRENCY_LONG} (கடந்த ஆண்டு: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :கிடைக்கும் இரயில்கள்
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :கிடைக்கும் வாகனங்கள்
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :கிடைக்கும் கப்பல்கள்
@@ -3387,7 +3385,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}அத�
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}எடை: {LTBLUE}{WEIGHT_SHORT} {BLACK}திறன்: {LTBLUE}{POWER}{BLACK} அதி. வேகம்: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}எடை: {LTBLUE}{WEIGHT_SHORT} {BLACK}திறன்: {LTBLUE}{POWER}{BLACK} அதி. வேகம்: {LTBLUE}{VELOCITY} {BLACK}அதி. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}இந்த வருட இலாபம்: {LTBLUE}{CURRENCY_LONG} (சென்ற வருடம்: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}நம்பகத்தன்மை: {LTBLUE}{COMMA}%  {BLACK}கடைசிப் பராமரிப்பிற்குப் பின் ஏற்ப்பட்ட பழுதுகள்: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}கட்டப்பட்டது: {LTBLUE}{NUM}{BLACK} மதிப்பு: {LTBLUE}{CURRENCY_LONG}

@@ -2908,8 +2908,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Akfør -
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skip - trýst á skip fyri kunning
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flogfør - trýst á flogfar fyri kunning
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Vinningur hetta ári: {CURRENCY_LONG} (síðsta ár: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tøk tok
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Tøk akfør
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Tøk skip
@@ -3206,7 +3204,6 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. fe
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Megi: {LTBLUE}{POWER}{BLACK} Maks. ferð: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Megi: {LTBLUE}{POWER}{BLACK} Maks. ferð: {LTBLUE}{VELOCITY} {BLACK}Maks. D.Ó.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Vinningur hetta ári: {LTBLUE}{CURRENCY_LONG} (síðsta ár: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Álítandi: {LTBLUE}{COMMA}%  {BLACK}Maskinskaðar síðan síðsta eftirlit: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Bygt: {LTBLUE}{NUM}{BLACK} Virði: {LTBLUE}{CURRENCY_LONG}

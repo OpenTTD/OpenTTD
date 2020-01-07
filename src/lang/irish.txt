@@ -3275,8 +3275,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Feithicl
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Longa - Cliceáil ar long le faisnéis a fháil
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aerárthaigh - cliceáil ar aerárthach le faisnéis a fháil
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Brabús i mbliana: {CURRENCY_LONG} (anuraidh: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Traenacha atá ar fáil
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Feithiclí atá le fáil
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Longa atá le fáil
@@ -3623,7 +3621,6 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Luas uas
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Meáchan: {LTBLUE}{WEIGHT_SHORT} {BLACK}Cumhacht: {LTBLUE}{POWER}{BLACK}Luas uasta: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Meáchan: {LTBLUE}{WEIGHT_SHORT} {BLACK}Cumhacht: {LTBLUE}{POWER}{BLACK} Uas-luas: {LTBLUE}{VELOCITY} {BLACK}T.E. Uasta: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Brabús i mbliana: {LTBLUE}{CURRENCY_LONG} (anuraidh: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Iontaofacht: {LTBLUE}{COMMA}%  {BLACK}Líon na gcliseadh ón seirbhísiú deiridh: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Tógtha: {LTBLUE}{NUM}{BLACK} Luach: {LTBLUE}{CURRENCY_LONG}

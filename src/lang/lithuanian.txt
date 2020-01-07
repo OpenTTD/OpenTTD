@@ -3521,8 +3521,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Automobi
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Laivai - paspausk ant laivo, jei nori daugiau informacijos
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lėktuvas - spauskite ant lėktuvo informacijai
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Šių metų pelnas: {CURRENCY_LONG} (praėjusių metų: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Galimi traukiniai
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Galimi automobiliai
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Galimi laivai
@@ -3917,7 +3915,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Maks. gr
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Svoris: {LTBLUE}{WEIGHT_SHORT} {BLACK}Galia: {LTBLUE}{POWER}{BLACK} Didž. greitis: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Svoris: {LTBLUE}{WEIGHT_SHORT} {BLACK}Galia: {LTBLUE}{POWER}{BLACK} Didž. greitis: {LTBLUE}{VELOCITY} {BLACK}Didž. traukos jėga: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Šių metų pelnas: {LTBLUE}{CURRENCY_LONG} (praėjusiųjų: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Gedimų nuo paskutinės apžiūros: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Pagamintas: {LTBLUE}{NUM}{BLACK} Vertė: {LTBLUE}{CURRENCY_LONG}

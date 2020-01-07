@@ -3428,8 +3428,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Wegvoert
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schepen - klik op een schip voor informatie
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Vliegtuig - klik op een vliegtuig voor informatie
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Winst dit jaar: {CURRENCY_LONG} (vorig jaar: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Beschikbare spoorvoertuigen
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Beschikbare wegvoertuigen
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Beschikbare schepen
@@ -3810,7 +3808,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Max.snel
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Vermogen: {LTBLUE}{POWER}{BLACK} Max.snelheid: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Vermogen: {LTBLUE}{POWER}{BLACK} Max.snelheid: {LTBLUE}{VELOCITY} {BLACK}Max. tr.kr..: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Winst dit jaar: {LTBLUE}{CURRENCY_LONG} (vorig jaar: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Aantal keren motorpech sinds laatste onderhoud: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebouwd: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY_LONG}

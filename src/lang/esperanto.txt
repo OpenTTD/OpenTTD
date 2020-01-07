@@ -2720,8 +2720,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Stratvet
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ŝipoj - alklaku ŝipon por informoj
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aviadiloj - alklaku aviadilon por informoj
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Gajno ĉi-jare: {CURRENCY_LONG} (pasintjare: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Haveblaj Trajnoj
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Haveblaj Veturiloj
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Haveblaj Ŝipoj
@@ -3051,7 +3049,6 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. ra
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pezo: {LTBLUE}{WEIGHT_SHORT} {BLACK}Povo: {LTBLUE}{POWER}{BLACK} Maks. rapido: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pezo: {LTBLUE}{WEIGHT_SHORT} {BLACK}Povo: {LTBLUE}{POWER}{BLACK} Maks. rapido: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profito ĉijare: {LTBLUE}{CURRENCY_LONG} (lastjare: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fidindo: {LTBLUE}{COMMA}%  {BLACK}Paneoj ekde lasta servo: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Konstruita: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY_LONG}

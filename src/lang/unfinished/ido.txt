@@ -937,8 +937,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Voy-vehi
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Navi - klikigas sur navo por informeso
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronavi - klikigas sur aeronavo por informeso
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profito to yaro: {CURRENCY_LONG} (lasta yaro: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Disponebla Treni
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Disponebla Vehili
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Disponebla Navi

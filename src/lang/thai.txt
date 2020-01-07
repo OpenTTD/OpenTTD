@@ -3207,8 +3207,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}ยา�
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}ยานพาหนะทางน้ำ - คลิ๊กเพื่อดูรายละเอียด
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}อากาศยาน - คลิ๊กเพื่อดูรายละเอียด
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}กำไรของปีนี้: {CURRENCY_LONG} (ปีที่ผ่านมา: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :รถไฟที่สามารถซื้อได้
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :ยานพาหนะทางบกที่สามารถซื้อได้
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :ยานพาหานะทางน้ำที่สามารถซื้อได้
@@ -3542,7 +3540,6 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}คว�
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}น้ำหนัก: {LTBLUE}{WEIGHT_SHORT} {BLACK}พลังขับเคลื่อน: {LTBLUE}{POWER}{BLACK} ความเร็วสูงสุด: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}น้ำหนัก: {LTBLUE}{WEIGHT_SHORT} {BLACK}พลังขับเคลื่อน: {LTBLUE}{POWER}{BLACK} ความเร็วสูงสุด: {LTBLUE}{VELOCITY} {BLACK}กำลังลากจูงสูงสุด: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}ผลประกอบการปีนี้: {LTBLUE}{CURRENCY_LONG} (ปีที่แล้ว: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}ประสิทธิภาพ: {LTBLUE}{COMMA}%  {BLACK}เกิดการชำรุดหลังจากเข้าซ่อมบำรุงครั้งที่แล้ว: {LTBLUE}{COMMA} {BLACK}ครั้ง
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}สร้างเมื่อ: {LTBLUE}{NUM}{BLACK} มูลค่า: {LTBLUE}{CURRENCY_LONG}

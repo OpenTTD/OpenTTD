@@ -3492,8 +3492,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Közúti
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Hajók - kattints egy hajóra az adataihoz
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Repülőgépek - kattints egy repülőgépre az adataihoz
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Idei nyereség: {CURRENCY_LONG} (Tavalyi: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Elérhető vonatok
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Elérhető közúti járművek
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Elérhető hajók
@@ -3874,7 +3872,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Sebessé
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Súly: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK} Végsebesség: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Súly: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK} Végsebesség: {LTBLUE}{VELOCITY} {BLACK}Vonóerő: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Idei haszon: {LTBLUE}{CURRENCY_LONG} (tavalyi: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%  {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Vásárlás éve: {LTBLUE}{NUM}{BLACK} Érték: {LTBLUE}{CURRENCY_LONG}

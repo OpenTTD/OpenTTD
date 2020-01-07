@@ -3519,8 +3519,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Silničn
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Lodě - informace získáš klepnutím na jméno lodi
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Letadlo - klepni na letadlo pro informace
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Zisk tento rok: {CURRENCY_LONG} (minulý rok: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostupné vlaky
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Dostupná vozidla
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Dostupné lodě
@@ -3904,7 +3902,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Max. ryc
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_SHORT} {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_SHORT} {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY} {BLACK}Max. tažná síla: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Letošní zisk: {LTBLUE}{CURRENCY_LONG} (vloni: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY_LONG}

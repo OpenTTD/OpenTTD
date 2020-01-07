@@ -3336,8 +3336,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}כלי �
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}כלי שייט – בחר כלי לצפיה במידע
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}כלי טייס – לחץ על כלי לצפיה במידע
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}{1:CURRENCY_LONG} :בשנה שעברה{NBSP} {0:CURRENCY_LONG}) :רווח השנה
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :רכבות זמינות
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :רכבים זמינים
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :כלי שייט זמינות
@@ -3696,7 +3694,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}מהיר
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}משקל: {LTBLUE}{WEIGHT_SHORT} {BLACK}הספק: {LTBLUE}{POWER}{BLACK} מהירות מקסימלית: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}משקל: {LTBLUE}{WEIGHT_SHORT} {BLACK}הספק: {LTBLUE}{POWER}{BLACK} מהירות מקסימלית: {LTBLUE}{VELOCITY} {BLACK}T.E. מקסימלי: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}רווח בשנה הנוכחת: {LTBLUE}{CURRENCY_LONG} (שנה שעברה: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}מהימנות: {LTBLUE}{COMMA}%  {BLACK}קלקול מאז טיפול אחרון: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}נבנה: {LTBLUE}{NUM}{BLACK} ערך: {LTBLUE}{CURRENCY_LONG}

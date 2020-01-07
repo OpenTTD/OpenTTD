@@ -1407,8 +1407,6 @@ STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}
 
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авион - кликни на авионот за информации
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Годинашна заработка: {CURRENCY_LONG} (лани: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Достапни Возови
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Достапни Возила
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Достапни Бродови

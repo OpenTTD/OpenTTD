@@ -3540,8 +3540,6 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vehicula
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Naves - preme in navem ut indicia monstretur
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeroplana - preme in aeroplanum ut indicia monstretur
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Lucrum huius anni: {CURRENCY_LONG} (anni prioris: {CURRENCY_LONG})
-
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Hamaxostichi Parabiles
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehicula Viaria Parabilia
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Naves Parabiles
@@ -3914,7 +3912,6 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Velocita
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pondus: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potestas: {LTBLUE}{POWER}{BLACK} Velocitas maxima: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pondus: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potestas: {LTBLUE}{POWER}{BLACK} Velocitas maxima: {LTBLUE}{VELOCITY} {BLACK}V.T. Max.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucrum huius anni: {LTBLUE}{CURRENCY_LONG} (anni prioris: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Constantia: {LTBLUE}{COMMA}%  {BLACK}Defecta post ministrationem priorem: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Factum: {LTBLUE}{NUM}{BLACK} Aestimatio: {LTBLUE}{CURRENCY_LONG}
