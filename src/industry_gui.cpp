@@ -1410,7 +1410,9 @@ protected:
 			GetString(buf_cache, STR_INDUSTRY_NAME, lastof(buf_cache));
 		}
 
-		return strnatcmp(buf, buf_cache) < 0; // Sort by name (natural sorting).
+		int r = strnatcmp(buf, buf_cache); // Sort by name (natural sorting).
+		if (r == 0) return a->index < b->index;
+		return r < 0;
 	}
 
 	/** Sort industries by type and name */
