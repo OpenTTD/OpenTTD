@@ -4014,68 +4014,109 @@ const StationList *StationFinder::GetStations()
 	return &this->stations;
 }
 
+static bool CanMoveGoodsToStation(const Station *st, CargoID type)
+{
+	/* Is the station reserved exclusively for somebody else? */
+	if (st->owner != OWNER_NONE && st->town->exclusive_counter > 0 && st->town->exclusivity != st->owner) return false;
+
+	/* Lowest possible rating, better not to give cargo anymore. */
+	if (st->goods[type].rating == 0) return false;
+
+	/* Selectively servicing stations, and not this one. */
+	if (_settings_game.order.selectgoods && !st->goods[type].HasVehicleEverTriedLoading()) return false;
+
+	if (IsCargoInClass(type, CC_PASSENGERS)) {
+		/* Passengers are never served by just a truck stop. */
+		if (st->facilities == FACIL_TRUCK_STOP) return false;
+	} else {
+		/* Non-passengers are never served by just a bus stop. */
+		if (st->facilities == FACIL_BUS_STOP) return false;
+	}
+	return true;
+}
+
 uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, SourceID source_id, const StationList *all_stations)
 {
 	/* Return if nothing to do. Also the rounding below fails for 0. */
+	if (all_stations->empty()) return 0;
 	if (amount == 0) return 0;
 
-	Station *st1 = nullptr;   // Station with best rating
-	Station *st2 = nullptr;   // Second best station
-	uint best_rating1 = 0; // rating of st1
-	uint best_rating2 = 0; // rating of st2
+	Station *first_station = nullptr;
+	typedef std::pair<Station *, uint> StationInfo;
+	std::vector<StationInfo> used_stations;
 
 	for (Station *st : *all_stations) {
-		/* Is the station reserved exclusively for somebody else? */
-		if (st->owner != OWNER_NONE && st->town->exclusive_counter > 0 && st->town->exclusivity != st->owner) continue;
+		if (!CanMoveGoodsToStation(st, type)) continue;
 
-		if (st->goods[type].rating == 0) continue; // Lowest possible rating, better not to give cargo anymore
-
-		if (_settings_game.order.selectgoods && !st->goods[type].HasVehicleEverTriedLoading()) continue; // Selectively servicing stations, and not this one
-
-		if (IsCargoInClass(type, CC_PASSENGERS)) {
-			if (st->facilities == FACIL_TRUCK_STOP) continue; // passengers are never served by just a truck stop
-		} else {
-			if (st->facilities == FACIL_BUS_STOP) continue; // non-passengers are never served by just a bus stop
+		/* Avoid allocating a vector if there is only one station to significantly
+		 * improve performance in this common case. */
+		if (first_station == nullptr) {
+			first_station = st;
+			continue;
 		}
-
-		/* This station can be used, add it to st1/st2 */
-		if (st1 == nullptr || st->goods[type].rating >= best_rating1) {
-			st2 = st1; best_rating2 = best_rating1; st1 = st; best_rating1 = st->goods[type].rating;
-		} else if (st2 == nullptr || st->goods[type].rating >= best_rating2) {
-			st2 = st; best_rating2 = st->goods[type].rating;
+		if  (used_stations.empty()) {
+			used_stations.reserve(2);
+			used_stations.emplace_back(std::make_pair(first_station, 0));
 		}
+		used_stations.emplace_back(std::make_pair(st, 0));
 	}
 
 	/* no stations around at all? */
-	if (st1 == nullptr) return 0;
+	if (first_station == nullptr) return 0;
 
-	/* From now we'll calculate with fractal cargo amounts.
-	 * First determine how much cargo we really have. */
-	amount *= best_rating1 + 1;
-
-	if (st2 == nullptr) {
+	if (used_stations.empty()) {
 		/* only one station around */
-		return UpdateStationWaiting(st1, type, amount, source_type, source_id);
+		amount *= first_station->goods[type].rating + 1;
+		return UpdateStationWaiting(first_station, type, amount, source_type, source_id);
 	}
 
-	/* several stations around, the best two (highest rating) are in st1 and st2 */
-	assert(st1 != nullptr);
-	assert(st2 != nullptr);
-	assert(best_rating1 != 0 || best_rating2 != 0);
+	uint company_best[OWNER_NONE + 1] = {};  // best rating for each company, including OWNER_NONE
+	uint company_sum[OWNER_NONE + 1] = {};   // sum of ratings for each company
+	uint best_rating = 0;
+	uint best_sum = 0;  // sum of best ratings for each company
 
-	/* Then determine the amount the worst station gets. We do it this way as the
-	 * best should get a bonus, which in this case is the rounding difference from
-	 * this calculation. In reality that will mean the bonus will be pretty low.
-	 * Nevertheless, the best station should always get the most cargo regardless
-	 * of rounding issues. */
-	uint worst_cargo = amount * best_rating2 / (best_rating1 + best_rating2);
-	assert(worst_cargo <= (amount - worst_cargo));
+	for (auto &p : used_stations) {
+		auto owner = p.first->owner;
+		auto rating = p.first->goods[type].rating;
+		if (rating > company_best[owner]) {
+			best_sum += rating - company_best[owner];  // it's usually faster than iterating companies later
+			company_best[owner] = rating;
+			if (rating > best_rating) best_rating = rating;
+		}
+		company_sum[owner] += rating;
+	}
 
-	/* And then send the cargo to the stations! */
-	uint moved = UpdateStationWaiting(st1, type, amount - worst_cargo, source_type, source_id);
-	/* These two UpdateStationWaiting's can't be in the statement as then the order
-	 * of execution would be undefined and that could cause desyncs with callbacks. */
-	return moved + UpdateStationWaiting(st2, type, worst_cargo, source_type, source_id);
+	/* From now we'll calculate with fractional cargo amounts.
+	 * First determine how much cargo we really have. */
+	amount *= best_rating + 1;
+
+	uint moving = 0;
+	for (auto &p : used_stations) {
+		uint owner = p.first->owner;
+		/* Multiply the amount by (company best / sum of best for each company) to get cargo allocated to a company
+		 * and by (station rating / sum of ratings in a company) to get the result for a single station. */
+		p.second = amount * company_best[owner] * p.first->goods[type].rating / best_sum / company_sum[owner];
+		moving += p.second;
+	}
+
+	/* If there is some cargo left due to rounding issues distribute it among the best rated stations.  */
+	if (amount > moving) {
+		std::sort(used_stations.begin(), used_stations.end(), [type] (const StationInfo &a, const StationInfo &b) {
+			return b.first->goods[type].rating < a.first->goods[type].rating;
+		});
+
+		assert(amount - moving <= used_stations.size());
+		for (uint i = 0; i < amount - moving; i++) {
+			used_stations[i].second++;
+		}
+	}
+
+	uint moved = 0;
+	for (auto &p : used_stations) {
+		moved += UpdateStationWaiting(p.first, type, p.second, source_type, source_id);
+	}
+
+	return moved;
 }
 
 void UpdateStationDockingTiles(Station *st)
