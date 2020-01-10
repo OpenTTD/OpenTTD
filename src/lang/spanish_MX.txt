@@ -1310,6 +1310,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostrar poblaci
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mostrar en el mapa la población de los pueblos junto a sus nombres
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grosor de las líneas en las gráficas: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grosor de las líneas en las gráficas. Una línea fina es más precisa, una línea más gruesa es más fácil de distinguir
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostrar el nombre del GRF en la ventana de construcción de vehículo: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Indicar por medio de una línea adicional en la ventana de construcción de vehículo su NewGRF.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Terreno: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Los terrenos definen mapas con diferentes tipos de carga y requisitos de crecimiento para los pueblos. Es posible modificarlos empleando NewGRF y scripts de juego
@@ -3400,6 +3402,10 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} y {NUM} más...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nombre de industria: Clic en un nombre para centrar la vista principal en la industria. Ctrl+Clic abre una ventana de vista en dicha ubicación
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Cargamento aceptado: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Cargemento producido: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Todos los tipos
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Ninguno
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -4180,6 +4186,7 @@ STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Acercami
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Acercamiento por defecto
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Mapa completo
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Mapa de alturas
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de minimapa
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parámetros {STRING}

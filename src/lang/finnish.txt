@@ -1309,7 +1309,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Näytä kunnan 
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Näytä kuntien asukasluvut kartalla
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Viivojen paksuus kuvaajissa: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Viivan leveys kuvaajissa. Ohut viiva on tarkasti luettavissa kun taas paksumpi viiva on helpompi nähdä ja sen värit ovat helpommin havaittavissa
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Näytä NewGRF:n nimi liikennevälineikkunassa: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Näytä NewGRF:n nimi kulkuneuvoikkunassa: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lisää liikennevälinevalikoimaikkunaan rivin, joka näyttää, mistä NewGRF:stä valittu liikenneväline on peräisin.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Maasto: {STRING}
@@ -3446,7 +3446,7 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Näytä 
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Muokkaa listaa
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Ohjaa kaikkia listan kulkuneuvoja
-STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Korvaa liikennevälineitä
+STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Korvaa kulkuneuvoja
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Lähetä huoltoon
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Lähetä varikolle
@@ -3622,7 +3622,7 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Korvaa k
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Korvaa kaikki telakalla olevat laivat automaattisesti
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Korvaa kaikki hallissa olevat lento-alukset automaattisesti
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Uusia liikennevälineitä
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Uudet kulkuneuvot
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Uusia ajoneuvoja
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Uusia laivoja
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Uusia lentokoneita
