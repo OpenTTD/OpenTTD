@@ -53,14 +53,23 @@ constexpr int MAX_SHIP_DEPOT_SEARCH_DISTANCE = 80;
  */
 WaterClass GetEffectiveWaterClass(TileIndex tile)
 {
+	if (IsTileType(tile, TileType::Water)) {
+		/* If the tile is real water (i.e. has depth) then depth over 0 always counts as sea,
+		 * and depth equal to zero always counts as river or canal. */
+		if (GetWaterDepth(tile) > 0) return WaterClass::Sea;
+		if (GetWaterClass(tile) == WaterClass::Sea) return WaterClass::River;
+		return GetWaterClass(tile);
+	}
 	if (HasTileWaterClass(tile)) return GetWaterClass(tile);
 	if (IsTileType(tile, TileType::TunnelBridge)) {
 		assert(GetTunnelBridgeTransportType(tile) == TransportType::Water);
 		return WaterClass::Canal;
 	}
 	if (IsTileType(tile, TileType::Railway)) {
+		/* Halftile with railway on foundation, and water on lower part.
+		 * Counts as shallow river as it's next by coast. */
 		assert(GetRailGroundType(tile) == RailGroundType::HalfTileWater);
-		return WaterClass::Sea;
+		return WaterClass::River;
 	}
 	NOT_REACHED();
 }
