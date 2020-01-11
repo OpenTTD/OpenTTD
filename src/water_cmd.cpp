@@ -68,6 +68,11 @@ static const NonSteepSlopeIndexArray<Directions> _flood_from_dirs = {{{
 	{Direction::W, Direction::SW, Direction::NW}, // SLOPE_SEN, SLOPE_STEEP_E
 }}};
 
+const uint8_t SHIP_DEPOT_MAX_WATER_DEPTH = 2; ///< Maximum depth ship depots can be built at
+
+const int WATER_DEPTH_METRES_PER_UNIT = 20; ///< How many metres of depth one unit represents
+const int WATER_DEPTH_METRES_ZERO     = 10; ///< Depth in metres for water depth zero
+
 /**
  * Marks tile dirty if it is a canal or river tile.
  * Called to avoid glitches when flooding tiles next to canal tile.
@@ -118,6 +123,10 @@ CommandCost CmdBuildShipDepot(DoCommandFlags flags, TileIndex tile, Axis axis)
 
 	if (!HasTileWaterGround(tile) || !HasTileWaterGround(tile2)) {
 		return CommandCost(STR_ERROR_MUST_BE_BUILT_ON_WATER);
+	}
+
+	if (std::max(GetWaterDepth(tile), GetWaterDepth(tile2)) > SHIP_DEPOT_MAX_WATER_DEPTH) {
+		return CommandCost(STR_ERROR_WATER_TOO_DEEP);
 	}
 
 	for (Tile t : {tile, tile2}) {
@@ -590,7 +599,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 		case WaterTileType::ClearRocks: {
 			if (flags.Test(DoCommandFlag::NoWater)) return CommandCost(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
-			Money base_cost = IsCanal(tile) ? _price[Price::ClearCanal] : _price[Price::ClearWater];
+			const Money base_cost = IsCanal(tile) ? _price[Price::ClearCanal] : _price[Price::ClearWater];
 			/* Make sure freeform edges are allowed or it's not an edge tile. */
 			if (!_settings_game.construction.freeform_edges && (!IsInsideMM(TileX(tile), 1, Map::MaxX() - 1) ||
 					!IsInsideMM(TileY(tile), 1, Map::MaxY() - 1))) {
@@ -606,6 +615,9 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 				ret = CheckTileOwnership(tile);
 				if (ret.Failed()) return ret;
 			}
+
+			/* Deeper water is more expensive to clear */
+			const int cost_multiplier = GetWaterDepth(tile) + 1;
 
 			if (flags.Test(DoCommandFlag::Execute)) {
 				if (IsCanal(tile) && Company::IsValidID(owner)) {
@@ -626,7 +638,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 				ClearNeighbourNonFloodingStates(tile);
 			}
 
-			return CommandCost(ExpensesType::Construction, base_cost);
+			return CommandCost(ExpensesType::Construction, base_cost * cost_multiplier);
 		}
 
 		case WaterTileType::Coast:
@@ -637,15 +649,18 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
 			if (ret.Failed()) return ret;
 
+			/* Deeper water is more expensive to clear */
+			const int cost_multiplier = GetWaterDepth(tile) + 1;
+
 			if (flags.Test(DoCommandFlag::Execute)) {
 				DoClearSquare(tile);
 				MarkCanalsAndRiversAroundDirty(tile);
 				ClearNeighbourNonFloodingStates(tile);
 			}
 			if (IsSlopeWithOneCornerRaised(slope)) {
-				return CommandCost(ExpensesType::Construction, _price[Price::ClearWater]);
+				return CommandCost(ExpensesType::Construction, _price[Price::ClearWater] * cost_multiplier);
 			} else {
-				return CommandCost(ExpensesType::Construction, _price[Price::ClearRough]);
+				return CommandCost(ExpensesType::Construction, _price[Price::ClearRough] * cost_multiplier);
 			}
 		}
 
@@ -1052,14 +1067,17 @@ static int GetSlopePixelZ_Water(TileIndex tile, uint x, uint y, [[maybe_unused]]
 static void GetTileDesc_Water(TileIndex tile, TileDesc &td)
 {
 	switch (GetWaterTileType(tile)) {
-		case WaterTileType::Clear:
+		case WaterTileType::Clear: {
 			switch (GetWaterClass(tile)) {
 				case WaterClass::Sea:   td.str = STR_LAI_WATER_DESCRIPTION_WATER; break;
 				case WaterClass::Canal: td.str = STR_LAI_WATER_DESCRIPTION_CANAL; break;
 				case WaterClass::River: td.str = STR_LAI_WATER_DESCRIPTION_RIVER; break;
 				default: NOT_REACHED();
 			}
+			const uint8_t depth = GetWaterDepth(tile);
+			td.dparam = (depth == 0) ? WATER_DEPTH_METRES_ZERO : depth * WATER_DEPTH_METRES_PER_UNIT;
 			break;
+		}
 		case WaterTileType::Coast: td.str = STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK; break;
 		case WaterTileType::Lock : td.str = STR_LAI_WATER_DESCRIPTION_LOCK;               break;
 		case WaterTileType::Depot:

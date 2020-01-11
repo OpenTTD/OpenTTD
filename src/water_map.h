@@ -27,6 +27,9 @@ static constexpr uint8_t WBL_LOCK_PART_COUNT = 2; ///< Length of lock part bitfi
 static constexpr uint8_t WBL_DEPOT_PART = 0; ///< Depot part flag.
 static constexpr uint8_t WBL_DEPOT_AXIS = 1; ///< Depot axis flag.
 
+static constexpr uint8_t WATER_DEPTH_MIN = 0;  ///< Smallest permitted water depth level
+static constexpr uint8_t WATER_DEPTH_MAX = 15; ///< Largest permitted water depth level (4 bits)
+
 /** Available water tile types. */
 enum class WaterTileType : uint8_t {
 	Clear = 0, ///< Plain water.
@@ -194,6 +197,31 @@ inline bool IsRiver(Tile t)
 inline bool IsWaterTile(Tile t)
 {
 	return IsTileType(t, TileType::Water) && IsWater(t);
+}
+
+/**
+ * Get the depth of water on a water tile.
+ * @param t Tile to query.
+ * @return Depth of water (range 0 to 15)
+ * @pre IsTileType(t, TileType::Water)
+ */
+static inline uint8_t GetWaterDepth(Tile t)
+{
+	assert(IsTileType(t, TileType::Water));
+	return GB(t.m3(), 1, 4);
+}
+
+/**
+ * Set the depth of water on a water tile.
+ * @param t Tile to set.
+ * @param depth Depth of water (range 0 to 15)
+ * @pre IsTileType(t, TileType::Water)
+ */
+static inline void SetWaterDepth(Tile t, uint8_t depth)
+{
+	assert(IsTileType(t, TileType::Water));
+	assert(depth <= WATER_DEPTH_MAX);
+	SB(t.m3(), 1, 4, depth);
 }
 
 /**
@@ -408,9 +436,10 @@ inline void MakeShore(Tile t, bool rocks = false)
  * @param o The owner of the water
  * @param wc The class of water the tile has to be
  * @param random_bits Eventual random bits to be set for this tile
+ * @param depth Depth of water at tile.
  * @param rocks Whether the tile should have rocks on.
  */
-inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits, bool rocks = false)
+inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits, uint8_t depth, bool rocks = false)
 {
 	SetTileType(t, TileType::Water);
 	SetTileOwner(t, o);
@@ -418,6 +447,7 @@ inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits, bool 
 	SetDockingTile(t, false);
 	t.m2() = 0;
 	t.m3() = 0;
+	SB(t.m3(), 1, 4, depth);
 	t.m4() = random_bits;
 	t.m5() = 0;
 	SetWaterTileType(t, rocks ? WaterTileType::ClearRocks : WaterTileType::Clear);
@@ -433,7 +463,7 @@ inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits, bool 
  */
 inline void MakeSea(Tile t, bool rocks = false)
 {
-	MakeWater(t, OWNER_WATER, WaterClass::Sea, 0, rocks);
+	MakeWater(t, OWNER_WATER, WaterClass::Sea, 0, 1, rocks);
 }
 
 /**
@@ -443,7 +473,7 @@ inline void MakeSea(Tile t, bool rocks = false)
  */
 inline void MakeRiver(Tile t, uint8_t random_bits)
 {
-	MakeWater(t, OWNER_WATER, WaterClass::River, random_bits);
+	MakeWater(t, OWNER_WATER, WaterClass::River, random_bits, 0);
 }
 
 /**
@@ -455,7 +485,7 @@ inline void MakeRiver(Tile t, uint8_t random_bits)
 inline void MakeCanal(Tile t, Owner o, uint8_t random_bits)
 {
 	assert(o != OWNER_WATER);
-	MakeWater(t, o, WaterClass::Canal, random_bits);
+	MakeWater(t, o, WaterClass::Canal, random_bits, 0);
 }
 
 /**

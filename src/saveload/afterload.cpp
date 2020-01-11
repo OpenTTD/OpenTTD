@@ -3225,6 +3225,25 @@ bool AfterLoadGame()
 		for (Industry *ind : Industry::Iterate()) if (ind->neutral_station != nullptr) ind->neutral_station->industry = ind;
 	}
 
+	if (IsSavegameVersionBefore(SaveLoadVersion::WaterDepth)) {
+		/* Make sure water tiles have an appropriate depth */
+		for (const auto t : Map::Iterate()) {
+			if (IsWaterTile(t)) {
+				switch (GetWaterClass(t)) {
+					case WaterClass::Sea:
+					case WaterClass::River:
+						SetWaterDepth(t, 1);
+						break;
+					default:
+						SetWaterDepth(t, 0);
+						break;
+				}
+			} else if (IsTileType(t, TileType::Water)) {
+				SetWaterDepth(t, 0);
+			}
+		}
+	}
+
 	if (IsSavegameVersionBefore(SaveLoadVersion::TreesWaterClass)) {
 		/* Update water class for trees. */
 		for (const auto t : Map::Iterate()) {

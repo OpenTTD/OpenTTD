@@ -3282,10 +3282,10 @@ STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Ship dock
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Buoy
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Waypoint
 
-STR_LAI_WATER_DESCRIPTION_WATER                                 :Water
-STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal
+STR_LAI_WATER_DESCRIPTION_WATER                                 :Water (depth {HEIGHT})
+STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal (depth {HEIGHT})
 STR_LAI_WATER_DESCRIPTION_LOCK                                  :Lock
-STR_LAI_WATER_DESCRIPTION_RIVER                                 :River
+STR_LAI_WATER_DESCRIPTION_RIVER                                 :River (depth {HEIGHT})
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Coast or riverbank
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Ship depot
 STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Rocks
@@ -5141,6 +5141,8 @@ STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :tree planting l
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :name must be unique
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{STRING} in the way
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :not allowed while paused
+STR_ERROR_WATER_TOO_DEEP                                        :water too deep
+STR_ERROR_WATER_TOO_SHALLOW                                     :water too shallow
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{TOWN} local authority refuses to allow this
