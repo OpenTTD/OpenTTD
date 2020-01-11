@@ -235,6 +235,8 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vælg fi
 STR_BUTTON_SORT_BY                                              :{BLACK}Sortér på
 STR_BUTTON_LOCATION                                             :{BLACK}Lokalitet
 STR_BUTTON_RENAME                                               :{BLACK}Omdøb
+STR_BUTTON_CATCHMENT                                            :{BLACK}Dækning
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Aktiver visning af dækningsområde
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Luk vindue
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vinduestitel - træk her for at flytte vinduet
@@ -263,6 +265,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ved at a
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
 STR_BUTTON_CANCEL                                               :{BLACK}Annuller
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Advarsel: Server administratoren kan være i stand til at læse al tekst skrevet her.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -336,6 +339,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom ind
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom ud
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Byg jernbanespor
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Byg veje
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Byg sporveje
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Byg havne
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Byg lufthavne
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Åbn landskabsværktøjslinjen for at hæve/sænke terræn, plante træer, osv.
@@ -853,13 +857,14 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}s indtjening sidste år var {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kan ikke nå til næste destination, da den er uden for rækkevidde
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppet fordi en ombygnings ordre fejlede
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppet fordi en tilpasningsordre fejlede
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automatisk fornyelse mislykkedes for {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Ny {STRING} er nu tilgængelig!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ny {STRING} er nu tilgængelig!  -  {ENGINE}
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Åbn gruppevinduet med fokus på dette fartøjs gruppe
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} accepterer ikke længere {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} accepterer ikke længere {STRING} eller {STRING}
@@ -927,6 +932,9 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiske Lari 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rialer (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ny Russisk Rubel (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikansk Peso (MXN)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Ny Taiwan dollar (NTD)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kinesisk Renminbi (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar (HKD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vejkøretøjer
@@ -1301,6 +1309,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Vis byens indby
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Vis befolkningen i byerne i deres etiket på kortet
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linjetykkelse i grafer: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Bredde af linjerne i graferne. En tynd linie er mere læsbar, en tykkere linje er nemmere at se og det er lettere at skelne mellem farverne
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Vis navn på NewGRF i byg fartøj vinduet: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Tilføjer en linje til byg fartøj vinduet som viser, hvilken NewGRF det valgte fartøj stammer fra.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landskab: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landskaber definerer grundlæggende gameplay-scenarier med forskellige laster og krav by vækst. NewGRF og spil Scripts tillader finere kontrol selv
@@ -1312,8 +1322,8 @@ STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terræn type: {
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis only) Hilliness af landskabet
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industri tæthed: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Angiv hvor mange industrier skal genereres og hvilket niveau der bevares i løbet af spillet
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Max afstand fra kant til olieraffinaderier: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olieraffinaderier er kun opføres nær kortets grænse, det er ved kysten for kort med øer
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimal afstand fra kant til olieindustrier: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Grænse for hvor langt fra kortets kant olieraffinaderier kan blive bygget. På ø-kort sikrer dette at de er nær kysten. På kort større end 256 felter bliver denne værdi automatisk skaleret op.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snelinjehøjden: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontrol med på hvilket højde sneen begynder i sub-arktiske landskab. Sne påvirker også industrien generation og betingelser by vækst
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Tærrenets hårdhed (kun TerraGenesis) : {STRING}
@@ -1477,6 +1487,9 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tillad computer
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tillad computerstyrede spillere at deltage i multiplayer spil
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes før scriptet bliver stoppet: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximale nummer af udregninger et script kan eksekvere i en tur
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Maks hukommelsesforbrug per script: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Hvor meget hukommelse et enkelt script må anvende før det bliver tvungent afbrudt. Det kan være nødvendigt at forøge dette for spil på store kort.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Service intervaller er i procent: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Vælg om vedligeholdelse bliver udløst af forløbet tid, eller pålideligheden som falder en givet procenttal i forhold til maximum pålideligheden
@@ -1535,10 +1548,16 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fuld
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Farvede nyheder dukker op i: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Året hvor nyheds-annonceringer bliver udskrevet i farver. Før dette år, bruger det sort / hvid
 STR_CONFIG_SETTING_STARTING_YEAR                                :Start dato: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Slutår for pointoptælling: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Årstal hvor spillet slutter pointoptælling. Ved slutningen af dette år bliver selskabets point optaget, og topresultater-skærmen bliver vist. Spillerne kan fortsætte med at spille efter dette.{}Hvis dette er før spillets start år, bliver topresultater-skærmen aldrig vist.
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Aldrig
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Aktiver rolig økonomi (flere små ændringer): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Når slået til, ændre industriproduktion oftere, og i små trin. Denne indstilling har normalt ingen effekt, hvis industrityper er fastsat af NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillad at købe aktier i andre selskaber: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Hvis aktiveret, tillades køb og salg af selskabsaktier. Aktier vil kun være tilgængelige for selskaber der er nået en hvis alder
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Mindste selskabsalder for aktiehandel: {STRING}
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Indstil mindste alder på selskaber, før andre kan købe og sælge aktier i dem.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procentdel af deloverskud som skal betales i hovedsystemer: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procentdel af indkomst givet til de mellemliggende dele i hovedsystemer, giver mere kontrol over indkomst
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Når der trækkes, placer signaler hvert: {STRING}
@@ -2425,7 +2444,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Byg en t
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Byg en sporvejstunnel. Shift skifter mellem at bygge og vise prisoverslag.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Skift mellem bygning/fjernelse af veje
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Skift mellem bygning/fjernelse af sporveje
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Konverter/opgrader typen af vej. Shift skifter mellem at bygge og vise prisoverslag
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Konverter/opgrader typen af sporvej. Shift skifter mellem at bygge og vise prisoverslag
 
+STR_ROAD_NAME_ROAD                                              :Vej
 STR_ROAD_NAME_TRAM                                              :Sporvej
 
 # Road depot construction window
@@ -2611,8 +2633,11 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Accepteret last: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tog type: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Vejtype: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Sporvejstype: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Togspors hastighedsgrænse: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Vej hastighedsbegrænsning: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Sporvogn hastighedsgrænse: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Klipper
@@ -2722,6 +2747,7 @@ STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Aktuel s
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Hvor hurtigt spillet aktuelt kører, i forhold til det forventede ved normal simulationshastighed.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Aktuel
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Gennemsnit
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Hukommelse
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Data baseret på {COMMA} målinger
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
@@ -2729,6 +2755,9 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} billeder/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} billeder/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} billeder/s
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -3025,7 +3054,7 @@ STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Det ænd
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Toget '{VEHICLE}' fra selskabet '{COMPANY}' har ugyldig længde. Det skyldes sandsynligvis at problem med en NewGRF. Risiko for at spillet mister synkronisering eller går ned.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' indeholder forkert information
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fragt-/ombygningsinformation for '{1:ENGINE}' afviger fra indkøbslisten efter konstruktion. Dette kan medføre, at autofornyelse ikke fungerer korrekt.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fragt-/tilpasningsinformation for '{1:ENGINE}' afviger fra indkøbslisten efter konstruktion. Dette kan medføre, at autofornyelse ikke fungerer korrekt.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsagede en uendelig løkke i produktions-callback'en.
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback {1:HEX} returnerede ukendt/ugyldigt resultat {2:HEX}
 STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' returnerede ugyldig godstype i produktion-callback ved {2:HEX}
@@ -3095,6 +3124,8 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Omdøb byen
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} lokal myndighed
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Zone
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Vis zone og grænse for den lokale myndighed
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transportselskabsbedømmelse:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Handlinger til rådighed:
@@ -3352,6 +3383,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastr
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Spor-stykker:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signaler
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Vej-stykker:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Sporvejsdele:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vand-felter:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanaler
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stationer:
@@ -3362,8 +3394,17 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrier
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ingen -
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transporteret){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} og {NUM} flere...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinavne - klik på navn for at centrere visningen over en industri. Ctrl+Klik åbner et nyt vindue ved industriens lokalitet.
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Accepteret last: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produceret last: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Alle lasttyper
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Ingen
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3429,6 +3470,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Ikke-grupperede
 STR_GROUP_DEFAULT_SHIPS                                         :Ikke-grupperede skibe
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ikke-grupperede fly
 
+STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupper - klik på en gruppe for at vise alle køretøjer i gruppen
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik for at oprette en gruppe
@@ -3457,29 +3499,34 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nye monorailkø
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nye magnetskinnekøretøjer
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nye køretøjer
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Nye sporvogne
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Jernbanekøretøjer
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Nye vejkøretøjer
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nye skibe
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nyt fly
 ############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Pris: {GOLD}{CURRENCY_LONG}{BLACK} Vægt: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Pris: {GOLD}{CURRENCY_LONG}{BLACK} (Pris for tilpasning: {GOLD}{CURRENCY_LONG}{BLACK}) Vægt: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighed: {GOLD}{VELOCITY}{BLACK} Styrke: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hastighed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Hastighed på havet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Hastighed på kanal/flod: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftsomkostninger: {GOLD}{CURRENCY_LONG}/år
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Lasteevne: {GOLD}{CARGO_LONG} {STRING}
-STR_PURCHASE_INFO_REFITTABLE                                    :(kan ombygges)
+STR_PURCHASE_INFO_REFITTABLE                                    :(kan tilpasses)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designet: {GOLD}{NUM}{BLACK} Levetid: {GOLD}{COMMA} år
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. pålidelighed: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Pris: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Pris: {GOLD}{CURRENCY_LONG}{BLACK} (Pris for tilpasning: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vægt: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Pris: {GOLD}{CURRENCY_LONG}{BLACK} Hastighed: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Pris: {GOLD}{CURRENCY_LONG}{BLACK} (Pris for tilpasning: {GOLD}{CURRENCY_LONG}{BLACK}) Hastighed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitet: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserede Vogne: {GOLD}+{POWER}{BLACK} Vægt: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Kan ombygges til: {GOLD}{STRING}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Kan tilpasses til: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle lasttyper
 STR_PURCHASE_INFO_NONE                                          :Ingen
 STR_PURCHASE_INFO_ALL_BUT                                       :Alle undtagen {CARGO_LIST}
@@ -3497,12 +3544,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Køb kø
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Køb skib
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Køb et fly
 
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Køb og tilpas køretøj
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Køb og tilpas køretøj
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Køb og tilpas skib
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Køb og tilpas fly
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Køb det markerede lokomotiv/togvogn. Shift skifter mellem at købe og vise prisoverslag.
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Køb det markerede køretøj. Shift skifter mellem at købe og vise prisoverslag.
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Køb det markerede skib. Shift skifter mellem at købe og vise prisoverslag.
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Køb det markerede fly. Shift skifter mellem at købe og vise prisoverslag.
 
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Køb og tilpas det markerede lokomotiv/togvogn. Shift+klik viser prisoverslag uden at købe
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Køb og tilpas det markerede vejkøretøj. Shift+klik viser prisoverslag uden at købe
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Køb og tilpas det markerede skib. Shift+klik viser prisoverslag uden at købe.
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Køb og tilpas det markerede fly. Shift+klik viser prisoverslag uden at købe.
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Omdøb
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Omdøb
@@ -3614,10 +3669,12 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Besked f
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har lige designet et nyt {STRING} - er du interesseret i et års ekslusiv testkørsel, så vi kan se hvordan det klarer sig inden vi gør det frit tilgængeligt?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :jernbanelokomotiv
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrisk jernbanelokomotiv
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monoraillokomotiv
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magnettog
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :vejkøretøj
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :sporvogn
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :fly
 STR_ENGINE_PREVIEW_SHIP                                         :skib
@@ -3659,14 +3716,18 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skift im
 STR_REPLACE_ENGINES                                             :Lokomotiver
 STR_REPLACE_WAGONS                                              :Vogne
 STR_REPLACE_ALL_RAILTYPE                                        :Alle jernbanevogne
+STR_REPLACE_ALL_ROADTYPE                                        :Alle vejkøretøjer
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vælg den skinne type, du ønsker at udskifte lokomotiver til
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Vælg vejtypen du ønsker at udskifte køretøjer for
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Viser hvilket køretøj det valgte køretøj til venstre bliver udskiftet med, hvis det udskiftes
 STR_REPLACE_RAIL_VEHICLES                                       :Jernbane
 STR_REPLACE_ELRAIL_VEHICLES                                     :Eltog
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetskinnetog
 
+STR_REPLACE_ROAD_VEHICLES                                       :Vejkøretøjer
+STR_REPLACE_TRAM_VEHICLES                                       :Sporvogne
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Fjern vogn: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Få autoudskift til at bevare længden af tog ved at fjerne vogne (startende fra fronten), hvis autoudskiftningen gør toget længere.
@@ -3691,10 +3752,10 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dette vi
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving toget til at fortsætte uden at vente på at signalet skifter til grønt
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Ombyg toget til at køre med en anden lasttype
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Ombyg vejkøretøj til at laste en anden type last
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Ombyg skibet til at sejle med en anden slags last
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Ombyg flyet til at flyve med en anden slags last
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Tilpas toget til at køre med en anden lasttype
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Tilpas vejkøretøj til at køre med en anden lasttype
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Tilpas skibet til at sejle med en anden lasttype
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Tilpas flyet til at flyve med en anden lasttype
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Vend retningen af toget
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Tving køretøjet til at vende
@@ -3807,28 +3868,28 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Vis tota
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacitet: {LTBLUE}
 
 # Vehicle refit
-STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ombyg)
+STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (tilpas)
 STR_REFIT_TITLE                                                 :{GOLD}Vælg den lasttype der skal transporteres:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Pris for ombyggelse: {RED}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Indtægt fra ombygning: {GREEN}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nye kapacitet: {GOLD}{CARGO_LONG},{GOLD}{CARGO_LONG}{}{BLACK}Pris for at ombygge: {RED}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Indtægt fra ombygning: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Vælg køretøjer der skal ombygges. klik og træk med musen for at vælge flere køretøjer. Klik på et tomt felt for at vælge hele køretøjet. Ctrl + klik vælger et køretøj og den efterfølgende kæde
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Pris for tilpasning: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Indtægt fra tilpasning: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG},{GOLD}{CARGO_LONG}{}{BLACK}Pris for tilpasning: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Indtægt fra tilpasning: {GREEN}{CURRENCY_LONG}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Vælg køretøjer der skal tilpasses. Klik og træk med musen for at vælge flere køretøjer. Klik på et tomt felt for at vælge hele køretøjet. Ctrl+klik vælger et køretøj og den efterfølgende kæde
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vælg den lasttype toget skal kører med
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vælg lasttype som lastbilen skal transportere
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Vælg den slags last skibet skal sejle med
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vælg den type last flyet skal flyve med
 
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Ombyg toget
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Ombyg lastbil
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Ombyg skibet
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Ombyg fly
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Tilpas tog
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Tilpas vejkøretøj
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Tilpas skibet
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Tilpas fly
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Ombyg toget til at køre med den markerede lasttype
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Ombyg vejkøretøjet til at laste den markerede type last
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Ombyg skibet til den markerede slags last
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Ombyg flyet til at flyve med den markerede slags last
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Tilpas tog til at køre med den markerede lasttype
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Tilpas vejkøretøjet til at køre med den markerede lasttype
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Tilpas skibet til den markerede lasttype
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Tilpas flyet til at flyve med den markerede lasttype
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordrer)
@@ -3864,8 +3925,8 @@ STR_ORDER_DROP_TRANSFER                                         :Overfør
 STR_ORDER_DROP_NO_UNLOADING                                     :Ingen losning
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ændr losseregel for den valgte ordre
 
-STR_ORDER_REFIT                                                 :{BLACK}Ombyg
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vælg hvilken lasttype, der skal ombygges til i denne ordre. CTRL-klik for at fjerne ombygningsinstruktion
+STR_ORDER_REFIT                                                 :{BLACK}Tilpas
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vælg hvilken lasttype, der skal tilpasses til i denne ordre. Ctrl+klik for at fjerne tilpasningsinstruktion
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-tilpas
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Vælg typen af last der skal auto-tilpasses denne ordre. Ctrl+Click for at fjerne auto-tilpas-funktionen. Auto-tilpasning vil kun kunne gøres, hvis køretøjet tillader det
 STR_ORDER_DROP_REFIT_AUTO                                       :Bestemt last
@@ -3935,8 +3996,8 @@ STR_ORDER_SHIP_DEPOT                                            :Skibsdok
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Ombyg til {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Ombyg til {STRING} og stop)
+STR_ORDER_REFIT_ORDER                                           :(Tilpas til {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :(Tilpas til {STRING} og stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -4118,6 +4179,13 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vælg ma
 STR_AI_LIST_CANCEL                                              :{BLACK}Afbryd
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Skift ikke script'et
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Tag skærmbillede
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normalt skærmbillede
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Fuldt zoomet-ind skærmbillede
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Standard zoom skærmbillede
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Fuldt kort skærmbillede
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Højdekort skærmbillede
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minikort skærmbillede
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametre
@@ -4387,10 +4455,11 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(ikke penge nok
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Umulig sporkombination
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Det er nødvendigt at fjerne signalet først
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ingen brugbar jernbane
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ingen egnet jernbane
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Det er nødvendigt at fjerne jernbaneskinnerne først
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vejen er ensrettet eller blokeret
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Niveaukrydsning ikke tilladt for denne type skinner
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Niveaukrydsning ikke tilladt for denne type vej
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan ikke bygge signaler her...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan ikke bygge jernbane her...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan ikke fjerne jernbane herfra...
@@ -4410,6 +4479,12 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kan ikke
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kan ikke fjerne sporvej her...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... der er ingen vej
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... der er ikke noget spor
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Kan ikke konvertere vejtype her...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Kan ikke konvertere sporvejstype her...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Ingen passende vej
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Ingen egnet sporvej
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... inkompatibel vej
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... inkompatibel sporvej
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan ikke bygge en kanal her...
@@ -4462,6 +4537,7 @@ STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan ikke
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Kan ikke slette denne gruppe...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Kan ikke omdøbe gruppe...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Kan ikke sætte overordnede gruppe ...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... løkker i gruppe-hierarkiet er ikke tilladt
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Kan ikke fjerne alle køretøjer fra denne gruppe...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Kan ikke tilføje køretøjet til denne gruppe...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Kan ikke tilføje delte køretøjer til gruppe...
@@ -4472,10 +4548,10 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Køretø
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Der er et skib i vejen
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Fly i vejen
 
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kan ikke ombygge toget...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kan ikke ombygge vejkøretøj
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Kan ikke ombygge skib...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kan ikke ombygge fly...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kan ikke tilpasse tog...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kan ikke tilpasse vejkøretøj
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Kan ikke tilpasse skib...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kan ikke tilpasse fly...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kan ikke give toget navn...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kan ikke give køretøjet et navn...

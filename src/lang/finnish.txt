@@ -616,7 +616,7 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Näytä tietoja tästä yhtiöstä
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Liikennevälineitä:
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Kulkuneuvot:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Asemia:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Vähimmäistuotto:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Vähimmäistulo:
@@ -627,7 +627,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Raha:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Laina:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Yhteensä:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Liikennevälineiden määrä. Tähän kuuluvat ajoneuvot, junat, laivat ja lentokoneet
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Kulkuveuvojen määrä. Tähän kuuluvat ajoneuvot, junat, laivat ja ilma-alukset
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Asemien osien määrä. Kaikki osat asemista (esim. rautatieasema, bussipysäkki, lentokenttä) lasketaan, vaikka ne olisivat yhdistettynä yhdeksi asemaksi
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Vähätuottoisimman kulkuneuvon tulo (kaikkien yli 2 vuotta vanhojen kulkuneuvojen)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Viimeisen 12 neljänneksen vähätuottoisimman kuun käteistuoton määrä
@@ -703,7 +703,7 @@ STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHIT
 STR_SMALLMAP_CAPTION                                            :{WHITE}Kartta – {STRING}
 
 STR_SMALLMAP_TYPE_CONTOURS                                      :Korkeuserot
-STR_SMALLMAP_TYPE_VEHICLES                                      :Liikennevälineet
+STR_SMALLMAP_TYPE_VEHICLES                                      :Kulkuneuvot
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Teollisuus
 STR_SMALLMAP_TYPE_ROUTEMAP                                      :Rahtivirta
 STR_SMALLMAP_TYPE_ROUTES                                        :Reitit
@@ -724,7 +724,7 @@ STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Rautatiet
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Asemat/lentokentät/satamat
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Rakennukset/Teollisuus
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Liikennevälineet
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Kulkuneuvot
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Junat
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Ajoneuvot
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Laivat
@@ -1310,7 +1310,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Näytä kuntien
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Viivojen paksuus kuvaajissa: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Viivan leveys kuvaajissa. Ohut viiva on tarkasti luettavissa kun taas paksumpi viiva on helpompi nähdä ja sen värit ovat helpommin havaittavissa
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Näytä NewGRF:n nimi kulkuneuvoikkunassa: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lisää liikennevälinevalikoimaikkunaan rivin, joka näyttää, mistä NewGRF:stä valittu liikenneväline on peräisin.
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lisää kulkuneuvovalikoimaikkunaan rivin, joka kertoo mistä NewGRF:stä valittu kulkuneuvo on peräisin.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Maasto: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Maasto vaikuttaa useisiin pelin peruselementteihin, kuten rahtiin ja kuntien kasvuedellytyksiin. NewGRF:t ja peliskriptit voivat kuitenkin vaikuttaa tarkemmin pelin kulkuun
@@ -3493,18 +3493,18 @@ STR_GROUP_OCCUPANCY                                             :Nykyinen käytt
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM} %
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Uusi juna
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Uudet junat
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Uusi sähköjuna
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Uusi yksiraidejuna
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Uusi Maglev-juna
 
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Uusia ajoneuvoja
-STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Uusia raitiovaunuja
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Uudet ajoneuvot
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Uudet raitiovaunut
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Uudet junat
-STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Uusia ajoneuvoja
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :Uusia laivoja
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Uudet ajoneuvot
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Uudet laivat
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Uusi lentokone
 ############ range for vehicle availability ends
 
@@ -3620,12 +3620,12 @@ STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Myy kaik
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Korvaa kaikki veturitallilla olevat junat automaattisesti
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Korvaa kaikki varikolla olevat ajoneuvot automaattisesti
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Korvaa kaikki telakalla olevat laivat automaattisesti
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Korvaa kaikki hallissa olevat lento-alukset automaattisesti
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Korvaa kaikki hallissa olevat lentokoneet automaattisesti
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Uudet kulkuneuvot
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Uusia ajoneuvoja
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Uusia laivoja
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Uusia lentokoneita
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Uudet ajoneuvot
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Uudet laivat
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Uudet lentokoneet
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Osta uusi yksikkö
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Osta uusi ajoneuvo
@@ -3697,17 +3697,17 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :lentokoneita
 STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Käytössä olevat kulkuneuvot
 STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}Sarake kulkuneuvoille, jotka omistat
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Saatavilla olevat kulkuneuvot
-STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Sarake kulkuneuvoille, jotka voidaan uusia
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Sarake kulkuneuvoille, jotka voidaan uudistaa
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Valitse korvattava veturityyppi.
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Valitse vasemmalla näkyvän veturityypinn korvaava uusi veturityyppi.
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Aloita kulkuneuvojen korvaaminen
-STR_REPLACE_VEHICLES_NOW                                        :Korvaa kaikki liikennevälineet nyt
-STR_REPLACE_VEHICLES_WHEN_OLD                                   :Korvaa vain vanhat liikennevälineet
+STR_REPLACE_VEHICLES_NOW                                        :Korvaa kaikki kulkuneuvot heti
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Korvaa vain vanhat kulkuneuvot
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Napsauta aloittaaksesi vasemmalta valitun veturityypin korvauksen oikealta valitulla veturityypillä.
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ei korvata
-STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ei liikennevälinettä valittuna
+STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ei kulkuneuvoa valittuna
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kun vanha
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lopeta kulkuneuvojen korvaaminen
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Napsauta pysäyttääksesi vasemmalta valitun veturityypin korvauksen.
@@ -4440,7 +4440,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kulkuneu
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... koostuu useammista yksiköistä
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Raiteet eivät ole yhteensopivia
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Liikennevälinettä ei voi poistaa...
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kulkuneuvoa ei voi siirtää...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Moottorivaunun takaosa seuraa aina etuosaansa
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Reittiä paikalliselle veturitallille ei löydy.
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Paikallista varikkoa ei löydy.

@@ -1309,6 +1309,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Inwoneraantal b
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Aantal inwoners van een stad weergeven bij naam op de kaart
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Dikte van de lijnen in grafieken: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Breedte van de lijnen in de grafiek. Een dunne lijn is preciezer leesbaar, een dikke lijn is makkelijker te zien en kleuren zijn makkelijker om te onderscheiden
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Naam van NewGRF weergeven in venster voor voertuigen bouwen: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Voeg een regel toe aan het venster voor voertuigen bouwen die aangeeft uit welke NewGRF het geselecteerde voertuig komt.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landschap: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landschappen definiëren standaard spelscenario's met verschillende vracht- en stadsgroei-eisen. NewGRF en spelscripts kunnen daarentegen fijnere controle bieden.
@@ -1546,6 +1548,10 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Volledig
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Kleurenfoto's verschijnen in: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Jaar dat de krant aankondigt in kleur te gaan afdrukken. Voor dit jaar wordt zwart-wit gebruikt
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startjaar: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Eindjaar voor score: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Jaar dat het spel eindigt ten behoeve van de score. Aan het einde van dit jaar wordt de score van het bedrijf vastgelegd en verschijnt het venster met topscores. De spelers kunnen echter doorgaan met spelen.{}Als dit voor het startjaar ligt, verschijnt het venster met topscores niet.
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nooit
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Vloeiende economie inschakelen (meer, kleinere veranderingen): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Wanneer dit is ingeschakeld, verandert de productie van industrieën vaker en in kleinere stappen. Deze instelling heeft meestal geen effect als de industriesoorten worden geleverd door een NewGRF.
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Kopen van aandelen in andere bedrijven toestaan: {STRING}
@@ -3395,6 +3401,10 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} en {NUM} meer...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen - klik op een naam om het scherm te centreren op de industrie. Ctrl+klik opent een nieuw venster op de locatie van de industrie.
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Geaccepteerde vracht: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Geproduceerde vracht: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Alle soorten vracht
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Geen
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -4169,6 +4179,13 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Gemarkee
 STR_AI_LIST_CANCEL                                              :{BLACK}Annuleren
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Script niet wijzigen
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Een schermafbeelding maken
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normale schermafbeelding
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Volledig ingezoomde schermafbeelding
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Standaard gezoomde schermafbeelding
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Schermafbeelding van de hele kaart
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Schermafbeelding van de hoogtekaart
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Schermafbeelding van de minikaart
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameters

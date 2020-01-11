@@ -1257,7 +1257,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Las empresas ap
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir enviar dinero a otras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permitir la transferencia de dinero entre empresas en modo multijugador
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de peso para simular trenes pesados: {STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Establece el impacto de llevar cargamento en los trenes. Un valor mayor exige mayor potencia a los trenes para llevar una carga, sobretodo al subir colinas
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Establece el impacto de llevar cargamento en los trenes. Un valor mayor exige mayor potencia a los trenes para llevar una carga, sobre todo al subir colinas
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Factor de velocidad de aeronaves: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Establece la velocidad relativa de las aeronaves comparada con la de otros vehículos para reducir las utilidades de transportación aérea
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1/{COMMA}
