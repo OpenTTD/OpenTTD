@@ -260,6 +260,14 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 		default: break;
 	}
 
+	/* Restore the water depth from surrounding tiles */
+	uint8 min_water_depth = WATER_DEPTH_MAX + 1;
+	for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
+		const TileIndex dest = tile + TileOffsByDir(dir);
+		if (IsValidTile(dest) && IsTileType(dest, MP_WATER)) min_water_depth = std::min(min_water_depth, GetWaterDepth(dest));
+	}
+	if (min_water_depth <= WATER_DEPTH_MAX) SetWaterDepth(tile, min_water_depth);
+
 	if (wc != WATER_CLASS_INVALID) CheckForDockingTile(tile);
 	MarkTileDirtyByTile(tile);
 }
