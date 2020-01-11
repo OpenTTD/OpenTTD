@@ -53,6 +53,9 @@ enum WaterClass {
 /** Helper information for extract tool. */
 template <> struct EnumPropsT<WaterClass> : MakeEnumPropsT<WaterClass, byte, WATER_CLASS_SEA, WATER_CLASS_INVALID, WATER_CLASS_INVALID, 2> {};
 
+const uint8 WATER_DEPTH_MIN = 0;  ///< Smallest permitted water depth level
+const uint8 WATER_DEPTH_MAX = 15; ///< Largest permitted water depth level (4 bits)
+
 /** Sections of the water depot. */
 enum DepotPart {
 	DEPOT_PART_NORTH = 0, ///< Northern part of a depot.
@@ -184,6 +187,25 @@ static inline bool IsRiver(TileIndex t)
 static inline bool IsWaterTile(TileIndex t)
 {
 	return IsTileType(t, MP_WATER) && IsWater(t);
+}
+
+/**
+ * Get the depth of water on a water tile.
+ * @param t Tile to query.
+ * @return Depth of water (range 0 to 15)
+ * @pre IsTileType(t, MP_WATER)
+ */
+static inline uint8 GetWaterDepth(TileIndex t)
+{
+	assert(IsTileType(t, MP_WATER));
+	return GB(_m[t].m3, 0, 4);
+}
+
+static inline void SetWaterDepth(TileIndex t, uint8 depth)
+{
+	assert(IsTileType(t, MP_WATER));
+	assert(depth <= WATER_DEPTH_MAX);
+	SB(_m[t].m3, 0, 4, depth);
 }
 
 /**
@@ -392,15 +414,16 @@ static inline void MakeShore(TileIndex t)
  * @param o The owner of the water
  * @param wc The class of water the tile has to be
  * @param random_bits Eventual random bits to be set for this tile
+ * @param depth Depth of water at tile
  */
-static inline void MakeWater(TileIndex t, Owner o, WaterClass wc, uint8 random_bits)
+static inline void MakeWater(TileIndex t, Owner o, WaterClass wc, uint8 random_bits, uint8 depth)
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
 	SetWaterClass(t, wc);
 	SetDockingTile(t, false);
 	_m[t].m2 = 0;
-	_m[t].m3 = 0;
+	SB(_m[t].m3, 0, 4, depth);
 	_m[t].m4 = random_bits;
 	_m[t].m5 = WBL_TYPE_NORMAL << WBL_TYPE_BEGIN;
 	SB(_me[t].m6, 2, 4, 0);
@@ -413,7 +436,7 @@ static inline void MakeWater(TileIndex t, Owner o, WaterClass wc, uint8 random_b
  */
 static inline void MakeSea(TileIndex t)
 {
-	MakeWater(t, OWNER_WATER, WATER_CLASS_SEA, 0);
+	MakeWater(t, OWNER_WATER, WATER_CLASS_SEA, 0, 1);
 }
 
 /**
@@ -423,7 +446,7 @@ static inline void MakeSea(TileIndex t)
  */
 static inline void MakeRiver(TileIndex t, uint8 random_bits)
 {
-	MakeWater(t, OWNER_WATER, WATER_CLASS_RIVER, random_bits);
+	MakeWater(t, OWNER_WATER, WATER_CLASS_RIVER, random_bits, 0);
 }
 
 /**
@@ -435,7 +458,7 @@ static inline void MakeRiver(TileIndex t, uint8 random_bits)
 static inline void MakeCanal(TileIndex t, Owner o, uint8 random_bits)
 {
 	assert(o != OWNER_WATER);
-	MakeWater(t, o, WATER_CLASS_CANAL, random_bits);
+	MakeWater(t, o, WATER_CLASS_CANAL, random_bits, 0);
 }
 
 /**
