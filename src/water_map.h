@@ -436,7 +436,7 @@ static inline void MakeWater(TileIndex t, Owner o, WaterClass wc, uint8 random_b
  */
 static inline void MakeSea(TileIndex t)
 {
-	MakeWater(t, OWNER_WATER, WATER_CLASS_SEA, 0, 1);
+	MakeWater(t, OWNER_WATER, WATER_CLASS_SEA, 0, 0);
 }
 
 /**

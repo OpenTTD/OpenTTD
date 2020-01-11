@@ -1241,6 +1241,47 @@ void TileLoop_Water(TileIndex tile)
 {
 	if (IsTileType(tile, MP_WATER)) AmbientSoundEffect(tile);
 
+	if (IsWaterTile(tile) && GetWaterClass(tile) != WATER_CLASS_CANAL) {
+		/* Check depth of water */
+		assert(GetWaterClass(tile) != WATER_CLASS_INVALID); // real, open water tiles can't be WATER_CLASS_INVALID
+
+		uint8 num_water_tiles = 0;
+		uint8 required_water_tiles = DIR_END;
+		uint8 min_water_depth = WATER_DEPTH_MAX;
+		uint8 max_water_depth = WATER_DEPTH_MIN;
+
+		for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
+			TileIndex dest = tile + TileOffsByDir(dir);
+			if (!IsValidTile(dest)) {
+				/* Map edges don't count for requirements */
+				required_water_tiles--;
+				continue;
+			}
+			if (!HasTileWaterClass(dest)) continue;
+			if (!IsTileOnWater(dest)) continue;
+			if (IsTileType(dest, MP_WATER) && GetWaterTileType(dest) == WATER_TILE_COAST) continue;
+			num_water_tiles++;
+
+			if (IsTileType(dest, MP_WATER)) {
+				const uint8 depth = GetWaterDepth(dest);
+				min_water_depth = std::min(min_water_depth, depth);
+				max_water_depth = std::max(max_water_depth, depth);
+			}
+		}
+
+		if (GetWaterClass(tile) != WATER_CLASS_SEA) max_water_depth = 2;
+
+		const uint8 current_depth = GetWaterDepth(tile);
+		if (num_water_tiles < required_water_tiles && current_depth > WATER_DEPTH_MIN) {
+			SetWaterDepth(tile, current_depth - 1);
+		} else if (num_water_tiles == required_water_tiles) {
+			uint8 new_depth = current_depth + 1;
+			new_depth = std::min<uint8>(min_water_depth + 1, new_depth);
+			new_depth = std::min<uint8>(max_water_depth + 1, new_depth);
+			SetWaterDepth(tile, Clamp(new_depth, WATER_DEPTH_MIN, WATER_DEPTH_MAX));
+		}
+	}
+
 	switch (GetFloodingBehaviour(tile)) {
 		case FLOOD_ACTIVE:
 			for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
