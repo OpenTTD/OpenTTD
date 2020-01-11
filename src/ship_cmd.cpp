@@ -46,14 +46,23 @@
  */
 WaterClass GetEffectiveWaterClass(TileIndex tile)
 {
+	if (IsTileType(tile, MP_WATER)) {
+		/* If the tile is real water (i.e. has depth) then depth over 0 always counts as sea,
+		 * and depth equal to zero always counts as river or canal. */
+		if (GetWaterDepth(tile) > 0) return WATER_CLASS_SEA;
+		if (GetWaterClass(tile) == WATER_CLASS_SEA) return WATER_CLASS_RIVER;
+		return GetWaterClass(tile);
+	}
 	if (HasTileWaterClass(tile)) return GetWaterClass(tile);
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER);
 		return WATER_CLASS_CANAL;
 	}
 	if (IsTileType(tile, MP_RAILWAY)) {
+		/* Halftile with railway on foundation, and water on lower part.
+		 * Counts as shallow river as it's next by coast. */
 		assert(GetRailGroundType(tile) == RAIL_GROUND_WATER);
-		return WATER_CLASS_SEA;
+		return WATER_CLASS_RIVER;
 	}
 	NOT_REACHED();
 }
