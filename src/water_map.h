@@ -463,7 +463,7 @@ inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits, uint8
  */
 inline void MakeSea(Tile t, bool rocks = false)
 {
-	MakeWater(t, OWNER_WATER, WaterClass::Sea, 0, 1, rocks);
+	MakeWater(t, OWNER_WATER, WaterClass::Sea, 0, 0, rocks);
 }
 
 /**

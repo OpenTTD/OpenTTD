@@ -1350,6 +1350,47 @@ void TileLoop_Water(TileIndex tile)
 		if (IsNonFloodingWaterTile(tile)) return;
 	}
 
+	if (IsWaterTile(tile) && GetWaterClass(tile) != WaterClass::Canal) {
+		/* Check depth of water */
+		assert(GetWaterClass(tile) != WaterClass::Invalid); // real, open water tiles can't be WATER_CLASS_INVALID
+
+		uint8_t num_water_tiles = 0;
+		uint8_t required_water_tiles = static_cast<uint8_t>(Direction::End);
+		uint8_t min_water_depth = WATER_DEPTH_MAX;
+		uint8_t max_water_depth = WATER_DEPTH_MIN;
+
+		for (Direction dir : EnumRange(Direction::End)) {
+			TileIndex dest = tile + TileOffsByDir(dir);
+			if (!IsValidTile(dest)) {
+				/* Map edges don't count for requirements */
+				required_water_tiles--;
+				continue;
+			}
+			if (!HasTileWaterClass(dest)) continue;
+			if (!IsTileOnWater(dest)) continue;
+			if (IsTileType(dest, TileType::Water) && GetWaterTileType(dest) == WaterTileType::Coast) continue;
+			num_water_tiles++;
+
+			if (IsTileType(dest, TileType::Water)) {
+				const uint8_t depth = GetWaterDepth(dest);
+				min_water_depth = std::min(min_water_depth, depth);
+				max_water_depth = std::max(max_water_depth, depth);
+			}
+		}
+
+		if (GetWaterClass(tile) != WaterClass::Sea) max_water_depth = 2;
+
+		const uint8_t current_depth = GetWaterDepth(tile);
+		if (num_water_tiles < required_water_tiles && current_depth > WATER_DEPTH_MIN) {
+			SetWaterDepth(tile, current_depth - 1);
+		} else if (num_water_tiles == required_water_tiles) {
+			uint8_t new_depth = current_depth + 1;
+			new_depth = std::min<uint8_t>(min_water_depth + 1, new_depth);
+			new_depth = std::min<uint8_t>(max_water_depth + 1, new_depth);
+			SetWaterDepth(tile, Clamp(new_depth, WATER_DEPTH_MIN, WATER_DEPTH_MAX));
+		}
+	}
+
 	switch (GetFloodingBehaviour(tile)) {
 		case FloodingBehaviour::Active: {
 			bool continue_flooding = false;
