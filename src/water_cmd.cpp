@@ -556,8 +556,9 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 				if (ret.Failed()) return ret;
 			}
 
-			/* Deeper water is more expensive to clear */
-			const int cost_multiplier = GetWaterDepth(tile) + 1;
+			/* Deeper water is much more expensive to clear */
+			const int real_depth = std::max<int>(GetWaterDepth(tile), 1);
+			const int cost_multiplier = real_depth * real_depth;
 
 			if (flags & DC_EXEC) {
 				if (IsCanal(tile) && Company::IsValidID(owner)) {
