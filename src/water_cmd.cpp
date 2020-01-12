@@ -69,6 +69,7 @@ static const NonSteepSlopeIndexArray<Directions> _flood_from_dirs = {{{
 }}};
 
 const uint8_t SHIP_DEPOT_MAX_WATER_DEPTH = 2; ///< Maximum depth ship depots can be built at
+const uint8_t CANAL_MAX_WATER_DEPTH      = 2; ///< Maximum depth canals can be built over
 
 const int WATER_DEPTH_METRES_PER_UNIT = 20; ///< How many metres of depth one unit represents
 const int WATER_DEPTH_METRES_ZERO     = 10; ///< Depth in metres for water depth zero
@@ -543,6 +544,13 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 		/* Outside the editor, prevent building canals over your own or OWNER_NONE owned canals */
 		if (water && IsCanal(current_tile) && _game_mode != GameMode::Editor && (IsTileOwner(current_tile, _current_company) || IsTileOwner(current_tile, OWNER_NONE))) continue;
 
+		uint8_t depth = water ? GetWaterDepth(current_tile) : WATER_DEPTH_MIN;
+		if (depth > CANAL_MAX_WATER_DEPTH) {
+			/* Too deep to convert to canal, pretend the tile has to be demolished and rebuilt */
+			water = false;
+			depth = CANAL_MAX_WATER_DEPTH;
+		}
+
 		ret = Command<Commands::LandscapeClear>::Do(flags, current_tile);
 		if (ret.Failed()) return ret;
 
@@ -577,6 +585,7 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 
 				default:
 					MakeCanal(current_tile, _current_company, Random());
+					SetWaterDepth(current_tile, depth);
 					if (Company::IsValidID(_current_company)) {
 						Company::Get(_current_company)->infrastructure.water++;
 						DirtyCompanyInfrastructureWindows(_current_company);
