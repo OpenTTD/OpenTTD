@@ -3228,20 +3228,10 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SaveLoadVersion::WaterDepth)) {
 		/* Make sure water tiles have an appropriate depth */
 		for (const auto t : Map::Iterate()) {
-			if (IsWaterTile(t)) {
-				switch (GetWaterClass(t)) {
-					case WaterClass::Sea:
-					case WaterClass::River:
-						SetWaterDepth(t, 1);
-						break;
-					default:
-						SetWaterDepth(t, 0);
-						break;
-				}
-			} else if (IsTileType(t, TileType::Water)) {
-				SetWaterDepth(t, 0);
-			}
+			if (IsTileType(t, TileType::Water)) SetWaterDepth(t, 0);
 		}
+		extern void ErodeAllWaterTiles(); // landscape.cpp
+		ErodeAllWaterTiles();
 	}
 
 	if (IsSavegameVersionBefore(SaveLoadVersion::TreesWaterClass)) {
