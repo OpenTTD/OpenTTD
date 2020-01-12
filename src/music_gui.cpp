@@ -732,11 +732,12 @@ struct MusicWindow : public Window {
 			case WID_M_TRACK_NAME: {
 				GfxFillRect(r.left, r.top + 1, r.right - 1, r.bottom, PC_BLACK);
 				StringID str = STR_MUSIC_TITLE_NONE;
+				MusicSystem::PlaylistEntry entry(_music.GetCurrentSong());
 				if (BaseMusic::GetUsedSet()->num_available == 0) {
 					str = STR_MUSIC_TITLE_NOMUSIC;
 				} else if (_music.IsPlaying()) {
 					str = STR_MUSIC_TITLE_NAME;
-					SetDParamStr(0, _music.GetCurrentSong().songname);
+					SetDParamStr(0, entry.songname);
 				}
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
