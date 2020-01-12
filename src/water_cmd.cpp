@@ -948,6 +948,13 @@ static void DrawTile_Water(TileInfo *ti)
 	switch (GetWaterTileType(ti->tile)) {
 		case WATER_TILE_CLEAR:
 			DrawWaterClassGround(ti);
+#ifdef _DEBUG
+			if (_cur_dpi->zoom <= ZOOM_LVL_VIEWPORT) {
+				WaterDepth depth = GetWaterDepth(ti->tile);
+				SpriteID spr = SPR_ASCII_SPACE_SMALL + (depth > 9 ? depth + 'A' - 10 : depth + '0') - ' ';
+				DrawGroundSprite(spr, TC_GOLD | (1 << PALETTE_TEXT_RECOLOUR));
+			}
+#endif
 			DrawBridgeMiddle(ti);
 			break;
 
