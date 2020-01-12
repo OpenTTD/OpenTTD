@@ -411,7 +411,7 @@ STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Дата
 STR_SORT_BY_NAME                                                :Название
 STR_SORT_BY_PRODUCTION                                          :Производительность
 STR_SORT_BY_TYPE                                                :Тип
-STR_SORT_BY_TRANSPORTED                                         :Вывоз
+STR_SORT_BY_TRANSPORTED                                         :% перевезённого
 STR_SORT_BY_NUMBER                                              :Номер
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Прибыль в прошлом году
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Прибыль в текущем году
@@ -3581,6 +3581,10 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} и ещё {NUM}...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Список предприятий - щелчок по названию показывает предприятие в основном окне. Ctrl+щелчок показывает в дополнительном окне.
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Принимаемый груз: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Производимый груз: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Любой
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Отсутствует
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -4367,6 +4371,13 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Выбр
 STR_AI_LIST_CANCEL                                              :{BLACK}Отмена
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не менять скрипт
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Снимок экрана
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Обычный снимок
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Видимая область в максимальном приближении
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Видимая область в обычном масштабе
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Снимок всей карты
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Снимок карты высот
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Снимок миникарты
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметры {STRING}
@@ -4451,10 +4462,10 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Теку
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Огромный снимок экрана
-STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Снимок экрана будет иметь размер {COMMA} х {COMMA} пикселей. Его создание займёт некоторое время. Продолжить?
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Снимок экрана будет иметь размер {COMMA}{NBSP}х{NBSP}{COMMA}{NBSP}пиксел{P ь я ей}. Его создание займёт некоторое время. Продолжить?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Снимок экрана сохранён под именем «{STRING}»
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Не удалось сохранить снимок экрана
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Не удалось сделать снимок экрана
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Сообщение
