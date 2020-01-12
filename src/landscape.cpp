@@ -1353,6 +1353,19 @@ bool ErodeWaterTileDepth(TileIndex tile)
 	return false;
 }
 
+/** Run erosion over all water tiles on map repeatedly, until no more changes */
+void ErodeAllWaterTiles()
+{
+	for (int iteration = 0; iteration < WATER_DEPTH_MAX; iteration++) {
+		bool changed = false;
+		const TileIndex map_size = MapSize();
+		for (TileIndex tile = 0; tile < map_size; tile++) {
+			if (IsTileType(tile, MP_WATER)) changed |= ErodeWaterTileDepth(tile);
+		}
+		if (!changed) break;
+	}
+}
+
 /**
  * Calculate what height would be needed to cover N% of the landmass.
  *
@@ -1562,6 +1575,7 @@ void GenerateLandscape(byte mode)
 	}
 
 	CreateRivers();
+	ErodeAllWaterTiles();
 }
 
 void OnTick_Town();
