@@ -1572,6 +1572,18 @@ bool ErodeWaterTileDepth(TileIndex tile)
 	return false;
 }
 
+/** Run erosion over all water tiles on map repeatedly, until no more changes */
+void ErodeAllWaterTiles()
+{
+	for (int iteration = 0; iteration < WATER_DEPTH_MAX; iteration++) {
+		bool changed = false;
+		for (const auto tile : Map::Iterate()) {
+			if (IsTileType(tile, TileType::Water)) changed |= ErodeWaterTileDepth(tile);
+		}
+		if (!changed) break;
+	}
+}
+
 /**
  * Calculate what height would be needed to cover N% of the landmass.
  *
@@ -1774,6 +1786,7 @@ bool GenerateLandscape(uint8_t mode)
 	}
 
 	CreateRivers();
+	ErodeAllWaterTiles();
 	return true;
 }
 
