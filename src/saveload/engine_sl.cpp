@@ -140,6 +140,11 @@ void CopyTempEngineData()
 		if (se->name != nullptr) e->name = stredup(se->name);
 	}
 
+	ResetTempEngineData();
+}
+
+void ResetTempEngineData()
+{
 	/* Get rid of temporary data */
 	for (std::vector<Engine*>::iterator it = _temp_engine.begin(); it != _temp_engine.end(); ++it) {
 		FreeEngine(*it);

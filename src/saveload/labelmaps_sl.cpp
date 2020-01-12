@@ -12,6 +12,7 @@
 #include "../tunnelbridge_map.h"
 
 #include "saveload.h"
+#include "saveload_internal.h"
 
 #include "../safeguards.h"
 
@@ -79,6 +80,11 @@ void AfterLoadLabelMaps()
 		}
 	}
 
+	ResetLabelMaps();
+}
+
+void ResetLabelMaps()
+{
 	_railtype_list.clear();
 }
 
@@ -106,7 +112,7 @@ static void Save_RAIL()
 
 static void Load_RAIL()
 {
-	_railtype_list.clear();
+	ResetLabelMaps();
 
 	LabelObject lo;
 
