@@ -12,3 +12,4 @@ notifications:
   commit-comment:
   pull-request:
   issue:
+  tag-created:
