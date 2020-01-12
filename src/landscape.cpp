@@ -1696,6 +1696,8 @@ bool GenerateLandscape(uint8_t mode)
 	static constexpr uint GLS_OTHER = 0; ///< Extra steps for other landscapes
 	uint steps = (_settings_game.game_creation.landscape == LandscapeType::Tropic) ? GLS_TROPIC : GLS_OTHER;
 
+	bool need_depth_erosion = true;
+
 	if (mode == GWM_HEIGHTMAP) {
 		SetGeneratingWorldProgress(GenWorldProgress::Landscape, steps + GLS_HEIGHTMAP);
 		if (!LoadHeightmap(_file_to_saveload.ftype.detailed, _file_to_saveload.name)) {
@@ -1705,6 +1707,7 @@ bool GenerateLandscape(uint8_t mode)
 	} else if (_settings_game.game_creation.land_generator == LG_TERRAGENESIS) {
 		SetGeneratingWorldProgress(GenWorldProgress::Landscape, steps + GLS_TERRAGENESIS);
 		GenerateTerrainPerlin();
+		need_depth_erosion = false;
 	} else {
 		SetGeneratingWorldProgress(GenWorldProgress::Landscape, steps + GLS_ORIGINAL);
 		if (_settings_game.construction.freeform_edges) {
@@ -1786,7 +1789,7 @@ bool GenerateLandscape(uint8_t mode)
 	}
 
 	CreateRivers();
-	ErodeAllWaterTiles();
+	if (need_depth_erosion) ErodeAllWaterTiles();
 	return true;
 }
 
