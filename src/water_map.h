@@ -27,9 +27,6 @@ static constexpr uint8_t WBL_LOCK_PART_COUNT = 2; ///< Length of lock part bitfi
 static constexpr uint8_t WBL_DEPOT_PART = 0; ///< Depot part flag.
 static constexpr uint8_t WBL_DEPOT_AXIS = 1; ///< Depot axis flag.
 
-static constexpr uint8_t WATER_DEPTH_MIN = 0;  ///< Smallest permitted water depth level
-static constexpr uint8_t WATER_DEPTH_MAX = 15; ///< Largest permitted water depth level (4 bits)
-
 /** Available water tile types. */
 enum class WaterTileType : uint8_t {
 	Clear = 0, ///< Plain water.
@@ -58,6 +55,11 @@ inline bool IsValidWaterClass(WaterClass wc)
 {
 	return wc < WaterClass::Invalid;
 }
+
+using WaterDepth = uint8_t; ///< Type representing the water depth a of a tile.
+static constexpr WaterDepth WATER_DEPTH_MIN  = 0;  ///< Smallest permitted water depth level.
+static constexpr WaterDepth WATER_DEPTH_DEEP = 1;  ///< Smallest depth value that counts as "deep" water (not shallow).
+static constexpr WaterDepth WATER_DEPTH_MAX  = 15; ///< Largest permitted water depth level (4 bits).
 
 /** Sections of the water depot. */
 enum class DepotPart : uint8_t {
@@ -205,7 +207,7 @@ inline bool IsWaterTile(Tile t)
  * @return Depth of water (range 0 to 15)
  * @pre IsTileType(t, TileType::Water)
  */
-static inline uint8_t GetWaterDepth(Tile t)
+static inline WaterDepth GetWaterDepth(Tile t)
 {
 	assert(IsTileType(t, TileType::Water));
 	return GB(t.m3(), 1, 4);
@@ -217,7 +219,7 @@ static inline uint8_t GetWaterDepth(Tile t)
  * @param depth Depth of water (range 0 to 15)
  * @pre IsTileType(t, TileType::Water)
  */
-static inline void SetWaterDepth(Tile t, uint8_t depth)
+static inline void SetWaterDepth(Tile t, WaterDepth depth)
 {
 	assert(IsTileType(t, TileType::Water));
 	assert(depth <= WATER_DEPTH_MAX);
@@ -439,7 +441,7 @@ inline void MakeShore(Tile t, bool rocks = false)
  * @param depth Depth of water at tile.
  * @param rocks Whether the tile should have rocks on.
  */
-inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits, uint8_t depth, bool rocks = false)
+inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits, WaterDepth depth, bool rocks = false)
 {
 	SetTileType(t, TileType::Water);
 	SetTileOwner(t, o);

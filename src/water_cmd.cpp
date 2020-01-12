@@ -68,8 +68,8 @@ static const NonSteepSlopeIndexArray<Directions> _flood_from_dirs = {{{
 	{Direction::W, Direction::SW, Direction::NW}, // SLOPE_SEN, SLOPE_STEEP_E
 }}};
 
-const uint8_t SHIP_DEPOT_MAX_WATER_DEPTH = 2; ///< Maximum depth ship depots can be built at
-const uint8_t CANAL_MAX_WATER_DEPTH      = 2; ///< Maximum depth canals can be built over
+const WaterDepth SHIP_DEPOT_MAX_WATER_DEPTH = 2; ///< Maximum depth ship depots can be built at
+const WaterDepth CANAL_MAX_WATER_DEPTH      = 2; ///< Maximum depth canals can be built over
 
 const int WATER_DEPTH_METRES_PER_UNIT = 20; ///< How many metres of depth one unit represents
 const int WATER_DEPTH_METRES_ZERO     = 10; ///< Depth in metres for water depth zero
@@ -286,7 +286,7 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 	}
 
 	/* Restore the water depth from surrounding tiles */
-	uint8_t min_water_depth = WATER_DEPTH_MAX + 1;
+	WaterDepth min_water_depth = WATER_DEPTH_MAX + 1;
 	for (Direction dir : EnumRange(Direction::End)) {
 		const TileIndex dest = tile + TileOffsByDir(dir);
 		if (IsValidTile(dest) && IsTileType(dest, TileType::Water)) min_water_depth = std::min(min_water_depth, GetWaterDepth(dest));
@@ -544,7 +544,7 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 		/* Outside the editor, prevent building canals over your own or OWNER_NONE owned canals */
 		if (water && IsCanal(current_tile) && _game_mode != GameMode::Editor && (IsTileOwner(current_tile, _current_company) || IsTileOwner(current_tile, OWNER_NONE))) continue;
 
-		uint8_t depth = water ? GetWaterDepth(current_tile) : WATER_DEPTH_MIN;
+		WaterDepth depth = water ? GetWaterDepth(current_tile) : WATER_DEPTH_MIN;
 		if (depth > CANAL_MAX_WATER_DEPTH) {
 			/* Too deep to convert to canal, pretend the tile has to be demolished and rebuilt */
 			water = false;
@@ -1092,7 +1092,7 @@ static void GetTileDesc_Water(TileIndex tile, TileDesc &td)
 				case WaterClass::River: td.str = STR_LAI_WATER_DESCRIPTION_RIVER; break;
 				default: NOT_REACHED();
 			}
-			const uint8_t depth = GetWaterDepth(tile);
+			const WaterDepth depth = GetWaterDepth(tile);
 			td.dparam = (depth == 0) ? WATER_DEPTH_METRES_ZERO : depth * WATER_DEPTH_METRES_PER_UNIT;
 			break;
 		}
@@ -1378,8 +1378,8 @@ void TileLoop_Water(TileIndex tile)
 
 		uint8_t num_water_tiles = 0;
 		uint8_t required_water_tiles = static_cast<uint8_t>(Direction::End);
-		uint8_t min_water_depth = WATER_DEPTH_MAX;
-		uint8_t max_water_depth = WATER_DEPTH_MIN;
+		WaterDepth min_water_depth = WATER_DEPTH_MAX;
+		WaterDepth max_water_depth = WATER_DEPTH_MIN;
 
 		for (Direction dir : EnumRange(Direction::End)) {
 			TileIndex dest = tile + TileOffsByDir(dir);
@@ -1394,7 +1394,7 @@ void TileLoop_Water(TileIndex tile)
 			num_water_tiles++;
 
 			if (IsTileType(dest, TileType::Water)) {
-				const uint8_t depth = GetWaterDepth(dest);
+				const WaterDepth depth = GetWaterDepth(dest);
 				min_water_depth = std::min(min_water_depth, depth);
 				max_water_depth = std::max(max_water_depth, depth);
 			}
@@ -1406,9 +1406,9 @@ void TileLoop_Water(TileIndex tile)
 		if (num_water_tiles < required_water_tiles && current_depth > WATER_DEPTH_MIN) {
 			SetWaterDepth(tile, current_depth - 1);
 		} else if (num_water_tiles == required_water_tiles) {
-			uint8_t new_depth = current_depth + 1;
-			new_depth = std::min<uint8_t>(min_water_depth + 1, new_depth);
-			new_depth = std::min<uint8_t>(max_water_depth + 1, new_depth);
+			WaterDepth new_depth = current_depth + 1;
+			new_depth = std::min<WaterDepth>(min_water_depth + 1, new_depth);
+			new_depth = std::min<WaterDepth>(max_water_depth + 1, new_depth);
 			SetWaterDepth(tile, Clamp(new_depth, WATER_DEPTH_MIN, WATER_DEPTH_MAX));
 		}
 	}
