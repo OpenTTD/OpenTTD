@@ -136,6 +136,7 @@ void MusicDriver_FluidSynth::StopSong()
 	}
 	delete_fluid_player(_midi.player);
 	fluid_synth_system_reset(_midi.synth);
+	fluid_synth_all_sounds_off(_midi.synth, -1);
 	_midi.player = nullptr;
 }
 
