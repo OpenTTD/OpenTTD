@@ -739,6 +739,7 @@ struct MusicWindow : public Window {
 					SetDParamStr(0, _music.GetCurrentSong().songname);
 				}
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str, TC_FROMSTRING, SA_HOR_CENTER);
+				SetDParamStr(0, nullptr);
 				break;
 			}
 
