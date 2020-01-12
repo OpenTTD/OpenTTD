@@ -1259,7 +1259,11 @@ void TileLoop_Water(TileIndex tile)
 {
 	if (IsTileType(tile, MP_WATER)) AmbientSoundEffect(tile);
 
-	if (IsWaterTile(tile) && GetWaterClass(tile) != WATER_CLASS_CANAL) {
+	/* Only do depth checks on rare occasions */
+	bool do_depth_check = IsWaterTile(tile) && GetWaterClass(tile) != WATER_CLASS_CANAL;
+	do_depth_check = do_depth_check && (TileHash2Bit(TileX(tile), TileY(tile)) << 4 | GB(GetWaterTileRandomBits(tile), 0, 4)) == GB(_tick_counter, 8, 6);
+
+	if (do_depth_check) {
 		/* Check depth of water */
 		assert(GetWaterClass(tile) != WATER_CLASS_INVALID); // real, open water tiles can't be WATER_CLASS_INVALID
 
