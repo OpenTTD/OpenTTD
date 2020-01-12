@@ -155,6 +155,11 @@ void MoveWaypointsToBaseStations()
 		UpdateWaypointOrder(&v->current_order);
 	}
 
+	ResetOldWaypoints();
+}
+
+void ResetOldWaypoints()
+{
 	_old_waypoints.clear();
 	_old_waypoints.shrink_to_fit();
 }
@@ -182,7 +187,7 @@ static const SaveLoad _old_waypoint_desc[] = {
 static void Load_WAYP()
 {
 	/* Precaution for when loading failed and it didn't get cleared */
-	_old_waypoints.clear();
+	ResetOldWaypoints();
 
 	int index;
 

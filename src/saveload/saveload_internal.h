@@ -20,6 +20,7 @@ StringID RemapOldStringID(StringID s);
 char *CopyFromOldName(StringID id);
 void ResetOldNames();
 
+void ResetOldWaypoints();
 void MoveBuoysToWaypoints();
 void MoveWaypointsToBaseStations();
 const SaveLoad *GetBaseStationDescription();
@@ -28,6 +29,7 @@ void AfterLoadVehicles(bool part_of_load);
 void FixupTrainLengths();
 void AfterLoadStations();
 void AfterLoadRoadStops();
+void ResetLabelMaps();
 void AfterLoadLabelMaps();
 void AfterLoadStoryBook();
 void AfterLoadLinkGraphs();
@@ -42,6 +44,7 @@ void ResetViewportAfterLoadGame();
 void ConvertOldMultiheadToNew();
 void ConnectMultiheadedTrains();
 
+void ResetTempEngineData();
 Engine *GetTempDataEngine(EngineID index);
 void CopyTempEngineData();
 
