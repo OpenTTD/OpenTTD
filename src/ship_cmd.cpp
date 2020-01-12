@@ -40,31 +40,40 @@
 #include "safeguards.h"
 
 /**
- * Determine the effective #WaterClass for a ship travelling on a tile.
+ * Determine the effective depth of a water-like tile for a ship travelling on the tile.
  * @param tile Tile of interest
- * @return the waterclass to be used by the ship.
+ * @return A water depth for the tile, may be WATER_DEPTH_MIN if the true depth couldn't be determined.
  */
-WaterClass GetEffectiveWaterClass(TileIndex tile)
+WaterDepth GetEffectiveWaterDepth(TileIndex tile)
 {
-	if (IsTileType(tile, MP_WATER)) {
-		/* If the tile is real water (i.e. has depth) then depth over 0 always counts as sea,
-		 * and depth equal to zero always counts as river or canal. */
-		if (GetWaterDepth(tile) > 0) return WATER_CLASS_SEA;
-		if (GetWaterClass(tile) == WATER_CLASS_SEA) return WATER_CLASS_RIVER;
-		return GetWaterClass(tile);
+	switch (GetTileType(tile)) {
+		case MP_WATER:
+			/* Real water tile */
+			return GetWaterDepth(tile);
+		case MP_TUNNELBRIDGE:
+			/* Aqueduct, assume it's always shallow */
+			assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER);
+			return WATER_DEPTH_MIN;
+		case MP_RAILWAY:
+			/* Halftile with railway on foundation, and water on lower part.
+			 * Counts as shallow as it's next by coast. */
+			assert(GetRailGroundType(tile) == RAIL_GROUND_WATER);
+			return WATER_DEPTH_MIN;
+		case MP_STATION:
+		case MP_INDUSTRY:
+		case MP_OBJECT:
+			/* Thing in the water - search for a real water tile nearby and use that */
+			if (CircularTileSearch(&tile, 5, [](TileIndex tile, void *) { return IsTileType(tile, MP_WATER); }, nullptr)) {
+				return GetWaterDepth(tile);
+			} else {
+				return WATER_DEPTH_MIN;
+			}
+		case MP_TREES:
+			/* This is actually a coast tile */
+			return WATER_DEPTH_MIN;
+		default:
+			NOT_REACHED();
 	}
-	if (HasTileWaterClass(tile)) return GetWaterClass(tile);
-	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER);
-		return WATER_CLASS_CANAL;
-	}
-	if (IsTileType(tile, MP_RAILWAY)) {
-		/* Halftile with railway on foundation, and water on lower part.
-		 * Counts as shallow river as it's next by coast. */
-		assert(GetRailGroundType(tile) == RAIL_GROUND_WATER);
-		return WATER_CLASS_RIVER;
-	}
-	NOT_REACHED();
 }
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
@@ -213,7 +222,7 @@ void Ship::UpdateCache()
 	const ShipVehicleInfo *svi = ShipVehInfo(this->engine_type);
 
 	/* Get speed fraction for the current water type. Aqueducts are always canals. */
-	bool is_ocean = GetEffectiveWaterClass(this->tile) == WATER_CLASS_SEA;
+	bool is_ocean = GetEffectiveWaterDepth(this->tile) >= WATER_DEPTH_DEEP;
 	uint raw_speed = GetVehicleProperty(this, PROP_SHIP_SPEED, svi->max_speed);
 	this->vcache.cached_max_speed = svi->ApplyWaterClassSpeedFrac(raw_speed, is_ocean);
 
@@ -746,10 +755,10 @@ static void ShipController(Ship *v)
 				v->tile = gp.new_tile;
 				v->state = TrackToTrackBits(track);
 
-				/* Update ship cache when the water class changes. Aqueducts are always canals. */
-				WaterClass old_wc = GetEffectiveWaterClass(gp.old_tile);
-				WaterClass new_wc = GetEffectiveWaterClass(gp.new_tile);
-				if (old_wc != new_wc) v->UpdateCache();
+				/* Update ship cache when the water depth changes. */
+				WaterDepth old_depth = GetEffectiveWaterDepth(gp.old_tile);
+				WaterDepth new_depth = GetEffectiveWaterDepth(gp.new_tile);
+				if (old_depth != new_depth) v->UpdateCache();
 			}
 
 			Direction new_direction = (Direction)b[2];

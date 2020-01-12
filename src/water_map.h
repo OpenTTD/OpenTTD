@@ -53,8 +53,10 @@ enum WaterClass {
 /** Helper information for extract tool. */
 template <> struct EnumPropsT<WaterClass> : MakeEnumPropsT<WaterClass, byte, WATER_CLASS_SEA, WATER_CLASS_INVALID, WATER_CLASS_INVALID, 2> {};
 
-const uint8 WATER_DEPTH_MIN = 0;  ///< Smallest permitted water depth level
-const uint8 WATER_DEPTH_MAX = 15; ///< Largest permitted water depth level (4 bits)
+typedef uint8 WaterDepth;
+const WaterDepth WATER_DEPTH_MIN  = 0;  ///< Smallest permitted water depth level
+const WaterDepth WATER_DEPTH_DEEP = 1;  ///< Smallest depth value that counts as "deep" water (not shallow)
+const WaterDepth WATER_DEPTH_MAX  = 15; ///< Largest permitted water depth level (4 bits)
 
 /** Sections of the water depot. */
 enum DepotPart {
@@ -195,13 +197,13 @@ static inline bool IsWaterTile(TileIndex t)
  * @return Depth of water (range 0 to 15)
  * @pre IsTileType(t, MP_WATER)
  */
-static inline uint8 GetWaterDepth(TileIndex t)
+static inline WaterDepth GetWaterDepth(TileIndex t)
 {
 	assert(IsTileType(t, MP_WATER));
 	return GB(_m[t].m3, 0, 4);
 }
 
-static inline void SetWaterDepth(TileIndex t, uint8 depth)
+static inline void SetWaterDepth(TileIndex t, WaterDepth depth)
 {
 	assert(IsTileType(t, MP_WATER));
 	assert(depth <= WATER_DEPTH_MAX);
@@ -416,7 +418,7 @@ static inline void MakeShore(TileIndex t)
  * @param random_bits Eventual random bits to be set for this tile
  * @param depth Depth of water at tile
  */
-static inline void MakeWater(TileIndex t, Owner o, WaterClass wc, uint8 random_bits, uint8 depth)
+static inline void MakeWater(TileIndex t, Owner o, WaterClass wc, uint8 random_bits, WaterDepth depth)
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
