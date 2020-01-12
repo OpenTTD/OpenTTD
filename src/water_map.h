@@ -78,6 +78,7 @@ enum class LockPart : uint8_t {
 DECLARE_INCREMENT_DECREMENT_OPERATORS(LockPart)
 
 bool IsPossibleDockingTile(Tile t);
+bool ErodeWaterTileDepth(TileIndex tile);
 
 /**
  * Get the water tile type of a tile.

@@ -1514,6 +1514,65 @@ static void CreateRivers()
 }
 
 /**
+ * Perform "erosion" of a single water tile, adjusting its depth closer to neighbours
+ * @param tile The tile to erode
+ * @return True if the tile was modified
+ * @pre IsTileType(tile, MP_WATER)
+ */
+bool ErodeWaterTileDepth(TileIndex tile)
+{
+	assert(IsTileType(tile, TileType::Water));
+	assert(GetWaterClass(tile) != WaterClass::Invalid); // real, open water tiles can't be WATER_CLASS_INVALID
+
+	/* Coast tiles don't erode */
+	if (!IsWaterTile(tile)) return false;
+	/* Canals are artificial and don't erode */
+	if (GetWaterClass(tile) == WaterClass::Canal) return false;
+
+	/* Count number of water tiles around this tile.
+	 * If there are any non-water tiles next by, fill the tile to be shallower, else maybe make deeper. */
+	uint8_t num_water_tiles = 0;
+	uint8_t required_water_tiles = static_cast<uint8_t>(Direction::End);
+	WaterDepth min_water_depth = WATER_DEPTH_MAX;
+	WaterDepth max_water_depth = WATER_DEPTH_MIN;
+
+	for (Direction dir : EnumRange(Direction::End)) {
+		TileIndex dest = tile + TileOffsByDir(dir);
+		if (!IsValidTile(dest)) {
+			/* Map edges don't count for requirements */
+			required_water_tiles--;
+			continue;
+		}
+		if (!HasTileWaterClass(dest)) continue;
+		if (!IsTileOnWater(dest)) continue;
+		if (IsTileType(dest, TileType::Water) && GetWaterTileType(dest) == WaterTileType::Coast) continue;
+		num_water_tiles++;
+
+		if (IsTileType(dest, TileType::Water)) {
+			const WaterDepth depth = GetWaterDepth(dest);
+			min_water_depth = std::min(min_water_depth, depth);
+			max_water_depth = std::max(max_water_depth, depth);
+		}
+	}
+
+	if (GetWaterClass(tile) != WaterClass::Sea) max_water_depth = 2;
+
+	const WaterDepth current_depth = GetWaterDepth(tile);
+	if (num_water_tiles < required_water_tiles && current_depth > WATER_DEPTH_MIN) {
+		SetWaterDepth(tile, current_depth - 1);
+		return true;
+	} else if (num_water_tiles == required_water_tiles) {
+		WaterDepth new_depth = current_depth + 1;
+		new_depth = std::min<WaterDepth>(min_water_depth + 1, new_depth);
+		new_depth = std::min<WaterDepth>(max_water_depth + 1, new_depth);
+		SetWaterDepth(tile, Clamp(new_depth, WATER_DEPTH_MIN, WATER_DEPTH_MAX));
+		return new_depth != current_depth;
+	}
+
+	return false;
+}
+
+/**
  * Calculate what height would be needed to cover N% of the landmass.
  *
  * The function allows both snow and desert/tropic line to be calculated. It
