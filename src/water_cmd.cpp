@@ -1368,7 +1368,11 @@ void TileLoop_Water(TileIndex tile)
 		if (IsNonFloodingWaterTile(tile)) return;
 	}
 
-	if (IsWaterTile(tile) && GetWaterClass(tile) != WaterClass::Canal) {
+	/* Only do depth checks on rare occasions */
+	bool do_depth_check = IsWaterTile(tile) && GetWaterClass(tile) != WaterClass::Canal;
+	do_depth_check = do_depth_check && (TileHash2Bit(TileX(tile), TileY(tile)) << 4 | GB(GetWaterTileRandomBits(tile), 0, 4)) == GB(TimerGameTick::counter, 8, 6);
+
+	if (do_depth_check) {
 		/* Check depth of water */
 		assert(GetWaterClass(tile) != WaterClass::Invalid); // real, open water tiles can't be WATER_CLASS_INVALID
 
