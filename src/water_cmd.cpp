@@ -65,6 +65,7 @@ static const uint8 _flood_from_dirs[] = {
 };
 
 const uint8 SHIP_DEPOT_MAX_WATER_DEPTH = 2; ///< Maximum depth ship depots can be built at
+const uint8 CANAL_MAX_WATER_DEPTH      = 2; ///< Maximum depth canals can be built over
 
 const int WATER_DEPTH_METRES_PER_UNIT = 20; ///< How many metres of depth one unit represents
 const int WATER_DEPTH_METRES_ZERO     = 10; ///< Depth in metres for water depth zero
@@ -496,6 +497,13 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		if (IsTileType(tile, MP_WATER) && (!IsTileOwner(tile, OWNER_WATER) || wc == WATER_CLASS_SEA)) continue;
 
 		bool water = IsWaterTile(tile);
+		uint8 depth = water ? GetWaterDepth(tile) : WATER_DEPTH_MIN;
+		if (depth > CANAL_MAX_WATER_DEPTH) {
+			/* Too deep to convert to canal, pretend the tile has to be demolished and rebuilt */
+			water = false;
+			depth = CANAL_MAX_WATER_DEPTH;
+		}
+
 		ret = DoCommand(tile, 0, 0, flags | DC_FORCE_CLEAR_TILE, CMD_LANDSCAPE_CLEAR);
 		if (ret.Failed()) return ret;
 
@@ -520,6 +528,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 				default:
 					MakeCanal(tile, _current_company, Random());
+					SetWaterDepth(tile, depth);
 					if (Company::IsValidID(_current_company)) {
 						Company::Get(_current_company)->infrastructure.water++;
 						DirtyCompanyInfrastructureWindows(_current_company);
