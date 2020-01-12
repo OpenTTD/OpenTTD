@@ -1029,6 +1029,13 @@ static void DrawTile_Water(TileInfo *ti)
 	switch (GetWaterTileType(ti->tile)) {
 		case WaterTileType::Clear:
 			DrawWaterClassGround(ti);
+#ifdef _DEBUG
+			if (_cur_dpi->zoom <= ZoomLevel::Viewport) {
+				WaterDepth depth = GetWaterDepth(ti->tile);
+				SpriteID spr = SPR_ASCII_SPACE_SMALL + (depth > 9 ? depth + 'A' - 10 : depth + '0') - ' ';
+				DrawGroundSprite(spr, static_cast<int>(TextColour::Gold) | (1 << PALETTE_TEXT_RECOLOUR));
+			}
+#endif
 			/* A plain water tile can be traversed in any direction, so setting blocked pillars here would mean all bridges
 			 * with edges would have no pillars above water. Instead prefer current behaviour of ships passing through. */
 			DrawBridgeMiddle(ti, {});
