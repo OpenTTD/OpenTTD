@@ -1487,6 +1487,8 @@ void GenerateLandscape(byte mode)
 	};
 	uint steps = (_settings_game.game_creation.landscape == LT_TROPIC) ? GLS_TROPIC : GLS_OTHER;
 
+	bool need_depth_erosion = true;
+
 	if (mode == GWM_HEIGHTMAP) {
 		SetGeneratingWorldProgress(GWP_LANDSCAPE, steps + GLS_HEIGHTMAP);
 		LoadHeightmap(_file_to_saveload.detail_ftype, _file_to_saveload.name.c_str());
@@ -1494,6 +1496,7 @@ void GenerateLandscape(byte mode)
 	} else if (_settings_game.game_creation.land_generator == LG_TERRAGENESIS) {
 		SetGeneratingWorldProgress(GWP_LANDSCAPE, steps + GLS_TERRAGENESIS);
 		GenerateTerrainPerlin();
+		need_depth_erosion = false;
 	} else {
 		SetGeneratingWorldProgress(GWP_LANDSCAPE, steps + GLS_ORIGINAL);
 		if (_settings_game.construction.freeform_edges) {
@@ -1575,7 +1578,7 @@ void GenerateLandscape(byte mode)
 	}
 
 	CreateRivers();
-	ErodeAllWaterTiles();
+	if (need_depth_erosion) ErodeAllWaterTiles();
 }
 
 void OnTick_Town();
