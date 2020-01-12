@@ -64,7 +64,6 @@ static const uint8 _flood_from_dirs[] = {
 	(1 << DIR_W ) | (1 << DIR_SW) | (1 << DIR_NW),                 // SLOPE_SEN, SLOPE_STEEP_E
 };
 
-const WaterDepth SHIP_DEPOT_MAX_WATER_DEPTH = 2; ///< Maximum depth ship depots can be built at
 const WaterDepth CANAL_MAX_WATER_DEPTH      = 2; ///< Maximum depth canals can be built over
 
 const int WATER_DEPTH_METRES_PER_UNIT = 20; ///< How many metres of depth one unit represents
@@ -114,10 +113,6 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
 	}
 
-	if (std::max(GetWaterDepth(tile), GetWaterDepth(tile2)) > SHIP_DEPOT_MAX_WATER_DEPTH) {
-		return_cmd_error(STR_ERROR_WATER_TOO_DEEP);
-	}
-
 	if (IsBridgeAbove(tile) || IsBridgeAbove(tile2)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
 	if (!IsTileFlat(tile) || !IsTileFlat(tile2)) {
@@ -132,12 +127,14 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_DEPOT_SHIP]);
 
 	bool add_cost = !IsWaterTile(tile);
+	WaterDepth depth1 = IsWaterTile(tile) ? GetWaterDepth(tile) : WATER_DEPTH_MIN;
 	CommandCost ret = DoCommand(tile, 0, 0, flags | DC_AUTO, CMD_LANDSCAPE_CLEAR);
 	if (ret.Failed()) return ret;
 	if (add_cost) {
 		cost.AddCost(ret);
 	}
 	add_cost = !IsWaterTile(tile2);
+	WaterDepth depth2 = IsWaterTile(tile2) ? GetWaterDepth(tile2) : WATER_DEPTH_MIN;
 	ret = DoCommand(tile2, 0, 0, flags | DC_AUTO, CMD_LANDSCAPE_CLEAR);
 	if (ret.Failed()) return ret;
 	if (add_cost) {
@@ -157,6 +154,8 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 		MakeShipDepot(tile,  _current_company, depot->index, DEPOT_PART_NORTH, axis, wc1);
 		MakeShipDepot(tile2, _current_company, depot->index, DEPOT_PART_SOUTH, axis, wc2);
+		SetWaterDepth(tile,  depth1);
+		SetWaterDepth(tile2, depth2);
 		CheckForDockingTile(tile);
 		CheckForDockingTile(tile2);
 		MarkTileDirtyByTile(tile);
@@ -266,7 +265,7 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 		WaterDepth min_water_depth = WATER_DEPTH_MAX + 1;
 		for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
 			const TileIndex dest = tile + TileOffsByDir(dir);
-			if (IsValidTile(dest) && IsTileType(dest, MP_WATER)) min_water_depth = std::min(min_water_depth, GetWaterDepth(dest));
+			if (IsValidTile(dest) && IsWaterTile(dest)) min_water_depth = std::min(min_water_depth, GetWaterDepth(dest));
 		}
 		if (min_water_depth <= WATER_DEPTH_MAX) SetWaterDepth(tile, min_water_depth);
 	}
