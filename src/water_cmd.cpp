@@ -1259,49 +1259,12 @@ void TileLoop_Water(TileIndex tile)
 {
 	if (IsTileType(tile, MP_WATER)) AmbientSoundEffect(tile);
 
-	/* Only do depth checks on rare occasions */
-	bool do_depth_check = IsWaterTile(tile) && GetWaterClass(tile) != WATER_CLASS_CANAL;
-	do_depth_check = do_depth_check && (TileHash2Bit(TileX(tile), TileY(tile)) << 4 | GB(GetWaterTileRandomBits(tile), 0, 4)) == GB(_tick_counter, 8, 6);
+	/* Only do depth erosion on rare occasions.
+	 * 6 bits matched means once every 16384 ticks, or about 221 days between erosion. */
+	bool do_erosion = IsTileType(tile, MP_WATER) && (TileHash2Bit(TileX(tile), TileY(tile)) << 4 | GB(GetWaterTileRandomBits(tile), 0, 4)) == GB(_tick_counter, 8, 6);
 
-	if (do_depth_check) {
-		/* Check depth of water */
-		assert(GetWaterClass(tile) != WATER_CLASS_INVALID); // real, open water tiles can't be WATER_CLASS_INVALID
-
-		uint8 num_water_tiles = 0;
-		uint8 required_water_tiles = DIR_END;
-		WaterDepth min_water_depth = WATER_DEPTH_MAX;
-		WaterDepth max_water_depth = WATER_DEPTH_MIN;
-
-		for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
-			TileIndex dest = tile + TileOffsByDir(dir);
-			if (!IsValidTile(dest)) {
-				/* Map edges don't count for requirements */
-				required_water_tiles--;
-				continue;
-			}
-			if (!HasTileWaterClass(dest)) continue;
-			if (!IsTileOnWater(dest)) continue;
-			if (IsTileType(dest, MP_WATER) && GetWaterTileType(dest) == WATER_TILE_COAST) continue;
-			num_water_tiles++;
-
-			if (IsTileType(dest, MP_WATER)) {
-				const WaterDepth depth = GetWaterDepth(dest);
-				min_water_depth = std::min(min_water_depth, depth);
-				max_water_depth = std::max(max_water_depth, depth);
-			}
-		}
-
-		if (GetWaterClass(tile) != WATER_CLASS_SEA) max_water_depth = 2;
-
-		const uint8 current_depth = GetWaterDepth(tile);
-		if (num_water_tiles < required_water_tiles && current_depth > WATER_DEPTH_MIN) {
-			SetWaterDepth(tile, current_depth - 1);
-		} else if (num_water_tiles == required_water_tiles) {
-			WaterDepth new_depth = current_depth + 1;
-			new_depth = std::min<WaterDepth>(min_water_depth + 1, new_depth);
-			new_depth = std::min<WaterDepth>(max_water_depth + 1, new_depth);
-			SetWaterDepth(tile, Clamp(new_depth, WATER_DEPTH_MIN, WATER_DEPTH_MAX));
-		}
+	if (do_erosion) {
+		ErodeWaterTileDepth(tile);
 	}
 
 	switch (GetFloodingBehaviour(tile)) {

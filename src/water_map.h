@@ -73,6 +73,7 @@ enum LockPart {
 };
 
 bool IsPossibleDockingTile(TileIndex t);
+bool ErodeWaterTileDepth(TileIndex tile);
 
 /**
  * Get the water tile type at a tile.
