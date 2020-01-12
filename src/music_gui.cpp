@@ -38,7 +38,7 @@
 struct MusicSystem {
 	struct PlaylistEntry : MusicSongInfo {
 		const MusicSet *set;  ///< music set the song comes from
-		uint set_index;       ///< index of song in set
+		uint set_index;        ///< index of song in set
 
 		PlaylistEntry(const MusicSet *set, uint set_index) : MusicSongInfo(set->songinfo[set_index]), set(set), set_index(set_index) { }
 		bool IsValid() const { return !StrEmpty(this->songname); }
@@ -55,8 +55,6 @@ struct MusicSystem {
 		PLCH_THEMEONLY,
 		PLCH_MAX,
 	};
-
-	MusicSystem() : no_song(&_empty_music_set, 0) { }
 
 	Playlist active_playlist;    ///< current play order of songs, including any shuffle
 	Playlist displayed_playlist; ///< current playlist as displayed in GUI, never in shuffled order
@@ -79,7 +77,7 @@ struct MusicSystem {
 
 	bool IsPlaying() const;
 	bool IsShuffle() const;
-	const PlaylistEntry & GetCurrentSong() const;
+	PlaylistEntry GetCurrentSong() const;
 
 	bool IsCustomPlaylist() const;
 	void PlaylistAdd(size_t song_index);
@@ -93,12 +91,8 @@ private:
 	void SaveCustomPlaylist(PlaylistChoices pl);
 
 	Playlist standard_playlists[PLCH_MAX];
-
-	static MusicSet _empty_music_set; ///< An empty music set that can be referenced when nothing else exists
-	PlaylistEntry no_song;            ///< Entry representing no song playing
 };
 
-MusicSet MusicSystem::_empty_music_set;
 MusicSystem _music;
 
 
@@ -110,9 +104,6 @@ void MusicSystem::BuildPlaylists()
 	/* Clear current playlists */
 	for (size_t i = 0; i < lengthof(this->standard_playlists); ++i) this->standard_playlists[i].clear();
 	this->music_set.clear();
-
-	/* Prepare the no-song item */
-	this->no_song = PlaylistEntry(BaseMusic::GetUsedSet(), 0);
 
 	/* Build standard playlists, and a list of available music */
 	for (uint i = 0; i < NUM_SONGS_AVAILABLE; i++) {
@@ -287,9 +278,9 @@ bool MusicSystem::IsShuffle() const
 }
 
 /** Return the current song, or a dummy if none */
-const MusicSystem::PlaylistEntry & MusicSystem::GetCurrentSong() const
+MusicSystem::PlaylistEntry MusicSystem::GetCurrentSong() const
 {
-	if (!this->IsPlaying()) return this->no_song;
+	if (!this->IsPlaying()) return PlaylistEntry(BaseMusic::GetUsedSet(), 0);
 	return this->active_playlist[this->playlist_position];
 }
 
