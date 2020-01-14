@@ -12,6 +12,7 @@
 
 #include "core/geometry_type.hpp"
 #include "tile_cmd.h"
+#include "table/sprites.h"
 
 static const uint SNOW_LINE_MONTHS = 12; ///< Number of months in the snow line table.
 static const uint SNOW_LINE_DAYS   = 32; ///< Number of days in each month in the snow line table.
@@ -34,6 +35,12 @@ uint8_t LowestSnowLine();
 void ClearSnowLine();
 
 bool IsMapSurroundedByWater();
+
+using WaterDepthSpriteArray = std::array<SpriteID, FLAT_WATER_DEPTH_SPRITE_COUNT>; ///< NewGRF-defined array of water depth sprites.
+
+void SetWaterDepthSprites(const WaterDepthSpriteArray &table);
+SpriteID GetWaterBaseSprite(uint8_t depth);
+void ClearWaterDepthSprites();
 
 int GetSlopeZInCorner(Slope tileh, Corner corner);
 std::tuple<Slope, int> GetFoundationSlope(TileIndex tile);

@@ -106,6 +106,14 @@ static const uint TILE_UPDATE_FREQUENCY = 1 << TILE_UPDATE_FREQUENCY_LOG;  ///< 
 static std::unique_ptr<SnowLine> _snow_line;
 
 /**
+ * Ground sprites to use for water of different depths.
+ *
+ * If this is \c std::nullopt, the default water sprite from the baseset is used.
+ * Otherwise it points to an array of SpriteID values.
+ */
+static std::optional<WaterDepthSpriteArray> _water_depth_sprites = std::nullopt;
+
+/**
  * Map 2D viewport or smallmap coordinate to 3D world or tile coordinate.
  * Function takes into account height of tiles and foundations.
  *
@@ -646,6 +654,34 @@ void ClearSnowLine()
 {
 	_snow_line = nullptr;
 }
+
+/**
+ * Change the water depth sprite mapping.
+ * @param table Array with FLAT_WATER_DEPTH_SPRITE_COUNT SpriteID values to use for each depth level.
+ */
+void SetWaterDepthSprites(const WaterDepthSpriteArray &table)
+{
+	_water_depth_sprites = table;
+}
+
+/**
+ * Get the tile to use for flat water at a specific depth.
+ * @param depth Depth of water to get the sprite for.
+ * @return Water sprite of this specific depth, or standard flat water if none are set.
+ */
+SpriteID GetWaterBaseSprite(WaterDepth depth)
+{
+	assert(depth < FLAT_WATER_DEPTH_SPRITE_COUNT);
+	if (_water_depth_sprites.has_value()) return _water_depth_sprites.value()[depth];
+	return SPR_FLAT_WATER_TILE;
+}
+
+/** Reset the water depth sprite mapping to no depth mapping. */
+void ClearWaterDepthSprites()
+{
+	_water_depth_sprites = std::nullopt;
+}
+
 
 /**
  * Check if all tiles on the map edge should be considered water borders.

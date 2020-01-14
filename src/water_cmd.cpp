@@ -797,6 +797,9 @@ static void DrawWaterSprite(SpriteID base, uint offset, CanalFeature feature, Ti
 	if (base != SPR_FLAT_WATER_TILE) {
 		/* Only call offset callback if the sprite is NewGRF-provided. */
 		offset = GetCanalSpriteOffset(feature, tile, offset);
+	} else {
+		/* Use the regular base sprite for the depth */
+		base = GetWaterBaseSprite(GetWaterDepth(tile));
 	}
 	DrawGroundSprite(base + offset, PAL_NONE);
 }
@@ -859,10 +862,14 @@ static void DrawWaterEdges(bool canal, uint offset, TileIndex tile)
 	}
 }
 
-/** Draw a plain sea water tile with no edges */
-static void DrawSeaWater(TileIndex)
+/**
+ * Draw a plain sea water tile with no edges.
+ * @param tile The tile to draw as sea water.
+ */
+static void DrawSeaWater(TileIndex tile)
 {
-	DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
+	const WaterDepth depth = IsWaterTile(tile) ? GetWaterDepth(tile) : 0;
+	DrawGroundSprite(GetWaterBaseSprite(depth), PAL_NONE);
 }
 
 /**
@@ -989,6 +996,9 @@ static void DrawRiverWater(const TileInfo *ti)
 			offset = GetCanalSpriteOffset(CanalFeature::RiverSlope, ti->tile, offset);
 		}
 	}
+
+	/* If the plain flat tile was selected, use a depth indicating sprite instead. */
+	if (image == SPR_FLAT_WATER_TILE && offset == 0) image = GetWaterBaseSprite(GetWaterDepth(ti->tile));
 
 	DrawGroundSprite(image + offset, PAL_NONE);
 

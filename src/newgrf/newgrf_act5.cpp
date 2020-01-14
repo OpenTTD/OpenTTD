@@ -10,6 +10,8 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../gfx_type.h"
+#include "../water_map.h"
+#include "../landscape.h"
 #include "../newgrf_act5.h"
 #include "../spritecache.h"
 #include "newgrf_bytereader.h"
@@ -79,6 +81,7 @@ static constexpr auto _action5_types = std::to_array<Action5Type>({
 	/* 0x19 */ { Action5BlockType::AllowOffset, SPR_ROAD_WAYPOINTS_BASE,      1, ROAD_WAYPOINTS_SPRITE_COUNT,                 "Road waypoints"           },
 	/* 0x1A */ { Action5BlockType::AllowOffset, SPR_OVERLAY_ROCKS_BASE,       1, OVERLAY_ROCKS_SPRITE_COUNT,                  "Overlay rocks"            },
 	/* 0x1B */ { Action5BlockType::AllowOffset, SPR_BRIDGE_DECKS_BASE,        1, BRIDGE_DECKS_SPRITE_COUNT,                   "Bridge decks"             },
+	/* 0x1C */ { Action5BlockType::Fixed,       SPR_FLAT_WATER_DEPTH_BASE,    1, FLAT_WATER_DEPTH_SPRITE_COUNT,               "Water tiles with depth"   },
 });
 
 /**
@@ -97,7 +100,12 @@ static void GraphicsNew(ByteReader &buf)
 	 *
 	 * B graphics-type What set of graphics the sprites define.
 	 * E num-sprites   How many sprites are in this set?
-	 * V other data    Graphics type specific data.  Currently unused. */
+	 * V other data    Graphics type specific data.
+	 *   type & 0x80:  (high bit set in type)
+	 *     E           Offset of sprite to begin replacing at.
+	 *   type == 0x1C:
+	 *     B*16        Water depth sprite offset map.
+	 */
 
 	uint8_t type = buf.ReadByte();
 	uint16_t num = buf.ReadExtendedByte();
@@ -161,6 +169,26 @@ static void GraphicsNew(ByteReader &buf)
 		static const SpriteID depot_no_track_offset = SPR_TRAMWAY_DEPOT_NO_TRACK - SPR_TRAMWAY_BASE;
 		if (offset <= depot_with_track_offset && offset + num > depot_with_track_offset) _loaded_newgrf_features.tram = TramDepotReplacement::WithTrack;
 		if (offset <= depot_no_track_offset && offset + num > depot_no_track_offset) _loaded_newgrf_features.tram = TramDepotReplacement::WithoutTrack;
+	}
+
+	if (type == 0x1C) {
+		/* Read table of depth-sprite maping */
+		if (!buf.HasData(FLAT_WATER_DEPTH_SPRITE_COUNT)) {
+			GrfMsg(Severity::Warning, "GraphicsNew: {} (type 0x{:02X}) requires a {} byte table following the sprite count for depth sprite map. Skipping.", action5_type->name, type, FLAT_WATER_DEPTH_SPRITE_COUNT);
+		}
+		WaterDepthSpriteArray water_tiles;
+		for (size_t i = 0; i < water_tiles.size(); i++) {
+			uint8_t b = buf.ReadByte();
+			if (b == 0xFF) {
+				water_tiles[i] = SPR_FLAT_WATER_TILE;
+			} else if (b < num) {
+				water_tiles[i] = SPR_FLAT_WATER_DEPTH_BASE + b;
+			} else {
+				GrfMsg(Severity::Warning, "GraphicsNew: {} (type 0x{:02X}) depth mapping table index {} has an invalid sprite offset ({}). Using default sprite.", action5_type->name, type, i, b);
+				water_tiles[i] = SPR_FLAT_WATER_TILE;
+			}
+		}
+		SetWaterDepthSprites(water_tiles);
 	}
 
 	/* If the baseset or grf only provides sprites for flat tiles (pre #10282), duplicate those for use on slopes. */
