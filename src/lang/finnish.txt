@@ -259,7 +259,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Näytä 
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Kun otat tämän käyttöön, myös piilotetut junat näytetään
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Kun otat tämän käyttöön, myös piilotetut ajoneuvot näytetään
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Kun otat tämän käyttöön, myös piilotetut laivat näytetään
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Kun otat tämän käyttöön, myös piilotetut lentokoneet näytetään
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Kun otat tämän käyttöön, myös piilotetut ilma-alukset näytetään
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Oletus
@@ -728,7 +728,7 @@ STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Junat
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Ajoneuvot
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Laivat
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Lentokoneet
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Ilma-alukset
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Kuljetusreitit
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Metsä
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Rautatieasema
@@ -789,11 +789,11 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Asukkaat juhlivat . . .{}{STATION} vastaanottaa ensimmäisen laivan!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Asukkaat juhlivat . . .{}{STATION} vastaanottaa ensimmäisen lentokoneen!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Junaonnettomuus!{}{COMMA} kuolee törmäyksen jälkeisessä tulipallossa.
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Tasoristeysturma!{}Kuljettaja kuolee junan ja auton törmäyksen jälkeisessä tulipallossa
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Tasoristeysturma!{}{COMMA} kuolee junan ja auton törmäyksen jälkeisessä tulipallossa
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Lento-onnettomuus!{}{COMMA} kuolee tulipallossa asemalla {STATION}.
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Lento-onnettomuus!{}Lentokoneelta loppui polttoaine, {COMMA} kuolee tulipallossa
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Junaonnettomuus!{}{COMMA} kuollut törmäyksen jälkeisessä tulipallossa
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Tasoristeysturma!{}Kuljettaja kuollut junan ja auton törmäyksen jälkeisessä tulipallossa
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Tasoristeysturma!{}{COMMA} kuoli junan ja auton törmäyksen jälkeisessä tulipallossa
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Lento-onnettomuus!{}{1:STATION}: {0:COMMA} kuollut tulipallossa
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Lento-onnettomuus!{}Polttoaineen loppuminen johti {COMMA} ihmisen kuolemaan tulipallossa
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}{STATION}: Ilmalaivaonnettomuus!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Ajoneuvo tuhoutui törmäyksessä UFO:n kanssa!
@@ -3814,7 +3814,7 @@ STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} vu
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Huippunopeus: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Huippunopeus: {LTBLUE}{VELOCITY} {BLACK}Ilma-alustyyppi: {LTBLUE}{STRING}
-STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Lentokonetyyppi: {LTBLUE}{STRING} {BLACK}Toimintamatka: {LTBLUE}{COMMA} ruutua
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Huippunopeus: {LTBLUE}{VELOCITY} {BLACK}Ilma-alustyyppi: {LTBLUE}{STRING} {BLACK}Toimintamatka: {LTBLUE}{COMMA} ruutua
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Maks. vetovoima: {LTBLUE}{FORCE}
 

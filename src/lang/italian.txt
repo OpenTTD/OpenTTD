@@ -866,6 +866,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nuov{G o o a} {STRING} disponibile! -  {ENGINE}
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Apri la finestra del gruppo focalizzata sul gruppo del veicolo
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} non accetta più {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} non accetta più {STRING} né {STRING}
@@ -1332,6 +1333,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra la popol
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mosta la popolazione delle città nella loro etichetta sulla mappa
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Spessore delle linee nei grafici: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Larghezza delle linee nei grafici. Le linee sottili sono più leggibili, quelle più spesse sono più facili da vedere e i colori più facili da distinguere
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostra il nome dei NewGRF nella finestra di costruzione dei veicoli: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Aggiungi una linea alla finestra di costruzione dei veicoli, in modo da mostrare da quale NewGRF proviene il veicolo selezionato.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Paesaggio: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :I paesaggi definiscono scenari di gioco di base che differiscono per i carichi disponibili e per i requisiti di crescita delle città. NewGRF e Script offrono tuttavia un controllo più fine su questi aspetti
@@ -1569,10 +1572,16 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Giornali a colori dal: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Anno a partire dal quale le notizie di giornale vengono stampate a colori. Prima di quest'anno, viene utilizzata la monocromia in bianco e nero
 STR_CONFIG_SETTING_STARTING_YEAR                                :Anno di inizio: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Punteggi a fine anno: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Anno in cui il gioco finisce per poter calcolare i punteggi. Alla fine di ques'tanno il punteggio della compagnia viene registrato e viene mostrata la schermata con i punteggi più alti, ma il giocatore può continuare a giocare anche dopo.{}Se quest'anno precede quello di inizio, la schermata dei punteggi non verrà mai mostrata.
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Mai
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Abilita economia fluida (cambiamenti piccoli e frequenti): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Se abilitata, la produzione industriale cambia più spesso e a passi più piccoli. Questa impostazione non ha in genere effetto per i tipi di industria aggiunti da un NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permetti l'acquisto di azioni di altre compagnie: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Se abilitata, consente l'acquisto e la vendita di azioni delle compagnie. Le azioni sono disponibili solo per le compagnie che hanno raggiunto una certa età minima
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Età minima della compagnia per lo scambio delle sue azioni: {STRING}
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Imposta l'età minima di una compagnia affinchè sia possibile acquistarne o venderne le azioni.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentuale profitto da pagare per una tappa di trasferimento: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentuale di ricavi assegnata ai tratti secondari di una catena di trasferimenti. In questo viene dato un maggiore controllo sulla situazione dei ricavi
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Trascinando il cursore, piazza i segnali ogni: {STRING}
@@ -3415,8 +3424,17 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrie
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nessuna -
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% trasportato){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} e {NUM} ancora...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomi delle industrie - fare clic su un nome per centrare la visuale sull'industria. CTRL+clic la mostra in una mini visuale.
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Carichi accettati: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Carico prodotto: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Tutti i tipi di carico
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Nessuno
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -4191,6 +4209,13 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Sceglie 
 STR_AI_LIST_CANCEL                                              :{BLACK}Annulla
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Non modifica lo script utilizzato
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Cattura uno screenshot
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Screenshot normale
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Livello di zoom massimo nello screenshot
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Livello di zoom normale nello screenshot
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Screenshot di tutta la mappa
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Screenshot della heightmap
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Screenshot della minimappa
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri {STRING}
