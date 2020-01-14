@@ -1216,10 +1216,11 @@ void CargoPayment::PayFinalDelivery(const CargoPacket *cp, uint count)
  */
 Money CargoPayment::PayTransfer(const CargoPacket *cp, uint count)
 {
-	Money profit = GetTransportedGoodsIncome(
+	Money profit = -cp->FeederShare(count) + GetTransportedGoodsIncome(
 			count,
-			/* pay transfer vehicle for only the part of transfer it has done: ie. cargo_loaded_at_xy to here */
-			DistanceManhattan(cp->LoadedAtXY(), Station::Get(this->current_station)->xy),
+			/* pay transfer vehicle the difference between the payment for the journey from
+			 * the source to the current point, and the sum of the previous transfer payments */
+			DistanceManhattan(cp->SourceStationXY(), Station::Get(this->current_station)->xy),
 			cp->DaysInTransit(),
 			this->ct);
 
