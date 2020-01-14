@@ -89,6 +89,14 @@ extern const byte _slope_to_sprite_offset[32] = {
 static SnowLine *_snow_line = nullptr;
 
 /**
+ * Ground sprites to use for water of different depths.
+ *
+ * If this is \c nullptr, the default water sprite from the baseset is used.
+ * Otherwise it must point to an array of WATER_DEPTH_MAX SpriteID values.
+ */
+static SpriteID *_water_depth_sprites = nullptr;
+
+/**
  * Map 2D viewport or smallmap coordinate to 3D world or tile coordinate.
  * Function takes into account height of tiles and foundations.
  *
@@ -680,6 +688,41 @@ void ClearSnowLine()
 	free(_snow_line);
 	_snow_line = nullptr;
 }
+
+/** Return whether water depth sprites have been configured. */
+bool HaveWaterDepthSprites()
+{
+	return _water_depth_sprites != nullptr;
+}
+
+/**
+ * Change the water depth sprite mapping.
+ * @param table  Array with WATER_DEPTH_MAX SpriteID values to use for each depth level.
+ */
+void SetWaterDepthSprites(SpriteID *table)
+{
+	ClearWaterDepthSprites();
+	_water_depth_sprites = CallocT<SpriteID>(WATER_DEPTH_MAX);
+	MemCpyT(_water_depth_sprites, table, WATER_DEPTH_MAX);
+}
+
+/**
+ * Get the tile to use for flat water at a specific depth.
+ */
+SpriteID GetWaterBaseSprite(WaterDepth depth)
+{
+	assert(depth < WATER_DEPTH_MAX);
+	if (_water_depth_sprites != nullptr) return _water_depth_sprites[depth];
+	return SPR_FLAT_WATER_TILE;
+}
+
+/** Reset the water depth sprite mapping to no depth mapping. */
+void ClearWaterDepthSprites()
+{
+	free(_water_depth_sprites);
+	_water_depth_sprites = nullptr;
+}
+
 
 /**
  * Clear a piece of landscape

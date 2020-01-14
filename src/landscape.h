@@ -33,6 +33,11 @@ byte HighestSnowLine();
 byte LowestSnowLine();
 void ClearSnowLine();
 
+bool HaveWaterDepthSprites();
+void SetWaterDepthSprites(SpriteID *table);
+SpriteID GetWaterBaseSprite(uint8 depth);
+void ClearWaterDepthSprites();
+
 int GetSlopeZInCorner(Slope tileh, Corner corner);
 Slope GetFoundationSlope(TileIndex tile, int *z = nullptr);
 

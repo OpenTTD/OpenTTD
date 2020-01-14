@@ -722,6 +722,9 @@ static void DrawWaterSprite(SpriteID base, uint offset, CanalFeature feature, Ti
 	if (base != SPR_FLAT_WATER_TILE) {
 		/* Only call offset callback if the sprite is NewGRF-provided. */
 		offset = GetCanalSpriteOffset(feature, tile, offset);
+	} else {
+		/* Use the regular base sprite for the depth */
+		base = GetWaterBaseSprite(GetWaterDepth(tile));
 	}
 	DrawGroundSprite(base + offset, PAL_NONE);
 }
@@ -787,7 +790,8 @@ static void DrawWaterEdges(bool canal, uint offset, TileIndex tile)
 /** Draw a plain sea water tile with no edges */
 static void DrawSeaWater(TileIndex tile)
 {
-	DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
+	const WaterDepth depth = IsWaterTile(tile) ? GetWaterDepth(tile) : 0;
+	DrawGroundSprite(GetWaterBaseSprite(depth), PAL_NONE);
 }
 
 /** draw a canal styled water tile with dikes around */
@@ -909,6 +913,9 @@ static void DrawRiverWater(const TileInfo *ti)
 		}
 	}
 
+	/* If the plain flat tile was selected, use a depth indicating sprite instead. */
+	if (image == SPR_FLAT_WATER_TILE && offset == 0) image = GetWaterBaseSprite(GetWaterDepth(ti->tile));
+
 	DrawGroundSprite(image + offset, PAL_NONE);
 
 	/* Draw river edges if available. */
@@ -948,7 +955,7 @@ static void DrawTile_Water(TileInfo *ti)
 		case WATER_TILE_CLEAR:
 			DrawWaterClassGround(ti);
 #ifdef _DEBUG
-			if (_cur_dpi->zoom <= ZOOM_LVL_VIEWPORT) {
+			if (_cur_dpi->zoom <= ZOOM_LVL_VIEWPORT && !HaveWaterDepthSprites()) {
 				WaterDepth depth = GetWaterDepth(ti->tile);
 				SpriteID spr = SPR_ASCII_SPACE_SMALL + (depth > 9 ? depth + 'A' - 10 : depth + '0') - ' ';
 				DrawGroundSprite(spr, TC_GOLD | (1 << PALETTE_TEXT_RECOLOUR));

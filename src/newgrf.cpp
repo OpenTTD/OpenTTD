@@ -6134,6 +6134,7 @@ static const Action5Type _action5_types[] = {
 	/* 0x16 */ { A5BLOCK_ALLOW_OFFSET, SPR_AIRPORT_PREVIEW_BASE,     1, SPR_AIRPORT_PREVIEW_COUNT,                   "Airport preview graphics" },
 	/* 0x17 */ { A5BLOCK_ALLOW_OFFSET, SPR_RAILTYPE_TUNNEL_BASE,     1, RAILTYPE_TUNNEL_BASE_COUNT,                  "Railtype tunnel base"     },
 	/* 0x18 */ { A5BLOCK_ALLOW_OFFSET, SPR_PALETTE_BASE,             1, PALETTE_SPRITE_COUNT,                        "Palette"                  },
+	/* 0x19 */ { A5BLOCK_FIXED,        SPR_FLAT_WATER_DEPTH_BASE,    1, FLAT_WATER_DEPTH_SPRITE_COUNT,               "Water tiles with depth"   },
 };
 
 /* Action 0x05 */
@@ -6143,7 +6144,12 @@ static void GraphicsNew(ByteReader *buf)
 	 *
 	 * B graphics-type What set of graphics the sprites define.
 	 * E num-sprites   How many sprites are in this set?
-	 * V other data    Graphics type specific data.  Currently unused. */
+	 * V other data    Graphics type specific data.
+	 *   type & 0x80:  (high bit set in type)
+	 *     E           Offset of sprite to begin replacing at.
+	 *   type==0x19:
+	 *     B*16        Water depth sprite offset map.
+	 */
 
 	uint8 type = buf->ReadByte();
 	uint16 num = buf->ReadExtendedByte();
@@ -6207,6 +6213,26 @@ static void GraphicsNew(ByteReader *buf)
 		static const SpriteID depot_no_track_offset = SPR_TRAMWAY_DEPOT_NO_TRACK - SPR_TRAMWAY_BASE;
 		if (offset <= depot_with_track_offset && offset + num > depot_with_track_offset) _loaded_newgrf_features.tram = TRAMWAY_REPLACE_DEPOT_WITH_TRACK;
 		if (offset <= depot_no_track_offset && offset + num > depot_no_track_offset) _loaded_newgrf_features.tram = TRAMWAY_REPLACE_DEPOT_NO_TRACK;
+	}
+
+	if (type == 0x19) {
+		/* Read table of depth-sprite maping */
+		if (!buf->HasData(WATER_DEPTH_MAX)) {
+			grfmsg(1, "GraphicsNew: %s (type 0x%02X) requires a %d byte table following the sprite count for depth sprite map. Skipping.", action5_type->name, type, WATER_DEPTH_MAX);
+		}
+		SpriteID water_tiles[WATER_DEPTH_MAX];
+		for (int i = 0; i < lengthof(water_tiles); i++) {
+			byte b = buf->ReadByte();
+			if (b == 0xFF) {
+				water_tiles[i] = SPR_FLAT_WATER_TILE;
+			} else if (b < num) {
+				water_tiles[i] = SPR_FLAT_WATER_DEPTH_BASE + b;
+			} else {
+				grfmsg(1, "GraphicsNew: %s (type 0x%02X) depth mapping table index %d has an invalid sprite offset (%d). Using default sprite.", action5_type->name, type, i, b);
+				water_tiles[i] = SPR_FLAT_WATER_TILE;
+			}
+		}
+		SetWaterDepthSprites(water_tiles);
 	}
 
 	for (; num > 0; num--) {
@@ -8622,6 +8648,9 @@ void ResetNewGRFData()
 
 	/* Reset canal sprite groups and flags */
 	memset(_water_feature, 0, sizeof(_water_feature));
+
+	/* Reset the water depth sprite mapping. */
+	ClearWaterDepthSprites();
 
 	/* Reset the snowline table. */
 	ClearSnowLine();

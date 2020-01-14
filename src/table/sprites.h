@@ -303,8 +303,12 @@ static const uint16 EMPTY_BOUNDING_BOX_SPRITE_COUNT = 1;
 static const SpriteID SPR_PALETTE_BASE = SPR_EMPTY_BOUNDING_BOX + EMPTY_BOUNDING_BOX_SPRITE_COUNT;
 static const uint16 PALETTE_SPRITE_COUNT = 1;
 
+/* Sprites for flat water with depth */
+static const SpriteID SPR_FLAT_WATER_DEPTH_BASE = SPR_PALETTE_BASE + PALETTE_SPRITE_COUNT;
+static const uint16 FLAT_WATER_DEPTH_SPRITE_COUNT = 16;
+
 /* From where can we start putting NewGRFs? */
-static const SpriteID SPR_NEWGRFS_BASE = SPR_PALETTE_BASE + PALETTE_SPRITE_COUNT;
+static const SpriteID SPR_NEWGRFS_BASE = SPR_FLAT_WATER_DEPTH_BASE + PALETTE_SPRITE_COUNT;
 
 /* Manager face sprites */
 static const SpriteID SPR_GRADIENT = 874; // background gradient behind manager face
