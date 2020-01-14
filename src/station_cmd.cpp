@@ -2536,10 +2536,8 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
-	CommandCost cost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_STATION_DOCK]);
 	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (ret.Failed()) return ret;
-	cost.AddCost(ret);
 
 	TileIndex tile_cur = tile + TileOffsByDiagDir(direction);
 
@@ -2600,7 +2598,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		st->AfterStationTileSetChange(true, STATION_DOCK);
 	}
 
-	return cost;
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_STATION_DOCK]);
 }
 
 void RemoveDockingTile(TileIndex t)
