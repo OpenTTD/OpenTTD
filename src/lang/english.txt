@@ -1191,6 +1191,8 @@ STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Company station
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :When enabled, industries with attached stations (such as Oil Rigs) may also be served by company owned stations built nearby. When disabled, these industries may only be served by their attached stations. Any nearby company stations won't be able to serve them, nor will the attached station serve anything else other than the industry
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Allow removal of more town-owned roads, bridges and tunnels: {STRING2}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Make it easier to remove town-owned infrastructure and buildings
+STR_CONFIG_SETTING_DYNAMITE_RIVER                               :Allow removal of rivers: {STRING2}
+STR_CONFIG_SETTING_DYNAMITE_RIVER_HELPTEXT                      :If disabled, rivers are indestructible and become a permanent part of the landscape
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximum length of trains: {STRING2}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Set the maximum length of trains
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} tile{P 0 "" s}
@@ -1270,6 +1272,8 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Allow drive-thr
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Allow construction of drive-through road stops on town-owned roads
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Allow drive-through road stops on roads owned by competitors: {STRING2}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Allow construction of drive-through road stops on roads owned by other companies
+STR_CONFIG_SETTING_BUILD_ON_COMPETITOR_CANAL                    :Allow water-based structures on canals owned by competitors: {STRING2}
+STR_CONFIG_SETTING_BUILD_ON_COMPETITOR_CANAL_HELPTEXT           :Allow construction of ship depots, docks and locks on canals owned by other companies. Also allow funding or prospecting water-based industries such as Oil Rigs on canals owned by other companies.
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Changing this setting is not possible when there are vehicles
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastructure maintenance: {STRING2}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :When enabled, infrastructure causes maintenance costs. The cost grows over-proportional with the network size, thus affecting bigger companies more than smaller ones
@@ -2623,6 +2627,7 @@ STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Owner: {
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Road owner: {LTBLUE}{STRING1}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Tramway owner: {LTBLUE}{STRING1}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Railway owner: {LTBLUE}{STRING1}
+STR_LAND_AREA_INFORMATION_CANAL_OWNER                           :{BLACK}Canal owner: {LTBLUE}{STRING1}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Local authority: {LTBLUE}{STRING1}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :None
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordinates: {LTBLUE}{NUM} x {NUM} x {NUM} ({RAW_STRING})
@@ -2700,6 +2705,7 @@ STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Waypoint
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Water
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal
+STR_LAI_WATER_DESCRIPTION_CANALISED_RIVER                       :Canalised river
 STR_LAI_WATER_DESCRIPTION_LOCK                                  :Lock
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :River
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Coast or riverbank
@@ -4499,6 +4505,7 @@ STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... can'
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... can't build on river
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Must demolish canal first
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Can't build aqueduct here...
+STR_ERROR_MUST_CLEAR_RIVER_FIRST                                :{WHITE}Must clear river first
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... tree already here

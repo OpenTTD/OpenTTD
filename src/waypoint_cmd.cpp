@@ -313,11 +313,29 @@ CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	Waypoint *wp = FindDeletedWaypointCloseTo(tile, STR_SV_STNAME_BUOY, OWNER_NONE);
 	if (wp == nullptr && !Waypoint::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
+	WaterClass wc = GetWaterClass(tile);
+	Owner oc = wc == WATER_CLASS_CANAL ? GetCanalOwner(tile) : INVALID_OWNER;
+	bool add_cost = !IsWaterTile(tile);
+
 	CommandCost cost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_WAYPOINT_BUOY]);
-	if (!IsWaterTile(tile)) {
-		CommandCost ret = DoCommand(tile, 0, 0, flags | DC_AUTO, CMD_LANDSCAPE_CLEAR);
+	CommandCost ret;
+	if (!add_cost && IsCanal(tile)) {
+		ret = EnsureNoVehicleOnGround(tile);
 		if (ret.Failed()) return ret;
-		cost.AddCost(ret);
+		if (oc != OWNER_NONE) {
+			ret = CheckTileOwnership(tile);
+			if (ret.Failed() && !_settings_game.construction.build_on_competitor_canal) return ret;
+		}
+	} else {
+		ret = DoCommand(tile, 0, 0, flags | DC_AUTO, CMD_LANDSCAPE_CLEAR);
+		if (ret.Failed()) return ret;
+		if (add_cost) {
+			cost.AddCost(ret);
+			if (wc == WATER_CLASS_CANAL && oc != OWNER_NONE) {
+				ret = CheckOwnership(oc, tile);
+				if (ret.Failed() && !_settings_game.construction.build_on_competitor_canal) return ret;
+			}
+		}
 	}
 
 	if (flags & DC_EXEC) {
@@ -339,7 +357,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 		if (wp->town == nullptr) MakeDefaultName(wp);
 
-		MakeBuoy(tile, wp->index, GetWaterClass(tile));
+		MakeBuoy(tile, oc, wp->index, wc);
 		CheckForDockingTile(tile);
 		MarkTileDirtyByTile(tile);
 
@@ -365,6 +383,8 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
 	Waypoint *wp = Waypoint::GetByTile(tile);
 
 	if (HasStationInUse(wp->index, false, _current_company)) return_cmd_error(STR_ERROR_BUOY_IS_IN_USE);
+	WaterClass wc = GetWaterClass(tile);
+	Owner oc = wc == WATER_CLASS_CANAL ? GetCanalOwner(tile) : INVALID_OWNER;
 	/* remove the buoy if there is a ship on tile when company goes bankrupt... */
 	if (!(flags & DC_BANKRUPT)) {
 		CommandCost ret = EnsureNoVehicleOnGround(tile);
@@ -379,7 +399,7 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
 		/* We have to set the water tile's state to the same state as before the
 		 * buoy was placed. Otherwise one could plant a buoy on a canal edge,
 		 * remove it and flood the land (if the canal edge is at level 0) */
-		MakeWaterKeepingClass(tile, GetTileOwner(tile));
+		MakeWaterKeepingClass(tile, oc);
 
 		wp->rect.AfterRemoveTile(wp, tile);
 

@@ -39,6 +39,7 @@
 #include "object_base.h"
 #include "game/game.hpp"
 #include "error.h"
+#include "company_base.h"
 
 #include "table/strings.h"
 #include "table/industry_land.h"
@@ -151,8 +152,9 @@ Industry::~Industry()
 			if (GetIndustryIndex(tile_cur) == this->index) {
 				DeleteNewGRFInspectWindow(GSF_INDUSTRYTILES, tile_cur);
 
+				Owner oc = GetWaterClass(tile_cur) == WATER_CLASS_CANAL ? GetCanalOwner(tile_cur) : INVALID_OWNER;
 				/* MakeWaterKeepingClass() can also handle 'land' */
-				MakeWaterKeepingClass(tile_cur, OWNER_NONE);
+				MakeWaterKeepingClass(tile_cur, oc);
 			}
 		} else if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			DeleteOilRig(tile_cur);
@@ -487,6 +489,14 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 
 	if (is->grf_prop.grffile != nullptr) {
 		td->grf = GetGRFConfig(is->grf_prop.grffile->grfid)->GetName();
+	}
+
+	if (HasTileWaterGround(tile) && GetWaterClass(tile) == WATER_CLASS_CANAL) {
+		Owner canal_owner = GetCanalOwner(tile);
+		if (canal_owner != td->owner[0]) {
+			td->owner_type[1] = STR_LAND_AREA_INFORMATION_CANAL_OWNER;
+			td->owner[1] = GetCanalOwner(tile);
+		}
 	}
 }
 
@@ -946,6 +956,14 @@ static void ChangeTileOwner_Industry(TileIndex tile, Owner old_owner, Owner new_
 	/* If the founder merges, the industry was created by the merged company */
 	Industry *i = Industry::GetByTile(tile);
 	if (i->founder == old_owner) i->founder = (new_owner == INVALID_OWNER) ? OWNER_NONE : new_owner;
+
+	if (HasTileWaterGround(tile) && GetWaterClass(tile) == WATER_CLASS_CANAL) {
+		if (GetCanalOwner(tile) == old_owner) {
+			Company::Get(old_owner)->infrastructure.water--;
+			if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.water++;
+			SetCanalOwner(tile, new_owner == INVALID_OWNER ? OWNER_NONE : new_owner);
+		}
+	}
 }
 
 /**
@@ -1481,10 +1499,21 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 
 				if (ret.Failed()) return ret;
 			} else {
-				/* Clear the tiles, but do not affect town ratings */
-				CommandCost ret = DoCommand(cur_tile, 0, 0, DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, CMD_LANDSCAPE_CLEAR);
+				if ((ind_behav & INDUSTRYBEH_BUILT_ONWATER) && IsWaterTile(cur_tile) && IsCanal(cur_tile) && !IsTileOwner(cur_tile, OWNER_NONE)) {
+					CommandCost ret = CheckTileOwnership(cur_tile);
+					if (ret.Failed()) {
+						if (!Company::IsValidID(_current_company)) {
+							if (_game_mode == GM_NORMAL) return ret;
+						} else {
+							if (!_settings_game.construction.build_on_competitor_canal) return ret;
+						}
+					}
+				} else {
+					/* Clear the tiles, but do not affect town ratings */
+					CommandCost ret = DoCommand(cur_tile, 0, 0, DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, CMD_LANDSCAPE_CLEAR);
 
-				if (ret.Failed()) return ret;
+					if (ret.Failed()) return ret;
+				}
 			}
 		}
 	}
@@ -1872,10 +1901,14 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 			i->location.Add(cur_tile);
 
 			WaterClass wc = (IsWaterTile(cur_tile) ? GetWaterClass(cur_tile) : WATER_CLASS_INVALID);
+			Owner oc = wc == WATER_CLASS_CANAL ? GetCanalOwner(cur_tile) : INVALID_OWNER;
+			bool river = HasTileCanalOnRiver(cur_tile);
 
 			DoCommand(cur_tile, 0, 0, DC_EXEC | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, CMD_LANDSCAPE_CLEAR);
 
-			MakeIndustry(cur_tile, i->index, it.gfx, Random(), wc);
+			MakeIndustry(cur_tile, oc, i->index, it.gfx, Random(), wc);
+			if (Company::IsValidID(oc) && (founder == oc || founder >= MAX_COMPANIES)) Company::Get(oc)->infrastructure.water++;
+			if (river) SetCanalOnRiver(cur_tile);
 
 			if (_generating_world) {
 				SetIndustryConstructionCounter(cur_tile, 3);
@@ -2003,8 +2036,10 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	Industry *ind = nullptr;
 	if (deity_prospect || (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY && _settings_game.construction.raw_industry_construction == 2 && indspec->IsRawIndustry())) {
 		if (flags & DC_EXEC) {
-			/* Prospected industries are build as OWNER_TOWN to not e.g. be build on owned land of the founder */
-			Backup<CompanyID> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
+			/* Prospected industries not built on water are built as OWNER_TOWN to not e.g. be build on owned land of the founder */
+			Owner prospector = OWNER_TOWN;
+			if ((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) && Company::IsValidID(_current_company)) prospector = _current_company;
+			Backup<CompanyID> cur_company(_current_company, prospector, FILE_LINE);
 			/* Prospecting has a chance to fail, however we cannot guarantee that something can
 			 * be built on the map, so the chance gets lower when the map is fuller, but there
 			 * is nothing we can really do about that. */

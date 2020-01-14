@@ -542,7 +542,7 @@ static inline void MakeStation(TileIndex t, Owner o, StationID sid, StationType 
 	SB(_me[t].m6, 2, 1, 0);
 	SB(_me[t].m6, 3, 3, st);
 	_me[t].m7 = 0;
-	_me[t].m8 = 0;
+	SB(_me[t].m8, 0, 14, 0);
 }
 
 /**
@@ -631,40 +631,44 @@ static inline void MakeAirport(TileIndex t, Owner o, StationID sid, byte section
 /**
  * Make the given tile a buoy tile.
  * @param t the tile to make a buoy
+ * @param oc the owner of the canal (only set if it's placed on a canal).
  * @param sid the station to which this tile belongs
  * @param wc the type of water on this tile
  */
-static inline void MakeBuoy(TileIndex t, StationID sid, WaterClass wc)
+static inline void MakeBuoy(TileIndex t, Owner oc, StationID sid, WaterClass wc)
 {
-	/* Make the owner of the buoy tile the same as the current owner of the
-	 * water tile. In this way, we can reset the owner of the water to its
-	 * original state when the buoy gets removed. */
-	MakeStation(t, GetTileOwner(t), sid, STATION_BUOY, 0, wc);
+	/* Make the owner of the buoy tile OWNER_NONE. */
+	MakeStation(t, OWNER_NONE, sid, STATION_BUOY, 0, wc);
+	if (wc == WATER_CLASS_CANAL) SetCanalOwner(t, oc);
 }
 
 /**
  * Make the given tile a dock tile.
  * @param t the tile to make a dock
  * @param o the owner of the dock
+ * @param oc the owner of the canal under the dock (only set if it's placed on a canal).
  * @param sid the station to which this tile belongs
  * @param d the direction of the dock
  * @param wc the type of water on this tile
  */
-static inline void MakeDock(TileIndex t, Owner o, StationID sid, DiagDirection d, WaterClass wc)
+static inline void MakeDock(TileIndex t, Owner o, Owner oc, StationID sid, DiagDirection d, WaterClass wc)
 {
 	MakeStation(t, o, sid, STATION_DOCK, d);
 	MakeStation(t + TileOffsByDiagDir(d), o, sid, STATION_DOCK, GFX_DOCK_BASE_WATER_PART + DiagDirToAxis(d), wc);
+	if (wc == WATER_CLASS_CANAL) SetCanalOwner(t + TileOffsByDiagDir(d), oc);
 }
 
 /**
  * Make the given tile an oilrig tile.
  * @param t the tile to make an oilrig
+ * @param oc the owner of the canal (only set if it's placed on a canal).
  * @param sid the station to which this tile belongs
  * @param wc the type of water on this tile
  */
-static inline void MakeOilrig(TileIndex t, StationID sid, WaterClass wc)
+static inline void MakeOilrig(TileIndex t, Owner oc, StationID sid, WaterClass wc)
 {
 	MakeStation(t, OWNER_NONE, sid, STATION_OILRIG, 0, wc);
+	if (wc == WATER_CLASS_CANAL) SetCanalOwner(t, oc);
 }
 
 #endif /* STATION_MAP_H */

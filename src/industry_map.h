@@ -270,12 +270,13 @@ static inline void SetIndustryTriggers(TileIndex tile, byte triggers)
 /**
  * Make the given tile an industry tile
  * @param t      the tile to make an industry tile
+ * @param oc     the owner of the canal (only set if it's placed on a canal).
  * @param index  the industry this tile belongs to
  * @param gfx    the graphics to use for the tile
  * @param random the random value
  * @param wc     the water class for this industry; only useful when build on water
  */
-static inline void MakeIndustry(TileIndex t, IndustryID index, IndustryGfx gfx, uint8 random, WaterClass wc)
+static inline void MakeIndustry(TileIndex t, Owner oc, IndustryID index, IndustryGfx gfx, uint8 random, WaterClass wc)
 {
 	SetTileType(t, MP_INDUSTRY);
 	_m[t].m1 = 0;
@@ -285,6 +286,7 @@ static inline void MakeIndustry(TileIndex t, IndustryID index, IndustryGfx gfx, 
 	SetIndustryGfx(t, gfx); // m5, part of m6
 	SetIndustryTriggers(t, 0); // rest of m6
 	SetWaterClass(t, wc);
+	if (wc == WATER_CLASS_CANAL) SetCanalOwner(t, oc);
 	_me[t].m7 = 0;
 }
 

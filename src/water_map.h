@@ -53,6 +53,12 @@ enum WaterClass {
 /** Helper information for extract tool. */
 template <> struct EnumPropsT<WaterClass> : MakeEnumPropsT<WaterClass, byte, WATER_CLASS_SEA, WATER_CLASS_INVALID, WATER_CLASS_INVALID, 2> {};
 
+/** Bases of a canal (for #WATER_CLASS_CANAL class of water). */
+enum CanalBase {
+	WCC_WITHOUT_RIVER = 0, ///< Without a river under it
+	WCC_WITH_RIVER    = 1, ///< With a river under it
+};
+
 /** Sections of the water depot. */
 enum DepotPart {
 	DEPOT_PART_NORTH = 0, ///< Northern part of a depot.
@@ -119,6 +125,40 @@ static inline void SetWaterClass(TileIndex t, WaterClass wc)
 {
 	assert(HasTileWaterClass(t));
 	SB(_m[t].m1, 5, 2, wc);
+}
+
+/**
+ * Get the base of the canal at a tile.
+ * @param t Water tile to query.
+ * @pre GetWaterClass(t) == WATER_CLASS_CANAL
+ * @return Base of the canal at the tile.
+ */
+static inline CanalBase GetCanalBase(TileIndex t)
+{
+	assert(GetWaterClass(t) == WATER_CLASS_CANAL);
+	return (CanalBase)HasBit(_me[t].m8, 15) ? WCC_WITH_RIVER : WCC_WITHOUT_RIVER;
+}
+
+/**
+ * Set the base of the canal to indicate there is a river under a tile.
+ * @param t Water tile of water class canal to query.
+ * @pre GetWaterClass(t) == WATER_CLASS_CANAL
+ */
+static inline void SetCanalOnRiver(TileIndex t)
+{
+	assert(GetWaterClass(t) == WATER_CLASS_CANAL);
+	SB(_me[t].m8, 15, 1, WCC_WITH_RIVER);
+}
+
+/**
+ * Checks whether the canal at a tile has a river under it.
+ * @param t Water tile of water class canal to query.
+ * @pre GetWaterClass(t) == WATER_CLASS_CANAL
+ * @return true if the canal has a river under it.
+ */
+static inline bool HasTileCanalOnRiver(TileIndex t)
+{
+	return HasTileWaterClass(t) && GetWaterClass(t) == WATER_CLASS_CANAL && GetCanalBase(t) == WCC_WITH_RIVER;
 }
 
 /**
@@ -367,6 +407,41 @@ static inline bool IsDockingTile(TileIndex t)
 	return (IsTileType(t, MP_WATER) || IsTileType(t, MP_RAILWAY) || IsTileType(t, MP_STATION) || IsTileType(t, MP_TUNNELBRIDGE)) && HasBit(_m[t].m1, 7);
 }
 
+/**
+ * Set the owner of the canal at the tile
+ * @param t The tile to change.
+ * @param oc The new owner of the canal at the tile.
+ * @pre GetWaterClass(t) == WATER_CLASS_CANAL
+ * @pre oc != OWNER_TOWN && oc != OWNER_DEITY && oc != OWNER_WATER && oc < OWNER_END
+ */
+static inline void SetCanalOwner(TileIndex t, Owner oc)
+{
+	assert(GetWaterClass(t) == WATER_CLASS_CANAL);
+	assert(oc != OWNER_TOWN && oc != OWNER_DEITY && oc != OWNER_WATER && oc < OWNER_END);
+
+	/* OWNER_NONE (10) is stored as OWNER_TOWN (0F) */
+	if (oc == OWNER_NONE) oc = OWNER_TOWN;
+	SB(_me[t].m6, 0, 2, GB(oc, 0, 2));
+	SB(_me[t].m6, 6, 2, GB(oc, 2, 2));
+}
+
+ /**
+ * Get the owner of the canal at the tile
+ * @param t The tile to check.
+ * @return Owner of the canal at the tile.
+ * @pre HasTileWaterGround(t) && GetWaterClass(t) == WATER_CLASS_CANAL
+ */
+static inline Owner GetCanalOwner(TileIndex t)
+{
+	assert(HasTileWaterGround(t) && GetWaterClass(t) == WATER_CLASS_CANAL);
+
+	Owner oc = (Owner)(GB(_me[t].m6, 0, 2) | (GB(_me[t].m6, 6, 2) << 2));
+
+	/* Canals don't need OWNER_TOWN, and remapping OWNER_NONE
+	 * to OWNER_TOWN makes it use one bit less. */
+	return oc == OWNER_TOWN ? OWNER_NONE : oc;
+}
+
 
 /**
  * Helper function to make a coast tile.
@@ -429,29 +504,32 @@ static inline void MakeRiver(TileIndex t, uint8 random_bits)
 /**
  * Make a canal tile
  * @param t The tile to change into canal
- * @param o The owner of the canal
+ * @param o The owner of the canal (also the owner of the tile)
  * @param random_bits Random bits to be set for this tile
  */
 static inline void MakeCanal(TileIndex t, Owner o, uint8 random_bits)
 {
 	assert(o != OWNER_WATER);
 	MakeWater(t, o, WATER_CLASS_CANAL, random_bits);
+	SetCanalOwner(t, o);
 }
 
 /**
  * Make a ship depot section.
  * @param t    Tile to place the ship depot section.
  * @param o    Owner of the depot.
+ * @param oc   Owner of the canal (only set if it's placed on a canal).
  * @param did  Depot ID.
  * @param part Depot part (either #DEPOT_PART_NORTH or #DEPOT_PART_SOUTH).
  * @param a    Axis of the depot.
  * @param original_water_class Original water class.
  */
-static inline void MakeShipDepot(TileIndex t, Owner o, DepotID did, DepotPart part, Axis a, WaterClass original_water_class)
+static inline void MakeShipDepot(TileIndex t, Owner o, Owner oc, DepotID did, DepotPart part, Axis a, WaterClass original_water_class)
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
 	SetWaterClass(t, original_water_class);
+	if (original_water_class == WATER_CLASS_CANAL) SetCanalOwner(t, oc);
 	SetDockingTile(t, false);
 	_m[t].m2 = did;
 	_m[t].m3 = 0;
@@ -465,16 +543,18 @@ static inline void MakeShipDepot(TileIndex t, Owner o, DepotID did, DepotPart pa
  * Make a lock section.
  * @param t Tile to place the water lock section.
  * @param o Owner of the lock.
+ * @param oc Owner of the canal (only set if it's placed on canal).
  * @param part Part to place.
  * @param dir Lock orientation
  * @param original_water_class Original water class.
  * @see MakeLock
  */
-static inline void MakeLockTile(TileIndex t, Owner o, LockPart part, DiagDirection dir, WaterClass original_water_class)
+static inline void MakeLockTile(TileIndex t, Owner o, Owner oc, LockPart part, DiagDirection dir, WaterClass original_water_class)
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
 	SetWaterClass(t, original_water_class);
+	if (original_water_class == WATER_CLASS_CANAL) SetCanalOwner(t, oc);
 	SetDockingTile(t, false);
 	_m[t].m2 = 0;
 	_m[t].m3 = 0;
@@ -487,21 +567,23 @@ static inline void MakeLockTile(TileIndex t, Owner o, LockPart part, DiagDirecti
 /**
  * Make a water lock.
  * @param t Tile to place the water lock section.
- * @param o Owner of the lock.
+ * @param o Owner of the lock (also the owner of the canal at the middle part).
+ * @param oc_lower Owner of the canal at the lower part.
+ * @param oc_upper Owner of the canal at the upper part.
  * @param d Direction of the water lock.
  * @param wc_lower Original water class of the lower part.
  * @param wc_upper Original water class of the upper part.
  * @param wc_middle Original water class of the middle part.
  */
-static inline void MakeLock(TileIndex t, Owner o, DiagDirection d, WaterClass wc_lower, WaterClass wc_upper, WaterClass wc_middle)
+static inline void MakeLock(TileIndex t, Owner o, Owner oc_lower, Owner oc_upper, DiagDirection d, WaterClass wc_lower, WaterClass wc_upper, WaterClass wc_middle)
 {
 	TileIndexDiff delta = TileOffsByDiagDir(d);
 
 	/* Keep the current waterclass and owner for the tiles.
 	 * It allows to restore them after the lock is deleted */
-	MakeLockTile(t, o, LOCK_PART_MIDDLE, d, wc_middle);
-	MakeLockTile(t - delta, IsWaterTile(t - delta) ? GetTileOwner(t - delta) : o, LOCK_PART_LOWER, d, wc_lower);
-	MakeLockTile(t + delta, IsWaterTile(t + delta) ? GetTileOwner(t + delta) : o, LOCK_PART_UPPER, d, wc_upper);
+	MakeLockTile(t, o, o, LOCK_PART_MIDDLE, d, wc_middle);
+	MakeLockTile(t - delta, o, oc_lower, LOCK_PART_LOWER, d, wc_lower);
+	MakeLockTile(t + delta, o, oc_upper, LOCK_PART_UPPER, d, wc_upper);
 }
 
 #endif /* WATER_MAP_H */

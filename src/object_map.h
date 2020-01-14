@@ -67,15 +67,17 @@ static inline byte GetObjectRandomBits(TileIndex t)
  * Make an Object tile.
  * @param t      The tile to make and object tile.
  * @param o      The new owner of the tile.
+ * @param oc     The owner of the canal (only set if it's placed on canal).
  * @param index  Index to the object.
  * @param wc     Water class for this object.
  * @param random Random data to store on the tile
  */
-static inline void MakeObject(TileIndex t, Owner o, ObjectID index, WaterClass wc, byte random)
+static inline void MakeObject(TileIndex t, Owner o, Owner oc, ObjectID index, WaterClass wc, byte random)
 {
 	SetTileType(t, MP_OBJECT);
 	SetTileOwner(t, o);
 	SetWaterClass(t, wc);
+	if (wc == WATER_CLASS_CANAL) SetCanalOwner(t, oc);
 	_m[t].m2 = index;
 	_m[t].m3 = random;
 	_m[t].m4 = 0;

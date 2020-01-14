@@ -561,6 +561,14 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
 	switch (t) {
 		case MP_INDUSTRY: return MKCOLOUR_XXXX(PC_DARK_GREY);
 		case MP_HOUSE:    return MKCOLOUR_XXXX(PC_DARK_RED);
+		case MP_STATION:
+			if (IsBuoy(tile) && GetWaterClass(tile) == WATER_CLASS_CANAL) {
+				o = GetCanalOwner(tile);
+			} else {
+				o = GetTileOwner(tile);
+			}
+			break;
+
 		default:          o = GetTileOwner(tile); break;
 		/* FIXME: For MP_ROAD there are multiple owners.
 		 * GetTileOwner returns the rail owner (level crossing) resp. the owner of ROADTYPE_ROAD (normal road),

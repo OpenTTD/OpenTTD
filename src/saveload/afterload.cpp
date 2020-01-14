@@ -899,7 +899,7 @@ bool AfterLoadGame()
 				BaseStation *bst = BaseStation::GetByTile(t);
 
 				/* Sanity check */
-				if (!IsBuoy(t) && bst->owner != GetTileOwner(t)) SlErrorCorrupt("Wrong owner for station tile");
+				if (!(IsSavegameVersionBefore(SLV_BUILD_ON_COMPETITOR_CANAL) && IsBuoyTile(t)) && bst->owner != GetTileOwner(t)) SlErrorCorrupt("Wrong owner for station tile");
 
 				/* Set up station spread */
 				bst->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
@@ -3124,6 +3124,72 @@ bool AfterLoadGame()
 				SetRoadTypes(t, INVALID_ROADTYPE, INVALID_ROADTYPE);
 			}
 		}
+	}
+
+	if (IsSavegameVersionBefore(SLV_BUILD_ON_COMPETITOR_CANAL)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			/* There was no real way to store canals owners before this version.
+			 * Set the canal owner to be the same as the tile owner. */
+			if (IsWaterTile(t) && IsCanal(t)) {
+				SetCanalOwner(t, GetTileOwner(t));
+			}
+			/* Set the canal owner under a dock to be the same as the tile owner. */
+			if (IsDockTile(t) && GetWaterClass(t) == WATER_CLASS_CANAL) {
+				SetCanalOwner(t, GetTileOwner(t));
+			}
+			/* Set the canal owner under a ship depot to be the same as the tile owner. */
+			if (IsShipDepotTile(t) && GetWaterClass(t) == WATER_CLASS_CANAL) {
+				SetCanalOwner(t, GetTileOwner(t));
+			}
+			/* Buoy owner was the same of that of the water when placed. That would
+			 * mean it could be any company, but also OWNER_WATER and OWNER_NONE. */
+			if (IsBuoyTile(t)) {
+				if (GetWaterClass(t) == WATER_CLASS_CANAL) {
+					SetCanalOwner(t, GetTileOwner(t));
+				}
+				/* From this version on, buoy owner is always OWNER_NONE. */
+				if (GetWaterClass(t) != WATER_CLASS_CANAL && GetTileOwner(t) == OWNER_WATER) {
+					SetTileOwner(t, OWNER_NONE);
+				}
+			}
+			/* Set the canal owner under an industry tile to OWNER_NONE. */
+			if (IsTileType(t, MP_INDUSTRY) && GetWaterClass(t) == WATER_CLASS_CANAL) {
+				SetCanalOwner(t, OWNER_NONE);
+			}
+			/* Set the canal owner under an oil rig station tile to OWNER_NONE. */
+			if (IsTileType(t, MP_STATION) && IsOilRig(t) && GetWaterClass(t) == WATER_CLASS_CANAL) {
+				SetCanalOwner(t, OWNER_NONE);
+			}
+			/* The tile owner of LOCK_PART_LOWER and LOCK_PART_UPPER was either
+			 * the owner of the water or the owner of the lock. The tile owner of
+			 * LOCK_PART_MIDDLE was the real owner of the lock. */
+			if (IsTileType(t, MP_WATER) && IsLock(t)) {
+				if (GetWaterClass(t) == WATER_CLASS_CANAL) {
+					/* First, set the canal owner under every lock part to be the
+					 * same as the tile owner. */
+					SetCanalOwner(t, GetTileOwner(t));
+				}
+				/* Then, set the tile owner of LOCK_PART_LOWER and LOCK_PART_UPPER
+				 * to be the same as the owner of the LOCK_PART_MIDDLE. */
+				static const TileIndexDiffC _lock_tomiddle_offs[][DIAGDIR_END] = {
+					/*   NE       SE       SW       NW      */
+					{ { 0, 0}, {0,  0}, { 0, 0}, {0,  0} }, // LOCK_PART_MIDDLE
+					{ {-1, 0}, {0,  1}, { 1, 0}, {0, -1} }, // LOCK_PART_LOWER
+					{ { 1, 0}, {0, -1}, {-1, 0}, {0,  1} }, // LOCK_PART_UPPER
+				};
+				if (GetLockPart(t) != LOCK_PART_MIDDLE) {
+					SetTileOwner(t, GetTileOwner(t + ToTileIndexDiff(_lock_tomiddle_offs[GetLockPart(t)][GetLockDirection(t)])));
+				}
+			}
+			/* Set the canal owner under an object tile to be the same as the tile owner. */
+			if (IsTileType(t, MP_OBJECT) && GetWaterClass(t) == WATER_CLASS_CANAL) {
+				SetCanalOwner(t, GetTileOwner(t));
+			}
+		}
+		/* When loading an older version, treat 'build_on_competitor_canal' as enabled. */
+		_settings_game.construction.build_on_competitor_canal = true;
+		/* When loading an older version, treat 'dynamite_river' as enabled. */
+		_settings_game.construction.dynamite_river = true;
 	}
 
 	/* Compute station catchment areas. This is needed here in case UpdateStationAcceptance is called below. */
