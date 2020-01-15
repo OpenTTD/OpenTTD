@@ -35,7 +35,7 @@ extern SettingTable _world_settings;
 extern SettingTable _win32_settings;
 #endif /* _WIN32 */
 
-static const uint GAME_DIFFICULTY_NUM = 18;
+static const uint GAME_DIFFICULTY_NUM = 19;
 extern const std::array<std::string, GAME_DIFFICULTY_NUM> _old_diff_settings;
 extern std::array<uint16_t, GAME_DIFFICULTY_NUM> _old_diff_custom;
 

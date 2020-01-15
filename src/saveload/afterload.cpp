@@ -3226,6 +3226,8 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SaveLoadVersion::WaterDepth)) {
+		/* Set difficulty to "original" */
+		_settings_game.difficulty.water_clearing_cost_exponent = 0;
 		/* Make sure water tiles have an appropriate depth */
 		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Water)) SetWaterDepth(t, 0);

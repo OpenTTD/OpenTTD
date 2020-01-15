@@ -609,6 +609,21 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 	}
 }
 
+/**
+ * Multiplier to apply to clear water depending on the depth.
+ * @param depth Depth of the water.
+ * @return Multiplier to apply based on the difficulty setting.
+ */
+static int WaterClearCostMultiplier(WaterDepth depth)
+{
+	const int real_depth = std::max<int>(depth, 1);
+	switch (_settings_game.difficulty.water_clearing_cost_exponent) {
+		case 0: return 1;
+		case 1: return real_depth;
+		case 2: return real_depth * real_depth;
+		default: NOT_REACHED();
+	}
+}
 
 /** @copydoc ClearTileProc */
 static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
@@ -635,9 +650,8 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 				if (ret.Failed()) return ret;
 			}
 
-			/* Deeper water is much more expensive to clear */
-			const int real_depth = std::max<int>(GetWaterDepth(tile), 1);
-			const int cost_multiplier = real_depth * real_depth;
+			/* Adjust for deep water clearing cost */
+			const int cost_multiplier = WaterClearCostMultiplier(GetWaterDepth(tile));
 
 			if (flags.Test(DoCommandFlag::Execute)) {
 				if (IsCanal(tile) && Company::IsValidID(owner)) {
@@ -669,8 +683,8 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
 			if (ret.Failed()) return ret;
 
-			/* Deeper water is more expensive to clear */
-			const int cost_multiplier = GetWaterDepth(tile) + 1;
+			/* Adjust for deep water clearing cost */
+			const int cost_multiplier = WaterClearCostMultiplier(GetWaterDepth(tile));
 
 			if (flags.Test(DoCommandFlag::Execute)) {
 				DoClearSquare(tile);

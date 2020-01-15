@@ -165,6 +165,7 @@ struct DifficultySettings {
 	bool disasters; ///< are disasters enabled
 	uint8_t town_council_tolerance; ///< minimum required town ratings to be allowed to demolish stuff
 	bool infinite_money; ///< whether spending money despite negative balance is allowed
+	uint8_t water_clearing_cost_exponent; ///< how the cost of clearing water tiles grows depending on depth
 };
 
 /** Possible values for the `order_review_system` setting. */

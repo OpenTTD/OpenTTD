@@ -1249,6 +1249,11 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive (no effect on company actions)
 
+###length 3
+STR_WATER_CLEARING_COST_ORIGINAL                                :None
+STR_WATER_CLEARING_COST_LINEAR                                  :Linear
+STR_WATER_CLEARING_COST_QUADRATIC                               :Quadratic
+
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No suitable AIs available...{}{}You can download several AIs via the 'Online Content' system
 
 # Settings tree in the Game Options window
@@ -1373,6 +1378,8 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toggle disaster
 
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Local authority attitude: {STRING2}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Choose how much noise and environmental damage by companies affect their town rating and further construction actions in the town
+STR_CONFIG_SETTING_WATER_CLEARING_COST                          :Influence of water depths on modification cost: {STRING2}
+STR_CONFIG_SETTING_WATER_CLEARING_COST_HELPTEXT                 :Choose how expensive modifying/clearing deep water tiles is.{}None means all water tiles cost the same to clear regardless of depth. Linear means the regular cost must be paid for every depth level, makes modifying ocean expensive. Quadratic means the depth level is squared and multiplied by cost, makes modifying ocean extremely expensive.
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Map height limit: {STRING2}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Set the maximum height of the map terrain. With "(auto)" a good value will be picked after terrain generation

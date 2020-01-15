@@ -718,6 +718,7 @@ SettingsContainer &GetSettingsTree()
 			accounting->Add(new SettingEntry("difficulty.vehicle_costs"));
 			accounting->Add(new SettingEntry("difficulty.construction_cost"));
 			accounting->Add(new SettingEntry("economy.cargo_aging_rate"));
+			accounting->Add(new SettingEntry("difficulty.water_clearing_cost_exponent"));
 		}
 
 		SettingsPage *vehicles = main->Add(new SettingsPage(STR_CONFIG_SETTING_VEHICLES));
