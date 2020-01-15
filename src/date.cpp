@@ -203,7 +203,7 @@ static void OnNewYear()
 	if (_cur_year == _settings_game.game_creation.ending_year + 1) {
 		ShowEndGameChart();
 	/* check if we reached the maximum year, decrement dates by a year */
-	} else if (_cur_year == MAX_YEAR + 1) {
+	} else if (_cur_year > _settings_game.game_creation.loop_year) {
 		int days_this_year;
 
 		_cur_year--;

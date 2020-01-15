@@ -1701,6 +1701,7 @@ static SettingsContainer &GetSettingsTree()
 			genworld->Add(new SettingEntry("difficulty.industry_density"));
 			genworld->Add(new SettingEntry("gui.pause_on_newgame"));
 			genworld->Add(new SettingEntry("game_creation.ending_year"));
+			genworld->Add(new SettingEntry("game_creation.loop_year"));
 		}
 
 		SettingsPage *environment = main->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT));

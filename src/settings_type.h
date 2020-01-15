@@ -280,6 +280,7 @@ struct GameCreationSettings {
 	uint32 generation_seed;                  ///< noise seed for world generation
 	Year   starting_year;                    ///< starting date
 	Year   ending_year;                      ///< scoring end date
+	Year   loop_year;                        ///< groundhog year
 	uint8  map_x;                            ///< X size of map
 	uint8  map_y;                            ///< Y size of map
 	byte   land_generator;                   ///< the landscape generator
