@@ -276,3 +276,25 @@
 			return 0;
 	}
 }
+
+/* static */ bool ScriptEngine::EnableForCompany(EngineID engine_id, ScriptCompany::CompanyID company)
+{
+	company = ScriptCompany::ResolveCompanyID(company);
+
+	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforcePrecondition(false, IsValidEngine(engine_id));
+	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
+
+	return ScriptObject::DoCommand(0, engine_id, (uint32)company | (1 << 31), CMD_ENGINE_CTRL);
+}
+
+/* static */ bool ScriptEngine::DisableForCompany(EngineID engine_id, ScriptCompany::CompanyID company)
+{
+	company = ScriptCompany::ResolveCompanyID(company);
+
+	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforcePrecondition(false, IsValidEngine(engine_id));
+	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
+
+	return ScriptObject::DoCommand(0, engine_id, company, CMD_ENGINE_CTRL);
+}
