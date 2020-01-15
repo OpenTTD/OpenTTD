@@ -6217,10 +6217,10 @@ static void GraphicsNew(ByteReader *buf)
 
 	if (type == 0x19) {
 		/* Read table of depth-sprite maping */
-		if (!buf->HasData(WATER_DEPTH_MAX)) {
+		if (!buf->HasData(FLAT_WATER_DEPTH_SPRITE_COUNT)) {
 			grfmsg(1, "GraphicsNew: %s (type 0x%02X) requires a %d byte table following the sprite count for depth sprite map. Skipping.", action5_type->name, type, WATER_DEPTH_MAX);
 		}
-		SpriteID water_tiles[WATER_DEPTH_MAX];
+		SpriteID water_tiles[FLAT_WATER_DEPTH_SPRITE_COUNT];
 		for (int i = 0; i < lengthof(water_tiles); i++) {
 			byte b = buf->ReadByte();
 			if (b == 0xFF) {

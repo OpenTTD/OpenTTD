@@ -702,8 +702,8 @@ bool HaveWaterDepthSprites()
 void SetWaterDepthSprites(SpriteID *table)
 {
 	ClearWaterDepthSprites();
-	_water_depth_sprites = CallocT<SpriteID>(WATER_DEPTH_MAX);
-	MemCpyT(_water_depth_sprites, table, WATER_DEPTH_MAX);
+	_water_depth_sprites = CallocT<SpriteID>(FLAT_WATER_DEPTH_SPRITE_COUNT);
+	MemCpyT(_water_depth_sprites, table, FLAT_WATER_DEPTH_SPRITE_COUNT);
 }
 
 /**
@@ -711,7 +711,7 @@ void SetWaterDepthSprites(SpriteID *table)
  */
 SpriteID GetWaterBaseSprite(WaterDepth depth)
 {
-	assert(depth < WATER_DEPTH_MAX);
+	assert(depth < FLAT_WATER_DEPTH_SPRITE_COUNT);
 	if (_water_depth_sprites != nullptr) return _water_depth_sprites[depth];
 	return SPR_FLAT_WATER_TILE;
 }
