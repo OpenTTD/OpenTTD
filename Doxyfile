@@ -7,8 +7,8 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
-PROJECT_NAME           = OpenTTD
-PROJECT_NUMBER         =
+PROJECT_NAME           = "OpenTTD Source"
+PROJECT_NUMBER         = $(VERSION)
 PROJECT_BRIEF          =
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       = docs/source/
