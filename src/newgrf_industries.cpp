@@ -340,6 +340,13 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 			}
 		}
 
+		/* Water depth (byte) at nearby tile, if it's water, otherwise 0 */
+		case 0x72: {
+			if (this->tile == INVALID_TILE) break;
+			TileIndex tile = GetNearbyTile(parameter, this->tile);
+			return IsWaterTile(this->tile) ? GetWaterDepth(this->tile) : 0;
+		}
+
 
 		case 0x6E:
 		case 0x6F: {
