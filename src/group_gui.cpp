@@ -425,6 +425,8 @@ public:
 
 			case WID_GL_LIST_VEHICLE:
 				this->ComputeGroupInfoSize();
+				for (uint i = 0; i < 4; i++) SetDParamMaxValue(i, INT32_MAX);
+				size->width = max(size->width, GetStringBoundingBox(STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR_LIFETIME).width);
 				resize->height = GetVehicleListHeight(this->vli.vtype, this->tiny_step_height);
 				size->height = 4 * resize->height;
 				break;
