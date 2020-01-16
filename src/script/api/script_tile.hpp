@@ -312,6 +312,14 @@ public:
 	static int32 GetCornerHeight(TileIndex tile, Corner corner);
 
 	/**
+	 * Get the water depth of a tile.
+	 * @param tile The tile to check on.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @return Water depth, range 0 (shallow) to 15 (deepest).
+	 */
+	static int32 GetWaterDepth(TileIndex tile);
+
+	/**
 	 * Get the owner of the tile.
 	 * @param tile The tile to get the owner from.
 	 * @pre ScriptMap::IsValidTile(tile).
