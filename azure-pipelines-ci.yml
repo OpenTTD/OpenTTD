@@ -39,8 +39,6 @@ jobs:
 
   strategy:
     matrix:
-      commit-checker:
-        Tag: 'commit-checker'
       linux-amd64-clang-3.9:
         Tag: 'linux-amd64-clang-3.9'
       linux-amd64-gcc-6:
