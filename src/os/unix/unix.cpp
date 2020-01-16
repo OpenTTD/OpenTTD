@@ -271,16 +271,18 @@ int CDECL main(int argc, char *argv[])
 bool GetClipboardContents(char *buffer, const char *last)
 {
 #ifdef WITH_SDL2
-	char *clip;
+	if (SDL_HasClipboardText() == SDL_FALSE) {
+		return false;
+	}
 
-	if (SDL_HasClipboardText() == SDL_TRUE && (clip = SDL_GetClipboardText()) != NULL) {
+	char *clip = SDL_GetClipboardText();
+	if (clip != NULL) {
 		strecpy(buffer, clip, last);
 		return true;
 	}
-	else return false;
-#else
-	return false;
 #endif
+
+	return false;
 }
 #endif
 
