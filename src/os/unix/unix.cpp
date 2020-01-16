@@ -24,6 +24,10 @@
 #include <time.h>
 #include <signal.h>
 
+#ifdef WITH_SDL2
+#include <SDL.h>
+#endif
+
 #ifdef __APPLE__
 	#include <sys/mount.h>
 #elif (defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L) || defined(__GLIBC__)
@@ -266,7 +270,17 @@ int CDECL main(int argc, char *argv[])
 #ifndef WITH_COCOA
 bool GetClipboardContents(char *buffer, const char *last)
 {
+#ifdef WITH_SDL2
+	char *clip;
+
+	if (SDL_HasClipboardText() == SDL_TRUE && (clip = SDL_GetClipboardText()) != NULL) {
+		strecpy(buffer, clip, last);
+		return true;
+	}
+	else return false;
+#else
 	return false;
+#endif
 }
 #endif
 
