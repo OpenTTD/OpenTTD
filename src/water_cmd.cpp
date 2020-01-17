@@ -37,6 +37,7 @@
 #include "company_gui.h"
 #include "newgrf_generic.h"
 #include "industry.h"
+#include "cheat_type.h"
 #include "water_cmd.h"
 #include "landscape_cmd.h"
 
@@ -238,15 +239,27 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 		wc = WATER_CLASS_CANAL;
 	}
 
+	bool river = HasTileCanalOnRiver(tile);
 	/* Zero map array and terminate animation */
 	DoClearSquare(tile);
 
 	/* Maybe change to water */
 	switch (wc) {
-		case WATER_CLASS_SEA:   MakeSea(tile);                break;
-		case WATER_CLASS_CANAL: MakeCanal(tile, o, Random()); break;
-		case WATER_CLASS_RIVER: MakeRiver(tile, Random());    break;
-		default: break;
+		case WATER_CLASS_SEA:
+			MakeSea(tile);
+			break;
+
+		case WATER_CLASS_CANAL:
+			MakeCanal(tile, o, Random());
+			if (river) SetCanalOnRiver(tile);
+			break;
+
+		case WATER_CLASS_RIVER:
+			MakeRiver(tile, Random());
+			break;
+
+		default:
+			break;
 	}
 
 	if (wc != WATER_CLASS_INVALID) CheckForDockingTile(tile);
@@ -472,6 +485,7 @@ CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, TileIndex start_t
 		/* Outside the editor, prevent building canals over your own or OWNER_NONE owned canals */
 		if (water && IsCanal(current_tile) && _game_mode != GM_EDITOR && (IsTileOwner(current_tile, _current_company) || IsTileOwner(current_tile, OWNER_NONE))) continue;
 
+		bool river = (HasTileCanalOnRiver(current_tile) && wc == WATER_CLASS_CANAL) || (HasTileWaterClass(current_tile) && GetWaterClass(current_tile) == WATER_CLASS_RIVER);
 		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, current_tile);
 		if (ret.Failed()) return ret;
 
@@ -503,6 +517,7 @@ CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, TileIndex start_t
 					}
 
 					MakeCanal(current_tile, _current_company, Random());
+					if (river) SetCanalOnRiver(current_tile);
 					break;
 			}
 			MarkTileDirtyByTile(current_tile);
@@ -543,15 +558,24 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 				if (ret.Failed()) return ret;
 			}
 
+			if (IsRiver(tile) && _game_mode == GM_NORMAL && !_settings_game.construction.dynamite_river && !_cheats.magic_bulldozer.value) {
+				return CommandCost();
+			}
+
 			if (flags & DC_EXEC) {
 				if (IsCanal(tile) && Company::IsValidID(owner)) {
 					Company::Get(owner)->infrastructure.water--;
 					DirtyCompanyInfrastructureWindows(owner);
 				}
 				bool remove = IsDockingTile(tile);
+				bool river = HasTileCanalOnRiver(tile);
 				DoClearSquare(tile);
+				if (river) {
+					MakeRiver(tile, Random());
+				} else if (remove) {
+					RemoveDockingTile(tile);
+				}
 				MarkCanalsAndRiversAroundDirty(tile);
-				if (remove) RemoveDockingTile(tile);
 			}
 
 			return CommandCost(EXPENSES_CONSTRUCTION, base_cost);
@@ -955,10 +979,24 @@ static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 	switch (GetWaterTileType(tile)) {
 		case WATER_TILE_CLEAR:
 			switch (GetWaterClass(tile)) {
-				case WATER_CLASS_SEA:   td->str = STR_LAI_WATER_DESCRIPTION_WATER; break;
-				case WATER_CLASS_CANAL: td->str = STR_LAI_WATER_DESCRIPTION_CANAL; break;
-				case WATER_CLASS_RIVER: td->str = STR_LAI_WATER_DESCRIPTION_RIVER; break;
-				default: NOT_REACHED();
+				case WATER_CLASS_SEA:
+					td->str = STR_LAI_WATER_DESCRIPTION_WATER;
+					break;
+
+				case WATER_CLASS_CANAL:
+					if (HasTileCanalOnRiver(tile)) {
+						td->str = STR_LAI_WATER_DESCRIPTION_CANALISED_RIVER;
+					} else {
+						td->str = STR_LAI_WATER_DESCRIPTION_CANAL;
+					}
+					break;
+
+				case WATER_CLASS_RIVER:
+					td->str = STR_LAI_WATER_DESCRIPTION_RIVER;
+					break;
+
+				default:
+					NOT_REACHED();
 			}
 			break;
 		case WATER_TILE_COAST: td->str = STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK; break;
@@ -1373,8 +1411,23 @@ static VehicleEnterTileStatus VehicleEnter_Water(Vehicle *v, TileIndex tile, int
 
 static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
 {
+	bool no_err_message = _game_mode == GM_NORMAL && !_settings_game.construction.dynamite_river && !_cheats.magic_bulldozer.value;
+
 	/* Canals can't be terraformed */
-	if (IsWaterTile(tile) && IsCanal(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_CANAL_FIRST);
+	if (IsCanal(tile)) {
+		if (HasTileCanalOnRiver(tile) && no_err_message) {
+			return CMD_ERROR;
+		}
+		return_cmd_error(STR_ERROR_MUST_DEMOLISH_CANAL_FIRST);
+	}
+
+	/* Rivers can't be terraformed */
+	if (IsRiver(tile)) {
+		if (no_err_message) {
+			return CMD_ERROR;
+		}
+		return_cmd_error(STR_ERROR_MUST_CLEAR_RIVER_FIRST);
+	}
 
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }

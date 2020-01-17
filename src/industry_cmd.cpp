@@ -1884,10 +1884,12 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 			i->location.Add(cur_tile);
 
 			WaterClass wc = (IsWaterTile(cur_tile) ? GetWaterClass(cur_tile) : WATER_CLASS_INVALID);
+			bool river = HasTileCanalOnRiver(cur_tile);
 
 			Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, cur_tile);
 
 			MakeIndustry(cur_tile, i->index, it.gfx, Random(), wc);
+			if (river) SetCanalOnRiver(cur_tile);
 
 			if (_generating_world) {
 				SetIndustryConstructionCounter(cur_tile, 3);
