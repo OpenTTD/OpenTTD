@@ -14,6 +14,7 @@
 #include "window_gui.h"
 #include "screenshot.h"
 #include "textbuf_gui.h"
+#include "strings_func.h"
 
 #include "widgets/screenshot_widget.h"
 
@@ -57,6 +58,8 @@ struct ScreenshotWindow : Window {
 		if ((uint64)vp.width * (uint64)vp.height > 8192 * 8192) {
 			/* Ask for confirmation */
 			_screenshot_type = st;
+			SetDParam(0, vp.width);
+			SetDParam(1, vp.height);
 			ShowQuery(STR_WARNING_SCREENSHOT_SIZE_CAPTION, STR_WARNING_SCREENSHOT_SIZE_MESSAGE, nullptr, ScreenshotConfirmationCallback);
 		}
 		else {
