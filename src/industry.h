@@ -129,6 +129,8 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	TimerGameCalendar::Date construction_date{}; ///< Date of the construction of the industry
 	IndustryConstructionType construction_type{}; ///< Way the industry was constructed (@see IndustryConstructionType)
 	uint8_t selected_layout = 0; ///< Which tile layout was used when creating the industry
+	WaterDepth water_depth_min; ///< Shallowest water depth the industry was constructed over
+	WaterDepth water_depth_max; ///< Deepest water depth the industry was constructed over
 	Owner exclusive_supplier = INVALID_OWNER; ///< Which company has exclusive rights to deliver cargo (INVALID_OWNER = anyone)
 	Owner exclusive_consumer = INVALID_OWNER; ///< Which company has exclusive rights to take cargo (INVALID_OWNER = anyone)
 	EncodedString text{}; ///< General text with additional information.

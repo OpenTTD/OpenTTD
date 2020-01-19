@@ -197,6 +197,8 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, selected_layout, VarTypes::U8, SaveLoadVersion::NewGRFIndustryLayout, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Industry, exclusive_supplier, VarTypes::U8, SaveLoadVersion::GSIndustryControl, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Industry, exclusive_consumer, VarTypes::U8, SaveLoadVersion::GSIndustryControl, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Industry, water_depth_min, VarTypes::U8, SaveLoadVersion::WaterDepth, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Industry, water_depth_max, VarTypes::U8, SaveLoadVersion::WaterDepth, SaveLoadVersion::MaxVersion),
 
 	SLEG_CONDARR("storage", _old_ind_persistent_storage.storage, VarFileType::U32 | VarMemType::I32, 16, SaveLoadVersion::NewGRFPersistentStorage, SaveLoadVersion::PersistentStoragePool),
 	SLE_CONDREF(Industry, psa, SLRefType::Storage, SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::MaxVersion),
