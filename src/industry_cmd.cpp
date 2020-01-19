@@ -1623,6 +1623,34 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 	return true;
 }
 
+/**
+ * Get the min and max water depth an industry layout will cover at a given location.
+ * @param layout          The industry tile layout to check
+ * @param base_tile       Where to place the industry layout on the map for the check
+ * @param[out] min_depth  Receives the shallowest depth found in covered water tiles
+ * @param[out] max_depth  Receives the deepest depth found in covered water tiles
+ * @return True if any water tiles were covered, and the min_depth and max_depth values are valid.
+ *         False if no water tiles were covered by the layout, the values of min_depth and max_depth are invalid.
+ */
+bool GetIndustryLayoutWaterDepthMinMax(const IndustryTileLayout &layout, TileIndex base_tile, WaterDepth &min_depth, WaterDepth &max_depth)
+{
+	bool found_water = false;
+	min_depth = WATER_DEPTH_MAX;
+	max_depth = WATER_DEPTH_MIN;
+	for (const IndustryTileLayoutTile &lt : layout) {
+		TileIndex tile = base_tile + ToTileIndexDiff(lt.ti);
+		if (lt.gfx == GFX_WATERTILE_SPECIALCHECK) continue;
+		if (!IsValidTile(tile)) continue;
+		if (!IsWaterTile(tile)) continue;
+		found_water = true;
+		WaterDepth depth = GetWaterDepth(tile);
+		min_depth = std::min(depth, min_depth);
+		max_depth = std::max(depth, max_depth);
+	}
+	if (!found_water) min_depth = max_depth = 0;
+	return found_water;
+}
+
 
 /**
  * Check that the new industry is far enough from conflicting industries.
@@ -1764,6 +1792,8 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->construction_date = _date;
 	i->construction_type = (_game_mode == GM_EDITOR) ? ICT_SCENARIO_EDITOR :
 			(_generating_world ? ICT_MAP_GENERATION : ICT_NORMAL_GAMEPLAY);
+
+	GetIndustryLayoutWaterDepthMinMax(layout, tile, i->water_depth_min, i->water_depth_max);
 
 	/* Adding 1 here makes it conform to specs of var44 of varaction2 for industries
 	 * 0 = created prior of newindustries

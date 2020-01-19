@@ -96,6 +96,8 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	uint8 construction_type;       ///< Way the industry was constructed (@see IndustryConstructionType)
 	Date last_cargo_accepted_at[INDUSTRY_NUM_INPUTS]; ///< Last day each cargo type was accepted by this industry
 	byte selected_layout;          ///< Which tile layout was used when creating the industry
+	WaterDepth water_depth_min;    ///< Shallowest water depth the industry was constructed over
+	WaterDepth water_depth_max;    ///< Deepest water depth the industry was constructed over
 	Owner exclusive_supplier;      ///< Which company has exclusive rights to deliver cargo (INVALID_OWNER = anyone)
 	Owner exclusive_consumer;      ///< Which company has exclusive rights to take cargo (INVALID_OWNER = anyone)
 	std::string text;              ///< General text with additional information.
