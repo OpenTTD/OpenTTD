@@ -71,9 +71,23 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, type != SPET_GOAL || ScriptGoal::IsValidGoal((ScriptGoal::GoalID)reference));
 	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, type != SPET_GOAL || !(StoryPage::Get(story_page_id)->company == INVALID_COMPANY && Goal::Get(reference)->company != INVALID_COMPANY));
 
-	if (!ScriptObject::DoCommand(type == SPET_LOCATION ? reference : 0,
+	uint32 refid = 0;
+	TileIndex reftile = 0;
+	switch (type) {
+		case SPET_LOCATION:
+			reftile = reference;
+			break;
+		case SPET_GOAL:
+		case SPET_BUTTON_PUSH:
+		case SPET_BUTTON_TILE:
+		case SPET_BUTTON_VEHICLE:
+			refid = reference;
+			break;
+	}
+
+	if (!ScriptObject::DoCommand(reftile,
 			story_page_id + (type << 16),
-			type == SPET_GOAL ? reference : 0,
+			refid,
 			CMD_CREATE_STORY_PAGE_ELEMENT,
 			StoryPageElementTypeRequiresText(btype) ? text->GetEncodedText() : nullptr,
 			&ScriptInstance::DoCommandReturnStoryPageElementID)) return STORY_PAGE_ELEMENT_INVALID;
@@ -98,9 +112,23 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforcePrecondition(false, type != ::SPET_GOAL || ScriptGoal::IsValidGoal((ScriptGoal::GoalID)reference));
 	EnforcePrecondition(false, type != ::SPET_GOAL || !(p->company == INVALID_COMPANY && Goal::Get(reference)->company != INVALID_COMPANY));
 
-	return ScriptObject::DoCommand(type == ::SPET_LOCATION ? reference : 0,
+	uint32 refid = 0;
+	TileIndex reftile = 0;
+	switch (type) {
+		case SPET_LOCATION:
+			reftile = reference;
+			break;
+		case SPET_GOAL:
+		case SPET_BUTTON_PUSH:
+		case SPET_BUTTON_TILE:
+		case SPET_BUTTON_VEHICLE:
+			refid = reference;
+			break;
+	}
+
+	return ScriptObject::DoCommand(reftile,
 			story_page_element_id,
-			type == ::SPET_GOAL ? reference : 0,
+			refid,
 			CMD_UPDATE_STORY_PAGE_ELEMENT,
 			StoryPageElementTypeRequiresText(type) ? text->GetEncodedText() : nullptr);
 }
@@ -178,5 +206,28 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforcePrecondition(false, IsValidStoryPageElement(story_page_element_id));
 
 	return ScriptObject::DoCommand(0, story_page_element_id, 0, CMD_REMOVE_STORY_PAGE_ELEMENT);
+}
+
+/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakePushButtonReference(StoryPageButtonColour colour)
+{
+	StoryPageButtonData data;
+	data.SetColour((Colours)colour);
+	if (!data.ValidateColour()) return UINT32_MAX;
+	return data.referenced_id;
+}
+
+/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakeTileButtonReference(StoryPageButtonColour colour, StoryPageButtonCursor cursor)
+{
+	StoryPageButtonData data;
+	data.SetColour((Colours)colour);
+	data.SetCursor((::StoryPageButtonCursor)cursor);
+	if (!data.ValidateColour()) return UINT32_MAX;
+	if (!data.ValidateCursor()) return UINT32_MAX;
+	return data.referenced_id;
+}
+
+/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonCursor cursor)
+{
+	return MakeTileButtonReference(colour, cursor);
 }
 

@@ -66,6 +66,95 @@ public:
 	};
 
 	/**
+	 * Formatting data for button page elements.
+	 */
+	typedef uint32 StoryPageButtonFormatting;
+
+	/**
+	 * Mouse cursors usable by story page buttons.
+	 */
+	enum StoryPageButtonCursor {
+		SPBC_MOUSE          = ::SPBC_MOUSE,
+		SPBC_ZZZ            = ::SPBC_ZZZ,
+		SPBC_BUOY           = ::SPBC_BUOY,
+		SPBC_QUERY          = ::SPBC_QUERY,
+		SPBC_HQ             = ::SPBC_HQ,
+		SPBC_SHIP_DEPOT     = ::SPBC_SHIP_DEPOT,
+		SPBC_SIGN           = ::SPBC_SIGN,
+		SPBC_TREE           = ::SPBC_TREE,
+		SPBC_BUY_LAND       = ::SPBC_BUY_LAND,
+		SPBC_LEVEL_LAND     = ::SPBC_LEVEL_LAND,
+		SPBC_TOWN           = ::SPBC_TOWN,
+		SPBC_INDUSTRY       = ::SPBC_INDUSTRY,
+		SPBC_ROCKY_AREA     = ::SPBC_ROCKY_AREA,
+		SPBC_DESERT         = ::SPBC_DESERT,
+		SPBC_TRANSMITTER    = ::SPBC_TRANSMITTER,
+		SPBC_AIRPORT        = ::SPBC_AIRPORT,
+		SPBC_DOCK           = ::SPBC_DOCK,
+		SPBC_CANAL          = ::SPBC_CANAL,
+		SPBC_LOCK           = ::SPBC_LOCK,
+		SPBC_RIVER          = ::SPBC_RIVER,
+		SPBC_AQUEDUCT       = ::SPBC_AQUEDUCT,
+		SPBC_BRIDGE         = ::SPBC_BRIDGE,
+		SPBC_RAIL_STATION   = ::SPBC_RAIL_STATION,
+		SPBC_TUNNEL_RAIL    = ::SPBC_TUNNEL_RAIL,
+		SPBC_TUNNEL_ELRAIL  = ::SPBC_TUNNEL_ELRAIL,
+		SPBC_TUNNEL_MONO    = ::SPBC_TUNNEL_MONO,
+		SPBC_TUNNEL_MAGLEV  = ::SPBC_TUNNEL_MAGLEV,
+		SPBC_AUTORAIL       = ::SPBC_AUTORAIL,
+		SPBC_AUTOELRAIL     = ::SPBC_AUTOELRAIL,
+		SPBC_AUTOMONO       = ::SPBC_AUTOMONO,
+		SPBC_AUTOMAGLEV     = ::SPBC_AUTOMAGLEV,
+		SPBC_WAYPOINT       = ::SPBC_WAYPOINT,
+		SPBC_RAIL_DEPOT     = ::SPBC_RAIL_DEPOT,
+		SPBC_ELRAIL_DEPOT   = ::SPBC_ELRAIL_DEPOT,
+		SPBC_MONO_DEPOT     = ::SPBC_MONO_DEPOT,
+		SPBC_MAGLEV_DEPOT   = ::SPBC_MAGLEV_DEPOT,
+		SPBC_CONVERT_RAIL   = ::SPBC_CONVERT_RAIL,
+		SPBC_CONVERT_ELRAIL = ::SPBC_CONVERT_ELRAIL,
+		SPBC_CONVERT_MONO   = ::SPBC_CONVERT_MONO,
+		SPBC_CONVERT_MAGLEV = ::SPBC_CONVERT_MAGLEV,
+		SPBC_AUTOROAD       = ::SPBC_AUTOROAD,
+		SPBC_AUTOTRAM       = ::SPBC_AUTOTRAM,
+		SPBC_ROAD_DEPOT     = ::SPBC_ROAD_DEPOT,
+		SPBC_BUS_STATION    = ::SPBC_BUS_STATION,
+		SPBC_TRUCK_STATION  = ::SPBC_TRUCK_STATION,
+		SPBC_ROAD_TUNNEL    = ::SPBC_ROAD_TUNNEL,
+		SPBC_CLONE_TRAIN    = ::SPBC_CLONE_TRAIN,
+		SPBC_CLONE_ROADVEH  = ::SPBC_CLONE_ROADVEH,
+		SPBC_CLONE_SHIP     = ::SPBC_CLONE_SHIP,
+		SPBC_CLONE_AIRPLANE = ::SPBC_CLONE_AIRPLANE,
+		SPBC_DEMOLISH       = ::SPBC_DEMOLISH,
+		SPBC_LOWERLAND      = ::SPBC_LOWERLAND,
+		SPBC_RAISELAND      = ::SPBC_RAISELAND,
+		SPBC_PICKSTATION    = ::SPBC_PICKSTATION,
+		SPBC_BUILDSIGNALS   = ::SPBC_BUILDSIGNALS,
+	};
+
+	/**
+	 * Colour codes usable for story page button elements.
+	 * Place a colour value in the lowest 8 bits of the \c reference parameter to the button.
+	 */
+	enum StoryPageButtonColour {
+		SPBC_DARK_BLUE  = ::COLOUR_DARK_BLUE,
+		SPBC_PALE_GREEN = ::COLOUR_PALE_GREEN,
+		SPBC_PINK       = ::COLOUR_PINK,
+		SPBC_YELLOW     = ::COLOUR_YELLOW,
+		SPBC_RED        = ::COLOUR_RED,
+		SPBC_LIGHT_BLUE = ::COLOUR_LIGHT_BLUE,
+		SPBC_GREEN      = ::COLOUR_GREEN,
+		SPBC_DARK_GREEN = ::COLOUR_DARK_GREEN,
+		SPBC_BLUE       = ::COLOUR_BLUE,
+		SPBC_CREAM      = ::COLOUR_CREAM,
+		SPBC_MAUVE      = ::COLOUR_MAUVE,
+		SPBC_PURPLE     = ::COLOUR_PURPLE,
+		SPBC_ORANGE     = ::COLOUR_ORANGE,
+		SPBC_BROWN      = ::COLOUR_BROWN,
+		SPBC_GREY       = ::COLOUR_GREY,
+		SPBC_WHITE      = ::COLOUR_WHITE,
+	};
+
+	/**
 	 * Check whether this is a valid story page ID.
 	 * @param story_page_id The StoryPageID to check.
 	 * @return True if and only if this story page is valid.
@@ -93,7 +182,11 @@ public:
 	 * Create a new story page element.
 	 * @param story_page_id The page id of the story page which the page element should be appended to.
 	 * @param type Which page element type to create.
-	 * @param reference A reference value to the object that is referred to by some page element types. When type is SPET_GOAL, this is the goal ID. When type is SPET_LOCATION, this is the TileIndex.
+	 * @param reference A reference value to the object that is referred to by some page element types.
+	 *                  When type is SPET_GOAL, this is the goal ID.
+	 *                  When type is SPET_LOCATION, this is the TileIndex.
+	 *                  When type is a button, this is additional parameters for the button,
+	 *                  use the #BuildPushButtonReference, #BuildTileButtonReference, or #BuildVehicleButtonReference functions to make the values.
 	 * @param text The body text of page elements that allow custom text. (SPET_TEXT and SPET_LOCATION)
 	 * @return The new StoryPageElementID, or STORY_PAGE_ELEMENT_INVALID if it failed.
 	 * @pre No ScriptCompanyMode may be in scope.
@@ -207,6 +300,29 @@ public:
 	 * @pre IsValidStoryPageElement(story_page_element_id).
 	 */
 	static bool RemoveElement(StoryPageElementID story_page_element_id);
+
+	/**
+	 * Create a reference value for SPET_BUTTON_PUSH element parameters.
+	 * @param colour The colour for the face of the button.
+	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
+	 */
+	static StoryPageButtonFormatting MakePushButtonReference(StoryPageButtonColour colour);
+
+	/**
+	 * Create a reference value for SPET_BUTTON_TILE element parameters.
+	 * @param colour The colour for the face of the button.
+	 * @param cursor The mouse cursor to use when the player clicks the button and the game is ready for the player to select a tile.
+	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
+	 */
+	static StoryPageButtonFormatting MakeTileButtonReference(StoryPageButtonColour colour, StoryPageButtonCursor cursor);
+
+	/**
+	 * Create a reference value for SPET_BUTTON_VEHICLE element parameters.
+	 * @param colour The colour for the face of the button.
+	 * @param cursor The mouse cursor to use when the player clicks the button and the game is ready for the player to select a vehicle.
+	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
+	 */
+	static StoryPageButtonFormatting MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonCursor cursor);
 };
 
 #endif /* SCRIPT_STORY_HPP */

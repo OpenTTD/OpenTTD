@@ -13,6 +13,7 @@
 #include "company_type.h"
 #include "story_type.h"
 #include "date_type.h"
+#include "gfx_type.h"
 #include "core/pool_type.hpp"
 
 typedef Pool<StoryPageElement, StoryPageElementID, 64, 64000> StoryPageElementPool;
@@ -38,6 +39,82 @@ enum StoryPageElementType : byte {
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<StoryPageElementType> : MakeEnumPropsT<StoryPageElementType, byte, SPET_TEXT, SPET_END, INVALID_SPET, 8> {};
+
+/** Mouse cursors usable by story page buttons. */
+enum StoryPageButtonCursor : byte {
+	SPBC_MOUSE,
+	SPBC_ZZZ,
+	SPBC_BUOY,
+	SPBC_QUERY,
+	SPBC_HQ,
+	SPBC_SHIP_DEPOT,
+	SPBC_SIGN,
+	SPBC_TREE,
+	SPBC_BUY_LAND,
+	SPBC_LEVEL_LAND,
+	SPBC_TOWN,
+	SPBC_INDUSTRY,
+	SPBC_ROCKY_AREA,
+	SPBC_DESERT,
+	SPBC_TRANSMITTER,
+	SPBC_AIRPORT,
+	SPBC_DOCK,
+	SPBC_CANAL,
+	SPBC_LOCK,
+	SPBC_RIVER,
+	SPBC_AQUEDUCT,
+	SPBC_BRIDGE,
+	SPBC_RAIL_STATION,
+	SPBC_TUNNEL_RAIL,
+	SPBC_TUNNEL_ELRAIL,
+	SPBC_TUNNEL_MONO,
+	SPBC_TUNNEL_MAGLEV,
+	SPBC_AUTORAIL,
+	SPBC_AUTOELRAIL,
+	SPBC_AUTOMONO,
+	SPBC_AUTOMAGLEV,
+	SPBC_WAYPOINT,
+	SPBC_RAIL_DEPOT,
+	SPBC_ELRAIL_DEPOT,
+	SPBC_MONO_DEPOT,
+	SPBC_MAGLEV_DEPOT,
+	SPBC_CONVERT_RAIL,
+	SPBC_CONVERT_ELRAIL,
+	SPBC_CONVERT_MONO,
+	SPBC_CONVERT_MAGLEV,
+	SPBC_AUTOROAD,
+	SPBC_AUTOTRAM,
+	SPBC_ROAD_DEPOT,
+	SPBC_BUS_STATION,
+	SPBC_TRUCK_STATION,
+	SPBC_ROAD_TUNNEL,
+	SPBC_CLONE_TRAIN,
+	SPBC_CLONE_ROADVEH,
+	SPBC_CLONE_SHIP,
+	SPBC_CLONE_AIRPLANE,
+	SPBC_DEMOLISH,
+	SPBC_LOWERLAND,
+	SPBC_RAISELAND,
+	SPBC_PICKSTATION,
+	SPBC_BUILDSIGNALS,
+	SPBC_END,
+	INVALID_SPBC = 0xFF
+};
+
+/** Define basic enum properties */
+template <> struct EnumPropsT<StoryPageButtonCursor> : MakeEnumPropsT<StoryPageButtonCursor, byte, SPBC_MOUSE, SPBC_END, INVALID_SPBC, 8> {};
+
+/** Helper to construct packed "id" values for button-type StoryPageElement */
+struct StoryPageButtonData {
+	uint32 referenced_id;
+
+	void SetColour(Colours button_colour);
+	void SetCursor(StoryPageButtonCursor cursor);
+	Colours GetColour() const;
+	StoryPageButtonCursor GetCursor() const;
+	bool ValidateColour() const;
+	bool ValidateCursor() const;
+};
 
 /**
  * Struct about story page elements.

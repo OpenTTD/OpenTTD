@@ -33,6 +33,8 @@
 
 #include "safeguards.h"
 
+static CursorID TranslateStoryPageButtonCursor(StoryPageButtonCursor cursor);
+
 typedef GUIList<const StoryPage*> GUIStoryPageList;
 typedef GUIList<const StoryPageElement*> GUIStoryPageElementList;
 
@@ -420,7 +422,8 @@ protected:
 					ResetObjectToPlace();
 					this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
 				} else {
-					SetObjectToPlaceWnd(SPR_CURSOR_QUERY, PAL_NONE, HT_RECT, this);
+					CursorID cursor = TranslateStoryPageButtonCursor(StoryPageButtonData{ pe.referenced_id }.GetCursor());
+					SetObjectToPlaceWnd(cursor, PAL_NONE, HT_RECT, this);
 					this->active_button_id = pe.index;
 				}
 				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
@@ -431,7 +434,8 @@ protected:
 					ResetObjectToPlace();
 					this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
 				} else {
-					SetObjectToPlaceWnd(SPR_CURSOR_QUERY, PAL_NONE, HT_VEHICLE, this);
+					CursorID cursor = TranslateStoryPageButtonCursor(StoryPageButtonData{ pe.referenced_id }.GetCursor());
+					SetObjectToPlaceWnd(cursor, PAL_NONE, HT_VEHICLE, this);
 					this->active_button_id = pe.index;
 				}
 				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
@@ -593,8 +597,9 @@ public:
 					const int bmargin = WD_BEVEL_BOTTOM + WD_FRAMETEXT_BOTTOM;
 					const int hmargin = (right - x) / 5;
 					const FrameFlags frame = this->active_button_id == pe->index ? FR_LOWERED : FR_NONE;
+					const Colours bgcolour = StoryPageButtonData{ pe->referenced_id }.GetColour();
 
-					DrawFrameRect(hmargin, y_offset, right - x - hmargin, y_offset + height + tmargin + bmargin, COLOUR_MAUVE, frame);
+					DrawFrameRect(hmargin, y_offset, right - x - hmargin, y_offset + height + tmargin + bmargin, bgcolour, frame);
 
 					SetDParamStr(0, pe->text);
 					DrawString(hmargin + WD_BEVEL_LEFT, right - x - hmargin - WD_BEVEL_RIGHT, y_offset + tmargin, STR_JUST_RAW_STRING, TC_WHITE, SA_CENTER);
@@ -844,6 +849,68 @@ static WindowDesc _story_book_desc(
 	0,
 	_nested_story_book_widgets, lengthof(_nested_story_book_widgets)
 );
+
+static CursorID TranslateStoryPageButtonCursor(StoryPageButtonCursor cursor)
+{
+	switch (cursor) {
+		case SPBC_MOUSE:          return SPR_CURSOR_MOUSE;
+		case SPBC_ZZZ:            return SPR_CURSOR_ZZZ;
+		case SPBC_BUOY:           return SPR_CURSOR_BUOY;
+		case SPBC_QUERY:          return SPR_CURSOR_QUERY;
+		case SPBC_HQ:             return SPR_CURSOR_HQ;
+		case SPBC_SHIP_DEPOT:     return SPR_CURSOR_SHIP_DEPOT;
+		case SPBC_SIGN:           return SPR_CURSOR_SIGN;
+		case SPBC_TREE:           return SPR_CURSOR_TREE;
+		case SPBC_BUY_LAND:       return SPR_CURSOR_BUY_LAND;
+		case SPBC_LEVEL_LAND:     return SPR_CURSOR_LEVEL_LAND;
+		case SPBC_TOWN:           return SPR_CURSOR_TOWN;
+		case SPBC_INDUSTRY:       return SPR_CURSOR_INDUSTRY;
+		case SPBC_ROCKY_AREA:     return SPR_CURSOR_ROCKY_AREA;
+		case SPBC_DESERT:         return SPR_CURSOR_DESERT;
+		case SPBC_TRANSMITTER:    return SPR_CURSOR_TRANSMITTER;
+		case SPBC_AIRPORT:        return SPR_CURSOR_AIRPORT;
+		case SPBC_DOCK:           return SPR_CURSOR_DOCK;
+		case SPBC_CANAL:          return SPR_CURSOR_CANAL;
+		case SPBC_LOCK:           return SPR_CURSOR_LOCK;
+		case SPBC_RIVER:          return SPR_CURSOR_RIVER;
+		case SPBC_AQUEDUCT:       return SPR_CURSOR_AQUEDUCT;
+		case SPBC_BRIDGE:         return SPR_CURSOR_BRIDGE;
+		case SPBC_RAIL_STATION:   return SPR_CURSOR_RAIL_STATION;
+		case SPBC_TUNNEL_RAIL:    return SPR_CURSOR_TUNNEL_RAIL;
+		case SPBC_TUNNEL_ELRAIL:  return SPR_CURSOR_TUNNEL_ELRAIL;
+		case SPBC_TUNNEL_MONO:    return SPR_CURSOR_TUNNEL_MONO;
+		case SPBC_TUNNEL_MAGLEV:  return SPR_CURSOR_TUNNEL_MAGLEV;
+		case SPBC_AUTORAIL:       return SPR_CURSOR_AUTORAIL;
+		case SPBC_AUTOELRAIL:     return SPR_CURSOR_AUTOELRAIL;
+		case SPBC_AUTOMONO:       return SPR_CURSOR_AUTOMONO;
+		case SPBC_AUTOMAGLEV:     return SPR_CURSOR_AUTOMAGLEV;
+		case SPBC_WAYPOINT:       return SPR_CURSOR_WAYPOINT;
+		case SPBC_RAIL_DEPOT:     return SPR_CURSOR_RAIL_DEPOT;
+		case SPBC_ELRAIL_DEPOT:   return SPR_CURSOR_ELRAIL_DEPOT;
+		case SPBC_MONO_DEPOT:     return SPR_CURSOR_MONO_DEPOT;
+		case SPBC_MAGLEV_DEPOT:   return SPR_CURSOR_MAGLEV_DEPOT;
+		case SPBC_CONVERT_RAIL:   return SPR_CURSOR_CONVERT_RAIL;
+		case SPBC_CONVERT_ELRAIL: return SPR_CURSOR_CONVERT_ELRAIL;
+		case SPBC_CONVERT_MONO:   return SPR_CURSOR_CONVERT_MONO;
+		case SPBC_CONVERT_MAGLEV: return SPR_CURSOR_CONVERT_MAGLEV;
+		case SPBC_AUTOROAD:       return SPR_CURSOR_AUTOROAD;
+		case SPBC_AUTOTRAM:       return SPR_CURSOR_AUTOTRAM;
+		case SPBC_ROAD_DEPOT:     return SPR_CURSOR_ROAD_DEPOT;
+		case SPBC_BUS_STATION:    return SPR_CURSOR_BUS_STATION;
+		case SPBC_TRUCK_STATION:  return SPR_CURSOR_TRUCK_STATION;
+		case SPBC_ROAD_TUNNEL:    return SPR_CURSOR_ROAD_TUNNEL;
+		case SPBC_CLONE_TRAIN:    return SPR_CURSOR_CLONE_TRAIN;
+		case SPBC_CLONE_ROADVEH:  return SPR_CURSOR_CLONE_ROADVEH;
+		case SPBC_CLONE_SHIP:     return SPR_CURSOR_CLONE_SHIP;
+		case SPBC_CLONE_AIRPLANE: return SPR_CURSOR_CLONE_AIRPLANE;
+		case SPBC_DEMOLISH:       return ANIMCURSOR_DEMOLISH;
+		case SPBC_LOWERLAND:      return ANIMCURSOR_LOWERLAND;
+		case SPBC_RAISELAND:      return ANIMCURSOR_RAISELAND;
+		case SPBC_PICKSTATION:    return ANIMCURSOR_PICKSTATION;
+		case SPBC_BUILDSIGNALS:   return ANIMCURSOR_BUILDSIGNALS;
+		default: return SPR_CURSOR_QUERY;
+	}
+}
 
 /**
  * Raise or create the story book window for \a company, at page \a page_id.

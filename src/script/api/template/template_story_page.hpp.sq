@@ -17,6 +17,10 @@ namespace SQConvert {
 	template <> inline int Return<ScriptStoryPage::StoryPageElementID>(HSQUIRRELVM vm, ScriptStoryPage::StoryPageElementID res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptStoryPage::StoryPageElementType GetParam(ForceType<ScriptStoryPage::StoryPageElementType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptStoryPage::StoryPageElementType)tmp; }
 	template <> inline int Return<ScriptStoryPage::StoryPageElementType>(HSQUIRRELVM vm, ScriptStoryPage::StoryPageElementType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptStoryPage::StoryPageButtonCursor GetParam(ForceType<ScriptStoryPage::StoryPageButtonCursor>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptStoryPage::StoryPageButtonCursor)tmp; }
+	template <> inline int Return<ScriptStoryPage::StoryPageButtonCursor>(HSQUIRRELVM vm, ScriptStoryPage::StoryPageButtonCursor res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptStoryPage::StoryPageButtonColour GetParam(ForceType<ScriptStoryPage::StoryPageButtonColour>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptStoryPage::StoryPageButtonColour)tmp; }
+	template <> inline int Return<ScriptStoryPage::StoryPageButtonColour>(HSQUIRRELVM vm, ScriptStoryPage::StoryPageButtonColour res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow ScriptStoryPage to be used as Squirrel parameter */
 	template <> inline ScriptStoryPage *GetParam(ForceType<ScriptStoryPage *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptStoryPage *)instance; }

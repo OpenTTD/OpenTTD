@@ -51,11 +51,10 @@ INSTANTIATE_POOL_METHODS(StoryPage)
  */
 static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElementType type, TileIndex tile, uint32 reference, const char *text)
 {
+	StoryPageButtonData button_data{ reference };
+
 	switch (type) {
 		case SPET_TEXT:
-		case SPET_BUTTON_PUSH:
-		case SPET_BUTTON_TILE:
-		case SPET_BUTTON_VEHICLE:
 			if (StrEmpty(text)) return false;
 			break;
 		case SPET_LOCATION:
@@ -67,6 +66,17 @@ static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElement
 			/* Reject company specific goals on global pages */
 			if (StoryPage::Get(page_id)->company == INVALID_COMPANY && Goal::Get((GoalID)reference)->company != INVALID_COMPANY) return false;
 			break;
+		case SPET_BUTTON_PUSH:
+			if (!button_data.ValidateColour()) return false;
+			return true;
+		case SPET_BUTTON_TILE:
+			if (!button_data.ValidateColour()) return false;
+			if (!button_data.ValidateCursor()) return false;
+			return true;
+		case SPET_BUTTON_VEHICLE:
+			if (!button_data.ValidateColour()) return false;
+			if (!button_data.ValidateCursor()) return false;
+			return true;
 		default:
 			return false;
 	}
@@ -86,9 +96,6 @@ static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32 reference
 {
 	switch (pe.type) {
 		case SPET_TEXT:
-		case SPET_BUTTON_PUSH:
-		case SPET_BUTTON_TILE:
-		case SPET_BUTTON_VEHICLE:
 			pe.text = stredup(text);
 			break;
 		case SPET_LOCATION:
@@ -98,8 +105,52 @@ static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32 reference
 		case SPET_GOAL:
 			pe.referenced_id = (GoalID)reference;
 			break;
+		case SPET_BUTTON_PUSH:
+		case SPET_BUTTON_TILE:
+		case SPET_BUTTON_VEHICLE:
+			pe.text = stredup(text);
+			pe.referenced_id = reference;
+			break;
 		default: NOT_REACHED();
 	}
+}
+
+/** Set the button background colour. */
+void StoryPageButtonData::SetColour(Colours button_colour)
+{
+	assert(button_colour < COLOUR_END);
+	SB(this->referenced_id, 0, 8, button_colour);
+}
+
+/** Set the mouse cursor used while waiting for input for the button. */
+void StoryPageButtonData::SetCursor(StoryPageButtonCursor cursor)
+{
+	assert(cursor < SPBC_END);
+	SB(this->referenced_id, 8, 8, cursor);
+}
+
+/** Get the button background colour. */
+Colours StoryPageButtonData::GetColour() const
+{
+	return Extract<Colours, 0, 8>(this->referenced_id);
+}
+
+/** Get the mouse cursor used while waiting for input for the button. */
+StoryPageButtonCursor StoryPageButtonData::GetCursor() const
+{
+	return Extract<StoryPageButtonCursor, 8, 8>(this->referenced_id);
+}
+
+/** Verify that the data stored a valid Colour value */
+bool StoryPageButtonData::ValidateColour() const
+{
+	return GB(this->referenced_id, 0, 8) < COLOUR_END;
+}
+
+/** Verify that the data stores a valid StoryPageButtonCursor value */
+bool StoryPageButtonData::ValidateCursor() const
+{
+	return GB(this->referenced_id, 8, 8) < SPBC_END;
 }
 
 /**
