@@ -12,6 +12,7 @@
 
 #include "script_company.hpp"
 #include "script_date.hpp"
+#include "script_vehicle.hpp"
 #include "../../story_type.h"
 #include "../../story_base.h"
 
@@ -318,11 +319,12 @@ public:
 
 	/**
 	 * Create a reference value for SPET_BUTTON_VEHICLE element parameters.
-	 * @param colour The colour for the face of the button.
-	 * @param cursor The mouse cursor to use when the player clicks the button and the game is ready for the player to select a vehicle.
+	 * @param colour  The colour for the face of the button.
+	 * @param cursor  The mouse cursor to use when the player clicks the button and the game is ready for the player to select a vehicle.
+	 * @param vehtype The type of vehicle that will be selectable, or \c VT_INVALID to allow all types.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
 	 */
-	static StoryPageButtonFormatting MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonCursor cursor);
+	static StoryPageButtonFormatting MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonCursor cursor, ScriptVehicle::VehicleType vehtype);
 };
 
 #endif /* SCRIPT_STORY_HPP */

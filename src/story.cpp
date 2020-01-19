@@ -76,6 +76,7 @@ static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElement
 		case SPET_BUTTON_VEHICLE:
 			if (!button_data.ValidateColour()) return false;
 			if (!button_data.ValidateCursor()) return false;
+			if (!button_data.ValidateVehicleType()) return false;
 			return true;
 		default:
 			return false;
@@ -129,6 +130,13 @@ void StoryPageButtonData::SetCursor(StoryPageButtonCursor cursor)
 	SB(this->referenced_id, 8, 8, cursor);
 }
 
+/** Set the type of vehicles that are accepted by the button */
+void StoryPageButtonData::SetVehicleType(VehicleType vehtype)
+{
+	assert(vehtype == VEH_INVALID || vehtype < VEH_COMPANY_END);
+	SB(this->referenced_id, 16, 8, vehtype);
+}
+
 /** Get the button background colour. */
 Colours StoryPageButtonData::GetColour() const
 {
@@ -141,6 +149,12 @@ StoryPageButtonCursor StoryPageButtonData::GetCursor() const
 	return Extract<StoryPageButtonCursor, 8, 8>(this->referenced_id);
 }
 
+/** Get the type of vehicles that are accepted by the button */
+VehicleType StoryPageButtonData::GetVehicleType() const
+{
+	return (VehicleType)GB(this->referenced_id, 16, 8);
+}
+
 /** Verify that the data stored a valid Colour value */
 bool StoryPageButtonData::ValidateColour() const
 {
@@ -151,6 +165,13 @@ bool StoryPageButtonData::ValidateColour() const
 bool StoryPageButtonData::ValidateCursor() const
 {
 	return GB(this->referenced_id, 8, 8) < SPBC_END;
+}
+
+/** Verity that the data stored a valid VehicleType value */
+bool StoryPageButtonData::ValidateVehicleType() const
+{
+	uint8 vehtype = GB(this->referenced_id, 16, 8);
+	return vehtype == VEH_INVALID || vehtype < VEH_COMPANY_END;
 }
 
 /**

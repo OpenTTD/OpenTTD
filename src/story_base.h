@@ -14,6 +14,7 @@
 #include "story_type.h"
 #include "date_type.h"
 #include "gfx_type.h"
+#include "vehicle_type.h"
 #include "core/pool_type.hpp"
 
 typedef Pool<StoryPageElement, StoryPageElementID, 64, 64000> StoryPageElementPool;
@@ -110,10 +111,13 @@ struct StoryPageButtonData {
 
 	void SetColour(Colours button_colour);
 	void SetCursor(StoryPageButtonCursor cursor);
+	void SetVehicleType(VehicleType vehtype);
 	Colours GetColour() const;
 	StoryPageButtonCursor GetCursor() const;
+	VehicleType GetVehicleType() const;
 	bool ValidateColour() const;
 	bool ValidateCursor() const;
+	bool ValidateVehicleType() const;
 };
 
 /**

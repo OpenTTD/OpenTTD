@@ -226,8 +226,15 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	return data.referenced_id;
 }
 
-/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonCursor cursor)
+/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonCursor cursor, ScriptVehicle::VehicleType vehtype)
 {
-	return MakeTileButtonReference(colour, cursor);
+	StoryPageButtonData data;
+	data.SetColour((Colours)colour);
+	data.SetCursor((::StoryPageButtonCursor)cursor);
+	data.SetVehicleType((::VehicleType)vehtype);
+	if (!data.ValidateColour()) return UINT32_MAX;
+	if (!data.ValidateCursor()) return UINT32_MAX;
+	if (!data.ValidateVehicleType()) return UINT32_MAX;
+	return data.referenced_id;
 }
 

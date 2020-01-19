@@ -115,7 +115,7 @@ void SQGSStoryPage_Register(Squirrel *engine)
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::RemoveElement,              "RemoveElement",              2, ".i");
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::MakePushButtonReference,    "MakePushButtonReference",    2, ".i");
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::MakeTileButtonReference,    "MakeTileButtonReference",    3, ".ii");
-	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::MakeVehicleButtonReference, "MakeVehicleButtonReference", 3, ".ii");
+	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::MakeVehicleButtonReference, "MakeVehicleButtonReference", 4, ".iii");
 
 	SQGSStoryPage.PostRegister(engine);
 }
