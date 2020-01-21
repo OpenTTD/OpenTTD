@@ -469,7 +469,7 @@ DEF_CONSOLE_CMD(ConClearBuffer)
  * Network Core Console Commands
  **********************************/
 
-static bool ConKickOrBan(const char *argv, bool ban)
+static bool ConKickOrBan(const char *argv, bool ban, const char *reason)
 {
 	uint n;
 
@@ -493,14 +493,14 @@ static bool ConKickOrBan(const char *argv, bool ban)
 
 		if (!ban) {
 			/* Kick only this client, not all clients with that IP */
-			NetworkServerKickClient(client_id);
+			NetworkServerKickClient(client_id, reason);
 			return true;
 		}
 
 		/* When banning, kick+ban all clients with that IP */
-		n = NetworkServerKickOrBanIP(client_id, ban);
+		n = NetworkServerKickOrBanIP(client_id, ban, reason);
 	} else {
-		n = NetworkServerKickOrBanIP(argv, ban);
+		n = NetworkServerKickOrBanIP(argv, ban, reason);
 	}
 
 	if (n == 0) {
@@ -515,28 +515,48 @@ static bool ConKickOrBan(const char *argv, bool ban)
 DEF_CONSOLE_CMD(ConKick)
 {
 	if (argc == 0) {
-		IConsoleHelp("Kick a client from a network game. Usage: 'kick <ip | client-id>'");
+		IConsoleHelp("Kick a client from a network game. Usage: 'kick <ip | client-id> [<kick-reason>]'");
 		IConsoleHelp("For client-id's, see the command 'clients'");
 		return true;
 	}
 
-	if (argc != 2) return false;
+	if (argc != 2 && argc != 3) return false;
 
-	return ConKickOrBan(argv[1], false);
+	/* No reason supplied for kicking */
+	if (argc == 2) return ConKickOrBan(argv[1], false, nullptr);
+
+	/* Reason for kicking supplied */
+	int kick_message_length = strlen(argv[2]);
+	if (kick_message_length >= 255) {
+		IConsolePrintF(CC_ERROR, "ERROR: Maximum kick message length is 254 characters. You entered %d characters.", kick_message_length);
+		return false;
+	} else {
+		return ConKickOrBan(argv[1], false, argv[2]);
+	}
 }
 
 DEF_CONSOLE_CMD(ConBan)
 {
 	if (argc == 0) {
-		IConsoleHelp("Ban a client from a network game. Usage: 'ban <ip | client-id>'");
+		IConsoleHelp("Ban a client from a network game. Usage: 'ban <ip | client-id> [<ban-reason>]'");
 		IConsoleHelp("For client-id's, see the command 'clients'");
 		IConsoleHelp("If the client is no longer online, you can still ban his/her IP");
 		return true;
 	}
 
-	if (argc != 2) return false;
+	if (argc != 2 && argc != 3) return false;
 
-	return ConKickOrBan(argv[1], true);
+	/* No reason supplied for kicking */
+	if (argc == 2) return ConKickOrBan(argv[1], true, nullptr);
+
+	/* Reason for kicking supplied */
+	int kick_message_length = strlen(argv[2]);
+	if (kick_message_length >= 255) {
+		IConsolePrintF(CC_ERROR, "ERROR: Maximum kick message length is 254 characters. You entered %d characters.", kick_message_length);
+		return false;
+	} else {
+		return ConKickOrBan(argv[1], true, argv[2]);
+	}
 }
 
 DEF_CONSOLE_CMD(ConUnBan)

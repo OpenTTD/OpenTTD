@@ -407,13 +407,15 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyInfo()
 /**
  * Send an error to the client, and close its connection.
  * @param error The error to disconnect for.
+ * @param reason In case of kicking a client, specifies the reason for kicking the client.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode error)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode error, const char *reason)
 {
 	char str[100];
 	Packet *p = new Packet(PACKET_SERVER_ERROR);
 
 	p->Send_uint8(error);
+	if (reason != nullptr) p->Send_string(reason);
 	this->SendPacket(p);
 
 	StringID strid = GetNetworkErrorMsg(error);
@@ -427,7 +429,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 
 		DEBUG(net, 1, "'%s' made an error and has been disconnected. Reason: '%s'", client_name, str);
 
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, nullptr, strid);
+		if (error == NETWORK_ERROR_KICKED && reason != nullptr) {
+			NetworkTextMessage(NETWORK_ACTION_KICKED, CC_DEFAULT, false, client_name, reason, strid);
+		} else {
+			NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, nullptr, strid);
+		}
 
 		for (NetworkClientSocket *new_cs : NetworkClientSocket::Iterate()) {
 			if (new_cs->status > STATUS_AUTHORIZED && new_cs != this) {
@@ -2039,29 +2045,32 @@ void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const cha
 /**
  * Kick a single client.
  * @param client_id The client to kick.
+ * @param reason In case of kicking a client, specifies the reason for kicking the client.
  */
-void NetworkServerKickClient(ClientID client_id)
+void NetworkServerKickClient(ClientID client_id, const char *reason)
 {
 	if (client_id == CLIENT_ID_SERVER) return;
-	NetworkClientSocket::GetByClientID(client_id)->SendError(NETWORK_ERROR_KICKED);
+	NetworkClientSocket::GetByClientID(client_id)->SendError(NETWORK_ERROR_KICKED, reason);
 }
 
 /**
  * Ban, or kick, everyone joined from the given client's IP.
  * @param client_id The client to check for.
  * @param ban Whether to ban or kick.
+ * @param reason In case of kicking a client, specifies the reason for kicking the client.
  */
-uint NetworkServerKickOrBanIP(ClientID client_id, bool ban)
+uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, const char *reason)
 {
-	return NetworkServerKickOrBanIP(NetworkClientSocket::GetByClientID(client_id)->GetClientIP(), ban);
+	return NetworkServerKickOrBanIP(NetworkClientSocket::GetByClientID(client_id)->GetClientIP(), ban, reason);
 }
 
 /**
  * Kick or ban someone based on an IP address.
  * @param ip The IP address/range to ban/kick.
  * @param ban Whether to ban or just kick.
+ * @param reason In case of kicking a client, specifies the reason for kicking the client.
  */
-uint NetworkServerKickOrBanIP(const char *ip, bool ban)
+uint NetworkServerKickOrBanIP(const char *ip, bool ban, const char *reason)
 {
 	/* Add address to ban-list */
 	if (ban) {
@@ -2081,7 +2090,7 @@ uint NetworkServerKickOrBanIP(const char *ip, bool ban)
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->client_id == CLIENT_ID_SERVER) continue;
 		if (cs->client_address.IsInNetmask(ip)) {
-			NetworkServerKickClient(cs->client_id);
+			NetworkServerKickClient(cs->client_id, reason);
 			n++;
 		}
 	}
