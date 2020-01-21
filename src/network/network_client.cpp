@@ -687,8 +687,15 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p
 
 	StringID err = STR_NETWORK_ERROR_LOSTCONNECTION;
 	if (error < (ptrdiff_t)lengthof(network_error_strings)) err = network_error_strings[error];
-
-	ShowErrorMessage(err, INVALID_STRING_ID, WL_CRITICAL);
+	/* In case of kicking a client, we assume there is a kick message in the packet if we can read one byte */
+	if (error == NETWORK_ERROR_KICKED && p->CanReadFromPacket(1)) {
+		char kick_msg[255];
+		p->Recv_string(kick_msg, sizeof(kick_msg));
+		SetDParamStr(0, kick_msg);
+		ShowErrorMessage(err, STR_NETWORK_ERROR_KICK_MESSAGE, WL_CRITICAL);
+	} else {
+		ShowErrorMessage(err, INVALID_STRING_ID, WL_CRITICAL);
+	}
 
 	/* Perform an emergency save if we had already entered the game */
 	if (this->status == STATUS_ACTIVE) ClientNetworkEmergencySave();
