@@ -389,7 +389,7 @@ QueryString *Window::GetQueryString(uint widnum)
  */
 /* virtual */ Point Window::GetCaretPosition() const
 {
-	if (this->nested_focus != nullptr && this->nested_focus->type == WWT_EDITBOX) {
+	if (this->nested_focus != nullptr && this->nested_focus->type == WWT_EDITBOX && !this->querystrings.empty()) {
 		return this->GetQueryString(this->nested_focus->index)->GetCaretPosition(this, this->nested_focus->index);
 	}
 
@@ -1093,6 +1093,9 @@ Window::~Window()
 
 	/* We can't scroll the window when it's closed. */
 	if (_last_scroll_window == this) _last_scroll_window = nullptr;
+
+	/* Make sure we don't try to access non-existing query strings. */
+	this->querystrings.clear();
 
 	/* Make sure we don't try to access this window as the focused window when it doesn't exist anymore. */
 	if (_focused_window == this) {
