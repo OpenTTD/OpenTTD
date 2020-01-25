@@ -1,6 +1,6 @@
 #!/bin/sh
 
-tag=$(git describe --tags 2>/dev/null)
+tag=$(git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null | sed 's@\^0$@@')
 
 # If we are a tag, show the part of the changelog till (but excluding) the last stable
 if [ -n "$tag" ]; then
