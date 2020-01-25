@@ -712,38 +712,53 @@ static bool MakeSmallScreenshot(bool crashlog)
  */
 void SetupScreenshotViewport(ScreenshotType t, ViewPort *vp)
 {
-	/* Determine world coordinates of screenshot */
-	if (t == SC_WORLD) {
-		vp->zoom = ZOOM_LVL_WORLD_SCREENSHOT;
-
-		TileIndex north_tile = _settings_game.construction.freeform_edges ? TileXY(1, 1) : TileXY(0, 0);
-		TileIndex south_tile = MapSize() - 1;
-
-		/* We need to account for a hill or high building at tile 0,0. */
-		int extra_height_top = TilePixelHeight(north_tile) + 150;
-		/* If there is a hill at the bottom don't create a large black area. */
-		int reclaim_height_bottom = TilePixelHeight(south_tile);
-
-		vp->virtual_left   = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, 0).x;
-		vp->virtual_top    = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, extra_height_top).y;
-		vp->virtual_width  = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, 0).x                     - vp->virtual_left + 1;
-		vp->virtual_height = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, reclaim_height_bottom).y - vp->virtual_top  + 1;
-	} else {
-		vp->zoom = (t == SC_ZOOMEDIN) ? _settings_client.gui.zoom_min : ZOOM_LVL_VIEWPORT;
-
+	if (t == SC_VIEWPORT || t == SC_CRASHLOG) {
 		Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 		vp->virtual_left   = w->viewport->virtual_left;
 		vp->virtual_top    = w->viewport->virtual_top;
 		vp->virtual_width  = w->viewport->virtual_width;
 		vp->virtual_height = w->viewport->virtual_height;
-	}
 
-	/* Compute pixel coordinates */
-	vp->left = 0;
-	vp->top = 0;
-	vp->width  = UnScaleByZoom(vp->virtual_width,  vp->zoom);
-	vp->height = UnScaleByZoom(vp->virtual_height, vp->zoom);
-	vp->overlay = nullptr;
+		/* Compute pixel coordinates */
+		vp->left = 0;
+		vp->top = 0;
+		vp->width  = _screen.width;
+		vp->height = _screen.height;
+		vp->overlay = w->viewport->overlay;
+	} else {
+		/* Determine world coordinates of screenshot */
+		if (t == SC_WORLD) {
+			vp->zoom = ZOOM_LVL_WORLD_SCREENSHOT;
+
+			TileIndex north_tile = _settings_game.construction.freeform_edges ? TileXY(1, 1) : TileXY(0, 0);
+			TileIndex south_tile = MapSize() - 1;
+
+			/* We need to account for a hill or high building at tile 0,0. */
+			int extra_height_top = TilePixelHeight(north_tile) + 150;
+			/* If there is a hill at the bottom don't create a large black area. */
+			int reclaim_height_bottom = TilePixelHeight(south_tile);
+
+			vp->virtual_left   = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, 0).x;
+			vp->virtual_top    = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, extra_height_top).y;
+			vp->virtual_width  = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, 0).x                     - vp->virtual_left + 1;
+			vp->virtual_height = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, reclaim_height_bottom).y - vp->virtual_top  + 1;
+		} else {
+			vp->zoom = (t == SC_ZOOMEDIN) ? _settings_client.gui.zoom_min : ZOOM_LVL_VIEWPORT;
+
+			Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+			vp->virtual_left   = w->viewport->virtual_left;
+			vp->virtual_top    = w->viewport->virtual_top;
+			vp->virtual_width  = w->viewport->virtual_width;
+			vp->virtual_height = w->viewport->virtual_height;
+		}
+
+		/* Compute pixel coordinates */
+		vp->left = 0;
+		vp->top = 0;
+		vp->width  = UnScaleByZoom(vp->virtual_width,  vp->zoom);
+		vp->height = UnScaleByZoom(vp->virtual_height, vp->zoom);
+		vp->overlay = nullptr;
+	}
 }
 
 /**
