@@ -13,6 +13,9 @@
 #include "cpu.h"
 #include "smmintrin.h"
 #include "viewport_sprite_sorter.h"
+#include <forward_list>
+#include <map>
+#include <stack>
 
 #include "safeguards.h"
 
@@ -23,73 +26,144 @@
 #	define LOAD_128 _mm_loadu_si128
 #endif
 
-/** Sort parent sprites pointer array using SSE4.1 optimizations. */
 void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 {
-	const __m128i mask_ptest = _mm_setr_epi8(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0,  0,  0,  0);
-	auto const psdvend = psdv->end();
-	auto psd = psdv->begin();
-	while (psd != psdvend) {
-		ParentSpriteToDraw * const ps = *psd;
+	if (psdv->size() < 2) return;
 
-		if (ps->comparison_done) {
-			psd++;
+	const __m128i mask_ptest = _mm_setr_epi8(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0,  0,  0,  0);
+
+	/* We rely on sprites being, for the most part, already ordered.
+	 * So we don't need to move many of them and can keep track of their
+	 * order efficiently by using stack. We always move sprites to the front
+	 * of the current position, i.e. to the top of the stack.
+	 * Also use special constants to indicate sorting state without
+	 * adding extra fields to ParentSpriteToDraw structure.
+	 */
+	const uint32 ORDER_COMPARED = UINT32_MAX; // Sprite was compared but we still need to compare the ones preceding it
+	const uint32 ORDER_RETURNED = UINT32_MAX - 1; // Mark sorted sprite in case there are other occurrences of it in the stack
+	std::stack<ParentSpriteToDraw *> sprite_order;
+	uint32 next_order = 0;
+
+	std::forward_list<std::pair<int64, ParentSpriteToDraw *>> sprite_list;  // We store sprites in a list sorted by xmin+ymin
+
+	/* Initialize sprite list and order. */
+	for (auto p = psdv->rbegin(); p != psdv->rend(); p++) {
+		sprite_list.push_front(std::make_pair((*p)->xmin + (*p)->ymin, *p));
+		sprite_order.push(*p);
+		(*p)->order = next_order++;
+	}
+
+	sprite_list.sort();
+
+	std::vector<ParentSpriteToDraw*> preceding;  // Temporarily stores sprites that precede current and their position in the list
+	auto preceding_prev = sprite_list.begin(); // Store iterator in case we need to delete a single preciding sprite
+	auto out = psdv->begin();  // Iterator to output sorted sprites
+
+	while (!sprite_order.empty()) {
+
+		auto s = sprite_order.top();
+		sprite_order.pop();
+
+		/* Sprite is already sorted, ignore it. */
+		if (s->order == ORDER_RETURNED) continue;
+
+		/* Sprite was already compared, just need to output it. */
+		if (s->order == ORDER_COMPARED) {
+			*(out++) = s;
+			s->order = ORDER_RETURNED;
 			continue;
 		}
 
-		ps->comparison_done = true;
+		preceding.clear();
 
-		for (auto psd2 = psd + 1; psd2 != psdvend; psd2++) {
-			ParentSpriteToDraw * const ps2 = *psd2;
+		/* We only need sprites with xmin <= s->xmax && ymin <= s->ymax && zmin <= s->zmax
+		 * So by iterating sprites with xmin + ymin <= s->xmax + s->ymax
+		 * we get all we need and some more that we filter out later.
+		 * We don't include zmin into the sum as there are usually more neighbors on x and y than z
+		 * so including it will actually increase the amount of false positives.
+		 * Also min coordinates can be > max so using max(xmin, xmax) + max(ymin, ymax)
+		 * to ensure that we iterate the current sprite as we need to remove it from the list.
+		 */
+		auto ssum = max(s->xmax, s->xmin) + max(s->ymax, s->ymin);
+		auto prev = sprite_list.before_begin();
+		auto x = sprite_list.begin();
+		while (x != sprite_list.end() && ((*x).first <= ssum)) {
+			auto p = (*x).second;
+			if (p == s) {
+				/* We found the current sprite, remove it and move on. */
+				x = sprite_list.erase_after(prev);
+				continue;
+			}
 
-			if (ps2->comparison_done) continue;
+			auto p_prev = prev;
+			prev = x++;
 
-			/*
-			 * Decide which comparator to use, based on whether the bounding boxes overlap
-			 *
-			 * Original code:
-			 * if (ps->xmax >= ps2->xmin && ps->xmin <= ps2->xmax && // overlap in X?
-			 *     ps->ymax >= ps2->ymin && ps->ymin <= ps2->ymax && // overlap in Y?
-			 *     ps->zmax >= ps2->zmin && ps->zmin <= ps2->zmax) { // overlap in Z?
-			 *
-			 * Above conditions are equivalent to:
-			 * 1/    !( (ps->xmax >= ps2->xmin) && (ps->ymax >= ps2->ymin) && (ps->zmax >= ps2->zmin)   &&    (ps->xmin <= ps2->xmax) && (ps->ymin <= ps2->ymax) && (ps->zmin <= ps2->zmax) )
-			 * 2/    !( (ps->xmax >= ps2->xmin) && (ps->ymax >= ps2->ymin) && (ps->zmax >= ps2->zmin)   &&    (ps2->xmax >= ps->xmin) && (ps2->ymax >= ps->ymin) && (ps2->zmax >= ps->zmin) )
-			 * 3/  !( ( (ps->xmax >= ps2->xmin) && (ps->ymax >= ps2->ymin) && (ps->zmax >= ps2->zmin) ) &&  ( (ps2->xmax >= ps->xmin) && (ps2->ymax >= ps->ymin) && (ps2->zmax >= ps->zmin) ) )
-			 * 4/ !( !( (ps->xmax <  ps2->xmin) || (ps->ymax <  ps2->ymin) || (ps->zmax <  ps2->zmin) ) && !( (ps2->xmax <  ps->xmin) || (ps2->ymax <  ps->ymin) || (ps2->zmax <  ps->zmin) ) )
-			 * 5/ PTEST <---------------------------------- rslt1 ---------------------------------->         <------------------------------ rslt2 -------------------------------------->
-			 */
-			__m128i ps1_max = LOAD_128((__m128i*) &ps->xmax);
-			__m128i ps2_min = LOAD_128((__m128i*) &ps2->xmin);
-			__m128i rslt1 = _mm_cmplt_epi32(ps1_max, ps2_min);
-			if (!_mm_testz_si128(mask_ptest, rslt1))
+			/* Check that p->xmin <= s->xmax && p->ymin <= s->ymax && p->zmin <= s->zmax */
+			__m128i s_max = LOAD_128((__m128i*) &s->xmax);
+			__m128i p_min = LOAD_128((__m128i*) &p->xmin);
+			__m128i r1 = _mm_cmplt_epi32(s_max, p_min);
+			if (!_mm_testz_si128(mask_ptest, r1))
 				continue;
 
-			__m128i ps1_min = LOAD_128((__m128i*) &ps->xmin);
-			__m128i ps2_max = LOAD_128((__m128i*) &ps2->xmax);
-			__m128i rslt2 = _mm_cmplt_epi32(ps2_max, ps1_min);
-			if (_mm_testz_si128(mask_ptest, rslt2)) {
+			/* Check if sprites overlap, i.e.
+			 * s->xmin <= p->xmax && s->ymin <= p->ymax && s->zmin <= p->zmax
+			 */
+			__m128i s_min = LOAD_128((__m128i*) &s->xmin);
+			__m128i p_max = LOAD_128((__m128i*) &p->xmax);
+			__m128i r2 = _mm_cmplt_epi32(p_max, s_min);
+			if (_mm_testz_si128(mask_ptest, r2)) {
 				/* Use X+Y+Z as the sorting order, so sprites closer to the bottom of
 				 * the screen and with higher Z elevation, are drawn in front.
 				 * Here X,Y,Z are the coordinates of the "center of mass" of the sprite,
 				 * i.e. X=(left+right)/2, etc.
 				 * However, since we only care about order, don't actually divide / 2
 				 */
-				if (ps->xmin + ps->xmax + ps->ymin + ps->ymax + ps->zmin + ps->zmax <=
-						ps2->xmin + ps2->xmax + ps2->ymin + ps2->ymax + ps2->zmin + ps2->zmax) {
+				if (s->xmin + s->xmax + s->ymin + s->ymax + s->zmin + s->zmax <=
+						p->xmin + p->xmax + p->ymin + p->ymax + p->zmin + p->zmax) {
 					continue;
 				}
 			}
 
-			/* Move ps2 in front of ps */
-			ParentSpriteToDraw * const temp = ps2;
-			for (auto psd3 = psd2; psd3 > psd; psd3--) {
-				*psd3 = *(psd3 - 1);
+			preceding.push_back(p);
+			preceding_prev = p_prev;
+		}
+
+		if (preceding.empty()) {
+			/* No preceding sprites, add current one to the output */
+			*(out++) = s;
+			s->order = ORDER_RETURNED;
+			continue;
+		}
+
+		/* Optimization for the case when we only have 1 sprite to move. */
+		if (preceding.size() == 1) {
+			auto p = preceding[0];
+			/* We can only output the preceding sprite if there can't be any other sprites preceding it. */
+			if (p->xmax <= s->xmax && p->ymax <= s->ymax && p->zmax <= s->zmax) {
+				p->order = ORDER_RETURNED;
+				s->order = ORDER_RETURNED;
+				sprite_list.erase_after(preceding_prev);
+				*(out++) = p;
+				*(out++) = s;
+				continue;
 			}
-			*psd = temp;
+		}
+
+		/* Sort all preceding sprites by order and assign new orders in reverse (as original sorter did). */
+		std::sort(preceding.begin(), preceding.end(), [](const ParentSpriteToDraw *a, const ParentSpriteToDraw *b) {
+			return a->order >  b->order;
+		});
+
+		s->order = ORDER_COMPARED;
+		sprite_order.push(s);  // Still need to output so push it back for now
+
+		for (auto p: preceding) {
+			p->order = next_order++;
+			sprite_order.push(p);
 		}
 	}
 }
+
 
 /**
  * Check whether the current CPU supports SSE 4.1.
