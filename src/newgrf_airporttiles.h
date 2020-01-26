@@ -22,6 +22,7 @@ struct AirportTileScopeResolver : public ScopeResolver {
 	struct Station *st;  ///< %Station of the airport for which the callback is run, or \c nullptr for build gui.
 	byte airport_id;     ///< Type of airport for which the callback is run.
 	TileIndex tile;      ///< Tile for the callback, only valid for airporttile callbacks.
+	const AirportTileSpec *ats;
 
 	/**
 	 * Constructor of the scope resolver specific for airport tiles.
@@ -30,7 +31,7 @@ struct AirportTileScopeResolver : public ScopeResolver {
 	 * @param st Station of the airport for which the callback is run, or \c nullptr for build gui.
 	 */
 	AirportTileScopeResolver(ResolverObject &ro, const AirportTileSpec *ats, TileIndex tile, Station *st)
-		: ScopeResolver(ro), st(st), tile(tile)
+		: ScopeResolver(ro), st(st), tile(tile), ats(ats)
 	{
 		assert(st != nullptr);
 		this->airport_id = st->airport.type;
@@ -54,6 +55,9 @@ struct AirportTileResolverObject : public ResolverObject {
 			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
+
+	GrfSpecFeature GetFeature() const override;
+	uint32 GetDebugID() const override;
 };
 
 /**

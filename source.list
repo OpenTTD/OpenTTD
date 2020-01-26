@@ -270,6 +270,7 @@ newgrf_house.h
 newgrf_industries.h
 newgrf_industrytiles.h
 newgrf_object.h
+newgrf_profiling.h
 newgrf_properties.h
 newgrf_railtype.h
 newgrf_roadtype.h
@@ -986,6 +987,7 @@ newgrf_house.cpp
 newgrf_industries.cpp
 newgrf_industrytiles.cpp
 newgrf_object.cpp
+newgrf_profiling.cpp
 newgrf_railtype.cpp
 newgrf_roadtype.cpp
 newgrf_sound.cpp

@@ -18,6 +18,7 @@
 #include "rail_gui.h"
 #include "linkgraph/linkgraph.h"
 #include "saveload/saveload.h"
+#include "newgrf_profiling.h"
 
 #include "safeguards.h"
 
@@ -245,6 +246,10 @@ static void OnNewMonth()
  */
 static void OnNewDay()
 {
+	if (!_newgrf_profilers.empty() && _newgrf_profile_end_date <= _date) {
+		NewGRFProfiler::FinishAll();
+	}
+
 	if (_network_server) NetworkServerDailyLoop();
 
 	DisasterDailyLoop();

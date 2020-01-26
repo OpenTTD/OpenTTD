@@ -29,6 +29,7 @@
 #include "station_kdtree.h"
 #include "town_kdtree.h"
 #include "viewport_kdtree.h"
+#include "newgrf_profiling.h"
 
 #include "safeguards.h"
 
@@ -68,6 +69,8 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	_cur_tileloop_tile = 1;
 	_thd.redsq = INVALID_TILE;
 	if (reset_settings) MakeNewgameSettingsLive();
+
+	_newgrf_profilers.clear();
 
 	if (reset_date) {
 		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);

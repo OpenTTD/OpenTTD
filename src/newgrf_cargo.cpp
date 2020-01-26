@@ -15,9 +15,14 @@
 
 /** Resolver of cargo. */
 struct CargoResolverObject : public ResolverObject {
+	const CargoSpec *cargospec;
+
 	CargoResolverObject(const CargoSpec *cs, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
 
 	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
+
+	GrfSpecFeature GetFeature() const override;
+	uint32 GetDebugID() const override;
 };
 
 /* virtual */ const SpriteGroup *CargoResolverObject::ResolveReal(const RealSpriteGroup *group) const
@@ -30,6 +35,16 @@ struct CargoResolverObject : public ResolverObject {
 	return nullptr;
 }
 
+GrfSpecFeature CargoResolverObject::GetFeature() const
+{
+	return GSF_CARGOES;
+}
+
+uint32 CargoResolverObject::GetDebugID() const
+{
+	return this->cargospec->label;
+}
+
 /**
  * Constructor of the cargo resolver.
  * @param cs Cargo being resolved.
@@ -38,7 +53,7 @@ struct CargoResolverObject : public ResolverObject {
  * @param callback_param2 Second parameter (var 18) of the callback.
  */
 CargoResolverObject::CargoResolverObject(const CargoSpec *cs, CallbackID callback, uint32 callback_param1, uint32 callback_param2)
-		: ResolverObject(cs->grffile, callback, callback_param1, callback_param2)
+		: ResolverObject(cs->grffile, callback, callback_param1, callback_param2), cargospec(cs)
 {
 	this->root_spritegroup = cs->group;
 }

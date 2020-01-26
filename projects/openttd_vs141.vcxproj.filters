@@ -837,6 +837,9 @@
     <ClInclude Include="..\src\newgrf_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\newgrf_profiling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\newgrf_properties.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -2794,6 +2797,9 @@
       <Filter>NewGRF</Filter>
     </ClCompile>
     <ClCompile Include="..\src\newgrf_object.cpp">
+      <Filter>NewGRF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\newgrf_profiling.cpp">
       <Filter>NewGRF</Filter>
     </ClCompile>
     <ClCompile Include="..\src\newgrf_railtype.cpp">

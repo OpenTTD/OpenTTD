@@ -33,6 +33,7 @@
 #include "ai/ai.hpp"
 #include "ai/ai_config.hpp"
 #include "newgrf.h"
+#include "newgrf_profiling.h"
 #include "console_func.h"
 #include "engine_base.h"
 #include "game/game.hpp"
@@ -1877,6 +1878,135 @@ DEF_CONSOLE_CMD(ConNewGRFReload)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConNewGRFProfile)
+{
+	if (argc == 0) {
+		IConsoleHelp("Collect performance data about NewGRF sprite requests and callbacks. Sub-commands can be abbreviated.");
+		IConsoleHelp("Usage: newgrf_profile [list]");
+		IConsoleHelp("  List all NewGRFs that can be profiled, and their status.");
+		IConsoleHelp("Usage: newgrf_profile select <grf-num>...");
+		IConsoleHelp("  Select one or more GRFs for profiling.");
+		IConsoleHelp("Usage: newgrf_profile unselect <grf-num>...");
+		IConsoleHelp("  Unselect one or more GRFs from profiling. Use the keyword \"all\" instead of a GRF number to unselect all. Removing an active profiler aborts data collection.");
+		IConsoleHelp("Usage: newgrf_profile start [<num-days>]");
+		IConsoleHelp("  Begin profiling all selected GRFs. If a number of days is provided, profiling stops after that many in-game days.");
+		IConsoleHelp("Usage: newgrf_profile stop");
+		IConsoleHelp("  End profiling and write the collected data to CSV files.");
+		IConsoleHelp("Usage: newgrf_profile abort");
+		IConsoleHelp("  End profiling and discard all collected data.");
+		return true;
+	}
+
+	extern const std::vector<GRFFile *> &GetAllGRFFiles();
+	const std::vector<GRFFile *> &files = GetAllGRFFiles();
+
+	/* "list" sub-command */
+	if (argc == 1 || strncasecmp(argv[1], "lis", 3) == 0) {
+		IConsolePrint(CC_INFO, "Loaded GRF files:");
+		int i = 1;
+		for (GRFFile *grf : files) {
+			auto profiler = std::find_if(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; });
+			bool selected = profiler != _newgrf_profilers.end();
+			bool active = selected && profiler->active;
+			TextColour tc = active ? TC_LIGHT_BLUE : selected ? TC_GREEN : CC_INFO;
+			const char *statustext = active ? " (active)" : selected ? " (selected)" : "";
+			IConsolePrintF(tc, "%d: [%08X] %s%s", i, BSWAP32(grf->grfid), grf->filename, statustext);
+			i++;
+		}
+		return true;
+	}
+
+	/* "select" sub-command */
+	if (strncasecmp(argv[1], "sel", 3) == 0 && argc >= 3) {
+		for (size_t argnum = 2; argnum < argc; ++argnum) {
+			int grfnum = atoi(argv[argnum]);
+			if (grfnum < 1 || grfnum > (int)files.size()) { // safe cast, files.size() should not be larger than a few hundred in the most extreme cases
+				IConsolePrintF(CC_WARNING, "GRF number %d out of range, not added.", grfnum);
+				continue;
+			}
+			GRFFile *grf = files[grfnum - 1];
+			if (std::any_of(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; })) {
+				IConsolePrintF(CC_WARNING, "GRF number %d [%08X] is already selected for profiling.", grfnum, BSWAP32(grf->grfid));
+				continue;
+			}
+			_newgrf_profilers.emplace_back(grf);
+		}
+		return true;
+	}
+
+	/* "unselect" sub-command */
+	if (strncasecmp(argv[1], "uns", 3) == 0 && argc >= 3) {
+		for (size_t argnum = 2; argnum < argc; ++argnum) {
+			if (strcasecmp(argv[argnum], "all") == 0) {
+				_newgrf_profilers.clear();
+				break;
+			}
+			int grfnum = atoi(argv[argnum]);
+			if (grfnum < 1 || grfnum > (int)files.size()) {
+				IConsolePrintF(CC_WARNING, "GRF number %d out of range, not removing.", grfnum);
+				continue;
+			}
+			GRFFile *grf = files[grfnum - 1];
+			auto pos = std::find_if(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; });
+			if (pos != _newgrf_profilers.end()) _newgrf_profilers.erase(pos);
+		}
+		return true;
+	}
+
+	/* "start" sub-command */
+	if (strncasecmp(argv[1], "sta", 3) == 0) {
+		std::string grfids;
+		size_t started = 0;
+		for (NewGRFProfiler &pr : _newgrf_profilers) {
+			if (!pr.active) {
+				pr.Start();
+				started++;
+
+				if (!grfids.empty()) grfids += ", ";
+				char grfidstr[12]{ 0 };
+				seprintf(grfidstr, lastof(grfidstr), "[%08X]", BSWAP32(pr.grffile->grfid));
+				grfids += grfidstr;
+			}
+		}
+		if (started > 0) {
+			IConsolePrintF(CC_DEBUG, "Started profiling for GRFID%s %s", (started > 1) ? "s" : "", grfids.c_str());
+			if (argc >= 3) {
+				int days = max(atoi(argv[2]), 1);
+				_newgrf_profile_end_date = _date + days;
+
+				char datestrbuf[32]{ 0 };
+				SetDParam(0, _newgrf_profile_end_date);
+				GetString(datestrbuf, STR_JUST_DATE_ISO, lastof(datestrbuf));
+				IConsolePrintF(CC_DEBUG, "Profiling will automatically stop on game date %s", datestrbuf);
+			} else {
+				_newgrf_profile_end_date = MAX_DAY;
+			}
+		} else if (_newgrf_profilers.empty()) {
+			IConsolePrintF(CC_WARNING, "No GRFs selected for profiling, did not start.");
+		} else {
+			IConsolePrintF(CC_WARNING, "Did not start profiling for any GRFs, all selected GRFs are already profiling.");
+		}
+		return true;
+	}
+
+	/* "stop" sub-command */
+	if (strncasecmp(argv[1], "sto", 3) == 0) {
+		NewGRFProfiler::FinishAll();
+		return true;
+	}
+
+	/* "abort" sub-command */
+	if (strncasecmp(argv[1], "abo", 3) == 0) {
+		for (NewGRFProfiler &pr : _newgrf_profilers) {
+			pr.Abort();
+		}
+		_newgrf_profile_end_date = MAX_DAY;
+		return true;
+	}
+
+	return false;
+}
+
 #ifdef _DEBUG
 /******************
  *  debug commands
@@ -2056,4 +2186,5 @@ void IConsoleStdLibRegister()
 
 	/* NewGRF development stuff */
 	IConsoleCmdRegister("reload_newgrfs",  ConNewGRFReload, ConHookNewGRFDeveloperTool);
+	IConsoleCmdRegister("newgrf_profile",  ConNewGRFProfile, ConHookNewGRFDeveloperTool);
 }

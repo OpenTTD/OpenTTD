@@ -63,6 +63,9 @@ struct IndustriesResolverObject : public ResolverObject {
 				return ResolverObject::GetScope(scope, relative);
 		}
 	}
+
+	GrfSpecFeature GetFeature() const override;
+	uint32 GetDebugID() const override;
 };
 
 /** When should the industry(tile) be triggered for random bits? */

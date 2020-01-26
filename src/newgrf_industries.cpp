@@ -489,6 +489,16 @@ TownScopeResolver *IndustriesResolverObject::GetTown()
 	return this->town_scope;
 }
 
+GrfSpecFeature IndustriesResolverObject::GetFeature() const
+{
+	return GSF_INDUSTRIES;
+}
+
+uint32 IndustriesResolverObject::GetDebugID() const
+{
+	return GetIndustrySpec(this->industries_scope.type)->grf_prop.local_id;
+}
+
 /**
  * Perform an industry callback.
  * @param callback The callback to perform.

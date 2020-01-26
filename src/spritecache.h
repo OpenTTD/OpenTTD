@@ -30,6 +30,7 @@ bool SpriteExists(SpriteID sprite);
 
 SpriteType GetSpriteType(SpriteID sprite);
 uint GetOriginFileSlot(SpriteID sprite);
+uint32 GetSpriteLocalID(SpriteID sprite);
 uint GetSpriteCountForSlot(uint file_slot, SpriteID begin, SpriteID end);
 uint GetMaxSpriteID();
 

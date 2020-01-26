@@ -65,6 +65,16 @@
 	return nullptr;
 }
 
+GrfSpecFeature RailTypeResolverObject::GetFeature() const
+{
+	return GSF_RAILTYPES;
+}
+
+uint32 RailTypeResolverObject::GetDebugID() const
+{
+	return this->railtype_scope.rti->label;
+}
+
 /**
  * Resolver object for rail types.
  * @param rti Railtype. nullptr in NewGRF Inspect window.
@@ -75,7 +85,7 @@
  * @param param2 Extra parameter (second parameter of the callback, except railtypes do not have callbacks).
  */
 RailTypeResolverObject::RailTypeResolverObject(const RailtypeInfo *rti, TileIndex tile, TileContext context, RailTypeSpriteGroup rtsg, uint32 param1, uint32 param2)
-	: ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), railtype_scope(*this, tile, context)
+	: ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), railtype_scope(*this, rti, tile, context)
 {
 	this->root_spritegroup = rti != nullptr ? rti->group[rtsg] : nullptr;
 }

@@ -98,9 +98,10 @@ struct ObjectSpec {
 
 /** Object scope resolver. */
 struct ObjectScopeResolver : public ScopeResolver {
-	struct Object *obj; ///< The object the callback is ran for.
-	TileIndex tile;     ///< The tile related to the object.
-	uint8 view;         ///< The view of the object.
+	struct Object *obj;     ///< The object the callback is ran for.
+	const ObjectSpec *spec; ///< Specification of the object type.
+	TileIndex tile;         ///< The tile related to the object.
+	uint8 view;             ///< The view of the object.
 
 	/**
 	 * Constructor of an object scope resolver.
@@ -109,8 +110,8 @@ struct ObjectScopeResolver : public ScopeResolver {
 	 * @param tile %Tile of the object.
 	 * @param view View of the object.
 	 */
-	ObjectScopeResolver(ResolverObject &ro, Object *obj, TileIndex tile, uint8 view = 0)
-		: ScopeResolver(ro), obj(obj), tile(tile), view(view)
+	ObjectScopeResolver(ResolverObject &ro, Object *obj, const ObjectSpec *spec, TileIndex tile, uint8 view = 0)
+		: ScopeResolver(ro), obj(obj), spec(spec), tile(tile), view(view)
 	{
 	}
 
@@ -143,6 +144,9 @@ struct ObjectResolverObject : public ResolverObject {
 				return ResolverObject::GetScope(scope, relative);
 		}
 	}
+
+	GrfSpecFeature GetFeature() const override;
+	uint32 GetDebugID() const override;
 
 private:
 	TownScopeResolver *GetTown();
