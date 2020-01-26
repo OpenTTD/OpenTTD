@@ -12,5 +12,5 @@ fi
 
 # In all other cases, show the git log of the last 7 days
 revdate=$(git log -1 --pretty=format:"%ci")
-last_week=$(date -u -d "$revdate -7days" +"%Y-%m-%d %H:%M")
+last_week=$(date -d "$revdate -7days" +"%Y-%m-%d %H:%M")
 git log --after="${last_week}" --pretty=fuller
