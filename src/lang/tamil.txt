@@ -938,6 +938,7 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}மொ�
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}பயன்படுத்தப்போகும் மொழியினை தேர்ந்தெடு
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}முழு படம்
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD-ஐ முழுத்திரையில் விளையாட இந்த கட்டத்தினை சொடுக்கவும்
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}திரையின் அளவு
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}திரை அளவினைத் தேர்ந்தெடுக்கவும்
@@ -977,6 +978,7 @@ STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}உங�
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}உங்களது நாணயத்தின் நாணயமாற்று விகிதத்தை ஒரு பவுண்டாக (£) அமைக்கவும்
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}பிரிப்பான்: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}உங்களது நாணயத்தின் பிரியியினை அமை
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}முன் ஒட்டு: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}உங்கள் நாணயத்தின் முன் ஒட்டத்தினை அமையுங்கள்
@@ -1275,6 +1277,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :அனைத்
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :அனைத்து செயல்கள்
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :வாகனப் பட்டியலினைப் பயன்படுத்தவும்: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :வாகனங்களை ஏற்றுவதற்கு அல்லது இறக்குவதற்கு மேலே ஏற்றுதல் குறிகாட்டிகள் காட்டப்படுகிறதா என்பதைத் தேர்ந்தெடுக்கவும்
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :கால அட்டவணையை நாட்களில் அல்லாமல் சொடுக்குகளில் காட்டு: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :கால அட்டவணைகளில் காலங்களைக் காட்டவும்: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :வாகன கட்டளைகளை விரிவாக உருவாக்கவும்: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :முதலில் கிடைக்கும்
@@ -1365,6 +1368,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :நிற ச�
 STR_CONFIG_SETTING_STARTING_YEAR                                :தொடங்கும் வருடம்: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :இயல்பான பொருளாதாரத்தினைச் செயல்படுத்தவும் (அதிகமான, சிறிய மாற்றங்கள்): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :மற்ற நிறுவனங்களின் பங்குகளை வாங்குவதை அனுமதிக்கவும்: {STRING}
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :பங்குகள் பரிமாற்றத்திற்கு தேவையான குறைந்தபட்ச நிறுவன வயது: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :இழுத்தால், சிக்னல்களை இடவும், ஒவ்வொறு: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} கட்ட{P 0 "ம்" ங்கள்}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :இழுக்கும்போது, சிக்னல்களுக்கு இடையே சீரான இடைவேளியினை விடவும்: {STRING}
@@ -1432,6 +1436,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :தொடக்
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ஆட்டத்தின் தொடக்கத்தில் மாநகரங்களின் அளவு நகரங்களை ஒப்பிடுகையில்
 
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :கைமுறை
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :சமச்சீர்மையிலா
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :சமச்சீரான
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :பயணிகள் பரிமாற்றம் வகை: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :அஞ்சல் பரிமாற்றம் வகை: {STRING}
@@ -1470,6 +1475,7 @@ STR_CONFIG_SETTING_SOUND                                        :{ORANGE}ஒல�
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE} பொதுவான
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}கட்டுமானம்
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}செய்திகள் / அறிவுரைஞர்கள்
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}நிறுவனம்
 STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}கணக்கியல்
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}வாகனங்கள்
@@ -1503,6 +1509,7 @@ STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... '{ST
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... செல்லாத மதிப்பு '{STRING}' '{STRING}' இற்கு
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... பயன்படுத்த இயலாத NewGRF இனை பயன்படுத்தவில்லை '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :கிடைக்கவில்லை
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :நிலையான பயன்பாட்டிற்கு உகந்தது அல்ல
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :கணினி NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :இந்த OpenTTD பதிப்புடன் பயன்படுத்த இயலாது
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :தெரியவில்லை
@@ -2408,7 +2415,9 @@ STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
 STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
 STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} உலக சொடுக்குகள்:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} இணைப்பு வரைபட தாமதம்:
+STR_FRAMERATE_SOUND                                             :{BLACK}இசை இயக்கம்:
 STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  GS/AI மொத்தம்:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
@@ -2551,6 +2560,7 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}பத�
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}குறைந்த். பயன்படுத்தக்கூடிய பதிப்பு: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}தட்டு: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :முதன்மை / 32 bpp
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :மரபுரிமை (W)
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}குணாதிசயங்கள்: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :ஒன்றுமில்லை
@@ -2952,6 +2962,7 @@ STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}தொ�
 
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}வேண்டியவன:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} காத்துக்கொண்டிருக்கிறது{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}தயாரிப்பினை மாற்றவும் (8 இன் பெருக்கங்கள், 2040 வரை)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}தயாரிப்பு அளவினை மாற்றவும் (சதவிகிதம், 800% வரை)
@@ -3079,6 +3090,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}சா�
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}கப்பல் வகையின் பெயரினை மாற்றவும்
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}விமான வகையின் பெயரினை மாற்றவும்
 
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}மறை
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}காட்சி
 
@@ -3201,6 +3213,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :மின்ச
 STR_REPLACE_MONORAIL_VEHICLES                                   :மோனோ இரயில் வாகனங்கள்
 STR_REPLACE_MAGLEV_VEHICLES                                     :மேக்லெவ் வாகனங்கள்
 
+STR_REPLACE_ROAD_VEHICLES                                       :சாலை வாகனங்கள்
 STR_REPLACE_TRAM_VEHICLES                                       :அமிழ் தண்டூர்தி வாகனங்கள்
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}பெட்டி நீக்கம்: {ORANGE}{STRING}
