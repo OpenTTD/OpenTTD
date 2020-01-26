@@ -712,22 +712,25 @@ static bool MakeSmallScreenshot(bool crashlog)
  */
 void SetupScreenshotViewport(ScreenshotType t, ViewPort *vp)
 {
-	if (t == SC_VIEWPORT || t == SC_CRASHLOG) {
-		Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
-		vp->virtual_left   = w->viewport->virtual_left;
-		vp->virtual_top    = w->viewport->virtual_top;
-		vp->virtual_width  = w->viewport->virtual_width;
-		vp->virtual_height = w->viewport->virtual_height;
+	switch(t) {
+		case SC_VIEWPORT:
+		case SC_CRASHLOG: {
+			Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+			vp->virtual_left   = w->viewport->virtual_left;
+			vp->virtual_top    = w->viewport->virtual_top;
+			vp->virtual_width  = w->viewport->virtual_width;
+			vp->virtual_height = w->viewport->virtual_height;
 
-		/* Compute pixel coordinates */
-		vp->left = 0;
-		vp->top = 0;
-		vp->width  = _screen.width;
-		vp->height = _screen.height;
-		vp->overlay = w->viewport->overlay;
-	} else {
-		/* Determine world coordinates of screenshot */
-		if (t == SC_WORLD) {
+			/* Compute pixel coordinates */
+			vp->left = 0;
+			vp->top = 0;
+			vp->width  = _screen.width;
+			vp->height = _screen.height;
+			vp->overlay = w->viewport->overlay;
+			break;
+		}
+		case SC_WORLD: {
+			/* Determine world coordinates of screenshot */
 			vp->zoom = ZOOM_LVL_WORLD_SCREENSHOT;
 
 			TileIndex north_tile = _settings_game.construction.freeform_edges ? TileXY(1, 1) : TileXY(0, 0);
@@ -742,7 +745,16 @@ void SetupScreenshotViewport(ScreenshotType t, ViewPort *vp)
 			vp->virtual_top    = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, extra_height_top).y;
 			vp->virtual_width  = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, 0).x                     - vp->virtual_left + 1;
 			vp->virtual_height = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, reclaim_height_bottom).y - vp->virtual_top  + 1;
-		} else {
+
+			/* Compute pixel coordinates */
+			vp->left = 0;
+			vp->top = 0;
+			vp->width  = UnScaleByZoom(vp->virtual_width,  vp->zoom);
+			vp->height = UnScaleByZoom(vp->virtual_height, vp->zoom);
+			vp->overlay = nullptr;
+			break;
+		}
+		default: {
 			vp->zoom = (t == SC_ZOOMEDIN) ? _settings_client.gui.zoom_min : ZOOM_LVL_VIEWPORT;
 
 			Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
@@ -750,14 +762,15 @@ void SetupScreenshotViewport(ScreenshotType t, ViewPort *vp)
 			vp->virtual_top    = w->viewport->virtual_top;
 			vp->virtual_width  = w->viewport->virtual_width;
 			vp->virtual_height = w->viewport->virtual_height;
-		}
 
-		/* Compute pixel coordinates */
-		vp->left = 0;
-		vp->top = 0;
-		vp->width  = UnScaleByZoom(vp->virtual_width,  vp->zoom);
-		vp->height = UnScaleByZoom(vp->virtual_height, vp->zoom);
-		vp->overlay = nullptr;
+			/* Compute pixel coordinates */
+			vp->left = 0;
+			vp->top = 0;
+			vp->width  = UnScaleByZoom(vp->virtual_width,  vp->zoom);
+			vp->height = UnScaleByZoom(vp->virtual_height, vp->zoom);
+			vp->overlay = nullptr;
+			break;
+		}
 	}
 }
 
