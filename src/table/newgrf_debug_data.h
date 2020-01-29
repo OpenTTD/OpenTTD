@@ -127,6 +127,7 @@ static const NIVariable _niv_stations[] = {
 	NIV(0x67, "land info of nearby tiles"),
 	NIV(0x68, "station info of nearby tiles"),
 	NIV(0x69, "information about cargo accepted in the past"),
+	NIV(0x6A, "GRFID of nearby station tiles"),
 	NIV_END()
 };
 
