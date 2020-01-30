@@ -791,8 +791,8 @@ STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}시민들이 축하하고 있습니다 . . .{}{STATION}에 처음으로 항공기가 도착했습니다!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}열차 충돌 사고!{}충돌로 인한 폭발로 {COMMA}명의 사망자가 발생하였습니다!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}차량 충돌!{}열차와의 충돌로 인해 운전자가 사망했습니다!
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}차량 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}차량 충돌!{}열차 충돌로 운전자가 사망했습니다!
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}차량 충돌!{}열차 충돌로 {COMMA}명이 사망했습니다!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}항공기 충돌사고 발생!{}{COMMA}명이 {STATION}공항에서 사망하였습니다!
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}항공기 추락사고 발생!{}연료 부족으로 인하여 {COMMA}명이 사망하였습니다!
 
@@ -1588,7 +1588,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :개선된 도�
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 칸
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 칸
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :무작위
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :도시 스스로의 도로 건설 허용: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :도시 스스로 도로를 건설하는 것을 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :도시가 성장하기 위해 도로를 건설할 수 있도록 허용합니다. 도시 당국이 스스로 도로를 만들지 못하도록 하려면 이 설정을 끄십시오.
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :도시가 회사 소유의 선로에 건널목을 만드는 것을 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :도시가 회사 소유의 선로에 건널목을 건설할 수 있도록 허용합니다.
@@ -2136,7 +2136,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}이 회�
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}참여
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}이 회사로 참가해서 플레이합니다
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}암호
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}다른 참가자가 이 회사로의 플레이를 하지 못하도록 암호로 보호합니다
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}다른 참가자가 이 회사에 참여하여 플레이하지 못 하도록 암호로 보호합니다
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}회사 암호 설정
 
 # Network chat
