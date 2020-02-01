@@ -38,7 +38,7 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 					src = si.source;
 				}
 			}
-			pf(v,"*FUNCTION [%s()] %s line [%d]\n",fn,src,si.line);
+			pf(v,"*FUNCTION [%s()] %s line [" OTTD_PRINTF64 "]\n",fn,src,si.line);
 			level++;
 		}
 		level=0;
@@ -56,7 +56,7 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 					break;
 				case OT_INTEGER:
 					sq_getinteger(v,-1,&i);
-					pf(v,"[%s] %d\n",name,i);
+					pf(v,"[%s] " OTTD_PRINTF64 "\n",name,i);
 					break;
 				case OT_FLOAT:
 					sq_getfloat(v,-1,&f);
@@ -134,7 +134,7 @@ void _sqstd_compiler_error(HSQUIRRELVM v,const SQChar *sErr,const SQChar *sSourc
 {
 	SQPRINTFUNCTION pf = sq_getprintfunc(v);
 	if(pf) {
-		pf(v,"%s line = (%d) column = (%d) : error %s\n",sSource,line,column,sErr);
+		pf(v,"%s line = (" OTTD_PRINTF64 ") column = (" OTTD_PRINTF64 ") : error %s\n",sSource,line,column,sErr);
 	}
 }
 
