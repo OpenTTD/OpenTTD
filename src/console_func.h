@@ -28,7 +28,7 @@ void IConsoleWarning(const char *string);
 void IConsoleError(const char *string);
 
 /* Parser */
-void IConsoleCmdExec(const char *cmdstr);
+void IConsoleCmdExec(const char *cmdstr, const uint recurse_count = 0);
 
 bool IsValidConsoleColour(TextColour c);
 
