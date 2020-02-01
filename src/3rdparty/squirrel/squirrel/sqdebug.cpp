@@ -122,5 +122,5 @@ void SQVM::Raise_ParamTypeError(SQInteger nparam,SQInteger typemask,SQInteger ty
 			StringCat(exptypes,SQString::Create(_ss(this), IdType2Name((SQObjectType)mask), -1), exptypes);
 		}
 	}
-	Raise_Error("parameter %d has an invalid type '%s' ; expected: '%s'", nparam, IdType2Name((SQObjectType)type), _stringval(exptypes));
+	Raise_Error("parameter " OTTD_PRINTF64 " has an invalid type '%s' ; expected: '%s'", nparam, IdType2Name((SQObjectType)type), _stringval(exptypes));
 }
