@@ -487,6 +487,33 @@ void ParseConnectionString(const char **company, const char **port, char *connec
 }
 
 /**
+ * Finds the first parameter and value in a query string
+ *  Format: param0=val0&param1=val1&...
+ *
+ * query will be moved to the start of the next query, and parameter name and
+ * value will be set to the name and value strings given by the user, inside
+ * the memory area originally occupied by connection_string.
+ */
+bool ParseQueryString(const char **name, const char **value, char **query)
+{
+	if (**query == '\0') return false;
+	*name = *query;
+	for (; **query != '\0'; (*query)++) {
+		switch (**query) {
+			case '=':
+				**query = '\0';
+				*value = *query + 1;
+				break;
+			case '&':
+				**query = '\0';
+				(*query)++;
+				return true;
+		}
+	}
+	return true;
+}
+
+/**
  * Handle the accepting of a connection to the server.
  * @param s The socket of the new connection.
  * @param address The address of the peer.
