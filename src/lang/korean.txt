@@ -2169,6 +2169,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}잘못�
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}서버에 인원이 가득 찼습니다
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}서버 관리자에 의해 접속이 차단되었습니다
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}서버에서 강제로 추방되었습니다
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}사유: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}이 서버에서 치트를 사용할 수 없습니다
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}서버에 너무 많은 명령을 보냈습니다
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}비밀번호 입력 시간을 초과하였습니다
@@ -2228,6 +2229,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} �
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** {1:STRING} 님에게 {2:CURRENCY_LONG}만큼의 돈을 보냈습니다
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}서버가 게임을 종료하였습니다
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}서버가 재시작되고 있습니다...{}기다려주세요...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} - 서버에서 강제로 추방되었습니다. 사유: ({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}콘텐츠 다운로드
