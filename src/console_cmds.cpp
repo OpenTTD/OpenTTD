@@ -527,7 +527,7 @@ DEF_CONSOLE_CMD(ConKick)
 	if (argc == 2) return ConKickOrBan(argv[1], false, nullptr);
 
 	/* Reason for kicking supplied */
-	int kick_message_length = strlen(argv[2]);
+	size_t kick_message_length = strlen(argv[2]);
 	if (kick_message_length >= 255) {
 		IConsolePrintF(CC_ERROR, "ERROR: Maximum kick message length is 254 characters. You entered %d characters.", kick_message_length);
 		return false;
@@ -551,7 +551,7 @@ DEF_CONSOLE_CMD(ConBan)
 	if (argc == 2) return ConKickOrBan(argv[1], true, nullptr);
 
 	/* Reason for kicking supplied */
-	int kick_message_length = strlen(argv[2]);
+	size_t kick_message_length = strlen(argv[2]);
 	if (kick_message_length >= 255) {
 		IConsolePrintF(CC_ERROR, "ERROR: Maximum kick message length is 254 characters. You entered %d characters.", kick_message_length);
 		return false;
