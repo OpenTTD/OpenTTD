@@ -251,6 +251,11 @@ public:
 		}
 	}
 
+	const Station *GetDestinationStation() const
+	{
+		return m_dest_station != INVALID_STATION ? Station::GetIfValid(m_dest_station) : nullptr;
+	}
+
 protected:
 	/** to access inherited path finder */
 	Tpf& Yapf()
@@ -401,6 +406,22 @@ public:
 			if (path_found && !path_cache.empty() && tile == v->dest_tile) {
 				path_cache.td.pop_back();
 				path_cache.tile.pop_back();
+			}
+
+			/* Check if target is a station, and cached path ends within 8 tiles of the dest tile */
+			const Station *st = Yapf().GetDestinationStation();
+			if (st) {
+				const RoadStop *stop = st->GetPrimaryRoadStop(v);
+				if (stop != nullptr && (IsDriveThroughStopTile(stop->xy) || stop->GetNextRoadStop(v) != nullptr)) {
+					/* Destination station has at least 2 usable road stops, or first is a drive-through stop,
+					 * trim end of path cache within a number of tiles of road stop tile area */
+					TileArea non_cached_area = v->IsBus() ? st->bus_station : st->truck_station;
+					non_cached_area.Expand(YAPF_ROADVEH_PATH_CACHE_DESTINATION_LIMIT);
+					while (!path_cache.empty() && non_cached_area.Contains(path_cache.tile.back())) {
+						path_cache.td.pop_back();
+						path_cache.tile.pop_back();
+					}
+				}
 			}
 		}
 		return next_trackdir;
