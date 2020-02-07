@@ -2086,9 +2086,14 @@ uint NetworkServerKickOrBanIP(const char *ip, bool ban, const char *reason)
 
 	uint n = 0;
 
-	/* There can be multiple clients with the same IP, kick them all */
+	/* There can be multiple clients with the same IP, kick them all but don't kill the server,
+	 * or the client doing the rcon. The latter can't be kicked because kicking frees closes
+	 * and subsequently free the connection related instances, which we would be reading from
+	 * and writing to after returning. So we would read or write data from freed memory up till
+	 * the segfault triggers. */
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->client_id == CLIENT_ID_SERVER) continue;
+		if (cs->client_id == _redirect_console_to_client) continue;
 		if (cs->client_address.IsInNetmask(ip)) {
 			NetworkServerKickClient(cs->client_id, reason);
 			n++;
