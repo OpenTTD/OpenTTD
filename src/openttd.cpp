@@ -633,7 +633,7 @@ int openttd_main(int argc, char *argv[])
 
 			const char* name = nullptr;
 			const char* value = nullptr;
-			while (ParseQueryString(&name, &value, &p)) {
+			while (ParseNextQueryParameter(&name, &value, &p)) {
 				if (strcmp(name, "password") == 0) {
 					scanner->join_server_password = value;
 				} else if (strcmp(name, "join") == 0) {

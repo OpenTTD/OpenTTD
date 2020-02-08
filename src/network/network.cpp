@@ -487,17 +487,22 @@ void ParseConnectionString(const char **company, const char **port, char *connec
 }
 
 /**
- * Finds the first parameter and value in a query string
- *  Format: param0=val0&param1=val1&...
+ * Parses the first parameter found in a query string and moves query to the
+ * following parameter.
+ *  Format: fieldname0=value0&fieldname1=value1&...
  *
- * query will be moved to the start of the next query, and parameter name and
- * value will be set to the name and value strings given by the user, inside
- * the memory area originally occupied by connection_string.
+ * The fieldname and value variables will be set to the first fieldname and
+ * value substrings found in the query string. Query will point to the following
+ * parameter.
+ * @param query The query string
+ * @return fieldname The fieldname of the parameter
+ * @return value The value of the parameter
+ * @return query The query string updated to the next parameter
  */
-bool ParseQueryString(const char **name, const char **value, char **query)
+bool ParseNextQueryParameter(const char **fieldname, const char **value, char **query)
 {
 	if (**query == '\0') return false;
-	*name = *query;
+	*fieldname = *query;
 	for (; **query != '\0'; (*query)++) {
 		switch (**query) {
 			case '=':

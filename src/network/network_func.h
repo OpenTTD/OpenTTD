@@ -44,7 +44,7 @@ void NetworkDisconnect(bool blocking = false, bool close_admins = true);
 void NetworkGameLoop();
 void NetworkBackgroundLoop();
 void ParseConnectionString(const char **company, const char **port, char *connection_string);
-bool ParseQueryString(const char **name, const char **value, char **query);
+bool ParseNextQueryParameter(const char **fieldname, const char **value, char **query);
 void NetworkStartDebugLog(NetworkAddress address);
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 
