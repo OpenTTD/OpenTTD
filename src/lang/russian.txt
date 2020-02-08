@@ -2320,6 +2320,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Неве
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Сервер переполнен
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Вас забанили на этом сервере
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Вас выкинули из игры
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Причина: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Чит-коды не разрешены на этом сервере
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Вы посылали на сервер слишком много команд
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Вы не успели ввести пароль
@@ -2379,6 +2380,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} п
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Вы передали {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сервер закрыл сессию
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Сервер перезапускается...{}Пожалуйста, подождите...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} был исключён из игры. Причина: ({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Загрузка контента
