@@ -513,6 +513,14 @@ bool ParseNextQueryParameter(const char **fieldname, const char **value, char **
 				**query = '\0';
 				(*query)++;
 				return true;
+			case '%':
+				unsigned int ascii_code;
+				if (strlen(*query) < 3 || sscanf(*query, "%%%2x", &ascii_code) != 1) {
+					fprintf(stderr, "Malformed query string\n");
+					return false;
+				}
+				**query = (char)ascii_code;
+				memmove(*query, *query + 3, strlen(*query) - 3);
 		}
 	}
 	return true;
