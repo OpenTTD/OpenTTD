@@ -643,9 +643,7 @@ int openttd_main(int argc, char *argv[])
 				} else if (strcmp(name, "version") == 0) {
 					/* Nothing for now */
 				} else {
-					fprintf(stderr, "Unknown parameter: ");
-					fprintf(stderr, name);
-					fprintf(stderr, "\n");
+					fprintf(stderr, "Unknown parameter: %s\n", name);
 				}
 			}
 			break;
