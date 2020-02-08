@@ -615,9 +615,9 @@ int openttd_main(int argc, char *argv[])
 			scanner->join_company_password = mgo.opt;
 			break;
 		case 'U': {
-			char* p = mgo.opt;
+			char *p = mgo.opt;
 
-			const char* protocol = "openttd://";
+			const char *protocol = "openttd://";
 			if (strncmp(p, protocol, strlen(protocol)) != 0) {
 				fprintf(stderr, "Unknown protocol\n");
 				break;
@@ -625,14 +625,14 @@ int openttd_main(int argc, char *argv[])
 
 			p += strlen(protocol);
 
-			char* network_conn = p;
+			char *network_conn = p;
 			p = strchr(p, '?');
 			*p = '\0';
 			p++;
 			scanner->network_conn = network_conn;
 
-			const char* name = nullptr;
-			const char* value = nullptr;
+			const char *name = nullptr;
+			const char *value = nullptr;
 			while (ParseNextQueryParameter(&name, &value, &p)) {
 				if (strcmp(name, "password") == 0) {
 					scanner->join_server_password = value;
