@@ -1121,12 +1121,12 @@ static void GetBridgeRoadCatenary(const RoadTypeInfo *rti, TileIndex head_tile, 
 	/* Simplified from DrawRoadTypeCatenary() to remove all the special cases required for regular ground road */
 	spr_back = GetCustomRoadSprite(rti, head_tile, ROTSG_CATENARY_BACK, head ? TCX_NORMAL : TCX_ON_BRIDGE);
 	spr_front = GetCustomRoadSprite(rti, head_tile, ROTSG_CATENARY_FRONT, head ? TCX_NORMAL : TCX_ON_BRIDGE);
-	if (spr_back == 0 || spr_front == 0) {
+	if (spr_back == 0 && spr_front == 0) {
 		spr_back = SPR_TRAMWAY_BASE + back_offsets[offset];
 		spr_front = SPR_TRAMWAY_BASE + front_offsets[offset];
 	} else {
-		spr_back += 23 + offset;
-		spr_front += 23 + offset;
+		if (spr_back != 0) spr_back += 23 + offset;
+		if (spr_front != 0) spr_front += 23 + offset;
 	}
 }
 
