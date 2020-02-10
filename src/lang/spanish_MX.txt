@@ -2169,6 +2169,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Contrase
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}El servidor está completo
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Se te ha prohibido el acceso al servidor
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Has sido expulsado del servidor
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Razón: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}No se permiten trucos en este servidor
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Estabas enviando demasiados comandos al servidor
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Tardaste demasiado en introducir la contraseña
@@ -2228,6 +2229,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} le
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** {2:CURRENCY_LONG} cedidos a la empresa {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servidor ha cerrado la sesión
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Se está reiniciando el servidor...{}Espera por favor...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ha sido expulsado. Razón: ({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descarga de contenido

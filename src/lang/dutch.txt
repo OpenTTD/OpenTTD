@@ -2168,6 +2168,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Ongeldig
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}De server is vol
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Je bent verbannen van deze server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Je bent van de server geschopt
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Reden: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Valsspelen is niet toegestaan op deze server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Je stuurde te veel commando's naar de server
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Het invoeren van het wachtwoord duurde te lang
@@ -2227,6 +2228,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ga
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Je gaf {2:CURRENCY_LONG} aan {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}De server heeft de sessie gesloten
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De server wordt opnieuw gestart...{}Wacht alstublieft...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} is eruit geschopt. Reden: ({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Download extra inhoud
