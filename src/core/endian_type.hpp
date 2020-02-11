@@ -33,6 +33,13 @@
 #	else
 #		define TTD_ENDIAN TTD_BIG_ENDIAN
 #	endif
+#elif defined(__OpenBSD__)
+#	include <endian.h>
+#	if BYTE_ORDER == LITTLE_ENDIAN
+#		define TTD_ENDIAN TTD_LITTLE_ENDIAN
+#	else
+#		define TTD_ENDIAN TTD_BIG_ENDIAN
+#	endif
 #elif !defined(TESTING)
 #	include <sys/param.h>
 #	if __BYTE_ORDER == __LITTLE_ENDIAN
