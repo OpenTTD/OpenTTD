@@ -305,16 +305,16 @@ void Hash::PrintStatistics() const
 	}
 	printf(
 		"---\n"
-		"Hash size: %d\n"
-		"Nodes used: %d\n"
-		"Non empty buckets: %d\n"
-		"Max collision: %d\n",
+		"Hash size: %u\n"
+		"Nodes used: %u\n"
+		"Non empty buckets: %u\n"
+		"Max collision: %u\n",
 		this->num_buckets, this->size, used_buckets, max_collision
 	);
 	printf("{ ");
 	for (i = 0; i <= max_collision; i++) {
 		if (usage[i] > 0) {
-			printf("%d:%d ", i, usage[i]);
+			printf("%u:%u ", i, usage[i]);
 #if 0
 			if (i > 0) {
 				uint j;

@@ -697,7 +697,7 @@ public:
 		if (f == nullptr) return false;
 
 		ScenarioIdentifier id;
-		int fret = fscanf(f, "%i", &id.scenid);
+		int fret = fscanf(f, "%u", &id.scenid);
 		FioFCloseFile(f);
 		if (fret != 1) return false;
 		strecpy(id.filename, filename, lastof(id.filename));
