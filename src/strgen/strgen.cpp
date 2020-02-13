@@ -310,7 +310,7 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 		fprintf(this->fh,
 			"\n"
 			"static const uint LANGUAGE_PACK_VERSION     = 0x%X;\n"
-			"static const uint LANGUAGE_MAX_PLURAL       = %d;\n"
+			"static const uint LANGUAGE_MAX_PLURAL       = %u;\n"
 			"static const uint LANGUAGE_MAX_PLURAL_FORMS = %d;\n\n",
 			(uint)data.Version(), (uint)lengthof(_plural_forms), max_plural_forms
 		);
