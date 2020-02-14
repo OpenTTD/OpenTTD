@@ -13,6 +13,7 @@
 #include "game_info.hpp"
 #include "game_scanner.hpp"
 #include "../debug.h"
+#include <set>
 
 #include "../safeguards.h"
 
@@ -22,10 +23,8 @@
  */
 static bool CheckAPIVersion(const char *api_version)
 {
-	return strcmp(api_version, "1.2") == 0 || strcmp(api_version, "1.3") == 0 || strcmp(api_version, "1.4") == 0 ||
-			strcmp(api_version, "1.5") == 0 || strcmp(api_version, "1.6") == 0 || strcmp(api_version, "1.7") == 0 ||
-			strcmp(api_version, "1.8") == 0 || strcmp(api_version, "1.9") == 0 || strcmp(api_version, "1.10") == 0 ||
-			strcmp(api_version, "1.11") == 0;
+	static const std::set<std::string> versions = {"1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11"};
+	return versions.find(api_version) != versions.end();
 }
 
 #if defined(_WIN32)
