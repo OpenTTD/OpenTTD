@@ -312,6 +312,10 @@ public:
 	 * @return The VehicleID of the new vehicle, or an invalid VehicleID when
 	 *   it failed. Check the return value using IsValidVehicle. In test-mode
 	 *   0 is returned if it was successful; any other value indicates failure.
+	 * @note Unlike the GUI, wagons are not automatically attached to trains,
+	 *   only to existing free wagons. This means that BuildVehicle can sometimes
+	 *   return an ID indicating success, but IsValidVehicle check will
+	 *   fail. You should use MoveWagon to attach free wagons to trains.
 	 * @note In Test Mode it means you can't assign orders yet to this vehicle,
 	 *   as the vehicle isn't really built yet. Build it for real first before
 	 *   assigning orders.
