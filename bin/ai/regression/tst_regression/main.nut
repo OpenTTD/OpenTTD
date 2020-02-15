@@ -1690,6 +1690,9 @@ function Regression::Vehicle()
 	print("  BuildVehicle():       " + AIVehicle.BuildVehicle(10008, 9));
 	print("  BuildVehicle():       " + AIVehicle.BuildVehicle(10008, 27));
 	print("  BuildVehicle():       " + AIVehicle.BuildVehicle(10008, 27));
+	print("  IsValidVehicle(17):   " + AIVehicle.IsValidVehicle(17));
+	print("  IsValidVehicle(18):   " + AIVehicle.IsValidVehicle(18));
+	print("  IsValidVehicle(19):   " + AIVehicle.IsValidVehicle(19)); // 19 is immediately joined to 18
 	print("  MoveWagonChain():     " + AIVehicle.MoveWagonChain(18, 0, 17, 0));
 	print("  GetNumWagons():       " + AIVehicle.GetNumWagons(17));
 	print("  GetLength():          " + AIVehicle.GetLength(17));
