@@ -9115,6 +9115,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
   BuildVehicle():       17
   BuildVehicle():       18
   BuildVehicle():       19
+  IsValidVehicle(17):   true
+  IsValidVehicle(18):   true
+  IsValidVehicle(19):   false
   MoveWagonChain():     true
   GetNumWagons():       3
   GetLength():          24
