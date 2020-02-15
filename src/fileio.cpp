@@ -527,10 +527,24 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 
 /**
  * Create a directory with the given name
+ * If the parent directory does not exist, it will try to create that as well.
  * @param name the new name of the directory
  */
 void FioCreateDirectory(const char *name)
 {
+	char dirname[MAX_PATH];
+	strecpy(dirname, name, lastof(dirname));
+	char *p = strrchr(dirname, PATHSEPCHAR);
+	if (p != nullptr) {
+		*p = '\0';
+		DIR *dir = ttd_opendir(dirname);
+		if (dir == nullptr) {
+			FioCreateDirectory(dirname); // Try creating the parent directory, if we couldn't open it
+		} else {
+			closedir(dir);
+		}
+	}
+
 	/* Ignore directory creation errors; they'll surface later on, and most
 	 * of the time they are 'directory already exists' errors anyhow. */
 #if defined(_WIN32)
