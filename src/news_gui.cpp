@@ -44,6 +44,7 @@
 const NewsItem *_statusbar_news_item = nullptr;
 
 static uint MIN_NEWS_AMOUNT = 30;        ///< preferred minimum amount of news messages
+static uint MAX_NEWS_AMOUNT = 1 << 10;   ///< Do not exceed this number of news messages
 static uint _total_news = 0;             ///< current number of news items
 static NewsItem *_oldest_news = nullptr; ///< head of news items queue
 NewsItem *_latest_news = nullptr;        ///< tail of news items queue
@@ -729,6 +730,50 @@ static void MoveToNextNewsItem()
 	}
 }
 
+/** Delete a news item from the queue */
+static void DeleteNewsItem(NewsItem *ni)
+{
+	/* Delete the news from the news queue. */
+	if (ni->prev != nullptr) {
+		ni->prev->next = ni->next;
+	} else {
+		assert(_oldest_news == ni);
+		_oldest_news = ni->next;
+	}
+
+	if (ni->next != nullptr) {
+		ni->next->prev = ni->prev;
+	} else {
+		assert(_latest_news == ni);
+		_latest_news = ni->prev;
+	}
+
+	_total_news--;
+
+	if (_forced_news == ni || _current_news == ni) {
+		/* When we're the current news, go to the previous item first;
+		 * we just possibly made that the last news item. */
+		if (_current_news == ni) _current_news = ni->prev;
+
+		/* About to remove the currently forced item (shown as newspapers) ||
+		 * about to remove the currently displayed item (newspapers) */
+		MoveToNextNewsItem();
+	}
+
+	if (_statusbar_news_item == ni) {
+		/* When we're the current news, go to the previous item first;
+		 * we just possibly made that the last news item. */
+		_statusbar_news_item = ni->prev;
+
+		/* About to remove the currently displayed item (ticker, or just a reminder) */
+		MoveToNextTickerItem();
+	}
+
+	delete ni;
+
+	SetWindowDirty(WC_MESSAGE_HISTORY, 0);
+}
+
 /**
  * Add a new newsitem to be shown.
  * @param string String to display
@@ -776,6 +821,11 @@ void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceTy
 
 	ni->next = nullptr;
 	_latest_news = ni;
+
+	/* Keep the number of stored news items to a managable number */
+	if (_total_news > MAX_NEWS_AMOUNT) {
+		DeleteNewsItem(_oldest_news);
+	}
 
 	SetWindowDirty(WC_MESSAGE_HISTORY, 0);
 }
@@ -842,50 +892,6 @@ CommandCost CmdCustomNewsItem(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	}
 
 	return CommandCost();
-}
-
-/** Delete a news item from the queue */
-static void DeleteNewsItem(NewsItem *ni)
-{
-	/* Delete the news from the news queue. */
-	if (ni->prev != nullptr) {
-		ni->prev->next = ni->next;
-	} else {
-		assert(_oldest_news == ni);
-		_oldest_news = ni->next;
-	}
-
-	if (ni->next != nullptr) {
-		ni->next->prev = ni->prev;
-	} else {
-		assert(_latest_news == ni);
-		_latest_news = ni->prev;
-	}
-
-	_total_news--;
-
-	if (_forced_news == ni || _current_news == ni) {
-		/* When we're the current news, go to the previous item first;
-		 * we just possibly made that the last news item. */
-		if (_current_news == ni) _current_news = ni->prev;
-
-		/* About to remove the currently forced item (shown as newspapers) ||
-		 * about to remove the currently displayed item (newspapers) */
-		MoveToNextNewsItem();
-	}
-
-	if (_statusbar_news_item == ni) {
-		/* When we're the current news, go to the previous item first;
-		 * we just possibly made that the last news item. */
-		_statusbar_news_item = ni->prev;
-
-		/* About to remove the currently displayed item (ticker, or just a reminder) */
-		MoveToNextTickerItem();
-	}
-
-	delete ni;
-
-	SetWindowDirty(WC_MESSAGE_HISTORY, 0);
 }
 
 /**
