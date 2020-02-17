@@ -208,7 +208,7 @@ bool CheckCompanyHasMoney(CommandCost &cost)
  * @param c Company to pay the bill.
  * @param cost Money to pay.
  */
-static void SubtractMoneyFromAnyCompany(Company *c, CommandCost cost)
+static void SubtractMoneyFromAnyCompany(Company *c, const CommandCost &cost)
 {
 	if (cost.GetCost() == 0) return;
 	assert(cost.GetExpensesType() != INVALID_EXPENSES);
@@ -237,7 +237,7 @@ static void SubtractMoneyFromAnyCompany(Company *c, CommandCost cost)
  * Subtract money from the #_current_company, if the company is valid.
  * @param cost Money to pay.
  */
-void SubtractMoneyFromCompany(CommandCost cost)
+void SubtractMoneyFromCompany(const CommandCost &cost)
 {
 	Company *c = Company::GetIfValid(_current_company);
 	if (c != nullptr) SubtractMoneyFromAnyCompany(c, cost);
@@ -248,7 +248,7 @@ void SubtractMoneyFromCompany(CommandCost cost)
  * @param company Company paying the bill.
  * @param cst     Cost of a command.
  */
-void SubtractMoneyFromCompanyFract(CompanyID company, CommandCost cst)
+void SubtractMoneyFromCompanyFract(CompanyID company, const CommandCost &cst)
 {
 	Company *c = Company::Get(company);
 	byte m = c->money_fraction;
