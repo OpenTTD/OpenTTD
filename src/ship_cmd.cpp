@@ -604,6 +604,7 @@ static bool ShipMoveUpDownOnLock(Ship *v)
 bool IsShipDestinationTile(TileIndex tile, StationID station)
 {
 	assert(IsDockingTile(tile));
+	if (!Station::IsValidID(station)) return false;
 	/* Check each tile adjacent to docking tile. */
 	for (DiagDirection d = DIAGDIR_BEGIN; d != DIAGDIR_END; d++) {
 		TileIndex t = tile + TileOffsByDiagDir(d);

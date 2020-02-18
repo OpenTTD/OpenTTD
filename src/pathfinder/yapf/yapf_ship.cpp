@@ -30,6 +30,7 @@ protected:
 	TileIndex    m_destTile;
 	TrackdirBits m_destTrackdirs;
 	StationID    m_destStation;
+	uint         m_destDistance;  ///< Manhattan distance
 
 public:
 	void SetDestination(const Ship *v)
@@ -43,6 +44,7 @@ public:
 			m_destTile      = v->dest_tile;
 			m_destTrackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_WATER, 0));
 		}
+		m_destDistance = DistanceManhattan(m_destTile, v->tile);
 	}
 
 protected:
@@ -66,6 +68,16 @@ public:
 		}
 
 		return tile == m_destTile && ((m_destTrackdirs & TrackdirToTrackdirBits(trackdir)) != TRACKDIR_BIT_NONE);
+	}
+
+	inline StationID GetDestinationStation()
+	{
+		return m_destStation;
+	}
+
+	inline uint GetDestinationDistanceManhattan()
+	{
+		return m_destDistance;
 	}
 
 	/**
@@ -285,10 +297,13 @@ public:
 		/* additional penalty for curves */
 		c += CurveCost(n.m_parent->GetTrackdir(), n.GetTrackdir());
 
-		if (IsDockingTile(n.GetTile())) {
+		if (IsDockingTile(n.GetTile()) && IsShipDestinationTile(n.GetTile(), Yapf().GetDestinationStation())) {
 			/* Check docking tile for occupancy */
-			uint count = 1;
-			HasVehicleOnPos(n.GetTile(), &count, &CountShipProc);
+			uint count = 0;
+			if (Yapf().GetDestinationDistanceManhattan() < 16) {
+				count++;
+				HasVehicleOnPos(n.GetTile(), &count, &CountShipProc);
+			}
 			c += count * 3 * YAPF_TILE_LENGTH;
 		}
 
