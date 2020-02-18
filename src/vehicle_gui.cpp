@@ -36,6 +36,7 @@
 #include "station_base.h"
 #include "tilehighlight_func.h"
 #include "zoom_func.h"
+#include "error.h"
 
 #include "safeguards.h"
 
@@ -2268,7 +2269,7 @@ static void ShowVehicleDetailsWindow(const Vehicle *v)
 static const NWidgetPart _nested_vehicle_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_VV_CAPTION), SetDataTip(STR_VEHICLE_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_VV_CAPTION), SetDataTip(STR_VEHICLE_VIEW_CAPTION, STR_VEHICLE_VIEW_CAPTION_TOOLTIP),
 		NWidget(WWT_DEBUGBOX, COLOUR_GREY),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
@@ -2669,6 +2670,19 @@ public:
 		const Vehicle *v = Vehicle::Get(this->window_number);
 
 		switch (widget) {
+			case WID_VV_CAPTION: {// rename
+				CommandCost ret = CheckOwnership(v->owner);
+				if (ret.Failed()) {
+					ShowErrorMessage(STR_ERROR_CAN_T_RENAME_TRAIN + v->type, STR_ERROR_OWNED_BY, WL_ERROR);
+					break;
+				}
+
+				SetDParam(0, v->index);
+				ShowQueryString(STR_VEHICLE_NAME, STR_QUERY_RENAME_TRAIN_CAPTION + v->type,
+					MAX_LENGTH_VEHICLE_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
+				break;
+			}
+
 			case WID_VV_START_STOP: // start stop
 				if (_ctrl_pressed) {
 					/* Scroll to current order destination */
@@ -2737,6 +2751,13 @@ public:
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_VV_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
 		}
+	}
+
+	void OnQueryTextFinished(char *str) override
+	{
+		if (str == nullptr) return;
+
+		DoCommandP(0, this->window_number, 0, CMD_RENAME_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_RENAME_TRAIN + Vehicle::Get(this->window_number)->type), nullptr, str);
 	}
 
 	void UpdateButtonStatus()

@@ -3737,6 +3737,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make aut
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_CAPTION_TOOLTIP                                :{BLACK}Window title - drag this to move window{}Double click to name vehicle
 STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centre main view on train's location. Ctrl+Click will follow train in main view
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centre main view on vehicle's location. Ctrl+Click will follow vehicle in main view
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centre main view on ship's location. Ctrl+Click will follow ship in main view
