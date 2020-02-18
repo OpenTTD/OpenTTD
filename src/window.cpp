@@ -711,8 +711,12 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 			return;
 
 		case WWT_CAPTION: // 'Title bar'
-			StartWindowDrag(w);
-			return;
+			if (click_count == 1) {
+				StartWindowDrag(w);
+				return;
+			} else {
+				break;
+			}
 
 		case WWT_RESIZEBOX:
 			/* When the resize widget is on the left size of the window
