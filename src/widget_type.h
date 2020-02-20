@@ -14,6 +14,7 @@
 #include "core/bitmath_func.hpp"
 #include "core/math_func.hpp"
 #include "strings_type.h"
+#include "gfx_func.h"
 #include "gfx_type.h"
 #include "window_type.h"
 
@@ -182,6 +183,13 @@ public:
 	uint8 padding_right;  ///< Paddings added to the right of the widget. Managed by parent container widget. (parent container may swap this with padding_left for RTL)
 	uint8 padding_bottom; ///< Paddings added to the bottom of the widget. Managed by parent container widget.
 	uint8 padding_left;   ///< Paddings added to the left of the widget. Managed by parent container widget. (parent container may swap this with padding_right for RTL)
+
+	inline bool IsOutsideDrawArea() const
+	{
+		if ((int)(this->pos_x + this->current_x) <= _cur_dpi->left || (int)(this->pos_x) >= _cur_dpi->left + _cur_dpi->width) return true;
+		if ((int)(this->pos_y + this->current_y) <= _cur_dpi->top || (int)(this->pos_y) >= _cur_dpi->top + _cur_dpi->height) return true;
+		return false;
+	}
 
 protected:
 	inline void StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height);

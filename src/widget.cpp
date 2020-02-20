@@ -1048,6 +1048,7 @@ void NWidgetStacked::FillNestedArray(NWidgetBase **array, uint length)
 
 void NWidgetStacked::Draw(const Window *w)
 {
+	if (this->IsOutsideDrawArea()) return;
 	if (this->shown_plane >= SZSP_BEGIN) return;
 
 	int plane = 0;
@@ -1107,6 +1108,7 @@ void NWidgetPIPContainer::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
 
 void NWidgetPIPContainer::Draw(const Window *w)
 {
+	if (this->IsOutsideDrawArea()) return;
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		child_wid->Draw(w);
 	}
@@ -1623,6 +1625,8 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 
 /* virtual */ void NWidgetMatrix::Draw(const Window *w)
 {
+	if (this->IsOutsideDrawArea()) return;
+
 	/* Fill the background. */
 	GfxFillRect(this->pos_x, this->pos_y, this->pos_x + this->current_x - 1, this->pos_y + this->current_y - 1, _colour_gradient[this->colour & 0xF][5]);
 
@@ -1826,6 +1830,7 @@ void NWidgetBackground::FillNestedArray(NWidgetBase **array, uint length)
 
 void NWidgetBackground::Draw(const Window *w)
 {
+	if (this->IsOutsideDrawArea()) return;
 	if (this->current_x == 0 || this->current_y == 0) return;
 
 	Rect r;
@@ -1900,6 +1905,7 @@ void NWidgetViewport::SetupSmallestSize(Window *w, bool init_array)
 
 void NWidgetViewport::Draw(const Window *w)
 {
+	if (this->IsOutsideDrawArea()) return;
 	if (this->disp_flags & ND_NO_TRANSPARENCY) {
 		TransparencyOptionBits to_backup = _transparency_opt;
 		_transparency_opt &= (1 << TO_SIGNS) | (1 << TO_LOADING); // Disable all transparency, except textual stuff
@@ -2023,6 +2029,7 @@ void NWidgetScrollbar::SetupSmallestSize(Window *w, bool init_array)
 
 void NWidgetScrollbar::Draw(const Window *w)
 {
+	if (this->IsOutsideDrawArea()) return;
 	if (this->current_x == 0 || this->current_y == 0) return;
 
 	Rect r;
@@ -2390,6 +2397,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 
 void NWidgetLeaf::Draw(const Window *w)
 {
+	if (this->IsOutsideDrawArea()) return;
 	if (this->current_x == 0 || this->current_y == 0) return;
 
 	/* Setup a clipping rectangle... */
