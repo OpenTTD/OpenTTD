@@ -228,7 +228,7 @@ enum SortButtonState {
 /**
  * Window flags.
  */
-enum WindowFlags {
+enum WindowFlags : uint16 {
 	WF_TIMEOUT           = 1 <<  0, ///< Window timeout counter.
 
 	WF_DRAGGING          = 1 <<  3, ///< Window is being dragged.
@@ -240,6 +240,8 @@ enum WindowFlags {
 	WF_WHITE_BORDER      = 1 <<  8, ///< Window white border counter bit mask.
 	WF_HIGHLIGHTED       = 1 <<  9, ///< Window has a widget that has a highlight.
 	WF_CENTERED          = 1 << 10, ///< Window is centered and shall stay centered after ReInit.
+	WF_DIRTY             = 1 << 11, ///< Whole window is dirty, and requires repainting.
+	WF_WIDGETS_DIRTY     = 1 << 12, ///< One or more widgets are dirty, and require repainting.
 };
 DECLARE_ENUM_AS_BIT_SET(WindowFlags)
 
@@ -324,7 +326,8 @@ public:
 	Owner owner;        ///< The owner of the content shown in this window. Company colour is acquired from this variable.
 
 	ViewportData *viewport;          ///< Pointer to viewport data, if present.
-	const NWidgetCore *nested_focus; ///< Currently focused nested widget, or \c nullptr if no nested widget has focus.
+	NWidgetViewport *viewport_widget; ///< Pointer to viewport widget, if present.
+	NWidgetCore *nested_focus;       ///< Currently focused nested widget, or \c nullptr if no nested widget has focus.
 	SmallMap<int, QueryString*> querystrings; ///< QueryString associated to WWT_EDITBOX widgets.
 	NWidgetBase *nested_root;        ///< Root of the nested tree.
 	NWidgetBase **nested_array;      ///< Array of pointers into the tree. Do not access directly, use #Window::GetWidget() instead.
@@ -508,7 +511,7 @@ public:
 	void RaiseButtons(bool autoraise = false);
 	void CDECL SetWidgetsDisabledState(bool disab_stat, int widgets, ...);
 	void CDECL SetWidgetsLoweredState(bool lowered_stat, int widgets, ...);
-	void SetWidgetDirty(byte widget_index) const;
+	void SetWidgetDirty(byte widget_index);
 
 	void DrawWidgets() const;
 	void DrawViewport() const;
@@ -517,7 +520,8 @@ public:
 
 	void DeleteChildWindows(WindowClass wc = WC_INVALID) const;
 
-	void SetDirty() const;
+	void SetDirty();
+	void SetDirtyAsBlocks();
 	void ReInit(int rx = 0, int ry = 0);
 
 	/** Is window shaded currently? */
@@ -912,5 +916,27 @@ extern SpecialMouseMode _special_mouse_mode;
 void SetFocusedWindow(Window *w);
 
 void ScrollbarClickHandler(Window *w, NWidgetCore *nw, int x, int y);
+
+/**
+ * Returns whether a window may be shown or not.
+ * @param w The window to consider.
+ * @return True iff it may be shown, otherwise false.
+ */
+inline bool MayBeShown(const Window *w)
+{
+	/* If we're not modal, everything is okay. */
+	extern bool _in_modal_progress;
+	if (likely(!_in_modal_progress)) return true;
+
+	switch (w->window_class) {
+		case WC_MAIN_WINDOW:    ///< The background, i.e. the game.
+		case WC_MODAL_PROGRESS: ///< The actual progress window.
+		case WC_CONFIRM_POPUP_QUERY: ///< The abort window.
+			return true;
+
+		default:
+			return false;
+	}
+}
 
 #endif /* WINDOW_GUI_H */

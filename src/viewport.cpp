@@ -181,7 +181,9 @@ struct ViewportDrawer {
 	Point foundation_offset[FOUNDATION_PART_END];    ///< Pixel offset for ground sprites on the foundations.
 };
 
-static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, int bottom);
+static void MarkViewportDirty(ViewPort * const vp, int left, int top, int right, int bottom);
+static void MarkRouteStepDirty(RouteStepsMap::const_iterator cit);
+static void MarkRouteStepDirty(const TileIndex tile, uint order_nr);
 
 static ViewportDrawer _vd;
 
@@ -269,6 +271,10 @@ void InitializeWindowViewport(Window *w, int x, int y,
 
 	vp->virtual_width = ScaleByZoom(width, zoom);
 	vp->virtual_height = ScaleByZoom(height, zoom);
+
+	vp->map_type = VPMT_BEGIN;
+
+	UpdateViewportSizeZoom(vp);
 
 	Point pt;
 
@@ -364,7 +370,16 @@ static void DoSetViewportPosition(const Window *w, int left, int top, int width,
 	}
 }
 
-static void SetViewportPosition(Window *w, int x, int y)
+inline void UpdateViewportDirtyBlockLeftMargin(ViewPort *vp)
+{
+	if (vp->zoom >= ZOOM_LVL_DRAW_MAP) {
+		vp->dirty_block_left_margin = 0;
+	} else {
+		vp->dirty_block_left_margin = UnScaleByZoomLower((-vp->virtual_left) & 127, vp->zoom);
+	}
+}
+
+static void SetViewportPosition(Window *w, int x, int y, bool force_update_overlay)
 {
 	ViewPort *vp = w->viewport;
 	int old_left = vp->virtual_left;
@@ -374,6 +389,7 @@ static void SetViewportPosition(Window *w, int x, int y)
 
 	vp->virtual_left = x;
 	vp->virtual_top = y;
+	UpdateViewportDirtyBlockLeftMargin(vp);
 
 	/* Viewport is bound to its left top corner, so it must be rounded down (UnScaleByZoomLower)
 	 * else glitch described in FS#1412 will happen (offset by 1 pixel with zoom level > NORMAL)
@@ -1221,8 +1237,8 @@ static void ViewportAddLandscape()
 	 *  - Right column is column of upper_right (rounded up) and one column to the right.
 	 * Note: Integer-division does not round down for negative numbers, so ensure rounding with another increment/decrement.
 	 */
-	int left_column = (upper_left.y - upper_left.x) / (int)TILE_SIZE - 2;
-	int right_column = (upper_right.y - upper_right.x) / (int)TILE_SIZE + 2;
+	int left_column = DivTowardsNegativeInf(upper_left.y - upper_left.x, (int)TILE_SIZE) - 1;
+	int right_column = DivTowardsPositiveInf(upper_right.y - upper_right.x, (int)TILE_SIZE) + 1;
 
 	int potential_bridge_height = ZOOM_LVL_BASE * TILE_HEIGHT * _settings_game.construction.max_bridge_height;
 
@@ -1230,7 +1246,7 @@ static void ViewportAddLandscape()
 	 * The first row that could possibly be visible is the row above upper_left (if it is at height 0).
 	 * Due to integer-division not rounding down for negative numbers, we need another decrement.
 	 */
-	int row = (upper_left.x + upper_left.y) / (int)TILE_SIZE - 2;
+	int row = DivTowardsNegativeInf(upper_left.y + upper_left.x, (int)TILE_SIZE) - 1;
 	bool last_row = false;
 	for (; !last_row; row++) {
 		last_row = true;
@@ -1700,8 +1716,8 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	_vd.dpi.pitch = old_dpi->pitch;
 	_vd.last_child = nullptr;
 
-	int x = UnScaleByZoom(_vd.dpi.left - (vp->virtual_left & mask), vp->zoom) + vp->left;
-	int y = UnScaleByZoom(_vd.dpi.top - (vp->virtual_top & mask), vp->zoom) + vp->top;
+	int x = UnScaleByZoomLower(_vd.dpi.left - (vp->virtual_left & mask), vp->zoom) + vp->left;
+	int y = UnScaleByZoomLower(_vd.dpi.top - (vp->virtual_top & mask), vp->zoom) + vp->top;
 
 	_vd.dpi.dst_ptr = BlitterFactory::GetCurrentBlitter()->MoveTo(old_dpi->dst_ptr, x - old_dpi->left, y - old_dpi->top);
 
@@ -1758,7 +1774,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
  * Make sure we don't draw a too big area at a time.
  * If we do, the sprite memory will overflow.
  */
-static void ViewportDrawChk(const ViewPort *vp, int left, int top, int right, int bottom)
+void ViewportDrawChk(const ViewPort *vp, int left, int top, int right, int bottom)
 {
 	if ((int64)ScaleByZoom(bottom - top, vp->zoom) * (int64)ScaleByZoom(right - left, vp->zoom) > (int64)(180000 * ZOOM_LVL_BASE * ZOOM_LVL_BASE)) {
 		if ((bottom - top) > (right - left)) {
@@ -1780,7 +1796,7 @@ static void ViewportDrawChk(const ViewPort *vp, int left, int top, int right, in
 	}
 }
 
-static inline void ViewportDraw(const ViewPort *vp, int left, int top, int right, int bottom)
+static inline void ViewportDraw(ViewPort *vp, int left, int top, int right, int bottom)
 {
 	if (right <= vp->left || bottom <= vp->top) return;
 
@@ -1793,6 +1809,8 @@ static inline void ViewportDraw(const ViewPort *vp, int left, int top, int right
 
 	if (top < vp->top) top = vp->top;
 	if (bottom > vp->top + vp->height) bottom = vp->top + vp->height;
+
+	vp->is_drawn = true;
 
 	ViewportDrawChk(vp, left, top, right, bottom);
 }
@@ -1884,6 +1902,44 @@ void UpdateViewportPosition(Window *w)
 
 		ClampViewportToMap(vp, &w->viewport->scrollpos_x, &w->viewport->scrollpos_y);
 
+		if (_scrolling_viewport == w) UpdateActiveScrollingViewport(w);
+
+		SetViewportPosition(w, w->viewport->scrollpos_x, w->viewport->scrollpos_y, update_overlay);
+	}
+}
+
+void UpdateViewportSizeZoom(ViewPort *vp)
+{
+	vp->dirty_blocks_per_column = CeilDiv(vp->height, vp->GetDirtyBlockHeight());
+	vp->dirty_blocks_per_row = CeilDiv(vp->width, vp->GetDirtyBlockWidth());
+	uint size = vp->dirty_blocks_per_row * vp->dirty_blocks_per_column;
+	vp->dirty_blocks.assign(size, false);
+	UpdateViewportDirtyBlockLeftMargin(vp);
+}
+
+void UpdateActiveScrollingViewport(Window *w)
+{
+	if (w && (!_settings_client.gui.show_scrolling_viewport_on_map || w->viewport->zoom >= ZOOM_LVL_DRAW_MAP)) w = nullptr;
+
+	const bool bound_valid = (_scrolling_viewport_bound.left != _scrolling_viewport_bound.right);
+
+	if (!w && !bound_valid) return;
+
+	const int gap = ScaleByZoom(1, ZOOM_LVL_MAX);
+
+	auto get_bounds = [&gap](const ViewportData *vp) -> Rect {
+		int lr_low = vp->virtual_left;
+		int lr_hi = vp->dest_scrollpos_x;
+		if (lr_low > lr_hi) Swap(lr_low, lr_hi);
+		int right = lr_hi + vp->virtual_width + gap;
+
+		int tb_low = vp->virtual_top;
+		int tb_hi = vp->scrollpos_y;
+		if (tb_low > tb_hi) Swap(tb_low, tb_hi);
+		int bottom = tb_hi + vp->virtual_height + gap;
+
+		ClampViewportToMap(vp, &w->viewport->scrollpos_x, &w->viewport->scrollpos_y);
+
 		SetViewportPosition(w, w->viewport->scrollpos_x, w->viewport->scrollpos_y);
 		if (update_overlay) RebuildViewportOverlay(w);
 	}
@@ -1898,7 +1954,7 @@ void UpdateViewportPosition(Window *w)
  * @param bottom Bottom edge of area to repaint
  * @ingroup dirty
  */
-static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, int bottom)
+static void MarkViewportDirty(ViewPort * const vp, int left, int top, int right, int bottom)
 {
 	/* Rounding wrt. zoom-out level */
 	right  += (1 << vp->zoom) - 1;
@@ -1920,12 +1976,21 @@ static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, 
 
 	if (top >= vp->virtual_height) return;
 
-	SetDirtyBlocks(
-		UnScaleByZoomLower(left, vp->zoom) + vp->left,
-		UnScaleByZoomLower(top, vp->zoom) + vp->top,
-		UnScaleByZoom(right, vp->zoom) + vp->left + 1,
-		UnScaleByZoom(bottom, vp->zoom) + vp->top + 1
-	);
+	uint x = max<int>(0, UnScaleByZoomLower(left, vp->zoom) - vp->dirty_block_left_margin) >> vp->GetDirtyBlockWidthShift();
+	uint y = UnScaleByZoomLower(top, vp->zoom) >> vp->GetDirtyBlockHeightShift();
+	uint w = (max<int>(0, UnScaleByZoomLower(right, vp->zoom) - 1 - vp->dirty_block_left_margin) >> vp->GetDirtyBlockWidthShift()) + 1 - x;
+	uint h = ((UnScaleByZoom(bottom, vp->zoom) - 1) >> vp->GetDirtyBlockHeightShift()) + 1 - y;
+
+	uint column_skip = vp->dirty_blocks_per_column - h;
+	uint pos = (x * vp->dirty_blocks_per_column) + y;
+	for (uint i = 0; i < w; i++) {
+		for (uint j = 0; j < h; j++) {
+			vp->dirty_blocks[pos] = true;
+			pos++;
+		}
+		pos += column_skip;
+	}
+	vp->is_dirty = true;
 }
 
 /**
@@ -1934,18 +1999,43 @@ static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, 
  * @param top    Top    edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
  * @param right  Right  edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
  * @param bottom Bottom edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
+ * @param mark_dirty_if_zoomlevel_is_below To tell if an update is relevant or not (for example, animations in map mode are not)
  * @ingroup dirty
  */
-void MarkAllViewportsDirty(int left, int top, int right, int bottom)
+void MarkAllViewportsDirty(int left, int top, int right, int bottom, const ZoomLevel mark_dirty_if_zoomlevel_is_below)
 {
-	Window *w;
-	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		ViewPort *vp = w->viewport;
-		if (vp != nullptr) {
-			assert(vp->width != 0);
-			MarkViewportDirty(vp, left, top, right, bottom);
-		}
+	for (ViewPort * const vp : _viewport_window_cache) {
+		if (vp->zoom >= mark_dirty_if_zoomlevel_is_below) continue;
+		MarkViewportDirty(vp, left, top, right, bottom);
 	}
+}
+
+static void MarkRouteStepDirty(RouteStepsMap::const_iterator cit)
+{
+	const uint size = cit->second.size() > max_rank_order_type_count ? 1 : cit->second.size();
+	MarkRouteStepDirty(cit->first, size);
+}
+
+static void MarkRouteStepDirty(const TileIndex tile, uint order_nr)
+{
+	assert(tile != INVALID_TILE);
+	const Point pt = RemapCoords2(TileX(tile) * TILE_SIZE + TILE_SIZE / 2, TileY(tile) * TILE_SIZE + TILE_SIZE / 2);
+	const int char_height = GetCharacterHeight(FS_SMALL) + 1;
+	for (ViewPort * const vp : _viewport_window_cache) {
+		const int half_width = ScaleByZoom((_vp_route_step_width / 2) + 1, vp->zoom);
+		const int height = ScaleByZoom(_vp_route_step_height_top + char_height * order_nr + _vp_route_step_height_bottom, vp->zoom);
+		MarkViewportDirty(vp, pt.x - half_width, pt.y - height, pt.x + half_width, pt.y);
+	}
+}
+
+void MarkAllRouteStepsDirty(const Vehicle *veh)
+{
+	ViewportPrepareVehicleRouteSteps(veh);
+	for (RouteStepsMap::const_iterator cit = _vp_route_steps.begin(); cit != _vp_route_steps.end(); cit++) {
+		MarkRouteStepDirty(cit);
+	}
+	_vp_route_steps_last_mark_dirty.swap(_vp_route_steps);
+	_vp_route_steps.clear();
 }
 
 void ConstrainAllViewportsZoom()

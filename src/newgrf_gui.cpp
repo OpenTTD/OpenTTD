@@ -1778,6 +1778,17 @@ public:
 		this->acs->Draw(w);
 		this->inf->Draw(w);
 	}
+
+	void FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets) override
+	{
+		if (this->base_flags & WBF_DIRTY) {
+			dirty_widgets.push_back(this);
+		} else {
+			if (this->editable) this->avs->FillDirtyWidgets(dirty_widgets);
+			this->acs->FillDirtyWidgets(dirty_widgets);
+			this->inf->FillDirtyWidgets(dirty_widgets);
+		}
+	}
 };
 
 const uint NWidgetNewGRFDisplay::INTER_LIST_SPACING      = WD_RESIZEBOX_WIDTH + 1;

@@ -20,6 +20,10 @@
 #include "window_func.h"
 #include "newgrf_debug.h"
 #include "thread.h"
+#include "widget_type.h"
+#include "window_gui.h"
+#include "framerate_type.h"
+#include "transparency.h"
 
 #include "table/palettes.h"
 #include "table/string_colours.h"
@@ -66,16 +70,15 @@ ZoomLevel _font_zoom; ///< Font Zoom level
  *
  * @ingroup dirty
  */
-static Rect _invalid_rect;
 static const byte *_colour_remap_ptr;
 static byte _string_colourremap[3]; ///< Recoloursprite for stringdrawing. The grf loader ensures that #ST_FONT sprites only use colours 0 to 2.
 
 static const uint DIRTY_BLOCK_HEIGHT   = 8;
 static const uint DIRTY_BLOCK_WIDTH    = 64;
 
-static uint _dirty_bytes_per_line = 0;
-static byte *_dirty_blocks = nullptr;
 extern uint _dirty_block_colour;
+static bool _whole_screen_dirty = false;
+static std::vector<Rect> _dirty_blocks;
 
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 {
@@ -91,7 +94,6 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 	/* This part of the screen is now dirty. */
 	VideoDriver::GetInstance()->MakeDirty(left, top, width, height);
 }
-
 
 /**
  * Applies a certain FillRectMode-operation to a rectangle [left, right] x [top, bottom] on the screen.
@@ -1331,12 +1333,10 @@ void GetBroadestDigit(uint *front, uint *next, FontSize size)
 
 void ScreenSizeChanged()
 {
-	_dirty_bytes_per_line = CeilDiv(_screen.width, DIRTY_BLOCK_WIDTH);
-	_dirty_blocks = ReallocT<byte>(_dirty_blocks, _dirty_bytes_per_line * CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT));
+	MarkWholeScreenDirty();
 
-	/* check the dirty rect */
-	if (_invalid_rect.right >= _screen.width) _invalid_rect.right = _screen.width;
-	if (_invalid_rect.bottom >= _screen.height) _invalid_rect.bottom = _screen.height;
+	extern uint32 *_vp_map_line;
+	_vp_map_line = ReallocT<uint32>(_vp_map_line, _screen.width);
 
 	/* screen size changed and the old bitmap is invalid now, so we don't want to undraw it */
 	_cursor.visible = false;
@@ -1435,6 +1435,62 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 	VideoDriver::GetInstance()->MakeDirty(left, top, right - left, bottom - top);
 }
 
+static std::vector<Rect> _dirty_viewport_occlusions;
+static const ViewPort *_dirty_viewport;
+static NWidgetDisplay _dirty_viewport_disp_flags;
+
+static void DrawDirtyViewport(uint occlusion, int left, int top, int right, int bottom)
+{
+	for(; occlusion < _dirty_viewport_occlusions.size(); occlusion++) {
+		const Rect &occ = _dirty_viewport_occlusions[occlusion];
+		if (right > occ.left &&
+				bottom > occ.top &&
+				left < occ.right &&
+				top < occ.bottom) {
+			/* occlusion and draw rectangle intersect with each other */
+			int x;
+
+			if (left < (x = occ.left)) {
+				DrawDirtyViewport(occlusion + 1, left, top, x, bottom);
+				DrawDirtyViewport(occlusion, x, top, right, bottom);
+				return;
+			}
+
+			if (right > (x = occ.right)) {
+				DrawDirtyViewport(occlusion, left, top, x, bottom);
+				DrawDirtyViewport(occlusion + 1, x, top, right, bottom);
+				return;
+			}
+
+			if (top < (x = occ.top)) {
+				DrawDirtyViewport(occlusion + 1, left, top, right, x);
+				DrawDirtyViewport(occlusion, left, x, right, bottom);
+				return;
+			}
+
+			if (bottom > (x = occ.bottom)) {
+				DrawDirtyViewport(occlusion, left, top, right, x);
+				DrawDirtyViewport(occlusion + 1, left, x, right, bottom);
+				return;
+			}
+
+			return;
+		}
+	}
+
+	if (_game_mode == GM_MENU) {
+		RedrawScreenRect(left, top, right, bottom);
+	} else {
+		extern void ViewportDrawChk(ViewPort *vp, int left, int top, int right, int bottom);
+		ViewportDrawChk(_dirty_viewport, left, top, right, bottom);
+		if (_dirty_viewport_disp_flags & (ND_SHADE_GREY | ND_SHADE_DIMMED)) {
+			GfxFillRect(left, top, right, bottom,
+					(_dirty_viewport_disp_flags & ND_SHADE_DIMMED) ? PALETTE_TO_TRANSPARENT : PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
+		}
+		VideoDriver::GetInstance()->MakeDirty(left, top, right - left, bottom - top);
+	}
+}
+
 /**
  * Repaints the rectangle blocks which are marked as 'dirty'.
  *
@@ -1442,11 +1498,7 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
  */
 void DrawDirtyBlocks()
 {
-	byte *b = _dirty_blocks;
-	const int w = Align(_screen.width,  DIRTY_BLOCK_WIDTH);
-	const int h = Align(_screen.height, DIRTY_BLOCK_HEIGHT);
-	int x;
-	int y;
+	static std::vector<NWidgetBase *> dirty_widgets;
 
 	if (HasModalProgress()) {
 		/* We are generating the world, so release our rights to the map and
@@ -1471,79 +1523,285 @@ void DrawDirtyBlocks()
 		if (_switch_mode != SM_NONE && !HasModalProgress()) return;
 	}
 
-	y = 0;
-	do {
-		x = 0;
-		do {
-			if (*b != 0) {
-				int left;
-				int top;
-				int right = x + DIRTY_BLOCK_WIDTH;
-				int bottom = y;
-				byte *p = b;
-				int h2;
+	if (_whole_screen_dirty) {
+		RedrawScreenRect(0, 0, _screen.width, _screen.height);
+		Window *w;
+		FOR_ALL_WINDOWS_FROM_BACK(w) {
+			w->flags &= ~(WF_DIRTY | WF_WIDGETS_DIRTY);
+		}
+		_whole_screen_dirty = false;
+	} else {
+		bool cleared_overlays = false;
+		auto clear_overlays = [&]() {
+			if (cleared_overlays) return;
+			if (_cursor.visible) UndrawMouseCursor();
+			if (_networking) NetworkUndrawChatMessage();
+			cleared_overlays = true;
+		};
 
-				/* First try coalescing downwards */
-				do {
-					*p = 0;
-					p += _dirty_bytes_per_line;
-					bottom += DIRTY_BLOCK_HEIGHT;
-				} while (bottom != h && *p != 0);
+		DrawPixelInfo *old_dpi = _cur_dpi;
+		DrawPixelInfo bk;
+		_cur_dpi = &bk;
 
-				/* Try coalescing to the right too. */
-				h2 = (bottom - y) / DIRTY_BLOCK_HEIGHT;
-				assert(h2 > 0);
-				p = b;
+		extern void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom, bool gfx_dirty);
 
-				while (right != w) {
-					byte *p2 = ++p;
-					int h = h2;
-					/* Check if a full line of dirty flags is set. */
-					do {
-						if (!*p2) goto no_more_coalesc;
-						p2 += _dirty_bytes_per_line;
-					} while (--h != 0);
+		Window *w;
+		FOR_ALL_WINDOWS_FROM_BACK(w) {
+			if (!MayBeShown(w)) continue;
 
-					/* Wohoo, can combine it one step to the right!
-					 * Do that, and clear the bits. */
-					right += DIRTY_BLOCK_WIDTH;
+			if (w->viewport != nullptr) w->viewport->is_drawn = false;
 
-					h = h2;
-					p2 = p;
-					do {
-						*p2 = 0;
-						p2 += _dirty_bytes_per_line;
-					} while (--h != 0);
+			if (w->flags & WF_DIRTY) {
+				clear_overlays();
+				DrawOverlappedWindow(w, max(0, w->left), max(0, w->top), min(_screen.width, w->left + w->width), min(_screen.height, w->top + w->height), true);
+				w->flags &= ~(WF_DIRTY | WF_WIDGETS_DIRTY);
+			} else if (w->flags & WF_WIDGETS_DIRTY) {
+				if (w->nested_root != nullptr) {
+					clear_overlays();
+					w->nested_root->FillDirtyWidgets(dirty_widgets);
+					for (NWidgetBase *widget : dirty_widgets) {
+						DrawOverlappedWindow(w, max(0, w->left + widget->pos_x), max(0, w->top + widget->pos_y), min(_screen.width, w->left + widget->pos_x + widget->current_x), min(_screen.height, w->top + widget->pos_y + widget->current_y), true);
+					}
+					dirty_widgets.clear();
 				}
-				no_more_coalesc:
-
-				left = x;
-				top = y;
-
-				if (left   < _invalid_rect.left  ) left   = _invalid_rect.left;
-				if (top    < _invalid_rect.top   ) top    = _invalid_rect.top;
-				if (right  > _invalid_rect.right ) right  = _invalid_rect.right;
-				if (bottom > _invalid_rect.bottom) bottom = _invalid_rect.bottom;
-
-				if (left < right && top < bottom) {
-					RedrawScreenRect(left, top, right, bottom);
-				}
-
+				w->flags &= ~WF_WIDGETS_DIRTY;
 			}
-		} while (b++, (x += DIRTY_BLOCK_WIDTH) != w);
-	} while (b += -(int)(w / DIRTY_BLOCK_WIDTH) + _dirty_bytes_per_line, (y += DIRTY_BLOCK_HEIGHT) != h);
 
+			if (w->viewport != nullptr) {
+				ViewPort *vp = w->viewport;
+				if (vp->is_drawn) {
+					vp->ClearDirty();
+				} else if (vp->is_dirty) {
+					clear_overlays();
+					PerformanceAccumulator framerate(PFE_DRAWWORLD);
+					_cur_dpi->left = 0;
+					_cur_dpi->top = 0;
+					_cur_dpi->width = _screen.width;
+					_cur_dpi->height = _screen.height;
+					_cur_dpi->pitch = _screen.pitch;
+					_cur_dpi->dst_ptr = _screen.dst_ptr;
+					_cur_dpi->zoom = ZOOM_LVL_NORMAL;
+
+					_dirty_viewport = vp;
+					_dirty_viewport_disp_flags = w->viewport_widget->disp_flags;
+					TransparencyOptionBits to_backup = _transparency_opt;
+					if (_dirty_viewport_disp_flags & ND_NO_TRANSPARENCY) {
+						_transparency_opt &= (1 << TO_SIGNS) | (1 << TO_LOADING); // Disable all transparency, except textual stuff
+					}
+
+					{
+						int left = vp->left;
+						int top = vp->top;
+						int right = vp->left + vp->width;
+						int bottom = vp->top + vp->height;
+						_dirty_viewport_occlusions.clear();
+						const Window *v;
+						FOR_ALL_WINDOWS_FROM_BACK_FROM(v, w->z_front) {
+							if (MayBeShown(v) &&
+									right > v->left &&
+									bottom > v->top &&
+									left < v->left + v->width &&
+									top < v->top + v->height) {
+								_dirty_viewport_occlusions.push_back({ v->left, v->top, v->left + v->width, v->top + v->height });
+							}
+						}
+						for (const Rect &r : _dirty_blocks) {
+							if (right > r.left &&
+									bottom > r.top &&
+									left < r.right &&
+									top < r.bottom) {
+								_dirty_viewport_occlusions.push_back({ r.left, r.top, r.right, r.bottom });
+							}
+						}
+					}
+
+					const uint grid_w = vp->dirty_blocks_per_row;
+					const uint grid_h = vp->dirty_blocks_per_column;
+
+					uint pos = 0;
+					uint x = 0;
+					do {
+						uint y = 0;
+						do {
+							if (vp->dirty_blocks[pos]) {
+								uint left = x;
+								uint top = y;
+								uint right = x + 1;
+								uint bottom = y;
+								uint p = pos;
+
+								/* First try coalescing downwards */
+								do {
+									vp->dirty_blocks[p] = false;
+									p++;
+									bottom++;
+								} while (bottom != grid_h && vp->dirty_blocks[p]);
+
+								/* Try coalescing to the right too. */
+								uint block_h = (bottom - y);
+								p = pos;
+
+								while (right != grid_w) {
+									uint p2 = (p += grid_h);
+									uint check_h = block_h;
+									/* Check if a full line of dirty flags is set. */
+									do {
+										if (!vp->dirty_blocks[p2]) goto no_more_coalesc;
+										p2++;
+									} while (--check_h != 0);
+
+									/* Wohoo, can combine it one step to the right!
+									 * Do that, and clear the bits. */
+									right++;
+
+									check_h = block_h;
+									p2 = p;
+									do {
+										vp->dirty_blocks[p2] = false;
+										p2++;
+									} while (--check_h != 0);
+								}
+								no_more_coalesc:
+
+								assert(_cur_dpi == &bk);
+								int draw_left = max<int>(0, ((left == 0) ? 0 : vp->dirty_block_left_margin + (left << vp->GetDirtyBlockWidthShift())) + vp->left);
+								int draw_top = max<int>(0, (top << vp->GetDirtyBlockHeightShift()) + vp->top);
+								int draw_right = min<int>(_screen.width, min<int>((right << vp->GetDirtyBlockWidthShift()) + vp->dirty_block_left_margin, vp->width) + vp->left);
+								int draw_bottom = min<int>(_screen.height, min<int>(bottom << vp->GetDirtyBlockHeightShift(), vp->height) + vp->top);
+								if (draw_left < draw_right && draw_top < draw_bottom) {
+									DrawDirtyViewport(0, draw_left, draw_top, draw_right, draw_bottom);
+								}
+							}
+						} while (pos++, ++y != grid_h);
+					} while (++x != grid_w);
+
+					_transparency_opt = to_backup;
+					w->viewport->ClearDirty();
+				}
+			}
+		}
+
+		_cur_dpi = old_dpi;
+
+		for (const Rect &r : _dirty_blocks) {
+			RedrawScreenRect(r.left, r.top, r.right, r.bottom);
+		}
+	}
+
+	_dirty_blocks.clear();
 	++_dirty_block_colour;
-	_invalid_rect.left = w;
-	_invalid_rect.top = h;
-	_invalid_rect.right = 0;
-	_invalid_rect.bottom = 0;
+}
+
+void UnsetDirtyBlocks(int left, int top, int right, int bottom)
+{
+	if (_whole_screen_dirty) return;
+
+	for (uint i = 0; i < _dirty_blocks.size(); i++) {
+		Rect &r = _dirty_blocks[i];
+		if (left < r.right &&
+				right > r.left &&
+				top < r.bottom &&
+				bottom > r.top) {
+			/* overlap of some sort */
+			if (left <= r.left &&
+					right >= r.right &&
+					top <= r.top &&
+					bottom >= r.bottom) {
+				/* dirty rect entirely in subtraction area */
+				r = _dirty_blocks.back();
+				_dirty_blocks.pop_back();
+				i--;
+				continue;
+			}
+			if (r.left < left) {
+				Rect n = { left, r.top, r.right, r.bottom };
+				r.right = left;
+				_dirty_blocks.push_back(n);
+				continue;
+			}
+			if (r.right > right) {
+				Rect n = { r.left, r.top, right, r.bottom };
+				r.left = right;
+				_dirty_blocks.push_back(n);
+				continue;
+			}
+			if (r.top < top) {
+				Rect n = { r.left, top, r.right, r.bottom };
+				r.bottom = top;
+				_dirty_blocks.push_back(n);
+				continue;
+			}
+			if (r.bottom > bottom) {
+				Rect n = { r.left, r.top, r.right, bottom };
+				r.top = bottom;
+				_dirty_blocks.push_back(n);
+				continue;
+			}
+		}
+	}
+}
+
+static void AddDirtyBlocks(uint start, int left, int top, int right, int bottom)
+{
+	if (bottom <= top || right <= left) return;
+
+	for (; start < _dirty_blocks.size(); start++) {
+		Rect &r = _dirty_blocks[start];
+		if (left <= r.right &&
+				right >= r.left &&
+				top <= r.bottom &&
+				bottom >= r.top) {
+			/* overlap or contact of some sort */
+			if (left >= r.left &&
+					right <= r.right &&
+					top >= r.top &&
+					bottom <= r.bottom) {
+				/* entirely contained by existing */
+				return;
+			}
+			if (left <= r.left &&
+					right >= r.right &&
+					top <= r.top &&
+					bottom >= r.bottom) {
+				/* entirely contains existing */
+				r = _dirty_blocks.back();
+				_dirty_blocks.pop_back();
+				start--;
+				continue;
+			}
+			if (left < r.left && right > r.left) {
+				int middle = r.left;
+				AddDirtyBlocks(start, left, top, middle, bottom);
+				AddDirtyBlocks(start, middle, top, right, bottom);
+				return;
+			}
+			if (right > r.right && left < r.right) {
+				int middle = r.right;
+				AddDirtyBlocks(start, left, top, middle, bottom);
+				AddDirtyBlocks(start, middle, top, right, bottom);
+				return;
+			}
+
+			if (top < r.top && bottom > r.top) {
+				int middle = r.top;
+				AddDirtyBlocks(start, left, top, right, middle);
+				AddDirtyBlocks(start, left, middle, right, bottom);
+				return;
+			}
+
+			if (bottom > r.bottom && top < r.bottom) {
+				int middle = r.bottom;
+				AddDirtyBlocks(start, left, top, right, middle);
+				AddDirtyBlocks(start, left, middle, right, bottom);
+				return;
+			}
+		}
+	}
+	_dirty_blocks.push_back({ left, top, right, bottom });
 }
 
 /**
- * This function extends the internal _invalid_rect rectangle as it
- * now contains the rectangle defined by the given parameters. Note
- * the point (0,0) is top left.
+ * Note the point (0,0) is top left.
  *
  * @param left The left edge of the rectangle
  * @param top The top edge of the rectangle
@@ -1557,39 +1815,14 @@ void DrawDirtyBlocks()
  */
 void SetDirtyBlocks(int left, int top, int right, int bottom)
 {
-	byte *b;
-	int width;
-	int height;
+	if (_whole_screen_dirty) return;
 
 	if (left < 0) left = 0;
 	if (top < 0) top = 0;
 	if (right > _screen.width) right = _screen.width;
 	if (bottom > _screen.height) bottom = _screen.height;
 
-	if (left >= right || top >= bottom) return;
-
-	if (left   < _invalid_rect.left  ) _invalid_rect.left   = left;
-	if (top    < _invalid_rect.top   ) _invalid_rect.top    = top;
-	if (right  > _invalid_rect.right ) _invalid_rect.right  = right;
-	if (bottom > _invalid_rect.bottom) _invalid_rect.bottom = bottom;
-
-	left /= DIRTY_BLOCK_WIDTH;
-	top  /= DIRTY_BLOCK_HEIGHT;
-
-	b = _dirty_blocks + top * _dirty_bytes_per_line + left;
-
-	width  = ((right  - 1) / DIRTY_BLOCK_WIDTH)  - left + 1;
-	height = ((bottom - 1) / DIRTY_BLOCK_HEIGHT) - top  + 1;
-
-	assert(width > 0 && height > 0);
-
-	do {
-		int i = width;
-
-		do b[--i] = 0xFF; while (i != 0);
-
-		b += _dirty_bytes_per_line;
-	} while (--height != 0);
+	AddDirtyBlocks(0, left, top, right, bottom);
 }
 
 /**
@@ -1600,7 +1833,7 @@ void SetDirtyBlocks(int left, int top, int right, int bottom)
  */
 void MarkWholeScreenDirty()
 {
-	SetDirtyBlocks(0, 0, _screen.width, _screen.height);
+	_whole_screen_dirty = true;
 }
 
 /**
