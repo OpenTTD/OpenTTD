@@ -915,4 +915,26 @@ void SetFocusedWindow(Window *w);
 
 void ScrollbarClickHandler(Window *w, NWidgetCore *nw, int x, int y);
 
+/**
+ * Returns whether a window may be shown or not.
+ * @param w The window to consider.
+ * @return True iff it may be shown, otherwise false.
+ */
+inline bool MayBeShown(const Window *w)
+{
+	/* If we're not modal, everything is okay. */
+	extern bool _in_modal_progress;
+	if (likely(!_in_modal_progress)) return true;
+
+	switch (w->window_class) {
+		case WC_MAIN_WINDOW:    ///< The background, i.e. the game.
+		case WC_MODAL_PROGRESS: ///< The actual progress window.
+		case WC_CONFIRM_POPUP_QUERY: ///< The abort window.
+			return true;
+
+		default:
+			return false;
+	}
+}
+
 #endif /* WINDOW_GUI_H */
