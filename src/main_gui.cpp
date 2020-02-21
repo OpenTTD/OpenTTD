@@ -174,6 +174,7 @@ bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
 	if (vp != nullptr) { // the vp can be null when how == ZOOM_NONE
 		vp->virtual_left = w->viewport->scrollpos_x;
 		vp->virtual_top = w->viewport->scrollpos_y;
+		UpdateViewportSizeZoom(vp);
 	}
 	/* Update the windows that have zoom-buttons to perhaps disable their buttons */
 	w->InvalidateData();
@@ -205,6 +206,7 @@ void FixTitleGameZoom()
 	vp->zoom = _gui_zoom;
 	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
 	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
+	UpdateViewportSizeZoom(vp);
 }
 
 static const struct NWidgetPart _nested_main_window_widgets[] = {
@@ -597,5 +599,4 @@ void GameSizeChanged()
 	_cur_resolution.height = _screen.height;
 	ScreenSizeChanged();
 	RelocateAllWindows(_screen.width, _screen.height);
-	MarkWholeScreenDirty();
 }

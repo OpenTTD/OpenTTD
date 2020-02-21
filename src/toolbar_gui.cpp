@@ -1467,6 +1467,21 @@ public:
 		return nullptr;
 	}
 
+
+	void FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets) override
+	{
+		if (this->is_dirty) {
+			dirty_widgets.push_back(this);
+		} else {
+			for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+				if (child_wid->type == NWID_SPACER) continue;
+				if (!this->visible[((NWidgetCore*)child_wid)->index]) continue;
+
+				child_wid->FillDirtyWidgets(dirty_widgets);
+			}
+		}
+	}
+
 	/**
 	 * Get the arrangement of the buttons for the toolbar.
 	 * @param width the new width of the toolbar.

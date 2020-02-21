@@ -26,6 +26,7 @@ Viewport *IsPtInWindowViewport(const Window *w, int x, int y);
 Point TranslateXYToTileCoord(const Viewport *vp, int x, int y, bool clamp_to_map = true);
 Point GetTileBelowCursor();
 void UpdateViewportPosition(Window *w);
+void UpdateViewportSizeZoom(Viewport *vp);
 
 void MarkAllViewportsDirty(int left, int top, int right, int bottom);
 

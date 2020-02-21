@@ -770,11 +770,10 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
  * Mark the widget as 'dirty' (in need of repaint).
  * @param w Window owning the widget.
  */
-void NWidgetBase::SetDirty(const Window *w) const
+void NWidgetBase::SetDirty(Window *w)
 {
-	int abs_left = w->left + this->pos_x;
-	int abs_top = w->top + this->pos_y;
-	SetDirtyBlocks(abs_left, abs_top, abs_left + this->current_x, abs_top + this->current_y);
+	this->is_dirty = true;
+	w->flags |= WF_DIRTY;
 }
 
 /**
@@ -903,6 +902,11 @@ void NWidgetCore::FillNestedArray(NWidgetBase **array, uint length)
 NWidgetCore *NWidgetCore::GetWidgetFromPos(int x, int y)
 {
 	return (IsInsideBS(x, this->pos_x, this->current_x) && IsInsideBS(y, this->pos_y, this->current_y)) ? this : nullptr;
+}
+
+void NWidgetCore::FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets)
+{
+	if (this->is_dirty) dirty_widgets.push_back(this);
 }
 
 /**
@@ -1049,6 +1053,7 @@ void NWidgetStacked::FillNestedArray(NWidgetBase **array, uint length)
 void NWidgetStacked::Draw(const Window *w)
 {
 	if (this->IsOutsideDrawArea()) return;
+	this->is_dirty = false;
 	if (this->shown_plane >= SZSP_BEGIN) return;
 
 	int plane = 0;
@@ -1074,6 +1079,21 @@ NWidgetCore *NWidgetStacked::GetWidgetFromPos(int x, int y)
 		}
 	}
 	return nullptr;
+}
+
+void NWidgetStacked::FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets)
+{
+	if (this->is_dirty) {
+		dirty_widgets.push_back(this);
+	} else {
+		int plane = 0;
+		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; plane++, child_wid = child_wid->next) {
+			if (plane == this->shown_plane) {
+				child_wid->FillDirtyWidgets(dirty_widgets);
+				return;
+			}
+		}
+	}
 }
 
 /**
@@ -1109,6 +1129,7 @@ void NWidgetPIPContainer::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
 void NWidgetPIPContainer::Draw(const Window *w)
 {
 	if (this->IsOutsideDrawArea()) return;
+	this->is_dirty = false;
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		child_wid->Draw(w);
 	}
@@ -1123,6 +1144,17 @@ NWidgetCore *NWidgetPIPContainer::GetWidgetFromPos(int x, int y)
 		if (nwid != nullptr) return nwid;
 	}
 	return nullptr;
+}
+
+void NWidgetPIPContainer::FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets)
+{
+	if (this->is_dirty) {
+		dirty_widgets.push_back(this);
+	} else {
+		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+			child_wid->FillDirtyWidgets(dirty_widgets);
+		}
+	}
 }
 
 /** Horizontal container widget. */
@@ -1456,7 +1488,7 @@ void NWidgetSpacer::Draw(const Window *w)
 	/* Spacer widget is never visible. */
 }
 
-void NWidgetSpacer::SetDirty(const Window *w) const
+void NWidgetSpacer::SetDirty(Window *w)
 {
 	/* Spacer widget never need repainting. */
 }
@@ -1464,6 +1496,11 @@ void NWidgetSpacer::SetDirty(const Window *w) const
 NWidgetCore *NWidgetSpacer::GetWidgetFromPos(int x, int y)
 {
 	return nullptr;
+}
+
+void NWidgetSpacer::FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets)
+{
+	/* Spacer widget never need repainting. */
 }
 
 NWidgetMatrix::NWidgetMatrix() : NWidgetPIPContainer(NWID_MATRIX, NC_EQUALSIZE), index(-1), clicked(-1), count(-1)
@@ -1623,9 +1660,17 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 	return child->GetWidgetFromPos(x, y);
 }
 
+void NWidgetMatrix::FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets)
+{
+	if (this->is_dirty) {
+		dirty_widgets.push_back(this);
+	}
+}
+
 /* virtual */ void NWidgetMatrix::Draw(const Window *w)
 {
 	if (this->IsOutsideDrawArea()) return;
+	this->is_dirty = false;
 
 	/* Fill the background. */
 	GfxFillRect(this->pos_x, this->pos_y, this->pos_x + this->current_x - 1, this->pos_y + this->current_y - 1, _colour_gradient[this->colour & 0xF][5]);
@@ -1831,6 +1876,8 @@ void NWidgetBackground::FillNestedArray(NWidgetBase **array, uint length)
 void NWidgetBackground::Draw(const Window *w)
 {
 	if (this->IsOutsideDrawArea()) return;
+	this->is_dirty = false;
+
 	if (this->current_x == 0 || this->current_y == 0) return;
 
 	Rect r;
@@ -1880,6 +1927,15 @@ NWidgetCore *NWidgetBackground::GetWidgetFromPos(int x, int y)
 	return nwid;
 }
 
+void NWidgetBackground::FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets)
+{
+	if (this->is_dirty) {
+		dirty_widgets.push_back(this);
+	} else {
+		if (this->child != nullptr) this->child->FillDirtyWidgets(dirty_widgets);
+	}
+}
+
 NWidgetBase *NWidgetBackground::GetWidgetOfType(WidgetType tp)
 {
 	NWidgetBase *nwid = nullptr;
@@ -1906,6 +1962,8 @@ void NWidgetViewport::SetupSmallestSize(Window *w, bool init_array)
 void NWidgetViewport::Draw(const Window *w)
 {
 	if (this->IsOutsideDrawArea()) return;
+	this->is_dirty = false;
+
 	if (this->disp_flags & ND_NO_TRANSPARENCY) {
 		TransparencyOptionBits to_backup = _transparency_opt;
 		_transparency_opt &= (1 << TO_SIGNS) | (1 << TO_LOADING); // Disable all transparency, except textual stuff
@@ -1931,6 +1989,7 @@ void NWidgetViewport::Draw(const Window *w)
 void NWidgetViewport::InitializeViewport(Window *w, uint32 follow_flags, ZoomLevel zoom)
 {
 	InitializeWindowViewport(w, this->pos_x, this->pos_y, this->current_x, this->current_y, follow_flags, zoom);
+	w->viewport_widget = this;
 }
 
 /**
@@ -1943,11 +2002,12 @@ void NWidgetViewport::UpdateViewportCoordinates(Window *w)
 	if (vp != nullptr) {
 		vp->left = w->left + this->pos_x;
 		vp->top  = w->top + this->pos_y;
-		vp->width  = this->current_x;
-		vp->height = this->current_y;
+		vp->width  = w->IsShaded() ? 0 : this->current_x;
+		vp->height = w->IsShaded() ? 0 : this->current_y;
 
 		vp->virtual_width  = ScaleByZoom(vp->width, vp->zoom);
 		vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
+		UpdateViewportSizeZoom(vp);
 	}
 }
 
@@ -2030,6 +2090,8 @@ void NWidgetScrollbar::SetupSmallestSize(Window *w, bool init_array)
 void NWidgetScrollbar::Draw(const Window *w)
 {
 	if (this->IsOutsideDrawArea()) return;
+	this->is_dirty = false;
+
 	if (this->current_x == 0 || this->current_y == 0) return;
 
 	Rect r;
@@ -2398,6 +2460,8 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 void NWidgetLeaf::Draw(const Window *w)
 {
 	if (this->IsOutsideDrawArea()) return;
+	this->is_dirty = false;
+
 	if (this->current_x == 0 || this->current_y == 0) return;
 
 	/* Setup a clipping rectangle... */

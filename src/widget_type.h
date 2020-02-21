@@ -18,6 +18,8 @@
 #include "gfx_type.h"
 #include "window_type.h"
 
+#include <vector>
+
 static const int WIDGET_LIST_END = -1; ///< indicate the end of widgets' list for vararg functions
 
 /** Bits of the #WWT_MATRIX widget data. */
@@ -42,7 +44,7 @@ enum ArrowWidgetValues {
 /**
  * Window widget types, nested widget types, and nested widget part types.
  */
-enum WidgetType {
+enum WidgetType : uint8 {
 	/* Window widget types. */
 	WWT_EMPTY,      ///< Empty widget, place holder to reserve space in widget array
 
@@ -157,9 +159,11 @@ public:
 	inline uint GetVerticalStepSize(SizingType sizing) const;
 
 	virtual void Draw(const Window *w) = 0;
-	virtual void SetDirty(const Window *w) const;
+	virtual void FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets) = 0;
+	virtual void SetDirty(Window *w);
 
 	WidgetType type;      ///< Type of the widget / nested widget.
+	bool is_dirty;        ///< Widget is dirty (in need of a repaint).
 	uint fill_x;          ///< Horizontal fill stepsize (from initial size, \c 0 means not resizable).
 	uint fill_y;          ///< Vertical fill stepsize (from initial size, \c 0 means not resizable).
 	uint resize_x;        ///< Horizontal resize step (\c 0 means not resizable).
@@ -304,6 +308,7 @@ public:
 	bool IsHighlighted() const override;
 	TextColour GetHighlightColour() const override;
 	void SetHighlighted(TextColour highlight_colour) override;
+	void FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets) override;
 
 	NWidgetDisplay disp_flags; ///< Flags that affect display and interaction with the widget.
 	Colours colour;            ///< Colour of this widget.
@@ -420,6 +425,7 @@ public:
 
 	void Draw(const Window *w) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
+	void FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets) override;
 
 	void SetDisplayedPlane(int plane);
 
@@ -445,6 +451,7 @@ public:
 
 	void Draw(const Window *w) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
+	void FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets) override;
 
 protected:
 	NWidContainerFlags flags; ///< Flags of the container.
@@ -511,6 +518,7 @@ public:
 	void FillNestedArray(NWidgetBase **array, uint length) override;
 
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
+	void FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets) override;
 	void Draw(const Window *w) override;
 protected:
 	int index;      ///< If non-negative, index in the #Window::nested_array.
@@ -540,8 +548,9 @@ public:
 	void FillNestedArray(NWidgetBase **array, uint length) override;
 
 	void Draw(const Window *w) override;
-	void SetDirty(const Window *w) const override;
+	void SetDirty(Window *w) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
+	void FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets) override;
 };
 
 /**
@@ -564,6 +573,7 @@ public:
 	void Draw(const Window *w) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 	NWidgetBase *GetWidgetOfType(WidgetType tp) override;
+	void FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets) override;
 
 private:
 	NWidgetPIPContainer *child; ///< Child widget.
