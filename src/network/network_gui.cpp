@@ -204,6 +204,19 @@ public:
 		return nullptr;
 	}
 
+	void FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets) override
+	{
+		if (this->is_dirty) {
+			dirty_widgets.push_back(this);
+		} else {
+			int i = 0;
+			for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+				if (!this->visible[i++]) continue;
+				child_wid->FillDirtyWidgets(dirty_widgets);
+			}
+		}
+	}
+
 	/**
 	 * Checks whether the given widget is actually visible.
 	 * @param widget the widget to check for visibility

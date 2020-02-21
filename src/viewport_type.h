@@ -14,6 +14,8 @@
 #include "strings_type.h"
 #include "table/strings.h"
 
+#include <vector>
+
 class LinkGraphOverlay;
 
 /**
@@ -32,6 +34,34 @@ struct ViewPort {
 
 	ZoomLevel zoom; ///< The zoom level of the viewport.
 	LinkGraphOverlay *overlay;
+
+	std::vector<bool> dirty_blocks;
+	uint dirty_blocks_per_column;
+	uint dirty_blocks_per_row;
+	uint8 dirty_block_left_margin;
+	bool is_dirty = false;
+	bool is_drawn = false;
+
+	uint GetDirtyBlockWidthShift() const { return this->GetDirtyBlockShift(); }
+	uint GetDirtyBlockHeightShift() const { return this->GetDirtyBlockShift(); }
+	uint GetDirtyBlockWidth() const { return 1 << this->GetDirtyBlockWidthShift(); }
+	uint GetDirtyBlockHeight() const { return 1 << this->GetDirtyBlockHeightShift(); }
+
+	void ClearDirty()
+	{
+		if (this->is_dirty) {
+			this->dirty_blocks.assign(this->dirty_blocks.size(), false);
+			this->is_dirty = false;
+		}
+		this->is_drawn = false;
+	}
+
+private:
+	uint GetDirtyBlockShift() const
+	{
+		if (this->zoom >= ZOOM_LVL_OUT_8X) return 4;
+		return 7 - this->zoom;
+	}
 };
 
 /** Margins for the viewport sign */
