@@ -917,7 +917,8 @@ void NetworkGameLoop()
 				if (*p == ' ') p++;
 				cp = CallocT<CommandPacket>(1);
 				int company;
-				int ret = sscanf(p, "%x; %x; %x; %x; %x; %x; %x; \"%[^\"]\"", &next_date, &next_date_fract, &company, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
+				assert_compile(sizeof(cp->text) == 128);
+				int ret = sscanf(p, "%x; %x; %x; %x; %x; %x; %x; \"%127[^\"]\"", &next_date, &next_date_fract, &company, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
 				/* There are 8 pieces of data to read, however the last is a
 				 * string that might or might not exist. Ignore it if that
 				 * string misses because in 99% of the time it's not used. */
