@@ -141,6 +141,17 @@ void AfterLoadRoadStops()
 	}
 }
 
+/**
+ * (Re)scan for station docking tiles after loading a savegame.
+ */
+void AfterLoadScanDockingTiles()
+{
+	/* Scan for docking tiles */
+	for (Station *st : Station::Iterate()) {
+		if (st->ship_station.tile != INVALID_TILE) UpdateStationDockingTiles(st);
+	}
+}
+
 static const SaveLoad _roadstop_desc[] = {
 	SLE_VAR(RoadStop, xy,           SLE_UINT32),
 	SLE_CONDNULL(1, SL_MIN_VERSION, SLV_45),
