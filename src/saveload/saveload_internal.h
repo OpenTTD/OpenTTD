@@ -29,6 +29,7 @@ void AfterLoadVehicles(bool part_of_load);
 void FixupTrainLengths();
 void AfterLoadStations();
 void AfterLoadRoadStops();
+void AfterLoadScanDockingTiles();
 void ResetLabelMaps();
 void AfterLoadLabelMaps();
 void AfterLoadStoryBook();

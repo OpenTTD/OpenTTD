@@ -613,6 +613,7 @@ bool IsShipDestinationTile(TileIndex tile, StationID station)
 			const Industry *i = Industry::GetByTile(t);
 			if (i->neutral_station != nullptr && i->neutral_station->index == station) return true;
 		}
+		if (IsTileType(t, MP_STATION) && IsOilRig(t) && GetStationIndex(t) == station) return true;
 	}
 	return false;
 }

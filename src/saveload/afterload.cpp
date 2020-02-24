@@ -3116,12 +3116,10 @@ bool AfterLoadGame()
 				if (IsDock(t) || IsOilRig(t)) Station::GetByTile(t)->ship_station.Add(t);
 			}
 		}
-
-		/* Scan for docking tiles */
-		for (Station *st : Station::Iterate()) {
-			if (st->ship_station.tile != INVALID_TILE) UpdateStationDockingTiles(st);
-		}
 	}
+
+	/* Update station docking tiles. */
+	AfterLoadScanDockingTiles();
 
 	/* Compute station catchment areas. This is needed here in case UpdateStationAcceptance is called below. */
 	Station::RecomputeCatchmentForAll();

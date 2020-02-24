@@ -196,6 +196,10 @@ void CheckForDockingTile(TileIndex t)
 				SetDockingTile(t, true);
 			}
 		}
+		if (IsTileType(tile, MP_STATION) && IsOilRig(tile)) {
+			Station::GetByTile(tile)->docking_station.Add(t);
+			SetDockingTile(t, true);
+		}
 	}
 }
 
