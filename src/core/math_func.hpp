@@ -361,6 +361,30 @@ static inline int DivAwayFromZero(int a, uint b)
 	}
 }
 
+/**
+ * Computes a / b rounded towards negative infinity for signed a and unsigned b.
+ * @param a Numerator
+ * @param b Denominator
+ * @return Quotient, rounded towards negative infinity
+ */
+template <typename T>
+static inline T DivTowardsNegativeInf(T a, T b)
+{
+	return (a / b) - (a % b < 0 ? 1 : 0);
+}
+
+/**
+ * Computes a / b rounded towards positive infinity for signed a and unsigned b.
+ * @param a Numerator
+ * @param b Denominator
+ * @return Quotient, rounded towards positive infinity
+ */
+template <typename T>
+static inline T DivTowardsPositiveInf(T a, T b)
+{
+	return (a / b) + (a % b > 0 ? 1 : 0);
+}
+
 uint32 IntSqrt(uint32 num);
 
 #endif /* MATH_FUNC_HPP */
