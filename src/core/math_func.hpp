@@ -386,6 +386,34 @@ static inline int DivAwayFromZero(const int a, const uint b)
 	}
 }
 
+/**
+ * Computes (a / b) rounded towards negative infinity for b > 0.
+ * @param a Numerator.
+ * @param b Denominator.
+ * @return Quotient, rounded towards negative infinity.
+ */
+static inline int DivTowardsNegativeInf(const int a, const uint b)
+{
+	if (unlikely(b >= static_cast<uint>(std::numeric_limits<int>::max()))) return min(0, signum(a));
+
+	const int b_ = static_cast<int>(b);
+	return (a / b_) - (a % b_ < 0 ? 1 : 0);
+}
+
+/**
+ * Computes (a / b) rounded towards positive infinity for b > 0.
+ * @param a Numerator.
+ * @param b Denominator.
+ * @return Quotient, rounded towards positive infinity.
+ */
+static inline int DivTowardsPositiveInf(const int a, const uint b)
+{
+	if (unlikely(b >= static_cast<uint>(std::numeric_limits<int>::max()))) return max(0, signum(a));
+
+	const int b_ = static_cast<int>(b);
+	return (a / b_) + (a % b_ > 0 ? 1 : 0);
+}
+
 uint32 IntSqrt(uint32 num);
 
 #endif /* MATH_FUNC_HPP */
