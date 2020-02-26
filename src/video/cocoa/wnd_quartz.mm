@@ -346,6 +346,9 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
 		[ this->window makeKeyAndOrderFront:nil ];
 	}
 
+	[this->window setColorSpace:[NSColorSpace sRGBColorSpace]];
+	this->color_space = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
+
 	bool ret = WindowResized();
 	this->UpdatePalette(0, 256);
 
@@ -395,6 +398,7 @@ WindowQuartzSubdriver::~WindowQuartzSubdriver()
 
 	CGContextRelease(this->cgcontext);
 
+	CGColorSpaceRelease(this->color_space);
 	free(this->window_buffer);
 	free(this->pixel_buffer);
 }
@@ -565,21 +569,6 @@ bool WindowQuartzSubdriver::WindowResized()
 	this->window_width = (int)newframe.size.width;
 	this->window_height = (int)newframe.size.height;
 
-	/* Get screen colour space. */
-	CGColorSpaceRef color_space = NULL;
-
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
-	if ([ this->window respondsToSelector:@selector(colorSpace) ]) {
-		color_space = [ [ this->window colorSpace ] CGColorSpace ];
-		CGColorSpaceRetain(color_space);
-	}
-#endif
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-	if (color_space == NULL && MacOSVersionIsAtLeast(10, 5, 0)) color_space = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
-#endif
-	if (color_space == NULL) color_space = CGColorSpaceCreateDeviceRGB();
-	if (color_space == NULL) error("Could not get system colour space. You might need to recalibrate your monitor.");
-
 	/* Create Core Graphics Context */
 	free(this->window_buffer);
 	this->window_buffer = (uint32*)malloc(this->window_width * this->window_height * 4);
@@ -591,10 +580,9 @@ bool WindowQuartzSubdriver::WindowResized()
 		this->window_height,       // height
 		8,                         // bits per component
 		this->window_width * 4,    // bytes per row
-		color_space,               // color space
+		this->color_space,         // color space
 		kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Host
 	);
-	CGColorSpaceRelease(color_space);
 
 	assert(this->cgcontext != NULL);
 	CGContextSetShouldAntialias(this->cgcontext, FALSE);
