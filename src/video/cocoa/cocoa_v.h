@@ -190,13 +190,7 @@ extern CocoaSubdriver *_cocoa_subdriver;
 
 CocoaSubdriver *QZ_CreateFullscreenSubdriver(int width, int height, int bpp);
 
-#ifdef ENABLE_COCOA_QUICKDRAW
-CocoaSubdriver *QZ_CreateWindowQuickdrawSubdriver(int width, int height, int bpp);
-#endif
-
-#ifdef ENABLE_COCOA_QUARTZ
 CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp);
-#endif
 
 void QZ_GameSizeChanged();
 
@@ -248,9 +242,7 @@ uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_i
 
 /** Delegate for our NSWindow to send ask for quit on close */
 @interface OTTD_CocoaWindowDelegate : NSObject
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6
 	<NSWindowDelegate>
-#endif
 {
 	CocoaSubdriver *driver;
 }
