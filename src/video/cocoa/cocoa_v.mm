@@ -179,10 +179,8 @@ static void setupWindowMenu()
 	[ menuItem setSubmenu:windowMenu ];
 	[ [ NSApp mainMenu ] addItem:menuItem ];
 
-	if (MacOSVersionIsAtLeast(10, 7, 0)) {
-		/* The OS will change the name of this menu item automatically */
-		[ windowMenu addItemWithTitle:@"Fullscreen" action:@selector(toggleFullScreen:) keyEquivalent:@"^f" ];
-	}
+	/* The OS will change the name of this menu item automatically */
+	[ windowMenu addItemWithTitle:@"Fullscreen" action:@selector(toggleFullScreen:) keyEquivalent:@"^f" ];
 
 	/* Tell the application object that this is now the window menu */
 	[ NSApp setWindowsMenu:windowMenu ];
@@ -203,10 +201,8 @@ static void setupApplication()
 	[ NSApplication sharedApplication ];
 
 	/* Tell the dock about us */
-	if (MacOSVersionIsAtLeast(10, 3, 0)) {
-		OSStatus returnCode = TransformProcessType(&psn, kProcessTransformToForegroundApplication);
-		if (returnCode != 0) DEBUG(driver, 0, "Could not change to foreground application. Error %d", (int)returnCode);
-	}
+	OSStatus returnCode = TransformProcessType(&psn, kProcessTransformToForegroundApplication);
+	if (returnCode != 0) DEBUG(driver, 0, "Could not change to foreground application. Error %d", (int)returnCode);
 
 	/* Disable the system-wide tab feature as we only have one window. */
 	if ([ NSWindow respondsToSelector:@selector(setAllowsAutomaticWindowTabbing:) ]) {
@@ -243,30 +239,13 @@ static void QZ_GetDisplayModeInfo(CFArrayRef modes, CFIndex i, int &bpp, uint16 
 	width = 0;
 	height = 0;
 
-	if (MacOSVersionIsAtLeast(10, 6, 0)) {
-		CGDisplayModeRef mode = (CGDisplayModeRef)CFArrayGetValueAtIndex(modes, i);
+	CGDisplayModeRef mode = (CGDisplayModeRef)CFArrayGetValueAtIndex(modes, i);
 
-		width = (uint16)CGDisplayModeGetWidth(mode);
-		height = (uint16)CGDisplayModeGetHeight(mode);
+	width = (uint16)CGDisplayModeGetWidth(mode);
+	height = (uint16)CGDisplayModeGetHeight(mode);
 
-		/* CGDisplayModeCopyPixelEncoding is deprecated since OSX 10.11+, but there are no 8 bpp modes anyway... */
-		bpp = 32;
-	} else {
-		int intvalue;
-
-		CFDictionaryRef onemode = (const __CFDictionary*)CFArrayGetValueAtIndex(modes, i);
-		CFNumberRef number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayBitsPerPixel);
-		CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
-		bpp = intvalue;
-
-		number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayWidth);
-		CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
-		width = (uint16)intvalue;
-
-		number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayHeight);
-		CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
-		height = (uint16)intvalue;
-	}
+	/* CGDisplayModeCopyPixelEncoding is deprecated since OSX 10.11+, but there are no 8 bpp modes anyway... */
+	bpp = 32;
 }
 
 uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int device_depth)
@@ -312,17 +291,8 @@ uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_i
 /** Small function to test if the main display can display 8 bpp in fullscreen */
 bool QZ_CanDisplay8bpp()
 {
-	/* 8bpp modes are deprecated starting in 10.5. CoreGraphics will return them
-	 * as available in the display list, but many features (e.g. palette animation)
-	 * will be broken. */
-	if (MacOSVersionIsAtLeast(10, 5, 0)) return false;
-
-	OTTD_Point p;
-
-	/* We want to know if 8 bpp is possible in fullscreen and not anything about
-	 * resolutions. Because of this we want to fill a list of 1 resolution of 8 bpp
-	 * on display 0 (main) and return if we found one. */
-	return QZ_ListModes(&p, 1, 0, 8);
+	/* 8 bpp modes are no longer available */
+	return false;
 }
 
 /**
@@ -372,15 +342,7 @@ void QZ_GameSizeChanged()
  */
 static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 {
-	CocoaSubdriver *ret;
-
-	/* The reason for the version mismatch is due to the fact that the 10.4 binary needs to work on 10.5 as well. */
-	if (MacOSVersionIsAtLeast(10, 5, 0)) {
-		ret = QZ_CreateWindowQuartzSubdriver(width, height, bpp);
-		if (ret != NULL) return ret;
-	}
-
-	return NULL;
+	return QZ_CreateWindowQuartzSubdriver(width, height, bpp);
 }
 
 /**
@@ -396,11 +358,8 @@ static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool fullscreen, bool fallback)
 {
 	CocoaSubdriver *ret = NULL;
-	/* OSX 10.7 allows to toggle fullscreen mode differently */
-	if (MacOSVersionIsAtLeast(10, 7, 0)) {
-		ret = QZ_CreateWindowSubdriver(width, height, bpp);
-		if (ret != NULL && fullscreen) ret->ToggleFullscreen();
-	}
+	ret = QZ_CreateWindowSubdriver(width, height, bpp);
+	if (ret != NULL && fullscreen) ret->ToggleFullscreen();
 
 	if (ret != NULL) return ret;
 	if (!fallback) return NULL;
@@ -438,8 +397,6 @@ void VideoDriver_Cocoa::Stop()
  */
 const char *VideoDriver_Cocoa::Start(const char * const *parm)
 {
-	if (!MacOSVersionIsAtLeast(10, 3, 0)) return "The Cocoa video driver requires Mac OS X 10.3 or later.";
-
 	if (_cocoa_video_started) return "Already started";
 	_cocoa_video_started = true;
 
@@ -591,15 +548,13 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		return;
 	}
 
-	if (MacOSVersionIsAtLeast(10, 3, 0)) {
-		NSAlert *alert = [ [ NSAlert alloc ] init ];
-		[ alert setAlertStyle: NSCriticalAlertStyle ];
-		[ alert setMessageText:[ NSString stringWithUTF8String:title ] ];
-		[ alert setInformativeText:[ NSString stringWithUTF8String:message ] ];
-		[ alert addButtonWithTitle: [ NSString stringWithUTF8String:buttonLabel ] ];
-		[ alert runModal ];
-		[ alert release ];
-	}
+	NSAlert *alert = [ [ NSAlert alloc ] init ];
+	[ alert setAlertStyle: NSCriticalAlertStyle ];
+	[ alert setMessageText:[ NSString stringWithUTF8String:title ] ];
+	[ alert setInformativeText:[ NSString stringWithUTF8String:message ] ];
+	[ alert addButtonWithTitle: [ NSString stringWithUTF8String:buttonLabel ] ];
+	[ alert runModal ];
+	[ alert release ];
 
 	if (!wasstarted && VideoDriver::GetInstance() != NULL) VideoDriver::GetInstance()->Stop();
 

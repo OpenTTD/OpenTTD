@@ -523,7 +523,7 @@ bool WindowQuartzSubdriver::WindowResized()
 		color_space = [ [ this->window colorSpace ] CGColorSpace ];
 		CGColorSpaceRetain(color_space);
 	}
-	if (color_space == NULL && MacOSVersionIsAtLeast(10, 5, 0)) color_space = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
+	if (color_space == NULL) color_space = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
 	if (color_space == NULL) color_space = CGColorSpaceCreateDeviceRGB();
 	if (color_space == NULL) error("Could not get system colour space. You might need to recalibrate your monitor.");
 
@@ -568,16 +568,6 @@ bool WindowQuartzSubdriver::WindowResized()
 
 CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp)
 {
-	if (!MacOSVersionIsAtLeast(10, 4, 0)) {
-		DEBUG(driver, 0, "The cocoa quartz subdriver requires Mac OS X 10.4 or later.");
-		return NULL;
-	}
-
-	if (bpp != 8 && bpp != 32) {
-		DEBUG(driver, 0, "The cocoa quartz subdriver only supports 8 and 32 bpp.");
-		return NULL;
-	}
-
 	WindowQuartzSubdriver *ret = new WindowQuartzSubdriver();
 
 	if (!ret->ChangeResolution(width, height, bpp)) {
