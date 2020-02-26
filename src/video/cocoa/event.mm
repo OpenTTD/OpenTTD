@@ -59,26 +59,11 @@ enum RightMouseButtonEmulationState {
 static unsigned int _current_mods;
 static bool _tab_is_down;
 static bool _emulating_right_button;
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 static float _current_magnification;
-#endif
 #ifdef _DEBUG
 static uint32 _tEvent;
 #endif
 
-
-/* Support for touch gestures is only available starting with the
- * 10.6 SDK, even if it says that support starts in fact with 10.5.2.
- * Replicate the needed stuff for older SDKs. */
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5 && MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_6)
-static const NSUInteger NSEventTypeMagnify    = 30;
-static const NSUInteger NSEventTypeEndGesture = 20;
-
-@interface NSEvent ()
-/* This message is valid for events of type NSEventTypeMagnify, on 10.5.2 or later */
-- (CGFloat)magnification WEAK_IMPORT_ATTRIBUTE;
-@end
-#endif
 
 
 static uint32 GetTick()
@@ -579,16 +564,13 @@ static bool QZ_PollEvent()
 			CGFloat deltaY;
 
 			/* Use precise scrolling-specific deltas if they're supported. */
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7)
 			if ([event respondsToSelector:@selector(hasPreciseScrollingDeltas)]) {
 				/* No precise deltas indicates a scroll wheel is being used, so we don't want 2D scrolling. */
 				if (![ event hasPreciseScrollingDeltas ]) break;
 
 				deltaX = [ event scrollingDeltaX ] * 0.5f;
 				deltaY = [ event scrollingDeltaY ] * 0.5f;
-			} else
-#endif
-			{
+			} else {
 				deltaX = [ event deltaX ] * 5;
 				deltaY = [ event deltaY ] * 5;
 			}
@@ -598,7 +580,6 @@ static bool QZ_PollEvent()
 
 			break;
 
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 		case NSEventTypeMagnify:
 			/* Pinch open or close gesture. */
 			_current_magnification += [ event magnification ] * 5.0f;
@@ -619,7 +600,6 @@ static bool QZ_PollEvent()
 			/* Gesture ended. */
 			_current_magnification = 0.0f;
 			break;
-#endif
 
 		case NSCursorUpdate:
 		case NSMouseEntered:

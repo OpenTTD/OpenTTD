@@ -195,9 +195,7 @@ CocoaSubdriver *QZ_CreateWindowQuickdrawSubdriver(int width, int height, int bpp
 #endif
 
 #ifdef ENABLE_COCOA_QUARTZ
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4
 CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp);
-#endif
 #endif
 
 void QZ_GameSizeChanged();
@@ -229,15 +227,7 @@ uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_i
 
 /** Subclass of NSView to fix Quartz rendering and mouse awareness */
 @interface OTTD_CocoaView : NSView
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
-#	if MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_4
-		<NSTextInputClient, NSTextInput>
-#	else
-		<NSTextInputClient>
-#	endif /* MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_4 */
-#else
-	<NSTextInput>
-#endif /* MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5 */
+	<NSTextInputClient>
 {
 	CocoaSubdriver *driver;
 	NSTrackingRectTag trackingtag;

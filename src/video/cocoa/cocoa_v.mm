@@ -46,9 +46,7 @@
 
 
 @interface OTTDMain : NSObject
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6
 	<NSApplicationDelegate>
-#endif
 @end
 
 
@@ -204,13 +202,11 @@ static void setupApplication()
 	/* Ensure the application object is initialised */
 	[ NSApplication sharedApplication ];
 
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3
 	/* Tell the dock about us */
 	if (MacOSVersionIsAtLeast(10, 3, 0)) {
 		OSStatus returnCode = TransformProcessType(&psn, kProcessTransformToForegroundApplication);
 		if (returnCode != 0) DEBUG(driver, 0, "Could not change to foreground application. Error %d", (int)returnCode);
 	}
-#endif
 
 	/* Disable the system-wide tab feature as we only have one window. */
 	if ([ NSWindow respondsToSelector:@selector(setAllowsAutomaticWindowTabbing:) ]) {
@@ -247,26 +243,15 @@ static void QZ_GetDisplayModeInfo(CFArrayRef modes, CFIndex i, int &bpp, uint16 
 	width = 0;
 	height = 0;
 
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
 	if (MacOSVersionIsAtLeast(10, 6, 0)) {
 		CGDisplayModeRef mode = (CGDisplayModeRef)CFArrayGetValueAtIndex(modes, i);
 
 		width = (uint16)CGDisplayModeGetWidth(mode);
 		height = (uint16)CGDisplayModeGetHeight(mode);
 
-#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_11)
-		/* Extract bit depth from mode string. */
-		CFAutoRelease<CFStringRef> pixEnc(CGDisplayModeCopyPixelEncoding(mode));
-		if (CFStringCompare(pixEnc.get(), CFSTR(IO32BitDirectPixels), kCFCompareCaseInsensitive) == kCFCompareEqualTo) bpp = 32;
-		if (CFStringCompare(pixEnc.get(), CFSTR(IO16BitDirectPixels), kCFCompareCaseInsensitive) == kCFCompareEqualTo) bpp = 16;
-		if (CFStringCompare(pixEnc.get(), CFSTR(IO8BitIndexedPixels), kCFCompareCaseInsensitive) == kCFCompareEqualTo) bpp = 8;
-#else
-		/* CGDisplayModeCopyPixelEncoding is deprecated on OSX 10.11+, but there are no 8 bpp modes anyway... */
+		/* CGDisplayModeCopyPixelEncoding is deprecated since OSX 10.11+, but there are no 8 bpp modes anyway... */
 		bpp = 32;
-#endif
-	} else
-#endif
-	{
+	} else {
 		int intvalue;
 
 		CFDictionaryRef onemode = (const __CFDictionary*)CFArrayGetValueAtIndex(modes, i);
@@ -286,13 +271,7 @@ static void QZ_GetDisplayModeInfo(CFArrayRef modes, CFIndex i, int &bpp, uint16 
 
 uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int device_depth)
 {
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6) && (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_6)
-	CFArrayRef mode_list = MacOSVersionIsAtLeast(10, 6, 0) ? CGDisplayCopyAllDisplayModes(display_id, NULL) : CGDisplayAvailableModes(display_id);
-#elif (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
 	CFArrayRef mode_list = CGDisplayCopyAllDisplayModes(display_id, NULL);
-#else
-	CFArrayRef mode_list = CGDisplayAvailableModes(display_id);
-#endif
 	CFIndex    num_modes = CFArrayGetCount(mode_list);
 
 	/* Build list of modes with the requested bpp */
@@ -325,9 +304,7 @@ uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_i
 	/* Sort list smallest to largest */
 	std::sort(modes, modes + count, ModeSorter);
 
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
-	if (MacOSVersionIsAtLeast(10, 6, 0)) CFRelease(mode_list);
-#endif
+	CFRelease(mode_list);
 
 	return count;
 }
@@ -444,11 +421,6 @@ static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool f
 		ret = QZ_CreateWindowSubdriver(width, height, bpp);
 		if (ret != NULL && fullscreen) ret->ToggleFullscreen();
 	}
-#if (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_9)
-	else {
-		ret = fullscreen ? QZ_CreateFullscreenSubdriver(width, height, bpp) : QZ_CreateWindowSubdriver(width, height, bpp);
-	}
-#endif /* (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_9) */
 
 	if (ret != NULL) return ret;
 	if (!fallback) return NULL;
@@ -457,16 +429,6 @@ static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool f
 	DEBUG(driver, 0, "Setting video mode failed, falling back to 640x480 windowed mode.");
 	ret = QZ_CreateWindowSubdriver(640, 480, bpp);
 	if (ret != NULL) return ret;
-
-#if defined(_DEBUG) && (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_9)
-	/* This Fullscreen mode crashes on OSX 10.7 */
-	if (!MacOSVersionIsAtLeast(10, 7, 0)) {
-		/* Try fullscreen too when in debug mode */
-		DEBUG(driver, 0, "Setting video mode failed, falling back to 640x480 fullscreen mode.");
-		ret = QZ_CreateFullscreenSubdriver(640, 480, bpp);
-		if (ret != NULL) return ret;
-	}
-#endif /* defined(_DEBUG) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_9) */
 
 	return NULL;
 }
@@ -623,11 +585,6 @@ void VideoDriver_Cocoa::EditBoxLostFocus()
 		if ([ _cocoa_subdriver->cocoaview respondsToSelector:@selector(inputContext) ] && [ [ _cocoa_subdriver->cocoaview performSelector:@selector(inputContext) ] respondsToSelector:@selector(discardMarkedText) ]) {
 			[ [ _cocoa_subdriver->cocoaview performSelector:@selector(inputContext) ] performSelector:@selector(discardMarkedText) ];
 		}
-#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_6)
-		else {
-			[ [ NSInputManager currentInputManager ] markedTextAbandoned:_cocoa_subdriver->cocoaview ];
-		}
-#endif
 	}
 	/* Clear any marked string from the current edit box. */
 	HandleTextInput(NULL, true);
@@ -654,7 +611,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		return;
 	}
 
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3)
 	if (MacOSVersionIsAtLeast(10, 3, 0)) {
 		NSAlert *alert = [ [ NSAlert alloc ] init ];
 		[ alert setAlertStyle: NSCriticalAlertStyle ];
@@ -663,12 +619,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		[ alert addButtonWithTitle: [ NSString stringWithUTF8String:buttonLabel ] ];
 		[ alert runModal ];
 		[ alert release ];
-	} else
-#endif
-	{
-#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_3)
-		NSRunAlertPanel([ NSString stringWithUTF8String:title ], [ NSString stringWithUTF8String:message ], [ NSString stringWithUTF8String:buttonLabel ], nil, nil);
-#endif
 	}
 
 	if (!wasstarted && VideoDriver::GetInstance() != NULL) VideoDriver::GetInstance()->Stop();
@@ -1096,15 +1046,8 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	if (!EditBoxInGlobalFocus()) return NSNotFound;
 
 	NSPoint view_pt = NSZeroPoint;
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7)
 	if ([ [ self window ] respondsToSelector:@selector(convertRectFromScreen:) ]) {
 		view_pt = [ self convertRect:[ [ self window ] convertRectFromScreen:NSMakeRect(thePoint.x, thePoint.y, 0, 0) ] fromView:nil ].origin;
-	} else
-#endif
-	{
-#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_7)
-		view_pt = [ self convertPoint:[ [ self window ] convertScreenToBase:thePoint ] fromView:nil ];
-#endif
 	}
 
 	Point pt = { (int)view_pt.x, (int)[ self frame ].size.height - (int)view_pt.y };
@@ -1128,19 +1071,11 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	Rect r = _focused_window->GetTextBoundingRect(start, end);
 	NSRect view_rect = NSMakeRect(_focused_window->left + r.left, [ self frame ].size.height - _focused_window->top - r.bottom, r.right - r.left, r.bottom - r.top);
 
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7
 	if ([ [ self window ] respondsToSelector:@selector(convertRectToScreen:) ]) {
 		return [ [ self window ] convertRectToScreen:[ self convertRect:view_rect toView:nil ] ];
 	}
-#endif
 
-#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_7
-	NSRect window_rect = [ self convertRect:view_rect toView:nil ];
-	NSPoint origin = [ [ self window ] convertBaseToScreen:window_rect.origin ];
-	return NSMakeRect(origin.x, origin.y, window_rect.size.width, window_rect.size.height);
-#else
 	return NSMakeRect(0, 0, 0, 0);;
-#endif
 }
 
 /** Get the bounding rect for the given range. */
@@ -1156,11 +1091,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 }
 
 /** Identifier for this text input instance. */
-#if MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_5
-- (long)conversationIdentifier
-#else
 - (NSInteger)conversationIdentifier
-#endif
 {
 	return 0;
 }
