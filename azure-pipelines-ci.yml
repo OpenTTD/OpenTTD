@@ -58,7 +58,7 @@ jobs:
 - job: macos
   displayName: 'MacOS'
   pool:
-    vmImage: 'macOS-10.13'
+    vmImage: 'macOS-10.14'
 
   variables:
     MACOSX_DEPLOYMENT_TARGET: 10.9
