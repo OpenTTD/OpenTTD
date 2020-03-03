@@ -79,6 +79,9 @@ ScriptTileList_IndustryAccepting::ScriptTileList_IndustryAccepting(IndustryID in
 
 	const Industry *i = ::Industry::Get(industry_id);
 
+	/* Check if this industry is only served by its neutral station */
+	if (i->neutral_station != nullptr && !_settings_game.station.serve_neutral_industries) return;
+
 	/* Check if this industry accepts anything */
 	{
 		bool cargo_accepts = false;
@@ -115,6 +118,9 @@ ScriptTileList_IndustryProducing::ScriptTileList_IndustryProducing(IndustryID in
 	if (!ScriptIndustry::IsValidIndustry(industry_id) || radius <= 0) return;
 
 	const Industry *i = ::Industry::Get(industry_id);
+
+	/* Check if this industry is only served by its neutral station */
+	if (i->neutral_station != nullptr && !_settings_game.station.serve_neutral_industries) return;
 
 	/* Check if this industry produces anything */
 	bool cargo_produces = false;
