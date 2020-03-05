@@ -346,9 +346,13 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 
 	/* middle tile */
 	WaterClass wc_middle = HasTileWaterGround(tile) ? GetWaterClass(tile) : WATER_CLASS_CANAL;
-	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (ret.Failed()) return ret;
-	cost.AddCost(ret);
+	if (!IsWaterTile(tile)) {
+		ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+		if (ret.Failed()) return ret;
+		cost.AddCost(ret);
+		/* Add an extra cost only if not building on a river. */
+		if (wc_middle == WATER_CLASS_CANAL) cost.AddCost(_price[PR_BUILD_CANAL]);
+	}
 
 	/* lower tile */
 	bool is_already_canal_lower = HasTileWaterGround(tile - delta) && GetWaterClass(tile - delta) == WATER_CLASS_CANAL;
@@ -465,6 +469,10 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
 	Owner oc_lower = GetWaterClass(tile - delta) == WATER_CLASS_CANAL ? GetCanalOwner(tile - delta) : INVALID_OWNER;
 	Owner oc_upper = GetWaterClass(tile + delta) == WATER_CLASS_CANAL ? GetCanalOwner(tile + delta) : INVALID_OWNER;
 
+	CommandCost cost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_LOCK]);
+	/* Add an extra cost only if it was not built on a river. */
+	if (GetWaterClass(tile) != WATER_CLASS_RIVER) cost.AddCost(_price[PR_CLEAR_CANAL]);
+
 	if (flags & DC_EXEC) {
 		/* Remove middle part from company infrastructure count. */
 		Company *c = Company::GetIfValid(GetTileOwner(tile));
@@ -486,7 +494,7 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
 		MarkCanalsAndRiversAroundDirty(tile + delta);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_LOCK]);
+	return cost;
 }
 
 /**
