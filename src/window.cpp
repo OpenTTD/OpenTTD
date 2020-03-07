@@ -1944,10 +1944,15 @@ void ResetWindowSystem()
 
 static void DecreaseWindowCounters()
 {
+	static byte hundredth_tick_timeout = 100;
+
 	if (_scroller_click_timeout != 0) _scroller_click_timeout--;
+	if (hundredth_tick_timeout != 0) hundredth_tick_timeout--;
 
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
+		if (!_network_dedicated && hundredth_tick_timeout == 0) w->OnHundredthTick();
+
 		if (_scroller_click_timeout == 0) {
 			/* Unclick scrollbar buttons if they are pressed. */
 			for (uint i = 0; i < w->nested_array_size; i++) {
@@ -1979,6 +1984,8 @@ static void DecreaseWindowCounters()
 			w->RaiseButtons(true);
 		}
 	}
+
+	if (hundredth_tick_timeout == 0) hundredth_tick_timeout = 100;
 }
 
 static void HandlePlacePresize()
@@ -3150,6 +3157,12 @@ void UpdateWindows()
 
 	Window *w;
 
+	/* Process invalidations before anything else. */
+	FOR_ALL_WINDOWS_FROM_FRONT(w) {
+		w->ProcessScheduledInvalidations();
+		w->ProcessHighlightedInvalidations();
+	}
+
 	static GUITimer window_timer = GUITimer(1);
 	if (window_timer.Elapsed(delta_ms)) {
 		if (_network_dedicated) window_timer.SetInterval(MILLISECONDS_PER_TICK);
@@ -3171,23 +3184,9 @@ void UpdateWindows()
 
 	if (!_pause_mode || _game_mode == GM_EDITOR || _settings_game.construction.command_pause_level > CMDPL_NO_CONSTRUCTION) MoveAllTextEffects(delta_ms);
 
-	FOR_ALL_WINDOWS_FROM_FRONT(w) {
-		w->ProcessScheduledInvalidations();
-		w->ProcessHighlightedInvalidations();
-	}
-
 	/* Skip the actual drawing on dedicated servers without screen.
 	 * But still empty the invalidation queues above. */
 	if (_network_dedicated) return;
-
-	static GUITimer hundredth_timer = GUITimer(1);
-	if (hundredth_timer.Elapsed(delta_ms)) {
-		hundredth_timer.SetInterval(3000); // Historical reason: 100 * MILLISECONDS_PER_TICK
-
-		FOR_ALL_WINDOWS_FROM_FRONT(w) {
-			w->OnHundredthTick();
-		}
-	}
 
 	if (window_timer.HasElapsed()) {
 		window_timer.SetInterval(MILLISECONDS_PER_TICK);
