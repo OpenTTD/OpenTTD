@@ -83,7 +83,7 @@ struct GoalListWindow : public Window {
 		}
 
 		y -= 2; // "Company specific goals:" line.
-		if (y < 0) return;
+		if (y < 0 || this->owner == INVALID_OWNER) return;
 
 		for (const Goal *s : Goal::Iterate()) {
 			if (s->company == this->window_number) {
