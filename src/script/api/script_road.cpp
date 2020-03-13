@@ -401,7 +401,7 @@ static bool NormaliseTileOffset(int32 *tile)
 	if (::DistanceManhattan(tile, start) != 1 || ::DistanceManhattan(tile, end) != 1) return -1;
 
 	/*                                           ROAD_NW              ROAD_SW             ROAD_SE             ROAD_NE */
-	static const TileIndexDiff neighbours[] = {::TileDiffXY(0, -1), ::TileDiffXY(1, 0), ::TileDiffXY(0, 1), ::TileDiffXY(-1, 0)};
+	const TileIndexDiff neighbours[] = {::TileDiffXY(0, -1), ::TileDiffXY(1, 0), ::TileDiffXY(0, 1), ::TileDiffXY(-1, 0)};
 	Array *existing = (Array*)alloca(sizeof(Array) + lengthof(neighbours) * sizeof(int32));
 	existing->size = 0;
 
