@@ -261,7 +261,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 				}
 			} else if (st->ship_station.tile != INVALID_TILE) {
 				TILE_AREA_LOOP(t, st->ship_station) {
-					if (IsDockTile(t) && GetStationIndex(t) == st->index) return t;
+					if (IsTileType(t, MP_STATION) && (IsDock(t) || IsOilRig(t)) && GetStationIndex(t) == st->index) return t;
 				}
 			} else if (st->bus_stops != nullptr) {
 				return st->bus_stops->xy;
