@@ -1371,6 +1371,9 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :長 (2008年12�
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :短 (2008-12-31)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO標準 (2008-12-31)
 
+STR_CONFIG_SETTING_WINDOWS_DECORATIONS                          :ウィンドウの装飾: {STRING}
+STR_CONFIG_SETTING_WINDOWS_DECORATIONS_HELPTEXT                 :ウィンドウの縁を装飾します
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :新規ゲーム開始時に自動ポーズ: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :有効にすると、新規ゲーム開始時に自動的に一時停止状態になります。事業を始める前にマップを精査するのに便利です
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :一時停止時に可能な行動: {STRING}

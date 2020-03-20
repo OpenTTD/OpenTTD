@@ -291,6 +291,12 @@ public:
 	inline void SetDisabled(bool disabled);
 	inline bool IsDisabled() const;
 
+	void DrawEdgeOrnament(const Window *w) const;
+	inline void DrawEdgeOrnamentL() const;
+	inline void DrawEdgeOrnamentR() const;
+	inline void DrawEdgeOrnamentT() const;
+	inline void DrawEdgeOrnamentB() const;
+
 	void FillNestedArray(NWidgetBase **array, uint length) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 	bool IsHighlighted() const override;

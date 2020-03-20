@@ -421,6 +421,7 @@ struct NewsWindow : Window {
 	{
 		switch (widget) {
 			case WID_N_CAPTION:
+				this->GetWidget<NWidgetCore>(WID_N_CAPTION)->DrawEdgeOrnament(this);
 				DrawCaption(r, COLOUR_LIGHT_BLUE, this->owner, STR_NEWS_MESSAGE_CAPTION);
 				break;
 

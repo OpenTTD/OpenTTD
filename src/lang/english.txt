@@ -1410,6 +1410,9 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :long (31st Dec 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :short (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_WINDOWS_DECORATIONS                          :Window decorations: {STRING2}
+STR_CONFIG_SETTING_WINDOWS_DECORATIONS_HELPTEXT                 :Ornaments on window edges
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatically pause when starting a new game: {STRING2}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :When enabled, the game will automatically pause when starting a new game, allowing for closer study of the map
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :When paused allow: {STRING2}

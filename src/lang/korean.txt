@@ -1411,6 +1411,9 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :긴 (2012년 1�
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :짧은 (2012.01.01)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :국제표준규격 (2012-01-01)
 
+STR_CONFIG_SETTING_WINDOWS_DECORATIONS                          :창 꾸미기: {STRING}
+STR_CONFIG_SETTING_WINDOWS_DECORATIONS_HELPTEXT                 :창 모서리에 꾸밈 효과
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :게임 시작 시 자동으로 일시 정지: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :이 설정을 켜면, 새로운 게임을 시작할 때 지도를 더욱 자세히 살펴볼 수 있도록 게임을 자동으로 일시정지합니다.
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :일시 정지 상태에서 가능한 행동: {STRING}

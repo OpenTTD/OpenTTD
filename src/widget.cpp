@@ -16,7 +16,9 @@
 #include "transparency.h"
 #include "core/geometry_func.hpp"
 #include "settings_type.h"
+#include "settings_gui.h"
 #include "querystring_gui.h"
+#include "blitter/factory.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -903,6 +905,190 @@ void NWidgetCore::FillNestedArray(NWidgetBase **array, uint length)
 NWidgetCore *NWidgetCore::GetWidgetFromPos(int x, int y)
 {
 	return (IsInsideBS(x, this->pos_x, this->current_x) && IsInsideBS(y, this->pos_y, this->current_y)) ? this : nullptr;
+}
+
+void NWidgetCore::DrawEdgeOrnament(const Window *w) const
+{
+	if (!_settings_client.gui.windows_decorations) return;
+	if (w->window_class == WC_MAIN_TOOLBAR ||
+		w->window_class == WC_STATUS_BAR ||
+		w->window_class == WC_TOOLTIPS ||
+		w->window_class == WC_DROPDOWN_MENU) {
+		return;
+	}
+	if (this->pos_x == 0) {
+		DrawEdgeOrnamentL();
+	}
+	if (int(this->pos_x + this->current_x) == w->width) {
+		DrawEdgeOrnamentR();
+	}
+	if (this->pos_y == 0) {
+		DrawEdgeOrnamentT();
+	}
+	if (int(this->pos_y + this->current_y) == w->height) {
+		DrawEdgeOrnamentB();
+	}
+}
+
+/*
+	Ornament image
+
+	- - - - - - - - - - - - - - - -  0
+	- - - - - - - + + + - - - + + +  1
+	+ - - - - - + - - - + - + - - -  2
+	- + - - - + - - - - - + - - - -  3
+	- - + - + - - - - - - + - - - -  4
+	- - - + - - - + - - + - + - - +  5
+	- - - - - - - - + + - - - + + -  6
+	0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+*/
+
+static const unsigned char ornamentImg[][2] = {
+	{ 0,  2, },
+	{ 1,  3, },
+	{ 2,  4, },
+	{ 3,  5, },
+	{ 4,  4, },
+	{ 5,  3, },
+	{ 6,  2, },
+	{ 7,  1, },
+	{ 7,  5, },
+	{ 8,  1, },
+	{ 8,  6, },
+	{ 9,  1, },
+	{ 9,  6, },
+	{ 10, 2, },
+	{ 10, 5, },
+	{ 11, 3, },
+	{ 11, 4, },
+	{ 12, 2, },
+	{ 12, 5, },
+	{ 13, 1, },
+	{ 13, 6, },
+	{ 14, 1, },
+	{ 14, 6, },
+	{ 15, 1, },
+	{ 15, 5, },
+};
+
+
+enum {
+	ORNAMENT_STEP = 16,
+	ORNAMENT_HEIGHT = 4,
+	ORNAMENT_IMG_LEN = sizeof(ornamentImg) / sizeof(ornamentImg[0])
+};
+
+
+void NWidgetCore::DrawEdgeOrnamentL() const
+{
+	if (_cur_dpi == NULL || _cur_dpi->zoom != ZOOM_LVL_NORMAL) return;
+
+	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
+
+	void *dst = _cur_dpi->dst_ptr;
+	int left = _cur_dpi->left;
+	int width = _cur_dpi->width;
+	int top = _cur_dpi->top;
+	int height = _cur_dpi->height;
+
+	int edge = this->pos_y + this->current_y - top - 1 - ORNAMENT_HEIGHT;
+
+	int x = this->pos_x - left;
+
+	for (int y = this->pos_y - top + 1 + ORNAMENT_HEIGHT; y < edge + ORNAMENT_STEP; y += ORNAMENT_STEP) {
+		for (int i = 0; i < ORNAMENT_IMG_LEN; i++) {
+			int xx = x + ornamentImg[i][1];
+			int yy = y + ornamentImg[i][0];
+			if (yy >= height || yy >= edge) break;
+			if (xx >= 0 && xx < width && yy >= 0) {
+				blitter->SetPixel(dst, xx, yy, PC_DARK_GREY);
+			}
+		}
+	}
+}
+
+void NWidgetCore::DrawEdgeOrnamentR() const
+{
+	if (_cur_dpi == NULL || _cur_dpi->zoom != ZOOM_LVL_NORMAL) return;
+
+	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
+
+	void *dst = _cur_dpi->dst_ptr;
+	int left = _cur_dpi->left;
+	int width = _cur_dpi->width;
+	int top = _cur_dpi->top;
+	int height = _cur_dpi->height;
+
+	int edge = this->pos_y + this->current_y - top - 1 - ORNAMENT_HEIGHT;
+
+	int x = this->pos_x + this->current_x - left - 1;
+
+	for (int y = this->pos_y - top + 1 + ORNAMENT_HEIGHT; y < edge + ORNAMENT_STEP; y += ORNAMENT_STEP) {
+		for (int i = 0; i < ORNAMENT_IMG_LEN; i++) {
+			int xx = x - ornamentImg[i][1];
+			int yy = y + ornamentImg[i][0];
+			if (yy >= height || yy >= edge) break;
+			if (xx >= 0 && xx < width && yy >= 0) {
+				blitter->SetPixel(dst, xx, yy, PC_DARK_GREY);
+			}
+		}
+	}
+}
+
+void NWidgetCore::DrawEdgeOrnamentT() const
+{
+	if (_cur_dpi == NULL || _cur_dpi->zoom != ZOOM_LVL_NORMAL) return;
+
+	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
+
+	void *dst = _cur_dpi->dst_ptr;
+	int left = _cur_dpi->left;
+	int width = _cur_dpi->width;
+	int top = _cur_dpi->top;
+	int height = _cur_dpi->height;
+
+	int edge = this->pos_x + this->current_x - left - 1 - ORNAMENT_HEIGHT;
+
+	int y = this->pos_y - top;
+
+	for (int x = this->pos_x - left + 1 + ORNAMENT_HEIGHT; x < edge + ORNAMENT_STEP; x += ORNAMENT_STEP) {
+		for (int i = 0; i < ORNAMENT_IMG_LEN; i++) {
+			int xx = x + ornamentImg[i][0];
+			int yy = y + ornamentImg[i][1];
+			if (xx >= width || xx >= edge) break;
+			if (yy >= 0 && yy < height && xx >= 0) {
+				blitter->SetPixel(dst, xx, yy, PC_DARK_GREY);
+			}
+		}
+	}
+}
+
+void NWidgetCore::DrawEdgeOrnamentB() const
+{
+	if (_cur_dpi == NULL || _cur_dpi->zoom != ZOOM_LVL_NORMAL) return;
+
+	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
+
+	void *dst = _cur_dpi->dst_ptr;
+	int left = _cur_dpi->left;
+	int width = _cur_dpi->width;
+	int top = _cur_dpi->top;
+	int height = _cur_dpi->height;
+
+	int edge = this->pos_x + this->current_x - left - 1 - ORNAMENT_HEIGHT;
+
+	int y = this->pos_y + this->current_y - top - 1;
+
+	for (int x = this->pos_x - left + 1 + ORNAMENT_HEIGHT; x < edge + ORNAMENT_STEP; x += ORNAMENT_STEP) {
+		for (int i = 0; i < ORNAMENT_IMG_LEN; i++) {
+			int xx = x + ornamentImg[i][0];
+			int yy = y - ornamentImg[i][1];
+			if (xx >= width || xx >= edge) break;
+			if (yy >= 0 && yy < height && xx >= 0) {
+				blitter->SetPixel(dst, xx, yy, PC_DARK_GREY);
+			}
+		}
+	}
 }
 
 /**
@@ -1857,6 +2043,7 @@ void NWidgetBackground::Draw(const Window *w)
 			NOT_REACHED();
 	}
 
+	this->DrawEdgeOrnament(w);
 	if (this->index >= 0) w->DrawWidget(r, this->index);
 	if (this->child != nullptr) this->child->Draw(w);
 
@@ -2468,6 +2655,7 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_CAPTION:
 			if (this->index >= 0) w->SetStringParameters(this->index);
+			this->DrawEdgeOrnament(w);
 			DrawCaption(r, this->colour, w->owner, this->widget_data);
 			break;
 
