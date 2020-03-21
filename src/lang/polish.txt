@@ -1244,6 +1244,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Dostępn{G y a e} now{G y a e} {STRING} - {ENGINE}!
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Otwórz grupę okien skoncentrowanych na grupie pojazdów
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} nie akceptuje już {STRING.d}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} nie akceptuje już {STRING.d} ani {STRING.d}
@@ -1688,6 +1689,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Pokaż populacj
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Wyświetlaj populację miast w ich etykietach na mapie
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grubość linii na wykresie: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grubość linii na wykresach. Cienka linia jest dokładniejsza, grubsza linia jest bardziej widoczna a kolory łatwiejsze do odróżnienia
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Pokaż nazwę tego NewGRF'a w oknie pojazdu budowlanego: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Dodaj linię do okna pojazdów budowlanych, pokazujących z którego NewGRF wybrany pojazd pochodzi.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Krajobraz: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Krajobrazy określają podstawowe scenariusze gry, które różnią się przedsiębiorstwami, towarami i wymogami dla rozwoju miast. Pliki NewGRF i skrypty umożliwiają dokładniejszą kontrolę warunków rozgrywki
@@ -1925,6 +1928,10 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pełne
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Pojawienie się kolorowych wiadomości w: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Rok, w którym wiadomości w gazetach są drukowane w kolorze. Przed tym rokiem drukowane są monochromatyczne czarno-białe
 STR_CONFIG_SETTING_STARTING_YEAR                                :Data rozpoczęcia gry: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Punktacja na koniec roku: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Rok, w którym gra się kończy na cel punktacji. Na koniec tego roku, punkty firmy są zarejestrowane i ekran wyników najwyższych jest pokazywany, ale gracze mogą po tym dalej grać.{}Jeżeli jest to przed rokiem startowym, ekran wyników najwyższych nie jest nigdy pokazywany.
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nigdy
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Pozwól na łagodną ekonomię (więcej małych zmian): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Kiedy włączone, produkcja zakładów zmienia się częściej, ale mniejszymi krokami. To ustawienie zazwyczaj nie daje żadnego efektu, jeśli typy zakładów są pobierane z NewGRFów
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Pozwól kupować udziały w innych firmach: {STRING}
@@ -2541,6 +2548,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Złe has
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serwer jest pełny
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Masz zabroniony dostęp do tego serwera
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Zostałeś wyrzucony z serwera
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Powód: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ułatwienia są niedozwolone na tym serwerze
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Wysyłano zbyt dużo komend na serwer
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Zbyt długo wprowadzałeś hasło
@@ -2600,6 +2608,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} da
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Dałeś {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serwer zamknął sesję
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Restart serwera...{}Proszę czekać...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} został wyrzucony. Powód: ({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Przeglądarka dodatkowej zawartości
@@ -3774,6 +3783,10 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} i {NUM} więcej...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nazwy zakładów - kliknij na nazwie zakładu by wyśrodkować na nim widok. Ctrl+klik otwiera nowy podgląd na lokacji zakładu
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Akceptowane cargo: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Wyprodukowane cargo: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Wszystkie typy cargo
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Żadne
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -4554,6 +4567,13 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Wybierz 
 STR_AI_LIST_CANCEL                                              :{BLACK}Anuluj
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nie zmieniaj skryptu
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Zrób zrzut ekranu
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK} Normalny zrzut ekranu
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Maksymalnie przybliżono na zrzucie ekranu
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Zrzut ekranu z domyślnym przybliżeniem
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Zrzut ekranu całej mapy
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Zrzut ekranu mapy wysokościowej
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK} Zrzut ekranu minimapy
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametry
