@@ -2200,18 +2200,18 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Wyjście
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Czy jesteś pewien że chcesz skończyć grę?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Czy jesteś pewien że chcesz opuścić ten scenariusz?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Czy jesteś pewien, że chcesz skończyć tą grę?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Czy jesteś pewny, że chcesz opuścić ten scenariusz?
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Oszukiwanie
-STR_CHEATS_TOOLTIP                                              :{BLACK}Pole wyboru wskazuje czy użyłeś już wcześniej tego oszustwa
-STR_CHEATS_WARNING                                              :{BLACK}Ostrzeżenie! Właśnie chcesz zdradzić swoich współzawodników. Miej na uwadze, że taka hańba będzie pamiętana na wieki
+STR_CHEATS                                                      :{WHITE}Oszustwa
+STR_CHEATS_TOOLTIP                                              :{BLACK}Pole wyboru wskazuje, czy użyłeś już wcześniej tego oszustwa
+STR_CHEATS_WARNING                                              :{BLACK}Ostrzeżenie! Właśnie chcesz zdradzić swoich współzawodników. Miej na uwadze, że taka hańba będzie pamiętana na wieczność
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zwiększ ilość pieniędzy o {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Grasz jako firma: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldożer (usuwanie przedsiębiorstw, obiektów nieprzesuwalnych): {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunele mogą się przecinać: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Odrzutowce nie będą rozbijać się (często) na małych lotniskach: {ORANGE} {STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldożer (usuwanie przedsiębiorstw, nieprzesuwalnych obiektów): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunele mogą się krzyżować ze sobą: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Odrzutowce nie będą (tak często) się rozbijać na małych lotniskach: {ORANGE} {STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Edytuj maksymalną wysokość mapy: {ORANGE}{NUM}
 STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Edytuj maksymalną wysokość gór na mapie
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Klimat umiarkowany
@@ -2219,8 +2219,8 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Klimat arktyczn
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Klimat tropikalny
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Krajobraz zabawkowy
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmień datę: {ORANGE}{DATE_SHORT}
-STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Zmiana obecnego roku
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Pozwól modyfikować wielkość produkcji przedsiębiorstw: {ORANGE}{STRING}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Zmień obecny rok
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Włącz modyfikowanie wielkości produkcji przedsiębiorstw: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Schemat kolorów
@@ -3433,7 +3433,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Zachowan
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmieniony stan wagonu silnikowego '{1:ENGINE}', gdy był poza halą warsztatów
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmiana długości pojazdu '{1:ENGINE}' , który nie jest zatrzymany w hali
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Zmieniono ładowność pojazdu na '{1:ENGINE}', kiedy nie był w hali warsztatów lub w trakcie przebudowy
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie spowodowane jest to problemami z NewGRFami. Gra może stracić synchronizację lub się zawiesić
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie spowodowane jest to problemami z NewGRF'ami. Gra może się odsychronizować lub się zawiesić
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' dostarcza niepoprawnych danych
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacje o ładunku/naprawie dla '{1:ENGINE}' różnią się od listy zakupu po zbudowaniu. Może to spowodować, że autoodnowienie/-zamiana nie wykona remontu poprawnie
@@ -3648,14 +3648,14 @@ STR_STATION_VIEW_GROUP_D_S_V                                    :Cel-Źródło-P
 STR_STATION_VIEW_GROUP_D_V_S                                    :Cel-Przez-Źródło
 
 ############ range for rating starts
-STR_CARGO_RATING_APPALLING                                      :Zatrważające
-STR_CARGO_RATING_VERY_POOR                                      :Liche
-STR_CARGO_RATING_POOR                                           :Marne
+STR_CARGO_RATING_APPALLING                                      :Okropne
+STR_CARGO_RATING_VERY_POOR                                      :Bardzo słabe
+STR_CARGO_RATING_POOR                                           :Słabe
 STR_CARGO_RATING_MEDIOCRE                                       :Przeciętne
 STR_CARGO_RATING_GOOD                                           :Dobre
 STR_CARGO_RATING_VERY_GOOD                                      :Bardzo dobre
-STR_CARGO_RATING_EXCELLENT                                      :Wyśmienite
-STR_CARGO_RATING_OUTSTANDING                                    :Niezrównane
+STR_CARGO_RATING_EXCELLENT                                      :Wspaniałe
+STR_CARGO_RATING_OUTSTANDING                                    :Niezwykłe
 ############ range for rating ends
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruj główny widok na pozycji stacji. Ctrl+klik otwiera nowy podgląd na lokację stacji
@@ -3758,7 +3758,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sprzedaj
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nazwa firmy
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nazwisko prezesa
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Szukamy firmy transportowej, która przejęłaby naszą firmę{}{}Chcesz kupić {COMPANY} za {CURRENCY_LONG}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Szukamy firmy transportowej, która przejęłaby naszą firmę.{}{}Chcesz zakupić {COMPANY} za {CURRENCY_LONG}?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktura firmy {COMPANY}
@@ -3916,9 +3916,9 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. si
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Zasięg: {GOLD}{COMMA} pól
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Typ samolotu: {GOLD}{STRING}
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista wyboru pociągów - kliknij na pojeździe, aby uzyskać informacje. Ctrl+klik przełącza ukrywanie typu pojazdu
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista wyboru pojazdów drogowych - kliknij na pojeździe, aby uzyskać więcej informacji. Ctrl+klik przełącza ukrywanie typu pojazdu
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista wyboru statków - kliknij na statku, aby uzyskać informacje. Ctrl+klik przełącza ukrywanie typu statku
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista wyboru pociągów - kliknij na pojazd, aby uzyskać informacje. Ctrl+klik przełącza ukrywanie typu pojazdu
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista wyboru pojazdów drogowych - kliknij na pojazd, aby uzyskać więcej informacji. Ctrl+klik przełącza ukrywanie typu pojazdu
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista wyboru statków - kliknij na statek, aby uzyskać informacje. Ctrl+klik przełącza ukrywanie typu statku
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista wyboru samolotów - kliknij na samolocie, aby uzyskać informacje. Ctrl+klik przełącza ukrywanie typu samolotu
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kup tabor kolejowy
@@ -4530,7 +4530,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno de
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguracja SI / Game Script
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Game Script, który zostanie załadowany dla następnej gry
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Game Script, który zostanie załadowany podczas kolejnej gry
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}SI, które zostaną załadowane podczas kolejnej gry
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ludzki gracz
 STR_AI_CONFIG_RANDOM_AI                                         :Losowe SI
@@ -4582,7 +4582,7 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zamknij
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetuj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Liczba dni, które odczekuje SI przed aktywacją po uruchomieniu poprzedniego (zwiększ lub zmniejsz): {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Liczba dni, aby aktywować tą SI po uruchomieniu poprzedniej (zwiększ lub zmniejsz): {ORANGE}{STRING}
 
 
 # Textfile window
