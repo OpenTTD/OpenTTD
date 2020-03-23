@@ -131,6 +131,7 @@ const char *GetCharAtPosition(const char *str, int x, FontSize start_fontsize = 
 
 void DrawDirtyBlocks();
 void SetDirtyBlocks(int left, int top, int right, int bottom);
+void SetPendingDirtyBlocks(int left, int top, int right, int bottom);
 void UnsetDirtyBlocks(int left, int top, int right, int bottom);
 void MarkWholeScreenDirty();
 
