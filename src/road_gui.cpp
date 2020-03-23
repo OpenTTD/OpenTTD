@@ -717,26 +717,38 @@ struct BuildRoadToolbarWindow : Window {
  * @param last_build Last build road type
  * @return ES_HANDLED if hotkey was accepted.
  */
-static EventState RoadTramToolbarGlobalHotkeys(int hotkey, RoadType last_build)
+static EventState RoadTramToolbarGlobalHotkeys(int hotkey, RoadType last_build, RoadTramType rtt)
 {
-	Window *w = (_game_mode == GM_NORMAL) ? ShowBuildRoadToolbar(last_build) : ShowBuildRoadScenToolbar(last_build);
+	Window* w = nullptr;
+	switch (_game_mode) {
+		case GM_NORMAL:
+			if (!CanBuildVehicleInfrastructure(VEH_ROAD, rtt)) return ES_NOT_HANDLED;
+			w = ShowBuildRoadToolbar(last_build);
+			break;
+
+		case GM_EDITOR:
+			if ((GetRoadTypes(true) & ((rtt == RTT_ROAD) ? ~_roadtypes_type : _roadtypes_type)) == ROADTYPES_NONE) return ES_NOT_HANDLED;
+			w = ShowBuildRoadScenToolbar(last_build);
+			break;
+
+		default:
+			break;
+	}
+
 	if (w == nullptr) return ES_NOT_HANDLED;
 	return w->OnHotkey(hotkey);
 }
 
 static EventState RoadToolbarGlobalHotkeys(int hotkey)
 {
-	if (_game_mode == GM_NORMAL && !CanBuildVehicleInfrastructure(VEH_ROAD, RTT_ROAD)) return ES_NOT_HANDLED;
-
 	extern RoadType _last_built_roadtype;
-	return RoadTramToolbarGlobalHotkeys(hotkey, _last_built_roadtype);
+	return RoadTramToolbarGlobalHotkeys(hotkey, _last_built_roadtype, RTT_ROAD);
 }
 
 static EventState TramToolbarGlobalHotkeys(int hotkey)
 {
-	if (_game_mode != GM_NORMAL || !CanBuildVehicleInfrastructure(VEH_ROAD, RTT_TRAM)) return ES_NOT_HANDLED;
 	extern RoadType _last_built_tramtype;
-	return RoadTramToolbarGlobalHotkeys(hotkey, _last_built_tramtype);
+	return RoadTramToolbarGlobalHotkeys(hotkey, _last_built_tramtype, RTT_TRAM);
 }
 
 static Hotkey roadtoolbar_hotkeys[] = {
