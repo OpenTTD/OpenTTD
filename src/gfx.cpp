@@ -78,7 +78,10 @@ static const uint DIRTY_BLOCK_WIDTH    = 64;
 
 extern uint _dirty_block_colour;
 static bool _whole_screen_dirty = false;
+bool _gfx_draw_active = false;
+
 static std::vector<Rect> _dirty_blocks;
+static std::vector<Rect> _pending_dirty_blocks;
 
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 {
@@ -1520,6 +1523,8 @@ void DrawDirtyBlocks()
 		if (_switch_mode != SM_NONE && !HasModalProgress()) return;
 	}
 
+	_gfx_draw_active = true;
+
 	if (_whole_screen_dirty) {
 		RedrawScreenRect(0, 0, _screen.width, _screen.height);
 		Window *w;
@@ -1686,6 +1691,17 @@ void DrawDirtyBlocks()
 	}
 
 	_dirty_blocks.clear();
+	while (!_pending_dirty_blocks.empty()) {
+		for (const Rect &r : _pending_dirty_blocks) {
+			SetDirtyBlocks(r.left, r.top, r.right, r.bottom);
+		}
+		_pending_dirty_blocks.clear();
+		for (const Rect &r : _dirty_blocks) {
+			RedrawScreenRect(r.left, r.top, r.right, r.bottom);
+		}
+		_dirty_blocks.clear();
+	}
+	_gfx_draw_active = false;
 	++_dirty_block_colour;
 }
 
@@ -1820,6 +1836,11 @@ void SetDirtyBlocks(int left, int top, int right, int bottom)
 	if (bottom > _screen.height) bottom = _screen.height;
 
 	AddDirtyBlocks(0, left, top, right, bottom);
+}
+
+void SetPendingDirtyBlocks(int left, int top, int right, int bottom)
+{
+	_pending_dirty_blocks.push_back({ left, top, right, bottom });
 }
 
 /**
