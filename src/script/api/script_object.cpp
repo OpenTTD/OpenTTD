@@ -330,6 +330,11 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	/* Try to perform the command. */
 	CommandCost res = ::DoCommandPInternal(tile, p1, p2, cmd, (_networking && !_generating_world) ? ScriptObject::GetActiveInstance()->GetDoCommandCallback() : nullptr, text, false, estimate_only);
 
+	/* Estimates, update the cost for the estimate */
+	if (estimate_only) {
+		IncreaseDoCommandCosts(res.GetCost());
+	}
+
 	/* We failed; set the error and bail out */
 	if (res.Failed()) {
 		SetLastError(ScriptError::StringToError(res.GetErrorMessage()));
@@ -339,9 +344,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	/* No error, then clear it. */
 	SetLastError(ScriptError::ERR_NONE);
 
-	/* Estimates, update the cost for the estimate and be done */
 	if (estimate_only) {
-		IncreaseDoCommandCosts(res.GetCost());
 		return true;
 	}
 
