@@ -690,6 +690,11 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 				NWidget(WWT_TEXT, COLOUR_MAUVE, WID_AIC_NUMBER), SetDataTip(STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS, STR_NULL), SetFill(1, 0), SetPadding(1, 0, 0, 0),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(7, 0, 7),
+				NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_AIC_PROFILE_EASY), SetDataTip(STR_AI_CONFIG_PROFILE_EASY, STR_AI_CONFIG_PROFILE_TOOLTIP), SetFill(1, 1),
+				NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_AIC_PROFILE_MEDIUM), SetDataTip(STR_AI_CONFIG_PROFILE_MEDIUM, STR_AI_CONFIG_PROFILE_TOOLTIP), SetFill(1, 1),
+				NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_AIC_PROFILE_HARD), SetDataTip(STR_AI_CONFIG_PROFILE_HARD, STR_AI_CONFIG_PROFILE_TOOLTIP), SetFill(1, 1),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(7, 0, 7),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_MOVE_UP), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_AI_CONFIG_MOVE_UP, STR_AI_CONFIG_MOVE_UP_TOOLTIP),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_MOVE_DOWN), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_AI_CONFIG_MOVE_DOWN, STR_AI_CONFIG_MOVE_DOWN_TOOLTIP),
 			EndContainer(),
@@ -888,6 +893,14 @@ struct AIConfigWindow : public Window {
 				break;
 			}
 
+			case WID_AIC_PROFILE_EASY:
+			case WID_AIC_PROFILE_MEDIUM:
+			case WID_AIC_PROFILE_HARD: {
+				int new_value = widget - WID_AIC_PROFILE_EASY;
+				IConsoleSetSetting("script.settings_profile", new_value);
+				break;
+			}
+
 			case WID_AIC_GAMELIST: {
 				this->selected_slot = OWNER_DEITY;
 				this->InvalidateData();
@@ -964,6 +977,10 @@ struct AIConfigWindow : public Window {
 
 		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
 			this->SetWidgetDisabledState(WID_AIC_TEXTFILE + tft, this->selected_slot == INVALID_COMPANY || (GetConfig(this->selected_slot)->GetTextfile(tft, this->selected_slot) == nullptr));
+		}
+
+		for (SettingsProfile sp = SP_BEGIN; sp < SP_END; sp++) {
+			this->SetWidgetLoweredState(WID_AIC_PROFILE_EASY + sp, GetGameSettings().script.settings_profile == sp);
 		}
 	}
 };

@@ -41,6 +41,9 @@ enum AIConfigWidgets {
 	WID_AIC_GAMELIST,         ///< List with current selected GameScript.
 	WID_AIC_LIST,             ///< List with currently selected AIs.
 	WID_AIC_SCROLLBAR,        ///< Scrollbar to scroll through the selected AIs.
+	WID_AIC_PROFILE_EASY,     ///< Easy profile button.
+	WID_AIC_PROFILE_MEDIUM,   ///< Medium profile button.
+	WID_AIC_PROFILE_HARD,     ///< Hard profile button.
 	WID_AIC_MOVE_UP,          ///< Move up button.
 	WID_AIC_MOVE_DOWN,        ///< Move down button.
 	WID_AIC_CHANGE,           ///< Select another AI button.

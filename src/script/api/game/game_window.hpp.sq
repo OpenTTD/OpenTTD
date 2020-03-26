@@ -178,6 +178,9 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_GAMELIST,                          "WID_AIC_GAMELIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_LIST,                              "WID_AIC_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_SCROLLBAR,                         "WID_AIC_SCROLLBAR");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_PROFILE_EASY,                      "WID_AIC_PROFILE_EASY");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_PROFILE_MEDIUM,                    "WID_AIC_PROFILE_MEDIUM");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_PROFILE_HARD,                      "WID_AIC_PROFILE_HARD");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_MOVE_UP,                           "WID_AIC_MOVE_UP");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_MOVE_DOWN,                         "WID_AIC_MOVE_DOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_CHANGE,                            "WID_AIC_CHANGE");

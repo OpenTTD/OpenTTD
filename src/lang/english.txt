@@ -4154,6 +4154,10 @@ STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Move Up
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Move selected AI up in the list
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Move Down
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Move selected AI down in the list
+STR_AI_CONFIG_PROFILE_EASY                                      :{BLACK}Easy
+STR_AI_CONFIG_PROFILE_MEDIUM                                    :{BLACK}Medium
+STR_AI_CONFIG_PROFILE_HARD                                      :{BLACK}Hard
+STR_AI_CONFIG_PROFILE_TOOLTIP                                   :{BLACK}Choose which settings profile to use for random AIs or for initial values when adding a new AI or Game Script
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Game Script
 STR_AI_CONFIG_AI                                                :{SILVER}AIs

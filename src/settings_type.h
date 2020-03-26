@@ -36,6 +36,7 @@ enum SettingsProfile {
 	SP_MULTIPLAYER = SP_SAVED_HIGHSCORE_END,  ///< Special "multiplayer" highscore. Not saved, always specific to the current game.
 	SP_HIGHSCORE_END,                         ///< End of highscore tables.
 };
+DECLARE_POSTFIX_INCREMENT(SettingsProfile)
 
 /** Available industry map generation densities. */
 enum IndustryDensity {
