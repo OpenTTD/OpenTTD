@@ -50,6 +50,15 @@ enum IndustryDensity {
 	ID_END,       ///< Number of industry density settings.
 };
 
+/** Disaster modes. */
+enum DisasterMode : uint8 {
+	DM_OFF,              ///< Disabled.
+	DM_ON_ERA_SPECIFIC,  ///< Era specific disasters.
+	DM_ON_ALL_TIME,      ///< All disasters types at any time.
+
+	DM_END,              ///< Number of disaster modes.
+};
+
 /** Settings related to the difficulty of the game */
 struct DifficultySettings {
 	byte   max_no_competitors;               ///< the number of competitors (AIs)
@@ -66,7 +75,7 @@ struct DifficultySettings {
 	byte   quantity_sea_lakes;               ///< the amount of seas/lakes
 	bool   economy;                          ///< how volatile is the economy
 	bool   line_reverse_mode;                ///< reversing at stations or not
-	bool   disasters;                        ///< are disasters enabled
+	uint8  disasters;                        ///< disaster mode
 	byte   town_council_tolerance;           ///< minimum required town ratings to be allowed to demolish stuff
 };
 

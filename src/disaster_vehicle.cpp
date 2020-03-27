@@ -902,7 +902,7 @@ static void DoDisaster()
 
 	byte j = 0;
 	for (size_t i = 0; i != lengthof(_disasters); i++) {
-		if (_cur_year >= _disasters[i].min_year && _cur_year < _disasters[i].max_year) buf[j++] = (byte)i;
+		if (_settings_game.difficulty.disasters == DM_ON_ALL_TIME || (_cur_year >= _disasters[i].min_year && _cur_year < _disasters[i].max_year)) buf[j++] = (byte)i;
 	}
 
 	if (j == 0) return;
@@ -922,7 +922,7 @@ void DisasterDailyLoop()
 
 	ResetDisasterDelay();
 
-	if (_settings_game.difficulty.disasters != 0) DoDisaster();
+	if (_settings_game.difficulty.disasters != DM_OFF) DoDisaster();
 }
 
 void StartupDisasters()

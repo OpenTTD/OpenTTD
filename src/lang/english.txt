@@ -1105,6 +1105,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 
+STR_DISASTERS_OFF                                               :Disabled
+STR_DISASTERS_ON_ERA_SPECIFIC                                   :Era specific disasters
+STR_DISASTERS_ON_ALL_TIME                                       :All disasters types at any time
+
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No suitable AIs available...{}You can download several AIs via the 'Online Content' system
 
 # Settings tree window
@@ -1177,7 +1181,7 @@ STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :If enabled, rec
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Disallow train reversing in stations: {STRING2}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :If enabled, trains will not reverse in non-terminus stations, even if there is a shorter path to their next destination when reversing
 STR_CONFIG_SETTING_DISASTERS                                    :Disasters: {STRING2}
-STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toggle disasters which may occasionally block or destroy vehicles or infrastructure
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toggle disasters which may occasionally block or destroy vehicles or infrastructure. Era specific disasters are disasters that are themathic to an era, they only happen in a certain period of time. All disaster types means any disaster theme from any era can happen regardless of date
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Town council's attitude towards area restructuring: {STRING2}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Choose how much noise and environmental damage by companies affect their town rating and further construction actions in their area
 
