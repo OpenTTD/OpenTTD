@@ -2002,8 +2002,8 @@ void NWidgetViewport::UpdateViewportCoordinates(Window *w)
 	if (vp != nullptr) {
 		vp->left = w->left + this->pos_x;
 		vp->top  = w->top + this->pos_y;
-		vp->width  = this->current_x;
-		vp->height = this->current_y;
+		vp->width  = w->IsShaded() ? 0 : this->current_x;
+		vp->height = w->IsShaded() ? 0 : this->current_y;
 
 		vp->virtual_width  = ScaleByZoom(vp->width, vp->zoom);
 		vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
