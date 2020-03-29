@@ -64,7 +64,7 @@ struct DifficultySettings {
 	byte   construction_cost;                ///< how expensive is building
 	byte   terrain_type;                     ///< the mountainousness of the landscape
 	byte   quantity_sea_lakes;               ///< the amount of seas/lakes
-	bool   economy;                          ///< how volatile is the economy
+	uint8  economy;                          ///< recessions, how long they last
 	bool   line_reverse_mode;                ///< reversing at stations or not
 	bool   disasters;                        ///< are disasters enabled
 	byte   town_council_tolerance;           ///< minimum required town ratings to be allowed to demolish stuff

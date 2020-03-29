@@ -847,18 +847,16 @@ static void HandleEconomyFluctuations()
 	if (_settings_game.difficulty.economy != 0) {
 		/* When economy is Fluctuating, decrease counter */
 		_economy.fluct--;
-	} else if (EconomyIsInRecession()) {
-		/* When it's Steady and we are in recession, end it now */
-		_economy.fluct = -12;
-	} else {
+	} else if (!EconomyIsInRecession()) {
 		/* No need to do anything else in other cases */
 		return;
 	}
 
-	if (_economy.fluct == 0) {
-		_economy.fluct = -(int)GB(Random(), 0, 2);
+	if (_economy.fluct == 0 && _settings_game.difficulty.economy != 0) {
+		_economy.fluct = -(int)RandomRange(3 * _settings_game.difficulty.economy + 1);
 		AddNewsItem(STR_NEWS_BEGIN_OF_RECESSION, NT_ECONOMY, NF_NORMAL);
-	} else if (_economy.fluct == -12) {
+	} else if (_economy.fluct <= -12 * _settings_game.difficulty.economy) {
+		/* When it's Steady or we are in recession, end it now */
 		_economy.fluct = GB(Random(), 0, 8) + 312;
 		AddNewsItem(STR_NEWS_END_OF_RECESSION, NT_ECONOMY, NF_NORMAL);
 	}
