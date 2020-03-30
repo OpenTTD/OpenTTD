@@ -35,11 +35,6 @@ ScriptConfigItem _start_date_config = {
 
 AIConfig::AIConfig(const AIConfig *config) : ScriptConfig(config)
 {
-	/* Override start_date as per AIConfig::AddRandomDeviation().
-	 * This is necessary because the ScriptConfig constructor will instead call
-	 * ScriptConfig::AddRandomDeviation(). */
-	int start_date = config->GetSetting("start_date");
-	this->SetSetting("start_date", start_date != 0 ? max(1, this->GetSetting("start_date")) : 0);
 }
 
 /* static */ AIConfig *AIConfig::GetConfig(CompanyID company, ScriptSettingSource source)

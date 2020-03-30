@@ -52,7 +52,6 @@ ScriptConfig::ScriptConfig(const ScriptConfig *config)
 	for (SettingValueList::const_iterator it = config->settings.begin(); it != config->settings.end(); it++) {
 		this->settings[stredup((*it).first)] = (*it).second;
 	}
-	this->AddRandomDeviation();
 }
 
 ScriptConfig::~ScriptConfig()
