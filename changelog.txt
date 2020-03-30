@@ -1,3 +1,25 @@
+1.10.0 (2020-04-01)
+------------------------------------------------------------------------
+Change: Open company window when clicking on a company goal (#8033)
+Change: [SDL2] Support pasting from clipboard on Linux (#8004)
+Fix: [Script] Random deviation upper bound range should be inclusive (#8052)
+Fix #8043: Incorrect handling of global road/tram hotkeys caused a crash (#8044)
+Fix #8039: [Script] SetOrderFlags and GetOrderDestination didn't work for oil rigs (#8040)
+Fix: [Script] CanBuildConnectedRoadPartsHere neighbours tiles were incorrect if you started a new game with a different world size (#8036)
+Fix: Ignore clicks on non-applicable global goals (#8035)
+Fix #7613: Limit News Window to 1024 messages to keep it usable and avoid overflowing scrollbars (#8026)
+Fix #7644: [OSX] Hopefully improve performance by manually set colorspace to sRGB (#8023)
+Fix #8020: Add missing docking tiles around industry neutral stations (#8021)
+Fix: GUI tramway icon only contained a single set of tram tracks (#8015)
+Fix: Station with multiple docks had the wrong tile area (#8014)
+Fix #8011: Crash when loading TTD scenario containing a dock (#8012)
+Fix #7998: Crash when scripts tried to access companies with invalid IDs (#8010)
+Fix: Crash when attempting to draw a string containing nonprintable characters (#8005)
+Fix #6399: Directory ~/.local/share not created if it didn't already exist (#8003)
+Fix #7958: Custom catenary missing on road bridges (#7991)
+Fix #7944: Demolishing locks built on rivers didn't always restore the river (#7946)
+
+
 1.10.0-RC1 (2020-02-09)
 ------------------------------------------------------------------------
 Feature: Allow server to supply a reason to kicked/banned clients (#7859)

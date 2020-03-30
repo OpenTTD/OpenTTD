@@ -1,3 +1,9 @@
+openttd (1.10.0-0) unstable; urgency=low
+
+  * New upstream release 1.10.0
+
+ -- OpenTTD <info@openttd.org>  Wed, 01 Apr 2020 12:00:00 +0000
+
 openttd (1.10.0~RC1-0) unstable; urgency=low
 
   * New upstream release 1.10.0-RC1
