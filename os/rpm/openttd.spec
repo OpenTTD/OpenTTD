@@ -17,9 +17,9 @@
 #
 
 Name:           openttd
-Version:        1.10.RC1
+Version:        1.10.0
 Release:        0
-%define srcver  1.10.0-RC1
+%define srcver  1.10.0
 Summary:        An open source reimplementation of Chris Sawyer's Transport Tycoon Deluxe
 License:        GPL-2.0
 Group:          Amusements/Games/Strategy/Other
