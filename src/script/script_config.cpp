@@ -29,7 +29,7 @@ void ScriptConfig::Change(const char *name, int version, bool force_exact_match,
 
 	this->ClearConfigList();
 
-	if (_game_mode == GM_NORMAL && this->info != nullptr) {
+	if (_game_mode == GM_NORMAL && _switch_mode != SM_LOAD_GAME && this->info != nullptr) {
 		/* If we're in an existing game and the Script is changed, set all settings
 		 *  for the Script that have the random flag to a random value. */
 		for (ScriptConfigItemList::const_iterator it = this->info->GetConfigList()->begin(); it != this->info->GetConfigList()->end(); it++) {
