@@ -2192,6 +2192,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Password
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Il server è pieno
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sei stato bandito da questo server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Sei stato espulso dalla partita
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Motivo: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}I trucchi non sono ammessi su questo server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Stavano venendo inviati troppi comandi al server
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Si è impiegato troppo tempo ad inserire la password
@@ -2251,6 +2252,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ha
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Hai donato {2:CURRENCY_LONG} a {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Il server ha chiuso la sessione
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Il server si sta riavviando...{}Attendere prego...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} è stato espulso. Motivo: ({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Download contenuti

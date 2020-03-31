@@ -2674,9 +2674,11 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD 開發小組
 
 # Framerate display window
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}數據基於 {COMMA} 個採樣
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :GS/AI 腳本總計
 ############ End of leave-in-this-order
 
 
@@ -3071,6 +3073,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}點選�
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}的歷史紀錄
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}全局歷史紀錄
+STR_STORY_BOOK_SPECTATOR                                        :全局歷史紀錄
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :第{NUM}頁
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}在下拉式選單中選擇一頁以前往該頁觀看
@@ -3539,6 +3542,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}按下�
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}在車頭及車廂替換畫面間切換。
 STR_REPLACE_ENGINES                                             :車頭
 STR_REPLACE_WAGONS                                              :車廂
+STR_REPLACE_ALL_ROADTYPE                                        :所有公路車輛
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}選擇您要替換車頭的軌道種類
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}顯示左方的車頭要替換成哪種車頭

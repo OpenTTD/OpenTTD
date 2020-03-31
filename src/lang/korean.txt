@@ -1529,7 +1529,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :내 회사에 �
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :내 회사가 수송하는 산업시설의 생산량이 변하면 소식으로 알려줍니다.
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :경쟁사에 의한 산업시설의 생산량 변동: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :경쟁사가 수송하고 있는 산업시설의 생산량이 변하면 메시지로 알려줍니다.
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :다른 산업 생산물 변화: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :기타 산업시설의 생산량 변동: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :아무도 수송하지 않는 산업시설의 생산량이 변하면 소식으로 알려줍니다.
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :내 회사의 차량에 관한 권고 / 정보: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :주의를 기울여야하는 차량에 대한 메시지를 표시합니다.
@@ -1973,7 +1973,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}서버 
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}서버 주소: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}시작 날짜: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}현재 날짜: {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}암호가 걸려있습니다!
+STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}비밀번호가 걸려있습니다!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}서버 오프라인
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}서버가 꽉 참
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}버전 다름
@@ -1998,8 +1998,8 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}새 멀�
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}게임 이름:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}멀티플레이 게임 선택 메뉴에서 보여질 게임 제목입니다.
-STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}암호 설정
-STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}자유로운 접근을 막고 싶을 때 암호를 설정할 수 있습니다
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}비밀번호 설정
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}서버에 공개적으로 접근하는 것을 막고 싶을 때 비밀번호를 걸어 보호합니다.
 
 STR_NETWORK_START_SERVER_UNADVERTISED                           :아니요
 STR_NETWORK_START_SERVER_ADVERTISED                             :예
@@ -2129,15 +2129,15 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}송금�
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}입력한 비밀번호는 저장하지 않기
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}이 회사에 새 비밀번호 부여
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}회사 비밀번호
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}회사 비밀번호 기본값
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}회사 비밀번호 기본값으로 설정
 STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}이 회사 비밀번호를 새 회사의 비밀번호 기본값으로 사용
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}참여
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}이 회사로 참가해서 플레이합니다
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}암호
+STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}비밀번호
 STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}다른 참가자가 이 회사에 참여하여 플레이하지 못 하도록 암호로 보호합니다
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}회사 암호 설정
+STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}회사 비밀번호 설정
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}보내기
@@ -2165,7 +2165,7 @@ STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}접속�
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}접속자 #{NUM}의 입력 시간이 초과되었습니다
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}프로토콜 오류가 발생되어 연결이 끊어졌습니다
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}이 접속자의 게임 버전이 서버의 버전과 일치하지 않습니다
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}잘못된 암호입니다
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}잘못된 비밀번호입니다
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}서버에 인원이 가득 찼습니다
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}서버 관리자에 의해 접속이 차단되었습니다
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}서버에서 강제로 추방되었습니다
@@ -2188,7 +2188,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :권한 없음
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :잘못된 패킷 수신
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :잘못된 버전
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :이미 사용중인 이름
-STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :잘못된 암호
+STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :잘못된 비밀번호
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand 구문 내의 잘못된 회사
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :강제추방
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :치트 사용 시도
@@ -3822,7 +3822,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: 
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}무게: {LTBLUE}{WEIGHT_SHORT} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고 속력: {LTBLUE}{VELOCITY} {BLACK}최고 견인력: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}올해 이익: {LTBLUE}{CURRENCY_LONG} (작년: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후 고장 횟수: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}수송량: {LTBLUE}없음{STRING}
@@ -3832,8 +3832,8 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}수송�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}환승 수익: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}정비 간격: {LTBLUE}{COMMA}일마다{BLACK}   마지막 정비 날짜: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}정비 간격: {LTBLUE}{COMMA}%{BLACK} 이하일 때   마지막 정비 날짜: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}정비 간격: {LTBLUE}{COMMA}일{BLACK}마다   마지막 정비 날짜: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}정비 기준: {LTBLUE}{COMMA}%{BLACK} 떨어지면   마지막 정비 날짜: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 기준값을 10만큼 올립니다. CTRL+클릭하면 점검 기준값을 5만큼 올립니다
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 기준값을 10만큼 내립니다. CTRL+클릭하면 점검 기준값을 5만큼 내립니다
 
