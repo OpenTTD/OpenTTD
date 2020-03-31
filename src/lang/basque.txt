@@ -187,6 +187,7 @@ STR_COLOUR_ORANGE                                               :Laranja
 STR_COLOUR_BROWN                                                :Marroia
 STR_COLOUR_GREY                                                 :Grisa
 STR_COLOUR_WHITE                                                :Zuria
+STR_COLOUR_DEFAULT                                              :Lehenetsia
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -252,6 +253,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Ezkutuak
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Ezkutuak erakutsi
 
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Botoi hau gaituz, ezkutuak dauden trenak erakusten dira
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Botoi hau gaituz, ezkutuko itsasontziak ere erakusten dira
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Lehenetsia
@@ -960,6 +962,7 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Pantaila
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pantailaren resulozioa aukeratu
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interfaze tamaina
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normala
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Tamaina doblea
@@ -1091,6 +1094,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ezarpenak lehen
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Balio ezberdinak dituzten ezarpenak zure joko berriaren ezarpenekin alderatuta
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Bezero ezarpenak (ez dira partidatan gordetzen; joko guztiei eragiten die)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Jokoaren ezarpenak (gordetako partidetan bilduta; bakarrik partida berriei eragiten die)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Enpresa ezarpenak (partidan gordeta; bakarrik uneko enpresari eragiten dio)
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ezer ez -
 
@@ -1270,6 +1274,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Zakarra
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Oso Zakarra
 STR_CONFIG_SETTING_VARIETY                                      :Barietateen distribuzioa: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Ibai kantitatea: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Aukeratu zenbat ibai sortuko diren
 STR_CONFIG_SETTING_TREE_PLACER                                  :Zuhaitz kokatzeko algoritmoa: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ezer ez
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Jatorrizkoa
@@ -1446,6 +1451,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Betea
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Kolorezko albisteak {STRING}. urtean agertzen dira
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Egunkarien mezuak kolorean imprimatuko diren urtea. Urte hau baino lehenago txuri/beltz monokromoa erabiliko da
 STR_CONFIG_SETTING_STARTING_YEAR                                :Hasierako urtea: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Gaitu ekonomia leuna (aldaketa gehiago baina txikiagoak): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Gaitua dagoenean, industrien ekoizpena gehiagotan aldatuko da baina urrats txikiagotan. Aukera honek gehienetan ez du eraginik izango industriak NewGRF batek ezartzen baditu
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Beste konpainien akzioak erostea baimendu: {STRING}
@@ -1551,6 +1557,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrikoa (zp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Pisu unitateak: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Pisu bat erabiltzaile interfazean erakusten denean, aukeratutako unitateetan erakutsi
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (ton/tona)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrikoa (t/tona)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
@@ -1576,6 +1583,7 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfa
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Orokorra
 STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Leihoak
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Eraikuntza
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Albisteak / Aholkulariak
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Konpainia
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ibilgailuak
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fisika
@@ -2253,7 +2261,7 @@ STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Bide sei
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Norabide bakarreko bide seinalea (elektrikoa){}Norabide bakarreko bide seinalea bloke berdinean tren bat baino gehiago egotea ahalbidetzen du, trenak gelditzeko tokia aurkitu badezake. Ezin dira atzekaldetik pasa
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Seinaleak aldatu{}Aukeratua dagoenean, aukeratutako seinalea aldatuko da hautatutako seinale motagatik. Krtl+Klik mota aldatuko du, Shift+Klik gutxi gora beherako kostea erakutsiko du
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Arrastratzerakoan seinale dentsitatea
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Seinale dentsitatea jeitsi
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Seinale distantzia jaitsi
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Seinale dentsitatea igo
 
 # Bridge selection window
@@ -2578,11 +2586,15 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 The OpenTTD team
 
 # Framerate display window
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} koadroak/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Zama kudeaketa:
 STR_FRAMERATE_GL_TRAINS                                         :{WHITE}  Trenen tick-ak:
 STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  Itsasontzien tick-ak:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Jokoaren scripta
 ############ End of leave-in-this-order
 
 
@@ -2647,6 +2659,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Garaiera
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamaina:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Aldatu maparen garaiera maximoa
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Elur garaiera aldatu
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Hasierako urtea aldatu
 
@@ -2718,6 +2731,7 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Bertsioa
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Gutxienezko bertsio bateragarria: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Aurrezarria (D) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametroak: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ez dago informaziorik
@@ -3428,6 +3442,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Tren ibilgailu 
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail trenak
 STR_REPLACE_MAGLEV_VEHICLES                                     :Tren magnetikoak
 
+STR_REPLACE_TRAM_VEHICLES                                       :Tranbia ibilgailuak
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Bagoiak ezabatu: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ordezkatze automatikoari agindu trenaren luzera errespetatzea, bagoiak ezabatuz luzera handitzen badute (trenaren hasierako bagoietik hasita)
@@ -4159,6 +4174,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Ezin da 
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Ezin da hemen tranbiarik ezabatu...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... ez dago biderik
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... ez dago tranbia biderik
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... errepidea ez da bateragarria
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ezin dira hemen urbideak eraiki...

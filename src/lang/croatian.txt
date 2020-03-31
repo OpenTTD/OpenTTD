@@ -960,6 +960,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Novi {STRING} je sada dostupan! - {ENGINE}
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Otvori prozor grupe fokusiran na grupu odabranog vozila
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} više ne prihvaća {STRING.aku}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} više ne prihvaća {STRING.aku} ili {STRING.aku}
@@ -1404,6 +1405,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Prikaži broj s
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Prikaži broj stanovnika uz nazive gradova na karti
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Debljina linija u grafikonima: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Debljina linije u grafikonima. Tanja linija je preciznija za čitanje, deblja linija je lakša za vidjeti i boje su lakše za razabrati
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Prikaži ime NewGRF-a u prozoru za izgradnju vozila: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Dodaj redak u prozor izgradnje vozila koji će pokazati iz kojeg NewGRF-a dolazi odabrano vozilo.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Krajolik: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Tereni određuju osnovne scenarije za igru s različitim teretima i preduvjetima za rast gradova. NewGRF-ovi i Skripte Igre omogućavaju detaljnije kontrole i postavke.
@@ -1641,6 +1644,10 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Sve
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Vijesti u boji pojavljuju se: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Godina u kojoj će se novine početi izdavati u boji. Prije ove godine, koriste se crno/bijele novine
 STR_CONFIG_SETTING_STARTING_YEAR                                :Početna godina: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Godina kraja bodovanja: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Godina koje igra završava u smislu bodovanja. Na kraju ove godine, bilježe se bodovi kompanije i prikazuje se tablica najviših bodova ali igrači mogu nastaviti igru.{}Ako je ovo prije početne godine, tablica najviših bodova se nikada neće prikazati.
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nikada
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Uključi stabilno gospodarstvo (više manjih izazova): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Kada je uključeno, promjene u industrijskoj proizvodnji su češće ali u manjim rasponima. Ova postavka obično nema efekta ukoliko su industrije postavljene iz nekog NewGRF-a
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Dopusti kupovanje udjela u drugim tvrtkama: {STRING}
@@ -2257,6 +2264,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Pogrešn
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Poslužitelj je pun
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Zabranjen ti je pristup ovom poslužitelju
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Izbačen si iz igre
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Razlog: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Na ovome poslužitelju varanje nije dopušteno
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Slali ste previše naredbi na server
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Trebalo vam je previše vremena za unošenje lozinke
@@ -2316,6 +2324,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} je
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Dao si {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Poslužitelj je zatvorio sesiju
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Poslužitelj se ponovno pokreće...{}Molimo pričekajte...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} je izbačen. Razlog: ({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Preuzimanje sadržaja
@@ -3490,6 +3499,10 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} i {NUM} više...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Imena industrija - za centriranje pogleda klikni na ime. Ctrl+klik otvara novi prozor sa lokacijom industrije
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Prihvaćeni teret: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Proizvedeni teret: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Sve vrste tereta
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Ništa
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -4264,6 +4277,13 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Odaberi 
 STR_AI_LIST_CANCEL                                              :{BLACK}Odustani
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemoj mijenjati skriptu
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Napravi sliku zaslova
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normalna snimka zaslona
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Maksimalno zumirana slika zaslona
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Snimka ekrana sa zumom osnovne postavke
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Slika cijele mape
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Slika visinske mape
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Slika mini-mape
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametri
