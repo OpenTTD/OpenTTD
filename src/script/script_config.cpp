@@ -131,7 +131,7 @@ void ScriptConfig::AddRandomDeviation()
 {
 	for (ScriptConfigItemList::const_iterator it = this->GetConfigList()->begin(); it != this->GetConfigList()->end(); it++) {
 		if ((*it).random_deviation != 0) {
-			this->SetSetting((*it).name, InteractiveRandomRange((*it).random_deviation * 2) - (*it).random_deviation + this->GetSetting((*it).name));
+			this->SetSetting((*it).name, InteractiveRandomRange((*it).random_deviation * 2 + 1) - (*it).random_deviation + this->GetSetting((*it).name));
 		}
 	}
 }
