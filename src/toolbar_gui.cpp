@@ -2018,6 +2018,7 @@ enum MainToolbarHotkeys {
 	MTHK_BUILD_AIRPORT,
 	MTHK_BUILD_TREES,
 	MTHK_MUSIC,
+	MTHK_LANDINFO,
 	MTHK_AI_DEBUG,
 	MTHK_SMALL_SCREENSHOT,
 	MTHK_ZOOMEDIN_SCREENSHOT,
@@ -2086,6 +2087,7 @@ struct MainToolbarWindow : Window {
 
 	EventState OnHotkey(int hotkey) override
 	{
+		CallBackFunction cbf = CBF_NONE;
 		switch (hotkey) {
 			case MTHK_PAUSE: ToolbarPauseClick(this); break;
 			case MTHK_FASTFORWARD: ToolbarFastForwardClick(this); break;
@@ -2126,8 +2128,10 @@ struct MainToolbarWindow : Window {
 			case MTHK_EXTRA_VIEWPORT: ShowExtraViewPortWindowForTileUnderCursor(); break;
 			case MTHK_CLIENT_LIST: if (_networking) ShowClientList(); break;
 			case MTHK_SIGN_LIST: ShowSignList(); break;
+			case MTHK_LANDINFO: cbf = PlaceLandBlockInfo(); break;
 			default: return ES_NOT_HANDLED;
 		}
+		if (cbf != CBF_NONE) _last_started_action = cbf;
 		return ES_HANDLED;
 	}
 
@@ -2238,6 +2242,7 @@ static Hotkey maintoolbar_hotkeys[] = {
 	Hotkey('V', "extra_viewport", MTHK_EXTRA_VIEWPORT),
 	Hotkey((uint16)0, "client_list", MTHK_CLIENT_LIST),
 	Hotkey((uint16)0, "sign_list", MTHK_SIGN_LIST),
+	Hotkey((uint16)0, "land_info", MTHK_LANDINFO),
 	HOTKEY_LIST_END
 };
 HotkeyList MainToolbarWindow::hotkeys("maintoolbar", maintoolbar_hotkeys);
