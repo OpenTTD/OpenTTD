@@ -1269,7 +1269,6 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :فعال مان
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :گروه‌بندی هزینه‌ها در پنجره مالی شرکت: {STRING}
 
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :غیر فعال کردن ساختمان مربوط به خودرویی که در دسترس نیست: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :بیشترین قطار یک شرکت: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :بیشترین خودروی‌جاده‌ای یک شرکت: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :بیشترین هواپیمای یک شرکت: {STRING}

@@ -1387,8 +1387,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Atskaņot trans
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Apkārtne: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Atskaņot ainavas, ražotņu un pilsētu apkārtējās skaņas
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Atspējot infrastruktūras būvēšanu, ja nav piemērotu transportlīdzekļu: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ja ieslēgts, infrastruktūra ir pieejama tikai tad, ja tur ir pieejami arī transportlīdzekļi, novēršot laika un naudas izšķiešanu par nelietojamu infrastruktūru
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimālais vilcienu skaits uzņēmumā: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimālais vilcienu skaits, kas var piederēt uzņēmumam
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimālais autotransporta līdzekļu skaits uzņēmumā: {STRING}

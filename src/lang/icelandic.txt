@@ -1352,8 +1352,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spila hljóð f
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Umlykjandi: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spila umlykjandi hljóð frá landslagi, iðnaði og bæjum
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Gera óvirkar byggingar tengd farartækjum sem eru ófáanleg: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ef þessi stilling er virk eru byggingartól fyrir farartæki aðeins virk ef þau farartæki eru í boði, þetta kemur í veg fyrir eyðslu á tíma og peningum og ónothæfar framkvæmdir
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Lestir á leikmann mest: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Hámarksfjöldi járnbrautarlesta sem fyrirtæki getur átt
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Bifreiðir á leikmann mest: {STRING}

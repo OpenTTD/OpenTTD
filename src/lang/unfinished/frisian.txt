@@ -1410,8 +1410,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Lit lûdseffekt
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omjouwing: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Lit omjouwingslûd fan bygelyks it lânskip, yndustryen en stêden heare
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Stean bouwen fan ynfrastruktuer net ta at der gjin geskikte fiertugen beskikber binne: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :By ynkeakeljen kinst allinnich ynfrastruktuer bouwe foar typen ynfrastruktuer dêr't ek fiertúgen foar beskikber binne.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimaal oantal treinen per bedriuw: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimaal oantal treinen dat in bedriuw hawwe mei
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimaal oantal weinen per bedriuw: {STRING}

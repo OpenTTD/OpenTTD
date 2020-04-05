@@ -1625,8 +1625,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reprodukuj zvu�
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Okruženje: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reprodukuj ambijentalne zvučne efekte za teren, industrije i gradove
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Onemogućena izgradnja infrastrukture kada nema odgovarajućih vozila: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ako je omogućeno, infrastruktura je dostupna samo ako su dostupna i vozila, sprečavajući troškove vremena i novca na neupotrebljivu infrastrukturu
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Najviše vozova po preduzeću: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Najveći broj vozova koje preduzeće može da ima
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Najviše drumskih vozila po preduzeću: {STRING}

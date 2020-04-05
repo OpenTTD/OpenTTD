@@ -1485,8 +1485,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Kostuvad sõidu
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Taustahelid: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Maastikult, tööstustest ja linnadest kostuvad taustahelid
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Sobivate sõidukite puudumisel on taristu ehitamine keelatud: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Sisse lülitamisel on taristu ehitamine võimalik ainult juhul, kui sellega seonduvad sõidukid on juba saadaval. Väldib mõttetut raha ja aja kulu, kui ehitatakse taristu, mida ei saa kasutada
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Ettevõtte rongide ülempiir: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Ettevõttele kuuluvate rongide arvu ülempiir
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Ettevõtte mootorsõidukite ülempiir: {STRING}

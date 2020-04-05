@@ -1443,8 +1443,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Araçların ses
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ortam: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Yeryüzü, fabrikalar ve kasabaların ortam seslerini oynat
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Uygun araç bulunmadığında ilgili altyapıların yapılmasını engelle: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Etkinleştirildiğinde, eğer kullanılabilecek araçlar mevcutsa altyapıyı kullanılabilir hale getirir, böylece altyapıya boş yere zaman ve para harcanmasını engeller
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Şirket başına azami tren sayısı: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Bir şirketin sahip olabileceği azami tren sayısı
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Şirket başına azami karayolu aracı sayısı: {STRING}

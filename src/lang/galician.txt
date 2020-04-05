@@ -1455,8 +1455,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reproducir efec
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Son ambiente: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproducir efectos de son ambiente de paisaxe, industrias e cidades
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desactivar construción de infraestruturas cando non haxa vehículos adecuados dispoñíbels: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Cando estea activado, unha infraestrutura estará dispoñíbel se hai tamén vehículos dispoñíbels, previndo desperdicios de tempo e cartos nunha infraestrutura inutilizábel
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Número máximo de trens por xogador: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Número máximo de trens que unha compañía pode ter
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Número máximo de vehículos de estrada por compañía: {STRING}

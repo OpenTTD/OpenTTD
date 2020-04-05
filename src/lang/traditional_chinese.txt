@@ -1418,8 +1418,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放運輸工
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :環境: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放與地貌、工業設施和城鎮有關的環境音效
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :當沒有適合的運輸工具時，禁止建造基礎建設: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :如啟用此選項，設施只會在有使用它的運輸工具可供選擇時出現，避免玩家浪費時間和金錢去建造無用的設施
 STR_CONFIG_SETTING_MAX_TRAINS                                   :公司可擁有最大列車數量：{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :每所公司擁有的列車數量上限
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :公司可擁有最大車輛數量：{STRING}

@@ -1453,8 +1453,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reproduzir efei
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiente: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproduzir efeitos sonoros da paisagem, indústrias e localidades
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desativar construção de infra-estrutura quando não estão disponíveis veículos adequados: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Quando activo, as infraestruturas só estão disponíveis se os veículos estiverem também, prevenindo desperdícios de tempo e dinheiro em infraestruturas sem utilidade.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Máximo de comboios por empresa: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Número máximo de comboios que uma companhia pode ter
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Máximo de veículos rodoviários por empresa: {STRING}

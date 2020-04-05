@@ -1418,8 +1418,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :輸送機器関
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :環境音: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :町や産業、自然環境に関する効果音を鳴らすかどうかを設定します
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :有効なインフラのみ建設可能: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :有効にするとその時点で使用可能な設備のみが建設できます。(例: 電気機関車が購入できないときに電気鉄道は建設不可)
 STR_CONFIG_SETTING_MAX_TRAINS                                   :会社あたりの列車数上限: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :1社が保有できる最大の列車数を設定します
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :会社あたりの車両数上限: {STRING}

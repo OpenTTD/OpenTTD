@@ -1623,8 +1623,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Skleisti transp
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Aplinkos: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Skleisti aplinkos — kraštovaizdžio, pramonės bei miestų — garsus
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Drausti infrastruktūros plėtimą kai nėra tam tinkamų transporto priemonių: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kai įjungta, infrastruktūra yra galima, jeigu ten taip pat yra galimų automobilių. Tam kad užkirstų kelią, laiko ir pinigų švaistimo nereikalingai infrastruktūrai
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Didžiausias traukinių skaičius vienam žaidėjui: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Didžiausias skaičius traukinių, kuriuos kompanija gali turėti
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Didžiausias automobilių skaičius vienam žaidėjui: {STRING}

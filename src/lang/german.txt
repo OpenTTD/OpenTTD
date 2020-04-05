@@ -1441,8 +1441,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Soundeffekte vo
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Umgebungsgeräusche: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Soundeffekte für Landschaft, Industrien und Städte abspielen
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Bau von Infrastruktur verbieten, wenn dafür keine Fahrzeuge verfügbar sind: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Zeige Infrastruktur nur, wenn sie auch von Fahrzeugen genutzt werden kann, um Verschwendung von Zeit und Geld auf den Bau von unnützer Infrastruktur zu vermeiden
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximale Anzahl der Züge pro Firma: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximale Anzahl Züge pro Firma
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximale Anzahl der Straßenfahrzeuge pro Firma: {STRING}

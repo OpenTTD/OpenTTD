@@ -1378,8 +1378,6 @@ STR_CONFIG_SETTING_SOUND_DISASTER                               :Desastreak/istr
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Istripu edo desastreen soinu efektuak aktibatu
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Garraioak: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Azpiturak eraikitzea debekatu ibilgailu egokiak ez daudenean eskuragarri: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Gaitua dagoenean, ezingo da azpiegiturarik eraiki azpiegitura horren ibilgailuak ez badaude eskuragarri, denbora eta dirua aurreztuz
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Konpainiek eduki ditzaketen gehienezko tren kopurua: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Konpainiek eduki ditzaketen gehienezko tren kopurua
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Konpainiek eduki ditzaketen gehienezko errepide ibilgailu kopurua: {STRING}

@@ -1451,8 +1451,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Speel klanke vi
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgewing: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Speel omgewingsklankeffekte van die landskap, industriëe en dorpe
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Deaktiveer infrastruktuur bouery as geen geskikte voertuie beskikbaar is nie: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :As dit geaktiveer is, is infrastruktuur net beskikbaar as daar ook voertuie beskikbaar is om daardie infrastruktuur te gebruik. Dit is om tyd- en geldmors op onbruikbare infrastruktuur te voorkom.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimum aantal treine per speler: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimum hoeveelheid treine was 'n besigheid kan hê
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimum aantal padvoertuie per maatskappy: {STRING}

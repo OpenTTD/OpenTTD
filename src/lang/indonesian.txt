@@ -1435,8 +1435,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Mainkan efek su
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambien: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Mainkan suara ambien pemandangan, industri dan kota
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Matikan infrastruktur bangunan saat tak ada kendaraan yang tersedia: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Jika diaktifkan, infrastruktur cuma tersedia jika ada kendaraan tersedia, mencegah buang waktu dan uang di infrastruktur yang tidak bisa digunakan
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks. kereta tiap pemain: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Batas jumlah kereta yang boleh dimiliki satu perusahaan
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks. kendaraan jalan raya tiap perusahaan: {STRING}

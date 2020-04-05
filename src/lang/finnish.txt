@@ -1457,8 +1457,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Toista kulkuneu
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ympäristö: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Toista ympäristön, kuten maaston, teollisuuden ja taajamien äänet
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Poista käytöstä infrastruktuurin rakennus kun sopivia kulkuneuvoja ei ole saatavilla: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Mikäli käytössä, infrastruktuuri on saatavilla vain jos sille on saatavilla kulkuneuvoja, välttäen ajan ja rahan tuhlaamisen infrastruktuuriin, jota ei voida käyttää
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Suurin sallittu junien määrä yhtiötä kohden: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Yhtiön suurin sallittu junien määrä
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Suurin sallittu ajoneuvojen määrä yhtiötä kohden: {STRING}

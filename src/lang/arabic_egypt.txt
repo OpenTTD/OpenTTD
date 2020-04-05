@@ -1233,7 +1233,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :شغل اصوا
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :مؤثرات: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :شغل مؤثرات صوتية في المناظر و المصانع و المدن
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :عطل ادوات البناء عند عدم وجود عربات متاحة لها: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :الحد الأعلى لعدد القطارات لكل شركة: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :الحد الأعلى لعدد العربات لكل شركة: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :الحد الأعلى لعدد الطائرات لكل شركة: {STRING}

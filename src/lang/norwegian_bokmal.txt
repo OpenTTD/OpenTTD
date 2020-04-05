@@ -1457,8 +1457,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spill lydeffekt
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgivelse: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spille lyder fra omgivelsene av landskapet, industrier og tettsteder
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Fjern infrastrukturbygging før tilhørende kjøretøy er tilgjengelige: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Når aktivert, vil infrastruktur bare være tilgjengelig hvis det også finnes kjøretøy tilgjengelig, for å forhindre sløsing av tid og penger på ubrukelig infrastruktur
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks antall tog per firma: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimalt antall tog som et firma kan ha
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks antall veikjøretøy per firma: {STRING}

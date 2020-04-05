@@ -1380,7 +1380,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spel lydar frå
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgivelse: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spel omgivelseslydar frå landskap, industri og byar.
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Ikkje tillet konstruksjon av infrastruktur om ingen passande køyretøy er tilgjengeleg: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks antal tog per firma: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimalt antal tog eit firma kan eige.
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks antal bilar per firma: {STRING}

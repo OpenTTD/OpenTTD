@@ -1455,8 +1455,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spill Soundeffe
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiance: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spillt Ambience Soundeffekter vun der Landschaft, Industrien an Stied of
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Gebai ausschalten wann keng passend Gefierer verfügbar sinn: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Wann ugeschalt, ass d'Infrastruktur just verfügbar, wann och Gefierer verfügbar sinn, fir dass keen Geld an keng Zäit verschwend gëtt, sënnlos Infrastrukturen ze bauen
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximum un Zich pro Firma: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximal Unzuel un Zich déi eng Firma kann hunn
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximum un Stroossegefierer pro Firma: {STRING}

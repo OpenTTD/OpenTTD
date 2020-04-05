@@ -1454,8 +1454,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Phát hiệu �
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Âm thanh nền: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Phát các âm thanh hiệu ứng nền đối với đất, khu công nghiệp và đô thị
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Tắt việc xây dựng hạ tầng nếu không có phương tiện thích hợp nào sẵn có: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Khi bật, thì cơ sở hạ tầng chỉ sẵn có nếu loại phương tiện tương ứng cũng sẵn có, giúp cho việc tránh xây nhầm hạ tầng không thích hợp
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Số tàu hỏa tối đa mỗi công ty: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Số lượng tối đa tàu hỏa mà mỗi công ty có thể có
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Số xe ôtô tối đa mỗi công ty: {STRING}

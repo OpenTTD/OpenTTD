@@ -1443,8 +1443,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :השמע קול
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :רקע: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :השמע קולות רקע של פני השטח, תעשיות וערים
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :מנע בניית תשתיות כאשר אין כלי רכב מתאימים זמינים: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :כאשר מאופשר, תשתיות זמינות רק כאשר ישנם גם כלי רכב זמינים, דבר המונע בזבוז זמן וכסף על תשתיות בלתי שמישות
 STR_CONFIG_SETTING_MAX_TRAINS                                   :מספר רכבות מירבי לשחקן: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :מספר מירבי של רכבות בהן חברה יכולה להחזיק
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :מספר משאיות/אוטובוסים מירבי לשחקן: {STRING}

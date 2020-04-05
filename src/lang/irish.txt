@@ -1418,8 +1418,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Seinn maisíoch
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :comhthimpeallach: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Seinn maisíochtaí fuaime comhthimpeallach tírdhreacha, tionscail agus bailte
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Díchumasaigh tógáil bonneagair nuair nach bhfuil aon fheithicil oiriúnach ar fáil: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Má tá seo cumasaithe, ní bhíonn bonneagar ar fáil ach amháin má tá feithiclí ar fáil dó freisin, rud a fhágann nach gcuirfear am agus airgead amú ar bhonneagar neamhoiriúnach
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Uaslíon na dtraenacha in aghaidh na cuideachta: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Uaslíon na dtraenacha is féidir a bheith ag cuideachta
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Uaslíon na bhfeithiclí bóthair in aghaidh na cuideachta: {STRING}

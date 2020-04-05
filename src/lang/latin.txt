@@ -1631,8 +1631,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Sinere vehicula
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambientes: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Sinere sonos ambientes industriarum, oppidorum, terraeque fieri
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Vetare constructionem infrastructurae dum nulla vehicula parabilia sunt: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Electa, infrastructura modo parabilis est si adsunt vehicula parabilia. Itaque non licet absumere pecuniam tempusque struendi infrastructuram inutilem
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Numerus maximus traminum cuiusque societatis: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Numerus maximus hamaxostichorum quos societas habere licet
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Numerus maximus vehiculorum viariorum cuiusque societatis: {STRING}

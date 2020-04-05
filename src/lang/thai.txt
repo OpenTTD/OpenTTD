@@ -1379,8 +1379,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :เล่นเ
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :สิ่งแวดล้อม:{STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :เปิดเสียงของสิ่งแวดล้อมต่างๆ
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :ปิดการใช้งานในส่วนของสิ่งปลูกสร้างสาธารณูปโภคเมื่อไม่มียานพาหนะที่เหมาะสม: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :เมื่อเปิดใช้งาน สาธารณูประโทค และเส้นทางการคมนาคมที่จะสร้างได้ มีเฉพาะที่เหมาะสมกับประเภทยานพาหนะที่รองรับ
 STR_CONFIG_SETTING_MAX_TRAINS                                   :ขบวนรถไฟมากที่สุดต่อผู้เล่น: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :จำนวนขบวนรถไฟสูงสุดที่บริษัทสามารถมีได้
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :ยานพาหนะทางบกมากที่สุดต่อผู้เล่น: {STRING}

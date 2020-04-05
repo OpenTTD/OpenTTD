@@ -1251,7 +1251,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Ludu sonefektoj
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ĉirkaŭaĵo: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Ludu ĉirkaŭaĵa sonefektoj de pejzaĝo, industrioj kaj urboj
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Malaktivu fondan konstruon kiam decaj veturiloj ne estas disponebla: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Trajna maksimumo por ĉiu kompanio: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Stratveturila maksimumo por ĉiu kompanio: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Aviadila maksimumo por ĉiu kompanio: {STRING}

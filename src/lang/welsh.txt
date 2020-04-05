@@ -1423,8 +1423,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Chwarae effeith
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Cefndir: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Chwarae synau cefndirol y tirwedd, diwydiannau a threfi
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Analluogi adeiladu tanadeiledd pan nad oes cerbydau addas ar gael: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Pan y galluogir, nid yw tanadeiledd ar gael nes fod cerbydau ar gael iddo, gan osgoi gwastraff arian ac amser ar danadeiledd na ellir ei ddefnyddio
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Uchafswm nifer y trenau i bob cwmni: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Nifer uchafsymol y trenau y gall cwmni fod yn berchen arnynt
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Uchafswm nifer y cerbydau ffordd i bob cwmni: {STRING}

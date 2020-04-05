@@ -1457,8 +1457,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放运输工
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :音效：{STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放与地貌、工业设施和城镇有关的环境音效
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :不显示没有对应车辆的轨道建设面板: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :启用时，将不会显示没有对应车辆的建设面板，避免浪费时间和资金在无用的建设上
 STR_CONFIG_SETTING_MAX_TRAINS                                   :每间公司最大火车数量：{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :每间公司最多能够拥有的火车数量
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :每间公司最大汽车数量：{STRING}

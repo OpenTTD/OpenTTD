@@ -1307,7 +1307,6 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Perbelanjaan ku
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Pembinaan: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Nyahaktif infrastruktur bangunan apabila tiada kenderaan yang sesuai: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Amaun maksimum kereta api setiap syarikat: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Amaun maksimum kenderaan jalanraya setiap syarikat: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Jumlah maksimum kenderaan darat sesebuah syarikat

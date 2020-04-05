@@ -1458,8 +1458,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Jouer les effet
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiance{NBSP}: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Jouer les effets sonores d'ambiance du terrain, des industries et des villes
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Désactiver la construction d'infrastructure lorsqu'il n'y a pas de véhicule adapté disponible{NBSP}: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Lorsqu'il est activé, les infrastructures ne sont disponibles que si des véhicules sont disponibles, évitant de gaspiller du temps et de l'argent pour des infrastructures inutilisables
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Nombre maximum de trains par compagnie{NBSP}: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Nombre maximum de trains qu'une compagnie peut avoir
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Nombre maximum de véhicules routiers par compagnie{NBSP}: {STRING}

@@ -1553,8 +1553,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Παίζει τ
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Περιβαλλοντικά: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Παίζει τους περιβαλλοντικούς ήχους των βιομηχανιών, των πόλεων, και του τοπίου γενικότερα
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Απενεργοποίηση των υποδομών για τα οχήματα που δεν είναι διαθέσιμα: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Όταν είναι ενεργοποιημένο, οι υποδομές είναι διαθέσιμες μόνο όταν υπάρχουν διαθέσιμα οχήματα, αποτρέποντας σπατάλη χρόνου και χρημάτων σε μη χρησιμοποιήσιμες υποδομές
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Μέγιστος αριθμός τρένων ανά εταιρία: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Μέγιστος αριθμός τρένων που μπορεί να έχει μια εταιρεία
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Μέγιστος αριθμός οχημάτων δρόμου ανά εταιρία: {STRING}

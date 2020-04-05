@@ -1414,8 +1414,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Redă sunetele 
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambient: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Redă sunetele ambientale ale peisajului, industriei și orașelor
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Dezactivează construcția de infrastructuri pentru care nu există vehicule disponibile: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Dacă este activată, infrastructura este disponibilă doar când există vehicule sau nave, prevenind astfel pierderea de timp si fonduri pe infrastructură inutilă în acel moment
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Nr. max. de trenuri per companie: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Numărul maxim de trenuri pe care o companie le poate deține
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Nr. max. de autovehicule per companie: {STRING}

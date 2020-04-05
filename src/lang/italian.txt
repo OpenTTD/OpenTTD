@@ -1481,8 +1481,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Emette gli effe
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambientazione: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Emette i suoni ambientali del paesaggio, delle industrie e delle città
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Disabilita costruzione delle infrastrutture quando non sono disponibili veicoli adatti: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Se abilitata, le infrastrutture sono disponibili solo se ci sono veicoli adatta disponibili, evitando così lo spreco di tempo e denaro in infrastrutture inutilizzabili
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Numero massimo di treni per compagnia: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Numero massimo di treni che una compagnia può possedere
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Numero massimo di automezzi per compagnia: {STRING}

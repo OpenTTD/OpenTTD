@@ -1445,8 +1445,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reprodueix els 
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambient: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reprodueix efectes de so ambient del paisatge, les indústries i les poblacions
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desactiva la construcció d'infraestructures quan no hi hagi disponibles vehicles adequats: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Quan està activat, la infraestructura només està disponible si hi ha també vehicles disponibles, prevenint perdre temps i diners en infraestructures no utilitzables
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Màxim nombre de trens per companyia: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Màxim nombre de trens que pot tenir una companyia
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Màxim nombre d'automòbils per companyia: {STRING}

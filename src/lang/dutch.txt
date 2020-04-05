@@ -1457,8 +1457,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Speel geluidsef
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgeving: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Speel omgevingsgeluidseffecten van landschap, industrieën en steden af
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Bouwen van infrastructuur uitschakelen wanneer geen geschikt voertuig beschikbaar is: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Wanneer je dit inschakelt, is de infrastructuur alleen beschikbaar als er ook voertuigen beschikbaar zijn. Dit voorkomt verspilling van tijd en geld aan onbruikbare infrastructuur
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximumaantal treinen per bedrijf: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximumaantal treinen dat een bedrijf kan hebben
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximumaantal wegvoertuigen per bedrijf: {STRING}

@@ -1837,8 +1837,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Odtwarzaj efekt
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Odgłosy: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Odtwarzaj dźwięki otoczenia - środowisko, przedsiębiorstwa i miasta
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Zablokuj budowę infrastruktury, kiedy brak odpowiednich pojazdów: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kiedy włączone, rodzaj infrastruktury jest dostępny tylko wtedy, gdy są dostępne również pojazdy, zapobiegając marnowaniu czasu i pieniędzy na zbędną infrastrukturę
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Makymalna liczba pociągów na firmę: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksymalna ilość pociągów, jakie firma może posiadać
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksymalna liczba samochodów na firmę: {STRING}

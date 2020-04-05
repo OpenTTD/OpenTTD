@@ -1353,8 +1353,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spæl ljóðini
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Umhvørvi: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spæl umhvørvis ljóðini frá landslagnum, ídnaðum og bygdum
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Ógilda bygging av innankervi á eingi hóskandi flutningstól eru tøk: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Um gilda, er innankervi einans tøkt um flutningstóli eisini eru tøk, og forðar tær tískil at spilla burtur tíð og pening uppá ónýtiligt innankervi
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks tok per fyritøku: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Mest loyvda tali av tokum ein fyritøka kann hava
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks akfør per fyritøku: {STRING}

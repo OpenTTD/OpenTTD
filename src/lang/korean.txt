@@ -1458,8 +1458,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :차량의 효�
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :주변 소리: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :주변 풍경이나 산업시설, 도시의 효과음을 재생합니다.
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :사용 가능한 차량이 없을 경우 해당 기반시설 비활성화: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :이 설정을 켜면, 불필요하게 시간과 돈을 낭비하지 않도록 사용 가능한 차량이 없는 기반시설은 설치할 수 없게 됩니다.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :회사당 최대 열차 수: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :한 회사가 소유할 수 있는 열차의 최대 수를 제한합니다.
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :회사당 최대 자동차/전차 수: {STRING}

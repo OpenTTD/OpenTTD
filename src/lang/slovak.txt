@@ -1486,8 +1486,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Prehrávať zvu
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Prostredie: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Prehrávať zukové efekty okolitého prostredia, priemyslu a miest
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Zakázať výstavbu infraštruktúry ak nieje dostupné žiadne vhodné vozidlo: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ak je zapnuté, infraštruktúra je k dispozícii len ak su k nej pripojené vozidlá. Toto predchádza plýtvaniu peniazmi a časom pri nepoužiteľnej infraštruktúre.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximálny počet vlakov na spoločnosť: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximálny počet vlakov ktorý môže spoločnosť vlastniť.
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximálny počet automobilov na spoločnosť: {STRING}

@@ -1196,7 +1196,6 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :کمپنی کی
 
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :وسیع آواز چلایں
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :موزوں گاڑیاں نہ ہونے کی صورت میں عمارت کو غیر فعال کر دیں: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :کمپنی کی زیادہ سے زیادہ ریل گاڑیاں: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :کمپنی کی زیادہ سے زیادہ گاڑیاں: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :کمپنی کے زیادہ سے زیادہ ہوائی جہاز: {STRING}

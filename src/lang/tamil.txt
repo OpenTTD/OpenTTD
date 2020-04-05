@@ -1300,7 +1300,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE                                :வாகனங
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :வாகனங்களின் இசைகளை செயலாக்கு
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambient: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :தகுந்த வாகனம் இல்லாதபோது Disable infrastructure building: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :அதிகபட்ச இரயில்கள் நிறுவனங்களுக்கு: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :ஒரு நிறுவனத்தால் வைத்திருக்கக்கூடிய இரயில்கள் எண்ணிக்கை
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :அதிகபட்ச வாகனங்கள் நிறுவனங்களுக்கு: {STRING}

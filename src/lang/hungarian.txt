@@ -1521,8 +1521,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Járműhangok l
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Terület: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Az ipar, városok és tájak környezeti hangjainak lejátszása
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Infrastruktúra építésének tiltása amíg nem elérhető megfelelő jármű: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Bekapcsolva az infrastruktúra csak akkor elérhető, ha van megfelelő jármű, megakadályozva a felesleges pénzköltést a kihasználhatatlan infrastruktúrára
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximum vonat vállalatonként: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Egy vállalat által birtokolható maximális vonatok száma
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximum közúti jármű vállalatonként: {STRING}

@@ -1543,8 +1543,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Přehrávat zvu
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Zvuky prostředí: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Přehrávat zvukové efekty terénu, průmyslu a měst
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Zakázat zastávky, když nejsou dostupná příslušná vozidla: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Pokud je zapnuto, infrastruktura je dostupná pouze pokud jsou k dispozici vozidla, která ji mohou používat. Zamezí ztrátě času a peněz za budovaní nevyužitelné infrastruktury
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximum vlaků na společnost: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximální počet vlaků, které může společnost vlastnit
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximum silničních vozidel na společnost: {STRING}

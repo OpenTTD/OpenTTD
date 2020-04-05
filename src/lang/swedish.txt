@@ -1454,8 +1454,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spela ljudeffek
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Bakgrund: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spela bakgrundsljudeffekter för landskap, industrier och städer
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Inaktivera byggande av infrastruktur när inga passande fordon är tillgängliga: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :När det är aktiverat blir infrastruktur bara tillgänglig om det också finns därtill avsedda fordon tillgängliga, vilket förhindrar slöseri med tid och pengar på oanvändbar infrastruktur
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Max antal tåg per företag: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximalt antal tåg som ett företag kan ha
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Max antal vägfordon per företag: {STRING}

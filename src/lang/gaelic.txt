@@ -1628,8 +1628,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Cluich èifeach
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Àrainneachd: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Cluich èifeachdan fuaime àrainneachd a' chrutha-tìre, nan gnìomhachasan is nam bailtean
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Cuir togail a' bhun-structair à comas mura h-eil carbad iomchaidh ri làimh: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ma tha seo air, chan eil bun-structar ri làimh ach ma tha carbad freagarrach ri làimh cuideachd. Mar sin, cha chaill thu àm is airgead air bun-structar gun fheum
 STR_CONFIG_SETTING_MAX_TRAINS                                   :An t-uiread as motha dhe thrèanaichean airson gach companaidh: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :An àireamh as motha dhe thrèanaichean a dh'fhaodas a bhith aig gach companaidh
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :An t-uiread as motha dhe charbadan-rathaid airson gach companaidh: {STRING}
