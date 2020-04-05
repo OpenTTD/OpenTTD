@@ -1556,7 +1556,6 @@ static SettingsContainer &GetSettingsTree()
 				construction->Add(new SettingEntry("gui.persistent_buildingtools"));
 				construction->Add(new SettingEntry("gui.quick_goto"));
 				construction->Add(new SettingEntry("gui.default_rail_type"));
-				construction->Add(new SettingEntry("gui.disable_unsuitable_building"));
 			}
 
 			interface->Add(new SettingEntry("gui.autosave"));
