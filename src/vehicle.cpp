@@ -1765,7 +1765,8 @@ bool CanBuildVehicleInfrastructure(VehicleType type, byte subtype)
 			max = _settings_game.vehicle.max_trains;
 			break;
 		case VEH_ROAD:
-			if (!HasAnyRoadTypesAvail(_local_company, (RoadTramType)subtype)) return false;
+			/* Always allow road building, even if no vehicles are available */
+			if (HasAnyRoadTypesAvail(_local_company, (RoadTramType)subtype)) return true;
 			max = _settings_game.vehicle.max_roadveh;
 			break;
 		case VEH_SHIP:     max = _settings_game.vehicle.max_ships; break;
