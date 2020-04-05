@@ -305,17 +305,6 @@ struct BuildRoadToolbarWindow : Window {
 		if (!gui_scope) return;
 
 		if (_game_mode != GM_EDITOR && !CanBuildVehicleInfrastructure(VEH_ROAD, GetRoadTramType(this->roadtype))) delete this;
-		bool can_build = _game_mode != GM_EDITOR;
-		this->SetWidgetsDisabledState(!can_build,
-				WID_ROT_DEPOT,
-				WID_ROT_BUS_STATION,
-				WID_ROT_TRUCK_STATION,
-				WIDGET_LIST_END);
-		if (!can_build) {
-			DeleteWindowById(WC_BUILD_DEPOT, TRANSPORT_ROAD);
-			DeleteWindowById(WC_BUS_STATION, TRANSPORT_ROAD);
-			DeleteWindowById(WC_TRUCK_STATION, TRANSPORT_ROAD);
-		}
 	}
 
 	void Initialize(RoadType roadtype)
