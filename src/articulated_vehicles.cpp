@@ -169,7 +169,7 @@ CargoArray GetCapacityOfArticulatedParts(EngineID engine)
  * @param cargo_type Selected refitted cargo type
  * @param cargo_capacity Capacity of selected refitted cargo type
  */
-void GetArticulatedVehicleCargoesAndRefits(EngineID engine, CargoArray *cargoes, CargoTypes *refits, CargoID cargo_type, uint16 cargo_capacity)
+void GetArticulatedVehicleCargoesAndRefits(EngineID engine, CargoArray *cargoes, CargoTypes *refits, CargoID cargo_type, uint cargo_capacity)
 {
 	cargoes->Clear();
 	*refits = 0;
