@@ -39,7 +39,7 @@ enum VehicleInvalidateWindowData {
 struct TestedEngineDetails {
 	Money cost;           ///< Refit cost
 	CargoID cargo;        ///< Cargo type
-	uint16 capacity;      ///< Cargo capacity
+	uint capacity;        ///< Cargo capacity
 	uint16 mail_capacity; ///< Mail capacity if available
 };
 
