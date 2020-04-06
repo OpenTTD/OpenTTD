@@ -165,7 +165,7 @@ CommandCost EnsureNoVehicleOnGround(TileIndex tile);
 CommandCost EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits);
 
 extern VehicleID _new_vehicle_id;
-extern uint16 _returned_refit_capacity;
+extern uint _returned_refit_capacity;
 extern uint16 _returned_mail_refit_capacity;
 
 bool CanVehicleUseStation(EngineID engine_type, const struct Station *st);
