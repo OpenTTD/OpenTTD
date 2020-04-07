@@ -1309,6 +1309,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Weis d'Awunnerz
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Weis d'Awunnerzuel vu Stied an deenen hirem Label un op der Kaart
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Déckt vun de Linnen vun de Grafiken: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Breed vun de Linnen an de Grafiken. Eng dënn Linn kann méi präzis gelies ginn, eng méi déck kann besser gesinn ginn an d'Faarwen sinn besser ze ënnerscheeden
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Den NewGRF Numm an der Gefier-kafen Fënster uweisen: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Weist eng Zeil an der Fënster un wou Gefier kaf ginn, aus wéi engem NewGRF dat Gefier geluede gouf.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landschaft: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landschaften definéiren basis Spillszenarien mat verschiddenen Wueren an Stiedwuesstumviraussetzungen. NewGRF an Gamescripter erlaben méi fein Astellungen.
@@ -2166,6 +2168,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Falscht 
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}De Server ass voll
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du bass vun dësem Server gebannt
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du goufs aus dem Spill geheit
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Grond: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheaten ass op dësem Server net erlaabt
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Du hues zevill Befehler un de Server geschéckt
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Du hues ze laang gebraucht fir e Passwuert anzeginn
@@ -2225,6 +2228,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} hu
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Du hues dem {1:STRING} {2:CURRENCY_LONG} ginn
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}De Server huet d'Sessioun zougemaach
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De Server gëtt nei gestart...{}W.e.g. waarden...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} gouf gekickt. Grond: ({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Lueden Inhalt erof
@@ -3399,6 +3403,10 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} an nach {NUM} méi...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienimm - klick op en Numm fir d'Usiicht do drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Akzeptéiert Wuer: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produzéiert Wuer: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :All Wuerentypen
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Keng
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -4179,6 +4187,7 @@ STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Voll gez
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Standard Zoom-Screenshot
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Screenshot vun der ganzer Kaart
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Héichtekaartscreenshot
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap-Screenshot
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameter
