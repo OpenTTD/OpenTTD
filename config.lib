@@ -1652,7 +1652,7 @@ make_cflags_and_ldflags() {
 
 	if [ "$with_cocoa" != "0" ]; then
 		CFLAGS="$CFLAGS -DWITH_COCOA"
-		LIBS="$LIBS -F$osx_sdk_path/System/Library/Frameworks -framework Cocoa -framework Carbon -framework AudioUnit -framework AudioToolbox"
+		LIBS="$LIBS -F$osx_sdk_path/System/Library/Frameworks -framework Cocoa -framework AudioUnit -framework AudioToolbox"
 
 		if [ "$enable_cocoa_quartz" != "0" ]; then
 			CFLAGS="$CFLAGS -DENABLE_COCOA_QUARTZ"

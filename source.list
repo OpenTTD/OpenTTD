@@ -1171,7 +1171,6 @@ sound/null_s.cpp
 	#if COCOA
 		video/cocoa/cocoa_v.mm
 		video/cocoa/event.mm
-		video/cocoa/fullscreen.mm
 		video/cocoa/wnd_quartz.mm
 		music/cocoa_m.cpp
 		sound/cocoa_s.cpp
