@@ -18,6 +18,10 @@
 #define HAVE_OSX_107_SDK
 #endif
 
+#ifdef MAC_OS_X_VERSION_10_9
+#define HAVE_OSX_109_SDK
+#endif
+
 #ifdef MAC_OS_X_VERSION_10_11
 #define HAVE_OSX_1011_SDK
 #endif
