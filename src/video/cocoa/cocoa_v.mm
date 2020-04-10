@@ -414,37 +414,18 @@ static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
  */
 static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool fullscreen, bool fallback)
 {
-	CocoaSubdriver *ret = NULL;
-	/* OSX 10.7 allows to toggle fullscreen mode differently */
-	if (MacOSVersionIsAtLeast(10, 7, 0)) {
-		ret = QZ_CreateWindowSubdriver(width, height, bpp);
-		if (ret != NULL && fullscreen) ret->ToggleFullscreen();
-	}
-#if (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_9)
-	else {
-		ret = fullscreen ? QZ_CreateFullscreenSubdriver(width, height, bpp) : QZ_CreateWindowSubdriver(width, height, bpp);
-	}
-#endif /* (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_9) */
+	CocoaSubdriver *ret = QZ_CreateWindowSubdriver(width, height, bpp);
+	if (ret != nullptr && fullscreen) ret->ToggleFullscreen();
 
-	if (ret != NULL) return ret;
-	if (!fallback) return NULL;
+	if (ret != nullptr) return ret;
+	if (!fallback) return nullptr;
 
 	/* Try again in 640x480 windowed */
 	DEBUG(driver, 0, "Setting video mode failed, falling back to 640x480 windowed mode.");
 	ret = QZ_CreateWindowSubdriver(640, 480, bpp);
-	if (ret != NULL) return ret;
+	if (ret != nullptr) return ret;
 
-#if defined(_DEBUG) && (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_9)
-	/* This Fullscreen mode crashes on OSX 10.7 */
-	if (!MacOSVersionIsAtLeast(10, 7, 0)) {
-		/* Try fullscreen too when in debug mode */
-		DEBUG(driver, 0, "Setting video mode failed, falling back to 640x480 fullscreen mode.");
-		ret = QZ_CreateFullscreenSubdriver(640, 480, bpp);
-		if (ret != NULL) return ret;
-	}
-#endif /* defined(_DEBUG) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_9) */
-
-	return NULL;
+	return nullptr;
 }
 
 
@@ -555,29 +536,7 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 {
 	assert(_cocoa_subdriver != NULL);
 
-	/* For 10.7 and later, we try to toggle using the quartz subdriver. */
-	if (_cocoa_subdriver->ToggleFullscreen()) return true;
-
-	bool oldfs = _cocoa_subdriver->IsFullscreen();
-	if (full_screen != oldfs) {
-		int width  = _cocoa_subdriver->GetWidth();
-		int height = _cocoa_subdriver->GetHeight();
-		int bpp    = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
-
-		delete _cocoa_subdriver;
-		_cocoa_subdriver = NULL;
-
-		_cocoa_subdriver = QZ_CreateSubdriver(width, height, bpp, full_screen, false);
-		if (_cocoa_subdriver == NULL) {
-			_cocoa_subdriver = QZ_CreateSubdriver(width, height, bpp, oldfs, true);
-			if (_cocoa_subdriver == NULL) error("Cocoa: Failed to create subdriver");
-		}
-	}
-
-	QZ_GameSizeChanged();
-	QZ_UpdateVideoModes();
-
-	return _cocoa_subdriver->IsFullscreen() == full_screen;
+	return _cocoa_subdriver->ToggleFullscreen();
 }
 
 /**
