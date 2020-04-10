@@ -161,19 +161,8 @@ const char *GetCurrentLocale(const char *)
 	NSString *preferredLang = [ languages objectAtIndex:0 ];
 	/* preferredLang is either 2 or 5 characters long ("xx" or "xx_YY"). */
 
-	/* Since Apple introduced encoding to CString in OSX 10.4 we have to make a few conditions
-	 * to get the right code for the used version of OSX. */
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4)
-	if (MacOSVersionIsAtLeast(10, 4, 0)) {
-		[ preferredLang getCString:retbuf maxLength:32 encoding:NSASCIIStringEncoding ];
-	} else
-#endif
-	{
-#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_4)
-		/* maxLength does not include the \0 char in contrast to the call above. */
-		[ preferredLang getCString:retbuf maxLength:31 ];
-#endif
-	}
+	[ preferredLang getCString:retbuf maxLength:32 encoding:NSASCIIStringEncoding ];
+
 	return retbuf;
 }
 
@@ -213,7 +202,7 @@ bool IsMonospaceFont(CFStringRef name)
 {
 	NSFont *font = [ NSFont fontWithName:(__bridge NSString *)name size:0.0f ];
 
-	return font != NULL ? [ font isFixedPitch ] : false;
+	return font != nil ? [ font isFixedPitch ] : false;
 }
 
 /**
@@ -222,14 +211,12 @@ bool IsMonospaceFont(CFStringRef name)
  */
 void MacOSSetThreadName(const char *name)
 {
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
 	if (MacOSVersionIsAtLeast(10, 6, 0)) {
 		pthread_setname_np(name);
 	}
-#endif
 
 	NSThread *cur = [ NSThread currentThread ];
-	if (cur != NULL && [ cur respondsToSelector:@selector(setName:) ]) {
+	if (cur != nil && [ cur respondsToSelector:@selector(setName:) ]) {
 		[ cur performSelector:@selector(setName:) withObject:[ NSString stringWithUTF8String:name ] ];
 	}
 }

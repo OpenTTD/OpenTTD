@@ -18,8 +18,6 @@
 #include <CoreFoundation/CoreFoundation.h>
 
 
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-
 /* CTRunDelegateCreate is supported since MacOS X 10.5, but was only included in the SDKs starting with the 10.9 SDK. */
 #ifndef HAVE_OSX_109_SDK
 extern "C" {
@@ -435,23 +433,3 @@ int MacOSStringCompare(const char *s1, const char *s2)
 
 	return new OSXStringIterator();
 }
-
-#else
-void MacOSResetScriptCache(FontSize size) {}
-void MacOSSetCurrentLocaleName(const char *iso_code) {}
-
-int MacOSStringCompare(const char *s1, const char *s2)
-{
-	return 0;
-}
-
-/* static */ StringIterator *OSXStringIterator::Create()
-{
-	return nullptr;
-}
-
-/* static */ ParagraphLayouter *CoreTextParagraphLayoutFactory::GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping)
-{
-	return nullptr;
-}
-#endif /* (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5) */
