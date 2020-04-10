@@ -16,9 +16,6 @@
 #include "../core/string_compare_type.hpp"
 #include <map>
 
-#if defined(WITH_COCOA)
-bool QZ_CanDisplay8bpp();
-#endif /* defined(WITH_COCOA) */
 
 /**
  * The base factory, keeping track of all blitters.
@@ -113,19 +110,11 @@ public:
 	{
 #if defined(DEDICATED)
 		const char *default_blitter = "null";
+#elif defined(WITH_COCOA)
+		const char *default_blitter = "32bpp-anim";
 #else
 		const char *default_blitter = "8bpp-optimized";
-
-#if defined(WITH_COCOA)
-		/* Some people reported lack of fullscreen support in 8 bpp mode.
-		 * While we prefer 8 bpp since it's faster, we will still have to test for support. */
-		if (!QZ_CanDisplay8bpp()) {
-			/* The main display can't go to 8 bpp fullscreen mode.
-			 * We will have to switch to 32 bpp by default. */
-			default_blitter = "32bpp-anim";
-		}
-#endif /* defined(WITH_COCOA) */
-#endif /* defined(DEDICATED) */
+#endif
 		if (GetBlitters().size() == 0) return nullptr;
 		const char *bname = (StrEmpty(name)) ? default_blitter : name;
 
