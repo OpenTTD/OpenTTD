@@ -1173,7 +1173,6 @@ sound/null_s.cpp
 		video/cocoa/event.mm
 		video/cocoa/fullscreen.mm
 		video/cocoa/wnd_quartz.mm
-		video/cocoa/wnd_quickdraw.mm
 		music/cocoa_m.cpp
 		sound/cocoa_s.cpp
 		os/macosx/splash.cpp
