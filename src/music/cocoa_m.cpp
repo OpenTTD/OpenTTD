@@ -58,34 +58,10 @@ static void DoSetVolume()
 		AUGraphGetIndNode(graph, i, &node);
 
 		AudioUnit unit;
-		OSType comp_type = 0;
+		AudioComponentDescription desc;
+		AUGraphNodeInfo(graph, node, &desc, &unit);
 
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-		if (MacOSVersionIsAtLeast(10, 5, 0)) {
-			/* The 10.6 SDK has changed the function prototype of
-			 * AUGraphNodeInfo. This is a binary compatible change,
-			 * but we need to get the type declaration right or
-			 * risk compilation errors. The header AudioComponent.h
-			 * was introduced in 10.6 so use it to decide which
-			 * type definition to use. */
-#if defined(__AUDIOCOMPONENT_H__) || defined(HAVE_OSX_107_SDK)
-			AudioComponentDescription desc;
-#else
-			ComponentDescription desc;
-#endif
-			AUGraphNodeInfo(graph, node, &desc, &unit);
-			comp_type = desc.componentType;
-		} else
-#endif
-		{
-#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5)
-			ComponentDescription desc;
-			AUGraphGetNodeInfo(graph, node, &desc, nullptr, nullptr, &unit);
-			comp_type = desc.componentType;
-#endif
-		}
-
-		if (comp_type == kAudioUnitType_Output) {
+		if (desc.componentType == kAudioUnitType_Output) {
 			output_unit = unit;
 			break;
 		}
@@ -161,26 +137,9 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 	const char *os_file = OTTD2FS(filename.c_str());
 	CFAutoRelease<CFURLRef> url(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, (const UInt8*)os_file, strlen(os_file), false));
 
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-	if (MacOSVersionIsAtLeast(10, 5, 0)) {
-		if (MusicSequenceFileLoad(_sequence, url.get(), kMusicSequenceFile_AnyType, 0) != noErr) {
-			DEBUG(driver, 0, "cocoa_m: Failed to load MIDI file");
-			return;
-		}
-	} else
-#endif
-	{
-#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5)
-		FSRef ref_file;
-		if (!CFURLGetFSRef(url.get(), &ref_file)) {
-			DEBUG(driver, 0, "cocoa_m: Failed to make FSRef");
-			return;
-		}
-		if (MusicSequenceLoadSMFWithFlags(_sequence, &ref_file, 0) != noErr) {
-			DEBUG(driver, 0, "cocoa_m: Failed to load MIDI file old style");
-			return;
-		}
-#endif
+	if (MusicSequenceFileLoad(_sequence, url.get(), kMusicSequenceFile_AnyType, 0) != noErr) {
+		DEBUG(driver, 0, "cocoa_m: Failed to load MIDI file");
+		return;
 	}
 
 	/* Construct audio graph */
