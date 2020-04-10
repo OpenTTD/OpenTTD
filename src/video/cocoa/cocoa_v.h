@@ -191,10 +191,6 @@ extern CocoaSubdriver *_cocoa_subdriver;
 
 CocoaSubdriver *QZ_CreateFullscreenSubdriver(int width, int height, int bpp);
 
-#ifdef ENABLE_COCOA_QUICKDRAW
-CocoaSubdriver *QZ_CreateWindowQuickdrawSubdriver(int width, int height, int bpp);
-#endif
-
 #ifdef ENABLE_COCOA_QUARTZ
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4
 CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp);
