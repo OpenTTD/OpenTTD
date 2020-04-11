@@ -80,6 +80,7 @@ enum IndustryBehaviour {
 	INDUSTRYBEH_NOBUILT_MAPCREATION   = 1 << 16, ///< Do not force one instance of this type to appear on map generation
 	INDUSTRYBEH_CANCLOSE_LASTINSTANCE = 1 << 17, ///< Allow closing down the last instance of this type
 	INDUSTRYBEH_CARGOTYPES_UNLIMITED  = 1 << 18, ///< Allow produced/accepted cargoes callbacks to supply more than 2 and 3 types
+	INDUSTRYBEH_WATER_NO_CLAMP_PROD   = 1 << 19, ///< Do not clamp production of second cargo for water industries
 };
 DECLARE_ENUM_AS_BIT_SET(IndustryBehaviour)
 

@@ -2677,7 +2677,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				/* Prevent production to overflow or Oil Rig passengers to be over-"produced" */
 				new_prod = Clamp(new_prod, 1, 255);
 
-				if (((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0) && j == 1) {
+				if (((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0) && j == 1 && !(indspec->behaviour & INDUSTRYBEH_WATER_NO_CLAMP_PROD)) {
 					new_prod = Clamp(new_prod, 0, 16);
 				}
 
