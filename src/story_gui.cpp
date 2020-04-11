@@ -31,6 +31,8 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
+#include <numeric>
+
 #include "safeguards.h"
 
 static CursorID TranslateStoryPageButtonCursor(StoryPageButtonCursor cursor);
@@ -40,7 +42,20 @@ typedef GUIList<const StoryPageElement*> GUIStoryPageElementList;
 
 struct StoryBookWindow : Window {
 protected:
+	struct LayoutCacheElement {
+		const StoryPageElement *pe;
+		Rect bounds;
+	};
+	typedef std::vector<LayoutCacheElement> LayoutCache;
+
+	enum class ElementFloat {
+		None,
+		Left,
+		Right,
+	};
+
 	Scrollbar *vscroll;                ///< Scrollbar of the page text.
+	mutable LayoutCache layout_cache;  ///< Cached element layout.
 
 	GUIStoryPageList story_pages;      ///< Sorted list of pages.
 	GUIStoryPageElementList story_page_elements; ///< Sorted list of page elements that belong to the current page.
@@ -97,6 +112,7 @@ protected:
 		}
 
 		this->story_page_elements.Sort();
+		this->InvalidateStoryPageElementLayout();
 	}
 
 	/** Sort story page elements by order value. */
@@ -259,9 +275,9 @@ protected:
 	/**
 	 * Get the width available for displaying content on the page panel.
 	 */
-	uint GetAvailablePageContentWidth()
+	uint GetAvailablePageContentWidth() const
 	{
-		return this->GetWidget<NWidgetCore>(WID_SB_PAGE_PANEL)->current_x - WD_FRAMETEXT_LEFT - WD_FRAMERECT_RIGHT;
+		return this->GetWidget<NWidgetCore>(WID_SB_PAGE_PANEL)->current_x - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT - 1;
 	}
 
 	/**
@@ -312,7 +328,7 @@ protected:
 	 * @param max_width Available width to display content.
 	 * @return the height in pixels.
 	 */
-	uint GetPageElementHeight(const StoryPageElement &pe, int max_width)
+	uint GetPageElementHeight(const StoryPageElement &pe, int max_width) const
 	{
 		switch (pe.type) {
 			case SPET_TEXT:
@@ -327,8 +343,10 @@ protected:
 
 			case SPET_BUTTON_PUSH:
 			case SPET_BUTTON_TILE:
-			case SPET_BUTTON_VEHICLE:
-				return FONT_HEIGHT_NORMAL + WD_BEVEL_TOP + WD_BEVEL_BOTTOM + WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM;
+			case SPET_BUTTON_VEHICLE: {
+				Dimension dim = GetStringBoundingBox(pe.text, FS_NORMAL);
+				return dim.height + WD_BEVEL_TOP + WD_BEVEL_BOTTOM + WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM;
+			}
 
 			default:
 				NOT_REACHED();
@@ -337,27 +355,161 @@ protected:
 	}
 
 	/**
-	 * Get the total height of the content displayed
-	 * in this window.
+	 * Get the float style of a page element.
+	 * @param pe The story page element.
+	 * @return The float style.
+	 */
+	ElementFloat GetPageElementFloat(const StoryPageElement &pe) const
+	{
+		switch (pe.type) {
+			case SPET_BUTTON_PUSH:
+			case SPET_BUTTON_TILE:
+			case SPET_BUTTON_VEHICLE: {
+				StoryPageButtonFlags flags = StoryPageButtonData{ pe.referenced_id }.GetFlags();
+				if (flags & SPBF_FLOAT_LEFT) return ElementFloat::Left;
+				if (flags & SPBF_FLOAT_RIGHT) return ElementFloat::Right;
+				return ElementFloat::None;
+			}
+
+			default:
+				return ElementFloat::None;
+		}
+	}
+
+	/**
+	 * Get the width a page element would use if it was floating left or right.
+	 * @param pe The story page element.
+	 * @return The calculated width of the element.
+	 */
+	int GetPageElementFloatWidth(const StoryPageElement &pe) const
+	{
+		switch (pe.type) {
+			case SPET_BUTTON_PUSH:
+			case SPET_BUTTON_TILE:
+			case SPET_BUTTON_VEHICLE: {
+				Dimension dim = GetStringBoundingBox(pe.text, FS_NORMAL);
+				return dim.width + WD_BEVEL_LEFT + WD_BEVEL_RIGHT + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
+			}
+
+			default:
+				NOT_REACHED(); // only buttons can float
+		}
+	}
+
+	/** Invalidate the current page layout */
+	void InvalidateStoryPageElementLayout()
+	{
+		this->layout_cache.clear();
+	}
+
+	/** Create the page layout if it is missing */
+	void EnsureStoryPageElementLayout() const
+	{
+		/* Assume if the layout cache has contents it is valid */
+		if (!this->layout_cache.empty()) return;
+
+		StoryPage *page = this->GetSelPage();
+		if (page == nullptr) return;
+		int max_width = GetAvailablePageContentWidth();
+		int element_dist = FONT_HEIGHT_NORMAL;
+
+		/* Make space for the header */
+		int main_y = GetHeadHeight(max_width) + element_dist;
+
+		/* Current bottom of left/right column */
+		int left_y = main_y;
+		int right_y = main_y;
+		/* Current width of left/right column, 0 indicates no content in column */
+		int left_width = 0;
+		int right_width = 0;
+		/* Indexes into element cache for yet unresolved floats */
+		std::vector<size_t> left_floats;
+		std::vector<size_t> right_floats;
+
+		/* Build layout */
+		for (const StoryPageElement *pe : this->story_page_elements) {
+			ElementFloat fl = this->GetPageElementFloat(*pe);
+
+			if (fl == ElementFloat::None) {
+				/* Verify available width */
+				const int min_required_width = 10 * FONT_HEIGHT_NORMAL;
+				int left_offset = (left_width == 0) ? 0 : (left_width + element_dist);
+				int right_offset = (right_width == 0) ? 0 : (right_width + element_dist);
+				if (left_offset + right_offset + min_required_width >= max_width) {
+					/* Width of floats leave too little for main content, push down */
+					main_y = max(main_y, left_y);
+					main_y = max(main_y, right_y);
+					left_width = right_width = 0;
+					left_offset = right_offset = 0;
+					/* Do not add element_dist here, to keep together elements which were supposed to float besides each other. */
+				}
+				/* Determine height */
+				const int available_width = max_width - left_offset - right_offset;
+				const int height = GetPageElementHeight(*pe, available_width);
+				/* Check for button that needs extra margin */
+				if (left_offset == 0 && right_offset == 0) {
+					switch (pe->type) {
+						case SPET_BUTTON_PUSH:
+						case SPET_BUTTON_TILE:
+						case SPET_BUTTON_VEHICLE:
+							left_offset = right_offset = available_width / 5;
+							break;
+						default:
+							break;
+					}
+				}
+				/* Position element in main column */
+				LayoutCacheElement ce{ pe };
+				ce.bounds.left = left_offset;
+				ce.bounds.right = max_width - right_offset;
+				ce.bounds.top = main_y;
+				main_y += height;
+				ce.bounds.bottom = main_y;
+				this->layout_cache.push_back(ce);
+				main_y += element_dist;
+				/* Clear all floats */
+				left_width = right_width = 0;
+				left_y = right_y = main_y = max(main_y, max(left_y, right_y));
+				left_floats.clear();
+				right_floats.clear();
+			} else {
+				/* Prepare references to correct column */
+				int &cur_width = (fl == ElementFloat::Left) ? left_width : right_width;
+				int &cur_y = (fl == ElementFloat::Left) ? left_y : right_y;
+				std::vector<size_t> &cur_floats = (fl == ElementFloat::Left) ? left_floats : right_floats;
+				/* Position element */
+				cur_width = max(cur_width, this->GetPageElementFloatWidth(*pe));
+				LayoutCacheElement ce{ pe };
+				ce.bounds.left = (fl == ElementFloat::Left) ? 0 : (max_width - cur_width);
+				ce.bounds.right = (fl == ElementFloat::Left) ? cur_width : max_width;
+				ce.bounds.top = cur_y;
+				cur_y += GetPageElementHeight(*pe, cur_width);
+				ce.bounds.bottom = cur_y;
+				cur_floats.push_back(this->layout_cache.size());
+				this->layout_cache.push_back(ce);
+				cur_y += element_dist;
+				/* Update floats in column to all have the same width */
+				for (size_t index : cur_floats) {
+					LayoutCacheElement &ce = this->layout_cache[index];
+					ce.bounds.left = (fl == ElementFloat::Left) ? 0 : (max_width - cur_width);
+					ce.bounds.right = (fl == ElementFloat::Left) ? cur_width : max_width;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Get the total height of the content displayed in this window.
 	 * @return the height in pixels
 	 */
 	uint GetContentHeight()
 	{
-		StoryPage *page = this->GetSelPage();
-		if (page == nullptr) return 0;
-		int max_width = GetAvailablePageContentWidth();
-		uint element_vertical_dist = FONT_HEIGHT_NORMAL;
+		this->EnsureStoryPageElementLayout();
 
-		/* Head */
-		uint height = GetHeadHeight(max_width);
+		/* The largest bottom coordinate of any element is the height of the content */
+		uint max_y = std::accumulate(this->layout_cache.begin(), this->layout_cache.end(), 0, [](uint max_y, const LayoutCacheElement &ce) -> uint { return max<uint>(max_y, ce.bounds.bottom); });
 
-		/* Body */
-		for (const StoryPageElement *pe : this->story_page_elements) {
-			height += element_vertical_dist;
-			height += GetPageElementHeight(*pe, max_width);
-		}
-
-		return height;
+		return max_y;
 	}
 
 	/**
@@ -553,7 +705,8 @@ public:
 
 		/* Draw content (now coordinates given to Draw** are local to the new clipping region). */
 		int line_height = FONT_HEIGHT_NORMAL;
-		int y_offset = - this->vscroll->GetPosition();
+		const int scrollpos = this->vscroll->GetPosition();
+		int y_offset = -scrollpos;
 
 		/* Date */
 		if (page->date != INVALID_DATE) {
@@ -567,26 +720,26 @@ public:
 		y_offset = DrawStringMultiLine(0, right - x, y_offset, bottom - y, STR_STORY_BOOK_TITLE, TC_BLACK, SA_TOP | SA_HOR_CENTER);
 
 		/* Page elements */
-		for (const StoryPageElement *const pe : this->story_page_elements) {
-			y_offset += line_height; // margin to previous element
-
-			switch (pe->type) {
+		this->EnsureStoryPageElementLayout();
+		for (const LayoutCacheElement &ce : this->layout_cache) {
+			y_offset = ce.bounds.top - scrollpos;
+			switch (ce.pe->type) {
 				case SPET_TEXT:
-					SetDParamStr(0, pe->text);
-					y_offset = DrawStringMultiLine(0, right - x, y_offset, bottom - y, STR_JUST_RAW_STRING, TC_BLACK, SA_TOP | SA_LEFT);
+					SetDParamStr(0, ce.pe->text);
+					y_offset = DrawStringMultiLine(ce.bounds.left, ce.bounds.right, ce.bounds.top - scrollpos, ce.bounds.bottom - scrollpos, STR_JUST_RAW_STRING, TC_BLACK, SA_TOP | SA_LEFT);
 					break;
 
 				case SPET_GOAL: {
-					Goal *g = Goal::Get((GoalID) pe->referenced_id);
+					Goal *g = Goal::Get((GoalID) ce.pe->referenced_id);
 					StringID string_id = g == nullptr ? STR_STORY_BOOK_INVALID_GOAL_REF : STR_JUST_RAW_STRING;
 					if (g != nullptr) SetDParamStr(0, g->text);
-					DrawActionElement(y_offset, right - x, line_height, GetPageElementSprite(*pe), string_id);
+					DrawActionElement(y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe), string_id);
 					break;
 				}
 
 				case SPET_LOCATION:
-					SetDParamStr(0, pe->text);
-					DrawActionElement(y_offset, right - x, line_height, GetPageElementSprite(*pe));
+					SetDParamStr(0, ce.pe->text);
+					DrawActionElement(y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe));
 					break;
 
 				case SPET_BUTTON_PUSH:
@@ -595,15 +748,15 @@ public:
 					const int height = FONT_HEIGHT_NORMAL;
 					const int tmargin = WD_BEVEL_TOP + WD_FRAMETEXT_TOP;
 					const int bmargin = WD_BEVEL_BOTTOM + WD_FRAMETEXT_BOTTOM;
-					const int hmargin = (right - x) / 5;
-					const FrameFlags frame = this->active_button_id == pe->index ? FR_LOWERED : FR_NONE;
-					const Colours bgcolour = StoryPageButtonData{ pe->referenced_id }.GetColour();
+					const int width = ce.bounds.right - ce.bounds.left;
+					const int hmargin = width / 5;
+					const FrameFlags frame = this->active_button_id == ce.pe->index ? FR_LOWERED : FR_NONE;
+					const Colours bgcolour = StoryPageButtonData{ ce.pe->referenced_id }.GetColour();
 
-					DrawFrameRect(hmargin, y_offset, right - x - hmargin, y_offset + height + tmargin + bmargin, bgcolour, frame);
+					DrawFrameRect(ce.bounds.left, ce.bounds.top - scrollpos, ce.bounds.right, ce.bounds.bottom - scrollpos - 1, bgcolour, frame);
 
-					SetDParamStr(0, pe->text);
-					DrawString(hmargin + WD_BEVEL_LEFT, right - x - hmargin - WD_BEVEL_RIGHT, y_offset + tmargin, STR_JUST_RAW_STRING, TC_WHITE, SA_CENTER);
-					y_offset += height + tmargin + bmargin;
+					SetDParamStr(0, ce.pe->text);
+					DrawString(ce.bounds.left + WD_BEVEL_LEFT, ce.bounds.right - WD_BEVEL_RIGHT, ce.bounds.top + tmargin - scrollpos, STR_JUST_RAW_STRING, TC_WHITE, SA_CENTER);
 					break;
 				}
 
@@ -660,6 +813,7 @@ public:
 
 	void OnResize() override
 	{
+		this->InvalidateStoryPageElementLayout();
 		this->vscroll->SetCapacityFromWidget(this, WID_SB_PAGE_PANEL, WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM);
 		this->vscroll->SetCount(this->GetContentHeight());
 	}
@@ -692,27 +846,14 @@ public:
 				break;
 
 			case WID_SB_PAGE_PANEL: {
-				uint clicked_y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SB_PAGE_PANEL, WD_FRAMETEXT_TOP);
-				uint max_width = GetAvailablePageContentWidth();
+				int clicked_y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SB_PAGE_PANEL, WD_FRAMETEXT_TOP);
+				this->EnsureStoryPageElementLayout();
 
-				/* Skip head rows. */
-				uint head_height = this->GetHeadHeight(max_width);
-				if (clicked_y < head_height) return;
-
-				/* Detect if a page element was clicked. */
-				uint y = head_height;
-				uint element_vertical_dist = FONT_HEIGHT_NORMAL;
-				for (const StoryPageElement *const pe : this->story_page_elements) {
-
-					y += element_vertical_dist; // margin row
-
-					uint content_height = GetPageElementHeight(*pe, max_width);
-					if (clicked_y >= y && clicked_y < y + content_height) {
-						this->OnPageElementClick(*pe);
+				for (const LayoutCacheElement &ce : this->layout_cache) {
+					if (clicked_y >= ce.bounds.top && clicked_y < ce.bounds.bottom && pt.x >= ce.bounds.left && pt.x < ce.bounds.right) {
+						this->OnPageElementClick(*ce.pe);
 						return;
 					}
-
-					y += content_height;
 				}
 			}
 		}
