@@ -2601,7 +2601,8 @@ void RemoveDockingTile(TileIndex t)
 		if (!IsValidTile(tile)) continue;
 
 		if (IsTileType(tile, MP_STATION)) {
-			UpdateStationDockingTiles(Station::GetByTile(tile));
+			Station *st = Station::GetByTile(tile);
+			if (st != nullptr) UpdateStationDockingTiles(st);
 		} else if (IsTileType(tile, MP_INDUSTRY)) {
 			Station *neutral = Industry::GetByTile(tile)->neutral_station;
 			if (neutral != nullptr) UpdateStationDockingTiles(neutral);
