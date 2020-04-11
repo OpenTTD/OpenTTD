@@ -123,6 +123,11 @@ void StoryPageButtonData::SetColour(Colours button_colour)
 	SB(this->referenced_id, 0, 8, button_colour);
 }
 
+void StoryPageButtonData::SetFlags(StoryPageButtonFlags flags)
+{
+	SB(this->referenced_id, 24, 8, flags);
+}
+
 /** Set the mouse cursor used while waiting for input for the button. */
 void StoryPageButtonData::SetCursor(StoryPageButtonCursor cursor)
 {
@@ -143,6 +148,11 @@ Colours StoryPageButtonData::GetColour() const
 	return Extract<Colours, 0, 8>(this->referenced_id);
 }
 
+StoryPageButtonFlags StoryPageButtonData::GetFlags() const
+{
+	return (StoryPageButtonFlags)GB(this->referenced_id, 24, 8);
+}
+
 /** Get the mouse cursor used while waiting for input for the button. */
 StoryPageButtonCursor StoryPageButtonData::GetCursor() const
 {
@@ -161,6 +171,16 @@ bool StoryPageButtonData::ValidateColour() const
 	return GB(this->referenced_id, 0, 8) < COLOUR_END;
 }
 
+bool StoryPageButtonData::ValidateFlags() const
+{
+	byte flags = GB(this->referenced_id, 24, 8);
+	/* Don't allow float left and right together */
+	if ((flags & SPBF_FLOAT_LEFT) && (flags & SPBF_FLOAT_RIGHT)) return false;
+	/* Don't allow undefined flags */
+	if (flags & ~(SPBF_FLOAT_LEFT | SPBF_FLOAT_RIGHT)) return false;
+	return true;
+}
+
 /** Verify that the data stores a valid StoryPageButtonCursor value */
 bool StoryPageButtonData::ValidateCursor() const
 {
@@ -170,7 +190,7 @@ bool StoryPageButtonData::ValidateCursor() const
 /** Verity that the data stored a valid VehicleType value */
 bool StoryPageButtonData::ValidateVehicleType() const
 {
-	uint8 vehtype = GB(this->referenced_id, 16, 8);
+	byte vehtype = GB(this->referenced_id, 16, 8);
 	return vehtype == VEH_INVALID || vehtype < VEH_COMPANY_END;
 }
 

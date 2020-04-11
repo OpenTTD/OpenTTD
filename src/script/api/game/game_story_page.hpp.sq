@@ -27,6 +27,9 @@ void SQGSStoryPage_Register(Squirrel *engine)
 	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPET_BUTTON_PUSH,           "SPET_BUTTON_PUSH");
 	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPET_BUTTON_TILE,           "SPET_BUTTON_TILE");
 	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPET_BUTTON_VEHICLE,        "SPET_BUTTON_VEHICLE");
+	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPBF_NONE,                  "SPBF_NONE");
+	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPBF_FLOAT_LEFT,            "SPBF_FLOAT_LEFT");
+	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPBF_FLOAT_RIGHT,           "SPBF_FLOAT_RIGHT");
 	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPBC_MOUSE,                 "SPBC_MOUSE");
 	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPBC_ZZZ,                   "SPBC_ZZZ");
 	SQGSStoryPage.DefSQConst(engine, ScriptStoryPage::SPBC_BUOY,                  "SPBC_BUOY");
@@ -113,9 +116,9 @@ void SQGSStoryPage_Register(Squirrel *engine)
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::Show,                       "Show",                       2, ".i");
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::Remove,                     "Remove",                     2, ".i");
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::RemoveElement,              "RemoveElement",              2, ".i");
-	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::MakePushButtonReference,    "MakePushButtonReference",    2, ".i");
-	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::MakeTileButtonReference,    "MakeTileButtonReference",    3, ".ii");
-	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::MakeVehicleButtonReference, "MakeVehicleButtonReference", 4, ".iii");
+	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::MakePushButtonReference,    "MakePushButtonReference",    3, ".ii");
+	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::MakeTileButtonReference,    "MakeTileButtonReference",    4, ".iii");
+	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::MakeVehicleButtonReference, "MakeVehicleButtonReference", 5, ".iiii");
 
 	SQGSStoryPage.PostRegister(engine);
 }

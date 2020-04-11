@@ -72,6 +72,16 @@ public:
 	typedef uint32 StoryPageButtonFormatting;
 
 	/**
+	 * Formatting and layout flags for story page buttons.
+	 * The SPBF_FLOAT_LEFT and SPBF_FLOAT_RIGHT flags can not be combined.
+	 */
+	enum StoryPageButtonFlags {
+		SPBF_NONE        = ::SPBF_NONE,        ///< No special formatting for button.
+		SPBF_FLOAT_LEFT  = ::SPBF_FLOAT_LEFT,  ///< Button is placed to the left of the following paragraph.
+		SPBF_FLOAT_RIGHT = ::SPBF_FLOAT_RIGHT, ///< Button is placed to the right of the following paragraph.
+	};
+
+	/**
 	 * Mouse cursors usable by story page buttons.
 	 */
 	enum StoryPageButtonCursor {
@@ -307,7 +317,7 @@ public:
 	 * @param colour The colour for the face of the button.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
 	 */
-	static StoryPageButtonFormatting MakePushButtonReference(StoryPageButtonColour colour);
+	static StoryPageButtonFormatting MakePushButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags);
 
 	/**
 	 * Create a reference value for SPET_BUTTON_TILE element parameters.
@@ -315,7 +325,7 @@ public:
 	 * @param cursor The mouse cursor to use when the player clicks the button and the game is ready for the player to select a tile.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
 	 */
-	static StoryPageButtonFormatting MakeTileButtonReference(StoryPageButtonColour colour, StoryPageButtonCursor cursor);
+	static StoryPageButtonFormatting MakeTileButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor);
 
 	/**
 	 * Create a reference value for SPET_BUTTON_VEHICLE element parameters.
@@ -324,7 +334,7 @@ public:
 	 * @param vehtype The type of vehicle that will be selectable, or \c VT_INVALID to allow all types.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
 	 */
-	static StoryPageButtonFormatting MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonCursor cursor, ScriptVehicle::VehicleType vehtype);
+	static StoryPageButtonFormatting MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor, ScriptVehicle::VehicleType vehtype);
 };
 
 #endif /* SCRIPT_STORY_HPP */

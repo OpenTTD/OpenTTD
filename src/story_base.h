@@ -41,6 +41,14 @@ enum StoryPageElementType : byte {
 /** Define basic enum properties */
 template <> struct EnumPropsT<StoryPageElementType> : MakeEnumPropsT<StoryPageElementType, byte, SPET_TEXT, SPET_END, INVALID_SPET, 8> {};
 
+/** Flags available for buttons */
+enum StoryPageButtonFlags : byte {
+	SPBF_NONE        = 0,
+	SPBF_FLOAT_LEFT  = 1 << 0,
+	SPBF_FLOAT_RIGHT = 1 << 1,
+};
+DECLARE_ENUM_AS_BIT_SET(StoryPageButtonFlags)
+
 /** Mouse cursors usable by story page buttons. */
 enum StoryPageButtonCursor : byte {
 	SPBC_MOUSE,
@@ -110,12 +118,15 @@ struct StoryPageButtonData {
 	uint32 referenced_id;
 
 	void SetColour(Colours button_colour);
+	void SetFlags(StoryPageButtonFlags flags);
 	void SetCursor(StoryPageButtonCursor cursor);
 	void SetVehicleType(VehicleType vehtype);
 	Colours GetColour() const;
+	StoryPageButtonFlags GetFlags() const;
 	StoryPageButtonCursor GetCursor() const;
 	VehicleType GetVehicleType() const;
 	bool ValidateColour() const;
+	bool ValidateFlags() const;
 	bool ValidateCursor() const;
 	bool ValidateVehicleType() const;
 };

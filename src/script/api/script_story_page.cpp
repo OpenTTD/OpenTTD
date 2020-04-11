@@ -208,31 +208,37 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	return ScriptObject::DoCommand(0, story_page_element_id, 0, CMD_REMOVE_STORY_PAGE_ELEMENT);
 }
 
-/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakePushButtonReference(StoryPageButtonColour colour)
+/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakePushButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags)
 {
 	StoryPageButtonData data;
 	data.SetColour((Colours)colour);
+	data.SetFlags((::StoryPageButtonFlags)flags);
 	if (!data.ValidateColour()) return UINT32_MAX;
+	if (!data.ValidateFlags()) return UINT32_MAX;
 	return data.referenced_id;
 }
 
-/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakeTileButtonReference(StoryPageButtonColour colour, StoryPageButtonCursor cursor)
+/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakeTileButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor)
 {
 	StoryPageButtonData data;
 	data.SetColour((Colours)colour);
+	data.SetFlags((::StoryPageButtonFlags)flags);
 	data.SetCursor((::StoryPageButtonCursor)cursor);
 	if (!data.ValidateColour()) return UINT32_MAX;
+	if (!data.ValidateFlags()) return UINT32_MAX;
 	if (!data.ValidateCursor()) return UINT32_MAX;
 	return data.referenced_id;
 }
 
-/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonCursor cursor, ScriptVehicle::VehicleType vehtype)
+/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor, ScriptVehicle::VehicleType vehtype)
 {
 	StoryPageButtonData data;
 	data.SetColour((Colours)colour);
+	data.SetFlags((::StoryPageButtonFlags)flags);
 	data.SetCursor((::StoryPageButtonCursor)cursor);
 	data.SetVehicleType((::VehicleType)vehtype);
 	if (!data.ValidateColour()) return UINT32_MAX;
+	if (!data.ValidateFlags()) return UINT32_MAX;
 	if (!data.ValidateCursor()) return UINT32_MAX;
 	if (!data.ValidateVehicleType()) return UINT32_MAX;
 	return data.referenced_id;
