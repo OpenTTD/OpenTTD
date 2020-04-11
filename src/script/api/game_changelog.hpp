@@ -17,6 +17,14 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li GSEventStoryPageButtonClick
+ * \li GSEventStoryPageTileSelect
+ * \li GSEventStoryPageVehicleSelect
+ * \li GSStoryPage::MakePushButtonReference
+ * \li GSStoryPage::MakeTileButtonReference
+ * \li GSStoryPage::MakeVehicleButtonReference
+ *
  * \b 1.10.0
  *
  * API additions:
