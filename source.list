@@ -415,7 +415,6 @@ zoom_type.h
 	music/extmidi.h
 	music/fluidsynth.h
 	music/os2_m.h
-	music/qtmidi.h
 	os/macosx/macos.h
 	os/macosx/osx_stdafx.h
 	os/macosx/splash.h
@@ -1162,11 +1161,6 @@ sound/null_s.cpp
 #if OSX
 # OSX Files
 	os/macosx/macos.mm
-
-	#if DEDICATED
-	#else
-		music/qtmidi.cpp
-	#end
 
 	#if COCOA
 		video/cocoa/cocoa_v.mm
