@@ -1592,12 +1592,6 @@ make_cflags_and_ldflags() {
 		# Add macports include dir which is not always set a default system dir. This avoids zillions of bogus warnings.
 		CFLAGS="$CFLAGS -isystem/opt/local/include"
 
-		if [ "$enable_dedicated" = "0" ] && ([ "$cpu_type" = "32" ] || [ "$enable_universal" != "0" ]); then
-			LIBS="$LIBS -framework QuickTime"
-		else
-			CFLAGS="$CFLAGS -DNO_QUICKTIME"
-		fi
-
 		if [ "$enable_universal" = "0" ]; then
 			# Universal builds set this elsewhere
 			CFLAGS="$OSX_SYSROOT $CFLAGS"
@@ -3326,8 +3320,7 @@ generate_src_osx() {
 				CFLAGS="-isysroot $osx_sdk_path $CFLAGS_orig"
 				LDFLAGS="-Wl,-syslibroot,$osx_sdk_path $LDFLAGS_orig"
 			fi
-			CFLAGS="$CFLAGS -D_SQ64 -DNO_QUICKTIME"
-			LIBS="`echo $LIBS | sed 's/-framework QuickTime//'`"
+			CFLAGS="$CFLAGS -D_SQ64"
 		fi
 
 		case $type in
