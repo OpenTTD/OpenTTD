@@ -1,3 +1,12 @@
+1.10.1 (2020-04-13)
+------------------------------------------------------------------------
+Fix #8081: Crash when placing a ship depot next to a dock (#8082)
+Fix: [GS] A Goal's QuestionID was getting truncated (#8072)
+Fix #8064: Refit capacity could be displayed incorrectly in extreme edgecases (#8065)
+Fix #8060: Restore admin network API compatibility (#8061)
+Fix #8055: Crash when roadtype availability changes with the road construction toolbar open (#8058)
+
+
 1.10.0 (2020-04-01)
 ------------------------------------------------------------------------
 Change: Open company window when clicking on a company goal (#8033)
