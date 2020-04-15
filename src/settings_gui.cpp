@@ -1841,6 +1841,7 @@ static SettingsContainer &GetSettingsTree()
 
 			environment->Add(new SettingEntry("station.modified_catchment"));
 			environment->Add(new SettingEntry("construction.extra_tree_placement"));
+			environment->Add(new SettingEntry("difficulty.water_depth_erosion_speed"));
 		}
 
 		SettingsPage *ai = main->Add(new SettingsPage(STR_CONFIG_SETTING_AI));

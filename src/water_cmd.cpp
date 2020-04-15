@@ -1284,9 +1284,13 @@ void TileLoop_Water(TileIndex tile)
 {
 	if (IsTileType(tile, MP_WATER)) AmbientSoundEffect(tile);
 
-	/* Only do depth erosion on rare occasions.
+	/* Only do depth erosion on rare occasions (at maximum erosion speed).
 	 * 6 bits matched means once every 16384 ticks, or about 221 days between erosion. */
 	bool do_erosion = IsTileType(tile, MP_WATER) && (TileHash2Bit(TileX(tile), TileY(tile)) << 4 | GB(GetWaterTileRandomBits(tile), 0, 4)) == GB(_tick_counter, 8, 6);
+	/* Slower erosion is achieved by a chance roll (probability is further decreased by the effect of neighbour tiles changing slowly too) */
+	if (_settings_game.difficulty.water_depth_erosion_speed == 2) do_erosion = do_erosion && Chance16(1, 3);
+	if (_settings_game.difficulty.water_depth_erosion_speed == 1) do_erosion = do_erosion && Chance16(1, 30);
+	if (_settings_game.difficulty.water_depth_erosion_speed == 0) do_erosion = false;
 
 	if (do_erosion) {
 		ErodeWaterTileDepth(tile);
