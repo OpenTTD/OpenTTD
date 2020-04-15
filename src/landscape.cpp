@@ -1388,7 +1388,7 @@ bool ErodeWaterTileDepth(TileIndex tile)
 	} else if (num_water_tiles == required_water_tiles) {
 		WaterDepth new_depth = current_depth + 1;
 		new_depth = std::min<WaterDepth>(min_water_depth + 1, new_depth);
-		new_depth = std::min<WaterDepth>(max_water_depth + 1, new_depth);
+		if (current_depth > WATER_DEPTH_MIN) new_depth = (WaterDepth)std::max<int>(new_depth, current_depth - 1);
 		SetWaterDepth(tile, Clamp(new_depth, WATER_DEPTH_MIN, WATER_DEPTH_MAX));
 		return new_depth != current_depth;
 	}
