@@ -1293,7 +1293,7 @@ void TileLoop_Water(TileIndex tile)
 	if (_settings_game.difficulty.water_depth_erosion_speed == 0) do_erosion = false;
 
 	if (do_erosion) {
-		ErodeWaterTileDepth(tile);
+		if (ErodeWaterTileDepth(tile)) MarkTileDirtyByTile(tile);
 	}
 
 	switch (GetFloodingBehaviour(tile)) {
