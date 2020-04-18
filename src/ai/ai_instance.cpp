@@ -57,6 +57,7 @@
 #include "../script/api/ai/ai_map.hpp.sq"
 #include "../script/api/ai/ai_marine.hpp.sq"
 #include "../script/api/ai/ai_order.hpp.sq"
+#include "../script/api/ai/ai_priorityqueue.hpp.sq"
 #include "../script/api/ai/ai_rail.hpp.sq"
 #include "../script/api/ai/ai_railtypelist.hpp.sq"
 #include "../script/api/ai/ai_road.hpp.sq"
@@ -164,6 +165,7 @@ void AIInstance::RegisterAPI()
 	SQAIMap_Register(this->engine);
 	SQAIMarine_Register(this->engine);
 	SQAIOrder_Register(this->engine);
+	SQAIPriorityQueue_Register(this->engine);
 	SQAIRail_Register(this->engine);
 	SQAIRailTypeList_Register(this->engine);
 	SQAIRoad_Register(this->engine);

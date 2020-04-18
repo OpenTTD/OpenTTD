@@ -17,6 +17,9 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li AIPriorityQueue
+ *
  * \b 1.10.0
  *
  * API additions:

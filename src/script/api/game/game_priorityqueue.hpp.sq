@@ -1,0 +1,31 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_priorityqueue.hpp"
+#include "../template/template_priorityqueue.hpp.sq"
+
+
+template <> const char *GetClassName<ScriptPriorityQueue, ST_GS>() { return "GSPriorityQueue"; }
+
+void SQGSPriorityQueue_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptPriorityQueue, ST_GS> SQGSPriorityQueue("GSPriorityQueue");
+	SQGSPriorityQueue.PreRegister(engine);
+	SQGSPriorityQueue.AddConstructor<void (ScriptPriorityQueue::*)(), 1>(engine, "x");
+
+	SQGSPriorityQueue.DefSQAdvancedMethod(engine, &ScriptPriorityQueue::Insert, "Insert");
+	SQGSPriorityQueue.DefSQAdvancedMethod(engine, &ScriptPriorityQueue::Pop, "Pop");
+	SQGSPriorityQueue.DefSQAdvancedMethod(engine, &ScriptPriorityQueue::Peek, "Peek");
+	SQGSPriorityQueue.DefSQAdvancedMethod(engine, &ScriptPriorityQueue::Exists, "Exists");
+	SQGSPriorityQueue.DefSQAdvancedMethod(engine, &ScriptPriorityQueue::Clear, "Clear");
+	SQGSPriorityQueue.DefSQMethod(engine, &ScriptPriorityQueue::IsEmpty, "IsEmpty", 1, "x");
+	SQGSPriorityQueue.DefSQMethod(engine, &ScriptPriorityQueue::Count,   "Count",   1, "x");
+
+	SQGSPriorityQueue.PostRegister(engine);
+}
