@@ -211,6 +211,8 @@ void ReleaseDisastersTargetingIndustry(IndustryID);
 
 bool IsTileForestIndustry(TileIndex tile);
 
+WaterDepth GetIndustryTileWaterDepth(TileIndex tile);
+
 /** Data for managing the number of industries of a single industry type. */
 struct IndustryTypeBuildData {
 	uint32 probability;  ///< Relative probability of building this industry.

@@ -955,6 +955,18 @@ static void ChangeTileOwner_Industry(TileIndex tile, Owner old_owner, Owner new_
 }
 
 /**
+ * Get the (pretend) water depth for an industry tile.
+ * @param tile  Which tile to check
+ * @return      Water depth of the industry on the tile.
+ * @pre IsTileType(tile, MP_INDUSTRY)
+ */
+WaterDepth GetIndustryTileWaterDepth(TileIndex tile)
+{
+	assert(IsTileType(tile, MP_INDUSTRY));
+	return Industry::GetByTile(tile)->water_depth_min;
+}
+
+/**
  * Check whether the tile is a forest.
  * @param tile the tile to investigate.
  * @return true if and only if the tile is a forest

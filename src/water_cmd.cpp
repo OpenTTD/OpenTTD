@@ -127,14 +127,14 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_DEPOT_SHIP]);
 
 	bool add_cost = !IsWaterTile(tile);
-	WaterDepth depth1 = IsWaterTile(tile) ? GetWaterDepth(tile) : WATER_DEPTH_MIN;
+	WaterDepth depth1 = HasWaterDepth(tile) ? GetWaterDepth(tile) : WATER_DEPTH_MIN;
 	CommandCost ret = DoCommand(tile, 0, 0, flags | DC_AUTO, CMD_LANDSCAPE_CLEAR);
 	if (ret.Failed()) return ret;
 	if (add_cost) {
 		cost.AddCost(ret);
 	}
 	add_cost = !IsWaterTile(tile2);
-	WaterDepth depth2 = IsWaterTile(tile2) ? GetWaterDepth(tile2) : WATER_DEPTH_MIN;
+	WaterDepth depth2 = HasWaterDepth(tile2) ? GetWaterDepth(tile2) : WATER_DEPTH_MIN;
 	ret = DoCommand(tile2, 0, 0, flags | DC_AUTO, CMD_LANDSCAPE_CLEAR);
 	if (ret.Failed()) return ret;
 	if (add_cost) {
@@ -800,7 +800,7 @@ static void DrawWaterEdges(bool canal, uint offset, TileIndex tile)
 /** Draw a plain sea water tile with no edges */
 static void DrawSeaWater(TileIndex tile)
 {
-	const WaterDepth depth = IsWaterTile(tile) ? GetWaterDepth(tile) : 0;
+	const WaterDepth depth = HasWaterDepth(tile) ? GetWaterDepth(tile) : 0;
 	DrawGroundSprite(GetWaterBaseSprite(depth), PAL_NONE);
 }
 

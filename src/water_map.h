@@ -192,16 +192,34 @@ static inline bool IsWaterTile(TileIndex t)
 	return IsTileType(t, MP_WATER) && IsWater(t);
 }
 
+static inline bool HasWaterDepth(TileIndex t)
+{
+	switch (GetTileType(t)) {
+		case MP_WATER:
+		case MP_INDUSTRY:
+			return true;
+		default:
+			return false;
+	}
+}
+
 /**
  * Get the depth of water on a water tile.
  * @param t Tile to query.
  * @return Depth of water (range 0 to 15)
- * @pre IsTileType(t, MP_WATER)
+ * @pre IsTileType(t, MP_WATER) || IsTileType(t, MP_INDUSTRY)
  */
 static inline WaterDepth GetWaterDepth(TileIndex t)
 {
-	assert(IsTileType(t, MP_WATER));
-	return GB(_m[t].m3, 0, 4);
+	extern WaterDepth GetIndustryTileWaterDepth(TileIndex tile);
+	switch (GetTileType(t)) {
+		case MP_WATER:
+			return GB(_m[t].m3, 0, 4);
+		case MP_INDUSTRY:
+			return GetIndustryTileWaterDepth(t);
+		default:
+			NOT_REACHED();
+	}
 }
 
 static inline void SetWaterDepth(TileIndex t, WaterDepth depth)
