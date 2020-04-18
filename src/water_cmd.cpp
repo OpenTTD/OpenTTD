@@ -145,14 +145,14 @@ CommandCost CmdBuildShipDepot(DoCommandFlags flags, TileIndex tile, Axis axis)
 	CommandCost cost = CommandCost(ExpensesType::Construction, _price[Price::BuildDepotShip]);
 
 	bool add_cost = !IsWaterTile(tile);
-	WaterDepth depth1 = IsWaterTile(tile) ? GetWaterDepth(tile) : WATER_DEPTH_MIN;
+	WaterDepth depth1 = HasWaterDepth(tile) ? GetWaterDepth(tile) : WATER_DEPTH_MIN;
 	CommandCost ret = Command<Commands::LandscapeClear>::Do(flags | DoCommandFlag::Auto, tile);
 	if (ret.Failed()) return ret;
 	if (add_cost) {
 		cost.AddCost(ret.GetCost());
 	}
 	add_cost = !IsWaterTile(tile2);
-	WaterDepth depth2 = IsWaterTile(tile2) ? GetWaterDepth(tile2) : WATER_DEPTH_MIN;
+	WaterDepth depth2 = HasWaterDepth(tile2) ? GetWaterDepth(tile2) : WATER_DEPTH_MIN;
 	ret = Command<Commands::LandscapeClear>::Do(flags | DoCommandFlag::Auto, tile2);
 	if (ret.Failed()) return ret;
 	if (add_cost) {
@@ -882,7 +882,7 @@ static void DrawWaterEdges(bool canal, uint offset, TileIndex tile)
  */
 static void DrawSeaWater(TileIndex tile)
 {
-	const WaterDepth depth = IsWaterTile(tile) ? GetWaterDepth(tile) : 0;
+	const WaterDepth depth = HasWaterDepth(tile) ? GetWaterDepth(tile) : 0;
 	DrawGroundSprite(GetWaterBaseSprite(depth), PAL_NONE);
 }
 

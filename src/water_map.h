@@ -203,15 +203,38 @@ inline bool IsWaterTile(Tile t)
 }
 
 /**
+ * Does the tile have a depth?
+ * @param t Tile to query.
+ * @return \c true if it has a dpeth.
+ */
+static inline bool HasWaterDepth(Tile t)
+{
+	switch (GetTileType(t)) {
+		case TileType::Water:
+		case TileType::Industry:
+			return true;
+		default:
+			return false;
+	}
+}
+
+/**
  * Get the depth of water on a water tile.
  * @param t Tile to query.
  * @return Depth of water (range 0 to 15)
- * @pre IsTileType(t, TileType::Water)
+ * @pre IsTileType(t, TileType::Water) || IsTileType(t, TileType::Industry)
  */
 static inline WaterDepth GetWaterDepth(Tile t)
 {
-	assert(IsTileType(t, TileType::Water));
-	return GB(t.m3(), 1, 4);
+	extern WaterDepth GetIndustryTileWaterDepth(TileIndex tile);
+	switch (GetTileType(t)) {
+		case TileType::Water:
+			return GB(t.m3(), 1, 4);
+		case TileType::Industry:
+			return GetIndustryTileWaterDepth(t);
+		default:
+			NOT_REACHED();
+	}
 }
 
 /**
