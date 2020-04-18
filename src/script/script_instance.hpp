@@ -200,6 +200,17 @@ public:
 
 	size_t GetAllocatedMemory() const;
 
+	/**
+	 * Indicate whether this instance is currently being destroyed.
+	 */
+	inline bool InShutdown() const { return this->in_shutdown; }
+
+	/**
+	 * Decrease the ref count of a squirrel object.
+	 * @param obj The object to release.
+	 **/
+	void ReleaseSQObject(HSQOBJECT *obj);
+
 protected:
 	class Squirrel *engine;               ///< A wrapper around the squirrel vm.
 	const char *versionAPI;               ///< Current API used by this script.
@@ -242,6 +253,7 @@ private:
 	bool is_save_data_on_stack;           ///< Is the save data still on the squirrel stack?
 	int suspend;                          ///< The amount of ticks to suspend this script before it's allowed to continue.
 	bool is_paused;                       ///< Is the script paused? (a paused script will not be executed until unpaused)
+	bool in_shutdown;                     ///< Is this instance currently being destructed?
 	Script_SuspendCallbackProc *callback; ///< Callback that should be called in the next tick the script runs.
 	size_t last_allocated_memory;         ///< Last known allocated memory value (for display for crashed scripts)
 

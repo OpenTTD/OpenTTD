@@ -1096,6 +1096,7 @@
     <ClInclude Include="..\src\script\api\script_news.hpp" />
     <ClInclude Include="..\src\script\api\script_object.hpp" />
     <ClInclude Include="..\src\script\api\script_order.hpp" />
+    <ClInclude Include="..\src\script\api\script_priorityqueue.hpp" />
     <ClInclude Include="..\src\script\api\script_rail.hpp" />
     <ClInclude Include="..\src\script\api\script_railtypelist.hpp" />
     <ClInclude Include="..\src\script\api\script_road.hpp" />
@@ -1163,6 +1164,7 @@
     <ClCompile Include="..\src\script\api\script_news.cpp" />
     <ClCompile Include="..\src\script\api\script_object.cpp" />
     <ClCompile Include="..\src\script\api\script_order.cpp" />
+    <ClCompile Include="..\src\script\api\script_priorityqueue.cpp" />
     <ClCompile Include="..\src\script\api\script_rail.cpp" />
     <ClCompile Include="..\src\script\api\script_railtypelist.cpp" />
     <ClCompile Include="..\src\script\api\script_road.cpp" />

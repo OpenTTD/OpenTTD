@@ -24,6 +24,7 @@
  * \li GSStoryPage::MakePushButtonReference
  * \li GSStoryPage::MakeTileButtonReference
  * \li GSStoryPage::MakeVehicleButtonReference
+ * \li GSPriorityQueue
  *
  * \b 1.10.0
  *

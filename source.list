@@ -830,6 +830,7 @@ script/api/script_marine.hpp
 script/api/script_news.hpp
 script/api/script_object.hpp
 script/api/script_order.hpp
+script/api/script_priorityqueue.hpp
 script/api/script_rail.hpp
 script/api/script_railtypelist.hpp
 script/api/script_road.hpp
@@ -899,6 +900,7 @@ script/api/script_marine.cpp
 script/api/script_news.cpp
 script/api/script_object.cpp
 script/api/script_order.cpp
+script/api/script_priorityqueue.cpp
 script/api/script_rail.cpp
 script/api/script_railtypelist.cpp
 script/api/script_road.cpp
