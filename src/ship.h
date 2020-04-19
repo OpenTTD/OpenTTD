@@ -33,6 +33,7 @@ struct Ship final : public SpecializedVehicle<Ship, VehicleType::Ship> {
 	ShipPathCache path{}; ///< Cached path.
 	TrackBits state{}; ///< The "track" the ship is following.
 	Direction rotation = Direction::Invalid; ///< Visible direction.
+	WaterDepth tile_depth = WATER_DEPTH_MIN; ///< Cached depth of current tile.
 	int16_t rotation_x_pos = 0; ///< NOSAVE: X Position before rotation.
 	int16_t rotation_y_pos = 0; ///< NOSAVE: Y Position before rotation.
 
