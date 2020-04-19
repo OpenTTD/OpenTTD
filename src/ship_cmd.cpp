@@ -48,7 +48,8 @@ WaterDepth GetEffectiveWaterDepth(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
 		case MP_WATER:
-			/* Real water tile */
+		case MP_INDUSTRY:
+			/* Tile types that can be queried directly */
 			return GetWaterDepth(tile);
 		case MP_TUNNELBRIDGE:
 			/* Aqueduct, assume it's always shallow */
@@ -60,7 +61,6 @@ WaterDepth GetEffectiveWaterDepth(TileIndex tile)
 			assert(GetRailGroundType(tile) == RAIL_GROUND_WATER);
 			return WATER_DEPTH_MIN;
 		case MP_STATION:
-		case MP_INDUSTRY:
 		case MP_OBJECT:
 			/* Thing in the water - search for a real water tile nearby and use that */
 			if (CircularTileSearch(&tile, 5, [](TileIndex tile, void *) { return IsTileType(tile, MP_WATER); }, nullptr)) {
