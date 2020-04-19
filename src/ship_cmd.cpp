@@ -55,7 +55,8 @@ WaterDepth GetEffectiveWaterDepth(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
 		case TileType::Water:
-			/* Real water tile */
+		case TileType::Industry:
+			/* Tile types that can be queried directly */
 			return GetWaterDepth(tile);
 		case TileType::TunnelBridge:
 			/* Aqueduct, assume it's always shallow */
@@ -67,7 +68,6 @@ WaterDepth GetEffectiveWaterDepth(TileIndex tile)
 			assert(GetRailGroundType(tile) == RailGroundType::HalfTileWater);
 			return WATER_DEPTH_MIN;
 		case TileType::Station:
-		case TileType::Industry:
 		case TileType::Object:
 			/* Thing in the water - search for a real water tile nearby and use that */
 			for (auto t : SpiralTileSequence(tile, 5)) {
