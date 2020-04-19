@@ -962,6 +962,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 			Ship *s = Ship::From(v);
 			switch (variable - 0x80) {
 				case 0x62: return s->state;
+				case 0x66: return GetEffectiveWaterDepth(s->tile);
 			}
 			break;
 		}
