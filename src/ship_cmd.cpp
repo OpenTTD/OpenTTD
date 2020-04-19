@@ -221,8 +221,11 @@ void Ship::UpdateCache()
 {
 	const ShipVehicleInfo *svi = ShipVehInfo(this->engine_type);
 
+	/* Update current water depth */
+	this->tile_depth = GetEffectiveWaterDepth(this->tile);
+
 	/* Get speed fraction for the current water type. Aqueducts are always canals. */
-	bool is_ocean = GetEffectiveWaterDepth(this->tile) >= WATER_DEPTH_DEEP;
+	bool is_ocean = this->tile_depth >= WATER_DEPTH_DEEP;
 	uint raw_speed = GetVehicleProperty(this, PROP_SHIP_SPEED, svi->max_speed);
 	this->vcache.cached_max_speed = svi->ApplyWaterClassSpeedFrac(raw_speed, is_ocean);
 
@@ -756,7 +759,7 @@ static void ShipController(Ship *v)
 				v->state = TrackToTrackBits(track);
 
 				/* Update ship cache when the water depth changes. */
-				WaterDepth old_depth = GetEffectiveWaterDepth(gp.old_tile);
+				WaterDepth old_depth = v->tile_depth;
 				WaterDepth new_depth = GetEffectiveWaterDepth(gp.new_tile);
 				if (old_depth != new_depth) v->UpdateCache();
 			}
