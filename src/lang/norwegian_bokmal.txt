@@ -3101,8 +3101,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} levert
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (fortsatt nødvendig)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (levert)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Byen vokser hver {ORANGE}{COMMA}{BLACK}{NBSP}dag{P "" s}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Byen vokser hver {ORANGE}{COMMA}{BLACK}{NBSP}dag{P "" s} (finansiert)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Byen vokser hver {ORANGE}{COMMA}{BLACK}{NBSP}dag
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Byen vokser hver {ORANGE}{COMMA}{BLACK}{NBSP}dag (finansiert)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Byen vokser {RED}ikke{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Flystøy: {ORANGE}{COMMA}{BLACK}  støygrense: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Gå til by. Ctrl+klikk åpner et nytt tilleggsvindu over byen
