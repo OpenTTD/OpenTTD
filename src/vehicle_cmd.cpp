@@ -145,7 +145,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	}
 
 	if (value.Succeeded()) {
-		if (refitting || (flags & DC_EXEC)) {
+		if (subflags & DC_EXEC) {
 			v->unitnumber = unit_num;
 			v->value      = value.GetCost();
 		}
@@ -166,7 +166,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			}
 		}
 
-		if (refitting || (flags & DC_EXEC)) {
+		if (subflags & DC_EXEC) {
 			GroupStatistics::CountEngine(v, 1);
 			GroupStatistics::UpdateAutoreplace(_current_company);
 
@@ -178,7 +178,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 
 		/* If we are not in DC_EXEC undo everything */
-		if (refitting && (flags & DC_EXEC) == 0) {
+		if (flags != subflags) {
 			DoCommand(0, v->index, 0, DC_EXEC, GetCmdSellVeh(v));
 		}
 	}
