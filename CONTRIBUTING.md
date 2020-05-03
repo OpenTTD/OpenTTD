@@ -25,6 +25,8 @@ We reserve the right to delete comments which violate this rule.
 * Please **do not** open issues or pull requests regarding add-on content in NewGRF, GameScripts, AIs, etc.
 These are created by third-parties.  Please try [irc](https://wiki.openttd.org/IRC_channel) or the [forums](https://www.tt-forums.net/) to discuss these.
 
+* Please use [the web translator](https://translator.openttd.org/) to submit corrections and improvements to translations of the game.
+
 
 ## Bug reports
 
@@ -33,16 +35,16 @@ Good bug reports are extremely helpful, so thanks!
 
 Guidelines for bug reports:
 
-0. Please don't report issues with games where you changed NewGRFs.
+0. Please don't report issues with games where you changed NewGRFs mid-game. (This can be verified with the `gamelog` console command in-game.)
 
-1. Please don't report issues with modified versions of OpenTTD (patchpacks and similar).
+1. Please don't report issues with modified versions of OpenTTD (patchpacks, unofficial ports, and similar).
 
-2. **Use the GitHub issue search** --- check if the issue has already been
+2. **Use the GitHub issue search** — check if the issue has already been
 reported.
 
-3. **Check if the issue has been fixed** --- try to reproduce it using the latest `nightly` build of OpenTTD, available from https://www.openttd.org
+3. **Check if the issue has been fixed** — try to reproduce it using the latest `nightly` build of OpenTTD, available from https://www.openttd.org
 
-4. **Isolate the problem** --- ideally create reproduceable steps with an attached savegame and screenshots. Try to use few or no NewGRFs, AIs etc if possible.
+4. **Isolate the problem** — ideally create reproducible steps with an attached savegame and screenshots. Try to use few or no NewGRFs, AIs etc if possible.
 
 A good bug report shouldn't leave others needing to chase you up for more information.
 Please try to be as detailed as possible in your report.
