@@ -151,7 +151,8 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		}
 
 		if (refitting) {
-			value.AddCost(CmdRefitVehicle(tile, flags, v->index, cargo, nullptr));
+			/* Refit only one vehicle. If we purchased an engine, it may have gained free wagons. */
+			value.AddCost(CmdRefitVehicle(tile, flags, v->index, cargo | (1 << 16), nullptr));
 		} else {
 			/* Fill in non-refitted capacities */
 			_returned_refit_capacity = e->GetDisplayDefaultCapacity(&_returned_mail_refit_capacity);
