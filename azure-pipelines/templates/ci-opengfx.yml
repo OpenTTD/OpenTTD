@@ -2,7 +2,7 @@ steps:
 - bash: |
     set -ex
     cd bin/baseset
-    curl -L https://binaries.openttd.org/extra/opengfx/0.5.2/opengfx-0.5.2-all.zip > opengfx-0.5.2-all.zip
-    unzip opengfx-0.5.2-all.zip
-    rm -f opengfx-0.5.2-all.zip
+    curl -L https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip  > opengfx-all.zip
+    unzip opengfx-all.zip
+    rm -f opengfx-all.zip
   displayName: 'Install OpenGFX'
