@@ -128,7 +128,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	/* If we are refitting we need to temporarily purchase the vehicle to be able to
 	 * test it. */
 	DoCommandFlag subflags = flags;
-	if (refitting) subflags |= DC_EXEC;
+	if (refitting && !(flags & DC_EXEC)) subflags |= DC_EXEC | DC_AUTOREPLACE;
 
 	/* Vehicle construction needs random bits, so we have to save the random
 	 * seeds to prevent desyncs. */
@@ -173,7 +173,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 			if (v->IsPrimaryVehicle()) {
 				GroupStatistics::CountVehicle(v, 1);
-				OrderBackup::Restore(v, p2);
+				if (!(subflags & DC_AUTOREPLACE)) OrderBackup::Restore(v, p2);
 			}
 		}
 
