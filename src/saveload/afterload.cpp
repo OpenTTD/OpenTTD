@@ -929,19 +929,19 @@ bool AfterLoadGame()
 						break;
 
 					case STATION_OILRIG: {
+						/* The internal encoding of oil rigs was changed twice.
+						 * It was 3 (till 2.2) and later 5 (till 5.1).
+						 * DeleteOilRig asserts on the correct type, and
+						 * setting it unconditionally does not hurt.
+						 */
+						Station::GetByTile(t)->airport.type = AT_OILRIG;
+
 						/* Very old savegames sometimes have phantom oil rigs, i.e.
 						 * an oil rig which got shut down, but not completely removed from
 						 * the map
 						 */
 						TileIndex t1 = TILE_ADDXY(t, 0, 1);
-						if (IsTileType(t1, MP_INDUSTRY) &&
-								GetIndustryGfx(t1) == GFX_OILRIG_1) {
-							/* The internal encoding of oil rigs was changed twice.
-							 * It was 3 (till 2.2) and later 5 (till 5.1).
-							 * Setting it unconditionally does not hurt.
-							 */
-							Station::GetByTile(t)->airport.type = AT_OILRIG;
-						} else {
+						if (!IsTileType(t1, MP_INDUSTRY) || GetIndustryGfx(t1) != GFX_OILRIG_1) {
 							DeleteOilRig(t);
 						}
 						break;
