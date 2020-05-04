@@ -1412,7 +1412,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :짧은 (2012.01
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :국제표준규격 (2012-01-01)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :게임 시작 시 자동으로 일시 정지: {STRING}
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :이 설정을 켜면, 새로운 게임을 시작할 때 지도를 더욱 자세히 살펴볼 수 있도록 게임을 자동으로 일시정지합니다.
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :이 설정을 켜면, 새로운 게임을 시작할 때 지도를 더욱 자세히 살펴볼 수 있도록 게임을 자동으로 일시 정지합니다.
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :일시 정지 상태에서 가능한 행동: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :게임이 일시 정지된 동안에 할 수 있는 행동을 선택합니다.
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :아무 것도 못 함
