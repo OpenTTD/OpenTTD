@@ -2203,7 +2203,7 @@ bool AfterLoadGame()
 			}
 
 			if (remove) {
-				DeleteAnimatedTile(*tile);
+				tile = _animated_tiles.erase(tile);
 			} else {
 				tile++;
 			}
