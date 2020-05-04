@@ -1253,6 +1253,7 @@ bool AfterLoadGame()
 				}
 			} else if (v->z_pos > GetSlopePixelZ(v->x_pos, v->y_pos)) {
 				v->tile = GetNorthernBridgeEnd(v->tile);
+				v->UpdatePosition();
 			} else {
 				continue;
 			}
