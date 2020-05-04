@@ -3118,6 +3118,14 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionUntil(SLV_ENDING_YEAR)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) != TRANSPORT_ROAD) {
+				SetRoadTypes(t, INVALID_ROADTYPE, INVALID_ROADTYPE);
+			}
+		}
+	}
+
 	/* Update station docking tiles. */
 	AfterLoadScanDockingTiles();
 
