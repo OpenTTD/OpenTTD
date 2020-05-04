@@ -770,6 +770,19 @@ static inline bool IsSavegameVersionBefore(SaveLoadVersion major, byte minor = 0
 }
 
 /**
+ * Checks whether the savegame is below or at \a major. This should be used to repair data from existing
+ * savegames which is no longer corrupted in new savegames, but for which otherwise no savegame
+ * bump is required.
+ * @param major Major number of the version to check against.
+ * @return Savegame version is at most the specified version.
+ */
+static inline bool IsSavegameVersionUntil(SaveLoadVersion major)
+{
+	extern SaveLoadVersion _sl_version;
+	return _sl_version <= major;
+}
+
+/**
  * Checks if some version from/to combination falls within the range of the
  * active savegame version.
  * @param version_from Inclusive savegame version lower bound.
