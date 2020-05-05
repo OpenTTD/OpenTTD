@@ -1,5 +1,5 @@
 !define APPBITS 32          ; Define number of bits for the architecture
-!define EXTRA_VERSION "XP SP3 and Newer"
+!define EXTRA_VERSION "XP SP3 and newer"
 !define APPARCH "win32"     ; Define the application architecture
 !define BINARY_DIR "${PATH_ROOT}objs\win32\Release"
 InstallDir "$PROGRAMFILES32\OpenTTD\"
