@@ -3125,6 +3125,14 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Make sure all industries exclusive supplier/consumer set correctly. */
+	if (IsSavegameVersionBefore(SLV_GS_INDUSTRY_CONTROL)) {
+		for (Industry *i : Industry::Iterate()) {
+			i->exclusive_supplier = INVALID_OWNER;
+			i->exclusive_consumer = INVALID_OWNER;
+		}
+	}
+
 	/* Compute station catchment areas. This is needed here in case UpdateStationAcceptance is called below. */
 	Station::RecomputeCatchmentForAll();
 

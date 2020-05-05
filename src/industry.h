@@ -90,6 +90,8 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	uint8 construction_type;       ///< Way the industry was constructed (@see IndustryConstructionType)
 	Date last_cargo_accepted_at[INDUSTRY_NUM_INPUTS]; ///< Last day each cargo type was accepted by this industry
 	byte selected_layout;          ///< Which tile layout was used when creating the industry
+	Owner exclusive_supplier;      ///< Which company has exclusive rights to deliver cargo (INVALID_OWNER = anyone)
+	Owner exclusive_consumer;      ///< Which company has exclusive rights to take cargo (INVALID_OWNER = anyone)
 
 	uint16 random;                 ///< Random value used for randomisation of all kinds of things
 
