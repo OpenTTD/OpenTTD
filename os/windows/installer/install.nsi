@@ -599,12 +599,12 @@ Function CheckWindowsVersion
 	StrCmp $R0 "win9x" 0 WinNT
 	ClearErrors
 	StrCmp ${APPARCH} "win9x" Done 0
-	MessageBox MB_YESNO|MB_ICONSTOP "You are trying to install the Windows XP SP3, Vista and 7 version on Windows 95, 98, ME, 2000 and XP without SP3. This is will not work. Please download the correct version. Do you really want to continue?" IDYES Done IDNO Abort
+	MessageBox MB_YESNO|MB_ICONSTOP "You are trying to install the Windows XP SP3 and newer version on Windows 95, 98, ME, 2000, or XP without SP3. This will not work - please download the correct version. Do you really want to continue?" IDYES Done IDNO Abort
 	GoTo Done
 WinNT:
 	ClearErrors
 	StrCmp ${APPARCH} "win9x" 0 Done
-	MessageBox MB_YESNO|MB_ICONEXCLAMATION "You are trying to install the Windows 95, 98, 2000 and XP without SP3 version on Windows XP SP3, Vista or 7. This is not advised, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDYES Done IDNO Abort
+	MessageBox MB_YESNO|MB_ICONEXCLAMATION "You are trying to install the Windows 95, 98, 2000 and XP without SP3 version on Windows XP SP3 or newer. This is not advised, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDYES Done IDNO Abort
 Abort:
 	Quit
 Done:
