@@ -2411,7 +2411,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :நிறுவ
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD-ஐ பற்றி
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}அசல் உரிமைகள் {COPYRIGHT} 1995 கிறிஸ் சாயர், எல்லா உரிமைகளும் பதிவுசெய்யப்பட்டது
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD பதிப்பு {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD குழுமம்
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} OpenTTD குழுமம்
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}பிரேம் வீதம்
