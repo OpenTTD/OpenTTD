@@ -67,6 +67,7 @@ if [ -d "$ROOT_DIR/.git" ] || [ -f "$ROOT_DIR/.git" ]; then
 	HASH=`LC_ALL=C git rev-parse --verify HEAD 2>/dev/null`
 	SHORTHASH=`echo ${HASH} | cut -c1-10`
 	ISODATE=`LC_ALL=C git show -s --pretty='format:%ci' HEAD | "$AWK" '{ gsub("-", "", $1); print $1 }'`
+	YEAR=`echo ${ISODATE} | cut -c1-4`
 	BRANCH="`git symbolic-ref -q HEAD 2>/dev/null | sed 's@.*/@@'`"
 	TAG="`git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null | sed 's@\^0$@@'`"
 
@@ -103,10 +104,11 @@ else
 	SHORTHASH=""
 	BRANCH=""
 	ISODATE=""
+	YEAR=""
 	TAG=""
 	VERSION=""
 	ISTAG="0"
 	ISSTABLETAG="0"
 fi
 
-echo "$VERSION	$ISODATE	$MODIFIED	$HASH	$ISTAG	$ISSTABLETAG"
+echo "$VERSION	$ISODATE	$MODIFIED	$HASH	$ISTAG	$ISSTABLETAG	$YEAR"
