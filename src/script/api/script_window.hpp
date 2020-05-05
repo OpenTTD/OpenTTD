@@ -1605,6 +1605,7 @@ public:
 	enum AboutWidgets {
 		WID_A_SCROLLING_TEXT                         = ::WID_A_SCROLLING_TEXT,                         ///< The actually scrolling text.
 		WID_A_WEBSITE                                = ::WID_A_WEBSITE,                                ///< URL of OpenTTD website.
+		WID_A_COPYRIGHT                              = ::WID_A_COPYRIGHT,                              ///< Copyright string
 	};
 
 	/** Widgets of the #QueryStringWindow class. */
