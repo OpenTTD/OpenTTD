@@ -51,6 +51,11 @@ const char _openttd_build_date[] = __DATE__ " " __TIME__;
 const char _openttd_revision_hash[] = "!!GITHASH!!";
 
 /**
+ * The year of this version.
+ */
+const char _openttd_revision_year[] = "!!YEAR!!";
+
+/**
  * Let us know if current build was modified. This detection
  * works even in the case when revision string is overridden by
  * --revision argument.

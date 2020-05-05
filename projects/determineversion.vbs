@@ -19,7 +19,7 @@ Sub FindReplaceInFile(filename, to_find, replacement)
 	file.Close
 End Sub
 
-Sub UpdateFile(modified, isodate, version, cur_date, githash, istag, isstabletag, filename)
+Sub UpdateFile(modified, isodate, version, cur_date, githash, istag, isstabletag, year, filename)
 	FSO.CopyFile filename & ".in", filename
 	FindReplaceInFile filename, "!!MODIFIED!!", modified
 	FindReplaceInFile filename, "!!ISODATE!!", isodate
@@ -28,10 +28,11 @@ Sub UpdateFile(modified, isodate, version, cur_date, githash, istag, isstabletag
 	FindReplaceInFile filename, "!!GITHASH!!", githash
 	FindReplaceInFile filename, "!!ISTAG!!", istag
 	FindReplaceInFile filename, "!!ISSTABLETAG!!", isstabletag
+	FindReplaceInFile filename, "!!YEAR!!", year
 End Sub
 
 Sub UpdateFiles(version)
-	Dim modified, isodate, cur_date, githash, istag, isstabletag
+	Dim modified, isodate, cur_date, githash, istag, isstabletag, year
 	cur_date = DatePart("D", Date) & "." & DatePart("M", Date) & "." & DatePart("YYYY", Date)
 
 	If InStr(version, Chr(9)) Then
@@ -41,26 +42,29 @@ Sub UpdateFiles(version)
 		githash  = Mid(modified, InStr(modified, Chr(9)) + 1)
 		istag    = Mid(githash, InStr(githash, Chr(9)) + 1)
 		isstabletag = Mid(istag, InStr(istag, Chr(9)) + 1)
+		year     = Mid(isstabletag, InStr(isstabletag, Chr(9)) + 1)
 		' Remove tails from fields
 		version  = Mid(version, 1, InStr(version, Chr(9)) - 1)
 		isodate  = Mid(isodate, 1, InStr(isodate, Chr(9)) - 1)
 		modified = Mid(modified, 1, InStr(modified, Chr(9)) - 1)
 		githash  = Mid(githash, 1, InStr(githash, Chr(9)) - 1)
 		istag    = Mid(istag, 1, InStr(istag, Chr(9)) - 1)
+		isstabletag = Mid(isstabletag, 1, InStr(isstabletag, Chr(9)) - 1)
 	Else
 		isodate = 0
 		modified = 1
 		githash = ""
 		istag = 0
 		isstabletag = 0
+		year = ""
 	End If
 
-	UpdateFile modified, isodate, version, cur_date, githash, istag, isstabletag, "../src/rev.cpp"
-	UpdateFile modified, isodate, version, cur_date, githash, istag, isstabletag, "../src/os/windows/ottdres.rc"
+	UpdateFile modified, isodate, version, cur_date, githash, istag, isstabletag, year, "../src/rev.cpp"
+	UpdateFile modified, isodate, version, cur_date, githash, istag, isstabletag, year, "../src/os/windows/ottdres.rc"
 End Sub
 
 Function DetermineVersion()
-	Dim WshShell, branch, tag, modified, isodate, oExec, line, hash, shorthash
+	Dim WshShell, branch, tag, modified, isodate, oExec, line, hash, shorthash, year
 	Set WshShell = CreateObject("WScript.Shell")
 	On Error Resume Next
 
@@ -70,6 +74,7 @@ Function DetermineVersion()
 	branch = ""
 	isodate = ""
 	tag = ""
+	year = ""
 
 	' Set the environment to english
 	WshShell.Environment("PROCESS")("LANG") = "en"
@@ -108,6 +113,7 @@ Function DetermineVersion()
 				if Err.Number = 0 Then
 					isodate = Mid(oExec.StdOut.ReadLine(), 1, 10)
 					isodate = Replace(isodate, "-", "")
+					year = Mid(isodate, 1, 4)
 				End If ' Err.Number = 0
 
 				' Check branch
@@ -171,7 +177,7 @@ Function DetermineVersion()
 			isstabletag = 0
 		End If
 
-		DetermineVersion = version & Chr(9) & isodate & Chr(9) & modified & Chr(9) & hash & Chr(9) & istag & Chr(9) & isstabletag
+		DetermineVersion = version & Chr(9) & isodate & Chr(9) & modified & Chr(9) & hash & Chr(9) & istag & Chr(9) & isstabletag & Chr(9) & year
 	End If
 End Function
 
