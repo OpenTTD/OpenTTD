@@ -639,6 +639,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TT_BACKGROUND,                         "WID_TT_BACKGROUND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_A_SCROLLING_TEXT,                      "WID_A_SCROLLING_TEXT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_A_WEBSITE,                             "WID_A_WEBSITE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_A_COPYRIGHT,                           "WID_A_COPYRIGHT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_CAPTION,                            "WID_QS_CAPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_TEXT,                               "WID_QS_TEXT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QS_WARNING,                            "WID_QS_WARNING");
