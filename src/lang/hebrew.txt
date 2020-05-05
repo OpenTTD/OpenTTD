@@ -2697,7 +2697,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :שטח בבעל
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD אודות
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}כל הזכויות שמורות , {COPYRIGHT}1995 כריס סויר - זכויות יוצרים מקוריות
 STR_ABOUT_VERSION                                               :{BLACK}{REV} גירסה , OpenTTD
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} The OpenTTD team
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}קצב ריענון

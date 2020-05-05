@@ -2616,7 +2616,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Uzņēmumam pie
 STR_ABOUT_OPENTTD                                               :{WHITE}Par OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Oriģināla autortiesības {COPYRIGHT} 1995 Kriss Sojers. Visas tiesības paturētas
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versija {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD darba grupa
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} OpenTTD darba grupa
 
 # Framerate display window
 STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}pašreizējās spēles ātruma pakāpe: {DECIMAL}x

@@ -2738,7 +2738,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Spoločnosťou 
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Pôvodný copyright: {COPYRIGHT} 1995 Chris Sawyer, všetky práva vyhradené
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD verzia {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 team OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} team OpenTTD
 
 # Framerate display window
 ############ Leave those lines in this order!!

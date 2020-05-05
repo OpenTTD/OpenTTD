@@ -2906,7 +2906,6 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terra societati
 STR_ABOUT_OPENTTD                                               :{WHITE}De OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Privilegium impressorium originale {COPYRIGHT} MCMXCV Chris Sawyer, Omnia proprietatis iura reservantur
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD editio {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} MMII-MMXIX Manus OpenTTD
 
 # Framerate display window
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
