@@ -171,9 +171,9 @@ bool NetworkContentSocketHandler::HandlePacket(Packet *p)
 
 		default:
 			if (this->HasClientQuit()) {
-				DEBUG(net, 0, "[tcp/content] received invalid packet type %d from %s", type, this->client_addr.GetAddressAsString());
+				DEBUG(net, 0, "[tcp/content] received invalid packet type %d from %s", type, this->client_addr.GetAddressAsString().c_str());
 			} else {
-				DEBUG(net, 0, "[tcp/content] received illegal packet from %s", this->client_addr.GetAddressAsString());
+				DEBUG(net, 0, "[tcp/content] received illegal packet from %s", this->client_addr.GetAddressAsString().c_str());
 			}
 			return false;
 	}
@@ -224,7 +224,7 @@ bool NetworkContentSocketHandler::ReceivePackets()
  */
 bool NetworkContentSocketHandler::ReceiveInvalidPacket(PacketContentType type)
 {
-	DEBUG(net, 0, "[tcp/content] received illegal packet type %d from %s", type, this->client_addr.GetAddressAsString());
+	DEBUG(net, 0, "[tcp/content] received illegal packet type %d from %s", type, this->client_addr.GetAddressAsString().c_str());
 	return false;
 }
 
