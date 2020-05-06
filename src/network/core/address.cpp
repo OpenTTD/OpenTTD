@@ -96,12 +96,11 @@ void NetworkAddress::GetAddressAsString(char *buffer, const char *last, bool wit
  * Get the address as a string, e.g. 127.0.0.1:12345.
  * @param with_family whether to add the family (e.g. IPvX).
  * @return the address
- * @note NOT thread safe
  */
-const char *NetworkAddress::GetAddressAsString(bool with_family)
+std::string NetworkAddress::GetAddressAsString(bool with_family)
 {
 	/* 6 = for the : and 5 for the decimal port number */
-	static char buf[NETWORK_HOSTNAME_LENGTH + 6 + 7];
+	char buf[NETWORK_HOSTNAME_LENGTH + 6 + 7];
 	this->GetAddressAsString(buf, lastof(buf), with_family);
 	return buf;
 }
@@ -289,7 +288,8 @@ static SOCKET ConnectLoopProc(addrinfo *runp)
 {
 	const char *type = NetworkAddress::SocketTypeAsString(runp->ai_socktype);
 	const char *family = NetworkAddress::AddressFamilyAsString(runp->ai_family);
-	const char *address = NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString();
+	char address[NETWORK_HOSTNAME_LENGTH + 6 + 7];
+	NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString(address, lastof(address));
 
 	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
 	if (sock == INVALID_SOCKET) {
@@ -319,7 +319,7 @@ static SOCKET ConnectLoopProc(addrinfo *runp)
  */
 SOCKET NetworkAddress::Connect()
 {
-	DEBUG(net, 1, "Connecting to %s", this->GetAddressAsString());
+	DEBUG(net, 1, "Connecting to %s", this->GetAddressAsString().c_str());
 
 	return this->Resolve(AF_UNSPEC, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ConnectLoopProc);
 }
@@ -333,7 +333,8 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 {
 	const char *type = NetworkAddress::SocketTypeAsString(runp->ai_socktype);
 	const char *family = NetworkAddress::AddressFamilyAsString(runp->ai_family);
-	const char *address = NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString();
+	char address[NETWORK_HOSTNAME_LENGTH + 6 + 7];
+	NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString(address, lastof(address));
 
 	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
 	if (sock == INVALID_SOCKET) {
