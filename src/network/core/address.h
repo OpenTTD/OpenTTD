@@ -15,6 +15,8 @@
 #include "../../string_func.h"
 #include "../../core/smallmap_type.hpp"
 
+#include <string>
+
 class NetworkAddress;
 typedef std::vector<NetworkAddress> NetworkAddressList; ///< Type for a list of addresses.
 typedef SmallMap<NetworkAddress, SOCKET> SocketList;    ///< Type for a mapping between address and socket.
@@ -91,7 +93,7 @@ public:
 
 	const char *GetHostname();
 	void GetAddressAsString(char *buffer, const char *last, bool with_family = true);
-	const char *GetAddressAsString(bool with_family = true);
+	std::string GetAddressAsString(bool with_family = true);
 	const sockaddr_storage *GetAddress();
 
 	/**

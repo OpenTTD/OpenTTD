@@ -100,10 +100,10 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv, bool a
 
 		/* Send the buffer */
 		int res = sendto(s.second, (const char*)p->buffer, p->size, 0, (const struct sockaddr *)send.GetAddress(), send.GetAddressLength());
-		DEBUG(net, 7, "[udp] sendto(%s)", send.GetAddressAsString());
+		DEBUG(net, 7, "[udp] sendto(%s)", send.GetAddressAsString().c_str());
 
 		/* Check for any errors, but ignore it otherwise */
-		if (res == -1) DEBUG(net, 1, "[udp] sendto(%s) failed with: %i", send.GetAddressAsString(), GET_LAST_ERROR());
+		if (res == -1) DEBUG(net, 1, "[udp] sendto(%s) failed with: %i", send.GetAddressAsString().c_str(), GET_LAST_ERROR());
 
 		if (!all) break;
 	}
@@ -136,7 +136,7 @@ void NetworkUDPSocketHandler::ReceivePackets()
 			/* If the size does not match the packet must be corrupted.
 			 * Otherwise it will be marked as corrupted later on. */
 			if (nbytes != p.size) {
-				DEBUG(net, 1, "received a packet with mismatching size from %s", address.GetAddressAsString());
+				DEBUG(net, 1, "received a packet with mismatching size from %s", address.GetAddressAsString().c_str());
 				continue;
 			}
 
@@ -313,9 +313,9 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, NetworkAddress *client_
 
 		default:
 			if (this->HasClientQuit()) {
-				DEBUG(net, 0, "[udp] received invalid packet type %d from %s", type, client_addr->GetAddressAsString());
+				DEBUG(net, 0, "[udp] received invalid packet type %d from %s", type, client_addr->GetAddressAsString().c_str());
 			} else {
-				DEBUG(net, 0, "[udp] received illegal packet from %s", client_addr->GetAddressAsString());
+				DEBUG(net, 0, "[udp] received illegal packet from %s", client_addr->GetAddressAsString().c_str());
 			}
 			break;
 	}
@@ -328,7 +328,7 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, NetworkAddress *client_
  */
 void NetworkUDPSocketHandler::ReceiveInvalidPacket(PacketUDPType type, NetworkAddress *client_addr)
 {
-	DEBUG(net, 0, "[udp] received packet type %d on wrong port from %s", type, client_addr->GetAddressAsString());
+	DEBUG(net, 0, "[udp] received packet type %d on wrong port from %s", type, client_addr->GetAddressAsString().c_str());
 }
 
 void NetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *p, NetworkAddress *client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_CLIENT_FIND_SERVER, client_addr); }
