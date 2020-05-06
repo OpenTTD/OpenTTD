@@ -3120,15 +3120,20 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionUntil(SLV_ENDING_YEAR)) {
+		/* Update station docking tiles. Was only needed for pre-SLV_MULTITLE_DOCKS
+		 * savegames, but a bug in docking tiles touched all savegames between
+		 * SLV_MULTITILE_DOCKS and SLV_ENDING_YEAR. */
+		for (Station *st : Station::Iterate()) {
+			if (st->ship_station.tile != INVALID_TILE) UpdateStationDockingTiles(st);
+		}
+
+		/* Reset roadtype/streetcartype info for non-road bridges. */
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) != TRANSPORT_ROAD) {
 				SetRoadTypes(t, INVALID_ROADTYPE, INVALID_ROADTYPE);
 			}
 		}
 	}
-
-	/* Update station docking tiles. */
-	AfterLoadScanDockingTiles();
 
 	/* Compute station catchment areas. This is needed here in case UpdateStationAcceptance is called below. */
 	Station::RecomputeCatchmentForAll();
