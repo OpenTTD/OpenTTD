@@ -886,21 +886,21 @@ void MidiFile::MoveFrom(MidiFile &other)
 
 static void WriteVariableLen(FILE *f, uint32 value)
 {
-	if (value < 0x7F) {
+	if (value <= 0x7F) {
 		byte tb = value;
 		fwrite(&tb, 1, 1, f);
-	} else if (value < 0x3FFF) {
+	} else if (value <= 0x3FFF) {
 		byte tb[2];
 		tb[1] =  value & 0x7F;         value >>= 7;
 		tb[0] = (value & 0x7F) | 0x80; value >>= 7;
 		fwrite(tb, 1, sizeof(tb), f);
-	} else if (value < 0x1FFFFF) {
+	} else if (value <= 0x1FFFFF) {
 		byte tb[3];
 		tb[2] =  value & 0x7F;         value >>= 7;
 		tb[1] = (value & 0x7F) | 0x80; value >>= 7;
 		tb[0] = (value & 0x7F) | 0x80; value >>= 7;
 		fwrite(tb, 1, sizeof(tb), f);
-	} else if (value < 0x0FFFFFFF) {
+	} else if (value <= 0x0FFFFFFF) {
 		byte tb[4];
 		tb[3] =  value & 0x7F;         value >>= 7;
 		tb[2] = (value & 0x7F) | 0x80; value >>= 7;
@@ -1013,7 +1013,7 @@ bool MidiFile::WriteSMF(const char *filename)
 				ptrdiff_t sysexlen = sysexend - dp;
 				WriteVariableLen(f, sysexlen);
 				fwrite(dp, 1, sysexend - dp, f);
-				dp = sysexend;
+				dp = sysexend + 1;
 				continue;
 			}
 
