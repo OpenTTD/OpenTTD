@@ -568,7 +568,6 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		default: {
 			/* Will there be flat water on the lower halftile? */
 			bool water_ground = IsTileType(tile, MP_WATER) && IsSlopeWithOneCornerRaised(tileh);
-			bool docking = IsPossibleDockingTile(tile) && IsDockingTile(tile);
 
 			CommandCost ret = CheckRailSlope(tileh, trackbit, TRACK_BIT_NONE, tile);
 			if (ret.Failed()) return ret;
@@ -587,7 +586,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 				MakeRailNormal(tile, _current_company, trackbit, railtype);
 				if (water_ground) {
 					SetRailGroundType(tile, RAIL_GROUND_WATER);
-					SetDockingTile(tile, docking);
+					if (IsPossibleDockingTile(tile)) CheckForDockingTile(tile);
 				}
 				Company::Get(_current_company)->infrastructure.rail[railtype]++;
 				DirtyCompanyInfrastructureWindows(_current_company);
