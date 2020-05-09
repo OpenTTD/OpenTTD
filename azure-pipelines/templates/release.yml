@@ -119,6 +119,8 @@ jobs:
           Tag: 'linux-ubuntu-bionic-i386-gcc'
         linux-ubuntu-bionic-amd64-gcc:
           Tag: 'linux-ubuntu-bionic-amd64-gcc'
+        linux-ubuntu-focal-amd64-gcc:
+          Tag: 'linux-ubuntu-focal-amd64-gcc'
         linux-debian-stretch-i386-gcc:
           Tag: 'linux-debian-stretch-i386-gcc'
         linux-debian-stretch-amd64-gcc:
