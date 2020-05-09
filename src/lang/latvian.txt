@@ -983,6 +983,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Četrkāršs
 
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normāls
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Divkāršs izmērs
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Pamata grafikas kopa
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Atlasīt lietošanai pamata grafikas kopu
@@ -1574,6 +1575,7 @@ STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Atjaunināt sad
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuāli
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetriska
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetriska
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Izplatīšanas modelis citām kravu klasēm: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"nesimetriski" nozīmē, ka patvaļīgu kravas daudzumu var nosūtīt abos virzienos."manuāli" nozīmē, ka šīm kravām netiks veikta automātiska izplatīšana.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Sadales precizitāte: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Attāluma ietekme uz pieprasījumu: {STRING}
@@ -2646,6 +2648,7 @@ STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMA
 STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Spēles skripts:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Pasaules tikšķi
 STR_FRAMETIME_CAPTION_DRAWING                                   :Grafiku attēlošana
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Pasaules skatvietas attēlošanu
 STR_FRAMETIME_CAPTION_VIDEO                                     :{WHITE}video izeja
@@ -3065,6 +3068,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Neviena 
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} no {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervēts iekraušanai)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Pieņem
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Rādīt pieņemamo kravu sarakstu
@@ -3241,6 +3245,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrēt
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ražošanas līmenis: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Nozare ir paziņojusi par nenovēršamu slēgšanu!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Pieprasa: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Ražo: {YELLOW}{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} gaida{STRING}
@@ -3267,7 +3272,7 @@ STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Pieejamie kuģi
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Pieejamie lidaparāti
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Apskatīties visus dzinējus projektējumus, kas pieejami šim transportlīdzekļu veidam.
 
-STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Labot sarakstu
+STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Pārvaldīt sarakstu
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Sūtīt norādījumus visiem transportlīdzekļiem, kas ir šajā sarakstā
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Nomainīt transportlīdzekļus
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Sūtīt uz apkopi
@@ -3475,6 +3480,7 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Ziņojum
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mēs tikko esam izstrādājuši jaunu transportlīdzekli - {STRING}. Vai esat ieinteresēts iegūt izņēmuma tiesības izmantot šo transportlīdzekli uz vienu gadu, lai mēs redzētu tā iespējas pirms padaram pieejamu visiem?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :dzelzceļa lokomotīve
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrificēta dzelzceļa lokomotīve
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :viensliedes lokomotīve
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magleva lokomotīve
 
@@ -3967,6 +3973,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Atcelt
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemainīt skriptu
 
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Pilnībā pietuvināts ekrānuzņēmums
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Visas kartes ekrānuzņēmums
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} parametri

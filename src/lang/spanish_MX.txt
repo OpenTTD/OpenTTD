@@ -3980,7 +3980,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir al depósito
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir al hangar más cercano
 STR_ORDER_CONDITIONAL                                           :Salto de orden condicional
 STR_ORDER_SHARE                                                 :Compartir órdenes
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añadir nueva orden antes de la orden marcada o añadirla al final de la lista. Ctrl+Clic sobre una estación para establecer la orden a 'Cargar máx. cualquier carga', sobre un punto guía para 'Sin paradas' y sobre un depósito para 'Mantenimiento' (esta última desactivará el mantenimiento automático). Ctrl+Clic sobre otro vehículo para hacer que ambos compartan siempre las mismas órdenes. Clic sobre un vehículo para copiar sus órdenes (sin compartirlas).
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añadir nueva orden antes de la orden marcada o añadirla al final de la lista. Ctrl+Clic en una estación para establecer la orden a 'Cargar máx. cualquier carga', en un punto de ruta para 'Sin paradas' y en un depósito para 'Mantenimiento' (desactiva el mantenimiento automático). Ctrl+Clic en otro vehículo para que ambos compartan las mismas órdenes. Clic en un vehículo para copiar sus órdenes (sin compartirlas).
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Ver todos los vehículos que comparten el mismo itinerario
 
