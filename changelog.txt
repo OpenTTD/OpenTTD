@@ -1,3 +1,26 @@
+1.10.2 (2020-06-01)
+------------------------------------------------------------------------
+Add: Ubuntu 20.04 packages (#8127)
+Fix: [OSX] Possible crash on failure to set colourspace (#8181)
+Fix #8166: Prevent crash from a NewGRF with an invalid RoadType (#8180)
+Fix #8024: Make Online Content GUI more responsive while loading (#8179)
+Fix #7970: Disable event loop when generating crash dump (#8176)
+Fix: [Build] Compatibility with modern Visual Studio (#8170)
+Fix: Trees would disappear completely after a few years if tree spread was disabled (#8160)
+Fix #8155: Roadtype speed limit in scenario editor toolbar dropdown was doubled (#8156)
+Fix: Desync after house replacement (#8151)
+Fix #8137: New clients can't join (desync) after funding an industry (#8140)
+Fix #8132: Corrupted savegame with station with multiple owners caused a crash (#8134, #8142)
+Fix: Stop gamelog when recovering from a savegame load error (#8133)
+Fix: Exceptionally unlikely issue when reading MIDI files (#8125)
+Fix #8119: Docking areas were not properly updated when clearing, causing desyncs (#8124, #8130)
+Fix #8117: Memory leak for incoming admin port packets (#8122)
+Fix: Non-roadbridges potentially had roadtype information set (#8111)
+Fix #8108: Possible crash on loading TTD savegames with phantom oil rigs (#8109, #8110)
+Fix #8093: Build & refit test run changed game state and could cause desyncs (#8103)
+Fix: [Script] AreWaterTilesConnected did not handle aqueducts properly (#8074)
+
+
 1.10.1 (2020-04-13)
 ------------------------------------------------------------------------
 Fix #8081: Crash when placing a ship depot next to a dock (#8082)
