@@ -2342,7 +2342,7 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provee: 
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Ampliar estación
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construir aparte
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unir puntos guías
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unir puntos de ruta
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construir aparte
 
 # Rail construction toolbar
@@ -2696,7 +2696,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Estación de ca
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Parada de autobús
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Muelle
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boya
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Punto guía
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Punto de ruta
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Agua
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal
@@ -3299,7 +3299,7 @@ STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambiar 
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar la vista en la ubicación de la boya. Ctrl+Clic abre una ventana de vista en dicha ubicación
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Cambiar nombre de boya
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Cambiar nombre de punto guía
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Cambiar nombre de punto de ruta
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanzas de {COMPANY} {BLACK}{COMPANY_NUM}
@@ -4412,15 +4412,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Primero 
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Primero se debe demoler el aeropuerto
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Se amplía más de un punto guía existente
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Se amplía más de un punto de ruta existente
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Demasiado cerca de otro punto guía
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}No se puede construir el punto guía aquí...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}No se puede construir el punto de ruta aquí...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}No se puede colocar la boya aquí...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}No se puede cambiar nombre del punto guía...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}No se puede cambiar nombre del punto de ruta...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}No se puede quitar el punto guía de aquí...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Primero se debe retirar el punto guía
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}No se puede quitar el punto de ruta de aquí...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Primero se debe retirar el punto de ruta
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... una boya obstaculiza
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... ¡boya en uso por otra empresa!
 
@@ -5042,8 +5042,8 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :Boya {TOWN} #{C
 STR_FORMAT_COMPANY_NUM                                          :(Empresa {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupo {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING}, {0:TOWN}
-STR_FORMAT_WAYPOINT_NAME                                        :Punto guía, {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Punto guía #{1:COMMA}, {0:TOWN}
+STR_FORMAT_WAYPOINT_NAME                                        :Punto de ruta, {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Punto de ruta #{1:COMMA}, {0:TOWN}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depósito de trenes, {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Depósito de trenes #{1:COMMA}, {0:TOWN}
