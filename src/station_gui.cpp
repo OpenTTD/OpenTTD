@@ -102,7 +102,7 @@ static void FindStationsAroundSelection()
 
 	Station *adjacent = nullptr;
 
-	/* Direct loop instead of FindStationsAroundTiles as we are not interested in catchment area */
+	/* Direct loop instead of ForAllStationsAroundTiles as we are not interested in catchment area */
 	TILE_AREA_LOOP(tile, ta) {
 		if (IsTileType(tile, MP_STATION) && GetTileOwner(tile) == _local_company) {
 			Station *st = Station::GetByTile(tile);
