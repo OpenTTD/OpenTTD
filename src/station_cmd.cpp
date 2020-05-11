@@ -3978,8 +3978,9 @@ const StationList *StationFinder::GetStations()
 			assert(this->w == 1 && this->h == 1);
 			AddNearbyStationsByCatchment(this->tile, &this->stations, Town::GetByTile(this->tile)->stations_near);
 		} else {
-			ForAllStationsAroundTiles(*this, [this](Station *st) {
+			ForAllStationsAroundTiles(*this, [this](Station *st, TileIndex tile) {
 				this->stations.insert(st);
+				return true;
 			});
 		}
 		this->tile = INVALID_TILE;
