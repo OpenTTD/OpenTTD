@@ -1697,20 +1697,10 @@ static void PopulateStationsNearby(Industry *ind)
 		return;
 	}
 
-	/* Get our list of nearby stations. */
-	FindStationsAroundTiles(ind->location, &ind->stations_near, false);
-
-	/* Test if industry can accept cargo */
-	uint cargo_index;
-	for (cargo_index = 0; cargo_index < lengthof(ind->accepts_cargo); cargo_index++) {
-		if (ind->accepts_cargo[cargo_index] != CT_INVALID) break;
-	}
-	if (cargo_index >= lengthof(ind->accepts_cargo)) return;
-
-	/* Cargo is accepted, add industry to nearby stations nearby industry list. */
-	for (Station *st : ind->stations_near) {
-		st->industries_near.insert(ind);
-	}
+	ForAllStationsAroundTiles(ind->location, [ind](Station *st) {
+		ind->stations_near.insert(st);
+		st->AddIndustryToDeliver(ind);
+	});
 }
 
 /**
